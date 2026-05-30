@@ -104,13 +104,7 @@
       {#each filteredNews as item}
         <article class="news-card">
           <div class="news-card-image-wrap">
-            {#if item.slug === 'innovacion-arquitectura-efimera-fitur-madrid-2026'}
-              <img src="/img/trabajos/trabajos_promueve/01-stand-tecnalia-biemh-2022_1.avif" alt={item.title} loading="lazy" />
-            {:else if item.slug === 'des-malaga-2026-sombra-confort-termico-eventos-exteriores'}
-              <img src="/img/trabajos/trabajos_promueve/02-bost-emo-2023_1.avif" alt={item.title} loading="lazy" />
-            {:else}
-              <img src="/img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif" alt={item.title} loading="lazy" />
-            {/if}
+            <img src={item.image || "/img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif"} alt={item.title} loading="lazy" />
             <span class="news-card-badge">{item.location}</span>
           </div>
 
