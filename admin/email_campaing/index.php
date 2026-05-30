@@ -121,7 +121,7 @@ if (!campaign_is_logged_in()) {
 </head>
 <body>
   <main>
-    <h1>Gestor de Campañas</h1>
+    <h1>Admin</h1>
     <?php foreach ($errors as $error): ?><p class="error"><?php echo campaign_escape($error); ?></p><?php endforeach; ?>
     <form method="post">
       <label for="login_password" style="font-size: 0.9rem; color: #aaa;">Contraseña de Seguridad</label>

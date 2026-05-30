@@ -1,0 +1,50 @@
+name: Publicación Autónoma de Noticias
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 08:00 AM UTC (10:00 AM hora española)
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    # Habilita un botón en la interfaz de GitHub para ejecutarlo manualmente
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar Repositorio
+        uses: actions/checkout@v4
+        with:
+          # Permite descargar con permisos de escritura para empujar los cambios de vuelta
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar Dependencias
+        run: npm ci
+
+      - name: Generar Noticia Autónoma (IA o Fallback)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/autonomous_generator.cjs
+
+      - name: Compilar Sitio Estático (SvelteKit)
+        run: npm run build
+
+      - name: Desplegar por FTP a OVH (Limpieza y Sincronización)
+        env:
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: node deploy_clean.cjs
+
+      - name: Guardar Base de Datos de Noticias en GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/lib/newsData.json
+          git commit -m "chore(news): auto-update daily news article [skip ci]" || echo "No se detectaron cambios para commitear"
+          git push

@@ -3,8 +3,8 @@ const path = require('path');
 const { exec } = require('child_process');
 
 const ftpHost = 'ftp.cluster028.hosting.ovh.net';
-const ftpUser = 'standap';
-const ftpPass = 'Extrategia37';
+const ftpUser = process.env.FTP_USER || 'standap';
+const ftpPass = process.env.FTP_PASS || 'Extrategia37';
 const remoteRoot = 'ftp://ftp.cluster028.hosting.ovh.net/www';
 
 console.log('==========================================================');

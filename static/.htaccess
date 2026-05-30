@@ -1,6 +1,15 @@
 Options -Indexes
 DirectoryIndex index.html index.php
 
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirigir /noticias o /noticias/ a noticias.html para evitar la colisión 403 con la carpeta /noticias/ de artículos
+  RewriteCond %{REQUEST_URI} ^/noticias/?$
+  RewriteRule ^ noticias.html [L]
+</IfModule>
+
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
