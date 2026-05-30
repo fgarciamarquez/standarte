@@ -1,0 +1,7 @@
+node_modules/
+.svelte-kit/
+dist/
+.env
+.DS_Store
+Thumbs.db
+deploy-config.php

@@ -1,0 +1,411 @@
+<?php
+
+session_start();
+
+$config = require __DIR__ . '/config.php';
+require __DIR__ . '/template.php';
+
+$errors = array();
+$success = '';
+$previewHtml = '';
+$selectedCategory = isset($_POST['category']) ? $_POST['category'] : 'stands_madera';
+$selectedLanguage = isset($_POST['language']) ? $_POST['language'] : 'es';
+$recipientEmail = isset($_POST['recipient_email']) ? trim($_POST['recipient_email']) : '';
+$emailSubjectInput = isset($_POST['email_subject']) ? $_POST['email_subject'] : '';
+
+function campaign_parse_recipient_emails($value)
+{
+    $parts = preg_split('/[,;\r\n]+/', $value);
+    $emails = array();
+
+    foreach ($parts as $part) {
+        $email = trim($part);
+        $email = preg_replace('/\s+/', '', $email);
+        $email = strtolower($email);
+
+        if ($email !== '') {
+            $emails[] = $email;
+        }
+    }
+
+    return array_values(array_unique($emails));
+}
+
+function campaign_clean_subject($value)
+{
+    $value = strip_tags($value);
+    $value = str_replace(array("\r", "\n"), ' ', $value);
+    $value = preg_replace('/\s+/', ' ', $value);
+
+    return trim($value);
+}
+
+function campaign_extract_company_from_email($email)
+{
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return '';
+    }
+    $parts = explode('@', $email);
+    if (count($parts) > 1) {
+        $domainParts = explode('.', $parts[1]);
+        $name = $domainParts[0];
+        $freeProviders = array('gmail', 'hotmail', 'yahoo', 'outlook', 'live', 'icloud', 'aol', 'mail');
+        if (in_array(strtolower($name), $freeProviders, true)) {
+            return '';
+        }
+        return ucfirst($name);
+    }
+    return '';
+}
+
+function campaign_is_logged_in()
+{
+    return isset($_SESSION['standarte_email_campaing_auth']) && $_SESSION['standarte_email_campaing_auth'] === true;
+}
+
+function campaign_get_total_email_visits()
+{
+    $statsFile = __DIR__ . '/data/clicks.json';
+
+    if (!is_file($statsFile)) {
+        return 0;
+    }
+
+    $stats = json_decode(file_get_contents($statsFile), true);
+
+    if (!is_array($stats) || !isset($stats['total'])) {
+        return 0;
+    }
+
+    return (int) $stats['total'];
+}
+
+require __DIR__ . '/mailer.php';
+
+
+if (isset($_GET['logout'])) {
+    unset($_SESSION['standarte_email_campaing_auth']);
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_POST['login_password'])) {
+    if (password_verify($_POST['login_password'], $config['login_password_hash'])) {
+        $_SESSION['standarte_email_campaing_auth'] = true;
+        header('Location: index.php');
+        exit;
+    }
+
+    $errors[] = 'La contraseña no es correcta.';
+}
+
+if (!campaign_is_logged_in()) {
+    ?>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso privado · Standarte</title>
+  <style>
+    body { align-items:center; background:#1b1b1b; color:#eeeeee; display:flex; font-family:Arial,Helvetica,sans-serif; justify-content:center; margin:0; min-height:100vh; }
+    main { background:#252525; box-shadow:0 20px 60px rgba(0,0,0,.35); max-width:360px; padding:32px; border-radius: 6px; border-top: 4px solid #ffc800; width:calc(100% - 32px); }
+    h1 { font-size:1.35rem; margin:0 0 1rem; color: #ffc800; text-align: center; font-weight: bold; }
+    input, button { box-sizing:border-box; font:inherit; width:100%; border-radius: 4px; }
+    input { background: #333; border:1px solid #444; color: #fff; margin:.35rem 0 1.25rem; padding:.75rem; }
+    input:focus { border-color: #ffc800; outline: none; }
+    button { background:#ffc800; border:0; color:#111; cursor:pointer; font-weight:700; padding:.8rem; transition: background 0.2s ease; }
+    button:hover { background: #e6b400; }
+    .error { color:#ff4444; font-size:.9rem; margin:0 0 1rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Gestor de Campañas</h1>
+    <?php foreach ($errors as $error): ?><p class="error"><?php echo campaign_escape($error); ?></p><?php endforeach; ?>
+    <form method="post">
+      <label for="login_password" style="font-size: 0.9rem; color: #aaa;">Contraseña de Seguridad</label>
+      <input id="login_password" name="login_password" type="password" required autofocus>
+      <button type="submit">Entrar al Panel</button>
+    </form>
+  </main>
+</body>
+</html>
+    <?php
+    exit;
+}
+
+$subjectDefaults = array();
+$introDefaults = array();
+$bodyDefaults = array();
+foreach ($config['categories'] as $categoryKey => $categoryConfig) {
+    $subjectDefaults[$categoryKey] = array();
+    $introDefaults[$categoryKey] = array();
+    $bodyDefaults[$categoryKey] = array();
+    foreach ($config['languages'] as $languageKey => $languageConfig) {
+        $subjectDefaults[$categoryKey][$languageKey] = campaign_text($categoryConfig, $languageKey, 'subject');
+        $introDefaults[$categoryKey][$languageKey] = campaign_text($categoryConfig, $languageKey, 'intro');
+        $bodyDefaults[$categoryKey][$languageKey] = campaign_text($categoryConfig, $languageKey, 'body');
+    }
+}
+
+$defaultEmailSubject = isset($subjectDefaults[$selectedCategory][$selectedLanguage]) ? $subjectDefaults[$selectedCategory][$selectedLanguage] : '';
+$emailSubject = campaign_clean_subject($emailSubjectInput);
+if ($emailSubject === '') {
+    $emailSubject = $defaultEmailSubject;
+}
+
+$defaultEmailIntro = isset($introDefaults[$selectedCategory][$selectedLanguage]) ? $introDefaults[$selectedCategory][$selectedLanguage] : '';
+$emailIntro = isset($_POST['email_intro']) ? $_POST['email_intro'] : $defaultEmailIntro;
+
+$defaultEmailBody = isset($bodyDefaults[$selectedCategory][$selectedLanguage]) ? $bodyDefaults[$selectedCategory][$selectedLanguage] : '';
+$emailBody = isset($_POST['email_body']) ? $_POST['email_body'] : $defaultEmailBody;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['campaign_action'])) {
+    $campaignAction = $_POST['campaign_action'];
+
+    if (!in_array($campaignAction, array('preview', 'send'), true)) {
+        $errors[] = 'Acción no válida.';
+    }
+
+    if (!isset($config['categories'][$selectedCategory])) {
+        $errors[] = 'Seleccione una categoría válida.';
+    }
+
+    if (!isset($config['languages'][$selectedLanguage])) {
+        $errors[] = 'Seleccione un idioma válido.';
+    }
+
+    $recipientEmails = campaign_parse_recipient_emails($recipientEmail);
+    $invalidRecipientEmails = array();
+
+    foreach ($recipientEmails as $email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $invalidRecipientEmails[] = $email;
+        }
+    }
+
+    if ($campaignAction === 'send' && !$recipientEmails) {
+        $errors[] = 'Introduzca al menos un correo electrónico válido.';
+    }
+
+    if ($campaignAction === 'send' && $invalidRecipientEmails) {
+        $errors[] = 'Revise estos correos electrónicos: ' . implode(', ', $invalidRecipientEmails) . '.';
+    }
+
+    if ($campaignAction === 'send' && $emailSubject === '') {
+        $errors[] = 'Introduzca el Asunto del email.';
+    }
+
+    if (!$errors) {
+        $category = $config['categories'][$selectedCategory];
+        $previewRecipient = $recipientEmails && filter_var($recipientEmails[0], FILTER_VALIDATE_EMAIL) ? $recipientEmails[0] : 'destinatario@ejemplo.com';
+        $previewCompany = campaign_extract_company_from_email($previewRecipient);
+        $previewHtml = campaign_build_email($config, $category, $previewRecipient, $selectedLanguage, $emailSubject, $emailIntro, $emailBody, $previewCompany);
+
+        if ($campaignAction === 'send') {
+            $sentEmails = array();
+            $failedEmails = array();
+
+            foreach ($recipientEmails as $email) {
+                $emailCompany = campaign_extract_company_from_email($email);
+                $emailHtml = campaign_build_email($config, $category, $email, $selectedLanguage, $emailSubject, $emailIntro, $emailBody, $emailCompany);
+
+                if (campaign_send_mail($config, $email, $emailSubject, $emailHtml)) {
+                    $sentEmails[] = $email;
+                } else {
+                    $failedEmails[] = $email;
+                }
+            }
+
+            if ($sentEmails) {
+                $success = 'El servidor ha aceptado el envío a ' . implode(', ', $sentEmails) . '. Si no llega, revise spam, SPF/DKIM o la configuración de correo del alojamiento.';
+                $recipientEmail = '';
+            }
+
+            if ($failedEmails) {
+                $errors[] = 'No se pudo enviar el email a: ' . implode(', ', $failedEmails) . '. Revise la configuración de correo del servidor.';
+            }
+        }
+    }
+}
+
+if (!$previewHtml && isset($config['categories'][$selectedCategory])) {
+    $recipientEmails = campaign_parse_recipient_emails($recipientEmail);
+    $previewRecipient = $recipientEmails && filter_var($recipientEmails[0], FILTER_VALIDATE_EMAIL) ? $recipientEmails[0] : 'destinatario@ejemplo.com';
+    $previewCompany = campaign_extract_company_from_email($previewRecipient);
+    $previewHtml = campaign_build_email($config, $config['categories'][$selectedCategory], $previewRecipient, $selectedLanguage, $emailSubject, $emailIntro, $emailBody, $previewCompany);
+}
+
+$totalEmailVisits = campaign_get_total_email_visits();
+$sendLog = campaign_get_send_log();
+$smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host']) && !empty($config['smtp']['username']) && !empty($config['smtp']['password']);
+
+?>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de emails · Standarte</title>
+  <style>
+    body { background:#1b1b1b; color:#eeeeee; font-family:Arial,Helvetica,sans-serif; margin:0; }
+    header { align-items:center; background:#222; border-bottom:3px solid #ffc800; display:flex; justify-content:space-between; padding:18px 24px; position:sticky; top:0; z-index:2; }
+    h1 { font-size:1.25rem; margin:0; color:#ffc800; font-weight: bold; }
+    a { color:#ffc800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    main { display:grid; gap:24px; grid-template-columns:minmax(300px,380px) 1fr; padding:24px; }
+    form, .preview { background:#252525; border:1px solid #333; padding:22px; border-radius: 6px; }
+    .stats { background:#252525; border:1px solid #333; border-left: 4px solid #ffc800; margin:0 0 18px; padding:18px 22px; border-radius: 4px; }
+    .stats strong { display:block; font-size:2rem; line-height:1; margin:.35rem 0; color:#ffc800; }
+    .stats span { color:#aaa; display:block; font-size:.9rem; line-height:1.45; }
+    .send-log { background:#252525; border:1px solid #333; margin:18px 0 0; padding:18px 22px; border-radius: 4px; }
+    .send-log h2 { font-size:1rem; margin:0 0 .75rem; color:#ffc800; }
+    .send-log p { border-top:1px solid #333; color:#bbb; font-size:.82rem; line-height:1.4; margin:0; padding:.55rem 0; }
+    .send-log b { color:#fff; }
+    .smtp-status { background:#252525; border:1px solid #333; margin:0 0 18px; padding:18px 22px; border-radius: 4px; }
+    .smtp-status b { display:block; margin:0 0 .35rem; }
+    .smtp-status span { color:#aaa; display:block; font-size:.9rem; line-height:1.45; }
+    .smtp-ok { border-left:4px solid #2ecc71; b { color:#2ecc71; } }
+    .smtp-warning { border-left:4px solid #f39c12; b { color:#f39c12; } }
+    label { display:block; font-weight:700; margin:0 0 .4rem; color: #ffc800; font-size: 0.9rem; }
+    input, select, textarea, button { box-sizing:border-box; font:inherit; width:100%; border-radius: 4px; }
+    input, select, textarea { background:#333; border:1px solid #444; color:#fff; margin:0 0 1.25rem; padding:.75rem; resize:vertical; }
+    input:focus, select:focus, textarea:focus { border-color:#ffc800; outline: none; }
+    button { border:0; cursor:pointer; font-weight:700; margin:.25rem 0; padding:.82rem; transition: opacity 0.2s ease; }
+    button:hover { opacity: 0.9; }
+    .primary { background:#ffc800; color:#111; }
+    .secondary { background:#333; color:#fff; border: 1px solid #444; }
+    .message { margin:0 0 1rem; padding:.8rem; border-radius: 4px; }
+    .error { background:#5a191f; color:#ff8888; border-left: 4px solid #ff4444; }
+    .success { background:#1b4d22; color:#8ce09a; border-left: 4px solid #2ecc71; }
+    iframe { background:#fff; border:1px solid #444; height:780px; width:100%; border-radius: 4px; }
+    .hint { color:#888; font-size:.85rem; line-height:1.45; }
+    .preview-subject { background:#2a2a2a; border-left:4px solid #ffc800; color:#ddd; font-size:.9rem; line-height:1.45; margin:0 0 1rem; padding:.75rem .9rem; border-radius: 4px; }
+    @media (max-width: 950px) { main { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gestor de Emails Multimedia · Standarte</h1>
+    <a href="?logout=1">Cerrar Sesión</a>
+  </header>
+  <main>
+    <section>
+      <div class="stats">
+        <span>Visitas totales desde correos multimedia</span>
+        <strong><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
+        <span>Contador acumulado desde enlaces en correos.</span>
+      </div>
+      <div class="smtp-status <?php echo $smtpReady ? 'smtp-ok' : 'smtp-warning'; ?>">
+        <b><?php echo $smtpReady ? 'SMTP autenticado activo' : 'SMTP pendiente de contraseña'; ?></b>
+        <span>
+          <?php if ($smtpReady): ?>
+            Los envíos salen mediante <?php echo campaign_escape($config['smtp']['username']); ?> en <?php echo campaign_escape($config['smtp']['host']); ?>. Esto garantiza excelente entregabilidad.
+          <?php else: ?>
+            Añada la contraseña SMTP del buzón <?php echo campaign_escape($config['smtp']['username']); ?> en la variable de entorno STANDARTE_SMTP_PASSWORD o en static/admin/email_campaing/config.php. Mientras tanto, se usará mail() de PHP como respaldo.
+          <?php endif; ?>
+        </span>
+      </div>
+      <form id="campaign-form" method="post">
+        <input id="campaign-action" type="hidden" name="campaign_action" value="preview">
+        <?php foreach ($errors as $error): ?><p class="message error"><?php echo campaign_escape($error); ?></p><?php endforeach; ?>
+        <?php if ($success): ?><p class="message success"><?php echo campaign_escape($success); ?></p><?php endif; ?>
+
+        <label for="recipient_email">Destinatarios</label>
+        <input id="recipient_email" name="recipient_email" type="text" inputmode="email" value="<?php echo campaign_escape($recipientEmail); ?>" placeholder="destinatario@dominio.com, otro@dominio.com" autocomplete="off" required>
+
+        <label for="email_subject">Asunto del email</label>
+        <input id="email_subject" name="email_subject" type="text" value="<?php echo campaign_escape($emailSubject); ?>" maxlength="160" required>
+
+        <label for="email_intro">Párrafo superior (arriba de las imágenes)</label>
+        <textarea id="email_intro" name="email_intro" rows="4" required><?php echo campaign_escape($emailIntro); ?></textarea>
+
+        <label for="email_body">Párrafo inferior (abajo de las imágenes)</label>
+        <textarea id="email_body" name="email_body" rows="4" required><?php echo campaign_escape($emailBody); ?></textarea>
+
+        <label for="category">Categoría de stand</label>
+        <select id="category" name="category" required>
+          <?php foreach ($config['categories'] as $key => $category): ?>
+            <option value="<?php echo campaign_escape($key); ?>" <?php echo $selectedCategory === $key ? 'selected' : ''; ?>>
+              <?php echo campaign_escape($category['label']); ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+
+        <label for="language">Idioma del correo</label>
+        <select id="language" name="language" required>
+          <?php foreach ($config['languages'] as $key => $language): ?>
+            <option value="<?php echo campaign_escape($key); ?>" <?php echo $selectedLanguage === $key ? 'selected' : ''; ?>>
+              <?php echo campaign_escape($language['label']); ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+
+        <button class="secondary" type="submit" onclick="document.getElementById('campaign-action').value='preview';">Previsualizar</button>
+        <button class="primary" type="submit" onclick="document.getElementById('campaign-action').value='send';">Enviar Campaña</button>
+        <p class="hint">Puedes enviar a varios destinatarios separándolos por comas. Cada categoría inyectará el asunto, textos y tarjetas multimedia correspondientes.</p>
+      </form>
+      <div class="send-log">
+        <h2>Registro de envíos locales</h2>
+        <?php if (!$sendLog): ?>
+          <p style="font-size:0.85rem;color:#888;">No hay envíos registrados todavía.</p>
+        <?php endif; ?>
+        <?php foreach ($sendLog as $entry): ?>
+          <p>
+            <b><?php echo !empty($entry['accepted']) ? 'Aceptado por ' . campaign_escape(isset($entry['method']) ? $entry['method'] : 'PHP') : 'Error'; ?></b><br>
+            <?php echo campaign_escape($entry['date']); ?> · <?php echo campaign_escape($entry['to']); ?>
+            <?php if (!empty($entry['subject'])): ?><br>Asunto: <?php echo campaign_escape($entry['subject']); ?><?php endif; ?>
+            <?php if (empty($entry['accepted']) && !empty($entry['error'])): ?><br><span style="color:#ff8888;"><?php echo campaign_escape($entry['error']); ?></span><?php endif; ?>
+          </p>
+        <?php endforeach; ?>
+      </div>
+    </section>
+    <section class="preview">
+      <h2 style="color:#ffc800;margin-top:0;">Previsualización en vivo</h2>
+      <p class="preview-subject"><b>Asunto:</b> <?php echo campaign_escape($emailSubject); ?></p>
+      <iframe title="Previsualización del email" srcdoc="<?php echo campaign_escape($previewHtml); ?>"></iframe>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var form = document.getElementById('campaign-form');
+      var action = document.getElementById('campaign-action');
+      var category = document.getElementById('category');
+      var language = document.getElementById('language');
+      var subject = document.getElementById('email_subject');
+      var intro = document.getElementById('email_intro');
+      var body = document.getElementById('email_body');
+      var subjectDefaults = <?php echo json_encode($subjectDefaults, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
+      var introDefaults = <?php echo json_encode($introDefaults, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
+      var bodyDefaults = <?php echo json_encode($bodyDefaults, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
+
+      <?php if ($success): ?>
+      var recipientEmailInput = document.getElementById('recipient_email');
+      if (recipientEmailInput) {
+        recipientEmailInput.value = '';
+      }
+      <?php endif; ?>
+
+      function refreshPreview(resetDefaults) {
+        if (resetDefaults) {
+          if (subjectDefaults[category.value] && subjectDefaults[category.value][language.value]) {
+            subject.value = subjectDefaults[category.value][language.value];
+          }
+          if (introDefaults[category.value] && introDefaults[category.value][language.value]) {
+            intro.value = introDefaults[category.value][language.value];
+          }
+          if (bodyDefaults[category.value] && bodyDefaults[category.value][language.value]) {
+            body.value = bodyDefaults[category.value][language.value];
+          }
+        }
+        action.value = 'preview';
+        form.submit();
+      }
+
+      category.addEventListener('change', function () { refreshPreview(true); });
+      language.addEventListener('change', function () { refreshPreview(true); });
+    }());
+  </script>
+</body>
+</html>
