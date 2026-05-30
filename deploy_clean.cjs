@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 
+const curlCmd = process.platform === 'win32' ? 'curl.exe' : 'curl';
+
 const ftpHost = 'ftp.cluster028.hosting.ovh.net';
 const ftpUser = process.env.FTP_USER || 'standap';
 const ftpPass = process.env.FTP_PASS || 'Extrategia37';
@@ -16,7 +18,7 @@ console.log('[1/3] Iniciando limpieza de directorios obsoletos...');
 try {
   console.log("  -> Solicitando eliminación de la carpeta obsoleta 'admin/email_campaign'...");
   const { execSync } = require('child_process');
-  execSync(`curl.exe -s -Q "RMD admin/email_campaign" "${remoteRoot}/" --user "${ftpUser}:${ftpPass}"`, { stdio: 'ignore' });
+  execSync(`${curlCmd} -s -Q "RMD admin/email_campaign" "${remoteRoot}/" --user "${ftpUser}:${ftpPass}"`, { stdio: 'ignore' });
   console.log('  [LIMPIADO] Carpeta obsoleta eliminada del servidor.');
 } catch (error) {
   console.log('  -> Carpeta obsoleta no existía o ya estaba limpia en el servidor.');
@@ -93,7 +95,7 @@ function uploadNext() {
   }
 
   // Execute curl asynchronously
-  exec(`curl.exe -s -T "${file}" "${remoteUrl}" --ftp-create-dirs --user "${ftpUser}:${ftpPass}"`, (error, stdout, stderr) => {
+  exec(`${curlCmd} -s -T "${file}" "${remoteUrl}" --ftp-create-dirs --user "${ftpUser}:${ftpPass}"`, (error, stdout, stderr) => {
     running--;
     if (error) {
       console.error(`  [FALLÓ] Error al subir ${relativePath}:`, error.message);
