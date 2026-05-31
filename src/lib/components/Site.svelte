@@ -118,10 +118,10 @@
     pt: 'Feiras em destaque em Espanha, Portugal, Alemanha e França para construção de stands'
   };
   const counterItems = [
-    { key: 'projects', value: 69, icon: 'counter-book' },
-    { key: 'clients', value: 45, icon: 'counter-briefcase' },
+    { key: 'projects', value: 169, icon: 'counter-book' },
+    { key: 'clients', value: 145, icon: 'counter-briefcase' },
     { key: 'countries', value: 22, icon: 'counter-flag' },
-    { key: 'fairs', value: 58, icon: 'counter-calendar' }
+    { key: 'fairs', value: 158, icon: 'counter-calendar' }
   ];
 
   let displayedCounters = counterItems.map(() => 0);
