@@ -48,6 +48,11 @@ function getFiles(dir, fileList = []) {
 const allFiles = getFiles(localDist);
 console.log(`  -> Detectados ${allFiles.length} archivos para procesar.`);
 
+const skipImages = process.argv.includes('--fast') || process.argv.includes('--skip-images');
+if (skipImages) {
+  console.log('  [OPT] Ejecutando en modo FAST. Se omitirá la subida de imágenes en img/*');
+}
+
 // Filtrar archivos a subir
 const filesToUpload = [];
 const excludeList = ['.DS_Store', 'Thumbs.db', '.htaccess_local'];
@@ -55,6 +60,9 @@ allFiles.forEach(file => {
   const filename = path.basename(file);
   const relativePath = path.relative(localDist, file).replace(/\\/g, '/');
   if (excludeList.includes(filename)) {
+    return;
+  }
+  if (skipImages && (relativePath.startsWith('img/') || relativePath.includes('/img/'))) {
     return;
   }
   filesToUpload.push({ file, relativePath });
