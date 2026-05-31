@@ -3,13 +3,14 @@
   import news from '$lib/newsData.json';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
 
-  let lang = 'es';
+  export let data = {};
+  export let lang = data?.lang || 'es';
   let menuOpen = false;
   let isScrolled = false;
   let activeFilter = 'all';
 
   // Obtenemos los textos traducidos
-  $: currentCopy = copy[lang] || copy.es;
+  $: currentCopy = data?.copy || copy[lang] || copy.es;
 
   // Filtrar noticias por idioma y ubicación
   $: filteredNews = news

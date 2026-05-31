@@ -5,7 +5,7 @@
   export let data;
   $: article = data.article;
 
-  let lang = 'es';
+  $: lang = article?.lang || 'es';
   let menuOpen = false;
   let isScrolled = false;
 

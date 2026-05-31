@@ -1,6 +1,11 @@
 <script>
   import Site from '$lib/components/Site.svelte';
+  import Noticias from '../noticias/+page.svelte';
   export let data;
 </script>
 
-<Site {...data} />
+{#if data.section === 'noticias'}
+  <Noticias {data} />
+{:else}
+  <Site {...data} />
+{/if}
