@@ -18,14 +18,13 @@ console.log(`-> Encontradas ${actualFiles.size} imágenes AVIF reales en disco.`
 // 2. Parsear el archivo empresas_contactos.txt
 const companies = [];
 const blocks = txtContent.split(/\n(?=EMPRESA:)/);
-
-blocks.forEach(block => {
+blocks.forEach(block => {
   if (!block.trim()) return;
   
   const empMatch = block.match(/EMPRESA:\s*([^\n]+)/);
   if (!empMatch) return;
   const name = empMatch[1].trim();
-  const id = name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
+  const baseId = name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
   
   const webMatch = block.match(/Web:\s*([^\n]+)/);
   const web = webMatch ? webMatch[1].trim() : '';
@@ -79,38 +78,45 @@ blocks.forEach(block => {
   // Correcciones manuales para errores de correspondencia en el TXT original
   let finalWeb = web;
   let finalNotes = notes;
-
-  if (id === 'aksun') {
+ 
+  if (baseId === 'aksun') {
     finalWeb = 'https://www.aksun.com.tr/';
     finalNotes = 'Empresa turca líder en la comercialización y exportación internacional de frutas y verduras frescas.';
-  } else if (id === 'arra') {
+  } else if (baseId === 'arra') {
     finalWeb = 'https://grapaes.com/';
     finalNotes = 'Desarrollador y distribuidor global de variedades premium de uva de mesa sin semilla (ARRA Grapes).';
-  } else if (id === 'asteo') {
+  } else if (baseId === 'asteo') {
     finalWeb = 'https://asteo.es/';
     finalNotes = 'Operador mayorista de telecomunicaciones e infraestructura de fibra óptica en entornos rurales en España.';
-  } else if (id === 'bdb') {
+  } else if (baseId === 'bdb') {
     finalWeb = 'https://grupobdb.com/';
     finalNotes = 'Central de compras y red de distribución de almacenes de materiales de construcción, cerámica, ferretería y baño en España.';
-  } else if (id === 'charly') {
+  } else if (baseId === 'charly') {
     finalWeb = 'https://www.charly.com/';
     finalNotes = 'Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional.';
-  } else if (id === 'kelio') {
+  } else if (baseId === 'kelio') {
     finalWeb = 'https://www.kelio.com/';
     finalNotes = 'Desarrollador líder europeo de software de control horario, gestión de recursos humanos y terminales de fichaje avanzados.';
-  } else if (id === 'drag') {
+  } else if (baseId === 'drag') {
     finalWeb = 'https://www.drag.es/';
     finalNotes = 'Desarrollador de software de gestión integral para cuerpos de Policía Local y servicios de emergencia municipales en España.';
-  } else if (id === 'hjm_elementos') {
+  } else if (baseId === 'hjm_elementos') {
     finalWeb = 'https://www.hjm.es/';
     finalNotes = 'Fabricante español líder en sistemas de calefacción eléctrica, emisores térmicos y secatoallas de alta eficiencia.';
-  } else if (id === 'fazendas_0') {
+  } else if (baseId === 'fazendas_0') {
     finalWeb = 'https://fazendas.pt/es/';
     finalNotes = 'Empresa portuguesa líder en ingeniería de acero inoxidable y equipos industriales de alta precisión para el sector farmacéutico y cosmético.';
   }
-
+ 
   // Generar texto descriptivo sofisticado relacionándolo con valores
   const valuesText = generateValuesText(name, location, finalNotes);
+  
+  // Construir ID altamente SEO-friendly (ej: stand_777_desarrollado_en_madrid)
+  const cleanLoc = location.toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, '_');
+  const id = `stand_${baseId}_desarrollado_en_${cleanLoc}`;
   
   companies.push({
     id,

@@ -1,7 +1,7 @@
 // Archivo generado automáticamente a partir de empresas_contactos.txt
 export const projects = [
   {
-    "id": "42solutions",
+    "id": "stand_42solutions_desarrollado_en_madrid",
     "name": "42SOLUTIONS",
     "location": "Madrid",
     "web": "https://www.42solutions.nl",
@@ -17,7 +17,7 @@ export const projects = [
     "notes": "Empresa holandesa de software para gestión de tráfico aéreo (ATM)."
   },
   {
-    "id": "777",
+    "id": "stand_777_desarrollado_en_madrid",
     "name": "777",
     "location": "Madrid",
     "web": "https://www.bet777.es/",
@@ -33,7 +33,7 @@ export const projects = [
     "notes": "Empresa de apuestas online española."
   },
   {
-    "id": "a_bet_a",
+    "id": "stand_a_bet_a_desarrollado_en_malaga",
     "name": "A BET A",
     "location": "Málaga",
     "web": "https://abeta.co.uk",
@@ -50,7 +50,7 @@ export const projects = [
     "notes": "Sector: Software de apuestas. País: Reino Unido."
   },
   {
-    "id": "aab",
+    "id": "stand_aab_desarrollado_en_bilbao",
     "name": "AAB",
     "location": "Bilbao",
     "web": "https://aabgroup.com/",
@@ -67,7 +67,7 @@ export const projects = [
     "notes": "Empresa de servicios profesionales (auditoría, contabilidad, impuestos) con sede en Reino Unido e Irlanda."
   },
   {
-    "id": "aercaribe",
+    "id": "stand_aercaribe_desarrollado_en_bilbao",
     "name": "AERCARIBE",
     "location": "Bilbao",
     "web": "https://aercaribe.com/",
@@ -83,7 +83,7 @@ export const projects = [
     "notes": "Sector: Aerolínea de carga. País: Colombia/Perú."
   },
   {
-    "id": "afendi",
+    "id": "stand_afendi_desarrollado_en_bilbao",
     "name": "AFENDI",
     "location": "Bilbao",
     "web": "https://afendi.eu/",
@@ -101,7 +101,7 @@ export const projects = [
     "notes": "Empresa europea de shisha."
   },
   {
-    "id": "agena_saglik",
+    "id": "stand_agena_saglik_desarrollado_en_madrid",
     "name": "AGENA SAGLIK",
     "location": "Madrid",
     "web": "https://www.agenasaglik.com/en/",
@@ -117,7 +117,7 @@ export const projects = [
     "notes": "Sector sanitario, Turquía."
   },
   {
-    "id": "aiscan",
+    "id": "stand_aiscan_desarrollado_en_madrid",
     "name": "AISCAN",
     "location": "Madrid",
     "web": "https://www.aiscan.com/",
@@ -132,7 +132,7 @@ export const projects = [
     "notes": "Fabricante de sistemas de conducción de cables eléctricos, España."
   },
   {
-    "id": "aksun",
+    "id": "stand_aksun_desarrollado_en_barcelona",
     "name": "AKSUN",
     "location": "Barcelona",
     "web": "https://www.aksun.com.tr/",
@@ -158,7 +158,7 @@ export const projects = [
     "notes": "Empresa turca líder en la comercialización y exportación internacional de frutas y verduras frescas."
   },
   {
-    "id": "apices",
+    "id": "stand_apices_desarrollado_en_madrid",
     "name": "APICES",
     "location": "Madrid",
     "web": "https://apicescro.com/",
@@ -173,7 +173,7 @@ export const projects = [
     "notes": "Empresa CRO europea con sede en España."
   },
   {
-    "id": "apres",
+    "id": "stand_apres_desarrollado_en_madrid",
     "name": "APRES",
     "location": "Madrid",
     "web": "https://apresnail.com/",
@@ -193,7 +193,7 @@ export const projects = [
     "notes": "Empresa de productos para uñas (EE. UU.)."
   },
   {
-    "id": "arra",
+    "id": "stand_arra_desarrollado_en_madrid",
     "name": "ARRA",
     "location": "Madrid",
     "web": "https://grapaes.com/",
@@ -215,7 +215,7 @@ export const projects = [
     "notes": "Desarrollador y distribuidor global de variedades premium de uva de mesa sin semilla (ARRA Grapes)."
   },
   {
-    "id": "ar_vacuum",
+    "id": "stand_ar_vacuum_desarrollado_en_bilbao",
     "name": "AR_VACUUM",
     "location": "Bilbao",
     "web": "https://ar-vacuum.com/en/",
@@ -234,7 +234,7 @@ export const projects = [
     "notes": "Sector: Automatización y manipulación por vacío. País: España."
   },
   {
-    "id": "asteo",
+    "id": "stand_asteo_desarrollado_en_madrid",
     "name": "ASTEO",
     "location": "Madrid",
     "web": "https://asteo.es/",
@@ -252,7 +252,7 @@ export const projects = [
     "notes": "Operador mayorista de telecomunicaciones e infraestructura de fibra óptica en entornos rurales en España."
   },
   {
-    "id": "avanzasis",
+    "id": "stand_avanzasis_desarrollado_en_bilbao",
     "name": "AVANZASIS",
     "location": "Bilbao",
     "web": "https://avanzasis.com/",
@@ -267,7 +267,7 @@ export const projects = [
     "notes": "Sector: Soluciones informáticas, trazabilidad. País: España."
   },
   {
-    "id": "ayuntamiento_alcala",
+    "id": "stand_ayuntamiento_alcala_desarrollado_en_barcelona",
     "name": "AYUNTAMIENTO_ALCALA",
     "location": "Barcelona",
     "web": "https://www.ayto-alcaladehenares.es/",
@@ -284,7 +284,7 @@ export const projects = [
     "notes": "Ayuntamiento español."
   },
   {
-    "id": "balliu",
+    "id": "stand_balliu_desarrollado_en_bilbao",
     "name": "BALLIU",
     "location": "Bilbao",
     "web": "https://www.balliuexport.com",
@@ -312,7 +312,7 @@ export const projects = [
     "notes": "Sector: mobiliario exterior, País: España."
   },
   {
-    "id": "bdb",
+    "id": "stand_bdb_desarrollado_en_barcelona",
     "name": "BDB",
     "location": "Barcelona",
     "web": "https://grupobdb.com/",
@@ -330,7 +330,7 @@ export const projects = [
     "notes": "Central de compras y red de distribución de almacenes de materiales de construcción, cerámica, ferretería y baño en España."
   },
   {
-    "id": "bedfont",
+    "id": "stand_bedfont_desarrollado_en_malaga",
     "name": "BEDFONT",
     "location": "Málaga",
     "web": "https://www.bedfont.com/",
@@ -345,7 +345,7 @@ export const projects = [
     "notes": "Sector: Equipos de análisis de aliento y gases. País: Reino Unido."
   },
   {
-    "id": "bodegas_im",
+    "id": "stand_bodegas_im_desarrollado_en_madrid",
     "name": "BODEGAS_IM",
     "location": "Madrid",
     "web": "https://bodegaselsitio.com/",
@@ -361,7 +361,7 @@ export const projects = [
     "notes": "Sector: Vinos. País: España (Canarias)."
   },
   {
-    "id": "bredent",
+    "id": "stand_bredent_desarrollado_en_bilbao",
     "name": "BREDENT",
     "location": "Bilbao",
     "web": "https://bredent-group.com/",
@@ -384,7 +384,7 @@ export const projects = [
     "notes": "Sector dental, Alemania."
   },
   {
-    "id": "charly",
+    "id": "stand_charly_desarrollado_en_barcelona",
     "name": "CHARLY",
     "location": "Barcelona",
     "web": "https://www.charly.com/",
@@ -399,7 +399,7 @@ export const projects = [
     "notes": "Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional."
   },
   {
-    "id": "cirse",
+    "id": "stand_cirse_desarrollado_en_malaga",
     "name": "CIRSE",
     "location": "Málaga",
     "web": "https://www.cirse.org/",
@@ -418,7 +418,7 @@ export const projects = [
     "notes": "Sociedad Europea de Radiología Cardiovascular e Intervencionista, Austria."
   },
   {
-    "id": "collvila",
+    "id": "stand_collvila_desarrollado_en_malaga",
     "name": "COLLVILA",
     "location": "Málaga",
     "web": "https://collvila.com/",
@@ -439,7 +439,7 @@ export const projects = [
     "notes": "Empresa española de distribución de materiales para la construcción."
   },
   {
-    "id": "creatives",
+    "id": "stand_creatives_desarrollado_en_malaga",
     "name": "CREATIVES",
     "location": "Málaga",
     "web": "https://creatives.pt",
@@ -461,7 +461,7 @@ export const projects = [
     "notes": "Empresa de diseño web y marketing con sede en Lisboa, Portugal."
   },
   {
-    "id": "cucocuca",
+    "id": "stand_cucocuca_desarrollado_en_malaga",
     "name": "CUCOCUCA",
     "location": "Málaga",
     "web": "https://cucocuca.com/",
@@ -479,7 +479,7 @@ export const projects = [
     "notes": "Empresa española de bisutería y complementos con sede en Barcelona."
   },
   {
-    "id": "dar",
+    "id": "stand_dar_desarrollado_en_malaga",
     "name": "DAR",
     "location": "Málaga",
     "web": "https://www.darsg.com/",
@@ -496,7 +496,7 @@ export const projects = [
     "notes": "Empresa de soluciones globales. País: México."
   },
   {
-    "id": "dimasimma",
+    "id": "stand_dimasimma_desarrollado_en_malaga",
     "name": "DIMASIMMA",
     "location": "Málaga",
     "web": "https://www.dimasimma.com/",
@@ -510,7 +510,7 @@ export const projects = [
     "notes": "Sector: sistemas de gestión de almacenes automáticos. País: Italia."
   },
   {
-    "id": "disgo",
+    "id": "stand_disgo_desarrollado_en_madrid",
     "name": "DISGO",
     "location": "Madrid",
     "web": "https://www.disgo.es",
@@ -528,7 +528,7 @@ export const projects = [
     "notes": "Sector: Mayorista de golosinas y juguetes. País: España."
   },
   {
-    "id": "dracfort",
+    "id": "stand_dracfort_desarrollado_en_barcelona",
     "name": "DRACFORT",
     "location": "Barcelona",
     "web": "https://www.dracfort.com/",
@@ -551,7 +551,7 @@ export const projects = [
     "notes": "Empresa española de resinas y morteros."
   },
   {
-    "id": "drag",
+    "id": "stand_drag_desarrollado_en_madrid",
     "name": "DRAG",
     "location": "Madrid",
     "web": "https://www.drag.es/",
@@ -567,7 +567,7 @@ export const projects = [
     "notes": "Desarrollador de software de gestión integral para cuerpos de Policía Local y servicios de emergencia municipales en España."
   },
   {
-    "id": "ecorobotix",
+    "id": "stand_ecorobotix_desarrollado_en_barcelona",
     "name": "ECOROBOTIX",
     "location": "Barcelona",
     "web": "https://ecorobotix.com/en-us/",
@@ -586,7 +586,7 @@ export const projects = [
     "notes": "Sector: Tecnología agrícola. País: Suiza."
   },
   {
-    "id": "einsa",
+    "id": "stand_einsa_desarrollado_en_madrid",
     "name": "EINSA",
     "location": "Madrid",
     "web": "https://einsa.es/",
@@ -605,7 +605,7 @@ export const projects = [
     "notes": "Sector: Equipos de apoyo en pista para aviación (civil y militar). País: España."
   },
   {
-    "id": "emerchantpay",
+    "id": "stand_emerchantpay_desarrollado_en_malaga",
     "name": "EMERCHANTPAY",
     "location": "Málaga",
     "web": "https://www.emerchantpay.com/",
@@ -623,7 +623,7 @@ export const projects = [
     "notes": "Empresa internacional de soluciones de pago."
   },
   {
-    "id": "esxence",
+    "id": "stand_esxence_desarrollado_en_malaga",
     "name": "ESXENCE",
     "location": "Málaga",
     "web": "https://esxence.com/",
@@ -639,7 +639,7 @@ export const projects = [
     "notes": "Sector: Perfumería artística. País: Italia."
   },
   {
-    "id": "exsto",
+    "id": "stand_exsto_desarrollado_en_bilbao",
     "name": "EXSTO",
     "location": "Bilbao",
     "web": "https://www.exsto.com",
@@ -659,7 +659,7 @@ export const projects = [
     "notes": "Fabricante de elastómeros de poliuretano y piezas termoplásticas. Sede en Francia."
   },
   {
-    "id": "fazendas_0",
+    "id": "stand_fazendas_0_desarrollado_en_madrid",
     "name": "FAZENDAS 0",
     "location": "Madrid",
     "web": "https://fazendas.pt/es/",
@@ -674,7 +674,7 @@ export const projects = [
     "notes": "Empresa portuguesa líder en ingeniería de acero inoxidable y equipos industriales de alta precisión para el sector farmacéutico y cosmético."
   },
   {
-    "id": "fienhage",
+    "id": "stand_fienhage_desarrollado_en_madrid",
     "name": "FIENHAGE",
     "location": "Madrid",
     "web": "https://www.fienhage.com",
@@ -689,7 +689,7 @@ export const projects = [
     "notes": "Sector: Soluciones avícolas. País: Alemania."
   },
   {
-    "id": "flexomed",
+    "id": "stand_flexomed_desarrollado_en_bilbao",
     "name": "FLEXOMED",
     "location": "Bilbao",
     "web": "https://flexomed.com",
@@ -713,7 +713,7 @@ export const projects = [
     "notes": "Sector: Industria gráfica (packaging). País: España."
   },
   {
-    "id": "fripozo",
+    "id": "stand_fripozo_desarrollado_en_madrid",
     "name": "FRIPOZO",
     "location": "Madrid",
     "web": "https://fripozo.com",
@@ -733,7 +733,7 @@ export const projects = [
     "notes": "Empresa española del sector de alimentos ultracongelados."
   },
   {
-    "id": "fundae",
+    "id": "stand_fundae_desarrollado_en_bilbao",
     "name": "FUNDAE",
     "location": "Bilbao",
     "web": "https://www.fundae.es/",
@@ -751,7 +751,7 @@ export const projects = [
     "notes": "Fundación Estatal para la Formación en el Empleo (España)."
   },
   {
-    "id": "gabelloto_clayver_mureco",
+    "id": "stand_gabelloto_clayver_mureco_desarrollado_en_madrid",
     "name": "GABELLOTO CLAYVER MURECO",
     "location": "Madrid",
     "web": "https://www.mureco.es",
@@ -765,7 +765,7 @@ export const projects = [
     "notes": "Empresa española del sector vitivinícola (envases)."
   },
   {
-    "id": "garantia_mutua",
+    "id": "stand_garantia_mutua_desarrollado_en_barcelona",
     "name": "GARANTIA_MUTUA",
     "location": "Barcelona",
     "web": "https://www.garantiamutua.pt/",
@@ -781,7 +781,7 @@ export const projects = [
     "notes": "Sector: Garantía Mutua (Portugal)."
   },
   {
-    "id": "gastro",
+    "id": "stand_gastro_desarrollado_en_malaga",
     "name": "GASTRO",
     "location": "Málaga",
     "web": "https://gastrodiseno.com/",
@@ -796,7 +796,7 @@ export const projects = [
     "notes": "Empresa española de diseño para hostelería."
   },
   {
-    "id": "gelatidino",
+    "id": "stand_gelatidino_desarrollado_en_barcelona",
     "name": "GELATIDINO",
     "location": "Barcelona",
     "web": "https://gelatidino.com/",
@@ -814,7 +814,7 @@ export const projects = [
     "notes": "Empresa española de helados artesanales."
   },
   {
-    "id": "gisada",
+    "id": "stand_gisada_desarrollado_en_madrid",
     "name": "GISADA",
     "location": "Madrid",
     "web": "https://www.gisada.com/en-us",
@@ -831,7 +831,7 @@ export const projects = [
     "notes": "Empresa suiza de fragancias y moda."
   },
   {
-    "id": "global_cruise",
+    "id": "stand_global_cruise_desarrollado_en_bilbao",
     "name": "GLOBAL_CRUISE",
     "location": "Bilbao",
     "web": "https://globalcruisesllc.com/",
@@ -846,7 +846,7 @@ export const projects = [
     "notes": "Empresa de cruceros, sede en Miami, USA."
   },
   {
-    "id": "grupo_alava",
+    "id": "stand_grupo_alava_desarrollado_en_bilbao",
     "name": "GRUPO ALAVA",
     "location": "Bilbao",
     "web": "https://www.grupoalava.com/",
@@ -873,7 +873,7 @@ export const projects = [
     "notes": "Empresa española de tecnología industrial."
   },
   {
-    "id": "hervem",
+    "id": "stand_hervem_desarrollado_en_barcelona",
     "name": "HERVEM",
     "location": "Barcelona",
     "web": "https://hervemgroup.com/",
@@ -887,7 +887,7 @@ export const projects = [
     "notes": "Empresa española de excavaciones y movimientos de tierra (Málaga, Granada)."
   },
   {
-    "id": "hidroconta",
+    "id": "stand_hidroconta_desarrollado_en_barcelona",
     "name": "HIDROCONTA",
     "location": "Barcelona",
     "web": "https://hidroconta.com/",
@@ -903,7 +903,7 @@ export const projects = [
     "notes": "Empresa española de digitalización del agua."
   },
   {
-    "id": "hjm_elementos",
+    "id": "stand_hjm_elementos_desarrollado_en_malaga",
     "name": "HJM_ELEMENTOS",
     "location": "Málaga",
     "web": "https://www.hjm.es/",
@@ -920,7 +920,7 @@ export const projects = [
     "notes": "Fabricante español líder en sistemas de calefacción eléctrica, emisores térmicos y secatoallas de alta eficiencia."
   },
   {
-    "id": "hns",
+    "id": "stand_hns_desarrollado_en_bilbao",
     "name": "HNS",
     "location": "Bilbao",
     "web": "https://hnsstaffing.com/",
@@ -935,7 +935,7 @@ export const projects = [
     "notes": "Empresa de soluciones de empleo en EE. UU."
   },
   {
-    "id": "innadhex",
+    "id": "stand_innadhex_desarrollado_en_malaga",
     "name": "INNADHEX",
     "location": "Málaga",
     "web": "https://www.innadhex.com/",
@@ -952,7 +952,7 @@ export const projects = [
     "notes": "Empresa italiana de materiales autoadhesivos para etiquetas."
   },
   {
-    "id": "inoi_2",
+    "id": "stand_inoi_2_desarrollado_en_madrid",
     "name": "INOI 2",
     "location": "Madrid",
     "web": "https://inoi.com/",
@@ -969,7 +969,7 @@ export const projects = [
     "notes": "Sector: Tecnología, País: Europa."
   },
   {
-    "id": "intersec",
+    "id": "stand_intersec_desarrollado_en_bilbao",
     "name": "INTERSEC",
     "location": "Bilbao",
     "web": "https://intersec.com/",
@@ -990,7 +990,7 @@ export const projects = [
     "notes": "Sector de tecnología (soluciones de datos móviles y localización), Francia."
   },
   {
-    "id": "jalupro",
+    "id": "stand_jalupro_desarrollado_en_malaga",
     "name": "JALUPRO",
     "location": "Málaga",
     "web": "https://www.jalupro.com",
@@ -1021,7 +1021,7 @@ export const projects = [
     "notes": "Sector: Estética/Dermatología. País: Suiza."
   },
   {
-    "id": "jinko",
+    "id": "stand_jinko_desarrollado_en_barcelona",
     "name": "JINKO",
     "location": "Barcelona",
     "web": "https://jinkosolar.eu/",
@@ -1038,7 +1038,7 @@ export const projects = [
     "notes": "Sector energético (fabricante de módulos solares). Empresa global con presencia en Europa."
   },
   {
-    "id": "kelio",
+    "id": "stand_kelio_desarrollado_en_malaga",
     "name": "KELIO",
     "location": "Málaga",
     "web": "https://www.kelio.com/",
@@ -1054,7 +1054,7 @@ export const projects = [
     "notes": "Desarrollador líder europeo de software de control horario, gestión de recursos humanos y terminales de fichaje avanzados."
   },
   {
-    "id": "lofarma_sin_almacen",
+    "id": "stand_lofarma_sin_almacen_desarrollado_en_madrid",
     "name": "LOFARMA_SIN_ALMACEN",
     "location": "Madrid",
     "web": "https://lofarma.es",
@@ -1072,7 +1072,7 @@ export const projects = [
     "notes": "Empresa farmacéutica (alergias), España."
   },
   {
-    "id": "lucid",
+    "id": "stand_lucid_desarrollado_en_bilbao",
     "name": "LUCID",
     "location": "Bilbao",
     "web": "https://www.lucid.pro/",
@@ -1092,7 +1092,7 @@ export const projects = [
     "notes": "Consultoría de innovación y diseño industrial y digital, con sede en España."
   },
   {
-    "id": "magnovent",
+    "id": "stand_magnovent_desarrollado_en_malaga",
     "name": "MAGNOVENT",
     "location": "Málaga",
     "web": "https://magnovent.eu",
@@ -1106,7 +1106,7 @@ export const projects = [
     "notes": "Sector: Soluciones climáticas (ventiladores HVLS). País: España."
   },
   {
-    "id": "marenostrum",
+    "id": "stand_marenostrum_desarrollado_en_bilbao",
     "name": "MARENOSTRUM",
     "location": "Bilbao",
     "web": "https://marenostrumfuengirola.com/",
@@ -1121,7 +1121,7 @@ export const projects = [
     "notes": "Sector de eventos/música, España."
   },
   {
-    "id": "marllor",
+    "id": "stand_marllor_desarrollado_en_barcelona",
     "name": "MARLLOR",
     "location": "Barcelona",
     "web": "https://www.marllor.com",
@@ -1140,7 +1140,7 @@ export const projects = [
     "notes": "Empresa italiana de estética médica."
   },
   {
-    "id": "mh",
+    "id": "stand_mh_desarrollado_en_barcelona",
     "name": "MH",
     "location": "Barcelona",
     "web": "https://www.mhsoluciones.com/",
@@ -1159,7 +1159,7 @@ export const projects = [
     "notes": "Empresa española de soluciones tecnológicas, cliente de Standarte."
   },
   {
-    "id": "mn",
+    "id": "stand_mn_desarrollado_en_barcelona",
     "name": "MN",
     "location": "Barcelona",
     "web": "https://www.mnstands.com.ar/",
@@ -1176,7 +1176,7 @@ export const projects = [
     "notes": "Empresa de diseño y construcción de stands en Argentina."
   },
   {
-    "id": "movora",
+    "id": "stand_movora_desarrollado_en_bilbao",
     "name": "MOVORA",
     "location": "Bilbao",
     "web": "https://movora.com/",
@@ -1197,7 +1197,7 @@ export const projects = [
     "notes": "Sector: Medtech veterinario."
   },
   {
-    "id": "mtm_energia",
+    "id": "stand_mtm_energia_desarrollado_en_malaga",
     "name": "MTM ENERGIA",
     "location": "Málaga",
     "web": "https://www.mtmenergia.com",
@@ -1216,7 +1216,7 @@ export const projects = [
     "notes": "Sector: Energía (cogeneración y eficiencia energética). País: Italia."
   },
   {
-    "id": "murzilli",
+    "id": "stand_murzilli_desarrollado_en_bilbao",
     "name": "MURZILLI",
     "location": "Bilbao",
     "web": "https://murzilliconsulting.com/",
@@ -1232,7 +1232,7 @@ export const projects = [
     "notes": "Consultoría de aviación/drones, oficinas en varios países (incluido España)."
   },
   {
-    "id": "muti",
+    "id": "stand_muti_desarrollado_en_malaga",
     "name": "MUTI",
     "location": "Málaga",
     "web": "https://www.mutigroup.com",
@@ -1252,7 +1252,7 @@ export const projects = [
     "notes": "Empresa de Filipinas, sector motocicletas y bicicletas."
   },
   {
-    "id": "nearthlab",
+    "id": "stand_nearthlab_desarrollado_en_barcelona",
     "name": "NEARTHLAB",
     "location": "Barcelona",
     "web": "https://www.nearthlab.com",
@@ -1268,7 +1268,7 @@ export const projects = [
     "notes": "Empresa de IA de drones con sede en Corea del Sur."
   },
   {
-    "id": "netgame",
+    "id": "stand_netgame_desarrollado_en_barcelona",
     "name": "NETGAME",
     "location": "Barcelona",
     "web": "https://netgamenv.com/",
@@ -1284,7 +1284,7 @@ export const projects = [
     "notes": "Empresa de juegos de casino online."
   },
   {
-    "id": "nibec",
+    "id": "stand_nibec_desarrollado_en_madrid",
     "name": "NIBEC",
     "location": "Madrid",
     "web": "https://www.nibec.cl",
@@ -1302,7 +1302,7 @@ export const projects = [
     "notes": "Empresa chilena de almacenaje industrial."
   },
   {
-    "id": "nuproxa",
+    "id": "stand_nuproxa_desarrollado_en_madrid",
     "name": "NUPROXA",
     "location": "Madrid",
     "web": "https://nuproxa.ch/",
@@ -1320,7 +1320,7 @@ export const projects = [
     "notes": "Empresa suiza de nutrición animal."
   },
   {
-    "id": "orpagu",
+    "id": "stand_orpagu_desarrollado_en_madrid",
     "name": "ORPAGU",
     "location": "Madrid",
     "web": "https://orpagu.com",
@@ -1338,7 +1338,7 @@ export const projects = [
     "notes": "Organización de palangreros guardeses, España."
   },
   {
-    "id": "paynau",
+    "id": "stand_paynau_desarrollado_en_bilbao",
     "name": "PAYNAU",
     "location": "Bilbao",
     "web": "https://www.paynau.com",
@@ -1353,7 +1353,7 @@ export const projects = [
     "notes": "Empresa fintech latinoamericana."
   },
   {
-    "id": "pivotal",
+    "id": "stand_pivotal_desarrollado_en_bilbao",
     "name": "PIVOTAL",
     "location": "Bilbao",
     "web": "https://pivotal-retail.com/",
@@ -1367,7 +1367,7 @@ export const projects = [
     "notes": "Empresa de marketing minorista con sede en el Reino Unido que diseña y fabrica stands de exposición."
   },
   {
-    "id": "politejo",
+    "id": "stand_politejo_desarrollado_en_barcelona",
     "name": "POLITEJO",
     "location": "Barcelona",
     "web": "https://www.politejo.com/",
@@ -1387,7 +1387,7 @@ export const projects = [
     "notes": "Sector: Soluciones termoplásticas, sistemas de riego. País: Portugal (con operaciones en España)."
   },
   {
-    "id": "realturf",
+    "id": "stand_realturf_desarrollado_en_madrid",
     "name": "REALTURF",
     "location": "Madrid",
     "web": "https://realturf.com/es/en/",
@@ -1405,7 +1405,7 @@ export const projects = [
     "notes": "Sector: Césped artificial. País: España."
   },
   {
-    "id": "refco",
+    "id": "stand_refco_desarrollado_en_barcelona",
     "name": "REFCO",
     "location": "Barcelona",
     "web": "https://refcoswiss.com/en-us",
@@ -1419,7 +1419,7 @@ export const projects = [
     "notes": "Empresa suiza/estadounidense de herramientas de refrigeración y aire acondicionado."
   },
   {
-    "id": "rompal",
+    "id": "stand_rompal_desarrollado_en_barcelona",
     "name": "ROMPAL",
     "location": "Barcelona",
     "web": "https://rompal.es/",
@@ -1435,7 +1435,7 @@ export const projects = [
     "notes": "Empresa española de fabricación de equipos electrónicos."
   },
   {
-    "id": "sampling",
+    "id": "stand_sampling_desarrollado_en_barcelona",
     "name": "SAMPLING",
     "location": "Barcelona",
     "web": "https://sampling-innovations.com/",
@@ -1451,7 +1451,7 @@ export const projects = [
     "notes": "Empresa española de sampling promocional."
   },
   {
-    "id": "sarafood",
+    "id": "stand_sarafood_desarrollado_en_malaga",
     "name": "SARAFOOD",
     "location": "Málaga",
     "web": "https://www.sarafood.com.tr/",
@@ -1469,7 +1469,7 @@ export const projects = [
     "notes": "Empresa de alimentos de Turquía."
   },
   {
-    "id": "scubaworld",
+    "id": "stand_scubaworld_desarrollado_en_madrid",
     "name": "SCUBAWORLD",
     "location": "Madrid",
     "web": "https://scubaworldinc.net/",
@@ -1490,7 +1490,7 @@ export const projects = [
     "notes": "Empresa de buceo en EE. UU."
   },
   {
-    "id": "sinavo",
+    "id": "stand_sinavo_desarrollado_en_madrid",
     "name": "SINAVO",
     "location": "Madrid",
     "web": "https://www.sinavoglobal.com/",
@@ -1507,7 +1507,7 @@ export const projects = [
     "notes": "Empresa de materiales sintéticos ecológicos."
   },
   {
-    "id": "slovakia",
+    "id": "stand_slovakia_desarrollado_en_malaga",
     "name": "SLOVAKIA",
     "location": "Málaga",
     "web": "https://www.intexslovakia.com/en/",
@@ -1530,7 +1530,7 @@ export const projects = [
     "notes": "Empresa eslovaca de diseño y fabricación de stands de exposición."
   },
   {
-    "id": "soemar",
+    "id": "stand_soemar_desarrollado_en_malaga",
     "name": "SOEMAR",
     "location": "Málaga",
     "web": "https://soermar.com/",
@@ -1550,7 +1550,7 @@ export const projects = [
     "notes": "Sector: Fundación y Centro Tecnológico. País: España."
   },
   {
-    "id": "sommos",
+    "id": "stand_sommos_desarrollado_en_madrid",
     "name": "SOMMOS",
     "location": "Madrid",
     "web": "https://www.bodegasommos.com/en/",
@@ -1564,7 +1564,7 @@ export const projects = [
     "notes": "Bodega española de vinos en Somontano, Huesca."
   },
   {
-    "id": "storz",
+    "id": "stand_storz_desarrollado_en_barcelona",
     "name": "STORZ",
     "location": "Barcelona",
     "web": "https://www.karlstorz.com/",
@@ -1586,7 +1586,7 @@ export const projects = [
     "notes": "Empresa de dispositivos médicos y endoscopia (Alemania/EE.UU.)."
   },
   {
-    "id": "sublimet",
+    "id": "stand_sublimet_desarrollado_en_bilbao",
     "name": "SUBLIMET",
     "location": "Bilbao",
     "web": "https://www.sublimet.com",
@@ -1601,7 +1601,7 @@ export const projects = [
     "notes": "Empresa española del sector de productos y maquinaria de personalización."
   },
   {
-    "id": "swisstraffic",
+    "id": "stand_swisstraffic_desarrollado_en_madrid",
     "name": "SWISSTRAFFIC",
     "location": "Madrid",
     "web": "https://www.swisstraffic.ch/",
@@ -1616,7 +1616,7 @@ export const projects = [
     "notes": "Empresa suiza del sector de movilidad inteligente."
   },
   {
-    "id": "tillica",
+    "id": "stand_tillica_desarrollado_en_malaga",
     "name": "TILLICA",
     "location": "Málaga",
     "web": "https://www.naturalcalk.com/es/tillica",
@@ -1631,7 +1631,7 @@ export const projects = [
     "notes": "Empresa italiana de nanotecnología de aerogel."
   },
   {
-    "id": "tranluz",
+    "id": "stand_tranluz_desarrollado_en_barcelona",
     "name": "TRANLUZ",
     "location": "Barcelona",
     "web": "https://www.tranluz.es/",
@@ -1646,7 +1646,7 @@ export const projects = [
     "notes": "Sector Eléctrico y Telecomunicaciones, España."
   },
   {
-    "id": "twopoles",
+    "id": "stand_twopoles_desarrollado_en_madrid",
     "name": "TWOPOLES",
     "location": "Madrid",
     "web": "https://twopoles.co",
@@ -1665,7 +1665,7 @@ export const projects = [
     "notes": "Empresa española de cosmética."
   },
   {
-    "id": "unique",
+    "id": "stand_unique_desarrollado_en_madrid",
     "name": "UNIQUE",
     "location": "Madrid",
     "web": "https://uniquesrl.eu",
@@ -1680,7 +1680,7 @@ export const projects = [
     "notes": "Empresa italiana de componentes para ascensores."
   },
   {
-    "id": "uruguay_natural",
+    "id": "stand_uruguay_natural_desarrollado_en_malaga",
     "name": "URUGUAY_NATURAL",
     "location": "Málaga",
     "web": "https://uruguaynatural.com/en/",
@@ -1695,7 +1695,7 @@ export const projects = [
     "notes": "Sector: Turismo. País: Uruguay."
   },
   {
-    "id": "vegenat",
+    "id": "stand_vegenat_desarrollado_en_malaga",
     "name": "VEGENAT",
     "location": "Málaga",
     "web": "https://www.vegenat.es/",
@@ -1709,7 +1709,7 @@ export const projects = [
     "notes": "Empresa española del sector de ingredientes deshidratados."
   },
   {
-    "id": "vegevital",
+    "id": "stand_vegevital_desarrollado_en_bilbao",
     "name": "VEGEVITAL",
     "location": "Bilbao",
     "web": "https://www.vegevital.com/en",
@@ -1727,7 +1727,7 @@ export const projects = [
     "notes": "Sector: Agricultura, País: Turquía."
   },
   {
-    "id": "weiler",
+    "id": "stand_weiler_desarrollado_en_madrid",
     "name": "WEILER",
     "location": "Madrid",
     "web": "https://www.weiler.de",
