@@ -15,13 +15,9 @@
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
       const urlLang = urlParams.get('lang');
-      const storedLang = localStorage.getItem('standarte_lang');
       
       if (urlLang && languages.includes(urlLang)) {
         lang = urlLang;
-        localStorage.setItem('standarte_lang', urlLang);
-      } else if (storedLang && languages.includes(storedLang)) {
-        lang = storedLang;
       }
     }
 
@@ -37,8 +33,6 @@
   function switchLanguage(targetLang) {
     lang = targetLang;
     if (typeof window !== 'undefined') {
-      localStorage.setItem('standarte_lang', targetLang);
-      
       // Update the URL query parameters cleanly without reloading
       const url = new URL(window.location.href);
       if (targetLang === 'es') {
@@ -179,7 +173,7 @@
     "@type": "ItemPage",
     "name": seoNames[lang] || seoNames.es,
     "description": seoDescriptions[lang] || seoDescriptions.es,
-    "url": `https://standarte.es/proyectos/${project.id}/`,
+    "url": `https://standarte.es/proyectos/${project.id}`,
     "image": `https://standarte.es${project.image}`,
     "mainEntity": {
       "@type": "CreativeWork",
@@ -204,7 +198,7 @@
   <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D प्रोटोटाइप' : '3D Prototype'))))} | Standarte</title>
   <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href={`https://standarte.es/proyectos/${project.id}/`} />
+  <link rel="canonical" href={`https://standarte.es/proyectos/${project.id}`} />
   {@html jsonLdString}
 </svelte:head>
 
