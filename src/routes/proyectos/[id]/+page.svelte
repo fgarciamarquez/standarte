@@ -7,18 +7,52 @@
 
   let isScrolled = false;
   let activeImageIndex = -1;
+  let lang = 'es';
+  let menuOpen = false;
 
-  function handleScroll() {
-    isScrolled = window.scrollY > 8;
-  }
-
+  // Detect language preferences
   onMount(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      const storedLang = localStorage.getItem('standarte_lang');
+      
+      if (urlLang && languages.includes(urlLang)) {
+        lang = urlLang;
+        localStorage.setItem('standarte_lang', urlLang);
+      } else if (storedLang && languages.includes(storedLang)) {
+        lang = storedLang;
+      }
+    }
+
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   });
+
+  $: currentCopy = copy[lang] || copy.es;
+
+  function switchLanguage(targetLang) {
+    lang = targetLang;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('standarte_lang', targetLang);
+      
+      // Update the URL query parameters cleanly without reloading
+      const url = new URL(window.location.href);
+      if (targetLang === 'es') {
+        url.searchParams.delete('lang');
+      } else {
+        url.searchParams.set('lang', targetLang);
+      }
+      window.history.replaceState({}, '', url.toString());
+    }
+  }
+
+  function handleScroll() {
+    isScrolled = window.scrollY > 8;
+  }
 
   function openLightbox(index) {
     activeImageIndex = index;
@@ -49,16 +83,107 @@
     }
   }
 
+  // Schema and Meta localization helpers
+  $: seoNames = project ? {
+    es: `Diseño de Stand 3D para ${project.name} en ${project.location}`,
+    en: `3D Stand Design for ${project.name} in ${project.location}`,
+    de: `3D-Messestanddesign for ${project.name} in ${project.location}`,
+    pt: `Design de Stand 3D para ${project.name} em ${project.location}`,
+    zh: `专为 ${project.name} 在 ${project.location} 设计的3D展台`,
+    hi: `${project.location} में ${project.name} के लिए 3D स्टैंड डिज़ाइन`
+  } : {};
+
+  $: seoDescriptions = project ? {
+    es: `Detalles del diseño tridimensional de stand a medida para ${project.name} en ${project.location}. Conoce su relación con nuestros valores arquitectónicos.`,
+    en: `Details of the custom 3D stand design for ${project.name} in ${project.location}. Learn about its relationship with our architectural values.`,
+    de: `Details des maßgeschneiderten 3D-Messestanddesigns für ${project.name} in ${project.location}. Erfahren Sie mehr über das Verhältnis zu unseren architektonischen Werten.`,
+    pt: `Detalhes do design tridimensional de stand sob medida para ${project.name} em ${project.location}. Conheça sua relación com los nuestros valores arquitetônicos.`,
+    zh: `专为 ${project.name} 在 ${project.location} 设计的定制3D展台细节。了解其与我们建筑价值观的关系。`,
+    hi: `${project.location} में ${project.name} के लिए कस्टम 3D स्टैंड डिज़ाइन का विवरण। हमारे वास्तुकला मूल्यों के साथ इसके संबंध के बारे में जानें。`
+  } : {};
+
+  $: creativeWorkNames = project ? {
+    es: `Prototipo de Stand 3D - ${project.name}`,
+    en: `3D Stand Prototype - ${project.name}`,
+    de: `3D-Messestand-Prototyp - ${project.name}`,
+    pt: `Protótipo de Stand 3D - ${project.name}`,
+    zh: `3D展台原型 - ${project.name}`,
+    hi: `3D स्टैंड प्रोटोटाइप - ${project.name}`
+  } : {};
+
+  const heroLeads = {
+    es: 'Prototipo 3D y su relación con nuestros valores de diseño',
+    en: '3D prototype and its relation to our design values',
+    de: '3D-Prototyp und sein Verhältnis zu unseren Designwerten',
+    pt: 'Protótipo 3D e sua relação com os nossos valores de design',
+    zh: '3D原型及其与我们设计价值观的关系',
+    hi: '3D प्रोटोटाइप और हमारे डिज़ाइन मूल्यों के साथ इसका संबंध'
+  };
+
+  const breadcrumbsInicio = {
+    es: 'Inicio',
+    en: 'Home',
+    de: 'Startseite',
+    pt: 'Início',
+    zh: '首页',
+    hi: 'होम'
+  };
+
+  const breadcrumbsProyectos = {
+    es: 'Proyectos 3D',
+    en: '3D Projects',
+    de: '3D-Projekte',
+    pt: 'Projetos 3D',
+    zh: '3D项目',
+    hi: '3D परियोजनाएं'
+  };
+
+  const visitWebsites = {
+    es: 'Visitar sitio oficial',
+    en: 'Visit official website',
+    de: 'Offizielle Website besuchen',
+    pt: 'Visitar site oficial',
+    zh: '访问官方网站',
+    hi: 'आधिकारिक वेबसाइट पर जाएं'
+  };
+
+  const backToMainPages = {
+    es: 'Volver a la Página Principal',
+    en: 'Back to Main Page',
+    de: 'Zurück zur Hauptseite',
+    pt: 'Voltar para a Página Principal',
+    zh: '返回主页',
+    hi: 'मुख्य पृष्ठ पर वापस जाएँ'
+  };
+
+  const galleryTitles = {
+    es: 'Galería de Vistas y Renders 3D',
+    en: 'Gallery of Views and 3D Renders',
+    de: 'Galerie von Ansichten und 3D-Renders',
+    pt: 'Galeria de Vistas e Renders 3D',
+    zh: '视图与3D渲染图库',
+    hi: 'दृश्य और 3D रेंडर गैलरी'
+  };
+
+  const gallerySubtitles = {
+    es: 'Haz clic sobre cualquier imagen para explorarla en alta definición.',
+    en: 'Click on any image to explore it in high definition.',
+    de: 'Klicken Sie auf ein beliebiges Bild, um es in hoher Auflösung anzuzeigen.',
+    pt: 'Clique em qualquer imagem para explorá-la em alta definição.',
+    zh: '点击任意图片以高清模式探索。',
+    hi: 'उच्च परिभाषा में इसका पता लगाने के लिए किसी भी छवि पर क्लिक करें।'
+  };
+
   $: jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemPage",
-    "name": `Diseño de Stand 3D para ${project.name} en ${project.location}`,
-    "description": `Detalles del prototipo y diseño tridimensional de stand a medida para ${project.name} en ${project.location}.`,
+    "name": seoNames[lang] || seoNames.es,
+    "description": seoDescriptions[lang] || seoDescriptions.es,
     "url": `https://standarte.es/proyectos/${project.id}/`,
     "image": `https://standarte.es${project.image}`,
     "mainEntity": {
       "@type": "CreativeWork",
-      "name": `Prototipo de Stand 3D - ${project.name}`,
+      "name": creativeWorkNames[lang] || creativeWorkNames.es,
       "creator": {
         "@type": "Organization",
         "name": "Standarte",
@@ -76,22 +201,33 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <svelte:head>
-  <title>Prototipo 3D {project.name} | Standarte</title>
-  <meta name="description" content="Detalles del diseño tridimensional de stand a medida para {project.name} en {project.location}. Conoce su relación con nuestros valores arquitectónicos." />
+  <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D प्रोटोटाइप' : '3D Prototype'))))} | Standarte</title>
+  <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href={`https://standarte.es/proyectos/${project.id}/`} />
   {@html jsonLdString}
 </svelte:head>
 
 <header class="site-header static-header">
-  <nav class="nav" class:scrolled={isScrolled}>
-    <a class="brand" href={pathFor('es', 'home')} aria-label="Standarte"></a>
-    <div class="nav-links">
-      <a href={pathFor('es', 'services')}>Servicios</a>
-      <a href={`${pathFor('es', 'home')}#micro-stand`}>LuzPavilion</a>
-      <a href={pathFor('es', 'custom')}>Galería</a>
-      <a href={pathFor('es', 'noticias')}>Noticias</a>
-      <a href={`${pathFor('es', 'home')}#contact`}>Contacto</a>
+  <nav class="nav" class:scrolled={isScrolled || menuOpen}>
+    <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
+    <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
+    <div class:open={menuOpen} class="nav-links">
+      <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
+      <a href={`${pathFor(lang, 'home')}#micro-stand`}>LuzPavilion</a>
+      <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
+      <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
+      <a href={`${pathFor(lang, 'home')}#contact`}>{currentCopy.nav.contact}</a>
+      <div class="lang-menu">
+        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <div>
+          {#each languages as option}
+            <button type="button" class:active={option === lang} on:click={() => switchLanguage(option)}>
+              {languageLabels[option]}
+            </button>
+          {/each}
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -101,7 +237,9 @@
         <span class="location-badge">{project.location}</span>
       </div>
       <h1>{project.name}</h1>
-      <p class="hero-lead">Prototipo 3D y su relación con nuestros valores de diseño</p>
+      <p class="hero-lead">
+        {heroLeads[lang] || heroLeads.es}
+      </p>
     </div>
   </div>
 </header>
@@ -110,9 +248,13 @@
   <div class="breadcrumbs-container">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <ol>
-        <li><a href={pathFor('es', 'home')}>Inicio</a></li>
+        <li><a href={pathFor(lang, 'home')}>
+          {breadcrumbsInicio[lang] || breadcrumbsInicio.es}
+        </a></li>
         <li><span class="divider">/</span></li>
-        <li><span class="current" aria-current="page">Proyectos 3D</span></li>
+        <li><span class="current" aria-current="page">
+          {breadcrumbsProyectos[lang] || breadcrumbsProyectos.es}
+        </span></li>
         <li><span class="divider">/</span></li>
         <li><span class="current" aria-current="page">{project.name}</span></li>
       </ol>
@@ -123,17 +265,29 @@
     <!-- Carta del Valor de Diseño y Textos -->
     <div class="values-card">
       <div class="gold-indicator"></div>
-      <h2>Desarrollo de proyecto de stand para la empresa {project.name} en {project.location}</h2>
+      <h2>{project.title[lang] || project.title.es}</h2>
       <p class="intro-description">
-        <strong>{project.name}</strong> ({project.notes}). Cada stand diseñado por Standarte es el fruto de un análisis exhaustivo de marca y necesidades feriales. A continuación, detallamos los principios de diseño y valores espaciales para este proyecto.
+        {#if lang === 'es'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Cada stand diseñado por Standarte es el fruto de un análisis exhaustivo de marca y necesidades feriales. A continuación, detallamos los principios de diseño y valores espaciales para este proyecto.
+        {:else if lang === 'en'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Each stand designed by Standarte is the result of an exhaustive analysis of the brand and exhibition needs. Below, we detail the design principles and spatial values for this project.
+        {:else if lang === 'de'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Jeder von Standarte entworfene Stand ist das Ergebnis einer gründlichen Analyse der Marke und der Messebedürfnisse. Im Folgenden beschreiben wir die Designprinzipien und räumlichen Werte für dieses Projekt.
+        {:else if lang === 'pt'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Cada stand desenhado pela Standarte é o fruto de uma análise exaustiva da marca e das necessidades ferais. A seguir, detalhamos os princípios de design e valores espaciais para este projeto.
+        {:else if lang === 'zh'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es})。Standarte 设计的每一个展台都是对品牌和展会需求进行详尽分析的结晶。下面，我们将详细阐述该项目的设计原则和空间价值。
+        {:else if lang === 'hi'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es})। Standarte द्वारा डिज़ाइन किया गया प्रत्येक स्टैंड ब्रांड और प्रदर्शनी की आवश्यकताओं के संपूर्ण विश्लेषण का परिणाम है। नीचे, हम इस परियोजना के लिए डिज़ाइन सिद्धांतों और स्थानिक मूल्यों का विवरण दे रहे हैं।
+        {/if}
       </p>
       <div class="values-content">
-        {@html project.valuesText}
+        {@html project.valuesText[lang] || project.valuesText.es}
       </div>
       {#if project.web}
         <div class="project-web-link">
           <a href={project.web} target="_blank" rel="noopener noreferrer" class="btn-web">
-            Visitar sitio oficial
+            {visitWebsites[lang] || visitWebsites.es}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16" style="margin-left: 6px; display: inline;">
               <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
               <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
@@ -145,8 +299,10 @@
 
     <!-- Título Galería -->
     <div class="gallery-title-wrapper">
-      <h2>Galería de Vistas y Renders 3D</h2>
-      <p>Haz clic sobre cualquier imagen para explorarla en alta definición.</p>
+      <h2>{galleryTitles[lang] || galleryTitles.es}</h2>
+      <p>
+        {gallerySubtitles[lang] || gallerySubtitles.es}
+      </p>
     </div>
 
     <!-- Grid de Imágenes del Proyecto -->
@@ -165,11 +321,11 @@
 
     <!-- Volver al Inicio -->
     <div class="back-navigation">
-      <a href={`${pathFor('es', 'home')}#prototipos-3d`} class="btn-back">
+      <a href={`${pathFor(lang, 'home')}#prototipos-3d`} class="btn-back">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20" style="margin-right: 8px; display: inline; vertical-align: middle;">
           <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
         </svg>
-        Volver a la Página Principal
+        {backToMainPages[lang] || backToMainPages.es}
       </a>
     </div>
   </article>
@@ -578,6 +734,80 @@
 
   .lightbox-nav.next {
     right: 30px;
+  }
+
+  /* Redundancias y estilo de menú de idiomas */
+  .lang-menu {
+    position: relative;
+    display: inline-block;
+  }
+
+  .lang-menu > span {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  .lang-menu:hover > span {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .lang-menu > div {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #1a1e22;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 8px 0;
+    min-width: 150px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+  }
+
+  .lang-menu:hover > div {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-menu div button {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #ccc;
+    transition: all 0.2s ease;
+  }
+
+  .lang-menu div button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--gold);
+  }
+
+  .lang-menu div button.active {
+    color: var(--gold);
+    font-weight: 700;
+    background-color: rgba(255, 200, 0, 0.03);
   }
 
   @media (max-width: 768px) {

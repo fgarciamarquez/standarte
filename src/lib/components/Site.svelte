@@ -610,7 +610,7 @@
         <div class="carousel-track" style="transform: translateX(-{carouselIndex * (100 / carouselVisibleCount)}%);">
           {#each shuffledProjects as project}
             <article class="carousel-card" style="width: {100 / carouselVisibleCount}%;">
-              <a href={`/proyectos/${project.id}/`} class="carousel-link">
+              <a href={`/proyectos/${project.id}/${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-link">
                 <div class="carousel-img-wrap">
                   <img src={project.image} alt={project.name} loading="lazy" />
                   <div class="carousel-overlay">
