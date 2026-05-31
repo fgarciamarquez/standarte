@@ -123,9 +123,9 @@
     <!-- Carta del Valor de Diseño y Textos -->
     <div class="values-card">
       <div class="gold-indicator"></div>
-      <h2>{project.notes}</h2>
+      <h2>Desarrollo de proyecto de stand para la empresa {project.name} en {project.location}</h2>
       <p class="intro-description">
-        Cada stand diseñado por Standarte es el fruto de un análisis exhaustivo de marca y necesidades. A continuación, detallamos los principios del diseño para <strong>{project.name}</strong>.
+        <strong>{project.name}</strong> ({project.notes}). Cada stand diseñado por Standarte es el fruto de un análisis exhaustivo de marca y necesidades feriales. A continuación, detallamos los principios de diseño y valores espaciales para este proyecto.
       </p>
       <div class="values-content">
         {@html project.valuesText}
