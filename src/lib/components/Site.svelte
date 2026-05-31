@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { languages, languageLabels, pathFor, cityData, portfolios } from '$lib/siteData.js';
+  import { projects } from '$lib/projectData.js';
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
   import CookieConsent from './CookieConsent.svelte';
@@ -15,6 +16,26 @@
   let lightboxProject = null;
   let legalModal = null;
   let isScrolled = false;
+
+  // Prototipos 3D Carousel State
+  let carouselIndex = 0;
+  let carouselVisibleCount = 3;
+
+  function nextSlide() {
+    if (carouselIndex < projects.length - carouselVisibleCount) {
+      carouselIndex++;
+    } else {
+      carouselIndex = 0;
+    }
+  }
+
+  function prevSlide() {
+    if (carouselIndex > 0) {
+      carouselIndex--;
+    } else {
+      carouselIndex = projects.length - carouselVisibleCount;
+    }
+  }
 
   const modularEnabled = false;
   const languageLocales = {
@@ -330,6 +351,18 @@
     updateScrollState();
     window.addEventListener('scroll', updateScrollState, { passive: true });
 
+    const updateVisibleCount = () => {
+      if (window.innerWidth <= 768) {
+        carouselVisibleCount = 1;
+      } else if (window.innerWidth <= 1024) {
+        carouselVisibleCount = 2;
+      } else {
+        carouselVisibleCount = 3;
+      }
+    };
+    updateVisibleCount();
+    window.addEventListener('resize', updateVisibleCount);
+
     if (section && section !== 'home') {
       setTimeout(() => scrollTo(section in cityData ? 'local-stands' : section), 120);
     }
@@ -371,10 +404,14 @@
 
     if (countersEl) countersObserver.observe(countersEl);
 
+    const autoplayInterval = setInterval(nextSlide, 3000);
+
     return () => {
       observer.disconnect();
       countersObserver.disconnect();
       window.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateVisibleCount);
+      clearInterval(autoplayInterval);
     };
   });
 </script>
@@ -545,6 +582,42 @@
         </div>
       </div>
     {/if}
+  </section>
+
+  <!-- Nueva Sección: Prototipos 3D Premium -->
+  <section id="prototipos-3d" class="section prototypes-carousel">
+    <div class="section-header">
+      <h2>Otros Proyectos</h2>
+      <span></span>
+      <p>Explora nuestras propuestas interactivas de alta carpintería y su relación con nuestros valores de diseño.</p>
+    </div>
+
+    <div class="carousel-container">
+      <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label="Anterior">‹</button>
+      
+      <div class="carousel-viewport">
+        <div class="carousel-track" style="transform: translateX(-{carouselIndex * (100 / carouselVisibleCount)}%);">
+          {#each projects as project}
+            <article class="carousel-card" style="width: {100 / carouselVisibleCount}%;">
+              <a href={`/proyectos/${project.id}/`} class="carousel-link">
+                <div class="carousel-img-wrap">
+                  <img src={project.image} alt={project.name} loading="lazy" />
+                  <div class="carousel-overlay">
+                    <span class="view-btn-gold">Ver Proyecto</span>
+                  </div>
+                </div>
+                <div class="carousel-caption">
+                  <h3>{project.name}</h3>
+                  <span class="location">{project.location}</span>
+                </div>
+              </a>
+            </article>
+          {/each}
+        </div>
+      </div>
+
+      <button class="carousel-nav next" type="button" on:click={nextSlide} aria-label="Siguiente">›</button>
+    </div>
   </section>
 
   <section class="counters section" data-stellar-background-ratio="0.5">

@@ -90,7 +90,7 @@
       <button type="button" class:active={activeFilter === 'madrid'} on:click={() => activeFilter = 'madrid'}>
         Madrid
       </button>
-      <button type="button" class:active={activeFilter === 'malaga'} on:click={() => activeFilter = 'malaga'}>
+      <button type="button" class:active={activeFilter === 'málaga'} on:click={() => activeFilter = 'málaga'}>
         Málaga
       </button>
       <button type="button" class:active={activeFilter === 'lisboa'} on:click={() => activeFilter = 'lisboa'}>

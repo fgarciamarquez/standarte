@@ -1,0 +1,1384 @@
+================================================================================
+EMPRESAS_CONTACTOS.TXT
+Relación de empresas, emails de contacto e imágenes de stands
+Generado por Standarte — 31/05/2026 12:47
+================================================================================
+
+Total empresas: 98
+Total imágenes AVIF: 684
+
+--------------------------------------------------------------------------------
+
+EMPRESA: 42SOLUTIONS
+  Web:        https://www.42solutions.nl
+  Email:      info@42solutions.nl
+  Confianza:  medio
+  Notas:      Empresa holandesa de software para gestión de tráfico aéreo (ATM). Email inferido del dominio oficial (sitio usa formulario de contacto).
+  Imágenes (5):
+    - 42solutions_stand_fabricado_por_standarte_en_madrid.avif
+    - 42solutions_stand_fabricado_por_standarte_en_madrid_001.avif
+    - 42solutions_stand_fabricado_por_standarte_en_madrid_002.avif
+    - 42solutions_stand_fabricado_por_standarte_en_madrid_003.avif
+    - 42solutions_stand_fabricado_por_standarte_en_madrid_004.avif
+
+EMPRESA: 777
+  Web:        https://www.bet777.es/
+  Email:      ayuda@777.es
+  Confianza:  alto
+  Notas:      Empresa de apuestas online española. Email encontrado en la página de contacto.
+  Imágenes (5):
+    - 777_stand_fabricado_por_standarte_en_madrid.avif
+    - 777_stand_fabricado_por_standarte_en_madrid_001.avif
+    - 777_stand_fabricado_por_standarte_en_madrid_002.avif
+    - 777_stand_fabricado_por_standarte_en_madrid_003.avif
+    - 777_stand_fabricado_por_standarte_en_madrid_004.avif
+
+EMPRESA: A BET A
+  Web:        https://abeta.co.uk
+  Email:      sales@abeta.co.uk
+  Confianza:  alto
+  Notas:      Sector: Software de apuestas. País: Reino Unido. Email encontrado en la página de contacto oficial.
+  Imágenes (6):
+    - a_bet_a_stand_fabricado_por_standarte_en_malaga.avif
+    - a_bet_a_stand_fabricado_por_standarte_en_malaga_001.avif
+    - a_bet_a_stand_fabricado_por_standarte_en_malaga_002.avif
+    - a_bet_a_stand_fabricado_por_standarte_en_malaga_003.avif
+    - a_bet_a_stand_fabricado_por_standarte_en_malaga_004.avif
+    - a_bet_a_stand_fabricado_por_standarte_en_malaga_005.avif
+
+EMPRESA: AAB
+  Web:        https://aabgroup.com/
+  Email:      Globalpayrollteam@aab.uk
+  Confianza:  medio
+  Notas:      Empresa de servicios profesionales (auditoría, contabilidad, impuestos) con sede en Reino Unido e Irlanda. Email encontrado en un directorio de empresas.
+  Imágenes (6):
+    - aab_stand_fabricado_por_standarte_en_bilbao.avif
+    - aab_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - aab_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - aab_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - aab_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - aab_stand_fabricado_por_standarte_en_bilbao_005.avif
+
+EMPRESA: AERCARIBE
+  Web:        https://aercaribe.com/
+  Email:      customerservice@aercaribe.com, jcomercial@aercaribe.com
+  Confianza:  alto
+  Notas:      Sector: Aerolínea de carga. País: Colombia/Perú. Email encontrado en el sitio web oficial.
+  Imágenes (5):
+    - aercaribe_stand_fabricado_por_standarte_en_bilbao.avif
+    - aercaribe_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - aercaribe_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - aercaribe_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - aercaribe_stand_fabricado_por_standarte_en_bilbao_004.avif
+
+EMPRESA: AFENDI
+  Web:        https://afendi.eu/
+  Email:      info@afendi.eu
+  Confianza:  alto
+  Notas:      Empresa europea de shisha. Email encontrado en el pie de página de su sitio web oficial.
+  Imágenes (7):
+    - afendi_stand_fabricado_por_standarte_en_bilbao.avif
+    - afendi_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - afendi_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - afendi_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - afendi_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - afendi_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - afendi_stand_fabricado_por_standarte_en_bilbao_006.avif
+
+EMPRESA: AGENA SAGLIK
+  Web:        https://www.agenasaglik.com/en/
+  Email:      bilgi@agenasaglik.com
+  Confianza:  alto
+  Notas:      Sector sanitario, Turquía. Email encontrado en la página de contacto oficial.
+  Imágenes (5):
+    - agena_saglik_stand_fabricado_por_standarte_en_madrid.avif
+    - agena_saglik_stand_fabricado_por_standarte_en_madrid_001.avif
+    - agena_saglik_stand_fabricado_por_standarte_en_madrid_002.avif
+    - agena_saglik_stand_fabricado_por_standarte_en_madrid_003.avif
+    - agena_saglik_stand_fabricado_por_standarte_en_madrid_004.avif
+
+EMPRESA: AISCAN
+  Web:        https://www.aiscan.com/
+  Email:      post@aiscan.com
+  Confianza:  alto
+  Notas:      Fabricante de sistemas de conducción de cables eléctricos, España. Email encontrado en la página de contacto.
+  Imágenes (4):
+    - aiscan_stand_fabricado_por_standarte_en_madrid.avif
+    - aiscan_stand_fabricado_por_standarte_en_madrid_001.avif
+    - aiscan_stand_fabricado_por_standarte_en_madrid_002.avif
+    - aiscan_stand_fabricado_por_standarte_en_madrid_003.avif
+
+EMPRESA: AKSUN
+  Web:        https://www.aksuntech.com
+  Email:      alexshang@aksuntech.com
+  Confianza:  alto
+  Notas:      Empresa china del sector de moldeo por inyección. Email encontrado en la página 'About Us'.
+  Imágenes (15):
+    - aksun_stand_fabricado_por_standarte_en_barcelona.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_005.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_006.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_007.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_008.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_009.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_010.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_011.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_012.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_013.avif
+    - aksun_stand_fabricado_por_standarte_en_barcelona_014.avif
+
+EMPRESA: APICES
+  Web:        https://apicescro.com/
+  Email:      info@apices.es
+  Confianza:  alto
+  Notas:      Empresa CRO europea con sede en España. Email encontrado en los resultados de búsqueda y asociado a su dominio principal (apices.es, que redirige a apicescro.com).
+  Imágenes (4):
+    - apices_stand_fabricado_por_standarte_en_madrid.avif
+    - apices_stand_fabricado_por_standarte_en_madrid_001.avif
+    - apices_stand_fabricado_por_standarte_en_madrid_002.avif
+    - apices_stand_fabricado_por_standarte_en_madrid_003.avif
+
+EMPRESA: APRES
+  Web:        https://apresnail.com/
+  Email:      support@apresnail.com, press@apresnail.com
+  Confianza:  alto
+  Notas:      Empresa de productos para uñas (EE. UU.). Email encontrado en la página de contacto oficial.
+  Imágenes (9):
+    - apres_stand_fabricado_por_standarte_en_madrid.avif
+    - apres_stand_fabricado_por_standarte_en_madrid_001.avif
+    - apres_stand_fabricado_por_standarte_en_madrid_002.avif
+    - apres_stand_fabricado_por_standarte_en_madrid_003.avif
+    - apres_stand_fabricado_por_standarte_en_madrid_004.avif
+    - apres_stand_fabricado_por_standarte_en_madrid_005.avif
+    - apres_stand_fabricado_por_standarte_en_madrid_006.avif
+    - apres_stand_fabricado_por_standarte_en_madrid_007.avif
+    - apres_stand_fabricado_por_standarte_en_madrid_008.avif
+
+EMPRESA: ARRA
+  Web:        http://www.arra.com
+  Email:      sales@arra.com
+  Confianza:  alto
+  Notas:      Empresa internacional (EEUU), sector desconocido. Email encontrado en la página de contacto.
+  Imágenes (11):
+    - arra_backlight_stand_fabricado_por_standarte_en_madrid.avif
+    - arra_backlight_stand_fabricado_por_standarte_en_madrid_001.avif
+    - arra_backlight_stand_fabricado_por_standarte_en_madrid_002.avif
+    - arra_backlight_stand_fabricado_por_standarte_en_madrid_003.avif
+    - arra_backlight_stand_fabricado_por_standarte_en_madrid_004.avif
+    - arra_backlight_stand_fabricado_por_standarte_en_madrid_005.avif
+    - arra_backlight_stand_fabricado_por_standarte_en_madrid_006.avif
+    - arra_stand_fabricado_por_standarte_en_bilbao.avif
+    - arra_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - arra_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - arra_stand_fabricado_por_standarte_en_bilbao_003.avif
+
+EMPRESA: AR_VACUUM
+  Web:        https://ar-vacuum.com/en/
+  Email:      ar@ar-vacuum.com
+  Confianza:  alto
+  Notas:      Sector: Automatización y manipulación por vacío. País: España. Email encontrado en la página de contacto oficial.
+  Imágenes (8):
+    - ar_vacuum_stand_fabricado_por_standarte_en_bilbao.avif
+    - ar_vacuum_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - ar_vacuum_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - ar_vacuum_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - ar_vacuum_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - ar_vacuum_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - ar_vacuum_stand_fabricado_por_standarte_en_bilbao_006.avif
+    - ar_vacuum_stand_fabricado_por_standarte_en_bilbao_007.avif
+
+EMPRESA: ASTEO
+  Web:        https://astroexhibitions.co.uk/
+  Email:      astroexhibitions@gmail.com
+  Confianza:  medio
+  Notas:      Empresa de stands de exposición. Email encontrado en un directorio de empresas (designdirectory.com).
+  Imágenes (7):
+    - asteo_stand_fabricado_por_standarte_en_madrid.avif
+    - asteo_stand_fabricado_por_standarte_en_madrid_001.avif
+    - asteo_stand_fabricado_por_standarte_en_madrid_002.avif
+    - asteo_stand_fabricado_por_standarte_en_madrid_003.avif
+    - asteo_stand_fabricado_por_standarte_en_madrid_004.avif
+    - asteo_stand_fabricado_por_standarte_en_madrid_005.avif
+    - asteo_stand_fabricado_por_standarte_en_madrid_006.avif
+
+EMPRESA: AVANZASIS
+  Web:        https://avanzasis.com/
+  Email:      info@avanzasis.com
+  Confianza:  alto
+  Notas:      Sector: Soluciones informáticas, trazabilidad. País: España. Email encontrado en el sitio web oficial y Crunchbase.
+  Imágenes (4):
+    - avanzasis_stand_fabricado_por_standarte_en_bilbao.avif
+    - avanzasis_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - avanzasis_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - avanzasis_stand_fabricado_por_standarte_en_bilbao_003.avif
+
+EMPRESA: AYUNTAMIENTO_ALCALA
+  Web:        https://www.ayto-alcaladehenares.es/
+  Email:      010@ayto-alcaladehenares.es, oficinacomunicacion@ayto-alcaladehenares.es
+  Confianza:  alto
+  Notas:      Ayuntamiento español. Email encontrado en la sección de contacto general de su sitio web oficial.
+  Imágenes (6):
+    - ayuntamiento_alcala_stand_fabricado_por_standarte_en_barcelona.avif
+    - ayuntamiento_alcala_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - ayuntamiento_alcala_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - ayuntamiento_alcala_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - ayuntamiento_alcala_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - ayuntamiento_alcala_stand_fabricado_por_standarte_en_barcelona_005.avif
+
+EMPRESA: BALLIU
+  Web:        https://www.balliuexport.com
+  Email:      info@balliuexport.com
+  Confianza:  alto
+  Notas:      Sector: mobiliario exterior, País: España. Email encontrado en la página de contacto oficial.
+  Imágenes (17):
+    - balliu_stand_fabricado_por_standarte_en_bilbao.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_006.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_007.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_008.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_009.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_010.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_011.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_012.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_013.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_014.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_015.avif
+    - balliu_stand_fabricado_por_standarte_en_bilbao_016.avif
+
+EMPRESA: BDB
+  Web:        https://www.bdb.com.mx/
+  Email:      contact@bdb.com.mx
+  Confianza:  alto
+  Notas:      Sector: Desarrollo de Negocios/Consultoría. País: México. Email encontrado en el sitio web oficial.
+  Imágenes (8):
+    - bdb_stand_fabricado_por_standarte_en_barcelona.avif
+    - bdb_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - bdb_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - bdb_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - bdb_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - bdb_stand_fabricado_por_standarte_en_barcelona_005.avif
+    - bdb_stand_fabricado_por_standarte_en_barcelona_006.avif
+    - bdb_stand_fabricado_por_standarte_en_barcelona_007.avif
+
+EMPRESA: BEDFONT
+  Web:        https://www.bedfont.com/
+  Email:      ask@bedfont.com
+  Confianza:  alto
+  Notas:      Sector: Equipos de análisis de aliento y gases. País: Reino Unido. Email encontrado en la página de contacto del sitio web oficial.
+  Imágenes (7):
+    - bedfont_stand_fabricado_por_standarte_en_malaga.avif
+    - bedfont_stand_fabricado_por_standarte_en_malaga_001.avif
+    - bedfont_stand_fabricado_por_standarte_en_malaga_002.avif
+    - bedfont_stand_fabricado_por_standarte_en_malaga_003.avif
+    - bedfont_stand_fabricado_por_standarte_en_malaga_004.avif
+    - bedfont_stand_fabricado_por_standarte_en_malaga_005.avif
+    - bedfont_stand_fabricado_por_standarte_en_malaga_006.avif
+
+EMPRESA: BODEGAS_IM
+  Web:        https://bodegaselsitio.com/
+  Email:      comercial@bodegaselsitio.com
+  Confianza:  alto
+  Notas:      Sector: Vinos. País: España (Canarias). Email encontrado en el snippet de búsqueda de Google.
+  Imágenes (10):
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_001.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_002.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_003.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_004.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_005.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_006.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_007.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_008.avif
+    - bodegas_im_stand_fabricado_por_standarte_en_madrid_009.avif
+
+EMPRESA: BREDENT
+  Web:        https://bredent-group.com/
+  Email:      info@bredent.com, Marketing.bredent@bredent-group.com
+  Confianza:  alto
+  Notas:      Sector dental, Alemania. Email encontrado en la página de contacto del sitio web oficial.
+  Imágenes (13):
+    - bredent_stand_fabricado_por_standarte_en_bilbao.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_006.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_007.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_008.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_009.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_010.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_011.avif
+    - bredent_stand_fabricado_por_standarte_en_bilbao_012.avif
+
+EMPRESA: CHARLY
+  Web:        https://charlybrand.com/
+  Email:      Hola@CharlyBrand.com
+  Confianza:  alto
+  Notas:      Agencia de marketing, España. Encontrado en la página de contacto.
+  Imágenes (4):
+    - charly_stand_fabricado_por_standarte_en_barcelona.avif
+    - charly_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - charly_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - charly_stand_fabricado_por_standarte_en_barcelona_003.avif
+
+EMPRESA: CIRSE
+  Web:        https://www.cirse.org/
+  Email:      info@cirse.org, communications@cirse.org
+  Confianza:  alto
+  Notas:      Sociedad Europea de Radiología Cardiovascular e Intervencionista, Austria. Email encontrado en su sitio web oficial.
+  Imágenes (10):
+    - cirse_stand_fabricado_por_standarte_en_malaga.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_001.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_002.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_003.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_004.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_005.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_006.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_007.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_008.avif
+    - cirse_stand_fabricado_por_standarte_en_malaga_009.avif
+
+EMPRESA: COLLVILA
+  Web:        https://collvila.com/
+  Email:      info@collvila.com, comercial@collvila.com
+  Confianza:  alto
+  Notas:      Empresa española de distribución de materiales para la construcción. Email encontrado en la página de contacto.
+  Imágenes (10):
+    - collvila_sabierto_stand_fabricado_por_standarte_en_malaga.avif
+    - collvila_sabierto_stand_fabricado_por_standarte_en_malaga_001.avif
+    - collvila_sabierto_stand_fabricado_por_standarte_en_malaga_002.avif
+    - collvila_sabierto_stand_fabricado_por_standarte_en_malaga_003.avif
+    - collvila_sabierto_stand_fabricado_por_standarte_en_malaga_004.avif
+    - collvila_sabierto_stand_fabricado_por_standarte_en_malaga_005.avif
+    - collvila_stand_fabricado_por_standarte_en_bilbao.avif
+    - collvila_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - collvila_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - collvila_stand_fabricado_por_standarte_en_bilbao_003.avif
+
+EMPRESA: CREATIVES
+  Web:        https://creatives.pt
+  Email:      info@creatives.pt
+  Confianza:  alto
+  Notas:      Empresa de diseño web y marketing con sede en Lisboa, Portugal. Email encontrado en el pie de página del sitio web.
+  Imágenes (11):
+    - creative_1_stand_fabricado_por_standarte_en_malaga.avif
+    - creative_2_stand_fabricado_por_standarte_en_madrid.avif
+    - creative_3_stand_fabricado_por_standarte_en_madrid.avif
+    - creative_4_stand_fabricado_por_standarte_en_barcelona.avif
+    - creative_5_stand_fabricado_por_standarte_en_madrid.avif
+    - creatives_stand_fabricado_por_standarte_en_bilbao.avif
+    - creatives_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - creatives_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - creatives_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - creatives_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - creatives_stand_fabricado_por_standarte_en_bilbao_005.avif
+
+EMPRESA: CUCOCUCA
+  Web:        https://cucocuca.com/
+  Email:      info@cucocuca.com, orders@cucocuca.com
+  Confianza:  alto
+  Notas:      Empresa española de bisutería y complementos con sede en Barcelona. Email encontrado en Facebook y directorio de empresas.
+  Imágenes (7):
+    - cucocuca_stand_fabricado_por_standarte_en_malaga.avif
+    - cucocuca_stand_fabricado_por_standarte_en_malaga_001.avif
+    - cucocuca_stand_fabricado_por_standarte_en_malaga_002.avif
+    - cucocuca_stand_fabricado_por_standarte_en_malaga_003.avif
+    - cucocuca_stand_fabricado_por_standarte_en_malaga_004.avif
+    - cucocuca_stand_fabricado_por_standarte_en_malaga_005.avif
+    - cucocuca_stand_fabricado_por_standarte_en_malaga_006.avif
+
+EMPRESA: DAR
+  Web:        https://www.darsg.com/
+  Email:      info@darsg.com
+  Confianza:  alto
+  Notas:      Empresa de soluciones globales. Email encontrado directamente en su sitio web. País: México.
+  Imágenes (6):
+    - dar_stand_fabricado_por_standarte_en_malaga.avif
+    - dar_stand_fabricado_por_standarte_en_malaga_001.avif
+    - dar_stand_fabricado_por_standarte_en_malaga_002.avif
+    - dar_stand_fabricado_por_standarte_en_malaga_003.avif
+    - dar_stand_fabricado_por_standarte_en_malaga_004.avif
+    - dar_stand_fabricado_por_standarte_en_malaga_005.avif
+
+EMPRESA: DIMASIMMA
+  Web:        https://www.dimasimma.com/
+  Email:      info@dimasimma.com
+  Confianza:  alto
+  Notas:      Sector: sistemas de gestión de almacenes automáticos. País: Italia. Email encontrado en el sitio web oficial.
+  Imágenes (3):
+    - dimasimma_stand_fabricado_por_standarte_en_malaga.avif
+    - dimasimma_stand_fabricado_por_standarte_en_malaga_001.avif
+    - dimasimma_stand_fabricado_por_standarte_en_malaga_002.avif
+
+EMPRESA: DISGO
+  Web:        https://www.disgo.es
+  Email:      disgo@disgo.es
+  Confianza:  alto
+  Notas:      Sector: Mayorista de golosinas y juguetes. País: España. Email encontrado en el sitio web oficial.
+  Imágenes (7):
+    - disgo_stand_fabricado_por_standarte_en_madrid.avif
+    - disgo_stand_fabricado_por_standarte_en_madrid_001.avif
+    - disgo_stand_fabricado_por_standarte_en_madrid_002.avif
+    - disgo_stand_fabricado_por_standarte_en_madrid_003.avif
+    - disgo_stand_fabricado_por_standarte_en_madrid_004.avif
+    - disgo_stand_fabricado_por_standarte_en_madrid_005.avif
+    - disgo_stand_fabricado_por_standarte_en_madrid_006.avif
+
+EMPRESA: DRACFORT
+  Web:        https://www.dracfort.com/
+  Email:      info@dracfort.com
+  Confianza:  alto
+  Notas:      Empresa española de resinas y morteros. Email encontrado en la página de contacto (versión francesa) del sitio web oficial.
+  Imágenes (12):
+    - dracfort_stand_fabricado_por_standarte_en_barcelona.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_005.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_006.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_007.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_008.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_009.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_010.avif
+    - dracfort_stand_fabricado_por_standarte_en_barcelona_011.avif
+
+EMPRESA: DRAG
+  Web:        https://www.drag.es
+  Email:      sac@espublico.com
+  Confianza:  medio
+  Notas:      Empresa española (posiblemente DRAG - software gestión pública). Email de contacto encontrado en el aviso legal de drag.es.
+  Imágenes (5):
+    - drag_barato_stand_fabricado_por_standarte_en_madrid.avif
+    - drag_barato_stand_fabricado_por_standarte_en_madrid_001.avif
+    - drag_barato_stand_fabricado_por_standarte_en_madrid_002.avif
+    - drag_barato_stand_fabricado_por_standarte_en_madrid_003.avif
+    - drag_barato_stand_fabricado_por_standarte_en_madrid_004.avif
+
+EMPRESA: ECOROBOTIX
+  Web:        https://ecorobotix.com/en-us/
+  Email:      info@ecorobotix.com, connect@ecorobotix.com
+  Confianza:  alto
+  Notas:      Sector: Tecnología agrícola. País: Suiza. Email encontrado en Crunchbase y Zoominfo.
+  Imágenes (8):
+    - ecorobotix_stand_fabricado_por_standarte_en_barcelona.avif
+    - ecorobotix_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - ecorobotix_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - ecorobotix_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - ecorobotix_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - ecorobotix_stand_fabricado_por_standarte_en_barcelona_005.avif
+    - ecorobotix_stand_fabricado_por_standarte_en_barcelona_006.avif
+    - ecorobotix_stand_fabricado_por_standarte_en_barcelona_007.avif
+
+EMPRESA: EINSA
+  Web:        https://einsa.es/
+  Email:      info@einsa.es
+  Confianza:  alto
+  Notas:      Sector: Equipos de apoyo en pista para aviación (civil y militar). País: España. Email encontrado en empresite.eleconomista.es.
+  Imágenes (8):
+    - einsa_stand_fabricado_por_standarte_en_madrid.avif
+    - einsa_stand_fabricado_por_standarte_en_madrid_001.avif
+    - einsa_stand_fabricado_por_standarte_en_madrid_002.avif
+    - einsa_stand_fabricado_por_standarte_en_madrid_003.avif
+    - einsa_stand_fabricado_por_standarte_en_madrid_004.avif
+    - einsa_stand_fabricado_por_standarte_en_madrid_005.avif
+    - einsa_stand_fabricado_por_standarte_en_madrid_006.avif
+    - einsa_stand_fabricado_por_standarte_en_madrid_007.avif
+
+EMPRESA: EMERCHANTPAY
+  Web:        https://www.emerchantpay.com/
+  Email:      media@emerchantpay.com
+  Confianza:  medio
+  Notas:      Empresa internacional de soluciones de pago. Email encontrado en la sección de prensa y medios de su sitio web oficial.
+  Imágenes (12):
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_001.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_002.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_003.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_004.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_005.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_006.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_007.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_008.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_009.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_010.avif
+    - emerchantpay_stand_fabricado_por_standarte_en_malaga_011.avif
+
+EMPRESA: ESXENCE
+  Web:        https://esxence.com/
+  Email:      esxence@equipemilano.com, digital@equipemilano.com
+  Confianza:  alto
+  Notas:      Sector: Perfumería artística. País: Italia. Email encontrado en la página de contacto oficial.
+  Imágenes (5):
+    - esxence_stand_fabricado_por_standarte_en_malaga.avif
+    - esxence_stand_fabricado_por_standarte_en_malaga_001.avif
+    - esxence_stand_fabricado_por_standarte_en_malaga_002.avif
+    - esxence_stand_fabricado_por_standarte_en_malaga_003.avif
+    - esxence_stand_fabricado_por_standarte_en_malaga_004.avif
+
+EMPRESA: EXSTO
+  Web:        https://www.exsto.com
+  Email:      info@exsto.com
+  Confianza:  alto
+  Notas:      Fabricante de elastómeros de poliuretano y piezas termoplásticas. Sede en Francia. Email encontrado en la página de 'Implantaciones' del sitio web oficial.
+  Imágenes (9):
+    - exsto_stand_fabricado_por_standarte_en_bilbao.avif
+    - exsto_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - exsto_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - exsto_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - exsto_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - exsto_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - exsto_stand_fabricado_por_standarte_en_bilbao_006.avif
+    - exsto_stand_fabricado_por_standarte_en_bilbao_007.avif
+    - exsto_stand_fabricado_por_standarte_en_bilbao_008.avif
+
+EMPRESA: FAZENDAS 0
+  Web:        https://fazendas.pt/es/
+  Email:      fazendas@fazendas.pt, fa@fazendas.pt
+  Confianza:  alto
+  Notas:      Empresa de ingeniería de acero inoxidable que participa en ferias. Email encontrado en la página de eventos de su sitio web oficial.
+  Imágenes (4):
+    - fazendas_0_stand_fabricado_por_standarte_en_madrid.avif
+    - fazendas_0_stand_fabricado_por_standarte_en_madrid_001.avif
+    - fazendas_0_stand_fabricado_por_standarte_en_madrid_002.avif
+    - fazendas_0_stand_fabricado_por_standarte_en_madrid_003.avif
+
+EMPRESA: FIENHAGE
+  Web:        https://www.fienhage.com
+  Email:      info@fienhage.com
+  Confianza:  alto
+  Notas:      Sector: Soluciones avícolas. País: Alemania. Email encontrado en la página de contacto oficial.
+  Imágenes (4):
+    - fienhage_stand_fabricado_por_standarte_en_madrid.avif
+    - fienhage_stand_fabricado_por_standarte_en_madrid_001.avif
+    - fienhage_stand_fabricado_por_standarte_en_madrid_002.avif
+    - fienhage_stand_fabricado_por_standarte_en_madrid_003.avif
+
+EMPRESA: FLEXOMED
+  Web:        https://flexomed.com
+  Email:      sac@flexomed.com
+  Confianza:  alto
+  Notas:      Sector: Industria gráfica (packaging). País: España. Email encontrado en la página de contacto.
+  Imágenes (13):
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao.avif
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao_006.avif
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao_007.avif
+    - flexomed_mofificaciones_stand_fabricado_por_standarte_en_bilbao_008.avif
+    - flexomed_stand_fabricado_por_standarte_en_malaga.avif
+    - flexomed_stand_fabricado_por_standarte_en_malaga_001.avif
+    - flexomed_stand_fabricado_por_standarte_en_malaga_002.avif
+    - flexomed_stand_fabricado_por_standarte_en_malaga_003.avif
+
+EMPRESA: FRIPOZO
+  Web:        https://fripozo.com
+  Email:      protecciondedatos@grupofuertes.com, info@fripozo.com
+  Confianza:  alto
+  Notas:      Empresa española del sector de alimentos ultracongelados. Email encontrado en el aviso legal de su sitio web oficial.
+  Imágenes (9):
+    - fripozo_stand_fabricado_por_standarte_en_madrid.avif
+    - fripozo_stand_fabricado_por_standarte_en_madrid_001.avif
+    - fripozo_stand_fabricado_por_standarte_en_madrid_002.avif
+    - fripozo_stand_fabricado_por_standarte_en_madrid_003.avif
+    - fripozo_stand_fabricado_por_standarte_en_madrid_004.avif
+    - fripozo_stand_fabricado_por_standarte_en_madrid_005.avif
+    - fripozo_stand_fabricado_por_standarte_en_madrid_006.avif
+    - fripozo_stand_fabricado_por_standarte_en_madrid_007.avif
+    - fripozo_stand_fabricado_por_standarte_en_madrid_008.avif
+
+EMPRESA: FUNDAE
+  Web:        https://www.fundae.es/
+  Email:      info@fundae.es
+  Confianza:  medio
+  Notas:      Fundación Estatal para la Formación en el Empleo (España). Contacto oficial vía formulario web; email inferido del dominio oficial.
+  Imágenes (7):
+    - fundae_stand_fabricado_por_standarte_en_bilbao.avif
+    - fundae_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - fundae_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - fundae_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - fundae_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - fundae_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - fundae_stand_fabricado_por_standarte_en_bilbao_006.avif
+
+EMPRESA: GABELLOTO CLAYVER MURECO
+  Web:        https://www.mureco.es
+  Email:      info@mureco.es
+  Confianza:  alto
+  Notas:      Empresa española del sector vitivinícola (envases). Email encontrado en la página de contacto de su sitio web oficial.
+  Imágenes (7):
+    - gabelloto_clayver_mureco_almacén_cuadrado_stand_fabricado_por_standarte_en_madrid.avif
+    - gabelloto_clayver_mureco_almacén_cuadrado_stand_fabricado_por_standarte_en_madrid_001.avif
+    - gabelloto_clayver_mureco_almacén_cuadrado_stand_fabricado_por_standarte_en_madrid_002.avif
+    - gabelloto_clayver_mureco_almacén_cuadrado_stand_fabricado_por_standarte_en_madrid_003.avif
+    - gabelloto_clayver_mureco_almacén_cuadrado_stand_fabricado_por_standarte_en_madrid_004.avif
+    - gabelloto_clayver_mureco_almacén_cuadrado_stand_fabricado_por_standarte_en_madrid_005.avif
+    - gabelloto_clayver_mureco_almacén_cuadrado_stand_fabricado_por_standarte_en_madrid_006.avif
+
+EMPRESA: GARANTIA_MUTUA
+  Web:        https://www.garantiamutua.pt/
+  Email:      sgm.geral@garantiamutua.pt
+  Confianza:  alto
+  Notas:      Sector: Garantía Mutua (Portugal). Email encontrado en la página de contacto oficial.
+  Imágenes (5):
+    - garantia_mutua_stand_fabricado_por_standarte_en_barcelona.avif
+    - garantia_mutua_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - garantia_mutua_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - garantia_mutua_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - garantia_mutua_stand_fabricado_por_standarte_en_barcelona_004.avif
+
+EMPRESA: GASTRO
+  Web:        https://gastrodiseno.com/
+  Email:      info@gastrodiseno.com
+  Confianza:  medio
+  Notas:      Empresa española de diseño para hostelería. Email encontrado en su web.
+  Imágenes (4):
+    - gastro_stand_fabricado_por_standarte_en_malaga.avif
+    - gastro_stand_fabricado_por_standarte_en_malaga_001.avif
+    - gastro_stand_fabricado_por_standarte_en_malaga_002.avif
+    - gastro_stand_fabricado_por_standarte_en_malaga_003.avif
+
+EMPRESA: GELATIDINO
+  Web:        https://gelatidino.com/
+  Email:      info@gelatidino.com, sara@gelatidino.com
+  Confianza:  alto
+  Notas:      Empresa española de helados artesanales. Email encontrado en la política de privacidad.
+  Imágenes (7):
+    - gelatidino_vista_1_stand_fabricado_por_standarte_en_barcelona.avif
+    - gelatidino_vista_2_stand_fabricado_por_standarte_en_malaga.avif
+    - gelatidino_vista_3_stand_fabricado_por_standarte_en_bilbao.avif
+    - gelatidino_vista_4_stand_fabricado_por_standarte_en_malaga.avif
+    - gelatidino_vista_5_stand_fabricado_por_standarte_en_malaga.avif
+    - gelatidino_vista_6_stand_fabricado_por_standarte_en_bilbao.avif
+    - gelatidino_vista_planta_stand_fabricado_por_standarte_en_malaga.avif
+
+EMPRESA: GISADA
+  Web:        https://www.gisada.com/en-us
+  Email:      support@gisada.com
+  Confianza:  alto
+  Notas:      Empresa suiza de fragancias y moda. Email encontrado en la página de soporte.
+  Imágenes (6):
+    - gisada_stand_fabricado_por_standarte_en_madrid.avif
+    - gisada_stand_fabricado_por_standarte_en_madrid_001.avif
+    - gisada_stand_fabricado_por_standarte_en_madrid_002.avif
+    - gisada_stand_fabricado_por_standarte_en_madrid_003.avif
+    - gisada_stand_fabricado_por_standarte_en_madrid_004.avif
+    - gisada_stand_fabricado_por_standarte_en_madrid_005.avif
+
+EMPRESA: GLOBAL_CRUISE
+  Web:        https://globalcruisesllc.com/
+  Email:      info@globalcruisesllc.com
+  Confianza:  alto
+  Notas:      Empresa de cruceros, sede en Miami, USA. Email encontrado en Facebook y confirmado con el dominio del sitio web.
+  Imágenes (4):
+    - global_cruise_stand_fabricado_por_standarte_en_bilbao.avif
+    - global_cruise_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - global_cruise_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - global_cruise_stand_fabricado_por_standarte_en_bilbao_003.avif
+
+EMPRESA: GRUPO ALAVA
+  Web:        https://www.grupoalava.com/
+  Email:      alava@grupoalava.com, ysanchez@grupoalava.com
+  Confianza:  alto
+  Notas:      Empresa española de tecnología industrial. Email encontrado en la página principal del sitio web.
+  Imágenes (16):
+    - grupo_alava_normal_stand_fabricado_por_standarte_en_bilbao.avif
+    - grupo_alava_normal_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - grupo_alava_normal_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - grupo_alava_normal_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - grupo_alava_normal_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - grupo_alava_normal_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_006.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_007.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_008.avif
+    - grupo_alava_stand_fabricado_por_standarte_en_bilbao_009.avif
+
+EMPRESA: HERVEM
+  Web:        https://hervemgroup.com/
+  Email:      info@hervem.es
+  Confianza:  alto
+  Notas:      Empresa española de excavaciones y movimientos de tierra (Málaga, Granada). Email encontrado en su web e Instagram.
+  Imágenes (3):
+    - hervem_stand_fabricado_por_standarte_en_barcelona.avif
+    - hervem_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - hervem_stand_fabricado_por_standarte_en_barcelona_002.avif
+
+EMPRESA: HIDROCONTA
+  Web:        https://hidroconta.com/
+  Email:      hidroconta@hidroconta.com, maria.ruano@hidroconta.com
+  Confianza:  alto
+  Notas:      Empresa española de digitalización del agua. Email encontrado en agritechmurcia.com y verificado con el sitio web oficial.
+  Imágenes (5):
+    - hidroconta_stand_fabricado_por_standarte_en_barcelona.avif
+    - hidroconta_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - hidroconta_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - hidroconta_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - hidroconta_stand_fabricado_por_standarte_en_barcelona_004.avif
+
+EMPRESA: HJM_ELEMENTOS
+  Web:        https://hjmintl.com
+  Email:      info@hjmintl.com
+  Confianza:  alto
+  Notas:      Empresa de logística y transporte en México y EE.UU. Email encontrado en la página de contacto.
+  Imágenes (6):
+    - hjm_elementos_stand_fabricado_por_standarte_en_malaga.avif
+    - hjm_elementos_stand_fabricado_por_standarte_en_malaga_001.avif
+    - hjm_elementos_stand_fabricado_por_standarte_en_malaga_002.avif
+    - hjm_elementos_stand_fabricado_por_standarte_en_malaga_003.avif
+    - hjm_elementos_stand_fabricado_por_standarte_en_malaga_004.avif
+    - hjm_elementos_stand_fabricado_por_standarte_en_malaga_005.avif
+
+EMPRESA: HNS
+  Web:        https://hnsstaffing.com/
+  Email:      HNS@hnsstaffing.com
+  Confianza:  alto
+  Notas:      Empresa de soluciones de empleo en EE. UU. Email encontrado en la página de contacto.
+  Imágenes (4):
+    - hns_stand_fabricado_por_standarte_en_bilbao.avif
+    - hns_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - hns_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - hns_stand_fabricado_por_standarte_en_bilbao_003.avif
+
+EMPRESA: INNADHEX
+  Web:        https://www.innadhex.com/
+  Email:      Info@innadhex.com
+  Confianza:  alto
+  Notas:      Empresa italiana de materiales autoadhesivos para etiquetas. Email encontrado en la página de contacto oficial.
+  Imágenes (6):
+    - innadhex_stand_fabricado_por_standarte_en_malaga.avif
+    - innadhex_stand_fabricado_por_standarte_en_malaga_001.avif
+    - innadhex_stand_fabricado_por_standarte_en_malaga_002.avif
+    - innadhex_stand_fabricado_por_standarte_en_malaga_003.avif
+    - innadhex_stand_fabricado_por_standarte_en_malaga_004.avif
+    - innadhex_stand_fabricado_por_standarte_en_malaga_005.avif
+
+EMPRESA: INOI 2
+  Web:        https://inoi.com/
+  Email:      24@inoi.com, press@inoi.com
+  Confianza:  alto
+  Notas:      Sector: Tecnología, País: Europa. Email encontrado en la página de soporte.
+  Imágenes (6):
+    - inoi_2_stand_fabricado_por_standarte_en_madrid.avif
+    - inoi_2_stand_fabricado_por_standarte_en_madrid_001.avif
+    - inoi_2_stand_fabricado_por_standarte_en_madrid_002.avif
+    - inoi_2_stand_fabricado_por_standarte_en_madrid_003.avif
+    - inoi_2_stand_fabricado_por_standarte_en_madrid_004.avif
+    - inoi_2_stand_fabricado_por_standarte_en_madrid_005.avif
+
+EMPRESA: INTERSEC
+  Web:        https://intersec.com/
+  Email:      contact@intersec.com
+  Confianza:  alto
+  Notas:      Sector de tecnología (soluciones de datos móviles y localización), Francia. Email encontrado en la página de contacto.
+  Imágenes (10):
+    - intersec_definitivo_stand_fabricado_por_standarte_en_bilbao.avif
+    - intersec_definitivo_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - intersec_definitivo_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - intersec_definitivo_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - intersec_definitivo_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - intersec_definitivo_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - intersec_stand_fabricado_por_standarte_en_madrid.avif
+    - intersec_stand_fabricado_por_standarte_en_madrid_001.avif
+    - intersec_stand_fabricado_por_standarte_en_madrid_002.avif
+    - intersec_stand_fabricado_por_standarte_en_madrid_003.avif
+
+EMPRESA: JALUPRO
+  Web:        https://www.jalupro.com
+  Email:      info@pderma.com
+  Confianza:  alto
+  Notas:      Sector: Estética/Dermatología. País: Suiza. Email encontrado en la página de contacto oficial.
+  Imágenes (20):
+    - jalupro_stand_fabricado_por_standarte_en_malaga.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_001.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_002.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_003.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_004.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_005.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_006.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_007.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_008.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_009.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_010.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_011.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_012.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_013.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_014.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_015.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_016.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_017.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_018.avif
+    - jalupro_stand_fabricado_por_standarte_en_malaga_019.avif
+
+EMPRESA: JINKO
+  Web:        https://jinkosolar.eu/
+  Email:      contact.eu@jinkosolar.eu, marketing.eu@jinkosolar.com
+  Confianza:  alto
+  Notas:      Sector energético (fabricante de módulos solares). Empresa global con presencia en Europa. Email encontrado en la página de contacto de su sitio web oficial.
+  Imágenes (6):
+    - jinko_stand_fabricado_por_standarte_en_barcelona.avif
+    - jinko_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - jinko_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - jinko_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - jinko_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - jinko_stand_fabricado_por_standarte_en_barcelona_005.avif
+
+EMPRESA: KELIO
+  Web:        https://www.kelio.com/
+  Email:      webmaster@bodet.com
+  Confianza:  medio
+  Notas:      Email encontrado en la página de avisos legales de Kelio (global). Es el email del webmaster de Bodet, la empresa matriz.
+  Imágenes (5):
+    - kelio_stand_fabricado_por_standarte_en_malaga.avif
+    - kelio_stand_fabricado_por_standarte_en_malaga_001.avif
+    - kelio_stand_fabricado_por_standarte_en_malaga_002.avif
+    - kelio_stand_fabricado_por_standarte_en_malaga_003.avif
+    - kelio_stand_fabricado_por_standarte_en_malaga_004.avif
+
+EMPRESA: LOFARMA_SIN_ALMACEN
+  Web:        https://lofarma.es
+  Email:      info@lofarma.es
+  Confianza:  alto
+  Notas:      Empresa farmacéutica (alergias), España. Email encontrado en la sección de contacto de su web oficial.
+  Imágenes (7):
+    - lofarma_sin_almacen_stand_fabricado_por_standarte_en_madrid.avif
+    - lofarma_sin_almacen_stand_fabricado_por_standarte_en_madrid_001.avif
+    - lofarma_sin_almacen_stand_fabricado_por_standarte_en_madrid_002.avif
+    - lofarma_sin_almacen_stand_fabricado_por_standarte_en_madrid_003.avif
+    - lofarma_sin_almacen_stand_fabricado_por_standarte_en_madrid_004.avif
+    - lofarma_sin_almacen_stand_fabricado_por_standarte_en_madrid_005.avif
+    - lofarma_sin_almacen_stand_fabricado_por_standarte_en_madrid_006.avif
+
+EMPRESA: LUCID
+  Web:        https://www.lucid.pro/
+  Email:      sonia@lucid.pro
+  Confianza:  alto
+  Notas:      Consultoría de innovación y diseño industrial y digital, con sede en España. Email encontrado en la sección de contacto de su web oficial.
+  Imágenes (9):
+    - lucid_stand_fabricado_por_standarte_en_bilbao.avif
+    - lucid_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - lucid_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - lucid_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - lucid_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - lucid_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - lucid_stand_fabricado_por_standarte_en_bilbao_006.avif
+    - lucid_stand_fabricado_por_standarte_en_bilbao_007.avif
+    - lucid_stand_fabricado_por_standarte_en_bilbao_008.avif
+
+EMPRESA: MAGNOVENT
+  Web:        https://magnovent.eu
+  Email:      info@magnovent.eu
+  Confianza:  alto
+  Notas:      Sector: Soluciones climáticas (ventiladores HVLS). País: España. Email encontrado en el sitio web oficial.
+  Imágenes (3):
+    - magnovent_stand_fabricado_por_standarte_en_malaga.avif
+    - magnovent_stand_fabricado_por_standarte_en_malaga_001.avif
+    - magnovent_stand_fabricado_por_standarte_en_malaga_002.avif
+
+EMPRESA: MARENOSTRUM
+  Web:        https://marenostrumfuengirola.com/
+  Email:      info@marenostrumfuengirola.es
+  Confianza:  alto
+  Notas:      Sector de eventos/música, España. Email encontrado en la página de contacto del sitio web.
+  Imágenes (4):
+    - marenostrum_stand_fabricado_por_standarte_en_bilbao.avif
+    - marenostrum_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - marenostrum_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - marenostrum_stand_fabricado_por_standarte_en_bilbao_003.avif
+
+EMPRESA: MARLLOR
+  Web:        https://www.marllor.com
+  Email:      info@marllor.com, marketing@marllor.com
+  Confianza:  alto
+  Notas:      Empresa italiana de estética médica. Email encontrado en la página de contacto.
+  Imágenes (8):
+    - marllor_stand_fabricado_por_standarte_en_barcelona.avif
+    - marllor_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - marllor_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - marllor_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - marllor_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - marllor_stand_fabricado_por_standarte_en_barcelona_005.avif
+    - marllor_stand_fabricado_por_standarte_en_barcelona_006.avif
+    - marllor_stand_fabricado_por_standarte_en_barcelona_007.avif
+
+EMPRESA: MH
+  Web:        https://www.mhsoluciones.com/
+  Email:      info@mhsoluciones.com
+  Confianza:  alto
+  Notas:      Empresa española de soluciones tecnológicas, cliente de Standarte. Email encontrado en la página de contacto.
+  Imágenes (8):
+    - mh_stand_fabricado_por_standarte_en_barcelona.avif
+    - mh_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - mh_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - mh_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - mh_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - mh_stand_fabricado_por_standarte_en_barcelona_005.avif
+    - mh_stand_fabricado_por_standarte_en_barcelona_006.avif
+    - mh_stand_fabricado_por_standarte_en_barcelona_007.avif
+
+EMPRESA: MN
+  Web:        https://www.mnstands.com.ar/
+  Email:      consultas@mnstands.com.ar
+  Confianza:  alto
+  Notas:      Empresa de diseño y construcción de stands en Argentina. Email encontrado en la página de contacto.
+  Imágenes (6):
+    - mn_stand_fabricado_por_standarte_en_barcelona.avif
+    - mn_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - mn_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - mn_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - mn_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - mn_stand_fabricado_por_standarte_en_barcelona_005.avif
+
+EMPRESA: MOVORA
+  Web:        https://movora.com/
+  Email:      europesales@movora.com, korrie.wilhelm@movora.com
+  Confianza:  alto
+  Notas:      Sector: Medtech veterinario. Email encontrado en la página de contacto de la web oficial de Movora EU.
+  Imágenes (10):
+    - movora_stand_fabricado_por_standarte_en_bilbao.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_006.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_007.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_008.avif
+    - movora_stand_fabricado_por_standarte_en_bilbao_009.avif
+
+EMPRESA: MTM ENERGIA
+  Web:        https://www.mtmenergia.com
+  Email:      info@mtmenergia.com
+  Confianza:  alto
+  Notas:      Sector: Energía (cogeneración y eficiencia energética). País: Italia. Email encontrado en la página de contacto.
+  Imágenes (8):
+    - mtm_energia_stand_fabricado_por_standarte_en_malaga.avif
+    - mtm_energia_stand_fabricado_por_standarte_en_malaga_001.avif
+    - mtm_energia_stand_fabricado_por_standarte_en_malaga_002.avif
+    - mtm_modificado_b_stand_fabricado_por_standarte_en_bilbao.avif
+    - mtm_modificado_b_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - mtm_modificado_b_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - mtm_modificado_b_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - mtm_modificado_b_stand_fabricado_por_standarte_en_bilbao_004.avif
+
+EMPRESA: MURZILLI
+  Web:        https://murzilliconsulting.com/
+  Email:      info@murzilliconsulting.com, press@murzilliconsulting.com
+  Confianza:  alto
+  Notas:      Consultoría de aviación/drones, oficinas en varios países (incluido España). Email encontrado en la página de contacto.
+  Imágenes (5):
+    - murzilli_stand_fabricado_por_standarte_en_bilbao.avif
+    - murzilli_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - murzilli_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - murzilli_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - murzilli_stand_fabricado_por_standarte_en_bilbao_004.avif
+
+EMPRESA: MUTI
+  Web:        https://www.mutigroup.com
+  Email:      info@mutigroup.com
+  Confianza:  alto
+  Notas:      Empresa de Filipinas, sector motocicletas y bicicletas. Email encontrado en la página de contacto.
+  Imágenes (9):
+    - muti_stand_fabricado_por_standarte_en_malaga.avif
+    - muti_stand_fabricado_por_standarte_en_malaga_001.avif
+    - muti_stand_fabricado_por_standarte_en_malaga_002.avif
+    - muti_stand_fabricado_por_standarte_en_malaga_003.avif
+    - muti_stand_fabricado_por_standarte_en_malaga_004.avif
+    - muti_stand_fabricado_por_standarte_en_malaga_005.avif
+    - muti_stand_fabricado_por_standarte_en_malaga_006.avif
+    - muti_stand_fabricado_por_standarte_en_malaga_007.avif
+    - muti_stand_fabricado_por_standarte_en_malaga_008.avif
+
+EMPRESA: NEARTHLAB
+  Web:        https://www.nearthlab.com
+  Email:      business@nearthlab.com
+  Confianza:  alto
+  Notas:      Empresa de IA de drones con sede en Corea del Sur. Email encontrado en la página de localización.
+  Imágenes (5):
+    - nearthlab_black_1_stand_fabricado_por_standarte_en_barcelona.avif
+    - nearthlab_black_2_stand_fabricado_por_standarte_en_barcelona.avif
+    - nearthlab_black_3_stand_fabricado_por_standarte_en_malaga.avif
+    - nearthlab_black_4_stand_fabricado_por_standarte_en_bilbao.avif
+    - nearthlab_black_5_stand_fabricado_por_standarte_en_bilbao.avif
+
+EMPRESA: NETGAME
+  Web:        https://netgamenv.com/
+  Email:      sales@netgame.me
+  Confianza:  alto
+  Notas:      Empresa de juegos de casino online. Email encontrado en la sección de contacto de su sitio web oficial.
+  Imágenes (5):
+    - netgame_stand_fabricado_por_standarte_en_barcelona.avif
+    - netgame_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - netgame_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - netgame_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - netgame_stand_fabricado_por_standarte_en_barcelona_004.avif
+
+EMPRESA: NIBEC
+  Web:        https://www.nibec.cl
+  Email:      contacto@nibec.cl
+  Confianza:  alto
+  Notas:      Empresa chilena de almacenaje industrial. Email encontrado en la página de contacto y resultados de búsqueda.
+  Imágenes (7):
+    - nibec_stand_fabricado_por_standarte_en_madrid.avif
+    - nibec_stand_fabricado_por_standarte_en_madrid_001.avif
+    - nibec_stand_fabricado_por_standarte_en_madrid_002.avif
+    - nibec_stand_fabricado_por_standarte_en_madrid_003.avif
+    - nibec_stand_fabricado_por_standarte_en_madrid_004.avif
+    - nibec_stand_fabricado_por_standarte_en_madrid_005.avif
+    - nibec_stand_fabricado_por_standarte_en_madrid_006.avif
+
+EMPRESA: NUPROXA
+  Web:        https://nuproxa.ch/
+  Email:      info@nuproxa.ch, luis.yagual@nuproxa.ch
+  Confianza:  alto
+  Notas:      Empresa suiza de nutrición animal. Email encontrado en el snippet de Facebook de los resultados de búsqueda.
+  Imágenes (7):
+    - nuproxa_stand_fabricado_por_standarte_en_madrid.avif
+    - nuproxa_stand_fabricado_por_standarte_en_madrid_001.avif
+    - nuproxa_stand_fabricado_por_standarte_en_madrid_002.avif
+    - nuproxa_stand_fabricado_por_standarte_en_madrid_003.avif
+    - nuproxa_stand_fabricado_por_standarte_en_madrid_004.avif
+    - nuproxa_stand_fabricado_por_standarte_en_madrid_005.avif
+    - nuproxa_stand_fabricado_por_standarte_en_madrid_006.avif
+
+EMPRESA: ORPAGU
+  Web:        https://orpagu.com
+  Email:      info@orpagu.com
+  Confianza:  alto
+  Notas:      Organización de palangreros guardeses, España. Email encontrado en directorios de empresas y en el pie de página de su web.
+  Imágenes (7):
+    - orpagu_stand_fabricado_por_standarte_en_madrid.avif
+    - orpagu_stand_fabricado_por_standarte_en_madrid_001.avif
+    - orpagu_stand_fabricado_por_standarte_en_madrid_002.avif
+    - orpagu_stand_fabricado_por_standarte_en_madrid_003.avif
+    - orpagu_stand_fabricado_por_standarte_en_madrid_004.avif
+    - orpagu_stand_fabricado_por_standarte_en_madrid_005.avif
+    - orpagu_stand_fabricado_por_standarte_en_madrid_006.avif
+
+EMPRESA: PAYNAU
+  Web:        https://www.paynau.com
+  Email:      contacto@paynau.com
+  Confianza:  alto
+  Notas:      Empresa fintech latinoamericana. Email encontrado en la sección de contacto del sitio web.
+  Imágenes (4):
+    - paynau_stand_fabricado_por_standarte_en_bilbao.avif
+    - paynau_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - paynau_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - paynau_stand_fabricado_por_standarte_en_bilbao_003.avif
+
+EMPRESA: PIVOTAL
+  Web:        https://pivotal-retail.com/
+  Email:      info@pivotal-retail.com
+  Confianza:  alto
+  Notas:      Empresa de marketing minorista con sede en el Reino Unido que diseña y fabrica stands de exposición. Email encontrado en la página de contacto.
+  Imágenes (3):
+    - pivotal_stand_fabricado_por_standarte_en_bilbao.avif
+    - pivotal_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - pivotal_stand_fabricado_por_standarte_en_bilbao_002.avif
+
+EMPRESA: POLITEJO
+  Web:        https://www.politejo.com/
+  Email:      geral@politejo.com, dept.grafico@politejo.com
+  Confianza:  alto
+  Notas:      Sector: Soluciones termoplásticas, sistemas de riego. País: Portugal (con operaciones en España). Email encontrado en la página de Facebook.
+  Imágenes (9):
+    - politejo_stand_fabricado_por_standarte_en_barcelona.avif
+    - politejo_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - politejo_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - politejo_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - politejo_stand_fabricado_por_standarte_en_barcelona_004.avif
+    - politejo_stand_fabricado_por_standarte_en_barcelona_005.avif
+    - politejo_stand_fabricado_por_standarte_en_barcelona_006.avif
+    - politejo_stand_fabricado_por_standarte_en_barcelona_007.avif
+    - politejo_stand_fabricado_por_standarte_en_barcelona_008.avif
+
+EMPRESA: REALTURF
+  Web:        https://realturf.com/es/en/
+  Email:      info@realturf.com
+  Confianza:  alto
+  Notas:      Sector: Césped artificial. País: España. Email encontrado en la página de contacto oficial.
+  Imágenes (7):
+    - realturf_stand_fabricado_por_standarte_en_madrid.avif
+    - realturf_stand_fabricado_por_standarte_en_madrid_001.avif
+    - realturf_stand_fabricado_por_standarte_en_madrid_002.avif
+    - realturf_stand_fabricado_por_standarte_en_madrid_003.avif
+    - realturf_stand_fabricado_por_standarte_en_madrid_004.avif
+    - realturf_stand_fabricado_por_standarte_en_madrid_005.avif
+    - realturf_stand_fabricado_por_standarte_en_madrid_006.avif
+
+EMPRESA: REFCO
+  Web:        https://refcoswiss.com/en-us
+  Email:      sales@refcoswiss.com
+  Confianza:  alto
+  Notas:      Empresa suiza/estadounidense de herramientas de refrigeración y aire acondicionado. Email encontrado en la página de contacto.
+  Imágenes (3):
+    - refco_stand_fabricado_por_standarte_en_barcelona.avif
+    - refco_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - refco_stand_fabricado_por_standarte_en_barcelona_002.avif
+
+EMPRESA: ROMPAL
+  Web:        https://rompal.es/
+  Email:      rompal@rompal.es
+  Confianza:  alto
+  Notas:      Empresa española de fabricación de equipos electrónicos. Email encontrado en la página de contacto oficial.
+  Imágenes (5):
+    - rompal_stand_fabricado_por_standarte_en_barcelona.avif
+    - rompal_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - rompal_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - rompal_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - rompal_stand_fabricado_por_standarte_en_barcelona_004.avif
+
+EMPRESA: SAMPLING
+  Web:        https://sampling-innovations.com/
+  Email:      info@sampling-innovations-group.com
+  Confianza:  alto
+  Notas:      Empresa española de sampling promocional. Email encontrado en la página de contacto de su sitio web oficial.
+  Imágenes (5):
+    - sampling_stand_fabricado_por_standarte_en_barcelona.avif
+    - sampling_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - sampling_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - sampling_stand_fabricado_por_standarte_en_barcelona_003.avif
+    - sampling_stand_fabricado_por_standarte_en_barcelona_004.avif
+
+EMPRESA: SARAFOOD
+  Web:        https://www.sarafood.com.tr/
+  Email:      info@sara-food.com
+  Confianza:  alto
+  Notas:      Empresa de alimentos de Turquía. Email encontrado en la página de contacto oficial.
+  Imágenes (7):
+    - sarafood_stand_fabricado_por_standarte_en_malaga.avif
+    - sarafood_stand_fabricado_por_standarte_en_malaga_001.avif
+    - sarafood_stand_fabricado_por_standarte_en_malaga_002.avif
+    - sarafood_stand_fabricado_por_standarte_en_malaga_003.avif
+    - sarafood_stand_fabricado_por_standarte_en_malaga_004.avif
+    - sarafood_stand_fabricado_por_standarte_en_malaga_005.avif
+    - sarafood_stand_fabricado_por_standarte_en_malaga_006.avif
+
+EMPRESA: SCUBAWORLD
+  Web:        https://scubaworldinc.net/
+  Email:      scubaworld@charter.net
+  Confianza:  alto
+  Notas:      Empresa de buceo en EE. UU. Email encontrado en la página de contacto.
+  Imágenes (10):
+    - scubaworld_stand_fabricado_por_standarte_en_madrid.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_001.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_002.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_003.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_004.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_005.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_006.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_007.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_008.avif
+    - scubaworld_stand_fabricado_por_standarte_en_madrid_009.avif
+
+EMPRESA: SINAVO
+  Web:        https://www.sinavoglobal.com/
+  Email:      contact@sinavoglobal.com
+  Confianza:  alto
+  Notas:      Empresa de materiales sintéticos ecológicos. Email encontrado en la página de contacto.
+  Imágenes (6):
+    - sinavo_stand_fabricado_por_standarte_en_madrid.avif
+    - sinavo_stand_fabricado_por_standarte_en_madrid_001.avif
+    - sinavo_stand_fabricado_por_standarte_en_madrid_002.avif
+    - sinavo_stand_fabricado_por_standarte_en_madrid_003.avif
+    - sinavo_stand_fabricado_por_standarte_en_madrid_004.avif
+    - sinavo_stand_fabricado_por_standarte_en_madrid_005.avif
+
+EMPRESA: SLOVAKIA
+  Web:        https://www.intexslovakia.com/en/
+  Email:      info@isg-expo.com
+  Confianza:  alto
+  Notas:      Empresa eslovaca de diseño y fabricación de stands de exposición. Email encontrado en el pie de página del sitio web oficial.
+  Imágenes (12):
+    - slovakia_stand_fabricado_por_standarte_en_malaga.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_001.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_002.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_003.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_004.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_005.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_006.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_007.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_008.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_009.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_010.avif
+    - slovakia_stand_fabricado_por_standarte_en_malaga_011.avif
+
+EMPRESA: SOEMAR
+  Web:        https://soermar.com/
+  Email:      soermar@soermar.com
+  Confianza:  alto
+  Notas:      Sector: Fundación y Centro Tecnológico. País: España. Email encontrado en la página de contacto.
+  Imágenes (9):
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga.avif
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga_001.avif
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga_002.avif
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga_003.avif
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga_004.avif
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga_005.avif
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga_006.avif
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga_007.avif
+    - soemar_modificacion_cliente_stand_fabricado_por_standarte_en_malaga_008.avif
+
+EMPRESA: SOMMOS
+  Web:        https://www.bodegasommos.com/en/
+  Email:      info@bodegasommos.com, marketing@bodegasommos.com
+  Confianza:  alto
+  Notas:      Bodega española de vinos en Somontano, Huesca. Email encontrado en la página de contacto de su sitio web oficial.
+  Imágenes (3):
+    - stand_mod_sommos_10_stand_fabricado_por_standarte_en_madrid.avif
+    - stand_mod_sommos_11_stand_fabricado_por_standarte_en_malaga.avif
+    - stand_mod_sommos_12_stand_fabricado_por_standarte_en_barcelona.avif
+
+EMPRESA: STORZ
+  Web:        https://www.karlstorz.com/
+  Email:      communications@karlstorz.com, press@karlstorz.com
+  Confianza:  alto
+  Notas:      Empresa de dispositivos médicos y endoscopia (Alemania/EE.UU.). Email encontrado en la página de contacto de su sitio web oficial.
+  Imágenes (11):
+    - storz_1p_blanco_a_stand_fabricado_por_standarte_en_barcelona.avif
+    - storz_1p_blanco_b_stand_fabricado_por_standarte_en_madrid.avif
+    - storz_1p_blanco_c_stand_fabricado_por_standarte_en_malaga.avif
+    - storz_2p_blanco_a_stand_fabricado_por_standarte_en_bilbao.avif
+    - storz_2p_blanco_b_stand_fabricado_por_standarte_en_madrid.avif
+    - storz_2p_color_a_stand_fabricado_por_standarte_en_malaga.avif
+    - storz_2p_color_b_stand_fabricado_por_standarte_en_bilbao.avif
+    - storz_2p_color_c_stand_fabricado_por_standarte_en_bilbao.avif
+    - storz_3p_blanco_a_stand_fabricado_por_standarte_en_malaga.avif
+    - storz_stand_fabricado_por_standarte_en_bilbao.avif
+    - storz_stand_fabricado_por_standarte_en_bilbao_001.avif
+
+EMPRESA: SUBLIMET
+  Web:        https://www.sublimet.com
+  Email:      info@sublimet.com
+  Confianza:  alto
+  Notas:      Empresa española del sector de productos y maquinaria de personalización. Email encontrado en su sitio web oficial y en directorios.
+  Imágenes (4):
+    - sublimet_stand_fabricado_por_standarte_en_bilbao.avif
+    - sublimet_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - sublimet_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - sublimet_stand_fabricado_por_standarte_en_bilbao_003.avif
+
+EMPRESA: SWISSTRAFFIC
+  Web:        https://www.swisstraffic.ch/
+  Email:      office@swisstraffic.ch
+  Confianza:  alto
+  Notas:      Empresa suiza del sector de movilidad inteligente. Email encontrado en la página de contacto.
+  Imágenes (4):
+    - swisstraffic_stand_fabricado_por_standarte_en_madrid.avif
+    - swisstraffic_stand_fabricado_por_standarte_en_madrid_001.avif
+    - swisstraffic_stand_fabricado_por_standarte_en_madrid_002.avif
+    - swisstraffic_stand_fabricado_por_standarte_en_madrid_003.avif
+
+EMPRESA: TILLICA
+  Web:        https://www.naturalcalk.com/es/tillica
+  Email:      info@naturalcalk.com
+  Confianza:  alto
+  Notas:      Empresa italiana de nanotecnología de aerogel. Email encontrado en la página de contacto de Natural Calk.
+  Imágenes (4):
+    - tillica_stand_fabricado_por_standarte_en_malaga.avif
+    - tillica_stand_fabricado_por_standarte_en_malaga_001.avif
+    - tillica_stand_fabricado_por_standarte_en_malaga_002.avif
+    - tillica_stand_fabricado_por_standarte_en_malaga_003.avif
+
+EMPRESA: TRANLUZ
+  Web:        https://www.tranluz.es/
+  Email:      info@tranluz.com, comercial@tranluz.com
+  Confianza:  alto
+  Notas:      Sector Eléctrico y Telecomunicaciones, España. Email encontrado en la página de contacto oficial.
+  Imágenes (4):
+    - tranluz_stand_fabricado_por_standarte_en_barcelona.avif
+    - tranluz_stand_fabricado_por_standarte_en_barcelona_001.avif
+    - tranluz_stand_fabricado_por_standarte_en_barcelona_002.avif
+    - tranluz_stand_fabricado_por_standarte_en_barcelona_003.avif
+
+EMPRESA: TWOPOLES
+  Web:        https://twopoles.co
+  Email:      hello@twopoles.co
+  Confianza:  alto
+  Notas:      Empresa española de cosmética. Email encontrado en la página principal del sitio web.
+  Imágenes (8):
+    - twopoles_stand_fabricado_por_standarte_en_madrid.avif
+    - twopoles_stand_fabricado_por_standarte_en_madrid_001.avif
+    - twopoles_stand_fabricado_por_standarte_en_madrid_002.avif
+    - twopoles_stand_fabricado_por_standarte_en_madrid_003.avif
+    - twopoles_stand_fabricado_por_standarte_en_madrid_004.avif
+    - twopoles_stand_fabricado_por_standarte_en_madrid_005.avif
+    - twopoles_stand_fabricado_por_standarte_en_madrid_006.avif
+    - twopoles_stand_fabricado_por_standarte_en_madrid_007.avif
+
+EMPRESA: UNIQUE
+  Web:        https://uniquesrl.eu
+  Email:      info@uniquesrl.eu
+  Confianza:  alto
+  Notas:      Empresa italiana de componentes para ascensores. Email encontrado en la página de contacto.
+  Imágenes (4):
+    - unique_stand_fabricado_por_standarte_en_madrid.avif
+    - unique_stand_fabricado_por_standarte_en_madrid_001.avif
+    - unique_stand_fabricado_por_standarte_en_madrid_002.avif
+    - unique_stand_fabricado_por_standarte_en_madrid_003.avif
+
+EMPRESA: URUGUAY_NATURAL
+  Web:        https://uruguaynatural.com/en/
+  Email:      webmaster@mintur.gub.uy
+  Confianza:  medio
+  Notas:      Sector: Turismo. País: Uruguay. Email encontrado en la página de contacto del Ministerio de Turismo de Uruguay, asociado a la marca Uruguay Natural.
+  Imágenes (4):
+    - uruguay_natural_stand_fabricado_por_standarte_en_malaga.avif
+    - uruguay_natural_stand_fabricado_por_standarte_en_malaga_001.avif
+    - uruguay_natural_stand_fabricado_por_standarte_en_malaga_002.avif
+    - uruguay_natural_stand_fabricado_por_standarte_en_malaga_003.avif
+
+EMPRESA: VEGENAT
+  Web:        https://www.vegenat.es/
+  Email:      comercial@vegenat.es
+  Confianza:  alto
+  Notas:      Empresa española del sector de ingredientes deshidratados. Email encontrado en la página de contacto oficial.
+  Imágenes (3):
+    - vegenat_stand_fabricado_por_standarte_en_malaga.avif
+    - vegenat_stand_fabricado_por_standarte_en_malaga_001.avif
+    - vegenat_stand_fabricado_por_standarte_en_malaga_002.avif
+
+EMPRESA: VEGEVITAL
+  Web:        https://www.vegevital.com/en
+  Email:      info@vegevital.com
+  Confianza:  alto
+  Notas:      Sector: Agricultura, País: Turquía. Email encontrado en el sitio web oficial.
+  Imágenes (7):
+    - vegevital_stand_fabricado_por_standarte_en_bilbao.avif
+    - vegevital_stand_fabricado_por_standarte_en_bilbao_001.avif
+    - vegevital_stand_fabricado_por_standarte_en_bilbao_002.avif
+    - vegevital_stand_fabricado_por_standarte_en_bilbao_003.avif
+    - vegevital_stand_fabricado_por_standarte_en_bilbao_004.avif
+    - vegevital_stand_fabricado_por_standarte_en_bilbao_005.avif
+    - vegevital_stand_fabricado_por_standarte_en_bilbao_006.avif
+
+EMPRESA: WEILER
+  Web:        https://www.weiler.de
+  Email:      info@weiler.de
+  Confianza:  alto
+  Notas:      Sector: Máquinas herramienta, País: Alemania. Encontrado en la página de contacto del sitio web oficial.
+  Imágenes (4):
+    - weiler_stand_fabricado_por_standarte_en_madrid.avif
+    - weiler_stand_fabricado_por_standarte_en_madrid_001.avif
+    - weiler_stand_fabricado_por_standarte_en_madrid_002.avif
+    - weiler_stand_fabricado_por_standarte_en_madrid_003.avif
+
+--------------------------------------------------------------------------------
+FIN DEL ARCHIVO
+--------------------------------------------------------------------------------
