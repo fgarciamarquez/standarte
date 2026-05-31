@@ -20,9 +20,10 @@
   // Prototipos 3D Carousel State
   let carouselIndex = 0;
   let carouselVisibleCount = 3;
+  let shuffledProjects = [...projects];
 
   function nextSlide() {
-    if (carouselIndex < projects.length - carouselVisibleCount) {
+    if (carouselIndex < shuffledProjects.length - carouselVisibleCount) {
       carouselIndex++;
     } else {
       carouselIndex = 0;
@@ -33,7 +34,7 @@
     if (carouselIndex > 0) {
       carouselIndex--;
     } else {
-      carouselIndex = projects.length - carouselVisibleCount;
+      carouselIndex = shuffledProjects.length - carouselVisibleCount;
     }
   }
 
@@ -348,6 +349,16 @@
   }
 
   onMount(() => {
+    // Desordenar proyectos aleatoriamente en cliente para alternar visualización
+    const shuffleArray = (arr) => {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    };
+    shuffledProjects = shuffleArray([...projects]);
+
     updateScrollState();
     window.addEventListener('scroll', updateScrollState, { passive: true });
 
@@ -597,7 +608,7 @@
       
       <div class="carousel-viewport">
         <div class="carousel-track" style="transform: translateX(-{carouselIndex * (100 / carouselVisibleCount)}%);">
-          {#each projects as project}
+          {#each shuffledProjects as project}
             <article class="carousel-card" style="width: {100 / carouselVisibleCount}%;">
               <a href={`/proyectos/${project.id}/`} class="carousel-link">
                 <div class="carousel-img-wrap">
