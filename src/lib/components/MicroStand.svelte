@@ -148,10 +148,10 @@
     <div class="video-overlay">
       <div class="video-controls">
         <button type="button" class="btn-control play-pause" on:click={togglePlay}>
-          {isPlaying ? '⏸ PAUSA' : '▶ REPRODUCIR'}
+          {isPlaying ? `⏸ ${labels.pause || 'PAUSA'}` : `▶ ${labels.play || 'REPRODUCIR'}`}
         </button>
         <a href="https://luzpavilion.es" target="_blank" rel="noopener noreferrer" class="btn-control btn-yellow">
-          VISITAR WEB ESPECÍFICA
+          {labels.visitWeb || 'VISITAR WEB ESPECÍFICA'}
         </a>
       </div>
     </div>

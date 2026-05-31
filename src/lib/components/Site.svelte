@@ -598,13 +598,13 @@
   <!-- Nueva Sección: Prototipos 3D Premium -->
   <section id="prototipos-3d" class="section prototypes-carousel">
     <div class="section-header">
-      <h2>Otros Proyectos</h2>
+      <h2>{copy.projects3D?.title || 'Otros Proyectos'}</h2>
       <span></span>
-      <p>Explora nuestras propuestas interactivas de alta carpintería y su relación con nuestros valores de diseño.</p>
+      <p>{copy.projects3D?.subtitle || 'Explora nuestras propuestas interactivas de alta carpintería y su relación con nuestros valores de diseño.'}</p>
     </div>
 
     <div class="carousel-container">
-      <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label="Anterior">‹</button>
+      <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))}>‹</button>
       
       <div class="carousel-viewport">
         <div class="carousel-track" style="transform: translateX(-{carouselIndex * (100 / carouselVisibleCount)}%);">
@@ -614,7 +614,7 @@
                 <div class="carousel-img-wrap">
                   <img src={project.image} alt={project.name} loading="lazy" />
                   <div class="carousel-overlay">
-                    <span class="view-btn-gold">Ver Proyecto</span>
+                    <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
                   </div>
                 </div>
                 <div class="carousel-caption">
@@ -627,7 +627,7 @@
         </div>
       </div>
 
-      <button class="carousel-nav next" type="button" on:click={nextSlide} aria-label="Siguiente">›</button>
+      <button class="carousel-nav next" type="button" on:click={nextSlide} aria-label={lang === 'es' ? 'Siguiente' : (lang === 'de' ? 'Weiter' : (lang === 'pt' ? 'Seguinte' : (lang === 'zh' ? '下一页' : (lang === 'hi' ? 'अगला' : 'Next'))))}>›</button>
     </div>
   </section>
 

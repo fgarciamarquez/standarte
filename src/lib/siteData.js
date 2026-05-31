@@ -117,6 +117,9 @@ export const copy = {
       partsLabel: 'Partes',
       price: 'Precio',
       qualities: 'Calidades',
+      pause: 'PAUSA',
+      play: 'REPRODUCIR',
+      visitWeb: 'VISITAR WEB ESPECÍFICA',
       videos: [
         {
           src: '/img/video_standrte_presentacion_empresa.mp4',
@@ -159,6 +162,11 @@ export const copy = {
     },
     formSuccess: 'Mensaje enviado correctamente.<br> En breve nos pondremos en contacto.<br> Gracias.',
     formError: 'No se pudo enviar el mensaje. Por favor, inténtalo de nuevo.',
+    projects3D: {
+      title: 'Otros Proyectos',
+      subtitle: 'Explora nuestras propuestas interactivas de alta carpintería y su relación con nuestros valores de diseño.',
+      viewBtn: 'Ver Proyecto'
+    },
     footer: 'Standarte. Diseño, fabricación y montaje de stands.'
   },
   en: {
@@ -193,6 +201,9 @@ export const copy = {
       partsLabel: 'Parts',
       price: 'Price',
       qualities: 'Qualities',
+      pause: 'PAUSE',
+      play: 'PLAY',
+      visitWeb: 'VISIT SPECIFIC WEBSITE',
       videos: [
         {
           src: '/img/video_standrte_presentacion_empresa.mp4',
@@ -235,6 +246,11 @@ export const copy = {
     },
     formSuccess: 'Message sent successfully.<br> We will contact you shortly.<br> Thank you.',
     formError: 'The message could not be sent. Please try again.',
+    projects3D: {
+      title: 'Other Projects',
+      subtitle: 'Explore our interactive high-carpentry proposals and their relation to our design values.',
+      viewBtn: 'View Project'
+    },
     footer: 'Standarte. Exhibition stand design, production and installation.'
   },
   de: {
@@ -269,6 +285,9 @@ export const copy = {
       partsLabel: 'Teile',
       price: 'Preis',
       qualities: 'Qualitäten',
+      pause: 'PAUSE',
+      play: 'ABSPIELEN',
+      visitWeb: 'SPEZIFISCHE WEBSITE BESUCHEN',
       videos: [
         {
           src: '/img/video_standrte_presentacion_empresa.mp4',
@@ -311,6 +330,11 @@ export const copy = {
     },
     formSuccess: 'Nachricht erfolgreich gesendet.<br> Wir werden uns in Kürze mit Ihnen in Verbindung setzen.<br> Vielen Dank.',
     formError: 'Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.',
+    projects3D: {
+      title: 'Andere Projekte',
+      subtitle: 'Entdecken Sie unsere interaktiven Vorschläge für hochwertige Zimmerei und deren Beziehung zu unseren Designwerten.',
+      viewBtn: 'Projekt Anzeigen'
+    },
     footer: 'Standarte. Design, Produktion und Montage von Messeständen.'
   },
   zh: {
@@ -341,6 +365,9 @@ export const copy = {
       partsLabel: '部件',
       price: '价格',
       qualities: '品质',
+      pause: '暂停',
+      play: '播放',
+      visitWeb: '访问专属网站',
       videos: [
         {
           src: '/img/video_standrte_presentacion_empresa.mp4',
@@ -383,6 +410,11 @@ export const copy = {
     },
     formSuccess: '消息已成功发送。<br> 我们将尽快与您联系。<br> 谢谢。',
     formError: '消息无法发送。请重试。',
+    projects3D: {
+      title: '其他项目',
+      subtitle: '探索我们的交互式高端木工方案及其与我们设计价值观的关系。',
+      viewBtn: '查看项目'
+    },
     footer: 'Standarte. 展台设计、制作与搭建。'
   },
   hi: {
@@ -413,6 +445,9 @@ export const copy = {
       partsLabel: 'भाग',
       price: 'कीमत',
       qualities: 'गुणवत्ता',
+      pause: 'रोकें',
+      play: 'चलाएं',
+      visitWeb: 'विशिष्ट वेबसाइट पर जाएं',
       videos: [
         {
           src: '/img/video_standrte_presentacion_empresa.mp4',
@@ -455,6 +490,11 @@ export const copy = {
     },
     formSuccess: 'संदेश सफलतापूर्वक भेजा गया।<br> हम जल्द ही आपसे संपर्क करेंगे।<br> धन्यवाद।',
     formError: 'संदेश भेजा नहीं जा सका। कृपया फिर से प्रयास करें।',
+    projects3D: {
+      title: 'अन्य परियोजनाएं',
+      subtitle: 'हमारे इंटरैक्टिव उच्च-बढ़ईगीरी प्रस्तावों और हमारे डिज़ाइन मूल्यों के साथ उनके संबंधों का पता लगाएं।',
+      viewBtn: 'परियोजना देखें'
+    },
     footer: 'Standarte. प्रदर्शनी स्टैंड डिजाइन, निर्माण और इंस्टॉलेशन।'
   },
   pt: {
@@ -489,6 +529,9 @@ export const copy = {
       partsLabel: 'Peças',
       price: 'Preço',
       qualities: 'Qualidades',
+      pause: 'PAUSA',
+      play: 'REPRODUZIR',
+      visitWeb: 'VISITAR WEB ESPECÍFICA',
       videos: [
         {
           src: '/img/video_standrte_presentacion_empresa.mp4',
@@ -531,6 +574,14 @@ export const copy = {
     },
     formSuccess: 'Mensagem enviada corretamente.<br> Entraremos em contacto em breve.<br> Obrigado.',
     formError: 'Não foi possível enviar a mensagem. Por favor, tente novamente.',
+    pause: 'PAUSA',
+    play: 'REPRODUZIR',
+    visitWeb: 'VISITAR WEB ESPECÍFICA',
+    projects3D: {
+      title: 'Outros Projetos',
+      subtitle: 'Explore as nossas propostas interativas de alta carpintaria e a sua relação com os nossos valores de design.',
+      viewBtn: 'Ver Projeto'
+    },
     footer: 'Standarte. Design, produção e montagem de stands.'
   }
 };
