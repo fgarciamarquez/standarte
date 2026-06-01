@@ -12,12 +12,44 @@
 
   // Detect language preferences
   onMount(() => {
+    let urlLang = null;
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
-      const urlLang = urlParams.get('lang');
+      urlLang = urlParams.get('lang');
       
       if (urlLang && languages.includes(urlLang)) {
         lang = urlLang;
+      }
+
+      if (typeof localStorage !== 'undefined') {
+        const savedPref = localStorage.getItem('preferredLanguage');
+        
+        // If there was a lang param, save it as preferred
+        if (urlLang) {
+          localStorage.setItem('preferredLanguage', urlLang);
+        } else {
+          // If no lang param (defaulting to 'es')
+          localStorage.setItem('preferredLanguage', 'es');
+          
+          if (savedPref && savedPref !== 'es' && languages.includes(savedPref)) {
+            const url = new URL(window.location.href);
+            url.searchParams.set('lang', savedPref);
+            window.location.href = url.toString();
+          } else if (!savedPref) {
+            const browserLang = (navigator.language || navigator.languages?.[0] || 'es')
+              .split('-')[0]
+              .toLowerCase();
+            
+            if (browserLang !== 'es' && languages.includes(browserLang)) {
+              localStorage.setItem('preferredLanguage', browserLang);
+              const url = new URL(window.location.href);
+              url.searchParams.set('lang', browserLang);
+              window.location.href = url.toString();
+            } else {
+              localStorage.setItem('preferredLanguage', 'es');
+            }
+          }
+        }
       }
     }
 
@@ -50,6 +82,9 @@
         url.searchParams.set('lang', targetLang);
       }
       window.history.replaceState({}, '', url.toString());
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('preferredLanguage', targetLang);
+      }
     }
   }
 

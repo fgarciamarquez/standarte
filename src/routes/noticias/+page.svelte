@@ -39,9 +39,37 @@
 
   function switchLanguage(targetLang) {
     lang = targetLang;
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('preferredLanguage', targetLang);
+    }
   }
 
   onMount(() => {
+    // Automatic browser language detection and redirect
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      const savedPref = localStorage.getItem('preferredLanguage');
+      
+      // Save current language preference when visited
+      localStorage.setItem('preferredLanguage', lang);
+
+      if (lang === 'es') {
+        if (savedPref && savedPref !== 'es' && languages.includes(savedPref)) {
+          window.location.href = pathFor(savedPref, 'noticias');
+        } else if (!savedPref) {
+          const browserLang = (navigator.language || navigator.languages?.[0] || 'es')
+            .split('-')[0]
+            .toLowerCase();
+          
+          if (browserLang !== 'es' && languages.includes(browserLang)) {
+            localStorage.setItem('preferredLanguage', browserLang);
+            window.location.href = pathFor(browserLang, 'noticias');
+          } else {
+            localStorage.setItem('preferredLanguage', 'es');
+          }
+        }
+      }
+    }
+
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {

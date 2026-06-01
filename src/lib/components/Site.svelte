@@ -358,6 +358,31 @@
   }
 
   onMount(() => {
+    // Automatic browser language detection and redirect
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      const savedPref = localStorage.getItem('preferredLanguage');
+      
+      // Save current language preference when visited
+      localStorage.setItem('preferredLanguage', lang);
+
+      if (lang === 'es') {
+        if (savedPref && savedPref !== 'es' && languages.includes(savedPref)) {
+          window.location.href = pathFor(savedPref, section);
+        } else if (!savedPref) {
+          const browserLang = (navigator.language || navigator.languages?.[0] || 'es')
+            .split('-')[0]
+            .toLowerCase();
+          
+          if (browserLang !== 'es' && languages.includes(browserLang)) {
+            localStorage.setItem('preferredLanguage', browserLang);
+            window.location.href = pathFor(browserLang, section);
+          } else {
+            localStorage.setItem('preferredLanguage', 'es');
+          }
+        }
+      }
+    }
+
     // Desordenar proyectos aleatoriamente en cliente para alternar visualización
     const shuffleArray = (arr) => {
       for (let i = arr.length - 1; i > 0; i--) {
