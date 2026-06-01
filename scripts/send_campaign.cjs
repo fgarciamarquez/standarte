@@ -150,7 +150,7 @@ async function run() {
           feria: 'Próxima Edición Ferial 2026',
           categoría: 'Prototipo de Stand 3D Premium',
           asunto: `Tu propuesta de diseño de stand premium para ${company.name}`,
-          cuerpo: `Hola Javier, te presento una propuesta única. Te invito a empezar a trabajar hoy mismo en el desarrollo del próximo proyecto ferial de Standarte. Mira el impresionante prototipo 3D que hemos modelado para ti y cómo sus acabados nobles en madera noble elevarán la presencia de tu marca al nivel de líder sectorial. ¡Hagamos que tu próximo evento sea un éxito rotundo!`,
+          cuerpo: `Hola Javier, te presento una propuesta única. Te invito a empezar a trabajar hoy mismo en el desarrollo del próximo proyecto ferial de Standarte. Mira el impresionante prototipo 3D que hemos modelado para ti y cómo sus acabados elevarán la presencia de tu marca al nivel de líder sectorial. ¡Hagamos que tu próximo evento sea un éxito rotundo!`,
           galeria: galeria
         }
       ]

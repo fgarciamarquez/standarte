@@ -302,7 +302,7 @@ HTML;
                                 <tr>
                                     <td align="center">
                                         <a href="https://standarte.es/contacto" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 14px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
-                                            ACEPTAR EL RETO Y DISEÑAR MI STAND
+                                            DISEÑAR MI STAND
                                         </a>
                                     </td>
                                 </tr>
