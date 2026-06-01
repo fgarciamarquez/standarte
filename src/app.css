@@ -2235,6 +2235,8 @@ footer {
   font-weight: 700 !important;
   border-radius: 30px !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 .nav-links .nav-cta-btn:hover,
@@ -2242,11 +2244,15 @@ footer {
   background: #fff !important;
   color: #111 !important;
   transform: translateY(-2px);
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 .nav.scrolled .nav-links .nav-cta-btn {
   background: var(--gold) !important;
   color: #111 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 .nav.scrolled .nav-links .nav-cta-btn:hover,
@@ -2254,6 +2260,8 @@ footer {
   background: #111 !important;
   color: #fff !important;
   transform: translateY(-2px);
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 /* Mobile responsive menu adjustments for CTA button */
@@ -2505,11 +2513,15 @@ footer {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: center;
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 .btn-sidebar-gold:hover {
   background: #fff;
   transform: translateY(-2px);
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 /* FAQ Accordion Section */
