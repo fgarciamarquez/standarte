@@ -252,10 +252,10 @@
     <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
-      <a href={`${pathFor(lang, 'home')}#micro-stand`}>LuzPavilion</a>
+      <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
-      <a href={`${pathFor(lang, 'home')}#contact`} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
 
@@ -392,7 +392,7 @@
             </div>
           </div>
         </li>
-        <li><a href={`${pathFor(lang, 'home')}#contact`} class="footer-link-button">{currentCopy.nav.contact}</a></li>
+        <li><a href={pathFor(lang, 'contact')} class="footer-link-button">{currentCopy.nav.contact}</a></li>
       </ul>
     </div>
     <div class="copyright">

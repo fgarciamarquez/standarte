@@ -411,7 +411,13 @@
     window.addEventListener('resize', updateVisibleCount);
 
     if (section && section !== 'home') {
-      setTimeout(() => scrollTo(section in cityData ? 'local-stands' : section), 120);
+      let targetId = section;
+      if (section in cityData) {
+        targetId = 'local-stands';
+      } else if (section === 'luzpavilion') {
+        targetId = 'micro-stand';
+      }
+      setTimeout(() => scrollTo(targetId), 120);
     }
 
     const observed = ['services', 'micro-stand', 'custom', 'team', 'contact']
