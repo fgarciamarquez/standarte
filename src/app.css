@@ -2164,7 +2164,18 @@ footer {
   border-radius: 6px;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, .6);
   z-index: 100000;
-  margin-bottom: 8px; /* Slight gap from the trigger */
+  margin-bottom: 8px; /* Visual gap from the trigger */
+}
+
+/* Invisible hover bridge to prevent premature closing when moving mouse across the gap */
+.footer-lang-dropdown::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
 }
 
 .footer-lang-menu:hover .footer-lang-dropdown,
