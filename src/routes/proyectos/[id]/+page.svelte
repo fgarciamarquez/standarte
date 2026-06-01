@@ -212,16 +212,6 @@
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
       <a href={`${pathFor(lang, 'home')}#contact`}>{currentCopy.nav.contact}</a>
-      <div class="lang-menu">
-        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
-        <div>
-          {#each languages as option}
-            <button type="button" class:active={option === lang} on:click={() => switchLanguage(option)}>
-              {languageLabels[option]}
-            </button>
-          {/each}
-        </div>
-      </div>
     </div>
   </nav>
 
@@ -338,6 +328,35 @@
     </div>
   {/if}
 </main>
+
+<footer>
+  <div class="footer-layout">
+    <div class="footer-left">
+      <ul class="footer-links">
+        <li><a href={pathFor(lang, 'services')} class="footer-link-button">{currentCopy.nav.services}</a></li>
+        <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
+        <li><a href={pathFor(lang, 'noticias')} class="footer-link-button">{currentCopy.nav.noticias}</a></li>
+        <li class="footer-lang-item">
+          <div class="lang-menu">
+            <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+            <div>
+              {#each languages as option}
+                <button type="button" class:active={option === lang} on:click={() => switchLanguage(option)}>
+                  {languageLabels[option]}
+                </button>
+              {/each}
+            </div>
+          </div>
+        </li>
+        <li><a href={`${pathFor(lang, 'home')}#contact`} class="footer-link-button">{currentCopy.nav.contact}</a></li>
+        <li><a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer">Campañas</a></li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <p>Standarte © 2026. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
 
 <style>
   /* Cabecera y Navbar */

@@ -2115,3 +2115,99 @@ footer {
   }
 }
 
+/* Footer language selector dropup styling */
+.footer-links .footer-lang-item {
+  float: left;
+  list-style: none;
+  margin-right: 1rem;
+  line-height: 48px;
+}
+
+.footer-lang-item .lang-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.footer-lang-item .lang-menu > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: auto;
+  margin: 0;
+  padding: 0;
+  color: gold !important;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 48px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer-lang-item .lang-menu > span:hover {
+  color: #fff !important;
+}
+
+.footer-lang-item .lang-menu > div {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  display: none;
+  min-width: 150px;
+  padding: 8px 0;
+  background: #292f35;
+  border: 1px solid #ffc800;
+  border-radius: 4px;
+  box-shadow: 0 -10px 26px rgba(0, 0, 0, .5);
+  z-index: 100000;
+}
+
+.footer-lang-item .lang-menu:hover > div,
+.footer-lang-item .lang-menu:focus-within > div {
+  display: block;
+}
+
+.footer-lang-item .lang-menu a,
+.footer-lang-item .lang-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.footer-lang-item .lang-menu a:hover,
+.footer-lang-item .lang-menu a:focus,
+.footer-lang-item .lang-menu a.active,
+.footer-lang-item .lang-menu button:hover,
+.footer-lang-item .lang-menu button:focus,
+.footer-lang-item .lang-menu button.active {
+  color: #000;
+  background: var(--gold);
+}
+
+.footer-lang-item .lang-menu a.active,
+.footer-lang-item .lang-menu button.active {
+  border-left: 3px solid #fff;
+  padding-left: 13px;
+  font-weight: bold;
+}
+
+/* Mobile responsive adjustments for footer lang item */
+@media (max-width: 768px) {
+  .footer-links .footer-lang-item {
+    float: none;
+    display: inline-block;
+    margin-right: 1rem;
+    line-height: 48px;
+  }
+}
+
+

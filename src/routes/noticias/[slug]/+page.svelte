@@ -88,14 +88,6 @@
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <a href={pathFor(lang, 'contact')}>{currentCopy.nav.contact}</a>
-      <div class="lang-menu">
-        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
-        <div>
-          {#each languages as option}
-            <a href={pathFor(option, 'noticias')} class:active={option === lang}>{languageLabels[option]}</a>
-          {/each}
-        </div>
-      </div>
     </div>
   </nav>
 
@@ -152,6 +144,16 @@
         <li><a href={pathFor(lang, 'services')} class="footer-link-button">{currentCopy.nav.services}</a></li>
         <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
         <li><a href={pathFor(lang, 'noticias')} class="footer-link-button active">{currentCopy.nav.noticias}</a></li>
+        <li class="footer-lang-item">
+          <div class="lang-menu">
+            <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+            <div>
+              {#each languages as option}
+                <a href={pathFor(option, 'noticias')} class:active={option === lang}>{languageLabels[option]}</a>
+              {/each}
+            </div>
+          </div>
+        </li>
         <li><a href={pathFor(lang, 'contact')} class="footer-link-button">{currentCopy.nav.contact}</a></li>
         <li><a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer">Campañas</a></li>
       </ul>

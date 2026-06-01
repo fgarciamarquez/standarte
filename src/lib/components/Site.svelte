@@ -467,14 +467,6 @@
       <a href={pathFor(lang, 'custom')} on:click|preventDefault={() => scrollTo('custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <a href={pathFor(lang, 'contact')} on:click|preventDefault={() => scrollTo('contact')}>{copy.nav.contact}</a>
-      <div class="lang-menu">
-        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
-        <div>
-          {#each languages as option}
-            <a href={pathFor(option, section)} class:active={option === lang}>{languageLabels[option]}</a>
-          {/each}
-        </div>
-      </div>
     </div>
   </nav>
   <section id="home" class="hero">
@@ -726,6 +718,16 @@
         <li><button id="politicaCookies" class="_gold footer-link-button" type="button" on:click={() => openLegalModal('cookies')}>{copy.legal.cookies}</button></li>
         <li><button class="_gold footer-link-button" type="button" on:click={openCookieSettings}>{cookieSettingsLabels[lang] || cookieSettingsLabels.es}</button></li>
         <li><a href={pathFor(lang, 'noticias')} class="_gold footer-link-button">{copy.nav.noticias}</a></li>
+        <li class="footer-lang-item">
+          <div class="lang-menu">
+            <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+            <div>
+              {#each languages as option}
+                <a href={pathFor(option, section)} class:active={option === lang}>{languageLabels[option]}</a>
+              {/each}
+            </div>
+          </div>
+        </li>
         <li><a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer">{campaignManagerLabels[lang] || campaignManagerLabels.es}</a></li>
       </ul>
       <nav class="footer-site-map" aria-label="Standarte" hidden aria-hidden="true">
