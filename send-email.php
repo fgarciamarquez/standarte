@@ -250,30 +250,12 @@ foreach ($data['records'] as $index => $record) {
                             <!-- Saludo Personalizado -->
                             <h2 style="margin-top: 0; color: #555555; font-size: 18px; font-weight: normal; line-height: 1.3; text-align: center; margin-bottom: 25px;">Estimado equipo de {$empresa},</h2>
                             
-                            <p style="font-size: 15px; line-height: 1.65; color: #333333; margin-bottom: 20px; text-align: center;">
-                                Su presencia en la feria <strong>{$feria}</strong> (dentro de la categoría de <strong>{$categoria}</strong>) es una oportunidad única de negocio. Pero seamos realistas: en un pabellón saturado de estímulos, la inmensa mayoría de los stands pasan completamente desapercibidos. ¿Permitirá que el suyo sea uno más del montón?
+                            <!-- Un solo párrafo persuasivo y muy breve -->
+                            <p style="font-size: 16px; line-height: 1.7; color: #333333; margin-bottom: 35px; text-align: center; max-width: 540px; margin-left: auto; margin-right: auto;">
+                                {$cuerpoText}
                             </p>
                             
-                            <!-- Caja de Texto Personalizado Destacada -->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fcf9ee; border-left: 4px solid #ffc800; border-radius: 4px; margin-bottom: 25px;">
-                                <tr>
-                                    <td style="padding: 15px 20px; text-align: center;">
-                                        <p style="font-size: 15px; font-style: italic; line-height: 1.6; color: #292f35; margin: 0; text-align: center;">
-                                            "{$cuerpoText}"
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
-                            
-                            <p style="font-size: 15px; line-height: 1.65; color: #333333; margin-bottom: 30px; text-align: center;">
-                                En <strong>Standarte</strong> no diseñamos stands convencionales: creamos hitos arquitectónicos e imanes de clientes que posicionan a su marca como el líder indiscutible de su sector. Para inspirar el proyecto de <strong>{$empresa}</strong>, le presentamos tres de nuestros diseños en madera real más valorados y eficientes:
-                            </p>
-                            
-                            <h3 style="color: #292f35; border-bottom: 2px solid #eef0f2; padding-bottom: 10px; margin-bottom: 20px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">Galería de Proyectos Destacados</h3>
-                            
-                            <!-- Grilla de Trabajos Multimedia (3 Columnas / Responsivo) -->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
+                            <h3 style="color: #292f35; border-bottom: 2px solid #eef0f2; padding-bottom: 10px; margin-bottom: 25px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">Galería del Proyecto Prototipo 3D</h3>
 HTML;
 
     // Decidir la galería a mostrar (usar la personalizada si existe en el payload, sino los trabajos globales)
@@ -289,37 +271,31 @@ HTML;
         }
     }
 
-    // Agregar los 3 trabajos a la grilla HTML
+    // Agregar los trabajos de forma vertical y más grandes
     foreach ($galeriaFinal as $tIndex => $trabajo) {
         $img = $trabajo['imagen'];
         $titulo = $trabajo['titulo'];
         $desc = $trabajo['descripcion'];
         
         $emailHtml .= <<<HTML
-                                    <!-- Celda de Trabajo -->
-                                    <td class="col-3" valign="top" width="170" style="padding: 0 5px; font-size: 0; line-height: 0;">
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fafafa; border: 1px solid #eef0f2; border-radius: 4px; overflow: hidden;">
-                                            <tr>
-                                                <td>
-                                                    <img class="gallery-image" src="{$img}" alt="{$titulo}" width="170" style="display: block; width: 100%; height: 110px; object-fit: cover;">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding: 10px; font-family: Arial, sans-serif;">
-                                                    <h4 style="margin: 0 0 6px 0; font-size: 13px; color: #292f35; font-weight: bold;">{$titulo}</h4>
-                                                    <p style="margin: 0; font-size: 11px; line-height: 1.4; color: #666666; height: 75px; overflow: hidden;">
-                                                        {$desc}
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                            <!-- Bloque de Imagen Grande Vertical -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 35px; background-color: #fafafa; border: 1px solid #eef0f2; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+                                <tr>
+                                    <td align="center" style="font-size: 0; line-height: 0;">
+                                        <img src="{$img}" alt="{$titulo}" width="540" style="display: block; width: 100%; max-width: 540px; height: auto;">
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 20px; font-family: Arial, sans-serif; text-align: left;">
+                                        <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #292f35; font-weight: bold;">{$titulo}</h4>
+                                        <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #666666;">{$desc}</p>
+                                    </td>
+                                </tr>
+                            </table>
 HTML;
     }
 
     $emailHtml .= <<<HTML
-                                </tr>
-                            </table>
                             
                             <!-- Botón de Llamado a la Acción -->
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 35px;">
