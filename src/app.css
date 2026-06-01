@@ -2157,12 +2157,12 @@ footer {
   bottom: 100%; /* Deploy upwards! */
   right: 0;
   display: none;
-  min-width: 150px;
-  padding: 8px 0;
-  background: #292f35;
-  border: 1px solid #ffc800;
-  border-radius: 4px;
-  box-shadow: 0 -10px 26px rgba(0, 0, 0, .5);
+  min-width: 160px;
+  padding: 8px; /* Inner padding (aire) */
+  background: #1e2327; /* Slightly darker shade for premium contrast */
+  border: 0 !important; /* Remove borders completely */
+  border-radius: 6px;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, .6);
   z-index: 100000;
   margin-bottom: 8px; /* Slight gap from the trigger */
 }
@@ -2176,14 +2176,15 @@ footer {
 .footer-lang-dropdown button {
   display: block;
   width: 100%;
-  padding: 8px 16px;
-  color: #fff;
+  padding: 10px 16px; /* Comfortable inner padding */
+  color: #e5e5e5;
   background: transparent;
   border: 0;
   font-size: 14px;
   line-height: 1.25;
   text-align: left;
   cursor: pointer;
+  border-radius: 4px; /* Rounded active/hover items */
   transition: all 0.2s linear;
 }
 
@@ -2199,8 +2200,7 @@ footer {
 
 .footer-lang-dropdown a.active,
 .footer-lang-dropdown button.active {
-  border-left: 3px solid #fff;
-  padding-left: 13px;
+  border-left: 0; /* Remove old border-left for full-card layout */
   font-weight: bold;
 }
 
@@ -2222,7 +2222,6 @@ footer {
   color: #111 !important;
   font-weight: 700 !important;
   border-radius: 30px !important;
-  box-shadow: 0 4px 14px rgba(255, 200, 0, 0.35);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
@@ -2230,21 +2229,18 @@ footer {
 .nav-links .nav-cta-btn:focus {
   background: #fff !important;
   color: #111 !important;
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
 }
 
 .nav.scrolled .nav-links .nav-cta-btn {
   background: var(--gold) !important;
   color: #111 !important;
-  box-shadow: 0 4px 14px rgba(184, 148, 0, 0.3);
 }
 
 .nav.scrolled .nav-links .nav-cta-btn:hover,
 .nav.scrolled .nav-links .nav-cta-btn:focus {
   background: #111 !important;
   color: #fff !important;
-  box-shadow: 0 6px 20px rgba(17, 17, 17, 0.25);
   transform: translateY(-2px);
 }
 
@@ -2258,7 +2254,6 @@ footer {
     border-radius: 30px !important;
     line-height: 20px !important;
     min-height: auto !important;
-    box-shadow: 0 4px 10px rgba(255, 200, 0, 0.2) !important;
   }
 }
 

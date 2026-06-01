@@ -762,7 +762,6 @@
             </div>
           </div>
         </li>
-        <li><a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer">{campaignManagerLabels[lang] || campaignManagerLabels.es}</a></li>
       </ul>
       <nav class="footer-site-map" aria-label="Standarte" hidden aria-hidden="true">
         <ul>
@@ -774,7 +773,12 @@
       </nav>
     </div>
     <div class="copyright">
-      <p>CopyRight: 2022. </p>
+      <p>
+        CopyRight: 2022.
+        <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer" style="margin-left: 15px; display: inline-block;">
+          {campaignManagerLabels[lang] || campaignManagerLabels.es}
+        </a>
+      </p>
     </div>
   </div>
 </footer>

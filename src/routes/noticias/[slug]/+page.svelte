@@ -189,11 +189,15 @@
           </div>
         </li>
         <li><a href={pathFor(lang, 'contact')} class="footer-link-button">{currentCopy.nav.contact}</a></li>
-        <li><a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer">Campañas</a></li>
       </ul>
     </div>
     <div class="copyright">
-      <p>Standarte © 2026. Todos los derechos reservados.</p>
+      <p>
+        Standarte © 2026. Todos los derechos reservados.
+        <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer" style="margin-left: 15px; display: inline-block;">
+          Campañas
+        </a>
+      </p>
     </div>
   </div>
 </footer>
