@@ -124,19 +124,19 @@ async function run() {
     // Construir la galería con las 3 primeras imágenes
     const galeria = [
       {
-        titulo: `${company.name} - Vista Principal`,
+        titulo: 'Vista 1',
         imagen: `https://standarte.es/img/3D_prototype/${company.images[0]}`,
-        descripcion: `Render 3D de alta definición del stand diseñado a medida para ${company.name}.`
+        descripcion: `Render 3D de alta definición del stand diseñado a medida para ${company.name}. Diseño y acabados garantizados por contrato.`
       },
       {
-        titulo: `${company.name} - Estructura`,
+        titulo: 'Vista 2',
         imagen: `https://standarte.es/img/3D_prototype/${company.images[1]}`,
-        descripcion: `Estructuras elevadas de concentración visual y carpintería premium.`
+        descripcion: `Estructuras elevadas de concentración visual y carpintería premium. Diseño y acabados garantizados por contrato.`
       },
       {
-        titulo: `${company.name} - Espacios`,
+        titulo: 'Vista 3',
         imagen: `https://standarte.es/img/3D_prototype/${company.images[2]}`,
-        descripcion: `Distribución ergonómica del flujo humano y confortables áreas de negociación.`
+        descripcion: `Distribución ergonómica del flujo humano y confortables áreas de negociación. Diseño y acabados garantizados por contrato.`
       }
     ];
 
@@ -192,19 +192,19 @@ async function run() {
       for (const email of emails) {
         const galeria = [
           {
-            titulo: `${company.name} - Vista Principal`,
+            titulo: 'Vista 1',
             imagen: `https://standarte.es/img/3D_prototype/${company.images[0]}`,
-            descripcion: `Render 3D ferial de alta carpintería personalizado para la marca ${company.name}.`
+            descripcion: `Render 3D ferial de alta carpintería personalizado para la marca ${company.name}. Diseño y acabados garantizados por contrato.`
           },
           {
-            titulo: `${company.name} - Perspectiva`,
+            titulo: 'Vista 2',
             imagen: `https://standarte.es/img/3D_prototype/${company.images[1]}`,
-            descripcion: `Estructuras y pórticos aéreos diseñados bajo los principios de la arquitectura de atención.`
+            descripcion: `Estructuras y pórticos aéreos diseñados bajo los principios de la arquitectura de atención. Diseño y acabados garantizados por contrato.`
           },
           {
-            titulo: `${company.name} - Distribución`,
+            titulo: 'Vista 3',
             imagen: `https://standarte.es/img/3D_prototype/${company.images[2]}`,
-            descripcion: `Diseño de flujo humano libre de barreras y refinados espacios de permanencia.`
+            descripcion: `Diseño de flujo humano libre de barreras y refinados espacios de permanencia. Diseño y acabados garantizados por contrato.`
           }
         ];
 
