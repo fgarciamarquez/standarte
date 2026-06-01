@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const http = require('http');
+const https = require('https');
 
 const contactsPath = path.join(__dirname, '..', 'static', 'img', '3D_prototype', 'empresas_contactos.txt');
 const token = 'STANDARTE_MAIL_SECURE_2026';
@@ -60,10 +60,10 @@ function parseContacts() {
 function sendPayload(payload) {
   return new Promise((resolve, reject) => {
     const postData = JSON.stringify(payload);
-    const req = http.request({
-      hostname: 'localhost',
-      port: 82,
-      path: '/STANDARTE_SVELTE/send-email.php',
+    const req = https.request({
+      hostname: 'standarte.es',
+      port: 443,
+      path: '/send-email.php',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
