@@ -353,12 +353,15 @@ HTML;
         "X-Mailer: PHP/" . phpversion()
     ];
 
+    // Codificar el asunto en MIME Base64 para evitar problemas con la letra 'ñ' y acentos en gestores de correo
+    $encodedAsunto = '=?UTF-8?B?' . base64_encode(html_entity_decode($asunto, ENT_QUOTES, 'UTF-8')) . '?=';
+
     // Intentar envío de correo real
     $realMailSuccess = false;
     try {
         // En un entorno de desarrollo local con MAMP sin SMTP configurado, mail() puede lanzar warnings
         // Usamos el operador de control de errores @ para evitar romper el flujo JSON de salida
-        $realMailSuccess = @mail($email, $asunto, $emailHtml, implode("\r\n", $headers));
+        $realMailSuccess = @mail($email, $encodedAsunto, $emailHtml, implode("\r\n", $headers));
     } catch (Exception $e) {
         $realMailSuccess = false;
     }
