@@ -166,7 +166,7 @@ foreach ($data['records'] as $index => $record) {
         }
     }
     
-    $cuerpoText = isset($record['cuerpo']) ? htmlspecialchars($record['cuerpo']) : "";
+    $cuerpoText = isset($record['cuerpo']) ? $record['cuerpo'] : "";
     $negocio = isset($record['negocio']) ? strtolower(trim($record['negocio'])) : "";
 
     $totalProcesados++;

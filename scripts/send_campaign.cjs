@@ -247,6 +247,91 @@ async function run() {
             console.log(`       Motivo del rechazo: ${r.motivo}`);
           }
         });
+
+        // 3. ENVIAR REPORTE POR CORREO ELECTRÓNICO A JAVIER@STANDARTE.ES
+        console.log('\n-> Generando y enviando reporte de envío a javier@standarte.es...');
+        
+        let reportHtml = `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+            <h2 style="border-bottom: 2px solid #ffc800; padding-bottom: 10px; color: #111;">Resumen de la Campaña de Prototipos 3D</h2>
+            <p>La campaña de envíos automáticos para eventos de después del verano ha finalizado. A continuación se presentan las estadísticas globales de entrega:</p>
+            
+            <table border="0" cellpadding="10" cellspacing="0" style="width: 100%; margin-bottom: 25px; background-color: #fafafa; border: 1px solid #eef0f2; border-radius: 4px;">
+              <tr>
+                <td><strong>Total de correos procesados:</strong></td>
+                <td align="right" style="font-size: 16px;"><strong>${response.summary.total}</strong></td>
+              </tr>
+              <tr style="background-color: #f6fff6; color: #1e7e34;">
+                <td><strong>Total de correos enviados:</strong></td>
+                <td align="right" style="font-size: 16px;"><strong>${response.summary.sent}</strong></td>
+              </tr>
+              <tr style="background-color: #fff6f6; color: #bd2130;">
+                <td><strong>Total de correos rechazados/excluidos:</strong></td>
+                <td align="right" style="font-size: 16px;"><strong>${response.summary.rejected}</strong></td>
+              </tr>
+            </table>
+
+            <h3 style="color: #292f35; border-bottom: 1px solid #eef0f2; padding-bottom: 5px; margin-bottom: 15px;">Detalle de Entregas por Empresa y Destinatario:</h3>
+            <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; font-size: 13px;">
+              <thead>
+                <tr style="background-color: #292f35; color: #ffffff;">
+                  <th align="left">Empresa</th>
+                  <th align="left">Correo</th>
+                  <th align="left">Estado</th>
+                  <th align="left">Detalle / Método</th>
+                </tr>
+              </thead>
+              <tbody>
+        `;
+
+        response.results.forEach((r) => {
+          const statusColor = r.status === 'ENVIADO' ? '#28a745' : '#dc3545';
+          const methodOrReason = r.status === 'ENVIADO' ? (r.real_email_sent ? 'Enviado por SMTP (OVH)' : 'Simulación') : (r.motivo || 'Rechazado');
+          reportHtml += `
+                <tr>
+                  <td><strong>${r.empresa}</strong></td>
+                  <td>${r.email}</td>
+                  <td style="color: ${statusColor}; font-weight: bold;">${r.status}</td>
+                  <td>${methodOrReason}</td>
+                </tr>
+          `;
+        });
+
+        reportHtml += `
+              </tbody>
+            </table>
+            <p style="margin-top: 25px; font-size: 12px; color: #777;">
+              Este es un reporte automático generado por el sistema de campañas de Standarte.
+            </p>
+          </div>
+        `;
+
+        const reportPayload = {
+          token: token,
+          records: [
+            {
+              negocio: 'standarte',
+              empresa: 'Standarte Campaign Manager',
+              email: 'javier@standarte.es',
+              feria: 'Reportes Internos 2026',
+              categoría: 'Administración',
+              asunto: `Reporte de Envío: Campaña de Prototipos 3D (Eventos Post-Verano)`,
+              cuerpo: reportHtml,
+              galeria: [] // No necesita galería
+            }
+          ]
+        };
+
+        try {
+          const reportRes = await sendPayload(reportPayload);
+          if (reportRes.success) {
+            console.log('   ¡Éxito! El reporte detallado se ha enviado por correo a javier@standarte.es.');
+          } else {
+            console.error('   [FALLO] No se pudo enviar el reporte por correo:', reportRes.error || reportRes);
+          }
+        } catch (reportErr) {
+          console.error('   [ERROR] Error al conectar con el servidor para enviar el reporte:', reportErr.message);
+        }
       } else {
         console.error('   [FALLO] El servidor PHP retornó un error:', response.error || response);
       }
