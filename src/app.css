@@ -2210,4 +2210,51 @@ footer {
   }
 }
 
+/* Standout CTA button in navigation header */
+.nav-links .nav-cta-btn {
+  background: var(--gold) !important;
+  color: #111 !important;
+  font-weight: 700 !important;
+  border-radius: 30px !important;
+  box-shadow: 0 4px 14px rgba(255, 200, 0, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.nav-links .nav-cta-btn:hover,
+.nav-links .nav-cta-btn:focus {
+  background: #fff !important;
+  color: #111 !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.nav.scrolled .nav-links .nav-cta-btn {
+  background: var(--gold) !important;
+  color: #111 !important;
+  box-shadow: 0 4px 14px rgba(184, 148, 0, 0.3);
+}
+
+.nav.scrolled .nav-links .nav-cta-btn:hover,
+.nav.scrolled .nav-links .nav-cta-btn:focus {
+  background: #111 !important;
+  color: #fff !important;
+  box-shadow: 0 6px 20px rgba(17, 17, 17, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Mobile responsive menu adjustments for CTA button */
+@media (max-width: 768px) {
+  .nav-links .nav-cta-btn {
+    display: block !important;
+    text-align: center !important;
+    margin: 15px 24px 20px 24px !important;
+    padding: 10px 24px !important;
+    border-radius: 30px !important;
+    line-height: 20px !important;
+    min-height: auto !important;
+    box-shadow: 0 4px 10px rgba(255, 200, 0, 0.2) !important;
+  }
+}
+
+
 

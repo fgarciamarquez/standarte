@@ -12,6 +12,15 @@
   // Obtenemos los textos traducidos
   $: currentCopy = data?.copy || copy[lang] || copy.es;
 
+  const ctaLabels = {
+    es: 'SOLICITAR PRESUPUESTO',
+    en: 'REQUEST A QUOTE',
+    de: 'ANGEBOT ANFORDERN',
+    pt: 'SOLICITAR ORÇAMENTO',
+    zh: '索取报价',
+    hi: 'कोटेशन का अनुरोध करें'
+  };
+
   // Filtrar noticias por idioma y ubicación
   $: filteredNews = news
     .filter(item => item.lang === lang)
@@ -57,7 +66,7 @@
       <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
-      <a href={pathFor(lang, 'contact')}>{currentCopy.nav.contact}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
 

@@ -11,6 +11,15 @@
   export let copy;
   export let canonical;
 
+  const ctaLabels = {
+    es: 'SOLICITAR PRESUPUESTO',
+    en: 'REQUEST A QUOTE',
+    de: 'ANGEBOT ANFORDERN',
+    pt: 'SOLICITAR ORÇAMENTO',
+    zh: '索取报价',
+    hi: 'कोटेशन का अनुरोध करें'
+  };
+
   let menuOpen = false;
   let portfolioFilter = 'all';
   let lightboxProject = null;
@@ -466,7 +475,7 @@
       </a>
       <a href={pathFor(lang, 'custom')} on:click|preventDefault={() => scrollTo('custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
-      <a href={pathFor(lang, 'contact')} on:click|preventDefault={() => scrollTo('contact')}>{copy.nav.contact}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click|preventDefault={() => scrollTo('contact')}>{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
   <section id="home" class="hero">

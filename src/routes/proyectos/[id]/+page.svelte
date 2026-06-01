@@ -30,6 +30,15 @@
 
   $: currentCopy = copy[lang] || copy.es;
 
+  const ctaLabels = {
+    es: 'SOLICITAR PRESUPUESTO',
+    en: 'REQUEST A QUOTE',
+    de: 'ANGEBOT ANFORDERN',
+    pt: 'SOLICITAR ORÇAMENTO',
+    zh: '索取报价',
+    hi: 'कोटेशन का अनुरोध करें'
+  };
+
   function switchLanguage(targetLang) {
     lang = targetLang;
     if (typeof window !== 'undefined') {
@@ -211,7 +220,7 @@
       <a href={`${pathFor(lang, 'home')}#micro-stand`}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
-      <a href={`${pathFor(lang, 'home')}#contact`}>{currentCopy.nav.contact}</a>
+      <a href={`${pathFor(lang, 'home')}#contact`} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
 
