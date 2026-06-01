@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { languages, languageLabels, pathFor, cityData, portfolios } from '$lib/siteData.js';
   import { projects } from '$lib/projectData.js';
+  import { richSeoData } from '$lib/richSeoData.js';
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
   import CookieConsent from './CookieConsent.svelte';
@@ -64,7 +65,7 @@
     hi: 'hi-IN',
     pt: 'pt-PT'
   };
-  const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga'];
+  const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz'];
   const serviceIcons = ['icon-pencil', 'icon-crop', 'icon-layers'];
   const portfolioFilters = ['all', 'textil', 'madera'];
   const cookieSettingsLabels = {
@@ -145,15 +146,20 @@
     ? activePortfolios
     : activePortfolios.filter((project) => project.categories.includes(portfolioFilter));
 
-  $: title = section in cityData
+  $: seoContent = richSeoData[section]?.[lang] || richSeoData[section]?.es || null;
+  $: selectedPortfolios = portfolios.slice(0, 3);
+
+  $: title = seoContent?.title || (section in cityData
     ? `${cityTitle(section)} | Standarte`
     : section === 'home'
       ? copy.seoTitle
-      : `${sectionLabel(section)} | Standarte`;
+      : `${sectionLabel(section)} | Standarte`);
 
-  $: description = section in cityData
-    ? `${cityTitle(section)}. ${copy.citiesIntro}`
-    : copy.seoDescription;
+  $: description = seoContent
+    ? seoContent.introText
+    : (section in cityData
+      ? `${cityTitle(section)}. ${copy.citiesIntro}`
+      : copy.seoDescription);
 
   $: structuredData = JSON.stringify(buildStructuredData());
   $: structuredDataScript = `<script type="application/ld+json">${structuredData.replace(/</g, '\\u003c')}<` + '/script>';
@@ -197,58 +203,89 @@
       ['Construcción de stands en Barcelona', pathFor('es', 'barcelona')],
       ['Construcción de stands en Bilbao', pathFor('es', 'bilbao')],
       ['Construcción de stands en Lisboa', pathFor('es', 'lisboa')],
-      ['Construcción de stands en Málaga', pathFor('es', 'malaga')]
+      ['Construcción de stands en Málaga', pathFor('es', 'malaga')],
+      ['Construcción de stands en Badajoz', pathFor('es', 'badajoz')]
     ];
 
-    const graph = [
-      {
-        '@type': 'Organization',
-        '@id': `${baseUrl}/#organization`,
-        name: 'Standarte',
-        url: `${baseUrl}/`,
-        logo: `${baseUrl}/img/logo_standarte_rectanular.png`,
-        email: 'hola@standarte.es',
-        telephone: '+34613097148',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'C/ de Moratin',
-          postalCode: '28012',
-          addressLocality: 'Madrid',
-          addressCountry: 'ES'
-        }
+    const organization = {
+      '@type': 'LocalBusiness',
+      '@id': `${baseUrl}/#organization`,
+      name: 'Standarte',
+      url: `${baseUrl}/`,
+      logo: `${baseUrl}/img/logo_standarte_rectanular.png`,
+      image: `${baseUrl}/img/trabajos/TCANTICO/1.avif`,
+      email: 'hola@standarte.es',
+      telephone: '+34613097148',
+      priceRange: '$$$',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'C/ de Moratin',
+        postalCode: '28012',
+        addressLocality: 'Madrid',
+        addressCountry: 'ES'
       },
-      {
-        '@type': 'WebSite',
-        '@id': `${baseUrl}/#website`,
-        url: `${baseUrl}/`,
-        name: 'Standarte',
-        description: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
-        inLanguage: 'es-ES',
-        publisher: { '@id': `${baseUrl}/#organization` }
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: '40.4124',
+        longitude: '-3.6983'
       },
-      {
-        '@type': 'WebPage',
-        '@id': `${canonical}#webpage`,
-        url: canonical,
-        name: title,
-        description,
-        inLanguage: contentLanguages[lang] || 'es-ES',
-        isPartOf: { '@id': `${baseUrl}/#website` }
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00'
       },
-      {
-        '@type': 'ItemList',
-        '@id': `${baseUrl}/#site-navigation`,
-        name: 'Estructura principal de Standarte',
-        itemListElement: navigationItems.map(([name, path], index) => ({
-          '@type': 'SiteNavigationElement',
-          position: index + 1,
-          name,
-          url: `${baseUrl}${path}`
-        }))
-      }
-    ];
+      sameAs: [
+        'https://luzpavilion.es'
+      ]
+    };
+
+    const service = {
+      '@type': 'Service',
+      '@id': `${baseUrl}/#service`,
+      name: lang === 'es' ? 'Diseño y construcción de stands para ferias' : 'Exhibition stand design and construction',
+      serviceType: 'Exhibition Stand Builder',
+      provider: { '@id': `${baseUrl}/#organization` },
+      description: copy.seoDescription,
+      areaServed: ['ES', 'PT', 'DE', 'FR']
+    };
+
+    const website = {
+      '@type': 'WebSite',
+      '@id': `${baseUrl}/#website`,
+      url: `${baseUrl}/`,
+      name: 'Standarte',
+      description: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Lisboa y otros destinos nacionales e internacionales.',
+      inLanguage: contentLanguages[lang] || 'es-ES',
+      publisher: { '@id': `${baseUrl}/#organization` }
+    };
+
+    const webpage = {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: contentLanguages[lang] || 'es-ES',
+      isPartOf: { '@id': `${baseUrl}/#website` }
+    };
+
+    const siteNavigation = {
+      '@type': 'ItemList',
+      '@id': `${baseUrl}/#site-navigation`,
+      name: 'Estructura principal de Standarte',
+      itemListElement: navigationItems.map(([name, path], index) => ({
+        '@type': 'SiteNavigationElement',
+        position: index + 1,
+        name,
+        url: `${baseUrl}${path}`
+      }))
+    };
+
+    const graph = [organization, service, website, webpage, siteNavigation];
 
     if (section !== 'home') {
+      const breadcrumbLabel = seoContent?.breadcrumb || sectionLabel(section);
       graph.push({
         '@type': 'BreadcrumbList',
         '@id': `${canonical}#breadcrumb`,
@@ -256,16 +293,31 @@
           {
             '@type': 'ListItem',
             position: 1,
-            name: 'Inicio',
+            name: lang === 'es' ? 'Inicio' : 'Home',
             item: `${baseUrl}/`
           },
           {
             '@type': 'ListItem',
             position: 2,
-            name: sectionLabel(section),
+            name: breadcrumbLabel,
             item: canonical
           }
         ]
+      });
+    }
+
+    if (seoContent?.faqs && seoContent.faqs.length > 0) {
+      graph.push({
+        '@type': 'FAQPage',
+        '@id': `${canonical}#faqpage`,
+        mainEntity: seoContent.faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.a
+          }
+        }))
       });
     }
 
@@ -356,6 +408,13 @@
       if (routeSection === 'micro-stand') routeSection = 'luzpavilion';
       window.history.pushState({}, '', pathFor(lang, routeSection));
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function handleNavClick(event, id) {
+    if (section === 'home') {
+      event.preventDefault();
+      scrollTo(id);
     }
   }
 
@@ -494,259 +553,334 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<header class="site-header">
+<header class="site-header" class:static-header={section !== 'home'}>
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
     <div class:open={menuOpen} class="nav-links">
-      <a href={pathFor(lang, 'services')} on:click|preventDefault={() => scrollTo('services')}>{copy.nav.services}</a>
+      <a href={pathFor(lang, 'services')} on:click={(e) => handleNavClick(e, 'services')}>{copy.nav.services}</a>
       {#if modularEnabled}
-        <a href={pathFor(lang, 'stand-modular')} on:click|preventDefault={() => scrollTo('stand-modular')}>Stand Modular</a>
+        <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
-      <a href={pathFor(lang, 'luzpavilion')} on:click|preventDefault={() => scrollTo('micro-stand')}>
+      <a href={pathFor(lang, 'luzpavilion')} on:click={(e) => handleNavClick(e, 'micro-stand')}>
         LuzPavilion <span class="nav-badge-new">New</span>
       </a>
-      <a href={pathFor(lang, 'custom')} on:click|preventDefault={() => scrollTo('custom')}>{copy.nav.custom}</a>
+      <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click|preventDefault={() => scrollTo('contact')}>{ctaLabels[lang] || ctaLabels.es}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
-  <section id="home" class="hero">
-    <div class="contents">
-      <h1>{copy.heroTitle}</h1>
-      <p>{copy.heroSubtitle}</p>
+  
+  {#if section === 'home'}
+    <section id="home" class="hero">
+      <div class="contents">
+        <h1>{copy.heroTitle}</h1>
+        <p>{copy.heroSubtitle}</p>
+      </div>
+    </section>
+  {:else if seoContent}
+    <div class="hero-subpage">
+      <div class="hero-contents">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : 'Home'}</a></li>
+            <li><span class="divider">/</span></li>
+            <li><span class="current" aria-current="page">{seoContent.breadcrumb}</span></li>
+          </ol>
+        </nav>
+        <h1>{seoContent.h1}</h1>
+        <p class="hero-lead">{seoContent.introText}</p>
+      </div>
     </div>
-  </section>
+  {/if}
 </header>
 
 <main>
-  <section id="services" class="section services">
-    <div class="section-header">
-      <h2>{copy.servicesTitle}</h2>
-      <span></span>
-    </div>
-    <div class="service-grid">
-      {#each copy.services as item, index}
-        <article>
-          <div class="service-icon"><i class={`service-symbol ${serviceIcons[index]}`} aria-hidden="true"></i></div>
-          <h3>{item[0]}</h3>
-          <p>{item[1]}</p>
-        </article>
-      {/each}
-    </div>
-  </section>
-
-  <MicroStand labels={copy.micro} />
-
-  <section id="local-stands" class="section local-stands">
-    <p class="section-intro">{copy.citiesIntro}</p>
-    <div class="city-grid">
-      {#each cityKeys as cityKey}
-        <article id={cityKey}>
-          <h3>{cityTitle(cityKey)}</h3>
-          <p>{cityContent(cityKey).intro}</p>
-          <p>{cityContent(cityKey).detail}</p>
-          <a href={pathFor(lang, cityKey)}>{cityTitle(cityKey)}</a>
-        </article>
-      {/each}
-    </div>
-    <section class="lisbon-fairs-strip" aria-label={fairListTitles[lang] || fairListTitles.es} itemscope itemtype="https://schema.org/ItemList">
-      <meta itemprop="name" content={fairListTitles[lang] || fairListTitles.es} />
-      <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending" />
-      <div class="lisbon-fairs-track">
-        {#each [0, 1] as group}
-          <div class="lisbon-fairs-group" aria-hidden={group === 1}>
-            {#each fairItems as fair, index}
-              {#if group === 0}
-                <article class="lisbon-fair-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                  <meta itemprop="position" content={index + 1} />
-                  <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
-                  <span class="lisbon-fair-copy">
-                    <strong itemprop="name">{fair.name}</strong>
-                    <small itemprop="description">{fairSeoText(fair.name)}</small>
-                  </span>
-                </article>
-              {:else}
-                <article class="lisbon-fair-item">
-                  <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
-                  <span class="lisbon-fair-copy">
-                    <strong>{fair.name}</strong>
-                    <small>{fairSeoText(fair.name)}</small>
-                  </span>
-                </article>
-              {/if}
-            {/each}
-          </div>
+  {#if section === 'home'}
+    <section id="services" class="section services">
+      <div class="section-header">
+        <h2>{copy.servicesTitle}</h2>
+        <span></span>
+      </div>
+      <div class="service-grid">
+        {#each copy.services as item, index}
+          <article>
+            <div class="service-icon"><i class={`service-symbol ${serviceIcons[index]}`} aria-hidden="true"></i></div>
+            <h3>{item[0]}</h3>
+            <p>{item[1]}</p>
+          </article>
         {/each}
       </div>
     </section>
-  </section>
 
-  <section id="custom" class="section portfolio">
-    <div class="section-header">
-      <h2>{copy.customTitle}</h2>
-      <span></span>
-      <p>{copy.customSubtitle}</p>
-    </div>
-    <div class="controls">
-      {#each portfolioFilters as filter}
-        <button
-          type="button"
-          class:active={portfolioFilter === filter}
-          class="filter btn btn-common"
-          on:click={() => (portfolioFilter = filter)}
-        >
-          {copy.filters?.[filter] || filter}
-        </button>
-      {/each}
-    </div>
-    <div id="portfolio" class="portfolio-grid">
-      {#each filteredPortfolios as project}
-        <div class={`mix ${project.categories.join(' ')}`}>
-          <div class="portfolio-item">
-            <button class="shot-item" type="button" on:click={() => openLightbox(project)} aria-label={project.alt}>
-              <img src={`/${project.thumb}`} alt={project.alt} loading="lazy" decoding="async" />
-              <span class="overlay lightbox" aria-hidden="true">
-                <span class="item-icon eye-icon"></span>
-              </span>
-            </button>
-          </div>
-        </div>
-      {/each}
-    </div>
+    <MicroStand labels={copy.micro} />
 
-    {#if lightboxProject}
-      <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={lightboxProject.alt} aria-describedby="project-lightbox-description" tabindex="-1">
-        <div class="lightbox-window" role="document">
-          <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
-          <img src={`/${lightboxProject.full}`} alt={lightboxProject.alt} />
-          <div class="lightbox-caption">
-            <strong>{lightboxProject.alt}</strong>
-            <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
-          </div>
-        </div>
+    <section id="local-stands" class="section local-stands">
+      <p class="section-intro">{copy.citiesIntro}</p>
+      <div class="city-grid">
+        {#each cityKeys as cityKey}
+          <article id={cityKey}>
+            <h3>{cityTitle(cityKey)}</h3>
+            <p>{cityContent(cityKey).intro}</p>
+            <p>{cityContent(cityKey).detail}</p>
+            <a href={pathFor(lang, cityKey)}>{cityTitle(cityKey)}</a>
+          </article>
+        {/each}
       </div>
-    {/if}
-  </section>
-
-  <!-- Nueva Sección: Prototipos 3D Premium -->
-  <section id="prototipos-3d" class="section prototypes-carousel">
-    <div class="section-header">
-      <h2>{copy.projects3D?.title || 'Otros Proyectos'}</h2>
-      <span></span>
-      <p>{copy.projects3D?.subtitle || 'Explora nuestras propuestas interactivas de alta carpintería y su relación con nuestros valores de diseño.'}</p>
-    </div>
-
-    <div class="carousel-container">
-      <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))}>‹</button>
-      
-      <div class="carousel-viewport">
-        <div class="carousel-track" style="transform: translateX(-{carouselIndex * (100 / carouselVisibleCount)}%);">
-          {#each shuffledProjects as project}
-            <article class="carousel-card" style="width: {100 / carouselVisibleCount}%;">
-              <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-link">
-                <div class="carousel-img-wrap">
-                  <img src={project.image} alt={project.name} loading="lazy" />
-                  <div class="carousel-overlay">
-                    <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
-                  </div>
-                </div>
-                <div class="carousel-caption">
-                  <h3>{project.name}</h3>
-                  <span class="location">{project.location}</span>
-                </div>
-              </a>
-            </article>
+      <section class="lisbon-fairs-strip" aria-label={fairListTitles[lang] || fairListTitles.es} itemscope itemtype="https://schema.org/ItemList">
+        <meta itemprop="name" content={fairListTitles[lang] || fairListTitles.es} />
+        <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending" />
+        <div class="lisbon-fairs-track">
+          {#each [0, 1] as group}
+            <div class="lisbon-fairs-group" aria-hidden={group === 1}>
+              {#each fairItems as fair, index}
+                {#if group === 0}
+                  <article class="lisbon-fair-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content={index + 1} />
+                    <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
+                    <span class="lisbon-fair-copy">
+                      <strong itemprop="name">{fair.name}</strong>
+                      <small itemprop="description">{fairSeoText(fair.name)}</small>
+                    </span>
+                  </article>
+                {:else}
+                  <article class="lisbon-fair-item">
+                    <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
+                    <span class="lisbon-fair-copy">
+                      <strong>{fair.name}</strong>
+                      <small>{fairSeoText(fair.name)}</small>
+                    </span>
+                  </article>
+                {/if}
+              {/each}
+            </div>
           {/each}
         </div>
+      </section>
+    </section>
+
+    <section id="custom" class="section portfolio">
+      <div class="section-header">
+        <h2>{copy.customTitle}</h2>
+        <span></span>
+        <p>{copy.customSubtitle}</p>
+      </div>
+      <div class="controls">
+        {#each portfolioFilters as filter}
+          <button
+            type="button"
+            class:active={portfolioFilter === filter}
+            class="filter btn btn-common"
+            on:click={() => (portfolioFilter = filter)}
+          >
+            {copy.filters?.[filter] || filter}
+          </button>
+        {/each}
+      </div>
+      <div id="portfolio" class="portfolio-grid">
+        {#each filteredPortfolios as project}
+          <div class={`mix ${project.categories.join(' ')}`}>
+            <div class="portfolio-item">
+              <button class="shot-item" type="button" on:click={() => openLightbox(project)} aria-label={project.alt}>
+                <img src={`/${project.thumb}`} alt={project.alt} loading="lazy" decoding="async" />
+                <span class="overlay lightbox" aria-hidden="true">
+                  <span class="item-icon eye-icon"></span>
+                </span>
+              </button>
+            </div>
+          </div>
+        {/each}
       </div>
 
-      <button class="carousel-nav next" type="button" on:click={nextSlide} aria-label={lang === 'es' ? 'Siguiente' : (lang === 'de' ? 'Weiter' : (lang === 'pt' ? 'Seguinte' : (lang === 'zh' ? '下一页' : (lang === 'hi' ? 'अगला' : 'Next'))))}>›</button>
-    </div>
-  </section>
+      {#if lightboxProject}
+        <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={lightboxProject.alt} aria-describedby="project-lightbox-description" tabindex="-1">
+          <div class="lightbox-window" role="document">
+            <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
+            <img src={`/${lightboxProject.full}`} alt={lightboxProject.alt} />
+            <div class="lightbox-caption">
+              <strong>{lightboxProject.alt}</strong>
+              <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
+            </div>
+          </div>
+        </div>
+      {/if}
+    </section>
 
-  <section class="counters section" data-stellar-background-ratio="0.5">
-    <div class="counter-grid">
-      {#each counterItems as item, index}
-        <article class="facts-item">
-          <div class="icon">
-            <i class={`counter-symbol ${item.icon}`} aria-hidden="true"></i>
+    <!-- Nueva Sección: Prototipos 3D Premium -->
+    <section id="prototipos-3d" class="section prototypes-carousel">
+      <div class="section-header">
+        <h2>{copy.projects3D?.title || 'Otros Proyectos'}</h2>
+        <span></span>
+        <p>{copy.projects3D?.subtitle || 'Explora nuestras propuestas interactivas de alta carpintería y su relación con nuestros valores de diseño.'}</p>
+      </div>
+
+      <div class="carousel-container">
+        <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))}>‹</button>
+        
+        <div class="carousel-viewport">
+          <div class="carousel-track" style="transform: translateX(-{carouselIndex * (100 / carouselVisibleCount)}%);">
+            {#each shuffledProjects as project}
+              <article class="carousel-card" style="width: {100 / carouselVisibleCount}%;">
+                <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-link">
+                  <div class="carousel-img-wrap">
+                    <img src={project.image} alt={project.name} loading="lazy" />
+                    <div class="carousel-overlay">
+                      <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
+                    </div>
+                  </div>
+                  <div class="carousel-caption">
+                    <h3>{project.name}</h3>
+                    <span class="location">{project.location}</span>
+                  </div>
+                </a>
+              </article>
+            {/each}
           </div>
-          <div class="fact-count">
-            <h3><span class="counter">{displayedCounters[index]}</span></h3>
-            <h4>{copy.counters?.[item.key]}</h4>
+        </div>
+
+        <button class="carousel-nav next" type="button" on:click={nextSlide} aria-label={lang === 'es' ? 'Siguiente' : (lang === 'de' ? 'Weiter' : (lang === 'pt' ? 'Seguinte' : (lang === 'zh' ? '下一页' : (lang === 'hi' ? 'अगla' : 'Next'))))}>›</button>
+      </div>
+    </section>
+
+    <section class="counters section" data-stellar-background-ratio="0.5">
+      <div class="counter-grid">
+        {#each counterItems as item, index}
+          <article class="facts-item">
+            <div class="icon">
+              <i class={`counter-symbol ${item.icon}`} aria-hidden="true"></i>
+            </div>
+            <div class="fact-count">
+              <h3><span class="counter">{displayedCounters[index]}</span></h3>
+              <h4>{copy.counters?.[item.key]}</h4>
+            </div>
+          </article>
+        {/each}
+      </div>
+    </section>
+
+    <section id="team" class="section team">
+      <div class="section-header">
+        <h2>{copy.teamTitle}</h2>
+        <span></span>
+        <p>{copy.teamSubtitle}</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-member">
+          <div class="member-photo-container">
+            <img
+              src="/img/team/victoria_idiaquez.avif"
+              alt="Victoria Idiakez"
+              class="member-photo"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
+          <h3>Victoria Idiakez</h3>
+          <p class="role">{copy.teamRoles[0]}</p>
         </article>
-      {/each}
+
+        <article class="team-member">
+          <div class="member-photo-container">
+            <img
+              src="/img/team/javier_garcia.avif"
+              alt="Javier G. Márquez"
+              class="member-photo"
+              style="transform: scale(1.35) translateY(8px); transform-origin: center 18%;"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <h3>Javier G. Márquez</h3>
+          <p class="role">{copy.teamRoles[1]}</p>
+        </article>
+
+        <article class="team-member">
+          <div class="member-photo-container">
+            <img
+              src="/img/team/pablo_alminar.avif"
+              alt="Pablo Alminar"
+              class="member-photo"
+              style="object-position: center top; transform: scale(2.3) translateY(20px);"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <h3>Pablo Alminar</h3>
+          <p class="role">{copy.teamRoles[2]}</p>
+        </article>
+
+        <article class="team-member">
+          <div class="member-photo-container">
+            <img
+              src="/img/team/patricia_jimenez.avif"
+              alt="Patricia Jiménez"
+              class="member-photo"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <h3>Patricia Jiménez</h3>
+          <p class="role">{copy.teamRoles[3]}</p>
+        </article>
+      </div>
+    </section>
+  {:else if seoContent}
+    <div class="dedicated-seo-page">
+      <div class="seo-container">
+        <div class="seo-layout">
+          <!-- Artículo principal de redacción profesional -->
+          <article class="seo-article">
+            {@html seoContent.body}
+          </article>
+          
+          <!-- Sidebar con casos de éxito reales -->
+          <aside class="seo-sidebar">
+            <div class="sidebar-sticky">
+              <div class="spotlight-card">
+                <h3>{lang === 'es' ? 'Casos de Éxito' : 'Success Stories'}</h3>
+                <p class="spotlight-intro">
+                  {lang === 'es' 
+                    ? 'Proyectos destacados de alta carpintería y diseño de stands efímeros:' 
+                    : 'Featured custom carpentry and exhibition stand design projects:'}
+                </p>
+                
+                <div class="sidebar-projects">
+                  {#each selectedPortfolios as project}
+                    <div class="sidebar-project-card">
+                      <img src={`/${project.thumb}`} alt={project.alt} class="sidebar-project-img" />
+                      <div class="sidebar-project-info">
+                        <h4>{project.alt}</h4>
+                        <p>{projectDescription(project)}</p>
+                      </div>
+                    </div>
+                  {/each}
+                </div>
+                
+                <button type="button" class="btn-sidebar-gold" on:click={() => scrollTo('contact')}>
+                  {ctaLabels[lang] || ctaLabels.es}
+                </button>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- FAQs Section (B2B FAQ grids) -->
+        {#if seoContent.faqs && seoContent.faqs.length > 0}
+          <section class="seo-faqs">
+            <h2>{lang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}</h2>
+            <div class="faq-grid">
+              {#each seoContent.faqs as faq}
+                <article class="faq-card">
+                  <h3>{faq.q}</h3>
+                  <p>{faq.a}</p>
+                </article>
+              {/each}
+            </div>
+          </section>
+        {/if}
+      </div>
     </div>
-  </section>
-
-  <section id="team" class="section team">
-    <div class="section-header">
-      <h2>{copy.teamTitle}</h2>
-      <span></span>
-      <p>{copy.teamSubtitle}</p>
-    </div>
-    <div class="team-grid">
-      <article class="team-member">
-        <div class="member-photo-container">
-          <img
-            src="/img/team/victoria_idiaquez.avif"
-            alt="Victoria Idiakez"
-            class="member-photo"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <h3>Victoria Idiakez</h3>
-        <p class="role">{copy.teamRoles[0]}</p>
-      </article>
-
-      <article class="team-member">
-        <div class="member-photo-container">
-          <img
-            src="/img/team/javier_garcia.avif"
-            alt="Javier G. Márquez"
-            class="member-photo"
-            style="transform: scale(1.35) translateY(8px); transform-origin: center 18%;"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <h3>Javier G. Márquez</h3>
-        <p class="role">{copy.teamRoles[1]}</p>
-      </article>
-
-      <article class="team-member">
-        <div class="member-photo-container">
-          <img
-            src="/img/team/pablo_alminar.avif"
-            alt="Pablo Alminar"
-            class="member-photo"
-            style="object-position: center top; transform: scale(2.3) translateY(20px);"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <h3>Pablo Alminar</h3>
-        <p class="role">{copy.teamRoles[2]}</p>
-      </article>
-
-      <article class="team-member">
-        <div class="member-photo-container">
-          <img
-            src="/img/team/patricia_jimenez.avif"
-            alt="Patricia Jiménez"
-            class="member-photo"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <h3>Patricia Jiménez</h3>
-        <p class="role">{copy.teamRoles[3]}</p>
-      </article>
-    </div>
-  </section>
+  {/if}
 
   <ContactForm {lang} labels={copy} />
 </main>

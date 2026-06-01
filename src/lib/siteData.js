@@ -22,6 +22,7 @@ export const routes = {
     bilbao: 'construccion_stands_bilbao',
     lisboa: 'construccion_stands_lisboa',
     malaga: 'construccion_stands_malaga',
+    badajoz: 'construccion_stands_badajoz',
     noticias: 'noticias'
   },
   en: {
@@ -36,6 +37,7 @@ export const routes = {
     bilbao: 'stand_construction_bilbao',
     lisboa: 'stand_construction_lisbon',
     malaga: 'stand_construction_malaga',
+    badajoz: 'stand_construction_badajoz',
     noticias: 'news'
   },
   de: {
@@ -50,6 +52,7 @@ export const routes = {
     bilbao: 'messestandbau_bilbao',
     lisboa: 'messestandbau_lissabon',
     malaga: 'messestandbau_malaga',
+    badajoz: 'messestandbau_badajoz',
     noticias: 'nachrichten'
   },
   zh: {
@@ -64,6 +67,7 @@ export const routes = {
     bilbao: 'bilbao_zhantai_dajian',
     lisboa: 'lisbon_zhantai_dajian',
     malaga: 'malaga_zhantai_dajian',
+    badajoz: 'badajoz_zhantai_dajian',
     noticias: 'xinwen'
   },
   hi: {
@@ -78,6 +82,7 @@ export const routes = {
     bilbao: 'bilbao_stand_nirman',
     lisboa: 'lisbon_stand_nirman',
     malaga: 'malaga_stand_nirman',
+    badajoz: 'badajoz_stand_nirman',
     noticias: 'samachar'
   },
   pt: {
@@ -92,6 +97,7 @@ export const routes = {
     bilbao: 'construcao_stands_bilbao',
     lisboa: 'construcao_stands_lisboa',
     malaga: 'construcao_stands_malaga',
+    badajoz: 'construcao_stands_badajoz',
     noticias: 'noticias'
   }
 };
@@ -740,7 +746,36 @@ export const cityData = {
       },
       pt: {
         intro: 'Bilbao representa o coração industrial e a engenharia de ponta do norte de Espanha. Na Standarte concebemos e montamos stands de alta carpintaria em Bilbao, proporcionando solidez construtiva e uma forte presença de marca no Bilbao Exhibition Centre (BEC).',
-        detail: 'Otimizamos o design de fluxo humano e criamos espaços de permanência confortáveis, ideais para empresas industriais com elevados padrões técnicos.'
+        detail: 'Otimizamos o design de fluxo humano e criamos espacios de permanencia confortables, ideais para empresas industriais com elevados padrões técnicos.'
+      }
+    }
+  },
+  badajoz: {
+    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz' },
+    content: {
+      es: {
+        intro: 'Badajoz y la región de Extremadura representan un mercado ferial dinámico con eventos agrícolas, ganaderos e industriales de gran tradición. En Standarte diseñamos, fabricamos y montamos stands de alta carpintería en recintos de referencia como FEVAL en Don Benito e IFEBA en Badajoz.',
+        detail: 'Nuestra presencia y experiencia local nos permite responder con rapidez, optimizar costes logísticos y garantizar un stand impecable para citas clave como AGROEXPO o FECIEX.'
+      },
+      en: {
+        intro: 'Badajoz and the Extremadura region represent a highly active ferial hub with deep-rooted agricultural, livestock and industrial events. Standarte produces high-carpentry exhibition stands in key regional venues such as FEVAL in Don Benito and IFEBA in Badajoz.',
+        detail: 'Our local expertise allows us to deliver quick solutions, optimize logistics costs, and guarantee a flawless stand presence for major events like AGROEXPO or FECIEX.'
+      },
+      de: {
+        intro: 'Badajoz und die Region Extremadura sind ein dynamischer Messemarkt mit traditionsreichen Veranstaltungen. Standarte entwirft und montiert hochwertige Messestände an führenden Standorten wie FEVAL in Don Benito und IFEBA in Badajoz.',
+        detail: 'Unsere lokale Präsenz ermöglicht uns schnelle Reaktionszeiten, optimierte Logistikkosten und einen makellosen Stand bei wichtigen Messen wie AGROEXPO oder BECIEX.'
+      },
+      zh: {
+        intro: '巴达霍斯和埃斯特雷马杜拉地区代表了一个充满活力的展会市场。Standarte 在该地区的核心展馆（如唐贝尼托的 FEVAL 和巴达霍斯的 IFEBA）提供高水准的展台设计、制作与木工搭建服务。',
+        detail: '我们在当地的丰富经验使我们能够快速响应、优化物流成本，并确保在 AGROEXPO 或 FECIEX 等重点展会中为您呈现完美的品牌展台。'
+      },
+      hi: {
+        intro: 'बादाहोज़ और एक्स्ट्रीमादुरा क्षेत्र कृषि, पशुधन और औद्योगिक आयोजनों के साथ एक गतिशील मेला केंद्र का प्रतिनिधित्व करते हैं। Standarte डॉन बेनिटो में FEVAL और बादाहोज़ में IFEBA जैसे प्रमुख क्षेत्रीय स्थलों में उच्च गुणवत्ता वाले बढ़ईगीरी स्टैंड का डिजाइन और निर्माण करता है।',
+        detail: 'हमारी स्थानीय उपस्थिति और अनुभव हमें तेजी से प्रतिक्रिया देने, लॉजिस्टिक्स लागत को अनुकूलित करने और AGROEXPO या FECIEX जैसे प्रमुख मेलों के लिए एक त्रुटिहीन स्टैंड सुनिश्चित करने की अनुमति देता है।'
+      },
+      pt: {
+        intro: 'Badajoz e a região da Extremadura representam um mercado de feiras muito dinâmico, com eventos agrícolas, pecuários e industriais de grande tradição. Na Standarte concebemos e montamos stands de alta carpintaria em recintos de referência como a FEVAL em Don Benito e a IFEBA em Badajoz.',
+        detail: 'A nossa forte ligação local permite-nos responder rapidamente, otimizar custos de logística e assegurar um stand impecável para encontros de relevo como a AGROEXPO o u a FECIEX.'
       }
     }
   }

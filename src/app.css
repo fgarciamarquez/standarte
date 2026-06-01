@@ -2227,6 +2227,7 @@ footer {
 }
 
 
+
 /* Standout CTA button in navigation header */
 .nav-links .nav-cta-btn {
   background: var(--gold) !important;
@@ -2267,6 +2268,337 @@ footer {
     min-height: auto !important;
   }
 }
+
+
+/* ==========================================================================
+   DEDICATED B2B SEO LANDING PAGES STYLING
+   ========================================================================== */
+
+/* Subpage Hero */
+.hero-subpage {
+  min-height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 160px 15px 80px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(22, 25, 28, 0.9) 0%, rgba(30, 35, 40, 0.95) 100%);
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-subpage .hero-contents {
+  width: min(900px, 100%);
+  z-index: 2;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  margin-bottom: 20px;
+}
+
+.breadcrumbs ol {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumbs li {
+  font-size: 13px;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.breadcrumbs a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--gold);
+}
+
+.breadcrumbs .divider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.breadcrumbs .current {
+  color: var(--gold);
+}
+
+.hero-subpage h1 {
+  font-size: 36px;
+  line-height: 1.3;
+  color: #fff;
+  margin: 0 0 20px;
+  font-family: 'Glegoo', serif;
+}
+
+.hero-subpage .hero-lead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Dedicated SEO Page Content Grid */
+.dedicated-seo-page {
+  background: #f7f6f1;
+  padding: 80px 15px;
+}
+
+.seo-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.seo-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 50px;
+  align-items: start;
+}
+
+/* Article Styling */
+.seo-article {
+  background: #fff;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.seo-article h2 {
+  font-family: 'Glegoo', serif;
+  font-size: 24px;
+  color: #1a1e21;
+  margin: 40px 0 20px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.seo-article h2:first-of-type {
+  margin-top: 0;
+}
+
+.seo-article p {
+  font-family: 'Inconsolata', monospace;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin-bottom: 25px;
+}
+
+.seo-article p strong, 
+.seo-article p b {
+  color: #111;
+  font-weight: 700;
+}
+
+/* Sidebar with success stories */
+.seo-sidebar {
+  position: relative;
+}
+
+.sidebar-sticky {
+  position: sticky;
+  top: 110px;
+}
+
+.spotlight-card {
+  background: #1e2327;
+  color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  border-left: 4px solid var(--gold);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.spotlight-card h3 {
+  font-size: 18px;
+  color: var(--gold);
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Glegoo', serif;
+}
+
+.spotlight-intro {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 25px;
+}
+
+.sidebar-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-project-card {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.sidebar-project-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.sidebar-project-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.sidebar-project-info {
+  min-width: 0;
+}
+
+.sidebar-project-info h4 {
+  font-family: 'Glegoo', serif;
+  font-size: 13px;
+  color: #fff;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-project-info p {
+  font-size: 11px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.btn-sidebar-gold {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  background: var(--gold);
+  color: #111;
+  border: 0;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+.btn-sidebar-gold:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+/* FAQ Accordion Section */
+.seo-faqs {
+  margin-top: 60px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 60px;
+}
+
+.seo-faqs h2 {
+  font-family: 'Glegoo', serif;
+  font-size: 28px;
+  color: #1a1e21;
+  text-align: center;
+  margin: 0 0 40px;
+  text-transform: uppercase;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.faq-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+  border-top: 3px solid var(--gold);
+}
+
+.faq-card h3 {
+  font-family: 'Glegoo', serif;
+  font-size: 16px;
+  color: #111;
+  margin: 0 0 15px;
+  line-height: 1.4;
+}
+
+.faq-card p {
+  font-family: 'Inconsolata', monospace;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #5a5a5a;
+  margin: 0;
+}
+
+/* Static Hero Styling (When on B2B subpage) */
+.static-header {
+  min-height: auto !important;
+  background: #16191c !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .seo-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .seo-article {
+    padding: 30px;
+  }
+  
+  .sidebar-sticky {
+    position: static;
+  }
+  
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-subpage h1 {
+    font-size: 28px;
+  }
+  
+  .hero-subpage .hero-lead {
+    font-size: 14px;
+  }
+  
+  .seo-faqs h2 {
+    font-size: 22px;
+  }
+}
+
 
 
 
