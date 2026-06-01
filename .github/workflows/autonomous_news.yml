@@ -41,7 +41,7 @@ jobs:
         env:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
-        run: node deploy_clean.cjs
+        run: node deploy_clean.cjs --fast
 
       - name: Guardar Base de Datos de Noticias en GitHub
         run: |
