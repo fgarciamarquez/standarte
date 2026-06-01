@@ -79,7 +79,7 @@
 </script>
 
 <svelte:head>
-  <title>Noticias, Ferias y Arquitectura Efímera | Standarte</title>
+  <title>Noticias y Ferias en Madrid, Barcelona, Bilbao, Lisboa y Málaga | Standarte</title>
   <meta name="description" content="Artículos de actualidad sobre ferias en Madrid, Barcelona, Bilbao, Lisboa y Málaga. Descubre las mejores estrategias de diseño de stands a medida, sombra y circulación de personas." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://standarte.es/noticias/" />

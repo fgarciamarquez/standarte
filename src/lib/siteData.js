@@ -99,7 +99,7 @@ export const routes = {
 export const copy = {
   es: {
     nav: { services: 'Servicios', custom: 'Galería', noticias: 'Noticias', contact: 'Contacto', language: 'Idioma' },
-    seoTitle: 'Standarte | Construcción de stands en Madrid y España',
+    seoTitle: 'Standarte | Construcción de stands en Madrid, Barcelona, Bilbao, Málaga y Lisboa',
     seoDescription: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
     heroTitle: 'Diseño y construcción de stands internacionales',
     heroSubtitle: 'Espacios que inspiran',
@@ -183,7 +183,7 @@ export const copy = {
   },
   en: {
     nav: { services: 'Services', custom: 'Gallery', noticias: 'News', contact: 'Contact', language: 'Language' },
-    seoTitle: 'Standarte | Exhibition stand design and construction',
+    seoTitle: 'Standarte | Stand builder in Madrid, Barcelona, Bilbao, Malaga and Lisbon',
     seoDescription: 'Design, production and installation of exhibition stands for trade fairs in Spain and international projects.',
     heroTitle: 'Stand builder workshop in Spain',
     heroSubtitle: 'high quality work',
@@ -511,7 +511,7 @@ export const copy = {
   },
   pt: {
     nav: { services: 'Serviços', custom: 'Galeria', noticias: 'Notícias', contact: 'Contacto', language: 'Idioma' },
-    seoTitle: 'Standarte | Design e construção de stands para feiras',
+    seoTitle: 'Standarte | Construção de stands em Madrid, Barcelona, Bilbao, Málaga e Lisboa',
     seoDescription: 'Design, produção e montagem de stands para feiras em Espanha e projetos internacionais.',
     heroTitle: 'Projeto e construção de estandes',
     heroSubtitle: 'Espaços que inspiram',
