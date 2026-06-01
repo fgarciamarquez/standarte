@@ -30,7 +30,9 @@ const galleryImages = [
 const cities = [
   { name: 'Madrid', query: 'IFEMA+ferias+madrid', hl: 'es', gl: 'ES', ceid: 'ES:es' },
   { name: 'Málaga', query: 'FYCMA+ferias+malaga', hl: 'es', gl: 'ES', ceid: 'ES:es' },
-  { name: 'Lisboa', query: 'FIL+feiras+lisboa', hl: 'pt-PT', gl: 'PT', ceid: 'PT:pt-150' }
+  { name: 'Lisboa', query: 'FIL+feiras+lisboa', hl: 'pt-PT', gl: 'PT', ceid: 'PT:pt-150' },
+  { name: 'Barcelona', query: 'Fira+Barcelona+ferias', hl: 'es', gl: 'ES', ceid: 'ES:es' },
+  { name: 'Bilbao', query: 'BEC+Bilbao+ferias', hl: 'es', gl: 'ES', ceid: 'ES:es' }
 ];
 
 // Base de datos de reserva por si no hay API Key de Gemini
@@ -123,38 +125,57 @@ async function run() {
     }
     console.log(`-> Cargados ${newsData.length} artículos de noticias existentes.`);
 
-    // 2. Rotar ciudad basándose en el día del año
+    // 2. Rotar ciudad basándose en el día del año y buscar noticias disponibles
     const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
-    const selectedCity = cities[dayOfYear % cities.length];
-    console.log(`-> Día del año: ${dayOfYear}. Ciudad seleccionada para buscar: ${selectedCity.name}`);
+    
+    let selectedCity = null;
+    let selectedItem = null;
+    let items = [];
 
-    // 3. Buscar noticias recientes en Google News RSS
-    const rssUrl = `https://news.google.com/rss/search?q=${selectedCity.query}&hl=${selectedCity.hl}&gl=${selectedCity.gl}&ceid=${selectedCity.ceid}`;
-    console.log(`-> Descargando Google News Feed desde: ${rssUrl}`);
-    const rssXml = await fetchUrl(rssUrl);
-
-    // Parsear ítems con Regex
-    const itemRegex = /<item>([\s\S]*?)<\/item>/g;
-    let match;
-    const items = [];
-    while ((match = itemRegex.exec(rssXml)) !== null) {
-      const itemContent = match[1];
-      const title = (itemContent.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '';
-      const link = (itemContent.match(/<link>([\s\S]*?)<\/link>/) || [])[1] || '';
-      const pubDate = (itemContent.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || [])[1] || '';
-      const source = (itemContent.match(/<source[^>]*>([\s\S]*?)<\/source>/) || [])[1] || '';
-      items.push({ title, link, pubDate, source });
+    for (let i = 0; i < cities.length; i++) {
+      const cityIndex = (dayOfYear + i) % cities.length;
+      const city = cities[cityIndex];
+      console.log(`-> Intentando buscar noticias en la ciudad: ${city.name} (Índice: ${cityIndex})...`);
+      
+      const rssUrl = `https://news.google.com/rss/search?q=${city.query}&hl=${city.hl}&gl=${city.gl}&ceid=${city.ceid}`;
+      console.log(`   Descargando feed RSS desde: ${rssUrl}`);
+      
+      try {
+        const rssXml = await fetchUrl(rssUrl);
+        
+        // Parsear ítems con Regex
+        const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+        let match;
+        const tempItems = [];
+        while ((match = itemRegex.exec(rssXml)) !== null) {
+          const itemContent = match[1];
+          const title = (itemContent.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '';
+          const link = (itemContent.match(/<link>([\s\S]*?)<\/link>/) || [])[1] || '';
+          const pubDate = (itemContent.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || [])[1] || '';
+          const source = (itemContent.match(/<source[^>]*>([\s\S]*?)<\/source>/) || [])[1] || '';
+          tempItems.push({ title, link, pubDate, source });
+        }
+        
+        if (tempItems.length > 0) {
+          selectedCity = city;
+          items = tempItems;
+          selectedItem = tempItems[Math.floor(Math.random() * Math.min(5, tempItems.length))];
+          console.log(`   ¡Éxito! Encontradas ${tempItems.length} noticias para ${city.name}.`);
+          console.log(`   Noticia seleccionada: "${selectedItem.title}"`);
+          break;
+        } else {
+          console.log(`   No se encontraron noticias en el feed de ${city.name}. Probando con la siguiente ciudad.`);
+        }
+      } catch (feedError) {
+        console.error(`   Error al obtener el feed de ${city.name}:`, feedError);
+      }
     }
 
     if (items.length === 0) {
-      console.log('-> No se encontraron noticias en el feed. Utilizando fallback.');
+      console.log('-> No se encontraron noticias en ninguna de las ciudades configuradas. Utilizando fallback.');
       useFallback(newsData);
       return;
     }
-
-    // Seleccionar una noticia semi-aleatoria entre las primeras 5
-    const selectedItem = items[Math.floor(Math.random() * Math.min(5, items.length))];
-    console.log(`-> Noticia de actualidad seleccionada: "${selectedItem.title}"`);
 
     // 4. Redacción con Gemini si hay API Key, de lo contrario fallback
     if (!geminiApiKey) {
@@ -173,7 +194,7 @@ async function run() {
 Noticia original: ${selectedItem.title}
 Fuente original: ${selectedItem.source}
 Enlace original: ${selectedItem.link}
-Ubicación del evento ferial: ${selectedCity.name} (FYCMA si es Málaga, IFEMA si es Madrid, FIL si es Lisboa)
+Ubicación del evento ferial: ${selectedCity.name} (FYCMA si es Málaga, IFEMA si es Madrid, FIL si es Lisboa, Fira Barcelona si es Barcelona, BEC si es Bilbao)
 
 REGLAS ESTRICTAS DE NEGOCIO Y CONTENIDO:
 1. El artículo debe centrarse EXCLUSIVAMENTE en la construcción de stands de diseño para INTERIORES dentro de recintos feriales cerrados.
