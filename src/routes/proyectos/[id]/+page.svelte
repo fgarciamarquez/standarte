@@ -381,9 +381,9 @@
         <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
         <li><a href={pathFor(lang, 'noticias')} class="footer-link-button">{currentCopy.nav.noticias}</a></li>
         <li class="footer-lang-item">
-          <div class="lang-menu">
+          <div class="footer-lang-menu">
             <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
-            <div>
+            <div class="footer-lang-dropdown">
               {#each languages as option}
                 <button type="button" class:active={option === lang} on:click={() => switchLanguage(option)}>
                   {languageLabels[option]}
@@ -793,79 +793,6 @@
     right: 30px;
   }
 
-  /* Redundancias y estilo de menú de idiomas */
-  .lang-menu {
-    position: relative;
-    display: inline-block;
-  }
-
-  .lang-menu > span {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 10px 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border-radius: 4px;
-    transition: color 0.2s, background-color 0.2s;
-  }
-
-  .lang-menu:hover > span {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-
-  .lang-menu > div {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #1a1e22;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
-    padding: 8px 0;
-    min-width: 150px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 1000;
-  }
-
-  .lang-menu:hover > div {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .lang-menu div button {
-    display: block;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    padding: 10px 20px;
-    text-align: left;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    color: #ccc;
-    transition: all 0.2s ease;
-  }
-
-  .lang-menu div button:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--gold);
-  }
-
-  .lang-menu div button.active {
-    color: var(--gold);
-    font-weight: 700;
-    background-color: rgba(255, 200, 0, 0.03);
-  }
 
   @media (max-width: 768px) {
     .values-card {

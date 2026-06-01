@@ -2119,21 +2119,24 @@ footer {
 .footer-links .footer-lang-item {
   float: left;
   list-style: none;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   line-height: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
 }
 
-.footer-lang-item .lang-menu {
+.footer-lang-menu {
   position: relative;
   display: inline-block;
+  height: 100%;
 }
 
-.footer-lang-item .lang-menu > span {
+.footer-lang-menu > span {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: auto;
-  margin: 0;
+  height: 48px;
   padding: 0;
   color: gold !important;
   font-family: inherit;
@@ -2145,13 +2148,13 @@ footer {
   transition: all 0.3s ease-in-out;
 }
 
-.footer-lang-item .lang-menu > span:hover {
+.footer-lang-menu > span:hover {
   color: #fff !important;
 }
 
-.footer-lang-item .lang-menu > div {
+.footer-lang-dropdown {
   position: absolute;
-  bottom: 100%;
+  bottom: 100%; /* Deploy upwards! */
   right: 0;
   display: none;
   min-width: 150px;
@@ -2161,15 +2164,16 @@ footer {
   border-radius: 4px;
   box-shadow: 0 -10px 26px rgba(0, 0, 0, .5);
   z-index: 100000;
+  margin-bottom: 8px; /* Slight gap from the trigger */
 }
 
-.footer-lang-item .lang-menu:hover > div,
-.footer-lang-item .lang-menu:focus-within > div {
+.footer-lang-menu:hover .footer-lang-dropdown,
+.footer-lang-menu:focus-within .footer-lang-dropdown {
   display: block;
 }
 
-.footer-lang-item .lang-menu a,
-.footer-lang-item .lang-menu button {
+.footer-lang-dropdown a,
+.footer-lang-dropdown button {
   display: block;
   width: 100%;
   padding: 8px 16px;
@@ -2183,18 +2187,18 @@ footer {
   transition: all 0.2s linear;
 }
 
-.footer-lang-item .lang-menu a:hover,
-.footer-lang-item .lang-menu a:focus,
-.footer-lang-item .lang-menu a.active,
-.footer-lang-item .lang-menu button:hover,
-.footer-lang-item .lang-menu button:focus,
-.footer-lang-item .lang-menu button.active {
-  color: #000;
-  background: var(--gold);
+.footer-lang-dropdown a:hover,
+.footer-lang-dropdown a:focus,
+.footer-lang-dropdown a.active,
+.footer-lang-dropdown button:hover,
+.footer-lang-dropdown button:focus,
+.footer-lang-dropdown button.active {
+  color: #000 !important;
+  background: var(--gold) !important;
 }
 
-.footer-lang-item .lang-menu a.active,
-.footer-lang-item .lang-menu button.active {
+.footer-lang-dropdown a.active,
+.footer-lang-dropdown button.active {
   border-left: 3px solid #fff;
   padding-left: 13px;
   font-weight: bold;
@@ -2207,8 +2211,10 @@ footer {
     display: inline-block;
     margin-right: 1rem;
     line-height: 48px;
+    height: 48px;
   }
 }
+
 
 /* Standout CTA button in navigation header */
 .nav-links .nav-cta-btn {

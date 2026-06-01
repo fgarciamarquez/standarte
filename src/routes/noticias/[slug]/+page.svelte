@@ -179,9 +179,9 @@
         <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
         <li><a href={pathFor(lang, 'noticias')} class="footer-link-button active">{currentCopy.nav.noticias}</a></li>
         <li class="footer-lang-item">
-          <div class="lang-menu">
+          <div class="footer-lang-menu">
             <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
-            <div>
+            <div class="footer-lang-dropdown">
               {#each languages as option}
                 <a href={pathFor(option, 'noticias')} class:active={option === lang}>{languageLabels[option]}</a>
               {/each}
