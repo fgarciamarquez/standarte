@@ -89,7 +89,7 @@ function sendPayload(payload) {
 
 async function run() {
   const isTest = process.argv.includes('--test');
-  const targetEmail = 'javiergarciamarquez@icloud.com';
+  const targetEmail = 'javier@standarte.es';
 
   console.log('==========================================================');
   console.log('          STANDARTE - Campaña de Correos Prototipos 3D    ');
