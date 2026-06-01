@@ -276,8 +276,21 @@ foreach ($data['records'] as $index => $record) {
                                 <tr>
 HTML;
 
+    // Decidir la galería a mostrar (usar la personalizada si existe en el payload, sino los trabajos globales)
+    $galeriaFinal = $trabajosGaleria;
+    if (isset($record['galeria']) && is_array($record['galeria']) && count($record['galeria']) >= 3) {
+        $galeriaFinal = [];
+        foreach ($record['galeria'] as $galItem) {
+            $galeriaFinal[] = [
+                "titulo" => isset($galItem['titulo']) ? htmlspecialchars($galItem['titulo']) : "Vista Prototipo",
+                "imagen" => isset($galItem['imagen']) ? htmlspecialchars($galItem['imagen']) : "",
+                "descripcion" => isset($galItem['descripcion']) ? htmlspecialchars($galItem['descripcion']) : ""
+            ];
+        }
+    }
+
     // Agregar los 3 trabajos a la grilla HTML
-    foreach ($trabajosGaleria as $tIndex => $trabajo) {
+    foreach ($galeriaFinal as $tIndex => $trabajo) {
         $img = $trabajo['imagen'];
         $titulo = $trabajo['titulo'];
         $desc = $trabajo['descripcion'];
