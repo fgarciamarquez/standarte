@@ -294,7 +294,15 @@ function useFallback(newsData) {
   }
 
   // Dinamizar imagen del pool completo de Standarte para evitar repetir la misma imagen
-  const randomImage = galleryImages[Math.floor(Math.random() * galleryImages.length)];
+  const usedImages = newsData.slice(0, 8).map(art => art.image);
+  let availableImages = galleryImages.filter(img => {
+    const pathWithSlash = `/${img.full}`;
+    return !usedImages.includes(img.full) && !usedImages.includes(pathWithSlash);
+  });
+  if (availableImages.length === 0) {
+    availableImages = galleryImages;
+  }
+  const randomImage = availableImages[Math.floor(Math.random() * availableImages.length)];
   console.log(`-> Dinamizando fallback con imagen aleatoria: /${randomImage.full} (alt: ${randomImage.alt})`);
   
   const customFigureHtml = `<figure style="margin: 40px 0; text-align: center;"><img src="/${randomImage.full}" alt="${randomImage.alt}" style="width: 100%; max-width: 750px; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);"><figcaption style="font-size: 13px; color: #777; margin-top: 8px; font-style: italic;">${randomImage.desc}.</figcaption></figure>`;
