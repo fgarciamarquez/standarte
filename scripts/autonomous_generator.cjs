@@ -30,7 +30,7 @@ const galleryImages = [
 const cities = [
   { name: 'Madrid', query: 'IFEMA+ferias+madrid', hl: 'es', gl: 'ES', ceid: 'ES:es' },
   { name: 'Málaga', query: 'FYCMA+ferias+malaga', hl: 'es', gl: 'ES', ceid: 'ES:es' },
-  { name: 'Lisboa', query: 'FIL+feiras+lisboa', hl: 'pt-PT', gl: 'PT', ceid: 'PT:pt' }
+  { name: 'Lisboa', query: 'FIL+feiras+lisboa', hl: 'pt-PT', gl: 'PT', ceid: 'PT:pt-150' }
 ];
 
 // Base de datos de reserva por si no hay API Key de Gemini
@@ -77,6 +77,13 @@ const fallbackDatabase = [
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
     https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+      if (res.statusCode === 301 || res.statusCode === 302) {
+        const redirectUrl = res.headers.location;
+        if (redirectUrl) {
+          resolve(fetchUrl(redirectUrl));
+          return;
+        }
+      }
       let data = '';
       res.on('data', (chunk) => data += chunk);
       res.on('end', () => resolve(data));
