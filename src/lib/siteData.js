@@ -18,6 +18,8 @@ export const routes = {
     team: 'equipo',
     contact: 'contacto',
     madrid: 'construccion_stands_madrid',
+    barcelona: 'construccion_stands_barcelona',
+    bilbao: 'construccion_stands_bilbao',
     lisboa: 'construccion_stands_lisboa',
     malaga: 'construccion_stands_malaga',
     noticias: 'noticias'
@@ -30,6 +32,8 @@ export const routes = {
     team: 'team',
     contact: 'contact',
     madrid: 'stand_construction_madrid',
+    barcelona: 'stand_construction_barcelona',
+    bilbao: 'stand_construction_bilbao',
     lisboa: 'stand_construction_lisbon',
     malaga: 'stand_construction_malaga',
     noticias: 'news'
@@ -42,6 +46,8 @@ export const routes = {
     team: 'team',
     contact: 'kontakt',
     madrid: 'messestandbau_madrid',
+    barcelona: 'messestandbau_barcelona',
+    bilbao: 'messestandbau_bilbao',
     lisboa: 'messestandbau_lissabon',
     malaga: 'messestandbau_malaga',
     noticias: 'nachrichten'
@@ -54,6 +60,8 @@ export const routes = {
     team: 'tuandui',
     contact: 'lianxi',
     madrid: 'madrid_zhantai_dajian',
+    barcelona: 'barcelona_zhantai_dajian',
+    bilbao: 'bilbao_zhantai_dajian',
     lisboa: 'lisbon_zhantai_dajian',
     malaga: 'malaga_zhantai_dajian',
     noticias: 'xinwen'
@@ -66,6 +74,8 @@ export const routes = {
     team: 'team',
     contact: 'sampark',
     madrid: 'madrid_stand_nirman',
+    barcelona: 'barcelona_stand_nirman',
+    bilbao: 'bilbao_stand_nirman',
     lisboa: 'lisbon_stand_nirman',
     malaga: 'malaga_stand_nirman',
     noticias: 'samachar'
@@ -78,6 +88,8 @@ export const routes = {
     team: 'equipa',
     contact: 'contacto',
     madrid: 'construcao_stands_madrid',
+    barcelona: 'construcao_stands_barcelona',
+    bilbao: 'construcao_stands_bilbao',
     lisboa: 'construcao_stands_lisboa',
     malaga: 'construcao_stands_malaga',
     noticias: 'noticias'
@@ -88,7 +100,7 @@ export const copy = {
   es: {
     nav: { services: 'Servicios', custom: 'Galería', noticias: 'Noticias', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Construcción de stands en Madrid y España',
-    seoDescription: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
+    seoDescription: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
     heroTitle: 'Diseño y construcción de stands internacionales',
     heroSubtitle: 'Espacios que inspiran',
     servicesTitle: 'Servicios',
@@ -671,6 +683,64 @@ export const cityData = {
       pt: {
         intro: 'A Standarte desenvolve stands em Málaga através de um processo completo: design técnico, produção, logística, montagem, validação e coordenação no local antes da abertura do evento.',
         detail: 'Este serviço destina-se a agências de comunicação, expositores e marcas que precisam de execução fiável, acabamentos cuidados e um stand preparado para visitantes profissionais.'
+      }
+    }
+  },
+  barcelona: {
+    city: { es: 'Barcelona', en: 'Barcelona', de: 'Barcelona', zh: '巴塞罗那', hi: 'बार्सिलोना', pt: 'Barcelona' },
+    content: {
+      es: {
+        intro: 'Barcelona es una de las capitales mundiales del diseño y la actividad congresística de vanguardia. En Standarte trabajamos la construcción de stands a medida en Barcelona con un enfoque integral: desde el modelado 3D fidedigno hasta la logística y montaje final en recintos líderes como Fira Barcelona.',
+        detail: 'Perfecto para marcas globales y agencias exigentes que buscan acabados de alta carpintaria y precisión técnica en eventos de gran relevancia internacional.'
+      },
+      en: {
+        intro: 'Barcelona is a global hub for design and premium congresses. Standarte develops high-impact exhibition stands in Barcelona, managing technical design, premium carpentry, logistics, and on-site assembly at Fira Barcelona.',
+        detail: 'Aimed at international brands and communication agencies requiring top-tier visual finishes, reliability, and flawless execution during major world-class exhibitions.'
+      },
+      de: {
+        intro: 'Barcelona ist eines der weltweiten Zentren für Design und zukunftsweisende Messen. Standarte realisiert erstklassige Messestände in Barcelona durch einen vollständigen und integrierten Prozess an Standorten wie der Fira Barcelona.',
+        detail: 'Die ideale Lösung für globale Marken und anspruchsvolle Agenturen, die höchste Präzision, edle Holzverarbeitung und erstklassige Ästhetik suchen.'
+      },
+      zh: {
+        intro: '巴塞罗那是设计与前沿会议的全球中心。Standarte 在巴塞罗那（如巴塞罗那会展中心 Fira Barcelona）提供完整的高端展台定制搭建服务，涵盖3D渲染设计、精细木工、物流及现场安装。',
+        detail: '专为在重大国际展会中追求顶级视觉呈现、工艺品质与可靠执行的全球品牌和公关机构而设计。'
+      },
+      hi: {
+        intro: 'बार्सिलोना डिजाइन और प्रमुख कांग्रेस गतिविधियों के लिए एक वैश्विक केंद्र है। Standarte बार्सिलोना (जैसे फिरा बार्सिलोना) में तकनीकी डिजाइन, प्रीमियम बढ़ईगीरी, लॉजिस्टिक्स और ऑन-साइट असेंबली का प्रबंधन करते हुए उच्च प्रभाव वाले प्रदर्शनी स्टैंड विकसित करता है।',
+        detail: 'यह सेवा उन अंतरराष्ट्रीय ब्रांडों और एजेंसियों के लिए है जिन्हें प्रमुख विश्व स्तरीय प्रदर्शनियों के दौरान बेहतरीन फिनish और त्रुटिहीन निष्पादन की आवश्यकता होती है।'
+      },
+      pt: {
+        intro: 'Barcelona é um dos principais polos mundiais de design e atividade de congressos de referência. Na Standarte desenvolvemos stands à medida em Barcelona com um processo completo: desde a conceção técnica em 3D até à montagem final na Fira Barcelona.',
+        detail: 'A solução ideal para marcas globais e agências exigentes que procuram acabamentos premium de alta carpintaria e rigor na execução ferial.'
+      }
+    }
+  },
+  bilbao: {
+    city: { es: 'Bilbao', en: 'Bilbao', de: 'Bilbao', zh: '毕尔巴鄂', hi: 'बिलबाओ', pt: 'Bilbao' },
+    content: {
+      es: {
+        intro: 'Bilbao representa el corazón industrial y la ingeniería de vanguardia del norte de España. En Standarte llevamos a cabo el diseño y montaje de stands de alta carpintería en Bilbao, aportando solidez constructiva y una presencia de marca inmejorable en el Bilbao Exhibition Centre (BEC).',
+        detail: 'Optimizamos la circulación de personas y creamos espacios de permanencia confortables, ideales para empresas industriales de alta exigencia técnica.'
+      },
+      en: {
+        intro: 'Bilbao represents the industrial heart and cutting-edge engineering of northern Spain. Standarte produces high-carpentry exhibition stands in Bilbao, delivering robust construction and an impressive brand presence at the Bilbao Exhibition Centre (BEC).',
+        detail: 'We optimize human flow and integrate comfortable spaces of permanence, perfectly suited for industrial corporations with high technical standards.'
+      },
+      de: {
+        intro: 'Bilbao ist das industrielle Herz und das Zentrum fortschrittlicher Ingenieurskunst im Norden Spaniens. Standarte entwirft und montiert hochwertige Messestände in Bilbao für eine starke und solide Markenpräsenz im Bilbao Exhibition Centre (BEC).',
+        detail: 'Wir optimieren den Verkehrsfluss und schaffen komfortable Verweilräume, die sich ideal für Industrieunternehmen mit hohen technischen Anforderungen eignen.'
+      },
+      zh: {
+        intro: '毕尔巴鄂代表了西班牙北部的工业核心和尖端工程。Standarte 在毕尔巴鄂会展中心（BEC）提供高水准的展台设计与木工搭建服务，为您的品牌打造坚实、大气且极具辨识度的展会现场形象。',
+        detail: '我们专注于优化人流设计并融入舒适的停留空间，完美满足高技术标准工业企业的商业展示需求。'
+      },
+      hi: {
+        intro: 'बिलबाओ उत्तरी स्पेन के औद्योगिक और अत्याधुनिक इंजीनियरिंग का प्रतिनिधित्व करता है। Standarte बिलबाओ (जैसे बीईसी बिलबाओ) में उच्च गुणवत्ता वाले बढ़ईगीरी स्टैंड का डिजाइन और निर्माण करता है, जो मजबूत उपस्थिति प्रदान करता है।',
+        detail: 'हम मानव प्रवाह को अनुकूलित करते हैं और आरामदायक स्थायित्व के स्थान स्थापित करते हैं, जो उच्च तकनीकी मानकों वाले औद्योगिक निगमों के लिए बिल्कुल उपयुक्त हैं।'
+      },
+      pt: {
+        intro: 'Bilbao representa o coração industrial e a engenharia de ponta do norte de Espanha. Na Standarte concebemos e montamos stands de alta carpintaria em Bilbao, proporcionando solidez construtiva e uma forte presença de marca no Bilbao Exhibition Centre (BEC).',
+        detail: 'Otimizamos o design de fluxo humano e criamos espaços de permanência confortáveis, ideais para empresas industriais com elevados padrões técnicos.'
       }
     }
   }

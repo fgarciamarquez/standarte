@@ -64,7 +64,7 @@
     hi: 'hi-IN',
     pt: 'pt-PT'
   };
-  const cityKeys = ['madrid', 'lisboa', 'malaga'];
+  const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga'];
   const serviceIcons = ['icon-pencil', 'icon-crop', 'icon-layers'];
   const portfolioFilters = ['all', 'textil', 'madera'];
   const cookieSettingsLabels = {
@@ -194,6 +194,8 @@
       ['Equipo', pathFor('es', 'team')],
       ['Contacto', pathFor('es', 'contact')],
       ['Construcción de stands en Madrid', pathFor('es', 'madrid')],
+      ['Construcción de stands en Barcelona', pathFor('es', 'barcelona')],
+      ['Construcción de stands en Bilbao', pathFor('es', 'bilbao')],
       ['Construcción de stands en Lisboa', pathFor('es', 'lisboa')],
       ['Construcción de stands en Málaga', pathFor('es', 'malaga')]
     ];
@@ -220,7 +222,7 @@
         '@id': `${baseUrl}/#website`,
         url: `${baseUrl}/`,
         name: 'Standarte',
-        description: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
+        description: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
         inLanguage: 'es-ES',
         publisher: { '@id': `${baseUrl}/#organization` }
       },

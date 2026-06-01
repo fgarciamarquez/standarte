@@ -80,7 +80,7 @@
 
 <svelte:head>
   <title>Noticias, Ferias y Arquitectura Efímera | Standarte</title>
-  <meta name="description" content="Artículos de actualidad sobre ferias en Madrid, Lisboa y Málaga. Descubre las mejores estrategias de diseño de stands a medida, sombra y circulación de personas." />
+  <meta name="description" content="Artículos de actualidad sobre ferias en Madrid, Barcelona, Bilbao, Lisboa y Málaga. Descubre las mejores estrategias de diseño de stands a medida, sombra y circulación de personas." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://standarte.es/noticias/" />
 </svelte:head>
@@ -103,7 +103,7 @@
       <span class="eyebrow">Actualidad Ferial y Tendencias</span>
       <h1>Noticias y Arquitectura Efímera</h1>
       <p class="hero-lead">
-        Analizamos la actualidad en los recintos de Madrid, Lisboa y Málaga, diseñando soluciones temporales que destacan, optimizan la circulación y garantizan el confort.
+        Analizamos la actualidad en los recintos de Madrid, Barcelona, Bilbao, Lisboa y Málaga, diseñando soluciones temporales que destacan, optimizan la circulación y garantizan el confort.
       </p>
     </div>
   </div>
@@ -117,6 +117,12 @@
       </button>
       <button type="button" class:active={activeFilter === 'madrid'} on:click={() => activeFilter = 'madrid'}>
         Madrid
+      </button>
+      <button type="button" class:active={activeFilter === 'barcelona'} on:click={() => activeFilter = 'barcelona'}>
+        Barcelona
+      </button>
+      <button type="button" class:active={activeFilter === 'bilbao'} on:click={() => activeFilter = 'bilbao'}>
+        Bilbao
       </button>
       <button type="button" class:active={activeFilter === 'málaga'} on:click={() => activeFilter = 'málaga'}>
         Málaga
