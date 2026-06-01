@@ -76,13 +76,35 @@
       window.removeEventListener('scroll', handleScroll);
     };
   });
+
+  const seoTitles = {
+    es: 'Noticias y Ferias en Madrid, Barcelona, Bilbao, Lisboa, Málaga y Badajoz | Standarte',
+    en: 'News and Fairs in Madrid, Barcelona, Bilbao, Lisbon, Malaga and Badajoz | Standarte',
+    de: 'Nachrichten und Messen in Madrid, Barcelona, Bilbao, Lissabon, Malaga und Badajoz | Standarte',
+    pt: 'Notícias e Feiras em Madrid, Barcelona, Bilbao, Lisboa, Málaga e Badajoz | Standarte',
+    zh: '马德里、巴塞罗那、毕尔巴鄂、里斯本、马拉加和巴达霍斯的新闻与展会 | Standarte',
+    hi: 'मैड्रिड, बार्सिलोना, बिलबाओ, लिस्बन, मलागा और बादाहोज़ में समाचार और मेले | Standarte'
+  };
+
+  const seoDescriptions = {
+    es: 'Artículos de actualidad sobre ferias en Madrid, Barcelona, Bilbao, Lisboa, Málaga y Badajoz. Las mejores estrategias de diseño de stands a medida.',
+    en: 'Current articles on fairs in Madrid, Barcelona, Bilbao, Lisbon, Malaga and Badajoz. The best custom exhibition stand design strategies.',
+    de: 'Aktuelle Artikel über Messen in Madrid, Barcelona, Bilbao, Lissabon, Malaga und Badajoz. Die besten Strategien für das Design von Messeständen.',
+    pt: 'Artigos atuais sobre feiras em Madrid, Barcelona, Bilbao, Lisboa, Málaga e Badajoz. As melhores estratégias de design de stands à medida.',
+    zh: '关于马德里、巴塞罗那、毕尔巴鄂、里斯本、马拉加和巴达霍斯展会的最新文章。最佳的定制展台设计策略。',
+    hi: 'मैड्रिड, बार्सिलोना, बिलबाओ, लिस्बन, मलागा और बादाहोज़ में मेलों पर वर्तमान लेख। सर्वश्रेष्ठ कस्टम प्रदर्शनी स्टैंड डिजाइन रणनीतियाँ।'
+  };
 </script>
 
 <svelte:head>
-  <title>Noticias y Ferias en Madrid, Barcelona, Bilbao, Lisboa y Málaga | Standarte</title>
-  <meta name="description" content="Artículos de actualidad sobre ferias en Madrid, Barcelona, Bilbao, Lisboa y Málaga. Descubre las mejores estrategias de diseño de stands a medida, sombra y circulación de personas." />
+  <title>{seoTitles[lang] || seoTitles.es}</title>
+  <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://standarte.es/noticias/" />
+  <link rel="canonical" href={`https://standarte.es${pathFor(lang, 'noticias')}`} />
+  {#each languages as alternateLang}
+    <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es${pathFor(alternateLang, 'noticias')}`} />
+  {/each}
+  <link rel="alternate" hreflang="x-default" href={`https://standarte.es${pathFor('es', 'noticias')}`} />
 </svelte:head>
 
 <header class="site-header static-header">

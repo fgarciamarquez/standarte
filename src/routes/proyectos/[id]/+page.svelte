@@ -241,7 +241,7 @@
 <svelte:head>
   <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D प्रोटोटाइप' : '3D Prototype'))))} | Standarte</title>
   <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href={`https://standarte.es/proyectos/${project.id}`} />
   {@html jsonLdString}
 </svelte:head>

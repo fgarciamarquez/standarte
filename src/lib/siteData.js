@@ -787,7 +787,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCANTICO/2.avif',
     full: 'img/trabajos/TCANTICO/1.avif',
-    alt: 'TCANTICO',
+    alt: 'Diseño de stand a medida de madera para Cantico',
     categories: ['madera'],
     description: {
       es: 'Un stand con presencia arquitectónica clara y zonas abiertas que facilitan la conversación comercial. La marca gana visibilidad sin crear barreras para el visitante.',
@@ -801,7 +801,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCELUMATEC/2.avif',
     full: 'img/trabajos/TCELUMATEC/4.avif',
-    alt: 'TCELUMATEC',
+    alt: 'Construcción de stand industrial a medida para Elumatec',
     categories: ['madera'],
     description: {
       es: 'La estructura ordenada y los planos limpios transmiten precisión técnica. Es una solución pensada para reforzar confianza en productos industriales o de alto valor.',
@@ -815,7 +815,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCCONSTELLIUM/1.avif',
     full: 'img/trabajos/TCCONSTELLIUM/2.avif',
-    alt: 'TCCONSTELLIUM',
+    alt: 'Diseño de stand de gran escala para Constellium',
     categories: ['madera'],
     description: {
       es: 'El espacio combina volumen, rotulación visible y una circulación sencilla. Ayuda a que el visitante identifique la marca rápido y entienda dónde iniciar el contacto.',
@@ -829,7 +829,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCFARNEL/1.avif',
     full: 'img/trabajos/TCFARNEL/2.avif',
-    alt: 'TCFARNEL',
+    alt: 'Stand retroiluminado con textiles tensados para Farnel',
     categories: ['madera', 'textil'],
     description: {
       es: 'La combinación de superficies sólidas y elementos textiles permite un stand ligero pero muy visible. Aporta impacto visual sin perder rapidez de montaje.',
@@ -843,7 +843,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCMAGNOLIA/1.avif',
     full: 'img/trabajos/TCMAGNOLIA/2.avif',
-    alt: 'TCMAGNOLIA',
+    alt: 'Montaje de stand premium con acabados de carpintería Magnolia',
     categories: ['madera'],
     description: {
       es: 'El diseño crea un entorno cuidado y acogedor para recibir visitantes. Refuerza una percepción de marca cercana, profesional y preparada para reuniones comerciales.',
@@ -857,7 +857,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCMFI/1.avif',
     full: 'img/trabajos/TCMFI/2.avif',
-    alt: 'TCMFI',
+    alt: 'Stand modular de madera y diseño ferial para MFI',
     categories: ['madera'],
     description: {
       es: 'La composición aprovecha el espacio para ordenar mensajes, producto y atención al cliente. Esto facilita que el equipo comercial trabaje con más fluidez durante la feria.',
@@ -871,7 +871,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCORGADATA/1.avif',
     full: 'img/trabajos/TCORGADATA/2.avif',
-    alt: 'TCORGADATA',
+    alt: 'Stand corporativo para captación de leads de Orgadata',
     categories: ['madera'],
     description: {
       es: 'Un stand corporativo con lectura rápida de marca y zonas funcionales. Está orientado a generar confianza y convertir visitas espontáneas en contactos cualificados.',
@@ -885,7 +885,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCEMIL/1.avif',
     full: 'img/trabajos/TCEMIL/1.avif',
-    alt: 'TCEMIL',
+    alt: 'Stand ferial de carpintería premium lacada para Emil',
     categories: ['madera'],
     description: {
       es: 'El proyecto prioriza una presencia sólida y ordenada para que la marca parezca estable y fiable. Es útil cuando el objetivo es vender seguridad antes que espectáculo.',
@@ -899,7 +899,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCPHARMA/1.avif',
     full: 'img/trabajos/TCPHARMA/2.avif',
-    alt: 'TCPHARMA',
+    alt: 'Stand de marca de alta fidelidad para Pharma',
     categories: ['madera', 'textil'],
     description: {
       es: 'La imagen limpia y técnica favorece una percepción de rigor, higiene y control. Es especialmente eficaz para sectores donde la confianza profesional decide la compra.',
@@ -913,7 +913,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCSCHOEFFEL/4.avif',
     full: 'img/trabajos/TCSCHOEFFEL/2.avif',
-    alt: 'TCSCHOEFFEL',
+    alt: 'Stand de textil tensado y retroiluminado para Schoeffel',
     categories: ['textil'],
     description: {
       es: 'El uso textil permite superficies amplias, ligeras y muy fotogénicas. Aumenta la capacidad de atraer miradas y mejora la presencia de la marca en fotografías de feria.',
@@ -927,7 +927,7 @@ export const portfolios = [
   {
     thumb: 'img/trabajos/TCSES/2.avif',
     full: 'img/trabajos/TCSES/1.avif',
-    alt: 'TCSES',
+    alt: 'Stand con gran impacto visual y rotulación corporativa para SES',
     categories: ['textil'],
     description: {
       es: 'La gráfica de gran formato convierte el stand en un punto de referencia dentro del pabellón. Esto ayuda a que los visitantes recuerden la marca y la encuentren de nuevo.',
