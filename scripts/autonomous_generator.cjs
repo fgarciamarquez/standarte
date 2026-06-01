@@ -93,6 +93,17 @@ async function run() {
     let selectedItem = null;
     let items = [];
 
+    // Calcular ciudad de reserva rotativa del día para evitar colisiones consecutivas
+    let fallbackCityIndex = dayOfYear % cities.length;
+    if (newsData.length > 0) {
+      const lastLocation = newsData[0].location;
+      if (cities[fallbackCityIndex].name.toLowerCase() === lastLocation.toLowerCase()) {
+        fallbackCityIndex = (fallbackCityIndex + 1) % cities.length;
+        console.log(`-> Rotando índice de ciudad fallback para evitar colisión consecutiva con: ${lastLocation}`);
+      }
+    }
+    const fallbackCity = cities[fallbackCityIndex];
+
     for (let i = 0; i < cities.length; i++) {
       const cityIndex = (dayOfYear + i) % cities.length;
       const city = cities[cityIndex];
@@ -132,15 +143,27 @@ async function run() {
       }
     }
 
+    let usingDynamicFallback = false;
     if (items.length === 0) {
-      console.log('-> No se encontraron noticias en ninguna de las ciudades configuradas. Utilizando fallback.');
-      useFallback(newsData);
-      return;
+      if (geminiApiKey) {
+        console.log(`-> No se encontraron noticias por RSS, pero detectamos GEMINI_API_KEY. Activando Generación Dinámica de Actualidad en ${fallbackCity.name}...`);
+        selectedCity = fallbackCity;
+        selectedItem = {
+          title: `Innovación y diseño efímero de vanguardia en los recintos feriales de ${selectedCity.name}`,
+          source: "Standarte Research",
+          link: "https://standarte.es"
+        };
+        usingDynamicFallback = true;
+      } else {
+        console.log('-> No se encontraron noticias en ninguna de las ciudades configuradas y no hay GEMINI_API_KEY. Utilizando fallback estático.');
+        useFallback(newsData);
+        return;
+      }
     }
 
     // 4. Redacción con Gemini si hay API Key, de lo contrario fallback
     if (!geminiApiKey) {
-      console.log('-> GEMINI_API_KEY no detectada. Utilizando base de datos de fallback premium.');
+      console.log('-> GEMINI_API_KEY no detectada. Utilizando base de datos de fallback estático.');
       useFallback(newsData);
       return;
     }
@@ -151,11 +174,9 @@ async function run() {
     // Convertir el pool de imágenes en texto estructurado para el prompt
     const imagesListText = galleryImages.map((img, idx) => `ID ${idx + 1}: URL: "/${img.full}", Alt: "${img.alt}", Contexto: "${img.desc}"`).join('\n');
 
-    const promptText = `Eres un redactor experto en marketing de eventos y arquitectura efímera para la empresa Standarte (https://standarte.es). Tu tarea es redactar y traducir un artículo de blog premium en 6 idiomas (es, en, de, pt, zh, hi) basado en la siguiente noticia de actualidad:
-Noticia original: ${selectedItem.title}
-Fuente original: ${selectedItem.source}
-Enlace original: ${selectedItem.link}
-Ubicación del evento ferial: ${selectedCity.name} (FYCMA si es Málaga, IFEMA si es Madrid, FIL si es Lisboa, Fira Barcelona si es Barcelona, BEC si es Bilbao)
+    let promptText = '';
+    if (usingDynamicFallback) {
+      promptText = `Eres un redactor experto en marketing de eventos y arquitectura efímera para la empresa Standarte (https://standarte.es). Tu tarea es seleccionar un evento ferial o congreso importante real de la ciudad de ${selectedCity.name} (por ejemplo: IFEMA si es Madrid, FYCMA si es Málaga, FIL o Web Summit si es Lisboa, Fira Barcelona si es Barcelona, BEC si es Bilbao) y redactar un artículo premium de blog corporativo en 6 idiomas (es, en, de, pt, zh, hi) sobre las últimas tendencias de diseño de stands a medida de alta carpintería para dicho evento ferial.
 
 REGLAS ESTRICTAS DE NEGOCIO Y CONTENIDO PARA TODOS LOS IDIOMAS:
 1. El artículo debe centrarse EXCLUSIVAMENTE en la construcción de stands de diseño para INTERIORES dentro de recintos feriales cerrados.
@@ -181,6 +202,38 @@ Cada una de estas llaves debe ser un objeto con los siguientes campos:
 - excerpt: Un resumen atractivo de 2 líneas (en el idioma correspondiente).
 - content: El cuerpo del artículo redactado en HTML (en el idioma correspondiente) conteniendo la figura de la imagen inyectada.
 - seoKeywords: Un array de 5 palabras clave de SEO altamente relevantes (en el idioma correspondiente).`;
+    } else {
+      promptText = `Eres un redactor experto en marketing de eventos y arquitectura efímera para la empresa Standarte (https://standarte.es). Tu tarea es redactar y traducir un artículo de blog premium en 6 idiomas (es, en, de, pt, zh, hi) basado en la siguiente noticia de actualidad:
+Noticia original: ${selectedItem.title}
+Fuente original: ${selectedItem.source}
+Enlace original: ${selectedItem.link}
+Ubicación del evento ferial: ${selectedCity.name} (FYCMA si es Málaga, IFEMA si es Madrid, FIL si es Lisboa, Fira Barcelona si es Barcelona, BEC si es Bilbao)
+
+REGLAS ESTRICTAS DE NEGOCIO Y CONTENIDO PARA TODOS LOS IDIOMAS:
+1. El artículo debe centrarse EXCLUSIVAMENTE en la construcción de stands de diseño para INTERIORES dentro de recintos feriales cerrados.
+2. Queda PROHIBIDO utilizar conceptos climáticos o de exterior, tales como "confort térmico", "sombra", "calor", "eventos exteriores" o "carpas".
+3. Debes incorporar de forma natural, elegante y en el contexto adecuado los siguientes 5 términos clave de nuestro glosario arquitectónico de Standarte (traducidos al idioma correspondiente de forma precisa):
+   - Español: "Arquitectura de atención", "Espacios de permanencia", "Diseño de flujo humano", "Estructuras de concentración visual", "Microarquitectura experiencial".
+   - Inglés (en): "Attention architecture", "Spaces of permanence", "Human flow design", "Visual concentration structures", "Experiential microarchitecture".
+   - Alemán (de): "Aufmerksamkeitsarchitektur", "Verweilräume", "Gestaltung des menschlichen Flusses", "visuelle Konzentrationsstrukturen", "erlebnisorientierte Mikroarchitektur".
+   - Portugués (pt): "Arquitetura de atención", "Espaços de permanência", "Design de fluxo humano", "Estruturas de concentración visual", "Microarquitetura experiencial".
+   - Chino (zh): "注意力建筑", "停留空间", "人流设计", "视觉聚焦结构", "体验式微建筑".
+   - Hindi (hi): "ध्यान वास्तुकला", "स्थायित्व के स्थान", "मानव प्रवाह डिजाइन", "दृश्य एकाग्रता संरचनाएं", "अनुभवात्मक सूक्ष्म वास्तुकला".
+4. El tono debe ser profesional, sofisticado y persuasivo.
+5. El contenido del artículo debe estar maquetado en HTML limpio y semántico (usando <h2>, <h3>, <p>, <ul>, <li>, <strong>). No incluyas la estructura general de <html>, <head> ni <body>.
+6. Debes INYECTAR en medio de tu artículo una sola etiqueta de imagen <figure> maquetada con esta estructura exacta (utiliza la misma URL de imagen elegida para todos los idiomas):
+   <figure style="margin: 40px 0; text-align: center;"><img src="[URL_ELEGIDA]" alt="[ALT_ELEGIDO]" style="width: 100%; max-width: 750px; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);"><figcaption style="font-size: 13px; color: #777; margin-top: 8px; font-style: italic;">[CAPTION_PERSONALIZADA_Y_HILADA_CON_EL_TEXTO_EN_EL_IDIOMA_CORRESPONDIENTE]</figcaption></figure>
+   Elige la imagen que mejor encaje con tu redacción del siguiente listado de imágenes reales de nuestra galería de Standarte:
+${imagesListText}
+7. Al final de la sección 'content' (dentro del propio HTML), añade un elegante bloque de llamado a la acción (CTA) con enlaces a la sección de contacto de Standarte para solicitar un modelado 3D realista en el idioma correspondiente.
+
+Genera un objeto JSON puro conteniendo las traducciones para cada uno de los 6 idiomas. El objeto debe tener exactamente las llaves: "es", "en", "de", "pt", "zh", "hi".
+Cada una de estas llaves debe ser un objeto con los siguientes campos:
+- title: Un título cautivador y optimizado para SEO (en el idioma correspondiente).
+- excerpt: Un resumen atractivo de 2 líneas (en el idioma correspondiente).
+- content: El cuerpo del artículo redactado en HTML (en el idioma correspondiente) conteniendo la figura de la imagen inyectada.
+- seoKeywords: Un array de 5 palabras clave de SEO altamente relevantes (en el idioma correspondiente).`;
+    }
 
     const requestBody = JSON.stringify({
       contents: [{
@@ -341,7 +394,16 @@ function useFallback(newsData) {
   
   // 1. Decidir cuál plantilla usar basándonos en el día del año (para rotación infinita)
   const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
-  const templateIndex = dayOfYear % fallbackDatabase.length;
+  let templateIndex = dayOfYear % fallbackDatabase.length;
+  
+  // Evitar usar el mismo destino que la última noticia en la base de datos
+  if (newsData.length > 0) {
+    const lastLocation = newsData[0].location;
+    if (fallbackDatabase[templateIndex].es.location.toLowerCase() === lastLocation.toLowerCase()) {
+      templateIndex = (templateIndex + 1) % fallbackDatabase.length;
+      console.log(`-> Evitando duplicidad de ciudad con el último artículo. Rotando índice a: ${templateIndex}`);
+    }
+  }
   const originalTemplate = fallbackDatabase[templateIndex];
   
   console.log(`-> Seleccionada plantilla de fallback: ${originalTemplate.es.location} (Índice: ${templateIndex})`);
