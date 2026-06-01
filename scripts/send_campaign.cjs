@@ -163,6 +163,17 @@ async function run() {
         console.log('   ¡Éxito! El correo de prueba se ha enviado y procesado.');
         console.log(`   ID de sesión: ${response.timestamp}`);
         console.log(`   Resultado: ${response.results[0].status} (${response.results[0].method})`);
+
+        // Guardar el HTML generado en un archivo local para previsualización inmediata en el navegador
+        const previewPath = path.join(__dirname, '..', 'static', 'test_email_preview.html');
+        fs.writeFileSync(previewPath, response.results[0].generated_html, 'utf8');
+        console.log(`\n==========================================================`);
+        console.log(`   [PREVISUALIZACIÓN DE EMAIL GENERADA]`);
+        console.log(`   Puedes abrir y ver el correo exacto en tu navegador en:`);
+        console.log(`   http://localhost:82/STANDARTE_SVELTE/static/test_email_preview.html`);
+        console.log(`   o abriendo directamente el archivo:`);
+        console.log(`   static/test_email_preview.html`);
+        console.log(`==========================================================\n`);
       } else {
         console.error('   [FALLO] No se pudo enviar el correo:', response.error || response);
       }
