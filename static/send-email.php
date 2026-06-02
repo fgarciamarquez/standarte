@@ -36,6 +36,60 @@ define("SECURE_TOKEN", "STANDARTE_MAIL_SECURE_2026");
 $logFile = __DIR__ . '/sent_emails_log.json';
 require_once __DIR__ . '/admin/email_campaing/campaign_throttle.php';
 
+// Cargar configuración de Supabase
+$configFile = __DIR__ . '/supabase-config.php';
+if (!is_file($configFile)) {
+    $configFile = dirname(__DIR__) . '/supabase-config.php';
+}
+if (is_file($configFile)) {
+    require_once $configFile;
+}
+
+/**
+ * Realiza peticiones HTTP a la API REST de Supabase (IPv4 Compatible)
+ */
+function send_email_supabase_request($method, $endpoint, $data = null) {
+    if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
+        return ['code' => 500, 'body' => 'Configuración de Supabase ausente.'];
+    }
+
+    $ch = curl_init();
+    $url = SUPABASE_URL . '/rest/v1/' . $endpoint;
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    
+    $headers = [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY,
+        'Content-Type: application/json'
+    ];
+    
+    if ($method === 'POST') {
+        $headers[] = 'Prefer: resolution=merge-duplicates';
+    } else if ($method === 'PATCH') {
+        $headers[] = 'Prefer: return=representation';
+    }
+    
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    
+    if ($data !== null) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    }
+    
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    return [
+        'code' => $httpCode,
+        'body' => json_decode($response, true) ?: $response
+    ];
+}
+
+
 /**
  * Valida un email de forma avanzada para evitar rebotes:
  * 1. Sintaxis básica mediante FILTER_VALIDATE_EMAIL.
@@ -198,6 +252,38 @@ foreach ($data['records'] as $index => $record) {
         continue;
     }
 
+    // Validación Supabase: Exclusión por desuscripción o rebotes previos (LSSI/RGPD)
+    $isExcluded = false;
+    $excludeReason = '';
+    
+    if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $res = send_email_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
+        if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
+            $supaContact = $res['body'][0];
+            $status = $supaContact['status'] ?? 'active';
+            if ($status === 'unsubscribed') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido: El destinatario se ha dado de baja de forma voluntaria de las listas comerciales (LSSI/RGPD).";
+            } else if ($status === 'bounced') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido: La dirección de correo electrónico está marcada como rebotada/fallida en la base de datos de Supabase.";
+            }
+        }
+    }
+    
+    if ($isExcluded) {
+        $totalRechazados++;
+        $resultados[] = [
+            "index" => $index,
+            "empresa" => $empresa,
+            "email" => $email,
+            "status" => "RECHAZADO",
+            "motivo" => $excludeReason
+        ];
+        continue;
+    }
+
+
     // Validación 3: Control de envío único (bloqueo de 1 mes por empresa o email)
     $historyFile = __DIR__ . '/admin/email_campaing/data/campaign-history.json';
     $lastSentTime = campaign_check_throttle($email, $empresa, $historyFile);
@@ -214,8 +300,25 @@ foreach ($data['records'] as $index => $record) {
     }
 
 
+    // Preparar tokens y enlaces dinámicos para tracking y baja voluntaria conforme a LSSI/RGPD
+    $emailBase64 = base64_encode($email);
+    $unsubToken = md5($email . UNSUBSCRIBE_SECRET_SALT);
+    
+    // Obtener host de la petición para compatibilidad local (MAMP) y remota (Producción)
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+    $hostName = $_SERVER['HTTP_HOST'] ?? 'standarte.es';
+    $baseDomain = (strpos($hostName, 'localhost') !== false) ? $protocol . $hostName . '/STANDARTE_SVELTE' : 'https://standarte.es';
+    
+    $unsubscribeLink = $baseDomain . "/unsubscribe.php?email=" . urlencode($emailBase64) . "&token=" . urlencode($unsubToken);
+    
+    // Enlaces enmascarados para Click Tracker Nominal
+    $ctaButtonLink = $baseDomain . "/email-track.php?email=" . urlencode($emailBase64) . "&to=" . urlencode('contacto') . "&from=main-cta-button";
+    $footerContactLink = $baseDomain . "/email-track.php?email=" . urlencode($emailBase64) . "&to=" . urlencode('contacto') . "&from=footer-contact";
+    $footerWebLink = $baseDomain . "/email-track.php?email=" . urlencode($emailBase64) . "&to=" . urlencode('/') . "&from=footer-web";
+
     // Generar la plantilla HTML multimedia Premium
     $emailHtml = <<<HTML
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -324,11 +427,11 @@ HTML;
                                 </tr>
                             </table>
                             
-                            <!-- Botón de Llamado a la Acción -->
+                            <!-- Botón de Llamado a la Action (Seguimiento Nominal) -->
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 35px;">
                                 <tr>
                                     <td align="center">
-                                        <a href="https://standarte.es/contacto" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 14px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
+                                        <a href="{$ctaButtonLink}" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 14px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
                                             ACEPTAR EL RETO Y DISEÑAR MI STAND
                                         </a>
                                     </td>
@@ -349,18 +452,20 @@ HTML;
                             <table border="0" cellpadding="0" cellspacing="0" align="center" style="margin-bottom: 20px;">
                                 <tr>
                                     <td>
-                                        <a href="https://standarte.es/contacto" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Contacto</a>
+                                        <a href="{$footerContactLink}" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Contacto</a>
                                         <span style="color: #666666;">|</span>
-                                        <a href="https://standarte.es" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Web Oficial</a>
+                                        <a href="{$footerWebLink}" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Web Oficial</a>
                                     </td>
                                 </tr>
                             </table>
                             <p style="color: #666666; font-size: 9px; line-height: 1.4; margin: 0;">
                                 Este mensaje fue enviado de forma automática a solicitud de una campaña autorizada.<br>
+                                Conforme a la legislación LSSI-CE y el RGPD, puede revocar su consentimiento y darse de baja de estas comunicaciones de forma gratuita y en cualquier momento haciendo clic aquí: <a href="{$unsubscribeLink}" target="_blank" style="color: #ffc800; text-decoration: underline;">Darse de baja de la lista</a>.<br>
                                 © 2026 Standarte. Todos los derechos reservados.
                             </p>
                         </td>
                     </tr>
+
                     
                 </table>
                 
@@ -403,9 +508,23 @@ HTML;
         "generated_html" => $emailHtml
     ];
 
+    // Registrar o actualizar el contacto en la base de datos de Supabase vía REST API (on conflict = upsert)
+    if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $contactData = [
+            'email' => $email,
+            'empresa' => $empresa,
+            'feria' => $feria,
+            'categoria' => $categoria,
+            'status' => 'active', // Siempre nos aseguramos de que esté active al enviar (si ya estuviera unsubscribed/bounced se habría omitido en la validación superior)
+            'updated_at' => date('c')
+        ];
+        send_email_supabase_request('POST', 'contacts', $contactData);
+    }
+
     // Registrar en el historial de envíos únicos para activar el bloqueo de 1 mes
     campaign_add_to_history($email, $empresa, $historyFile);
 }
+
 
 // 3. Persistir Historial de Logs Local en un archivo JSON en MAMP
 $currentLog = [];

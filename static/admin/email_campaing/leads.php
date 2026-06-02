@@ -201,13 +201,15 @@ foreach ($records as $record) {
 
     try {
         $category = $config['categories'][$categoryKey];
-        $emailHtml = campaign_build_email($config, $category, $email, $lang, $cleanSubject, $emailIntro, $emailBody, $companyName);
+        $emailCompany = campaign_resolve_company_name($email, $lang, $companyName, $cleanSubject, $emailIntro, $emailBody);
+        $processedSubject = campaign_process_placeholders($cleanSubject, $emailCompany);
+        $emailHtml = campaign_build_email($config, $category, $email, $lang, $processedSubject, $emailIntro, $emailBody, $emailCompany);
         
-        $sent = campaign_send_mail($config, $email, $cleanSubject, $emailHtml);
+        $sent = campaign_send_mail($config, $email, $processedSubject, $emailHtml);
         
         if ($sent) {
             $sentCount++;
-            $successfullySentCompanies[] = $companyName !== '' ? $companyName : $email;
+            $successfullySentCompanies[] = $emailCompany !== '' ? $emailCompany : $email;
             campaign_add_to_history($email, $companyName, $historyFile);
         } else {
             $failedCount++;

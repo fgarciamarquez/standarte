@@ -28,6 +28,76 @@ function campaign_tracking_url($config)
     return rtrim($config['site_url'], '/') . '/email-track.php?from=email_campaing';
 }
 
+function campaign_extract_company_from_email($email)
+{
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return '';
+    }
+    $parts = explode('@', $email);
+    if (count($parts) > 1) {
+        $domainParts = explode('.', $parts[1]);
+        $name = $domainParts[0];
+        $freeProviders = array('gmail', 'hotmail', 'yahoo', 'outlook', 'live', 'icloud', 'aol', 'mail');
+        if (in_array(strtolower($name), $freeProviders, true)) {
+            return '';
+        }
+        return ucfirst($name);
+    }
+    return '';
+}
+
+function campaign_resolve_company_name($email, $lang, $companyNameInput = '', $subject = '', $intro = '', $body = '')
+{
+    // 1. Check if there is any custom placeholder in the inputs (e.g. {Zayer} or {ZAYERR})
+    $inputs = array($companyNameInput, $subject, $intro, $body);
+    foreach ($inputs as $input) {
+        if (preg_match('/\{([^{}]+)\}/', $input, $matches)) {
+            $placeholder = trim($matches[1]);
+            // If the placeholder is NOT "EMPRESA" (case-insensitive), it means it's a custom company name!
+            if (strcasecmp($placeholder, 'EMPRESA') !== 0) {
+                return $placeholder;
+            }
+        }
+    }
+
+    // 2. If no custom placeholder is found, check if a non-empty companyNameInput is provided
+    $resolvedCompanyName = trim($companyNameInput);
+    if ($resolvedCompanyName !== '') {
+        // If the company name itself has brackets, strip them
+        $resolvedCompanyName = preg_replace('/^\{(.*)\}$/', '$1', $resolvedCompanyName);
+        return $resolvedCompanyName;
+    }
+
+    // 3. Extract company name from email
+    $extracted = campaign_extract_company_from_email($email);
+    if ($extracted !== '') {
+        return $extracted;
+    }
+
+    // 4. Default fallbacks
+    switch ($lang) {
+        case 'en':
+            return 'your company';
+        case 'de':
+            return 'Ihr Unternehmen';
+        case 'pt':
+            return 'sua empresa';
+        default:
+            return 'su empresa';
+    }
+}
+
+function campaign_process_placeholders($text, $companyName)
+{
+    // 1. Reemplazar {EMPRESA} (fase insensible) por el nombre de la empresa resuelto
+    $text = preg_replace('/\{EMPRESA\}/i', $companyName, $text);
+
+    // 2. Limpiar cualquier otro bracket personalizado (ej. {Zayer} -> Zayer)
+    $text = preg_replace('/\{([^{}]+)\}/', '$1', $text);
+
+    return $text;
+}
+
 function campaign_build_email($config, $category, $recipientEmail, $lang, $subject = '', $introOverride = '', $bodyOverride = '', $companyName = '')
 {
     $siteUrl = rtrim($config['site_url'], '/');
@@ -38,39 +108,57 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
     $htmlLang = isset($config['languages'][$lang]['html']) ? $config['languages'][$lang]['html'] : 'es';
     $footerText = isset($config['footer_text'][$lang]) ? $config['footer_text'][$lang] : $config['footer_text']['es'];
 
-    // Resolve the actual company name to use
-    $resolvedCompanyName = trim($companyName);
-    if ($resolvedCompanyName === '') {
+    // Cargar configuración de Supabase para firma legal
+    $configFile = dirname(dirname(__DIR__)) . '/supabase-config.php';
+    if (!is_file($configFile)) {
+        $configFile = dirname(dirname(dirname(__DIR__))) . '/supabase-config.php';
+    }
+    if (is_file($configFile)) {
+        require_once $configFile;
+    }
+    
+    $unsubscribeLink = '';
+    if (defined('UNSUBSCRIBE_SECRET_SALT')) {
+        $emailBase64 = base64_encode($recipientEmail);
+        $unsubToken = md5($recipientEmail . UNSUBSCRIBE_SECRET_SALT);
+        $unsubscribeLink = $siteUrl . "/unsubscribe.php?email=" . urlencode($emailBase64) . "&token=" . urlencode($unsubToken);
+    }
+    
+    $unsubscribeHtml = '';
+    if ($unsubscribeLink !== '') {
         switch ($lang) {
             case 'en':
-                $resolvedCompanyName = 'your company';
+                $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">If you do not want to receive these emails, you can <a href="' . campaign_escape($unsubscribeLink) . '" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">unsubscribe here</a>.</p>';
                 break;
             case 'de':
-                $resolvedCompanyName = 'Ihr Unternehmen';
+                $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">Wenn Sie keine weiteren E-Mails erhalten möchten, können Sie sich <a href="' . campaign_escape($unsubscribeLink) . '" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">hier abmelden</a>.</p>';
                 break;
             case 'pt':
-                $resolvedCompanyName = 'sua empresa';
+                $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">Se não deseja receber mais estes e-mails, pode <a href="' . campaign_escape($unsubscribeLink) . '" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">cancelar a inscrição aqui</a>.</p>';
                 break;
             default:
-                $resolvedCompanyName = 'su empresa';
+                $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">En cumplimiento de la LSSI-CE y el RGPD, si no deseas recibir más correos de diseño ferial, puedes <a href="' . campaign_escape($unsubscribeLink) . '" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">darte de baja haciendo clic aquí</a>.</p>';
                 break;
         }
     }
 
+
+
+
+    // Resolve the actual company name to use
+    $resolvedCompanyName = campaign_resolve_company_name($recipientEmail, $lang, $companyName, $subject, $introOverride, $bodyOverride);
+
     $rawSubject = $subject !== '' ? $subject : campaign_text($category, $lang, 'subject');
-    if ($subject !== '' && stripos($rawSubject, '{EMPRESA}') === false && stripos($rawSubject, $resolvedCompanyName) === false) {
-        $rawSubject = '{EMPRESA}: ' . $rawSubject;
-    }
-    $emailTitle = str_replace('{EMPRESA}', $resolvedCompanyName, $rawSubject);
+    $emailTitle = campaign_process_placeholders($rawSubject, $resolvedCompanyName);
 
     $rawIntro = $introOverride !== '' ? $introOverride : campaign_text($category, $lang, 'intro');
-    $emailIntro = str_replace('{EMPRESA}', $resolvedCompanyName, $rawIntro);
+    $emailIntro = campaign_process_placeholders($rawIntro, $resolvedCompanyName);
 
     $rawBody = $bodyOverride !== '' ? $bodyOverride : campaign_text($category, $lang, 'body');
-    $emailBody = str_replace('{EMPRESA}', $resolvedCompanyName, $rawBody);
+    $emailBody = campaign_process_placeholders($rawBody, $resolvedCompanyName);
 
-    $emailHeadline = str_replace('{EMPRESA}', $resolvedCompanyName, campaign_text($category, $lang, 'headline'));
-    $emailCta = str_replace('{EMPRESA}', $resolvedCompanyName, campaign_text($category, $lang, 'cta'));
+    $emailHeadline = campaign_process_placeholders(campaign_text($category, $lang, 'headline'), $resolvedCompanyName);
+    $emailCta = campaign_process_placeholders(campaign_text($category, $lang, 'cta'), $resolvedCompanyName);
 
     $imageHtml = '';
     foreach ($category['images'] as $image) {
@@ -114,15 +202,18 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
               <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#333;text-align:center;">' . htmlspecialchars($emailBody, ENT_NOQUOTES, 'UTF-8') . '</p>
               <a href="' . campaign_escape($landingUrl) . '" style="display:inline-block;background:#222222;color:#ffffff;text-decoration:none;border-radius:30px;border: 2px solid #ffc800;padding:12px 28px;font-weight:bold;font-size:13px;letter-spacing:.04em;text-transform:uppercase;">' . campaign_escape($emailCta) . '</a>
               <p style="margin:24px 0 0;font-size:22px;line-height:1.35;color:#111;font-weight:bold;text-align:center;">' . $phone . '</p>
-              <p style="margin:8px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">Mensaje enviado a ' . $email . ' desde el gestor privado de Standarte.</p>
+              ' . $unsubscribeHtml . '
             </td>
           </tr>
+
           <tr>
             <td style="padding:18px 28px;background:#f2f2f2;text-align:center;font-size:11px;line-height:1.5;color:#777;border-top: 1px solid #e5e5e5;">
               <strong>Standarte</strong> · <a href="' . campaign_escape($siteUrl) . '" style="color:#777;text-decoration:underline;">' . campaign_escape($siteUrl) . '</a><br>
               ' . campaign_escape($footerText) . ' ' . $phone . '.
             </td>
           </tr>
+
+
         </table>
       </td>
     </tr>

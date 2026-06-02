@@ -8,6 +8,7 @@ require __DIR__ . '/template.php';
 $errors = array();
 $success = '';
 $previewHtml = '';
+$previewSubject = '';
 $selectedCategory = isset($_POST['category']) ? $_POST['category'] : 'stands_madera';
 $selectedLanguage = isset($_POST['language']) ? $_POST['language'] : 'es';
 $recipientEmail = isset($_POST['recipient_email']) ? trim($_POST['recipient_email']) : '';
@@ -40,23 +41,7 @@ function campaign_clean_subject($value)
     return trim($value);
 }
 
-function campaign_extract_company_from_email($email)
-{
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return '';
-    }
-    $parts = explode('@', $email);
-    if (count($parts) > 1) {
-        $domainParts = explode('.', $parts[1]);
-        $name = $domainParts[0];
-        $freeProviders = array('gmail', 'hotmail', 'yahoo', 'outlook', 'live', 'icloud', 'aol', 'mail');
-        if (in_array(strtolower($name), $freeProviders, true)) {
-            return '';
-        }
-        return ucfirst($name);
-    }
-    return '';
-}
+
 
 function campaign_is_logged_in()
 {
@@ -108,12 +93,12 @@ if (!campaign_is_logged_in()) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acceso privado · Standarte</title>
   <style>
-    body { align-items:center; background:#1b1b1b; color:#eeeeee; display:flex; font-family:Arial,Helvetica,sans-serif; justify-content:center; margin:0; min-height:100vh; }
-    main { background:#252525; box-shadow:0 20px 60px rgba(0,0,0,.35); max-width:360px; padding:32px; border-radius: 6px; border-top: 4px solid #ffc800; width:calc(100% - 32px); }
-    h1 { font-size:1.35rem; margin:0 0 1rem; color: #ffc800; text-align: center; font-weight: bold; }
+    body { align-items:center; background:#f4f5f7; color:#333333; display:flex; font-family:Arial,Helvetica,sans-serif; justify-content:center; margin:0; min-height:100vh; }
+    main { background:#ffffff; box-shadow:0 10px 40px rgba(0,0,0,.08); max-width:360px; padding:32px; border-radius: 6px; border-top: 4px solid #ffc800; width:calc(100% - 32px); border: 1px solid #e1e4e8; }
+    h1 { font-size:1.35rem; margin:0 0 1rem; color: #111111; text-align: center; font-weight: bold; }
     input, button { box-sizing:border-box; font:inherit; width:100%; border-radius: 4px; }
-    input { background: #333; border:1px solid #444; color: #fff; margin:.35rem 0 1.25rem; padding:.75rem; }
-    input:focus { border-color: #ffc800; outline: none; }
+    input { background: #ffffff; border:1px solid #cccccc; color: #333333; margin:.35rem 0 1.25rem; padding:.75rem; }
+    input:focus { border-color: #ffc800; outline: none; box-shadow: 0 0 0 3px rgba(255, 200, 0, 0.15); }
     button { background:#ffc800; border:0; color:#111; cursor:pointer; font-weight:700; padding:.8rem; transition: background 0.2s ease; }
     button:hover { background: #e6b400; }
     .error { color:#ff4444; font-size:.9rem; margin:0 0 1rem; text-align: center; }
@@ -200,18 +185,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['campaign_action'])) {
     if (!$errors) {
         $category = $config['categories'][$selectedCategory];
         $previewRecipient = $recipientEmails && filter_var($recipientEmails[0], FILTER_VALIDATE_EMAIL) ? $recipientEmails[0] : 'destinatario@ejemplo.com';
-        $previewCompany = campaign_extract_company_from_email($previewRecipient);
-        $previewHtml = campaign_build_email($config, $category, $previewRecipient, $selectedLanguage, $emailSubject, $emailIntro, $emailBody, $previewCompany);
+        $previewCompany = campaign_resolve_company_name($previewRecipient, $selectedLanguage, '', $emailSubject, $emailIntro, $emailBody);
+        $previewSubject = campaign_process_placeholders($emailSubject, $previewCompany);
+        $previewHtml = campaign_build_email($config, $category, $previewRecipient, $selectedLanguage, $previewSubject, $emailIntro, $emailBody, $previewCompany);
 
         if ($campaignAction === 'send') {
             $sentEmails = array();
             $failedEmails = array();
 
             foreach ($recipientEmails as $email) {
-                $emailCompany = campaign_extract_company_from_email($email);
-                $emailHtml = campaign_build_email($config, $category, $email, $selectedLanguage, $emailSubject, $emailIntro, $emailBody, $emailCompany);
+                $emailCompany = campaign_resolve_company_name($email, $selectedLanguage, '', $emailSubject, $emailIntro, $emailBody);
+                $processedSubject = campaign_process_placeholders($emailSubject, $emailCompany);
+                $emailHtml = campaign_build_email($config, $category, $email, $selectedLanguage, $processedSubject, $emailIntro, $emailBody, $emailCompany);
 
-                if (campaign_send_mail($config, $email, $emailSubject, $emailHtml)) {
+                if (campaign_send_mail($config, $email, $processedSubject, $emailHtml)) {
                     $sentEmails[] = $email;
                 } else {
                     $failedEmails[] = $email;
@@ -233,8 +220,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['campaign_action'])) {
 if (!$previewHtml && isset($config['categories'][$selectedCategory])) {
     $recipientEmails = campaign_parse_recipient_emails($recipientEmail);
     $previewRecipient = $recipientEmails && filter_var($recipientEmails[0], FILTER_VALIDATE_EMAIL) ? $recipientEmails[0] : 'destinatario@ejemplo.com';
-    $previewCompany = campaign_extract_company_from_email($previewRecipient);
-    $previewHtml = campaign_build_email($config, $config['categories'][$selectedCategory], $previewRecipient, $selectedLanguage, $emailSubject, $emailIntro, $emailBody, $previewCompany);
+    $previewCompany = campaign_resolve_company_name($previewRecipient, $selectedLanguage, '', $emailSubject, $emailIntro, $emailBody);
+    $previewSubject = campaign_process_placeholders($emailSubject, $previewCompany);
+    $previewHtml = campaign_build_email($config, $config['categories'][$selectedCategory], $previewRecipient, $selectedLanguage, $previewSubject, $emailIntro, $emailBody, $previewCompany);
 }
 
 $totalEmailVisits = campaign_get_total_email_visits();
@@ -249,39 +237,39 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestor de emails · Standarte</title>
   <style>
-    body { background:#1b1b1b; color:#eeeeee; font-family:Arial,Helvetica,sans-serif; margin:0; }
-    header { align-items:center; background:#222; border-bottom:3px solid #ffc800; display:flex; justify-content:space-between; padding:18px 24px; position:sticky; top:0; z-index:2; }
-    h1 { font-size:1.25rem; margin:0; color:#ffc800; font-weight: bold; }
-    a { color:#ffc800; text-decoration: none; }
+    body { background:#f4f5f7; color:#333333; font-family:Arial,Helvetica,sans-serif; margin:0; }
+    header { align-items:center; background:#ffffff; border-bottom:3px solid #ffc800; display:flex; justify-content:space-between; padding:18px 24px; position:sticky; top:0; z-index:2; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    h1 { font-size:1.25rem; margin:0; color:#111111; font-weight: bold; }
+    a { color:#b89400; text-decoration: none; }
     a:hover { text-decoration: underline; }
     main { display:grid; gap:24px; grid-template-columns:minmax(300px,380px) 1fr; padding:24px; }
-    form, .preview { background:#252525; border:1px solid #333; padding:22px; border-radius: 6px; }
-    .stats { background:#252525; border:1px solid #333; border-left: 4px solid #ffc800; margin:0 0 18px; padding:18px 22px; border-radius: 4px; }
-    .stats strong { display:block; font-size:2rem; line-height:1; margin:.35rem 0; color:#ffc800; }
-    .stats span { color:#aaa; display:block; font-size:.9rem; line-height:1.45; }
-    .send-log { background:#252525; border:1px solid #333; margin:18px 0 0; padding:18px 22px; border-radius: 4px; }
-    .send-log h2 { font-size:1rem; margin:0 0 .75rem; color:#ffc800; }
-    .send-log p { border-top:1px solid #333; color:#bbb; font-size:.82rem; line-height:1.4; margin:0; padding:.55rem 0; }
-    .send-log b { color:#fff; }
-    .smtp-status { background:#252525; border:1px solid #333; margin:0 0 18px; padding:18px 22px; border-radius: 4px; }
+    form, .preview { background:#ffffff; border:1px solid #e1e4e8; padding:22px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .stats { background:#ffffff; border:1px solid #e1e4e8; border-left: 4px solid #ffc800; margin:0 0 18px; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .stats strong { display:block; font-size:2rem; line-height:1; margin:.35rem 0; color:#b89400; }
+    .stats span { color:#666666; display:block; font-size:.9rem; line-height:1.45; }
+    .send-log { background:#ffffff; border:1px solid #e1e4e8; margin:18px 0 0; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .send-log h2 { font-size:1rem; margin:0 0 .75rem; color:#111111; }
+    .send-log p { border-top:1px solid #e1e4e8; color:#555555; font-size:.82rem; line-height:1.4; margin:0; padding:.55rem 0; }
+    .send-log b { color:#111111; }
+    .smtp-status { background:#ffffff; border:1px solid #e1e4e8; margin:0 0 18px; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .smtp-status b { display:block; margin:0 0 .35rem; }
-    .smtp-status span { color:#aaa; display:block; font-size:.9rem; line-height:1.45; }
-    .smtp-ok { border-left:4px solid #2ecc71; b { color:#2ecc71; } }
-    .smtp-warning { border-left:4px solid #f39c12; b { color:#f39c12; } }
-    label { display:block; font-weight:700; margin:0 0 .4rem; color: #ffc800; font-size: 0.9rem; }
+    .smtp-status span { color:#666666; display:block; font-size:.9rem; line-height:1.45; }
+    .smtp-ok { border-left:4px solid #2ecc71; b { color:#27ae60; } }
+    .smtp-warning { border-left:4px solid #f39c12; b { color:#d35400; } }
+    label { display:block; font-weight:700; margin:0 0 .4rem; color: #333333; font-size: 0.9rem; }
     input, select, textarea, button { box-sizing:border-box; font:inherit; width:100%; border-radius: 4px; }
-    input, select, textarea { background:#333; border:1px solid #444; color:#fff; margin:0 0 1.25rem; padding:.75rem; resize:vertical; }
-    input:focus, select:focus, textarea:focus { border-color:#ffc800; outline: none; }
+    input, select, textarea { background:#ffffff; border:1px solid #cccccc; color:#333333; margin:0 0 1.25rem; padding:.75rem; resize:vertical; }
+    input:focus, select:focus, textarea:focus { border-color:#ffc800; outline: none; box-shadow: 0 0 0 3px rgba(255, 200, 0, 0.15); }
     button { border:0; cursor:pointer; font-weight:700; margin:.25rem 0; padding:.82rem; transition: opacity 0.2s ease; }
     button:hover { opacity: 0.9; }
     .primary { background:#ffc800; color:#111; }
-    .secondary { background:#333; color:#fff; border: 1px solid #444; }
+    .secondary { background:#f5f6f8; color:#333333; border: 1px solid #dddddd; }
     .message { margin:0 0 1rem; padding:.8rem; border-radius: 4px; }
-    .error { background:#5a191f; color:#ff8888; border-left: 4px solid #ff4444; }
-    .success { background:#1b4d22; color:#8ce09a; border-left: 4px solid #2ecc71; }
-    iframe { background:#fff; border:1px solid #444; height:780px; width:100%; border-radius: 4px; }
-    .hint { color:#888; font-size:.85rem; line-height:1.45; }
-    .preview-subject { background:#2a2a2a; border-left:4px solid #ffc800; color:#ddd; font-size:.9rem; line-height:1.45; margin:0 0 1rem; padding:.75rem .9rem; border-radius: 4px; }
+    .error { background:#fdf2f2; color:#b91c1c; border-left: 4px solid #f87171; }
+    .success { background:#f0fdf4; color:#15803d; border-left: 4px solid #4ade80; }
+    iframe { background:#fff; border:1px solid #e1e4e8; height:780px; width:100%; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .hint { color:#666666; font-size:.85rem; line-height:1.45; }
+    .preview-subject { background:#f5f6f8; border-left:4px solid #ffc800; color:#333333; font-size:.9rem; line-height:1.45; margin:0 0 1rem; padding:.75rem .9rem; border-radius: 4px; border: 1px solid #e1e4e8; border-left-width: 4px; }
     @media (max-width: 950px) { main { grid-template-columns:1fr; } }
   </style>
 </head>
@@ -311,6 +299,15 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         <input id="campaign-action" type="hidden" name="campaign_action" value="preview">
         <?php foreach ($errors as $error): ?><p class="message error"><?php echo campaign_escape($error); ?></p><?php endforeach; ?>
         <?php if ($success): ?><p class="message success"><?php echo campaign_escape($success); ?></p><?php endif; ?>
+
+        <label for="lead_group_select">Selector de grupos</label>
+        <div style="display:flex;gap:8px;margin:0 0 .5rem;">
+          <select id="lead_group_select" style="flex:1;margin:0;">
+            <option value="">-- Seleccionar grupo --</option>
+          </select>
+          <button type="button" id="load_group_btn" class="secondary" style="width:auto;padding:.5rem 1rem;margin:0;font-size:.85rem;" onclick="loadLeadGroup()">Cargar</button>
+        </div>
+        <div id="group_feedback" style="display:none;background:#f0fdf4;border-left:4px solid #4ade80;color:#15803d;padding:8px 12px;border-radius:4px;margin:0 0 1rem;font-size:.85rem;"></div>
 
         <label for="recipient_email">Destinatarios</label>
         <input id="recipient_email" name="recipient_email" type="text" inputmode="email" value="<?php echo campaign_escape($recipientEmail); ?>" placeholder="destinatario@dominio.com, otro@dominio.com" autocomplete="off" required>
@@ -363,7 +360,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
     </section>
     <section class="preview">
       <h2 style="color:#ffc800;margin-top:0;">Previsualización en vivo</h2>
-      <p class="preview-subject"><b>Asunto:</b> <?php echo campaign_escape($emailSubject); ?></p>
+      <p class="preview-subject"><b>Asunto:</b> <?php echo campaign_escape($previewSubject !== '' ? $previewSubject : $emailSubject); ?></p>
       <iframe title="Previsualización del email" srcdoc="<?php echo campaign_escape($previewHtml); ?>"></iframe>
     </section>
   </main>
@@ -405,6 +402,120 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
 
       category.addEventListener('change', function () { refreshPreview(true); });
       language.addEventListener('change', function () { refreshPreview(true); });
+
+      // Sincronización en tiempo real de marcadores de empresa del tipo {VALOR}
+      var currentPlaceholder = 'EMPRESA';
+      
+      // Auto-detectar marcador actual al cargar la página
+      [subject.value, intro.value, body.value].forEach(function(val) {
+        var m = val.match(/\{([^{}]+)\}/);
+        if (m && m[1] !== 'EMPRESA') {
+          currentPlaceholder = m[1];
+        }
+      });
+
+      function syncPlaceholders(e) {
+        var inputVal = e.target.value;
+        var match = inputVal.match(/\{([^{}]+)\}/);
+        if (match) {
+          var newPlaceholder = match[1];
+          if (newPlaceholder !== currentPlaceholder) {
+            var oldFull = '{' + currentPlaceholder + '}';
+            var newFull = '{' + newPlaceholder + '}';
+            
+            [subject, intro, body].forEach(function(field) {
+              if (field !== e.target) {
+                var escapedOld = oldFull.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                var regex = new RegExp(escapedOld, 'g');
+                var currentSelectionStart = field.selectionStart;
+                var currentSelectionEnd = field.selectionEnd;
+                
+                field.value = field.value.replace(regex, newFull);
+                
+                if (field.setSelectionRange && typeof currentSelectionStart === 'number') {
+                  field.setSelectionRange(currentSelectionStart, currentSelectionEnd);
+                }
+              }
+            });
+            currentPlaceholder = newPlaceholder;
+          }
+        }
+      }
+
+      subject.addEventListener('input', syncPlaceholders);
+      intro.addEventListener('input', syncPlaceholders);
+      body.addEventListener('input', syncPlaceholders);
+    }());
+
+    // --- CARGA DE GRUPOS DE LEADS DESDE SUPABASE ---
+    (function () {
+      var groupSelect = document.getElementById('lead_group_select');
+      var feedback = document.getElementById('group_feedback');
+
+      // Cargar la lista de grupos al iniciar
+      fetch('groups.php?action=list')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.status === 'success' && data.groups && data.groups.length > 0) {
+            data.groups.forEach(function (g) {
+              var opt = document.createElement('option');
+              opt.value = g.name;
+              opt.textContent = g.name + ' (' + (g.leads_with_email || 0) + ' leads con email)';
+              groupSelect.appendChild(opt);
+            });
+          }
+        })
+        .catch(function () { /* silenciar */ });
+
+      // Función global para cargar emails del grupo seleccionado
+      window.loadLeadGroup = function () {
+        var selectedGroup = groupSelect.value;
+        if (!selectedGroup) {
+          feedback.style.display = 'block';
+          feedback.style.borderLeftColor = '#f59e0b';
+          feedback.style.background = '#fffbeb';
+          feedback.style.color = '#92400e';
+          feedback.textContent = '\u26a0 Selecciona un grupo del desplegable.';
+          return;
+        }
+
+        var btn = document.getElementById('load_group_btn');
+        btn.textContent = 'Cargando...';
+        btn.disabled = true;
+
+        fetch('groups.php?action=emails&group=' + encodeURIComponent(selectedGroup))
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            btn.textContent = 'Cargar';
+            btn.disabled = false;
+
+            if (data.status === 'success' && data.emails && data.emails.length > 0) {
+              var recipientInput = document.getElementById('recipient_email');
+              recipientInput.value = data.emails.join(', ');
+              
+              feedback.style.display = 'block';
+              feedback.style.borderLeftColor = '#4ade80';
+              feedback.style.background = '#f0fdf4';
+              feedback.style.color = '#15803d';
+              feedback.textContent = '\u2705 ' + data.emails.length + ' destinatarios cargados desde \"' + selectedGroup + '\"';
+            } else {
+              feedback.style.display = 'block';
+              feedback.style.borderLeftColor = '#f59e0b';
+              feedback.style.background = '#fffbeb';
+              feedback.style.color = '#92400e';
+              feedback.textContent = '\u26a0 No se encontraron emails activos en el grupo \"' + selectedGroup + '\".';
+            }
+          })
+          .catch(function (err) {
+            btn.textContent = 'Cargar';
+            btn.disabled = false;
+            feedback.style.display = 'block';
+            feedback.style.borderLeftColor = '#f87171';
+            feedback.style.background = '#fdf2f2';
+            feedback.style.color = '#b91c1c';
+            feedback.textContent = '\u274c Error de conexi\u00f3n al cargar el grupo.';
+          });
+      };
     }());
   </script>
 </body>

@@ -185,8 +185,91 @@ function campaign_send_php_mail($config, $to, $subject, $html)
     return mail($to, $encodedSubject, $html, implode("\r\n", $headers), '-f' . $envelopeSender);
 }
 
+/**
+ * Realiza peticiones HTTP a la API REST de Supabase (IPv4 Compatible)
+ */
+function campaign_supabase_request($method, $endpoint, $data = null) {
+    if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
+        return ['code' => 500, 'body' => []];
+    }
+
+    $ch = curl_init();
+    $url = SUPABASE_URL . '/rest/v1/' . $endpoint;
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    
+    $headers = [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY,
+        'Content-Type: application/json'
+    ];
+    
+    if ($method === 'POST') {
+        $headers[] = 'Prefer: resolution=merge-duplicates';
+    } else if ($method === 'PATCH') {
+        $headers[] = 'Prefer: return=representation';
+    }
+    
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    
+    if ($data !== null) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    }
+    
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    return [
+        'code' => $httpCode,
+        'body' => json_decode($response, true) ?: $response
+    ];
+}
+
 function campaign_send_mail($config, $to, $subject, $html)
 {
+    // Cargar configuración de Supabase
+    $configFile = dirname(dirname(__DIR__)) . '/supabase-config.php';
+    if (!is_file($configFile)) {
+        $configFile = dirname(dirname(dirname(__DIR__))) . '/supabase-config.php';
+    }
+    if (is_file($configFile)) {
+        require_once $configFile;
+    }
+
+    // 1. Verificar exclusiones (bajas o rebotes) en Supabase antes de enviar (RGPD/LSSI)
+    if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $res = campaign_supabase_request('GET', 'contacts?email=eq.' . urlencode($to));
+        if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
+            $supaContact = $res['body'][0];
+            $status = $supaContact['status'] ?? 'active';
+            if ($status === 'unsubscribed') {
+                campaign_append_send_log(array(
+                    'date' => date('c'),
+                    'to' => $to,
+                    'subject' => $subject,
+                    'method' => 'skipped',
+                    'accepted' => false,
+                    'error' => 'Envío omitido: El destinatario se dio de baja voluntariamente (LSSI/RGPD).'
+                ));
+                return false;
+            } else if ($status === 'bounced') {
+                campaign_append_send_log(array(
+                    'date' => date('c'),
+                    'to' => $to,
+                    'subject' => $subject,
+                    'method' => 'skipped',
+                    'accepted' => false,
+                    'error' => 'Envío omitido: La dirección de correo electrónico está rebotada/fallida.'
+                ));
+                return false;
+            }
+        }
+    }
+
     $accepted = false;
     $method = 'smtp';
     $error = '';
@@ -210,8 +293,19 @@ function campaign_send_mail($config, $to, $subject, $html)
         'error' => $accepted ? $error : ($error ? $error : ($lastError ? $lastError['message'] : ''))
     ));
 
+    // 2. Si el envío fue exitoso, registrar/actualizar el contacto en la BD de Supabase (on conflict = upsert)
+    if ($accepted && defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $contactData = [
+            'email' => $to,
+            'status' => 'active', // Al enviar, marcamos activo si no estaba de baja/rebotado
+            'updated_at' => date('c')
+        ];
+        campaign_supabase_request('POST', 'contacts', $contactData);
+    }
+
     return $accepted;
 }
+
 
 /**
  * Valida un email de forma avanzada:

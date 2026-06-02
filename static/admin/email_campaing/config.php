@@ -37,40 +37,40 @@ return array(
         'stands_madera' => array(
             'label' => 'Stands de Madera',
             'subject' => '¿Está {EMPRESA} preparada para liderar su próxima feria o pasará desapercibida?',
-            'preheader' => 'Soluciones exclusivas de madera natural y acabados artesanales.',
-            'headline' => '{EMPRESA}: Lidere su sector y conviértase en el centro de todas las miradas',
-            'intro' => 'Seamos realistas: en un pabellón saturado de ruido visual, la mayoría de los stands pasan desapercibidos. Para {EMPRESA}, diseñamos y fabricamos stands de madera que proyectan calidez, máxima calidad y solidez insuperable en ferias nacionales e internacionales.',
-            'body' => 'Nuestros carpinteros especializados logran acabados perfectos que comunican liderazgo a primera vista. Nos encargamos de toda la ingeniería, fabricación y montaje para que el proyecto de {EMPRESA} sea el centro de todas las miradas.',
-            'cta' => 'ACEPTAR EL RETO Y DISEÑAR MI STAND DE MADERA',
+            'preheader' => 'Soluciones exclusivas de diseño y acabados artesanales de alta calidad.',
+            'headline' => 'Con nosotros de su lado {EMPRESA} se convertirá en el centro de todas las miradas',
+            'intro' => 'En un pabellón saturado de ruido visual, la mayoría de los stands pasan desapercibidos. En Standarte, diseñamos y fabricamos stands basados en la psicología de la atención dirigidos a proyectar una imagen diferenciadora y equilibrada.',
+            'body' => 'Nuestros carpinteros especializados logran acabados perfectos. Nos encargamos de toda la ingeniería, fabricación y montaje para que el proyecto de {EMPRESA} sea el centro de todas las miradas.',
+            'cta' => 'DISEÑAR MI STAND',
             'translations' => array(
                 'en' => array(
                     'subject' => 'Is {EMPRESA} ready to dominate the show, or will you blend in?',
-                    'preheader' => 'Exclusive natural wood solutions and handcrafted finishes.',
+                    'preheader' => 'Exclusive bespoke solutions and premium handcrafted finishes.',
                     'headline' => '{EMPRESA}: Lead your market and become the absolute center of attention',
-                    'intro' => 'Let\'s be honest: in an exhibition hall filled with visual noise, most stands are completely ignored. For {EMPRESA}, we design and build bespoke wooden stands that project maximum quality, warmth, and authority.',
-                    'body' => 'Our master carpenters deliver flawless finishes that prove your industry leadership instantly. We handle the entire engineering, manufacturing, and setup process, making {EMPRESA} the absolute center of attention.',
-                    'cta' => 'ACCEPT CHALLENGE AND DESIGN MY BESPOKE STAND'
+                    'intro' => 'Let\'s be honest: in an exhibition hall filled with visual noise, most stands are completely ignored. For {EMPRESA}, we design and build bespoke stands that project maximum quality, brand authority, and visual balance.',
+                    'body' => 'Our specialized master craftsmen deliver flawless finishes. We handle the entire engineering, manufacturing, and setup process, making {EMPRESA} the absolute center of attention.',
+                    'cta' => 'DISEÑAR MI STAND'
                 ),
                 'de' => array(
                     'subject' => 'Ist {EMPRESA} bereit, die Messe zu dominieren, oder gehen Sie unter?',
-                    'preheader' => 'Exklusive Naturholz-Lösungen und handgefertigte Oberflächen.',
+                    'preheader' => 'Exklusive maßgeschneiderte Lösungen und handgefertigte Oberflächen.',
                     'headline' => '{EMPRESA}: Führen Sie Ihren Markt an und stehen Sie im Rampenlicht',
-                    'intro' => 'Seien wir ehrlich: In einer Messehalle voller visuellem Lärm gehen die meisten Stände unter. Für {EMPRESA} entwerfen und fertigen wir maßgeschneiderte Holzmessestände, die Qualität und Stärke ausstrahlen.',
-                    'body' => 'Unsere spezialisierten Schreiner erzielen makellose Ergebnisse, die auf den ersten Blick überzeugen. Wir übernehmen den gesamten Engineering-, Fertigungs- und Montageprozess für {EMPRESA}.',
-                    'cta' => 'HOLZMESSESTAND-ANGEBOT ANFORDERN'
+                    'intro' => 'Seien wir ehrlich: In einer Messehalle voller visuellem Lärm gehen die meisten Stände unter. Für {EMPRESA} entwerfen und fertigen wir exklusive Messestände, die Qualität, Stärke und optische Balance ausstrahlen.',
+                    'body' => 'Unsere spezialisierten Handwerker erzielen makellose Ergebnisse. Wir übernehmen den gesamten Engineering-, Fertigungs- und Montageprozess für {EMPRESA}.',
+                    'cta' => 'DISEÑAR MI STAND'
                 ),
                 'pt' => array(
                     'subject' => 'Está a {EMPRESA} pronta para liderar a sua próxima feira ou passará despercebida?',
-                    'preheader' => 'Soluções exclusivas em madeira natural y acabamentos artesanais.',
+                    'preheader' => 'Soluções exclusivas e acabamentos artesanais de alta qualidade.',
                     'headline' => '{EMPRESA}: Lidere o seu setor e torne-se o centro de todas as atenções',
-                    'intro' => 'Sejamos realistas: num pavilhão cheio de ruído visual, a maioria dos stands passa despercebida. Para {EMPRESA}, projetamos e fabricamos stands de madeira sob medida que transmitem máxima qualidade e solidez.',
-                    'body' => 'Nossos carpinteiros especializados garantem acabamentos impecáveis. Cuidamos de todo o processo de engenharia, fabricação e montagem para que {EMPRESA} brilhe sem barreiras.',
-                    'cta' => 'ACEITAR O DESAFIO E DESENHAR O MEU STAND'
+                    'intro' => 'Sejamos realistas: num pavilhão cheio de ruído visual, a maioria dos stands passa despercebida. Para {EMPRESA}, projetamos e fabricamos stands sob medida que transmitem máxima qualidade y solidez diferenciada.',
+                    'body' => 'Nossos carpinteiros especializados garantem acabamentos impecáveis. Cuidamos de todo o processo de engenharia, fabricação y montagem para que {EMPRESA} sea o centro de todas as atenções.',
+                    'cta' => 'DISEÑAR MI STAND'
                 )
             ),
             'images' => array(
-                array('src' => 'img/trabajos/trabajos_promueve/cabecera-proyecto-emo-milano-2021-2.avif', 'alt' => 'Stand premium de madera natural y acabados de carpintería artesanal'),
-                array('src' => 'img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif', 'alt' => 'Stand con lamas de madera y fachadas para reuniones de negocios')
+                array('src' => 'img/trabajos/trabajos_promueve/cabecera-proyecto-emo-milano-2021-2.jpg', 'alt' => 'Stand premium de madera natural y acabados de carpintería artesanal'),
+                array('src' => 'img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.jpg', 'alt' => 'Stand con lamas de madera y fachadas para reuniones de negocios')
             )
         ),
         'stands_textil' => array(
@@ -95,7 +95,7 @@ return array(
                     'preheader' => 'Aluminiumstrukturen mit Premium-Spanngewebe und LED-Beleuchtung.',
                     'headline' => '{EMPRESA}: Vervielfachen Sie Ihre Geschäftstreffen und begeistern Sie Ihre Kunden',
                     'intro' => 'In jeder Halle machen Beleuchtung und visuelle Klarheit den Unterschied aus, ob Sie Kunden anziehen oder unsichtbar sind. Unsere Textilmessestände mit LED-Leuchtkästen garantieren, dass {EMPRESA} heller strahlt.',
-                    'body' => 'Dank ihres optimierten Gewichts und schnellen Aufbaus sind sie ideal für internationale Messen. Ihr sauberes Finish sorgt dafür, dass niemand an {EMPRESA} vorbeigeht.',
+                    'body' => 'Dank Ihres optimierten Gewichts und schnellen Aufbaus sind sie ideal für internationale Messen. Ihr sauberes Finish sorgt dafür, dass niemand an {EMPRESA} vorbeigeht.',
                     'cta' => 'TEXTILMESSESTAND-ANGEBOT ANFORDERN'
                 ),
                 'pt' => array(
@@ -103,13 +103,13 @@ return array(
                     'preheader' => 'Estruturas de alumínio com tecidos tensionados premium e iluminação LED.',
                     'headline' => '{EMPRESA}: Multiplique as suas reuniões comerciales e impacte os seus clientes',
                     'intro' => 'Em qualquer pavilhão, a iluminação e a limpieza visual marcam a diferença. Nossos stands têxteis com caixas de luz LED de alta intensidad garantem que a marca {EMPRESA} se destaque de forma inigualável.',
-                    'body' => 'São a escolha perfeita para feiras internacionais devido ao peso reduzido e montagem rápida. Seu acabamento limpo assegura que todos parem para ver {EMPRESA}.',
+                    'body' => 'São a escolha perfeita para feiras internacionais devido ao peso reduzido y montagem rápida. Seu acabamento limpo assegura que todos parem para ver {EMPRESA}.',
                     'cta' => 'QUERO DESTACAR A MINHA MARCA NA FEIRA'
                 )
             ),
             'images' => array(
-                array('src' => 'img/trabajos/trabajos_promueve/evento-2014-fanuc-showroom-2.avif', 'alt' => 'Stand textil de gran formato con cajas de luz y branding corporativo'),
-                array('src' => 'img/trabajos/trabajos_promueve/stand-2016-biemh-emuge-4.avif', 'alt' => 'Stand de diseño con elementos suspendidos retroiluminados')
+                array('src' => 'img/trabajos/trabajos_promueve/evento-2014-fanuc-showroom-2.jpg', 'alt' => 'Stand textil de gran formato con cajas de luz y branding corporativo'),
+                array('src' => 'img/trabajos/trabajos_promueve/stand-2016-biemh-emuge-4.jpg', 'alt' => 'Stand de diseño con elementos suspendidos retroiluminados')
             )
         ),
         'stands_diseno' => array(
@@ -119,7 +119,7 @@ return array(
             'headline' => '{EMPRESA}: Revolucione su presencia en feria y eclipse por completo a sus rivales',
             'intro' => 'No malgaste su presupuesto en un stand convencional. Diseñamos espacios corporativos exclusivos pensados para rentabilizar al máximo la presencia de {EMPRESA}, convirtiendo el espacio físico en un generador real de contactos y ventas.',
             'body' => 'Desde el modelado 3D fidedigno al resultado final hasta el catering y la logística. Nos encargamos de todo de principio a fin para que el equipo de {EMPRESA} solo tenga que presentarse a vender y cerrar acuerdos de alto valor.',
-            'cta' => 'ACEPTAR EL RETO Y DISEÑAR MI STAND DE DISEÑO',
+            'cta' => 'DISEÑAR MI STAND',
             'translations' => array(
                 'en' => array(
                     'subject' => 'The ultimate challenge for {EMPRESA}: Does your stand actually convert visitors?',
@@ -147,8 +147,8 @@ return array(
                 )
             ),
             'images' => array(
-                array('src' => 'img/trabajos/trabajos_promueve/mg-1225.avif', 'alt' => 'Stand de diseño exclusivo premium con accesibilidad total'),
-                array('src' => 'img/trabajos/trabajos_promueve/stand-cun-fitur3.avif', 'alt' => 'Stand de diseño sobrio corporativo para marcas de prestigio')
+                array('src' => 'img/trabajos/trabajos_promueve/mg-1225.jpg', 'alt' => 'Stand de diseño exclusivo premium con accesibilidad total'),
+                array('src' => 'img/trabajos/trabajos_promueve/stand-cun-fitur3.jpg', 'alt' => 'Stand de diseño sobrio corporativo para marcas de prestigio')
             )
         )
     )

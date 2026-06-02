@@ -34,6 +34,61 @@ define("SECURE_TOKEN", "STANDARTE_MAIL_SECURE_2026");
 
 // Ruta del archivo de logs local para MAMP (sin base de datos)
 $logFile = __DIR__ . '/sent_emails_log.json';
+require_once __DIR__ . '/admin/email_campaing/campaign_throttle.php';
+
+// Cargar configuración de Supabase
+$configFile = __DIR__ . '/supabase-config.php';
+if (!is_file($configFile)) {
+    $configFile = dirname(__DIR__) . '/supabase-config.php';
+}
+if (is_file($configFile)) {
+    require_once $configFile;
+}
+
+/**
+ * Realiza peticiones HTTP a la API REST de Supabase (IPv4 Compatible)
+ */
+function send_email_supabase_request($method, $endpoint, $data = null) {
+    if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
+        return ['code' => 500, 'body' => 'Configuración de Supabase ausente.'];
+    }
+
+    $ch = curl_init();
+    $url = SUPABASE_URL . '/rest/v1/' . $endpoint;
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    
+    $headers = [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY,
+        'Content-Type: application/json'
+    ];
+    
+    if ($method === 'POST') {
+        $headers[] = 'Prefer: resolution=merge-duplicates';
+    } else if ($method === 'PATCH') {
+        $headers[] = 'Prefer: return=representation';
+    }
+    
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    
+    if ($data !== null) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    }
+    
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    return [
+        'code' => $httpCode,
+        'body' => json_decode($response, true) ?: $response
+    ];
+}
+
 
 /**
  * Valida un email de forma avanzada para evitar rebotes:
@@ -166,7 +221,7 @@ foreach ($data['records'] as $index => $record) {
         }
     }
     
-    $cuerpoText = isset($record['cuerpo']) ? $record['cuerpo'] : "";
+    $cuerpoText = isset($record['cuerpo']) ? htmlspecialchars($record['cuerpo']) : "";
     $negocio = isset($record['negocio']) ? strtolower(trim($record['negocio'])) : "";
 
     $totalProcesados++;
@@ -197,9 +252,73 @@ foreach ($data['records'] as $index => $record) {
         continue;
     }
 
+    // Validación Supabase: Exclusión por desuscripción o rebotes previos (LSSI/RGPD)
+    $isExcluded = false;
+    $excludeReason = '';
+    
+    if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $res = send_email_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
+        if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
+            $supaContact = $res['body'][0];
+            $status = $supaContact['status'] ?? 'active';
+            if ($status === 'unsubscribed') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido: El destinatario se ha dado de baja de forma voluntaria de las listas comerciales (LSSI/RGPD).";
+            } else if ($status === 'bounced') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido: La dirección de correo electrónico está marcada como rebotada/fallida en la base de datos de Supabase.";
+            }
+        }
+    }
+    
+    if ($isExcluded) {
+        $totalRechazados++;
+        $resultados[] = [
+            "index" => $index,
+            "empresa" => $empresa,
+            "email" => $email,
+            "status" => "RECHAZADO",
+            "motivo" => $excludeReason
+        ];
+        continue;
+    }
+
+
+    // Validación 3: Control de envío único (bloqueo de 1 mes por empresa o email)
+    $historyFile = __DIR__ . '/admin/email_campaing/data/campaign-history.json';
+    $lastSentTime = campaign_check_throttle($email, $empresa, $historyFile);
+    if ($lastSentTime !== false) {
+        $totalRechazados++;
+        $resultados[] = [
+            "index" => $index,
+            "empresa" => $empresa,
+            "email" => $email,
+            "status" => "RECHAZADO",
+            "motivo" => "Envío omitido: Ya se ha enviado un correo a esta misma empresa/correo en el último mes (hace " . round((time() - $lastSentTime) / (24 * 60 * 60)) . " días)."
+        ];
+        continue;
+    }
+
+
+    // Preparar tokens y enlaces dinámicos para tracking y baja voluntaria conforme a LSSI/RGPD
+    $emailBase64 = base64_encode($email);
+    $unsubToken = md5($email . UNSUBSCRIBE_SECRET_SALT);
+    
+    // Obtener host de la petición para compatibilidad local (MAMP) y remota (Producción)
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+    $hostName = $_SERVER['HTTP_HOST'] ?? 'standarte.es';
+    $baseDomain = (strpos($hostName, 'localhost') !== false) ? $protocol . $hostName . '/STANDARTE_SVELTE' : 'https://standarte.es';
+    
+    $unsubscribeLink = $baseDomain . "/unsubscribe.php?email=" . urlencode($emailBase64) . "&token=" . urlencode($unsubToken);
+    
+    // Enlaces enmascarados para Click Tracker Nominal
+    $ctaButtonLink = $baseDomain . "/email-track.php?email=" . urlencode($emailBase64) . "&to=" . urlencode('contacto') . "&from=main-cta-button";
+    $footerContactLink = $baseDomain . "/email-track.php?email=" . urlencode($emailBase64) . "&to=" . urlencode('contacto') . "&from=footer-contact";
+    $footerWebLink = $baseDomain . "/email-track.php?email=" . urlencode($emailBase64) . "&to=" . urlencode('/') . "&from=footer-web";
 
     // Generar la plantilla HTML multimedia Premium
     $emailHtml = <<<HTML
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -250,59 +369,70 @@ foreach ($data['records'] as $index => $record) {
                             <!-- Saludo Personalizado -->
                             <h2 style="margin-top: 0; color: #555555; font-size: 18px; font-weight: normal; line-height: 1.3; text-align: center; margin-bottom: 25px;">Estimado equipo de {$empresa},</h2>
                             
-                            <!-- Un solo párrafo persuasivo y muy breve -->
-                            <p style="font-size: 16px; line-height: 1.7; color: #333333; margin-bottom: 35px; text-align: center; max-width: 540px; margin-left: auto; margin-right: auto;">
-                                {$cuerpoText}
+                            <p style="font-size: 15px; line-height: 1.65; color: #333333; margin-bottom: 20px; text-align: center;">
+                                Su presencia en la feria <strong>{$feria}</strong> (dentro de la categoría de <strong>{$categoria}</strong>) es una oportunidad única de negocio. Pero seamos realistas: en un pabellón saturado de estímulos, la inmensa mayoría de los stands pasan completamente desapercibidos. ¿Permitirá que el suyo sea uno más del montón?
                             </p>
                             
-                            <h3 style="color: #292f35; border-bottom: 2px solid #eef0f2; padding-bottom: 10px; margin-bottom: 25px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">Galería del Proyecto Prototipo 3D</h3>
+                            <!-- Caja de Texto Personalizado Destacada -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fcf9ee; border-left: 4px solid #ffc800; border-radius: 4px; margin-bottom: 25px;">
+                                <tr>
+                                    <td style="padding: 15px 20px; text-align: center;">
+                                        <p style="font-size: 15px; font-style: italic; line-height: 1.6; color: #292f35; margin: 0; text-align: center;">
+                                            "{$cuerpoText}"
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <p style="font-size: 15px; line-height: 1.65; color: #333333; margin-bottom: 30px; text-align: center;">
+                                En <strong>Standarte</strong> no diseñamos stands convencionales: creamos hitos arquitectónicos e imanes de clientes que posicionan a su marca como el líder indiscutible de su sector. Para inspirar el proyecto de <strong>{$empresa}</strong>, le presentamos tres de nuestros diseños en madera real más valorados y eficientes:
+                            </p>
+                            
+                            <h3 style="color: #292f35; border-bottom: 2px solid #eef0f2; padding-bottom: 10px; margin-bottom: 20px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">Galería de Proyectos Destacados</h3>
+                            
+                            <!-- Grilla de Trabajos Multimedia (3 Columnas / Responsivo) -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
 HTML;
 
-    // Decidir la galería a mostrar (usar la personalizada si existe en el payload, sino los trabajos globales)
-    $galeriaFinal = $trabajosGaleria;
-    if (isset($record['galeria']) && is_array($record['galeria']) && count($record['galeria']) >= 3) {
-        $galeriaFinal = [];
-        foreach ($record['galeria'] as $galItem) {
-            $galeriaFinal[] = [
-                "titulo" => isset($galItem['titulo']) ? htmlspecialchars($galItem['titulo']) : "Vista Prototipo",
-                "imagen" => isset($galItem['imagen']) ? htmlspecialchars($galItem['imagen']) : "",
-                "descripcion" => isset($galItem['descripcion']) ? htmlspecialchars($galItem['descripcion']) : ""
-            ];
-        }
-    }
-
-    // Agregar los trabajos de forma vertical y más grandes
-    foreach ($galeriaFinal as $tIndex => $trabajo) {
+    // Agregar los 3 trabajos a la grilla HTML
+    foreach ($trabajosGaleria as $tIndex => $trabajo) {
         $img = $trabajo['imagen'];
         $titulo = $trabajo['titulo'];
         $desc = $trabajo['descripcion'];
         
         $emailHtml .= <<<HTML
-                            <!-- Bloque de Imagen Grande Vertical -->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 35px; background-color: #fafafa; border: 1px solid #eef0f2; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
-                                <tr>
-                                    <td align="center" style="font-size: 0; line-height: 0;">
-                                        <img src="{$img}" alt="{$titulo}" width="540" style="display: block; width: 100%; max-width: 540px; height: auto;">
+                                    <!-- Celda de Trabajo -->
+                                    <td class="col-3" valign="top" width="170" style="padding: 0 5px; font-size: 0; line-height: 0;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fafafa; border: 1px solid #eef0f2; border-radius: 4px; overflow: hidden;">
+                                            <tr>
+                                                <td>
+                                                    <img class="gallery-image" src="{$img}" alt="{$titulo}" width="170" style="display: block; width: 100%; height: 110px; object-fit: cover;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px; font-family: Arial, sans-serif;">
+                                                    <h4 style="margin: 0 0 6px 0; font-size: 13px; color: #292f35; font-weight: bold;">{$titulo}</h4>
+                                                    <p style="margin: 0; font-size: 11px; line-height: 1.4; color: #666666; height: 75px; overflow: hidden;">
+                                                        {$desc}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 20px; font-family: Arial, sans-serif; text-align: left;">
-                                        <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #292f35; font-weight: bold;">{$titulo}</h4>
-                                        <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #666666;">{$desc}</p>
-                                    </td>
-                                </tr>
-                            </table>
 HTML;
     }
 
     $emailHtml .= <<<HTML
+                                </tr>
+                            </table>
                             
-                            <!-- Botón de Llamado a la Acción -->
+                            <!-- Botón de Llamado a la Action (Seguimiento Nominal) -->
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 35px;">
                                 <tr>
                                     <td align="center">
-                                        <a href="https://standarte.es/contacto" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 14px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
-                                            DISEÑAR MI STAND
+                                        <a href="{$ctaButtonLink}" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 14px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
+                                            ACEPTAR EL RETO Y DISEÑAR MI STAND
                                         </a>
                                     </td>
                                 </tr>
@@ -322,18 +452,20 @@ HTML;
                             <table border="0" cellpadding="0" cellspacing="0" align="center" style="margin-bottom: 20px;">
                                 <tr>
                                     <td>
-                                        <a href="https://standarte.es/contacto" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Contacto</a>
+                                        <a href="{$footerContactLink}" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Contacto</a>
                                         <span style="color: #666666;">|</span>
-                                        <a href="https://standarte.es" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Web Oficial</a>
+                                        <a href="{$footerWebLink}" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Web Oficial</a>
                                     </td>
                                 </tr>
                             </table>
                             <p style="color: #666666; font-size: 9px; line-height: 1.4; margin: 0;">
                                 Este mensaje fue enviado de forma automática a solicitud de una campaña autorizada.<br>
+                                Conforme a la legislación LSSI-CE y el RGPD, puede revocar su consentimiento y darse de baja de estas comunicaciones de forma gratuita y en cualquier momento haciendo clic aquí: <a href="{$unsubscribeLink}" target="_blank" style="color: #ffc800; text-decoration: underline;">Darse de baja de la lista</a>.<br>
                                 © 2026 Standarte. Todos los derechos reservados.
                             </p>
                         </td>
                     </tr>
+
                     
                 </table>
                 
@@ -353,15 +485,12 @@ HTML;
         "X-Mailer: PHP/" . phpversion()
     ];
 
-    // Codificar el asunto en MIME Base64 para evitar problemas con la letra 'ñ' y acentos en gestores de correo
-    $encodedAsunto = '=?UTF-8?B?' . base64_encode(html_entity_decode($asunto, ENT_QUOTES, 'UTF-8')) . '?=';
-
     // Intentar envío de correo real
     $realMailSuccess = false;
     try {
         // En un entorno de desarrollo local con MAMP sin SMTP configurado, mail() puede lanzar warnings
         // Usamos el operador de control de errores @ para evitar romper el flujo JSON de salida
-        $realMailSuccess = @mail($email, $encodedAsunto, $emailHtml, implode("\r\n", $headers));
+        $realMailSuccess = @mail($email, $asunto, $emailHtml, implode("\r\n", $headers));
     } catch (Exception $e) {
         $realMailSuccess = false;
     }
@@ -378,7 +507,24 @@ HTML;
         "method" => $realMailSuccess ? "SMTP / PHP mail()" : "Simulación local segura",
         "generated_html" => $emailHtml
     ];
+
+    // Registrar o actualizar el contacto en la base de datos de Supabase vía REST API (on conflict = upsert)
+    if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $contactData = [
+            'email' => $email,
+            'empresa' => $empresa,
+            'feria' => $feria,
+            'categoria' => $categoria,
+            'status' => 'active', // Siempre nos aseguramos de que esté active al enviar (si ya estuviera unsubscribed/bounced se habría omitido en la validación superior)
+            'updated_at' => date('c')
+        ];
+        send_email_supabase_request('POST', 'contacts', $contactData);
+    }
+
+    // Registrar en el historial de envíos únicos para activar el bloqueo de 1 mes
+    campaign_add_to_history($email, $empresa, $historyFile);
 }
+
 
 // 3. Persistir Historial de Logs Local en un archivo JSON en MAMP
 $currentLog = [];

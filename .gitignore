@@ -6,4 +6,5 @@ dist/
 Thumbs.db
 deploy-config.php
 scratch/
-
+supabase-config.php
+static/supabase-config.php
