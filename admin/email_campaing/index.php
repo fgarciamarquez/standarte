@@ -321,14 +321,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         <label for="email_body">Párrafo inferior (abajo de las imágenes)</label>
         <textarea id="email_body" name="email_body" rows="4" required><?php echo campaign_escape($emailBody); ?></textarea>
 
-        <label for="category">Categoría de stand</label>
-        <select id="category" name="category" required>
-          <?php foreach ($config['categories'] as $key => $category): ?>
-            <option value="<?php echo campaign_escape($key); ?>" <?php echo $selectedCategory === $key ? 'selected' : ''; ?>>
-              <?php echo campaign_escape($category['label']); ?>
-            </option>
-          <?php endforeach; ?>
-        </select>
+        <input type="hidden" id="category" name="category" value="stands_madera">
 
         <label for="language">Idioma del correo</label>
         <select id="language" name="language" required>
@@ -409,7 +402,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         form.submit();
       }
 
-      category.addEventListener('change', function () { refreshPreview(true); });
+
       language.addEventListener('change', function () { refreshPreview(true); });
 
       // Sincronización en tiempo real de marcadores de empresa del tipo {VALOR}

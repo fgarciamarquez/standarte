@@ -161,7 +161,10 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
     $emailCta = campaign_process_placeholders(campaign_text($category, $lang, 'cta'), $resolvedCompanyName);
 
     $imageHtml = '';
-    foreach ($category['images'] as $image) {
+    $imagesList = $category['images'];
+    shuffle($imagesList);
+    $selectedImages = array_slice($imagesList, 0, 2);
+    foreach ($selectedImages as $image) {
         $imageHtml .= '<a href="' . campaign_escape($landingUrl) . '" style="display:block;text-decoration:none;border:0;margin:0 0 22px 0;">';
         $imageHtml .= '<img src="' . campaign_escape(campaign_absolute_url($config, $image['src'])) . '" width="680" alt="' . campaign_escape($image['alt']) . '" style="display:block;width:100%;max-width:680px;height:auto;border:0;margin:0 auto;" />';
         $imageHtml .= '</a>';
