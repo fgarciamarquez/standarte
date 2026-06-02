@@ -342,6 +342,15 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         <button class="secondary" type="submit" onclick="document.getElementById('campaign-action').value='preview';">Previsualizar</button>
         <button class="primary" type="submit" onclick="document.getElementById('campaign-action').value='send';">Enviar Campaña</button>
         <p class="hint">Puedes enviar a varios destinatarios separándolos por comas. Cada categoría inyectará el asunto, textos y tarjetas multimedia correspondientes.</p>
+        
+        <div id="batch_progress_container" style="display:none; margin-top: 1rem; padding: 1rem; background: #1e1e1e; border: 1px solid #333; border-radius: 8px;">
+          <h3 style="margin-top:0; color:#ffc800; font-size:1rem;">Estado del envío</h3>
+          <div style="background: #000; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; border: 1px solid #444;">
+            <div id="batch_progress_bar" style="width: 0%; height: 8px; background: #ffc800; transition: width 0.3s ease;"></div>
+          </div>
+          <p id="batch_progress_text" style="margin:0; font-size:0.85rem; color:#ccc;">Preparando...</p>
+          <p id="batch_progress_log" style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #888; white-space: pre-wrap; font-family: monospace;"></p>
+        </div>
       </form>
       <div class="send-log">
         <h2>Registro de envíos locales</h2>
@@ -445,6 +454,106 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
       subject.addEventListener('input', syncPlaceholders);
       intro.addEventListener('input', syncPlaceholders);
       body.addEventListener('input', syncPlaceholders);
+
+      // --- LOGICA DE ENVIO POR LOTES (THROTTLING) ---
+      form.addEventListener('submit', function(e) {
+        if (action.value !== 'send') return; // Permitir preview normal
+
+        e.preventDefault(); // Interceptar envío
+
+        var rawEmails = document.getElementById('recipient_email').value;
+        var allEmails = rawEmails.split(',').map(function(em) { return em.trim(); }).filter(function(em) { return em.length > 0; });
+        
+        if (allEmails.length === 0) {
+          alert('Por favor, introduzca al menos un email válido.');
+          return;
+        }
+
+        if (!confirm('Se van a enviar ' + allEmails.length + ' correos en grupos aleatorios con pausas. ¿Desea continuar?')) {
+          return;
+        }
+
+        // Crear lotes irregulares (3 a 8)
+        var batches = [];
+        var currentIndex = 0;
+        while (currentIndex < allEmails.length) {
+          var batchSize = Math.floor(Math.random() * (8 - 3 + 1)) + 3; // Aleatorio entre 3 y 8
+          batches.push(allEmails.slice(currentIndex, currentIndex + batchSize));
+          currentIndex += batchSize;
+        }
+
+        var progressContainer = document.getElementById('batch_progress_container');
+        var progressBar = document.getElementById('batch_progress_bar');
+        var progressText = document.getElementById('batch_progress_text');
+        var progressLog = document.getElementById('batch_progress_log');
+        var submitButtons = form.querySelectorAll('button[type="submit"]');
+
+        progressContainer.style.display = 'block';
+        submitButtons.forEach(function(btn) { btn.disabled = true; });
+        progressLog.textContent = '';
+
+        var totalBatches = batches.length;
+        var currentBatchIdx = 0;
+        var totalSent = 0;
+        var totalFailed = 0;
+
+        function sendNextBatch() {
+          if (currentBatchIdx >= totalBatches) {
+            progressText.innerHTML = '<span style="color:#4ade80;">¡Envío completado!</span> (' + totalSent + ' enviados, ' + totalFailed + ' fallidos)';
+            progressBar.style.width = '100%';
+            progressBar.style.background = '#4ade80';
+            submitButtons.forEach(function(btn) { btn.disabled = false; });
+            return;
+          }
+
+          var batchEmails = batches[currentBatchIdx];
+          var pct = Math.round((currentBatchIdx / totalBatches) * 100);
+          progressBar.style.width = pct + '%';
+          progressText.textContent = 'Enviando lote ' + (currentBatchIdx + 1) + ' de ' + totalBatches + ' (' + batchEmails.length + ' correos)...';
+
+          var payload = {
+            recipients: batchEmails,
+            category: category.value,
+            language: language.value,
+            subject: subject.value,
+            intro: intro.value,
+            body: body.value
+          };
+
+          fetch('send_batch.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data.success) {
+              totalSent += (data.sent ? data.sent.length : 0);
+              totalFailed += (data.failed ? data.failed.length : 0);
+              progressLog.textContent = 'Lote ' + (currentBatchIdx + 1) + ' OK.\n' + progressLog.textContent;
+            } else {
+              totalFailed += batchEmails.length;
+              progressLog.textContent = 'Lote ' + (currentBatchIdx + 1) + ' falló: ' + (data.errors ? data.errors.join(', ') : 'Error desconocido') + '\n' + progressLog.textContent;
+            }
+          })
+          .catch(function(err) {
+            totalFailed += batchEmails.length;
+            progressLog.textContent = 'Lote ' + (currentBatchIdx + 1) + ' falló (Red).\n' + progressLog.textContent;
+          })
+          .finally(function() {
+            currentBatchIdx++;
+            if (currentBatchIdx < totalBatches) {
+              var waitSeconds = Math.floor(Math.random() * (9 - 4 + 1)) + 4; // Aleatorio entre 4 y 9
+              progressText.textContent = 'Lote enviado. Esperando ' + waitSeconds + ' segundos para evitar spam...';
+              setTimeout(sendNextBatch, waitSeconds * 1000);
+            } else {
+              sendNextBatch(); // Llamar de nuevo para finalizar
+            }
+          });
+        }
+
+        sendNextBatch();
+      });
     }());
 
     // --- CARGA DE GRUPOS DE LEADS DESDE SUPABASE ---
