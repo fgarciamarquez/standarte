@@ -40,8 +40,11 @@ if (-not (Test-Path $localPath)) {
     exit 1
 }
 
-# Obtener todos los archivos y subdirectorios de forma recursiva
-$files = Get-ChildItem -Path $localPath -Recurse
+# Obtener todos los archivos y subdirectorios de forma recursiva, excluyendo la carpeta img
+$files = Get-ChildItem -Path $localPath -Recurse | Where-Object {
+    $relativePath = $_.FullName.Substring($localPath.Length + 1)
+    -not $relativePath.StartsWith("img\") -and -not $relativePath.StartsWith("img/")
+}
 
 # A. Crear subdirectorios remotos primero (en orden jerárquico corto)
 $dirs = $files | Where-Object { $_.PSIsContainer } | Sort-Object { $_.FullName.Length }

@@ -397,9 +397,9 @@
     </div>
     <div class="copyright">
       <p>
-        Standarte © 2026. Todos los derechos reservados.
+        Standarte © 2026.
         <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer" style="margin-left: 15px; display: inline-block;">
-          Campañas
+          Admin
         </a>
       </p>
     </div>
