@@ -48,21 +48,56 @@ function campaign_is_logged_in()
     return isset($_SESSION['standarte_email_campaing_auth']) && $_SESSION['standarte_email_campaing_auth'] === true;
 }
 
-function campaign_get_total_email_visits()
+function campaign_get_email_clicks()
 {
-    $statsFile = __DIR__ . '/data/clicks.json';
+    $configFile = __DIR__ . '/../../supabase-config.php';
+    if (!is_file($configFile)) {
+        return array('total' => 0, 'history' => array());
+    }
+    require_once $configFile;
 
-    if (!is_file($statsFile)) {
-        return 0;
+    if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
+        return array('total' => 0, 'history' => array());
     }
 
-    $stats = json_decode(file_get_contents($statsFile), true);
-
-    if (!is_array($stats) || !isset($stats['total'])) {
-        return 0;
+    // Get total count
+    $chCount = curl_init();
+    curl_setopt($chCount, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=id');
+    curl_setopt($chCount, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chCount, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($chCount, CURLOPT_HEADER, true);
+    curl_setopt($chCount, CURLOPT_NOBODY, true);
+    curl_setopt($chCount, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY,
+        'Prefer: count=exact'
+    ]);
+    $header = curl_exec($chCount);
+    $count = 0;
+    if (preg_match('/Content-Range: [0-9]+-[0-9]+\/([0-9]+)/', $header, $matches)) {
+        $count = (int)$matches[1];
     }
+    curl_close($chCount);
 
-    return (int) $stats['total'];
+    // Get history (latest 50)
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,created_at&order=created_at.desc&limit=50');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    
+    $response = curl_exec($ch);
+    curl_close($ch);
+    
+    $history = json_decode($response, true);
+    if (!is_array($history)) {
+        $history = array();
+    }
+    
+    return array('total' => $count, 'history' => $history);
 }
 
 require __DIR__ . '/mailer.php';
@@ -225,7 +260,9 @@ if (!$previewHtml && isset($config['categories'][$selectedCategory])) {
     $previewHtml = campaign_build_email($config, $config['categories'][$selectedCategory], $previewRecipient, $selectedLanguage, $previewSubject, $emailIntro, $emailBody, $previewCompany);
 }
 
-$totalEmailVisits = campaign_get_total_email_visits();
+$clicksData = campaign_get_email_clicks();
+$totalEmailVisits = $clicksData['total'];
+$clicksHistory = $clicksData['history'];
 $sendLog = campaign_get_send_log();
 $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host']) && !empty($config['smtp']['username']) && !empty($config['smtp']['password']);
 
@@ -302,11 +339,12 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
 
         <label for="lead_group_select">Selector de grupos</label>
         <div style="display:flex;gap:8px;margin:0 0 .5rem;">
-          <select id="lead_group_select" style="flex:1;margin:0;">
+          <select id="lead_group_select" style="flex:1;margin:0;" onchange="updateUnsubWarning(this)">
             <option value="">-- Seleccionar grupo --</option>
           </select>
           <button type="button" id="load_group_btn" class="secondary" style="width:auto;padding:.5rem 1rem;margin:0;font-size:.85rem;" onclick="loadLeadGroup()">Cargar</button>
         </div>
+        <div id="group_unsub_warning" style="display:none;color:#dc2626;font-size:.85rem;margin-bottom:0.5rem;font-weight:bold;"></div>
         <div id="group_feedback" style="display:none;background:#f0fdf4;border-left:4px solid #4ade80;color:#15803d;padding:8px 12px;border-radius:4px;margin:0 0 1rem;font-size:.85rem;"></div>
 
         <label for="recipient_email">Destinatarios</label>
@@ -332,7 +370,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           <?php endforeach; ?>
         </select>
 
-        <button class="secondary" type="submit" onclick="document.getElementById('campaign-action').value='preview';">Previsualizar</button>
+        <button class="secondary" type="submit" formnovalidate onclick="document.getElementById('campaign-action').value='preview';">Previsualizar imágenes aleatorias</button>
         <button class="primary" type="submit" onclick="document.getElementById('campaign-action').value='send';">Enviar Campaña</button>
         <p class="hint">Puedes enviar a varios destinatarios separándolos por comas. Cada categoría inyectará el asunto, textos y tarjetas multimedia correspondientes.</p>
         
@@ -345,6 +383,18 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           <p id="batch_progress_log" style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #888; white-space: pre-wrap; font-family: monospace;"></p>
         </div>
       </form>
+      <div class="send-log">
+        <h2>Últimos accesos desde el correo</h2>
+        <?php if (!$clicksHistory): ?>
+          <p style="font-size:0.85rem;color:#888;">Nadie ha hecho clic en los correos todavía.</p>
+        <?php endif; ?>
+        <?php foreach ($clicksHistory as $click): ?>
+          <p>
+            <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
+            <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['created_at']))); ?></span>
+          </p>
+        <?php endforeach; ?>
+      </div>
       <div class="send-log">
         <h2>Registro de envíos locales</h2>
         <?php if (!$sendLog): ?>
@@ -562,12 +612,36 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
             data.groups.forEach(function (g) {
               var opt = document.createElement('option');
               opt.value = g.name;
-              opt.textContent = g.name + ' (' + (g.leads_with_email || 0) + ' leads con email)';
+              var total = g.leads_with_email || 0;
+              var sent = g.drip_sent_count || 0;
+              var unsub = g.unsub_count || 0;
+              // El elemento <option> no admite colorear solo una parte del texto,
+              // así que lo mostramos aquí y también podemos pintarlo de rojo en la interfaz si hiciera falta.
+              var text = g.name + ' (' + total + ' leads, ' + sent + ' enviados)';
+              if (unsub > 0) text += ' - ❗' + unsub + ' bajas';
+              opt.textContent = text;
+              opt.dataset.unsub = unsub;
               groupSelect.appendChild(opt);
             });
           }
         })
         .catch(function () { /* silenciar */ });
+
+      window.updateUnsubWarning = function (sel) {
+        var warning = document.getElementById('group_unsub_warning');
+        if (sel.selectedIndex >= 0) {
+          var opt = sel.options[sel.selectedIndex];
+          var unsub = parseInt(opt.dataset.unsub || 0);
+          if (unsub > 0) {
+            warning.textContent = 'Atención: Este grupo tiene ' + unsub + ' bajas registradas (no se les enviará correo).';
+            warning.style.display = 'block';
+          } else {
+            warning.style.display = 'none';
+          }
+        } else {
+            warning.style.display = 'none';
+        }
+      };
 
       // Función global para cargar emails del grupo seleccionado
       window.loadLeadGroup = function () {

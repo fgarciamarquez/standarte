@@ -332,7 +332,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           <?php endforeach; ?>
         </select>
 
-        <button class="secondary" type="submit" onclick="document.getElementById('campaign-action').value='preview';">Previsualizar</button>
+        <button class="secondary" type="submit" formnovalidate onclick="document.getElementById('campaign-action').value='preview';">Previsualizar imágenes aleatorias</button>
         <button class="primary" type="submit" onclick="document.getElementById('campaign-action').value='send';">Enviar Campaña</button>
         <p class="hint">Puedes enviar a varios destinatarios separándolos por comas. Cada categoría inyectará el asunto, textos y tarjetas multimedia correspondientes.</p>
         

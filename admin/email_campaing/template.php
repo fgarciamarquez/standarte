@@ -107,6 +107,7 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
     $email = campaign_escape($recipientEmail);
     $htmlLang = isset($config['languages'][$lang]['html']) ? $config['languages'][$lang]['html'] : 'es';
     $footerText = isset($config['footer_text'][$lang]) ? $config['footer_text'][$lang] : $config['footer_text']['es'];
+    $headerText = isset($config['header_text'][$lang]) ? $config['header_text'][$lang] : $config['header_text']['es'];
 
     // Cargar configuración de Supabase para firma legal
     $configFile = dirname(dirname(__DIR__)) . '/supabase-config.php';
@@ -135,6 +136,12 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
                 break;
             case 'pt':
                 $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">Se não deseja receber mais estes e-mails, pode <a href="' . campaign_escape($unsubscribeLink) . '" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">cancelar a inscrição aqui</a>.</p>';
+                break;
+            case 'zh':
+                $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">如果您不想再收到这些邮件，可以<a href="' . campaign_escape($unsubscribeLink) . '" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">点击此处取消订阅</a>。</p>';
+                break;
+            case 'hi':
+                $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">यदि आप ये ईमेल प्राप्त नहीं करना चाहते हैं, तो आप <a href="' . campaign_escape($unsubscribeLink) . '" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">यहां सदस्यता समाप्त कर सकते हैं</a>।</p>';
                 break;
             default:
                 $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">En cumplimiento de la LSSI-CE y el RGPD, si no deseas recibir más correos de diseño ferial, puedes <a href="' . campaign_escape($unsubscribeLink) . '" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">darte de baja haciendo clic aquí</a>.</p>';
@@ -186,7 +193,7 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
           <tr>
             <td align="center" style="background-color: #ffffff; padding:35px 28px 24px;">
               <img src="' . campaign_escape($logoUrl) . '" width="240" alt="Standarte" style="display:block;border:0;outline:none;text-decoration:none;width:240px !important;max-width:55% !important;height:auto !important;margin:0 auto 12px;" />
-              <p style="color: #222222; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Arial, sans-serif; text-align: center;">Diseño y Construcción de Stands Internacionales</p>
+              <p style="color: #222222; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Arial, sans-serif; text-align: center;">' . campaign_escape($headerText) . '</p>
             </td>
           </tr>
           <tr>

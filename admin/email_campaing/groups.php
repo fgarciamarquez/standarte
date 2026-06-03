@@ -44,10 +44,37 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 if ($action === 'list') {
     $result = groups_supabase_get('lead_groups?select=name,description,total_leads,leads_with_email,source_url,created_at&order=created_at.desc');
     
+    // Obtener recuento de envíos por grupo
+    $sentResult = groups_supabase_get('contacts?select=lead_group&drip_sent=is.true&limit=10000');
+    $sentCounts = [];
+    if ($sentResult['code'] === 200 && is_array($sentResult['body'])) {
+        foreach ($sentResult['body'] as $c) {
+            $lg = $c['lead_group'];
+            if (!isset($sentCounts[$lg])) $sentCounts[$lg] = 0;
+            $sentCounts[$lg]++;
+        }
+    }
+    
+    // Obtener recuento de bajas por grupo
+    $unsubResult = groups_supabase_get('contacts?select=lead_group&status=eq.unsubscribed&limit=10000');
+    $unsubCounts = [];
+    if ($unsubResult['code'] === 200 && is_array($unsubResult['body'])) {
+        foreach ($unsubResult['body'] as $c) {
+            $lg = $c['lead_group'];
+            if (!isset($unsubCounts[$lg])) $unsubCounts[$lg] = 0;
+            $unsubCounts[$lg]++;
+        }
+    }
+    
     if ($result['code'] >= 200 && $result['code'] < 300 && is_array($result['body'])) {
+        $groups = $result['body'];
+        foreach ($groups as &$g) {
+            $g['drip_sent_count'] = isset($sentCounts[$g['name']]) ? $sentCounts[$g['name']] : 0;
+            $g['unsub_count'] = isset($unsubCounts[$g['name']]) ? $unsubCounts[$g['name']] : 0;
+        }
         echo json_encode([
             'status' => 'success',
-            'groups' => $result['body']
+            'groups' => $groups
         ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     } else {
         // Si la tabla no existe aún, devolver lista vacía en vez de error

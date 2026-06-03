@@ -25,6 +25,14 @@ return array(
         'zh' => array('label' => '中文', 'html' => 'zh'),
         'hi' => array('label' => 'हिन्दी', 'html' => 'hi')
     ),
+    'header_text' => array(
+        'es' => 'Diseño y Construcción de Stands Internacionales',
+        'en' => 'International Exhibition Stand Design & Construction',
+        'de' => 'Internationales Messedesign & Standbau',
+        'pt' => 'Design e Construção de Stands Internacionais',
+        'zh' => '国际展位设计与搭建',
+        'hi' => 'अंतर्राष्ट्रीय प्रदर्शनी स्टैंड डिजाइन और निर्माण'
+    ),
     'footer_text' => array(
         'es' => 'Si desea más información, responda a este correo o contacte en',
         'en' => 'For more information, please reply to this email or contact us at',
@@ -49,7 +57,7 @@ return array(
                     'headline' => '{EMPRESA}: Lead your market and become the absolute center of attention',
                     'intro' => 'Let\'s be honest: in an exhibition hall filled with visual noise, most stands are completely ignored. For {EMPRESA}, we design and build bespoke stands that project maximum quality, brand authority, and visual balance.',
                     'body' => 'Our specialized master craftsmen deliver flawless finishes. We handle the entire engineering, manufacturing, and setup process, making {EMPRESA} the absolute center of attention.',
-                    'cta' => 'DISEÑAR MI STAND'
+                    'cta' => 'DESIGN MY STAND'
                 ),
                 'de' => array(
                     'subject' => 'Ist {EMPRESA} bereit, die Messe zu dominieren, oder gehen Sie unter?',
@@ -57,7 +65,7 @@ return array(
                     'headline' => '{EMPRESA}: Führen Sie Ihren Markt an und stehen Sie im Rampenlicht',
                     'intro' => 'Seien wir ehrlich: In einer Messehalle voller visuellem Lärm gehen die meisten Stände unter. Für {EMPRESA} entwerfen und fertigen wir exklusive Messestände, die Qualität, Stärke und optische Balance ausstrahlen.',
                     'body' => 'Unsere spezialisierten Handwerker erzielen makellose Ergebnisse. Wir übernehmen den gesamten Engineering-, Fertigungs- und Montageprozess für {EMPRESA}.',
-                    'cta' => 'DISEÑAR MI STAND'
+                    'cta' => 'MESSESTAND ENTWERFEN'
                 ),
                 'pt' => array(
                     'subject' => 'Está a {EMPRESA} pronta para liderar a sua próxima feira ou passará despercebida?',
@@ -65,7 +73,23 @@ return array(
                     'headline' => '{EMPRESA}: Lidere o seu setor e torne-se o centro de todas as atenções',
                     'intro' => 'Sejamos realistas: num pavilhão cheio de ruído visual, a maioria dos stands passa despercebida. Para {EMPRESA}, projetamos e fabricamos stands sob medida que transmitem máxima qualidade e solidez diferenciada.',
                     'body' => 'Nossos carpinteiros especializados garantem acabamentos impecáveis. Cuidamos de todo o processo de engenharia, fabricação e montagem para que {EMPRESA} sea o centro de todas as atenções.',
-                    'cta' => 'DISEÑAR MI STAND'
+                    'cta' => 'PROJETAR O MEU STAND'
+                ),
+                'zh' => array(
+                    'subject' => '{EMPRESA} 准备好在下一届展会上脱颖而出，还是会默默无闻？',
+                    'preheader' => '独家定制设计方案与高品质手工打造。',
+                    'headline' => '有了我们的支持，{EMPRESA} 将成为全场瞩目的焦点',
+                    'intro' => '在充满视觉噪音的展馆中，大多数展位都会被忽视。在 Standarte，我们基于注意力心理学设计和建造展位，旨在呈现出与众不同且平衡的品牌形象。',
+                    'body' => '我们专业的木匠能打造出完美的工艺细节。我们负责从工程设计、制造到搭建的全过程，让 {EMPRESA} 的项目成为绝对的焦点。',
+                    'cta' => '设计我的展位'
+                ),
+                'hi' => array(
+                    'subject' => 'क्या {EMPRESA} अपने अगले ट्रेड शो का नेतृत्व करने के लिए तैयार है, या अनदेखी रह जाएगी?',
+                    'preheader' => 'विशेष कस्टम डिज़ाइन समाधान और उच्च गुणवत्ता वाली शिल्पकारी।',
+                    'headline' => 'हमारे साथ, {EMPRESA} हर किसी के आकर्षण का केंद्र बन जाएगी',
+                    'intro' => 'दृश्य शोर से भरे प्रदर्शनी हॉल में, अधिकांश स्टैंड अनदेखे रह जाते हैं। Standarte में, हम ध्यान के मनोविज्ञान पर आधारित स्टैंड डिज़ाइन और निर्मित करते हैं, जिसका उद्देश्य एक अलग और संतुलित छवि पेश करना है।',
+                    'body' => 'हमारे विशेषज्ञ बढ़ई त्रुटिहीन फिनिश प्रदान करते हैं। हम संपूर्ण इंजीनियरिंग, निर्माण और सेटअप प्रक्रिया का प्रबंधन करते हैं, जिससे {EMPRESA} का प्रोजेक्ट आकर्षण का केंद्र बन जाता है।',
+                    'cta' => 'मेरा स्टैंड डिज़ाइन करें'
                 )
             ),
             'images' => array(
