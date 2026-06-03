@@ -93,8 +93,20 @@ function campaign_get_email_clicks()
     curl_close($ch);
     
     $history = json_decode($response, true);
-    if (!is_array($history)) {
+    if (!is_array($history) || isset($history['code']) || isset($history['message'])) {
         $history = array();
+    }
+    
+    // Fallback if supabase fails
+    if ($count === 0 && empty($history)) {
+        $statsFile = __DIR__ . '/data/clicks.json';
+        if (is_file($statsFile)) {
+            $stats = json_decode(file_get_contents($statsFile), true);
+            if (is_array($stats)) {
+                $count = isset($stats['total']) ? (int)$stats['total'] : 0;
+                $history = isset($stats['history']) && is_array($stats['history']) ? $stats['history'] : array();
+            }
+        }
     }
     
     return array('total' => $count, 'history' => $history);
