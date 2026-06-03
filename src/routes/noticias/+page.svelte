@@ -229,7 +229,7 @@
   /* Header y Navbar de subpágina */
   .static-header {
     min-height: 420px !important;
-    background: linear-gradient(180deg, rgba(22, 25, 28, 0.7) 0%, rgba(22, 25, 28, 0.9) 100%), url('/img/bg2.webp') fixed center center / cover no-repeat !important;
+    background: transparent !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -255,7 +255,7 @@
 
   .hero-contents h1 {
     font-size: 40px;
-    color: #fff;
+    color: #111;
     margin: 0 0 20px;
     font-weight: 700;
     line-height: 1.2;
@@ -264,7 +264,7 @@
   .hero-lead {
     font-size: 16px;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
+    color: #555;
     max-width: 780px;
     margin: 0 auto;
   }
