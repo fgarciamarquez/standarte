@@ -1,0 +1,16 @@
+name: Automated Drip Campaign
+
+on:
+  schedule:
+    # Corre todos los días a las 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, y 18 horas (UTC)
+    # Ajustar a tu zona horaria si es necesario (el servidor normalmente corre en UTC)
+    - cron: '0 8-18 * * *'
+  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  run-drip-campaign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar script cron de OVH
+        run: |
+          curl -sS "https://standarte.es/admin/email_campaing/cron_drip.php?token=TKN-8f3a9b1c7d2e4"
