@@ -120,12 +120,51 @@ foreach ($records as $record) {
     }
 
     // Validate email format with advanced bounce avoidance (Syntax + Disposable + DNS MX check)
-    if (!campaign_is_valid_email_advanced($email)) {
+    $email_error = '';
+    if (!campaign_is_valid_email_advanced($email, $email_error)) {
         $failedCount++;
         $errors[] = array(
             'record_index' => $processedCount,
             'email' => $email,
-            'message' => 'Email address rejected by verification system (syntax error, disposable domain, or inactive DNS MX/A records to prevent bounces).'
+            'message' => $email_error
+        );
+        if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+            $bounceData = [
+                'email' => $email,
+                'status' => 'bounced',
+                'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error,
+                'updated_at' => date('c')
+            ];
+            campaign_supabase_request('POST', 'contacts?on_conflict=email', $bounceData);
+        }
+        $processedCount++;
+        continue;
+    }
+
+    // Check exclusion list (LSSI/RGPD/Bounces) in Supabase
+    $isExcluded = false;
+    $excludeReason = '';
+    if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $res = campaign_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
+        if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
+            $supaContact = $res['body'][0];
+            $status = $supaContact['status'] ?? 'active';
+            if ($status === 'unsubscribed') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido: El destinatario se dio de baja voluntariamente (LSSI/RGPD).";
+            } else if ($status === 'bounced') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido: La dirección de correo electrónico está rebotada/fallida.";
+            }
+        }
+    }
+
+    if ($isExcluded) {
+        $failedCount++;
+        $errors[] = array(
+            'record_index' => $processedCount,
+            'email' => $email,
+            'message' => $excludeReason
         );
         $processedCount++;
         continue;

@@ -241,6 +241,8 @@
     padding: 0 15px;
     width: 100%;
     text-align: center;
+    background: transparent !important;
+    border-bottom: none !important;
   }
 
   .hero-contents .eyebrow {

@@ -142,6 +142,18 @@ foreach ($contactsToSend as $contact) {
     $contactId = isset($contact['id']) ? $contact['id'] : null;
     $groupName = $contact['lead_group'];
     
+    // Validate email format and DNS
+    $email_error = '';
+    if (!campaign_is_valid_email_advanced($email, $email_error)) {
+        echo "  [SKIP - DNS/Syntax Error] $email: $email_error\n";
+        if ($contactId) {
+            supa_request('contacts?id=eq.' . $contactId, 'PATCH', array('status' => 'bounced', 'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error, 'updated_at' => date('c')));
+        } else {
+            supa_request('contacts?email=eq.' . urlencode($email), 'PATCH', array('status' => 'bounced', 'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error, 'updated_at' => date('c')));
+        }
+        continue;
+    }
+    
     // Determinar el idioma
     $lang = 'en';
     if (stripos($groupName, 'madrid') !== false || stripos($groupName, 'barcelona') !== false) {

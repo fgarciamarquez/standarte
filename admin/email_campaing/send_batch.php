@@ -48,14 +48,58 @@ if (!empty($errors)) {
     exit;
 }
 
+// Load Supabase Config
+$configFile = dirname(dirname(__DIR__)) . '/supabase-config.php';
+if (!is_file($configFile)) {
+    $configFile = dirname(dirname(dirname(__DIR__))) . '/supabase-config.php';
+}
+if (is_file($configFile)) {
+    require_once $configFile;
+}
+
 $category = $config['categories'][$selectedCategory];
 $sentEmails = array();
 $failedEmails = array();
 
 foreach ($recipients as $email) {
     $email = trim($email);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $failedEmails[] = $email;
+    
+    // Validate email format and DNS
+    $email_error = '';
+    if (!campaign_is_valid_email_advanced($email, $email_error)) {
+        $failedEmails[] = $email . ' (' . $email_error . ')';
+        if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+            $bounceData = [
+                'email' => $email,
+                'status' => 'bounced',
+                'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error,
+                'updated_at' => date('c')
+            ];
+            campaign_supabase_request('POST', 'contacts?on_conflict=email', $bounceData);
+        }
+        continue;
+    }
+
+    // Check exclusion list (LSSI/RGPD/Bounces)
+    $isExcluded = false;
+    $excludeReason = '';
+    if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $res = campaign_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
+        if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
+            $supaContact = $res['body'][0];
+            $status = $supaContact['status'] ?? 'active';
+            if ($status === 'unsubscribed') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido (Baja RGPD)";
+            } else if ($status === 'bounced') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido (Rebotado)";
+            }
+        }
+    }
+
+    if ($isExcluded) {
+        $failedEmails[] = $email . ' (' . $excludeReason . ')';
         continue;
     }
 

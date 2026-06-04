@@ -35,6 +35,7 @@ define("SECURE_TOKEN", "STANDARTE_MAIL_SECURE_2026");
 // Ruta del archivo de logs local para MAMP (sin base de datos)
 $logFile = __DIR__ . '/sent_emails_log.json';
 require_once __DIR__ . '/admin/email_campaing/campaign_throttle.php';
+require_once __DIR__ . '/admin/email_campaing/mailer.php';
 
 // Cargar configuración de Supabase
 $configFile = __DIR__ . '/supabase-config.php';
@@ -91,49 +92,11 @@ function send_email_supabase_request($method, $endpoint, $data = null) {
 
 
 /**
- * Valida un email de forma avanzada para evitar rebotes:
- * 1. Sintaxis básica mediante FILTER_VALIDATE_EMAIL.
- * 2. Filtrado de dominios de correos temporales o desechables comunes.
- * 3. Verificación DNS en tiempo real de registros MX (Mail Exchange) y A.
+ * Wrapper de compatibilidad para validación avanzada de correos.
  */
 function send_email_is_valid_email_advanced($email)
 {
-    $email = trim($email);
-
-    // 1. Validación de sintaxis básica
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return false;
-    }
-
-    // 2. Extraer el dominio
-    $parts = explode('@', $email);
-    if (count($parts) < 2) {
-        return false;
-    }
-    $domain = strtolower(end($parts));
-
-    // 3. Lista negra de dominios de email temporal / desechable comunes
-    $disposableDomains = array(
-        'yopmail.com', 'yopmail.fr', 'yopmail.net', 'cool.fr.nf', 'jetable.fr.nf',
-        'courriel.fr.nf', 'moncourrier.fr.nf', 'monemail.fr.nf', 'monmail.fr.nf',
-        'tempmail.com', 'temp-mail.org', 'mailinator.com', '10minutemail.com',
-        'guerrillamail.com', 'sharklasers.com', 'dispostable.com', 'getairmail.com',
-        'throwawaymail.com', 'tempmailaddress.com', 'maildrop.cc'
-    );
-    if (in_array($domain, $disposableDomains, true)) {
-        return false;
-    }
-
-    // 4. Verificación de registros DNS en tiempo real (MX o A)
-    if (function_exists('checkdnsrr')) {
-        if (!checkdnsrr($domain, 'MX')) {
-            // Si no tiene registro MX, comprobamos el registro A como fallback
-            return checkdnsrr($domain, 'A');
-        }
-        return true;
-    }
-
-    return true;
+    return campaign_is_valid_email_advanced($email);
 }
 
 
@@ -240,15 +203,31 @@ foreach ($data['records'] as $index => $record) {
     }
 
     // Validación 2: Email válido con verificación avanzada anti-rebotes (sintaxis + desechables + DNS MX/A)
-    if (empty($email) || !send_email_is_valid_email_advanced($email)) {
+    $email_err = '';
+    if (empty($email) || !campaign_is_valid_email_advanced($email, $email_err)) {
         $totalRechazados++;
+        $motivo = "Dirección de correo electrónico rechazada por el sistema de verificación avanzada: " . ($email_err ?: "sintaxis incorrecta o DNS inactivo.");
         $resultados[] = [
             "index" => $index,
             "empresa" => $empresa,
             "email" => $email,
             "status" => "RECHAZADO",
-            "motivo" => "Dirección de correo electrónico rechazada por el sistema de verificación (sintaxis incorrecta, dominio desechable o DNS MX/A inactivo para evitar rebotes)."
+            "motivo" => $motivo
         ];
+        
+        // Registrar como rebotado permanente para servir como lista de exclusión activa
+        if (!empty($email) && defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+            $bounceData = [
+                'email' => $email,
+                'empresa' => $empresa,
+                'feria' => $feria,
+                'categoria' => $categoria,
+                'status' => 'bounced',
+                'bounce_reason' => 'Verification failed: ' . $email_err,
+                'updated_at' => date('c')
+            ];
+            send_email_supabase_request('POST', 'contacts?on_conflict=email', $bounceData);
+        }
         continue;
     }
 
@@ -518,7 +497,7 @@ HTML;
             'status' => 'active', // Siempre nos aseguramos de que esté active al enviar (si ya estuviera unsubscribed/bounced se habría omitido en la validación superior)
             'updated_at' => date('c')
         ];
-        send_email_supabase_request('POST', 'contacts', $contactData);
+        send_email_supabase_request('POST', 'contacts?on_conflict=email', $contactData);
     }
 
     // Registrar en el historial de envíos únicos para activar el bloqueo de 1 mes

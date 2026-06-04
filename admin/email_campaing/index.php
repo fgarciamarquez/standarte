@@ -212,8 +212,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['campaign_action'])) {
     $invalidRecipientEmails = array();
 
     foreach ($recipientEmails as $email) {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $invalidRecipientEmails[] = $email;
+        $email_error = '';
+        if (!campaign_is_valid_email_advanced($email, $email_error)) {
+            $invalidRecipientEmails[] = $email . ' (' . $email_error . ')';
         }
     }
 
