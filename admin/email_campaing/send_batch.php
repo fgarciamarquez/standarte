@@ -36,12 +36,6 @@ if (empty($recipients)) {
 if (!isset($config['categories'][$selectedCategory])) {
     $errors[] = 'Categoría no válida.';
 }
-if (!isset($config['languages'][$selectedLanguage])) {
-    $errors[] = 'Idioma no válido.';
-}
-if ($emailSubject === '') {
-    $errors[] = 'El asunto está vacío.';
-}
 
 if (!empty($errors)) {
     echo json_encode(array('success' => false, 'errors' => $errors));
@@ -80,14 +74,16 @@ foreach ($recipients as $email) {
         continue;
     }
 
-    // Check exclusion list (LSSI/RGPD/Bounces)
+    // Check exclusion list (LSSI/RGPD/Bounces) and fetch language
     $isExcluded = false;
     $excludeReason = '';
+    $dbLanguage = null;
     if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
         $res = campaign_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
         if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
             $supaContact = $res['body'][0];
             $status = $supaContact['status'] ?? 'active';
+            $dbLanguage = $supaContact['language'] ?? null;
             if ($status === 'unsubscribed') {
                 $isExcluded = true;
                 $excludeReason = "Envío omitido (Baja RGPD)";
@@ -103,9 +99,33 @@ foreach ($recipients as $email) {
         continue;
     }
 
-    $emailCompany = campaign_resolve_company_name($email, $selectedLanguage, '', $emailSubject, $emailIntro, $emailBody);
-    $processedSubject = campaign_process_placeholders($emailSubject, $emailCompany);
-    $emailHtml = campaign_build_email($config, $category, $email, $selectedLanguage, $processedSubject, $emailIntro, $emailBody, $emailCompany);
+    // Intelligent Language Detection (DB first, then TLD fallback)
+    if ($dbLanguage && in_array(strtolower($dbLanguage), ['es', 'en', 'de', 'pt', 'zh', 'hi'])) {
+        $lang = strtolower($dbLanguage);
+    } else {
+        $tld = strtolower(substr(strrchr($email, '.'), 1));
+        $lang = 'en'; // Default to English for international
+        if ($tld === 'es') $lang = 'es';
+        else if ($tld === 'de' || $tld === 'at' || $tld === 'ch') $lang = 'de';
+        else if ($tld === 'pt' || $tld === 'br') $lang = 'pt';
+        else if ($tld === 'cn' || $tld === 'zh' || $tld === 'tw') $lang = 'zh';
+        else if ($tld === 'in') $lang = 'hi';
+    }
+    
+    // Fetch default texts for the language
+    $smartSubject = isset($category['translations'][$lang]['subject']) ? $category['translations'][$lang]['subject'] : (isset($category['subject']) ? $category['subject'] : '');
+    $smartIntro = isset($category['translations'][$lang]['intro']) ? $category['translations'][$lang]['intro'] : (isset($category['intro']) ? $category['intro'] : '');
+    $smartBody = isset($category['translations'][$lang]['body']) ? $category['translations'][$lang]['body'] : (isset($category['body']) ? $category['body'] : '');
+    
+    if ($lang === 'es' && isset($category['subject'])) {
+         $smartSubject = $category['subject'];
+         $smartIntro = $category['intro'];
+         $smartBody = $category['body'];
+    }
+
+    $emailCompany = campaign_resolve_company_name($email, $lang, '', $smartSubject, $smartIntro, $smartBody);
+    $processedSubject = campaign_process_placeholders($smartSubject, $emailCompany);
+    $emailHtml = campaign_build_email($config, $category, $email, $lang, $processedSubject, $smartIntro, $smartBody, $emailCompany);
 
     if (campaign_send_mail($config, $email, $processedSubject, $emailHtml)) {
         $sentEmails[] = $email;

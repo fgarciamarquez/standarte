@@ -1,7 +1,7 @@
 // Archivo generado automáticamente a partir de empresas_contactos.txt
 export const projects = [
   {
-    "id": "stand_42solutions_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_software_de_trafico_aereo_en_madrid",
     "name": "42SOLUTIONS",
     "location": "Madrid",
     "web": "https://www.42solutions.nl",
@@ -30,16 +30,16 @@ export const projects = [
       "hi": "डच कंपनी de सॉफ्टवेयर para gestión de tráfico aéreo (ATM)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa 42SOLUTIONS en Madrid",
-      "en": "Stand project development for company 42SOLUTIONS in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen 42SOLUTIONS in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa 42SOLUTIONS em Madrid",
-      "zh": "Madrid 42SOLUTIONS 公司展台项目设计与搭建",
-      "hi": "Madrid में 42SOLUTIONS कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de software de tráfico aéreo en Madrid",
+      "en": "Stand for air traffic software company in Madrid",
+      "de": "Messestand für Flugsicherungssoftware-Unternehmen in Madrid",
+      "pt": "Stand para empresa de software de tráfego aéreo em Madrid",
+      "zh": "马德里空中交通软件公司展台",
+      "hi": "मैड्रिड में हवाई यातायात सॉफ्टवेयर कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_777_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_apuestas_online_en_madrid",
     "name": "777",
     "location": "Madrid",
     "web": "https://www.bet777.es/",
@@ -68,16 +68,16 @@ export const projects = [
       "hi": "कंपनी de apuestas online española."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa 777 en Madrid",
-      "en": "Stand project development for company 777 in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen 777 in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa 777 em Madrid",
-      "zh": "Madrid 777 公司展台项目设计与搭建",
-      "hi": "Madrid में 777 कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de apuestas online en Madrid",
+      "en": "Stand for online betting company in Madrid",
+      "de": "Messestand für Online-Wettunternehmen in Madrid",
+      "pt": "Stand para empresa de apostas online em Madrid",
+      "zh": "马德里在线博彩公司展台",
+      "hi": "मैड्रिड में ऑनलाइन सट्टेबाजी कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_a_bet_a_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_software_de_apuestas_en_malaga",
     "name": "A BET A",
     "location": "Málaga",
     "web": "https://abeta.co.uk",
@@ -107,16 +107,16 @@ export const projects = [
       "hi": "Sector: Software de apuestas. País: Reino Unido."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa A BET A en Málaga",
-      "en": "Stand project development for company A BET A in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen A BET A in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa A BET A em Málaga",
-      "zh": "Málaga A BET A 公司展台项目设计与搭建",
-      "hi": "Málaga में A BET A कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de software de apuestas en Málaga",
+      "en": "Stand for betting software company in Málaga",
+      "de": "Messestand für Wettsoftware-Unternehmen in Málaga",
+      "pt": "Stand para empresa de software de apostas em Málaga",
+      "zh": "马拉加博彩软件公司展台",
+      "hi": "मलागा में सट्टेबाजी सॉफ्टवेयर कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_aab_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_auditoria_y_contabilidad_en_bilbao",
     "name": "AAB",
     "location": "Bilbao",
     "web": "https://aabgroup.com/",
@@ -146,16 +146,16 @@ export const projects = [
       "hi": "कंपनी de पेशेवर सेवाएं (लेखापरीक्षा, लेखांकन, कराधान) में मुख्यालय यूनाइटेड किंगडम और आयरलैंड."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AAB en Bilbao",
-      "en": "Stand project development for company AAB in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AAB in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AAB em Bilbao",
-      "zh": "Bilbao AAB 公司展台项目设计与搭建",
-      "hi": "Bilbao में AAB कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de auditoría y contabilidad en Bilbao",
+      "en": "Stand for auditing and accounting firm in Bilbao",
+      "de": "Messestand für Wirtschaftsprüfungs- und Buchhaltungsunternehmen in Bilbao",
+      "pt": "Stand para empresa de auditoria e contabilidade em Bilbao",
+      "zh": "毕尔巴鄂审计和会计公司展台",
+      "hi": "बिल्बाओ में ऑडिटिंग और अकाउंटिंग फर्म के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_aercaribe_desarrollado_en_bilbao",
+    "id": "stand_para_aerolinea_de_carga_en_bilbao",
     "name": "AERCARIBE",
     "location": "Bilbao",
     "web": "https://aercaribe.com/",
@@ -184,16 +184,16 @@ export const projects = [
       "hi": "Sector: Aerolínea de carga. País: Colombia/Perú."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AERCARIBE en Bilbao",
-      "en": "Stand project development for company AERCARIBE in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AERCARIBE in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AERCARIBE em Bilbao",
-      "zh": "Bilbao AERCARIBE 公司展台项目设计与搭建",
-      "hi": "Bilbao में AERCARIBE कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para aerolínea de carga en Bilbao",
+      "en": "Stand for cargo airline in Bilbao",
+      "de": "Messestand für Frachtfluggesellschaft in Bilbao",
+      "pt": "Stand para companhia aérea de carga em Bilbao",
+      "zh": "毕尔巴鄂货运航空公司展台",
+      "hi": "बिल्बाओ में कार्गो एयरलाइन के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_afendi_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_shisha_en_bilbao",
     "name": "AFENDI",
     "location": "Bilbao",
     "web": "https://afendi.eu/",
@@ -224,16 +224,16 @@ export const projects = [
       "hi": "यूरोपीय कंपनी de shisha."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AFENDI en Bilbao",
-      "en": "Stand project development for company AFENDI in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AFENDI in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AFENDI em Bilbao",
-      "zh": "Bilbao AFENDI 公司展台项目设计与搭建",
-      "hi": "Bilbao में AFENDI कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de shisha en Bilbao",
+      "en": "Stand for shisha company in Bilbao",
+      "de": "Messestand für Shisha-Unternehmen in Bilbao",
+      "pt": "Stand para empresa de shisha em Bilbao",
+      "zh": "毕尔巴鄂水烟公司展台",
+      "hi": "बिल्बाओ में शीशा कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_agena_saglik_desarrollado_en_madrid",
+    "id": "stand_para_empresa_del_sector_sanitario_en_madrid",
     "name": "AGENA SAGLIK",
     "location": "Madrid",
     "web": "https://www.agenasaglik.com/en/",
@@ -262,16 +262,16 @@ export const projects = [
       "hi": "Sector sanitario, Turquía."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AGENA SAGLIK en Madrid",
-      "en": "Stand project development for company AGENA SAGLIK in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AGENA SAGLIK in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AGENA SAGLIK em Madrid",
-      "zh": "Madrid AGENA SAGLIK 公司展台项目设计与搭建",
-      "hi": "Madrid में AGENA SAGLIK कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa del sector sanitario en Madrid",
+      "en": "Stand for healthcare sector company in Madrid",
+      "de": "Messestand für Gesundheitsunternehmen in Madrid",
+      "pt": "Stand para empresa do setor sanitário em Madrid",
+      "zh": "马德里医疗保健公司展台",
+      "hi": "मैड्रिड में स्वास्थ्य सेवा क्षेत्र की कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_aiscan_desarrollado_en_madrid",
+    "id": "stand_para_fabricante_de_sistemas_de_conduccion_electrica_en_madrid",
     "name": "AISCAN",
     "location": "Madrid",
     "web": "https://www.aiscan.com/",
@@ -299,16 +299,16 @@ export const projects = [
       "hi": "Fabricante de sistemas de conducción de cables eléctricos, España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AISCAN en Madrid",
-      "en": "Stand project development for company AISCAN in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AISCAN in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AISCAN em Madrid",
-      "zh": "Madrid AISCAN 公司展台项目设计与搭建",
-      "hi": "Madrid में AISCAN कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fabricante de sistemas de conducción eléctrica en Madrid",
+      "en": "Stand for manufacturer of electrical conduit systems in Madrid",
+      "de": "Messestand für Hersteller von Kabelführungssystemen in Madrid",
+      "pt": "Stand para fabricante de sistemas de condução elétrica em Madrid",
+      "zh": "马德里电气导管系统制造商展台",
+      "hi": "मैड्रिड में विद्युत नाली प्रणाली निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_aksun_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_exportadora_de_frutas_y_verduras_en_barcelona",
     "name": "AKSUN",
     "location": "Barcelona",
     "web": "https://www.aksun.com.tr/",
@@ -347,16 +347,16 @@ export const projects = [
       "hi": "तुर्की कंपनी अग्रणी कंपनी में व्यावसायीकरण y निर्यात internacional de ताजे फल और सब्जियां."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AKSUN en Barcelona",
-      "en": "Stand project development for company AKSUN in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AKSUN in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AKSUN em Barcelona",
-      "zh": "Barcelona AKSUN 公司展台项目设计与搭建",
-      "hi": "Barcelona में AKSUN कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa exportadora de frutas y verduras en Barcelona",
+      "en": "Stand for fruit and vegetable exporting company in Barcelona",
+      "de": "Messestand für Obst- und Gemüseexportunternehmen in Barcelona",
+      "pt": "Stand para empresa exportadora de frutas e legumes em Barcelona",
+      "zh": "巴塞罗那水果和蔬菜出口公司展台",
+      "hi": "बार्सिलोना में फल और सब्जी निर्यात कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_apices_desarrollado_en_madrid",
+    "id": "stand_para_empresa_cro_europea_en_madrid",
     "name": "APICES",
     "location": "Madrid",
     "web": "https://apicescro.com/",
@@ -384,16 +384,16 @@ export const projects = [
       "hi": "कंपनी CRO europea में मुख्यालय España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa APICES en Madrid",
-      "en": "Stand project development for company APICES in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen APICES in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa APICES em Madrid",
-      "zh": "Madrid APICES 公司展台项目设计与搭建",
-      "hi": "Madrid में APICES कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa CRO europea en Madrid",
+      "en": "Stand for European CRO company in Madrid",
+      "de": "Messestand für europäisches CRO-Unternehmen in Madrid",
+      "pt": "Stand para empresa CRO europeia em Madrid",
+      "zh": "马德里欧洲CRO公司展台",
+      "hi": "मैड्रिड में यूरोपीय CRO कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_apres_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_productos_para_unas_en_madrid",
     "name": "APRES",
     "location": "Madrid",
     "web": "https://apresnail.com/",
@@ -426,16 +426,16 @@ export const projects = [
       "hi": "कंपनी de productos para uñas (EE. UU.)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa APRES en Madrid",
-      "en": "Stand project development for company APRES in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen APRES in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa APRES em Madrid",
-      "zh": "Madrid APRES 公司展台项目设计与搭建",
-      "hi": "Madrid में APRES कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de productos para uñas en Madrid",
+      "en": "Stand for nail products company in Madrid",
+      "de": "Messestand für Nagelprodukte-Unternehmen in Madrid",
+      "pt": "Stand para empresa de produtos para unhas em Madrid",
+      "zh": "马德里美甲产品公司展台",
+      "hi": "मैड्रिड में नेल उत्पाद कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_arra_desarrollado_en_madrid",
+    "id": "stand_para_distribuidor_de_uvas_de_mesa_en_madrid",
     "name": "ARRA",
     "location": "Madrid",
     "web": "https://grapaes.com/",
@@ -470,16 +470,16 @@ export const projects = [
       "hi": "Desarrollador y distribuidor global de variedades premium de uva de mesa sin semilla (ARRA Grapes)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa ARRA en Madrid",
-      "en": "Stand project development for company ARRA in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen ARRA in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa ARRA em Madrid",
-      "zh": "Madrid ARRA 公司展台项目设计与搭建",
-      "hi": "Madrid में ARRA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para distribuidor de uvas de mesa en Madrid",
+      "en": "Stand for table grapes distributor in Madrid",
+      "de": "Messestand für Tafeltrauben-Vertrieb in Madrid",
+      "pt": "Stand para distribuidor de uvas de mesa em Madrid",
+      "zh": "马德里鲜食葡萄经销商展台",
+      "hi": "मैड्रिड में टेबल अंगूर वितरक के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_ar_vacuum_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_automatizacion_por_vacio_en_bilbao",
     "name": "AR_VACUUM",
     "location": "Bilbao",
     "web": "https://ar-vacuum.com/en/",
@@ -511,16 +511,16 @@ export const projects = [
       "hi": "Sector: Automatización y manipulación por vacío. País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AR_VACUUM en Bilbao",
-      "en": "Stand project development for company AR_VACUUM in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AR_VACUUM in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AR_VACUUM em Bilbao",
-      "zh": "Bilbao AR_VACUUM 公司展台项目设计与搭建",
-      "hi": "Bilbao में AR_VACUUM कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de automatización por vacío en Bilbao",
+      "en": "Stand for vacuum automation company in Bilbao",
+      "de": "Messestand für Vakuumautomatisierungsunternehmen in Bilbao",
+      "pt": "Stand para empresa de automação por vácuo em Bilbao",
+      "zh": "毕尔巴鄂真空自动化公司展台",
+      "hi": "बिल्बाओ में वैक्यूम ऑटोमेशन कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_asteo_desarrollado_en_madrid",
+    "id": "stand_para_operador_de_telecomunicaciones_en_madrid",
     "name": "ASTEO",
     "location": "Madrid",
     "web": "https://asteo.es/",
@@ -551,16 +551,16 @@ export const projects = [
       "hi": "Operador mayorista de telecomunicaciones e infraestructura de fibra óptica en entornos rurales en España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa ASTEO en Madrid",
-      "en": "Stand project development for company ASTEO in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen ASTEO in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa ASTEO em Madrid",
-      "zh": "Madrid ASTEO 公司展台项目设计与搭建",
-      "hi": "Madrid में ASTEO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para operador de telecomunicaciones en Madrid",
+      "en": "Stand for telecommunications operator in Madrid",
+      "de": "Messestand für Telekommunikationsbetreiber in Madrid",
+      "pt": "Stand para operador de telecomunicações em Madrid",
+      "zh": "马德里电信运营商展台",
+      "hi": "मैड्रिड में दूरसंचार ऑपरेटर के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_avanzasis_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_soluciones_informaticas_en_bilbao",
     "name": "AVANZASIS",
     "location": "Bilbao",
     "web": "https://avanzasis.com/",
@@ -588,16 +588,16 @@ export const projects = [
       "hi": "Sector: Soluciones informáticas, trazabilidad. País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AVANZASIS en Bilbao",
-      "en": "Stand project development for company AVANZASIS in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AVANZASIS in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AVANZASIS em Bilbao",
-      "zh": "Bilbao AVANZASIS 公司展台项目设计与搭建",
-      "hi": "Bilbao में AVANZASIS कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de soluciones informáticas en Bilbao",
+      "en": "Stand for IT solutions company in Bilbao",
+      "de": "Messestand für IT-Lösungsunternehmen in Bilbao",
+      "pt": "Stand para empresa de soluções informáticas em Bilbao",
+      "zh": "毕尔巴鄂IT解决方案公司展台",
+      "hi": "बिल्बाओ में आईटी समाधान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_ayuntamiento_alcala_desarrollado_en_barcelona",
+    "id": "stand_para_ayuntamiento_en_barcelona",
     "name": "AYUNTAMIENTO_ALCALA",
     "location": "Barcelona",
     "web": "https://www.ayto-alcaladehenares.es/",
@@ -627,16 +627,16 @@ export const projects = [
       "hi": "Ayuntamiento español."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa AYUNTAMIENTO_ALCALA en Barcelona",
-      "en": "Stand project development for company AYUNTAMIENTO_ALCALA in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen AYUNTAMIENTO_ALCALA in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa AYUNTAMIENTO_ALCALA em Barcelona",
-      "zh": "Barcelona AYUNTAMIENTO_ALCALA 公司展台项目设计与搭建",
-      "hi": "Barcelona में AYUNTAMIENTO_ALCALA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para ayuntamiento en Barcelona",
+      "en": "Stand for city council in Barcelona",
+      "de": "Messestand für Stadtrat in Barcelona",
+      "pt": "Stand para câmara municipal em Barcelona",
+      "zh": "巴塞罗那市议会展台",
+      "hi": "बार्सिलोना में नगर परिषद के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_balliu_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_mobiliario_exterior_en_bilbao",
     "name": "BALLIU",
     "location": "Bilbao",
     "web": "https://www.balliuexport.com",
@@ -677,16 +677,16 @@ export const projects = [
       "hi": "Sector: mobiliario exterior, País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa BALLIU en Bilbao",
-      "en": "Stand project development for company BALLIU in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen BALLIU in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa BALLIU em Bilbao",
-      "zh": "Bilbao BALLIU 公司展台项目设计与搭建",
-      "hi": "Bilbao में BALLIU कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de mobiliario exterior en Bilbao",
+      "en": "Stand for outdoor furniture company in Bilbao",
+      "de": "Messestand für Gartenmöbelunternehmen in Bilbao",
+      "pt": "Stand para empresa de mobiliário exterior em Bilbao",
+      "zh": "毕尔巴鄂户外家具公司展台",
+      "hi": "बिल्बाओ में आउटडोर फर्नीचर कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_bdb_desarrollado_en_barcelona",
+    "id": "stand_para_red_de_distribucion_de_materiales_de_construccion_en_barcelona",
     "name": "BDB",
     "location": "Barcelona",
     "web": "https://grupobdb.com/",
@@ -717,16 +717,16 @@ export const projects = [
       "hi": "Central de compras y red de distribución de almacenes de materiales de construcción, cerámica, ferretería y baño en España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa BDB en Barcelona",
-      "en": "Stand project development for company BDB in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen BDB in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa BDB em Barcelona",
-      "zh": "Barcelona BDB 公司展台项目设计与搭建",
-      "hi": "Barcelona में BDB कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para red de distribución de materiales de construcción en Barcelona",
+      "en": "Stand for building materials distribution network in Barcelona",
+      "de": "Messestand für Vertriebsnetzwerk von Baumaterialien in Barcelona",
+      "pt": "Stand para rede de distribuição de materiais de construção em Barcelona",
+      "zh": "巴塞罗那建筑材料分销网络展台",
+      "hi": "बार्सिलोना में निर्माण सामग्री वितरण नेटवर्क के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_bedfont_desarrollado_en_malaga",
+    "id": "stand_para_fabricante_de_equipos_de_analisis_medico_en_malaga",
     "name": "BEDFONT",
     "location": "Málaga",
     "web": "https://www.bedfont.com/",
@@ -754,16 +754,16 @@ export const projects = [
       "hi": "Sector: Equipos de análisis de aliento y gases. País: Reino Unido."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa BEDFONT en Málaga",
-      "en": "Stand project development for company BEDFONT in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen BEDFONT in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa BEDFONT em Málaga",
-      "zh": "Málaga BEDFONT 公司展台项目设计与搭建",
-      "hi": "Málaga में BEDFONT कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fabricante de equipos de análisis médico en Málaga",
+      "en": "Stand for medical analysis equipment manufacturer in Málaga",
+      "de": "Messestand für Hersteller von medizinischen Analysegeräten in Málaga",
+      "pt": "Stand para fabricante de equipamentos de análise médica em Málaga",
+      "zh": "马拉加医学分析设备制造商展台",
+      "hi": "मलागा में चिकित्सा विश्लेषण उपकरण निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_bodegas_im_desarrollado_en_madrid",
+    "id": "stand_para_bodega_de_vinos_en_madrid",
     "name": "BODEGAS_IM",
     "location": "Madrid",
     "web": "https://bodegaselsitio.com/",
@@ -792,16 +792,16 @@ export const projects = [
       "hi": "Sector: Vinos. País: España (Canarias)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa BODEGAS_IM en Madrid",
-      "en": "Stand project development for company BODEGAS_IM in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen BODEGAS_IM in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa BODEGAS_IM em Madrid",
-      "zh": "Madrid BODEGAS_IM 公司展台项目设计与搭建",
-      "hi": "Madrid में BODEGAS_IM कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para bodega de vinos en Madrid",
+      "en": "Stand for winery in Madrid",
+      "de": "Messestand für Weingut in Madrid",
+      "pt": "Stand para adega de vinhos em Madrid",
+      "zh": "马德里酒庄展台",
+      "hi": "मैड्रिड में वाइनरी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_bredent_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_del_sector_dental_en_bilbao",
     "name": "BREDENT",
     "location": "Bilbao",
     "web": "https://bredent-group.com/",
@@ -837,16 +837,16 @@ export const projects = [
       "hi": "Sector dental, Alemania."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa BREDENT en Bilbao",
-      "en": "Stand project development for company BREDENT in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen BREDENT in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa BREDENT em Bilbao",
-      "zh": "Bilbao BREDENT 公司展台项目设计与搭建",
-      "hi": "Bilbao में BREDENT कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa del sector dental en Bilbao",
+      "en": "Stand for dental sector company in Bilbao",
+      "de": "Messestand für Dentalunternehmen in Bilbao",
+      "pt": "Stand para empresa do setor dentário em Bilbao",
+      "zh": "毕尔巴鄂牙科领域公司展台",
+      "hi": "बिल्बाओ में दंत चिकित्सा क्षेत्र की कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_charly_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_ropa_deportiva_en_barcelona",
     "name": "CHARLY",
     "location": "Barcelona",
     "web": "https://www.charly.com/",
@@ -874,16 +874,16 @@ export const projects = [
       "hi": "Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa CHARLY en Barcelona",
-      "en": "Stand project development for company CHARLY in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen CHARLY in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa CHARLY em Barcelona",
-      "zh": "Barcelona CHARLY 公司展台项目设计与搭建",
-      "hi": "Barcelona में CHARLY कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de ropa deportiva en Barcelona",
+      "en": "Stand for sportswear company in Barcelona",
+      "de": "Messestand für Sportbekleidungsunternehmen in Barcelona",
+      "pt": "Stand para empresa de roupas esportivas em Barcelona",
+      "zh": "巴塞罗那运动服公司展台",
+      "hi": "बार्सिलोना में स्पोर्ट्सवियर कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_cirse_desarrollado_en_malaga",
+    "id": "stand_para_sociedad_medica_europea_en_malaga",
     "name": "CIRSE",
     "location": "Málaga",
     "web": "https://www.cirse.org/",
@@ -915,16 +915,16 @@ export const projects = [
       "hi": "Sociedad Europea de Radiología Cardiovascular e Intervencionista, Austria."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa CIRSE en Málaga",
-      "en": "Stand project development for company CIRSE in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen CIRSE in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa CIRSE em Málaga",
-      "zh": "Málaga CIRSE 公司展台项目设计与搭建",
-      "hi": "Málaga में CIRSE कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para sociedad médica europea en Málaga",
+      "en": "Stand for European medical society in Málaga",
+      "de": "Messestand für europäische medizinische Fachgesellschaft in Málaga",
+      "pt": "Stand para sociedade médica europeia em Málaga",
+      "zh": "马拉加欧洲医学会展台",
+      "hi": "मलागा में यूरोपीय चिकित्सा सोसायटी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_collvila_desarrollado_en_malaga",
+    "id": "stand_para_distribuidor_de_materiales_de_construccion_en_malaga",
     "name": "COLLVILA",
     "location": "Málaga",
     "web": "https://collvila.com/",
@@ -958,16 +958,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de distribución de materiales para la construcción."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa COLLVILA en Málaga",
-      "en": "Stand project development for company COLLVILA in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen COLLVILA in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa COLLVILA em Málaga",
-      "zh": "Málaga COLLVILA 公司展台项目设计与搭建",
-      "hi": "Málaga में COLLVILA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para distribuidor de materiales de construcción en Málaga",
+      "en": "Stand for building materials distributor in Málaga",
+      "de": "Messestand für Baustoffhändler in Málaga",
+      "pt": "Stand para distribuidor de materiais de construção em Málaga",
+      "zh": "马拉加建筑材料分销商展台",
+      "hi": "मलागा में निर्माण सामग्री वितरक के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_creatives_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_diseno_y_marketing_en_malaga",
     "name": "CREATIVES",
     "location": "Málaga",
     "web": "https://creatives.pt",
@@ -1002,16 +1002,16 @@ export const projects = [
       "hi": "कंपनी de diseño web y marketing में मुख्यालय Lisboa, Portugal."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa CREATIVES en Málaga",
-      "en": "Stand project development for company CREATIVES in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen CREATIVES in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa CREATIVES em Málaga",
-      "zh": "Málaga CREATIVES 公司展台项目设计与搭建",
-      "hi": "Málaga में CREATIVES कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de diseño y marketing en Málaga",
+      "en": "Stand for design and marketing company in Málaga",
+      "de": "Messestand für Design- und Marketingunternehmen in Málaga",
+      "pt": "Stand para empresa de design e marketing em Málaga",
+      "zh": "马拉加设计与营销公司展台",
+      "hi": "मलागा में डिजाइन और मार्केटिंग कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_cucocuca_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_bisuteria_en_malaga",
     "name": "CUCOCUCA",
     "location": "Málaga",
     "web": "https://cucocuca.com/",
@@ -1042,16 +1042,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de bisutería y complementos में मुख्यालय Barcelona."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa CUCOCUCA en Málaga",
-      "en": "Stand project development for company CUCOCUCA in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen CUCOCUCA in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa CUCOCUCA em Málaga",
-      "zh": "Málaga CUCOCUCA 公司展台项目设计与搭建",
-      "hi": "Málaga में CUCOCUCA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de bisutería en Málaga",
+      "en": "Stand for costume jewelry company in Málaga",
+      "de": "Messestand für Modeschmuckunternehmen in Málaga",
+      "pt": "Stand para empresa de bijuterias em Málaga",
+      "zh": "马拉加人造首饰公司展台",
+      "hi": "मलागा में कृत्रिम आभूषण कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_dar_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_soluciones_globales_en_malaga",
     "name": "DAR",
     "location": "Málaga",
     "web": "https://www.darsg.com/",
@@ -1081,16 +1081,16 @@ export const projects = [
       "hi": "कंपनी de soluciones globales. País: México."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa DAR en Málaga",
-      "en": "Stand project development for company DAR in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen DAR in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa DAR em Málaga",
-      "zh": "Málaga DAR 公司展台项目设计与搭建",
-      "hi": "Málaga में DAR कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de soluciones globales en Málaga",
+      "en": "Stand for global solutions company in Málaga",
+      "de": "Messestand für globale Lösungsanbieter in Málaga",
+      "pt": "Stand para empresa de soluções globais em Málaga",
+      "zh": "马拉加全球解决方案公司展台",
+      "hi": "मलागा में वैश्विक समाधान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_dimasimma_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_almacenes_automaticos_en_malaga",
     "name": "DIMASIMMA",
     "location": "Málaga",
     "web": "https://www.dimasimma.com/",
@@ -1117,16 +1117,16 @@ export const projects = [
       "hi": "Sector: sistemas de gestión de almacenes automáticos. País: Italia."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa DIMASIMMA en Málaga",
-      "en": "Stand project development for company DIMASIMMA in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen DIMASIMMA in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa DIMASIMMA em Málaga",
-      "zh": "Málaga DIMASIMMA 公司展台项目设计与搭建",
-      "hi": "Málaga में DIMASIMMA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de almacenes automáticos en Málaga",
+      "en": "Stand for automated warehouse company in Málaga",
+      "de": "Messestand für Unternehmen für automatische Lager in Málaga",
+      "pt": "Stand para empresa de armazéns automáticos em Málaga",
+      "zh": "马拉加自动化仓库公司展台",
+      "hi": "मलागा में स्वचालित गोदाम कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_disgo_desarrollado_en_madrid",
+    "id": "stand_para_mayorista_de_golosinas_y_juguetes_en_madrid",
     "name": "DISGO",
     "location": "Madrid",
     "web": "https://www.disgo.es",
@@ -1157,16 +1157,16 @@ export const projects = [
       "hi": "Sector: Mayorista de golosinas y juguetes. País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa DISGO en Madrid",
-      "en": "Stand project development for company DISGO in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen DISGO in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa DISGO em Madrid",
-      "zh": "Madrid DISGO 公司展台项目设计与搭建",
-      "hi": "Madrid में DISGO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para mayorista de golosinas y juguetes en Madrid",
+      "en": "Stand for candy and toy wholesaler in Madrid",
+      "de": "Messestand für Süßwaren- und Spielzeuggroßhändler in Madrid",
+      "pt": "Stand para atacadista de doces e brinquedos em Madrid",
+      "zh": "马德里糖果和玩具批发商展台",
+      "hi": "मैड्रिड में कैंडी और खिलौना थोक व्यापारी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_dracfort_desarrollado_en_barcelona",
+    "id": "stand_para_fabricante_de_morteros_en_barcelona",
     "name": "DRACFORT",
     "location": "Barcelona",
     "web": "https://www.dracfort.com/",
@@ -1202,16 +1202,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de resinas y morteros."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa DRACFORT en Barcelona",
-      "en": "Stand project development for company DRACFORT in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen DRACFORT in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa DRACFORT em Barcelona",
-      "zh": "Barcelona DRACFORT 公司展台项目设计与搭建",
-      "hi": "Barcelona में DRACFORT कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fabricante de morteros en Barcelona",
+      "en": "Stand for mortar manufacturer in Barcelona",
+      "de": "Messestand für Mörtelhersteller in Barcelona",
+      "pt": "Stand para fabricante de argamassa em Barcelona",
+      "zh": "巴塞罗那砂浆制造商展台",
+      "hi": "बार्सिलोना में मोर्टार निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_drag_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_software_de_emergencias_en_madrid",
     "name": "DRAG",
     "location": "Madrid",
     "web": "https://www.drag.es/",
@@ -1240,16 +1240,16 @@ export const projects = [
       "hi": "Desarrollador de सॉफ्टवेयर de gestión integral para cuerpos de Policía Local y servicios de emergencia municipales en España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa DRAG en Madrid",
-      "en": "Stand project development for company DRAG in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen DRAG in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa DRAG em Madrid",
-      "zh": "Madrid DRAG 公司展台项目设计与搭建",
-      "hi": "Madrid में DRAG कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de software de emergencias en Madrid",
+      "en": "Stand for emergency software company in Madrid",
+      "de": "Messestand für Notfallsoftware-Unternehmen in Madrid",
+      "pt": "Stand para empresa de software de emergências em Madrid",
+      "zh": "马德里应急软件公司展台",
+      "hi": "मैड्रिड में आपातकालीन सॉफ्टवेयर कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_ecorobotix_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_tecnologia_agricola_en_barcelona",
     "name": "ECOROBOTIX",
     "location": "Barcelona",
     "web": "https://ecorobotix.com/en-us/",
@@ -1281,16 +1281,16 @@ export const projects = [
       "hi": "Sector: Tecnología agrícola. País: Suiza."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa ECOROBOTIX en Barcelona",
-      "en": "Stand project development for company ECOROBOTIX in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen ECOROBOTIX in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa ECOROBOTIX em Barcelona",
-      "zh": "Barcelona ECOROBOTIX 公司展台项目设计与搭建",
-      "hi": "Barcelona में ECOROBOTIX कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de tecnología agrícola en Barcelona",
+      "en": "Stand for agricultural technology company in Barcelona",
+      "de": "Messestand für Agrartechnologieunternehmen in Barcelona",
+      "pt": "Stand para empresa de tecnologia agrícola em Barcelona",
+      "zh": "巴塞罗那农业技术公司展台",
+      "hi": "बार्सिलोना में कृषि प्रौद्योगिकी कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_einsa_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_equipos_de_aviacion_en_madrid",
     "name": "EINSA",
     "location": "Madrid",
     "web": "https://einsa.es/",
@@ -1322,16 +1322,16 @@ export const projects = [
       "hi": "Sector: Equipos de apoyo en pista para aviación (civil y militar). País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa EINSA en Madrid",
-      "en": "Stand project development for company EINSA in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen EINSA in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa EINSA em Madrid",
-      "zh": "Madrid EINSA 公司展台项目设计与搭建",
-      "hi": "Madrid में EINSA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de equipos de aviación en Madrid",
+      "en": "Stand for aviation equipment company in Madrid",
+      "de": "Messestand für Luftfahrtausrüstungsunternehmen in Madrid",
+      "pt": "Stand para empresa de equipamentos de aviação em Madrid",
+      "zh": "马德里航空设备公司展台",
+      "hi": "मैड्रिड में विमानन उपकरण कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_emerchantpay_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_soluciones_de_pago_en_malaga",
     "name": "EMERCHANTPAY",
     "location": "Málaga",
     "web": "https://www.emerchantpay.com/",
@@ -1362,16 +1362,16 @@ export const projects = [
       "hi": "कंपनी internacional de soluciones de pago."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa EMERCHANTPAY en Málaga",
-      "en": "Stand project development for company EMERCHANTPAY in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen EMERCHANTPAY in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa EMERCHANTPAY em Málaga",
-      "zh": "Málaga EMERCHANTPAY 公司展台项目设计与搭建",
-      "hi": "Málaga में EMERCHANTPAY कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de soluciones de pago en Málaga",
+      "en": "Stand for payment solutions company in Málaga",
+      "de": "Messestand für Zahlungslösungsunternehmen in Málaga",
+      "pt": "Stand para empresa de soluções de pagamento em Málaga",
+      "zh": "马拉加支付解决方案公司展台",
+      "hi": "मलागा में भुगतान समाधान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_esxence_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_perfumeria_artistica_en_malaga",
     "name": "ESXENCE",
     "location": "Málaga",
     "web": "https://esxence.com/",
@@ -1400,16 +1400,16 @@ export const projects = [
       "hi": "Sector: Perfumería artística. País: Italia."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa ESXENCE en Málaga",
-      "en": "Stand project development for company ESXENCE in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen ESXENCE in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa ESXENCE em Málaga",
-      "zh": "Málaga ESXENCE 公司展台项目设计与搭建",
-      "hi": "Málaga में ESXENCE कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de perfumería artística en Málaga",
+      "en": "Stand for artistic perfumery company in Málaga",
+      "de": "Messestand für künstlerisches Parfümerieunternehmen in Málaga",
+      "pt": "Stand para empresa de perfumaria artística em Málaga",
+      "zh": "马拉加艺术香水公司展台",
+      "hi": "मलागा में कलात्मक इत्र कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_exsto_desarrollado_en_bilbao",
+    "id": "stand_para_fabricante_de_elastomeros_en_bilbao",
     "name": "EXSTO",
     "location": "Bilbao",
     "web": "https://www.exsto.com",
@@ -1442,16 +1442,16 @@ export const projects = [
       "hi": "Fabricante de elastómeros de poliuretano y piezas termoplásticas. Sede en Francia."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa EXSTO en Bilbao",
-      "en": "Stand project development for company EXSTO in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen EXSTO in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa EXSTO em Bilbao",
-      "zh": "Bilbao EXSTO 公司展台项目设计与搭建",
-      "hi": "Bilbao में EXSTO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fabricante de elastómeros en Bilbao",
+      "en": "Stand for elastomers manufacturer in Bilbao",
+      "de": "Messestand für Elastomerhersteller in Bilbao",
+      "pt": "Stand para fabricante de elastômeros em Bilbao",
+      "zh": "毕尔巴鄂弹性体制造商展台",
+      "hi": "बिल्बाओ में इलास्टोमर निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_fazendas_0_desarrollado_en_madrid",
+    "id": "stand_para_fabricante_de_equipos_industriales_en_madrid",
     "name": "FAZENDAS 0",
     "location": "Madrid",
     "web": "https://fazendas.pt/es/",
@@ -1479,16 +1479,16 @@ export const projects = [
       "hi": "पुर्तगाली कंपनी líder en ingeniería de acero inoxidable y equipos industriales de alta precisión para el sector farmacéutico y cosmético."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa FAZENDAS 0 en Madrid",
-      "en": "Stand project development for company FAZENDAS 0 in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen FAZENDAS 0 in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa FAZENDAS 0 em Madrid",
-      "zh": "Madrid FAZENDAS 0 公司展台项目设计与搭建",
-      "hi": "Madrid में FAZENDAS 0 कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fabricante de equipos industriales en Madrid",
+      "en": "Stand for industrial equipment manufacturer in Madrid",
+      "de": "Messestand für Industrieanlagenhersteller in Madrid",
+      "pt": "Stand para fabricante de equipamentos industriais em Madrid",
+      "zh": "马德里工业设备制造商展台",
+      "hi": "मैड्रिड में औद्योगिक उपकरण निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_fienhage_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_soluciones_avicolas_en_madrid",
     "name": "FIENHAGE",
     "location": "Madrid",
     "web": "https://www.fienhage.com",
@@ -1516,16 +1516,16 @@ export const projects = [
       "hi": "Sector: Soluciones avícolas. País: Alemania."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa FIENHAGE en Madrid",
-      "en": "Stand project development for company FIENHAGE in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen FIENHAGE in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa FIENHAGE em Madrid",
-      "zh": "Madrid FIENHAGE 公司展台项目设计与搭建",
-      "hi": "Madrid में FIENHAGE कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de soluciones avícolas en Madrid",
+      "en": "Stand for poultry solutions company in Madrid",
+      "de": "Messestand für Geflügellösungsunternehmen in Madrid",
+      "pt": "Stand para empresa de soluções avícolas em Madrid",
+      "zh": "马德里家禽解决方案公司展台",
+      "hi": "मैड्रिड में पोल्ट्री समाधान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_flexomed_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_packaging_en_bilbao",
     "name": "FLEXOMED",
     "location": "Bilbao",
     "web": "https://flexomed.com",
@@ -1562,16 +1562,16 @@ export const projects = [
       "hi": "Sector: Industria gráfica (packaging). País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa FLEXOMED en Bilbao",
-      "en": "Stand project development for company FLEXOMED in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen FLEXOMED in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa FLEXOMED em Bilbao",
-      "zh": "Bilbao FLEXOMED 公司展台项目设计与搭建",
-      "hi": "Bilbao में FLEXOMED कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de packaging en Bilbao",
+      "en": "Stand for packaging company in Bilbao",
+      "de": "Messestand für Verpackungsunternehmen in Bilbao",
+      "pt": "Stand para empresa de embalagens em Bilbao",
+      "zh": "毕尔巴鄂包装公司展台",
+      "hi": "बिल्बाओ में पैकेजिंग कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_fripozo_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_alimentos_congelados_en_madrid",
     "name": "FRIPOZO",
     "location": "Madrid",
     "web": "https://fripozo.com",
@@ -1604,16 +1604,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी के क्षेत्र में alimentos ultracongelados."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa FRIPOZO en Madrid",
-      "en": "Stand project development for company FRIPOZO in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen FRIPOZO in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa FRIPOZO em Madrid",
-      "zh": "Madrid FRIPOZO 公司展台项目设计与搭建",
-      "hi": "Madrid में FRIPOZO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de alimentos congelados en Madrid",
+      "en": "Stand for frozen food company in Madrid",
+      "de": "Messestand für Tiefkühlkostunternehmen in Madrid",
+      "pt": "Stand para empresa de alimentos congelados em Madrid",
+      "zh": "马德里冷冻食品公司展台",
+      "hi": "मैड्रिड में जमे हुए खाद्य कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_fundae_desarrollado_en_bilbao",
+    "id": "stand_para_fundacion_de_formacion_en_bilbao",
     "name": "FUNDAE",
     "location": "Bilbao",
     "web": "https://www.fundae.es/",
@@ -1644,16 +1644,16 @@ export const projects = [
       "hi": "Fundación Estatal para la Formación en el Empleo (España)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa FUNDAE en Bilbao",
-      "en": "Stand project development for company FUNDAE in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen FUNDAE in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa FUNDAE em Bilbao",
-      "zh": "Bilbao FUNDAE 公司展台项目设计与搭建",
-      "hi": "Bilbao में FUNDAE कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fundación de formación en Bilbao",
+      "en": "Stand for training foundation in Bilbao",
+      "de": "Messestand für Ausbildungsstiftung in Bilbao",
+      "pt": "Stand para fundação de formação em Bilbao",
+      "zh": "毕尔巴鄂培训基金会展台",
+      "hi": "बिल्बाओ में प्रशिक्षण फाउंडेशन के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_gabelloto_clayver_mureco_desarrollado_en_madrid",
+    "id": "stand_para_empresa_vitivinicola_en_madrid",
     "name": "GABELLOTO CLAYVER MURECO",
     "location": "Madrid",
     "web": "https://www.mureco.es",
@@ -1680,16 +1680,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी del sector vitivinícola (envases)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa GABELLOTO CLAYVER MURECO en Madrid",
-      "en": "Stand project development for company GABELLOTO CLAYVER MURECO in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen GABELLOTO CLAYVER MURECO in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa GABELLOTO CLAYVER MURECO em Madrid",
-      "zh": "Madrid GABELLOTO CLAYVER MURECO 公司展台项目设计与搭建",
-      "hi": "Madrid में GABELLOTO CLAYVER MURECO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa vitivinícola en Madrid",
+      "en": "Stand for wine sector company in Madrid",
+      "de": "Messestand für Weinbauunternehmen in Madrid",
+      "pt": "Stand para empresa do setor vitivinícola em Madrid",
+      "zh": "马德里葡萄酒公司展台",
+      "hi": "मैड्रिड में वाइन सेक्टर कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_garantia_mutua_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_garantia_mutua_en_barcelona",
     "name": "GARANTIA_MUTUA",
     "location": "Barcelona",
     "web": "https://www.garantiamutua.pt/",
@@ -1718,16 +1718,16 @@ export const projects = [
       "hi": "Sector: Garantía Mutua (Portugal)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa GARANTIA_MUTUA en Barcelona",
-      "en": "Stand project development for company GARANTIA_MUTUA in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen GARANTIA_MUTUA in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa GARANTIA_MUTUA em Barcelona",
-      "zh": "Barcelona GARANTIA_MUTUA 公司展台项目设计与搭建",
-      "hi": "Barcelona में GARANTIA_MUTUA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de garantía mutua en Barcelona",
+      "en": "Stand for mutual guarantee company in Barcelona",
+      "de": "Messestand für Bürgschaftsgesellschaft in Barcelona",
+      "pt": "Stand para sociedade de garantia mútua em Barcelona",
+      "zh": "巴塞罗那相互担保公司展台",
+      "hi": "बार्सिलोना में म्यूचुअल गारंटी कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_gastro_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_diseno_hostelero_en_malaga",
     "name": "GASTRO",
     "location": "Málaga",
     "web": "https://gastrodiseno.com/",
@@ -1755,16 +1755,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de diseño para hostelería."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa GASTRO en Málaga",
-      "en": "Stand project development for company GASTRO in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen GASTRO in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa GASTRO em Málaga",
-      "zh": "Málaga GASTRO 公司展台项目设计与搭建",
-      "hi": "Málaga में GASTRO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de diseño hostelero en Málaga",
+      "en": "Stand for hospitality design company in Málaga",
+      "de": "Messestand für Gastgewerbe-Designunternehmen in Málaga",
+      "pt": "Stand para empresa de design de hotelaria em Málaga",
+      "zh": "马拉加酒店设计公司展台",
+      "hi": "मलागा में हॉस्पिटैलिटी डिज़ाइन कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_gelatidino_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_helados_artesanales_en_barcelona",
     "name": "GELATIDINO",
     "location": "Barcelona",
     "web": "https://gelatidino.com/",
@@ -1795,16 +1795,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de helados artesanales."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa GELATIDINO en Barcelona",
-      "en": "Stand project development for company GELATIDINO in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen GELATIDINO in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa GELATIDINO em Barcelona",
-      "zh": "Barcelona GELATIDINO 公司展台项目设计与搭建",
-      "hi": "Barcelona में GELATIDINO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de helados artesanales en Barcelona",
+      "en": "Stand for artisanal ice cream company in Barcelona",
+      "de": "Messestand für handwerkliches Eisunternehmen in Barcelona",
+      "pt": "Stand para empresa de sorvetes artesanais em Barcelona",
+      "zh": "巴塞罗那手工冰淇淋公司展台",
+      "hi": "बार्सिलोना में कारीगर आइसक्रीम कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_gisada_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_fragancias_en_madrid",
     "name": "GISADA",
     "location": "Madrid",
     "web": "https://www.gisada.com/en-us",
@@ -1834,16 +1834,16 @@ export const projects = [
       "hi": "कंपनी suiza de fragancias y moda."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa GISADA en Madrid",
-      "en": "Stand project development for company GISADA in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen GISADA in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa GISADA em Madrid",
-      "zh": "Madrid GISADA 公司展台项目设计与搭建",
-      "hi": "Madrid में GISADA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de fragancias en Madrid",
+      "en": "Stand for fragrance company in Madrid",
+      "de": "Messestand für Duftstoffunternehmen in Madrid",
+      "pt": "Stand para empresa de fragrâncias em Madrid",
+      "zh": "马德里香水公司展台",
+      "hi": "मैड्रिड में खुशबू कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_global_cruise_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_cruceros_en_bilbao",
     "name": "GLOBAL_CRUISE",
     "location": "Bilbao",
     "web": "https://globalcruisesllc.com/",
@@ -1871,16 +1871,16 @@ export const projects = [
       "hi": "कंपनी de cruceros, sede en Miami, USA."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa GLOBAL_CRUISE en Bilbao",
-      "en": "Stand project development for company GLOBAL_CRUISE in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen GLOBAL_CRUISE in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa GLOBAL_CRUISE em Bilbao",
-      "zh": "Bilbao GLOBAL_CRUISE 公司展台项目设计与搭建",
-      "hi": "Bilbao में GLOBAL_CRUISE कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de cruceros en Bilbao",
+      "en": "Stand for cruise company in Bilbao",
+      "de": "Messestand für Kreuzfahrtunternehmen in Bilbao",
+      "pt": "Stand para empresa de cruzeiros em Bilbao",
+      "zh": "毕尔巴鄂游轮公司展台",
+      "hi": "बिल्बाओ में क्रूज कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_grupo_alava_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_tecnologia_industrial_en_bilbao",
     "name": "GRUPO ALAVA",
     "location": "Bilbao",
     "web": "https://www.grupoalava.com/",
@@ -1920,16 +1920,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de tecnología industrial."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa GRUPO ALAVA en Bilbao",
-      "en": "Stand project development for company GRUPO ALAVA in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen GRUPO ALAVA in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa GRUPO ALAVA em Bilbao",
-      "zh": "Bilbao GRUPO ALAVA 公司展台项目设计与搭建",
-      "hi": "Bilbao में GRUPO ALAVA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de tecnología industrial en Bilbao",
+      "en": "Stand for industrial technology company in Bilbao",
+      "de": "Messestand für Industrietechnologieunternehmen in Bilbao",
+      "pt": "Stand para empresa de tecnologia industrial em Bilbao",
+      "zh": "毕尔巴鄂工业技术公司展台",
+      "hi": "बिल्बाओ में औद्योगिक प्रौद्योगिकी कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_hervem_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_excavaciones_en_barcelona",
     "name": "HERVEM",
     "location": "Barcelona",
     "web": "https://hervemgroup.com/",
@@ -1956,16 +1956,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de excavaciones y movimientos de tierra (Málaga, Granada)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa HERVEM en Barcelona",
-      "en": "Stand project development for company HERVEM in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen HERVEM in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa HERVEM em Barcelona",
-      "zh": "Barcelona HERVEM 公司展台项目设计与搭建",
-      "hi": "Barcelona में HERVEM कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de excavaciones en Barcelona",
+      "en": "Stand for excavation company in Barcelona",
+      "de": "Messestand für Baggerunternehmen in Barcelona",
+      "pt": "Stand para empresa de escavações em Barcelona",
+      "zh": "巴塞罗那挖掘公司展台",
+      "hi": "बार्सिलोना में उत्खनन कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_hidroconta_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_digitalizacion_del_agua_en_barcelona",
     "name": "HIDROCONTA",
     "location": "Barcelona",
     "web": "https://hidroconta.com/",
@@ -1994,16 +1994,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de digitalización del agua."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa HIDROCONTA en Barcelona",
-      "en": "Stand project development for company HIDROCONTA in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen HIDROCONTA in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa HIDROCONTA em Barcelona",
-      "zh": "Barcelona HIDROCONTA 公司展台项目设计与搭建",
-      "hi": "Barcelona में HIDROCONTA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de digitalización del agua en Barcelona",
+      "en": "Stand for water digitalization company in Barcelona",
+      "de": "Messestand für Wasser-Digitalisierungsunternehmen in Barcelona",
+      "pt": "Stand para empresa de digitalização da água em Barcelona",
+      "zh": "巴塞罗那水数字化公司展台",
+      "hi": "बार्सिलोना में जल डिजिटलीकरण कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_hjm_elementos_desarrollado_en_malaga",
+    "id": "stand_para_fabricante_de_sistemas_de_calefaccion_en_malaga",
     "name": "HJM_ELEMENTOS",
     "location": "Málaga",
     "web": "https://www.hjm.es/",
@@ -2033,16 +2033,16 @@ export const projects = [
       "hi": "Fabricante español líder en sistemas de calefacción eléctrica, emisores térmicos y secatoallas de alta eficiencia."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa HJM_ELEMENTOS en Málaga",
-      "en": "Stand project development for company HJM_ELEMENTOS in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen HJM_ELEMENTOS in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa HJM_ELEMENTOS em Málaga",
-      "zh": "Málaga HJM_ELEMENTOS 公司展台项目设计与搭建",
-      "hi": "Málaga में HJM_ELEMENTOS कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fabricante de sistemas de calefacción en Málaga",
+      "en": "Stand for heating systems manufacturer in Málaga",
+      "de": "Messestand für Heizsystemhersteller in Málaga",
+      "pt": "Stand para fabricante de sistemas de aquecimento em Málaga",
+      "zh": "马拉加供暖系统制造商展台",
+      "hi": "मलागा में हीटिंग सिस्टम निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_hns_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_soluciones_de_empleo_en_bilbao",
     "name": "HNS",
     "location": "Bilbao",
     "web": "https://hnsstaffing.com/",
@@ -2070,16 +2070,16 @@ export const projects = [
       "hi": "कंपनी de soluciones de empleo en EE. UU."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa HNS en Bilbao",
-      "en": "Stand project development for company HNS in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen HNS in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa HNS em Bilbao",
-      "zh": "Bilbao HNS 公司展台项目设计与搭建",
-      "hi": "Bilbao में HNS कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de soluciones de empleo en Bilbao",
+      "en": "Stand for employment solutions company in Bilbao",
+      "de": "Messestand für Beschäftigungslösungsunternehmen in Bilbao",
+      "pt": "Stand para empresa de soluções de emprego em Bilbao",
+      "zh": "毕尔巴鄂就业解决方案公司展台",
+      "hi": "बिल्बाओ में रोजगार समाधान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_innadhex_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_materiales_autoadhesivos_en_malaga",
     "name": "INNADHEX",
     "location": "Málaga",
     "web": "https://www.innadhex.com/",
@@ -2109,16 +2109,16 @@ export const projects = [
       "hi": "कंपनी italiana de materiales autoadhesivos para etiquetas."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa INNADHEX en Málaga",
-      "en": "Stand project development for company INNADHEX in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen INNADHEX in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa INNADHEX em Málaga",
-      "zh": "Málaga INNADHEX 公司展台项目设计与搭建",
-      "hi": "Málaga में INNADHEX कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de materiales autoadhesivos en Málaga",
+      "en": "Stand for self-adhesive materials company in Málaga",
+      "de": "Messestand für selbstklebende Materialien in Málaga",
+      "pt": "Stand para empresa de materiais autoadesivos em Málaga",
+      "zh": "马拉加不干胶材料公司展台",
+      "hi": "मलागा में स्व-चिपकने वाली सामग्री कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_inoi_2_desarrollado_en_madrid",
+    "id": "stand_para_empresa_tecnologica_en_madrid",
     "name": "INOI 2",
     "location": "Madrid",
     "web": "https://inoi.com/",
@@ -2148,16 +2148,16 @@ export const projects = [
       "hi": "Sector: Tecnología, País: Europa."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa INOI 2 en Madrid",
-      "en": "Stand project development for company INOI 2 in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen INOI 2 in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa INOI 2 em Madrid",
-      "zh": "Madrid INOI 2 公司展台项目设计与搭建",
-      "hi": "Madrid में INOI 2 कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa tecnológica en Madrid",
+      "en": "Stand for technology company in Madrid",
+      "de": "Messestand für Technologieunternehmen in Madrid",
+      "pt": "Stand para empresa tecnológica em Madrid",
+      "zh": "马德里科技公司展台",
+      "hi": "मैड्रिड में प्रौद्योगिकी कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_intersec_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_tecnologia_y_datos_moviles_en_bilbao",
     "name": "INTERSEC",
     "location": "Bilbao",
     "web": "https://intersec.com/",
@@ -2191,16 +2191,16 @@ export const projects = [
       "hi": "Sector de tecnología (soluciones de datos móviles y localización), Francia."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa INTERSEC en Bilbao",
-      "en": "Stand project development for company INTERSEC in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen INTERSEC in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa INTERSEC em Bilbao",
-      "zh": "Bilbao INTERSEC 公司展台项目设计与搭建",
-      "hi": "Bilbao में INTERSEC कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de tecnología y datos móviles en Bilbao",
+      "en": "Stand for technology and mobile data company in Bilbao",
+      "de": "Messestand für Technologie- und Mobilfunkunternehmen in Bilbao",
+      "pt": "Stand para empresa de tecnologia e dados móveis em Bilbao",
+      "zh": "毕尔巴鄂技术和移动数据公司展台",
+      "hi": "बिल्बाओ में प्रौद्योगिकी और मोबाइल डेटा कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_jalupro_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_estetica_y_dermatologia_en_malaga",
     "name": "JALUPRO",
     "location": "Málaga",
     "web": "https://www.jalupro.com",
@@ -2244,16 +2244,16 @@ export const projects = [
       "hi": "Sector: Estética/Dermatología. País: Suiza."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa JALUPRO en Málaga",
-      "en": "Stand project development for company JALUPRO in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen JALUPRO in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa JALUPRO em Málaga",
-      "zh": "Málaga JALUPRO 公司展台项目设计与搭建",
-      "hi": "Málaga में JALUPRO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de estética y dermatología en Málaga",
+      "en": "Stand for aesthetic and dermatology company in Málaga",
+      "de": "Messestand für Ästhetik- und Dermatologieunternehmen in Málaga",
+      "pt": "Stand para empresa de estética e dermatologia em Málaga",
+      "zh": "马拉加美学和皮肤科公司展台",
+      "hi": "मलागा में सौंदर्य और त्वचा विज्ञान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_jinko_desarrollado_en_barcelona",
+    "id": "stand_para_fabricante_de_modulos_solares_en_barcelona",
     "name": "JINKO",
     "location": "Barcelona",
     "web": "https://jinkosolar.eu/",
@@ -2283,16 +2283,16 @@ export const projects = [
       "hi": "Sector energético (निर्माता de módulos solares). कंपनी global con presencia en Europa."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa JINKO en Barcelona",
-      "en": "Stand project development for company JINKO in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen JINKO in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa JINKO em Barcelona",
-      "zh": "Barcelona JINKO 公司展台项目设计与搭建",
-      "hi": "Barcelona में JINKO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fabricante de módulos solares en Barcelona",
+      "en": "Stand for solar module manufacturer in Barcelona",
+      "de": "Messestand für Solarmodulhersteller in Barcelona",
+      "pt": "Stand para fabricante de módulos solares em Barcelona",
+      "zh": "巴塞罗那太阳能组件制造商展台",
+      "hi": "बार्सिलोना में सौर मॉड्यूल निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_kelio_desarrollado_en_malaga",
+    "id": "stand_para_desarrollador_de_software_de_recursos_humanos_en_malaga",
     "name": "KELIO",
     "location": "Málaga",
     "web": "https://www.kelio.com/",
@@ -2321,16 +2321,16 @@ export const projects = [
       "hi": "Desarrollador líder europeo de सॉफ्टवेयर de control horario, gestión de recursos humanos y terminales de fichaje avanzados."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa KELIO en Málaga",
-      "en": "Stand project development for company KELIO in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen KELIO in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa KELIO em Málaga",
-      "zh": "Málaga KELIO 公司展台项目设计与搭建",
-      "hi": "Málaga में KELIO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para desarrollador de software de recursos humanos en Málaga",
+      "en": "Stand for HR software developer in Málaga",
+      "de": "Messestand für HR-Softwareentwickler in Málaga",
+      "pt": "Stand para desenvolvedor de software de recursos humanos em Málaga",
+      "zh": "马拉加人力资源软件开发商展台",
+      "hi": "मलागा में मानव संसाधन सॉफ्टवेयर डेवलपर के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_lofarma_sin_almacen_desarrollado_en_madrid",
+    "id": "stand_para_empresa_farmaceutica_en_madrid",
     "name": "LOFARMA_SIN_ALMACEN",
     "location": "Madrid",
     "web": "https://lofarma.es",
@@ -2361,16 +2361,16 @@ export const projects = [
       "hi": "कंपनी farmacéutica (alergias), España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa LOFARMA_SIN_ALMACEN en Madrid",
-      "en": "Stand project development for company LOFARMA_SIN_ALMACEN in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen LOFARMA_SIN_ALMACEN in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa LOFARMA_SIN_ALMACEN em Madrid",
-      "zh": "Madrid LOFARMA_SIN_ALMACEN 公司展台项目设计与搭建",
-      "hi": "Madrid में LOFARMA_SIN_ALMACEN कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa farmacéutica en Madrid",
+      "en": "Stand for pharmaceutical company in Madrid",
+      "de": "Messestand für Pharmaunternehmen in Madrid",
+      "pt": "Stand para empresa farmacêutica em Madrid",
+      "zh": "马德里制药公司展台",
+      "hi": "मैड्रिड में दवा कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_lucid_desarrollado_en_bilbao",
+    "id": "stand_para_consultoria_de_innovacion_y_diseno_en_bilbao",
     "name": "LUCID",
     "location": "Bilbao",
     "web": "https://www.lucid.pro/",
@@ -2403,16 +2403,16 @@ export const projects = [
       "hi": "Consultoría de innovación y diseño industrial y digital, में मुख्यालय España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa LUCID en Bilbao",
-      "en": "Stand project development for company LUCID in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen LUCID in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa LUCID em Bilbao",
-      "zh": "Bilbao LUCID 公司展台项目设计与搭建",
-      "hi": "Bilbao में LUCID कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para consultoría de innovación y diseño en Bilbao",
+      "en": "Stand for innovation and design consultancy in Bilbao",
+      "de": "Messestand für Innovations- und Designberatung in Bilbao",
+      "pt": "Stand para consultoria de inovação e design em Bilbao",
+      "zh": "毕尔巴鄂创新与设计咨询公司展台",
+      "hi": "बिल्बाओ में नवाचार और डिजाइन परामर्श के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_magnovent_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_soluciones_climaticas_en_malaga",
     "name": "MAGNOVENT",
     "location": "Málaga",
     "web": "https://magnovent.eu",
@@ -2439,16 +2439,16 @@ export const projects = [
       "hi": "Sector: Soluciones climáticas (ventiladores HVLS). País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MAGNOVENT en Málaga",
-      "en": "Stand project development for company MAGNOVENT in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MAGNOVENT in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MAGNOVENT em Málaga",
-      "zh": "Málaga MAGNOVENT 公司展台项目设计与搭建",
-      "hi": "Málaga में MAGNOVENT कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de soluciones climáticas en Málaga",
+      "en": "Stand for climate solutions company in Málaga",
+      "de": "Messestand für Klimalösungsunternehmen in Málaga",
+      "pt": "Stand para empresa de soluções climáticas em Málaga",
+      "zh": "马拉加气候解决方案公司展台",
+      "hi": "मलागा में जलवायु समाधान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_marenostrum_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_eventos_y_musica_en_bilbao",
     "name": "MARENOSTRUM",
     "location": "Bilbao",
     "web": "https://marenostrumfuengirola.com/",
@@ -2476,16 +2476,16 @@ export const projects = [
       "hi": "Sector de eventos/música, España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MARENOSTRUM en Bilbao",
-      "en": "Stand project development for company MARENOSTRUM in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MARENOSTRUM in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MARENOSTRUM em Bilbao",
-      "zh": "Bilbao MARENOSTRUM 公司展台项目设计与搭建",
-      "hi": "Bilbao में MARENOSTRUM कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de eventos y música en Bilbao",
+      "en": "Stand for events and music company in Bilbao",
+      "de": "Messestand für Event- und Musikunternehmen in Bilbao",
+      "pt": "Stand para empresa de eventos e música em Bilbao",
+      "zh": "毕尔巴鄂活动和音乐公司展台",
+      "hi": "बिल्बाओ में घटनाओं और संगीत कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_marllor_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_estetica_medica_en_barcelona",
     "name": "MARLLOR",
     "location": "Barcelona",
     "web": "https://www.marllor.com",
@@ -2517,16 +2517,16 @@ export const projects = [
       "hi": "कंपनी italiana de estética médica."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MARLLOR en Barcelona",
-      "en": "Stand project development for company MARLLOR in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MARLLOR in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MARLLOR em Barcelona",
-      "zh": "Barcelona MARLLOR 公司展台项目设计与搭建",
-      "hi": "Barcelona में MARLLOR कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de estética médica en Barcelona",
+      "en": "Stand for medical aesthetics company in Barcelona",
+      "de": "Messestand für medizinische Ästhetik in Barcelona",
+      "pt": "Stand para empresa de estética médica em Barcelona",
+      "zh": "巴塞罗那医学美容公司展台",
+      "hi": "बार्सिलोना में चिकित्सा सौंदर्यशास्त्र कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_mh_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_soluciones_tecnologicas_en_barcelona",
     "name": "MH",
     "location": "Barcelona",
     "web": "https://www.mhsoluciones.com/",
@@ -2558,17 +2558,17 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de soluciones tecnológicas, cliente de Standarte."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MH en Barcelona",
-      "en": "Stand project development for company MH in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MH in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MH em Barcelona",
-      "zh": "Barcelona MH 公司展台项目设计与搭建",
-      "hi": "Barcelona में MH कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de soluciones tecnológicas en Barcelona",
+      "en": "Stand for technological solutions company in Barcelona",
+      "de": "Messestand für Technologielösungen in Barcelona",
+      "pt": "Stand para empresa de soluções tecnológicas em Barcelona",
+      "zh": "巴塞罗那技术解决方案公司展台",
+      "hi": "बार्सिलोना में तकनीकी समाधान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_mn_desarrollado_en_barcelona",
-    "name": "MN",
+    "id": "stand_para_empresa_de_construccion_de_stands_en_barcelona",
+    "name": "MOROCCO NOW",
     "location": "Barcelona",
     "web": "https://www.mnstands.com.ar/",
     "image": "/img/3D_prototype/mn_stand_fabricado_por_standarte_en_barcelona.avif",
@@ -2581,12 +2581,12 @@ export const projects = [
       "/img/3D_prototype/mn_stand_fabricado_por_standarte_en_barcelona_005.avif"
     ],
     "valuesText": {
-      "es": "El stand diseñado a medida para <strong>MN</strong> en Barcelona constituye un logro sobresaliente en la integración de imagen corporativa y arquitectura efímera. Inspirado en la descripción y la actividad ferial del cliente —<em>Empresa de diseño y construcción de stands en Argentina.</em>—, concebimos una propuesta ferial bajo el concepto riguroso de la <strong>microarquitectura experiencial</strong> en madera noble y perfiles premium de Standarte. <br><br>En el plano vertical, las marquesinas suspendidas y pórticos aéreos actúan como potentes <strong>estructuras de concentración visual</strong> que garantizan que la marca domine la visual desde los pasillos comerciales de Fira Barcelona, resolviendo el desafío clave de la <strong>arquitectura de atención</strong>. Para facilitar el tránsito de visitantes de gran perfil comercial, el stand propone un impecable <strong>diseño de flujo humano</strong> libre de barreras físicas rígidas, distribuyendo mostradores dinámicos y puntos de interacción espontánea. En el corazón del espacio, refinados tabiques acústicos de lamas de madera natural configuran discretos y acogedores <strong>espacios de permanencia</strong> feriales provistos de hospitalidad premium, idóneos para entablar reuniones ejecutivas y cerrar negociaciones comerciales de alto impacto con total tranquilidad.",
-      "en": "The custom stand designed for <strong>MN</strong> in Barcelona constitutes an outstanding achievement in the integration of corporate image and ephemeral architecture. Inspired by the client's business activity —<em>Company de diseño y construcción de stands en Argentina.</em>—, we conceived an exhibition proposal under the rigorous concept of <strong>experiential microarchitecture</strong> in noble wood and premium Standarte profiles. <br><br>In the vertical plane, the suspended marquees and aerial portals act as powerful <strong>visual concentration structures</strong> that guarantee the brand dominates the view from the commercial aisles of Fira Barcelona, resolving the key challenge of <strong>attention architecture</strong>. To facilitate the transit of visitors with a high commercial profile, the stand proposes an impeccable <strong>human flow design</strong> free of rigid physical barriers, distributing dynamic counters and spontaneous interaction points. In the heart of the space, refined acoustic partitions made of natural wood slats configure discreet and welcoming <strong>spaces of permanence</strong> equipped with premium hospitality, ideal for engaging in executive meetings and closing high-impact commercial negotiations with total peace of mind.",
-      "de": "Der für <strong>MN</strong> in Barcelona maßgeschneiderte Stand stellt eine herausragende Leistung bei der Integration von Corporate Image und temporärer Architektur dar. Inspiriert von der geschäftlichen Aktivität des Kunden —<em>Unternehmen de diseño y construcción de stands en Argentina.</em>— haben wir ein Messekonzept unter dem strengen Begriff der <strong>erlebnisorientierten Mikroarchitektur</strong> aus edlem Holz und Premium-Profilen von Standarte entworfen. <br><br>In der vertikalen Ebene wirken die abgehängten Überdachungen und Deckenportale als kraftvolle <strong>visuelle Konzentrationsstrukturen</strong>, die garantieren, dass die Marke die Sicht in den Hallengängen der Fira Barcelona dominiert, und lösen so die zentrale Herausforderung der <strong>Aufmerksamkeitsarchitektur</strong>. Um den Fluss von Besuchern mit hohem geschäftlichen Profil zu erleichtern, bietet der Stand eine tadellose <strong>Gestaltung des menschlichen Flusses</strong> ohne starre physische Barrieren, indem er dynamische Tresen und spontane Interaktionspunkte verteilt. Im Herzen des Raumes bilden raffinierte Akustikwände aus Naturholzlamellen diskrete und einladende <strong>Verweilräume</strong> mit erstklassigem Service – ideal, um in aller Ruhe Vorstandsgespräche zu führen und hochkarätige Verhandlungen abzuschließen.",
-      "pt": "O stand desenhado à medida para a <strong>MN</strong> em Barcelona constitui uma conquista notável na integração de imagem corporativa e arquitetura efímera. Inspirado pela atividade comercial do cliente —<em>Empresa de diseño y construcción de stands en Argentina.</em>—, concebimos uma proposta ferial sob o conceito rigoroso da <strong>microarquitetura experiencial</strong> em madeira nobre e perfis premium da Standarte. <br><br>No plano vertical, as marquises suspensas e portais aéreos atuam como poderosas <strong>estruturas de concentração visual</strong> que garantem que a marca domine a visual a partir dos corredores comerciais da Fira Barcelona, resolvendo o desafio-chave da <strong>arquitetura de atenção</strong>. Para facilitar o trânsito de visitantes com elevado perfil comercial, o stand propõe um impecável <strong>design de fluxo humano</strong> livre de barreiras físicas rígidas, distribuindo balcões dinâmicos e pontos de interação espontânea. No coração do espaço, refinados painéis acústicos de lamas de madeira natural configuram discretos e acolhedores <strong>espaços de permanência</strong> providos de hospitalidade premium, ideais para realizar reuniões executivas e fechar negociações de alto impacto com total tranquilidade.",
-      "zh": "专为<strong>MN</strong>在Barcelona设计的定制展台代表了企业形象与临时建筑融合的杰出成就。受客户商业活动 —<em>公司 de diseño y construcción de stands en Argentina.</em>— 的启发，我们本着精益求精的态度，采用名贵木材和Standarte高端型材，在<strong>体验式微建筑</strong>的严谨概念下构思了这一展会方案。<br><br>在垂直平面上，悬挂式吊顶和空中门廊作为强大的<strong>视觉聚焦结构</strong>，确保品牌在巴塞罗那Fira会展中心商业通道中占据主导视线，成功解决了<strong>注意力建筑</strong>的关键挑战。为了引导高商业价值访客的流动，展台采用了完美无瑕的<strong>人流设计</strong>，消除刚性物理屏障，合理分布动态服务台和自发交互点。在空间的核心地带，精美的天然木格栅隔音墙构筑了私密且温馨的<strong>停留空间</strong>，并提供高端招待服务，是开展高管会谈和安心达成高影响力商业合作的理想场所。",
-      "hi": "Barcelona में <strong>MN</strong> के लिए कस्टम डिज़ाइन किया गया स्टैंड कॉर्पोरेट छवि और अल्पकालिक वास्तुकला के एकीकरण में एक उत्कृष्ट उपलब्धि है। ग्राहक की व्यावसायिक गतिविधि —<em>कंपनी de diseño y construcción de stands en Argentina.</em>— से प्रेरित होकर, हमने Standarte के प्रीमियम प्रोफाइल और शानदार लकड़ी में <strong>अनुभवात्मक सूक्ष्म वास्तुकला</strong> की कठोर अवधारणा के तहत एक प्रदर्शनी प्रस्ताव तैयार किया है। <br><br>ऊर्ध्vaधर तल पर, लटके हुए चंदवा और हवाई पोर्टल शक्तिशाली <strong>दृश्य एकाग्रता संरचनाएं</strong> के रूप में कार्य करते हैं जो यह सुनिश्चित करते हैं कि ब्रांड फिरा बार्सिलोना के वाणिज्यिक गलियारों से दृश्य पर हावी हो, जिससे <strong>ध्यान वास्तुकला</strong> की प्रमुख चुनौती का समाधान होता है। उच्च वाणिज्यिक प्रोफ़ाइल वाले आगंतुकों के आवागमन को सुगम बनाने के लिए, स्टैंड कठोर भौतिक बाधाओं से मुक्त एक त्रुटिहीन <strong>मानव प्रवाह डिजाइन</strong> का प्रस्ताव करता है, जिसमें गतिशील काउंटर और सहज बातचीत बिंदु वितरित किए जाते हैं। अंतरिक्ष के केंद्र में, प्राकृतिक लकड़ी के स्लैट्स से बने ध्वनिक विभाजन एक प्रीमियम आतिथ्य से लैस विवेकपूर्ण और स्वागत करने वाले <strong>स्थायित्व के स्थान</strong> को कॉन्फ़िगर करते हैं, जो कार्यकारी बैठकें आयोजित करने और पूर्ण शांति के साथ उच्च प्रभाव वाले वाणिज्यिक समझौतों को अंतिम रूप देने के लिए आदर्श हैं।"
+      "es": "El stand diseñado a medida para <strong>MOROCCO NOW</strong> en Barcelona constituye un logro sobresaliente en la integración de imagen corporativa y arquitectura efímera. Inspirado en la descripción y la actividad ferial del cliente —<em>Empresa de diseño y construcción de stands en Argentina.</em>—, concebimos una propuesta ferial bajo el concepto riguroso de la <strong>microarquitectura experiencial</strong> en madera noble y perfiles premium de Standarte. <br><br>En el plano vertical, las marquesinas suspendidas y pórticos aéreos actúan como potentes <strong>estructuras de concentración visual</strong> que garantizan que la marca domine la visual desde los pasillos comerciales de Fira Barcelona, resolviendo el desafío clave de la <strong>arquitectura de atención</strong>. Para facilitar el tránsito de visitantes de gran perfil comercial, el stand propone un impecable <strong>diseño de flujo humano</strong> libre de barreras físicas rígidas, distribuyendo mostradores dinámicos y puntos de interacción espontánea. En el corazón del espacio, refinados tabiques acústicos de lamas de madera natural configuran discretos y acogedores <strong>espacios de permanencia</strong> feriales provistos de hospitalidad premium, idóneos para entablar reuniones ejecutivas y cerrar negociaciones comerciales de alto impacto con total tranquilidad.",
+      "en": "The custom stand designed for <strong>MOROCCO NOW</strong> in Barcelona constitutes an outstanding achievement in the integration of corporate image and ephemeral architecture. Inspired by the client's business activity —<em>Company de diseño y construcción de stands en Argentina.</em>—, we conceived an exhibition proposal under the rigorous concept of <strong>experiential microarchitecture</strong> in noble wood and premium Standarte profiles. <br><br>In the vertical plane, the suspended marquees and aerial portals act as powerful <strong>visual concentration structures</strong> that guarantee the brand dominates the view from the commercial aisles of Fira Barcelona, resolving the key challenge of <strong>attention architecture</strong>. To facilitate the transit of visitors with a high commercial profile, the stand proposes an impeccable <strong>human flow design</strong> free of rigid physical barriers, distributing dynamic counters and spontaneous interaction points. In the heart of the space, refined acoustic partitions made of natural wood slats configure discreet and welcoming <strong>spaces of permanence</strong> equipped with premium hospitality, ideal for engaging in executive meetings and closing high-impact commercial negotiations with total peace of mind.",
+      "de": "Der für <strong>MOROCCO NOW</strong> in Barcelona maßgeschneiderte Stand stellt eine herausragende Leistung bei der Integration von Corporate Image und temporärer Architektur dar. Inspiriert von der geschäftlichen Aktivität des Kunden —<em>Unternehmen de diseño y construcción de stands en Argentina.</em>— haben wir ein Messekonzept unter dem strengen Begriff der <strong>erlebnisorientierten Mikroarchitektur</strong> aus edlem Holz und Premium-Profilen von Standarte entworfen. <br><br>In der vertikalen Ebene wirken die abgehängten Überdachungen und Deckenportale als kraftvolle <strong>visuelle Konzentrationsstrukturen</strong>, die garantieren, dass die Marke die Sicht in den Hallengängen der Fira Barcelona dominiert, und lösen so die zentrale Herausforderung der <strong>Aufmerksamkeitsarchitektur</strong>. Um den Fluss von Besuchern mit hohem geschäftlichen Profil zu erleichtern, bietet der Stand eine tadellose <strong>Gestaltung des menschlichen Flusses</strong> ohne starre physische Barrieren, indem er dynamische Tresen und spontane Interaktionspunkte verteilt. Im Herzen des Raumes bilden raffinierte Akustikwände aus Naturholzlamellen diskrete und einladende <strong>Verweilräume</strong> mit erstklassigem Service – ideal, um in aller Ruhe Vorstandsgespräche zu führen und hochkarätige Verhandlungen abzuschließen.",
+      "pt": "O stand desenhado à medida para a <strong>MOROCCO NOW</strong> em Barcelona constitui uma conquista notável na integração de imagem corporativa e arquitetura efímera. Inspirado pela atividade comercial do cliente —<em>Empresa de diseño y construcción de stands en Argentina.</em>—, concebimos uma proposta ferial sob o conceito rigoroso da <strong>microarquitetura experiencial</strong> em madeira nobre e perfis premium da Standarte. <br><br>No plano vertical, as marquises suspensas e portais aéreos atuam como poderosas <strong>estruturas de concentração visual</strong> que garantem que a marca domine a visual a partir dos corredores comerciais da Fira Barcelona, resolvendo o desafio-chave da <strong>arquitetura de atenção</strong>. Para facilitar o trânsito de visitantes com elevado perfil comercial, o stand propõe um impecável <strong>design de fluxo humano</strong> livre de barreiras físicas rígidas, distribuindo balcões dinâmicos e pontos de interação espontânea. No coração do espaço, refinados painéis acústicos de lamas de madeira natural configuram discretos e acolhedores <strong>espaços de permanência</strong> providos de hospitalidade premium, ideais para realizar reuniões executivas e fechar negociações de alto impacto com total tranquilidade.",
+      "zh": "专为<strong>MOROCCO NOW</strong>在Barcelona设计的定制展台代表了企业形象与临时建筑融合的杰出成就。受客户商业活动 —<em>公司 de diseño y construcción de stands en Argentina.</em>— 的启发，我们本着精益求精的态度，采用名贵木材和Standarte高端型材，在<strong>体验式微建筑</strong>的严谨概念下构思了这一展会方案。<br><br>在垂直平面上，悬挂式吊顶和空中门廊作为强大的<strong>视觉聚焦结构</strong>，确保品牌在巴塞罗那Fira会展中心商业通道中占据主导视线，成功解决了<strong>注意力建筑</strong>的关键挑战。为了引导高商业价值访客的流动，展台采用了完美无瑕的<strong>人流设计</strong>，消除刚性物理屏障，合理分布动态服务台和自发交互点。在空间的核心地带，精美的天然木格栅隔音墙构筑了私密且温馨的<strong>停留空间</strong>，并提供高端招待服务，是开展高管会谈和安心达成高影响力商业合作的理想场所。",
+      "hi": "Barcelona में <strong>MOROCCO NOW</strong> के लिए कस्टम डिज़ाइन किया गया स्टैंड कॉर्पोरेट छवि और अल्पकालिक वास्तुकला के एकीकरण में एक उत्कृष्ट उपलब्धि है। ग्राहक की व्यावसायिक गतिविधि —<em>कंपनी de diseño y construcción de stands en Argentina.</em>— से प्रेरित होकर, हमने Standarte के प्रीमियम प्रोफाइल और शानदार लकड़ी में <strong>अनुभवात्मक सूक्ष्म वास्तुकला</strong> की कठोर अवधारणा के तहत एक प्रदर्शनी प्रस्ताव तैयार किया है। <br><br>ऊर्ध्vaधर तल पर, लटके हुए चंदवा और हवाई पोर्टल शक्तिशाली <strong>दृश्य एकाग्रता संरचनाएं</strong> के रूप में कार्य करते हैं जो यह सुनिश्चित करते हैं कि ब्रांड फिरा बार्सिलोना के वाणिज्यिक गलियारों से दृश्य पर हावी हो, जिससे <strong>ध्यान वास्तुकला</strong> की प्रमुख चुनौती का समाधान होता है। उच्च वाणिज्यिक प्रोफ़ाइल वाले आगंतुकों के आवागमन को सुगम बनाने के लिए, स्टैंड कठोर भौतिक बाधाओं से मुक्त एक त्रुटिहीन <strong>मानव प्रवाह डिजाइन</strong> का प्रस्ताव करता है, जिसमें गतिशील काउंटर और सहज बातचीत बिंदु वितरित किए जाते हैं। अंतरिक्ष के केंद्र में, प्राकृतिक लकड़ी के स्लैट्स से बने ध्वनिक विभाजन एक प्रीमियम आतिथ्य से लैस विवेकपूर्ण और स्वागत करने वाले <strong>स्थायित्व के स्थान</strong> को कॉन्फ़िगर करते हैं, जो कार्यकारी बैठकें आयोजित करने और पूर्ण शांति के साथ उच्च प्रभाव वाले वाणिज्यिक समझौतों को अंतिम रूप देने के लिए आदर्श हैं।"
     },
     "notes": {
       "es": "Empresa de diseño y construcción de stands en Argentina.",
@@ -2597,16 +2597,16 @@ export const projects = [
       "hi": "कंपनी de diseño y construcción de stands en Argentina."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MN en Barcelona",
-      "en": "Stand project development for company MN in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MN in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MN em Barcelona",
-      "zh": "Barcelona MN 公司展台项目设计与搭建",
-      "hi": "Barcelona में MN कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de construcción de stands en Barcelona",
+      "en": "Stand for stand construction company in Barcelona",
+      "de": "Messestand für Messebauunternehmen in Barcelona",
+      "pt": "Stand para empresa de construção de stands em Barcelona",
+      "zh": "巴塞罗那展台建设公司展台",
+      "hi": "बार्सिलोना में स्टैंड निर्माण कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_movora_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_medtech_veterinaria_en_bilbao",
     "name": "MOVORA",
     "location": "Bilbao",
     "web": "https://movora.com/",
@@ -2640,16 +2640,16 @@ export const projects = [
       "hi": "Sector: Medtech veterinario."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MOVORA en Bilbao",
-      "en": "Stand project development for company MOVORA in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MOVORA in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MOVORA em Bilbao",
-      "zh": "Bilbao MOVORA 公司展台项目设计与搭建",
-      "hi": "Bilbao में MOVORA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa medtech veterinaria en Bilbao",
+      "en": "Stand for veterinary medtech company in Bilbao",
+      "de": "Messestand für veterinärmedizinisches Medtech-Unternehmen in Bilbao",
+      "pt": "Stand para empresa medtech veterinária em Bilbao",
+      "zh": "毕尔巴鄂兽医医疗技术公司展台",
+      "hi": "बिल्बाओ में पशु चिकित्सा मेडटेक कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_mtm_energia_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_energia_y_cogeneracion_en_malaga",
     "name": "MTM ENERGIA",
     "location": "Málaga",
     "web": "https://www.mtmenergia.com",
@@ -2681,16 +2681,16 @@ export const projects = [
       "hi": "Sector: Energía (cogeneración y eficiencia energética). País: Italia."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MTM ENERGIA en Málaga",
-      "en": "Stand project development for company MTM ENERGIA in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MTM ENERGIA in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MTM ENERGIA em Málaga",
-      "zh": "Málaga MTM ENERGIA 公司展台项目设计与搭建",
-      "hi": "Málaga में MTM ENERGIA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de energía y cogeneración en Málaga",
+      "en": "Stand for energy and cogeneration company in Málaga",
+      "de": "Messestand für Energie- und Kraft-Wärme-Kopplungsunternehmen in Málaga",
+      "pt": "Stand para empresa de energia e cogeração em Málaga",
+      "zh": "马拉加能源和热电联产公司展台",
+      "hi": "मलागा में ऊर्जा और सह-उत्पादन कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_murzilli_desarrollado_en_bilbao",
+    "id": "stand_para_consultoria_de_aviacion_y_drones_en_bilbao",
     "name": "MURZILLI",
     "location": "Bilbao",
     "web": "https://murzilliconsulting.com/",
@@ -2719,16 +2719,16 @@ export const projects = [
       "hi": "Consultoría de aviación/drones, oficinas en varios países (incluido España)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MURZILLI en Bilbao",
-      "en": "Stand project development for company MURZILLI in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MURZILLI in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MURZILLI em Bilbao",
-      "zh": "Bilbao MURZILLI 公司展台项目设计与搭建",
-      "hi": "Bilbao में MURZILLI कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para consultoría de aviación y drones en Bilbao",
+      "en": "Stand for aviation and drone consultancy in Bilbao",
+      "de": "Messestand für Luftfahrt- und Drohnenberatung in Bilbao",
+      "pt": "Stand para consultoria de aviação e drones em Bilbao",
+      "zh": "毕尔巴鄂航空和无人机咨询公司展台",
+      "hi": "बिल्बाओ में विमानन और ड्रोन परामर्श के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_muti_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_motocicletas_y_bicicletas_en_malaga",
     "name": "MUTI",
     "location": "Málaga",
     "web": "https://www.mutigroup.com",
@@ -2761,16 +2761,16 @@ export const projects = [
       "hi": "कंपनी de Filipinas, sector motocicletas y bicicletas."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa MUTI en Málaga",
-      "en": "Stand project development for company MUTI in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen MUTI in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa MUTI em Málaga",
-      "zh": "Málaga MUTI 公司展台项目设计与搭建",
-      "hi": "Málaga में MUTI कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de motocicletas y bicicletas en Málaga",
+      "en": "Stand for motorcycle and bicycle company in Málaga",
+      "de": "Messestand für Motorrad- und Fahrradunternehmen in Málaga",
+      "pt": "Stand para empresa de motocicletas e bicicletas em Málaga",
+      "zh": "马拉加摩托车和自行车公司展台",
+      "hi": "मलागा में मोटरसाइकिल और साइकिल कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_nearthlab_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_ia_de_drones_en_barcelona",
     "name": "NEARTHLAB",
     "location": "Barcelona",
     "web": "https://www.nearthlab.com",
@@ -2799,16 +2799,16 @@ export const projects = [
       "hi": "कंपनी de IA de drones में मुख्यालय Corea del Sur."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa NEARTHLAB en Barcelona",
-      "en": "Stand project development for company NEARTHLAB in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen NEARTHLAB in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa NEARTHLAB em Barcelona",
-      "zh": "Barcelona NEARTHLAB 公司展台项目设计与搭建",
-      "hi": "Barcelona में NEARTHLAB कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de IA de drones en Barcelona",
+      "en": "Stand for AI drone company in Barcelona",
+      "de": "Messestand für KI-Drohnenunternehmen in Barcelona",
+      "pt": "Stand para empresa de IA de drones em Barcelona",
+      "zh": "巴塞罗那人工智能无人机公司展台",
+      "hi": "बार्सिलोना में एआई ड्रोन कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_netgame_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_juegos_de_casino_online_en_barcelona",
     "name": "NETGAME",
     "location": "Barcelona",
     "web": "https://netgamenv.com/",
@@ -2837,16 +2837,16 @@ export const projects = [
       "hi": "कंपनी de juegos de casino online."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa NETGAME en Barcelona",
-      "en": "Stand project development for company NETGAME in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen NETGAME in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa NETGAME em Barcelona",
-      "zh": "Barcelona NETGAME 公司展台项目设计与搭建",
-      "hi": "Barcelona में NETGAME कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de juegos de casino online en Barcelona",
+      "en": "Stand for online casino games company in Barcelona",
+      "de": "Messestand für Online-Casino-Spieleunternehmen in Barcelona",
+      "pt": "Stand para empresa de jogos de cassino online em Barcelona",
+      "zh": "巴塞罗那在线赌场游戏公司展台",
+      "hi": "बार्सिलोना में ऑनलाइन कैसीनो गेम कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_nibec_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_almacenaje_industrial_en_madrid",
     "name": "NIBEC",
     "location": "Madrid",
     "web": "https://www.nibec.cl",
@@ -2877,16 +2877,16 @@ export const projects = [
       "hi": "कंपनी chilena de almacenaje industrial."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa NIBEC en Madrid",
-      "en": "Stand project development for company NIBEC in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen NIBEC in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa NIBEC em Madrid",
-      "zh": "Madrid NIBEC 公司展台项目设计与搭建",
-      "hi": "Madrid में NIBEC कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de almacenaje industrial en Madrid",
+      "en": "Stand for industrial storage company in Madrid",
+      "de": "Messestand für Industrielagerunternehmen in Madrid",
+      "pt": "Stand para empresa de armazenagem industrial em Madrid",
+      "zh": "马德里工业仓储公司展台",
+      "hi": "मैड्रिड में औद्योगिक भंडारण कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_nuproxa_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_nutricion_animal_en_madrid",
     "name": "NUPROXA",
     "location": "Madrid",
     "web": "https://nuproxa.ch/",
@@ -2917,16 +2917,16 @@ export const projects = [
       "hi": "कंपनी suiza de nutrición animal."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa NUPROXA en Madrid",
-      "en": "Stand project development for company NUPROXA in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen NUPROXA in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa NUPROXA em Madrid",
-      "zh": "Madrid NUPROXA 公司展台项目设计与搭建",
-      "hi": "Madrid में NUPROXA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de nutrición animal en Madrid",
+      "en": "Stand for animal nutrition company in Madrid",
+      "de": "Messestand für Tierernährungsunternehmen in Madrid",
+      "pt": "Stand para empresa de nutrição animal em Madrid",
+      "zh": "马德里动物营养公司展台",
+      "hi": "मैड्रिड में पशु पोषण कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_orpagu_desarrollado_en_madrid",
+    "id": "stand_para_organizacion_de_pesca_en_madrid",
     "name": "ORPAGU",
     "location": "Madrid",
     "web": "https://orpagu.com",
@@ -2957,16 +2957,16 @@ export const projects = [
       "hi": "Organización de palangreros guardeses, España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa ORPAGU en Madrid",
-      "en": "Stand project development for company ORPAGU in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen ORPAGU in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa ORPAGU em Madrid",
-      "zh": "Madrid ORPAGU 公司展台项目设计与搭建",
-      "hi": "Madrid में ORPAGU कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para organización de pesca en Madrid",
+      "en": "Stand for fishing organization in Madrid",
+      "de": "Messestand für Fischereiorganisation in Madrid",
+      "pt": "Stand para organização de pesca em Madrid",
+      "zh": "马德里捕鱼组织展台",
+      "hi": "मैड्रिड में मछली पकड़ने के संगठन के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_paynau_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_fintech_en_bilbao",
     "name": "PAYNAU",
     "location": "Bilbao",
     "web": "https://www.paynau.com",
@@ -2994,16 +2994,16 @@ export const projects = [
       "hi": "कंपनी fintech latinoamericana."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa PAYNAU en Bilbao",
-      "en": "Stand project development for company PAYNAU in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen PAYNAU in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa PAYNAU em Bilbao",
-      "zh": "Bilbao PAYNAU 公司展台项目设计与搭建",
-      "hi": "Bilbao में PAYNAU कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa fintech en Bilbao",
+      "en": "Stand for fintech company in Bilbao",
+      "de": "Messestand für Fintech-Unternehmen in Bilbao",
+      "pt": "Stand para empresa fintech em Bilbao",
+      "zh": "毕尔巴鄂金融科技公司展台",
+      "hi": "बिल्बाओ में फिनटेक कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_pivotal_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_marketing_minorista_en_bilbao",
     "name": "PIVOTAL",
     "location": "Bilbao",
     "web": "https://pivotal-retail.com/",
@@ -3030,16 +3030,16 @@ export const projects = [
       "hi": "कंपनी de marketing minorista में मुख्यालय el Reino Unido que diseña y fabrica stands de exposición."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa PIVOTAL en Bilbao",
-      "en": "Stand project development for company PIVOTAL in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen PIVOTAL in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa PIVOTAL em Bilbao",
-      "zh": "Bilbao PIVOTAL 公司展台项目设计与搭建",
-      "hi": "Bilbao में PIVOTAL कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de marketing minorista en Bilbao",
+      "en": "Stand for retail marketing company in Bilbao",
+      "de": "Messestand für Einzelhandelsmarketing in Bilbao",
+      "pt": "Stand para empresa de marketing de varejo em Bilbao",
+      "zh": "毕尔巴鄂零售营销公司展台",
+      "hi": "बिल्बाओ में खुदरा विपणन कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_politejo_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_soluciones_termoplasticas_en_barcelona",
     "name": "POLITEJO",
     "location": "Barcelona",
     "web": "https://www.politejo.com/",
@@ -3072,16 +3072,16 @@ export const projects = [
       "hi": "Sector: Soluciones termoplásticas, sistemas de riego. País: Portugal (con operaciones en España)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa POLITEJO en Barcelona",
-      "en": "Stand project development for company POLITEJO in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen POLITEJO in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa POLITEJO em Barcelona",
-      "zh": "Barcelona POLITEJO 公司展台项目设计与搭建",
-      "hi": "Barcelona में POLITEJO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de soluciones termoplásticas en Barcelona",
+      "en": "Stand for thermoplastic solutions company in Barcelona",
+      "de": "Messestand für thermoplastische Lösungen in Barcelona",
+      "pt": "Stand para empresa de soluções termoplásticas em Barcelona",
+      "zh": "巴塞罗那热塑性解决方案公司展台",
+      "hi": "बार्सिलोना में थर्माप्लास्टिक समाधान कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_realturf_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_cesped_artificial_en_madrid",
     "name": "REALTURF",
     "location": "Madrid",
     "web": "https://realturf.com/es/en/",
@@ -3112,16 +3112,16 @@ export const projects = [
       "hi": "Sector: Césped artificial. País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa REALTURF en Madrid",
-      "en": "Stand project development for company REALTURF in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen REALTURF in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa REALTURF em Madrid",
-      "zh": "Madrid REALTURF 公司展台项目设计与搭建",
-      "hi": "Madrid में REALTURF कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de césped artificial en Madrid",
+      "en": "Stand for artificial grass company in Madrid",
+      "de": "Messestand für Kunstrasenunternehmen in Madrid",
+      "pt": "Stand para empresa de grama artificial em Madrid",
+      "zh": "马德里人造草坪公司展台",
+      "hi": "मैड्रिड में कृत्रिम घास कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_refco_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_herramientas_de_refrigeracion_en_barcelona",
     "name": "REFCO",
     "location": "Barcelona",
     "web": "https://refcoswiss.com/en-us",
@@ -3148,16 +3148,16 @@ export const projects = [
       "hi": "कंपनी suiza/estadounidense de herramientas de refrigeración y aire acondicionado."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa REFCO en Barcelona",
-      "en": "Stand project development for company REFCO in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen REFCO in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa REFCO em Barcelona",
-      "zh": "Barcelona REFCO 公司展台项目设计与搭建",
-      "hi": "Barcelona में REFCO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de herramientas de refrigeración en Barcelona",
+      "en": "Stand for refrigeration tools company in Barcelona",
+      "de": "Messestand für Kältewerkzeuge in Barcelona",
+      "pt": "Stand para empresa de ferramentas de refrigeração em Barcelona",
+      "zh": "巴塞罗那制冷工具公司展台",
+      "hi": "बार्सिलोना में प्रशीतन उपकरण कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_rompal_desarrollado_en_barcelona",
+    "id": "stand_para_fabricante_de_equipos_electronicos_en_barcelona",
     "name": "ROMPAL",
     "location": "Barcelona",
     "web": "https://rompal.es/",
@@ -3186,16 +3186,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de fabricación de equipos electrónicos."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa ROMPAL en Barcelona",
-      "en": "Stand project development for company ROMPAL in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen ROMPAL in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa ROMPAL em Barcelona",
-      "zh": "Barcelona ROMPAL 公司展台项目设计与搭建",
-      "hi": "Barcelona में ROMPAL कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fabricante de equipos electrónicos en Barcelona",
+      "en": "Stand for electronic equipment manufacturer in Barcelona",
+      "de": "Messestand für Hersteller elektronischer Geräte in Barcelona",
+      "pt": "Stand para fabricante de equipamentos eletrônicos em Barcelona",
+      "zh": "巴塞罗那电子设备制造商展台",
+      "hi": "बार्सिलोना में इलेक्ट्रॉनिक उपकरण निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_sampling_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_sampling_promocional_en_barcelona",
     "name": "SAMPLING",
     "location": "Barcelona",
     "web": "https://sampling-innovations.com/",
@@ -3224,16 +3224,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de sampling promocional."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SAMPLING en Barcelona",
-      "en": "Stand project development for company SAMPLING in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SAMPLING in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SAMPLING em Barcelona",
-      "zh": "Barcelona SAMPLING 公司展台项目设计与搭建",
-      "hi": "Barcelona में SAMPLING कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de sampling promocional en Barcelona",
+      "en": "Stand for promotional sampling company in Barcelona",
+      "de": "Messestand für Sampling-Aktionen in Barcelona",
+      "pt": "Stand para empresa de sampling promocional em Barcelona",
+      "zh": "巴塞罗那促销抽样公司展台",
+      "hi": "बार्सिलोना में प्रचार नमूना कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_sarafood_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_alimentos_en_malaga",
     "name": "SARAFOOD",
     "location": "Málaga",
     "web": "https://www.sarafood.com.tr/",
@@ -3264,16 +3264,16 @@ export const projects = [
       "hi": "कंपनी de alimentos de Turquía."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SARAFOOD en Málaga",
-      "en": "Stand project development for company SARAFOOD in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SARAFOOD in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SARAFOOD em Málaga",
-      "zh": "Málaga SARAFOOD 公司展台项目设计与搭建",
-      "hi": "Málaga में SARAFOOD कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de alimentos en Málaga",
+      "en": "Stand for food company in Málaga",
+      "de": "Messestand für Lebensmittelunternehmen in Málaga",
+      "pt": "Stand para empresa de alimentos em Málaga",
+      "zh": "马拉加食品公司展台",
+      "hi": "मलागा में खाद्य कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_scubaworld_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_buceo_en_madrid",
     "name": "SCUBAWORLD",
     "location": "Madrid",
     "web": "https://scubaworldinc.net/",
@@ -3307,16 +3307,16 @@ export const projects = [
       "hi": "कंपनी de buceo en EE. UU."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SCUBAWORLD en Madrid",
-      "en": "Stand project development for company SCUBAWORLD in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SCUBAWORLD in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SCUBAWORLD em Madrid",
-      "zh": "Madrid SCUBAWORLD 公司展台项目设计与搭建",
-      "hi": "Madrid में SCUBAWORLD कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de buceo en Madrid",
+      "en": "Stand for diving company in Madrid",
+      "de": "Messestand für Tauchunternehmen in Madrid",
+      "pt": "Stand para empresa de mergulho em Madrid",
+      "zh": "马德里潜水公司展台",
+      "hi": "मैड्रिड में डाइविंग कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_sinavo_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_materiales_sinteticos_en_madrid",
     "name": "SINAVO",
     "location": "Madrid",
     "web": "https://www.sinavoglobal.com/",
@@ -3346,16 +3346,16 @@ export const projects = [
       "hi": "कंपनी de materiales sintéticos ecológicos."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SINAVO en Madrid",
-      "en": "Stand project development for company SINAVO in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SINAVO in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SINAVO em Madrid",
-      "zh": "Madrid SINAVO 公司展台项目设计与搭建",
-      "hi": "Madrid में SINAVO कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de materiales sintéticos ecológicos en Madrid",
+      "en": "Stand for eco-synthetic materials company in Madrid",
+      "de": "Messestand für umweltfreundliche synthetische Materialien in Madrid",
+      "pt": "Stand para empresa de materiais sintéticos ecológicos em Madrid",
+      "zh": "马德里生态合成材料公司展台",
+      "hi": "मैड्रिड में पर्यावरण के अनुकूल सिंथेटिक सामग्री कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_slovakia_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_fabricacion_de_stands_en_malaga",
     "name": "SLOVAKIA",
     "location": "Málaga",
     "web": "https://www.intexslovakia.com/en/",
@@ -3391,16 +3391,16 @@ export const projects = [
       "hi": "कंपनी eslovaca de diseño y fabricación de stands de exposición."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SLOVAKIA en Málaga",
-      "en": "Stand project development for company SLOVAKIA in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SLOVAKIA in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SLOVAKIA em Málaga",
-      "zh": "Málaga SLOVAKIA 公司展台项目设计与搭建",
-      "hi": "Málaga में SLOVAKIA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de fabricación de stands en Málaga",
+      "en": "Stand for exhibition stand manufacturer in Málaga",
+      "de": "Messestand für Messebauunternehmen in Málaga",
+      "pt": "Stand para empresa de fabricação de stands em Málaga",
+      "zh": "马拉加展台制造公司展台",
+      "hi": "मलागा में प्रदर्शनी स्टैंड निर्माता के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_soemar_desarrollado_en_malaga",
+    "id": "stand_para_fundacion_y_centro_tecnologico_en_malaga",
     "name": "SOEMAR",
     "location": "Málaga",
     "web": "https://soermar.com/",
@@ -3433,16 +3433,16 @@ export const projects = [
       "hi": "Sector: Fundación y Centro Tecnológico. País: España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SOEMAR en Málaga",
-      "en": "Stand project development for company SOEMAR in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SOEMAR in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SOEMAR em Málaga",
-      "zh": "Málaga SOEMAR 公司展台项目设计与搭建",
-      "hi": "Málaga में SOEMAR कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para fundación y centro tecnológico en Málaga",
+      "en": "Stand for foundation and technology center in Málaga",
+      "de": "Messestand für Stiftung und Technologiezentrum in Málaga",
+      "pt": "Stand para fundação e centro tecnológico em Málaga",
+      "zh": "马拉加基金会和技术中心展台",
+      "hi": "मलागा में फाउंडेशन और प्रौद्योगिकी केंद्र के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_sommos_desarrollado_en_madrid",
+    "id": "stand_para_bodega_de_vinos_somontano_en_madrid",
     "name": "SOMMOS",
     "location": "Madrid",
     "web": "https://www.bodegasommos.com/en/",
@@ -3469,16 +3469,16 @@ export const projects = [
       "hi": "Bodega española de vinos en Somontano, Huesca."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SOMMOS en Madrid",
-      "en": "Stand project development for company SOMMOS in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SOMMOS in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SOMMOS em Madrid",
-      "zh": "Madrid SOMMOS 公司展台项目设计与搭建",
-      "hi": "Madrid में SOMMOS कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para bodega de vinos en Madrid",
+      "en": "Stand for winery in Madrid",
+      "de": "Messestand für Weingut in Madrid",
+      "pt": "Stand para adega de vinhos em Madrid",
+      "zh": "马德里酒庄展台",
+      "hi": "मैड्रिड में वाइनरी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_storz_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_de_dispositivos_medicos_en_barcelona",
     "name": "STORZ",
     "location": "Barcelona",
     "web": "https://www.karlstorz.com/",
@@ -3513,16 +3513,16 @@ export const projects = [
       "hi": "कंपनी de dispositivos médicos y endoscopia (Alemania/EE.UU.)."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa STORZ en Barcelona",
-      "en": "Stand project development for company STORZ in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen STORZ in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa STORZ em Barcelona",
-      "zh": "Barcelona STORZ 公司展台项目设计与搭建",
-      "hi": "Barcelona में STORZ कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de dispositivos médicos en Barcelona",
+      "en": "Stand for medical devices company in Barcelona",
+      "de": "Messestand für Medizinprodukteunternehmen in Barcelona",
+      "pt": "Stand para empresa de dispositivos médicos em Barcelona",
+      "zh": "巴塞罗那医疗设备公司展台",
+      "hi": "बार्सिलोना में चिकित्सा उपकरण कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_sublimet_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_maquinaria_de_personalizacion_en_bilbao",
     "name": "SUBLIMET",
     "location": "Bilbao",
     "web": "https://www.sublimet.com",
@@ -3550,16 +3550,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी के क्षेत्र में productos y maquinaria de personalización."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SUBLIMET en Bilbao",
-      "en": "Stand project development for company SUBLIMET in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SUBLIMET in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SUBLIMET em Bilbao",
-      "zh": "Bilbao SUBLIMET 公司展台项目设计与搭建",
-      "hi": "Bilbao में SUBLIMET कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de maquinaria de personalización en Bilbao",
+      "en": "Stand for customization machinery company in Bilbao",
+      "de": "Messestand für Personalisierungsmaschinen in Bilbao",
+      "pt": "Stand para empresa de máquinas de personalização em Bilbao",
+      "zh": "毕尔巴鄂个性化机械公司展台",
+      "hi": "बिल्बाओ में अनुकूलन मशीनरी कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_swisstraffic_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_movilidad_inteligente_en_madrid",
     "name": "SWISSTRAFFIC",
     "location": "Madrid",
     "web": "https://www.swisstraffic.ch/",
@@ -3587,16 +3587,16 @@ export const projects = [
       "hi": "कंपनी suiza के क्षेत्र में movilidad inteligente."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa SWISSTRAFFIC en Madrid",
-      "en": "Stand project development for company SWISSTRAFFIC in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen SWISSTRAFFIC in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa SWISSTRAFFIC em Madrid",
-      "zh": "Madrid SWISSTRAFFIC 公司展台项目设计与搭建",
-      "hi": "Madrid में SWISSTRAFFIC कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de movilidad inteligente en Madrid",
+      "en": "Stand for smart mobility company in Madrid",
+      "de": "Messestand für Smart-Mobility-Unternehmen in Madrid",
+      "pt": "Stand para empresa de mobilidade inteligente em Madrid",
+      "zh": "马德里智能出行公司展台",
+      "hi": "मैड्रिड में स्मार्ट मोबिलिटी कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_tillica_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_nanotecnologia_en_malaga",
     "name": "TILLICA",
     "location": "Málaga",
     "web": "https://www.naturalcalk.com/es/tillica",
@@ -3624,16 +3624,16 @@ export const projects = [
       "hi": "कंपनी italiana de nanotecnología de aerogel."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa TILLICA en Málaga",
-      "en": "Stand project development for company TILLICA in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen TILLICA in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa TILLICA em Málaga",
-      "zh": "Málaga TILLICA 公司展台项目设计与搭建",
-      "hi": "Málaga में TILLICA कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de nanotecnología en Málaga",
+      "en": "Stand for nanotechnology company in Málaga",
+      "de": "Messestand für Nanotechnologieunternehmen in Málaga",
+      "pt": "Stand para empresa de nanotecnologia em Málaga",
+      "zh": "马拉加纳米技术公司展台",
+      "hi": "मलागा में नैनोटेक्नोलॉजी कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_tranluz_desarrollado_en_barcelona",
+    "id": "stand_para_empresa_del_sector_electrico_en_barcelona",
     "name": "TRANLUZ",
     "location": "Barcelona",
     "web": "https://www.tranluz.es/",
@@ -3661,16 +3661,16 @@ export const projects = [
       "hi": "Sector Eléctrico y Telecomunicaciones, España."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa TRANLUZ en Barcelona",
-      "en": "Stand project development for company TRANLUZ in Barcelona",
-      "de": "Messestand-Projektentwicklung für das Unternehmen TRANLUZ in Barcelona",
-      "pt": "Desenvolvimento de projeto de stand para a empresa TRANLUZ em Barcelona",
-      "zh": "Barcelona TRANLUZ 公司展台项目设计与搭建",
-      "hi": "Barcelona में TRANLUZ कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa del sector eléctrico en Barcelona",
+      "en": "Stand for electrical sector company in Barcelona",
+      "de": "Messestand für Elektronikunternehmen in Barcelona",
+      "pt": "Stand para empresa do setor elétrico em Barcelona",
+      "zh": "巴塞罗那电力领域公司展台",
+      "hi": "बार्सिलोना में विद्युत क्षेत्र की कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_twopoles_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_cosmetica_en_madrid",
     "name": "TWOPOLES",
     "location": "Madrid",
     "web": "https://twopoles.co",
@@ -3702,16 +3702,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी de cosmética."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa TWOPOLES en Madrid",
-      "en": "Stand project development for company TWOPOLES in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen TWOPOLES in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa TWOPOLES em Madrid",
-      "zh": "Madrid TWOPOLES 公司展台项目设计与搭建",
-      "hi": "Madrid में TWOPOLES कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de cosmética en Madrid",
+      "en": "Stand for cosmetics company in Madrid",
+      "de": "Messestand für Kosmetikunternehmen in Madrid",
+      "pt": "Stand para empresa de cosméticos em Madrid",
+      "zh": "马德里化妆品公司展台",
+      "hi": "मैड्रिड में सौंदर्य प्रसाधन कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_unique_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_componentes_para_ascensores_en_madrid",
     "name": "UNIQUE",
     "location": "Madrid",
     "web": "https://uniquesrl.eu",
@@ -3739,16 +3739,16 @@ export const projects = [
       "hi": "कंपनी italiana de componentes para ascensores."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa UNIQUE en Madrid",
-      "en": "Stand project development for company UNIQUE in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen UNIQUE in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa UNIQUE em Madrid",
-      "zh": "Madrid UNIQUE 公司展台项目设计与搭建",
-      "hi": "Madrid में UNIQUE कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de componentes para ascensores en Madrid",
+      "en": "Stand for elevator components company in Madrid",
+      "de": "Messestand für Aufzugskomponenten in Madrid",
+      "pt": "Stand para empresa de componentes de elevadores em Madrid",
+      "zh": "马德里电梯部件公司展台",
+      "hi": "मैड्रिड में लिफ्ट घटक कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_uruguay_natural_desarrollado_en_malaga",
+    "id": "stand_para_organizacion_de_turismo_en_malaga",
     "name": "URUGUAY_NATURAL",
     "location": "Málaga",
     "web": "https://uruguaynatural.com/en/",
@@ -3776,16 +3776,16 @@ export const projects = [
       "hi": "Sector: Turismo. País: Uruguay."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa URUGUAY_NATURAL en Málaga",
-      "en": "Stand project development for company URUGUAY_NATURAL in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen URUGUAY_NATURAL in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa URUGUAY_NATURAL em Málaga",
-      "zh": "Málaga URUGUAY_NATURAL 公司展台项目设计与搭建",
-      "hi": "Málaga में URUGUAY_NATURAL कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para organización de turismo en Málaga",
+      "en": "Stand for tourism organization in Málaga",
+      "de": "Messestand für Tourismusorganisation in Málaga",
+      "pt": "Stand para organização de turismo em Málaga",
+      "zh": "马拉加旅游组织展台",
+      "hi": "मलागा में पर्यटन संगठन के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_vegenat_desarrollado_en_malaga",
+    "id": "stand_para_empresa_de_ingredientes_deshidratados_en_malaga",
     "name": "VEGENAT",
     "location": "Málaga",
     "web": "https://www.vegenat.es/",
@@ -3812,16 +3812,16 @@ export const projects = [
       "hi": "स्पैनिश कंपनी के क्षेत्र में ingredientes deshidratados."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa VEGENAT en Málaga",
-      "en": "Stand project development for company VEGENAT in Málaga",
-      "de": "Messestand-Projektentwicklung für das Unternehmen VEGENAT in Málaga",
-      "pt": "Desenvolvimento de projeto de stand para a empresa VEGENAT em Málaga",
-      "zh": "Málaga VEGENAT 公司展台项目设计与搭建",
-      "hi": "Málaga में VEGENAT कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de ingredientes deshidratados en Málaga",
+      "en": "Stand for dehydrated ingredients company in Málaga",
+      "de": "Messestand für Trockenzutatenunternehmen in Málaga",
+      "pt": "Stand para empresa de ingredientes desidratados em Málaga",
+      "zh": "马拉加脱水配料公司展台",
+      "hi": "मलागा में निर्जलित सामग्री कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_vegevital_desarrollado_en_bilbao",
+    "id": "stand_para_empresa_de_agricultura_en_bilbao",
     "name": "VEGEVITAL",
     "location": "Bilbao",
     "web": "https://www.vegevital.com/en",
@@ -3852,16 +3852,16 @@ export const projects = [
       "hi": "Sector: Agricultura, País: Turquía."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa VEGEVITAL en Bilbao",
-      "en": "Stand project development for company VEGEVITAL in Bilbao",
-      "de": "Messestand-Projektentwicklung für das Unternehmen VEGEVITAL in Bilbao",
-      "pt": "Desenvolvimento de projeto de stand para a empresa VEGEVITAL em Bilbao",
-      "zh": "Bilbao VEGEVITAL 公司展台项目设计与搭建",
-      "hi": "Bilbao में VEGEVITAL कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de agricultura en Bilbao",
+      "en": "Stand for agriculture company in Bilbao",
+      "de": "Messestand für Agrarunternehmen in Bilbao",
+      "pt": "Stand para empresa de agricultura em Bilbao",
+      "zh": "毕尔巴鄂农业公司展台",
+      "hi": "बिल्बाओ में कृषि कंपनी के लिए स्टैंड"
     }
   },
   {
-    "id": "stand_weiler_desarrollado_en_madrid",
+    "id": "stand_para_empresa_de_maquinas_herramienta_en_madrid",
     "name": "WEILER",
     "location": "Madrid",
     "web": "https://www.weiler.de",
@@ -3889,12 +3889,12 @@ export const projects = [
       "hi": "Sector: Máquinas herramienta, País: Alemania. Encontrado en la página de contacto del sitio web oficial."
     },
     "title": {
-      "es": "Desarrollo de proyecto de stand para la empresa WEILER en Madrid",
-      "en": "Stand project development for company WEILER in Madrid",
-      "de": "Messestand-Projektentwicklung für das Unternehmen WEILER in Madrid",
-      "pt": "Desenvolvimento de projeto de stand para a empresa WEILER em Madrid",
-      "zh": "Madrid WEILER 公司展台项目设计与搭建",
-      "hi": "Madrid में WEILER कंपनी के लिए प्रदर्शनी स्टैंड परियोजना का विकास"
+      "es": "Stand para empresa de máquinas herramienta en Madrid",
+      "en": "Stand for machine tools company in Madrid",
+      "de": "Messestand für Werkzeugmaschinenunternehmen in Madrid",
+      "pt": "Stand para empresa de máquinas-ferramentas em Madrid",
+      "zh": "马德里机床公司展台",
+      "hi": "मैड्रिड में मशीन टूल्स कंपनी के लिए स्टैंड"
     }
   }
 ];

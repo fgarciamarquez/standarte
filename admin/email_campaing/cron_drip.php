@@ -98,6 +98,21 @@ $dripTexts = array(
         'intro' => 'À quelques mois du salon, c\'est le moment idéal pour commencer à concevoir votre stand.',
         'body' => 'Chez Inberpet, nous sommes prêts à vous aider à vous démarquer lors de votre prochain événement. Nous avons préparé quelques propositions de stands qui pourraient correspondre à la vision de votre entreprise.'
     ),
+    'pt' => array(
+        'subject' => 'Pronto para {{COMPANY}}? Descubra as nossas soluções de design',
+        'intro' => 'A poucos meses da feira, é a altura ideal para começar a desenhar o seu stand.',
+        'body' => 'Na Inberpet estamos prontos para ajudá-lo a destacar-se no seu próximo evento. Preparámos algumas propostas de stands que poderão adequar-se à visão da sua empresa.'
+    ),
+    'de' => array(
+        'subject' => 'Bereit für {{COMPANY}}? Entdecken Sie unsere Designlösungen',
+        'intro' => 'Wenige Monate vor der Messe ist der perfekte Zeitpunkt, um mit der Gestaltung Ihres Messestandes zu beginnen.',
+        'body' => 'Bei Inberpet sind wir bereit, Ihnen dabei zu helfen, sich bei Ihrer nächsten Veranstaltung abzuheben. Wir haben einige Standvorschläge vorbereitet, die zur Vision Ihres Unternehmens passen könnten.'
+    ),
+    'it' => array(
+        'subject' => 'Pronto per {{COMPANY}}? Scopri le nostre soluzioni di design',
+        'intro' => 'A pochi mesi dalla fiera, è il momento perfetto per iniziare a progettare il tuo stand.',
+        'body' => 'In Inberpet siamo pronti ad aiutarti a distinguerti al tuo prossimo evento. Abbiamo preparato alcune proposte di stand che potrebbero adattarsi alla visione della tua azienda.'
+    ),
     // Fallback genérico
     'default' => array(
         'subject' => 'Ready for {{COMPANY}}? Discover our design solutions',
@@ -109,18 +124,23 @@ $dripTexts = array(
 // 3. Buscar los contactos que pertenezcan a esos grupos y que tengan drip_sent = false
 // Debido a las limitaciones de la API REST para hacer un "IN", haremos una petición por cada grupo hasta alcanzar el límite
 $contactsToSend = array();
+$tablesToSearch = array('contacts', 'luz_contacts');
 
-foreach ($activeGroupNames as $groupName) {
-    // Si ya tenemos suficientes correos para esta ejecución, dejamos de buscar
+foreach ($tablesToSearch as $tableName) {
     if (count($contactsToSend) >= $emails_per_execution) break;
     
-    $limit = $emails_per_execution - count($contactsToSend);
-    $endpointContacts = 'contacts?lead_group=eq.' . urlencode($groupName) . '&status=eq.active&drip_sent=is.false&limit=' . $limit;
-    
-    $contactsRes = supa_request($endpointContacts);
-    if ($contactsRes['code'] === 200 && is_array($contactsRes['data'])) {
-        foreach ($contactsRes['data'] as $c) {
-            $contactsToSend[] = $c;
+    foreach ($activeGroupNames as $groupName) {
+        if (count($contactsToSend) >= $emails_per_execution) break;
+        
+        $limit = $emails_per_execution - count($contactsToSend);
+        $endpointContacts = $tableName . '?lead_group=eq.' . urlencode($groupName) . '&status=eq.active&drip_sent=is.false&limit=' . $limit;
+        
+        $contactsRes = supa_request($endpointContacts);
+        if ($contactsRes['code'] === 200 && is_array($contactsRes['data'])) {
+            foreach ($contactsRes['data'] as $c) {
+                $c['_table'] = $tableName; // Guardar origen para el PATCH
+                $contactsToSend[] = $c;
+            }
         }
     }
 }
@@ -142,24 +162,30 @@ foreach ($contactsToSend as $contact) {
     $contactId = isset($contact['id']) ? $contact['id'] : null;
     $groupName = $contact['lead_group'];
     
+    $updateTable = isset($contact['_table']) ? $contact['_table'] : 'contacts';
+    
     // Validate email format and DNS
     $email_error = '';
     if (!campaign_is_valid_email_advanced($email, $email_error)) {
         echo "  [SKIP - DNS/Syntax Error] $email: $email_error\n";
         if ($contactId) {
-            supa_request('contacts?id=eq.' . $contactId, 'PATCH', array('status' => 'bounced', 'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error, 'updated_at' => date('c')));
+            supa_request($updateTable . '?id=eq.' . $contactId, 'PATCH', array('status' => 'bounced', 'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error, 'updated_at' => date('c')));
         } else {
-            supa_request('contacts?email=eq.' . urlencode($email), 'PATCH', array('status' => 'bounced', 'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error, 'updated_at' => date('c')));
+            supa_request($updateTable . '?email=eq.' . urlencode($email), 'PATCH', array('status' => 'bounced', 'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error, 'updated_at' => date('c')));
         }
         continue;
     }
     
     // Determinar el idioma
     $lang = 'en';
-    if (stripos($groupName, 'madrid') !== false || stripos($groupName, 'barcelona') !== false) {
-        $lang = 'es';
-    } else if (stripos($groupName, 'paris') !== false || stripos($groupName, 'france') !== false) {
-        $lang = 'fr';
+    if (!empty($contact['language'])) {
+        $lang = strtolower($contact['language']);
+    } else {
+        if (stripos($groupName, 'madrid') !== false || stripos($groupName, 'barcelona') !== false) {
+            $lang = 'es';
+        } else if (stripos($groupName, 'paris') !== false || stripos($groupName, 'france') !== false) {
+            $lang = 'fr';
+        }
     }
     
     $texts = isset($dripTexts[$lang]) ? $dripTexts[$lang] : $dripTexts['default'];
@@ -179,10 +205,10 @@ foreach ($contactsToSend as $contact) {
         
         // Marcar como enviado inmediatamente
         if ($contactId) {
-            supa_request('contacts?id=eq.' . $contactId, 'PATCH', array('drip_sent' => true));
+            supa_request($updateTable . '?id=eq.' . $contactId, 'PATCH', array('drip_sent' => true));
         } else {
             // Si no tuviéramos id, usamos el email
-            supa_request('contacts?email=eq.' . urlencode($email), 'PATCH', array('drip_sent' => true));
+            supa_request($updateTable . '?email=eq.' . urlencode($email), 'PATCH', array('drip_sent' => true));
         }
         
     } else {

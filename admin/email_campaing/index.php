@@ -204,10 +204,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['campaign_action'])) {
         $errors[] = 'Seleccione una categoría válida.';
     }
 
-    if (!isset($config['languages'][$selectedLanguage])) {
-        $errors[] = 'Seleccione un idioma válido.';
-    }
-
     $recipientEmails = campaign_parse_recipient_emails($recipientEmail);
     $invalidRecipientEmails = array();
 
@@ -224,10 +220,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['campaign_action'])) {
 
     if ($campaignAction === 'send' && $invalidRecipientEmails) {
         $errors[] = 'Revise estos correos electrónicos: ' . implode(', ', $invalidRecipientEmails) . '.';
-    }
-
-    if ($campaignAction === 'send' && $emailSubject === '') {
-        $errors[] = 'Introduzca el Asunto del email.';
     }
 
     if (!$errors) {
@@ -363,25 +355,16 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         <label for="recipient_email">Destinatarios</label>
         <input id="recipient_email" name="recipient_email" type="text" inputmode="email" value="<?php echo campaign_escape($recipientEmail); ?>" placeholder="destinatario@dominio.com, otro@dominio.com" autocomplete="off" required>
 
-        <label for="email_subject">Asunto del email</label>
-        <input id="email_subject" name="email_subject" type="text" value="<?php echo campaign_escape($emailSubject); ?>" maxlength="160" required>
-
-        <label for="email_intro">Párrafo superior (arriba de las imágenes)</label>
-        <textarea id="email_intro" name="email_intro" rows="4" required><?php echo campaign_escape($emailIntro); ?></textarea>
-
-        <label for="email_body">Párrafo inferior (abajo de las imágenes)</label>
-        <textarea id="email_body" name="email_body" rows="4" required><?php echo campaign_escape($emailBody); ?></textarea>
-
         <input type="hidden" id="category" name="category" value="stands_madera">
-
-        <label for="language">Idioma del correo</label>
-        <select id="language" name="language" required>
-          <?php foreach ($config['languages'] as $key => $language): ?>
-            <option value="<?php echo campaign_escape($key); ?>" <?php echo $selectedLanguage === $key ? 'selected' : ''; ?>>
-              <?php echo campaign_escape($language['label']); ?>
-            </option>
-          <?php endforeach; ?>
-        </select>
+        <input type="hidden" id="language" name="language" value="es">
+        <input type="hidden" id="email_subject" name="email_subject" value="">
+        <input type="hidden" id="email_intro" name="email_intro" value="">
+        <input type="hidden" id="email_body" name="email_body" value="">
+        
+        <div style="background:#e0f2fe; border-left:4px solid #0ea5e9; color:#0369a1; padding:12px 16px; border-radius:4px; margin-bottom: 1.25rem; font-size: 0.9rem;">
+            <strong>Modo Multilingüe Automático Activado</strong><br>
+            El sistema detectará el país de cada destinatario según la extensión de su correo (.es, .de, .it...) y traducirá el asunto y los textos automáticamente usando la plantilla base. No necesitas configurar nada más.
+        </div>
 
         <button class="secondary" type="submit" formnovalidate onclick="document.getElementById('campaign-action').value='preview';">Previsualizar imágenes aleatorias</button>
         <button class="primary" type="submit" onclick="document.getElementById('campaign-action').value='send';">Enviar Campaña</button>
@@ -449,67 +432,10 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
       }
       <?php endif; ?>
 
-      function refreshPreview(resetDefaults) {
-        if (resetDefaults) {
-          if (subjectDefaults[category.value] && subjectDefaults[category.value][language.value]) {
-            subject.value = subjectDefaults[category.value][language.value];
-          }
-          if (introDefaults[category.value] && introDefaults[category.value][language.value]) {
-            intro.value = introDefaults[category.value][language.value];
-          }
-          if (bodyDefaults[category.value] && bodyDefaults[category.value][language.value]) {
-            body.value = bodyDefaults[category.value][language.value];
-          }
-        }
+      function refreshPreview() {
         action.value = 'preview';
         form.submit();
       }
-
-
-      language.addEventListener('change', function () { refreshPreview(true); });
-
-      // Sincronización en tiempo real de marcadores de empresa del tipo {VALOR}
-      var currentPlaceholder = 'EMPRESA';
-      
-      // Auto-detectar marcador actual al cargar la página
-      [subject.value, intro.value, body.value].forEach(function(val) {
-        var m = val.match(/\{([^{}]+)\}/);
-        if (m && m[1] !== 'EMPRESA') {
-          currentPlaceholder = m[1];
-        }
-      });
-
-      function syncPlaceholders(e) {
-        var inputVal = e.target.value;
-        var match = inputVal.match(/\{([^{}]+)\}/);
-        if (match) {
-          var newPlaceholder = match[1];
-          if (newPlaceholder !== currentPlaceholder) {
-            var oldFull = '{' + currentPlaceholder + '}';
-            var newFull = '{' + newPlaceholder + '}';
-            
-            [subject, intro, body].forEach(function(field) {
-              if (field !== e.target) {
-                var escapedOld = oldFull.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                var regex = new RegExp(escapedOld, 'g');
-                var currentSelectionStart = field.selectionStart;
-                var currentSelectionEnd = field.selectionEnd;
-                
-                field.value = field.value.replace(regex, newFull);
-                
-                if (field.setSelectionRange && typeof currentSelectionStart === 'number') {
-                  field.setSelectionRange(currentSelectionStart, currentSelectionEnd);
-                }
-              }
-            });
-            currentPlaceholder = newPlaceholder;
-          }
-        }
-      }
-
-      subject.addEventListener('input', syncPlaceholders);
-      intro.addEventListener('input', syncPlaceholders);
-      body.addEventListener('input', syncPlaceholders);
 
       // --- LOGICA DE ENVIO POR LOTES (THROTTLING) ---
       form.addEventListener('submit', function(e) {
@@ -558,6 +484,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
             progressText.innerHTML = '<span style="color:#4ade80;">¡Envío completado!</span> (' + totalSent + ' enviados, ' + totalFailed + ' fallidos)';
             progressBar.style.width = '100%';
             progressBar.style.background = '#4ade80';
+            document.getElementById('recipient_email').value = '';
             submitButtons.forEach(function(btn) { btn.disabled = false; });
             return;
           }

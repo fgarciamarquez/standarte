@@ -553,7 +553,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<header class="site-header" class:static-header={section !== 'home'}>
+<header class="site-header" class:static-header={section !== 'home' && section !== 'services'}>
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
@@ -579,7 +579,7 @@
       </div>
     </section>
   {:else if seoContent}
-    <div class="hero-subpage">
+    <div class="hero-subpage" class:transparent-hero={section === 'services'}>
       <div class="hero-contents">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <ol>
@@ -1037,5 +1037,10 @@
       width: 170px;
       height: 170px;
     }
+  }
+
+  :global(.transparent-hero) {
+    background: transparent !important;
+    border-bottom: none !important;
   }
 </style>
