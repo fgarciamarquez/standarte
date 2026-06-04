@@ -71,8 +71,8 @@ DirectoryIndex index.html index.php
   Redirect 301 /proyectos/stand_bodegas_im_desarrollado_en_madrid/ /proyectos/stand_para_bodega_de_vinos_en_madrid/
   Redirect 301 /proyectos/stand_bredent_desarrollado_en_bilbao /proyectos/stand_para_empresa_del_sector_dental_en_bilbao
   Redirect 301 /proyectos/stand_bredent_desarrollado_en_bilbao/ /proyectos/stand_para_empresa_del_sector_dental_en_bilbao/
-  Redirect 301 /proyectos/stand_charly_desarrollado_en_barcelona /proyectos/stand_para_empresa_de_ropa_deportiva_en_barcelona
-  Redirect 301 /proyectos/stand_charly_desarrollado_en_barcelona/ /proyectos/stand_para_empresa_de_ropa_deportiva_en_barcelona/
+  Redirect 301 /proyectos/stand_charly_desarrollado_en_barcelona /proyectos/stand_para_empresa_de_fabricacion_y_venta_de_gafas_en_barcelona
+  Redirect 301 /proyectos/stand_charly_desarrollado_en_barcelona/ /proyectos/stand_para_empresa_de_fabricacion_y_venta_de_gafas_en_barcelona/
   Redirect 301 /proyectos/stand_cirse_desarrollado_en_malaga /proyectos/stand_para_sociedad_medica_europea_en_malaga
   Redirect 301 /proyectos/stand_cirse_desarrollado_en_malaga/ /proyectos/stand_para_sociedad_medica_europea_en_malaga/
   Redirect 301 /proyectos/stand_collvila_desarrollado_en_malaga /proyectos/stand_para_distribuidor_de_materiales_de_construccion_en_malaga
@@ -199,8 +199,8 @@ DirectoryIndex index.html index.php
   Redirect 301 /proyectos/stand_scubaworld_desarrollado_en_madrid/ /proyectos/stand_para_empresa_de_buceo_en_madrid/
   Redirect 301 /proyectos/stand_sinavo_desarrollado_en_madrid /proyectos/stand_para_empresa_de_materiales_sinteticos_en_madrid
   Redirect 301 /proyectos/stand_sinavo_desarrollado_en_madrid/ /proyectos/stand_para_empresa_de_materiales_sinteticos_en_madrid/
-  Redirect 301 /proyectos/stand_slovakia_desarrollado_en_malaga /proyectos/stand_para_empresa_de_fabricacion_de_stands_en_malaga
-  Redirect 301 /proyectos/stand_slovakia_desarrollado_en_malaga/ /proyectos/stand_para_empresa_de_fabricacion_de_stands_en_malaga/
+  Redirect 301 /proyectos/stand_slovakia_desarrollado_en_malaga /proyectos/stand_para_empresa_de_promocion_turistica_en_malaga
+  Redirect 301 /proyectos/stand_slovakia_desarrollado_en_malaga/ /proyectos/stand_para_empresa_de_promocion_turistica_en_malaga/
   Redirect 301 /proyectos/stand_soemar_desarrollado_en_malaga /proyectos/stand_para_fundacion_y_centro_tecnologico_en_malaga
   Redirect 301 /proyectos/stand_soemar_desarrollado_en_malaga/ /proyectos/stand_para_fundacion_y_centro_tecnologico_en_malaga/
   Redirect 301 /proyectos/stand_sommos_desarrollado_en_madrid /proyectos/stand_para_bodega_de_vinos_somontano_en_madrid

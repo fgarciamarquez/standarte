@@ -846,7 +846,7 @@ export const projects = [
     }
   },
   {
-    "id": "stand_para_empresa_de_ropa_deportiva_en_barcelona",
+    "id": "stand_para_empresa_de_fabricacion_y_venta_de_gafas_en_barcelona",
     "name": "CHARLY",
     "location": "Barcelona",
     "web": "https://www.charly.com/",
@@ -866,7 +866,7 @@ export const projects = [
       "hi": "Barcelona में <strong>CHARLY</strong> के लिए कस्टम डिज़ाइन किया गया स्टैंड कॉर्पोरेट छवि और अल्पकालिक वास्तुकला के एकीकरण में एक उत्कृष्ट उपलब्धि है। ग्राहक की व्यावसायिक गतिविधि —<em>Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional.</em>— से प्रेरित होकर, हमने Standarte के प्रीमियम प्रोफाइल और शानदार लकड़ी में <strong>अनुभवात्मक सूक्ष्म वास्तुकला</strong> की कठोर अवधारणा के तहत एक प्रदर्शनी प्रस्ताव तैयार किया है। <br><br>ऊर्ध्vaधर तल पर, लटके हुए चंदवा और हवाई पोर्टल शक्तिशाली <strong>दृश्य एकाग्रता संरचनाएं</strong> के रूप में कार्य करते हैं जो यह सुनिश्चित करते हैं कि ब्रांड फिरा बार्सिलोना के वाणिज्यिक गलियारों से दृश्य पर हावी हो, जिससे <strong>ध्यान वास्तुकला</strong> की प्रमुख चुनौती का समाधान होता है। उच्च वाणिज्यिक प्रोफ़ाइल वाले आगंतुकों के आवागमन को सुगम बनाने के लिए, स्टैंड कठोर भौतिक बाधाओं से मुक्त एक त्रुटिहीन <strong>मानव प्रवाह डिजाइन</strong> का प्रस्ताव करता है, जिसमें गतिशील काउंटर और सहज बातचीत बिंदु वितरित किए जाते हैं। अंतरिक्ष के केंद्र में, प्राकृतिक लकड़ी के स्लैट्स से बने ध्वनिक विभाजन एक प्रीमियम आतिथ्य से लैस विवेकपूर्ण और स्वागत करने वाले <strong>स्थायित्व के स्थान</strong> को कॉन्फ़िगर करते हैं, जो कार्यकारी बैठकें आयोजित करने और पूर्ण शांति के साथ उच्च प्रभाव वाले वाणिज्यिक समझौतों को अंतिम रूप देने के लिए आदर्श हैं।"
     },
     "notes": {
-      "es": "Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional.",
+      "es": "Empresa de fabricación y venta de gafas.",
       "en": "Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional.",
       "de": "Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional.",
       "pt": "Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional.",
@@ -874,12 +874,12 @@ export const projects = [
       "hi": "Marca mexicana líder en diseño, fabricación y distribución de calzado y ropa deportiva profesional."
     },
     "title": {
-      "es": "Stand para empresa de ropa deportiva en Barcelona",
-      "en": "Stand for sportswear company in Barcelona",
-      "de": "Messestand für Sportbekleidungsunternehmen in Barcelona",
-      "pt": "Stand para empresa de roupas esportivas em Barcelona",
-      "zh": "巴塞罗那运动服公司展台",
-      "hi": "बार्सिलोना में स्पोर्ट्सवियर कंपनी के लिए स्टैंड"
+      "es": "Stand para empresa de fabricación y venta de gafas en Barcelona",
+      "en": "Stand for eyewear manufacturing and sales company in Barcelona",
+      "de": "Messestand für Brillenherstellung und -vertrieb in Barcelona",
+      "pt": "Stand para empresa de fabricação e venda de óculos em Barcelona",
+      "zh": "巴塞罗那眼镜制造及销售公司展台",
+      "hi": "बार्सिलोना में आईवियर निर्माण और बिक्री कंपनी के लिए स्टैंड"
     }
   },
   {
@@ -3355,7 +3355,7 @@ export const projects = [
     }
   },
   {
-    "id": "stand_para_empresa_de_fabricacion_de_stands_en_malaga",
+    "id": "stand_para_empresa_de_promocion_turistica_en_malaga",
     "name": "SLOVAKIA",
     "location": "Málaga",
     "web": "https://www.intexslovakia.com/en/",
@@ -3391,12 +3391,12 @@ export const projects = [
       "hi": "कंपनी eslovaca de diseño y fabricación de stands de exposición."
     },
     "title": {
-      "es": "Stand para empresa de fabricación de stands en Málaga",
-      "en": "Stand for exhibition stand manufacturer in Málaga",
-      "de": "Messestand für Messebauunternehmen in Málaga",
-      "pt": "Stand para empresa de fabricação de stands em Málaga",
-      "zh": "马拉加展台制造公司展台",
-      "hi": "मलागा में प्रदर्शनी स्टैंड निर्माता के लिए स्टैंड"
+      "es": "Stand para empresa de promoción turística en Málaga",
+      "en": "Stand for tourism promotion company in Málaga",
+      "de": "Messestand für Tourismusförderungsunternehmen in Málaga",
+      "pt": "Stand para empresa de promoção turística em Málaga",
+      "zh": "马拉加旅游推广公司展台",
+      "hi": "मलागा में पर्यटन संवर्धन कंपनी के लिए स्टैंड"
     }
   },
   {
