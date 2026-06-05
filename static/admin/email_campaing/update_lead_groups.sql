@@ -1,0 +1,3 @@
+ALTER TABLE public.lead_groups
+ADD COLUMN IF NOT EXISTS event_date DATE,
+ADD COLUMN IF NOT EXISTS drip_sent_4m BOOLEAN DEFAULT false;

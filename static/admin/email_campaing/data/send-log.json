@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "date": "2026-05-25T18:53:51+00:00",
+        "to": "promo@standarte.es",
+        "subject": "Multimedia enviado 25\/05\/2026 18:53",
+        "method": "php-mail",
+        "accepted": false,
+        "error": "No se pudo activar TLS en la conexi\u00f3n SMTP."
+    },
+    {
+        "date": "2026-05-25T18:53:49+00:00",
+        "to": "marketing@shimano.com",
+        "subject": "Shimano: Will you let your competitors outshine you at the Madrid show?",
+        "method": "php-mail",
+        "accepted": false,
+        "error": "No se pudo activar TLS en la conexi\u00f3n SMTP."
+    },
+    {
+        "date": "2026-05-25T18:53:46+00:00",
+        "to": "marketing@zwickroell.de",
+        "subject": "ZwickRoell: Werden Sie in Madrid nur zusehen oder Ihre n\u00e4chste Messe dominieren?",
+        "method": "php-mail",
+        "accepted": false,
+        "error": "No se pudo activar TLS en la conexi\u00f3n SMTP."
+    }
+]

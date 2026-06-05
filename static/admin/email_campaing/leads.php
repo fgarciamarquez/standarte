@@ -63,7 +63,6 @@ if (!is_array($records)) {
 $config = require __DIR__ . '/config.php';
 require __DIR__ . '/template.php';
 require __DIR__ . '/mailer.php';
-require_once __DIR__ . '/campaign_throttle.php';
 
 // Safe lowercase polyfill to handle systems without mbstring extension
 function campaign_safe_lowercase($str) {
@@ -121,27 +120,51 @@ foreach ($records as $record) {
     }
 
     // Validate email format with advanced bounce avoidance (Syntax + Disposable + DNS MX check)
-    if (!campaign_is_valid_email_advanced($email)) {
+    $email_error = '';
+    if (!campaign_is_valid_email_advanced($email, $email_error)) {
         $failedCount++;
         $errors[] = array(
             'record_index' => $processedCount,
             'email' => $email,
-            'message' => 'Email address rejected by verification system (syntax error, disposable domain, or inactive DNS MX/A records to prevent bounces).'
+            'message' => $email_error
         );
+        if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+            $bounceData = [
+                'email' => $email,
+                'status' => 'bounced',
+                'bounce_reason' => 'DNS/Syntax check failed: ' . $email_error,
+                'updated_at' => date('c')
+            ];
+            campaign_supabase_request('POST', 'contacts?on_conflict=email', $bounceData);
+        }
         $processedCount++;
         continue;
     }
 
-    // Check 1-month throttle rule (30 days lock per company or email)
-    $historyFile = __DIR__ . '/data/campaign-history.json';
-    $lastSentTime = campaign_check_throttle($email, $companyName, $historyFile);
-    if ($lastSentTime !== false) {
+    // Check exclusion list (LSSI/RGPD/Bounces) in Supabase
+    $isExcluded = false;
+    $excludeReason = '';
+    if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $res = campaign_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
+        if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
+            $supaContact = $res['body'][0];
+            $status = $supaContact['status'] ?? 'active';
+            if ($status === 'unsubscribed') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido: El destinatario se dio de baja voluntariamente (LSSI/RGPD).";
+            } else if ($status === 'bounced') {
+                $isExcluded = true;
+                $excludeReason = "Envío omitido: La dirección de correo electrónico está rebotada/fallida.";
+            }
+        }
+    }
+
+    if ($isExcluded) {
         $failedCount++;
         $errors[] = array(
             'record_index' => $processedCount,
             'email' => $email,
-            'company' => $companyName,
-            'message' => 'Envío omitido: Ya se ha enviado un correo a esta misma empresa/correo en el último mes (hace ' . round((time() - $lastSentTime) / (24 * 60 * 60)) . ' días).'
+            'message' => $excludeReason
         );
         $processedCount++;
         continue;
@@ -210,7 +233,6 @@ foreach ($records as $record) {
         if ($sent) {
             $sentCount++;
             $successfullySentCompanies[] = $emailCompany !== '' ? $emailCompany : $email;
-            campaign_add_to_history($email, $companyName, $historyFile);
         } else {
             $failedCount++;
             $errors[] = array(

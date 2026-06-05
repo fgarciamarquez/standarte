@@ -300,7 +300,7 @@ function campaign_send_mail($config, $to, $subject, $html)
             'status' => 'active', // Al enviar, marcamos activo si no estaba de baja/rebotado
             'updated_at' => date('c')
         ];
-        campaign_supabase_request('POST', 'contacts', $contactData);
+        campaign_supabase_request('POST', 'contacts?on_conflict=email', $contactData);
     }
 
     return $accepted;
@@ -316,41 +316,90 @@ function campaign_send_mail($config, $to, $subject, $html)
  * @param string $email Correo a validar
  * @return bool True si es válido y tiene DNS activo, false en caso contrario
  */
-function campaign_is_valid_email_advanced($email)
+function campaign_is_valid_email_advanced($email, &$error_msg = null)
 {
     $email = trim($email);
 
-    // 1. Validación de sintaxis básica
+    // 1. Validación de Sintaxis Básica
+    if ($email === '') {
+        $error_msg = 'El correo electrónico no puede estar vacío.';
+        return false;
+    }
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error_msg = 'El formato del correo electrónico es inválido.';
         return false;
     }
 
-    // 2. Extraer el dominio
+    // Extraer y limpiar el dominio
     $parts = explode('@', $email);
-    if (count($parts) < 2) {
+    if (count($parts) !== 2) {
+        $error_msg = 'Formato de correo electrónico inválido.';
         return false;
     }
-    $domain = strtolower(end($parts));
+    $domain = strtolower(trim($parts[1]));
 
-    // 3. Lista negra de dominios de email temporal / desechable comunes
-    $disposableDomains = array(
-        'yopmail.com', 'yopmail.fr', 'yopmail.net', 'cool.fr.nf', 'jetable.fr.nf',
-        'courriel.fr.nf', 'moncourrier.fr.nf', 'monemail.fr.nf', 'monmail.fr.nf',
-        'tempmail.com', 'temp-mail.org', 'mailinator.com', '10minutemail.com',
-        'guerrillamail.com', 'sharklasers.com', 'dispostable.com', 'getairmail.com',
-        'throwawaymail.com', 'tempmailaddress.com', 'maildrop.cc'
+    // 2. Comprobación de errores tipográficos comunes en dominios (Typo Checker)
+    $typo_domains = array(
+        'gamil.com', 'gamil.es', 'gamail.com', 'gmaill.com', 'gmal.com', 'gmile.com', 'gamil.co', 'gmaile.com',
+        'hotamil.com', 'hotamil.es', 'hotmial.com', 'hotmial.es', 'hotmaill.com', 'yaho.com', 'yahooo.com',
+        'outlok.com', 'outlok.es', 'outloo.com', 'msn.co', 'yaho.es', 'gamil.net', 'gamil.org', 'outlook.con',
+        'gmail.con', 'yahoo.con', 'hotmail.con'
     );
-    if (in_array($domain, $disposableDomains, true)) {
+
+    if (in_array($domain, $typo_domains, true)) {
+        $error_msg = "El dominio de correo '$domain' parece un error de escritura común.";
         return false;
     }
 
-    // 4. Verificación de registros DNS en tiempo real (MX o A)
-    if (function_exists('checkdnsrr')) {
-        if (!checkdnsrr($domain, 'MX')) {
-            // Si no tiene registro MX, comprobamos el registro A como fallback
-            return checkdnsrr($domain, 'A');
+    // 3. Comprobación contra proveedores de correos temporales o desechables (Disposable)
+    $disposable_domains = array(
+        '10minutemail.com', '10minutemail.co.za', 'tempmail.com', 'temp-mail.org', 'temp-mail.ru', 'tempmail.de',
+        'guerrillamail.com', 'guerrillamailblock.com', 'guerrillamail.net', 'guerrillamail.org', 'guerrillamail.biz',
+        'yopmail.com', 'yopmail.fr', 'yopmail.net', 'dispostable.com', 'mailinator.com', 'trashmail.com',
+        'trashmail.net', 'sharklasers.com', 'getairmail.com', 'maildrop.cc', 'mintemail.com', '30minutemail.com',
+        'mytrashmail.com', 'throwawaymail.com', 'tempmailaddress.com', 'disposablemail.com', 'fakeinbox.com',
+        'generator.email', 'mailnesia.com', 'mailcatch.com', 'inboxkitten.com', 'duck.com', 'safetymail.info',
+        'tempmail.net', 'tempmail.dev', 'getnada.com', 'boun.cr', 'tempmail.live', 'disposable.com'
+    );
+
+    if (in_array($domain, $disposable_domains, true)) {
+        $error_msg = 'No se aceptan correos electrónicos temporales o desechables.';
+        return false;
+    }
+
+    // 4. Verificación de registros DNS en tiempo real (MX / A / AAAA / nullMX)
+    $has_mx = false;
+    if (function_exists('dns_get_record')) {
+        $mx_records = @dns_get_record($domain, DNS_MX);
+        if (is_array($mx_records) && !empty($mx_records)) {
+            foreach ($mx_records as $rec) {
+                if (isset($rec['target']) && ($rec['target'] === '.' || $rec['target'] === '')) {
+                    $error_msg = "El dominio de correo '$domain' no acepta correos (registro nullMX de no recepción declarado).";
+                    return false;
+                }
+            }
+            $has_mx = true;
         }
-        return true;
+    }
+
+    if (!$has_mx && function_exists('checkdnsrr')) {
+        if (checkdnsrr($domain, 'MX')) {
+            $has_mx = true;
+        }
+    }
+
+    if (!$has_mx) {
+        $has_a = false;
+        if (function_exists('checkdnsrr')) {
+            if (checkdnsrr($domain, 'A') || checkdnsrr($domain, 'AAAA')) {
+                $has_a = true;
+            }
+        }
+        if (!$has_a) {
+            $error_msg = "El dominio de correo '$domain' no existe o no tiene registros de correo (MX/A/AAAA) válidos. El envío rebotará.";
+            return false;
+        }
     }
 
     return true;

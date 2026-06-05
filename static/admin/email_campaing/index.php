@@ -48,21 +48,68 @@ function campaign_is_logged_in()
     return isset($_SESSION['standarte_email_campaing_auth']) && $_SESSION['standarte_email_campaing_auth'] === true;
 }
 
-function campaign_get_total_email_visits()
+function campaign_get_email_clicks()
 {
-    $statsFile = __DIR__ . '/data/clicks.json';
+    $configFile = __DIR__ . '/../../supabase-config.php';
+    if (!is_file($configFile)) {
+        return array('total' => 0, 'history' => array());
+    }
+    require_once $configFile;
 
-    if (!is_file($statsFile)) {
-        return 0;
+    if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
+        return array('total' => 0, 'history' => array());
     }
 
-    $stats = json_decode(file_get_contents($statsFile), true);
-
-    if (!is_array($stats) || !isset($stats['total'])) {
-        return 0;
+    // Get total count
+    $chCount = curl_init();
+    curl_setopt($chCount, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=id');
+    curl_setopt($chCount, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chCount, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($chCount, CURLOPT_HEADER, true);
+    curl_setopt($chCount, CURLOPT_NOBODY, true);
+    curl_setopt($chCount, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY,
+        'Prefer: count=exact'
+    ]);
+    $header = curl_exec($chCount);
+    $count = 0;
+    if (preg_match('/Content-Range: [0-9]+-[0-9]+\/([0-9]+)/', $header, $matches)) {
+        $count = (int)$matches[1];
     }
+    curl_close($chCount);
 
-    return (int) $stats['total'];
+    // Get history (latest 50)
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,created_at&order=created_at.desc&limit=50');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    
+    $response = curl_exec($ch);
+    curl_close($ch);
+    
+    $history = json_decode($response, true);
+    if (!is_array($history) || isset($history['code']) || isset($history['message'])) {
+        $history = array();
+    }
+    
+    // Fallback if supabase fails
+    if ($count === 0 && empty($history)) {
+        $statsFile = __DIR__ . '/data/clicks.json';
+        if (is_file($statsFile)) {
+            $stats = json_decode(file_get_contents($statsFile), true);
+            if (is_array($stats)) {
+                $count = isset($stats['total']) ? (int)$stats['total'] : 0;
+                $history = isset($stats['history']) && is_array($stats['history']) ? $stats['history'] : array();
+            }
+        }
+    }
+    
+    return array('total' => $count, 'history' => $history);
 }
 
 require __DIR__ . '/mailer.php';
@@ -157,16 +204,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['campaign_action'])) {
         $errors[] = 'Seleccione una categoría válida.';
     }
 
-    if (!isset($config['languages'][$selectedLanguage])) {
-        $errors[] = 'Seleccione un idioma válido.';
-    }
-
     $recipientEmails = campaign_parse_recipient_emails($recipientEmail);
     $invalidRecipientEmails = array();
 
     foreach ($recipientEmails as $email) {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $invalidRecipientEmails[] = $email;
+        $email_error = '';
+        if (!campaign_is_valid_email_advanced($email, $email_error)) {
+            $invalidRecipientEmails[] = $email . ' (' . $email_error . ')';
         }
     }
 
@@ -176,10 +220,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['campaign_action'])) {
 
     if ($campaignAction === 'send' && $invalidRecipientEmails) {
         $errors[] = 'Revise estos correos electrónicos: ' . implode(', ', $invalidRecipientEmails) . '.';
-    }
-
-    if ($campaignAction === 'send' && $emailSubject === '') {
-        $errors[] = 'Introduzca el Asunto del email.';
     }
 
     if (!$errors) {
@@ -225,7 +265,9 @@ if (!$previewHtml && isset($config['categories'][$selectedCategory])) {
     $previewHtml = campaign_build_email($config, $config['categories'][$selectedCategory], $previewRecipient, $selectedLanguage, $previewSubject, $emailIntro, $emailBody, $previewCompany);
 }
 
-$totalEmailVisits = campaign_get_total_email_visits();
+$clicksData = campaign_get_email_clicks();
+$totalEmailVisits = $clicksData['total'];
+$clicksHistory = $clicksData['history'];
 $sendLog = campaign_get_send_log();
 $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host']) && !empty($config['smtp']['username']) && !empty($config['smtp']['password']);
 
@@ -302,35 +344,27 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
 
         <label for="lead_group_select">Selector de grupos</label>
         <div style="display:flex;gap:8px;margin:0 0 .5rem;">
-          <select id="lead_group_select" style="flex:1;margin:0;">
+          <select id="lead_group_select" style="flex:1;margin:0;" onchange="updateUnsubWarning(this)">
             <option value="">-- Seleccionar grupo --</option>
           </select>
           <button type="button" id="load_group_btn" class="secondary" style="width:auto;padding:.5rem 1rem;margin:0;font-size:.85rem;" onclick="loadLeadGroup()">Cargar</button>
         </div>
+        <div id="group_unsub_warning" style="display:none;color:#dc2626;font-size:.85rem;margin-bottom:0.5rem;font-weight:bold;"></div>
         <div id="group_feedback" style="display:none;background:#f0fdf4;border-left:4px solid #4ade80;color:#15803d;padding:8px 12px;border-radius:4px;margin:0 0 1rem;font-size:.85rem;"></div>
 
         <label for="recipient_email">Destinatarios</label>
         <input id="recipient_email" name="recipient_email" type="text" inputmode="email" value="<?php echo campaign_escape($recipientEmail); ?>" placeholder="destinatario@dominio.com, otro@dominio.com" autocomplete="off" required>
 
-        <label for="email_subject">Asunto del email</label>
-        <input id="email_subject" name="email_subject" type="text" value="<?php echo campaign_escape($emailSubject); ?>" maxlength="160" required>
-
-        <label for="email_intro">Párrafo superior (arriba de las imágenes)</label>
-        <textarea id="email_intro" name="email_intro" rows="4" required><?php echo campaign_escape($emailIntro); ?></textarea>
-
-        <label for="email_body">Párrafo inferior (abajo de las imágenes)</label>
-        <textarea id="email_body" name="email_body" rows="4" required><?php echo campaign_escape($emailBody); ?></textarea>
-
         <input type="hidden" id="category" name="category" value="stands_madera">
-
-        <label for="language">Idioma del correo</label>
-        <select id="language" name="language" required>
-          <?php foreach ($config['languages'] as $key => $language): ?>
-            <option value="<?php echo campaign_escape($key); ?>" <?php echo $selectedLanguage === $key ? 'selected' : ''; ?>>
-              <?php echo campaign_escape($language['label']); ?>
-            </option>
-          <?php endforeach; ?>
-        </select>
+        <input type="hidden" id="language" name="language" value="es">
+        <input type="hidden" id="email_subject" name="email_subject" value="">
+        <input type="hidden" id="email_intro" name="email_intro" value="">
+        <input type="hidden" id="email_body" name="email_body" value="">
+        
+        <div style="background:#e0f2fe; border-left:4px solid #0ea5e9; color:#0369a1; padding:12px 16px; border-radius:4px; margin-bottom: 1.25rem; font-size: 0.9rem;">
+            <strong>Modo Multilingüe Automático Activado</strong><br>
+            El sistema detectará el país de cada destinatario según la extensión de su correo (.es, .de, .it...) y traducirá el asunto y los textos automáticamente usando la plantilla base. No necesitas configurar nada más.
+        </div>
 
         <button class="secondary" type="submit" formnovalidate onclick="document.getElementById('campaign-action').value='preview';">Previsualizar imágenes aleatorias</button>
         <button class="primary" type="submit" onclick="document.getElementById('campaign-action').value='send';">Enviar Campaña</button>
@@ -345,6 +379,18 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           <p id="batch_progress_log" style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #888; white-space: pre-wrap; font-family: monospace;"></p>
         </div>
       </form>
+      <div class="send-log">
+        <h2>Últimos accesos desde el correo</h2>
+        <?php if (!$clicksHistory): ?>
+          <p style="font-size:0.85rem;color:#888;">Nadie ha hecho clic en los correos todavía.</p>
+        <?php endif; ?>
+        <?php foreach ($clicksHistory as $click): ?>
+          <p>
+            <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
+            <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['created_at']))); ?></span>
+          </p>
+        <?php endforeach; ?>
+      </div>
       <div class="send-log">
         <h2>Registro de envíos locales</h2>
         <?php if (!$sendLog): ?>
@@ -386,67 +432,10 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
       }
       <?php endif; ?>
 
-      function refreshPreview(resetDefaults) {
-        if (resetDefaults) {
-          if (subjectDefaults[category.value] && subjectDefaults[category.value][language.value]) {
-            subject.value = subjectDefaults[category.value][language.value];
-          }
-          if (introDefaults[category.value] && introDefaults[category.value][language.value]) {
-            intro.value = introDefaults[category.value][language.value];
-          }
-          if (bodyDefaults[category.value] && bodyDefaults[category.value][language.value]) {
-            body.value = bodyDefaults[category.value][language.value];
-          }
-        }
+      function refreshPreview() {
         action.value = 'preview';
         form.submit();
       }
-
-
-      language.addEventListener('change', function () { refreshPreview(true); });
-
-      // Sincronización en tiempo real de marcadores de empresa del tipo {VALOR}
-      var currentPlaceholder = 'EMPRESA';
-      
-      // Auto-detectar marcador actual al cargar la página
-      [subject.value, intro.value, body.value].forEach(function(val) {
-        var m = val.match(/\{([^{}]+)\}/);
-        if (m && m[1] !== 'EMPRESA') {
-          currentPlaceholder = m[1];
-        }
-      });
-
-      function syncPlaceholders(e) {
-        var inputVal = e.target.value;
-        var match = inputVal.match(/\{([^{}]+)\}/);
-        if (match) {
-          var newPlaceholder = match[1];
-          if (newPlaceholder !== currentPlaceholder) {
-            var oldFull = '{' + currentPlaceholder + '}';
-            var newFull = '{' + newPlaceholder + '}';
-            
-            [subject, intro, body].forEach(function(field) {
-              if (field !== e.target) {
-                var escapedOld = oldFull.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                var regex = new RegExp(escapedOld, 'g');
-                var currentSelectionStart = field.selectionStart;
-                var currentSelectionEnd = field.selectionEnd;
-                
-                field.value = field.value.replace(regex, newFull);
-                
-                if (field.setSelectionRange && typeof currentSelectionStart === 'number') {
-                  field.setSelectionRange(currentSelectionStart, currentSelectionEnd);
-                }
-              }
-            });
-            currentPlaceholder = newPlaceholder;
-          }
-        }
-      }
-
-      subject.addEventListener('input', syncPlaceholders);
-      intro.addEventListener('input', syncPlaceholders);
-      body.addEventListener('input', syncPlaceholders);
 
       // --- LOGICA DE ENVIO POR LOTES (THROTTLING) ---
       form.addEventListener('submit', function(e) {
@@ -495,6 +484,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
             progressText.innerHTML = '<span style="color:#4ade80;">¡Envío completado!</span> (' + totalSent + ' enviados, ' + totalFailed + ' fallidos)';
             progressBar.style.width = '100%';
             progressBar.style.background = '#4ade80';
+            document.getElementById('recipient_email').value = '';
             submitButtons.forEach(function(btn) { btn.disabled = false; });
             return;
           }
@@ -562,12 +552,36 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
             data.groups.forEach(function (g) {
               var opt = document.createElement('option');
               opt.value = g.name;
-              opt.textContent = g.name + ' (' + (g.leads_with_email || 0) + ' leads con email)';
+              var total = g.leads_with_email || 0;
+              var sent = g.drip_sent_count || 0;
+              var unsub = g.unsub_count || 0;
+              // El elemento <option> no admite colorear solo una parte del texto,
+              // así que lo mostramos aquí y también podemos pintarlo de rojo en la interfaz si hiciera falta.
+              var text = g.name + ' (' + total + ' leads, ' + sent + ' enviados)';
+              if (unsub > 0) text += ' - ❗' + unsub + ' bajas';
+              opt.textContent = text;
+              opt.dataset.unsub = unsub;
               groupSelect.appendChild(opt);
             });
           }
         })
         .catch(function () { /* silenciar */ });
+
+      window.updateUnsubWarning = function (sel) {
+        var warning = document.getElementById('group_unsub_warning');
+        if (sel.selectedIndex >= 0) {
+          var opt = sel.options[sel.selectedIndex];
+          var unsub = parseInt(opt.dataset.unsub || 0);
+          if (unsub > 0) {
+            warning.textContent = 'Atención: Este grupo tiene ' + unsub + ' bajas registradas (no se les enviará correo).';
+            warning.style.display = 'block';
+          } else {
+            warning.style.display = 'none';
+          }
+        } else {
+            warning.style.display = 'none';
+        }
+      };
 
       // Función global para cargar emails del grupo seleccionado
       window.loadLeadGroup = function () {
