@@ -107,7 +107,7 @@
   <link rel="alternate" hreflang="x-default" href={`https://standarte.es${pathFor('es', 'noticias')}`} />
 </svelte:head>
 
-<header class="site-header static-header">
+<header class="site-header noticias-header">
   <nav class="nav" class:scrolled={isScrolled || menuOpen}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
@@ -227,9 +227,9 @@
 
 <style>
   /* Header y Navbar de subpágina */
-  .static-header {
+  .noticias-header {
     min-height: 420px !important;
-    background: transparent !important;
+    background: url('/img/bg2.webp') fixed center center / cover no-repeat !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -257,7 +257,7 @@
 
   .hero-contents h1 {
     font-size: 40px;
-    color: #111;
+    color: #fff;
     margin: 0 0 20px;
     font-weight: 700;
     line-height: 1.2;
@@ -266,7 +266,7 @@
   .hero-lead {
     font-size: 16px;
     line-height: 1.6;
-    color: #555;
+    color: #eee;
     max-width: 780px;
     margin: 0 auto;
   }

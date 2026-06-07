@@ -106,12 +106,12 @@ export const copy = {
   es: {
     nav: { services: 'Servicios', custom: 'Galería', noticias: 'Noticias', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Construcción de stands en Madrid, Barcelona, Bilbao, Málaga y Lisboa',
-    seoDescription: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
+    seoDescription: 'Standarte diseña, fabrica y monta stands de forma profesional y personalizada para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
     heroTitle: 'Diseño y construcción de stands internacionales',
     heroSubtitle: 'Espacios que inspiran',
     servicesTitle: 'Servicios',
     services: [
-      ['Diseño e Ingeniería', 'Nuestro equipo tomará nota de las necesidades de su proyecto que, con todo detalle, quedarán reflejadas en un prototipo 3D que podrá explorar y revisar antes del comienzo de la fabricación. La imagen del prototipo será 100% fidedigna al resultado final.'],
+      ['Diseño e Ingeniería', 'Nuestro equipo profesional tomará nota de las necesidades de su proyecto que, con todo detalle, quedarán reflejadas en un diseño 3D personalizado que podrá explorar y revisar antes del comienzo de la fabricación. La imagen del prototipo será 100% fidedigna al resultado final.'],
       ['Construcción', 'En el proceso de construcción aplicamos las más modernas técnicas de ensamblaje con materiales especificos para el uso en construcción efímera. Esto nos permite ofrecer un aspecto impecable que demostrará calidad a primera vista.'],
       ['Montaje y validaciones', 'Nos encargamos de todo. Con total tranquilidad podrás presentarse el primer dia de feria, y lo encontrará todo lito para empezar tu labor comercial. Stand, catering, papelería,... indiferentemente si es una feria en Madrid, Fráncfort, Pekín o Chicago.']
     ],
@@ -190,12 +190,12 @@ export const copy = {
   en: {
     nav: { services: 'Services', custom: 'Gallery', noticias: 'News', contact: 'Contact', language: 'Language' },
     seoTitle: 'Standarte | Stand builder in Madrid, Barcelona, Bilbao, Malaga and Lisbon',
-    seoDescription: 'Design, production and installation of exhibition stands for trade fairs in Spain and international projects.',
+    seoDescription: 'Professional and customized design, production and installation of exhibition stands for trade fairs in Spain and international projects.',
     heroTitle: 'Stand builder workshop in Spain',
     heroSubtitle: 'high quality work',
     servicesTitle: 'Services',
     services: [
-      ['Design and Engineering', 'Our team will take note of the needs of your project, which, in detail, will be reflected in a 3D prototype that you can explore and review before the start of manufacturing. The image of the prototype will be 100% faithful to the final result.'],
+      ['Design and Engineering', 'Our professional team will take note of the needs of your project, which, in detail, will be reflected in a customized 3D prototype that you can explore and review before the start of manufacturing. The image of the prototype will be 100% faithful to the final result.'],
       ['Booth construction', 'In the construction process we apply the most modern assembly techniques with specific materials for use in ephemeral construction. This allows us to offer a flawless look that will demonstrate quality at first glance.'],
       ['Assembly and validations', 'We take care of everything. With complete peace of mind you can present yourself on the first day of the fair, and you will find everything ready to start your commercial work. Stand, catering, stationery,...']
     ],
@@ -785,361 +785,657 @@ const commercialDescription = (es) => ({ es });
 
 export const portfolios = [
   {
-    thumb: 'img/trabajos/TCANTICO/2.avif',
-    full: 'img/trabajos/TCANTICO/1.avif',
-    alt: 'Diseño de stand a medida de madera para Cantico',
-    categories: ['madera'],
-    description: {
-      es: 'Un stand con presencia arquitectónica clara y zonas abiertas que facilitan la conversación comercial. La marca gana visibilidad sin crear barreras para el visitante.',
-      en: 'A stand with clear architectural presence and open areas that encourage business conversations. The brand gains visibility without creating barriers for visitors.',
-      de: 'Ein Stand mit klarer architektonischer Präsenz und offenen Bereichen, die Verkaufsgespräche erleichtern. Die Marke gewinnt Sichtbarkeit, ohne Besucher abzuschirmen.',
-      zh: '展台具有清晰的建筑感和开放空间，有利于商务交流。品牌获得更高可见度，同时不会阻隔访客进入。',
-      hi: 'स्पष्ट वास्तु उपस्थिति और खुले क्षेत्रों वाला स्टैंड, जो व्यावसायिक बातचीत को आसान बनाता है। ब्रांड को अधिक दृश्यता मिलती है बिना आगंतुकों के लिए बाधा बनाए।',
-      pt: 'Um stand com presença arquitetónica clara e zonas abertas que favorecem a conversa comercial. A marca ganha visibilidade sem criar barreiras para o visitante.'
+    "thumb": "img/trabajos/TCANTICO/2.avif",
+    "full": "img/trabajos/TCANTICO/1.avif",
+    "alt": "Stand para empresa de mobiliario en Madrid",
+    "categories": [
+      "madera"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_mobiliario_en_madrid_spain",
+      "en": "exhibition_stand_for_company_furniture_in_madrid_spain",
+      "de": "messestand_fuer_unternehmen_moebel_in_madrid_spanien",
+      "pt": "estande_para_empresa_de_mobiliario_em_madri_espanha",
+      "zh": "xibanya_madeli_jiaju_gongsi_zhanwei",
+      "hi": "maidrid_spen_mein_farnichar_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCELUMATEC/2.avif',
-    full: 'img/trabajos/TCELUMATEC/4.avif',
-    alt: 'Construcción de stand industrial a medida para Elumatec',
-    categories: ['madera'],
-    description: {
-      es: 'La estructura ordenada y los planos limpios transmiten precisión técnica. Es una solución pensada para reforzar confianza en productos industriales o de alto valor.',
-      en: 'The ordered structure and clean surfaces communicate technical precision. It is a solution designed to build trust around industrial or high-value products.',
-      de: 'Die geordnete Struktur und die klaren Flächen vermitteln technische Präzision. Eine Lösung, die Vertrauen in industrielle oder hochwertige Produkte stärkt.',
-      zh: '有序结构和简洁平面传达技术精度，适合增强工业产品或高价值产品的信任感。',
-      hi: 'सुव्यवस्थित संरचना और साफ सतहें तकनीकी सटीकता दिखाती हैं। यह औद्योगिक या उच्च मूल्य वाले उत्पादों में भरोसा बढ़ाने के लिए उपयुक्त समाधान है।',
-      pt: 'A estrutura ordenada e os planos limpos transmitem precisão técnica. É uma solução pensada para reforçar confiança em produtos industriais ou de alto valor.'
+    "thumb": "img/trabajos/TCELUMATEC/2.avif",
+    "full": "img/trabajos/TCELUMATEC/1.avif",
+    "alt": "Construcción de stand industrial a medida para Elumatec",
+    "categories": [
+      "carpinteria",
+      "feria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_perfiles_aluminio_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_aluminum_profiles_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_aluminiumprofile_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_perfis_aluminio_em_bilbau_espanha",
+      "zh": "xibanya_bibao_lv_xingcai_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_elyuminiyam_prophail_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCCONSTELLIUM/1.avif',
-    full: 'img/trabajos/TCCONSTELLIUM/2.avif',
-    alt: 'Diseño de stand de gran escala para Constellium',
-    categories: ['madera'],
-    description: {
-      es: 'El espacio combina volumen, rotulación visible y una circulación sencilla. Ayuda a que el visitante identifique la marca rápido y entienda dónde iniciar el contacto.',
-      en: 'The space combines volume, visible branding and simple circulation. It helps visitors identify the brand quickly and understand where to start the conversation.',
-      de: 'Der Raum kombiniert Volumen, gut sichtbare Beschriftung und einfache Wegeführung. Besucher erkennen die Marke schnell und wissen, wo der Kontakt beginnt.',
-      zh: '空间结合体量、清晰品牌标识和简单动线，帮助访客快速识别品牌并找到沟通入口。',
-      hi: 'यह स्थान आयतन, स्पष्ट ब्रांडिंग और सरल आवाजाही को मिलाता है। आगंतुक ब्रांड को जल्दी पहचानते हैं और संपर्क कहां शुरू करना है समझते हैं।',
-      pt: 'O espaço combina volume, comunicação visível e circulação simples. Ajuda o visitante a identificar a marca rapidamente e a perceber onde iniciar o contacto.'
+    "thumb": "img/trabajos/TCCONSTELLIUM/1.avif",
+    "full": "img/trabajos/TCCONSTELLIUM/1.avif",
+    "alt": "Diseño de stand de gran escala para Constellium",
+    "categories": [
+      "aluminio"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_productos_aluminio_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_aluminum_products_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_aluminiumprodukte_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_produtos_aluminio_em_bilbau_espanha",
+      "zh": "xibanya_bibao_lv_chanpin_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_elyuminiyam_utpaad_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCFARNEL/1.avif',
-    full: 'img/trabajos/TCFARNEL/2.avif',
-    alt: 'Stand retroiluminado con textiles tensados para Farnel',
-    categories: ['madera', 'textil'],
-    description: {
-      es: 'La combinación de superficies sólidas y elementos textiles permite un stand ligero pero muy visible. Aporta impacto visual sin perder rapidez de montaje.',
-      en: 'The mix of solid surfaces and textile elements creates a light but highly visible stand. It delivers visual impact while keeping assembly efficient.',
-      de: 'Die Kombination aus festen Flächen und Textilelementen schafft einen leichten, aber sehr sichtbaren Stand. Sie erzeugt Wirkung und bleibt schnell montierbar.',
-      zh: '坚实表面与织物元素结合，形成轻量且醒目的展台，在保证搭建效率的同时提升视觉冲击。',
-      hi: 'मजबूत सतहों और टेक्सटाइल तत्वों का संयोजन हल्का लेकिन अत्यधिक दिखाई देने वाला स्टैंड बनाता है। यह तेज монтаж के साथ दृश्य प्रभाव देता है।',
-      pt: 'A combinação de superfícies sólidas e elementos têxteis permite um stand leve mas muito visível. Cria impacto visual sem perder rapidez de montagem.'
+    "thumb": "img/trabajos/TCFARNEL/1.avif",
+    "full": "img/trabajos/TCFARNEL/1.avif",
+    "alt": "Stand retroiluminado con textiles tensados para Farnel",
+    "categories": [
+      "textil",
+      "led"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_componentes_electronicos_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_electronic_components_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_elektronische_bauteile_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_componentes_eletronicos_em_bilbau_espanha",
+      "zh": "xibanya_bibao_dianzi_yuanjian_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_ilektronik_ghatak_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCMAGNOLIA/1.avif',
-    full: 'img/trabajos/TCMAGNOLIA/2.avif',
-    alt: 'Montaje de stand premium con acabados de carpintería Magnolia',
-    categories: ['madera'],
-    description: {
-      es: 'El diseño crea un entorno cuidado y acogedor para recibir visitantes. Refuerza una percepción de marca cercana, profesional y preparada para reuniones comerciales.',
-      en: 'The design creates a refined and welcoming setting for visitors. It reinforces a brand image that feels approachable, professional and ready for business meetings.',
-      de: 'Das Design schafft eine gepflegte und einladende Umgebung für Besucher. Es stärkt ein nahbares, professionelles Markenbild für Geschäftsgespräche.',
-      zh: '设计营造精致友好的接待环境，强化亲近、专业并适合商务洽谈的品牌形象。',
-      hi: 'डिज़ाइन आगंतुकों के लिए सुसज्जित और स्वागतपूर्ण वातावरण बनाता है। यह ब्रांड को निकट, पेशेवर और व्यापारिक बैठकों के लिए तैयार दिखाता है।',
-      pt: 'O design cria um ambiente cuidado e acolhedor para receber visitantes. Reforça uma marca próxima, profissional e preparada para reuniões comerciais.'
+    "thumb": "img/trabajos/TCMAGNOLIA/1.avif",
+    "full": "img/trabajos/TCMAGNOLIA/1.avif",
+    "alt": "Montaje de stand premium con acabados de carpintería Magnolia",
+    "categories": [
+      "carpinteria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_joyeria_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_jewelry_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_schmuck_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_joalheria_em_bilbau_espanha",
+      "zh": "xibanya_bibao_zhubao_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_aabhooshan_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCMFI/1.avif',
-    full: 'img/trabajos/TCMFI/2.avif',
-    alt: 'Stand modular de madera y diseño ferial para MFI',
-    categories: ['madera'],
-    description: {
-      es: 'La composición aprovecha el espacio para ordenar mensajes, producto y atención al cliente. Esto facilita que el equipo comercial trabaje con más fluidez durante la feria.',
-      en: 'The composition uses the space to organize messages, product and customer attention. This helps the sales team work more smoothly during the fair.',
-      de: 'Die Komposition nutzt den Raum, um Botschaften, Produkt und Kundenbetreuung zu ordnen. So arbeitet das Vertriebsteam auf der Messe flüssiger.',
-      zh: '空间布局有助于组织信息、产品和客户接待，使销售团队在展会期间工作更顺畅。',
-      hi: 'संरचना संदेश, उत्पाद और ग्राहक सेवा को व्यवस्थित करने के लिए स्थान का उपयोग करती है। इससे सेल्स टीम मेले में अधिक सहजता से काम करती है।',
-      pt: 'A composição aproveita o espaço para ordenar mensagens, produto e atendimento. Isto facilita o trabalho da equipa comercial durante a feira.'
+    "thumb": "img/trabajos/TCMFI/1.avif",
+    "full": "img/trabajos/TCMFI/1.avif",
+    "alt": "Stand modular de madera y diseño ferial para MFI",
+    "categories": [
+      "madera",
+      "feria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_bienes_raices_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_real_estate_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_immobilien_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_imoveis_em_bilbau_espanha",
+      "zh": "xibanya_bibao_fangdichan_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_riyal_estet_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCORGADATA/1.avif',
-    full: 'img/trabajos/TCORGADATA/2.avif',
-    alt: 'Stand corporativo para captación de leads de Orgadata',
-    categories: ['madera'],
-    description: {
-      es: 'Un stand corporativo con lectura rápida de marca y zonas funcionales. Está orientado a generar confianza y convertir visitas espontáneas en contactos cualificados.',
-      en: 'A corporate stand with quick brand recognition and functional areas. It is oriented toward building trust and turning spontaneous visits into qualified leads.',
-      de: 'Ein Corporate-Stand mit schneller Markenlesbarkeit und funktionalen Bereichen. Er schafft Vertrauen und macht spontane Besuche zu qualifizierten Kontakten.',
-      zh: '企业展台具备快速品牌识别和功能分区，旨在建立信任并将临时访客转化为有效线索。',
-      hi: 'तेज़ ब्रांड पहचान और कार्यात्मक क्षेत्रों वाला कॉर्पोरेट स्टैंड। इसका उद्देश्य भरोसा बनाना और आकस्मिक आगंतुकों को योग्य संपर्कों में बदलना है।',
-      pt: 'Um stand corporativo com leitura rápida de marca e zonas funcionais. Ajuda a gerar confiança e a converter visitas espontâneas em contactos qualificados.'
+    "thumb": "img/trabajos/TCORGADATA/1.avif",
+    "full": "img/trabajos/TCORGADATA/1.avif",
+    "alt": "Stand corporativo para captación de leads de Orgadata",
+    "categories": [
+      "tecnologia",
+      "feria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_software_industrial_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_industrial_software_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_industriesoftware_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_software_industrial_em_bilbau_espanha",
+      "zh": "xibanya_bibao_gongye_ruanjian_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_audyogik_sophataveyar_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCEMIL/1.avif',
-    full: 'img/trabajos/TCEMIL/1.avif',
-    alt: 'Stand ferial de carpintería premium lacada para Emil',
-    categories: ['madera'],
-    description: {
-      es: 'El proyecto prioriza una presencia sólida y ordenada para que la marca parezca estable y fiable. Es útil cuando el objetivo es vender seguridad antes que espectáculo.',
-      en: 'The project prioritizes a solid and orderly presence so the brand feels stable and reliable. It is useful when the goal is to sell confidence before spectacle.',
-      de: 'Das Projekt setzt auf eine solide und geordnete Präsenz, damit die Marke stabil und verlässlich wirkt. Ideal, wenn Sicherheit wichtiger ist als Showeffekt.',
-      zh: '项目强调稳固有序的展示，使品牌显得可靠可信，适合以安全感和信任为主要销售目标的场景。',
-      hi: 'यह परियोजना ठोस और व्यवस्थित उपस्थिति को प्राथमिकता देती है ताकि ब्रांड स्थिर और विश्वसनीय लगे। जब लक्ष्य प्रदर्शन से पहले भरोसा बेचना हो, यह उपयोगी है।',
-      pt: 'O projeto valoriza uma presença sólida e ordenada para que a marca pareça estável e fiável. É útil quando o objetivo é vender confiança antes de espetáculo.'
+    "thumb": "img/trabajos/TCEMIL/1.avif",
+    "full": "img/trabajos/TCEMIL/1.avif",
+    "alt": "Stand ferial de carpintería premium lacada para Emil",
+    "categories": [
+      "carpinteria",
+      "premium"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_ceramica_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_ceramics_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_keramik_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_ceramica_em_bilbau_espanha",
+      "zh": "xibanya_bibao_taoci_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_siremik_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCPHARMA/1.avif',
-    full: 'img/trabajos/TCPHARMA/2.avif',
-    alt: 'Stand de marca de alta fidelidad para Pharma',
-    categories: ['madera', 'textil'],
-    description: {
-      es: 'La imagen limpia y técnica favorece una percepción de rigor, higiene y control. Es especialmente eficaz para sectores donde la confianza profesional decide la compra.',
-      en: 'The clean, technical image supports a perception of rigor, hygiene and control. It is especially effective in sectors where professional trust drives purchase decisions.',
-      de: 'Das saubere, technische Erscheinungsbild vermittelt Sorgfalt, Hygiene und Kontrolle. Besonders wirksam in Branchen, in denen professionelles Vertrauen kaufentscheidend ist.',
-      zh: '清洁且技术感强的形象传达严谨、卫生和控制力，尤其适合专业信任影响采购决策的行业。',
-      hi: 'स्वच्छ और तकनीकी छवि कठोरता, स्वच्छता और नियंत्रण का भाव देती है। यह उन क्षेत्रों में विशेष प्रभावी है जहां पेशेवर भरोसा खरीद निर्णय तय करता है।',
-      pt: 'A imagem limpa e técnica favorece uma perceção de rigor, higiene e controlo. É especialmente eficaz em setores onde a confiança profissional decide a compra.'
+    "thumb": "img/trabajos/TCPHARMA/1.avif",
+    "full": "img/trabajos/TCPHARMA/1.avif",
+    "alt": "Stand de marca de alta fidelidad para Pharma",
+    "categories": [
+      "farmaceutica",
+      "led"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_tecnologia_salud_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_health_technology_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_gesundheitstechnologie_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_tecnologia_saude_em_bilbau_espanha",
+      "zh": "xibanya_bibao_jiankang_keji_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_svaasthy_takaneek_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCSCHOEFFEL/4.avif',
-    full: 'img/trabajos/TCSCHOEFFEL/2.avif',
-    alt: 'Stand de textil tensado y retroiluminado para Schoeffel',
-    categories: ['textil'],
-    description: {
-      es: 'El uso textil permite superficies amplias, ligeras y muy fotogénicas. Aumenta la capacidad de atraer miradas y mejora la presencia de la marca en fotografías de feria.',
-      en: 'The textile solution creates broad, light and highly photogenic surfaces. It attracts attention and improves brand presence in fair photography.',
-      de: 'Die Textillösung schafft große, leichte und sehr fotogene Flächen. Sie zieht Aufmerksamkeit an und stärkt die Markenpräsenz in Messefotos.',
-      zh: '织物方案形成大面积、轻量且适合拍摄的表面，提升吸引力并增强展会照片中的品牌存在感。',
-      hi: 'टेक्सटाइल समाधान बड़े, हल्के और अत्यधिक फोटोजेनिक सतहें बनाता है। यह ध्यान आकर्षित करता है और मेले की तस्वीरों में ब्रांड उपस्थिति बढ़ाता है।',
-      pt: 'A solução têxtil permite superfícies amplas, leves e muito fotogénicas. Atrai olhares e melhora a presença da marca nas fotografias da feira.'
+    "thumb": "img/trabajos/TCSCHOEFFEL/4.avif",
+    "full": "img/trabajos/TCSCHOEFFEL/1.avif",
+    "alt": "Stand de textil tensado y retroiluminado para Schoeffel",
+    "categories": [
+      "textil",
+      "led"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_joyeria_perlas_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_pearl_jewelry_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_perlensmuck_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_joias_perolas_em_bilbau_espanha",
+      "zh": "xibanya_bibao_zhenzhu_zhubao_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_moti_aabhooshan_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TCSES/2.avif',
-    full: 'img/trabajos/TCSES/1.avif',
-    alt: 'Stand con gran impacto visual y rotulación corporativa para SES',
-    categories: ['textil'],
-    description: {
-      es: 'La gráfica de gran formato convierte el stand en un punto de referencia dentro del pabellón. Esto ayuda a que los visitantes recuerden la marca y la encuentren de nuevo.',
-      en: 'The large-format graphic turns the stand into a reference point inside the hall. This helps visitors remember the brand and find it again.',
-      de: 'Die großformatige Grafik macht den Stand zum Orientierungspunkt in der Halle. Besucher erinnern sich leichter an die Marke und finden sie wieder.',
-      zh: '大幅图形使展台成为展馆中的定位点，帮助访客记住品牌并再次找到展位。',
-      hi: 'बड़े प्रारूप की ग्राफिक स्टैंड को हॉल में संदर्भ बिंदु बनाती है। इससे आगंतुक ब्रांड को याद रखते हैं और फिर से ढूंढ पाते हैं।',
-      pt: 'A gráfica de grande formato transforma o stand num ponto de referência dentro do pavilhão. Ajuda os visitantes a recordar a marca e a encontrá-la novamente.'
+    "thumb": "img/trabajos/TCSES/2.avif",
+    "full": "img/trabajos/TCSES/1.avif",
+    "alt": "Stand con gran impacto visual y rotulación corporativa para SES",
+    "categories": [
+      "rotulacion",
+      "feria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_satelites_telecomunicaciones_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_telecommunications_satellites_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_telekommunikationssatelliten_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_satelites_telecomunicacoes_em_bilbau_espanha",
+      "zh": "xibanya_bibao_tongxin_weixing_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_doorsanchaar_upagrah_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/TELASRGB/2.avif',
-    full: 'img/trabajos/TELASRGB/1.avif',
-    alt: 'Philips',
-    categories: ['textil'],
-    description: {
-      es: 'La solución textil y luminosa da protagonismo a la marca con una presencia envolvente. Es una forma eficaz de diferenciarse en pasillos saturados de estímulos.',
-      en: 'The textile and lighting solution gives the brand an immersive presence. It is an effective way to stand out in aisles saturated with visual stimuli.',
-      de: 'Die textile und lichtbetonte Lösung gibt der Marke eine umhüllende Präsenz. Sie hilft, sich in visuell überladenen Gängen abzuheben.',
-      zh: '织物与照明方案营造沉浸式品牌存在感，是在视觉信息密集的通道中脱颖而出的有效方式。',
-      hi: 'टेक्सटाइल और लाइटिंग समाधान ब्रांड को प्रभावशाली, घेरने वाली उपस्थिति देता है। यह दृश्य रूप से भरे गलियारों में अलग दिखने का प्रभावी तरीका है।',
-      pt: 'A solução têxtil e luminosa dá protagonismo à marca com uma presença envolvente. É uma forma eficaz de se diferenciar em corredores saturados de estímulos.'
+    "thumb": "img/trabajos/TELASRGB/2.avif",
+    "full": "img/trabajos/TELASRGB/1.avif",
+    "alt": "Philips",
+    "categories": [
+      "iluminacion",
+      "tecnologia"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_iluminacion_salud_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_health_lighting_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_gesundheitsbeleuchtung_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_iluminacao_saude_em_bilbau_espanha",
+      "zh": "xibanya_bibao_jiankang_zhaoming_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_svaasthy_prakash_kampani_ke_liye_pradarshani_staind"
     }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/01-bost-emo-2023_1.avif',
-    full: 'img/trabajos/trabajos_promueve/01-bost-emo-2023_1.avif',
-    alt: 'BOST EMO 2023',
-    categories: ['madera'],
-    description: commercialDescription('Un volumen suspendido y una marca visible desde lejos convierten el stand en referencia dentro del pabellón. Facilita atraer tráfico cualificado antes incluso de que el visitante llegue al pasillo.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/01-bost-emo-2023_1.avif",
+    "full": "img/trabajos/trabajos_promueve/01-bost-emo-2023_1.avif",
+    "alt": "BOST EMO 2023",
+    "categories": [
+      "madera"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/01-stand-tecnalia-biemh-2022_1.avif',
-    full: 'img/trabajos/trabajos_promueve/01-stand-tecnalia-biemh-2022_1.avif',
-    alt: 'Tecnalia BIEMH 2022',
-    categories: ['madera', 'textil'],
-    description: commercialDescription('La puesta en escena tecnológica ordena demostraciones, mensajes y atención comercial. Ayuda a explicar innovación compleja de forma clara y a generar confianza en pocos minutos.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/01-stand-tecnalia-biemh-2022_1.avif",
+    "full": "img/trabajos/trabajos_promueve/01-stand-tecnalia-biemh-2022_1.avif",
+    "alt": "Tecnalia BIEMH 2022",
+    "categories": [
+      "feria",
+      "aluminio"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_technological_research_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_technologische_forschung_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_pesquisa_tecnologica_em_bilbau_espanha",
+      "zh": "xibanya_bibao_jishu_yanjiu_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/01-stand-zayer-biemh-2022-v2.avif',
-    full: 'img/trabajos/trabajos_promueve/01-stand-zayer-biemh-2022-v2.avif',
-    alt: 'Zayer BIEMH 2022',
-    categories: ['madera'],
-    description: commercialDescription('La arquitectura superior refuerza la presencia de marca y delimita el espacio sin cerrarlo. El visitante percibe escala industrial, solvencia y un punto de encuentro fácil de identificar.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/01-stand-zayer-biemh-2022-v2.avif",
+    "full": "img/trabajos/trabajos_promueve/01-stand-zayer-biemh-2022-v2.avif",
+    "alt": "Zayer BIEMH 2022",
+    "categories": [
+      "carpinteria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_2",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_2",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_2",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_2",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_2",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_2"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/1.avif',
-    full: 'img/trabajos/trabajos_promueve/1.avif',
-    alt: 'Pharmatechnik',
-    categories: ['madera', 'textil'],
-    description: commercialDescription('Un espacio amplio, luminoso y con zonas de demo favorece la permanencia del visitante. Esto aumenta el tiempo de conversación y mejora las oportunidades de cerrar contactos comerciales.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/1.avif",
+    "full": "img/trabajos/trabajos_promueve/1.avif",
+    "alt": "Pharmatechnik",
+    "categories": [
+      "farmaceutica"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_tecnologia_salud_en_bilbao_spain_2",
+      "en": "exhibition_stand_for_company_health_technology_in_bilbao_spain_2",
+      "de": "messestand_fuer_unternehmen_gesundheitstechnologie_in_bilbao_spanien_2",
+      "pt": "estande_para_empresa_de_tecnologia_saude_em_bilbau_espanha_2",
+      "zh": "xibanya_bibao_jiankang_keji_gongsi_zhanwei_2",
+      "hi": "bilabao_spen_mein_svaasthy_takaneek_kampani_ke_liye_pradarshani_staind_2"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/02-bost-emo-2023_1.avif',
-    full: 'img/trabajos/trabajos_promueve/02-bost-emo-2023_1.avif',
-    alt: 'BOST zona audiovisual',
-    categories: ['madera', 'textil'],
-    description: commercialDescription('La pantalla de gran formato multiplica el alcance del mensaje y hace visible la propuesta desde la distancia. Es una herramienta eficaz para iniciar conversaciones con visitantes que pasan cerca.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/02-bost-emo-2023_1.avif",
+    "full": "img/trabajos/trabajos_promueve/02-bost-emo-2023_1.avif",
+    "alt": "BOST zona audiovisual",
+    "categories": [
+      "madera",
+      "led"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_3",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_3",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_3",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_3",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_3",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_3"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/02-stand-intermaher-biemh-2022.avif',
-    full: 'img/trabajos/trabajos_promueve/02-stand-intermaher-biemh-2022.avif',
-    alt: 'Intermaher BIEMH 2022',
-    categories: ['madera'],
-    description: commercialDescription('Las líneas angulares y la zona demostrativa comunican industria, innovación y dinamismo. El diseño orienta al visitante hacia los productos clave y facilita una atención comercial más dirigida.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/02-stand-intermaher-biemh-2022.avif",
+    "full": "img/trabajos/trabajos_promueve/02-stand-intermaher-biemh-2022.avif",
+    "alt": "Intermaher BIEMH 2022",
+    "categories": [
+      "feria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_4",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_4",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_4",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_4",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_4",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_4"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/02-stand-zayer-biemh-2022.avif',
-    full: 'img/trabajos/trabajos_promueve/02-stand-zayer-biemh-2022.avif',
-    alt: 'Zayer demostración BIEMH 2022',
-    categories: ['madera'],
-    description: commercialDescription('La máquina queda integrada como protagonista y la marca mantiene una presencia sobria. Esto transmite capacidad productiva real y facilita conversaciones técnicas con compradores especializados.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/02-stand-zayer-biemh-2022.avif",
+    "full": "img/trabajos/trabajos_promueve/02-stand-zayer-biemh-2022.avif",
+    "alt": "Zayer demostración BIEMH 2022",
+    "categories": [
+      "carpinteria",
+      "tecnologia"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_5",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_5",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_5",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_5",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_5",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_5"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/2 copia.avif',
-    full: 'img/trabajos/trabajos_promueve/2 copia.avif',
-    alt: 'Schoeffel',
-    categories: ['textil'],
-    description: commercialDescription('La gráfica inmersiva crea un contexto de uso inmediato para el producto. Ayuda a que el visitante entienda la marca de un vistazo y relacione la oferta con una experiencia concreta.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/2 copia.avif",
+    "full": "img/trabajos/trabajos_promueve/2 copia.avif",
+    "alt": "Schoeffel",
+    "categories": [
+      "textil"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_joyeria_perlas_en_bilbao_spain_2",
+      "en": "exhibition_stand_for_company_pearl_jewelry_in_bilbao_spain_2",
+      "de": "messestand_fuer_unternehmen_perlensmuck_in_bilbao_spanien_2",
+      "pt": "estande_para_empresa_de_joias_perolas_em_bilbau_espanha_2",
+      "zh": "xibanya_bibao_zhenzhu_zhubao_gongsi_zhanwei_2",
+      "hi": "bilabao_spen_mein_moti_aabhooshan_kampani_ke_liye_pradarshani_staind_2"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/03-stand-intermaher-biemh-2022.avif',
-    full: 'img/trabajos/trabajos_promueve/03-stand-intermaher-biemh-2022.avif',
-    alt: 'Intermaher vista superior',
-    categories: ['madera'],
-    description: commercialDescription('La vista general muestra una distribución clara entre exposición, reuniones y circulación. Esa organización permite gestionar mejor los flujos de visitantes y aprovechar cada metro de feria.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/03-stand-intermaher-biemh-2022.avif",
+    "full": "img/trabajos/trabajos_promueve/03-stand-intermaher-biemh-2022.avif",
+    "alt": "Intermaher vista superior",
+    "categories": [
+      "feria",
+      "aluminio"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_6",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_6",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_6",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_6",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_6",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_6"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/03-stand-tecnalia-biemh-2022_1.avif',
-    full: 'img/trabajos/trabajos_promueve/03-stand-tecnalia-biemh-2022_1.avif',
-    alt: 'Tecnalia robótica BIEMH 2022',
-    categories: ['madera'],
-    description: commercialDescription('La demostración en vivo convierte el stand en una experiencia memorable. Mostrar tecnología funcionando reduce dudas, genera conversación y acelera la cualificación de contactos.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/03-stand-tecnalia-biemh-2022_1.avif",
+    "full": "img/trabajos/trabajos_promueve/03-stand-tecnalia-biemh-2022_1.avif",
+    "alt": "Tecnalia robótica BIEMH 2022",
+    "categories": [
+      "tecnologia",
+      "feria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain_2",
+      "en": "exhibition_stand_for_company_technological_research_in_bilbao_spain_2",
+      "de": "messestand_fuer_unternehmen_technologische_forschung_in_bilbao_spanien_2",
+      "pt": "estande_para_empresa_de_pesquisa_tecnologica_em_bilbau_espanha_2",
+      "zh": "xibanya_bibao_jishu_yanjiu_gongsi_zhanwei_2",
+      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind_2"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/3.avif',
-    full: 'img/trabajos/trabajos_promueve/3.avif',
-    alt: 'MFI Unitail Rodamco',
-    categories: ['madera'],
-    description: commercialDescription('La zona hospitality integrada invita a permanecer y conversar en un ambiente relajado. Es una ventaja comercial cuando la relación personal pesa tanto como la presentación del producto.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/3.avif",
+    "full": "img/trabajos/trabajos_promueve/3.avif",
+    "alt": "MFI Unitail Rodamco",
+    "categories": [
+      "madera"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_7",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_7",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_7",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_7",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_7",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_7"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/04-bost-emo-2023_2.avif',
-    full: 'img/trabajos/trabajos_promueve/04-bost-emo-2023_2.avif',
-    alt: 'BOST zona de reuniones',
-    categories: ['madera'],
-    description: commercialDescription('La combinación de áreas abiertas y salas más reservadas permite atender distintos niveles de interés. El equipo comercial puede pasar de una primera visita a una reunión de calidad sin salir del stand.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/04-bost-emo-2023_2.avif",
+    "full": "img/trabajos/trabajos_promueve/04-bost-emo-2023_2.avif",
+    "alt": "BOST zona de reuniones",
+    "categories": [
+      "madera",
+      "premium"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_8",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_8",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_8",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_8",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_8",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_8"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/06-stand-zayer-biemh-2022.avif',
-    full: 'img/trabajos/trabajos_promueve/06-stand-zayer-biemh-2022.avif',
-    alt: 'Zayer pantalla técnica',
-    categories: ['madera'],
-    description: commercialDescription('El soporte audiovisual resume argumentos técnicos de forma visual y constante. Refuerza el discurso del equipo comercial y permite captar interés incluso cuando todos están ocupados.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/06-stand-zayer-biemh-2022.avif",
+    "full": "img/trabajos/trabajos_promueve/06-stand-zayer-biemh-2022.avif",
+    "alt": "Zayer pantalla técnica",
+    "categories": [
+      "led",
+      "tecnologia"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_9",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_9",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_9",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_9",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_9",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_9"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/bellota-ferroforma.avif',
-    full: 'img/trabajos/trabajos_promueve/bellota-ferroforma.avif',
-    alt: 'Bellota Ferroforma',
-    categories: ['madera'],
-    description: commercialDescription('El contraste cromático y la rotulación elevada hacen que la marca destaque en un entorno competitivo. La identificación rápida mejora el recuerdo y atrae visitas espontáneas.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/bellota-ferroforma.avif",
+    "full": "img/trabajos/trabajos_promueve/bellota-ferroforma.avif",
+    "alt": "Bellota Ferroforma",
+    "categories": [
+      "feria",
+      "carpinteria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_herramientas_agricolas_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_agricultural_tools_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_landwirtschaftliche_werkzeuge_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_ferramentas_agricolas_em_bilbau_espanha",
+      "zh": "xibanya_bibao_nongye_gongju_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_krshi_upakaran_kampani_ke_liye_pradarshani_staind"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/biemh-16-tecnalia-1.avif',
-    full: 'img/trabajos/trabajos_promueve/biemh-16-tecnalia-1.avif',
-    alt: 'Tecnalia BIEMH 2016',
-    categories: ['textil'],
-    description: commercialDescription('Las superficies gráficas curvas crean un recorrido envolvente y muy reconocible. Es una solución útil para comunicar visión tecnológica y diferenciarse de stands más convencionales.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/biemh-16-tecnalia-1.avif",
+    "full": "img/trabajos/trabajos_promueve/biemh-16-tecnalia-1.avif",
+    "alt": "Tecnalia BIEMH 2016",
+    "categories": [
+      "feria",
+      "tecnologia"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain_3",
+      "en": "exhibition_stand_for_company_technological_research_in_bilbao_spain_3",
+      "de": "messestand_fuer_unternehmen_technologische_forschung_in_bilbao_spanien_3",
+      "pt": "estande_para_empresa_de_pesquisa_tecnologica_em_bilbau_espanha_3",
+      "zh": "xibanya_bibao_jishu_yanjiu_gongsi_zhanwei_3",
+      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind_3"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/cabecera-proyecto-emo-milano-2021-2.avif',
-    full: 'img/trabajos/trabajos_promueve/cabecera-proyecto-emo-milano-2021-2.avif',
-    alt: 'Zayer EMO Milano',
-    categories: ['madera', 'textil'],
-    description: commercialDescription('La cabecera inclinada y la pantalla central concentran la atención sobre el mensaje principal. Ayuda a posicionar la marca como especialista y a ordenar la comunicación técnica.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/cabecera-proyecto-emo-milano-2021-2.avif",
+    "full": "img/trabajos/trabajos_promueve/cabecera-proyecto-emo-milano-2021-2.avif",
+    "alt": "Zayer EMO Milano",
+    "categories": [
+      "feria",
+      "premium"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_milano_italy",
+      "en": "exhibition_stand_for_company_machine_tools_in_milan_italy",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_mailand_italien",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_milao_italia",
+      "zh": "yidali_milan_jichuang_gongsi_zhanwei",
+      "hi": "milan_itali_mein_mashin_tools_kampani_ke_liye_pradarshani_staind"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/evento-2014-fanuc-showroom-1.avif',
-    full: 'img/trabajos/trabajos_promueve/evento-2014-fanuc-showroom-1.avif',
-    alt: 'Fanuc showroom corporativo',
-    categories: ['madera'],
-    description: commercialDescription('La narrativa gráfica de marca convierte el showroom en una herramienta de venta. Permite explicar trayectoria, liderazgo y argumentos de confianza durante la visita.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/evento-2014-fanuc-showroom-1.avif",
+    "full": "img/trabajos/trabajos_promueve/evento-2014-fanuc-showroom-1.avif",
+    "alt": "Fanuc showroom corporativo",
+    "categories": [
+      "showroom",
+      "tecnologia"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_robotica_industrial_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_industrial_robotics_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_industrierobotik_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_robotica_industrial_em_bilbau_espanha",
+      "zh": "xibanya_bibao_gongye_jiqiren_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_audyogik_robotiks_kampani_ke_liye_pradarshani_staind"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/evento-2014-fanuc-showroom-2.avif',
-    full: 'img/trabajos/trabajos_promueve/evento-2014-fanuc-showroom-2.avif',
-    alt: 'Fanuc showroom producción',
-    categories: ['textil'],
-    description: commercialDescription('Los datos de capacidad productiva se presentan como prueba visual de solvencia. El visitante entiende rápidamente escala, especialización y razones para confiar en la marca.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/evento-2014-fanuc-showroom-2.avif",
+    "full": "img/trabajos/trabajos_promueve/evento-2014-fanuc-showroom-2.avif",
+    "alt": "Fanuc showroom producción",
+    "categories": [
+      "showroom",
+      "tecnologia"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_robotica_industrial_en_bilbao_spain_2",
+      "en": "exhibition_stand_for_company_industrial_robotics_in_bilbao_spain_2",
+      "de": "messestand_fuer_unternehmen_industrierobotik_in_bilbao_spanien_2",
+      "pt": "estande_para_empresa_de_robotica_industrial_em_bilbau_espanha_2",
+      "zh": "xibanya_bibao_gongye_jiqiren_gongsi_zhanwei_2",
+      "hi": "bilabao_spen_mein_audyogik_robotiks_kampani_ke_liye_pradarshani_staind_2"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/mg-1225.avif',
-    full: 'img/trabajos/trabajos_promueve/mg-1225.avif',
-    alt: 'Pescanova',
-    categories: ['madera'],
-    description: commercialDescription('La identidad visual se traslada al espacio con gran claridad y una zona de producto muy accesible. El resultado facilita compra, degustación, recuerdo de marca y conversación comercial.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/mg-1225.avif",
+    "full": "img/trabajos/trabajos_promueve/mg-1225.avif",
+    "alt": "Pescanova",
+    "categories": [
+      "alimentacion",
+      "feria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_alimentacion_pescado_en_bilbao_spain",
+      "en": "exhibition_stand_for_company_seafood_food_in_bilbao_spain",
+      "de": "messestand_fuer_unternehmen_meeresfruechte_in_bilbao_spanien",
+      "pt": "estande_para_empresa_de_alimentacao_frutos_mar_em_bilbau_espanha",
+      "zh": "xibanya_bibao_haixian_shipin_gongsi_zhanwei",
+      "hi": "bilabao_spen_mein_samudree_bhojan_kampani_ke_liye_pradarshani_staind"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/stand-2016-biemh-emuge-4.avif',
-    full: 'img/trabajos/trabajos_promueve/stand-2016-biemh-emuge-4.avif',
-    alt: 'Emuge Franken BIEMH 2016',
-    categories: ['madera'],
-    description: commercialDescription('Los elementos suspendidos refuerzan la visibilidad y ordenan familias de producto. La marca gana presencia vertical y el visitante identifica rápidamente las áreas de interés.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-2016-biemh-emuge-4.avif",
+    "full": "img/trabajos/trabajos_promueve/stand-2016-biemh-emuge-4.avif",
+    "alt": "Emuge Franken BIEMH 2016",
+    "categories": [
+      "feria",
+      "aluminio"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_10",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_10",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_10",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_10",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_10",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_10"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/stand-2018-biemh-delteco-10.avif',
-    full: 'img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif',
-    alt: 'Delteco BIEMH 2018',
-    categories: ['madera'],
-    description: commercialDescription('La fachada con lamas crea una imagen corporativa potente y reconocible. Además, aporta privacidad parcial para reuniones sin perder apertura hacia el pasillo.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-2018-biemh-delteco-10.avif",
+    "full": "img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif",
+    "alt": "Delteco BIEMH 2018",
+    "categories": [
+      "feria",
+      "carpinteria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_11",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_11",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_11",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_11",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_11",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_11"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/stand-cun-fitur3.avif',
-    full: 'img/trabajos/trabajos_promueve/stand-cun-fitur3.avif',
-    alt: 'Clínica Universidad de Navarra FITUR',
-    categories: ['madera'],
-    description: commercialDescription('El diseño sobrio comunica confianza, orden y profesionalidad. Para una marca sanitaria, esa percepción es clave para iniciar conversaciones con visitantes y prescriptores.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-cun-fitur3.avif",
+    "full": "img/trabajos/trabajos_promueve/stand-cun-fitur3.avif",
+    "alt": "Clínica Universidad de Navarra FITUR",
+    "categories": [
+      "sanidad",
+      "madera"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_sanidad_medicina_en_madrid_spain",
+      "en": "exhibition_stand_for_company_healthcare_medicine_in_madrid_spain",
+      "de": "messestand_fuer_unternehmen_gesundheitswesen_medizin_in_madrid_spanien",
+      "pt": "estande_para_empresa_de_saude_medicina_em_madri_espanha",
+      "zh": "xibanya_madeli_yiliao_weisheng_gongsi_zhanwei",
+      "hi": "maidrid_spen_mein_svaasthy_chikitsa_kampani_ke_liye_pradarshani_staind"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/stand-emuge-biemh-2022.avif',
-    full: 'img/trabajos/trabajos_promueve/stand-emuge-biemh-2022.avif',
-    alt: 'Emuge Franken BIEMH 2022',
-    categories: ['madera'],
-    description: commercialDescription('La repetición del código naranja organiza producto y hace la marca fácil de recordar. El visitante encuentra demostraciones y zonas de atención sin perderse dentro del espacio.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-emuge-biemh-2022.avif",
+    "full": "img/trabajos/trabajos_promueve/stand-emuge-biemh-2022.avif",
+    "alt": "Emuge Franken BIEMH 2022",
+    "categories": [
+      "feria",
+      "aluminio"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_12",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_12",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_12",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_12",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_12",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_12"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/STANDS_2017_EMO_HANNOVER_ZAYER_1.avif',
-    full: 'img/trabajos/trabajos_promueve/STANDS_2017_EMO_HANNOVER_ZAYER_1.avif',
-    alt: 'Zayer EMO Hannover 2017',
-    categories: ['madera'],
-    description: commercialDescription('El stand combina zonas de reunión y contenido audiovisual con una imagen robusta. Refuerza la posición internacional de la marca y facilita conversaciones de alto valor.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/STANDS_2017_EMO_HANNOVER_ZAYER_1.avif",
+    "full": "img/trabajos/trabajos_promueve/STANDS_2017_EMO_HANNOVER_ZAYER_1.avif",
+    "alt": "Zayer EMO Hannover 2017",
+    "categories": [
+      "feria",
+      "premium"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_hannover_germany",
+      "en": "exhibition_stand_for_company_machine_tools_in_hannover_germany",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_hannover_deutschland",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_hanover_alemanha",
+      "zh": "deguo_hannuowei_jichuang_gongsi_zhanwei",
+      "hi": "hainaovar_jarmani_mein_mashin_tools_kampani_ke_liye_pradarshani_staind"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/stands-2014-biemh-bilbao-zayer-17.avif',
-    full: 'img/trabajos/trabajos_promueve/stands-2014-biemh-bilbao-zayer-17.avif',
-    alt: 'Zayer BIEMH Bilbao 2014',
-    categories: ['madera'],
-    description: commercialDescription('La volumetría cerrada transmite solidez y control, mientras las pantallas abren ventanas al producto. Es útil para vender precisión industrial con una imagen limpia y premium.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/stands-2014-biemh-bilbao-zayer-17.avif",
+    "full": "img/trabajos/trabajos_promueve/stands-2014-biemh-bilbao-zayer-17.avif",
+    "alt": "Zayer BIEMH Bilbao 2014",
+    "categories": [
+      "feria",
+      "carpinteria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_13",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_13",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_13",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_13",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_13",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_13"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/stands-2014-biemh-bilbao-zayer-20.avif',
-    full: 'img/trabajos/trabajos_promueve/stands-2014-biemh-bilbao-zayer-20.avif',
-    alt: 'Zayer BIEMH Bilbao',
-    categories: ['madera'],
-    description: commercialDescription('La presencia blanca y negra crea un bloque de marca muy reconocible. El espacio proyecta especialización y permite reuniones comerciales en un entorno ordenado.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/stands-2014-biemh-bilbao-zayer-20.avif",
+    "full": "img/trabajos/trabajos_promueve/stands-2014-biemh-bilbao-zayer-20.avif",
+    "alt": "Zayer BIEMH Bilbao",
+    "categories": [
+      "feria",
+      "carpinteria"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_14",
+      "en": "exhibition_stand_for_company_machine_tools_in_bilbao_spain_14",
+      "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_14",
+      "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_14",
+      "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_14",
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_14"
+    }
   },
   {
-    thumb: 'img/trabajos/trabajos_promueve/thumbs/stands-pescanova.avif',
-    full: 'img/trabajos/trabajos_promueve/stands-pescanova.avif',
-    alt: 'Pescanova exposición',
-    categories: ['madera'],
-    description: commercialDescription('El producto queda integrado en una experiencia de marca fresca y comercial. La exposición frontal facilita la prueba, la compra impulsiva y la conversación con distribuidores.')
+    "thumb": "img/trabajos/trabajos_promueve/thumbs/stands-pescanova.avif",
+    "full": "img/trabajos/trabajos_promueve/stands-pescanova.avif",
+    "alt": "Pescanova exposición",
+    "categories": [
+      "alimentacion"
+    ],
+    "slugs": {
+      "es": "stand_para_empresa_de_alimentacion_pescado_en_bilbao_spain_2",
+      "en": "exhibition_stand_for_company_seafood_food_in_bilbao_spain_2",
+      "de": "messestand_fuer_unternehmen_meeresfruechte_in_bilbao_spanien_2",
+      "pt": "estande_para_empresa_de_alimentacao_frutos_mar_em_bilbau_espanha_2",
+      "zh": "xibanya_bibao_haixian_shipin_gongsi_zhanwei_2",
+      "hi": "bilabao_spen_mein_samudree_bhojan_kampani_ke_liye_pradarshani_staind_2"
+    }
   }
 ];
 

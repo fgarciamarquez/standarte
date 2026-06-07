@@ -707,6 +707,10 @@ footer > * {
   will-change: transform;
 }
 
+.lisbon-fairs-strip:hover .lisbon-fairs-track {
+  animation-play-state: paused;
+}
+
 .lisbon-fairs-group {
   display: flex;
   align-items: center;

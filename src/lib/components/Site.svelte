@@ -11,6 +11,7 @@
   export let section;
   export let copy;
   export let canonical;
+  export let initialLightboxSlug = null;
 
   const ctaLabels = {
     es: 'SOLICITAR PRESUPUESTO',
@@ -118,7 +119,31 @@
     { name: 'SPS Nuremberg 2026', country: 'de' },
     { name: 'automatica Munich 2027', country: 'de' },
     { name: 'Pollutec Lyon 2027', country: 'fr' },
-    { name: 'bauma Munich 2028', country: 'de' }
+    { name: 'bauma Munich 2028', country: 'de' },
+    { name: 'FIRECA Sevilla 2026', country: 'es' },
+    { name: 'CONXEMAR Vigo 2026', country: 'es' },
+    { name: 'Veteco Madrid 2026', country: 'es' },
+    { name: 'Piscimad Madrid 2026', country: 'es' },
+    { name: 'GreenCities Málaga 2026', country: 'es' },
+    { name: 'IBERPET Madrid 2026', country: 'es' },
+    { name: 'H&T Málaga 2026', country: 'es' },
+    { name: 'Eurosatory Paris 2026', country: 'fr' },
+    { name: 'Empack Madrid 2026', country: 'es' },
+    { name: 'Expoquimia Barcelona 2026', country: 'es' },
+    { name: 'SMART DOORS Madrid 2026', country: 'es' },
+    { name: 'Equiplast Barcelona 2026', country: 'es' },
+    { name: 'TIS Sevilla 2026', country: 'es' },
+    { name: 'AUTENTICA Sevilla 2026', country: 'es' },
+    { name: 'ESICM LIVES Lisboa 2026', country: 'pt' },
+    { name: 'Lisbon Food Affair 2026', country: 'pt' },
+    { name: 'SNACKEX Lisboa 2026', country: 'pt' },
+    { name: 'GSE Expo Lisboa 2026', country: 'pt' },
+    { name: 'ESRA Congress Lisboa 2026', country: 'pt' },
+    { name: 'World Aviation Festival Lisboa 2026', country: 'pt' },
+    { name: 'PEGS Europe Lisboa 2026', country: 'pt' },
+    { name: 'BTL Lisboa 2026', country: 'pt' },
+    { name: 'SMOPYC Zaragoza 2026', country: 'es' },
+    { name: 'FIMA Zaragoza 2026', country: 'es' }
   ];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para construcción de stands',
@@ -419,6 +444,18 @@
   }
 
   onMount(() => {
+    if (initialLightboxSlug) {
+      const p = portfolios.find(x => x.slugs && Object.values(x.slugs).includes(initialLightboxSlug));
+      if (p) openLightbox(p);
+    }
+
+    if (section === 'contact') {
+      setTimeout(() => {
+        const el = document.getElementById('contact');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
     // Automatic browser language detection and redirect
     if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       const savedPref = localStorage.getItem('preferredLanguage');
@@ -455,7 +492,6 @@
     shuffledProjects = shuffleArray([...projects]);
 
     updateScrollState();
-    window.addEventListener('scroll', updateScrollState, { passive: true });
 
     const updateVisibleCount = () => {
       if (window.innerWidth <= 768) {
@@ -521,7 +557,6 @@
     return () => {
       observer.disconnect();
       countersObserver.disconnect();
-      window.removeEventListener('scroll', updateScrollState);
       window.removeEventListener('resize', updateVisibleCount);
       clearInterval(autoplayInterval);
     };
@@ -551,9 +586,9 @@
   {@html structuredDataScript}
 </svelte:head>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window on:keydown={handleKeydown} on:scroll={updateScrollState} />
 
-<header class="site-header" class:static-header={section !== 'home' && section !== 'services'}>
+<header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services'}>
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
@@ -571,7 +606,7 @@
     </div>
   </nav>
   
-  {#if section === 'home'}
+  {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="home" class="hero">
       <div class="contents">
         <h1>{copy.heroTitle}</h1>
@@ -596,7 +631,7 @@
 </header>
 
 <main>
-  {#if section === 'home'}
+  {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="services" class="section services">
       <div class="section-header">
         <h2>{copy.servicesTitle}</h2>
@@ -681,12 +716,12 @@
         {#each filteredPortfolios as project}
           <div class={`mix ${project.categories.join(' ')}`}>
             <div class="portfolio-item">
-              <button class="shot-item" type="button" on:click={() => openLightbox(project)} aria-label={project.alt}>
+              <a class="shot-item" href="/galeria/{project.slugs[lang] || project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={project.alt}>
                 <img src={`/${project.thumb}`} alt={project.alt} loading="lazy" decoding="async" />
                 <span class="overlay lightbox" aria-hidden="true">
                   <span class="item-icon eye-icon"></span>
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         {/each}
