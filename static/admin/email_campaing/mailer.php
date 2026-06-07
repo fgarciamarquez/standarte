@@ -131,7 +131,7 @@ function campaign_send_smtp($config, $to, $subject, $html)
 
         if ($encryption === 'tls') {
             campaign_smtp_command($socket, 'STARTTLS', array(220));
-            if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+            if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_ANY_CLIENT)) {
                 throw new Exception('No se pudo activar TLS en la conexión SMTP.');
             }
             campaign_smtp_command($socket, 'EHLO standarte.es', array(250));

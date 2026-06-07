@@ -9,8 +9,8 @@ return array(
     'smtp' => array(
         'enabled' => true,
         'host' => 'ssl0.ovh.net',
-        'port' => 587,
-        'encryption' => 'tls',
+        'port' => 465,
+        'encryption' => 'ssl',
         'username' => 'promo@standarte.es',
         'password' => getenv('STANDARTE_SMTP_PASSWORD') ? getenv('STANDARTE_SMTP_PASSWORD') : 'Extrategia37',
         'timeout' => 20

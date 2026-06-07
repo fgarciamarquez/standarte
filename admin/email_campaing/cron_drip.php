@@ -2,7 +2,7 @@
 // cron_drip.php
 // Script automático para enviar correos de forma gradual.
 // Límite: 15 correos por ejecución (diseñado para correr cada hora de 08:00 a 18:00 -> ~150/día).
-// Ventana: Desde 4 meses antes hasta 3 meses antes de la fecha del evento (1 mes de duración).
+// Ventana: Desde 5 meses antes hasta 3 meses antes de la fecha del evento (2 meses de duración).
 
 require_once 'config.php';
 require_once 'template.php';
@@ -54,10 +54,10 @@ function supa_request($endpoint, $method = 'GET', $data = null) {
 
 $emails_per_execution = 15;
 
-// Definir ventana de envío: (EventDate está entre Hoy + 3 meses y Hoy + 4 meses)
-// Dicho de otra manera: Hoy está a una distancia de entre 3 y 4 meses del evento.
+// Definir ventana de envío: (EventDate está entre Hoy + 3 meses y Hoy + 5 meses)
+// Dicho de otra manera: Hoy está a una distancia de entre 3 y 5 meses del evento.
 $dateWindowStart = date('Y-m-d', strtotime('+3 months')); 
-$dateWindowEnd = date('Y-m-d', strtotime('+4 months'));
+$dateWindowEnd = date('Y-m-d', strtotime('+5 months'));
 
 // 2. Buscar grupos activos en esa ventana de tiempo (gte.dateWindowStart y lte.dateWindowEnd)
 $endpointGroups = 'lead_groups?event_date=gte.' . $dateWindowStart . '&event_date=lte.' . $dateWindowEnd;
@@ -69,7 +69,7 @@ if ($res['code'] !== 200 || !is_array($res['data'])) {
 
 $groups = $res['data'];
 if (empty($groups)) {
-    echo "No hay eventos en la ventana de 3-4 meses de antelación para hoy.\n";
+    echo "No hay eventos en la ventana de 3-5 meses de antelación para hoy.\n";
     exit;
 }
 

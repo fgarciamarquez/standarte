@@ -5454,3 +5454,11 @@ export const projects = [
   }
 }
 ];
+
+export function getProjectById(id) {
+  return projects.find(p => p.id === id);
+}
+
+export function getAllProjectIds() {
+  return projects.map(p => p.id);
+}
