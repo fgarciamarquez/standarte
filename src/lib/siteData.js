@@ -113,7 +113,7 @@ export const copy = {
     services: [
       ['Diseño e Ingeniería', 'Nuestro equipo profesional tomará nota de las necesidades de su proyecto que, con todo detalle, quedarán reflejadas en un diseño 3D personalizado que podrá explorar y revisar antes del comienzo de la fabricación. La imagen del prototipo será 100% fidedigna al resultado final.'],
       ['Construcción', 'En el proceso de construcción aplicamos las más modernas técnicas de ensamblaje con materiales especificos para el uso en construcción efímera. Esto nos permite ofrecer un aspecto impecable que demostrará calidad a primera vista.'],
-      ['Montaje y validaciones', 'Nos encargamos de todo. Con total tranquilidad podrás presentarse el primer dia de feria, y lo encontrará todo lito para empezar tu labor comercial. Stand, catering, papelería,... indiferentemente si es una feria en Madrid, Fráncfort, Pekín o Chicago.']
+      ['Montaje y validaciones', 'Nos encargamos de todo. Con total tranquilidad podrás presentarse el primer dia de feria, y lo encontrará todo listo para empezar tu labor comercial. Stand, catering, papelería,... indiferentemente si es una feria en Madrid, Fráncfort, Pekín o Chicago.']
     ],
     micro: {
       title: 'LUZPAVILION',
@@ -168,7 +168,7 @@ export const copy = {
     counters: { projects: 'Proyectos', clients: 'Clientes', countries: 'Países', fairs: 'Ferias' },
     teamTitle: 'Equipo',
     teamSubtitle: 'Somos un equipo multidisciplinar, entre los que hay arquitectos, montadores, decoradores, técnico de iluminación,... Juntos podemos dar una respuesta completa a todas las necesidades de cada proyecto. No dudes en llamarnos para cualquier duda que tengas. Esperamos conocerte pronto.',
-    teamRoles: ['Creatividad y Decoradoración', 'Administrador', 'Taller', 'Coordinación'],
+    teamRoles: ['Creatividad y Decoración', 'Administrador', 'Taller', 'Coordinación'],
     contactTitle: 'Contacto',
     contactNotice: 'Los presupuestos generados a partir de los datos extraídos de este formulario tienen un carácter aproximado. El presupuesto final será establecido cuando hayamos anotados todos los detalles del proyecto tras una ronda de conversaciones.',
     form: { name: 'Nombre', company: 'Empresa', phone: 'Teléfono', email: 'Email', fair: 'Feria', location: 'Ciudad - Pais', meters: 'Metros cuadrados', floor: 'Detalles sobre el suelo', woodFloor: 'Tarima-madera', carpetPlatform: 'Tarima-moqueta', carpet: 'Moqueta', spaceDistribution: 'Distribución de espacios', reception: 'Zona de recepción', bar: 'Zona de bar', storage: 'Almacén', product: 'Exposición de producto', openMeeting: 'Zona de reuniones abierta', closedMeeting: 'Zona de reuniones cerrada', audiovisual: 'Audiovisuales', led: 'Pantalla LED', projector: 'Proyector', budget: 'Presupuesto estimado', description: 'Descripción', privacy: 'Acepta nuestra Política de Privacidad', send: 'ENVIAR' },

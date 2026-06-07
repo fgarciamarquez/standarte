@@ -160,7 +160,7 @@
     { key: 'fairs', value: 158, icon: 'counter-calendar' }
   ];
 
-  let displayedCounters = counterItems.map(() => 0);
+  let displayedCounters = counterItems.map(item => item.value);
   let countersStarted = false;
 
   // TEMPORAL: Ocultar imágenes desde la 13ª hasta la última (no borrar, reactivar en una semana)
@@ -240,13 +240,14 @@
       logo: `${baseUrl}/img/logo_standarte_rectanular.png`,
       image: `${baseUrl}/img/trabajos/TCANTICO/1.avif`,
       email: 'hola@standarte.es',
-      telephone: '+34613097148',
+      telephone: '+34622284319',
       priceRange: '$$$',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'C/ de Moratin',
-        postalCode: '28012',
-        addressLocality: 'Madrid',
+        streetAddress: 'Av. de Castilla 2',
+        postalCode: '28830',
+        addressLocality: 'San Fernando de Henares',
+        addressRegion: 'Madrid',
         addressCountry: 'ES'
       },
       geo: {
@@ -444,6 +445,8 @@
   }
 
   onMount(() => {
+    displayedCounters = counterItems.map(() => 0);
+
     if (initialLightboxSlug) {
       const p = portfolios.find(x => x.slugs && Object.values(x.slugs).includes(initialLightboxSlug));
       if (p) openLightbox(p);
@@ -583,7 +586,7 @@
   {#each languages.filter((alternateLang) => alternateLang !== lang) as alternateLang}
     <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
   {/each}
-  {@html structuredDataScript}
+  {@html `<script type="application/ld+json">${structuredData.replace(/</g, '\\u003c')}</script>`}
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} on:scroll={updateScrollState} />
@@ -951,7 +954,7 @@
     </div>
     <div class="copyright">
       <p>
-        CopyRight: 2022.
+        CopyRight: {new Date().getFullYear()}.
         <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer" style="margin-left: 15px; display: inline-block;">
           {campaignManagerLabels[lang] || campaignManagerLabels.es}
         </a>
