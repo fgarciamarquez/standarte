@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-require_once 'config.php';
+$config = require_once 'config.php';
 require_once 'template.php';
 require_once 'mailer.php';
 

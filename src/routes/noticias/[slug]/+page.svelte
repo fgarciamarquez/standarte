@@ -35,13 +35,16 @@
     // Automatic browser language detection and redirect
     if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       const savedPref = localStorage.getItem('preferredLanguage');
+      const hasAutoRedirected = sessionStorage.getItem('hasAutoRedirected');
       
       // Save current language preference when visited
       localStorage.setItem('preferredLanguage', lang);
 
-      if (lang === 'es') {
+      if (lang === 'es' && !hasAutoRedirected) {
+        sessionStorage.setItem('hasAutoRedirected', 'true');
         if (savedPref && savedPref !== 'es' && languages.includes(savedPref)) {
           window.location.href = pathFor(savedPref, 'noticias');
+          return;
         } else if (!savedPref) {
           const browserLang = (navigator.language || navigator.languages?.[0] || 'es')
             .split('-')[0]
@@ -50,6 +53,7 @@
           if (browserLang !== 'es' && languages.includes(browserLang)) {
             localStorage.setItem('preferredLanguage', browserLang);
             window.location.href = pathFor(browserLang, 'noticias');
+            return;
           } else {
             localStorage.setItem('preferredLanguage', 'es');
           }
