@@ -202,6 +202,8 @@
     if (lang === 'de') return `Messestandbau in ${city}`;
     if (lang === 'en') return `Stand construction in ${city}`;
     if (lang === 'pt') return `Construção de stands em ${city}`;
+    if (lang === 'fr') return `Construction de stands à ${city}`;
+    if (lang === 'it') return `Costruzione di stand a ${city}`;
     if (lang === 'zh') return `${city} 展台搭建`;
     if (lang === 'hi') return `${city} में स्टैंड निर्माण`;
     return `Construcción de stands en ${city}`;
@@ -240,7 +242,7 @@
       logo: `${baseUrl}/img/logo_standarte_rectanular.png`,
       image: `${baseUrl}/img/trabajos/TCANTICO/1.avif`,
       email: 'hola@standarte.es',
-      telephone: '+34622284319',
+      telephone: '+34637894819',
       priceRange: '$$$',
       address: {
         '@type': 'PostalAddress',
@@ -359,6 +361,8 @@
     if (lang === 'zh') return `${fairName} 展台搭建服务`;
     if (lang === 'hi') return `${fairName} में स्टैंड निर्माण`;
     if (lang === 'pt') return `Construtor de stands na ${fairName}`;
+    if (lang === 'fr') return `Constructeur de stands à ${fairName}`;
+    if (lang === 'it') return `Costruttore di stand a ${fairName}`;
     return `Constructor de stand en ${fairName}`;
   }
 
@@ -753,7 +757,7 @@
       </div>
 
       <div class="carousel-container">
-        <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))}>‹</button>
+        <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'fr' ? 'Précédent' : (lang === 'it' ? 'Precedente' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))))}>‹</button>
         
         <div class="carousel-viewport">
           <div class="carousel-track" style="transform: translateX(-{carouselIndex * (100 / carouselVisibleCount)}%);">
@@ -776,7 +780,7 @@
           </div>
         </div>
 
-        <button class="carousel-nav next" type="button" on:click={nextSlide} aria-label={lang === 'es' ? 'Siguiente' : (lang === 'de' ? 'Weiter' : (lang === 'pt' ? 'Seguinte' : (lang === 'zh' ? '下一页' : (lang === 'hi' ? 'अगla' : 'Next'))))}>›</button>
+        <button class="carousel-nav next" type="button" on:click={nextSlide} aria-label={lang === 'es' ? 'Siguiente' : (lang === 'de' ? 'Weiter' : (lang === 'pt' ? 'Seguinte' : (lang === 'fr' ? 'Suivant' : (lang === 'it' ? 'Successivo' : (lang === 'zh' ? '下一页' : (lang === 'hi' ? 'अगla' : 'Next'))))))}>›</button>
       </div>
     </section>
 

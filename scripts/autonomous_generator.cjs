@@ -332,7 +332,7 @@ async function run() {
       return;
     }
 
-    console.log('-> GEMINI_API_KEY detectada. Iniciando generación por Inteligencia Artificial en 6 idiomas...');
+    console.log('-> GEMINI_API_KEY detectada. Iniciando generación por Inteligencia Artificial en 8 idiomas...');
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`;
 
     // Convertir el pool de imágenes en texto estructurado para el prompt
@@ -340,7 +340,7 @@ async function run() {
 
     let promptText = '';
     if (usingDynamicFallback) {
-      promptText = `Eres un redactor experto en marketing de eventos y arquitectura efímera para la empresa Standarte (https://standarte.es). Tu tarea es seleccionar un evento ferial o congreso importante real de la ciudad de ${selectedCity.name} (por ejemplo: IFEMA si es Madrid, FYCMA si es Málaga, FIL o Web Summit si es Lisboa, Fira Barcelona si es Barcelona, BEC si es Bilbao) y redactar un artículo premium de blog corporativo en 6 idiomas (es, en, de, pt, zh, hi) sobre las últimas tendencias de diseño de stands a medida de alta carpintería para dicho evento ferial.
+      promptText = `Eres un redactor experto en marketing de eventos y arquitectura efímera para la empresa Standarte (https://standarte.es). Tu tarea es seleccionar un evento ferial o congreso importante real de la ciudad de ${selectedCity.name} (por ejemplo: IFEMA si es Madrid, FYCMA si es Málaga, FIL o Web Summit si es Lisboa, Fira Barcelona si es Barcelona, BEC si es Bilbao) y redactar un artículo premium de blog corporativo en 8 idiomas (es, en, de, pt, zh, hi, fr, it) sobre las últimas tendencias de diseño de stands a medida de alta carpintería para dicho evento ferial.
 
 REGLAS ESTRICTAS DE NEGOCIO Y CONTENIDO PARA TODOS LOS IDIOMAS:
 1. El artículo debe centrarse EXCLUSIVAMENTE en la construcción de stands de diseño para INTERIORES dentro de recintos feriales cerrados.
@@ -352,6 +352,8 @@ REGLAS ESTRICTAS DE NEGOCIO Y CONTENIDO PARA TODOS LOS IDIOMAS:
    - Portugués (pt): "Arquitetura de atenção", "Espaços de permanência", "Design de fluxo humano", "Estruturas de concentração visual", "Microarquitetura experiencial".
    - Chino (zh): "注意力建筑", "停留空间", "人流设计", "视觉聚焦结构", "体验式微建筑".
    - Hindi (hi): "ध्यान वास्तुकला", "स्थायित्व के स्थान", "मानव प्रवाह डिजाइन", "दृश्य एकाग्रता संरचनाएं", "अनुभवात्मक सूक्ष्म वास्तुकला".
+   - Francés (fr): "Architecture de l'attention", "Espaces de permanence", "Conception des flux humains", "Structures de concentration visuelle", "Microarchitecture expérientielle".
+   - Italiano (it): "Architettura dell'attenzione", "Spazi di permanenza", "Progettazione del flusso umano", "Strutture di concentrazione visiva", "Microarchitettura esperienziale".
 4. El tono debe ser profesional, sofisticado y persuasivo.
 5. El contenido del artículo debe estar maquetado en HTML limpio y semántico (usando <h2>, <h3>, <p>, <ul>, <li>, <strong>). No incluyas la estructura general de <html>, <head> ni <body>.
 6. Debes INYECTAR en medio de tu artículo una sola etiqueta de imagen <figure> maquetada con esta estructura exacta (utiliza la misma URL de imagen elegida para todos los idiomas):
@@ -360,14 +362,14 @@ REGLAS ESTRICTAS DE NEGOCIO Y CONTENIDO PARA TODOS LOS IDIOMAS:
 ${imagesListText}
 7. Al final de la sección 'content' (dentro del propio HTML), añade un elegante bloque de llamado a la acción (CTA) con enlaces a la sección de contacto de Standarte para solicitar un modelado 3D realista en el idioma correspondiente.
 
-Genera un objeto JSON puro conteniendo las traducciones para cada uno de los 6 idiomas. El objeto debe tener exactamente las llaves: "es", "en", "de", "pt", "zh", "hi".
+Genera un objeto JSON puro conteniendo las traducciones para cada uno de los 8 idiomas. El objeto debe tener exactamente las llaves: "es", "en", "de", "pt", "zh", "hi", "fr", "it".
 Cada una de estas llaves debe ser un objeto con los siguientes campos:
 - title: Un título cautivador y optimizado para SEO (en el idioma correspondiente).
 - excerpt: Un resumen atractivo de 2 líneas (en el idioma correspondiente).
 - content: El cuerpo del artículo redactado en HTML (en el idioma correspondiente) conteniendo la figura de la imagen inyectada.
 - seoKeywords: Un array de 5 palabras clave de SEO altamente relevantes (en el idioma correspondiente).`;
     } else {
-      promptText = `Eres un redactor experto en marketing de eventos y arquitectura efímera para la empresa Standarte (https://standarte.es). Tu tarea es redactar y traducir un artículo de blog premium en 6 idiomas (es, en, de, pt, zh, hi) basado en la siguiente noticia de actualidad:
+      promptText = `Eres un redactor experto en marketing de eventos y arquitectura efímera para la empresa Standarte (https://standarte.es). Tu tarea es redactar y traducir un artículo de blog premium en 8 idiomas (es, en, de, pt, zh, hi, fr, it) basado en la siguiente noticia de actualidad:
 Noticia original: ${selectedItem.title}
 Fuente original: ${selectedItem.source}
 Enlace original: ${selectedItem.link}
@@ -383,6 +385,8 @@ REGLAS ESTRICTAS DE NEGOCIO Y CONTENIDO PARA TODOS LOS IDIOMAS:
    - Portugués (pt): "Arquitetura de atención", "Espaços de permanência", "Design de fluxo humano", "Estruturas de concentración visual", "Microarquitetura experiencial".
    - Chino (zh): "注意力建筑", "停留空间", "人流设计", "视觉聚焦结构", "体验式微建筑".
    - Hindi (hi): "ध्यान वास्तुकला", "स्थायित्व के स्थान", "मानव प्रवाह डिजाइन", "दृश्य एकाग्रता संरचनाएं", "अनुभवात्मक सूक्ष्म वास्तुकला".
+   - Francés (fr): "Architecture de l'attention", "Espaces de permanence", "Conception des flux humains", "Structures de concentration visuelle", "Microarchitecture expérientielle".
+   - Italiano (it): "Architettura dell'attenzione", "Spazi di permanenza", "Progettazione del flusso umano", "Strutture di concentrazione visiva", "Microarchitettura esperienziale".
 4. El tono debe ser profesional, sofisticado y persuasivo.
 5. El contenido del artículo debe estar maquetado en HTML limpio y semántico (usando <h2>, <h3>, <p>, <ul>, <li>, <strong>). No incluyas la estructura general de <html>, <head> ni <body>.
 6. Debes INYECTAR en medio de tu artículo una sola etiqueta de imagen <figure> maquetada con esta estructura exacta (utiliza la misma URL de imagen elegida para todos los idiomas):
@@ -391,7 +395,7 @@ REGLAS ESTRICTAS DE NEGOCIO Y CONTENIDO PARA TODOS LOS IDIOMAS:
 ${imagesListText}
 7. Al final de la sección 'content' (dentro del propio HTML), añade un elegante bloque de llamado a la acción (CTA) con enlaces a la sección de contacto de Standarte para solicitar un modelado 3D realista en el idioma correspondiente.
 
-Genera un objeto JSON puro conteniendo las traducciones para cada uno de los 6 idiomas. El objeto debe tener exactamente las llaves: "es", "en", "de", "pt", "zh", "hi".
+Genera un objeto JSON puro conteniendo las traducciones para cada uno de los 8 idiomas. El objeto debe tener exactamente las llaves: "es", "en", "de", "pt", "zh", "hi", "fr", "it".
 Cada una de estas llaves debe ser un objeto con los siguientes campos:
 - title: Un título cautivador y optimizado para SEO (en el idioma correspondiente).
 - excerpt: Un resumen atractivo de 2 líneas (en el idioma correspondiente).
@@ -470,8 +474,28 @@ Cada una de estas llaves debe ser un objeto con los siguientes campos:
               },
               required: ["title", "excerpt", "content", "seoKeywords"]
             }
+            fr: {
+              type: "OBJECT",
+              properties: {
+                title: { type: "STRING" },
+                excerpt: { type: "STRING" },
+                content: { type: "STRING" },
+                seoKeywords: { type: "ARRAY", items: { type: "STRING" } }
+              },
+              required: ["title", "excerpt", "content", "seoKeywords"]
+            },
+            it: {
+              type: "OBJECT",
+              properties: {
+                title: { type: "STRING" },
+                excerpt: { type: "STRING" },
+                content: { type: "STRING" },
+                seoKeywords: { type: "ARRAY", items: { type: "STRING" } }
+              },
+              required: ["title", "excerpt", "content", "seoKeywords"]
+            },
           },
-          required: ["es", "en", "de", "pt", "zh", "hi"]
+          required: ["es", "en", "de", "pt", "zh", "hi", "fr", "it"]
         }
       }
     });
@@ -488,7 +512,7 @@ Cada una de estas llaves debe ser un objeto con los siguientes campos:
         const imgMatch = (generatedArticle.es.content).match(/<img[^>]+src=["']([^"']+)["']/);
         const imageUrl = imgMatch ? imgMatch[1] : '/img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif';
 
-        const languages = ['es', 'en', 'de', 'pt', 'zh', 'hi'];
+        const languages = ['es', 'en', 'de', 'pt', 'zh', 'hi', 'fr', 'it'];
         const newArticles = [];
 
         for (const lang of languages) {
@@ -596,7 +620,7 @@ function useFallback(newsData) {
     hi: "सुर्खियां: "
   };
   
-  const languages = ['es', 'en', 'de', 'pt', 'zh', 'hi'];
+  const languages = ['es', 'en', 'de', 'pt', 'zh', 'hi', 'fr', 'it'];
   const newArticles = [];
   
   for (const lang of languages) {

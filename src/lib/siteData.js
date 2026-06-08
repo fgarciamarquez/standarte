@@ -1,4 +1,4 @@
-export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt'];
+export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt', 'fr', 'it'];
 
 export const languageLabels = {
   es: 'ES Español',
@@ -6,7 +6,9 @@ export const languageLabels = {
   de: 'DE Deutsch',
   zh: '中文',
   hi: 'HI हिन्दी',
-  pt: 'PT Português'
+  pt: 'PT Português',
+  fr: 'FR Français',
+  it: 'IT Italiano'
 };
 
 export const routes = {
@@ -99,6 +101,36 @@ export const routes = {
     malaga: 'construcao_stands_malaga',
     badajoz: 'construcao_stands_badajoz',
     noticias: 'noticias'
+  },
+  fr: {
+    home: '',
+    services: 'services',
+    luzpavilion: 'luzpavilion',
+    custom: 'projets_sur_mesure',
+    team: 'equipe',
+    contact: 'contact',
+    madrid: 'construction_stands_madrid',
+    barcelona: 'construction_stands_barcelone',
+    bilbao: 'construction_stands_bilbao',
+    lisboa: 'construction_stands_lisbonne',
+    malaga: 'construction_stands_malaga',
+    badajoz: 'construction_stands_badajoz',
+    noticias: 'actualites'
+  },
+  it: {
+    home: '',
+    services: 'servizi',
+    luzpavilion: 'luzpavilion',
+    custom: 'progetti_su_misura',
+    team: 'squadra',
+    contact: 'contatto',
+    madrid: 'allestimenti_fieristici_madrid',
+    barcelona: 'allestimenti_fieristici_barcellona',
+    bilbao: 'allestimenti_fieristici_bilbao',
+    lisboa: 'allestimenti_fieristici_lisbona',
+    malaga: 'allestimenti_fieristici_malaga',
+    badajoz: 'allestimenti_fieristici_badajoz',
+    noticias: 'notizie'
   }
 };
 
@@ -601,12 +633,140 @@ export const copy = {
       viewBtn: 'Ver Projeto'
     },
     footer: 'Standarte. Design, produção e montagem de stands.'
-  }
+  },
+  fr: {
+    nav: { services: 'Services', custom: 'Galerie', noticias: 'Actualités', contact: 'Contact', language: 'Langue' },
+    seoTitle: 'Standarte | Constructeur de stands à Madrid, Barcelone, Bilbao, Malaga et Lisbonne',
+    seoDescription: 'Standarte conçoit, fabrique et installe des stands de manière professionnelle et personnalisée pour des salons en Espagne et à l\'international.',
+    heroTitle: 'Conception et construction de stands internationaux',
+    heroSubtitle: 'Des espaces qui inspirent',
+    servicesTitle: 'Services',
+    services: [
+      ['Conception et Ingénierie', 'Notre équipe professionnelle prendra note des besoins de votre projet, qui seront reflétés en détail dans un prototype 3D personnalisé que vous pourrez explorer et réviser avant le début de la fabrication. L\'image du prototype sera 100% fidèle au résultat final.'],
+      ['Construction', 'Dans le processus de construction, nous appliquons les techniques d\'assemblage les plus modernes avec des matériaux spécifiques pour l\'architecture éphémère. Cela nous permet d\'offrir un aspect impeccable qui démontrera notre qualité au premier coup d\'œil.'],
+      ['Montage et validations', 'Nous nous occupons de tout. En toute tranquillité, vous pourrez vous présenter le premier jour du salon, et vous trouverez tout prêt pour commencer votre travail commercial. Stand, restauration, papeterie,... peu importe s\'il s\'agit d\'un salon à Madrid, Francfort, Pékin ou Chicago.']
+    ],
+    micro: {
+      title: 'LUZPAVILION',
+      subtitle: 'Tentes spatiales pour environnements uniques',
+      color: 'Couleur',
+      finish: 'Finition:',
+      descriptionTitle: 'Description:',
+      description: 'Stand petit format composé de 4 corps<br>Son montage est très simple ; aucun outil n\'est nécessaire.<br>Produit modulaire librement configurable.',
+      qualitiesTitle: 'Qualités:',
+      materials: 'Matériaux',
+      materialsValue: 'MDF, verre, textile architectural, métal',
+      finishValue: 'Peinture aérographique + laque',
+      partsTitle: 'Parties:',
+      parts: '1 = Graphique rétroéclairé <br>2 = Étagères éclairées <br>3 = Logo personnalisé <br>4 = Stockage <br>5 = Comptoir avec portes',
+      priceTitle: 'Prix:',
+      priceText: 'Ensemble de 4 modules avec éclairage et <br> graphiques personnalisés',
+      chooseFinish: 'Choisissez la finition<br>pour voir le prix.',
+      choose: 'Choisissez la finition pour voir le prix',
+      partsLabel: 'Parties',
+      price: 'Prix',
+      qualities: 'Qualités',
+      pause: 'PAUSE',
+      play: 'JOUER',
+      visitWeb: 'VISITER LE SITE WEB SPÉCIFIQUE',
+      videos: [
+        { src: '/img/video_standrte_presentacion_empresa.mp4', title: 'Présentations d\'entreprise', subtitle: 'Nos ateliers et processus de fabrication de stands d\'entreprise.' },
+        { src: '/img/video_standarte_presentacion_vinos.mp4', title: 'Salons dans des lieux historiques', subtitle: 'Conception respectueuse dans des lieux traditionnels et historiques.' },
+        { src: '/img/video_standarte_andalucia.mp4', title: 'Célébrations', subtitle: 'Espaces gastronomiques sur mesure pour les vignobles et événements spéciaux.' },
+        { src: '/img/video_standarte_feria_verano.mp4', title: 'Salons en plein air grand format', subtitle: 'Montages à grande échelle et tentes premium haute résistance.' }
+      ]
+    },
+    citiesIntro: 'Nous concevons, fabriquons et montons des stands pour des salons et événements dans les principales villes d\'Espagne et Portugal.',
+    customTitle: 'GALERIE',
+    customSubtitle: 'Classés par technique de montage principale.',
+    filters: { all: 'Tous', textil: 'Textile', madera: 'Bois' },
+    counters: { projects: 'Projets', clients: 'Clients', countries: 'Pays', fairs: 'Salons' },
+    teamTitle: 'Équipe',
+    teamSubtitle: 'Nous sommes une équipe multidisciplinaire comprenant des architectes, des monteurs, des décorateurs, des éclairagistes... Ensemble, nous pouvons apporter une réponse completa à tous les besoins de chaque projet. N\'hésitez pas à nous appeler pour toute question. Nous espérons vous rencontrer bientôt.',
+    teamRoles: ['Créativité et Décoration', 'Administrateur', 'Atelier', 'Coordination'],
+    contactTitle: 'Contact',
+    contactNotice: 'Les devis générés à partir des données de ce formulaire sont approximatifs. Le devis final sera établi après avoir discuté de tous les détails du projet.',
+    form: { name: 'Nom', company: 'Entreprise', phone: 'Téléphone', email: 'Email', fair: 'Salon', location: 'Ville - Pays', meters: 'Mètres carrés', floor: 'Détails du sol', woodFloor: 'Plancher en bois', carpetPlatform: 'Plancher avec moquette', carpet: 'Moquette', spaceDistribution: 'Répartition des espaces', reception: 'Zone de réception', bar: 'Zone de bar', storage: 'Stockage', product: 'Exposition de produits', openMeeting: 'Zone de réunion ouverte', closedMeeting: 'Zone de réunion fermée', audiovisual: 'Audiovisuel', led: 'Écran LED', projector: 'Projecteur', budget: 'Budget estimé', description: 'Description', privacy: 'Accepter notre politique de confidentialité', send: 'ENVOYER' },
+    legal: { privacy: 'Politique de confidentialité', legalNotice: 'Mentions légales', cookies: 'Utilisation des Cookies' },
+    legalText: {
+      privacy: '<p>Standarte utilise les données envoyées via ce formulaire uniquement pour répondre aux demandes d\'informations et devis.</p>',
+      legalNotice: '<p>Ce site web appartient à Standarte. L\'utilisation implique une navigation responsable.</p>',
+      cookies: '<p>Nous utilisons des cookies pour le fonctionnement du site.</p>'
+    },
+    formSuccess: 'Message envoyé avec succès.<br> Nous vous contacterons sous peu.<br> Merci.',
+    formError: 'Impossible d\'envoyer le message. Veuillez réessayer.',
+    projects3D: { title: 'Autres Projets', subtitle: 'Explorez nos propositions interactives de haute menuiserie.', viewBtn: 'Voir Projet' },
+    footer: 'Standarte. Conception, fabrication et montage de stands.'
+  },
+  it: {
+    nav: { services: 'Servizi', custom: 'Galleria', noticias: 'Notizie', contact: 'Contatto', language: 'Lingua' },
+    seoTitle: 'Standarte | Allestimenti fieristici a Madrid, Barcellona, Bilbao, Malaga e Lisbona',
+    seoDescription: 'Standarte progetta, produce e allestisce stand in modo professionale e personalizzato per fiere in Spagna e all\'estero.',
+    heroTitle: 'Progettazione e allestimento stand fieristici',
+    heroSubtitle: 'Spazi che ispirano',
+    servicesTitle: 'Servizi',
+    services: [
+      ['Progettazione e Ingegneria', 'Il nostro team professionale prenderà nota delle esigenze del tuo progetto, che saranno riflesse in dettaglio in un prototipo 3D personalizzato che potrai esplorare e rivedere prima dell\'inizio della produzione. L\'immagine del prototipo sarà fedele al 100% al risultato finale.'],
+      ['Costruzione e Allestimento', 'Nel processo di costruzione applichiamo le più moderne tecniche di assemblaggio con materiali specifici per l\'uso in architettura effimera. Questo ci permette di offrire un aspetto impeccabile che dimostrerà la qualità al primo sguardo.'],
+      ['Montaggio e validazioni', 'Ci occupiamo di tutto. Con totale tranquillità potrai presentarti il primo giorno di fiera e troverai tutto pronto per iniziare il tuo lavoro commerciale. Stand, catering, cancelleria,... indipendentemente se è una fiera a Madrid, Francoforte, Pechino o Chicago.']
+    ],
+    micro: {
+      title: 'LUZPAVILION',
+      subtitle: 'Tende spaziali per ambienti unici',
+      color: 'Colore',
+      finish: 'Finitura:',
+      descriptionTitle: 'Descrizione:',
+      description: 'Stand di piccolo formato composto da 4 corpi<br>Il suo montaggio è molto semplice; non sono necessari attrezzi.<br>Prodotto modulare liberamente configurabile.',
+      qualitiesTitle: 'Qualità:',
+      materials: 'Materiali',
+      materialsValue: 'MDF, vetro, tessuto architettonico, metallo',
+      finishValue: 'Vernice aerografica + lacca',
+      partsTitle: 'Parti:',
+      parts: '1 = Grafica retroilluminata <br>2 = Scaffali illuminati <br>3 = Logo personalizzato <br>4 = Magazzino <br>5 = Bancone con porte',
+      priceTitle: 'Prezzo:',
+      priceText: 'Set di 4 moduli con illuminazione e <br> grafica personalizzata',
+      chooseFinish: 'Scegli la finitura<br>per vedere il prezzo.',
+      choose: 'Scegli la finitura per vedere il prezzo',
+      partsLabel: 'Parti',
+      price: 'Prezzo',
+      qualities: 'Qualità',
+      pause: 'PAUSA',
+      play: 'RIPRODUCI',
+      visitWeb: 'VISITA SITO SPECIFICO',
+      videos: [
+        { src: '/img/video_standrte_presentacion_empresa.mp4', title: 'Presentazioni Aziendali', subtitle: 'I nostri laboratori e il processo di produzione degli stand.' },
+        { src: '/img/video_standarte_presentacion_vinos.mp4', title: 'Fiere in ambienti storici', subtitle: 'Design rispettoso in location tradizionali e storiche.' },
+        { src: '/img/video_standarte_andalucia.mp4', title: 'Celebrazioni', subtitle: 'Spazi gourmet su misura per cantine ed eventi speciali.' },
+        { src: '/img/video_standarte_feria_verano.mp4', title: 'Fiere all\'aperto di grande formato', subtitle: 'Allestimenti su larga scala e tende premium ad alta resistenza.' }
+      ]
+    },
+    citiesIntro: 'Progettiamo, produciamo e allestiamo stand per fiere ed eventi nelle principali città di Spagna e Portogallo.',
+    customTitle: 'GALLERIA',
+    customSubtitle: 'Classificati per tecnica di montaggio principale.',
+    filters: { all: 'Tutti', Tessile: 'Tessile', Legno: 'Legno' },
+    counters: { projects: 'Progetti', clients: 'Clienti', countries: 'Paesi', fairs: 'Fiere' },
+    teamTitle: 'Squadra',
+    teamSubtitle: 'Siamo un team multidisciplinare, che include architetti, montatori, decoratori, tecnici delle luci... Insieme possiamo fornire una risposta completa a tutte le esigenze di ogni progetto. Non esitare a chiamarci per qualsiasi domanda. Speriamo di conoscerti presto.',
+    teamRoles: ['Creatività e Decorazione', 'Amministratore', 'Officina', 'Coordinamento'],
+    contactTitle: 'Contatto',
+    contactNotice: 'I preventivi generati dai dati di questo modulo sono approssimativi. Il preventivo finale sarà stabilito quando avremo annotato tutti i dettagli.',
+    form: { name: 'Nome', company: 'Azienda', phone: 'Telefono', email: 'Email', fair: 'Fiera', location: 'Città - Paese', meters: 'Metri quadrati', floor: 'Dettagli pavimento', woodFloor: 'Pedana in legno', carpetPlatform: 'Pedana in moquette', carpet: 'Moquette', spaceDistribution: 'Distribuzione spazi', reception: 'Area reception', bar: 'Area bar', storage: 'Magazzino', product: 'Esposizione prodotti', openMeeting: 'Area riunioni aperta', closedMeeting: 'Area riunioni chiusa', audiovisual: 'Audiovisivi', led: 'Schermo LED', projector: 'Proiettore', budget: 'Budget stimato', description: 'Descrizione', privacy: 'Accetta la nostra Privacy Policy', send: 'INVIA' },
+    legal: { privacy: 'Privacy Policy', legalNotice: 'Note Legali', cookies: 'Uso dei Cookie' },
+    legalText: {
+      privacy: '<p>Standarte utilizza i dati inviati per rispondere alle richieste di informazioni e preventivi.</p>',
+      legalNotice: '<p>Questo sito web appartiene a Standarte. L\'uso implica una navigazione responsabile.</p>',
+      cookies: '<p>Utilizziamo i cookie per il funzionamento del web.</p>'
+    },
+    formSuccess: 'Messaggio inviato con successo.<br> Ti contatteremo a breve.<br> Grazie.',
+    formError: 'Impossibile inviare il messaggio. Riprova.',
+    projects3D: { title: 'Altri Progetti', subtitle: 'Esplora le nostre proposte interattive di alta falegnameria.', viewBtn: 'Vedi Progetto' },
+    footer: 'Standarte. Progettazione, produzione e allestimento stand.'
+  },
 };
 
 export const cityData = {
   madrid: {
-    city: { es: 'Madrid', en: 'Madrid', de: 'Madrid', zh: '马德里', hi: 'मैड्रिड', pt: 'Madrid' },
+    city: { es: 'Madrid', en: 'Madrid', de: 'Madrid', zh: '马德里', hi: 'मैड्रिड', pt: 'Madrid', fr: 'Madrid', it: 'Madrid' },
     content: {
       es: {
         intro: 'Madrid concentra una parte esencial de la actividad ferial en España. En Standarte trabajamos la construcción de stands en Madrid con un proceso completo: diseño técnico, fabricación, montaje, validaciones y coordinación para que el espacio esté listo antes de la apertura de feria.',
@@ -631,11 +791,19 @@ export const cityData = {
       pt: {
         intro: 'A Standarte desenvolve stands em Madrid através de um processo completo: design técnico, produção, logística, montagem, validação e coordenação no local antes da abertura do evento.',
         detail: 'Este serviço destina-se a agências de comunicação, expositores e marcas que precisam de execução fiável, acabamentos cuidados e um stand preparado para visitantes profissionais.'
+      },
+      fr: {
+        intro: 'Standarte conçoit et installe des stands à Madrid via un processus complet : design technique, fabrication, logistique, montage, validation et coordination sur site avant l\'ouverture du salon.',
+        detail: 'Ce service s\'adresse aux agences de communication, exposants et marques nécessitant une exécution fiable, des finitions soignées et un espace prêt à accueillir les visiteurs.'
+      },
+      it: {
+        intro: 'Standarte sviluppa stand a Madrid attraverso un processo completo: progettazione tecnica, produzione, logistica, montaggio, validazione e coordinamento in loco prima dell\'apertura dell\'evento.',
+        detail: 'Questo servizio è rivolto ad agenzie di comunicazione, espositori e marchi che necessitano di un\'esecuzione affidabile, finiture curate e uno stand pronto per i visitatori.'
       }
     }
   },
   lisboa: {
-    city: { es: 'Lisboa', en: 'Lisbon', de: 'Lissabon', zh: '里斯本', hi: 'लिस्बन', pt: 'Lisboa' },
+    city: { es: 'Lisboa', en: 'Lisbon', de: 'Lissabon', zh: '里斯本', hi: 'लिस्बन', pt: 'Lisboa', fr: 'Lisbonne', it: 'Lisbona' },
     content: {
       es: {
         intro: 'Lisboa es una ciudad estratégica para proyectos ibéricos. Standarte puede abordar stands en Lisboa coordinando diseño, producción, transporte y montaje con una metodología pensada para agencias y expositores que necesitan una ejecución clara.',
@@ -660,11 +828,19 @@ export const cityData = {
       pt: {
         intro: 'A Standarte desenvolve stands em Lisboa através de um processo completo: design técnico, produção, logística, montagem, validação e coordenação no local antes da abertura do evento.',
         detail: 'Este serviço destina-se a agências de comunicação, expositores e marcas que precisam de execução fiável, acabamentos cuidados e um stand preparado para visitantes profissionais.'
+      },
+      fr: {
+        intro: 'Standarte développe des stands d\'exposition à Lisbonne à travers un processus complet : conception technique, production, logistique, montage et validation sur site.',
+        detail: 'Ce service s\'adresse aux agences de communication, exposants et marques qui ont besoin d\'une exécution fiable et de finitions de haute qualité.'
+      },
+      it: {
+        intro: 'Standarte realizza stand fieristici a Lisbona attraverso un processo completo: progettazione tecnica, produzione, logistica, installazione e validazione in loco.',
+        detail: 'Questo servizio è pensato per agenzie di comunicazione, espositori e brand che richiedono un\'esecuzione affidabile e finiture curate per i visitatori professionali.'
       }
     }
   },
   malaga: {
-    city: { es: 'Málaga', en: 'Malaga', de: 'Málaga', zh: '马拉加', hi: 'मलागा', pt: 'Málaga' },
+    city: { es: 'Málaga', en: 'Malaga', de: 'Málaga', zh: '马拉加', hi: 'मलागा', pt: 'Málaga', fr: 'Malaga', it: 'Malaga' },
     content: {
       es: {
         intro: 'Málaga reúne cada vez más proyectos profesionales, congresos y eventos de marca. Standarte desarrolla stands en Málaga con atención al acabado, la experiencia del visitante y la facilidad de montaje.',
@@ -689,11 +865,19 @@ export const cityData = {
       pt: {
         intro: 'A Standarte desenvolve stands em Málaga através de um processo completo: design técnico, produção, logística, montagem, validação e coordenação no local antes da abertura do evento.',
         detail: 'Este serviço destina-se a agências de comunicação, expositores e marcas que precisam de execução fiável, acabamentos cuidados e um stand preparado para visitantes profissionais.'
+      },
+      fr: {
+        intro: 'Málaga attire de plus en plus de projets professionnels, congrès et événements. Standarte conçoit des stands à Malaga en accordant une attention particulière aux finitions et à l\'expérience visiteur.',
+        detail: 'Notre approche permet de préparer à l\'avance les matériaux, les graphiques et l\'éclairage pour que le stand soit opérationnel dès le premier jour.'
+      },
+      it: {
+        intro: 'Malaga riunisce un numero crescente di progetti professionali e congressi. Standarte progetta stand a Malaga con attenzione ai dettagli e all\'esperienza del visitatore.',
+        detail: 'Il nostro approccio permette di preparare in anticipo materiali, grafica e illuminazione affinché lo stand funzioni fin dal primo giorno.'
       }
     }
   },
   barcelona: {
-    city: { es: 'Barcelona', en: 'Barcelona', de: 'Barcelona', zh: '巴塞罗那', hi: 'बार्सिलोना', pt: 'Barcelona' },
+    city: { es: 'Barcelona', en: 'Barcelona', de: 'Barcelona', zh: '巴塞罗那', hi: 'बार्सिलोना', pt: 'Barcelona', fr: 'Barcelone', it: 'Barcellona' },
     content: {
       es: {
         intro: 'Barcelona es una de las capitales mundiales del diseño y la actividad congresística de vanguardia. En Standarte trabajamos la construcción de stands a medida en Barcelona con un enfoque integral: desde el modelado 3D fidedigno hasta la logística y montaje final en recintos líderes como Fira Barcelona.',
@@ -718,11 +902,19 @@ export const cityData = {
       pt: {
         intro: 'Barcelona é um dos principais polos mundiais de design e atividade de congressos de referência. Na Standarte desenvolvemos stands à medida em Barcelona com um processo completo: desde a conceção técnica em 3D até à montagem final na Fira Barcelona.',
         detail: 'A solução ideal para marcas globais e agências exigentes que procuram acabamentos premium de alta carpintaria e rigor na execução ferial.'
+      },
+      fr: {
+        intro: 'Barcelone est l\'une des capitales mondiales du design et des congrès de pointe. Standarte propose la conception et la construction de stands sur mesure à Barcelone avec une approche intégrale : de la modélisation 3D à la logistique et au montage à la Fira Barcelona.',
+        detail: 'Parfait pour les marques mondiales et les agences exigeantes à la recherche de finitions en haute menuiserie et d\'une précision technique lors de grands événements internationaux.'
+      },
+      it: {
+        intro: 'Barcellona è una delle capitali mondiali del design e dei congressi all\'avanguardia. In Standarte realizziamo stand su misura a Barcellona con un approccio integrale: dalla modellazione 3D alla logistica e all\'allestimento presso Fira Barcelona.',
+        detail: 'Ideale per marchi globali e agenzie esigenti che cercano finiture di alta falegnameria e precisione tecnica in eventi di grande rilevanza internazionale.'
       }
     }
   },
   bilbao: {
-    city: { es: 'Bilbao', en: 'Bilbao', de: 'Bilbao', zh: '毕尔巴鄂', hi: 'बिलबाओ', pt: 'Bilbao' },
+    city: { es: 'Bilbao', en: 'Bilbao', de: 'Bilbao', zh: '毕尔巴鄂', hi: 'बिलबाओ', pt: 'Bilbao', fr: 'Bilbao', it: 'Bilbao' },
     content: {
       es: {
         intro: 'Bilbao representa el corazón industrial y la ingeniería de vanguardia del norte de España. En Standarte llevamos a cabo el diseño y montaje de stands de alta carpintería en Bilbao, aportando solidez constructiva y una presencia de marca inmejorable en el Bilbao Exhibition Centre (BEC).',
@@ -747,11 +939,19 @@ export const cityData = {
       pt: {
         intro: 'Bilbao representa o coração industrial e a engenharia de ponta do norte de Espanha. Na Standarte concebemos e montamos stands de alta carpintaria em Bilbao, proporcionando solidez construtiva e uma forte presença de marca no Bilbao Exhibition Centre (BEC).',
         detail: 'Otimizamos o design de fluxo humano e criamos espacios de permanencia confortables, ideais para empresas industriais com elevados padrões técnicos.'
+      },
+      fr: {
+        intro: 'Bilbao représente le cœur industriel et l\'ingénierie de pointe du nord de l\'Espagne. Standarte réalise la conception et le montage de stands en haute menuiserie à Bilbao, garantissant une solidité constructive et une excellente présence de marque au Bilbao Exhibition Centre (BEC).',
+        detail: 'Nous optimisons la circulation des personnes et créons des espaces confortables, idéaux pour les entreprises industrielles aux normes techniques strictes.'
+      },
+      it: {
+        intro: 'Bilbao rappresenta il cuore industriale e dell\'ingegneria all\'avanguardia nel nord della Spagna. In Standarte ci occupiamo della progettazione e montaggio di stand di alta falegnameria a Bilbao, fornendo solidità e un\'eccellente presenza del brand al Bilbao Exhibition Centre (BEC).',
+        detail: 'Ottimizziamo la circolazione delle persone e creiamo spazi di permanenza confortevoli, ideali per le aziende industriali ad alta esigenza tecnica.'
       }
     }
   },
   badajoz: {
-    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz' },
+    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz' },
     content: {
       es: {
         intro: 'Badajoz y la región de Extremadura representan un mercado ferial dinámico con eventos agrícolas, ganaderos e industriales de gran tradición. En Standarte diseñamos, fabricamos y montamos stands de alta carpintería en recintos de referencia como FEVAL en Don Benito e IFEBA en Badajoz.',
@@ -776,6 +976,14 @@ export const cityData = {
       pt: {
         intro: 'Badajoz e a região da Extremadura representam um mercado de feiras muito dinâmico, com eventos agrícolas, pecuários e industriais de grande tradição. Na Standarte concebemos e montamos stands de alta carpintaria em recintos de referência como a FEVAL em Don Benito e a IFEBA em Badajoz.',
         detail: 'A nossa forte ligação local permite-nos responder rapidamente, otimizar custos de logística e assegurar um stand impecável para encontros de relevo como a AGROEXPO o u a FECIEX.'
+      },
+      fr: {
+        intro: 'Badajoz et la région d\'Estrémadure représentent un marché dynamique avec des événements agricoles, de l\'élevage et industriels de grande tradition. Nous concevons, fabriquons et montons des stands de haute menuiserie dans des lieux clés comme la FEVAL à Don Benito et l\'IFEBA à Badajoz.',
+        detail: 'Notre présence locale nous permet de répondre rapidement, d\'optimiser les coûts logistiques et de garantir un stand impeccable pour des événements majeurs comme AGROEXPO ou FECIEX.'
+      },
+      it: {
+        intro: 'Badajoz e la regione dell\'Estremadura rappresentano un mercato fieristico dinamico con eventi agricoli e industriali di grande tradizione. Progettiamo, produciamo e allestiamo stand di alta falegnameria in centri di riferimento come FEVAL a Don Benito e IFEBA a Badajoz.',
+        detail: 'La nostra presenza locale ci consente di rispondere rapidamente, ottimizzare i costi logistici e garantire uno stand impeccabile per appuntamenti chiave come AGROEXPO o FECIEX.'
       }
     }
   }
@@ -797,7 +1005,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_moebel_in_madrid_spanien",
       "pt": "estande_para_empresa_de_mobiliario_em_madri_espanha",
       "zh": "xibanya_madeli_jiaju_gongsi_zhanwei",
-      "hi": "maidrid_spen_mein_farnichar_kampani_ke_liye_pradarshani_staind"
+      "hi": "maidrid_spen_mein_farnichar_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_mobiliario_en_madrid_spain",
+      "it": "stand_para_empresa_de_mobiliario_en_madrid_spain"
     }
   },
   {
@@ -814,7 +1024,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_aluminiumprofile_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_perfis_aluminio_em_bilbau_espanha",
       "zh": "xibanya_bibao_lv_xingcai_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_elyuminiyam_prophail_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_elyuminiyam_prophail_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_perfiles_aluminio_en_bilbao_spain",
+      "it": "stand_para_empresa_de_perfiles_aluminio_en_bilbao_spain"
     }
   },
   {
@@ -830,7 +1042,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_aluminiumprodukte_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_produtos_aluminio_em_bilbau_espanha",
       "zh": "xibanya_bibao_lv_chanpin_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_elyuminiyam_utpaad_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_elyuminiyam_utpaad_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_productos_aluminio_en_bilbao_spain",
+      "it": "stand_para_empresa_de_productos_aluminio_en_bilbao_spain"
     }
   },
   {
@@ -847,7 +1061,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_elektronische_bauteile_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_componentes_eletronicos_em_bilbau_espanha",
       "zh": "xibanya_bibao_dianzi_yuanjian_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_ilektronik_ghatak_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_ilektronik_ghatak_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_componentes_electronicos_en_bilbao_spain",
+      "it": "stand_para_empresa_de_componentes_electronicos_en_bilbao_spain"
     }
   },
   {
@@ -863,7 +1079,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_schmuck_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_joalheria_em_bilbau_espanha",
       "zh": "xibanya_bibao_zhubao_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_aabhooshan_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_aabhooshan_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_joyeria_en_bilbao_spain",
+      "it": "stand_para_empresa_de_joyeria_en_bilbao_spain"
     }
   },
   {
@@ -880,7 +1098,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_immobilien_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_imoveis_em_bilbau_espanha",
       "zh": "xibanya_bibao_fangdichan_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_riyal_estet_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_riyal_estet_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_bienes_raices_en_bilbao_spain",
+      "it": "stand_para_empresa_de_bienes_raices_en_bilbao_spain"
     }
   },
   {
@@ -897,7 +1117,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_industriesoftware_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_software_industrial_em_bilbau_espanha",
       "zh": "xibanya_bibao_gongye_ruanjian_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_audyogik_sophataveyar_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_audyogik_sophataveyar_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_software_industrial_en_bilbao_spain",
+      "it": "stand_para_empresa_de_software_industrial_en_bilbao_spain"
     }
   },
   {
@@ -914,7 +1136,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_keramik_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_ceramica_em_bilbau_espanha",
       "zh": "xibanya_bibao_taoci_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_siremik_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_siremik_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_ceramica_en_bilbao_spain",
+      "it": "stand_para_empresa_de_ceramica_en_bilbao_spain"
     }
   },
   {
@@ -931,7 +1155,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_gesundheitstechnologie_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_tecnologia_saude_em_bilbau_espanha",
       "zh": "xibanya_bibao_jiankang_keji_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_svaasthy_takaneek_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_svaasthy_takaneek_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_tecnologia_salud_en_bilbao_spain",
+      "it": "stand_para_empresa_de_tecnologia_salud_en_bilbao_spain"
     }
   },
   {
@@ -948,7 +1174,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_perlensmuck_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_joias_perolas_em_bilbau_espanha",
       "zh": "xibanya_bibao_zhenzhu_zhubao_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_moti_aabhooshan_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_moti_aabhooshan_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_joyeria_perlas_en_bilbao_spain",
+      "it": "stand_para_empresa_de_joyeria_perlas_en_bilbao_spain"
     }
   },
   {
@@ -965,7 +1193,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_telekommunikationssatelliten_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_satelites_telecomunicacoes_em_bilbau_espanha",
       "zh": "xibanya_bibao_tongxin_weixing_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_doorsanchaar_upagrah_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_doorsanchaar_upagrah_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_satelites_telecomunicaciones_en_bilbao_spain",
+      "it": "stand_para_empresa_de_satelites_telecomunicaciones_en_bilbao_spain"
     }
   },
   {
@@ -982,7 +1212,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_gesundheitsbeleuchtung_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_iluminacao_saude_em_bilbau_espanha",
       "zh": "xibanya_bibao_jiankang_zhaoming_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_svaasthy_prakash_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_svaasthy_prakash_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_iluminacion_salud_en_bilbao_spain",
+      "it": "stand_para_empresa_de_iluminacion_salud_en_bilbao_spain"
     }
   },
   {
@@ -998,7 +1230,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain"
     }
   },
   {
@@ -1015,7 +1249,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_technologische_forschung_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_pesquisa_tecnologica_em_bilbau_espanha",
       "zh": "xibanya_bibao_jishu_yanjiu_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain",
+      "it": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain"
     }
   },
   {
@@ -1031,7 +1267,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_2",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_2",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_2",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_2"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_2",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_2",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_2"
     }
   },
   {
@@ -1047,7 +1285,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_gesundheitstechnologie_in_bilbao_spanien_2",
       "pt": "estande_para_empresa_de_tecnologia_saude_em_bilbau_espanha_2",
       "zh": "xibanya_bibao_jiankang_keji_gongsi_zhanwei_2",
-      "hi": "bilabao_spen_mein_svaasthy_takaneek_kampani_ke_liye_pradarshani_staind_2"
+      "hi": "bilabao_spen_mein_svaasthy_takaneek_kampani_ke_liye_pradarshani_staind_2",
+      "fr": "stand_para_empresa_de_tecnologia_salud_en_bilbao_spain_2",
+      "it": "stand_para_empresa_de_tecnologia_salud_en_bilbao_spain_2"
     }
   },
   {
@@ -1064,7 +1304,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_3",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_3",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_3",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_3"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_3",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_3",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_3"
     }
   },
   {
@@ -1080,7 +1322,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_4",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_4",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_4",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_4"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_4",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_4",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_4"
     }
   },
   {
@@ -1097,7 +1341,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_5",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_5",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_5",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_5"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_5",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_5",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_5"
     }
   },
   {
@@ -1113,7 +1359,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_perlensmuck_in_bilbao_spanien_2",
       "pt": "estande_para_empresa_de_joias_perolas_em_bilbau_espanha_2",
       "zh": "xibanya_bibao_zhenzhu_zhubao_gongsi_zhanwei_2",
-      "hi": "bilabao_spen_mein_moti_aabhooshan_kampani_ke_liye_pradarshani_staind_2"
+      "hi": "bilabao_spen_mein_moti_aabhooshan_kampani_ke_liye_pradarshani_staind_2",
+      "fr": "stand_para_empresa_de_joyeria_perlas_en_bilbao_spain_2",
+      "it": "stand_para_empresa_de_joyeria_perlas_en_bilbao_spain_2"
     }
   },
   {
@@ -1130,7 +1378,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_6",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_6",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_6",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_6"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_6",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_6",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_6"
     }
   },
   {
@@ -1147,7 +1397,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_technologische_forschung_in_bilbao_spanien_2",
       "pt": "estande_para_empresa_de_pesquisa_tecnologica_em_bilbau_espanha_2",
       "zh": "xibanya_bibao_jishu_yanjiu_gongsi_zhanwei_2",
-      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind_2"
+      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind_2",
+      "fr": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain_2",
+      "it": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain_2"
     }
   },
   {
@@ -1163,7 +1415,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_7",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_7",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_7",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_7"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_7",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_7",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_7"
     }
   },
   {
@@ -1180,7 +1434,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_8",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_8",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_8",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_8"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_8",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_8",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_8"
     }
   },
   {
@@ -1197,7 +1453,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_9",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_9",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_9",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_9"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_9",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_9",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_9"
     }
   },
   {
@@ -1214,7 +1472,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_landwirtschaftliche_werkzeuge_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_ferramentas_agricolas_em_bilbau_espanha",
       "zh": "xibanya_bibao_nongye_gongju_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_krshi_upakaran_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_krshi_upakaran_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_herramientas_agricolas_en_bilbao_spain",
+      "it": "stand_para_empresa_de_herramientas_agricolas_en_bilbao_spain"
     }
   },
   {
@@ -1231,7 +1491,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_technologische_forschung_in_bilbao_spanien_3",
       "pt": "estande_para_empresa_de_pesquisa_tecnologica_em_bilbau_espanha_3",
       "zh": "xibanya_bibao_jishu_yanjiu_gongsi_zhanwei_3",
-      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind_3"
+      "hi": "bilabao_spen_mein_takaniki_anusandhaan_kampani_ke_liye_pradarshani_staind_3",
+      "fr": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain_3",
+      "it": "stand_para_empresa_de_investigacion_tecnologica_en_bilbao_spain_3"
     }
   },
   {
@@ -1248,7 +1510,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_mailand_italien",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_milao_italia",
       "zh": "yidali_milan_jichuang_gongsi_zhanwei",
-      "hi": "milan_itali_mein_mashin_tools_kampani_ke_liye_pradarshani_staind"
+      "hi": "milan_itali_mein_mashin_tools_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_milano_italy",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_milano_italy"
     }
   },
   {
@@ -1265,7 +1529,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_industrierobotik_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_robotica_industrial_em_bilbau_espanha",
       "zh": "xibanya_bibao_gongye_jiqiren_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_audyogik_robotiks_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_audyogik_robotiks_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_robotica_industrial_en_bilbao_spain",
+      "it": "stand_para_empresa_de_robotica_industrial_en_bilbao_spain"
     }
   },
   {
@@ -1282,7 +1548,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_industrierobotik_in_bilbao_spanien_2",
       "pt": "estande_para_empresa_de_robotica_industrial_em_bilbau_espanha_2",
       "zh": "xibanya_bibao_gongye_jiqiren_gongsi_zhanwei_2",
-      "hi": "bilabao_spen_mein_audyogik_robotiks_kampani_ke_liye_pradarshani_staind_2"
+      "hi": "bilabao_spen_mein_audyogik_robotiks_kampani_ke_liye_pradarshani_staind_2",
+      "fr": "stand_para_empresa_de_robotica_industrial_en_bilbao_spain_2",
+      "it": "stand_para_empresa_de_robotica_industrial_en_bilbao_spain_2"
     }
   },
   {
@@ -1299,7 +1567,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_meeresfruechte_in_bilbao_spanien",
       "pt": "estande_para_empresa_de_alimentacao_frutos_mar_em_bilbau_espanha",
       "zh": "xibanya_bibao_haixian_shipin_gongsi_zhanwei",
-      "hi": "bilabao_spen_mein_samudree_bhojan_kampani_ke_liye_pradarshani_staind"
+      "hi": "bilabao_spen_mein_samudree_bhojan_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_alimentacion_pescado_en_bilbao_spain",
+      "it": "stand_para_empresa_de_alimentacion_pescado_en_bilbao_spain"
     }
   },
   {
@@ -1316,7 +1586,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_10",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_10",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_10",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_10"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_10",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_10",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_10"
     }
   },
   {
@@ -1333,7 +1605,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_11",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_11",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_11",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_11"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_11",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_11",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_11"
     }
   },
   {
@@ -1350,7 +1624,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_gesundheitswesen_medizin_in_madrid_spanien",
       "pt": "estande_para_empresa_de_saude_medicina_em_madri_espanha",
       "zh": "xibanya_madeli_yiliao_weisheng_gongsi_zhanwei",
-      "hi": "maidrid_spen_mein_svaasthy_chikitsa_kampani_ke_liye_pradarshani_staind"
+      "hi": "maidrid_spen_mein_svaasthy_chikitsa_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_sanidad_medicina_en_madrid_spain",
+      "it": "stand_para_empresa_de_sanidad_medicina_en_madrid_spain"
     }
   },
   {
@@ -1367,7 +1643,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_12",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_12",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_12",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_12"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_12",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_12",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_12"
     }
   },
   {
@@ -1384,7 +1662,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_hannover_deutschland",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_hanover_alemanha",
       "zh": "deguo_hannuowei_jichuang_gongsi_zhanwei",
-      "hi": "hainaovar_jarmani_mein_mashin_tools_kampani_ke_liye_pradarshani_staind"
+      "hi": "hainaovar_jarmani_mein_mashin_tools_kampani_ke_liye_pradarshani_staind",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_hannover_germany",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_hannover_germany"
     }
   },
   {
@@ -1401,7 +1681,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_13",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_13",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_13",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_13"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_13",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_13",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_13"
     }
   },
   {
@@ -1418,7 +1700,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_werkzeugmaschinen_in_bilbao_spanien_14",
       "pt": "estande_para_empresa_de_maquina_ferramenta_em_bilbau_espanha_14",
       "zh": "xibanya_bibao_jichuang_gongsi_zhanwei_14",
-      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_14"
+      "hi": "bilabao_spen_mein_mashin_tools_kampani_ke_liye_pradarshani_staind_14",
+      "fr": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_14",
+      "it": "stand_para_empresa_de_maquina_herramienta_en_bilbao_spain_14"
     }
   },
   {
@@ -1434,7 +1718,9 @@ export const portfolios = [
       "de": "messestand_fuer_unternehmen_meeresfruechte_in_bilbao_spanien_2",
       "pt": "estande_para_empresa_de_alimentacao_frutos_mar_em_bilbau_espanha_2",
       "zh": "xibanya_bibao_haixian_shipin_gongsi_zhanwei_2",
-      "hi": "bilabao_spen_mein_samudree_bhojan_kampani_ke_liye_pradarshani_staind_2"
+      "hi": "bilabao_spen_mein_samudree_bhojan_kampani_ke_liye_pradarshani_staind_2",
+      "fr": "stand_para_empresa_de_alimentacion_pescado_en_bilbao_spain_2",
+      "it": "stand_para_empresa_de_alimentacion_pescado_en_bilbao_spain_2"
     }
   }
 ];

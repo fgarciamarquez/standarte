@@ -3,7 +3,6 @@ header('Content-Type: application/json; charset=utf-8');
 require_once 'config.php';
 require_once 'template.php';
 require_once 'mailer.php';
-require_once 'leads.php'; // Required for company name resolution
 
 // Permitir peticiones POST solamente
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

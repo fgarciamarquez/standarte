@@ -43,8 +43,8 @@
         <h3>{labels.contactTitle}</h3>
         <p class="politica_privacidad">{labels.contactNotice}</p>
         <ul class="lista_direccion">
-          <li>C/ de Moratin. 28012. Madrid</li>
-          <li>+34 613 097 148</li>
+          <li>Av. de Castilla 2, San Fernando de Henares</li>
+          <li>+34 637 894 819</li>
           <li><a class="link_email _gold" href="mailto:hola@standarte.es">hola@standarte.es</a></li>
         </ul>
         {#if statusMessage}

@@ -239,7 +239,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <svelte:head>
-  <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D प्रोटोटाइप' : '3D Prototype'))))} | Standarte</title>
+  <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'fr' ? 'Prototype 3D' : (lang === 'it' ? 'Prototipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D प्रोटोटाइप' : '3D Prototype'))))))} | Standarte</title>
   <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href={`https://standarte.es/proyectos/${project.id}`} />
@@ -422,6 +422,7 @@
     padding: 0 15px;
     width: 100%;
     text-align: center;
+    background: transparent !important;
   }
 
   .project-meta-top {
