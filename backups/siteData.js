@@ -28,6 +28,8 @@ export const routes = {
     malaga: 'construccion_stands_malaga',
     badajoz: 'construccion_stands_badajoz',
     noticias: 'noticias',
+    ferias: 'jeonsihoe',
+    ferias: 'feiras',
     ferias: 'ferias'
   },
   en: {
@@ -162,7 +164,6 @@ export const routes = {
 
 export const copy = {
   es: {
-    faqsTitle: 'Preguntas Frecuentes', successStoriesTitle: 'Casos de Éxito', featuredProjectsIntro: 'Proyectos destacados de carpintería a medida y diseño de stands:', 
     nav: { services: 'Servicios', custom: 'Galería', noticias: 'Noticias', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Construcción de stands en Madrid, Barcelona, Bilbao, Málaga y Lisboa',
     seoDescription: 'Standarte diseña, fabrica y monta stands de forma profesional y personalizada para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos nacionales e internacionales.',
@@ -247,7 +248,6 @@ export const copy = {
     footer: 'Standarte. Diseño, fabricación y montaje de stands.'
   },
   en: {
-    faqsTitle: 'Frequently Asked Questions', successStoriesTitle: 'Success Stories', featuredProjectsIntro: 'Featured custom carpentry and exhibition stand design projects:', 
     nav: { services: 'Services', custom: 'Gallery', noticias: 'News', contact: 'Contact', language: 'Language' },
     seoTitle: 'Standarte | Stand builder in Madrid, Barcelona, Bilbao, Malaga and Lisbon',
     seoDescription: 'Professional and customized design, production and installation of exhibition stands for trade fairs in Spain and international projects.',
@@ -332,7 +332,6 @@ export const copy = {
     footer: 'Standarte. Exhibition stand design, production and installation.'
   },
   de: {
-    faqsTitle: 'Häufig gestellte Fragen', successStoriesTitle: 'Erfolgsgeschichten', featuredProjectsIntro: 'Ausgewählte Projekte für maßgeschneiderte Tischlerei und Messestanddesign:', 
     nav: { services: 'Dienstleistungen', custom: 'Galerie', noticias: 'Nachrichten', contact: 'Kontakt', language: 'Sprache' },
     seoTitle: 'Standarte | Messestand Design und Bau',
     seoDescription: 'Design, Produktion und Montage von Messeständen für Spanien und internationale Projekte.',
@@ -417,7 +416,6 @@ export const copy = {
     footer: 'Standarte. Design, Produktion und Montage von Messeständen.'
   },
   zh: {
-    faqsTitle: '常见问题', successStoriesTitle: '成功案例', featuredProjectsIntro: '特色定制木工和展台设计项目：', 
     nav: { services: '服务', custom: '展台图库', noticias: '新闻', contact: '联系', language: '语言' },
     seoTitle: 'Standarte | 展台设计与搭建',
     seoDescription: 'Standarte 提供展会展台设计、制作与搭建服务。',
@@ -498,7 +496,6 @@ export const copy = {
     footer: 'Standarte. 展台设计、制作与搭建。'
   },
   hi: {
-    faqsTitle: 'अक्सर पूछे जाने वाले प्रश्न', successStoriesTitle: 'सफलता की कहानियाँ', featuredProjectsIntro: 'विशेष कस्टम बढ़ईगीरी और प्रदर्शनी स्टैंड डिजाइन परियोजनाएं:', 
     nav: { services: 'सेवाएँ', custom: 'गैलरी', noticias: 'समाचार', contact: 'संपर्क', language: 'भाषा' },
     seoTitle: 'Standarte | प्रदर्शनी स्टैंड डिजाइन और निर्माण',
     seoDescription: 'Standarte प्रदर्शनियों के लिए स्टैंड डिजाइन, निर्माण और स्थापना सेवाएं प्रदान करता है।',
@@ -579,7 +576,6 @@ export const copy = {
     footer: 'Standarte. प्रदर्शनी स्टैंड डिजाइन, निर्माण और इंस्टॉलेशन।'
   },
   pt: {
-    faqsTitle: 'Perguntas Frequentes', successStoriesTitle: 'Casos de Sucesso', featuredProjectsIntro: 'Projetos destacados de marcenaria à medida e design de stands:', 
     nav: { services: 'Serviços', custom: 'Galeria', noticias: 'Notícias', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Construção de stands em Madrid, Barcelona, Bilbao, Málaga e Lisboa',
     seoDescription: 'Design, produção e montagem de stands para feiras em Espanha e projetos internacionais.',
@@ -667,7 +663,6 @@ export const copy = {
     footer: 'Standarte. Design, produção e montagem de stands.'
   },
   fr: {
-    faqsTitle: 'Foire Aux Questions', successStoriesTitle: 'Histoires de Réussite', featuredProjectsIntro: 'Projets phares de menuiserie sur mesure et de conception de stands:', 
     nav: { services: 'Services', custom: 'Galerie', noticias: 'Actualités', contact: 'Contact', language: 'Langue' },
     seoTitle: 'Standarte | Constructeur de stands à Madrid, Barcelone, Bilbao, Malaga et Lisbonne',
     seoDescription: 'Standarte conçoit, fabrique et installe des stands de manière professionnelle et personnalisée pour des salons en Espagne et à l\'international.',
@@ -732,7 +727,6 @@ export const copy = {
     footer: 'Standarte. Conception, fabrication et montage de stands.'
   },
   it: {
-    faqsTitle: 'Domande Frequenti', successStoriesTitle: 'Storie di Successo', featuredProjectsIntro: 'Progetti in evidenza di falegnameria su misura e design di stand espositivi:', 
     nav: { services: 'Servizi', custom: 'Galleria', noticias: 'Notizie', contact: 'Contatto', language: 'Lingua' },
     seoTitle: 'Standarte | Allestimenti fieristici a Madrid, Barcellona, Bilbao, Malaga e Lisbona',
     seoDescription: 'Standarte progetta, produce e allestisce stand in modo professionale e personalizzato per fiere in Spagna e all\'estero.',

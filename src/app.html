@@ -21,6 +21,9 @@
     <script>
       (function() {
         if (window.location.pathname === '/') {
+          var ua = navigator.userAgent.toLowerCase();
+          if (ua.indexOf('googlebot') !== -1 || ua.indexOf('bingbot') !== -1 || ua.indexOf('crawler') !== -1 || ua.indexOf('spider') !== -1) return;
+          
           var savedLang = localStorage.getItem('standarte_lang');
           if (savedLang === 'es') return;
           if (savedLang && savedLang !== 'es') {

@@ -120,18 +120,7 @@
     ? activePortfolios
     : activePortfolios.filter((project) => project.categories.includes(portfolioFilter));
 
-  $: seoContent = (() => {
-    const bySection = richSeoData[section];
-    if (!bySection) {
-      if (import.meta.env.DEV) console.warn(`[i18n] No existe richSeoData["${section}"]`);
-      return null;
-    }
-    if (bySection[lang]) return bySection[lang];
-    if (import.meta.env.DEV && lang !== 'es') {
-      console.warn(`[i18n] Falta richSeoData["${section}"]["${lang}"] — fallback a ES`);
-    }
-    return bySection.es || null;
-  })();
+  $: seoContent = richSeoData[section]?.[lang] || richSeoData[section]?.es || null;
   $: selectedPortfolios = portfolios.slice(0, 3);
 
   $: title = seoContent?.title || (section in cityData
@@ -174,14 +163,6 @@
     const city = cityData[id];
     const byLang = city?.content?.[lang] || city?.content?.es || {};
     return byLang;
-  }
-
-
-  function getProjectTitle(project) {
-    if (project?.title) {
-      return project.title[lang] || project.title.es || project.name;
-    }
-    return project?.alt || project?.name || '';
   }
 
   function projectDescription(project) {
@@ -270,7 +251,7 @@
     const siteNavigation = {
       '@type': 'ItemList',
       '@id': `${baseUrl}/#site-navigation`,
-      name: lang === 'es' ? 'Estructura principal de Standarte' : 'Standarte Main Structure',
+      name: 'Estructura principal de Standarte',
       itemListElement: navigationItems.map(([name, path], index) => ({
         '@type': 'SiteNavigationElement',
         position: index + 1,
@@ -702,8 +683,8 @@
         {#each filteredPortfolios as project}
           <div class={`mix ${project.categories.join(' ')}`}>
             <div class="portfolio-item">
-              <a class="shot-item" href="/galeria/{project.slugs[lang] || project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={getProjectTitle(project)}>
-                <img src={`/${project.thumb}`} alt={getProjectTitle(project)} loading="lazy" decoding="async" />
+              <a class="shot-item" href="/galeria/{project.slugs[lang] || project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={project.alt}>
+                <img src={`/${project.thumb}`} alt={project.alt} loading="lazy" decoding="async" />
                 <span class="overlay lightbox" aria-hidden="true">
                   <span class="item-icon eye-icon"></span>
                 </span>
@@ -714,12 +695,12 @@
       </div>
 
       {#if lightboxProject}
-        <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={getProjectTitle(lightboxProject)} aria-describedby="project-lightbox-description" tabindex="-1">
+        <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={lightboxProject.alt} aria-describedby="project-lightbox-description" tabindex="-1">
           <div class="lightbox-window" role="document">
             <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
-            <img src={`/${lightboxProject.full}`} alt={getProjectTitle(lightboxProject)} />
+            <img src={`/${lightboxProject.full}`} alt={lightboxProject.alt} />
             <div class="lightbox-caption">
-              <strong>{getProjectTitle(lightboxProject)}</strong>
+              <strong>{lightboxProject.alt}</strong>
               <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
             </div>
           </div>
@@ -744,13 +725,13 @@
               <article class="carousel-card" style="width: {100 / carouselVisibleCount}%;">
                 <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-link">
                   <div class="carousel-img-wrap">
-                    <img src={project.image} alt={getProjectTitle(project)} loading="lazy" />
+                    <img src={project.image} alt={project.name} loading="lazy" />
                     <div class="carousel-overlay">
                       <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
                     </div>
                   </div>
                   <div class="carousel-caption">
-                    <h3>{getProjectTitle(project)}</h3>
+                    <h3>{project.name}</h3>
                     <span class="location">{project.location}</span>
                   </div>
                 </a>
@@ -858,17 +839,19 @@
           <aside class="seo-sidebar">
             <div class="sidebar-sticky">
               <div class="spotlight-card">
-                <h3>{copy.successStoriesTitle}</h3>
+                <h3>{lang === 'es' ? 'Casos de Éxito' : 'Success Stories'}</h3>
                 <p class="spotlight-intro">
-                  {copy.featuredProjectsIntro}
+                  {lang === 'es' 
+                    ? 'Proyectos destacados de alta carpintería y diseño de stands efímeros:' 
+                    : 'Featured custom carpentry and exhibition stand design projects:'}
                 </p>
                 
                 <div class="sidebar-projects">
                   {#each selectedPortfolios as project}
                     <div class="sidebar-project-card">
-                      <img src={`/${project.thumb}`} alt={getProjectTitle(project)} class="sidebar-project-img" />
+                      <img src={`/${project.thumb}`} alt={project.alt} class="sidebar-project-img" />
                       <div class="sidebar-project-info">
-                        <h4>{getProjectTitle(project)}</h4>
+                        <h4>{project.alt}</h4>
                         <p>{projectDescription(project)}</p>
                       </div>
                     </div>
@@ -886,7 +869,7 @@
         <!-- FAQs Section (B2B FAQ grids) -->
         {#if seoContent.faqs && seoContent.faqs.length > 0}
           <section class="seo-faqs">
-            <h2>{copy.faqsTitle}</h2>
+            <h2>{lang === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}</h2>
             <div class="faq-grid">
               {#each seoContent.faqs as faq}
                 <article class="faq-card">
