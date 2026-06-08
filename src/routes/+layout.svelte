@@ -1,6 +1,7 @@
 <script>
   import '../app.css';
   import WhatsAppButton from '$lib/components/WhatsAppButton.svelte';
+  import SchemaLocalBusiness from '$lib/components/SchemaLocalBusiness.svelte';
   import { page } from '$app/stores';
   import { browser } from '$app/environment';
 
@@ -9,5 +10,6 @@
   }
 </script>
 
+<SchemaLocalBusiness />
 <slot />
 <WhatsAppButton />

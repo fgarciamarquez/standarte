@@ -58,7 +58,10 @@
     de: 'de_DE',
     zh: 'zh_CN',
     hi: 'hi_IN',
-    pt: 'pt_PT'
+    pt: 'pt_PT',
+    fr: 'fr_FR',
+    it: 'it_IT',
+    ko: 'ko_KR'
   };
   const contentLanguages = {
     es: 'es-ES',
@@ -66,7 +69,10 @@
     de: 'de-DE',
     zh: 'zh-CN',
     hi: 'hi-IN',
-    pt: 'pt-PT'
+    pt: 'pt-PT',
+    fr: 'fr-FR',
+    it: 'it-IT',
+    ko: 'ko-KR'
   };
   const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz'];
   const serviceIcons = ['icon-pencil', 'icon-crop', 'icon-layers'];
@@ -179,7 +185,7 @@
     ];
 
     const organization = {
-      '@type': 'LocalBusiness',
+      '@type': 'Organization',
       '@id': `${baseUrl}/#organization`,
       name: 'Standarte',
       url: `${baseUrl}/`,
@@ -538,7 +544,6 @@
   {#each languages.filter((alternateLang) => alternateLang !== lang) as alternateLang}
     <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
   {/each}
-  {@html `<script type="application/ld+json">${structuredData.replace(/</g, '\\u003c')}</script>`}
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} on:scroll={updateScrollState} />
@@ -927,6 +932,8 @@
 {/if}
 
 <CookieConsent {lang} />
+
+{@html `<script type="application/ld+json">${structuredData.replace(/</g, '\\u003c')}</script>`}
 
 <style>
   .nav-badge-new {
