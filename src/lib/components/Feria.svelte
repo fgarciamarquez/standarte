@@ -1,7 +1,31 @@
 <script>
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor } from '$lib/siteData.js';
+  import { pathFor, languages } from '$lib/siteData.js';
   import ContactForm from './ContactForm.svelte';
+  
+  const languageLocales = {
+    es: 'es_ES',
+    en: 'en_GB',
+    de: 'de_DE',
+    zh: 'zh_CN',
+    hi: 'hi_IN',
+    pt: 'pt_PT',
+    fr: 'fr_FR',
+    it: 'it_IT',
+    ko: 'ko_KR'
+  };
+  const contentLanguages = {
+    es: 'es-ES',
+    en: 'en-GB',
+    de: 'de-DE',
+    zh: 'zh-CN',
+    hi: 'hi-IN',
+    pt: 'pt-PT',
+    fr: 'fr-FR',
+    it: 'it-IT',
+    ko: 'ko-KR'
+  };
+
   
   export let data;
   let isScrolled = false;
@@ -232,7 +256,14 @@
 
   $: localizedCity = (cities[lang] && cities[lang][fair.city]) ? cities[lang][fair.city] : fair.city;
   $: localizedSector = (sectors[lang] && sectors[lang][fair.sector]) ? sectors[lang][fair.sector] : fair.sector;
-  $: strings = t[lang] || t.es;
+  $: strings = (() => {
+    const byLang = t[lang];
+    if (byLang) return byLang;
+    if (import.meta.env.DEV && lang !== 'es') {
+      console.warn(`[i18n] Falta traducción t["${lang}"] en Feria.svelte — fallback a ES`);
+    }
+    return t.es;
+  })();
   
   $: seoTitle = `${fair.name} - ${strings.heroSubtitle(localizedCity).split(' con ')[0]}`;
   $: seoDesc = strings.intro(fair.name, localizedCity, localizedSector);
@@ -241,7 +272,26 @@
 <svelte:head>
   <title>{seoTitle}</title>
   <meta name="description" content={seoDesc} />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
+  {#each languages as alternateLang}
+    <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es${alternateLang === 'es' ? '' : `/${alternateLang}`}/ferias/${fair.slug}`} />
+  {/each}
+  <link rel="alternate" hreflang="x-default" href={`https://standarte.es/ferias/${fair.slug}`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Standarte" />
+  <meta property="og:title" content={seoTitle} />
+  <meta property="og:description" content={seoDesc} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content={languageLocales[lang] || 'es_ES'} />
+  {#if lang !== 'es'}
+    <meta property="og:locale:alternate" content="es_ES" />
+  {:else}
+    {#each languages.filter((alternateLang) => alternateLang !== 'es') as alternateLang}
+      <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
+    {/each}
+  {/if}
 </svelte:head>
 
 <svelte:window bind:scrollY={isScrolled} />

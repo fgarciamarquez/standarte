@@ -155,7 +155,10 @@
     de: `Details des maßgeschneiderten 3D-Messestanddesigns für ${project.name} in ${project.location}. Erfahren Sie mehr über das Verhältnis zu unseren architektonischen Werten.`,
     pt: `Detalhes do design tridimensional de stand sob medida para ${project.name} em ${project.location}. Conheça sua relación com los nuestros valores arquitetônicos.`,
     zh: `专为 ${project.name} 在 ${project.location} 设计的定制3D展台细节。了解其与我们建筑价值观的关系。`,
-    hi: `${project.location} में ${project.name} के लिए कस्टम 3D स्टैंड डिज़ाइन का विवरण。 हमारे वास्तुकला मूल्यों के साथ इसके संबंध के बारे में जानें。`
+    hi: `${project.location} में ${project.name} के लिए कस्टम 3D स्टैंड डिज़ाइन का विवरण。 हमारे वास्तुकला मूल्यों के साथ इसके संबंध के बारे में जानें。`,
+    fr: `Détails de la conception de stand 3D sur mesure pour ${project.name} à ${project.location}. Découvrez sa relation avec nos valeurs architecturales.`,
+    it: `Dettagli del design di stand 3D su misura per ${project.name} a ${project.location}. Scopri la sua relazione con i nostri valori architettonici.`,
+    ko: `${project.location}에서 진행된 ${project.name} 맞춤형 3D 부스 디자인 상세 정보. 당사의 건축적 가치와의 관계에 대해 알아보십시오.`
   } : {};
 
   $: creativeWorkNames = project ? {

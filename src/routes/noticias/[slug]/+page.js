@@ -10,5 +10,6 @@ export function load({ params }) {
   if (!article) {
     throw error(404, 'Artículo no encontrado');
   }
-  return { article };
+  const alternates = news.filter(item => item.date === article.date && item.location === article.location && item.lang !== article.lang);
+  return { article, alternates };
 }

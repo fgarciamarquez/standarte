@@ -9,7 +9,44 @@
   let menuOpen = false;
   let isScrolled = false;
 
-  $: currentCopy = copy[lang] || copy.es;
+  $: currentCopy = (() => {
+    const byLang = copy[lang];
+    if (byLang) return byLang;
+    if (import.meta.env.DEV && lang !== 'es') {
+      console.warn(`[i18n] Falta copy["${lang}"] en noticias — fallback a ES`);
+    }
+    return copy.es;
+  })();
+
+  const languageLocales = {
+    es: 'es_ES',
+    en: 'en_GB',
+    de: 'de_DE',
+    zh: 'zh_CN',
+    hi: 'hi_IN',
+    pt: 'pt_PT',
+    fr: 'fr_FR',
+    it: 'it_IT',
+    ko: 'ko_KR'
+  };
+  const contentLanguages = {
+    es: 'es-ES',
+    en: 'en-GB',
+    de: 'de-DE',
+    zh: 'zh-CN',
+    hi: 'hi-IN',
+    pt: 'pt-PT',
+    fr: 'fr-FR',
+    it: 'it-IT',
+    ko: 'ko-KR'
+  };
+
+  function getAlternateUrl(option) {
+    if (option === lang) return `/noticias/${article.slug}`;
+    const alt = (data.alternates || []).find(a => a.lang === option);
+    if (alt) return `/noticias/${alt.slug}`;
+    return pathFor(option, 'noticias');
+  }
 
   const ctaLabels = {
     es: 'SOLICITAR PRESUPUESTO',
@@ -105,12 +142,31 @@
   <title>{article.title} | Noticias Standarte</title>
   <meta name="description" content={article.excerpt} />
   <meta name="robots" content="index, follow" />
+  <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={`https://standarte.es/noticias/${article.slug}/`} />
+  
+  {#each languages as alternateLang}
+    {@const alt = alternateLang === article.lang ? article : (data.alternates || []).find(a => a.lang === alternateLang)}
+    {#if alt}
+      <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es/noticias/${alt.slug}`} />
+    {/if}
+  {/each}
+  <link rel="alternate" hreflang="x-default" href={`https://standarte.es/noticias/${((data.alternates || []).find(a => a.lang === 'es') || article).slug}`} />
+
   <meta property="og:type" content="article" />
   <meta property="og:title" content={`${article.title} | Standarte`} />
   <meta property="og:description" content={article.excerpt} />
   <meta property="og:url" content={`https://standarte.es/noticias/${article.slug}/`} />
   <meta property="og:site_name" content="Standarte" />
+  <meta property="og:locale" content={languageLocales[lang] || 'es_ES'} />
+  {#if lang !== 'es'}
+    <meta property="og:locale:alternate" content="es_ES" />
+  {:else}
+    {#each languages.filter((alternateLang) => alternateLang !== 'es') as alternateLang}
+      <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
+    {/each}
+  {/if}
+  
   <meta property="article:published_time" content={article.date} />
   <meta property="article:section" content="Exhibition Stands" />
   {#each article.seoKeywords as kw}
@@ -191,7 +247,7 @@
             <div class="footer-lang-dropdown">
               {#each languages as option}
                 <a
-                  href={pathFor(option, 'noticias')}
+                  href={getAlternateUrl(option)}
                   class:active={option === lang}
                   on:click={() => {
                     if (typeof localStorage !== 'undefined') {

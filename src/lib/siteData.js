@@ -28,8 +28,6 @@ export const routes = {
     malaga: 'construccion_stands_malaga',
     badajoz: 'construccion_stands_badajoz',
     noticias: 'noticias',
-    ferias: 'jeonsihoe',
-    ferias: 'feiras',
     ferias: 'ferias'
   },
   en: {
@@ -109,7 +107,8 @@ export const routes = {
     lisboa: 'construcao_stands_lisboa',
     malaga: 'construcao_stands_malaga',
     badajoz: 'construcao_stands_badajoz',
-    noticias: 'noticias'
+    noticias: 'noticias',
+    ferias: 'feiras'
   },
   fr: {
     home: '',
@@ -637,7 +636,7 @@ export const copy = {
     customSubtitle: 'Classificados pela técnica principal de montagem.',
     filters: { all: 'Tudo', textil: 'Têxtil', madera: 'Madeira' },
     counters: { projects: 'Projetos', clients: 'Clientes', countries: 'Países', fairs: 'Feiras' },
-    teamTitle: 'Equipo',
+    teamTitle: 'Equipa',
     teamSubtitle: 'Somos uma equipa multidisciplinar, incluindo arquitectos, montadores, decoradores, técnicos de iluminação,... Juntos podemos dar uma resposta completa a todas as necessidades de cada projecto. Não hesite em nos chamar para qualquer dúvida que tenha. Esperamos conhecê-lo em breve.',
     teamRoles: ['Criatividade e Decoração', 'Administrador', 'Oficina', 'Coordenação'],
     contactTitle: 'Contacto',

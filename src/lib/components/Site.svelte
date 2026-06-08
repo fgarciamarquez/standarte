@@ -120,7 +120,18 @@
     ? activePortfolios
     : activePortfolios.filter((project) => project.categories.includes(portfolioFilter));
 
-  $: seoContent = richSeoData[section]?.[lang] || richSeoData[section]?.es || null;
+  $: seoContent = (() => {
+    const bySection = richSeoData[section];
+    if (!bySection) {
+      if (import.meta.env.DEV) console.warn(`[i18n] No existe richSeoData["${section}"]`);
+      return null;
+    }
+    if (bySection[lang]) return bySection[lang];
+    if (import.meta.env.DEV && lang !== 'es') {
+      console.warn(`[i18n] Falta richSeoData["${section}"]["${lang}"] — fallback a ES`);
+    }
+    return bySection.es || null;
+  })();
   $: selectedPortfolios = portfolios.slice(0, 3);
 
   $: title = seoContent?.title || (section in cityData
@@ -544,9 +555,13 @@
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:locale" content={languageLocales[lang] || 'es_ES'} />
-  {#each languages.filter((alternateLang) => alternateLang !== lang) as alternateLang}
-    <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
-  {/each}
+  {#if lang !== 'es'}
+    <meta property="og:locale:alternate" content="es_ES" />
+  {:else}
+    {#each languages.filter((alternateLang) => alternateLang !== 'es') as alternateLang}
+      <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
+    {/each}
+  {/if}
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} on:scroll={updateScrollState} />

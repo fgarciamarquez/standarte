@@ -85,7 +85,10 @@
     de: 'Nachrichten und Messen in Madrid, Barcelona, Bilbao, Lissabon, Malaga und Badajoz | Standarte',
     pt: 'Notícias e Feiras em Madrid, Barcelona, Bilbao, Lisboa, Málaga e Badajoz | Standarte',
     zh: '马德里、巴塞罗那、毕尔巴鄂、里斯本、马拉加和巴达霍斯的新闻与展会 | Standarte',
-    hi: 'मैड्रिड, बार्सिलोना, बिलबाओ, लिस्बन, मलागा और बादाहोज़ में समाचार और मेले | Standarte'
+    hi: 'मैड्रिड, बार्सिलोना, बिलबाओ, लिस्बन, मलागा और बादाहोज़ में समाचार और मेले | Standarte',
+    fr: 'Actualités et Salons à Madrid, Barcelone, Bilbao, Lisbonne, Malaga et Badajoz | Standarte',
+    it: 'Notizie e Fiere a Madrid, Barcellona, Bilbao, Lisbona, Malaga e Badajoz | Standarte',
+    ko: '마드리드, 바르셀로나, 빌바오, 리스본, 말라가, 바다호스의 뉴스 및 박람회 | Standarte'
   };
 
   const seoDescriptions = {
@@ -94,7 +97,10 @@
     de: 'Aktuelle Artikel über Messen in Madrid, Barcelona, Bilbao, Lissabon, Malaga und Badajoz. Die besten Strategien für das Design von Messeständen.',
     pt: 'Artigos atuais sobre feiras em Madrid, Barcelona, Bilbao, Lisboa, Málaga e Badajoz. As melhores estratégias de design de stands à medida.',
     zh: '关于马德里、巴塞罗那、毕尔巴鄂、里斯本、马拉加和巴达霍斯展会的最新文章。最佳的定制展台设计策略。',
-    hi: 'मैड्रिड, बार्सिलोना, बिलबाओ, लिस्बन, मलागा और बादाहोज़ में मेलों पर वर्तमान लेख। सर्वश्रेष्ठ कस्टम प्रदर्शनी स्टैंड डिजाइन रणनीतियाँ।'
+    hi: 'मैड्रिड, बार्सिलोना, बिलबाओ, लिस्बन, मलागा और बादाहोज़ में मेलों पर वर्तमान लेख। सर्वश्रेष्ठ कस्टम प्रदर्शनी स्टैंड डिजाइन रणनीतियाँ。',
+    fr: "Articles d'actualité sur les salons à Madrid, Barcelone, Bilbao, Lisbonne, Malaga et Badajoz. Les meilleures stratégies de conception de stands sur mesure.",
+    it: 'Articoli di attualità sulle fiere a Madrid, Barcellona, Bilbao, Lisbona, Malaga e Badajoz. Le migliori strategie di progettazione di stand su misura.',
+    ko: '마드리드, 바르셀로나, 빌바오, 리스본, 말라가, 바다호스의 박람회에 관한 최신 기사. 최고의 맞춤형 전시 부스 디자인 전략.'
   };
 </script>
 
