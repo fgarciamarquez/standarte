@@ -7,6 +7,7 @@
 
   $: if (browser && $page.data.lang) {
     localStorage.setItem('standarte_lang', $page.data.lang);
+    localStorage.setItem('preferredLanguage', $page.data.lang);
   }
 </script>
 

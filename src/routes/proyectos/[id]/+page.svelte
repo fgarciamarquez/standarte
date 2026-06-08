@@ -22,14 +22,16 @@
       }
 
       if (typeof localStorage !== 'undefined') {
-        const savedPref = localStorage.getItem('preferredLanguage');
+        const savedPref = localStorage.getItem('preferredLanguage') || localStorage.getItem('standarte_lang');
         
         // If there was a lang param, save it as preferred
         if (urlLang) {
           localStorage.setItem('preferredLanguage', urlLang);
+          localStorage.setItem('standarte_lang', urlLang);
         } else {
           // If no lang param (defaulting to 'es')
           localStorage.setItem('preferredLanguage', 'es');
+          localStorage.setItem('standarte_lang', 'es');
           
           const hasAutoRedirected = sessionStorage.getItem('hasAutoRedirected');
 
@@ -47,12 +49,14 @@
               
               if (browserLang !== 'es' && languages.includes(browserLang)) {
                 localStorage.setItem('preferredLanguage', browserLang);
+                localStorage.setItem('standarte_lang', browserLang);
                 const url = new URL(window.location.href);
                 url.searchParams.set('lang', browserLang);
                 window.location.href = url.toString();
                 return;
               } else {
                 localStorage.setItem('preferredLanguage', 'es');
+                localStorage.setItem('standarte_lang', 'es');
               }
             }
           }
@@ -94,6 +98,7 @@
       window.history.replaceState({}, '', url.toString());
       if (typeof localStorage !== 'undefined') {
         localStorage.setItem('preferredLanguage', targetLang);
+        localStorage.setItem('standarte_lang', targetLang);
       }
     }
   }

@@ -37,21 +37,17 @@
     isScrolled = window.scrollY > 8;
   }
 
-  function switchLanguage(targetLang) {
-    lang = targetLang;
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('preferredLanguage', targetLang);
-    }
-  }
+
 
   onMount(() => {
     // Automatic browser language detection and redirect
     if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-      const savedPref = localStorage.getItem('preferredLanguage');
+      const savedPref = localStorage.getItem('preferredLanguage') || localStorage.getItem('standarte_lang');
       const hasAutoRedirected = sessionStorage.getItem('hasAutoRedirected');
       
       // Save current language preference when visited
       localStorage.setItem('preferredLanguage', lang);
+      localStorage.setItem('standarte_lang', lang);
 
       if (lang === 'es' && !hasAutoRedirected) {
         sessionStorage.setItem('hasAutoRedirected', 'true');
@@ -65,10 +61,12 @@
           
           if (browserLang !== 'es' && languages.includes(browserLang)) {
             localStorage.setItem('preferredLanguage', browserLang);
+            localStorage.setItem('standarte_lang', browserLang);
             window.location.href = pathFor(browserLang, 'noticias');
             return;
           } else {
             localStorage.setItem('preferredLanguage', 'es');
+            localStorage.setItem('standarte_lang', 'es');
           }
         }
       }
@@ -208,9 +206,18 @@
             <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
             <div class="footer-lang-dropdown">
               {#each languages as option}
-                <button type="button" class:active={option === lang} on:click={() => switchLanguage(option)}>
+                <a
+                  href={pathFor(option, 'noticias')}
+                  class:active={option === lang}
+                  on:click={() => {
+                    if (typeof localStorage !== 'undefined') {
+                      localStorage.setItem('standarte_lang', option);
+                      localStorage.setItem('preferredLanguage', option);
+                    }
+                  }}
+                >
                   {languageLabels[option]}
-                </button>
+                </a>
               {/each}
             </div>
           </div>
