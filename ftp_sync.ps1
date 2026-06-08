@@ -33,6 +33,8 @@ if (-not (Test-Path $localRoot)) {
     New-Item -ItemType Directory -Path $localRoot | Out-Null
 }
 
+$script:createdDirectories = @{}
+
 $ignoreList = [System.Collections.Generic.List[string]]::new()
 $ignoreList.Add("ftp_sync.ps1")
 $ignoreList.Add("ftp_sync.php")
@@ -191,62 +193,71 @@ function Get-LocalFilesRecurse($localRoot, $ignoreList) {
 
 # Remote actions
 function New-RemoteDirectory($hostName, $username, $password, $remoteRoot, $relativePath) {
-    $parts = $relativePath.Split('/')
-    $current = $remoteRoot
-    foreach ($part in $parts) {
-        if ([string]::IsNullOrEmpty($part)) { continue }
-        $current = "$current/$part"
-        $uri = "ftp://$hostName$current"
-        
+    $normalizedPath = ($relativePath -replace '\\', '/').Trim('/')
+    if ([string]::IsNullOrEmpty($normalizedPath)) { return }
+    
+    if ($script:createdDirectories.ContainsKey($normalizedPath)) {
+        return
+    }
+    
+    # Asegurar recursivamente que el directorio padre existe
+    $parts = $normalizedPath -split '/'
+    if ($parts.Count -gt 1) {
+        $parentPath = ($parts[0..($parts.Count - 2)] -join '/')
+        New-RemoteDirectory -hostName $hostName -username $username -password $password -remoteRoot $remoteRoot -relativePath $parentPath
+    }
+    
+    if (-not $script:createdDirectories.ContainsKey($normalizedPath)) {
+        $uri = "ftp://$hostName$remoteRoot/$normalizedPath"
         try {
-            $request = [System.Net.FtpWebRequest]::Create($uri)
-            $request.Credentials = New-Object System.Net.NetworkCredential($username, $password)
-            $request.Method = [System.Net.WebRequestMethods+Ftp]::ListDirectory
-            $request.UsePassive = $true
-            $request.KeepAlive = $false
-            $response = $request.GetResponse()
-            $response.Close()
+            Write-Host "Creando directorio remoto: $remoteRoot/$normalizedPath ... " -NoNewline
+            $mkRequest = [System.Net.FtpWebRequest]::Create($uri)
+            $mkRequest.Credentials = New-Object System.Net.NetworkCredential($username, $password)
+            $mkRequest.Method = [System.Net.WebRequestMethods+Ftp]::MakeDirectory
+            $mkRequest.UsePassive = $true
+            $mkRequest.KeepAlive = $false
+            $mkResponse = $mkRequest.GetResponse()
+            $mkResponse.Close()
+            Write-Host "[OK]" -ForegroundColor Green
         } catch {
-            try {
-                Write-Host "Creando directorio remoto: $current" -ForegroundColor Green
-                $mkRequest = [System.Net.FtpWebRequest]::Create($uri)
-                $mkRequest.Credentials = New-Object System.Net.NetworkCredential($username, $password)
-                $mkRequest.Method = [System.Net.WebRequestMethods+Ftp]::MakeDirectory
-                $mkRequest.UsePassive = $true
-                $mkRequest.KeepAlive = $false
-                $mkResponse = $mkRequest.GetResponse()
-                $mkResponse.Close()
-            } catch {
-                Write-Host "Error al crear directorio remoto $current : $_" -ForegroundColor Red
-            }
+            Write-Host "[YA EXISTE o ERROR]" -ForegroundColor Yellow
         }
+        $script:createdDirectories[$normalizedPath] = $true
     }
 }
 
 function Send-RemoteFile($hostName, $username, $password, $localPath, $remotePath) {
-    try {
-        $uri = "ftp://$hostName$remotePath"
-        $request = [System.Net.FtpWebRequest]::Create($uri)
-        $request.Credentials = New-Object System.Net.NetworkCredential($username, $password)
-        $request.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
-        $request.UseBinary = $true
-        $request.KeepAlive = $false
-        $request.UsePassive = $true
-        $request.Timeout = 30000
-        
-        $fileBytes = [System.IO.File]::ReadAllBytes($localPath)
-        $request.ContentLength = $fileBytes.Length
-        $requestStream = $request.GetRequestStream()
-        $requestStream.Write($fileBytes, 0, $fileBytes.Length)
-        $requestStream.Close()
-        
-        $response = $request.GetResponse()
-        $response.Close()
-        return $true
-    } catch {
-        Write-Host "Error al subir $localPath a $remotePath : $_" -ForegroundColor Red
-        return $false
+    $maxRetries = 3
+    $retryCount = 0
+    while ($retryCount -lt $maxRetries) {
+        try {
+            $uri = "ftp://$hostName$remotePath"
+            $request = [System.Net.FtpWebRequest]::Create($uri)
+            $request.Credentials = New-Object System.Net.NetworkCredential($username, $password)
+            $request.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
+            $request.UseBinary = $true
+            $request.KeepAlive = $false
+            $request.UsePassive = $true
+            $request.Timeout = 30000
+            
+            $fileBytes = [System.IO.File]::ReadAllBytes($localPath)
+            $request.ContentLength = $fileBytes.Length
+            $requestStream = $request.GetRequestStream()
+            $requestStream.Write($fileBytes, 0, $fileBytes.Length)
+            $requestStream.Close()
+            
+            $response = $request.GetResponse()
+            $response.Close()
+            return $true
+        } catch {
+            $retryCount++
+            Write-Host "Error al subir $localPath a $remotePath (Intento $retryCount/$maxRetries): $_" -ForegroundColor Red
+            if ($retryCount -lt $maxRetries) {
+                Start-Sleep -Seconds 1
+            }
+        }
     }
+    return $false
 }
 
 function Get-RemoteFile($hostName, $username, $password, $localPath, $remotePath) {
@@ -329,6 +340,11 @@ Write-Host ""
 Write-Host "Conectando al servidor FTP y escaneando archivos remotos..." -ForegroundColor Gray
 $remoteFiles = Get-RemoteFilesRecurse -hostName $hostName -username $username -password $password -remoteRoot $remoteRoot -ignoreList $ignoreList
 Write-Host "Escaneados $($remoteFiles.Count) elementos remotos." -ForegroundColor Cyan
+foreach ($key in $remoteFiles.Keys) {
+    if ($remoteFiles[$key].Type -eq 'dir') {
+        $script:createdDirectories[$key] = $true
+    }
+}
 
 Write-Host "Escaneando archivos locales de compilación (dist)..." -ForegroundColor Gray
 $localFiles = Get-LocalFilesRecurse -localRoot $localRoot -ignoreList $ignoreList
