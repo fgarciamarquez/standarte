@@ -1,5 +1,7 @@
 <script>
+  import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount } from 'svelte';
+  import { pushState, replaceState } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios } from '$lib/siteData.js';
   import { projects } from '$lib/projectData.js';
   import { richSeoData } from '$lib/richSeoData.js';
@@ -85,73 +87,14 @@
     hi: 'Admin',
     pt: 'Admin'
   };
-  const fairItems = [
-    { name: 'AGROEXPO FEVAL Don Benito 2026', country: 'es' },
-    { name: 'Feria de FP Badajoz 2026', country: 'es' },
-    { name: 'Feria de los Mayores de Extremadura Badajoz 2026', country: 'es' },
-    { name: 'FIO Monfragüe 2026', country: 'es' },
-    { name: 'Feria de Belleza, Moda y Cosmética Badajoz 2026', country: 'es' },
-    { name: 'VINAC Almendralejo 2026', country: 'es' },
-    { name: 'ARTEXANÍA Plasencia 2026', country: 'es' },
-    { name: 'FENAVIN Match Ciudad Real 2026', country: 'es' },
-    { name: 'Ferduque Ciudad Real 2026', country: 'es' },
-    { name: 'JEC World Paris 2026', country: 'fr' },
-    { name: 'LogiMAT Stuttgart 2026', country: 'de' },
-    { name: 'Global Industrie Paris 2026', country: 'fr' },
-    { name: 'Ecuextre Badajoz 2026', country: 'es' },
-    { name: 'Hannover Messe 2026', country: 'de' },
-    { name: 'SAGALEXPO Lisboa 2026', country: 'pt' },
-    { name: 'SIL Lisboa 2026', country: 'pt' },
-    { name: 'FERCAM Manzanares Ciudad Real 2026', country: 'es' },
-    { name: 'Portugal Smart Cities Summit 2026', country: 'pt' },
-    { name: 'ARCOlisboa 2026', country: 'pt' },
-    { name: 'DES Málaga 2026', country: 'es' },
-    { name: 'CM Málaga 2026', country: 'es' },
-    { name: 'Foro Greencities Málaga 2026', country: 'es' },
-    { name: 'FERCATUR Ciudad Real 2026', country: 'es' },
-    { name: 'FECIEX Badajoz 2026', country: 'es' },
-    { name: 'San Diego Comic-Con Málaga 2026', country: 'es' },
-    { name: 'EXPO AGRITECH Málaga 2026', country: 'es' },
-    { name: 'SIMED Málaga 2026', country: 'es' },
-    { name: 'Fehispor Badajoz 2026', country: 'es' },
-    { name: 'AMB Stuttgart 2026', country: 'de' },
-    { name: 'Iberocio Badajoz 2026', country: 'es' },
-    { name: 'SPS Nuremberg 2026', country: 'de' },
-    { name: 'automatica Munich 2027', country: 'de' },
-    { name: 'Pollutec Lyon 2027', country: 'fr' },
-    { name: 'bauma Munich 2028', country: 'de' },
-    { name: 'FIRECA Sevilla 2026', country: 'es' },
-    { name: 'CONXEMAR Vigo 2026', country: 'es' },
-    { name: 'Veteco Madrid 2026', country: 'es' },
-    { name: 'Piscimad Madrid 2026', country: 'es' },
-    { name: 'GreenCities Málaga 2026', country: 'es' },
-    { name: 'IBERPET Madrid 2026', country: 'es' },
-    { name: 'H&T Málaga 2026', country: 'es' },
-    { name: 'Eurosatory Paris 2026', country: 'fr' },
-    { name: 'Empack Madrid 2026', country: 'es' },
-    { name: 'Expoquimia Barcelona 2026', country: 'es' },
-    { name: 'SMART DOORS Madrid 2026', country: 'es' },
-    { name: 'Equiplast Barcelona 2026', country: 'es' },
-    { name: 'TIS Sevilla 2026', country: 'es' },
-    { name: 'AUTENTICA Sevilla 2026', country: 'es' },
-    { name: 'ESICM LIVES Lisboa 2026', country: 'pt' },
-    { name: 'Lisbon Food Affair 2026', country: 'pt' },
-    { name: 'SNACKEX Lisboa 2026', country: 'pt' },
-    { name: 'GSE Expo Lisboa 2026', country: 'pt' },
-    { name: 'ESRA Congress Lisboa 2026', country: 'pt' },
-    { name: 'World Aviation Festival Lisboa 2026', country: 'pt' },
-    { name: 'PEGS Europe Lisboa 2026', country: 'pt' },
-    { name: 'BTL Lisboa 2026', country: 'pt' },
-    { name: 'SMOPYC Zaragoza 2026', country: 'es' },
-    { name: 'FIMA Zaragoza 2026', country: 'es' }
-  ];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para construcción de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand construction',
     de: 'Wichtige Messen in Spanien, Portugal, Deutschland und Frankreich für Messestandbau',
     zh: '西班牙、葡萄牙、德国和法国展台搭建重点展会',
     hi: 'स्पेन, पुर्तगाल, जर्मनी और फ्रांस में स्टैंड निर्माण के लिए प्रमुख मेले',
-    pt: 'Feiras em destaque em Espanha, Portugal, Alemanha e França para construção de stands'
+    pt: 'Feiras em destaque em Espanha, Portugal, Alemanha e França para construção de stands',
+    ko: '전시 부스 제작을 위한 스페인, 포르투갈, 독일, 프랑스의 주요 박람회'
   };
   const counterItems = [
     { key: 'projects', value: 169, icon: 'counter-book' },
@@ -206,6 +149,7 @@
     if (lang === 'it') return `Costruzione di stand a ${city}`;
     if (lang === 'zh') return `${city} 展台搭建`;
     if (lang === 'hi') return `${city} में स्टैंड निर्माण`;
+    if (lang === 'ko') return `${city} 전시 부스 제작`;
     return `Construcción de stands en ${city}`;
   }
 
@@ -436,7 +380,7 @@
     if (el) {
       let routeSection = id === 'local-stands' ? 'madrid' : id;
       if (routeSection === 'micro-stand') routeSection = 'luzpavilion';
-      window.history.pushState({}, '', pathFor(lang, routeSection));
+      pushState(pathFor(lang, routeSection), {});
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
@@ -546,7 +490,7 @@
       if (visible) {
         const nextPath = pathFor(lang, routeById[visible.target.id]);
         if (window.location.pathname !== nextPath) {
-          window.history.replaceState({}, '', nextPath);
+          replaceState(nextPath, {});
         }
       }
     }, { threshold: [0.35, 0.6] });
@@ -681,22 +625,22 @@
             <div class="lisbon-fairs-group" aria-hidden={group === 1}>
               {#each fairItems as fair, index}
                 {#if group === 0}
-                  <article class="lisbon-fair-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <a href={`/ferias/${fair.slug}`} class="lisbon-fair-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="text-decoration:none; color:inherit;">
                     <meta itemprop="position" content={index + 1} />
                     <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
                     <span class="lisbon-fair-copy">
                       <strong itemprop="name">{fair.name}</strong>
                       <small itemprop="description">{fairSeoText(fair.name)}</small>
                     </span>
-                  </article>
+                  </a>
                 {:else}
-                  <article class="lisbon-fair-item">
+                  <a href={`/ferias/${fair.slug}`} class="lisbon-fair-item" tabindex="-1" aria-hidden="true" style="text-decoration:none; color:inherit;">
                     <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
                     <span class="lisbon-fair-copy">
                       <strong>{fair.name}</strong>
                       <small>{fairSeoText(fair.name)}</small>
                     </span>
-                  </article>
+                  </a>
                 {/if}
               {/each}
             </div>

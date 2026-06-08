@@ -1,3 +1,4 @@
+import { fairsData } from '$lib/fairsData.js';
 import { languages, routes, pathFor } from '$lib/siteData.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import news from '$lib/newsData.json';
@@ -77,6 +78,34 @@ export async function GET() {
       changefreq: 'weekly',
       priority: '0.6',
       alternates: []
+    });
+  });
+
+  // 4. Fairs (ferias/[slug])
+  fairsData.forEach((fair) => {
+    languages.forEach((lang) => {
+      const isEs = lang === 'es';
+      const prefix = isEs ? '' : `/${lang}`;
+      const loc = `${siteUrl}${prefix}/ferias/${fair.slug}`;
+
+      const urlObj = {
+        loc: loc,
+        lastmod: new Date().toISOString().split('T')[0],
+        changefreq: 'monthly',
+        priority: '0.6',
+        alternates: []
+      };
+
+      // Add hreflang alternatives for this fair
+      languages.forEach((altLang) => {
+        const altPrefix = altLang === 'es' ? '' : `/${altLang}`;
+        urlObj.alternates.push({
+          hreflang: altLang,
+          href: `${siteUrl}${altPrefix}/ferias/${fair.slug}`
+        });
+      });
+
+      urls.push(urlObj);
     });
   });
 

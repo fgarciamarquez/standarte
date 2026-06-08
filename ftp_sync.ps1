@@ -42,6 +42,7 @@ $ignoreList.Add(".htaccess_local")
 $ignoreList.Add("admin/email_campaing/data/send-log.json")
 $ignoreList.Add("admin/email_campaing/data/clicks.json")
 $ignoreList.Add("admin/email_campaing/data/campaign-history.json")
+$ignoreList.Add("admin/config.php")
 $ignoreList.Add("sent_emails_log.json")
 
 # Match pattern function

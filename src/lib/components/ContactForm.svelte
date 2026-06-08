@@ -48,7 +48,7 @@
           <li><a class="link_email _gold" href="mailto:hola@standarte.es">hola@standarte.es</a></li>
         </ul>
         {#if statusMessage}
-          <div id="error_presupuesto_form" class:form-error={status === 'error'}>
+          <div id="error_presupuesto_form" class:form-error={status === 'error'} class:form-success={status === 'success'}>
             <p class="form-note">{@html statusMessage}</p>
           </div>
         {/if}
@@ -107,3 +107,29 @@
     </div>
   </div>
 </section>
+
+<style>
+  .form-success {
+    background-color: #2ebc5c;
+    color: #ffffff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(46, 188, 92, 0.3);
+    border: 2px solid #239447;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .form-success .form-note {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

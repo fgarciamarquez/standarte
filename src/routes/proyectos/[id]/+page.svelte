@@ -75,7 +75,10 @@
     de: 'ANGEBOT ANFORDERN',
     pt: 'SOLICITAR ORÇAMENTO',
     zh: '索取报价',
-    hi: 'कोटेशन का अनुरोध करें'
+    hi: 'कोटेशन का अनुरोध करें',
+    fr: 'DEMANDER UN DEVIS',
+    it: 'RICHIEDI UN PREVENTIVO',
+    ko: '견적 요청'
   };
 
   function switchLanguage(targetLang) {
@@ -135,7 +138,10 @@
     de: `3D-Messestanddesign for ${project.name} in ${project.location}`,
     pt: `Design de Stand 3D para ${project.name} em ${project.location}`,
     zh: `专为 ${project.name} 在 ${project.location} 设计的3D展台`,
-    hi: `${project.location} में ${project.name} के लिए 3D स्टैंड डिज़ाइन`
+    hi: `${project.location} में ${project.name} के लिए 3D स्टैंड डिज़ाइन`,
+    fr: `Design de Stand 3D pour ${project.name} à ${project.location}`,
+    it: `Design Stand 3D per ${project.name} a ${project.location}`,
+    ko: `${project.location}의 ${project.name} 3D 부스 디자인`
   } : {};
 
   $: seoDescriptions = project ? {
@@ -144,7 +150,7 @@
     de: `Details des maßgeschneiderten 3D-Messestanddesigns für ${project.name} in ${project.location}. Erfahren Sie mehr über das Verhältnis zu unseren architektonischen Werten.`,
     pt: `Detalhes do design tridimensional de stand sob medida para ${project.name} em ${project.location}. Conheça sua relación com los nuestros valores arquitetônicos.`,
     zh: `专为 ${project.name} 在 ${project.location} 设计的定制3D展台细节。了解其与我们建筑价值观的关系。`,
-    hi: `${project.location} में ${project.name} के लिए कस्टम 3D स्टैंड डिज़ाइन का विवरण। हमारे वास्तुकला मूल्यों के साथ इसके संबंध के बारे में जानें。`
+    hi: `${project.location} में ${project.name} के लिए कस्टम 3D स्टैंड डिज़ाइन का विवरण。 हमारे वास्तुकला मूल्यों के साथ इसके संबंध के बारे में जानें。`
   } : {};
 
   $: creativeWorkNames = project ? {
@@ -153,7 +159,10 @@
     de: `3D-Messestand-Prototyp - ${project.name}`,
     pt: `Protótipo de Stand 3D - ${project.name}`,
     zh: `3D展台原型 - ${project.name}`,
-    hi: `3D स्टैंड प्रोटोटाइप - ${project.name}`
+    hi: `3D स्टैंड प्रोटोटाइप - ${project.name}`,
+    fr: `Prototype de Stand 3D - ${project.name}`,
+    it: `Prototipo Stand 3D - ${project.name}`,
+    ko: `3D 부스 프로토타입 - ${project.name}`
   } : {};
 
   const heroLeads = {
@@ -162,7 +171,10 @@
     de: '3D-Prototyp und sein Verhältnis zu unseren Designwerten',
     pt: 'Protótipo 3D e sua relação com os nossos valores de design',
     zh: '3D原型及其与我们设计价值观的关系',
-    hi: '3D प्रोटोटाइप और हमारे डिज़ाइन मूल्यों के साथ इसका संबंध'
+    hi: '3D प्रोटोटाइप और हमारे डिज़ाइन मूल्यों के साथ इसका संबंध',
+    fr: 'Prototype 3D et sa relation avec nos valeurs de design',
+    it: 'Prototipo 3D e la sua relazione con i nostri valori di design',
+    ko: '3D 프로토타입 및 당사의 디자인 가치와의 관계'
   };
 
   const breadcrumbsInicio = {
@@ -171,7 +183,10 @@
     de: 'Startseite',
     pt: 'Início',
     zh: '首页',
-    hi: 'होम'
+    hi: 'होम',
+    fr: 'Accueil',
+    it: 'Home',
+    ko: '홈'
   };
 
   const breadcrumbsProyectos = {
@@ -180,7 +195,10 @@
     de: '3D-Projekte',
     pt: 'Projetos 3D',
     zh: '3D项目',
-    hi: '3D परियोजनाएं'
+    hi: '3D परियोजनाएं',
+    fr: 'Projets 3D',
+    it: 'Progetti 3D',
+    ko: '3D 프로젝트'
   };
 
   const visitWebsites = {
@@ -189,7 +207,10 @@
     de: 'Offizielle Website besuchen',
     pt: 'Visitar site oficial',
     zh: '访问官方网站',
-    hi: 'आधिकारिक वेबसाइट पर जाएं'
+    hi: 'आधिकारिक वेबसाइट पर जाएं',
+    fr: 'Visiter le site officiel',
+    it: 'Visita il sito ufficiale',
+    ko: '공식 웹사이트 방문'
   };
 
   const backToMainPages = {
@@ -198,7 +219,10 @@
     de: 'Zurück zur Hauptseite',
     pt: 'Voltar para a Página Principal',
     zh: '返回主页',
-    hi: 'मुख्य पृष्ठ पर वापस जाएँ'
+    hi: 'मुख्य पृष्ठ पर वापस जाएँ',
+    fr: 'Retour à la page principale',
+    it: 'Torna alla pagina principale',
+    ko: '메인 페이지로 돌아가기'
   };
 
   const galleryTitles = {
@@ -207,16 +231,22 @@
     de: 'Galerie von Ansichten und 3D-Renders',
     pt: 'Galeria de Vistas e Renders 3D',
     zh: '视图与3D渲染图库',
-    hi: 'दृश्य और 3D रेंडर गैलरी'
+    hi: 'दृश्य और 3D रेंडर गैलरी',
+    fr: 'Galerie de vues et de rendus 3D',
+    it: 'Galleria di viste e rendering 3D',
+    ko: '뷰 및 3D 렌더링 갤러리'
   };
 
   const gallerySubtitles = {
     es: 'Haz clic sobre cualquier imagen para explorarla en alta definición.',
     en: 'Click on any image to explore it in high definition.',
     de: 'Klicken Sie auf ein beliebiges Bild, um es in hoher Auflösung anzuzeigen.',
-    pt: 'Clique em qualquer imagem para explorá-la em alta definição.',
+    pt: 'Clique em qualquer imagem para explorá-la em alta definición.',
     zh: '点击任意图片以高清模式探索。',
-    hi: 'उच्च परिभाषा में इसका पता लगाने के लिए किसी भी छवि पर क्लिक करें।'
+    hi: 'उच्च परिभाषा में इसका पता लगाने के लिए किसी भी छवि पर क्लिक करें。',
+    fr: 'Cliquez sur n’importe quelle image pour l’explorer en haute définition.',
+    it: 'Clicca su qualsiasi immagine per esplorarla in alta definizione.',
+    ko: '고화질로 보려면 이미지를 클릭하세요.'
   };
 
   $: jsonLd = {
@@ -246,7 +276,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <svelte:head>
-  <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'fr' ? 'Prototype 3D' : (lang === 'it' ? 'Prototipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D प्रोटोटाइप' : '3D Prototype'))))))} | Standarte</title>
+  <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'fr' ? 'Prototype 3D' : (lang === 'it' ? 'Prototipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D\u0020\u092a\u094d\u0930\u094b\u091f\u094b\u091f\u093e\u0907\u092a' : (lang === 'ko' ? '3D 프로토타입' : '3D Prototype')))))))} | Standarte</title>
   <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href={`https://standarte.es/proyectos/${project.id}`} />
@@ -310,6 +340,12 @@
           <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Jeder von Standarte entworfene Stand ist das Ergebnis einer gründlichen Analyse der Marke und der Messebedürfnisse. Im Folgenden beschreiben wir die Designprinzipien und räumlichen Werte für dieses Projekt.
         {:else if lang === 'pt'}
           <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Cada stand desenhado pela Standarte é o fruto de uma análise exaustiva da marca e das necessidades ferais. A seguir, detalhamos os princípios de design e valores espaciais para este projeto.
+        {:else if lang === 'fr'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Chaque stand conçu par Standarte est le fruit d'une analyse approfondie de la marque et des besoins du salon. Ci-dessous, nous détaillons les principes de conception et les valeurs spatiales de ce projet.
+        {:else if lang === 'it'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Ogni stand progettato da Standarte è il frutto di un'analisi approfondita del marchio e delle esigenze fieristiche. Di seguito, dettagliamo i principi di progettazione e i valori spaziali di questo progetto.
+        {:else if lang === 'ko'}
+          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Standarte가 디자인한 모든 부스는 브랜드와 전시 요구 사항에 대한 철저한 분석의 결과입니다. 아래에서 이 프로젝트의 디자인 원칙과 공간적 가치를 자세히 설명합니다.
         {:else if lang === 'zh'}
           <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es})。Standarte 设计的每一个展台都是对品牌和展会需求进行详尽分析的结晶。下面，我们将详细阐述该项目的设计原则和空间价值。
         {:else if lang === 'hi'}

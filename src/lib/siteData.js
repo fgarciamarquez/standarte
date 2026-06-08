@@ -1,4 +1,5 @@
-export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt', 'fr', 'it'];
+import { fairsData } from '$lib/fairsData.js';
+export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko'];
 
 export const languageLabels = {
   es: 'ES Español',
@@ -8,7 +9,8 @@ export const languageLabels = {
   hi: 'HI हिन्दी',
   pt: 'PT Português',
   fr: 'FR Français',
-  it: 'IT Italiano'
+  it: 'IT Italiano',
+  ko: 'KO 한국어'
 };
 
 export const routes = {
@@ -25,7 +27,10 @@ export const routes = {
     lisboa: 'construccion_stands_lisboa',
     malaga: 'construccion_stands_malaga',
     badajoz: 'construccion_stands_badajoz',
-    noticias: 'noticias'
+    noticias: 'noticias',
+    ferias: 'jeonsihoe',
+    ferias: 'feiras',
+    ferias: 'ferias'
   },
   en: {
     home: '',
@@ -40,7 +45,8 @@ export const routes = {
     lisboa: 'stand_construction_lisbon',
     malaga: 'stand_construction_malaga',
     badajoz: 'stand_construction_badajoz',
-    noticias: 'news'
+    noticias: 'news',
+    ferias: 'fairs'
   },
   de: {
     home: '',
@@ -55,7 +61,8 @@ export const routes = {
     lisboa: 'messestandbau_lissabon',
     malaga: 'messestandbau_malaga',
     badajoz: 'messestandbau_badajoz',
-    noticias: 'nachrichten'
+    noticias: 'nachrichten',
+    ferias: 'messen'
   },
   zh: {
     home: '',
@@ -70,7 +77,8 @@ export const routes = {
     lisboa: 'lisbon_zhantai_dajian',
     malaga: 'malaga_zhantai_dajian',
     badajoz: 'badajoz_zhantai_dajian',
-    noticias: 'xinwen'
+    noticias: 'xinwen',
+    ferias: 'zhanhui'
   },
   hi: {
     home: '',
@@ -85,7 +93,8 @@ export const routes = {
     lisboa: 'lisbon_stand_nirman',
     malaga: 'malaga_stand_nirman',
     badajoz: 'badajoz_stand_nirman',
-    noticias: 'samachar'
+    noticias: 'samachar',
+    ferias: 'mele'
   },
   pt: {
     home: '',
@@ -115,7 +124,8 @@ export const routes = {
     lisboa: 'construction_stands_lisbonne',
     malaga: 'construction_stands_malaga',
     badajoz: 'construction_stands_badajoz',
-    noticias: 'actualites'
+    noticias: 'actualites',
+    ferias: 'salons'
   },
   it: {
     home: '',
@@ -130,7 +140,24 @@ export const routes = {
     lisboa: 'allestimenti_fieristici_lisbona',
     malaga: 'allestimenti_fieristici_malaga',
     badajoz: 'allestimenti_fieristici_badajoz',
-    noticias: 'notizie'
+    noticias: 'notizie',
+    ferias: 'fiere'
+  },
+  ko: {
+    home: '',
+    services: 'jeonsigwan-seobiseu',
+    luzpavilion: 'luzpavilion',
+    custom: 'majchumhyeong-peurojekteu',
+    team: 'tim',
+    contact: 'yeollagcheo',
+    madrid: 'madrid-bujeu-jejak',
+    barcelona: 'barcelona-bujeu-jejak',
+    bilbao: 'bilbao-bujeu-jejak',
+    lisboa: 'lisbon-bujeu-jejak',
+    malaga: 'malaga-bujeu-jejak',
+    badajoz: 'badajoz-bujeu-jejak',
+    noticias: 'sosig',
+    ferias: 'jeonsihoe'
   }
 };
 
@@ -762,234 +789,399 @@ export const copy = {
     projects3D: { title: 'Altri Progetti', subtitle: 'Esplora le nostre proposte interattive di alta falegnameria.', viewBtn: 'Vedi Progetto' },
     footer: 'Standarte. Progettazione, produzione e allestimento stand.'
   },
+  ko: {
+  "nav": {
+    "services": "서비스",
+    "custom": "갤러리",
+    "noticias": "뉴스",
+    "contact": "연락",
+    "language": "언어"
+  },
+  "seoTitle": "Standarte | 마드리드, 바르셀로나, 빌바오, 말라가, 리스본의 전시 부스 제작자",
+  "seoDescription": "스페인 및 국제 프로젝트를 위한 전시회 부스의 전문적이고 맞춤화된 디자인, 제작 및 설치.",
+  "heroTitle": "스페인에서의 부스 제작 워크숍",
+  "heroSubtitle": "고품질 작업",
+  "servicesTitle": "서비스",
+  "services": [
+    [
+      "디자인 및 엔지니어링",
+      "저희 전문 팀은 귀하의 프로젝트 요구 사항을 기록할 것이며, 이는 자세히 맞춤형 3D 프로토타입에 반영되어 제조 시작 전에 탐색하고 검토할 수 있습니다. 프로토타입의 이미지는 최종 결과를 100% 충실하게 반영할 것입니다."
+    ],
+    [
+      "부스 설치",
+      "건설 과정에서 우리는 일시적인 건축에 사용되는 특정 재료와 함께 가장 현대적인 조립 기술을 적용합니다. 이를 통해 한눈에 품질을 보여줄 수 있는 완벽한 외관을 제공할 수 있습니다."
+    ],
+    [
+      "조립 및 검증",
+      "우리는 모든 것을 처리합니다. 완전한 마음의 평안 속에서 박람회 첫날에 자신을 드러낼 수 있으며, 상업 활동을 시작할 준비가 모두 갖추어져 있음을 발견하게 될 것입니다. 부스, 케이터링, 문구류,..."
+    ]
+  ],
+  "micro": {
+    "title": "루즈파빌리온",
+    "subtitle": "독특한 환경을 위한 공간 텐트",
+    "color": "색",
+    "finish": "끝:",
+    "descriptionTitle": "설명:",
+    "description": "4개의 본체로 구성된 소형 스탠드입니다.<br>조립이 매우 간단하며 도구가 필요하지 않습니다.<br>자유롭게 구성할 수 있는 부착 가능한 제품입니다.",
+    "qualitiesTitle": "특성:",
+    "materials": "재료",
+    "materialsValue": "MDF, 유리, 건축용 직물, 금속",
+    "finishValue": "에어브러시 페인트 + 래커",
+    "partsTitle": "부품:",
+    "parts": "1 = 백라이트 그래픽 <br>2 = 조명 선반 <br>3 = 맞춤 로고 <br>4 = 저장 공간 <br>5 = 문이 있는 카운터",
+    "priceTitle": "가격:",
+    "priceText": "조명과 <br> 맞춤 그래픽이 있는 4개 모듈 세트",
+    "chooseFinish": "가격을 보려면 마감을 선택하세요.",
+    "choose": "마감 지점을 선택<br>해 가격을 확인해 주세요.",
+    "partsLabel": "부품",
+    "price": "가격",
+    "qualities": "특성",
+    "pause": "일시 정지",
+    "play": "재생",
+    "visitWeb": "특정 웹사이트 방문",
+    "videos": [
+      {
+        "src": "/img/video_standrte_presentacion_empresa.mp4",
+        "title": "기업 프레젠테이션",
+        "subtitle": "기업 부스를 위한 우리의 작업장과 생산 과정."
+      },
+      {
+        "src": "/img/video_standarte_presentacion_vinos.mp4",
+        "title": "역사적 배경의 박람회",
+        "subtitle": "전통적이고 역사적인 장소에서의 존중하는 디자인과 엔지니어링."
+      },
+      {
+        "src": "/img/video_standarte_andalucia.mp4",
+        "title": "축하 행사",
+        "subtitle": "와이너리와 특별 행사를 위한 맞춤형 고급 공간."
+      },
+      {
+        "src": "/img/video_standarte_feria_verano.mp4",
+        "title": "대형 야외 박람회",
+        "subtitle": "대형 설치와 프리미엄 고저항 텐트."
+      }
+    ]
+  },
+  "citiesIntro": "우리는 스페인과 포르투갈의 주요 도시에서 열리는 무역 박람회와 행사용 전시 부스를 설계, 제작 및 설치합니다.",
+  "customTitle": "갤러리",
+  "customSubtitle": "주요 조립 기술별로 분류됩니다.",
+  "filters": {
+    "all": "모두",
+    "textil": "섬유",
+    "madera": "나무"
+  },
+  "counters": {
+    "projects": "프로젝트",
+    "clients": "고객",
+    "countries": "나라들",
+    "fairs": "박람회"
+  },
+  "teamTitle": "팀",
+  "teamSubtitle": "우리는 건축가, 조립사, 장식가, 조명 기술자를 포함한 다학제 팀입니다. 함께 우리는 각 프로젝트의 모든 요구에 대해 완전한 대응을 제공할 수 있습니다. 궁금한 점이 있으면 주저하지 말고 저희에게 문의하십시오. 곧 뵙기를 바랍니다.",
+  "teamRoles": [
+    "데코레이터",
+    "관리자",
+    "워크숍",
+    "조정"
+  ],
+  "contactTitle": "연락처",
+  "contactNotice": "이 양식에서 추출한 데이터로부터 생성된 예산은 대략적인 것입니다. 최종 예산은 여러 차례의 협상 후 프로젝트의 모든 세부사항을 작성한 후 확립될 것입니다.",
+  "form": {
+    "name": "이름",
+    "company": "회사",
+    "phone": "전화",
+    "email": "이메일",
+    "fair": "공정한",
+    "location": "도시 - 나라",
+    "meters": "제곱미터",
+    "floor": "지면 세부 사항",
+    "woodFloor": "워조덴 올림 바닥",
+    "carpetPlatform": "들뜬 카펫 바닥",
+    "carpet": "카펫",
+    "spaceDistribution": "공간 분포",
+    "reception": "접수처",
+    "bar": "바 구역",
+    "storage": "창고",
+    "product": "제품 전시",
+    "openMeeting": "개방 회의 공간",
+    "closedMeeting": "폐쇄된 회의 구역",
+    "audiovisual": "시청각",
+    "led": "LED 스크린",
+    "projector": "프로젝터",
+    "budget": "예상 예산",
+    "description": "설명",
+    "privacy": "개인정보처리방침에 동의합니다",
+    "send": "보내기"
+  },
+  "legal": {
+    "privacy": "개인정보 처리방침",
+    "legalNotice": "법적 경고",
+    "cookies": "쿠키"
+  },
+  "legalText": {
+    "privacy": "<p>스탠다르테는 양식을 통해 제출된 데이터를 전시 부스 프로젝트와 관련된 정보 요청, 견적 및 커뮤니케이션에만 사용합니다.</p><p>이 데이터를 귀하의 요청과 관련 없는 목적으로 사용하지 않습니다. 접근, 수정 또는 삭제를 원하시는 경우 hola@standarte.es로 문의하실 수 있습니다.</p>",
+    "legalNotice": "<p>이 웹사이트는 Standarte에 속합니다. 이 사이트의 내용, 이미지 및 텍스트는 상업적 및 정보 제공 목적으로 사용되며, 허가 없이 복제할 수 없습니다.</p><p>사이트 사용은 관련 규정을 준수한 책임 있는 브라우징을 의미합니다.</p>",
+    "cookies": "<p>웹사이트가 작동하도록 필요한 쿠키를 사용하며, 귀하의 동의가 있는 경우에만 Google Ads 또는 Google Analytics 측정 및 광고 쿠키를 사용합니다.</p><p>쿠키 배너에서 이러한 목적을 수락, 거부 또는 구성할 수 있습니다. 또한 하단의 \"쿠키 설정\" 링크에서 언제든지 동의를 변경하거나 철회할 수 있습니다.</p><p>귀하가 허용하면 Google은 광고 측정 및 개인화 목적으로 개인 데이터를 처리할 수 있습니다. 자세한 정보: https://business.safety.google/privacy/</p>"
+  },
+  "formSuccess": "메시지가 성공적으로 전송되었습니다.<br> 곧 연락드리겠습니다.<br> 감사합니다.",
+  "formError": "메시지를 보낼 수 없습니다. 다시 시도해 주세요.",
+  "projects3D": {
+    "title": "다른 프로젝트",
+    "subtitle": "우리의 인터랙티브 고급 목공 제안과 그것이 우리의 디자인 가치와 어떻게 관련되는지 탐색해 보세요.",
+    "viewBtn": "프로젝트 보기"
+  },
+  "footer": "Standarte. 전시 부스 디자인, 제작 및 설치."
+}
 };
 
 export const cityData = {
   madrid: {
-    city: { es: 'Madrid', en: 'Madrid', de: 'Madrid', zh: '马德里', hi: 'मैड्रिड', pt: 'Madrid', fr: 'Madrid', it: 'Madrid' },
+    city: { es: 'Madrid', en: 'Madrid', de: 'Madrid', zh: '马德里', hi: 'मैड्रिड', pt: 'Madrid', fr: 'Madrid', it: 'Madrid', ko: '마드리드' },
     content: {
       es: {
-        intro: 'Madrid concentra una parte esencial de la actividad ferial en España. En Standarte trabajamos la construcción de stands en Madrid con un proceso completo: diseño técnico, fabricación, montaje, validaciones y coordinación para que el espacio esté listo antes de la apertura de feria.',
-        detail: 'Es una plaza especialmente útil para agencias de comunicación y marcas que necesitan ejecución fiable, acabados cuidados y capacidad de respuesta en calendarios de montaje exigentes.'
+        intro: 'Madrid concentra una parte esencial de la actividad ferial en España. En Standarte desarrollamos stands en Madrid con 20 años de experiencia y un taller propio que garantiza un proceso impecable: diseño técnico, producción, logística, montaje, validaciones y coordinación in situ antes de la apertura del evento.',
+        detail: 'Este servicio está dirigido a agencias de comunicación y marcas que necesitan una ejecución fiable, acabados cuidados y un stand listo para recibir a visitantes profesionales.'
       },
       en: {
-        intro: 'Standarte develops exhibition stands in Madrid through a complete process: technical design, production, logistics, installation, validation and on-site coordination before the event opens.',
-        detail: 'This service is aimed at communication agencies, exhibitors and brands that need reliable execution, careful finishes and a stand ready for professional visitors.'
+        intro: 'Madrid concentrates an essential part of trade fair activity in Spain. At Standarte, backed by 20 years of experience and our own workshop, we develop exhibition stands in Madrid through a complete process: technical design, production, logistics, installation, validation, and on-site coordination before the event opens.',
+        detail: 'This service is aimed at communication agencies and brands that need reliable execution, careful finishes, and a stand ready for professional visitors.'
       },
       de: {
-        intro: 'Standarte realisiert Messestände in Madrid mit einem vollständigen Ablauf: technisches Design, Produktion, Logistik, Montage, Validierung und Koordination vor Ort.',
-        detail: 'Der Service richtet sich an Kommunikationsagenturen, Aussteller und Marken, die zuverlässige Ausführung, sorgfältige Oberflächen und einen professionell vorbereiteten Stand benötigen.'
-      },
-      zh: {
-        intro: 'Standarte 在马德里通过完整流程开发展台：技术设计、制作、物流、安装、验收以及活动开幕前的现场协调。',
-        detail: '该服务面向需要可靠执行、精细饰面以及专业访客接待空间的传播机构、参展商和品牌。'
-      },
-      hi: {
-        intro: 'Standarte मैड्रिड में तकनीकी डिजाइन, निर्माण, लॉजिस्टिक्स, इंस्टॉलेशन, वैलिडेशन और ऑन-साइट समन्वय सहित पूर्ण प्रक्रिया के साथ प्रदर्शनी स्टैंड विकसित करता है।',
-        detail: 'यह सेवा संचार एजेंसियों, प्रदर्शकों और ब्रांडों के लिए है जिन्हें भरोसेमंद निष्पादन, सावधानीपूर्ण फिनिश और पेशेवर विज़िटर्स के लिए तैयार स्टैंड चाहिए।'
+        intro: 'Madrid konzentriert einen wesentlichen Teil der Messeaktivitäten in Spanien. Bei Standarte, gestützt auf 20 Jahre Erfahrung und unsere eigene Werkstatt, realisieren wir Messestände in Madrid mit einem vollständigen Ablauf: technisches Design, Produktion, Logistik, Montage, Validierung und Koordination vor Ort.',
+        detail: 'Dieser Service richtet sich an Kommunikationsagenturen und Marken, die eine zuverlässige Ausführung, sorgfältige Oberflächen und einen professionell vorbereiteten Stand benötigen.'
       },
       pt: {
-        intro: 'A Standarte desenvolve stands em Madrid através de um processo completo: design técnico, produção, logística, montagem, validação e coordenação no local antes da abertura do evento.',
-        detail: 'Este serviço destina-se a agências de comunicação, expositores e marcas que precisam de execução fiável, acabamentos cuidados e um stand preparado para visitantes profissionais.'
+        intro: 'Madrid concentra uma parte essencial da atividade em feiras de Espanha. Na Standarte, apoiados nos nossos 20 anos de experiência e oficina própria, desenvolvemos stands de exposição em Madrid através de um processo completo: design técnico, produção, logística, instalação, validação e coordenação no local.',
+        detail: 'Este serviço é direcionado a agências de comunicação e marcas que necessitam de execução fiável, acabamentos cuidadosos e um stand pronto para os visitantes profissionais.'
       },
       fr: {
-        intro: 'Standarte conçoit et installe des stands à Madrid via un processus complet : design technique, fabrication, logistique, montage, validation et coordination sur site avant l\'ouverture du salon.',
-        detail: 'Ce service s\'adresse aux agences de communication, exposants et marques nécessitant une exécution fiable, des finitions soignées et un espace prêt à accueillir les visiteurs.'
+        intro: 'Madrid concentre une part essentielle de l\'activité des salons en Espagne. Chez Standarte, forts de 20 ans d\'expérience et de notre propre atelier, nous développons des stands d\'exposition à Madrid selon un processus complet : conception, production, logistique, installation, validation et coordination sur place.',
+        detail: 'Ce service s\'adresse aux agences de communication et aux marques ayant besoin d\'une exécution fiable, de finitions soignées et d\'un stand prêt pour les visiteurs professionnels.'
       },
       it: {
-        intro: 'Standarte sviluppa stand a Madrid attraverso un processo completo: progettazione tecnica, produzione, logistica, montaggio, validazione e coordinamento in loco prima dell\'apertura dell\'evento.',
-        detail: 'Questo servizio è rivolto ad agenzie di comunicazione, espositori e marchi che necessitano di un\'esecuzione affidabile, finiture curate e uno stand pronto per i visitatori.'
-      }
-    }
-  },
-  lisboa: {
-    city: { es: 'Lisboa', en: 'Lisbon', de: 'Lissabon', zh: '里斯本', hi: 'लिस्बन', pt: 'Lisboa', fr: 'Lisbonne', it: 'Lisbona' },
-    content: {
-      es: {
-        intro: 'Lisboa es una ciudad estratégica para proyectos ibéricos. Standarte puede abordar stands en Lisboa coordinando diseño, producción, transporte y montaje con una metodología pensada para agencias y expositores que necesitan una ejecución clara.',
-        detail: 'La planificación previa del prototipo, materiales y tiempos de montaje ayuda a reducir incertidumbre cuando el proyecto se desplaza entre España y Portugal.'
-      },
-      en: {
-        intro: 'Standarte develops exhibition stands in Lisbon through a complete process: technical design, production, logistics, installation, validation and on-site coordination before the event opens.',
-        detail: 'This service is aimed at communication agencies, exhibitors and brands that need reliable execution, careful finishes and a stand ready for professional visitors.'
-      },
-      de: {
-        intro: 'Standarte realisiert Messestände in Lissabon mit einem vollständigen Ablauf: technisches Design, Produktion, Logistik, Montage, Validierung und Koordination vor Ort.',
-        detail: 'Der Service richtet sich an Kommunikationsagenturen, Aussteller und Marken, die zuverlässige Ausführung, sorgfältige Oberflächen und einen professionell vorbereiteten Stand benötigen.'
+        intro: 'Madrid concentra una parte essenziale dell\'attività fieristica in Spagna. In Standarte, forti dei nostri 20 anni di esperienza e del nostro laboratorio di proprietà, sviluppiamo stand a Madrid attraverso un processo completo: progettazione tecnica, produzione, logistica, montaggio, convalida e coordinamento in loco.',
+        detail: 'Questo servizio è rivolto ad agenzie di comunicazione e marchi che necessitano di un\'esecuzione affidabile, finiture curate e uno stand pronto per i visitatori professionali.'
       },
       zh: {
-        intro: 'Standarte 在里斯本通过完整流程开发展台：技术设计、制作、物流、安装、验收以及活动开幕前的现场协调。',
-        detail: '该服务面向需要可靠执行、精细饰面以及专业访客接待空间的传播机构、参展商和品牌。'
+        intro: '马德里集中了西班牙贸易展览活动的重要部分。在 Standarte，凭借 20 年的丰富经验和自己的工厂，我们通过完整的过程在马德里开发展览摊位：技术设计，生产，物流，安装，验证和活动开始前的现场协调。',
+        detail: '此服务针对需要可靠执行、精细外观和为专业访客准备好展台的通信机构和品牌。'
       },
       hi: {
-        intro: 'Standarte लिस्बन में तकनीकी डिजाइन, निर्माण, लॉजिस्टिक्स, इंस्टॉलेशन, वैलिडेशन और ऑन-साइट समन्वय सहित पूर्ण प्रक्रिया के साथ प्रदर्शनी स्टैंड विकसित करता है।',
-        detail: 'यह सेवा संचार एजेंसियों, प्रदर्शकों और ब्रांडों के लिए है जिन्हें भरोसेमंद निष्पादन, सावधानीपूर्ण फिनिश और पेशेवर विज़िटर्स के लिए तैयार स्टैंड चाहिए।'
+        intro: 'मैड्रिड स्पेन में व्यापार मेला गतिविधि का एक आवश्यक हिस्सा केंद्रित करता है। स्टैंडार्ट में, 20 वर्षों के अनुभव और हमारे अपने कारखाने के समर्थन से, हम मैड्रिड में एक पूरी प्रक्रिया के माध्यम से प्रदर्शनी स्टैंड विकसित करते हैं: तकनीकी डिजाइन, उत्पादन, रसद, स्थापना, सत्यापन, और घटना खुलने से पहले ऑन-साइट समन्वय।',
+        detail: 'यह सेवा उन संचार एजेंसियों और ब्रांडों के लिए है जिन्हें विश्वसनीय निष्पादन, सावधानीपूर्वक परिष्करण और पेशेवर आगंतुकों के लिए तैयार स्टैंड की आवश्यकता है।'
       },
-      pt: {
-        intro: 'A Standarte desenvolve stands em Lisboa através de um processo completo: design técnico, produção, logística, montagem, validação e coordenação no local antes da abertura do evento.',
-        detail: 'Este serviço destina-se a agências de comunicação, expositores e marcas que precisam de execução fiável, acabamentos cuidados e um stand preparado para visitantes profissionais.'
-      },
-      fr: {
-        intro: 'Standarte développe des stands d\'exposition à Lisbonne à travers un processus complet : conception technique, production, logistique, montage et validation sur site.',
-        detail: 'Ce service s\'adresse aux agences de communication, exposants et marques qui ont besoin d\'une exécution fiable et de finitions de haute qualité.'
-      },
-      it: {
-        intro: 'Standarte realizza stand fieristici a Lisbona attraverso un processo completo: progettazione tecnica, produzione, logistica, installazione e validazione in loco.',
-        detail: 'Questo servizio è pensato per agenzie di comunicazione, espositori e brand che richiedono un\'esecuzione affidabile e finiture curate per i visitatori professionali.'
-      }
-    }
-  },
-  malaga: {
-    city: { es: 'Málaga', en: 'Malaga', de: 'Málaga', zh: '马拉加', hi: 'मलागा', pt: 'Málaga', fr: 'Malaga', it: 'Malaga' },
-    content: {
-      es: {
-        intro: 'Málaga reúne cada vez más proyectos profesionales, congresos y eventos de marca. Standarte desarrolla stands en Málaga con atención al acabado, la experiencia del visitante y la facilidad de montaje.',
-        detail: 'Nuestro enfoque permite preparar con antelación materiales, gráfica, iluminación y distribución del espacio para que el stand funcione desde el primer día.'
-      },
-      en: {
-        intro: 'Standarte develops exhibition stands in Malaga through a complete process: technical design, production, logistics, installation, validation and on-site coordination before the event opens.',
-        detail: 'This service is aimed at communication agencies, exhibitors and brands that need reliable execution, careful finishes and a stand ready for professional visitors.'
-      },
-      de: {
-        intro: 'Standarte realisiert Messestände in Málaga mit einem vollständigen Ablauf: technisches Design, Produktion, Logistik, Montage, Validierung und Koordination vor Ort.',
-        detail: 'Der Service richtet sich an Kommunikationsagenturen, Aussteller und Marken, die zuverlässige Ausführung, sorgfältige Oberflächen und einen professionell vorbereiteten Stand benötigen.'
-      },
-      zh: {
-        intro: 'Standarte 在马拉加通过完整流程开发展台：技术设计、制作、物流、安装、验收以及活动开幕前的现场协调。',
-        detail: '该服务面向需要可靠执行、精细饰面以及专业访客接待空间的传播机构、参展商和品牌。'
-      },
-      hi: {
-        intro: 'Standarte मलागा में तकनीकी डिजाइन, निर्माण, लॉजिस्टिक्स, इंस्टॉलेशन, वैलिडेशन और ऑन-साइट समन्वय सहित पूर्ण प्रक्रिया के साथ प्रदर्शनी स्टैंड विकसित करता है।',
-        detail: 'यह सेवा संचार एजेंसियों, प्रदर्शकों और ब्रांडों के लिए है जिन्हें भरोसेमंद निष्पादन, सावधानीपूर्ण फिनिश और पेशेवर विज़िटर्स के लिए तैयार स्टैंड चाहिए।'
-      },
-      pt: {
-        intro: 'A Standarte desenvolve stands em Málaga através de um processo completo: design técnico, produção, logística, montagem, validação e coordenação no local antes da abertura do evento.',
-        detail: 'Este serviço destina-se a agências de comunicação, expositores e marcas que precisam de execução fiável, acabamentos cuidados e um stand preparado para visitantes profissionais.'
-      },
-      fr: {
-        intro: 'Málaga attire de plus en plus de projets professionnels, congrès et événements. Standarte conçoit des stands à Malaga en accordant une attention particulière aux finitions et à l\'expérience visiteur.',
-        detail: 'Notre approche permet de préparer à l\'avance les matériaux, les graphiques et l\'éclairage pour que le stand soit opérationnel dès le premier jour.'
-      },
-      it: {
-        intro: 'Malaga riunisce un numero crescente di progetti professionali e congressi. Standarte progetta stand a Malaga con attenzione ai dettagli e all\'esperienza del visitatore.',
-        detail: 'Il nostro approccio permette di preparare in anticipo materiali, grafica e illuminazione affinché lo stand funzioni fin dal primo giorno.'
+      ko: {
+        intro: '마드리드는 스페인의 무역 박람회 활동의 핵심적인 부분을 집중시킵니다. Standarte에서는 20년의 경험과 자체 공장의 지원을 받아 완전한 과정을 통해 마드리드에 전시 부스를 개발합니다: 기술 디자인, 생산, 물류, 설치, 검증 및 이벤트 시작 전 현장 조정.',
+        detail: '이 서비스는 신뢰할 수 있는 실행, 세심한 마감 및 전문 방문객을 맞이할 준비가 된 부스가 필요한 커뮤니케이션 대행사와 브랜드를 대상으로 합니다.'
       }
     }
   },
   barcelona: {
-    city: { es: 'Barcelona', en: 'Barcelona', de: 'Barcelona', zh: '巴塞罗那', hi: 'बार्सिलोना', pt: 'Barcelona', fr: 'Barcelone', it: 'Barcellona' },
+    city: { es: 'Barcelona', en: 'Barcelona', de: 'Barcelona', zh: '巴塞罗那', hi: 'बार्सिलोना', pt: 'Barcelona', fr: 'Barcelone', it: 'Barcellona', ko: '바르셀로나' },
     content: {
       es: {
-        intro: 'Barcelona es una de las capitales mundiales del diseño y la actividad congresística de vanguardia. En Standarte trabajamos la construcción de stands a medida en Barcelona con un enfoque integral: desde el modelado 3D fidedigno hasta la logística y montaje final en recintos líderes como Fira Barcelona.',
-        detail: 'Perfecto para marcas globales y agencias exigentes que buscan acabados de alta carpintaria y precisión técnica en eventos de gran relevancia internacional.'
+        intro: 'Como sede de eventos mundiales como el MWC o ISE, Barcelona exige un nivel de producción sobresaliente. En Standarte, con 20 años de experiencia y taller propio, diseñamos, fabricamos y montamos stands de alto impacto en Fira de Barcelona.',
+        detail: 'Aportamos fiabilidad técnica y un acabado Premium, resolviendo los retos de logística y normativas del recinto para que el cliente solo tenga que centrarse en sus objetivos comerciales.'
       },
       en: {
-        intro: 'Barcelona is a global hub for design and premium congresses. Standarte develops high-impact exhibition stands in Barcelona, managing technical design, premium carpentry, logistics, and on-site assembly at Fira Barcelona.',
-        detail: 'Aimed at international brands and communication agencies requiring top-tier visual finishes, reliability, and flawless execution during major world-class exhibitions.'
+        intro: 'As the venue for global events like MWC and ISE, Barcelona demands outstanding production levels. At Standarte, with 20 years of experience and our own workshop, we design, manufacture, and assemble high-impact stands at Fira de Barcelona.',
+        detail: 'We provide technical reliability and a Premium finish, overcoming logistics and venue regulations so the client can focus solely on their commercial goals.'
       },
       de: {
-        intro: 'Barcelona ist eines der weltweiten Zentren für Design und zukunftsweisende Messen. Standarte realisiert erstklassige Messestände in Barcelona durch einen vollständigen und integrierten Prozess an Standorten wie der Fira Barcelona.',
-        detail: 'Die ideale Lösung für globale Marken und anspruchsvolle Agenturen, die höchste Präzision, edle Holzverarbeitung und erstklassige Ästhetik suchen.'
-      },
-      zh: {
-        intro: '巴塞罗那是设计与前沿会议的全球中心。Standarte 在巴塞罗那（如巴塞罗那会展中心 Fira Barcelona）提供完整的高端展台定制搭建服务，涵盖3D渲染设计、精细木工、物流及现场安装。',
-        detail: '专为在重大国际展会中追求顶级视觉呈现、工艺品质与可靠执行的全球品牌和公关机构而设计。'
-      },
-      hi: {
-        intro: 'बार्सिलोना डिजाइन और प्रमुख कांग्रेस गतिविधियों के लिए एक वैश्विक केंद्र है। Standarte बार्सिलोना (जैसे फिरा बार्सिलोना) में तकनीकी डिजाइन, प्रीमियम बढ़ईगीरी, लॉजिस्टिक्स और ऑन-साइट असेंबली का प्रबंधन करते हुए उच्च प्रभाव वाले प्रदर्शनी स्टैंड विकसित करता है।',
-        detail: 'यह सेवा उन अंतरराष्ट्रीय ब्रांडों और एजेंसियों के लिए है जिन्हें प्रमुख विश्व स्तरीय प्रदर्शनियों के दौरान बेहतरीन फिनish और त्रुटिहीन निष्पादन की आवश्यकता होती है।'
+        intro: 'Als Austragungsort globaler Events wie MWC und ISE erfordert Barcelona herausragende Produktionsstandards. Bei Standarte entwerfen, fertigen und montieren wir mit 20 Jahren Erfahrung und eigener Werkstatt wirkungsvolle Messestände in der Fira de Barcelona.',
+        detail: 'Wir bieten technische Zuverlässigkeit und Premium-Oberflächen und meistern logistische Herausforderungen, damit sich der Kunde ganz auf seine Ziele konzentrieren kann.'
       },
       pt: {
-        intro: 'Barcelona é um dos principais polos mundiais de design e atividade de congressos de referência. Na Standarte desenvolvemos stands à medida em Barcelona com um processo completo: desde a conceção técnica em 3D até à montagem final na Fira Barcelona.',
-        detail: 'A solução ideal para marcas globais e agências exigentes que procuram acabamentos premium de alta carpintaria e rigor na execução ferial.'
+        intro: 'Como sede de eventos globais como o MWC ou ISE, Barcelona exige um nível de produção excecional. Na Standarte, com 20 anos de experiência e oficina própria, desenhamos, fabricamos e montamos stands de grande impacto na Fira de Barcelona.',
+        detail: 'Aportamos fiabilidade técnica e um acabamento Premium, resolvendo os desafios de logística e normativas do recinto para que o cliente se concentre nos seus objetivos.'
       },
       fr: {
-        intro: 'Barcelone est l\'une des capitales mondiales du design et des congrès de pointe. Standarte propose la conception et la construction de stands sur mesure à Barcelone avec une approche intégrale : de la modélisation 3D à la logistique et au montage à la Fira Barcelona.',
-        detail: 'Parfait pour les marques mondiales et les agences exigeantes à la recherche de finitions en haute menuiserie et d\'une précision technique lors de grands événements internationaux.'
+        intro: 'En tant qu\'hôte d\'événements mondiaux comme le MWC ou l\'ISE, Barcelone exige un niveau de production exceptionnel. Chez Standarte, avec 20 ans d\'expérience et notre propre atelier, nous concevons, fabriquons et montons des stands à fort impact à la Fira de Barcelona.',
+        detail: 'Nous apportons une fiabilité technique et une finition Premium, résolvant les défis logistiques et réglementaires pour que le client se concentre sur ses objectifs commerciaux.'
       },
       it: {
-        intro: 'Barcellona è una delle capitali mondiali del design e dei congressi all\'avanguardia. In Standarte realizziamo stand su misura a Barcellona con un approccio integrale: dalla modellazione 3D alla logistica e all\'allestimento presso Fira Barcelona.',
-        detail: 'Ideale per marchi globali e agenzie esigenti che cercano finiture di alta falegnameria e precisione tecnica in eventi di grande rilevanza internazionale.'
+        intro: 'In quanto sede di eventi globali come MWC o ISE, Barcellona richiede un livello di produzione eccezionale. In Standarte, con 20 anni di esperienza e un laboratorio di proprietà, progettiamo, produciamo e montiamo stand di grande impatto presso la Fira de Barcelona.',
+        detail: 'Garantiamo affidabilità tecnica e una finitura Premium, superando le sfide logistiche e normative in modo che il cliente possa concentrarsi sui propri obiettivi.'
+      },
+      zh: {
+        intro: '作为 MWC 和 ISE 等全球赛事的举办地，巴塞罗那需要出色的制作水平。在 Standarte，凭借 20 年的经验和自己的工厂，我们在巴塞罗那会展中心设计、制造和组装具有高影响力的展台。',
+        detail: '我们提供技术可靠性和高级效果，克服物流和场馆法规，让客户能够专注于他们的商业目标。'
+      },
+      hi: {
+        intro: 'MWC और ISE जैसे वैश्विक आयोजनों के स्थल के रूप में, बार्सिलोना को उत्कृष्ट उत्पादन स्तर की आवश्यकता है। स्टैंडार्ट में, 20 वर्षों के अनुभव और हमारे अपने कारखाने के साथ, हम फिरा डी बार्सिलोना में उच्च प्रभाव वाले स्टैंड डिजाइन, निर्माण और इकट्ठा करते हैं।',
+        detail: 'हम तकनीकी विश्वसनीयता और एक प्रीमियम खत्म प्रदान करते हैं, रसद और स्थल नियमों पर काबू पाने के लिए ताकि ग्राहक पूरी तरह से अपने व्यावसायिक लक्ष्यों पर ध्यान केंद्रित कर सके।'
+      },
+      ko: {
+        intro: 'MWC 및 ISE와 같은 글로벌 이벤트의 개최지로서 바르셀로나는 뛰어난 생산 수준을 요구합니다. Standarte에서는 20년의 경험과 자체 공장을 바탕으로 Fira de Barcelona에서 큰 영향을 미치는 부스를 설계, 제조 및 조립합니다.',
+        detail: '고객이 상업적 목표에만 집중할 수 있도록 물류 및 현장 규정을 극복하여 기술적 신뢰성과 프리미엄 마감을 제공합니다.'
       }
     }
   },
   bilbao: {
-    city: { es: 'Bilbao', en: 'Bilbao', de: 'Bilbao', zh: '毕尔巴鄂', hi: 'बिलबाओ', pt: 'Bilbao', fr: 'Bilbao', it: 'Bilbao' },
+    city: { es: 'Bilbao', en: 'Bilbao', de: 'Bilbao', zh: '毕尔巴鄂', hi: 'बिलबाओ', pt: 'Bilbau', fr: 'Bilbao', it: 'Bilbao', ko: '빌바오' },
     content: {
       es: {
-        intro: 'Bilbao representa el corazón industrial y la ingeniería de vanguardia del norte de España. En Standarte llevamos a cabo el diseño y montaje de stands de alta carpintería en Bilbao, aportando solidez constructiva y una presencia de marca inmejorable en el Bilbao Exhibition Centre (BEC).',
-        detail: 'Optimizamos la circulación de personas y creamos espacios de permanencia confortables, ideales para empresas industriales de alta exigencia técnica.'
+        intro: 'Bilbao Exhibition Centre (BEC) es uno de los recintos más innovadores. Gracias a nuestra red logística, 20 años de experiencia y un gran taller propio, garantizamos montajes de stands de diseño impecable para ferias líderes como BIEMH.',
+        detail: 'Combinamos una planificación milimétrica en el taller con un equipo de montaje especializado que cuida hasta el último detalle en el recinto.'
       },
       en: {
-        intro: 'Bilbao represents the industrial heart and cutting-edge engineering of northern Spain. Standarte produces high-carpentry exhibition stands in Bilbao, delivering robust construction and an impressive brand presence at the Bilbao Exhibition Centre (BEC).',
-        detail: 'We optimize human flow and integrate comfortable spaces of permanence, perfectly suited for industrial corporations with high technical standards.'
+        intro: 'Bilbao Exhibition Centre (BEC) is one of the most innovative venues. Thanks to our logistics network, 20 years of experience, and a large own workshop, we guarantee flawless custom stand assembly for leading fairs like BIEMH.',
+        detail: 'We combine rigorous planning in the workshop with a specialized assembly team that takes care of every last detail on-site.'
       },
       de: {
-        intro: 'Bilbao ist das industrielle Herz und das Zentrum fortschrittlicher Ingenieurskunst im Norden Spaniens. Standarte entwirft und montiert hochwertige Messestände in Bilbao für eine starke und solide Markenpräsenz im Bilbao Exhibition Centre (BEC).',
-        detail: 'Wir optimieren den Verkehrsfluss und schaffen komfortable Verweilräume, die sich ideal für Industrieunternehmen mit hohen technischen Anforderungen eignen.'
-      },
-      zh: {
-        intro: '毕尔巴鄂代表了西班牙北部的工业核心和尖端工程。Standarte 在毕尔巴鄂会展中心（BEC）提供高水准的展台设计与木工搭建服务，为您的品牌打造坚实、大气且极具辨识度的展会现场形象。',
-        detail: '我们专注于优化人流设计并融入舒适的停留空间，完美满足高技术标准工业企业的商业展示需求。'
-      },
-      hi: {
-        intro: 'बिलबाओ उत्तरी स्पेन के औद्योगिक और अत्याधुनिक इंजीनियरिंग का प्रतिनिधित्व करता है। Standarte बिलबाओ (जैसे बीईसी बिलबाओ) में उच्च गुणवत्ता वाले बढ़ईगीरी स्टैंड का डिजाइन और निर्माण करता है, जो मजबूत उपस्थिति प्रदान करता है।',
-        detail: 'हम मानव प्रवाह को अनुकूलित करते हैं और आरामदायक स्थायित्व के स्थान स्थापित करते हैं, जो उच्च तकनीकी मानकों वाले औद्योगिक निगमों के लिए बिल्कुल उपयुक्त हैं।'
+        intro: 'Das Bilbao Exhibition Centre (BEC) ist einer der innovativsten Veranstaltungsorte. Dank unseres Logistiknetzwerks, 20 Jahren Erfahrung und einer großen eigenen Werkstatt garantieren wir tadellose Messestandmontagen für Leitmessen wie die BIEMH.',
+        detail: 'Wir kombinieren präzise Planung in der Werkstatt mit einem spezialisierten Montageteam, das vor Ort auf jedes Detail achtet.'
       },
       pt: {
-        intro: 'Bilbao representa o coração industrial e a engenharia de ponta do norte de Espanha. Na Standarte concebemos e montamos stands de alta carpintaria em Bilbao, proporcionando solidez construtiva e uma forte presença de marca no Bilbao Exhibition Centre (BEC).',
-        detail: 'Otimizamos o design de fluxo humano e criamos espacios de permanencia confortables, ideais para empresas industriais com elevados padrões técnicos.'
+        intro: 'O Bilbao Exhibition Centre (BEC) é um dos recintos mais inovadores. Graças à nossa rede logística, 20 anos de experiência e uma grande oficina própria, garantimos a montagem de stands de design impecável para feiras líderes como a BIEMH.',
+        detail: 'Combinamos um planeamento rigoroso na oficina com uma equipa de montagem especializada que cuida de cada detalhe no recinto.'
       },
       fr: {
-        intro: 'Bilbao représente le cœur industriel et l\'ingénierie de pointe du nord de l\'Espagne. Standarte réalise la conception et le montage de stands en haute menuiserie à Bilbao, garantissant une solidité constructive et une excellente présence de marque au Bilbao Exhibition Centre (BEC).',
-        detail: 'Nous optimisons la circulation des personnes et créons des espaces confortables, idéaux pour les entreprises industrielles aux normes techniques strictes.'
+        intro: 'Le Bilbao Exhibition Centre (BEC) est l\'un des lieux les plus innovants. Grâce à notre réseau logistique, 20 ans d\'expérience et un grand atelier propre, nous garantissons des montages de stands impeccables pour des salons majeurs comme BIEMH.',
+        detail: 'Nous combinons une planification rigoureuse en atelier avec une équipe de montage spécialisée qui soigne chaque détail sur place.'
       },
       it: {
-        intro: 'Bilbao rappresenta il cuore industriale e dell\'ingegneria all\'avanguardia nel nord della Spagna. In Standarte ci occupiamo della progettazione e montaggio di stand di alta falegnameria a Bilbao, fornendo solidità e un\'eccellente presenza del brand al Bilbao Exhibition Centre (BEC).',
-        detail: 'Ottimizziamo la circolazione delle persone e creiamo spazi di permanenza confortevoli, ideali per le aziende industriali ad alta esigenza tecnica.'
+        intro: 'Il Bilbao Exhibition Centre (BEC) è uno dei poli espositivi più innovativi. Grazie alla nostra rete logistica, a 20 anni di esperienza e a un grande laboratorio di proprietà, garantiamo l\'allestimento di stand dal design impeccabile per fiere leader come BIEMH.',
+        detail: 'Combiniamo una rigorosa pianificazione in laboratorio con una squadra di montaggio specializzata che cura ogni dettaglio in loco.'
+      },
+      zh: {
+        intro: '毕尔巴鄂展览中心 (BEC) 是最具创新性的场馆之一。凭借我们的物流网络、20 年的经验和自有大型工厂，我们为 BIEMH 等领先的展览会提供完美的定制展台搭建。',
+        detail: '我们将工厂严谨的计划与专业的组装团队相结合，确保在现场处理好每一个细节。'
+      },
+      hi: {
+        intro: 'बिलबाओ प्रदर्शनी केंद्र (BEC) सबसे नवीन स्थानों में से एक है। हमारे रसद नेटवर्क, 20 वर्षों के अनुभव और एक बड़े अपने कारखाने के लिए धन्यवाद, हम BIEMH जैसे प्रमुख मेलों के लिए निर्दोष कस्टम स्टैंड असेंबली की गारंटी देते हैं।',
+        detail: 'हम साइट पर हर अंतिम विवरण का ख्याल रखने वाली एक विशेष असेंबली टीम के साथ कार्यशाला में कठोर योजना को जोड़ते हैं।'
+      },
+      ko: {
+        intro: '빌바오 전시 센터(BEC)는 가장 혁신적인 장소 중 하나입니다. 당사의 물류 네트워크, 20년의 경험 및 대규모 자체 공장 덕분에 당사는 BIEMH와 같은 주요 박람회에 완벽한 맞춤형 부스 조립을 보장합니다.',
+        detail: '작업장에서의 엄격한 계획과 현장에서 마지막 세부 사항까지 처리하는 전문 조립 팀을 결합합니다.'
+      }
+    }
+  },
+  lisboa: {
+    city: { es: 'Lisboa', en: 'Lisbon', de: 'Lissabon', zh: '里斯本', hi: 'लिस्बन', pt: 'Lisboa', fr: 'Lisbonne', it: 'Lisbona', ko: '리스본' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte desarrolla stands en Lisboa garantizando control total sobre cada fase: diseño, fabricación, logística, instalación y validaciones finales en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores directos la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte develops exhibition stands in Lisbon guaranteeing total control over each phase: design, production, logistics, installation, and final validations on-site.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung in der temporären Architektur, realisiert in unserer eigenen Werkstatt, entwickelt Standarte Messestände in Lissabon und garantiert volle Kontrolle über jede Phase: Design, Produktion, Logistik, Montage und Endabnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte desenvolve stands em Lisboa garantindo o controlo total sobre cada fase: design, fabrico, logística, instalação e validações finais no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Avec 20 ans d\'expérience dans l\'architecture éphémère depuis notre propre atelier, Standarte développe des stands d\'exposition à Lisbonne en garantissant un contrôle total : conception, fabrication, logistique, installation et validations.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte sviluppa stand a Lisbona garantendo il controllo totale su ogni fase: progettazione, produzione, logistica, installazione e collaudi.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      zh: {
+        intro: '凭借在我们自己的工厂建设临时建筑的 20 年经验，Standarte 在里斯本开发展览摊位，保证对每个阶段的全面控制：设计，生产，物流，安装和现场最终验证。',
+        detail: '我们为机构和直接参展商提供无意外的装配安全感以及对细节的卓越关注。'
+      },
+      hi: {
+        intro: 'हमारे अपने कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, स्टैंडार्ट लिस्बन में प्रदर्शनी स्टैंड विकसित करता है जो प्रत्येक चरण पर कुल नियंत्रण की गारंटी देता है: डिजाइन, उत्पादन, रसद, स्थापना, और ऑन-साइट अंतिम सत्यापन।',
+        detail: 'हम एजेंसियों और प्रत्यक्ष प्रदर्शकों को बिना किसी आश्चर्य और असाधारण ध्यान के विधानसभा की मन की शांति प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공장에서 임시 건축물을 지은 20년의 경험을 바탕으로 Standarte는 리스본에 전시 부스를 개발하여 설계, 생산, 물류, 설치 및 현장 최종 검증 등 각 단계에 대한 완벽한 통제를 보장합니다.',
+        detail: '우리는 대행사와 직접 전시자에게 놀라움 없는 조립의 평화로움과 세부 사항에 대한 탁월한 주의를 제공합니다.'
+      }
+    }
+  },
+  malaga: {
+    city: { es: 'Málaga', en: 'Malaga', de: 'Málaga', zh: '马拉加', hi: 'मलागा', pt: 'Málaga', fr: 'Malaga', it: 'Malaga', ko: '말라가' },
+    content: {
+      es: {
+        intro: 'El crecimiento de Málaga como destino de congresos y ferias tecnológicas es imparable. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en FYCMA.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Malaga\'s growth as a destination for congresses and technological fairs is unstoppable. With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation, and coordination of stands at FYCMA.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Das Wachstum von Málaga als Ziel für Kongresse und Technologiemessen ist unaufhaltsam. Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen bei FYCMA.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'O crescimento de Málaga como destino para congressos e feiras tecnológicas é imparável. Com 20 anos de experiência e oficina própria, a Standarte assume o design técnico, produção, instalação e coordenação de stands na FYCMA.',
+        detail: 'A nossa equipa garante às marcas e agências criativas uma execução robusta, pontual e com acabamentos de excelência.'
+      },
+      fr: {
+        intro: 'La croissance de Malaga en tant que destination pour les congrès et les salons technologiques est imparable. Avec 20 ans d\'expérience et un propre atelier de haut niveau, Standarte prend en charge la conception technique, la production et l\'installation des stands à FYCMA.',
+        detail: 'Notre équipe garantit aux marques et aux agences créatives une exécution robuste, ponctuelle et avec des finitions haut de gamme.'
+      },
+      it: {
+        intro: 'La crescita di Malaga come destinazione per congressi e fiere tecnologiche è inarrestabile. Con 20 anni di esperienza e un laboratorio di proprietà di primo livello, Standarte assume la progettazione tecnica, la produzione, l\'installazione e il coordinamento degli stand presso FYCMA.',
+        detail: 'Il nostro team garantisce ai marchi aziendali e alle agenzie creative un\'esecuzione solida, puntuale e con finiture di alto livello.'
+      },
+      zh: {
+        intro: '马拉加作为大会和技术展览目的地的增长是势不可挡的。凭借 20 年的丰富经验和我们自己顶级的工厂，Standarte 承担了 FYCMA 展台的技术设计、生产、安装和协调。',
+        detail: '我们的团队向企业品牌和创意机构保证，执行稳健、准时，并具有高端效果。'
+      },
+      hi: {
+        intro: 'मलागा की कांग्रेस और तकनीकी मेलों के गंतव्य के रूप में वृद्धि अजेय है। 20 वर्षों के अनुभव और एक शीर्ष-स्तरीय अपने कारखाने के साथ, स्टैंडार्ट FYCMA में स्टैंड के तकनीकी डिजाइन, उत्पादन, स्थापना और समन्वय को संभालता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांडों और रचनात्मक एजेंसियों को उच्च अंत खत्म के साथ एक मजबूत, समय पर निष्पादन की गारंटी देती है।'
+      },
+      ko: {
+        intro: '총회 및 기술 박람회의 목적지로서의 말라가의 성장은 막을 수 없습니다. 20년의 경험과 최고 수준의 자체 공장을 바탕으로 Standarte는 FYCMA에서 부스의 기술적 디자인, 생산, 설치 및 조정을 담당합니다.',
+        detail: '우리 팀은 기업 브랜드와 크리에이티브 에이전시에게 고급 마감 처리를 통한 강력하고 적시의 실행을 보장합니다.'
       }
     }
   },
   badajoz: {
-    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz' },
+    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz', ko: '바다호스' },
     content: {
       es: {
-        intro: 'Badajoz y la región de Extremadura representan un mercado ferial dinámico con eventos agrícolas, ganaderos e industriales de gran tradición. En Standarte diseñamos, fabricamos y montamos stands de alta carpintería en recintos de referencia como FEVAL en Don Benito e IFEBA en Badajoz.',
-        detail: 'Nuestra presencia y experiencia local nos permite responder con rapidez, optimizar costes logísticos y garantizar un stand impecable para citas clave como AGROEXPO o FECIEX.'
+        intro: 'Badajoz y Extremadura representan un mercado ferial dinámico con eventos de gran tradición. En Standarte diseñamos y montamos stands con 20 años de experiencia y taller propio en recintos de referencia como IFEBA y FEVAL.',
+        detail: 'Nuestra eficiencia logística nos permite responder con rapidez, optimizando costes y garantizando un stand impecable para citas clave como AGROEXPO o FECIEX.'
       },
       en: {
-        intro: 'Badajoz and the Extremadura region represent a highly active ferial hub with deep-rooted agricultural, livestock and industrial events. Standarte produces high-carpentry exhibition stands in key regional venues such as FEVAL in Don Benito and IFEBA in Badajoz.',
-        detail: 'Our local expertise allows us to deliver quick solutions, optimize logistics costs, and guarantee a flawless stand presence for major events like AGROEXPO or FECIEX.'
+        intro: 'Badajoz and Extremadura represent a highly active ferial hub with deep-rooted events. At Standarte, backed by 20 years of experience and our own workshop, we design and assemble stands in key regional venues such as IFEBA and FEVAL.',
+        detail: 'Our logistics efficiency allows us to deliver quick solutions, optimize costs, and guarantee a flawless stand presence for major events like AGROEXPO or FECIEX.'
       },
       de: {
-        intro: 'Badajoz und die Region Extremadura sind ein dynamischer Messemarkt mit traditionsreichen Veranstaltungen. Standarte entwirft und montiert hochwertige Messestände an führenden Standorten wie FEVAL in Don Benito und IFEBA in Badajoz.',
-        detail: 'Unsere lokale Präsenz ermöglicht uns schnelle Reaktionszeiten, optimierte Logistikkosten und einen makellosen Stand bei wichtigen Messen wie AGROEXPO oder BECIEX.'
-      },
-      zh: {
-        intro: '巴达霍斯和埃斯特雷马杜拉地区代表了一个充满活力的展会市场。Standarte 在该地区的核心展馆（如唐贝尼托的 FEVAL 和巴达霍斯的 IFEBA）提供高水准的展台设计、制作与木工搭建服务。',
-        detail: '我们在当地的丰富经验使我们能够快速响应、优化物流成本，并确保在 AGROEXPO 或 FECIEX 等重点展会中为您呈现完美的品牌展台。'
-      },
-      hi: {
-        intro: 'बादाहोज़ और एक्स्ट्रीमादुरा क्षेत्र कृषि, पशुधन और औद्योगिक आयोजनों के साथ एक गतिशील मेला केंद्र का प्रतिनिधित्व करते हैं। Standarte डॉन बेनिटो में FEVAL और बादाहोज़ में IFEBA जैसे प्रमुख क्षेत्रीय स्थलों में उच्च गुणवत्ता वाले बढ़ईगीरी स्टैंड का डिजाइन और निर्माण करता है।',
-        detail: 'हमारी स्थानीय उपस्थिति और अनुभव हमें तेजी से प्रतिक्रिया देने, लॉजिस्टिक्स लागत को अनुकूलित करने और AGROEXPO या FECIEX जैसे प्रमुख मेलों के लिए एक त्रुटिहीन स्टैंड सुनिश्चित करने की अनुमति देता है।'
+        intro: 'Badajoz und die Region Extremadura sind ein dynamischer Messemarkt mit traditionsreichen Veranstaltungen. Standarte entwirft und montiert mit 20 Jahren Erfahrung und eigener Werkstatt hochwertige Messestände an führenden Standorten wie IFEBA und FEVAL.',
+        detail: 'Unsere logistische Effizienz ermöglicht uns schnelle Reaktionszeiten und optimierte Kosten für einen makellosen Stand bei wichtigen Messen wie AGROEXPO.'
       },
       pt: {
-        intro: 'Badajoz e a região da Extremadura representam um mercado de feiras muito dinâmico, com eventos agrícolas, pecuários e industriais de grande tradição. Na Standarte concebemos e montamos stands de alta carpintaria em recintos de referência como a FEVAL em Don Benito e a IFEBA em Badajoz.',
-        detail: 'A nossa forte ligação local permite-nos responder rapidamente, otimizar custos de logística e assegurar um stand impecável para encontros de relevo como a AGROEXPO o u a FECIEX.'
+        intro: 'Badajoz e a Extremadura representam um mercado de feiras dinâmico com eventos de grande tradição. Na Standarte concebemos e montamos stands com 20 anos de experiência e oficina própria em recintos de referência como IFEBA e FEVAL.',
+        detail: 'A nossa eficiência logística permite-nos responder rapidamente, otimizando custos e garantindo um stand impecável para feiras chave como a AGROEXPO.'
       },
       fr: {
-        intro: 'Badajoz et la région d\'Estrémadure représentent un marché dynamique avec des événements agricoles, de l\'élevage et industriels de grande tradition. Nous concevons, fabriquons et montons des stands de haute menuiserie dans des lieux clés comme la FEVAL à Don Benito et l\'IFEBA à Badajoz.',
-        detail: 'Notre présence locale nous permet de répondre rapidement, d\'optimiser les coûts logistiques et de garantir un stand impeccable pour des événements majeurs comme AGROEXPO ou FECIEX.'
+        intro: 'Badajoz et l\'Estrémadure représentent un marché dynamique avec des événements de grande tradition. Nous concevons et montons des stands avec 20 ans d\'expérience et un propre atelier dans des lieux clés comme IFEBA et FEVAL.',
+        detail: 'Notre efficacité logistique nous permet de répondre rapidement, d\'optimiser les coûts et de garantir un stand impeccable pour des événements majeurs comme AGROEXPO.'
       },
       it: {
-        intro: 'Badajoz e la regione dell\'Estremadura rappresentano un mercato fieristico dinamico con eventi agricoli e industriali di grande tradizione. Progettiamo, produciamo e allestiamo stand di alta falegnameria in centri di riferimento come FEVAL a Don Benito e IFEBA a Badajoz.',
-        detail: 'La nostra presenza locale ci consente di rispondere rapidamente, ottimizzare i costi logistici e garantire uno stand impeccabile per appuntamenti chiave come AGROEXPO o FECIEX.'
+        intro: 'Badajoz e l\'Estremadura rappresentano un mercato fieristico dinamico con eventi di grande tradizione. Progettiamo e allestiamo stand con 20 anni di esperienza e un laboratorio di proprietà in centri di riferimento come IFEBA e FEVAL.',
+        detail: 'La nostra efficienza logistica ci consente di rispondere rapidamente, ottimizzare i costi e garantire uno stand impeccabile per appuntamenti chiave come AGROEXPO.'
+      },
+      zh: {
+        intro: '巴达霍斯和埃斯特雷马杜拉代表了一个充满活力且历史悠久的展会市场。凭借 20 年的经验和自己的工厂，我们在该地区的核心展馆（如 IFEBA 和 FEVAL）设计和组装展台。',
+        detail: '我们的物流效率使我们能够快速响应、优化成本，并确保在 AGROEXPO 或 FECIEX 等重点展会中为您呈现完美的品牌展台。'
+      },
+      hi: {
+        intro: 'बादाहोज़ और एक्स्ट्रीमादुरा गहरी जड़ें वाले आयोजनों के साथ एक अत्यधिक सक्रिय फेशियल हब का प्रतिनिधित्व करते हैं। 20 वर्षों के अनुभव और हमारे अपने कारखाने के समर्थन से, स्टैंडार्ट में, हम IFEBA और FEVAL जैसे प्रमुख क्षेत्रीय स्थानों में स्टैंड डिजाइन और इकट्ठा करते हैं।',
+        detail: 'हमारी रसद दक्षता हमें त्वरित समाधान देने, लागत का अनुकूलन करने और एग्रोएक्सपीओ या FECIEX जैसे प्रमुख आयोजनों के लिए एक निर्दोष स्टैंड उपस्थिति की गारंटी देने की अनुमति देती है।'
+      },
+      ko: {
+        intro: '바다호스와 엑스트레마두라는 뿌리 깊은 이벤트를 갖춘 매우 활동적인 행사 허브를 대표합니다. 20년의 경험과 자체 공장을 바탕으로 Standarte에서는 IFEBA 및 FEVAL과 같은 주요 지역 행사장에서 스탠드를 디자인하고 조립합니다.',
+        detail: '물류 효율성을 통해 당사는 빠른 솔루션을 제공하고 비용을 최적화하며 AGROEXPO 또는 FECIEX와 같은 주요 이벤트에서 완벽한 스탠드 존재를 보장할 수 있습니다.'
       }
     }
   }
 };
-
-const commercialDescription = (es) => ({ es });
 
 export const portfolios = [
   {
@@ -1738,17 +1930,23 @@ export function findRoute(path) {
   const maybeLang = languages.includes(parts[0]) ? parts.shift() : 'es';
   const slug = parts.join('/');
   const langRoutes = routes[maybeLang] || routes.es;
+  if (slug.startsWith('ferias/')) { return { lang: maybeLang, section: 'feria', fairSlug: slug.substring(7) }; }
   const section = Object.keys(langRoutes).find((key) => langRoutes[key] === slug) || 'home';
   return { lang: maybeLang, section };
 }
 
 export function resolveRoute(path) {
-  const { lang, section } = findRoute(path);
+  const { lang, section, fairSlug } = findRoute(path);
   const c = copy[lang] || copy.es;
   const canonical = `https://standarte.es${pathFor(lang, section)}`;
-  return { lang, section, copy: c, canonical };
+  return { lang, section, fairSlug, copy: c, canonical };
 }
 
-export const prerenderEntries = languages.flatMap((lang) =>
-  Object.keys(routes[lang]).map((section) => ({ path: pathFor(lang, section).replace(/^\/|\/$/g, '') }))
-).filter((entry) => entry.path !== '');
+export const prerenderEntries = languages.flatMap((lang) => {
+  const normalRoutes = Object.keys(routes[lang]).map((section) => ({ path: pathFor(lang, section).replace(/^\/|\/$/g, '') }));
+  const fairRoutes = fairsData.map(fair => {
+    const prefix = lang === 'es' ? '' : `${lang}/`;
+    return { path: `${prefix}ferias/${fair.slug}` };
+  });
+  return [...normalRoutes, ...fairRoutes];
+}).filter((entry) => entry.path !== '');

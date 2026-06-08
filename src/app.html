@@ -18,6 +18,28 @@
         security_storage: 'granted'
       });
     </script>
+    <script>
+      (function() {
+        if (window.location.pathname === '/') {
+          var savedLang = localStorage.getItem('standarte_lang');
+          if (savedLang === 'es') return;
+          if (savedLang && savedLang !== 'es') {
+            window.location.replace('/' + savedLang + '/');
+            return;
+          }
+          if (!savedLang) {
+            var browserLang = (navigator.language || navigator.userLanguage || '').substring(0, 2).toLowerCase();
+            if (browserLang === 'es') return;
+            var supportedLangs = ['en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko'];
+            if (supportedLangs.includes(browserLang)) {
+              window.location.replace('/' + browserLang + '/');
+            } else {
+              window.location.replace('/en/');
+            }
+          }
+        }
+      })();
+    </script>
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">

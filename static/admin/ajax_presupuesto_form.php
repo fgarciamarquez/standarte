@@ -3,17 +3,32 @@ include("config.php");
 ?>
 
 <?php
+	// 1. Obtener datos de la tabla 'company' desde Supabase
+	$supabase_url = 'https://mucfvcrwleapdeaxdlxe.supabase.co';
+	$supabase_key = 'sb_publishable_nLI2IH870PkwiKDvqy6nBA_jfpXKuDW';
 
-	$subdatos_email = $db->prepare("SELECT * FROM company");
-	$subdatos_email->execute();
-	$subdatos = $subdatos_email->fetchAll(PDO::FETCH_ASSOC);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $supabase_url . '/rest/v1/company?select=*&limit=1');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		'apikey: ' . $supabase_key,
+		'Authorization: Bearer ' . $supabase_key
+	));
+	$response = curl_exec($ch);
+	curl_close($ch);
 
+	$company_data = json_decode($response, true);
 	
-	foreach ($subdatos as $subdatos) {
-	  $titular_email = $subdatos['exxp'];
-	  $ltd_email = $subdatos['ltd'];
-	  $pie_email = $subdatos['foot'];
-	};
+	if (!empty($company_data) && is_array($company_data)) {
+		$titular_email = $company_data[0]['exxp'] ?? 'Standarte';
+		$ltd_email = $company_data[0]['ltd'] ?? 'Standarte S.L.';
+		$pie_email = $company_data[0]['foot'] ?? 'Este correo es confidencial y para uso exclusivo de la persona a la que va dirigido.';
+	} else {
+		// Fallback
+		$titular_email = 'Standarte';
+		$ltd_email = 'Standarte S.L.';
+		$pie_email = 'Este correo es confidencial y para uso exclusivo de la persona a la que va dirigido.';
+	}
 ?>
 
 
@@ -297,10 +312,33 @@ if (!filter_var($form_email, FILTER_VALIDATE_EMAIL)) {
 
 } else {
 
-$query      = "INSERT INTO `presupuestos` SET nombre = ?, empresa = ?, tlf = ?, email = ?, feria = ?, localizacion = ?, metros = ?, presupuesto = ?, descripcion = ?, opciones = ?, respuesta_enviada = ?";
-            $parameters = array($form_nombre, $form_empresa, $form_tlf, $form_email, $form_feria, $form_localizacion, $form_metros, $form_presupuesto, $form_descripcion, $form_opciones, $form_respuesta);
-            $statement  = $db->prepare($query);
-            $statement->execute($parameters);
+$data_insert = json_encode(array(
+	'nombre' => $form_nombre,
+	'empresa' => $form_empresa,
+	'tlf' => $form_tlf,
+	'email' => $form_email,
+	'feria' => $form_feria,
+	'localizacion' => $form_localizacion,
+	'metros' => $form_metros,
+	'presupuesto' => $form_presupuesto,
+	'descripcion' => $form_descripcion,
+	'opciones' => $form_opciones,
+	'respuesta_enviada' => $form_respuesta
+));
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $supabase_url . '/rest/v1/presupuestos');
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_insert);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+	'apikey: ' . $supabase_key,
+	'Authorization: Bearer ' . $supabase_key,
+	'Content-Type: application/json',
+	'Prefer: return=minimal'
+));
+curl_exec($ch);
+curl_close($ch);
 
 			          /*____________________SCRIPT MAIL________________________*/
 
