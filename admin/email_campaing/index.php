@@ -74,7 +74,7 @@ function campaign_get_email_clicks()
     ]);
     $header = curl_exec($chCount);
     $count = 0;
-    if (preg_match('/Content-Range: [0-9]+-[0-9]+\/([0-9]+)/', $header, $matches)) {
+    if (preg_match('/Content-Range:\s*[0-9]+-[0-9]+\/([0-9]+)/i', $header, $matches)) {
         $count = (int)$matches[1];
     }
     curl_close($chCount);
