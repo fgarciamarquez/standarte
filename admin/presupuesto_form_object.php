@@ -7,7 +7,7 @@
       }
       $to_email = $messageDetails["to_email"];
       $from_name = $messageDetails["from_name"] ?? "Standarte";
-      $from_email = $messageDetails["from_email"] ?? "hola@standarte.es";
+      $from_email = $messageDetails["from_email"] ?? "info@standarte.es";
       $reply_to_name = $messageDetails["reply_to_name"] ?? $from_name;
       $reply_to_email = $messageDetails["reply_to_email"] ?? $from_email;
       $message_body = $messageDetails["message_body"];
@@ -15,7 +15,7 @@
       $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
       $headers .= "From: ".$from_name." <".$from_email.">"."\r\n";
       $headers .= "Reply-To: ".$reply_to_name." <".$reply_to_email.">"."\r\n";
-      $headers .= "CC: hola@standarte.es\r\n";
+      $headers .= "CC: info@standarte.es\r\n";
 
       mail($to_email, $message_subject, $message_body, $headers);
     }

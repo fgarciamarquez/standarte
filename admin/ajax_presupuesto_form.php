@@ -310,7 +310,7 @@ $query      = "INSERT INTO `presupuestos` SET nombre = ?, empresa = ?, tlf = ?, 
 					  $messageDetails["message_subject"] = $mail_text['subject'];
 					  $messageDetails["to_email"] = $form_email;
 					  $messageDetails["from_name"] = "Standarte";
-					  $messageDetails["from_email"] = "hola@standarte.es";
+					  $messageDetails["from_email"] = "info@standarte.es";
 					  $messageDetails["reply_to_name"] = $form_nombre;
 					  $messageDetails["reply_to_email"] = $form_email;
 		

@@ -45,7 +45,7 @@
         <ul class="lista_direccion">
           <li>Av. de Castilla 2, San Fernando de Henares (Madrid - España)</li>
           <li>+34 637 894 819</li>
-          <li><a class="link_email _gold" href="mailto:hola@standarte.es">hola@standarte.es</a></li>
+          <li><a class="link_email _gold" href="mailto:info@standarte.es">info@standarte.es</a></li>
         </ul>
         {#if statusMessage}
           <div id="error_presupuesto_form" class:form-error={status === 'error'} class:form-success={status === 'success'}>

@@ -32,13 +32,13 @@ $ano_futuro = date("Y", strtotime("+1 years", strtotime($ano_actual)));
 |
 */
 $GLOBALS["SMTP_HOST"] = 'ssl0.ovh.net';
-$GLOBALS["SMTP_USERNAME"] = 'hola@standarte.es';
+$GLOBALS["SMTP_USERNAME"] = 'info@standarte.es';
 $GLOBALS["SMTP_PASSWORD"] = 'Extrategia37';
 $GLOBALS["SMTP_SECURE"] = 'ssl';
 $GLOBALS["SMTP_PORT"] = 465;
 $GLOBALS["SMTP_CHARSET"] = 'UTF-8';
 
-$fromAddress = 'hola@standarte.es';
+$fromAddress = 'info@standarte.es';
 $fromName    = 'www.standarte.es';
 $hoy = date("Y-m-d");
 

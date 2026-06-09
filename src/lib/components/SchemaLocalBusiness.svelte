@@ -7,7 +7,7 @@
     "description": "Diseño, fabricación y montaje de stands a medida para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real y Lisboa.",
     "url": "https://standarte.es",
     "telephone": "+34637894819",
-    "email": "hola@standarte.es",
+    "email": "info@standarte.es",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Av. de Castilla 2",

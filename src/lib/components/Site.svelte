@@ -239,7 +239,7 @@
       url: `${baseUrl}/`,
       logo: `${baseUrl}/img/logo_standarte_rectanular.png`,
       image: `${baseUrl}/img/trabajos/TCANTICO/1.avif`,
-      email: 'hola@standarte.es',
+      email: 'info@standarte.es',
       telephone: '+34637894819',
       priceRange: '$$$',
       address: {
