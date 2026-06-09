@@ -31,7 +31,7 @@
   export let data;
   let isScrolled = false;
   let menuOpen = false;
-  const ctaLabels = { es: 'SOLICITAR PRESUPUESTO', en: 'REQUEST A QUOTE', de: 'ANGEBOT ANFORDERN', zh: '索取报价', hi: 'एक बोली का अनुरोध करें', pt: 'SOLICITAR ORÇAMENTO', fr: 'DEMANDER UN DEVIS', it: 'RICHIEDI UN PREVENTIVO', ko: '견적 요청' };
+  const ctaLabels = { es: 'PRESUPUESTO EN 24H', en: 'REQUEST A QUOTE', de: 'ANGEBOT ANFORDERN', zh: '索取报价', hi: 'एक बोली का अनुरोध करें', pt: 'SOLICITAR ORÇAMENTO', fr: 'DEMANDER UN DEVIS', it: 'RICHIEDI UN PREVENTIVO', ko: '견적 요청' };
   $: ({ lang, copy, canonical, fairSlug } = data);
   
   $: fair = fairsData.find(f => f.slug === fairSlug) || fairsData[0];

@@ -16,7 +16,7 @@
   export let initialLightboxSlug = null;
 
   const ctaLabels = {
-    es: 'SOLICITAR PRESUPUESTO',
+    es: 'PRESUPUESTO EN 24H',
     en: 'REQUEST A QUOTE',
     de: 'ANGEBOT ANFORDERN',
     pt: 'SOLICITAR ORÇAMENTO',

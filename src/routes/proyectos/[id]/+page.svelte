@@ -90,7 +90,7 @@
   $: currentCopy = copy[lang] || copy.es;
 
   const ctaLabels = {
-    es: 'SOLICITAR PRESUPUESTO',
+    es: 'PRESUPUESTO EN 24H',
     en: 'REQUEST A QUOTE',
     de: 'ANGEBOT ANFORDERN',
     pt: 'SOLICITAR ORÇAMENTO',
