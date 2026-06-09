@@ -1211,7 +1211,7 @@ export const portfolios = [
   },
   {
     "thumb": "img/trabajos/TCELUMATEC/2.avif",
-    "full": "img/trabajos/TCELUMATEC/1.avif",
+    "full": "img/trabajos/TCELUMATEC/3.avif",
     "alt": "Construcción de stand industrial a medida para Elumatec",
     "categories": [
       "carpinteria",
