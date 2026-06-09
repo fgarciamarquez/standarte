@@ -130,6 +130,25 @@
 
   $: filteredPortfolios = activePortfolios;
 
+  $: if (section && typeof window !== 'undefined') {
+    let targetId = section;
+    if (section in cityData) {
+      targetId = section;
+    } else if (section === 'luzpavilion') {
+      targetId = 'micro-stand';
+    }
+    setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top >= -50 && rect.top <= 150;
+        if (!isVisible) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }, 120);
+  }
+
   $: seoContent = (() => {
     const bySection = richSeoData[section];
     if (!bySection) {
@@ -526,6 +545,7 @@
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
       if (visible) {
+        if (section in cityData) return; // Do not overwrite city URL on scroll
         const nextPath = pathFor(lang, routeById[visible.target.id]);
         if (window.location.pathname !== nextPath) {
           replaceState(nextPath, {});
