@@ -89,7 +89,6 @@
     ko: 'ko-KR'
   };
   const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz'];
-  const serviceIcons = ['icon-pencil', 'icon-crop', 'icon-layers'];
   const cookieSettingsLabels = {
     es: 'Configurar cookies',
     en: 'Cookie settings',
@@ -655,7 +654,27 @@
       <div class="service-grid">
         {#each copy.services as item, index}
           <article>
-            <div class="service-icon"><i class={`service-symbol ${serviceIcons[index]}`} aria-hidden="true"></i></div>
+            <div class="service-icon">
+              {#if index === 0}
+                <!-- Diseño e Ingeniería -->
+                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="4" r="2"></circle>
+                  <path d="M12 6L7 21M12 6l5 15M9.5 14h5"></path>
+                  <path d="M12 17a3.5 3.5 0 0 1 0-7" stroke-dasharray="2.5 2.5"></path>
+                </svg>
+              {:else if index === 1}
+                <!-- Construcción -->
+                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 22h20M5 22V7h14v15M12 22V7M5 12h14M5 17h14M5 7l7 5 7-5M5 12l7 5 7-5"></path>
+                </svg>
+              {:else if index === 2}
+                <!-- Montaje y validaciones -->
+                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 14l2 2 4-4"></path>
+                </svg>
+              {/if}
+            </div>
             <h3>{item[0]}</h3>
             <p>{item[1]}</p>
           </article>
@@ -670,9 +689,11 @@
       <div class="city-grid">
         {#each cityKeys as cityKey}
           <article id={cityKey}>
-            <div class="city-cover-container">
-              <img src="/img/cover_{cityKey}.avif" alt={cityTitle(cityKey)} class="city-cover-image" loading="lazy" />
-            </div>
+            <a href={pathFor(lang, cityKey)} class="city-cover-link">
+              <div class="city-cover-container">
+                <img src="/img/cover_{cityKey}.avif" alt={cityTitle(cityKey)} class="city-cover-image" loading="lazy" />
+              </div>
+            </a>
             <h3>{cityTitle(cityKey)}</h3>
             <p>{cityContent(cityKey).intro}</p>
             <p>{cityContent(cityKey).detail}</p>

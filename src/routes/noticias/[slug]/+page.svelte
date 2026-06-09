@@ -59,11 +59,105 @@
     ko: '견적 요청'
   };
 
+  const i18nDetail = {
+    es: {
+      home: 'Inicio',
+      news: 'Noticias',
+      ctaTitle: '¿Tu próximo stand realmente atraerá clientes o solo ocupará espacio?',
+      ctaText: 'En <b>Standarte</b> creamos hitos arquitectónicos e imanes de clientes que posicionan a tu marca como el líder indiscutible en FITUR Madrid, Web Summit Lisboa, DES Málaga y ferias de todo el mundo.',
+      ctaBtn: 'Diseñar Mi Stand a Medida'
+    },
+    en: {
+      home: 'Home',
+      news: 'News',
+      ctaTitle: 'Will your next stand really attract customers or just take up space?',
+      ctaText: 'At <b>Standarte</b>, we create architectural milestones and customer magnets that position your brand as the undisputed leader at FITUR Madrid, Web Summit Lisbon, DES Malaga, and trade shows worldwide.',
+      ctaBtn: 'Design My Custom Stand'
+    },
+    de: {
+      home: 'Startseite',
+      news: 'News',
+      ctaTitle: 'Wird Ihr nächster Stand wirklich Kunden anziehen oder nur Platz einnehmen?',
+      ctaText: 'Bei <b>Standarte</b> schaffen wir architektonische Meilensteine und Kundenmagnete, die Ihre Marke als unangefochtenen Marktführer auf der FITUR Madrid, dem Web Summit Lissabon, der DES Malaga und Messen weltweit positionieren.',
+      ctaBtn: 'Meinen maßgeschneiderten Stand entwerfen'
+    },
+    pt: {
+      home: 'Início',
+      news: 'Notícias',
+      ctaTitle: 'O seu próximo stand irá realmente atrair clientes ou apenas ocupar espaço?',
+      ctaText: 'Na <b>Standarte</b> criamos marcos arquitetónicos e ímanes de clientes que posicionam a sua marca como o líder indiscutível na FITUR Madrid, Web Summit Lisboa, DES Málaga e feiras em todo o mundo.',
+      ctaBtn: 'Conceber o Meu Stand à Medida'
+    },
+    zh: {
+      home: '首页',
+      news: '新闻',
+      ctaTitle: '您的下一个展台是能真正吸引客户，还是仅仅占用空间？',
+      ctaText: '在 <b>Standarte</b>，我们打造建筑地标与客户磁铁，让您的品牌在马德里 FITUR、里斯本 Web Summit、马拉加 DES 以及全球展会中成为无可争议的领军者。',
+      ctaBtn: '设计我的专属定制展台'
+    },
+    hi: {
+      home: 'होम',
+      news: 'समाचार',
+      ctaTitle: 'क्या आपका अगला स्टैंड वास्तव में ग्राहकों को आकर्षित करेगा या केवल स्थान घेरेगा?',
+      ctaText: '<b>Standarte</b> में, हम वास्तुशिल्प मील के पत्थर और ग्राहक चुंबक बनाते हैं जो आपके ब्रांड को FITUR मैड्रिड, वेब समिट लिस्बन, DES मलागा और दुनिया भर के व्यापार मेलों में निर्विवाद नेता के रूप में स्थापित करते हैं।',
+      ctaBtn: 'मेरा कस्टम स्टैंड डिज़ाइन करें'
+    },
+    fr: {
+      home: 'Accueil',
+      news: 'Actualités',
+      ctaTitle: 'Votre prochain stand va-t-il vraiment attirer des clients ou simplement occuper de l\'espace ?',
+      ctaText: 'Chez <b>Standarte</b>, nous créons des jalons architecturaux et des aimants à clients qui positionnent votre marque en tant que leader incontesté au FITUR Madrid, au Web Summit Lisbonne, au DES Malaga et dans les salons du monde entier.',
+      ctaBtn: 'Concevoir mon stand sur mesure'
+    },
+    it: {
+      home: 'Home',
+      news: 'Notizie',
+      ctaTitle: 'Il tuo prossimo stand attirerà davvero clienti o occuperà solo spazio?',
+      ctaText: 'In <b>Standarte</b> creiamo pietre miliari architettoniche e calamite per i clienti que posizionano il tuo marchio como leader indiscusso a FITUR Madrid, Web Summit Lisbona, DES Malaga e fiere in tutto il mondo.',
+      ctaBtn: 'Progetta il mio stand su misura'
+    },
+    ko: {
+      home: '홈',
+      news: '뉴스',
+      ctaTitle: '다음 부스가 실제로 고객을 유치할까요, 아니면 공간만 차지할까요?',
+      ctaText: '<b>Standarte</b>에서는 FITUR 마드리드, 웹 서밋 리스본, DES 말라가 및 전 세계 박람회에서 귀하의 브랜드를 독보적인 리더로 포지셔닝할 건축적 이정표와 고객 자석을 제작합니다.',
+      ctaBtn: '나만의 맞춤형 부스 디자인하기'
+    }
+  };
+
+  const cityLabels = {
+    es: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Málaga', lisboa: 'Lisboa', badajoz: 'Badajoz' },
+    en: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbon', badajoz: 'Badajoz' },
+    de: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lissabon', badajoz: 'Badajoz' },
+    pt: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Málaga', lisboa: 'Lisboa', badajoz: 'Badajoz' },
+    zh: { madrid: '马德里', barcelona: '巴塞罗那', bilbao: '毕尔巴鄂', malaga: '马拉加', lisboa: '里斯本', badajoz: '巴达霍斯' },
+    hi: { madrid: 'मैड्रिड', barcelona: 'बार्सिलो나', bilbao: 'बिलबाओ', malaga: 'मलागा', lisboa: 'लिस्बन', badajoz: 'बादाहोज़' },
+    fr: { madrid: 'Madrid', barcelona: 'Barcelone', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbonne', badajoz: 'Badajoz' },
+    it: { madrid: 'Madrid', barcelona: 'Barcellona', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbona', badajoz: 'Badajoz' },
+    ko: { madrid: '마드리드', barcelona: '바르셀로나', bilbao: '빌바오', malaga: '말라가', lisboa: '리스본', badajoz: '바다호스' }
+  };
+
+  function translateCity(cityStr) {
+    if (!cityStr) return '';
+    const key = cityStr.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return (cityLabels[lang] || cityLabels.es)[key] || cityStr;
+  }
+
   // Formatear fecha a formato local
   function formatDate(dateStr) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const locale = lang === 'pt' ? 'pt-PT' : 'es-ES';
-    return new Date(dateStr).toLocaleDateString(locale, options);
+    const locales = {
+      es: 'es-ES',
+      en: 'en-US',
+      de: 'de-DE',
+      pt: 'pt-PT',
+      zh: 'zh-CN',
+      hi: 'hi-IN',
+      fr: 'fr-FR',
+      it: 'it-IT',
+      ko: 'ko-KR'
+    };
+    return new Date(dateStr).toLocaleDateString(locales[lang] || 'es-ES', options);
   }
 
   function handleScroll() {
@@ -211,7 +305,7 @@
   <div class="hero-subpage">
     <div class="hero-contents">
       <div class="article-meta-top">
-        <span class="location-badge">{article.location}</span>
+        <span class="location-badge">{translateCity(article.location)}</span>
         <span class="dot">•</span>
         <span class="date">{formatDate(article.date)}</span>
       </div>
@@ -224,11 +318,11 @@
   <div class="breadcrumbs-container">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <ol>
-        <li><a href={pathFor(lang, 'home')}>Inicio</a></li>
+        <li><a href={pathFor(lang, 'home')}>{(i18nDetail[lang] || i18nDetail.es).home}</a></li>
         <li><span class="divider">/</span></li>
-        <li><a href={pathFor(lang, 'noticias')}>Noticias</a></li>
+        <li><a href={pathFor(lang, 'noticias')}>{(i18nDetail[lang] || i18nDetail.es).news}</a></li>
         <li><span class="divider">/</span></li>
-        <li><span class="current" aria-current="page">{article.location}</span></li>
+        <li><span class="current" aria-current="page">{translateCity(article.location)}</span></li>
       </ol>
     </nav>
   </div>
@@ -241,13 +335,13 @@
     <!-- Bloque de llamado a la acción (CTA) Premium -->
     <div class="article-cta-box">
       <div class="cta-decorator"></div>
-      <h3>¿Tu próximo stand realmente atraerá clientes o solo ocupará espacio?</h3>
+      <h3>{(i18nDetail[lang] || i18nDetail.es).ctaTitle}</h3>
       <p>
-        En <b>Standarte</b> creamos hitos arquitectónicos e imanes de clientes que posicionan a tu marca como el líder indiscutible en FITUR Madrid, Web Summit Lisboa, DES Málaga y ferias de todo el mundo.
+        {@html (i18nDetail[lang] || i18nDetail.es).ctaText}
       </p>
       <div class="cta-actions">
         <a href={pathFor(lang, 'contact')} class="btn-cta-gold">
-          Diseñar Mi Stand a Medida
+          {(i18nDetail[lang] || i18nDetail.es).ctaBtn}
         </a>
       </div>
     </div>

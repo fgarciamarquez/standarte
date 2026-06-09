@@ -1,5 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
-import { languages, routes, pathFor } from '$lib/siteData.js';
+import { languages, routes, pathFor, portfolios } from '$lib/siteData.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import news from '$lib/newsData.json';
 
@@ -72,12 +72,23 @@ export async function GET() {
   // 3. News (noticias/[slug])
   // Note: Since news slugs are unique per language, we list them individually
   news.forEach((article) => {
+    const alternates = news.filter(item => item.date === article.date && item.location === article.location && item.lang !== article.lang);
+    const altLinks = alternates.map(alt => ({
+      hreflang: alt.lang,
+      href: `${siteUrl}${pathFor(alt.lang, 'noticias')}/${alt.slug}`
+    }));
+    // Add the article itself as its own language alternate
+    altLinks.push({
+      hreflang: article.lang,
+      href: `${siteUrl}${pathFor(article.lang, 'noticias')}/${article.slug}`
+    });
+
     urls.push({
       loc: `${siteUrl}${pathFor(article.lang, 'noticias')}/${article.slug}`,
       lastmod: article.date || new Date().toISOString().split('T')[0],
       changefreq: 'weekly',
       priority: '0.6',
-      alternates: []
+      alternates: altLinks
     });
   });
 
@@ -107,6 +118,37 @@ export async function GET() {
 
       urls.push(urlObj);
     });
+  });
+
+  // 5. Galleries (galeria/[slug])
+  portfolios.forEach((project) => {
+    if (project.slugs) {
+      languages.forEach((lang) => {
+        const slug = project.slugs[lang];
+        if (slug) {
+          const urlObj = {
+            loc: `${siteUrl}/galeria/${slug}`,
+            lastmod: new Date().toISOString().split('T')[0],
+            changefreq: 'monthly',
+            priority: '0.7',
+            alternates: []
+          };
+
+          // Add alternates for other languages
+          languages.forEach((altLang) => {
+            const altSlug = project.slugs[altLang];
+            if (altSlug) {
+              urlObj.alternates.push({
+                hreflang: altLang,
+                href: `${siteUrl}/galeria/${altSlug}`
+              });
+            }
+          });
+
+          urls.push(urlObj);
+        }
+      });
+    }
   });
 
   // Generate XML

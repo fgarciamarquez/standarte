@@ -40,16 +40,134 @@
     ko: '견적 요청'
   };
 
+  const i18n = {
+    es: {
+      eyebrow: 'Actualidad Ferial y Tendencias',
+      title: 'Noticias y Arquitectura Efímera',
+      lead: 'Analizamos la actualidad en los recintos de Madrid, Barcelona, Bilbao, Lisboa y Málaga, diseñando soluciones temporales que destacan, optimizan la circulación y garantizan el confort.',
+      allDestinations: 'Todos los destinos',
+      source: 'Fuente',
+      readMore: 'Leer artículo completo',
+      noNews: 'Próximamente más artículos de actualidad sobre este destino.'
+    },
+    en: {
+      eyebrow: 'Fair News & Trends',
+      title: 'News & Ephemeral Architecture',
+      lead: 'We analyze current events at the venues in Madrid, Barcelona, Bilbao, Lisbon and Malaga, designing temporary solutions that stand out, optimize circulation and guarantee comfort.',
+      allDestinations: 'All destinations',
+      source: 'Source',
+      readMore: 'Read full article',
+      noNews: 'More current articles about this destination coming soon.'
+    },
+    de: {
+      eyebrow: 'Messenews & Trends',
+      title: 'News & Temporäre Architektur',
+      lead: 'Wir analysieren das aktuelle Geschehen an den Veranstaltungsorten in Madrid, Barcelona, Bilbao, Lissabon und Malaga und entwerfen temporäre Lösungen, die auffallen, den Fluss optimieren und Komfort garantieren.',
+      allDestinations: 'Alle Reiseziele',
+      source: 'Quelle',
+      readMore: 'Vollständigen Artikel lesen',
+      noNews: 'Weitere aktuelle Artikel über dieses Reiseziel folgen in Kürze.'
+    },
+    pt: {
+      eyebrow: 'Atualidade de Feiras e Tendências',
+      title: 'Notícias e Arquitetura Efémera',
+      lead: 'Analisamos a atualidade nos recintos de Madrid, Barcelona, Bilbao, Lisboa e Málaga, desenhando soluções temporárias que se destacam, otimizam a circulação e garantem o conforto.',
+      allDestinations: 'Todos os destinos',
+      source: 'Fonte',
+      readMore: 'Ler artigo completo',
+      noNews: 'Em breve mais artigos de atualidade sobre este destino.'
+    },
+    zh: {
+      eyebrow: '行业新闻与趋势',
+      title: '新闻与临时建筑',
+      lead: '我们分析马德里、巴塞罗那、毕尔巴鄂、里斯本和马拉加展馆的最新动态，设计出脱颖而出、优化人流并保证舒适的临时解决方案。',
+      allDestinations: '所有目的地',
+      source: '来源',
+      readMore: '阅读全文',
+      noNews: '该目的地更多最新文章即将推出。'
+    },
+    hi: {
+      eyebrow: 'मेला समाचार और रुझान',
+      title: 'समाचार और अल्पकालिक वाস্তुकला',
+      lead: 'हम मैड्रिड, बार्सिलोना, बिलबाओ, लिस्बन और मलागा में वर्तमान घटनाओं का विश्लेषण करते हैं, ऐसे अस्थायी समाधान डिजाइन करते हैं जो अलग दिखें, प्रवाह को अनुकूलित करें और आराम की गारंटी दें।',
+      allDestinations: 'सभी गंतव्य',
+      source: 'स्रोत',
+      readMore: 'पूरा लेख पढ़ें',
+      noNews: 'इस गंतव्य के बारे में जल्द ही और लेख आ रहे हैं।'
+    },
+    fr: {
+      eyebrow: 'Actualités & Tendances des Salons',
+      title: 'Actualités et Architecture Éphémère',
+      lead: 'Nous analysons l’actualité des parcs d’expositions de Madrid, Barcelone, Bilbao, Lisbonne et Malaga, en concevant des solutions temporaires qui se démarquent, optimisent la circulation et garantissent le confort.',
+      allDestinations: 'Toutes les destinations',
+      source: 'Source',
+      readMore: 'Lire l\'article complet',
+      noNews: 'Prochainement plus d\'articles d\'actualité sur cette destination.'
+    },
+    it: {
+      eyebrow: 'Novità e Tendenze Fieristiche',
+      title: 'Notizie e Architettura Effimera',
+      lead: 'Analizziamo l’attualità nei quartieri fieristici di Madrid, Barcellona, Bilbao, Lisbona e Malaga, progettando soluzioni temporanee che si distinguono, ottimizzano il flusso e garantiscono il confort.',
+      allDestinations: 'Tutte le destinazioni',
+      source: 'Fonte',
+      readMore: 'Leggi l\'articolo completo',
+      noNews: 'Prossimamente altri articoli di attualità su questa destinazione.'
+    },
+    ko: {
+      eyebrow: '박람회 소식 및 트렌드',
+      title: '뉴스 및 임시 건축',
+      lead: '마드리드, 바르셀로나, 빌바오, 리스본, 말라가 전시장의 최신 소식을 분석하여 돋보이고 동선을 최적화하며 편안함을 보장하는 임시 솔루션을 디자인합니다.',
+      allDestinations: '모든 목적지',
+      source: '출처',
+      readMore: '기사 전체 읽기',
+      noNews: '이 목적지에 대한 더 많은 최신 기사가 곧 추가될 예정입니다.'
+    }
+  };
+
+  const cityLabels = {
+    es: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Málaga', lisboa: 'Lisboa' },
+    en: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbon' },
+    de: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lissabon' },
+    pt: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Málaga', lisboa: 'Lisboa' },
+    zh: { madrid: '马德里', barcelona: '巴塞罗那', bilbao: '毕尔巴鄂', malaga: '马拉加', lisboa: '里斯本' },
+    hi: { madrid: 'मैड्रिड', barcelona: 'बार्सिलोना', bilbao: 'बिलबाओ', malaga: 'मलागा', lisboa: 'लिस्बन' },
+    fr: { madrid: 'Madrid', barcelona: 'Barcelone', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbonne' },
+    it: { madrid: 'Madrid', barcelona: 'Barcellona', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbona' },
+    ko: { madrid: '마드리드', barcelona: '바르셀로나', bilbao: '빌바오', malaga: '말라가', lisboa: '리스본' }
+  };
+
+  // Translate city name
+  function translateCity(cityStr) {
+    if (!cityStr) return '';
+    const key = cityStr.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return (cityLabels[lang] || cityLabels.es)[key] || cityStr;
+  }
+
   // Filtrar noticias por idioma y ubicación
   $: filteredNews = news
     .filter(item => item.lang === lang)
-    .filter(item => activeFilter === 'all' || item.location.toLowerCase() === activeFilter.toLowerCase());
+    .filter(item => {
+      if (activeFilter === 'all') return true;
+      const cleanLoc = item.location.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      const cleanFilter = activeFilter.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      return cleanLoc === cleanFilter;
+    });
 
   // Formatear fecha a formato local
   function formatDate(dateStr) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const locale = lang === 'pt' ? 'pt-PT' : 'es-ES';
-    return new Date(dateStr).toLocaleDateString(locale, options);
+    const locales = {
+      es: 'es-ES',
+      en: 'en-US',
+      de: 'de-DE',
+      pt: 'pt-PT',
+      zh: 'zh-CN',
+      hi: 'hi-IN',
+      fr: 'fr-FR',
+      it: 'it-IT',
+      ko: 'ko-KR'
+    };
+    return new Date(dateStr).toLocaleDateString(locales[lang] || 'es-ES', options);
   }
 
   function handleScroll() {
@@ -167,10 +285,10 @@
 
   <div class="hero-subpage">
     <div class="hero-contents">
-      <span class="eyebrow">Actualidad Ferial y Tendencias</span>
-      <h1>Noticias y Arquitectura Efímera</h1>
+      <span class="eyebrow">{(i18n[lang] || i18n.es).eyebrow}</span>
+      <h1>{(i18n[lang] || i18n.es).title}</h1>
       <p class="hero-lead">
-        Analizamos la actualidad en los recintos de Madrid, Barcelona, Bilbao, Lisboa y Málaga, diseñando soluciones temporales que destacan, optimizan la circulación y garantizan el confort.
+        {(i18n[lang] || i18n.es).lead}
       </p>
     </div>
   </div>
@@ -180,22 +298,22 @@
   <section class="news-filters">
     <div class="filters-container">
       <button type="button" class:active={activeFilter === 'all'} on:click={() => activeFilter = 'all'}>
-        Todos los destinos
+        {(i18n[lang] || i18n.es).allDestinations}
       </button>
       <button type="button" class:active={activeFilter === 'madrid'} on:click={() => activeFilter = 'madrid'}>
-        Madrid
+        {(cityLabels[lang] || cityLabels.es).madrid}
       </button>
       <button type="button" class:active={activeFilter === 'barcelona'} on:click={() => activeFilter = 'barcelona'}>
-        Barcelona
+        {(cityLabels[lang] || cityLabels.es).barcelona}
       </button>
       <button type="button" class:active={activeFilter === 'bilbao'} on:click={() => activeFilter = 'bilbao'}>
-        Bilbao
+        {(cityLabels[lang] || cityLabels.es).bilbao}
       </button>
-      <button type="button" class:active={activeFilter === 'málaga'} on:click={() => activeFilter = 'málaga'}>
-        Málaga
+      <button type="button" class:active={activeFilter === 'malaga'} on:click={() => activeFilter = 'malaga'}>
+        {(cityLabels[lang] || cityLabels.es).malaga}
       </button>
       <button type="button" class:active={activeFilter === 'lisboa'} on:click={() => activeFilter = 'lisboa'}>
-        Lisboa
+        {(cityLabels[lang] || cityLabels.es).lisboa}
       </button>
     </div>
   </section>
@@ -206,13 +324,13 @@
         <article class="news-card">
           <div class="news-card-image-wrap">
             <img src={item.image || "/img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif"} alt={item.title} loading="lazy" />
-            <span class="news-card-badge">{item.location}</span>
+            <span class="news-card-badge">{translateCity(item.location)}</span>
           </div>
 
           <div class="news-card-content">
             <header class="news-card-meta">
               <span class="news-date">{formatDate(item.date)}</span>
-              <span class="news-source">Fuente: {item.sourceName}</span>
+              <span class="news-source">{(i18n[lang] || i18n.es).source}: {item.sourceName}</span>
             </header>
             <h3>
               <a href="/noticias/{item.slug}/">{item.title}</a>
@@ -220,7 +338,7 @@
             <p class="news-excerpt">{item.excerpt}</p>
             <div class="news-card-footer">
               <a class="read-more-btn" href="/noticias/{item.slug}/">
-                Leer artículo completo
+                {(i18n[lang] || i18n.es).readMore}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
                   <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
@@ -230,7 +348,7 @@
         </article>
       {:else}
         <div class="no-news-box">
-          <p>Próximamente más artículos de actualidad sobre este destino.</p>
+          <p>{(i18n[lang] || i18n.es).noNews}</p>
         </div>
       {/each}
     </div>
