@@ -84,38 +84,38 @@ echo "Grupos activos en la ventana de envío: " . implode(", ", $activeGroupName
 // Definir textos fijos según idioma
 $dripTexts = array(
     'es' => array(
-        'subject' => '¿Listo para {{COMPANY}}? Descubre nuestras soluciones de diseño',
+        'subject' => 'Hola {{COMPANY}}. Te ofrecemos un stand diferencial y un presupuesto en 24 H.',
         'intro' => 'A pocos meses de la feria, es el momento perfecto para empezar a diseñar su stand.',
         'body' => 'En Inberpet estamos listos para ayudarle a destacar en su próximo evento. Hemos preparado algunas propuestas de stands que podrían encajar con la visión de su empresa.'
     ),
     'en' => array(
-        'subject' => 'Ready for {{COMPANY}}? Discover our design solutions',
+        'subject' => 'Hello {{COMPANY}}. We offer you a distinctive stand and a quote in 24 H.',
         'intro' => 'With just a few months left until the exhibition, it is the perfect time to start designing your stand.',
         'body' => 'At Inberpet, we are ready to help you stand out at your next event. We have prepared some stand proposals that might fit your company\'s vision.'
     ),
     'fr' => array(
-        'subject' => 'Prêt pour {{COMPANY}}? Découvrez nos solutions de design',
+        'subject' => 'Bonjour {{COMPANY}}. Nous vous offrons un stand différenciant et un devis en 24 H.',
         'intro' => 'À quelques mois du salon, c\'est le moment idéal pour commencer à concevoir votre stand.',
         'body' => 'Chez Inberpet, nous sommes prêts à vous aider à vous démarquer lors de votre prochain événement. Nous avons préparé quelques propositions de stands qui pourraient correspondre à la vision de votre entreprise.'
     ),
     'pt' => array(
-        'subject' => 'Pronto para {{COMPANY}}? Descubra as nossas soluções de design',
+        'subject' => 'Olá {{COMPANY}}. Oferecemos-lhe um stand diferenciado e um orçamento em 24 H.',
         'intro' => 'A poucos meses da feira, é a altura ideal para começar a desenhar o seu stand.',
         'body' => 'Na Inberpet estamos prontos para ajudá-lo a destacar-se no seu próximo evento. Preparámos algumas propostas de stands que poderão adequar-se à visão da sua empresa.'
     ),
     'de' => array(
-        'subject' => 'Bereit für {{COMPANY}}? Entdecken Sie unsere Designlösungen',
+        'subject' => 'Hallo {{COMPANY}}. Wir bieten Ihnen einen einzigartigen Messestand und ein Angebot in 24 H.',
         'intro' => 'Wenige Monate vor der Messe ist der perfekte Zeitpunkt, um mit der Gestaltung Ihres Messestandes zu beginnen.',
         'body' => 'Bei Inberpet sind wir bereit, Ihnen dabei zu helfen, sich bei Ihrer nächsten Veranstaltung abzuheben. Wir haben einige Standvorschläge vorbereitet, die zur Vision Ihres Unternehmens passen könnten.'
     ),
     'it' => array(
-        'subject' => 'Pronto per {{COMPANY}}? Scopri le nostre soluzioni di design',
+        'subject' => 'Ciao {{COMPANY}}. Ti offriamo uno stand distintivo e un preventivo in 24 H.',
         'intro' => 'A pochi mesi dalla fiera, è il momento perfetto per iniziare a progettare il tuo stand.',
         'body' => 'In Inberpet siamo pronti ad aiutarti a distinguerti al tuo prossimo evento. Abbiamo preparato alcune proposte di stand che potrebbero adattarsi alla visione della tua azienda.'
     ),
     // Fallback genérico
     'default' => array(
-        'subject' => 'Ready for {{COMPANY}}? Discover our design solutions',
+        'subject' => 'Hello {{COMPANY}}. We offer you a distinctive stand and a quote in 24 H.',
         'intro' => 'With just a few months left until the exhibition, it is the perfect time to start designing your stand.',
         'body' => 'At Inberpet, we are ready to help you stand out at your next event. We have prepared some stand proposals that might fit your company\'s vision.'
     )
