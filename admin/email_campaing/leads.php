@@ -253,7 +253,7 @@ foreach ($records as $record) {
     $processedCount++;
 }
 
-// Send summary notification email to promo@standarte.es
+// Send summary notification email to javier@standarte.es
 if ($processedCount > 0) {
     $currentDate = date('d/m/Y H:i');
     $notificationSubject = 'Multimedia enviado ' . $currentDate;
@@ -302,8 +302,8 @@ if ($processedCount > 0) {
 </body>
 </html>';
 
-    // Send the notification email to promo@standarte.es
-    campaign_send_mail($config, 'promo@standarte.es', $notificationSubject, $notificationHtml);
+    // Send the notification email to javier@standarte.es
+    campaign_send_mail($config, 'javier@standarte.es', $notificationSubject, $notificationHtml);
 }
 
 // Determine status

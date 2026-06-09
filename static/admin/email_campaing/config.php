@@ -2,16 +2,16 @@
 
 return array(
     'site_url' => 'https://standarte.es',
-    'from_email' => 'promo@standarte.es',
+    'from_email' => 'javier@standarte.es',
     'from_name' => 'Standarte',
-    'reply_to' => 'promo@standarte.es',
-    'envelope_sender' => 'promo@standarte.es',
+    'reply_to' => 'javier@standarte.es',
+    'envelope_sender' => 'javier@standarte.es',
     'smtp' => array(
         'enabled' => true,
         'host' => 'ssl0.ovh.net',
         'port' => 465,
         'encryption' => 'ssl',
-        'username' => 'promo@standarte.es',
+        'username' => 'javier@standarte.es',
         'password' => getenv('STANDARTE_SMTP_PASSWORD') ? getenv('STANDARTE_SMTP_PASSWORD') : 'Extrategia37',
         'timeout' => 20
     ),

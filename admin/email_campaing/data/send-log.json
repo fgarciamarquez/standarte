@@ -1,7 +1,7 @@
 [
     {
         "date": "2026-05-25T18:53:51+00:00",
-        "to": "promo@standarte.es",
+        "to": "javier@standarte.es",
         "subject": "Multimedia enviado 25\/05\/2026 18:53",
         "method": "php-mail",
         "accepted": false,
