@@ -1,7 +1,8 @@
 <script>
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels } from '$lib/siteData.js';
   import ContactForm from './ContactForm.svelte';
+
   
   const languageLocales = {
     es: 'es_ES',
@@ -304,6 +305,24 @@
       <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion <span class="nav-badge-new">New</span></a>
       <a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      <div class="lang-menu">
+        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <div>
+          {#each languages as option}
+            <a
+              href={option === 'es' ? `/ferias/${fair.slug}` : `/${option}/ferias/${fair.slug}`}
+              class:active={option === lang}
+              on:click={() => {
+                if (typeof localStorage !== 'undefined') {
+                  localStorage.setItem('preferredLanguage', option);
+                }
+              }}
+            >
+              {languageLabels[option]}
+            </a>
+          {/each}
+        </div>
+      </div>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>

@@ -7,10 +7,10 @@ Este informe audita exhaustivamente el estado de las traducciones y la coherenci
 ## 1. Resumen Ejecutivo
 
 - **Total de combinaciones de páginas multilingües auditadas**: 264
-- **Páginas correctamente traducidas (✅ OK)**: 192
+- **Páginas correctamente traducidas (✅ OK)**: 214
 - **Páginas con traducción mixta (⚠️ MIXTO)**: 15
-- **Páginas sin traducir / solo maquetación (❌ SOLO-NAVEGACIÓN)**: 44
-- **Páginas no creadas (❌ NO EXISTE)**: 13
+- **Páginas sin traducir / solo maquetación (❌ SOLO-NAVEGACIÓN)**: 25
+- **Páginas no creadas (❌ NO EXISTE)**: 10
 
 ### Resumen por Idioma (Páginas correctamente traducidas)
 - **ES**: 0 / 0 páginas correctamente localizadas
@@ -18,10 +18,10 @@ Este informe audita exhaustivamente el estado de las traducciones y la coherenci
 - **DE**: 27 / 33 páginas correctamente localizadas
 - **ZH**: 23 / 33 páginas correctamente localizadas
 - **HI**: 26 / 33 páginas correctamente localizadas
-- **PT**: 25 / 33 páginas correctamente localizadas
-- **FR**: 17 / 33 páginas correctamente localizadas
-- **IT**: 17 / 33 páginas correctamente localizadas
-- **KO**: 30 / 33 páginas correctamente localizadas
+- **PT**: 26 / 33 páginas correctamente localizadas
+- **FR**: 27 / 33 páginas correctamente localizadas
+- **IT**: 27 / 33 páginas correctamente localizadas
+- **KO**: 31 / 33 páginas correctamente localizadas
 
 ### Páginas Urgentes de Corregir (SOLO-NAVEGACIÓN / NO EXISTE)
 Estas páginas presentan problemas donde el contenido principal está ausente o sigue en español, lo cual perjudica seriamente el posicionamiento orgánico en motores de búsqueda:
@@ -30,16 +30,16 @@ Estas páginas presentan problemas donde el contenido principal está ausente o 
 - [ZH] `/zh/luzpavilion` (Estado: **❌ SOLO-NAVEGACIÓN**)
 - [HI] `/hi/luzpavilion` (Estado: **❌ SOLO-NAVEGACIÓN**)
 - [PT] `/pt/luzpavilion` (Estado: **❌ SOLO-NAVEGACIÓN**)
-- [PT] `/pt/equipa` (Estado: **❌ SOLO-NAVEGACIÓN**)
 - [PT] `/pt/contacto` (Estado: **❌ SOLO-NAVEGACIÓN**)
 - [FR] `/fr/luzpavilion` (Estado: **❌ SOLO-NAVEGACIÓN**)
-- [FR] `/fr/actualites` (Estado: **❌ NO EXISTE**)
 - [IT] `/it/luzpavilion` (Estado: **❌ SOLO-NAVEGACIÓN**)
-- [IT] `/it/notizie` (Estado: **❌ NO EXISTE**)
-- [KO] `/ko/sosig` (Estado: **❌ NO EXISTE**)
 - [ZH] `/ferias/[dynamic] (ZH)` (Estado: **❌ SOLO-NAVEGACIÓN**)
 - [HI] `/ferias/[dynamic] (HI)` (Estado: **❌ SOLO-NAVEGACIÓN**)
 - [KO] `/ferias/[dynamic] (KO)` (Estado: **❌ SOLO-NAVEGACIÓN**)
+- [ZH] `/noticias/innovacion-arquitectura-atencion-madrid-2026-zh-2026-06-04` (Estado: **❌ SOLO-NAVEGACIÓN**)
+- [HI] `/noticias/innovacion-arquitectura-atencion-madrid-2026-hi-2026-06-04` (Estado: **❌ SOLO-NAVEGACIÓN**)
+- [ZH] `/noticias/innovacion-arquitectura-atencion-madrid-2026-zh-2026-06-01` (Estado: **❌ SOLO-NAVEGACIÓN**)
+- [HI] `/noticias/innovacion-arquitectura-atencion-madrid-2026-hi-2026-06-01` (Estado: **❌ SOLO-NAVEGACIÓN**)
 
 ---
 
@@ -115,7 +115,7 @@ En la plantilla de detalles de proyecto (`src/routes/proyectos/[id]/+page.svelte
 | `/pt/servicos` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ pt_PT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/pt/luzpavilion` | PT | ❌ ES | ✅ OK | ❌ ES | ✅ OK | ✅ pt_PT | ❌ Contiene ko_KR/hi_IN | ❌ SOLO-NAVEGACIÓN |
 | `/pt/projetos_a_medida` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ pt_PT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
-| `/pt/equipa` | PT | ❌ ES | ✅ OK | ❌ ES | ✅ OK | ✅ pt_PT | ❌ Contiene ko_KR/hi_IN | ❌ SOLO-NAVEGACIÓN |
+| `/pt/equipa` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ pt_PT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/pt/contacto` | PT | ❌ ES | ✅ OK | ❌ ES | ✅ OK | ✅ pt_PT | ❌ Contiene ko_KR/hi_IN | ❌ SOLO-NAVEGACIÓN |
 | `/pt/noticias` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ pt_PT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/fr/` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ fr_FR | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
@@ -124,21 +124,21 @@ En la plantilla de detalles de proyecto (`src/routes/proyectos/[id]/+page.svelte
 | `/fr/projets_sur_mesure` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ fr_FR | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/fr/equipe` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ fr_FR | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/fr/contact` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ fr_FR | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
-| `/fr/actualites` | FR | ❌ NO EXISTE | ❌ NO EXISTE | ✅ OK | ❌ NO EXISTE | ✅ fr_FR | ❌ Contiene ko_KR/hi_IN | ❌ NO EXISTE |
+| `/fr/actualites` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ fr_FR | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/it/` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ it_IT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/it/servizi` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ it_IT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/it/luzpavilion` | IT | ❌ ES | ✅ OK | ❌ ES | ✅ OK | ✅ it_IT | ❌ Contiene ko_KR/hi_IN | ❌ SOLO-NAVEGACIÓN |
 | `/it/progetti_su_misura` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ it_IT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/it/squadra` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ it_IT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/it/contatto` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ it_IT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
-| `/it/notizie` | IT | ❌ NO EXISTE | ❌ NO EXISTE | ✅ OK | ❌ NO EXISTE | ✅ it_IT | ❌ Contiene ko_KR/hi_IN | ❌ NO EXISTE |
+| `/it/notizie` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ it_IT | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/ko/` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ ko_KO | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/ko/jeonsigwan-seobiseu` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ ko_KO | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/ko/luzpavilion` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ ko_KO | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/ko/majchumhyeong-peurojekteu` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ ko_KO | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/ko/tim` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ ko_KO | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/ko/yeollagcheo` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ ko_KO | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
-| `/ko/sosig` | KO | ❌ NO EXISTE | ❌ NO EXISTE | ✅ OK | ❌ NO EXISTE | ✅ ko_KO | ❌ Contiene ko_KR/hi_IN | ❌ NO EXISTE |
+| `/ko/sosig` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ ko_KO | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/en/stand_construction_madrid` | EN | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ en_GB | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/de/messestandbau_madrid` | DE | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ de_DE | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
 | `/zh/madrid_zhantai_dajian` | ZH | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ✅ zh_ZH | ❌ Contiene ko_KR/hi_IN | ✅ TRADUCIDO |
@@ -200,72 +200,72 @@ En la plantilla de detalles de proyecto (`src/routes/proyectos/[id]/+page.svelte
 | `/noticias/design-stands-barcelona-fira-2026-zh-2026-06-07` | ZH | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/stand-design-barcelona-fira-2026-hi-2026-06-07` | HI | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/design-stands-barcelona-fira-2026-pt-2026-06-07` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
-| `/noticias/diseno-stands-barcelona-fira-2026-fr-2026-06-07` | FR | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/diseno-stands-barcelona-fira-2026-it-2026-06-07` | IT | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/diseno-stands-barcelona-fira-2026-fr-2026-06-07` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/diseno-stands-barcelona-fira-2026-it-2026-06-07` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/stand-design-barcelona-fira-2026-ko-2026-06-07` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026-2026-06-06` | EN | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/aufmerksamkeitsarchitektur-fil-lissabon-2026-2026-06-06` | DE | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026-zh-2026-06-06` | ZH | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026-hi-2026-06-06` | HI | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/arquitetura-atencao-fil-lisboa-2026-2026-06-06` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
-| `/noticias/arquitectura-atencion-fil-lisboa-2026-fr-2026-06-06` | FR | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/arquitectura-atencion-fil-lisboa-2026-it-2026-06-06` | IT | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/arquitectura-atencion-fil-lisboa-2026-fr-2026-06-06` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/arquitectura-atencion-fil-lisboa-2026-it-2026-06-06` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026-2026-06-06` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/experiential-microarchitecture-fycma-malaga-2026-2026-06-05` | EN | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/erlebnisorientierte-mikroarchitektur-fycma-malaga-2026-2026-06-05` | DE | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/experiential-microarchitecture-fycma-malaga-2026-zh-2026-06-05` | ZH | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/experiential-microarchitecture-fycma-malaga-2026-hi-2026-06-05` | HI | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/microarquitetura-experiencial-fycma-malaga-2026-2026-06-05` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
-| `/noticias/microarquitectura-experiencial-fycma-malaga-2026-fr-2026-06-05` | FR | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/microarquitectura-experiencial-fycma-malaga-2026-it-2026-06-05` | IT | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/microarquitectura-experiencial-fycma-malaga-2026-fr-2026-06-05` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/microarquitectura-experiencial-fycma-malaga-2026-it-2026-06-05` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/experiential-microarchitecture-fycma-malaga-2026-2026-06-05` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-en-2026-06-04` | EN | ✅ OK | ⚠️ MIXTO | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ⚠️ MIXTO |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-de-2026-06-04` | DE | ✅ OK | ⚠️ MIXTO | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ⚠️ MIXTO |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-zh-2026-06-04` | ZH | ✅ OK | ❌ ES (No-Script) | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-hi-2026-06-04` | HI | ✅ OK | ❌ ES (No-Script) | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-pt-2026-06-04` | PT | ✅ OK | ⚠️ MIXTO (ES/PT) | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ⚠️ MIXTO |
-| `/noticias/innovacion-arquitectura-atencion-madrid-2026-fr-2026-06-04` | FR | ✅ OK | ❌ ES | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/innovacion-arquitectura-atencion-madrid-2026-it-2026-06-04` | IT | ✅ OK | ❌ ES | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/innovacion-arquitectura-atencion-madrid-2026-fr-2026-06-04` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/innovacion-arquitectura-atencion-madrid-2026-it-2026-06-04` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-ko-2026-06-04` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/agroexpo-feval-stands-badajoz-2026-en-2026-06-03` | EN | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/agroexpo-feval-stands-badajoz-2026-de-2026-06-03` | DE | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/agroexpo-feval-stands-badajoz-2026-zh-2026-06-03` | ZH | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/agroexpo-feval-stands-badajoz-2026-hi-2026-06-03` | HI | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/agroexpo-feval-stands-badajoz-2026-pt-2026-06-03` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
-| `/noticias/agroexpo-feval-stands-badajoz-2026-fr-2026-06-03` | FR | ✅ OK | ❌ ES | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/agroexpo-feval-stands-badajoz-2026-it-2026-06-03` | IT | ✅ OK | ❌ ES | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/agroexpo-feval-stands-badajoz-2026-fr-2026-06-03` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/agroexpo-feval-stands-badajoz-2026-it-2026-06-03` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/agroexpo-feval-stands-badajoz-2026-ko-2026-06-03` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/stand-design-bilbao-bec-2026-en-2026-06-02` | EN | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/messestandbau-bilbao-bec-2026-de-2026-06-02` | DE | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/design-stands-bilbao-bec-2026-zh-2026-06-02` | ZH | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/stand-design-bilbao-bec-2026-hi-2026-06-02` | HI | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/design-stands-bilbao-bec-2026-pt-2026-06-02` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
-| `/noticias/diseno-stands-bilbao-bec-2026-fr-2026-06-02` | FR | ⚠️ MIXTO | ❌ ES | ⚠️ MIXTO | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/diseno-stands-bilbao-bec-2026-it-2026-06-02` | IT | ✅ OK | ❌ ES | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/diseno-stands-bilbao-bec-2026-fr-2026-06-02` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/diseno-stands-bilbao-bec-2026-it-2026-06-02` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/stand-design-bilbao-bec-2026-ko-2026-06-02` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/stand-design-barcelona-fira-2026-en-2026-06-01` | EN | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/messestandbau-barcelona-fira-2026-de-2026-06-01` | DE | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/design-stands-barcelona-fira-2026-zh-2026-06-01` | ZH | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/stand-design-barcelona-fira-2026-hi-2026-06-01` | HI | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/design-stands-barcelona-fira-2026-pt-2026-06-01` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
-| `/noticias/diseno-stands-barcelona-fira-2026-fr-2026-06-01` | FR | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/diseno-stands-barcelona-fira-2026-it-2026-06-01` | IT | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/diseno-stands-barcelona-fira-2026-fr-2026-06-01` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/diseno-stands-barcelona-fira-2026-it-2026-06-01` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/stand-design-barcelona-fira-2026-ko-2026-06-01` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026-2026-06-01` | EN | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/aufmerksamkeitsarchitektur-fil-lissabon-2026-2026-06-01` | DE | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026-zh-2026-06-01` | ZH | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026-hi-2026-06-01` | HI | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/arquitetura-atencao-fil-lisboa-2026-2026-06-01` | PT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
-| `/noticias/arquitectura-atencion-fil-lisboa-2026-fr-2026-06-01` | FR | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/arquitectura-atencion-fil-lisboa-2026-it-2026-06-01` | IT | ✅ OK | ⚠️ MIXTO | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/arquitectura-atencion-fil-lisboa-2026-fr-2026-06-01` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/arquitectura-atencion-fil-lisboa-2026-it-2026-06-01` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026-2026-06-01` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-en-2026-06-01` | EN | ✅ OK | ⚠️ MIXTO | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ⚠️ MIXTO |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-de-2026-06-01` | DE | ✅ OK | ⚠️ MIXTO | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ⚠️ MIXTO |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-zh-2026-06-01` | ZH | ✅ OK | ❌ ES (No-Script) | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-hi-2026-06-01` | HI | ✅ OK | ❌ ES (No-Script) | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-pt-2026-06-01` | PT | ✅ OK | ⚠️ MIXTO (ES/PT) | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ⚠️ MIXTO |
-| `/noticias/innovacion-arquitectura-atencion-madrid-2026-fr-2026-06-01` | FR | ✅ OK | ❌ ES | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
-| `/noticias/innovacion-arquitectura-atencion-madrid-2026-it-2026-06-01` | IT | ✅ OK | ❌ ES | ✅ OK | ❌ ES | ❌ FALTANTE | ❌ FALTANTE | ❌ SOLO-NAVEGACIÓN |
+| `/noticias/innovacion-arquitectura-atencion-madrid-2026-fr-2026-06-01` | FR | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
+| `/noticias/innovacion-arquitectura-atencion-madrid-2026-it-2026-06-01` | IT | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/innovacion-arquitectura-atencion-madrid-2026-ko-2026-06-01` | KO | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/attention-architecture-fil-lisbon-2026` | EN | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |
 | `/noticias/aufmerksamkeitsarchitektur-fil-lissabon-2026` | DE | ✅ OK | ✅ OK | ✅ OK | ✅ OK | ❌ FALTANTE | ❌ FALTANTE | ✅ TRADUCIDO |

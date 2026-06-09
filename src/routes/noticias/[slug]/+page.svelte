@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
-
   export let data;
   $: article = data.article;
 
@@ -54,7 +53,10 @@
     de: 'ANGEBOT ANFORDERN',
     pt: 'SOLICITAR ORÇAMENTO',
     zh: '索取报价',
-    hi: 'कोटेशन का अनुरोध करें'
+    hi: 'कोटेशन का अनुरोध करें',
+    fr: 'DEMANDER UN DEVIS',
+    it: 'RICHIEDI UN PREVENTIVO',
+    ko: '견적 요청'
   };
 
   // Formatear fecha a formato local
@@ -184,6 +186,24 @@
       <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
+      <div class="lang-menu">
+        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <div>
+          {#each languages as option}
+            <a
+              href={getAlternateUrl(option)}
+              class:active={option === lang}
+              on:click={() => {
+                if (typeof localStorage !== 'undefined') {
+                  localStorage.setItem('preferredLanguage', option);
+                }
+              }}
+            >
+              {languageLabels[option]}
+            </a>
+          {/each}
+        </div>
+      </div>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>

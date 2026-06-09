@@ -7,7 +7,7 @@ export function entries() {
     let allEntries = [];
     for (let p of portfolios) {
         if (p.slugs) {
-            for (let lang of ['es', 'en', 'de', 'pt', 'zh', 'hi']) {
+            for (let lang of ['es', 'en', 'de', 'pt', 'zh', 'hi', 'fr', 'it', 'ko']) {
                 if (p.slugs[lang]) {
                     allEntries.push({ slug: p.slugs[lang] });
                 }

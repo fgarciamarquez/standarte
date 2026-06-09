@@ -292,14 +292,24 @@ footer > * {
   border-top: 2px solid #000;
 }
 
-.section-header p,
-.section-intro {
+.section-header p {
   max-width: 900px;
   margin: 15px auto 0;
   color: #333;
   font-size: 14px;
   font-weight: 400;
   line-height: 26px;
+  text-align: center;
+}
+
+.section-intro {
+  max-width: 900px;
+  margin: 25px auto 35px;
+  color: #111;
+  font-family: 'Glegoo', serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.4;
   text-align: center;
 }
 
@@ -657,6 +667,26 @@ footer > * {
   background: transparent;
   border: 0;
 }
+.city-cover-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.city-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+article:hover .city-cover-image {
+  transform: scale(1.06);
+}
 
 .city-grid h3 {
   margin-bottom: 12px;
@@ -896,32 +926,38 @@ footer > * {
 .item-icon {
   position: relative;
   display: inline-block;
-  width: 48px;
-  height: 48px;
-  background: var(--gold);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 200, 0, 0.12);
+  border: 3.5px solid var(--gold);
   border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(255, 200, 0, 0.3);
 }
 
-.eye-icon::before {
-  content: '';
-  position: absolute;
-  left: 12px;
-  top: 17px;
-  width: 24px;
-  height: 14px;
-  border: 2px solid #000;
-  border-radius: 50%;
-}
-
+.eye-icon::before,
 .eye-icon::after {
   content: '';
   position: absolute;
-  left: 21px;
-  top: 22px;
-  width: 6px;
-  height: 6px;
-  background: #000;
+  inset: -3.5px;
+  border: 3.5px solid var(--gold);
   border-radius: 50%;
+  animation: pulse-whatsapp 2s infinite ease-out;
+  opacity: 0;
+}
+
+.eye-icon::after {
+  animation-delay: 1s;
+}
+
+@keyframes pulse-whatsapp {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }
 
 .lightbox-backdrop {
@@ -1781,6 +1817,10 @@ footer {
   }
 
   .section-header h2 {
+    font-size: 34px;
+  }
+
+  .section-intro {
     font-size: 34px;
   }
 

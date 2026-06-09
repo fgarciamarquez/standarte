@@ -1,6 +1,22 @@
 <script>
   import { onMount } from 'svelte';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
+  import FlagIcon from '$lib/components/FlagIcon.svelte';
+
+  let dropdownAlign = 'right';
+  function handleLangMenuHover(event) {
+    if (typeof window === 'undefined') return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const leftSpace = rect.left;
+    const rightSpace = window.innerWidth - rect.right;
+    if (leftSpace < 120) {
+      dropdownAlign = 'left';
+    } else if (rightSpace < 120) {
+      dropdownAlign = 'right';
+    } else {
+      dropdownAlign = 'center';
+    }
+  }
 
   export let data;
   $: project = data.project;
@@ -300,6 +316,20 @@
       <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
+      <div class="lang-menu">
+        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <div>
+          {#each languages as option}
+            <button
+              type="button"
+              class:active={option === lang}
+              on:click={() => switchLanguage(option)}
+            >
+              {languageLabels[option]}
+            </button>
+          {/each}
+        </div>
+      </div>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
@@ -432,12 +462,18 @@
         <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
         <li><a href={pathFor(lang, 'noticias')} class="footer-link-button">{currentCopy.nav.noticias}</a></li>
         <li class="footer-lang-item">
-          <div class="footer-lang-menu">
-            <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
-            <div class="footer-lang-dropdown">
+          <div class="footer-lang-menu" on:mouseenter={handleLangMenuHover}>
+            <span class="footer-lang-trigger"><FlagIcon langCode={lang} size={22} /></span>
+            <div class="footer-lang-dropdown align-{dropdownAlign}">
               {#each languages as option}
-                <button type="button" class:active={option === lang} on:click={() => switchLanguage(option)}>
-                  {languageLabels[option]}
+                <button
+                  type="button"
+                  class:active={option === lang}
+                  on:click={() => switchLanguage(option)}
+                  class="footer-lang-option"
+                >
+                  <FlagIcon langCode={option} size={18} />
+                  <span class="footer-lang-name">{languageLabels[option]}</span>
                 </button>
               {/each}
             </div>

@@ -2,6 +2,22 @@
   import { onMount } from 'svelte';
   import news from '$lib/newsData.json';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
+  import FlagIcon from '$lib/components/FlagIcon.svelte';
+
+  let dropdownAlign = 'right';
+  function handleLangMenuHover(event) {
+    if (typeof window === 'undefined') return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const leftSpace = rect.left;
+    const rightSpace = window.innerWidth - rect.right;
+    if (leftSpace < 120) {
+      dropdownAlign = 'left';
+    } else if (rightSpace < 120) {
+      dropdownAlign = 'right';
+    } else {
+      dropdownAlign = 'center';
+    }
+  }
 
   export let data = {};
   export let lang = data?.lang || 'es';
@@ -18,7 +34,10 @@
     de: 'ANGEBOT ANFORDERN',
     pt: 'SOLICITAR ORÇAMENTO',
     zh: '索取报价',
-    hi: 'कोटेशन का अनुरोध करें'
+    hi: 'कोटेशन का अनुरोध करें',
+    fr: 'DEMANDER UN DEVIS',
+    it: 'RICHIEDI UN PREVENTIVO',
+    ko: '견적 요청'
   };
 
   // Filtrar noticias por idioma y ubicación
@@ -124,6 +143,24 @@
       <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
+      <div class="lang-menu">
+        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <div>
+          {#each languages as option}
+            <a
+              href={pathFor(option, 'noticias')}
+              class:active={option === lang}
+              on:click={() => {
+                if (typeof localStorage !== 'undefined') {
+                  localStorage.setItem('preferredLanguage', option);
+                }
+              }}
+            >
+              {languageLabels[option]}
+            </a>
+          {/each}
+        </div>
+      </div>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
@@ -208,9 +245,9 @@
         <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
         <li><a href={pathFor(lang, 'noticias')} class="footer-link-button active">{currentCopy.nav.noticias}</a></li>
         <li class="footer-lang-item">
-          <div class="footer-lang-menu">
-            <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
-            <div class="footer-lang-dropdown">
+          <div class="footer-lang-menu" on:mouseenter={handleLangMenuHover}>
+            <span class="footer-lang-trigger"><FlagIcon langCode={lang} size={22} /></span>
+            <div class="footer-lang-dropdown align-{dropdownAlign}">
               {#each languages as option}
                 <a
                   href={pathFor(option, 'noticias')}
@@ -221,8 +258,10 @@
                       localStorage.setItem('preferredLanguage', option);
                     }
                   }}
+                  class="footer-lang-option"
                 >
-                  {languageLabels[option]}
+                  <FlagIcon langCode={option} size={18} />
+                  <span class="footer-lang-name">{languageLabels[option]}</span>
                 </a>
               {/each}
             </div>

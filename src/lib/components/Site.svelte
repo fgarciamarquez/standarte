@@ -21,11 +21,25 @@
     de: 'ANGEBOT ANFORDERN',
     pt: 'SOLICITAR ORÇAMENTO',
     zh: '索取报价',
-    hi: 'कोटेशन का अनुरोध करें'
+    hi: 'कोटेशन का अनुरोध करें',
+    fr: 'DEMANDER UN DEVIS',
+    it: 'RICHIEDI UN PREVENTIVO',
+    ko: '견적 요청'
+  };
+
+  const teamMemberName = {
+    es: 'Equipo de Victoria',
+    en: "Victoria's Team",
+    de: "Victorias Team",
+    zh: '维多利亚团队',
+    hi: 'विक्टोरिया की टीम',
+    pt: 'Equipa de Victoria',
+    fr: 'Équipe de Victoria',
+    it: 'Team di Victoria',
+    ko: '빅토리아 팀'
   };
 
   let menuOpen = false;
-  let portfolioFilter = 'all';
   let lightboxProject = null;
   let legalModal = null;
   let isScrolled = false;
@@ -76,7 +90,6 @@
   };
   const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz'];
   const serviceIcons = ['icon-pencil', 'icon-crop', 'icon-layers'];
-  const portfolioFilters = ['all', 'textil', 'madera'];
   const cookieSettingsLabels = {
     es: 'Configurar cookies',
     en: 'Cookie settings',
@@ -116,9 +129,7 @@
   // Para reactivar todas las fotos la próxima semana, cambia "portfolios.slice(0, 12)" por "portfolios"
   const activePortfolios = portfolios;
 
-  $: filteredPortfolios = portfolioFilter === 'all'
-    ? activePortfolios
-    : activePortfolios.filter((project) => project.categories.includes(portfolioFilter));
+  $: filteredPortfolios = activePortfolios;
 
   $: seoContent = (() => {
     const bySection = richSeoData[section];
@@ -588,6 +599,24 @@
       </a>
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      <div class="lang-menu">
+        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <div>
+          {#each languages as option}
+            <a
+              href={pathFor(option, section)}
+              class:active={lang === option}
+              on:click={() => {
+                if (typeof localStorage !== 'undefined') {
+                  localStorage.setItem('preferredLanguage', option);
+                }
+              }}
+            >
+              {languageLabels[option]}
+            </a>
+          {/each}
+        </div>
+      </div>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
@@ -637,14 +666,22 @@
     <MicroStand labels={copy.micro} />
 
     <section id="local-stands" class="section local-stands">
-      <p class="section-intro">{copy.citiesIntro}</p>
+      <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">
         {#each cityKeys as cityKey}
           <article id={cityKey}>
+            <div class="city-cover-container">
+              <img src="/img/cover_{cityKey}.avif" alt={cityTitle(cityKey)} class="city-cover-image" loading="lazy" />
+            </div>
             <h3>{cityTitle(cityKey)}</h3>
             <p>{cityContent(cityKey).intro}</p>
             <p>{cityContent(cityKey).detail}</p>
-            <a href={pathFor(lang, cityKey)}>{cityTitle(cityKey)}</a>
+            <a href={pathFor(lang, cityKey)} class="city-link-circle" aria-label={cityTitle(cityKey)}>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </a>
           </article>
         {/each}
       </div>
@@ -685,18 +722,6 @@
         <h2>{copy.customTitle}</h2>
         <span></span>
         <p>{copy.customSubtitle}</p>
-      </div>
-      <div class="controls">
-        {#each portfolioFilters as filter}
-          <button
-            type="button"
-            class:active={portfolioFilter === filter}
-            class="filter btn btn-common"
-            on:click={() => (portfolioFilter = filter)}
-          >
-            {copy.filters?.[filter] || filter}
-          </button>
-        {/each}
       </div>
       <div id="portfolio" class="portfolio-grid">
         {#each filteredPortfolios as project}
@@ -787,16 +812,30 @@
       </div>
       <div class="team-grid">
         <article class="team-member">
-          <div class="member-photo-container">
+          <div class="member-photo-container team-fade-container">
             <img
               src="/img/team/victoria_idiaquez.avif"
-              alt="Victoria Idiakez"
-              class="member-photo"
+              alt="Equipo de Victoria"
+              class="member-photo fade-img img-1"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="/img/team/team2.avif"
+              alt="Equipo de Victoria"
+              class="member-photo fade-img img-2"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="/img/team/team5.avif"
+              alt="Equipo de Victoria"
+              class="member-photo fade-img img-3"
               loading="lazy"
               decoding="async"
             />
           </div>
-          <h3>Victoria Idiakez</h3>
+          <h3>{teamMemberName[lang] || teamMemberName.es}</h3>
           <p class="role">{copy.teamRoles[0]}</p>
         </article>
 
@@ -1032,6 +1071,45 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .team-fade-container {
+    position: relative;
+  }
+
+  .team-fade-container .fade-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .team-fade-container .img-1 {
+    animation: fade3 9s infinite;
+  }
+
+  .team-fade-container .img-2 {
+    animation: fade3 9s infinite;
+    animation-delay: -3s;
+  }
+
+  .team-fade-container .img-3 {
+    animation: fade3 9s infinite;
+    animation-delay: -6s;
+  }
+
+  @keyframes fade3 {
+    0%, 28% {
+      opacity: 1;
+    }
+    33%, 95% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   .team-member h3 {
