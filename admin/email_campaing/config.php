@@ -44,7 +44,7 @@ return array(
     'categories' => array(
         'stands_madera' => array(
             'label' => 'Stands de Madera',
-            'subject' => 'नमस्ते {EMPRESA}. हम आपको एक विशिष्ट स्टैंड और 24 घंटे में कोटेशन प्रदान करते हैं।',
+            'subject' => 'Hola {EMPRESA}. Te ofrecemos un stand diferencial y un presupuesto en 24 H.',
             'preheader' => 'Soluciones exclusivas de diseño y acabados artesanales de alta calidad.',
             'headline' => 'Con nosotros de su lado {EMPRESA} se convertirá en el centro de todas las miradas',
             'intro' => 'En un pabellón saturado de ruido visual, la mayoría de los stands pasan desapercibidos. En Standarte, diseñamos y fabricamos stands basados en la psicología de la atención dirigidos a proyectar una imagen diferenciadora y equilibrada.',
