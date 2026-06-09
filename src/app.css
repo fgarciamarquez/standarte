@@ -2663,3 +2663,24 @@ footer {
 
 
 
+
+/* Responsive fixes for Dedicated SEO Pages (City Pages) */
+@media (max-width: 991px) {
+  .seo-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .sidebar-sticky {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .dedicated-seo-page {
+    padding: 40px 15px;
+  }
+  .seo-article {
+    padding: 25px 20px;
+  }
+}
+
