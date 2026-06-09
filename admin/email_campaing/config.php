@@ -49,7 +49,7 @@ return array(
             'headline' => 'Con nosotros de su lado {EMPRESA} se convertirá en el centro de todas las miradas',
             'intro' => 'En un pabellón saturado de ruido visual, la mayoría de los stands pasan desapercibidos. En Standarte, diseñamos y fabricamos stands basados en la psicología de la atención dirigidos a proyectar una imagen diferenciadora y equilibrada.',
             'body' => 'Nuestros carpinteros especializados logran acabados perfectos. Nos encargamos de toda la ingeniería, fabricación y montaje para que el proyecto de {EMPRESA} sea el centro de todas las miradas.',
-            'cta' => 'DISEÑAR MI STAND',
+            'cta' => 'PRESUPUESTO EN 24 H',
             'translations' => array(
                 'en' => array(
                     'subject' => 'Is {EMPRESA} ready to dominate the show, or will you blend in?',
@@ -57,7 +57,7 @@ return array(
                     'headline' => '{EMPRESA}: Lead your market and become the absolute center of attention',
                     'intro' => 'Let\'s be honest: in an exhibition hall filled with visual noise, most stands are completely ignored. For {EMPRESA}, we design and build bespoke stands that project maximum quality, brand authority, and visual balance.',
                     'body' => 'Our specialized master craftsmen deliver flawless finishes. We handle the entire engineering, manufacturing, and setup process, making {EMPRESA} the absolute center of attention.',
-                    'cta' => 'DESIGN MY STAND'
+                    'cta' => 'QUOTE IN 24 H'
                 ),
                 'de' => array(
                     'subject' => 'Ist {EMPRESA} bereit, die Messe zu dominieren, oder gehen Sie unter?',
@@ -65,7 +65,7 @@ return array(
                     'headline' => '{EMPRESA}: Führen Sie Ihren Markt an und stehen Sie im Rampenlicht',
                     'intro' => 'Seien wir ehrlich: In einer Messehalle voller visuellem Lärm gehen die meisten Stände unter. Für {EMPRESA} entwerfen und fertigen wir exklusive Messestände, die Qualität, Stärke und optische Balance ausstrahlen.',
                     'body' => 'Unsere spezialisierten Handwerker erzielen makellose Ergebnisse. Wir übernehmen den gesamten Engineering-, Fertigungs- und Montageprozess für {EMPRESA}.',
-                    'cta' => 'MESSESTAND ENTWERFEN'
+                    'cta' => 'ANGEBOT IN 24 H'
                 ),
                 'pt' => array(
                     'subject' => 'Está a {EMPRESA} pronta para liderar a sua próxima feira ou passará despercebida?',
@@ -73,7 +73,7 @@ return array(
                     'headline' => '{EMPRESA}: Lidere o seu setor e torne-se o centro de todas as atenções',
                     'intro' => 'Sejamos realistas: num pavilhão cheio de ruído visual, a maioria dos stands passa despercebida. Para {EMPRESA}, projetamos e fabricamos stands sob medida que transmitem máxima qualidade e solidez diferenciada.',
                     'body' => 'Nossos carpinteiros especializados garantem acabamentos impecáveis. Cuidamos de todo o processo de engenharia, fabricação e montagem para que {EMPRESA} sea o centro de todas as atenções.',
-                    'cta' => 'PROJETAR O MEU STAND'
+                    'cta' => 'ORÇAMENTO EM 24 H'
                 ),
                 'zh' => array(
                     'subject' => '{EMPRESA} 准备好在下一届展会上脱颖而出，还是会默默无闻？',

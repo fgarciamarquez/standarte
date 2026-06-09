@@ -29,15 +29,15 @@
   $: currentCopy = data?.copy || copy[lang] || copy.es;
 
   const ctaLabels = {
-    es: 'PRESUPUESTO EN 24H',
-    en: 'REQUEST A QUOTE',
-    de: 'ANGEBOT ANFORDERN',
-    pt: 'SOLICITAR ORÇAMENTO',
-    zh: '索取报价',
-    hi: 'कोटेशन का अनुरोध करें',
-    fr: 'DEMANDER UN DEVIS',
-    it: 'RICHIEDI UN PREVENTIVO',
-    ko: '견적 요청'
+    es: 'PRESUPUESTO EN 24 H',
+    en: 'QUOTE IN 24 H',
+    de: 'ANGEBOT IN 24 H',
+    pt: 'ORÇAMENTO EM 24 H',
+    zh: '24小时内报价',
+    hi: '24 घंटे में कोटेशन',
+    fr: 'DEVIS EN 24 H',
+    it: 'PREVENTIVO IN 24 H',
+    ko: '24시간 내 견적'
   };
 
   const i18n = {
@@ -217,7 +217,7 @@
   });
 
   const seoTitles = {
-    es: 'Noticias y Ferias en Madrid y Barcelona - Presupuesto en 24h | Standarte',
+    es: 'Noticias y Ferias en Madrid y Barcelona - Presupuesto en 24 H | Standarte',
     en: 'News and Fairs in Madrid, Barcelona, Bilbao, Lisbon, Malaga and Badajoz | Standarte',
     de: 'Nachrichten und Messen in Madrid, Barcelona, Bilbao, Lissabon, Malaga und Badajoz | Standarte',
     pt: 'Notícias e Feiras em Madrid, Barcelona, Bilbao, Lisboa, Málaga e Badajoz | Standarte',
@@ -229,7 +229,7 @@
   };
 
   const seoDescriptions = {
-    es: 'Artículos de actualidad sobre ferias y diseño de stands a medida. Solicita tu Presupuesto en 24h para Madrid, Barcelona, Bilbao, Lisboa, Málaga y Badajoz.',
+    es: 'Artículos de actualidad sobre ferias y diseño de stands a medida. Solicita tu Presupuesto en 24 H para Madrid, Barcelona, Bilbao, Lisboa, Málaga y Badajoz.',
     en: 'Current articles on fairs in Madrid, Barcelona, Bilbao, Lisbon, Malaga and Badajoz. The best custom exhibition stand design strategies.',
     de: 'Aktuelle Artikel über Messen in Madrid, Barcelona, Bilbao, Lissabon, Malaga und Badajoz. Die besten Strategien für das Design von Messeständen.',
     pt: 'Artigos atuais sobre feiras em Madrid, Barcelona, Bilbao, Lisboa, Málaga e Badajoz. As melhores estratégias de design de stands à medida.',

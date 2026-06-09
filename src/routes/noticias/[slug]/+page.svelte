@@ -48,15 +48,15 @@
   }
 
   const ctaLabels = {
-    es: 'PRESUPUESTO EN 24H',
-    en: 'REQUEST A QUOTE',
-    de: 'ANGEBOT ANFORDERN',
-    pt: 'SOLICITAR ORÇAMENTO',
-    zh: '索取报价',
-    hi: 'कोटेशन का अनुरोध करें',
-    fr: 'DEMANDER UN DEVIS',
-    it: 'RICHIEDI UN PREVENTIVO',
-    ko: '견적 요청'
+    es: 'PRESUPUESTO EN 24 H',
+    en: 'QUOTE IN 24 H',
+    de: 'ANGEBOT IN 24 H',
+    pt: 'ORÇAMENTO EM 24 H',
+    zh: '24小时内报价',
+    hi: '24 घंटे में कोटेशन',
+    fr: 'DEVIS EN 24 H',
+    it: 'PREVENTIVO IN 24 H',
+    ko: '24시간 내 견적'
   };
 
   const i18nDetail = {

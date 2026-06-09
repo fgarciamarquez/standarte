@@ -31,7 +31,7 @@
   export let data;
   let isScrolled = false;
   let menuOpen = false;
-  const ctaLabels = { es: 'PRESUPUESTO EN 24H', en: 'REQUEST A QUOTE', de: 'ANGEBOT ANFORDERN', zh: '索取报价', hi: 'एक बोली का अनुरोध करें', pt: 'SOLICITAR ORÇAMENTO', fr: 'DEMANDER UN DEVIS', it: 'RICHIEDI UN PREVENTIVO', ko: '견적 요청' };
+  const ctaLabels = { es: 'PRESUPUESTO EN 24 H', en: 'QUOTE IN 24 H', de: 'ANGEBOT IN 24 H', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'ORÇAMENTO EM 24 H', fr: 'DEVIS EN 24 H', it: 'PREVENTIVO IN 24 H', ko: '24시간 내 견적' };
   $: ({ lang, copy, canonical, fairSlug } = data);
   
   $: fair = fairsData.find(f => f.slug === fairSlug) || fairsData[0];
