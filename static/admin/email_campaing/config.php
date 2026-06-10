@@ -8,11 +8,11 @@ return array(
     'envelope_sender' => 'javier@standarte.es',
     'smtp' => array(
         'enabled' => true,
-        'host' => 'ssl0.ovh.net',
-        'port' => 465,
-        'encryption' => 'ssl',
-        'username' => 'javier@standarte.es',
-        'password' => getenv('STANDARTE_SMTP_PASSWORD') ? getenv('STANDARTE_SMTP_PASSWORD') : 'Extrategia37',
+        'host' => 'smtp.gmail.com',
+        'port' => 587,
+        'encryption' => 'tls',
+        'username' => 'hola.standarte.es@gmail.com',
+        'password' => getenv('STANDARTE_SMTP_PASSWORD') ? getenv('STANDARTE_SMTP_PASSWORD') : 'jurfovrkgcybzldk',
         'timeout' => 20
     ),
     'phone' => '+34 613 097 148',
@@ -46,49 +46,49 @@ return array(
             'label' => 'Stands de Madera',
             'subject' => 'Hola {EMPRESA}. Te ofrecemos un stand diferencial y un presupuesto en 24 H.',
             'preheader' => 'Soluciones exclusivas de diseño y acabados artesanales de alta calidad.',
-            'headline' => 'Con nosotros de su lado {EMPRESA} se convertirá en el centro de todas las miradas',
+            'headline' => 'Con nosotros {EMPRESA} será el centro de todas las miradas',
             'intro' => 'En un pabellón saturado de ruido visual, la mayoría de los stands pasan desapercibidos. En Standarte, diseñamos y fabricamos stands basados en la psicología de la atención dirigidos a proyectar una imagen diferenciadora y equilibrada.',
-            'body' => 'Nuestros carpinteros especializados logran acabados perfectos. Nos encargamos de toda la ingeniería, fabricación y montaje para que el proyecto de {EMPRESA} sea el centro de todas las miradas.',
+            'body' => 'Nuestros acabados son perfectos. Nos encargamos de la ingeniería, la fabricación y el montaje. Es un servicio llave en mano 100%',
             'cta' => 'PRESUPUESTO EN 24 H',
             'translations' => array(
                 'en' => array(
                     'subject' => 'Hello {EMPRESA}. We offer you a distinctive stand and a quote in 24 H.',
                     'preheader' => 'Exclusive bespoke solutions and premium handcrafted finishes.',
-                    'headline' => '{EMPRESA}: Lead your market and become the absolute center of attention',
+                    'headline' => 'With us, {EMPRESA} will be the center of attention',
                     'intro' => 'Let\'s be honest: in an exhibition hall filled with visual noise, most stands are completely ignored. For {EMPRESA}, we design and build bespoke stands that project maximum quality, brand authority, and visual balance.',
-                    'body' => 'Our specialized master craftsmen deliver flawless finishes. We handle the entire engineering, manufacturing, and setup process, making {EMPRESA} the absolute center of attention.',
+                    'body' => 'Our finishes are perfect. We handle the engineering, manufacturing, and assembly. It is a 100% turnkey service.',
                     'cta' => 'QUOTE IN 24 H'
                 ),
                 'de' => array(
                     'subject' => 'Hallo {EMPRESA}. Wir bieten Ihnen einen einzigartigen Messestand und ein Angebot in 24 H.',
                     'preheader' => 'Exklusive maßgeschneiderte Lösungen und handgefertigte Oberflächen.',
-                    'headline' => '{EMPRESA}: Führen Sie Ihren Markt an und stehen Sie im Rampenlicht',
+                    'headline' => 'Mit uns wird {EMPRESA} im Mittelpunkt aller Blicke stehen',
                     'intro' => 'Seien wir ehrlich: In einer Messehalle voller visuellem Lärm gehen die meisten Stände unter. Für {EMPRESA} entwerfen und fertigen wir exklusive Messestände, die Qualität, Stärke und optische Balance ausstrahlen.',
-                    'body' => 'Unsere spezialisierten Handwerker erzielen makellose Ergebnisse. Wir übernehmen den gesamten Engineering-, Fertigungs- und Montageprozess für {EMPRESA}.',
+                    'body' => 'Unsere Ausführungen sind perfekt. Wir übernehmen das Engineering, die Fertigung und die Montage. Es ist ein 100 % schlüsselfertiger Service.',
                     'cta' => 'ANGEBOT IN 24 H'
                 ),
                 'pt' => array(
                     'subject' => 'Olá {EMPRESA}. Oferecemos-lhe um stand diferenciado e um orçamento em 24 H.',
                     'preheader' => 'Soluções exclusivas e acabamentos artesanais de alta qualidade.',
-                    'headline' => '{EMPRESA}: Lidere o seu setor e torne-se o centro de todas as atenções',
+                    'headline' => 'Conosco, {EMPRESA} será o centro de todos os olhares',
                     'intro' => 'Sejamos realistas: num pavilhão cheio de ruído visual, a maioria dos stands passa despercebida. Para {EMPRESA}, projetamos e fabricamos stands sob medida que transmitem máxima qualidade e solidez diferenciada.',
-                    'body' => 'Nossos carpinteiros especializados garantem acabamentos impecáveis. Cuidamos de todo o processo de engenharia, fabricação e montagem para que {EMPRESA} sea o centro de todas as atenções.',
+                    'body' => 'Nossos acabamentos são perfeitos. Nos encarregamos da engenharia, fabricação e montagem. É um serviço 100% chave na mão.',
                     'cta' => 'ORÇAMENTO EM 24 H'
                 ),
                 'zh' => array(
                     'subject' => '您好 {EMPRESA}。我们为您提供与众不同的展台和24小时内的报价。',
                     'preheader' => '独家定制设计方案与高品质手工打造。',
-                    'headline' => '有了我们的支持，{EMPRESA} 将成为全场瞩目的焦点',
+                    'headline' => '有了我们，{EMPRESA} 将成为瞩目的焦点',
                     'intro' => '在充满视觉噪音的展馆中，大多数展位都会被忽视。在 Standarte，我们基于注意力心理学设计和建造展位，旨在呈现出与众不同且平衡的品牌形象。',
-                    'body' => '我们专业的木匠能打造出完美的工艺细节。我们负责从工程设计、制造到搭建的全过程，让 {EMPRESA} 的项目成为绝对的焦点。',
+                    'body' => '我们的工艺完美无瑕。我们负责工程、制造与搭建，提供 100% 交钥匙服务。',
                     'cta' => '设计我的展位'
                 ),
                 'hi' => array(
                     'subject' => 'नमस्ते {EMPRESA}. हम आपको एक विशिष्ट स्टैंड और 24 घंटे में कोटेशन प्रदान करते हैं।',
                     'preheader' => 'विशेष कस्टम डिज़ाइन समाधान और उच्च गुणवत्ता वाली शिल्पकारी।',
-                    'headline' => 'हमारे साथ, {EMPRESA} हर किसी के आकर्षण का केंद्र बन जाएगी',
+                    'headline' => 'हमारे साथ, {EMPRESA} सभी की निगाहों का केंद्र होगी',
                     'intro' => 'दृश्य शोर से भरे प्रदर्शनी हॉल में, अधिकांश स्टैंड अनदेखे रह जाते हैं। Standarte में, हम ध्यान के मनोविज्ञान पर आधारित स्टैंड डिज़ाइन और निर्मित करते हैं, जिसका उद्देश्य एक अलग और संतुलित छवि पेश करना है।',
-                    'body' => 'हमारे विशेषज्ञ बढ़ई त्रुटिहीन फिनिश प्रदान करते हैं। हम संपूर्ण इंजीनियरिंग, निर्माण और सेटअप प्रक्रिया का प्रबंधन करते हैं, जिससे {EMPRESA} का प्रोजेक्ट आकर्षण का केंद्र बन जाता है।',
+                    'body' => 'हमारी फिनिशिंग बिल्कुल सही है। हम इंजीनियरिंग, निर्माण और असेंबली का कार्य संभालते हैं। यह 100% टर्नकी सेवा है।',
                     'cta' => 'मेरा स्टैंड डिज़ाइन करें'
                 )
             ),
