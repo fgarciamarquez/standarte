@@ -8,3 +8,6 @@ deploy-config.php
 scratch/
 supabase-config.php
 static/supabase-config.php
+static/admin/email_campaing/data/smtp_password.txt
+admin/email_campaing/data/smtp_password.txt
+dist/admin/email_campaing/data/smtp_password.txt
