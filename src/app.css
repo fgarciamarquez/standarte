@@ -1763,17 +1763,22 @@ footer {
   }
 
   .menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    height: 40px;
+    line-height: 40px;
   }
 
   .nav {
-    align-items: flex-start;
+    align-items: center;
     min-height: 68px;
   }
 
   .brand {
     width: 190px;
-    margin-top: 14px;
+    margin-top: 0;
   }
 
   .nav-links {
@@ -1811,7 +1816,8 @@ footer {
   }
 
   .nav-right {
-    margin-top: 14px;
+    margin-top: 0;
+    display: flex;
     align-items: center;
     gap: 8px;
   }
