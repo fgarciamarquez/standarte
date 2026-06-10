@@ -4,16 +4,24 @@ include("config.php");
 
 <?php
 
-	$subdatos_email = $db->prepare("SELECT * FROM company");
-	$subdatos_email->execute();
-	$subdatos = $subdatos_email->fetchAll(PDO::FETCH_ASSOC);
+	$ltd_email = '';
+	$pie_email = '';
 
-	
-	foreach ($subdatos as $subdatos) {
-	  $titular_email = $subdatos['exxp'];
-	  $ltd_email = $subdatos['ltd'];
-	  $pie_email = $subdatos['foot'];
-	};
+	if ($db) {
+		try {
+			$subdatos_email = $db->prepare("SELECT * FROM company");
+			$subdatos_email->execute();
+			$subdatos = $subdatos_email->fetchAll(PDO::FETCH_ASSOC);
+
+			foreach ($subdatos as $subdatos) {
+				$titular_email = $subdatos['exxp'];
+				$ltd_email = $subdatos['ltd'];
+				$pie_email = $subdatos['foot'];
+			};
+		} catch (Exception $e) {
+			// Ignore DB select error
+		}
+	}
 ?>
 
 
@@ -297,10 +305,16 @@ if (!filter_var($form_email, FILTER_VALIDATE_EMAIL)) {
 
 } else {
 
-$query      = "INSERT INTO `presupuestos` SET nombre = ?, empresa = ?, tlf = ?, email = ?, feria = ?, localizacion = ?, metros = ?, presupuesto = ?, descripcion = ?, opciones = ?, respuesta_enviada = ?";
-            $parameters = array($form_nombre, $form_empresa, $form_tlf, $form_email, $form_feria, $form_localizacion, $form_metros, $form_presupuesto, $form_descripcion, $form_opciones, $form_respuesta);
-            $statement  = $db->prepare($query);
-            $statement->execute($parameters);
+	if ($db) {
+		try {
+			$query      = "INSERT INTO `presupuestos` SET nombre = ?, empresa = ?, tlf = ?, email = ?, feria = ?, localizacion = ?, metros = ?, presupuesto = ?, descripcion = ?, opciones = ?, respuesta_enviada = ?";
+			$parameters = array($form_nombre, $form_empresa, $form_tlf, $form_email, $form_feria, $form_localizacion, $form_metros, $form_presupuesto, $form_descripcion, $form_opciones, $form_respuesta);
+			$statement  = $db->prepare($query);
+			$statement->execute($parameters);
+		} catch (Exception $e) {
+			// Ignore DB insert error
+		}
+	}
 
 			          /*____________________SCRIPT MAIL________________________*/
 

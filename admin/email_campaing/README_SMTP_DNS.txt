@@ -5,9 +5,9 @@ Mejoras recomendadas para que los emails lleguen como correo principal
 -------------------
 El gestor ya está preparado para enviar mediante SMTP autenticado usando:
 
-Servidor: ssl0.ovh.net
-Puerto: 587
-Seguridad: TLS
+Servidor: smtp.gmail.com
+Puerto: 465
+Seguridad: SSL
 Usuario: javier@standarte.es
 
 Para activarlo falta introducir la contraseña real del buzón. Opciones:

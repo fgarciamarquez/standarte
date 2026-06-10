@@ -81,7 +81,7 @@ function campaign_get_email_clicks()
 
     // Get history (latest 50)
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,created_at&order=created_at.desc&limit=50');
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,clicked_at&order=clicked_at.desc&limit=50');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -289,10 +289,14 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
     .stats { background:#ffffff; border:1px solid #e1e4e8; border-left: 4px solid #ffc800; margin:0 0 18px; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .stats strong { display:block; font-size:2rem; line-height:1; margin:.35rem 0; color:#b89400; }
     .stats span { color:#666666; display:block; font-size:.9rem; line-height:1.45; }
-    .send-log { background:#ffffff; border:1px solid #e1e4e8; margin:18px 0 0; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-    .send-log h2 { font-size:1rem; margin:0 0 .75rem; color:#111111; }
-    .send-log p { border-top:1px solid #e1e4e8; color:#555555; font-size:.82rem; line-height:1.4; margin:0; padding:.55rem 0; }
-    .send-log b { color:#111111; }
+    details.send-log { background:#ffffff; border:1px solid #e1e4e8; margin:18px 0 0; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    details.send-log summary { cursor: pointer; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+    details.send-log summary::-webkit-details-marker { display: none; }
+    details.send-log h2 { font-size:1rem; margin:0; color:#111111; display: inline; }
+    details.send-log p { border-top:1px solid #e1e4e8; color:#555555; font-size:.82rem; line-height:1.4; margin:0; padding:.55rem 0; }
+    details.send-log b { color:#111111; }
+    details.send-log .details-icon { font-size: 0.8rem; color: #888; transition: transform 0.2s ease; }
+    details.send-log[open] .details-icon { transform: rotate(180deg); }
     .smtp-status { background:#ffffff; border:1px solid #e1e4e8; margin:0 0 18px; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .smtp-status b { display:block; margin:0 0 .35rem; }
     .smtp-status span { color:#666666; display:block; font-size:.9rem; line-height:1.45; }
@@ -325,7 +329,6 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
       <div class="stats">
         <span>Visitas totales desde correos multimedia</span>
         <strong><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
-        <span>Contador acumulado desde enlaces en correos.</span>
       </div>
       <div class="smtp-status <?php echo $smtpReady ? 'smtp-ok' : 'smtp-warning'; ?>">
         <b><?php echo $smtpReady ? 'SMTP autenticado activo' : 'SMTP pendiente de contraseña'; ?></b>
@@ -379,32 +382,42 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           <p id="batch_progress_log" style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #888; white-space: pre-wrap; font-family: monospace;"></p>
         </div>
       </form>
-      <div class="send-log">
-        <h2>Últimos accesos desde el correo</h2>
-        <?php if (!$clicksHistory): ?>
-          <p style="font-size:0.85rem;color:#888;">Nadie ha hecho clic en los correos todavía.</p>
-        <?php endif; ?>
-        <?php foreach ($clicksHistory as $click): ?>
-          <p>
-            <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
-            <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['created_at']))); ?></span>
-          </p>
-        <?php endforeach; ?>
-      </div>
-      <div class="send-log">
-        <h2>Registro de envíos locales</h2>
-        <?php if (!$sendLog): ?>
-          <p style="font-size:0.85rem;color:#888;">No hay envíos registrados todavía.</p>
-        <?php endif; ?>
-        <?php foreach ($sendLog as $entry): ?>
-          <p>
-            <b><?php echo !empty($entry['accepted']) ? 'Aceptado por ' . campaign_escape(isset($entry['method']) ? $entry['method'] : 'PHP') : 'Error'; ?></b><br>
-            <?php echo campaign_escape($entry['date']); ?> · <?php echo campaign_escape($entry['to']); ?>
-            <?php if (!empty($entry['subject'])): ?><br>Asunto: <?php echo campaign_escape($entry['subject']); ?><?php endif; ?>
-            <?php if (empty($entry['accepted']) && !empty($entry['error'])): ?><br><span style="color:#ff8888;"><?php echo campaign_escape($entry['error']); ?></span><?php endif; ?>
-          </p>
-        <?php endforeach; ?>
-      </div>
+      <details class="send-log">
+        <summary>
+          <h2>Últimos accesos desde el correo</h2>
+          <span class="details-icon">▼</span>
+        </summary>
+        <div style="margin-top: 10px;">
+          <?php if (!$clicksHistory): ?>
+            <p style="font-size:0.85rem;color:#888;">Nadie ha hecho clic en los correos todavía.</p>
+          <?php endif; ?>
+          <?php foreach ($clicksHistory as $click): ?>
+            <p>
+              <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
+              <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['clicked_at']))); ?></span>
+            </p>
+          <?php endforeach; ?>
+        </div>
+      </details>
+      <details class="send-log">
+        <summary>
+          <h2>Registro de envíos locales</h2>
+          <span class="details-icon">▼</span>
+        </summary>
+        <div style="margin-top: 10px;">
+          <?php if (!$sendLog): ?>
+            <p style="font-size:0.85rem;color:#888;">No hay envíos registrados todavía.</p>
+          <?php endif; ?>
+          <?php foreach ($sendLog as $entry): ?>
+            <p>
+              <b><?php echo !empty($entry['accepted']) ? 'Aceptado por ' . campaign_escape(isset($entry['method']) ? $entry['method'] : 'PHP') : 'Error'; ?></b><br>
+              <?php echo campaign_escape($entry['date']); ?> · <?php echo campaign_escape($entry['to']); ?>
+              <?php if (!empty($entry['subject'])): ?><br>Asunto: <?php echo campaign_escape($entry['subject']); ?><?php endif; ?>
+              <?php if (empty($entry['accepted']) && !empty($entry['error'])): ?><br><span style="color:#ff8888;"><?php echo campaign_escape($entry['error']); ?></span><?php endif; ?>
+            </p>
+          <?php endforeach; ?>
+        </div>
+      </details>
     </section>
     <section class="preview">
       <h2 style="color:#ffc800;margin-top:0;">Previsualización en vivo</h2>
@@ -549,7 +562,18 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         .then(function (res) { return res.json(); })
         .then(function (data) {
           if (data.status === 'success' && data.groups && data.groups.length > 0) {
+            var currentCity = '';
+            var currentOptgroup = null;
+            
             data.groups.forEach(function (g) {
+              var city = g.city || 'Otros';
+              if (city !== currentCity) {
+                currentCity = city;
+                currentOptgroup = document.createElement('optgroup');
+                currentOptgroup.label = currentCity;
+                groupSelect.appendChild(currentOptgroup);
+              }
+              
               var opt = document.createElement('option');
               opt.value = g.name;
               var total = g.leads_with_email || 0;
@@ -561,7 +585,12 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
               if (unsub > 0) text += ' - ❗' + unsub + ' bajas';
               opt.textContent = text;
               opt.dataset.unsub = unsub;
-              groupSelect.appendChild(opt);
+              
+              if (currentOptgroup) {
+                currentOptgroup.appendChild(opt);
+              } else {
+                groupSelect.appendChild(opt);
+              }
             });
           }
         })

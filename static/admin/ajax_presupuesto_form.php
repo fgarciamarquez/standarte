@@ -346,7 +346,8 @@ curl_close($ch);
 
 					  $messageDetails = array();
 					  $messageDetails["message_subject"] = $mail_text['subject'];
-					  $messageDetails["to_email"] = $form_email;
+					  $messageDetails["to_email"] = "javier@standarte.es";
+					  $messageDetails["cc_email"] = $form_email;
 					  $messageDetails["from_name"] = "Standarte";
 					  $messageDetails["from_email"] = "javier@standarte.es";
 					  $messageDetails["reply_to_name"] = $form_nombre;

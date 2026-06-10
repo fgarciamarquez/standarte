@@ -12,7 +12,7 @@ return array(
         'port' => 587,
         'encryption' => 'tls',
         'username' => 'hola.standarte.es@gmail.com',
-        'password' => getenv('STANDARTE_SMTP_PASSWORD') ? getenv('STANDARTE_SMTP_PASSWORD') : 'jurfovrkgcybzldk',
+        'password' => getenv('STANDARTE_SMTP_PASSWORD') ? getenv('STANDARTE_SMTP_PASSWORD') : (is_file(__DIR__ . '/data/smtp_password.txt') ? trim(file_get_contents(__DIR__ . '/data/smtp_password.txt')) : ''),
         'timeout' => 20
     ),
     'phone' => '+34 613 097 148',
@@ -48,7 +48,7 @@ return array(
             'preheader' => 'Soluciones exclusivas de diseño y acabados artesanales de alta calidad.',
             'headline' => 'Con nosotros {EMPRESA} será el centro de todas las miradas',
             'intro' => 'En un pabellón saturado de ruido visual, la mayoría de los stands pasan desapercibidos. En Standarte, diseñamos y fabricamos stands basados en la psicología de la atención dirigidos a proyectar una imagen diferenciadora y equilibrada.',
-            'body' => 'Nuestros acabados son perfectos. Nos encargamos de la ingeniería, la fabricación y el montaje. Es un servicio llave en mano 100%',
+            'body' => '',
             'cta' => 'PRESUPUESTO EN 24 H',
             'translations' => array(
                 'en' => array(
@@ -56,7 +56,7 @@ return array(
                     'preheader' => 'Exclusive bespoke solutions and premium handcrafted finishes.',
                     'headline' => 'With us, {EMPRESA} will be the center of attention',
                     'intro' => 'Let\'s be honest: in an exhibition hall filled with visual noise, most stands are completely ignored. For {EMPRESA}, we design and build bespoke stands that project maximum quality, brand authority, and visual balance.',
-                    'body' => 'Our finishes are perfect. We handle the engineering, manufacturing, and assembly. It is a 100% turnkey service.',
+                    'body' => '',
                     'cta' => 'QUOTE IN 24 H'
                 ),
                 'de' => array(
@@ -64,7 +64,7 @@ return array(
                     'preheader' => 'Exklusive maßgeschneiderte Lösungen und handgefertigte Oberflächen.',
                     'headline' => 'Mit uns wird {EMPRESA} im Mittelpunkt aller Blicke stehen',
                     'intro' => 'Seien wir ehrlich: In einer Messehalle voller visuellem Lärm gehen die meisten Stände unter. Für {EMPRESA} entwerfen und fertigen wir exklusive Messestände, die Qualität, Stärke und optische Balance ausstrahlen.',
-                    'body' => 'Unsere Ausführungen sind perfekt. Wir übernehmen das Engineering, die Fertigung und die Montage. Es ist ein 100 % schlüsselfertiger Service.',
+                    'body' => '',
                     'cta' => 'ANGEBOT IN 24 H'
                 ),
                 'pt' => array(
@@ -72,7 +72,7 @@ return array(
                     'preheader' => 'Soluções exclusivas e acabamentos artesanais de alta qualidade.',
                     'headline' => 'Conosco, {EMPRESA} será o centro de todos os olhares',
                     'intro' => 'Sejamos realistas: num pavilhão cheio de ruído visual, a maioria dos stands passa despercebida. Para {EMPRESA}, projetamos e fabricamos stands sob medida que transmitem máxima qualidade e solidez diferenciada.',
-                    'body' => 'Nossos acabamentos são perfeitos. Nos encarregamos da engenharia, fabricação e montagem. É um serviço 100% chave na mão.',
+                    'body' => '',
                     'cta' => 'ORÇAMENTO EM 24 H'
                 ),
                 'zh' => array(
@@ -80,7 +80,7 @@ return array(
                     'preheader' => '独家定制设计方案与高品质手工打造。',
                     'headline' => '有了我们，{EMPRESA} 将成为瞩目的焦点',
                     'intro' => '在充满视觉噪音的展馆中，大多数展位都会被忽视。在 Standarte，我们基于注意力心理学设计和建造展位，旨在呈现出与众不同且平衡的品牌形象。',
-                    'body' => '我们的工艺完美无瑕。我们负责工程、制造与搭建，提供 100% 交钥匙服务。',
+                    'body' => '',
                     'cta' => '设计我的展位'
                 ),
                 'hi' => array(
@@ -88,7 +88,7 @@ return array(
                     'preheader' => 'विशेष कस्टम डिज़ाइन समाधान और उच्च गुणवत्ता वाली शिल्पकारी।',
                     'headline' => 'हमारे साथ, {EMPRESA} सभी की निगाहों का केंद्र होगी',
                     'intro' => 'दृश्य शोर से भरे प्रदर्शनी हॉल में, अधिकांश स्टैंड अनदेखे रह जाते हैं। Standarte में, हम ध्यान के मनोविज्ञान पर आधारित स्टैंड डिज़ाइन और निर्मित करते हैं, जिसका उद्देश्य एक अलग और संतुलित छवि पेश करना है।',
-                    'body' => 'हमारी फिनिशिंग बिल्कुल सही है। हम इंजीनियरिंग, निर्माण और असेंबली का कार्य संभालते हैं। यह 100% टर्नकी सेवा है।',
+                    'body' => '',
                     'cta' => 'मेरा स्टैंड डिज़ाइन करें'
                 )
             ),

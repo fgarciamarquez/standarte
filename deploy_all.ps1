@@ -23,8 +23,7 @@ UploadFile "admin\email_campaing\config.php" "admin/email_campaing/config.php"
 UploadFile "admin\email_campaing\template.php" "admin/email_campaing/template.php"
 UploadFile "admin\email_campaing\index.php" "admin/email_campaing/index.php"
 UploadFile "admin\email_campaing\groups.php" "admin/email_campaing/groups.php"
+UploadFile "admin\email_campaing\send_batch.php" "admin/email_campaing/send_batch.php"
+UploadFile "admin\email_campaing\mailer.php" "admin/email_campaing/mailer.php"
 
-# Also upload the static ones just in case OVH maps to static folder for some reason (if this is Svelte built)
-UploadFile "static\admin\email_campaing\config.php" "static/admin/email_campaing/config.php"
-UploadFile "static\admin\email_campaing\template.php" "static/admin/email_campaing/template.php"
-UploadFile "static\admin\email_campaing\index.php" "static/admin/email_campaing/index.php"
+

@@ -71,7 +71,24 @@ if ($action === 'list') {
         foreach ($groups as &$g) {
             $g['drip_sent_count'] = isset($sentCounts[$g['name']]) ? $sentCounts[$g['name']] : 0;
             $g['unsub_count'] = isset($unsubCounts[$g['name']]) ? $unsubCounts[$g['name']] : 0;
+            $g['city'] = get_city_from_group_name($g['name']);
         }
+        
+        // Ordenar grupos por ciudad y luego alfabéticamente por nombre
+        usort($groups, function($a, $b) {
+            $cityA = get_city_from_group_name($a['name']);
+            $cityB = get_city_from_group_name($b['name']);
+            
+            if ($cityA === $cityB) {
+                return strcasecmp(normalize_for_sort($a['name']), normalize_for_sort($b['name']));
+            }
+            
+            if ($cityA === 'Otros') return 1;
+            if ($cityB === 'Otros') return -1;
+            
+            return strcasecmp(normalize_for_sort($cityA), normalize_for_sort($cityB));
+        });
+
         echo json_encode([
             'status' => 'success',
             'groups' => $groups
@@ -145,6 +162,60 @@ echo json_encode([
     'status' => 'error',
     'message' => 'Acción no válida. Usa ?action=list o ?action=emails&group=NombreDelGrupo'
 ]);
+
+// ============================================================
+// FUNCIONES AUXILIARES DE ORDENACIÓN Y CIUDADES
+// ============================================================
+function get_city_from_group_name($name) {
+    $name_lower = mb_strtolower($name, 'UTF-8');
+    
+    // Mapeos explícitos para grupos especiales
+    if ($name_lower === 'farmaforum 2026' || $name_lower === 'farmaforum') {
+        return 'Madrid';
+    }
+    if ($name_lower === 'empack') {
+        return 'Madrid';
+    }
+    
+    $cities = [
+        'Madrid' => ['madrid'],
+        'Barcelona' => ['barcelona'],
+        'Sevilla' => ['sevilla', 'seville'],
+        'Málaga' => ['málaga', 'malaga'],
+        'Lisboa' => ['lisboa', 'lisbon', 'lisbom'],
+        'Zaragoza' => ['zaragoza'],
+        'Badajoz' => ['badajoz'],
+        'Bilbao' => ['bilbao'],
+        'Vigo' => ['vigo'],
+        'Paris' => ['paris'],
+        'Munich' => ['munich', 'münchen', 'munchen'],
+        'Hannover' => ['hannover', 'hanover'],
+        'Milán' => ['milán', 'milan'],
+        'Stuttgart' => ['stuttgart'],
+        'Nuremberg' => ['nuremberg', 'nürnberg', 'nurnberg'],
+        'Frankfurt' => ['frankfurt', 'fráncfort', 'francfort']
+    ];
+    
+    foreach ($cities as $city => $keywords) {
+        foreach ($keywords as $kw) {
+            if (mb_strpos($name_lower, $kw, 0, 'UTF-8') !== false) {
+                return $city;
+            }
+        }
+    }
+    
+    return 'Otros';
+}
+
+function normalize_for_sort($str) {
+    $str = mb_strtolower($str, 'UTF-8');
+    $unwanted_array = array(
+        'á'=>'a', 'é'=>'e', 'í'=>'i', 'ó'=>'o', 'ú'=>'u',
+        'ä'=>'a', 'ë'=>'e', 'ï'=>'i', 'ö'=>'o', 'ü'=>'u',
+        'ñ'=>'n'
+    );
+    return strtr($str, $unwanted_array);
+}
 
 // ============================================================
 // FUNCIÓN AUXILIAR: Petición GET a Supabase REST API

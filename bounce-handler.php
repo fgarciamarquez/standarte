@@ -561,7 +561,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
                     </p>
                     <div style="font-size:12px; font-family:monospace; background-color:#050606; padding:15px; border-radius:6px; display:inline-block; border: 1px solid var(--color-border); text-align: left; color:#ffc800;">
                         // Define estas constantes en supabase-config.php:<br>
-                        define('IMAP_HOST', 'ssl://ssl0.ovh.net'); // Servidor IMAP de tu hosting (OVH)<br>
+                        define('IMAP_HOST', 'ssl://imap.gmail.com'); // Servidor IMAP de Google Workspace / Gmail<br>
                         define('IMAP_PORT', 993); // Puerto seguro estándar<br>
                         define('IMAP_USER', 'hola@standarte.es');<br>
                         define('IMAP_PASS', 'CONTRASENA_DE_APLICACION_SEGURA');

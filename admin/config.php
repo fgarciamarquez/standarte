@@ -31,7 +31,7 @@ $ano_futuro = date("Y", strtotime("+1 years", strtotime($ano_actual)));
 | This email details when stmp is set to false and system sends email using mail function
 |
 */
-$GLOBALS["SMTP_HOST"] = 'ssl0.ovh.net';
+$GLOBALS["SMTP_HOST"] = 'smtp.gmail.com';
 $GLOBALS["SMTP_USERNAME"] = 'info@standarte.es';
 $GLOBALS["SMTP_PASSWORD"] = 'Extrategia37';
 $GLOBALS["SMTP_SECURE"] = 'ssl';

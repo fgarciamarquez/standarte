@@ -164,7 +164,7 @@ export const copy = {
   es: {
     faqsTitle: 'Preguntas Frecuentes', successStoriesTitle: 'Casos de Éxito', featuredProjectsIntro: 'Proyectos destacados de carpintería a medida y diseño de stands:', 
     nav: { services: 'Servicios', custom: 'Galería', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
-    seoTitle: 'Standarte | Construcción de stands en Madrid, Barcelona, Bilbao, Málaga y Lisboa - Presupuesto en 24 H',
+    seoTitle: 'Standarte | Construcción de stands en España y Portugal',
     seoDescription: 'Standarte diseña, fabrica y monta stands de forma profesional y personalizada para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lisboa y otros destinos. ¡Presupuesto en 24 H!',
     heroTitle: 'Diseño y construcción de stands internacionales',
     heroSubtitle: 'Espacios que inspiran',
@@ -249,7 +249,7 @@ export const copy = {
   en: {
     faqsTitle: 'Frequently Asked Questions', successStoriesTitle: 'Success Stories', featuredProjectsIntro: 'Featured custom carpentry and exhibition stand design projects:', 
     nav: { services: 'Services', custom: 'Gallery', noticias: 'Blog', contact: 'Contact', language: 'Language' },
-    seoTitle: 'Standarte | Stand builder in Madrid, Barcelona, Bilbao, Malaga and Lisbon',
+    seoTitle: 'Standarte | Stand builder in Spain and Portugal',
     seoDescription: 'Professional and customized design, production and installation of exhibition stands for trade fairs in Spain and international projects.',
     heroTitle: 'Stand builder workshop in Spain',
     heroSubtitle: 'high quality work',
@@ -581,7 +581,7 @@ export const copy = {
   pt: {
     faqsTitle: 'Perguntas Frequentes', successStoriesTitle: 'Casos de Sucesso', featuredProjectsIntro: 'Projetos destacados de marcenaria à medida e design de stands:', 
     nav: { services: 'Serviços', custom: 'Galeria', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
-    seoTitle: 'Standarte | Construção de stands em Madrid, Barcelona, Bilbao, Málaga e Lisboa',
+    seoTitle: 'Standarte | Construção de stands em Espanha e Portugal',
     seoDescription: 'Design, produção e montagem de stands para feiras em Espanha e projetos internacionais.',
     heroTitle: 'Projeto e construção de estandes',
     heroSubtitle: 'Espaços que inspiram',
@@ -669,7 +669,7 @@ export const copy = {
   fr: {
     faqsTitle: 'Foire Aux Questions', successStoriesTitle: 'Histoires de Réussite', featuredProjectsIntro: 'Projets phares de menuiserie sur mesure et de conception de stands:', 
     nav: { services: 'Services', custom: 'Galerie', noticias: 'Blog', contact: 'Contact', language: 'Langue' },
-    seoTitle: 'Standarte | Constructeur de stands à Madrid, Barcelone, Bilbao, Malaga et Lisbonne',
+    seoTitle: 'Standarte | Constructeur de stands en Espagne et Portugal',
     seoDescription: 'Standarte conçoit, fabrique et installe des stands de manière professionnelle et personnalisée pour des salons en Espagne et à l\'international.',
     heroTitle: 'Conception et construction de stands internationaux',
     heroSubtitle: 'Des espaces qui inspirent',
@@ -734,7 +734,7 @@ export const copy = {
   it: {
     faqsTitle: 'Domande Frequenti', successStoriesTitle: 'Storie di Successo', featuredProjectsIntro: 'Progetti in evidenza di falegnameria su misura e design di stand espositivi:', 
     nav: { services: 'Servizi', custom: 'Galleria', noticias: 'Blog', contact: 'Contatto', language: 'Lingua' },
-    seoTitle: 'Standarte | Allestimenti fieristici a Madrid, Barcellona, Bilbao, Malaga e Lisbona',
+    seoTitle: 'Standarte | Allestimenti fieristici in Spagna e Portogallo',
     seoDescription: 'Standarte progetta, produce e allestisce stand in modo professionale e personalizzato per fiere in Spagna e all\'estero.',
     heroTitle: 'Progettazione e allestimento stand fieristici',
     heroSubtitle: 'Spazi che ispirano',
@@ -1400,7 +1400,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/TELASRGB/2.avif",
     "full": "img/trabajos/TELASRGB/1.avif",
-    "alt": "Philips",
+    "alt": "Stand ferial de tecnología de iluminación y salud para Philips",
     "categories": [
       "iluminacion",
       "tecnologia"
@@ -1419,7 +1419,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/01-bost-emo-2023_1.avif",
     "full": "img/trabajos/trabajos_promueve/01-bost-emo-2023_1.avif",
-    "alt": "BOST EMO 2023",
+    "alt": "Construcción de stand de gran formato en carpintería de madera para BOST en EMO 2023",
     "categories": [
       "madera"
     ],
@@ -1437,7 +1437,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/01-stand-tecnalia-biemh-2022_1.avif",
     "full": "img/trabajos/trabajos_promueve/01-stand-tecnalia-biemh-2022_1.avif",
-    "alt": "Tecnalia BIEMH 2022",
+    "alt": "Estructura de stand modular de aluminio y diseño tecnológico para Tecnalia en BIEMH 2022",
     "categories": [
       "feria",
       "aluminio"
@@ -1456,7 +1456,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/01-stand-zayer-biemh-2022-v2.avif",
     "full": "img/trabajos/trabajos_promueve/01-stand-zayer-biemh-2022-v2.avif",
-    "alt": "Zayer BIEMH 2022",
+    "alt": "Stand de carpintería a medida y espacio de exposición de maquinaria para Zayer en BIEMH 2022",
     "categories": [
       "carpinteria"
     ],
@@ -1474,7 +1474,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/1.avif",
     "full": "img/trabajos/trabajos_promueve/1.avif",
-    "alt": "Pharmatechnik",
+    "alt": "Stand corporativo premium con diseño para empresa del sector farmacéutico Pharmatechnik",
     "categories": [
       "farmaceutica"
     ],
@@ -1492,7 +1492,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/02-bost-emo-2023_1.avif",
     "full": "img/trabajos/trabajos_promueve/02-bost-emo-2023_1.avif",
-    "alt": "BOST zona audiovisual",
+    "alt": "Zona audiovisual integrada en stand de madera a medida para la empresa BOST",
     "categories": [
       "madera",
       "led"
@@ -1511,7 +1511,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/02-stand-intermaher-biemh-2022.avif",
     "full": "img/trabajos/trabajos_promueve/02-stand-intermaher-biemh-2022.avif",
-    "alt": "Intermaher BIEMH 2022",
+    "alt": "Diseño y montaje de stand ferial para exhibición de maquinaria pesada de Intermaher en BIEMH 2022",
     "categories": [
       "feria"
     ],
@@ -1529,7 +1529,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/02-stand-zayer-biemh-2022.avif",
     "full": "img/trabajos/trabajos_promueve/02-stand-zayer-biemh-2022.avif",
-    "alt": "Zayer demostración BIEMH 2022",
+    "alt": "Área de demostración y carpintería técnica en el stand de Zayer para BIEMH 2022",
     "categories": [
       "carpinteria",
       "tecnologia"
@@ -1548,7 +1548,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/2 copia.avif",
     "full": "img/trabajos/trabajos_promueve/2 copia.avif",
-    "alt": "Schoeffel",
+    "alt": "Stand con textiles arquitectónicos tensados para la firma de joyería Schoeffel",
     "categories": [
       "textil"
     ],
@@ -1566,7 +1566,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/03-stand-intermaher-biemh-2022.avif",
     "full": "img/trabajos/trabajos_promueve/03-stand-intermaher-biemh-2022.avif",
-    "alt": "Intermaher vista superior",
+    "alt": "Vista superior del stand modular con estructura metálica y zona expositora para Intermaher",
     "categories": [
       "feria",
       "aluminio"
@@ -1585,7 +1585,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/03-stand-tecnalia-biemh-2022_1.avif",
     "full": "img/trabajos/trabajos_promueve/03-stand-tecnalia-biemh-2022_1.avif",
-    "alt": "Tecnalia robótica BIEMH 2022",
+    "alt": "Stand tecnológico con zona de robótica y pantallas led interactivas para Tecnalia en BIEMH 2022",
     "categories": [
       "tecnologia",
       "feria"
@@ -1604,7 +1604,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/3.avif",
     "full": "img/trabajos/trabajos_promueve/3.avif",
-    "alt": "MFI Unitail Rodamco",
+    "alt": "Stand modular de madera y acabados profesionales para MFI Unibail Rodamco",
     "categories": [
       "madera"
     ],
@@ -1622,7 +1622,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/04-bost-emo-2023_2.avif",
     "full": "img/trabajos/trabajos_promueve/04-bost-emo-2023_2.avif",
-    "alt": "BOST zona de reuniones",
+    "alt": "Zona de reuniones de carpintería premium y diseño acogedor en el stand de BOST",
     "categories": [
       "madera",
       "premium"
@@ -1641,7 +1641,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/06-stand-zayer-biemh-2022.avif",
     "full": "img/trabajos/trabajos_promueve/06-stand-zayer-biemh-2022.avif",
-    "alt": "Zayer pantalla técnica",
+    "alt": "Pantalla LED gigante integrada en la estructura del stand de Zayer",
     "categories": [
       "led",
       "tecnologia"
@@ -1660,7 +1660,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/bellota-ferroforma.avif",
     "full": "img/trabajos/trabajos_promueve/bellota-ferroforma.avif",
-    "alt": "Bellota Ferroforma",
+    "alt": "Construcción de stand a medida para la empresa de herramientas agrícolas Bellota en Ferroforma",
     "categories": [
       "feria",
       "carpinteria"
@@ -1679,7 +1679,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/biemh-16-tecnalia-1.avif",
     "full": "img/trabajos/trabajos_promueve/biemh-16-tecnalia-1.avif",
-    "alt": "Tecnalia BIEMH 2016",
+    "alt": "Stand corporativo enfocado en investigación tecnológica de Tecnalia para la BIEMH 2016",
     "categories": [
       "feria",
       "tecnologia"
@@ -1698,7 +1698,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/cabecera-proyecto-emo-milano-2021-2.avif",
     "full": "img/trabajos/trabajos_promueve/cabecera-proyecto-emo-milano-2021-2.avif",
-    "alt": "Zayer EMO Milano",
+    "alt": "Stand de diseño de alta gama para la exhibición de Zayer en EMO Milano",
     "categories": [
       "feria",
       "premium"
@@ -1717,7 +1717,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/evento-2014-fanuc-showroom-1.avif",
     "full": "img/trabajos/trabajos_promueve/evento-2014-fanuc-showroom-1.avif",
-    "alt": "Fanuc showroom corporativo",
+    "alt": "Showroom corporativo de robótica industrial diseñado a medida para Fanuc",
     "categories": [
       "showroom",
       "tecnologia"
@@ -1736,7 +1736,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/evento-2014-fanuc-showroom-2.avif",
     "full": "img/trabajos/trabajos_promueve/evento-2014-fanuc-showroom-2.avif",
-    "alt": "Fanuc showroom producción",
+    "alt": "Diseño de espacio expositivo y showroom industrial para maquinaria Fanuc",
     "categories": [
       "showroom",
       "tecnologia"
@@ -1755,7 +1755,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/mg-1225.avif",
     "full": "img/trabajos/trabajos_promueve/mg-1225.avif",
-    "alt": "Pescanova",
+    "alt": "Stand ferial de alimentación con diseño corporativo y áreas de degustación para Pescanova",
     "categories": [
       "alimentacion",
       "feria"
@@ -1774,7 +1774,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-2016-biemh-emuge-4.avif",
     "full": "img/trabajos/trabajos_promueve/stand-2016-biemh-emuge-4.avif",
-    "alt": "Emuge Franken BIEMH 2016",
+    "alt": "Stand con estructura de aluminio y elementos corporativos para Emuge Franken en BIEMH 2016",
     "categories": [
       "feria",
       "aluminio"
@@ -1793,7 +1793,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-2018-biemh-delteco-10.avif",
     "full": "img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif",
-    "alt": "Delteco BIEMH 2018",
+    "alt": "Gran stand ferial de carpintería y acabados lacados para Delteco en BIEMH 2018",
     "categories": [
       "feria",
       "carpinteria"
@@ -1812,7 +1812,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-cun-fitur3.avif",
     "full": "img/trabajos/trabajos_promueve/stand-cun-fitur3.avif",
-    "alt": "Clínica Universidad de Navarra FITUR",
+    "alt": "Stand de madera a medida para la Clínica Universidad de Navarra en FITUR",
     "categories": [
       "sanidad",
       "madera"
@@ -1831,7 +1831,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-emuge-biemh-2022.avif",
     "full": "img/trabajos/trabajos_promueve/stand-emuge-biemh-2022.avif",
-    "alt": "Emuge Franken BIEMH 2022",
+    "alt": "Diseño de stand de perfilería de aluminio y zonas de reunión de Emuge Franken en BIEMH 2022",
     "categories": [
       "feria",
       "aluminio"
@@ -1850,7 +1850,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/STANDS_2017_EMO_HANNOVER_ZAYER_1.avif",
     "full": "img/trabajos/trabajos_promueve/STANDS_2017_EMO_HANNOVER_ZAYER_1.avif",
-    "alt": "Zayer EMO Hannover 2017",
+    "alt": "Stand premium de gran escala para la demostración de maquinaria Zayer en EMO Hannover 2017",
     "categories": [
       "feria",
       "premium"
@@ -1869,7 +1869,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/stands-2014-biemh-bilbao-zayer-17.avif",
     "full": "img/trabajos/trabajos_promueve/stands-2014-biemh-bilbao-zayer-17.avif",
-    "alt": "Zayer BIEMH Bilbao 2014",
+    "alt": "Montaje de stand a medida en carpintería de madera para Zayer en BIEMH Bilbao 2014",
     "categories": [
       "feria",
       "carpinteria"
@@ -1888,7 +1888,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/stands-2014-biemh-bilbao-zayer-20.avif",
     "full": "img/trabajos/trabajos_promueve/stands-2014-biemh-bilbao-zayer-20.avif",
-    "alt": "Zayer BIEMH Bilbao",
+    "alt": "Construcción de stand corporativo con acabados limpios para Zayer en BIEMH Bilbao",
     "categories": [
       "feria",
       "carpinteria"
@@ -1907,7 +1907,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/stands-pescanova.avif",
     "full": "img/trabajos/trabajos_promueve/stands-pescanova.avif",
-    "alt": "Pescanova exposición",
+    "alt": "Zona de exposición y mostrador de atención al público en el stand de Pescanova",
     "categories": [
       "alimentacion"
     ],

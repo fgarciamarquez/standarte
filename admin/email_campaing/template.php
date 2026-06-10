@@ -23,9 +23,13 @@ function campaign_text($category, $lang, $key)
     return isset($category[$key]) ? $category[$key] : '';
 }
 
-function campaign_tracking_url($config)
+function campaign_tracking_url($config, $email = '')
 {
-    return rtrim($config['site_url'], '/') . '/email-track.php?from=email_campaing';
+    $url = rtrim($config['site_url'], '/') . '/email-track.php?from=email_campaing';
+    if ($email !== '') {
+        $url .= '&email=' . urlencode(base64_encode($email));
+    }
+    return $url;
 }
 
 function campaign_extract_company_from_email($email)
@@ -101,7 +105,7 @@ function campaign_process_placeholders($text, $companyName)
 function campaign_build_email($config, $category, $recipientEmail, $lang, $subject = '', $introOverride = '', $bodyOverride = '', $companyName = '')
 {
     $siteUrl = rtrim($config['site_url'], '/');
-    $landingUrl = campaign_tracking_url($config);
+    $landingUrl = campaign_tracking_url($config, $recipientEmail);
     $logoUrl = $siteUrl . '/img/logo_stand-arte_negro.svg';
     $phone = campaign_escape($config['phone']);
     $email = campaign_escape($recipientEmail);
@@ -170,7 +174,7 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
     $imageHtml = '';
     $imagesList = $category['images'];
     shuffle($imagesList);
-    $selectedImages = array_slice($imagesList, 0, 2);
+    $selectedImages = array_slice($imagesList, 0, 1);
     foreach ($selectedImages as $image) {
         $imageHtml .= '<a href="' . campaign_escape($landingUrl) . '" style="display:block;text-decoration:none;border:0;margin:0 0 22px 0;">';
         $imageHtml .= '<img src="' . campaign_escape(campaign_absolute_url($config, $image['src'])) . '" width="680" alt="' . campaign_escape($image['alt']) . '" style="display:block;width:100%;max-width:680px;height:auto;border:0;margin:0 auto;" />';
@@ -209,8 +213,8 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
           </tr>
           <tr>
             <td align="center" style="padding:4px 34px 30px;">
-              <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#333;text-align:center;">' . htmlspecialchars($emailBody, ENT_NOQUOTES, 'UTF-8') . '</p>
-              <a href="' . campaign_escape($landingUrl) . '" style="display:inline-block;background:#ffc800;color:#000000;text-decoration:none;border-radius:30px;padding:12px 28px;font-weight:bold;font-size:13px;letter-spacing:.04em;text-transform:uppercase;">' . campaign_escape($emailCta) . '</a>
+              ' . ($emailBody !== '' && $emailBody !== ' ' ? '<p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#333;text-align:center;">' . htmlspecialchars($emailBody, ENT_NOQUOTES, 'UTF-8') . '</p>' : '') . '
+              <a href="' . campaign_escape($landingUrl) . '" style="display:inline-block;background:#ffc800;color:#000000;text-decoration:none;border-radius:30px;border:none;padding:12px 28px;font-weight:bold;font-size:13px;letter-spacing:.04em;text-transform:uppercase;">' . campaign_escape($emailCta) . '</a>
               <p style="margin:24px 0 0;font-size:22px;line-height:1.35;color:#111;font-weight:bold;text-align:center;">' . $phone . '</p>
               ' . $unsubscribeHtml . '
             </td>

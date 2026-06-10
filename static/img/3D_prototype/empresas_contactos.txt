@@ -947,7 +947,7 @@ EMPRESA: MN
 
 EMPRESA: MOVORA
   Web:        https://movora.com/
-  Email:      europesales@movora.com, korrie.wilhelm@movora.com
+  Email:      korrie.wilhelm@movora.com
   Confianza:  alto
   Notas:      Sector: Medtech veterinario. Email encontrado en la página de contacto de la web oficial de Movora EU.
   Imágenes (10):

@@ -74,14 +74,14 @@ function campaign_get_email_clicks()
     ]);
     $header = curl_exec($chCount);
     $count = 0;
-    if (preg_match('/Content-Range: [0-9]+-[0-9]+\/([0-9]+)/', $header, $matches)) {
+    if (preg_match('/Content-Range: [0-9]+-[0-9]+\/([0-9]+)/i', $header, $matches)) {
         $count = (int)$matches[1];
     }
     curl_close($chCount);
 
-    // Get history (latest 50)
+    // Get history (latest 200) to allow proper grouping and bot filtering
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,created_at&order=created_at.desc&limit=50');
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,clicked_at,ip,user_agent&order=clicked_at.desc&limit=200');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -267,7 +267,64 @@ if (!$previewHtml && isset($config['categories'][$selectedCategory])) {
 
 $clicksData = campaign_get_email_clicks();
 $totalEmailVisits = $clicksData['total'];
-$clicksHistory = $clicksData['history'];
+$rawHistory = $clicksData['history'];
+
+$processedClicks = array();
+$groupedByEmail = array();
+foreach ($rawHistory as $click) {
+    $email = $click['email'];
+    if (!isset($groupedByEmail[$email])) {
+        $groupedByEmail[$email] = array();
+    }
+    $groupedByEmail[$email][] = $click;
+}
+
+foreach ($groupedByEmail as $email => $clicks) {
+    $isBot = false;
+    
+    // Check user agent for obvious bots
+    foreach ($clicks as $c) {
+        $ua = strtolower(isset($c['user_agent']) ? $c['user_agent'] : '');
+        if (preg_match('/(bot|crawl|spider|slurp|facebook|whatsapp|telegram|twitter|linkedin|preview|headless|phantom|curl|wget)/i', $ua)) {
+            $isBot = true;
+            break;
+        }
+    }
+    
+    // Heuristic: If there are multiple clicks within a very short timeframe from different IPs, it's a security bot
+    if (!$isBot && count($clicks) >= 2) {
+        $ips = array();
+        $minTime = PHP_INT_MAX;
+        $maxTime = 0;
+        foreach ($clicks as $c) {
+            $time = strtotime($c['clicked_at']);
+            if (!empty($c['ip'])) {
+                $ips[$c['ip']] = true;
+            }
+            if ($time < $minTime) $minTime = $time;
+            if ($time > $maxTime) $maxTime = $time;
+        }
+        
+        // If span is < 5 mins and multiple IPs are involved, it's an email scanner.
+        if (($maxTime - $minTime) < 300 && count($ips) >= 2) {
+            $isBot = true;
+        }
+    }
+    
+    if (!$isBot) {
+        $processedClicks[] = array(
+            'email' => $email,
+            'count' => count($clicks),
+            'last_click' => $clicks[0]['clicked_at'] // Most recent click
+        );
+    }
+}
+
+// Ensure the processed clicks are ordered by last_click descending
+usort($processedClicks, function($a, $b) {
+    return strtotime($b['last_click']) - strtotime($a['last_click']);
+});
+
 $sendLog = campaign_get_send_log();
 $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host']) && !empty($config['smtp']['username']) && !empty($config['smtp']['password']);
 
@@ -289,10 +346,14 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
     .stats { background:#ffffff; border:1px solid #e1e4e8; border-left: 4px solid #ffc800; margin:0 0 18px; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .stats strong { display:block; font-size:2rem; line-height:1; margin:.35rem 0; color:#b89400; }
     .stats span { color:#666666; display:block; font-size:.9rem; line-height:1.45; }
-    .send-log { background:#ffffff; border:1px solid #e1e4e8; margin:18px 0 0; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-    .send-log h2 { font-size:1rem; margin:0 0 .75rem; color:#111111; }
-    .send-log p { border-top:1px solid #e1e4e8; color:#555555; font-size:.82rem; line-height:1.4; margin:0; padding:.55rem 0; }
-    .send-log b { color:#111111; }
+    details.send-log { background:#ffffff; border:1px solid #e1e4e8; margin:18px 0 0; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    details.send-log summary { cursor: pointer; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+    details.send-log summary::-webkit-details-marker { display: none; }
+    details.send-log h2 { font-size:1rem; margin:0; color:#111111; display: inline; }
+    details.send-log p { border-top:1px solid #e1e4e8; color:#555555; font-size:.82rem; line-height:1.4; margin:0; padding:.55rem 0; }
+    details.send-log b { color:#111111; }
+    details.send-log .details-icon { font-size: 0.8rem; color: #888; transition: transform 0.2s ease; }
+    details.send-log[open] .details-icon { transform: rotate(180deg); }
     .smtp-status { background:#ffffff; border:1px solid #e1e4e8; margin:0 0 18px; padding:18px 22px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .smtp-status b { display:block; margin:0 0 .35rem; }
     .smtp-status span { color:#666666; display:block; font-size:.9rem; line-height:1.45; }
@@ -312,6 +373,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
     iframe { background:#fff; border:1px solid #e1e4e8; height:780px; width:100%; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .hint { color:#666666; font-size:.85rem; line-height:1.45; }
     .preview-subject { background:#f5f6f8; border-left:4px solid #ffc800; color:#333333; font-size:.9rem; line-height:1.45; margin:0 0 1rem; padding:.75rem .9rem; border-radius: 4px; border: 1px solid #e1e4e8; border-left-width: 4px; }
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
     @media (max-width: 950px) { main { grid-template-columns:1fr; } }
   </style>
 </head>
@@ -325,7 +387,6 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
       <div class="stats">
         <span>Visitas totales desde correos multimedia</span>
         <strong><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
-        <span>Contador acumulado desde enlaces en correos.</span>
       </div>
       <div class="smtp-status <?php echo $smtpReady ? 'smtp-ok' : 'smtp-warning'; ?>">
         <b><?php echo $smtpReady ? 'SMTP autenticado activo' : 'SMTP pendiente de contraseña'; ?></b>
@@ -362,8 +423,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         <input type="hidden" id="email_body" name="email_body" value="">
         
         <div style="background:#e0f2fe; border-left:4px solid #0ea5e9; color:#0369a1; padding:12px 16px; border-radius:4px; margin-bottom: 1.25rem; font-size: 0.9rem;">
-            <strong>Modo Multilingüe Automático Activado</strong><br>
-            El sistema detectará el país de cada destinatario según la extensión de su correo (.es, .de, .it...) y traducirá el asunto y los textos automáticamente usando la plantilla base. No necesitas configurar nada más.
+            <strong>Modo Multilingüe Automático Activado</strong>
         </div>
 
         <button class="secondary" type="submit" formnovalidate onclick="document.getElementById('campaign-action').value='preview';">Previsualizar imágenes aleatorias</button>
@@ -379,32 +439,64 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           <p id="batch_progress_log" style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #888; white-space: pre-wrap; font-family: monospace;"></p>
         </div>
       </form>
-      <div class="send-log">
-        <h2>Últimos accesos desde el correo</h2>
-        <?php if (!$clicksHistory): ?>
-          <p style="font-size:0.85rem;color:#888;">Nadie ha hecho clic en los correos todavía.</p>
-        <?php endif; ?>
-        <?php foreach ($clicksHistory as $click): ?>
-          <p>
-            <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
-            <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['created_at']))); ?></span>
-          </p>
-        <?php endforeach; ?>
-      </div>
-      <div class="send-log">
-        <h2>Registro de envíos locales</h2>
-        <?php if (!$sendLog): ?>
-          <p style="font-size:0.85rem;color:#888;">No hay envíos registrados todavía.</p>
-        <?php endif; ?>
-        <?php foreach ($sendLog as $entry): ?>
-          <p>
-            <b><?php echo !empty($entry['accepted']) ? 'Aceptado por ' . campaign_escape(isset($entry['method']) ? $entry['method'] : 'PHP') : 'Error'; ?></b><br>
-            <?php echo campaign_escape($entry['date']); ?> · <?php echo campaign_escape($entry['to']); ?>
-            <?php if (!empty($entry['subject'])): ?><br>Asunto: <?php echo campaign_escape($entry['subject']); ?><?php endif; ?>
-            <?php if (empty($entry['accepted']) && !empty($entry['error'])): ?><br><span style="color:#ff8888;"><?php echo campaign_escape($entry['error']); ?></span><?php endif; ?>
-          </p>
-        <?php endforeach; ?>
-      </div>
+      <details class="send-log">
+        <summary>
+          <h2>Últimos accesos desde el correo</h2>
+          <span class="details-icon">▼</span>
+        </summary>
+        <div style="margin-top: 10px;">
+          <?php if (!$processedClicks): ?>
+            <p style="font-size:0.85rem;color:#888;">Nadie ha hecho clic en los correos todavía.</p>
+          <?php endif; ?>
+          <?php foreach ($processedClicks as $click): ?>
+            <p>
+              <b><?php echo campaign_escape($click['email']); ?></b>
+              <?php if ($click['count'] > 1): ?>
+                  <span style="color:#666; font-size:0.9rem;">(<?php echo $click['count']; ?>)</span>
+              <?php endif; ?>
+              <br>
+              <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['last_click']))); ?></span>
+            </p>
+          <?php endforeach; ?>
+        </div>
+      </details>
+      <?php
+      $hasLogErrors = false;
+      if ($sendLog) {
+          foreach ($sendLog as $entry) {
+              if (empty($entry['accepted']) && !empty($entry['error'])) {
+                  $hasLogErrors = true;
+                  break;
+              }
+          }
+      }
+      ?>
+      <details class="send-log">
+        <summary>
+          <h2>Registro de envíos locales<?php if ($hasLogErrors): ?><span style="display:inline-block; width:8px; height:8px; background-color:#ef4444; border-radius:50%; margin-left:8px; animation:blink 1.5s infinite;" title="Hay errores en el registro"></span><?php endif; ?></h2>
+          <span class="details-icon">▼</span>
+        </summary>
+        <div style="margin-top: 10px;">
+          <?php if (!$sendLog): ?>
+            <p style="font-size:0.85rem;color:#888;">No hay envíos registrados todavía.</p>
+          <?php endif; ?>
+          <?php foreach ($sendLog as $entry): ?>
+            <p>
+              <b><?php echo !empty($entry['accepted']) ? 'Aceptado por ' . campaign_escape(isset($entry['method']) ? $entry['method'] : 'PHP') : 'Error'; ?></b><br>
+              <?php echo campaign_escape($entry['date']); ?> · <?php echo campaign_escape($entry['to']); ?>
+              <?php if (!empty($entry['subject'])): ?><br>Asunto: <?php echo campaign_escape($entry['subject']); ?><?php endif; ?>
+              <?php if (empty($entry['accepted']) && !empty($entry['error'])): ?>
+                <details style="margin-top: 6px;">
+                  <summary style="font-size:0.82rem; color:#b91c1c; cursor:pointer; user-select:none; outline:none; display:inline-block;">Ver error interno</summary>
+                  <div style="margin-top:4px; padding:6px 8px; background:#fdf2f2; border-left:3px solid #f87171; font-size:0.8rem; color:#b91c1c; border-radius:0 4px 4px 0;">
+                    <?php echo campaign_escape($entry['error']); ?>
+                  </div>
+                </details>
+              <?php endif; ?>
+            </p>
+          <?php endforeach; ?>
+        </div>
+      </details>
     </section>
     <section class="preview">
       <h2 style="color:#ffc800;margin-top:0;">Previsualización en vivo</h2>
@@ -549,7 +641,18 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         .then(function (res) { return res.json(); })
         .then(function (data) {
           if (data.status === 'success' && data.groups && data.groups.length > 0) {
+            var currentCity = '';
+            var currentOptgroup = null;
+            
             data.groups.forEach(function (g) {
+              var city = g.city || 'Otros';
+              if (city !== currentCity) {
+                currentCity = city;
+                currentOptgroup = document.createElement('optgroup');
+                currentOptgroup.label = currentCity;
+                groupSelect.appendChild(currentOptgroup);
+              }
+              
               var opt = document.createElement('option');
               opt.value = g.name;
               var total = g.leads_with_email || 0;
@@ -561,7 +664,12 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
               if (unsub > 0) text += ' - ❗' + unsub + ' bajas';
               opt.textContent = text;
               opt.dataset.unsub = unsub;
-              groupSelect.appendChild(opt);
+              
+              if (currentOptgroup) {
+                currentOptgroup.appendChild(opt);
+              } else {
+                groupSelect.appendChild(opt);
+              }
             });
           }
         })

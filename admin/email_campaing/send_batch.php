@@ -1,9 +1,8 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-require_once 'config.php';
+$config = require_once 'config.php';
 require_once 'template.php';
 require_once 'mailer.php';
-require_once 'leads.php'; // Required for company name resolution
 
 // Permitir peticiones POST solamente
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -129,6 +128,12 @@ foreach ($recipients as $email) {
 
     if (campaign_send_mail($config, $email, $processedSubject, $emailHtml)) {
         $sentEmails[] = $email;
+        if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+            campaign_supabase_request('PATCH', 'contacts?email=eq.' . urlencode($email), array(
+                'drip_sent' => true,
+                'updated_at' => date('c')
+            ));
+        }
     } else {
         $failedEmails[] = $email;
     }

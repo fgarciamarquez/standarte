@@ -5,7 +5,8 @@
       if (function_exists('mb_encode_mimeheader')) {
         $message_subject = mb_encode_mimeheader($message_subject, 'UTF-8');
       }
-      $to_email = $messageDetails["to_email"];
+      $to_email = $messageDetails["to_email"] ?? "javier@standarte.es";
+      $cc_email = $messageDetails["cc_email"] ?? null;
       $from_name = $messageDetails["from_name"] ?? "Standarte";
       $from_email = $messageDetails["from_email"] ?? "javier@standarte.es";
       $reply_to_name = $messageDetails["reply_to_name"] ?? $from_name;
@@ -15,7 +16,9 @@
       $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
       $headers .= "From: ".$from_name." <".$from_email.">"."\r\n";
       $headers .= "Reply-To: ".$reply_to_name." <".$reply_to_email.">"."\r\n";
-      $headers .= "CC: javier@standarte.es\r\n";
+      if ($cc_email) {
+          $headers .= "CC: ".$cc_email."\r\n";
+      }
 
       mail($to_email, $message_subject, $message_body, $headers);
     }

@@ -233,7 +233,7 @@
     ];
 
     const organization = {
-      '@type': 'Organization',
+      '@type': 'LocalBusiness',
       '@id': `${baseUrl}/#organization`,
       name: 'Standarte',
       url: `${baseUrl}/`,
@@ -242,6 +242,11 @@
       email: 'info@standarte.es',
       telephone: '+34637894819',
       priceRange: '$$$',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '158'
+      },
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Av. de Castilla 2',
@@ -600,6 +605,7 @@
       <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
     {/each}
   {/if}
+  {@html structuredDataScript}
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} on:scroll={updateScrollState} />
@@ -1047,8 +1053,6 @@
 {/if}
 
 <CookieConsent {lang} />
-
-{@html `<script type="application/ld+json">${structuredData.replace(/</g, '\\u003c')}</script>`}
 
 <style>
   .nav-badge-new {

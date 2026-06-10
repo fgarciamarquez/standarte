@@ -128,6 +128,12 @@ foreach ($recipients as $email) {
 
     if (campaign_send_mail($config, $email, $processedSubject, $emailHtml)) {
         $sentEmails[] = $email;
+        if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+            campaign_supabase_request('PATCH', 'contacts?email=eq.' . urlencode($email), array(
+                'drip_sent' => true,
+                'updated_at' => date('c')
+            ));
+        }
     } else {
         $failedEmails[] = $email;
     }
