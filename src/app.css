@@ -195,7 +195,7 @@ p {
 
 .lang-menu > div {
   position: absolute;
-  top: 67px;
+  top: 90%;
   right: 0;
   display: none;
   min-width: 170px;
