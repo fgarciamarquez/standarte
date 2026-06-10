@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const urlParser = require('url');
+const { validateEmailDns } = require('./email_dns_validator.cjs');
+
 
 // --- CONFIGURACIÓN ---
 const CONFIG = {
@@ -201,21 +203,26 @@ async function main() {
             console.log(`  🏆 Ganador: ${winner} (Puntos: ${score})`);
             
             if (score > -100) { // No subir basura severa
-                try {
-                    await axios.post(`${supaConfig.url}/rest/v1/contacts`, {
-                        email: winner,
-                        empresa: companyName,
-                        feria: groupName,
-                        lead_group: groupName,
-                        website: website,
-                        lead_source: 'Raw List Harvester',
-                        status: 'active',
-                        updated_at: new Date().toISOString()
-                    }, { headers });
-                    console.log(`  💾 Guardado en Supabase.`);
-                    successCount++;
-                } catch(e) {
-                    console.log(`  ⚠ Error guardando en DB: ${e.response ? e.response.data.message : e.message}`);
+                const dnsVal = await validateEmailDns(winner);
+                if (dnsVal.valid) {
+                    try {
+                        await axios.post(`${supaConfig.url}/rest/v1/contacts`, {
+                            email: winner,
+                            empresa: companyName,
+                            feria: groupName,
+                            lead_group: groupName,
+                            website: website,
+                            lead_source: 'Raw List Harvester',
+                            status: 'active',
+                            updated_at: new Date().toISOString()
+                        }, { headers });
+                        console.log(`  💾 Guardado en Supabase.`);
+                        successCount++;
+                    } catch(e) {
+                        console.log(`  ⚠ Error guardando en DB: ${e.response ? e.response.data.message : e.message}`);
+                    }
+                } else {
+                    console.log(`  ❌ DNS check failed for ${winner}: ${dnsVal.reason}. Omitiendo.`);
                 }
             } else {
                 console.log(`  🚫 El correo ganador tiene puntuación muy negativa (${score}). Descartado.`);

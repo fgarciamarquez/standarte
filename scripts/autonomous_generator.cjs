@@ -250,6 +250,13 @@ async function run() {
     }
     console.log(`-> Cargados ${newsData.length} artículos de noticias existentes.`);
 
+    // Comprobar si ya existe alguna noticia para el día de hoy
+    const currentDate = new Date().toISOString().split('T')[0];
+    if (newsData.some(art => art.date === currentDate)) {
+      console.log(`-> Ya se ha recopilado o generado una noticia para el día de hoy (${currentDate}). Omitiendo recopilación diaria para evitar saturación de contenido.`);
+      return;
+    }
+
     // 2. Rotar ciudad basándose en el día del año y buscar noticias disponibles
     const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
     
