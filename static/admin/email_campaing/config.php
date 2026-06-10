@@ -49,7 +49,7 @@ return array(
             'headline' => 'Con nosotros {EMPRESA} será el centro de todas las miradas',
             'intro' => 'En un pabellón saturado de ruido visual, la mayoría de los stands pasan desapercibidos. En Standarte, diseñamos y fabricamos stands basados en la psicología de la atención dirigidos a proyectar una imagen diferenciadora y equilibrada.',
             'body' => '',
-            'cta' => 'PRESUPUESTO EN 24 H',
+            'cta' => 'Presupuesto en 24 h',
             'translations' => array(
                 'en' => array(
                     'subject' => 'Hello {EMPRESA}. We offer you a distinctive stand and a quote in 24 H.',
@@ -57,7 +57,7 @@ return array(
                     'headline' => 'With us, {EMPRESA} will be the center of attention',
                     'intro' => 'Let\'s be honest: in an exhibition hall filled with visual noise, most stands are completely ignored. For {EMPRESA}, we design and build bespoke stands that project maximum quality, brand authority, and visual balance.',
                     'body' => '',
-                    'cta' => 'QUOTE IN 24 H'
+                    'cta' => 'Quote in 24 h'
                 ),
                 'de' => array(
                     'subject' => 'Hallo {EMPRESA}. Wir bieten Ihnen einen einzigartigen Messestand und ein Angebot in 24 H.',
@@ -65,7 +65,7 @@ return array(
                     'headline' => 'Mit uns wird {EMPRESA} im Mittelpunkt aller Blicke stehen',
                     'intro' => 'Seien wir ehrlich: In einer Messehalle voller visuellem Lärm gehen die meisten Stände unter. Für {EMPRESA} entwerfen und fertigen wir exklusive Messestände, die Qualität, Stärke und optische Balance ausstrahlen.',
                     'body' => '',
-                    'cta' => 'ANGEBOT IN 24 H'
+                    'cta' => 'Angebot in 24 h'
                 ),
                 'pt' => array(
                     'subject' => 'Olá {EMPRESA}. Oferecemos-lhe um stand diferenciado e um orçamento em 24 H.',
@@ -73,7 +73,7 @@ return array(
                     'headline' => 'Conosco, {EMPRESA} será o centro de todos os olhares',
                     'intro' => 'Sejamos realistas: num pavilhão cheio de ruído visual, a maioria dos stands passa despercebida. Para {EMPRESA}, projetamos e fabricamos stands sob medida que transmitem máxima qualidade e solidez diferenciada.',
                     'body' => '',
-                    'cta' => 'ORÇAMENTO EM 24 H'
+                    'cta' => 'Orçamento em 24 h'
                 ),
                 'zh' => array(
                     'subject' => '您好 {EMPRESA}。我们为您提供与众不同的展台和24小时内的报价。',
