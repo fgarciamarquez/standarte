@@ -311,7 +311,7 @@
   <nav class="nav" class:scrolled={isScrolled || menuOpen}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
-      <div class="lang-menu">
+      <div class="lang-menu lang-menu-mobile">
         <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
@@ -335,6 +335,22 @@
       <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
+      <div class="lang-menu lang-menu-desktop">
+        <span><FlagIcon langCode={lang} size={20} /></span>
+        <div>
+          {#each languages as option}
+            <button
+              type="button"
+              class:active={option === lang}
+              on:click={() => switchLanguage(option)}
+              style="display: flex; align-items: center; gap: 8px;"
+            >
+              <FlagIcon langCode={option} size={16} />
+              <span>{languageLabels[option]}</span>
+            </button>
+          {/each}
+        </div>
+      </div>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>

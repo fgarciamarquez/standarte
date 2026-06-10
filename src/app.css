@@ -211,23 +211,36 @@ p {
   display: block;
 }
 
-.lang-menu a {
-  display: block;
+.lang-menu a,
+.lang-menu button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   width: 100%;
   padding: 8px 16px;
   color: #333;
+  background: transparent;
+  border: 0;
   font-size: 16px;
   line-height: 1.25;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
 }
 
 .lang-menu a:hover,
 .lang-menu a:focus,
-.lang-menu a.active {
+.lang-menu button:hover,
+.lang-menu button:focus,
+.lang-menu a.active,
+.lang-menu button.active {
   color: #333;
   background: #f8f9fa;
+  outline: none;
 }
 
-.lang-menu a.active {
+.lang-menu a.active,
+.lang-menu button.active {
   border-left: 3px solid var(--gold);
   padding-left: 13px;
 }
@@ -2696,6 +2709,23 @@ footer {
   }
   .seo-article {
     padding: 25px 20px;
+  }
+}
+
+/* Responsive visibility helper classes for Lang Menu */
+.lang-menu-desktop {
+  display: inline-block;
+}
+.lang-menu-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .lang-menu-desktop {
+    display: none !important;
+  }
+  .lang-menu-mobile {
+    display: inline-block;
   }
 }
 

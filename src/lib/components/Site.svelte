@@ -615,7 +615,7 @@
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
-      <div class="lang-menu">
+      <div class="lang-menu lang-menu-mobile">
         <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
@@ -648,6 +648,26 @@
       </a>
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      <div class="lang-menu lang-menu-desktop">
+        <span><FlagIcon langCode={lang} size={20} /></span>
+        <div>
+          {#each languages as option}
+            <a
+              href={pathFor(option, section)}
+              class:active={lang === option}
+              on:click={() => {
+                if (typeof localStorage !== 'undefined') {
+                  localStorage.setItem('preferredLanguage', option);
+                }
+              }}
+              style="display: flex; align-items: center; gap: 8px;"
+            >
+              <FlagIcon langCode={option} size={16} />
+              <span>{languageLabels[option]}</span>
+            </a>
+          {/each}
+        </div>
+      </div>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
