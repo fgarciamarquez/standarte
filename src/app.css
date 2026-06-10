@@ -183,6 +183,12 @@ p {
   color: #b89400;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
 .lang-menu {
   position: relative;
 }
@@ -1771,8 +1777,7 @@ footer {
     display: block;
   }
 
-  .nav-links button,
-  .lang-menu > span {
+  .nav-links button {
     display: block;
     width: 100%;
     min-height: 34px;
@@ -1787,17 +1792,27 @@ footer {
   .nav-links button:hover,
   .nav-links button:focus,
   .nav-links > a:hover,
-  .nav-links > a:focus,
-  .lang-menu:hover > span {
+  .nav-links > a:focus {
     color: gold;
     background: #f8f9fa;
   }
 
-  .lang-menu > div {
-    position: static;
-    display: block;
-    box-shadow: none;
-    padding-left: 18px;
+  .nav-right {
+    margin-top: 14px;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lang-menu > span {
+    margin: 0;
+    padding: 0 12px;
+    min-height: 40px;
+    line-height: 40px;
+    color: #fff;
+  }
+
+  .nav.scrolled .lang-menu > span {
+    color: #111;
   }
 
   .hero {

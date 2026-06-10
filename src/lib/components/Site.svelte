@@ -614,17 +614,7 @@
 <header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services'}>
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
-    <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
-    <div class:open={menuOpen} class="nav-links">
-      <a href={pathFor(lang, 'services')} on:click={(e) => handleNavClick(e, 'services')}>{copy.nav.services}</a>
-      {#if modularEnabled}
-        <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
-      {/if}
-      <a href={pathFor(lang, 'luzpavilion')} on:click={(e) => handleNavClick(e, 'micro-stand')}>
-        LuzPavilion <span class="nav-badge-new">New</span>
-      </a>
-      <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
-      <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+    <div class="nav-right">
       <div class="lang-menu">
         <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
@@ -645,6 +635,19 @@
           {/each}
         </div>
       </div>
+      <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
+    </div>
+
+    <div class:open={menuOpen} class="nav-links">
+      <a href={pathFor(lang, 'services')} on:click={(e) => handleNavClick(e, 'services')}>{copy.nav.services}</a>
+      {#if modularEnabled}
+        <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
+      {/if}
+      <a href={pathFor(lang, 'luzpavilion')} on:click={(e) => handleNavClick(e, 'micro-stand')}>
+        LuzPavilion
+      </a>
+      <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
+      <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>

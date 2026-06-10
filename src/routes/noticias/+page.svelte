@@ -255,12 +255,7 @@
 <header class="site-header noticias-header">
   <nav class="nav" class:scrolled={isScrolled || menuOpen}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
-    <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
-    <div class:open={menuOpen} class="nav-links">
-      <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
-      <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
-      <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
-      <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
+    <div class="nav-right">
       <div class="lang-menu">
         <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
@@ -281,6 +276,14 @@
           {/each}
         </div>
       </div>
+      <button class="menu-toggle" type="button" aria-label="Menu" on:click={() => (menuOpen = !menuOpen)}>☰</button>
+    </div>
+
+    <div class:open={menuOpen} class="nav-links">
+      <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
+      <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
+      <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
+      <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
