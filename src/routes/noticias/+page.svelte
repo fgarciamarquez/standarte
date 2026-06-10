@@ -262,7 +262,7 @@
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <div class="lang-menu">
-        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -273,8 +273,10 @@
                   localStorage.setItem('preferredLanguage', option);
                 }
               }}
+              style="display: flex; align-items: center; gap: 8px;"
             >
-              {languageLabels[option]}
+              <FlagIcon langCode={option} size={16} />
+              <span>{languageLabels[option]}</span>
             </a>
           {/each}
         </div>
@@ -420,7 +422,7 @@
   }
 
   .hero-contents .eyebrow {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -472,7 +474,7 @@
     border: 1px solid #ddd;
     padding: 10px 24px;
     border-radius: 30px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     color: #555;
@@ -552,7 +554,7 @@
     right: 15px;
     background-color: var(--gold);
     color: #111;
-    font-size: 11px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -571,7 +573,7 @@
   .news-card-meta {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: 16px;
     color: #777;
     margin-bottom: 12px;
   }
@@ -593,7 +595,7 @@
   }
 
   .news-excerpt {
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.6;
     color: #555;
     margin: 0 0 24px 0;
@@ -607,7 +609,7 @@
 
   .read-more-btn {
     color: #b89400;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -638,7 +640,7 @@
     border: 0;
     padding: 8px 16px;
     text-align: left;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     color: #333;
     transition: background 0.2s ease;
@@ -660,7 +662,7 @@
     }
 
     .hero-lead {
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .news-grid-section {

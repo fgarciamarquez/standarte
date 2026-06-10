@@ -2,6 +2,7 @@
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels } from '$lib/siteData.js';
   import ContactForm from './ContactForm.svelte';
+  import FlagIcon from './FlagIcon.svelte';
 
   
   const languageLocales = {
@@ -306,7 +307,7 @@
       <a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu">
-        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -317,8 +318,10 @@
                   localStorage.setItem('preferredLanguage', option);
                 }
               }}
+              style="display: flex; align-items: center; gap: 8px;"
             >
-              {languageLabels[option]}
+              <FlagIcon langCode={option} size={16} />
+              <span>{languageLabels[option]}</span>
             </a>
           {/each}
         </div>

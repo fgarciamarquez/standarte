@@ -192,7 +192,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
         }
 
         .header-title {
-            font-size: 14px;
+            font-size: 16px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--color-primary);
@@ -202,7 +202,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
         .logout-link {
             color: var(--color-text-muted);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 16px;
             transition: color 0.3s;
         }
 
@@ -234,7 +234,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
 
         label {
             display: block;
-            font-size: 13px;
+            font-size: 16px;
             color: var(--color-text-muted);
             margin-bottom: 8px;
             text-transform: uppercase;
@@ -250,7 +250,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
             color: var(--color-text);
             padding: 12px 16px;
             font-family: 'Outfit', sans-serif;
-            font-size: 15px;
+            font-size: 16px;
             transition: border-color 0.3s;
         }
 
@@ -263,7 +263,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
             resize: vertical;
             min-height: 180px;
             font-family: monospace;
-            font-size: 13px;
+            font-size: 16px;
         }
 
         .btn {
@@ -273,7 +273,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
             color: #000000;
             border: none;
             padding: 14px 20px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
@@ -313,7 +313,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
             padding: 15px 20px;
             border-radius: 8px;
             margin-bottom: 25px;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.5;
         }
 
@@ -340,7 +340,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
         }
 
         .result-box-title {
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -353,14 +353,14 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
             background-color: var(--color-border);
             padding: 2px 8px;
             border-radius: 10px;
-            font-size: 10px;
+            font-size: 16px;
         }
 
         .result-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 13px;
+            font-size: 16px;
         }
 
         .result-list li {
@@ -385,7 +385,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
             text-decoration: none;
             border-bottom: 2px solid transparent;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -396,7 +396,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
         }
 
         .desc-p {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--color-text-muted);
             margin-top: 0;
             margin-bottom: 25px;
@@ -439,10 +439,10 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
             <!-- Formulario de Acceso -->
             <div class="login-card">
                 <h2 style="border-bottom: none; margin-bottom: 10px;">Acceso Administrador</h2>
-                <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 30px;">Introduce la clave del gestor de Standarte para depurar correos fallidos.</p>
+                <p style="font-size: 16px; color: var(--color-text-muted); margin-bottom: 30px;">Introduce la clave del gestor de Standarte para depurar correos fallidos.</p>
                 
                 <?php if (isset($loginError)): ?>
-                    <p style="color: var(--color-error); font-size: 14px; font-weight: bold; margin-bottom: 15px;"><?php echo $loginError; ?></p>
+                    <p style="color: var(--color-error); font-size: 16px; font-weight: bold; margin-bottom: 15px;"><?php echo $loginError; ?></p>
                 <?php endif; ?>
 
                 <form method="POST">
@@ -497,7 +497,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
                                 <span class="count-badge"><?php echo count($bouncedEmailsList); ?></span>
                             </div>
                             <?php if (empty($bouncedEmailsList)): ?>
-                                <p style="font-size:12px; color:var(--color-text-muted);">Ninguno en esta sesión.</p>
+                                <p style="font-size: 16px; color:var(--color-text-muted);">Ninguno en esta sesión.</p>
                             <?php else: ?>
                                 <ul class="result-list">
                                     <?php foreach ($bouncedEmailsList as $mail): ?>
@@ -514,7 +514,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
                                 <span class="count-badge"><?php echo count($alreadyBouncedList); ?></span>
                             </div>
                             <?php if (empty($alreadyBouncedList)): ?>
-                                <p style="font-size:12px; color:var(--color-text-muted);">Ninguno en esta sesión.</p>
+                                <p style="font-size: 16px; color:var(--color-text-muted);">Ninguno en esta sesión.</p>
                             <?php else: ?>
                                 <ul class="result-list">
                                     <?php foreach ($alreadyBouncedList as $mail): ?>
@@ -531,7 +531,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
                                 <span class="count-badge"><?php echo count($notFoundEmailsList); ?></span>
                             </div>
                             <?php if (empty($notFoundEmailsList)): ?>
-                                <p style="font-size:12px; color:var(--color-text-muted);">Ninguno en esta sesión.</p>
+                                <p style="font-size: 16px; color:var(--color-text-muted);">Ninguno en esta sesión.</p>
                             <?php else: ?>
                                 <ul class="result-list">
                                     <?php foreach ($notFoundEmailsList as $mail): ?>
@@ -556,10 +556,10 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                     </svg>
                     <h3 style="margin-top:0; margin-bottom:10px; font-size:16px;">Mapeo de Integración IMAP Listo</h3>
-                    <p style="font-size:13px; color:var(--color-text-muted); max-width:500px; margin:0 auto 20px;">
+                    <p style="font-size: 16px; color:var(--color-text-muted); max-width:500px; margin:0 auto 20px;">
                         Para activar la automatización mediante cron, edita el archivo `supabase-config.php` en el servidor y define los accesos IMAP (`IMAP_HOST`, `IMAP_USER` e `IMAP_PASS`). Una vez configurado, podrás ejecutar el script de recolección automática en segundo plano.
                     </p>
-                    <div style="font-size:12px; font-family:monospace; background-color:#050606; padding:15px; border-radius:6px; display:inline-block; border: 1px solid var(--color-border); text-align: left; color:#ffc800;">
+                    <div style="font-size: 16px; font-family:monospace; background-color:#050606; padding:15px; border-radius:6px; display:inline-block; border: 1px solid var(--color-border); text-align: left; color:#ffc800;">
                         // Define estas constantes en supabase-config.php:<br>
                         define('IMAP_HOST', 'ssl://imap.gmail.com'); // Servidor IMAP de Google Workspace / Gmail<br>
                         define('IMAP_PORT', 993); // Puerto seguro estándar<br>

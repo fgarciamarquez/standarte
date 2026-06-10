@@ -102,7 +102,7 @@
   .form-label {
     display: block;
     font-family: Inconsolata, monospace;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -124,7 +124,7 @@
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     border-radius: 8px !important;
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-family: Inconsolata, monospace !important;
     transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
   }
@@ -156,7 +156,7 @@
     align-items: flex-start;
     gap: 10px;
     color: rgba(255, 255, 255, 0.85);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
   }
 
@@ -192,7 +192,7 @@
     border-radius: 30px !important;
     font-family: Glegoo, serif !important;
     font-weight: 700 !important;
-    font-size: 14px !important;
+    font-size: 16px !important;
     letter-spacing: 0.05em !important;
     cursor: pointer !important;
     box-shadow: 0 4px 12px rgba(255, 200, 0, 0.2) !important;

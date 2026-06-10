@@ -10,7 +10,7 @@
   font-family: 'Inconsolata', monospace;
   color: var(--text);
   background: #fff;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 * {
@@ -67,7 +67,7 @@ h5 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 26px;
 }
 
@@ -153,7 +153,7 @@ p {
   background: transparent;
   border: 0;
   border-radius: 30px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 40px;
   cursor: pointer;
   transition: all .3s ease-in-out;
@@ -210,7 +210,7 @@ p {
   width: 100%;
   padding: 8px 16px;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.25;
 }
 
@@ -296,7 +296,7 @@ footer > * {
   max-width: 900px;
   margin: 15px auto 0;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 26px;
   text-align: center;
@@ -468,7 +468,7 @@ footer > * {
 .city-grid p {
   margin: 0 0 10px;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 26px;
 }
 
@@ -700,7 +700,7 @@ article:hover .city-cover-image {
 }
 
 .city-grid p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.65;
 }
 
@@ -708,7 +708,7 @@ article:hover .city-cover-image {
   display: inline-block;
   margin-top: 6px;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -826,7 +826,7 @@ article:hover .city-cover-image {
 .lisbon-fair-copy small {
   color: #1b1b1b;
   font-family: 'Inconsolata', monospace;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1;
 }
@@ -863,7 +863,7 @@ article:hover .city-cover-image {
   border: 1px solid #ddd;
   border-radius: 30px;
   font-family: 'Inconsolata', monospace;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 20px;
   text-transform: uppercase;
@@ -1004,7 +1004,7 @@ article:hover .city-cover-image {
   display: block;
   margin-bottom: 6px;
   color: var(--gold);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: .08em;
   line-height: 1.2;
@@ -1015,7 +1015,7 @@ article:hover .city-cover-image {
   max-width: 820px;
   margin: 0 auto;
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.45;
 }
 
@@ -1214,7 +1214,7 @@ article:hover .city-cover-image {
 .single-team .team-details p {
   margin: 0;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 26px;
 }
 
@@ -1295,7 +1295,7 @@ article:hover .city-cover-image {
   background: transparent;
   border: 14px solid #000;
   border-radius: 0;
-  font-size: 14px;
+  font-size: 16px;
   transition: all .3s;
 }
 
@@ -1321,7 +1321,7 @@ article:hover .city-cover-image {
   min-height: 26px;
   margin-bottom: 10px;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
 }
 
@@ -1506,7 +1506,7 @@ footer {
 .legal-modal-content p {
   margin: 0 0 14px;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.65;
 }
 
@@ -1541,13 +1541,13 @@ footer {
   margin: 0 0 12px;
   color: #f3f3f3;
   font-family: 'Inconsolata', monospace;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.65;
 }
 
 .cookie-consent-note {
   color: #dcdcdc !important;
-  font-size: 13px !important;
+  font-size: 16px !important;
 }
 
 .cookie-consent-note a {
@@ -1592,7 +1592,7 @@ footer {
   margin-bottom: 5px;
   color: var(--gold);
   font-family: 'Glegoo', serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 1.2;
@@ -1605,7 +1605,7 @@ footer {
   margin: 0;
   color: #e5e5e5;
   font-family: 'Inconsolata', monospace;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -1660,7 +1660,7 @@ footer {
   background: var(--gold);
   border-radius: 30px;
   font-family: 'Inconsolata', monospace;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -1681,7 +1681,7 @@ footer {
   border: 1px solid #fff;
   border-radius: 30px;
   font-family: 'Glegoo', serif;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 20px;
   cursor: pointer;
@@ -1852,11 +1852,11 @@ footer {
   }
 
   .lisbon-fair-copy strong {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .lisbon-fair-copy small {
-    font-size: 10px;
+    font-size: 16px;
   }
 
   .service-grid article {
@@ -1872,7 +1872,7 @@ footer {
   }
 
   .counters .facts-item .fact-count h4 {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .micro-stage {
@@ -1980,11 +1980,11 @@ footer {
 
 .prototypes-carousel .section-header p {
   color: #e2e8f0 !important;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .eyebrow-dark {
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -2079,7 +2079,7 @@ footer {
 .view-btn-gold {
   color: #111;
   background-color: var(--gold);
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2103,7 +2103,7 @@ footer {
 }
 
 .carousel-caption .location {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--gold);
   font-weight: 700;
   text-transform: uppercase;
@@ -2189,7 +2189,7 @@ footer {
   padding: 0;
   color: gold !important;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 48px;
   cursor: pointer;
   background: transparent;
@@ -2240,7 +2240,7 @@ footer {
   color: #e5e5e5;
   background: transparent;
   border: 0;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.25;
   text-align: left;
   cursor: pointer;
@@ -2364,7 +2364,7 @@ footer {
 }
 
 .breadcrumbs li {
-  font-size: 13px;
+  font-size: 16px;
   font-family: 'Inconsolata', monospace;
   font-weight: 700;
   text-transform: uppercase;
@@ -2446,7 +2446,7 @@ footer {
 
 .seo-article p {
   font-family: 'Inconsolata', monospace;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
   color: #4a4a4a;
   margin-bottom: 25px;
@@ -2487,7 +2487,7 @@ footer {
 }
 
 .spotlight-intro {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 25px;
@@ -2528,7 +2528,7 @@ footer {
 
 .sidebar-project-info h4 {
   font-family: 'Glegoo', serif;
-  font-size: 13px;
+  font-size: 16px;
   color: #fff;
   margin: 0 0 4px 0;
   white-space: nowrap;
@@ -2537,7 +2537,7 @@ footer {
 }
 
 .sidebar-project-info p {
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.5);
   margin: 0;
@@ -2555,7 +2555,7 @@ footer {
   color: #111;
   border: 0;
   border-radius: 30px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2652,7 +2652,7 @@ footer {
   }
   
   .hero-subpage .hero-lead {
-    font-size: 14px;
+    font-size: 16px;
   }
   
   .seo-faqs h2 {

@@ -278,7 +278,7 @@ if ($processedCount > 0) {
         h1 { font-family: Georgia, serif; font-size: 22px; color: #111; border-bottom: 2px solid #ffc800; padding-bottom: 10px; margin-top: 0; }
         ul { padding-left: 20px; line-height: 1.6; }
         li { margin-bottom: 8px; }
-        .footer { font-size: 11px; color: #777; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; }
+        .footer { font-size: 16px; color: #777; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; }
         .success-accent { color: #2ecc71; font-weight: bold; }
         .danger-accent { color: #ff4444; font-weight: bold; }
     </style>

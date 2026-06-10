@@ -317,15 +317,17 @@
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
       <div class="lang-menu">
-        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <button
               type="button"
               class:active={option === lang}
               on:click={() => switchLanguage(option)}
+              style="display: flex; align-items: center; gap: 8px;"
             >
-              {languageLabels[option]}
+              <FlagIcon langCode={option} size={16} />
+              <span>{languageLabels[option]}</span>
             </button>
           {/each}
         </div>
@@ -516,7 +518,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -568,7 +570,7 @@
     margin: 0;
     display: flex;
     gap: 8px;
-    font-size: 13px;
+    font-size: 16px;
     color: #888;
   }
 
@@ -626,14 +628,14 @@
   }
 
   .intro-description {
-    font-size: 15px;
+    font-size: 16px;
     color: #aaa;
     line-height: 1.6;
     margin-bottom: 25px;
   }
 
   .values-content {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.8;
     color: #ddd;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -655,7 +657,7 @@
     display: inline-flex;
     align-items: center;
     color: var(--gold);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -679,7 +681,7 @@
   }
 
   .gallery-title-wrapper p {
-    font-size: 14px;
+    font-size: 16px;
     color: #888;
     margin: 0;
   }
@@ -778,7 +780,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 13px;
+    font-size: 16px;
     padding: 12px 28px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;

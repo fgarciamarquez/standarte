@@ -262,7 +262,7 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #ffffff;
     font-family: inherit;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 1px;
     padding: 12px 22px;
@@ -323,7 +323,7 @@
 
   .dot-number {
     display: block;
-    font-size: 11px;
+    font-size: 16px;
     font-weight: 700;
     color: #ffc800;
     margin-bottom: 6px;
@@ -331,7 +331,7 @@
 
   .dot-title {
     display: block;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     margin-bottom: 8px;
     white-space: nowrap;
@@ -384,7 +384,7 @@
     }
     .btn-control {
       padding: 10px 18px;
-      font-size: 11px;
+      font-size: 16px;
     }
   }
 </style>

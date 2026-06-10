@@ -171,7 +171,7 @@ if (empty($errorMsg)) {
         }
 
         p {
-            font-size: 15px;
+            font-size: 16px;
             color: var(--color-text-muted);
             line-height: 1.6;
             margin-bottom: 30px;
@@ -192,7 +192,7 @@ if (empty($errorMsg)) {
             color: var(--color-primary);
             text-decoration: none;
             padding: 12px 30px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             border-radius: 30px;
             transition: all 0.3s ease;
@@ -211,7 +211,7 @@ if (empty($errorMsg)) {
             border-color: var(--color-border);
             color: var(--color-text-muted);
             margin-top: 15px;
-            font-size: 12px;
+            font-size: 16px;
             padding: 8px 20px;
         }
 
@@ -223,7 +223,7 @@ if (empty($errorMsg)) {
 
         .footer {
             margin-top: 40px;
-            font-size: 11px;
+            font-size: 16px;
             color: #555555;
             border-top: 1px solid #222;
             padding-top: 20px;
@@ -247,7 +247,7 @@ if (empty($errorMsg)) {
             <p>
                 Tu correo <strong><?php echo htmlspecialchars($email); ?></strong> ha sido eliminado de nuestras listas de difusión de marketing de forma inmediata, cumpliendo con la legislación vigente de protección de datos (LSSI/RGPD).
             </p>
-            <p style="font-size: 13px; font-style: italic;">
+            <p style="font-size: 16px; font-style: italic;">
                 ¿Ha sido un error? Si has pulsado el enlace sin querer, puedes volver a suscribirte en cualquier momento.
             </p>
             <a href="unsubscribe.php?email=<?php echo urlencode($emailBase64); ?>&token=<?php echo urlencode($token); ?>&action=resubscribe" class="btn">Volver a suscribirme</a>

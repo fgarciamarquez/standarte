@@ -8,6 +8,7 @@
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
   import CookieConsent from './CookieConsent.svelte';
+  import FlagIcon from './FlagIcon.svelte';
 
   export let lang;
   export let section;
@@ -625,7 +626,7 @@
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu">
-        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -636,8 +637,10 @@
                   localStorage.setItem('preferredLanguage', option);
                 }
               }}
+              style="display: flex; align-items: center; gap: 8px;"
             >
-              {languageLabels[option]}
+              <FlagIcon langCode={option} size={16} />
+              <span>{languageLabels[option]}</span>
             </a>
           {/each}
         </div>
@@ -1058,7 +1061,7 @@
   .nav-badge-new {
     background-color: #ffc800;
     color: #111 !important; /* Force high-contrast dark text */
-    font-size: 10px; /* Increased size */
+    font-size: 16px; /* Increased size */
     font-weight: 700;
     padding: 1px 4px;
     border-radius: 3px;
@@ -1167,7 +1170,7 @@
 
   .team-member .role {
     font-family: 'Inconsolata', monospace;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     color: #b89400;

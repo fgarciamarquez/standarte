@@ -356,7 +356,7 @@ foreach ($data['records'] as $index => $record) {
                         <td align="center" style="background-color: #ffffff; padding: 40px 30px;">
                             <!-- Logotipo Standarte -->
                             <img src="https://standarte.es/img/logo_stand-arte_negro.svg" alt="Standarte Logo" width="220" style="display: block; margin-bottom: 15px;">
-                            <p style="color: #292f35; font-size: 13px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: 'Glegoo', serif; text-align: center;">Diseño y Construcción de Stands Internacionales</p>
+                            <p style="color: #292f35; font-size: 16px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: 'Glegoo', serif; text-align: center;">Diseño y Construcción de Stands Internacionales</p>
                         </td>
                     </tr>
                     
@@ -369,7 +369,7 @@ foreach ($data['records'] as $index => $record) {
                             <!-- Saludo Personalizado -->
                             <h2 style="margin-top: 0; color: #555555; font-size: 18px; font-weight: normal; line-height: 1.3; text-align: center; margin-bottom: 25px;">Estimado equipo de {$empresa},</h2>
                             
-                            <p style="font-size: 15px; line-height: 1.65; color: #333333; margin-bottom: 20px; text-align: center;">
+                            <p style="font-size: 16px; line-height: 1.65; color: #333333; margin-bottom: 20px; text-align: center;">
                                 Su presencia en la feria <strong>{$feria}</strong> (dentro de la categoría de <strong>{$categoria}</strong>) es una oportunidad única de negocio. Pero seamos realistas: en un pabellón saturado de estímulos, la inmensa mayoría de los stands pasan completamente desapercibidos. ¿Permitirá que el suyo sea uno más del montón?
                             </p>
                             
@@ -377,14 +377,14 @@ foreach ($data['records'] as $index => $record) {
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fcf9ee; border-left: 4px solid #ffc800; border-radius: 4px; margin-bottom: 25px;">
                                 <tr>
                                     <td style="padding: 15px 20px; text-align: center;">
-                                        <p style="font-size: 15px; font-style: italic; line-height: 1.6; color: #292f35; margin: 0; text-align: center;">
+                                        <p style="font-size: 16px; font-style: italic; line-height: 1.6; color: #292f35; margin: 0; text-align: center;">
                                             "{$cuerpoText}"
                                         </p>
                                     </td>
                                 </tr>
                             </table>
                             
-                            <p style="font-size: 15px; line-height: 1.65; color: #333333; margin-bottom: 30px; text-align: center;">
+                            <p style="font-size: 16px; line-height: 1.65; color: #333333; margin-bottom: 30px; text-align: center;">
                                 En <strong>Standarte</strong> no diseñamos stands convencionales: creamos hitos arquitectónicos e imanes de clientes que posicionan a su marca como el líder indiscutible de su sector. Para inspirar el proyecto de <strong>{$empresa}</strong>, le presentamos tres de nuestros diseños en madera real más valorados y eficientes:
                             </p>
                             
@@ -412,8 +412,8 @@ HTML;
                                             </tr>
                                             <tr>
                                                 <td style="padding: 10px; font-family: Arial, sans-serif;">
-                                                    <h4 style="margin: 0 0 6px 0; font-size: 13px; color: #292f35; font-weight: bold;">{$titulo}</h4>
-                                                    <p style="margin: 0; font-size: 11px; line-height: 1.4; color: #666666; height: 75px; overflow: hidden;">
+                                                    <h4 style="margin: 0 0 6px 0; font-size: 16px; color: #292f35; font-weight: bold;">{$titulo}</h4>
+                                                    <p style="margin: 0; font-size: 16px; line-height: 1.4; color: #666666; height: 75px; overflow: hidden;">
                                                         {$desc}
                                                     </p>
                                                 </td>
@@ -431,7 +431,7 @@ HTML;
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 35px;">
                                 <tr>
                                     <td align="center">
-                                        <a href="{$ctaButtonLink}" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 14px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
+                                        <a href="{$ctaButtonLink}" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 16px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
                                             ACEPTAR EL RETO Y DISEÑAR MI STAND
                                         </a>
                                     </td>
@@ -444,21 +444,21 @@ HTML;
                     <!-- Pie de Página -->
                     <tr>
                         <td style="background-color: #292f35; padding: 30px; text-align: center; font-family: Arial, sans-serif;">
-                            <p style="color: #ffffff; font-size: 14px; font-weight: bold; margin: 0 0 10px 0;">Standarte</p>
-                            <p style="color: #aaaaaa; font-size: 11px; line-height: 1.6; margin: 0 0 15px 0;">
+                            <p style="color: #ffffff; font-size: 16px; font-weight: bold; margin: 0 0 10px 0;">Standarte</p>
+                            <p style="color: #aaaaaa; font-size: 16px; line-height: 1.6; margin: 0 0 15px 0;">
                                 Diseño, fabricación y montaje de stands premium para ferias nacionales e internacionales.<br>
                                 Madrid • Málaga • Lisboa • Badajoz
                             </p>
                             <table border="0" cellpadding="0" cellspacing="0" align="center" style="margin-bottom: 20px;">
                                 <tr>
                                     <td>
-                                        <a href="{$footerContactLink}" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Contacto</a>
+                                        <a href="{$footerContactLink}" target="_blank" style="color: #ffc800; font-size: 16px; text-decoration: none; margin: 0 10px;">Contacto</a>
                                         <span style="color: #666666;">|</span>
-                                        <a href="{$footerWebLink}" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Web Oficial</a>
+                                        <a href="{$footerWebLink}" target="_blank" style="color: #ffc800; font-size: 16px; text-decoration: none; margin: 0 10px;">Web Oficial</a>
                                     </td>
                                 </tr>
                             </table>
-                            <p style="color: #666666; font-size: 9px; line-height: 1.4; margin: 0;">
+                            <p style="color: #666666; font-size: 16px; line-height: 1.4; margin: 0;">
                                 Este mensaje fue enviado de forma automática a solicitud de una campaña autorizada.<br>
                                 Conforme a la legislación LSSI-CE y el RGPD, puede revocar su consentimiento y darse de baja de estas comunicaciones de forma gratuita y en cualquier momento haciendo clic aquí: <a href="{$unsubscribeLink}" target="_blank" style="color: #ffc800; text-decoration: underline;">Darse de baja de la lista</a>.<br>
                                 © 2026 Standarte. Todos los derechos reservados.

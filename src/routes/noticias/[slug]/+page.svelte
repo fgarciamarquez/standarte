@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
+  import FlagIcon from '$lib/components/FlagIcon.svelte';
   export let data;
   $: article = data.article;
 
@@ -281,7 +282,7 @@
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <div class="lang-menu">
-        <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+        <span><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -292,8 +293,10 @@
                   localStorage.setItem('preferredLanguage', option);
                 }
               }}
+              style="display: flex; align-items: center; gap: 8px;"
             >
-              {languageLabels[option]}
+              <FlagIcon langCode={option} size={16} />
+              <span>{languageLabels[option]}</span>
             </a>
           {/each}
         </div>
@@ -413,7 +416,7 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -456,7 +459,7 @@
     margin: 0;
     display: flex;
     gap: 8px;
-    font-size: 13px;
+    font-size: 16px;
     color: #777;
   }
 
@@ -487,7 +490,7 @@
     padding: 50px;
     box-shadow: 0 8px 24px rgba(22, 25, 28, 0.04);
     border: 1px solid rgba(22, 25, 28, 0.03);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.8;
     color: #333;
   }
@@ -555,7 +558,7 @@
   }
 
   .article-cta-box p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 30px;
@@ -567,7 +570,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 13px;
+    font-size: 16px;
     padding: 14px 30px;
     border-radius: 30px;
     display: inline-block;
