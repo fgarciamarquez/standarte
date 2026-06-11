@@ -11,7 +11,8 @@ const config = {
     }),
     paths: {
       relative: false
-    }
+    },
+    inlineStyleThreshold: 20480
   }
 };
 

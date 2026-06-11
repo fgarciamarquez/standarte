@@ -44,6 +44,7 @@
   let lightboxProject = null;
   let legalModal = null;
   let isScrolled = false;
+  let ignoreNextScroll = false;
 
   // Prototipos 3D Carousel State
   let carouselIndex = 0;
@@ -138,16 +139,16 @@
     } else if (section === 'luzpavilion') {
       targetId = 'micro-stand';
     }
-    setTimeout(() => {
-      const el = document.getElementById(targetId);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        const isVisible = rect.top >= -50 && rect.top <= 150;
-        if (!isVisible) {
+    if (ignoreNextScroll) {
+      ignoreNextScroll = false;
+    } else {
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }
-    }, 120);
+      }, 120);
+    }
   }
 
   $: seoContent = (() => {
@@ -443,6 +444,7 @@
     if (el) {
       let routeSection = id === 'local-stands' ? 'madrid' : id;
       if (routeSection === 'micro-stand') routeSection = 'luzpavilion';
+      ignoreNextScroll = true; // Avoid double scrolling from the reactive statement
       pushState(pathFor(lang, routeSection), {});
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -557,6 +559,7 @@
         if (section in cityData) return; // Do not overwrite city URL on scroll
         const nextPath = pathFor(lang, routeById[visible.target.id]);
         if (window.location.pathname !== nextPath) {
+          ignoreNextScroll = true;
           replaceState(nextPath, {});
         }
       }
@@ -612,7 +615,7 @@
   {@html structuredDataScript}
 </svelte:head>
 
-<svelte:window on:keydown={handleKeydown} on:scroll={updateScrollState} />
+<svelte:window on:keydown={handleKeydown} on:scroll|passive={updateScrollState} />
 
 <header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services'}>
   <nav class="nav" class:scrolled={isScrolled}>
