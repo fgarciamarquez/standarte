@@ -4,8 +4,10 @@
 
   export let labels;
 
+  let isMobile = false;
+
   // Secuencia de videos corporativos y de proyectos (dinámicos por idioma)
-  $: videos = labels.videos || [
+  $: rawVideos = labels.videos || [
     {
       src: '/img/video_standrte_presentacion_empresa.mp4',
       title: 'Presentaciones de empresas',
@@ -27,6 +29,12 @@
       subtitle: 'Montajes de gran escala y carpas premium de alta resistencia.'
     }
   ];
+
+  $: videos = isMobile ? [rawVideos[0]] : rawVideos;
+
+  $: if (activeIndex >= videos.length) {
+    activeIndex = 0;
+  }
 
   // Fondo de pantalla optimizado en AVIF a un 60% de compresión para el preloader
   let coverImage = '/img/video_standarte_portada.avif';
@@ -98,7 +106,12 @@
   }
 
   onMount(() => {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const handleResize = () => {
+      isMobile = window.matchMedia('(max-width: 768px)').matches;
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+
     if (typeof window !== 'undefined' && isMobile) {
       coverImage = '/img/video_standarte_portada-mobile.avif';
     }
@@ -120,6 +133,10 @@
         });
       }
     }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   });
 </script>
 
