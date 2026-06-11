@@ -233,6 +233,21 @@
   <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href={`https://standarte.es${pathFor(lang, 'noticias')}`} />
+  <!-- Preload LCP background image for layout widths -->
+  <link
+    rel="preload"
+    as="image"
+    href="/img/bg2-mobile.webp"
+    media="(max-width: 768px)"
+    fetchpriority="high"
+  />
+  <link
+    rel="preload"
+    as="image"
+    href="/img/bg2.webp"
+    media="(min-width: 769px)"
+    fetchpriority="high"
+  />
   {#each languages as alternateLang}
     <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es${pathFor(alternateLang, 'noticias')}`} />
   {/each}
@@ -667,6 +682,10 @@
   }
 
   @media (max-width: 768px) {
+    .noticias-header {
+      background: url('/img/bg2-mobile.webp') scroll center center / cover no-repeat !important;
+    }
+
     .hero-contents h1 {
       font-size: 32px;
     }

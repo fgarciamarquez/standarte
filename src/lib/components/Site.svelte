@@ -591,6 +591,23 @@
   <meta name="googlebot" content="index, follow" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
+  {#if section === 'home' || section === 'contact' || section === 'services'}
+    <!-- Preload LCP background image for layout widths -->
+    <link
+      rel="preload"
+      as="image"
+      href="/img/bg2-mobile.webp"
+      media="(max-width: 768px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/img/bg2.webp"
+      media="(min-width: 769px)"
+      fetchpriority="high"
+    />
+  {/if}
   {#each languages as alternateLang}
     <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es${pathFor(alternateLang, section)}`} />
   {/each}
