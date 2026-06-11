@@ -277,7 +277,7 @@
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
       <div class="lang-menu lang-menu-mobile">
-        <span><FlagIcon langCode={lang} size={20} /></span>
+        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -305,7 +305,7 @@
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
-        <span><FlagIcon langCode={lang} size={20} /></span>
+        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -383,7 +383,7 @@
         <li><a href={pathFor(lang, 'noticias')} class="footer-link-button active">{currentCopy.nav.noticias}</a></li>
         <li class="footer-lang-item">
           <div class="footer-lang-menu">
-            <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+            <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
             <div class="footer-lang-dropdown">
               {#each languages as option}
                 <a

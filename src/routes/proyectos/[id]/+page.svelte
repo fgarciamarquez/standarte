@@ -299,7 +299,7 @@
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
       <div class="lang-menu lang-menu-mobile">
-        <span><FlagIcon langCode={lang} size={20} /></span>
+        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <button
@@ -323,7 +323,7 @@
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
-        <span><FlagIcon langCode={lang} size={20} /></span>
+        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <button
@@ -427,7 +427,7 @@
       {#each project.images as imgUrl, index}
         <div class="gallery-item-wrap">
           <button type="button" class="gallery-item-btn" on:click={() => openLightbox(index)} aria-label={`Ver imagen ${index + 1} de ${project.name}`}>
-            <img src={imgUrl} alt={`Vista del stand ${project.name} - ${index + 1}`} loading="lazy" />
+            <img src={imgUrl.replace('.avif', '-thumb.avif')} alt={`Vista del stand ${project.name} - ${index + 1}`} loading="lazy" />
             <span class="gallery-item-overlay">
               <span class="eye-icon-white"></span>
             </span>
@@ -471,7 +471,7 @@
         <li><a href={pathFor(lang, 'noticias')} class="footer-link-button">{currentCopy.nav.noticias}</a></li>
         <li class="footer-lang-item">
           <div class="footer-lang-menu">
-            <span class="footer-lang-trigger"><FlagIcon langCode={lang} size={22} /></span>
+            <span class="footer-lang-trigger" role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={22} /></span>
             <div class="footer-lang-dropdown">
               {#each languages as option}
                 <button

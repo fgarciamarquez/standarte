@@ -642,7 +642,7 @@
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
       <div class="lang-menu lang-menu-mobile">
-        <span><FlagIcon langCode={lang} size={20} /></span>
+        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -675,7 +675,7 @@
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
-        <span><FlagIcon langCode={lang} size={20} /></span>
+        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -875,7 +875,7 @@
               <article class="carousel-card" style="width: calc(100% / var(--visible-count));">
                 <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-link">
                   <div class="carousel-img-wrap">
-                    <img src={project.image} alt={getProjectTitle(project)} loading="lazy" />
+                    <img src={project.image.replace('.avif', '-thumb.avif')} alt={getProjectTitle(project)} loading="lazy" />
                     <div class="carousel-overlay">
                       <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
                     </div>
@@ -1072,7 +1072,7 @@
         <li><a href={pathFor(lang, 'noticias')} class="_gold footer-link-button">{copy.nav.noticias}</a></li>
         <li class="footer-lang-item">
           <div class="footer-lang-menu">
-            <span><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+            <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
             <div class="footer-lang-dropdown">
               {#each languages as option}
                 <a
