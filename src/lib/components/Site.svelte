@@ -746,7 +746,14 @@
           <article id={cityKey}>
             <a href={pathFor(lang, cityKey)} class="city-cover-link">
               <div class="city-cover-container">
-                <img src="/img/cover_{cityKey}.avif" alt={cityTitle(cityKey)} class="city-cover-image" loading="lazy" />
+                <img
+                  src="/img/cover_{cityKey}.avif"
+                  srcset="/img/cover_{cityKey}-mobile.avif 480w, /img/cover_{cityKey}.avif 800w"
+                  sizes="(max-width: 768px) 480px, 800px"
+                  alt={cityTitle(cityKey)}
+                  class="city-cover-image"
+                  loading="lazy"
+                />
               </div>
             </a>
             <h3>{cityTitle(cityKey)}</h3>
@@ -891,6 +898,8 @@
           <div class="member-photo-container team-fade-container">
             <img
               src="/img/team/victoria_idiaquez.avif"
+              srcset="/img/team/victoria_idiaquez-mobile.avif 400w, /img/team/victoria_idiaquez.avif 1920w"
+              sizes="(max-width: 768px) 170px, 200px"
               alt="Equipo de Victoria"
               class="member-photo fade-img img-1"
               loading="lazy"
@@ -898,6 +907,8 @@
             />
             <img
               src="/img/team/team2.avif"
+              srcset="/img/team/team2-mobile.avif 400w, /img/team/team2.avif 1200w"
+              sizes="(max-width: 768px) 170px, 200px"
               alt="Equipo de Victoria"
               class="member-photo fade-img img-2"
               loading="lazy"
@@ -905,6 +916,8 @@
             />
             <img
               src="/img/team/team5.avif"
+              srcset="/img/team/team5-mobile.avif 400w, /img/team/team5.avif 1200w"
+              sizes="(max-width: 768px) 170px, 200px"
               alt="Equipo de Victoria"
               class="member-photo fade-img img-3"
               loading="lazy"
@@ -919,6 +932,8 @@
           <div class="member-photo-container">
             <img
               src="/img/team/javier_garcia.avif"
+              srcset="/img/team/javier_garcia-mobile.avif 400w, /img/team/javier_garcia.avif 1696w"
+              sizes="(max-width: 768px) 170px, 200px"
               alt="Javier G. Márquez"
               class="member-photo"
               style="transform: scale(1.35) translateY(8px); transform-origin: center 18%;"
@@ -934,6 +949,8 @@
           <div class="member-photo-container">
             <img
               src="/img/team/pablo_alminar.avif"
+              srcset="/img/team/pablo_alminar-mobile.avif 400w, /img/team/pablo_alminar.avif 1696w"
+              sizes="(max-width: 768px) 170px, 200px"
               alt="Pablo Alminar"
               class="member-photo"
               style="object-position: center top; transform: scale(2.3) translateY(20px);"
@@ -949,6 +966,8 @@
           <div class="member-photo-container">
             <img
               src="/img/team/patricia_jimenez.avif"
+              srcset="/img/team/patricia_jimenez-mobile.avif 400w, /img/team/patricia_jimenez.avif 1920w"
+              sizes="(max-width: 768px) 170px, 200px"
               alt="Patricia Jiménez"
               class="member-photo"
               loading="lazy"

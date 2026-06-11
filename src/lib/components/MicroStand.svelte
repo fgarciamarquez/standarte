@@ -29,7 +29,7 @@
   ];
 
   // Fondo de pantalla optimizado en AVIF a un 60% de compresión para el preloader
-  const coverImage = '/img/video_standarte_portada.avif';
+  let coverImage = '/img/video_standarte_portada.avif';
 
   let videoElement;
   let activeIndex = 0;
@@ -94,6 +94,9 @@
   }
 
   onMount(() => {
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      coverImage = '/img/video_standarte_portada-mobile.avif';
+    }
     // Carga perezosa y asíncrona de videos para asegurar que no interfiera en la carga crítica de la web
     if (videoElement) {
       videoElement.src = videos[activeIndex].src;
