@@ -33,8 +33,8 @@
 
   let videoElement;
   let activeIndex = 0;
+  let isPlaying = false;
   let isPreloading = true;
-  let isPlaying = true;
   let transitionClass = '';
   let currentTime = 0;
   let duration = 0;
@@ -71,6 +71,7 @@
       if (videoElement) {
         isPreloading = true;
         videoElement.src = videos[activeIndex].src;
+        videoElement.preload = 'auto';
         videoElement.load();
         videoElement.play().then(() => {
           isPlaying = true;
@@ -87,26 +88,37 @@
       videoElement.pause();
       isPlaying = false;
     } else {
+      videoElement.preload = 'auto';
       videoElement.play().then(() => {
         isPlaying = true;
+      }).catch(err => {
+        console.error("Error playing video:", err);
       });
     }
   }
 
   onMount(() => {
-    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (typeof window !== 'undefined' && isMobile) {
       coverImage = '/img/video_standarte_portada-mobile.avif';
     }
     // Carga perezosa y asíncrona de videos para asegurar que no interfiera en la carga crítica de la web
     if (videoElement) {
       videoElement.src = videos[activeIndex].src;
-      videoElement.load();
-      videoElement.play().then(() => {
-        isPlaying = true;
-      }).catch(err => {
-        console.log('Autoplay prevenido por política del navegador.', err);
-        isPlaying = false;
-      });
+      if (isMobile) {
+        // En móviles, no pre-cargamos ni reproducimos automáticamente para evitar descargas masivas de 3.2MB
+        videoElement.preload = 'none';
+        isPreloading = false;
+      } else {
+        videoElement.preload = 'auto';
+        videoElement.load();
+        videoElement.play().then(() => {
+          isPlaying = true;
+        }).catch(err => {
+          console.log('Autoplay prevenido por política del navegador.', err);
+          isPlaying = false;
+        });
+      }
     }
   });
 </script>
