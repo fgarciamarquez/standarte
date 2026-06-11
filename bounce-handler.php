@@ -225,9 +225,12 @@ function scan_imap_bounces() {
             }
         }
 
-        // Marcar el mensaje como visto/leído
-        imap_setflag_full($mbox, $msgId, "\\Seen");
+        // Marcar el mensaje para borrar del servidor (ya que son correos inútiles que ocupan espacio)
+        imap_delete($mbox, $msgId);
     }
+
+    // Borrar físicamente todos los mensajes marcados para eliminación
+    @imap_expunge($mbox);
 
     $result['success'] = true;
     imap_close($mbox);
