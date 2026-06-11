@@ -43,8 +43,13 @@
         <h3>{labels.contactTitle}</h3>
         <p class="politica_privacidad">{labels.contactNotice}</p>
         <ul class="lista_direccion">
-          <li>Av. de Castilla 2, San Fernando de Henares (Madrid - España)</li>
-          <li>+34 637 894 819</li>
+          <li style="margin-bottom: 10px; line-height: 1.4;">
+            <strong>{lang === 'es' ? 'Madrid' : (lang === 'zh' ? '马德里' : (lang === 'ko' ? '마드리드' : (lang === 'hi' ? 'मैड्रिड' : 'Madrid')))}:</strong> Av. de Castilla 2, San Fernando de Henares (Madrid - España)
+          </li>
+          <li style="margin-bottom: 18px; line-height: 1.4;">
+            <strong>Extremadura:</strong> C/ Los Sauces 24, 10004 Cáceres (España)
+          </li>
+          <li style="font-weight: 600; margin-bottom: 5px;">+34 637 894 819</li>
           <li><a class="link_email _gold" href="mailto:info@standarte.es">info@standarte.es</a></li>
         </ul>
         {#if statusMessage}

@@ -2066,18 +2066,18 @@ footer {
   box-sizing: border-box;
 }
 
-.carousel-link {
+.carousel-card-inner {
   display: block;
   background-color: #16191c;
   border-radius: 8px;
   overflow: hidden;
-  text-decoration: none;
+  position: relative;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.carousel-link:hover {
+.carousel-card-inner:hover {
   transform: translateY(-6px);
   border-color: var(--gold);
   box-shadow: 0 16px 40px rgba(255, 200, 0, 0.12);
@@ -2098,7 +2098,7 @@ footer {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.carousel-link:hover .carousel-img-wrap img {
+.carousel-card-inner:hover .carousel-img-wrap img {
   transform: scale(1.05);
 }
 
@@ -2116,8 +2116,13 @@ footer {
   transition: opacity 0.3s ease;
 }
 
-.carousel-link:hover .carousel-overlay {
+.carousel-card-inner:hover .carousel-overlay {
   opacity: 1;
+}
+
+.carousel-img-link, .carousel-caption-link {
+  display: block;
+  text-decoration: none;
 }
 
 .view-btn-gold {

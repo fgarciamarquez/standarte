@@ -5,6 +5,7 @@
   import { languages, languageLabels, pathFor, cityData, portfolios } from '$lib/siteData.js';
   import { projects } from '$lib/projectData.js';
   import { richSeoData } from '$lib/richSeoData.js';
+  import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
   import CookieConsent from './CookieConsent.svelte';
@@ -249,33 +250,20 @@
       ['Montaje de stands en Badajoz', pathFor('es', 'montaje_badajoz')]
     ];
 
+    const isCityPage = section in cityData;
+    const cityDisplayName = isCityPage ? (cityData[section]?.city?.[lang] || cityData[section]?.city?.es || section) : '';
+
     const organization = {
-      '@type': 'LocalBusiness',
+      ...localBusinessSchema,
       '@id': `${baseUrl}/#organization`,
-      name: 'Standarte',
       url: `${baseUrl}/`,
       logo: `${baseUrl}/img/logo_standarte_rectanular.png`,
       image: `${baseUrl}/img/trabajos/TCANTICO/1.avif`,
-      email: 'info@standarte.es',
-      telephone: '+34637894819',
       priceRange: '$$$',
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: '4.9',
         reviewCount: '158'
-      },
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Av. de Castilla 2',
-        postalCode: '28830',
-        addressLocality: 'San Fernando de Henares',
-        addressRegion: 'Madrid',
-        addressCountry: 'ES'
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: '40.4124',
-        longitude: '-3.6983'
       },
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
@@ -283,19 +271,17 @@
         opens: '08:00',
         closes: '18:00'
       },
-      sameAs: [
-        'https://luzpavilion.es'
-      ]
+      areaServed: localBusinessSchema.areaServed.map(c => c.name)
     };
 
     const service = {
       '@type': 'Service',
       '@id': `${baseUrl}/#service`,
       name: lang === 'es' ? 'Diseño y construcción de stands para ferias' : 'Exhibition stand design and construction',
-      serviceType: 'Exhibition Stand Builder',
+      serviceType: isCityPage ? 'Construcción de stands' : 'Exhibition Stand Builder',
       provider: { '@id': `${baseUrl}/#organization` },
       description: copy.seoDescription,
-      areaServed: ['ES', 'PT', 'DE', 'FR']
+      areaServed: isCityPage ? cityDisplayName : ['ES', 'PT', 'DE', 'FR']
     };
 
     const website = {
@@ -303,7 +289,7 @@
       '@id': `${baseUrl}/#website`,
       url: `${baseUrl}/`,
       name: 'Standarte',
-      description: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Lisboa y otros destinos nacionales e internacionales.',
+      description: 'Standarte diseña, fabrica y monta stands para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Zafra, Don Benito, Cáceres, Lisboa y otros destinos nacionales e internacionales.',
       inLanguage: contentLanguages[lang] || 'es-ES',
       publisher: { '@id': `${baseUrl}/#organization` }
     };
@@ -615,8 +601,8 @@
       fetchpriority="high"
     />
   {/if}
-  {#each languages as alternateLang}
-    <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es${pathFor(alternateLang, section)}`} />
+  {#each LOCALES as loc}
+    <link rel="alternate" hreflang={loc.lang} href={`https://standarte.es${pathFor(loc.lang, section)}`} />
   {/each}
   <link rel="alternate" hreflang="x-default" href={`https://standarte.es${pathFor('es', section)}`} />
   <meta property="og:type" content="website" />
@@ -624,14 +610,10 @@
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:locale" content={languageLocales[lang] || 'es_ES'} />
-  {#if lang !== 'es'}
-    <meta property="og:locale:alternate" content="es_ES" />
-  {:else}
-    {#each languages.filter((alternateLang) => alternateLang !== 'es') as alternateLang}
-      <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
-    {/each}
-  {/if}
+  <meta property="og:locale" content={(LOCALES.find(loc => loc.lang === lang)?.ogLocale) || 'es_ES'} />
+  {#each LOCALES.filter((loc) => loc.lang !== lang) as loc}
+    <meta property="og:locale:alternate" content={loc.ogLocale} />
+  {/each}
   {@html structuredDataScript}
 </svelte:head>
 
@@ -873,18 +855,22 @@
           <div class="carousel-track" style="transform: translateX(calc(-1 * {carouselIndex} * 100% / var(--visible-count)));">
             {#each shuffledProjects as project}
               <article class="carousel-card" style="width: calc(100% / var(--visible-count));">
-                <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-link">
-                  <div class="carousel-img-wrap">
-                    <img src={project.image.replace('.avif', '-thumb.avif')} alt={getProjectTitle(project)} loading="lazy" />
-                    <div class="carousel-overlay">
-                      <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
+                <div class="carousel-card-inner">
+                  <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-img-link" tabindex="-1" aria-hidden="true">
+                    <div class="carousel-img-wrap">
+                      <img src={project.image.replace('.avif', '-thumb.avif')} alt="" loading="lazy" />
                     </div>
-                  </div>
+                  </a>
+                  <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-overlay" tabindex="-1" aria-hidden="true">
+                    <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
+                  </a>
                   <div class="carousel-caption">
-                    <h3>{getProjectTitle(project)}</h3>
+                    <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-caption-link" title={getProjectTitle(project)}>
+                      <h3>{getProjectTitle(project)}</h3>
+                    </a>
                     <span class="location">{project.location}</span>
                   </div>
-                </a>
+                </div>
               </article>
             {/each}
           </div>
