@@ -54,15 +54,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (preg_match($rx, $configContent)) {
         $configContent = preg_replace($rx, $replacementStr, $configContent);
         if (file_put_contents($configFile, $configContent)) {
-            // Run script to update autonomous_generator.cjs
-            $scriptPath = dirname(dirname(__DIR__)) . '/scratch/update_images_autonomous.cjs';
-            $output = array();
-            $returnVar = 0;
-            exec("node " . escapeshellarg($scriptPath) . " 2>&1", $output, $returnVar);
+            $success = 'Imágenes actualizadas correctamente en la campaña.';
             
-            $success = 'Imágenes actualizadas correctamente en la campaña y en el generador autónomo de noticias.';
-            if ($returnVar !== 0) {
-                $error = 'Config.php guardado, pero falló la actualización del script autónomo: ' . implode("\n", $output);
+            // Run script to update autonomous_generator.cjs if it exists (typically only locally)
+            $scriptPath = dirname(dirname(__DIR__)) . '/scratch/update_images_autonomous.cjs';
+            if (is_file($scriptPath)) {
+                $output = array();
+                $returnVar = 0;
+                exec("node " . escapeshellarg($scriptPath) . " 2>&1", $output, $returnVar);
+                if ($returnVar === 0) {
+                    $success .= ' Sincronizado también con el generador autónomo de noticias.';
+                } else {
+                    $error = 'Config.php guardado, pero falló la actualización del script autónomo: ' . implode("\n", $output);
+                }
             }
         } else {
             $error = 'No se pudo escribir en config.php. Revise los permisos de archivo.';
