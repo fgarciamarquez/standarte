@@ -388,15 +388,9 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         <span>Visitas totales desde correos multimedia</span>
         <strong><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
       </div>
-      <div class="smtp-status <?php echo $smtpReady ? 'smtp-ok' : 'smtp-warning'; ?>">
-        <b><?php echo $smtpReady ? 'SMTP autenticado activo' : 'SMTP pendiente de contraseña'; ?></b>
-        <span>
-          <?php if ($smtpReady): ?>
-            Los envíos salen mediante <?php echo campaign_escape($config['smtp']['username']); ?> en <?php echo campaign_escape($config['smtp']['host']); ?>. Esto garantiza excelente entregabilidad.
-          <?php else: ?>
-            Añada la contraseña SMTP del buzón <?php echo campaign_escape($config['smtp']['username']); ?> en la variable de entorno STANDARTE_SMTP_PASSWORD o en static/admin/email_campaing/config.php. Mientras tanto, se usará mail() de PHP como respaldo.
-          <?php endif; ?>
-        </span>
+      <div class="smtp-status smtp-ok">
+        <b>Servidor SMTP de OVH Activo</b>
+        <span>Los envíos de correo se realizan de forma segura y autenticada a través de ssl0.ovh.net utilizando la dirección info@standarte.es.</span>
       </div>
       <form id="campaign-form" method="post">
         <input id="campaign-action" type="hidden" name="campaign_action" value="preview">

@@ -2,17 +2,17 @@
 
 return array(
     'site_url' => 'https://standarte.es',
-    'from_email' => 'javier@standarte.es',
+    'from_email' => 'info@standarte.es',
     'from_name' => 'Standarte',
-    'reply_to' => 'javier@standarte.es',
-    'envelope_sender' => 'javier@standarte.es',
+    'reply_to' => 'info@standarte.es',
+    'envelope_sender' => 'info@standarte.es',
     'smtp' => array(
         'enabled' => true,
-        'host' => 'smtp.gmail.com',
-        'port' => 587,
-        'encryption' => 'tls',
-        'username' => 'hola.standarte.es@gmail.com',
-        'password' => getenv('STANDARTE_SMTP_PASSWORD') ? getenv('STANDARTE_SMTP_PASSWORD') : (is_file(__DIR__ . '/data/smtp_password.txt') ? trim(file_get_contents(__DIR__ . '/data/smtp_password.txt')) : ''),
+        'host' => 'ssl0.ovh.net',
+        'port' => 465,
+        'encryption' => 'ssl',
+        'username' => 'info@standarte.es',
+        'password' => 'Extrategia37',
         'timeout' => 20
     ),
     'phone' => '+34 613 097 148',

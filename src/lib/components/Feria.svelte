@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels } from '$lib/siteData.js';
   import ContactForm from './ContactForm.svelte';
@@ -32,6 +33,15 @@
   export let data;
   let isScrolled = false;
   let menuOpen = false;
+
+  function updateScrollState() {
+    isScrolled = window.scrollY > 8;
+  }
+
+  onMount(() => {
+    updateScrollState();
+  });
+
   const ctaLabels = { es: 'PRESUPUESTO EN 24 H', en: 'QUOTE IN 24 H', de: 'ANGEBOT IN 24 H', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'ORÇAMENTO EM 24 H', fr: 'DEVIS EN 24 H', it: 'PREVENTIVO IN 24 H', ko: '24시간 내 견적' };
   $: ({ lang, copy, canonical, fairSlug } = data);
   
@@ -296,7 +306,7 @@
   {/if}
 </svelte:head>
 
-<svelte:window bind:scrollY={isScrolled} />
+<svelte:window on:scroll|passive={updateScrollState} />
 <header class="site-header static-header">
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>

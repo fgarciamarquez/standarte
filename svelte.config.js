@@ -12,7 +12,7 @@ const config = {
     paths: {
       relative: false
     },
-    inlineStyleThreshold: 20480
+    inlineStyleThreshold: 102400
   }
 };
 

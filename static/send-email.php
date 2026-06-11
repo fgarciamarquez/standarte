@@ -480,8 +480,8 @@ HTML;
     $headers = [
         "MIME-Version: 1.0",
         "Content-type: text/html; charset=UTF-8",
-        "From: Standarte <hola@standarte.es>",
-        "Reply-To: hola@standarte.es",
+        "From: Standarte <info@standarte.es>",
+        "Reply-To: info@standarte.es",
         "X-Mailer: PHP/" . phpversion()
     ];
 
@@ -490,7 +490,7 @@ HTML;
     try {
         // En un entorno de desarrollo local con MAMP sin SMTP configurado, mail() puede lanzar warnings
         // Usamos el operador de control de errores @ para evitar romper el flujo JSON de salida
-        $realMailSuccess = @mail($email, $asunto, $emailHtml, implode("\r\n", $headers));
+        $realMailSuccess = @mail($email, $asunto, $emailHtml, implode("\r\n", $headers), '-finfo@standarte.es');
     } catch (Exception $e) {
         $realMailSuccess = false;
     }
