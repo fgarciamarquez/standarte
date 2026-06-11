@@ -94,7 +94,7 @@
   }
 
   onMount(() => {
-    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
       coverImage = '/img/video_standarte_portada-mobile.avif';
     }
     // Carga perezosa y asíncrona de videos para asegurar que no interfiera en la carga crítica de la web

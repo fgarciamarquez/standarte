@@ -50,15 +50,20 @@
   let carouselIndex = 0;
   let shuffledProjects = [...projects];
 
-  function getVisibleCount() {
-    if (typeof window === 'undefined') return 3;
-    if (window.innerWidth <= 768) return 1;
-    if (window.innerWidth <= 1024) return 2;
-    return 3;
+  let visibleCount = 3;
+
+  function updateVisibleCount() {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      visibleCount = 1;
+    } else if (window.matchMedia('(max-width: 1024px)').matches) {
+      visibleCount = 2;
+    } else {
+      visibleCount = 3;
+    }
   }
 
   function nextSlide() {
-    const visibleCount = getVisibleCount();
     if (carouselIndex < shuffledProjects.length - visibleCount) {
       carouselIndex++;
     } else {
@@ -67,7 +72,6 @@
   }
 
   function prevSlide() {
-    const visibleCount = getVisibleCount();
     if (carouselIndex > 0) {
       carouselIndex--;
     } else {
@@ -523,6 +527,8 @@
     shuffledProjects = shuffleArray([...projects]);
 
     updateScrollState();
+    updateVisibleCount();
+    window.addEventListener('resize', updateVisibleCount, { passive: true });
 
 
     if (section && section !== 'home') {
@@ -580,6 +586,7 @@
       observer.disconnect();
       countersObserver.disconnect();
       clearInterval(autoplayInterval);
+      window.removeEventListener('resize', updateVisibleCount);
     };
   });
 </script>
