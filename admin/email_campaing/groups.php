@@ -39,6 +39,35 @@ if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // ============================================================
+// ACCIÓN: Obtener estadísticas de clics totales en tiempo real
+// ============================================================
+if ($action === 'clicks_count') {
+    $chCount = curl_init();
+    curl_setopt($chCount, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=id');
+    curl_setopt($chCount, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chCount, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($chCount, CURLOPT_HEADER, true);
+    curl_setopt($chCount, CURLOPT_NOBODY, true);
+    curl_setopt($chCount, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY,
+        'Prefer: count=exact'
+    ]);
+    $header = curl_exec($chCount);
+    $count = 0;
+    if (preg_match('/Content-Range:\s*[0-9]+-[0-9]+\/([0-9]+)/i', $header, $matches)) {
+        $count = (int)$matches[1];
+    }
+    curl_close($chCount);
+    
+    echo json_encode([
+        'status' => 'success',
+        'total' => $count
+    ]);
+    exit;
+}
+
+// ============================================================
 // ACCIÓN: Listar todos los grupos disponibles
 // ============================================================
 if ($action === 'list') {

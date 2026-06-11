@@ -331,7 +331,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
     <section>
       <div class="stats">
         <span>Visitas totales desde correos multimedia</span>
-        <strong><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
+        <strong id="total-visits-counter"><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
       </div>
       <div class="smtp-status smtp-ok">
         <b>Servidor SMTP de OVH Activo</b>
@@ -658,6 +658,26 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
             feedback.textContent = '\u274c Error de conexi\u00f3n al cargar el grupo.';
           });
       };
+    }());
+
+    // Actualización reactiva del contador de visitas en tiempo real cada 10 segundos
+    (function() {
+      setInterval(function() {
+        fetch('groups.php?action=clicks_count')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data.status === 'success' && typeof data.total === 'number') {
+              var counter = document.getElementById('total-visits-counter');
+              if (counter) {
+                var formatted = new Intl.NumberFormat('es-ES').format(data.total);
+                if (counter.textContent !== formatted) {
+                  counter.textContent = formatted;
+                }
+              }
+            }
+          })
+          .catch(function() {});
+      }, 10000);
     }());
   </script>
 </body>
