@@ -322,7 +322,10 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
 <body>
   <header>
     <h1>Gestor de Emails Multimedia · Standarte</h1>
-    <a href="?logout=1">Cerrar Sesión</a>
+    <div style="display:flex; gap:16px; align-items:center;">
+      <a href="manage_images.php" style="background:#ffc800; color:#111; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:0.85rem; transition: opacity 0.2s ease;">Gestionar Imágenes</a>
+      <a href="?logout=1">Cerrar Sesión</a>
+    </div>
   </header>
   <main>
     <section>
