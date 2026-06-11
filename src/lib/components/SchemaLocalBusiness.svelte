@@ -4,7 +4,7 @@
     "@type": "LocalBusiness",
     "@id": "https://standarte.es/#organization",
     "name": "Standarte",
-    "description": "Diseño, fabricación y montaje de stands a medida para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real y Lisboa.",
+    "description": "Diseño, fabricación y montaje de stands a medida para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Zafra, Don Benito, Ciudad Real y Lisboa.",
     "url": "https://standarte.es",
     "telephone": "+34637894819",
     "email": "info@standarte.es",
@@ -27,6 +27,8 @@
       { "@type": "City", "name": "Bilbao" },
       { "@type": "City", "name": "Málaga" },
       { "@type": "City", "name": "Badajoz" },
+      { "@type": "City", "name": "Zafra" },
+      { "@type": "City", "name": "Don Benito" },
       { "@type": "City", "name": "Ciudad Real" },
       { "@type": "City", "name": "Lisboa" }
     ],

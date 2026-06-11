@@ -230,7 +230,10 @@
       ['Construcción de stands en Bilbao', pathFor('es', 'bilbao')],
       ['Construcción de stands en Lisboa', pathFor('es', 'lisboa')],
       ['Construcción de stands en Málaga', pathFor('es', 'malaga')],
-      ['Construcción de stands en Badajoz', pathFor('es', 'badajoz')]
+      ['Construcción de stands en Badajoz', pathFor('es', 'badajoz')],
+      ['Montaje de stands en Zafra', pathFor('es', 'montaje_zafra')],
+      ['Montaje de stands en Don Benito', pathFor('es', 'montaje_don_benito')],
+      ['Montaje de stands en Badajoz', pathFor('es', 'montaje_badajoz')]
     ];
 
     const organization = {

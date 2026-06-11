@@ -27,6 +27,9 @@ export const routes = {
     lisboa: 'construccion_stands_lisboa',
     malaga: 'construccion_stands_malaga',
     badajoz: 'construccion_stands_badajoz',
+    montaje_zafra: 'montaje_stand_zafra',
+    montaje_don_benito: 'montaje_stand_don_benito',
+    montaje_badajoz: 'montaje_stand_badajoz',
     noticias: 'noticias',
     ferias: 'ferias'
   },
@@ -43,6 +46,9 @@ export const routes = {
     lisboa: 'stand_construction_lisbon',
     malaga: 'stand_construction_malaga',
     badajoz: 'stand_construction_badajoz',
+    montaje_zafra: 'exhibition_stand_assembly_zafra',
+    montaje_don_benito: 'exhibition_stand_assembly_don_benito',
+    montaje_badajoz: 'exhibition_stand_assembly_badajoz',
     noticias: 'news',
     ferias: 'fairs'
   },
@@ -59,6 +65,9 @@ export const routes = {
     lisboa: 'messestandbau_lissabon',
     malaga: 'messestandbau_malaga',
     badajoz: 'messestandbau_badajoz',
+    montaje_zafra: 'messestandmontage_zafra',
+    montaje_don_benito: 'messestandmontage_don_benito',
+    montaje_badajoz: 'messestandmontage_badajoz',
     noticias: 'nachrichten',
     ferias: 'messen'
   },
@@ -75,6 +84,9 @@ export const routes = {
     lisboa: 'lisbon_zhantai_dajian',
     malaga: 'malaga_zhantai_dajian',
     badajoz: 'badajoz_zhantai_dajian',
+    montaje_zafra: 'zafra_zhantai_dajian',
+    montaje_don_benito: 'don_benito_zhantai_dajian',
+    montaje_badajoz: 'badajoz_zhantai_dajian_montaje',
     noticias: 'xinwen',
     ferias: 'zhanhui'
   },
@@ -91,6 +103,9 @@ export const routes = {
     lisboa: 'lisbon_stand_nirman',
     malaga: 'malaga_stand_nirman',
     badajoz: 'badajoz_stand_nirman',
+    montaje_zafra: 'zafra_stand_nirman',
+    montaje_don_benito: 'don_benito_stand_nirman',
+    montaje_badajoz: 'badajoz_stand_nirman_montaje',
     noticias: 'samachar',
     ferias: 'mele'
   },
@@ -107,6 +122,9 @@ export const routes = {
     lisboa: 'construcao_stands_lisboa',
     malaga: 'construcao_stands_malaga',
     badajoz: 'construcao_stands_badajoz',
+    montaje_zafra: 'montagem_stand_zafra',
+    montaje_don_benito: 'montagem_stand_don_benito',
+    montaje_badajoz: 'montagem_stand_badajoz',
     noticias: 'noticias',
     ferias: 'feiras'
   },
@@ -123,6 +141,9 @@ export const routes = {
     lisboa: 'construction_stands_lisbonne',
     malaga: 'construction_stands_malaga',
     badajoz: 'construction_stands_badajoz',
+    montaje_zafra: 'montage_stands_zafra',
+    montaje_don_benito: 'montage_stands_don_benito',
+    montaje_badajoz: 'montage_stands_badajoz',
     noticias: 'actualites',
     ferias: 'salons'
   },
@@ -139,6 +160,9 @@ export const routes = {
     lisboa: 'allestimenti_fieristici_lisbona',
     malaga: 'allestimenti_fieristici_malaga',
     badajoz: 'allestimenti_fieristici_badajoz',
+    montaje_zafra: 'allestimento_stand_zafra',
+    montaje_don_benito: 'allestimento_stand_don_benito',
+    montaje_badajoz: 'allestimento_stand_badajoz',
     noticias: 'notizie',
     ferias: 'fiere'
   },
@@ -155,6 +179,9 @@ export const routes = {
     lisboa: 'lisbon-bujeu-jejak',
     malaga: 'malaga-bujeu-jejak',
     badajoz: 'badajoz-bujeu-jejak',
+    montaje_zafra: 'zafra-bujeu-jejak',
+    montaje_don_benito: 'don-benito-bujeu-jejak',
+    montaje_badajoz: 'badajoz-bujeu-jejak-montaje',
     noticias: 'sosig',
     ferias: 'jeonsihoe'
   }
@@ -947,7 +974,7 @@ export const cityData = {
     content: {
       es: {
         intro: 'Madrid concentra una parte esencial de la actividad ferial en España. En Standarte desarrollamos stands en Madrid con 20 años de experiencia y un taller propio que garantiza un proceso impecable: diseño técnico, producción, logística, montaje, validaciones y coordinación in situ antes de la apertura del evento.',
-        detail: 'Este servicio está dirigido a agencias de comunicación y marcas que necesitan una ejecución fiable, acabados cuidados y un stand listo para recibir a visitantes profesionales.'
+        detail: ''
       },
       en: {
         intro: 'Madrid concentrates an essential part of trade fair activity in Spain. At Standarte, backed by 20 years of experience and our own workshop, we develop exhibition stands in Madrid through a complete process: technical design, production, logistics, installation, validation, and on-site coordination before the event opens.',
@@ -988,39 +1015,39 @@ export const cityData = {
     content: {
       es: {
         intro: 'Como sede de eventos mundiales como el MWC o ISE, Barcelona exige un nivel de producción sobresaliente. En Standarte, con 20 años de experiencia y taller propio, diseñamos, fabricamos y montamos stands de alto impacto en Fira de Barcelona.',
-        detail: 'Aportamos fiabilidad técnica y un acabado Premium, resolviendo los retos de logística y normativas del recinto para que el cliente solo tenga que centrarse en sus objetivos comerciales.'
+        detail: ''
       },
       en: {
         intro: 'As the venue for global events like MWC and ISE, Barcelona demands outstanding production levels. At Standarte, with 20 years of experience and our own workshop, we design, manufacture, and assemble high-impact stands at Fira de Barcelona.',
-        detail: 'We provide technical reliability and a Premium finish, overcoming logistics and venue regulations so the client can focus solely on their commercial goals.'
+        detail: ''
       },
       de: {
         intro: 'Als Austragungsort globaler Events wie MWC und ISE erfordert Barcelona herausragende Produktionsstandards. Bei Standarte entwerfen, fertigen und montieren wir mit 20 Jahren Erfahrung und eigener Werkstatt wirkungsvolle Messestände in der Fira de Barcelona.',
-        detail: 'Wir bieten technische Zuverlässigkeit und Premium-Oberflächen und meistern logistische Herausforderungen, damit sich der Kunde ganz auf seine Ziele konzentrieren kann.'
+        detail: ''
       },
       pt: {
         intro: 'Como sede de eventos globais como o MWC ou ISE, Barcelona exige um nível de produção excecional. Na Standarte, com 20 anos de experiência e oficina própria, desenhamos, fabricamos e montamos stands de grande impacto na Fira de Barcelona.',
-        detail: 'Aportamos fiabilidade técnica e um acabamento Premium, resolvendo os desafios de logística e normativas do recinto para que o cliente se concentre nos seus objetivos.'
+        detail: ''
       },
       fr: {
         intro: 'En tant qu\'hôte d\'événements mondiaux comme le MWC ou l\'ISE, Barcelone exige un niveau de production exceptionnel. Chez Standarte, avec 20 ans d\'expérience et notre propre atelier, nous concevons, fabriquons et montons des stands à fort impact à la Fira de Barcelona.',
-        detail: 'Nous apportons une fiabilité technique et une finition Premium, résolvant les défis logistiques et réglementaires pour que le client se concentre sur ses objectifs commerciaux.'
+        detail: ''
       },
       it: {
         intro: 'In quanto sede di eventi globali come MWC o ISE, Barcellona richiede un livello di produzione eccezionale. In Standarte, con 20 anni di esperienza e un laboratorio di proprietà, progettiamo, produciamo e montiamo stand di grande impatto presso la Fira de Barcelona.',
-        detail: 'Garantiamo affidabilità tecnica e una finitura Premium, superando le sfide logistiche e normative in modo che il cliente possa concentrarsi sui propri obiettivi.'
+        detail: ''
       },
       zh: {
         intro: '作为 MWC 和 ISE 等全球赛事的举办地，巴塞罗那需要出色的制作水平。在 Standarte，凭借 20 年的经验和自己的工厂，我们在巴塞罗那会展中心设计、制造和组装具有高影响力的展台。',
-        detail: '我们提供技术可靠性和高级效果，克服物流和场馆法规，让客户能够专注于他们的商业目标。'
+        detail: ''
       },
       hi: {
         intro: 'MWC और ISE जैसे वैश्विक आयोजनों के स्थल के रूप में, बार्सिलोना को उत्कृष्ट उत्पादन स्तर की आवश्यकता है। स्टैंडार्ट में, 20 वर्षों के अनुभव और हमारे अपने कारखाने के साथ, हम फिरा डी बार्सिलोना में उच्च प्रभाव वाले स्टैंड डिजाइन, निर्माण और इकट्ठा करते हैं।',
-        detail: 'हम तकनीकी विश्वसनीयता और एक प्रीमियम खत्म प्रदान करते हैं, रसद और स्थल नियमों पर काबू पाने के लिए ताकि ग्राहक पूरी तरह से अपने व्यावसायिक लक्ष्यों पर ध्यान केंद्रित कर सके।'
+        detail: ''
       },
       ko: {
         intro: 'MWC 및 ISE와 같은 글로벌 이벤트의 개최지로서 바르셀로나는 뛰어난 생산 수준을 요구합니다. Standarte에서는 20년의 경험과 자체 공장을 바탕으로 Fira de Barcelona에서 큰 영향을 미치는 부스를 설계, 제조 및 조립합니다.',
-        detail: '고객이 상업적 목표에만 집중할 수 있도록 물류 및 현장 규정을 극복하여 기술적 신뢰성과 프리미엄 마감을 제공합니다.'
+        detail: ''
       }
     }
   },
@@ -1029,39 +1056,39 @@ export const cityData = {
     content: {
       es: {
         intro: 'Bilbao Exhibition Centre (BEC) es uno de los recintos más innovadores. Gracias a nuestra red logística, 20 años de experiencia y un gran taller propio, garantizamos montajes de stands de diseño impecable para ferias líderes como BIEMH.',
-        detail: 'Combinamos una planificación milimétrica en el taller con un equipo de montaje especializado que cuida hasta el último detalle en el recinto.'
+        detail: ''
       },
       en: {
         intro: 'Bilbao Exhibition Centre (BEC) is one of the most innovative venues. Thanks to our logistics network, 20 years of experience, and a large own workshop, we guarantee flawless custom stand assembly for leading fairs like BIEMH.',
-        detail: 'We combine rigorous planning in the workshop with a specialized assembly team that takes care of every last detail on-site.'
+        detail: ''
       },
       de: {
         intro: 'Das Bilbao Exhibition Centre (BEC) ist einer der innovativsten Veranstaltungsorte. Dank unseres Logistiknetzwerks, 20 Jahren Erfahrung und einer großen eigenen Werkstatt garantieren wir tadellose Messestandmontagen für Leitmessen wie die BIEMH.',
-        detail: 'Wir kombinieren präzise Planung in der Werkstatt mit einem spezialisierten Montageteam, das vor Ort auf jedes Detail achtet.'
+        detail: ''
       },
       pt: {
         intro: 'O Bilbao Exhibition Centre (BEC) é um dos recintos mais inovadores. Graças à nossa rede logística, 20 anos de experiência e uma grande oficina própria, garantimos a montagem de stands de design impecável para feiras líderes como a BIEMH.',
-        detail: 'Combinamos um planeamento rigoroso na oficina com uma equipa de montagem especializada que cuida de cada detalhe no recinto.'
+        detail: ''
       },
       fr: {
         intro: 'Le Bilbao Exhibition Centre (BEC) est l\'un des lieux les plus innovants. Grâce à notre réseau logistique, 20 ans d\'expérience et un grand atelier propre, nous garantissons des montages de stands impeccables pour des salons majeurs comme BIEMH.',
-        detail: 'Nous combinons une planification rigoureuse en atelier avec une équipe de montage spécialisée qui soigne chaque détail sur place.'
+        detail: ''
       },
       it: {
         intro: 'Il Bilbao Exhibition Centre (BEC) è uno dei poli espositivi più innovativi. Grazie alla nostra rete logistica, a 20 anni di esperienza e a un grande laboratorio di proprietà, garantiamo l\'allestimento di stand dal design impeccabile per fiere leader come BIEMH.',
-        detail: 'Combiniamo una rigorosa pianificazione in laboratorio con una squadra di montaggio specializzata che cura ogni dettaglio in loco.'
+        detail: ''
       },
       zh: {
         intro: '毕尔巴鄂展览中心 (BEC) 是最具创新性的场馆之一。凭借我们的物流网络、20 年的经验和自有大型工厂，我们为 BIEMH 等领先的展览会提供完美的定制展台搭建。',
-        detail: '我们将工厂严谨的计划与专业的组装团队相结合，确保在现场处理好每一个细节。'
+        detail: ''
       },
       hi: {
         intro: 'बिलबाओ प्रदर्शनी केंद्र (BEC) सबसे नवीन स्थानों में से एक है। हमारे रसद नेटवर्क, 20 वर्षों के अनुभव और एक बड़े अपने कारखाने के लिए धन्यवाद, हम BIEMH जैसे प्रमुख मेलों के लिए निर्दोष कस्टम स्टैंड असेंबली की गारंटी देते हैं।',
-        detail: 'हम साइट पर हर अंतिम विवरण का ख्याल रखने वाली एक विशेष असेंबली टीम के साथ कार्यशाला में कठोर योजना को जोड़ते हैं।'
+        detail: ''
       },
       ko: {
         intro: '빌바오 전시 센터(BEC)는 가장 혁신적인 장소 중 하나입니다. 당사의 물류 네트워크, 20년의 경험 및 대규모 자체 공장 덕분에 당사는 BIEMH와 같은 주요 박람회에 완벽한 맞춤형 부스 조립을 보장합니다.',
-        detail: '작업장에서의 엄격한 계획과 현장에서 마지막 세부 사항까지 처리하는 전문 조립 팀을 결합합니다.'
+        detail: ''
       }
     }
   },
@@ -1185,6 +1212,129 @@ export const cityData = {
       ko: {
         intro: '바다호스와 엑스트레마두라는 뿌리 깊은 이벤트를 갖춘 매우 활동적인 행사 허브를 대표합니다. 20년의 경험과 자체 공장을 바탕으로 Standarte에서는 IFEBA 및 FEVAL과 같은 주요 지역 행사장에서 스탠드를 디자인하고 조립합니다.',
         detail: '물류 효율성을 통해 당사는 빠른 솔루션을 제공하고 비용을 최적화하며 AGROEXPO 또는 FECIEX와 같은 주요 이벤트에서 완벽한 스탠드 존재를 보장할 수 있습니다.'
+      }
+    }
+  },
+  montaje_zafra: {
+    city: { es: 'Zafra', en: 'Zafra', de: 'Zafra', zh: '萨夫拉', hi: 'ज़फ़रा', pt: 'Zafra', fr: 'Zafra', it: 'Zafra', ko: '사프라' },
+    content: {
+      es: {
+        intro: 'Zafra es el epicentro de la ganadería y la agroindustria en el suroeste peninsular, celebrando la histórica Feria Internacional Ganadera de Zafra desde 1453.',
+        detail: 'Diseñamos y montamos stands de alta carpintería a medida tanto en sus pabellones comerciales A y B como en las grandes áreas exteriores de maquinaria.'
+      },
+      en: {
+        intro: 'Zafra is the farming and agro-industrial epicentre of southwestern Spain, hosting the historic Zafra International Livestock Fair since 1453.',
+        detail: 'We design and assemble custom premium woodwork stands both in its commercial halls A and B and in the large outdoor machinery exhibition areas.'
+      },
+      pt: {
+        intro: 'Zafra é o epicentro da pecuária e da agroindústria no sudoeste peninsular, acolhendo a histórica Feira Internacional de Zafra desde 1453.',
+        detail: 'Desenhamos e montamos stands de carpintaria premium à medida tanto nos seus pavilhões comerciais A e B como nas grandes áreas exteriores de maquinaria.'
+      },
+      de: {
+        intro: 'Zafra ist das agrarindustrielle Zentrum im Südwesten Spaniens und beheimatet die historische Internationale Landwirtschaftsmesse von Zafra seit 1453.',
+        detail: 'Wir entwerfen und montieren hochwertige Messestände in den kommerziellen Hallen A und B sowie im großen Freigelände für Maschinen.'
+      },
+      fr: {
+        intro: 'Zafra est l\'épicentre de l\'élevage et de l\'agro-industrie dans le sud-ouest de l\'Espagne, accueillant la foire internationale de Zafra depuis 1453.',
+        detail: 'Nous concevons et montons des stands de menuiserie sur mesure dans les halls commerciaux A et B ainsi que dans les grandes zones extérieures.'
+      },
+      it: {
+        intro: 'Zafra è l\'epicentro zootecnico e agroindustriale del sud-ovest della Spagna, sede della storica Fiera Internazionale del Bestiame di Zafra dal 1453.',
+        detail: 'Progettiamo e allestiamo stand su misura in legno pregiato sia nei padiglioni commerciali A e B sia nelle grandi aree macchine all\'aperto.'
+      },
+      zh: {
+        intro: '萨夫拉是西班牙西南部农业和畜牧业的中心，自1453年起举办历史悠久的萨夫拉国际畜牧业展览会。',
+        detail: '我们在其A和B商业展馆以及大型室外机械展示区设计并组装定制的高端木工展台。'
+      },
+      hi: {
+        intro: 'ज़फ़रा दक्षिण-पश्चिमी स्पेन का कृषि और पशुधन केंद्र है, जो 1453 से ऐतिहासिक ज़फ़रा अंतर्राष्ट्रीय पशुधन मेले की मेज़बानी कर रहा है।',
+        detail: 'हम इसके वाणिज्यिक हॉल A and B और बड़े बाहरी मशीनरी प्रदर्शनी क्षेत्रों में कस्टम प्रीमियम लकड़ी के स्टैंड डिजाइन और इकट्ठा करते हैं।'
+      },
+      ko: {
+        intro: '사프라는 스페인 남서부의 축산 및 농업 산업의 중심지로, 1453년부터 역사적인 사프라 국제 가축 박람회를 개최해 왔습니다.',
+        detail: '우리는 상업 홀 A와 B 및 대규모 야외 기계 전시 구역 모두에서 맞춤형 프리미엄 목재 부스를 설계하고 조립합니다.'
+      }
+    }
+  },
+  montaje_don_benito: {
+    city: { es: 'Don Benito', en: 'Don Benito', de: 'Don Benito', zh: '唐贝尼托', hi: 'डॉन बेनिटो', pt: 'Don Benito', fr: 'Don Benito', it: 'Don Benito', ko: '돈 베니토' },
+    content: {
+      es: {
+        intro: 'Don Benito alberga FEVAL, la Institución Ferial de Extremadura, y acoge Agroexpo, el mayor punto de encuentro agrícola y de maquinaria del mercado ibérico.',
+        detail: 'Construimos stands a medida de alta carpintería en sus 22.000 m² de pabellones cubiertos y en su zona exterior para maquinaria y agricultura de precisión.'
+      },
+      en: {
+        intro: 'Don Benito hosts FEVAL, the Trade Fair Institution of Extremadura, and Agroexpo, the largest agricultural and machinery trade show in the Iberian market.',
+        detail: 'We build custom woodwork stands in its 22,000 sqm of covered pavilions and its outdoor area for agricultural machinery and precision farming.'
+      },
+      pt: {
+        intro: 'Don Benito abriga a FEVAL, a Instituição de Feiras da Extremadura, e acolhe a Agroexpo, o maior ponto de encontro agrícola e de maquinaria do mercado ibérico.',
+        detail: 'Construímos stands de carpintaria à medida nos seus 22.000 m² de pavilhões cobertos e na sua área exterior para maquinaria e agricultura de precisão.'
+      },
+      de: {
+        intro: 'Don Benito beherbergt FEVAL, die Messeinstitution von Extremadura, und veranstaltet Agroexpo, den größten landwirtschaftlichen Treffpunkt auf der Iberischen Halbinsel.',
+        detail: 'Wir bauen maßgeschneiderte Messestände in den 22.000 m² überdachten Hallen sowie im Außenbereich für Maschinen und Präzisionslandwirtschaft.'
+      },
+      fr: {
+        intro: 'Don Benito abrite FEVAL, l\'institution foirale d\'Estrémadure, et accueille Agroexpo, le plus grand salon agricole et de machines du marché ibérique.',
+        detail: 'Nous construisons des stands sur mesure dans ses 22 000 m² de halls couverts et dans sa zone extérieure pour les machines de précision.'
+      },
+      it: {
+        intro: 'Don Benito ospita la FEVAL, l\'istituzione fieristica dell\'Estremadura, e accoglie Agroexpo, il più grande incontro agricolo e di macchinari del mercato iberico.',
+        detail: 'Costruiamo stand in legno su misura nei suoi 22.000 mq di padiglioni coperti e nella sua area esterna per macchine agricole e agricoltura di precisione.'
+      },
+      zh: {
+        intro: '唐贝尼托是埃斯特雷马杜拉展览机构（FEVAL）的所在地，并举办伊比利亚市场最大的农业和机械贸易展Agroexpo。',
+        detail: '我们在其22,000平方米的室内展馆以及用于展示农业机械和精准农业的室外区域建造定制的木工展台。'
+      },
+      hi: {
+        intro: 'डॉन बेनिटो FEVAL (एक्स्ट्रीमादुra व्यापार मेला संस्थान) और एग्रोएक्सपो की मेजबानी करता है, जो इबेरियन बाजार में सबसे बड़ा कृषि और मशीनरी शो है।',
+        detail: 'हम इसके 22,000 वर्ग मीटर के कवर पैवेलियन और कृषि मशीनरी और सटीक खेती के लिए इसके बाहरी क्षेत्र में कस्टम लकड़ी के स्टैंड बनाते हैं।'
+      },
+      ko: {
+        intro: '돈 베니토는 엑스트레마두라 박람회 기관(FEVAL)의 소재지이며 이베리아 시장에서 가장 큰 농업 및 기계 박람회인 Agroexpo를 개최합니다.',
+        detail: '우리는 22,000제곱미터의 실내 전시관과 농업 기계 및 정밀 농업을 위한 야외 공간에 맞춤형 목재 부스를 제작합니다.'
+      }
+    }
+  },
+  montaje_badajoz: {
+    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz', ko: '바다호스' },
+    content: {
+      es: {
+        intro: 'Badajoz y su recinto ferial IFEBA son la puerta de entrada al comercio transfronterizo con Portugal (La Raya), celebrando certámenes líderes como FECIEX o Fehispor.',
+        detail: 'Realizamos el diseño, fabricación y montaje de stands premium de carpintería a medida en los 10.000 m² cubiertos de IFEBA y sus amplios exteriores.'
+      },
+      en: {
+        intro: 'Badajoz and its IFEBA exhibition centre are the gateway to cross-border trade with Portugal, hosting leading trade shows like FECIEX and Fehispor.',
+        detail: 'We carry out the design, manufacture, and setup of premium custom woodwork stands in IFEBA\'s 10,000 sqm covered halls and its large outdoor areas.'
+      },
+      pt: {
+        intro: 'Badajoz e o seu recinto de feiras IFEBA são a porta de entrada para o comércio transfronteiriço com Portugal, acolhendo certames líderes como FECIEX ou Fehispor.',
+        detail: 'Realizamos o design, fabrico e montagem de stands premium de carpintaria nos 10.000 m² cobertos da IFEBA e nas suas amplas áreas exteriores.'
+      },
+      de: {
+        intro: 'Badajoz und sein Messegelände IFEBA sind das Tor zum grenzüberschreitenden Handel mit Portugal und Austragungsort führender Messen wie FECIEX oder Fehispor.',
+        detail: 'Wir entwerfen, fertigen und montieren Premium-Messestände in den 10.000 m² überdachten Hallen von IFEBA und auf dem großen Freigelände.'
+      },
+      fr: {
+        intro: 'Badajoz et son parc des expositions IFEBA sont la porte d\'entrée du commerce transfrontalier avec le Portugal, accueillant des salons majeurs comme FECIEX ou Fehispor.',
+        detail: 'Nous concevons, fabriquons et montons des stands de menuiserie haut de gamme dans les 10 000 m² couverts d\'IFEBA et ses vastes espaces extérieurs.'
+      },
+      it: {
+        intro: 'Badajoz e il suo centro fieristico IFEBA sono la porta d\'accesso al commercio transfrontaliero con il Portogallo, ospitando fiere leader come FECIEX o Fehispor.',
+        detail: 'Realizziamo la progettazione, produzione e allestimento di stand in legno pregiato nei 10.000 mq coperti di IFEBA e nelle sue grandi aree esterne.'
+      },
+      zh: {
+        intro: '巴达霍斯及其 IFEBA 展览中心是与葡萄牙开展跨境贸易的门户，举办 FECIEX 和 Fehispor 等领先的贸易博览会。',
+        detail: '我们在 IFEBA 的 10,000 平方米室内展馆和大型室外区域提供高端定制木工展台的设计、制造和搭建。'
+      },
+      hi: {
+        intro: 'बादाहोज़ और इसका IFEBA प्रदर्शनी केंद्र पुर्तगाल के साथ सीमा पार व्यापार का प्रवेश द्वार हैं, जो FECIEX और Fehispor जैसे प्रमुख शो की मेजबानी करते हैं।',
+        detail: 'हम IFEBA के 10,000 वर्ग मीटर के कवर हॉल और इसके बड़े बाहरी क्षेत्रों में premium custom लकड़ी के स्टैंड का डिज़ाइन, निर्माण और सेटअप करते हैं।'
+      },
+      ko: {
+        intro: '바다호스와 IFEBA 전시 센터는 포르투갈과의 국경 무역 관문이며 FECIEX 및 Fehispor와 같은 주요 무역 박람회를 개최합니다.',
+        detail: '우리는 IFEBA의 10,000제곱미터 실내 전시관과 대규모 야외 공간에 프리미엄 맞춤형 목재 부스의 설계, 제작 및 설치를 수행합니다.'
       }
     }
   }
