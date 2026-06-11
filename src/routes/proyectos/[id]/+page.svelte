@@ -3,20 +3,7 @@
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
 
-  let dropdownAlign = 'right';
-  function handleLangMenuHover(event) {
-    if (typeof window === 'undefined') return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    const leftSpace = rect.left;
-    const rightSpace = window.innerWidth - rect.right;
-    if (leftSpace < 120) {
-      dropdownAlign = 'left';
-    } else if (rightSpace < 120) {
-      dropdownAlign = 'right';
-    } else {
-      dropdownAlign = 'center';
-    }
-  }
+
 
   export let data;
   $: project = data.project;
@@ -483,9 +470,9 @@
         <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
         <li><a href={pathFor(lang, 'noticias')} class="footer-link-button">{currentCopy.nav.noticias}</a></li>
         <li class="footer-lang-item">
-          <div class="footer-lang-menu" on:mouseenter={handleLangMenuHover}>
+          <div class="footer-lang-menu">
             <span class="footer-lang-trigger"><FlagIcon langCode={lang} size={22} /></span>
-            <div class="footer-lang-dropdown align-{dropdownAlign}">
+            <div class="footer-lang-dropdown">
               {#each languages as option}
                 <button
                   type="button"

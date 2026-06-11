@@ -48,11 +48,18 @@
 
   // Prototipos 3D Carousel State
   let carouselIndex = 0;
-  let carouselVisibleCount = 3;
   let shuffledProjects = [...projects];
 
+  function getVisibleCount() {
+    if (typeof window === 'undefined') return 3;
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  }
+
   function nextSlide() {
-    if (carouselIndex < shuffledProjects.length - carouselVisibleCount) {
+    const visibleCount = getVisibleCount();
+    if (carouselIndex < shuffledProjects.length - visibleCount) {
       carouselIndex++;
     } else {
       carouselIndex = 0;
@@ -60,10 +67,11 @@
   }
 
   function prevSlide() {
+    const visibleCount = getVisibleCount();
     if (carouselIndex > 0) {
       carouselIndex--;
     } else {
-      carouselIndex = shuffledProjects.length - carouselVisibleCount;
+      carouselIndex = shuffledProjects.length - visibleCount;
     }
   }
 
@@ -516,17 +524,6 @@
 
     updateScrollState();
 
-    const updateVisibleCount = () => {
-      if (window.innerWidth <= 768) {
-        carouselVisibleCount = 1;
-      } else if (window.innerWidth <= 1024) {
-        carouselVisibleCount = 2;
-      } else {
-        carouselVisibleCount = 3;
-      }
-    };
-    updateVisibleCount();
-    window.addEventListener('resize', updateVisibleCount);
 
     if (section && section !== 'home') {
       let targetId = section;
@@ -582,7 +579,6 @@
     return () => {
       observer.disconnect();
       countersObserver.disconnect();
-      window.removeEventListener('resize', updateVisibleCount);
       clearInterval(autoplayInterval);
     };
   });
@@ -850,9 +846,9 @@
         <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'fr' ? 'Précédent' : (lang === 'it' ? 'Precedente' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))))}>‹</button>
         
         <div class="carousel-viewport">
-          <div class="carousel-track" style="transform: translateX(-{carouselIndex * (100 / carouselVisibleCount)}%);">
+          <div class="carousel-track" style="transform: translateX(calc(-1 * {carouselIndex} * 100% / var(--visible-count)));">
             {#each shuffledProjects as project}
-              <article class="carousel-card" style="width: {100 / carouselVisibleCount}%;">
+              <article class="carousel-card" style="width: calc(100% / var(--visible-count));">
                 <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-link">
                   <div class="carousel-img-wrap">
                     <img src={project.image} alt={getProjectTitle(project)} loading="lazy" />

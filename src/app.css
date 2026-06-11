@@ -2039,6 +2039,19 @@ footer {
   overflow: hidden;
   position: relative;
   padding: 15px 0;
+  --visible-count: 3;
+}
+
+@media (max-width: 1024px) {
+  .carousel-viewport {
+    --visible-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-viewport {
+    --visible-count: 1;
+  }
 }
 
 .carousel-track {
