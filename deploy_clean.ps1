@@ -5,8 +5,10 @@
 # y luego sincroniza de forma recursiva todos los archivos y directorios de 'dist/' a '/www/'.
 
 $ftpHost = "ftp.cluster028.hosting.ovh.net"
-$ftpUser = "standap"
-$ftpPass = "Extrategia37"
+# Credenciales en .vscode/sftp.json, fuera del repositorio
+$sftpConfig = Get-Content -Raw (Join-Path $PSScriptRoot ".vscode\sftp.json") | ConvertFrom-Json
+$ftpUser = $sftpConfig.username
+$ftpPass = $sftpConfig.password
 $remoteRoot = "ftp://$ftpHost/www"
 
 # 1. Tarea de Limpieza: Eliminar directorios obsoletos

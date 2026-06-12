@@ -5,8 +5,22 @@ const { exec } = require('child_process');
 const curlCmd = process.platform === 'win32' ? 'curl.exe' : 'curl';
 
 const ftpHost = 'ftp.cluster028.hosting.ovh.net';
-const ftpUser = process.env.FTP_USER || 'standap';
-const ftpPass = process.env.FTP_PASS || 'Extrategia37';
+
+// Credenciales: por entorno (CI usa secrets FTP_USER/FTP_PASS); en local,
+// como respaldo, se leen de .vscode/sftp.json (fuera del repositorio).
+let ftpUser = process.env.FTP_USER;
+let ftpPass = process.env.FTP_PASS;
+if (!ftpUser || !ftpPass) {
+  try {
+    const sftpConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '.vscode', 'sftp.json'), 'utf8'));
+    ftpUser = ftpUser || sftpConfig.username;
+    ftpPass = ftpPass || sftpConfig.password;
+  } catch (e) { /* sin sftp.json: se valida abajo */ }
+}
+if (!ftpUser || !ftpPass) {
+  console.error('[ERROR] Faltan credenciales FTP: define FTP_USER/FTP_PASS o crea .vscode/sftp.json');
+  process.exit(1);
+}
 const remoteRoot = 'ftp://ftp.cluster028.hosting.ovh.net/www';
 
 console.log('==========================================================');

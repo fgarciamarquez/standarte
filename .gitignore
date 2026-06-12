@@ -12,3 +12,4 @@ static/admin/email_campaing/data/smtp_password.txt
 admin/email_campaing/data/smtp_password.txt
 dist/admin/email_campaing/data/smtp_password.txt
 src/lib/projectIndex.js
+.vscode/sftp.json

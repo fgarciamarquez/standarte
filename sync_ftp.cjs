@@ -6,10 +6,12 @@ async function syncFTP() {
     const client = new ftp.Client();
     client.ftp.verbose = true;
     try {
+        // Credenciales en .vscode/sftp.json, fuera del repositorio
+        const sftpConfig = JSON.parse(fs.readFileSync(path.join(__dirname, ".vscode", "sftp.json"), "utf8"));
         await client.access({
             host: "ftp.cluster028.hosting.ovh.net",
-            user: "standap",
-            password: "Extrategia37",
+            user: sftpConfig.username,
+            password: sftpConfig.password,
             secure: false
         });
         

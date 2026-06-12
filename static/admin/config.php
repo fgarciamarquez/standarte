@@ -33,7 +33,11 @@ $ano_futuro = date("Y", strtotime("+1 years", strtotime($ano_actual)));
 */
 $GLOBALS["SMTP_HOST"] = 'ssl0.ovh.net';
 $GLOBALS["SMTP_USERNAME"] = 'info@standarte.es';
-$GLOBALS["SMTP_PASSWORD"] = 'Extrategia37';
+// La contraseña SMTP vive en email_campaing/data/smtp_password.txt, fuera del repositorio.
+$smtpPasswordFile = __DIR__ . '/email_campaing/data/smtp_password.txt';
+$GLOBALS["SMTP_PASSWORD"] = is_readable($smtpPasswordFile)
+    ? trim(str_replace("\xEF\xBB\xBF", '', file_get_contents($smtpPasswordFile)))
+    : '';
 $GLOBALS["SMTP_SECURE"] = 'ssl';
 $GLOBALS["SMTP_PORT"] = 465;
 $GLOBALS["SMTP_CHARSET"] = 'UTF-8';

@@ -1,5 +1,11 @@
 <?php
 
+// La contraseña SMTP vive en data/smtp_password.txt, fuera del repositorio.
+$smtpPasswordFile = __DIR__ . '/data/smtp_password.txt';
+$smtpPassword = is_readable($smtpPasswordFile)
+    ? trim(str_replace("\xEF\xBB\xBF", '', file_get_contents($smtpPasswordFile)))
+    : '';
+
 $config = array(
     'site_url' => 'https://standarte.es',
     'from_email' => 'info@standarte.es',
@@ -12,7 +18,7 @@ $config = array(
         'port' => 465,
         'encryption' => 'ssl',
         'username' => 'info@standarte.es',
-        'password' => 'Extrategia37',
+        'password' => $smtpPassword,
         'timeout' => 20
     ),
     'phone' => '+34 613 097 148',
