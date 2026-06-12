@@ -4,10 +4,9 @@
 // Límite: 15 correos por ejecución (diseñado para correr cada hora de 08:00 a 18:00 -> ~150/día).
 // Ventana: Desde 5 meses antes hasta 3 meses antes de la fecha del evento (2 meses de duración).
 
-require_once 'config.php';
+$config = require_once 'config.php';
 require_once 'template.php';
 require_once 'mailer.php';
-require_once 'leads.php'; 
 
 // Token de seguridad para ejecucion via GitHub Actions
 if (!isset($_GET['token']) || $_GET['token'] !== 'TKN-8f3a9b1c7d2e4') {
@@ -152,7 +151,7 @@ if (empty($contactsToSend)) {
 
 echo "Se enviarán correos a " . count($contactsToSend) . " contactos en esta ejecución.\n";
 
-$categoryId = 'stand_madera'; 
+$categoryId = 'stands_madera'; 
 $category = $config['categories'][$categoryId];
 
 $sentCount = 0;
