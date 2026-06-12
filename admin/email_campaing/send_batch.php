@@ -129,10 +129,16 @@ foreach ($recipients as $email) {
     if (campaign_send_mail($config, $email, $processedSubject, $emailHtml)) {
         $sentEmails[] = $email;
         if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
-            campaign_supabase_request('PATCH', 'contacts?email=eq.' . urlencode($email), array(
+            $contactData = array(
+                'email' => $email,
+                'empresa' => $emailCompany,
+                'feria' => 'Standarte',
+                'categoria' => $category['label'],
+                'status' => 'active',
                 'drip_sent' => true,
                 'updated_at' => date('c')
-            ));
+            );
+            campaign_supabase_request('POST', 'contacts?on_conflict=email', $contactData);
         }
     } else {
         $failedEmails[] = $email;

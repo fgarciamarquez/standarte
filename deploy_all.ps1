@@ -25,5 +25,6 @@ UploadFile "admin\email_campaing\index.php" "admin/email_campaing/index.php"
 UploadFile "admin\email_campaing\groups.php" "admin/email_campaing/groups.php"
 UploadFile "admin\email_campaing\send_batch.php" "admin/email_campaing/send_batch.php"
 UploadFile "admin\email_campaing\mailer.php" "admin/email_campaing/mailer.php"
+UploadFile "admin\email_campaing\manage_images.php" "admin/email_campaing/manage_images.php"
 
 
