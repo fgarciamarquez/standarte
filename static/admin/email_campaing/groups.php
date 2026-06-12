@@ -39,6 +39,90 @@ if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // ============================================================
+// ACCIÓN: Obtener estadísticas de clics totales en tiempo real
+// ============================================================
+if ($action === 'clicks_count') {
+    $chCount = curl_init();
+    curl_setopt($chCount, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=id');
+    curl_setopt($chCount, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chCount, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($chCount, CURLOPT_HEADER, true);
+    curl_setopt($chCount, CURLOPT_NOBODY, true);
+    curl_setopt($chCount, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY,
+        'Prefer: count=exact'
+    ]);
+    $header = curl_exec($chCount);
+    $count = 0;
+    if (preg_match('/Content-Range:\s*[0-9]+-[0-9]+\/([0-9]+)/i', $header, $matches)) {
+        $count = (int)$matches[1];
+    }
+    curl_close($chCount);
+    
+    echo json_encode([
+        'status' => 'success',
+        'total' => $count
+    ]);
+    exit;
+}
+
+// ============================================================
+// ACCIÓN: Obtener grupos en la ventana de goteo con sent counts
+// ============================================================
+if ($action === 'active_drip_groups') {
+    $dateWindowStart = date('Y-m-d', strtotime('+3 months')); 
+    $dateWindowEnd = date('Y-m-d', strtotime('+5 months'));
+    
+    $result = groups_supabase_get('lead_groups?select=name,event_date,leads_with_email&event_date=gte.' . $dateWindowStart . '&event_date=lte.' . $dateWindowEnd . '&order=event_date.asc');
+    
+    if ($result['code'] !== 200 || !is_array($result['body'])) {
+        echo json_encode(['status' => 'error', 'message' => 'Error obteniendo grupos de Supabase o ningún grupo activo.']);
+        exit;
+    }
+    
+    $groups = $result['body'];
+    
+    // Obtener recuento de envíos por grupo
+    $sentResult = groups_supabase_get('contacts?select=lead_group&drip_sent=is.true&limit=10000');
+    $sentCounts = [];
+    if ($sentResult['code'] === 200 && is_array($sentResult['body'])) {
+        foreach ($sentResult['body'] as $c) {
+            $lg = $c['lead_group'];
+            if (!isset($sentCounts[$lg])) $sentCounts[$lg] = 0;
+            $sentCounts[$lg]++;
+        }
+    }
+    
+    // Obtener recuento de envíos en luz_contacts
+    $sentResultLuz = groups_supabase_get('luz_contacts?select=lead_group&drip_sent=is.true&limit=10000');
+    if ($sentResultLuz['code'] === 200 && is_array($sentResultLuz['body'])) {
+        foreach ($sentResultLuz['body'] as $c) {
+            $lg = $c['lead_group'];
+            if (!isset($sentCounts[$lg])) $sentCounts[$lg] = 0;
+            $sentCounts[$lg]++;
+        }
+    }
+    
+    foreach ($groups as &$g) {
+        $g['sent_count'] = isset($sentCounts[$g['name']]) ? $sentCounts[$g['name']] : 0;
+    }
+    
+    $cronStatus = array();
+    $cronStatusFile = __DIR__ . '/data/cron_status.json';
+    if (is_file($cronStatusFile)) {
+        $cronStatus = json_decode(file_get_contents($cronStatusFile), true);
+    }
+    
+    echo json_encode([
+        'status' => 'success',
+        'groups' => $groups,
+        'cron_status' => $cronStatus
+    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    exit;
+}
+
+// ============================================================
 // ACCIÓN: Listar todos los grupos disponibles
 // ============================================================
 if ($action === 'list') {

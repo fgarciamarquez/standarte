@@ -2,8 +2,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// 1. Cargar configuración de base de datos local
-require_once __DIR__ . '/admin/config.php';
+// 1. Cargar configuración de Supabase
+$supaConfigPath = __DIR__ . '/supabase-config.php';
+if (!file_exists($supaConfigPath)) {
+    die("Error: No se encontró supabase-config.php");
+}
+require_once $supaConfigPath;
 require_once __DIR__ . '/admin/presupuesto_form_object.php';
 
 // 2. Obtener parámetros
@@ -20,23 +24,49 @@ if ($id <= 0 || empty($token) || !in_array($action, ['yes', 'no'])) {
     die("Error: Parámetros inválidos.");
 }
 
-if (!$db) {
-    die("Error: No se pudo conectar a la base de datos local.");
+// Helper para llamadas REST a Supabase pasando el token en los headers para la política RLS
+function supa_api_request($endpoint, $method = 'GET', $data = null, $token = '') {
+    $url = SUPABASE_URL . '/rest/v1/' . $endpoint;
+    $ch = curl_init($url);
+    
+    $headers = array(
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY,
+        'Content-Type: application/json'
+    );
+    
+    if (!empty($token)) {
+        $headers[] = 'x-budget-token: ' . $token;
+    }
+    
+    if ($method === 'PATCH') {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+        $headers[] = 'Prefer: return=representation';
+    }
+    
+    if ($data) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    }
+    
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    return array('code' => $httpCode, 'data' => json_decode($response, true) ?: $response);
 }
 
-// 3. Consultar datos en base de datos local
-try {
-    $stmt = $db->prepare("SELECT * FROM presupuestos WHERE id = ?");
-    $stmt->execute([$id]);
-    $lead = $stmt->fetch(PDO::FETCH_ASSOC);
-} catch (Exception $e) {
-    die("Error consultando base de datos: " . $e->getMessage());
+// 3. Consultar los datos de la solicitud en Supabase
+$response = supa_api_request('presupuestos?id=eq.' . $id, 'GET', null, $token);
+
+if ($response['code'] !== 200 || empty($response['data']) || !is_array($response['data'])) {
+    die("Error: Solicitud no encontrada o token inválido.");
 }
 
-if (!$lead) {
-    die("Error: Solicitud no encontrada.");
-}
-
+$lead = $response['data'][0];
 $email = $lead['email'];
 $nombre = $lead['nombre'];
 $empresa = $lead['empresa'];
@@ -51,13 +81,10 @@ if ($token !== $expected_token) {
 // 5. Determinar estado de actualización
 $status_db = ($action === 'yes') ? 'Y_SUPERIOR' : 'N_INFERIOR';
 
-// Actualizar registro en base de datos local
-try {
-    $updateStmt = $db->prepare("UPDATE presupuestos SET respuesta_enviada = ? WHERE id = ?");
-    $updateStmt->execute([$status_db, $id]);
-} catch (Exception $e) {
-    die("Error al actualizar la solicitud: " . $e->getMessage());
-}
+// Actualizar registro en Supabase
+$update_res = supa_api_request('presupuestos?id=eq.' . $id, 'PATCH', array(
+    'respuesta_enviada' => $status_db
+), $token);
 
 // 6. Enviar emails
 $invitationEmail = new InvitationEmail();
@@ -154,7 +181,7 @@ $invitationEmail->sendEmailMessage($messageDetails);
 
 // C. Si es Cualificado (yes), notificar a Standarte admin (info@standarte.es)
 if ($action === 'yes') {
-    $admin_subject = "NUEVO LEAD CUALIFICADO (LOCAL) - " . $feria . " - " . $nombre;
+    $admin_subject = "NUEVO LEAD CUALIFICADO - " . $feria . " - " . $nombre;
     
     $admin_html = "
     <!DOCTYPE html>
@@ -165,9 +192,10 @@ if ($action === 'yes') {
     </head>
     <body style='font-family: Arial, sans-serif; font-size: 15px; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;'>
         <div style='background-color: #ffc800; color: #000; padding: 20px; text-align: center; font-weight: bold; border-radius: 6px 6px 0 0;'>
-            NUEVO LEAD CUALIFICADO (LOCAL)
+            NUEVO LEAD CUALIFICADO (PRESUPUESTO ESTIMADO SUPERIOR)
         </div>
         <div style='padding: 20px; border: 1px solid #ddd; border-top: none; border-radius: 0 0 6px 6px;'>
+            <p>Se ha recibido una confirmación de presupuesto para el siguiente contacto:</p>
             <table style='width: 100%; border-collapse: collapse;'>
                 <tr>
                     <td style='padding: 8px; border-bottom: 1px solid #eee; font-weight: bold; width: 35%;'>Nombre:</td>
@@ -206,6 +234,7 @@ if ($action === 'yes') {
                     <td style='padding: 8px; border-bottom: 1px solid #eee; font-size: 13px;'>" . $lead['opciones'] . "</td>
                 </tr>
             </table>
+            <p style='margin-top: 20px; font-size: 13px; color: #777;'>* El lead ha sido marcado como 'Y_SUPERIOR' en la base de datos.</p>
         </div>
     </body>
     </html>";

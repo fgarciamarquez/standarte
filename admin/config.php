@@ -54,7 +54,8 @@ function connectDatabase()
 
         return $db;
     } catch (PDOException $ex) {
-        die('Conexión PDO-MySQL erronea. Por favor, compruebe el archivo de configuración');
+        // Return null instead of dying so Supabase fallback works
+        return null;
     }
 }
 
