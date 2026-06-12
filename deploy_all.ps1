@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 $sftpConfigPath = Join-Path $PSScriptRoot ".vscode\sftp.json"
 $config = Get-Content -Raw $sftpConfigPath | ConvertFrom-Json
-$hostName = "ftp.cluster128.hosting.ovh.net"
+$hostName = "ftp.cluster028.hosting.ovh.net"
 $username = $config.username
 $password = $config.password
 
