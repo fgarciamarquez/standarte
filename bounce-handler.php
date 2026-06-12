@@ -106,8 +106,9 @@ function scan_imap_bounces() {
     }
     $result['connected'] = true;
 
-    // 4. Buscar correos no leídos (UNSEEN)
-    $msgIds = imap_search($mbox, 'UNSEEN');
+    // 4. Buscar correos (tanto leídos como no leídos) de los últimos 30 días
+    $sinceDate = date("d-M-Y", strtotime("-30 days"));
+    $msgIds = imap_search($mbox, 'SINCE "' . $sinceDate . '"');
     if (!$msgIds) {
         $result['success'] = true;
         imap_close($mbox);
@@ -874,7 +875,7 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
 
                     logLines.innerHTML += `<div style="color: var(--color-success); margin-top: 5px;">[ÉXITO] Conexión IMAP cerrada correctamente.</div>`;
                     logLines.innerHTML += `<div style="margin-top: 15px; font-weight: bold; border-top: 1px dashed var(--color-border); padding-top: 10px; color: var(--color-primary);">Resumen del Proceso:</div>`;
-                    logLines.innerHTML += `<div>- Correos no leídos en bandeja: <span style="color: #ffffff; font-weight: bold;">${data.unseen_count}</span></div>`;
+                    logLines.innerHTML += `<div>- Correos analizados en bandeja (últimos 30 días): <span style="color: #ffffff; font-weight: bold;">${data.unseen_count}</span></div>`;
                     logLines.innerHTML += `<div>- Correos de rebote identificados: <span style="color: #ffffff; font-weight: bold;">${data.bounces_detected}</span></div>`;
                     logLines.innerHTML += `<div>- Contactos actualizados en Supabase: <span style="color: var(--color-success); font-weight: bold;">${data.processed_count}</span></div>`;
 

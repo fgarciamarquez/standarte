@@ -45,6 +45,16 @@ async function syncFTP() {
         await client.ensureDir(remoteRoot);
         await uploadRecursive(localDistRoot, remoteRoot);
         
+        await client.ensureDir("/www/img");
+        console.log("Uploading Sevilla and Ciudad Real cover images...");
+        await client.uploadFrom("c:/MAMP/htdocs/STANDARTE_SVELTE/dist/img/cover_sevilla.avif", "/www/img/cover_sevilla.avif");
+        await client.uploadFrom("c:/MAMP/htdocs/STANDARTE_SVELTE/dist/img/cover_sevilla-mobile.avif", "/www/img/cover_sevilla-mobile.avif");
+        await client.uploadFrom("c:/MAMP/htdocs/STANDARTE_SVELTE/dist/img/cover_sevilla.png", "/www/img/cover_sevilla.png");
+        
+        await client.uploadFrom("c:/MAMP/htdocs/STANDARTE_SVELTE/dist/img/cover_ciudad_real.avif", "/www/img/cover_ciudad_real.avif");
+        await client.uploadFrom("c:/MAMP/htdocs/STANDARTE_SVELTE/dist/img/cover_ciudad_real-mobile.avif", "/www/img/cover_ciudad_real-mobile.avif");
+        await client.uploadFrom("c:/MAMP/htdocs/STANDARTE_SVELTE/dist/img/cover_ciudad_real.png", "/www/img/cover_ciudad_real.png");
+        
         console.log("Upload successful!");
     }
     catch(err) {

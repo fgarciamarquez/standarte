@@ -112,6 +112,41 @@ function campaign_get_email_clicks()
     return array('total' => $count, 'history' => $history);
 }
 
+function campaign_get_active_drip_groups()
+{
+    $configFile = __DIR__ . '/../../supabase-config.php';
+    if (!is_file($configFile)) {
+        return array();
+    }
+    require_once $configFile;
+
+    if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
+        return array();
+    }
+
+    $dateWindowStart = date('Y-m-d', strtotime('+3 months')); 
+    $dateWindowEnd = date('Y-m-d', strtotime('+5 months'));
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/lead_groups?select=name,event_date,leads_with_email&event_date=gte.' . $dateWindowStart . '&event_date=lte.' . $dateWindowEnd . '&order=event_date.asc');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    
+    $response = curl_exec($ch);
+    curl_close($ch);
+    
+    $groups = json_decode($response, true);
+    if (!is_array($groups) || isset($groups['code']) || isset($groups['message'])) {
+        return array();
+    }
+    
+    return $groups;
+}
+
 require __DIR__ . '/mailer.php';
 
 
@@ -268,9 +303,29 @@ if (!$previewHtml && isset($config['categories'][$selectedCategory])) {
 $clicksData = campaign_get_email_clicks();
 $totalEmailVisits = $clicksData['total'];
 $clicksHistory = $clicksData['history'];
+$activeDripGroups = campaign_get_active_drip_groups();
 $sendLog = campaign_get_send_log();
 $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host']) && !empty($config['smtp']['username']) && !empty($config['smtp']['password']);
 
+$cronStatus = array();
+$cronStatusFile = __DIR__ . '/data/cron_status.json';
+if (is_file($cronStatusFile)) {
+    $cronStatus = json_decode(file_get_contents($cronStatusFile), true);
+}
+
+$isCronWarning = false;
+if (!empty($cronStatus) && isset($cronStatus['last_run'])) {
+    $lastRunTime = strtotime($cronStatus['last_run']);
+    if ((time() - $lastRunTime) > (24 * 3600)) {
+        $isCronWarning = true;
+    }
+}
+
+$statusColor = $isCronWarning ? '#e67e22' : '#2ecc71';
+$statusBgColor = $isCronWarning ? 'rgba(230, 126, 34, 0.08)' : 'rgba(46, 204, 113, 0.08)';
+$statusBorderColor = $isCronWarning ? 'rgba(230, 126, 34, 0.25)' : 'rgba(46, 204, 113, 0.25)';
+$statusTextColor = $isCronWarning ? '#d35400' : '#27ae60';
+$statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo Activo';
 ?>
 <!doctype html>
 <html lang="es">
@@ -317,12 +372,44 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
     .hint { color:#666666; font-size:.85rem; line-height:1.45; }
     .preview-subject { background:#f5f6f8; border-left:4px solid #ffc800; color:#333333; font-size:.9rem; line-height:1.45; margin:0 0 1rem; padding:.75rem .9rem; border-radius: 4px; border: 1px solid #e1e4e8; border-left-width: 4px; }
     @media (max-width: 950px) { main { grid-template-columns:1fr; } }
+    
+    /* System Status Indicator Styles */
+    .system-status-indicator { display: flex; align-items: center; gap: 8px; background: <?php echo $statusBgColor; ?>; border: 1px solid <?php echo $statusBorderColor; ?>; padding: 7px 14px; border-radius: 20px; cursor: pointer; user-select: none; transition: background 0.2s ease, transform 0.1s ease; }
+    .system-status-indicator:hover { background: <?php echo $isCronWarning ? 'rgba(230, 126, 34, 0.15)' : 'rgba(46, 204, 113, 0.15)'; ?>; }
+    .system-status-indicator:active { transform: scale(0.97); }
+    .status-dot { width: 9px; height: 9px; background-color: <?php echo $statusColor; ?>; border-radius: 50%; box-shadow: 0 0 8px <?php echo $statusColor; ?>; animation: blink-dot 1.5s infinite ease-in-out; }
+    .status-text { font-size: 0.8rem; font-weight: bold; color: <?php echo $statusTextColor; ?>; }
+    @keyframes blink-dot {
+      0%, 100% { opacity: 0.45; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px <?php echo $statusColor; ?>; }
+    }
+    
+    /* Modal Overlay Styles */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
+    .modal-content { background: #ffffff; border-radius: 8px; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); border-top: 4px solid #2ecc71; animation: modal-appear 0.25s ease-out; overflow: hidden; }
+    @keyframes modal-appear {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #f0f0f0; }
+    .modal-header h3 { margin: 0; font-size: 1.1rem; color: #111; font-weight: bold; }
+    .close-btn { font-size: 1.5rem; cursor: pointer; color: #888; font-weight: bold; line-height: 1; }
+    .close-btn:hover { color: #111; }
+    .modal-body { padding: 20px; }
+    .drip-groups-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .drip-groups-table th, .drip-groups-table td { text-align: left; padding: 10px; border-bottom: 1px solid #f0f0f0; font-size: 0.88rem; }
+    .drip-groups-table th { background-color: #f9fafb; font-weight: bold; color: #555; }
+    .drip-groups-table tr:hover td { background-color: #fcfdfd; }
   </style>
 </head>
 <body>
   <header>
     <h1>Gestor de Emails Multimedia · Standarte</h1>
     <div style="display:flex; gap:16px; align-items:center;">
+      <div class="system-status-indicator" onclick="toggleDripGroupsModal()">
+        <span class="status-dot"></span>
+        <span class="status-text"><?php echo $statusLabel; ?></span>
+      </div>
       <a href="manage_images.php" style="background:#ffc800; color:#111; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:0.85rem; transition: opacity 0.2s ease;">Gestionar Imágenes</a>
       <a href="?logout=1">Cerrar Sesión</a>
     </div>
@@ -679,6 +766,90 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           .catch(function() {});
       }, 10000);
     }());
+  </script>
+
+  <!-- Drip groups details modal -->
+  <div id="drip-groups-modal" class="modal-overlay" style="display:none;" onclick="closeDripGroupsModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Envíos Autónomos Activos</h3>
+        <span class="close-btn" onclick="toggleDripGroupsModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Estado del cronjob -->
+        <div style="background: <?php echo $isCronWarning ? '#fffbeb' : '#f0fdf4'; ?>; border: 1px solid <?php echo $isCronWarning ? '#fef3c7' : '#dcfce7'; ?>; border-radius: 6px; padding: 12px 14px; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 10px;">
+          <div style="font-size: 1.25rem; color: <?php echo $isCronWarning ? '#d97706' : '#16a34a'; ?>; line-height: 1; font-weight: bold;">
+            <?php echo $isCronWarning ? '⚠' : '✓'; ?>
+          </div>
+          <div style="font-size: 0.82rem; line-height: 1.4; color: <?php echo $isCronWarning ? '#92400e' : '#166534'; ?>;">
+            <div style="font-weight: bold; font-size: 0.88rem; margin-bottom: 3px;">
+              <?php echo $isCronWarning ? 'Alerta de Inactividad' : 'Sistema Autónomo Operativo'; ?>
+            </div>
+            <?php if (empty($cronStatus)): ?>
+              El sistema de correos autónomos está activo y esperando su primera ejecución programada.
+            <?php else: 
+              $lastRunTime = strtotime($cronStatus['last_run']);
+            ?>
+              Última ejecución: <strong><?php echo date('d/m/Y H:i:s', $lastRunTime); ?></strong><br>
+              Resultado: <strong><?php echo $cronStatus['status'] === 'success' ? 'Correcto' : 'Error'; ?></strong>
+              <?php if (isset($cronStatus['sent_count'])): ?>
+                · Enviados: <strong><?php echo intval($cronStatus['sent_count']); ?> emails</strong>
+              <?php endif; ?>
+              <br>Detalle: <em><?php echo htmlspecialchars($cronStatus['message']); ?></em>
+              <?php if ($isCronWarning): ?>
+                <div style="margin-top: 6px; font-weight: bold; color: #b45309;">
+                  Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.
+                </div>
+              <?php endif; ?>
+            <?php endif; ?>
+          </div>
+        </div>
+
+        <p style="font-size: 0.88rem; color: #555; margin: 0 0 0.75rem 0; font-weight: bold;">Listas en ventana de envío (3 a 5 meses):</p>
+        <?php if (empty($activeDripGroups)): ?>
+          <p style="font-weight: bold; color: #f39c12; text-align: center; margin: 1.5rem 0; font-size: 0.9rem;">No hay ningún grupo activo en la ventana de 3-5 meses en este momento.</p>
+        <?php else: ?>
+          <table class="drip-groups-table">
+            <thead>
+              <tr>
+                <th>Nombre del Grupo</th>
+                <th>Fecha del Evento</th>
+                <th>Contactos</th>
+                <th>Antelación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($activeDripGroups as $g): 
+                $daysLeft = (strtotime($g['event_date']) - time()) / (24 * 3600);
+                $monthsLeft = round($daysLeft / 30, 1);
+                $totalLeads = isset($g['leads_with_email']) ? intval($g['leads_with_email']) : 0;
+              ?>
+                <tr>
+                  <td><b><?php echo htmlspecialchars($g['name']); ?></b></td>
+                  <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($g['event_date']))); ?></td>
+                  <td><?php echo $totalLeads; ?></td>
+                  <td>Faltan <b><?php echo $monthsLeft; ?> m</b> (<?php echo round($daysLeft); ?> d)</td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        <?php endif; ?>
+        <div style="margin-top: 1.25rem; font-size: 0.78rem; color: #888; border-top: 1px solid #eee; padding-top: 0.75rem; line-height: 1.3;">
+          * El cronjob automático procesa secuencialmente un máximo de 15 correos pendientes por hora.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleDripGroupsModal() {
+      var modal = document.getElementById('drip-groups-modal');
+      modal.style.display = modal.style.display === 'none' ? 'flex' : 'none';
+    }
+    function closeDripGroupsModal(e) {
+      document.getElementById('drip-groups-modal').style.display = 'none';
+    }
   </script>
 </body>
 </html>

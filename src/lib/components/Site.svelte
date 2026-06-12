@@ -103,7 +103,7 @@
     it: 'it-IT',
     ko: 'ko-KR'
   };
-  const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz'];
+  const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz', 'sevilla', 'ciudad_real'];
   const cookieSettingsLabels = {
     es: 'Configurar cookies',
     en: 'Cookie settings',

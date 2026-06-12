@@ -24,6 +24,16 @@ if (!file_exists($supaConfigPath)) {
 }
 require_once $supaConfigPath;
 
+function write_cron_status($status, $message, $extra = []) {
+    $statusFile = __DIR__ . '/data/cron_status.json';
+    $statusData = array_merge([
+        'last_run' => date('c'),
+        'status' => $status,
+        'message' => $message,
+    ], $extra);
+    file_put_contents($statusFile, json_encode($statusData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+}
+
 function supa_request($endpoint, $method = 'GET', $data = null) {
     $url = SUPABASE_URL . '/rest/v1/' . $endpoint;
     $ch = curl_init($url);
@@ -63,11 +73,13 @@ $endpointGroups = 'lead_groups?event_date=gte.' . $dateWindowStart . '&event_dat
 $res = supa_request($endpointGroups);
 
 if ($res['code'] !== 200 || !is_array($res['data'])) {
+    write_cron_status('error', 'Error obteniendo grupos de Supabase o ningún grupo activo.');
     die("Error obteniendo grupos de Supabase o ningún grupo activo.\n");
 }
 
 $groups = $res['data'];
 if (empty($groups)) {
+    write_cron_status('success', 'No hay eventos en la ventana de 3-5 meses de antelación para hoy.', ['active_groups' => []]);
     echo "No hay eventos en la ventana de 3-5 meses de antelación para hoy.\n";
     exit;
 }
@@ -145,6 +157,11 @@ foreach ($tablesToSearch as $tableName) {
 }
 
 if (empty($contactsToSend)) {
+    write_cron_status('success', 'No quedan contactos pendientes de envío (drip_sent = false) en estos grupos.', [
+        'active_groups' => $activeGroupNames,
+        'emails_to_send' => 0,
+        'sent_count' => 0
+    ]);
     echo "No quedan contactos pendientes de envío (drip_sent = false) en estos grupos.\n";
     exit;
 }
@@ -217,4 +234,9 @@ foreach ($contactsToSend as $contact) {
     sleep(1);
 }
 
+write_cron_status('success', "Proceso cron finalizado. Correos enviados: $sentCount", [
+    'active_groups' => $activeGroupNames,
+    'emails_to_send' => count($contactsToSend),
+    'sent_count' => $sentCount
+]);
 echo "Proceso cron finalizado. Correos enviados: $sentCount\n";

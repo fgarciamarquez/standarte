@@ -27,6 +27,8 @@ export const routes = {
     lisboa: 'construccion_stands_lisboa',
     malaga: 'construccion_stands_malaga',
     badajoz: 'construccion_stands_badajoz',
+    sevilla: 'construccion_stands_sevilla',
+    ciudad_real: 'construccion_stands_ciudad_real',
     montaje_zafra: 'montaje_stand_zafra',
     montaje_don_benito: 'montaje_stand_don_benito',
     montaje_badajoz: 'montaje_stand_badajoz',
@@ -46,6 +48,8 @@ export const routes = {
     lisboa: 'stand_construction_lisbon',
     malaga: 'stand_construction_malaga',
     badajoz: 'stand_construction_badajoz',
+    sevilla: 'stand_construction_seville',
+    ciudad_real: 'stand_construction_ciudad_real',
     montaje_zafra: 'exhibition_stand_assembly_zafra',
     montaje_don_benito: 'exhibition_stand_assembly_don_benito',
     montaje_badajoz: 'exhibition_stand_assembly_badajoz',
@@ -65,6 +69,8 @@ export const routes = {
     lisboa: 'messestandbau_lissabon',
     malaga: 'messestandbau_malaga',
     badajoz: 'messestandbau_badajoz',
+    sevilla: 'messestandbau_sevilla',
+    ciudad_real: 'messestandbau_ciudad_real',
     montaje_zafra: 'messestandmontage_zafra',
     montaje_don_benito: 'messestandmontage_don_benito',
     montaje_badajoz: 'messestandmontage_badajoz',
@@ -84,6 +90,8 @@ export const routes = {
     lisboa: 'lisbon_zhantai_dajian',
     malaga: 'malaga_zhantai_dajian',
     badajoz: 'badajoz_zhantai_dajian',
+    sevilla: 'sevilla_zhantai_dajian',
+    ciudad_real: 'ciudad_real_zhantai_dajian',
     montaje_zafra: 'zafra_zhantai_dajian',
     montaje_don_benito: 'don_benito_zhantai_dajian',
     montaje_badajoz: 'badajoz_zhantai_dajian_montaje',
@@ -103,6 +111,8 @@ export const routes = {
     lisboa: 'lisbon_stand_nirman',
     malaga: 'malaga_stand_nirman',
     badajoz: 'badajoz_stand_nirman',
+    sevilla: 'sevilla_stand_nirman',
+    ciudad_real: 'ciudad_real_stand_nirman',
     montaje_zafra: 'zafra_stand_nirman',
     montaje_don_benito: 'don_benito_stand_nirman',
     montaje_badajoz: 'badajoz_stand_nirman_montaje',
@@ -122,6 +132,8 @@ export const routes = {
     lisboa: 'construcao_stands_lisboa',
     malaga: 'construcao_stands_malaga',
     badajoz: 'construcao_stands_badajoz',
+    sevilla: 'construcao_stands_sevilla',
+    ciudad_real: 'construcao_stands_ciudad_real',
     montaje_zafra: 'montagem_stand_zafra',
     montaje_don_benito: 'montagem_stand_don_benito',
     montaje_badajoz: 'montagem_stand_badajoz',
@@ -141,6 +153,8 @@ export const routes = {
     lisboa: 'construction_stands_lisbonne',
     malaga: 'construction_stands_malaga',
     badajoz: 'construction_stands_badajoz',
+    sevilla: 'construction_stands_seville',
+    ciudad_real: 'construction_stands_ciudad_real',
     montaje_zafra: 'montage_stands_zafra',
     montaje_don_benito: 'montage_stands_don_benito',
     montaje_badajoz: 'montage_stands_badajoz',
@@ -160,6 +174,8 @@ export const routes = {
     lisboa: 'allestimenti_fieristici_lisbona',
     malaga: 'allestimenti_fieristici_malaga',
     badajoz: 'allestimenti_fieristici_badajoz',
+    sevilla: 'allestimenti_fieristici_sevilla',
+    ciudad_real: 'allestimenti_fieristici_ciudad_real',
     montaje_zafra: 'allestimento_stand_zafra',
     montaje_don_benito: 'allestimento_stand_don_benito',
     montaje_badajoz: 'allestimento_stand_badajoz',
@@ -179,6 +195,8 @@ export const routes = {
     lisboa: 'lisbon-bujeu-jejak',
     malaga: 'malaga-bujeu-jejak',
     badajoz: 'badajoz-bujeu-jejak',
+    sevilla: 'sevilla-bujeu-jejak',
+    ciudad_real: 'ciudad_real-bujeu-jejak',
     montaje_zafra: 'zafra-bujeu-jejak',
     montaje_don_benito: 'don-benito-bujeu-jejak',
     montaje_badajoz: 'badajoz-bujeu-jejak-montaje',
@@ -1212,6 +1230,88 @@ export const cityData = {
       ko: {
         intro: '바다호스와 엑스트레마두라는 뿌리 깊은 이벤트를 갖춘 매우 활동적인 행사 허브를 대표합니다. 20년의 경험과 자체 공장을 바탕으로 Standarte에서는 IFEBA 및 FEVAL과 같은 주요 지역 행사장에서 스탠드를 디자인하고 조립합니다.',
         detail: '물류 효율성을 통해 당사는 빠른 솔루션을 제공하고 비용을 최적화하며 AGROEXPO 또는 FECIEX와 같은 주요 이벤트에서 완벽한 스탠드 존재를 보장할 수 있습니다.'
+      }
+    }
+  },
+  sevilla: {
+    city: { es: 'Sevilla', en: 'Seville', de: 'Sevilla', zh: '塞维利亚', hi: 'सेविले', pt: 'Sevilha', fr: 'Séville', it: 'Siviglia', ko: '세비야' },
+    content: {
+      es: {
+        intro: 'Sevilla es uno de los destinos feriales y de congresos más importantes del sur de Europa. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en FIBES I y FIBES II.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Seville is one of the most important trade show and congress destinations in southern Europe. With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation, and coordination of stands at FIBES I and FIBES II.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Sevilla ist eines der wichtigsten Messe- und Kongressziele in Südeuropa. Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen bei FIBES I und FIBES II.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'Sevilha é um dos destinos de feiras e congressos mais importantes do sul da Europa. Com 20 anos de experiência e oficina própria, a Standarte assume o design técnico, produção, instalação e coordenação de stands na FIBES I e FIBES II.',
+        detail: 'A nossa equipa garante às marcas e agências criativas uma execução robusta, pontual e com acabamentos de excelência.'
+      },
+      fr: {
+        intro: 'Séville est l\'une des destinations de salons et de congrès les plus importantes du sud de l\'Europe. Avec 20 ans d\'expérience et un propre atelier de haut niveau, Standarte prend en charge la conception technique, la production et l\'installation des stands à FIBES I et FIBES II.',
+        detail: 'Notre équipe garantit aux marques et aux agences créatives une exécution robuste, ponctuelle et avec des finitions haut de gamme.'
+      },
+      it: {
+        intro: 'Siviglia è una delle destinazioni fieristiche e congressuali più importanti del sud Europa. Con 20 anni di esperienza e un laboratorio di proprietà di primo livello, Standarte assume la progettazione tecnica, la produzione, l\'installazione e il coordinamento degli stand presso FIBES I e FIBES II.',
+        detail: 'Il nostro team garantisce ai marchi aziendali e alle agenzie creative un\'esecuzione solida, puntuale e con finiture di alto livello.'
+      },
+      zh: {
+        intro: '塞维利亚是欧洲南部最重要的展览和会议目的地之一。凭借 20 年的丰富经验 and 我们自己顶级的工厂，Standarte 承担了 FIBES I 和 FIBES II 展台的技术设计、生产、安装和协调。',
+        detail: '我们的团队向企业品牌和创意机构保证，执行稳健、准时，并具有高端效果。'
+      },
+      hi: {
+        intro: 'सेविले दक्षिणी यूरोप में सबसे महत्वपूर्ण व्यापार शो और कांग्रेस स्थलों में से un एक है। 20 वर्षों के अनुभव और एक tops-स्तरीय अपने कारखाने के साथ, स्टैंडार्ट FIBES I और FIBES II में स्टैंड के तकनीकी डिजाइन, उत्पादन, स्थापना और समन्वय को संभालता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांडों और रचनात्मक एजेंसियों को उच्च अंत खत्म के साथ एक मजबूत, समय पर निष्पादन की गारंटी देती है।'
+      },
+      ko: {
+        intro: '세비야는 남유럽에서 가장 중요한 박람회 및 총회 목적지 중 하나입니다. 20년의 경험과 최고 수준의 자체 공장을 바탕으로 Standarte는 FIBES I 및 FIBES II에서 부스의 기술적 디자인, 생산, 설치 및 조정을 담당합니다.',
+        detail: '우리 팀은 기업 브랜드와 크리에이티브 에이전시에게 고급 마감 처리를 통한 강력하고 적시의 실행을 보장합니다.'
+      }
+    }
+  },
+  ciudad_real: {
+    city: { es: 'Ciudad Real', en: 'Ciudad Real', de: 'Ciudad Real', zh: '雷阿尔城', hi: 'स्यूदाদ रियल', pt: 'Ciudad Real', fr: 'Ciudad Real', it: 'Ciudad Real', ko: '시우다드레알' },
+    content: {
+      es: {
+        intro: 'Ciudad Real cuenta con una de las infraestructuras de congresos y ferias más modernas y de mayor crecimiento en el centro de España: el recinto ferial IFEDI. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en IFEDI.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Ciudad Real boasts one of the most modern and fastest-growing congress and exhibition infrastructures in central Spain: the IFEDI venue. With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation, and coordination of stands at IFEDI.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Ciudad Real verfügt über eine der modernsten und am schnellsten wachsenden Kongress- und Messeinfrastrukturen in Zentralspanien: das Messegelände IFEDI. Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen bei IFEDI.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'Ciudad Real conta com uma das infraestruturas de congressos e feiras mais modernas e de maior crescimento no centro de Espanha: o recinto ferial IFEDI. Com 20 anos de experiência e oficina própria, a Standarte assume o design técnico, produção, instalação e coordenação de stands na IFEDI.',
+        detail: 'A nossa equipa garante às marcas e agências criativas uma execução robusta, pontual e com acabamentos de excelência.'
+      },
+      fr: {
+        intro: 'Ciudad Real dispose de l\'une des infrastructures de congrès et de salons les plus modernes et les plus dynamiques du centre de l\'Espagne : le parc des expositions IFEDI. Avec 20 ans d\'expérience et un propre atelier de haut niveau, Standarte prend en charge la conception technique, la production et l\'installation des stands à IFEDI.',
+        detail: 'Notre équipe garantit aux marques et aux agences créatives une exécution robuste, ponctuelle et avec des finitions haut de gamme.'
+      },
+      it: {
+        intro: 'Ciudad Real vanta una delle infrastrutture per congressi e fiere più moderne e in rapida crescita del centro della Spagna: il complesso fieristico IFEDI. Con 20 anni di esperienza e un laboratorio di proprietà di primo livello, Standarte assume la progettazione tecnica, la produzione, l\'installazione e il coordinamento degli stand presso IFEDI.',
+        detail: 'Il nostro team garantisce ai marchi aziendali e alle agenzie creative un\'esecuzione solida, puntuale e con finiture di alto livello.'
+      },
+      zh: {
+        intro: '雷阿尔城拥有西班牙中部最现代且增长最快的会议 and 展览基础设施之一：IFEDI 展览馆。凭借 20 年的丰富经验 and 我们自己顶级的工厂，Standarte 承担了 IFEDI 展台的技术设计、生产、安装 and 协调。',
+        detail: '我们的团队向企业品牌 and 创意机构保证，执行稳健、准时，并具有高端效果。'
+      },
+      hi: {
+        intro: 'स्यूदाद रियल मध्य स्पेन में सबसे आधुनिक और सबसे तेजी से बढ़ते कांग्रेस और प्रदर्शनी बुनियादी ढांचे में से एक है: IFEDI स्थल। 20 वर्षों के अनुभव और एक tops-स्तरीय अपने कारखाने के साथ, स्टैंडार्ट IFEDI में स्टैंड के तकनीकी डिजाइन, उत्पादन, स्थापना और समन्वय को संभालता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांडों और रचनात्मक एजेंसियों को उच्च अंत खत्म के साथ एक मजबूत, समय पर निष्पादन की गारंटी देती है।'
+      },
+      ko: {
+        intro: '시우다드레알은 스페인 중부에서 가장 현대적이고 빠르게 성장하는 회의 및 전시 인프라 중 하나인 IFEDI 전시장을 보유하고 있습니다. 20년의 경험과 최고 수준의 자체 공장을 바탕으로 Standarte는 IFEDI에서 부스의 기술적 디자인, 생산, 설치 및 조정을 담당합니다.',
+        detail: '우리 팀은 기업 브랜드와 크리에이티브 에이전시에게 고급 마감 처리를 통한 강력하고 적시의 실행을 보장합니다.'
       }
     }
   },
