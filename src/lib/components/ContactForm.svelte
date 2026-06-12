@@ -72,6 +72,14 @@
               <label for="form_email" class="form-label">{labels.form.email}</label>
               <input id="form_email" class="form-control" name="form_email" placeholder={labels.form.email} type="email" required />
             </div>
+            <div class="col col-6 form-group">
+              <label for="form_feria" class="form-label">{labels.form.fair}</label>
+              <input id="form_feria" class="form-control" name="form_feria" placeholder={labels.form.fair} required />
+            </div>
+            <div class="col col-6 form-group">
+              <label for="form_metros" class="form-label">{labels.form.meters}</label>
+              <input id="form_metros" class="form-control" name="form_metros" placeholder={labels.form.meters} type="number" min="1" required />
+            </div>
             <div class="col col-12 form-group">
               <label for="form_descripcion" class="form-label">{labels.form.description}</label>
               <textarea id="form_descripcion" class="form-control" name="form_descripcion" placeholder={labels.form.description} rows="6" required></textarea>

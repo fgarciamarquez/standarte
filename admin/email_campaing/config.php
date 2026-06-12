@@ -1,6 +1,6 @@
 <?php
 
-return array(
+$config = array(
     'site_url' => 'https://standarte.es',
     'from_email' => 'info@standarte.es',
     'from_name' => 'Standarte',
@@ -273,3 +273,13 @@ return array(
         )
     )
 );
+
+$jsonFile = __DIR__ . '/data/images_config.json';
+if (is_file($jsonFile)) {
+    $customImages = json_decode(file_get_contents($jsonFile), true);
+    if (is_array($customImages)) {
+        $config['categories']['stands_madera']['images'] = $customImages;
+    }
+}
+
+return $config;

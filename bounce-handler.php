@@ -98,6 +98,10 @@ function scan_imap_bounces() {
     $result['config_ok'] = true;
 
     // 3. Conectar al servidor IMAP
+    // Establecer un timeout de conexión de 10 segundos
+    if (function_exists('imap_timeout')) {
+        @imap_timeout(IMAP_OPENTIMEOUT, 10);
+    }
     // Desactivar temporalmente el reporte de errores de IMAP para capturarlos controladamente
     $mbox = @imap_open(IMAP_HOST, IMAP_USER, IMAP_PASS);
     if (!$mbox) {
@@ -194,12 +198,24 @@ function scan_imap_bounces() {
                     continue;
                 }
 
-                // Consultar en Supabase
+                // Consultar en Supabase (contacts primero, luego luz_contacts)
                 $res = bounce_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
+                $foundTable = '';
+                $contact = null;
+                
                 if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
                     $contact = $res['body'][0];
-                    $currentStatus = $contact['status'] ?? 'active';
+                    $foundTable = 'contacts';
+                } else {
+                    $resLuz = bounce_supabase_request('GET', 'luz_contacts?email=eq.' . urlencode($email));
+                    if ($resLuz['code'] === 200 && is_array($resLuz['body']) && count($resLuz['body']) > 0) {
+                        $contact = $resLuz['body'][0];
+                        $foundTable = 'luz_contacts';
+                    }
+                }
 
+                if ($contact) {
+                    $currentStatus = $contact['status'] ?? 'active';
                     if ($currentStatus === 'bounced') {
                         if (!in_array($email, $result['already_bounced'])) {
                             $result['already_bounced'][] = $email;
@@ -207,10 +223,13 @@ function scan_imap_bounces() {
                     } else {
                         // Actualizar a 'bounced'
                         $updateData = [
-                            'status' => 'bounced',
-                            'bounce_reason' => 'Rebote automático detectado por IMAP - ' . date('d-m-Y H:i')
+                            'status' => 'bounced'
                         ];
-                        $patchRes = bounce_supabase_request('PATCH', 'contacts?email=eq.' . urlencode($email), $updateData);
+                        if ($foundTable === 'contacts') {
+                            $updateData['bounce_reason'] = 'Rebote automático detectado por IMAP - ' . date('d-m-Y H:i');
+                        }
+                        
+                        $patchRes = bounce_supabase_request('PATCH', $foundTable . '?email=eq.' . urlencode($email), $updateData);
                         if ($patchRes['code'] >= 200 && $patchRes['code'] < 300) {
                             if (!in_array($email, $result['bounced_emails'])) {
                                 $result['bounced_emails'][] = $email;
@@ -323,21 +342,36 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
                 continue;
             }
 
-            // Consultar si existe en Supabase
+            // Consultar si existe en Supabase (contacts primero, luego luz_contacts)
             $res = bounce_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
+            $foundTable = '';
+            $contact = null;
+            
             if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
                 $contact = $res['body'][0];
+                $foundTable = 'contacts';
+            } else {
+                $resLuz = bounce_supabase_request('GET', 'luz_contacts?email=eq.' . urlencode($email));
+                if ($resLuz['code'] === 200 && is_array($resLuz['body']) && count($resLuz['body']) > 0) {
+                    $contact = $resLuz['body'][0];
+                    $foundTable = 'luz_contacts';
+                }
+            }
+
+            if ($contact) {
                 $currentStatus = $contact['status'] ?? 'active';
-                
                 if ($currentStatus === 'bounced') {
                     $alreadyBouncedList[] = $email;
                 } else {
                     // Actualizar estado a 'bounced'
                     $updateData = [
-                        'status' => 'bounced',
-                        'bounce_reason' => $bounceReason . ' - Procesado el ' . date('d-m-Y H:i')
+                        'status' => 'bounced'
                     ];
-                    $patchRes = bounce_supabase_request('PATCH', 'contacts?email=eq.' . urlencode($email), $updateData);
+                    if ($foundTable === 'contacts') {
+                        $updateData['bounce_reason'] = $bounceReason . ' - Procesado el ' . date('d-m-Y H:i');
+                    }
+                    
+                    $patchRes = bounce_supabase_request('PATCH', $foundTable . '?email=eq.' . urlencode($email), $updateData);
                     if ($patchRes['code'] >= 200 && $patchRes['code'] < 300) {
                         $bouncedEmailsList[] = $email;
                         $processedCount++;
@@ -861,9 +895,9 @@ if ($authenticated && isset($_POST['bounce_paste'])) {
                                 if (err.includes('AUTHENTICATIONFAILED') || err.toLowerCase().includes('credentials') || err.toLowerCase().includes('authenticate')) {
                                     logLines.innerHTML += `
                                     <div style="color: var(--color-warning); margin-top: 15px; padding: 15px; background-color: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px; font-size: 13px; line-height: 1.6;">
-                                        <strong style="color: var(--color-warning); font-size: 14px; display: block; margin-bottom: 8px;">Guía de resolución para cuentas de Gmail / Google Workspace:</strong>
-                                        1. <strong>Habilitar acceso IMAP en Gmail:</strong> Entra a tu cuenta en <a href="https://mail.google.com" target="_blank" style="color: var(--color-primary); text-decoration: underline;">mail.google.com</a>, ve a Ajustes (icono de engranaje) -> Ver todos los ajustes -> Reenvío y correo POP/IMAP -> Acceso IMAP -> Selecciona <strong>'Habilitar IMAP'</strong> -> Guardar cambios.<br>
-                                        2. <strong>Contraseña de Aplicación (Recomendado):</strong> Si tienes habilitada la verificación en dos pasos (2FA) en Google, debes generar una contraseña de aplicación específica para este script. Ve a <a href="https://myaccount.google.com/security" target="_blank" style="color: var(--color-primary); text-decoration: underline;">myaccount.google.com/security</a> -> Contraseñas de aplicación -> Genera una y colócala en la constante <code>IMAP_PASS</code> en <code>supabase-config.php</code>.
+                                        <strong style="color: var(--color-warning); font-size: 14px; display: block; margin-bottom: 8px;">Guía de resolución para cuentas de correo de OVH:</strong>
+                                        1. <strong>Comprobar credenciales de OVH:</strong> Asegúrate de que la dirección de correo (<code>IMAP_USER</code>) y la contraseña (<code>IMAP_PASS</code>) configuradas en <code>supabase-config.php</code> son correctas.<br>
+                                        2. <strong>Verificar estado del buzón:</strong> Entra al Webmail de OVH en <a href="https://www.ovh.es/mail/" target="_blank" style="color: var(--color-primary); text-decoration: underline;">webmail.ovh.net</a> para confirmar que el buzón está activo y no está bloqueado por cuotas de espacio o SPAM.
                                     </div>`;
                                 }
                             });

@@ -240,3 +240,27 @@ write_cron_status('success', "Proceso cron finalizado. Correos enviados: $sentCo
     'sent_count' => $sentCount
 ]);
 echo "Proceso cron finalizado. Correos enviados: $sentCount\n";
+
+// Ejecutar el limpiador de rebotes IMAP al finalizar el envío (automatización de limpieza)
+if (defined('BOUNCE_CRON_TOKEN')) {
+    $bounceUrl = $config['site_url'] . '/bounce-handler.php?cron=1&token=' . BOUNCE_CRON_TOKEN;
+    echo "Ejecutando limpiador de rebotes IMAP ($bounceUrl)...\n";
+    $chBounce = curl_init();
+    curl_setopt($chBounce, CURLOPT_URL, $bounceUrl);
+    curl_setopt($chBounce, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chBounce, CURLOPT_TIMEOUT, 30);
+    curl_setopt($chBounce, CURLOPT_SSL_VERIFYPEER, false);
+    $bounceRes = curl_exec($chBounce);
+    $bounceHttpCode = curl_getinfo($chBounce, CURLINFO_HTTP_CODE);
+    curl_close($chBounce);
+
+    if ($bounceHttpCode === 200) {
+        $bounceData = json_decode($bounceRes, true);
+        $detected = isset($bounceData['bounces_detected']) ? $bounceData['bounces_detected'] : 0;
+        $processed = isset($bounceData['processed_count']) ? $bounceData['processed_count'] : 0;
+        echo "Limpiador de rebotes ejecutado con éxito. Rebotes detectados: $detected. Contactos limpiados: $processed.\n";
+    } else {
+        echo "Advertencia: No se pudo ejecutar el limpiador de rebotes (HTTP $bounceHttpCode). Respuesta: $bounceRes\n";
+    }
+}
+

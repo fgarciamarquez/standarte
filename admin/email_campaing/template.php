@@ -93,8 +93,11 @@ function campaign_resolve_company_name($email, $lang, $companyNameInput = '', $s
 
 function campaign_process_placeholders($text, $companyName)
 {
-    // 1. Reemplazar {EMPRESA} (fase insensible) por el nombre de la empresa resuelto
+    // 1. Reemplazar {EMPRESA}, {{EMPRESA}}, {COMPANY}, {{COMPANY}} (case-insensitive) por el nombre de la empresa resuelto
+    $text = preg_replace('/\{\{EMPRESA\}\}/i', $companyName, $text);
     $text = preg_replace('/\{EMPRESA\}/i', $companyName, $text);
+    $text = preg_replace('/\{\{COMPANY\}\}/i', $companyName, $text);
+    $text = preg_replace('/\{COMPANY\}/i', $companyName, $text);
 
     // 2. Limpiar cualquier otro bracket personalizado (ej. {Zayer} -> Zayer)
     $text = preg_replace('/\{([^{}]+)\}/', '$1', $text);

@@ -187,8 +187,7 @@ const galleryImages = [
   { full: 'img/trabajos_email/trabajos_promueve_thumbs_stand-emuge-biemh-2022.jpg', alt: 'Stand de diseño con carpintería artesanal', desc: 'Stand de diseño con carpintería artesanal' },
   { full: 'img/trabajos_email/trabajos_promueve_thumbs_stands-2014-biemh-bilbao-zayer-17.jpg', alt: 'Stand ecológico y sostenible', desc: 'Stand ecológico y sostenible' },
   { full: 'img/trabajos_email/trabajos_promueve_thumbs_stands-2014-biemh-bilbao-zayer-20.jpg', alt: 'Arquitectura efímera para eventos', desc: 'Arquitectura efímera para eventos' },
-  { full: 'img/trabajos_email/trabajos_promueve_thumbs_stands-pescanova.jpg', alt: 'Fabricación y montaje de stands', desc: 'Fabricación y montaje de stands' },
-  { full: 'img/trabajos_email/trabajos_promueve_thumbs_STANDS_2017_EMO_HANNOVER_ZAYER_1.jpg', alt: 'Stand de diseño premium de madera', desc: 'Stand de diseño premium de madera' }
+  { full: 'img/trabajos_email/trabajos_promueve_thumbs_stands-pescanova.jpg', alt: 'Fabricación y montaje de stands', desc: 'Fabricación y montaje de stands' }
 ];
 
 // Feeds RSS de Google News por ciudad

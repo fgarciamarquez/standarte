@@ -242,31 +242,43 @@ function campaign_send_mail($config, $to, $subject, $html)
 
     // 1. Verificar exclusiones (bajas o rebotes) en Supabase antes de enviar (RGPD/LSSI)
     if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $status = 'active';
+        $excludeReason = '';
+        
         $res = campaign_supabase_request('GET', 'contacts?email=eq.' . urlencode($to));
         if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
-            $supaContact = $res['body'][0];
-            $status = $supaContact['status'] ?? 'active';
-            if ($status === 'unsubscribed') {
-                campaign_append_send_log(array(
-                    'date' => date('c'),
-                    'to' => $to,
-                    'subject' => $subject,
-                    'method' => 'skipped',
-                    'accepted' => false,
-                    'error' => 'Envío omitido: El destinatario se dio de baja voluntariamente (LSSI/RGPD).'
-                ));
-                return false;
-            } else if ($status === 'bounced') {
-                campaign_append_send_log(array(
-                    'date' => date('c'),
-                    'to' => $to,
-                    'subject' => $subject,
-                    'method' => 'skipped',
-                    'accepted' => false,
-                    'error' => 'Envío omitido: La dirección de correo electrónico está rebotada/fallida.'
-                ));
-                return false;
+            $status = $res['body'][0]['status'] ?? 'active';
+            $excludeReason = 'contacts';
+        }
+        
+        if ($status !== 'unsubscribed' && $status !== 'bounced') {
+            $resLuz = campaign_supabase_request('GET', 'luz_contacts?email=eq.' . urlencode($to));
+            if ($resLuz['code'] === 200 && is_array($resLuz['body']) && count($resLuz['body']) > 0) {
+                $status = $resLuz['body'][0]['status'] ?? 'active';
+                $excludeReason = 'luz_contacts';
             }
+        }
+
+        if ($status === 'unsubscribed') {
+            campaign_append_send_log(array(
+                'date' => date('c'),
+                'to' => $to,
+                'subject' => $subject,
+                'method' => 'skipped',
+                'accepted' => false,
+                'error' => "Envío omitido: El destinatario se dio de baja voluntariamente (LSSI/RGPD) ($excludeReason)."
+            ));
+            return false;
+        } else if ($status === 'bounced') {
+            campaign_append_send_log(array(
+                'date' => date('c'),
+                'to' => $to,
+                'subject' => $subject,
+                'method' => 'skipped',
+                'accepted' => false,
+                'error' => "Envío omitido: La dirección de correo electrónico está rebotada/fallida ($excludeReason)."
+            ));
+            return false;
         }
     }
 
@@ -310,8 +322,12 @@ function campaign_send_mail($config, $to, $subject, $html)
 /**
  * Valida un email de forma avanzada:
  * 1. Sintaxis básica mediante FILTER_VALIDATE_EMAIL.
- * 2. Filtrado de dominios de correos temporales / desechables comunes.
- * 3. Verificación DNS en tiempo real de registros MX (Mail Exchange) y A.
+ * 2. Validación de extensiones de recursos e imágenes comunes (ej: .webp, .png).
+ * 3. Comprobación contra dominios y nombres de usuario de ejemplo/prueba.
+ * 4. Exclusión de prefijos de sistema, no-reply y rebotes.
+ * 5. Exclusión de cuentas departamentales no comerciales de alto riesgo (RRHH, facturación, prensa).
+ * 6. Filtrado de dominios de correos temporales / desechables comunes.
+ * 7. Verificación DNS en tiempo real de registros MX (Mail Exchange) y A.
  *
  * @param string $email Correo a validar
  * @return bool True si es válido y tiene DNS activo, false en caso contrario
@@ -331,13 +347,84 @@ function campaign_is_valid_email_advanced($email, &$error_msg = null)
         return false;
     }
 
-    // Extraer y limpiar el dominio
+    // Extraer y limpiar el dominio y el usuario
     $parts = explode('@', $email);
     if (count($parts) !== 2) {
         $error_msg = 'Formato de correo electrónico inválido.';
         return false;
     }
+    $user = strtolower(trim($parts[0]));
     $domain = strtolower(trim($parts[1]));
+
+    // 1.1 Validaciones de formato de usuario (local part)
+    if (preg_match('/[^a-z0-9._%+-]/i', $user)) {
+        $error_msg = 'El nombre de usuario contiene caracteres no permitidos.';
+        return false;
+    }
+    
+    if (preg_match('/[._%+-]{2,}/', $user)) {
+        $error_msg = 'El nombre de usuario contiene símbolos especiales consecutivos.';
+        return false;
+    }
+    
+    if (strlen($user) < 2) {
+        $error_msg = 'El nombre de usuario es demasiado corto.';
+        return false;
+    }
+
+    // 1.2 Validar extensiones de imagen/asset en el email o en el dominio (ej: retina assets@2x.png)
+    $ignored_extensions = array(
+        '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.woff2', '.pdf', '.zip', '.avif', '.webp', '.ico', '.mp4', '.mp3'
+    );
+    foreach ($ignored_extensions as $ext) {
+        if (substr($email, -strlen($ext)) === $ext || substr($domain, -strlen($ext)) === $ext) {
+            $error_msg = 'El correo electrónico contiene una extensión de archivo no válida o es un recurso de imagen.';
+            return false;
+        }
+    }
+
+    // 1.3 Validar si es un correo de prueba, ejemplo o placeholder
+    $placeholder_domains = array(
+        'example.com', 'example.org', 'example.net', 'domain.com', 'domain.es', 'domein.nl', 'yourdomain.com',
+        'mysite.com', 'website.com', 'test.com', 'email.com', 'correo.com'
+    );
+    if (in_array($domain, $placeholder_domains, true) || strpos($domain, 'example.') === 0) {
+        $error_msg = 'El dominio de correo es de ejemplo o marcador de posición (placeholder).';
+        return false;
+    }
+
+    // 1.4 Validar prefijos de usuario basura o de rebote
+    $ignored_prefixes = array(
+        'xxx', 'example', 'yourname', 'email', 'correo', 'test', 'name', 'nombre', 'usuario', 'user', 'dummy', 'placeholder'
+    );
+    if (in_array($user, $ignored_prefixes, true)) {
+        $error_msg = 'El nombre de usuario es un valor de prueba o de ejemplo.';
+        return false;
+    }
+
+    // 1.5 Filtro estricto para cuentas de sistema, no-reply y rebotes
+    $system_prefixes = array(
+        'noreply', 'no-reply', 'no_reply', 'dontsend', 'donotreply', 'no.reply', 'bounce', 'bounces', 'mailer-daemon', 
+        'mailerdaemon', 'postmaster', 'hostmaster', 'abuse', 'spam', 'double-bounce', 'root', 'daemon'
+    );
+    foreach ($system_prefixes as $sys_pref) {
+        if ($user === $sys_pref || strpos($user, $sys_pref) === 0) {
+            $error_msg = 'Es una dirección de sistema, de no-recepción (no-reply) o buzón de spam.';
+            return false;
+        }
+    }
+
+    // 1.6 Filtro para cuentas de departamentos no comerciales de alto riesgo
+    $high_risk_roles = array(
+        'rrhh', 'recursoshumanos', 'humanresources', 'hr', 'empleo', 'jobs', 'careers', 'work', 'curriculum', 'cv',
+        'factura', 'facturacion', 'facturación', 'invoices', 'billing', 'accounting', 'contabilidad', 'cobros', 'pagos',
+        'prensa', 'press', 'media', 'news', 'newsletter', 'marketing-internal',
+        'retour', 'devoluciones', 'returns', 'reclamaciones'
+    );
+    if (in_array($user, $high_risk_roles, true)) {
+        $error_msg = 'Es una dirección de correo no comercial de alto riesgo (RRHH, facturación o prensa).';
+        return false;
+    }
 
     // 2. Comprobación de errores tipográficos comunes en dominios (Typo Checker)
     $typo_domains = array(

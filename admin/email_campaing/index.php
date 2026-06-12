@@ -943,6 +943,7 @@ if ($isCronEmpty) {
                 $lastRunTime = strtotime($cronStatus['last_run']);
               ?>
                 Última ejecución: <strong><?php echo date('d/m/Y H:i:s', $lastRunTime); ?></strong><br>
+                Siguiente ejecución en: <strong style="color: #e67e22; font-family: monospace; font-size: 0.95rem;" id="cron-countdown">--:--</strong><br>
                 Resultado: <strong style="<?php echo $isCronError ? 'color:#dc2626;' : ''; ?>"><?php echo $cronStatus['status'] === 'success' ? 'Correcto' : 'Fallo (Error)'; ?></strong>
                 <?php if (isset($cronStatus['sent_count'])): ?>
                   · Enviados: <strong><?php echo intval($cronStatus['sent_count']); ?> emails</strong>
@@ -991,14 +992,81 @@ if ($isCronEmpty) {
             </tbody>
           </table>
         <?php endif; ?>
-        <div style="margin-top: 1.25rem; font-size: 0.78rem; color: #888; border-top: 1px solid #eee; padding-top: 0.75rem; line-height: 1.3;">
-          * El cronjob automático procesa secuencialmente un máximo de 15 correos pendientes por hora.
+        <div style="margin-top: 1.25rem; font-size: 0.8rem; color: #555; border-top: 1px solid #eee; padding-top: 0.75rem; line-height: 1.4; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <span>* El cronjob automático procesa un máximo de 15 correos por hora.</span>
+          <button id="btn-modal-depurar" onclick="runModalDepurarRebotes()" style="background: #2c3e50; color: #ffffff; text-decoration: none; padding: 6px 12px; font-size: 0.78rem; border-radius: 4px; font-weight: bold; border: 1px solid #ffc800; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; transition: background 0.2s; outline: none;">
+            <span id="btn-modal-depurar-text">🛡️ Depurar Rebotes (IMAP)</span>
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <script>
+    function runModalDepurarRebotes() {
+      var btn = document.getElementById('btn-modal-depurar');
+      var btnText = document.getElementById('btn-modal-depurar-text');
+      
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      btnText.textContent = '⏳ Depurando rebotes...';
+      
+      fetch('../../bounce-handler.php?cron=1&token=b356d78a8f192b0c95098e94a861d8a2')
+        .then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(data) {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          if (data.success) {
+            btnText.textContent = '✓ ' + (data.processed_count || 0) + ' correos limpiados';
+            btn.style.background = '#27ae60';
+            btn.style.borderColor = '#2ecc71';
+            // Recargar datos reactivos
+            setTimeout(function() {
+              updateDripGroupsRealtime();
+            }, 1000);
+            // Restablecer botón
+            setTimeout(function() {
+              btnText.textContent = '🛡️ Depurar Rebotes (IMAP)';
+              btn.style.background = '#2c3e50';
+              btn.style.borderColor = '#ffc800';
+            }, 5000);
+          } else {
+            var errMsg = 'Error desconocido al depurar rebotes.';
+            if (data.errors && data.errors.length > 0) {
+              errMsg = data.errors.join('\n');
+            } else if (data.error) {
+              errMsg = data.error;
+            }
+            alert('Fallo en la depuración:\n' + errMsg);
+            btnText.textContent = '❌ Falló la depuración';
+            btn.style.background = '#c0392b';
+            btn.style.borderColor = '#e74c3c';
+            setTimeout(function() {
+              btnText.textContent = '🛡️ Depurar Rebotes (IMAP)';
+              btn.style.background = '#2c3e50';
+              btn.style.borderColor = '#ffc800';
+            }, 5000);
+          }
+        })
+        .catch(function(err) {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          alert('Error de conexión o ejecución:\n' + (err.message || err));
+          btnText.textContent = '❌ Error de conexión';
+          btn.style.background = '#c0392b';
+          btn.style.borderColor = '#e74c3c';
+          console.error(err);
+          setTimeout(function() {
+            btnText.textContent = '🛡️ Depurar Rebotes (IMAP)';
+            btn.style.background = '#2c3e50';
+            btn.style.borderColor = '#ffc800';
+          }, 5000);
+        });
+    }
+
     function updateDripGroupsRealtime() {
       fetch('groups.php?action=active_drip_groups')
         .then(function(res) { return res.json(); })
@@ -1040,6 +1108,7 @@ if ($isCronEmpty) {
               var isWarning = false;
               var lastRun = null;
               if (!isEmpty && data.cron_status.last_run) {
+                window.lastCronRunTime = data.cron_status.last_run;
                 lastRun = new Date(data.cron_status.last_run);
                 var diffMs = new Date() - lastRun;
                 isWarning = diffMs > (24 * 3600 * 1000);
@@ -1108,8 +1177,10 @@ if ($isCronEmpty) {
                   var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
                                 pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
                   details.innerHTML = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                                      'Siguiente ejecución en: <strong style="color: #e67e22; font-family: monospace; font-size: 0.95rem;" id="cron-countdown">--:--</strong><br>' +
                                       'Resultado: <strong style="color: #dc2626;">Fallo (Error)</strong><br>' +
                                       'Detalle: <em>' + (data.cron_status.message || '') + '</em>';
+                  if (typeof updateCronCountdown === 'function') updateCronCountdown();
                 }
               } else if (isWarning) {
                 root.style.setProperty('--status-color', '#e67e22');
@@ -1141,6 +1212,7 @@ if ($isCronEmpty) {
                                 pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
                   
                   var html = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                             'Siguiente ejecución en: <strong style="color: #e67e22; font-family: monospace; font-size: 0.95rem;" id="cron-countdown">--:--</strong><br>' +
                              'Resultado: <strong>Correcto</strong>';
                   if (typeof data.cron_status.sent_count !== 'undefined') {
                     html += ' · Enviados: <strong>' + parseInt(data.cron_status.sent_count) + ' emails</strong>';
@@ -1148,6 +1220,7 @@ if ($isCronEmpty) {
                   html += '<br>Detalle: <em>' + (data.cron_status.message || '') + '</em>' +
                           '<div style="margin-top: 6px; font-weight: bold; color: #b45309;">Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.</div>';
                   details.innerHTML = html;
+                  if (typeof updateCronCountdown === 'function') updateCronCountdown();
                 }
               } else {
                 root.style.setProperty('--status-color', '#2ecc71');
@@ -1179,12 +1252,14 @@ if ($isCronEmpty) {
                                 pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
                   
                   var html = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                             'Siguiente ejecución en: <strong style="color: #e67e22; font-family: monospace; font-size: 0.95rem;" id="cron-countdown">--:--</strong><br>' +
                              'Resultado: <strong>Correcto</strong>';
                   if (typeof data.cron_status.sent_count !== 'undefined') {
                     html += ' · Enviados: <strong>' + parseInt(data.cron_status.sent_count) + ' emails</strong>';
                   }
                   html += '<br>Detalle: <em>' + (data.cron_status.message || '') + '</em>';
                   details.innerHTML = html;
+                  if (typeof updateCronCountdown === 'function') updateCronCountdown();
                 }
               }
             }
@@ -1211,6 +1286,38 @@ if ($isCronEmpty) {
         updateDripGroupsRealtime();
       }
     }, 5000);
+
+    // Cuenta atrás del cronjob (1 segundo) reactiva con sincronización de hora del servidor
+    window.lastCronRunTime = <?php echo isset($cronStatus['last_run']) ? json_encode($cronStatus['last_run']) : 'null'; ?>;
+    var serverTimeAtLoad = new Date(<?php echo json_encode(date('c')); ?>);
+    var clientTimeAtLoad = new Date();
+    window.serverClientOffsetMs = serverTimeAtLoad.getTime() - clientTimeAtLoad.getTime();
+    
+    function updateCronCountdown() {
+      var countdownEl = document.getElementById('cron-countdown');
+      if (!countdownEl || !window.lastCronRunTime) return;
+      
+      var lastRun = new Date(window.lastCronRunTime);
+      var nextRun = new Date(lastRun.getTime() + 60 * 60 * 1000); // 1 hora
+      var now = new Date(new Date().getTime() + (window.serverClientOffsetMs || 0));
+      var diffMs = nextRun - now;
+      
+      if (diffMs <= 0) {
+        countdownEl.textContent = 'Inminente / Ejecutando';
+        return;
+      }
+      
+      var totalSeconds = Math.floor(diffMs / 1000);
+      var minutes = Math.floor(totalSeconds / 60);
+      var seconds = totalSeconds % 60;
+      
+      var pad = function(n) { return n < 10 ? '0' + n : n; };
+      countdownEl.textContent = pad(minutes) + ':' + pad(seconds);
+    }
+    
+    // Iniciar cuenta atrás inmediatamente y en cada segundo
+    updateCronCountdown();
+    setInterval(updateCronCountdown, 1000);
   </script>
 </body>
 </html>

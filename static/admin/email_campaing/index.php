@@ -74,14 +74,14 @@ function campaign_get_email_clicks()
     ]);
     $header = curl_exec($chCount);
     $count = 0;
-    if (preg_match('/Content-Range: [0-9]+-[0-9]+\/([0-9]+)/i', $header, $matches)) {
+    if (preg_match('/Content-Range:\s*[0-9]+-[0-9]+\/([0-9]+)/i', $header, $matches)) {
         $count = (int)$matches[1];
     }
     curl_close($chCount);
 
-    // Get history (latest 200) to allow proper grouping and bot filtering
+    // Get history (latest 50)
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,clicked_at,ip,user_agent&order=clicked_at.desc&limit=200');
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,clicked_at&order=clicked_at.desc&limit=50');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -110,6 +110,88 @@ function campaign_get_email_clicks()
     }
     
     return array('total' => $count, 'history' => $history);
+}
+
+function campaign_get_active_drip_groups()
+{
+    $configFile = __DIR__ . '/../../supabase-config.php';
+    if (!is_file($configFile)) {
+        return array();
+    }
+    require_once $configFile;
+
+    if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
+        return array();
+    }
+
+    $dateWindowStart = date('Y-m-d', strtotime('+3 months')); 
+    $dateWindowEnd = date('Y-m-d', strtotime('+5 months'));
+
+    // Fetch active groups
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/lead_groups?select=name,event_date,leads_with_email&event_date=gte.' . $dateWindowStart . '&event_date=lte.' . $dateWindowEnd . '&order=event_date.asc');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    
+    $groups = json_decode($response, true);
+    if (!is_array($groups) || isset($groups['code']) || isset($groups['message'])) {
+        return array();
+    }
+
+    // Get sent counts from contacts
+    $chSent = curl_init();
+    curl_setopt($chSent, CURLOPT_URL, SUPABASE_URL . '/rest/v1/contacts?select=lead_group&drip_sent=is.true&limit=10000');
+    curl_setopt($chSent, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chSent, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($chSent, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    $resSent = curl_exec($chSent);
+    curl_close($chSent);
+    
+    $sentCounts = [];
+    $dataSent = json_decode($resSent, true);
+    if (is_array($dataSent)) {
+        foreach ($dataSent as $c) {
+            $lg = $c['lead_group'];
+            if (!isset($sentCounts[$lg])) $sentCounts[$lg] = 0;
+            $sentCounts[$lg]++;
+        }
+    }
+
+    // Get sent counts from luz_contacts
+    $chSentLuz = curl_init();
+    curl_setopt($chSentLuz, CURLOPT_URL, SUPABASE_URL . '/rest/v1/luz_contacts?select=lead_group&drip_sent=is.true&limit=10000');
+    curl_setopt($chSentLuz, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chSentLuz, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($chSentLuz, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    $resSentLuz = curl_exec($chSentLuz);
+    curl_close($chSentLuz);
+    
+    $dataSentLuz = json_decode($resSentLuz, true);
+    if (is_array($dataSentLuz)) {
+        foreach ($dataSentLuz as $c) {
+            $lg = $c['lead_group'];
+            if (!isset($sentCounts[$lg])) $sentCounts[$lg] = 0;
+            $sentCounts[$lg]++;
+        }
+    }
+
+    foreach ($groups as &$g) {
+        $g['sent_count'] = isset($sentCounts[$g['name']]) ? $sentCounts[$g['name']] : 0;
+    }
+    
+    return $groups;
 }
 
 require __DIR__ . '/mailer.php';
@@ -267,67 +349,59 @@ if (!$previewHtml && isset($config['categories'][$selectedCategory])) {
 
 $clicksData = campaign_get_email_clicks();
 $totalEmailVisits = $clicksData['total'];
-$rawHistory = $clicksData['history'];
-
-$processedClicks = array();
-$groupedByEmail = array();
-foreach ($rawHistory as $click) {
-    $email = $click['email'];
-    if (!isset($groupedByEmail[$email])) {
-        $groupedByEmail[$email] = array();
-    }
-    $groupedByEmail[$email][] = $click;
-}
-
-foreach ($groupedByEmail as $email => $clicks) {
-    $isBot = false;
-    
-    // Check user agent for obvious bots
-    foreach ($clicks as $c) {
-        $ua = strtolower(isset($c['user_agent']) ? $c['user_agent'] : '');
-        if (preg_match('/(bot|crawl|spider|slurp|facebook|whatsapp|telegram|twitter|linkedin|preview|headless|phantom|curl|wget)/i', $ua)) {
-            $isBot = true;
-            break;
-        }
-    }
-    
-    // Heuristic: If there are multiple clicks within a very short timeframe from different IPs, it's a security bot
-    if (!$isBot && count($clicks) >= 2) {
-        $ips = array();
-        $minTime = PHP_INT_MAX;
-        $maxTime = 0;
-        foreach ($clicks as $c) {
-            $time = strtotime($c['clicked_at']);
-            if (!empty($c['ip'])) {
-                $ips[$c['ip']] = true;
-            }
-            if ($time < $minTime) $minTime = $time;
-            if ($time > $maxTime) $maxTime = $time;
-        }
-        
-        // If span is < 5 mins and multiple IPs are involved, it's an email scanner.
-        if (($maxTime - $minTime) < 300 && count($ips) >= 2) {
-            $isBot = true;
-        }
-    }
-    
-    if (!$isBot) {
-        $processedClicks[] = array(
-            'email' => $email,
-            'count' => count($clicks),
-            'last_click' => $clicks[0]['clicked_at'] // Most recent click
-        );
-    }
-}
-
-// Ensure the processed clicks are ordered by last_click descending
-usort($processedClicks, function($a, $b) {
-    return strtotime($b['last_click']) - strtotime($a['last_click']);
-});
-
+$clicksHistory = $clicksData['history'];
+$activeDripGroups = campaign_get_active_drip_groups();
 $sendLog = campaign_get_send_log();
 $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host']) && !empty($config['smtp']['username']) && !empty($config['smtp']['password']);
 
+$cronStatus = array();
+$cronStatusFile = __DIR__ . '/data/cron_status.json';
+if (is_file($cronStatusFile)) {
+    $cronStatus = json_decode(file_get_contents($cronStatusFile), true);
+}
+
+// Determinar el estado real del sistema autónomo
+$isCronWarning = false;
+$isCronError = false;
+$isCronEmpty = empty($cronStatus);
+
+if (!$isCronEmpty) {
+    if (isset($cronStatus['status']) && $cronStatus['status'] === 'error') {
+        $isCronError = true;
+    }
+    if (isset($cronStatus['last_run'])) {
+        $lastRunTime = strtotime($cronStatus['last_run']);
+        if ((time() - $lastRunTime) > (24 * 3600)) {
+            $isCronWarning = true;
+        }
+    }
+}
+
+if ($isCronEmpty) {
+    $statusColor = '#e74c3c'; // Rojo
+    $statusBgColor = 'rgba(231, 76, 60, 0.08)';
+    $statusBorderColor = 'rgba(231, 76, 60, 0.25)';
+    $statusTextColor = '#c0392b';
+    $statusLabel = 'Envío Autónomo Parado (Sin registro)';
+} else if ($isCronError) {
+    $statusColor = '#e74c3c'; // Rojo
+    $statusBgColor = 'rgba(231, 76, 60, 0.08)';
+    $statusBorderColor = 'rgba(231, 76, 60, 0.25)';
+    $statusTextColor = '#c0392b';
+    $statusLabel = 'Envío Autónomo con Fallos';
+} else if ($isCronWarning) {
+    $statusColor = '#e67e22'; // Naranja
+    $statusBgColor = 'rgba(230, 126, 34, 0.08)';
+    $statusBorderColor = 'rgba(230, 126, 34, 0.25)';
+    $statusTextColor = '#d35400';
+    $statusLabel = 'Envío Autónomo Inactivo (Parado)';
+} else {
+    $statusColor = '#2ecc71'; // Verde
+    $statusBgColor = 'rgba(46, 204, 113, 0.08)';
+    $statusBorderColor = 'rgba(46, 204, 113, 0.25)';
+    $statusTextColor = '#27ae60';
+    $statusLabel = 'Envío Autónomo Activo';
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -373,25 +447,93 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
     iframe { background:#fff; border:1px solid #e1e4e8; height:780px; width:100%; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .hint { color:#666666; font-size:.85rem; line-height:1.45; }
     .preview-subject { background:#f5f6f8; border-left:4px solid #ffc800; color:#333333; font-size:.9rem; line-height:1.45; margin:0 0 1rem; padding:.75rem .9rem; border-radius: 4px; border: 1px solid #e1e4e8; border-left-width: 4px; }
-    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
     @media (max-width: 950px) { main { grid-template-columns:1fr; } }
+    
+    :root {
+      --status-color: <?php echo $statusColor; ?>;
+      --status-bg: <?php echo $statusBgColor; ?>;
+      --status-border: <?php echo $statusBorderColor; ?>;
+      --status-text: <?php echo $statusTextColor; ?>;
+      --status-hover-bg: <?php 
+        if ($isCronEmpty || $isCronError) {
+            echo 'rgba(231, 76, 60, 0.15)';
+        } else if ($isCronWarning) {
+            echo 'rgba(230, 126, 34, 0.15)';
+        } else {
+            echo 'rgba(46, 204, 113, 0.15)';
+        }
+      ?>;
+    }
+    /* System Status Indicator Styles */
+    .system-status-indicator { display: flex; align-items: center; gap: 8px; background: var(--status-bg); border: 1px solid var(--status-border); padding: 7px 14px; border-radius: 20px; cursor: pointer; user-select: none; transition: background 0.2s ease, transform 0.1s ease; }
+    .system-status-indicator:hover { background: var(--status-hover-bg); }
+    .system-status-indicator:active { transform: scale(0.97); }
+    .status-dot { width: 9px; height: 9px; background-color: var(--status-color); border-radius: 50%; box-shadow: 0 0 8px var(--status-color); animation: blink-dot 1.5s infinite ease-in-out; }
+    .status-text { font-size: 0.8rem; font-weight: bold; color: var(--status-text); }
+    @keyframes blink-dot {
+      0%, 100% { opacity: 0.45; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px var(--status-color); }
+    }
+    
+    /* Modal Overlay Styles */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
+    .modal-content { background: #ffffff; border-radius: 8px; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); border-top: 4px solid #2ecc71; animation: modal-appear 0.25s ease-out; overflow: hidden; }
+    @keyframes modal-appear {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #f0f0f0; }
+    .modal-header h3 { margin: 0; font-size: 1.1rem; color: #111; font-weight: bold; }
+    .close-btn { font-size: 1.5rem; cursor: pointer; color: #888; font-weight: bold; line-height: 1; }
+    .close-btn:hover { color: #111; }
+    .modal-body { padding: 20px; }
+    .drip-groups-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .drip-groups-table th, .drip-groups-table td { text-align: left; padding: 10px; border-bottom: 1px solid #f0f0f0; font-size: 0.88rem; }
+    .drip-groups-table th { background-color: #f9fafb; font-weight: bold; color: #555; }
+    .drip-groups-table tr:hover td { background-color: #fcfdfd; }
   </style>
 </head>
 <body>
   <header>
     <h1>Gestor de Emails Multimedia · Standarte</h1>
-    <a href="?logout=1">Cerrar Sesión</a>
+    <div style="display:flex; gap:16px; align-items:center;">
+      <div class="system-status-indicator" onclick="toggleDripGroupsModal()">
+        <span class="status-dot"></span>
+        <span class="status-text" id="system-status-text"><?php echo $statusLabel; ?></span>
+      </div>
+      <a href="manage_images.php" style="background:#ffc800; color:#111; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:0.85rem; transition: opacity 0.2s ease;">Gestionar Imágenes</a>
+      <a href="?logout=1">Cerrar Sesión</a>
+    </div>
   </header>
   <main>
     <section>
       <div class="stats">
         <span>Visitas totales desde correos multimedia</span>
-        <strong><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
+        <strong id="total-visits-counter"><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
       </div>
-      <div class="smtp-status smtp-ok">
-        <b>Servidor SMTP de OVH Activo</b>
-        <span>Los envíos de correo se realizan de forma segura y autenticada a través de ssl0.ovh.net utilizando la dirección info@standarte.es.</span>
-      </div>
+      <?php
+      $smtpHost = isset($config['smtp']['host']) ? $config['smtp']['host'] : '';
+      $smtpEnabled = !empty($config['smtp']['enabled']) && $smtpReady;
+      $smtpUsername = isset($config['smtp']['username']) ? $config['smtp']['username'] : '';
+
+      if ($smtpEnabled):
+          $hostNameText = 'Personalizado';
+          if (stripos($smtpHost, 'gmail.com') !== false || stripos($smtpHost, 'google.com') !== false) {
+              $hostNameText = 'Google Workspace';
+          } else if (stripos($smtpHost, 'ovh.net') !== false || stripos($smtpHost, 'ovh.com') !== false) {
+              $hostNameText = 'OVH';
+          }
+      ?>
+          <div class="smtp-status smtp-ok" style="border-left: 4px solid #2ecc71;">
+            <b style="color: #27ae60;">Servidor SMTP de <?php echo $hostNameText; ?> Activo</b>
+            <span>Los envíos de correo se realizan de forma segura y autenticada a través de <code><?php echo htmlspecialchars($smtpHost); ?></code> utilizando la dirección <code><?php echo htmlspecialchars($smtpUsername); ?></code>.</span>
+          </div>
+      <?php else: ?>
+          <div class="smtp-status smtp-warning" style="border-left: 4px solid #e67e22; background: #fffbeb;">
+            <b style="color: #d35400;">Servidor SMTP Inactivo o Desconectado</b>
+            <span>El envío de correos a través de SMTP está desactivado en la configuración. Los envíos se realizarán a través de la función <code>mail()</code> predeterminada de PHP, lo que podría afectar la entregabilidad de los emails.</span>
+          </div>
+      <?php endif; ?>
       <form id="campaign-form" method="post">
         <input id="campaign-action" type="hidden" name="campaign_action" value="preview">
         <?php foreach ($errors as $error): ?><p class="message error"><?php echo campaign_escape($error); ?></p><?php endforeach; ?>
@@ -417,7 +559,8 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
         <input type="hidden" id="email_body" name="email_body" value="">
         
         <div style="background:#e0f2fe; border-left:4px solid #0ea5e9; color:#0369a1; padding:12px 16px; border-radius:4px; margin-bottom: 1.25rem; font-size: 0.9rem;">
-            <strong>Modo Multilingüe Automático Activado</strong>
+            <strong>Modo Multilingüe Automático Activado</strong><br>
+            El sistema detectará el país de cada destinatario según la extensión de su correo (.es, .de, .it...) y traducirá el asunto y los textos automáticamente usando la plantilla base. No necesitas configurar nada más.
         </div>
 
         <button class="secondary" type="submit" formnovalidate onclick="document.getElementById('campaign-action').value='preview';">Previsualizar imágenes aleatorias</button>
@@ -439,35 +582,20 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           <span class="details-icon">▼</span>
         </summary>
         <div style="margin-top: 10px;">
-          <?php if (!$processedClicks): ?>
+          <?php if (!$clicksHistory): ?>
             <p style="font-size:0.85rem;color:#888;">Nadie ha hecho clic en los correos todavía.</p>
           <?php endif; ?>
-          <?php foreach ($processedClicks as $click): ?>
+          <?php foreach ($clicksHistory as $click): ?>
             <p>
-              <b><?php echo campaign_escape($click['email']); ?></b>
-              <?php if ($click['count'] > 1): ?>
-                  <span style="color:#666; font-size:0.9rem;">(<?php echo $click['count']; ?>)</span>
-              <?php endif; ?>
-              <br>
-              <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['last_click']))); ?></span>
+              <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
+              <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['clicked_at']))); ?></span>
             </p>
           <?php endforeach; ?>
         </div>
       </details>
-      <?php
-      $hasLogErrors = false;
-      if ($sendLog) {
-          foreach ($sendLog as $entry) {
-              if (empty($entry['accepted']) && !empty($entry['error'])) {
-                  $hasLogErrors = true;
-                  break;
-              }
-          }
-      }
-      ?>
       <details class="send-log">
         <summary>
-          <h2>Registro de envíos locales<?php if ($hasLogErrors): ?><span style="display:inline-block; width:8px; height:8px; background-color:#ef4444; border-radius:50%; margin-left:8px; animation:blink 1.5s infinite;" title="Hay errores en el registro"></span><?php endif; ?></h2>
+          <h2>Registro de envíos locales</h2>
           <span class="details-icon">▼</span>
         </summary>
         <div style="margin-top: 10px;">
@@ -479,14 +607,7 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
               <b><?php echo !empty($entry['accepted']) ? 'Aceptado por ' . campaign_escape(isset($entry['method']) ? $entry['method'] : 'PHP') : 'Error'; ?></b><br>
               <?php echo campaign_escape($entry['date']); ?> · <?php echo campaign_escape($entry['to']); ?>
               <?php if (!empty($entry['subject'])): ?><br>Asunto: <?php echo campaign_escape($entry['subject']); ?><?php endif; ?>
-              <?php if (empty($entry['accepted']) && !empty($entry['error'])): ?>
-                <details style="margin-top: 6px;">
-                  <summary style="font-size:0.82rem; color:#b91c1c; cursor:pointer; user-select:none; outline:none; display:inline-block;">Ver error interno</summary>
-                  <div style="margin-top:4px; padding:6px 8px; background:#fdf2f2; border-left:3px solid #f87171; font-size:0.8rem; color:#b91c1c; border-radius:0 4px 4px 0;">
-                    <?php echo campaign_escape($entry['error']); ?>
-                  </div>
-                </details>
-              <?php endif; ?>
+              <?php if (empty($entry['accepted']) && !empty($entry['error'])): ?><br><span style="color:#ff8888;"><?php echo campaign_escape($entry['error']); ?></span><?php endif; ?>
             </p>
           <?php endforeach; ?>
         </div>
@@ -600,6 +721,11 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
               totalSent += (data.sent ? data.sent.length : 0);
               totalFailed += (data.failed ? data.failed.length : 0);
               progressLog.textContent = 'Lote ' + (currentBatchIdx + 1) + ' OK.\n' + progressLog.textContent;
+              
+              // Trigger realtime update to refresh green digits after batch send
+              if (typeof updateDripGroupsRealtime === 'function') {
+                updateDripGroupsRealtime();
+              }
             } else {
               totalFailed += batchEmails.length;
               progressLog.textContent = 'Lote ' + (currentBatchIdx + 1) + ' falló: ' + (data.errors ? data.errors.join(', ') : 'Error desconocido') + '\n' + progressLog.textContent;
@@ -735,6 +861,463 @@ $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host'
           });
       };
     }());
+
+    // Actualización reactiva del contador de visitas en tiempo real cada 10 segundos
+    (function() {
+      setInterval(function() {
+        fetch('groups.php?action=clicks_count')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data.status === 'success' && typeof data.total === 'number') {
+              var counter = document.getElementById('total-visits-counter');
+              if (counter) {
+                var formatted = new Intl.NumberFormat('es-ES').format(data.total);
+                if (counter.textContent !== formatted) {
+                  counter.textContent = formatted;
+                }
+              }
+            }
+          })
+          .catch(function() {});
+      }, 10000);
+    }());
+  </script>
+
+  <!-- Drip groups details modal -->
+  <div id="drip-groups-modal" class="modal-overlay" style="display:none;" onclick="closeDripGroupsModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Envíos Autónomos Activos</h3>
+        <span class="close-btn" onclick="toggleDripGroupsModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Estado del cronjob -->
+        <?php
+        $cardBg = '#f0fdf4';
+        $cardBorder = '#dcfce7';
+        $cardIconColor = '#16a34a';
+        $cardIcon = '✓';
+        $cardTitleColor = '#166534';
+        $cardTitle = 'Sistema Autónomo Operativo';
+        $cardTextColor = '#166534';
+        
+        if ($isCronEmpty) {
+            $cardBg = '#fef2f2';
+            $cardBorder = '#fecaca';
+            $cardIconColor = '#dc2626';
+            $cardIcon = '⚠';
+            $cardTitleColor = '#991b1b';
+            $cardTitle = 'Sistema Autónomo Parado';
+            $cardTextColor = '#991b1b';
+        } else if ($isCronError) {
+            $cardBg = '#fef2f2';
+            $cardBorder = '#fecaca';
+            $cardIconColor = '#dc2626';
+            $cardIcon = '⚠';
+            $cardTitleColor = '#991b1b';
+            $cardTitle = 'Error en Ejecución Autónoma';
+            $cardTextColor = '#991b1b';
+        } else if ($isCronWarning) {
+            $cardBg = '#fffbeb';
+            $cardBorder = '#fef3c7';
+            $cardIconColor = '#d97706';
+            $cardIcon = '⚠';
+            $cardTitleColor = '#92400e';
+            $cardTitle = 'Alerta de Inactividad';
+            $cardTextColor = '#92400e';
+        }
+        ?>
+        <div id="cron-status-container" style="background: <?php echo $cardBg; ?>; border: 1px solid <?php echo $cardBorder; ?>; border-radius: 6px; padding: 12px 14px; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 10px;">
+          <div id="cron-status-icon" style="font-size: 1.25rem; color: <?php echo $cardIconColor; ?>; line-height: 1; font-weight: bold;">
+            <?php echo $cardIcon; ?>
+          </div>
+          <div id="cron-status-text-wrapper" style="font-size: 0.82rem; line-height: 1.4; color: <?php echo $cardTextColor; ?>;">
+            <div id="cron-status-title" style="font-weight: bold; font-size: 0.88rem; margin-bottom: 3px; color: <?php echo $cardTitleColor; ?>;">
+              <?php echo $cardTitle; ?>
+            </div>
+            <div id="cron-status-details">
+              <?php if ($isCronEmpty): ?>
+                El sistema de correos autónomos no ha registrado ninguna actividad todavía (el archivo cron_status.json no existe). Por favor, asegúrese de que el cronjob del servidor está configurado.
+              <?php else: 
+                $lastRunTime = strtotime($cronStatus['last_run']);
+              ?>
+                Última ejecución: <strong><?php echo date('d/m/Y H:i:s', $lastRunTime); ?></strong><br>
+                Siguiente ejecución en: <strong style="color: #e67e22; font-family: monospace; font-size: 0.95rem;" id="cron-countdown">--:--</strong><br>
+                Resultado: <strong style="<?php echo $isCronError ? 'color:#dc2626;' : ''; ?>"><?php echo $cronStatus['status'] === 'success' ? 'Correcto' : 'Fallo (Error)'; ?></strong>
+                <?php if (isset($cronStatus['sent_count'])): ?>
+                  · Enviados: <strong><?php echo intval($cronStatus['sent_count']); ?> emails</strong>
+                <?php endif; ?>
+                <br>Detalle: <em><?php echo htmlspecialchars($cronStatus['message']); ?></em>
+                <?php if ($isCronWarning): ?>
+                  <div style="margin-top: 6px; font-weight: bold; color: #b45309;">
+                    Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.
+                  </div>
+                <?php endif; ?>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.88rem; color: #555; margin: 0 0 0.75rem 0; font-weight: bold;">Listas en ventana de envío (3 a 5 meses):</p>
+        <?php if (empty($activeDripGroups)): ?>
+          <p style="font-weight: bold; color: #f39c12; text-align: center; margin: 1.5rem 0; font-size: 0.9rem;">No hay ningún grupo activo en la ventana de 3-5 meses en este momento.</p>
+        <?php else: ?>
+          <table class="drip-groups-table">
+            <thead>
+              <tr>
+                <th>Nombre del Grupo</th>
+                <th>Fecha del Evento</th>
+                <th>Enviados / Total</th>
+                <th>Antelación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($activeDripGroups as $g): 
+                $daysLeft = (strtotime($g['event_date']) - time()) / (24 * 3600);
+                $monthsLeft = round($daysLeft / 30, 1);
+                $totalLeads = isset($g['leads_with_email']) ? intval($g['leads_with_email']) : 0;
+                $sentCount = isset($g['sent_count']) ? intval($g['sent_count']) : 0;
+              ?>
+                <tr data-group-row="<?php echo htmlspecialchars($g['name']); ?>">
+                  <td><b><?php echo htmlspecialchars($g['name']); ?></b></td>
+                  <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($g['event_date']))); ?></td>
+                  <td>
+                    <span data-group-sent="<?php echo htmlspecialchars($g['name']); ?>" style="color: #27ae60; font-weight: bold; transition: color 1s ease, text-shadow 1s ease;"><?php echo $sentCount; ?></span>
+                    <span style="color: #888;"> / <span data-group-total="<?php echo htmlspecialchars($g['name']); ?>"><?php echo $totalLeads; ?></span></span>
+                  </td>
+                  <td>Faltan <b><?php echo $monthsLeft; ?> m</b> (<?php echo round($daysLeft); ?> d)</td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        <?php endif; ?>
+        <div style="margin-top: 1.25rem; font-size: 0.8rem; color: #555; border-top: 1px solid #eee; padding-top: 0.75rem; line-height: 1.4; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <span>* El cronjob automático procesa un máximo de 15 correos por hora.</span>
+          <button id="btn-modal-depurar" onclick="runModalDepurarRebotes()" style="background: #2c3e50; color: #ffffff; text-decoration: none; padding: 6px 12px; font-size: 0.78rem; border-radius: 4px; font-weight: bold; border: 1px solid #ffc800; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; transition: background 0.2s; outline: none;">
+            <span id="btn-modal-depurar-text">🛡️ Depurar Rebotes (IMAP)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function runModalDepurarRebotes() {
+      var btn = document.getElementById('btn-modal-depurar');
+      var btnText = document.getElementById('btn-modal-depurar-text');
+      
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      btnText.textContent = '⏳ Depurando rebotes...';
+      
+      fetch('../../bounce-handler.php?cron=1&token=b356d78a8f192b0c95098e94a861d8a2')
+        .then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(data) {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          if (data.success) {
+            btnText.textContent = '✓ ' + (data.processed_count || 0) + ' correos limpiados';
+            btn.style.background = '#27ae60';
+            btn.style.borderColor = '#2ecc71';
+            // Recargar datos reactivos
+            setTimeout(function() {
+              updateDripGroupsRealtime();
+            }, 1000);
+            // Restablecer botón
+            setTimeout(function() {
+              btnText.textContent = '🛡️ Depurar Rebotes (IMAP)';
+              btn.style.background = '#2c3e50';
+              btn.style.borderColor = '#ffc800';
+            }, 5000);
+          } else {
+            var errMsg = 'Error desconocido al depurar rebotes.';
+            if (data.errors && data.errors.length > 0) {
+              errMsg = data.errors.join('\n');
+            } else if (data.error) {
+              errMsg = data.error;
+            }
+            alert('Fallo en la depuración:\n' + errMsg);
+            btnText.textContent = '❌ Falló la depuración';
+            btn.style.background = '#c0392b';
+            btn.style.borderColor = '#e74c3c';
+            setTimeout(function() {
+              btnText.textContent = '🛡️ Depurar Rebotes (IMAP)';
+              btn.style.background = '#2c3e50';
+              btn.style.borderColor = '#ffc800';
+            }, 5000);
+          }
+        })
+        .catch(function(err) {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          alert('Error de conexión o ejecución:\n' + (err.message || err));
+          btnText.textContent = '❌ Error de conexión';
+          btn.style.background = '#c0392b';
+          btn.style.borderColor = '#e74c3c';
+          console.error(err);
+          setTimeout(function() {
+            btnText.textContent = '🛡️ Depurar Rebotes (IMAP)';
+            btn.style.background = '#2c3e50';
+            btn.style.borderColor = '#ffc800';
+          }, 5000);
+        });
+    }
+
+    function updateDripGroupsRealtime() {
+      fetch('groups.php?action=active_drip_groups')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.status === 'success') {
+            // Update active groups table
+            if (data.groups) {
+              data.groups.forEach(function(g) {
+                var sentEl = document.querySelector('[data-group-sent="' + g.name + '"]');
+                var totalEl = document.querySelector('[data-group-total="' + g.name + '"]');
+                if (sentEl) {
+                  var newSent = parseInt(g.sent_count || 0);
+                  if (parseInt(sentEl.textContent) !== newSent) {
+                    sentEl.textContent = newSent;
+                    // Flash effect
+                    sentEl.style.transition = 'none';
+                    sentEl.style.color = '#2ecc71';
+                    sentEl.style.textShadow = '0 0 10px #2ecc71';
+                    setTimeout(function() {
+                      sentEl.style.transition = 'color 1s ease, text-shadow 1s ease';
+                      sentEl.style.color = '#27ae60';
+                      sentEl.style.textShadow = 'none';
+                    }, 100);
+                  }
+                }
+                if (totalEl) {
+                  var newTotal = parseInt(g.leads_with_email || 0);
+                  if (parseInt(totalEl.textContent) !== newTotal) {
+                    totalEl.textContent = newTotal;
+                  }
+                }
+              });
+            }
+
+            // Update cron status card
+            if (data.cron_status) {
+              var isEmpty = !data.cron_status || Object.keys(data.cron_status).length === 0;
+              var isError = !isEmpty && data.cron_status.status === 'error';
+              var isWarning = false;
+              var lastRun = null;
+              if (!isEmpty && data.cron_status.last_run) {
+                window.lastCronRunTime = data.cron_status.last_run;
+                lastRun = new Date(data.cron_status.last_run);
+                var diffMs = new Date() - lastRun;
+                isWarning = diffMs > (24 * 3600 * 1000);
+              }
+              
+              var container = document.getElementById('cron-status-container');
+              var icon = document.getElementById('cron-status-icon');
+              var title = document.getElementById('cron-status-title');
+              var details = document.getElementById('cron-status-details');
+              var textWrapper = document.getElementById('cron-status-text-wrapper');
+              var root = document.documentElement;
+              var systemStatusText = document.getElementById('system-status-text');
+              
+              if (isEmpty) {
+                root.style.setProperty('--status-color', '#e74c3c');
+                root.style.setProperty('--status-bg', 'rgba(231, 76, 60, 0.08)');
+                root.style.setProperty('--status-border', 'rgba(231, 76, 60, 0.25)');
+                root.style.setProperty('--status-text', '#c0392b');
+                root.style.setProperty('--status-hover-bg', 'rgba(231, 76, 60, 0.15)');
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo Parado (Sin registro)';
+                
+                if (container) {
+                  container.style.background = '#fef2f2';
+                  container.style.borderColor = '#fecaca';
+                }
+                if (icon) {
+                  icon.style.color = '#dc2626';
+                  icon.textContent = '⚠';
+                }
+                if (title) {
+                  title.style.color = '#991b1b';
+                  title.textContent = 'Sistema Autónomo Parado';
+                }
+                if (textWrapper) {
+                  textWrapper.style.color = '#991b1b';
+                }
+                if (details) {
+                  details.innerHTML = 'El sistema de correos autónomos no ha registrado ninguna actividad todavía (el archivo cron_status.json no existe). Por favor, asegúrese de que el cronjob del servidor está configurado.';
+                }
+              } else if (isError) {
+                root.style.setProperty('--status-color', '#e74c3c');
+                root.style.setProperty('--status-bg', 'rgba(231, 76, 60, 0.08)');
+                root.style.setProperty('--status-border', 'rgba(231, 76, 60, 0.25)');
+                root.style.setProperty('--status-text', '#c0392b');
+                root.style.setProperty('--status-hover-bg', 'rgba(231, 76, 60, 0.15)');
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo con Fallos';
+                
+                if (container) {
+                  container.style.background = '#fef2f2';
+                  container.style.borderColor = '#fecaca';
+                }
+                if (icon) {
+                  icon.style.color = '#dc2626';
+                  icon.textContent = '⚠';
+                }
+                if (title) {
+                  title.style.color = '#991b1b';
+                  title.textContent = 'Error en Ejecución Autónoma';
+                }
+                if (textWrapper) {
+                  textWrapper.style.color = '#991b1b';
+                }
+                
+                if (details) {
+                  var pad = function(n) { return n < 10 ? '0' + n : n; };
+                  var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
+                                pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
+                  details.innerHTML = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                                      'Siguiente ejecución en: <strong style="color: #e67e22; font-family: monospace; font-size: 0.95rem;" id="cron-countdown">--:--</strong><br>' +
+                                      'Resultado: <strong style="color: #dc2626;">Fallo (Error)</strong><br>' +
+                                      'Detalle: <em>' + (data.cron_status.message || '') + '</em>';
+                  if (typeof updateCronCountdown === 'function') updateCronCountdown();
+                }
+              } else if (isWarning) {
+                root.style.setProperty('--status-color', '#e67e22');
+                root.style.setProperty('--status-bg', 'rgba(230, 126, 34, 0.08)');
+                root.style.setProperty('--status-border', 'rgba(230, 126, 34, 0.25)');
+                root.style.setProperty('--status-text', '#d35400');
+                root.style.setProperty('--status-hover-bg', 'rgba(230, 126, 34, 0.15)');
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo Inactivo (Parado)';
+                
+                if (container) {
+                  container.style.background = '#fffbeb';
+                  container.style.borderColor = '#fef3c7';
+                }
+                if (icon) {
+                  icon.style.color = '#d97706';
+                  icon.textContent = '⚠';
+                }
+                if (title) {
+                  title.style.color = '#92400e';
+                  title.textContent = 'Alerta de Inactividad';
+                }
+                if (textWrapper) {
+                  textWrapper.style.color = '#92400e';
+                }
+                
+                if (details) {
+                  var pad = function(n) { return n < 10 ? '0' + n : n; };
+                  var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
+                                pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
+                  
+                  var html = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                             'Siguiente ejecución en: <strong style="color: #e67e22; font-family: monospace; font-size: 0.95rem;" id="cron-countdown">--:--</strong><br>' +
+                             'Resultado: <strong>Correcto</strong>';
+                  if (typeof data.cron_status.sent_count !== 'undefined') {
+                    html += ' · Enviados: <strong>' + parseInt(data.cron_status.sent_count) + ' emails</strong>';
+                  }
+                  html += '<br>Detalle: <em>' + (data.cron_status.message || '') + '</em>' +
+                          '<div style="margin-top: 6px; font-weight: bold; color: #b45309;">Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.</div>';
+                  details.innerHTML = html;
+                  if (typeof updateCronCountdown === 'function') updateCronCountdown();
+                }
+              } else {
+                root.style.setProperty('--status-color', '#2ecc71');
+                root.style.setProperty('--status-bg', 'rgba(46, 204, 113, 0.08)');
+                root.style.setProperty('--status-border', 'rgba(46, 204, 113, 0.25)');
+                root.style.setProperty('--status-text', '#27ae60');
+                root.style.setProperty('--status-hover-bg', 'rgba(46, 204, 113, 0.15)');
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo Activo';
+                
+                if (container) {
+                  container.style.background = '#f0fdf4';
+                  container.style.borderColor = '#dcfce7';
+                }
+                if (icon) {
+                  icon.style.color = '#16a34a';
+                  icon.textContent = '✓';
+                }
+                if (title) {
+                  title.style.color = '#166534';
+                  title.textContent = 'Sistema Autónomo Operativo';
+                }
+                if (textWrapper) {
+                  textWrapper.style.color = '#166534';
+                }
+                
+                if (details) {
+                  var pad = function(n) { return n < 10 ? '0' + n : n; };
+                  var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
+                                pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
+                  
+                  var html = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                             'Siguiente ejecución en: <strong style="color: #e67e22; font-family: monospace; font-size: 0.95rem;" id="cron-countdown">--:--</strong><br>' +
+                             'Resultado: <strong>Correcto</strong>';
+                  if (typeof data.cron_status.sent_count !== 'undefined') {
+                    html += ' · Enviados: <strong>' + parseInt(data.cron_status.sent_count) + ' emails</strong>';
+                  }
+                  html += '<br>Detalle: <em>' + (data.cron_status.message || '') + '</em>';
+                  details.innerHTML = html;
+                  if (typeof updateCronCountdown === 'function') updateCronCountdown();
+                }
+              }
+            }
+          }
+        })
+        .catch(function() {});
+    }
+
+    function toggleDripGroupsModal() {
+      var modal = document.getElementById('drip-groups-modal');
+      modal.style.display = modal.style.display === 'none' ? 'flex' : 'none';
+      if (modal.style.display === 'flex') {
+        updateDripGroupsRealtime();
+      }
+    }
+    function closeDripGroupsModal(e) {
+      document.getElementById('drip-groups-modal').style.display = 'none';
+    }
+
+    // Poll active drip groups every 5 seconds when the modal is open
+    setInterval(function() {
+      var modal = document.getElementById('drip-groups-modal');
+      if (modal && modal.style.display === 'flex') {
+        updateDripGroupsRealtime();
+      }
+    }, 5000);
+
+    // Cuenta atrás del cronjob (1 segundo) reactiva con sincronización de hora del servidor
+    window.lastCronRunTime = <?php echo isset($cronStatus['last_run']) ? json_encode($cronStatus['last_run']) : 'null'; ?>;
+    var serverTimeAtLoad = new Date(<?php echo json_encode(date('c')); ?>);
+    var clientTimeAtLoad = new Date();
+    window.serverClientOffsetMs = serverTimeAtLoad.getTime() - clientTimeAtLoad.getTime();
+    
+    function updateCronCountdown() {
+      var countdownEl = document.getElementById('cron-countdown');
+      if (!countdownEl || !window.lastCronRunTime) return;
+      
+      var lastRun = new Date(window.lastCronRunTime);
+      var nextRun = new Date(lastRun.getTime() + 60 * 60 * 1000); // 1 hora
+      var now = new Date(new Date().getTime() + (window.serverClientOffsetMs || 0));
+      var diffMs = nextRun - now;
+      
+      if (diffMs <= 0) {
+        countdownEl.textContent = 'Inminente / Ejecutando';
+        return;
+      }
+      
+      var totalSeconds = Math.floor(diffMs / 1000);
+      var minutes = Math.floor(totalSeconds / 60);
+      var seconds = totalSeconds % 60;
+      
+      var pad = function(n) { return n < 10 ? '0' + n : n; };
+      countdownEl.textContent = pad(minutes) + ':' + pad(seconds);
+    }
+    
+    // Iniciar cuenta atrás inmediatamente y en cada segundo
+    updateCronCountdown();
+    setInterval(updateCronCountdown, 1000);
   </script>
 </body>
 </html>

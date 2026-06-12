@@ -61,15 +61,52 @@ function prioritizeEmails(emailsArray) {
 
 function extractEmailsFromHtml(html, emailSet) {
     if (typeof html !== 'string') return;
-    const matches = html.match(CONFIG.emailRegex);
+    
+    // 1. Eliminar bloques de código donde no hay emails reales visibles para el usuario
+    let cleanHtml = html
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[\s\S]*?<\/style>/gi, '')
+        .replace(/<svg[\s\S]*?<\/svg>/gi, '')
+        .replace(/<!--[\s\S]*?-->/g, ''); // eliminar comentarios HTML
+        
+    const matches = cleanHtml.match(CONFIG.emailRegex);
     if (matches) {
         matches.forEach(email => {
             const cleanEmail = email.toLowerCase().trim();
-            const isInvalidExt = CONFIG.ignoredExtensions.some(ext => cleanEmail.endsWith(ext));
-            const prefix = cleanEmail.split('@')[0];
-            const isDummy = CONFIG.ignoredPrefixes.includes(prefix);
             
-            if (!isInvalidExt && !isDummy) {
+            // 2. Validación de sintaxis extra-rigurosa para evitar "inventos" de librerías/CDNs
+            // Un email real no debe contener caracteres como /, \, :, ?, *, =, |, <, >, ", ', etc.
+            if (/[\/\\:\?\*=\|<>'"\s]/.test(cleanEmail)) {
+                return;
+            }
+            
+            const parts = cleanEmail.split('@');
+            if (parts.length !== 2) return;
+            
+            const prefix = parts[0];
+            const domain = parts[1];
+            
+            // Omitir prefijos ficticios
+            if (CONFIG.ignoredPrefixes.includes(prefix)) return;
+            
+            // Validar que el dominio tenga estructura correcta: al menos un punto, y el TLD sea de 2 a 6 letras
+            const domainParts = domain.split('.');
+            if (domainParts.length < 2) return;
+            const tld = domainParts[domainParts.length - 1];
+            if (!/^[a-z]{2,6}$/.test(tld)) return;
+            
+            // Omitir TLDs que corresponden a extensiones de archivos de código o recursos web
+            const invalidTlds = ['js', 'css', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'woff', 'woff2', 'pdf', 'zip', 'html', 'php', 'xml', 'json', 'scss', 'ts', 'map', 'md', 'ico', 'mp4', 'webm'];
+            if (invalidTlds.includes(tld)) return;
+            
+            // Omitir si el dominio parece una versión o patrón de biblioteca (ej. "3.x.x", "v1.2", etc.)
+            if (domainParts.some(part => /^[0-9x\-]+$/.test(part) || /^v[0-9]+/.test(part))) {
+                return;
+            }
+            
+            // Omitir extensiones inválidas generales
+            const isInvalidExt = CONFIG.ignoredExtensions.some(ext => cleanEmail.endsWith(ext));
+            if (!isInvalidExt) {
                 emailSet.add(cleanEmail);
             }
         });

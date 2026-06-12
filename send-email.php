@@ -36,6 +36,7 @@ define("SECURE_TOKEN", "STANDARTE_MAIL_SECURE_2026");
 $logFile = __DIR__ . '/sent_emails_log.json';
 require_once __DIR__ . '/admin/email_campaing/campaign_throttle.php';
 require_once __DIR__ . '/admin/email_campaing/mailer.php';
+$config = require_once __DIR__ . '/admin/email_campaing/config.php';
 
 // Cargar configuración de Supabase
 $configFile = __DIR__ . '/supabase-config.php';
@@ -177,6 +178,11 @@ foreach ($data['records'] as $index => $record) {
     if ($rawAsunto === '' || $rawAsunto === 'Diseño a medida con Standarte') {
         $asunto = "¿Está el stand de {$empresa} listo para liderar la feria o pasará desapercibido?";
     } else {
+        $rawAsunto = preg_replace('/\{\{EMPRESA\}\}/i', $empresa, $rawAsunto);
+        $rawAsunto = preg_replace('/\{EMPRESA\}/i', $empresa, $rawAsunto);
+        $rawAsunto = preg_replace('/\{\{COMPANY\}\}/i', $empresa, $rawAsunto);
+        $rawAsunto = preg_replace('/\{COMPANY\}/i', $empresa, $rawAsunto);
+        
         if (stripos($rawAsunto, $empresa) === false) {
             $asunto = "{$empresa}: " . htmlspecialchars($rawAsunto);
         } else {
@@ -184,7 +190,13 @@ foreach ($data['records'] as $index => $record) {
         }
     }
     
-    $cuerpoText = isset($record['cuerpo']) ? htmlspecialchars($record['cuerpo']) : "";
+    $cuerpoText = isset($record['cuerpo']) ? trim($record['cuerpo']) : "";
+    $cuerpoText = preg_replace('/\{\{EMPRESA\}\}/i', $empresa, $cuerpoText);
+    $cuerpoText = preg_replace('/\{EMPRESA\}/i', $empresa, $cuerpoText);
+    $cuerpoText = preg_replace('/\{\{COMPANY\}\}/i', $empresa, $cuerpoText);
+    $cuerpoText = preg_replace('/\{COMPANY\}/i', $empresa, $cuerpoText);
+    $cuerpoText = htmlspecialchars($cuerpoText);
+    
     $negocio = isset($record['negocio']) ? strtolower(trim($record['negocio'])) : "";
 
     $totalProcesados++;
@@ -236,17 +248,29 @@ foreach ($data['records'] as $index => $record) {
     $excludeReason = '';
     
     if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $status = 'active';
+        $excludeSource = '';
+        
         $res = send_email_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
         if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
-            $supaContact = $res['body'][0];
-            $status = $supaContact['status'] ?? 'active';
-            if ($status === 'unsubscribed') {
-                $isExcluded = true;
-                $excludeReason = "Envío omitido: El destinatario se ha dado de baja de forma voluntaria de las listas comerciales (LSSI/RGPD).";
-            } else if ($status === 'bounced') {
-                $isExcluded = true;
-                $excludeReason = "Envío omitido: La dirección de correo electrónico está marcada como rebotada/fallida en la base de datos de Supabase.";
+            $status = $res['body'][0]['status'] ?? 'active';
+            $excludeSource = 'contacts';
+        }
+        
+        if ($status !== 'unsubscribed' && $status !== 'bounced') {
+            $resLuz = send_email_supabase_request('GET', 'luz_contacts?email=eq.' . urlencode($email));
+            if ($resLuz['code'] === 200 && is_array($resLuz['body']) && count($resLuz['body']) > 0) {
+                $status = $resLuz['body'][0]['status'] ?? 'active';
+                $excludeSource = 'luz_contacts';
             }
+        }
+        
+        if ($status === 'unsubscribed') {
+            $isExcluded = true;
+            $excludeReason = "Envío omitido: El destinatario se ha dado de baja de forma voluntaria de las listas comerciales (LSSI/RGPD) ($excludeSource).";
+        } else if ($status === 'bounced') {
+            $isExcluded = true;
+            $excludeReason = "Envío omitido: La dirección de correo electrónico está marcada como rebotada/fallida ($excludeSource).";
         }
     }
     
@@ -455,21 +479,10 @@ HTML;
 </html>
 HTML;
 
-    // Configurar cabeceras de correo electrónico real
-    $headers = [
-        "MIME-Version: 1.0",
-        "Content-type: text/html; charset=UTF-8",
-        "From: Standarte <hola@standarte.es>",
-        "Reply-To: hola@standarte.es",
-        "X-Mailer: PHP/" . phpversion()
-    ];
-
-    // Intentar envío de correo real
+    // Intentar envío de correo real usando SMTP premium
     $realMailSuccess = false;
     try {
-        // En un entorno de desarrollo local con MAMP sin SMTP configurado, mail() puede lanzar warnings
-        // Usamos el operador de control de errores @ para evitar romper el flujo JSON de salida
-        $realMailSuccess = @mail($email, $asunto, $emailHtml, implode("\r\n", $headers));
+        $realMailSuccess = campaign_send_mail($config, $email, $asunto, $emailHtml);
     } catch (Exception $e) {
         $realMailSuccess = false;
     }

@@ -35,6 +35,8 @@ define("SECURE_TOKEN", "STANDARTE_MAIL_SECURE_2026");
 // Ruta del archivo de logs local para MAMP (sin base de datos)
 $logFile = __DIR__ . '/sent_emails_log.json';
 require_once __DIR__ . '/admin/email_campaing/campaign_throttle.php';
+require_once __DIR__ . '/admin/email_campaing/mailer.php';
+$config = require_once __DIR__ . '/admin/email_campaing/config.php';
 
 // Cargar configuración de Supabase
 $configFile = __DIR__ . '/supabase-config.php';
@@ -91,49 +93,11 @@ function send_email_supabase_request($method, $endpoint, $data = null) {
 
 
 /**
- * Valida un email de forma avanzada para evitar rebotes:
- * 1. Sintaxis básica mediante FILTER_VALIDATE_EMAIL.
- * 2. Filtrado de dominios de correos temporales o desechables comunes.
- * 3. Verificación DNS en tiempo real de registros MX (Mail Exchange) y A.
+ * Wrapper de compatibilidad para validación avanzada de correos.
  */
 function send_email_is_valid_email_advanced($email)
 {
-    $email = trim($email);
-
-    // 1. Validación de sintaxis básica
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return false;
-    }
-
-    // 2. Extraer el dominio
-    $parts = explode('@', $email);
-    if (count($parts) < 2) {
-        return false;
-    }
-    $domain = strtolower(end($parts));
-
-    // 3. Lista negra de dominios de email temporal / desechable comunes
-    $disposableDomains = array(
-        'yopmail.com', 'yopmail.fr', 'yopmail.net', 'cool.fr.nf', 'jetable.fr.nf',
-        'courriel.fr.nf', 'moncourrier.fr.nf', 'monemail.fr.nf', 'monmail.fr.nf',
-        'tempmail.com', 'temp-mail.org', 'mailinator.com', '10minutemail.com',
-        'guerrillamail.com', 'sharklasers.com', 'dispostable.com', 'getairmail.com',
-        'throwawaymail.com', 'tempmailaddress.com', 'maildrop.cc'
-    );
-    if (in_array($domain, $disposableDomains, true)) {
-        return false;
-    }
-
-    // 4. Verificación de registros DNS en tiempo real (MX o A)
-    if (function_exists('checkdnsrr')) {
-        if (!checkdnsrr($domain, 'MX')) {
-            // Si no tiene registro MX, comprobamos el registro A como fallback
-            return checkdnsrr($domain, 'A');
-        }
-        return true;
-    }
-
-    return true;
+    return campaign_is_valid_email_advanced($email);
 }
 
 
@@ -214,6 +178,11 @@ foreach ($data['records'] as $index => $record) {
     if ($rawAsunto === '' || $rawAsunto === 'Diseño a medida con Standarte') {
         $asunto = "¿Está el stand de {$empresa} listo para liderar la feria o pasará desapercibido?";
     } else {
+        $rawAsunto = preg_replace('/\{\{EMPRESA\}\}/i', $empresa, $rawAsunto);
+        $rawAsunto = preg_replace('/\{EMPRESA\}/i', $empresa, $rawAsunto);
+        $rawAsunto = preg_replace('/\{\{COMPANY\}\}/i', $empresa, $rawAsunto);
+        $rawAsunto = preg_replace('/\{COMPANY\}/i', $empresa, $rawAsunto);
+        
         if (stripos($rawAsunto, $empresa) === false) {
             $asunto = "{$empresa}: " . htmlspecialchars($rawAsunto);
         } else {
@@ -221,7 +190,13 @@ foreach ($data['records'] as $index => $record) {
         }
     }
     
-    $cuerpoText = isset($record['cuerpo']) ? htmlspecialchars($record['cuerpo']) : "";
+    $cuerpoText = isset($record['cuerpo']) ? trim($record['cuerpo']) : "";
+    $cuerpoText = preg_replace('/\{\{EMPRESA\}\}/i', $empresa, $cuerpoText);
+    $cuerpoText = preg_replace('/\{EMPRESA\}/i', $empresa, $cuerpoText);
+    $cuerpoText = preg_replace('/\{\{COMPANY\}\}/i', $empresa, $cuerpoText);
+    $cuerpoText = preg_replace('/\{COMPANY\}/i', $empresa, $cuerpoText);
+    $cuerpoText = htmlspecialchars($cuerpoText);
+    
     $negocio = isset($record['negocio']) ? strtolower(trim($record['negocio'])) : "";
 
     $totalProcesados++;
@@ -240,15 +215,31 @@ foreach ($data['records'] as $index => $record) {
     }
 
     // Validación 2: Email válido con verificación avanzada anti-rebotes (sintaxis + desechables + DNS MX/A)
-    if (empty($email) || !send_email_is_valid_email_advanced($email)) {
+    $email_err = '';
+    if (empty($email) || !campaign_is_valid_email_advanced($email, $email_err)) {
         $totalRechazados++;
+        $motivo = "Dirección de correo electrónico rechazada por el sistema de verificación avanzada: " . ($email_err ?: "sintaxis incorrecta o DNS inactivo.");
         $resultados[] = [
             "index" => $index,
             "empresa" => $empresa,
             "email" => $email,
             "status" => "RECHAZADO",
-            "motivo" => "Dirección de correo electrónico rechazada por el sistema de verificación (sintaxis incorrecta, dominio desechable o DNS MX/A inactivo para evitar rebotes)."
+            "motivo" => $motivo
         ];
+        
+        // Registrar como rebotado permanente para servir como lista de exclusión activa
+        if (!empty($email) && defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+            $bounceData = [
+                'email' => $email,
+                'empresa' => $empresa,
+                'feria' => $feria,
+                'categoria' => $categoria,
+                'status' => 'bounced',
+                'bounce_reason' => 'Verification failed: ' . $email_err,
+                'updated_at' => date('c')
+            ];
+            send_email_supabase_request('POST', 'contacts?on_conflict=email', $bounceData);
+        }
         continue;
     }
 
@@ -257,17 +248,29 @@ foreach ($data['records'] as $index => $record) {
     $excludeReason = '';
     
     if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+        $status = 'active';
+        $excludeSource = '';
+        
         $res = send_email_supabase_request('GET', 'contacts?email=eq.' . urlencode($email));
         if ($res['code'] === 200 && is_array($res['body']) && count($res['body']) > 0) {
-            $supaContact = $res['body'][0];
-            $status = $supaContact['status'] ?? 'active';
-            if ($status === 'unsubscribed') {
-                $isExcluded = true;
-                $excludeReason = "Envío omitido: El destinatario se ha dado de baja de forma voluntaria de las listas comerciales (LSSI/RGPD).";
-            } else if ($status === 'bounced') {
-                $isExcluded = true;
-                $excludeReason = "Envío omitido: La dirección de correo electrónico está marcada como rebotada/fallida en la base de datos de Supabase.";
+            $status = $res['body'][0]['status'] ?? 'active';
+            $excludeSource = 'contacts';
+        }
+        
+        if ($status !== 'unsubscribed' && $status !== 'bounced') {
+            $resLuz = send_email_supabase_request('GET', 'luz_contacts?email=eq.' . urlencode($email));
+            if ($resLuz['code'] === 200 && is_array($resLuz['body']) && count($resLuz['body']) > 0) {
+                $status = $resLuz['body'][0]['status'] ?? 'active';
+                $excludeSource = 'luz_contacts';
             }
+        }
+        
+        if ($status === 'unsubscribed') {
+            $isExcluded = true;
+            $excludeReason = "Envío omitido: El destinatario se ha dado de baja de forma voluntaria de las listas comerciales (LSSI/RGPD) ($excludeSource).";
+        } else if ($status === 'bounced') {
+            $isExcluded = true;
+            $excludeReason = "Envío omitido: La dirección de correo electrónico está marcada como rebotada/fallida ($excludeSource).";
         }
     }
     
@@ -356,7 +359,7 @@ foreach ($data['records'] as $index => $record) {
                         <td align="center" style="background-color: #ffffff; padding: 40px 30px;">
                             <!-- Logotipo Standarte -->
                             <img src="https://standarte.es/img/logo_stand-arte_negro.svg" alt="Standarte Logo" width="220" style="display: block; margin-bottom: 15px;">
-                            <p style="color: #292f35; font-size: 16px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: 'Glegoo', serif; text-align: center;">Diseño y Construcción de Stands Internacionales</p>
+                            <p style="color: #292f35; font-size: 13px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: 'Glegoo', serif; text-align: center;">Diseño y Construcción de Stands Internacionales</p>
                         </td>
                     </tr>
                     
@@ -369,7 +372,7 @@ foreach ($data['records'] as $index => $record) {
                             <!-- Saludo Personalizado -->
                             <h2 style="margin-top: 0; color: #555555; font-size: 18px; font-weight: normal; line-height: 1.3; text-align: center; margin-bottom: 25px;">Estimado equipo de {$empresa},</h2>
                             
-                            <p style="font-size: 16px; line-height: 1.65; color: #333333; margin-bottom: 20px; text-align: center;">
+                            <p style="font-size: 15px; line-height: 1.65; color: #333333; margin-bottom: 20px; text-align: center;">
                                 Su presencia en la feria <strong>{$feria}</strong> (dentro de la categoría de <strong>{$categoria}</strong>) es una oportunidad única de negocio. Pero seamos realistas: en un pabellón saturado de estímulos, la inmensa mayoría de los stands pasan completamente desapercibidos. ¿Permitirá que el suyo sea uno más del montón?
                             </p>
                             
@@ -377,14 +380,14 @@ foreach ($data['records'] as $index => $record) {
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fcf9ee; border-left: 4px solid #ffc800; border-radius: 4px; margin-bottom: 25px;">
                                 <tr>
                                     <td style="padding: 15px 20px; text-align: center;">
-                                        <p style="font-size: 16px; font-style: italic; line-height: 1.6; color: #292f35; margin: 0; text-align: center;">
+                                        <p style="font-size: 15px; font-style: italic; line-height: 1.6; color: #292f35; margin: 0; text-align: center;">
                                             "{$cuerpoText}"
                                         </p>
                                     </td>
                                 </tr>
                             </table>
                             
-                            <p style="font-size: 16px; line-height: 1.65; color: #333333; margin-bottom: 30px; text-align: center;">
+                            <p style="font-size: 15px; line-height: 1.65; color: #333333; margin-bottom: 30px; text-align: center;">
                                 En <strong>Standarte</strong> no diseñamos stands convencionales: creamos hitos arquitectónicos e imanes de clientes que posicionan a su marca como el líder indiscutible de su sector. Para inspirar el proyecto de <strong>{$empresa}</strong>, le presentamos tres de nuestros diseños en madera real más valorados y eficientes:
                             </p>
                             
@@ -412,8 +415,8 @@ HTML;
                                             </tr>
                                             <tr>
                                                 <td style="padding: 10px; font-family: Arial, sans-serif;">
-                                                    <h4 style="margin: 0 0 6px 0; font-size: 16px; color: #292f35; font-weight: bold;">{$titulo}</h4>
-                                                    <p style="margin: 0; font-size: 16px; line-height: 1.4; color: #666666; height: 75px; overflow: hidden;">
+                                                    <h4 style="margin: 0 0 6px 0; font-size: 13px; color: #292f35; font-weight: bold;">{$titulo}</h4>
+                                                    <p style="margin: 0; font-size: 11px; line-height: 1.4; color: #666666; height: 75px; overflow: hidden;">
                                                         {$desc}
                                                     </p>
                                                 </td>
@@ -431,7 +434,7 @@ HTML;
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 35px;">
                                 <tr>
                                     <td align="center">
-                                        <a href="{$ctaButtonLink}" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 16px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
+                                        <a href="{$ctaButtonLink}" target="_blank" style="background-color: #292f35; border: 2px solid #ffc800; border-radius: 30px; color: #ffffff; display: inline-block; font-size: 14px; font-weight: bold; line-height: 46px; text-align: center; text-decoration: none; width: 280px; -webkit-text-size-adjust: none; transition: background 0.3s ease; letter-spacing: 0.05em;">
                                             ACEPTAR EL RETO Y DISEÑAR MI STAND
                                         </a>
                                     </td>
@@ -444,21 +447,21 @@ HTML;
                     <!-- Pie de Página -->
                     <tr>
                         <td style="background-color: #292f35; padding: 30px; text-align: center; font-family: Arial, sans-serif;">
-                            <p style="color: #ffffff; font-size: 16px; font-weight: bold; margin: 0 0 10px 0;">Standarte</p>
-                            <p style="color: #aaaaaa; font-size: 16px; line-height: 1.6; margin: 0 0 15px 0;">
+                            <p style="color: #ffffff; font-size: 14px; font-weight: bold; margin: 0 0 10px 0;">Standarte</p>
+                            <p style="color: #aaaaaa; font-size: 11px; line-height: 1.6; margin: 0 0 15px 0;">
                                 Diseño, fabricación y montaje de stands premium para ferias nacionales e internacionales.<br>
                                 Madrid • Málaga • Lisboa • Badajoz
                             </p>
                             <table border="0" cellpadding="0" cellspacing="0" align="center" style="margin-bottom: 20px;">
                                 <tr>
                                     <td>
-                                        <a href="{$footerContactLink}" target="_blank" style="color: #ffc800; font-size: 16px; text-decoration: none; margin: 0 10px;">Contacto</a>
+                                        <a href="{$footerContactLink}" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Contacto</a>
                                         <span style="color: #666666;">|</span>
-                                        <a href="{$footerWebLink}" target="_blank" style="color: #ffc800; font-size: 16px; text-decoration: none; margin: 0 10px;">Web Oficial</a>
+                                        <a href="{$footerWebLink}" target="_blank" style="color: #ffc800; font-size: 11px; text-decoration: none; margin: 0 10px;">Web Oficial</a>
                                     </td>
                                 </tr>
                             </table>
-                            <p style="color: #666666; font-size: 16px; line-height: 1.4; margin: 0;">
+                            <p style="color: #666666; font-size: 9px; line-height: 1.4; margin: 0;">
                                 Este mensaje fue enviado de forma automática a solicitud de una campaña autorizada.<br>
                                 Conforme a la legislación LSSI-CE y el RGPD, puede revocar su consentimiento y darse de baja de estas comunicaciones de forma gratuita y en cualquier momento haciendo clic aquí: <a href="{$unsubscribeLink}" target="_blank" style="color: #ffc800; text-decoration: underline;">Darse de baja de la lista</a>.<br>
                                 © 2026 Standarte. Todos los derechos reservados.
@@ -476,21 +479,10 @@ HTML;
 </html>
 HTML;
 
-    // Configurar cabeceras de correo electrónico real
-    $headers = [
-        "MIME-Version: 1.0",
-        "Content-type: text/html; charset=UTF-8",
-        "From: Standarte <info@standarte.es>",
-        "Reply-To: info@standarte.es",
-        "X-Mailer: PHP/" . phpversion()
-    ];
-
-    // Intentar envío de correo real
+    // Intentar envío de correo real usando SMTP premium
     $realMailSuccess = false;
     try {
-        // En un entorno de desarrollo local con MAMP sin SMTP configurado, mail() puede lanzar warnings
-        // Usamos el operador de control de errores @ para evitar romper el flujo JSON de salida
-        $realMailSuccess = @mail($email, $asunto, $emailHtml, implode("\r\n", $headers), '-finfo@standarte.es');
+        $realMailSuccess = campaign_send_mail($config, $email, $asunto, $emailHtml);
     } catch (Exception $e) {
         $realMailSuccess = false;
     }
@@ -518,7 +510,7 @@ HTML;
             'status' => 'active', // Siempre nos aseguramos de que esté active al enviar (si ya estuviera unsubscribed/bounced se habría omitido en la validación superior)
             'updated_at' => date('c')
         ];
-        send_email_supabase_request('POST', 'contacts', $contactData);
+        send_email_supabase_request('POST', 'contacts?on_conflict=email', $contactData);
     }
 
     // Registrar en el historial de envíos únicos para activar el bloqueo de 1 mes

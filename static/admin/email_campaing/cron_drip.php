@@ -2,7 +2,7 @@
 // cron_drip.php
 // Script automático para enviar correos de forma gradual.
 // Límite: 15 correos por ejecución (diseñado para correr cada hora de 08:00 a 18:00 -> ~150/día).
-// Ventana: Desde 4 meses antes hasta 3 meses antes de la fecha del evento (1 mes de duración).
+// Ventana: Desde 5 meses antes hasta 3 meses antes de la fecha del evento (2 meses de duración).
 
 $config = require_once 'config.php';
 require_once 'template.php';
@@ -23,6 +23,16 @@ if (!file_exists($supaConfigPath)) {
     die("Error: No se encontró supabase-config.php\n");
 }
 require_once $supaConfigPath;
+
+function write_cron_status($status, $message, $extra = []) {
+    $statusFile = __DIR__ . '/data/cron_status.json';
+    $statusData = array_merge([
+        'last_run' => date('c'),
+        'status' => $status,
+        'message' => $message,
+    ], $extra);
+    file_put_contents($statusFile, json_encode($statusData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+}
 
 function supa_request($endpoint, $method = 'GET', $data = null) {
     $url = SUPABASE_URL . '/rest/v1/' . $endpoint;
@@ -53,22 +63,24 @@ function supa_request($endpoint, $method = 'GET', $data = null) {
 
 $emails_per_execution = 15;
 
-// Definir ventana de envío: (EventDate está entre Hoy + 3 meses y Hoy + 4 meses)
-// Dicho de otra manera: Hoy está a una distancia de entre 3 y 4 meses del evento.
+// Definir ventana de envío: (EventDate está entre Hoy + 3 meses y Hoy + 5 meses)
+// Dicho de otra manera: Hoy está a una distancia de entre 3 y 5 meses del evento.
 $dateWindowStart = date('Y-m-d', strtotime('+3 months')); 
-$dateWindowEnd = date('Y-m-d', strtotime('+4 months'));
+$dateWindowEnd = date('Y-m-d', strtotime('+5 months'));
 
 // 2. Buscar grupos activos en esa ventana de tiempo (gte.dateWindowStart y lte.dateWindowEnd)
 $endpointGroups = 'lead_groups?event_date=gte.' . $dateWindowStart . '&event_date=lte.' . $dateWindowEnd;
 $res = supa_request($endpointGroups);
 
 if ($res['code'] !== 200 || !is_array($res['data'])) {
+    write_cron_status('error', 'Error obteniendo grupos de Supabase o ningún grupo activo.');
     die("Error obteniendo grupos de Supabase o ningún grupo activo.\n");
 }
 
 $groups = $res['data'];
 if (empty($groups)) {
-    echo "No hay eventos en la ventana de 3-4 meses de antelación para hoy.\n";
+    write_cron_status('success', 'No hay eventos en la ventana de 3-5 meses de antelación para hoy.', ['active_groups' => []]);
+    echo "No hay eventos en la ventana de 3-5 meses de antelación para hoy.\n";
     exit;
 }
 
@@ -83,38 +95,38 @@ echo "Grupos activos en la ventana de envío: " . implode(", ", $activeGroupName
 // Definir textos fijos según idioma
 $dripTexts = array(
     'es' => array(
-        'subject' => '¿Listo para {{COMPANY}}? Descubre nuestras soluciones de diseño',
+        'subject' => 'Hola {{COMPANY}}. Te ofrecemos un stand diferencial y un presupuesto en 24 H.',
         'intro' => 'A pocos meses de la feria, es el momento perfecto para empezar a diseñar su stand.',
         'body' => 'En Inberpet estamos listos para ayudarle a destacar en su próximo evento. Hemos preparado algunas propuestas de stands que podrían encajar con la visión de su empresa.'
     ),
     'en' => array(
-        'subject' => 'Ready for {{COMPANY}}? Discover our design solutions',
+        'subject' => 'Hello {{COMPANY}}. We offer you a distinctive stand and a quote in 24 H.',
         'intro' => 'With just a few months left until the exhibition, it is the perfect time to start designing your stand.',
         'body' => 'At Inberpet, we are ready to help you stand out at your next event. We have prepared some stand proposals that might fit your company\'s vision.'
     ),
     'fr' => array(
-        'subject' => 'Prêt pour {{COMPANY}}? Découvrez nos solutions de design',
+        'subject' => 'Bonjour {{COMPANY}}. Nous vous offrons un stand différenciant et un devis en 24 H.',
         'intro' => 'À quelques mois du salon, c\'est le moment idéal pour commencer à concevoir votre stand.',
         'body' => 'Chez Inberpet, nous sommes prêts à vous aider à vous démarquer lors de votre prochain événement. Nous avons préparé quelques propositions de stands qui pourraient correspondre à la vision de votre entreprise.'
     ),
     'pt' => array(
-        'subject' => 'Pronto para {{COMPANY}}? Descubra as nossas soluções de design',
+        'subject' => 'Olá {{COMPANY}}. Oferecemos-lhe um stand diferenciado e um orçamento em 24 H.',
         'intro' => 'A poucos meses da feira, é a altura ideal para começar a desenhar o seu stand.',
         'body' => 'Na Inberpet estamos prontos para ajudá-lo a destacar-se no seu próximo evento. Preparámos algumas propostas de stands que poderão adequar-se à visão da sua empresa.'
     ),
     'de' => array(
-        'subject' => 'Bereit für {{COMPANY}}? Entdecken Sie unsere Designlösungen',
+        'subject' => 'Hallo {{COMPANY}}. Wir bieten Ihnen einen einzigartigen Messestand und ein Angebot in 24 H.',
         'intro' => 'Wenige Monate vor der Messe ist der perfekte Zeitpunkt, um mit der Gestaltung Ihres Messestandes zu beginnen.',
         'body' => 'Bei Inberpet sind wir bereit, Ihnen dabei zu helfen, sich bei Ihrer nächsten Veranstaltung abzuheben. Wir haben einige Standvorschläge vorbereitet, die zur Vision Ihres Unternehmens passen könnten.'
     ),
     'it' => array(
-        'subject' => 'Pronto per {{COMPANY}}? Scopri le nostre soluzioni di design',
+        'subject' => 'Ciao {{COMPANY}}. Ti offriamo uno stand distintivo e un preventivo in 24 H.',
         'intro' => 'A pochi mesi dalla fiera, è il momento perfetto per iniziare a progettare il tuo stand.',
         'body' => 'In Inberpet siamo pronti ad aiutarti a distinguerti al tuo prossimo evento. Abbiamo preparato alcune proposte di stand che potrebbero adattarsi alla visione della tua azienda.'
     ),
     // Fallback genérico
     'default' => array(
-        'subject' => 'Ready for {{COMPANY}}? Discover our design solutions',
+        'subject' => 'Hello {{COMPANY}}. We offer you a distinctive stand and a quote in 24 H.',
         'intro' => 'With just a few months left until the exhibition, it is the perfect time to start designing your stand.',
         'body' => 'At Inberpet, we are ready to help you stand out at your next event. We have prepared some stand proposals that might fit your company\'s vision.'
     )
@@ -145,6 +157,11 @@ foreach ($tablesToSearch as $tableName) {
 }
 
 if (empty($contactsToSend)) {
+    write_cron_status('success', 'No quedan contactos pendientes de envío (drip_sent = false) en estos grupos.', [
+        'active_groups' => $activeGroupNames,
+        'emails_to_send' => 0,
+        'sent_count' => 0
+    ]);
     echo "No quedan contactos pendientes de envío (drip_sent = false) en estos grupos.\n";
     exit;
 }
@@ -217,4 +234,33 @@ foreach ($contactsToSend as $contact) {
     sleep(1);
 }
 
+write_cron_status('success', "Proceso cron finalizado. Correos enviados: $sentCount", [
+    'active_groups' => $activeGroupNames,
+    'emails_to_send' => count($contactsToSend),
+    'sent_count' => $sentCount
+]);
 echo "Proceso cron finalizado. Correos enviados: $sentCount\n";
+
+// Ejecutar el limpiador de rebotes IMAP al finalizar el envío (automatización de limpieza)
+if (defined('BOUNCE_CRON_TOKEN')) {
+    $bounceUrl = $config['site_url'] . '/bounce-handler.php?cron=1&token=' . BOUNCE_CRON_TOKEN;
+    echo "Ejecutando limpiador de rebotes IMAP ($bounceUrl)...\n";
+    $chBounce = curl_init();
+    curl_setopt($chBounce, CURLOPT_URL, $bounceUrl);
+    curl_setopt($chBounce, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chBounce, CURLOPT_TIMEOUT, 30);
+    curl_setopt($chBounce, CURLOPT_SSL_VERIFYPEER, false);
+    $bounceRes = curl_exec($chBounce);
+    $bounceHttpCode = curl_getinfo($chBounce, CURLINFO_HTTP_CODE);
+    curl_close($chBounce);
+
+    if ($bounceHttpCode === 200) {
+        $bounceData = json_decode($bounceRes, true);
+        $detected = isset($bounceData['bounces_detected']) ? $bounceData['bounces_detected'] : 0;
+        $processed = isset($bounceData['processed_count']) ? $bounceData['processed_count'] : 0;
+        echo "Limpiador de rebotes ejecutado con éxito. Rebotes detectados: $detected. Contactos limpiados: $processed.\n";
+    } else {
+        echo "Advertencia: No se pudo ejecutar el limpiador de rebotes (HTTP $bounceHttpCode). Respuesta: $bounceRes\n";
+    }
+}
+

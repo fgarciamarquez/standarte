@@ -85,10 +85,26 @@ foreach ($recipients as $email) {
             $dbLanguage = $supaContact['language'] ?? null;
             if ($status === 'unsubscribed') {
                 $isExcluded = true;
-                $excludeReason = "Envío omitido (Baja RGPD)";
+                $excludeReason = "Envío omitido (Baja RGPD en contacts)";
             } else if ($status === 'bounced') {
                 $isExcluded = true;
-                $excludeReason = "Envío omitido (Rebotado)";
+                $excludeReason = "Envío omitido (Rebotado en contacts)";
+            }
+        }
+        
+        if (!$isExcluded) {
+            $resLuz = campaign_supabase_request('GET', 'luz_contacts?email=eq.' . urlencode($email));
+            if ($resLuz['code'] === 200 && is_array($resLuz['body']) && count($resLuz['body']) > 0) {
+                $supaContactLuz = $resLuz['body'][0];
+                $status = $supaContactLuz['status'] ?? 'active';
+                $dbLanguage = $dbLanguage ?? ($supaContactLuz['language'] ?? null);
+                if ($status === 'unsubscribed') {
+                    $isExcluded = true;
+                    $excludeReason = "Envío omitido (Baja RGPD en luz_contacts)";
+                } else if ($status === 'bounced') {
+                    $isExcluded = true;
+                    $excludeReason = "Envío omitido (Rebotado en luz_contacts)";
+                }
             }
         }
     }

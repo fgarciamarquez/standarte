@@ -37,6 +37,183 @@ include("config.php");
 		return trim((string)($_POST[$key] ?? $default));
 	}
 
+	function get_fair_comment($feria_name, $lang) {
+		$feria_lower = mb_strtolower($feria_name, 'UTF-8');
+		
+		$comments = array(
+			'extremadura' => array(
+				'es' => "La feria <strong>{feria}</strong> en nuestra región de <strong>Extremadura / Alentejo</strong> es una oportunidad de gran cercanía logística para nosotros, lo que nos permite ofreceros unas condiciones de montaje inmejorables y un seguimiento directo.",
+				'en' => "The <strong>{feria}</strong> exhibition in our region of <strong>Extremadura / Alentejo</strong> represents a great logistical proximity for us, allowing us to offer you excellent assembly conditions and direct monitoring.",
+				'pt' => "A feira <strong>{feria}</strong> na nossa região de <strong>Extremadura / Alentejo</strong> é uma oportunidade de grande proximidade logística para nós, permitindo-nos oferecer-vos excelentes condições de montagem e acompanhamento direto.",
+				'de' => "Die Messe <strong>{feria}</strong> in unserer Region <strong>Extremadura / Alentejo</strong> bietet uns eine hervorragende logistische Nähe, was es uns ermöglicht, Ihnen unschlagbare Montagebedingungen und eine direkte Betreuung anzubieten.",
+				'fr' => "Le salon <strong>{feria}</strong> dans notre région d'<strong>Extrémadure / Alentejo</strong> es une opportunité de grande proximité logistique pour nous, nous permettant de vous offrir des conditions de montage imbattables et un suivi direct."
+			),
+			'madrid' => array(
+				'es' => "La feria <strong>{feria}</strong> en <strong>IFEMA (Madrid)</strong> es un escaparate de primer nivel a nivel nacional e internacional, y estamos seguros de que vuestro stand en este recinto captará la atención de los principales operadores del sector.",
+				'en' => "The <strong>{feria}</strong> exhibition at <strong>IFEMA (Madrid)</strong> is a top-tier national and international showcase, and we are confident that your stand in this venue will capture the attention of the sector's main players.",
+				'pt' => "A feira <strong>{feria}</strong> na <strong>IFEMA (Madrid)</strong> é uma vitrine de primeira linha a nível nacional e internacional, e estamos seguros de que o vosso stand neste recinto captará la atenção dos principais operadores do setor.",
+				'de' => "Die Messe <strong>{feria}</strong> auf der <strong>IFEMA (Madrid)</strong> ist eine erstklassige nationale und internationale Plattform, und wir sind sicher, dass Ihr Stand an diesem Standort die Aufmerksamkeit der wichtigsten Akteure der Branche auf sich ziehen wird.",
+				'fr' => "Le salon <strong>{feria}</strong> à <strong>IFEMA (Madrid)</strong> est une vitrine de premier plan au niveau national et international, y nous sommes convaincus que votre stand dans ce parc des expositions saura capter l'attention des principaux acteurs du secteur."
+			),
+			'barcelona' => array(
+				'es' => "La feria <strong>{feria}</strong> en la <strong>Fira de Barcelona</strong> es uno de los epicentros de negocio más influyentes de Europa, y vuestra presencia en este recinto requiere un stand a la altura de las altas expectativas del mercado.",
+				'en' => "The <strong>{feria}</strong> exhibition at <strong>Fira Barcelona</strong> is one of Europe's most influential business hubs, and your presence in this venue demands a stand that lives up to the market's high expectations.",
+				'pt' => "A feira <strong>{feria}</strong> na <strong>Fira de Barcelona</strong> é um dos epicentros de negócios mais influentes da Europa, e a vossa presença neste recinto exige um stand à altura das elevadas expectativas del mercado.",
+				'de' => "Die Messe <strong>{feria}</strong> auf der <strong>Fira de Barcelona</strong> ist eines der einflussreichsten Geschäftszentren Europas, und Ihre Präsenz an diesem Standort erfordert einen Stand, der den hohen Anforderungen des Marktes gerecht wird.",
+				'fr' => "Le salon <strong>{feria}</strong> à la <strong>Fira de Barcelone</strong> est l'un des épicentres d'affaires les plus influents d'Europe, y votre présence dans ce lieu exige un stand à la hauteur des attentes élevées du marché."
+			),
+			'bilbao' => array(
+				'es' => "La feria <strong>{feria}</strong> en el <strong>BEC de Bilbao</strong> destaca por su fuerte perfil industrial y tecnológico, lo que convierte a vuestro stand en una pieza clave para transmitir solidez y liderazgo comercial.",
+				'en' => "The <strong>{feria}</strong> exhibition at the <strong>BEC in Bilbao</strong> stands out for its strong industrial and technological profile, making your stand a key element in conveying commercial strength and leadership.",
+				'pt' => "A feira <strong>{feria}</strong> no <strong>BEC de Bilbau</strong> destaca-se pelo seu forte perfil industrial e tecnológico, tornando o vosso stand numa peça-chave para transmitir solidez e liderança comercial.",
+				'de' => "Die Messe <strong>{feria}</strong> im <strong>BEC in Bilbao</strong> zeichnet sich durch ihr starkes industrielles und technologisches Profil aus, was Ihren Stand zu einem Schlüsselelement macht, um geschäftliche Stärke und Marktführerschaft zu demonstrieren.",
+				'fr' => "Le salon <strong>{feria}</strong> au <strong>BEC de Bilbao</strong> se distingue par son fort profil industriel et technologique, ce que fait de votre stand un élément clé pour transmettre solidité et leadership commercial."
+			),
+			'valencia' => array(
+				'es' => "La feria <strong>{feria}</strong> en <strong>Feria Valencia</strong> representa un gran impulso comercial en el mediterráneo, y nuestro equipo diseñará un espacio idóneo para maximizar el retorno de vuestra inversión.",
+				'en' => "The <strong>{feria}</strong> exhibition at <strong>Feria Valencia</strong> represents a great commercial boost in the Mediterranean, and our team will design an ideal space to maximize your return on investment.",
+				'pt' => "A feira <strong>{feria}</strong> na <strong>Feria Valencia</strong> representa um grande impulso comercial no Mediterrâneo, e a nossa equipa desenhará um espaço ideal para maximizar o retorno do vosso investimento.",
+				'de' => "Die Messe <strong>{feria}</strong> auf der <strong>Feria Valencia</strong> stellt einen großen geschäftlichen Impuls im Mittelmeerraum dar, und unser Team wird einen optimalen Stand entwerfen, um die Rendite Ihrer Investition zu maximieren.",
+				'fr' => "Le salon <strong>{feria}</strong> à la <strong>Feria Valencia</strong> représente un grand élan commercial en Méditerranée, y notre équipe concevra un espacio idéal pour maximiser le retour sur votre investissement."
+			),
+			'zaragoza' => array(
+				'es' => "La feria <strong>{feria}</strong> en la <strong>Feria de Zaragoza</strong> es un evento sectorial de gran tradición y afluencia, donde un stand de carpintería premium os posicionará como la opción de referencia para los visitantes.",
+				'en' => "The <strong>{feria}</strong> exhibition at <strong>Feria de Zaragoza</strong> is a sector event of great tradition and attendance, where a premium custom wooden stand will position you as the reference option for visitors.",
+				'pt' => "A feira <strong>{feria}</strong> na <strong>Feria de Zaragoza</strong> é um evento setorial de grande tradição e afluência, onde um stand de madeira premium vos posicionará como a opção de referência para os visitantes.",
+				'de' => "Die Messe <strong>{feria}</strong> auf der <strong>Feria de Zaragoza</strong> ist eine Branchenveranstaltung mit großer Tradition und Besucherzahlen, bei der ein hochwertiger Holzstand Sie als Referenzoption für Besucher positioniert.",
+				'fr' => "Le salon <strong>{feria}</strong> à la <strong>Feria de Zaragoza</strong> est un événement sectoriel de grande tradition et de forte affluence, où un stand premium en bois sur mesure vous positionnera comme l'option de référence pour les visiteurs."
+			),
+			'sevilla' => array(
+				'es' => "La feria <strong>{feria}</strong> en <strong>FIBES (Sevilla)</strong> es una plataforma comercial clave en el sur, y estamos convencidos de que un stand a medida de alta calidad proyectará la solidez de vuestra marca.",
+				'en' => "The <strong>{feria}</strong> exhibition at <strong>FIBES (Seville)</strong> is a key commercial platform in the south, and we are convinced that a high-quality bespoke stand will project your brand's strength.",
+				'pt' => "A feira <strong>{feria}</strong> na <strong>FIBES (Sevilha)</strong> é uma plataforma comercial fundamental no sul, e estamos convencidos de que um stand personalizado de alta qualidade projetará a solidez da vossa marca.",
+				'de' => "Die Messe <strong>{feria}</strong> im <strong>FIBES (Sevilla)</strong> ist eine wichtige Geschäftsplattform im Süden, und wir sind überzeugt, dass ein hochwertiger, maßgeschneiderter Stand die Stärke Ihrer Marke unterstreichen wird.",
+				'fr' => "Le salon <strong>{feria}</strong> à <strong>FIBES (Séville)</strong> est une plateforme commerciale clé dans le sud, y nous sommes convaincus qu'un stand sur mesure de haute qualité saura projeter la solidité de votre marque."
+			),
+			'portugal' => array(
+				'es' => "La feria <strong>{feria}</strong> en Portugal es un punto de encuentro comercial estratégico en la península, y estamos seguros de que vuestro espacio destacará por su calidad y diseño.",
+				'en' => "The <strong>{feria}</strong> exhibition in Portugal is a strategic commercial meeting point on the peninsula, and we are sure that your space will stand out for its quality and design.",
+				'pt' => "A feira <strong>{feria}</strong> em Portugal é um ponto de encontro comercial estratégico na península, e estamos certos de que o vosso espaço se destacará pela sua qualidade e design.",
+				'de' => "Die Messe <strong>{feria}</strong> in Portugal ist ein strategischer geschäftlicher Treffpunkt auf der Halbinsel, und wir sind sicher, dass sich Ihr Stand durch Qualität und Design auszeichnen wird.",
+				'fr' => "Le salon <strong>{feria}</strong> au Portugal est un point de rencontre commercial stratégique sur la péninsule, y nous sommes certains que votre espace se distinguera par sa qualité et son design."
+			),
+			'internacional' => array(
+				'es' => "La participación internacional en <strong>{feria}</strong> requiere una coordinación y logística impecables, y nuestro equipo cuenta con la experiencia en recintos feriales internacionales para asegurar el éxito de vuestra presencia.",
+				'en' => "International participation in <strong>{feria}</strong> requires flawless coordination and logistics, and our team has the experience in international exhibition centers to ensure the success of your presence.",
+				'pt' => "A participação internacional na <strong>{feria}</strong> exige uma coordenação e logística impecáveis, e a nossa equipa conta com a experiência em recintos de feiras internacionais para garantir o sucesso da vossa presença.",
+				'de' => "Die internationale Teilnahme an der <strong>{feria}</strong> erfordert eine tadellose Koordination und Logistik, und unser Team verfügt über die Erfahrung auf internationalen Messegeländen, um den Erfolg Ihrer Präsenz zu sichern.",
+				'fr' => "La participation internationale à <strong>{feria}</strong> exige une coordination et une logistique impeccables, y notre équipe dispose de l'expérience des parcs des expositions internationaux pour assurer le succès de votre présence."
+			),
+			'generico' => array(
+				'es' => "La feria <strong>{feria}</strong> es un escaparate comercial sumamente interesante en vuestro sector, y estamos convencidos de que vuestro espacio tendrá una gran repercusión comercial.",
+				'en' => "The <strong>{feria}</strong> exhibition is a highly interesting commercial showcase in your sector, and we are convinced that your space will have a great commercial impact.",
+				'pt' => "A feira <strong>{feria}</strong> é uma montra comercial extremamente interessante no seu setor, e estamos convencidos de que o seu espaço terá um grande impacto comercial.",
+				'de' => "Die Messe <strong>{feria}</strong> ist eine äußerst interessante kommerzielle Plattform in Ihrer Branche, und wir sind überzeugt, dass Ihr Stand eine große kommerzielle Wirkung erzielen wird.",
+				'fr' => "Le salon <strong>{feria}</strong> est une vitrine commerciale extrêmement intéressante dans votre secteur, y nous sommes convaincents que votre espace aura un impact commercial majeur."
+			)
+		);
+
+		$key = 'generico';
+		if (
+			strpos($feria_lower, 'extremadura') !== false ||
+			strpos($feria_lower, 'badajoz') !== false ||
+			strpos($feria_lower, 'caceres') !== false ||
+			strpos($feria_lower, 'merida') !== false ||
+			strpos($feria_lower, 'fio') !== false ||
+			strpos($feria_lower, 'alentejo') !== false ||
+			strpos($feria_lower, 'evora') !== false ||
+			strpos($feria_lower, 'elvas') !== false ||
+			strpos($feria_lower, 'beja') !== false ||
+			strpos($feria_lower, 'portalegre') !== false
+		) {
+			$key = 'extremadura';
+		} elseif (
+			strpos($feria_lower, 'madrid') !== false ||
+			strpos($feria_lower, 'ifema') !== false ||
+			strpos($feria_lower, 'fitur') !== false ||
+			strpos($feria_lower, 'arco') !== false ||
+			strpos($feria_lower, 'veteco') !== false ||
+			strpos($feria_lower, 'smart doors') !== false ||
+			strpos($feria_lower, 'fruit attraction') !== false ||
+			strpos($feria_lower, 'generas') !== false
+		) {
+			$key = 'madrid';
+		} elseif (
+			strpos($feria_lower, 'barcelona') !== false ||
+			strpos($feria_lower, 'fira') !== false ||
+			strpos($feria_lower, 'mwc') !== false ||
+			strpos($feria_lower, 'mobile') !== false ||
+			strpos($feria_lower, 'construmat') !== false ||
+			strpos($feria_lower, 'sil') !== false ||
+			strpos($feria_lower, 'hispack') !== false ||
+			strpos($feria_lower, 'alimentaria') !== false
+		) {
+			$key = 'barcelona';
+		} elseif (
+			strpos($feria_lower, 'bilbao') !== false ||
+			strpos($feria_lower, 'bec') !== false ||
+			strpos($feria_lower, 'biemh') !== false ||
+			strpos($feria_lower, 'sinaval') !== false
+		) {
+			$key = 'bilbao';
+		} elseif (
+			strpos($feria_lower, 'valencia') !== false ||
+			strpos($feria_lower, 'cevisama') !== false ||
+			strpos($feria_lower, 'habitat') !== false
+		) {
+			$key = 'valencia';
+		} elseif (
+			strpos($feria_lower, 'zaragoza') !== false ||
+			strpos($feria_lower, 'fima') !== false ||
+			strpos($feria_lower, 'smagua') !== false
+		) {
+			$key = 'zaragoza';
+		} elseif (
+			strpos($feria_lower, 'sevilla') !== false ||
+			strpos($feria_lower, 'fibes') !== false ||
+			strpos($feria_lower, 'sicab') !== false
+		) {
+			$key = 'sevilla';
+		} elseif (
+			strpos($feria_lower, 'lisboa') !== false ||
+			strpos($feria_lower, 'oporto') !== false ||
+			strpos($feria_lower, 'porto') !== false ||
+			strpos($feria_lower, 'fil') !== false ||
+			strpos($feria_lower, 'exponor') !== false
+		) {
+			$key = 'portugal';
+		} elseif (
+			strpos($feria_lower, 'canarias') !== false ||
+			strpos($feria_lower, 'baleares') !== false ||
+			strpos($feria_lower, 'tenerife') !== false ||
+			strpos($feria_lower, 'palma') !== false ||
+			strpos($feria_lower, 'mallorca') !== false ||
+			strpos($feria_lower, 'ceuta') !== false ||
+			strpos($feria_lower, 'melilla') !== false ||
+			strpos($feria_lower, 'alemania') !== false || strpos($feria_lower, 'germany') !== false ||
+			strpos($feria_lower, 'francia') !== false || strpos($feria_lower, 'france') !== false ||
+			strpos($feria_lower, 'italia') !== false || strpos($feria_lower, 'italy') !== false ||
+			strpos($feria_lower, 'inglaterra') !== false || strpos($feria_lower, 'england') !== false ||
+			strpos($feria_lower, 'londres') !== false || strpos($feria_lower, 'london') !== false ||
+			strpos($feria_lower, 'paris') !== false ||
+			strpos($feria_lower, 'milan') !== false ||
+			strpos($feria_lower, 'dusseldorf') !== false ||
+			strpos($feria_lower, 'frankfurt') !== false ||
+			strpos($feria_lower, 'munich') !== false ||
+			strpos($feria_lower, 'belgica') !== false || strpos($feria_lower, 'belgium') !== false ||
+			strpos($feria_lower, 'holanda') !== false || strpos($feria_lower, 'netherlands') !== false ||
+			strpos($feria_lower, 'internacional') !== false || strpos($feria_lower, 'international') !== false ||
+			strpos($feria_lower, 'extranjero') !== false || strpos($feria_lower, 'abroad') !== false
+		) {
+			$key = 'internacional';
+		}
+
+		$t_array = isset($comments[$key]) ? $comments[$key] : $comments['generico'];
+		$text = isset($t_array[$lang]) ? $t_array[$lang] : $t_array['es'];
+		
+		return str_replace('{feria}', $feria_name, $text);
+	}
+
 	$form_nombre           = post_value('form_nombre');
 	$form_empresa        = post_value('form_empresa');
 	$form_tlf         = post_value('form_tlf');
@@ -312,6 +489,71 @@ if (!filter_var($form_email, FILTER_VALIDATE_EMAIL)) {
 
 } else {
 
+	// Clasificación de feria y cálculo del presupuesto estimado mínimo
+	$feria_lower = mb_strtolower($form_feria, 'UTF-8');
+	$multiplier = 400; // Por defecto peninsular
+	$region = 'Peninsular';
+	
+	if (
+		strpos($feria_lower, 'extremadura') !== false ||
+		strpos($feria_lower, 'badajoz') !== false ||
+		strpos($feria_lower, 'caceres') !== false ||
+		strpos($feria_lower, 'merida') !== false ||
+		strpos($feria_lower, 'fio') !== false ||
+		strpos($feria_lower, 'alentejo') !== false ||
+		strpos($feria_lower, 'evora') !== false ||
+		strpos($feria_lower, 'elvas') !== false ||
+		strpos($feria_lower, 'beja') !== false ||
+		strpos($feria_lower, 'portalegre') !== false
+	) {
+		$multiplier = 250;
+		$region = 'Extremadura / Alentejo';
+	} elseif (
+		strpos($feria_lower, 'madrid') !== false ||
+		strpos($feria_lower, 'ifema') !== false ||
+		strpos($feria_lower, 'fitur') !== false ||
+		strpos($feria_lower, 'arco') !== false ||
+		strpos($feria_lower, 'veteco') !== false ||
+		strpos($feria_lower, 'smart doors') !== false ||
+		strpos($feria_lower, 'fruit attraction') !== false ||
+		strpos($feria_lower, 'generas') !== false
+	) {
+		$multiplier = 350;
+		$region = 'Madrid';
+	} elseif (
+		strpos($feria_lower, 'canarias') !== false ||
+		strpos($feria_lower, 'baleares') !== false ||
+		strpos($feria_lower, 'tenerife') !== false ||
+		strpos($feria_lower, 'palma') !== false ||
+		strpos($feria_lower, 'mallorca') !== false ||
+		strpos($feria_lower, 'ceuta') !== false ||
+		strpos($feria_lower, 'melilla') !== false ||
+		strpos($feria_lower, 'alemania') !== false || strpos($feria_lower, 'germany') !== false ||
+		strpos($feria_lower, 'francia') !== false || strpos($feria_lower, 'france') !== false ||
+		strpos($feria_lower, 'italia') !== false || strpos($feria_lower, 'italy') !== false ||
+		strpos($feria_lower, 'inglaterra') !== false || strpos($feria_lower, 'england') !== false ||
+		strpos($feria_lower, 'londres') !== false || strpos($feria_lower, 'london') !== false ||
+		strpos($feria_lower, 'paris') !== false ||
+		strpos($feria_lower, 'milan') !== false ||
+		strpos($feria_lower, 'dusseldorf') !== false ||
+		strpos($feria_lower, 'frankfurt') !== false ||
+		strpos($feria_lower, 'munich') !== false ||
+		strpos($feria_lower, 'belgica') !== false || strpos($feria_lower, 'belgium') !== false ||
+		strpos($feria_lower, 'holanda') !== false || strpos($feria_lower, 'netherlands') !== false ||
+		strpos($feria_lower, 'internacional') !== false || strpos($feria_lower, 'international') !== false ||
+		strpos($feria_lower, 'extranjero') !== false || strpos($feria_lower, 'abroad') !== false
+	) {
+		$multiplier = 470;
+		$region = 'Extrapeninsular';
+	}
+
+	$metros_val = intval($form_metros);
+	if ($metros_val <= 0) {
+		$metros_val = 1;
+	}
+	$threshold = $metros_val * $multiplier;
+	$form_presupuesto = number_format($threshold, 0, '', '') . ' €';
+
 $data_insert = json_encode(array(
 	'nombre' => $form_nombre,
 	'empresa' => $form_empresa,
@@ -335,92 +577,149 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	'apikey: ' . $supabase_key,
 	'Authorization: Bearer ' . $supabase_key,
 	'Content-Type: application/json',
-	'Prefer: return=minimal'
+	'Prefer: return=representation'
 ));
-curl_exec($ch);
+$response = curl_exec($ch);
 curl_close($ch);
 
-			          /*____________________SCRIPT MAIL________________________*/
+	$inserted_id = 0;
+	if ($response) {
+		$response_data = json_decode($response, true);
+		if (is_array($response_data) && !empty($response_data)) {
+			$inserted_id = $response_data[0]['id'] ?? 0;
+		}
+	}
 
-					  require("presupuesto_form_object.php");
+	if ($inserted_id <= 0) {
+		$output['error'] = 'error';
+		if (strpos($response, 'violates row-level security') !== false) {
+			$output['msg'] = 'Error de seguridad en la base de datos (RLS). Asegúrese de haber configurado las políticas SQL en su panel de Supabase.';
+		} else {
+			$output['msg'] = 'Error al registrar la solicitud en la base de datos de Supabase. Respuesta: ' . htmlspecialchars($response);
+		}
+		echo json_encode($output);
+		exit;
+	}
 
-					  $messageDetails = array();
-					  $messageDetails["message_subject"] = $mail_text['subject'];
-					  $messageDetails["to_email"] = "javier@standarte.es";
-					  $messageDetails["cc_email"] = $form_email;
-					  $messageDetails["from_name"] = "Standarte";
-					  $messageDetails["from_email"] = "javier@standarte.es";
-					  $messageDetails["reply_to_name"] = $form_nombre;
-					  $messageDetails["reply_to_email"] = $form_email;
-		
-		
-					  $invitationEmail = new InvitationEmail();
-					  $messageBody = $invitationEmail->generateMessageBody();
-						  $patterns = array();
-				
-						$patterns[0] = "{POST_nombre}";
-						$patterns[1] = "{POST_empresa}";
-						$patterns[2] = "{POST_telefono}";
-						$patterns[3] = "{POST_email}";
-						$patterns[4] = "{POST_feria}";
-						$patterns[5] = "{POST_localizacion}";
-						$patterns[6] = "{POST_metros}";
-						$patterns[7] = "{POST_opciones}";
-						$patterns[8] = "{POST_presupuesto}";
-						$patterns[9] = "{POST_descripcion}";
-						$patterns[10] = "{POST_LTD}";
-						$patterns[11] = "{POST_PIE}";
-						$patterns[12] = "{POST_LANG}";
-						$patterns[13] = "{EMAIL_TITLE}";
-						$patterns[14] = "{EMAIL_HEADING}";
-						$patterns[15] = "{EMAIL_EVENT}";
-						$patterns[16] = "{EMAIL_LOCATION}";
-						$patterns[17] = "{EMAIL_METERS}";
-						$patterns[18] = "{EMAIL_ZONES}";
-						$patterns[19] = "{EMAIL_BUDGET}";
-						$patterns[20] = "{EMAIL_DESCRIPTION}";
-						$patterns[21] = "{EMAIL_CLOSING}";
-						$patterns[22] = "{EMAIL_TEAM}";
-						$replacements = array();
-				
-						$replacements[0] = "$form_nombre";
-						$replacements[1] = "$form_empresa";
-						$replacements[2] = "$form_tlf";
-						$replacements[3] = "$form_email";
-						$replacements[4] = "$form_feria";
-						$replacements[5] = "$form_localizacion";
-						$replacements[6] = "$form_metros";
-						$replacements[7] = "$form_opciones";
-						$replacements[8] = "$form_presupuesto";
-						$replacements[9] = "$form_descripcion";
-						$replacements[10] = "$ltd_email";
-						$replacements[11] = "$pie_email";
-						$replacements[12] = "$form_lang";
-						$replacements[13] = $mail_text['title'];
-						$replacements[14] = $mail_text['heading'];
-						$replacements[15] = $mail_text['event'];
-						$replacements[16] = $mail_text['location'];
-						$replacements[17] = $mail_text['meters'];
-						$replacements[18] = $mail_text['zones'];
-						$replacements[19] = $mail_text['budget'];
-						$replacements[20] = $mail_text['description'];
-						$replacements[21] = $mail_text['closing'];
-						$replacements[22] = $mail_text['team'];
-		
-		
-						$emailMessage = str_replace($patterns, $replacements, $messageBody);
-		
-					  $messageDetails["message_body"] = $emailMessage;
-					  $invitationEmail->sendEmailMessage($messageDetails);
-		
-		
-		
-					  /*____________________FIN SCRIPT MAIL________________________*/
-            
+	/*____________________SCRIPT MAIL (INTERACTIVE PRE-SELECTION)________________________*/
+	$token = md5($inserted_id . $form_email . 'StandarteBudgetSelectionSalt');
+	$link_yes = "https://standarte.es/presupuesto-filtro.php?id=" . $inserted_id . "&token=" . $token . "&action=yes&lang=" . $form_lang;
+	$link_no = "https://standarte.es/presupuesto-filtro.php?id=" . $inserted_id . "&token=" . $token . "&action=no&lang=" . $form_lang;
 
+	$interactive_emails = array(
+		'es' => array(
+			'subject' => 'Solicitud de presupuesto recibida - Standarte',
+			'greeting' => 'Hola <strong>{nombre}</strong>,',
+			'intro' => 'Gracias por tu interés en Standarte para vuestra participación en la feria <strong>{feria}</strong>.',
+			'schedule' => 'Para garantizar el máximo nivel de detalle, la calidad técnica y el rigor creativo en cada stand tridimensional que desarrollamos, y con el fin de no saturar el calendario de trabajo de nuestro equipo creativo, llevamos a cabo un proceso de selección previa de las solicitudes recibidas.',
+			'ask' => 'Para una superficie de <strong>{metros} m²</strong> en esta feria, estimamos que el coste mínimo viable de diseño, fabricación y montaje de un stand de carpintería a medida premium se sitúa en torno a los <strong>{calculo}</strong>.',
+			'question' => '¿Dispone vuestra empresa de un presupuesto estimado superior a esta cifra?',
+			'btn_yes' => 'Sí, es superior',
+			'btn_no' => 'No, es inferior',
+			'closing' => 'Atentamente,<br><strong>El Equipo de Standarte</strong><br>info@standarte.es | +34 637 894 819'
+		),
+		'en' => array(
+			'subject' => 'Budget request received - Standarte',
+			'greeting' => 'Hello <strong>{nombre}</strong>,',
+			'intro' => 'Thank you for your interest in Standarte for your participation in the <strong>{feria}</strong> exhibition.',
+			'schedule' => 'To guarantee the highest level of detail, technical quality, and creative rigor in every three-dimensional stand we develop, and to avoid saturating our creative team\'s workflow, we carry out a pre-selection process for the requests received.',
+			'ask' => 'For an area of <strong>{metros} m²</strong> at this fair, we estimate that the minimum viable cost for design, manufacturing, and assembly of a premium custom wooden stand is around <strong>{calculo}</strong>.',
+			'question' => 'Does your company have an estimated budget higher than this figure?',
+			'btn_yes' => 'Yes, it is higher',
+			'btn_no' => 'No, it is lower',
+			'closing' => 'Best regards,<br><strong>The Standarte Team</strong><br>info@standarte.es | +34 637 894 819'
+		),
+		'pt' => array(
+			'subject' => 'Pedido de orçamento recebido - Standarte',
+			'greeting' => 'Olá <strong>{nombre}</strong>,',
+			'intro' => 'Agradecemos o seu interesse na Standarte para a sua participação na feira <strong>{feria}</strong>.',
+			'schedule' => 'Para garantir o máximo nível de detalhe, qualidade técnica e rigor criativo em cada stand tridimensional que desenvolvemos, e de forma a não saturar o calendário de trabalho da nossa equipa criativa, realizamos um processo de seleção prévia dos pedidos recebidos.',
+			'ask' => 'Para uma área de <strong>{metros} m²</strong> nesta feira, estimamos que o custo mínimo viável de design, fabrico e montagem de um stand de madeira personalizado premium seja de cerca de <strong>{calculo}</strong>.',
+			'question' => 'A sua empresa dispõe de um orçamento estimado superior a este valor?',
+			'btn_yes' => 'Sim, é superior',
+			'btn_no' => 'Não, é inferior',
+			'closing' => 'Atenciosamente,<br><strong>A Equipa da Standarte</strong><br>info@standarte.es | +34 637 894 819'
+		),
+		'de' => array(
+			'subject' => 'Budgetanfrage erhalten - Standarte',
+			'greeting' => 'Hallo <strong>{nombre}</strong>,',
+			'intro' => 'Vielen Dank für Ihr Interesse an Standarte für Ihre Teilnahme an der Messe <strong>{feria}</strong>.',
+			'schedule' => 'Um ein Höchstmaß an Detailgenauigkeit, technischer Qualität und kreativer Präzision bei jedem von uns entwickelten dreidimensionalen Messestand zu gewährleisten und die Arbeitsauslastung unseres Designteams nicht zu überlasten, führen wir eine Vorauswahl der eingegangenen Anfragen durch.',
+			'ask' => 'Für eine Fläche von <strong>{metros} m²</strong> auf dieser Messe schätzen wir die Mindestkosten für Design, Herstellung und Montage eines hochwertigen, maßgeschneiderten Holzstands auf ca. <strong>{calculo}</strong>.',
+			'question' => 'Verfügt Ihr Unternehmen über ein geschätztes Budget, das über diesem Betrag liegt?',
+			'btn_yes' => 'Ja, es ist höher',
+			'btn_no' => 'Nein, es ist niedriger',
+			'closing' => 'Mit freundlichen Grüßen,<br><strong>Ihr Standarte-Team</strong><br>info@standarte.es | +34 637 894 819'
+		),
+		'fr' => array(
+			'subject' => 'Demande de budget reçue - Standarte',
+			'greeting' => 'Bonjour <strong>{nombre}</strong>,',
+			'intro' => 'Nous vous remercions de votre intérêt pour Standarte concernant votre participation au salon <strong>{feria}</strong>.',
+			'schedule' => 'Afin de garantir le plus haut niveau de détail, de qualité technique et de rigueur créative pour chaque stand tridimensionnel que nous développons, et afin de ne pas surcharger le planning de travail de notre équipe créative, nous effectuons une sélection préalable des demandes reçues.',
+			'ask' => 'Pour une surface de <strong>{metros} m²</strong> sur ce salon, nous estimons que le coût minimum viable pour la conception, la fabrication et le montage d\'un stand premium en bois sur mesure se situe au-tour de <strong>{calculo}</strong>.',
+			'question' => 'Votre entreprise dispose-t-elle d\'un budget estimé supérieur à ce montant ?',
+			'btn_yes' => 'Oui, il est supérieur',
+			'btn_no' => 'Non, il est inférieur',
+			'closing' => 'Cordialement,<br><strong>L\'Équipe Standarte</strong><br>info@standarte.es | +34 637 894 819'
+		)
+	);
 
-            $output['error'] = 'success';
-            $output['msg']   = $mail_text['success']; 
+	$t = isset($interactive_emails[$form_lang]) ? $interactive_emails[$form_lang] : $interactive_emails['en'];
+	$fair_comment = get_fair_comment($form_feria, $form_lang);
+
+	$email_html = "
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>" . htmlspecialchars($t['subject'], ENT_QUOTES, 'UTF-8') . "</title>
+	</head>
+	<body style='font-family: Arial, sans-serif; font-size: 16px; color: #2b303a; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa;'>
+		<div style='background-color: #292f35; padding: 25px; text-align: center; border-radius: 8px 8px 0 0;'>
+			<img src='https://standarte.es/img/logo_stand-arte_blanco.svg' alt='Standarte' style='width: 180px;'>
+		</div>
+		<div style='padding: 30px 20px; background-color: #ffffff; border: 1px solid #e9ecef; border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);'>
+			<p>" . str_replace('{nombre}', $form_nombre, $t['greeting']) . "</p>
+			<p>" . str_replace('{feria}', $form_feria, $t['intro']) . "</p>
+			<p>" . $fair_comment . "</p>
+			<p>" . $t['schedule'] . "</p>
+			<p>" . str_replace(array('{metros}', '{calculo}'), array($form_metros, $form_presupuesto), $t['ask']) . "</p>
+			<p style='font-weight: 600; margin-top: 25px; text-align: center;'>" . $t['question'] . "</p>
+			
+			<div style='text-align: center; margin: 30px 0;'>
+				<a href='" . $link_yes . "' style='display: inline-block; background-color: #ffc800; color: #000000; text-decoration: none; padding: 12px 28px; font-weight: bold; border-radius: 30px; margin: 5px 10px; box-shadow: 0 4px 10px rgba(255,200,0,0.3);'> " . $t['btn_yes'] . " </a>
+				<a href='" . $link_no . "' style='display: inline-block; background-color: #f1f3f5; color: #495057; text-decoration: none; padding: 12px 28px; font-weight: bold; border-radius: 30px; margin: 5px 10px; border: 1px solid #dee2e6;'> " . $t['btn_no'] . " </a>
+			</div>
+			
+			<p style='margin-top: 30px; border-top: 1px dotted #dee2e6; padding-top: 20px;'>" . $t['closing'] . "</p>
+		</div>
+		<div style='margin-top: 20px; text-align: center; font-size: 12px; color: #6c757d;'>
+			<p>" . $pie_email . "</p>
+		</div>
+	</body>
+	</html>";
+
+	// Enviar correo vía SMTP premium (con fallback a mail nativo si falla)
+	$smtp_sent = false;
+	try {
+		require_once __DIR__ . '/email_campaing/mailer.php';
+		$smtpConfig = require_once __DIR__ . '/email_campaing/config.php';
+		$smtp_sent = campaign_send_mail($smtpConfig, $form_email, $t['subject'], $email_html);
+	} catch (Exception $e) {
+		$smtp_sent = false;
+	}
+
+	if (!$smtp_sent) {
+		$headers = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+		$headers .= "From: Standarte <info@standarte.es>\r\n";
+		$headers .= "Reply-To: info@standarte.es\r\n";
+		@mail($form_email, $t['subject'], $email_html, $headers);
+	}
+	/*____________________FIN SCRIPT MAIL________________________*/
+
+	$output['error'] = 'success';
+	$output['msg']   = $mail_text['success']; 
 
 }
     echo json_encode($output);

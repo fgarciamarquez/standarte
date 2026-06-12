@@ -22,16 +22,22 @@ if (is_file($configFile)) {
 }
 
 // 1. Obtener parámetros de seguimiento
-$emailBase64 = isset($_GET['email']) ? trim($_GET['email']) : '';
+$emailParam = isset($_GET['email']) ? trim($_GET['email']) : '';
 $destination = isset($_GET['to']) ? trim($_GET['to']) : '';
 $source = isset($_GET['from']) ? htmlspecialchars($_GET['from']) : 'unknown';
 
-// Decodificar el correo del visitante
+// Decodificar o leer el correo del visitante de forma inteligente
 $email = 'anonymous';
-if (!empty($emailBase64)) {
-    $decoded = base64_decode($emailBase64);
-    if (filter_var($decoded, FILTER_VALIDATE_EMAIL)) {
-        $email = $decoded;
+if (!empty($emailParam)) {
+    // Caso A: El email ya viene en texto plano
+    if (filter_var($emailParam, FILTER_VALIDATE_EMAIL)) {
+        $email = $emailParam;
+    } else {
+        // Caso B: El email viene codificado en base64
+        $decoded = base64_decode($emailParam);
+        if ($decoded !== false && filter_var($decoded, FILTER_VALIDATE_EMAIL)) {
+            $email = $decoded;
+        }
     }
 }
 
@@ -125,8 +131,8 @@ if ($email !== 'anonymous') {
     }
 }
 
-// 3. Registrar en la base de datos de Supabase vía REST API (IPv4 compatible) si no es duplicado
-if (!$isDuplicate && defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+// 3. Registrar en la base de datos de Supabase vía REST API (IPv4 compatible) si no es duplicado y está identificado
+if (!$isDuplicate && $email !== 'anonymous' && defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
     $clickData = [
         'email' => $email,
         'ip' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1',
@@ -156,8 +162,8 @@ if (!$isDuplicate && defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
     curl_close($ch);
 }
 
-// 4. Sistema de Respaldo Local (clicks.json) por seguridad si no es duplicado
-if (!$isDuplicate) {
+// 4. Sistema de Respaldo Local (clicks.json) por seguridad si no es duplicado y está identificado
+if (!$isDuplicate && $email !== 'anonymous') {
     $clicksDir = dirname($clicksFile);
     if (!is_dir($clicksDir)) {
         @mkdir($clicksDir, 0755, true);
