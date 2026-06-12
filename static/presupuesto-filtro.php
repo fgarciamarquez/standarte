@@ -137,7 +137,8 @@ $translations = array(
     )
 );
 
-$t = $translations[$lang];
+// Fallback a inglés para idiomas del sitio sin traducción propia (zh, hi, it, ko)
+$t = $translations[$lang] ?? $translations['en'];
 
 if ($action === 'yes') {
     // A. Enviar email de confirmación de interés al cliente

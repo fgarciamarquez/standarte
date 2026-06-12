@@ -63,6 +63,11 @@
         <form id="presupuestoForm" method="post" action="/admin/ajax_presupuesto_form.php" on:submit={handleSubmit}>
           <input type="hidden" name="form_lang" value={lang} />
 
+          <!-- Honeypot anti-spam: invisible para humanos; si llega relleno, el servidor descarta el envío -->
+          <div class="hp-field" aria-hidden="true">
+            <input type="text" name="form_web" tabindex="-1" autocomplete="off" />
+          </div>
+
           <div class="form-row">
             <div class="col col-6 form-group">
               <label for="form_nombre" class="form-label">{labels.form.name}</label>
@@ -71,6 +76,14 @@
             <div class="col col-6 form-group">
               <label for="form_email" class="form-label">{labels.form.email}</label>
               <input id="form_email" class="form-control" name="form_email" placeholder={labels.form.email} type="email" required />
+            </div>
+            <div class="col col-6 form-group">
+              <label for="form_empresa" class="form-label">{labels.form.company}</label>
+              <input id="form_empresa" class="form-control" name="form_empresa" placeholder={labels.form.company} required />
+            </div>
+            <div class="col col-6 form-group">
+              <label for="form_tlf" class="form-label">{labels.form.phone}</label>
+              <input id="form_tlf" class="form-control" name="form_tlf" placeholder={labels.form.phone} type="tel" />
             </div>
             <div class="col col-6 form-group">
               <label for="form_feria" class="form-label">{labels.form.fair}</label>
@@ -86,7 +99,7 @@
             </div>
             <div class="col col-12 privacy-container">
               <div class="form-check checkbox checkbox-warning privacy-check">
-                <input id="yes_privacy" type="checkbox" required />
+                <input id="yes_privacy" type="checkbox" name="form_privacidad" value="1" required />
                 <label for="yes_privacy">{labels.form.privacy}</label>
               </div>
             </div>
@@ -105,6 +118,16 @@
 </section>
 
 <style>
+  /* Honeypot fuera de pantalla (no usar display:none, algunos bots lo detectan) */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+
   .form-group {
     display: flex;
     flex-direction: column;

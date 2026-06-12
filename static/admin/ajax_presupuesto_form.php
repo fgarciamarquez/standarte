@@ -214,6 +214,19 @@ include("config.php");
 		return str_replace('{feria}', $feria_name, $text);
 	}
 
+	// Honeypot anti-spam: el campo form_web es invisible para humanos.
+	// Si llega relleno es un bot: respondemos exito falso y no procesamos nada.
+	if (post_value('form_web') !== '') {
+		echo json_encode(array('error' => 'success', 'msg' => 'OK'));
+		exit;
+	}
+
+	// Consentimiento de privacidad obligatorio (el checkbox envia form_privacidad=1)
+	if (post_value('form_privacidad') !== '1') {
+		echo json_encode(array('error' => 'error', 'msg' => 'Debe aceptar la política de privacidad. / You must accept the privacy policy.'));
+		exit;
+	}
+
 	$form_nombre           = post_value('form_nombre');
 	$form_empresa        = post_value('form_empresa');
 	$form_tlf         = post_value('form_tlf');
@@ -431,7 +444,8 @@ include("config.php");
 			'av_proyector' => 'Projetor',
 		),
 	);
-	$mail_text = $email_texts[$form_lang];
+	// Fallback a inglés para idiomas del sitio sin traducción propia (fr, it, ko)
+	$mail_text = $email_texts[$form_lang] ?? $email_texts['en'];
 	$floor_labels = array(
 		'tarima_madera' => $mail_text['floor_tarima_madera'],
 		'tarima_moqueta' => $mail_text['floor_tarima_moqueta'],
