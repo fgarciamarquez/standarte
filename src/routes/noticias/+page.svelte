@@ -657,30 +657,6 @@
     font-style: italic;
   }
 
-  /* Redundancias y estilo de menú de idiomas */
-  .lang-menu div button {
-    display: block;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    padding: 8px 16px;
-    text-align: left;
-    font-size: 16px;
-    cursor: pointer;
-    color: #333;
-    transition: background 0.2s ease;
-  }
-
-  .lang-menu div button:hover {
-    background: #f7f6f1;
-    color: #b89400;
-  }
-
-  .lang-menu div button.active {
-    font-weight: 700;
-    color: #b89400;
-  }
-
   @media (max-width: 768px) {
     .noticias-header {
       background: url('/img/bg2-mobile.webp') scroll center center / cover no-repeat !important;

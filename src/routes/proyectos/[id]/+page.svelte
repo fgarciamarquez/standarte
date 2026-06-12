@@ -449,15 +449,17 @@
 
   <!-- Lightbox Viewer -->
   {#if activeImageIndex !== -1}
-    <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Visualizador de Render 3D" on:click={closeLightbox}>
-      <button class="lightbox-nav prev" type="button" aria-label="Anterior" on:click|stopPropagation={prevImage}>‹</button>
-      
-      <div class="lightbox-window" on:click|stopPropagation>
+    <!-- El teclado (Escape/flechas) se gestiona globalmente en svelte:window con handleKeydown -->
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Visualizador de Render 3D" tabindex="-1" on:click={(e) => { if (e.target === e.currentTarget) closeLightbox(); }}>
+      <button class="lightbox-nav prev" type="button" aria-label="Anterior" on:click={prevImage}>‹</button>
+
+      <div class="lightbox-window">
         <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
         <img src={project.images[activeImageIndex]} alt={`Render de stand 3D ${activeImageIndex + 1} de ${project.name}`} class="lightbox-image" />
       </div>
 
-      <button class="lightbox-nav next" type="button" aria-label="Siguiente" on:click|stopPropagation={nextImage}>›</button>
+      <button class="lightbox-nav next" type="button" aria-label="Siguiente" on:click={nextImage}>›</button>
     </div>
   {/if}
 </main>
