@@ -420,15 +420,22 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
     .preview-subject { background:#f5f6f8; border-left:4px solid #ffc800; color:#333333; font-size:.9rem; line-height:1.45; margin:0 0 1rem; padding:.75rem .9rem; border-radius: 4px; border: 1px solid #e1e4e8; border-left-width: 4px; }
     @media (max-width: 950px) { main { grid-template-columns:1fr; } }
     
+    :root {
+      --status-color: <?php echo $statusColor; ?>;
+      --status-bg: <?php echo $statusBgColor; ?>;
+      --status-border: <?php echo $statusBorderColor; ?>;
+      --status-text: <?php echo $statusTextColor; ?>;
+      --status-hover-bg: <?php echo $isCronWarning ? 'rgba(230, 126, 34, 0.15)' : 'rgba(46, 204, 113, 0.15)'; ?>;
+    }
     /* System Status Indicator Styles */
-    .system-status-indicator { display: flex; align-items: center; gap: 8px; background: <?php echo $statusBgColor; ?>; border: 1px solid <?php echo $statusBorderColor; ?>; padding: 7px 14px; border-radius: 20px; cursor: pointer; user-select: none; transition: background 0.2s ease, transform 0.1s ease; }
-    .system-status-indicator:hover { background: <?php echo $isCronWarning ? 'rgba(230, 126, 34, 0.15)' : 'rgba(46, 204, 113, 0.15)'; ?>; }
+    .system-status-indicator { display: flex; align-items: center; gap: 8px; background: var(--status-bg); border: 1px solid var(--status-border); padding: 7px 14px; border-radius: 20px; cursor: pointer; user-select: none; transition: background 0.2s ease, transform 0.1s ease; }
+    .system-status-indicator:hover { background: var(--status-hover-bg); }
     .system-status-indicator:active { transform: scale(0.97); }
-    .status-dot { width: 9px; height: 9px; background-color: <?php echo $statusColor; ?>; border-radius: 50%; box-shadow: 0 0 8px <?php echo $statusColor; ?>; animation: blink-dot 1.5s infinite ease-in-out; }
-    .status-text { font-size: 0.8rem; font-weight: bold; color: <?php echo $statusTextColor; ?>; }
+    .status-dot { width: 9px; height: 9px; background-color: var(--status-color); border-radius: 50%; box-shadow: 0 0 8px var(--status-color); animation: blink-dot 1.5s infinite ease-in-out; }
+    .status-text { font-size: 0.8rem; font-weight: bold; color: var(--status-text); }
     @keyframes blink-dot {
       0%, 100% { opacity: 0.45; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px <?php echo $statusColor; ?>; }
+      50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px var(--status-color); }
     }
     
     /* Modal Overlay Styles */
@@ -455,7 +462,7 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
     <div style="display:flex; gap:16px; align-items:center;">
       <div class="system-status-indicator" onclick="toggleDripGroupsModal()">
         <span class="status-dot"></span>
-        <span class="status-text"><?php echo $statusLabel; ?></span>
+        <span class="status-text" id="system-status-text"><?php echo $statusLabel; ?></span>
       </div>
       <a href="manage_images.php" style="background:#ffc800; color:#111; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:0.85rem; transition: opacity 0.2s ease;">Gestionar Imágenes</a>
       <a href="?logout=1">Cerrar Sesión</a>
@@ -658,6 +665,11 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
               totalSent += (data.sent ? data.sent.length : 0);
               totalFailed += (data.failed ? data.failed.length : 0);
               progressLog.textContent = 'Lote ' + (currentBatchIdx + 1) + ' OK.\n' + progressLog.textContent;
+              
+              // Trigger realtime update to refresh green digits after batch send
+              if (typeof updateDripGroupsRealtime === 'function') {
+                updateDripGroupsRealtime();
+              }
             } else {
               totalFailed += batchEmails.length;
               progressLog.textContent = 'Lote ' + (currentBatchIdx + 1) + ' falló: ' + (data.errors ? data.errors.join(', ') : 'Error desconocido') + '\n' + progressLog.textContent;
@@ -825,31 +837,33 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
       <div class="modal-body">
         
         <!-- Estado del cronjob -->
-        <div style="background: <?php echo $isCronWarning ? '#fffbeb' : '#f0fdf4'; ?>; border: 1px solid <?php echo $isCronWarning ? '#fef3c7' : '#dcfce7'; ?>; border-radius: 6px; padding: 12px 14px; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 10px;">
-          <div style="font-size: 1.25rem; color: <?php echo $isCronWarning ? '#d97706' : '#16a34a'; ?>; line-height: 1; font-weight: bold;">
+        <div id="cron-status-container" style="background: <?php echo $isCronWarning ? '#fffbeb' : '#f0fdf4'; ?>; border: 1px solid <?php echo $isCronWarning ? '#fef3c7' : '#dcfce7'; ?>; border-radius: 6px; padding: 12px 14px; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 10px;">
+          <div id="cron-status-icon" style="font-size: 1.25rem; color: <?php echo $isCronWarning ? '#d97706' : '#16a34a'; ?>; line-height: 1; font-weight: bold;">
             <?php echo $isCronWarning ? '⚠' : '✓'; ?>
           </div>
-          <div style="font-size: 0.82rem; line-height: 1.4; color: <?php echo $isCronWarning ? '#92400e' : '#166534'; ?>;">
-            <div style="font-weight: bold; font-size: 0.88rem; margin-bottom: 3px;">
+          <div id="cron-status-text-wrapper" style="font-size: 0.82rem; line-height: 1.4; color: <?php echo $isCronWarning ? '#92400e' : '#166534'; ?>;">
+            <div id="cron-status-title" style="font-weight: bold; font-size: 0.88rem; margin-bottom: 3px;">
               <?php echo $isCronWarning ? 'Alerta de Inactividad' : 'Sistema Autónomo Operativo'; ?>
             </div>
-            <?php if (empty($cronStatus)): ?>
-              El sistema de correos autónomos está activo y esperando su primera ejecución programada.
-            <?php else: 
-              $lastRunTime = strtotime($cronStatus['last_run']);
-            ?>
-              Última ejecución: <strong><?php echo date('d/m/Y H:i:s', $lastRunTime); ?></strong><br>
-              Resultado: <strong><?php echo $cronStatus['status'] === 'success' ? 'Correcto' : 'Error'; ?></strong>
-              <?php if (isset($cronStatus['sent_count'])): ?>
-                · Enviados: <strong><?php echo intval($cronStatus['sent_count']); ?> emails</strong>
+            <div id="cron-status-details">
+              <?php if (empty($cronStatus)): ?>
+                El sistema de correos autónomos está activo y esperando su primera ejecución programada.
+              <?php else: 
+                $lastRunTime = strtotime($cronStatus['last_run']);
+              ?>
+                Última ejecución: <strong><?php echo date('d/m/Y H:i:s', $lastRunTime); ?></strong><br>
+                Resultado: <strong><?php echo $cronStatus['status'] === 'success' ? 'Correcto' : 'Error'; ?></strong>
+                <?php if (isset($cronStatus['sent_count'])): ?>
+                  · Enviados: <strong><?php echo intval($cronStatus['sent_count']); ?> emails</strong>
+                <?php endif; ?>
+                <br>Detalle: <em><?php echo htmlspecialchars($cronStatus['message']); ?></em>
+                <?php if ($isCronWarning): ?>
+                  <div style="margin-top: 6px; font-weight: bold; color: #b45309;">
+                    Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.
+                  </div>
+                <?php endif; ?>
               <?php endif; ?>
-              <br>Detalle: <em><?php echo htmlspecialchars($cronStatus['message']); ?></em>
-              <?php if ($isCronWarning): ?>
-                <div style="margin-top: 6px; font-weight: bold; color: #b45309;">
-                  Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.
-                </div>
-              <?php endif; ?>
-            <?php endif; ?>
+            </div>
           </div>
         </div>
 
@@ -873,12 +887,12 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
                 $totalLeads = isset($g['leads_with_email']) ? intval($g['leads_with_email']) : 0;
                 $sentCount = isset($g['sent_count']) ? intval($g['sent_count']) : 0;
               ?>
-                <tr>
+                <tr data-group-row="<?php echo htmlspecialchars($g['name']); ?>">
                   <td><b><?php echo htmlspecialchars($g['name']); ?></b></td>
                   <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($g['event_date']))); ?></td>
                   <td>
-                    <span style="color: #27ae60; font-weight: bold;"><?php echo $sentCount; ?></span>
-                    <span style="color: #888;"> / <?php echo $totalLeads; ?></span>
+                    <span data-group-sent="<?php echo htmlspecialchars($g['name']); ?>" style="color: #27ae60; font-weight: bold; transition: color 1s ease, text-shadow 1s ease;"><?php echo $sentCount; ?></span>
+                    <span style="color: #888;"> / <span data-group-total="<?php echo htmlspecialchars($g['name']); ?>"><?php echo $totalLeads; ?></span></span>
                   </td>
                   <td>Faltan <b><?php echo $monthsLeft; ?> m</b> (<?php echo round($daysLeft); ?> d)</td>
                 </tr>
@@ -894,13 +908,142 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
   </div>
 
   <script>
+    function updateDripGroupsRealtime() {
+      fetch('groups.php?action=active_drip_groups')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.status === 'success') {
+            // Update active groups table
+            if (data.groups) {
+              data.groups.forEach(function(g) {
+                var sentEl = document.querySelector('[data-group-sent="' + g.name + '"]');
+                var totalEl = document.querySelector('[data-group-total="' + g.name + '"]');
+                if (sentEl) {
+                  var newSent = parseInt(g.sent_count || 0);
+                  if (parseInt(sentEl.textContent) !== newSent) {
+                    sentEl.textContent = newSent;
+                    // Flash effect
+                    sentEl.style.transition = 'none';
+                    sentEl.style.color = '#2ecc71';
+                    sentEl.style.textShadow = '0 0 10px #2ecc71';
+                    setTimeout(function() {
+                      sentEl.style.transition = 'color 1s ease, text-shadow 1s ease';
+                      sentEl.style.color = '#27ae60';
+                      sentEl.style.textShadow = 'none';
+                    }, 100);
+                  }
+                }
+                if (totalEl) {
+                  var newTotal = parseInt(g.leads_with_email || 0);
+                  if (parseInt(totalEl.textContent) !== newTotal) {
+                    totalEl.textContent = newTotal;
+                  }
+                }
+              });
+            }
+
+            // Update cron status card
+            if (data.cron_status && data.cron_status.last_run) {
+              var lastRun = new Date(data.cron_status.last_run);
+              var diffMs = new Date() - lastRun;
+              var isWarning = diffMs > (24 * 3600 * 1000);
+              
+              var container = document.getElementById('cron-status-container');
+              var icon = document.getElementById('cron-status-icon');
+              var title = document.getElementById('cron-status-title');
+              var details = document.getElementById('cron-status-details');
+              var textWrapper = document.getElementById('cron-status-text-wrapper');
+              var root = document.documentElement;
+              var systemStatusText = document.getElementById('system-status-text');
+              
+              if (isWarning) {
+                root.style.setProperty('--status-color', '#e67e22');
+                root.style.setProperty('--status-bg', 'rgba(230, 126, 34, 0.08)');
+                root.style.setProperty('--status-border', 'rgba(230, 126, 34, 0.25)');
+                root.style.setProperty('--status-text', '#d35400');
+                root.style.setProperty('--status-hover-bg', 'rgba(230, 126, 34, 0.15)');
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo Inactivo';
+                
+                if (container) {
+                  container.style.background = '#fffbeb';
+                  container.style.borderColor = '#fef3c7';
+                }
+                if (icon) {
+                  icon.style.color = '#d97706';
+                  icon.textContent = '⚠';
+                }
+                if (title) {
+                  title.style.color = '#92400e';
+                  title.textContent = 'Alerta de Inactividad';
+                }
+                if (textWrapper) {
+                  textWrapper.style.color = '#92400e';
+                }
+              } else {
+                root.style.setProperty('--status-color', '#2ecc71');
+                root.style.setProperty('--status-bg', 'rgba(46, 204, 113, 0.08)');
+                root.style.setProperty('--status-border', 'rgba(46, 204, 113, 0.25)');
+                root.style.setProperty('--status-text', '#27ae60');
+                root.style.setProperty('--status-hover-bg', 'rgba(46, 204, 113, 0.15)');
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo Activo';
+                
+                if (container) {
+                  container.style.background = '#f0fdf4';
+                  container.style.borderColor = '#dcfce7';
+                }
+                if (icon) {
+                  icon.style.color = '#16a34a';
+                  icon.textContent = '✓';
+                }
+                if (title) {
+                  title.style.color = '#166534';
+                  title.textContent = 'Sistema Autónomo Operativo';
+                }
+                if (textWrapper) {
+                  textWrapper.style.color = '#166534';
+                }
+              }
+              
+              if (details) {
+                var pad = function(n) { return n < 10 ? '0' + n : n; };
+                var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
+                              pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
+                
+                var html = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                           'Resultado: <strong>' + (data.cron_status.status === 'success' ? 'Correcto' : 'Error') + '</strong>';
+                if (typeof data.cron_status.sent_count !== 'undefined') {
+                  html += ' · Enviados: <strong>' + parseInt(data.cron_status.sent_count) + ' emails</strong>';
+                }
+                html += '<br>Detalle: <em>' + (data.cron_status.message || '') + '</em>';
+                if (isWarning) {
+                  html += '<div style="margin-top: 6px; font-weight: bold; color: #b45309;">Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.</div>';
+                }
+                details.innerHTML = html;
+              }
+            }
+          }
+        })
+        .catch(function() {});
+    }
+
     function toggleDripGroupsModal() {
       var modal = document.getElementById('drip-groups-modal');
       modal.style.display = modal.style.display === 'none' ? 'flex' : 'none';
+      if (modal.style.display === 'flex') {
+        updateDripGroupsRealtime();
+      }
     }
     function closeDripGroupsModal(e) {
       document.getElementById('drip-groups-modal').style.display = 'none';
     }
+
+    // Poll active drip groups every 5 seconds when the modal is open
+    setInterval(function() {
+      var modal = document.getElementById('drip-groups-modal');
+      if (modal && modal.style.display === 'flex') {
+        updateDripGroupsRealtime();
+      }
+    }, 5000);
   </script>
 </body>
 </html>
