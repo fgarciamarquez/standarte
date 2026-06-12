@@ -167,7 +167,11 @@
   $: seoContent = (() => {
     const bySection = richSeoData[section];
     if (!bySection) {
-      if (import.meta.env.DEV) console.warn(`[i18n] No existe richSeoData["${section}"]`);
+      // Solo ciudades y servicios deben tener datos SEO enriquecidos;
+      // el resto de secciones usa seoTitle/seoDescription de siteData.
+      if (import.meta.env.DEV && (section in cityData || section === 'services')) {
+        console.warn(`[i18n] No existe richSeoData["${section}"]`);
+      }
       return null;
     }
     if (bySection[lang]) return bySection[lang];
