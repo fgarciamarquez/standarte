@@ -360,19 +360,48 @@ if (is_file($cronStatusFile)) {
     $cronStatus = json_decode(file_get_contents($cronStatusFile), true);
 }
 
+// Determinar el estado real del sistema autónomo
 $isCronWarning = false;
-if (!empty($cronStatus) && isset($cronStatus['last_run'])) {
-    $lastRunTime = strtotime($cronStatus['last_run']);
-    if ((time() - $lastRunTime) > (24 * 3600)) {
-        $isCronWarning = true;
+$isCronError = false;
+$isCronEmpty = empty($cronStatus);
+
+if (!$isCronEmpty) {
+    if (isset($cronStatus['status']) && $cronStatus['status'] === 'error') {
+        $isCronError = true;
+    }
+    if (isset($cronStatus['last_run'])) {
+        $lastRunTime = strtotime($cronStatus['last_run']);
+        if ((time() - $lastRunTime) > (24 * 3600)) {
+            $isCronWarning = true;
+        }
     }
 }
 
-$statusColor = $isCronWarning ? '#e67e22' : '#2ecc71';
-$statusBgColor = $isCronWarning ? 'rgba(230, 126, 34, 0.08)' : 'rgba(46, 204, 113, 0.08)';
-$statusBorderColor = $isCronWarning ? 'rgba(230, 126, 34, 0.25)' : 'rgba(46, 204, 113, 0.25)';
-$statusTextColor = $isCronWarning ? '#d35400' : '#27ae60';
-$statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo Activo';
+if ($isCronEmpty) {
+    $statusColor = '#e74c3c'; // Rojo
+    $statusBgColor = 'rgba(231, 76, 60, 0.08)';
+    $statusBorderColor = 'rgba(231, 76, 60, 0.25)';
+    $statusTextColor = '#c0392b';
+    $statusLabel = 'Envío Autónomo Parado (Sin registro)';
+} else if ($isCronError) {
+    $statusColor = '#e74c3c'; // Rojo
+    $statusBgColor = 'rgba(231, 76, 60, 0.08)';
+    $statusBorderColor = 'rgba(231, 76, 60, 0.25)';
+    $statusTextColor = '#c0392b';
+    $statusLabel = 'Envío Autónomo con Fallos';
+} else if ($isCronWarning) {
+    $statusColor = '#e67e22'; // Naranja
+    $statusBgColor = 'rgba(230, 126, 34, 0.08)';
+    $statusBorderColor = 'rgba(230, 126, 34, 0.25)';
+    $statusTextColor = '#d35400';
+    $statusLabel = 'Envío Autónomo Inactivo (Parado)';
+} else {
+    $statusColor = '#2ecc71'; // Verde
+    $statusBgColor = 'rgba(46, 204, 113, 0.08)';
+    $statusBorderColor = 'rgba(46, 204, 113, 0.25)';
+    $statusTextColor = '#27ae60';
+    $statusLabel = 'Envío Autónomo Activo';
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -425,7 +454,15 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
       --status-bg: <?php echo $statusBgColor; ?>;
       --status-border: <?php echo $statusBorderColor; ?>;
       --status-text: <?php echo $statusTextColor; ?>;
-      --status-hover-bg: <?php echo $isCronWarning ? 'rgba(230, 126, 34, 0.15)' : 'rgba(46, 204, 113, 0.15)'; ?>;
+      --status-hover-bg: <?php 
+        if ($isCronEmpty || $isCronError) {
+            echo 'rgba(231, 76, 60, 0.15)';
+        } else if ($isCronWarning) {
+            echo 'rgba(230, 126, 34, 0.15)';
+        } else {
+            echo 'rgba(46, 204, 113, 0.15)';
+        }
+      ?>;
     }
     /* System Status Indicator Styles */
     .system-status-indicator { display: flex; align-items: center; gap: 8px; background: var(--status-bg); border: 1px solid var(--status-border); padding: 7px 14px; border-radius: 20px; cursor: pointer; user-select: none; transition: background 0.2s ease, transform 0.1s ease; }
@@ -474,10 +511,29 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
         <span>Visitas totales desde correos multimedia</span>
         <strong id="total-visits-counter"><?php echo number_format($totalEmailVisits, 0, ',', '.'); ?></strong>
       </div>
-      <div class="smtp-status smtp-ok">
-        <b>Servidor SMTP de OVH Activo</b>
-        <span>Los envíos de correo se realizan de forma segura y autenticada a través de ssl0.ovh.net utilizando la dirección info@standarte.es.</span>
-      </div>
+      <?php
+      $smtpHost = isset($config['smtp']['host']) ? $config['smtp']['host'] : '';
+      $smtpEnabled = !empty($config['smtp']['enabled']) && $smtpReady;
+      $smtpUsername = isset($config['smtp']['username']) ? $config['smtp']['username'] : '';
+
+      if ($smtpEnabled):
+          $hostNameText = 'Personalizado';
+          if (stripos($smtpHost, 'gmail.com') !== false || stripos($smtpHost, 'google.com') !== false) {
+              $hostNameText = 'Google Workspace';
+          } else if (stripos($smtpHost, 'ovh.net') !== false || stripos($smtpHost, 'ovh.com') !== false) {
+              $hostNameText = 'OVH';
+          }
+      ?>
+          <div class="smtp-status smtp-ok" style="border-left: 4px solid #2ecc71;">
+            <b style="color: #27ae60;">Servidor SMTP de <?php echo $hostNameText; ?> Activo</b>
+            <span>Los envíos de correo se realizan de forma segura y autenticada a través de <code><?php echo htmlspecialchars($smtpHost); ?></code> utilizando la dirección <code><?php echo htmlspecialchars($smtpUsername); ?></code>.</span>
+          </div>
+      <?php else: ?>
+          <div class="smtp-status smtp-warning" style="border-left: 4px solid #e67e22; background: #fffbeb;">
+            <b style="color: #d35400;">Servidor SMTP Inactivo o Desconectado</b>
+            <span>El envío de correos a través de SMTP está desactivado en la configuración. Los envíos se realizarán a través de la función <code>mail()</code> predeterminada de PHP, lo que podría afectar la entregabilidad de los emails.</span>
+          </div>
+      <?php endif; ?>
       <form id="campaign-form" method="post">
         <input id="campaign-action" type="hidden" name="campaign_action" value="preview">
         <?php foreach ($errors as $error): ?><p class="message error"><?php echo campaign_escape($error); ?></p><?php endforeach; ?>
@@ -837,22 +893,57 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
       <div class="modal-body">
         
         <!-- Estado del cronjob -->
-        <div id="cron-status-container" style="background: <?php echo $isCronWarning ? '#fffbeb' : '#f0fdf4'; ?>; border: 1px solid <?php echo $isCronWarning ? '#fef3c7' : '#dcfce7'; ?>; border-radius: 6px; padding: 12px 14px; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 10px;">
-          <div id="cron-status-icon" style="font-size: 1.25rem; color: <?php echo $isCronWarning ? '#d97706' : '#16a34a'; ?>; line-height: 1; font-weight: bold;">
-            <?php echo $isCronWarning ? '⚠' : '✓'; ?>
+        <?php
+        $cardBg = '#f0fdf4';
+        $cardBorder = '#dcfce7';
+        $cardIconColor = '#16a34a';
+        $cardIcon = '✓';
+        $cardTitleColor = '#166534';
+        $cardTitle = 'Sistema Autónomo Operativo';
+        $cardTextColor = '#166534';
+        
+        if ($isCronEmpty) {
+            $cardBg = '#fef2f2';
+            $cardBorder = '#fecaca';
+            $cardIconColor = '#dc2626';
+            $cardIcon = '⚠';
+            $cardTitleColor = '#991b1b';
+            $cardTitle = 'Sistema Autónomo Parado';
+            $cardTextColor = '#991b1b';
+        } else if ($isCronError) {
+            $cardBg = '#fef2f2';
+            $cardBorder = '#fecaca';
+            $cardIconColor = '#dc2626';
+            $cardIcon = '⚠';
+            $cardTitleColor = '#991b1b';
+            $cardTitle = 'Error en Ejecución Autónoma';
+            $cardTextColor = '#991b1b';
+        } else if ($isCronWarning) {
+            $cardBg = '#fffbeb';
+            $cardBorder = '#fef3c7';
+            $cardIconColor = '#d97706';
+            $cardIcon = '⚠';
+            $cardTitleColor = '#92400e';
+            $cardTitle = 'Alerta de Inactividad';
+            $cardTextColor = '#92400e';
+        }
+        ?>
+        <div id="cron-status-container" style="background: <?php echo $cardBg; ?>; border: 1px solid <?php echo $cardBorder; ?>; border-radius: 6px; padding: 12px 14px; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 10px;">
+          <div id="cron-status-icon" style="font-size: 1.25rem; color: <?php echo $cardIconColor; ?>; line-height: 1; font-weight: bold;">
+            <?php echo $cardIcon; ?>
           </div>
-          <div id="cron-status-text-wrapper" style="font-size: 0.82rem; line-height: 1.4; color: <?php echo $isCronWarning ? '#92400e' : '#166534'; ?>;">
-            <div id="cron-status-title" style="font-weight: bold; font-size: 0.88rem; margin-bottom: 3px;">
-              <?php echo $isCronWarning ? 'Alerta de Inactividad' : 'Sistema Autónomo Operativo'; ?>
+          <div id="cron-status-text-wrapper" style="font-size: 0.82rem; line-height: 1.4; color: <?php echo $cardTextColor; ?>;">
+            <div id="cron-status-title" style="font-weight: bold; font-size: 0.88rem; margin-bottom: 3px; color: <?php echo $cardTitleColor; ?>;">
+              <?php echo $cardTitle; ?>
             </div>
             <div id="cron-status-details">
-              <?php if (empty($cronStatus)): ?>
-                El sistema de correos autónomos está activo y esperando su primera ejecución programada.
+              <?php if ($isCronEmpty): ?>
+                El sistema de correos autónomos no ha registrado ninguna actividad todavía (el archivo cron_status.json no existe). Por favor, asegúrese de que el cronjob del servidor está configurado.
               <?php else: 
                 $lastRunTime = strtotime($cronStatus['last_run']);
               ?>
                 Última ejecución: <strong><?php echo date('d/m/Y H:i:s', $lastRunTime); ?></strong><br>
-                Resultado: <strong><?php echo $cronStatus['status'] === 'success' ? 'Correcto' : 'Error'; ?></strong>
+                Resultado: <strong style="<?php echo $isCronError ? 'color:#dc2626;' : ''; ?>"><?php echo $cronStatus['status'] === 'success' ? 'Correcto' : 'Fallo (Error)'; ?></strong>
                 <?php if (isset($cronStatus['sent_count'])): ?>
                   · Enviados: <strong><?php echo intval($cronStatus['sent_count']); ?> emails</strong>
                 <?php endif; ?>
@@ -943,10 +1034,16 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
             }
 
             // Update cron status card
-            if (data.cron_status && data.cron_status.last_run) {
-              var lastRun = new Date(data.cron_status.last_run);
-              var diffMs = new Date() - lastRun;
-              var isWarning = diffMs > (24 * 3600 * 1000);
+            if (data.cron_status) {
+              var isEmpty = !data.cron_status || Object.keys(data.cron_status).length === 0;
+              var isError = !isEmpty && data.cron_status.status === 'error';
+              var isWarning = false;
+              var lastRun = null;
+              if (!isEmpty && data.cron_status.last_run) {
+                lastRun = new Date(data.cron_status.last_run);
+                var diffMs = new Date() - lastRun;
+                isWarning = diffMs > (24 * 3600 * 1000);
+              }
               
               var container = document.getElementById('cron-status-container');
               var icon = document.getElementById('cron-status-icon');
@@ -956,13 +1053,71 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
               var root = document.documentElement;
               var systemStatusText = document.getElementById('system-status-text');
               
-              if (isWarning) {
+              if (isEmpty) {
+                root.style.setProperty('--status-color', '#e74c3c');
+                root.style.setProperty('--status-bg', 'rgba(231, 76, 60, 0.08)');
+                root.style.setProperty('--status-border', 'rgba(231, 76, 60, 0.25)');
+                root.style.setProperty('--status-text', '#c0392b');
+                root.style.setProperty('--status-hover-bg', 'rgba(231, 76, 60, 0.15)');
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo Parado (Sin registro)';
+                
+                if (container) {
+                  container.style.background = '#fef2f2';
+                  container.style.borderColor = '#fecaca';
+                }
+                if (icon) {
+                  icon.style.color = '#dc2626';
+                  icon.textContent = '⚠';
+                }
+                if (title) {
+                  title.style.color = '#991b1b';
+                  title.textContent = 'Sistema Autónomo Parado';
+                }
+                if (textWrapper) {
+                  textWrapper.style.color = '#991b1b';
+                }
+                if (details) {
+                  details.innerHTML = 'El sistema de correos autónomos no ha registrado ninguna actividad todavía (el archivo cron_status.json no existe). Por favor, asegúrese de que el cronjob del servidor está configurado.';
+                }
+              } else if (isError) {
+                root.style.setProperty('--status-color', '#e74c3c');
+                root.style.setProperty('--status-bg', 'rgba(231, 76, 60, 0.08)');
+                root.style.setProperty('--status-border', 'rgba(231, 76, 60, 0.25)');
+                root.style.setProperty('--status-text', '#c0392b');
+                root.style.setProperty('--status-hover-bg', 'rgba(231, 76, 60, 0.15)');
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo con Fallos';
+                
+                if (container) {
+                  container.style.background = '#fef2f2';
+                  container.style.borderColor = '#fecaca';
+                }
+                if (icon) {
+                  icon.style.color = '#dc2626';
+                  icon.textContent = '⚠';
+                }
+                if (title) {
+                  title.style.color = '#991b1b';
+                  title.textContent = 'Error en Ejecución Autónoma';
+                }
+                if (textWrapper) {
+                  textWrapper.style.color = '#991b1b';
+                }
+                
+                if (details) {
+                  var pad = function(n) { return n < 10 ? '0' + n : n; };
+                  var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
+                                pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
+                  details.innerHTML = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                                      'Resultado: <strong style="color: #dc2626;">Fallo (Error)</strong><br>' +
+                                      'Detalle: <em>' + (data.cron_status.message || '') + '</em>';
+                }
+              } else if (isWarning) {
                 root.style.setProperty('--status-color', '#e67e22');
                 root.style.setProperty('--status-bg', 'rgba(230, 126, 34, 0.08)');
                 root.style.setProperty('--status-border', 'rgba(230, 126, 34, 0.25)');
                 root.style.setProperty('--status-text', '#d35400');
                 root.style.setProperty('--status-hover-bg', 'rgba(230, 126, 34, 0.15)');
-                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo Inactivo';
+                if (systemStatusText) systemStatusText.textContent = 'Envío Autónomo Inactivo (Parado)';
                 
                 if (container) {
                   container.style.background = '#fffbeb';
@@ -978,6 +1133,21 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
                 }
                 if (textWrapper) {
                   textWrapper.style.color = '#92400e';
+                }
+                
+                if (details) {
+                  var pad = function(n) { return n < 10 ? '0' + n : n; };
+                  var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
+                                pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
+                  
+                  var html = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                             'Resultado: <strong>Correcto</strong>';
+                  if (typeof data.cron_status.sent_count !== 'undefined') {
+                    html += ' · Enviados: <strong>' + parseInt(data.cron_status.sent_count) + ' emails</strong>';
+                  }
+                  html += '<br>Detalle: <em>' + (data.cron_status.message || '') + '</em>' +
+                          '<div style="margin-top: 6px; font-weight: bold; color: #b45309;">Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.</div>';
+                  details.innerHTML = html;
                 }
               } else {
                 root.style.setProperty('--status-color', '#2ecc71');
@@ -1002,23 +1172,20 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
                 if (textWrapper) {
                   textWrapper.style.color = '#166534';
                 }
-              }
-              
-              if (details) {
-                var pad = function(n) { return n < 10 ? '0' + n : n; };
-                var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
-                              pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
                 
-                var html = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
-                           'Resultado: <strong>' + (data.cron_status.status === 'success' ? 'Correcto' : 'Error') + '</strong>';
-                if (typeof data.cron_status.sent_count !== 'undefined') {
-                  html += ' · Enviados: <strong>' + parseInt(data.cron_status.sent_count) + ' emails</strong>';
+                if (details) {
+                  var pad = function(n) { return n < 10 ? '0' + n : n; };
+                  var dateStr = pad(lastRun.getDate()) + '/' + pad(lastRun.getMonth() + 1) + '/' + lastRun.getFullYear() + ' ' + 
+                                pad(lastRun.getHours()) + ':' + pad(lastRun.getMinutes()) + ':' + pad(lastRun.getSeconds());
+                  
+                  var html = 'Última ejecución: <strong>' + dateStr + '</strong><br>' +
+                             'Resultado: <strong>Correcto</strong>';
+                  if (typeof data.cron_status.sent_count !== 'undefined') {
+                    html += ' · Enviados: <strong>' + parseInt(data.cron_status.sent_count) + ' emails</strong>';
+                  }
+                  html += '<br>Detalle: <em>' + (data.cron_status.message || '') + '</em>';
+                  details.innerHTML = html;
                 }
-                html += '<br>Detalle: <em>' + (data.cron_status.message || '') + '</em>';
-                if (isWarning) {
-                  html += '<div style="margin-top: 6px; font-weight: bold; color: #b45309;">Aviso: No se ha detectado ninguna ejecución en las últimas 24 horas.</div>';
-                }
-                details.innerHTML = html;
               }
             }
           }
