@@ -25,14 +25,16 @@ DirectoryIndex index.html index.php
   RewriteCond %{REQUEST_URI} ^/noticias/?$
   RewriteRule ^ noticias.html [L]
 
-  # Eliminar barra inclinada al final de cualquier URL (excepto si es un directorio real) para evitar error 404/500
+  # Servir <ruta>.html cuando exista, AUNQUE exista un directorio homónimo.
+  # SvelteKit genera carpetas (proyectos/<id>/, noticias/<slug>/...) que solo
+  # contienen __data.json; sin esta regla Apache redirige al directorio vacío
+  # de índice y responde 403.
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+
+  # Eliminar barra inclinada al final si no hay .html equivalente ni es un directorio real
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)/$ /$1 [R=301,L]
-
-  # Servir archivos HTML de forma interna para URLs sin extensión (limpias)
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}.html -f
-  RewriteRule ^(.*)$ $1.html [L]
 </IfModule>
 
 <IfModule mod_headers.c>
