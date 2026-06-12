@@ -4,7 +4,6 @@
   import { pushState, replaceState } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios } from '$lib/siteData.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
-  import { richSeoData } from '$lib/richSeoData.js';
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
@@ -16,6 +15,9 @@
   export let copy;
   export let canonical;
   export let initialLightboxSlug = null;
+  // Datos SEO enriquecidos de la sección actual (todas las lenguas), inyectados
+  // por el load del servidor; richSeoData.js completo ya no viaja al cliente.
+  export let richSeo = null;
 
   const ctaLabels = {
     es: 'PRESUPUESTO EN 24 H',
@@ -164,22 +166,7 @@
     }
   }
 
-  $: seoContent = (() => {
-    const bySection = richSeoData[section];
-    if (!bySection) {
-      // Solo ciudades y servicios deben tener datos SEO enriquecidos;
-      // el resto de secciones usa seoTitle/seoDescription de siteData.
-      if (import.meta.env.DEV && (section in cityData || section === 'services')) {
-        console.warn(`[i18n] No existe richSeoData["${section}"]`);
-      }
-      return null;
-    }
-    if (bySection[lang]) return bySection[lang];
-    if (import.meta.env.DEV && lang !== 'es') {
-      console.warn(`[i18n] Falta richSeoData["${section}"]["${lang}"] — fallback a ES`);
-    }
-    return bySection.es || null;
-  })();
+  $: seoContent = richSeo ? (richSeo[lang] || richSeo.es || null) : null;
   $: selectedPortfolios = portfolios.slice(0, 3);
 
   $: title = seoContent?.title || (section in cityData

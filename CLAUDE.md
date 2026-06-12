@@ -7,6 +7,7 @@ Web de Standarte (diseño y construcción de stands feriales) + sistema propio d
 Tres sistemas en un mismo repo:
 
 1. **Web pública (SvelteKit estático)** — fuente en `src/`, multiidioma (es/en/de/pt/hi/zh) definido en `src/lib/siteData.js`. Noticias en `src/lib/newsData.json`. `npm run build` genera `dist/`, que es lo que se sube al servidor (`/www`).
+   - Los datasets pesados NO van al bundle del cliente: `projectData.js` (3,7 MB) y `src/lib/server/richSeoData.js` (744 KB) solo se usan en loads de servidor (`+page.server.js`); cada página prerenderizada lleva embebidos únicamente sus datos. El carrusel de la portada usa `src/lib/projectIndex.js`, **generado** por `scripts/build_project_index.mjs` en los hooks predev/prebuild (gitignored, no editar a mano).
 2. **Email marketing (PHP)** — `static/admin/email_campaing/`: campañas drip, mailer SMTP, panel admin, tracking. Bounces vía IMAP en `static/bounce-handler.php`. Leads en Supabase (REST API).
 3. **Scripts de automatización (Node)** — `scripts/`: generador de noticias con Gemini (`autonomous_generator.cjs`), harvesting de expositores, revalidación de emails.
 
@@ -29,10 +30,12 @@ Convención actual: **todo cambio de PHP se aplica en ambas copias**. Los ficher
 - `drip_cron.yml` — cada hora 08–18 UTC: curl a `cron_drip.php` en el servidor (con token).
 - `bounce_cleaner.yml` — 03:00 UTC y a los 5 min de cada drip: curl a `bounce-handler.php`.
 
-## Secretos
+## Secretos (ninguno debe entrar en git)
 
-- `supabase-config.php` (raíz y static) — gitignored. Contiene credenciales Supabase e IMAP (`ssl0.ovh.net:993`).
-- ⚠️ `static/admin/email_campaing/config.php` está trackeado y contiene la contraseña SMTP en claro. Pendiente: extraerla a fichero ignorado.
+- `supabase-config.php` (raíz y static) — gitignored. Credenciales Supabase e IMAP (`ssl0.ovh.net:993`).
+- Contraseña SMTP en `admin/email_campaing/data/smtp_password.txt` (gitignored); la leen los `config.php` de campañas y de presupuesto.
+- Credenciales FTP en `.vscode/sftp.json` (gitignored); las leen `ftp_sync.ps1`, `deploy_clean.cjs/.ps1` y `sync_ftp.cjs`. CI usa los secrets `FTP_USER`/`FTP_PASS`.
+- ⚠️ Las contraseñas de buzón y FTP estuvieron expuestas en el historial del repo: pendiente rotarlas en OVH (después: actualizar txt local+servidor, sftp.json y secrets de Actions).
 
 ## Carpetas auxiliares
 
@@ -52,6 +55,5 @@ El PHP no corre en Vite: para probar formularios/panel admin se usa MAMP sobre e
 ## Decisiones pendientes (no ejecutar sin confirmar)
 
 1. Eliminar del repo el espejo estático antiguo de la raíz (~1.400 ficheros) y definir un flujo local mejor para PHP.
-2. Extraer la contraseña SMTP de `config.php` a fichero ignorado y rotarla.
-3. Verificar si `read_server_file.php`, `opcache_clear.php`, `test_mail.php` siguen subidos al servidor y borrarlos de allí (localmente ya están archivados en scratch).
-4. Unificar la doble copia de PHP raíz/static para editar una sola vez.
+2. Unificar la doble copia de PHP raíz/static para editar una sola vez.
+3. Rotar en OVH las contraseñas de buzón y FTP (ver Secretos).
