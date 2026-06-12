@@ -8,6 +8,7 @@
     "dev": "vite --host 0.0.0.0",
     "prebuild": "node scripts/build_project_index.mjs",
     "build": "vite build",
+    "postbuild": "node scripts/postbuild_lang_homes.mjs",
     "preview": "vite preview --host 0.0.0.0"
   },
   "devDependencies": {

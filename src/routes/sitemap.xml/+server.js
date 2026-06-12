@@ -7,157 +7,133 @@ export const prerender = true;
 
 const siteUrl = 'https://standarte.es';
 
+// Notas de diseño (no romper sin motivo):
+// - Los proyectos se listan UNA vez por id, sin variantes ?lang=: la página es
+//   única y su <link rel="canonical"> apunta a /proyectos/<id>; listar las
+//   variantes con query contradice la canónica y Google las descarta.
+// - Las noticias de TODOS los idiomas se sirven bajo /noticias/<slug> (la ruta
+//   noticias/[slug] prerenderiza todos los artículos); las URLs /pt/noticias/...
+//   no existen y daban 404/500.
+// - lastmod solo se emite cuando es una fecha real (noticias). Emitir la fecha
+//   del build en todo degrada la confianza de Google en el campo.
+// - Cada grupo hreflang lleva x-default apuntando a la versión española.
+
 export async function GET() {
   const urls = [];
 
-  // 1. Static Routes (home, services, contact, etc.)
+  // 1. Secciones estáticas (home, servicios, ciudades, contacto...) por idioma
   const staticSections = Object.keys(routes.es);
-  
+
   staticSections.forEach((section) => {
-    // For each section, we create a URL entry for each language
+    const alternates = [];
+    languages.forEach((altLang) => {
+      if (routes[altLang] && routes[altLang][section] !== undefined) {
+        alternates.push({
+          hreflang: altLang,
+          href: `${siteUrl}${pathFor(altLang, section)}`
+        });
+      }
+    });
+    if (routes.es[section] !== undefined) {
+      alternates.push({ hreflang: 'x-default', href: `${siteUrl}${pathFor('es', section)}` });
+    }
+
     languages.forEach((lang) => {
-      // Only include if the route exists for this language
       if (routes[lang] && routes[lang][section] !== undefined) {
-        const urlObj = {
+        urls.push({
           loc: `${siteUrl}${pathFor(lang, section)}`,
-          lastmod: new Date().toISOString().split('T')[0],
           changefreq: 'monthly',
           priority: section === 'home' ? '1.0' : '0.8',
-          alternates: []
-        };
-
-        // Add hreflang alternatives for this specific section
-        languages.forEach((altLang) => {
-          if (routes[altLang] && routes[altLang][section] !== undefined) {
-            urlObj.alternates.push({
-              hreflang: altLang,
-              href: `${siteUrl}${pathFor(altLang, section)}`
-            });
-          }
+          alternates
         });
-
-        urls.push(urlObj);
       }
     });
   });
 
-  // 2. Projects (proyectos/[id])
-  const projectIds = getAllProjectIds();
-  projectIds.forEach((id) => {
-    languages.forEach((lang) => {
-      const isEs = lang === 'es';
-      const loc = isEs ? `${siteUrl}/proyectos/${id}` : `${siteUrl}/proyectos/${id}?lang=${lang}`;
-      
-      const urlObj = {
-        loc: loc,
-        lastmod: new Date().toISOString().split('T')[0],
-        changefreq: 'monthly',
-        priority: '0.7',
-        alternates: []
-      };
-
-      // Add hreflang alternatives for this project
-      languages.forEach((altLang) => {
-        const altIsEs = altLang === 'es';
-        urlObj.alternates.push({
-          hreflang: altLang,
-          href: altIsEs ? `${siteUrl}/proyectos/${id}` : `${siteUrl}/proyectos/${id}?lang=${altLang}`
-        });
-      });
-
-      urls.push(urlObj);
+  // 2. Proyectos (proyectos/[id]) — una única URL canónica por proyecto
+  getAllProjectIds().forEach((id) => {
+    urls.push({
+      loc: `${siteUrl}/proyectos/${id}`,
+      changefreq: 'monthly',
+      priority: '0.7',
+      alternates: []
     });
   });
 
-  // 3. News (noticias/[slug])
-  // Note: Since news slugs are unique per language, we list them individually
+  // 3. Noticias (noticias/[slug]) — todos los idiomas viven bajo /noticias/
   news.forEach((article) => {
-    const alternates = news.filter(item => item.date === article.date && item.location === article.location && item.lang !== article.lang);
-    const altLinks = alternates.map(alt => ({
-      hreflang: alt.lang,
-      href: `${siteUrl}${pathFor(alt.lang, 'noticias')}/${alt.slug}`
+    const group = news.filter(item => item.date === article.date && item.location === article.location);
+    const alternates = group.map(item => ({
+      hreflang: item.lang,
+      href: `${siteUrl}/noticias/${item.slug}`
     }));
-    // Add the article itself as its own language alternate
-    altLinks.push({
-      hreflang: article.lang,
-      href: `${siteUrl}${pathFor(article.lang, 'noticias')}/${article.slug}`
-    });
+    const esVersion = group.find(item => item.lang === 'es');
+    if (esVersion) {
+      alternates.push({ hreflang: 'x-default', href: `${siteUrl}/noticias/${esVersion.slug}` });
+    }
 
     urls.push({
-      loc: `${siteUrl}${pathFor(article.lang, 'noticias')}/${article.slug}`,
-      lastmod: article.date || new Date().toISOString().split('T')[0],
+      loc: `${siteUrl}/noticias/${article.slug}`,
+      lastmod: article.date || undefined,
       changefreq: 'weekly',
       priority: '0.6',
-      alternates: altLinks
+      alternates
     });
   });
 
-  // 4. Fairs (ferias/[slug])
+  // 4. Ferias (ferias/[slug]) por idioma
   fairsData.forEach((fair) => {
-    languages.forEach((lang) => {
-      const isEs = lang === 'es';
-      const prefix = isEs ? '' : `/${lang}`;
-      const loc = `${siteUrl}${prefix}/ferias/${fair.slug}`;
+    const alternates = languages.map((altLang) => ({
+      hreflang: altLang,
+      href: `${siteUrl}${altLang === 'es' ? '' : `/${altLang}`}/ferias/${fair.slug}`
+    }));
+    alternates.push({ hreflang: 'x-default', href: `${siteUrl}/ferias/${fair.slug}` });
 
-      const urlObj = {
-        loc: loc,
-        lastmod: new Date().toISOString().split('T')[0],
+    languages.forEach((lang) => {
+      urls.push({
+        loc: `${siteUrl}${lang === 'es' ? '' : `/${lang}`}/ferias/${fair.slug}`,
         changefreq: 'monthly',
         priority: '0.6',
-        alternates: []
-      };
-
-      // Add hreflang alternatives for this fair
-      languages.forEach((altLang) => {
-        const altPrefix = altLang === 'es' ? '' : `/${altLang}`;
-        urlObj.alternates.push({
-          hreflang: altLang,
-          href: `${siteUrl}${altPrefix}/ferias/${fair.slug}`
-        });
+        alternates
       });
-
-      urls.push(urlObj);
     });
   });
 
-  // 5. Galleries (galeria/[slug])
+  // 5. Galería (galeria/[slug]) — slug propio por idioma
   portfolios.forEach((project) => {
-    if (project.slugs) {
-      languages.forEach((lang) => {
-        const slug = project.slugs[lang];
-        if (slug) {
-          const urlObj = {
-            loc: `${siteUrl}/galeria/${slug}`,
-            lastmod: new Date().toISOString().split('T')[0],
-            changefreq: 'monthly',
-            priority: '0.7',
-            alternates: []
-          };
-
-          // Add alternates for other languages
-          languages.forEach((altLang) => {
-            const altSlug = project.slugs[altLang];
-            if (altSlug) {
-              urlObj.alternates.push({
-                hreflang: altLang,
-                href: `${siteUrl}/galeria/${altSlug}`
-              });
-            }
-          });
-
-          urls.push(urlObj);
-        }
-      });
+    if (!project.slugs) return;
+    const alternates = [];
+    languages.forEach((altLang) => {
+      if (project.slugs[altLang]) {
+        alternates.push({
+          hreflang: altLang,
+          href: `${siteUrl}/galeria/${project.slugs[altLang]}`
+        });
+      }
+    });
+    if (project.slugs.es) {
+      alternates.push({ hreflang: 'x-default', href: `${siteUrl}/galeria/${project.slugs.es}` });
     }
+
+    languages.forEach((lang) => {
+      const slug = project.slugs[lang];
+      if (slug) {
+        urls.push({
+          loc: `${siteUrl}/galeria/${slug}`,
+          changefreq: 'monthly',
+          priority: '0.7',
+          alternates
+        });
+      }
+    });
   });
 
-  // Generate XML
+  // Generar XML
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls.map(url => `  <url>
     <loc>${url.loc}</loc>
-    <lastmod>${url.lastmod}</lastmod>
-    <changefreq>${url.changefreq}</changefreq>
+${url.lastmod ? `    <lastmod>${url.lastmod}</lastmod>\n` : ''}    <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
 ${url.alternates.map(alt => `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`).join('\n')}
   </url>`).join('\n')}
