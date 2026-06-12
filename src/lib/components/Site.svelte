@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import { pushState, replaceState } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios } from '$lib/siteData.js';
-  import { projects } from '$lib/projectData.js';
+  import { projectIndex as projects } from '$lib/projectIndex.js';
   import { richSeoData } from '$lib/richSeoData.js';
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
