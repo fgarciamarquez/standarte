@@ -127,6 +127,7 @@ function campaign_get_active_drip_groups()
     $dateWindowStart = date('Y-m-d', strtotime('+3 months')); 
     $dateWindowEnd = date('Y-m-d', strtotime('+5 months'));
 
+    // Fetch active groups
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/lead_groups?select=name,event_date,leads_with_email&event_date=gte.' . $dateWindowStart . '&event_date=lte.' . $dateWindowEnd . '&order=event_date.asc');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -135,13 +136,59 @@ function campaign_get_active_drip_groups()
         'apikey: ' . SUPABASE_KEY,
         'Authorization: Bearer ' . SUPABASE_KEY
     ]);
-    
     $response = curl_exec($ch);
     curl_close($ch);
     
     $groups = json_decode($response, true);
     if (!is_array($groups) || isset($groups['code']) || isset($groups['message'])) {
         return array();
+    }
+
+    // Get sent counts from contacts
+    $chSent = curl_init();
+    curl_setopt($chSent, CURLOPT_URL, SUPABASE_URL . '/rest/v1/contacts?select=lead_group&drip_sent=is.true&limit=10000');
+    curl_setopt($chSent, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chSent, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($chSent, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    $resSent = curl_exec($chSent);
+    curl_close($chSent);
+    
+    $sentCounts = [];
+    $dataSent = json_decode($resSent, true);
+    if (is_array($dataSent)) {
+        foreach ($dataSent as $c) {
+            $lg = $c['lead_group'];
+            if (!isset($sentCounts[$lg])) $sentCounts[$lg] = 0;
+            $sentCounts[$lg]++;
+        }
+    }
+
+    // Get sent counts from luz_contacts
+    $chSentLuz = curl_init();
+    curl_setopt($chSentLuz, CURLOPT_URL, SUPABASE_URL . '/rest/v1/luz_contacts?select=lead_group&drip_sent=is.true&limit=10000');
+    curl_setopt($chSentLuz, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chSentLuz, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($chSentLuz, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    $resSentLuz = curl_exec($chSentLuz);
+    curl_close($chSentLuz);
+    
+    $dataSentLuz = json_decode($resSentLuz, true);
+    if (is_array($dataSentLuz)) {
+        foreach ($dataSentLuz as $c) {
+            $lg = $c['lead_group'];
+            if (!isset($sentCounts[$lg])) $sentCounts[$lg] = 0;
+            $sentCounts[$lg]++;
+        }
+    }
+
+    foreach ($groups as &$g) {
+        $g['sent_count'] = isset($sentCounts[$g['name']]) ? $sentCounts[$g['name']] : 0;
     }
     
     return $groups;
@@ -815,7 +862,7 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
               <tr>
                 <th>Nombre del Grupo</th>
                 <th>Fecha del Evento</th>
-                <th>Contactos</th>
+                <th>Enviados / Total</th>
                 <th>Antelación</th>
               </tr>
             </thead>
@@ -824,11 +871,15 @@ $statusLabel = $isCronWarning ? 'Envío Autónomo Inactivo' : 'Envío Autónomo 
                 $daysLeft = (strtotime($g['event_date']) - time()) / (24 * 3600);
                 $monthsLeft = round($daysLeft / 30, 1);
                 $totalLeads = isset($g['leads_with_email']) ? intval($g['leads_with_email']) : 0;
+                $sentCount = isset($g['sent_count']) ? intval($g['sent_count']) : 0;
               ?>
                 <tr>
                   <td><b><?php echo htmlspecialchars($g['name']); ?></b></td>
                   <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($g['event_date']))); ?></td>
-                  <td><?php echo $totalLeads; ?></td>
+                  <td>
+                    <span style="color: #27ae60; font-weight: bold;"><?php echo $sentCount; ?></span>
+                    <span style="color: #888;"> / <?php echo $totalLeads; ?></span>
+                  </td>
                   <td>Faltan <b><?php echo $monthsLeft; ?> m</b> (<?php echo round($daysLeft); ?> d)</td>
                 </tr>
               <?php endforeach; ?>
