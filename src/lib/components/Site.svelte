@@ -204,7 +204,7 @@
     if (lang === 'zh') return `${city} 展台搭建`;
     if (lang === 'hi') return `${city} में स्टैंड निर्माण`;
     if (lang === 'ko') return `${city} 전시 부스 제작`;
-    if (lang === 'ja') return `${city}での展示会ブース製作`;
+    if (lang === 'ja') return `${city}での展示会ブース製作・施工`;
     return `Construcción de stands en ${city}`;
   }
 
