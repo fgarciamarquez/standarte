@@ -1,7 +1,7 @@
 <?php
 // cron_drip.php
 // Script automático para enviar correos de forma gradual.
-// Límite: 15 correos por ejecución (diseñado para correr cada hora de 08:00 a 18:00 -> ~150/día).
+// Límite: 15 correos por ejecución (corre cada hora de 08:00 a 18:00 UTC, de lunes a viernes -> ~150/día laborable).
 // Ventana: Desde 5 meses antes hasta 3 meses antes de la fecha del evento (2 meses de duración).
 
 $config = require_once 'config.php';

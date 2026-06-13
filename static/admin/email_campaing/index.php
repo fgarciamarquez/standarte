@@ -1293,26 +1293,60 @@ if ($isCronEmpty) {
     var clientTimeAtLoad = new Date();
     window.serverClientOffsetMs = serverTimeAtLoad.getTime() - clientTimeAtLoad.getTime();
     
-    function updateCronCountdown() {
-      var countdownEl = document.getElementById('cron-countdown');
-      if (!countdownEl || !window.lastCronRunTime) return;
-      
-      var lastRun = new Date(window.lastCronRunTime);
-      var nextRun = new Date(lastRun.getTime() + 60 * 60 * 1000); // 1 hora
-      var now = new Date(new Date().getTime() + (window.serverClientOffsetMs || 0));
-      var diffMs = nextRun - now;
-      
-      if (diffMs <= 0) {
-        countdownEl.textContent = 'Inminente / Ejecutando';
-        return;
+    // Programación real del cron drip: minuto 0, horas 08–18 UTC, de lunes a viernes.
+    function computeNextDripRun(nowMs) {
+      for (var i = 0; i < 10; i++) {
+        var base = new Date(nowMs + i * 86400000);
+        var day = base.getUTCDay(); // 0=domingo ... 6=sábado
+        if (day >= 1 && day <= 5) {
+          for (var h = 8; h <= 18; h++) {
+            var slot = Date.UTC(base.getUTCFullYear(), base.getUTCMonth(), base.getUTCDate(), h, 0, 0);
+            if (slot > nowMs) return slot;
+          }
+        }
       }
-      
-      var totalSeconds = Math.floor(diffMs / 1000);
-      var minutes = Math.floor(totalSeconds / 60);
-      var seconds = totalSeconds % 60;
-      
+      return null;
+    }
+
+    function updateCronCountdown() {
+      var el = document.getElementById('cron-countdown');
+      if (!el) return;
       var pad = function(n) { return n < 10 ? '0' + n : n; };
-      countdownEl.textContent = pad(minutes) + ':' + pad(seconds);
+      var dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+
+      var nowMs = new Date().getTime() + (window.serverClientOffsetMs || 0);
+      var nowUtc = new Date(nowMs);
+      var utcDay = nowUtc.getUTCDay();
+      var utcHour = nowUtc.getUTCHours();
+      var inWindow = (utcDay >= 1 && utcDay <= 5 && utcHour >= 8 && utcHour < 18);
+
+      // Acaba de ejecutarse (menos de 2 min) y estamos en horario: está enviando.
+      if (window.lastCronRunTime && inWindow) {
+        var sinceLast = nowMs - new Date(window.lastCronRunTime).getTime();
+        if (sinceLast >= 0 && sinceLast < 120000) {
+          el.textContent = 'Ejecutando…';
+          el.style.color = '#16a34a';
+          return;
+        }
+      }
+
+      var nextMs = computeNextDripRun(nowMs);
+      if (!nextMs) { el.textContent = '—'; return; }
+      var nd = new Date(nextMs);
+      var etiqueta = dias[nd.getDay()] + ' ' + pad(nd.getHours()) + ':' + pad(nd.getMinutes());
+      var diff = nextMs - nowMs;
+
+      if (utcDay === 0 || utcDay === 6) {
+        el.textContent = 'En pausa (fin de semana) · próxima: ' + etiqueta;
+        el.style.color = '#6b7280';
+      } else if (inWindow && diff <= 3600000) {
+        var s = Math.floor(diff / 1000);
+        el.textContent = pad(Math.floor(s / 60)) + ':' + pad(s % 60);
+        el.style.color = '#e67e22';
+      } else {
+        el.textContent = 'Fuera de horario · próxima: ' + etiqueta;
+        el.style.color = '#6b7280';
+      }
     }
     
     // Iniciar cuenta atrás inmediatamente y en cada segundo

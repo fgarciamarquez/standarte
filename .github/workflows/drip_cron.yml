@@ -2,9 +2,9 @@ name: Automated Drip Campaign
 
 on:
   schedule:
-    # Corre todos los días a las 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, y 18 horas (UTC)
-    # Ajustar a tu zona horaria si es necesario (el servidor normalmente corre en UTC)
-    - cron: '0 8-18 * * *'
+    # De lunes a viernes (1-5), a las 08, 09, 10, ... 18 horas (UTC). Sin fines de semana.
+    # Nota: los cron de GitHub Actions pueden retrasarse o saltarse alguna ejecución.
+    - cron: '0 8-18 * * 1-5'
   workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
 
 jobs:

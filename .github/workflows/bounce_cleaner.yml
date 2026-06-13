@@ -4,8 +4,8 @@ on:
   schedule:
     # Se ejecuta todos los días a las 03:00 UTC (4:00 AM en España) - Limpieza diaria de mantenimiento
     - cron: '0 3 * * *'
-    # Se ejecuta 5 minutos después de cada envío automático de la campaña drip (8:05 AM a 6:05 PM UTC)
-    - cron: '5 8-18 * * *'
+    # 5 minutos después de cada envío drip (8:05 a 18:05 UTC), de lunes a viernes (alineado con el drip)
+    - cron: '5 8-18 * * 1-5'
   workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub Actions
 
 jobs:
