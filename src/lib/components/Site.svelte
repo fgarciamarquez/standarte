@@ -166,7 +166,9 @@
     }
   }
 
-  $: seoContent = richSeo ? (richSeo[lang] || richSeo.es || null) : null;
+  // Para japonés (sin rich-ja todavía) usamos null en vez de caer al español:
+  // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
+  $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : richSeo.es) || null) : null;
   $: selectedPortfolios = portfolios.slice(0, 3);
 
   $: title = seoContent?.title || (section in cityData
@@ -202,6 +204,7 @@
     if (lang === 'zh') return `${city} 展台搭建`;
     if (lang === 'hi') return `${city} में स्टैंड निर्माण`;
     if (lang === 'ko') return `${city} 전시 부스 제작`;
+    if (lang === 'ja') return `${city}での展示会ブース製作`;
     return `Construcción de stands en ${city}`;
   }
 

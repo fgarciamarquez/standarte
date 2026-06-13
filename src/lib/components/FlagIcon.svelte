@@ -68,4 +68,9 @@
     <rect x="100" y="370" width="40" height="12" fill="#000" transform="rotate(-45 100 370)"/>
     <rect x="370" y="370" width="40" height="12" fill="#000" transform="rotate(45 370 370)"/>
   </svg>
+{:else if langCode === 'ja'}
+  <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.15);" aria-hidden="true">
+    <rect width="512" height="512" fill="#FFF"/>
+    <circle cx="256" cy="256" r="115" fill="#BC002D"/>
+  </svg>
 {/if}

@@ -11,7 +11,8 @@ export const LOCALES = [
   { lang: 'pt', ogLocale: 'pt_PT', prefix: '/pt' },
   { lang: 'fr', ogLocale: 'fr_FR', prefix: '/fr' },
   { lang: 'it', ogLocale: 'it_IT', prefix: '/it' },
-  { lang: 'ko', ogLocale: 'ko_KR', prefix: '/ko' }
+  { lang: 'ko', ogLocale: 'ko_KR', prefix: '/ko' },
+  { lang: 'ja', ogLocale: 'ja_JP', prefix: '/ja' }
 ];
 
 export const localBusinessSchema = {

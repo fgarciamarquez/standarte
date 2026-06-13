@@ -9,7 +9,7 @@ import path from 'node:path';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const dist = path.join(root, 'dist');
-const langs = ['en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko'];
+const langs = ['en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja'];
 
 // El prerender de SvelteKit sigue el enlace "Admin" del pie y renderiza la home
 // en dist/admin/email_campaing.html (~345 KB). El panel real es el index.php de

@@ -1,5 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
-export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko'];
+export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja'];
 
 export const languageLabels = {
   es: 'ES Español',
@@ -10,7 +10,8 @@ export const languageLabels = {
   pt: 'PT Português',
   fr: 'FR Français',
   it: 'IT Italiano',
-  ko: 'KO 한국어'
+  ko: 'KO 한국어',
+  ja: 'JA 日本語'
 };
 
 export const routes = {
@@ -202,6 +203,27 @@ export const routes = {
     montaje_badajoz: 'badajoz-bujeu-jejak-montaje',
     noticias: 'sosig',
     ferias: 'jeonsihoe'
+  },
+  ja: {
+    home: '',
+    services: 'tenjikai-service',
+    luzpavilion: 'luzpavilion',
+    custom: 'tokuchu-project',
+    team: 'team',
+    contact: 'otoiawase',
+    madrid: 'madrid-stand-seisaku',
+    barcelona: 'barcelona-stand-seisaku',
+    bilbao: 'bilbao-stand-seisaku',
+    lisboa: 'lisbon-stand-seisaku',
+    malaga: 'malaga-stand-seisaku',
+    badajoz: 'badajoz-stand-seisaku',
+    sevilla: 'sevilla-stand-seisaku',
+    ciudad_real: 'ciudad_real-stand-seisaku',
+    montaje_zafra: 'zafra-stand-setsuei',
+    montaje_don_benito: 'don-benito-stand-setsuei',
+    montaje_badajoz: 'badajoz-stand-setsuei',
+    noticias: 'news',
+    ferias: 'tenjikai'
   }
 };
 
@@ -983,13 +1005,86 @@ export const copy = {
     "viewBtn": "프로젝트 보기"
   },
   "footer": "Standarte. 전시 부스 디자인, 제작 및 설치."
-}
+},
+  ja: {
+    faqsTitle: 'よくあるご質問', successStoriesTitle: '導入事例', featuredProjectsIntro: 'オーダーメイドの木工と展示ブースデザインの注目プロジェクト：',
+    nav: { services: 'サービス', custom: 'ギャラリー', noticias: 'ブログ', contact: 'お問い合わせ', language: '言語' },
+    seoTitle: 'Standarte | スペイン・ポルトガルの展示会ブース施工会社',
+    seoDescription: 'スペインおよび国際的な展示会向けに、展示ブースをプロフェッショナルかつオーダーメイドで設計・製作・施工します。',
+    heroTitle: 'スペインの展示ブース製作工房',
+    heroSubtitle: '高品質な施工',
+    servicesTitle: 'サービス',
+    services: [
+      ['設計とエンジニアリング', '専門チームがお客様のプロジェクトのご要望を細部まで把握し、それをオーダーメイドの3Dプロトタイプに反映します。製作を開始する前にご確認・ご検討いただけます。プロトタイプの画像は完成品を100%忠実に再現します。'],
+      ['ブース施工', '施工工程では、仮設建築に適した専用素材と最新の組立技術を用います。これにより、一目で品質が伝わる完璧な仕上がりをご提供します。'],
+      ['設営と各種検査', 'すべて当社にお任せください。展示会初日に安心してお越しいただくだけで、ブース、ケータリング、印刷物など、商談を始める準備がすべて整っています。']
+    ],
+    micro: {
+      title: 'LUZPAVILION',
+      subtitle: '個性的な空間のためのスペーステント',
+      color: 'カラー',
+      finish: '仕上げ：',
+      descriptionTitle: '説明：',
+      description: '4つのボディで構成される小型スタンドです。<br>組立はとても簡単で、工具は必要ありません。<br>自由に構成できる連結可能な製品です。',
+      qualitiesTitle: '特長：',
+      materials: '素材',
+      materialsValue: 'MDF、ガラス、建築用テキスタイル、金属',
+      finishValue: 'エアブラシ塗装＋ラッカー',
+      partsTitle: 'パーツ：',
+      parts: '1 = バックライト付きグラフィック <br>2 = 照明付き棚 <br>3 = カスタムロゴ <br>4 = 収納 <br>5 = 扉付きカウンター',
+      priceTitle: '価格：',
+      priceText: '照明とカスタムグラフィック付き <br> 4モジュールセット',
+      chooseFinish: '価格を表示するには<br>仕上げをお選びください。',
+      choose: '価格を表示するには<br>仕上げをお選びください。',
+      partsLabel: 'パーツ',
+      price: '価格',
+      qualities: '特長',
+      pause: '一時停止',
+      play: '再生',
+      visitWeb: '専用サイトを見る',
+      videos: [
+        { src: '/img/video_standrte_presentacion_empresa.mp4', title: '企業向けプレゼンテーション', subtitle: '企業ブースのための当社の工房と製作工程。' },
+        { src: '/img/video_standarte_presentacion_vinos.mp4', title: '歴史的空間での展示会', subtitle: '伝統的・歴史的な場所に配慮した設計とエンジニアリング。' },
+        { src: '/img/video_standarte_andalucia.mp4', title: '記念イベント', subtitle: 'ワイナリーや特別なイベントのためのオーダーメイドの上質な空間。' },
+        { src: '/img/video_standarte_feria_verano.mp4', title: '大型屋外展示会', subtitle: '大規模な設営とプレミアムな高耐久テント。' }
+      ]
+    },
+    citiesIntro: 'スペインとポルトガルの主要都市で開催される展示会やイベント向けに、展示ブースの設計・製作・施工を行っています。',
+    customTitle: 'ギャラリー',
+    customSubtitle: '主な組立技術別に分類しています。',
+    filters: { all: 'すべて', textil: 'テキスタイル', madera: '木材' },
+    counters: { projects: 'プロジェクト', clients: 'クライアント', countries: '国', fairs: '展示会' },
+    teamTitle: 'チーム',
+    teamSubtitle: '私たちは建築家、施工士、デコレーター、照明技術者などで構成される多分野のチームです。各プロジェクトのあらゆるニーズに総合的にお応えします。ご不明な点がございましたら、お気軽にお問い合わせください。近いうちにお会いできることを楽しみにしております。',
+    teamRoles: ['クリエイティブ', '管理', '工房', 'コーディネーション'],
+    contactTitle: '24時間でお見積り',
+    contactNotice: 'ご要望をお聞かせください。24時間以内に、細部まで作り込んだ3Dデザインと、非常に魅力的な価格のご提案をお届けします。',
+    form: { name: 'お名前', company: '会社名', phone: '電話番号', email: 'メールアドレス', fair: '展示会', location: '都市・国', meters: '平方メートル', floor: '床の詳細', woodFloor: '木製上げ床', carpetPlatform: 'カーペット上げ床', carpet: 'カーペット', spaceDistribution: '空間レイアウト', reception: '受付エリア', bar: 'バーエリア', storage: '倉庫', product: '製品展示', openMeeting: 'オープン商談エリア', closedMeeting: '個室商談エリア', audiovisual: '音響映像', led: 'LEDスクリーン', projector: 'プロジェクター', budget: '想定予算', description: '説明', privacy: 'プライバシーポリシーに同意します', send: '送信' },
+    legal: { privacy: 'プライバシーポリシー', legalNotice: '法的通知', cookies: 'クッキー' },
+    legalText: {
+      privacy: '<p>Standarteは、フォームから送信されたデータを、展示ブースのプロジェクトに関する情報のご請求、お見積り、ご連絡にのみ使用します。</p><p>これらのデータをご請求と無関係な目的で使用することはありません。アクセス、訂正、削除をご希望の場合は、info@standarte.es までご連絡ください。</p>',
+      legalNotice: '<p>本ウェブサイトはStandarteに帰属します。コンテンツ、画像、テキストは商業的・情報提供を目的としており、許可なく複製することはできません。</p><p>本サイトのご利用は、関連法令を遵守した責任あるブラウジングを前提とします。</p>',
+      cookies: '<p>本ウェブサイトの動作に必要なクッキーを使用し、お客様の同意がある場合に限り、Google AdsまたはGoogle Analyticsの測定・広告クッキーを使用します。</p><p>これらの目的は、クッキーバナーから承諾・拒否・設定できます。フッターの「クッキー設定」リンクからいつでも同意を変更または撤回できます。</p><p>お客様が許可された場合、Googleは広告の測定とパーソナライズのために個人データを処理することがあります。詳細：https://business.safety.google/privacy/</p>'
+    },
+    formSuccess: 'メッセージが正常に送信されました。<br> まもなくご連絡いたします。<br> ありがとうございます。',
+    formError: 'メッセージを送信できませんでした。もう一度お試しください。',
+    projects3D: {
+      title: 'ローコストプロジェクト',
+      subtitle: '当社のインタラクティブな上質木工の提案と、それが私たちのデザイン哲学とどのように結びつくかをご覧ください。',
+      viewBtn: 'プロジェクトを見る'
+    },
+    footer: 'Standarte。展示ブースの設計・製作・施工。'
+  }
 };
 
 export const cityData = {
   madrid: {
-    city: { es: 'Madrid', en: 'Madrid', de: 'Madrid', zh: '马德里', hi: 'मैड्रिड', pt: 'Madrid', fr: 'Madrid', it: 'Madrid', ko: '마드리드' },
+    city: { es: 'Madrid', en: 'Madrid', de: 'Madrid', zh: '马德里', hi: 'मैड्रिड', pt: 'Madrid', fr: 'Madrid', it: 'Madrid', ko: '마드리드', ja: 'マドリード' },
     content: {
+      ja: {
+        intro: 'マドリードはスペインの展示会活動の中核を担う都市です。Standarteは20年の経験と自社工房を強みに、技術設計・製作・物流・設営・各種検査、そして開催前の現地コーディネーションまで、一貫した万全のプロセスでマドリードの展示ブースを手がけます。',
+        detail: ''
+      },
       es: {
         intro: 'Madrid concentra una parte esencial de la actividad ferial en España. En Standarte desarrollamos stands en Madrid con 20 años de experiencia y un taller propio que garantiza un proceso impecable: diseño técnico, producción, logística, montaje, validaciones y coordinación in situ antes de la apertura del evento.',
         detail: ''
@@ -1029,8 +1124,12 @@ export const cityData = {
     }
   },
   barcelona: {
-    city: { es: 'Barcelona', en: 'Barcelona', de: 'Barcelona', zh: '巴塞罗那', hi: 'बार्सिलोना', pt: 'Barcelona', fr: 'Barcelone', it: 'Barcellona', ko: '바르셀로나' },
+    city: { es: 'Barcelona', en: 'Barcelona', de: 'Barcelona', zh: '巴塞罗那', hi: 'बार्सिलोना', pt: 'Barcelona', fr: 'Barcelone', it: 'Barcellona', ko: '바르셀로나', ja: 'バルセロナ' },
     content: {
+      ja: {
+        intro: 'MWCやISEといった世界的イベントの開催地であるバルセロナは、卓越した製作水準が求められます。Standarteは20年の経験と自社工房を活かし、フィラ・デ・バルセロナでインパクトの高いブースを設計・製作・設営します。',
+        detail: ''
+      },
       es: {
         intro: 'Como sede de eventos mundiales como el MWC o ISE, Barcelona exige un nivel de producción sobresaliente. En Standarte, con 20 años de experiencia y taller propio, diseñamos, fabricamos y montamos stands de alto impacto en Fira de Barcelona.',
         detail: ''
@@ -1070,8 +1169,12 @@ export const cityData = {
     }
   },
   bilbao: {
-    city: { es: 'Bilbao', en: 'Bilbao', de: 'Bilbao', zh: '毕尔巴鄂', hi: 'बिलबाओ', pt: 'Bilbau', fr: 'Bilbao', it: 'Bilbao', ko: '빌바오' },
+    city: { es: 'Bilbao', en: 'Bilbao', de: 'Bilbao', zh: '毕尔巴鄂', hi: 'बिलबाओ', pt: 'Bilbau', fr: 'Bilbao', it: 'Bilbao', ko: '빌바오', ja: 'ビルバオ' },
     content: {
+      ja: {
+        intro: 'ビルバオ展示センター（BEC）は最も革新的な会場のひとつです。当社の物流ネットワーク、20年の経験、大規模な自社工房により、BIEMHをはじめとする主要展示会で完璧なオーダーメイドブースの設営を保証します。',
+        detail: ''
+      },
       es: {
         intro: 'Bilbao Exhibition Centre (BEC) es uno de los recintos más innovadores. Gracias a nuestra red logística, 20 años de experiencia y un gran taller propio, garantizamos montajes de stands de diseño impecable para ferias líderes como BIEMH.',
         detail: ''
@@ -1111,8 +1214,12 @@ export const cityData = {
     }
   },
   lisboa: {
-    city: { es: 'Lisboa', en: 'Lisbon', de: 'Lissabon', zh: '里斯本', hi: 'लिस्बन', pt: 'Lisboa', fr: 'Lisbonne', it: 'Lisbona', ko: '리스본' },
+    city: { es: 'Lisboa', en: 'Lisbon', de: 'Lissabon', zh: '里斯本', hi: 'लिस्बन', pt: 'Lisboa', fr: 'Lisbonne', it: 'Lisbona', ko: '리스본', ja: 'リスボン' },
     content: {
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、Standarteはリスボンの展示ブースを、設計・製作・物流・設営、そして会場での最終検査まで各工程を完全に管理して開発します。',
+        detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
+      },
       es: {
         intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte desarrolla stands en Lisboa garantizando control total sobre cada fase: diseño, fabricación, logística, instalación y validaciones finales en el recinto.',
         detail: 'Ofrecemos a agencias y expositores directos la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
@@ -1152,8 +1259,12 @@ export const cityData = {
     }
   },
   malaga: {
-    city: { es: 'Málaga', en: 'Malaga', de: 'Málaga', zh: '马拉加', hi: 'मलागा', pt: 'Málaga', fr: 'Malaga', it: 'Malaga', ko: '말라가' },
+    city: { es: 'Málaga', en: 'Malaga', de: 'Málaga', zh: '马拉加', hi: 'मलागा', pt: 'Málaga', fr: 'Malaga', it: 'Malaga', ko: '말라가', ja: 'マラガ' },
     content: {
+      ja: {
+        intro: 'マラガは会議やテクノロジー系展示会の開催地として成長を続けています。20年の経験と最高水準の自社工房を持つStandarteが、FYCMAでのブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの施工を保証します。'
+      },
       es: {
         intro: 'El crecimiento de Málaga como destino de congresos y ferias tecnológicas es imparable. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en FYCMA.',
         detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
@@ -1193,8 +1304,12 @@ export const cityData = {
     }
   },
   badajoz: {
-    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz', ko: '바다호스' },
+    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz', ko: '바다호스', ja: 'バダホス' },
     content: {
+      ja: {
+        intro: 'バダホスとエストレマドゥーラ地方は、伝統ある催事を擁する活気あふれる展示会市場です。Standarteは20年の経験と自社工房を強みに、IFEBAやFEVALといった主要会場でブースを設計・設営します。',
+        detail: '優れた物流効率により迅速に対応し、コストを最適化しながら、AGROEXPOやFECIEXなどの重要な催事で完璧なブースを保証します。'
+      },
       es: {
         intro: 'Badajoz y Extremadura representan un mercado ferial dinámico con eventos de gran tradición. En Standarte diseñamos y montamos stands con 20 años de experiencia y taller propio en recintos de referencia como IFEBA y FEVAL.',
         detail: 'Nuestra eficiencia logística nos permite responder con rapidez, optimizando costes y garantizando un stand impecable para citas clave como AGROEXPO o FECIEX.'
@@ -1234,8 +1349,12 @@ export const cityData = {
     }
   },
   sevilla: {
-    city: { es: 'Sevilla', en: 'Seville', de: 'Sevilla', zh: '塞维利亚', hi: 'सेविले', pt: 'Sevilha', fr: 'Séville', it: 'Siviglia', ko: '세비야' },
+    city: { es: 'Sevilla', en: 'Seville', de: 'Sevilla', zh: '塞维利亚', hi: 'सेविले', pt: 'Sevilha', fr: 'Séville', it: 'Siviglia', ko: '세비야', ja: 'セビリア' },
     content: {
+      ja: {
+        intro: 'セビリアは南ヨーロッパで最も重要な展示会・会議の開催地のひとつです。20年の経験と最高水準の自社工房を持つStandarteが、FIBES IおよびFIBES IIでのブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの施工を保証します。'
+      },
       es: {
         intro: 'Sevilla es uno de los destinos feriales y de congresos más importantes del sur de Europa. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en FIBES I y FIBES II.',
         detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
@@ -1275,8 +1394,12 @@ export const cityData = {
     }
   },
   ciudad_real: {
-    city: { es: 'Ciudad Real', en: 'Ciudad Real', de: 'Ciudad Real', zh: '雷阿尔城', hi: 'स्यूदाদ रियल', pt: 'Ciudad Real', fr: 'Ciudad Real', it: 'Ciudad Real', ko: '시우다드레알' },
+    city: { es: 'Ciudad Real', en: 'Ciudad Real', de: 'Ciudad Real', zh: '雷阿尔城', hi: 'स्यूदाদ रियल', pt: 'Ciudad Real', fr: 'Ciudad Real', it: 'Ciudad Real', ko: '시우다드레알', ja: 'シウダー・レアル' },
     content: {
+      ja: {
+        intro: 'シウダー・レアルは、スペイン中部で最も近代的かつ急成長している会議・展示インフラのひとつ、IFEDI展示場を擁しています。20年の経験と最高水準の自社工房を持つStandarteが、IFEDIでのブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの施工を保証します。'
+      },
       es: {
         intro: 'Ciudad Real cuenta con una de las infraestructuras de congresos y ferias más modernas y de mayor crecimiento en el centro de España: el recinto ferial IFEDI. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en IFEDI.',
         detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
@@ -1316,8 +1439,12 @@ export const cityData = {
     }
   },
   montaje_zafra: {
-    city: { es: 'Zafra', en: 'Zafra', de: 'Zafra', zh: '萨夫拉', hi: 'ज़फ़रा', pt: 'Zafra', fr: 'Zafra', it: 'Zafra', ko: '사프라' },
+    city: { es: 'Zafra', en: 'Zafra', de: 'Zafra', zh: '萨夫拉', hi: 'ज़फ़रा', pt: 'Zafra', fr: 'Zafra', it: 'Zafra', ko: '사프라', ja: 'サフラ' },
     content: {
+      ja: {
+        intro: 'サフラはイベリア半島南西部における畜産・農業産業の中心地であり、1453年から続く歴史あるサフラ国際畜産見本市を開催しています。',
+        detail: '商業館AおよびBから、大規模な屋外機械展示エリアまで、オーダーメイドの上質な木工ブースを設計・設営します。'
+      },
       es: {
         intro: 'Zafra es el epicentro de la ganadería y la agroindustria en el suroeste peninsular, celebrando la histórica Feria Internacional Ganadera de Zafra desde 1453.',
         detail: 'Diseñamos y montamos stands de alta carpintería a medida tanto en sus pabellones comerciales A y B como en las grandes áreas exteriores de maquinaria.'
@@ -1357,8 +1484,12 @@ export const cityData = {
     }
   },
   montaje_don_benito: {
-    city: { es: 'Don Benito', en: 'Don Benito', de: 'Don Benito', zh: '唐贝尼托', hi: 'डॉन बेनिटो', pt: 'Don Benito', fr: 'Don Benito', it: 'Don Benito', ko: '돈 베니토' },
+    city: { es: 'Don Benito', en: 'Don Benito', de: 'Don Benito', zh: '唐贝尼托', hi: 'डॉन बेनिटो', pt: 'Don Benito', fr: 'Don Benito', it: 'Don Benito', ko: '돈 베니토', ja: 'ドン・ベニート' },
     content: {
+      ja: {
+        intro: 'ドン・ベニートは、エストレマドゥーラの展示会機関FEVALの所在地であり、イベリア市場最大の農業・機械見本市Agroexpoを開催しています。',
+        detail: '22,000m²の屋内展示館と、農業機械・精密農業向けの屋外エリアに、オーダーメイドの上質な木工ブースを製作します。'
+      },
       es: {
         intro: 'Don Benito alberga FEVAL, la Institución Ferial de Extremadura, y acoge Agroexpo, el mayor punto de encuentro agrícola y de maquinaria del mercado ibérico.',
         detail: 'Construimos stands a medida de alta carpintería en sus 22.000 m² de pabellones cubiertos y en su zona exterior para maquinaria y agricultura de precisión.'
@@ -1398,8 +1529,12 @@ export const cityData = {
     }
   },
   montaje_badajoz: {
-    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz', ko: '바다호스' },
+    city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz', ko: '바다호스', ja: 'バダホス' },
     content: {
+      ja: {
+        intro: 'バダホスと展示場IFEBAは、ポルトガルとの国境貿易（ラ・ラヤ）の玄関口であり、FECIEXやFehisporといった主要な催事を開催しています。',
+        detail: 'IFEBAの10,000m²の屋内展示館と広大な屋外エリアで、オーダーメイドの上質な木工プレミアムブースの設計・製作・設営を行います。'
+      },
       es: {
         intro: 'Badajoz y su recinto ferial IFEBA son la puerta de entrada al comercio transfronterizo con Portugal (La Raya), celebrando certámenes líderes como FECIEX o Fehispor.',
         detail: 'Realizamos el diseño, fabricación y montaje de stands premium de carpintería a medida en los 10.000 m² cubiertos de IFEBA y sus amplios exteriores.'
