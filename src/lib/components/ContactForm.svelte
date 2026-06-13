@@ -77,11 +77,14 @@
               <label for="form_email" class="form-label">{labels.form.email}</label>
               <input id="form_email" class="form-control" name="form_email" placeholder={labels.form.email} type="email" required />
             </div>
-            <div class="col col-6 form-group">
+            <!-- Empresa y Teléfono: ocultos por ahora (sin required para no bloquear el envío).
+                 Reservados para una etapa posterior del formulario; para reactivarlos basta con
+                 quitar la clase field-hidden (y volver a poner required en Empresa si procede). -->
+            <div class="col col-6 form-group field-hidden">
               <label for="form_empresa" class="form-label">{labels.form.company}</label>
-              <input id="form_empresa" class="form-control" name="form_empresa" placeholder={labels.form.company} required />
+              <input id="form_empresa" class="form-control" name="form_empresa" placeholder={labels.form.company} />
             </div>
-            <div class="col col-6 form-group">
+            <div class="col col-6 form-group field-hidden">
               <label for="form_tlf" class="form-label">{labels.form.phone}</label>
               <input id="form_tlf" class="form-control" name="form_tlf" placeholder={labels.form.phone} type="tel" />
             </div>
@@ -118,6 +121,11 @@
 </section>
 
 <style>
+  /* Campos reservados para una etapa posterior: ocultos pero presentes en el DOM */
+  .field-hidden {
+    display: none !important;
+  }
+
   /* Honeypot fuera de pantalla (no usar display:none, algunos bots lo detectan) */
   .hp-field {
     position: absolute;
