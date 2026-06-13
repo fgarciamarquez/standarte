@@ -1,7 +1,8 @@
 <?php
 // cron_drip.php
 // Script automático para enviar correos de forma gradual.
-// Límite: 15 correos por ejecución (corre cada hora de 08:00 a 18:00 UTC, de lunes a viernes -> ~150/día laborable).
+// Límite: 5 correos por ejecución, repartidos entre las listas activas (round-robin).
+// Corre cada 20 min de 08:00 a 18:00 UTC, de lunes a viernes -> ~165/día laborable.
 // Ventana: Desde 5 meses antes hasta 3 meses antes de la fecha del evento (2 meses de duración).
 
 $config = require_once 'config.php';
@@ -23,6 +24,10 @@ if (!file_exists($supaConfigPath)) {
     die("Error: No se encontró supabase-config.php\n");
 }
 require_once $supaConfigPath;
+
+// Modo simulación (?dryrun=1): capturamos la salida para devolver JSON limpio sin enviar correos.
+$__dryrun = isset($_GET['dryrun']);
+if ($__dryrun) { ob_start(); }
 
 function write_cron_status($status, $message, $extra = []) {
     $statusFile = __DIR__ . '/data/cron_status.json';
@@ -61,7 +66,7 @@ function supa_request($endpoint, $method = 'GET', $data = null) {
     return array('code' => $httpCode, 'data' => json_decode($result, true));
 }
 
-$emails_per_execution = 15;
+$emails_per_execution = 5;
 
 // Definir ventana de envío: (EventDate está entre Hoy + 3 meses y Hoy + 5 meses)
 // Dicho de otra manera: Hoy está a una distancia de entre 3 y 5 meses del evento.
@@ -132,26 +137,43 @@ $dripTexts = array(
     )
 );
 
-// 3. Buscar los contactos que pertenezcan a esos grupos y que tengan drip_sent = false
-// Debido a las limitaciones de la API REST para hacer un "IN", haremos una petición por cada grupo hasta alcanzar el límite
-$contactsToSend = array();
+// 3. REPARTO EQUITATIVO entre las listas activas (round-robin), para no concentrar
+//    todo el envío en una sola lista. Se rota el orden de inicio cada hora para que
+//    ninguna lista vaya siempre primera y el reparto sea justo a lo largo del día.
 $tablesToSearch = array('contacts', 'luz_contacts');
 
+$groupCount = count($activeGroupNames);
+$rot = $groupCount > 0 ? ((int) date('G')) % $groupCount : 0;
+$rotatedGroups = array_merge(array_slice($activeGroupNames, $rot), array_slice($activeGroupNames, 0, $rot));
+
+// 3a. Llenar un "cubo" de contactos pendientes por cada lista (de ambas tablas).
+$buckets = array();
+foreach ($rotatedGroups as $groupName) {
+    $buckets[$groupName] = array();
+}
 foreach ($tablesToSearch as $tableName) {
-    if (count($contactsToSend) >= $emails_per_execution) break;
-    
-    foreach ($activeGroupNames as $groupName) {
-        if (count($contactsToSend) >= $emails_per_execution) break;
-        
-        $limit = $emails_per_execution - count($contactsToSend);
-        $endpointContacts = $tableName . '?lead_group=eq.' . urlencode($groupName) . '&status=eq.active&drip_sent=is.false&limit=' . $limit;
-        
+    foreach ($rotatedGroups as $groupName) {
+        $endpointContacts = $tableName . '?lead_group=eq.' . urlencode($groupName) . '&status=eq.active&drip_sent=is.false&limit=' . $emails_per_execution;
         $contactsRes = supa_request($endpointContacts);
         if ($contactsRes['code'] === 200 && is_array($contactsRes['data'])) {
             foreach ($contactsRes['data'] as $c) {
                 $c['_table'] = $tableName; // Guardar origen para el PATCH
-                $contactsToSend[] = $c;
+                $buckets[$groupName][] = $c;
             }
+        }
+    }
+}
+
+// 3b. Tomar uno de cada lista por turnos hasta alcanzar el límite de la ejecución.
+$contactsToSend = array();
+$progress = true;
+while (count($contactsToSend) < $emails_per_execution && $progress) {
+    $progress = false;
+    foreach ($rotatedGroups as $groupName) {
+        if (count($contactsToSend) >= $emails_per_execution) break;
+        if (!empty($buckets[$groupName])) {
+            $contactsToSend[] = array_shift($buckets[$groupName]);
+            $progress = true;
         }
     }
 }
@@ -168,7 +190,26 @@ if (empty($contactsToSend)) {
 
 echo "Se enviarán correos a " . count($contactsToSend) . " contactos en esta ejecución.\n";
 
-$categoryId = 'stands_madera'; 
+// Modo simulación: no envía nada, solo informa el reparto por lista (para verificar).
+if ($__dryrun) {
+    $dist = array();
+    foreach ($contactsToSend as $c) {
+        $g = $c['lead_group'];
+        $dist[$g] = (isset($dist[$g]) ? $dist[$g] : 0) + 1;
+    }
+    if (ob_get_level() > 0) { ob_end_clean(); }
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(array(
+        'dryrun' => true,
+        'emails_per_execution' => $emails_per_execution,
+        'active_groups' => $activeGroupNames,
+        'selected_total' => count($contactsToSend),
+        'distribution_por_lista' => $dist
+    ), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+$categoryId = 'stands_madera';
 $category = $config['categories'][$categoryId];
 
 $sentCount = 0;
