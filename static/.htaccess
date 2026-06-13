@@ -25,6 +25,10 @@ DirectoryIndex index.html index.php
   RewriteCond %{REQUEST_URI} ^/noticias/?$
   RewriteRule ^ noticias.html [L]
 
+  # /admin es territorio PHP (panel de correos): que use su index.php normal,
+  # nunca el .html. Sin esta exclusión, el .html basura que el prerender pueda
+  # dejar en admin/ eclipsaría el panel.
+  RewriteCond %{REQUEST_URI} !^/admin
   # Servir <ruta>.html cuando exista, AUNQUE exista un directorio homónimo.
   # SvelteKit genera carpetas (proyectos/<id>/, noticias/<slug>/...) que solo
   # contienen __data.json; sin esta regla Apache redirige al directorio vacío

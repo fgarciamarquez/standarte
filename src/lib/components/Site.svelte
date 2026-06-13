@@ -1081,7 +1081,7 @@
     <div class="copyright">
       <p>
         CopyRight: {new Date().getFullYear()}.
-        <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer" style="margin-left: 15px; display: inline-block;">
+        <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="external noopener noreferrer" style="margin-left: 15px; display: inline-block;">
           {campaignManagerLabels[lang] || campaignManagerLabels.es}
         </a>
       </p>
