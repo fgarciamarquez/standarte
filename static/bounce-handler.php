@@ -278,8 +278,9 @@ if (isset($_GET['cron']) && $_GET['cron'] == '1') {
     exit;
 }
 
-// Contraseña de acceso al panel de administración
-define('ADMIN_PASSWORD', 'STANDARTE_ADMIN_2026');
+// Acceso al panel: se compara contra un hash bcrypt (no contraseña en claro).
+// Para rotarla, generar uno nuevo con: php -r "echo password_hash('NUEVA', PASSWORD_DEFAULT);"
+define('BOUNCE_ADMIN_PASSWORD_HASH', '$2y$10$LbNOyZUzp6rgziTaIeGEC.PAyHN5leAIf.TqB/wDj1.4mgop62HxS');
 
 session_start();
 
@@ -290,7 +291,7 @@ if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true) {
 }
 
 if (isset($_POST['password'])) {
-    if ($_POST['password'] === ADMIN_PASSWORD) {
+    if (password_verify((string) $_POST['password'], BOUNCE_ADMIN_PASSWORD_HASH)) {
         $_SESSION['authenticated'] = true;
         $authenticated = true;
     } else {
