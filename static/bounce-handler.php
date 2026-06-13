@@ -280,7 +280,7 @@ if (isset($_GET['cron']) && $_GET['cron'] == '1') {
 
 // Acceso al panel: se compara contra un hash bcrypt (no contraseña en claro).
 // Para rotarla, generar uno nuevo con: php -r "echo password_hash('NUEVA', PASSWORD_DEFAULT);"
-define('BOUNCE_ADMIN_PASSWORD_HASH', '$2y$10$LbNOyZUzp6rgziTaIeGEC.PAyHN5leAIf.TqB/wDj1.4mgop62HxS');
+define('BOUNCE_ADMIN_PASSWORD_HASH', '$2y$10$unW49dNyyvfCo/s68MZWgOWBmFv5xPfyGZ08svIccbsT3CWlMRnMG');
 
 session_start();
 
