@@ -217,6 +217,28 @@
     ja: { related: '関連する展示会', pillar: (c) => `${c}での展示会ブース施工`, also: '近隣のこれらの展示会でもブースの設計・施工を行っています：' }
   };
 
+  // Recinto ferial por ciudad (solo nombres verificados; las ciudades sin entrada no muestran recinto).
+  const VENUE_BY_CITY = {
+    'Madrid': 'IFEMA', 'Barcelona': 'Fira de Barcelona', 'Bilbao': 'BEC (Bilbao Exhibition Centre)',
+    'Málaga': 'FYCMA', 'Sevilla': 'FIBES', 'Lisboa': 'FIL', 'Badajoz': 'IFEBA',
+    'Don Benito': 'FEVAL', 'Ciudad Real': 'IFEDI',
+    'Zaragoza': 'Feria de Zaragoza', 'Vigo': 'IFEVI', 'Lyon': 'Eurexpo Lyon',
+    'Stuttgart': 'Messe Stuttgart', 'Múnich': 'Messe München', 'Núremberg': 'NürnbergMesse'
+  };
+  // Frase que nombra el recinto (clave SEO: "stand IFEBA", "stand FEVAL"…). Veraz y genérica.
+  const venueLine = {
+    es: (v, c) => `Standarte diseña y construye stands llave en mano en ${v}, el recinto ferial de ${c}, encargándose del transporte, el montaje con equipo propio y toda la tramitación técnica con el recinto.`,
+    en: (v, c) => `Standarte designs and builds turnkey stands at ${v}, the exhibition venue in ${c}, handling transport, assembly with our own crew and all the technical paperwork with the venue.`,
+    de: (v, c) => `Standarte plant und baut schlüsselfertige Stände in ${v}, dem Messegelände in ${c}, und übernimmt Transport, Montage mit eigenem Team und die gesamte technische Abwicklung mit dem Gelände.`,
+    fr: (v, c) => `Standarte conçoit et construit des stands clé en main à ${v}, le parc des expositions de ${c}, en gérant le transport, le montage avec notre propre équipe et toutes les démarches techniques avec le site.`,
+    pt: (v, c) => `A Standarte concebe e constrói stands chave na mão em ${v}, o recinto de feiras de ${c}, tratando do transporte, da montagem com equipa própria e de toda a tramitação técnica com o recinto.`,
+    it: (v, c) => `Standarte progetta e costruisce stand chiavi in mano a ${v}, il polo fieristico di ${c}, occupandosi di trasporto, allestimento con squadra propria e di tutte le pratiche tecniche con il quartiere fieristico.`,
+    ko: (v, c) => `Standarte는 ${c}의 전시장 ${v}에서 턴키 부스를 설계·시공하며, 운송·자체 인력 시공·전시장 기술 행정 절차를 모두 처리합니다.`,
+    zh: (v, c) => `Standarte 在 ${c} 的展览场馆 ${v} 设计并搭建交钥匙展台，负责运输、自有团队搭建以及与场馆的全部技术手续。`,
+    hi: (v, c) => `Standarte ${c} के प्रदर्शनी केंद्र ${v} में टर्नकी स्टैंड डिज़ाइन और निर्माण करता है, तथा परिवहन, अपनी टीम से असेंबली और केंद्र के साथ सभी तकनीकी प्रक्रियाओं को संभालता है।`,
+    ja: (v, c) => `Standarteは${c}の展示会場${v}でターンキーのブースを設計・施工し、輸送、自社チームによる設営、会場との技術的な手続きまで一貫して担います。`
+  };
+
   const t = {
     es: {
       heroTitle: (name) => `Standarte en ${name}`,
@@ -326,6 +348,8 @@
     ? fairsData.filter((f) => f.slug !== fair.slug && CITY_REGION[f.city] === fairRegion).slice(0, 12)
     : [];
   $: fairHref = (slug) => (lang === 'es' ? `/ferias/${slug}` : `/${lang}/ferias/${slug}`);
+  $: venue = VENUE_BY_CITY[fair.city] || null;
+  $: venueText = venue ? ((venueLine[lang] || venueLine.es)(venue, localizedCity)) : null;
 </script>
 
 <svelte:head>
@@ -434,7 +458,10 @@
       <div class="feria-text">
         <p class="highlight">{seoDesc}</p>
         <p>{strings.intro2}</p>
-        
+        {#if venueText}
+          <p class="feria-venue">{venueText}</p>
+        {/if}
+
         <h3>{strings.services}</h3>
         <ul class="services-list">
           {#each copy.services as service}
