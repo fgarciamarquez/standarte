@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /email-track.php
+Disallow: /presupuesto-filtro.php
+Disallow: /send-email.php
+Disallow: /bounce-handler.php
+Disallow: /unsubscribe.php
+Disallow: /test_email_preview.html
 
 Sitemap: https://standarte.es/sitemap.xml
