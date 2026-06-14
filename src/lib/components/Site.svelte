@@ -851,7 +851,7 @@
         {#each filteredPortfolios as project, i}
           <div class={`mix ${project.categories.join(' ')}`} class:gallery-hidden={!galleryExpanded && i >= GALLERY_VISIBLE}>
             <div class="portfolio-item">
-              <a class="shot-item" href="/galeria/{project.slugs[lang] || project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={getProjectTitle(project)}>
+              <a class="shot-item" href="/galeria/{project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={getProjectTitle(project)}>
                 <img src={`/${project.thumb}`} alt={getProjectTitle(project)} loading="lazy" decoding="async" />
                 <span class="overlay lightbox" aria-hidden="true">
                   <span class="item-icon eye-icon"></span>

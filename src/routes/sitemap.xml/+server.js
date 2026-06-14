@@ -99,32 +99,16 @@ export async function GET() {
     });
   });
 
-  // 5. Galería (galeria/[slug]) — slug propio por idioma
+  // 5. Galería (galeria/[slug]) — una sola URL por proyecto: la slug es es la canónica.
+  //    Las variantes de idioma renderizan el mismo contenido en español y declaran
+  //    canonical→es; listarlas duplicaría páginas y diluiría el rastreo, así que se omiten.
   portfolios.forEach((project) => {
-    if (!project.slugs) return;
-    const alternates = [];
-    languages.forEach((altLang) => {
-      if (project.slugs[altLang]) {
-        alternates.push({
-          hreflang: altLang,
-          href: `${siteUrl}/galeria/${project.slugs[altLang]}`
-        });
-      }
-    });
-    if (project.slugs.es) {
-      alternates.push({ hreflang: 'x-default', href: `${siteUrl}/galeria/${project.slugs.es}` });
-    }
-
-    languages.forEach((lang) => {
-      const slug = project.slugs[lang];
-      if (slug) {
-        urls.push({
-          loc: `${siteUrl}/galeria/${slug}`,
-          changefreq: 'monthly',
-          priority: '0.7',
-          alternates
-        });
-      }
+    if (!project.slugs || !project.slugs.es) return;
+    urls.push({
+      loc: `${siteUrl}/galeria/${project.slugs.es}`,
+      changefreq: 'monthly',
+      priority: '0.7',
+      alternates: []
     });
   });
 
