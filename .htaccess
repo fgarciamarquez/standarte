@@ -9,6 +9,13 @@ DirectorySlash Off
   RewriteEngine On
   RewriteBase /
 
+  # Canonicalizacion de dominio: una sola version indexable (https y sin www).
+  # OVH senaliza HTTPS de forma fiable (HTTPS=on en https, off en http; verificado),
+  # por lo que esta regla redirige cada variante a https://standarte.es sin bucles.
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://standarte.es%{REQUEST_URI} [R=301,L]
+
   # Redirigir carpetas de idiomas a sus archivos HTML correspondientes para evitar error 403/500 por no tener index.html
   RewriteCond %{REQUEST_URI} ^/en/?$
   RewriteRule ^ en.html [L]
