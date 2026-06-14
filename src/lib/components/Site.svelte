@@ -67,6 +67,17 @@
   let carouselIndex = 0;
   let shuffledProjects = [...projects];
 
+  // Carga por tramos: solo se renderizan/descargan las primeras 12 fichas; el resto
+  // se descarga en grupos de 12 al pulsar el descargador circular del carrusel.
+  const CAROUSEL_CHUNK = 12;
+  let carouselRevealed = CAROUSEL_CHUNK;
+  $: carouselItems = shuffledProjects.slice(0, carouselRevealed);
+  $: hasMoreCarousel = carouselRevealed < shuffledProjects.length;
+  $: carouselSlots = carouselItems.length + (hasMoreCarousel ? 1 : 0); // fichas + descargador
+  function revealMoreCarousel() {
+    carouselRevealed = Math.min(carouselRevealed + CAROUSEL_CHUNK, shuffledProjects.length);
+  }
+
   let visibleCount = 3;
 
   function updateVisibleCount() {
@@ -81,18 +92,21 @@
   }
 
   function nextSlide() {
-    if (carouselIndex < shuffledProjects.length - visibleCount) {
+    const maxIndex = Math.max(0, carouselSlots - visibleCount);
+    if (carouselIndex < maxIndex) {
       carouselIndex++;
-    } else {
-      carouselIndex = 0;
+    } else if (!hasMoreCarousel) {
+      carouselIndex = 0; // solo vuelve al inicio cuando ya está todo cargado
     }
+    // si quedan tramos por descargar, el carrusel se queda parado en el descargador
   }
 
   function prevSlide() {
+    const maxIndex = Math.max(0, carouselSlots - visibleCount);
     if (carouselIndex > 0) {
       carouselIndex--;
     } else {
-      carouselIndex = shuffledProjects.length - visibleCount;
+      carouselIndex = maxIndex;
     }
   }
 
@@ -878,7 +892,7 @@
         
         <div class="carousel-viewport">
           <div class="carousel-track" style="transform: translateX(calc(-1 * {carouselIndex} * 100% / var(--visible-count)));">
-            {#each shuffledProjects as project}
+            {#each carouselItems as project}
               <article class="carousel-card" style="width: calc(100% / var(--visible-count));">
                 <div class="carousel-card-inner">
                   <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-img-link" tabindex="-1" aria-hidden="true">
@@ -898,11 +912,33 @@
                 </div>
               </article>
             {/each}
+
+            {#if hasMoreCarousel}
+              <article class="carousel-card carousel-loader-slot" style="width: calc(100% / var(--visible-count));">
+                <button type="button" class="carousel-loader-btn" on:click={revealMoreCarousel} aria-label={galleryMoreLabels[lang] || galleryMoreLabels.es}>
+                  <span class="carousel-loader-circle">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </span>
+                  <span class="carousel-loader-text">+{Math.min(CAROUSEL_CHUNK, shuffledProjects.length - carouselRevealed)}</span>
+                </button>
+              </article>
+            {/if}
           </div>
         </div>
 
         <button class="carousel-nav next" type="button" on:click={nextSlide} aria-label={lang === 'es' ? 'Siguiente' : (lang === 'de' ? 'Weiter' : (lang === 'pt' ? 'Seguinte' : (lang === 'fr' ? 'Suivant' : (lang === 'it' ? 'Successivo' : (lang === 'zh' ? '下一页' : (lang === 'hi' ? 'अगla' : 'Next'))))))}>›</button>
       </div>
+
+      <!-- Enlaces a TODOS los proyectos para rastreo SEO (las fichas del carrusel se
+           descargan por tramos; estos enlaces no cargan imágenes, coste nulo). -->
+      <nav class="carousel-seo-links" aria-hidden="true">
+        {#each shuffledProjects as project}
+          <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`}>{getProjectTitle(project)}</a>
+        {/each}
+      </nav>
     </section>
 
     <section class="counters section" data-stellar-background-ratio="0.5">
@@ -1173,6 +1209,54 @@
     background: #efefef;
     border-color: #999;
     color: #222;
+  }
+
+  /* Descargador circular del carrusel 3D (entre tramos de 12 fichas) */
+  .carousel-loader-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .carousel-loader-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+  }
+  .carousel-loader-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    border: 2px solid #cfcfcf;
+    background: #fff;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+  .carousel-loader-btn:hover {
+    color: #222;
+  }
+  .carousel-loader-btn:hover .carousel-loader-circle {
+    border-color: #999;
+    background: #f5f5f5;
+    transform: scale(1.06);
+  }
+  .carousel-loader-text {
+    font-family: Inconsolata, monospace;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+  }
+  /* Enlaces de proyectos para rastreo (no visibles; presentes en el DOM para SEO) */
+  .carousel-seo-links {
+    display: none;
   }
 
   .nav-badge-new {
