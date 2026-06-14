@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, routes } from '$lib/siteData.js';
   import ContactForm from './ContactForm.svelte';
   import FlagIcon from './FlagIcon.svelte';
 
@@ -182,6 +182,41 @@
     // Simplified city mapping, defaulting to Spanish name if not defined to save space
   };
 
+  // --- Clúster temático: cada feria enlaza con el pilar de su ciudad y con sus ferias hermanas de región ---
+  // Mapea la ciudad de la feria a la sección-pilar (las que no tienen pilar propio cuelgan del más cercano).
+  const CITY_TO_PILLAR = {
+    'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa',
+    'Málaga': 'malaga', 'Badajoz': 'badajoz', 'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real',
+    'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
+    'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz'
+  };
+  // Ciudad mostrada para el enlace al pilar (la del pilar, no la de la feria, para que el anchor coincida con el destino).
+  const PILLAR_CITY = {
+    madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', lisboa: 'Lisboa', malaga: 'Málaga',
+    badajoz: 'Badajoz', sevilla: 'Sevilla', ciudad_real: 'Ciudad Real',
+    montaje_don_benito: 'Don Benito', montaje_zafra: 'Zafra'
+  };
+  // Región para agrupar ferias hermanas (define la densidad del clúster; Extremadura es la prioridad).
+  const CITY_REGION = {
+    'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura',
+    'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
+    'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco',
+    'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha',
+    'Lisboa': 'portugal', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
+  };
+  const clusterT = {
+    es: { related: 'Ferias relacionadas', pillar: (c) => `Construcción de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
+    en: { related: 'Related fairs', pillar: (c) => `Exhibition stand construction in ${c}`, also: 'We also design and build stands at these nearby fairs:' },
+    de: { related: 'Verwandte Messen', pillar: (c) => `Messestandbau in ${c}`, also: 'Wir gestalten und bauen auch Stände auf diesen Messen in der Nähe:' },
+    fr: { related: 'Salons associés', pillar: (c) => `Construction de stands à ${c}`, also: 'Nous concevons et construisons aussi des stands sur ces salons proches :' },
+    pt: { related: 'Feiras relacionadas', pillar: (c) => `Construção de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
+    it: { related: 'Fiere correlate', pillar: (c) => `Allestimento stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
+    ko: { related: '관련 전시회', pillar: (c) => `${c} 부스 시공`, also: '근처의 다음 전시회에서도 부스를 디자인하고 시공합니다:' },
+    zh: { related: '相关展会', pillar: (c) => `${c}展台搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
+    hi: { related: 'संबंधित मेले', pillar: (c) => `${c} में स्टैंड निर्माण`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और निर्माण करते हैं:' },
+    ja: { related: '関連する展示会', pillar: (c) => `${c}での展示会ブース施工`, also: '近隣のこれらの展示会でもブースの設計・施工を行っています：' }
+  };
+
   const t = {
     es: {
       heroTitle: (name) => `Standarte en ${name}`,
@@ -279,6 +314,18 @@
   
   $: seoTitle = `${fair.name} - ${strings.heroSubtitle(localizedCity).split(' con ')[0]}`;
   $: seoDesc = strings.intro(fair.name, localizedCity, localizedSector);
+
+  // Clúster: enlace al pilar de ciudad + ferias hermanas de la misma región
+  $: clusterStr = clusterT[lang] || clusterT.es;
+  $: pillarSection = CITY_TO_PILLAR[fair.city];
+  $: pillarHref = (pillarSection && routes[lang] && routes[lang][pillarSection] !== undefined) ? pathFor(lang, pillarSection) : null;
+  $: pillarCityRaw = pillarSection ? (PILLAR_CITY[pillarSection] || fair.city) : fair.city;
+  $: pillarCityLoc = (cities[lang] && cities[lang][pillarCityRaw]) ? cities[lang][pillarCityRaw] : pillarCityRaw;
+  $: fairRegion = CITY_REGION[fair.city];
+  $: siblingFairs = fairRegion
+    ? fairsData.filter((f) => f.slug !== fair.slug && CITY_REGION[f.city] === fairRegion).slice(0, 12)
+    : [];
+  $: fairHref = (slug) => (lang === 'es' ? `/ferias/${slug}` : `/${lang}/ferias/${slug}`);
 </script>
 
 <svelte:head>
@@ -401,6 +448,25 @@
     </div>
   </section>
 
+  {#if pillarHref || siblingFairs.length}
+    <section class="feria-cluster section">
+      <div class="feria-container">
+        <h3>{clusterStr.related}</h3>
+        {#if pillarHref}
+          <a class="cluster-pillar" href={pillarHref}>{clusterStr.pillar(pillarCityLoc)}</a>
+        {/if}
+        {#if siblingFairs.length}
+          <p class="cluster-intro">{clusterStr.also}</p>
+          <ul class="cluster-fairs">
+            {#each siblingFairs as sib}
+              <li><a href={fairHref(sib.slug)}>{sib.name}</a></li>
+            {/each}
+          </ul>
+        {/if}
+      </div>
+    </section>
+  {/if}
+
   <section class="section grey-bg">
     <ContactForm labels={copy} {lang} />
   </section>
@@ -491,5 +557,49 @@
   .grey-bg {
     background: var(--grey-bg);
     padding: 4rem 5%;
+  }
+  .feria-cluster {
+    padding: 0 5% 4rem;
+  }
+  .feria-cluster h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .cluster-pillar {
+    display: inline-block;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 2px;
+    margin-bottom: 1.8rem;
+  }
+  .cluster-pillar:hover {
+    opacity: 0.8;
+  }
+  .cluster-intro {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+  .cluster-fairs {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+  }
+  .cluster-fairs li a {
+    display: inline-block;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 999px;
+    font-size: 0.92rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .cluster-fairs li a:hover {
+    border-color: var(--primary);
+    color: var(--primary);
   }
 </style>

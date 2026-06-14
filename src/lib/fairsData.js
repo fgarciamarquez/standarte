@@ -404,5 +404,12 @@ export const fairsData = [
     "slug": "fima-zaragoza",
     "city": "Zaragoza",
     "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria Internacional Ganadera de Zafra 2026",
+    "country": "es",
+    "slug": "feria-internacional-ganadera-zafra",
+    "city": "Zafra",
+    "sector": "Agroalimentario y Naturaleza"
   }
 ];
