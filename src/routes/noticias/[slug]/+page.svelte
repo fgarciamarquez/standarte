@@ -240,7 +240,7 @@
   <meta name="description" content={article.excerpt} />
   <meta name="robots" content="index, follow" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
-  <link rel="canonical" href={`https://standarte.es/noticias/${article.slug}/`} />
+  <link rel="canonical" href={`https://standarte.es/noticias/${article.slug}`} />
   
   {#each languages as alternateLang}
     {@const alt = alternateLang === article.lang ? article : (data.alternates || []).find(a => a.lang === alternateLang)}

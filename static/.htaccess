@@ -1,5 +1,9 @@
 Options -Indexes -MultiViews
 DirectoryIndex index.html index.php
+# SvelteKit crea por cada pagina un fichero X.html y una carpeta X/ (con __data.json).
+# Sin esto, pedir /X (sin barra) provoca un 301 de Apache para anadir la barra (DirectorySlash),
+# y como el sitemap y las canonicas usan la URL sin barra, Google las ve como "pagina con redireccion".
+DirectorySlash Off
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
