@@ -43,8 +43,18 @@
     ko: '빅토리아 팀'
   };
 
+  // Galería: nº de fotos visibles antes del botón "Ver más" (el resto queda en el
+  // DOM pero oculto con display:none, sin descargarse hasta desplegar).
+  const GALLERY_VISIBLE = 12;
+  const galleryMoreLabels = {
+    es: 'Ver más', en: 'See more', de: 'Mehr anzeigen', zh: '查看更多',
+    hi: 'और देखें', pt: 'Ver mais', fr: 'Voir plus', it: 'Vedi altro',
+    ko: '더 보기', ja: 'もっと見る'
+  };
+
   let menuOpen = false;
   let lightboxProject = null;
+  let galleryExpanded = false;
   let legalModal = null;
   let isScrolled = false;
   let ignoreNextScroll = false;
@@ -806,8 +816,8 @@
         <p>{copy.customSubtitle}</p>
       </div>
       <div id="portfolio" class="portfolio-grid">
-        {#each filteredPortfolios as project}
-          <div class={`mix ${project.categories.join(' ')}`}>
+        {#each filteredPortfolios as project, i}
+          <div class={`mix ${project.categories.join(' ')}`} class:gallery-hidden={!galleryExpanded && i >= GALLERY_VISIBLE}>
             <div class="portfolio-item">
               <a class="shot-item" href="/galeria/{project.slugs[lang] || project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={getProjectTitle(project)}>
                 <img src={`/${project.thumb}`} alt={getProjectTitle(project)} loading="lazy" decoding="async" />
@@ -819,6 +829,14 @@
           </div>
         {/each}
       </div>
+
+      {#if !galleryExpanded && filteredPortfolios.length > GALLERY_VISIBLE}
+        <div class="gallery-more-wrap">
+          <button type="button" class="gallery-more-btn" on:click={() => (galleryExpanded = true)}>
+            {galleryMoreLabels[lang] || galleryMoreLabels.es}
+          </button>
+        </div>
+      {/if}
 
       {#if lightboxProject}
         <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={getProjectTitle(lightboxProject)} aria-describedby="project-lightbox-description" tabindex="-1">
@@ -1106,6 +1124,40 @@
 <CookieConsent {lang} />
 
 <style>
+  /* Galería: ocultar fotos a partir de la 13ª sin sacarlas del DOM (SEO + descarga diferida) */
+  .gallery-hidden {
+    display: none !important;
+  }
+  .gallery-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 10px;
+  }
+  .gallery-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    padding: 14px 40px;
+    background: #ffc800;
+    color: #111;
+    border: none;
+    border-radius: 30px;
+    font-family: Glegoo, serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 200, 0, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  .gallery-more-btn:hover {
+    background: #e6b400;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255, 200, 0, 0.35);
+  }
+
   .nav-badge-new {
     background-color: #ffc800;
     color: #111 !important; /* Force high-contrast dark text */
