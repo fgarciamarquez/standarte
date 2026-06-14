@@ -46,6 +46,9 @@
   // Galería: nº de fotos visibles antes del botón "Ver más" (el resto queda en el
   // DOM pero oculto con display:none, sin descargarse hasta desplegar).
   const GALLERY_VISIBLE = 12;
+  // Ciudades de id="local-stands": nº visible antes del botón "Ver más"; el resto
+  // queda en el DOM (con sus textos y enlaces, para SEO) pero oculto con display:none.
+  const CITIES_VISIBLE = 2;
   const galleryMoreLabels = {
     es: 'Ver más', en: 'See more', de: 'Mehr anzeigen', zh: '查看更多',
     hi: 'और देखें', pt: 'Ver mais', fr: 'Voir plus', it: 'Vedi altro',
@@ -55,6 +58,7 @@
   let menuOpen = false;
   let lightboxProject = null;
   let galleryExpanded = false;
+  let citiesExpanded = false;
   let legalModal = null;
   let isScrolled = false;
   let ignoreNextScroll = false;
@@ -751,8 +755,8 @@
     <section id="local-stands" class="section local-stands">
       <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">
-        {#each cityKeys as cityKey}
-          <article id={cityKey}>
+        {#each cityKeys as cityKey, i}
+          <article id={cityKey} class:cities-hidden={!citiesExpanded && i >= CITIES_VISIBLE && cityKey !== section}>
             <a href={pathFor(lang, cityKey)} class="city-cover-link">
               <div class="city-cover-container">
                 <img
@@ -777,6 +781,15 @@
           </article>
         {/each}
       </div>
+
+      {#if !citiesExpanded && cityKeys.length > CITIES_VISIBLE}
+        <div class="gallery-more-wrap">
+          <button type="button" class="gallery-more-btn" on:click={() => (citiesExpanded = true)}>
+            {galleryMoreLabels[lang] || galleryMoreLabels.es}
+          </button>
+        </div>
+      {/if}
+
       <section class="lisbon-fairs-strip" aria-label={fairListTitles[lang] || fairListTitles.es} itemscope itemtype="https://schema.org/ItemList">
         <meta itemprop="name" content={fairListTitles[lang] || fairListTitles.es} />
         <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending" />
@@ -1124,8 +1137,9 @@
 <CookieConsent {lang} />
 
 <style>
-  /* Galería: ocultar fotos a partir de la 13ª sin sacarlas del DOM (SEO + descarga diferida) */
-  .gallery-hidden {
+  /* Galería y ciudades: ocultar elementos extra sin sacarlos del DOM (SEO + descarga diferida) */
+  .gallery-hidden,
+  .cities-hidden {
     display: none !important;
   }
   .gallery-more-wrap {
