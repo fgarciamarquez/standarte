@@ -200,7 +200,13 @@
   // Para japonés (sin rich-ja todavía) usamos null en vez de caer al español:
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : richSeo.es) || null) : null;
-  $: selectedPortfolios = portfolios.slice(0, 3);
+  // Proyectos del pilar: para regiones con perfil sectorial marcado mostramos obra real afín
+  // (no se afirma que sean de esa ciudad; el intro es genérico "muestra de nuestro trabajo").
+  $: selectedPortfolios = (FEATURED_BY_REGION[SECTION_REGION[section]] || [])
+    .map((k) => portfolios.find((p) => p.alt && p.alt.includes(k)))
+    .filter(Boolean)
+    .concat(portfolios.slice(0, 3))
+    .slice(0, 3);
 
   // --- Clúster pilar→ferias: en cada página de ciudad, enlazar a las ferias de su región ---
   const SECTION_REGION = {
@@ -211,6 +217,10 @@
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
     'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
+  };
+  // Proyectos reales afines al perfil sectorial de cada región (obra propia; sin afirmar ubicación).
+  const FEATURED_BY_REGION = {
+    extremadura: ['Bellota', 'Intermaher', 'Elumatec'] // herramientas agrícolas, maquinaria pesada, industrial
   };
   const cityFairsLabel = {
     es: 'Ferias de la zona en las que diseñamos y montamos stands',
