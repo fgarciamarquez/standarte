@@ -48,7 +48,7 @@
   const GALLERY_VISIBLE = 12;
   // Ciudades de id="local-stands": nº visible antes del botón "Ver más"; el resto
   // queda en el DOM (con sus textos y enlaces, para SEO) pero oculto con display:none.
-  const CITIES_VISIBLE = 2;
+  const CITIES_VISIBLE = 3;
   const galleryMoreLabels = {
     es: 'Ver más', en: 'See more', de: 'Mehr anzeigen', zh: '查看更多',
     hi: 'और देखें', pt: 'Ver mais', fr: 'Voir plus', it: 'Vedi altro',
