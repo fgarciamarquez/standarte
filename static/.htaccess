@@ -20,6 +20,10 @@ DirectoryIndex index.html index.php
   RewriteRule ^ fr.html [L]
   RewriteCond %{REQUEST_URI} ^/it/?$
   RewriteRule ^ it.html [L]
+  RewriteCond %{REQUEST_URI} ^/ko/?$
+  RewriteRule ^ ko.html [L]
+  RewriteCond %{REQUEST_URI} ^/ja/?$
+  RewriteRule ^ ja.html [L]
 
   # Redirigir /noticias o /noticias/ a noticias.html para evitar la colisión 403 con la carpeta /noticias/ de artículos
   RewriteCond %{REQUEST_URI} ^/noticias/?$
@@ -168,8 +172,6 @@ DirectoryIndex index.html index.php
   Redirect 301 /proyectos/stand_grupo_alava_desarrollado_en_bilbao/ /proyectos/stand_para_empresa_de_tecnologia_industrial_en_bilbao
   Redirect 301 /proyectos/stand_hervem_desarrollado_en_barcelona /proyectos/stand_para_empresa_de_excavaciones_en_barcelona
   Redirect 301 /proyectos/stand_hervem_desarrollado_en_barcelona/ /proyectos/stand_para_empresa_de_excavaciones_en_barcelona
-  Redirect 301 /proyectos/stand_hidroconta_desarrollado_en_barcelona /proyectos/stand_para_empresa_de_digitalizacion_del_agua_en_barcelona
-  Redirect 301 /proyectos/stand_hidroconta_desarrollado_en_barcelona/ /proyectos/stand_para_empresa_de_digitalizacion_del_agua_en_barcelona
   Redirect 301 /proyectos/stand_hidroconta_desarrollado_en_barcelona /proyectos/stand_para_empresa_de_digitalizacion_del_agua_en_barcelona
   Redirect 301 /proyectos/stand_hidroconta_desarrollado_en_barcelona/ /proyectos/stand_para_empresa_de_digitalizacion_del_agua_en_barcelona
   Redirect 301 /proyectos/stand_hjm_elementos_desarrollado_en_malaga /proyectos/stand_para_fabricante_de_sistemas_de_calefaccion_en_malaga

@@ -33,7 +33,7 @@
           if (!savedLang) {
             var browserLang = (navigator.language || navigator.userLanguage || '').substring(0, 2).toLowerCase();
             if (browserLang === 'es') return;
-            var supportedLangs = ['en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko'];
+            var supportedLangs = ['en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja'];
             if (supportedLangs.includes(browserLang)) {
               window.location.replace('/' + browserLang + '/');
             } else {
