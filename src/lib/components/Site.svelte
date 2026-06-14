@@ -202,6 +202,33 @@
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : richSeo.es) || null) : null;
   $: selectedPortfolios = portfolios.slice(0, 3);
 
+  // --- Clúster pilar→ferias: en cada página de ciudad, enlazar a las ferias de su región ---
+  const SECTION_REGION = {
+    badajoz: 'extremadura', montaje_zafra: 'extremadura', montaje_don_benito: 'extremadura', montaje_badajoz: 'extremadura',
+    madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco',
+    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal'
+  };
+  const FAIR_CITY_REGION = {
+    'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
+    'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
+  };
+  const cityFairsLabel = {
+    es: 'Ferias de la zona en las que diseñamos y montamos stands',
+    en: 'Fairs in the area where we design and build stands',
+    de: 'Messen in der Region, auf denen wir Stände gestalten und bauen',
+    fr: 'Salons de la région où nous concevons et construisons des stands',
+    pt: 'Feiras da região onde concebemos e montamos stands',
+    it: 'Fiere della zona in cui progettiamo e allestiamo stand',
+    ko: '저희가 부스를 디자인하고 시공하는 인근 전시회',
+    zh: '我们在该地区设计和搭建展台的展会',
+    hi: 'इस क्षेत्र के मेले जहाँ हम स्टैंड डिज़ाइन और निर्माण करते हैं',
+    ja: '当社がブースの設計・施工を行う近隣の展示会'
+  };
+  $: regionFairs = SECTION_REGION[section]
+    ? fairItems.filter((f) => FAIR_CITY_REGION[f.city] === SECTION_REGION[section])
+    : [];
+  $: fairHrefSite = (slug) => (lang === 'es' ? `/ferias/${slug}` : `/${lang}/ferias/${slug}`);
+
   $: title = seoContent?.title || (section in cityData
     ? `${cityTitle(section)} | Standarte`
     : section === 'home'
@@ -1104,6 +1131,18 @@
                 </article>
               {/each}
             </div>
+          </section>
+        {/if}
+
+        <!-- Clúster pilar→ferias: enlaces a las ferias de la región -->
+        {#if regionFairs.length}
+          <section class="city-fairs" aria-label={cityFairsLabel[lang] || cityFairsLabel.es}>
+            <h2>{cityFairsLabel[lang] || cityFairsLabel.es}</h2>
+            <ul class="city-fairs-list">
+              {#each regionFairs as fair}
+                <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
+              {/each}
+            </ul>
           </section>
         {/if}
       </div>
