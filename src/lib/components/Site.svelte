@@ -1145,31 +1145,34 @@
   .gallery-more-wrap {
     display: flex;
     justify-content: center;
-    margin: 30px 0 10px;
+    /* margin auto para centrar el contenedor (si no, el estilo scoped pisa el
+       margin:auto global de .section > * y queda pegado a la izquierda). */
+    margin: 34px auto 10px;
+    width: 100%;
   }
+  /* Botón secundario, discreto: sin amarillo, para no competir con el CTA del menú. */
   .gallery-more-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 200px;
-    padding: 14px 40px;
-    background: #ffc800;
-    color: #111;
-    border: none;
+    min-width: 180px;
+    padding: 11px 32px;
+    background: transparent;
+    color: #555;
+    border: 1px solid #cfcfcf;
     border-radius: 30px;
-    font-family: Glegoo, serif;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0.05em;
+    font-family: Inconsolata, monospace;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(255, 200, 0, 0.25);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
   .gallery-more-btn:hover {
-    background: #e6b400;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(255, 200, 0, 0.35);
+    background: #efefef;
+    border-color: #999;
+    color: #222;
   }
 
   .nav-badge-new {
