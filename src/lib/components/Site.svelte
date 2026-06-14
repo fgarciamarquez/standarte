@@ -15,6 +15,9 @@
   export let copy;
   export let canonical;
   export let initialLightboxSlug = null;
+  // Las páginas de galería reutilizan Site con section="custom"; ahí el hreflang
+  // por sección apuntaría al listado de galería (incorrecto), así que lo desactivan.
+  export let emitHreflang = true;
   // Datos SEO enriquecidos de la sección actual (todas las lenguas), inyectados
   // por el load del servidor; richSeoData.js completo ya no viaja al cliente.
   export let richSeo = null;
@@ -623,10 +626,12 @@
       fetchpriority="high"
     />
   {/if}
-  {#each LOCALES as loc}
-    <link rel="alternate" hreflang={loc.lang} href={`https://standarte.es${pathFor(loc.lang, section)}`} />
-  {/each}
-  <link rel="alternate" hreflang="x-default" href={`https://standarte.es${pathFor('es', section)}`} />
+  {#if emitHreflang}
+    {#each LOCALES as loc}
+      <link rel="alternate" hreflang={loc.lang} href={`https://standarte.es${pathFor(loc.lang, section)}`} />
+    {/each}
+    <link rel="alternate" hreflang="x-default" href={`https://standarte.es${pathFor('es', section)}`} />
+  {/if}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Standarte" />
   <meta property="og:title" content={title} />

@@ -21,10 +21,11 @@
 </svelte:head>
 
 <!-- Reutilizamos el componente Site pasándole la sección custom y el initialLightboxSlug -->
-<Site 
-  section="custom" 
-  lang={lang} 
-  copy={currentCopy} 
+<Site
+  section="custom"
+  lang={lang}
+  copy={currentCopy}
   canonical={`https://standarte.es/galeria/${data.slug}`}
-  initialLightboxSlug={data.slug} 
+  initialLightboxSlug={data.slug}
+  emitHreflang={false}
 />
