@@ -2330,7 +2330,12 @@ export function findRoute(path) {
 export function resolveRoute(path) {
   const { lang, section, fairSlug } = findRoute(path);
   const c = copy[lang] || copy.es;
-  const canonical = `https://standarte.es${pathFor(lang, section)}`;
+  // Las ferias no son una clave de routes, así que pathFor(lang,'feria') devolvería
+  // la home: su canónica debe ser su propia URL /ferias/<slug> (igual que su hreflang).
+  const prefix = lang === 'es' ? '' : `/${lang}`;
+  const canonical = (section === 'feria' && fairSlug)
+    ? `https://standarte.es${prefix}/ferias/${fairSlug}`
+    : `https://standarte.es${pathFor(lang, section)}`;
   return { lang, section, fairSlug, copy: c, canonical };
 }
 
