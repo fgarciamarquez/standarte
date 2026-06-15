@@ -241,9 +241,9 @@ function postJson(url, body) {
 }
 
 async function run() {
+  let newsData = []; // declarada en el ámbito de la función para que el catch general (fallback) la vea
   try {
     // 1. Cargar Base de Datos de noticias actuales
-    let newsData = [];
     if (fs.existsSync(newsDataPath)) {
       newsData = JSON.parse(fs.readFileSync(newsDataPath, 'utf8'));
     }
@@ -479,7 +479,7 @@ Cada una de estas llaves debe ser un objeto con los siguientes campos:
                 seoKeywords: { type: "ARRAY", items: { type: "STRING" } }
               },
               required: ["title", "excerpt", "content", "seoKeywords"]
-            }
+            },
             fr: {
               type: "OBJECT",
               properties: {
@@ -631,7 +631,8 @@ function useFallback(newsData) {
   
   for (const lang of languages) {
     const langData = originalTemplate[lang];
-    
+    if (!langData) continue; // las plantillas de fallback pueden no tener todos los idiomas (p.ej. fr/it)
+
     // Clonamos profundamente para evitar mutar el original
     const cloned = JSON.parse(JSON.stringify(langData));
     
