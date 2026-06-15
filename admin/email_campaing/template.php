@@ -57,8 +57,9 @@ function campaign_resolve_company_name($email, $lang, $companyNameInput = '', $s
     foreach ($inputs as $input) {
         if (preg_match('/\{([^{}]+)\}/', $input, $matches)) {
             $placeholder = trim($matches[1]);
-            // If the placeholder is NOT "EMPRESA" (case-insensitive), it means it's a custom company name!
-            if (strcasecmp($placeholder, 'EMPRESA') !== 0) {
+            // Si el placeholder NO es un token genérico (EMPRESA/COMPANY), es un nombre de empresa personalizado.
+            // OJO: el drip usa {{COMPANY}}; sin excluir COMPANY, devolvía literalmente "COMPANY" como nombre.
+            if (strcasecmp($placeholder, 'EMPRESA') !== 0 && strcasecmp($placeholder, 'COMPANY') !== 0) {
                 return $placeholder;
             }
         }
@@ -86,6 +87,10 @@ function campaign_resolve_company_name($email, $lang, $companyNameInput = '', $s
             return 'Ihr Unternehmen';
         case 'pt':
             return 'sua empresa';
+        case 'zh':
+            return '贵公司';
+        case 'hi':
+            return 'आपकी कंपनी';
         default:
             return 'su empresa';
     }
