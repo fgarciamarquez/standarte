@@ -16,6 +16,11 @@ DirectorySlash Off
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://standarte.es%{REQUEST_URI} [R=301,L]
 
+  # --- Legado del sitio PHP anterior (Google aún sondea estas URLs y daban 404) ---
+  # No existe página de privacidad propia (el texto legal es un modal del pie) ni index.php: a la home.
+  RewriteRule ^index\.php$ / [R=301,L]
+  RewriteRule ^privacy_policy\.php$ / [R=301,L]
+
   # Redirigir carpetas de idiomas a sus archivos HTML correspondientes para evitar error 403/500 por no tener index.html
   RewriteCond %{REQUEST_URI} ^/en/?$
   RewriteRule ^ en.html [L]
