@@ -467,5 +467,61 @@ export const fairsData = [
     "slug": "maintenance-bilbao",
     "city": "Bilbao",
     "sector": "Industria y Logística"
+  },
+  {
+    "name": "Fruit Attraction Madrid 2026",
+    "country": "es",
+    "slug": "fruit-attraction-madrid",
+    "city": "Madrid",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Salón Look Madrid 2026",
+    "country": "es",
+    "slug": "salon-look-madrid",
+    "city": "Madrid",
+    "sector": "Belleza y Estética"
+  },
+  {
+    "name": "Madrid Tech Show 2026",
+    "country": "es",
+    "slug": "madrid-tech-show",
+    "city": "Madrid",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "The District Madrid 2026",
+    "country": "es",
+    "slug": "the-district-madrid",
+    "city": "Madrid",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Intergift Madrid 2026",
+    "country": "es",
+    "slug": "intergift-madrid",
+    "city": "Madrid",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "MOMAD Madrid 2026",
+    "country": "es",
+    "slug": "momad-madrid",
+    "city": "Madrid",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Madridjoya Madrid 2026",
+    "country": "es",
+    "slug": "madridjoya-madrid",
+    "city": "Madrid",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Bisutex Madrid 2026",
+    "country": "es",
+    "slug": "bisutex-madrid",
+    "city": "Madrid",
+    "sector": "Comercio y Packaging"
   }
 ];

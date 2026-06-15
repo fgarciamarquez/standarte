@@ -250,7 +250,8 @@
   const FEATURED_BY_REGION = {
     extremadura: ['Bellota', 'Intermaher', 'Elumatec'], // herramientas agrícolas, maquinaria pesada, industrial
     portugal: ['Philips', 'Tecnalia', 'Pharmatechnik'], // tech+salud, innovación, farma — perfil de los congresos de Lisboa
-    paisvasco: ['Intermaher', 'Bellota', 'Elumatec'] // maquinaria pesada (BIEMH), herramientas (Ferroforma), industrial — perfil de las ferias del BEC Bilbao
+    paisvasco: ['Intermaher', 'Bellota', 'Elumatec'], // maquinaria pesada (BIEMH), herramientas (Ferroforma), industrial — perfil de las ferias del BEC Bilbao
+    madrid: ['Pescanova', 'Philips', 'Fanuc'] // alimentación (Fruit Attraction), tecnología/salud (Madrid Tech Show), robótica — perfil multisectorial de IFEMA
   };
   const cityFairsLabel = {
     es: 'Ferias de la zona en las que diseñamos y montamos stands',
