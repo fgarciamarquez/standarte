@@ -127,33 +127,42 @@ if ($action === 'active_drip_groups') {
 if ($action === 'list') {
     $result = groups_supabase_get('lead_groups?select=name,description,total_leads,leads_with_email,source_url,created_at&order=created_at.desc');
     
-    // Obtener recuento de envíos por grupo
-    $sentResult = groups_supabase_get('contacts?select=lead_group&drip_sent=is.true&limit=10000');
+    // Recuentos por grupo, contando EN VIVO y PAGINANDO (Supabase corta a 1000 filas/petición).
+    // La columna leads_with_email de lead_groups está congelada en la importación y no descuenta
+    // rebotes/bajas, por eso el nº mostrado desajustaba con los destinatarios que carga el envío.
     $sentCounts = [];
-    if ($sentResult['code'] === 200 && is_array($sentResult['body'])) {
-        foreach ($sentResult['body'] as $c) {
-            $lg = $c['lead_group'];
-            if (!isset($sentCounts[$lg])) $sentCounts[$lg] = 0;
-            $sentCounts[$lg]++;
-        }
-    }
-    
-    // Obtener recuento de bajas por grupo
-    $unsubResult = groups_supabase_get('contacts?select=lead_group&status=eq.unsubscribed&limit=10000');
     $unsubCounts = [];
-    if ($unsubResult['code'] === 200 && is_array($unsubResult['body'])) {
-        foreach ($unsubResult['body'] as $c) {
-            $lg = $c['lead_group'];
-            if (!isset($unsubCounts[$lg])) $unsubCounts[$lg] = 0;
-            $unsubCounts[$lg]++;
-        }
+    $activeCounts = [];   // ENVIABLES: coincide con lo que carga el envío manual (status=active)
+    $bouncedCounts = [];  // rebotados (explican el hueco con el total importado)
+
+    $sentResult = groups_supabase_get_all('contacts?select=lead_group&drip_sent=is.true');
+    foreach ($sentResult['body'] as $c) {
+        $lg = $c['lead_group'];
+        $sentCounts[$lg] = isset($sentCounts[$lg]) ? $sentCounts[$lg] + 1 : 1;
     }
-    
+    $unsubResult = groups_supabase_get_all('contacts?select=lead_group&status=eq.unsubscribed');
+    foreach ($unsubResult['body'] as $c) {
+        $lg = $c['lead_group'];
+        $unsubCounts[$lg] = isset($unsubCounts[$lg]) ? $unsubCounts[$lg] + 1 : 1;
+    }
+    $activeResult = groups_supabase_get_all('contacts?select=lead_group&status=eq.active');
+    foreach ($activeResult['body'] as $c) {
+        $lg = $c['lead_group'];
+        $activeCounts[$lg] = isset($activeCounts[$lg]) ? $activeCounts[$lg] + 1 : 1;
+    }
+    $bouncedResult = groups_supabase_get_all('contacts?select=lead_group&status=eq.bounced');
+    foreach ($bouncedResult['body'] as $c) {
+        $lg = $c['lead_group'];
+        $bouncedCounts[$lg] = isset($bouncedCounts[$lg]) ? $bouncedCounts[$lg] + 1 : 1;
+    }
+
     if ($result['code'] >= 200 && $result['code'] < 300 && is_array($result['body'])) {
         $groups = $result['body'];
         foreach ($groups as &$g) {
             $g['drip_sent_count'] = isset($sentCounts[$g['name']]) ? $sentCounts[$g['name']] : 0;
             $g['unsub_count'] = isset($unsubCounts[$g['name']]) ? $unsubCounts[$g['name']] : 0;
+            $g['active_count'] = isset($activeCounts[$g['name']]) ? $activeCounts[$g['name']] : 0;
+            $g['bounced_count'] = isset($bouncedCounts[$g['name']]) ? $bouncedCounts[$g['name']] : 0;
             $g['city'] = get_city_from_group_name($g['name']);
         }
         
@@ -347,4 +356,28 @@ function groups_supabase_get($endpoint) {
         'code' => $httpCode,
         'body' => json_decode($response, true) ?: []
     ];
+}
+
+/**
+ * Como groups_supabase_get pero PAGINA hasta traer todas las filas.
+ * Supabase corta cada respuesta a 1000 filas (ignora un limit mayor), por lo que
+ * sin paginar los recuentos por grupo salían incompletos (p.ej. una lista con
+ * activos más allá de la fila 1000 contaba 0). Pide páginas de 1000 con offset
+ * creciente hasta recibir menos de 1000. NO incluyas limit/offset en $endpoint.
+ */
+function groups_supabase_get_all($endpoint) {
+    $all = [];
+    $pageSize = 1000;
+    $offset = 0;
+    $lastCode = 200;
+    $sep = (strpos($endpoint, '?') !== false) ? '&' : '?';
+    for ($i = 0; $i < 100; $i++) { // tope de seguridad: 100.000 filas
+        $res = groups_supabase_get($endpoint . $sep . 'limit=' . $pageSize . '&offset=' . $offset);
+        $lastCode = $res['code'];
+        if ($res['code'] < 200 || $res['code'] >= 300 || !is_array($res['body'])) break;
+        $all = array_merge($all, $res['body']);
+        if (count($res['body']) < $pageSize) break;
+        $offset += $pageSize;
+    }
+    return ['code' => $lastCode, 'body' => $all];
 }

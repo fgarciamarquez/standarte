@@ -801,15 +801,22 @@ if ($isCronEmpty) {
               
               var opt = document.createElement('option');
               opt.value = g.name;
+              // active_count = ENVIABLES en vivo (status=active): coincide con lo que cargará el envío manual.
+              // leads_with_email es el total congelado de la importación (no descuenta rebotes/bajas).
+              var active = (g.active_count != null) ? g.active_count : (g.leads_with_email || 0);
               var total = g.leads_with_email || 0;
               var sent = g.drip_sent_count || 0;
               var unsub = g.unsub_count || 0;
-              // El elemento <option> no admite colorear solo una parte del texto,
-              // así que lo mostramos aquí y también podemos pintarlo de rojo en la interfaz si hiciera falta.
-              var text = g.name + ' (' + total + ' leads, ' + sent + ' enviados)';
-              if (unsub > 0) text += ' - ❗' + unsub + ' bajas';
+              var bounced = g.bounced_count || 0;
+              var text = g.name + ' (' + active + ' enviables';
+              if (total && total !== active) text += ' de ' + total + ' importados';
+              if (sent > 0) text += ', ' + sent + ' enviados';
+              if (bounced > 0) text += ', ' + bounced + ' rebotados';
+              if (unsub > 0) text += ', ❗' + unsub + ' bajas';
+              text += ')';
               opt.textContent = text;
               opt.dataset.unsub = unsub;
+              opt.dataset.active = active;
               
               if (currentOptgroup) {
                 currentOptgroup.appendChild(opt);
