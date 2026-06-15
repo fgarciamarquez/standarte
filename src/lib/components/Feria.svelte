@@ -15,7 +15,8 @@
     pt: 'pt_PT',
     fr: 'fr_FR',
     it: 'it_IT',
-    ko: 'ko_KR'
+    ko: 'ko_KR',
+    ja: 'ja_JP'
   };
   const contentLanguages = {
     es: 'es-ES',
@@ -26,7 +27,8 @@
     pt: 'pt-PT',
     fr: 'fr-FR',
     it: 'it-IT',
-    ko: 'ko-KR'
+    ko: 'ko-KR',
+    ja: 'ja-JP'
   };
 
   
@@ -42,7 +44,7 @@
     updateScrollState();
   });
 
-  const ctaLabels = { es: 'PRESUPUESTO EN 24 H', en: 'QUOTE IN 24 H', de: 'ANGEBOT IN 24 H', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'ORÇAMENTO EM 24 H', fr: 'DEVIS EN 24 H', it: 'PREVENTIVO IN 24 H', ko: '24시간 내 견적' };
+  const ctaLabels = { es: 'PRESUPUESTO EN 24 H', en: 'QUOTE IN 24 H', de: 'ANGEBOT IN 24 H', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'ORÇAMENTO EM 24 H', fr: 'DEVIS EN 24 H', it: 'PREVENTIVO IN 24 H', ko: '24시간 내 견적', ja: '24時間で見積もり' };
   $: ({ lang, copy, canonical, fairSlug } = data);
   
   $: fair = fairsData.find(f => f.slug === fairSlug) || fairsData[0];
@@ -173,12 +175,27 @@
       'Comercio y Packaging': 'वाणिज्य और पैकेजिंग',
       'Aeronáutica y Transporte': 'वैमानिकी और परिवहन',
       'Multisectorial y Profesional': 'बहुक्षेत्रीय और पेशेवर'
+    },
+    ja: {
+      'Agroalimentario y Naturaleza': '農産食品・自然',
+      'Belleza y Estética': '美容・エステ',
+      'Enología y Vinos': 'ワイン・醸造',
+      'Tecnología e Innovación': 'テクノロジー・イノベーション',
+      'Industria y Logística': '産業・物流',
+      'Salud y Medicina': '健康・医療',
+      'Turismo y Hostelería': '観光・ホスピタリティ',
+      'Arte y Ocio': 'アート・レジャー',
+      'Construcción e Infraestructuras': '建設・インフラ',
+      'Comercio y Packaging': '商業・パッケージング',
+      'Aeronáutica y Transporte': '航空・輸送',
+      'Multisectorial y Profesional': '多分野・専門'
     }
   };
 
   const cities = {
     es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Europa': 'Europa' },
     en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Europa': 'Europe' },
+    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Zafra': 'サフラ', 'Europa': 'ヨーロッパ' },
     // Simplified city mapping, defaulting to Spanish name if not defined to save space
   };
 
@@ -237,6 +254,12 @@
     zh: (v, c) => `Standarte 在 ${c} 的展览场馆 ${v} 设计并搭建交钥匙展台，负责运输、自有团队搭建以及与场馆的全部技术手续。`,
     hi: (v, c) => `Standarte ${c} के प्रदर्शनी केंद्र ${v} में टर्नकी स्टैंड डिज़ाइन और निर्माण करता है, तथा परिवहन, अपनी टीम से असेंबली और केंद्र के साथ सभी तकनीकी प्रक्रियाओं को संभालता है।`,
     ja: (v, c) => `Standarteは${c}の展示会場${v}でターンキーのブースを設計・施工し、輸送、自社チームによる設営、会場との技術的な手続きまで一貫して担います。`
+  };
+
+  // Etiqueta "Inicio" del breadcrumb por idioma (antes mostraba "Home" en inglés en todos los no-es)
+  const homeLabel = {
+    es: 'Inicio', en: 'Home', de: 'Startseite', fr: 'Accueil', pt: 'Início',
+    it: 'Home', ko: '홈', zh: '首页', hi: 'होम', ja: 'ホーム'
   };
 
   const t = {
@@ -447,7 +470,7 @@
     <div class="hero-contents feria-hero-contents">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <ol>
-          <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : 'Home'}</a></li>
+          <li><a href={pathFor(lang, 'home')}>{homeLabel[lang] || 'Home'}</a></li>
           <li><span class="divider">/</span></li>
           <li><span class="current" aria-current="page">{fair.name}</span></li>
         </ol>
