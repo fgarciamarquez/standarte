@@ -42,28 +42,19 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 // ACCIÓN: Obtener estadísticas de clics totales en tiempo real
 // ============================================================
 if ($action === 'clicks_count') {
-    $chCount = curl_init();
-    curl_setopt($chCount, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=id');
-    curl_setopt($chCount, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($chCount, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($chCount, CURLOPT_HEADER, true);
-    curl_setopt($chCount, CURLOPT_NOBODY, true);
-    curl_setopt($chCount, CURLOPT_HTTPHEADER, [
-        'apikey: ' . SUPABASE_KEY,
-        'Authorization: Bearer ' . SUPABASE_KEY,
-        'Prefer: count=exact'
-    ]);
-    $header = curl_exec($chCount);
-    $count = 0;
-    if (preg_match('/Content-Range:\s*[0-9]+-[0-9]+\/([0-9]+)/i', $header, $matches)) {
-        $count = (int)$matches[1];
+    // Contamos y listamos SOLO aperturas humanas (los escáneres se filtran).
+    $res = groups_supabase_get('email_clicks?select=email,source,user_agent,clicked_at&order=clicked_at.desc&limit=1000');
+    $history = [];
+    if (is_array($res['body'])) {
+        foreach ($res['body'] as $c) {
+            if (gp_click_is_human($c)) $history[] = $c;
+        }
     }
-    curl_close($chCount);
-    
     echo json_encode([
         'status' => 'success',
-        'total' => $count
-    ]);
+        'total' => count($history),
+        'history' => array_slice($history, 0, 50)
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -299,6 +290,22 @@ function normalize_for_sort($str) {
         'ñ'=>'n'
     );
     return strtr($str, $unwanted_array);
+}
+
+// ============================================================
+// FUNCIÓN AUXILIAR: ¿apertura humana o escáner?
+// (misma lógica que click_is_human de index.php)
+// ============================================================
+function gp_click_is_human($c) {
+    $legit = array('email_campaing', 'main-cta-button', 'footer-contact', 'footer-web');
+    $src = isset($c['source']) ? $c['source'] : '';
+    if (!in_array($src, $legit, true)) return false;
+    $ua = strtolower(trim(isset($c['user_agent']) ? $c['user_agent'] : ''));
+    if ($ua === '') return false;
+    foreach (array('bot', 'crawl', 'spider', 'proxy', 'preview', 'scan', 'mimecast', 'proofpoint', 'barracuda', 'googleimageproxy', 'python', 'curl/', 'wget', 'headless', 'monitor') as $b) {
+        if (strpos($ua, $b) !== false) return false;
+    }
+    return true;
 }
 
 // ============================================================

@@ -66,7 +66,7 @@ function supa_request($endpoint, $method = 'GET', $data = null) {
     return array('code' => $httpCode, 'data' => json_decode($result, true));
 }
 
-$emails_per_execution = 5;
+$emails_per_execution = 15;
 
 // Definir ventana de envío: (EventDate está entre Hoy + 3 meses y Hoy + 5 meses)
 // Dicho de otra manera: Hoy está a una distancia de entre 3 y 5 meses del evento.

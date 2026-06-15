@@ -48,6 +48,25 @@ function campaign_is_logged_in()
     return isset($_SESSION['standarte_email_campaing_auth']) && $_SESSION['standarte_email_campaing_auth'] === true;
 }
 
+/**
+ * Distingue una apertura HUMANA de un escáner/bot.
+ * Señales: la fuente debe ser una que genere NUESTRO código (email_campaing o los CTA);
+ * cualquier otra (p.ej. fzbvy_dbzcbvat, unknown) es un escáner. Además, sin user-agent
+ * o con UA de proxy/escáner conocido = bot.
+ */
+function click_is_human($c)
+{
+    $legit = array('email_campaing', 'main-cta-button', 'footer-contact', 'footer-web');
+    $src = isset($c['source']) ? $c['source'] : '';
+    if (!in_array($src, $legit, true)) return false;
+    $ua = strtolower(trim(isset($c['user_agent']) ? $c['user_agent'] : ''));
+    if ($ua === '') return false;
+    foreach (array('bot', 'crawl', 'spider', 'proxy', 'preview', 'scan', 'mimecast', 'proofpoint', 'barracuda', 'googleimageproxy', 'python', 'curl/', 'wget', 'headless', 'monitor') as $b) {
+        if (strpos($ua, $b) !== false) return false;
+    }
+    return true;
+}
+
 function campaign_get_email_clicks()
 {
     $configFile = __DIR__ . '/../../supabase-config.php';
@@ -60,43 +79,28 @@ function campaign_get_email_clicks()
         return array('total' => 0, 'history' => array());
     }
 
-    // Get total count
-    $chCount = curl_init();
-    curl_setopt($chCount, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=id');
-    curl_setopt($chCount, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($chCount, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($chCount, CURLOPT_HEADER, true);
-    curl_setopt($chCount, CURLOPT_NOBODY, true);
-    curl_setopt($chCount, CURLOPT_HTTPHEADER, [
-        'apikey: ' . SUPABASE_KEY,
-        'Authorization: Bearer ' . SUPABASE_KEY,
-        'Prefer: count=exact'
-    ]);
-    $header = curl_exec($chCount);
-    $count = 0;
-    if (preg_match('/Content-Range:\s*[0-9]+-[0-9]+\/([0-9]+)/i', $header, $matches)) {
-        $count = (int)$matches[1];
-    }
-    curl_close($chCount);
-
-    // Get history (latest 50)
+    // Una sola consulta; contamos y listamos SOLO aperturas humanas (escáneres filtrados).
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,clicked_at&order=clicked_at.desc&limit=50');
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?select=email,source,user_agent,clicked_at&order=clicked_at.desc&limit=1000');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'apikey: ' . SUPABASE_KEY,
         'Authorization: Bearer ' . SUPABASE_KEY
     ]);
-    
     $response = curl_exec($ch);
     curl_close($ch);
-    
-    $history = json_decode($response, true);
-    if (!is_array($history) || isset($history['code']) || isset($history['message'])) {
-        $history = array();
+
+    $all = json_decode($response, true);
+    $history = array();
+    if (is_array($all) && !isset($all['code']) && !isset($all['message'])) {
+        foreach ($all as $c) {
+            if (click_is_human($c)) $history[] = $c;
+        }
     }
-    
+    $count = count($history);
+    $history = array_slice($history, 0, 50);
+
     // Fallback if supabase fails
     if ($count === 0 && empty($history)) {
         $statsFile = __DIR__ . '/data/clicks.json';
@@ -582,15 +586,17 @@ if ($isCronEmpty) {
           <span class="details-icon">▼</span>
         </summary>
         <div style="margin-top: 10px;">
-          <?php if (!$clicksHistory): ?>
-            <p style="font-size:0.85rem;color:#888;">Nadie ha hecho clic en los correos todavía.</p>
-          <?php endif; ?>
-          <?php foreach ($clicksHistory as $click): ?>
-            <p>
-              <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
-              <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['clicked_at']))); ?></span>
-            </p>
-          <?php endforeach; ?>
+          <div id="accesos-list">
+            <?php if (!$clicksHistory): ?>
+              <p style="font-size:0.85rem;color:#888;">Nadie ha abierto los correos todavía (solo humanos; escáneres filtrados).</p>
+            <?php endif; ?>
+            <?php foreach ($clicksHistory as $click): ?>
+              <p>
+                <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
+                <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['clicked_at']))); ?></span>
+              </p>
+            <?php endforeach; ?>
+          </div>
         </div>
       </details>
       <details class="send-log">
@@ -862,24 +868,39 @@ if ($isCronEmpty) {
       };
     }());
 
-    // Actualización reactiva del contador de visitas en tiempo real cada 10 segundos
+    // Actualización reactiva (cada 8s): contador + lista de aperturas HUMANAS en tiempo real
     (function() {
-      setInterval(function() {
+      function escHtml(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+      function pad(n){ return ('0'+n).slice(-2); }
+      function refreshClicks() {
         fetch('groups.php?action=clicks_count')
           .then(function(res) { return res.json(); })
           .then(function(data) {
-            if (data.status === 'success' && typeof data.total === 'number') {
+            if (!data || data.status !== 'success') return;
+            if (typeof data.total === 'number') {
               var counter = document.getElementById('total-visits-counter');
               if (counter) {
-                var formatted = new Intl.NumberFormat('es-ES').format(data.total);
-                if (counter.textContent !== formatted) {
-                  counter.textContent = formatted;
-                }
+                var f = new Intl.NumberFormat('es-ES').format(data.total);
+                if (counter.textContent !== f) counter.textContent = f;
+              }
+            }
+            var list = document.getElementById('accesos-list');
+            if (list && Array.isArray(data.history)) {
+              if (data.history.length === 0) {
+                list.innerHTML = '<p style="font-size:0.85rem;color:#888;">Nadie ha abierto los correos todavía (solo humanos; escáneres filtrados).</p>';
+              } else {
+                list.innerHTML = data.history.map(function(c){
+                  var d = new Date(c.clicked_at);
+                  var ds = pad(d.getDate())+'/'+pad(d.getMonth()+1)+'/'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+                  return '<p><b>'+escHtml(c.email)+'</b> (desde <i>'+escHtml(c.source)+'</i>)<br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
+                }).join('');
               }
             }
           })
           .catch(function() {});
-      }, 10000);
+      }
+      setInterval(refreshClicks, 8000);
+      refreshClicks();
     }());
   </script>
 
