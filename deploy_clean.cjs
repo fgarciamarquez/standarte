@@ -86,12 +86,40 @@ console.log(`  -> Archivos a sincronizar después de filtrado: ${filesToUpload.l
 
 // 3. Subir archivos recursivamente usando curl.exe con concurrencia
 console.log('\n[3/3] Sincronizando por FTP con concurrencia...');
-const maxConcurrency = 10;
+const maxConcurrency = 6;  // OVH corta conexiones FTP con demasiada concurrencia
+const MAX_RETRIES = 3;     // reintentar transferencias caídas (cortes transitorios de OVH)
+const RETRY_DELAY = 1200;  // ms entre reintentos (backoff lineal por intento)
 let successCount = 0;
 let failCount = 0;
+let retryCount = 0;
 let index = 0;
 let running = 0;
 const startTime = Date.now();
+
+function uploadFile(item, attempt) {
+  const { file, relativePath } = item;
+  // URL-encode path segments to support spaces and accents
+  const encodedSegments = relativePath.split('/').map(segment => encodeURIComponent(segment));
+  const remoteUrl = `${remoteRoot}/${encodedSegments.join('/')}`;
+
+  // Execute curl asynchronously
+  exec(`${curlCmd} -s -T "${file}" "${remoteUrl}" --ftp-create-dirs --user "${ftpUser}:${ftpPass}"`, (error) => {
+    if (error) {
+      if (attempt < MAX_RETRIES) {
+        // Corte transitorio de OVH: reintentar el mismo fichero tras una espera (sin liberar el slot)
+        retryCount++;
+        setTimeout(() => uploadFile(item, attempt + 1), RETRY_DELAY * attempt);
+        return;
+      }
+      console.error(`  [FALLÓ tras ${MAX_RETRIES} intentos] ${relativePath}:`, error.message);
+      failCount++;
+    } else {
+      successCount++;
+    }
+    running--;
+    uploadNext();
+  });
+}
 
 function uploadNext() {
   if (index >= filesToUpload.length) {
@@ -101,32 +129,17 @@ function uploadNext() {
     return;
   }
 
-  const { file, relativePath } = filesToUpload[index++];
-  // URL-encode path segments to support spaces and accents
-  const encodedSegments = relativePath.split('/').map(segment => encodeURIComponent(segment));
-  const remoteUrl = `${remoteRoot}/${encodedSegments.join('/')}`;
-
+  const item = filesToUpload[index++];
   running++;
 
-  // Log progress every 50 files or for failures
+  // Log progress every 50 files
   const currentNum = index;
   const shouldLogDetail = currentNum % 50 === 0 || currentNum === 1 || currentNum === filesToUpload.length;
-
   if (shouldLogDetail) {
-    console.log(`  [Progreso ${currentNum}/${filesToUpload.length}] Subiendo: ${relativePath}...`);
+    console.log(`  [Progreso ${currentNum}/${filesToUpload.length}] Subiendo: ${item.relativePath}...`);
   }
 
-  // Execute curl asynchronously
-  exec(`${curlCmd} -s -T "${file}" "${remoteUrl}" --ftp-create-dirs --user "${ftpUser}:${ftpPass}"`, (error, stdout, stderr) => {
-    running--;
-    if (error) {
-      console.error(`  [FALLÓ] Error al subir ${relativePath}:`, error.message);
-      failCount++;
-    } else {
-      successCount++;
-    }
-    uploadNext();
-  });
+  uploadFile(item, 1);
 }
 
 function finishDeploy() {
@@ -136,6 +149,9 @@ function finishDeploy() {
   console.log('==========================================================');
   console.log(`  -> Tiempo total:                          ${duration}s`);
   console.log(`  -> Archivos sincronizados en producción: ${successCount}`);
+  if (retryCount > 0) {
+    console.log(`  -> Reintentos por cortes de OVH:          ${retryCount}`);
+  }
   if (failCount > 0) {
     console.log(`  -> Transferencias fallidas:               ${failCount}`);
   }
