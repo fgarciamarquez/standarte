@@ -523,5 +523,47 @@ export const fairsData = [
     "slug": "bisutex-madrid",
     "city": "Madrid",
     "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "FITUR Madrid 2027",
+    "country": "es",
+    "slug": "fitur-madrid",
+    "city": "Madrid",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "ARCOmadrid 2027",
+    "country": "es",
+    "slug": "arcomadrid",
+    "city": "Madrid",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Salón Gourmets Madrid 2027",
+    "country": "es",
+    "slug": "salon-gourmets-madrid",
+    "city": "Madrid",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "REBUILD Madrid 2027",
+    "country": "es",
+    "slug": "rebuild-madrid",
+    "city": "Madrid",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Madrid Fusión 2027",
+    "country": "es",
+    "slug": "madrid-fusion",
+    "city": "Madrid",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Expofranquicia Madrid 2027",
+    "country": "es",
+    "slug": "expofranquicia-madrid",
+    "city": "Madrid",
+    "sector": "Multisectorial y Profesional"
   }
 ];
