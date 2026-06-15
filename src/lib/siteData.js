@@ -33,7 +33,7 @@ export const routes = {
     montaje_zafra: 'montaje_stand_zafra',
     montaje_don_benito: 'montaje_stand_don_benito',
     montaje_badajoz: 'montaje_stand_badajoz',
-    noticias: 'noticias',
+    noticias: 'blog',
     ferias: 'ferias'
   },
   en: {
@@ -54,7 +54,7 @@ export const routes = {
     montaje_zafra: 'exhibition_stand_assembly_zafra',
     montaje_don_benito: 'exhibition_stand_assembly_don_benito',
     montaje_badajoz: 'exhibition_stand_assembly_badajoz',
-    noticias: 'news',
+    noticias: 'blog',
     ferias: 'fairs'
   },
   de: {
@@ -75,7 +75,7 @@ export const routes = {
     montaje_zafra: 'messestandmontage_zafra',
     montaje_don_benito: 'messestandmontage_don_benito',
     montaje_badajoz: 'messestandmontage_badajoz',
-    noticias: 'nachrichten',
+    noticias: 'blog',
     ferias: 'messen'
   },
   zh: {
@@ -96,7 +96,7 @@ export const routes = {
     montaje_zafra: 'zafra_zhantai_dajian',
     montaje_don_benito: 'don_benito_zhantai_dajian',
     montaje_badajoz: 'badajoz_zhantai_dajian_montaje',
-    noticias: 'xinwen',
+    noticias: 'blog',
     ferias: 'zhanhui'
   },
   hi: {
@@ -117,7 +117,7 @@ export const routes = {
     montaje_zafra: 'zafra_stand_nirman',
     montaje_don_benito: 'don_benito_stand_nirman',
     montaje_badajoz: 'badajoz_stand_nirman_montaje',
-    noticias: 'samachar',
+    noticias: 'blog',
     ferias: 'mele'
   },
   pt: {
@@ -138,7 +138,7 @@ export const routes = {
     montaje_zafra: 'montagem_stand_zafra',
     montaje_don_benito: 'montagem_stand_don_benito',
     montaje_badajoz: 'montagem_stand_badajoz',
-    noticias: 'noticias',
+    noticias: 'blog',
     ferias: 'feiras'
   },
   fr: {
@@ -159,7 +159,7 @@ export const routes = {
     montaje_zafra: 'montage_stands_zafra',
     montaje_don_benito: 'montage_stands_don_benito',
     montaje_badajoz: 'montage_stands_badajoz',
-    noticias: 'actualites',
+    noticias: 'blog',
     ferias: 'salons'
   },
   it: {
@@ -180,7 +180,7 @@ export const routes = {
     montaje_zafra: 'allestimento_stand_zafra',
     montaje_don_benito: 'allestimento_stand_don_benito',
     montaje_badajoz: 'allestimento_stand_badajoz',
-    noticias: 'notizie',
+    noticias: 'blog',
     ferias: 'fiere'
   },
   ko: {
@@ -201,7 +201,7 @@ export const routes = {
     montaje_zafra: 'zafra-bujeu-jejak',
     montaje_don_benito: 'don-benito-bujeu-jejak',
     montaje_badajoz: 'badajoz-bujeu-jejak-montaje',
-    noticias: 'sosig',
+    noticias: 'blog',
     ferias: 'jeonsihoe'
   },
   ja: {
@@ -222,7 +222,7 @@ export const routes = {
     montaje_zafra: 'サフラ展示会ブース設営',
     montaje_don_benito: 'ドンベニート展示会ブース設営',
     montaje_badajoz: 'バダホス展示会ブース設営',
-    noticias: 'ニュース',
+    noticias: 'blog',
     ferias: '展示会情報'
   }
 };

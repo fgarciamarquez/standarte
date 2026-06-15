@@ -1,6 +1,6 @@
 <script>
   import Site from '$lib/components/Site.svelte';
-  import Noticias from '../noticias/+page.svelte';
+  import Noticias from '../blog/+page.svelte';
   import Feria from '$lib/components/Feria.svelte';
   export let data;
 </script>

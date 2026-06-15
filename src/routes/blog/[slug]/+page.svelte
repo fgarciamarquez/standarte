@@ -42,9 +42,9 @@
   };
 
   function getAlternateUrl(option) {
-    if (option === lang) return `/noticias/${article.slug}`;
+    if (option === lang) return `/blog/${article.slug}`;
     const alt = (data.alternates || []).find(a => a.lang === option);
-    if (alt) return `/noticias/${alt.slug}`;
+    if (alt) return `/blog/${alt.slug}`;
     return pathFor(option, 'noticias');
   }
 
@@ -228,7 +228,7 @@
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://standarte.es/noticias/${article.slug}/`
+      "@id": `https://standarte.es/blog/${article.slug}/`
     }
   };
 
@@ -240,20 +240,20 @@
   <meta name="description" content={article.excerpt} />
   <meta name="robots" content="index, follow" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
-  <link rel="canonical" href={`https://standarte.es/noticias/${article.slug}`} />
+  <link rel="canonical" href={`https://standarte.es/blog/${article.slug}`} />
   
   {#each languages as alternateLang}
     {@const alt = alternateLang === article.lang ? article : (data.alternates || []).find(a => a.lang === alternateLang)}
     {#if alt}
-      <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es/noticias/${alt.slug}`} />
+      <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es/blog/${alt.slug}`} />
     {/if}
   {/each}
-  <link rel="alternate" hreflang="x-default" href={`https://standarte.es/noticias/${((data.alternates || []).find(a => a.lang === 'es') || article).slug}`} />
+  <link rel="alternate" hreflang="x-default" href={`https://standarte.es/blog/${((data.alternates || []).find(a => a.lang === 'es') || article).slug}`} />
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content={`${article.title} | Standarte`} />
   <meta property="og:description" content={article.excerpt} />
-  <meta property="og:url" content={`https://standarte.es/noticias/${article.slug}/`} />
+  <meta property="og:url" content={`https://standarte.es/blog/${article.slug}/`} />
   <meta property="og:site_name" content="Standarte" />
   <meta property="og:locale" content={languageLocales[lang] || 'es_ES'} />
   {#if lang !== 'es'}

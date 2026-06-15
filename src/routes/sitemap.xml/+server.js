@@ -11,8 +11,8 @@ const siteUrl = 'https://standarte.es';
 // - Los proyectos se listan UNA vez por id, sin variantes ?lang=: la página es
 //   única y su <link rel="canonical"> apunta a /proyectos/<id>; listar las
 //   variantes con query contradice la canónica y Google las descarta.
-// - Las noticias de TODOS los idiomas se sirven bajo /noticias/<slug> (la ruta
-//   noticias/[slug] prerenderiza todos los artículos); las URLs /pt/noticias/...
+// - Las noticias de TODOS los idiomas se sirven bajo /blog/<slug> (la ruta
+//   noticias/[slug] prerenderiza todos los artículos); las URLs /pt/blog/...
 //   no existen y daban 404/500.
 // - lastmod solo se emite cuando es una fecha real (noticias). Emitir la fecha
 //   del build en todo degrada la confianza de Google en el campo.
@@ -60,20 +60,20 @@ export async function GET() {
     });
   });
 
-  // 3. Noticias (noticias/[slug]) — todos los idiomas viven bajo /noticias/
+  // 3. Noticias (noticias/[slug]) — todos los idiomas viven bajo /blog/
   news.forEach((article) => {
     const group = news.filter(item => item.date === article.date && item.location === article.location);
     const alternates = group.map(item => ({
       hreflang: item.lang,
-      href: `${siteUrl}/noticias/${item.slug}`
+      href: `${siteUrl}/blog/${item.slug}`
     }));
     const esVersion = group.find(item => item.lang === 'es');
     if (esVersion) {
-      alternates.push({ hreflang: 'x-default', href: `${siteUrl}/noticias/${esVersion.slug}` });
+      alternates.push({ hreflang: 'x-default', href: `${siteUrl}/blog/${esVersion.slug}` });
     }
 
     urls.push({
-      loc: `${siteUrl}/noticias/${article.slug}`,
+      loc: `${siteUrl}/blog/${article.slug}`,
       lastmod: article.date || undefined,
       changefreq: 'weekly',
       priority: '0.6',

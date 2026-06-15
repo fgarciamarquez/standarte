@@ -360,11 +360,11 @@
               <span class="news-source">{(i18n[lang] || i18n.es).source}: {item.sourceName}</span>
             </header>
             <h3>
-              <a href="/noticias/{item.slug}/">{item.title}</a>
+              <a href="/blog/{item.slug}/">{item.title}</a>
             </h3>
             <p class="news-excerpt">{item.excerpt}</p>
             <div class="news-card-footer">
-              <a class="read-more-btn" href="/noticias/{item.slug}/">
+              <a class="read-more-btn" href="/blog/{item.slug}/">
                 {(i18n[lang] || i18n.es).readMore}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
                   <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />

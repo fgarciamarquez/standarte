@@ -36,9 +36,23 @@ DirectorySlash Off
   RewriteCond %{REQUEST_URI} ^/ja/?$
   RewriteRule ^ ja.html [L]
 
-  # Redirigir /noticias o /noticias/ a noticias.html para evitar la colisión 403 con la carpeta /noticias/ de artículos
-  RewriteCond %{REQUEST_URI} ^/noticias/?$
-  RewriteRule ^ noticias.html [L]
+  # --- Migración /noticias -> /blog (301 para conservar el SEO de lo ya indexado) ---
+  # Artículos: todos los idiomas vivían bajo /noticias/<slug>
+  RewriteRule ^noticias/(.+?)/?$ /blog/$1 [R=301,L]
+  # Listado ES y variantes de idioma antiguas -> /blog equivalente
+  RewriteRule ^noticias/?$ /blog [R=301,L]
+  RewriteRule ^en/news/?$ /en/blog [R=301,L]
+  RewriteRule ^de/nachrichten/?$ /de/blog [R=301,L]
+  RewriteRule ^zh/xinwen/?$ /zh/blog [R=301,L]
+  RewriteRule ^hi/samachar/?$ /hi/blog [R=301,L]
+  RewriteRule ^pt/noticias/?$ /pt/blog [R=301,L]
+  RewriteRule ^fr/actualites/?$ /fr/blog [R=301,L]
+  RewriteRule ^it/notizie/?$ /it/blog [R=301,L]
+  RewriteRule ^ko/sosig/?$ /ko/blog [R=301,L]
+
+  # /blog (listado) -> blog.html, evitando la colisión 403 con la carpeta /blog/ de artículos
+  RewriteCond %{REQUEST_URI} ^/blog/?$
+  RewriteRule ^ blog.html [L]
 
   # /admin es territorio PHP (panel de correos): que use su index.php normal,
   # nunca el .html. Sin esta exclusión, el .html basura que el prerender pueda
