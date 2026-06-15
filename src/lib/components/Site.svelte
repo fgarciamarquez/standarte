@@ -698,7 +698,11 @@
 
 <svelte:window on:keydown={handleKeydown} on:scroll|passive={updateScrollState} />
 
-<header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services'}>
+<header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services'} class:hero-anim={section === 'home'}>
+  {#if section === 'home'}
+    <div class="hero-bg-layer hero-bg-a" aria-hidden="true"></div>
+    <div class="hero-bg-layer hero-bg-b" aria-hidden="true"></div>
+  {/if}
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">

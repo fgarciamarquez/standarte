@@ -76,6 +76,58 @@ p {
   background: url('/img/bg2.webp') fixed center center / cover no-repeat;
 }
 
+/* --- Home: fondo animado SIN vídeo. Dos capas (bg2 y hero-area) con paneo
+   vertical lento en sentidos opuestos que se intercambian fundiéndose a negro. --- */
+.site-header.hero-anim {
+  background: #000; /* base negra: lo que se ve durante la fusión entre imágenes */
+}
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.12); /* sobredimensión: el paneo de ±6% no descubre bordes */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+.hero-bg-a {
+  /* bg2 es el LCP y ya viene precargado como webp: usamos ese mismo fichero para
+     aprovechar la precarga (bg2.avif pesa casi igual, no compensa romper el preload). */
+  background-image: url('/img/bg2.webp');
+  animation: heroPanA 40s ease-in-out infinite;
+}
+.hero-bg-b {
+  background-image: url('/img/hero-area.webp');
+  background-image: image-set(url('/img/hero-area.avif') type('image/avif'), url('/img/hero-area.webp') type('image/webp'));
+  animation: heroPanB 40s ease-in-out infinite;
+}
+.site-header.hero-anim .hero { position: relative; z-index: 1; } /* contenido por encima de las capas */
+
+@keyframes heroPanA { /* bg2: visible al cargar; paneo hacia arriba; se funde a negro */
+  0%   { opacity: 1; transform: scale(1.12) translateY(0); }
+  40%  { opacity: 1; transform: scale(1.12) translateY(-6%); }
+  46%  { opacity: 0; transform: scale(1.12) translateY(-6.5%); }
+  94%  { opacity: 0; transform: scale(1.12) translateY(-0.4%); }
+  100% { opacity: 1; transform: scale(1.12) translateY(0); }
+}
+@keyframes heroPanB { /* hero-area: aparece en la 2ª mitad; paneo hacia abajo (opuesto) */
+  0%   { opacity: 0; transform: scale(1.12) translateY(6%); }
+  50%  { opacity: 0; transform: scale(1.12) translateY(6%); }
+  56%  { opacity: 1; transform: scale(1.12) translateY(6%); }
+  84%  { opacity: 1; transform: scale(1.12) translateY(0); }
+  90%  { opacity: 0; transform: scale(1.12) translateY(-0.5%); }
+  100% { opacity: 0; transform: scale(1.12) translateY(6%); }
+}
+/* Accesibilidad: sin movimiento => fondo estático bg2 */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-layer { animation: none !important; }
+  .hero-bg-a { opacity: 1; }
+  .hero-bg-b { display: none; }
+}
+
 .nav {
   position: fixed;
   z-index: 999999;
@@ -2807,6 +2859,13 @@ footer {
   }
   .site-header {
     background: url('/img/bg2-mobile.webp') scroll center center / cover no-repeat;
+  }
+  /* Home animado en móvil: capas con imágenes ligeras -mobile */
+  .site-header.hero-anim { background: #000; }
+  .hero-bg-a { background-image: url('/img/bg2-mobile.webp'); }
+  .hero-bg-b {
+    background-image: url('/img/hero-area-mobile.webp');
+    background-image: image-set(url('/img/hero-area-mobile.avif') type('image/avif'), url('/img/hero-area-mobile.webp') type('image/webp'));
   }
   .counters {
     background: url('/img/taller_standarte_sombra-mobile.webp') scroll center center / cover no-repeat;
