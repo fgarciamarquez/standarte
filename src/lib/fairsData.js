@@ -411,5 +411,19 @@ export const fairsData = [
     "slug": "feria-internacional-ganadera-zafra",
     "city": "Zafra",
     "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Web Summit Lisboa 2026",
+    "country": "es",
+    "slug": "web-summit-lisboa",
+    "city": "Lisboa",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Tektónica Lisboa 2026",
+    "country": "es",
+    "slug": "tektonica-lisboa",
+    "city": "Lisboa",
+    "sector": "Construcción e Infraestructuras"
   }
 ];
