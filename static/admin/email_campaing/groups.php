@@ -44,16 +44,24 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 if ($action === 'clicks_count') {
     // Contamos y listamos SOLO aperturas humanas (los escáneres se filtran).
     $res = groups_supabase_get('email_clicks?select=email,source,user_agent,clicked_at&order=clicked_at.desc&limit=1000');
-    $history = [];
+    $human = [];
     if (is_array($res['body'])) {
         foreach ($res['body'] as $c) {
-            if (gp_click_is_human($c)) $history[] = $c;
+            if (gp_click_is_human($c)) $human[] = $c;
         }
+    }
+    // Agrupar por email (vienen del más reciente al más antiguo): 1 entrada por visitante + nº de aperturas
+    $grouped = [];
+    foreach ($human as $c) {
+        $em = $c['email'];
+        if (!isset($grouped[$em])) $grouped[$em] = ['email' => $em, 'source' => $c['source'], 'clicked_at' => $c['clicked_at'], 'count' => 0];
+        $grouped[$em]['count']++;
     }
     echo json_encode([
         'status' => 'success',
-        'total' => count($history),
-        'history' => array_slice($history, 0, 50)
+        'total' => count($human),
+        'unique' => count($grouped),
+        'history' => array_slice(array_values($grouped), 0, 50)
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -297,6 +305,8 @@ function normalize_for_sort($str) {
 // (misma lógica que click_is_human de index.php)
 // ============================================================
 function gp_click_is_human($c) {
+    $email = isset($c['email']) ? trim($c['email']) : '';
+    if ($email === '' || strcasecmp($email, 'anonymous') === 0 || strpos($email, '@') === false) return false;
     $legit = array('email_campaing', 'main-cta-button', 'footer-contact', 'footer-web');
     $src = isset($c['source']) ? $c['source'] : '';
     if (!in_array($src, $legit, true)) return false;

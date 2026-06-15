@@ -79,6 +79,10 @@ allFiles.forEach(file => {
   if (skipImages && (relativePath.startsWith('img/') || relativePath.includes('/img/'))) {
     return;
   }
+  // NUNCA subir los logs de runtime: los genera el servidor; subirlos los sobrescribiría/borraría.
+  if (/email_campaing\/data\/(send-log|clicks|cron_status)\.json$/.test(relativePath)) {
+    return;
+  }
   filesToUpload.push({ file, relativePath });
 });
 

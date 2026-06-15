@@ -68,7 +68,9 @@
 
   // Prototipos 3D Carousel State
   let carouselIndex = 0;
-  let shuffledProjects = [...projects];
+  // Proyectos de Extremadura: son casos locales, NO van en el carrusel 3D genérico (prototipos-3d).
+  const CAROUSEL_EXCLUDE_LOCS = ['Don Benito', 'Badajoz', 'Zafra', 'Almendralejo'];
+  let shuffledProjects = projects.filter((p) => !CAROUSEL_EXCLUDE_LOCS.includes(p.location));
 
   // Carga por tramos: solo se renderizan/descargan las primeras 12 fichas; el resto
   // se descarga en grupos de 12 al pulsar el descargador circular del carrusel.
@@ -584,7 +586,7 @@
       }
       return arr;
     };
-    shuffledProjects = shuffleArray([...projects]);
+    shuffledProjects = shuffleArray(projects.filter((p) => !CAROUSEL_EXCLUDE_LOCS.includes(p.location)));
 
     updateScrollState();
     updateVisibleCount();

@@ -56,6 +56,9 @@ function campaign_is_logged_in()
  */
 function click_is_human($c)
 {
+    // El email debe ser identificable (ni 'anonymous' ni vacío ni sin @)
+    $email = isset($c['email']) ? trim($c['email']) : '';
+    if ($email === '' || strcasecmp($email, 'anonymous') === 0 || strpos($email, '@') === false) return false;
     $legit = array('email_campaing', 'main-cta-button', 'footer-contact', 'footer-web');
     $src = isset($c['source']) ? $c['source'] : '';
     if (!in_array($src, $legit, true)) return false;
@@ -92,14 +95,21 @@ function campaign_get_email_clicks()
     curl_close($ch);
 
     $all = json_decode($response, true);
-    $history = array();
+    $human = array();
     if (is_array($all) && !isset($all['code']) && !isset($all['message'])) {
         foreach ($all as $c) {
-            if (click_is_human($c)) $history[] = $c;
+            if (click_is_human($c)) $human[] = $c;
         }
     }
-    $count = count($history);
-    $history = array_slice($history, 0, 50);
+    // Agrupar por email: 1 entrada por visitante + nº de aperturas
+    $grouped = array();
+    foreach ($human as $c) {
+        $em = $c['email'];
+        if (!isset($grouped[$em])) $grouped[$em] = array('email' => $em, 'source' => $c['source'], 'clicked_at' => $c['clicked_at'], 'count' => 0);
+        $grouped[$em]['count']++;
+    }
+    $count = count($human);
+    $history = array_slice(array_values($grouped), 0, 50);
 
     // Fallback if supabase fails
     if ($count === 0 && empty($history)) {
@@ -592,7 +602,7 @@ if ($isCronEmpty) {
             <?php endif; ?>
             <?php foreach ($clicksHistory as $click): ?>
               <p>
-                <b><?php echo campaign_escape($click['email']); ?></b> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
+                <b><?php echo campaign_escape($click['email']); ?></b><?php if (!empty($click['count']) && $click['count'] > 1): ?> <span style="color:#b89400;font-weight:700;">(<?php echo (int)$click['count']; ?>)</span><?php endif; ?> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
                 <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['clicked_at']))); ?></span>
               </p>
             <?php endforeach; ?>
@@ -601,12 +611,22 @@ if ($isCronEmpty) {
       </details>
       <details class="send-log">
         <summary>
-          <h2>Registro de envíos locales</h2>
+          <h2>Registro de envíos (autónomo + locales)</h2>
           <span class="details-icon">▼</span>
         </summary>
         <div style="margin-top: 10px;">
+          <?php if (!empty($cronStatus)): ?>
+            <p>
+              <b style="color:<?php echo (isset($cronStatus['status']) && $cronStatus['status'] === 'success') ? '#27ae60' : '#c0392b'; ?>;">Envío autónomo · última ejecución</b><br>
+              <?php echo campaign_escape(isset($cronStatus['last_run']) ? date('d/m/Y H:i:s', strtotime($cronStatus['last_run'])) : '—'); ?>
+              · estado: <?php echo campaign_escape(isset($cronStatus['status']) ? strtoupper($cronStatus['status']) : '—'); ?><?php if (isset($cronStatus['sent_count'])): ?> · enviados: <b><?php echo (int)$cronStatus['sent_count']; ?></b><?php endif; ?>
+              <?php if (!empty($cronStatus['message'])): ?><br><span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape($cronStatus['message']); ?></span><?php endif; ?>
+            </p>
+          <?php else: ?>
+            <p><b style="color:#c0392b;">Envío autónomo: sin registro</b><br><span style="font-size:0.85rem;color:#888;">No hay datos del cron (cron_status.json). Revisa que el workflow esté activo en GitHub Actions.</span></p>
+          <?php endif; ?>
           <?php if (!$sendLog): ?>
-            <p style="font-size:0.85rem;color:#888;">No hay envíos registrados todavía.</p>
+            <p style="font-size:0.85rem;color:#888;">No hay envíos locales (manuales) registrados todavía.</p>
           <?php endif; ?>
           <?php foreach ($sendLog as $entry): ?>
             <p>
@@ -892,7 +912,8 @@ if ($isCronEmpty) {
                 list.innerHTML = data.history.map(function(c){
                   var d = new Date(c.clicked_at);
                   var ds = pad(d.getDate())+'/'+pad(d.getMonth()+1)+'/'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
-                  return '<p><b>'+escHtml(c.email)+'</b> (desde <i>'+escHtml(c.source)+'</i>)<br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
+                  var cnt = (c.count && c.count > 1) ? ' <span style="color:#b89400;font-weight:700;">('+c.count+')</span>' : '';
+                  return '<p><b>'+escHtml(c.email)+'</b>'+cnt+' (desde <i>'+escHtml(c.source)+'</i>)<br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
                 }).join('');
               }
             }
