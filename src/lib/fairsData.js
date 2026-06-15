@@ -425,5 +425,47 @@ export const fairsData = [
     "slug": "tektonica-lisboa",
     "city": "Lisboa",
     "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "BIEMH Bilbao 2026",
+    "country": "es",
+    "slug": "biemh-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Subcontratación Bilbao 2026",
+    "country": "es",
+    "slug": "subcontratacion-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Addit3D Bilbao 2026",
+    "country": "es",
+    "slug": "addit3d-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "BeDIGITAL Bilbao 2026",
+    "country": "es",
+    "slug": "bedigital-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Pumps & Valves Bilbao 2026",
+    "country": "es",
+    "slug": "pumps-valves-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Maintenance Bilbao 2026",
+    "country": "es",
+    "slug": "maintenance-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
   }
 ];
