@@ -80,6 +80,17 @@
   function revealMoreCarousel() {
     carouselRevealed = Math.min(carouselRevealed + CAROUSEL_CHUNK, shuffledProjects.length);
   }
+  // Blindaje anti-imagen-rota: si el thumb falla, cae a la imagen completa; si esa también, oculta la tarjeta.
+  function handleThumbError(e, project) {
+    const img = e.currentTarget;
+    if (!img.dataset.fallback) {
+      img.dataset.fallback = '1';
+      img.src = project.image; // intentar la imagen completa (sin -thumb)
+    } else {
+      const card = img.closest('.carousel-card');
+      if (card) card.style.display = 'none';
+    }
+  }
 
   let visibleCount = 3;
 
@@ -940,7 +951,8 @@
                 <div class="carousel-card-inner">
                   <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-img-link" tabindex="-1" aria-hidden="true">
                     <div class="carousel-img-wrap">
-                      <img src={project.image.replace('.avif', '-thumb.avif')} alt="" loading="lazy" />
+                      {#if project.location}<span class="carousel-loc-badge">{project.location}</span>{/if}
+                      <img src={project.image.replace('.avif', '-thumb.avif')} alt="" loading="lazy" on:error={(e) => handleThumbError(e, project)} />
                     </div>
                   </a>
                   <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-overlay" tabindex="-1" aria-hidden="true">
@@ -950,7 +962,6 @@
                     <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-caption-link" title={getProjectTitle(project)}>
                       <h3>{getProjectTitle(project)}</h3>
                     </a>
-                    <span class="location">{project.location}</span>
                   </div>
                 </div>
               </article>

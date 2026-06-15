@@ -2151,12 +2151,24 @@ footer {
   font-family: 'Glegoo', serif;
 }
 
-.carousel-caption .location {
-  font-size: 16px;
+/* Etiqueta de ubicación sobre la imagen (arriba-izquierda), no debajo del título (evita redundancia) */
+.carousel-loc-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.62);
   color: var(--gold);
+  font-family: 'Inconsolata', monospace;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
 }
 
 .carousel-nav {
