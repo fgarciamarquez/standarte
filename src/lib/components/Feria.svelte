@@ -203,14 +203,14 @@
   // Mapea la ciudad de la feria a la sección-pilar (las que no tienen pilar propio cuelgan del más cercano).
   const CITY_TO_PILLAR = {
     'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa',
-    'Málaga': 'malaga', 'Badajoz': 'badajoz', 'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real',
+    'Málaga': 'malaga', 'Badajoz': 'badajoz', 'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real', 'Zaragoza': 'zaragoza',
     'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
     'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz'
   };
   // Ciudad mostrada para el enlace al pilar (la del pilar, no la de la feria, para que el anchor coincida con el destino).
   const PILLAR_CITY = {
     madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', lisboa: 'Lisboa', malaga: 'Málaga',
-    badajoz: 'Badajoz', sevilla: 'Sevilla', ciudad_real: 'Ciudad Real',
+    badajoz: 'Badajoz', sevilla: 'Sevilla', ciudad_real: 'Ciudad Real', zaragoza: 'Zaragoza',
     montaje_don_benito: 'Don Benito', montaje_zafra: 'Zafra'
   };
   // Región para agrupar ferias hermanas (define la densidad del clúster; Extremadura es la prioridad).

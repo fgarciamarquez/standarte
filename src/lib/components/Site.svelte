@@ -153,7 +153,7 @@
     ko: 'ko-KR',
     ja: 'ja-JP'
   };
-  const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz', 'sevilla', 'ciudad_real'];
+  const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
   const cookieSettingsLabels = {
     es: 'Configurar cookies',
     en: 'Cookie settings',
@@ -240,7 +240,7 @@
   const SECTION_REGION = {
     badajoz: 'extremadura', montaje_zafra: 'extremadura', montaje_don_benito: 'extremadura', montaje_badajoz: 'extremadura',
     madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco',
-    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal'
+    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', zaragoza: 'aragon'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -251,7 +251,8 @@
     extremadura: ['Bellota', 'Intermaher', 'Elumatec'], // herramientas agrícolas, maquinaria pesada, industrial
     portugal: ['Philips', 'Tecnalia', 'Pharmatechnik'], // tech+salud, innovación, farma — perfil de los congresos de Lisboa
     paisvasco: ['Intermaher', 'Bellota', 'Elumatec'], // maquinaria pesada (BIEMH), herramientas (Ferroforma), industrial — perfil de las ferias del BEC Bilbao
-    madrid: ['Pescanova', 'Philips', 'Fanuc'] // alimentación (Fruit Attraction), tecnología/salud (Madrid Tech Show), robótica — perfil multisectorial de IFEMA
+    madrid: ['Pescanova', 'Philips', 'Fanuc'], // alimentación (Fruit Attraction), tecnología/salud (Madrid Tech Show), robótica — perfil multisectorial de IFEMA
+    aragon: ['Intermaher', 'Zayer', 'Bellota'] // maquinaria pesada/agrícola e industrial — perfil de FIMA y SMOPYC en la Feria de Zaragoza
   };
   const cityFairsLabel = {
     es: 'Ferias de la zona en las que diseñamos y montamos stands',

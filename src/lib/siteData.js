@@ -30,6 +30,7 @@ export const routes = {
     badajoz: 'construccion_stands_badajoz',
     sevilla: 'construccion_stands_sevilla',
     ciudad_real: 'construccion_stands_ciudad_real',
+    zaragoza: 'construccion_stands_zaragoza',
     montaje_zafra: 'montaje_stand_zafra',
     montaje_don_benito: 'montaje_stand_don_benito',
     montaje_badajoz: 'montaje_stand_badajoz',
@@ -51,6 +52,7 @@ export const routes = {
     badajoz: 'stand_construction_badajoz',
     sevilla: 'stand_construction_seville',
     ciudad_real: 'stand_construction_ciudad_real',
+    zaragoza: 'stand_construction_zaragoza',
     montaje_zafra: 'exhibition_stand_assembly_zafra',
     montaje_don_benito: 'exhibition_stand_assembly_don_benito',
     montaje_badajoz: 'exhibition_stand_assembly_badajoz',
@@ -72,6 +74,7 @@ export const routes = {
     badajoz: 'messestandbau_badajoz',
     sevilla: 'messestandbau_sevilla',
     ciudad_real: 'messestandbau_ciudad_real',
+    zaragoza: 'messestandbau_zaragoza',
     montaje_zafra: 'messestandmontage_zafra',
     montaje_don_benito: 'messestandmontage_don_benito',
     montaje_badajoz: 'messestandmontage_badajoz',
@@ -93,6 +96,7 @@ export const routes = {
     badajoz: 'badajoz_zhantai_dajian',
     sevilla: 'sevilla_zhantai_dajian',
     ciudad_real: 'ciudad_real_zhantai_dajian',
+    zaragoza: 'zaragoza_zhantai_dajian',
     montaje_zafra: 'zafra_zhantai_dajian',
     montaje_don_benito: 'don_benito_zhantai_dajian',
     montaje_badajoz: 'badajoz_zhantai_dajian_montaje',
@@ -114,6 +118,7 @@ export const routes = {
     badajoz: 'badajoz_stand_nirman',
     sevilla: 'sevilla_stand_nirman',
     ciudad_real: 'ciudad_real_stand_nirman',
+    zaragoza: 'zaragoza_stand_nirman',
     montaje_zafra: 'zafra_stand_nirman',
     montaje_don_benito: 'don_benito_stand_nirman',
     montaje_badajoz: 'badajoz_stand_nirman_montaje',
@@ -135,6 +140,7 @@ export const routes = {
     badajoz: 'construcao_stands_badajoz',
     sevilla: 'construcao_stands_sevilla',
     ciudad_real: 'construcao_stands_ciudad_real',
+    zaragoza: 'construcao_stands_zaragoza',
     montaje_zafra: 'montagem_stand_zafra',
     montaje_don_benito: 'montagem_stand_don_benito',
     montaje_badajoz: 'montagem_stand_badajoz',
@@ -156,6 +162,7 @@ export const routes = {
     badajoz: 'construction_stands_badajoz',
     sevilla: 'construction_stands_seville',
     ciudad_real: 'construction_stands_ciudad_real',
+    zaragoza: 'construction_stands_zaragoza',
     montaje_zafra: 'montage_stands_zafra',
     montaje_don_benito: 'montage_stands_don_benito',
     montaje_badajoz: 'montage_stands_badajoz',
@@ -177,6 +184,7 @@ export const routes = {
     badajoz: 'allestimenti_fieristici_badajoz',
     sevilla: 'allestimenti_fieristici_sevilla',
     ciudad_real: 'allestimenti_fieristici_ciudad_real',
+    zaragoza: 'allestimenti_fieristici_zaragoza',
     montaje_zafra: 'allestimento_stand_zafra',
     montaje_don_benito: 'allestimento_stand_don_benito',
     montaje_badajoz: 'allestimento_stand_badajoz',
@@ -198,6 +206,7 @@ export const routes = {
     badajoz: 'badajoz-bujeu-jejak',
     sevilla: 'sevilla-bujeu-jejak',
     ciudad_real: 'ciudad_real-bujeu-jejak',
+    zaragoza: 'zaragoza-bujeu-jejak',
     montaje_zafra: 'zafra-bujeu-jejak',
     montaje_don_benito: 'don-benito-bujeu-jejak',
     montaje_badajoz: 'badajoz-bujeu-jejak-montaje',
@@ -219,6 +228,7 @@ export const routes = {
     badajoz: 'バダホス展示会ブース',
     sevilla: 'セビリア展示会ブース',
     ciudad_real: 'シウダーレアル展示会ブース',
+    zaragoza: 'サラゴサ展示会ブース',
     montaje_zafra: 'サフラ展示会ブース設営',
     montaje_don_benito: 'ドンベニート展示会ブース設営',
     montaje_badajoz: 'バダホス展示会ブース設営',
@@ -1435,6 +1445,51 @@ export const cityData = {
       ko: {
         intro: '시우다드레알은 스페인 중부에서 가장 현대적이고 빠르게 성장하는 회의 및 전시 인프라 중 하나인 IFEDI 전시장을 보유하고 있습니다. 20년의 경험과 최고 수준의 자체 공장을 바탕으로 Standarte는 IFEDI에서 부스의 기술적 디자인, 생산, 설치 및 조정을 담당합니다.',
         detail: '우리 팀은 기업 브랜드와 크리에이티브 에이전시에게 고급 마감 처리를 통한 강력하고 적시의 실행을 보장합니다.'
+      }
+    }
+  },
+  zaragoza: {
+    city: { es: 'Zaragoza', en: 'Zaragoza', de: 'Zaragoza', zh: '萨拉戈萨', hi: 'ज़ारागोज़ा', pt: 'Saragoça', fr: 'Saragosse', it: 'Saragozza', ko: '사라고사', ja: 'サラゴサ' },
+    content: {
+      ja: {
+        intro: 'サラゴサはスペイン有数の見本市・物流拠点であり、サラゴサ見本市場（Feria de Zaragoza）は農業機械の国際見本市FIMAや建設・鉱山機械のSMOPYCといった世界的な産業見本市を開催しています。20年の経験と自社工房を持つStandarteが、サラゴサ見本市場でのブースの設計・製作・設営を担います。',
+        detail: '輸送、自社チームによる設営、会場の技術手続きまで一貫して管理し、海外の機械メーカーや出展企業に堅実かつ時間厳守の施工をお約束します。'
+      },
+      es: {
+        intro: 'Zaragoza es uno de los grandes nodos feriales y logísticos de España: la Feria de Zaragoza acoge certámenes industriales de referencia internacional como FIMA (maquinaria agrícola) y SMOPYC (maquinaria de obra pública y minería). Con 20 años de experiencia y taller propio, Standarte diseña, fabrica y monta stands de alta carpintería en la Feria de Zaragoza.',
+        detail: 'Asumimos el transporte, el montaje con equipo propio y toda la tramitación técnica del recinto, garantizando a fabricantes y expositores internacionales una ejecución robusta y puntual.'
+      },
+      en: {
+        intro: 'Zaragoza is one of Spain’s major fair and logistics hubs: the Feria de Zaragoza hosts world-class industrial shows such as FIMA (agricultural machinery) and SMOPYC (construction and mining machinery). With 20 years of experience and our own workshop, Standarte designs, manufactures and builds premium carpentry stands at the Feria de Zaragoza.',
+        detail: 'We handle transport, assembly with our own crew and all the venue’s technical paperwork, guaranteeing international manufacturers and exhibitors a robust, on-time execution.'
+      },
+      de: {
+        intro: 'Saragossa ist einer der großen Messe- und Logistikknotenpunkte Spaniens: Die Feria de Zaragoza beherbergt weltweit führende Industriemessen wie FIMA (Landmaschinen) und SMOPYC (Bau- und Bergbaumaschinen). Mit 20 Jahren Erfahrung und eigener Werkstatt entwirft, fertigt und baut Standarte hochwertige Tischlerstände auf der Feria de Zaragoza.',
+        detail: 'Wir übernehmen Transport, Montage mit eigenem Team und die gesamte technische Abwicklung mit dem Gelände und garantieren internationalen Herstellern und Ausstellern eine solide, pünktliche Ausführung.'
+      },
+      pt: {
+        intro: 'Saragoça é um dos grandes polos de feiras e logística de Espanha: a Feira de Saragoça acolhe certames industriais de referência internacional como a FIMA (maquinaria agrícola) e a SMOPYC (maquinaria de obras públicas e mineração). Com 20 anos de experiência e oficina própria, a Standarte projeta, fabrica e monta stands de alta carpintaria na Feira de Saragoça.',
+        detail: 'Tratamos do transporte, da montagem com equipa própria e de toda a tramitação técnica do recinto, garantindo a fabricantes e expositores internacionais uma execução robusta e pontual.'
+      },
+      fr: {
+        intro: 'Saragosse est l’un des grands pôles de salons et de logistique d’Espagne : la Feria de Zaragoza accueille des salons industriels de référence internationale comme la FIMA (machines agricoles) et la SMOPYC (engins de travaux publics et de mines). Avec 20 ans d’expérience et un atelier propre, Standarte conçoit, fabrique et monte des stands de haute menuiserie à la Feria de Zaragoza.',
+        detail: 'Nous prenons en charge le transport, le montage avec notre propre équipe et toutes les démarches techniques du site, garantissant aux fabricants et exposants internationaux une exécution robuste et ponctuelle.'
+      },
+      it: {
+        intro: 'Saragozza è uno dei grandi poli fieristici e logistici della Spagna: la Feria de Zaragoza ospita rassegne industriali di riferimento internazionale come FIMA (macchine agricole) e SMOPYC (macchine per opere pubbliche e minerarie). Con 20 anni di esperienza e officina propria, Standarte progetta, produce e monta stand di alta falegnameria alla Feria de Zaragoza.',
+        detail: 'Gestiamo il trasporto, il montaggio con squadra propria e tutte le pratiche tecniche del quartiere fieristico, garantendo a produttori ed espositori internazionali un’esecuzione solida e puntuale.'
+      },
+      zh: {
+        intro: '萨拉戈萨是西班牙主要的会展与物流枢纽之一：萨拉戈萨展览馆（Feria de Zaragoza）举办具有国际影响力的工业展会，如FIMA（农业机械）和SMOPYC（工程与采矿机械）。凭借20年经验和自有工厂，Standarte在萨拉戈萨展览馆设计、制造并搭建高端木工展台。',
+        detail: '我们负责运输、自有团队搭建以及场馆的全部技术手续，为国际制造商和参展商保证稳健、准时的执行。'
+      },
+      hi: {
+        intro: 'ज़ारागोज़ा स्पेन के प्रमुख मेला और लॉजिस्टिक केंद्रों में से एक है: फेरिया दे ज़ारागोज़ा FIMA (कृषि मशीनरी) और SMOPYC (निर्माण और खनन मशीनरी) जैसे अंतर्राष्ट्रीय स्तर के औद्योगिक आयोजनों की मेज़बानी करता है। 20 वर्षों के अनुभव और अपनी कार्यशाला के साथ, Standarte फेरिया दे ज़ारागोज़ा में उच्च दर्जे की बढ़ईगीरी वाले स्टैंड डिज़ाइन, निर्माण और स्थापित करता है।',
+        detail: 'हम परिवहन, अपनी टीम से असेंबली और परिसर की सभी तकनीकी प्रक्रियाओं को संभालते हैं, जिससे अंतर्राष्ट्रीय निर्माताओं और प्रदर्शकों को एक मजबूत और समयबद्ध निष्पादन की गारंटी मिलती है।'
+      },
+      ko: {
+        intro: '사라고사는 스페인의 주요 전시·물류 거점 중 하나로, 페리아 데 사라고사(Feria de Zaragoza)는 FIMA(농업 기계)와 SMOPYC(건설·광산 기계)와 같은 세계적인 산업 박람회를 개최합니다. 20년의 경험과 자체 작업장을 갖춘 Standarte는 페리아 데 사라고사에서 고급 목공 부스를 설계·제작·시공합니다.',
+        detail: '운송, 자체 인력 시공, 전시장의 모든 기술 행정 절차를 담당하여 국제 제조업체와 출품업체에 견고하고 정시의 실행을 보장합니다.'
       }
     }
   },

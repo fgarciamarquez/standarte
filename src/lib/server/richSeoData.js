@@ -2322,6 +2322,258 @@ export const richSeoData = {
       ]
     }
   },
+  "zaragoza": {
+    "es": {
+      "breadcrumb": "Zaragoza",
+      "title": "Construcción de Stands en Zaragoza | Feria de Zaragoza | Standarte",
+      "h1": "Diseño y Construcción de Stands en la Feria de Zaragoza",
+      "introText": "con más de 20 años de experiencia y taller propio, diseñamos, fabricamos y montamos stands de alta carpintería en la Feria de Zaragoza. Trabajamos llave en mano para expositores internacionales en FIMA y SMOPYC, gestionando la importación temporal (cuaderno ATA), el transporte transfronterizo y toda la tramitación del recinto en su idioma.",
+      "body": "\n        <h2>Líderes en el Recinto de la Feria de Zaragoza</h2>\n        <p>Zaragoza es uno de los grandes nodos feriales, industriales y logísticos de España, en el eje Madrid-Barcelona-Bilbao. La <b>Feria de Zaragoza</b> acoge certámenes de referencia mundial donde la solidez constructiva y la capacidad para integrar maquinaria pesada son imprescindibles: <b>FIMA</b>, una de las mayores ferias de maquinaria agrícola del mundo; <b>SMOPYC</b>, salón internacional de maquinaria de obras públicas, construcción y minería; y citas industriales y de automoción del calendario aragonés. En Standarte diseñamos y fabricamos stands de alta carpintería que transmiten potencia técnica y autoridad de marca.</p>\n        <h2>Expositor Internacional: Stand Llave en Mano en Zaragoza</h2>\n        <p>FIMA y SMOPYC reúnen a fabricantes de maquinaria de toda Europa, América y Asia. Para el expositor extranjero sin sede en España, Standarte trabaja 100% llave en mano: diseñamos y producimos el stand en nuestro taller, gestionamos la importación temporal de su maquinaria (cuaderno ATA) y el transporte hasta Zaragoza, e integramos las tomas trifásicas reforzadas, el aire comprimido y toda la tramitación técnica del recinto. Coordinamos el proyecto en inglés y otros idiomas de principio a fin.</p>\n        <h2>Por qué Elegir a Standarte en Zaragoza</h2>\n        <p>Trabajar con Standarte le garantiza un servicio premium sin intermediarios ni sobrecostes de reventa. Diseñamos su stand con software 3D de alta fidelidad, de modo que el prototipo aprobado coincida al milímetro con el stand real. Fabricamos toda la carpintería, rotulación y mobiliario en nuestros talleres propios y nos encargamos del transporte, el montaje con equipo propio y el desmontaje, optimizando la logística en el valle del Ebro.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Somos un fabricante extranjero de maquinaria sin sede en España. ¿Pueden encargarse de todo nuestro stand en FIMA o SMOPYC?",
+          "a": "Sí. Standarte trabaja totalmente llave en mano para expositores internacionales en la Feria de Zaragoza: diseñamos y fabricamos el stand en nuestros talleres, gestionamos la importación temporal de su maquinaria (cuaderno ATA), el transporte hasta Zaragoza y todos los trámites del recinto —tomas trifásicas, aire comprimido, boletín eléctrico y prevención de riesgos—. Usted solo llega a un stand terminado, y coordinamos en inglés y otros idiomas."
+        },
+        {
+          "q": "¿Cuánto cuesta un stand a medida en la Feria de Zaragoza?",
+          "a": "El precio depende de la superficie, el diseño y los materiales. Tras una consulta inicial elaboramos un presupuesto cerrado sin sobrecostes, gestionando directamente todo el proceso."
+        },
+        {
+          "q": "¿Os encargáis de las validaciones técnicas del recinto?",
+          "a": "Sí. Gestionamos los boletines eléctricos, las tomas trifásicas y de aire comprimido para maquinaria, y las certificaciones de prevención de riesgos e ignifugación según la normativa de la Feria de Zaragoza."
+        },
+        {
+          "q": "¿Ofrecéis diseño 3D antes de fabricar?",
+          "a": "Sí. Elaboramos un diseño 3D personalizado 100% fiel al resultado final, que el cliente puede revisar antes de comenzar la fabricación."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Zaragoza",
+      "title": "Exhibition Stand Construction in Zaragoza | Feria de Zaragoza | Standarte",
+      "h1": "Custom Exhibition Stand Design and Construction at Feria de Zaragoza",
+      "introText": "with more than 20 years of experience and our own workshop, we design, manufacture and build premium carpentry stands at the Feria de Zaragoza. We work fully turnkey for international exhibitors at FIMA and SMOPYC, handling temporary importation (ATA Carnet), cross-border freight and every venue formality in your language.",
+      "body": "\n        <h2>Proven Leaders at the Feria de Zaragoza</h2>\n        <p>Zaragoza is one of Spain's major fair, industrial and logistics hubs, on the Madrid-Barcelona-Bilbao axis. The <b>Feria de Zaragoza</b> hosts world-class shows where structural solidity and the capacity to host heavy machinery are mandatory: <b>FIMA</b>, one of the world's largest agricultural machinery fairs; <b>SMOPYC</b>, the international public works, construction and mining machinery show; plus key industrial and automotive events. At Standarte we design and build premium carpentry stands that convey technical strength and brand authority.</p>\n        <h2>International Exhibitor: Turnkey Stand in Zaragoza</h2>\n        <p>FIMA and SMOPYC gather machinery manufacturers from across Europe, the Americas and Asia. For the foreign exhibitor with no presence in Spain, Standarte works 100% turnkey: we design and produce the stand in our workshop, manage the temporary importation of your machinery (ATA Carnet) and freight to Zaragoza, and integrate reinforced three-phase power, compressed air and all the venue's technical paperwork. We coordinate the project in English and other languages end to end.</p>\n        <h2>Why Choose Standarte in Zaragoza</h2>\n        <p>Partnering with Standarte guarantees a premium service free of middle-men and resale markups. We design your stand with high-fidelity 3D software, so the approved prototype matches the real stand to the millimetre. We manufacture all carpentry, signage and furniture in our own workshops and handle transport, assembly with our own crew and dismantling, optimising logistics in the Ebro valley.</p>\n      ",
+      "faqs": [
+        {
+          "q": "We are a foreign machinery manufacturer with no presence in Spain. Can you handle our entire stand at FIMA or SMOPYC?",
+          "a": "Yes. Standarte works fully turnkey for international exhibitors at the Feria de Zaragoza: we design and build the stand in our own workshops, manage the temporary importation of your machinery (ATA Carnet), freight to Zaragoza and every venue formality — three-phase power, compressed air, electrical certificate and risk-prevention. You only arrive at a finished stand, and we coordinate in English and other languages."
+        },
+        {
+          "q": "How much does a custom stand at the Feria de Zaragoza cost?",
+          "a": "The price depends on the floor area, design and materials. After an initial consultation we provide a fixed budget with no hidden costs, directly managing the whole process."
+        },
+        {
+          "q": "Do you handle the venue's technical validations?",
+          "a": "Yes. We manage electrical certificates, three-phase and compressed-air supplies for machinery, and risk-prevention and fire-retardant certifications under Feria de Zaragoza regulations."
+        },
+        {
+          "q": "Do you provide 3D design before manufacturing?",
+          "a": "Yes. We produce a custom 3D design that is 100% faithful to the final result, which the client can review before manufacturing begins."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Saragossa",
+      "title": "Messestandbau in Saragossa | Feria de Zaragoza | Standarte",
+      "h1": "Design und Bau von Messeständen auf der Feria de Zaragoza",
+      "introText": "Mit über 20 Jahren Erfahrung und eigener Werkstatt entwerfen, fertigen und montieren wir hochwertige Tischlerstände auf der Feria de Zaragoza. Wir arbeiten schlüsselfertig für internationale Aussteller auf der FIMA und SMOPYC und übernehmen die vorübergehende Einfuhr (Carnet ATA), den grenzüberschreitenden Transport und sämtliche Formalitäten des Geländes in Ihrer Sprache.",
+      "body": "\n        <h2>Führend auf dem Gelände der Feria de Zaragoza</h2>\n        <p>Saragossa ist einer der großen Messe-, Industrie- und Logistikknotenpunkte Spaniens, auf der Achse Madrid-Barcelona-Bilbao. Die <b>Feria de Zaragoza</b> beherbergt weltbekannte Messen, bei denen bauliche Solidität und die Aufnahme schwerer Maschinen Pflicht sind: <b>FIMA</b>, eine der größten Landmaschinenmessen der Welt; <b>SMOPYC</b>, die internationale Messe für Bau-, Tiefbau- und Bergbaumaschinen; sowie wichtige Industrie- und Automobilmessen. Bei Standarte entwerfen und bauen wir hochwertige Tischlerstände, die technische Stärke und Markenautorität vermitteln.</p>\n        <h2>Internationaler Aussteller: Schlüsselfertiger Stand in Saragossa</h2>\n        <p>FIMA und SMOPYC versammeln Maschinenhersteller aus ganz Europa, Amerika und Asien. Für den ausländischen Aussteller ohne Niederlassung in Spanien arbeitet Standarte zu 100 % schlüsselfertig: Wir entwerfen und produzieren den Stand in unserer Werkstatt, übernehmen die vorübergehende Einfuhr Ihrer Maschinen (Carnet ATA) und den Transport nach Saragossa und integrieren verstärkte Drehstromanschlüsse, Druckluft und die gesamte technische Abwicklung des Geländes. Wir koordinieren das Projekt durchgehend auf Englisch und in anderen Sprachen.</p>\n        <h2>Warum Standarte in Saragossa wählen</h2>\n        <p>Die Zusammenarbeit mit Standarte garantiert einen Premium-Service ohne Vermittler und Wiederverkaufsaufschläge. Wir entwerfen Ihren Stand mit hochauflösender 3D-Software, sodass der freigegebene Prototyp millimetergenau dem echten Stand entspricht. Wir fertigen die gesamte Tischlerei, Beschriftung und Möbel in unseren eigenen Werkstätten und kümmern uns um Transport, Montage mit eigenem Team und Abbau.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Wir sind ein ausländischer Maschinenhersteller ohne Niederlassung in Spanien. Können Sie unseren gesamten Stand auf der FIMA oder SMOPYC übernehmen?",
+          "a": "Ja. Standarte arbeitet für internationale Aussteller auf der Feria de Zaragoza vollständig schlüsselfertig: Wir entwerfen und bauen den Stand in unseren Werkstätten, übernehmen die vorübergehende Einfuhr Ihrer Maschinen (Carnet ATA), den Transport nach Saragossa und sämtliche Formalitäten des Geländes – Drehstrom, Druckluft, Elektrozertifikat und Arbeitsschutz. Sie kommen nur zu einem fertigen Stand, und wir koordinieren auf Englisch und in anderen Sprachen."
+        },
+        {
+          "q": "Wie viel kostet ein maßgeschneiderter Stand auf der Feria de Zaragoza?",
+          "a": "Der Preis hängt von Fläche, Design und Materialien ab. Nach einer ersten Beratung erstellen wir ein Festpreisangebot ohne versteckte Kosten und betreuen den gesamten Prozess direkt."
+        },
+        {
+          "q": "Kümmern Sie sich um die technischen Abnahmen des Geländes?",
+          "a": "Ja. Wir verwalten Elektrozertifikate, Drehstrom- und Druckluftanschlüsse für Maschinen sowie Arbeitsschutz- und Brandschutzzertifikate gemäß den Vorschriften der Feria de Zaragoza."
+        },
+        {
+          "q": "Bieten Sie 3D-Design vor der Fertigung an?",
+          "a": "Ja. Wir erstellen ein maßgeschneidertes 3D-Design, das zu 100 % dem Endergebnis entspricht und das der Kunde vor Produktionsbeginn prüfen kann."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Saragosse",
+      "title": "Construction de stands à Saragosse | Feria de Zaragoza | Standarte",
+      "h1": "Conception et Construction de Stands à la Feria de Zaragoza",
+      "introText": "Avec plus de 20 ans d'expérience et un atelier propre, nous concevons, fabriquons et montons des stands de haute menuiserie à la Feria de Zaragoza. Nous travaillons clé en main pour les exposants internationaux à la FIMA et à la SMOPYC, en gérant l'importation temporaire (carnet ATA), le transport transfrontalier et toutes les formalités du site dans votre langue.",
+      "body": "\n        <h2>Leaders au Parc des Expositions de Saragosse</h2>\n        <p>Saragosse est l'un des grands pôles de salons, industriels et logistiques d'Espagne, sur l'axe Madrid-Barcelone-Bilbao. La <b>Feria de Zaragoza</b> accueille des salons de dimension mondiale où la solidité constructive et la capacité à accueillir des machines lourdes sont obligatoires : <b>FIMA</b>, l'un des plus grands salons de machines agricoles au monde ; <b>SMOPYC</b>, le salon international des engins de travaux publics, de construction et de mines ; ainsi que des salons industriels et automobiles. Chez Standarte, nous concevons et construisons des stands de haute menuiserie qui transmettent puissance technique et autorité de marque.</p>\n        <h2>Exposant International : Stand Clé en Main à Saragosse</h2>\n        <p>La FIMA et la SMOPYC réunissent des fabricants de machines de toute l'Europe, des Amériques et d'Asie. Pour l'exposant étranger sans présence en Espagne, Standarte travaille 100 % clé en main : nous concevons et produisons le stand dans notre atelier, gérons l'importation temporaire de vos machines (carnet ATA) et le transport jusqu'à Saragosse, et intégrons les prises triphasées renforcées, l'air comprimé et toutes les démarches techniques du site. Nous coordonnons le projet en anglais et dans d'autres langues de bout en bout.</p>\n        <h2>Pourquoi Choisir Standarte à Saragosse</h2>\n        <p>Travailler avec Standarte vous garantit un service premium sans intermédiaires ni surcoûts de revente. Nous concevons votre stand avec un logiciel 3D haute fidélité, afin que le prototype validé corresponde au millimètre au stand réel. Nous fabriquons toute la menuiserie, la signalétique et le mobilier dans nos propres ateliers et nous occupons du transport, du montage avec notre équipe et du démontage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Nous sommes un fabricant étranger de machines sans présence en Espagne. Pouvez-vous gérer la totalité de notre stand à la FIMA ou à la SMOPYC ?",
+          "a": "Oui. Standarte travaille entièrement clé en main pour les exposants internationaux à la Feria de Zaragoza : nous concevons et fabriquons le stand dans nos ateliers, gérons l'importation temporaire de vos machines (carnet ATA), le transport jusqu'à Saragosse et toutes les formalités du site — triphasé, air comprimé, bulletin électrique et prévention des risques. Vous n'arrivez qu'à un stand terminé, et nous coordonnons en anglais et dans d'autres langues."
+        },
+        {
+          "q": "Combien coûte un stand sur mesure à la Feria de Zaragoza ?",
+          "a": "Le prix dépend de la surface, du design et des matériaux. Après une première consultation, nous établissons un devis ferme sans coûts cachés, en gérant directement tout le processus."
+        },
+        {
+          "q": "Vous occupez-vous des validations techniques du site ?",
+          "a": "Oui. Nous gérons les bulletins électriques, les prises triphasées et d'air comprimé pour les machines, ainsi que les certifications de prévention des risques et d'ignifugation selon la réglementation de la Feria de Zaragoza."
+        },
+        {
+          "q": "Proposez-vous une conception 3D avant la fabrication ?",
+          "a": "Oui. Nous réalisons une conception 3D sur mesure fidèle à 100 % au résultat final, que le client peut revoir avant le début de la fabrication."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Saragozza",
+      "title": "Costruzione di Stand a Saragozza | Feria de Zaragoza | Standarte",
+      "h1": "Progettazione e Costruzione di Stand alla Feria de Zaragoza",
+      "introText": "con oltre 20 anni di esperienza e officina propria, progettiamo, produciamo e montiamo stand di alta falegnameria alla Feria de Zaragoza. Lavoriamo chiavi in mano per gli espositori internazionali a FIMA e SMOPYC, gestendo l'importazione temporanea (carnet ATA), il trasporto transfrontaliero e tutte le pratiche del quartiere fieristico nella vostra lingua.",
+      "body": "\n        <h2>Leader nel Recinto della Feria de Zaragoza</h2>\n        <p>Saragozza è uno dei grandi poli fieristici, industriali e logistici della Spagna, sull'asse Madrid-Barcellona-Bilbao. La <b>Feria de Zaragoza</b> ospita rassegne di rilevanza mondiale dove la solidità costruttiva e la capacità di ospitare macchinari pesanti sono obbligatorie: <b>FIMA</b>, una delle più grandi fiere di macchine agricole al mondo; <b>SMOPYC</b>, il salone internazionale di macchine per opere pubbliche, costruzioni e attività minerarie; oltre a importanti rassegne industriali e dell'automotive. In Standarte progettiamo e costruiamo stand di alta falegnameria che trasmettono forza tecnica e autorevolezza del marchio.</p>\n        <h2>Espositore Internazionale: Stand Chiavi in Mano a Saragozza</h2>\n        <p>FIMA e SMOPYC riuniscono produttori di macchinari da tutta Europa, dalle Americhe e dall'Asia. Per l'espositore straniero senza sede in Spagna, Standarte lavora al 100% chiavi in mano: progettiamo e produciamo lo stand nella nostra officina, gestiamo l'importazione temporanea dei vostri macchinari (carnet ATA) e il trasporto fino a Saragozza, e integriamo le prese trifase rinforzate, l'aria compressa e tutte le pratiche tecniche del quartiere fieristico. Coordiniamo il progetto in inglese e in altre lingue dall'inizio alla fine.</p>\n        <h2>Perché Scegliere Standarte a Saragozza</h2>\n        <p>Lavorare con Standarte garantisce un servizio premium senza intermediari né sovrapprezzi di rivendita. Progettiamo il vostro stand con software 3D ad alta fedeltà, così che il prototipo approvato corrisponda al millimetro allo stand reale. Produciamo tutta la falegnameria, la segnaletica e gli arredi nei nostri laboratori e ci occupiamo di trasporto, montaggio con squadra propria e smontaggio.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Siamo un produttore straniero di macchinari senza sede in Spagna. Potete occuparvi dell'intero stand a FIMA o SMOPYC?",
+          "a": "Sì. Standarte lavora totalmente chiavi in mano per gli espositori internazionali alla Feria de Zaragoza: progettiamo e realizziamo lo stand nei nostri laboratori, gestiamo l'importazione temporanea dei vostri macchinari (carnet ATA), il trasporto fino a Saragozza e tutte le pratiche del quartiere fieristico — trifase, aria compressa, bollettino elettrico e prevenzione dei rischi. Voi arrivate solo a uno stand finito, e coordiniamo in inglese e in altre lingue."
+        },
+        {
+          "q": "Quanto costa uno stand su misura alla Feria de Zaragoza?",
+          "a": "Il prezzo dipende dalla superficie, dal design e dai materiali. Dopo una consulenza iniziale elaboriamo un preventivo chiuso senza costi nascosti, gestendo direttamente tutto il processo."
+        },
+        {
+          "q": "Vi occupate delle validazioni tecniche del quartiere fieristico?",
+          "a": "Sì. Gestiamo i bollettini elettrici, le prese trifase e di aria compressa per i macchinari e le certificazioni di prevenzione dei rischi e ignifugazione secondo la normativa della Feria de Zaragoza."
+        },
+        {
+          "q": "Offrite il design 3D prima di produrre?",
+          "a": "Sì. Realizziamo un design 3D personalizzato fedele al 100% al risultato finale, che il cliente può revisionare prima dell'inizio della produzione."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Saragoça",
+      "title": "Construção de Stands em Saragoça | Feira de Saragoça | Standarte",
+      "h1": "Design e Construção de Stands na Feira de Saragoça",
+      "introText": "com mais de 20 anos de experiência e oficina própria, projetamos, fabricamos e montamos stands de alta carpintaria na Feira de Saragoça. Trabalhamos chave na mão para expositores internacionais na FIMA e SMOPYC, gerindo a importação temporária (livrete ATA), o transporte transfronteiriço e toda a tramitação do recinto no seu idioma.",
+      "body": "\n        <h2>Líderes no Recinto da Feira de Saragoça</h2>\n        <p>Saragoça é um dos grandes polos de feiras, industriais e logísticos de Espanha, no eixo Madrid-Barcelona-Bilbau. A <b>Feira de Saragoça</b> acolhe certames de referência mundial onde a solidez construtiva e a capacidade de integrar maquinaria pesada são obrigatórias: <b>FIMA</b>, uma das maiores feiras de maquinaria agrícola do mundo; <b>SMOPYC</b>, o salão internacional de maquinaria de obras públicas, construção e mineração; além de eventos industriais e automóveis. Na Standarte projetamos e construímos stands de alta carpintaria que transmitem força técnica e autoridade de marca.</p>\n        <h2>Expositor Internacional: Stand Chave na Mão em Saragoça</h2>\n        <p>A FIMA e a SMOPYC reúnem fabricantes de maquinaria de toda a Europa, Américas e Ásia. Para o expositor estrangeiro sem sede em Espanha, a Standarte trabalha 100% chave na mão: projetamos e produzimos o stand na nossa oficina, gerimos a importação temporária da sua maquinaria (livrete ATA) e o transporte até Saragoça, e integramos as tomadas trifásicas reforçadas, o ar comprimido e toda a tramitação técnica do recinto. Coordenamos o projeto em inglês e noutros idiomas de ponta a ponta.</p>\n        <h2>Porquê Escolher a Standarte em Saragoça</h2>\n        <p>Trabalhar com a Standarte garante-lhe um serviço premium sem intermediários nem sobrecustos de revenda. Projetamos o seu stand com software 3D de alta fidelidade, de modo que o protótipo aprovado coincida ao milímetro com o stand real. Fabricamos toda a carpintaria, sinalética e mobiliário nas nossas oficinas e tratamos do transporte, da montagem com equipa própria e da desmontagem.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Somos um fabricante estrangeiro de maquinaria sem sede em Espanha. Podem encarregar-se de todo o nosso stand na FIMA ou SMOPYC?",
+          "a": "Sim. A Standarte trabalha totalmente chave na mão para expositores internacionais na Feira de Saragoça: projetamos e fabricamos o stand nas nossas oficinas, gerimos a importação temporária da sua maquinaria (livrete ATA), o transporte até Saragoça e todos os trâmites do recinto — trifásico, ar comprimido, boletim elétrico e prevenção de riscos. Você apenas chega a um stand terminado, e coordenamos em inglês e noutros idiomas."
+        },
+        {
+          "q": "Quanto custa um stand personalizado na Feira de Saragoça?",
+          "a": "O preço depende da superfície, do design e dos materiais. Após uma consulta inicial elaboramos um orçamento fechado sem custos ocultos, gerindo diretamente todo o processo."
+        },
+        {
+          "q": "Tratam das validações técnicas do recinto?",
+          "a": "Sim. Gerimos os boletins elétricos, as tomadas trifásicas e de ar comprimido para maquinaria e as certificações de prevenção de riscos e ignifugação segundo a normativa da Feira de Saragoça."
+        },
+        {
+          "q": "Oferecem design 3D antes de fabricar?",
+          "a": "Sim. Elaboramos um design 3D personalizado 100% fiel ao resultado final, que o cliente pode rever antes de iniciar a fabricação."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "萨拉戈萨",
+      "title": "萨拉戈萨展位建设 | 萨拉戈萨展览馆 | Standarte",
+      "h1": "萨拉戈萨展览馆展位设计与建造",
+      "introText": "凭借20多年的经验和自有车间，我们在萨拉戈萨展览馆设计、制造并搭建高端木工展台。我们为FIMA和SMOPYC的国际参展商提供完全交钥匙服务，负责临时进口（ATA单证册）、跨境运输以及场馆的全部手续，并以您的语言进行协调。",
+      "body": "\n        <h2>萨拉戈萨展览馆的领导者</h2>\n        <p>萨拉戈萨是西班牙主要的会展、工业与物流枢纽之一，位于马德里-巴塞罗那-毕尔巴鄂轴线上。<b>萨拉戈萨展览馆</b>举办具有世界影响力的展会，其建设稳固性和容纳重型机械的能力是必备条件：<b>FIMA</b>，世界上最大的农业机械展会之一；<b>SMOPYC</b>，公共工程、建筑与采矿机械国际展；以及重要的工业与汽车展会。在Standarte，我们设计并制造体现技术实力与品牌权威的高端木工展台。</p>\n        <h2>国际参展商：萨拉戈萨交钥匙展台</h2>\n        <p>FIMA和SMOPYC汇聚来自欧洲、美洲和亚洲的机械制造商。对于在西班牙没有机构的外国参展商，Standarte提供100%交钥匙服务：我们在自有车间设计和制造展位，负责您机械的临时进口（ATA单证册）和运输至萨拉戈萨，并整合加强型三相电源、压缩空气以及场馆的全部技术手续。我们在整个项目中以英语及其他语言进行协调。</p>\n        <h2>为什么在萨拉戈萨选择Standarte</h2>\n        <p>与Standarte合作可保证无中介、无转售加价的优质服务。我们使用高保真3D软件设计您的展位，使经过验证的原型与实际展位精确到毫米一致。我们在自有工厂制造所有木工、标识和家具，并负责运输、自有团队搭建和拆卸。</p>\n      ",
+      "faqs": [
+        {
+          "q": "我们是在西班牙没有机构的外国机械制造商。你们能负责我们在FIMA或SMOPYC的整个展位吗？",
+          "a": "可以。Standarte为萨拉戈萨展览馆的国际参展商提供完全交钥匙服务：我们在自有车间设计和制造展位，负责您机械的临时进口（ATA单证册）、运输至萨拉戈萨以及场馆的所有手续——三相电源、压缩空气、电气证明和风险预防。您只需抵达一个完工的展位，我们以英语及其他语言进行协调。"
+        },
+        {
+          "q": "在萨拉戈萨展览馆定制一个展位多少钱？",
+          "a": "价格取决于面积、设计和材料。在初步咨询后，我们会制定无额外费用的固定预算，并直接管理整个流程。"
+        },
+        {
+          "q": "你们负责场馆的技术验证吗？",
+          "a": "是的。我们办理电气证明、机械用三相电源和压缩空气接口，以及符合萨拉戈萨展览馆规范的风险预防和防火认证。"
+        },
+        {
+          "q": "你们在制造前提供3D设计吗？",
+          "a": "是的。我们制作100%忠于最终结果的定制3D设计，客户可在开始生产前进行审核。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "ज़ारागोज़ा",
+      "title": "ज़ारागोज़ा में स्टैंड निर्माण | फेरिया दे ज़ारागोज़ा | Standarte",
+      "h1": "फेरिया दे ज़ारागोज़ा में स्टैंड डिज़ाइन और निर्माण",
+      "introText": "20 से अधिक वर्षों के अनुभव और अपनी कार्यशाला के साथ, हम फेरिया दे ज़ारागोज़ा में उच्च दर्जे की बढ़ईगीरी वाले स्टैंड डिज़ाइन, निर्माण और स्थापित करते हैं। हम FIMA और SMOPYC में अंतर्राष्ट्रीय प्रदर्शकों के लिए चाबी-हाथ काम करते हैं, अस्थायी आयात (ATA कार्नेट), सीमा-पार परिवहन और परिसर की सभी प्रक्रियाओं को आपकी भाषा में संभालते हैं।",
+      "body": "\n        <h2>फेरिया दे ज़ारागोज़ा परिसर में अग्रणी</h2>\n        <p>ज़ारागोज़ा स्पेन के प्रमुख मेला, औद्योगिक और लॉजिस्टिक केंद्रों में से एक है, जो मैड्रिड-बार्सिलोना-बिलबाओ अक्ष पर स्थित है। <b>फेरिया दे ज़ारागोज़ा</b> विश्व स्तर के आयोजनों की मेज़बानी करता है जहाँ ठोस निर्माण और भारी मशीनरी को समायोजित करने की क्षमता अनिवार्य है: <b>FIMA</b>, दुनिया के सबसे बड़े कृषि मशीनरी मेलों में से एक; <b>SMOPYC</b>, सार्वजनिक निर्माण, भवन और खनन मशीनरी का अंतर्राष्ट्रीय मेला; तथा प्रमुख औद्योगिक और ऑटोमोटिव आयोजन। Standarte में हम तकनीकी शक्ति और ब्रांड अधिकार को दर्शाने वाले उच्च दर्जे के बढ़ईगीरी स्टैंड डिज़ाइन और निर्माण करते हैं।</p>\n        <h2>अंतर्राष्ट्रीय प्रदर्शक: ज़ारागोज़ा में चाबी-हाथ स्टैंड</h2>\n        <p>FIMA और SMOPYC यूरोप, अमेरिका और एशिया भर के मशीनरी निर्माताओं को एक साथ लाते हैं। स्पेन में बिना उपस्थिति वाले विदेशी प्रदर्शक के लिए, Standarte 100% चाबी-हाथ काम करता है: हम स्टैंड को अपनी कार्यशाला में डिज़ाइन और निर्मित करते हैं, आपकी मशीनरी के अस्थायी आयात (ATA कार्नेट) और ज़ारागोज़ा तक परिवहन का प्रबंधन करते हैं, और सशक्त त्रि-फेज बिजली, संपीड़ित हवा तथा परिसर की सभी तकनीकी प्रक्रियाओं को एकीकृत करते हैं। हम पूरे प्रोजेक्ट में अंग्रेज़ी और अन्य भाषाओं में समन्वय करते हैं।</p>\n        <h2>ज़ारागोज़ा में Standarte क्यों चुनें</h2>\n        <p>Standarte के साथ काम करना बिना मध्यस्थों और पुनर्विक्रय अधिभार के प्रीमियम सेवा की गारंटी देता है। हम आपके स्टैंड को उच्च-निष्ठा 3D सॉफ़्टवेयर से डिज़ाइन करते हैं, ताकि स्वीकृत प्रोटोटाइप वास्तविक स्टैंड से मिलीमीटर तक मेल खाए। हम सभी बढ़ईगीरी, साइनेज और फर्नीचर अपनी कार्यशालाओं में बनाते हैं और परिवहन, अपनी टीम से असेंबली और डिअसेंबली संभालते हैं।</p>\n      ",
+      "faqs": [
+        {
+          "q": "हम स्पेन में बिना उपस्थिति वाले विदेशी मशीनरी निर्माता हैं। क्या आप FIMA या SMOPYC में हमारा पूरा स्टैंड संभाल सकते हैं?",
+          "a": "हाँ। Standarte फेरिया दे ज़ारागोज़ा में अंतर्राष्ट्रीय प्रदर्शकों के लिए पूरी तरह चाबी-हाथ काम करता है: हम स्टैंड को अपनी कार्यशालाओं में डिज़ाइन और निर्मित करते हैं, आपकी मशीनरी के अस्थायी आयात (ATA कार्नेट), ज़ारागोज़ा तक परिवहन और परिसर की सभी प्रक्रियाओं — त्रि-फेज बिजली, संपीड़ित हवा, विद्युत बुलेटिन और जोखिम निवारण — का प्रबंधन करते हैं। आप केवल एक तैयार स्टैंड पर पहुँचते हैं, और हम अंग्रेज़ी और अन्य भाषाओं में समन्वय करते हैं।"
+        },
+        {
+          "q": "फेरिया दे ज़ारागोज़ा में एक कस्टम स्टैंड की कितनी कीमत है?",
+          "a": "कीमत सतह, डिज़ाइन और सामग्रियों पर निर्भर करती है। प्रारंभिक परामर्श के बाद हम बिना छिपी लागत के एक निश्चित बजट बनाते हैं और पूरे प्रक्रिया को सीधे प्रबंधित करते हैं।"
+        },
+        {
+          "q": "क्या आप परिसर की तकनीकी मान्यताओं का ध्यान रखते हैं?",
+          "a": "हाँ। हम विद्युत बुलेटिन, मशीनरी के लिए त्रि-फेज और संपीड़ित हवा कनेक्शन, और फेरिया दे ज़ारागोज़ा की नियमावली के अनुसार जोखिम निवारण एवं अग्निरोधक प्रमाणपत्रों का प्रबंधन करते हैं।"
+        },
+        {
+          "q": "क्या आप निर्माण से पहले 3D डिज़ाइन प्रदान करते हैं?",
+          "a": "हाँ। हम अंतिम परिणाम के 100% अनुरूप एक कस्टम 3D डिज़ाइन बनाते हैं, जिसे ग्राहक निर्माण शुरू होने से पहले देख सकता है।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "사라고사",
+      "title": "사라고사 부스 시공 | 페리아 데 사라고사 | Standarte",
+      "h1": "페리아 데 사라고사 부스 설계 및 시공",
+      "introText": "20년 이상의 경험과 자체 작업장을 갖춘 저희는 페리아 데 사라고사에서 고급 목공 부스를 설계·제작·시공합니다. FIMA와 SMOPYC의 국제 출품업체를 위해 완전한 턴키 방식으로 작업하며, 임시 수입(ATA 까르네), 국경 간 운송, 전시장의 모든 절차를 귀하의 언어로 처리합니다.",
+      "body": "\n        <h2>페리아 데 사라고사의 리더</h2>\n        <p>사라고사는 마드리드-바르셀로나-빌바오 축에 위치한 스페인의 주요 전시·산업·물류 거점 중 하나입니다. <b>페리아 데 사라고사</b>는 견고한 구조와 중장비 수용 능력이 필수인 세계적 수준의 박람회를 개최합니다: 세계 최대 농업 기계 박람회 중 하나인 <b>FIMA</b>, 공공 건설·토목·광산 기계 국제 박람회 <b>SMOPYC</b>, 그리고 주요 산업·자동차 행사들입니다. Standarte는 기술력과 브랜드 권위를 전달하는 고급 목공 부스를 설계·제작합니다.</p>\n        <h2>국제 출품업체: 사라고사 턴키 부스</h2>\n        <p>FIMA와 SMOPYC는 유럽, 아메리카, 아시아의 기계 제조업체를 한자리에 모읍니다. 스페인에 사업장이 없는 외국 출품업체를 위해 Standarte는 100% 턴키로 작업합니다: 자체 작업장에서 부스를 설계·제작하고, 귀사 기계의 임시 수입(ATA 까르네)과 사라고사까지의 운송을 관리하며, 강화 삼상 전원·압축 공기·전시장의 모든 기술 절차를 통합합니다. 프로젝트 전 과정을 영어 및 기타 언어로 조율합니다.</p>\n        <h2>사라고사에서 Standarte를 선택해야 하는 이유</h2>\n        <p>Standarte와 협력하면 중개인과 재판매 수수료가 없는 프리미엄 서비스를 보장받습니다. 고충실도 3D 소프트웨어로 부스를 설계하여 승인된 프로토타입이 실제 부스와 밀리미터 단위로 일치합니다. 모든 목공·사인·가구를 자체 작업장에서 제작하고 운송, 자체 인력 시공, 철거를 담당합니다.</p>\n      ",
+      "faqs": [
+        {
+          "q": "저희는 스페인에 사업장이 없는 외국 기계 제조업체입니다. FIMA나 SMOPYC에서 저희 부스 전체를 맡아 주실 수 있나요?",
+          "a": "네. Standarte는 페리아 데 사라고사의 국제 출품업체를 위해 완전한 턴키 방식으로 작업합니다: 자체 작업장에서 부스를 설계·제작하고, 귀사 기계의 임시 수입(ATA 까르네), 사라고사까지의 운송, 전시장의 모든 절차(삼상 전원·압축 공기·전기 증명·위험 예방)를 관리합니다. 귀하는 완성된 부스에 도착하기만 하면 되며, 영어 및 기타 언어로 조율합니다."
+        },
+        {
+          "q": "페리아 데 사라고사의 맞춤형 부스 비용은 얼마입니까?",
+          "a": "가격은 면적, 디자인, 재료에 따라 달라집니다. 초기 상담 후 숨은 비용 없는 확정 견적을 작성하며 전체 과정을 직접 관리합니다."
+        },
+        {
+          "q": "전시장의 기술 승인도 처리하시나요?",
+          "a": "네. 전기 증명, 기계용 삼상 전원 및 압축 공기 공급, 페리아 데 사라고사 규정에 따른 위험 예방 및 방염 인증을 관리합니다."
+        },
+        {
+          "q": "제작 전에 3D 디자인을 제공하나요?",
+          "a": "네. 최종 결과와 100% 동일한 맞춤형 3D 디자인을 제작하며, 고객은 제작 시작 전에 검토할 수 있습니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "サラゴサ",
+      "title": "サラゴサの展示会ブース製作・施工 | サラゴサ見本市場 | Standarte",
+      "h1": "サラゴサ見本市場での展示会ブース設計・施工",
+      "introText": "20年以上の経験と自社工房を持つStandarteが、サラゴサ見本市場でオーダーメイドの高級木工ブースを設計・製作・施工します。FIMAやSMOPYCの海外出展企業向けに完全ターンキーで対応し、一時輸入（ATAカルネ）・越境輸送・会場の全手続きをお客様の言語で代行します。",
+      "body": "\n        <h2>サラゴサ見本市場でのリーダー</h2>\n        <p>サラゴサは、マドリード・バルセロナ・ビルバオを結ぶ軸上に位置する、スペイン有数の見本市・産業・物流の拠点です。<b>サラゴサ見本市場（Feria de Zaragoza）</b>は、構造的な堅牢さと重機の設置能力が不可欠な世界規模の見本市を開催します。世界最大級の農業機械見本市<b>FIMA</b>、公共工事・建設・鉱山機械の国際見本市<b>SMOPYC</b>、そして主要な産業・自動車関連の見本市などです。Standarteは、技術力とブランドの存在感を体現するオーダーメイドの高級木工ブースを設計・製作します。</p>\n        <h2>海外出展企業向け：サラゴサのターンキーブース</h2>\n        <p>FIMAとSMOPYCには、欧州・南北アメリカ・アジアから機械メーカーが集まります。スペインに拠点を持たない海外出展企業向けに、Standarteは100%ターンキーで対応します。自社工房でブースを設計・製作し、機械の一時輸入（ATAカルネ）とサラゴサまでの輸送を手配し、補強された三相電源・圧縮空気・会場の全技術手続きを統合します。プロジェクト全体を英語その他の言語で調整します。</p>\n        <h2>サラゴサでStandarteを選ぶ理由</h2>\n        <p>Standarteとの協業は、仲介業者や転売マージンのないプレミアムなサービスをお約束します。高精度の3Dソフトで設計し、ご承認のプロトタイプが実物のブースとミリ単位で一致します。すべての木工・サイン・什器を自社工房で製作し、輸送・自社チームによる設営・撤去まで担います。</p>\n      ",
+      "faqs": [
+        {
+          "q": "当社はスペインに拠点を持たない外国の機械メーカーです。FIMAやSMOPYCでのブースをすべてお任せできますか？",
+          "a": "はい。Standarteはサラゴサ見本市場の海外出展企業向けに完全ターンキーで対応します。自社工房でブースを設計・製作し、機械の一時輸入（ATAカルネ）、サラゴサまでの輸送、会場の全手続き（三相電源・圧縮空気・電気証明・労働安全）を代行します。お客様は完成したブースに到着するだけでよく、英語その他の言語で調整します。"
+        },
+        {
+          "q": "サラゴサ見本市場でのオーダーメイドブースの費用はどのくらいですか？",
+          "a": "費用は面積・デザイン・素材によって異なります。初回のご相談後、追加費用のない固定見積もりをご提示し、全工程を直接管理します。"
+        },
+        {
+          "q": "会場の技術認可も対応しますか？",
+          "a": "はい。電気証明、機械用の三相電源・圧縮空気の手配、サラゴサ見本市場の規定に基づく労働安全・防炎認証まで対応します。"
+        },
+        {
+          "q": "製作前に3Dデザインを提示してもらえますか？",
+          "a": "はい。最終結果と100%忠実なオーダーメイドの3Dモデルを作成し、製作前にご確認いただけます。"
+        }
+      ]
+    }
+  },
   "sevilla": {
     "ja": {
       "breadcrumb": "セビリア",
