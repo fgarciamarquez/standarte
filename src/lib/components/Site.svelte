@@ -952,7 +952,7 @@
                   <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-img-link" tabindex="-1" aria-hidden="true">
                     <div class="carousel-img-wrap">
                       {#if project.location}<span class="carousel-loc-badge">{project.location}</span>{/if}
-                      <img src={project.image.replace('.avif', '-thumb.avif')} alt="" loading="lazy" on:error={(e) => handleThumbError(e, project)} />
+                      <img src={project.image.replace('.avif', '-thumb.avif')} alt="" width="480" height="360" loading="lazy" on:error={(e) => handleThumbError(e, project)} />
                     </div>
                   </a>
                   <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-overlay" tabindex="-1" aria-hidden="true">
