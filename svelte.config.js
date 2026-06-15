@@ -12,6 +12,15 @@ const config = {
     paths: {
       relative: false
     },
+    // Versión FIJA (determinista). Por defecto SvelteKit usa Date.now(), que inyecta un
+    // token __sveltekit_<id> distinto en CADA página en cada build → todas las páginas
+    // cambiaban de hash en cada build y el despliegue incremental tenía que resubirlas.
+    // Con un nombre estable, las páginas no modificadas salen idénticas entre builds y
+    // el deploy solo mueve lo que de verdad cambió. (El cache-busting lo dan los nombres
+    // de chunk con hash de contenido, no este campo.)
+    version: {
+      name: 'standarte-static'
+    },
     inlineStyleThreshold: 102400
   }
 };
