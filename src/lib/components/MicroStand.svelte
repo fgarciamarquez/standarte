@@ -30,7 +30,8 @@
     }
   ];
 
-  $: videos = isMobile ? [rawVideos[0]] : rawVideos;
+  // En móvil mostramos un solo video (carga ligera): el nº 2 de la serie.
+  $: videos = isMobile ? [rawVideos[1] || rawVideos[0]] : rawVideos;
 
   $: if (activeIndex >= videos.length) {
     activeIndex = 0;
@@ -105,6 +106,26 @@
     }
   }
 
+  let sectionEl;
+  let videoStarted = false;
+
+  // Descargador del video DESACOPLADO del render inicial: el .mp4 no se pide
+  // hasta que la sección entra en pantalla, así no lastra la carga inicial.
+  function startVideo() {
+    if (videoStarted || !videoElement) return;
+    videoStarted = true;
+    isPreloading = true;
+    videoElement.src = videos[activeIndex].src;
+    videoElement.preload = 'auto';
+    videoElement.load();
+    // Autoplay silenciado (permitido por los navegadores en móvil y escritorio)
+    videoElement.play().then(() => {
+      isPlaying = true;
+    }).catch(() => {
+      isPlaying = false;
+    });
+  }
+
   onMount(() => {
     isMobile = window.matchMedia('(max-width: 768px)').matches;
     const handleResize = () => {
@@ -112,35 +133,35 @@
     };
     window.addEventListener('resize', handleResize, { passive: true });
 
-    if (typeof window !== 'undefined' && isMobile) {
+    if (isMobile) {
       coverImage = '/img/video_standarte_portada-mobile.avif';
     }
-    // Carga perezosa y asíncrona de videos para asegurar que no interfiera en la carga crítica de la web
-    if (videoElement) {
-      videoElement.src = videos[activeIndex].src;
-      if (isMobile) {
-        // En móviles, no pre-cargamos ni reproducimos automáticamente para evitar descargas masivas de 3.2MB
-        videoElement.preload = 'none';
-        isPreloading = false;
-      } else {
-        videoElement.preload = 'auto';
-        videoElement.load();
-        videoElement.play().then(() => {
-          isPlaying = true;
-        }).catch(err => {
-          console.log('Autoplay prevenido por política del navegador.', err);
-          isPlaying = false;
+
+    // El video se descarga por su cuenta solo cuando la sección es visible.
+    let observer;
+    if (sectionEl && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startVideo();
+            observer.disconnect();
+          }
         });
-      }
+      }, { rootMargin: '200px 0px', threshold: 0.1 });
+      observer.observe(sectionEl);
+    } else {
+      // Sin soporte de IntersectionObserver: cargar al montar (fallback)
+      startVideo();
     }
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      if (observer) observer.disconnect();
     };
   });
 </script>
 
-<section id="micro-stand" class="section micro-stand">
+<section id="micro-stand" class="section micro-stand" bind:this={sectionEl}>
   <!-- Encabezado de la Sección -->
   <div class="section-header">
     <h2>{labels.title}</h2>
@@ -176,12 +197,14 @@
       <track kind="captions" />
     </video>
 
-    <!-- Overlay de Mandos de Control -->
-    <div class="video-overlay">
+    <!-- Overlay de Mandos de Control. En móvil: sin Play/Pausa y botón "Visitar web" centrado. -->
+    <div class="video-overlay" class:overlay-centered={isMobile}>
       <div class="video-controls">
-        <button type="button" class="btn-control play-pause" on:click={togglePlay}>
-          {isPlaying ? `⏸ ${labels.pause || 'PAUSA'}` : `▶ ${labels.play || 'REPRODUCIR'}`}
-        </button>
+        {#if !isMobile}
+          <button type="button" class="btn-control play-pause" on:click={togglePlay}>
+            {isPlaying ? `⏸ ${labels.pause || 'PAUSA'}` : `▶ ${labels.play || 'REPRODUCIR'}`}
+          </button>
+        {/if}
         <a href="https://luzpavilion.es" target="_blank" rel="noopener noreferrer" class="btn-control btn-yellow">
           {labels.visitWeb || 'VISITAR WEB ESPECÍFICA'}
         </a>
@@ -285,6 +308,25 @@
     display: flex;
     gap: 12px;
     pointer-events: auto;
+  }
+
+  /* Móvil: overlay centrado sobre el video con el botón "Visitar web" grande y accesible */
+  .video-overlay.overlay-centered {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .video-overlay.overlay-centered .video-controls {
+    width: 100%;
+    justify-content: center;
+  }
+  .video-overlay.overlay-centered .btn-yellow {
+    font-size: 17px;
+    padding: 16px 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
   }
 
   .btn-control {
