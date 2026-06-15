@@ -1,10 +1,20 @@
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
-const { exec } = require('child_process');
+const crypto = require('crypto');
+const { exec, execSync } = require('child_process');
 
 const curlCmd = process.platform === 'win32' ? 'curl.exe' : 'curl';
 
 const ftpHost = 'ftp.cluster028.hosting.ovh.net';
+
+// Nombre del manifiesto de despliegue (vive en el servidor: /www/.deploy-manifest.json).
+// Guarda el hash MD5 de cada fichero ya subido para poder desplegar solo lo que cambió.
+const MANIFEST_NAME = '.deploy-manifest.json';
+
+function md5File(filePath) {
+  return crypto.createHash('md5').update(fs.readFileSync(filePath)).digest('hex');
+}
 
 // Credenciales: por entorno (CI usa secrets FTP_USER/FTP_PASS); en local,
 // como respaldo, se leen de .vscode/sftp.json (fuera del repositorio).
@@ -67,8 +77,8 @@ if (skipImages) {
   console.log('  [OPT] Ejecutando en modo FAST. Se omitirá la subida de imágenes en img/*');
 }
 
-// Filtrar archivos a subir
-const filesToUpload = [];
+// Filtrar archivos candidatos (y calcular su hash de contenido)
+const candidates = [];
 const excludeList = ['.DS_Store', 'Thumbs.db', '.htaccess_local'];
 allFiles.forEach(file => {
   const filename = path.basename(file);
@@ -83,10 +93,38 @@ allFiles.forEach(file => {
   if (/email_campaing\/data\/(send-log|clicks|cron_status)\.json$/.test(relativePath)) {
     return;
   }
-  filesToUpload.push({ file, relativePath });
+  candidates.push({ file, relativePath, hash: md5File(file) });
 });
 
-console.log(`  -> Archivos a sincronizar después de filtrado: ${filesToUpload.length}`);
+// Despliegue INCREMENTAL: descargar el manifiesto del servidor y subir solo lo que cambió.
+// El manifiesto (hash por fichero) vive en el servidor, así que vale igual para local y CI.
+// Se puede forzar un despliegue completo con --full (ignora el manifiesto).
+const forceFull = process.argv.includes('--full');
+let remoteManifest = {};
+if (!forceFull) {
+  try {
+    const tmpManifest = path.join(os.tmpdir(), `standarte-${MANIFEST_NAME}`);
+    execSync(`${curlCmd} -s -f -o "${tmpManifest}" "${remoteRoot}/${MANIFEST_NAME}" --user "${ftpUser}:${ftpPass}"`, { stdio: 'ignore' });
+    remoteManifest = JSON.parse(fs.readFileSync(tmpManifest, 'utf8')) || {};
+    console.log(`  -> Manifiesto remoto cargado: ${Object.keys(remoteManifest).length} ficheros registrados.`);
+  } catch (e) {
+    console.log('  -> Sin manifiesto remoto (o ilegible): se hará un despliegue completo y se creará uno nuevo.');
+    remoteManifest = {};
+  }
+} else {
+  console.log('  -> Modo --full: se ignora el manifiesto y se sube todo.');
+}
+
+// Subir solo los ficheros cuyo hash difiere del registrado (o nuevos)
+const filesToUpload = candidates.filter(c => remoteManifest[c.relativePath] !== c.hash);
+const skipped = candidates.length - filesToUpload.length;
+
+// Manifiesto que quedará tras este deploy: parte del remoto + se actualiza con lo que suba bien.
+const newManifest = Object.assign({}, remoteManifest);
+// Los ficheros sin cambios ya están en newManifest (heredados del remoto); se confirma su hash.
+candidates.forEach(c => { if (remoteManifest[c.relativePath] === c.hash) newManifest[c.relativePath] = c.hash; });
+
+console.log(`  -> Candidatos: ${candidates.length} | sin cambios: ${skipped} | A SUBIR: ${filesToUpload.length}`);
 
 // 3. Subir archivos recursivamente usando curl.exe con concurrencia
 console.log('\n[3/3] Sincronizando por FTP con concurrencia...');
@@ -117,8 +155,10 @@ function uploadFile(item, attempt) {
       }
       console.error(`  [FALLÓ tras ${MAX_RETRIES} intentos] ${relativePath}:`, error.message);
       failCount++;
+      // No se registra en el manifiesto: así el próximo deploy lo reintenta.
     } else {
       successCount++;
+      newManifest[relativePath] = item.hash;
     }
     running--;
     uploadNext();
@@ -159,12 +199,37 @@ function finishDeploy() {
   if (failCount > 0) {
     console.log(`  -> Transferencias fallidas:               ${failCount}`);
   }
+
+  // Subir el manifiesto actualizado al servidor (registro de lo que está desplegado).
+  // Si algún fichero falló, su hash NO se actualizó, así que el próximo deploy lo reintenta.
+  try {
+    const tmpOut = path.join(os.tmpdir(), `standarte-out-${MANIFEST_NAME}`);
+    fs.writeFileSync(tmpOut, JSON.stringify(newManifest));
+    let manifestOk = false;
+    for (let attempt = 1; attempt <= 3 && !manifestOk; attempt++) {
+      try {
+        execSync(`${curlCmd} -s -T "${tmpOut}" "${remoteRoot}/${MANIFEST_NAME}" --ftp-create-dirs --user "${ftpUser}:${ftpPass}"`, { stdio: 'ignore' });
+        manifestOk = true;
+      } catch (e) { /* reintento */ }
+    }
+    console.log(manifestOk
+      ? `  -> Manifiesto actualizado (${Object.keys(newManifest).length} ficheros).`
+      : '  [AVISO] No se pudo subir el manifiesto: el próximo deploy será completo.');
+  } catch (e) {
+    console.log('  [AVISO] Error escribiendo el manifiesto local:', e.message);
+  }
+
   console.log('==========================================================');
   console.log('¡Enhorabuena! Tu sitio web y la nueva sección de Noticias ya están online en Standarte.es.\n');
   process.exit(failCount > 0 ? 1 : 0);
 }
 
-// Iniciar subidas
-for (let i = 0; i < Math.min(maxConcurrency, filesToUpload.length); i++) {
-  uploadNext();
+// Iniciar subidas (o cerrar directamente si no hay nada que subir)
+if (filesToUpload.length === 0) {
+  console.log('  -> Nada que subir: el servidor ya coincide con el manifiesto.');
+  finishDeploy();
+} else {
+  for (let i = 0; i < Math.min(maxConcurrency, filesToUpload.length); i++) {
+    uploadNext();
+  }
 }
