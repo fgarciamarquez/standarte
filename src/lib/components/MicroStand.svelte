@@ -197,14 +197,9 @@
       <track kind="captions" />
     </video>
 
-    <!-- Overlay de Mandos de Control. En móvil: sin Play/Pausa y botón "Visitar web" centrado. -->
-    <div class="video-overlay" class:overlay-centered={isMobile}>
+    <!-- Overlay de Mandos de Control. Sin botón Play/Pausa (ni en escritorio ni en móvil); solo "Visitar web" centrado. -->
+    <div class="video-overlay overlay-centered">
       <div class="video-controls">
-        {#if !isMobile}
-          <button type="button" class="btn-control play-pause" on:click={togglePlay}>
-            {isPlaying ? `⏸ ${labels.pause || 'PAUSA'}` : `▶ ${labels.play || 'REPRODUCIR'}`}
-          </button>
-        {/if}
         <a href="https://luzpavilion.es" target="_blank" rel="noopener noreferrer" class="btn-control btn-yellow">
           {labels.visitWeb || 'VISITAR WEB ESPECÍFICA'}
         </a>

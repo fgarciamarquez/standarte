@@ -806,7 +806,7 @@ article:hover .city-cover-image {
 .lisbon-fairs-track {
   display: flex;
   width: max-content;
-  animation: lisbon-fairs-marquee 42s linear infinite;
+  animation: lisbon-fairs-marquee 56s linear infinite;
   will-change: transform;
 }
 
@@ -1920,7 +1920,7 @@ footer {
   }
 
   .lisbon-fairs-track {
-    animation-duration: 34s;
+    animation-duration: 45s;
   }
 
   .lisbon-fairs-group {
