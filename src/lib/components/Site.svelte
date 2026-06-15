@@ -31,7 +31,8 @@
     hi: '24 घंटे में कोटेशन',
     fr: 'DEVIS EN 24 H',
     it: 'PREVENTIVO IN 24 H',
-    ko: '24시간 내 견적'
+    ko: '24시간 내 견적',
+    ja: '24時間で見積もり'
   };
 
   const teamMemberName = {
@@ -43,7 +44,8 @@
     pt: 'Equipa de Victoria',
     fr: 'Équipe de Victoria',
     it: 'Team di Victoria',
-    ko: '빅토리아 팀'
+    ko: '빅토리아 팀',
+    ja: 'ビクトリアのチーム'
   };
 
   // Galería: nº de fotos visibles antes del botón "Ver más" (el resto queda en el
@@ -136,7 +138,8 @@
     pt: 'pt_PT',
     fr: 'fr_FR',
     it: 'it_IT',
-    ko: 'ko_KR'
+    ko: 'ko_KR',
+    ja: 'ja_JP'
   };
   const contentLanguages = {
     es: 'es-ES',
@@ -147,7 +150,8 @@
     pt: 'pt-PT',
     fr: 'fr-FR',
     it: 'it-IT',
-    ko: 'ko-KR'
+    ko: 'ko-KR',
+    ja: 'ja-JP'
   };
   const cityKeys = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'malaga', 'badajoz', 'sevilla', 'ciudad_real'];
   const cookieSettingsLabels = {
@@ -156,7 +160,11 @@
     de: 'Cookie-Einstellungen',
     zh: 'Cookie 设置',
     hi: 'कुकी सेटिंग्स',
-    pt: 'Configurar cookies'
+    pt: 'Configurar cookies',
+    fr: 'Configurer les cookies',
+    it: 'Impostazioni cookie',
+    ko: '쿠키 설정',
+    ja: 'クッキー設定'
   };
   const campaignManagerLabels = {
     es: 'Admin',
@@ -164,7 +172,11 @@
     de: 'Admin',
     zh: '管理',
     hi: 'Admin',
-    pt: 'Admin'
+    pt: 'Admin',
+    fr: 'Admin',
+    it: 'Admin',
+    ko: 'Admin',
+    ja: '管理'
   };
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para construcción de stands',
@@ -173,7 +185,10 @@
     zh: '西班牙、葡萄牙、德国和法国展台搭建重点展会',
     hi: 'स्पेन, पुर्तगाल, जर्मनी और फ्रांस में स्टैंड निर्माण के लिए प्रमुख मेले',
     pt: 'Feiras em destaque em Espanha, Portugal, Alemanha e França para construção de stands',
-    ko: '전시 부스 제작을 위한 스페인, 포르투갈, 독일, 프랑스의 주요 박람회'
+    ko: '전시 부스 제작을 위한 스페인, 포르투갈, 독일, 프랑스의 주요 박람회',
+    fr: 'Salons phares en Espagne, Portugal, Allemagne et France pour la construction de stands',
+    it: 'Fiere di rilievo in Spagna, Portogallo, Germania e Francia per la costruzione di stand',
+    ja: 'スペイン・ポルトガル・ドイツ・フランスの主要見本市（展示会ブース施工）'
   };
   const counterItems = [
     { key: 'projects', value: 169, icon: 'counter-book' },
