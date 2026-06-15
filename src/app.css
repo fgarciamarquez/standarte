@@ -88,7 +88,7 @@ p {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  transform: scale(1.12); /* sobredimensión: el paneo de ±6% no descubre bordes */
+  transform: scale(1.22); /* más sobredimensión: el paneo de ±6% nunca descubre el borde (evita la línea negra) */
   will-change: transform, opacity;
   backface-visibility: hidden;
   pointer-events: none;
@@ -106,20 +106,21 @@ p {
 }
 .site-header.hero-anim .hero { position: relative; z-index: 1; } /* contenido por encima de las capas */
 
-@keyframes heroPanA { /* bg2: visible al cargar; paneo hacia arriba; se funde a negro */
-  0%   { opacity: 1; transform: scale(1.12) translateY(0); }
-  40%  { opacity: 1; transform: scale(1.12) translateY(-6%); }
-  46%  { opacity: 0; transform: scale(1.12) translateY(-6.5%); }
-  94%  { opacity: 0; transform: scale(1.12) translateY(-0.4%); }
-  100% { opacity: 1; transform: scale(1.12) translateY(0); }
+@keyframes heroPanA { /* bg2: paneo DE ARRIBA A ABAJO (0 -> -6%); fundido rápido a negro. Sin sobrepasar -6% para no descubrir el borde. */
+  0%   { opacity: 1; transform: scale(1.22) translateY(0); }
+  41%  { opacity: 1; transform: scale(1.22) translateY(-6%); }
+  44%  { opacity: 0; transform: scale(1.22) translateY(-6%); }
+  95%  { opacity: 0; transform: scale(1.22) translateY(0); }
+  98%  { opacity: 1; transform: scale(1.22) translateY(0); }
+  100% { opacity: 1; transform: scale(1.22) translateY(0); }
 }
-@keyframes heroPanB { /* hero-area: aparece en la 2ª mitad; paneo hacia abajo (opuesto) */
-  0%   { opacity: 0; transform: scale(1.12) translateY(6%); }
-  50%  { opacity: 0; transform: scale(1.12) translateY(6%); }
-  56%  { opacity: 1; transform: scale(1.12) translateY(6%); }
-  84%  { opacity: 1; transform: scale(1.12) translateY(0); }
-  90%  { opacity: 0; transform: scale(1.12) translateY(-0.5%); }
-  100% { opacity: 0; transform: scale(1.12) translateY(6%); }
+@keyframes heroPanB { /* hero-area: paneo DE ABAJO A ARRIBA (0 -> +6%), sentido opuesto; fundido rápido. */
+  0%   { opacity: 0; transform: scale(1.22) translateY(0); }
+  46%  { opacity: 0; transform: scale(1.22) translateY(0); }
+  49%  { opacity: 1; transform: scale(1.22) translateY(0); }
+  90%  { opacity: 1; transform: scale(1.22) translateY(6%); }
+  93%  { opacity: 0; transform: scale(1.22) translateY(6%); }
+  100% { opacity: 0; transform: scale(1.22) translateY(0); }
 }
 /* Accesibilidad: sin movimiento => fondo estático bg2 */
 @media (prefers-reduced-motion: reduce) {
