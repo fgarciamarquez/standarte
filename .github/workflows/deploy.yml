@@ -8,6 +8,12 @@ name: Despliegue Manual a OVH
 on:
   workflow_dispatch:
 
+# Evita despliegues FTP solapados (que se estorban y dejan estado mezclado):
+# un despliegue nuevo cancela el que esté en curso.
+concurrency:
+  group: deploy-ovh
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
