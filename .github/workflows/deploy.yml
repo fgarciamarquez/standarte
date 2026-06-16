@@ -1,0 +1,35 @@
+name: Despliegue Manual a OVH
+
+# Despliegue a demanda de la rama por defecto (main) a producción.
+# Reutiliza el mismo build y el script deploy_clean.cjs que el workflow de
+# noticias, pero SIN generar noticias ni commitear nada: solo build + FTP.
+# Se lanza con el botón "Run workflow" en la pestaña Actions de GitHub.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar Repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar Dependencias
+        run: npm ci
+
+      - name: Compilar Sitio Estático (SvelteKit)
+        run: npm run build
+
+      - name: Desplegar por FTP a OVH (Limpieza y Sincronización)
+        env:
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: node deploy_clean.cjs --fast
