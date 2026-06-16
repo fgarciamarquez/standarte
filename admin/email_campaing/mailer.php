@@ -289,9 +289,18 @@
      try {
          $accepted = campaign_send_smtp($config, $to, $subject, $html);
      } catch (Exception $exception) {
-         $method = 'php-mail';
-         $error = $exception->getMessage();
-         $accepted = campaign_send_php_mail($config, $to, $subject, $html);
+         // Respaldo a mail() de PHP DESACTIVADO a propósito (2026-06-16).
+         // Con DKIM/DMARC activos en OVH, un correo enviado por mail() NO pasa por
+         // el firmador DKIM del SMTP de OVH: falla la alineación DMARC, lo rechaza
+         // el receptor y daña la reputación del dominio. Es preferible registrar el
+         // fallo de SMTP de forma visible (method "smtp-failed") y NO enviar un
+         // correo sin firmar que va a rebotar. Causa habitual de fallo total: la
+         // contraseña de data/smtp_password.txt quedó desactualizada tras rotarla.
+         // Para reactivar el respaldo (no recomendado), descomentar la última línea.
+         $method = 'smtp-failed';
+         $error = 'SMTP fallo; respaldo mail() desactivado para no enviar correo sin DKIM: ' . $exception->getMessage();
+         $accepted = false;
+         // $accepted = campaign_send_php_mail($config, $to, $subject, $html);
      }
  
      $lastError = error_get_last();
