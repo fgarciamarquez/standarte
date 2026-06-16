@@ -264,6 +264,34 @@ if (isset($_POST['login_password'])) {
     $errors[] = 'La contraseña no es correcta.';
 }
 
+// Borrado de un lead del formulario (solo admin autenticado; usa service_role).
+// La RLS no permite DELETE con la clave publicable; la service_role la salta.
+if (campaign_is_logged_in() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_lead_id'])) {
+    $delId = (int) $_POST['delete_lead_id'];
+    if ($delId > 0) {
+        $sbFile = __DIR__ . '/../../supabase-config.php';
+        if (is_file($sbFile)) {
+            require_once $sbFile;
+            if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+                $delKey = defined('SUPABASE_SERVICE_KEY') ? SUPABASE_SERVICE_KEY : SUPABASE_KEY;
+                $chDel = curl_init();
+                curl_setopt($chDel, CURLOPT_URL, SUPABASE_URL . '/rest/v1/presupuestos?id=eq.' . $delId);
+                curl_setopt($chDel, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                curl_setopt($chDel, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($chDel, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($chDel, CURLOPT_HTTPHEADER, [
+                    'apikey: ' . $delKey,
+                    'Authorization: Bearer ' . $delKey
+                ]);
+                curl_exec($chDel);
+                curl_close($chDel);
+            }
+        }
+    }
+    header('Location: index.php?leads_open=1');
+    exit;
+}
+
 if (!campaign_is_logged_in()) {
     ?>
 <!doctype html>
@@ -676,7 +704,7 @@ if ($isCronEmpty) {
           <?php endforeach; ?>
         </div>
       </details>
-      <details class="send-log">
+      <details class="send-log"<?php echo isset($_GET['leads_open']) ? ' open' : ''; ?>>
         <summary>
           <h2>Leads por formulario</h2>
           <span class="details-icon">▼</span>
@@ -691,13 +719,22 @@ if ($isCronEmpty) {
               if ($estado === 'Y_SUPERIOR') { $dotColor = '#27ae60'; $estadoLabel = 'Cualificado'; }
               elseif ($estado === 'N_INFERIOR') { $dotColor = '#dcdcdc'; $estadoLabel = 'No cualificado'; }
               else { $dotColor = '#f0c419'; $estadoLabel = 'Pendiente'; }
+              $fechaStr = '';
+              if (!empty($lead['created_at'])) {
+                try {
+                  $dt = new DateTime($lead['created_at']);
+                  $dt->setTimezone(new DateTimeZone('Europe/Madrid'));
+                  $fechaStr = $dt->format('d/m/Y H:i');
+                } catch (Exception $e) { $fechaStr = ''; }
+              }
             ?>
             <p>
-              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span>
+              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:6px;border:1px solid rgba(0,0,0,0.08);"></span><form method="post" style="display:inline;margin:0 8px 0 0;" onsubmit="return confirm('¿Borrar este lead de forma permanente?');"><input type="hidden" name="delete_lead_id" value="<?php echo (int) $lead['id']; ?>"><button type="submit" title="Borrar lead" style="background:none;border:none;color:#c0392b;cursor:pointer;font-size:13px;padding:0;vertical-align:middle;">🗑</button></form>
               <b><?php echo campaign_escape(!empty($lead['empresa']) ? $lead['empresa'] : '—'); ?></b><?php if (!empty($lead['nombre'])): ?> · <?php echo campaign_escape($lead['nombre']); ?><?php endif; ?>
               <span style="color:#999;font-size:0.82rem;">(<?php echo campaign_escape($estadoLabel); ?>)</span><br>
               <span style="font-size:0.85rem;color:#888;">
                 <?php if (!empty($lead['email'])): ?><a href="mailto:<?php echo campaign_escape($lead['email']); ?>"><?php echo campaign_escape($lead['email']); ?></a><?php endif; ?><?php if (!empty($lead['tlf'])): ?> · <?php echo campaign_escape($lead['tlf']); ?><?php endif; ?><?php if (!empty($lead['feria'])): ?> · <?php echo campaign_escape($lead['feria']); ?><?php endif; ?><?php if (!empty($lead['metros'])): ?> · <?php echo campaign_escape($lead['metros']); ?> m²<?php endif; ?><?php if (!empty($lead['presupuesto'])): ?> · <?php echo campaign_escape($lead['presupuesto']); ?><?php endif; ?>
+                <?php if ($fechaStr !== ''): ?><br>🗓 Recibido: <?php echo campaign_escape($fechaStr); ?> h<?php endif; ?>
               </span>
             </p>
           <?php endforeach; ?>
