@@ -676,13 +676,6 @@ if ($isCronEmpty) {
           <span class="details-icon">▼</span>
         </summary>
         <div style="margin-top: 10px;">
-          <p style="font-size:0.78rem;color:#888;margin:0 0 12px;">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#27ae60;vertical-align:middle;"></span> Cualificado (presupuesto superior)
-            &nbsp;·&nbsp;
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#dcdcdc;vertical-align:middle;"></span> No cualificado (inferior)
-            &nbsp;·&nbsp;
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#f0c419;vertical-align:middle;"></span> Pendiente de responder
-          </p>
           <?php if (!$formLeads): ?>
             <p style="font-size:0.85rem;color:#888;">No hay leads de formulario todavía (o no se pudieron cargar desde Supabase).</p>
           <?php endif; ?>
