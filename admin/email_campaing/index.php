@@ -338,6 +338,35 @@ if (campaign_is_logged_in() && $_SERVER['REQUEST_METHOD'] === 'POST' && (isset($
     exit;
 }
 
+// Borrado de un registro de "Últimos accesos" (todas las aperturas de ese email en email_clicks).
+// Solo admin autenticado; usa service_role (la RLS no permite DELETE con la clave publicable).
+if (campaign_is_logged_in() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_delete_click_email'])) {
+    $delEmail = trim($_POST['ajax_delete_click_email']);
+    $deleted = false;
+    if ($delEmail !== '') {
+        $sbFile = __DIR__ . '/../../supabase-config.php';
+        if (is_file($sbFile)) {
+            require_once $sbFile;
+            if (defined('SUPABASE_URL') && defined('SUPABASE_KEY')) {
+                $delKey = defined('SUPABASE_SERVICE_KEY') ? SUPABASE_SERVICE_KEY : SUPABASE_KEY;
+                $chDel = curl_init();
+                curl_setopt($chDel, CURLOPT_URL, SUPABASE_URL . '/rest/v1/email_clicks?email=eq.' . urlencode($delEmail));
+                curl_setopt($chDel, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                curl_setopt($chDel, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($chDel, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($chDel, CURLOPT_HTTPHEADER, ['apikey: ' . $delKey, 'Authorization: Bearer ' . $delKey]);
+                curl_exec($chDel);
+                $httpCodeDel = (int) curl_getinfo($chDel, CURLINFO_HTTP_CODE);
+                curl_close($chDel);
+                $deleted = ($httpCodeDel >= 200 && $httpCodeDel < 300);
+            }
+        }
+    }
+    header('Content-Type: application/json');
+    echo json_encode(array('ok' => $deleted));
+    exit;
+}
+
 if (!campaign_is_logged_in()) {
     ?>
 <!doctype html>
@@ -714,7 +743,7 @@ if ($isCronEmpty) {
             <?php endif; ?>
             <?php foreach ($clicksHistory as $click): ?>
               <p>
-                <b><?php echo campaign_escape($click['email']); ?></b><?php if (!empty($click['count']) && $click['count'] > 1): ?> <span style="color:#b89400;font-weight:700;">(<?php echo (int)$click['count']; ?>)</span><?php endif; ?> <span style="color:#7a7a7a;">· <?php echo campaign_escape(!empty($click['lead_group']) ? $click['lead_group'] : 'sin lista'); ?><?php if (!empty($click['language'])): ?> · <?php echo campaign_escape(strtoupper($click['language'])); ?><?php endif; ?></span><br>
+                <span role="button" tabindex="0" title="Borrar registro" data-email="<?php echo campaign_escape($click['email']); ?>" onclick="deleteClick(event, this)" style="cursor:pointer;color:#c0392b;font-size:13px;font-weight:bold;margin-right:7px;user-select:none;opacity:0.7;">✕</span><b><?php echo campaign_escape($click['email']); ?></b><?php if (!empty($click['count']) && $click['count'] > 1): ?> <span style="color:#b89400;font-weight:700;">(<?php echo (int)$click['count']; ?>)</span><?php endif; ?> <span style="color:#7a7a7a;">· <?php echo campaign_escape(!empty($click['lead_group']) ? $click['lead_group'] : 'sin lista'); ?><?php if (!empty($click['language'])): ?> · <?php echo campaign_escape(strtoupper($click['language'])); ?><?php endif; ?></span><br>
                 <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['clicked_at']))); ?></span>
               </p>
             <?php endforeach; ?>
@@ -831,6 +860,54 @@ if ($isCronEmpty) {
             }
           }).catch(function () {
             btn.disabled = false;
+            btn.removeAttribute('data-armed');
+            btn.innerHTML = btn.getAttribute('data-html') || '✕';
+            alert('Error de red al borrar.');
+          });
+        return false;
+      }
+
+      // Borrado de un registro de "Últimos accesos" (todas las aperturas de ese email).
+      function deleteClick(e, btn) {
+        if (e) e.preventDefault();
+        var email = btn.getAttribute('data-email') || '';
+        // 1er clic: arma confirmación en línea (se revierte en 3s).
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          if (!btn.getAttribute('data-html')) btn.setAttribute('data-html', btn.innerHTML);
+          btn.innerHTML = '¿seguro?';
+          btn.style.fontSize = '11px';
+          btn.style.opacity = '1';
+          btn._t = setTimeout(function () {
+            btn.removeAttribute('data-armed');
+            btn.innerHTML = btn.getAttribute('data-html');
+            btn.style.fontSize = '13px';
+            btn.style.opacity = '0.7';
+          }, 3000);
+          return false;
+        }
+        // 2o clic: borra por AJAX y desvanece la fila.
+        if (btn._t) clearTimeout(btn._t);
+        btn.innerHTML = '…';
+        var row = btn.closest('p');
+        fetch('index.php', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'ajax_delete_click_email=' + encodeURIComponent(email)
+        }).then(function (r) { return r.json(); })
+          .then(function (j) {
+            if (j && j.ok && row) {
+              row.style.transition = 'opacity .3s ease, transform .3s ease';
+              row.style.opacity = '0';
+              row.style.transform = 'translateX(-14px)';
+              setTimeout(function () { if (row && row.parentNode) row.parentNode.removeChild(row); }, 320);
+            } else {
+              btn.removeAttribute('data-armed');
+              btn.innerHTML = btn.getAttribute('data-html') || '✕';
+              alert('No se pudo borrar el registro.');
+            }
+          }).catch(function () {
             btn.removeAttribute('data-armed');
             btn.innerHTML = btn.getAttribute('data-html') || '✕';
             alert('Error de red al borrar.');
@@ -1121,7 +1198,8 @@ if ($isCronEmpty) {
                   var ds = pad(d.getDate())+'/'+pad(d.getMonth()+1)+'/'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
                   var cnt = (c.count && c.count > 1) ? ' <span style="color:#b89400;font-weight:700;">('+c.count+')</span>' : '';
                   var meta = '· '+escHtml(c.lead_group || 'sin lista')+(c.language ? ' · '+escHtml((''+c.language).toUpperCase()) : '');
-                  return '<p><b>'+escHtml(c.email)+'</b>'+cnt+' <span style="color:#7a7a7a;">'+meta+'</span><br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
+                  var x = '<span role="button" tabindex="0" title="Borrar registro" data-email="'+escHtml(c.email)+'" onclick="deleteClick(event, this)" style="cursor:pointer;color:#c0392b;font-size:13px;font-weight:bold;margin-right:7px;user-select:none;opacity:0.7;">✕</span>';
+                  return '<p>'+x+'<b>'+escHtml(c.email)+'</b>'+cnt+' <span style="color:#7a7a7a;">'+meta+'</span><br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
                 }).join('');
               }
             }
