@@ -38,6 +38,37 @@ if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
+// Añade a cada visitante su LISTA (lead_group) e IDIOMA (language), cruzando el email
+// con contacts/luz_contacts en una sola consulta IN. (En lugar del antiguo "source".)
+function gp_enrich_clicks(&$rows) {
+    if (empty($rows)) return;
+    $quoted = [];
+    foreach ($rows as $r) { $quoted[] = '"' . str_replace('"', '', $r['email']) . '"'; }
+    $in = urlencode('(' . implode(',', $quoted) . ')');
+    $info = [];
+    foreach (['contacts', 'luz_contacts'] as $tbl) {
+        $res = groups_supabase_get($tbl . '?select=email,lead_group,language&email=in.' . $in);
+        if (is_array($res['body'])) {
+            foreach ($res['body'] as $row) {
+                if (empty($row['email'])) continue;
+                $em = strtolower($row['email']);
+                if (!isset($info[$em])) {
+                    $info[$em] = [
+                        'lead_group' => isset($row['lead_group']) ? $row['lead_group'] : '',
+                        'language' => isset($row['language']) ? $row['language'] : ''
+                    ];
+                }
+            }
+        }
+    }
+    foreach ($rows as &$r) {
+        $em = strtolower($r['email']);
+        $r['lead_group'] = isset($info[$em]) ? $info[$em]['lead_group'] : '';
+        $r['language'] = isset($info[$em]) ? $info[$em]['language'] : '';
+    }
+    unset($r);
+}
+
 // ============================================================
 // ACCIÓN: Obtener estadísticas de clics totales en tiempo real
 // ============================================================
@@ -57,11 +88,13 @@ if ($action === 'clicks_count') {
         if (!isset($grouped[$em])) $grouped[$em] = ['email' => $em, 'source' => $c['source'], 'clicked_at' => $c['clicked_at'], 'count' => 0];
         $grouped[$em]['count']++;
     }
+    $history = array_slice(array_values($grouped), 0, 50);
+    gp_enrich_clicks($history); // añade lista (lead_group) e idioma de cada visitante
     echo json_encode([
         'status' => 'success',
         'total' => count($human),
         'unique' => count($grouped),
-        'history' => array_slice(array_values($grouped), 0, 50)
+        'history' => $history
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }

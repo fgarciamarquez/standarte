@@ -127,6 +127,38 @@ function campaign_get_email_clicks()
         }
     }
     
+    // Enriquecer cada visitante con su LISTA (lead_group) e IDIOMA (language) desde contacts/luz_contacts
+    if (!empty($history)) {
+        $quoted = array();
+        foreach ($history as $h) { if (!empty($h['email'])) $quoted[] = '"' . str_replace('"', '', $h['email']) . '"'; }
+        if (!empty($quoted)) {
+            $in = urlencode('(' . implode(',', $quoted) . ')');
+            $info = array();
+            foreach (array('contacts', 'luz_contacts') as $tbl) {
+                $ch2 = curl_init();
+                curl_setopt($ch2, CURLOPT_URL, SUPABASE_URL . '/rest/v1/' . $tbl . '?select=email,lead_group,language&email=in.' . $in);
+                curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch2, CURLOPT_HTTPHEADER, array('apikey: ' . SUPABASE_KEY, 'Authorization: Bearer ' . SUPABASE_KEY));
+                $rows2 = json_decode(curl_exec($ch2), true);
+                curl_close($ch2);
+                if (is_array($rows2)) {
+                    foreach ($rows2 as $row) {
+                        if (empty($row['email'])) continue;
+                        $em = strtolower($row['email']);
+                        if (!isset($info[$em])) $info[$em] = array('lead_group' => isset($row['lead_group']) ? $row['lead_group'] : '', 'language' => isset($row['language']) ? $row['language'] : '');
+                    }
+                }
+            }
+            foreach ($history as &$h) {
+                $em = strtolower(isset($h['email']) ? $h['email'] : '');
+                $h['lead_group'] = isset($info[$em]) ? $info[$em]['lead_group'] : '';
+                $h['language'] = isset($info[$em]) ? $info[$em]['language'] : '';
+            }
+            unset($h);
+        }
+    }
+
     return array('total' => $count, 'history' => $history);
 }
 
@@ -682,7 +714,7 @@ if ($isCronEmpty) {
             <?php endif; ?>
             <?php foreach ($clicksHistory as $click): ?>
               <p>
-                <b><?php echo campaign_escape($click['email']); ?></b><?php if (!empty($click['count']) && $click['count'] > 1): ?> <span style="color:#b89400;font-weight:700;">(<?php echo (int)$click['count']; ?>)</span><?php endif; ?> (desde <i><?php echo campaign_escape($click['source']); ?></i>)<br>
+                <b><?php echo campaign_escape($click['email']); ?></b><?php if (!empty($click['count']) && $click['count'] > 1): ?> <span style="color:#b89400;font-weight:700;">(<?php echo (int)$click['count']; ?>)</span><?php endif; ?> <span style="color:#7a7a7a;">· <?php echo campaign_escape(!empty($click['lead_group']) ? $click['lead_group'] : 'sin lista'); ?><?php if (!empty($click['language'])): ?> · <?php echo campaign_escape(strtoupper($click['language'])); ?><?php endif; ?></span><br>
                 <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['clicked_at']))); ?></span>
               </p>
             <?php endforeach; ?>
@@ -1088,7 +1120,8 @@ if ($isCronEmpty) {
                   var d = new Date(c.clicked_at);
                   var ds = pad(d.getDate())+'/'+pad(d.getMonth()+1)+'/'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
                   var cnt = (c.count && c.count > 1) ? ' <span style="color:#b89400;font-weight:700;">('+c.count+')</span>' : '';
-                  return '<p><b>'+escHtml(c.email)+'</b>'+cnt+' (desde <i>'+escHtml(c.source)+'</i>)<br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
+                  var meta = '· '+escHtml(c.lead_group || 'sin lista')+(c.language ? ' · '+escHtml((''+c.language).toUpperCase()) : '');
+                  return '<p><b>'+escHtml(c.email)+'</b>'+cnt+' <span style="color:#7a7a7a;">'+meta+'</span><br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
                 }).join('');
               }
             }
