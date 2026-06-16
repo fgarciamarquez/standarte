@@ -2,6 +2,10 @@
 
 session_start();
 
+// El panel de administración no debe cachearse en el navegador (datos en vivo).
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+
 $config = require __DIR__ . '/config.php';
 require __DIR__ . '/template.php';
 
@@ -739,7 +743,7 @@ if ($isCronEmpty) {
               }
             ?>
             <p id="lead-row-<?php echo (int) $lead['id']; ?>">
-              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><form method="post" style="display:inline;margin:0 7px 0 0;" onsubmit="return confirm('¿Borrar este lead de forma permanente?');"><input type="hidden" name="delete_lead_id" value="<?php echo (int) $lead['id']; ?>"><button type="submit" title="Borrar lead" onclick="return deleteLead(event, <?php echo (int) $lead['id']; ?>, this);" style="appearance:none;-webkit-appearance:none;display:inline-block;width:auto;min-width:0;height:auto;background:none;border:0;box-shadow:none;padding:0;margin:0;color:#c0392b;cursor:pointer;font-size:13px;line-height:1;vertical-align:middle;opacity:0.6;">🗑</button></form>
+              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><span role="button" tabindex="0" title="Borrar lead" onclick="deleteLead(event, <?php echo (int) $lead['id']; ?>, this);" style="cursor:pointer;color:#c0392b;font-size:13px;line-height:1;vertical-align:middle;opacity:0.6;margin-right:7px;user-select:none;">🗑</span>
               <b><?php echo campaign_escape(!empty($lead['empresa']) ? $lead['empresa'] : '—'); ?></b><?php if (!empty($lead['nombre'])): ?> · <?php echo campaign_escape($lead['nombre']); ?><?php endif; ?>
               <span style="color:#999;font-size:0.82rem;">(<?php echo campaign_escape($estadoLabel); ?>)</span><br>
               <span style="font-size:0.85rem;color:#888;">
@@ -777,6 +781,7 @@ if ($isCronEmpty) {
         var row = document.getElementById('lead-row-' + id);
         fetch('index.php', {
           method: 'POST',
+          credentials: 'same-origin',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: 'ajax_delete_lead_id=' + encodeURIComponent(id)
         }).then(function (r) { return r.json(); })
