@@ -743,7 +743,7 @@ if ($isCronEmpty) {
               }
             ?>
             <p id="lead-row-<?php echo (int) $lead['id']; ?>">
-              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><span role="button" tabindex="0" title="Borrar lead" onclick="deleteLead(event, <?php echo (int) $lead['id']; ?>, this);" style="cursor:pointer;color:#c0392b;font-size:13px;line-height:1;vertical-align:middle;opacity:0.6;margin-right:7px;user-select:none;">🗑</span>
+              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><span role="button" tabindex="0" title="Borrar lead" onclick="deleteLead(event, <?php echo (int) $lead['id']; ?>, this);" style="cursor:pointer;color:#c0392b;font-size:15px;font-weight:bold;line-height:1;vertical-align:middle;margin-right:7px;user-select:none;">✕</span>
               <b><?php echo campaign_escape(!empty($lead['empresa']) ? $lead['empresa'] : '—'); ?></b><?php if (!empty($lead['nombre'])): ?> · <?php echo campaign_escape($lead['nombre']); ?><?php endif; ?>
               <span style="color:#999;font-size:0.82rem;">(<?php echo campaign_escape($estadoLabel); ?>)</span><br>
               <span style="font-size:0.85rem;color:#888;">
@@ -794,13 +794,13 @@ if ($isCronEmpty) {
             } else {
               btn.disabled = false;
               btn.removeAttribute('data-armed');
-              btn.innerHTML = btn.getAttribute('data-html') || '🗑';
+              btn.innerHTML = btn.getAttribute('data-html') || '✕';
               alert('No se pudo borrar el lead.');
             }
           }).catch(function () {
             btn.disabled = false;
             btn.removeAttribute('data-armed');
-            btn.innerHTML = btn.getAttribute('data-html') || '🗑';
+            btn.innerHTML = btn.getAttribute('data-html') || '✕';
             alert('Error de red al borrar.');
           });
         return false;
