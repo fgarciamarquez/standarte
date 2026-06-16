@@ -180,9 +180,11 @@ $messageDetails["message_body"] = $email_html;
 
 $invitationEmail->sendEmailMessage($messageDetails);
 
-// C. Si es Cualificado (yes), notificar a Standarte admin (info@standarte.es)
-if ($action === 'yes') {
-    $admin_subject = "NUEVO LEAD CUALIFICADO - " . $feria . " - " . $nombre;
+// C. Notificar a Standarte admin (info@standarte.es) en AMBOS casos (yes/no),
+//    para que el equipo pueda clasificar/archivar el lead según su respuesta al filtro.
+$is_qualified = ($action === 'yes');
+if (true) {
+    $admin_subject = ($is_qualified ? "NUEVO LEAD CUALIFICADO (superior) - " : "LEAD NO CUALIFICADO (inferior) - ") . $feria . " - " . $nombre;
     
     $admin_html = "
     <!DOCTYPE html>
@@ -192,11 +194,11 @@ if ($action === 'yes') {
         <title>Nuevo Lead Cualificado</title>
     </head>
     <body style='font-family: Arial, sans-serif; font-size: 15px; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;'>
-        <div style='background-color: #ffc800; color: #000; padding: 20px; text-align: center; font-weight: bold; border-radius: 6px 6px 0 0;'>
-            NUEVO LEAD CUALIFICADO (PRESUPUESTO ESTIMADO SUPERIOR)
+        <div style='background-color: " . ($is_qualified ? '#ffc800' : '#6c757d') . "; color: " . ($is_qualified ? '#000' : '#fff') . "; padding: 20px; text-align: center; font-weight: bold; border-radius: 6px 6px 0 0;'>
+            " . ($is_qualified ? 'NUEVO LEAD CUALIFICADO (PRESUPUESTO ESTIMADO SUPERIOR)' : 'LEAD NO CUALIFICADO (PRESUPUESTO ESTIMADO INFERIOR)') . "
         </div>
         <div style='padding: 20px; border: 1px solid #ddd; border-top: none; border-radius: 0 0 6px 6px;'>
-            <p>Se ha recibido una confirmación de presupuesto para el siguiente contacto:</p>
+            <p>" . ($is_qualified ? 'Se ha recibido una confirmación de presupuesto SUPERIOR para el siguiente contacto:' : 'El siguiente contacto ha indicado un presupuesto INFERIOR al mínimo viable (para archivar/clasificar):') . "</p>
             <table style='width: 100%; border-collapse: collapse;'>
                 <tr>
                     <td style='padding: 8px; border-bottom: 1px solid #eee; font-weight: bold; width: 35%;'>Nombre:</td>
@@ -235,7 +237,7 @@ if ($action === 'yes') {
                     <td style='padding: 8px; border-bottom: 1px solid #eee; font-size: 13px;'>" . $lead['opciones'] . "</td>
                 </tr>
             </table>
-            <p style='margin-top: 20px; font-size: 13px; color: #777;'>* El lead ha sido marcado como 'Y_SUPERIOR' en la base de datos.</p>
+            <p style='margin-top: 20px; font-size: 13px; color: #777;'>* El lead ha sido marcado como '" . ($is_qualified ? 'Y_SUPERIOR' : 'N_INFERIOR') . "' en la base de datos.</p>
         </div>
     </body>
     </html>";
