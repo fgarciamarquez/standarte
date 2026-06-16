@@ -21,7 +21,7 @@ $config = array(
         'password' => $smtpPassword,
         'timeout' => 20
     ),
-    'phone' => '+34 613 097 148',
+    'phone' => '+34 637 894 819',
     'login_password_hash' => '$2y$10$mzzI3Iz2LFkNoYgXrqRvO.iUzdJAO1Qy8qfBPY/QRk3BPqKKRN8mG',
     'languages' => array(
         'es' => array('label' => 'Español', 'html' => 'es'),

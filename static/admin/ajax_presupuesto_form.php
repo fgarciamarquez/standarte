@@ -732,6 +732,40 @@ curl_close($ch);
 	}
 	/*____________________FIN SCRIPT MAIL________________________*/
 
+	/*____________________AVISO INMEDIATO AL EQUIPO (cada solicitud)________________________*/
+	// Se envía SIEMPRE al recibir el formulario, sin depender de que el lead pulse
+	// Sí/No en el email de filtro. Por SMTP firmado (DKIM); si fallara, mail() como
+	// último recurso (el aviso va a info@standarte.es, buzón del propio OVH).
+	$admin_notify_subject = 'NUEVA SOLICITUD WEB - ' . $form_feria . ' - ' . $form_empresa;
+	$admin_notify_html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
+		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#333;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
+		. "<div style='background:#292f35;color:#ffc800;padding:18px;text-align:center;font-weight:bold;border-radius:6px 6px 0 0;'>NUEVA SOLICITUD DESDE LA WEB</div>"
+		. "<div style='padding:20px;border:1px solid #ddd;border-top:none;border-radius:0 0 6px 6px;'>"
+		. "<table style='width:100%;border-collapse:collapse;'>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;width:35%;'>Nombre:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_nombre) . "</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Empresa:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_empresa) . "</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Email:</td><td style='padding:8px;border-bottom:1px solid #eee;'><a href='mailto:" . htmlspecialchars($form_email) . "'>" . htmlspecialchars($form_email) . "</a></td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Tel&eacute;fono:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_tlf) . "</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Feria:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_feria) . "</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Localizaci&oacute;n:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_localizacion) . "</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Metros:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_metros) . " m&sup2;</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Presupuesto m&iacute;n. estimado:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_presupuesto) . "</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Descripci&oacute;n:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . nl2br(htmlspecialchars($form_descripcion)) . "</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Opciones:</td><td style='padding:8px;border-bottom:1px solid #eee;font-size:13px;'>" . $form_opciones . "</td></tr>"
+		. "</table>"
+		. "<p style='margin-top:18px;font-size:13px;color:#777;'>Aviso autom&aacute;tico al recibir el formulario. El lead tambi&eacute;n queda guardado en Supabase (id " . (int)$inserted_id . ").</p>"
+		. "</div></body></html>";
+	try {
+		if (!function_exists('campaign_send_smtp')) { require_once __DIR__ . '/email_campaing/mailer.php'; }
+		$notifyConfig = require __DIR__ . '/email_campaing/config.php';
+		$notifyConfig['from_name'] = 'Standarte Leads';
+		campaign_send_smtp($notifyConfig, 'info@standarte.es', $admin_notify_subject, $admin_notify_html);
+	} catch (Exception $e) {
+		$notify_headers = "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte Leads <info@standarte.es>\r\nReply-To: " . $form_email . "\r\n";
+		@mail('info@standarte.es', $admin_notify_subject, $admin_notify_html, $notify_headers);
+	}
+	/*____________________FIN AVISO EQUIPO________________________*/
+
 	$output['error'] = 'success';
 	$output['msg']   = $mail_text['success']; 
 
