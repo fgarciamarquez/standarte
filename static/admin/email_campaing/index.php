@@ -266,8 +266,11 @@ if (isset($_POST['login_password'])) {
 
 // Borrado de un lead del formulario (solo admin autenticado; usa service_role).
 // La RLS no permite DELETE con la clave publicable; la service_role la salta.
-if (campaign_is_logged_in() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_lead_id'])) {
-    $delId = (int) $_POST['delete_lead_id'];
+// Soporta AJAX (ajax_delete_lead_id -> responde JSON, sin recargar) y POST normal (fallback).
+if (campaign_is_logged_in() && $_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['delete_lead_id']) || isset($_POST['ajax_delete_lead_id']))) {
+    $isAjaxDelete = isset($_POST['ajax_delete_lead_id']);
+    $delId = (int) ($isAjaxDelete ? $_POST['ajax_delete_lead_id'] : $_POST['delete_lead_id']);
+    $deleted = false;
     if ($delId > 0) {
         $sbFile = __DIR__ . '/../../supabase-config.php';
         if (is_file($sbFile)) {
@@ -284,9 +287,16 @@ if (campaign_is_logged_in() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_
                     'Authorization: Bearer ' . $delKey
                 ]);
                 curl_exec($chDel);
+                $httpCodeDel = (int) curl_getinfo($chDel, CURLINFO_HTTP_CODE);
                 curl_close($chDel);
+                $deleted = ($httpCodeDel >= 200 && $httpCodeDel < 300);
             }
         }
+    }
+    if ($isAjaxDelete) {
+        header('Content-Type: application/json');
+        echo json_encode(array('ok' => $deleted));
+        exit;
     }
     header('Location: index.php?leads_open=1');
     exit;
@@ -728,8 +738,8 @@ if ($isCronEmpty) {
                 } catch (Exception $e) { $fechaStr = ''; }
               }
             ?>
-            <p>
-              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><form method="post" style="display:inline;margin:0 7px 0 0;" onsubmit="return confirm('¿Borrar este lead de forma permanente?');"><input type="hidden" name="delete_lead_id" value="<?php echo (int) $lead['id']; ?>"><button type="submit" title="Borrar lead" style="appearance:none;-webkit-appearance:none;display:inline-block;width:auto;min-width:0;height:auto;background:none;border:0;box-shadow:none;padding:0;margin:0;color:#c0392b;cursor:pointer;font-size:13px;line-height:1;vertical-align:middle;opacity:0.6;">🗑</button></form>
+            <p id="lead-row-<?php echo (int) $lead['id']; ?>">
+              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><form method="post" style="display:inline;margin:0 7px 0 0;" onsubmit="return confirm('¿Borrar este lead de forma permanente?');"><input type="hidden" name="delete_lead_id" value="<?php echo (int) $lead['id']; ?>"><button type="submit" title="Borrar lead" onclick="return deleteLead(event, <?php echo (int) $lead['id']; ?>, this);" style="appearance:none;-webkit-appearance:none;display:inline-block;width:auto;min-width:0;height:auto;background:none;border:0;box-shadow:none;padding:0;margin:0;color:#c0392b;cursor:pointer;font-size:13px;line-height:1;vertical-align:middle;opacity:0.6;">🗑</button></form>
               <b><?php echo campaign_escape(!empty($lead['empresa']) ? $lead['empresa'] : '—'); ?></b><?php if (!empty($lead['nombre'])): ?> · <?php echo campaign_escape($lead['nombre']); ?><?php endif; ?>
               <span style="color:#999;font-size:0.82rem;">(<?php echo campaign_escape($estadoLabel); ?>)</span><br>
               <span style="font-size:0.85rem;color:#888;">
@@ -740,6 +750,57 @@ if ($isCronEmpty) {
           <?php endforeach; ?>
         </div>
       </details>
+      <script>
+      function deleteLead(e, id, btn) {
+        if (e) e.preventDefault();
+        // 1er clic: arma una confirmación en línea (sin popup); se revierte en 3s.
+        if (btn.getAttribute('data-armed') !== '1') {
+          btn.setAttribute('data-armed', '1');
+          if (!btn.getAttribute('data-html')) btn.setAttribute('data-html', btn.innerHTML);
+          btn.innerHTML = '¿seguro?';
+          btn.style.opacity = '1';
+          btn.style.fontSize = '11px';
+          btn.style.fontWeight = '700';
+          btn._t = setTimeout(function () {
+            btn.removeAttribute('data-armed');
+            btn.innerHTML = btn.getAttribute('data-html');
+            btn.style.opacity = '0.6';
+            btn.style.fontSize = '13px';
+            btn.style.fontWeight = '';
+          }, 3000);
+          return false;
+        }
+        // 2o clic: borra por AJAX y desvanece la fila, sin recargar la página.
+        if (btn._t) clearTimeout(btn._t);
+        btn.disabled = true;
+        btn.innerHTML = '…';
+        var row = document.getElementById('lead-row-' + id);
+        fetch('index.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'ajax_delete_lead_id=' + encodeURIComponent(id)
+        }).then(function (r) { return r.json(); })
+          .then(function (j) {
+            if (j && j.ok && row) {
+              row.style.transition = 'opacity .3s ease, transform .3s ease';
+              row.style.opacity = '0';
+              row.style.transform = 'translateX(-14px)';
+              setTimeout(function () { if (row && row.parentNode) row.parentNode.removeChild(row); }, 320);
+            } else {
+              btn.disabled = false;
+              btn.removeAttribute('data-armed');
+              btn.innerHTML = btn.getAttribute('data-html') || '🗑';
+              alert('No se pudo borrar el lead.');
+            }
+          }).catch(function () {
+            btn.disabled = false;
+            btn.removeAttribute('data-armed');
+            btn.innerHTML = btn.getAttribute('data-html') || '🗑';
+            alert('Error de red al borrar.');
+          });
+        return false;
+      }
+      </script>
     </section>
     <section class="preview">
       <h2 style="color:#ffc800;margin-top:0;">Previsualización en vivo</h2>
