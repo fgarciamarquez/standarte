@@ -139,13 +139,19 @@ function campaign_get_form_leads()
         return array();
     }
 
+    // La tabla presupuestos tiene RLS (lectura por token por fila): la clave
+    // publicable NO puede listar todos los leads. El panel (servidor, protegido
+    // por contraseña) usa la clave service_role si está definida en
+    // supabase-config.php (SUPABASE_SERVICE_KEY); si no, lo intenta con la normal.
+    $readKey = defined('SUPABASE_SERVICE_KEY') ? SUPABASE_SERVICE_KEY : SUPABASE_KEY;
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/presupuestos?select=*&order=id.desc&limit=200');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'apikey: ' . SUPABASE_KEY,
-        'Authorization: Bearer ' . SUPABASE_KEY
+        'apikey: ' . $readKey,
+        'Authorization: Bearer ' . $readKey
     ]);
     $response = curl_exec($ch);
     curl_close($ch);
