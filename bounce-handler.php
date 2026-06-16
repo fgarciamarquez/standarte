@@ -110,21 +110,21 @@ function scan_imap_bounces() {
     }
     $result['connected'] = true;
 
-    // 4. Buscar correos (tanto leídos como no leídos) de los últimos 30 días
+    // 4. Patrones de detección de rebotes (por remitente o por asunto)
+    $bounceSenders = ['mailer-daemon', 'postmaster', 'mail-delivery', 'mail delivery subsystem', 'maildaemon', 'delivery', 'bounce'];
+    $bounceSubjects = ['delivery status', 'undelivered', 'undeliverable', 'returned to sender', 'returned mail', 'mail delivery', 'could not be delivered', 'delivery has failed', 'delivery failure', 'no se ha podido entregar', 'no se pudo entregar', 'fail', 'failure', 'rebotado', 'delivery report', 'non-delivery', 'bounce'];
+
+    // Los rebotes NO siempre caen en INBOX: el filtro del servidor (OVH) los manda a Junk/Trash.
+    // Escaneamos todas las carpetas donde pueden aterrizar (últimos 30 días, leídos o no).
+    $imapBase = preg_replace('/INBOX$/', '', IMAP_HOST);
+    $bounceFolders = ['INBOX', 'INBOX.INBOX.Trash', 'INBOX.Junk', 'INBOX.INBOX.Junk', 'INBOX.Blocked'];
     $sinceDate = date("d-M-Y", strtotime("-30 days"));
-    $msgIds = imap_search($mbox, 'SINCE "' . $sinceDate . '"');
-    if (!$msgIds) {
-        $result['success'] = true;
-        imap_close($mbox);
-        return $result;
-    }
 
-    $result['unseen_count'] = count($msgIds);
-
-    // Lista de remitentes conocidos de Mail Delivery
-    $bounceSenders = ['mailer-daemon', 'postmaster', 'mail-delivery', 'delivery', 'bounce'];
-    // Lista de patrones en asuntos
-    $bounceSubjects = ['delivery status', 'undelivered', 'returned to sender', 'fail', 'failure', 'rebotado', 'delivery report', 'non-delivery', 'bounce'];
+    foreach ($bounceFolders as $bounceFolder) {
+        if (!@imap_reopen($mbox, $imapBase . $bounceFolder)) { continue; }
+        $msgIds = imap_search($mbox, 'SINCE "' . $sinceDate . '"');
+        if (!$msgIds) { continue; }
+        $result['unseen_count'] += count($msgIds);
 
     foreach ($msgIds as $msgId) {
         $header = imap_headerinfo($mbox, $msgId);
@@ -249,8 +249,9 @@ function scan_imap_bounces() {
         imap_delete($mbox, $msgId);
     }
 
-    // Borrar físicamente todos los mensajes marcados para eliminación
-    @imap_expunge($mbox);
+        // Borrar físicamente los mensajes marcados en esta carpeta
+        @imap_expunge($mbox);
+    } // fin foreach carpeta
 
     $result['success'] = true;
     imap_close($mbox);
