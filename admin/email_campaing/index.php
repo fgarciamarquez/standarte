@@ -126,6 +126,37 @@ function campaign_get_email_clicks()
     return array('total' => $count, 'history' => $history);
 }
 
+function campaign_get_form_leads()
+{
+    // Lee las solicitudes del formulario web (tabla presupuestos) para el panel.
+    $configFile = __DIR__ . '/../../supabase-config.php';
+    if (!is_file($configFile)) {
+        return array();
+    }
+    require_once $configFile;
+
+    if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) {
+        return array();
+    }
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/presupuestos?select=*&order=id.desc&limit=200');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'apikey: ' . SUPABASE_KEY,
+        'Authorization: Bearer ' . SUPABASE_KEY
+    ]);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $all = json_decode($response, true);
+    if (!is_array($all) || isset($all['code']) || isset($all['message'])) {
+        return array();
+    }
+    return $all;
+}
+
 function campaign_get_active_drip_groups()
 {
     $configFile = __DIR__ . '/../../supabase-config.php';
@@ -366,6 +397,7 @@ $totalEmailVisits = $clicksData['total'];
 $clicksHistory = $clicksData['history'];
 $activeDripGroups = campaign_get_active_drip_groups();
 $sendLog = campaign_get_send_log();
+$formLeads = campaign_get_form_leads();
 $smtpReady = !empty($config['smtp']['enabled']) && !empty($config['smtp']['host']) && !empty($config['smtp']['username']) && !empty($config['smtp']['password']);
 
 $cronStatus = array();
@@ -634,6 +666,40 @@ if ($isCronEmpty) {
               <?php echo campaign_escape($entry['date']); ?> · <?php echo campaign_escape($entry['to']); ?>
               <?php if (!empty($entry['subject'])): ?><br>Asunto: <?php echo campaign_escape($entry['subject']); ?><?php endif; ?>
               <?php if (empty($entry['accepted']) && !empty($entry['error'])): ?><br><span style="color:#ff8888;"><?php echo campaign_escape($entry['error']); ?></span><?php endif; ?>
+            </p>
+          <?php endforeach; ?>
+        </div>
+      </details>
+      <details class="send-log">
+        <summary>
+          <h2>Leads por formulario</h2>
+          <span class="details-icon">▼</span>
+        </summary>
+        <div style="margin-top: 10px;">
+          <p style="font-size:0.78rem;color:#888;margin:0 0 12px;">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#27ae60;vertical-align:middle;"></span> Cualificado (presupuesto superior)
+            &nbsp;·&nbsp;
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#dcdcdc;vertical-align:middle;"></span> No cualificado (inferior)
+            &nbsp;·&nbsp;
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#f0c419;vertical-align:middle;"></span> Pendiente de responder
+          </p>
+          <?php if (!$formLeads): ?>
+            <p style="font-size:0.85rem;color:#888;">No hay leads de formulario todavía (o no se pudieron cargar desde Supabase).</p>
+          <?php endif; ?>
+          <?php foreach ($formLeads as $lead): ?>
+            <?php
+              $estado = isset($lead['respuesta_enviada']) ? $lead['respuesta_enviada'] : 'N';
+              if ($estado === 'Y_SUPERIOR') { $dotColor = '#27ae60'; $estadoLabel = 'Cualificado'; }
+              elseif ($estado === 'N_INFERIOR') { $dotColor = '#dcdcdc'; $estadoLabel = 'No cualificado'; }
+              else { $dotColor = '#f0c419'; $estadoLabel = 'Pendiente'; }
+            ?>
+            <p>
+              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span>
+              <b><?php echo campaign_escape(!empty($lead['empresa']) ? $lead['empresa'] : '—'); ?></b><?php if (!empty($lead['nombre'])): ?> · <?php echo campaign_escape($lead['nombre']); ?><?php endif; ?>
+              <span style="color:#999;font-size:0.82rem;">(<?php echo campaign_escape($estadoLabel); ?>)</span><br>
+              <span style="font-size:0.85rem;color:#888;">
+                <?php if (!empty($lead['email'])): ?><a href="mailto:<?php echo campaign_escape($lead['email']); ?>"><?php echo campaign_escape($lead['email']); ?></a><?php endif; ?><?php if (!empty($lead['tlf'])): ?> · <?php echo campaign_escape($lead['tlf']); ?><?php endif; ?><?php if (!empty($lead['feria'])): ?> · <?php echo campaign_escape($lead['feria']); ?><?php endif; ?><?php if (!empty($lead['metros'])): ?> · <?php echo campaign_escape($lead['metros']); ?> m²<?php endif; ?><?php if (!empty($lead['presupuesto'])): ?> · <?php echo campaign_escape($lead['presupuesto']); ?><?php endif; ?>
+              </span>
             </p>
           <?php endforeach; ?>
         </div>
