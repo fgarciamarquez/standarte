@@ -223,15 +223,14 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
             <td align="center" style="padding:4px 34px 30px;">
               ' . ($emailBody !== '' && $emailBody !== ' ' ? '<p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#333;text-align:center;">' . htmlspecialchars($emailBody, ENT_NOQUOTES, 'UTF-8') . '</p>' : '') . '
               <a href="' . campaign_escape($landingUrl) . '" style="display:inline-block;background:#ffc800;color:#000000;text-decoration:none;border-radius:30px;border:none;padding:12px 28px;font-weight:bold;font-size:13px;letter-spacing:.04em;">' . campaign_escape($emailCta) . '</a>
-              <p style="margin:22px 0 0;text-align:center;"><a href="https://wa.me/34613097148" target="_blank" style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;border-radius:30px;padding:12px 28px;font-weight:bold;font-size:15px;">WhatsApp ' . $phone . '</a></p>
+              <p style="margin:22px 0 0;text-align:center;"><a href="https://wa.me/34613097148" target="_blank" style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;border-radius:30px;padding:12px 28px;font-weight:bold;font-size:15px;">WhatsApp +34 613 097 148</a></p>
               ' . $unsubscribeHtml . '
             </td>
           </tr>
 
           <tr>
             <td style="padding:18px 28px;background:#f2f2f2;text-align:center;font-size:11px;line-height:1.5;color:#777;border-top: 1px solid #e5e5e5;">
-              <strong>Standarte</strong> · <a href="' . campaign_escape($siteUrl) . '" style="color:#777;text-decoration:underline;">' . campaign_escape($siteUrl) . '</a><br>
-              ' . campaign_escape($footerText) . ' ' . $phone . '.
+              <strong>Standarte</strong> · <a href="' . campaign_escape($siteUrl) . '" style="color:#777;text-decoration:underline;">' . campaign_escape($siteUrl) . '</a>
             </td>
           </tr>
 
