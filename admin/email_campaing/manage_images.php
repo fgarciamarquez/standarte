@@ -17,6 +17,28 @@ $images = isset($config['categories']['stands_madera']['images']) ? $config['cat
 $success = '';
 $error = '';
 
+// ====== EDICIÓN del texto alt (AJAX, sin recargar) ======
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_update_alt'])) {
+    header('Content-Type: application/json; charset=utf-8');
+    $src = isset($_POST['src']) ? trim($_POST['src']) : '';
+    $newAlt = isset($_POST['alt']) ? trim($_POST['alt']) : '';
+    $ok = false;
+    if ($src !== '') {
+        $list = $images; // banco actual (ya refleja images_config.json si existe)
+        $found = false;
+        foreach ($list as &$im) {
+            if (isset($im['src']) && $im['src'] === $src) { $im['alt'] = $newAlt; $found = true; }
+        }
+        unset($im);
+        if ($found) {
+            if (!is_dir(__DIR__ . '/data')) { mkdir(__DIR__ . '/data', 0755, true); }
+            $ok = file_put_contents(__DIR__ . '/data/images_config.json', json_encode($list, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)) !== false;
+        }
+    }
+    echo json_encode(array('ok' => $ok));
+    exit;
+}
+
 // ====== SUBIDA DE IMÁGENES nuevas al banco multimedia ======
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['upload_images']['name'][0])) {
     $uploadDir = dirname(dirname(__DIR__)) . '/img/trabajos_email/';
@@ -403,6 +425,31 @@ foreach ($images as $img) {
       white-space: nowrap;
     }
 
+    .alt-edit {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: 0.78rem;
+      color: var(--text);
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.2s ease;
+    }
+
+    .alt-edit:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .alt-saved {
+      display: none;
+      font-size: 0.7rem;
+      color: #28a745;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
     .checkbox-container {
       position: absolute;
       top: 10px;
@@ -518,9 +565,10 @@ foreach ($images as $img) {
                 <div class="checkbox-container" onclick="event.stopPropagation()">
                   <input type="checkbox" name="delete_images[]" value="<?php echo htmlspecialchars($img['src']); ?>" id="chk_<?php echo $cardId; ?>" onchange="updateCardStyle('<?php echo $cardId; ?>')">
                 </div>
-                <div class="image-info">
+                <div class="image-info" onclick="event.stopPropagation()">
                   <p class="image-title"><?php echo htmlspecialchars(basename($img['src'])); ?></p>
-                  <p class="image-alt"><?php echo htmlspecialchars($img['alt']); ?></p>
+                  <input type="text" class="alt-edit" value="<?php echo htmlspecialchars($img['alt']); ?>" data-src="<?php echo htmlspecialchars($img['src']); ?>" maxlength="160" onchange="saveAlt(this)" onblur="saveAlt(this)" title="Editar descripción (alt) — se guarda solo al salir del campo">
+                  <span class="alt-saved">guardado ✓</span>
                 </div>
               </div>
             <?php endforeach; ?>
@@ -548,9 +596,10 @@ foreach ($images as $img) {
                 <div class="checkbox-container" onclick="event.stopPropagation()">
                   <input type="checkbox" name="delete_images[]" value="<?php echo htmlspecialchars($img['src']); ?>" id="chk_<?php echo $cardId; ?>" onchange="updateCardStyle('<?php echo $cardId; ?>')">
                 </div>
-                <div class="image-info">
+                <div class="image-info" onclick="event.stopPropagation()">
                   <p class="image-title"><?php echo htmlspecialchars(basename($img['src'])); ?></p>
-                  <p class="image-alt"><?php echo htmlspecialchars($img['alt']); ?></p>
+                  <input type="text" class="alt-edit" value="<?php echo htmlspecialchars($img['alt']); ?>" data-src="<?php echo htmlspecialchars($img['src']); ?>" maxlength="160" onchange="saveAlt(this)" onblur="saveAlt(this)" title="Editar descripción (alt) — se guarda solo al salir del campo">
+                  <span class="alt-saved">guardado ✓</span>
                 </div>
               </div>
             <?php endforeach; ?>
@@ -562,6 +611,32 @@ foreach ($images as $img) {
   </main>
 
   <script>
+    // Guarda el texto alt al salir del campo (sin recargar).
+    function saveAlt(input) {
+      var alt = input.value;
+      if (input._last === alt) return;        // evita doble guardado (change + blur)
+      input._last = alt;
+      var saved = input.parentNode.querySelector('.alt-saved');
+      fetch('manage_images.php', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'ajax_update_alt=1&src=' + encodeURIComponent(input.dataset.src) + '&alt=' + encodeURIComponent(alt)
+      }).then(function (r) { return r.json(); }).then(function (j) {
+        if (j && j.ok) {
+          input.style.borderColor = '#28a745';
+          if (saved) { saved.style.display = 'inline'; setTimeout(function(){ saved.style.display='none'; }, 1600); }
+          setTimeout(function(){ input.style.borderColor=''; }, 1400);
+        } else {
+          input.style.borderColor = '#dc3545';
+          alert('No se pudo guardar la descripción.');
+        }
+      }).catch(function () {
+        input.style.borderColor = '#dc3545';
+        alert('Error de red al guardar la descripción.');
+      });
+    }
+
     function toggleCard(cardId) {
       const chk = document.getElementById('chk_' + cardId);
       chk.checked = !chk.checked;
