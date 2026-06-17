@@ -2,10 +2,11 @@ name: Automated Drip Campaign
 
 on:
   schedule:
-    # Cada hora en punto, de 08:00 a 18:00 UTC, de lunes a viernes. Sin fines de semana.
+    # Cada hora en punto, de 05:00 a 18:00 UTC (07:00–20:00 hora de Madrid), de lunes a viernes.
+    # La primera tanda (05:00 UTC = 07:00 Madrid) ya envía de inmediato sus 15 correos (sin espera).
     # GitHub Actions NO dispara crones sub-horarios de forma fiable (los limita a ~1/hora),
-    # así que la cadencia honesta es horaria: 15 correos por impulso x 11h = ~165/día laborable.
-    - cron: '0 8-18 * * 1-5'
+    # así que la cadencia honesta es horaria: 15 correos por tanda x 14 h = ~210/día laborable.
+    - cron: '0 5-18 * * 1-5'
   workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
 
 jobs:
