@@ -243,3 +243,199 @@ function campaign_build_email($config, $category, $recipientEmail, $lang, $subje
 </body>
 </html>';
 }
+
+/**
+ * Email de seguimiento personal "Pat" (1 h despues de una visita registrada).
+ * Misma cabecera que el multimedia, foto circular de Patricia, mensaje personal
+ * traducido (con {GRUPO} = lista/feria del contacto), foto aleatoria del banco,
+ * boton CTA y boton de WhatsApp. Reutiliza los helpers del mailer multimedia.
+ */
+function campaign_pat_texts($lang)
+{
+    $t = array(
+        'es' => array(
+            'subject' => 'Hola, soy Pat (Standarte)',
+            'with'    => 'Hola, soy Pat. Gracias por visitar nuestra web. Estaríamos encantados de poder serviros como diseñadores y constructores en vuestra próxima cita en la feria {GRUPO}, o quizás en cualquier otro evento en la península ibérica. No dudes en ponerte en contacto conmigo si tienes algo en mente.',
+            'without' => 'Hola, soy Pat. Gracias por visitar nuestra web. Estaríamos encantados de poder serviros como diseñadores y constructores en vuestra próxima cita ferial, o quizás en cualquier otro evento en la península ibérica. No dudes en ponerte en contacto conmigo si tienes algo en mente.',
+            'bye'     => 'Nos vemos pronto,',
+            'cta'     => 'Ver nuestros proyectos',
+        ),
+        'en' => array(
+            'subject' => "Hi, I'm Pat (Standarte)",
+            'with'    => "Hi, I'm Pat. Thank you for visiting our website. We would be delighted to work with you as designers and builders at your next appointment at the {GRUPO} trade fair, or perhaps at any other event in the Iberian Peninsula. Don't hesitate to get in touch with me if you have something in mind.",
+            'without' => "Hi, I'm Pat. Thank you for visiting our website. We would be delighted to work with you as designers and builders at your next trade fair, or perhaps at any other event in the Iberian Peninsula. Don't hesitate to get in touch with me if you have something in mind.",
+            'bye'     => 'See you soon,',
+            'cta'     => 'See our projects',
+        ),
+        'de' => array(
+            'subject' => 'Hallo, ich bin Pat (Standarte)',
+            'with'    => 'Hallo, ich bin Pat. Danke, dass Sie unsere Website besucht haben. Wir würden uns sehr freuen, Ihnen als Designer und Standbauer bei Ihrem nächsten Termin auf der Messe {GRUPO} zur Seite zu stehen – oder vielleicht bei einer anderen Veranstaltung auf der Iberischen Halbinsel. Zögern Sie nicht, mich zu kontaktieren, wenn Sie etwas im Sinn haben.',
+            'without' => 'Hallo, ich bin Pat. Danke, dass Sie unsere Website besucht haben. Wir würden uns sehr freuen, Ihnen als Designer und Standbauer bei Ihrer nächsten Messe zur Seite zu stehen – oder vielleicht bei einer anderen Veranstaltung auf der Iberischen Halbinsel. Zögern Sie nicht, mich zu kontaktieren, wenn Sie etwas im Sinn haben.',
+            'bye'     => 'Bis bald,',
+            'cta'     => 'Unsere Projekte ansehen',
+        ),
+        'fr' => array(
+            'subject' => 'Bonjour, je suis Pat (Standarte)',
+            'with'    => "Bonjour, je suis Pat. Merci d'avoir visité notre site web. Nous serions ravis de vous accompagner en tant que concepteurs et constructeurs lors de votre prochain rendez-vous au salon {GRUPO}, ou peut-être lors d'un autre événement dans la péninsule Ibérique. N'hésitez pas à me contacter si vous avez un projet en tête.",
+            'without' => "Bonjour, je suis Pat. Merci d'avoir visité notre site web. Nous serions ravis de vous accompagner en tant que concepteurs et constructeurs lors de votre prochain salon, ou peut-être lors d'un autre événement dans la péninsule Ibérique. N'hésitez pas à me contacter si vous avez un projet en tête.",
+            'bye'     => 'À bientôt,',
+            'cta'     => 'Voir nos projets',
+        ),
+        'it' => array(
+            'subject' => 'Ciao, sono Pat (Standarte)',
+            'with'    => 'Ciao, sono Pat. Grazie per aver visitato il nostro sito web. Saremmo lieti di assistervi come designer e costruttori al vostro prossimo appuntamento alla fiera {GRUPO}, o magari in qualsiasi altro evento nella penisola iberica. Non esitate a contattarmi se avete qualcosa in mente.',
+            'without' => 'Ciao, sono Pat. Grazie per aver visitato il nostro sito web. Saremmo lieti di assistervi come designer e costruttori alla vostra prossima fiera, o magari in qualsiasi altro evento nella penisola iberica. Non esitate a contattarmi se avete qualcosa in mente.',
+            'bye'     => 'A presto,',
+            'cta'     => 'Vedi i nostri progetti',
+        ),
+        'pt' => array(
+            'subject' => 'Olá, sou a Pat (Standarte)',
+            'with'    => 'Olá, sou a Pat. Obrigada por visitar o nosso site. Teríamos todo o gosto em trabalhar convosco como designers e construtores no vosso próximo compromisso na feira {GRUPO}, ou talvez em qualquer outro evento na Península Ibérica. Não hesite em entrar em contacto comigo se tiver algo em mente.',
+            'without' => 'Olá, sou a Pat. Obrigada por visitar o nosso site. Teríamos todo o gosto em trabalhar convosco como designers e construtores na vossa próxima feira, ou talvez em qualquer outro evento na Península Ibérica. Não hesite em entrar em contacto comigo se tiver algo em mente.',
+            'bye'     => 'Até breve,',
+            'cta'     => 'Ver os nossos projetos',
+        ),
+        'zh' => array(
+            'subject' => '您好，我是 Pat（Standarte）',
+            'with'    => '您好，我是 Pat。感谢您访问我们的网站。我们非常乐意作为设计与搭建团队，在您下一次参加 {GRUPO} 展会时为您服务，或在伊比利亚半岛的任何其他活动中与您合作。如果您有任何想法，欢迎随时与我联系。',
+            'without' => '您好，我是 Pat。感谢您访问我们的网站。我们非常乐意作为设计与搭建团队，在您下一次参展时为您服务，或在伊比利亚半岛的任何其他活动中与您合作。如果您有任何想法，欢迎随时与我联系。',
+            'bye'     => '期待很快与您相见，',
+            'cta'     => '查看我们的项目',
+        ),
+        'hi' => array(
+            'subject' => 'नमस्ते, मैं Pat हूँ (Standarte)',
+            'with'    => 'नमस्ते, मैं Pat हूँ। हमारी वेबसाइट देखने के लिए धन्यवाद। हमें आपकी अगली {GRUPO} प्रदर्शनी में, या इबेरियन प्रायद्वीप के किसी अन्य आयोजन में, डिज़ाइनर और निर्माता के रूप में आपके साथ काम करके बहुत खुशी होगी। यदि आपके मन में कुछ है तो मुझसे संपर्क करने में संकोच न करें।',
+            'without' => 'नमस्ते, मैं Pat हूँ। हमारी वेबसाइट देखने के लिए धन्यवाद। हमें आपकी अगली प्रदर्शनी में, या इबेरियन प्रायद्वीप के किसी अन्य आयोजन में, डिज़ाइनर और निर्माता के रूप में आपके साथ काम करके बहुत खुशी होगी। यदि आपके मन में कुछ है तो मुझसे संपर्क करने में संकोच न करें।',
+            'bye'     => 'जल्द मिलते हैं,',
+            'cta'     => 'हमारे प्रोजेक्ट देखें',
+        ),
+        'ko' => array(
+            'subject' => '안녕하세요, Pat입니다 (Standarte)',
+            'with'    => '안녕하세요, Pat입니다. 저희 웹사이트를 방문해 주셔서 감사합니다. 다가오는 {GRUPO} 박람회에서, 혹은 이베리아 반도의 다른 어떤 행사에서든 디자이너이자 시공자로서 여러분과 함께할 수 있다면 매우 기쁘겠습니다. 염두에 두신 것이 있으시면 언제든 저에게 연락 주세요.',
+            'without' => '안녕하세요, Pat입니다. 저희 웹사이트를 방문해 주셔서 감사합니다. 다가오는 박람회에서, 혹은 이베리아 반도의 다른 어떤 행사에서든 디자이너이자 시공자로서 여러분과 함께할 수 있다면 매우 기쁘겠습니다. 염두에 두신 것이 있으시면 언제든 저에게 연락 주세요.',
+            'bye'     => '곧 뵙겠습니다,',
+            'cta'     => '프로젝트 보기',
+        ),
+        'ja' => array(
+            'subject' => 'こんにちは、Pat です（Standarte）',
+            'with'    => 'こんにちは、Pat です。私たちのウェブサイトをご覧いただきありがとうございます。次回の {GRUPO} 展示会、あるいはイベリア半島での他のイベントにおいて、デザイナーおよび施工者として皆さまと一緒にお仕事ができれば大変うれしく思います。何かお考えのことがございましたら、お気軽にご連絡ください。',
+            'without' => 'こんにちは、Pat です。私たちのウェブサイトをご覧いただきありがとうございます。次回の展示会、あるいはイベリア半島での他のイベントにおいて、デザイナーおよび施工者として皆さまと一緒にお仕事ができれば大変うれしく思います。何かお考えのことがございましたら、お気軽にご連絡ください。',
+            'bye'     => '近いうちにお会いしましょう、',
+            'cta'     => '私たちのプロジェクトを見る',
+        ),
+    );
+    return isset($t[$lang]) ? $t[$lang] : $t['es'];
+}
+
+function campaign_build_pat_email($config, $recipientEmail, $lang, $grupo = '')
+{
+    $siteUrl = rtrim($config['site_url'], '/');
+    $landingUrl = campaign_tracking_url($config, $recipientEmail);
+    $logoUrl = $siteUrl . '/img/logo_stand-arte_negro.svg';
+    $patUrl = $siteUrl . '/img/team/patricia_circle.jpg';
+    $phone = campaign_escape($config['phone']);
+    $htmlLang = isset($config['languages'][$lang]['html']) ? $config['languages'][$lang]['html'] : 'es';
+    $footerText = isset($config['footer_text'][$lang]) ? $config['footer_text'][$lang] : $config['footer_text']['es'];
+    $headerText = isset($config['header_text'][$lang]) ? $config['header_text'][$lang] : $config['header_text']['es'];
+
+    $texts = campaign_pat_texts($lang);
+    $grupo = trim((string) $grupo);
+    if ($grupo !== '') {
+        $message = str_replace('{GRUPO}', $grupo, $texts['with']);
+    } else {
+        $message = $texts['without'];
+    }
+    $subject = $texts['subject'];
+
+    // Firma legal / baja (misma logica que el multimedia)
+    $configFile = dirname(dirname(__DIR__)) . '/supabase-config.php';
+    if (!is_file($configFile)) {
+        $configFile = dirname(dirname(dirname(__DIR__))) . '/supabase-config.php';
+    }
+    if (is_file($configFile)) {
+        require_once $configFile;
+    }
+    $unsubscribeHtml = '';
+    if (defined('UNSUBSCRIBE_SECRET_SALT')) {
+        $emailBase64 = base64_encode($recipientEmail);
+        $unsubToken = md5($recipientEmail . UNSUBSCRIBE_SECRET_SALT);
+        $unsubscribeLink = $siteUrl . '/unsubscribe.php?email=' . urlencode($emailBase64) . '&token=' . urlencode($unsubToken);
+        $unsubLabels = array(
+            'en' => 'If you do not want to receive these emails, you can <a href="%s" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">unsubscribe here</a>.',
+            'de' => 'Wenn Sie keine weiteren E-Mails erhalten möchten, können Sie sich <a href="%s" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">hier abmelden</a>.',
+            'pt' => 'Se não deseja receber mais estes e-mails, pode <a href="%s" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">cancelar a inscrição aqui</a>.',
+            'es' => 'En cumplimiento de la LSSI-CE y el RGPD, si no deseas recibir más correos, puedes <a href="%s" target="_blank" style="color:#b89400;text-decoration:underline;font-weight:bold;">darte de baja haciendo clic aquí</a>.',
+        );
+        $label = isset($unsubLabels[$lang]) ? $unsubLabels[$lang] : $unsubLabels['es'];
+        $unsubscribeHtml = '<p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#777;text-align:center;">' . sprintf($label, campaign_escape($unsubscribeLink)) . '</p>';
+    }
+
+    // Foto aleatoria del banco multimedia
+    $imageHtml = '';
+    if (isset($config['categories']['stands_madera']['images']) && count($config['categories']['stands_madera']['images'])) {
+        $imagesList = $config['categories']['stands_madera']['images'];
+        shuffle($imagesList);
+        $img = $imagesList[0];
+        $imageHtml = '<a href="' . campaign_escape($landingUrl) . '" style="display:block;text-decoration:none;border:0;margin:0;">'
+            . '<img src="' . campaign_escape(campaign_absolute_url($config, $img['src'])) . '" width="680" alt="' . campaign_escape($img['alt']) . '" style="display:block;width:100%;max-width:680px;height:auto;border:0;margin:0 auto;" />'
+            . '</a>';
+    }
+
+    $messageHtml = htmlspecialchars($message, ENT_NOQUOTES, 'UTF-8');
+    $byeHtml = campaign_escape($texts['bye']);
+
+    return '<!doctype html>
+<html lang="' . campaign_escape($htmlLang) . '">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>' . campaign_escape($subject) . '</title>
+</head>
+<body style="margin:0;padding:0;background:#f7f6f1;color:#252525;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f7f6f1;margin:0;padding:0;">
+    <tr>
+      <td align="center" style="padding:28px 14px;">
+        <table role="presentation" width="680" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:680px;background:#ffffff;border-collapse:collapse;box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); border-radius: 6px; overflow: hidden;">
+          <tr>
+            <td align="center" style="background-color: #ffffff; padding:35px 28px 24px;">
+              <img src="' . campaign_escape($logoUrl) . '" width="240" alt="Standarte" style="display:block;border:0;outline:none;text-decoration:none;width:240px !important;max-width:55% !important;height:auto !important;margin:0 auto 12px;" />
+              <p style="color: #222222; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-family: Arial, sans-serif; text-align: center;">' . campaign_escape($headerText) . '</p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:24px 30px 6px; text-align:center;">
+              <img src="' . campaign_escape($patUrl) . '" width="150" height="150" alt="Patricia Jiménez — Standarte" style="display:block;width:150px;height:150px;max-width:150px;border-radius:50%;border:0;outline:none;margin:0 auto 10px;" />
+              <p style="margin:0;font-size:15px;font-weight:bold;color:#111;text-align:center;">Patricia Jiménez</p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:14px 34px 6px; text-align:center;">
+              <p style="margin:0 0 18px;font-size:16px;line-height:1.75;color:#333;text-align:center;">' . $messageHtml . '</p>
+              <p style="margin:0;font-size:16px;line-height:1.75;color:#333;text-align:center;">' . $byeHtml . '<br><strong>Pat ;-)</strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:18px 0 6px;">
+              ' . $imageHtml . '
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:4px 34px 30px;">
+              <a href="' . campaign_escape($landingUrl) . '" style="display:inline-block;background:#ffc800;color:#000000;text-decoration:none;border-radius:30px;border:none;padding:12px 28px;font-weight:bold;font-size:13px;letter-spacing:.04em;">' . campaign_escape($texts['cta']) . '</a>
+              <p style="margin:22px 0 0;text-align:center;"><a href="https://wa.me/34613097148" target="_blank" style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;border-radius:30px;padding:12px 28px;font-weight:bold;font-size:15px;">WhatsApp ' . $phone . '</a></p>
+              ' . $unsubscribeHtml . '
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:18px 28px;background:#f2f2f2;text-align:center;font-size:11px;line-height:1.5;color:#777;border-top: 1px solid #e5e5e5;">
+              <strong>Standarte</strong> · <a href="' . campaign_escape($siteUrl) . '" style="color:#777;text-decoration:underline;">' . campaign_escape($siteUrl) . '</a><br>
+              ' . campaign_escape($footerText) . ' ' . $phone . '.
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>';
+}
