@@ -3,6 +3,9 @@
   export let size = 20;
 </script>
 
+<!-- Banderas dentro de un círculo gris oscuro: da contraste a las que tienen fondo
+     blanco (Japón, Corea, Italia), que sobre el menú claro no se distinguían. -->
+<span class="flag-chip" aria-hidden="true">
 {#if langCode === 'es'}
   <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0;" aria-hidden="true">
     <rect width="512" height="128" fill="#AD1519"/>
@@ -38,7 +41,7 @@
     <rect x="341.3" width="170.7" height="512" fill="#F31830"/>
   </svg>
 {:else if langCode === 'it'}
-  <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.15);" aria-hidden="true">
+  <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0;" aria-hidden="true">
     <rect width="170.7" height="512" fill="#009246"/>
     <rect x="170.7" width="170.7" height="512" fill="#FFF"/>
     <rect x="341.3" width="170.7" height="512" fill="#CE2B37"/>
@@ -57,7 +60,7 @@
     <circle cx="256" cy="256" r="8" fill="#000080"/>
   </svg>
 {:else if langCode === 'ko'}
-  <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.15);" aria-hidden="true">
+  <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0;" aria-hidden="true">
     <rect width="512" height="512" fill="#FFF"/>
     <path d="M256 128 A128 128 0 0 1 256 384 A128 128 0 0 1 256 128" fill="#CD2E3A"/>
     <path d="M256 256 A64 64 0 0 1 256 384 A64 64 0 0 1 256 256" fill="#0047A0"/>
@@ -69,8 +72,26 @@
     <rect x="370" y="370" width="40" height="12" fill="#000" transform="rotate(45 370 370)"/>
   </svg>
 {:else if langCode === 'ja'}
-  <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.15);" aria-hidden="true">
+  <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0;" aria-hidden="true">
     <rect width="512" height="512" fill="#FFF"/>
     <circle cx="256" cy="256" r="115" fill="#BC002D"/>
   </svg>
 {/if}
+</span>
+
+<style>
+  .flag-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #3a3f47;            /* gris oscuro */
+    border-radius: 50%;
+    padding: 2px;                   /* anillo oscuro alrededor de la bandera */
+    box-sizing: content-box;
+    line-height: 0;
+    vertical-align: middle;
+  }
+  .flag-chip :global(svg) {
+    display: block;
+  }
+</style>
