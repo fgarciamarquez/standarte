@@ -25,6 +25,36 @@ if (!file_exists($supaConfigPath)) {
 }
 require_once $supaConfigPath;
 
+// --- THROTTLE de cadencia y cupo --------------------------------------------------
+// Hace SEGURO llamar a este endpoint desde VARIOS disparadores redundantes
+// (cron-job.org, GitHub Actions, OVH...): solo se ejecuta 1 tanda cada
+// DRIP_MIN_INTERVAL y nunca se superan DRIP_DAILY_CAP correos al día, sin importar
+// cuántas veces lo llamen. El servidor manda, no el reloj de cada cron.
+$DRIP_MIN_INTERVAL = 2400; // 40 min mínimo entre tandas
+$DRIP_DAILY_CAP    = 165;  // tope diario de seguridad
+$throttleFile = __DIR__ . '/data/drip_throttle.json';
+$dripToday = date('Y-m-d');
+$throttle = is_file($throttleFile) ? json_decode(file_get_contents($throttleFile), true) : array();
+if (!is_array($throttle) || (isset($throttle['date']) ? $throttle['date'] : '') !== $dripToday) {
+    $throttle = array('date' => $dripToday, 'sent_today' => 0, 'last_batch_ts' => 0);
+}
+if (!isset($_GET['dryrun'])) {
+    $sinceLast = time() - (int) (isset($throttle['last_batch_ts']) ? $throttle['last_batch_ts'] : 0);
+    if ($sinceLast < $DRIP_MIN_INTERVAL) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(array('throttled' => true, 'reason' => 'too_soon', 'segundos_desde_ultima_tanda' => $sinceLast, 'min_intervalo' => $DRIP_MIN_INTERVAL, 'enviados_hoy' => (int) $throttle['sent_today']), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    if ((int) $throttle['sent_today'] >= $DRIP_DAILY_CAP) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(array('throttled' => true, 'reason' => 'daily_cap', 'enviados_hoy' => (int) $throttle['sent_today'], 'cupo_diario' => $DRIP_DAILY_CAP), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    // Reservamos el turno YA, para que dos disparadores solapados no envíen por duplicado.
+    $throttle['last_batch_ts'] = time();
+    file_put_contents($throttleFile, json_encode($throttle, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+}
+
 // Modo simulación (?dryrun=1): capturamos la salida para devolver JSON limpio sin enviar correos.
 $__dryrun = isset($_GET['dryrun']);
 if ($__dryrun) { ob_start(); }
@@ -67,6 +97,8 @@ function supa_request($endpoint, $method = 'GET', $data = null) {
 }
 
 $emails_per_execution = 15;
+// No superar el cupo diario restante (throttle).
+$emails_per_execution = max(0, min($emails_per_execution, $DRIP_DAILY_CAP - (int) (isset($throttle['sent_today']) ? $throttle['sent_today'] : 0)));
 
 // Definir ventana de envío: (EventDate está entre Hoy + 3 meses y Hoy + 5 meses)
 // Dicho de otra manera: Hoy está a una distancia de entre 3 y 5 meses del evento.
@@ -291,6 +323,12 @@ write_cron_status('success', "Proceso cron finalizado. Correos enviados: $sentCo
     'sent_count' => $sentCount
 ]);
 echo "Proceso cron finalizado. Correos enviados: $sentCount\n";
+
+// Actualizar el contador diario del throttle con lo realmente enviado.
+if (!isset($_GET['dryrun']) && isset($throttleFile)) {
+    $throttle['sent_today'] = (int) (isset($throttle['sent_today']) ? $throttle['sent_today'] : 0) + $sentCount;
+    file_put_contents($throttleFile, json_encode($throttle, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+}
 
 // Ejecutar el limpiador de rebotes IMAP al finalizar el envío (automatización de limpieza)
 if (defined('BOUNCE_CRON_TOKEN')) {
