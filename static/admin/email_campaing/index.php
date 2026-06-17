@@ -386,6 +386,27 @@ if (campaign_is_logged_in() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_
     exit;
 }
 
+// Marca manual "atendido" de un lead del formulario (icono de correo gris/verde).
+// Recordatorio personal del admin: "he enviado correo, pendiente de conversión".
+// Se guarda en data/leads_atendidos.json (id => fecha ISO); no toca Supabase.
+if (campaign_is_logged_in() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_toggle_lead_atendido'])) {
+    $lid = (int) $_POST['ajax_toggle_lead_atendido'];
+    $want = isset($_POST['atendido']) && $_POST['atendido'] === '1';
+    $ok = false;
+    $state = false;
+    if ($lid > 0) {
+        $atFile = __DIR__ . '/data/leads_atendidos.json';
+        $map = is_file($atFile) ? json_decode(file_get_contents($atFile), true) : array();
+        if (!is_array($map)) $map = array();
+        if ($want) { $map[(string) $lid] = date('c'); $state = true; }
+        else { unset($map[(string) $lid]); $state = false; }
+        $ok = (file_put_contents($atFile, json_encode($map, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)) !== false);
+    }
+    header('Content-Type: application/json');
+    echo json_encode(array('ok' => $ok, 'atendido' => $state));
+    exit;
+}
+
 if (!campaign_is_logged_in()) {
     ?>
 <!doctype html>
@@ -807,12 +828,18 @@ if ($isCronEmpty) {
           <?php if (!$formLeads): ?>
             <p style="font-size:0.85rem;color:#888;">No hay leads de formulario todavía (o no se pudieron cargar desde Supabase).</p>
           <?php endif; ?>
+          <?php
+            $atendidosFile = __DIR__ . '/data/leads_atendidos.json';
+            $leadsAtendidos = is_file($atendidosFile) ? json_decode(file_get_contents($atendidosFile), true) : array();
+            if (!is_array($leadsAtendidos)) $leadsAtendidos = array();
+          ?>
           <?php foreach ($formLeads as $lead): ?>
             <?php
               $estado = isset($lead['respuesta_enviada']) ? $lead['respuesta_enviada'] : 'N';
               if ($estado === 'Y_SUPERIOR') { $dotColor = '#27ae60'; $estadoLabel = 'Cualificado'; }
               elseif ($estado === 'N_INFERIOR') { $dotColor = '#dcdcdc'; $estadoLabel = 'No cualificado'; }
               else { $dotColor = '#f0c419'; $estadoLabel = 'Pendiente'; }
+              $isAtendido = isset($leadsAtendidos[(string) $lead['id']]);
               $fechaStr = '';
               if (!empty($lead['created_at'])) {
                 try {
@@ -823,7 +850,7 @@ if ($isCronEmpty) {
               }
             ?>
             <p id="lead-row-<?php echo (int) $lead['id']; ?>">
-              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><span role="button" tabindex="0" title="Borrar lead" onclick="deleteLead(event, <?php echo (int) $lead['id']; ?>, this);" style="cursor:pointer;color:#c0392b;font-size:15px;font-weight:bold;line-height:1;vertical-align:middle;margin-right:7px;user-select:none;">✕</span>
+              <span title="<?php echo campaign_escape($estadoLabel); ?>" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:<?php echo $dotColor; ?>;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,0.08);"></span><span role="button" tabindex="0" title="Borrar lead" onclick="deleteLead(event, <?php echo (int) $lead['id']; ?>, this);" style="cursor:pointer;color:#c0392b;font-size:15px;font-weight:bold;line-height:1;vertical-align:middle;margin-right:7px;user-select:none;">✕</span><span role="button" tabindex="0" onclick="toggleAtendido(event, <?php echo (int) $lead['id']; ?>, this);" data-atendido="<?php echo $isAtendido ? '1' : '0'; ?>" title="<?php echo $isAtendido ? 'Atendido · pendiente de conversión (pulsa para desmarcar)' : 'Marcar como atendido (he enviado correo)'; ?>" aria-label="Estado atendido" style="cursor:pointer;display:inline-block;vertical-align:middle;margin-right:8px;line-height:1;color:<?php echo $isAtendido ? '#27ae60' : '#c9c9c9'; ?>;user-select:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg></span>
               <b><?php echo campaign_escape(!empty($lead['empresa']) ? $lead['empresa'] : '—'); ?></b><?php if (!empty($lead['nombre'])): ?> · <?php echo campaign_escape($lead['nombre']); ?><?php endif; ?>
               <span style="color:#999;font-size:0.82rem;">(<?php echo campaign_escape($estadoLabel); ?>)</span><br>
               <span style="font-size:0.85rem;color:#888;">
@@ -882,6 +909,34 @@ if ($isCronEmpty) {
             btn.removeAttribute('data-armed');
             btn.innerHTML = btn.getAttribute('data-html') || '✕';
             alert('Error de red al borrar.');
+          });
+        return false;
+      }
+
+      // Marca manual "atendido" (icono de correo) de un lead: gris <-> verde, persistente.
+      function toggleAtendido(e, id, btn) {
+        if (e) e.preventDefault();
+        var next = btn.getAttribute('data-atendido') === '1' ? 0 : 1;
+        btn.style.opacity = '0.45';
+        fetch('index.php', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'ajax_toggle_lead_atendido=' + encodeURIComponent(id) + '&atendido=' + next
+        }).then(function (r) { return r.json(); })
+          .then(function (j) {
+            btn.style.opacity = '1';
+            if (j && j.ok) {
+              var on = !!j.atendido;
+              btn.setAttribute('data-atendido', on ? '1' : '0');
+              btn.style.color = on ? '#27ae60' : '#c9c9c9';
+              btn.title = on ? 'Atendido · pendiente de conversión (pulsa para desmarcar)' : 'Marcar como atendido (he enviado correo)';
+            } else {
+              alert('No se pudo guardar el estado.');
+            }
+          }).catch(function () {
+            btn.style.opacity = '1';
+            alert('Error de red al guardar el estado.');
           });
         return false;
       }
