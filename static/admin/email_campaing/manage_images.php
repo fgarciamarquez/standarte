@@ -17,7 +17,62 @@ $images = isset($config['categories']['stands_madera']['images']) ? $config['cat
 $success = '';
 $error = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// ====== SUBIDA DE IMÁGENES nuevas al banco multimedia ======
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['upload_images']['name'][0])) {
+    $uploadDir = dirname(dirname(__DIR__)) . '/img/trabajos_email/';
+    if (!is_dir($uploadDir)) { @mkdir($uploadDir, 0755, true); }
+    $altText = isset($_POST['upload_alt']) ? trim($_POST['upload_alt']) : '';
+    if ($altText === '') { $altText = 'Stand ferial de diseño Standarte'; }
+    // Solo se aceptan imágenes reales (validado por MIME, no por extensión).
+    $allowed = array('image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'image/avif' => 'avif', 'image/gif' => 'gif');
+    $maxBytes = 12 * 1024 * 1024;
+    $f = $_FILES['upload_images'];
+    $count = is_array($f['name']) ? count($f['name']) : 0;
+    $finfo = function_exists('finfo_open') ? finfo_open(FILEINFO_MIME_TYPE) : null;
+    $added = array();
+    $errs = array();
+    for ($i = 0; $i < $count; $i++) {
+        if ($f['error'][$i] === UPLOAD_ERR_NO_FILE) { continue; }
+        $orig = $f['name'][$i];
+        if ($f['error'][$i] !== UPLOAD_ERR_OK) { $errs[] = "$orig: fallo en la subida (cod. " . $f['error'][$i] . ")"; continue; }
+        if ($f['size'][$i] > $maxBytes) { $errs[] = "$orig: supera el máximo de 12 MB"; continue; }
+        $tmp = $f['tmp_name'][$i];
+        $mime = $finfo ? finfo_file($finfo, $tmp) : '';
+        if ($mime === '' || $mime === false) { $gi = @getimagesize($tmp); $mime = $gi ? $gi['mime'] : ''; }
+        if (!isset($allowed[$mime])) { $errs[] = "$orig: tipo no permitido (" . ($mime ?: 'desconocido') . ")"; continue; }
+        $ext = $allowed[$mime];
+        // Saneado del nombre: sin acentos, sin espacios, solo [a-z0-9_] (evita los fallos de rutas).
+        $base = pathinfo($orig, PATHINFO_FILENAME);
+        if (function_exists('iconv')) { $tr = @iconv('UTF-8', 'ASCII//TRANSLIT', $base); if ($tr !== false) { $base = $tr; } }
+        $base = strtolower($base);
+        $base = preg_replace('/[^a-z0-9]+/', '_', $base);
+        $base = trim($base, '_');
+        if ($base === '') { $base = 'imagen'; }
+        $name = $base . '.' . $ext;
+        $n = 1;
+        while (is_file($uploadDir . $name)) { $name = $base . '_' . $n . '.' . $ext; $n++; }
+        if (move_uploaded_file($tmp, $uploadDir . $name)) {
+            $added[] = array('src' => 'img/trabajos_email/' . $name, 'alt' => $altText);
+        } else {
+            $errs[] = "$orig: no se pudo guardar (revise permisos de img/trabajos_email/)";
+        }
+    }
+    if ($finfo) { finfo_close($finfo); }
+    if (!empty($added)) {
+        if (!is_dir(__DIR__ . '/data')) { mkdir(__DIR__ . '/data', 0755, true); }
+        $jsonFile = __DIR__ . '/data/images_config.json';
+        $allImages = array_merge($images, $added);
+        if (file_put_contents($jsonFile, json_encode($allImages, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)) !== false) {
+            $success = count($added) . ' imagen(es) subida(s) y añadida(s) a las campañas.';
+        } else {
+            $error = 'Imágenes guardadas en disco, pero no se pudo actualizar images_config.json (permisos de data/).';
+        }
+    }
+    if (!empty($errs)) { $error = trim($error . "\n" . implode("\n", $errs)); }
+    // Recargar configuración para reflejar las nuevas imágenes en la cuadrícula.
+    $config = require __DIR__ . '/config.php';
+    $images = isset($config['categories']['stands_madera']['images']) ? $config['categories']['stands_madera']['images'] : array();
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $deleteList = isset($_POST['delete_images']) ? $_POST['delete_images'] : array();
     
     // If they clicked "Eliminar Conjunto Aleatorio", we force add all 01_ images to delete list
@@ -414,6 +469,21 @@ foreach ($images as $img) {
         Haz clic sobre las imágenes que no te gusten abajo para seleccionarlas (se marcarán con un <strong>borde rojo</strong>).
         Una vez que selecciones una o más imágenes, aparecerá automáticamente el botón flotante <strong>"Borrar"</strong> al final de la pantalla para eliminarlas de las campañas.
       </p>
+    </div>
+
+    <div class="panel-info" style="padding: 24px;">
+      <h2 style="margin-top:0;">Subir nuevas imágenes</h2>
+      <p style="color:var(--text-muted);line-height:1.6;margin-bottom:16px;">
+        Añade imágenes al banco multimedia de las campañas. Formatos: JPG, PNG, WEBP, AVIF, GIF · máx. 12&nbsp;MB cada una · puedes seleccionar varias a la vez.
+        Los nombres se limpian automáticamente (sin espacios ni acentos) para evitar errores.
+      </p>
+      <form method="post" enctype="multipart/form-data" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+        <input type="file" name="upload_images[]" accept="image/jpeg,image/png,image/webp,image/avif,image/gif" multiple required
+               style="flex:1 1 240px;min-width:0;padding:10px;border:1px solid var(--border);border-radius:8px;background:#fff;font-family:inherit;">
+        <input type="text" name="upload_alt" maxlength="120" placeholder="Descripción (alt) — opcional, común a esta tanda"
+               style="flex:1 1 220px;min-width:0;padding:11px 14px;border:1px solid var(--border);border-radius:8px;font-family:inherit;">
+        <button type="submit" class="btn btn-primary">⬆ Subir imágenes</button>
+      </form>
     </div>
 
     <form method="post" id="images-form">
