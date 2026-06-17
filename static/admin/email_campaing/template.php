@@ -258,70 +258,70 @@ function campaign_pat_texts($lang)
             'with'    => 'Hola, soy Pat. Gracias por visitar nuestra web. Estaríamos encantados de poder serviros como diseñadores y constructores en vuestra próxima cita en la feria {GRUPO}, o quizás en cualquier otro evento en la península ibérica. No dudes en ponerte en contacto conmigo si tienes algo en mente.',
             'without' => 'Hola, soy Pat. Gracias por visitar nuestra web. Estaríamos encantados de poder serviros como diseñadores y constructores en vuestra próxima cita ferial, o quizás en cualquier otro evento en la península ibérica. No dudes en ponerte en contacto conmigo si tienes algo en mente.',
             'bye'     => 'Nos vemos pronto,',
-            'cta'     => 'Ver nuestros proyectos',
+            'cta'     => 'Presupuesto en 24 h',
         ),
         'en' => array(
             'subject' => "Hi, I'm Pat (Standarte)",
             'with'    => "Hi, I'm Pat. Thank you for visiting our website. We would be delighted to work with you as designers and builders at your next appointment at the {GRUPO} trade fair, or perhaps at any other event in the Iberian Peninsula. Don't hesitate to get in touch with me if you have something in mind.",
             'without' => "Hi, I'm Pat. Thank you for visiting our website. We would be delighted to work with you as designers and builders at your next trade fair, or perhaps at any other event in the Iberian Peninsula. Don't hesitate to get in touch with me if you have something in mind.",
             'bye'     => 'See you soon,',
-            'cta'     => 'See our projects',
+            'cta'     => 'Quote in 24 h',
         ),
         'de' => array(
             'subject' => 'Hallo, ich bin Pat (Standarte)',
             'with'    => 'Hallo, ich bin Pat. Danke, dass Sie unsere Website besucht haben. Wir würden uns sehr freuen, Ihnen als Designer und Standbauer bei Ihrem nächsten Termin auf der Messe {GRUPO} zur Seite zu stehen – oder vielleicht bei einer anderen Veranstaltung auf der Iberischen Halbinsel. Zögern Sie nicht, mich zu kontaktieren, wenn Sie etwas im Sinn haben.',
             'without' => 'Hallo, ich bin Pat. Danke, dass Sie unsere Website besucht haben. Wir würden uns sehr freuen, Ihnen als Designer und Standbauer bei Ihrer nächsten Messe zur Seite zu stehen – oder vielleicht bei einer anderen Veranstaltung auf der Iberischen Halbinsel. Zögern Sie nicht, mich zu kontaktieren, wenn Sie etwas im Sinn haben.',
             'bye'     => 'Bis bald,',
-            'cta'     => 'Unsere Projekte ansehen',
+            'cta'     => 'Angebot in 24 Std.',
         ),
         'fr' => array(
             'subject' => 'Bonjour, je suis Pat (Standarte)',
             'with'    => "Bonjour, je suis Pat. Merci d'avoir visité notre site web. Nous serions ravis de vous accompagner en tant que concepteurs et constructeurs lors de votre prochain rendez-vous au salon {GRUPO}, ou peut-être lors d'un autre événement dans la péninsule Ibérique. N'hésitez pas à me contacter si vous avez un projet en tête.",
             'without' => "Bonjour, je suis Pat. Merci d'avoir visité notre site web. Nous serions ravis de vous accompagner en tant que concepteurs et constructeurs lors de votre prochain salon, ou peut-être lors d'un autre événement dans la péninsule Ibérique. N'hésitez pas à me contacter si vous avez un projet en tête.",
             'bye'     => 'À bientôt,',
-            'cta'     => 'Voir nos projets',
+            'cta'     => 'Devis en 24 h',
         ),
         'it' => array(
             'subject' => 'Ciao, sono Pat (Standarte)',
             'with'    => 'Ciao, sono Pat. Grazie per aver visitato il nostro sito web. Saremmo lieti di assistervi come designer e costruttori al vostro prossimo appuntamento alla fiera {GRUPO}, o magari in qualsiasi altro evento nella penisola iberica. Non esitate a contattarmi se avete qualcosa in mente.',
             'without' => 'Ciao, sono Pat. Grazie per aver visitato il nostro sito web. Saremmo lieti di assistervi come designer e costruttori alla vostra prossima fiera, o magari in qualsiasi altro evento nella penisola iberica. Non esitate a contattarmi se avete qualcosa in mente.',
             'bye'     => 'A presto,',
-            'cta'     => 'Vedi i nostri progetti',
+            'cta'     => 'Preventivo in 24 h',
         ),
         'pt' => array(
             'subject' => 'Olá, sou a Pat (Standarte)',
             'with'    => 'Olá, sou a Pat. Obrigada por visitar o nosso site. Teríamos todo o gosto em trabalhar convosco como designers e construtores no vosso próximo compromisso na feira {GRUPO}, ou talvez em qualquer outro evento na Península Ibérica. Não hesite em entrar em contacto comigo se tiver algo em mente.',
             'without' => 'Olá, sou a Pat. Obrigada por visitar o nosso site. Teríamos todo o gosto em trabalhar convosco como designers e construtores na vossa próxima feira, ou talvez em qualquer outro evento na Península Ibérica. Não hesite em entrar em contacto comigo se tiver algo em mente.',
             'bye'     => 'Até breve,',
-            'cta'     => 'Ver os nossos projetos',
+            'cta'     => 'Orçamento em 24 h',
         ),
         'zh' => array(
             'subject' => '您好，我是 Pat（Standarte）',
             'with'    => '您好，我是 Pat。感谢您访问我们的网站。我们非常乐意作为设计与搭建团队，在您下一次参加 {GRUPO} 展会时为您服务，或在伊比利亚半岛的任何其他活动中与您合作。如果您有任何想法，欢迎随时与我联系。',
             'without' => '您好，我是 Pat。感谢您访问我们的网站。我们非常乐意作为设计与搭建团队，在您下一次参展时为您服务，或在伊比利亚半岛的任何其他活动中与您合作。如果您有任何想法，欢迎随时与我联系。',
             'bye'     => '期待很快与您相见，',
-            'cta'     => '查看我们的项目',
+            'cta'     => '24小时内报价',
         ),
         'hi' => array(
             'subject' => 'नमस्ते, मैं Pat हूँ (Standarte)',
             'with'    => 'नमस्ते, मैं Pat हूँ। हमारी वेबसाइट देखने के लिए धन्यवाद। हमें आपकी अगली {GRUPO} प्रदर्शनी में, या इबेरियन प्रायद्वीप के किसी अन्य आयोजन में, डिज़ाइनर और निर्माता के रूप में आपके साथ काम करके बहुत खुशी होगी। यदि आपके मन में कुछ है तो मुझसे संपर्क करने में संकोच न करें।',
             'without' => 'नमस्ते, मैं Pat हूँ। हमारी वेबसाइट देखने के लिए धन्यवाद। हमें आपकी अगली प्रदर्शनी में, या इबेरियन प्रायद्वीप के किसी अन्य आयोजन में, डिज़ाइनर और निर्माता के रूप में आपके साथ काम करके बहुत खुशी होगी। यदि आपके मन में कुछ है तो मुझसे संपर्क करने में संकोच न करें।',
             'bye'     => 'जल्द मिलते हैं,',
-            'cta'     => 'हमारे प्रोजेक्ट देखें',
+            'cta'     => '24 घंटे में कोटेशन',
         ),
         'ko' => array(
             'subject' => '안녕하세요, Pat입니다 (Standarte)',
             'with'    => '안녕하세요, Pat입니다. 저희 웹사이트를 방문해 주셔서 감사합니다. 다가오는 {GRUPO} 박람회에서, 혹은 이베리아 반도의 다른 어떤 행사에서든 디자이너이자 시공자로서 여러분과 함께할 수 있다면 매우 기쁘겠습니다. 염두에 두신 것이 있으시면 언제든 저에게 연락 주세요.',
             'without' => '안녕하세요, Pat입니다. 저희 웹사이트를 방문해 주셔서 감사합니다. 다가오는 박람회에서, 혹은 이베리아 반도의 다른 어떤 행사에서든 디자이너이자 시공자로서 여러분과 함께할 수 있다면 매우 기쁘겠습니다. 염두에 두신 것이 있으시면 언제든 저에게 연락 주세요.',
             'bye'     => '곧 뵙겠습니다,',
-            'cta'     => '프로젝트 보기',
+            'cta'     => '24시간 내 견적',
         ),
         'ja' => array(
             'subject' => 'こんにちは、Pat です（Standarte）',
             'with'    => 'こんにちは、Pat です。私たちのウェブサイトをご覧いただきありがとうございます。次回の {GRUPO} 展示会、あるいはイベリア半島での他のイベントにおいて、デザイナーおよび施工者として皆さまと一緒にお仕事ができれば大変うれしく思います。何かお考えのことがございましたら、お気軽にご連絡ください。',
             'without' => 'こんにちは、Pat です。私たちのウェブサイトをご覧いただきありがとうございます。次回の展示会、あるいはイベリア半島での他のイベントにおいて、デザイナーおよび施工者として皆さまと一緒にお仕事ができれば大変うれしく思います。何かお考えのことがございましたら、お気軽にご連絡ください。',
             'bye'     => '近いうちにお会いしましょう、',
-            'cta'     => '私たちのプロジェクトを見る',
+            'cta'     => '24時間で見積もり',
         ),
     );
     return isset($t[$lang]) ? $t[$lang] : $t['es'];
@@ -422,14 +422,13 @@ function campaign_build_pat_email($config, $recipientEmail, $lang, $grupo = '')
           <tr>
             <td align="center" style="padding:4px 34px 30px;">
               <a href="' . campaign_escape($landingUrl) . '" style="display:inline-block;background:#ffc800;color:#000000;text-decoration:none;border-radius:30px;border:none;padding:12px 28px;font-weight:bold;font-size:13px;letter-spacing:.04em;">' . campaign_escape($texts['cta']) . '</a>
-              <p style="margin:22px 0 0;text-align:center;"><a href="https://wa.me/34613097148" target="_blank" style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;border-radius:30px;padding:12px 28px;font-weight:bold;font-size:15px;">WhatsApp ' . $phone . '</a></p>
+              <p style="margin:22px 0 0;text-align:center;"><a href="https://wa.me/34613097148" target="_blank" style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;border-radius:30px;padding:12px 28px;font-weight:bold;font-size:15px;">WhatsApp +34 613 097 148</a></p>
               ' . $unsubscribeHtml . '
             </td>
           </tr>
           <tr>
             <td style="padding:18px 28px;background:#f2f2f2;text-align:center;font-size:11px;line-height:1.5;color:#777;border-top: 1px solid #e5e5e5;">
-              <strong>Standarte</strong> · <a href="' . campaign_escape($siteUrl) . '" style="color:#777;text-decoration:underline;">' . campaign_escape($siteUrl) . '</a><br>
-              ' . campaign_escape($footerText) . ' ' . $phone . '.
+              <strong>Standarte</strong> · <a href="' . campaign_escape($siteUrl) . '" style="color:#777;text-decoration:underline;">' . campaign_escape($siteUrl) . '</a>
             </td>
           </tr>
         </table>
