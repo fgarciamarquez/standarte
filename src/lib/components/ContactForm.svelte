@@ -1,14 +1,21 @@
 <script>
+  import { onMount } from 'svelte';
   export let lang;
   export let labels;
   let status = null;
   let statusMessage = '';
   let sending = false;
+  // Time-trap anti-spam: marca de tiempo de carga (solo cliente).
+  let mountedAt = 0;
+  onMount(() => { mountedAt = Date.now(); });
 
   async function handleSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
+    // ms transcurridos desde la carga; si por lo que sea no hay marca, enviamos un
+    // valor que pasa el filtro (fail-open) para no bloquear nunca a una persona.
+    formData.append('form_elapsed', String(mountedAt ? Date.now() - mountedAt : 3000));
 
     sending = true;
     status = null;
@@ -64,7 +71,7 @@
       </aside>
 
       <div class="contact-block">
-        <form id="presupuestoForm" method="post" action="/admin/ajax_presupuesto_form.php" on:submit={handleSubmit}>
+        <form id="presupuestoForm" method="post" accept-charset="UTF-8" action="/admin/ajax_presupuesto_form.php" on:submit={handleSubmit}>
           <input type="hidden" name="form_lang" value={lang} />
 
           <!-- Honeypot anti-spam: invisible para humanos; si llega relleno, el servidor descarta el envío -->

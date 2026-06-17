@@ -33,8 +33,16 @@ include("config.php");
 
 
 <?php  
+	mb_internal_encoding('UTF-8');
 	function post_value($key, $default = '') {
-		return trim((string)($_POST[$key] ?? $default));
+		$v = (string)($_POST[$key] ?? $default);
+		// Blindaje de codificación: si el texto no es UTF-8 válido (algún cliente lo
+		// manda en Latin-1/Windows-1252), lo convertimos. Evita el json_encode vacío
+		// (lead perdido) y los acentos corruptos tipo "DÃ­a" en vez de "Día".
+		if ($v !== '' && !mb_check_encoding($v, 'UTF-8')) {
+			$v = mb_convert_encoding($v, 'UTF-8', 'Windows-1252');
+		}
+		return trim($v);
 	}
 
 	function get_fair_comment($feria_name, $lang) {
@@ -226,6 +234,32 @@ include("config.php");
 		echo json_encode(array('error' => 'error', 'msg' => 'Debe aceptar la política de privacidad. / You must accept the privacy policy.'));
 		exit;
 	}
+
+	// --- ANTI-SPAM REFORZADO ---------------------------------------------------------
+	// Rechazo SILENCIOSO (devolvemos "éxito" falso para que el bot no reintente ni adapte).
+	$as_empresa = post_value('form_empresa');
+	$as_tlf     = post_value('form_tlf');
+	$as_nombre  = post_value('form_nombre');
+	$as_feria   = post_value('form_feria');
+	$is_bot = false;
+	// (a) Honeypot reforzado: empresa y tlf están OCULTOS en el formulario (field-hidden),
+	//     una persona no puede rellenarlos. Si llegan con contenido, es un bot.
+	//     [Si algún día se reactivan como campos VISIBLES, eliminar esta regla.]
+	if ($as_empresa !== '' || $as_tlf !== '') $is_bot = true;
+	// (b) Time-trap: el formulario añade form_elapsed (ms desde que se cargó la página).
+	//     Una persona tarda >2 s en rellenarlo; un envío casi instantáneo es un bot.
+	//     Fail-open: si el campo no llega (0), no bloqueamos por aquí (lo cubren las demás).
+	$as_elapsed = isset($_POST['form_elapsed']) ? intval($_POST['form_elapsed']) : 0;
+	if ($as_elapsed > 0 && $as_elapsed < 1500) $is_bot = true;
+	// (c) Nombre y feria no contienen URLs ni emails en envíos legítimos.
+	if (preg_match('#https?://|www\.|[\w.+-]+@[\w-]+\.[a-z]#i', $as_nombre . ' ' . $as_feria)) $is_bot = true;
+	// (d) Longitudes desorbitadas (inyección de texto basura).
+	if (mb_strlen($as_nombre) > 100 || mb_strlen($as_feria) > 120) $is_bot = true;
+	if ($is_bot) {
+		echo json_encode(array('error' => 'success', 'msg' => 'OK'));
+		exit;
+	}
+	// --------------------------------------------------------------------------------
 
 	$form_nombre           = post_value('form_nombre');
 	$form_empresa        = post_value('form_empresa');
@@ -590,7 +624,14 @@ $data_insert = json_encode(array(
 	'descripcion' => $form_descripcion,
 	'opciones' => $form_opciones,
 	'respuesta_enviada' => $form_respuesta
-));
+), JSON_UNESCAPED_UNICODE);
+
+if ($data_insert === false) {
+	$output['error'] = 'error';
+	$output['msg']   = 'Error de codificación en los datos. / Data encoding error.';
+	echo json_encode($output);
+	exit;
+}
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $supabase_url . '/rest/v1/presupuestos');
