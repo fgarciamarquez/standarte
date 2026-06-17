@@ -171,6 +171,23 @@ if ($forceSeed || $needSeed) {
     exit;
 }
 
+// --- THROTTLE -------------------------------------------------------------
+// Hace SEGURO llamar a este endpoint desde varios disparadores (cron-job.org +
+// GitHub Actions): solo 1 ejecución de envío cada PAT_MIN_INTERVAL, así dos
+// disparos solapados no envían el Pat por duplicado. (dryrun/test/seed/unseed lo ignoran.)
+$PAT_MIN_INTERVAL = 1800; // 30 min
+$patThrottleFile = __DIR__ . '/data/pat_throttle.json';
+if (!isset($_GET['dryrun'])) {
+    $pt = is_file($patThrottleFile) ? json_decode(file_get_contents($patThrottleFile), true) : array();
+    $patLastRun = (is_array($pt) && isset($pt['last_run_ts'])) ? (int) $pt['last_run_ts'] : 0;
+    if ((time() - $patLastRun) < $PAT_MIN_INTERVAL) {
+        echo json_encode(array('throttled' => true, 'reason' => 'too_soon', 'segundos_desde_ultima' => time() - $patLastRun, 'min_intervalo' => $PAT_MIN_INTERVAL), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    // Reservamos el turno YA para que disparadores solapados no se pisen.
+    file_put_contents($patThrottleFile, json_encode(array('last_run_ts' => time()), JSON_PRETTY_PRINT));
+}
+
 // --- ELEGIBLES (acceso nuevo + >=1h + no enviado) -------------------------
 
 $now = time();
