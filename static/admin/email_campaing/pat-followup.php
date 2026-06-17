@@ -131,6 +131,24 @@ if (isset($_GET['test']) && isset($_GET['to'])) {
 // --- ESTADO + SIEMBRA -----------------------------------------------------
 
 $state = pat_load_state($STATE_FILE);
+
+// MODO UN-SEED: reactiva los accesos historicos sembrados (sent_at='seed') para que
+// el cron les envie el Pat. Conserva los envios reales y los invalidos.
+if (isset($_GET['unseed'])) {
+    $removed = 0;
+    foreach ($state['sent'] as $em => $rec) {
+        if (isset($rec['sent_at']) && $rec['sent_at'] === 'seed') { unset($state['sent'][$em]); $removed++; }
+    }
+    pat_save_state($STATE_FILE, $state);
+    echo json_encode(array(
+        'mode' => 'unseed',
+        'reactivados' => $removed,
+        'remaining_sent' => count($state['sent']),
+        'note' => 'Sembrados reactivados. La proxima ejecucion normal les enviara el Pat.',
+    ), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
 $opens = pat_latest_human_opens();
 
 $forceSeed = isset($_GET['seed']);
