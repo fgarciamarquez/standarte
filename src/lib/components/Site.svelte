@@ -9,6 +9,7 @@
   import ContactForm from './ContactForm.svelte';
   import CookieConsent from './CookieConsent.svelte';
   import FlagIcon from './FlagIcon.svelte';
+  import LangFlagIntro from './LangFlagIntro.svelte';
 
   export let lang;
   export let section;
@@ -724,7 +725,7 @@
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
       <div class="lang-menu lang-menu-mobile">
-        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
+        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a
@@ -757,7 +758,7 @@
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
-        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
+        <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
         <div>
           {#each languages as option}
             <a

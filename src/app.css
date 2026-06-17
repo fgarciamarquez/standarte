@@ -206,6 +206,7 @@ p {
   font-size: 16px;
   line-height: 40px;
   cursor: pointer;
+  text-shadow: 1px 1px 0 #000;
   transition: all .3s ease-in-out;
 }
 
@@ -222,6 +223,7 @@ p {
 .nav.scrolled .nav-links button,
 .nav.scrolled .lang-menu > span {
   color: #111;
+  text-shadow: none;
 }
 
 .nav.scrolled .nav-links > a:hover,

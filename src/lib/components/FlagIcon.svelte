@@ -84,9 +84,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #3a3f47;            /* gris oscuro */
+    background: #000;               /* círculo negro */
     border-radius: 50%;
-    padding: 2px;                   /* anillo oscuro alrededor de la bandera */
+    padding: 3px;                   /* anillo negro alrededor de la bandera */
     box-sizing: content-box;
     line-height: 0;
     vertical-align: middle;
