@@ -510,14 +510,6 @@ foreach ($images as $img) {
       <div class="alert alert-error"><?php echo nl2br(htmlspecialchars($error)); ?></div>
     <?php endif; ?>
 
-    <div class="panel-info" style="text-align: center; padding: 30px;">
-      <h2>Gestión Simplificada de Imágenes</h2>
-      <p style="font-size: 1.1rem; max-width: 750px; margin: 0 auto; line-height: 1.6; color: var(--text-muted);">
-        Haz clic sobre las imágenes que no te gusten abajo para seleccionarlas (se marcarán con un <strong>borde rojo</strong>).
-        Una vez que selecciones una o más imágenes, aparecerá automáticamente el botón flotante <strong>"Borrar"</strong> al final de la pantalla para eliminarlas de las campañas.
-      </p>
-    </div>
-
     <div class="panel-info" style="padding: 24px;">
       <h2 style="margin-top:0;">Subir nuevas imágenes</h2>
       <p style="color:var(--text-muted);line-height:1.6;margin-bottom:16px;">
