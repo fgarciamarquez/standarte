@@ -55,6 +55,23 @@ if (!isset($_GET['dryrun'])) {
     file_put_contents($throttleFile, json_encode($throttle, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 }
 
+// Responder al disparador YA y terminar el envío en SEGUNDO PLANO. El envío (15 correos
+// con pausa + limpieza de rebotes IMAP) puede tardar >30 s; sin esto, cron-job.org agota
+// su timeout, lo marca como fallo y acaba DESHABILITANDO el job. Con esto recibe un 200
+// inmediato y el servidor termina la tanda por su cuenta.
+if (!isset($_GET['dryrun'])) {
+    @ignore_user_abort(true);
+    @set_time_limit(0);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(array('accepted' => true, 'msg' => 'Tanda iniciada en segundo plano'));
+    if (function_exists('fastcgi_finish_request')) {
+        fastcgi_finish_request();
+    } else {
+        while (ob_get_level() > 0) { @ob_end_flush(); }
+        @flush();
+    }
+}
+
 // Modo simulación (?dryrun=1): capturamos la salida para devolver JSON limpio sin enviar correos.
 $__dryrun = isset($_GET['dryrun']);
 if ($__dryrun) { ob_start(); }

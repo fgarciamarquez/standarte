@@ -188,6 +188,21 @@ if (!isset($_GET['dryrun'])) {
     file_put_contents($patThrottleFile, json_encode(array('last_run_ts' => time()), JSON_PRETTY_PRINT));
 }
 
+// Responder al disparador YA y terminar el envío en SEGUNDO PLANO (evita timeouts de
+// cron-job.org que acabarían deshabilitando el job; el envío puede tardar >30 s).
+if (!isset($_GET['dryrun'])) {
+    @ignore_user_abort(true);
+    @set_time_limit(0);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(array('accepted' => true, 'msg' => 'Pat iniciado en segundo plano'));
+    if (function_exists('fastcgi_finish_request')) {
+        fastcgi_finish_request();
+    } else {
+        while (ob_get_level() > 0) { @ob_end_flush(); }
+        @flush();
+    }
+}
+
 // --- ELEGIBLES (acceso nuevo + >=1h + no enviado) -------------------------
 
 $now = time();
