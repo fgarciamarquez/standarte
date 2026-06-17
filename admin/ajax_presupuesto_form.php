@@ -496,6 +496,16 @@ include("config.php");
 
 <?php 
 
+// Validación de campos obligatorios EN SERVIDOR. El navegador ya los exige (required),
+// pero los bots hacen POST directo al endpoint dejando feria/metros/etc. vacíos: ese es
+// el origen de los "leads vacíos". Aquí se rechazan sin insertar ni enviar correo.
+if ($form_nombre === '' || $form_email === '' || $form_feria === '' || $form_metros === '' || $form_descripcion === '') {
+	$output['error'] = 'error';
+	$output['msg']   = 'Faltan campos obligatorios. / Required fields are missing.';
+	echo json_encode($output);
+	exit;
+}
+
 if (!filter_var($form_email, FILTER_VALIDATE_EMAIL)) {
 	$output['error'] = 'error';
 	$output['msg']   = $mail_text['invalid_email'];
