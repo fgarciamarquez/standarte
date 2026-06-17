@@ -61,10 +61,23 @@ function gp_enrich_clicks(&$rows) {
             }
         }
     }
+    // Visitantes a los que YA se les envió el correo personal "Pat".
+    $patSent = [];
+    $patFile = __DIR__ . '/data/pat_followups.json';
+    if (is_file($patFile)) {
+        $patState = json_decode(file_get_contents($patFile), true);
+        if (isset($patState['sent']) && is_array($patState['sent'])) {
+            foreach ($patState['sent'] as $em => $rec) {
+                $sa = isset($rec['sent_at']) ? $rec['sent_at'] : '';
+                if ($sa !== '' && $sa !== 'seed' && $sa !== 'invalid') $patSent[strtolower($em)] = true;
+            }
+        }
+    }
     foreach ($rows as &$r) {
         $em = strtolower($r['email']);
         $r['lead_group'] = isset($info[$em]) ? $info[$em]['lead_group'] : '';
         $r['language'] = isset($info[$em]) ? $info[$em]['language'] : '';
+        $r['pat_sent'] = isset($patSent[$em]);
     }
     unset($r);
 }

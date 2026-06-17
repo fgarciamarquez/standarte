@@ -159,6 +159,25 @@ function campaign_get_email_clicks()
         }
     }
 
+    // Marcar visitantes a los que YA se les envió el correo personal "Pat"
+    // (data/pat_followups.json; sent_at real, no 'seed' ni 'invalid').
+    $patFile = __DIR__ . '/data/pat_followups.json';
+    if (is_file($patFile)) {
+        $patState = json_decode(file_get_contents($patFile), true);
+        $patSent = array();
+        if (isset($patState['sent']) && is_array($patState['sent'])) {
+            foreach ($patState['sent'] as $em => $rec) {
+                $sa = isset($rec['sent_at']) ? $rec['sent_at'] : '';
+                if ($sa !== '' && $sa !== 'seed' && $sa !== 'invalid') $patSent[strtolower($em)] = true;
+            }
+        }
+        foreach ($history as &$h) {
+            $em = strtolower(isset($h['email']) ? $h['email'] : '');
+            $h['pat_sent'] = isset($patSent[$em]);
+        }
+        unset($h);
+    }
+
     return array('total' => $count, 'history' => $history);
 }
 
@@ -743,7 +762,7 @@ if ($isCronEmpty) {
             <?php endif; ?>
             <?php foreach ($clicksHistory as $click): ?>
               <p>
-                <span role="button" tabindex="0" title="Borrar registro" data-email="<?php echo campaign_escape($click['email']); ?>" onclick="deleteClick(event, this)" style="cursor:pointer;color:#c0392b;font-size:13px;font-weight:bold;margin-right:7px;user-select:none;opacity:0.7;">✕</span><b><?php echo campaign_escape($click['email']); ?></b><?php if (!empty($click['count']) && $click['count'] > 1): ?> <span style="color:#b89400;font-weight:700;">(<?php echo (int)$click['count']; ?>)</span><?php endif; ?> <span style="color:#7a7a7a;">· <?php echo campaign_escape(!empty($click['lead_group']) ? $click['lead_group'] : 'sin lista'); ?><?php if (!empty($click['language'])): ?> · <?php echo campaign_escape(strtoupper($click['language'])); ?><?php endif; ?></span><br>
+                <span role="button" tabindex="0" title="Borrar registro" data-email="<?php echo campaign_escape($click['email']); ?>" onclick="deleteClick(event, this)" style="cursor:pointer;color:#c0392b;font-size:13px;font-weight:bold;margin-right:7px;user-select:none;opacity:0.7;">✕</span><b><?php echo campaign_escape($click['email']); ?></b><?php if (!empty($click['count']) && $click['count'] > 1): ?> <span style="color:#b89400;font-weight:700;">(<?php echo (int)$click['count']; ?>)</span><?php endif; ?><?php if (!empty($click['pat_sent'])): ?> <span title="Correo Pat enviado" style="color:#27ae60;font-weight:bold;">✓</span><?php endif; ?> <span style="color:#7a7a7a;">· <?php echo campaign_escape(!empty($click['lead_group']) ? $click['lead_group'] : 'sin lista'); ?><?php if (!empty($click['language'])): ?> · <?php echo campaign_escape(strtoupper($click['language'])); ?><?php endif; ?></span><br>
                 <span style="font-size:0.85rem;color:#888;"><?php echo campaign_escape(date('d/m/Y H:i:s', strtotime($click['clicked_at']))); ?></span>
               </p>
             <?php endforeach; ?>
@@ -1197,9 +1216,10 @@ if ($isCronEmpty) {
                   var d = new Date(c.clicked_at);
                   var ds = pad(d.getDate())+'/'+pad(d.getMonth()+1)+'/'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
                   var cnt = (c.count && c.count > 1) ? ' <span style="color:#b89400;font-weight:700;">('+c.count+')</span>' : '';
+                  var v = c.pat_sent ? ' <span title="Correo Pat enviado" style="color:#27ae60;font-weight:bold;">✓</span>' : '';
                   var meta = '· '+escHtml(c.lead_group || 'sin lista')+(c.language ? ' · '+escHtml((''+c.language).toUpperCase()) : '');
                   var x = '<span role="button" tabindex="0" title="Borrar registro" data-email="'+escHtml(c.email)+'" onclick="deleteClick(event, this)" style="cursor:pointer;color:#c0392b;font-size:13px;font-weight:bold;margin-right:7px;user-select:none;opacity:0.7;">✕</span>';
-                  return '<p>'+x+'<b>'+escHtml(c.email)+'</b>'+cnt+' <span style="color:#7a7a7a;">'+meta+'</span><br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
+                  return '<p>'+x+'<b>'+escHtml(c.email)+'</b>'+cnt+v+' <span style="color:#7a7a7a;">'+meta+'</span><br><span style="font-size:0.85rem;color:#888;">'+ds+'</span></p>';
                 }).join('');
               }
             }
