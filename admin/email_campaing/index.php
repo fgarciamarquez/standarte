@@ -1702,7 +1702,7 @@ if ($isCronEmpty) {
         var base = new Date(nowMs + i * 86400000);
         var day = base.getUTCDay(); // 0=domingo ... 6=sábado
         if (day >= 1 && day <= 5) {
-          for (var h = 8; h <= 18; h++) {
+          for (var h = 5; h <= 18; h++) {
             var slot = Date.UTC(base.getUTCFullYear(), base.getUTCMonth(), base.getUTCDate(), h, 0, 0);
             if (slot > nowMs) return slot;
           }
@@ -1721,7 +1721,7 @@ if ($isCronEmpty) {
       var nowUtc = new Date(nowMs);
       var utcDay = nowUtc.getUTCDay();
       var utcHour = nowUtc.getUTCHours();
-      var inWindow = (utcDay >= 1 && utcDay <= 5 && utcHour >= 8 && utcHour < 18);
+      var inWindow = (utcDay >= 1 && utcDay <= 5 && utcHour >= 5 && utcHour <= 18);
 
       // Acaba de ejecutarse (menos de 2 min) y estamos en horario: está enviando.
       if (window.lastCronRunTime && inWindow) {
