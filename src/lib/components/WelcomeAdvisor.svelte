@@ -363,6 +363,7 @@
 
   let typedText = '';
   let typingInterval;
+  let dismissTimers = [];
 
   function typeText(text) {
     clearInterval(typingInterval);
@@ -462,6 +463,7 @@
     return () => {
       removeUnlockListeners();
       clearInterval(typingInterval);
+      dismissTimers.forEach(clearTimeout);
     };
   });
 
@@ -506,13 +508,12 @@
     formData.append('form_nombre', name);
     formData.append('form_email', email);
     formData.append('form_feria', `${selectedFair} (${selectedCityName})`);
-    formData.append('form_metros', '20'); // Default B2B stand size
-    formData.append('form_descripcion', t.defaultDescription);
     formData.append('form_privacidad', '1');
-    formData.append('form_elapsed', '6000'); // honeypot bypass
 
     try {
-      const response = await fetch('/admin/ajax_presupuesto_form.php', {
+      // Endpoint propio del asesor: NO usa el sistema de filtrado de presupuesto.
+      // Solo envía un acuse de recibo al visitante y avisa internamente al equipo.
+      const response = await fetch('/admin/ajax_advisor_form.php', {
         method: 'POST',
         body: formData
       });
@@ -520,6 +521,11 @@
       if (result.error === 'success') {
         status = 'success';
         statusMessage = t.successMsg;
+        // No volver a mostrar el asesor durante esta sesión (no molestar).
+        try { sessionStorage.setItem('standarte_advisor_dismissed', '1'); } catch (e) {}
+        // Mostrar el acuse unos segundos, luego colapsar y desaparecer.
+        dismissTimers.push(setTimeout(() => { cardExpanded = false; }, 5500));
+        dismissTimers.push(setTimeout(() => { dispatch('dismiss'); }, 6400));
       } else {
         status = 'error';
         statusMessage = result.msg || t.errorMsg;

@@ -11,7 +11,8 @@
   import CookieConsent from './CookieConsent.svelte';
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
-  import WelcomeAdvisor from './WelcomeAdvisor.svelte';
+  // WelcomeAdvisor NO se importa de forma estática: se carga con import dinámico
+  // (chunk aparte) tras cargar la página, para no colgar del bundle principal.
 
   export let lang;
   export let section;
@@ -28,6 +29,8 @@
   let initialFair = '';
   let showWelcomeAdvisor = false;
   let advisorTimeout;
+  let AdvisorComponent = null; // se rellena con el import dinámico
+  let advisorLoadHandler;      // ref del listener 'load' para poder limpiarlo
 
   function handleSelectFair(event) {
     const { fairName, cityName } = event.detail;
@@ -610,9 +613,25 @@
   onMount(() => {
     displayedCounters = counterItems.map(() => 0);
 
-    advisorTimeout = setTimeout(() => {
-      showWelcomeAdvisor = true;
-    }, 2000);
+    // El asesor se invoca SOLO una vez la página ha terminado de cargar, y su
+    // código se trae con import dinámico (chunk aparte) para no comprometer el
+    // rendimiento de la carga principal.
+    const launchAdvisor = () => {
+      advisorTimeout = setTimeout(() => {
+        // Si el visitante ya completó el formulario del asesor en esta sesión,
+        // no lo volvemos a mostrar para no molestar.
+        if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('standarte_advisor_dismissed') === '1') return;
+        import('./WelcomeAdvisor.svelte')
+          .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
+          .catch(() => {});
+      }, 2000);
+    };
+    if (document.readyState === 'complete') {
+      launchAdvisor();
+    } else {
+      advisorLoadHandler = launchAdvisor;
+      window.addEventListener('load', advisorLoadHandler, { once: true });
+    }
 
     if (initialLightboxSlug) {
       const p = portfolios.find(x => x.slugs && Object.values(x.slugs).includes(initialLightboxSlug));
@@ -729,6 +748,7 @@
       countersObserver.disconnect();
       clearInterval(autoplayInterval);
       clearTimeout(advisorTimeout);
+      if (advisorLoadHandler) window.removeEventListener('load', advisorLoadHandler);
       window.removeEventListener('resize', updateVisibleCount);
     };
   });
@@ -871,8 +891,8 @@
 
 <main>
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
-    {#if showWelcomeAdvisor}
-      <WelcomeAdvisor {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} />
+    {#if showWelcomeAdvisor && AdvisorComponent}
+      <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />
     {/if}
     <section id="services" class="section services">
       <div class="section-header">
