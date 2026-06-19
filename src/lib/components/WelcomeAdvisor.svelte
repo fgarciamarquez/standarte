@@ -496,8 +496,7 @@
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--gold);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(22, 25, 28, 0.15);
     flex-shrink: 0;
   }
 
