@@ -26,6 +26,8 @@
   export let richSeo = null;
 
   let initialFair = '';
+  let showWelcomeAdvisor = false;
+  let advisorTimeout;
 
   function handleSelectFair(event) {
     const { fairName, cityName } = event.detail;
@@ -608,6 +610,10 @@
   onMount(() => {
     displayedCounters = counterItems.map(() => 0);
 
+    advisorTimeout = setTimeout(() => {
+      showWelcomeAdvisor = true;
+    }, 2000);
+
     if (initialLightboxSlug) {
       const p = portfolios.find(x => x.slugs && Object.values(x.slugs).includes(initialLightboxSlug));
       if (p) openLightbox(p);
@@ -722,6 +728,7 @@
       observer.disconnect();
       countersObserver.disconnect();
       clearInterval(autoplayInterval);
+      clearTimeout(advisorTimeout);
       window.removeEventListener('resize', updateVisibleCount);
     };
   });
@@ -864,8 +871,8 @@
 
 <main>
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
-    {#if lang !== 'es'}
-      <WelcomeAdvisor {lang} on:selectFair={handleSelectFair} />
+    {#if lang !== 'es' && showWelcomeAdvisor}
+      <WelcomeAdvisor {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} />
     {/if}
     <section id="services" class="section services">
       <div class="section-header">
