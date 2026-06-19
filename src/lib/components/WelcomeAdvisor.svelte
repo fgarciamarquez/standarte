@@ -147,7 +147,7 @@
       sending: "正在发送...",
       successMsg: "谢谢！请求已收到。我们将在24小时内与您联系，并提供定制的设计方案。",
       errorMsg: "发生错误。请重试或使用下方的联系表格。",
-      defaultDescription: "来自互动顾问 of 展台设计请求。"
+      defaultDescription: "来自互动顾问的展台设计请求。"
     },
     hi: {
       title: "नमस्ते!, मैं Pat हूँ।",
@@ -162,8 +162,8 @@
       sendBtn: "अनुरोध भेजें",
       sending: "भेजा जा रहा है...",
       successMsg: "धन्यवाद! आपका अनुरोध प्राप्त हो गया है। हम 24 घंटों के भीतर आपसे एक कस्टम डिज़ाइन प्रस्ताव के साथ संपर्क करेंगे।",
-      errorMsg: "एक त्रुटि हुई। कृपया पुनः प्रयास करें या नीचे दिए गए संपर्क फ़ॉर्म का उपयोग करें।",
-      defaultDescription: "इंटरैक्टिव सलाहकार से स्टैंड डिज़ाइन अनुरोध।"
+      errorMsg: "एक त्रुटi हुई। कृपया पुनः प्रयास करें या नीचे दिए गए संपर्क फ़ॉर्म का उपयोग करें।",
+      defaultDescription: "इंटरैक्टivo सलाहकार से स्टैंड डिज़ाइन अनुरोध।"
     },
     ko: {
       title: "안녕하세요! Pat입니다.",
@@ -206,6 +206,68 @@
     ? fairsData.filter(f => f.city === selectedCityName)
     : [];
 
+  // Web Audio API Sound Synthesizers
+  function playNotificationSound() {
+    if (typeof window === 'undefined') return;
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      const ctx = new AudioContext();
+
+      // Ascending double-tone chime (similar to a messaging notification)
+      const osc1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      gain1.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+      osc1.connect(gain1);
+      gain1.connect(ctx.destination);
+      osc1.start();
+      osc1.stop(ctx.currentTime + 0.12);
+
+      const osc2 = ctx.createOscillator();
+      const gain2 = ctx.createGain();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(880, ctx.currentTime + 0.08); // A5
+      gain2.gain.setValueAtTime(0.08, ctx.currentTime + 0.08);
+      gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08 + 0.2);
+      osc2.connect(gain2);
+      gain2.connect(ctx.destination);
+      osc2.start(ctx.currentTime + 0.08);
+      osc2.stop(ctx.currentTime + 0.08 + 0.2);
+    } catch (e) {
+      // Ignored if blocked by browser autoplay restrictions
+    }
+  }
+
+  function playTypewriterSound() {
+    if (typeof window === 'undefined') return;
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      const ctx = new AudioContext();
+
+      // Subtle mechanical tick
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(1400, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.02);
+
+      gain.gain.setValueAtTime(0.015, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.02);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.02);
+    } catch (e) {
+      // Ignored if blocked
+    }
+  }
+
   let typedText = '';
   let typingInterval;
 
@@ -216,6 +278,10 @@
     typingInterval = setInterval(() => {
       if (i < text.length) {
         typedText += text.charAt(i);
+        // Play typewriter tick on letters/numbers (skip spaces)
+        if (text.charAt(i) !== ' ') {
+          playTypewriterSound();
+        }
         i++;
       } else {
         clearInterval(typingInterval);
@@ -241,9 +307,10 @@
       cardExpanded = true;
     }, 150);
 
-    // 2. Show the profile after card starts expanding
+    // 2. Show the profile after card starts expanding, and play notification sound
     setTimeout(() => {
       profileVisible = true;
+      playNotificationSound();
     }, 600);
   });
 
