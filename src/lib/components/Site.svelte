@@ -1267,7 +1267,7 @@
         <li><a href={pathFor(lang, 'noticias')} class="_gold footer-link-button">{copy.nav.noticias}</a></li>
         <li class="footer-lang-item">
           <div class="footer-lang-menu">
-            <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
+            <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
             <div class="footer-lang-dropdown">
               {#each languages as option}
                 <a
@@ -1280,7 +1280,8 @@
                     }
                   }}
                 >
-                  {languageLabels[option]}
+                  <FlagIcon langCode={option} size={16} />
+                  <span>{languageLabels[option]}</span>
                 </a>
               {/each}
             </div>
