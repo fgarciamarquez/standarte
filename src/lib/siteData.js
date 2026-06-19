@@ -1044,8 +1044,8 @@ export const copy = {
     nav: { services: 'サービス', custom: 'ギャラリー', noticias: 'ブログ', contact: 'お問い合わせ', language: '言語' },
     seoTitle: '海外展示会ブースの設計・製作・施工 | スペイン・ポルトガル | Standarte',
     seoDescription: '日本企業の海外出展をサポート。スペイン・ポルトガルおよび国際的な展示会向けに、展示会ブースをオーダーメイドで設計・製作・施工します。IFEMAマドリード、フィラ・バルセロナ、BECビルバオなどの主要会場に対応。',
-    heroTitle: 'スペインの展示ブース製作工房',
-    heroSubtitle: '高品質な施工',
+    heroTitle: 'スペイン・ポルトガルでの展示会ブース施工',
+    heroSubtitle: 'オーダーメイドの展示会ブースの設計・製作・施工',
     servicesTitle: 'サービス',
     services: [
       ['設計とエンジニアリング', '専門チームがお客様のプロジェクトのご要望を細部まで把握し、それをオーダーメイドの3Dプロトタイプに反映します。製作を開始する前にご確認・ご検討いただけます。プロトタイプの画像は完成品を100%忠実に再現します。'],
@@ -1113,8 +1113,8 @@ export const copy = {
     nav: { services: 'Diensten', custom: 'Galerij', noticias: 'Blog', contact: 'Contact', language: 'Taal' },
     seoTitle: 'Standarte | Standbouw in Spanje en Portugal',
     seoDescription: 'Standarte ontwerpt, produceert en bouwt professionele beursstands op maat in Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lissabon en andere bestemmingen. Offerte binnen 24 u!',
-    heroTitle: 'Ontwerp en bouw van internationale beursstands',
-    heroSubtitle: 'Ruimtes die inspireren',
+    heroTitle: 'Standbouw in Spanje en Portugal',
+    heroSubtitle: 'Ontwerp, productie en montage van beursstands op maat',
     servicesTitle: 'Diensten',
     services: [
       ['Ontwerp en engineering', 'Ons professionele team noteert de behoeften van uw project en verwerkt deze tot in detail in een gepersonaliseerd 3D-ontwerp dat u kunt verkennen en beoordelen vóór de productie begint. Het beeld van het prototype is 100% getrouw aan het eindresultaat.'],
