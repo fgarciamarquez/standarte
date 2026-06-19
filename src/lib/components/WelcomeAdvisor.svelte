@@ -152,7 +152,7 @@
     hi: {
       title: "नमस्ते!, मैं Pat हूँ।",
       intro: "यदि आप स्पेन और पुर्तगाल में प्रदर्शन करना चाहते हैं, तो मैं आपको प्रमुख कार्यक्रमों को चुनने में सलाह दे सकती हूँ।",
-      instruction: "शहर चुनें और मैं आपको वे प्रमुख कार्यक्रम दिखाऊँगी जिन्हें आप मिस नहीं कर सकते:",
+      instruction: "शहर चुनें und मैं आपको वे प्रमुख कार्यक्रम दिखाऊँगी जिन्हें आप मिस नहीं कर सकते:",
       cta: "इस मेले के लिए कोटेशन प्राप्त करें",
       formInstruction: "कृपया अपना कस्टम डिज़ाइन प्रस्ताव प्राप्त करने के लिए अपना नाम और ईमेल दर्ज करें:",
       namePlaceholder: "आपका नाम",
@@ -193,7 +193,7 @@
       privacyLabelHtml: "<span class=\"adv-privacy-link\">個人情報保護方針</span>に同意します",
       sendBtn: "送信する",
       sending: "送信中...",
-      successMsg: "ありがとうございます！リクエストを受領いたしました。24時間以内にカスタムデザイン of 提案をご連絡いたします。",
+      successMsg: "ありがとうございます！リクエストを受領いたしました。24時間以内にカスタムデザインの提案をご連絡いたします。",
       errorMsg: "エラーが発生しました。もう一度お試しいただくか、以下の問い合わせフォームをご利用ください。",
       defaultDescription: "バーチャルアドバイザーからの展示会ブースデザイン設計依頼。"
     }
@@ -350,29 +350,19 @@
       </div>
     {/if}
 
-    <!-- Step 2: Fairs list -->
+    <!-- Step 2: Fairs selector as floating pills -->
     {#if currentStep === 2}
-      <div class="fairs-list-container" transition:slide={{ duration: 400 }}>
-        <ul class="fairs-advisor-list">
-          {#each cityFairs as fair}
-            <li class="fair-advisor-item">
-              <div class="fair-info">
-                <span class="fair-badge-flag flag-{fair.country}"></span>
-                <span class="fair-name-text">{fair.name}</span>
-                {#if fair.sector}
-                  <span class="fair-sector-text">({fair.sector})</span>
-                {/if}
-              </div>
-              <button
-                type="button"
-                class="fair-select-cta"
-                on:click={() => selectFair(fair.name)}
-              >
-                {t.cta} →
-              </button>
-            </li>
-          {/each}
-        </ul>
+      <div class="fairs-selector-flex" transition:slide={{ duration: 400 }}>
+        {#each cityFairs as fair}
+          <button
+            type="button"
+            class="fair-selector-btn"
+            on:click={() => selectFair(fair.name)}
+          >
+            <span class="fair-badge-flag flag-{fair.country}"></span>
+            <span class="fair-name-text">{fair.name}</span>
+          </button>
+        {/each}
       </div>
     {/if}
 
@@ -552,40 +542,34 @@
     background: #fffdf6;
   }
 
-  .fairs-list-container {
-    background: #fff;
-    border: 1px solid #e7e7e3;
-    border-radius: 8px;
-    padding: 8px 0;
-    max-height: 320px;
-    overflow-y: auto;
+  /* Fairs Selector (Inline Floating Pills) */
+  .fairs-selector-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-top: 10px;
   }
 
-  .fairs-advisor-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .fair-advisor-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-    border-bottom: 1px solid #f4f4f2;
-    gap: 16px;
-  }
-
-  .fair-advisor-item:last-child {
-    border-bottom: none;
-  }
-
-  .fair-info {
-    display: flex;
+  .fair-selector-btn {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
-    flex-wrap: wrap;
+    background: #fff;
+    border: 1px solid #d2d2cd;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+  }
+
+  .fair-selector-btn:hover {
+    border-color: var(--gold);
+    background: #fffdf6;
   }
 
   .fair-badge-flag {
@@ -594,6 +578,7 @@
     height: 14px;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 50%;
+    flex-shrink: 0;
   }
 
   .flag-es {
@@ -606,30 +591,6 @@
   .fair-name-text {
     font-weight: 700;
     font-size: 15px;
-    color: #111;
-  }
-
-  .fair-sector-text {
-    color: #777;
-    font-size: 13px;
-  }
-
-  .fair-select-cta {
-    background: #111;
-    color: #fff;
-    border: 0;
-    border-radius: 30px;
-    padding: 8px 16px;
-    font-family: 'Glegoo', serif;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .fair-select-cta:hover {
-    background: var(--gold);
     color: #111;
   }
 
@@ -765,17 +726,6 @@
 
     .advisor-bubble::after {
       display: none;
-    }
-
-    .fair-advisor-item {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .fair-select-cta {
-      width: 100%;
-      text-align: center;
     }
   }
 </style>
