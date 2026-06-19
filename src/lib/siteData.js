@@ -1,5 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
-export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja', 'nl'];
+export const languages = ['es', 'pt', 'en', 'de', 'fr', 'it', 'nl', 'zh', 'hi', 'ko', 'ja'];
 
 export const languageLabels = {
   es: 'ES Español',
