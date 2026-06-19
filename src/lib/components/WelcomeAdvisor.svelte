@@ -624,7 +624,7 @@
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 10px 25px rgba(22, 25, 28, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     flex-shrink: 0;
   }
 
