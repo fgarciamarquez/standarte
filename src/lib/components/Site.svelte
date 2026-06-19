@@ -30,14 +30,6 @@
   function handleSelectFair(event) {
     const { fairName, cityName } = event.detail;
     initialFair = `${fairName} (${cityName})`;
-    const el = document.getElementById('contact');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        const nameInput = document.getElementById('form_nombre');
-        if (nameInput) nameInput.focus();
-      }, 600);
-    }
   }
 
   const ctaLabels = {
