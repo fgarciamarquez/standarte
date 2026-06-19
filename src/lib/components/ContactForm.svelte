@@ -5,6 +5,7 @@
   // 'dark' = banda oscura por defecto (home, servicios…); 'light' = integrada con el
   // fondo claro de las páginas de ciudad, con botones tipo pastilla como el aside.
   export let variant = 'dark';
+  export let initialFair = '';
   let status = null;
   let statusMessage = '';
   let sending = false;
@@ -123,7 +124,7 @@
             </div>
             <div class="col col-6 form-group">
               <label for="form_feria" class="form-label">{labels.form.fair}</label>
-              <input id="form_feria" class="form-control" name="form_feria" placeholder={labels.form.fair} required />
+              <input id="form_feria" class="form-control" name="form_feria" placeholder={labels.form.fair} bind:value={initialFair} required />
             </div>
             <div class="col col-6 form-group">
               <label for="form_metros" class="form-label">{labels.form.meters}</label>

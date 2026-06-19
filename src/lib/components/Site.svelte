@@ -11,6 +11,7 @@
   import CookieConsent from './CookieConsent.svelte';
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
+  import WelcomeAdvisor from './WelcomeAdvisor.svelte';
 
   export let lang;
   export let section;
@@ -23,6 +24,21 @@
   // Datos SEO enriquecidos de la sección actual (todas las lenguas), inyectados
   // por el load del servidor; richSeoData.js completo ya no viaja al cliente.
   export let richSeo = null;
+
+  let initialFair = '';
+
+  function handleSelectFair(event) {
+    const { fairName, cityName } = event.detail;
+    initialFair = `${fairName} (${cityName})`;
+    const el = document.getElementById('contact');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        const nameInput = document.getElementById('form_nombre');
+        if (nameInput) nameInput.focus();
+      }, 600);
+    }
+  }
 
   const ctaLabels = {
     es: 'PRESUPUESTO EN 24 H',
@@ -856,6 +872,9 @@
 
 <main>
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
+    {#if lang !== 'es'}
+      <WelcomeAdvisor {lang} on:selectFair={handleSelectFair} />
+    {/if}
     <section id="services" class="section services">
       <div class="section-header">
         <h2>{copy.servicesTitle}</h2>
@@ -1253,7 +1272,7 @@
     </div>
   {/if}
 
-  <ContactForm {lang} labels={copy} variant={section in cityData ? 'light' : 'dark'} />
+  <ContactForm {lang} labels={copy} variant={section in cityData ? 'light' : 'dark'} bind:initialFair={initialFair} />
 </main>
 
 <footer>
