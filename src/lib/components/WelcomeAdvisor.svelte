@@ -113,7 +113,7 @@
       privacyLabelHtml: "Accetto l'<span class=\"adv-privacy-link\">informativa sulla privacy</span>",
       sendBtn: "Invia Richiesta",
       sending: "Invio in corso...",
-      successMsg: "Grazie! Richiesta ricevuta. Ti contatteremo entro 24 ore con una proposta di design personalizzata.",
+      successMsg: "Grazie! Richiesta ricevuta. Ti contatteremo entro 24 ore con una proposta di design prima di riceverla.",
       errorMsg: "Si è verificato un errore. Riprova o utilizza il modulo di contatto sottostante.",
       defaultDescription: "Richiesta di progettazione stand dall'assistente virtuale."
     },
@@ -162,8 +162,8 @@
       sendBtn: "अनुरोध भेजें",
       sending: "भेजा जा रहा है...",
       successMsg: "धन्यवाद! आपका अनुरोध प्राप्त हो गया है। हम 24 घंटों के भीतर आपसे एक कस्टम डिज़ाइन प्रस्ताव के साथ संपर्क करेंगे।",
-      errorMsg: "एक त्रुटi हुई। कृपया पुनः प्रयास करें या नीचे दिए गए संपर्क फ़ॉर्म का उपयोग करें।",
-      defaultDescription: "इंटरैक्टivo सलाहकार से स्टैंड डिज़ाइन अनुरोध।"
+      errorMsg: "एक त्रुटि हुई। कृपया पुनः प्रयास करें या नीचे दिए गए संपर्क फ़ॉर्म का उपयोग करें।",
+      defaultDescription: "इंटरैक्टिव सलाहकार से स्टैंड डिज़ाइन अनुरोध।"
     },
     ko: {
       title: "안녕하세요! Pat입니다.",
@@ -206,15 +206,30 @@
     ? fairsData.filter(f => f.city === selectedCityName)
     : [];
 
-  // Web Audio API Sound Synthesizers
-  function playNotificationSound() {
-    if (typeof window === 'undefined') return;
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      const ctx = new AudioContext();
+  // Single Shared AudioContext Instance
+  let audioCtx = null;
+  let chimePlayed = false;
 
-      // Ascending double-tone chime (similar to a messaging notification)
+  function getAudioContext() {
+    if (typeof window === 'undefined') return null;
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
+      }
+    }
+    // Attempt to resume if suspended by browser autoplay policy
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(() => {});
+    }
+    return audioCtx;
+  }
+
+  function playNotificationSound() {
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
       const osc1 = ctx.createOscillator();
       const gain1 = ctx.createGain();
       osc1.type = 'sine';
@@ -237,18 +252,15 @@
       osc2.start(ctx.currentTime + 0.08);
       osc2.stop(ctx.currentTime + 0.08 + 0.2);
     } catch (e) {
-      // Ignored if blocked by browser autoplay restrictions
+      // Ignored
     }
   }
 
   function playTypewriterSound() {
-    if (typeof window === 'undefined') return;
     try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      const ctx = new AudioContext();
+      const ctx = getAudioContext();
+      if (!ctx || ctx.state === 'suspended') return;
 
-      // Subtle mechanical tick
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'triangle';
@@ -264,7 +276,20 @@
       osc.start();
       osc.stop(ctx.currentTime + 0.02);
     } catch (e) {
-      // Ignored if blocked
+      // Ignored
+    }
+  }
+
+  function triggerNotificationChime() {
+    if (chimePlayed) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx || ctx.state === 'suspended') return;
+      
+      playNotificationSound();
+      chimePlayed = true;
+    } catch (e) {
+      // Ignored
     }
   }
 
@@ -278,14 +303,12 @@
     typingInterval = setInterval(() => {
       if (i < text.length) {
         typedText += text.charAt(i);
-        // Play typewriter tick on letters/numbers (skip spaces)
         if (text.charAt(i) !== ' ') {
           playTypewriterSound();
         }
         i++;
       } else {
         clearInterval(typingInterval);
-        // Show city buttons in the last place
         setTimeout(() => {
           citiesVisible = true;
         }, 200);
@@ -301,28 +324,66 @@
     }
   }
 
+  // Interactive unlock handler for Web Audio API autoplay constraints
+  function unlockAudio() {
+    const ctx = getAudioContext();
+    if (ctx) {
+      ctx.resume().then(() => {
+        // If Pat profile is already visible but chime has not played, play it now
+        if (profileVisible && !chimePlayed) {
+          playNotificationSound();
+          chimePlayed = true;
+        }
+        removeUnlockListeners();
+      }).catch(() => {});
+    }
+  }
+
+  function removeUnlockListeners() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('click', unlockAudio);
+      window.removeEventListener('keydown', unlockAudio);
+      window.removeEventListener('touchstart', unlockAudio);
+    }
+  }
+
   onMount(() => {
     // 1. Expand the card
     setTimeout(() => {
       cardExpanded = true;
     }, 150);
 
-    // 2. Show the profile after card starts expanding, and play notification sound
+    // 2. Show the profile and attempt to play chime
     setTimeout(() => {
       profileVisible = true;
-      playNotificationSound();
+      triggerNotificationChime();
     }, 600);
+
+    // Add global gesture listeners to unlock AudioContext
+    if (typeof window !== 'undefined') {
+      window.addEventListener('click', unlockAudio);
+      window.addEventListener('keydown', unlockAudio);
+      window.addEventListener('touchstart', unlockAudio);
+    }
+
+    return () => {
+      removeUnlockListeners();
+      clearInterval(typingInterval);
+    };
   });
 
   function selectCity(cityKey) {
     clearInterval(typingInterval);
     selectedCity = cityKey;
     currentStep = 2;
+    // Resume audio context on click interaction
+    unlockAudio();
   }
 
   function selectFair(fairName) {
     selectedFair = fairName;
     currentStep = 3;
+    unlockAudio();
     
     // Dispatch to update state in parent context
     const cityName = cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity;
