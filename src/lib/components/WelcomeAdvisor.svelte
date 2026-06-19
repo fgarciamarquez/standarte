@@ -41,7 +41,7 @@
       intro: "Si buscas exponer en España y Portugal, te puedo asesorar para elegir los eventos clave.",
       instruction: "Selecciona una ciudad y te mostraré las principales ferias que no deberías perderte:",
       cta: "Obtener presupuesto para esta feria",
-      formInstruction: "Por favor, introduce tu nombre y correo electrónico para recibir tu propuesta de diseño personalizada:",
+      formInstruction: "Por favor, introduce tus datos y te enviaré un breve informe con las ferias más interesantes para tu sector.",
       fairInstruction: "Perfecto!, en esta ciudad estas son las principales ferias. Escoge Una!!",
       namePlaceholder: "Tu Nombre",
       emailPlaceholder: "Tu Correo Profesional",
@@ -59,7 +59,7 @@
       intro: "If you are looking to exhibit in Spain and Portugal, I can advise you on choosing the key events.",
       instruction: "Select a city and I will show you the key trade shows you shouldn't miss:",
       cta: "Get a quote for this fair",
-      formInstruction: "Please enter your name and email to receive your custom design proposal:",
+      formInstruction: "Please enter your details and I'll send you a brief report with the most interesting trade shows for your sector.",
       fairInstruction: "Perfect! In this city, these are the main trade shows. Choose one!!",
       namePlaceholder: "Your Name",
       emailPlaceholder: "Your Business Email",
@@ -77,7 +77,7 @@
       intro: "Se procura estabelecer-se em Espanha e Portugal, posso aconselhá-lo na escolha dos eventos fundamentais.",
       instruction: "Escolha a cidade e eu mostrar-lhe-ei os eventos imperdíveis:",
       cta: "Pedir orçamento para esta feira",
-      formInstruction: "Por favor, introduza o seu nome e e-mail para receber a proposta de design personalizada:",
+      formInstruction: "Por favor, introduza os seus dados e enviar-lhe-ei um breve relatório com as feiras mais interessantes para o seu setor.",
       fairInstruction: "Perfeito! Nesta cidade, estas são as principais feiras. Escolha uma!!",
       namePlaceholder: "Seu Nome",
       emailPlaceholder: "Seu E-mail Corporativo",
@@ -95,7 +95,7 @@
       intro: "Wenn Sie in Spanien und Portugal ausstellen möchten, kann ich Sie bei der Auswahl der wichtigsten Messen beraten.",
       instruction: "Wählen Sie die Stadt und ich zeige Ihnen die wichtigsten Events, die Sie nicht verpassen dürfen:",
       cta: "Angebot für diese Messe anfordern",
-      formInstruction: "Bitte geben Sie Ihren Namen und Ihre E-Mail-Adresse ein, um Ihr individuelles Design-Angebot zu erhalten:",
+      formInstruction: "Bitte geben Sie Ihre Daten ein und ich sende Ihnen einen kurzen Bericht mit den interessantesten Messen für Ihre Branche.",
       fairInstruction: "Perfekt! In dieser Stadt sind das die wichtigsten Messen. Wählen Sie eine!!",
       namePlaceholder: "Ihr Name",
       emailPlaceholder: "Ihre geschäftliche E-Mail",
@@ -113,7 +113,7 @@
       intro: "Si vous cherchez à vous implanter en Espagne et au Portugal, je peux vous conseiller pour choisir les événements de premier plan.",
       instruction: "Choisissez la ville et je vous montrerai les salons incontournables à ne pas manquer :",
       cta: "Demander un devis pour ce salon",
-      formInstruction: "Veuillez entrer votre nom et votre adresse e-mail pour recevoir votre proposition de design personnalisée :",
+      formInstruction: "Veuillez saisir vos coordonnées et je vous enverrai un bref rapport avec les salons les plus intéressants pour votre secteur.",
       fairInstruction: "Parfait ! Dans cette ville, voici les principaux salons. Choisissez-en un !!",
       namePlaceholder: "Votre Nom",
       emailPlaceholder: "Votre E-mail Professionnel",
@@ -131,7 +131,7 @@
       intro: "Se desideri esporre in Spagna e Portogallo, posso consigliarti nella scelta degli eventos chiave.",
       instruction: "Scegli la città e ti mostrerò gli eventi imperdibili a cui non puoi mancare:",
       cta: "Richiedi un preventivo per questa fiera",
-      formInstruction: "Inserisci il tuo nome ed e-mail per ricevere la tua proposta di design personalizzata:",
+      formInstruction: "Inserisci i tuoi dati e ti invierò un breve report con le fiere più interessanti per il tuo settore.",
       fairInstruction: "Perfetto! In questa città, queste sono le fiere principali. Scegline una!!",
       namePlaceholder: "Il tuo Nome",
       emailPlaceholder: "La tua Email Aziendale",
@@ -149,7 +149,7 @@
       intro: "Als u wilt exposeren in Spanje en Portugal, kan ik u adviseren bij het kiezen van de belangrijkste evenementen.",
       instruction: "Kies de stad en ik laat u de belangrijkste evenementen zien die u niet mag missen:",
       cta: "Vraag een offerte aan voor deze beurs",
-      formInstruction: "Voer uw naam en e-mailadres in om uw persoonlijk ontwerpvoorstel te ontvangen:",
+      formInstruction: "Voer uw gegevens in en ik stuur u een kort rapport met de interessantste beurzen voor uw sector.",
       fairInstruction: "Perfect! In deze stad zijn dit de belangrijkste beurzen. Kies er één!!",
       namePlaceholder: "Uw Naam",
       emailPlaceholder: "Uw Zakelijk E-mailadres",
@@ -167,7 +167,7 @@
       intro: "如果您想在西班牙和葡萄牙参展，我可以为您提供选择关键展会的建议。",
       instruction: "选择城市，我将为您展示不容错过的关键活动：",
       cta: "索取该展会的报价",
-      formInstruction: "请输入您的姓名和电子邮箱，以便获取您的定制设计方案：",
+      formInstruction: "请填写您的信息，我会向您发送一份简要报告，列出最适合您所在行业的展会。",
       fairInstruction: "太棒了！在这个城市，这些是主要的展会。选择一个吧！！",
       namePlaceholder: "您的姓名",
       emailPlaceholder: "您的企业邮箱",
@@ -185,7 +185,7 @@
       intro: "यदि आप स्पेन और पुर्तगाल में प्रदर्शन करना चाहते हैं, तो मैं आपको प्रमुख कार्यक्रमों को चुनने में सलाह दे सकती हूँ।",
       instruction: "शहर चुनें और मैं आपको वे प्रमुख कार्यक्रम दिखाऊँगी जिन्हें आप मिस नहीं कर सकते:",
       cta: "इस मेले के लिए कोटेशन प्राप्त करें",
-      formInstruction: "कृपया अपना कस्टम डिज़ाइन प्रस्ताव प्राप्त करने के लिए अपना नाम और ईमेल दर्ज करें:",
+      formInstruction: "कृपया अपनी जानकारी दर्ज करें, और मैं आपको आपके क्षेत्र के लिए सबसे दिलचस्प मेलों के साथ एक संक्षिप्त रिपोर्ट भेजूँगी।",
       fairInstruction: "बिल्कुल सही! इस शहर में, ये मुख्य मेले हैं। एक चुनें!!",
       namePlaceholder: "आपका नाम",
       emailPlaceholder: "आपका व्यावसायिक ईमेल",
@@ -203,7 +203,7 @@
       intro: "스페인과 포르투갈에서 전시회를 준비 중이시라면, 핵심 이벤트를 선택할 수 있도록 조언해 드릴 수 있습니다.",
       instruction: "도시를 선택하시면 절대 놓쳐서는 안 될 주요 전시회를 보여드리겠습니다:",
       cta: "이 전시회 견적 요청하기",
-      formInstruction: "맞춤형 디자인 제안서를 받으실 이름과 이메일 주소를 입력해 주세요:",
+      formInstruction: "정보를 입력해 주시면, 귀하의 업종에 가장 적합한 전시회를 정리한 간략한 리포트를 보내드리겠습니다.",
       fairInstruction: "좋습니다! 이 도시의 주요 전시회는 다음과 같습니다. 하나를 선택해 주세요!!",
       namePlaceholder: "이름",
       emailPlaceholder: "회사 이메일 주소",
@@ -221,7 +221,7 @@
       intro: "スペインやポルトガルでの出展をお考えなら、主要なイベント選びのアドバイスをいたします。",
       instruction: "都市を選択してください。見逃せない主要な展示会をご案内します：",
       cta: "この展示会の見積もりを依頼する",
-      formInstruction: "カスタムデザインのご提案をお送りするため、お名前とメールアドレスをご入力ください：",
+      formInstruction: "お客様の情報をご入力いただければ、お客様の業種に最適な展示会をまとめた簡単なレポートをお送りします。",
       fairInstruction: "完璧です！この都市の主要な展示会は以下の通りです。どれか1つ選んでくださいね！！",
       namePlaceholder: "お名前",
       emailPlaceholder: "会社用メールアドレス",
@@ -387,6 +387,8 @@
         typeText(t.instruction);
       } else if (currentStep === 2) {
         typeText(t.fairInstruction);
+      } else if (currentStep === 3) {
+        typeText(t.formInstruction);
       }
     }
   }
@@ -566,8 +568,6 @@
           <p class="advisor-instruction text-error" transition:fade>{statusMessage}</p>
         {:else if status === 'success'}
           <p class="advisor-instruction text-success" transition:fade>{typedText}</p>
-        {:else if currentStep === 3}
-          <p class="advisor-instruction" transition:fade>{t.formInstruction}</p>
         {:else}
           <p class="advisor-instruction">{typedText}</p>
         {/if}
