@@ -2007,7 +2007,7 @@ footer {
   }
 
   .copyright {
-    text-align: left;
+    text-align: center;
   }
 
   .legal-modal-window {
@@ -2398,12 +2398,31 @@ footer {
 
 /* Mobile responsive adjustments for footer lang item */
 @media (max-width: 768px) {
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    line-height: normal;
+    min-height: auto;
+    padding: 10px 0;
+  }
+  .footer-links li {
+    float: none !important;
+    margin: 0 !important;
+  }
   .footer-links .footer-lang-item {
     float: none;
-    display: inline-block;
-    margin-right: 1rem;
-    line-height: 48px;
-    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    line-height: normal;
+    height: auto;
+  }
+  .footer-lang-dropdown {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
