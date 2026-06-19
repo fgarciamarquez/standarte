@@ -35,21 +35,40 @@
     ciudad_real: 'Ciudad Real',
     zaragoza: 'Zaragoza'
   };
-
   const texts = {
+    es: {
+      title: "Hola!, soy Pat.",
+      intro: "Si buscas exponer en España y Portugal, te puedo asesorar para elegir los eventos clave.",
+      instruction: "Selecciona una ciudad y te mostraré las principales ferias que no deberías perderte:",
+      cta: "Obtener presupuesto para esta feria",
+      formInstruction: "Por favor, introduce tu nombre y correo electrónico para recibir tu propuesta de diseño personalizada:",
+      fairInstruction: "Perfecto!, en esta ciudad estas son las principales ferias. Escoge Una!!",
+      namePlaceholder: "Tu Nombre",
+      emailPlaceholder: "Tu Correo Profesional",
+      privacyLabel: "Acepto la política de privacidad",
+      privacyLabelHtml: "Acepto la <span class=\"adv-privacy-link\">política de privacidad</span>",
+      sendBtn: "Enviar",
+      sending: "Enviando...",
+      thanksTitle: "Gracias",
+      successMsg: "En breve me pondré en contacto contigo",
+      errorMsg: "Ocurrió un error. Por favor, inténtalo de nuevo o utiliza el formulario de contacto de abajo.",
+      defaultDescription: "Solicitud de diseño de stand desde el asesor interactivo."
+    },
     en: {
       title: "Hi! I'm Pat.",
       intro: "If you are looking to exhibit in Spain and Portugal, I can advise you on choosing the key events.",
       instruction: "Select a city and I will show you the key trade shows you shouldn't miss:",
       cta: "Get a quote for this fair",
       formInstruction: "Please enter your name and email to receive your custom design proposal:",
+      fairInstruction: "Perfect! In this city, these are the main trade shows. Choose one!!",
       namePlaceholder: "Your Name",
       emailPlaceholder: "Your Business Email",
       privacyLabel: "I accept the privacy policy",
       privacyLabelHtml: "I accept the <span class=\"adv-privacy-link\">privacy policy</span>",
       sendBtn: "Send Request",
       sending: "Sending...",
-      successMsg: "Thank you! Request received. We will contact you within 24 hours with a custom design proposal.",
+      thanksTitle: "Thank you",
+      successMsg: "I will contact you shortly",
       errorMsg: "An error occurred. Please try again or use the contact form below.",
       defaultDescription: "Stand construction request from interactive advisor."
     },
@@ -59,13 +78,15 @@
       instruction: "Escolha a cidade e eu mostrar-lhe-ei os eventos imperdíveis:",
       cta: "Pedir orçamento para esta feira",
       formInstruction: "Por favor, introduza o seu nome e e-mail para receber a proposta de design personalizada:",
+      fairInstruction: "Perfeito! Nesta cidade, estas são as principais feiras. Escolha uma!!",
       namePlaceholder: "Seu Nome",
       emailPlaceholder: "Seu E-mail Corporativo",
       privacyLabel: "Aceito a política de privacidade",
       privacyLabelHtml: "Aceito a <span class=\"adv-privacy-link\">política de privacidade</span>",
       sendBtn: "Enviar Pedido",
       sending: "A enviar...",
-      successMsg: "Obrigado! Pedido recebido. Entraremos em contacto consigo no prazo de 24 horas com uma proposta de design personalizada.",
+      thanksTitle: "Obrigada",
+      successMsg: "Entrarei em contacto consigo em breve",
       errorMsg: "Ocorreu um erro. Por favor, tente novamente ou use o formulário de contacto abaixo.",
       defaultDescription: "Pedido de construção de stand a partir do assessor virtual."
     },
@@ -75,13 +96,15 @@
       instruction: "Wählen Sie die Stadt und ich zeige Ihnen die wichtigsten Events, die Sie nicht verpassen dürfen:",
       cta: "Angebot für diese Messe anfordern",
       formInstruction: "Bitte geben Sie Ihren Namen und Ihre E-Mail-Adresse ein, um Ihr individuelles Design-Angebot zu erhalten:",
+      fairInstruction: "Perfekt! In dieser Stadt sind das die wichtigsten Messen. Wählen Sie eine!!",
       namePlaceholder: "Ihr Name",
       emailPlaceholder: "Ihre geschäftliche E-Mail",
       privacyLabel: "Ich akzeptiere die Datenschutzerklärung",
       privacyLabelHtml: "Ich akzeptiere die <span class=\"adv-privacy-link\">Datenschutzerklärung</span>",
       sendBtn: "Anfrage senden",
       sending: "Wird gesendet...",
-      successMsg: "Vielen Dank! Anfrage erhalten. Wir werden uns innerhalb von 24 Stunden mit einem maßgeschneiderten Entwurf bei Ihnen melden.",
+      thanksTitle: "Vielen Dank",
+      successMsg: "Ich werde mich in Kürze mit Ihnen in Verbindung setzen",
       errorMsg: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder nutzen Sie das Kontaktformular unten.",
       defaultDescription: "Messestand-Anfrage über den virtuellen Berater."
     },
@@ -91,30 +114,34 @@
       instruction: "Choisissez la ville et je vous montrerai les salons incontournables à ne pas manquer :",
       cta: "Demander un devis pour ce salon",
       formInstruction: "Veuillez entrer votre nom et votre adresse e-mail pour recevoir votre proposition de design personnalisée :",
+      fairInstruction: "Parfait ! Dans cette ville, voici les principaux salons. Choisissez-en un !!",
       namePlaceholder: "Votre Nom",
       emailPlaceholder: "Votre E-mail Professionnel",
       privacyLabel: "J'accepte la politique de confidentialité",
-      privacyLabelHtml: "J'accepte la <span class=\"adv-privacy-link\">politique de confidentialité</span>",
+      privacyLabelHtml: "J'accepte la <span class=\"adv-privacy-link\">política de confidentialité</span>",
       sendBtn: "Envoyer la demande",
       sending: "Envoi en cours...",
-      successMsg: "Merci ! Demande reçue. Nous vous contacterons dans les 24 heures avec une proposition de design personnalisée.",
+      thanksTitle: "Merci",
+      successMsg: "Je vous contacterai sous peu",
       errorMsg: "Une erreur est survenue. Veuillez réessayer ou utiliser le formulaire de contact ci-dessous.",
       defaultDescription: "Demande de conception de stand via le conseiller interactif."
     },
     it: {
       title: "Ciao!, sono Pat.",
-      intro: "Se desideri esporre in Spagna e Portogallo, posso consigliarti nella scelta degli eventi chiave.",
+      intro: "Se desideri esporre in Spagna e Portogallo, posso consigliarti nella scelta degli eventos chiave.",
       instruction: "Scegli la città e ti mostrerò gli eventi imperdibili a cui non puoi mancare:",
       cta: "Richiedi un preventivo per questa fiera",
       formInstruction: "Inserisci il tuo nome ed e-mail per ricevere la tua proposta di design personalizzata:",
+      fairInstruction: "Perfetto! In questa città, queste sono le fiere principali. Scegline una!!",
       namePlaceholder: "Il tuo Nome",
       emailPlaceholder: "La tua Email Aziendale",
       privacyLabel: "Accetto l'informativa sulla privacy",
       privacyLabelHtml: "Accetto l'<span class=\"adv-privacy-link\">informativa sulla privacy</span>",
       sendBtn: "Invia Richiesta",
       sending: "Invio in corso...",
-      successMsg: "Grazie! Richiesta ricevuta. Ti contatteremo entro 24 ore con una proposta di design prima di riceverla.",
-      errorMsg: "Si è verificato un errore. Riprova o utilizza il modulo di contatto sottostante.",
+      thanksTitle: "Grazie",
+      successMsg: "Ti contatterò a breve",
+      errorMsg: "Si è verificato un errore. Riprova o utiliza el modulo di contatto sottostante.",
       defaultDescription: "Richiesta di progettazione stand dall'assistente virtuale."
     },
     nl: {
@@ -123,13 +150,15 @@
       instruction: "Kies de stad en ik laat u de belangrijkste evenementen zien die u niet mag missen:",
       cta: "Vraag een offerte aan voor deze beurs",
       formInstruction: "Voer uw naam en e-mailadres in om uw persoonlijk ontwerpvoorstel te ontvangen:",
+      fairInstruction: "Perfect! In deze stad zijn dit de belangrijkste beurzen. Kies er één!!",
       namePlaceholder: "Uw Naam",
       emailPlaceholder: "Uw Zakelijk E-mailadres",
       privacyLabel: "Ik accepteer het privacybeleid",
       privacyLabelHtml: "Ik accepteer het <span class=\"adv-privacy-link\">privacybeleid</span>",
       sendBtn: "Aanvraag Verzenden",
       sending: "Verzenden...",
-      successMsg: "Bedankt! Aanvraag ontvangen. We nemen binnen 24 uur contact met u op met een persoonlijk ontwerpvoorstel.",
+      thanksTitle: "Bedankt",
+      successMsg: "Ik neem spoedig contact met u op",
       errorMsg: "Er is een fout opgetreden. Probeer het opnieuw of gebruik het onderstaande contactformulier.",
       defaultDescription: "Standbouwaanvraag via de interactieve adviseur."
     },
@@ -139,13 +168,15 @@
       instruction: "选择城市，我将为您展示不容错过的关键活动：",
       cta: "索取该展会的报价",
       formInstruction: "请输入您的姓名和电子邮箱，以便获取您的定制设计方案：",
+      fairInstruction: "太棒了！在这个城市，这些是主要的展会。选择一个吧！！",
       namePlaceholder: "您的姓名",
       emailPlaceholder: "您的企业邮箱",
       privacyLabel: "我接受隐私政策",
       privacyLabelHtml: "我接受<span class=\"adv-privacy-link\">隐私政策</span>",
       sendBtn: "发送请求",
       sending: "正在发送...",
-      successMsg: "谢谢！请求已收到。我们将在24小时内与您联系，并提供定制的设计方案。",
+      thanksTitle: "谢谢",
+      successMsg: "我很快会与您联系",
       errorMsg: "发生错误。请重试或使用下方的联系表格。",
       defaultDescription: "来自互动顾问的展台设计请求。"
     },
@@ -155,14 +186,16 @@
       instruction: "शहर चुनें और मैं आपको वे प्रमुख कार्यक्रम दिखाऊँगी जिन्हें आप मिस नहीं कर सकते:",
       cta: "इस मेले के लिए कोटेशन प्राप्त करें",
       formInstruction: "कृपया अपना कस्टम डिज़ाइन प्रस्ताव प्राप्त करने के लिए अपना नाम और ईमेल दर्ज करें:",
+      fairInstruction: "बिल्कुल सही! इस शहर में, ये मुख्य मेले हैं। एक चुनें!!",
       namePlaceholder: "आपका नाम",
       emailPlaceholder: "आपका व्यावसायिक ईमेल",
       privacyLabel: "मैं गोपनीयता नीति स्वीकार करता हूँ",
       privacyLabelHtml: "मैं <span class=\"adv-privacy-link\">गोपनीयता नीति</span> स्वीकार करता हूँ",
       sendBtn: "अनुरोध भेजें",
       sending: "भेजा जा रहा है...",
-      successMsg: "धन्यवाद! आपका अनुरोध प्राप्त हो गया है। हम 24 घंटों के भीतर आपसे एक कस्टम डिज़ाइन प्रस्ताव के साथ संपर्क करेंगे।",
-      errorMsg: "एक त्रुटि हुई। कृपया पुनः प्रयास करें या नीचे दिए गए संपर्क फ़ॉर्म का उपयोग करें।",
+      thanksTitle: "धन्यवाद",
+      successMsg: "मैं शीघ्र ही आपसे संपर्क करूँगा",
+      errorMsg: "एक त्रुटि हुई। कृपया पुनः प्रयास करें या नीचे दिए गए संपर्क फ़ॉर्म का उपयोग करें.",
       defaultDescription: "इंटरैक्टिव सलाहकार से स्टैंड डिज़ाइन अनुरोध।"
     },
     ko: {
@@ -171,13 +204,15 @@
       instruction: "도시를 선택하시면 절대 놓쳐서는 안 될 주요 전시회를 보여드리겠습니다:",
       cta: "이 전시회 견적 요청하기",
       formInstruction: "맞춤형 디자인 제안서를 받으실 이름과 이메일 주소를 입력해 주세요:",
+      fairInstruction: "좋습니다! 이 도시의 주요 전시회는 다음과 같습니다. 하나를 선택해 주세요!!",
       namePlaceholder: "이름",
       emailPlaceholder: "회사 이메일 주소",
       privacyLabel: "개인정보 처리방침에 동의합니다",
       privacyLabelHtml: "<span class=\"adv-privacy-link\">개인정보 처리방침</span>에 동의합니다",
       sendBtn: "요청 보내기",
       sending: "전송 중...",
-      successMsg: "감사합니다! 요청이 성공적으로 접수되었습니다. 24시간 이내에 맞춤형 디자인 제안으로 연락드리겠습니다.",
+      thanksTitle: "감사합니다",
+      successMsg: "곧 연락드리겠습니다",
       errorMsg: "오류가 발생했습니다. 다시 시도하시거나 아래 문의 양식을 이용해 주세요.",
       defaultDescription: "대화형 어드바이저를 통한 부스 디자인 요청."
     },
@@ -187,13 +222,15 @@
       instruction: "都市を選択してください。見逃せない主要な展示会をご案内します：",
       cta: "この展示会の見積もりを依頼する",
       formInstruction: "カスタムデザインのご提案をお送りするため、お名前とメールアドレスをご入力ください：",
+      fairInstruction: "完璧です！この都市の主要な展示会は以下の通りです。どれか1つ選んでくださいね！！",
       namePlaceholder: "お名前",
       emailPlaceholder: "会社用メールアドレス",
       privacyLabel: "個人情報保護方針に同意します",
       privacyLabelHtml: "<span class=\"adv-privacy-link\">個人情報保護方針</span>に同意します",
       sendBtn: "送信する",
       sending: "送信中...",
-      successMsg: "ありがとうございます！リクエストを受領いたしました。24時間以内にカスタムデザインの提案をご連絡いたします。",
+      thanksTitle: "ありがとうございます",
+      successMsg: "まもなくご連絡いたします",
       errorMsg: "エラーが発生しました。もう一度お試しいただくか、以下の問い合わせフォームをご利用ください。",
       defaultDescription: "バーチャルアドバイザーからの展示会ブースデザイン設計依頼。"
     }
@@ -206,9 +243,59 @@
     ? fairsData.filter(f => f.city === selectedCityName)
     : [];
 
-  // Single Shared AudioContext Instance
+  // Single Shared AudioContext Instance and preloaded AudioBuffers
   let audioCtx = null;
   let chimePlayed = false;
+  let chimeBuffer = null;
+  let clickBuffer = null;
+
+  function preloadBuffers(ctx) {
+    if (!ctx) return;
+    try {
+      const sampleRate = ctx.sampleRate;
+      
+      // Chime Buffer (0.3s)
+      const chimeDuration = Math.ceil(0.3 * sampleRate);
+      const chimeBuf = ctx.createBuffer(1, chimeDuration, sampleRate);
+      const chimeData = chimeBuf.getChannelData(0);
+      const d5 = 587.33;
+      const a5 = 880.00;
+      
+      for (let i = 0; i < chimeDuration; i++) {
+        const t = i / sampleRate;
+        let val = 0;
+        if (t < 0.12) {
+          const amp = 0.08 * Math.exp(-t * 30);
+          val += amp * Math.sin(2 * Math.PI * d5 * t);
+        }
+        if (t >= 0.08 && t < 0.28) {
+          const t2 = t - 0.08;
+          const amp = 0.08 * Math.exp(-t2 * 25);
+          val += amp * Math.sin(2 * Math.PI * a5 * t2);
+        }
+        chimeData[i] = val;
+      }
+      chimeBuffer = chimeBuf;
+
+      // Click Buffer (0.02s)
+      const clickDuration = Math.ceil(0.02 * sampleRate);
+      const clickBuf = ctx.createBuffer(1, clickDuration, sampleRate);
+      const clickData = clickBuf.getChannelData(0);
+      
+      for (let i = 0; i < clickDuration; i++) {
+        const t = i / sampleRate;
+        const freq = 1400 * Math.exp(-t * 97.3);
+        const phase = 2 * Math.PI * (1400 / -97.3) * (Math.exp(-t * 97.3) - 1);
+        const normPhase = (phase / (2 * Math.PI)) % 1.0;
+        const triVal = 2 * Math.abs(2 * (normPhase - Math.floor(normPhase + 0.5))) - 1;
+        const amp = 0.015 * Math.exp(-t * 150);
+        clickData[i] = triVal * amp;
+      }
+      clickBuffer = clickBuf;
+    } catch (e) {
+      // Ignored
+    }
+  }
 
   function getAudioContext() {
     if (typeof window === 'undefined') return null;
@@ -216,68 +303,36 @@
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (AudioContextClass) {
         audioCtx = new AudioContextClass();
+        preloadBuffers(audioCtx);
       }
     }
-    // Attempt to resume if suspended by browser autoplay policy
     if (audioCtx && audioCtx.state === 'suspended') {
       audioCtx.resume().catch(() => {});
     }
     return audioCtx;
   }
 
-  function playNotificationSound() {
+  function playBuffer(buf) {
+    if (!buf) return;
     try {
       const ctx = getAudioContext();
-      if (!ctx) return;
-
-      const osc1 = ctx.createOscillator();
-      const gain1 = ctx.createGain();
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
-      gain1.gain.setValueAtTime(0.08, ctx.currentTime);
-      gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
-      osc1.connect(gain1);
-      gain1.connect(ctx.destination);
-      osc1.start();
-      osc1.stop(ctx.currentTime + 0.12);
-
-      const osc2 = ctx.createOscillator();
-      const gain2 = ctx.createGain();
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(880, ctx.currentTime + 0.08); // A5
-      gain2.gain.setValueAtTime(0.08, ctx.currentTime + 0.08);
-      gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08 + 0.2);
-      osc2.connect(gain2);
-      gain2.connect(ctx.destination);
-      osc2.start(ctx.currentTime + 0.08);
-      osc2.stop(ctx.currentTime + 0.08 + 0.2);
+      if (!ctx || ctx.state === 'suspended') return;
+      
+      const source = ctx.createBufferSource();
+      source.buffer = buf;
+      source.connect(ctx.destination);
+      source.start();
     } catch (e) {
       // Ignored
     }
   }
 
+  function playNotificationSound() {
+    playBuffer(chimeBuffer);
+  }
+
   function playTypewriterSound() {
-    try {
-      const ctx = getAudioContext();
-      if (!ctx || ctx.state === 'suspended') return;
-
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(1400, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.02);
-
-      gain.gain.setValueAtTime(0.015, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.02);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start();
-      osc.stop(ctx.currentTime + 0.02);
-    } catch (e) {
-      // Ignored
-    }
+    playBuffer(clickBuffer);
   }
 
   function triggerNotificationChime() {
@@ -316,20 +371,33 @@
     }, 25);
   }
 
+  // Reactive typewriter trigger that restarts on language, step, or success status changes
+  let lastStep = 1;
   let lastLang = '';
+  let lastStatus = 'idle';
   $: if (profileVisible && lang) {
-    if (lang !== lastLang) {
+    if (currentStep !== lastStep || lang !== lastLang || status !== lastStatus) {
+      lastStep = currentStep;
       lastLang = lang;
-      typeText(t.instruction);
+      lastStatus = status;
+      
+      if (status === 'success') {
+        typeText(t.successMsg);
+      } else if (currentStep === 1) {
+        typeText(t.instruction);
+      } else if (currentStep === 2) {
+        typeText(t.fairInstruction);
+      }
     }
   }
 
-  // Interactive unlock handler for Web Audio API autoplay constraints
   function unlockAudio() {
     const ctx = getAudioContext();
     if (ctx) {
       ctx.resume().then(() => {
-        // If Pat profile is already visible but chime has not played, play it now
+        if (!chimeBuffer || !clickBuffer) {
+          preloadBuffers(ctx);
+        }
         if (profileVisible && !chimePlayed) {
           playNotificationSound();
           chimePlayed = true;
@@ -348,6 +416,16 @@
   }
 
   onMount(() => {
+    // Pre-initialize AudioContext and preload buffers immediately when advisor is mounted
+    try {
+      const ctx = getAudioContext();
+      if (ctx) {
+        preloadBuffers(ctx);
+      }
+    } catch (e) {
+      // Ignored
+    }
+
     // 1. Expand the card
     setTimeout(() => {
       cardExpanded = true;
@@ -376,7 +454,6 @@
     clearInterval(typingInterval);
     selectedCity = cityKey;
     currentStep = 2;
-    // Resume audio context on click interaction
     unlockAudio();
   }
 
@@ -385,7 +462,6 @@
     currentStep = 3;
     unlockAudio();
     
-    // Dispatch to update state in parent context
     const cityName = cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity;
     dispatch('selectFair', { fairName, cityName });
   }
@@ -450,7 +526,7 @@
 <section class="welcome-advisor-container">
   <div class="welcome-advisor-card" class:expanded={cardExpanded}>
     
-    <div class="advisor-profile" class:visible={profileVisible}>
+    <div class="advisor-profile" class:visible={profileVisible} class:submitted={status === 'success'}>
       <img
         class="advisor-photo"
         src="/img/team/patricia_jimenez.avif"
@@ -462,9 +538,9 @@
       />
       <div class="advisor-bubble">
         <div class="advisor-bubble-header">
-          <h3 class="advisor-name">{t.title}</h3>
+          <h3 class="advisor-name">{status === 'success' ? t.thanksTitle : t.title}</h3>
           
-          {#if selectedCity || selectedFair}
+          {#if (selectedCity || selectedFair) && status !== 'success'}
             <div class="advisor-selected-badges" transition:fade>
               {#if selectedCity}
                 <span class="selected-badge-pill" transition:fade>
@@ -486,10 +562,10 @@
           <p class="advisor-intro" transition:slide={{ duration: 300 }}>{t.intro}</p>
         {/if}
         
-        {#if status === 'success'}
-          <p class="advisor-instruction text-success" transition:fade>{statusMessage}</p>
-        {:else if status === 'error'}
+        {#if status === 'error'}
           <p class="advisor-instruction text-error" transition:fade>{statusMessage}</p>
+        {:else if status === 'success'}
+          <p class="advisor-instruction text-success" transition:fade>{typedText}</p>
         {:else if currentStep === 3}
           <p class="advisor-instruction" transition:fade>{t.formInstruction}</p>
         {:else}
@@ -513,7 +589,7 @@
       </div>
     {/if}
 
-    <!-- Step 2: Fairs selector as floating pills -->
+    <!-- Step 2: Fairs selector as floating pills (Lime Green themed) -->
     {#if currentStep === 2}
       <div class="fairs-selector-flex" transition:slide={{ duration: 400 }}>
         {#each cityFairs as fair}
@@ -611,12 +687,41 @@
     margin-bottom: 24px;
     opacity: 0;
     transform: translateY(15px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease, gap 0.5s ease, margin-bottom 0.5s ease;
   }
 
   .advisor-profile.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .advisor-profile.submitted {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .advisor-profile.submitted .advisor-bubble {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .advisor-profile.submitted .advisor-bubble::after {
+    display: none;
+  }
+
+  .advisor-profile.submitted .advisor-bubble-header {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .advisor-profile.submitted .advisor-name {
+    font-size: 26px;
+    width: 100%;
   }
 
   .advisor-photo {
@@ -676,22 +781,22 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--gold);
-    color: #111;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: #bef264;
+    color: #1a2e05;
+    border: 1px solid #84cc16;
     border-radius: 20px;
     padding: 4px 10px;
     font-family: 'Inconsolata', monospace;
     font-size: 12px;
     font-weight: 700;
-    box-shadow: 0 2px 6px rgba(255, 200, 0, 0.2);
+    box-shadow: 0 2px 6px rgba(132, 204, 22, 0.2);
   }
 
   .remove-badge-btn {
     background: none;
     border: none;
     padding: 0;
-    color: #111;
+    color: inherit;
     cursor: pointer;
     font-size: 14px;
     font-weight: 700;
@@ -757,7 +862,7 @@
     background: #fffdf6;
   }
 
-  /* Fairs Selector (Inline Floating Pills) */
+  /* Lime Green Fairs Selector */
   .fairs-selector-flex {
     display: flex;
     flex-wrap: wrap;
@@ -791,7 +896,7 @@
     display: inline-block;
     width: 14px;
     height: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -804,9 +909,8 @@
   }
 
   .fair-name-text {
-    font-weight: 700;
-    font-size: 15px;
-    color: #111;
+    font-weight: 600;
+    font-size: 14px;
   }
 
   /* Advisor Mini Form Styling */
@@ -896,8 +1000,8 @@
   }
 
   .advisor-submit-btn {
-    background: #111;
-    color: #fff;
+    background: var(--gold);
+    color: #000;
     border: 0;
     border-radius: 30px;
     padding: 12px 28px;
@@ -907,12 +1011,13 @@
     cursor: pointer;
     transition: all 0.25s ease;
     align-self: flex-start;
+    box-shadow: 0 4px 10px rgba(255, 200, 0, 0.15);
   }
 
   .advisor-submit-btn:hover:not(:disabled) {
-    background: var(--gold);
-    color: #111;
-    box-shadow: 0 4px 12px rgba(255, 200, 0, 0.2);
+    background: #e5b000;
+    color: #000;
+    box-shadow: 0 4px 12px rgba(255, 200, 0, 0.35);
   }
 
   .advisor-submit-btn:disabled {

@@ -871,7 +871,7 @@
 
 <main>
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
-    {#if lang !== 'es' && showWelcomeAdvisor}
+    {#if showWelcomeAdvisor}
       <WelcomeAdvisor {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} />
     {/if}
     <section id="services" class="section services">
