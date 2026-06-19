@@ -147,12 +147,12 @@
       sending: "正在发送...",
       successMsg: "谢谢！请求已收到。我们将在24小时内与您联系，并提供定制的设计方案。",
       errorMsg: "发生错误。请重试或使用下方的联系表格。",
-      defaultDescription: "来自互动顾问的展台设计请求。"
+      defaultDescription: "来自互动顾问 of 展台设计请求。"
     },
     hi: {
       title: "नमस्ते!, मैं Pat हूँ।",
       intro: "यदि आप स्पेन और पुर्तगाल में प्रदर्शन करना चाहते हैं, तो मैं आपको प्रमुख कार्यक्रमों को चुनने में सलाह दे सकती हूँ।",
-      instruction: "शहर चुनें und मैं आपको वे प्रमुख कार्यक्रम दिखाऊँगी जिन्हें आप मिस नहीं कर सकते:",
+      instruction: "शहर चुनें और मैं आपको वे प्रमुख कार्यक्रम दिखाऊँगी जिन्हें आप मिस नहीं कर सकते:",
       cta: "इस मेले के लिए कोटेशन प्राप्त करें",
       formInstruction: "कृपया अपना कस्टम डिज़ाइन प्रस्ताव प्राप्त करने के लिए अपना नाम और ईमेल दर्ज करें:",
       namePlaceholder: "आपका नाम",
@@ -262,6 +262,21 @@
     dispatch('selectFair', { fairName, cityName });
   }
 
+  function resetCity() {
+    selectedCity = '';
+    selectedFair = '';
+    currentStep = 1;
+    status = 'idle';
+    statusMessage = '';
+  }
+
+  function resetFair() {
+    selectedFair = '';
+    currentStep = 2;
+    status = 'idle';
+    statusMessage = '';
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
     if (!privacyAccepted) return;
@@ -318,7 +333,27 @@
         decoding="async"
       />
       <div class="advisor-bubble">
-        <h3 class="advisor-name">{t.title}</h3>
+        <div class="advisor-bubble-header">
+          <h3 class="advisor-name">{t.title}</h3>
+          
+          {#if selectedCity || selectedFair}
+            <div class="advisor-selected-badges" transition:fade>
+              {#if selectedCity}
+                <span class="selected-badge-pill" transition:fade>
+                  {cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity}
+                  <button type="button" class="remove-badge-btn" on:click={resetCity} aria-label="Remove city">×</button>
+                </span>
+              {/if}
+              {#if selectedFair}
+                <span class="selected-badge-pill" transition:fade>
+                  {selectedFair}
+                  <button type="button" class="remove-badge-btn" on:click={resetFair} aria-label="Remove fair">×</button>
+                </span>
+              {/if}
+            </div>
+          {/if}
+        </div>
+
         {#if currentStep < 3 && status !== 'success'}
           <p class="advisor-intro" transition:slide={{ duration: 300 }}>{t.intro}</p>
         {/if}
@@ -486,12 +521,65 @@
     border-right: 10px solid #f4f4f2;
   }
 
+  .advisor-bubble-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
   .advisor-name {
-    margin: 0 0 8px 0;
+    margin: 0;
     color: #111;
     font-family: 'Glegoo', serif;
     font-size: 20px;
     font-weight: 700;
+  }
+
+  .advisor-selected-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .selected-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gold);
+    color: #111;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(255, 200, 0, 0.2);
+  }
+
+  .remove-badge-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #111;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+
+  .remove-badge-btn:hover {
+    background-color: rgba(0, 0, 0, 0.12);
   }
 
   .advisor-intro, .advisor-instruction {
