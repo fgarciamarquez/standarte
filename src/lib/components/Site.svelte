@@ -7,6 +7,7 @@
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
+  import AiSourceButtons from './AiSourceButtons.svelte';
   import CookieConsent from './CookieConsent.svelte';
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
@@ -33,7 +34,8 @@
     fr: 'DEVIS EN 24 H',
     it: 'PREVENTIVO IN 24 H',
     ko: '24시간 내 견적',
-    ja: '24時間で見積もり'
+    ja: '24時間で見積もり',
+    nl: 'OFFERTE BINNEN 24 U'
   };
 
   const teamMemberName = {
@@ -140,7 +142,8 @@
     fr: 'fr_FR',
     it: 'it_IT',
     ko: 'ko_KR',
-    ja: 'ja_JP'
+    ja: 'ja_JP',
+    nl: 'nl_NL'
   };
   const contentLanguages = {
     es: 'es-ES',
@@ -152,7 +155,8 @@
     fr: 'fr-FR',
     it: 'it-IT',
     ko: 'ko-KR',
-    ja: 'ja-JP'
+    ja: 'ja-JP',
+    nl: 'nl-NL'
   };
   const cityKeys = ['madrid', 'lisboa', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
   const cookieSettingsLabels = {
@@ -165,7 +169,8 @@
     fr: 'Configurer les cookies',
     it: 'Impostazioni cookie',
     ko: '쿠키 설정',
-    ja: 'クッキー設定'
+    ja: 'クッキー設定',
+    nl: 'Cookies configureren'
   };
   const campaignManagerLabels = {
     es: 'Admin',
@@ -177,7 +182,8 @@
     fr: 'Admin',
     it: 'Admin',
     ko: 'Admin',
-    ja: '管理'
+    ja: '管理',
+    nl: 'Admin'
   };
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para construcción de stands',
@@ -228,7 +234,9 @@
 
   // Para japonés (sin rich-ja todavía) usamos null en vez de caer al español:
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
-  $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : richSeo.es) || null) : null;
+  $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
+  // Hero con fondo animado (fotos en movimiento) en la home Y en las páginas matriz de ciudad.
+  $: animatedHero = section === 'home' || (section in cityData);
   // Proyectos del pilar: para regiones con perfil sectorial marcado mostramos obra real afín
   // (no se afirma que sean de esa ciudad; el intro es genérico "muestra de nuestro trabajo").
   $: selectedPortfolios = (FEATURED_BY_REGION[SECTION_REGION[section]] || [])
@@ -265,8 +273,38 @@
     ko: '저희가 부스를 디자인하고 시공하는 인근 전시회',
     zh: '我们在该地区设计和搭建展台的展会',
     hi: 'इस क्षेत्र के मेले जहाँ हम स्टैंड डिज़ाइन और निर्माण करते हैं',
-    ja: '当社がブースの設計・施工を行う近隣の展示会'
+    ja: '当社がブースの設計・施工を行う近隣の展示会',
+    nl: 'Beurzen in de regio waar wij stands ontwerpen en bouwen'
   };
+  // Navegación entre ciudades matrices (módulo del sidebar, igual que en Feria).
+  // Solo matrices (construccion_stands_*); excluye las landings de montaje secundarias.
+  const CITY_NAV_KEYS = Object.keys(cityData).filter((k) => !k.startsWith('montaje_'));
+  const CITY_NAV_LABELS = {
+    es: 'Ciudades', en: 'Cities', de: 'Städte',
+    fr: 'Villes', it: 'Città', pt: 'Cidades',
+    zh: '城市', hi: 'शहर', ko: '도시', ja: '都市', nl: 'Steden'
+  };
+  // Las FAQs se muestran en una rejilla de dos columnas: deben ser siempre pares.
+  // Si la página trae un número impar, añadimos esta pregunta genérica (válida para
+  // cualquier ciudad) para cuadrar la rejilla.
+  const FILLER_FAQ = {
+    es: { q: '¿Trabajáis solo en esta ciudad o en toda España y Portugal?', a: 'Diseñamos, fabricamos y montamos stands en toda España y Portugal. Al contar con taller propio y equipo de montaje, nos desplazamos a cualquier recinto ferial con la misma garantía de calidad y plazos.' },
+    en: { q: 'Do you work only in this city or across Spain and Portugal?', a: 'We design, build and install stands throughout Spain and Portugal. With our own workshop and assembly team, we travel to any exhibition venue with the same guarantee of quality and deadlines.' },
+    de: { q: 'Arbeiten Sie nur in dieser Stadt oder in ganz Spanien und Portugal?', a: 'Wir entwerfen, fertigen und montieren Messestände in ganz Spanien und Portugal. Mit eigener Werkstatt und Montageteam reisen wir zu jedem Messegelände – mit derselben Qualitäts- und Termingarantie.' },
+    fr: { q: 'Travaillez-vous uniquement dans cette ville ou dans toute l\'Espagne et le Portugal ?', a: 'Nous concevons, fabriquons et montons des stands dans toute l\'Espagne et le Portugal. Avec notre propre atelier et notre équipe de montage, nous nous déplaçons dans n\'importe quel parc des expositions avec la même garantie de qualité et de délais.' },
+    it: { q: 'Lavorate solo in questa città o in tutta la Spagna e il Portogallo?', a: 'Progettiamo, costruiamo e allestiamo stand in tutta la Spagna e il Portogallo. Avendo officina propria e squadra di montaggio, ci spostiamo in qualsiasi quartiere fieristico con la stessa garanzia di qualità e tempi.' },
+    pt: { q: 'Trabalham apenas nesta cidade ou em toda a Espanha e Portugal?', a: 'Concebemos, fabricamos e montamos stands em toda a Espanha e Portugal. Com oficina própria e equipa de montagem, deslocamo-nos a qualquer recinto de feiras com a mesma garantia de qualidade e prazos.' },
+    zh: { q: '你们只在这座城市还是在整个西班牙和葡萄牙开展业务？', a: '我们在整个西班牙和葡萄牙设计、制造和搭建展台。我们拥有自己的工厂和搭建团队，能够前往任何展览场馆，并提供同样的质量和工期保证。' },
+    hi: { q: 'क्या आप केवल इसी शहर में काम करते हैं या पूरे स्पेन और पुर्तगाल में?', a: 'हम पूरे स्पेन और पुर्तगाल में स्टैंड डिज़ाइन, निर्माण और स्थापित करते हैं। अपनी कार्यशाला और असेंबली टीम के साथ, हम उसी गुणवत्ता और समयसीमा की गारंटी के साथ किसी भी प्रदर्शनी स्थल तक पहुँचते हैं।' },
+    ko: { q: '이 도시에서만 작업하시나요, 아니면 스페인과 포르투갈 전역에서 작업하시나요?', a: '저희는 스페인과 포르투갈 전역에서 부스를 디자인·제작·설치합니다. 자체 작업장과 설치 팀을 보유하고 있어 동일한 품질과 납기 보장으로 어떤 전시장이든 방문합니다.' },
+    ja: { q: 'この都市だけで対応していますか、それともスペインとポルトガル全土ですか？', a: '当社はスペインとポルトガル全土でブースの設計・製造・施工を行っています。自社工房と施工チームを擁し、同じ品質と納期の保証のもと、どの展示会場へも出向きます。' },
+    nl: { q: 'Werken jullie alleen in deze stad of in heel Spanje en Portugal?', a: 'Wij ontwerpen, produceren en bouwen stands in heel Spanje en Portugal. Met een eigen werkplaats en montageteam reizen we naar elk beurscomplex met dezelfde garantie op kwaliteit en deadlines.' }
+  };
+  $: faqsEven = (() => {
+    const list = seoContent?.faqs ? [...seoContent.faqs] : [];
+    if (list.length % 2 === 1) list.push(FILLER_FAQ[lang] || FILLER_FAQ.es);
+    return list;
+  })();
   $: regionFairs = SECTION_REGION[section]
     ? fairItems.filter((f) => FAIR_CITY_REGION[f.city] === SECTION_REGION[section])
     : [];
@@ -547,6 +585,13 @@
     if (section === 'home') {
       event.preventDefault();
       scrollTo(id);
+    } else if (id === 'contact' && section in cityData) {
+      // En páginas de ciudad el formulario está en la propia página: hacemos scroll
+      // al #contact local en vez de navegar a la home, y sin alterar la URL.
+      event.preventDefault();
+      menuOpen = false;
+      const el = document.getElementById('contact');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
@@ -716,8 +761,8 @@
 
 <svelte:window on:keydown={handleKeydown} on:scroll|passive={updateScrollState} />
 
-<header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services'} class:hero-anim={section === 'home'}>
-  {#if section === 'home'}
+<header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services' && !animatedHero} class:hero-anim={animatedHero}>
+  {#if animatedHero}
     <div class="hero-bg-layer hero-bg-a" aria-hidden="true"></div>
     <div class="hero-bg-layer hero-bg-b" aria-hidden="true"></div>
   {/if}
@@ -787,9 +832,10 @@
         <h1>{copy.heroTitle}</h1>
         <p>{copy.heroSubtitle}</p>
       </div>
+      <AiSourceButtons {lang} variant="hero" />
     </section>
   {:else if seoContent}
-    <div class="hero-subpage" class:transparent-hero={section === 'services'}>
+    <div class="hero-subpage" class:transparent-hero={section === 'services'} class:on-hero-photo={animatedHero}>
       <div class="hero-contents">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <ol>
@@ -801,6 +847,7 @@
         <h1>{seoContent.h1}</h1>
         <p class="hero-lead">{seoContent.introText}</p>
       </div>
+      {#if animatedHero}<AiSourceButtons {lang} variant="hero" showLabel={false} />{/if}
     </div>
   {/if}
 </header>
@@ -1140,12 +1187,22 @@
           <!-- Sidebar con casos de éxito reales -->
           <aside class="seo-sidebar">
             <div class="sidebar-sticky">
+              <div class="city-nav-module">
+                <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
+                <ul class="city-fairs-list">
+                  {#each CITY_NAV_KEYS as ck}
+                    <li>
+                      <a href={pathFor(lang, ck)} class:active={ck === section}>
+                        {cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es}
+                      </a>
+                    </li>
+                  {/each}
+                </ul>
+              </div>
+
               <div class="spotlight-card">
                 <h3>{copy.successStoriesTitle}</h3>
-                <p class="spotlight-intro">
-                  {copy.featuredProjectsIntro}
-                </p>
-                
+
                 <div class="sidebar-projects">
                   {#each selectedPortfolios as project}
                     <div class="sidebar-project-card">
@@ -1157,46 +1214,44 @@
                     </div>
                   {/each}
                 </div>
-                
-                <button type="button" class="btn-sidebar-gold" on:click={() => scrollTo('contact')}>
-                  {ctaLabels[lang] || ctaLabels.es}
-                </button>
               </div>
+
+              <!-- Clúster pilar→ferias: enlaces a las ferias de la región -->
+              {#if regionFairs.length}
+                <section class="city-fairs sidebar-module" aria-label={cityFairsLabel[lang] || cityFairsLabel.es}>
+                  <h2>{cityFairsLabel[lang] || cityFairsLabel.es}</h2>
+                  <ul class="city-fairs-list">
+                    {#each regionFairs as fair}
+                      <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
+                    {/each}
+                  </ul>
+                </section>
+              {/if}
             </div>
           </aside>
         </div>
 
-        <!-- FAQs Section (B2B FAQ grids) -->
-        {#if seoContent.faqs && seoContent.faqs.length > 0}
+        <!-- FAQs Section (B2B FAQ grids) — siempre en número par -->
+        {#if faqsEven.length > 0}
           <section class="seo-faqs">
             <h2>{copy.faqsTitle}</h2>
             <div class="faq-grid">
-              {#each seoContent.faqs as faq}
-                <article class="faq-card">
+              {#each faqsEven as faq}
+                <article class="faq-item">
                   <h3>{faq.q}</h3>
                   <p>{faq.a}</p>
                 </article>
               {/each}
             </div>
           </section>
-        {/if}
-
-        <!-- Clúster pilar→ferias: enlaces a las ferias de la región -->
-        {#if regionFairs.length}
-          <section class="city-fairs" aria-label={cityFairsLabel[lang] || cityFairsLabel.es}>
-            <h2>{cityFairsLabel[lang] || cityFairsLabel.es}</h2>
-            <ul class="city-fairs-list">
-              {#each regionFairs as fair}
-                <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
-              {/each}
-            </ul>
-          </section>
+          <!-- Separador entre las FAQs y el formulario de contacto. -->
+          <hr class="seo-form-divider" />
         {/if}
       </div>
     </div>
   {/if}
 
-  <ContactForm {lang} labels={copy} />
+  <ContactForm {lang} labels={copy} variant={section in cityData ? 'light' : 'dark'} />
 </main>
 
 <footer>

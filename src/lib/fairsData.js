@@ -308,6 +308,62 @@ export const fairsData = [
     "sector": "Multisectorial y Profesional"
   },
   {
+    "name": "MWC Barcelona",
+    "country": "es",
+    "slug": "mwc-barcelona",
+    "city": "Barcelona",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "ISE Barcelona",
+    "country": "es",
+    "slug": "ise-barcelona",
+    "city": "Barcelona",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Alimentaria Barcelona",
+    "country": "es",
+    "slug": "alimentaria-barcelona",
+    "city": "Barcelona",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Hispack Barcelona",
+    "country": "es",
+    "slug": "hispack-barcelona",
+    "city": "Barcelona",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Hostelco Barcelona",
+    "country": "es",
+    "slug": "hostelco-barcelona",
+    "city": "Barcelona",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Smart City Expo World Congress Barcelona",
+    "country": "es",
+    "slug": "smart-city-expo-world-congress-barcelona",
+    "city": "Barcelona",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Construmat Barcelona",
+    "country": "es",
+    "slug": "construmat-barcelona",
+    "city": "Barcelona",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "IoT Solutions World Congress Barcelona",
+    "country": "es",
+    "slug": "iot-solutions-world-congress-barcelona",
+    "city": "Barcelona",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "SMART DOORS Madrid",
     "country": "es",
     "slug": "smart-doors-madrid",

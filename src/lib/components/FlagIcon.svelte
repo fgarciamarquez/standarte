@@ -76,6 +76,12 @@
     <rect width="512" height="512" fill="#FFF"/>
     <circle cx="256" cy="256" r="115" fill="#BC002D"/>
   </svg>
+{:else if langCode === 'nl'}
+  <svg viewBox="0 0 512 512" width={size} height={size} style="border-radius: 50%; flex-shrink: 0;" aria-hidden="true">
+    <rect width="512" height="170.7" fill="#AE1C28"/>
+    <rect y="170.7" width="512" height="170.7" fill="#FFF"/>
+    <rect y="341.4" width="512" height="170.7" fill="#21468B"/>
+  </svg>
 {/if}
 </span>
 

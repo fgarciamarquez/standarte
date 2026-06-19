@@ -1,5 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
-export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja'];
+export const languages = ['es', 'en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja', 'nl'];
 
 export const languageLabels = {
   es: 'ES Español',
@@ -11,7 +11,8 @@ export const languageLabels = {
   fr: 'FR Français',
   it: 'IT Italiano',
   ko: 'KO 한국어',
-  ja: 'JA 日本語'
+  ja: 'JA 日本語',
+  nl: 'NL Nederlands'
 };
 
 export const routes = {
@@ -234,6 +235,28 @@ export const routes = {
     montaje_badajoz: 'バダホス展示会ブース設営',
     noticias: 'blog',
     ferias: '展示会情報'
+  },
+  nl: {
+    home: '',
+    services: 'diensten',
+    luzpavilion: 'luzpavilion',
+    custom: 'projecten_op_maat',
+    team: 'team',
+    contact: 'contact',
+    madrid: 'standbouw_madrid',
+    barcelona: 'standbouw_barcelona',
+    bilbao: 'standbouw_bilbao',
+    lisboa: 'standbouw_lissabon',
+    malaga: 'standbouw_malaga',
+    badajoz: 'standbouw_badajoz',
+    sevilla: 'standbouw_sevilla',
+    ciudad_real: 'standbouw_ciudad_real',
+    zaragoza: 'standbouw_zaragoza',
+    montaje_zafra: 'standmontage_zafra',
+    montaje_don_benito: 'standmontage_don_benito',
+    montaje_badajoz: 'standmontage_badajoz',
+    noticias: 'blog',
+    ferias: 'beurzen'
   }
 };
 
@@ -1084,6 +1107,75 @@ export const copy = {
       viewBtn: 'プロジェクトを見る'
     },
     footer: 'Standarte。展示ブースの設計・製作・施工。'
+  },
+  nl: {
+    faqsTitle: 'Veelgestelde vragen', successStoriesTitle: 'Succesverhalen', featuredProjectsIntro: 'Uitgelichte projecten van maatwerk-schrijnwerk en standontwerp:',
+    nav: { services: 'Diensten', custom: 'Galerij', noticias: 'Blog', contact: 'Contact', language: 'Taal' },
+    seoTitle: 'Standarte | Standbouw in Spanje en Portugal',
+    seoDescription: 'Standarte ontwerpt, produceert en bouwt professionele beursstands op maat in Madrid, Barcelona, Bilbao, Málaga, Badajoz, Ciudad Real, Lissabon en andere bestemmingen. Offerte binnen 24 u!',
+    heroTitle: 'Ontwerp en bouw van internationale beursstands',
+    heroSubtitle: 'Ruimtes die inspireren',
+    servicesTitle: 'Diensten',
+    services: [
+      ['Ontwerp en engineering', 'Ons professionele team noteert de behoeften van uw project en verwerkt deze tot in detail in een gepersonaliseerd 3D-ontwerp dat u kunt verkennen en beoordelen vóór de productie begint. Het beeld van het prototype is 100% getrouw aan het eindresultaat.'],
+      ['Standbouw', 'In het bouwproces passen we de modernste montagetechnieken toe met materialen die specifiek geschikt zijn voor tijdelijke bouw. Zo bieden we een onberispelijke uitstraling die op het eerste gezicht kwaliteit toont.'],
+      ['Montage en validaties', 'Wij regelen alles. Volledig zorgeloos kunt u op de eerste beursdag verschijnen en vindt u alles klaar om met uw commerciële werk te beginnen. Stand, catering, drukwerk,... of het nu een beurs is in Madrid, Frankfurt, Peking of Chicago.']
+    ],
+    micro: {
+      title: 'LUZPAVILION',
+      subtitle: 'Speciale tenten voor unieke omgevingen',
+      color: 'Kleur',
+      finish: 'Afwerking:',
+      descriptionTitle: 'Beschrijving:',
+      description: 'Stand in klein formaat, opgebouwd uit 4 onderdelen<br>De montage is heel eenvoudig; er is geen gereedschap nodig.<br>Vrij configureerbaar, koppelbaar product.',
+      qualitiesTitle: 'Kwaliteiten:',
+      materials: 'Materialen',
+      materialsValue: 'MDF, glas, architecturaal textiel, metaal',
+      finishValue: 'Airbrush-lak + lakwerk',
+      partsTitle: 'Onderdelen:',
+      parts: '1 = Verlichte grafiek <br>2 = Verlichte schappen <br>3 = Gepersonaliseerd logo <br>4 = Opslag <br>5 = Toonbank met deuren',
+      priceTitle: 'Prijs:',
+      priceText: 'Set van 4 modules met verlichting en <br> gepersonaliseerde grafiek',
+      chooseFinish: 'Kies de afwerking<br>om de prijs te zien.',
+      choose: 'Kies de afwerking om de prijs te zien',
+      partsLabel: 'Onderdelen',
+      price: 'Prijs',
+      qualities: 'Kwaliteiten',
+      pause: 'PAUZE',
+      play: 'AFSPELEN',
+      visitWeb: 'BEZOEK SPECIFIEKE WEBSITE',
+      videos: [
+        { src: '/img/video_standrte_presentacion_empresa.mp4', title: 'Bedrijfspresentaties', subtitle: 'Onze werkplaatsen en het productieproces van zakelijke stands.' },
+        { src: '/img/video_standarte_presentacion_vinos.mp4', title: 'Beurzen in historische omgevingen', subtitle: 'Respectvol ontwerp en engineering op traditionele en historische locaties.' },
+        { src: '/img/video_standarte_andalucia.mp4', title: 'Vieringen', subtitle: 'Gastronomische ruimtes op maat voor wijnhuizen en speciale evenementen.' },
+        { src: '/img/video_standarte_feria_verano.mp4', title: 'Grootschalige openluchtbeurzen', subtitle: 'Grootschalige opbouw en premium tenten met hoge weerstand.' }
+      ]
+    },
+    citiesIntro: 'Wij ontwerpen, produceren en bouwen stands voor beurzen en evenementen in belangrijke steden in Spanje en Portugal.',
+    customTitle: 'GALERIJ',
+    customSubtitle: 'Geordend op de belangrijkste montagetechniek.',
+    filters: { all: 'Alle', textil: 'Textiel', madera: 'Hout' },
+    counters: { projects: 'Projecten', clients: 'Klanten', countries: 'Landen', fairs: 'Beurzen' },
+    teamTitle: 'Team',
+    teamSubtitle: 'Wij zijn een multidisciplinair team met architecten, monteurs, decorateurs, lichttechnici,... Samen kunnen we volledig inspelen op alle behoeften van elk project. Aarzel niet om ons te bellen met al uw vragen. We maken graag snel kennis met u.',
+    teamRoles: ['Creativiteit', 'Administratie', 'Werkplaats', 'Coördinatie'],
+    contactTitle: 'OFFERTE BINNEN 24 U',
+    contactNotice: 'Vertel ons wat u nodig hebt en binnen 24 uur hebben we een gedetailleerd 3D-ontwerp en een zeer concurrerend prijsvoorstel.',
+    form: { name: 'Naam', company: 'Bedrijf', phone: 'Telefoon', email: 'E-mail', fair: 'Beurs', location: 'Stad - Land', meters: 'Vierkante meter', floor: 'Details over de vloer', woodFloor: 'Houten verhoogde vloer', carpetPlatform: 'Verhoogde vloer met tapijt', carpet: 'Tapijt', spaceDistribution: 'Ruimteverdeling', reception: 'Receptiezone', bar: 'Barzone', storage: 'Opslag', product: 'Productexpositie', openMeeting: 'Open vergaderzone', closedMeeting: 'Gesloten vergaderzone', audiovisual: 'Audiovisueel', led: 'LED-scherm', projector: 'Projector', budget: 'Geschat budget', description: 'Beschrijving', privacy: 'Accepteer ons privacybeleid', send: 'VERZENDEN' },
+    legal: { privacy: 'Privacybeleid', legalNotice: 'Juridische kennisgeving', cookies: 'Gebruik van cookies' },
+    legalText: {
+      privacy: '<p>Standarte gebruikt de via het formulier verzonden gegevens uitsluitend om te reageren op informatieverzoeken, offertes en communicatie over standprojecten.</p><p>We gebruiken deze gegevens niet voor doeleinden die losstaan van uw verzoek. U kunt inzage, correctie of verwijdering aanvragen via info@standarte.es.</p>',
+      legalNotice: '<p>Deze website is eigendom van Standarte. De inhoud, afbeeldingen en teksten hebben een commercieel en informatief karakter en mogen niet zonder toestemming worden gereproduceerd.</p><p>Het gebruik van de site veronderstelt verantwoord surfen in overeenstemming met de geldende regelgeving.</p>',
+      cookies: '<p>We gebruiken noodzakelijke cookies voor de werking van de website en, alleen met uw toestemming, meet- en advertentiecookies van Google Ads of Google Analytics.</p><p>U kunt deze doeleinden accepteren, weigeren of configureren via de cookiebanner. U kunt uw toestemming op elk moment wijzigen of intrekken via de link "Cookies configureren" in de voettekst.</p><p>Google kan persoonsgegevens verwerken voor advertentiemeting en personalisatie wanneer u dat toestaat. Meer informatie: https://business.safety.google/privacy/</p>'
+    },
+    formSuccess: 'Bericht succesvol verzonden.<br> We nemen binnenkort contact met u op.<br> Bedankt.',
+    formError: 'Het bericht kon niet worden verzonden. Probeer het opnieuw.',
+    projects3D: {
+      title: 'Lagekostenprojecten',
+      subtitle: 'Ontdek onze interactieve voorstellen van hoogwaardig schrijnwerk en hun relatie met onze ontwerpwaarden.',
+      viewBtn: 'Project bekijken'
+    },
+    footer: 'Standarte. Ontwerp, productie en montage van beursstands.'
   }
 };
 

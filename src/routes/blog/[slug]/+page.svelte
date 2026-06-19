@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
+  import AiSourceButtons from '$lib/components/AiSourceButtons.svelte';
   export let data;
   $: article = data.article;
 
@@ -373,6 +374,8 @@
     </div>
   </article>
 </main>
+
+<AiSourceButtons {lang} />
 
 <footer>
   <div class="footer-layout">

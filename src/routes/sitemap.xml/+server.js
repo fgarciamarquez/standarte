@@ -93,7 +93,7 @@ export async function GET() {
       urls.push({
         loc: `${siteUrl}${lang === 'es' ? '' : `/${lang}`}/ferias/${fair.slug}`,
         changefreq: 'monthly',
-        priority: '0.6',
+        priority: '0.7',
         alternates
       });
     });

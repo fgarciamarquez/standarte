@@ -3,6 +3,18 @@
 
 export const richSeoData = {
   "services": {
+    "nl": {
+      "breadcrumb": "Diensten",
+      "title": "Ontwerp, productie en montage van beursstands | Standarte",
+      "h1": "Complete diensten in tijdelijke architectuur en standbouw",
+      "introText": "Met meer dan 20 jaar ervaring en een eigen werkplaats transformeert Standarte de ruimte van uw merk in een commerciële magneet met hoog B2B-rendement. We beheren het volledige proces rechtstreeks: 3D-ontwerp, maatwerk-schrijnwerk, internationale logistiek en technische validatie op beurzen in heel Europa.",
+      "body": "\n        <h2>Hoogwaardig 3D-ontwerp en constructie-engineering</h2>\n        <p>Succes op een grote beurs begint maanden vóór de opbouw. Onze ontwerpfase is een nauwgezet traject van merk-engineering en optimalisatie van de bezoekersstroom. Op basis van uw bedrijfsrichtlijnen maken onze ontwerpers een interactief 3D-prototype dat de definitieve ruimte volledig getrouw weergeeft: elke lichtlijn, houtstructuur, maatwerkgrafiek en constructieve verbinding wordt millimeternauwkeurig gemodelleerd. Dit prototype is 100% getrouw aan wat u in het beurscomplex aantreft, zodat uw salesteam de zichtbaarheid van het merk, de vergaderzones en de integratie van LED-schermen, toonbanken en vitrines kan beoordelen vóór de productie begint.</p>\n\n        <h2>Maatwerk-schrijnwerk in een eigen werkplaats</h2>\n        <p>Een van onze grootste voordelen is onze eigen werkplaats voor hoogwaardig schrijnwerk en afwerkingen. Zonder onderaannemers houden we volledige controle over materialen, planning en kwaliteit. We gebruiken gecertificeerde, voor tijdelijke bouw geteste materialen en de modernste montagetechnieken: van MDF voor onberispelijke lakafwerking tot lichte aluminiumprofielen, gehard veiligheidsglas en grootformaat-backlit textiel. Onze vakmensen bouwen elke module en toonbank zodat naden, randen en oppervlakken perfect ogen, zelfs onder fel beurslicht, en door voormontage in de werkplaats beperken we de opbouwtijd ter plaatse.</p>\n\n        <h2>Professionele montage, internationale logistiek en veiligheidskeuringen</h2>\n        <p>De eindmontage is het sluitstuk van onze sleutelklare aanpak. Wij regelen alles rechtstreeks: veilig transport en verpakking, montage ter plaatse, de elektrische installatie van spots en schermen, de plaatsing van de grafiek en de eindschoonmaak. Uw team hoeft alleen op de eerste beursdag te verschijnen en treft een volledig werkende, onberispelijke bedrijfsruimte aan. Bovendien verzorgt Standarte alle officiële technische formaliteiten die de beurscomplexen eisen — door ingenieurs ondertekende projecten, brandwerendheidscertificaten voor hout en textiel, elektrische keuringen, risicobeoordelingen (PRL) en aansprakelijkheidsverzekering — voor een vlotte goedkeuring in IFEMA Madrid, Fira Barcelona, BEC Bilbao of FIL Lissabon.</p>\n      ",
+      "faqs": [
+        { "q": "Welk voordeel heeft een eigen schrijnwerkplaats?", "a": "Met een eigen werkplaats schakelen we tussenpersonen uit, houden we 100% controle over materialen en lakafwerking en bewaken we de deadlines strikt. Zo voorkomen we verrassingen in het beurscomplex." },
+        { "q": "Komt de afgewerkte stand overeen met het getoonde 3D-ontwerp?", "a": "Ja. Dankzij nauwkeurige constructie-modellering is het getoonde 3D-prototype identiek aan het eindresultaat dat u in het complex aantreft." },
+        { "q": "Verzorgt Standarte ook de vergunningen en keuringen van het complex?", "a": "Ja. We regelen alle administratieve en veiligheidsformaliteiten: geviseerde projecten, officiële elektrische certificaten, brandwerendheid van hout en textiel, risicobeoordeling (PRL) en de verplichte verzekeringen." }
+      ]
+    },
     "ja": {
       "breadcrumb": "サービス",
       "title": "展示会ブースの設計・製作・施工 | Standarte",
@@ -215,6 +227,19 @@ export const richSeoData = {
     }
   },
   "madrid": {
+    "nl": {
+      "breadcrumb": "Madrid",
+      "title": "Standbouw in Madrid | IFEMA | Standarte",
+      "h1": "Ontwerp en bouw van stands op maat in Madrid",
+      "introText": "Met meer dan 20 jaar ervaring en een eigen werkplaats ontwerpen en bouwen we hoogwaardige stands voor beurzen in IFEMA Madrid (Feria de Madrid). Een sleutelklaar beheer: technisch ontwerp, productie, logistiek, montage en keuringen, ook voor internationale exposanten.",
+      "body": "\n        <h2>Toonaangevend in IFEMA Madrid (Feria de Madrid)</h2>\n        <p>Madrid is het absolute epicentrum van professionele evenementen en B2B-congressen in Spanje en concentreert meer dan de helft van de nationale beursactiviteit. Het complex van <b>IFEMA Madrid (Feria de Madrid)</b> in Campo de las Naciones, met twaalf grote hallen, vraagt om enorme logistieke capaciteit en grondige kennis van de interne regels voor veiligheid en tijdelijke bouw. Standarte is een betrouwbare partner voor communicatiebureaus en merken die onberispelijke uitvoering eisen op beurzen als FITUR, Fruit Attraction, ARCOmadrid of MetalMadrid.</p>\n\n        <h2>Succescases en uitgelichte projecten in Madrid</h2>\n        <p>Onze constante aanwezigheid in IFEMA wordt gestaafd door memorabele projecten waarin we technische precisie en oplossingsvermogen hebben getoond, met hoogwaardige houtstructuren, onberispelijke lakafwerking en grootformaat-backlit textiel die het merk tot visueel ankerpunt in de hal maken. We passen ons aan de strikte opbouwkalenders van IFEMA aan, coördineren het lossen efficiënt en beheren rechtstreeks de officiële elektrische keuringen, de risicopreventie en de validatie van hangstructuren (rigging).</p>\n\n        <h2>Voordelen van Standarte voor uw stand in Madrid</h2>\n        <p>Met Standarte als standbouwer in Madrid beheren we het hele proces rechtstreeks, zonder tussenpersonen of commerciële meerkosten, zodat de afgesproken offerte strikt wordt nageleefd. We ontwerpen met hoogwaardige 3D-engineering die de verhoudingen van uw ruimte exact weergeeft, en onze eigen montageteams verzorgen alle lokale technische details — water, hoogvermogen-elektriciteit, rigging — plus de brandwerendheidskeuringen en een snelle, verantwoorde demontage na de beurs.</p>\n      ",
+      "faqs": [
+        { "q": "Wij zijn een buitenlands bedrijf zonder vestiging in Spanje. Kunnen jullie onze volledige stand in IFEMA verzorgen?", "a": "Ja. Standarte werkt volledig sleutelklaar voor internationale exposanten in IFEMA: we ontwerpen en bouwen de stand in onze werkplaats, regelen de tijdelijke invoer van uw materiaal (ATA-carnet), het transport naar Madrid en alle formaliteiten van het complex — elektrische keuring, rigging, water en risicopreventie. U arriveert bij een afgewerkte stand en we coördineren in het Engels en andere talen." },
+        { "q": "Hoeveel kost een stand op maat in IFEMA Madrid?", "a": "De prijs hangt af van de oppervlakte, het ontwerp en de materialen. Na een eerste gesprek stellen we een vaste offerte op zonder meerkosten en beheren we het hele proces om binnen het afgesproken budget te blijven." },
+        { "q": "Verzorgen jullie de keuringen en vergunningen in IFEMA?", "a": "Ja. We beheren rechtstreeks de officiële elektrische keuringen van de Comunidad de Madrid, de risicopreventiecertificaten en de validatie van hangstructuren (rigging) volgens de regels van het complex." },
+        { "q": "Bieden jullie een 3D-ontwerp aan vóór de productie?", "a": "Ja. We maken een gepersonaliseerd 3D-ontwerp dat 100% getrouw is aan het eindresultaat en dat u kunt verkennen en beoordelen voordat de productie begint." }
+      ]
+    },
     "ja": {
       "breadcrumb": "マドリード",
       "title": "マドリードの展示会ブース製作・施工 | IFEMA | Standarte",
@@ -547,6 +572,18 @@ export const richSeoData = {
     }
   },
   "barcelona": {
+    "nl": {
+      "breadcrumb": "Barcelona",
+      "title": "Standbouw in Barcelona | Fira Barcelona | Standarte",
+      "h1": "Ontwerp en bouw van stands op maat in Barcelona",
+      "introText": "Met meer dan 20 jaar ervaring en een eigen werkplaats ontwerpen en bouwen we premium stands met grote visuele impact voor evenementen in Fira Barcelona (Gran Via en Montjuïc). We beheren rechtstreeks het hoogwaardige schrijnwerk, het transport en de eindmontage.",
+      "body": "\n        <h2>Premium standbouw in Fira Barcelona</h2>\n        <p>Barcelona is de grootste beursstad van Spanje en een internationaal knooppunt. Het complex van <b>Fira Barcelona</b>, met de recinto's Gran Via en Montjuïc, herbergt toonaangevende beurzen als MWC, ISE, Alimentaria, Hispack of Smart City Expo World Congress, met een internationaal en veeleisend publiek. Standarte ontwerpt en bouwt hoogwaardige stands die technische excellentie en innovatie uitstralen en uw merk laten opvallen tussen grote internationale spelers.</p>\n\n        <h2>Techniek, rigging en stands met dubbele verdieping</h2>\n        <p>Fira Barcelona stelt strikte eisen aan stands met dubbele verdieping: een door een in Spanje erkende architect ondertekend en geviseerd constructieproject dat de draagkracht (minimaal 500 kg/m²), reglementaire balustrades en conforme nooduitgangen aantoont. De hijspunten (rigging) worden strikt door het complex beheerd; wij ontwerpen de structuur om het aantal ophangpunten te optimaliseren en zo aanzienlijk op officiële kosten te besparen.</p>\n\n        <h2>Waarom Standarte kiezen voor uw stand in Barcelona</h2>\n        <p>We werken zonder tussenpersonen en beheren het hele proces rechtstreeks: hoogwaardig 3D-ontwerp, productie in onze eigen werkplaats, transport, montage met eigen team en alle technische formaliteiten met het complex. Onze stands van hoogwaardig schrijnwerk zijn bovendien herbruikbaar voor meerdere evenementen dankzij verborgen, kwalitatieve modulariteit, wat de investering op termijn rendabel maakt.</p>\n      ",
+      "faqs": [
+        { "q": "Welke technische eisen stelt Fira Barcelona aan stands met dubbele verdieping?", "a": "Fira Barcelona vereist een volledig constructieproject, ondertekend en geviseerd door een in Spanje erkende architect, dat de draagkracht (minimaal 500 kg/m²), reglementaire balustrades en conforme nooduitgangen aantoont." },
+        { "q": "Hoe werken rigging en ophangpunten in Fira Barcelona?", "a": "De ophangpunten (rigging) worden strikt door het complex beheerd. Standarte ontwerpt de standstructuur om het aantal ophangpunten te minimaliseren, wat uw bedrijf aanzienlijk bespaart op officiële kosten." },
+        { "q": "Kan een stand van hoogwaardig schrijnwerk voor meerdere evenementen in Barcelona worden hergebruikt?", "a": "Ja. We bouwen met verborgen, hoogwaardige modulariteit, zodat panelen kunnen worden gedemonteerd en aangepast aan andere afmetingen, wat de investering over meerdere beurzen rendabel maakt." }
+      ]
+    },
     "ja": {
       "breadcrumb": "バルセロナ",
       "title": "バルセロナの展示会ブース製作・施工 | フィラ・バルセロナ | Standarte",
@@ -759,6 +796,19 @@ export const richSeoData = {
     }
   },
   "bilbao": {
+    "nl": {
+      "breadcrumb": "Bilbao",
+      "title": "Standbouw in Bilbao | BEC | Standarte",
+      "h1": "Ontwerp en bouw van stands op maat in Bilbao",
+      "introText": "Met meer dan 20 jaar ervaring en een eigen werkplaats ontwerpen en bouwen we hoogwaardige, zeer stevige stands voor industrie- en energiebeurzen in het Bilbao Exhibition Centre (BEC). We werken volledig sleutelklaar voor internationale exposanten op BIEMH en andere BEC-beurzen: grensoverschrijdend transport, tijdelijke invoer van machines en de Baskische veiligheidsregelgeving (CAE/PRL).",
+      "body": "\n        <h2>Toonaangevend in het Bilbao Exhibition Centre (BEC)</h2>\n        <p>Bilbao staat voor de industriële, metallurgische en precisietechnische motor van Noord-Spanje en is een strategisch beurscentrum voor bedrijven met hoge technische eisen. Het moderne <b>Bilbao Exhibition Centre (BEC)</b> in Barakaldo, met zes hoge, kolomvrije hallen, herbergt zeer gespecialiseerde vakbeurzen waar bouwkundige stevigheid en de capaciteit om zware machines te dragen onmisbaar zijn. Standarte ontwerpt en bouwt hoogwaardige stands die de degelijkheid, innovatie en het technische prestige uitstralen die het BEC-publiek verwacht.</p>\n\n        <h2>Industriële ervaring op BIEMH en andere BEC-beurzen</h2>\n        <p>Ons parcours in het BEC omvat opvallende merkruimtes op sleutelbeurzen als <b>BIEMH</b> (de Spaanse biënnale voor gereedschapsmachines), het belangrijkste industriële evenement van Noord-Spanje, waar stands draaiende machines moeten kunnen dragen; <b>WindEurope</b>, het internationale referentiecongres voor windenergie; <b>Subcontratación</b>, gericht op industriële processen; en <b>Addit3D</b>, gewijd aan additive manufacturing. We ontwerpen ruimtes die degelijkheid projecteren en die comfortabele, ordelijke zakelijke gesprekken faciliteren.</p>\n\n        <h2>Waarom Standarte kiezen voor uw project in het BEC</h2>\n        <p>De hallen van het BEC hebben een uitstekende draagkracht (tot 4.000 kg/m²), waardoor we stands met zware industriële machines en stevige houtstructuren zonder gewichtsbeperking kunnen bouwen. We beheren rechtstreeks de versterkte driefasige stroomaansluitingen, de officiële perslucht van het BEC en de bijzondere hijspunten (rigging), plus alle Baskische elektrische keuringen en brandwerendheidscertificaten. Zo presenteert uw merk zich met degelijkheid, technisch leiderschap en de hoogste commerciële kwaliteit.</p>\n      ",
+      "faqs": [
+        { "q": "Wij zijn een buitenlandse machinefabrikant zonder vestiging in Spanje. Kunnen jullie onze volledige stand op BIEMH verzorgen?", "a": "Ja. Standarte werkt volledig sleutelklaar voor internationale exposanten: we ontwerpen en bouwen de stand in onze werkplaats, regelen de tijdelijke invoer en het transport van uw zware machines naar het BEC en integreren driefasige stroom, perslucht en de Baskische veiligheidsprocedures (CAE/PRL). U arriveert bij een afgewerkte stand en we coördineren in het Engels en andere talen." },
+        { "q": "Welke vloerbelasting hebben de hallen van het BEC?", "a": "De hallen van het BEC hebben een uitstekende draagkracht (tot 4.000 kg/m²), waardoor we stands met zware industriële machines en stevige houtstructuren zonder gewichtsbeperking kunnen ontwerpen en installeren." },
+        { "q": "Is er perslucht nodig voor stands in het BEC en wie regelt dat?", "a": "Veel beurzen in het BEC (zoals BIEMH) vereisen perslucht voor de tentoongestelde machines. Standarte beheert rechtstreeks de aanvraag en de integratie van deze technische aansluitingen in de standplattegrond." },
+        { "q": "Hoe regelt Standarte de risicopreventie (PRL) voor de opbouw in Barakaldo?", "a": "We beheren rechtstreeks het CAE-coördinatieplatform van het BEC en leveren de verzekeringen, opleiding en persoonlijke beschermingsmiddelen (PBM) die de Baskische wet vóór betreding van de hal vereist." }
+      ]
+    },
     "ja": {
       "breadcrumb": "ビルバオ",
       "title": "ビルバオの展示会ブース製作・施工 | BEC | Standarte",

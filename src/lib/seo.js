@@ -12,7 +12,8 @@ export const LOCALES = [
   { lang: 'fr', ogLocale: 'fr_FR', prefix: '/fr' },
   { lang: 'it', ogLocale: 'it_IT', prefix: '/it' },
   { lang: 'ko', ogLocale: 'ko_KR', prefix: '/ko' },
-  { lang: 'ja', ogLocale: 'ja_JP', prefix: '/ja' }
+  { lang: 'ja', ogLocale: 'ja_JP', prefix: '/ja' },
+  { lang: 'nl', ogLocale: 'nl_NL', prefix: '/nl' }
 ];
 
 export const localBusinessSchema = {

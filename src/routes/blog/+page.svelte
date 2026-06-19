@@ -3,6 +3,7 @@
   import news from '$lib/newsData.json';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
+  import AiSourceButtons from '$lib/components/AiSourceButtons.svelte';
 
 
 
@@ -381,6 +382,8 @@
     </div>
   </section>
 </main>
+
+<AiSourceButtons {lang} />
 
 <footer>
   <div class="footer-layout">

@@ -1,8 +1,19 @@
 <script>
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels, routes } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, routes, cityData } from '$lib/siteData.js';
   import ContactForm from './ContactForm.svelte';
+  import AiSourceButtons from '$lib/components/AiSourceButtons.svelte';
+
+  // Navegación entre ciudades matriz (módulo del aside).
+  // Solo las matrices (construccion_stands_*); excluye las landings de montaje secundarias
+  // (montaje_zafra/don_benito/badajoz), que además duplicarían la etiqueta "Badajoz".
+  const CITY_KEYS = Object.keys(cityData).filter((k) => !k.startsWith('montaje_'));
+  const CITY_NAV_LABELS = {
+    es: 'Ciudades', en: 'Cities', de: 'Städte',
+    fr: 'Villes', it: 'Città', pt: 'Cidades',
+    zh: '城市', hi: 'शहर', ko: '도시', ja: '都市', nl: 'Steden'
+  };
   import FlagIcon from './FlagIcon.svelte';
 
   
@@ -16,7 +27,8 @@
     fr: 'fr_FR',
     it: 'it_IT',
     ko: 'ko_KR',
-    ja: 'ja_JP'
+    ja: 'ja_JP',
+    nl: 'nl_NL'
   };
   const contentLanguages = {
     es: 'es-ES',
@@ -28,7 +40,8 @@
     fr: 'fr-FR',
     it: 'it-IT',
     ko: 'ko-KR',
-    ja: 'ja-JP'
+    ja: 'ja-JP',
+    nl: 'nl-NL'
   };
 
   
@@ -44,10 +57,12 @@
     updateScrollState();
   });
 
-  const ctaLabels = { es: 'PRESUPUESTO EN 24 H', en: 'QUOTE IN 24 H', de: 'ANGEBOT IN 24 H', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'ORÇAMENTO EM 24 H', fr: 'DEVIS EN 24 H', it: 'PREVENTIVO IN 24 H', ko: '24시간 내 견적', ja: '24時間で見積もり' };
+  const ctaLabels = { es: 'PRESUPUESTO EN 24 H', en: 'QUOTE IN 24 H', de: 'ANGEBOT IN 24 H', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'ORÇAMENTO EM 24 H', fr: 'DEVIS EN 24 H', it: 'PREVENTIVO IN 24 H', ko: '24시간 내 견적', ja: '24時間で見積もり', nl: 'OFFERTE BINNEN 24 U' };
   $: ({ lang, copy, canonical, fairSlug } = data);
-  
+
   $: fair = fairsData.find(f => f.slug === fairSlug) || fairsData[0];
+  // Contenido SEO único de esta feria (HTML por idioma); fallback a ES si falta el idioma.
+  $: fairBody = data.fairSeo ? (data.fairSeo[lang] || data.fairSeo.en || data.fairSeo.es || null) : null;
   
   const sectors = {
     es: {
@@ -231,7 +246,8 @@
     ko: { related: '관련 전시회', pillar: (c) => `${c} 부스 시공`, also: '근처의 다음 전시회에서도 부스를 디자인하고 시공합니다:' },
     zh: { related: '相关展会', pillar: (c) => `${c}展台搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
     hi: { related: 'संबंधित मेले', pillar: (c) => `${c} में स्टैंड निर्माण`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और निर्माण करते हैं:' },
-    ja: { related: '関連する展示会', pillar: (c) => `${c}での展示会ブース施工`, also: '近隣のこれらの展示会でもブースの設計・施工を行っています：' }
+    ja: { related: '関連する展示会', pillar: (c) => `${c}での展示会ブース施工`, also: '近隣のこれらの展示会でもブースの設計・施工を行っています：' },
+    nl: { related: 'Gerelateerde beurzen', pillar: (c) => `Standbouw in ${c}`, also: 'Wij ontwerpen en bouwen ook stands op deze nabijgelegen beurzen:' }
   };
 
   // Recinto ferial por ciudad (solo nombres verificados; las ciudades sin entrada no muestran recinto).
@@ -253,13 +269,14 @@
     ko: (v, c) => `Standarte는 ${c}의 전시장 ${v}에서 턴키 부스를 설계·시공하며, 운송·자체 인력 시공·전시장 기술 행정 절차를 모두 처리합니다.`,
     zh: (v, c) => `Standarte 在 ${c} 的展览场馆 ${v} 设计并搭建交钥匙展台，负责运输、自有团队搭建以及与场馆的全部技术手续。`,
     hi: (v, c) => `Standarte ${c} के प्रदर्शनी केंद्र ${v} में टर्नकी स्टैंड डिज़ाइन और निर्माण करता है, तथा परिवहन, अपनी टीम से असेंबली और केंद्र के साथ सभी तकनीकी प्रक्रियाओं को संभालता है।`,
-    ja: (v, c) => `Standarteは${c}の展示会場${v}でターンキーのブースを設計・施工し、輸送、自社チームによる設営、会場との技術的な手続きまで一貫して担います。`
+    ja: (v, c) => `Standarteは${c}の展示会場${v}でターンキーのブースを設計・施工し、輸送、自社チームによる設営、会場との技術的な手続きまで一貫して担います。`,
+    nl: (v, c) => `Standarte ontwerpt en bouwt sleutelklare stands in ${v}, het beurscomplex van ${c}, en verzorgt transport, montage met eigen team en de volledige technische afhandeling met het complex.`
   };
 
   // Etiqueta "Inicio" del breadcrumb por idioma (antes mostraba "Home" en inglés en todos los no-es)
   const homeLabel = {
     es: 'Inicio', en: 'Home', de: 'Startseite', fr: 'Accueil', pt: 'Início',
-    it: 'Home', ko: '홈', zh: '首页', hi: 'होम', ja: 'ホーム'
+    it: 'Home', ko: '홈', zh: '首页', hi: 'होम', ja: 'ホーム', nl: 'Home'
   };
 
   const t = {
@@ -352,6 +369,15 @@
       services: '出展企業向けサービス',
       cta: 'この見本市の見積もりを依頼する',
       back: 'ホームに戻る'
+    },
+    nl: {
+      heroTitle: (name) => `Standarte op ${name}`,
+      heroSubtitle: (city) => `Standbouw in ${city} met meer dan 20 jaar ervaring en een eigen werkplaats.`,
+      intro: (name, city, sector) => `Standarte biedt complete diensten voor ontwerp en bouw van hoogwaardige stands voor de beurs ${name} in ${city}. Als belangrijk evenement in de sector ${sector} vraagt uw merk om een ruimte die technische excellentie en innovatie uitstraalt.`,
+      intro2: 'Wij verzorgen de 3D-modellering, de productie in onze eigen werkplaats en de eindmontage, zodat uw ruimte zich onderscheidt van de concurrentie zonder afhankelijk te zijn van derden.',
+      services: 'Diensten voor exposanten',
+      cta: 'Offerte aanvragen voor deze beurs',
+      back: 'Terug naar home'
     }
   };
 
@@ -462,7 +488,11 @@
           {/each}
         </div>
       </div>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
+      <a
+        href="#contact"
+        class="nav-cta-btn"
+        on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+      >{ctaLabels[lang] || ctaLabels.es}</a>
     </div>
   </nav>
   
@@ -481,6 +511,7 @@
       </div>
       <p class="hero-lead">{strings.heroSubtitle(localizedCity)}</p>
     </div>
+    <AiSourceButtons {lang} variant="hero" showLabel={false} />
   </div>
 </header>
 
@@ -489,6 +520,9 @@
     <div class="feria-container">
       <div class="feria-text">
         <p class="highlight">{seoDesc}</p>
+        {#if fairBody}
+          <div class="fair-unique">{@html fairBody}</div>
+        {/if}
         <p>{strings.intro2}</p>
         {#if venueText}
           <p class="feria-venue">{venueText}</p>
@@ -504,30 +538,37 @@
           {/each}
         </ul>
       </div>
+      <aside class="feria-aside">
+        <div class="aside-module">
+          <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
+          <ul class="cluster-fairs">
+            {#each CITY_KEYS as ck}
+              <li><a href={pathFor(lang, ck)}>{cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es}</a></li>
+            {/each}
+          </ul>
+        </div>
+        {#if pillarHref || siblingFairs.length}
+          <div class="aside-module">
+            <h3>{clusterStr.related}</h3>
+            {#if pillarHref}
+              <a class="cluster-pillar" href={pillarHref}>{clusterStr.pillar(pillarCityLoc)}</a>
+            {/if}
+            {#if siblingFairs.length}
+              <ul class="cluster-fairs">
+                {#each siblingFairs as sib}
+                  <li><a href={fairHref(sib.slug)}>{sib.name}</a></li>
+                {/each}
+              </ul>
+            {/if}
+          </div>
+        {/if}
+      </aside>
     </div>
   </section>
 
-  {#if pillarHref || siblingFairs.length}
-    <section class="feria-cluster section">
-      <div class="feria-container">
-        <h3>{clusterStr.related}</h3>
-        {#if pillarHref}
-          <a class="cluster-pillar" href={pillarHref}>{clusterStr.pillar(pillarCityLoc)}</a>
-        {/if}
-        {#if siblingFairs.length}
-          <p class="cluster-intro">{clusterStr.also}</p>
-          <ul class="cluster-fairs">
-            {#each siblingFairs as sib}
-              <li><a href={fairHref(sib.slug)}>{sib.name}</a></li>
-            {/each}
-          </ul>
-        {/if}
-      </div>
-    </section>
-  {/if}
-
+  <hr class="feria-form-divider" />
   <section class="section grey-bg">
-    <ContactForm labels={copy} {lang} />
+    <ContactForm labels={copy} {lang} variant="light" />
   </section>
 </main>
 <footer class="footer">
@@ -579,10 +620,23 @@
   }
   .feria-details {
     padding: 4rem 5%;
+    background: #f7f6f1;
   }
   .feria-container {
-    max-width: 800px;
+    max-width: 1140px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 48px;
+    align-items: start;
+  }
+  /* Cuerpo principal en caja blanca, igual que el artículo de las páginas de ciudad. */
+  .feria-text {
+    background: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    min-width: 0;
   }
   .highlight {
     font-size: 1.4rem;
@@ -594,10 +648,19 @@
     margin-bottom: 1.5rem;
     color: var(--text-color);
   }
+  /* Párrafos del bloque único (inyectados con @html, fuera del scope de Svelte). */
+  .fair-unique :global(p) {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+  }
   .feria-text h3 {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
+    /* Línea de color que separa la sección, como los encabezados de ciudad. */
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 10px;
+    display: inline-block;
   }
   .services-list {
     list-style: none;
@@ -605,8 +668,6 @@
   }
   .services-list li {
     margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-    border-left: 2px solid var(--primary);
   }
   .services-list strong {
     display: block;
@@ -614,15 +675,43 @@
     margin-bottom: 0.5rem;
   }
   .grey-bg {
-    background: var(--grey-bg);
+    background: #f7f6f1;
     padding: 4rem 5%;
   }
-  .feria-cluster {
-    padding: 0 5% 4rem;
+  /* Línea horizontal que separa el cuerpo del formulario (igual que en ciudad). */
+  .feria-form-divider {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
-  .feria-cluster h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
+  .feria-aside {
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    padding-left: 40px;
+    position: sticky;
+    top: 100px;
+  }
+  .feria-aside h3 {
+    font-size: 1.4rem;
+    margin: 0 0 1.2rem;
+  }
+  .aside-module + .aside-module {
+    margin-top: 2rem;
+  }
+  @media (max-width: 900px) {
+    .feria-container {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      max-width: 800px;
+    }
+    .feria-aside {
+      border-left: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      padding-left: 0;
+      padding-top: 28px;
+      position: static;
+    }
   }
   .cluster-pillar {
     display: inline-block;

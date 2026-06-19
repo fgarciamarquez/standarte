@@ -2,6 +2,9 @@
   import { onMount } from 'svelte';
   export let lang;
   export let labels;
+  // 'dark' = banda oscura por defecto (home, servicios…); 'light' = integrada con el
+  // fondo claro de las páginas de ciudad, con botones tipo pastilla como el aside.
+  export let variant = 'dark';
   let status = null;
   let statusMessage = '';
   let sending = false;
@@ -43,12 +46,31 @@
   }
 </script>
 
-<section id="contact" class="section contact">
+<section id="contact" class="section contact" class:contact-light={variant === 'light'}>
   <div class="contact-form">
     <div class="contact-layout">
       <aside class="contact-us">
         <h3>{labels.contactTitle}</h3>
-        <p class="politica_privacidad">{labels.contactNotice}</p>
+        {#if variant === 'light'}
+          <!-- Nota humana: rostro de contacto real bajo el título del formulario. -->
+          <figure class="contact-person">
+            <img
+              class="contact-person-photo"
+              src="/img/team/patricia_jimenez.avif"
+              srcset="/img/team/patricia_jimenez-mobile.avif 400w, /img/team/patricia_jimenez.avif 1920w"
+              sizes="64px"
+              alt="Patricia Jiménez"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="contact-person-name">Patricia Jiménez</span>
+              {#if labels.teamRoles?.[3]}
+                <span class="contact-person-role">{labels.teamRoles[3]}</span>
+              {/if}
+            </figcaption>
+          </figure>
+        {/if}
         <ul class="lista_direccion">
           <li style="margin-bottom: 10px; line-height: 1.4;">
             <strong>{lang === 'es' ? 'Madrid' : (lang === 'zh' ? '马德里' : (lang === 'ko' ? '마드리드' : (lang === 'hi' ? 'मैड्रिड' : 'Madrid')))}:</strong> Av. de Castilla 2, San Fernando de Henares (Madrid - España)
@@ -314,13 +336,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .politica_privacidad {
-    font-size: 17px !important;
-    color: #ffc800 !important;
-    line-height: 1.55 !important;
-    margin-bottom: 25px !important;
-  }
-
   .lista_direccion {
     padding-left: 0 !important;
     margin-left: 0 !important;
@@ -334,14 +349,14 @@
   .contact-whatsapp {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 26px;
+    gap: 8px;
+    padding: 8px 18px;
     background: #25d366;
     color: #fff !important;
     border-radius: 30px;
     font-family: Glegoo, serif;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 0.03em;
     text-decoration: none !important;
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
@@ -359,5 +374,121 @@
   .contact-whatsapp svg {
     fill: currentColor;
     flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ============================================================
+     Variante clara (páginas de ciudad): el formulario se integra
+     con el fondo claro de la página y los botones adoptan el estilo
+     de pastilla de los módulos del aside (borde fino, hover dorado).
+     ============================================================ */
+  .contact-light {
+    background: #f7f6f1;
+    color: #333;
+  }
+  .contact-light .contact-us h3 {
+    color: #1a1e21;
+  }
+  /* Nota humana: foto circular de la persona de contacto. */
+  .contact-person {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 24px;
+  }
+  .contact-person-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+  }
+  .contact-person figcaption {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+  .contact-person-name {
+    font-family: Glegoo, serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #1a1e21;
+  }
+  .contact-person-role {
+    font-size: 13px;
+    color: #666;
+  }
+  .contact-light .contact-us p,
+  .contact-light .contact-us li {
+    color: #333;
+  }
+  .contact-light .lista_direccion {
+    border-top-color: rgba(0, 0, 0, 0.15);
+  }
+
+  .contact-light .form-label {
+    color: #555;
+  }
+  .contact-light .form-group:focus-within .form-label {
+    color: #b8860b;
+  }
+  .contact-light .form-control {
+    color: #1a1e21 !important;
+    background: #fff !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  }
+  .contact-light .form-control::placeholder {
+    color: rgba(0, 0, 0, 0.35) !important;
+  }
+  .contact-light .form-control:focus {
+    color: #1a1e21 !important;
+    background: #fff !important;
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.15) !important;
+  }
+  .contact-light .privacy-check {
+    color: #555;
+  }
+
+  /* Botón de envío como pastilla (igual que el aside de la derecha). */
+  .contact-light .btn-common {
+    color: #1a1e21 !important;
+    background: #fff !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    box-shadow: none !important;
+    font-family: Inconsolata, monospace !important;
+  }
+  .contact-light .btn-common:hover,
+  .contact-light .btn-common:focus {
+    background: rgba(255, 200, 0, 0.1) !important;
+    border-color: var(--gold) !important;
+    color: #1a1e21 !important;
+    box-shadow: none !important;
+    transform: translateY(-2px) !important;
+  }
+  .contact-light .btn-common:disabled {
+    background: #fff !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: rgba(0, 0, 0, 0.3) !important;
+    box-shadow: none !important;
+  }
+
+  /* WhatsApp con el mismo estilo de pastilla neutra. */
+  .contact-light .contact-whatsapp {
+    background: #fff;
+    color: #1a1e21 !important;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: none;
+  }
+  .contact-light .contact-whatsapp:hover,
+  .contact-light .contact-whatsapp:focus {
+    background: rgba(255, 200, 0, 0.1);
+    border-color: var(--gold);
+    color: #1a1e21 !important;
+    box-shadow: none;
+    transform: translateY(-2px);
   }
 </style>
