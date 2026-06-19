@@ -99,6 +99,12 @@
     text-shadow: none;
   }
 
+  @media (max-width: 768px) {
+    .ai-geo-label {
+      display: none;
+    }
+  }
+
   .ai-geo-row {
     display: flex;
     flex-wrap: wrap;
