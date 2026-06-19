@@ -22,32 +22,36 @@
   let status = 'idle'; // 'idle', 'sending', 'success', 'error'
   let statusMessage = '';
 
-  const cityKeys = ['madrid', 'lisboa', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
+  // ─── Ciudades disponibles: DATA-DRIVEN ──────────────────────────────────
+  // Se derivan de cityData + fairsData para que cualquier ciudad/feria nueva
+  // que añadamos al sistema (p. ej. en un futuro Plan SEO "Absolutista")
+  // aparezca aquí AUTOMÁTICAMENTE, sin tocar este componente.
+  //   · Una ciudad entra si tiene página propia (clave no-"montaje_" en
+  //     cityData) Y al menos una feria asociada en fairsData.
+  //   · El país (para la bandera) y la lista de ferias salen de fairsData.
+  // El nexo entre ambas fuentes es el nombre en español (cityData[k].city.es
+  // coincide con fairsData[].city).
+  const fairCityIndex = (() => {
+    const idx = {}; // nombreEs -> { country, count }
+    for (const f of fairsData) {
+      if (!idx[f.city]) idx[f.city] = { country: f.country, count: 0 };
+      idx[f.city].count++;
+    }
+    return idx;
+  })();
 
-  // País de cada ciudad para mostrar su bandera en la píldora seleccionada (Lisboa = Portugal, resto = España)
-  const cityCountry = {
-    madrid: 'es',
-    lisboa: 'pt',
-    bilbao: 'es',
-    barcelona: 'es',
-    malaga: 'es',
-    badajoz: 'es',
-    sevilla: 'es',
-    ciudad_real: 'es',
-    zaragoza: 'es'
-  };
+  const cityKeys = Object.keys(cityData).filter(
+    (k) => !k.startsWith('montaje_') && cityData[k]?.city?.es && fairCityIndex[cityData[k].city.es]
+  );
 
-  const cityKeyToFairCityName = {
-    madrid: 'Madrid',
-    lisboa: 'Lisboa',
-    bilbao: 'Bilbao',
-    barcelona: 'Barcelona',
-    malaga: 'Málaga',
-    badajoz: 'Badajoz',
-    sevilla: 'Sevilla',
-    ciudad_real: 'Ciudad Real',
-    zaragoza: 'Zaragoza'
-  };
+  // Mapas derivados: clave de cityData -> nombre (para filtrar ferias) y país (bandera).
+  const cityKeyToFairCityName = {};
+  const cityCountry = {};
+  for (const k of cityKeys) {
+    const esName = cityData[k].city.es;
+    cityKeyToFairCityName[k] = esName;
+    cityCountry[k] = fairCityIndex[esName].country;
+  }
   const texts = {
     es: {
       title: "Hola!, soy Pat.",
@@ -252,9 +256,26 @@
   $: t = texts[lang] || texts.en;
 
   $: selectedCityName = cityKeyToFairCityName[selectedCity];
-  $: cityFairs = selectedCityName 
+  $: cityFairs = selectedCityName
     ? fairsData.filter(f => f.city === selectedCityName)
     : [];
+
+  // Muchas ferias llevan el nombre de la ciudad al final (p. ej. "FITUR Madrid",
+  // "ARCOmadrid") porque así se etiquetaron los grupos de campaña de email. En el
+  // asesor ese sufijo sobra: lo quitamos SOLO cuando está al final (con o sin
+  // espacio/guion), nunca cuando la ciudad forma parte real del nombre
+  // ("Madrid Tech Show", "Madrid Fusión", "Madridjoya").
+  function escapeRegExp(s) {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+  function cleanFairName(name) {
+    if (!name) return name;
+    const out = String(name).trim();
+    const city = (selectedCityName || '').trim();
+    if (!city) return out;
+    const stripped = out.replace(new RegExp('[\\s\\-]*' + escapeRegExp(city) + '$', 'i'), '').trim();
+    return stripped.length > 0 ? stripped : out;
+  }
 
   // Single Shared AudioContext Instance and preloaded AudioBuffers
   let audioCtx = null;
@@ -616,9 +637,9 @@
           <button
             type="button"
             class="fair-selector-btn"
-            on:click={() => selectFair(fair.name)}
+            on:click={() => selectFair(cleanFairName(fair.name))}
           >
-            <span class="fair-name-text">{fair.name}</span>
+            <span class="fair-name-text">{cleanFairName(fair.name)}</span>
           </button>
         {/each}
       </div>
@@ -808,6 +829,7 @@
     font-family: 'Inconsolata', monospace;
     font-size: 12px;
     font-weight: 700;
+    text-transform: uppercase;
     box-shadow: 0 2px 6px rgba(132, 204, 22, 0.2);
   }
 
@@ -870,6 +892,7 @@
     font-family: 'Inconsolata', monospace;
     font-size: 14px;
     font-weight: 600;
+    text-transform: uppercase;
     color: #333;
     cursor: pointer;
     transition: all 0.25s ease;
@@ -930,6 +953,7 @@
   .fair-name-text {
     font-weight: 600;
     font-size: 14px;
+    text-transform: uppercase;
   }
 
   /* Advisor Mini Form Styling */
@@ -1027,6 +1051,7 @@
     font-family: 'Glegoo', serif;
     font-size: 14px;
     font-weight: 700;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.25s ease;
     align-self: flex-start;
