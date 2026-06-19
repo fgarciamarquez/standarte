@@ -1316,7 +1316,7 @@ export const cityData = {
     }
   },
   lisboa: {
-    city: { es: 'Lisboa', en: 'Lisbon', de: 'Lissabon', zh: '里斯本', hi: 'लिस्बन', pt: 'Lisboa', fr: 'Lisbonne', it: 'Lisbona', ko: '리스본', ja: 'リスボン' },
+    city: { es: 'Lisboa', en: 'Lisbon', de: 'Lissabon', zh: '里斯本', hi: 'लिस्बन', pt: 'Lisboa', fr: 'Lisbonne', it: 'Lisbona', ko: '리스본', ja: 'リスボン', nl: 'Lissabon' },
     content: {
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、Standarteはリスボンの展示ブースを、設計・製作・物流・設営、そして会場での最終検査まで各工程を完全に管理して開発します。',

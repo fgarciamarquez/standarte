@@ -120,6 +120,25 @@
       personalization: 'Personalização publicitária',
       personalizationText: 'Permite anúncios personalizados e remarketing quando ativados em campanhas.',
       close: 'Fechar'
+    },
+    nl: {
+      title: 'Cookie-instellingen',
+      intro: 'We gebruiken noodzakelijke cookies om de website te laten werken. Met uw toestemming activeren we meet- en advertentiecookies van Google om campagnes te meten en advertenties te verbeteren.',
+      google: 'Google kan persoonlijke gegevens ontvangen voor advertentiemeting en personalisatie wanneer u dat toestaat.',
+      learn: 'Hoe Google gegevens gebruikt',
+      accept: 'Alles accepteren',
+      reject: 'Weigeren',
+      configure: 'Instellen',
+      save: 'Selectie opslaan',
+      necessary: 'Noodzakelijk',
+      necessaryText: 'Essentieel voor navigatie, beveiliging en het onthouden van deze keuze. Altijd actief.',
+      analytics: 'Meting',
+      analyticsText: 'Maakt geaggregeerde meting van bezoeken en conversies mogelijk.',
+      ads: 'Advertenties',
+      adsText: 'Maakt het mogelijk om signalen naar Google Ads te sturen voor campagnemeting.',
+      personalization: 'Gepersonaliseerde advertenties',
+      personalizationText: 'Maakt gepersonaliseerde advertenties en remarketing mogelijk wanneer geactiveerd in campagnes.',
+      close: 'Sluiten'
     }
   };
 

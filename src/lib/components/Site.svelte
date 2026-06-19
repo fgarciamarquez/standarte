@@ -48,7 +48,8 @@
     fr: 'Équipe de Victoria',
     it: 'Team di Victoria',
     ko: '빅토리아 팀',
-    ja: 'ビクトリアのチーム'
+    ja: 'ビクトリアのチーム',
+    nl: 'Team van Victoria'
   };
 
   // Galería: nº de fotos visibles antes del botón "Ver más" (el resto queda en el
@@ -60,7 +61,7 @@
   const galleryMoreLabels = {
     es: 'Ver más', en: 'See more', de: 'Mehr anzeigen', zh: '查看更多',
     hi: 'और देखें', pt: 'Ver mais', fr: 'Voir plus', it: 'Vedi altro',
-    ko: '더 보기', ja: 'もっと見る'
+    ko: '더 보기', ja: 'もっと見る', nl: 'Meer zien'
   };
 
   let menuOpen = false;
@@ -195,7 +196,8 @@
     ko: '전시 부스 제작을 위한 스페인, 포르투갈, 독일, 프랑스의 주요 박람회',
     fr: 'Salons phares en Espagne, Portugal, Allemagne et France pour la construction de stands',
     it: 'Fiere di rilievo in Spagna, Portogallo, Germania e Francia per la costruzione di stand',
-    ja: 'スペイン・ポルトガル・ドイツ・フランスの主要見本市（展示会ブース施工）'
+    ja: 'スペイン・ポルトガル・ドイツ・フランスの主要見本市（展示会ブース施工）',
+    nl: 'Belangrijke beurzen in Spanje, Portugal, Duitsland en Frankrijk voor standbouw'
   };
   const counterItems = [
     { key: 'projects', value: 169, icon: 'counter-book' },
