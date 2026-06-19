@@ -24,6 +24,19 @@
 
   const cityKeys = ['madrid', 'lisboa', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
 
+  // País de cada ciudad para mostrar su bandera en la píldora seleccionada (Lisboa = Portugal, resto = España)
+  const cityCountry = {
+    madrid: 'es',
+    lisboa: 'pt',
+    bilbao: 'es',
+    barcelona: 'es',
+    malaga: 'es',
+    badajoz: 'es',
+    sevilla: 'es',
+    ciudad_real: 'es',
+    zaragoza: 'es'
+  };
+
   const cityKeyToFairCityName = {
     madrid: 'Madrid',
     lisboa: 'Lisboa',
@@ -38,11 +51,11 @@
   const texts = {
     es: {
       title: "Hola!, soy Pat.",
-      intro: "Si buscas exponer en España y Portugal, te puedo asesorar para elegir los eventos clave.",
-      instruction: "Selecciona una ciudad y te mostraré las principales ferias que no deberías perderte:",
+      intro: "Si buscas expandirte en España y Portugal, te puedo asesorar para elegir los eventos clave.",
+      instruction: "En base a lo que ya conoces, definiré tu perfil. Selecciona una ciudad.",
       cta: "Obtener presupuesto para esta feria",
       formInstruction: "Por favor, introduce tus datos y te enviaré un breve informe con las ferias más interesantes para tu sector.",
-      fairInstruction: "Perfecto!, en esta ciudad estas son las principales ferias. Escoge Una!!",
+      fairInstruction: "Perfecto!, ahora selecciona una feria!!",
       namePlaceholder: "Tu Nombre",
       emailPlaceholder: "Tu Correo Profesional",
       privacyLabel: "Acepto la política de privacidad",
@@ -56,11 +69,11 @@
     },
     en: {
       title: "Hi! I'm Pat.",
-      intro: "If you are looking to exhibit in Spain and Portugal, I can advise you on choosing the key events.",
-      instruction: "Select a city and I will show you the key trade shows you shouldn't miss:",
+      intro: "If you are looking to expand in Spain and Portugal, I can advise you on choosing the key events.",
+      instruction: "Based on what you already know, I'll define your profile. Select a city.",
       cta: "Get a quote for this fair",
       formInstruction: "Please enter your details and I'll send you a brief report with the most interesting trade shows for your sector.",
-      fairInstruction: "Perfect! In this city, these are the main trade shows. Choose one!!",
+      fairInstruction: "Perfect! Now choose a trade show!!",
       namePlaceholder: "Your Name",
       emailPlaceholder: "Your Business Email",
       privacyLabel: "I accept the privacy policy",
@@ -74,11 +87,11 @@
     },
     pt: {
       title: "Olá!, sou a Pat.",
-      intro: "Se procura estabelecer-se em Espanha e Portugal, posso aconselhá-lo na escolha dos eventos fundamentais.",
-      instruction: "Escolha a cidade e eu mostrar-lhe-ei os eventos imperdíveis:",
+      intro: "Se procura expandir-se em Espanha e Portugal, posso aconselhá-lo na escolha dos eventos fundamentais.",
+      instruction: "Com base no que já conhece, vou definir o seu perfil. Escolha uma cidade.",
       cta: "Pedir orçamento para esta feira",
       formInstruction: "Por favor, introduza os seus dados e enviar-lhe-ei um breve relatório com as feiras mais interessantes para o seu setor.",
-      fairInstruction: "Perfeito! Nesta cidade, estas são as principais feiras. Escolha uma!!",
+      fairInstruction: "Perfeito! Agora escolha uma feira!!",
       namePlaceholder: "Seu Nome",
       emailPlaceholder: "Seu E-mail Corporativo",
       privacyLabel: "Aceito a política de privacidade",
@@ -92,11 +105,11 @@
     },
     de: {
       title: "Hallo!, ich bin Pat.",
-      intro: "Wenn Sie in Spanien und Portugal ausstellen möchten, kann ich Sie bei der Auswahl der wichtigsten Messen beraten.",
-      instruction: "Wählen Sie die Stadt und ich zeige Ihnen die wichtigsten Events, die Sie nicht verpassen dürfen:",
+      intro: "Wenn Sie in Spanien und Portugal expandieren möchten, kann ich Sie bei der Auswahl der wichtigsten Messen beraten.",
+      instruction: "Anhand dessen, was Sie bereits kennen, erstelle ich Ihr Profil. Wählen Sie eine Stadt.",
       cta: "Angebot für diese Messe anfordern",
       formInstruction: "Bitte geben Sie Ihre Daten ein und ich sende Ihnen einen kurzen Bericht mit den interessantesten Messen für Ihre Branche.",
-      fairInstruction: "Perfekt! In dieser Stadt sind das die wichtigsten Messen. Wählen Sie eine!!",
+      fairInstruction: "Perfekt! Wählen Sie jetzt eine Messe!!",
       namePlaceholder: "Ihr Name",
       emailPlaceholder: "Ihre geschäftliche E-Mail",
       privacyLabel: "Ich akzeptiere die Datenschutzerklärung",
@@ -110,11 +123,11 @@
     },
     fr: {
       title: "Bonjour !, je suis Pat.",
-      intro: "Si vous cherchez à vous implanter en Espagne et au Portugal, je peux vous conseiller pour choisir les événements de premier plan.",
-      instruction: "Choisissez la ville et je vous montrerai les salons incontournables à ne pas manquer :",
+      intro: "Si vous cherchez à vous développer en Espagne et au Portugal, je peux vous conseiller pour choisir les événements de premier plan.",
+      instruction: "À partir de ce que vous connaissez déjà, je définirai votre profil. Choisissez une ville.",
       cta: "Demander un devis pour ce salon",
       formInstruction: "Veuillez saisir vos coordonnées et je vous enverrai un bref rapport avec les salons les plus intéressants pour votre secteur.",
-      fairInstruction: "Parfait ! Dans cette ville, voici les principaux salons. Choisissez-en un !!",
+      fairInstruction: "Parfait ! Choisissez maintenant un salon !!",
       namePlaceholder: "Votre Nom",
       emailPlaceholder: "Votre E-mail Professionnel",
       privacyLabel: "J'accepte la politique de confidentialité",
@@ -128,11 +141,11 @@
     },
     it: {
       title: "Ciao!, sono Pat.",
-      intro: "Se desideri esporre in Spagna e Portogallo, posso consigliarti nella scelta degli eventos chiave.",
-      instruction: "Scegli la città e ti mostrerò gli eventi imperdibili a cui non puoi mancare:",
+      intro: "Se desideri espanderti in Spagna e Portogallo, posso consigliarti nella scelta degli eventi chiave.",
+      instruction: "In base a ciò che già conosci, definirò il tuo profilo. Scegli una città.",
       cta: "Richiedi un preventivo per questa fiera",
       formInstruction: "Inserisci i tuoi dati e ti invierò un breve report con le fiere più interessanti per il tuo settore.",
-      fairInstruction: "Perfetto! In questa città, queste sono le fiere principali. Scegline una!!",
+      fairInstruction: "Perfetto! Ora scegli una fiera!!",
       namePlaceholder: "Il tuo Nome",
       emailPlaceholder: "La tua Email Aziendale",
       privacyLabel: "Accetto l'informativa sulla privacy",
@@ -146,11 +159,11 @@
     },
     nl: {
       title: "Hallo!, ik ben Pat.",
-      intro: "Als u wilt exposeren in Spanje en Portugal, kan ik u adviseren bij het kiezen van de belangrijkste evenementen.",
-      instruction: "Kies de stad en ik laat u de belangrijkste evenementen zien die u niet mag missen:",
+      intro: "Als u wilt uitbreiden in Spanje en Portugal, kan ik u adviseren bij het kiezen van de belangrijkste evenementen.",
+      instruction: "Op basis van wat u al kent, bepaal ik uw profiel. Kies een stad.",
       cta: "Vraag een offerte aan voor deze beurs",
       formInstruction: "Voer uw gegevens in en ik stuur u een kort rapport met de interessantste beurzen voor uw sector.",
-      fairInstruction: "Perfect! In deze stad zijn dit de belangrijkste beurzen. Kies er één!!",
+      fairInstruction: "Perfect! Kies nu een beurs!!",
       namePlaceholder: "Uw Naam",
       emailPlaceholder: "Uw Zakelijk E-mailadres",
       privacyLabel: "Ik accepteer het privacybeleid",
@@ -164,11 +177,11 @@
     },
     zh: {
       title: "你好！我是 Pat。",
-      intro: "如果您想在西班牙和葡萄牙参展，我可以为您提供选择关键展会的建议。",
-      instruction: "选择城市，我将为您展示不容错过的关键活动：",
+      intro: "如果您想在西班牙和葡萄牙拓展业务，我可以为您提供选择关键展会的建议。",
+      instruction: "根据您已了解的情况，我会确定您的需求画像。请选择一个城市。",
       cta: "索取该展会的报价",
       formInstruction: "请填写您的信息，我会向您发送一份简要报告，列出最适合您所在行业的展会。",
-      fairInstruction: "太棒了！在这个城市，这些是主要的展会。选择一个吧！！",
+      fairInstruction: "太棒了！现在选择一个展会吧！！",
       namePlaceholder: "您的姓名",
       emailPlaceholder: "您的企业邮箱",
       privacyLabel: "我接受隐私政策",
@@ -182,11 +195,11 @@
     },
     hi: {
       title: "नमस्ते!, मैं Pat हूँ।",
-      intro: "यदि आप स्पेन और पुर्तगाल में प्रदर्शन करना चाहते हैं, तो मैं आपको प्रमुख कार्यक्रमों को चुनने में सलाह दे सकती हूँ।",
-      instruction: "शहर चुनें और मैं आपको वे प्रमुख कार्यक्रम दिखाऊँगी जिन्हें आप मिस नहीं कर सकते:",
+      intro: "यदि आप स्पेन और पुर्तगाल में विस्तार करना चाहते हैं, तो मैं आपको प्रमुख कार्यक्रमों को चुनने में सलाह दे सकती हूँ।",
+      instruction: "आप जो पहले से जानते हैं उसके आधार पर, मैं आपकी प्रोफ़ाइल तय करूँगी। एक शहर चुनें।",
       cta: "इस मेले के लिए कोटेशन प्राप्त करें",
       formInstruction: "कृपया अपनी जानकारी दर्ज करें, और मैं आपको आपके क्षेत्र के लिए सबसे दिलचस्प मेलों के साथ एक संक्षिप्त रिपोर्ट भेजूँगी।",
-      fairInstruction: "बिल्कुल सही! इस शहर में, ये मुख्य मेले हैं। एक चुनें!!",
+      fairInstruction: "बिल्कुल सही! अब एक मेला चुनें!!",
       namePlaceholder: "आपका नाम",
       emailPlaceholder: "आपका व्यावसायिक ईमेल",
       privacyLabel: "मैं गोपनीयता नीति स्वीकार करता हूँ",
@@ -200,11 +213,11 @@
     },
     ko: {
       title: "안녕하세요! Pat입니다.",
-      intro: "스페인과 포르투갈에서 전시회를 준비 중이시라면, 핵심 이벤트를 선택할 수 있도록 조언해 드릴 수 있습니다.",
-      instruction: "도시를 선택하시면 절대 놓쳐서는 안 될 주요 전시회를 보여드리겠습니다:",
+      intro: "스페인과 포르투갈에서 사업을 확장하고자 하신다면, 핵심 이벤트를 선택할 수 있도록 조언해 드릴 수 있습니다.",
+      instruction: "이미 알고 계신 내용을 바탕으로 고객님의 프로필을 파악하겠습니다. 도시를 선택해 주세요.",
       cta: "이 전시회 견적 요청하기",
       formInstruction: "정보를 입력해 주시면, 귀하의 업종에 가장 적합한 전시회를 정리한 간략한 리포트를 보내드리겠습니다.",
-      fairInstruction: "좋습니다! 이 도시의 주요 전시회는 다음과 같습니다. 하나를 선택해 주세요!!",
+      fairInstruction: "좋습니다! 이제 전시회를 선택해 주세요!!",
       namePlaceholder: "이름",
       emailPlaceholder: "회사 이메일 주소",
       privacyLabel: "개인정보 처리방침에 동의합니다",
@@ -218,11 +231,11 @@
     },
     ja: {
       title: "こんにちは！Patです。",
-      intro: "スペインやポルトガルでの出展をお考えなら、主要なイベント選びのアドバイスをいたします。",
-      instruction: "都市を選択してください。見逃せない主要な展示会をご案内します：",
+      intro: "スペインやポルトガルでの事業拡大をお考えなら、主要なイベント選びのアドバイスをいたします。",
+      instruction: "すでにご存じの内容をもとに、お客様のプロフィールを把握します。都市を選択してください。",
       cta: "この展示会の見積もりを依頼する",
       formInstruction: "お客様の情報をご入力いただければ、お客様の業種に最適な展示会をまとめた簡単なレポートをお送りします。",
-      fairInstruction: "完璧です！この都市の主要な展示会は以下の通りです。どれか1つ選んでくださいね！！",
+      fairInstruction: "完璧です！では、展示会を1つ選んでください！！",
       namePlaceholder: "お名前",
       emailPlaceholder: "会社用メールアドレス",
       privacyLabel: "個人情報保護方針に同意します",
@@ -546,6 +559,7 @@
             <div class="advisor-selected-badges" transition:fade>
               {#if selectedCity}
                 <span class="selected-badge-pill" transition:fade>
+                  <span class="fair-badge-flag flag-{cityCountry[selectedCity]}"></span>
                   {cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity}
                   <button type="button" class="remove-badge-btn" on:click={resetCity} aria-label="Remove city">×</button>
                 </span>
@@ -598,7 +612,6 @@
             class="fair-selector-btn"
             on:click={() => selectFair(fair.name)}
           >
-            <span class="fair-badge-flag flag-{fair.country}"></span>
             <span class="fair-name-text">{fair.name}</span>
           </button>
         {/each}
