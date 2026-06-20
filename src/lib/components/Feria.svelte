@@ -61,6 +61,10 @@
   $: ({ lang, copy, canonical, fairSlug } = data);
 
   $: fair = fairsData.find(f => f.slug === fairSlug) || fairsData[0];
+  // Clave de la ciudad-matriz a la que pertenece esta feria, para marcarla como
+  // activa en el módulo "Ciudades". El nexo es el nombre en español
+  // (cityData[k].city.es coincide con fair.city, p. ej. "Madrid").
+  $: currentCityKey = CITY_KEYS.find((k) => cityData[k]?.city?.es === fair?.city) || null;
   // Contenido SEO único de esta feria (HTML por idioma); fallback a ES si falta el idioma.
   $: fairBody = data.fairSeo ? (data.fairSeo[lang] || data.fairSeo.en || data.fairSeo.es || null) : null;
   
@@ -543,7 +547,7 @@
           <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
           <ul class="cluster-fairs">
             {#each CITY_KEYS as ck}
-              <li><a href={pathFor(lang, ck)}>{cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es}</a></li>
+              <li><a href={pathFor(lang, ck)} class:active={ck === currentCityKey}>{cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es}</a></li>
             {/each}
           </ul>
         </div>
@@ -749,5 +753,12 @@
   .cluster-fairs li a:hover {
     border-color: var(--primary);
     color: var(--primary);
+  }
+  /* Ciudad a la que pertenece esta feria: pastilla resaltada (sigue siendo enlace). */
+  .cluster-fairs li a.active {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.12);
+    color: #1a1e21;
+    font-weight: 700;
   }
 </style>

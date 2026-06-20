@@ -23,15 +23,15 @@ export const routes = {
     custom: 'proyectos_a_medida',
     team: 'equipo',
     contact: 'contacto',
-    madrid: 'construccion_stands_madrid',
-    barcelona: 'construccion_stands_barcelona',
-    bilbao: 'construccion_stands_bilbao',
-    lisboa: 'construccion_stands_lisboa',
-    malaga: 'construccion_stands_malaga',
-    badajoz: 'construccion_stands_badajoz',
-    sevilla: 'construccion_stands_sevilla',
-    ciudad_real: 'construccion_stands_ciudad_real',
-    zaragoza: 'construccion_stands_zaragoza',
+    madrid: 'diseno_montaje_stands_madrid',
+    barcelona: 'diseno_montaje_stands_barcelona',
+    bilbao: 'diseno_montaje_stands_bilbao',
+    lisboa: 'diseno_montaje_stands_lisboa',
+    malaga: 'diseno_montaje_stands_malaga',
+    badajoz: 'diseno_montaje_stands_badajoz',
+    sevilla: 'diseno_montaje_stands_sevilla',
+    ciudad_real: 'diseno_montaje_stands_ciudad_real',
+    zaragoza: 'diseno_montaje_stands_zaragoza',
     montaje_zafra: 'montaje_stand_zafra',
     montaje_don_benito: 'montaje_stand_don_benito',
     montaje_badajoz: 'montaje_stand_badajoz',
@@ -45,15 +45,15 @@ export const routes = {
     custom: 'custom_projects',
     team: 'team',
     contact: 'contact',
-    madrid: 'stand_construction_madrid',
-    barcelona: 'stand_construction_barcelona',
-    bilbao: 'stand_construction_bilbao',
-    lisboa: 'stand_construction_lisbon',
-    malaga: 'stand_construction_malaga',
-    badajoz: 'stand_construction_badajoz',
-    sevilla: 'stand_construction_seville',
-    ciudad_real: 'stand_construction_ciudad_real',
-    zaragoza: 'stand_construction_zaragoza',
+    madrid: 'stand_design_assembly_madrid',
+    barcelona: 'stand_design_assembly_barcelona',
+    bilbao: 'stand_design_assembly_bilbao',
+    lisboa: 'stand_design_assembly_lisbon',
+    malaga: 'stand_design_assembly_malaga',
+    badajoz: 'stand_design_assembly_badajoz',
+    sevilla: 'stand_design_assembly_seville',
+    ciudad_real: 'stand_design_assembly_ciudad_real',
+    zaragoza: 'stand_design_assembly_zaragoza',
     montaje_zafra: 'exhibition_stand_assembly_zafra',
     montaje_don_benito: 'exhibition_stand_assembly_don_benito',
     montaje_badajoz: 'exhibition_stand_assembly_badajoz',
@@ -67,15 +67,15 @@ export const routes = {
     custom: 'massgeschneiderte_projekte',
     team: 'team',
     contact: 'kontakt',
-    madrid: 'messestandbau_madrid',
-    barcelona: 'messestandbau_barcelona',
-    bilbao: 'messestandbau_bilbao',
-    lisboa: 'messestandbau_lissabon',
-    malaga: 'messestandbau_malaga',
-    badajoz: 'messestandbau_badajoz',
-    sevilla: 'messestandbau_sevilla',
-    ciudad_real: 'messestandbau_ciudad_real',
-    zaragoza: 'messestandbau_zaragoza',
+    madrid: 'messestand_design_montage_madrid',
+    barcelona: 'messestand_design_montage_barcelona',
+    bilbao: 'messestand_design_montage_bilbao',
+    lisboa: 'messestand_design_montage_lissabon',
+    malaga: 'messestand_design_montage_malaga',
+    badajoz: 'messestand_design_montage_badajoz',
+    sevilla: 'messestand_design_montage_sevilla',
+    ciudad_real: 'messestand_design_montage_ciudad_real',
+    zaragoza: 'messestand_design_montage_zaragoza',
     montaje_zafra: 'messestandmontage_zafra',
     montaje_don_benito: 'messestandmontage_don_benito',
     montaje_badajoz: 'messestandmontage_badajoz',
@@ -89,15 +89,15 @@ export const routes = {
     custom: 'dingzhi_xiangmu',
     team: 'tuandui',
     contact: 'lianxi',
-    madrid: 'madrid_zhantai_dajian',
-    barcelona: 'barcelona_zhantai_dajian',
-    bilbao: 'bilbao_zhantai_dajian',
-    lisboa: 'lisbon_zhantai_dajian',
-    malaga: 'malaga_zhantai_dajian',
-    badajoz: 'badajoz_zhantai_dajian',
-    sevilla: 'sevilla_zhantai_dajian',
-    ciudad_real: 'ciudad_real_zhantai_dajian',
-    zaragoza: 'zaragoza_zhantai_dajian',
+    madrid: 'madrid_zhantai_sheji_dajian',
+    barcelona: 'barcelona_zhantai_sheji_dajian',
+    bilbao: 'bilbao_zhantai_sheji_dajian',
+    lisboa: 'lisbon_zhantai_sheji_dajian',
+    malaga: 'malaga_zhantai_sheji_dajian',
+    badajoz: 'badajoz_zhantai_sheji_dajian',
+    sevilla: 'sevilla_zhantai_sheji_dajian',
+    ciudad_real: 'ciudad_real_zhantai_sheji_dajian',
+    zaragoza: 'zaragoza_zhantai_sheji_dajian',
     montaje_zafra: 'zafra_zhantai_dajian',
     montaje_don_benito: 'don_benito_zhantai_dajian',
     montaje_badajoz: 'badajoz_zhantai_dajian_montaje',
@@ -111,15 +111,15 @@ export const routes = {
     custom: 'custom_projects',
     team: 'team',
     contact: 'sampark',
-    madrid: 'madrid_stand_nirman',
-    barcelona: 'barcelona_stand_nirman',
-    bilbao: 'bilbao_stand_nirman',
-    lisboa: 'lisbon_stand_nirman',
-    malaga: 'malaga_stand_nirman',
-    badajoz: 'badajoz_stand_nirman',
-    sevilla: 'sevilla_stand_nirman',
-    ciudad_real: 'ciudad_real_stand_nirman',
-    zaragoza: 'zaragoza_stand_nirman',
+    madrid: 'madrid_stand_dizain_asembli',
+    barcelona: 'barcelona_stand_dizain_asembli',
+    bilbao: 'bilbao_stand_dizain_asembli',
+    lisboa: 'lisbon_stand_dizain_asembli',
+    malaga: 'malaga_stand_dizain_asembli',
+    badajoz: 'badajoz_stand_dizain_asembli',
+    sevilla: 'sevilla_stand_dizain_asembli',
+    ciudad_real: 'ciudad_real_stand_dizain_asembli',
+    zaragoza: 'zaragoza_stand_dizain_asembli',
     montaje_zafra: 'zafra_stand_nirman',
     montaje_don_benito: 'don_benito_stand_nirman',
     montaje_badajoz: 'badajoz_stand_nirman_montaje',
@@ -133,15 +133,15 @@ export const routes = {
     custom: 'projetos_a_medida',
     team: 'equipa',
     contact: 'contacto',
-    madrid: 'construcao_stands_madrid',
-    barcelona: 'construcao_stands_barcelona',
-    bilbao: 'construcao_stands_bilbao',
-    lisboa: 'construcao_stands_lisboa',
-    malaga: 'construcao_stands_malaga',
-    badajoz: 'construcao_stands_badajoz',
-    sevilla: 'construcao_stands_sevilla',
-    ciudad_real: 'construcao_stands_ciudad_real',
-    zaragoza: 'construcao_stands_zaragoza',
+    madrid: 'design_montagem_stands_madrid',
+    barcelona: 'design_montagem_stands_barcelona',
+    bilbao: 'design_montagem_stands_bilbao',
+    lisboa: 'design_montagem_stands_lisboa',
+    malaga: 'design_montagem_stands_malaga',
+    badajoz: 'design_montagem_stands_badajoz',
+    sevilla: 'design_montagem_stands_sevilla',
+    ciudad_real: 'design_montagem_stands_ciudad_real',
+    zaragoza: 'design_montagem_stands_zaragoza',
     montaje_zafra: 'montagem_stand_zafra',
     montaje_don_benito: 'montagem_stand_don_benito',
     montaje_badajoz: 'montagem_stand_badajoz',
@@ -155,15 +155,15 @@ export const routes = {
     custom: 'projets_sur_mesure',
     team: 'equipe',
     contact: 'contact',
-    madrid: 'construction_stands_madrid',
-    barcelona: 'construction_stands_barcelone',
-    bilbao: 'construction_stands_bilbao',
-    lisboa: 'construction_stands_lisbonne',
-    malaga: 'construction_stands_malaga',
-    badajoz: 'construction_stands_badajoz',
-    sevilla: 'construction_stands_seville',
-    ciudad_real: 'construction_stands_ciudad_real',
-    zaragoza: 'construction_stands_zaragoza',
+    madrid: 'conception_montage_stands_madrid',
+    barcelona: 'conception_montage_stands_barcelone',
+    bilbao: 'conception_montage_stands_bilbao',
+    lisboa: 'conception_montage_stands_lisbonne',
+    malaga: 'conception_montage_stands_malaga',
+    badajoz: 'conception_montage_stands_badajoz',
+    sevilla: 'conception_montage_stands_seville',
+    ciudad_real: 'conception_montage_stands_ciudad_real',
+    zaragoza: 'conception_montage_stands_zaragoza',
     montaje_zafra: 'montage_stands_zafra',
     montaje_don_benito: 'montage_stands_don_benito',
     montaje_badajoz: 'montage_stands_badajoz',
@@ -177,15 +177,15 @@ export const routes = {
     custom: 'progetti_su_misura',
     team: 'squadra',
     contact: 'contatto',
-    madrid: 'allestimenti_fieristici_madrid',
-    barcelona: 'allestimenti_fieristici_barcellona',
-    bilbao: 'allestimenti_fieristici_bilbao',
-    lisboa: 'allestimenti_fieristici_lisbona',
-    malaga: 'allestimenti_fieristici_malaga',
-    badajoz: 'allestimenti_fieristici_badajoz',
-    sevilla: 'allestimenti_fieristici_sevilla',
-    ciudad_real: 'allestimenti_fieristici_ciudad_real',
-    zaragoza: 'allestimenti_fieristici_zaragoza',
+    madrid: 'progettazione_montaggio_stand_madrid',
+    barcelona: 'progettazione_montaggio_stand_barcellona',
+    bilbao: 'progettazione_montaggio_stand_bilbao',
+    lisboa: 'progettazione_montaggio_stand_lisbona',
+    malaga: 'progettazione_montaggio_stand_malaga',
+    badajoz: 'progettazione_montaggio_stand_badajoz',
+    sevilla: 'progettazione_montaggio_stand_sevilla',
+    ciudad_real: 'progettazione_montaggio_stand_ciudad_real',
+    zaragoza: 'progettazione_montaggio_stand_zaragoza',
     montaje_zafra: 'allestimento_stand_zafra',
     montaje_don_benito: 'allestimento_stand_don_benito',
     montaje_badajoz: 'allestimento_stand_badajoz',
@@ -199,15 +199,15 @@ export const routes = {
     custom: 'majchumhyeong-peurojekteu',
     team: 'tim',
     contact: 'yeollagcheo',
-    madrid: 'madrid-bujeu-jejak',
-    barcelona: 'barcelona-bujeu-jejak',
-    bilbao: 'bilbao-bujeu-jejak',
-    lisboa: 'lisbon-bujeu-jejak',
-    malaga: 'malaga-bujeu-jejak',
-    badajoz: 'badajoz-bujeu-jejak',
-    sevilla: 'sevilla-bujeu-jejak',
-    ciudad_real: 'ciudad_real-bujeu-jejak',
-    zaragoza: 'zaragoza-bujeu-jejak',
+    madrid: 'madrid-bujeu-dijain-jorip',
+    barcelona: 'barcelona-bujeu-dijain-jorip',
+    bilbao: 'bilbao-bujeu-dijain-jorip',
+    lisboa: 'lisbon-bujeu-dijain-jorip',
+    malaga: 'malaga-bujeu-dijain-jorip',
+    badajoz: 'badajoz-bujeu-dijain-jorip',
+    sevilla: 'sevilla-bujeu-dijain-jorip',
+    ciudad_real: 'ciudad_real-bujeu-dijain-jorip',
+    zaragoza: 'zaragoza-bujeu-dijain-jorip',
     montaje_zafra: 'zafra-bujeu-jejak',
     montaje_don_benito: 'don-benito-bujeu-jejak',
     montaje_badajoz: 'badajoz-bujeu-jejak-montaje',
@@ -221,15 +221,15 @@ export const routes = {
     custom: '施工事例',
     team: 'チーム',
     contact: 'お問い合わせ',
-    madrid: 'マドリード展示会ブース',
-    barcelona: 'バルセロナ展示会ブース',
-    bilbao: 'ビルバオ展示会ブース',
-    lisboa: 'リスボン展示会ブース',
-    malaga: 'マラガ展示会ブース',
-    badajoz: 'バダホス展示会ブース',
-    sevilla: 'セビリア展示会ブース',
-    ciudad_real: 'シウダーレアル展示会ブース',
-    zaragoza: 'サラゴサ展示会ブース',
+    madrid: 'マドリード展示会ブース設計施工',
+    barcelona: 'バルセロナ展示会ブース設計施工',
+    bilbao: 'ビルバオ展示会ブース設計施工',
+    lisboa: 'リスボン展示会ブース設計施工',
+    malaga: 'マラガ展示会ブース設計施工',
+    badajoz: 'バダホス展示会ブース設計施工',
+    sevilla: 'セビリア展示会ブース設計施工',
+    ciudad_real: 'シウダーレアル展示会ブース設計施工',
+    zaragoza: 'サラゴサ展示会ブース設計施工',
     montaje_zafra: 'サフラ展示会ブース設営',
     montaje_don_benito: 'ドンベニート展示会ブース設営',
     montaje_badajoz: 'バダホス展示会ブース設営',
@@ -243,15 +243,15 @@ export const routes = {
     custom: 'projecten_op_maat',
     team: 'team',
     contact: 'contact',
-    madrid: 'standbouw_madrid',
-    barcelona: 'standbouw_barcelona',
-    bilbao: 'standbouw_bilbao',
-    lisboa: 'standbouw_lissabon',
-    malaga: 'standbouw_malaga',
-    badajoz: 'standbouw_badajoz',
-    sevilla: 'standbouw_sevilla',
-    ciudad_real: 'standbouw_ciudad_real',
-    zaragoza: 'standbouw_zaragoza',
+    madrid: 'standontwerp_montage_madrid',
+    barcelona: 'standontwerp_montage_barcelona',
+    bilbao: 'standontwerp_montage_bilbao',
+    lisboa: 'standontwerp_montage_lissabon',
+    malaga: 'standontwerp_montage_malaga',
+    badajoz: 'standontwerp_montage_badajoz',
+    sevilla: 'standontwerp_montage_sevilla',
+    ciudad_real: 'standontwerp_montage_ciudad_real',
+    zaragoza: 'standontwerp_montage_zaragoza',
     montaje_zafra: 'standmontage_zafra',
     montaje_don_benito: 'standmontage_don_benito',
     montaje_badajoz: 'standmontage_badajoz',
@@ -264,14 +264,14 @@ export const copy = {
   es: {
     faqsTitle: 'Preguntas Frecuentes', successStoriesTitle: 'Casos de Éxito', featuredProjectsIntro: 'Proyectos destacados de carpintería a medida y diseño de stands:', 
     nav: { services: 'Servicios', custom: 'Galería', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
-    seoTitle: 'Standarte | Construcción de stands en España y Portugal',
+    seoTitle: 'Standarte | Diseño y montaje de stands en España y Portugal',
     seoDescription: 'Servicios de stands feriales con asesoría de expansión incluida. Diseñamos, fabricamos y montamos tu stand en España y Portugal. Presupuesto en 24 H.',
-    heroTitle: 'Diseño y construcción de stands internacionales',
+    heroTitle: 'Diseño y montaje de stands internacionales',
     heroSubtitle: 'Espacios que inspiran',
     servicesTitle: 'Servicios',
     services: [
       ['Diseño e Ingeniería', 'Nuestro equipo profesional tomará nota de las necesidades de su proyecto que, con todo detalle, quedarán reflejadas en un diseño 3D personalizado que podrá explorar y revisar antes del comienzo de la fabricación. La imagen del prototipo será 100% fidedigna al resultado final.'],
-      ['Construcción', 'En el proceso de construcción aplicamos las más modernas técnicas de ensamblaje con materiales especificos para el uso en construcción efímera. Esto nos permite ofrecer un aspecto impecable que demostrará calidad a primera vista.'],
+      ['Fabricación', 'En el proceso de fabricación aplicamos las más modernas técnicas de ensamblaje con materiales especificos para el uso en arquitectura efímera. Esto nos permite ofrecer un aspecto impecable que demostrará calidad a primera vista.'],
       ['Montaje y validaciones', 'Nos encargamos de todo. Con total tranquilidad podrás presentarse el primer dia de feria, y lo encontrará todo listo para empezar tu labor comercial. Stand, catering, papelería,... indiferentemente si es una feria en Madrid, Fráncfort, Pekín o Chicago.']
     ],
     micro: {
@@ -349,14 +349,14 @@ export const copy = {
   en: {
     faqsTitle: 'Frequently Asked Questions', successStoriesTitle: 'Success Stories', featuredProjectsIntro: 'Featured custom carpentry and exhibition stand design projects:', 
     nav: { services: 'Services', custom: 'Gallery', noticias: 'Blog', contact: 'Contact', language: 'Language' },
-    seoTitle: 'Standarte | Stand builder in Spain and Portugal',
-    seoDescription: 'Exhibition stand services with expansion advisory included. We design, build and install your stand for trade fairs across Spain and Portugal.',
-    heroTitle: 'Stand builder workshop in Spain',
+    seoTitle: 'Standarte | Stand design and assembly in Spain and Portugal',
+    seoDescription: 'Exhibition stand services with expansion advisory included. We design, assemble and install your stand for trade fairs across Spain and Portugal.',
+    heroTitle: 'Stand design and assembly workshop in Spain',
     heroSubtitle: 'high quality work',
     servicesTitle: 'Services',
     services: [
       ['Design and Engineering', 'Our professional team will take note of the needs of your project, which, in detail, will be reflected in a customized 3D prototype that you can explore and review before the start of manufacturing. The image of the prototype will be 100% faithful to the final result.'],
-      ['Booth construction', 'In the construction process we apply the most modern assembly techniques with specific materials for use in ephemeral construction. This allows us to offer a flawless look that will demonstrate quality at first glance.'],
+      ['Booth assembly', 'In the assembly process we apply the most modern assembly techniques with specific materials for use in ephemeral construction. This allows us to offer a flawless look that will demonstrate quality at first glance.'],
       ['Assembly and validations', 'We take care of everything. With complete peace of mind you can present yourself on the first day of the fair, and you will find everything ready to start your commercial work. Stand, catering, stationery,...']
     ],
     micro: {
@@ -434,14 +434,14 @@ export const copy = {
   de: {
     faqsTitle: 'Häufig gestellte Fragen', successStoriesTitle: 'Erfolgsgeschichten', featuredProjectsIntro: 'Ausgewählte Projekte für maßgeschneiderte Tischlerei und Messestanddesign:', 
     nav: { services: 'Dienstleistungen', custom: 'Galerie', noticias: 'Blog', contact: 'Kontakt', language: 'Sprache' },
-    seoTitle: 'Standarte | Messestand Design und Bau',
+    seoTitle: 'Standarte | Messestand Design und Montage',
     seoDescription: 'Messestand-Services inklusive Expansionsberatung. Wir entwerfen, fertigen und montieren Ihren Stand für Messen in Spanien und Portugal.',
-    heroTitle: 'Standbauer-Workshop in Spanien',
+    heroTitle: 'Messestand-Montage Workshop in Spanien',
     heroSubtitle: 'Arbeiten von hoher Qualität',
     servicesTitle: 'Dienstleistungen',
     services: [
       ['Design und Ingenieurwesen', 'Unser Team wird die Bedürfnisse Ihres Projekts im Detail notieren, die sich in einem 3D-Prototypen widerspiegeln werden, den Sie vor Beginn der Fertigung erkunden und überprüfen können. Das Bild des Prototyps wird zu 100% dem endgültigen Ergebnis entsprechen.'],
-      ['Messestandbau', 'Im Bauprozess wenden wir die modernsten Montagetechniken mit speziellen Materialien für den Einsatz im ephemeren Bau an. Dies ermöglicht uns, ein makelloses Aussehen zu bieten, das Qualität auf den ersten Blick zeigt.'],
+      ['Messestand-Montage', 'Im Montageprozess wenden wir die modernsten Montagetechniken mit speziellen Materialien für den Einsatz im ephemeren Bau an. Dies ermöglicht uns, ein makelloses Aussehen zu bieten, das Qualität auf den ersten Blick zeigt.'],
       ['Montage und Validierungen', 'Wir kümmern uns um alles. Mit vollkommener Ruhe können Sie sich am ersten Tag der Messe präsentieren, und Sie finden alles bereit, um Ihre geschäftliche Arbeit zu beginnen. Stand, Catering, Büromaterial,... unabhängig davon, ob es eine Messe in Madrid, Frankfurt, Peking oder Chicago ist.']
     ],
     micro: {
@@ -521,10 +521,10 @@ export const copy = {
     nav: { services: '服务', custom: '展台图库', noticias: '博客', contact: '联系', language: '语言' },
     seoTitle: 'Standarte | 展台设计与搭建',
     seoDescription: '展会展台服务，含市场拓展咨询：为您在西班牙和葡萄牙的展会设计、制作并搭建专属展台。',
-    heroTitle: '西班牙展台建造车间',
+    heroTitle: '西班牙展台搭建车间',
     heroSubtitle: '高质量的工作',
     servicesTitle: '服务',
-    services: [['设计与工程', '我们的团队将记录您项目的需求，这些需求将以细节的方式体现在一个3D原型中，您可以在制造开始之前进行探索和审查。原型的图像将百分之百忠实于最终结果。'], ['展台建设', '在建设过程中，我们采用最先进的组装技术和特定用于短暂建筑的材料。这使我们能够提供一个无瑕的外观，从而在第一眼就能展示出质量。'], ['安装和验证', '我们包揽一切。您可以在展会的第一天轻松自如地亮相，而且一切都已准备就绪，可以开始您的商业工作。无论是在马德里、法兰克福、北京还是芝加哥的展会，我们都能提供展台、餐饮、文具等服务。']],
+    services: [['设计与工程', '我们的团队将记录您项目的需求，这些需求将以细节的方式体现在一个3D原型中，您可以在制造开始之前进行探索和审查。原型的图像将百分之百忠实于最终结果。'], ['展台搭建', '在搭建过程中，我们采用最先进的组装技术和特定用于短暂建筑的材料。这使我们能够提供一个无瑕的外观，从而在第一眼就能展示出质量。'], ['安装和验证', '我们包揽一切。您可以在展会的第一天轻松自如地亮相，而且一切都已准备就绪，可以开始您的商业工作。无论是在马德里、法兰克福、北京还是芝加哥的展会，我们都能提供展台、餐饮、文具等服务。']],
     micro: {
       title: 'LUZPAVILION',
       subtitle: '适用于独特环境的空间帐篷',
@@ -600,12 +600,12 @@ export const copy = {
   hi: {
     faqsTitle: 'अक्सर पूछे जाने वाले प्रश्न', successStoriesTitle: 'सफलता की कहानियाँ', featuredProjectsIntro: 'विशेष कस्टम बढ़ईगीरी और प्रदर्शनी स्टैंड डिजाइन परियोजनाएं:', 
     nav: { services: 'सेवाएँ', custom: 'गैलरी', noticias: 'ब्लॉग', contact: 'संपर्क', language: 'भाषा' },
-    seoTitle: 'Standarte | प्रदर्शनी स्टैंड डिजाइन और निर्माण',
-    seoDescription: 'स्टैंड सेवाएँ, विस्तार परामर्श सहित। स्पेन और पुर्तगाल की प्रदर्शनियों के लिए आपके स्टैंड का डिज़ाइन, निर्माण और स्थापना।',
-    heroTitle: 'स्टैंड निर्माण कार्यशाला स्पेन में',
+    seoTitle: 'Standarte | प्रदर्शनी स्टैंड डिजाइन और असेंबली',
+    seoDescription: 'स्टैंड सेवाएँ, विस्तार परामर्श सहित। स्पेन और पुर्तगाल की प्रदर्शनियों के लिए आपके स्टैंड का डिज़ाइन, असेंबली और स्थापना।',
+    heroTitle: 'स्टैंड असेंबली कार्यशाला स्पेन में',
     heroSubtitle: 'उच्च गुणवत्ता का काम',
     servicesTitle: 'सेवाएँ',
-    services: [['डिज़ाइन और इंजीनियरिंग', 'हमारी टीम आपके परियोजना की आवश्यकताओं का नोट लेगी, जिसे से संपूर्ण विस्तार से एक 3D प्रोटोटाइप में प्रतिबिंबित किया जाएगा, जिसे आप निर्माण की शुरुआत से पहले जांच सकते हैं और समीक्षा कर सकते हैं। प्रोटोटाइप की छवि अंतिम परिणाम के लिए 100% विश्वसनीय होगी।'], ['बूथ निर्माण', 'निर्माण प्रक्रिया में हम अल्पकालिक निर्माण में उपयोग के लिए विशिष्ट सामग्रियों के साथ सबसे आधुनिक असेंबली तकनीकों को लागू करते हैं। यह हमें एक त्रुटिहीन उपस्थिति प्रदान करने की अनुमति देता है जो पहली नज़र में गुणवत्ता प्रदर्शित करेगी।'], ['समारोह और मान्यताएँ', 'हम हर चीज़ का ख्याल रखते हैं. मन की पूर्ण शांति के साथ आप मेले के पहले दिन आ सकते हैं, और आपको अपना व्यावसायिक कार्य शुरू करने के लिए सब कुछ तैयार मिलेगा। स्टैंड, खानपान, स्टेशनरी,... चाहे यह मैड्रिड, फ्रैंकफर्ट, बीजिंग या शिकागो में मेला हो।']],
+    services: [['डिज़ाइन और इंजीनियरिंग', 'हमारी टीम आपके परियोजना की आवश्यकताओं का नोट लेगी, जिसे से संपूर्ण विस्तार से एक 3D प्रोटोटाइप में प्रतिबिंबित किया जाएगा, जिसे आप असेंबली की शुरुआत से पहले जांच सकते हैं और समीक्षा कर सकते हैं। प्रोटोटाइप की छवि अंतिम परिणाम के लिए 100% विश्वसनीय होगी।'], ['बूथ असेंबली', 'असेंबली प्रक्रिया में हम अल्पकालिक निर्माण में उपयोग के लिए विशिष्ट सामग्रियों के साथ सबसे आधुनिक असेंबली तकनीकों को लागू करते हैं। यह हमें एक त्रुटिहीन उपस्थिति प्रदान करने की अनुमति देता है जो पहली नज़र में गुणवत्ता प्रदर्शित करेगी।'], ['समारोह और मान्यताएँ', 'हम हर चीज़ का ख्याल रखते हैं. मन की पूर्ण शांति के साथ आप मेले के पहले दिन आ सकते हैं, और आपको अपना व्यावसायिक कार्य शुरू करने के लिए सब कुछ तैयार मिलेगा। स्टैंड, खानपान, स्टेशनरी,... चाहे यह मैड्रिड, फ्रैंकफर्ट, बीजिंग या शिकागो में मेला हो।']],
     micro: {
       title: 'LUZPAVILION',
       subtitle: 'अद्वितीय वातावरण के लिए स्थानिक तंबू',
@@ -652,7 +652,7 @@ export const copy = {
         }
       ]
     },
-    citiesIntro: 'हम स्पेन और पुर्तगाल के प्रमुख शहरों में मेलों और इवेंट्स के लिए प्रदर्शनी स्टैंड डिजाइन, निर्माण और इंस्टॉल करते हैं।',
+    citiesIntro: 'हम स्पेन और पुर्तगाल के प्रमुख शहरों में मेलों और इवेंट्स के लिए प्रदर्शनी स्टैंड डिजाइन, असेंबली और इंस्टॉल करते हैं।',
     customTitle: 'गैलरी',
     customSubtitle: 'मुख्य असेंबली तकनीक के अनुसार वर्गीकृत।',
     filters: { all: 'सभी', textil: 'वस्त्र', madera: 'लकड़ी' },
@@ -676,19 +676,19 @@ export const copy = {
       subtitle: 'हमारे इंटरैक्टिव उच्च-बढ़ईगीरी प्रस्तावों और हमारे डिज़ाइन मूल्यों के साथ उनके संबंधों का पता लगाएं।',
       viewBtn: 'परियोजना देखें'
     },
-    footer: 'Standarte. प्रदर्शनी स्टैंड डिजाइन, निर्माण और इंस्टॉलेशन।'
+    footer: 'Standarte. प्रदर्शनी स्टैंड डिजाइन, असेंबली और इंस्टॉलेशन।'
   },
   pt: {
     faqsTitle: 'Perguntas Frequentes', successStoriesTitle: 'Casos de Sucesso', featuredProjectsIntro: 'Projetos destacados de marcenaria à medida e design de stands:', 
     nav: { services: 'Serviços', custom: 'Galeria', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
-    seoTitle: 'Standarte | Construção de stands em Espanha e Portugal',
+    seoTitle: 'Standarte | Montagem de stands em Espanha e Portugal',
     seoDescription: 'Serviços de stands de feira com consultoria de expansão incluída. Concebemos, produzimos e montamos o seu stand em Espanha e Portugal.',
-    heroTitle: 'Projeto e construção de estandes',
+    heroTitle: 'Projeto e montagem de estandes',
     heroSubtitle: 'Espaços que inspiram',
     servicesTitle: 'Serviços',
     services: [
       ['Projeto e Engenharia', 'Nossa equipe tomará nota das necessidades do seu projeto, que, detalhadamente, serão refletidas em um protótipo 3D que você poderá explorar e revisar antes do início da fabricação. A imagem do protótipo será 100% fiel ao resultado final.'],
-      ['Construção', 'No processo construtivo aplicamos as mais modernas técnicas de montagem com materiais específicos para utilização na construção efémera. Isso nos permite oferecer uma aparência impecável que demonstrará qualidade à primeira vista.'],
+      ['Montagem', 'No processo de montagem aplicamos as mais modernas técnicas de montagem com materiais específicos para utilização na construção efémera. Isso nos permite oferecer uma aparência impecável que demonstrará qualidade à primeira vista.'],
       ['Montagem e validações', 'Nós tomamos conta de tudo. Com total tranquilidade você pode se apresentar no primeiro dia da feira, e encontrará tudo pronto para iniciar seu trabalho comercial. Stand, catering, papelaria,... independentemente de ser uma feira em Madrid, Frankfurt, Pequim ou Chicago.']
     ],
     micro: {
@@ -769,14 +769,14 @@ export const copy = {
   fr: {
     faqsTitle: 'Foire Aux Questions', successStoriesTitle: 'Histoires de Réussite', featuredProjectsIntro: 'Projets phares de menuiserie sur mesure et de conception de stands:', 
     nav: { services: 'Services', custom: 'Galerie', noticias: 'Blog', contact: 'Contact', language: 'Langue' },
-    seoTitle: 'Standarte | Constructeur de stands en Espagne et Portugal',
+    seoTitle: 'Standarte | Monteur de stands en Espagne et Portugal',
     seoDescription: 'Services de stands d\'exposition avec conseil en expansion inclus. Conception, fabrication et montage de votre stand en Espagne et au Portugal.',
-    heroTitle: 'Conception et construction de stands internationaux',
+    heroTitle: 'Conception et montage de stands internationaux',
     heroSubtitle: 'Des espaces qui inspirent',
     servicesTitle: 'Services',
     services: [
       ['Conception et Ingénierie', 'Notre équipe professionnelle prendra note des besoins de votre projet, qui seront reflétés en détail dans un prototype 3D personnalisé que vous pourrez explorer et réviser avant le début de la fabrication. L\'image du prototype sera 100% fidèle au résultat final.'],
-      ['Construction', 'Dans le processus de construction, nous appliquons les techniques d\'assemblage les plus modernes avec des matériaux spécifiques pour l\'architecture éphémère. Cela nous permet d\'offrir un aspect impeccable qui démontrera notre qualité au premier coup d\'œil.'],
+      ['Fabrication et montage', 'Dans le processus de montage, nous appliquons les techniques d\'assemblage les plus modernes avec des matériaux spécifiques pour l\'architecture éphémère. Cela nous permet d\'offrir un aspect impeccable qui démontrera notre qualité au premier coup d\'œil.'],
       ['Montage et validations', 'Nous nous occupons de tout. En toute tranquillité, vous pourrez vous présenter le premier jour du salon, et vous trouverez tout prêt pour commencer votre travail commercial. Stand, restauration, papeterie,... peu importe s\'il s\'agit d\'un salon à Madrid, Francfort, Pékin ou Chicago.']
     ],
     micro: {
@@ -841,7 +841,7 @@ export const copy = {
     servicesTitle: 'Servizi',
     services: [
       ['Progettazione e Ingegneria', 'Il nostro team professionale prenderà nota delle esigenze del tuo progetto, che saranno riflesse in dettaglio in un prototipo 3D personalizzato che potrai esplorare e rivedere prima dell\'inizio della produzione. L\'immagine del prototipo sarà fedele al 100% al risultato finale.'],
-      ['Costruzione e Allestimento', 'Nel processo di costruzione applichiamo le più moderne tecniche di assemblaggio con materiali specifici per l\'uso in architettura effimera. Questo ci permette di offrire un aspetto impeccabile che dimostrerà la qualità al primo sguardo.'],
+      ['Montaggio e Allestimento', 'Nel processo di allestimento applichiamo le più moderne tecniche di assemblaggio con materiali specifici per l\'uso in architettura effimera. Questo ci permette di offrire un aspetto impeccabile che dimostrerà la qualità al primo sguardo.'],
       ['Montaggio e validazioni', 'Ci occupiamo di tutto. Con totale tranquillità potrai presentarti il primo giorno di fiera e troverai tutto pronto per iniziare il tuo lavoro commerciale. Stand, catering, cancelleria,... indipendentemente se è una fiera a Madrid, Francoforte, Pechino o Chicago.']
     ],
     micro: {
@@ -904,9 +904,9 @@ export const copy = {
     "contact": "연락",
     "language": "언어"
   },
-  "seoTitle": "Standarte | 마드리드, 바르셀로나, 빌바오, 말라가, 리스본의 전시 부스 제작자",
+  "seoTitle": "Standarte | 마드리드, 바르셀로나, 빌바오, 말라가, 리스본의 전시 부스 디자인·설치 전문",
   "seoDescription": "부스 서비스에 시장 확장 컨설팅 포함. 스페인과 포르투갈 전시회를 위한 맞춤형 부스 설계·제작·설치.",
-  "heroTitle": "스페인에서의 부스 제작 워크숍",
+  "heroTitle": "스페인에서의 부스 디자인·조립 워크숍",
   "heroSubtitle": "고품질 작업",
   "servicesTitle": "서비스",
   "services": [
@@ -916,7 +916,7 @@ export const copy = {
     ],
     [
       "부스 설치",
-      "건설 과정에서 우리는 일시적인 건축에 사용되는 특정 재료와 함께 가장 현대적인 조립 기술을 적용합니다. 이를 통해 한눈에 품질을 보여줄 수 있는 완벽한 외관을 제공할 수 있습니다."
+      "설치 과정에서 우리는 일시적인 건축에 사용되는 특정 재료와 함께 가장 현대적인 조립 기술을 적용합니다. 이를 통해 한눈에 품질을 보여줄 수 있는 완벽한 외관을 제공할 수 있습니다."
     ],
     [
       "조립 및 검증",
@@ -1042,14 +1042,14 @@ export const copy = {
   ja: {
     faqsTitle: 'よくあるご質問', successStoriesTitle: '導入事例', featuredProjectsIntro: 'オーダーメイドの木工と展示ブースデザインの注目プロジェクト：',
     nav: { services: 'サービス', custom: 'ギャラリー', noticias: 'ブログ', contact: 'お問い合わせ', language: '言語' },
-    seoTitle: '海外展示会ブースの設計・製作・施工 | スペイン・ポルトガル | Standarte',
-    seoDescription: '展示会ブースのサービスに事業拡大アドバイスを含む。スペイン・ポルトガルの展示会向けに、ブースをオーダーメイドで設計・製作・施工します。海外出展をお考えの企業に最適。',
-    heroTitle: 'スペイン・ポルトガルでの展示会ブース施工',
-    heroSubtitle: 'オーダーメイドの展示会ブースの設計・製作・施工',
+    seoTitle: '海外展示会ブースの設計・製作・組立 | スペイン・ポルトガル | Standarte',
+    seoDescription: '展示会ブースのサービスに事業拡大アドバイスを含む。スペイン・ポルトガルの展示会向けに、ブースをオーダーメイドで設計・製作・組立します。海外出展をお考えの企業に最適。',
+    heroTitle: 'スペイン・ポルトガルでの展示会ブース組立',
+    heroSubtitle: 'オーダーメイドの展示会ブースの設計・製作・組立',
     servicesTitle: 'サービス',
     services: [
       ['設計とエンジニアリング', '専門チームがお客様のプロジェクトのご要望を細部まで把握し、それをオーダーメイドの3Dプロトタイプに反映します。製作を開始する前にご確認・ご検討いただけます。プロトタイプの画像は完成品を100%忠実に再現します。'],
-      ['ブース施工', '施工工程では、仮設建築に適した専用素材と最新の組立技術を用います。これにより、一目で品質が伝わる完璧な仕上がりをご提供します。'],
+      ['ブース組立', '組立工程では、仮設建築に適した専用素材と最新の組立技術を用います。これにより、一目で品質が伝わる完璧な仕上がりをご提供します。'],
       ['設営と各種検査', 'すべて当社にお任せください。展示会初日に安心してお越しいただくだけで、ブース、ケータリング、印刷物など、商談を始める準備がすべて整っています。']
     ],
     micro: {
@@ -1082,7 +1082,7 @@ export const copy = {
         { src: '/img/video_standarte_feria_verano.mp4', title: '大型屋外展示会', subtitle: '大規模な設営とプレミアムな高耐久テント。' }
       ]
     },
-    citiesIntro: 'スペインとポルトガルの主要都市で開催される展示会やイベント向けに、展示ブースの設計・製作・施工を行っています。',
+    citiesIntro: 'スペインとポルトガルの主要都市で開催される展示会やイベント向けに、展示ブースの設計・製作・組立を行っています。',
     customTitle: 'ギャラリー',
     customSubtitle: '主な組立技術別に分類しています。',
     filters: { all: 'すべて', textil: 'テキスタイル', madera: '木材' },
@@ -1106,19 +1106,19 @@ export const copy = {
       subtitle: '当社のインタラクティブな上質木工の提案と、それが私たちのデザイン哲学とどのように結びつくかをご覧ください。',
       viewBtn: 'プロジェクトを見る'
     },
-    footer: 'Standarte。展示ブースの設計・製作・施工。'
+    footer: 'Standarte。展示ブースの設計・製作・組立。'
   },
   nl: {
     faqsTitle: 'Veelgestelde vragen', successStoriesTitle: 'Succesverhalen', featuredProjectsIntro: 'Uitgelichte projecten van maatwerk-schrijnwerk en standontwerp:',
     nav: { services: 'Diensten', custom: 'Galerij', noticias: 'Blog', contact: 'Contact', language: 'Taal' },
-    seoTitle: 'Standarte | Standbouw in Spanje en Portugal',
-    seoDescription: 'Beursstand-diensten inclusief expansieadvies. Standbouw in Spanje en Portugal: ontwerp, productie en montage van uw beursstand op maat. Offerte binnen 24 u.',
-    heroTitle: 'Standbouw in Spanje en Portugal',
+    seoTitle: 'Standarte | Standontwerp en montage in Spanje en Portugal',
+    seoDescription: 'Beursstand-diensten inclusief expansieadvies. Standontwerp en montage in Spanje en Portugal: ontwerp, productie en montage van uw beursstand op maat. Offerte binnen 24 u.',
+    heroTitle: 'Standontwerp en montage in Spanje en Portugal',
     heroSubtitle: 'Ontwerp, productie en montage van beursstands op maat',
     servicesTitle: 'Diensten',
     services: [
       ['Ontwerp en engineering', 'Ons professionele team noteert de behoeften van uw project en verwerkt deze tot in detail in een gepersonaliseerd 3D-ontwerp dat u kunt verkennen en beoordelen vóór de productie begint. Het beeld van het prototype is 100% getrouw aan het eindresultaat.'],
-      ['Standbouw', 'In het bouwproces passen we de modernste montagetechnieken toe met materialen die specifiek geschikt zijn voor tijdelijke bouw. Zo bieden we een onberispelijke uitstraling die op het eerste gezicht kwaliteit toont.'],
+      ['Standmontage', 'In het montageproces passen we de modernste montagetechnieken toe met materialen die specifiek geschikt zijn voor tijdelijke architectuur. Zo bieden we een onberispelijke uitstraling die op het eerste gezicht kwaliteit toont.'],
       ['Montage en validaties', 'Wij regelen alles. Volledig zorgeloos kunt u op de eerste beursdag verschijnen en vindt u alles klaar om met uw commerciële werk te beginnen. Stand, catering, drukwerk,... of het nu een beurs is in Madrid, Frankfurt, Peking of Chicago.']
     ],
     micro: {
@@ -1151,7 +1151,7 @@ export const copy = {
         { src: '/img/video_standarte_feria_verano.mp4', title: 'Grootschalige openluchtbeurzen', subtitle: 'Grootschalige opbouw en premium tenten met hoge weerstand.' }
       ]
     },
-    citiesIntro: 'Wij ontwerpen, produceren en bouwen stands voor beurzen en evenementen in belangrijke steden in Spanje en Portugal.',
+    citiesIntro: 'Wij ontwerpen, produceren en monteren stands voor beurzen en evenementen in belangrijke steden in Spanje en Portugal.',
     customTitle: 'GALERIJ',
     customSubtitle: 'Geordend op de belangrijkste montagetechniek.',
     filters: { all: 'Alle', textil: 'Textiel', madera: 'Hout' },
@@ -1347,7 +1347,7 @@ export const cityData = {
         detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
       },
       zh: {
-        intro: '凭借在我们自己的工厂建设临时建筑的 20 年经验，Standarte 在里斯本开发展览摊位，保证对每个阶段的全面控制：设计，生产，物流，安装和现场最终验证。',
+        intro: '凭借在我们自己的工厂搭建临时建筑的 20 年经验，Standarte 在里斯本开发展览摊位，保证对每个阶段的全面控制：设计，生产，物流，安装和现场最终验证。',
         detail: '我们为机构和直接参展商提供无意外的装配安全感以及对细节的卓越关注。'
       },
       hi: {
@@ -1365,7 +1365,7 @@ export const cityData = {
     content: {
       ja: {
         intro: 'マラガは会議やテクノロジー系展示会の開催地として成長を続けています。20年の経験と最高水準の自社工房を持つStandarteが、FYCMAでのブースの技術設計・製作・設営・コーディネーションを担います。',
-        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの施工を保証します。'
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
       },
       es: {
         intro: 'El crecimiento de Málaga como destino de congresos y ferias tecnológicas es imparable. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en FYCMA.',
@@ -1455,7 +1455,7 @@ export const cityData = {
     content: {
       ja: {
         intro: 'セビリアは南ヨーロッパで最も重要な展示会・会議の開催地のひとつです。20年の経験と最高水準の自社工房を持つStandarteが、FIBES IおよびFIBES IIでのブースの技術設計・製作・設営・コーディネーションを担います。',
-        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの施工を保証します。'
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
       },
       es: {
         intro: 'Sevilla es uno de los destinos feriales y de congresos más importantes del sur de Europa. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en FIBES I y FIBES II.',
@@ -1500,7 +1500,7 @@ export const cityData = {
     content: {
       ja: {
         intro: 'シウダー・レアルは、スペイン中部で最も近代的かつ急成長している会議・展示インフラのひとつ、IFEDI展示場を擁しています。20年の経験と最高水準の自社工房を持つStandarteが、IFEDIでのブースの技術設計・製作・設営・コーディネーションを担います。',
-        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの施工を保証します。'
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
       },
       es: {
         intro: 'Ciudad Real cuenta con una de las infraestructuras de congresos y ferias más modernas y de mayor crecimiento en el centro de España: el recinto ferial IFEDI. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en IFEDI.',
@@ -1545,7 +1545,7 @@ export const cityData = {
     content: {
       ja: {
         intro: 'サラゴサはスペイン有数の見本市・物流拠点であり、サラゴサ見本市場（Feria de Zaragoza）は農業機械の国際見本市FIMAや建設・鉱山機械のSMOPYCといった世界的な産業見本市を開催しています。20年の経験と自社工房を持つStandarteが、サラゴサ見本市場でのブースの設計・製作・設営を担います。',
-        detail: '輸送、自社チームによる設営、会場の技術手続きまで一貫して管理し、海外の機械メーカーや出展企業に堅実かつ時間厳守の施工をお約束します。'
+        detail: '輸送、自社チームによる設営、会場の技術手続きまで一貫して管理し、海外の機械メーカーや出展企業に堅実かつ時間厳守の組立をお約束します。'
       },
       es: {
         intro: 'Zaragoza es uno de los grandes nodos feriales y logísticos de España: la Feria de Zaragoza acoge certámenes industriales de referencia internacional como FIMA (maquinaria agrícola) y SMOPYC (maquinaria de obra pública y minería). Con 20 años de experiencia y taller propio, Standarte diseña, fabrica y monta stands de alta carpintería en la Feria de Zaragoza.',
@@ -1655,7 +1655,7 @@ export const cityData = {
       },
       fr: {
         intro: 'Don Benito abrite FEVAL, l\'institution foirale d\'Estrémadure, et accueille Agroexpo, le plus grand salon agricole et de machines du marché ibérique.',
-        detail: 'Nous construisons des stands sur mesure dans ses 22 000 m² de halls couverts et dans sa zone extérieure pour les machines de précision.'
+        detail: 'Nous montons des stands sur mesure dans ses 22 000 m² de halls couverts et dans sa zone extérieure pour les machines de précision.'
       },
       it: {
         intro: 'Don Benito ospita la FEVAL, l\'istituzione fieristica dell\'Estremadura, e accoglie Agroexpo, il più grande incontro agricolo e di macchinari del mercato iberico.',
@@ -1663,7 +1663,7 @@ export const cityData = {
       },
       zh: {
         intro: '唐贝尼托是埃斯特雷马杜拉展览机构（FEVAL）的所在地，并举办伊比利亚市场最大的农业和机械贸易展Agroexpo。',
-        detail: '我们在其22,000平方米的室内展馆以及用于展示农业机械和精准农业的室外区域建造定制的木工展台。'
+        detail: '我们在其22,000平方米的室内展馆以及用于展示农业机械和精准农业的室外区域搭建定制的木工展台。'
       },
       hi: {
         intro: 'डॉन बेनिटो FEVAL (एक्स्ट्रीमादुra व्यापार मेला संस्थान) और एग्रोएक्सपो की मेजबानी करता है, जो इबेरियन बाजार में सबसे बड़ा कृषि और मशीनरी शो है।',

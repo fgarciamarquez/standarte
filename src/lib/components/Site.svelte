@@ -200,7 +200,7 @@
     nl: 'Admin'
   };
   const fairListTitles = {
-    es: 'Ferias destacadas en España, Portugal, Alemania y Francia para construcción de stands',
+    es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand construction',
     de: 'Wichtige Messen in Spanien, Portugal, Deutschland und Frankreich für Messestandbau',
     zh: '西班牙、葡萄牙、德国和法国展台搭建重点展会',
@@ -425,7 +425,7 @@
     const service = {
       '@type': 'Service',
       '@id': `${baseUrl}/#service`,
-      name: lang === 'es' ? 'Diseño y construcción de stands para ferias' : 'Exhibition stand design and construction',
+      name: lang === 'es' ? 'Diseño y montaje de stands para ferias' : 'Exhibition stand design and assembly',
       serviceType: isCityPage ? 'Construcción de stands' : 'Exhibition Stand Builder',
       provider: { '@id': `${baseUrl}/#organization` },
       description: copy.seoDescription,
