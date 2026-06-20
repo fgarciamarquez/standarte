@@ -27,6 +27,8 @@ export const routes = {
     barcelona: 'diseno_montaje_stands_barcelona',
     bilbao: 'diseno_montaje_stands_bilbao',
     lisboa: 'diseno_montaje_stands_lisboa',
+    batalha: 'diseno_montaje_stands_batalha',
+    vigo: 'diseno_montaje_stands_vigo',
     mallorca: 'diseno_montaje_stands_mallorca',
     valencia: 'diseno_montaje_stands_valencia',
     oporto: 'diseno_montaje_stands_oporto',
@@ -52,6 +54,8 @@ export const routes = {
     barcelona: 'stand_design_assembly_barcelona',
     bilbao: 'stand_design_assembly_bilbao',
     lisboa: 'stand_design_assembly_lisbon',
+    batalha: 'stand_design_assembly_batalha',
+    vigo: 'stand_design_assembly_vigo',
     mallorca: 'stand_design_assembly_mallorca',
     valencia: 'stand_design_assembly_valencia',
     oporto: 'stand_design_assembly_porto',
@@ -77,6 +81,8 @@ export const routes = {
     barcelona: 'messestand_design_montage_barcelona',
     bilbao: 'messestand_design_montage_bilbao',
     lisboa: 'messestand_design_montage_lissabon',
+    batalha: 'messestand_design_montage_batalha',
+    vigo: 'messestand_design_montage_vigo',
     mallorca: 'messestand_design_montage_mallorca',
     valencia: 'messestand_design_montage_valencia',
     oporto: 'messestand_design_montage_porto',
@@ -102,6 +108,8 @@ export const routes = {
     barcelona: 'barcelona_zhantai_sheji_dajian',
     bilbao: 'bilbao_zhantai_sheji_dajian',
     lisboa: 'lisbon_zhantai_sheji_dajian',
+    batalha: 'batalha_zhantai_sheji_dajian',
+    vigo: 'vigo_zhantai_sheji_dajian',
     mallorca: 'mallorca_zhantai_sheji_dajian',
     valencia: 'valencia_zhantai_sheji_dajian',
     oporto: 'porto_zhantai_sheji_dajian',
@@ -127,6 +135,8 @@ export const routes = {
     barcelona: 'barcelona_stand_dizain_asembli',
     bilbao: 'bilbao_stand_dizain_asembli',
     lisboa: 'lisbon_stand_dizain_asembli',
+    batalha: 'batalha_stand_dizain_asembli',
+    vigo: 'vigo_stand_dizain_asembli',
     mallorca: 'mallorca_stand_dizain_asembli',
     valencia: 'valencia_stand_dizain_asembli',
     oporto: 'porto_stand_dizain_asembli',
@@ -152,6 +162,8 @@ export const routes = {
     barcelona: 'design_montagem_stands_barcelona',
     bilbao: 'design_montagem_stands_bilbao',
     lisboa: 'design_montagem_stands_lisboa',
+    batalha: 'design_montagem_stands_batalha',
+    vigo: 'design_montagem_stands_vigo',
     mallorca: 'design_montagem_stands_mallorca',
     valencia: 'design_montagem_stands_valencia',
     oporto: 'design_montagem_stands_porto',
@@ -177,6 +189,8 @@ export const routes = {
     barcelona: 'conception_montage_stands_barcelone',
     bilbao: 'conception_montage_stands_bilbao',
     lisboa: 'conception_montage_stands_lisbonne',
+    batalha: 'conception_montage_stands_batalha',
+    vigo: 'conception_montage_stands_vigo',
     mallorca: 'conception_montage_stands_mallorca',
     valencia: 'conception_montage_stands_valence',
     oporto: 'conception_montage_stands_porto',
@@ -202,6 +216,8 @@ export const routes = {
     barcelona: 'progettazione_montaggio_stand_barcellona',
     bilbao: 'progettazione_montaggio_stand_bilbao',
     lisboa: 'progettazione_montaggio_stand_lisbona',
+    batalha: 'progettazione_montaggio_stand_batalha',
+    vigo: 'progettazione_montaggio_stand_vigo',
     mallorca: 'progettazione_montaggio_stand_mallorca',
     valencia: 'progettazione_montaggio_stand_valencia',
     oporto: 'progettazione_montaggio_stand_porto',
@@ -227,6 +243,8 @@ export const routes = {
     barcelona: 'barcelona-bujeu-dijain-jorip',
     bilbao: 'bilbao-bujeu-dijain-jorip',
     lisboa: 'lisbon-bujeu-dijain-jorip',
+    batalha: 'batalha-bujeu-dijain-jorip',
+    vigo: 'vigo-bujeu-dijain-jorip',
     mallorca: 'mallorca-bujeu-dijain-jorip',
     valencia: 'valencia-bujeu-dijain-jorip',
     oporto: 'porto-bujeu-dijain-jorip',
@@ -252,6 +270,8 @@ export const routes = {
     barcelona: 'バルセロナ展示会ブース設計施工',
     bilbao: 'ビルバオ展示会ブース設計施工',
     lisboa: 'リスボン展示会ブース設計施工',
+    batalha: 'バターリャ展示会ブース設計施工',
+    vigo: 'ビーゴ展示会ブース設計施工',
     mallorca: 'マヨルカ展示会ブース設計施工',
     valencia: 'バレンシア展示会ブース設計施工',
     oporto: 'ポルト展示会ブース設計施工',
@@ -277,6 +297,8 @@ export const routes = {
     barcelona: 'standontwerp_montage_barcelona',
     bilbao: 'standontwerp_montage_bilbao',
     lisboa: 'standontwerp_montage_lissabon',
+    batalha: 'standontwerp_montage_batalha',
+    vigo: 'standontwerp_montage_vigo',
     mallorca: 'standontwerp_montage_mallorca',
     valencia: 'standontwerp_montage_valencia',
     oporto: 'standontwerp_montage_porto',
@@ -299,7 +321,7 @@ export const copy = {
     nav: { services: 'Servicios', custom: 'Galería', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Diseño y montaje de stands en España y Portugal',
     seoDescription: 'Servicios de stands feriales con asesoría de expansión incluida. Diseñamos, fabricamos y montamos tu stand en España y Portugal. Presupuesto en 24 H.',
-    heroTitle: 'Diseño y montaje de stands internacionales',
+    heroTitle: 'Diseño y montaje de stands en España y Portugal',
     heroSubtitle: 'Espacios que inspiran',
     servicesTitle: 'Servicios',
     services: [
@@ -384,7 +406,7 @@ export const copy = {
     nav: { services: 'Services', custom: 'Gallery', noticias: 'Blog', contact: 'Contact', language: 'Language' },
     seoTitle: 'Standarte | Stand design and assembly in Spain and Portugal',
     seoDescription: 'Exhibition stand services with expansion advisory included. We design, assemble and install your stand for trade fairs across Spain and Portugal.',
-    heroTitle: 'Stand design and assembly workshop in Spain',
+    heroTitle: 'Exhibition stand design and assembly in Spain and Portugal',
     heroSubtitle: 'high quality work',
     servicesTitle: 'Services',
     services: [
@@ -469,7 +491,7 @@ export const copy = {
     nav: { services: 'Dienstleistungen', custom: 'Galerie', noticias: 'Blog', contact: 'Kontakt', language: 'Sprache' },
     seoTitle: 'Standarte | Messestand Design und Montage',
     seoDescription: 'Messestand-Services inklusive Expansionsberatung. Wir entwerfen, fertigen und montieren Ihren Stand für Messen in Spanien und Portugal.',
-    heroTitle: 'Messestand-Montage Workshop in Spanien',
+    heroTitle: 'Messestand Design und Montage in Spanien und Portugal',
     heroSubtitle: 'Arbeiten von hoher Qualität',
     servicesTitle: 'Dienstleistungen',
     services: [
@@ -554,7 +576,7 @@ export const copy = {
     nav: { services: '服务', custom: '展台图库', noticias: '博客', contact: '联系', language: '语言' },
     seoTitle: 'Standarte | 展台设计与搭建',
     seoDescription: '展会展台服务，含市场拓展咨询：为您在西班牙和葡萄牙的展会设计、制作并搭建专属展台。',
-    heroTitle: '西班牙展台搭建车间',
+    heroTitle: '西班牙和葡萄牙的展台设计与搭建',
     heroSubtitle: '高质量的工作',
     servicesTitle: '服务',
     services: [['设计与工程', '我们的团队将记录您项目的需求，这些需求将以细节的方式体现在一个3D原型中，您可以在制造开始之前进行探索和审查。原型的图像将百分之百忠实于最终结果。'], ['展台搭建', '在搭建过程中，我们采用最先进的组装技术和特定用于短暂建筑的材料。这使我们能够提供一个无瑕的外观，从而在第一眼就能展示出质量。'], ['安装和验证', '我们包揽一切。您可以在展会的第一天轻松自如地亮相，而且一切都已准备就绪，可以开始您的商业工作。无论是在马德里、法兰克福、北京还是芝加哥的展会，我们都能提供展台、餐饮、文具等服务。']],
@@ -635,7 +657,7 @@ export const copy = {
     nav: { services: 'सेवाएँ', custom: 'गैलरी', noticias: 'ब्लॉग', contact: 'संपर्क', language: 'भाषा' },
     seoTitle: 'Standarte | प्रदर्शनी स्टैंड डिजाइन और असेंबली',
     seoDescription: 'स्टैंड सेवाएँ, विस्तार परामर्श सहित। स्पेन और पुर्तगाल की प्रदर्शनियों के लिए आपके स्टैंड का डिज़ाइन, असेंबली और स्थापना।',
-    heroTitle: 'स्टैंड असेंबली कार्यशाला स्पेन में',
+    heroTitle: 'स्पेन और पुर्तगाल में स्टैंड डिज़ाइन और असेंबली',
     heroSubtitle: 'उच्च गुणवत्ता का काम',
     servicesTitle: 'सेवाएँ',
     services: [['डिज़ाइन और इंजीनियरिंग', 'हमारी टीम आपके परियोजना की आवश्यकताओं का नोट लेगी, जिसे से संपूर्ण विस्तार से एक 3D प्रोटोटाइप में प्रतिबिंबित किया जाएगा, जिसे आप असेंबली की शुरुआत से पहले जांच सकते हैं और समीक्षा कर सकते हैं। प्रोटोटाइप की छवि अंतिम परिणाम के लिए 100% विश्वसनीय होगी।'], ['बूथ असेंबली', 'असेंबली प्रक्रिया में हम अल्पकालिक निर्माण में उपयोग के लिए विशिष्ट सामग्रियों के साथ सबसे आधुनिक असेंबली तकनीकों को लागू करते हैं। यह हमें एक त्रुटिहीन उपस्थिति प्रदान करने की अनुमति देता है जो पहली नज़र में गुणवत्ता प्रदर्शित करेगी।'], ['समारोह और मान्यताएँ', 'हम हर चीज़ का ख्याल रखते हैं. मन की पूर्ण शांति के साथ आप मेले के पहले दिन आ सकते हैं, और आपको अपना व्यावसायिक कार्य शुरू करने के लिए सब कुछ तैयार मिलेगा। स्टैंड, खानपान, स्टेशनरी,... चाहे यह मैड्रिड, फ्रैंकफर्ट, बीजिंग या शिकागो में मेला हो।']],
@@ -716,7 +738,7 @@ export const copy = {
     nav: { services: 'Serviços', custom: 'Galeria', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Montagem de stands em Espanha e Portugal',
     seoDescription: 'Serviços de stands de feira com consultoria de expansão incluída. Concebemos, produzimos e montamos o seu stand em Espanha e Portugal.',
-    heroTitle: 'Projeto e montagem de estandes',
+    heroTitle: 'Design e montagem de stands em Espanha e Portugal',
     heroSubtitle: 'Espaços que inspiram',
     servicesTitle: 'Serviços',
     services: [
@@ -804,7 +826,7 @@ export const copy = {
     nav: { services: 'Services', custom: 'Galerie', noticias: 'Blog', contact: 'Contact', language: 'Langue' },
     seoTitle: 'Standarte | Monteur de stands en Espagne et Portugal',
     seoDescription: 'Services de stands d\'exposition avec conseil en expansion inclus. Conception, fabrication et montage de votre stand en Espagne et au Portugal.',
-    heroTitle: 'Conception et montage de stands internationaux',
+    heroTitle: 'Conception et montage de stands en Espagne et au Portugal',
     heroSubtitle: 'Des espaces qui inspirent',
     servicesTitle: 'Services',
     services: [
@@ -869,7 +891,7 @@ export const copy = {
     nav: { services: 'Servizi', custom: 'Galleria', noticias: 'Blog', contact: 'Contatto', language: 'Lingua' },
     seoTitle: 'Standarte | Allestimenti fieristici in Spagna e Portogallo',
     seoDescription: 'Servizi di stand fieristici con consulenza per l\'espansione inclusa. Progettiamo, produciamo e montiamo il tuo stand in Spagna e Portogallo.',
-    heroTitle: 'Progettazione e allestimento stand fieristici',
+    heroTitle: 'Progettazione e montaggio di stand in Spagna e Portogallo',
     heroSubtitle: 'Spazi che ispirano',
     servicesTitle: 'Servizi',
     services: [
@@ -939,7 +961,7 @@ export const copy = {
   },
   "seoTitle": "Standarte | 마드리드, 바르셀로나, 빌바오, 말라가, 리스본의 전시 부스 디자인·설치 전문",
   "seoDescription": "부스 서비스에 시장 확장 컨설팅 포함. 스페인과 포르투갈 전시회를 위한 맞춤형 부스 설계·제작·설치.",
-  "heroTitle": "스페인에서의 부스 디자인·조립 워크숍",
+  "heroTitle": "스페인과 포르투갈의 부스 디자인 및 조립",
   "heroSubtitle": "고품질 작업",
   "servicesTitle": "서비스",
   "services": [
@@ -1077,7 +1099,7 @@ export const copy = {
     nav: { services: 'サービス', custom: 'ギャラリー', noticias: 'ブログ', contact: 'お問い合わせ', language: '言語' },
     seoTitle: '海外展示会ブースの設計・製作・組立 | スペイン・ポルトガル | Standarte',
     seoDescription: '展示会ブースのサービスに事業拡大アドバイスを含む。スペイン・ポルトガルの展示会向けに、ブースをオーダーメイドで設計・製作・組立します。海外出展をお考えの企業に最適。',
-    heroTitle: 'スペイン・ポルトガルでの展示会ブース組立',
+    heroTitle: 'スペイン・ポルトガルでの展示会ブース設計・組立',
     heroSubtitle: 'オーダーメイドの展示会ブースの設計・製作・組立',
     servicesTitle: 'サービス',
     services: [
@@ -1390,6 +1412,104 @@ export const cityData = {
       ko: {
         intro: '자체 공장에서 임시 건축물을 지은 20년의 경험을 바탕으로 Standarte는 리스본에 전시 부스를 개발하여 설계, 생산, 물류, 설치 및 현장 최종 검증 등 각 단계에 대한 완벽한 통제를 보장합니다.',
         detail: '우리는 대행사와 직접 전시자에게 놀라움 없는 조립의 평화로움과 세부 사항에 대한 탁월한 주의를 제공합니다.'
+      }
+    }
+  },
+  batalha: {
+    city: { es: 'Batalha', en: 'Batalha', de: 'Batalha', zh: '巴塔利亚', hi: 'बाताल्हा', pt: 'Batalha', fr: 'Batalha', it: 'Batalha', ko: '바탈랴', ja: 'バターリャ', nl: 'Batalha' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Batalha —sede del Exposalão, gran recinto del centro de Portugal junto al clúster de moldes y plásticos de Marinha Grande— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Batalha —home to Exposalão, a major venue in central Portugal next to the Marinha Grande moulds and plastics cluster— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Batalha — Standort des Exposalão, eines großen Messegeländes in Zentralportugal nahe dem Formen- und Kunststoffcluster von Marinha Grande — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands na Batalha — sede do Exposalão, grande recinto do centro de Portugal junto ao cluster de moldes e plásticos da Marinha Grande — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Batalha — siège de l\'Exposalão, grand parc des expositions du centre du Portugal près du cluster de moules et plastiques de Marinha Grande — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Batalha — sede dell\'Exposalão, grande quartiere fieristico del centro del Portogallo accanto al cluster di stampi e materie plastiche di Marinha Grande — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Batalha — thuisbasis van Exposalão, een groot beurscomplex in centraal Portugal naast het matrijzen- en kunststofcluster van Marinha Grande — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在巴塔利亚设计并搭建展台——这里是 Exposalão 的所在地，是葡萄牙中部的重要展览中心，毗邻 Marinha Grande 模具与塑料产业集群——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，并对细节给予卓越关注。'
+      },
+      hi: {
+        intro: 'अपने स्वयं के कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte बाताल्हा में स्टैंड डिज़ाइन और असेंबली करता है—Exposalão का घर, मध्य पुर्तगाल का एक प्रमुख प्रदर्शनी स्थल, जो Marinha Grande के मोल्ड और प्लास्टिक क्लस्टर के निकट है—हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, उत्पादन, रसद, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공장에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 Marinha Grande 금형·플라스틱 클러스터 인근에 위치한 포르투갈 중부의 주요 전시장 Exposalão가 있는 바탈랴에서 부스를 디자인하고 조립하며 3D 디자인, 생산, 물류, 설치, 현장 검수 등 모든 단계를 직접 관리합니다.',
+        detail: '대행사와 직접 전시업체에 예기치 못한 일이 없는 조립과 디테일에 대한 탁월한 주의를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、StandarteはMarinha Grandeの金型・プラスチック産業クラスターに隣接するポルトガル中部の主要会場Exposalãoを擁するバターリャで展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。',
+        detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
+      }
+    }
+  },
+  vigo: {
+    city: { es: 'Vigo', en: 'Vigo', de: 'Vigo', zh: '维戈', hi: 'विगो', pt: 'Vigo', fr: 'Vigo', it: 'Vigo', ko: '비고', ja: 'ビーゴ', nl: 'Vigo' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Vigo —gran polo industrial atlántico de la construcción naval, la automoción y el sector conservero, con el IFEVI como recinto de referencia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Vigo —a major Atlantic industrial hub for shipbuilding, the automotive industry and seafood processing, with IFEVI as its flagship venue— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Vigo — einem großen atlantischen Industriestandort für Schiffbau, Automobilindustrie und Fischverarbeitung mit dem IFEVI als führendem Messegelände — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Vigo — grande polo industrial atlântico da construção naval, da indústria automóvel e do setor conserveiro, com o IFEVI como recinto de referência — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Vigo — grand pôle industriel atlantique de la construction navale, de l\'automobile et de la conserverie, avec l\'IFEVI comme parc des expositions de référence — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Vigo — grande polo industriale atlantico della cantieristica navale, dell\'automotive e del settore conserviero, con l\'IFEVI come quartiere fieristico di riferimento — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Vigo — een groot Atlantisch industrieel knooppunt voor scheepsbouw, de auto-industrie en de visverwerking, met het IFEVI als belangrijkste beurscomplex — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在维戈设计并搭建展台——这里是大西洋沿岸重要的工业基地，涵盖造船、汽车与水产加工产业，以 IFEVI 为核心展览中心——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，并对细节给予卓越关注。'
+      },
+      hi: {
+        intro: 'अपने स्वयं के कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte विगो में स्टैंड डिज़ाइन और असेंबली करता है—जहाज निर्माण, ऑटोमोटिव और समुद्री खाद्य प्रसंस्करण का एक प्रमुख अटलांटिक औद्योगिक केंद्र, जिसका मुख्य प्रदर्शनी स्थल IFEVI है—हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, उत्पादन, रसद, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공장에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 조선, 자동차, 수산물 가공 산업의 주요 대서양 산업 거점이자 IFEVI를 대표 전시장으로 둔 비고에서 부스를 디자인하고 조립하며 3D 디자인, 생산, 물류, 설치, 현장 검수 등 모든 단계를 직접 관리합니다.',
+        detail: '대행사와 직접 전시업체에 예기치 못한 일이 없는 조립과 디테일에 대한 탁월한 주의를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、Standarteは造船・自動車・水産加工産業の一大大西洋工業拠点であり、IFEVIを中核会場とするビーゴで展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。',
+        detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
       }
     }
   },

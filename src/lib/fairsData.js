@@ -796,5 +796,54 @@ export const fairsData = [
     "slug": "tecnovid-zaragoza",
     "city": "Zaragoza",
     "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Navalia",
+    "country": "es",
+    "slug": "navalia-vigo",
+    "city": "Vigo",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Nortrans",
+    "country": "es",
+    "slug": "nortrans-vigo",
+    "city": "Vigo",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Moldplás",
+    "country": "pt",
+    "slug": "moldplas-batalha",
+    "city": "Batalha",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Expometal",
+    "country": "pt",
+    "slug": "expometal-batalha",
+    "city": "Batalha",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Stone Ibérica",
+    "country": "pt",
+    "slug": "stone-iberica-batalha",
+    "city": "Batalha",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Vidrotec",
+    "country": "pt",
+    "slug": "vidrotec-batalha",
+    "city": "Batalha",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Decorhotel",
+    "country": "pt",
+    "slug": "decorhotel-batalha",
+    "city": "Batalha",
+    "sector": "Turismo y Hostelería"
   }
 ];

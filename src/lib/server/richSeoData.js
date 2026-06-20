@@ -1060,6 +1060,472 @@ export const richSeoData = {
       ]
     }
   },
+  "batalha": {
+    "es": {
+      "breadcrumb": "Batalha",
+      "title": "Diseño y montaje de stands en Batalha | Exposalão | Standarte",
+      "h1": "Diseño y montaje de stands feriales a medida en Batalha",
+      "introText": "Standarte diseña, fabrica y monta stands feriales en Batalha, sede del Exposalão y gran recinto del centro de Portugal, junto al potente clúster de moldes y plásticos de Marinha Grande. Más de 20 años de experiencia y taller propio para controlar cada fase: diseño 3D, carpintería a medida, logística y montaje con validaciones en el recinto.",
+      "body": "\n        <h2>Exposalão, gran recinto del centro de Portugal</h2>\n        <p>Batalha es un nudo industrial del centro de Portugal y su epicentro ferial es el <strong>Exposalão – Centro de Exposições da Batalha</strong>, uno de los mayores recintos privados del país, con varios pabellones. Su programa B2B refleja un tejido productivo muy técnico: aquí se celebran <strong>Moldplás</strong> —referencia del sector de moldes y plásticos, apoyada en el clúster de Marinha Grande, uno de los más competitivos de Europa— y <strong>Expometal</strong> (metalurgia), además de <strong>Stone Ibérica</strong> (piedra natural), <strong>Vidrotec</strong> (tecnología del vidrio) y <strong>Decorhotel</strong>. Para una empresa industrial o de equipamiento que quiere abrir mercado en Iberia, exponer aquí con un stand bien resuelto es una de las inversiones comerciales más rentables, y ahí es donde Standarte marca la diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Conocemos la normativa técnica del Exposalão y el perfil exigente del visitante industrial, lo que evita sorpresas y retrasos en el montaje y nos permite resolver stands técnicos, con maquinaria pesada o producto a escala real.</p>\n\n        <h2>Diseño 3D y carpintería a medida desde taller propio</h2>\n        <p>El éxito de un stand empieza meses antes del montaje. Nuestra fase de diseño es un proceso meticuloso de ingeniería de marca y optimización del flujo de visitantes: a partir de las directrices corporativas de su empresa, creamos un prototipo 3D interactivo 100% fiel al resultado final, de modo que su equipo comercial pueda validar la visibilidad de la marca, las zonas de reunión y la integración de pantallas, mostradores y vitrinas antes de que arranque la fabricación.</p>\n        <p>Una de nuestras mayores ventajas es disponer de <strong>taller propio</strong> de carpintería y acabados de alta calidad. Sin subcontratas, mantenemos el control total sobre materiales, plazos y calidad, con técnicas modernas de ensamblaje y materiales certificados para arquitectura efímera. El premontaje parcial en taller reduce el tiempo de trabajo en el recinto y garantiza un acabado impecable.</p>\n\n        <h2>Logística y montaje llave en mano en Batalha</h2>\n        <p>El montaje final es el broche de nuestro servicio llave en mano. Coordinamos directamente el transporte y embalaje, el montaje in situ, la instalación eléctrica de focos y pantallas, la colocación de la gráfica y la limpieza final. Su equipo solo tiene que presentarse el primer día de feria y encontrará un espacio corporativo plenamente operativo y listo para captar contactos. Además, gestionamos todas las formalidades técnicas que exige el recinto —proyectos visados, certificados de ignifugación, validaciones eléctricas, evaluación de riesgos y seguros— para una aprobación fluida en el Exposalão.</p>\n        <p>Nuestra estructura nos permite atender Batalha y todo el centro de Portugal con la misma agilidad que el resto de la península, ofreciendo a agencias y expositores directos un único interlocutor para diseño, producción, logística y montaje.</p>\n      ",
+      "faqs": [
+        {
+          "q": "¿Diseñan y montan stands en el Exposalão (Moldplás, Expometal)?",
+          "a": "Sí. Trabajamos en el Exposalão – Centro de Exposições da Batalha, en ferias como Moldplás, Expometal, Stone Ibérica, Vidrotec y Decorhotel. Conocemos su normativa técnica y el perfil industrial para un montaje sin sorpresas."
+        },
+        {
+          "q": "¿Tienen taller propio o subcontratan la fabricación?",
+          "a": "Disponemos de taller propio de carpintería y acabados. Sin intermediarios, controlamos al 100% materiales, plazos y calidad, y reducimos el tiempo de montaje en el recinto mediante premontaje en taller."
+        },
+        {
+          "q": "¿El servicio es llave en mano?",
+          "a": "Sí. Nos encargamos de todo: diseño 3D, fabricación, transporte, montaje, instalación eléctrica, gráfica, limpieza final y las validaciones técnicas del recinto. Su equipo solo se presenta el primer día de feria."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Batalha",
+      "title": "Exhibition stand design and assembly in Batalha | Exposalão | Standarte",
+      "h1": "Bespoke exhibition stand design and assembly in Batalha",
+      "introText": "Standarte designs, builds and assembles exhibition stands in Batalha, home of Exposalão and a major venue in central Portugal, right beside the powerful moulds and plastics cluster of Marinha Grande. With more than 20 years of experience and an in-house workshop, we control every stage: 3D design, bespoke joinery, logistics and assembly, with on-site validation at the venue.",
+      "body": "\n        <h2>Exposalão, a major venue in central Portugal</h2>\n        <p>Batalha is an industrial hub in central Portugal, and its trade-fair epicentre is the <strong>Exposalão – Centro de Exposições da Batalha</strong>, one of the largest privately owned venues in the country, with several halls. Its B2B calendar reflects a highly technical manufacturing base: it hosts <strong>Moldplás</strong> —a benchmark event for the moulds and plastics sector, backed by the Marinha Grande cluster, one of the most competitive in Europe— and <strong>Expometal</strong> (metalworking), alongside <strong>Stone Ibérica</strong> (natural stone), <strong>Vidrotec</strong> (glass technology) and <strong>Decorhotel</strong>. For an industrial or equipment company looking to open up the Iberian market, exhibiting here with a well-resolved stand is one of the most profitable commercial investments you can make, and that is where Standarte makes the difference: we turn your brand's space into a high-return magnet for visitors.</p>\n        <p>We know the Exposalão technical regulations and the demanding profile of the industrial visitor, which avoids surprises and delays during assembly and allows us to deliver technical stands featuring heavy machinery or full-scale product.</p>\n\n        <h2>3D design and bespoke joinery from our in-house workshop</h2>\n        <p>A successful stand begins months before assembly. Our design phase is a meticulous process of brand engineering and visitor-flow optimisation: starting from your company's corporate guidelines, we create an interactive 3D prototype that is 100% faithful to the final result, so your sales team can validate brand visibility, meeting areas and the integration of screens, counters and display cases before production begins.</p>\n        <p>One of our greatest strengths is having an <strong>in-house workshop</strong> for joinery and high-quality finishes. With no subcontractors, we keep full control over materials, lead times and quality, using modern assembly techniques and certified materials for temporary architecture. Partial pre-assembly in the workshop reduces working time at the venue and guarantees a flawless finish.</p>\n\n        <h2>Turnkey logistics and assembly in Batalha</h2>\n        <p>Final assembly is the culmination of our turnkey service. We coordinate transport and packaging directly, on-site assembly, the electrical installation of spotlights and screens, the placement of graphics and the final cleaning. Your team simply has to turn up on the first day of the fair to find a fully operational corporate space ready to capture leads. We also handle every technical formality the venue requires —stamped engineering projects, fire-retardancy certificates, electrical validations, risk assessments and insurance— for smooth approval at Exposalão.</p>\n        <p>Our structure lets us serve Batalha and the whole of central Portugal with the same agility as the rest of the peninsula, giving agencies and direct exhibitors a single point of contact for design, production, logistics and assembly.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Do you design and assemble stands at Exposalão (Moldplás, Expometal)?",
+          "a": "Yes. We work at the Exposalão – Centro de Exposições da Batalha, at fairs such as Moldplás, Expometal, Stone Ibérica, Vidrotec and Decorhotel. We know its technical regulations and the industrial visitor profile for an assembly without surprises."
+        },
+        {
+          "q": "Do you have your own workshop or do you subcontract production?",
+          "a": "We have our own in-house workshop for joinery and finishes. With no middlemen, we keep 100% control over materials, lead times and quality, and we cut assembly time at the venue through workshop pre-assembly."
+        },
+        {
+          "q": "Is the service turnkey?",
+          "a": "Yes. We handle everything: 3D design, production, transport, assembly, electrical installation, graphics, final cleaning and the venue's technical validations. Your team only needs to show up on the first day of the fair."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Batalha",
+      "title": "Design und Montage von Messeständen in Batalha | Exposalão | Standarte",
+      "h1": "Maßgeschneidertes Design und Montage von Messeständen in Batalha",
+      "introText": "Standarte entwirft, fertigt und montiert Messestände in Batalha, Sitz des Exposalão und großes Messegelände im Zentrum Portugals, direkt neben dem leistungsstarken Cluster für Formen und Kunststoffe von Marinha Grande. Über 20 Jahre Erfahrung und eine eigene Werkstatt erlauben uns die Kontrolle über jede Phase: 3D-Design, maßgefertigte Tischlerarbeiten, Logistik und Montage mit Abnahmen vor Ort auf dem Messegelände.",
+      "body": "\n        <h2>Exposalão, großes Messegelände im Zentrum Portugals</h2>\n        <p>Batalha ist ein industrieller Knotenpunkt im Zentrum Portugals, und sein Messezentrum ist das <strong>Exposalão – Centro de Exposições da Batalha</strong>, eines der größten privaten Messegelände des Landes mit mehreren Hallen. Sein B2B-Programm spiegelt ein hochtechnisches Produktionsgefüge wider: Hier finden die <strong>Moldplás</strong> statt – die Leitmesse der Branche für Formen und Kunststoffe, gestützt auf das Cluster von Marinha Grande, eines der wettbewerbsfähigsten Europas – sowie die <strong>Expometal</strong> (Metallverarbeitung), die <strong>Stone Ibérica</strong> (Naturstein), die <strong>Vidrotec</strong> (Glastechnologie) und die <strong>Decorhotel</strong>. Für ein Industrie- oder Ausstattungsunternehmen, das den iberischen Markt erschließen möchte, ist die Präsenz mit einem gut durchdachten Stand eine der rentabelsten Vertriebsinvestitionen – und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir kennen die technischen Vorschriften des Exposalão und das anspruchsvolle Profil des industriellen Besuchers, was Überraschungen und Verzögerungen bei der Montage vermeidet und es uns ermöglicht, technische Stände mit schweren Maschinen oder Produkten in Originalgröße umzusetzen.</p>\n\n        <h2>3D-Design und maßgefertigte Tischlerarbeiten aus eigener Werkstatt</h2>\n        <p>Der Erfolg eines Standes beginnt Monate vor der Montage. Unsere Designphase ist ein sorgfältiger Prozess aus Marken-Engineering und Optimierung des Besucherflusses: Ausgehend von den Corporate-Richtlinien Ihres Unternehmens erstellen wir einen interaktiven 3D-Prototyp, der dem Endergebnis zu 100 % entspricht, sodass Ihr Vertriebsteam die Sichtbarkeit der Marke, die Besprechungsbereiche und die Integration von Bildschirmen, Theken und Vitrinen prüfen kann, bevor die Fertigung beginnt.</p>\n        <p>Einer unserer größten Vorteile ist unsere <strong>eigene Werkstatt</strong> für Tischlerarbeiten und hochwertige Oberflächen. Ohne Subunternehmer behalten wir die volle Kontrolle über Materialien, Termine und Qualität, mit modernen Montagetechniken und zertifizierten Materialien für temporäre Architektur. Die teilweise Vormontage in der Werkstatt verkürzt die Arbeitszeit auf dem Messegelände und garantiert eine makellose Verarbeitung.</p>\n\n        <h2>Logistik und schlüsselfertige Montage in Batalha</h2>\n        <p>Die Endmontage ist der krönende Abschluss unseres schlüsselfertigen Service. Wir koordinieren direkt Transport und Verpackung, die Montage vor Ort, die Elektroinstallation von Strahlern und Bildschirmen, die Anbringung der Grafik und die Endreinigung. Ihr Team muss nur am ersten Messetag erscheinen und findet einen voll funktionsfähigen Markenraum vor, bereit zur Kontaktgewinnung. Darüber hinaus erledigen wir alle technischen Formalitäten, die das Messegelände verlangt – geprüfte Projekte, Brandschutzzertifikate, elektrische Abnahmen, Risikobewertungen und Versicherungen –, für eine reibungslose Genehmigung im Exposalão.</p>\n        <p>Unsere Struktur erlaubt es uns, Batalha und ganz Zentralportugal mit derselben Flexibilität zu betreuen wie den Rest der Halbinsel, und bietet Agenturen und Direktausstellern einen einzigen Ansprechpartner für Design, Produktion, Logistik und Montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Entwerfen und montieren Sie Stände im Exposalão (Moldplás, Expometal)?",
+          "a": "Ja. Wir arbeiten im Exposalão – Centro de Exposições da Batalha, auf Messen wie Moldplás, Expometal, Stone Ibérica, Vidrotec und Decorhotel. Wir kennen die technischen Vorschriften und das Industrieprofil für eine Montage ohne Überraschungen."
+        },
+        {
+          "q": "Haben Sie eine eigene Werkstatt oder vergeben Sie die Fertigung an Subunternehmer?",
+          "a": "Wir verfügen über eine eigene Werkstatt für Tischlerarbeiten und Oberflächen. Ohne Zwischenhändler kontrollieren wir zu 100 % Materialien, Termine und Qualität und verkürzen die Montagezeit auf dem Messegelände durch Vormontage in der Werkstatt."
+        },
+        {
+          "q": "Ist der Service schlüsselfertig?",
+          "a": "Ja. Wir kümmern uns um alles: 3D-Design, Fertigung, Transport, Montage, Elektroinstallation, Grafik, Endreinigung und die technischen Abnahmen des Messegeländes. Ihr Team erscheint nur am ersten Messetag."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Batalha",
+      "title": "Design e montagem de stands na Batalha | Exposalão | Standarte",
+      "h1": "Design e montagem de stands de feira à medida na Batalha",
+      "introText": "A Standarte desenha, fabrica e monta stands de feira na Batalha, sede do Exposalão e grande recinto do centro de Portugal, junto ao poderoso cluster de moldes e plásticos da Marinha Grande. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, carpintaria à medida, logística e montagem com validações no recinto.",
+      "body": "\n        <h2>Exposalão, grande recinto do centro de Portugal</h2>\n        <p>A Batalha é um polo industrial do centro de Portugal e o seu epicentro de feiras é o <strong>Exposalão – Centro de Exposições da Batalha</strong>, um dos maiores recintos privados do país, com vários pavilhões. O seu programa B2B reflete um tecido produtivo muito técnico: aqui realizam-se a <strong>Moldplás</strong> —referência do setor de moldes e plásticos, apoiada no cluster da Marinha Grande, um dos mais competitivos da Europa— e a <strong>Expometal</strong> (metalurgia), além da <strong>Stone Ibérica</strong> (pedra natural), <strong>Vidrotec</strong> (tecnologia do vidro) e <strong>Decorhotel</strong>. Para uma empresa industrial ou de equipamento que pretende abrir mercado na Ibéria, expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte faz a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Conhecemos a regulamentação técnica do Exposalão e o perfil exigente do visitante industrial, o que evita surpresas e atrasos na montagem e nos permite resolver stands técnicos, com maquinaria pesada ou produto à escala real.</p>\n\n        <h2>Design 3D e carpintaria à medida a partir de oficina própria</h2>\n        <p>O êxito de um stand começa meses antes da montagem. A nossa fase de design é um processo meticuloso de engenharia de marca e otimização do fluxo de visitantes: a partir das diretrizes corporativas da sua empresa, criamos um protótipo 3D interativo 100% fiel ao resultado final, de modo a que a sua equipa comercial possa validar a visibilidade da marca, as zonas de reunião e a integração de ecrãs, balcões e vitrinas antes de arrancar o fabrico.</p>\n        <p>Uma das nossas maiores vantagens é dispor de <strong>oficina própria</strong> de carpintaria e acabamentos de alta qualidade. Sem subcontratações, mantemos o controlo total sobre materiais, prazos e qualidade, com técnicas modernas de montagem e materiais certificados para arquitetura efémera. A pré-montagem parcial em oficina reduz o tempo de trabalho no recinto e garante um acabamento impecável.</p>\n\n        <h2>Logística e montagem chave na mão na Batalha</h2>\n        <p>A montagem final é o remate do nosso serviço chave na mão. Coordenamos diretamente o transporte e a embalagem, a montagem no local, a instalação elétrica de focos e ecrãs, a colocação da grafia e a limpeza final. A sua equipa só tem de comparecer no primeiro dia de feira e encontrará um espaço corporativo plenamente operacional e pronto para captar contactos. Além disso, tratamos de todas as formalidades técnicas exigidas pelo recinto —projetos visados, certificados de ignifugação, validações elétricas, avaliação de riscos e seguros— para uma aprovação fluida no Exposalão.</p>\n        <p>A nossa estrutura permite-nos servir a Batalha e todo o centro de Portugal com a mesma agilidade que o resto da península, oferecendo a agências e expositores diretos um único interlocutor para design, produção, logística e montagem.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Desenham e montam stands no Exposalão (Moldplás, Expometal)?",
+          "a": "Sim. Trabalhamos no Exposalão – Centro de Exposições da Batalha, em feiras como a Moldplás, a Expometal, a Stone Ibérica, a Vidrotec e a Decorhotel. Conhecemos a sua regulamentação técnica e o perfil industrial para uma montagem sem surpresas."
+        },
+        {
+          "q": "Têm oficina própria ou subcontratam o fabrico?",
+          "a": "Dispomos de oficina própria de carpintaria e acabamentos. Sem intermediários, controlamos a 100% materiais, prazos e qualidade, e reduzimos o tempo de montagem no recinto através de pré-montagem em oficina."
+        },
+        {
+          "q": "O serviço é chave na mão?",
+          "a": "Sim. Encarregamo-nos de tudo: design 3D, fabrico, transporte, montagem, instalação elétrica, grafia, limpeza final e as validações técnicas do recinto. A sua equipa só comparece no primeiro dia de feira."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Batalha",
+      "title": "Conception et montage de stands à Batalha | Exposalão | Standarte",
+      "h1": "Conception et montage de stands d'exposition sur mesure à Batalha",
+      "introText": "Standarte conçoit, fabrique et monte des stands d'exposition à Batalha, siège de l'Exposalão et grand parc des expositions du centre du Portugal, à proximité du puissant cluster de moules et plastiques de Marinha Grande. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque étape : conception 3D, menuiserie sur mesure, logistique et montage avec validations sur le parc des expositions.",
+      "body": "\n        <h2>Exposalão, grand parc des expositions du centre du Portugal</h2>\n        <p>Batalha est un carrefour industriel du centre du Portugal et son épicentre événementiel est l'<strong>Exposalão – Centro de Exposições da Batalha</strong>, l'un des plus grands parcs des expositions privés du pays, doté de plusieurs pavillons. Son programme B2B reflète un tissu productif très technique : on y organise <strong>Moldplás</strong> —référence du secteur des moules et plastiques, portée par le cluster de Marinha Grande, l'un des plus compétitifs d'Europe— et <strong>Expometal</strong> (métallurgie), ainsi que <strong>Stone Ibérica</strong> (pierre naturelle), <strong>Vidrotec</strong> (technologie du verre) et <strong>Decorhotel</strong>. Pour une entreprise industrielle ou d'équipement qui souhaite conquérir le marché ibérique, exposer ici avec un stand bien conçu est l'un des investissements commerciaux les plus rentables, et c'est précisément là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs offrant un fort retour sur investissement.</p>\n        <p>Nous connaissons la réglementation technique de l'Exposalão et le profil exigeant du visiteur industriel, ce qui évite les mauvaises surprises et les retards lors du montage et nous permet de réaliser des stands techniques, avec machines lourdes ou produits à l'échelle réelle.</p>\n\n        <h2>Conception 3D et menuiserie sur mesure depuis un atelier propre</h2>\n        <p>La réussite d'un stand commence des mois avant le montage. Notre phase de conception est un processus méticuleux d'ingénierie de marque et d'optimisation du flux de visiteurs : à partir des directives institutionnelles de votre entreprise, nous créons un prototype 3D interactif 100 % fidèle au résultat final, afin que votre équipe commerciale puisse valider la visibilité de la marque, les espaces de réunion et l'intégration des écrans, comptoirs et vitrines avant le lancement de la fabrication.</p>\n        <p>L'un de nos plus grands atouts est de disposer d'un <strong>atelier propre</strong> de menuiserie et de finitions haut de gamme. Sans sous-traitance, nous gardons un contrôle total sur les matériaux, les délais et la qualité, avec des techniques d'assemblage modernes et des matériaux certifiés pour l'architecture éphémère. Le prémontage partiel en atelier réduit le temps de travail sur le parc des expositions et garantit une finition impeccable.</p>\n\n        <h2>Logistique et montage clé en main à Batalha</h2>\n        <p>Le montage final est l'aboutissement de notre service clé en main. Nous coordonnons directement le transport et l'emballage, le montage sur site, l'installation électrique des spots et des écrans, la pose du graphisme et le nettoyage final. Votre équipe n'a qu'à se présenter le premier jour du salon et trouvera un espace institutionnel pleinement opérationnel et prêt à capter des contacts. De plus, nous gérons toutes les formalités techniques exigées par le parc des expositions —projets visés, certificats d'ignifugation, validations électriques, évaluation des risques et assurances— pour une approbation fluide à l'Exposalão.</p>\n        <p>Notre structure nous permet de couvrir Batalha et tout le centre du Portugal avec la même réactivité que le reste de la péninsule, en offrant aux agences et aux exposants directs un interlocuteur unique pour la conception, la production, la logistique et le montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Concevez-vous et montez-vous des stands à l'Exposalão (Moldplás, Expometal) ?",
+          "a": "Oui. Nous travaillons à l'Exposalão – Centro de Exposições da Batalha, sur des salons tels que Moldplás, Expometal, Stone Ibérica, Vidrotec et Decorhotel. Nous connaissons sa réglementation technique et le profil industriel pour un montage sans mauvaises surprises."
+        },
+        {
+          "q": "Disposez-vous d'un atelier propre ou sous-traitez-vous la fabrication ?",
+          "a": "Nous disposons d'un atelier propre de menuiserie et de finitions. Sans intermédiaires, nous contrôlons à 100 % les matériaux, les délais et la qualité, et nous réduisons le temps de montage sur le parc des expositions grâce au prémontage en atelier."
+        },
+        {
+          "q": "Le service est-il clé en main ?",
+          "a": "Oui. Nous nous occupons de tout : conception 3D, fabrication, transport, montage, installation électrique, graphisme, nettoyage final et validations techniques du parc des expositions. Votre équipe n'a qu'à se présenter le premier jour du salon."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Batalha",
+      "title": "Progettazione e montaggio di stand a Batalha | Exposalão | Standarte",
+      "h1": "Progettazione e montaggio di stand fieristici su misura a Batalha",
+      "introText": "Standarte progetta, realizza e monta stand fieristici a Batalha, sede dell'Exposalão e grande quartiere fieristico del centro del Portogallo, accanto al potente cluster di stampi e materie plastiche di Marinha Grande. Oltre 20 anni di esperienza e laboratorio di proprietà per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica e montaggio con validazioni all'interno del quartiere fieristico.",
+      "body": "\n        <h2>Exposalão, grande quartiere fieristico del centro del Portogallo</h2>\n        <p>Batalha è un nodo industriale del centro del Portogallo e il suo epicentro fieristico è l'<strong>Exposalão – Centro de Exposições da Batalha</strong>, uno dei maggiori quartieri fieristici privati del paese, con diversi padiglioni. Il suo programma B2B riflette un tessuto produttivo molto tecnico: qui si tengono <strong>Moldplás</strong> —punto di riferimento del settore degli stampi e delle materie plastiche, sostenuta dal cluster di Marinha Grande, uno dei più competitivi d'Europa— ed <strong>Expometal</strong> (metallurgia), oltre a <strong>Stone Ibérica</strong> (pietra naturale), <strong>Vidrotec</strong> (tecnologia del vetro) e <strong>Decorhotel</strong>. Per un'azienda industriale o di impiantistica che vuole aprirsi un mercato nella penisola iberica, esporre qui con uno stand ben risolto è uno degli investimenti commerciali più redditizi, ed è proprio qui che Standarte fa la differenza: trasformiamo lo spazio del vostro marchio in una calamita di visitatori ad alto rendimento.</p>\n        <p>Conosciamo la normativa tecnica dell'Exposalão e il profilo esigente del visitatore industriale, il che evita sorprese e ritardi nel montaggio e ci permette di realizzare stand tecnici, con macchinari pesanti o prodotti in scala reale.</p>\n\n        <h2>Progettazione 3D e falegnameria su misura dal laboratorio di proprietà</h2>\n        <p>Il successo di uno stand inizia mesi prima del montaggio. La nostra fase di progettazione è un processo meticoloso di brand engineering e di ottimizzazione del flusso dei visitatori: a partire dalle linee guida aziendali della vostra impresa, creiamo un prototipo 3D interattivo fedele al 100% al risultato finale, in modo che il vostro team commerciale possa validare la visibilità del marchio, le aree riunioni e l'integrazione di schermi, banconi e vetrine prima che inizi la produzione.</p>\n        <p>Uno dei nostri maggiori vantaggi è disporre di un <strong>laboratorio di proprietà</strong> di falegnameria e finiture di alta qualità. Senza subappalti, manteniamo il controllo totale su materiali, tempi e qualità, con tecniche moderne di assemblaggio e materiali certificati per l'architettura effimera. Il premontaggio parziale in laboratorio riduce i tempi di lavoro all'interno del quartiere fieristico e garantisce una finitura impeccabile.</p>\n\n        <h2>Logistica e montaggio chiavi in mano a Batalha</h2>\n        <p>Il montaggio finale è il coronamento del nostro servizio chiavi in mano. Coordiniamo direttamente il trasporto e l'imballaggio, il montaggio in loco, l'installazione elettrica di faretti e schermi, la posa della grafica e la pulizia finale. Il vostro team deve solo presentarsi il primo giorno di fiera e troverà uno spazio aziendale pienamente operativo e pronto a generare contatti. Inoltre, gestiamo tutte le formalità tecniche richieste dal quartiere fieristico —progetti vistati, certificati di ignifugazione, validazioni elettriche, valutazione dei rischi e assicurazioni— per un'approvazione senza intoppi all'Exposalão.</p>\n        <p>La nostra struttura ci permette di servire Batalha e tutto il centro del Portogallo con la stessa agilità del resto della penisola, offrendo ad agenzie ed espositori diretti un unico interlocutore per progettazione, produzione, logistica e montaggio.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Progettate e montate stand all'Exposalão (Moldplás, Expometal)?",
+          "a": "Sì. Lavoriamo all'Exposalão – Centro de Exposições da Batalha, in fiere come Moldplás, Expometal, Stone Ibérica, Vidrotec e Decorhotel. Conosciamo la sua normativa tecnica e il profilo industriale per un montaggio senza sorprese."
+        },
+        {
+          "q": "Avete un laboratorio di proprietà o subappaltate la produzione?",
+          "a": "Disponiamo di un laboratorio di proprietà di falegnameria e finiture. Senza intermediari, controlliamo al 100% materiali, tempi e qualità, e riduciamo i tempi di montaggio all'interno del quartiere fieristico grazie al premontaggio in laboratorio."
+        },
+        {
+          "q": "Il servizio è chiavi in mano?",
+          "a": "Sì. Ci occupiamo di tutto: progettazione 3D, produzione, trasporto, montaggio, installazione elettrica, grafica, pulizia finale e le validazioni tecniche del quartiere fieristico. Il vostro team deve solo presentarsi il primo giorno di fiera."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Batalha",
+      "title": "Ontwerp en montage van beursstands in Batalha | Exposalão | Standarte",
+      "h1": "Ontwerp en montage van maatwerk beursstands in Batalha",
+      "introText": "Standarte ontwerpt, produceert en monteert beursstands in Batalha, thuisbasis van het Exposalão en een groot beurscomplex in het centrum van Portugal, vlak bij de krachtige cluster van matrijzen en kunststoffen van Marinha Grande. Meer dan 20 jaar ervaring en een eigen werkplaats om elke fase te beheersen: 3D-ontwerp, maatwerk-schrijnwerk, logistiek en montage met validaties in het beurscomplex.",
+      "body": "\n        <h2>Exposalão, groot beurscomplex in het centrum van Portugal</h2>\n        <p>Batalha is een industrieel knooppunt in het centrum van Portugal en het beurshart ervan is het <strong>Exposalão – Centro de Exposições da Batalha</strong>, een van de grootste private beurscomplexen van het land, met meerdere hallen. Het B2B-programma weerspiegelt een zeer technisch productieweefsel: hier vinden <strong>Moldplás</strong> plaats —referentie in de sector van matrijzen en kunststoffen, gedragen door de cluster van Marinha Grande, een van de meest competitieve van Europa— en <strong>Expometal</strong> (metallurgie), naast <strong>Stone Ibérica</strong> (natuursteen), <strong>Vidrotec</strong> (glastechnologie) en <strong>Decorhotel</strong>. Voor een industrieel of equipementbedrijf dat markt wil openen op het Iberisch schiereiland is hier exposeren met een goed uitgewerkte stand een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we veranderen de ruimte van uw merk in een magneet voor bezoekers met een hoog rendement.</p>\n        <p>We kennen de technische voorschriften van het Exposalão en het veeleisende profiel van de industriële bezoeker, wat verrassingen en vertragingen bij de montage voorkomt en ons in staat stelt technische stands op te lossen, met zware machines of product op ware grootte.</p>\n\n        <h2>3D-ontwerp en maatwerk-schrijnwerk vanuit een eigen werkplaats</h2>\n        <p>Het succes van een stand begint maanden vóór de montage. Onze ontwerpfase is een nauwgezet traject van merk-engineering en optimalisatie van de bezoekersstroom: op basis van de bedrijfsrichtlijnen van uw onderneming maken we een interactief 3D-prototype dat 100% getrouw is aan het eindresultaat, zodat uw salesteam de zichtbaarheid van het merk, de vergaderzones en de integratie van schermen, toonbanken en vitrines kan valideren voordat de productie van start gaat.</p>\n        <p>Een van onze grootste voordelen is onze eigen <strong>eigen werkplaats</strong> voor schrijnwerk en hoogwaardige afwerkingen. Zonder onderaannemers houden we volledige controle over materialen, planning en kwaliteit, met moderne montagetechnieken en gecertificeerde materialen voor tijdelijke architectuur. De gedeeltelijke voormontage in de werkplaats beperkt de werktijd in het beurscomplex en garandeert een onberispelijke afwerking.</p>\n\n        <h2>Logistiek en sleutelklare montage in Batalha</h2>\n        <p>De eindmontage is het sluitstuk van onze sleutelklare dienst. We coördineren rechtstreeks het transport en de verpakking, de montage ter plaatse, de elektrische installatie van spots en schermen, het aanbrengen van de grafiek en de eindschoonmaak. Uw team hoeft alleen op de eerste beursdag te verschijnen en treft een volledig operationele bedrijfsruimte aan, klaar om contacten te leggen. Bovendien regelen we alle technische formaliteiten die het beurscomplex eist —geviseerde projecten, brandwerendheidscertificaten, elektrische keuringen, risicobeoordeling en verzekeringen— voor een vlotte goedkeuring in het Exposalão.</p>\n        <p>Onze structuur stelt ons in staat Batalha en het hele centrum van Portugal met dezelfde slagvaardigheid te bedienen als de rest van het schiereiland, en biedt agentschappen en directe exposanten één aanspreekpunt voor ontwerp, productie, logistiek en montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Ontwerpen en monteren jullie stands in het Exposalão (Moldplás, Expometal)?",
+          "a": "Ja. We werken in het Exposalão – Centro de Exposições da Batalha, op beurzen als Moldplás, Expometal, Stone Ibérica, Vidrotec en Decorhotel. We kennen de technische voorschriften en het industriële profiel voor een montage zonder verrassingen."
+        },
+        {
+          "q": "Hebben jullie een eigen werkplaats of besteden jullie de productie uit?",
+          "a": "We beschikken over een eigen werkplaats voor schrijnwerk en afwerkingen. Zonder tussenpersonen beheersen we 100% de materialen, planning en kwaliteit, en beperken we de montagetijd in het beurscomplex door voormontage in de werkplaats."
+        },
+        {
+          "q": "Is de dienst sleutelklaar?",
+          "a": "Ja. Wij verzorgen alles: 3D-ontwerp, productie, transport, montage, elektrische installatie, grafiek, eindschoonmaak en de technische validaties van het beurscomplex. Uw team verschijnt alleen op de eerste beursdag."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "巴塔利亚",
+      "title": "巴塔利亚展台设计与搭建 | Exposalão | Standarte",
+      "h1": "巴塔利亚定制展会展台设计与搭建",
+      "introText": "Standarte 在巴塔利亚为客户设计、制作并搭建展会展台。巴塔利亚是 Exposalão 的所在地、葡萄牙中部的大型展览中心，紧邻 Marinha Grande 强大的模具与塑料产业集群。我们拥有二十余年经验和自有工厂，可掌控每一个环节：3D 设计、定制木工、物流以及在展览中心完成搭建与各项验收。",
+      "body": "\n        <h2>Exposalão，葡萄牙中部的大型展览中心</h2>\n        <p>巴塔利亚是葡萄牙中部的工业枢纽，其展会核心是 <strong>Exposalão – Centro de Exposições da Batalha</strong>，这是葡萄牙最大的私营展览中心之一，设有多个展馆。其 B2B 展会计划反映出极具技术性的产业结构：这里举办 <strong>Moldplás</strong>——模具与塑料行业的标杆展会，依托欧洲最具竞争力的产业集群之一 Marinha Grande——以及 <strong>Expometal</strong>（冶金），此外还有 <strong>Stone Ibérica</strong>（天然石材）、<strong>Vidrotec</strong>（玻璃技术）和 <strong>Decorhotel</strong>。对于希望在伊比利亚开拓市场的工业或装备企业而言，以一个设计精良的展台在此参展，是回报最丰厚的商业投资之一，而这正是 Standarte 脱颖而出之处：我们将贵公司品牌的空间打造成高回报的访客磁石。</p>\n        <p>我们熟悉 Exposalão 的技术规范，也了解工业访客的高要求，这能够避免搭建过程中的意外与延误，并使我们能够完成技术性展台，包括摆放重型机械或实物比例产品的展台。</p>\n\n        <h2>3D 设计与自有工厂定制木工</h2>\n        <p>一个展台的成功在搭建数月前就已开始。我们的设计阶段是品牌工程与访客动线优化的精细过程：基于贵公司的企业规范，我们创建出与最终成果 100% 一致的交互式 3D 原型，让贵公司的商务团队在制作启动之前，即可验证品牌的可见度、洽谈区域以及屏幕、展示台与展柜的整合方案。</p>\n        <p>我们最大的优势之一，是拥有从事高品质木工与饰面的<strong>自有工厂</strong>。没有外包，我们对材料、工期与质量保持全面掌控，采用现代化的装配工艺和适用于临时建筑的认证材料。在工厂进行部分预搭建，可缩短在展览中心的作业时间，并确保完美无瑕的饰面效果。</p>\n\n        <h2>巴塔利亚交钥匙物流与搭建</h2>\n        <p>最终搭建是我们交钥匙服务的收官环节。我们直接协调运输与包装、现场搭建、射灯与屏幕的电气安装、图文画面的张贴以及最终清洁。贵公司团队只需在展会首日到场，就能见到一个完全可运营、随时可以承接客户的企业空间。此外，我们还处理展览中心所要求的全部技术手续——经审核的项目方案、防火认证、电气验收、风险评估与保险——以确保在 Exposalão 顺利通过审批。</p>\n        <p>我们的组织架构使我们能够以与服务伊比利亚半岛其他地区同样的敏捷度，服务巴塔利亚及整个葡萄牙中部地区，为代理机构和直接参展商提供集设计、生产、物流与搭建于一体的单一对接窗口。</p>\n      ",
+      "faqs": [
+        {
+          "q": "你们在 Exposalão（Moldplás、Expometal）设计并搭建展台吗？",
+          "a": "是的。我们在 Exposalão – Centro de Exposições da Batalha 承接业务，覆盖 Moldplás、Expometal、Stone Ibérica、Vidrotec 和 Decorhotel 等展会。我们熟悉其技术规范和工业访客特点，确保搭建过程没有意外。"
+        },
+        {
+          "q": "你们有自有工厂还是把制作外包？",
+          "a": "我们拥有从事木工与饰面的自有工厂。没有中间商，我们 100% 掌控材料、工期与质量，并通过工厂预搭建缩短在展览中心的搭建时间。"
+        },
+        {
+          "q": "你们的服务是交钥匙式的吗？",
+          "a": "是的。我们包办一切：3D 设计、制作、运输、搭建、电气安装、图文画面、最终清洁以及展览中心的各项技术验收。贵公司团队只需在展会首日到场即可。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "बाताल्हा",
+      "title": "बाताल्हा में स्टैंड डिज़ाइन और असेंबली | Exposalão | Standarte",
+      "h1": "बाताल्हा में कस्टम प्रदर्शनी स्टैंड का डिज़ाइन और असेंबली",
+      "introText": "Standarte बाताल्हा में प्रदर्शनी स्टैंड डिज़ाइन करता है, बनाता है और असेंबल करता है — यह Exposalão का मेज़बान शहर और मध्य पुर्तगाल का बड़ा प्रदर्शनी स्थल है, जो Marinha Grande के शक्तिशाली मोल्ड और प्लास्टिक क्लस्टर से सटा हुआ है। 20 वर्षों से अधिक का अनुभव और अपना कारखाना, जिससे हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, कस्टम बढ़ईगीरी, लॉजिस्टिक्स और प्रदर्शनी स्थल पर सत्यापन के साथ असेंबली।",
+      "body": "\n        <h2>Exposalão, मध्य पुर्तगाल का बड़ा प्रदर्शनी स्थल</h2>\n        <p>बाताल्हा मध्य पुर्तगाल का एक औद्योगिक केंद्र है और इसका प्रदर्शनी केंद्रबिंदु है <strong>Exposalão – Centro de Exposições da Batalha</strong>, जो देश के सबसे बड़े निजी प्रदर्शनी स्थलों में से एक है और जिसमें कई पैवेलियन हैं। इसका B2B कार्यक्रम एक अत्यंत तकनीकी उत्पादक ताने-बाने को दर्शाता है: यहाँ <strong>Moldplás</strong> आयोजित होता है — मोल्ड और प्लास्टिक क्षेत्र का प्रमुख आयोजन, जो यूरोप के सबसे प्रतिस्पर्धी क्लस्टरों में से एक Marinha Grande के सहारे खड़ा है — और <strong>Expometal</strong> (धातुकर्म), साथ ही <strong>Stone Ibérica</strong> (प्राकृतिक पत्थर), <strong>Vidrotec</strong> (कांच प्रौद्योगिकी) और <strong>Decorhotel</strong>। आइबेरिया में बाज़ार खोलने की इच्छुक किसी औद्योगिक या उपकरण कंपनी के लिए, एक सुलझे हुए स्टैंड के साथ यहाँ प्रदर्शन करना सबसे लाभदायक वाणिज्यिक निवेशों में से एक है, और यहीं Standarte अंतर पैदा करता है: हम आपके ब्रांड के स्थान को उच्च प्रतिफल वाले आगंतुकों के चुंबक में बदल देते हैं।</p>\n        <p>हम Exposalão के तकनीकी नियमों और औद्योगिक आगंतुक की माँग भरी प्रवृत्ति को जानते हैं, जिससे असेंबली में आश्चर्य और देरी टलती है और हमें भारी मशीनरी या वास्तविक आकार के उत्पाद वाले तकनीकी स्टैंड हल करने में सक्षम बनाता है।</p>\n\n        <h2>अपने कारखाने से 3D डिज़ाइन और कस्टम बढ़ईगीरी</h2>\n        <p>एक स्टैंड की सफलता असेंबली से महीनों पहले शुरू होती है। हमारा डिज़ाइन चरण ब्रांड इंजीनियरिंग और आगंतुक प्रवाह के अनुकूलन की एक सूक्ष्म प्रक्रिया है: आपकी कंपनी के कॉर्पोरेट दिशानिर्देशों के आधार पर, हम अंतिम परिणाम के 100% अनुरूप एक इंटरैक्टिव 3D प्रोटोटाइप बनाते हैं, ताकि आपकी वाणिज्यिक टीम निर्माण शुरू होने से पहले ब्रांड की दृश्यता, बैठक क्षेत्रों और स्क्रीन, काउंटर तथा शोकेस के एकीकरण को सत्यापित कर सके।</p>\n        <p>हमारी सबसे बड़ी खूबियों में से एक है बढ़ईगीरी और उच्च गुणवत्ता वाली फिनिशिंग का <strong>अपना कारखाना</strong>। बिना सबकॉन्ट्रैक्ट के, हम सामग्री, समय-सीमा और गुणवत्ता पर पूर्ण नियंत्रण बनाए रखते हैं, अस्थायी वास्तुकला के लिए आधुनिक असेंबली तकनीकों और प्रमाणित सामग्रियों के साथ। कारखाने में आंशिक पूर्व-असेंबली प्रदर्शनी स्थल पर काम का समय घटाती है और बेदाग फिनिश की गारंटी देती है।</p>\n\n        <h2>बाताल्हा में लॉजिस्टिक्स और टर्नकी असेंबली</h2>\n        <p>अंतिम असेंबली हमारी टर्नकी सेवा का समापन बिंदु है। हम सीधे परिवहन और पैकिंग, मौके पर असेंबली, स्पॉटलाइट और स्क्रीन की विद्युत स्थापना, ग्राफ़िक्स की स्थापना और अंतिम सफ़ाई का समन्वय करते हैं। आपकी टीम को बस प्रदर्शनी के पहले दिन पहुँचना है और उसे पूरी तरह संचालित तथा संपर्क जुटाने के लिए तैयार एक कॉर्पोरेट स्थान मिलेगा। इसके अलावा, हम प्रदर्शनी स्थल द्वारा अपेक्षित सभी तकनीकी औपचारिकताएँ संभालते हैं — स्वीकृत परियोजनाएँ, अग्निरोधन प्रमाणपत्र, विद्युत सत्यापन, जोखिम मूल्यांकन और बीमा — ताकि Exposalão में सहज मंज़ूरी मिले।</p>\n        <p>हमारा ढाँचा हमें बाताल्हा और पूरे मध्य पुर्तगाल की सेवा बाकी प्रायद्वीप जितनी ही तत्परता से करने देता है, जिससे एजेंसियों और प्रत्यक्ष प्रदर्शकों को डिज़ाइन, उत्पादन, लॉजिस्टिक्स और असेंबली के लिए एक ही संपर्क-सूत्र मिलता है।</p>\n      ",
+      "faqs": [
+        {
+          "q": "क्या आप Exposalão (Moldplás, Expometal) में स्टैंड डिज़ाइन और असेंबल करते हैं?",
+          "a": "हाँ। हम Exposalão – Centro de Exposições da Batalha में Moldplás, Expometal, Stone Ibérica, Vidrotec और Decorhotel जैसी प्रदर्शनियों में काम करते हैं। हम बिना किसी आश्चर्य के असेंबली के लिए इसके तकनीकी नियमों और औद्योगिक प्रवृत्ति को जानते हैं।"
+        },
+        {
+          "q": "क्या आपके पास अपना कारखाना है या आप निर्माण सबकॉन्ट्रैक्ट करते हैं?",
+          "a": "हमारे पास बढ़ईगीरी और फिनिशिंग का अपना कारखाना है। बिना बिचौलियों के, हम सामग्री, समय-सीमा और गुणवत्ता को 100% नियंत्रित करते हैं, और कारखाने में पूर्व-असेंबली के ज़रिए प्रदर्शनी स्थल पर असेंबली का समय घटाते हैं।"
+        },
+        {
+          "q": "क्या यह सेवा टर्नकी है?",
+          "a": "हाँ। हम सब कुछ संभालते हैं: 3D डिज़ाइन, निर्माण, परिवहन, असेंबली, विद्युत स्थापना, ग्राफ़िक्स, अंतिम सफ़ाई और प्रदर्शनी स्थल के तकनीकी सत्यापन। आपकी टीम को बस प्रदर्शनी के पहले दिन पहुँचना है।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "바탈랴",
+      "title": "바탈랴 전시 부스 디자인 및 조립 | Exposalão | Standarte",
+      "h1": "바탈랴 맞춤형 전시 부스 디자인 및 조립",
+      "introText": "Standarte는 Exposalão의 본거지이자 포르투갈 중부의 대형 전시장이 위치한 바탈랴에서, 마리냐 그란드의 강력한 금형 및 플라스틱 클러스터와 인접한 이곳에서 전시 부스를 디자인하고 제작하며 조립합니다. 20년 이상의 경험과 자체 공장을 보유하여 3D 디자인, 맞춤 목공, 물류, 전시장 검증을 포함한 모든 단계를 직접 관리합니다.",
+      "body": "\n        <h2>Exposalão, 포르투갈 중부의 대형 전시장</h2>\n        <p>바탈랴는 포르투갈 중부의 산업 거점이며, 그 전시 중심지는 <strong>Exposalão – Centro de Exposições da Batalha</strong>로, 여러 전시관을 갖춘 포르투갈 최대 규모의 민간 전시장 중 하나입니다. 이곳의 B2B 프로그램은 매우 기술적인 산업 기반을 반영합니다. 유럽에서 가장 경쟁력 있는 마리냐 그란드 클러스터에 기반을 둔 금형 및 플라스틱 분야의 대표 전시회 <strong>Moldplás</strong>를 비롯해, <strong>Expometal</strong>(금속 가공), <strong>Stone Ibérica</strong>(천연석), <strong>Vidrotec</strong>(유리 기술), <strong>Decorhotel</strong>이 이곳에서 개최됩니다. 이베리아 시장 진출을 원하는 산업·설비 기업에게 잘 설계된 부스로 이곳에 출전하는 것은 가장 수익성 높은 영업 투자 중 하나이며, 바로 여기서 Standarte가 차별화를 만듭니다. 우리는 귀사 브랜드의 공간을 높은 성과를 내는 방문객 유입의 자석으로 바꿔드립니다.</p>\n        <p>우리는 Exposalão의 기술 규정과 까다로운 산업 방문객의 특성을 잘 알고 있어, 조립 과정의 예기치 못한 문제와 지연을 방지하고, 중장비나 실물 크기 제품을 다루는 기술적인 부스도 해결할 수 있습니다.</p>\n\n        <h2>자체 공장에서 진행하는 3D 디자인과 맞춤 목공</h2>\n        <p>부스의 성공은 조립 몇 달 전부터 시작됩니다. 우리의 디자인 단계는 브랜드 엔지니어링과 방문객 동선 최적화를 위한 정교한 과정입니다. 귀사의 기업 가이드라인을 바탕으로 최종 결과물과 100% 동일한 인터랙티브 3D 프로토타입을 제작하여, 제작이 시작되기 전에 영업팀이 브랜드의 시인성, 상담 공간, 스크린·카운터·진열장의 통합을 검증할 수 있도록 합니다.</p>\n        <p>우리의 가장 큰 장점 중 하나는 목공과 고품질 마감을 위한 <strong>자체 공장</strong>을 보유하고 있다는 점입니다. 외주 없이 소재, 일정, 품질에 대한 완전한 통제를 유지하며, 임시 건축에 인증된 소재와 최신 조립 기법을 사용합니다. 공장에서의 부분 사전 조립은 전시장 내 작업 시간을 줄이고 완벽한 마감을 보장합니다.</p>\n\n        <h2>바탈랴에서의 물류와 턴키 조립</h2>\n        <p>최종 조립은 우리 턴키 서비스의 마무리입니다. 운송과 포장, 현장 조립, 조명·스크린의 전기 설치, 그래픽 부착, 최종 청소까지 직접 조율합니다. 귀사 팀은 전시회 첫날에 도착하기만 하면, 완전히 가동되어 즉시 잠재 고객을 확보할 준비가 된 기업 공간을 만나게 됩니다. 또한 전시장이 요구하는 모든 기술 절차—승인된 도면, 방염 인증, 전기 검증, 위험 평가 및 보험—를 처리하여 Exposalão에서 원활한 승인을 받도록 합니다.</p>\n        <p>우리의 조직력 덕분에 바탈랴와 포르투갈 중부 전역을 이베리아반도의 다른 지역과 동일한 신속함으로 지원하며, 에이전시와 직접 출전 업체에게 디자인, 제작, 물류, 조립을 위한 단일 창구를 제공합니다.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Exposalão(Moldplás, Expometal)에서 부스를 디자인하고 조립하나요?",
+          "a": "네. 저희는 Exposalão – Centro de Exposições da Batalha에서 Moldplás, Expometal, Stone Ibérica, Vidrotec, Decorhotel 같은 전시회에 참여합니다. 예기치 못한 문제 없는 조립을 위해 전시장의 기술 규정과 산업 방문객의 특성을 잘 알고 있습니다."
+        },
+        {
+          "q": "자체 공장을 보유하고 있나요, 아니면 제작을 외주하나요?",
+          "a": "저희는 목공과 마감을 위한 자체 공장을 보유하고 있습니다. 중간 업체 없이 소재, 일정, 품질을 100% 관리하며, 공장에서의 사전 조립을 통해 전시장 내 조립 시간을 단축합니다."
+        },
+        {
+          "q": "서비스가 턴키 방식인가요?",
+          "a": "네. 3D 디자인, 제작, 운송, 조립, 전기 설치, 그래픽, 최종 청소, 전시장 기술 검증까지 모든 것을 저희가 담당합니다. 귀사 팀은 전시회 첫날에 도착하기만 하면 됩니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "バターリャ",
+      "title": "バターリャの展示会ブース設計・組立 | Exposalão | Standarte",
+      "h1": "バターリャのオーダーメイド展示会ブース設計・組立",
+      "introText": "Standarteは、Exposalãoの所在地でありポルトガル中部の大型展示会場を擁するバターリャで、展示会ブースの設計・製作・組立を行っています。さらに、ヨーロッパでも有数の競争力を誇るMarinha Grandeの金型・プラスチック産業クラスターにも隣接しています。20年以上の経験と自社工房により、3D設計、オーダーメイドの木工、物流、会場での検証を伴う設営まで、各工程を一貫して管理します。",
+      "body": "\n        <h2>Exposalão、ポルトガル中部の大型展示会場</h2>\n        <p>バターリャはポルトガル中部の産業拠点であり、その展示会の中心が<strong>Exposalão – Centro de Exposições da Batalha</strong>です。複数のパビリオンを備える、ポルトガル最大級の民間展示会場のひとつです。そのB2Bプログラムは、高度に技術的な産業基盤を反映しています。ここでは、ヨーロッパでも有数の競争力を誇るMarinha Grandeのクラスターに支えられた金型・プラスチック分野の代表的見本市<strong>Moldplás</strong>や、冶金の<strong>Expometal</strong>をはじめ、天然石の<strong>Stone Ibérica</strong>、ガラス技術の<strong>Vidrotec</strong>、そして<strong>Decorhotel</strong>が開催されます。イベリア市場への進出を目指す工業・設備関連企業にとって、よく練られたブースでここに出展することは、最も費用対効果の高い営業投資のひとつです。そして、まさにそこでStandarteが真価を発揮します。お客様のブランド空間を、高い成果を生む来場者の磁石へと変えます。</p>\n        <p>当社はExposalãoの技術規定と、目の肥えた工業系来場者の特性を熟知しています。これにより設営での想定外や遅延を防ぎ、重機を伴うものや実寸の製品を扱う技術的なブースにも対応できます。</p>\n\n        <h2>自社工房による3D設計とオーダーメイド木工</h2>\n        <p>ブースの成功は、設営の数か月前から始まっています。当社の設計段階は、ブランドエンジニアリングと来場者動線の最適化に取り組む綿密な工程です。お客様のコーポレートガイドラインに基づき、最終結果を100%忠実に再現するインタラクティブな3Dプロトタイプを作成します。これにより、営業チームは製作開始前に、ブランドの視認性、商談スペース、スクリーン・受付カウンター・ショーケースの統合を検証できます。</p>\n        <p>当社の大きな強みのひとつが、高品質な木工と仕上げの<strong>自社工房</strong>です。外注に頼らないことで、素材・納期・品質を完全に管理し、最新の組立技術と仮設建築向けの認証素材を用います。工房での部分的な事前組立により、会場での作業時間を短縮し、申し分のない仕上がりを保証します。</p>\n\n        <h2>バターリャでのターンキー物流・組立</h2>\n        <p>最終的な組立は、ターンキーサービスの締めくくりです。当社は、輸送と梱包、現地での設営、スポットライトやスクリーンの電気工事、グラフィックの設置、最終清掃までを直接コーディネートします。お客様のチームは展示会初日に来場するだけで、完全に機能し、すぐに商談を獲得できるコーポレート空間が待っています。さらに、会場が求めるすべての技術的手続き、すなわち査証付き設計、防炎証明、電気検査、リスク評価、保険までを代行し、Exposalãoでのスムーズな承認を実現します。</p>\n        <p>当社の体制により、バターリャとポルトガル中部全域を、イベリア半島のその他の地域と同じ機動力で対応できます。代理店や直接出展者に対し、設計・製作・物流・組立を一手に担う単一の窓口を提供します。</p>\n      ",
+      "faqs": [
+        {
+          "q": "Exposalão（Moldplás、Expometal）でブースの設計・組立を行っていますか？",
+          "a": "はい。Exposalão – Centro de Exposições da Batalhaで、Moldplás、Expometal、Stone Ibérica、Vidrotec、Decorhotelなどの見本市に対応しています。会場の技術規定と工業系の来場者特性を熟知しており、想定外のない設営を実現します。"
+        },
+        {
+          "q": "自社工房をお持ちですか、それとも製作を外注しますか？",
+          "a": "木工と仕上げの自社工房を備えています。仲介業者を介さず、素材・納期・品質を100%管理し、工房での事前組立により会場での設営時間を短縮します。"
+        },
+        {
+          "q": "サービスはターンキー方式ですか？",
+          "a": "はい。3D設計、製作、輸送、組立、電気工事、グラフィック、最終清掃、会場の技術検証まで、すべてを当社が担います。お客様のチームは展示会初日に来場するだけです。"
+        }
+      ]
+    }
+  },
+  "vigo": {
+    "es": {
+      "breadcrumb": "Vigo",
+      "title": "Diseño y montaje de stands en Vigo | IFEVI | Standarte",
+      "h1": "Diseño y montaje de stands feriales a medida en Vigo",
+      "introText": "Standarte diseña, fabrica y monta stands feriales en Vigo, gran polo industrial atlántico con el IFEVI como recinto de referencia y ferias líderes como Navalia y Conxemar. Más de 20 años de experiencia y taller propio para controlar cada fase: diseño 3D, carpintería a medida, logística y montaje con validaciones en el recinto.",
+      "body": "\n        <h2>IFEVI, el recinto ferial del noroeste atlántico</h2>\n        <p>Vigo es uno de los grandes motores industriales del noroeste de España y su epicentro ferial es el <strong>IFEVI – Instituto Ferial de Vigo</strong>, con varios pabellones junto al aeropuerto. Su agenda B2B refleja el ADN industrial de la ciudad: la construcción naval, la automoción y el sector conservero y del mar. Aquí se celebran citas de primer nivel como <strong>Navalia</strong> —referencia mundial del sector naval— y <strong>Conxemar</strong>, una de las ferias de productos del mar congelados más importantes del mundo, además de <strong>Nortrans</strong> y salones del motor. Para una empresa que quiere abrir mercado en la cornisa atlántica, exponer aquí con un stand bien resuelto es una de las inversiones comerciales más rentables, y ahí es donde Standarte marca la diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Conocemos la normativa técnica del IFEVI y el perfil exigente de un visitante industrial, lo que evita sorpresas y retrasos en el montaje y nos permite resolver stands técnicos, con maquinaria pesada o producto a escala real.</p>\n\n        <h2>Diseño 3D y carpintería a medida desde taller propio</h2>\n        <p>El éxito de un stand empieza meses antes del montaje. Nuestra fase de diseño es un proceso meticuloso de ingeniería de marca y optimización del flujo de visitantes: a partir de las directrices corporativas de su empresa, creamos un prototipo 3D interactivo 100% fiel al resultado final, de modo que su equipo comercial pueda validar la visibilidad de la marca, las zonas de reunión y la integración de pantallas, mostradores y vitrinas antes de que arranque la fabricación.</p>\n        <p>Una de nuestras mayores ventajas es disponer de <strong>taller propio</strong> de carpintería y acabados de alta calidad. Sin subcontratas, mantenemos el control total sobre materiales, plazos y calidad, con técnicas modernas de ensamblaje y materiales certificados para arquitectura efímera. El premontaje parcial en taller reduce el tiempo de trabajo en el recinto y garantiza un acabado impecable.</p>\n\n        <h2>Logística y montaje llave en mano en Vigo</h2>\n        <p>El montaje final es el broche de nuestro servicio llave en mano. Coordinamos directamente el transporte y embalaje, el montaje in situ, la instalación eléctrica de focos y pantallas, la colocación de la gráfica y la limpieza final. Su equipo solo tiene que presentarse el primer día de feria y encontrará un espacio corporativo plenamente operativo y listo para captar contactos. Además, gestionamos todas las formalidades técnicas que exige el recinto —proyectos visados, certificados de ignifugación, validaciones eléctricas, evaluación de riesgos y seguros— para una aprobación fluida en el IFEVI.</p>\n        <p>Nuestra estructura nos permite atender Vigo y toda Galicia con la misma agilidad que el resto de la península, ofreciendo a agencias y expositores directos un único interlocutor para diseño, producción, logística y montaje.</p>\n      ",
+      "faqs": [
+        {
+          "q": "¿Diseñan y montan stands en el IFEVI (Navalia, Conxemar)?",
+          "a": "Sí. Trabajamos en el IFEVI – Instituto Ferial de Vigo, en ferias como Navalia, Conxemar y Nortrans. Conocemos su normativa técnica y el perfil industrial para un montaje sin sorpresas."
+        },
+        {
+          "q": "¿Tienen taller propio o subcontratan la fabricación?",
+          "a": "Disponemos de taller propio de carpintería y acabados. Sin intermediarios, controlamos al 100% materiales, plazos y calidad, y reducimos el tiempo de montaje en el recinto mediante premontaje en taller."
+        },
+        {
+          "q": "¿El servicio es llave en mano?",
+          "a": "Sí. Nos encargamos de todo: diseño 3D, fabricación, transporte, montaje, instalación eléctrica, gráfica, limpieza final y las validaciones técnicas del recinto. Su equipo solo se presenta el primer día de feria."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Vigo",
+      "title": "Exhibition Stand Design and Assembly in Vigo | IFEVI | Standarte",
+      "h1": "Custom Exhibition Stand Design and Assembly in Vigo",
+      "introText": "Standarte designs, builds and assembles exhibition stands in Vigo, a major Atlantic industrial hub anchored by IFEVI and home to leading trade fairs such as Navalia and Conxemar. With over 20 years of experience and our own in-house workshop, we control every stage: 3D design, custom carpentry, logistics and on-site assembly with full venue validations.",
+      "body": "\n        <h2>IFEVI, the trade fair venue of Spain's Atlantic northwest</h2>\n        <p>Vigo is one of the great industrial engines of north-west Spain, and its exhibition heart is <strong>IFEVI – Instituto Ferial de Vigo</strong>, a multi-hall venue next to the airport. Its B2B calendar reflects the city's industrial DNA: shipbuilding, the automotive industry and the seafood and canning sectors. It hosts world-class events such as <strong>Navalia</strong> —a global benchmark for the naval sector— and <strong>Conxemar</strong>, one of the most important frozen seafood trade fairs in the world, alongside <strong>Nortrans</strong> and motor-industry shows. For a company looking to break into the Atlantic market, exhibiting here with a well-resolved stand is one of the most profitable commercial investments you can make, and that is exactly where Standarte makes the difference: we turn your brand's space into a high-return magnet for visitors.</p>\n        <p>We know IFEVI's technical regulations and the demanding profile of an industrial visitor, which avoids surprises and delays during assembly and lets us deliver technical stands featuring heavy machinery or full-scale product displays.</p>\n\n        <h2>3D design and custom carpentry from our in-house workshop</h2>\n        <p>The success of a stand begins months before assembly. Our design phase is a meticulous process of brand engineering and visitor-flow optimisation: starting from your company's corporate guidelines, we create an interactive 3D prototype that is 100% faithful to the final result, so your sales team can validate brand visibility, meeting areas and the integration of screens, counters and display cases before production even begins.</p>\n        <p>One of our greatest advantages is having our own <strong>in-house workshop</strong> for high-quality carpentry and finishes. With no subcontractors, we keep full control over materials, deadlines and quality, using modern assembly techniques and certified materials for temporary architecture. Partial pre-assembly at the workshop reduces on-site working time at the venue and guarantees a flawless finish.</p>\n\n        <h2>Turnkey logistics and assembly in Vigo</h2>\n        <p>Final assembly is the finishing touch of our turnkey service. We directly coordinate transport and packing, on-site assembly, the electrical installation of spotlights and screens, the placement of graphics and the final clean-up. Your team only has to show up on the first day of the fair to find a fully operational corporate space ready to capture leads. We also handle every technical formality the venue requires —signed-off projects, fire-resistance certificates, electrical validations, risk assessments and insurance— for smooth approval at IFEVI.</p>\n        <p>Our structure lets us serve Vigo and the whole of Galicia with the same agility as the rest of the peninsula, giving agencies and direct exhibitors a single point of contact for design, production, logistics and assembly.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Do you design and assemble stands at IFEVI (Navalia, Conxemar)?",
+          "a": "Yes. We work at IFEVI – Instituto Ferial de Vigo, at fairs such as Navalia, Conxemar and Nortrans. We know its technical regulations and the industrial visitor profile for assembly without surprises."
+        },
+        {
+          "q": "Do you have your own workshop or do you subcontract production?",
+          "a": "We have our own in-house workshop for carpentry and finishes. With no intermediaries, we control materials, deadlines and quality 100%, and we cut assembly time at the venue through workshop pre-assembly."
+        },
+        {
+          "q": "Is the service turnkey?",
+          "a": "Yes. We handle everything: 3D design, production, transport, assembly, electrical installation, graphics, final clean-up and the venue's technical validations. Your team simply shows up on the first day of the fair."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Vigo",
+      "title": "Design und Montage von Messeständen in Vigo | IFEVI | Standarte",
+      "h1": "Maßgeschneiderte Messestände – Design und Montage in Vigo",
+      "introText": "Standarte entwirft, fertigt und montiert Messestände in Vigo, einem bedeutenden atlantischen Industriestandort mit dem IFEVI als führendem Messegelände und Leitmessen wie Navalia und Conxemar. Über 20 Jahre Erfahrung und eine eigene Werkstatt ermöglichen die Kontrolle über jede Phase: 3D-Design, maßgefertigte Schreinerarbeiten, Logistik und Montage mit Abnahmen auf dem Messegelände.",
+      "body": "\n        <h2>IFEVI, das Messegelände des atlantischen Nordwestens</h2>\n        <p>Vigo ist einer der großen industriellen Motoren im Nordwesten Spaniens, und sein Messezentrum ist das <strong>IFEVI – Instituto Ferial de Vigo</strong> mit mehreren Hallen direkt am Flughafen. Sein B2B-Programm spiegelt die industrielle DNA der Stadt wider: den Schiffbau, die Automobilbranche sowie die Konserven- und Meeresprodukteindustrie. Hier finden Veranstaltungen von erstem Rang statt wie <strong>Navalia</strong> – eine weltweite Referenz der Schiffbaubranche – und <strong>Conxemar</strong>, eine der weltweit wichtigsten Messen für tiefgekühlte Meeresprodukte, sowie <strong>Nortrans</strong> und Automobilsalons. Für ein Unternehmen, das den Markt an der atlantischen Küste erschließen möchte, gehört ein gut umgesetzter Messestand hier zu den rentabelsten kommerziellen Investitionen, und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir kennen die technischen Vorschriften des IFEVI und das anspruchsvolle Profil eines Industriebesuchers, was Überraschungen und Verzögerungen bei der Montage vermeidet und es uns ermöglicht, technische Stände mit schweren Maschinen oder Produkten in Originalgröße zu realisieren.</p>\n\n        <h2>3D-Design und maßgefertigte Schreinerarbeiten aus eigener Werkstatt</h2>\n        <p>Der Erfolg eines Messestands beginnt Monate vor der Montage. Unsere Designphase ist ein sorgfältiger Prozess aus Marken-Engineering und Optimierung des Besucherflusses: Auf Grundlage der Unternehmensrichtlinien Ihres Unternehmens erstellen wir einen interaktiven 3D-Prototyp, der dem Endergebnis zu 100 % entspricht, sodass Ihr Vertriebsteam die Sichtbarkeit der Marke, die Besprechungszonen und die Integration von Bildschirmen, Theken und Vitrinen prüfen kann, bevor die Fertigung beginnt.</p>\n        <p>Einer unserer größten Vorteile ist unsere <strong>eigene Werkstatt</strong> für Schreinerarbeiten und hochwertige Oberflächen. Ohne Subunternehmer behalten wir die volle Kontrolle über Materialien, Termine und Qualität, mit modernen Montagetechniken und zertifizierten Materialien für temporäre Architektur. Die teilweise Vormontage in der Werkstatt verkürzt die Arbeitszeit auf dem Messegelände und gewährleistet eine makellose Verarbeitung.</p>\n\n        <h2>Logistik und schlüsselfertige Montage in Vigo</h2>\n        <p>Die Endmontage ist der krönende Abschluss unseres schlüsselfertigen Service. Wir koordinieren direkt den Transport und die Verpackung, die Montage vor Ort, die Elektroinstallation von Spots und Bildschirmen, die Anbringung der Grafik und die Endreinigung. Ihr Team muss nur am ersten Messetag erscheinen und findet einen vollständig betriebsbereiten Markenraum vor, bereit zur Kontaktgewinnung. Darüber hinaus erledigen wir alle technischen Formalitäten, die das Messegelände verlangt – geprüfte Projekte, Brandschutzzertifikate, elektrische Abnahmen, Risikobewertungen und Versicherungen – für eine reibungslose Genehmigung im IFEVI.</p>\n        <p>Unsere Struktur ermöglicht es uns, Vigo und ganz Galicien mit derselben Flexibilität zu bedienen wie den Rest der Halbinsel, und bietet Agenturen und Direktausstellern einen einzigen Ansprechpartner für Design, Produktion, Logistik und Montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Entwerfen und montieren Sie Messestände im IFEVI (Navalia, Conxemar)?",
+          "a": "Ja. Wir arbeiten im IFEVI – Instituto Ferial de Vigo, auf Messen wie Navalia, Conxemar und Nortrans. Wir kennen die technischen Vorschriften und das industrielle Profil für eine Montage ohne Überraschungen."
+        },
+        {
+          "q": "Haben Sie eine eigene Werkstatt oder vergeben Sie die Fertigung an Subunternehmer?",
+          "a": "Wir verfügen über eine eigene Werkstatt für Schreinerarbeiten und Oberflächen. Ohne Zwischenhändler kontrollieren wir Materialien, Termine und Qualität zu 100 % und verkürzen durch Vormontage in der Werkstatt die Montagezeit auf dem Messegelände."
+        },
+        {
+          "q": "Ist der Service schlüsselfertig?",
+          "a": "Ja. Wir kümmern uns um alles: 3D-Design, Fertigung, Transport, Montage, Elektroinstallation, Grafik, Endreinigung und die technischen Abnahmen des Messegeländes. Ihr Team erscheint nur am ersten Messetag."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Vigo",
+      "title": "Design e montagem de stands em Vigo | IFEVI | Standarte",
+      "h1": "Design e montagem de stands para feiras à medida em Vigo",
+      "introText": "A Standarte desenha, fabrica e monta stands para feiras em Vigo, grande polo industrial atlântico que tem no IFEVI o seu recinto de referência e feiras líderes como a Navalia e a Conxemar. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, carpintaria à medida, logística e montagem com validações no recinto.",
+      "body": "\n        <h2>IFEVI, o recinto de feiras do noroeste atlântico</h2>\n        <p>Vigo é um dos grandes motores industriais do noroeste de Espanha e o seu epicentro feirista é o <strong>IFEVI – Instituto Ferial de Vigo</strong>, com vários pavilhões junto ao aeroporto. A sua agenda B2B reflete o ADN industrial da cidade: a construção naval, o setor automóvel e o setor conserveiro e do mar. Aqui realizam-se eventos de primeiro nível como a <strong>Navalia</strong> —referência mundial do setor naval— e a <strong>Conxemar</strong>, uma das feiras de produtos do mar congelados mais importantes do mundo, além da <strong>Nortrans</strong> e de salões do automóvel. Para uma empresa que quer abrir mercado na cornija atlântica, expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é precisamente aí que a Standarte marca a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Conhecemos a normativa técnica do IFEVI e o perfil exigente de um visitante industrial, o que evita surpresas e atrasos na montagem e nos permite resolver stands técnicos, com maquinaria pesada ou produto à escala real.</p>\n\n        <h2>Design 3D e carpintaria à medida a partir de oficina própria</h2>\n        <p>O êxito de um stand começa meses antes da montagem. A nossa fase de design é um processo meticuloso de engenharia de marca e otimização do fluxo de visitantes: a partir das diretrizes corporativas da sua empresa, criamos um protótipo 3D interativo 100% fiel ao resultado final, de modo que a sua equipa comercial possa validar a visibilidade da marca, as zonas de reunião e a integração de ecrãs, balcões e vitrinas antes de arrancar a fabricação.</p>\n        <p>Uma das nossas maiores vantagens é dispor de <strong>oficina própria</strong> de carpintaria e acabamentos de alta qualidade. Sem subcontratações, mantemos o controlo total sobre materiais, prazos e qualidade, com técnicas modernas de montagem e materiais certificados para arquitetura efémera. A pré-montagem parcial em oficina reduz o tempo de trabalho no recinto e garante um acabamento impecável.</p>\n\n        <h2>Logística e montagem chave na mão em Vigo</h2>\n        <p>A montagem final é o culminar do nosso serviço chave na mão. Coordenamos diretamente o transporte e a embalagem, a montagem in situ, a instalação elétrica de focos e ecrãs, a colocação da gráfica e a limpeza final. A sua equipa só tem de aparecer no primeiro dia da feira e encontrará um espaço corporativo plenamente operacional e pronto para captar contactos. Além disso, tratamos de todas as formalidades técnicas exigidas pelo recinto —projetos visados, certificados de ignifugação, validações elétricas, avaliação de riscos e seguros— para uma aprovação fluida no IFEVI.</p>\n        <p>A nossa estrutura permite-nos atender Vigo e toda a Galiza com a mesma agilidade que o resto da península, oferecendo a agências e expositores diretos um único interlocutor para design, produção, logística e montagem.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Desenham e montam stands no IFEVI (Navalia, Conxemar)?",
+          "a": "Sim. Trabalhamos no IFEVI – Instituto Ferial de Vigo, em feiras como a Navalia, a Conxemar e a Nortrans. Conhecemos a sua normativa técnica e o perfil industrial para uma montagem sem surpresas."
+        },
+        {
+          "q": "Têm oficina própria ou subcontratam a fabricação?",
+          "a": "Dispomos de oficina própria de carpintaria e acabamentos. Sem intermediários, controlamos a 100% materiais, prazos e qualidade, e reduzimos o tempo de montagem no recinto através da pré-montagem em oficina."
+        },
+        {
+          "q": "O serviço é chave na mão?",
+          "a": "Sim. Encarregamo-nos de tudo: design 3D, fabricação, transporte, montagem, instalação elétrica, gráfica, limpeza final e as validações técnicas do recinto. A sua equipa só se apresenta no primeiro dia da feira."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Vigo",
+      "title": "Conception et montage de stands à Vigo | IFEVI | Standarte",
+      "h1": "Conception et montage de stands d'exposition sur mesure à Vigo",
+      "introText": "Standarte conçoit, fabrique et monte des stands d'exposition à Vigo, grand pôle industriel atlantique dont l'IFEVI est le parc des expositions de référence, avec des salons phares comme Navalia et Conxemar. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque étape : conception 3D, menuiserie sur mesure, logistique et montage avec validations dans le parc des expositions.",
+      "body": "\n        <h2>L'IFEVI, le parc des expositions du nord-ouest atlantique</h2>\n        <p>Vigo est l'un des grands moteurs industriels du nord-ouest de l'Espagne, et son épicentre événementiel est l'<strong>IFEVI – Instituto Ferial de Vigo</strong>, doté de plusieurs pavillons à proximité de l'aéroport. Son agenda B2B reflète l'ADN industriel de la ville : la construction navale, l'automobile, ainsi que le secteur de la conserverie et de la mer. On y organise des rendez-vous de premier plan tels que <strong>Navalia</strong> —référence mondiale du secteur naval— et <strong>Conxemar</strong>, l'un des salons de produits de la mer surgelés les plus importants du monde, sans oublier <strong>Nortrans</strong> et les salons de l'automobile. Pour une entreprise qui souhaite conquérir le marché de la corniche atlantique, exposer ici avec un stand parfaitement abouti est l'un des investissements commerciaux les plus rentables ; c'est précisément là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs à fort retour sur investissement.</p>\n        <p>Nous connaissons la réglementation technique de l'IFEVI et le profil exigeant d'un visiteur industriel, ce qui évite les mauvaises surprises et les retards au montage et nous permet de réaliser des stands techniques, accueillant des machines lourdes ou des produits à l'échelle réelle.</p>\n\n        <h2>Conception 3D et menuiserie sur mesure depuis notre atelier propre</h2>\n        <p>La réussite d'un stand commence des mois avant le montage. Notre phase de conception est un processus méticuleux d'ingénierie de marque et d'optimisation du flux de visiteurs : à partir des directives corporatives de votre entreprise, nous créons un prototype 3D interactif 100 % fidèle au résultat final, afin que votre équipe commerciale puisse valider la visibilité de la marque, les zones de réunion et l'intégration des écrans, comptoirs et vitrines avant le lancement de la fabrication.</p>\n        <p>L'un de nos plus grands atouts est de disposer d'un <strong>atelier propre</strong> de menuiserie et de finitions haut de gamme. Sans sous-traitance, nous gardons la maîtrise totale des matériaux, des délais et de la qualité, grâce à des techniques d'assemblage modernes et à des matériaux certifiés pour l'architecture éphémère. Le prémontage partiel en atelier réduit le temps de travail dans le parc des expositions et garantit une finition impeccable.</p>\n\n        <h2>Logistique et montage clé en main à Vigo</h2>\n        <p>Le montage final est l'aboutissement de notre service clé en main. Nous coordonnons directement le transport et l'emballage, le montage sur place, l'installation électrique des spots et des écrans, la pose du graphisme et le nettoyage final. Votre équipe n'a qu'à se présenter le premier jour du salon pour découvrir un espace corporatif pleinement opérationnel et prêt à capter des contacts. De plus, nous gérons toutes les formalités techniques exigées par le parc des expositions —projets visés, certificats d'ignifugation, validations électriques, évaluation des risques et assurances— pour une approbation fluide à l'IFEVI.</p>\n        <p>Notre structure nous permet de desservir Vigo et toute la Galice avec la même réactivité que le reste de la péninsule, en offrant aux agences et aux exposants directs un interlocuteur unique pour la conception, la production, la logistique et le montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Concevez-vous et montez-vous des stands à l'IFEVI (Navalia, Conxemar) ?",
+          "a": "Oui. Nous intervenons à l'IFEVI – Instituto Ferial de Vigo, sur des salons comme Navalia, Conxemar et Nortrans. Nous connaissons sa réglementation technique et son profil industriel pour un montage sans mauvaises surprises."
+        },
+        {
+          "q": "Disposez-vous d'un atelier propre ou sous-traitez-vous la fabrication ?",
+          "a": "Nous disposons d'un atelier propre de menuiserie et de finitions. Sans intermédiaires, nous maîtrisons à 100 % les matériaux, les délais et la qualité, et nous réduisons le temps de montage dans le parc des expositions grâce au prémontage en atelier."
+        },
+        {
+          "q": "Le service est-il clé en main ?",
+          "a": "Oui. Nous nous chargeons de tout : conception 3D, fabrication, transport, montage, installation électrique, graphisme, nettoyage final et validations techniques du parc des expositions. Votre équipe n'a qu'à se présenter le premier jour du salon."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Vigo",
+      "title": "Progettazione e montaggio di stand a Vigo | IFEVI | Standarte",
+      "h1": "Progettazione e montaggio di stand fieristici su misura a Vigo",
+      "introText": "Standarte progetta, produce e monta stand fieristici a Vigo, grande polo industriale atlantico con l'IFEVI come quartiere fieristico di riferimento e fiere leader come Navalia e Conxemar. Oltre 20 anni di esperienza e laboratorio di proprietà per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica e montaggio con validazioni nel quartiere fieristico.",
+      "body": "\n        <h2>IFEVI, il quartiere fieristico del nord-ovest atlantico</h2>\n        <p>Vigo è uno dei grandi motori industriali del nord-ovest della Spagna e il suo epicentro fieristico è l'<strong>IFEVI – Instituto Ferial de Vigo</strong>, con diversi padiglioni accanto all'aeroporto. La sua agenda B2B riflette il DNA industriale della città: la cantieristica navale, l'automotive e il settore conserviero e del mare. Qui si tengono appuntamenti di primo livello come <strong>Navalia</strong> —riferimento mondiale del settore navale— e <strong>Conxemar</strong>, una delle fiere di prodotti ittici surgelati più importanti del mondo, oltre a <strong>Nortrans</strong> e ai saloni del motore. Per un'azienda che vuole aprire mercato sulla cornice atlantica, esporre qui con uno stand ben risolto è uno degli investimenti commerciali più redditizi, ed è proprio qui che Standarte fa la differenza: trasformiamo lo spazio del vostro marchio in una calamita di visitatori ad alto ritorno.</p>\n        <p>Conosciamo la normativa tecnica dell'IFEVI e il profilo esigente di un visitatore industriale, il che evita sorprese e ritardi nel montaggio e ci permette di realizzare stand tecnici, con macchinari pesanti o prodotto in scala reale.</p>\n\n        <h2>Progettazione 3D e falegnameria su misura dal laboratorio di proprietà</h2>\n        <p>Il successo di uno stand inizia mesi prima del montaggio. La nostra fase di progettazione è un processo meticoloso di ingegneria del marchio e ottimizzazione del flusso dei visitatori: a partire dalle linee guida aziendali della vostra impresa, creiamo un prototipo 3D interattivo fedele al 100% al risultato finale, così che il vostro team commerciale possa validare la visibilità del marchio, le aree riunioni e l'integrazione di schermi, banconi e vetrine prima che inizi la produzione.</p>\n        <p>Uno dei nostri maggiori vantaggi è disporre di un <strong>laboratorio di proprietà</strong> di falegnameria e finiture di alta qualità. Senza subappalti, manteniamo il controllo totale su materiali, tempi e qualità, con tecniche moderne di assemblaggio e materiali certificati per l'architettura effimera. Il premontaggio parziale in laboratorio riduce il tempo di lavoro nel quartiere fieristico e garantisce una finitura impeccabile.</p>\n\n        <h2>Logistica e montaggio chiavi in mano a Vigo</h2>\n        <p>Il montaggio finale è il fiore all'occhiello del nostro servizio chiavi in mano. Coordiniamo direttamente il trasporto e l'imballaggio, il montaggio in loco, l'installazione elettrica di faretti e schermi, la collocazione della grafica e la pulizia finale. Il vostro team deve solo presentarsi il primo giorno di fiera e troverà uno spazio aziendale pienamente operativo e pronto a captare contatti. Inoltre, gestiamo tutte le formalità tecniche richieste dal quartiere fieristico —progetti vistati, certificati di ignifugazione, validazioni elettriche, valutazione dei rischi e assicurazioni— per un'approvazione fluida nell'IFEVI.</p>\n        <p>La nostra struttura ci permette di servire Vigo e tutta la Galizia con la stessa agilità del resto della penisola, offrendo ad agenzie ed espositori diretti un unico interlocutore per progettazione, produzione, logistica e montaggio.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Progettate e montate stand all'IFEVI (Navalia, Conxemar)?",
+          "a": "Sì. Lavoriamo all'IFEVI – Instituto Ferial de Vigo, in fiere come Navalia, Conxemar e Nortrans. Conosciamo la sua normativa tecnica e il profilo industriale per un montaggio senza sorprese."
+        },
+        {
+          "q": "Avete un laboratorio di proprietà o subappaltate la produzione?",
+          "a": "Disponiamo di un laboratorio di proprietà di falegnameria e finiture. Senza intermediari, controlliamo al 100% materiali, tempi e qualità, e riduciamo il tempo di montaggio nel quartiere fieristico grazie al premontaggio in laboratorio."
+        },
+        {
+          "q": "Il servizio è chiavi in mano?",
+          "a": "Sì. Ci occupiamo di tutto: progettazione 3D, produzione, trasporto, montaggio, installazione elettrica, grafica, pulizia finale e le validazioni tecniche del quartiere fieristico. Il vostro team deve solo presentarsi il primo giorno di fiera."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Vigo",
+      "title": "Ontwerp en montage van beursstands in Vigo | IFEVI | Standarte",
+      "h1": "Ontwerp en montage van beursstands op maat in Vigo",
+      "introText": "Standarte ontwerpt, produceert en monteert beursstands in Vigo, een belangrijk atlantisch industrieel knooppunt met IFEVI als toonaangevend beurscomplex en topbeurzen zoals Navalia en Conxemar. Meer dan 20 jaar ervaring en een eigen werkplaats om elke fase te beheersen: 3D-ontwerp, maatwerk-schrijnwerk, logistiek en montage met technische validatie in het beurscomplex.",
+      "body": "\n        <h2>IFEVI, het beurscomplex van het atlantische noordwesten</h2>\n        <p>Vigo is een van de grote industriële motoren van het noordwesten van Spanje en haar beurshart is het <strong>IFEVI – Instituto Ferial de Vigo</strong>, met verschillende hallen naast de luchthaven. De B2B-agenda weerspiegelt het industriële DNA van de stad: de scheepsbouw, de automobielsector en de visverwerkende en maritieme sector. Hier vinden toonaangevende afspraken plaats zoals <strong>Navalia</strong> —wereldwijde referentie van de scheepsbouwsector— en <strong>Conxemar</strong>, een van de belangrijkste beurzen ter wereld voor diepgevroren visproducten, naast <strong>Nortrans</strong> en motorsalons. Voor een bedrijf dat de atlantische kuststrook wil aanboren, is hier exposeren met een goed uitgewerkte stand een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we veranderen de ruimte van uw merk in een bezoekersmagneet met hoog rendement.</p>\n        <p>We kennen de technische regelgeving van IFEVI en het veeleisende profiel van een industriële bezoeker, wat verrassingen en vertragingen bij de opbouw voorkomt en ons in staat stelt om technische stands op te lossen, met zware machines of product op ware grootte.</p>\n\n        <h2>3D-ontwerp en maatwerk-schrijnwerk vanuit een eigen werkplaats</h2>\n        <p>Het succes van een stand begint maanden vóór de opbouw. Onze ontwerpfase is een nauwgezet traject van merk-engineering en optimalisatie van de bezoekersstroom: op basis van de bedrijfsrichtlijnen van uw onderneming maken we een interactief 3D-prototype dat 100% getrouw is aan het eindresultaat, zodat uw salesteam de zichtbaarheid van het merk, de vergaderzones en de integratie van schermen, toonbanken en vitrines kan beoordelen vóór de productie begint.</p>\n        <p>Een van onze grootste voordelen is onze eigen <strong>werkplaats</strong> voor schrijnwerk en hoogwaardige afwerkingen. Zonder onderaannemers houden we volledige controle over materialen, planning en kwaliteit, met moderne montagetechnieken en gecertificeerde materialen voor tijdelijke architectuur. De gedeeltelijke voormontage in de werkplaats beperkt de werktijd in het beurscomplex en garandeert een onberispelijke afwerking.</p>\n\n        <h2>Logistiek en sleutelklare montage in Vigo</h2>\n        <p>De eindmontage is het sluitstuk van onze sleutelklare aanpak. We coördineren rechtstreeks het transport en de verpakking, de montage ter plaatse, de elektrische installatie van spots en schermen, de plaatsing van de grafiek en de eindschoonmaak. Uw team hoeft alleen op de eerste beursdag te verschijnen en treft een volledig werkende bedrijfsruimte aan, klaar om contacten te leggen. Bovendien verzorgen we alle technische formaliteiten die het beurscomplex eist —geviseerde projecten, brandwerendheidscertificaten, elektrische keuringen, risicobeoordeling en verzekeringen— voor een vlotte goedkeuring in IFEVI.</p>\n        <p>Onze structuur stelt ons in staat om Vigo en heel Galicië met dezelfde wendbaarheid te bedienen als de rest van het schiereiland, en biedt bureaus en directe exposanten één enkel aanspreekpunt voor ontwerp, productie, logistiek en montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Ontwerpen en monteren jullie stands in IFEVI (Navalia, Conxemar)?",
+          "a": "Ja. We werken in IFEVI – Instituto Ferial de Vigo, op beurzen zoals Navalia, Conxemar en Nortrans. We kennen de technische regelgeving en het industriële profiel voor een opbouw zonder verrassingen."
+        },
+        {
+          "q": "Hebben jullie een eigen werkplaats of besteden jullie de productie uit?",
+          "a": "We beschikken over een eigen werkplaats voor schrijnwerk en afwerkingen. Zonder tussenpersonen beheersen we voor 100% materialen, planning en kwaliteit, en verkorten we de opbouwtijd in het beurscomplex door voormontage in de werkplaats."
+        },
+        {
+          "q": "Is de dienst sleutelklaar?",
+          "a": "Ja. We regelen alles: 3D-ontwerp, productie, transport, montage, elektrische installatie, grafiek, eindschoonmaak en de technische validaties van het beurscomplex. Uw team verschijnt alleen op de eerste beursdag."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "维戈",
+      "title": "维戈展台设计与搭建 | IFEVI | Standarte",
+      "h1": "维戈定制展会展台设计与搭建",
+      "introText": "Standarte在维戈提供展会展台的设计、制作与搭建服务。维戈是大西洋沿岸的重要工业重镇，以IFEVI为标志性展览中心，并拥有Navalia、Conxemar等顶级展会。我们拥有20多年经验和自有工厂，全程掌控每个环节：3D设计、定制木工、物流以及在会场完成的搭建与各项验收。",
+      "body": "\n        <h2>IFEVI，大西洋西北地区的展览中心</h2>\n        <p>维戈是西班牙西北部最重要的工业引擎之一，其展会核心是<strong>IFEVI – Instituto Ferial de Vigo（维戈展览中心）</strong>，毗邻机场，设有多个展馆。其B2B日程充分体现了这座城市的工业基因：造船、汽车制造以及海产品罐头与海洋产业。这里举办着众多顶级展会，例如<strong>Navalia</strong>——全球造船业的标杆展会——以及<strong>Conxemar</strong>，世界最重要的冷冻海产品展会之一，此外还有<strong>Nortrans</strong>以及各类汽车展。对于希望开拓大西洋沿岸市场的企业而言，在这里以一座设计出色的展台参展，是回报最丰厚的商业投资之一，而这正是Standarte脱颖而出之处：我们将您品牌的空间打造成高回报、能吸引参观者的磁石。</p>\n        <p>我们熟悉IFEVI的技术规范，也了解工业类参观者的苛刻需求，这能避免搭建中的意外与延误，并使我们能够应对带有重型机械或实物等比展品的技术型展台。</p>\n\n        <h2>自有工厂的3D设计与定制木工</h2>\n        <p>展台的成功在搭建数月之前便已开始。我们的设计阶段是一套关于品牌工程与参观者动线优化的精细流程：我们以贵公司的企业准则为出发点，制作一个与最终成品100%一致的交互式3D原型，让您的销售团队能在制作启动之前，预先确认品牌的可见度、洽谈区域以及屏幕、展示柜和陈列柜的整合方式。</p>\n        <p>我们最大的优势之一是拥有高品质木工与饰面的<strong>自有工厂</strong>。无需外包，我们对材料、工期与品质保持完全掌控，采用现代化的组装工艺以及通过临时建筑认证的材料。在工厂进行部分预搭建，可缩短会场内的作业时间，并确保无可挑剔的成品效果。</p>\n\n        <h2>维戈的物流与交钥匙搭建</h2>\n        <p>最终搭建是我们交钥匙服务的收官之笔。我们直接统筹运输与包装、现场搭建、射灯与屏幕的电气安装、图文画面的张贴以及最后的清洁。您的团队只需在展会首日到场，便能见到一个完全运行、随时可以收集客户线索的企业空间。此外，我们还负责会场要求的所有技术手续——经审核的项目图纸、防火阻燃证书、电气验收、风险评估与保险——以确保在IFEVI顺利通过审批。</p>\n        <p>我们的架构使我们能够以与服务半岛其他地区同样的高效率覆盖维戈乃至整个加利西亚地区，为代理机构和直接参展商提供设计、生产、物流与搭建的单一对接窗口。</p>\n      ",
+      "faqs": [
+        {
+          "q": "你们在IFEVI（Navalia、Conxemar）设计和搭建展台吗？",
+          "a": "是的。我们在IFEVI – Instituto Ferial de Vigo开展工作，服务于Navalia、Conxemar和Nortrans等展会。我们熟悉其技术规范和工业类参观者的特点，确保搭建过程没有意外。"
+        },
+        {
+          "q": "你们有自有工厂，还是把制作外包出去？",
+          "a": "我们拥有自有的木工与饰面工厂。没有中间商，我们100%掌控材料、工期与品质，并通过工厂预搭建缩短会场内的搭建时间。"
+        },
+        {
+          "q": "服务是交钥匙式的吗？",
+          "a": "是的。我们全程负责：3D设计、制作、运输、搭建、电气安装、图文画面、最后清洁以及会场的各项技术验收。您的团队只需在展会首日到场即可。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "विगो",
+      "title": "विगो में स्टॉल का डिज़ाइन और असेंबली | IFEVI | Standarte",
+      "h1": "विगो में कस्टम प्रदर्शनी स्टॉल का डिज़ाइन और असेंबली",
+      "introText": "Standarte विगो में प्रदर्शनी स्टॉल का डिज़ाइन, निर्माण और असेंबली करता है, जो एक बड़ा अटलांटिक औद्योगिक केंद्र है, जहाँ IFEVI प्रमुख प्रदर्शनी स्थल है और Navalia तथा Conxemar जैसी अग्रणी प्रदर्शनियाँ आयोजित होती हैं। 20 वर्षों से अधिक का अनुभव और अपना कारखाना हर चरण को नियंत्रित करता है: 3D डिज़ाइन, कस्टम काष्ठकला, लॉजिस्टिक्स और प्रदर्शनी स्थल पर सत्यापन के साथ असेंबली।",
+      "body": "\n        <h2>IFEVI, अटलांटिक उत्तर-पश्चिम का प्रदर्शनी स्थल</h2>\n        <p>विगो स्पेन के उत्तर-पश्चिम के सबसे बड़े औद्योगिक इंजनों में से एक है और इसका प्रदर्शनी केंद्र <strong>IFEVI – Instituto Ferial de Vigo</strong> है, जिसके कई मंडप हवाई अड्डे के पास स्थित हैं। इसका B2B कार्यक्रम शहर के औद्योगिक स्वरूप को दर्शाता है: जहाज निर्माण, ऑटोमोटिव और मत्स्य एवं समुद्री खाद्य उद्योग। यहाँ <strong>Navalia</strong> —जहाज निर्माण क्षेत्र की विश्वस्तरीय प्रदर्शनी— और <strong>Conxemar</strong>, जमे हुए समुद्री उत्पादों की दुनिया की सबसे महत्वपूर्ण प्रदर्शनियों में से एक, के साथ-साथ <strong>Nortrans</strong> और मोटर शो जैसे शीर्ष स्तर के आयोजन होते हैं। जो कंपनी अटलांटिक तट पर बाज़ार खोलना चाहती है, उसके लिए यहाँ एक सुनियोजित स्टॉल के साथ प्रदर्शन करना सबसे लाभदायक व्यावसायिक निवेशों में से एक है, और यहीं Standarte अंतर पैदा करता है: हम आपके ब्रांड के स्थान को उच्च प्रतिफल वाले आगंतुकों के चुंबक में बदल देते हैं।</p>\n        <p>हम IFEVI के तकनीकी नियमों और एक औद्योगिक आगंतुक की मांगपूर्ण प्रकृति को जानते हैं, जिससे असेंबली में आश्चर्य और देरी से बचाव होता है और हमें भारी मशीनरी या वास्तविक आकार के उत्पाद वाले तकनीकी स्टॉल तैयार करने में सक्षम बनाता है।</p>\n\n        <h2>अपने कारखाने से 3D डिज़ाइन और कस्टम काष्ठकला</h2>\n        <p>एक स्टॉल की सफलता असेंबली से महीनों पहले शुरू होती है। हमारा डिज़ाइन चरण ब्रांड इंजीनियरिंग और आगंतुक प्रवाह के अनुकूलन की एक सूक्ष्म प्रक्रिया है: आपकी कंपनी के कॉर्पोरेट दिशानिर्देशों से, हम अंतिम परिणाम के 100% अनुरूप एक इंटरैक्टिव 3D प्रोटोटाइप बनाते हैं, ताकि आपकी बिक्री टीम निर्माण शुरू होने से पहले ब्रांड की दृश्यता, बैठक क्षेत्रों और स्क्रीन, काउंटर तथा शोकेस के एकीकरण को सत्यापित कर सके।</p>\n        <p>हमारे सबसे बड़े लाभों में से एक है उच्च गुणवत्ता वाली काष्ठकला और फिनिशिंग का <strong>अपना कारखाना</strong> होना। बिना उपठेके के, हम सामग्री, समय-सीमा और गुणवत्ता पर पूर्ण नियंत्रण रखते हैं, आधुनिक असेंबली तकनीकों और अस्थायी वास्तुकला के लिए प्रमाणित सामग्रियों के साथ। कारखाने में आंशिक पूर्व-असेंबली प्रदर्शनी स्थल पर काम के समय को कम करती है और एक त्रुटिहीन फिनिश की गारंटी देती है।</p>\n\n        <h2>विगो में लॉजिस्टिक्स और टर्नकी असेंबली</h2>\n        <p>अंतिम असेंबली हमारी टर्नकी सेवा का समापन है। हम सीधे परिवहन और पैकेजिंग, स्थल पर असेंबली, स्पॉटलाइट और स्क्रीन की विद्युत स्थापना, ग्राफिक्स की स्थापना और अंतिम सफाई का समन्वय करते हैं। आपकी टीम को केवल प्रदर्शनी के पहले दिन उपस्थित होना है और उसे एक पूरी तरह से संचालित और संपर्क बनाने के लिए तैयार कॉर्पोरेट स्थान मिलेगा। इसके अलावा, हम प्रदर्शनी स्थल द्वारा अपेक्षित सभी तकनीकी औपचारिकताओं —प्रमाणित परियोजनाएँ, अग्निरोधक प्रमाणपत्र, विद्युत सत्यापन, जोखिम मूल्यांकन और बीमा— का प्रबंधन करते हैं ताकि IFEVI में सुगम स्वीकृति मिल सके।</p>\n        <p>हमारी संरचना हमें विगो और पूरे गैलिसिया को शेष प्रायद्वीप के समान फुर्ती के साथ सेवा देने में सक्षम बनाती है, जिससे एजेंसियों और प्रत्यक्ष प्रदर्शकों को डिज़ाइन, उत्पादन, लॉजिस्टिक्स और असेंबली के लिए एक ही संपर्क व्यक्ति मिलता है।</p>\n      ",
+      "faqs": [
+        {
+          "q": "क्या आप IFEVI (Navalia, Conxemar) में स्टॉल का डिज़ाइन और असेंबली करते हैं?",
+          "a": "हाँ। हम IFEVI – Instituto Ferial de Vigo में Navalia, Conxemar और Nortrans जैसी प्रदर्शनियों में काम करते हैं। हम बिना किसी आश्चर्य वाली असेंबली के लिए इसके तकनीकी नियमों और औद्योगिक स्वरूप को जानते हैं।"
+        },
+        {
+          "q": "क्या आपका अपना कारखाना है या आप निर्माण का उपठेका देते हैं?",
+          "a": "हमारे पास काष्ठकला और फिनिशिंग का अपना कारखाना है। बिना मध्यस्थों के, हम सामग्री, समय-सीमा और गुणवत्ता पर 100% नियंत्रण रखते हैं, और कारखाने में पूर्व-असेंबली के माध्यम से प्रदर्शनी स्थल पर असेंबली के समय को कम करते हैं।"
+        },
+        {
+          "q": "क्या यह सेवा टर्नकी है?",
+          "a": "हाँ। हम सब कुछ संभालते हैं: 3D डिज़ाइन, निर्माण, परिवहन, असेंबली, विद्युत स्थापना, ग्राफिक्स, अंतिम सफाई और प्रदर्शनी स्थल के तकनीकी सत्यापन। आपकी टीम केवल प्रदर्शनी के पहले दिन उपस्थित होती है।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "비고",
+      "title": "비고 전시 부스 디자인 및 조립 | IFEVI | Standarte",
+      "h1": "비고 맞춤형 전시 부스 디자인 및 조립",
+      "introText": "Standarte는 IFEVI를 대표 전시장으로 두고 Navalia, Conxemar 같은 선도적인 박람회가 열리는 대서양 연안의 거대 산업 거점 비고에서 전시 부스를 디자인, 제작, 조립합니다. 20년이 넘는 경력과 자체 공장을 갖추고 3D 디자인, 맞춤 목공, 물류, 전시장 검증을 포함한 조립까지 모든 단계를 직접 관리합니다.",
+      "body": "\n        <h2>IFEVI, 대서양 북서부의 전시장</h2>\n        <p>비고는 스페인 북서부를 대표하는 거대 산업 동력 중 하나이며, 그 전시의 중심은 공항 인근에 여러 전시관을 갖춘 <strong>IFEVI – Instituto Ferial de Vigo</strong>입니다. 이곳의 B2B 일정은 조선, 자동차, 수산 가공 및 해양 산업이라는 도시의 산업적 DNA를 그대로 보여줍니다. 이곳에서는 조선 분야의 세계적 기준이 되는 <strong>Navalia</strong>와 세계에서 가장 중요한 냉동 수산물 박람회 중 하나인 <strong>Conxemar</strong>를 비롯해 <strong>Nortrans</strong>와 모터쇼 같은 최고 수준의 행사가 열립니다. 대서양 연안 시장을 개척하려는 기업에게 잘 설계된 부스로 이곳에 참가하는 것은 가장 수익성 높은 영업 투자 중 하나이며, 바로 이 지점에서 Standarte가 차별화됩니다. 우리는 귀사 브랜드의 공간을 높은 투자 수익률을 가져오는 방문객 자석으로 만듭니다.</p>\n        <p>우리는 IFEVI의 기술 규정과 까다로운 산업 방문객의 성향을 잘 알고 있어 조립 과정에서의 돌발 상황과 지연을 방지하며, 중장비나 실제 크기의 제품이 들어가는 기술 부스까지 해결할 수 있습니다.</p>\n\n        <h2>자체 공장에서 진행하는 3D 디자인과 맞춤 목공</h2>\n        <p>부스의 성공은 조립 몇 달 전부터 시작됩니다. 우리의 디자인 단계는 브랜드 엔지니어링과 방문객 동선 최적화를 위한 치밀한 과정입니다. 귀사의 기업 가이드라인을 바탕으로 최종 결과물에 100% 충실한 인터랙티브 3D 프로토타입을 제작하여, 제작이 시작되기 전에 귀사의 영업팀이 브랜드 가시성, 상담 공간, 화면·카운터·진열장의 통합을 검증할 수 있도록 합니다.</p>\n        <p>우리의 가장 큰 강점 중 하나는 고품질 목공과 마감을 위한 <strong>자체 공장</strong>을 보유하고 있다는 점입니다. 외주 없이 재료, 일정, 품질을 완전히 통제하며, 현대적인 조립 기법과 임시 건축용 인증 자재를 사용합니다. 공장에서의 부분 사전 조립은 전시장에서의 작업 시간을 줄이고 완벽한 마감을 보장합니다.</p>\n\n        <h2>비고에서의 물류와 턴키 조립</h2>\n        <p>최종 조립은 우리 턴키 서비스의 마무리입니다. 운송과 포장, 현장 조립, 조명과 화면의 전기 설치, 그래픽 부착, 최종 청소까지 직접 조율합니다. 귀사 팀은 박람회 첫날에 나타나기만 하면 완전히 가동되어 고객 발굴 준비가 끝난 기업 공간을 만나게 됩니다. 또한 전시장이 요구하는 모든 기술 절차 — 인증된 설계 도면, 방염 증명서, 전기 검증, 위험 평가 및 보험 — 를 처리하여 IFEVI에서의 원활한 승인을 돕습니다.</p>\n        <p>우리의 조직 구조 덕분에 비고와 갈리시아 전역을 반도의 다른 지역과 동일한 신속함으로 지원하며, 에이전시와 직접 참가하는 기업에게 디자인, 제작, 물류, 조립을 아우르는 단일 창구를 제공합니다.</p>\n      ",
+      "faqs": [
+        {
+          "q": "IFEVI(Navalia, Conxemar)에서 부스를 디자인하고 조립하나요?",
+          "a": "네. IFEVI – Instituto Ferial de Vigo에서 Navalia, Conxemar, Nortrans 같은 박람회를 진행합니다. 전시장의 기술 규정과 산업 방문객의 성향을 잘 알고 있어 돌발 상황 없는 조립을 보장합니다."
+        },
+        {
+          "q": "자체 공장이 있나요, 아니면 제작을 외주하나요?",
+          "a": "목공과 마감을 위한 자체 공장을 보유하고 있습니다. 중간 업체 없이 재료, 일정, 품질을 100% 통제하며, 공장에서의 사전 조립으로 전시장 조립 시간을 단축합니다."
+        },
+        {
+          "q": "턴키 서비스인가요?",
+          "a": "네. 3D 디자인, 제작, 운송, 조립, 전기 설치, 그래픽, 최종 청소, 전시장 기술 검증까지 모든 것을 책임집니다. 귀사 팀은 박람회 첫날에 나타나기만 하면 됩니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "ビーゴ",
+      "title": "ビーゴの展示会ブース設計・組立 | IFEVI | Standarte",
+      "h1": "ビーゴのオーダーメイド展示会ブース設計・組立",
+      "introText": "Standarteは、大西洋岸有数の工業拠点であるビーゴで展示会ブースの設計・製作・組立を手がけます。ビーゴの中心となる展示会場IFEVIでは、NavaliaやConxemarといった一流の展示会が開催されています。20年以上の経験と自社工房を活かし、3D設計、オーダーメイドの木工、物流、会場での検査・組立まで各工程を一貫して管理します。",
+      "body": "\n        <h2>IFEVI、大西洋岸北西部の展示会場</h2>\n        <p>ビーゴはスペイン北西部を代表する工業の原動力のひとつであり、その展示会の中心が空港近くに複数のパビリオンを構える<strong>IFEVI – Instituto Ferial de Vigo</strong>です。そのB2Bプログラムは、造船、自動車、水産・冷凍食品といったこの街の工業のDNAを映し出しています。ここでは造船分野の世界的な指標である<strong>Navalia</strong>や、世界最大級の冷凍水産物見本市である<strong>Conxemar</strong>をはじめ、<strong>Nortrans</strong>やモーターショーなど一流の催しが開催されます。大西洋岸で市場を開拓したい企業にとって、よく練られたブースでここに出展することは最も費用対効果の高い営業投資のひとつであり、まさにそこでStandarteが違いを生み出します。私たちは貴社ブランドの空間を、高い投資回収を伴う来場者を惹きつける磁石へと変えます。</p>\n        <p>私たちはIFEVIの技術基準と、目の肥えた工業系来場者の特性を熟知しているため、組立での不測の事態や遅延を回避できます。重機を伴うブースや実物大の製品を扱う技術的なブースにも対応します。</p>\n\n        <h2>自社工房による3D設計とオーダーメイドの木工</h2>\n        <p>ブースの成功は組立の数か月前から始まっています。私たちの設計段階は、ブランドエンジニアリングと来場者動線の最適化に取り組む綿密な工程です。貴社のコーポレートガイドラインに基づき、最終的な仕上がりを100%忠実に再現するインタラクティブな3Dプロトタイプを作成します。これにより、製作が始まる前に貴社の営業チームがブランドの視認性、商談スペース、スクリーンや受付カウンター、ショーケースの統合を検証できます。</p>\n        <p>私たちの最大の強みのひとつが、木工と高品質な仕上げを行う<strong>自社工房</strong>を備えていることです。外注に頼らず、素材・納期・品質を完全に管理し、最新の組立技術と仮設建築向けの認証素材を用います。工房での部分的な事前組立により、会場での作業時間を短縮し、申し分のない仕上がりを保証します。</p>\n\n        <h2>ビーゴでのターンキー物流・組立</h2>\n        <p>最終組立は、私たちのターンキーサービスの総仕上げです。輸送と梱包、現地での組立、スポットライトやスクリーンの電気工事、グラフィックの設置、最終清掃までを直接コーディネートします。貴社のチームは展示会初日に来場するだけで、完全に稼働し、商談獲得の準備が整ったコーポレート空間を見つけられます。さらに、会場が求めるすべての技術的手続き—有資格者署名の設計図、防炎証明、電気検査、リスク評価、保険—を代行し、IFEVIでの円滑な認可を実現します。</p>\n        <p>私たちの体制により、ビーゴとガリシア全域を、スペイン本土の他地域と同じ機動力で対応でき、代理店や直接出展者に対し、設計・製作・物流・組立の単一窓口を提供します。</p>\n      ",
+      "faqs": [
+        {
+          "q": "IFEVI（Navalia、Conxemar）でブースの設計・組立を行っていますか？",
+          "a": "はい。IFEVI – Instituto Ferial de Vigoにて、Navalia、Conxemar、Nortransなどの展示会で対応しています。その技術基準と工業系の来場者特性を熟知しており、不測の事態のない組立を実現します。"
+        },
+        {
+          "q": "自社工房をお持ちですか、それとも製作を外注していますか？",
+          "a": "木工と仕上げの自社工房を備えています。仲介業者を介さず、素材・納期・品質を100%管理し、工房での事前組立により会場での組立時間を短縮します。"
+        },
+        {
+          "q": "サービスはターンキーですか？",
+          "a": "はい。3D設計、製作、輸送、組立、電気工事、グラフィック、最終清掃、会場の技術検査まですべてを担当します。貴社のチームは展示会初日に来場するだけです。"
+        }
+      ]
+    }
+  },
   "mallorca": {
     "es": {
       "breadcrumb": "Mallorca",

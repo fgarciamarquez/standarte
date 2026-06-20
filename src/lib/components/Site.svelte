@@ -172,7 +172,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'valencia', 'mallorca', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'valencia', 'mallorca', 'vigo', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
   const cookieSettingsLabels = {
     es: 'Configurar cookies',
     en: 'Cookie settings',
@@ -264,11 +264,11 @@
   const SECTION_REGION = {
     badajoz: 'extremadura', montaje_zafra: 'extremadura', montaje_don_benito: 'extremadura', montaje_badajoz: 'extremadura',
     madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco',
-    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', zaragoza: 'aragon'
+    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', batalha: 'portugal', zaragoza: 'aragon'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
-    'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Oporto': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
+    'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
   };
   // Proyectos reales afines al perfil sectorial de cada región (obra propia; sin afirmar ubicación).
   const FEATURED_BY_REGION = {
@@ -867,7 +867,6 @@
     <section id="home" class="hero">
       <div class="contents">
         <h1>{copy.heroTitle}</h1>
-        <p>{copy.heroSubtitle}</p>
       </div>
       <AiSourceButtons {lang} variant="hero" />
     </section>

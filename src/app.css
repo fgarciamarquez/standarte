@@ -326,16 +326,6 @@ p {
   text-shadow: 1px 1px 0 #000;
 }
 
-.hero p {
-  margin: 0;
-  color: #fff;
-  font-family: 'Water Brush', cursive;
-  font-size: 44px;
-  font-weight: 400;
-  line-height: 30px;
-  letter-spacing: .5px;
-  text-shadow: 1px 1px 0 #000;
-}
 
 .section {
   width: 100%;
