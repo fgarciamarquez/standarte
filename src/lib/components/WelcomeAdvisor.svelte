@@ -282,6 +282,10 @@
   let chimePlayed = false;
   let chimeBuffer = null;
   let clickBuffer = null;
+  // Se pone a true de forma SÍNCRONA en el primer gesto del usuario; a partir de
+  // ahí los sonidos se reproducen sin descartar el primero (la política del
+  // navegador impide cualquier audio antes de ese gesto).
+  let audioUnlocked = false;
 
   function preloadBuffers(ctx) {
     if (!ctx) return;
@@ -347,15 +351,31 @@
   }
 
   function playBuffer(buf) {
-    if (!buf) return;
+    // Hasta el primer gesto NO programamos nada (evita una ráfaga de sonidos al
+    // reanudar). Tras el gesto reproducimos aunque el resume aún esté en curso:
+    // el sonido se programa y suena al instante, sin descartarse.
+    if (!buf || !audioUnlocked) return;
     try {
       const ctx = getAudioContext();
-      if (!ctx || ctx.state === 'suspended') return;
-      
+      if (!ctx) return;
       const source = ctx.createBufferSource();
       source.buffer = buf;
       source.connect(ctx.destination);
       source.start();
+    } catch (e) {
+      // Ignored
+    }
+  }
+
+  // Reproduce un buffer silencioso de 1 muestra para "despertar" la cadena de
+  // audio en el primer gesto, de modo que el primer sonido real no llegue tarde.
+  function warmUp(ctx) {
+    try {
+      const b = ctx.createBuffer(1, 1, ctx.sampleRate);
+      const s = ctx.createBufferSource();
+      s.buffer = b;
+      s.connect(ctx.destination);
+      s.start(0);
     } catch (e) {
       // Ignored
     }
@@ -370,11 +390,8 @@
   }
 
   function triggerNotificationChime() {
-    if (chimePlayed) return;
+    if (chimePlayed || !audioUnlocked) return;
     try {
-      const ctx = getAudioContext();
-      if (!ctx || ctx.state === 'suspended') return;
-      
       playNotificationSound();
       chimePlayed = true;
     } catch (e) {
@@ -430,25 +447,33 @@
 
   function unlockAudio() {
     const ctx = getAudioContext();
-    if (ctx) {
-      ctx.resume().then(() => {
-        if (!chimeBuffer || !clickBuffer) {
-          preloadBuffers(ctx);
-        }
-        if (profileVisible && !chimePlayed) {
-          playNotificationSound();
-          chimePlayed = true;
-        }
-        removeUnlockListeners();
-      }).catch(() => {});
+    if (!ctx) return;
+    // Desbloqueo SÍNCRONO: aunque resume() sea asíncrono, marcamos ya el audio
+    // como activo para que el primer sonido del paso siguiente no se pierda.
+    audioUnlocked = true;
+    if (!chimeBuffer || !clickBuffer) {
+      preloadBuffers(ctx);
     }
+    const finish = () => {
+      warmUp(ctx);
+      if (profileVisible && !chimePlayed) {
+        playNotificationSound();
+        chimePlayed = true;
+      }
+    };
+    if (ctx.state === 'suspended') {
+      ctx.resume().then(finish).catch(() => {});
+    } else {
+      finish();
+    }
+    removeUnlockListeners();
   }
 
   function removeUnlockListeners() {
     if (typeof window !== 'undefined') {
-      window.removeEventListener('click', unlockAudio);
-      window.removeEventListener('keydown', unlockAudio);
-      window.removeEventListener('touchstart', unlockAudio);
+      window.removeEventListener('pointerdown', unlockAudio, { capture: true });
+      window.removeEventListener('keydown', unlockAudio, { capture: true });
+      window.removeEventListener('touchstart', unlockAudio, { capture: true });
     }
   }
 
@@ -474,11 +499,20 @@
       triggerNotificationChime();
     }, 600);
 
-    // Add global gesture listeners to unlock AudioContext
+    // Desbloqueo del audio en el primer gesto. Usamos 'pointerdown' (en fase de
+    // captura) porque llega ANTES que el 'click', así el audio ya está activo
+    // cuando se ejecuta el manejador del botón y suena desde el primer momento.
     if (typeof window !== 'undefined') {
-      window.addEventListener('click', unlockAudio);
-      window.addEventListener('keydown', unlockAudio);
-      window.addEventListener('touchstart', unlockAudio);
+      window.addEventListener('pointerdown', unlockAudio, { capture: true });
+      window.addEventListener('keydown', unlockAudio, { capture: true });
+      window.addEventListener('touchstart', unlockAudio, { capture: true, passive: true });
+
+      // Si el usuario YA había interactuado con la página antes de montarse el
+      // asesor (carga diferida 2 s), el navegador permite reanudar el audio ya:
+      // lo desbloqueamos de inmediato para que el chime y el tecleo suenen a tiempo.
+      if (navigator.userActivation && navigator.userActivation.hasBeenActive) {
+        unlockAudio();
+      }
     }
 
     return () => {
