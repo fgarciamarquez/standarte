@@ -172,7 +172,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'valencia', 'mallorca', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
   const cookieSettingsLabels = {
     es: 'Configurar cookies',
     en: 'Cookie settings',
@@ -201,16 +201,16 @@
   };
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
-    en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand construction',
-    de: 'Wichtige Messen in Spanien, Portugal, Deutschland und Frankreich für Messestandbau',
-    zh: '西班牙、葡萄牙、德国和法国展台搭建重点展会',
-    hi: 'स्पेन, पुर्तगाल, जर्मनी और फ्रांस में स्टैंड निर्माण के लिए प्रमुख मेले',
-    pt: 'Feiras em destaque em Espanha, Portugal, Alemanha e França para construção de stands',
-    ko: '전시 부스 제작을 위한 스페인, 포르투갈, 독일, 프랑스의 주요 박람회',
-    fr: 'Salons phares en Espagne, Portugal, Allemagne et France pour la construction de stands',
-    it: 'Fiere di rilievo in Spagna, Portogallo, Germania e Francia per la costruzione di stand',
-    ja: 'スペイン・ポルトガル・ドイツ・フランスの主要見本市（展示会ブース施工）',
-    nl: 'Belangrijke beurzen in Spanje, Portugal, Duitsland en Frankrijk voor standbouw'
+    en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
+    de: 'Wichtige Messen in Spanien, Portugal, Deutschland und Frankreich für Messestand Design und Montage',
+    zh: '西班牙、葡萄牙、德国和法国展台设计与搭建重点展会',
+    hi: 'स्पेन, पुर्तगाल, जर्मनी और फ्रांस में स्टैंड डिज़ाइन और असेंबली के लिए प्रमुख मेले',
+    pt: 'Feiras em destaque em Espanha, Portugal, Alemanha e França para design e montagem de stands',
+    ko: '전시 부스 디자인 및 조립을 위한 스페인, 포르투갈, 독일, 프랑스의 주요 박람회',
+    fr: 'Salons phares en Espagne, Portugal, Allemagne et France pour la conception et le montage de stands',
+    it: 'Fiere di rilievo in Spagna, Portogallo, Germania e Francia per la progettazione e il montaggio di stand',
+    ja: 'スペイン・ポルトガル・ドイツ・フランスの主要見本市（展示会ブース設計・組立）',
+    nl: 'Belangrijke beurzen in Spanje, Portugal, Duitsland en Frankrijk voor standontwerp en montage'
   };
   const counterItems = [
     { key: 'projects', value: 169, icon: 'counter-book' },
@@ -264,11 +264,11 @@
   const SECTION_REGION = {
     badajoz: 'extremadura', montaje_zafra: 'extremadura', montaje_don_benito: 'extremadura', montaje_badajoz: 'extremadura',
     madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco',
-    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', zaragoza: 'aragon'
+    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', zaragoza: 'aragon'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
-    'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
+    'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Oporto': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
   };
   // Proyectos reales afines al perfil sectorial de cada región (obra propia; sin afirmar ubicación).
   const FEATURED_BY_REGION = {
@@ -350,16 +350,16 @@
 
   function cityTitle(id) {
     const city = cityData[id]?.city?.[lang] || cityData[id]?.city?.es || '';
-    if (lang === 'de') return `Messestandbau in ${city}`;
-    if (lang === 'en') return `Stand construction in ${city}`;
-    if (lang === 'pt') return `Construção de stands em ${city}`;
-    if (lang === 'fr') return `Construction de stands à ${city}`;
-    if (lang === 'it') return `Costruzione di stand a ${city}`;
-    if (lang === 'zh') return `${city} 展台搭建`;
-    if (lang === 'hi') return `${city} में स्टैंड निर्माण`;
-    if (lang === 'ko') return `${city} 전시 부스 제작`;
-    if (lang === 'ja') return `${city}での展示会ブース製作・施工`;
-    return `Construcción de stands en ${city}`;
+    if (lang === 'de') return `Messestand Design und Montage in ${city}`;
+    if (lang === 'en') return `Stand design and assembly in ${city}`;
+    if (lang === 'pt') return `Design e montagem de stands em ${city}`;
+    if (lang === 'fr') return `Conception et montage de stands à ${city}`;
+    if (lang === 'it') return `Progettazione e montaggio stand a ${city}`;
+    if (lang === 'zh') return `${city} 展台设计与搭建`;
+    if (lang === 'hi') return `${city} में स्टैंड डिज़ाइन और असेंबली`;
+    if (lang === 'ko') return `${city} 전시 부스 디자인 및 조립`;
+    if (lang === 'ja') return `${city}での展示会ブース設計・組立`;
+    return `Diseño y montaje de stands en ${city}`;
   }
 
   function cityContent(id) {
@@ -387,12 +387,12 @@
       ['Galería', pathFor('es', 'custom')],
       ['Equipo', pathFor('es', 'team')],
       ['Contacto', pathFor('es', 'contact')],
-      ['Construcción de stands en Madrid', pathFor('es', 'madrid')],
-      ['Construcción de stands en Barcelona', pathFor('es', 'barcelona')],
-      ['Construcción de stands en Bilbao', pathFor('es', 'bilbao')],
-      ['Construcción de stands en Lisboa', pathFor('es', 'lisboa')],
-      ['Construcción de stands en Málaga', pathFor('es', 'malaga')],
-      ['Construcción de stands en Badajoz', pathFor('es', 'badajoz')],
+      ['Diseño y montaje de stands en Madrid', pathFor('es', 'madrid')],
+      ['Diseño y montaje de stands en Barcelona', pathFor('es', 'barcelona')],
+      ['Diseño y montaje de stands en Bilbao', pathFor('es', 'bilbao')],
+      ['Diseño y montaje de stands en Lisboa', pathFor('es', 'lisboa')],
+      ['Diseño y montaje de stands en Málaga', pathFor('es', 'malaga')],
+      ['Diseño y montaje de stands en Badajoz', pathFor('es', 'badajoz')],
       ['Montaje de stands en Zafra', pathFor('es', 'montaje_zafra')],
       ['Montaje de stands en Don Benito', pathFor('es', 'montaje_don_benito')],
       ['Montaje de stands en Badajoz', pathFor('es', 'montaje_badajoz')]
@@ -426,7 +426,7 @@
       '@type': 'Service',
       '@id': `${baseUrl}/#service`,
       name: lang === 'es' ? 'Diseño y montaje de stands para ferias' : 'Exhibition stand design and assembly',
-      serviceType: isCityPage ? 'Construcción de stands' : 'Exhibition Stand Builder',
+      serviceType: isCityPage ? 'Diseño y montaje de stands' : 'Exhibition Stand Builder',
       provider: { '@id': `${baseUrl}/#organization` },
       description: copy.seoDescription,
       areaServed: isCityPage ? cityDisplayName : ['ES', 'PT', 'DE', 'FR']
@@ -510,14 +510,14 @@
   }
 
   function fairSeoText(fairName) {
-    if (lang === 'en') return `Stand builder at ${fairName}`;
-    if (lang === 'de') return `Messestandbau auf der ${fairName}`;
-    if (lang === 'zh') return `${fairName} 展台搭建服务`;
-    if (lang === 'hi') return `${fairName} में स्टैंड निर्माण`;
-    if (lang === 'pt') return `Construtor de stands na ${fairName}`;
-    if (lang === 'fr') return `Constructeur de stands à ${fairName}`;
-    if (lang === 'it') return `Costruttore di stand a ${fairName}`;
-    return `Constructor de stand en ${fairName}`;
+    if (lang === 'en') return `Stand design and assembly at ${fairName}`;
+    if (lang === 'de') return `Messestand Design und Montage auf der ${fairName}`;
+    if (lang === 'zh') return `${fairName} 展台设计与搭建服务`;
+    if (lang === 'hi') return `${fairName} में स्टैंड डिज़ाइन और असेंबली`;
+    if (lang === 'pt') return `Design e montagem de stands na ${fairName}`;
+    if (lang === 'fr') return `Conception et montage de stands à ${fairName}`;
+    if (lang === 'it') return `Progettazione e montaggio stand a ${fairName}`;
+    return `Diseño y montaje de stand en ${fairName}`;
   }
 
   function openLightbox(project) {
@@ -624,7 +624,7 @@
         import('./WelcomeAdvisor.svelte')
           .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
           .catch(() => {});
-      }, 2000);
+      }, 8000); // antes 2000 ms; +6 s para que Pat aparezca más tarde
     };
     if (document.readyState === 'complete') {
       launchAdvisor();
@@ -834,10 +834,10 @@
       {#if modularEnabled}
         <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
+      <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'luzpavilion')} on:click={(e) => handleNavClick(e, 'micro-stand')}>
         LuzPavilion
       </a>
-      <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
@@ -894,44 +894,6 @@
     {#if showWelcomeAdvisor && AdvisorComponent}
       <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />
     {/if}
-    <section id="services" class="section services">
-      <div class="section-header">
-        <h2>{copy.servicesTitle}</h2>
-        <span></span>
-      </div>
-      <div class="service-grid">
-        {#each copy.services as item, index}
-          <article>
-            <div class="service-icon">
-              {#if index === 0}
-                <!-- Diseño e Ingeniería -->
-                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="4" r="2"></circle>
-                  <path d="M12 6L7 21M12 6l5 15M9.5 14h5"></path>
-                  <path d="M12 17a3.5 3.5 0 0 1 0-7" stroke-dasharray="2.5 2.5"></path>
-                </svg>
-              {:else if index === 1}
-                <!-- Construcción -->
-                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M2 22h20M5 22V7h14v15M12 22V7M5 12h14M5 17h14M5 7l7 5 7-5M5 12l7 5 7-5"></path>
-                </svg>
-              {:else if index === 2}
-                <!-- Montaje y validaciones -->
-                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 14l2 2 4-4"></path>
-                </svg>
-              {/if}
-            </div>
-            <h3>{item[0]}</h3>
-            <p>{item[1]}</p>
-          </article>
-        {/each}
-      </div>
-    </section>
-
-    <MicroStand labels={copy.micro} />
-
     <section id="local-stands" class="section local-stands">
       <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">
@@ -1000,6 +962,42 @@
           {/each}
         </div>
       </section>
+    </section>
+
+    <section id="services" class="section services">
+      <div class="section-header">
+        <h2>{copy.servicesTitle}</h2>
+        <span></span>
+      </div>
+      <div class="service-grid">
+        {#each copy.services as item, index}
+          <article>
+            <div class="service-icon">
+              {#if index === 0}
+                <!-- Diseño e Ingeniería -->
+                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="4" r="2"></circle>
+                  <path d="M12 6L7 21M12 6l5 15M9.5 14h5"></path>
+                  <path d="M12 17a3.5 3.5 0 0 1 0-7" stroke-dasharray="2.5 2.5"></path>
+                </svg>
+              {:else if index === 1}
+                <!-- Construcción -->
+                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 22h20M5 22V7h14v15M12 22V7M5 12h14M5 17h14M5 7l7 5 7-5M5 12l7 5 7-5"></path>
+                </svg>
+              {:else if index === 2}
+                <!-- Montaje y validaciones -->
+                <svg class="service-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 14l2 2 4-4"></path>
+                </svg>
+              {/if}
+            </div>
+            <h3>{item[0]}</h3>
+            <p>{item[1]}</p>
+          </article>
+        {/each}
+      </div>
     </section>
 
     <section id="custom" class="section portfolio">
@@ -1122,6 +1120,8 @@
         {/each}
       </div>
     </section>
+
+    <MicroStand labels={copy.micro} />
 
     <section id="team" class="section team">
       <div class="section-header">

@@ -732,13 +732,14 @@
 
 <style>
   .welcome-advisor-container {
-    max-width: var(--container);
-    margin: 40px auto;
-    padding: 0 15px;
+    background: #f8f9fa;
+    padding: 40px 15px;
   }
 
   .welcome-advisor-card {
-    background: #fdfdfb;
+    max-width: var(--container);
+    margin: 0 auto;
+    background: #f8f9fa;
     border: 1px solid #e2e2de;
     border-radius: 12px;
     padding: 30px;

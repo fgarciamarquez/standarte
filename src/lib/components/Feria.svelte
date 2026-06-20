@@ -212,23 +212,23 @@
   };
 
   const cities = {
-    es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Europa': 'Europa' },
-    en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Europa': 'Europe' },
-    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Zafra': 'サフラ', 'Europa': 'ヨーロッパ' },
+    es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Europa': 'Europa', 'Oporto': 'Oporto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca' },
+    en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Europa': 'Europe', 'Oporto': 'Porto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca' },
+    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Zafra': 'サフラ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ' },
     // Simplified city mapping, defaulting to Spanish name if not defined to save space
   };
 
   // --- Clúster temático: cada feria enlaza con el pilar de su ciudad y con sus ferias hermanas de región ---
   // Mapea la ciudad de la feria a la sección-pilar (las que no tienen pilar propio cuelgan del más cercano).
   const CITY_TO_PILLAR = {
-    'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa',
+    'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa', 'Oporto': 'oporto', 'Valencia': 'valencia', 'Mallorca': 'mallorca',
     'Málaga': 'malaga', 'Badajoz': 'badajoz', 'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real', 'Zaragoza': 'zaragoza',
     'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
     'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz'
   };
   // Ciudad mostrada para el enlace al pilar (la del pilar, no la de la feria, para que el anchor coincida con el destino).
   const PILLAR_CITY = {
-    madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', lisboa: 'Lisboa', malaga: 'Málaga',
+    madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', lisboa: 'Lisboa', oporto: 'Oporto', valencia: 'Valencia', mallorca: 'Mallorca', malaga: 'Málaga',
     badajoz: 'Badajoz', sevilla: 'Sevilla', ciudad_real: 'Ciudad Real', zaragoza: 'Zaragoza',
     montaje_don_benito: 'Don Benito', montaje_zafra: 'Zafra'
   };
@@ -238,26 +238,26 @@
     'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
     'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco',
     'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha',
-    'Lisboa': 'portugal', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
+    'Lisboa': 'portugal', 'Oporto': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
   };
   const clusterT = {
-    es: { related: 'Ferias relacionadas', pillar: (c) => `Construcción de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
-    en: { related: 'Related fairs', pillar: (c) => `Exhibition stand construction in ${c}`, also: 'We also design and build stands at these nearby fairs:' },
-    de: { related: 'Verwandte Messen', pillar: (c) => `Messestandbau in ${c}`, also: 'Wir gestalten und bauen auch Stände auf diesen Messen in der Nähe:' },
-    fr: { related: 'Salons associés', pillar: (c) => `Construction de stands à ${c}`, also: 'Nous concevons et construisons aussi des stands sur ces salons proches :' },
-    pt: { related: 'Feiras relacionadas', pillar: (c) => `Construção de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
-    it: { related: 'Fiere correlate', pillar: (c) => `Allestimento stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
-    ko: { related: '관련 전시회', pillar: (c) => `${c} 부스 시공`, also: '근처의 다음 전시회에서도 부스를 디자인하고 시공합니다:' },
-    zh: { related: '相关展会', pillar: (c) => `${c}展台搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
-    hi: { related: 'संबंधित मेले', pillar: (c) => `${c} में स्टैंड निर्माण`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और निर्माण करते हैं:' },
-    ja: { related: '関連する展示会', pillar: (c) => `${c}での展示会ブース施工`, also: '近隣のこれらの展示会でもブースの設計・施工を行っています：' },
-    nl: { related: 'Gerelateerde beurzen', pillar: (c) => `Standbouw in ${c}`, also: 'Wij ontwerpen en bouwen ook stands op deze nabijgelegen beurzen:' }
+    es: { related: 'Ferias relacionadas', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
+    en: { related: 'Related fairs', pillar: (c) => `Exhibition stand design and assembly in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
+    de: { related: 'Verwandte Messen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
+    fr: { related: 'Salons associés', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
+    pt: { related: 'Feiras relacionadas', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
+    it: { related: 'Fiere correlate', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
+    ko: { related: '관련 전시회', pillar: (c) => `${c} 부스 디자인 및 조립`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
+    zh: { related: '相关展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
+    hi: { related: 'संबंधित मेले', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
+    ja: { related: '関連する展示会', pillar: (c) => `${c}での展示会ブース設計・組立`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
+    nl: { related: 'Gerelateerde beurzen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
   };
 
   // Recinto ferial por ciudad (solo nombres verificados; las ciudades sin entrada no muestran recinto).
   const VENUE_BY_CITY = {
     'Madrid': 'IFEMA', 'Barcelona': 'Fira de Barcelona', 'Bilbao': 'BEC (Bilbao Exhibition Centre)',
-    'Málaga': 'FYCMA', 'Sevilla': 'FIBES', 'Lisboa': 'FIL', 'Badajoz': 'IFEBA',
+    'Málaga': 'FYCMA', 'Sevilla': 'FIBES', 'Lisboa': 'FIL', 'Oporto': 'Exponor (Feira Internacional do Porto)', 'Valencia': 'Feria Valencia', 'Mallorca': 'Moll Vell de Palma / IFEBAL', 'Badajoz': 'IFEBA',
     'Don Benito': 'FEVAL', 'Ciudad Real': 'IFEDI',
     'Zaragoza': 'Feria de Zaragoza', 'Vigo': 'IFEVI', 'Lyon': 'Eurexpo Lyon',
     'Stuttgart': 'Messe Stuttgart', 'Múnich': 'Messe München', 'Núremberg': 'NürnbergMesse'
@@ -286,7 +286,7 @@
   const t = {
     es: {
       heroTitle: (name) => `Standarte en ${name}`,
-      heroSubtitle: (city) => `Construcción de stands en ${city} con más de 20 años de experiencia y taller propio.`,
+      heroSubtitle: (city) => `Diseño y montaje de stands en ${city} con más de 20 años de experiencia y taller propio.`,
       intro: (name, city, sector) => `Standarte ofrece servicios integrales de diseño y montaje de stands de alta carpintería para la feria ${name} en ${city}. Como evento destacado del sector de ${sector}, su marca requiere un espacio que transmita excelencia técnica e innovación.`,
       intro2: 'Nos encargamos del modelado 3D, la fabricación en nuestro propio taller y el montaje final, asegurando que su espacio destaque por encima de la competencia sin depender de terceros.',
       services: 'Servicios para expositores',
@@ -295,8 +295,8 @@
     },
     en: {
       heroTitle: (name) => `Standarte at ${name}`,
-      heroSubtitle: (city) => `Exhibition stand construction in ${city} with more than 20 years of experience and our own workshop.`,
-      intro: (name, city, sector) => `Standarte offers comprehensive high-quality stand design and construction services for the ${name} fair in ${city}. As a key event in the ${sector} sector, your brand requires a space that conveys technical excellence and innovation.`,
+      heroSubtitle: (city) => `Exhibition stand design and assembly in ${city} with more than 20 years of experience and our own workshop.`,
+      intro: (name, city, sector) => `Standarte offers comprehensive high-quality stand design and assembly services for the ${name} fair in ${city}. As a key event in the ${sector} sector, your brand requires a space that conveys technical excellence and innovation.`,
       intro2: 'We take care of the 3D modeling, manufacturing in our own workshop, and the final assembly, ensuring that your space stands out from the competition without relying on third parties.',
       services: 'Services for exhibitors',
       cta: 'Request a Quote for this fair',
@@ -304,8 +304,8 @@
     },
     de: {
       heroTitle: (name) => `Standarte auf der ${name}`,
-      heroSubtitle: (city) => `Messestandbau in ${city} mit über 20 Jahren Erfahrung und eigener Werkstatt.`,
-      intro: (name, city, sector) => `Standarte bietet umfassende Dienstleistungen im Bereich hochwertiges Messestanddesign und -bau für die Messe ${name} in ${city}. Als wichtiges Ereignis im Bereich ${sector} erfordert Ihre Marke einen Raum, der technische Exzellenz und Innovation vermittelt.`,
+      heroSubtitle: (city) => `Messestand Design und Montage in ${city} mit über 20 Jahren Erfahrung und eigener Werkstatt.`,
+      intro: (name, city, sector) => `Standarte bietet umfassende Dienstleistungen im Bereich hochwertiges Messestand-Design und -Montage für die Messe ${name} in ${city}. Als wichtiges Ereignis im Bereich ${sector} erfordert Ihre Marke einen Raum, der technische Exzellenz und Innovation vermittelt.`,
       intro2: 'Wir kümmern uns um die 3D-Modellierung, die Fertigung in unserer eigenen Werkstatt und die Endmontage und stellen sicher, dass sich Ihr Raum von der Konkurrenz abhebt.',
       services: 'Dienstleistungen für Aussteller',
       cta: 'Angebot für diese Messe anfordern',
@@ -313,8 +313,8 @@
     },
     fr: {
       heroTitle: (name) => `Standarte au ${name}`,
-      heroSubtitle: (city) => `Construction de stands à ${city} avec plus de 20 ans d'expérience et notre propre atelier.`,
-      intro: (name, city, sector) => `Standarte propose des services complets de conception et de construction de stands de haute qualité pour le salon ${name} à ${city}. En tant qu'événement clé du secteur de ${sector}, votre marque a besoin d'un espace qui transmet l'excellence.`,
+      heroSubtitle: (city) => `Conception et montage de stands à ${city} avec plus de 20 ans d'expérience et notre propre atelier.`,
+      intro: (name, city, sector) => `Standarte propose des services complets de conception et de montage de stands de haute qualité pour le salon ${name} à ${city}. En tant qu'événement clé du secteur de ${sector}, votre marque a besoin d'un espace qui transmet l'excellence.`,
       intro2: 'Nous prenons en charge la modélisation 3D, la fabrication dans notre propre atelier et le montage final, garantissant que votre espace se démarque de la concurrence.',
       services: 'Services pour les exposants',
       cta: 'Demander un devis pour ce salon',
@@ -322,7 +322,7 @@
     },
     pt: {
       heroTitle: (name) => `Standarte na ${name}`,
-      heroSubtitle: (city) => `Construção de stands em ${city} com mais de 20 anos de experiência e oficina própria.`,
+      heroSubtitle: (city) => `Design e montagem de stands em ${city} com mais de 20 anos de experiência e oficina própria.`,
       intro: (name, city, sector) => `A Standarte oferece serviços abrangentes de design e montagem de stands de alta qualidade para a feira ${name} em ${city}. Sendo um evento chave no setor de ${sector}, a sua presença requer excelência.`,
       intro2: 'Cuidamos da modelação 3D, fabricação na nossa própria oficina e montagem final, garantindo um resultado impecável.',
       services: 'Serviços para expositores',
@@ -331,8 +331,8 @@
     },
     it: {
       heroTitle: (name) => `Standarte a ${name}`,
-      heroSubtitle: (city) => `Allestimento stand a ${city} con oltre 20 anni di esperienza e officina propria.`,
-      intro: (name, city, sector) => `Standarte offre servizi completi di progettazione e costruzione di stand per la fiera ${name} a ${city}. Come evento chiave nel settore di ${sector}, il tuo brand richiede eccellenza.`,
+      heroSubtitle: (city) => `Progettazione e montaggio stand a ${city} con oltre 20 anni di esperienza e officina propria.`,
+      intro: (name, city, sector) => `Standarte offre servizi completi di progettazione e montaggio di stand per la fiera ${name} a ${city}. Come evento chiave nel settore di ${sector}, il tuo brand richiede eccellenza.`,
       intro2: 'Ci occupiamo della modellazione 3D, della produzione nella nostra officina e dell\'assemblaggio finale.',
       services: 'Servizi per espositori',
       cta: 'Richiedi un preventivo',
@@ -340,7 +340,7 @@
     },
     ko: {
       heroTitle: (name) => `${name} 전시회의 Standarte`,
-      heroSubtitle: (city) => `${city}에서 20년 이상의 경험과 자체 작업장을 갖춘 부스 시공.`,
+      heroSubtitle: (city) => `${city}에서 20년 이상의 경험과 자체 작업장을 갖춘 부스 디자인 및 조립.`,
       intro: (name, city, sector) => `Standarte는 ${city}에서 열리는 ${name} 전시회를 위한 프리미엄 부스 디자인 및 시공 서비스를 제공합니다. ${sector} 분야의 주요 행사로서 완벽한 공간이 필요합니다.`,
       intro2: '3D 모델링, 자체 작업장 제작, 최종 설치까지 모두 책임집니다.',
       services: '참여업체를 위한 서비스',
@@ -349,7 +349,7 @@
     },
     zh: {
       heroTitle: (name) => `Standarte 在 ${name}`,
-      heroSubtitle: (city) => `在 ${city} 提供展台搭建服务，拥有超过20年的经验和自己的工厂。`,
+      heroSubtitle: (city) => `在 ${city} 提供展台设计与搭建服务，拥有超过20年的经验和自己的工厂。`,
       intro: (name, city, sector) => `Standarte 为 ${city} 的 ${name} 展会提供高质量的展台设计和搭建服务。作为 ${sector} 领域的重要活动，您的品牌需要卓越的展示。`,
       intro2: '我们负责3D建模，自己的工厂生产和最终组装。',
       services: '参展商服务',
@@ -358,7 +358,7 @@
     },
     hi: {
       heroTitle: (name) => `${name} में Standarte`,
-      heroSubtitle: (city) => `${city} में 20 से अधिक वर्षों के अनुभव और अपनी खुद की कार्यशाला के साथ प्रदर्शनी स्टैंड निर्माण।`,
+      heroSubtitle: (city) => `${city} में 20 से अधिक वर्षों के अनुभव और अपनी खुद की कार्यशाला के साथ प्रदर्शनी स्टैंड डिज़ाइन और असेंबली।`,
       intro: (name, city, sector) => `Standarte ${city} में ${name} मेले के लिए उच्च गुणवत्ता वाले स्टैंड डिज़ाइन प्रदान करता है। ${sector} क्षेत्र में एक प्रमुख घटना के रूप में, आपके ब्रांड को उत्कृष्टता की आवश्यकता है।`,
       intro2: 'हम 3D मॉडलिंग, अपनी कार्यशाला में निर्माण और अंतिम असेंबली का ध्यान रखते हैं।',
       services: 'प्रदर्शकों के लिए सेवाएं',
@@ -367,7 +367,7 @@
     },
     ja: {
       heroTitle: (name) => `${name}のStandarte`,
-      heroSubtitle: (city) => `${city}での展示会ブース施工。20年以上の経験と自社工房を有しています。`,
+      heroSubtitle: (city) => `${city}での展示会ブース設計・組立。20年以上の経験と自社工房を有しています。`,
       intro: (name, city, sector) => `Standarteは、${city}で開催される${name}に向けて、高品質な木工ブースの設計・施工をトータルでご提供します。${sector}分野を代表する見本市として、貴社のブランドには技術的な卓越性と革新性を伝える空間が求められます。`,
       intro2: '3Dモデリング、自社工房での製作、現地での最終設営まで一貫して担い、第三者に頼ることなく貴社のブースが競合より際立つことをお約束します。',
       services: '出展企業向けサービス',
@@ -376,8 +376,8 @@
     },
     nl: {
       heroTitle: (name) => `Standarte op ${name}`,
-      heroSubtitle: (city) => `Standbouw in ${city} met meer dan 20 jaar ervaring en een eigen werkplaats.`,
-      intro: (name, city, sector) => `Standarte biedt complete diensten voor ontwerp en bouw van hoogwaardige stands voor de beurs ${name} in ${city}. Als belangrijk evenement in de sector ${sector} vraagt uw merk om een ruimte die technische excellentie en innovatie uitstraalt.`,
+      heroSubtitle: (city) => `Standontwerp en montage in ${city} met meer dan 20 jaar ervaring en een eigen werkplaats.`,
+      intro: (name, city, sector) => `Standarte biedt complete diensten voor ontwerp en montage van hoogwaardige stands voor de beurs ${name} in ${city}. Als belangrijk evenement in de sector ${sector} vraagt uw merk om een ruimte die technische excellentie en innovatie uitstraalt.`,
       intro2: 'Wij verzorgen de 3D-modellering, de productie in onze eigen werkplaats en de eindmontage, zodat uw ruimte zich onderscheidt van de concurrentie zonder afhankelijk te zijn van derden.',
       services: 'Diensten voor exposanten',
       cta: 'Offerte aanvragen voor deze beurs',

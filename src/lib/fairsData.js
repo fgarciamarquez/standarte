@@ -621,5 +621,180 @@ export const fairsData = [
     "slug": "expofranquicia-madrid",
     "city": "Madrid",
     "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Concreta",
+    "country": "pt",
+    "slug": "concreta-oporto",
+    "city": "Oporto",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Expocosmética",
+    "country": "pt",
+    "slug": "expocosmetica-oporto",
+    "city": "Oporto",
+    "sector": "Belleza y Estética"
+  },
+  {
+    "name": "Empack Porto",
+    "country": "pt",
+    "slug": "empack-oporto",
+    "city": "Oporto",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "ITF Intertex Portugal",
+    "country": "pt",
+    "slug": "itf-intertex-oporto",
+    "city": "Oporto",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "ExpoMecânica",
+    "country": "pt",
+    "slug": "expomecanica-oporto",
+    "city": "Oporto",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "EMAF",
+    "country": "pt",
+    "slug": "emaf-oporto",
+    "city": "Oporto",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Portojóia",
+    "country": "pt",
+    "slug": "portojoia-oporto",
+    "city": "Oporto",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Decor Hotel",
+    "country": "pt",
+    "slug": "decor-hotel-oporto",
+    "city": "Oporto",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "EXPOCARNE Porto",
+    "country": "pt",
+    "slug": "expocarne-oporto",
+    "city": "Oporto",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Cevisama",
+    "country": "es",
+    "slug": "cevisama-valencia",
+    "city": "Valencia",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Feria Hábitat València",
+    "country": "es",
+    "slug": "habitat-valencia",
+    "city": "Valencia",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Textilhogar",
+    "country": "es",
+    "slug": "textilhogar-valencia",
+    "city": "Valencia",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Espacio Cocina SICI",
+    "country": "es",
+    "slug": "espacio-cocina-sici-valencia",
+    "city": "Valencia",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "FIMMA + Maderalia",
+    "country": "es",
+    "slug": "fimma-maderalia-valencia",
+    "city": "Valencia",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Iberflora",
+    "country": "es",
+    "slug": "iberflora-valencia",
+    "city": "Valencia",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Gastrónoma",
+    "country": "es",
+    "slug": "gastronoma-valencia",
+    "city": "Valencia",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Eurobrico",
+    "country": "es",
+    "slug": "eurobrico-valencia",
+    "city": "Valencia",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Palma International Boat Show",
+    "country": "es",
+    "slug": "palma-international-boat-show",
+    "city": "Mallorca",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Palma Superyacht Village",
+    "country": "es",
+    "slug": "palma-superyacht-village",
+    "city": "Mallorca",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Baleart",
+    "country": "es",
+    "slug": "baleart-mallorca",
+    "city": "Mallorca",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Dijous Bo",
+    "country": "es",
+    "slug": "dijous-bo-mallorca",
+    "city": "Mallorca",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "FIGAN",
+    "country": "es",
+    "slug": "figan-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Enomaq",
+    "country": "es",
+    "slug": "enomaq-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Oleomaq",
+    "country": "es",
+    "slug": "oleomaq-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Tecnovid",
+    "country": "es",
+    "slug": "tecnovid-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Enología y Vinos"
   }
 ];

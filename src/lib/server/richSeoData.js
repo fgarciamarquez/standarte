@@ -1060,6 +1060,705 @@ export const richSeoData = {
       ]
     }
   },
+  "mallorca": {
+    "es": {
+      "breadcrumb": "Mallorca",
+      "title": "Diseño y montaje de stands en Mallorca | Palma International Boat Show | Standarte",
+      "h1": "Diseño y montaje de stands feriales a medida en Mallorca",
+      "introText": "Standarte diseña, fabrica y monta stands feriales en Mallorca, epicentro náutico y de superyates del Mediterráneo y sede del Palma International Boat Show. Más de 20 años de experiencia y taller propio para controlar cada fase: diseño 3D, carpintería a medida, logística insular y montaje con validaciones en el recinto.",
+      "body": "\n        <h2>Mallorca, capital náutica del Mediterráneo</h2>\n        <p>Mallorca es uno de los grandes hubs náuticos y de superyates del mundo, y su gran cita ferial es el <strong>Palma International Boat Show</strong>, celebrado en el Moll Vell de Palma y en Marina Port de Mallorca, que marca el arranque de la temporada náutica del Mediterráneo con cientos de expositores y una flota de yates difícil de igualar. A ello se suman certámenes como <strong>Baleart</strong> (artesanía) y el ecosistema ferial y de congresos de la isla. Para una marca del sector náutico, del lujo o de los servicios premium, exponer aquí con un stand impecable es una de las inversiones comerciales más rentables, y ahí es donde Standarte marca la diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Conocemos la operativa específica de un evento mixto tierra-mar como el Palma International Boat Show y la normativa técnica de los recintos de la isla, lo que evita sorpresas y retrasos en el montaje, incluso en un entorno logístico insular exigente.</p>\n\n        <h2>Diseño 3D y carpintería a medida desde taller propio</h2>\n        <p>El éxito de un stand empieza meses antes del montaje. Nuestra fase de diseño es un proceso meticuloso de ingeniería de marca y optimización del flujo de visitantes: a partir de las directrices corporativas de su empresa, creamos un prototipo 3D interactivo 100% fiel al resultado final, de modo que su equipo comercial pueda validar la visibilidad de la marca, las zonas de reunión y la integración de pantallas, mostradores y vitrinas antes de que arranque la fabricación.</p>\n        <p>Una de nuestras mayores ventajas es disponer de <strong>taller propio</strong> de carpintería y acabados de alta calidad. Sin subcontratas, mantenemos el control total sobre materiales, plazos y calidad, con técnicas modernas de ensamblaje y materiales certificados para arquitectura efímera. El premontaje parcial en taller reduce el tiempo de trabajo en el recinto y es clave para cumplir plazos en una isla.</p>\n\n        <h2>Logística insular y montaje llave en mano en Mallorca</h2>\n        <p>El montaje final es el broche de nuestro servicio llave en mano. Coordinamos directamente el transporte —incluido el marítimo a la isla— y el embalaje, el montaje in situ, la instalación eléctrica de focos y pantallas, la colocación de la gráfica y la limpieza final. Su equipo solo tiene que presentarse el primer día de feria y encontrará un espacio corporativo plenamente operativo y listo para captar contactos. Además, gestionamos todas las formalidades técnicas que exige el recinto —proyectos visados, certificados de ignifugación, validaciones eléctricas, evaluación de riesgos y seguros— para una aprobación fluida.</p>\n        <p>Planificamos con antelación la logística marítima y de materiales para que la insularidad nunca sea un problema, ofreciendo a agencias y expositores directos un único interlocutor para diseño, producción, logística y montaje en Mallorca.</p>\n      ",
+      "faqs": [
+        {
+          "q": "¿Diseñan y montan stands en el Palma International Boat Show?",
+          "a": "Sí. Trabajamos en el Palma International Boat Show (Moll Vell y Marina Port de Mallorca) y en otros recintos de la isla. Conocemos la operativa tierra-mar y la normativa técnica para un montaje sin sorpresas."
+        },
+        {
+          "q": "¿Cómo gestionan la logística al ser una isla?",
+          "a": "Planificamos con antelación el transporte marítimo de estructuras y materiales y maximizamos el premontaje en nuestro taller, de modo que la insularidad no afecte a los plazos ni a la calidad del montaje."
+        },
+        {
+          "q": "¿El servicio es llave en mano?",
+          "a": "Sí. Nos encargamos de todo: diseño 3D, fabricación, transporte (incluido el marítimo), montaje, instalación eléctrica, gráfica, limpieza final y las validaciones técnicas del recinto. Su equipo solo se presenta el primer día de feria."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Mallorca",
+      "title": "Exhibition Stand Design and Assembly in Mallorca | Palma International Boat Show | Standarte",
+      "h1": "Custom Exhibition Stand Design and Assembly in Mallorca",
+      "introText": "Standarte designs, builds and assembles exhibition stands in Mallorca, the Mediterranean's nautical and superyacht epicentre and home to the Palma International Boat Show. With over 20 years of experience and an in-house workshop, we control every stage: 3D design, bespoke carpentry, island logistics and on-site assembly with full validation at the venue.",
+      "body": "\n        <h2>Mallorca, the Mediterranean's nautical capital</h2>\n        <p>Mallorca is one of the world's leading nautical and superyacht hubs, and its flagship trade event is the <strong>Palma International Boat Show</strong>, held at Moll Vell in Palma and Marina Port de Mallorca. It kicks off the Mediterranean's nautical season with hundreds of exhibitors and a fleet of yachts that is hard to match. Alongside it sit shows such as <strong>Baleart</strong> (craftsmanship) and the island's wider exhibition and congress ecosystem. For a brand in the nautical, luxury or premium-services sector, exhibiting here with a flawless stand is one of the most profitable commercial investments you can make, and this is where Standarte makes the difference: we turn your brand's space into a visitor magnet that delivers a high return.</p>\n        <p>We understand the specific operations of a mixed land-and-sea event like the Palma International Boat Show, as well as the technical regulations of the island's venues. This avoids surprises and delays during assembly, even in a demanding island logistics environment.</p>\n\n        <h2>3D design and bespoke carpentry from our in-house workshop</h2>\n        <p>A successful stand begins months before assembly. Our design phase is a meticulous process of brand engineering and visitor-flow optimisation: working from your company's corporate guidelines, we create an interactive 3D prototype that is 100% faithful to the final result, so your sales team can validate brand visibility, meeting areas and the integration of screens, counters and display cases before production begins.</p>\n        <p>One of our greatest advantages is having our own <strong>in-house workshop</strong> for high-quality carpentry and finishes. With no subcontractors, we keep full control over materials, deadlines and quality, using modern assembly techniques and certified materials for temporary architecture. Partial pre-assembly at the workshop reduces working time at the venue and is key to meeting deadlines on an island.</p>\n\n        <h2>Island logistics and turnkey assembly in Mallorca</h2>\n        <p>Final assembly is the finishing touch to our turnkey service. We coordinate transport directly — including shipping to the island — along with packing, on-site assembly, the electrical installation of spotlights and screens, graphics fitting and the final clean. Your team simply needs to arrive on the first day of the show and will find a fully operational corporate space, ready to capture leads. We also handle every technical formality the venue requires — stamped projects, fire-retardancy certificates, electrical validations, risk assessments and insurance — for a smooth approval.</p>\n        <p>We plan the maritime and materials logistics well in advance so that being on an island is never a problem, giving agencies and direct exhibitors a single point of contact for design, production, logistics and assembly in Mallorca.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Do you design and assemble stands at the Palma International Boat Show?",
+          "a": "Yes. We work at the Palma International Boat Show (Moll Vell and Marina Port de Mallorca) and at other venues across the island. We understand the land-and-sea operations and the technical regulations for an assembly with no surprises."
+        },
+        {
+          "q": "How do you handle logistics, given that it's an island?",
+          "a": "We plan the maritime transport of structures and materials well in advance and maximise pre-assembly at our workshop, so that being on an island affects neither deadlines nor build quality."
+        },
+        {
+          "q": "Is the service turnkey?",
+          "a": "Yes. We take care of everything: 3D design, production, transport (including shipping), assembly, electrical installation, graphics, final cleaning and the venue's technical validations. Your team only needs to show up on the first day of the show."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Mallorca",
+      "title": "Design und Montage von Messeständen auf Mallorca | Palma International Boat Show | Standarte",
+      "h1": "Maßgeschneidertes Design und Montage von Messeständen auf Mallorca",
+      "introText": "Standarte entwirft, fertigt und montiert Messestände auf Mallorca, dem nautischen und Superyacht-Zentrum des Mittelmeers und Austragungsort der Palma International Boat Show. Mit mehr als 20 Jahren Erfahrung und eigener Werkstatt steuern wir jede Phase: 3D-Design, maßgefertigte Schreinerei, Insellogistik und Montage mit Validierungen direkt auf dem Messegelände.",
+      "body": "\n        <h2>Mallorca, die nautische Hauptstadt des Mittelmeers</h2>\n        <p>Mallorca ist eines der großen nautischen und Superyacht-Drehkreuze der Welt, und sein wichtigstes Messeereignis ist die <strong>Palma International Boat Show</strong>, die am Moll Vell in Palma und in der Marina Port de Mallorca stattfindet und mit Hunderten von Ausstellern und einer kaum zu übertreffenden Yachtflotte den Auftakt der nautischen Saison im Mittelmeer markiert. Hinzu kommen Veranstaltungen wie <strong>Baleart</strong> (Kunsthandwerk) sowie das gesamte Messe- und Kongressökosystem der Insel. Für eine Marke aus dem nautischen Sektor, dem Luxussegment oder dem Premium-Dienstleistungsbereich gehört ein Auftritt mit einem makellosen Stand hier zu den rentabelsten kommerziellen Investitionen, und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir kennen die spezifische Abwicklung eines gemischten Land-See-Events wie der Palma International Boat Show sowie die technischen Vorschriften der Messegelände auf der Insel, was Überraschungen und Verzögerungen bei der Montage vermeidet, selbst in einem anspruchsvollen Umfeld der Insellogistik.</p>\n\n        <h2>3D-Design und maßgefertigte Schreinerei aus eigener Werkstatt</h2>\n        <p>Der Erfolg eines Standes beginnt Monate vor der Montage. Unsere Designphase ist ein sorgfältiger Prozess aus Marken-Engineering und Optimierung des Besucherflusses: Ausgehend von den Unternehmensrichtlinien Ihres Hauses erstellen wir einen interaktiven 3D-Prototyp, der dem Endergebnis zu 100 % entspricht, sodass Ihr Vertriebsteam die Sichtbarkeit der Marke, die Besprechungszonen sowie die Integration von Bildschirmen, Countern und Vitrinen überprüfen kann, bevor die Fertigung beginnt.</p>\n        <p>Einer unserer größten Vorteile ist unsere <strong>eigene Werkstatt</strong> für Schreinerei und hochwertige Oberflächen. Ohne Subunternehmer behalten wir die vollständige Kontrolle über Materialien, Termine und Qualität, mit modernen Montagetechniken und zertifizierten Materialien für temporäre Architektur. Die teilweise Vormontage in der Werkstatt verkürzt die Arbeitszeit auf dem Messegelände und ist entscheidend, um Termine auf einer Insel einzuhalten.</p>\n\n        <h2>Insellogistik und schlüsselfertige Montage auf Mallorca</h2>\n        <p>Die Endmontage ist der krönende Abschluss unseres schlüsselfertigen Service. Wir koordinieren direkt den Transport — einschließlich des Seetransports auf die Insel — sowie die Verpackung, die Montage vor Ort, die Elektroinstallation von Scheinwerfern und Bildschirmen, die Anbringung der Grafiken und die abschließende Reinigung. Ihr Team muss lediglich am ersten Messetag erscheinen und findet einen voll funktionsfähigen Firmenbereich vor, bereit zur Kontaktgewinnung. Darüber hinaus übernehmen wir sämtliche technischen Formalitäten, die das Messegelände verlangt — beglaubigte Projekte, Brandschutzzertifikate, elektrische Validierungen, Risikobewertungen und Versicherungen —, für eine reibungslose Genehmigung.</p>\n        <p>Wir planen die See- und Materiallogistik rechtzeitig, damit die Insellage niemals ein Problem darstellt, und bieten Agenturen und Direktausstellern einen einzigen Ansprechpartner für Design, Produktion, Logistik und Montage auf Mallorca.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Entwerfen und montieren Sie Stände auf der Palma International Boat Show?",
+          "a": "Ja. Wir arbeiten auf der Palma International Boat Show (Moll Vell und Marina Port de Mallorca) sowie auf weiteren Messegeländen der Insel. Wir kennen die Land-See-Abwicklung und die technischen Vorschriften für eine Montage ohne Überraschungen."
+        },
+        {
+          "q": "Wie organisieren Sie die Logistik, da es sich um eine Insel handelt?",
+          "a": "Wir planen den Seetransport von Strukturen und Materialien rechtzeitig und maximieren die Vormontage in unserer eigenen Werkstatt, sodass die Insellage weder die Termine noch die Qualität der Montage beeinträchtigt."
+        },
+        {
+          "q": "Ist der Service schlüsselfertig?",
+          "a": "Ja. Wir kümmern uns um alles: 3D-Design, Fertigung, Transport (einschließlich Seetransport), Montage, Elektroinstallation, Grafik, abschließende Reinigung und die technischen Validierungen des Messegeländes. Ihr Team erscheint lediglich am ersten Messetag."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Maiorca",
+      "title": "Design e montagem de stands em Maiorca | Palma International Boat Show | Standarte",
+      "h1": "Design e montagem de stands de feira à medida em Maiorca",
+      "introText": "A Standarte projeta, fabrica e monta stands de feira em Maiorca, epicentro náutico e de superiates do Mediterrâneo e sede do Palma International Boat Show. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, marcenaria à medida, logística insular e montagem com validações no recinto.",
+      "body": "\n        <h2>Maiorca, capital náutica do Mediterrâneo</h2>\n        <p>Maiorca é um dos grandes polos náuticos e de superiates do mundo, e o seu grande certame de feira é o <strong>Palma International Boat Show</strong>, realizado no Moll Vell de Palma e na Marina Port de Mallorca, que marca o arranque da época náutica do Mediterrâneo com centenas de expositores e uma frota de iates difícil de igualar. A isto somam-se certames como o <strong>Baleart</strong> (artesanato) e o ecossistema de feiras e congressos da ilha. Para uma marca do setor náutico, do luxo ou dos serviços premium, expor aqui com um stand impecável é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte faz a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Conhecemos a operação específica de um evento misto terra-mar como o Palma International Boat Show e a regulamentação técnica dos recintos da ilha, o que evita surpresas e atrasos na montagem, mesmo num contexto de logística insular exigente.</p>\n\n        <h2>Design 3D e marcenaria à medida a partir de oficina própria</h2>\n        <p>O sucesso de um stand começa meses antes da montagem. A nossa fase de design é um processo meticuloso de engenharia de marca e otimização do fluxo de visitantes: a partir das diretrizes corporativas da sua empresa, criamos um protótipo 3D interativo 100% fiel ao resultado final, de modo que a sua equipa comercial possa validar a visibilidade da marca, as zonas de reunião e a integração de ecrãs, balcões e vitrinas antes de a fabricação arrancar.</p>\n        <p>Uma das nossas maiores vantagens é dispor de <strong>oficina própria</strong> de marcenaria e acabamentos de alta qualidade. Sem subcontratações, mantemos o controlo total sobre materiais, prazos e qualidade, com técnicas modernas de montagem e materiais certificados para arquitetura efémera. A pré-montagem parcial na oficina reduz o tempo de trabalho no recinto e é fundamental para cumprir prazos numa ilha.</p>\n\n        <h2>Logística insular e montagem chave na mão em Maiorca</h2>\n        <p>A montagem final é o remate do nosso serviço chave na mão. Coordenamos diretamente o transporte —incluindo o marítimo até à ilha— e o embalamento, a montagem in loco, a instalação elétrica de focos e ecrãs, a colocação da gráfica e a limpeza final. A sua equipa só tem de comparecer no primeiro dia de feira e encontrará um espaço corporativo plenamente operacional e pronto para captar contactos. Além disso, tratamos de todas as formalidades técnicas que o recinto exige —projetos visados, certificados de ignifugação, validações elétricas, avaliação de riscos e seguros— para uma aprovação fluida.</p>\n        <p>Planeamos com antecedência a logística marítima e de materiais para que a insularidade nunca seja um problema, oferecendo a agências e expositores diretos um único interlocutor para design, produção, logística e montagem em Maiorca.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Projetam e montam stands no Palma International Boat Show?",
+          "a": "Sim. Trabalhamos no Palma International Boat Show (Moll Vell e Marina Port de Mallorca) e noutros recintos da ilha. Conhecemos a operação terra-mar e a regulamentação técnica para uma montagem sem surpresas."
+        },
+        {
+          "q": "Como gerem a logística por ser uma ilha?",
+          "a": "Planeamos com antecedência o transporte marítimo de estruturas e materiais e maximizamos a pré-montagem na nossa oficina, de modo que a insularidade não afete os prazos nem a qualidade da montagem."
+        },
+        {
+          "q": "O serviço é chave na mão?",
+          "a": "Sim. Tratamos de tudo: design 3D, fabricação, transporte (incluindo o marítimo), montagem, instalação elétrica, gráfica, limpeza final e as validações técnicas do recinto. A sua equipa só comparece no primeiro dia de feira."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Majorque",
+      "title": "Conception et montage de stands à Majorque | Palma International Boat Show | Standarte",
+      "h1": "Conception et montage de stands de salon sur mesure à Majorque",
+      "introText": "Standarte conçoit, fabrique et monte des stands de salon à Majorque, épicentre nautique et des superyachts de la Méditerranée et siège du Palma International Boat Show. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque étape : conception 3D, menuiserie sur mesure, logistique insulaire et montage avec validations sur le parc des expositions.",
+      "body": "\n        <h2>Majorque, capitale nautique de la Méditerranée</h2>\n        <p>Majorque est l'un des grands hubs nautiques et de superyachts au monde, et son grand rendez-vous salonnier est le <strong>Palma International Boat Show</strong>, organisé sur le Moll Vell de Palma et à la Marina Port de Mallorca, qui marque le coup d'envoi de la saison nautique méditerranéenne avec des centaines d'exposants et une flotte de yachts difficile à égaler. À cela s'ajoutent des manifestations comme <strong>Baleart</strong> (artisanat) et l'écosystème de salons et de congrès de l'île. Pour une marque du secteur nautique, du luxe ou des services premium, exposer ici avec un stand impeccable est l'un des investissements commerciaux les plus rentables, et c'est là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs à fort retour.</p>\n        <p>Nous connaissons les modalités spécifiques d'un événement mixte terre-mer comme le Palma International Boat Show ainsi que la réglementation technique des parcs des expositions de l'île, ce qui évite les mauvaises surprises et les retards au montage, même dans un environnement de logistique insulaire exigeant.</p>\n\n        <h2>Conception 3D et menuiserie sur mesure depuis un atelier propre</h2>\n        <p>La réussite d'un stand commence des mois avant le montage. Notre phase de conception est un processus méticuleux d'ingénierie de marque et d'optimisation du flux de visiteurs : à partir des directives corporate de votre entreprise, nous créons un prototype 3D interactif 100 % fidèle au résultat final, afin que votre équipe commerciale puisse valider la visibilité de la marque, les zones de réunion et l'intégration des écrans, comptoirs et vitrines avant le lancement de la fabrication.</p>\n        <p>L'un de nos plus grands atouts est de disposer d'un <strong>atelier propre</strong> de menuiserie et de finitions haut de gamme. Sans sous-traitance, nous gardons la maîtrise totale des matériaux, des délais et de la qualité, avec des techniques d'assemblage modernes et des matériaux certifiés pour l'architecture éphémère. Le prémontage partiel en atelier réduit le temps de travail sur le parc des expositions et est déterminant pour tenir les délais sur une île.</p>\n\n        <h2>Logistique insulaire et montage clé en main à Majorque</h2>\n        <p>Le montage final est l'aboutissement de notre service clé en main. Nous coordonnons directement le transport — y compris maritime vers l'île — et l'emballage, le montage sur place, l'installation électrique des spots et des écrans, la pose de la signalétique et le nettoyage final. Votre équipe n'a qu'à se présenter le premier jour du salon et trouvera un espace corporate pleinement opérationnel et prêt à capter des contacts. De plus, nous gérons toutes les formalités techniques exigées par le parc des expositions — projets visés, certificats d'ignifugation, validations électriques, évaluation des risques et assurances — pour une approbation fluide.</p>\n        <p>Nous planifions à l'avance la logistique maritime et des matériaux pour que l'insularité ne soit jamais un problème, en offrant aux agences et aux exposants directs un interlocuteur unique pour la conception, la production, la logistique et le montage à Majorque.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Concevez-vous et montez-vous des stands au Palma International Boat Show ?",
+          "a": "Oui. Nous intervenons au Palma International Boat Show (Moll Vell et Marina Port de Mallorca) ainsi que sur d'autres parcs des expositions de l'île. Nous maîtrisons les modalités terre-mer et la réglementation technique pour un montage sans mauvaises surprises."
+        },
+        {
+          "q": "Comment gérez-vous la logistique étant donné qu'il s'agit d'une île ?",
+          "a": "Nous planifions à l'avance le transport maritime des structures et des matériaux et maximisons le prémontage dans notre atelier propre, de sorte que l'insularité n'affecte ni les délais ni la qualité du montage."
+        },
+        {
+          "q": "Le service est-il clé en main ?",
+          "a": "Oui. Nous nous occupons de tout : conception 3D, fabrication, transport (y compris maritime), montage, installation électrique, signalétique, nettoyage final et validations techniques du parc des expositions. Votre équipe n'a qu'à se présenter le premier jour du salon."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Maiorca",
+      "title": "Progettazione e montaggio di stand a Maiorca | Palma International Boat Show | Standarte",
+      "h1": "Progettazione e montaggio di stand fieristici su misura a Maiorca",
+      "introText": "Standarte progetta, produce e monta stand fieristici a Maiorca, epicentro nautico e dei superyacht del Mediterraneo e sede del Palma International Boat Show. Oltre 20 anni di esperienza e laboratorio di proprietà per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica insulare e montaggio con validazioni nel quartiere fieristico.",
+      "body": "\n        <h2>Maiorca, capitale nautica del Mediterraneo</h2>\n        <p>Maiorca è uno dei grandi hub nautici e dei superyacht del mondo, e il suo grande appuntamento fieristico è il <strong>Palma International Boat Show</strong>, che si tiene al Moll Vell di Palma e alla Marina Port de Mallorca, segnando l'avvio della stagione nautica del Mediterraneo con centinaia di espositori e una flotta di yacht difficile da eguagliare. A ciò si aggiungono manifestazioni come <strong>Baleart</strong> (artigianato) e l'ecosistema fieristico e congressuale dell'isola. Per un marchio del settore nautico, del lusso o dei servizi premium, esporre qui con uno stand impeccabile è uno degli investimenti commerciali più redditizi, ed è proprio qui che Standarte fa la differenza: trasformiamo lo spazio del vostro marchio in una calamita di visitatori ad alto rendimento.</p>\n        <p>Conosciamo le dinamiche operative specifiche di un evento misto terra-mare come il Palma International Boat Show e la normativa tecnica dei quartieri fieristici dell'isola, il che evita sorprese e ritardi nel montaggio, anche in un contesto di logistica insulare impegnativo.</p>\n\n        <h2>Progettazione 3D e falegnameria su misura dal laboratorio di proprietà</h2>\n        <p>Il successo di uno stand inizia mesi prima del montaggio. La nostra fase di progettazione è un processo meticoloso di ingegneria del marchio e di ottimizzazione del flusso dei visitatori: a partire dalle linee guida aziendali della vostra impresa, creiamo un prototipo 3D interattivo fedele al 100% al risultato finale, in modo che il vostro team commerciale possa validare la visibilità del marchio, le aree riunioni e l'integrazione di schermi, banconi e vetrine prima che inizi la produzione.</p>\n        <p>Uno dei nostri maggiori vantaggi è disporre di un <strong>laboratorio di proprietà</strong> per falegnameria e finiture di alta qualità. Senza subappalti, manteniamo il controllo totale su materiali, tempi e qualità, con tecniche moderne di assemblaggio e materiali certificati per l'architettura effimera. Il premontaggio parziale in laboratorio riduce i tempi di lavoro nel quartiere fieristico ed è fondamentale per rispettare le scadenze su un'isola.</p>\n\n        <h2>Logistica insulare e montaggio chiavi in mano a Maiorca</h2>\n        <p>Il montaggio finale è il tocco conclusivo del nostro servizio chiavi in mano. Coordiniamo direttamente il trasporto —incluso quello marittimo verso l'isola— e l'imballaggio, il montaggio in loco, l'installazione elettrica di faretti e schermi, l'applicazione della grafica e la pulizia finale. Il vostro team deve solo presentarsi il primo giorno di fiera e troverà uno spazio aziendale pienamente operativo e pronto ad acquisire contatti. Inoltre, gestiamo tutte le formalità tecniche richieste dal quartiere fieristico —progetti vistati, certificati di ignifugazione, validazioni elettriche, valutazione dei rischi e assicurazioni— per un'approvazione senza intoppi.</p>\n        <p>Pianifichiamo con anticipo la logistica marittima e dei materiali affinché l'insularità non sia mai un problema, offrendo ad agenzie ed espositori diretti un unico interlocutore per progettazione, produzione, logistica e montaggio a Maiorca.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Progettate e montate stand al Palma International Boat Show?",
+          "a": "Sì. Lavoriamo al Palma International Boat Show (Moll Vell e Marina Port de Mallorca) e in altri quartieri fieristici dell'isola. Conosciamo le dinamiche operative terra-mare e la normativa tecnica per un montaggio senza sorprese."
+        },
+        {
+          "q": "Come gestite la logistica trattandosi di un'isola?",
+          "a": "Pianifichiamo con anticipo il trasporto marittimo di strutture e materiali e massimizziamo il premontaggio nel nostro laboratorio, in modo che l'insularità non incida né sui tempi né sulla qualità del montaggio."
+        },
+        {
+          "q": "Il servizio è chiavi in mano?",
+          "a": "Sì. Ci occupiamo di tutto: progettazione 3D, produzione, trasporto (incluso quello marittimo), montaggio, installazione elettrica, grafica, pulizia finale e le validazioni tecniche del quartiere fieristico. Il vostro team deve solo presentarsi il primo giorno di fiera."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Mallorca",
+      "title": "Ontwerp en montage van beursstands op Mallorca | Palma International Boat Show | Standarte",
+      "h1": "Ontwerp en montage van maatwerk-beursstands op Mallorca",
+      "introText": "Standarte ontwerpt, produceert en monteert beursstands op Mallorca, het nautische epicentrum en superjacht-knooppunt van de Middellandse Zee en gastheer van de Palma International Boat Show. Met meer dan 20 jaar ervaring en een eigen werkplaats beheersen we elke fase: 3D-ontwerp, maatwerk-schrijnwerk, eilandlogistiek en montage met validatie in het beurscomplex.",
+      "body": "\n        <h2>Mallorca, nautische hoofdstad van de Middellandse Zee</h2>\n        <p>Mallorca is een van de grote nautische en superjacht-knooppunten ter wereld, en het belangrijkste beursevenement is de <strong>Palma International Boat Show</strong>, gehouden aan de Moll Vell van Palma en in Marina Port de Mallorca, die met honderden exposanten en een moeilijk te evenaren vloot jachten het startsein geeft voor het nautische seizoen in de Middellandse Zee. Daarbij komen evenementen als <strong>Baleart</strong> (ambacht) en het bredere beurs- en congresecosysteem van het eiland. Voor een merk in de nautische sector, de luxe of de premiumdiensten is hier exposeren met een onberispelijke stand een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we veranderen de ruimte van uw merk in een bezoekersmagneet met hoog rendement.</p>\n        <p>We kennen de specifieke werking van een gemengd land-zee-evenement als de Palma International Boat Show en de technische normen van de beurscomplexen op het eiland, wat verrassingen en vertragingen tijdens de montage voorkomt, zelfs in een veeleisende eilandlogistieke omgeving.</p>\n\n        <h2>3D-ontwerp en maatwerk-schrijnwerk vanuit een eigen werkplaats</h2>\n        <p>Het succes van een stand begint maanden vóór de montage. Onze ontwerpfase is een nauwgezet traject van merk-engineering en optimalisatie van de bezoekersstroom: op basis van de bedrijfsrichtlijnen van uw onderneming maken we een interactief 3D-prototype dat 100% getrouw is aan het eindresultaat, zodat uw salesteam de zichtbaarheid van het merk, de vergaderzones en de integratie van schermen, toonbanken en vitrines kan beoordelen vóór de productie van start gaat.</p>\n        <p>Een van onze grootste voordelen is onze <strong>eigen werkplaats</strong> voor hoogwaardig schrijnwerk en afwerkingen. Zonder onderaannemers houden we volledige controle over materialen, planning en kwaliteit, met moderne montagetechnieken en gecertificeerde materialen voor tijdelijke architectuur. De gedeeltelijke voormontage in de werkplaats beperkt de opbouwtijd in het beurscomplex en is cruciaal om de deadlines op een eiland te halen.</p>\n\n        <h2>Eilandlogistiek en sleutelklare montage op Mallorca</h2>\n        <p>De eindmontage is het sluitstuk van onze sleutelklare aanpak. We coördineren rechtstreeks het transport — inclusief het maritieme transport naar het eiland — en de verpakking, de montage ter plaatse, de elektrische installatie van spots en schermen, het plaatsen van de grafiek en de eindschoonmaak. Uw team hoeft alleen op de eerste beursdag te verschijnen en treft een volledig werkende bedrijfsruimte aan, klaar om contacten te leggen. Bovendien verzorgen we alle technische formaliteiten die het beurscomplex eist — geviseerde projecten, brandwerendheidscertificaten, elektrische keuringen, risicobeoordeling en verzekeringen — voor een vlotte goedkeuring.</p>\n        <p>We plannen de maritieme en materiaallogistiek ruim van tevoren zodat het eilandkarakter nooit een probleem vormt, en bieden agentschappen en directe exposanten één aanspreekpunt voor ontwerp, productie, logistiek en montage op Mallorca.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Ontwerpen en monteren jullie stands op de Palma International Boat Show?",
+          "a": "Ja. We werken op de Palma International Boat Show (Moll Vell en Marina Port de Mallorca) en in andere beurscomplexen op het eiland. We kennen de land-zee-werking en de technische normen voor een montage zonder verrassingen."
+        },
+        {
+          "q": "Hoe regelen jullie de logistiek, aangezien het een eiland is?",
+          "a": "We plannen het maritieme transport van structuren en materialen ruim van tevoren en maximaliseren de voormontage in onze eigen werkplaats, zodat het eilandkarakter de deadlines noch de kwaliteit van de montage beïnvloedt."
+        },
+        {
+          "q": "Is de dienst sleutelklaar?",
+          "a": "Ja. We nemen alles op ons: 3D-ontwerp, productie, transport (inclusief maritiem), montage, elektrische installatie, grafiek, eindschoonmaak en de technische validaties van het beurscomplex. Uw team verschijnt alleen op de eerste beursdag."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "马略卡",
+      "title": "马略卡展台设计与搭建 | Palma International Boat Show | Standarte",
+      "h1": "马略卡定制展会展台设计与搭建",
+      "introText": "Standarte在马略卡为客户设计、制造并搭建展会展台。马略卡是地中海游艇与超级游艇的核心枢纽，也是Palma International Boat Show的举办地。我们拥有20多年经验和自有工厂，可全程掌控每一个环节：3D设计、定制木作、岛屿物流，以及在展览中心完成验收的现场搭建。",
+      "body": "\n        <h2>马略卡，地中海游艇之都</h2>\n        <p>马略卡是全球顶级的游艇与超级游艇枢纽之一，其最重要的展会盛事便是<strong>Palma International Boat Show</strong>。该展会在帕尔马的Moll Vell和Marina Port de Mallorca举办，以数百家参展商和难以匹敌的游艇阵容拉开地中海游艇季的序幕。此外，岛上还有<strong>Baleart</strong>（手工艺）等展会，以及完善的展会与会议生态。对于游艇、奢侈品或高端服务行业的品牌而言，在此以一座无可挑剔的展台参展，是回报最丰厚的商业投资之一，而这正是Standarte脱颖而出之处：我们将贵品牌的空间打造成高回报的访客磁石。</p>\n        <p>我们深谙Palma International Boat Show这类海陆结合活动的特殊运作方式，以及岛上各展览中心的技术规范，因此即使在要求严苛的岛屿物流环境中，也能避免搭建中的意外与延误。</p>\n\n        <h2>源自自有工厂的3D设计与定制木作</h2>\n        <p>展台的成功在搭建数月之前便已开始。我们的设计阶段是一项严谨的品牌工程与访客动线优化流程：依据贵公司的企业规范，我们制作出与最终成品100%一致的交互式3D原型，让贵方的商务团队能够在制造启动之前，验证品牌的可见度、洽谈区域，以及屏幕、展柜和陈列柜的整合方案。</p>\n        <p>我们最大的优势之一便是拥有<strong>自有工厂</strong>，承担木作与高品质饰面工程。无需外包，我们对材料、工期和质量保持全面掌控，采用现代化的组装工艺和经认证的临时建筑材料。在工厂进行部分预搭建可缩短在展览中心的作业时间，是在岛屿环境中如期交付的关键。</p>\n\n        <h2>岛屿物流与马略卡交钥匙搭建</h2>\n        <p>最终搭建是我们交钥匙服务的收尾环节。我们直接协调运输（包括前往岛屿的海运）与包装、现场搭建、射灯与屏幕的电气安装、图文的布置以及最终清洁。贵方团队只需在开展首日到场，即可拥有一个全面运转、随时可承接商机的企业空间。此外，我们还负责处理展览中心要求的所有技术手续——经审核的项目方案、防火认证、电气验收、风险评估与保险——以确保审批顺畅。</p>\n        <p>我们提前规划海运与材料物流，让岛屿区位永远不成为问题，并为代理机构与直接参展商提供一个集马略卡设计、生产、物流与搭建于一体的单一对接窗口。</p>\n      ",
+      "faqs": [
+        {
+          "q": "你们在Palma International Boat Show设计并搭建展台吗？",
+          "a": "是的。我们在Palma International Boat Show（Moll Vell与Marina Port de Mallorca）以及岛上其他展览中心承接业务。我们熟悉海陆结合的运作方式和技术规范，确保搭建毫无意外。"
+        },
+        {
+          "q": "身处岛屿，你们如何处理物流？",
+          "a": "我们提前规划结构件与材料的海运，并最大化利用自有工厂的预搭建，使岛屿区位不会影响工期或搭建质量。"
+        },
+        {
+          "q": "服务是交钥匙式的吗？",
+          "a": "是的。我们全程负责：3D设计、制造、运输（含海运）、搭建、电气安装、图文、最终清洁以及展览中心的技术验收。贵方团队只需在开展首日到场。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "मायोर्का",
+      "title": "मायोर्का में प्रदर्शनी स्टॉल का डिज़ाइन और असेंबली | Palma International Boat Show | Standarte",
+      "h1": "मायोर्का में अनुकूलित प्रदर्शनी स्टॉल का डिज़ाइन और असेंबली",
+      "introText": "Standarte मायोर्का में प्रदर्शनी स्टॉल का डिज़ाइन, निर्माण और असेंबली करता है — यह भूमध्यसागर का नौका और सुपरयॉट केंद्र है और Palma International Boat Show का मेज़बान है। 20 वर्षों से अधिक का अनुभव और अपना कारखाना हर चरण को नियंत्रित करने के लिए: 3D डिज़ाइन, अनुकूलित बढ़ईगीरी, द्वीपीय रसद और प्रदर्शनी स्थल पर सत्यापन के साथ असेंबली।",
+      "body": "\n        <h2>मायोर्का, भूमध्यसागर की नौका राजधानी</h2>\n        <p>मायोर्का दुनिया के सबसे बड़े नौका और सुपरयॉट केंद्रों में से एक है, और इसका प्रमुख प्रदर्शनी आयोजन <strong>Palma International Boat Show</strong> है, जो पाल्मा के Moll Vell और Marina Port de Mallorca में आयोजित होता है और सैकड़ों प्रदर्शकों तथा बेजोड़ यॉट बेड़े के साथ भूमध्यसागरीय नौका सीज़न की शुरुआत का प्रतीक है। इसके साथ <strong>Baleart</strong> (शिल्प) जैसे आयोजन और द्वीप का प्रदर्शनी एवं सम्मेलन तंत्र भी जुड़ता है। नौका, विलासिता या प्रीमियम सेवाओं के क्षेत्र के किसी ब्रांड के लिए, यहाँ एक त्रुटिहीन स्टॉल के साथ प्रदर्शन करना सबसे लाभदायक व्यावसायिक निवेशों में से एक है, और यहीं Standarte अंतर लाता है: हम आपके ब्रांड के स्थान को उच्च प्रतिफल वाले आगंतुक चुंबक में बदल देते हैं।</p>\n        <p>हम Palma International Boat Show जैसे ज़मीन-समुद्र मिश्रित आयोजन की विशिष्ट कार्यप्रणाली और द्वीप के प्रदर्शनी स्थलों के तकनीकी नियमों को जानते हैं, जिससे एक माँग भरे द्वीपीय रसद वातावरण में भी असेंबली के दौरान आश्चर्य और देरी टल जाती है।</p>\n\n        <h2>अपने कारखाने से 3D डिज़ाइन और अनुकूलित बढ़ईगीरी</h2>\n        <p>एक स्टॉल की सफलता असेंबली से महीनों पहले शुरू होती है। हमारा डिज़ाइन चरण ब्रांड इंजीनियरिंग और आगंतुक प्रवाह के अनुकूलन की एक सावधानीपूर्ण प्रक्रिया है: आपकी कंपनी के कॉर्पोरेट दिशानिर्देशों के आधार पर, हम अंतिम परिणाम के 100% अनुरूप एक इंटरैक्टिव 3D प्रोटोटाइप बनाते हैं, ताकि आपकी बिक्री टीम निर्माण शुरू होने से पहले ब्रांड की दृश्यता, बैठक क्षेत्रों और स्क्रीन, काउंटर तथा शोकेस के एकीकरण को सत्यापित कर सके।</p>\n        <p>हमारे सबसे बड़े लाभों में से एक है उच्च गुणवत्ता वाली बढ़ईगीरी और फिनिश के लिए <strong>अपना कारखाना</strong> होना। उपठेकेदारों के बिना, हम सामग्री, समयसीमा और गुणवत्ता पर पूर्ण नियंत्रण बनाए रखते हैं, आधुनिक असेंबली तकनीकों और अस्थायी वास्तुकला के लिए प्रमाणित सामग्री के साथ। कारखाने में आंशिक पूर्व-असेंबली प्रदर्शनी स्थल पर काम का समय घटाती है और एक द्वीप पर समयसीमा पूरी करने के लिए महत्वपूर्ण है।</p>\n\n        <h2>मायोर्का में द्वीपीय रसद और टर्नकी असेंबली</h2>\n        <p>अंतिम असेंबली हमारी टर्नकी सेवा का समापन है। हम सीधे परिवहन का समन्वय करते हैं — द्वीप तक समुद्री परिवहन सहित — और पैकेजिंग, स्थल पर असेंबली, स्पॉटलाइट तथा स्क्रीन की विद्युत स्थापना, ग्राफिक्स की स्थापना और अंतिम सफाई। आपकी टीम को बस प्रदर्शनी के पहले दिन उपस्थित होना है और उसे एक पूरी तरह संचालित कॉर्पोरेट स्थान संपर्क जुटाने के लिए तैयार मिलेगा। इसके अलावा, हम प्रदर्शनी स्थल द्वारा अपेक्षित सभी तकनीकी औपचारिकताएँ संभालते हैं — अनुमोदित परियोजनाएँ, अग्निरोधक प्रमाणपत्र, विद्युत सत्यापन, जोखिम मूल्यांकन और बीमा — एक सहज स्वीकृति के लिए।</p>\n        <p>हम समुद्री और सामग्री की रसद की पहले से योजना बनाते हैं ताकि द्वीपीय स्थिति कभी समस्या न बने, और एजेंसियों तथा प्रत्यक्ष प्रदर्शकों को मायोर्का में डिज़ाइन, उत्पादन, रसद और असेंबली के लिए एक ही संपर्क व्यक्ति प्रदान करते हैं।</p>\n      ",
+      "faqs": [
+        {
+          "q": "क्या आप Palma International Boat Show में स्टॉल का डिज़ाइन और असेंबली करते हैं?",
+          "a": "हाँ। हम Palma International Boat Show (Moll Vell और Marina Port de Mallorca) तथा द्वीप के अन्य प्रदर्शनी स्थलों में काम करते हैं। हम ज़मीन-समुद्र कार्यप्रणाली और तकनीकी नियमों को जानते हैं ताकि असेंबली बिना किसी आश्चर्य के हो।"
+        },
+        {
+          "q": "द्वीप होने के कारण आप रसद कैसे संभालते हैं?",
+          "a": "हम संरचनाओं और सामग्रियों के समुद्री परिवहन की पहले से योजना बनाते हैं और अपने कारखाने में पूर्व-असेंबली को अधिकतम करते हैं, ताकि द्वीपीय स्थिति न तो समयसीमा को और न ही असेंबली की गुणवत्ता को प्रभावित करे।"
+        },
+        {
+          "q": "क्या यह सेवा टर्नकी है?",
+          "a": "हाँ। हम सब कुछ संभालते हैं: 3D डिज़ाइन, निर्माण, परिवहन (समुद्री सहित), असेंबली, विद्युत स्थापना, ग्राफिक्स, अंतिम सफाई और प्रदर्शनी स्थल के तकनीकी सत्यापन। आपकी टीम को बस प्रदर्शनी के पहले दिन उपस्थित होना है।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "마요르카",
+      "title": "마요르카 전시 부스 디자인 및 조립 | Palma International Boat Show | Standarte",
+      "h1": "마요르카 맞춤형 전시 부스 디자인 및 조립",
+      "introText": "Standarte는 지중해 요트 및 슈퍼요트의 중심지이자 Palma International Boat Show가 열리는 마요르카에서 전시 부스를 디자인하고 제작하며 조립합니다. 20년 이상의 경험과 자체 공장을 바탕으로 3D 디자인, 맞춤 목공, 섬 물류, 전시장 현장 검증까지 모든 단계를 직접 관리합니다.",
+      "body": "\n        <h2>지중해 요트의 수도, 마요르카</h2>\n        <p>마요르카는 세계적인 요트 및 슈퍼요트 허브 중 하나이며, 이 섬의 대표 전시회는 팔마의 Moll Vell과 Marina Port de Mallorca에서 열리는 <strong>Palma International Boat Show</strong>입니다. 이 행사는 수백 개의 참가업체와 비할 데 없는 요트 선단과 함께 지중해 요트 시즌의 개막을 알립니다. 여기에 <strong>Baleart</strong>(공예) 같은 전시회와 섬의 전시·컨벤션 생태계가 더해집니다. 요트, 럭셔리, 프리미엄 서비스 분야의 브랜드에게 흠잡을 데 없는 부스로 이곳에 참가하는 것은 가장 수익성 높은 상업적 투자 중 하나이며, 바로 이 지점에서 Standarte가 차별화됩니다. 우리는 귀사 브랜드의 공간을 높은 수익을 가져다주는 방문객 유인 자석으로 바꿉니다.</p>\n        <p>우리는 Palma International Boat Show처럼 육지와 바다가 결합된 행사의 특수한 운영 방식과 섬 내 전시장의 기술 규정을 잘 알고 있어, 까다로운 섬 물류 환경에서도 조립 과정의 돌발 상황과 지연을 방지합니다.</p>\n\n        <h2>자체 공장에서의 3D 디자인과 맞춤 목공</h2>\n        <p>부스의 성공은 조립 몇 달 전부터 시작됩니다. 우리의 디자인 단계는 브랜드 엔지니어링과 방문객 동선 최적화의 치밀한 과정입니다. 귀사의 기업 가이드라인을 바탕으로 최종 결과물을 100% 충실히 재현하는 인터랙티브 3D 프로토타입을 제작하여, 제작이 시작되기 전에 귀사의 영업팀이 브랜드 가시성, 상담 공간, 스크린·카운터·진열장의 통합을 검증할 수 있습니다.</p>\n        <p>우리의 가장 큰 강점 중 하나는 고품질 목공과 마감을 위한 <strong>자체 공장</strong>을 보유하고 있다는 점입니다. 외주 없이 소재, 일정, 품질을 완전히 통제하며, 최신 조립 기법과 임시 건축용 인증 소재를 사용합니다. 공장에서의 부분 사전 조립은 전시장 현장 작업 시간을 줄여 주며, 섬에서 납기를 지키는 데 핵심적인 역할을 합니다.</p>\n\n        <h2>섬 물류와 마요르카 턴키 조립</h2>\n        <p>최종 조립은 우리 턴키 서비스의 마무리입니다. 우리는 섬으로의 해상 운송을 포함한 운송과 포장, 현장 조립, 조명 및 스크린 전기 설치, 그래픽 부착, 최종 청소까지 직접 조율합니다. 귀사의 팀은 전시 첫날에 도착하기만 하면 완전히 가동되어 상담 준비가 끝난 기업 공간을 마주하게 됩니다. 또한 전시장이 요구하는 모든 기술 절차—허가받은 설계도, 방염 인증, 전기 검증, 위험 평가, 보험—를 처리하여 원활한 승인을 보장합니다.</p>\n        <p>우리는 해상 및 자재 물류를 미리 계획하여 섬이라는 조건이 결코 문제가 되지 않도록 하며, 에이전시와 직접 참가업체 모두에게 마요르카에서의 디자인, 제작, 물류, 조립을 위한 단일 창구를 제공합니다.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Palma International Boat Show에서 부스를 디자인하고 조립하나요?",
+          "a": "네. 우리는 Palma International Boat Show(Moll Vell 및 Marina Port de Mallorca)와 섬의 다른 전시장에서 작업합니다. 육지와 바다가 결합된 운영 방식과 기술 규정을 잘 알고 있어 돌발 상황 없는 조립을 보장합니다."
+        },
+        {
+          "q": "섬이라는 점에서 물류는 어떻게 관리하나요?",
+          "a": "우리는 구조물과 자재의 해상 운송을 미리 계획하고 자체 공장에서의 사전 조립을 극대화하여, 섬이라는 조건이 납기나 조립 품질에 영향을 주지 않도록 합니다."
+        },
+        {
+          "q": "서비스가 턴키 방식인가요?",
+          "a": "네. 우리는 3D 디자인, 제작, 운송(해상 운송 포함), 조립, 전기 설치, 그래픽, 최종 청소, 전시장 기술 검증까지 모든 것을 책임집니다. 귀사의 팀은 전시 첫날에 도착하기만 하면 됩니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "マヨルカ",
+      "title": "マヨルカでの展示会ブース設計・組立 | Palma International Boat Show | Standarte",
+      "h1": "マヨルカでのオーダーメイド展示会ブースの設計・組立",
+      "introText": "Standarteは、地中海のヨット・スーパーヨットの中心地であり、Palma International Boat Showの開催地でもあるマヨルカで、展示会ブースの設計・製作・組立を手がけています。20年以上の経験と自社工房を活かし、3D設計、オーダーメイドの木工、離島物流、展示会場での検証を伴う設営まで、各工程を直接管理します。",
+      "body": "\n        <h2>地中海のヨット文化の中心地、マヨルカ</h2>\n        <p>マヨルカは世界有数のヨット・スーパーヨットのハブであり、その最大の展示会が、パルマのMoll VellとMarina Port de Mallorcaで開催される<strong>Palma International Boat Show</strong>です。この展示会は地中海のヨットシーズンの幕開けを告げ、数百の出展企業と他に類を見ないヨットの大艦隊が集まります。さらに、<strong>Baleart</strong>（工芸品）をはじめとする催事や、島内の展示会・会議のエコシステムも広がっています。ヨット業界、ラグジュアリー、プレミアムサービスのブランドにとって、ここで完璧なブースを構えて出展することは、最も収益性の高い商業投資のひとつであり、まさにそこでStandarteが違いを生み出します。私たちは、貴社ブランドの空間を高い投資対効果をもたらす来場者の磁石へと変えます。</p>\n        <p>私たちは、Palma International Boat Showのような陸海一体型イベント特有の運営や、島内展示会場の技術規定を熟知しており、要求の厳しい離島物流の環境でも、設営時の想定外や遅延を防ぎます。</p>\n\n        <h2>自社工房による3D設計とオーダーメイド木工</h2>\n        <p>ブース成功の鍵は、組立の数か月前から始まっています。私たちの設計段階は、ブランドエンジニアリングと来場者動線の最適化に取り組む綿密な工程です。貴社のコーポレートガイドラインに基づき、最終的な仕上がりを100%忠実に再現するインタラクティブな3Dプロトタイプを作成し、製作が始まる前に営業チームがブランドの視認性、商談スペース、スクリーンやカウンター、ショーケースの統合を検証できるようにします。</p>\n        <p>当社の大きな強みのひとつが、木工と高品質な仕上げを担う<strong>自社工房</strong>を持つことです。外注に頼らず、素材・納期・品質を完全に管理し、最新の組立技術と仮設建築向けの認証素材を用います。工房での部分的な事前組立は、会場での作業時間を短縮し、島という環境で納期を守るための鍵となります。</p>\n\n        <h2>マヨルカでの離島物流とターンキー組立</h2>\n        <p>最終的な組立は、ターンキーサービスの総仕上げです。私たちは、島への海上輸送を含む輸送と梱包、現地での設営、スポットライトやスクリーンの電気設備、グラフィックの設置、最終清掃までを直接コーディネートします。貴社チームは展示会初日に来場するだけで、完全に機能し、商談獲得の準備が整ったコーポレート空間に出迎えられます。さらに私たちは、展示会場が求める技術的手続き——認可済みプロジェクト、防炎証明、電気検査、リスク評価、保険——をすべて代行し、スムーズな承認を実現します。</p>\n        <p>島という条件が決して問題にならないよう、海上物流と資材の手配を前もって計画し、代理店や直接出展者に対して、マヨルカでの設計・製作・物流・組立の単一窓口を提供します。</p>\n      ",
+      "faqs": [
+        {
+          "q": "Palma International Boat Showでブースの設計・組立をしてもらえますか？",
+          "a": "はい。私たちはPalma International Boat Show（Moll VellおよびMarina Port de Mallorca）や島内の他の展示会場で対応しています。陸海一体型の運営と技術規定を熟知しているため、想定外のない設営を実現します。"
+        },
+        {
+          "q": "島であることに伴う物流はどのように対応しますか？",
+          "a": "構造体や資材の海上輸送を前もって計画し、自社工房での事前組立を最大限に行うことで、離島であることが納期や組立品質に影響しないようにします。"
+        },
+        {
+          "q": "サービスはターンキーですか？",
+          "a": "はい。3D設計、製作、輸送（海上輸送を含む）、組立、電気設備、グラフィック、最終清掃、展示会場の技術検証まで、すべてを私たちが担います。貴社チームは展示会初日に来場するだけです。"
+        }
+      ]
+    }
+  },
+  "valencia": {
+    "es": {
+      "breadcrumb": "Valencia",
+      "title": "Diseño y montaje de stands en Valencia | Feria Valencia | Standarte",
+      "h1": "Diseño y montaje de stands feriales a medida en Valencia",
+      "introText": "Standarte diseña, fabrica y monta stands feriales en Valencia, una de las grandes plazas del Mediterráneo gracias a Feria Valencia. Más de 20 años de experiencia y taller propio para controlar cada fase: diseño 3D, carpintería a medida, logística y montaje con validaciones en el recinto.",
+      "body": "\n        <h2>Feria Valencia, gran plaza ferial del Mediterráneo</h2>\n        <p>Valencia es una de las capitales feriales de España y su epicentro es <strong>Feria Valencia</strong>, el recinto de exposiciones más antiguo del país y uno de los mayores de Europa, con una superficie enorme repartida en numerosos pabellones. Su programa reúne con fuerza los sectores del hábitat, la cerámica, la madera, el mueble, la jardinería y la gastronomía. Para una empresa que quiere abrir mercado en el arco mediterráneo, exponer aquí con un stand bien resuelto es una de las inversiones comerciales más rentables, y ahí es donde Standarte marca la diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Trabajamos las ferias más relevantes de Feria Valencia —entre ellas <strong>Cevisama</strong> (cerámica y baño), el ecosistema de <strong>Feria Hábitat València</strong>, <strong>Textilhogar</strong> y <strong>Espacio Cocina SICI</strong>, <strong>FIMMA + Maderalia</strong> (madera y mueble), <strong>Iberflora</strong>, <strong>Gastrónoma</strong> y <strong>Eurobrico</strong>— conociendo la normativa técnica del recinto, lo que evita sorpresas y retrasos en el montaje.</p>\n\n        <h2>Diseño 3D y carpintería a medida desde taller propio</h2>\n        <p>El éxito de un stand empieza meses antes del montaje. Nuestra fase de diseño es un proceso meticuloso de ingeniería de marca y optimización del flujo de visitantes: a partir de las directrices corporativas de su empresa, creamos un prototipo 3D interactivo 100% fiel al resultado final, de modo que su equipo comercial pueda validar la visibilidad de la marca, las zonas de reunión y la integración de pantallas, mostradores y vitrinas antes de que arranque la fabricación.</p>\n        <p>Una de nuestras mayores ventajas es disponer de <strong>taller propio</strong> de carpintería y acabados de alta calidad. Sin subcontratas, mantenemos el control total sobre materiales, plazos y calidad, con técnicas modernas de ensamblaje y materiales certificados para arquitectura efímera. El premontaje parcial en taller reduce el tiempo de trabajo en el recinto y garantiza un acabado impecable incluso bajo la luz intensa de la feria.</p>\n\n        <h2>Logística y montaje llave en mano en Valencia</h2>\n        <p>El montaje final es el broche de nuestro servicio llave en mano. Coordinamos directamente el transporte y embalaje, el montaje in situ, la instalación eléctrica de focos y pantallas, la colocación de la gráfica y la limpieza final. Su equipo solo tiene que presentarse el primer día de feria y encontrará un espacio corporativo plenamente operativo y listo para captar contactos. Además, gestionamos todas las formalidades técnicas que exige el recinto —proyectos visados, certificados de ignifugación, validaciones eléctricas, evaluación de riesgos y seguros— para una aprobación fluida en Feria Valencia.</p>\n        <p>Nuestra estructura nos permite atender Valencia y todo el arco mediterráneo con la misma agilidad que el resto de la península, ofreciendo a agencias y expositores directos un único interlocutor para diseño, producción, logística y montaje.</p>\n      ",
+      "faqs": [
+        {
+          "q": "¿Diseñan y montan stands en Feria Valencia?",
+          "a": "Sí. Trabajamos habitualmente en Feria Valencia, en ferias como Cevisama, Feria Hábitat València, FIMMA + Maderalia, Iberflora o Gastrónoma. Conocemos su normativa técnica para un montaje sin sorpresas."
+        },
+        {
+          "q": "¿Tienen taller propio o subcontratan la fabricación?",
+          "a": "Disponemos de taller propio de carpintería y acabados. Sin intermediarios, controlamos al 100% materiales, plazos y calidad, y reducimos el tiempo de montaje en el recinto mediante premontaje en taller."
+        },
+        {
+          "q": "¿El servicio es llave en mano?",
+          "a": "Sí. Nos encargamos de todo: diseño 3D, fabricación, transporte, montaje, instalación eléctrica, gráfica, limpieza final y las validaciones técnicas del recinto. Su equipo solo se presenta el primer día de feria."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Valencia",
+      "title": "Exhibition Stand Design and Assembly in Valencia | Feria Valencia | Standarte",
+      "h1": "Custom Exhibition Stand Design and Assembly in Valencia",
+      "introText": "Standarte designs, builds and assembles exhibition stands in Valencia, one of the great trade-fair hubs of the Mediterranean thanks to Feria Valencia. With more than 20 years of experience and an in-house workshop, we control every phase: 3D design, custom joinery, logistics and on-site assembly with full validation at the venue.",
+      "body": "\n        <h2>Feria Valencia, the Mediterranean's leading trade-fair hub</h2>\n        <p>Valencia is one of Spain's foremost exhibition cities, and its epicentre is <strong>Feria Valencia</strong>, the oldest exhibition venue in the country and one of the largest in Europe, with a vast surface area spread across numerous halls. Its calendar brings together the habitat, ceramics, wood, furniture, gardening and gastronomy sectors with real force. For any company looking to open up the Mediterranean market, exhibiting here with a well-resolved stand is one of the most profitable commercial investments you can make, and that is exactly where Standarte makes the difference: we turn your brand's space into a magnet for visitors with a high return.</p>\n        <p>We work the most important fairs at Feria Valencia, among them <strong>Cevisama</strong> (ceramics and bathroom), the <strong>Feria Hábitat València</strong> ecosystem, <strong>Textilhogar</strong> and <strong>Espacio Cocina SICI</strong>, <strong>FIMMA + Maderalia</strong> (wood and furniture), <strong>Iberflora</strong>, <strong>Gastrónoma</strong> and <strong>Eurobrico</strong>, and we know the venue's technical regulations inside out, which avoids surprises and delays during assembly.</p>\n\n        <h2>3D design and custom joinery from our in-house workshop</h2>\n        <p>A stand's success begins months before assembly. Our design phase is a meticulous process of brand engineering and visitor-flow optimisation: starting from your company's corporate guidelines, we create an interactive 3D prototype that is 100% faithful to the final result, so that your sales team can validate brand visibility, meeting areas and the integration of screens, counters and display cabinets before production begins.</p>\n        <p>One of our greatest advantages is having an <strong>in-house workshop</strong> for high-quality joinery and finishes. With no subcontractors, we keep full control over materials, deadlines and quality, using modern assembly techniques and certified materials for temporary architecture. Partial pre-assembly in the workshop reduces on-site working time at the venue and guarantees a flawless finish even under the intense lighting of the fair.</p>\n\n        <h2>Turnkey logistics and assembly in Valencia</h2>\n        <p>Final assembly is the finishing touch of our turnkey service. We coordinate transport and packaging, on-site assembly, the electrical installation of spotlights and screens, the placement of graphics and the final cleaning directly. Your team only has to show up on the first day of the fair to find a fully operational corporate space ready to capture leads. We also handle all the technical formalities the venue requires, including stamped engineering projects, fire-retardant certificates, electrical validations, risk assessments and insurance, for smooth approval at Feria Valencia.</p>\n        <p>Our structure allows us to serve Valencia and the entire Mediterranean arc with the same agility as the rest of the peninsula, offering agencies and direct exhibitors a single point of contact for design, production, logistics and assembly.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Do you design and assemble stands at Feria Valencia?",
+          "a": "Yes. We work regularly at Feria Valencia, at fairs such as Cevisama, Feria Hábitat València, FIMMA + Maderalia, Iberflora and Gastrónoma. We know its technical regulations for an assembly with no surprises."
+        },
+        {
+          "q": "Do you have your own workshop or do you subcontract production?",
+          "a": "We have our own in-house workshop for joinery and finishes. With no intermediaries, we control materials, deadlines and quality 100%, and we reduce on-site assembly time at the venue through workshop pre-assembly."
+        },
+        {
+          "q": "Is the service turnkey?",
+          "a": "Yes. We take care of everything: 3D design, production, transport, assembly, electrical installation, graphics, final cleaning and the venue's technical validations. Your team only has to show up on the first day of the fair."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Valencia",
+      "title": "Design und Montage von Messeständen in Valencia | Feria Valencia | Standarte",
+      "h1": "Design und Montage maßgefertigter Messestände in Valencia",
+      "introText": "Standarte entwirft, fertigt und montiert Messestände in Valencia, einem der großen Messeplätze des Mittelmeerraums dank der Feria Valencia. Über 20 Jahre Erfahrung und eine eigene Werkstatt, um jede Phase zu kontrollieren: 3D-Design, maßgefertigte Tischlerei, Logistik und Montage mit Abnahmen auf dem Messegelände.",
+      "body": "\n        <h2>Feria Valencia, großer Messeplatz des Mittelmeerraums</h2>\n        <p>Valencia ist eine der Messehauptstädte Spaniens, und ihr Epizentrum ist die <strong>Feria Valencia</strong>, das älteste Ausstellungsgelände des Landes und eines der größten Europas, mit einer gewaltigen Fläche, die sich auf zahlreiche Hallen verteilt. Ihr Programm vereint mit Nachdruck die Branchen Wohnen, Keramik, Holz, Möbel, Garten und Gastronomie. Für ein Unternehmen, das sich den Markt im Mittelmeerbogen erschließen möchte, ist es eine der rentabelsten kommerziellen Investitionen, hier mit einem durchdacht gestalteten Stand auszustellen, und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir betreuen die bedeutendsten Messen der Feria Valencia – darunter <strong>Cevisama</strong> (Keramik und Bad), das Ökosystem der <strong>Feria Hábitat València</strong>, <strong>Textilhogar</strong> und <strong>Espacio Cocina SICI</strong>, <strong>FIMMA + Maderalia</strong> (Holz und Möbel), <strong>Iberflora</strong>, <strong>Gastrónoma</strong> und <strong>Eurobrico</strong> – und kennen die technischen Vorschriften des Messegeländes, was Überraschungen und Verzögerungen bei der Montage vermeidet.</p>\n\n        <h2>3D-Design und maßgefertigte Tischlerei aus eigener Werkstatt</h2>\n        <p>Der Erfolg eines Standes beginnt Monate vor der Montage. Unsere Designphase ist ein akribischer Prozess aus Marken-Engineering und Optimierung des Besucherflusses: Auf Grundlage der Corporate-Richtlinien Ihres Unternehmens erstellen wir einen interaktiven 3D-Prototyp, der dem Endergebnis zu 100 % entspricht, sodass Ihr Vertriebsteam die Sichtbarkeit der Marke, die Besprechungszonen und die Integration von Bildschirmen, Theken und Vitrinen prüfen kann, bevor die Fertigung beginnt.</p>\n        <p>Einer unserer größten Vorteile ist unsere <strong>eigene Werkstatt</strong> für Tischlerei und hochwertige Oberflächen. Ohne Subunternehmer behalten wir die volle Kontrolle über Materialien, Termine und Qualität, mit modernen Montagetechniken und zertifizierten Materialien für temporäre Architektur. Die teilweise Vormontage in der Werkstatt verkürzt die Arbeitszeit auf dem Messegelände und garantiert ein makelloses Finish, selbst unter dem intensiven Licht der Messe.</p>\n\n        <h2>Logistik und schlüsselfertige Montage in Valencia</h2>\n        <p>Die Endmontage ist der krönende Abschluss unseres schlüsselfertigen Service. Wir koordinieren direkt Transport und Verpackung, die Montage vor Ort, die Elektroinstallation von Strahlern und Bildschirmen, das Anbringen der Grafik und die Endreinigung. Ihr Team muss nur am ersten Messetag erscheinen und findet einen voll funktionsfähigen Markenraum vor, bereit, Kontakte zu gewinnen. Darüber hinaus übernehmen wir alle technischen Formalitäten, die das Messegelände verlangt – visierte Projekte, Brandschutzzertifikate, elektrische Abnahmen, Risikobewertungen und Versicherungen –, für eine reibungslose Genehmigung in der Feria Valencia.</p>\n        <p>Unsere Struktur ermöglicht es uns, Valencia und den gesamten Mittelmeerbogen mit derselben Agilität zu bedienen wie den Rest der Halbinsel und Agenturen sowie Direktausstellern einen einzigen Ansprechpartner für Design, Produktion, Logistik und Montage zu bieten.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Entwerfen und montieren Sie Stände in der Feria Valencia?",
+          "a": "Ja. Wir arbeiten regelmäßig in der Feria Valencia, auf Messen wie Cevisama, Feria Hábitat València, FIMMA + Maderalia, Iberflora oder Gastrónoma. Wir kennen ihre technischen Vorschriften für eine Montage ohne Überraschungen."
+        },
+        {
+          "q": "Haben Sie eine eigene Werkstatt oder vergeben Sie die Fertigung an Subunternehmer?",
+          "a": "Wir verfügen über eine eigene Werkstatt für Tischlerei und Oberflächen. Ohne Zwischenhändler kontrollieren wir Materialien, Termine und Qualität zu 100 % und verkürzen die Montagezeit auf dem Messegelände durch Vormontage in der Werkstatt."
+        },
+        {
+          "q": "Ist der Service schlüsselfertig?",
+          "a": "Ja. Wir kümmern uns um alles: 3D-Design, Fertigung, Transport, Montage, Elektroinstallation, Grafik, Endreinigung und die technischen Abnahmen des Messegeländes. Ihr Team erscheint nur am ersten Messetag."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Valência",
+      "title": "Design e montagem de stands em Valência | Feria Valencia | Standarte",
+      "h1": "Design e montagem de stands de feira à medida em Valência",
+      "introText": "A Standarte concebe, fabrica e monta stands de feira em Valência, uma das grandes praças do Mediterrâneo graças à Feria Valencia. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, carpintaria à medida, logística e montagem com validações no recinto.",
+      "body": "\n        <h2>Feria Valencia, grande praça de feiras do Mediterrâneo</h2>\n        <p>Valência é uma das capitais de feiras de Espanha e o seu epicentro é a <strong>Feria Valencia</strong>, o recinto de exposições mais antigo do país e um dos maiores da Europa, com uma superfície imensa distribuída por numerosos pavilhões. O seu programa reúne com força os setores do habitat, da cerâmica, da madeira, do mobiliário, da jardinagem e da gastronomia. Para uma empresa que pretende abrir mercado no arco mediterrânico, expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte faz a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Trabalhamos as feiras mais relevantes da Feria Valencia — entre elas a <strong>Cevisama</strong> (cerâmica e casa de banho), o ecossistema da <strong>Feria Hábitat València</strong>, a <strong>Textilhogar</strong> e o <strong>Espacio Cocina SICI</strong>, a <strong>FIMMA + Maderalia</strong> (madeira e mobiliário), a <strong>Iberflora</strong>, a <strong>Gastrónoma</strong> e a <strong>Eurobrico</strong> — conhecendo a regulamentação técnica do recinto, o que evita surpresas e atrasos na montagem.</p>\n\n        <h2>Design 3D e carpintaria à medida a partir de oficina própria</h2>\n        <p>O sucesso de um stand começa meses antes da montagem. A nossa fase de design é um processo meticuloso de engenharia de marca e de otimização do fluxo de visitantes: a partir das diretrizes corporativas da sua empresa, criamos um protótipo 3D interativo 100% fiel ao resultado final, de modo a que a sua equipa comercial possa validar a visibilidade da marca, as zonas de reunião e a integração de ecrãs, balcões e vitrinas antes de arrancar o fabrico.</p>\n        <p>Uma das nossas maiores vantagens é dispor de <strong>oficina própria</strong> de carpintaria e acabamentos de alta qualidade. Sem subcontratações, mantemos o controlo total sobre materiais, prazos e qualidade, com técnicas modernas de montagem e materiais certificados para arquitetura efémera. A pré-montagem parcial em oficina reduz o tempo de trabalho no recinto e garante um acabamento impecável mesmo sob a luz intensa da feira.</p>\n\n        <h2>Logística e montagem chave na mão em Valência</h2>\n        <p>A montagem final é o culminar do nosso serviço chave na mão. Coordenamos diretamente o transporte e a embalagem, a montagem in loco, a instalação elétrica de focos e ecrãs, a colocação da grafia e a limpeza final. A sua equipa só tem de comparecer no primeiro dia de feira e encontrará um espaço corporativo plenamente operacional e pronto para captar contactos. Além disso, tratamos de todas as formalidades técnicas exigidas pelo recinto — projetos visados, certificados de ignifugação, validações elétricas, avaliação de riscos e seguros — para uma aprovação fluida na Feria Valencia.</p>\n        <p>A nossa estrutura permite-nos atender Valência e todo o arco mediterrânico com a mesma agilidade que o resto da península, oferecendo a agências e expositores diretos um único interlocutor para design, produção, logística e montagem.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Fazem o design e a montagem de stands na Feria Valencia?",
+          "a": "Sim. Trabalhamos habitualmente na Feria Valencia, em feiras como a Cevisama, a Feria Hábitat València, a FIMMA + Maderalia, a Iberflora ou a Gastrónoma. Conhecemos a sua regulamentação técnica para uma montagem sem surpresas."
+        },
+        {
+          "q": "Têm oficina própria ou subcontratam o fabrico?",
+          "a": "Dispomos de oficina própria de carpintaria e acabamentos. Sem intermediários, controlamos a 100% os materiais, os prazos e a qualidade, e reduzimos o tempo de montagem no recinto através de pré-montagem em oficina."
+        },
+        {
+          "q": "O serviço é chave na mão?",
+          "a": "Sim. Encarregamo-nos de tudo: design 3D, fabrico, transporte, montagem, instalação elétrica, grafia, limpeza final e as validações técnicas do recinto. A sua equipa só comparece no primeiro dia de feira."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Valence",
+      "title": "Conception et montage de stands à Valence | Feria Valencia | Standarte",
+      "h1": "Conception et montage de stands d'exposition sur mesure à Valence",
+      "introText": "Standarte conçoit, fabrique et monte des stands d'exposition à Valence, l'une des grandes places de la Méditerranée grâce à Feria Valencia. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque étape : conception 3D, menuiserie sur mesure, logistique et montage avec validations dans le parc des expositions.",
+      "body": "\n        <h2>Feria Valencia, grande place d'exposition de la Méditerranée</h2>\n        <p>Valence est l'une des capitales de l'événementiel professionnel en Espagne et son épicentre est <strong>Feria Valencia</strong>, le parc des expositions le plus ancien du pays et l'un des plus vastes d'Europe, avec une superficie considérable répartie sur de nombreux pavillons. Son programme rassemble avec force les secteurs de l'habitat, de la céramique, du bois, du meuble, du jardinage et de la gastronomie. Pour une entreprise qui souhaite ouvrir un marché sur l'arc méditerranéen, exposer ici avec un stand bien conçu est l'un des investissements commerciaux les plus rentables, et c'est là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs à fort retour.</p>\n        <p>Nous travaillons sur les salons les plus importants de Feria Valencia — parmi lesquels <strong>Cevisama</strong> (céramique et salle de bain), l'écosystème de <strong>Feria Hábitat València</strong>, <strong>Textilhogar</strong> et <strong>Espacio Cocina SICI</strong>, <strong>FIMMA + Maderalia</strong> (bois et meuble), <strong>Iberflora</strong>, <strong>Gastrónoma</strong> et <strong>Eurobrico</strong> — en maîtrisant la réglementation technique du parc des expositions, ce qui évite les surprises et les retards lors du montage.</p>\n\n        <h2>Conception 3D et menuiserie sur mesure depuis notre atelier propre</h2>\n        <p>La réussite d'un stand commence des mois avant le montage. Notre phase de conception est un processus méticuleux d'ingénierie de marque et d'optimisation du flux de visiteurs : à partir des lignes directrices de votre entreprise, nous créons un prototype 3D interactif 100 % fidèle au résultat final, afin que votre équipe commerciale puisse valider la visibilité de la marque, les zones de réunion et l'intégration des écrans, comptoirs et vitrines avant le lancement de la fabrication.</p>\n        <p>L'un de nos plus grands atouts est de disposer d'un <strong>atelier propre</strong> de menuiserie et de finitions de haute qualité. Sans sous-traitance, nous gardons la maîtrise totale des matériaux, des délais et de la qualité, avec des techniques d'assemblage modernes et des matériaux certifiés pour l'architecture éphémère. Le prémontage partiel en atelier réduit le temps de travail dans le parc des expositions et garantit une finition impeccable, même sous la lumière intense du salon.</p>\n\n        <h2>Logistique et montage clé en main à Valence</h2>\n        <p>Le montage final est l'aboutissement de notre service clé en main. Nous coordonnons directement le transport et l'emballage, le montage sur place, l'installation électrique des spots et des écrans, la pose de la signalétique et le nettoyage final. Votre équipe n'a qu'à se présenter le premier jour du salon et trouvera un espace d'entreprise pleinement opérationnel, prêt à capter des contacts. De plus, nous gérons toutes les formalités techniques exigées par le parc des expositions — projets visés, certificats d'ignifugation, validations électriques, évaluation des risques et assurances — pour une approbation fluide à Feria Valencia.</p>\n        <p>Notre structure nous permet de couvrir Valence et tout l'arc méditerranéen avec la même réactivité que le reste de la péninsule, en offrant aux agences et aux exposants directs un interlocuteur unique pour la conception, la production, la logistique et le montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Concevez-vous et montez-vous des stands à Feria Valencia ?",
+          "a": "Oui. Nous travaillons régulièrement à Feria Valencia, sur des salons comme Cevisama, Feria Hábitat València, FIMMA + Maderalia, Iberflora ou Gastrónoma. Nous maîtrisons leur réglementation technique pour un montage sans surprises."
+        },
+        {
+          "q": "Avez-vous un atelier propre ou sous-traitez-vous la fabrication ?",
+          "a": "Nous disposons d'un atelier propre de menuiserie et de finitions. Sans intermédiaires, nous maîtrisons à 100 % les matériaux, les délais et la qualité, et nous réduisons le temps de montage dans le parc des expositions grâce au prémontage en atelier."
+        },
+        {
+          "q": "Le service est-il clé en main ?",
+          "a": "Oui. Nous nous occupons de tout : conception 3D, fabrication, transport, montage, installation électrique, signalétique, nettoyage final et validations techniques du parc des expositions. Votre équipe n'a qu'à se présenter le premier jour du salon."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Valencia",
+      "title": "Progettazione e montaggio di stand a Valencia | Feria Valencia | Standarte",
+      "h1": "Progettazione e montaggio di stand fieristici su misura a Valencia",
+      "introText": "Standarte progetta, produce e monta stand fieristici a Valencia, una delle grandi piazze del Mediterraneo grazie a Feria Valencia. Oltre 20 anni di esperienza e laboratorio di proprietà per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica e montaggio con validazioni nel quartiere fieristico.",
+      "body": "\n        <h2>Feria Valencia, grande piazza fieristica del Mediterraneo</h2>\n        <p>Valencia è una delle capitali fieristiche della Spagna e il suo epicentro è <strong>Feria Valencia</strong>, il quartiere fieristico più antico del Paese e uno dei più grandi d'Europa, con una superficie enorme distribuita su numerosi padiglioni. Il suo calendario riunisce con forza i settori dell'habitat, della ceramica, del legno, del mobile, del giardinaggio e della gastronomia. Per un'azienda che vuole aprirsi un mercato nell'arco mediterraneo, esporre qui con uno stand ben risolto è uno degli investimenti commerciali più redditizi, ed è proprio qui che Standarte fa la differenza: trasformiamo lo spazio del vostro marchio in una calamita di visitatori con un elevato ritorno.</p>\n        <p>Lavoriamo alle fiere più rilevanti di Feria Valencia —tra cui <strong>Cevisama</strong> (ceramica e bagno), l'ecosistema di <strong>Feria Hábitat València</strong>, <strong>Textilhogar</strong> e <strong>Espacio Cocina SICI</strong>, <strong>FIMMA + Maderalia</strong> (legno e mobile), <strong>Iberflora</strong>, <strong>Gastrónoma</strong> ed <strong>Eurobrico</strong>— conoscendo la normativa tecnica del quartiere fieristico, il che evita sorprese e ritardi durante il montaggio.</p>\n\n        <h2>Progettazione 3D e falegnameria su misura dal laboratorio di proprietà</h2>\n        <p>Il successo di uno stand inizia mesi prima del montaggio. La nostra fase di progettazione è un processo meticoloso di ingegneria del marchio e di ottimizzazione del flusso dei visitatori: a partire dalle linee guida aziendali della vostra impresa, creiamo un prototipo 3D interattivo fedele al 100% al risultato finale, in modo che il vostro team commerciale possa validare la visibilità del marchio, le aree riunioni e l'integrazione di schermi, banconi e vetrine prima che inizi la produzione.</p>\n        <p>Uno dei nostri maggiori vantaggi è disporre di un <strong>laboratorio di proprietà</strong> di falegnameria e finiture di alta qualità. Senza subappalti, manteniamo il controllo totale su materiali, tempi e qualità, con moderne tecniche di assemblaggio e materiali certificati per l'architettura effimera. Il premontaggio parziale in laboratorio riduce i tempi di lavoro nel quartiere fieristico e garantisce una finitura impeccabile anche sotto la luce intensa della fiera.</p>\n\n        <h2>Logistica e montaggio chiavi in mano a Valencia</h2>\n        <p>Il montaggio finale è il tocco conclusivo del nostro servizio chiavi in mano. Coordiniamo direttamente il trasporto e l'imballaggio, il montaggio in loco, l'installazione elettrica di faretti e schermi, il posizionamento della grafica e la pulizia finale. Il vostro team deve solo presentarsi il primo giorno di fiera e troverà uno spazio aziendale pienamente operativo e pronto per acquisire contatti. Inoltre, gestiamo tutte le formalità tecniche richieste dal quartiere fieristico —progetti vidimati, certificati di ignifugazione, validazioni elettriche, valutazione dei rischi e assicurazioni— per un'approvazione fluida a Feria Valencia.</p>\n        <p>La nostra struttura ci permette di servire Valencia e tutto l'arco mediterraneo con la stessa agilità del resto della penisola, offrendo ad agenzie ed espositori diretti un unico interlocutore per progettazione, produzione, logistica e montaggio.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Progettate e montate stand a Feria Valencia?",
+          "a": "Sì. Lavoriamo abitualmente a Feria Valencia, in fiere come Cevisama, Feria Hábitat València, FIMMA + Maderalia, Iberflora o Gastrónoma. Conosciamo la sua normativa tecnica per un montaggio senza sorprese."
+        },
+        {
+          "q": "Avete un laboratorio di proprietà o subappaltate la produzione?",
+          "a": "Disponiamo di un laboratorio di proprietà di falegnameria e finiture. Senza intermediari, controlliamo al 100% materiali, tempi e qualità, e riduciamo i tempi di montaggio nel quartiere fieristico tramite premontaggio in laboratorio."
+        },
+        {
+          "q": "Il servizio è chiavi in mano?",
+          "a": "Sì. Ci occupiamo di tutto: progettazione 3D, produzione, trasporto, montaggio, installazione elettrica, grafica, pulizia finale e le validazioni tecniche del quartiere fieristico. Il vostro team deve solo presentarsi il primo giorno di fiera."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Valencia",
+      "title": "Standontwerp en montage in Valencia | Feria Valencia | Standarte",
+      "h1": "Ontwerp en montage van maatwerk beursstands in Valencia",
+      "introText": "Standarte ontwerpt, produceert en monteert beursstands in Valencia, een van de grote beursplaatsen van het Middellandse Zeegebied dankzij Feria Valencia. Meer dan 20 jaar ervaring en een eigen werkplaats om elke fase te beheersen: 3D-ontwerp, maatwerk-schrijnwerk, logistiek en montage met validaties in het beurscomplex.",
+      "body": "\n        <h2>Feria Valencia, grote beursplaats van het Middellandse Zeegebied</h2>\n        <p>Valencia is een van de beurshoofdsteden van Spanje en het epicentrum is <strong>Feria Valencia</strong>, het oudste beurscomplex van het land en een van de grootste van Europa, met een enorme oppervlakte verdeeld over talrijke hallen. Het programma brengt de sectoren wonen, keramiek, hout, meubel, tuinbouw en gastronomie krachtig samen. Voor een bedrijf dat de markt in het Middellandse Zeegebied wil openen, is hier exposeren met een goed uitgewerkte stand een van de meest rendabele commerciële investeringen, en daar maakt Standarte het verschil: we veranderen de ruimte van uw merk in een bezoekersmagneet met hoog rendement.</p>\n        <p>We werken op de meest relevante beurzen van Feria Valencia — waaronder <strong>Cevisama</strong> (keramiek en sanitair), het ecosysteem van <strong>Feria Hábitat València</strong>, <strong>Textilhogar</strong> en <strong>Espacio Cocina SICI</strong>, <strong>FIMMA + Maderalia</strong> (hout en meubel), <strong>Iberflora</strong>, <strong>Gastrónoma</strong> en <strong>Eurobrico</strong> — en kennen de technische voorschriften van het complex, wat verrassingen en vertragingen bij de opbouw voorkomt.</p>\n\n        <h2>3D-ontwerp en maatwerk-schrijnwerk vanuit een eigen werkplaats</h2>\n        <p>Het succes van een stand begint maanden vóór de opbouw. Onze ontwerpfase is een nauwgezet traject van merk-engineering en optimalisatie van de bezoekersstroom: op basis van de bedrijfsrichtlijnen van uw onderneming maken we een interactief 3D-prototype dat 100% getrouw is aan het eindresultaat, zodat uw salesteam de zichtbaarheid van het merk, de vergaderzones en de integratie van schermen, toonbanken en vitrines kan beoordelen vóór de productie begint.</p>\n        <p>Een van onze grootste voordelen is onze beschikking over een <strong>eigen werkplaats</strong> voor schrijnwerk en hoogwaardige afwerkingen. Zonder onderaannemers houden we volledige controle over materialen, planning en kwaliteit, met moderne montagetechnieken en gecertificeerde materialen voor tijdelijke architectuur. De gedeeltelijke voormontage in de werkplaats beperkt de werktijd in het beurscomplex en garandeert een onberispelijke afwerking, zelfs onder het felle beurslicht.</p>\n\n        <h2>Logistiek en sleutelklare montage in Valencia</h2>\n        <p>De eindmontage is het sluitstuk van onze sleutelklare aanpak. Wij coördineren rechtstreeks het transport en de verpakking, de montage ter plaatse, de elektrische installatie van spots en schermen, de plaatsing van de grafiek en de eindschoonmaak. Uw team hoeft alleen op de eerste beursdag te verschijnen en treft een volledig werkende bedrijfsruimte aan, klaar om contacten te leggen. Bovendien verzorgen wij alle technische formaliteiten die het beurscomplex eist — geviseerde projecten, brandwerendheidscertificaten, elektrische keuringen, risicobeoordeling en verzekeringen — voor een vlotte goedkeuring in Feria Valencia.</p>\n        <p>Onze structuur stelt ons in staat om Valencia en het hele Middellandse Zeegebied met dezelfde wendbaarheid te bedienen als de rest van het schiereiland, en biedt agentschappen en directe exposanten één aanspreekpunt voor ontwerp, productie, logistiek en montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Ontwerpen en monteren jullie stands op Feria Valencia?",
+          "a": "Ja. We werken regelmatig op Feria Valencia, op beurzen zoals Cevisama, Feria Hábitat València, FIMMA + Maderalia, Iberflora of Gastrónoma. We kennen de technische voorschriften voor een opbouw zonder verrassingen."
+        },
+        {
+          "q": "Hebben jullie een eigen werkplaats of besteden jullie de productie uit?",
+          "a": "We beschikken over een eigen werkplaats voor schrijnwerk en afwerkingen. Zonder tussenpersonen houden we 100% controle over materialen, planning en kwaliteit, en beperken we de opbouwtijd in het complex dankzij voormontage in de werkplaats."
+        },
+        {
+          "q": "Is de service sleutelklaar?",
+          "a": "Ja. Wij verzorgen alles: 3D-ontwerp, productie, transport, montage, elektrische installatie, grafiek, eindschoonmaak en de technische validaties van het complex. Uw team verschijnt alleen op de eerste beursdag."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "瓦伦西亚",
+      "title": "瓦伦西亚展台设计与搭建 | Feria Valencia | Standarte",
+      "h1": "瓦伦西亚定制展会展台设计与搭建",
+      "introText": "Standarte 在瓦伦西亚提供展会展台的设计、制作与搭建服务。依托 Feria Valencia，瓦伦西亚是地中海地区的重要展会枢纽之一。我们拥有 20 多年经验和自有工厂，全程掌控每个环节：3D 设计、定制木工、物流以及在展览中心完成搭建与各项验收。",
+      "body": "\n        <h2>Feria Valencia，地中海地区的重要展会枢纽</h2>\n        <p>瓦伦西亚是西班牙的展会重镇之一，其核心便是 <strong>Feria Valencia</strong>——这是西班牙历史最悠久、也是欧洲规模最大的展览中心之一，巨大的展览面积分布于众多展馆之中。其展会日程涵盖家居、陶瓷、木材、家具、园艺和美食等多个重点行业。对于希望开拓地中海弧形市场的企业而言，在这里以一座精心打造的展台参展，是回报率最高的商业投资之一，而这正是 Standarte 脱颖而出之处：我们将贵公司品牌的空间打造成高回报、聚人气的磁石。</p>\n        <p>我们承接 Feria Valencia 各项重要展会——其中包括 <strong>Cevisama</strong>（陶瓷与卫浴）、<strong>Feria Hábitat València</strong> 家居生态展、<strong>Textilhogar</strong> 与 <strong>Espacio Cocina SICI</strong>、<strong>FIMMA + Maderalia</strong>（木材与家具）、<strong>Iberflora</strong>、<strong>Gastrónoma</strong> 和 <strong>Eurobrico</strong>——我们熟悉展览中心的技术规范，从而避免搭建过程中的意外和延误。</p>\n\n        <h2>自有工厂的 3D 设计与定制木工</h2>\n        <p>一座展台的成功，早在搭建数月之前便已开始。我们的设计环节是一套精细的品牌工程与观众动线优化流程：我们以贵公司的企业视觉规范为出发点，制作出与最终成品 100% 一致的交互式 3D 原型，让贵公司的销售团队在制作启动之前，便能确认品牌的可见度、洽谈区域，以及屏幕、展台和展示柜的整体融合。</p>\n        <p>我们最大的优势之一，是拥有专门从事木工和高品质饰面的<strong>自有工厂</strong>。没有外包，我们对材料、工期和质量保持完全掌控，采用现代化的组装工艺和专为临时建筑认证的材料。在工厂完成部分预搭建，可缩短在展览中心的施工时间，即使在展会强光下也能确保无可挑剔的饰面效果。</p>\n\n        <h2>瓦伦西亚的交钥匙物流与搭建</h2>\n        <p>最终搭建是我们交钥匙服务的收官之笔。我们直接统筹运输与包装、现场安装、射灯与屏幕的电气安装、图文画面的布置以及最后的清洁。贵公司团队只需在展会首日到场，即可见到一个全面运转、随时可以承接客户的企业空间。此外，我们办理展览中心要求的全部技术手续——经签证的项目方案、防火阻燃证书、电气验收、风险评估和保险——确保在 Feria Valencia 顺利通过审批。</p>\n        <p>我们的组织架构使我们能够以与服务半岛其余地区同样的敏捷度，服务瓦伦西亚及整个地中海弧形地带，为代理机构和直接参展商提供集设计、制作、物流与搭建于一体的单一对接窗口。</p>\n      ",
+      "faqs": [
+        {
+          "q": "你们在 Feria Valencia 做展台的设计与搭建吗？",
+          "a": "是的。我们经常在 Feria Valencia 承接业务，参与 Cevisama、Feria Hábitat València、FIMMA + Maderalia、Iberflora 或 Gastrónoma 等展会。我们熟悉其技术规范，让搭建过程没有意外。"
+        },
+        {
+          "q": "你们有自有工厂，还是把制作外包出去？",
+          "a": "我们拥有专门从事木工和饰面的自有工厂。没有中间环节，我们对材料、工期和质量保持 100% 掌控，并通过工厂预搭建缩短在展览中心的搭建时间。"
+        },
+        {
+          "q": "这项服务是交钥匙式的吗？",
+          "a": "是的。一切由我们负责：3D 设计、制作、运输、搭建、电气安装、图文画面、最后清洁以及展览中心的各项技术验收。贵公司团队只需在展会首日到场即可。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "वालेंसिया",
+      "title": "वालेंसिया में स्टैंड डिज़ाइन और असेंबली | Feria Valencia | Standarte",
+      "h1": "वालेंसिया में अनुकूलित ट्रेड शो स्टैंड का डिज़ाइन और असेंबली",
+      "introText": "Standarte वालेंसिया में ट्रेड शो स्टैंड का डिज़ाइन, निर्माण और असेंबली करता है, जो Feria Valencia की बदौलत भूमध्यसागरीय क्षेत्र के सबसे बड़े केंद्रों में से एक है। 20 वर्षों से अधिक का अनुभव और अपना कारखाना, ताकि हर चरण पर नियंत्रण रहे: 3D डिज़ाइन, अनुकूलित बढ़ईगीरी, लॉजिस्टिक्स और प्रदर्शनी स्थल पर सत्यापन के साथ असेंबली।",
+      "body": "\n        <h2>Feria Valencia, भूमध्यसागर का महान प्रदर्शनी केंद्र</h2>\n        <p>वालेंसिया स्पेन की प्रमुख प्रदर्शनी राजधानियों में से एक है और इसका केंद्रबिंदु है <strong>Feria Valencia</strong>, जो देश का सबसे पुराना और यूरोप के सबसे बड़े प्रदर्शनी स्थलों में से एक है, जिसका विशाल क्षेत्रफल कई हॉलों में फैला हुआ है। इसका कार्यक्रम हैबिटाट, सिरेमिक, लकड़ी, फर्नीचर, बागवानी और गैस्ट्रोनॉमी के क्षेत्रों को मजबूती से एक साथ लाता है। भूमध्यसागरीय बाज़ार में पैर जमाना चाहने वाली कंपनी के लिए, यहाँ एक सुगठित स्टैंड के साथ प्रदर्शन करना सबसे लाभदायक व्यावसायिक निवेशों में से एक है, और यहीं Standarte अंतर पैदा करता है: हम आपके ब्रांड के स्थान को उच्च रिटर्न वाले आगंतुक-चुंबक में बदल देते हैं।</p>\n        <p>हम Feria Valencia की सबसे प्रासंगिक प्रदर्शनियों पर काम करते हैं —उनमें <strong>Cevisama</strong> (सिरेमिक और बाथरूम), <strong>Feria Hábitat València</strong> का इकोसिस्टम, <strong>Textilhogar</strong> और <strong>Espacio Cocina SICI</strong>, <strong>FIMMA + Maderalia</strong> (लकड़ी और फर्नीचर), <strong>Iberflora</strong>, <strong>Gastrónoma</strong> और <strong>Eurobrico</strong> शामिल हैं— और प्रदर्शनी स्थल के तकनीकी नियमों को जानते हैं, जिससे असेंबली में आश्चर्य और देरी से बचा जा सके।</p>\n\n        <h2>अपने कारखाने से 3D डिज़ाइन और अनुकूलित बढ़ईगीरी</h2>\n        <p>एक स्टैंड की सफलता असेंबली से महीनों पहले शुरू होती है। हमारा डिज़ाइन चरण ब्रांड इंजीनियरिंग और आगंतुक प्रवाह के अनुकूलन की एक सूक्ष्म प्रक्रिया है: आपकी कंपनी के कॉर्पोरेट दिशानिर्देशों के आधार पर, हम अंतिम परिणाम के 100% अनुरूप एक इंटरैक्टिव 3D प्रोटोटाइप बनाते हैं, ताकि आपकी बिक्री टीम निर्माण शुरू होने से पहले ब्रांड की दृश्यता, बैठक क्षेत्रों और स्क्रीन, काउंटर एवं शोकेस के एकीकरण को सत्यापित कर सके।</p>\n        <p>हमारे सबसे बड़े लाभों में से एक है उच्च गुणवत्ता वाली बढ़ईगीरी और फिनिशिंग का <strong>अपना कारखाना</strong> होना। बिना उपठेकेदारों के, हम सामग्री, समय-सीमा और गुणवत्ता पर पूर्ण नियंत्रण बनाए रखते हैं, आधुनिक असेंबली तकनीकों और अस्थायी वास्तुकला के लिए प्रमाणित सामग्रियों के साथ। कारखाने में आंशिक पूर्व-असेंबली प्रदर्शनी स्थल पर काम का समय घटाती है और तेज़ प्रदर्शनी रोशनी में भी एक त्रुटिहीन फिनिश की गारंटी देती है।</p>\n\n        <h2>वालेंसिया में लॉजिस्टिक्स और टर्नकी असेंबली</h2>\n        <p>अंतिम असेंबली हमारी टर्नकी सेवा का समापन है। हम सीधे परिवहन और पैकेजिंग, स्थल पर असेंबली, स्पॉटलाइट एवं स्क्रीन की विद्युत स्थापना, ग्राफिक्स की लगाई और अंतिम सफाई का समन्वय करते हैं। आपकी टीम को बस प्रदर्शनी के पहले दिन उपस्थित होना है और उसे पूरी तरह संचालन-योग्य तथा संपर्क जुटाने के लिए तैयार एक कॉर्पोरेट स्थान मिलेगा। इसके अलावा, हम प्रदर्शनी स्थल द्वारा अपेक्षित सभी तकनीकी औपचारिकताओं —वीज़ा-प्राप्त परियोजनाएँ, अग्निरोधन प्रमाणपत्र, विद्युत सत्यापन, जोखिम मूल्यांकन और बीमा— का प्रबंधन करते हैं ताकि Feria Valencia में सहज अनुमोदन मिले।</p>\n        <p>हमारी संरचना हमें वालेंसिया और पूरे भूमध्यसागरीय क्षेत्र की सेवा उसी फुर्ती से करने देती है जैसी शेष प्रायद्वीप की, और एजेंसियों एवं प्रत्यक्ष प्रदर्शकों को डिज़ाइन, उत्पादन, लॉजिस्टिक्स और असेंबली के लिए एक ही संपर्क-सूत्र प्रदान करती है।</p>\n      ",
+      "faqs": [
+        {
+          "q": "क्या आप Feria Valencia में स्टैंड डिज़ाइन और असेंबली करते हैं?",
+          "a": "हाँ। हम नियमित रूप से Feria Valencia में काम करते हैं, Cevisama, Feria Hábitat València, FIMMA + Maderalia, Iberflora या Gastrónoma जैसी प्रदर्शनियों में। हम उसके तकनीकी नियमों को जानते हैं ताकि असेंबली बिना किसी आश्चर्य के हो।"
+        },
+        {
+          "q": "क्या आपका अपना कारखाना है या आप निर्माण उपठेके पर देते हैं?",
+          "a": "हमारे पास बढ़ईगीरी और फिनिशिंग का अपना कारखाना है। बिना बिचौलियों के, हम सामग्री, समय-सीमा और गुणवत्ता को 100% नियंत्रित करते हैं, और कारखाने में पूर्व-असेंबली के ज़रिए प्रदर्शनी स्थल पर असेंबली का समय घटाते हैं।"
+        },
+        {
+          "q": "क्या सेवा टर्नकी है?",
+          "a": "हाँ। हम सब कुछ संभालते हैं: 3D डिज़ाइन, निर्माण, परिवहन, असेंबली, विद्युत स्थापना, ग्राफिक्स, अंतिम सफाई और प्रदर्शनी स्थल के तकनीकी सत्यापन। आपकी टीम बस प्रदर्शनी के पहले दिन उपस्थित होती है।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "발렌시아",
+      "title": "발렌시아 전시 부스 디자인 및 조립 | Feria Valencia | Standarte",
+      "h1": "발렌시아 맞춤형 전시 부스 디자인 및 조립",
+      "introText": "Standarte는 Feria Valencia 덕분에 지중해 연안의 주요 거점 중 하나인 발렌시아에서 전시 부스를 디자인, 제작, 조립합니다. 20년 이상의 경험과 자체 공장을 보유하여 3D 디자인, 맞춤 목공, 물류, 전시장 검증을 포함한 조립까지 전 과정을 직접 관리합니다.",
+      "body": "\n        <h2>Feria Valencia, 지중해의 핵심 전시 거점</h2>\n        <p>발렌시아는 스페인을 대표하는 전시 도시 중 하나이며, 그 중심에는 <strong>Feria Valencia</strong>가 있습니다. 이곳은 스페인에서 가장 오래된 전시장이자 유럽에서 손꼽히는 대규모 전시장으로, 수많은 전시관에 걸쳐 방대한 면적을 자랑합니다. 그 프로그램은 주거·인테리어, 세라믹, 목재, 가구, 원예, 미식 분야를 강력하게 아우릅니다. 지중해 연안 시장을 개척하려는 기업에게 완성도 높은 부스로 이곳에 참가하는 것은 가장 수익성 높은 상업적 투자 중 하나이며, 바로 이 지점에서 Standarte가 차별화됩니다. 우리는 귀사 브랜드의 공간을 높은 투자 수익을 가져오는 방문객 자석으로 탈바꿈시킵니다.</p>\n        <p>우리는 Feria Valencia에서 열리는 가장 중요한 전시회들 — <strong>Cevisama</strong>(세라믹·욕실), <strong>Feria Hábitat València</strong> 생태계, <strong>Textilhogar</strong>와 <strong>Espacio Cocina SICI</strong>, <strong>FIMMA + Maderalia</strong>(목재·가구), <strong>Iberflora</strong>, <strong>Gastrónoma</strong>, <strong>Eurobrico</strong> — 을 다루며, 전시장의 기술 규정을 숙지하고 있어 조립 과정에서의 돌발 상황과 지연을 방지합니다.</p>\n\n        <h2>자체 공장에서 진행하는 3D 디자인과 맞춤 목공</h2>\n        <p>부스의 성공은 조립 몇 달 전부터 시작됩니다. 우리의 디자인 단계는 브랜드 엔지니어링과 방문객 동선 최적화를 위한 정교한 과정입니다. 귀사의 기업 가이드라인을 바탕으로 최종 결과물에 100% 충실한 인터랙티브 3D 프로토타입을 제작하여, 제작이 시작되기 전에 귀사의 영업팀이 브랜드 가시성, 상담 공간, 스크린·카운터·진열장의 통합을 검증할 수 있도록 합니다.</p>\n        <p>우리의 가장 큰 강점 중 하나는 고품질 목공과 마감을 위한 <strong>자체 공장</strong>을 보유하고 있다는 점입니다. 외주 없이 소재, 일정, 품질에 대한 완전한 통제를 유지하며, 최신 조립 기술과 임시 건축용 인증 소재를 사용합니다. 공장에서의 부분 사전 조립은 전시장 내 작업 시간을 줄이고, 강한 전시장 조명 아래에서도 흠 없는 마감을 보장합니다.</p>\n\n        <h2>발렌시아의 턴키 물류 및 조립</h2>\n        <p>최종 조립은 우리 턴키 서비스의 화룡점정입니다. 운송과 포장, 현장 조립, 조명과 스크린의 전기 설치, 그래픽 부착, 최종 청소까지 직접 조율합니다. 귀사의 팀은 전시 첫날에 도착하기만 하면 완전히 가동되어 즉시 고객을 맞이할 준비가 된 기업 공간을 만나게 됩니다. 또한 전시장이 요구하는 모든 기술적 절차 — 인증 도면, 방염 인증서, 전기 검증, 위험성 평가, 보험 — 를 처리하여 Feria Valencia에서 원활한 승인이 이루어지도록 합니다.</p>\n        <p>우리의 조직 구조 덕분에 반도 전역과 동일한 민첩성으로 발렌시아와 지중해 연안 전역을 지원할 수 있으며, 에이전시와 직접 참가 기업 모두에게 디자인, 제작, 물류, 조립을 아우르는 단일 창구를 제공합니다.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Feria Valencia에서 부스 디자인과 조립을 하나요?",
+          "a": "네. 저희는 Feria Valencia에서 Cevisama, Feria Hábitat València, FIMMA + Maderalia, Iberflora, Gastrónoma 같은 전시회를 정기적으로 진행합니다. 전시장의 기술 규정을 숙지하고 있어 돌발 상황 없는 조립이 가능합니다."
+        },
+        {
+          "q": "자체 공장이 있나요, 아니면 제작을 외주하나요?",
+          "a": "저희는 목공과 마감을 위한 자체 공장을 보유하고 있습니다. 중간 업체 없이 소재, 일정, 품질을 100% 통제하며, 공장에서의 사전 조립으로 전시장 내 조립 시간을 단축합니다."
+        },
+        {
+          "q": "서비스가 턴키 방식인가요?",
+          "a": "네. 3D 디자인, 제작, 운송, 조립, 전기 설치, 그래픽, 최종 청소, 전시장의 기술 검증까지 모든 것을 저희가 처리합니다. 귀사의 팀은 전시 첫날에 오기만 하면 됩니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "バレンシア",
+      "title": "バレンシアでの展示会ブース設計・組立 | Feria Valencia | Standarte",
+      "h1": "バレンシアのオーダーメイド展示会ブース設計・組立",
+      "introText": "Standarteは、Feria Valenciaを擁する地中海有数の見本市都市バレンシアで、展示会ブースの設計・製作・組立を手がけます。20年以上の経験と自社工房により、3D設計、オーダーメイドの木工、物流、会場での検証を経た組立まで、各工程を一貫して管理します。",
+      "body": "\n        <h2>Feria Valencia、地中海有数の見本市拠点</h2>\n        <p>バレンシアはスペインを代表する見本市都市のひとつであり、その中心が<strong>Feria Valencia</strong>です。スペイン最古の展示会場であり、欧州でも最大級の規模を誇り、広大な面積が多数のホールに分かれています。そのプログラムには、ハビタット（住空間）、セラミック、木材、家具、園芸、ガストロノミーといった分野が力強く集結します。地中海エリアで市場を開拓したい企業にとって、完成度の高いブースでここに出展することは、最も費用対効果の高い営業投資のひとつであり、まさにStandarteが違いを生む場面です。私たちは貴社ブランドの空間を、高い成果を生む来場者を惹きつける磁石へと変えます。</p>\n        <p>私たちはFeria Valenciaの主要な展示会に対応しています。<strong>Cevisama</strong>（セラミックと水回り）、<strong>Feria Hábitat València</strong>のエコシステム、<strong>Textilhogar</strong>と<strong>Espacio Cocina SICI</strong>、<strong>FIMMA + Maderalia</strong>（木材と家具）、<strong>Iberflora</strong>、<strong>Gastrónoma</strong>、<strong>Eurobrico</strong>などです。展示会場の技術規定を熟知しているため、組立時の想定外や遅延を防ぎます。</p>\n\n        <h2>自社工房による3D設計とオーダーメイドの木工</h2>\n        <p>ブース成功の鍵は、設営の数か月前から始まっています。私たちの設計段階は、ブランドエンジニアリングと来場者動線の最適化に取り組む綿密な工程です。貴社のコーポレートガイドラインに基づき、最終的な仕上がりを100%忠実に再現するインタラクティブな3Dプロトタイプを作成します。これにより、貴社の営業チームは製作が始まる前に、ブランドの視認性、商談スペース、スクリーンや受付カウンター、ショーケースの統合を検証できます。</p>\n        <p>私たちの最大の強みのひとつが、高品質な木工と仕上げを行う<strong>自社工房</strong>を持っていることです。外注に頼らず、素材・納期・品質を完全に管理し、最新の組立技術と仮設建築向けの認証素材を用います。工房での部分的な事前組立により、会場での作業時間を短縮し、強い会場照明の下でも完璧な仕上がりを保証します。</p>\n\n        <h2>バレンシアでの物流とターンキー組立</h2>\n        <p>最終的な組立は、私たちのターンキーサービスの総仕上げです。輸送と梱包、現地での組立、スポットライトやスクリーンの電気設備、グラフィックの設置、最終清掃までを直接コーディネートします。貴社のチームは展示会初日に来場するだけで、完全に機能し、リード獲得の準備が整ったコーポレート空間を見出すことができます。さらに、展示会場が求めるすべての技術手続き、すなわち査証付きの設計、防炎証明、電気検証、リスク評価、各種保険を代行し、Feria Valenciaでのスムーズな承認を実現します。</p>\n        <p>私たちの体制により、バレンシアと地中海エリア全域を、半島の他の地域と変わらない機動力でサポートできます。代理店や直接出展者の皆様に、設計・製作・物流・組立の単一窓口を提供します。</p>\n      ",
+      "faqs": [
+        {
+          "q": "Feria Valenciaでブースの設計・組立を行っていますか？",
+          "a": "はい。Cevisama、Feria Hábitat València、FIMMA + Maderalia、Iberflora、Gastrónomaなど、Feria Valenciaの展示会で日常的に活動しています。会場の技術規定を熟知しており、想定外のない組立を実現します。"
+        },
+        {
+          "q": "自社工房をお持ちですか、それとも製作を外注していますか？",
+          "a": "木工と仕上げの自社工房を備えています。仲介業者を介さず、素材・納期・品質を100%管理し、工房での事前組立により会場での組立時間を短縮します。"
+        },
+        {
+          "q": "サービスはターンキー方式ですか？",
+          "a": "はい。3D設計、製作、輸送、組立、電気設備、グラフィック、最終清掃、会場の技術検証まで、すべてを担当します。貴社のチームは展示会初日に来場するだけで済みます。"
+        }
+      ]
+    }
+  },
+  "oporto": {
+    "es": {
+      "breadcrumb": "Oporto",
+      "title": "Diseño y montaje de stands en Oporto | Exponor | Standarte",
+      "h1": "Diseño y montaje de stands feriales a medida en Oporto",
+      "introText": "Standarte diseña, fabrica y monta stands feriales en Oporto y en todo el Norte de Portugal, con Exponor como gran plaza ferial de referencia. Más de 20 años de experiencia y taller propio para controlar cada fase del proyecto: diseño 3D, carpintería a medida, logística internacional y montaje con validaciones en el recinto.",
+      "body": "\n        <h2>Exponor, el motor ferial del Norte de Portugal</h2>\n        <p>Oporto es la capital económica del norte de Portugal y su epicentro ferial es <strong>Exponor – Feira Internacional do Porto</strong>, situada en Leça da Palmeira (Matosinhos) y gestionada por la Associação Empresarial de Portugal (AEP). Es uno de los mayores recintos del país, con una agenda B2B que reúne a la industria, la cosmética, el packaging, la automoción, el textil y la construcción. Para una empresa que quiere abrir mercado en la región, exponer aquí con un stand bien resuelto es una de las inversiones comerciales más rentables, y ahí es donde Standarte aporta diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Trabajamos las ferias más relevantes de Exponor —entre ellas <strong>Concreta</strong> (construcción, arquitectura y diseño), <strong>Expocosmética</strong>, <strong>Empack</strong>, <strong>ITF Intertex Portugal</strong>, <strong>ExpoMecânica</strong>, <strong>EMAF</strong>, <strong>Portojóia</strong>, <strong>Decor Hotel</strong> y <strong>EXPOCARNE</strong>— además de eventos en otros espacios de la ciudad como el Centro de Congressos da Alfândega do Porto. Conocemos la normativa técnica de cada recinto, lo que evita sorpresas y retrasos en el montaje.</p>\n\n        <h2>Diseño 3D y carpintería a medida desde taller propio</h2>\n        <p>El éxito de un stand empieza meses antes del montaje. Nuestra fase de diseño es un proceso meticuloso de ingeniería de marca y optimización del flujo de visitantes: a partir de las directrices corporativas de su empresa, creamos un prototipo 3D interactivo 100% fiel al resultado final, de modo que su equipo comercial pueda validar la visibilidad de la marca, las zonas de reunión y la integración de pantallas, mostradores y vitrinas antes de que arranque la fabricación.</p>\n        <p>Una de nuestras mayores ventajas es disponer de <strong>taller propio</strong> de carpintería y acabados de alta calidad. Sin subcontratas, mantenemos el control total sobre materiales, plazos y calidad, con técnicas modernas de ensamblaje y materiales certificados para arquitectura efímera. La premontaje parcial en taller reduce el tiempo de trabajo en el recinto y garantiza un acabado impecable incluso bajo la luz intensa de la feria.</p>\n\n        <h2>Logística y montaje llave en mano en Oporto</h2>\n        <p>El montaje final es el broche de nuestro servicio llave en mano. Coordinamos directamente el transporte y embalaje, el montaje in situ, la instalación eléctrica de focos y pantallas, la colocación de la gráfica y la limpieza final. Su equipo solo tiene que presentarse el primer día de feria y encontrará un espacio corporativo plenamente operativo y listo para captar contactos. Además, gestionamos todas las formalidades técnicas que exigen los recintos —proyectos visados, certificados de ignifugación, validaciones eléctricas, evaluación de riesgos y seguros— para una aprobación fluida en Exponor.</p>\n        <p>Nuestra estructura nos permite atender Oporto y el Norte de Portugal con la misma agilidad que el resto de la península ibérica, ofreciendo a agencias y expositores directos un único interlocutor para diseño, producción, logística y montaje.</p>\n      ",
+      "faqs": [
+        {
+          "q": "¿Diseñan y montan stands en Exponor y otros recintos de Oporto?",
+          "a": "Sí. Trabajamos habitualmente en Exponor – Feira Internacional do Porto y en otros espacios de la ciudad como el Centro de Congressos da Alfândega. Conocemos su normativa técnica para un montaje sin sorpresas."
+        },
+        {
+          "q": "¿Tienen taller propio o subcontratan la fabricación?",
+          "a": "Disponemos de taller propio de carpintería y acabados. Sin intermediarios, controlamos al 100% materiales, plazos y calidad, y reducimos el tiempo de montaje en el recinto mediante premontaje en taller."
+        },
+        {
+          "q": "¿El servicio es llave en mano?",
+          "a": "Sí. Nos encargamos de todo: diseño 3D, fabricación, transporte, montaje, instalación eléctrica, gráfica, limpieza final y las validaciones técnicas del recinto. Su equipo solo se presenta el primer día de feria."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Porto",
+      "title": "Exhibition Stand Design & Assembly in Porto | Exponor | Standarte",
+      "h1": "Bespoke Exhibition Stand Design and Assembly in Porto",
+      "introText": "Standarte designs, builds and assembles exhibition stands in Porto and across Northern Portugal, with Exponor as the region's leading trade fair venue. Over 20 years of experience and our own in-house workshop let us control every phase of the project: 3D design, custom joinery, international logistics and on-site assembly with full venue validations.",
+      "body": "\n        <h2>Exponor, the trade fair engine of Northern Portugal</h2>\n        <p>Porto is the economic capital of Northern Portugal, and its trade fair epicentre is <strong>Exponor – Feira Internacional do Porto</strong>, located in Leça da Palmeira (Matosinhos) and run by the Associação Empresarial de Portugal (AEP). It is one of the country's largest venues, with a B2B calendar that brings together industry, cosmetics, packaging, automotive, textiles and construction. For a company looking to break into the regional market, exhibiting here with a well-resolved stand is one of the most profitable commercial investments you can make, and that is exactly where Standarte makes the difference: we turn your brand's space into a high-return magnet for visitors.</p>\n        <p>We work the most relevant Exponor fairs —among them <strong>Concreta</strong> (construction, architecture and design), <strong>Expocosmética</strong>, <strong>Empack</strong>, <strong>ITF Intertex Portugal</strong>, <strong>ExpoMecânica</strong>, <strong>EMAF</strong>, <strong>Portojóia</strong>, <strong>Decor Hotel</strong> and <strong>EXPOCARNE</strong>— as well as events at other venues across the city such as the Centro de Congressos da Alfândega do Porto. We know the technical regulations of each venue inside out, which avoids surprises and delays during assembly.</p>\n\n        <h2>3D design and custom joinery from our own workshop</h2>\n        <p>A successful stand begins months before assembly. Our design phase is a meticulous process of brand engineering and visitor-flow optimisation: starting from your company's corporate guidelines, we create a fully interactive 3D prototype that is 100% faithful to the final result, so that your sales team can validate brand visibility, meeting areas and the integration of screens, counters and display cabinets before manufacturing begins.</p>\n        <p>One of our greatest advantages is having our own <strong>in-house workshop</strong> for high-quality joinery and finishes. With no subcontractors, we keep full control over materials, deadlines and quality, using modern assembly techniques and certified materials tested for temporary architecture. Partial pre-assembly at the workshop cuts on-site working time and guarantees a flawless finish even under the intense lighting of the show floor.</p>\n\n        <h2>Turnkey logistics and assembly in Porto</h2>\n        <p>Final assembly is the crowning touch of our turnkey service. We directly coordinate transport and packaging, on-site assembly, the electrical installation of spotlights and screens, the placement of graphics and the final cleaning. Your team simply has to turn up on the first day of the fair to find a fully operational corporate space, ready to capture leads. We also handle every technical formality the venues require —approved engineering projects, fire-retardancy certificates, electrical validations, risk assessments and insurance— for smooth approval at Exponor.</p>\n        <p>Our structure lets us serve Porto and Northern Portugal with the same agility as the rest of the Iberian Peninsula, giving agencies and direct exhibitors a single point of contact for design, production, logistics and assembly.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Do you design and assemble stands at Exponor and other venues in Porto?",
+          "a": "Yes. We work regularly at Exponor – Feira Internacional do Porto and at other venues across the city such as the Centro de Congressos da Alfândega. We know their technical regulations for an assembly with no surprises."
+        },
+        {
+          "q": "Do you have your own workshop or do you subcontract manufacturing?",
+          "a": "We have our own in-house workshop for joinery and finishes. With no intermediaries, we keep 100% control over materials, deadlines and quality, and we cut on-site assembly time through pre-assembly at the workshop."
+        },
+        {
+          "q": "Is the service turnkey?",
+          "a": "Yes. We take care of everything: 3D design, manufacturing, transport, assembly, electrical installation, graphics, final cleaning and the venue's technical validations. Your team simply turns up on the first day of the fair."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Porto",
+      "title": "Standdesign und Standmontage in Porto | Exponor | Standarte",
+      "h1": "Maßgeschneidertes Standdesign und Standmontage für Messen in Porto",
+      "introText": "Standarte plant, fertigt und montiert Messestände in Porto und in ganz Nordportugal – mit Exponor als zentralem Messeplatz der Region. Über 20 Jahre Erfahrung und eine eigene Werkstatt erlauben uns, jede Projektphase selbst zu steuern: 3D-Design, maßgefertigte Schreinerei, internationale Logistik und Montage mit Abnahmen direkt auf dem Messegelände.",
+      "body": "\n        <h2>Exponor, der Messemotor Nordportugals</h2>\n        <p>Porto ist die Wirtschaftsmetropole Nordportugals, und sein messewirtschaftliches Zentrum ist <strong>Exponor – Feira Internacional do Porto</strong> in Leça da Palmeira (Matosinhos), betrieben von der Associação Empresarial de Portugal (AEP). Es zählt zu den größten Messegeländen des Landes, mit einem B2B-Kalender, der Industrie, Kosmetik, Verpackung, Automobilbranche, Textil und Bauwesen zusammenbringt. Für ein Unternehmen, das den regionalen Markt erschließen möchte, gehört ein durchdachter Messeauftritt hier zu den rentabelsten kommerziellen Investitionen – und genau hier macht Standarte den Unterschied: Wir verwandeln den Auftritt Ihrer Marke in einen Besuchermagneten mit hohem Return.</p>\n        <p>Wir betreuen die wichtigsten Messen von Exponor – darunter <strong>Concreta</strong> (Bauwesen, Architektur und Design), <strong>Expocosmética</strong>, <strong>Empack</strong>, <strong>ITF Intertex Portugal</strong>, <strong>ExpoMecânica</strong>, <strong>EMAF</strong>, <strong>Portojóia</strong>, <strong>Decor Hotel</strong> und <strong>EXPOCARNE</strong> – ebenso wie Veranstaltungen an weiteren Orten der Stadt, etwa im Centro de Congressos da Alfândega do Porto. Wir kennen die technischen Vorschriften jedes Messegeländes, was Überraschungen und Verzögerungen beim Aufbau zuverlässig vermeidet.</p>\n\n        <h2>3D-Design und maßgefertigte Schreinerei aus eigener Werkstatt</h2>\n        <p>Der Erfolg eines Stands beginnt Monate vor der Montage. Unsere Designphase ist ein sorgfältiger Prozess aus Marken-Engineering und Optimierung der Besucherführung: Auf Grundlage der Corporate-Richtlinien Ihres Unternehmens erstellen wir einen interaktiven 3D-Prototyp, der dem Endergebnis zu 100 % entspricht, sodass Ihr Vertriebsteam die Sichtbarkeit der Marke, die Besprechungszonen und die Integration von Bildschirmen, Theken und Vitrinen prüfen kann, bevor die Fertigung beginnt.</p>\n        <p>Einer unserer größten Vorteile ist unsere <strong>eigene Werkstatt</strong> für Schreinerei und hochwertige Oberflächen. Ohne Subunternehmer behalten wir die volle Kontrolle über Materialien, Termine und Qualität – mit modernen Montagetechniken und zertifizierten Materialien für temporäre Architektur. Die teilweise Vormontage in der Werkstatt verkürzt die Arbeitszeit auf dem Messegelände und garantiert eine makellose Verarbeitung, selbst im grellen Messelicht.</p>\n\n        <h2>Logistik und schlüsselfertige Montage in Porto</h2>\n        <p>Die finale Montage ist die Krönung unseres schlüsselfertigen Service. Wir koordinieren Transport und Verpackung, die Montage vor Ort, die Elektroinstallation von Strahlern und Bildschirmen, das Anbringen der Grafik sowie die Endreinigung direkt selbst. Ihr Team muss am ersten Messetag nur erscheinen und findet einen voll funktionsfähigen Unternehmensauftritt vor, bereit, Kontakte zu gewinnen. Darüber hinaus übernehmen wir sämtliche technischen Formalitäten, die die Messegelände verlangen – geprüfte Projekte, Brandschutzzertifikate, elektrische Abnahmen, Gefährdungsbeurteilungen und Versicherungen – für eine reibungslose Freigabe in Exponor.</p>\n        <p>Dank unserer Struktur betreuen wir Porto und ganz Nordportugal mit derselben Flexibilität wie die übrige Iberische Halbinsel und bieten Agenturen wie Direktausstellern einen einzigen Ansprechpartner für Design, Produktion, Logistik und Montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Planen und montieren Sie Stände in Exponor und an weiteren Messeorten in Porto?",
+          "a": "Ja. Wir arbeiten regelmäßig in Exponor – Feira Internacional do Porto und an weiteren Orten der Stadt wie dem Centro de Congressos da Alfândega. Wir kennen die technischen Vorschriften für einen Aufbau ohne böse Überraschungen."
+        },
+        {
+          "q": "Haben Sie eine eigene Werkstatt oder vergeben Sie die Fertigung an Subunternehmer?",
+          "a": "Wir verfügen über eine eigene Werkstatt für Schreinerei und Oberflächen. Ohne Zwischenhändler kontrollieren wir Materialien, Termine und Qualität zu 100 % und verkürzen durch Vormontage in der Werkstatt die Aufbauzeit auf dem Messegelände."
+        },
+        {
+          "q": "Ist der Service schlüsselfertig?",
+          "a": "Ja. Wir kümmern uns um alles: 3D-Design, Fertigung, Transport, Montage, Elektroinstallation, Grafik, Endreinigung und die technischen Abnahmen des Messegeländes. Ihr Team erscheint nur am ersten Messetag."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Porto",
+      "title": "Design e montagem de stands no Porto | Exponor | Standarte",
+      "h1": "Design e montagem de stands de feira à medida no Porto",
+      "introText": "A Standarte desenha, fabrica e monta stands de feira no Porto e em todo o Norte de Portugal, tendo a Exponor como grande praça feiral de referência. Mais de 20 anos de experiência e oficina própria para controlar cada fase do projeto: design 3D, carpintaria à medida, logística internacional e montagem com validações no recinto.",
+      "body": "\n        <h2>A Exponor, o motor feiral do Norte de Portugal</h2>\n        <p>O Porto é a capital económica do norte de Portugal e o seu epicentro feiral é a <strong>Exponor – Feira Internacional do Porto</strong>, situada em Leça da Palmeira (Matosinhos) e gerida pela Associação Empresarial de Portugal (AEP). É um dos maiores recintos do país, com uma agenda B2B que reúne a indústria, a cosmética, o packaging, a automação, o têxtil e a construção. Para uma empresa que pretende abrir mercado na região, expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte faz a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Trabalhamos as feiras mais relevantes da Exponor —entre elas a <strong>Concreta</strong> (construção, arquitetura e design), a <strong>Expocosmética</strong>, a <strong>Empack</strong>, a <strong>ITF Intertex Portugal</strong>, a <strong>ExpoMecânica</strong>, a <strong>EMAF</strong>, a <strong>Portojóia</strong>, a <strong>Decor Hotel</strong> e a <strong>EXPOCARNE</strong>— além de eventos noutros espaços da cidade como o Centro de Congressos da Alfândega do Porto. Conhecemos a regulamentação técnica de cada recinto, o que evita surpresas e atrasos na montagem.</p>\n\n        <h2>Design 3D e carpintaria à medida a partir de oficina própria</h2>\n        <p>O sucesso de um stand começa meses antes da montagem. A nossa fase de design é um processo meticuloso de engenharia de marca e de otimização do fluxo de visitantes: a partir das diretrizes corporativas da sua empresa, criamos um protótipo 3D interativo 100% fiel ao resultado final, de modo a que a sua equipa comercial possa validar a visibilidade da marca, as zonas de reunião e a integração de ecrãs, balcões e vitrinas antes de arrancar a fabricação.</p>\n        <p>Uma das nossas maiores vantagens é dispor de <strong>oficina própria</strong> de carpintaria e acabamentos de alta qualidade. Sem subcontratações, mantemos o controlo total sobre materiais, prazos e qualidade, com técnicas modernas de montagem e materiais certificados para arquitetura efémera. A pré-montagem parcial em oficina reduz o tempo de trabalho no recinto e garante um acabamento impecável mesmo sob a luz intensa da feira.</p>\n\n        <h2>Logística e montagem chave na mão no Porto</h2>\n        <p>A montagem final é o culminar do nosso serviço chave na mão. Coordenamos diretamente o transporte e embalamento, a montagem no local, a instalação elétrica de focos e ecrãs, a colocação da gráfica e a limpeza final. A sua equipa só tem de comparecer no primeiro dia de feira e encontrará um espaço corporativo plenamente operacional e pronto para captar contactos. Além disso, tratamos de todas as formalidades técnicas exigidas pelos recintos —projetos com visto, certificados de ignifugação, validações elétricas, avaliação de riscos e seguros— para uma aprovação fluida na Exponor.</p>\n        <p>A nossa estrutura permite-nos servir o Porto e o Norte de Portugal com a mesma agilidade que o resto da península ibérica, oferecendo a agências e expositores diretos um único interlocutor para design, produção, logística e montagem.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Desenham e montam stands na Exponor e noutros recintos do Porto?",
+          "a": "Sim. Trabalhamos regularmente na Exponor – Feira Internacional do Porto e noutros espaços da cidade como o Centro de Congressos da Alfândega. Conhecemos a sua regulamentação técnica para uma montagem sem surpresas."
+        },
+        {
+          "q": "Têm oficina própria ou subcontratam a fabricação?",
+          "a": "Dispomos de oficina própria de carpintaria e acabamentos. Sem intermediários, controlamos a 100% materiais, prazos e qualidade, e reduzimos o tempo de montagem no recinto através da pré-montagem em oficina."
+        },
+        {
+          "q": "O serviço é chave na mão?",
+          "a": "Sim. Encarregamo-nos de tudo: design 3D, fabricação, transporte, montagem, instalação elétrica, gráfica, limpeza final e as validações técnicas do recinto. A sua equipa só tem de comparecer no primeiro dia de feira."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Porto",
+      "title": "Conception et montage de stands à Porto | Exponor | Standarte",
+      "h1": "Conception et montage de stands d'exposition sur mesure à Porto",
+      "introText": "Standarte conçoit, fabrique et monte des stands d'exposition à Porto et dans tout le Nord du Portugal, avec Exponor comme grand pôle salonnier de référence. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque phase du projet : conception 3D, menuiserie sur mesure, logistique internationale et montage avec validations sur le site.",
+      "body": "\n        <h2>Exponor, le moteur salonnier du Nord du Portugal</h2>\n        <p>Porto est la capitale économique du nord du Portugal et son épicentre salonnier est <strong>Exponor – Feira Internacional do Porto</strong>, située à Leça da Palmeira (Matosinhos) et gérée par l'Associação Empresarial de Portugal (AEP). C'est l'un des plus grands parcs des expositions du pays, avec un agenda B2B qui réunit l'industrie, la cosmétique, l'emballage, l'automobile, le textile et la construction. Pour une entreprise qui souhaite conquérir le marché régional, exposer ici avec un stand bien pensé est l'un des investissements commerciaux les plus rentables, et c'est précisément là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs à fort retour sur investissement.</p>\n        <p>Nous travaillons sur les salons les plus importants d'Exponor —parmi lesquels <strong>Concreta</strong> (construction, architecture et design), <strong>Expocosmética</strong>, <strong>Empack</strong>, <strong>ITF Intertex Portugal</strong>, <strong>ExpoMecânica</strong>, <strong>EMAF</strong>, <strong>Portojóia</strong>, <strong>Decor Hotel</strong> et <strong>EXPOCARNE</strong>— ainsi que sur des événements dans d'autres lieux de la ville, comme le Centro de Congressos da Alfândega do Porto. Nous connaissons la réglementation technique de chaque site, ce qui évite les mauvaises surprises et les retards au montage.</p>\n\n        <h2>Conception 3D et menuiserie sur mesure depuis notre atelier propre</h2>\n        <p>La réussite d'un stand commence des mois avant le montage. Notre phase de conception est un processus méticuleux d'ingénierie de marque et d'optimisation du flux de visiteurs : à partir des directives corporatives de votre entreprise, nous créons un prototype 3D interactif 100 % fidèle au résultat final, afin que votre équipe commerciale puisse valider la visibilité de la marque, les zones de réunion et l'intégration des écrans, comptoirs et vitrines avant le lancement de la fabrication.</p>\n        <p>L'un de nos plus grands atouts est de disposer d'un <strong>atelier propre</strong> de menuiserie et de finitions haut de gamme. Sans sous-traitance, nous gardons un contrôle total sur les matériaux, les délais et la qualité, avec des techniques d'assemblage modernes et des matériaux certifiés pour l'architecture éphémère. Le pré-montage partiel en atelier réduit le temps de travail sur le site et garantit une finition impeccable, même sous la lumière intense du salon.</p>\n\n        <h2>Logistique et montage clé en main à Porto</h2>\n        <p>Le montage final est la touche finale de notre service clé en main. Nous coordonnons directement le transport et l'emballage, le montage sur place, l'installation électrique des spots et des écrans, la pose du graphisme et le nettoyage final. Votre équipe n'a plus qu'à se présenter le premier jour du salon pour découvrir un espace corporatif pleinement opérationnel et prêt à capter des contacts. De plus, nous gérons toutes les formalités techniques exigées par les sites —projets visés, certificats d'ignifugation, validations électriques, évaluation des risques et assurances— pour une approbation fluide à Exponor.</p>\n        <p>Notre structure nous permet de couvrir Porto et le Nord du Portugal avec la même réactivité que le reste de la péninsule Ibérique, en offrant aux agences et aux exposants directs un interlocuteur unique pour la conception, la production, la logistique et le montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Concevez-vous et montez-vous des stands à Exponor et dans d'autres sites de Porto ?",
+          "a": "Oui. Nous travaillons régulièrement à Exponor – Feira Internacional do Porto et dans d'autres lieux de la ville, comme le Centro de Congressos da Alfândega. Nous connaissons leur réglementation technique pour un montage sans mauvaises surprises."
+        },
+        {
+          "q": "Avez-vous un atelier propre ou sous-traitez-vous la fabrication ?",
+          "a": "Nous disposons d'un atelier propre de menuiserie et de finitions. Sans intermédiaires, nous contrôlons à 100 % les matériaux, les délais et la qualité, et nous réduisons le temps de montage sur le site grâce au pré-montage en atelier."
+        },
+        {
+          "q": "Le service est-il clé en main ?",
+          "a": "Oui. Nous nous occupons de tout : conception 3D, fabrication, transport, montage, installation électrique, graphisme, nettoyage final et les validations techniques du site. Votre équipe n'a qu'à se présenter le premier jour du salon."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Porto",
+      "title": "Progettazione e montaggio di stand a Porto | Exponor | Standarte",
+      "h1": "Progettazione e montaggio di stand fieristici su misura a Porto",
+      "introText": "Standarte progetta, fabbrica e monta stand fieristici a Porto e in tutto il Nord del Portogallo, con Exponor come grande polo fieristico di riferimento. Oltre 20 anni di esperienza e un laboratorio di proprietà per controllare ogni fase del progetto: progettazione 3D, falegnameria su misura, logistica internazionale e montaggio con validazioni nel quartiere fieristico.",
+      "body": "\n        <h2>Exponor, il motore fieristico del Nord del Portogallo</h2>\n        <p>Porto è la capitale economica del nord del Portogallo e il suo epicentro fieristico è <strong>Exponor – Feira Internacional do Porto</strong>, situata a Leça da Palmeira (Matosinhos) e gestita dalla Associação Empresarial de Portugal (AEP). È uno dei maggiori quartieri fieristici del paese, con un'agenda B2B che riunisce l'industria, la cosmetica, il packaging, l'automotive, il tessile e l'edilizia. Per un'azienda che vuole aprirsi un mercato nella regione, esporre qui con uno stand ben concepito è uno degli investimenti commerciali più redditizi, ed è proprio qui che Standarte fa la differenza: trasformiamo lo spazio del vostro marchio in una calamita di visitatori ad alto ritorno.</p>\n        <p>Lavoriamo le fiere più rilevanti di Exponor —tra cui <strong>Concreta</strong> (edilizia, architettura e design), <strong>Expocosmética</strong>, <strong>Empack</strong>, <strong>ITF Intertex Portugal</strong>, <strong>ExpoMecânica</strong>, <strong>EMAF</strong>, <strong>Portojóia</strong>, <strong>Decor Hotel</strong> ed <strong>EXPOCARNE</strong>— oltre a eventi in altri spazi della città come il Centro de Congressos da Alfândega do Porto. Conosciamo la normativa tecnica di ogni quartiere fieristico, il che evita sorprese e ritardi durante il montaggio.</p>\n\n        <h2>Progettazione 3D e falegnameria su misura dal laboratorio di proprietà</h2>\n        <p>Il successo di uno stand inizia mesi prima del montaggio. La nostra fase di progettazione è un processo meticoloso di ingegneria del marchio e ottimizzazione del flusso dei visitatori: a partire dalle linee guida aziendali della vostra impresa, creiamo un prototipo 3D interattivo fedele al 100% al risultato finale, in modo che il vostro team commerciale possa validare la visibilità del marchio, le aree riunioni e l'integrazione di schermi, banconi e vetrine prima che inizi la fabbricazione.</p>\n        <p>Uno dei nostri maggiori vantaggi è disporre di un <strong>laboratorio di proprietà</strong> di falegnameria e finiture di alta qualità. Senza subappalti, manteniamo il pieno controllo su materiali, tempi e qualità, con tecniche moderne di assemblaggio e materiali certificati per l'architettura effimera. Il premontaggio parziale in laboratorio riduce i tempi di lavoro nel quartiere fieristico e garantisce una finitura impeccabile anche sotto la luce intensa della fiera.</p>\n\n        <h2>Logistica e montaggio chiavi in mano a Porto</h2>\n        <p>Il montaggio finale è il coronamento del nostro servizio chiavi in mano. Coordiniamo direttamente il trasporto e l'imballaggio, il montaggio in loco, l'installazione elettrica di faretti e schermi, l'applicazione della grafica e la pulizia finale. Il vostro team deve solo presentarsi il primo giorno di fiera e troverà uno spazio aziendale pienamente operativo e pronto a captare contatti. Inoltre, gestiamo tutte le formalità tecniche richieste dai quartieri fieristici —progetti vidimati, certificati di ignifugazione, validazioni elettriche, valutazione dei rischi e assicurazioni— per un'approvazione fluida a Exponor.</p>\n        <p>La nostra struttura ci permette di servire Porto e il Nord del Portogallo con la stessa agilità del resto della penisola iberica, offrendo ad agenzie ed espositori diretti un unico interlocutore per progettazione, produzione, logistica e montaggio.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Progettate e montate stand a Exponor e in altri quartieri fieristici di Porto?",
+          "a": "Sì. Lavoriamo abitualmente a Exponor – Feira Internacional do Porto e in altri spazi della città come il Centro de Congressos da Alfândega. Conosciamo la sua normativa tecnica per un montaggio senza sorprese."
+        },
+        {
+          "q": "Avete un laboratorio di proprietà o subappaltate la fabbricazione?",
+          "a": "Disponiamo di un laboratorio di proprietà di falegnameria e finiture. Senza intermediari, controlliamo al 100% materiali, tempi e qualità, e riduciamo i tempi di montaggio nel quartiere fieristico grazie al premontaggio in laboratorio."
+        },
+        {
+          "q": "Il servizio è chiavi in mano?",
+          "a": "Sì. Ci occupiamo di tutto: progettazione 3D, fabbricazione, trasporto, montaggio, installazione elettrica, grafica, pulizia finale e le validazioni tecniche del quartiere fieristico. Il vostro team deve solo presentarsi il primo giorno di fiera."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Porto",
+      "title": "Ontwerp en montage van beursstands in Porto | Exponor | Standarte",
+      "h1": "Ontwerp en montage van maatwerk-beursstands in Porto",
+      "introText": "Standarte ontwerpt, produceert en monteert beursstands in Porto en in heel Noord-Portugal, met Exponor als toonaangevend beurscomplex. Meer dan 20 jaar ervaring en een eigen werkplaats om elke fase van het project te beheersen: 3D-ontwerp, maatwerk-schrijnwerk, internationale logistiek en montage met validaties in het beurscomplex.",
+      "body": "\n        <h2>Exponor, de beursmotor van Noord-Portugal</h2>\n        <p>Porto is de economische hoofdstad van Noord-Portugal en het beurshart ervan is <strong>Exponor – Feira Internacional do Porto</strong>, gelegen in Leça da Palmeira (Matosinhos) en beheerd door de Associação Empresarial de Portugal (AEP). Het is een van de grootste beurscomplexen van het land, met een B2B-agenda die de industrie, de cosmetica, de verpakkingssector, de automotive, het textiel en de bouw samenbrengt. Voor een bedrijf dat de markt in de regio wil openen, is hier exposeren met een goed doordachte stand een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we veranderen de ruimte van uw merk in een bezoekersmagneet met hoog rendement.</p>\n        <p>We werken voor de belangrijkste beurzen van Exponor — waaronder <strong>Concreta</strong> (bouw, architectuur en design), <strong>Expocosmética</strong>, <strong>Empack</strong>, <strong>ITF Intertex Portugal</strong>, <strong>ExpoMecânica</strong>, <strong>EMAF</strong>, <strong>Portojóia</strong>, <strong>Decor Hotel</strong> en <strong>EXPOCARNE</strong> — naast evenementen in andere locaties in de stad, zoals het Centro de Congressos da Alfândega do Porto. We kennen de technische voorschriften van elk beurscomplex, wat verrassingen en vertragingen tijdens de montage voorkomt.</p>\n\n        <h2>3D-ontwerp en maatwerk-schrijnwerk vanuit een eigen werkplaats</h2>\n        <p>Het succes van een stand begint maanden vóór de montage. Onze ontwerpfase is een nauwgezet traject van merk-engineering en optimalisatie van de bezoekersstroom: op basis van de bedrijfsrichtlijnen van uw onderneming maken we een interactief 3D-prototype dat 100% getrouw is aan het eindresultaat, zodat uw salesteam de zichtbaarheid van het merk, de vergaderzones en de integratie van schermen, toonbanken en vitrines kan beoordelen vóór de productie van start gaat.</p>\n        <p>Een van onze grootste voordelen is dat we beschikken over een <strong>eigen werkplaats</strong> voor schrijnwerk en hoogwaardige afwerkingen. Zonder onderaannemers houden we volledige controle over materialen, planning en kwaliteit, met moderne montagetechnieken en gecertificeerde materialen voor tijdelijke architectuur. De gedeeltelijke voormontage in de werkplaats verkort de werktijd ter plaatse en garandeert een onberispelijke afwerking, zelfs onder het felle beurslicht.</p>\n\n        <h2>Logistiek en sleutelklare montage in Porto</h2>\n        <p>De eindmontage is het sluitstuk van onze sleutelklare aanpak. We coördineren rechtstreeks het transport en de verpakking, de montage ter plaatse, de elektrische installatie van spots en schermen, de plaatsing van de grafiek en de eindschoonmaak. Uw team hoeft alleen op de eerste beursdag te verschijnen en treft een volledig werkende bedrijfsruimte aan, klaar om contacten te leggen. Bovendien verzorgen we alle technische formaliteiten die de beurscomplexen eisen — geviseerde projecten, brandwerendheidscertificaten, elektrische keuringen, risicobeoordelingen en verzekeringen — voor een vlotte goedkeuring in Exponor.</p>\n        <p>Dankzij onze structuur kunnen we Porto en Noord-Portugal met dezelfde wendbaarheid bedienen als de rest van het Iberisch schiereiland, en bieden we agentschappen en directe exposanten één aanspreekpunt voor ontwerp, productie, logistiek en montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Ontwerpt en monteert u stands in Exponor en andere beurscomplexen van Porto?",
+          "a": "Ja. We werken regelmatig in Exponor – Feira Internacional do Porto en op andere locaties in de stad, zoals het Centro de Congressos da Alfândega. We kennen de technische voorschriften ervan voor een montage zonder verrassingen."
+        },
+        {
+          "q": "Heeft u een eigen werkplaats of besteedt u de productie uit?",
+          "a": "We beschikken over een eigen werkplaats voor schrijnwerk en afwerkingen. Zonder tussenpersonen hebben we 100% controle over materialen, planning en kwaliteit, en verkorten we de montagetijd in het beurscomplex door voormontage in de werkplaats."
+        },
+        {
+          "q": "Is de dienst sleutelklaar?",
+          "a": "Ja. We regelen alles: 3D-ontwerp, productie, transport, montage, elektrische installatie, grafiek, eindschoonmaak en de technische validaties van het beurscomplex. Uw team verschijnt alleen op de eerste beursdag."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "波尔图",
+      "title": "波尔图展台设计与搭建 | Exponor | Standarte",
+      "h1": "波尔图专业定制展会展台设计与搭建",
+      "introText": "Standarte 在波尔图及葡萄牙北部全境提供展会展台的设计、制作与搭建服务，以 Exponor 这一核心展览中心为重点。我们拥有20余年经验和自有工厂，全程把控项目的每一个环节：3D 设计、定制木作、国际物流，以及在展览中心现场完成验收的搭建作业。",
+      "body": "\n        <h2>Exponor——葡萄牙北部的展会引擎</h2>\n        <p>波尔图是葡萄牙北部的经济中心，其展会核心便是位于 Leça da Palmeira（Matosinhos）、由葡萄牙企业协会（AEP）运营的 <strong>Exponor – Feira Internacional do Porto</strong>。它是葡萄牙规模最大的展览中心之一，B2B 展会日程涵盖工业、化妆品、包装、汽车、纺织与建筑等领域。对于希望开拓该地区市场的企业而言，在这里以一座精心打造的展台参展，是回报最丰厚的商业投资之一，而这正是 Standarte 体现差异化价值之处：我们将您品牌的展示空间打造成高回报的客流磁石。</p>\n        <p>我们承接 Exponor 各类重要展会——其中包括 <strong>Concreta</strong>（建筑、建筑设计与设计展）、<strong>Expocosmética</strong>、<strong>Empack</strong>、<strong>ITF Intertex Portugal</strong>、<strong>ExpoMecânica</strong>、<strong>EMAF</strong>、<strong>Portojóia</strong>、<strong>Decor Hotel</strong> 与 <strong>EXPOCARNE</strong>——同时也服务于城内其他场馆的活动，如 Centro de Congressos da Alfândega do Porto。我们熟悉每个展览中心的技术规范，从而避免搭建过程中的意外与延误。</p>\n\n        <h2>自有工厂支持的 3D 设计与定制木作</h2>\n        <p>展台的成功在搭建数月之前便已开始。我们的设计阶段是一套精细的品牌工程与客流动线优化流程：依据贵公司的企业形象准则，我们制作出与最终成品100%一致的交互式 3D 原型，让您的销售团队在制作开工之前即可验证品牌的可见度、洽谈区布局，以及显示屏、展示柜台和陈列柜的整合方案。</p>\n        <p>我们最大的优势之一，是拥有从事高品质木作与饰面的<strong>自有工厂</strong>。不依赖外包，我们对材料、工期与质量保持全面掌控，采用现代化的组装工艺和经认证的临时建筑材料。在工厂完成部分预组装，可缩短在展览中心的现场作业时间，即便在展会强光照射下也能确保无瑕的成品效果。</p>\n\n        <h2>波尔图的物流与交钥匙搭建</h2>\n        <p>最终的现场搭建，是我们交钥匙服务的收官之笔。我们直接统筹运输与包装、现场安装、射灯与显示屏的电气安装、图形画面的贴装以及最后的清洁。您的团队只需在展会首日到场，便能见到一个完全可投入使用、随时准备获取客户的企业展示空间。此外，我们还代为办理各展览中心要求的全部技术手续——经审核的项目图纸、阻燃认证、电气验收、风险评估与保险——以确保在 Exponor 顺利通过审批。</p>\n        <p>我们的组织架构使我们能够以与伊比利亚半岛其余地区同样的高效，服务于波尔图及葡萄牙北部，为代理机构和直接参展商提供设计、制作、物流与搭建的单一对接窗口。</p>\n      ",
+      "faqs": [
+        {
+          "q": "你们在 Exponor 及波尔图其他展览中心提供展台设计与搭建吗？",
+          "a": "是的。我们经常在 Exponor – Feira Internacional do Porto 以及城内其他场馆（如 Centro de Congressos da Alfândega）开展工作。我们熟悉其技术规范，确保搭建过程毫无意外。"
+        },
+        {
+          "q": "你们拥有自有工厂，还是将制作外包？",
+          "a": "我们拥有从事木作与饰面的自有工厂。没有中间环节，我们对材料、工期与质量保持100%掌控，并通过工厂内的预组装缩短在展览中心的搭建时间。"
+        },
+        {
+          "q": "服务是交钥匙式的吗？",
+          "a": "是的。我们全程负责：3D 设计、制作、运输、搭建、电气安装、图形画面、最后清洁，以及展览中心的各项技术验收。您的团队只需在展会首日到场即可。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "पोर्टो",
+      "title": "पोर्टो में स्टैंड का डिज़ाइन और असेंबली | Exponor | Standarte",
+      "h1": "पोर्टो में कस्टम मेला स्टैंड का डिज़ाइन और असेंबली",
+      "introText": "Standarte पोर्टो और पूरे उत्तरी पुर्तगाल में मेला स्टैंड डिज़ाइन, निर्मित और असेंबल करता है, जहाँ Exponor संदर्भ का प्रमुख मेला स्थल है। 20 वर्षों से अधिक का अनुभव और अपना कारखाना, जिससे हम परियोजना के हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, कस्टम कारपेंट्री, अंतरराष्ट्रीय लॉजिस्टिक्स और प्रदर्शनी स्थल पर सत्यापन के साथ असेंबली।",
+      "body": "\n        <h2>Exponor, उत्तरी पुर्तगाल का मेला इंजन</h2>\n        <p>पोर्टो उत्तरी पुर्तगाल की आर्थिक राजधानी है और इसका मेला केंद्र <strong>Exponor – Feira Internacional do Porto</strong> है, जो Leça da Palmeira (Matosinhos) में स्थित है और Associação Empresarial de Portugal (AEP) द्वारा संचालित है। यह देश के सबसे बड़े प्रदर्शनी स्थलों में से एक है, जिसका B2B कार्यक्रम उद्योग, सौंदर्य प्रसाधन, पैकेजिंग, ऑटोमोटिव, वस्त्र और निर्माण क्षेत्र को एक साथ लाता है। जो कंपनी इस क्षेत्र में बाज़ार खोलना चाहती है, उसके लिए यहाँ एक सुगठित स्टैंड के साथ प्रदर्शन करना सबसे लाभदायक वाणिज्यिक निवेशों में से एक है, और यहीं Standarte अंतर लाता है: हम आपके ब्रांड की जगह को उच्च प्रतिफल वाले आगंतुकों के चुंबक में बदल देते हैं।</p>\n        <p>हम Exponor के सबसे प्रासंगिक मेलों पर काम करते हैं —उनमें <strong>Concreta</strong> (निर्माण, वास्तुकला और डिज़ाइन), <strong>Expocosmética</strong>, <strong>Empack</strong>, <strong>ITF Intertex Portugal</strong>, <strong>ExpoMecânica</strong>, <strong>EMAF</strong>, <strong>Portojóia</strong>, <strong>Decor Hotel</strong> और <strong>EXPOCARNE</strong> शामिल हैं— साथ ही शहर के अन्य स्थलों पर होने वाले आयोजनों में, जैसे Centro de Congressos da Alfândega do Porto। हम प्रत्येक प्रदर्शनी स्थल के तकनीकी नियमों को जानते हैं, जिससे असेंबली के दौरान अप्रत्याशित घटनाएँ और देरी टल जाती है।</p>\n\n        <h2>अपने कारखाने से 3D डिज़ाइन और कस्टम कारपेंट्री</h2>\n        <p>किसी स्टैंड की सफलता असेंबली से कई महीने पहले शुरू होती है। हमारा डिज़ाइन चरण ब्रांड इंजीनियरिंग और आगंतुक प्रवाह के अनुकूलन की एक सावधानीपूर्ण प्रक्रिया है: आपकी कंपनी के कॉर्पोरेट दिशानिर्देशों के आधार पर हम अंतिम परिणाम के 100% विश्वसनीय एक इंटरैक्टिव 3D प्रोटोटाइप बनाते हैं, ताकि आपकी वाणिज्यिक टीम निर्माण शुरू होने से पहले ब्रांड की दृश्यता, बैठक क्षेत्रों और स्क्रीन, काउंटर तथा प्रदर्शन कैबिनेट के एकीकरण को सत्यापित कर सके।</p>\n        <p>हमारे सबसे बड़े फायदों में से एक है <strong>अपना कारखाना</strong>, उच्च-गुणवत्ता कारपेंट्री और फिनिशिंग का। बिना सबकॉन्ट्रैक्टिंग के, हम सामग्री, समय-सीमा और गुणवत्ता पर पूर्ण नियंत्रण बनाए रखते हैं, अस्थायी वास्तुकला के लिए प्रमाणित सामग्री और आधुनिक असेंबली तकनीकों के साथ। कारखाने में आंशिक पूर्व-असेंबली प्रदर्शनी स्थल पर काम का समय घटाती है और मेले की तीव्र रोशनी के नीचे भी एक निर्दोष फिनिश सुनिश्चित करती है।</p>\n\n        <h2>पोर्टो में लॉजिस्टिक्स और टर्नकी असेंबली</h2>\n        <p>अंतिम असेंबली हमारी टर्नकी सेवा का समापन है। हम सीधे परिवहन और पैकिंग, साइट पर असेंबली, फोकस और स्क्रीन की विद्युत स्थापना, ग्राफिक की स्थापना और अंतिम सफाई का समन्वय करते हैं। आपकी टीम को केवल मेले के पहले दिन उपस्थित होना है और उसे एक पूरी तरह कार्यशील कॉर्पोरेट स्थान मिलेगा, जो संपर्क बटोरने के लिए तैयार होगा। इसके अलावा, हम प्रदर्शनी स्थलों द्वारा अपेक्षित सभी तकनीकी औपचारिकताएँ संभालते हैं —अनुमोदित परियोजनाएँ, अग्निरोधक प्रमाणपत्र, विद्युत सत्यापन, जोखिम मूल्यांकन और बीमा— ताकि Exponor में स्वीकृति सुगम रहे।</p>\n        <p>हमारी संरचना हमें पोर्टो और उत्तरी पुर्तगाल को उतनी ही तत्परता से सेवा देने की अनुमति देती है जितनी शेष इबेरियन प्रायद्वीप को, जिससे एजेंसियों और प्रत्यक्ष प्रदर्शकों को डिज़ाइन, उत्पादन, लॉजिस्टिक्स और असेंबली के लिए एक ही संपर्क व्यक्ति मिलता है।</p>\n      ",
+      "faqs": [
+        {
+          "q": "क्या आप Exponor और पोर्टो के अन्य प्रदर्शनी स्थलों में स्टैंड डिज़ाइन और असेंबल करते हैं?",
+          "a": "हाँ। हम नियमित रूप से Exponor – Feira Internacional do Porto में और शहर के अन्य स्थलों जैसे Centro de Congressos da Alfândega में काम करते हैं। हम उनके तकनीकी नियमों को जानते हैं, जिससे असेंबली अप्रत्याशित घटनाओं के बिना होती है।"
+        },
+        {
+          "q": "क्या आपका अपना कारखाना है या आप निर्माण सबकॉन्ट्रैक्ट करते हैं?",
+          "a": "हमारे पास कारपेंट्री और फिनिशिंग का अपना कारखाना है। बिना मध्यस्थों के, हम सामग्री, समय-सीमा और गुणवत्ता पर 100% नियंत्रण रखते हैं, और कारखाने में पूर्व-असेंबली के ज़रिए प्रदर्शनी स्थल पर असेंबली का समय घटाते हैं।"
+        },
+        {
+          "q": "क्या सेवा टर्नकी है?",
+          "a": "हाँ। हम सब कुछ संभालते हैं: 3D डिज़ाइन, निर्माण, परिवहन, असेंबली, विद्युत स्थापना, ग्राफिक, अंतिम सफाई और प्रदर्शनी स्थल के तकनीकी सत्यापन। आपकी टीम केवल मेले के पहले दिन उपस्थित होती है।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "포르투",
+      "title": "포르투 전시 부스 디자인 및 조립 | Exponor | Standarte",
+      "h1": "포르투 맞춤형 전시 부스 디자인 및 조립",
+      "introText": "Standarte는 북부 포르투갈 최대 전시장인 Exponor를 중심으로 포르투와 북부 포르투갈 전역에서 전시 부스를 디자인하고 제작 및 조립합니다. 20년 이상의 경험과 자체 공장을 갖추고 3D 디자인, 맞춤 목공, 국제 물류, 전시장 현장 검수까지 프로젝트의 모든 단계를 직접 관리합니다.",
+      "body": "\n        <h2>Exponor, 북부 포르투갈 전시 산업의 중심</h2>\n        <p>포르투는 북부 포르투갈의 경제 중심지이며, 그 전시 산업의 핵심은 Leça da Palmeira(Matosinhos)에 위치하고 포르투갈 기업협회(AEP)가 운영하는 <strong>Exponor – Feira Internacional do Porto</strong>입니다. 포르투갈에서 손꼽히는 대규모 전시장으로, 산업, 화장품, 패키징, 자동차, 섬유, 건설 분야를 아우르는 B2B 일정이 진행됩니다. 이 지역에서 시장을 개척하려는 기업에게 잘 기획된 부스로 이곳에 참가하는 것은 가장 수익성 높은 영업 투자 중 하나이며, 바로 이 지점에서 Standarte가 차별화를 만듭니다. 우리는 귀사 브랜드의 공간을 높은 성과로 이어지는 방문객 유인 자석으로 바꿔 드립니다.</p>\n        <p>우리는 Exponor의 주요 전시회를 두루 다룹니다. 여기에는 <strong>Concreta</strong>(건설·건축·디자인), <strong>Expocosmética</strong>, <strong>Empack</strong>, <strong>ITF Intertex Portugal</strong>, <strong>ExpoMecânica</strong>, <strong>EMAF</strong>, <strong>Portojóia</strong>, <strong>Decor Hotel</strong>, <strong>EXPOCARNE</strong>가 포함되며, Centro de Congressos da Alfândega do Porto와 같은 시내 다른 공간의 행사도 진행합니다. 각 전시장의 기술 규정을 숙지하고 있어 조립 단계에서 예상치 못한 문제나 지연을 방지합니다.</p>\n\n        <h2>자체 공장에서 진행하는 3D 디자인과 맞춤 목공</h2>\n        <p>부스의 성공은 조립 몇 달 전부터 시작됩니다. 우리의 디자인 단계는 브랜드 엔지니어링과 방문객 동선 최적화를 위한 정교한 과정입니다. 귀사의 기업 가이드라인을 바탕으로 최종 결과물을 100% 충실히 재현하는 인터랙티브 3D 프로토타입을 제작하여, 제작이 시작되기 전에 영업팀이 브랜드의 가시성, 상담 공간, 화면·카운터·진열장의 통합을 검증할 수 있도록 합니다.</p>\n        <p>우리의 가장 큰 강점 중 하나는 목공과 고품질 마감을 위한 <strong>자체 공장</strong>을 보유하고 있다는 점입니다. 외주 없이 소재, 일정, 품질에 대한 완전한 통제를 유지하며, 임시 건축용으로 인증된 소재와 최신 조립 기법을 사용합니다. 공장에서의 부분 사전 조립은 전시장 현장 작업 시간을 줄이고, 강한 전시장 조명 아래에서도 흠 없는 마감을 보장합니다.</p>\n\n        <h2>포르투에서의 물류와 턴키 조립</h2>\n        <p>최종 조립은 우리 턴키 서비스의 화룡점정입니다. 운송과 포장, 현장 조립, 조명·화면의 전기 설치, 그래픽 부착, 마지막 청소까지 직접 조율합니다. 귀사의 팀은 전시 첫날에 방문하기만 하면, 완전히 가동되어 비즈니스 미팅과 리드 확보를 위한 준비가 끝난 기업 공간을 만나게 됩니다. 또한 전시장이 요구하는 모든 기술 절차—승인 도면, 방염 인증서, 전기 검수, 위험성 평가, 보험—를 처리하여 Exponor에서 원활한 승인을 보장합니다.</p>\n        <p>우리의 조직 구조 덕분에 포르투와 북부 포르투갈을 이베리아 반도의 다른 지역과 동일한 기민함으로 지원하며, 대행사와 직접 참가 기업 모두에게 디자인, 제작, 물류, 조립을 아우르는 단일 창구를 제공합니다.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Exponor와 포르투의 다른 전시장에서도 부스를 디자인하고 조립하나요?",
+          "a": "네. Exponor – Feira Internacional do Porto는 물론 Centro de Congressos da Alfândega와 같은 시내 다른 공간에서도 정기적으로 작업합니다. 각 전시장의 기술 규정을 숙지하고 있어 예상치 못한 문제 없이 조립을 진행합니다."
+        },
+        {
+          "q": "자체 공장이 있나요, 아니면 제작을 외주하나요?",
+          "a": "목공과 마감을 위한 자체 공장을 보유하고 있습니다. 중간 업체 없이 소재, 일정, 품질을 100% 관리하며, 공장에서의 사전 조립을 통해 전시장 현장 조립 시간을 단축합니다."
+        },
+        {
+          "q": "서비스가 턴키 방식인가요?",
+          "a": "네. 3D 디자인, 제작, 운송, 조립, 전기 설치, 그래픽, 마지막 청소, 전시장 기술 검수까지 모든 것을 담당합니다. 귀사의 팀은 전시 첫날에 방문하기만 하면 됩니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "ポルト",
+      "title": "ポルトの展示会ブース設計・組立 | Exponor | Standarte",
+      "h1": "ポルトのオーダーメイド展示会ブース設計・組立",
+      "introText": "Standarteは、ポルトおよびポルトガル北部全域で展示会ブースの設計・製作・組立を手がけ、北部最大の展示拠点Exponorを主要な活動の場としています。20年以上の経験と自社工房により、3D設計、オーダーメイド木工、国際物流、会場での検証まで、プロジェクトの全工程を一貫して管理します。",
+      "body": "\n        <h2>Exponor、ポルトガル北部を牽引する展示拠点</h2>\n        <p>ポルトはポルトガル北部の経済の中心地であり、その展示の中核を担うのが<strong>Exponor – Feira Internacional do Porto</strong>です。Leça da Palmeira（Matosinhos）に位置し、ポルトガル企業協会（AEP）が運営する国内最大級の展示会場で、産業、化粧品、パッケージング、自動車、繊維、建築といった多彩なB2Bプログラムを擁します。この地域で市場を開拓したい企業にとって、完成度の高いブースで出展することは最も投資対効果の高い商業施策のひとつです。Standarteはまさにこの点で違いを生み出し、貴社のブランド空間を高いROIをもたらす来場者の磁石へと変えます。</p>\n        <p>当社はExponorの主要な展示会、すなわち<strong>Concreta</strong>（建築・アーキテクチャ・デザイン）、<strong>Expocosmética</strong>、<strong>Empack</strong>、<strong>ITF Intertex Portugal</strong>、<strong>ExpoMecânica</strong>、<strong>EMAF</strong>、<strong>Portojóia</strong>、<strong>Decor Hotel</strong>、<strong>EXPOCARNE</strong>などを手がけるほか、Centro de Congressos da Alfândega do Portoといった市内の他会場でのイベントにも対応します。各展示会場の技術規定を熟知しているため、組立時の想定外や遅延を防ぎます。</p>\n\n        <h2>自社工房による3D設計とオーダーメイド木工</h2>\n        <p>ブースの成功は、組立の数か月前から始まっています。当社の設計段階は、ブランドエンジニアリングと来場者動線の最適化に取り組む緻密な工程です。貴社のコーポレートガイドラインをもとに、最終的な仕上がりを100%忠実に再現するインタラクティブな3Dプロトタイプを作成し、製作が始まる前に営業チームがブランドの視認性、商談スペース、スクリーン・受付カウンター・展示什器の統合を検証できるようにします。</p>\n        <p>当社の大きな強みのひとつが、高品質な木工と仕上げを行う<strong>自社工房</strong>を備えていることです。外注に頼らないことで、素材・納期・品質を完全に管理し、最新の組立技術と仮設建築向けの認証素材を用います。工房での部分的な事前組立により、会場での作業時間を短縮し、強い展示会照明の下でも完璧な仕上がりを保証します。</p>\n\n        <h2>ポルトにおける物流とターンキー組立</h2>\n        <p>最終組立は、当社のターンキーサービスの集大成です。輸送と梱包、現地での設営、照明やスクリーンの電気配線、グラフィックの設置、最終清掃までを直接コーディネートします。貴社のチームは展示会初日に来場するだけで、完全に機能し、リード獲得の準備が整ったコーポレート空間をお迎えします。さらに、各会場が求める技術手続き、すなわち有資格者が署名した設計、防炎証明、電気検査、リスク評価、保険まですべてを代行し、Exponorでのスムーズな承認を実現します。</p>\n        <p>当社の体制により、ポルトおよびポルトガル北部にも、イベリア半島の他地域と変わらない機動力で対応します。代理店にも直接出展する企業にも、設計・製作・物流・組立の単一窓口を提供します。</p>\n      ",
+      "faqs": [
+        {
+          "q": "Exponorやポルトの他会場でもブースの設計・組立を行っていますか？",
+          "a": "はい。Exponor – Feira Internacional do Portoをはじめ、Centro de Congressos da Alfândegaなど市内の他会場でも日常的に対応しています。各会場の技術規定を熟知しており、想定外のない組立を実現します。"
+        },
+        {
+          "q": "自社工房をお持ちですか、それとも製作を外注していますか？",
+          "a": "木工と仕上げの自社工房を備えています。仲介業者を介さず、素材・納期・品質を100%管理し、工房での事前組立により会場での組立時間を短縮します。"
+        },
+        {
+          "q": "サービスはターンキー方式ですか？",
+          "a": "はい。3D設計、製作、輸送、組立、電気配線、グラフィック、最終清掃、会場の技術検証まですべてを当社が担います。貴社のチームは展示会初日に来場するだけで済みます。"
+        }
+      ]
+    }
+  },
   "lisboa": {
     "nl": {
       "breadcrumb": "Lissabon",

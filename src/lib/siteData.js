@@ -27,6 +27,9 @@ export const routes = {
     barcelona: 'diseno_montaje_stands_barcelona',
     bilbao: 'diseno_montaje_stands_bilbao',
     lisboa: 'diseno_montaje_stands_lisboa',
+    mallorca: 'diseno_montaje_stands_mallorca',
+    valencia: 'diseno_montaje_stands_valencia',
+    oporto: 'diseno_montaje_stands_oporto',
     malaga: 'diseno_montaje_stands_malaga',
     badajoz: 'diseno_montaje_stands_badajoz',
     sevilla: 'diseno_montaje_stands_sevilla',
@@ -49,6 +52,9 @@ export const routes = {
     barcelona: 'stand_design_assembly_barcelona',
     bilbao: 'stand_design_assembly_bilbao',
     lisboa: 'stand_design_assembly_lisbon',
+    mallorca: 'stand_design_assembly_mallorca',
+    valencia: 'stand_design_assembly_valencia',
+    oporto: 'stand_design_assembly_porto',
     malaga: 'stand_design_assembly_malaga',
     badajoz: 'stand_design_assembly_badajoz',
     sevilla: 'stand_design_assembly_seville',
@@ -71,6 +77,9 @@ export const routes = {
     barcelona: 'messestand_design_montage_barcelona',
     bilbao: 'messestand_design_montage_bilbao',
     lisboa: 'messestand_design_montage_lissabon',
+    mallorca: 'messestand_design_montage_mallorca',
+    valencia: 'messestand_design_montage_valencia',
+    oporto: 'messestand_design_montage_porto',
     malaga: 'messestand_design_montage_malaga',
     badajoz: 'messestand_design_montage_badajoz',
     sevilla: 'messestand_design_montage_sevilla',
@@ -93,6 +102,9 @@ export const routes = {
     barcelona: 'barcelona_zhantai_sheji_dajian',
     bilbao: 'bilbao_zhantai_sheji_dajian',
     lisboa: 'lisbon_zhantai_sheji_dajian',
+    mallorca: 'mallorca_zhantai_sheji_dajian',
+    valencia: 'valencia_zhantai_sheji_dajian',
+    oporto: 'porto_zhantai_sheji_dajian',
     malaga: 'malaga_zhantai_sheji_dajian',
     badajoz: 'badajoz_zhantai_sheji_dajian',
     sevilla: 'sevilla_zhantai_sheji_dajian',
@@ -115,6 +127,9 @@ export const routes = {
     barcelona: 'barcelona_stand_dizain_asembli',
     bilbao: 'bilbao_stand_dizain_asembli',
     lisboa: 'lisbon_stand_dizain_asembli',
+    mallorca: 'mallorca_stand_dizain_asembli',
+    valencia: 'valencia_stand_dizain_asembli',
+    oporto: 'porto_stand_dizain_asembli',
     malaga: 'malaga_stand_dizain_asembli',
     badajoz: 'badajoz_stand_dizain_asembli',
     sevilla: 'sevilla_stand_dizain_asembli',
@@ -137,6 +152,9 @@ export const routes = {
     barcelona: 'design_montagem_stands_barcelona',
     bilbao: 'design_montagem_stands_bilbao',
     lisboa: 'design_montagem_stands_lisboa',
+    mallorca: 'design_montagem_stands_mallorca',
+    valencia: 'design_montagem_stands_valencia',
+    oporto: 'design_montagem_stands_porto',
     malaga: 'design_montagem_stands_malaga',
     badajoz: 'design_montagem_stands_badajoz',
     sevilla: 'design_montagem_stands_sevilla',
@@ -159,6 +177,9 @@ export const routes = {
     barcelona: 'conception_montage_stands_barcelone',
     bilbao: 'conception_montage_stands_bilbao',
     lisboa: 'conception_montage_stands_lisbonne',
+    mallorca: 'conception_montage_stands_mallorca',
+    valencia: 'conception_montage_stands_valence',
+    oporto: 'conception_montage_stands_porto',
     malaga: 'conception_montage_stands_malaga',
     badajoz: 'conception_montage_stands_badajoz',
     sevilla: 'conception_montage_stands_seville',
@@ -181,6 +202,9 @@ export const routes = {
     barcelona: 'progettazione_montaggio_stand_barcellona',
     bilbao: 'progettazione_montaggio_stand_bilbao',
     lisboa: 'progettazione_montaggio_stand_lisbona',
+    mallorca: 'progettazione_montaggio_stand_mallorca',
+    valencia: 'progettazione_montaggio_stand_valencia',
+    oporto: 'progettazione_montaggio_stand_porto',
     malaga: 'progettazione_montaggio_stand_malaga',
     badajoz: 'progettazione_montaggio_stand_badajoz',
     sevilla: 'progettazione_montaggio_stand_sevilla',
@@ -203,6 +227,9 @@ export const routes = {
     barcelona: 'barcelona-bujeu-dijain-jorip',
     bilbao: 'bilbao-bujeu-dijain-jorip',
     lisboa: 'lisbon-bujeu-dijain-jorip',
+    mallorca: 'mallorca-bujeu-dijain-jorip',
+    valencia: 'valencia-bujeu-dijain-jorip',
+    oporto: 'porto-bujeu-dijain-jorip',
     malaga: 'malaga-bujeu-dijain-jorip',
     badajoz: 'badajoz-bujeu-dijain-jorip',
     sevilla: 'sevilla-bujeu-dijain-jorip',
@@ -225,6 +252,9 @@ export const routes = {
     barcelona: 'バルセロナ展示会ブース設計施工',
     bilbao: 'ビルバオ展示会ブース設計施工',
     lisboa: 'リスボン展示会ブース設計施工',
+    mallorca: 'マヨルカ展示会ブース設計施工',
+    valencia: 'バレンシア展示会ブース設計施工',
+    oporto: 'ポルト展示会ブース設計施工',
     malaga: 'マラガ展示会ブース設計施工',
     badajoz: 'バダホス展示会ブース設計施工',
     sevilla: 'セビリア展示会ブース設計施工',
@@ -247,6 +277,9 @@ export const routes = {
     barcelona: 'standontwerp_montage_barcelona',
     bilbao: 'standontwerp_montage_bilbao',
     lisboa: 'standontwerp_montage_lissabon',
+    mallorca: 'standontwerp_montage_mallorca',
+    valencia: 'standontwerp_montage_valencia',
+    oporto: 'standontwerp_montage_porto',
     malaga: 'standontwerp_montage_malaga',
     badajoz: 'standontwerp_montage_badajoz',
     sevilla: 'standontwerp_montage_sevilla',
@@ -1357,6 +1390,153 @@ export const cityData = {
       ko: {
         intro: '자체 공장에서 임시 건축물을 지은 20년의 경험을 바탕으로 Standarte는 리스본에 전시 부스를 개발하여 설계, 생산, 물류, 설치 및 현장 최종 검증 등 각 단계에 대한 완벽한 통제를 보장합니다.',
         detail: '우리는 대행사와 직접 전시자에게 놀라움 없는 조립의 평화로움과 세부 사항에 대한 탁월한 주의를 제공합니다.'
+      }
+    }
+  },
+  mallorca: {
+    city: { es: 'Mallorca', en: 'Mallorca', de: 'Mallorca', zh: '马略卡', hi: 'मायोर्का', pt: 'Maiorca', fr: 'Majorque', it: 'Maiorca', ko: '마요르카', ja: 'マヨルカ', nl: 'Mallorca' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Mallorca —epicentro náutico y de superyates del Mediterráneo, con el Palma International Boat Show como gran cita— controlando cada fase: diseño 3D, fabricación, logística insular e instalación con validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Mallorca —the Mediterranean nautical and superyacht hub, home to the Palma International Boat Show— controlling every phase: 3D design, production, island logistics and installation with on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Mallorca — dem Nautik- und Superyacht-Zentrum des Mittelmeers mit der Palma International Boat Show als großem Highlight — und kontrolliert jede Phase: 3D-Design, Produktion, Insellogistik und Montage mit Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Maiorca — epicentro náutico e de superiates do Mediterrâneo, com o Palma International Boat Show como grande certame — controlando cada fase: design 3D, fabrico, logística insular e instalação com validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Majorque — pôle nautique et de superyachts de la Méditerranée, avec le Palma International Boat Show comme grand rendez-vous — en maîtrisant chaque phase : conception 3D, fabrication, logistique insulaire et montage avec validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Maiorca — polo nautico e dei superyacht del Mediterraneo, con il Palma International Boat Show come grande appuntamento — controllando ogni fase: progettazione 3D, produzione, logistica insulare e montaggio con collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands op Mallorca — het nautische en superjacht-centrum van de Middellandse Zee, met de Palma International Boat Show als grote afspraak — met volledige controle over elke fase: 3D-ontwerp, productie, eilandlogistiek en montage met keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在马略卡设计并搭建展台——这里是地中海游艇与超级游艇的核心，拥有 Palma International Boat Show 这一重要展会——全程把控每个环节：3D设计、生产、岛屿物流及现场安装验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，并对细节给予卓越关注。'
+      },
+      hi: {
+        intro: 'अपने स्वयं के कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte मायोर्का में स्टैंड डिज़ाइन और असेंबली करता है—भूमध्यसागर का नौवहन और सुपरयॉट केंद्र, जहाँ Palma International Boat Show होता है—हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, उत्पादन, द्वीपीय रसद और स्थल पर सत्यापन सहित स्थापना।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공장에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 지중해의 요트·슈퍼요트 거점이자 Palma International Boat Show가 열리는 마요르카에서 부스를 디자인하고 조립하며 3D 디자인, 생산, 섬 물류, 현장 검수를 포함한 설치 등 모든 단계를 직접 관리합니다.',
+        detail: '대행사와 직접 전시업체에 예기치 못한 일이 없는 조립과 디테일에 대한 탁월한 주의를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、Standarteは地中海のヨット・スーパーヨットの中心地であり、Palma International Boat Showが開催されるマヨルカで展示ブースを設計・施工し、3D設計、製作、離島物流、会場での検査を含む設営まで各工程を一貫して管理します。',
+        detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
+      }
+    }
+  },
+  valencia: {
+    city: { es: 'Valencia', en: 'Valencia', de: 'Valencia', zh: '瓦伦西亚', hi: 'वालेंसिया', pt: 'Valência', fr: 'Valence', it: 'Valencia', ko: '발렌시아', ja: 'バレンシア', nl: 'Valencia' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Valencia, una de las grandes plazas feriales del Mediterráneo gracias a Feria Valencia, controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Valencia, one of the great Mediterranean exhibition hubs thanks to Feria Valencia, controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Valencia, dank der Feria Valencia einer der großen Messestandorte des Mittelmeerraums, und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Endabnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Valência, uma das grandes praças feirais do Mediterrâneo graças à Feria Valencia, controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Valence, l\'une des grandes places d\'exposition de la Méditerranée grâce à Feria Valencia, en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Valencia, uno dei grandi poli fieristici del Mediterraneo grazie a Feria Valencia, controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Valencia, dankzij Feria Valencia een van de grote beurssteden van het Middellandse Zeegebied, met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在巴伦西亚设计并搭建展台——得益于 Feria Valencia，这里是地中海地区重要的会展中心之一——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，并对细节给予卓越关注。'
+      },
+      hi: {
+        intro: 'अपने स्वयं के कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte वालेंसिया में स्टैंड डिज़ाइन और असेंबली करता है—Feria Valencia की बदौलत यह भूमध्यसागरीय क्षेत्र के बड़े प्रदर्शनी केंद्रों में से एक है—हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, उत्पादन, रसद, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공장에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 Feria Valencia 덕분에 지중해의 주요 전시 거점 중 하나인 발렌시아에서 부스를 디자인하고 조립하며 3D 디자인, 생산, 물류, 설치, 현장 검수 등 모든 단계를 직접 관리합니다.',
+        detail: '대행사와 직접 전시업체에 예기치 못한 일이 없는 조립과 디테일에 대한 탁월한 주의를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、StandarteはFeria Valenciaを擁し地中海有数の展示拠点であるバレンシアで展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。',
+        detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
+      }
+    }
+  },
+  oporto: {
+    city: { es: 'Oporto', en: 'Porto', de: 'Porto', zh: '波尔图', hi: 'पोर्टो', pt: 'Porto', fr: 'Porto', it: 'Porto', ko: '포르투', ja: 'ポルト', nl: 'Porto' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Oporto y en todo el Norte de Portugal —con Exponor a la cabeza— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Porto and across northern Portugal —led by Exponor— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Porto und in ganz Nordportugal — allen voran auf der Exponor — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Endabnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands no Porto e em todo o Norte de Portugal — com a Exponor à cabeça — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Porto et dans tout le nord du Portugal — Exponor en tête — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Porto e in tutto il Nord del Portogallo — con Exponor in testa — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Porto en in heel Noord-Portugal — met Exponor voorop — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在波尔图及葡萄牙北部（以 Exponor 为核心）设计并搭建展台，全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，并对细节给予卓越关注。'
+      },
+      hi: {
+        intro: 'अपने स्वयं के कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte पोर्टो और पूरे उत्तरी पुर्तगाल में (Exponor के नेतृत्व में) स्टैंड डिज़ाइन और असेंबली करता है, हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, उत्पादन, रसद, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공장에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 포르투와 포르투갈 북부 전역(엑스포노르 중심)에서 부스를 디자인하고 조립하며 3D 디자인, 생산, 물류, 설치, 현장 검수 등 모든 단계를 직접 관리합니다.',
+        detail: '대행사와 직접 전시업체에 예기치 못한 일이 없는 조립과 디테일에 대한 탁월한 주의를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、Standarteはポルトおよびポルトガル北部全域（Exponorを中心に）で展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。',
+        detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
       }
     }
   },
