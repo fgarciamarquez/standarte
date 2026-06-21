@@ -339,7 +339,7 @@ async function run() {
     }
 
     console.log('-> GEMINI_API_KEY detectada. Iniciando generación por Inteligencia Artificial en 8 idiomas...');
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`;
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`;
 
     // Convertir el pool de imágenes en texto estructurado para el prompt
     const imagesListText = galleryImages.map((img, idx) => `ID ${idx + 1}: URL: "/${img.full}", Alt: "${img.alt}", Contexto: "${img.desc}"`).join('\n');

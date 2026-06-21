@@ -55,6 +55,7 @@
   const texts = {
     es: {
       title: "Hola!, soy Pat.",
+      freeBadge: "Servicio gratuito",
       intro: "Si buscas expandirte en España y Portugal, te puedo asesorar para elegir los eventos clave.",
       instruction: "En base a lo que ya conoces, definiré tu perfil. Selecciona una ciudad.",
       cta: "Obtener presupuesto para esta feria",
@@ -73,6 +74,7 @@
     },
     en: {
       title: "Hi! I'm Pat.",
+      freeBadge: "Free service",
       intro: "If you are looking to expand in Spain and Portugal, I can advise you on choosing the key events.",
       instruction: "Based on what you already know, I'll define your profile. Select a city.",
       cta: "Get a quote for this fair",
@@ -91,6 +93,7 @@
     },
     pt: {
       title: "Olá!, sou a Pat.",
+      freeBadge: "Serviço gratuito",
       intro: "Se procura expandir-se em Espanha e Portugal, posso aconselhá-lo na escolha dos eventos fundamentais.",
       instruction: "Com base no que já conhece, vou definir o seu perfil. Escolha uma cidade.",
       cta: "Pedir orçamento para esta feira",
@@ -109,6 +112,7 @@
     },
     de: {
       title: "Hallo!, ich bin Pat.",
+      freeBadge: "Kostenloser Service",
       intro: "Wenn Sie in Spanien und Portugal expandieren möchten, kann ich Sie bei der Auswahl der wichtigsten Messen beraten.",
       instruction: "Anhand dessen, was Sie bereits kennen, erstelle ich Ihr Profil. Wählen Sie eine Stadt.",
       cta: "Angebot für diese Messe anfordern",
@@ -127,6 +131,7 @@
     },
     fr: {
       title: "Bonjour !, je suis Pat.",
+      freeBadge: "Service gratuit",
       intro: "Si vous cherchez à vous développer en Espagne et au Portugal, je peux vous conseiller pour choisir les événements de premier plan.",
       instruction: "À partir de ce que vous connaissez déjà, je définirai votre profil. Choisissez une ville.",
       cta: "Demander un devis pour ce salon",
@@ -145,6 +150,7 @@
     },
     it: {
       title: "Ciao!, sono Pat.",
+      freeBadge: "Servizio gratuito",
       intro: "Se desideri espanderti in Spagna e Portogallo, posso consigliarti nella scelta degli eventi chiave.",
       instruction: "In base a ciò che già conosci, definirò il tuo profilo. Scegli una città.",
       cta: "Richiedi un preventivo per questa fiera",
@@ -163,6 +169,7 @@
     },
     nl: {
       title: "Hallo!, ik ben Pat.",
+      freeBadge: "Gratis service",
       intro: "Als u wilt uitbreiden in Spanje en Portugal, kan ik u adviseren bij het kiezen van de belangrijkste evenementen.",
       instruction: "Op basis van wat u al kent, bepaal ik uw profiel. Kies een stad.",
       cta: "Vraag een offerte aan voor deze beurs",
@@ -181,6 +188,7 @@
     },
     zh: {
       title: "你好！我是 Pat。",
+      freeBadge: "免费服务",
       intro: "如果您想在西班牙和葡萄牙拓展业务，我可以为您提供选择关键展会的建议。",
       instruction: "根据您已了解的情况，我会确定您的需求画像。请选择一个城市。",
       cta: "索取该展会的报价",
@@ -199,6 +207,7 @@
     },
     hi: {
       title: "नमस्ते!, मैं Pat हूँ।",
+      freeBadge: "निःशुल्क सेवा",
       intro: "यदि आप स्पेन और पुर्तगाल में विस्तार करना चाहते हैं, तो मैं आपको प्रमुख कार्यक्रमों को चुनने में सलाह दे सकती हूँ।",
       instruction: "आप जो पहले से जानते हैं उसके आधार पर, मैं आपकी प्रोफ़ाइल तय करूँगी। एक शहर चुनें।",
       cta: "इस मेले के लिए कोटेशन प्राप्त करें",
@@ -217,6 +226,7 @@
     },
     ko: {
       title: "안녕하세요! Pat입니다.",
+      freeBadge: "무료 서비스",
       intro: "스페인과 포르투갈에서 사업을 확장하고자 하신다면, 핵심 이벤트를 선택할 수 있도록 조언해 드릴 수 있습니다.",
       instruction: "이미 알고 계신 내용을 바탕으로 고객님의 프로필을 파악하겠습니다. 도시를 선택해 주세요.",
       cta: "이 전시회 견적 요청하기",
@@ -235,6 +245,7 @@
     },
     ja: {
       title: "こんにちは！Patです。",
+      freeBadge: "無料サービス",
       intro: "スペインやポルトガルでの事業拡大をお考えなら、主要なイベント選びのアドバイスをいたします。",
       instruction: "すでにご存じの内容をもとに、お客様のプロフィールを把握します。都市を選択してください。",
       cta: "この展示会の見積もりを依頼する",
@@ -614,8 +625,11 @@
       />
       <div class="advisor-bubble">
         <div class="advisor-bubble-header">
-          <h3 class="advisor-name">{status === 'success' ? t.thanksTitle : t.title}</h3>
-          
+          <div class="advisor-name-row">
+            <h3 class="advisor-name">{status === 'success' ? t.thanksTitle : t.title}</h3>
+            <span class="advisor-free-badge">{t.freeBadge}</span>
+          </div>
+
           {#if (selectedCity || selectedFair) && status !== 'success'}
             <div class="advisor-selected-badges" transition:fade>
               {#if selectedCity}
@@ -842,6 +856,36 @@
     color: #111;
     font-family: 'Glegoo', serif;
     font-size: 20px;
+    font-weight: 700;
+  }
+
+  .advisor-name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Vitola: etiqueta verde que indica que el asesoramiento es gratuito. */
+  .advisor-free-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #16a34a;
+    color: #fff;
+    font-family: 'Inconsolata', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 11px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(22, 163, 74, 0.28);
+  }
+  .advisor-free-badge::before {
+    content: '✓';
+    font-size: 12px;
     font-weight: 700;
   }
 
