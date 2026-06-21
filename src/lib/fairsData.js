@@ -122,14 +122,14 @@ export const fairsData = [
     "name": "Portugal Smart Cities Summit",
     "country": "pt",
     "slug": "portugal-smart-cities-summit",
-    "city": "Europa",
+    "city": "Oporto",
     "sector": "Tecnología e Innovación"
   },
   {
     "name": "ARCOlisboa",
     "country": "pt",
     "slug": "arcolisboa",
-    "city": "Europa",
+    "city": "Lisboa",
     "sector": "Arte y Ocio"
   },
   {
