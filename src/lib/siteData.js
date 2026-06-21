@@ -318,7 +318,7 @@ export const routes = {
 export const copy = {
   es: {
     faqsTitle: 'Preguntas Frecuentes', successStoriesTitle: 'Casos de Éxito', featuredProjectsIntro: 'Proyectos destacados de carpintería a medida y diseño de stands:', 
-    nav: { services: 'Servicios', custom: 'Galería', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
+    nav: { home: 'Inicio', services: 'Servicios', custom: 'Galería', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Diseño y montaje de stands en España y Portugal',
     seoDescription: 'Servicios de stands feriales con asesoría de expansión incluida. Diseñamos, fabricamos y montamos tu stand en España y Portugal. Presupuesto en 24 H.',
     heroTitle: 'Diseño y montaje de stands en España y Portugal',
@@ -403,7 +403,7 @@ export const copy = {
   },
   en: {
     faqsTitle: 'Frequently Asked Questions', successStoriesTitle: 'Success Stories', featuredProjectsIntro: 'Featured custom carpentry and exhibition stand design projects:', 
-    nav: { services: 'Services', custom: 'Gallery', noticias: 'Blog', contact: 'Contact', language: 'Language' },
+    nav: { home: 'Home', services: 'Services', custom: 'Gallery', noticias: 'Blog', contact: 'Contact', language: 'Language' },
     seoTitle: 'Standarte | Stand design and assembly in Spain and Portugal',
     seoDescription: 'Exhibition stand services with expansion advisory included. We design, assemble and install your stand for trade fairs across Spain and Portugal.',
     heroTitle: 'Exhibition stand design and assembly in Spain and Portugal',
@@ -488,7 +488,7 @@ export const copy = {
   },
   de: {
     faqsTitle: 'Häufig gestellte Fragen', successStoriesTitle: 'Erfolgsgeschichten', featuredProjectsIntro: 'Ausgewählte Projekte für maßgeschneiderte Tischlerei und Messestanddesign:', 
-    nav: { services: 'Dienstleistungen', custom: 'Galerie', noticias: 'Blog', contact: 'Kontakt', language: 'Sprache' },
+    nav: { home: 'Startseite', services: 'Dienstleistungen', custom: 'Galerie', noticias: 'Blog', contact: 'Kontakt', language: 'Sprache' },
     seoTitle: 'Standarte | Messestand Design und Montage',
     seoDescription: 'Messestand-Services inklusive Expansionsberatung. Wir entwerfen, fertigen und montieren Ihren Stand für Messen in Spanien und Portugal.',
     heroTitle: 'Messestand Design und Montage in Spanien und Portugal',
@@ -573,7 +573,7 @@ export const copy = {
   },
   zh: {
     faqsTitle: '常见问题', successStoriesTitle: '成功案例', featuredProjectsIntro: '特色定制木工和展台设计项目：', 
-    nav: { services: '服务', custom: '展台图库', noticias: '博客', contact: '联系', language: '语言' },
+    nav: { home: '首页', services: '服务', custom: '展台图库', noticias: '博客', contact: '联系', language: '语言' },
     seoTitle: 'Standarte | 展台设计与搭建',
     seoDescription: '展会展台服务，含市场拓展咨询：为您在西班牙和葡萄牙的展会设计、制作并搭建专属展台。',
     heroTitle: '西班牙和葡萄牙的展台设计与搭建',
@@ -654,7 +654,7 @@ export const copy = {
   },
   hi: {
     faqsTitle: 'अक्सर पूछे जाने वाले प्रश्न', successStoriesTitle: 'सफलता की कहानियाँ', featuredProjectsIntro: 'विशेष कस्टम बढ़ईगीरी और प्रदर्शनी स्टैंड डिजाइन परियोजनाएं:', 
-    nav: { services: 'सेवाएँ', custom: 'गैलरी', noticias: 'ब्लॉग', contact: 'संपर्क', language: 'भाषा' },
+    nav: { home: 'होम', services: 'सेवाएँ', custom: 'गैलरी', noticias: 'ब्लॉग', contact: 'संपर्क', language: 'भाषा' },
     seoTitle: 'Standarte | प्रदर्शनी स्टैंड डिजाइन और असेंबली',
     seoDescription: 'स्टैंड सेवाएँ, विस्तार परामर्श सहित। स्पेन और पुर्तगाल की प्रदर्शनियों के लिए आपके स्टैंड का डिज़ाइन, असेंबली और स्थापना।',
     heroTitle: 'स्पेन और पुर्तगाल में स्टैंड डिज़ाइन और असेंबली',
@@ -735,7 +735,7 @@ export const copy = {
   },
   pt: {
     faqsTitle: 'Perguntas Frequentes', successStoriesTitle: 'Casos de Sucesso', featuredProjectsIntro: 'Projetos destacados de marcenaria à medida e design de stands:', 
-    nav: { services: 'Serviços', custom: 'Galeria', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
+    nav: { home: 'Início', services: 'Serviços', custom: 'Galeria', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Montagem de stands em Espanha e Portugal',
     seoDescription: 'Serviços de stands de feira com consultoria de expansão incluída. Concebemos, produzimos e montamos o seu stand em Espanha e Portugal.',
     heroTitle: 'Design e montagem de stands em Espanha e Portugal',
@@ -823,7 +823,7 @@ export const copy = {
   },
   fr: {
     faqsTitle: 'Foire Aux Questions', successStoriesTitle: 'Histoires de Réussite', featuredProjectsIntro: 'Projets phares de menuiserie sur mesure et de conception de stands:', 
-    nav: { services: 'Services', custom: 'Galerie', noticias: 'Blog', contact: 'Contact', language: 'Langue' },
+    nav: { home: 'Accueil', services: 'Services', custom: 'Galerie', noticias: 'Blog', contact: 'Contact', language: 'Langue' },
     seoTitle: 'Standarte | Monteur de stands en Espagne et Portugal',
     seoDescription: 'Services de stands d\'exposition avec conseil en expansion inclus. Conception, fabrication et montage de votre stand en Espagne et au Portugal.',
     heroTitle: 'Conception et montage de stands en Espagne et au Portugal',
@@ -888,7 +888,7 @@ export const copy = {
   },
   it: {
     faqsTitle: 'Domande Frequenti', successStoriesTitle: 'Storie di Successo', featuredProjectsIntro: 'Progetti in evidenza di falegnameria su misura e design di stand espositivi:', 
-    nav: { services: 'Servizi', custom: 'Galleria', noticias: 'Blog', contact: 'Contatto', language: 'Lingua' },
+    nav: { home: 'Home', services: 'Servizi', custom: 'Galleria', noticias: 'Blog', contact: 'Contatto', language: 'Lingua' },
     seoTitle: 'Standarte | Allestimenti fieristici in Spagna e Portogallo',
     seoDescription: 'Servizi di stand fieristici con consulenza per l\'espansione inclusa. Progettiamo, produciamo e montiamo il tuo stand in Spagna e Portogallo.',
     heroTitle: 'Progettazione e montaggio di stand in Spagna e Portogallo',
@@ -953,6 +953,7 @@ export const copy = {
   },
   ko: {
   "nav": {
+    "home": "홈",
     "services": "서비스",
     "custom": "갤러리",
     "noticias": "블로그",
@@ -1096,7 +1097,7 @@ export const copy = {
 },
   ja: {
     faqsTitle: 'よくあるご質問', successStoriesTitle: '導入事例', featuredProjectsIntro: 'オーダーメイドの木工と展示ブースデザインの注目プロジェクト：',
-    nav: { services: 'サービス', custom: 'ギャラリー', noticias: 'ブログ', contact: 'お問い合わせ', language: '言語' },
+    nav: { home: 'ホーム', services: 'サービス', custom: 'ギャラリー', noticias: 'ブログ', contact: 'お問い合わせ', language: '言語' },
     seoTitle: '海外展示会ブースの設計・製作・組立 | スペイン・ポルトガル | Standarte',
     seoDescription: '展示会ブースのサービスに事業拡大アドバイスを含む。スペイン・ポルトガルの展示会向けに、ブースをオーダーメイドで設計・製作・組立します。海外出展をお考えの企業に最適。',
     heroTitle: 'スペイン・ポルトガルでの展示会ブース設計・組立',
@@ -1165,7 +1166,7 @@ export const copy = {
   },
   nl: {
     faqsTitle: 'Veelgestelde vragen', successStoriesTitle: 'Succesverhalen', featuredProjectsIntro: 'Uitgelichte projecten van maatwerk-schrijnwerk en standontwerp:',
-    nav: { services: 'Diensten', custom: 'Galerij', noticias: 'Blog', contact: 'Contact', language: 'Taal' },
+    nav: { home: 'Home', services: 'Diensten', custom: 'Galerij', noticias: 'Blog', contact: 'Contact', language: 'Taal' },
     seoTitle: 'Standarte | Standontwerp en montage in Spanje en Portugal',
     seoDescription: 'Beursstand-diensten inclusief expansieadvies. Standontwerp en montage in Spanje en Portugal: ontwerp, productie en montage van uw beursstand op maat. Offerte binnen 24 u.',
     heroTitle: 'Standontwerp en montage in Spanje en Portugal',

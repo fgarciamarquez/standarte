@@ -486,8 +486,8 @@
     </div>
 
     <div class:open={menuOpen} class="nav-links">
+      <a href={pathFor(lang, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
-      <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">

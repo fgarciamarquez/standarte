@@ -832,14 +832,12 @@
     </div>
 
     <div class:open={menuOpen} class="nav-links">
+      <a href={pathFor(lang, 'home')} on:click={(e) => handleNavClick(e, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')} on:click={(e) => handleNavClick(e, 'services')}>{copy.nav.services}</a>
       {#if modularEnabled}
         <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
-      <a href={pathFor(lang, 'luzpavilion')} on:click={(e) => handleNavClick(e, 'micro-stand')}>
-        LuzPavilion
-      </a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
