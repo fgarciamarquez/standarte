@@ -25,7 +25,9 @@
     hi: '24 घंटे में कोटेशन',
     fr: 'DEVIS EN 24 H',
     it: 'PREVENTIVO IN 24 H',
-    ko: '24시간 내 견적'
+    ko: '24시간 내 견적',
+    ja: '24時間で見積もり',
+    nl: 'OFFERTE BINNEN 24 U'
   };
 
   const i18n = {
@@ -109,7 +111,40 @@
       source: '출처',
       readMore: '기사 전체 읽기',
       noNews: '이 목적지에 대한 더 많은 최신 기사가 곧 추가될 예정입니다.'
+    },
+    ja: {
+      eyebrow: '展示会ニュース＆トレンド',
+      title: 'ニュースと仮設建築',
+      lead: 'マドリード、バルセロナ、ビルバオ、リスボン、マラガの会場の最新情報を分析し、際立ち、動線を最適化し、快適さを保証する仮設ソリューションを設計します。',
+      allDestinations: 'すべての都市',
+      source: '出典',
+      readMore: '記事全文を読む',
+      noNews: 'この都市に関する最新記事は近日公開予定です。'
+    },
+    nl: {
+      eyebrow: 'Beursnieuws & Trends',
+      title: 'Nieuws & Tijdelijke Architectuur',
+      lead: 'We analyseren de actualiteit in de beurshallen van Madrid, Barcelona, Bilbao, Lissabon en Málaga en ontwerpen tijdelijke oplossingen die opvallen, de doorstroming optimaliseren en comfort garanderen.',
+      allDestinations: 'Alle bestemmingen',
+      source: 'Bron',
+      readMore: 'Lees het volledige artikel',
+      noNews: 'Binnenkort meer actuele artikelen over deze bestemming.'
     }
+  };
+
+  // Mensaje + enlace para idiomas SIN noticias (nl, ja): las noticias solo existen en español.
+  const onlyEs = {
+    es: { msg: 'Las noticias solo están disponibles en español.', link: 'Ver noticias en español' },
+    en: { msg: 'News articles are only available in Spanish.', link: 'View news in Spanish' },
+    de: { msg: 'Die Nachrichten sind nur auf Spanisch verfügbar.', link: 'Nachrichten auf Spanisch ansehen' },
+    pt: { msg: 'As notícias só estão disponíveis em espanhol.', link: 'Ver notícias em espanhol' },
+    zh: { msg: '新闻仅提供西班牙语版本。', link: '查看西班牙语新闻' },
+    hi: { msg: 'समाचार केवल स्पेनिश में उपलब्ध हैं।', link: 'स्पेनिश में समाचार देखें' },
+    fr: { msg: 'Les actualités ne sont disponibles qu’en espagnol.', link: 'Voir les actualités en espagnol' },
+    it: { msg: 'Le notizie sono disponibili solo in spagnolo.', link: 'Vedi le notizie in spagnolo' },
+    ko: { msg: '뉴스는 스페인어로만 제공됩니다.', link: '스페인어로 뉴스 보기' },
+    ja: { msg: 'ニュースはスペイン語のみで提供されています。', link: 'スペイン語のニュースを見る' },
+    nl: { msg: 'Het nieuws is alleen in het Spaans beschikbaar.', link: 'Bekijk het nieuws in het Spaans' }
   };
 
   const cityLabels = {
@@ -121,7 +156,9 @@
     hi: { madrid: 'मैड्रिड', barcelona: 'बार्सिलोना', bilbao: 'बिलबाओ', malaga: 'मलागा', lisboa: 'लिस्बन' },
     fr: { madrid: 'Madrid', barcelona: 'Barcelone', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbonne' },
     it: { madrid: 'Madrid', barcelona: 'Barcellona', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbona' },
-    ko: { madrid: '마드리드', barcelona: '바르셀로나', bilbao: '빌바오', malaga: '말라가', lisboa: '리스본' }
+    ko: { madrid: '마드리드', barcelona: '바르셀로나', bilbao: '빌바오', malaga: '말라가', lisboa: '리스본' },
+    ja: { madrid: 'マドリード', barcelona: 'バルセロナ', bilbao: 'ビルバオ', malaga: 'マラガ', lisboa: 'リスボン' },
+    nl: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Málaga', lisboa: 'Lissabon' }
   };
 
   // Translate city name
@@ -153,10 +190,15 @@
       hi: 'hi-IN',
       fr: 'fr-FR',
       it: 'it-IT',
-      ko: 'ko-KR'
+      ko: 'ko-KR',
+      ja: 'ja-JP',
+      nl: 'nl-NL'
     };
     return new Date(dateStr).toLocaleDateString(locales[lang] || 'es-ES', options);
   }
+
+  // ¿Hay noticias en este idioma? (nl/ja no tienen) -> mostramos el aviso "solo en español".
+  $: langHasNews = news.some((n) => n.lang === lang);
 
   function handleScroll() {
     isScrolled = window.scrollY > 8;
@@ -376,7 +418,12 @@
         </article>
       {:else}
         <div class="no-news-box">
-          <p>{(i18n[lang] || i18n.es).noNews}</p>
+          {#if langHasNews}
+            <p>{(i18n[lang] || i18n.es).noNews}</p>
+          {:else}
+            <p>{(onlyEs[lang] || onlyEs.es).msg}</p>
+            <a class="news-only-es-link" href="/blog">{(onlyEs[lang] || onlyEs.es).link} →</a>
+          {/if}
         </div>
       {/each}
     </div>
@@ -658,6 +705,21 @@
     padding: 80px 0;
     color: #777;
     font-style: italic;
+  }
+
+  .news-only-es-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--gold, #d4af37);
+    text-decoration: none;
+    border-bottom: 2px solid var(--gold, #d4af37);
+    padding-bottom: 2px;
+    transition: opacity 0.2s ease;
+  }
+  .news-only-es-link:hover {
+    opacity: 0.8;
   }
 
   @media (max-width: 768px) {
