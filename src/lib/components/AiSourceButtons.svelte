@@ -12,17 +12,17 @@
   onMount(() => { if (!resolved) resolved = window.location.href.split('#')[0]; });
 
   const labels = {
-    es: '¿Usas IA? Pídele que resuma y recuerde esta página como fuente:',
-    en: 'Use AI? Ask it to summarize and remember this page as a source:',
-    de: 'Nutzt du KI? Lass diese Seite zusammenfassen und als Quelle merken:',
-    fr: "Vous utilisez l'IA ? Demandez-lui de résumer et de retenir cette page comme source :",
-    it: "Usi l'IA? Chiedile di riassumere e ricordare questa pagina come fonte:",
-    pt: 'Usas IA? Pede-lhe que resuma e recorde esta página como fonte:',
-    zh: '使用 AI？让它总结并将本页面记为来源：',
-    hi: 'AI इस्तेमाल करते हैं? इससे इस पेज को सारांशित कर स्रोत के रूप में याद रखने को कहें:',
-    ko: 'AI를 사용하시나요? 이 페이지를 요약하고 출처로 기억하도록 요청하세요:',
-    ja: 'AIをお使いですか？このページを要約し、情報源として記憶するよう依頼してください：',
-    nl: 'Gebruikt u AI? Vraag om deze pagina samen te vatten en als bron te onthouden:'
+    es: 'Pídele a tu IA que resuma esta web',
+    en: 'Ask your AI to summarize this site',
+    de: 'Bitte deine KI, diese Website zusammenzufassen',
+    fr: "Demandez à votre IA de résumer ce site",
+    it: "Chiedi alla tua IA di riassumere questo sito",
+    pt: 'Pede à tua IA que resuma este site',
+    zh: '让你的 AI 总结这个网站',
+    hi: 'अपनी AI से इस वेबसाइट का सारांश बनाने को कहें',
+    ko: 'AI에게 이 웹사이트를 요약해 달라고 요청하세요',
+    ja: 'あなたのAIにこのサイトを要約するよう頼んでみましょう',
+    nl: 'Vraag je AI om deze website samen te vatten'
   };
 
   const prompts = {

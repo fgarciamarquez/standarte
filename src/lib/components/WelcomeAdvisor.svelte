@@ -56,6 +56,7 @@
     es: {
       title: "Hola!, soy Pat.",
       freeBadge: "Servicio gratuito",
+      activeLabel: "Activo",
       intro: "Si buscas expandirte en España y Portugal, te puedo asesorar para elegir los eventos clave.",
       instruction: "En base a lo que ya conoces, definiré tu perfil. Selecciona una ciudad.",
       cta: "Obtener presupuesto para esta feria",
@@ -75,6 +76,7 @@
     en: {
       title: "Hi! I'm Pat.",
       freeBadge: "Free service",
+      activeLabel: "Active",
       intro: "If you are looking to expand in Spain and Portugal, I can advise you on choosing the key events.",
       instruction: "Based on what you already know, I'll define your profile. Select a city.",
       cta: "Get a quote for this fair",
@@ -94,6 +96,7 @@
     pt: {
       title: "Olá!, sou a Pat.",
       freeBadge: "Serviço gratuito",
+      activeLabel: "Ativo",
       intro: "Se procura expandir-se em Espanha e Portugal, posso aconselhá-lo na escolha dos eventos fundamentais.",
       instruction: "Com base no que já conhece, vou definir o seu perfil. Escolha uma cidade.",
       cta: "Pedir orçamento para esta feira",
@@ -113,6 +116,7 @@
     de: {
       title: "Hallo!, ich bin Pat.",
       freeBadge: "Kostenloser Service",
+      activeLabel: "Aktiv",
       intro: "Wenn Sie in Spanien und Portugal expandieren möchten, kann ich Sie bei der Auswahl der wichtigsten Messen beraten.",
       instruction: "Anhand dessen, was Sie bereits kennen, erstelle ich Ihr Profil. Wählen Sie eine Stadt.",
       cta: "Angebot für diese Messe anfordern",
@@ -132,6 +136,7 @@
     fr: {
       title: "Bonjour !, je suis Pat.",
       freeBadge: "Service gratuit",
+      activeLabel: "Actif",
       intro: "Si vous cherchez à vous développer en Espagne et au Portugal, je peux vous conseiller pour choisir les événements de premier plan.",
       instruction: "À partir de ce que vous connaissez déjà, je définirai votre profil. Choisissez une ville.",
       cta: "Demander un devis pour ce salon",
@@ -151,6 +156,7 @@
     it: {
       title: "Ciao!, sono Pat.",
       freeBadge: "Servizio gratuito",
+      activeLabel: "Attivo",
       intro: "Se desideri espanderti in Spagna e Portogallo, posso consigliarti nella scelta degli eventi chiave.",
       instruction: "In base a ciò che già conosci, definirò il tuo profilo. Scegli una città.",
       cta: "Richiedi un preventivo per questa fiera",
@@ -170,6 +176,7 @@
     nl: {
       title: "Hallo!, ik ben Pat.",
       freeBadge: "Gratis service",
+      activeLabel: "Actief",
       intro: "Als u wilt uitbreiden in Spanje en Portugal, kan ik u adviseren bij het kiezen van de belangrijkste evenementen.",
       instruction: "Op basis van wat u al kent, bepaal ik uw profiel. Kies een stad.",
       cta: "Vraag een offerte aan voor deze beurs",
@@ -189,6 +196,7 @@
     zh: {
       title: "你好！我是 Pat。",
       freeBadge: "免费服务",
+      activeLabel: "已启用",
       intro: "如果您想在西班牙和葡萄牙拓展业务，我可以为您提供选择关键展会的建议。",
       instruction: "根据您已了解的情况，我会确定您的需求画像。请选择一个城市。",
       cta: "索取该展会的报价",
@@ -208,6 +216,7 @@
     hi: {
       title: "नमस्ते!, मैं Pat हूँ।",
       freeBadge: "निःशुल्क सेवा",
+      activeLabel: "सक्रिय",
       intro: "यदि आप स्पेन और पुर्तगाल में विस्तार करना चाहते हैं, तो मैं आपको प्रमुख कार्यक्रमों को चुनने में सलाह दे सकती हूँ।",
       instruction: "आप जो पहले से जानते हैं उसके आधार पर, मैं आपकी प्रोफ़ाइल तय करूँगी। एक शहर चुनें।",
       cta: "इस मेले के लिए कोटेशन प्राप्त करें",
@@ -227,6 +236,7 @@
     ko: {
       title: "안녕하세요! Pat입니다.",
       freeBadge: "무료 서비스",
+      activeLabel: "활성",
       intro: "스페인과 포르투갈에서 사업을 확장하고자 하신다면, 핵심 이벤트를 선택할 수 있도록 조언해 드릴 수 있습니다.",
       instruction: "이미 알고 계신 내용을 바탕으로 고객님의 프로필을 파악하겠습니다. 도시를 선택해 주세요.",
       cta: "이 전시회 견적 요청하기",
@@ -246,6 +256,7 @@
     ja: {
       title: "こんにちは！Patです。",
       freeBadge: "無料サービス",
+      activeLabel: "有効",
       intro: "スペインやポルトガルでの事業拡大をお考えなら、主要なイベント選びのアドバイスをいたします。",
       instruction: "すでにご存じの内容をもとに、お客様のプロフィールを把握します。都市を選択してください。",
       cta: "この展示会の見積もりを依頼する",
@@ -608,6 +619,14 @@
       dispatch('openPrivacy');
     }
   }
+
+  // Deslizador "Activo": al desactivarlo, el panel desaparece durante toda la sesión.
+  function onActiveToggle(e) {
+    if (e.currentTarget.checked) return; // sigue activo
+    try { sessionStorage.setItem('standarte_advisor_dismissed', '1'); } catch (err) {}
+    cardExpanded = false;
+    dismissTimers.push(setTimeout(() => { dispatch('dismiss'); }, 320));
+  }
 </script>
 
 <section class="welcome-advisor-container">
@@ -742,6 +761,15 @@
     {/if}
 
   </div>
+
+  {#if cardExpanded && status !== 'success'}
+    <div class="advisor-active-tab" transition:fade>
+      <label class="advisor-active-toggle">
+        <input type="checkbox" checked role="switch" aria-label={t.activeLabel} on:change={onActiveToggle} />
+        <span class="advisor-active-track"><span class="advisor-active-thumb"></span></span>
+      </label>
+    </div>
+  {/if}
 </section>
 
 <style>
@@ -1147,6 +1175,83 @@
     background: #ccc;
     color: #666;
     cursor: not-allowed;
+  }
+
+  /* Pestaña que sobresale del borde inferior del panel; contiene solo el switch (sin texto).
+     Al apagarlo, el panel se oculta durante toda la sesión. */
+  .advisor-active-tab {
+    width: fit-content;
+    margin: -1px auto 0;
+    padding: 10px 24px 12px;
+    background: #f8f9fa;
+    border-radius: 0 0 18px 18px;
+    /* drop-shadow (no box-shadow) para que la sombra siga la silueta soldada
+       incluyendo los fillets ::before/::after. */
+    filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.07));
+    position: relative;
+    z-index: 2;
+  }
+  /* Soldadura: las esquinas superiores se redondean hacia afuera uniéndose al panel. */
+  .advisor-active-tab::before,
+  .advisor-active-tab::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background: #f8f9fa;
+    pointer-events: none;
+  }
+  .advisor-active-tab::before {
+    left: -16px;
+    background: radial-gradient(circle at bottom left, transparent 16px, #f8f9fa 16px);
+  }
+  .advisor-active-tab::after {
+    right: -16px;
+    background: radial-gradient(circle at bottom right, transparent 16px, #f8f9fa 16px);
+  }
+  .advisor-active-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .advisor-active-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .advisor-active-track {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    border-radius: 999px;
+    background: #c2c7cc;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+  }
+  .advisor-active-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+  }
+  .advisor-active-toggle input:checked + .advisor-active-track {
+    background: #16a34a;
+  }
+  .advisor-active-toggle input:checked + .advisor-active-track .advisor-active-thumb {
+    transform: translateX(20px);
+  }
+  .advisor-active-toggle input:focus-visible + .advisor-active-track {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
   }
 
   .text-success {
