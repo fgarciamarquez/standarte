@@ -385,8 +385,26 @@
     }
   };
 
+  // Coletilla de valor (experiencia + taller propio) que antes vivía en el subtítulo <p>.
+  // Se funde en el H1 para que la cabecera tenga un solo texto sin repetir
+  // "Diseño y montaje de stands en…". Lleva su propio separador inicial por idioma.
+  const heroExp = {
+    es: ' con más de 20 años de experiencia y taller propio',
+    en: ' with over 20 years of experience and our own workshop',
+    de: ' mit über 20 Jahren Erfahrung und eigener Werkstatt',
+    fr: " avec plus de 20 ans d'expérience et notre propre atelier",
+    pt: ' com mais de 20 anos de experiência e oficina própria',
+    it: ' con oltre 20 anni di esperienza e officina propria',
+    ko: ' — 20년 이상의 경험과 자체 작업장 보유',
+    zh: '，拥有超过20年的经验和自有工厂',
+    hi: ' — 20 से अधिक वर्षों का अनुभव और अपनी खुद की कार्यशाला',
+    ja: '。20年以上の経験と自社工房を有しています',
+    nl: ' met meer dan 20 jaar ervaring en een eigen werkplaats'
+  };
+
   $: localizedCity = (cities[lang] && cities[lang][fair.city]) ? cities[lang][fair.city] : fair.city;
   $: localizedSector = (sectors[lang] && sectors[lang][fair.sector]) ? sectors[lang][fair.sector] : fair.sector;
+  $: heroExpStr = heroExp[lang] || heroExp.es;
 
   // Valor del título: si el nombre de la feria NO incluye ya su ciudad (en ningún idioma),
   // le añadimos la ciudad localizada entre paréntesis para captar la búsqueda local
@@ -533,11 +551,10 @@
   
   <div class="hero-subpage">
     <div class="hero-contents feria-hero-contents">
-      <h1>{strings.heroTitle(fairDisplayName)}</h1>
+      <h1>{strings.heroTitle(fairDisplayName)}{heroExpStr}</h1>
       <div class="fair-flag-wrapper">
         <span class={`fair-flag-icon flag-${fair.country} medium-flag`} aria-hidden="true"></span>
       </div>
-      <p class="hero-lead">{strings.heroSubtitle(localizedCity)}</p>
     </div>
     <AiSourceButtons {lang} variant="hero" showLabel={false} />
   </div>
