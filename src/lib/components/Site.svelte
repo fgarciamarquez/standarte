@@ -97,7 +97,7 @@
   let carouselRevealed = CAROUSEL_CHUNK;
   $: carouselItems = shuffledProjects.slice(0, carouselRevealed);
   $: hasMoreCarousel = carouselRevealed < shuffledProjects.length;
-  $: carouselSlots = carouselItems.length + (hasMoreCarousel ? 1 : 0); // fichas + descargador
+  $: carouselSlots = carouselItems.length; // solo fichas (sin botón descargador)
   function revealMoreCarousel() {
     carouselRevealed = Math.min(carouselRevealed + CAROUSEL_CHUNK, shuffledProjects.length);
   }
@@ -126,14 +126,19 @@
     }
   }
 
+  // Auto-revela el siguiente tramo al acercarse al final (sin botón manual): solo se
+  // renderizan/descargan fichas a medida que el visitante navega, manteniendo ligera la carga.
+  $: if (hasMoreCarousel && carouselIndex >= carouselRevealed - visibleCount - 1) {
+    revealMoreCarousel();
+  }
+
   function nextSlide() {
     const maxIndex = Math.max(0, carouselSlots - visibleCount);
     if (carouselIndex < maxIndex) {
       carouselIndex++;
     } else if (!hasMoreCarousel) {
-      carouselIndex = 0; // solo vuelve al inicio cuando ya está todo cargado
+      carouselIndex = 0; // vuelve al inicio solo cuando ya está todo cargado
     }
-    // si quedan tramos por descargar, el carrusel se queda parado en el descargador
   }
 
   function prevSlide() {
@@ -1077,20 +1082,6 @@
                 </div>
               </article>
             {/each}
-
-            {#if hasMoreCarousel}
-              <article class="carousel-card carousel-loader-slot" style="width: calc(100% / var(--visible-count));">
-                <button type="button" class="carousel-loader-btn" on:click={revealMoreCarousel} aria-label={galleryMoreLabels[lang] || galleryMoreLabels.es}>
-                  <span class="carousel-loader-circle">
-                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <line x1="12" y1="5" x2="12" y2="19"></line>
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                  </span>
-                  <span class="carousel-loader-text">+{Math.min(CAROUSEL_CHUNK, shuffledProjects.length - carouselRevealed)}</span>
-                </button>
-              </article>
-            {/if}
           </div>
         </div>
 
