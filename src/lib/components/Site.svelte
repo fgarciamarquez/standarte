@@ -909,8 +909,10 @@
               <div class="city-cover-container">
                 <img
                   src="/img/cover_{cityKey}.avif"
-                  srcset="/img/cover_{cityKey}-mobile.avif 480w, /img/cover_{cityKey}.avif 800w"
-                  sizes="(max-width: 768px) 480px, 800px"
+                  srcset="/img/cover_{cityKey}-mobile.avif 480w, /img/cover_{cityKey}-md.avif 640w, /img/cover_{cityKey}.avif 800w"
+                  sizes="(max-width: 768px) 90vw, 380px"
+                  width="640"
+                  height="360"
                   alt={cityTitle(cityKey)}
                   class="city-cover-image"
                   loading="lazy"
