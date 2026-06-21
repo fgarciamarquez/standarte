@@ -168,8 +168,9 @@
     return (cityLabels[lang] || cityLabels.es)[key] || cityStr;
   }
 
-  // Filtrar noticias por idioma y ubicación
-  $: filteredNews = news
+  // Las noticias solo se publican en español: en cualquier otro idioma la lista queda
+  // vacía y se muestra el aviso "solo en español" con enlace a /blog.
+  $: filteredNews = (lang === 'es' ? news : [])
     .filter(item => item.lang === lang)
     .filter(item => {
       if (activeFilter === 'all') return true;
@@ -196,9 +197,6 @@
     };
     return new Date(dateStr).toLocaleDateString(locales[lang] || 'es-ES', options);
   }
-
-  // ¿Hay noticias en este idioma? (nl/ja no tienen) -> mostramos el aviso "solo en español".
-  $: langHasNews = news.some((n) => n.lang === lang);
 
   function handleScroll() {
     isScrolled = window.scrollY > 8;
@@ -365,6 +363,7 @@
 </header>
 
 <main class="news-main">
+  {#if lang === 'es'}
   <section class="news-filters">
     <div class="filters-container">
       <button type="button" class:active={activeFilter === 'all'} on:click={() => activeFilter = 'all'}>
@@ -387,6 +386,7 @@
       </button>
     </div>
   </section>
+  {/if}
 
   <section class="news-grid-section">
     <div class="news-grid">
@@ -418,8 +418,8 @@
         </article>
       {:else}
         <div class="no-news-box">
-          {#if langHasNews}
-            <p>{(i18n[lang] || i18n.es).noNews}</p>
+          {#if lang === 'es'}
+            <p>{i18n.es.noNews}</p>
           {:else}
             <p>{(onlyEs[lang] || onlyEs.es).msg}</p>
             <a class="news-only-es-link" href="/blog">{(onlyEs[lang] || onlyEs.es).link} →</a>
