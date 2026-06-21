@@ -417,6 +417,10 @@ Cada una de estas llaves debe ser un objeto con los siguientes campos:
       }],
       generationConfig: {
         responseMimeType: "application/json",
+        // gemini-2.5-flash trae "thinking" activado por defecto y consume el presupuesto
+        // de salida; lo desactivamos para que la salida JSON (8 idiomas) no se trunque.
+        thinkingConfig: { thinkingBudget: 0 },
+        maxOutputTokens: 16384,
         responseSchema: {
           type: "OBJECT",
           properties: {
@@ -511,9 +515,16 @@ Cada una de estas llaves debe ser un objeto con los siguientes campos:
       responseText = await postJson(geminiUrl, requestBody);
       const responseJson = JSON.parse(responseText);
       
-      if (responseJson.candidates && responseJson.candidates[0] && responseJson.candidates[0].content && responseJson.candidates[0].content.parts[0].text) {
-        const generatedArticle = JSON.parse(responseJson.candidates[0].content.parts[0].text);
-        
+      // Extracción robusta: concatenamos el texto de todas las partes y, por si el
+      // modelo devolviera el JSON entre vallas markdown, las quitamos antes de parsear.
+      const cand = responseJson.candidates && responseJson.candidates[0];
+      const parts = (cand && cand.content && Array.isArray(cand.content.parts)) ? cand.content.parts : [];
+      let rawJson = parts.map((p) => (p && typeof p.text === 'string') ? p.text : '').join('').trim();
+      rawJson = rawJson.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+
+      if (rawJson) {
+        const generatedArticle = JSON.parse(rawJson);
+
         // Extraer la URL de la imagen (usamos la del artículo en español)
         const imgMatch = (generatedArticle.es.content).match(/<img[^>]+src=["']([^"']+)["']/);
         const imageUrl = imgMatch ? imgMatch[1] : '/img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif';
