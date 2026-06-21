@@ -1,7 +1,7 @@
 <script>
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount } from 'svelte';
-  import { pushState, replaceState } from '$app/navigation';
+  import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios } from '$lib/siteData.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
@@ -233,24 +233,22 @@
 
   $: filteredPortfolios = activePortfolios;
 
-  $: if (section && typeof window !== 'undefined') {
-    let targetId = section;
-    if (section in cityData) {
-      targetId = section;
-    } else if (section === 'luzpavilion') {
-      targetId = 'micro-stand';
-    }
-    if (ignoreNextScroll) {
-      ignoreNextScroll = false;
-    } else {
-      setTimeout(() => {
-        const el = document.getElementById(targetId);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 120);
-    }
-  }
+  // Al navegar a una sección-página de la home (Servicios, Galería, Equipo, Pabellón de luz),
+  // desplazamos a su posición concreta. afterNavigate corre DESPUÉS de la restauración de
+  // scroll del navegador, por eso es fiable también al cargar la URL directamente o llegar
+  // desde otra página (antes el reactivo con setTimeout fallaba en la carga inicial).
+  const SECTION_ANCHOR = { services: 'services', custom: 'custom', team: 'team', luzpavilion: 'micro-stand' };
+  afterNavigate(() => {
+    if (typeof window === 'undefined') return;
+    const id = SECTION_ANCHOR[section];
+    if (!id) return; // home/ciudades/contacto: van arriba o gestionan su propio scroll
+    const go = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
+    };
+    requestAnimationFrame(go);
+    setTimeout(go, 250); // reintento tras asentarse el layout (imágenes/lazy)
+  });
 
   // Para japonés (sin rich-ja todavía) usamos null en vez de caer al español:
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
