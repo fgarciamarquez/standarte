@@ -966,14 +966,12 @@ article:hover .city-cover-image {
   background: transparent;
   border: 0;
   border-radius: 4px;
-  filter: grayscale(1);
   cursor: pointer;
   transition: all .2s linear;
 }
 
 .shot-item:hover,
 .shot-item:focus {
-  filter: none;
   outline: none;
 }
 
