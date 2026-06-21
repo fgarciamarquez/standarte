@@ -20,11 +20,13 @@ jobs:
         with:
           # Permite descargar con permisos de escritura para empujar los cambios de vuelta
           token: ${{ secrets.GITHUB_TOKEN }}
+          # Historial completo: necesario para rebase fiable si main avanza durante el run.
+          fetch-depth: 0
 
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Instalar Dependencias
@@ -49,5 +51,18 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add src/lib/newsData.json
-          git commit -m "chore(news): auto-update daily news article [skip ci]" || echo "No se detectaron cambios para commitear"
-          git push
+          git commit -m "chore(news): auto-update daily news article [skip ci]" || { echo "Sin cambios que commitear"; exit 0; }
+          # main puede avanzar durante el run (el deploy FTP dura ~20 min). Reintenta con
+          # rebase para no perder el commit por una carrera de pushes concurrentes.
+          for intento in 1 2 3 4 5; do
+            git fetch origin main
+            if git rebase origin/main && git push; then
+              echo "Push OK (intento $intento)"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "Push rechazado o rebase fallido; main avanzó. Reintento $intento tras pausa..."
+            sleep 7
+          done
+          echo "::error::No se pudo hacer push de newsData.json tras 5 reintentos"
+          exit 1
