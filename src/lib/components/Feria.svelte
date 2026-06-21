@@ -388,6 +388,19 @@
   $: localizedCity = (cities[lang] && cities[lang][fair.city]) ? cities[lang][fair.city] : fair.city;
   $: localizedSector = (sectors[lang] && sectors[lang][fair.sector]) ? sectors[lang][fair.sector] : fair.sector;
 
+  // Valor del título: si el nombre de la feria NO incluye ya su ciudad (en ningún idioma),
+  // le añadimos la ciudad localizada entre paréntesis para captar la búsqueda local
+  // ("stands en [feria] [ciudad]"). Ferias sin ciudad-matriz (Hannover, FIO Monfragüe…)
+  // o cuyo nombre ya contiene la ciudad se dejan tal cual.
+  $: fairDisplayName = (() => {
+    if (!currentCityKey) return fair.name;
+    const cityNames = Object.values(cityData[currentCityKey]?.city || {});
+    const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const nn = norm(fair.name);
+    if (cityNames.some((c) => c && nn.includes(norm(c)))) return fair.name;
+    return `${fair.name} (${localizedCity})`;
+  })();
+
   // Miga de pan completa: Inicio -> Ciudad -> Feria. La ciudad se enlaza si tiene
   // página propia (currentCityKey); si no, se muestra como texto. El último paso
   // (la feria) es la página actual, sin enlace. Se rinde con microdatos
@@ -414,7 +427,7 @@
     return t.es;
   })();
   
-  $: seoTitle = `${strings.heroTitle(fair.name)} | Standarte`;
+  $: seoTitle = `${strings.heroTitle(fairDisplayName)} | Standarte`;
   $: seoDesc = strings.intro(fair.name, localizedCity, localizedSector);
 
   // Clúster: enlace al pilar de ciudad + ferias hermanas de la misma región
@@ -520,7 +533,7 @@
   
   <div class="hero-subpage">
     <div class="hero-contents feria-hero-contents">
-      <h1>{strings.heroTitle(fair.name)}</h1>
+      <h1>{strings.heroTitle(fairDisplayName)}</h1>
       <div class="fair-flag-wrapper">
         <span class={`fair-flag-icon flag-${fair.country} medium-flag`} aria-hidden="true"></span>
       </div>
