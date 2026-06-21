@@ -252,6 +252,8 @@
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
   // Hero con fondo animado (fotos en movimiento) en la home Y en las páginas matriz de ciudad.
   $: animatedHero = section === 'home' || (section in cityData);
+  // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
+  $: isCityPage = section in cityData;
   // Proyectos del pilar: para regiones con perfil sectorial marcado mostramos obra real afín
   // (no se afirma que sean de esa ciudad; el intro es genérico "muestra de nuestro trabajo").
   $: selectedPortfolios = (FEATURED_BY_REGION[SECTION_REGION[section]] || [])
@@ -873,13 +875,15 @@
   {:else if seoContent}
     <div class="hero-subpage" class:transparent-hero={section === 'services'} class:on-hero-photo={animatedHero}>
       <div class="hero-contents">
-        <nav class="breadcrumbs" aria-label="Breadcrumb">
-          <ol>
-            <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : 'Home'}</a></li>
-            <li><span class="divider">/</span></li>
-            <li><span class="current" aria-current="page">{seoContent.breadcrumb}</span></li>
-          </ol>
-        </nav>
+        {#if !isCityPage}
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+              <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : 'Home'}</a></li>
+              <li><span class="divider">/</span></li>
+              <li><span class="current" aria-current="page">{seoContent.breadcrumb}</span></li>
+            </ol>
+          </nav>
+        {/if}
         <h1>{seoContent.h1}</h1>
         <p class="hero-lead">{seoContent.introText}</p>
       </div>
@@ -1220,6 +1224,21 @@
         <div class="seo-layout">
           <!-- Artículo principal de redacción profesional -->
           <article class="seo-article">
+            {#if isCityPage}
+              <nav class="breadcrumbs feria-breadcrumbs" aria-label="Breadcrumb">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                  <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href={pathFor(lang, 'home')}><span itemprop="name">{lang === 'es' ? 'Inicio' : 'Home'}</span></a>
+                    <meta itemprop="position" content="1" />
+                  </li>
+                  <li class="bc-sep" aria-hidden="true"><span class="divider">/</span></li>
+                  <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="current" itemprop="name" aria-current="page">{seoContent.breadcrumb}</span>
+                    <meta itemprop="position" content="2" />
+                  </li>
+                </ol>
+              </nav>
+            {/if}
             {@html seoContent.body}
           </article>
           

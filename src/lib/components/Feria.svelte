@@ -387,6 +387,24 @@
 
   $: localizedCity = (cities[lang] && cities[lang][fair.city]) ? cities[lang][fair.city] : fair.city;
   $: localizedSector = (sectors[lang] && sectors[lang][fair.sector]) ? sectors[lang][fair.sector] : fair.sector;
+
+  // Miga de pan completa: Inicio -> Ciudad -> Feria. La ciudad se enlaza si tiene
+  // página propia (currentCityKey); si no, se muestra como texto. El último paso
+  // (la feria) es la página actual, sin enlace. Se rinde con microdatos
+  // schema.org/BreadcrumbList para reforzar la estructura ante los buscadores.
+  $: breadcrumbItems = (() => {
+    const items = [{ name: homeLabel[lang] || 'Home', href: pathFor(lang, 'home') }];
+    if (currentCityKey) {
+      items.push({
+        name: cityData[currentCityKey]?.city?.[lang] || cityData[currentCityKey]?.city?.es,
+        href: pathFor(lang, currentCityKey)
+      });
+    } else if (fair?.city) {
+      items.push({ name: localizedCity, href: null });
+    }
+    items.push({ name: fair.name, href: null });
+    return items;
+  })();
   $: strings = (() => {
     const byLang = t[lang];
     if (byLang) return byLang;
@@ -502,13 +520,6 @@
   
   <div class="hero-subpage">
     <div class="hero-contents feria-hero-contents">
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <ol>
-          <li><a href={pathFor(lang, 'home')}>{homeLabel[lang] || 'Home'}</a></li>
-          <li><span class="divider">/</span></li>
-          <li><span class="current" aria-current="page">{fair.name}</span></li>
-        </ol>
-      </nav>
       <h1>{strings.heroTitle(fair.name)}</h1>
       <div class="fair-flag-wrapper">
         <span class={`fair-flag-icon flag-${fair.country} medium-flag`} aria-hidden="true"></span>
@@ -523,6 +534,23 @@
   <section class="feria-details section">
     <div class="feria-container">
       <div class="feria-text">
+        <nav class="breadcrumbs feria-breadcrumbs" aria-label="Breadcrumb">
+          <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+            {#each breadcrumbItems as item, i}
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                {#if item.href}
+                  <a itemprop="item" href={item.href}><span itemprop="name">{item.name}</span></a>
+                {:else}
+                  <span class="current" itemprop="name" aria-current={i === breadcrumbItems.length - 1 ? 'page' : undefined}>{item.name}</span>
+                {/if}
+                <meta itemprop="position" content={i + 1} />
+              </li>
+              {#if i < breadcrumbItems.length - 1}
+                <li class="bc-sep" aria-hidden="true"><span class="divider">/</span></li>
+              {/if}
+            {/each}
+          </ol>
+        </nav>
         <p class="highlight">{seoDesc}</p>
         {#if fairBody}
           <div class="fair-unique">{@html fairBody}</div>

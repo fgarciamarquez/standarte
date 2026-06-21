@@ -2529,6 +2529,26 @@ footer {
   color: var(--gold);
 }
 
+/* Miga de pan dentro del cuerpo de la ficha de feria (fondo claro). */
+.breadcrumbs.feria-breadcrumbs {
+  margin: 0 0 22px;
+}
+.breadcrumbs.feria-breadcrumbs li {
+  font-size: 14px;
+}
+.breadcrumbs.feria-breadcrumbs a {
+  color: #5a6066;
+}
+.breadcrumbs.feria-breadcrumbs a:hover {
+  color: var(--gold);
+}
+.breadcrumbs.feria-breadcrumbs .divider {
+  color: #c2c2c2;
+}
+.breadcrumbs.feria-breadcrumbs .current {
+  color: #1a1e21;
+}
+
 .hero-subpage h1 {
   font-size: 36px;
   line-height: 1.3;
