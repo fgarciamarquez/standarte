@@ -709,17 +709,22 @@
 
   .news-only-es-link {
     display: inline-block;
-    margin-top: 14px;
+    margin-top: 18px;
+    padding: 12px 24px;
     font-style: normal;
     font-weight: 700;
-    color: var(--gold, #d4af37);
+    font-size: 15px;
+    color: #1a1e21;
+    background: var(--gold, #d4af37);
+    border-radius: 6px;
     text-decoration: none;
-    border-bottom: 2px solid var(--gold, #d4af37);
-    padding-bottom: 2px;
-    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+    transition: filter 0.2s ease, transform 0.2s ease;
   }
-  .news-only-es-link:hover {
-    opacity: 0.8;
+  .news-only-es-link:hover,
+  .news-only-es-link:focus {
+    filter: brightness(1.07);
+    transform: translateY(-1px);
   }
 
   @media (max-width: 768px) {
