@@ -768,8 +768,8 @@
   <meta name="googlebot" content="index, follow" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
-  {#if section === 'home' || section === 'contact' || section === 'services'}
-    <!-- Preload LCP background image for layout widths -->
+  {#if animatedHero || section === 'contact' || section === 'services'}
+    <!-- Preload de la imagen de fondo del hero (LCP) — incluye home Y páginas de ciudad. -->
     <link
       rel="preload"
       as="image"
@@ -1017,7 +1017,13 @@
           <div class={`mix ${project.categories.join(' ')}`} class:gallery-hidden={!galleryExpanded && i >= GALLERY_VISIBLE}>
             <div class="portfolio-item">
               <a class="shot-item" href="/galeria/{project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={getProjectTitle(project)}>
-                <img src={`/${project.thumb}`} alt={getProjectTitle(project)} loading="lazy" decoding="async" />
+                <img
+                  src={`/${project.thumb.replace(/\.avif$/, '-md.avif')}`}
+                  srcset={`/${project.thumb.replace(/\.avif$/, '-sb.avif')} 300w, /${project.thumb.replace(/\.avif$/, '-md.avif')} 800w`}
+                  sizes="(max-width: 768px) 92vw, 31vw"
+                  width="800" height="450"
+                  alt={getProjectTitle(project)} loading="lazy" decoding="async"
+                />
                 <span class="overlay lightbox" aria-hidden="true">
                   <span class="item-icon eye-icon"></span>
                 </span>
@@ -1097,7 +1103,7 @@
       </nav>
     </section>
 
-    <section class="counters section" data-stellar-background-ratio="0.5">
+    <section class="counters section">
       <div class="counter-grid">
         {#each counterItems as item, index}
           <article class="facts-item">
@@ -1253,7 +1259,7 @@
                 <div class="sidebar-projects">
                   {#each selectedPortfolios as project}
                     <div class="sidebar-project-card">
-                      <img src={`/${project.thumb}`} alt={getProjectTitle(project)} class="sidebar-project-img" />
+                      <img src={`/${project.thumb.replace(/\.avif$/, '-sb.avif')}`} alt={getProjectTitle(project)} class="sidebar-project-img" width="300" height="169" loading="lazy" decoding="async" />
                       <div class="sidebar-project-info">
                         <h4>{getProjectTitle(project)}</h4>
                         <p>{projectDescription(project)}</p>

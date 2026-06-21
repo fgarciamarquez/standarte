@@ -1117,6 +1117,14 @@ article:hover .city-cover-image {
   gap: 30px;
 }
 
+/* Reserva el ancho del número durante el conteo (evita relayout por cambio de dígitos). */
+.counters .counter {
+  display: inline-block;
+  min-width: 3ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
 .counters .facts-item {
   color: #fff;
   text-align: center;
