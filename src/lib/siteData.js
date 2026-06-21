@@ -331,7 +331,7 @@ export const copy = {
     ],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: 'Carpas especiales para entornos únicos',
+      subtitle: 'Carpas para eventos de verano en España y Portugal',
       color: 'Color',
       finish: 'Acabado:',
       descriptionTitle: 'Descripción:',
@@ -354,18 +354,13 @@ export const copy = {
       visitWeb: 'VISITAR WEB ESPECÍFICA',
       videos: [
         {
-          src: '/img/video_standrte_presentacion_empresa.mp4',
-          title: 'Presentaciones de empresas',
-          subtitle: 'Nuestros talleres y proceso de fabricación de stands corporativos.'
-        },
-        {
           src: '/img/video_standarte_presentacion_vinos.mp4',
           title: 'Ferias en entornos históricos',
           subtitle: 'Diseño e ingeniería respetuosa en ubicaciones tradicionales e históricas.'
         },
         {
           src: '/img/video_standarte_andalucia.mp4',
-          title: 'Celebraciones',
+          title: 'Presentaciones de empresa',
           subtitle: 'Espacios gourmet a medida para bodegas y eventos especiales.'
         },
         {
@@ -416,7 +411,7 @@ export const copy = {
     ],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: 'Spatial tents for unique environments',
+      subtitle: 'Marquees for summer events in Spain and Portugal',
       color: 'Color',
       finish: 'Finish:',
       descriptionTitle: 'Description:',
@@ -439,18 +434,13 @@ export const copy = {
       visitWeb: 'VISIT SPECIFIC WEBSITE',
       videos: [
         {
-          src: '/img/video_standrte_presentacion_empresa.mp4',
-          title: 'Corporate Presentations',
-          subtitle: 'Our workshops and production process for corporate stands.'
-        },
-        {
           src: '/img/video_standarte_presentacion_vinos.mp4',
           title: 'Fairs in Historical Settings',
           subtitle: 'Respectful design and engineering in traditional and historical locations.'
         },
         {
           src: '/img/video_standarte_andalucia.mp4',
-          title: 'Celebrations',
+          title: 'Corporate Presentations',
           subtitle: 'Custom gourmet spaces for wineries and special events.'
         },
         {
@@ -501,7 +491,7 @@ export const copy = {
     ],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: 'Raumzelte für einzigartige Umgebungen',
+      subtitle: 'Zelte für Sommerveranstaltungen in Spanien und Portugal',
       color: 'Farbe',
       finish: 'Ausführung:',
       descriptionTitle: 'Beschreibung:',
@@ -524,18 +514,13 @@ export const copy = {
       visitWeb: 'SPEZIFISCHE WEBSITE BESUCHEN',
       videos: [
         {
-          src: '/img/video_standrte_presentacion_empresa.mp4',
-          title: 'Unternehmenspräsentationen',
-          subtitle: 'Unsere Werkstätten und Herstellungsprozesse für Firmenmessestände.'
-        },
-        {
           src: '/img/video_standarte_presentacion_vinos.mp4',
           title: 'Messen in historischer Umgebung',
           subtitle: 'Respektvolles Design und Engineering an traditionellen und historischen Standorten.'
         },
         {
           src: '/img/video_standarte_andalucia.mp4',
-          title: 'Feierlichkeiten',
+          title: 'Unternehmenspräsentationen',
           subtitle: 'Maßgeschneiderte Gourmet-Bereiche für Weingüter und besondere Anlässe.'
         },
         {
@@ -582,7 +567,7 @@ export const copy = {
     services: [['设计与工程', '我们的团队将记录您项目的需求，这些需求将以细节的方式体现在一个3D原型中，您可以在制造开始之前进行探索和审查。原型的图像将百分之百忠实于最终结果。'], ['展台搭建', '在搭建过程中，我们采用最先进的组装技术和特定用于短暂建筑的材料。这使我们能够提供一个无瑕的外观，从而在第一眼就能展示出质量。'], ['安装和验证', '我们包揽一切。您可以在展会的第一天轻松自如地亮相，而且一切都已准备就绪，可以开始您的商业工作。无论是在马德里、法兰克福、北京还是芝加哥的展会，我们都能提供展台、餐饮、文具等服务。']],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: '适用于独特环境的空间帐篷',
+      subtitle: '西班牙和葡萄牙夏季活动篷房',
       color: '颜色',
       finish: '饰面:',
       descriptionTitle: '说明:',
@@ -605,18 +590,13 @@ export const copy = {
       visitWeb: '访问专属网站',
       videos: [
         {
-          src: '/img/video_standrte_presentacion_empresa.mp4',
-          title: '企业展示',
-          subtitle: '我们的车间及企业展台的制作流程。'
-        },
-        {
           src: '/img/video_standarte_presentacion_vinos.mp4',
           title: '历史环境中的展会',
           subtitle: '在传统和历史区域中进行备受尊重的设计与工程。'
         },
         {
           src: '/img/video_standarte_andalucia.mp4',
-          title: '庆祝活动',
+          title: '企业展示',
           subtitle: '为酒庄和特殊活动量身定制的美食空间。'
         },
         {
@@ -663,7 +643,7 @@ export const copy = {
     services: [['डिज़ाइन और इंजीनियरिंग', 'हमारी टीम आपके परियोजना की आवश्यकताओं का नोट लेगी, जिसे से संपूर्ण विस्तार से एक 3D प्रोटोटाइप में प्रतिबिंबित किया जाएगा, जिसे आप असेंबली की शुरुआत से पहले जांच सकते हैं और समीक्षा कर सकते हैं। प्रोटोटाइप की छवि अंतिम परिणाम के लिए 100% विश्वसनीय होगी।'], ['बूथ असेंबली', 'असेंबली प्रक्रिया में हम अल्पकालिक निर्माण में उपयोग के लिए विशिष्ट सामग्रियों के साथ सबसे आधुनिक असेंबली तकनीकों को लागू करते हैं। यह हमें एक त्रुटिहीन उपस्थिति प्रदान करने की अनुमति देता है जो पहली नज़र में गुणवत्ता प्रदर्शित करेगी।'], ['समारोह और मान्यताएँ', 'हम हर चीज़ का ख्याल रखते हैं. मन की पूर्ण शांति के साथ आप मेले के पहले दिन आ सकते हैं, और आपको अपना व्यावसायिक कार्य शुरू करने के लिए सब कुछ तैयार मिलेगा। स्टैंड, खानपान, स्टेशनरी,... चाहे यह मैड्रिड, फ्रैंकफर्ट, बीजिंग या शिकागो में मेला हो।']],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: 'अद्वितीय वातावरण के लिए स्थानिक तंबू',
+      subtitle: 'स्पेन और पुर्तगाल में ग्रीष्मकालीन आयोजनों के लिए तंबू',
       color: 'रंग',
       finish: 'फिनिश:',
       descriptionTitle: 'विवरण:',
@@ -686,18 +666,13 @@ export const copy = {
       visitWeb: 'विशिष्ट वेबसाइट पर जाएं',
       videos: [
         {
-          src: '/img/video_standrte_presentacion_empresa.mp4',
-          title: 'कॉर्पोरेट प्रस्तुतियाँ',
-          subtitle: 'कॉर्पोरेट स्टैंड के लिए हमारी कार्यशालाएं और निर्माण प्रक्रिया।'
-        },
-        {
           src: '/img/video_standarte_presentacion_vinos.mp4',
           title: 'ऐतिहासिक परिवेश में मेले',
           subtitle: 'पारंपरिक and ऐतिहासिक स्थानों में सम्मानित डिजाइन और इंजीनियरिंग।'
         },
         {
           src: '/img/video_standarte_andalucia.mp4',
-          title: 'उत्सव',
+          title: 'कॉर्पोरेट प्रस्तुतियाँ',
           subtitle: 'वाइनरी और विशेष आयोजनों के लिए कस्टम पेटू (गॉरमेट) स्थान।'
         },
         {
@@ -748,7 +723,7 @@ export const copy = {
     ],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: 'Tendas espaciais para ambientes únicos',
+      subtitle: 'Tendas para eventos de verão em Espanha e Portugal',
       color: 'Cor',
       finish: 'Acabamento:',
       descriptionTitle: 'Descrição:',
@@ -771,18 +746,13 @@ export const copy = {
       visitWeb: 'VISITAR WEB ESPECÍFICA',
       videos: [
         {
-          src: '/img/video_standrte_presentacion_empresa.mp4',
-          title: 'Apresentações Corporativas',
-          subtitle: 'Nossas oficinas e processo de fabricação de stands corporativos.'
-        },
-        {
           src: '/img/video_standarte_presentacion_vinos.mp4',
           title: 'Feiras em Ambientes Históricos',
           subtitle: 'Design e engenharia respeitosos em locais tradicionais e históricos.'
         },
         {
           src: '/img/video_standarte_andalucia.mp4',
-          title: 'Celebrações',
+          title: 'Apresentações Corporativas',
           subtitle: 'Espaços gourmet sob medida para vinícolas e eventos especiais.'
         },
         {
@@ -836,7 +806,7 @@ export const copy = {
     ],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: 'Tentes spatiales pour environnements uniques',
+      subtitle: 'Chapiteaux pour événements estivaux en Espagne et au Portugal',
       color: 'Couleur',
       finish: 'Finition:',
       descriptionTitle: 'Description:',
@@ -858,9 +828,8 @@ export const copy = {
       play: 'JOUER',
       visitWeb: 'VISITER LE SITE WEB SPÉCIFIQUE',
       videos: [
-        { src: '/img/video_standrte_presentacion_empresa.mp4', title: 'Présentations d\'entreprise', subtitle: 'Nos ateliers et processus de fabrication de stands d\'entreprise.' },
         { src: '/img/video_standarte_presentacion_vinos.mp4', title: 'Salons dans des lieux historiques', subtitle: 'Conception respectueuse dans des lieux traditionnels et historiques.' },
-        { src: '/img/video_standarte_andalucia.mp4', title: 'Célébrations', subtitle: 'Espaces gastronomiques sur mesure pour les vignobles et événements spéciaux.' },
+        { src: '/img/video_standarte_andalucia.mp4', title: 'Présentations d\x27entreprise', subtitle: 'Espaces gastronomiques sur mesure pour les vignobles et événements spéciaux.' },
         { src: '/img/video_standarte_feria_verano.mp4', title: 'Salons en plein air grand format', subtitle: 'Montages à grande échelle et tentes premium haute résistance.' }
       ]
     },
@@ -901,7 +870,7 @@ export const copy = {
     ],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: 'Tende spaziali per ambienti unici',
+      subtitle: 'Gazebo per eventi estivi in Spagna e Portogallo',
       color: 'Colore',
       finish: 'Finitura:',
       descriptionTitle: 'Descrizione:',
@@ -923,9 +892,8 @@ export const copy = {
       play: 'RIPRODUCI',
       visitWeb: 'VISITA SITO SPECIFICO',
       videos: [
-        { src: '/img/video_standrte_presentacion_empresa.mp4', title: 'Presentazioni Aziendali', subtitle: 'I nostri laboratori e il processo di produzione degli stand.' },
         { src: '/img/video_standarte_presentacion_vinos.mp4', title: 'Fiere in ambienti storici', subtitle: 'Design rispettoso in location tradizionali e storiche.' },
-        { src: '/img/video_standarte_andalucia.mp4', title: 'Celebrazioni', subtitle: 'Spazi gourmet su misura per cantine ed eventi speciali.' },
+        { src: '/img/video_standarte_andalucia.mp4', title: 'Presentazioni Aziendali', subtitle: 'Spazi gourmet su misura per cantine ed eventi speciali.' },
         { src: '/img/video_standarte_feria_verano.mp4', title: 'Fiere all\'aperto di grande formato', subtitle: 'Allestimenti su larga scala e tende premium ad alta resistenza.' }
       ]
     },
@@ -981,7 +949,7 @@ export const copy = {
   ],
   "micro": {
     "title": "루즈파빌리온",
-    "subtitle": "독특한 환경을 위한 공간 텐트",
+    "subtitle": "스페인과 포르투갈의 여름 행사용 텐트",
     "color": "색",
     "finish": "끝:",
     "descriptionTitle": "설명:",
@@ -1004,18 +972,13 @@ export const copy = {
     "visitWeb": "특정 웹사이트 방문",
     "videos": [
       {
-        "src": "/img/video_standrte_presentacion_empresa.mp4",
-        "title": "기업 프레젠테이션",
-        "subtitle": "기업 부스를 위한 우리의 작업장과 생산 과정."
-      },
-      {
         "src": "/img/video_standarte_presentacion_vinos.mp4",
         "title": "역사적 배경의 박람회",
         "subtitle": "전통적이고 역사적인 장소에서의 존중하는 디자인과 엔지니어링."
       },
       {
         "src": "/img/video_standarte_andalucia.mp4",
-        "title": "축하 행사",
+        "title": "기업 프레젠테이션",
         "subtitle": "와이너리와 특별 행사를 위한 맞춤형 고급 공간."
       },
       {
@@ -1110,7 +1073,7 @@ export const copy = {
     ],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: '個性的な空間のためのスペーステント',
+      subtitle: 'スペインとポルトガルの夏のイベント用テント',
       color: 'カラー',
       finish: '仕上げ：',
       descriptionTitle: '説明：',
@@ -1132,9 +1095,8 @@ export const copy = {
       play: '再生',
       visitWeb: '専用サイトを見る',
       videos: [
-        { src: '/img/video_standrte_presentacion_empresa.mp4', title: '企業向けプレゼンテーション', subtitle: '企業ブースのための当社の工房と製作工程。' },
         { src: '/img/video_standarte_presentacion_vinos.mp4', title: '歴史的空間での展示会', subtitle: '伝統的・歴史的な場所に配慮した設計とエンジニアリング。' },
-        { src: '/img/video_standarte_andalucia.mp4', title: '記念イベント', subtitle: 'ワイナリーや特別なイベントのためのオーダーメイドの上質な空間。' },
+        { src: '/img/video_standarte_andalucia.mp4', title: '企業向けプレゼンテーション', subtitle: 'ワイナリーや特別なイベントのためのオーダーメイドの上質な空間。' },
         { src: '/img/video_standarte_feria_verano.mp4', title: '大型屋外展示会', subtitle: '大規模な設営とプレミアムな高耐久テント。' }
       ]
     },
@@ -1179,7 +1141,7 @@ export const copy = {
     ],
     micro: {
       title: 'LUZPAVILION',
-      subtitle: 'Speciale tenten voor unieke omgevingen',
+      subtitle: 'Tenten voor zomerevenementen in Spanje en Portugal',
       color: 'Kleur',
       finish: 'Afwerking:',
       descriptionTitle: 'Beschrijving:',
@@ -1201,9 +1163,8 @@ export const copy = {
       play: 'AFSPELEN',
       visitWeb: 'BEZOEK SPECIFIEKE WEBSITE',
       videos: [
-        { src: '/img/video_standrte_presentacion_empresa.mp4', title: 'Bedrijfspresentaties', subtitle: 'Onze werkplaatsen en het productieproces van zakelijke stands.' },
         { src: '/img/video_standarte_presentacion_vinos.mp4', title: 'Beurzen in historische omgevingen', subtitle: 'Respectvol ontwerp en engineering op traditionele en historische locaties.' },
-        { src: '/img/video_standarte_andalucia.mp4', title: 'Vieringen', subtitle: 'Gastronomische ruimtes op maat voor wijnhuizen en speciale evenementen.' },
+        { src: '/img/video_standarte_andalucia.mp4', title: 'Bedrijfspresentaties', subtitle: 'Gastronomische ruimtes op maat voor wijnhuizen en speciale evenementen.' },
         { src: '/img/video_standarte_feria_verano.mp4', title: 'Grootschalige openluchtbeurzen', subtitle: 'Grootschalige opbouw en premium tenten met hoge weerstand.' }
       ]
     },

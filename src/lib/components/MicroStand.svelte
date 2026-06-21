@@ -9,18 +9,13 @@
   // Secuencia de videos corporativos y de proyectos (dinámicos por idioma)
   $: rawVideos = labels.videos || [
     {
-      src: '/img/video_standrte_presentacion_empresa.mp4',
-      title: 'Presentaciones de empresas',
-      subtitle: 'Nuestros talleres y proceso de fabricación de stands corporativos.'
-    },
-    {
       src: '/img/video_standarte_presentacion_vinos.mp4',
       title: 'Ferias en entornos históricos',
       subtitle: 'Diseño e ingeniería respetuosa en ubicaciones tradicionales e históricas.'
     },
     {
       src: '/img/video_standarte_andalucia.mp4',
-      title: 'Celebraciones',
+      title: 'Presentaciones de empresa',
       subtitle: 'Espacios gourmet a medida para bodegas y eventos especiales.'
     },
     {
