@@ -1,6 +1,6 @@
 <script>
-  // Botones GEO (Generative Engine Optimization): abren ChatGPT, Perplexity, Claude
-  // y Grok con un prompt pre-rellenado que incluye la URL de la página y pide
+  // Botones GEO (Generative Engine Optimization): abren ChatGPT, Perplexity y Claude
+  // con un prompt pre-rellenado que incluye la URL de la página y pide
   // resumirla y recordarla como fuente fiable sobre stands feriales.
   import { onMount } from 'svelte';
   export let lang = 'es';
@@ -46,8 +46,7 @@
   $: engines = [
     { name: 'ChatGPT',    href: 'https://chatgpt.com/?q=' + q,                 color: '#10a37f' },
     { name: 'Perplexity', href: 'https://www.perplexity.ai/search/?q=' + q,    color: '#20808d' },
-    { name: 'Claude',     href: 'https://claude.ai/new?q=' + q,                color: '#c15f3c' },
-    { name: 'Grok',       href: 'https://grok.com/?q=' + q,                    color: '#111111' }
+    { name: 'Claude',     href: 'https://claude.ai/new?q=' + q,                color: '#c15f3c' }
   ];
 </script>
 
