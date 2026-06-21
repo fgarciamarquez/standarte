@@ -330,7 +330,7 @@ export const copy = {
       ['Montaje y validaciones', 'Nos encargamos de todo. Con total tranquilidad podrás presentarse el primer dia de feria, y lo encontrará todo listo para empezar tu labor comercial. Stand, catering, papelería,... indiferentemente si es una feria en Madrid, Fráncfort, Pekín o Chicago.']
     ],
     micro: {
-      title: 'LUZPAVILION',
+      title: 'Pabellón de luz',
       subtitle: 'Carpas para eventos de verano en España y Portugal',
       color: 'Color',
       finish: 'Acabado:',
@@ -410,7 +410,7 @@ export const copy = {
       ['Assembly and validations', 'We take care of everything. With complete peace of mind you can present yourself on the first day of the fair, and you will find everything ready to start your commercial work. Stand, catering, stationery,...']
     ],
     micro: {
-      title: 'LUZPAVILION',
+      title: 'Light Pavilion',
       subtitle: 'Marquees for summer events in Spain and Portugal',
       color: 'Color',
       finish: 'Finish:',
@@ -490,7 +490,7 @@ export const copy = {
       ['Montage und Validierungen', 'Wir kümmern uns um alles. Mit vollkommener Ruhe können Sie sich am ersten Tag der Messe präsentieren, und Sie finden alles bereit, um Ihre geschäftliche Arbeit zu beginnen. Stand, Catering, Büromaterial,... unabhängig davon, ob es eine Messe in Madrid, Frankfurt, Peking oder Chicago ist.']
     ],
     micro: {
-      title: 'LUZPAVILION',
+      title: 'Lichtpavillon',
       subtitle: 'Zelte für Sommerveranstaltungen in Spanien und Portugal',
       color: 'Farbe',
       finish: 'Ausführung:',
@@ -566,7 +566,7 @@ export const copy = {
     servicesTitle: '服务',
     services: [['设计与工程', '我们的团队将记录您项目的需求，这些需求将以细节的方式体现在一个3D原型中，您可以在制造开始之前进行探索和审查。原型的图像将百分之百忠实于最终结果。'], ['展台搭建', '在搭建过程中，我们采用最先进的组装技术和特定用于短暂建筑的材料。这使我们能够提供一个无瑕的外观，从而在第一眼就能展示出质量。'], ['安装和验证', '我们包揽一切。您可以在展会的第一天轻松自如地亮相，而且一切都已准备就绪，可以开始您的商业工作。无论是在马德里、法兰克福、北京还是芝加哥的展会，我们都能提供展台、餐饮、文具等服务。']],
     micro: {
-      title: 'LUZPAVILION',
+      title: '光之展亭',
       subtitle: '西班牙和葡萄牙夏季活动篷房',
       color: '颜色',
       finish: '饰面:',
@@ -642,7 +642,7 @@ export const copy = {
     servicesTitle: 'सेवाएँ',
     services: [['डिज़ाइन और इंजीनियरिंग', 'हमारी टीम आपके परियोजना की आवश्यकताओं का नोट लेगी, जिसे से संपूर्ण विस्तार से एक 3D प्रोटोटाइप में प्रतिबिंबित किया जाएगा, जिसे आप असेंबली की शुरुआत से पहले जांच सकते हैं और समीक्षा कर सकते हैं। प्रोटोटाइप की छवि अंतिम परिणाम के लिए 100% विश्वसनीय होगी।'], ['बूथ असेंबली', 'असेंबली प्रक्रिया में हम अल्पकालिक निर्माण में उपयोग के लिए विशिष्ट सामग्रियों के साथ सबसे आधुनिक असेंबली तकनीकों को लागू करते हैं। यह हमें एक त्रुटिहीन उपस्थिति प्रदान करने की अनुमति देता है जो पहली नज़र में गुणवत्ता प्रदर्शित करेगी।'], ['समारोह और मान्यताएँ', 'हम हर चीज़ का ख्याल रखते हैं. मन की पूर्ण शांति के साथ आप मेले के पहले दिन आ सकते हैं, और आपको अपना व्यावसायिक कार्य शुरू करने के लिए सब कुछ तैयार मिलेगा। स्टैंड, खानपान, स्टेशनरी,... चाहे यह मैड्रिड, फ्रैंकफर्ट, बीजिंग या शिकागो में मेला हो।']],
     micro: {
-      title: 'LUZPAVILION',
+      title: 'प्रकाश मंडप',
       subtitle: 'स्पेन और पुर्तगाल में ग्रीष्मकालीन आयोजनों के लिए तंबू',
       color: 'रंग',
       finish: 'फिनिश:',
@@ -722,7 +722,7 @@ export const copy = {
       ['Montagem e validações', 'Nós tomamos conta de tudo. Com total tranquilidade você pode se apresentar no primeiro dia da feira, e encontrará tudo pronto para iniciar seu trabalho comercial. Stand, catering, papelaria,... independentemente de ser uma feira em Madrid, Frankfurt, Pequim ou Chicago.']
     ],
     micro: {
-      title: 'LUZPAVILION',
+      title: 'Pavilhão de luz',
       subtitle: 'Tendas para eventos de verão em Espanha e Portugal',
       color: 'Cor',
       finish: 'Acabamento:',
@@ -805,7 +805,7 @@ export const copy = {
       ['Montage et validations', 'Nous nous occupons de tout. En toute tranquillité, vous pourrez vous présenter le premier jour du salon, et vous trouverez tout prêt pour commencer votre travail commercial. Stand, restauration, papeterie,... peu importe s\'il s\'agit d\'un salon à Madrid, Francfort, Pékin ou Chicago.']
     ],
     micro: {
-      title: 'LUZPAVILION',
+      title: 'Pavillon de lumière',
       subtitle: 'Chapiteaux pour événements estivaux en Espagne et au Portugal',
       color: 'Couleur',
       finish: 'Finition:',
@@ -869,7 +869,7 @@ export const copy = {
       ['Montaggio e validazioni', 'Ci occupiamo di tutto. Con totale tranquillità potrai presentarti il primo giorno di fiera e troverai tutto pronto per iniziare il tuo lavoro commerciale. Stand, catering, cancelleria,... indipendentemente se è una fiera a Madrid, Francoforte, Pechino o Chicago.']
     ],
     micro: {
-      title: 'LUZPAVILION',
+      title: 'Padiglione di luce',
       subtitle: 'Gazebo per eventi estivi in Spagna e Portogallo',
       color: 'Colore',
       finish: 'Finitura:',
@@ -948,7 +948,7 @@ export const copy = {
     ]
   ],
   "micro": {
-    "title": "루즈파빌리온",
+    "title": "빛의 파빌리온",
     "subtitle": "스페인과 포르투갈의 여름 행사용 텐트",
     "color": "색",
     "finish": "끝:",
@@ -1072,7 +1072,7 @@ export const copy = {
       ['設営と各種検査', 'すべて当社にお任せください。展示会初日に安心してお越しいただくだけで、ブース、ケータリング、印刷物など、商談を始める準備がすべて整っています。']
     ],
     micro: {
-      title: 'LUZPAVILION',
+      title: '光のパビリオン',
       subtitle: 'スペインとポルトガルの夏のイベント用テント',
       color: 'カラー',
       finish: '仕上げ：',
@@ -1140,7 +1140,7 @@ export const copy = {
       ['Montage en validaties', 'Wij regelen alles. Volledig zorgeloos kunt u op de eerste beursdag verschijnen en vindt u alles klaar om met uw commerciële werk te beginnen. Stand, catering, drukwerk,... of het nu een beurs is in Madrid, Frankfurt, Peking of Chicago.']
     ],
     micro: {
-      title: 'LUZPAVILION',
+      title: 'Lichtpaviljoen',
       subtitle: 'Tenten voor zomerevenementen in Spanje en Portugal',
       color: 'Kleur',
       finish: 'Afwerking:',
