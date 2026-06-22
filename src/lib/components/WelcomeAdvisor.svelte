@@ -775,7 +775,7 @@
 
 <style>
   .welcome-advisor-container {
-    background: #f8f9fa;
+    background: transparent;
     padding: 40px 15px;
   }
 
