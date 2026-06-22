@@ -366,9 +366,9 @@
           {breadcrumbsInicio[lang] || breadcrumbsInicio.es}
         </a></li>
         <li><span class="divider">/</span></li>
-        <li><span class="current" aria-current="page">
+        <li><a href={`${pathFor(lang, 'home')}#prototipos-3d`}>
           {breadcrumbsProyectos[lang] || breadcrumbsProyectos.es}
-        </span></li>
+        </a></li>
         <li><span class="divider">/</span></li>
         <li><span class="current" aria-current="page">{project.name}</span></li>
       </ol>
