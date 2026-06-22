@@ -381,27 +381,6 @@
     <div class="values-card">
       <div class="gold-indicator"></div>
       <h2>{project.title[lang] || project.title.es}</h2>
-      <p class="intro-description">
-        {#if lang === 'es'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Cada stand diseñado por Standarte es el fruto de un análisis exhaustivo de marca y necesidades feriales. A continuación, detallamos los principios de diseño y valores espaciales para este proyecto.
-        {:else if lang === 'en'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Each stand designed by Standarte is the result of an exhaustive analysis of the brand and exhibition needs. Below, we detail the design principles and spatial values for this project.
-        {:else if lang === 'de'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Jeder von Standarte entworfene Stand ist das Ergebnis einer gründlichen Analyse der Marke und der Messebedürfnisse. Im Folgenden beschreiben wir die Designprinzipien und räumlichen Werte für dieses Projekt.
-        {:else if lang === 'pt'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Cada stand desenhado pela Standarte é o fruto de uma análise exaustiva da marca e das necessidades ferais. A seguir, detalhamos os princípios de design e valores espaciais para este projeto.
-        {:else if lang === 'fr'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Chaque stand conçu par Standarte est le fruit d'une analyse approfondie de la marque et des besoins du salon. Ci-dessous, nous détaillons les principes de conception et les valeurs spatiales de ce projet.
-        {:else if lang === 'it'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Ogni stand progettato da Standarte è il frutto di un'analisi approfondita del marchio e delle esigenze fieristiche. Di seguito, dettagliamo i principi di progettazione e i valori spaziali di questo progetto.
-        {:else if lang === 'ko'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es}). Standarte가 디자인한 모든 부스는 브랜드와 전시 요구 사항에 대한 철저한 분석의 결과입니다. 아래에서 이 프로젝트의 디자인 원칙과 공간적 가치를 자세히 설명합니다.
-        {:else if lang === 'zh'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es})。Standarte 设计的每一个展台都是对品牌和展会需求进行详尽分析的结晶。下面，我们将详细阐述该项目的设计原则和空间价值。
-        {:else if lang === 'hi'}
-          <strong>{project.name}</strong> ({project.notes[lang] || project.notes.es})। Standarte द्वारा डिज़ाइन किया गया प्रत्येक स्टैंड ब्रांड और प्रदर्शनी की आवश्यकताओं के संपूर्ण विश्लेषण का परिणाम है। नीचे, हम इस परियोजना के लिए डिज़ाइन सिद्धांतों और स्थानिक मूल्यों का विवरण दे रहे हैं।
-        {/if}
-      </p>
       <div class="values-content">
         {@html project.valuesText[lang] || project.valuesText.es}
       </div>
