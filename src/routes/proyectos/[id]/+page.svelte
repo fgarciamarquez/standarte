@@ -605,11 +605,11 @@
 
   /* Carta de Valores */
   .values-card {
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 8px;
     padding: 45px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+    border: none;
     position: relative;
     overflow: hidden;
     margin-bottom: 50px;
