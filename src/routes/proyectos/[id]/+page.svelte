@@ -575,7 +575,7 @@
   .values-card {
     background-color: transparent;
     border-radius: 8px;
-    padding: 45px;
+    padding: 0;
     box-shadow: none;
     border: none;
     position: relative;
@@ -611,8 +611,6 @@
     font-size: 16px;
     line-height: 1.8;
     color: #333;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding-top: 25px;
   }
 
   .values-content :global(strong) {
