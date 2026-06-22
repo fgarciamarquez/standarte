@@ -258,11 +258,6 @@
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
   $: isCityPage = section in cityData;
-  // Fondo cálido (#f7f6f1) solo en la home: marca el <body> con .home-warm para que
-  // las secciones transparenten y se vea ese color de fondo unificado.
-  $: if (typeof document !== 'undefined') {
-    document.body.classList.toggle('home-warm', section === 'home');
-  }
   // Proyectos del pilar: para regiones con perfil sectorial marcado mostramos obra real afín
   // (no se afirma que sean de esa ciudad; el intro es genérico "muestra de nuestro trabajo").
   $: selectedPortfolios = (FEATURED_BY_REGION[SECTION_REGION[section]] || [])
@@ -954,7 +949,7 @@
   {/if}
 </header>
 
-<main>
+<main class:home-warm={section === 'home'}>
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     {#if showWelcomeAdvisor && AdvisorComponent}
       <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />

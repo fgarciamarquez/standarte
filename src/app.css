@@ -167,7 +167,7 @@ p {
 }
 
 .nav.scrolled {
-  background: #fff;
+  background: #f7f6f1;
   box-shadow: 0 1px 12px rgba(0, 0, 0, .12);
   backdrop-filter: none;
 }
@@ -354,15 +354,15 @@ p {
    Excepciones: #prototipos-3d (negro, con !important propio) y #contact (oscuro con texto
    blanco) mantienen su fondo; el bloque de cifras conserva su foto (solo reseteamos el
    color de fondo, no la imagen). */
-body.home-warm {
+main.home-warm {
   background-color: #f7f6f1;
 }
-body.home-warm .section:not(.contact):not(.prototypes-carousel) {
+main.home-warm .section:not(.contact):not(.prototypes-carousel) {
   background-color: transparent;
 }
 /* En la home: línea fina de separación sobre el #contact y padding superior de 80px
    (en ciudades el #contact.contact-light va pegado arriba con padding-top: 0). */
-body.home-warm #contact {
+main.home-warm #contact {
   padding-top: 80px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -2117,18 +2117,16 @@ footer {
   display: none;
 }
 /* Sin flechas: el track ya no se posiciona por JS (translateX basado en %/visible-count
-   descolocaba con tarjetas de ancho fijo). Lo fijamos al inicio y permitimos scroll
-   horizontal nativo (swipe/trackpad) para recorrer los proyectos. */
+   descolocaba con tarjetas de ancho fijo). Lo fijamos al inicio; sin scroll ni barra,
+   muestra a lo ancho las miniaturas (a tamaño original) que caben. */
 .prototypes-carousel .carousel-track {
   transform: none !important;
 }
 .prototypes-carousel .carousel-viewport {
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
+  overflow: hidden;
 }
 .prototypes-carousel .carousel-card {
   width: 380px !important;
-  scroll-snap-align: start;
 }
 @media (max-width: 768px) {
   .prototypes-carousel .carousel-card {
@@ -2217,11 +2215,9 @@ footer {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.carousel-card-inner:hover {
-  transform: translateY(-6px);
-  border-color: var(--gold);
-  box-shadow: 0 16px 40px rgba(255, 200, 0, 0.12);
-}
+/* Al hover NO hay movimiento de la tarjeta, ni cambio de color de borde, ni iluminación:
+   el único comportamiento es el color de la imagen (grayscale->color) y la aparición del
+   botón "Ver Proyecto". */
 
 .carousel-img-wrap {
   position: relative;
@@ -2240,7 +2236,6 @@ footer {
 }
 
 .carousel-card-inner:hover .carousel-img-wrap img {
-  transform: scale(1.05);
   filter: none;
 }
 
