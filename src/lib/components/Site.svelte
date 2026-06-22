@@ -1365,7 +1365,7 @@
     </div>
   {/if}
 
-  <ContactForm {lang} labels={copy} variant={section in cityData ? 'light' : 'dark'} bind:initialFair={initialFair} />
+  <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} />
 </main>
 
 <footer>
