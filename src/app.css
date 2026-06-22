@@ -2122,14 +2122,22 @@ footer {
 .prototypes-carousel .carousel-nav {
   display: none;
 }
-/* Sin flechas: el track ya no se posiciona por JS (translateX basado en %/visible-count
-   descolocaba con tarjetas de ancho fijo). Lo fijamos al inicio; sin scroll ni barra,
-   muestra a lo ancho las miniaturas (a tamaño original) que caben. */
-.prototypes-carousel .carousel-track {
-  transform: none !important;
-}
+/* Marquesina continua derecha->izquierda (sin flechas, sin barra): el track se desplaza en
+   bucle. Las fichas se renderizan duplicadas en el markup, así el bucle es continuo (-50%).
+   Tarjetas a tamaño original (380px). Se pausa al pasar el ratón para ver el color y pulsar. */
 .prototypes-carousel .carousel-viewport {
   overflow: hidden;
+  /* La marquesina anima en bucle, así que NO diferimos su render (content-visibility:auto
+     lo trocearía y la animación no avanzaría con fluidez). */
+  content-visibility: visible;
+  contain: none;
+}
+.prototypes-carousel .carousel-track {
+  width: max-content;
+  animation: carousel3d-marquee 60s linear infinite;
+}
+.prototypes-carousel .carousel-viewport:hover .carousel-track {
+  animation-play-state: paused;
 }
 .prototypes-carousel .carousel-card {
   width: 380px !important;
@@ -2138,6 +2146,10 @@ footer {
   .prototypes-carousel .carousel-card {
     width: 86vw !important;
   }
+}
+@keyframes carousel3d-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .prototypes-carousel .section-header h2 {
@@ -2287,11 +2299,11 @@ footer {
 }
 
 .carousel-caption h3 {
-  font-size: 17px;
-  color: #fff;
+  font-size: 14px;
+  color: #b0b0b0;
   margin: 0 0 6px 0;
   font-weight: 400;
-  font-family: 'Fraunces', serif;
+  font-family: 'Inconsolata', monospace;
 }
 
 /* Etiqueta de ubicación sobre la imagen (arriba-izquierda), no debajo del título (evita redundancia) */

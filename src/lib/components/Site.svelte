@@ -790,12 +790,11 @@
 
     if (countersEl) countersObserver.observe(countersEl);
 
-    const autoplayInterval = setInterval(nextSlide, 3000);
+    // El carrusel 3D se mueve con una marquesina CSS (no por JS); no hay autoplay.
 
     return () => {
       observer.disconnect();
       countersObserver.disconnect();
-      clearInterval(autoplayInterval);
       clearTimeout(advisorTimeout);
       if (advisorLoadHandler) window.removeEventListener('load', advisorLoadHandler);
       window.removeEventListener('resize', updateVisibleCount);
@@ -1122,9 +1121,9 @@
         <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'fr' ? 'Précédent' : (lang === 'it' ? 'Precedente' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))))}>‹</button>
         
         <div class="carousel-viewport">
-          <div class="carousel-track" style="transform: translateX(calc(-1 * {carouselIndex} * 100% / var(--visible-count)));">
-            {#each carouselItems as project}
-              <article class="carousel-card" style="width: calc(100% / var(--visible-count));">
+          <div class="carousel-track">
+            {#each [...carouselItems, ...carouselItems] as project, dupIdx}
+              <article class="carousel-card" style="width: calc(100% / var(--visible-count));" aria-hidden={dupIdx >= carouselItems.length || undefined}>
                 <div class="carousel-card-inner">
                   <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-img-link" tabindex="-1" aria-hidden="true">
                     <div class="carousel-img-wrap">
