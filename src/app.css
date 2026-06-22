@@ -2111,6 +2111,30 @@ footer {
 .prototypes-carousel .carousel-container {
   max-width: none;
 }
+/* Sin flechas de control, y miniaturas a su tamaño original (≈ 1140/3 = 380px) aunque la
+   sección ocupe todo el ancho: se muestran tantas tarjetas como quepan, sin estirarse. */
+.prototypes-carousel .carousel-nav {
+  display: none;
+}
+/* Sin flechas: el track ya no se posiciona por JS (translateX basado en %/visible-count
+   descolocaba con tarjetas de ancho fijo). Lo fijamos al inicio y permitimos scroll
+   horizontal nativo (swipe/trackpad) para recorrer los proyectos. */
+.prototypes-carousel .carousel-track {
+  transform: none !important;
+}
+.prototypes-carousel .carousel-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+.prototypes-carousel .carousel-card {
+  width: 380px !important;
+  scroll-snap-align: start;
+}
+@media (max-width: 768px) {
+  .prototypes-carousel .carousel-card {
+    width: 86vw !important;
+  }
+}
 
 .prototypes-carousel .section-header h2 {
   color: #ffffff !important;
