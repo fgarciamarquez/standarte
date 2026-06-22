@@ -39,17 +39,17 @@
   }
 
   const ctaLabels = {
-    es: 'PRESUPUESTO EN 24 H',
-    en: 'QUOTE IN 24 H',
-    de: 'ANGEBOT IN 24 H',
-    pt: 'ORÇAMENTO EM 24 H',
+    es: 'Presupuesto en 24h',
+    en: 'Quote in 24h',
+    de: 'Angebot in 24h',
+    pt: 'Orçamento em 24h',
     zh: '24小时内报价',
     hi: '24 घंटे में कोटेशन',
-    fr: 'DEVIS EN 24 H',
-    it: 'PREVENTIVO IN 24 H',
+    fr: 'Devis en 24h',
+    it: 'Preventivo in 24h',
     ko: '24시간 내 견적',
     ja: '24時間で見積もり',
-    nl: 'OFFERTE BINNEN 24 U'
+    nl: 'Offerte binnen 24u'
   };
 
   const teamMemberName = {
@@ -309,7 +309,7 @@
   // Si la página trae un número impar, añadimos esta pregunta genérica (válida para
   // cualquier ciudad) para cuadrar la rejilla.
   const FILLER_FAQ = {
-    es: { q: '¿Trabajáis solo en esta ciudad o en toda España y Portugal?', a: 'Diseñamos, fabricamos y montamos stands en toda España y Portugal. Al contar con taller propio y equipo de montaje, nos desplazamos a cualquier recinto ferial con la misma garantía de calidad y plazos.' },
+    es: { q: '¿Trabajáis solo en esta ciudad o en toda España y Portugal?', a: 'Diseñamos y montamos stands en toda España y Portugal. Al contar con taller propio y equipo de montaje, nos desplazamos a cualquier recinto ferial con la misma garantía de calidad y plazos.' },
     en: { q: 'Do you work only in this city or across Spain and Portugal?', a: 'We design, build and install stands throughout Spain and Portugal. With our own workshop and assembly team, we travel to any exhibition venue with the same guarantee of quality and deadlines.' },
     de: { q: 'Arbeiten Sie nur in dieser Stadt oder in ganz Spanien und Portugal?', a: 'Wir entwerfen, fertigen und montieren Messestände in ganz Spanien und Portugal. Mit eigener Werkstatt und Montageteam reisen wir zu jedem Messegelände – mit derselben Qualitäts- und Termingarantie.' },
     fr: { q: 'Travaillez-vous uniquement dans cette ville ou dans toute l\'Espagne et le Portugal ?', a: 'Nous concevons, fabriquons et montons des stands dans toute l\'Espagne et le Portugal. Avec notre propre atelier et notre équipe de montage, nous nous déplaçons dans n\'importe quel parc des expositions avec la même garantie de qualité et de délais.' },
@@ -1588,9 +1588,9 @@
   }
 
   .team-member h3 {
-    font-family: 'Glegoo', serif;
+    font-family: 'Fraunces', serif;
     font-size: 19px;
-    font-weight: 700;
+    font-weight: 400;
     color: #333;
     margin: 0 0 6px;
   }

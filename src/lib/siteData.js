@@ -320,7 +320,7 @@ export const copy = {
     faqsTitle: 'Preguntas Frecuentes', successStoriesTitle: 'Casos de Éxito', featuredProjectsIntro: 'Proyectos destacados de carpintería a medida y diseño de stands:', 
     nav: { home: 'Inicio', services: 'Servicios', custom: 'Galería', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
     seoTitle: 'Standarte | Diseño y montaje de stands en España y Portugal',
-    seoDescription: 'Servicios de stands feriales con asesoría de expansión incluida. Diseñamos, fabricamos y montamos tu stand en España y Portugal. Presupuesto en 24 H.',
+    seoDescription: 'Servicios de stands feriales con asesoría de expansión incluida. Diseñamos y montamos tu stand en España y Portugal. Presupuesto en 24h.',
     heroTitle: 'Diseño y montaje de stands en España y Portugal',
     heroSubtitle: 'Espacios que inspiran',
     servicesTitle: 'Servicios',
@@ -370,17 +370,17 @@ export const copy = {
         }
       ]
     },
-    citiesIntro: 'Diseñamos, fabricamos y montamos stands para ferias y eventos en ciudades clave de España y Portugal.',
-    customTitle: 'GALERÍA',
+    citiesIntro: 'Diseñamos y montamos stands para ferias y eventos en ciudades clave de España y Portugal.',
+    customTitle: 'Galería',
     customSubtitle: 'Clasificados por la técnica de montaje principal.',
     filters: { all: 'Todos', textil: 'Textil', madera: 'Madera' },
     counters: { projects: 'Proyectos', clients: 'Clientes', countries: 'Países', fairs: 'Ferias' },
     teamTitle: 'Equipo',
     teamSubtitle: 'Somos un equipo multidisciplinar, entre los que hay arquitectos, montadores, decoradores, técnico de iluminación,... Juntos podemos dar una respuesta completa a todas las necesidades de cada proyecto. No dudes en llamarnos para cualquier duda que tengas. Esperamos conocerte pronto.',
     teamRoles: ['Creatividad', 'Administrador', 'Taller', 'Coordinación'],
-    contactTitle: 'PRESUPUESTO EN 24 H',
+    contactTitle: 'Presupuesto en 24h',
     contactNotice: 'Dinos lo que necesitáis y en un plazo de 24 horas tendremos un diseño 3D con todo lujo de detalles y una propuesta económica super-competitiva.',
-    form: { name: 'Nombre', company: 'Empresa', phone: 'Teléfono', email: 'Email', fair: 'Feria', location: 'Ciudad - Pais', meters: 'Metros cuadrados', floor: 'Detalles sobre el suelo', woodFloor: 'Tarima-madera', carpetPlatform: 'Tarima-moqueta', carpet: 'Moqueta', spaceDistribution: 'Distribución de espacios', reception: 'Zona de recepción', bar: 'Zona de bar', storage: 'Almacén', product: 'Exposición de producto', openMeeting: 'Zona de reuniones abierta', closedMeeting: 'Zona de reuniones cerrada', audiovisual: 'Audiovisuales', led: 'Pantalla LED', projector: 'Proyector', budget: 'Presupuesto estimado', description: 'Descripción', privacy: 'Acepta nuestra Política de Privacidad', send: 'ENVIAR' },
+    form: { name: 'Nombre', company: 'Empresa', phone: 'Teléfono', email: 'Email', fair: 'Feria', location: 'Ciudad - Pais', meters: 'Metros cuadrados', floor: 'Detalles sobre el suelo', woodFloor: 'Tarima-madera', carpetPlatform: 'Tarima-moqueta', carpet: 'Moqueta', spaceDistribution: 'Distribución de espacios', reception: 'Zona de recepción', bar: 'Zona de bar', storage: 'Almacén', product: 'Exposición de producto', openMeeting: 'Zona de reuniones abierta', closedMeeting: 'Zona de reuniones cerrada', audiovisual: 'Audiovisuales', led: 'Pantalla LED', projector: 'Proyector', budget: 'Presupuesto estimado', description: 'Descripción', privacy: 'Acepta nuestra Política de Privacidad', send: 'Enviar' },
     legal: { privacy: 'Política de Privacidad', legalNotice: 'Aviso Legal', cookies: 'Uso de Cookies' },
     legalText: {
       privacy: '<p>Standarte utiliza los datos enviados a través del formulario únicamente para responder a solicitudes de información, presupuestos y comunicaciones relacionadas con proyectos de stands.</p><p>No usamos estos datos para finalidades ajenas a la solicitud. Puedes pedir acceso, rectificación o supresión escribiendo a info@standarte.es.</p>',
@@ -451,16 +451,16 @@ export const copy = {
       ]
     },
     citiesIntro: 'We design, produce and install exhibition stands for trade fairs and events in key cities across Spain and Portugal.',
-    customTitle: 'GALLERY',
+    customTitle: 'Gallery',
     customSubtitle: 'Classified by main assembly technique.',
     filters: { all: 'All', textil: 'Textile', madera: 'Wood' },
     counters: { projects: 'Projects', clients: 'Customers', countries: 'Countries', fairs: 'Fairs' },
     teamTitle: 'Team',
     teamSubtitle: 'We are a multidisciplinary team, including architects, assemblers, decorators, lighting technicians,... Together we can provide a complete response to all the needs of each project. Do not hesitate to call us for any questions you have. We hope to meet you soon.',
     teamRoles: ['Creativity', 'Administrator', 'Workshop', 'Coordination'],
-    contactTitle: 'QUOTE IN 24 H',
+    contactTitle: 'Quote in 24h',
     contactNotice: 'Tell us what you need and within 24 hours we will have a 3D design full of details and a super-competitive economic proposal.',
-    form: { name: 'Name', company: 'Company', phone: 'Tlf', email: 'Email', fair: 'Fair', location: 'City - Country', meters: 'Square meter', floor: 'ground details', woodFloor: 'Wozoden raised floor', carpetPlatform: 'Raised carpet floor', carpet: 'Carpet', spaceDistribution: 'Spaces-Distribution', reception: 'Reception area', bar: 'Bar area', storage: 'Warehouse', product: 'Product exposition', openMeeting: 'Open meeting area', closedMeeting: 'Closed meeting area', audiovisual: 'Audiovisual', led: 'Led screen', projector: 'Projector', budget: 'Estimated budget', description: 'Description', privacy: 'Accept our Privacy Policy', send: 'SEND' },
+    form: { name: 'Name', company: 'Company', phone: 'Tlf', email: 'Email', fair: 'Fair', location: 'City - Country', meters: 'Square meter', floor: 'ground details', woodFloor: 'Wozoden raised floor', carpetPlatform: 'Raised carpet floor', carpet: 'Carpet', spaceDistribution: 'Spaces-Distribution', reception: 'Reception area', bar: 'Bar area', storage: 'Warehouse', product: 'Product exposition', openMeeting: 'Open meeting area', closedMeeting: 'Closed meeting area', audiovisual: 'Audiovisual', led: 'Led screen', projector: 'Projector', budget: 'Estimated budget', description: 'Description', privacy: 'Accept our Privacy Policy', send: 'Send' },
     legal: { privacy: 'Privacy Policy', legalNotice: 'Legal warning', cookies: 'Cookies' },
     legalText: {
       privacy: '<p>Standarte uses the data submitted through the form only to answer information requests, quotations and communications related to exhibition stand projects.</p><p>We do not use this data for purposes unrelated to your request. You can ask for access, correction or deletion by writing to info@standarte.es.</p>',
@@ -531,16 +531,16 @@ export const copy = {
       ]
     },
     citiesIntro: 'Wir entwerfen, produzieren und montieren Messestände für Messen und Events in wichtigen Städten Spaniens und Portugals.',
-    customTitle: 'GALERIE',
+    customTitle: 'Galerie',
     customSubtitle: 'Nach Haupt-Montagetechnik geordnet.',
     filters: { all: 'Alle', textil: 'Textil', madera: 'Holz' },
     counters: { projects: 'Projekte', clients: 'Kunden', countries: 'Länder', fairs: 'Messen' },
     teamTitle: 'Team',
     teamSubtitle: 'Wir sind ein multidisziplinäres Team, zu dem Architekten, Montagearbeiter, Dekorateure, Beleuchtungstechniker gehören... Gemeinsam können wir auf alle Bedürfnisse jedes Projekts umfassend antworten. Zögern Sie nicht, uns bei Fragen anzurufen. Wir hoffen, Sie bald kennenzulernen.',
     teamRoles: ['Kreativität', 'Administrator', 'Werkstatt', 'Koordination'],
-    contactTitle: 'ANGEBOT IN 24 H',
+    contactTitle: 'Angebot in 24h',
     contactNotice: 'Teilen Sie uns mit, was Sie benötigen, und wir erstellen Ihnen innerhalb von 24 Stunden einen detailreichen 3D-Entwurf und ein äußerst wettbewerbsfähiges wirtschaftliches Angebot.',
-    form: { name: 'Name', company: 'Unternehmen', phone: 'Tel.', email: 'Email', fair: 'Messe', location: 'Stadt - Land', meters: 'Quadratmeter', floor: 'Boden Details', woodFloor: 'Holzboden', carpetPlatform: 'Teppichboden', carpet: 'Teppich', spaceDistribution: 'Raumaufteilung', reception: 'Empfangsbereich', bar: 'Barbereich', storage: 'Lager', product: 'Produktausstellung', openMeeting: 'Offener Besprechungsbereich', closedMeeting: 'Geschlossener Besprechungsbereich', audiovisual: 'Audiovisuell', led: 'LED-Bildschirm', projector: 'Projektor', budget: 'Geschätztes Budget', description: 'Beschreibung', privacy: 'Akzeptieren Sie unsere Datenschutzbestimmungen', send: 'SEND' },
+    form: { name: 'Name', company: 'Unternehmen', phone: 'Tel.', email: 'Email', fair: 'Messe', location: 'Stadt - Land', meters: 'Quadratmeter', floor: 'Boden Details', woodFloor: 'Holzboden', carpetPlatform: 'Teppichboden', carpet: 'Teppich', spaceDistribution: 'Raumaufteilung', reception: 'Empfangsbereich', bar: 'Barbereich', storage: 'Lager', product: 'Produktausstellung', openMeeting: 'Offener Besprechungsbereich', closedMeeting: 'Geschlossener Besprechungsbereich', audiovisual: 'Audiovisuell', led: 'LED-Bildschirm', projector: 'Projektor', budget: 'Geschätztes Budget', description: 'Beschreibung', privacy: 'Akzeptieren Sie unsere Datenschutzbestimmungen', send: 'Send' },
     legal: { privacy: 'Datenschutzbestimmungen', legalNotice: 'Impressum', cookies: 'Cookie-Richtlinien' },
     legalText: {
       privacy: '<p>Standarte verwendet die über das Formular gesendeten Daten ausschließlich zur Beantwortung von Informationsanfragen, Angeboten und Mitteilungen im Zusammenhang mit Messestand-Projekten.</p><p>Diese Daten werden nicht für andere Zwecke genutzt. Sie können Auskunft, Berichtigung oder Löschung unter info@standarte.es anfordern.</p>',
@@ -763,16 +763,16 @@ export const copy = {
       ]
     },
     citiesIntro: 'Desenhamos, produzimos e montamos stands para feiras e eventos em cidades-chave de Espanha e Portugal.',
-    customTitle: 'GALERIA',
+    customTitle: 'Galeria',
     customSubtitle: 'Classificados pela técnica principal de montagem.',
     filters: { all: 'Tudo', textil: 'Têxtil', madera: 'Madeira' },
     counters: { projects: 'Projetos', clients: 'Clientes', countries: 'Países', fairs: 'Feiras' },
     teamTitle: 'Equipa',
     teamSubtitle: 'Somos uma equipa multidisciplinar, incluindo arquitectos, montadores, decoradores, técnicos de iluminação,... Juntos podemos dar uma resposta completa a todas as necessidades de cada projecto. Não hesite em nos chamar para qualquer dúvida que tenha. Esperamos conhecê-lo em breve.',
     teamRoles: ['Criatividade', 'Administrador', 'Oficina', 'Coordenação'],
-    contactTitle: 'ORÇAMENTO EM 24 H',
+    contactTitle: 'Orçamento em 24h',
     contactNotice: 'Diga-nos o que precisa e, no prazo de 24 horas, teremos um design 3D detalhado e uma proposta económica super-competitiva.',
-    form: { name: 'Nome', company: 'O negócio', phone: 'Telefone', email: 'Email', fair: 'Feira', location: 'Cidade - Pais', meters: 'Metros quadrados', floor: 'Detalhes do terreno', woodFloor: 'Plataforma-madeira', carpetPlatform: 'Tapete-plataforma', carpet: 'Tapete', spaceDistribution: 'Distribuição de espaços', reception: 'Área de recepção', bar: 'Área do bar', storage: 'Armazém', product: 'Exposição de produtos', openMeeting: 'Área de reunião aberta', closedMeeting: 'Área de reunião fechada', audiovisual: 'Audiovisual', led: 'Tela de led', projector: 'Projetor', budget: 'Orçamento estimado', description: 'Descrição', privacy: 'Aceite a nossa Política de Privacidade', send: 'MANDAR' },
+    form: { name: 'Nome', company: 'O negócio', phone: 'Telefone', email: 'Email', fair: 'Feira', location: 'Cidade - Pais', meters: 'Metros quadrados', floor: 'Detalhes do terreno', woodFloor: 'Plataforma-madeira', carpetPlatform: 'Tapete-plataforma', carpet: 'Tapete', spaceDistribution: 'Distribuição de espaços', reception: 'Área de recepção', bar: 'Área do bar', storage: 'Armazém', product: 'Exposição de produtos', openMeeting: 'Área de reunião aberta', closedMeeting: 'Área de reunião fechada', audiovisual: 'Audiovisual', led: 'Tela de led', projector: 'Projetor', budget: 'Orçamento estimado', description: 'Descrição', privacy: 'Aceite a nossa Política de Privacidade', send: 'Mandar' },
     legal: { privacy: 'Política de privacidade', legalNotice: 'Aviso Legal', cookies: 'Cookies' },
     legalText: {
       privacy: '<p>A Standarte utiliza os dados enviados através do formulário apenas para responder a pedidos de informação, orçamentos e comunicações relacionadas com projetos de stands.</p><p>Não utilizamos estes dados para finalidades alheias ao pedido. Pode solicitar acesso, correção ou eliminação escrevendo para info@standarte.es.</p>',
@@ -834,16 +834,16 @@ export const copy = {
       ]
     },
     citiesIntro: 'Nous concevons, fabriquons et montons des stands pour des salons et événements dans les principales villes d\'Espagne et Portugal.',
-    customTitle: 'GALERIE',
+    customTitle: 'Galerie',
     customSubtitle: 'Classés par technique de montage principale.',
     filters: { all: 'Tous', textil: 'Textile', madera: 'Bois' },
     counters: { projects: 'Projets', clients: 'Clients', countries: 'Pays', fairs: 'Salons' },
     teamTitle: 'Équipe',
     teamSubtitle: 'Nous sommes une équipe multidisciplinaire comprenant des architectes, des monteurs, des décorateurs, des éclairagistes... Ensemble, nous pouvons apporter une réponse completa à tous les besoins de chaque projet. N\'hésitez pas à nous appeler pour toute question. Nous espérons vous rencontrer bientôt.',
     teamRoles: ['Créativité', 'Administrateur', 'Atelier', 'Coordination'],
-    contactTitle: 'DEVIS EN 24 H',
+    contactTitle: 'Devis en 24h',
     contactNotice: 'Dites-nous ce dont vous avez besoin et nous aurons une conception 3D riche en détails et une proposition commerciale super compétitive sous 24 heures.',
-    form: { name: 'Nom', company: 'Entreprise', phone: 'Téléphone', email: 'Email', fair: 'Salon', location: 'Ville - Pays', meters: 'Mètres carrés', floor: 'Détails du sol', woodFloor: 'Plancher en bois', carpetPlatform: 'Plancher avec moquette', carpet: 'Moquette', spaceDistribution: 'Répartition des espaces', reception: 'Zone de réception', bar: 'Zone de bar', storage: 'Stockage', product: 'Exposition de produits', openMeeting: 'Zone de réunion ouverte', closedMeeting: 'Zone de réunion fermée', audiovisual: 'Audiovisuel', led: 'Écran LED', projector: 'Projecteur', budget: 'Budget estimé', description: 'Description', privacy: 'Accepter notre politique de confidentialité', send: 'ENVOYER' },
+    form: { name: 'Nom', company: 'Entreprise', phone: 'Téléphone', email: 'Email', fair: 'Salon', location: 'Ville - Pays', meters: 'Mètres carrés', floor: 'Détails du sol', woodFloor: 'Plancher en bois', carpetPlatform: 'Plancher avec moquette', carpet: 'Moquette', spaceDistribution: 'Répartition des espaces', reception: 'Zone de réception', bar: 'Zone de bar', storage: 'Stockage', product: 'Exposition de produits', openMeeting: 'Zone de réunion ouverte', closedMeeting: 'Zone de réunion fermée', audiovisual: 'Audiovisuel', led: 'Écran LED', projector: 'Projecteur', budget: 'Budget estimé', description: 'Description', privacy: 'Accepter notre politique de confidentialité', send: 'Envoyer' },
     legal: { privacy: 'Politique de confidentialité', legalNotice: 'Mentions légales', cookies: 'Utilisation des Cookies' },
     legalText: {
       privacy: '<p>Standarte utilise les données envoyées via ce formulaire uniquement pour répondre aux demandes d\'informations et devis.</p>',
@@ -898,16 +898,16 @@ export const copy = {
       ]
     },
     citiesIntro: 'Progettiamo, produciamo e allestiamo stand per fiere ed eventi nelle principali città di Spagna e Portogallo.',
-    customTitle: 'GALLERIA',
+    customTitle: 'Galleria',
     customSubtitle: 'Classificati per tecnica di montaggio principale.',
     filters: { all: 'Tutti', Tessile: 'Tessile', Legno: 'Legno' },
     counters: { projects: 'Progetti', clients: 'Clienti', countries: 'Paesi', fairs: 'Fiere' },
     teamTitle: 'Squadra',
     teamSubtitle: 'Siamo un team multidisciplinare, che include architetti, montatori, decoratori, tecnici delle luci... Insieme possiamo fornire una risposta completa a tutte le esigenze di ogni progetto. Non esitare a chiamarci per qualsiasi domanda. Speriamo di conoscerti presto.',
     teamRoles: ['Creatività', 'Amministratore', 'Officina', 'Coordinamento'],
-    contactTitle: 'PREVENTIVO IN 24 H',
+    contactTitle: 'Preventivo in 24h',
     contactNotice: 'Dicci di cosa hai bisogno ed entro 24 ore avremo un design 3D ricco di dettagli e una proposta economica super competitiva.',
-    form: { name: 'Nome', company: 'Azienda', phone: 'Telefono', email: 'Email', fair: 'Fiera', location: 'Città - Paese', meters: 'Metri quadrati', floor: 'Dettagli pavimento', woodFloor: 'Pedana in legno', carpetPlatform: 'Pedana in moquette', carpet: 'Moquette', spaceDistribution: 'Distribuzione spazi', reception: 'Area reception', bar: 'Area bar', storage: 'Magazzino', product: 'Esposizione prodotti', openMeeting: 'Area riunioni aperta', closedMeeting: 'Area riunioni chiusa', audiovisual: 'Audiovisivi', led: 'Schermo LED', projector: 'Proiettore', budget: 'Budget stimato', description: 'Descrizione', privacy: 'Accetta la nostra Privacy Policy', send: 'INVIA' },
+    form: { name: 'Nome', company: 'Azienda', phone: 'Telefono', email: 'Email', fair: 'Fiera', location: 'Città - Paese', meters: 'Metri quadrati', floor: 'Dettagli pavimento', woodFloor: 'Pedana in legno', carpetPlatform: 'Pedana in moquette', carpet: 'Moquette', spaceDistribution: 'Distribuzione spazi', reception: 'Area reception', bar: 'Area bar', storage: 'Magazzino', product: 'Esposizione prodotti', openMeeting: 'Area riunioni aperta', closedMeeting: 'Area riunioni chiusa', audiovisual: 'Audiovisivi', led: 'Schermo LED', projector: 'Proiettore', budget: 'Budget stimato', description: 'Descrizione', privacy: 'Accetta la nostra Privacy Policy', send: 'Invia' },
     legal: { privacy: 'Privacy Policy', legalNotice: 'Note Legali', cookies: 'Uso dei Cookie' },
     legalText: {
       privacy: '<p>Standarte utilizza i dati inviati per rispondere alle richieste di informazioni e preventivi.</p>',
@@ -1130,7 +1130,7 @@ export const copy = {
     faqsTitle: 'Veelgestelde vragen', successStoriesTitle: 'Succesverhalen', featuredProjectsIntro: 'Uitgelichte projecten van maatwerk-schrijnwerk en standontwerp:',
     nav: { home: 'Home', services: 'Diensten', custom: 'Galerij', noticias: 'Blog', contact: 'Contact', language: 'Taal' },
     seoTitle: 'Standarte | Standontwerp en montage in Spanje en Portugal',
-    seoDescription: 'Beursstand-diensten inclusief expansieadvies. Standontwerp en montage in Spanje en Portugal: ontwerp, productie en montage van uw beursstand op maat. Offerte binnen 24 u.',
+    seoDescription: 'Beursstand-diensten inclusief expansieadvies. Standontwerp en montage in Spanje en Portugal: ontwerp, productie en montage van uw beursstand op maat. Offerte binnen 24u.',
     heroTitle: 'Standontwerp en montage in Spanje en Portugal',
     heroSubtitle: 'Ontwerp, productie en montage van beursstands op maat',
     servicesTitle: 'Diensten',
@@ -1169,16 +1169,16 @@ export const copy = {
       ]
     },
     citiesIntro: 'Wij ontwerpen, produceren en monteren stands voor beurzen en evenementen in belangrijke steden in Spanje en Portugal.',
-    customTitle: 'GALERIJ',
+    customTitle: 'Galerij',
     customSubtitle: 'Geordend op de belangrijkste montagetechniek.',
     filters: { all: 'Alle', textil: 'Textiel', madera: 'Hout' },
     counters: { projects: 'Projecten', clients: 'Klanten', countries: 'Landen', fairs: 'Beurzen' },
     teamTitle: 'Team',
     teamSubtitle: 'Wij zijn een multidisciplinair team met architecten, monteurs, decorateurs, lichttechnici,... Samen kunnen we volledig inspelen op alle behoeften van elk project. Aarzel niet om ons te bellen met al uw vragen. We maken graag snel kennis met u.',
     teamRoles: ['Creativiteit', 'Administratie', 'Werkplaats', 'Coördinatie'],
-    contactTitle: 'OFFERTE BINNEN 24 U',
+    contactTitle: 'Offerte binnen 24u',
     contactNotice: 'Vertel ons wat u nodig hebt en binnen 24 uur hebben we een gedetailleerd 3D-ontwerp en een zeer concurrerend prijsvoorstel.',
-    form: { name: 'Naam', company: 'Bedrijf', phone: 'Telefoon', email: 'E-mail', fair: 'Beurs', location: 'Stad - Land', meters: 'Vierkante meter', floor: 'Details over de vloer', woodFloor: 'Houten verhoogde vloer', carpetPlatform: 'Verhoogde vloer met tapijt', carpet: 'Tapijt', spaceDistribution: 'Ruimteverdeling', reception: 'Receptiezone', bar: 'Barzone', storage: 'Opslag', product: 'Productexpositie', openMeeting: 'Open vergaderzone', closedMeeting: 'Gesloten vergaderzone', audiovisual: 'Audiovisueel', led: 'LED-scherm', projector: 'Projector', budget: 'Geschat budget', description: 'Beschrijving', privacy: 'Accepteer ons privacybeleid', send: 'VERZENDEN' },
+    form: { name: 'Naam', company: 'Bedrijf', phone: 'Telefoon', email: 'E-mail', fair: 'Beurs', location: 'Stad - Land', meters: 'Vierkante meter', floor: 'Details over de vloer', woodFloor: 'Houten verhoogde vloer', carpetPlatform: 'Verhoogde vloer met tapijt', carpet: 'Tapijt', spaceDistribution: 'Ruimteverdeling', reception: 'Receptiezone', bar: 'Barzone', storage: 'Opslag', product: 'Productexpositie', openMeeting: 'Open vergaderzone', closedMeeting: 'Gesloten vergaderzone', audiovisual: 'Audiovisueel', led: 'LED-scherm', projector: 'Projector', budget: 'Geschat budget', description: 'Beschrijving', privacy: 'Accepteer ons privacybeleid', send: 'Verzenden' },
     legal: { privacy: 'Privacybeleid', legalNotice: 'Juridische kennisgeving', cookies: 'Gebruik van cookies' },
     legalText: {
       privacy: '<p>Standarte gebruikt de via het formulier verzonden gegevens uitsluitend om te reageren op informatieverzoeken, offertes en communicatie over standprojecten.</p><p>We gebruiken deze gegevens niet voor doeleinden die losstaan van uw verzoek. U kunt inzage, correctie of verwijdering aanvragen via info@standarte.es.</p>',
@@ -1250,7 +1250,7 @@ export const cityData = {
         detail: ''
       },
       es: {
-        intro: 'Como sede de eventos mundiales como el MWC o ISE, Barcelona exige un nivel de producción sobresaliente. En Standarte, con 20 años de experiencia y taller propio, diseñamos, fabricamos y montamos stands de alto impacto en Fira de Barcelona.',
+        intro: 'Como sede de eventos mundiales como el MWC o ISE, Barcelona exige un nivel de producción sobresaliente. En Standarte, con 20 años de experiencia y taller propio, diseñamos y montamos stands de alto impacto en Fira de Barcelona.',
         detail: ''
       },
       en: {
@@ -1671,44 +1671,44 @@ export const cityData = {
     city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz', ko: '바다호스', ja: 'バダホス' },
     content: {
       ja: {
-        intro: 'バダホスとエストレマドゥーラ地方は、伝統ある催事を擁する活気あふれる展示会市場です。Standarteは20年の経験と自社工房を強みに、IFEBAやFEVALといった主要会場でブースを設計・設営します。',
-        detail: '優れた物流効率により迅速に対応し、コストを最適化しながら、AGROEXPOやFECIEXなどの重要な催事で完璧なブースを保証します。'
+        intro: 'バダホスとエストレマドゥーラ地方は、伝統ある催事を擁する活気あふれる展示会市場です。Standarteは20年の経験と自社工房を強みに、IFEBAやFevalといった主要会場でブースを設計・設営します。',
+        detail: '優れた物流効率により迅速に対応し、コストを最適化しながら、AgroexpoやFeciexなどの重要な催事で完璧なブースを保証します。'
       },
       es: {
-        intro: 'Badajoz y Extremadura representan un mercado ferial dinámico con eventos de gran tradición. En Standarte diseñamos y montamos stands con 20 años de experiencia y taller propio en recintos de referencia como IFEBA y FEVAL.',
-        detail: 'Nuestra eficiencia logística nos permite responder con rapidez, optimizando costes y garantizando un stand impecable para citas clave como AGROEXPO o FECIEX.'
+        intro: 'Badajoz y Extremadura representan un mercado ferial dinámico con eventos de gran tradición. En Standarte diseñamos y montamos stands con 20 años de experiencia y taller propio en recintos de referencia como IFEBA y Feval.',
+        detail: 'Nuestra eficiencia logística nos permite responder con rapidez, optimizando costes y garantizando un stand impecable para citas clave como Agroexpo o Feciex.'
       },
       en: {
-        intro: 'Badajoz and Extremadura represent a highly active ferial hub with deep-rooted events. At Standarte, backed by 20 years of experience and our own workshop, we design and assemble stands in key regional venues such as IFEBA and FEVAL.',
-        detail: 'Our logistics efficiency allows us to deliver quick solutions, optimize costs, and guarantee a flawless stand presence for major events like AGROEXPO or FECIEX.'
+        intro: 'Badajoz and Extremadura represent a highly active ferial hub with deep-rooted events. At Standarte, backed by 20 years of experience and our own workshop, we design and assemble stands in key regional venues such as IFEBA and Feval.',
+        detail: 'Our logistics efficiency allows us to deliver quick solutions, optimize costs, and guarantee a flawless stand presence for major events like Agroexpo or Feciex.'
       },
       de: {
-        intro: 'Badajoz und die Region Extremadura sind ein dynamischer Messemarkt mit traditionsreichen Veranstaltungen. Standarte entwirft und montiert mit 20 Jahren Erfahrung und eigener Werkstatt hochwertige Messestände an führenden Standorten wie IFEBA und FEVAL.',
-        detail: 'Unsere logistische Effizienz ermöglicht uns schnelle Reaktionszeiten und optimierte Kosten für einen makellosen Stand bei wichtigen Messen wie AGROEXPO.'
+        intro: 'Badajoz und die Region Extremadura sind ein dynamischer Messemarkt mit traditionsreichen Veranstaltungen. Standarte entwirft und montiert mit 20 Jahren Erfahrung und eigener Werkstatt hochwertige Messestände an führenden Standorten wie IFEBA und Feval.',
+        detail: 'Unsere logistische Effizienz ermöglicht uns schnelle Reaktionszeiten und optimierte Kosten für einen makellosen Stand bei wichtigen Messen wie Agroexpo.'
       },
       pt: {
-        intro: 'Badajoz e a Extremadura representam um mercado de feiras dinâmico com eventos de grande tradição. Na Standarte concebemos e montamos stands com 20 anos de experiência e oficina própria em recintos de referência como IFEBA e FEVAL.',
-        detail: 'A nossa eficiência logística permite-nos responder rapidamente, otimizando custos e garantindo um stand impecável para feiras chave como a AGROEXPO.'
+        intro: 'Badajoz e a Extremadura representam um mercado de feiras dinâmico com eventos de grande tradição. Na Standarte concebemos e montamos stands com 20 anos de experiência e oficina própria em recintos de referência como IFEBA e Feval.',
+        detail: 'A nossa eficiência logística permite-nos responder rapidamente, otimizando custos e garantindo um stand impecável para feiras chave como a Agroexpo.'
       },
       fr: {
-        intro: 'Badajoz et l\'Estrémadure représentent un marché dynamique avec des événements de grande tradition. Nous concevons et montons des stands avec 20 ans d\'expérience et un propre atelier dans des lieux clés comme IFEBA et FEVAL.',
-        detail: 'Notre efficacité logistique nous permet de répondre rapidement, d\'optimiser les coûts et de garantir un stand impeccable pour des événements majeurs comme AGROEXPO.'
+        intro: 'Badajoz et l\'Estrémadure représentent un marché dynamique avec des événements de grande tradition. Nous concevons et montons des stands avec 20 ans d\'expérience et un propre atelier dans des lieux clés comme IFEBA et Feval.',
+        detail: 'Notre efficacité logistique nous permet de répondre rapidement, d\'optimiser les coûts et de garantir un stand impeccable pour des événements majeurs comme Agroexpo.'
       },
       it: {
-        intro: 'Badajoz e l\'Estremadura rappresentano un mercato fieristico dinamico con eventi di grande tradizione. Progettiamo e allestiamo stand con 20 anni di esperienza e un laboratorio di proprietà in centri di riferimento come IFEBA e FEVAL.',
-        detail: 'La nostra efficienza logistica ci consente di rispondere rapidamente, ottimizzare i costi e garantire uno stand impeccabile per appuntamenti chiave come AGROEXPO.'
+        intro: 'Badajoz e l\'Estremadura rappresentano un mercato fieristico dinamico con eventi di grande tradizione. Progettiamo e allestiamo stand con 20 anni di esperienza e un laboratorio di proprietà in centri di riferimento come IFEBA e Feval.',
+        detail: 'La nostra efficienza logistica ci consente di rispondere rapidamente, ottimizzare i costi e garantire uno stand impeccabile per appuntamenti chiave come Agroexpo.'
       },
       zh: {
-        intro: '巴达霍斯和埃斯特雷马杜拉代表了一个充满活力且历史悠久的展会市场。凭借 20 年的经验和自己的工厂，我们在该地区的核心展馆（如 IFEBA 和 FEVAL）设计和组装展台。',
-        detail: '我们的物流效率使我们能够快速响应、优化成本，并确保在 AGROEXPO 或 FECIEX 等重点展会中为您呈现完美的品牌展台。'
+        intro: '巴达霍斯和埃斯特雷马杜拉代表了一个充满活力且历史悠久的展会市场。凭借 20 年的经验和自己的工厂，我们在该地区的核心展馆（如 IFEBA 和 Feval）设计和组装展台。',
+        detail: '我们的物流效率使我们能够快速响应、优化成本，并确保在 Agroexpo 或 Feciex 等重点展会中为您呈现完美的品牌展台。'
       },
       hi: {
-        intro: 'बादाहोज़ और एक्स्ट्रीमादुरा गहरी जड़ें वाले आयोजनों के साथ एक अत्यधिक सक्रिय फेशियल हब का प्रतिनिधित्व करते हैं। 20 वर्षों के अनुभव और हमारे अपने कारखाने के समर्थन से, स्टैंडार्ट में, हम IFEBA और FEVAL जैसे प्रमुख क्षेत्रीय स्थानों में स्टैंड डिजाइन और इकट्ठा करते हैं।',
-        detail: 'हमारी रसद दक्षता हमें त्वरित समाधान देने, लागत का अनुकूलन करने और एग्रोएक्सपीओ या FECIEX जैसे प्रमुख आयोजनों के लिए एक निर्दोष स्टैंड उपस्थिति की गारंटी देने की अनुमति देती है।'
+        intro: 'बादाहोज़ और एक्स्ट्रीमादुरा गहरी जड़ें वाले आयोजनों के साथ एक अत्यधिक सक्रिय फेशियल हब का प्रतिनिधित्व करते हैं। 20 वर्षों के अनुभव और हमारे अपने कारखाने के समर्थन से, स्टैंडार्ट में, हम IFEBA और Feval जैसे प्रमुख क्षेत्रीय स्थानों में स्टैंड डिजाइन और इकट्ठा करते हैं।',
+        detail: 'हमारी रसद दक्षता हमें त्वरित समाधान देने, लागत का अनुकूलन करने और एग्रोएक्सपीओ या Feciex जैसे प्रमुख आयोजनों के लिए एक निर्दोष स्टैंड उपस्थिति की गारंटी देने की अनुमति देती है।'
       },
       ko: {
-        intro: '바다호스와 엑스트레마두라는 뿌리 깊은 이벤트를 갖춘 매우 활동적인 행사 허브를 대표합니다. 20년의 경험과 자체 공장을 바탕으로 Standarte에서는 IFEBA 및 FEVAL과 같은 주요 지역 행사장에서 스탠드를 디자인하고 조립합니다.',
-        detail: '물류 효율성을 통해 당사는 빠른 솔루션을 제공하고 비용을 최적화하며 AGROEXPO 또는 FECIEX와 같은 주요 이벤트에서 완벽한 스탠드 존재를 보장할 수 있습니다.'
+        intro: '바다호스와 엑스트레마두라는 뿌리 깊은 이벤트를 갖춘 매우 활동적인 행사 허브를 대표합니다. 20년의 경험과 자체 공장을 바탕으로 Standarte에서는 IFEBA 및 Feval과 같은 주요 지역 행사장에서 스탠드를 디자인하고 조립합니다.',
+        detail: '물류 효율성을 통해 당사는 빠른 솔루션을 제공하고 비용을 최적화하며 Agroexpo 또는 Feciex와 같은 주요 이벤트에서 완벽한 스탠드 존재를 보장할 수 있습니다.'
       }
     }
   },
@@ -1806,43 +1806,43 @@ export const cityData = {
     city: { es: 'Zaragoza', en: 'Zaragoza', de: 'Zaragoza', zh: '萨拉戈萨', hi: 'ज़ारागोज़ा', pt: 'Saragoça', fr: 'Saragosse', it: 'Saragozza', ko: '사라고사', ja: 'サラゴサ' },
     content: {
       ja: {
-        intro: 'サラゴサはスペイン有数の見本市・物流拠点であり、サラゴサ見本市場（Feria de Zaragoza）は農業機械の国際見本市FIMAや建設・鉱山機械のSMOPYCといった世界的な産業見本市を開催しています。20年の経験と自社工房を持つStandarteが、サラゴサ見本市場でのブースの設計・製作・設営を担います。',
+        intro: 'サラゴサはスペイン有数の見本市・物流拠点であり、サラゴサ見本市場（Feria de Zaragoza）は農業機械の国際見本市Fimaや建設・鉱山機械のSmopycといった世界的な産業見本市を開催しています。20年の経験と自社工房を持つStandarteが、サラゴサ見本市場でのブースの設計・製作・設営を担います。',
         detail: '輸送、自社チームによる設営、会場の技術手続きまで一貫して管理し、海外の機械メーカーや出展企業に堅実かつ時間厳守の組立をお約束します。'
       },
       es: {
-        intro: 'Zaragoza es uno de los grandes nodos feriales y logísticos de España: la Feria de Zaragoza acoge certámenes industriales de referencia internacional como FIMA (maquinaria agrícola) y SMOPYC (maquinaria de obra pública y minería). Con 20 años de experiencia y taller propio, Standarte diseña, fabrica y monta stands de alta carpintería en la Feria de Zaragoza.',
+        intro: 'Zaragoza es uno de los grandes nodos feriales y logísticos de España: la Feria de Zaragoza acoge certámenes industriales de referencia internacional como Fima (maquinaria agrícola) y Smopyc (maquinaria de obra pública y minería). Con 20 años de experiencia y taller propio, Standarte diseña, fabrica y monta stands de alta carpintería en la Feria de Zaragoza.',
         detail: 'Asumimos el transporte, el montaje con equipo propio y toda la tramitación técnica del recinto, garantizando a fabricantes y expositores internacionales una ejecución robusta y puntual.'
       },
       en: {
-        intro: 'Zaragoza is one of Spain’s major fair and logistics hubs: the Feria de Zaragoza hosts world-class industrial shows such as FIMA (agricultural machinery) and SMOPYC (construction and mining machinery). With 20 years of experience and our own workshop, Standarte designs, manufactures and builds premium carpentry stands at the Feria de Zaragoza.',
+        intro: 'Zaragoza is one of Spain’s major fair and logistics hubs: the Feria de Zaragoza hosts world-class industrial shows such as Fima (agricultural machinery) and Smopyc (construction and mining machinery). With 20 years of experience and our own workshop, Standarte designs, manufactures and builds premium carpentry stands at the Feria de Zaragoza.',
         detail: 'We handle transport, assembly with our own crew and all the venue’s technical paperwork, guaranteeing international manufacturers and exhibitors a robust, on-time execution.'
       },
       de: {
-        intro: 'Saragossa ist einer der großen Messe- und Logistikknotenpunkte Spaniens: Die Feria de Zaragoza beherbergt weltweit führende Industriemessen wie FIMA (Landmaschinen) und SMOPYC (Bau- und Bergbaumaschinen). Mit 20 Jahren Erfahrung und eigener Werkstatt entwirft, fertigt und baut Standarte hochwertige Tischlerstände auf der Feria de Zaragoza.',
+        intro: 'Saragossa ist einer der großen Messe- und Logistikknotenpunkte Spaniens: Die Feria de Zaragoza beherbergt weltweit führende Industriemessen wie Fima (Landmaschinen) und Smopyc (Bau- und Bergbaumaschinen). Mit 20 Jahren Erfahrung und eigener Werkstatt entwirft, fertigt und baut Standarte hochwertige Tischlerstände auf der Feria de Zaragoza.',
         detail: 'Wir übernehmen Transport, Montage mit eigenem Team und die gesamte technische Abwicklung mit dem Gelände und garantieren internationalen Herstellern und Ausstellern eine solide, pünktliche Ausführung.'
       },
       pt: {
-        intro: 'Saragoça é um dos grandes polos de feiras e logística de Espanha: a Feira de Saragoça acolhe certames industriais de referência internacional como a FIMA (maquinaria agrícola) e a SMOPYC (maquinaria de obras públicas e mineração). Com 20 anos de experiência e oficina própria, a Standarte projeta, fabrica e monta stands de alta carpintaria na Feira de Saragoça.',
+        intro: 'Saragoça é um dos grandes polos de feiras e logística de Espanha: a Feira de Saragoça acolhe certames industriais de referência internacional como a Fima (maquinaria agrícola) e a Smopyc (maquinaria de obras públicas e mineração). Com 20 anos de experiência e oficina própria, a Standarte projeta, fabrica e monta stands de alta carpintaria na Feira de Saragoça.',
         detail: 'Tratamos do transporte, da montagem com equipa própria e de toda a tramitação técnica do recinto, garantindo a fabricantes e expositores internacionais uma execução robusta e pontual.'
       },
       fr: {
-        intro: 'Saragosse est l’un des grands pôles de salons et de logistique d’Espagne : la Feria de Zaragoza accueille des salons industriels de référence internationale comme la FIMA (machines agricoles) et la SMOPYC (engins de travaux publics et de mines). Avec 20 ans d’expérience et un atelier propre, Standarte conçoit, fabrique et monte des stands de haute menuiserie à la Feria de Zaragoza.',
+        intro: 'Saragosse est l’un des grands pôles de salons et de logistique d’Espagne : la Feria de Zaragoza accueille des salons industriels de référence internationale comme la Fima (machines agricoles) et la Smopyc (engins de travaux publics et de mines). Avec 20 ans d’expérience et un atelier propre, Standarte conçoit, fabrique et monte des stands de haute menuiserie à la Feria de Zaragoza.',
         detail: 'Nous prenons en charge le transport, le montage avec notre propre équipe et toutes les démarches techniques du site, garantissant aux fabricants et exposants internationaux une exécution robuste et ponctuelle.'
       },
       it: {
-        intro: 'Saragozza è uno dei grandi poli fieristici e logistici della Spagna: la Feria de Zaragoza ospita rassegne industriali di riferimento internazionale come FIMA (macchine agricole) e SMOPYC (macchine per opere pubbliche e minerarie). Con 20 anni di esperienza e officina propria, Standarte progetta, produce e monta stand di alta falegnameria alla Feria de Zaragoza.',
+        intro: 'Saragozza è uno dei grandi poli fieristici e logistici della Spagna: la Feria de Zaragoza ospita rassegne industriali di riferimento internazionale come Fima (macchine agricole) e Smopyc (macchine per opere pubbliche e minerarie). Con 20 anni di esperienza e officina propria, Standarte progetta, produce e monta stand di alta falegnameria alla Feria de Zaragoza.',
         detail: 'Gestiamo il trasporto, il montaggio con squadra propria e tutte le pratiche tecniche del quartiere fieristico, garantendo a produttori ed espositori internazionali un’esecuzione solida e puntuale.'
       },
       zh: {
-        intro: '萨拉戈萨是西班牙主要的会展与物流枢纽之一：萨拉戈萨展览馆（Feria de Zaragoza）举办具有国际影响力的工业展会，如FIMA（农业机械）和SMOPYC（工程与采矿机械）。凭借20年经验和自有工厂，Standarte在萨拉戈萨展览馆设计、制造并搭建高端木工展台。',
+        intro: '萨拉戈萨是西班牙主要的会展与物流枢纽之一：萨拉戈萨展览馆（Feria de Zaragoza）举办具有国际影响力的工业展会，如Fima（农业机械）和Smopyc（工程与采矿机械）。凭借20年经验和自有工厂，Standarte在萨拉戈萨展览馆设计、制造并搭建高端木工展台。',
         detail: '我们负责运输、自有团队搭建以及场馆的全部技术手续，为国际制造商和参展商保证稳健、准时的执行。'
       },
       hi: {
-        intro: 'ज़ारागोज़ा स्पेन के प्रमुख मेला और लॉजिस्टिक केंद्रों में से एक है: फेरिया दे ज़ारागोज़ा FIMA (कृषि मशीनरी) और SMOPYC (निर्माण और खनन मशीनरी) जैसे अंतर्राष्ट्रीय स्तर के औद्योगिक आयोजनों की मेज़बानी करता है। 20 वर्षों के अनुभव और अपनी कार्यशाला के साथ, Standarte फेरिया दे ज़ारागोज़ा में उच्च दर्जे की बढ़ईगीरी वाले स्टैंड डिज़ाइन, निर्माण और स्थापित करता है।',
+        intro: 'ज़ारागोज़ा स्पेन के प्रमुख मेला और लॉजिस्टिक केंद्रों में से एक है: फेरिया दे ज़ारागोज़ा Fima (कृषि मशीनरी) और Smopyc (निर्माण और खनन मशीनरी) जैसे अंतर्राष्ट्रीय स्तर के औद्योगिक आयोजनों की मेज़बानी करता है। 20 वर्षों के अनुभव और अपनी कार्यशाला के साथ, Standarte फेरिया दे ज़ारागोज़ा में उच्च दर्जे की बढ़ईगीरी वाले स्टैंड डिज़ाइन, निर्माण और स्थापित करता है।',
         detail: 'हम परिवहन, अपनी टीम से असेंबली और परिसर की सभी तकनीकी प्रक्रियाओं को संभालते हैं, जिससे अंतर्राष्ट्रीय निर्माताओं और प्रदर्शकों को एक मजबूत और समयबद्ध निष्पादन की गारंटी मिलती है।'
       },
       ko: {
-        intro: '사라고사는 스페인의 주요 전시·물류 거점 중 하나로, 페리아 데 사라고사(Feria de Zaragoza)는 FIMA(농업 기계)와 SMOPYC(건설·광산 기계)와 같은 세계적인 산업 박람회를 개최합니다. 20년의 경험과 자체 작업장을 갖춘 Standarte는 페리아 데 사라고사에서 고급 목공 부스를 설계·제작·시공합니다.',
+        intro: '사라고사는 스페인의 주요 전시·물류 거점 중 하나로, 페리아 데 사라고사(Feria de Zaragoza)는 Fima(농업 기계)와 Smopyc(건설·광산 기계)와 같은 세계적인 산업 박람회를 개최합니다. 20년의 경험과 자체 작업장을 갖춘 Standarte는 페리아 데 사라고사에서 고급 목공 부스를 설계·제작·시공합니다.',
         detail: '운송, 자체 인력 시공, 전시장의 모든 기술 행정 절차를 담당하여 국제 제조업체와 출품업체에 견고하고 정시의 실행을 보장합니다.'
       }
     }
@@ -1896,43 +1896,43 @@ export const cityData = {
     city: { es: 'Don Benito', en: 'Don Benito', de: 'Don Benito', zh: '唐贝尼托', hi: 'डॉन बेनिटो', pt: 'Don Benito', fr: 'Don Benito', it: 'Don Benito', ko: '돈 베니토', ja: 'ドン・ベニート' },
     content: {
       ja: {
-        intro: 'ドン・ベニートは、エストレマドゥーラの展示会機関FEVALの所在地であり、イベリア市場最大の農業・機械見本市Agroexpoを開催しています。',
+        intro: 'ドン・ベニートは、エストレマドゥーラの展示会機関Fevalの所在地であり、イベリア市場最大の農業・機械見本市Agroexpoを開催しています。',
         detail: '22,000m²の屋内展示館と、農業機械・精密農業向けの屋外エリアに、オーダーメイドの上質な木工ブースを製作します。'
       },
       es: {
-        intro: 'Don Benito alberga FEVAL, la Institución Ferial de Extremadura, y acoge Agroexpo, el mayor punto de encuentro agrícola y de maquinaria del mercado ibérico.',
+        intro: 'Don Benito alberga Feval, la Institución Ferial de Extremadura, y acoge Agroexpo, el mayor punto de encuentro agrícola y de maquinaria del mercado ibérico.',
         detail: 'Construimos stands a medida de alta carpintería en sus 22.000 m² de pabellones cubiertos y en su zona exterior para maquinaria y agricultura de precisión.'
       },
       en: {
-        intro: 'Don Benito hosts FEVAL, the Trade Fair Institution of Extremadura, and Agroexpo, the largest agricultural and machinery trade show in the Iberian market.',
+        intro: 'Don Benito hosts Feval, the Trade Fair Institution of Extremadura, and Agroexpo, the largest agricultural and machinery trade show in the Iberian market.',
         detail: 'We build custom woodwork stands in its 22,000 sqm of covered pavilions and its outdoor area for agricultural machinery and precision farming.'
       },
       pt: {
-        intro: 'Don Benito abriga a FEVAL, a Instituição de Feiras da Extremadura, e acolhe a Agroexpo, o maior ponto de encontro agrícola e de maquinaria do mercado ibérico.',
+        intro: 'Don Benito abriga a Feval, a Instituição de Feiras da Extremadura, e acolhe a Agroexpo, o maior ponto de encontro agrícola e de maquinaria do mercado ibérico.',
         detail: 'Construímos stands de carpintaria à medida nos seus 22.000 m² de pavilhões cobertos e na sua área exterior para maquinaria e agricultura de precisão.'
       },
       de: {
-        intro: 'Don Benito beherbergt FEVAL, die Messeinstitution von Extremadura, und veranstaltet Agroexpo, den größten landwirtschaftlichen Treffpunkt auf der Iberischen Halbinsel.',
+        intro: 'Don Benito beherbergt Feval, die Messeinstitution von Extremadura, und veranstaltet Agroexpo, den größten landwirtschaftlichen Treffpunkt auf der Iberischen Halbinsel.',
         detail: 'Wir bauen maßgeschneiderte Messestände in den 22.000 m² überdachten Hallen sowie im Außenbereich für Maschinen und Präzisionslandwirtschaft.'
       },
       fr: {
-        intro: 'Don Benito abrite FEVAL, l\'institution foirale d\'Estrémadure, et accueille Agroexpo, le plus grand salon agricole et de machines du marché ibérique.',
+        intro: 'Don Benito abrite Feval, l\'institution foirale d\'Estrémadure, et accueille Agroexpo, le plus grand salon agricole et de machines du marché ibérique.',
         detail: 'Nous montons des stands sur mesure dans ses 22 000 m² de halls couverts et dans sa zone extérieure pour les machines de précision.'
       },
       it: {
-        intro: 'Don Benito ospita la FEVAL, l\'istituzione fieristica dell\'Estremadura, e accoglie Agroexpo, il più grande incontro agricolo e di macchinari del mercato iberico.',
+        intro: 'Don Benito ospita la Feval, l\'istituzione fieristica dell\'Estremadura, e accoglie Agroexpo, il più grande incontro agricolo e di macchinari del mercato iberico.',
         detail: 'Costruiamo stand in legno su misura nei suoi 22.000 mq di padiglioni coperti e nella sua area esterna per macchine agricole e agricoltura di precisione.'
       },
       zh: {
-        intro: '唐贝尼托是埃斯特雷马杜拉展览机构（FEVAL）的所在地，并举办伊比利亚市场最大的农业和机械贸易展Agroexpo。',
+        intro: '唐贝尼托是埃斯特雷马杜拉展览机构（Feval）的所在地，并举办伊比利亚市场最大的农业和机械贸易展Agroexpo。',
         detail: '我们在其22,000平方米的室内展馆以及用于展示农业机械和精准农业的室外区域搭建定制的木工展台。'
       },
       hi: {
-        intro: 'डॉन बेनिटो FEVAL (एक्स्ट्रीमादुra व्यापार मेला संस्थान) और एग्रोएक्सपो की मेजबानी करता है, जो इबेरियन बाजार में सबसे बड़ा कृषि और मशीनरी शो है।',
+        intro: 'डॉन बेनिटो Feval (एक्स्ट्रीमादुra व्यापार मेला संस्थान) और एग्रोएक्सपो की मेजबानी करता है, जो इबेरियन बाजार में सबसे बड़ा कृषि और मशीनरी शो है।',
         detail: 'हम इसके 22,000 वर्ग मीटर के कवर पैवेलियन और कृषि मशीनरी और सटीक खेती के लिए इसके बाहरी क्षेत्र में कस्टम लकड़ी के स्टैंड बनाते हैं।'
       },
       ko: {
-        intro: '돈 베니토는 엑스트레마두라 박람회 기관(FEVAL)의 소재지이며 이베리아 시장에서 가장 큰 농업 및 기계 박람회인 Agroexpo를 개최합니다.',
+        intro: '돈 베니토는 엑스트레마두라 박람회 기관(Feval)의 소재지이며 이베리아 시장에서 가장 큰 농업 및 기계 박람회인 Agroexpo를 개최합니다.',
         detail: '우리는 22,000제곱미터의 실내 전시관과 농업 기계 및 정밀 농업을 위한 야외 공간에 맞춤형 목재 부스를 제작합니다.'
       }
     }
@@ -1941,43 +1941,43 @@ export const cityData = {
     city: { es: 'Badajoz', en: 'Badajoz', de: 'Badajoz', zh: '巴达霍斯', hi: 'बादाहोज़', pt: 'Badajoz', fr: 'Badajoz', it: 'Badajoz', ko: '바다호스', ja: 'バダホス' },
     content: {
       ja: {
-        intro: 'バダホスと展示場IFEBAは、ポルトガルとの国境貿易（ラ・ラヤ）の玄関口であり、FECIEXやFehisporといった主要な催事を開催しています。',
+        intro: 'バダホスと展示場IFEBAは、ポルトガルとの国境貿易（ラ・ラヤ）の玄関口であり、FeciexやFehisporといった主要な催事を開催しています。',
         detail: 'IFEBAの10,000m²の屋内展示館と広大な屋外エリアで、オーダーメイドの上質な木工プレミアムブースの設計・製作・設営を行います。'
       },
       es: {
-        intro: 'Badajoz y su recinto ferial IFEBA son la puerta de entrada al comercio transfronterizo con Portugal (La Raya), celebrando certámenes líderes como FECIEX o Fehispor.',
+        intro: 'Badajoz y su recinto ferial IFEBA son la puerta de entrada al comercio transfronterizo con Portugal (La Raya), celebrando certámenes líderes como Feciex o Fehispor.',
         detail: 'Realizamos el diseño, fabricación y montaje de stands premium de carpintería a medida en los 10.000 m² cubiertos de IFEBA y sus amplios exteriores.'
       },
       en: {
-        intro: 'Badajoz and its IFEBA exhibition centre are the gateway to cross-border trade with Portugal, hosting leading trade shows like FECIEX and Fehispor.',
+        intro: 'Badajoz and its IFEBA exhibition centre are the gateway to cross-border trade with Portugal, hosting leading trade shows like Feciex and Fehispor.',
         detail: 'We carry out the design, manufacture, and setup of premium custom woodwork stands in IFEBA\'s 10,000 sqm covered halls and its large outdoor areas.'
       },
       pt: {
-        intro: 'Badajoz e o seu recinto de feiras IFEBA são a porta de entrada para o comércio transfronteiriço com Portugal, acolhendo certames líderes como FECIEX ou Fehispor.',
+        intro: 'Badajoz e o seu recinto de feiras IFEBA são a porta de entrada para o comércio transfronteiriço com Portugal, acolhendo certames líderes como Feciex ou Fehispor.',
         detail: 'Realizamos o design, fabrico e montagem de stands premium de carpintaria nos 10.000 m² cobertos da IFEBA e nas suas amplas áreas exteriores.'
       },
       de: {
-        intro: 'Badajoz und sein Messegelände IFEBA sind das Tor zum grenzüberschreitenden Handel mit Portugal und Austragungsort führender Messen wie FECIEX oder Fehispor.',
+        intro: 'Badajoz und sein Messegelände IFEBA sind das Tor zum grenzüberschreitenden Handel mit Portugal und Austragungsort führender Messen wie Feciex oder Fehispor.',
         detail: 'Wir entwerfen, fertigen und montieren Premium-Messestände in den 10.000 m² überdachten Hallen von IFEBA und auf dem großen Freigelände.'
       },
       fr: {
-        intro: 'Badajoz et son parc des expositions IFEBA sont la porte d\'entrée du commerce transfrontalier avec le Portugal, accueillant des salons majeurs comme FECIEX ou Fehispor.',
+        intro: 'Badajoz et son parc des expositions IFEBA sont la porte d\'entrée du commerce transfrontalier avec le Portugal, accueillant des salons majeurs comme Feciex ou Fehispor.',
         detail: 'Nous concevons, fabriquons et montons des stands de menuiserie haut de gamme dans les 10 000 m² couverts d\'IFEBA et ses vastes espaces extérieurs.'
       },
       it: {
-        intro: 'Badajoz e il suo centro fieristico IFEBA sono la porta d\'accesso al commercio transfrontaliero con il Portogallo, ospitando fiere leader come FECIEX o Fehispor.',
+        intro: 'Badajoz e il suo centro fieristico IFEBA sono la porta d\'accesso al commercio transfrontaliero con il Portogallo, ospitando fiere leader come Feciex o Fehispor.',
         detail: 'Realizziamo la progettazione, produzione e allestimento di stand in legno pregiato nei 10.000 mq coperti di IFEBA e nelle sue grandi aree esterne.'
       },
       zh: {
-        intro: '巴达霍斯及其 IFEBA 展览中心是与葡萄牙开展跨境贸易的门户，举办 FECIEX 和 Fehispor 等领先的贸易博览会。',
+        intro: '巴达霍斯及其 IFEBA 展览中心是与葡萄牙开展跨境贸易的门户，举办 Feciex 和 Fehispor 等领先的贸易博览会。',
         detail: '我们在 IFEBA 的 10,000 平方米室内展馆和大型室外区域提供高端定制木工展台的设计、制造和搭建。'
       },
       hi: {
-        intro: 'बादाहोज़ और इसका IFEBA प्रदर्शनी केंद्र पुर्तगाल के साथ सीमा पार व्यापार का प्रवेश द्वार हैं, जो FECIEX और Fehispor जैसे प्रमुख शो की मेजबानी करते हैं।',
+        intro: 'बादाहोज़ और इसका IFEBA प्रदर्शनी केंद्र पुर्तगाल के साथ सीमा पार व्यापार का प्रवेश द्वार हैं, जो Feciex और Fehispor जैसे प्रमुख शो की मेजबानी करते हैं।',
         detail: 'हम IFEBA के 10,000 वर्ग मीटर के कवर हॉल और इसके बड़े बाहरी क्षेत्रों में premium custom लकड़ी के स्टैंड का डिज़ाइन, निर्माण और सेटअप करते हैं।'
       },
       ko: {
-        intro: '바다호스와 IFEBA 전시 센터는 포르투갈과의 국경 무역 관문이며 FECIEX 및 Fehispor와 같은 주요 무역 박람회를 개최합니다.',
+        intro: '바다호스와 IFEBA 전시 센터는 포르투갈과의 국경 무역 관문이며 Feciex 및 Fehispor와 같은 주요 무역 박람회를 개최합니다.',
         detail: '우리는 IFEBA의 10,000제곱미터 실내 전시관과 대규모 야외 공간에 프리미엄 맞춤형 목재 부스의 설계, 제작 및 설치를 수행합니다.'
       }
     }
@@ -2606,7 +2606,7 @@ export const portfolios = [
   {
     "thumb": "img/trabajos/trabajos_promueve/thumbs/stand-cun-fitur3.avif",
     "full": "img/trabajos/trabajos_promueve/stand-cun-fitur3.avif",
-    "alt": "Stand de madera a medida para la Clínica Universidad de Navarra en FITUR",
+    "alt": "Stand de madera a medida para la Clínica Universidad de Navarra en Fitur",
     "categories": [
       "sanidad",
       "madera"

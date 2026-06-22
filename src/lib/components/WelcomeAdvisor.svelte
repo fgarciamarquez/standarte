@@ -883,9 +883,9 @@
   .advisor-name {
     margin: 0;
     color: #111;
-    font-family: 'Glegoo', serif;
+    font-family: 'Fraunces', serif;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
   }
 
   .advisor-name-row {
@@ -1156,10 +1156,10 @@
     border: 0;
     border-radius: 30px;
     padding: 12px 28px;
-    font-family: 'Glegoo', serif;
+    font-family: 'Fraunces', serif;
     font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 400;
+    text-transform: none;
     cursor: pointer;
     transition: all 0.25s ease;
     align-self: flex-start;

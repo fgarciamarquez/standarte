@@ -50,14 +50,14 @@
   }
 
   const ctaLabels = {
-    es: 'PRESUPUESTO EN 24 H',
-    en: 'QUOTE IN 24 H',
-    de: 'ANGEBOT IN 24 H',
-    pt: 'ORÇAMENTO EM 24 H',
+    es: 'Presupuesto en 24h',
+    en: 'Quote in 24h',
+    de: 'Angebot in 24h',
+    pt: 'Orçamento em 24h',
     zh: '24小时内报价',
     hi: '24 घंटे में कोटेशन',
-    fr: 'DEVIS EN 24 H',
-    it: 'PREVENTIVO IN 24 H',
+    fr: 'Devis en 24h',
+    it: 'Preventivo in 24h',
     ko: '24시간 내 견적'
   };
 

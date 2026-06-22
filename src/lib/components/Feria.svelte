@@ -57,7 +57,7 @@
     updateScrollState();
   });
 
-  const ctaLabels = { es: 'PRESUPUESTO EN 24 H', en: 'QUOTE IN 24 H', de: 'ANGEBOT IN 24 H', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'ORÇAMENTO EM 24 H', fr: 'DEVIS EN 24 H', it: 'PREVENTIVO IN 24 H', ko: '24시간 내 견적', ja: '24時間で見積もり', nl: 'OFFERTE BINNEN 24 U' };
+  const ctaLabels = { es: 'Presupuesto en 24h', en: 'Quote in 24h', de: 'Angebot in 24h', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'Orçamento em 24h', fr: 'Devis en 24h', it: 'Preventivo in 24h', ko: '24시간 내 견적', ja: '24時間で見積もり', nl: 'Offerte binnen 24u' };
   $: ({ lang, copy, canonical, fairSlug } = data);
 
   $: fair = fairsData.find(f => f.slug === fairSlug) || fairsData[0];
@@ -552,9 +552,6 @@
   <div class="hero-subpage">
     <div class="hero-contents feria-hero-contents">
       <h1>{strings.heroTitle(fairDisplayName)}{heroExpStr}</h1>
-      <div class="fair-flag-wrapper">
-        <span class={`fair-flag-icon flag-${fair.country} medium-flag`} aria-hidden="true"></span>
-      </div>
     </div>
     <AiSourceButtons {lang} variant="hero" showLabel={false} />
   </div>
@@ -719,9 +716,6 @@
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
-    /* Línea de color que separa la sección, como los encabezados de ciudad. */
-    border-bottom: 2px solid var(--gold);
-    padding-bottom: 10px;
     display: inline-block;
   }
   .services-list {

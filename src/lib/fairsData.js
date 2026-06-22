@@ -1,6 +1,6 @@
 export const fairsData = [
   {
-    "name": "AGROEXPO FEVAL Don Benito",
+    "name": "Agroexpo Feval Don Benito",
     "country": "es",
     "slug": "agroexpo-feval-don-benito",
     "city": "Don Benito",
@@ -35,7 +35,7 @@ export const fairsData = [
     "sector": "Belleza y Estética"
   },
   {
-    "name": "VINAC Almendralejo",
+    "name": "Vinac Almendralejo",
     "country": "es",
     "slug": "vinac-almendralejo",
     "city": "Almendralejo",
@@ -49,7 +49,7 @@ export const fairsData = [
     "sector": "Arte y Ocio"
   },
   {
-    "name": "FENAVIN Match Ciudad Real",
+    "name": "Fenavin Match Ciudad Real",
     "country": "es",
     "slug": "fenavin-match-ciudad-real",
     "city": "Ciudad Real",
@@ -98,7 +98,7 @@ export const fairsData = [
     "sector": "Industria y Logística"
   },
   {
-    "name": "SAGALEXPO Lisboa",
+    "name": "Sagalexpo Lisboa",
     "country": "pt",
     "slug": "sagalexpo-lisboa",
     "city": "Lisboa",
@@ -112,7 +112,7 @@ export const fairsData = [
     "sector": "Multisectorial y Profesional"
   },
   {
-    "name": "FERCAM Manzanares Ciudad Real",
+    "name": "Fercam Manzanares Ciudad Real",
     "country": "es",
     "slug": "fercam-manzanares-ciudad-real",
     "city": "Ciudad Real",
@@ -154,14 +154,14 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
-    "name": "FERCATUR Ciudad Real",
+    "name": "Fercatur Ciudad Real",
     "country": "es",
     "slug": "fercatur-ciudad-real",
     "city": "Ciudad Real",
     "sector": "Multisectorial y Profesional"
   },
   {
-    "name": "FECIEX Badajoz",
+    "name": "Feciex Badajoz",
     "country": "es",
     "slug": "feciex-badajoz",
     "city": "Badajoz",
@@ -175,14 +175,14 @@ export const fairsData = [
     "sector": "Arte y Ocio"
   },
   {
-    "name": "EXPO AGRITECH Málaga",
+    "name": "EXPO Agritech Málaga",
     "country": "es",
     "slug": "expo-agritech-malaga",
     "city": "Málaga",
     "sector": "Multisectorial y Profesional"
   },
   {
-    "name": "SIMED Málaga",
+    "name": "Simed Málaga",
     "country": "es",
     "slug": "simed-malaga",
     "city": "Málaga",
@@ -238,14 +238,14 @@ export const fairsData = [
     "sector": "Industria y Logística"
   },
   {
-    "name": "FIRECA Sevilla",
+    "name": "Fireca Sevilla",
     "country": "es",
     "slug": "fireca-sevilla",
     "city": "Sevilla",
     "sector": "Multisectorial y Profesional"
   },
   {
-    "name": "CONXEMAR Vigo",
+    "name": "Conxemar Vigo",
     "country": "es",
     "slug": "conxemar-vigo",
     "city": "Vigo",
@@ -273,7 +273,7 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
-    "name": "IBERPET Madrid",
+    "name": "Iberpet Madrid",
     "country": "es",
     "slug": "iberpet-madrid",
     "city": "Madrid",
@@ -406,7 +406,7 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
-    "name": "SNACKEX Lisboa",
+    "name": "Snackex Lisboa",
     "country": "pt",
     "slug": "snackex-lisboa",
     "city": "Lisboa",
@@ -448,14 +448,14 @@ export const fairsData = [
     "sector": "Turismo y Hostelería"
   },
   {
-    "name": "SMOPYC Zaragoza",
+    "name": "Smopyc Zaragoza",
     "country": "es",
     "slug": "smopyc-zaragoza",
     "city": "Zaragoza",
     "sector": "Industria y Logística"
   },
   {
-    "name": "FIMA Zaragoza",
+    "name": "Fima Zaragoza",
     "country": "es",
     "slug": "fima-zaragoza",
     "city": "Zaragoza",
@@ -560,7 +560,7 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
-    "name": "MOMAD Madrid",
+    "name": "Momad Madrid",
     "country": "es",
     "slug": "momad-madrid",
     "city": "Madrid",
@@ -581,7 +581,7 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
-    "name": "FITUR Madrid",
+    "name": "Fitur Madrid",
     "country": "es",
     "slug": "fitur-madrid",
     "city": "Madrid",
@@ -658,7 +658,7 @@ export const fairsData = [
     "sector": "Aeronáutica y Transporte"
   },
   {
-    "name": "EMAF",
+    "name": "Emaf",
     "country": "pt",
     "slug": "emaf-oporto",
     "city": "Oporto",
@@ -679,7 +679,7 @@ export const fairsData = [
     "sector": "Turismo y Hostelería"
   },
   {
-    "name": "EXPOCARNE Porto",
+    "name": "Expocarne Porto",
     "country": "pt",
     "slug": "expocarne-oporto",
     "city": "Oporto",
@@ -714,7 +714,7 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
-    "name": "FIMMA + Maderalia",
+    "name": "Fimma + Maderalia",
     "country": "es",
     "slug": "fimma-maderalia-valencia",
     "city": "Valencia",
@@ -770,7 +770,7 @@ export const fairsData = [
     "sector": "Multisectorial y Profesional"
   },
   {
-    "name": "FIGAN",
+    "name": "Figan",
     "country": "es",
     "slug": "figan-zaragoza",
     "city": "Zaragoza",

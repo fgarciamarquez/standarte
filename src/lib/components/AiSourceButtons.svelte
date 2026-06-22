@@ -179,19 +179,19 @@
   /* Botón "Expansión": reactiva el panel de Pat. Píldora verde sólida; hereda el
      tamaño (padding/font-size) de la variante actual (band o hero). */
   .ai-geo .ai-geo-btn.ai-geo-reactivate {
-    background: #1f9d57;
-    color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: #84cc16; /* verde lima */
+    color: #14310a; /* texto oscuro: el lima es claro y necesita contraste */
+    border: 1px solid rgba(0, 0, 0, 0.08);
     font-family: inherit;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(31, 157, 87, 0.35);
+    box-shadow: 0 3px 10px rgba(132, 204, 22, 0.4);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
   .ai-geo .ai-geo-btn.ai-geo-reactivate:hover,
   .ai-geo .ai-geo-btn.ai-geo-reactivate:focus {
-    background: #178a4b;
+    background: #76b512;
     transform: translateY(-1px);
   }
 </style>
