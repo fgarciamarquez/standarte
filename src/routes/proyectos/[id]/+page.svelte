@@ -348,13 +348,7 @@
 
   <div class="hero-subpage">
     <div class="hero-contents">
-      <div class="project-meta-top">
-        <span class="location-badge">{project.location}</span>
-      </div>
       <h1>{project.title[lang] || project.title.es}</h1>
-      <p class="hero-lead">
-        {heroLeads[lang] || heroLeads.es}
-      </p>
     </div>
   </div>
 </header>
