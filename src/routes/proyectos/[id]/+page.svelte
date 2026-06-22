@@ -86,7 +86,9 @@
     hi: '24 घंटे में कोटेशन',
     fr: 'Devis en 24h',
     it: 'Preventivo in 24h',
-    ko: '24시간 내 견적'
+    ko: '24시간 내 견적',
+    ja: '24時間で見積もり',
+    nl: 'Offerte binnen 24u'
   };
 
   function switchLanguage(targetLang) {
