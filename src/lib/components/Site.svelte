@@ -382,6 +382,15 @@
     return project?.alt || project?.name || '';
   }
 
+  // Título SIN la localización final, solo para las miniaturas del carrusel 3D. Recorta el
+  // conector + topónimo del final ("… en Madrid", "… in Bilbao", "… à Paris", "… a Milano",
+  // "… em Lisboa"). Otros usos (galería, lightbox, SEO) conservan la localización.
+  function carouselTitle(project) {
+    return getProjectTitle(project)
+      .replace(/\s+(en|in|à|a|em)\s+\p{Lu}[\p{L}.\-]*(\s+\p{Lu}[\p{L}.\-]*)*$/u, '')
+      .trim();
+  }
+
   function projectDescription(project) {
     return project?.description?.[lang] || project?.description?.es || '';
   }
@@ -1135,8 +1144,8 @@
                     <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
                   </a>
                   <div class="carousel-caption">
-                    <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-caption-link" title={getProjectTitle(project)}>
-                      <h3>{getProjectTitle(project)}</h3>
+                    <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-caption-link" title={carouselTitle(project)}>
+                      <h3>{carouselTitle(project)}</h3>
                     </a>
                   </div>
                 </div>
