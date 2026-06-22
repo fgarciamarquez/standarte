@@ -59,7 +59,9 @@ h3,
 h4,
 h5 {
   font-family: 'Fraunces', serif;
-  font-weight: 400;
+  /* Fraunces NUNCA en negrita: !important para anular cualquier font-weight:700 de
+     componentes/rutas (p. ej. el blog) y evitar regresiones futuras. */
+  font-weight: 400 !important;
   letter-spacing: -0.01em;
 }
 
