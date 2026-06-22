@@ -229,15 +229,15 @@
   };
 
   const backToMainPages = {
-    es: 'Volver a la Página Principal',
-    en: 'Back to Main Page',
-    de: 'Zurück zur Hauptseite',
-    pt: 'Voltar para a Página Principal',
-    zh: '返回主页',
-    hi: 'मुख्य पृष्ठ पर वापस जाएँ',
-    fr: 'Retour à la page principale',
-    it: 'Torna alla pagina principale',
-    ko: '메인 페이지로 돌아가기'
+    es: 'Volver',
+    en: 'Back',
+    de: 'Zurück',
+    pt: 'Voltar',
+    zh: '返回',
+    hi: 'वापस',
+    fr: 'Retour',
+    it: 'Indietro',
+    ko: '뒤로'
   };
 
   const galleryTitles = {
@@ -749,22 +749,21 @@
   .btn-back {
     display: inline-flex;
     align-items: center;
-    background-color: transparent;
-    color: #333;
+    background-color: var(--gold);
+    color: #111;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 16px;
     padding: 12px 28px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: none;
     border-radius: 30px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .btn-back:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-    background-color: rgba(255, 200, 0, 0.03);
+    background-color: #e0b000;
+    color: #111;
     transform: translateX(-4px);
   }
 
