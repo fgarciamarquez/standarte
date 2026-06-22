@@ -3,7 +3,6 @@
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData } from '$lib/siteData.js';
   import ContactForm from './ContactForm.svelte';
-  import AiSourceButtons from '$lib/components/AiSourceButtons.svelte';
 
   // Navegación entre ciudades matriz (módulo del aside).
   // Solo las matrices (construccion_stands_*); excluye las landings de montaje secundarias
@@ -565,7 +564,6 @@
     <div class="hero-contents feria-hero-contents">
       <h1>{strings.heroTitle(fairDisplayName)}{heroExpStr}</h1>
     </div>
-    <AiSourceButtons {lang} variant="hero" showLabel={false} />
   </div>
 </header>
 
