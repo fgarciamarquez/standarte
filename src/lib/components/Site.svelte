@@ -1114,7 +1114,7 @@
       <div class="section-header">
         <h2>{copy.projects3D?.title || 'Otros Proyectos'}</h2>
         <span></span>
-        <p>{copy.projects3D?.subtitle || 'Explora nuestras propuestas interactivas de alta carpintería y su relación con nuestros valores de diseño.'}</p>
+        <p>{copy.projects3D?.subtitle || 'Explora nuestras propuestas 3D y su relación con nuestros valores de diseño.'}</p>
       </div>
 
       <div class="carousel-container">

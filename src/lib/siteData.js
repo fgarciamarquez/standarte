@@ -391,7 +391,7 @@ export const copy = {
     formError: 'No se pudo enviar el mensaje. Por favor, inténtalo de nuevo.',
     projects3D: {
       title: 'Proyectos de Bajo Coste',
-      subtitle: 'Explora nuestras propuestas interactivas de alta carpintería y su relación con nuestros valores de diseño.',
+      subtitle: 'Explora nuestras propuestas 3D y su relación con nuestros valores de diseño.',
       viewBtn: 'Ver Proyecto'
     },
     footer: 'Standarte. Diseño, fabricación y montaje de stands.'
