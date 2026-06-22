@@ -565,8 +565,8 @@
 
   /* Breadcrumbs */
   .project-detail-main {
-    background-color: #16191c; /* Fondo oscuro premium */
-    color: #fff;
+    background-color: #fff; /* Esquema claro, igual que las páginas de ciudad */
+    color: #333;
     padding-bottom: 100px;
     min-height: 100vh;
   }
@@ -584,25 +584,25 @@
     display: flex;
     gap: 8px;
     font-size: 16px;
-    color: #888;
+    color: #5a6066;
   }
 
   .breadcrumbs a {
-    color: #888;
+    color: #1a73e8;
     transition: color 0.2s ease;
   }
 
   .breadcrumbs a:hover {
-    color: var(--gold);
+    color: #1558b0;
   }
 
   .breadcrumbs .current {
-    color: #ccc;
+    color: #d32f2f;
     font-weight: 700;
   }
 
   .breadcrumbs .divider {
-    color: #444;
+    color: #c2c2c2;
   }
 
   /* Contenedor del Proyecto */
@@ -614,11 +614,11 @@
 
   /* Carta de Valores */
   .values-card {
-    background-color: #1a1e22;
+    background-color: #fff;
     border-radius: 8px;
     padding: 45px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     position: relative;
     overflow: hidden;
     margin-bottom: 50px;
@@ -635,7 +635,7 @@
 
   .values-card h2 {
     font-size: 26px;
-    color: #fff;
+    color: #1a1e21;
     margin-bottom: 20px;
     font-family: 'Fraunces', serif;
   font-weight: 400;
@@ -643,7 +643,7 @@
 
   .intro-description {
     font-size: 16px;
-    color: #aaa;
+    color: #555;
     line-height: 1.6;
     margin-bottom: 25px;
   }
@@ -651,8 +651,8 @@
   .values-content {
     font-size: 16px;
     line-height: 1.8;
-    color: #ddd;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #333;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 25px;
   }
 
@@ -664,7 +664,7 @@
   .project-web-link {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .btn-web {
@@ -679,7 +679,7 @@
   }
 
   .btn-web:hover {
-    color: #fff;
+    color: #111;
   }
 
   /* Título Galería */
@@ -689,7 +689,7 @@
 
   .gallery-title-wrapper h2 {
     font-size: 24px;
-    color: #fff;
+    color: #1a1e21;
     margin: 0 0 8px;
     font-family: 'Fraunces', serif;
   font-weight: 400;
@@ -697,7 +697,7 @@
 
   .gallery-title-wrapper p {
     font-size: 16px;
-    color: #888;
+    color: #666;
     margin: 0;
   }
 
@@ -713,9 +713,9 @@
     aspect-ratio: 16 / 10;
     overflow: hidden;
     border-radius: 6px;
-    background-color: #121417;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    background-color: #ececec;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   }
 
   .gallery-item-btn {
@@ -783,7 +783,7 @@
   /* Navegación */
   .back-navigation {
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 40px;
   }
 
@@ -791,13 +791,13 @@
     display: inline-flex;
     align-items: center;
     background-color: transparent;
-    color: #ccc;
+    color: #333;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 16px;
     padding: 12px 28px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 30px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
