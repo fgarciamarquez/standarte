@@ -162,7 +162,9 @@
     hi: `${project.location} में ${project.name} के लिए 3D स्टैंड डिज़ाइन`,
     fr: `Design de Stand 3D pour ${project.name} à ${project.location}`,
     it: `Design Stand 3D per ${project.name} a ${project.location}`,
-    ko: `${project.location}의 ${project.name} 3D 부스 디자인`
+    ko: `${project.location}의 ${project.name} 3D 부스 디자인`,
+    ja: `${project.location}の${project.name}向け3Dスタンドデザイン`,
+    nl: `3D-standontwerp voor ${project.name} in ${project.location}`
   } : {};
 
   $: seoDescriptions = project ? {
@@ -174,7 +176,9 @@
     hi: `${project.location} में ${project.name} के लिए कस्टम 3D स्टैंड डिज़ाइन का विवरण。 हमारे वास्तुकला मूल्यों के साथ इसके संबंध के बारे में जानें。`,
     fr: `Détails de la conception de stand 3D sur mesure pour ${project.name} à ${project.location}. Découvrez sa relation avec nos valeurs architecturales.`,
     it: `Dettagli del design di stand 3D su misura per ${project.name} a ${project.location}. Scopri la sua relazione con i nostri valori architettonici.`,
-    ko: `${project.location}에서 진행된 ${project.name} 맞춤형 3D 부스 디자인 상세 정보. 당사의 건축적 가치와의 관계에 대해 알아보십시오.`
+    ko: `${project.location}에서 진행된 ${project.name} 맞춤형 3D 부스 디자인 상세 정보. 당사의 건축적 가치와의 관계에 대해 알아보십시오.`,
+    ja: `${project.location}の${project.name}向けカスタム3Dスタンドデザインの詳細。当社の建築的価値との関係をご覧ください。`,
+    nl: `Details van het op maat gemaakte 3D-standontwerp voor ${project.name} in ${project.location}. Ontdek de relatie met onze architectonische waarden.`
   } : {};
 
   $: creativeWorkNames = project ? {
@@ -186,20 +190,10 @@
     hi: `3D स्टैंड प्रोटोटाइप - ${project.name}`,
     fr: `Prototype de Stand 3D - ${project.name}`,
     it: `Prototipo Stand 3D - ${project.name}`,
-    ko: `3D 부스 프로토타입 - ${project.name}`
+    ko: `3D 부스 프로토타입 - ${project.name}`,
+    ja: `3Dスタンドのプロトタイプ - ${project.name}`,
+    nl: `3D-standprototype - ${project.name}`
   } : {};
-
-  const heroLeads = {
-    es: 'Prototipo 3D',
-    en: '3D prototype and its relation to our design values',
-    de: '3D-Prototyp und sein Verhältnis zu unseren Designwerten',
-    pt: 'Protótipo 3D e sua relação com os nossos valores de design',
-    zh: '3D原型及其与我们设计价值观的关系',
-    hi: '3D प्रोटोटाइप और हमारे डिज़ाइन मूल्यों के साथ इसका संबंध',
-    fr: 'Prototype 3D et sa relation avec nos valeurs de design',
-    it: 'Prototipo 3D e la sua relazione con i nostri valori di design',
-    ko: '3D 프로토타입 및 당사의 디자인 가치와의 관계'
-  };
 
   const breadcrumbsInicio = {
     es: 'Inicio',
@@ -210,7 +204,9 @@
     hi: 'होम',
     fr: 'Accueil',
     it: 'Home',
-    ko: '홈'
+    ko: '홈',
+    ja: 'ホーム',
+    nl: 'Home'
   };
 
   const breadcrumbsProyectos = {
@@ -222,19 +218,9 @@
     hi: '3D परियोजनाएं',
     fr: 'Projets 3D',
     it: 'Progetti 3D',
-    ko: '3D 프로젝트'
-  };
-
-  const visitWebsites = {
-    es: 'Visitar sitio oficial',
-    en: 'Visit official website',
-    de: 'Offizielle Website besuchen',
-    pt: 'Visitar site oficial',
-    zh: '访问官方网站',
-    hi: 'आधिकारिक वेबसाइट पर जाएं',
-    fr: 'Visiter le site officiel',
-    it: 'Visita il sito ufficiale',
-    ko: '공식 웹사이트 방문'
+    ko: '3D 프로젝트',
+    ja: '3Dプロジェクト',
+    nl: '3D-projecten'
   };
 
   const backToMainPages = {
@@ -246,7 +232,9 @@
     hi: 'वापस',
     fr: 'Retour',
     it: 'Indietro',
-    ko: '뒤로'
+    ko: '뒤로',
+    ja: '戻る',
+    nl: 'Terug'
   };
 
   const galleryTitles = {
@@ -258,7 +246,9 @@
     hi: 'दृश्य और 3D रेंडर गैलरी',
     fr: 'Galerie de vues et de rendus 3D',
     it: 'Galleria di viste e rendering 3D',
-    ko: '뷰 및 3D 렌더링 갤러리'
+    ko: '뷰 및 3D 렌더링 갤러리',
+    ja: 'ビューと3Dレンダリングのギャラリー',
+    nl: 'Galerij van weergaven en 3D-renders'
   };
 
   const gallerySubtitles = {
@@ -270,7 +260,9 @@
     hi: 'उच्च परिभाषा में इसका पता लगाने के लिए किसी भी छवि पर क्लिक करें。',
     fr: 'Cliquez sur n’importe quelle image pour l’explorer en haute définition.',
     it: 'Clicca su qualsiasi immagine per esplorarla in alta definizione.',
-    ko: '고화질로 보려면 이미지를 클릭하세요.'
+    ko: '고화질로 보려면 이미지를 클릭하세요.',
+    ja: 'いずれかの画像をクリックすると、高解像度で表示できます。',
+    nl: 'Klik op een afbeelding om deze in hoge resolutie te bekijken.'
   };
 
   $: jsonLd = {
@@ -300,7 +292,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <svelte:head>
-  <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'fr' ? 'Prototype 3D' : (lang === 'it' ? 'Prototipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D\u0020\u092a\u094d\u0930\u094b\u091f\u094b\u091f\u093e\u0907\u092a' : (lang === 'ko' ? '3D 프로토타입' : '3D Prototype')))))))} | Standarte</title>
+  <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'fr' ? 'Prototype 3D' : (lang === 'it' ? 'Prototipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D\u0020\u092a\u094d\u0930\u094b\u091f\u094b\u091f\u093e\u0907\u092a' : (lang === 'ko' ? '3D 프로토타입' : (lang === 'ja' ? '3Dプロトタイプ' : (lang === 'nl' ? '3D-prototype' : '3D Prototype')))))))))} | Standarte</title>
   <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href={`https://standarte.es/proyectos/${project.id}`} />
