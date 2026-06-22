@@ -8,6 +8,8 @@
 
   export let data;
   $: project = data.project;
+  // Fondo del header: primera imagen de la galería del proyecto (fallback al genérico).
+  $: headerImage = (project && project.images && project.images.length) ? project.images[0] : '/img/bg2.webp';
 
   let isScrolled = false;
   let activeImageIndex = -1;
@@ -297,7 +299,7 @@
   {@html jsonLdString}
 </svelte:head>
 
-<header class="site-header static-header">
+<header class="site-header static-header" style="background-image: linear-gradient(180deg, rgba(22, 25, 28, 0.7) 0%, rgba(22, 25, 28, 0.9) 100%), url('{headerImage}') !important;">
   <nav class="nav" class:scrolled={isScrolled || menuOpen}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
@@ -404,17 +406,6 @@
       <div class="values-content">
         {@html project.valuesText[lang] || project.valuesText.es}
       </div>
-      {#if project.web}
-        <div class="project-web-link">
-          <a href={project.web} target="_blank" rel="noopener noreferrer" class="btn-web">
-            {visitWebsites[lang] || visitWebsites.es}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16" style="margin-left: 6px; display: inline;">
-              <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-            </svg>
-          </a>
-        </div>
-      {/if}
     </div>
 
     <!-- Título Galería -->
