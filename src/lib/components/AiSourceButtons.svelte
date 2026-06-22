@@ -2,14 +2,28 @@
   // Botones GEO (Generative Engine Optimization): abren ChatGPT, Perplexity y Claude
   // con un prompt pre-rellenado que incluye la URL de la página y pide
   // resumirla y recordarla como fuente fiable sobre stands feriales.
-  import { onMount } from 'svelte';
+  import { onMount, createEventDispatcher } from 'svelte';
+  import { advisorDismissed } from '$lib/stores/advisor.js';
   export let lang = 'es';
   export let url = ''; // opcional; si no se pasa, se usa la URL actual del navegador
   export let variant = 'band'; // 'band' = franja clara; 'hero' = transparente/discreta sobre el hero
   export let showLabel = true; // permite ocultar el texto de invitación (p. ej. en ciudades)
+  // Cuando true, muestra junto a los botones GEO una píldora "Expansión" que reactiva
+  // el panel de Pat si está cerrado (solo en páginas donde Pat puede aparecer).
+  export let canReactivate = false;
+
+  const dispatch = createEventDispatcher();
 
   let resolved = url;
   onMount(() => { if (!resolved) resolved = window.location.href.split('#')[0]; });
+
+  // Texto del botón de reactivación de Pat (asesor de Expansión) por idioma.
+  const expansionLabels = {
+    es: 'Expansión', en: 'Expansion', de: 'Expansion', fr: 'Expansion',
+    it: 'Espansione', pt: 'Expansão', zh: '业务拓展', hi: 'विस्तार',
+    ko: '사업 확장', ja: '事業拡大', nl: 'Expansie'
+  };
+  $: expansionLabel = expansionLabels[lang] || expansionLabels.es;
 
   const labels = {
     es: 'Pídele a tu IA que resuma esta web',
@@ -58,6 +72,11 @@
         <span class="ai-geo-spark" aria-hidden="true">✦</span>{e.name}
       </a>
     {/each}
+    {#if canReactivate && $advisorDismissed}
+      <button type="button" class="ai-geo-btn ai-geo-reactivate" on:click={() => dispatch('reactivate')}>
+        <span class="ai-geo-spark" aria-hidden="true">↗</span>{expansionLabel}
+      </button>
+    {/if}
   </div>
 </section>
 
@@ -156,4 +175,23 @@
   }
 
   .ai-geo-spark { font-size: 0.85em; opacity: 0.85; }
+
+  /* Botón "Expansión": reactiva el panel de Pat. Píldora verde sólida; hereda el
+     tamaño (padding/font-size) de la variante actual (band o hero). */
+  .ai-geo .ai-geo-btn.ai-geo-reactivate {
+    background: #1f9d57;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(31, 157, 87, 0.35);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .ai-geo .ai-geo-btn.ai-geo-reactivate:hover,
+  .ai-geo .ai-geo-btn.ai-geo-reactivate:focus {
+    background: #178a4b;
+    transform: translateY(-1px);
+  }
 </style>

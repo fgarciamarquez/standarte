@@ -8,6 +8,7 @@
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
   import AiSourceButtons from './AiSourceButtons.svelte';
+  import { advisorDismissed } from '$lib/stores/advisor.js';
   import CookieConsent from './CookieConsent.svelte';
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
@@ -615,6 +616,19 @@
     }
   }
 
+  // Reactivar Pat desde el botón "Expansión" (junto a los botones GEO): limpia el
+  // descarte de la sesión y vuelve a mostrar el panel (cargándolo si aún no estaba).
+  function reopenAdvisor() {
+    advisorDismissed.reactivate();
+    if (AdvisorComponent) {
+      showWelcomeAdvisor = true;
+    } else {
+      import('./WelcomeAdvisor.svelte')
+        .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
+        .catch(() => {});
+    }
+  }
+
   onMount(() => {
     displayedCounters = counterItems.map(() => 0);
 
@@ -883,7 +897,7 @@
       <div class="contents">
         <h1>{copy.heroTitle}</h1>
       </div>
-      <AiSourceButtons {lang} variant="hero" />
+      <AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />
     </section>
   {:else if seoContent}
     <div class="hero-subpage" class:transparent-hero={section === 'services'} class:on-hero-photo={animatedHero}>
@@ -900,7 +914,7 @@
         <h1>{seoContent.h1}</h1>
         <p class="hero-lead">{seoContent.introText}</p>
       </div>
-      {#if animatedHero}<AiSourceButtons {lang} variant="hero" showLabel={false} />{/if}
+      {#if animatedHero}<AiSourceButtons {lang} variant="hero" showLabel={false} canReactivate on:reactivate={reopenAdvisor} />{/if}
     </div>
   {/if}
 </header>

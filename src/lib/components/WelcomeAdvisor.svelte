@@ -3,6 +3,7 @@
   import { slide, fade } from 'svelte/transition';
   import { fairsData } from '$lib/fairsData.js';
   import { cityData } from '$lib/siteData.js';
+  import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let lang = 'en';
 
@@ -599,7 +600,7 @@
         status = 'success';
         statusMessage = t.successMsg;
         // No volver a mostrar el asesor durante esta sesión (no molestar).
-        try { sessionStorage.setItem('standarte_advisor_dismissed', '1'); } catch (e) {}
+        advisorDismissed.dismiss();
         // Mostrar el acuse unos segundos, luego colapsar y desaparecer.
         dismissTimers.push(setTimeout(() => { cardExpanded = false; }, 5500));
         dismissTimers.push(setTimeout(() => { dispatch('dismiss'); }, 6400));
@@ -623,7 +624,7 @@
   // Deslizador "Activo": al desactivarlo, el panel desaparece durante toda la sesión.
   function onActiveToggle(e) {
     if (e.currentTarget.checked) return; // sigue activo
-    try { sessionStorage.setItem('standarte_advisor_dismissed', '1'); } catch (err) {}
+    advisorDismissed.dismiss();
     cardExpanded = false;
     dismissTimers.push(setTimeout(() => { dispatch('dismiss'); }, 320));
   }
