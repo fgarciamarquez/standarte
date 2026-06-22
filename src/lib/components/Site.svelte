@@ -967,7 +967,7 @@
       <div class="city-grid">
         {#each cityKeys as cityKey, i}
           <article id={cityKey} class:cities-hidden={!citiesExpanded && i >= CITIES_VISIBLE && cityKey !== section}>
-            <a href={pathFor(lang, cityKey)} class="city-cover-link">
+            <a href={pathFor(lang, cityKey)} class="city-cover-link" aria-label={cityTitle(cityKey)}>
               <div class="city-cover-container">
                 <img
                   src="/img/cover_{cityKey}.avif"
@@ -980,15 +980,15 @@
                   loading="lazy"
                 />
               </div>
-            </a>
-            <h3>{cityTitle(cityKey)}</h3>
-            <p>{cityContent(cityKey).intro}</p>
-            <p>{cityContent(cityKey).detail}</p>
-            <a href={pathFor(lang, cityKey)} class="city-link-circle" aria-label={cityTitle(cityKey)}>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
+              <h3>{cityTitle(cityKey)}</h3>
+              <p>{cityContent(cityKey).intro}</p>
+              <p>{cityContent(cityKey).detail}</p>
+              <span class="city-link-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
             </a>
           </article>
         {/each}

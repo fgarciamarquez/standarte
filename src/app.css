@@ -827,18 +827,17 @@ article:hover .city-cover-image,
   line-height: 1.65;
 }
 
+/* El único enlace del grid es ahora la columna completa (.city-cover-link), que envuelve
+   imagen + textos. No le imponemos inline-block/negrita/tamaño (eran de un enlace de texto
+   antiguo): que la imagen y los textos conserven su estilo propio. */
 .city-grid a {
-  display: inline-block;
-  margin-top: 6px;
-  color: #333;
-  font-size: 16px;
-  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
 }
 
 .city-grid a:hover,
 .city-grid a:focus {
   color: #000;
-  border-bottom: 1px solid #000;
 }
 
 .lisbon-fairs-strip {
