@@ -379,7 +379,6 @@
   <article class="project-container">
     <!-- Carta del Valor de Diseño y Textos -->
     <div class="values-card">
-      <div class="gold-indicator"></div>
       <h2>{project.title[lang] || project.title.es}</h2>
       <div class="values-content">
         {@html project.valuesText[lang] || project.valuesText.es}
