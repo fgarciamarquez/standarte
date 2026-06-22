@@ -345,6 +345,11 @@ p {
   scroll-margin-top: 92px;
 }
 
+/* En páginas de ciudad (formulario variante "light") el #contact va pegado arriba. */
+#contact.contact-light {
+  padding-top: 0;
+}
+
 .section > *,
 .section-header,
 footer > * {
