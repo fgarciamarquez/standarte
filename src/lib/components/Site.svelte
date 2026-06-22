@@ -602,17 +602,47 @@
     }
   }
 
+  // Scroll al formulario #contact de la propia página. En páginas muy largas la carga
+  // diferida de imágenes desplaza el layout durante el scroll, así que reajustamos cada
+  // 250 ms hasta que la posición se estabiliza — parando si el usuario hace scroll manual
+  // (para no "pelear" con él) o a los 3 s como tope.
+  function scrollToContact() {
+    const get = () => document.getElementById('contact');
+    if (!get()) return;
+    // 'instant' (no 'auto'): 'auto' heredaría el scroll-behavior:smooth global del CSS y
+    // animaría, y sobre páginas largas esa animación se queda corta por el reflow.
+    const align = () => get()?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    align();
+    // En páginas largas, la carga diferida de imágenes alarga la página y desplaza el
+    // formulario hacia abajo: re-alineamos cada vez que una imagen termina de cargar
+    // (la causa real del desplazamiento). Los 'load' de <img> no burbujean -> captura.
+    // Paramos en cuanto el usuario toma el control (wheel/táctil/teclado) o a los 4 s.
+    const events = ['wheel', 'touchstart', 'keydown'];
+    let done = false;
+    const onLoad = (e) => { if (!done && e.target && e.target.tagName === 'IMG') align(); };
+    const finish = () => {
+      if (done) return;
+      done = true;
+      document.removeEventListener('load', onLoad, true);
+      events.forEach((ev) => window.removeEventListener(ev, finish));
+    };
+    document.addEventListener('load', onLoad, true);
+    events.forEach((ev) => window.addEventListener(ev, finish, { passive: true }));
+    setTimeout(finish, 4000);
+  }
+
   function handleNavClick(event, id) {
     if (section === 'home') {
       event.preventDefault();
       scrollTo(id);
-    } else if (id === 'contact' && section in cityData) {
-      // En páginas de ciudad el formulario está en la propia página: hacemos scroll
-      // al #contact local en vez de navegar a la home, y sin alterar la URL.
+    } else if (id === 'contact' && typeof document !== 'undefined' && document.getElementById('contact')) {
+      // El formulario está en la propia página (ciudades y sus hermanas, etc.): hacemos
+      // scroll al #contact local en vez de navegar a /contacto, y sin alterar la URL.
+      // Reintentamos tras un instante por si la carga diferida de imágenes (páginas
+      // muy largas) desplaza el layout y el primer scroll se queda corto.
       event.preventDefault();
       menuOpen = false;
-      const el = document.getElementById('contact');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToContact();
     }
   }
 
