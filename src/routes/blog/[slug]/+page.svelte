@@ -435,6 +435,8 @@
     padding: 0 15px;
     width: 100%;
     text-align: center;
+    /* Sin el gradiente oscuro global, para que se vea la foto del header (.static-header). */
+    background: none;
   }
 
   .article-meta-top {
