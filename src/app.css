@@ -840,7 +840,9 @@ article:hover .city-cover-image,
   margin-right: 0;
   overflow: hidden;
   color: #000;
-  background: greenyellow;
+  background: transparent;
+  border-top: 2px dotted #999;
+  border-bottom: 2px dotted #999;
   display: flex;
   align-items: center;
 }
@@ -2103,6 +2105,11 @@ footer {
   position: relative;
   border-top: 1px solid rgba(255, 255, 255, 0.03);
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* El carrusel 3D ocupa todo el ancho de la pantalla (sin el max-width del contenedor). */
+.prototypes-carousel .carousel-container {
+  max-width: none;
 }
 
 .prototypes-carousel .section-header h2 {

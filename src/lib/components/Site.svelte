@@ -1071,7 +1071,6 @@
       <div class="section-header">
         <h2>{copy.customTitle}</h2>
         <span></span>
-        <p>{copy.customSubtitle}</p>
       </div>
       <div id="portfolio" class="portfolio-grid">
         {#each filteredPortfolios as project, i}
