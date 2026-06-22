@@ -617,6 +617,7 @@
     color: #000;
     font-weight: 700;
     font-family: serif;
+    font-size: 17px;
   }
 
   .project-web-link {
