@@ -949,7 +949,7 @@
   {/if}
 </header>
 
-<main class:home-warm={section === 'home'}>
+<main class:home-warm={['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}>
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     {#if showWelcomeAdvisor && AdvisorComponent}
       <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />

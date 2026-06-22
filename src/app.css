@@ -354,6 +354,12 @@ p {
    Excepciones: #prototipos-3d (negro, con !important propio) y #contact (oscuro con texto
    blanco) mantienen su fondo; el bloque de cifras conserva su foto (solo reseteamos el
    color de fondo, no la imagen). */
+/* Página COMPLETA de la home en #f7f6f1: lo aplicamos al <html> (el lienzo/viewport
+   entero, no solo el <main>), activado por la clase pre-renderizada del <main> con :has()
+   — sin depender de JS, así no "desaparece". */
+html:has(main.home-warm) {
+  background-color: #f7f6f1;
+}
 main.home-warm {
   background-color: #f7f6f1;
 }
