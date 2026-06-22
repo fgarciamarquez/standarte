@@ -490,6 +490,18 @@
 
 <svelte:window on:scroll|passive={updateScrollState} />
 <header class="site-header static-header">
+  {#if currentCityKey}
+    <!-- Portada de la ciudad-matriz como fondo del header (igual que la página de ciudad). -->
+    <img
+      class="hero-bg-city"
+      src="/img/cover_{currentCityKey}.avif"
+      srcset="/img/cover_{currentCityKey}-mobile.avif 480w, /img/cover_{currentCityKey}-md.avif 640w, /img/cover_{currentCityKey}.avif 800w"
+      sizes="100vw"
+      alt=""
+      aria-hidden="true"
+      fetchpriority="high"
+    />
+  {/if}
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
@@ -549,7 +561,7 @@
     </div>
   </nav>
   
-  <div class="hero-subpage">
+  <div class="hero-subpage" class:on-hero-photo={currentCityKey}>
     <div class="hero-contents feria-hero-contents">
       <h1>{strings.heroTitle(fairDisplayName)}{heroExpStr}</h1>
     </div>
@@ -661,26 +673,19 @@
   .feria-hero-contents {
     text-align: center;
   }
-  /* Header claro: se elimina el bloque opaco oscuro y se adapta nav + título al
-     fondo #f7f6f1 (coherente con el cuerpo de la página de feria). */
+  /* Header de feria: misma portada que la página de su ciudad-matriz (foto de fondo
+     + overlay oscuro vía .hero-bg-city / .hero-subpage.on-hero-photo, reglas globales),
+     con texto blanco. Si la feria no tiene ciudad, queda el fondo oscuro de base. */
   .static-header {
-    background: #f7f6f1 !important;
+    position: relative;
+    background: #16191c;
   }
-  .feria-hero-contents h1 {
-    color: #1a1e21;
+  .static-header .nav {
+    z-index: 2;
   }
-  /* Nav en aspecto oscuro también en estado top (sobre el header claro). */
-  .static-header .brand {
-    background-image: url('/img/logo_stand-arte_negro.svg') !important;
-  }
-  .static-header .nav-links > a,
-  .static-header .nav-links button,
-  .static-header .lang-menu > span {
-    color: #111 !important;
-    text-shadow: none !important;
-  }
-  .static-header .menu-toggle {
-    color: #111 !important;
+  .static-header .hero-subpage {
+    position: relative;
+    z-index: 1;
   }
   .fair-flag-wrapper {
     margin: 1.5rem 0 1rem;
