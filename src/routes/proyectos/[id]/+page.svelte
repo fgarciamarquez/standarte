@@ -565,7 +565,7 @@
 
   /* Breadcrumbs */
   .project-detail-main {
-    background-color: #fff; /* Esquema claro, igual que las páginas de ciudad */
+    background-color: #f7f6f1; /* Esquema claro cálido */
     color: #333;
     padding-bottom: 100px;
     min-height: 100vh;
