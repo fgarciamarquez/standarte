@@ -350,6 +350,17 @@ p {
   padding-top: 0;
 }
 
+/* Home: fondo cálido unificado en el <body> y secciones transparentes para que se vea.
+   Excepciones: #prototipos-3d (negro, con !important propio) y #contact (oscuro con texto
+   blanco) mantienen su fondo; el bloque de cifras conserva su foto (solo reseteamos el
+   color de fondo, no la imagen). */
+body.home-warm {
+  background-color: #f7f6f1;
+}
+body.home-warm .section:not(.contact):not(.prototypes-carousel) {
+  background-color: transparent;
+}
+
 .section > *,
 .section-header,
 footer > * {
