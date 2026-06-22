@@ -180,7 +180,7 @@
   } : {};
 
   const heroLeads = {
-    es: 'Prototipo 3D y su relación con nuestros valores de diseño',
+    es: 'Prototipo 3D',
     en: '3D prototype and its relation to our design values',
     de: '3D-Prototyp und sein Verhältnis zu unseren Designwerten',
     pt: 'Protótipo 3D e sua relação com os nossos valores de design',
