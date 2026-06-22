@@ -176,22 +176,22 @@
 
   .ai-geo-spark { font-size: 0.85em; opacity: 0.85; }
 
-  /* Botón "Expansión": reactiva el panel de Pat. Píldora verde sólida; hereda el
+  /* Botón "Expansión": reactiva el panel de Pat. Píldora dorada sólida; hereda el
      tamaño (padding/font-size) de la variante actual (band o hero). */
   .ai-geo .ai-geo-btn.ai-geo-reactivate {
-    background: #84cc16; /* verde lima */
-    color: #14310a; /* texto oscuro: el lima es claro y necesita contraste */
+    background: #ffc800; /* dorado de marca */
+    color: #1a1e21; /* texto oscuro para contraste sobre el dorado */
     border: 1px solid rgba(0, 0, 0, 0.08);
     font-family: inherit;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(132, 204, 22, 0.4);
+    box-shadow: 0 3px 10px rgba(255, 200, 0, 0.4);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
   .ai-geo .ai-geo-btn.ai-geo-reactivate:hover,
   .ai-geo .ai-geo-btn.ai-geo-reactivate:focus {
-    background: #76b512;
+    background: #e0b000;
     transform: translateY(-1px);
   }
 </style>
