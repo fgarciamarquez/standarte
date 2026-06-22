@@ -71,8 +71,17 @@
 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Protección básica de imágenes: anula el menú contextual (botón derecho) y el
+    // arrastre sobre cualquier <img> de la página (evita "Guardar imagen como" y arrastrar).
+    const blockOnImage = (e) => { if (e.target && e.target.tagName === 'IMG') e.preventDefault(); };
+    document.addEventListener('contextmenu', blockOnImage);
+    document.addEventListener('dragstart', blockOnImage);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('contextmenu', blockOnImage);
+      document.removeEventListener('dragstart', blockOnImage);
     };
   });
 
@@ -528,6 +537,16 @@
     color: #333;
     padding-bottom: 100px;
     min-height: 100vh;
+  }
+
+  /* Protección básica de imágenes: impide arrastrarlas, seleccionarlas y el menú
+     largo-pulsado en móvil. El bloqueo del botón derecho se hace por JS en onMount. */
+  .project-detail-main img,
+  .lightbox-image {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
   }
 
   .breadcrumbs-container {
