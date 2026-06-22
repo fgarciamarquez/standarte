@@ -443,7 +443,9 @@ footer > * {
   transition: all .3s ease-in-out;
 }
 
-.service-grid article:hover .service-icon {
+/* El dorado del icono solo al pasar el ratón sobre el propio icono: hacer hover sobre
+   los textos del artículo (h3/p) no produce ningún comportamiento. */
+.service-grid .service-icon:hover {
   background: var(--gold);
 }
 
