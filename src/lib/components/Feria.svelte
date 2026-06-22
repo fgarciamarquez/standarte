@@ -698,9 +698,10 @@
     min-width: 0;
   }
   .highlight {
+    font-family: 'Fraunces', serif;
     font-size: 1.4rem;
     line-height: 1.6;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 2rem;
   }
   .feria-text p {
