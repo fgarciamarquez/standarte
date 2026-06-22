@@ -1436,6 +1436,13 @@
 <CookieConsent {lang} />
 
 <style>
+  /* Header oscuro de las subpáginas con .static-header (custom/luzpavilion/team): su
+     hero lleva título blanco, así que conservan el fondo #16191c. La propiedad ya no
+     vive en el global .static-header (app.css); se relocaliza aquí, donde se necesita. */
+  .static-header {
+    background: #16191c !important;
+  }
+
   /* Galería y ciudades: ocultar elementos extra sin sacarlos del DOM (SEO + descarga diferida) */
   .gallery-hidden,
   .cities-hidden {
