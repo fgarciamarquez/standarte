@@ -900,8 +900,8 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background: #16a34a;
-    color: #fff;
+    background: #ffc800;
+    color: #1a1e21;
     font-family: 'Inconsolata', monospace;
     font-size: 11px;
     font-weight: 700;
@@ -910,7 +910,7 @@
     padding: 4px 11px;
     border-radius: 20px;
     white-space: nowrap;
-    box-shadow: 0 2px 6px rgba(22, 163, 74, 0.28);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   }
   .advisor-free-badge::before {
     content: '✓';
@@ -1245,7 +1245,7 @@
     transition: transform 0.2s ease;
   }
   .advisor-active-toggle input:checked + .advisor-active-track {
-    background: #16a34a;
+    background: #ffc800;
   }
   .advisor-active-toggle input:checked + .advisor-active-track .advisor-active-thumb {
     transform: translateX(20px);
