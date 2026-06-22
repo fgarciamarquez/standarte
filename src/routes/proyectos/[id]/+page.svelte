@@ -648,8 +648,9 @@
   }
 
   .values-content :global(strong) {
-    color: var(--gold);
-    font-weight: 600;
+    color: #000;
+    font-weight: 700;
+    font-family: serif;
   }
 
   .project-web-link {
