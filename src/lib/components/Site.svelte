@@ -766,8 +766,9 @@
   <meta name="googlebot" content="index, follow" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
-  {#if animatedHero || section === 'contact' || section === 'services'}
-    <!-- Preload de la imagen de fondo del hero (LCP) — incluye home Y páginas de ciudad. -->
+  {#if (animatedHero && !isCityPage) || section === 'contact' || section === 'services'}
+    <!-- Preload del fondo del hero (LCP) en home/servicios. Las ciudades usan su <img>
+         de portada con fetchpriority=high (auto-descubrible), no necesitan este preload. -->
     <link
       rel="preload"
       as="image"
@@ -804,7 +805,18 @@
 <svelte:window on:keydown={handleKeydown} on:scroll|passive={updateScrollState} />
 
 <header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services' && !animatedHero} class:hero-anim={animatedHero}>
-  {#if animatedHero}
+  {#if isCityPage && !section.startsWith('montaje_')}
+    <!-- Páginas de ciudad: la portada de la ciudad como fondo del header (responsive). -->
+    <img
+      class="hero-bg-city"
+      src="/img/cover_{section}.avif"
+      srcset="/img/cover_{section}-mobile.avif 480w, /img/cover_{section}-md.avif 640w, /img/cover_{section}.avif 800w"
+      sizes="100vw"
+      alt=""
+      aria-hidden="true"
+      fetchpriority="high"
+    />
+  {:else if animatedHero}
     <div class="hero-bg-layer hero-bg-a" aria-hidden="true"></div>
     <div class="hero-bg-layer hero-bg-b" aria-hidden="true"></div>
   {/if}

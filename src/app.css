@@ -104,6 +104,18 @@ p {
   background-image: image-set(url('/img/hero-area.avif') type('image/avif'), url('/img/hero-area.webp') type('image/webp'));
   animation: heroPanB 40s ease-in-out infinite;
 }
+/* Páginas de ciudad: portada de la ciudad como fondo del header (foto estática,
+   responsive con object-fit; el overlay .on-hero-photo la oscurece para el texto). */
+.hero-bg-city {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
 .site-header.hero-anim .hero { position: relative; z-index: 1; } /* contenido por encima de las capas */
 .site-header.hero-anim .hero-subpage { position: relative; z-index: 1; }
 /* Ciudades matriz: mismo fondo animado que la home, con overlay translúcido para
