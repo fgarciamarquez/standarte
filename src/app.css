@@ -832,7 +832,7 @@ article:hover .city-cover-image,
   margin-right: 0;
   overflow: hidden;
   color: #000;
-  background: #f8f9fa;
+  background: greenyellow;
   display: flex;
   align-items: center;
 }
