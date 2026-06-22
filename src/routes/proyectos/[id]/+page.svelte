@@ -351,7 +351,7 @@
       <div class="project-meta-top">
         <span class="location-badge">{project.location}</span>
       </div>
-      <h1>{project.name}</h1>
+      <h1>{project.title[lang] || project.title.es}</h1>
       <p class="hero-lead">
         {heroLeads[lang] || heroLeads.es}
       </p>
@@ -379,7 +379,6 @@
   <article class="project-container">
     <!-- Carta del Valor de Diseño y Textos -->
     <div class="values-card">
-      <h2>{project.title[lang] || project.title.es}</h2>
       <div class="values-content">
         {@html project.valuesText[lang] || project.valuesText.es}
       </div>
