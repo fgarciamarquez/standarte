@@ -489,17 +489,21 @@
   }
 
   .breadcrumbs a {
-    color: #777;
+    color: #1a73e8;
     transition: color 0.2s ease;
   }
 
   .breadcrumbs a:hover {
-    color: var(--gold);
+    color: #1558b0;
   }
 
   .breadcrumbs .current {
-    color: #333;
+    color: #d32f2f;
     font-weight: 700;
+  }
+
+  .breadcrumbs .divider {
+    color: #c2c2c2;
   }
 
   /* Contenedor del Artículo */
