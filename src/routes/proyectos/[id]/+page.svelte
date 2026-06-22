@@ -2,7 +2,6 @@
   import { onMount } from 'svelte';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
-  import AiSourceButtons from '$lib/components/AiSourceButtons.svelte';
 
 
 
@@ -457,8 +456,6 @@
     </div>
   {/if}
 </main>
-
-<AiSourceButtons {lang} />
 
 <footer>
   <div class="footer-layout">
