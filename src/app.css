@@ -2224,7 +2224,7 @@ footer {
 
 .carousel-card-inner {
   display: block;
-  background-color: #16191c;
+  background-color: transparent;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
