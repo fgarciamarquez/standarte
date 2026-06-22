@@ -661,6 +661,27 @@
   .feria-hero-contents {
     text-align: center;
   }
+  /* Header claro: se elimina el bloque opaco oscuro y se adapta nav + título al
+     fondo #f7f6f1 (coherente con el cuerpo de la página de feria). */
+  .static-header {
+    background: #f7f6f1 !important;
+  }
+  .feria-hero-contents h1 {
+    color: #1a1e21;
+  }
+  /* Nav en aspecto oscuro también en estado top (sobre el header claro). */
+  .static-header .brand {
+    background-image: url('/img/logo_stand-arte_negro.svg') !important;
+  }
+  .static-header .nav-links > a,
+  .static-header .nav-links button,
+  .static-header .lang-menu > span {
+    color: #111 !important;
+    text-shadow: none !important;
+  }
+  .static-header .menu-toggle {
+    color: #111 !important;
+  }
   .fair-flag-wrapper {
     margin: 1.5rem 0 1rem;
     display: flex;
