@@ -360,6 +360,12 @@ body.home-warm {
 body.home-warm .section:not(.contact):not(.prototypes-carousel) {
   background-color: transparent;
 }
+/* En la home: línea fina de separación sobre el #contact y padding superior de 80px
+   (en ciudades el #contact.contact-light va pegado arriba con padding-top: 0). */
+body.home-warm #contact {
+  padding-top: 80px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
 
 .section > *,
 .section-header,
