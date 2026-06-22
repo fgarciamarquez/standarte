@@ -372,6 +372,11 @@ main.home-warm #contact {
   padding-top: 80px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+/* En la home (solo aquí): el formulario no muestra la foto/nombre/cargo de Patricia.
+   En las páginas de ciudad sí se mantiene. */
+main.home-warm #contact .contact-person {
+  display: none;
+}
 
 .section > *,
 .section-header,
