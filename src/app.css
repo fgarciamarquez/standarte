@@ -364,12 +364,10 @@ html:has(.project-detail-main),
 html:has(.dedicated-seo-page) {
   background-color: #f7f6f1;
 }
-/* En páginas de ciudad, el panel de Pat sin "capa blanca": tarjeta transparente,
-   sin borde ni sombra, para que quede directamente sobre el lienzo #f7f6f1. */
-html:has(.dedicated-seo-page) .welcome-advisor-card {
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
+/* En páginas de ciudad el <body> es blanco y tapa el lienzo: la capa que se ve bajo el
+   panel de Pat. La igualamos a #f7f6f1 (la tarjeta de Pat se mantiene visible). */
+html:has(.dedicated-seo-page) body {
+  background-color: #f7f6f1;
 }
 main.home-warm {
   background-color: #f7f6f1;
