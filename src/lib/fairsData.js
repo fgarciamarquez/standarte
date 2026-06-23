@@ -845,5 +845,40 @@ export const fairsData = [
     "slug": "decorhotel-batalha",
     "city": "Batalha",
     "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Ovibeja",
+    "country": "pt",
+    "slug": "ovibeja-beja",
+    "city": "Beja",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Fatacil",
+    "country": "pt",
+    "slug": "fatacil-lagoa",
+    "city": "Lagoa",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Faceco",
+    "country": "pt",
+    "slug": "faceco-moncarapacho",
+    "city": "Moncarapacho",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feira de São Martinho",
+    "country": "pt",
+    "slug": "feira-de-sao-martinho-portimao",
+    "city": "Portimão",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feira d'Aires",
+    "country": "pt",
+    "slug": "feira-daires-viana-do-alentejo",
+    "city": "Viana do Alentejo",
+    "sector": "Multisectorial y Profesional"
   }
 ];

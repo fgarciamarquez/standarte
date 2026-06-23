@@ -131,6 +131,11 @@ export const jaFairSlugs = {
   "stone-iberica-batalha": "ストーンイベリカ-バターリャ",
   "vidrotec-batalha": "ビドロテック-バターリャ",
   "decorhotel-batalha": "デコールホテル-バターリャ",
+  "ovibeja-beja": "オビベハ-ベジャ",
+  "fatacil-lagoa": "ファタシル-ラゴア",
+  "faceco-moncarapacho": "ファセコ-モンカラパショ",
+  "feira-de-sao-martinho-portimao": "サンマルティーニョ祭-ポルティマン",
+  "feira-daires-viana-do-alentejo": "アイレス祭-ヴィアナ・ド・アレンテージョ",
 };
 
 /** id de proyecto (latino) -> slug japonés */

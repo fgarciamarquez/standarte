@@ -237,7 +237,8 @@
     'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
     'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco',
     'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha',
-    'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia'
+    'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia',
+    'Beja': 'portugal-sur', 'Lagoa': 'portugal-sur', 'Moncarapacho': 'portugal-sur', 'Portimão': 'portugal-sur', 'Viana do Alentejo': 'portugal-sur'
   };
   const clusterT = {
     es: { related: 'Ferias relacionadas', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
@@ -454,6 +455,9 @@
   $: pillarCityRaw = pillarSection ? (PILLAR_CITY[pillarSection] || fair.city) : fair.city;
   $: pillarCityLoc = (cities[lang] && cities[lang][pillarCityRaw]) ? cities[lang][pillarCityRaw] : pillarCityRaw;
   $: fairRegion = CITY_REGION[fair.city];
+  // Portada del header: ciudad-matriz si la tiene; si no, portada del clúster regional
+  // (Portugal Sur usa cover_portugal_sur). Resto sin portada -> header oscuro.
+  $: coverKey = currentCityKey || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
   $: siblingFairs = fairRegion
     ? fairsData.filter((f) => f.slug !== fair.slug && CITY_REGION[f.city] === fairRegion).slice(0, 12)
     : [];
@@ -489,12 +493,12 @@
 
 <svelte:window on:scroll|passive={updateScrollState} />
 <header class="site-header static-header">
-  {#if currentCityKey}
-    <!-- Portada de la ciudad-matriz como fondo del header (igual que la página de ciudad). -->
+  {#if coverKey}
+    <!-- Portada del header: ciudad-matriz o portada del clúster regional (Portugal Sur). -->
     <img
       class="hero-bg-city"
-      src="/img/cover_{currentCityKey}.avif"
-      srcset="/img/cover_{currentCityKey}-mobile.avif 480w, /img/cover_{currentCityKey}-md.avif 640w, /img/cover_{currentCityKey}.avif 800w"
+      src="/img/cover_{coverKey}.avif"
+      srcset="/img/cover_{coverKey}-mobile.avif 480w, /img/cover_{coverKey}-md.avif 640w, /img/cover_{coverKey}.avif 800w"
       sizes="100vw"
       alt=""
       aria-hidden="true"
@@ -560,7 +564,7 @@
     </div>
   </nav>
   
-  <div class="hero-subpage" class:on-hero-photo={currentCityKey}>
+  <div class="hero-subpage" class:on-hero-photo={coverKey}>
     <div class="hero-contents feria-hero-contents">
       <h1>{strings.heroTitle(fairDisplayName)}{heroExpStr}</h1>
     </div>
