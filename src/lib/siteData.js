@@ -1,4 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
+import { jaFairSlugs, jaFairSlugsReverse } from '$lib/jaSlugs.js';
 export const languages = ['es', 'pt', 'en', 'de', 'fr', 'it', 'nl', 'zh', 'hi', 'ko', 'ja'];
 
 export const languageLabels = {
@@ -2724,6 +2725,23 @@ export function pathFor(lang, section = 'home') {
   return `${prefix}${slug ? `/${slug}` : '/'}`;
 }
 
+// --- Ferias: segmento y slug por idioma -------------------------------------
+// El detalle de feria es /{lang}/{segmento}/{slug}. Para `ja` el segmento es
+// 展示会情報 (japonés nativo) y el slug se traduce (jaFairSlugs); el resto de
+// idiomas mantienen el segmento 'ferias' y el slug latino compartido.
+export function fairSegment(lang) {
+  return lang === 'ja' ? (routes.ja.ferias || 'ferias') : 'ferias';
+}
+/** slug latino de feria -> slug a usar en la URL para ese idioma */
+export function getFairSlug(slug, lang) {
+  return (lang === 'ja' && jaFairSlugs[slug]) || slug;
+}
+/** URL relativa del detalle de una feria (a partir del slug latino). */
+export function fairUrl(slug, lang) {
+  const prefix = lang === 'es' ? '' : `/${lang}`;
+  return `${prefix}/${fairSegment(lang)}/${getFairSlug(slug, lang)}`;
+}
+
 export function findRoute(path) {
   const clean = (path || '').replace(/^\/+|\/+$/g, '');
   if (clean === '') return { lang: 'es', section: 'home' };
@@ -2731,7 +2749,16 @@ export function findRoute(path) {
   const maybeLang = languages.includes(parts[0]) ? parts.shift() : 'es';
   const slug = parts.join('/');
   const langRoutes = routes[maybeLang] || routes.es;
-  if (slug.startsWith('ferias/')) { return { lang: maybeLang, section: 'feria', fairSlug: slug.substring(7) }; }
+  // Detalle de feria: acepta el segmento del idioma (ja: 展示会情報) y, por compat,
+  // el 'ferias' antiguo. El fairSlug devuelto es siempre el latino (clave de datos).
+  const seg = fairSegment(maybeLang);
+  for (const candidate of [seg, 'ferias']) {
+    if (slug.startsWith(candidate + '/')) {
+      const raw = slug.substring(candidate.length + 1);
+      const fairSlug = (maybeLang === 'ja' ? (jaFairSlugsReverse[raw] || raw) : raw);
+      return { lang: maybeLang, section: 'feria', fairSlug };
+    }
+  }
   const section = Object.keys(langRoutes).find((key) => langRoutes[key] === slug) || 'home';
   return { lang: maybeLang, section };
 }
@@ -2740,19 +2767,15 @@ export function resolveRoute(path) {
   const { lang, section, fairSlug } = findRoute(path);
   const c = copy[lang] || copy.es;
   // Las ferias no son una clave de routes, así que pathFor(lang,'feria') devolvería
-  // la home: su canónica debe ser su propia URL /ferias/<slug> (igual que su hreflang).
-  const prefix = lang === 'es' ? '' : `/${lang}`;
+  // la home: su canónica debe ser su propia URL de feria (igual que su hreflang).
   const canonical = (section === 'feria' && fairSlug)
-    ? `https://standarte.es${prefix}/ferias/${fairSlug}`
+    ? `https://standarte.es${fairUrl(fairSlug, lang)}`
     : `https://standarte.es${pathFor(lang, section)}`;
   return { lang, section, fairSlug, copy: c, canonical };
 }
 
 export const prerenderEntries = languages.flatMap((lang) => {
   const normalRoutes = Object.keys(routes[lang]).map((section) => ({ path: pathFor(lang, section).replace(/^\/|\/$/g, '') }));
-  const fairRoutes = fairsData.map(fair => {
-    const prefix = lang === 'es' ? '' : `${lang}/`;
-    return { path: `${prefix}ferias/${fair.slug}` };
-  });
+  const fairRoutes = fairsData.map((fair) => ({ path: fairUrl(fair.slug, lang).replace(/^\//, '') }));
   return [...normalRoutes, ...fairRoutes];
 }).filter((entry) => entry.path !== '');

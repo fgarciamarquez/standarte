@@ -2,7 +2,7 @@
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
-  import { languages, languageLabels, pathFor, cityData, portfolios } from '$lib/siteData.js';
+  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl } from '$lib/siteData.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
@@ -329,7 +329,7 @@
   $: regionFairs = SECTION_REGION[section]
     ? fairItems.filter((f) => FAIR_CITY_REGION[f.city] === SECTION_REGION[section])
     : [];
-  $: fairHrefSite = (slug) => (lang === 'es' ? `/ferias/${slug}` : `/${lang}/ferias/${slug}`);
+  $: fairHrefSite = (slug) => fairUrl(slug, lang);
 
   $: title = seoContent?.title || (section in cityData
     ? `${cityTitle(section)} | Standarte`
@@ -1010,7 +1010,7 @@
             <div class="lisbon-fairs-group" aria-hidden={group === 1}>
               {#each fairItems as fair, index}
                 {#if group === 0}
-                  <a href={`/ferias/${fair.slug}`} class="lisbon-fair-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="text-decoration:none; color:inherit;">
+                  <a href={fairUrl(fair.slug, lang)} class="lisbon-fair-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="text-decoration:none; color:inherit;">
                     <meta itemprop="position" content={index + 1} />
                     <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
                     <span class="lisbon-fair-copy">
@@ -1019,7 +1019,7 @@
                     </span>
                   </a>
                 {:else}
-                  <a href={`/ferias/${fair.slug}`} class="lisbon-fair-item" tabindex="-1" aria-hidden="true" style="text-decoration:none; color:inherit;">
+                  <a href={fairUrl(fair.slug, lang)} class="lisbon-fair-item" tabindex="-1" aria-hidden="true" style="text-decoration:none; color:inherit;">
                     <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
                     <span class="lisbon-fair-copy">
                       <strong>{fair.name}</strong>

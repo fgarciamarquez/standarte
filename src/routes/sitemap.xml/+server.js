@@ -1,5 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
-import { languages, routes, pathFor, portfolios } from '$lib/siteData.js';
+import { languages, routes, pathFor, portfolios, fairUrl } from '$lib/siteData.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import news from '$lib/newsData.json';
 
@@ -85,13 +85,13 @@ export async function GET() {
   fairsData.forEach((fair) => {
     const alternates = languages.map((altLang) => ({
       hreflang: altLang,
-      href: `${siteUrl}${altLang === 'es' ? '' : `/${altLang}`}/ferias/${fair.slug}`
+      href: `${siteUrl}${fairUrl(fair.slug, altLang)}`
     }));
-    alternates.push({ hreflang: 'x-default', href: `${siteUrl}/ferias/${fair.slug}` });
+    alternates.push({ hreflang: 'x-default', href: `${siteUrl}${fairUrl(fair.slug, 'es')}` });
 
     languages.forEach((lang) => {
       urls.push({
-        loc: `${siteUrl}${lang === 'es' ? '' : `/${lang}`}/ferias/${fair.slug}`,
+        loc: `${siteUrl}${fairUrl(fair.slug, lang)}`,
         changefreq: 'monthly',
         priority: '0.7',
         alternates

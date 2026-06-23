@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels, routes, cityData } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, routes, cityData, fairUrl } from '$lib/siteData.js';
   import ContactForm from './ContactForm.svelte';
 
   // Navegación entre ciudades matriz (módulo del aside).
@@ -457,7 +457,7 @@
   $: siblingFairs = fairRegion
     ? fairsData.filter((f) => f.slug !== fair.slug && CITY_REGION[f.city] === fairRegion).slice(0, 12)
     : [];
-  $: fairHref = (slug) => (lang === 'es' ? `/ferias/${slug}` : `/${lang}/ferias/${slug}`);
+  $: fairHref = (slug) => fairUrl(slug, lang);
   $: venue = VENUE_BY_CITY[fair.city] || null;
   $: venueText = venue ? ((venueLine[lang] || venueLine.es)(venue, localizedCity)) : null;
 </script>
@@ -469,9 +469,9 @@
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
   {#each languages as alternateLang}
-    <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es${alternateLang === 'es' ? '' : `/${alternateLang}`}/ferias/${fair.slug}`} />
+    <link rel="alternate" hreflang={alternateLang} href={`https://standarte.es${fairUrl(fair.slug, alternateLang)}`} />
   {/each}
-  <link rel="alternate" hreflang="x-default" href={`https://standarte.es/ferias/${fair.slug}`} />
+  <link rel="alternate" hreflang="x-default" href={`https://standarte.es${fairUrl(fair.slug, 'es')}`} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Standarte" />
   <meta property="og:title" content={seoTitle} />
@@ -509,7 +509,7 @@
         <div>
           {#each languages as option}
             <a
-              href={option === 'es' ? `/ferias/${fair.slug}` : `/${option}/ferias/${fair.slug}`}
+              href={fairUrl(fair.slug, option)}
               class:active={option === lang}
               on:click={() => {
                 if (typeof localStorage !== 'undefined') {
@@ -537,7 +537,7 @@
         <div>
           {#each languages as option}
             <a
-              href={option === 'es' ? `/ferias/${fair.slug}` : `/${option}/ferias/${fair.slug}`}
+              href={fairUrl(fair.slug, option)}
               class:active={option === lang}
               on:click={() => {
                 if (typeof localStorage !== 'undefined') {
