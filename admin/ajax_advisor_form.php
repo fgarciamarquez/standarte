@@ -36,6 +36,17 @@ $nombre     = adv_post('form_nombre');
 $email      = adv_post('form_email');
 $feria      = adv_post('form_feria');
 $privacidad = adv_post('form_privacidad');
+$url        = adv_post('form_url');
+$website    = adv_post('form_website'); // honeypot anti-spam (debe llegar vacío)
+$elapsed    = (int) adv_post('form_elapsed', '0'); // ms desde que se mostró el formulario
+
+/* ---------- Anti-spam (honeypot + tiempo mínimo) ---------- */
+/* Descarte SILENCIOSO (acuse "success" para no dar pistas al bot) si el campo
+   trampa viene relleno o el formulario se envió antes de 2,5 s (no humano). */
+if ($website !== '' || $elapsed < 2500) {
+	echo json_encode(array('error' => 'success', 'msg' => 'OK'));
+	exit;
+}
 
 /* ---------- Validación en servidor ---------- */
 if ($privacidad !== '1') {
@@ -53,6 +64,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 $nombre_safe = htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
 $feria_safe  = htmlspecialchars($feria, ENT_QUOTES, 'UTF-8');
+$url_safe    = htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
 
 /* ---------- Textos del acuse de recibo (11 idiomas) ---------- */
 $emails = array(
@@ -194,6 +206,7 @@ $notify_html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 	. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Email:</td><td style='padding:8px;border-bottom:1px solid #eee;'><a href='mailto:" . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "</a></td></tr>"
 	. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Feria / ciudad:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . $feria_safe . "</td></tr>"
 	. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Idioma:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') . "</td></tr>"
+		. ($url_safe !== '' ? "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Página de origen:</td><td style='padding:8px;border-bottom:1px solid #eee;'><a href='" . $url_safe . "'>" . $url_safe . "</a></td></tr>" : "")
 	. "</table>"
 	. "<p style='margin-top:18px;font-size:13px;color:#777;'>Contacto generado desde el asesor interactivo (Pat). NO pasa por el filtrado de presupuesto. Se ha enviado un acuse de recibo al visitante.</p>"
 	. "</div></body></html>";

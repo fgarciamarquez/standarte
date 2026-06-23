@@ -22,6 +22,11 @@
   let privacyAccepted = false;
   let status = 'idle'; // 'idle', 'sending', 'success', 'error'
   let statusMessage = '';
+  // URL de origen: la página desde la que el visitante rellena el formulario.
+  let sourceUrl = '';
+  // Anti-spam: honeypot (debe quedar vacío) + marca de tiempo para descartar envíos instantáneos.
+  let honeypot = '';
+  let mountTime = 0;
 
   // ─── Ciudades disponibles: DATA-DRIVEN ──────────────────────────────────
   // Se derivan de cityData + fairsData para que cualquier ciudad/feria nueva
@@ -501,6 +506,8 @@
   }
 
   onMount(() => {
+    if (typeof window !== 'undefined') sourceUrl = window.location.href;
+    mountTime = Date.now();
     // Pre-initialize AudioContext and preload buffers immediately when advisor is mounted
     try {
       const ctx = getAudioContext();
@@ -586,6 +593,9 @@
     formData.append('form_nombre', name);
     formData.append('form_email', email);
     formData.append('form_feria', `${selectedFair} (${selectedCityName})`);
+    formData.append('form_url', sourceUrl || (typeof window !== 'undefined' ? window.location.href : ''));
+    formData.append('form_website', honeypot);
+    formData.append('form_elapsed', String(mountTime ? Date.now() - mountTime : 0));
     formData.append('form_privacidad', '1');
 
     try {
@@ -718,6 +728,12 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
       <form class="advisor-mini-form" on:submit={handleSubmit} on:click={handlePrivacyClick} transition:slide={{ duration: 400 }}>
+        <input type="hidden" name="form_url" bind:value={sourceUrl} />
+        <!-- Honeypot anti-spam: oculto a humanos; si un bot lo rellena, se descarta el envío. -->
+        <div class="advisor-hp" aria-hidden="true">
+          <label for="adv_website">No rellenar este campo</label>
+          <input id="adv_website" type="text" name="form_website" tabindex="-1" autocomplete="off" bind:value={honeypot} />
+        </div>
         <div class="advisor-form-row">
           <div class="advisor-form-group">
             <label for="adv_nombre" class="advisor-form-label">{t.namePlaceholder}</label>
@@ -1070,6 +1086,15 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+
+  /* Honeypot: fuera de pantalla, sin afectar al layout ni ser visible/enfocable. */
+  .advisor-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   .advisor-form-row {
