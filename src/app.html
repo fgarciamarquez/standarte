@@ -43,40 +43,6 @@
         }
       })();
     </script>
-    <script>
-      // Fuente por idioma (ja/zh/ko/hi). Se marca el idioma activo en <html data-lang>
-      // cuanto antes (para aplicar fuente-fallback y colores sin parpadeo) y la hoja de
-      // la fuente se carga TRAS el pintado completo y SOLO para el idioma en uso, fuera
-      // del critical path (máximo rendimiento). window.__applyLangFont permite además
-      // reaplicarla en los cambios de idioma en cliente (p. ej. proyectos con ?lang=).
-      (function () {
-        var FAMILY = {
-          ja: 'WDXL+Lubrifont+JP+N',
-          zh: 'ZCOOL+QingKe+HuangYou',
-          ko: 'Do+Hyeon',
-          hi: 'Rozha+One'
-        };
-        function loadSheet(lang) {
-          if (!FAMILY[lang] || document.querySelector('link[data-langfont="' + lang + '"]')) return;
-          var l = document.createElement('link');
-          l.rel = 'stylesheet';
-          l.href = 'https://fonts.googleapis.com/css2?family=' + FAMILY[lang] + '&display=swap';
-          l.setAttribute('data-langfont', lang);
-          document.head.appendChild(l);
-        }
-        window.__applyLangFont = function (lang) {
-          var root = document.documentElement;
-          if (!FAMILY[lang]) { root.removeAttribute('data-lang'); return; }
-          root.setAttribute('data-lang', lang);
-          if (document.readyState === 'complete') loadSheet(lang);
-          else window.addEventListener('load', function () { loadSheet(lang); }, { once: true });
-        };
-        var m = location.pathname.match(/^\/(ja|zh|ko|hi)(\/|$)/);
-        var lang = m ? m[1] : null;
-        if (!lang) { try { lang = new URLSearchParams(location.search).get('lang'); } catch (e) {} }
-        if (lang && FAMILY[lang]) window.__applyLangFont(lang);
-      })();
-    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />

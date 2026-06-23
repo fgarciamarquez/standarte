@@ -3052,40 +3052,4 @@ p b {
   }
 }
 
-/* ===== Fuentes por idioma (CJK + Devanagari) =================================
-   El idioma activo se marca con <html data-lang="…"> desde app.html (la hoja de la
-   fuente se carga diferida y solo para ese idioma). Cada fuente tiene una sola pesa,
-   así que se aplica a todo el texto; la negrita se distingue en rojo y los enlaces de
-   contenido en azul. Fallbacks del sistema mientras carga la webfont (display:swap). */
-html[data-lang="ja"] body,
-html[data-lang="ja"] body * {
-  font-family: 'WDXL Lubrifont JP N', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif !important;
-}
-html[data-lang="zh"] body,
-html[data-lang="zh"] body * {
-  font-family: 'ZCOOL QingKe HuangYou', 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
-}
-html[data-lang="ko"] body,
-html[data-lang="ko"] body * {
-  font-family: 'Do Hyeon', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif !important;
-}
-html[data-lang="hi"] body,
-html[data-lang="hi"] body * {
-  font-family: 'Rozha One', 'Nirmala UI', 'Mangal', serif !important;
-}
-/* Sin variante negrita: negrita -> rojo. */
-html[data-lang="ja"] :is(strong, b),
-html[data-lang="zh"] :is(strong, b),
-html[data-lang="ko"] :is(strong, b),
-html[data-lang="hi"] :is(strong, b) {
-  color: #d32f2f !important;
-}
-/* Enlaces de contenido -> azul (no toca nav, botones .btn ni la marca). */
-html[data-lang="ja"] :is(p, li, td, dd, blockquote) a,
-html[data-lang="zh"] :is(p, li, td, dd, blockquote) a,
-html[data-lang="ko"] :is(p, li, td, dd, blockquote) a,
-html[data-lang="hi"] :is(p, li, td, dd, blockquote) a {
-  color: #1a73e8 !important;
-}
-
 
