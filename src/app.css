@@ -3071,7 +3071,7 @@ html[data-lang="ko"] body * {
 }
 html[data-lang="hi"] body,
 html[data-lang="hi"] body * {
-  font-family: 'Rozha Uno', 'Nirmala UI', 'Mangal', serif !important;
+  font-family: 'Rozha One', 'Nirmala UI', 'Mangal', serif !important;
 }
 /* Sin variante negrita: negrita -> rojo. */
 html[data-lang="ja"] :is(strong, b),
