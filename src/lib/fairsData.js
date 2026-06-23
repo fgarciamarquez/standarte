@@ -850,35 +850,35 @@ export const fairsData = [
     "name": "Ovibeja",
     "country": "pt",
     "slug": "ovibeja-beja",
-    "city": "Beja",
+    "city": "Portugal Sur",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Fatacil",
     "country": "pt",
     "slug": "fatacil-lagoa",
-    "city": "Lagoa",
+    "city": "Portugal Sur",
     "sector": "Multisectorial y Profesional"
   },
   {
     "name": "Faceco",
     "country": "pt",
     "slug": "faceco-moncarapacho",
-    "city": "Moncarapacho",
+    "city": "Portugal Sur",
     "sector": "Multisectorial y Profesional"
   },
   {
     "name": "Feira de São Martinho",
     "country": "pt",
     "slug": "feira-de-sao-martinho-portimao",
-    "city": "Portimão",
+    "city": "Portugal Sur",
     "sector": "Multisectorial y Profesional"
   },
   {
     "name": "Feira d'Aires",
     "country": "pt",
     "slug": "feira-daires-viana-do-alentejo",
-    "city": "Viana do Alentejo",
+    "city": "Portugal Sur",
     "sector": "Multisectorial y Profesional"
   }
 ];

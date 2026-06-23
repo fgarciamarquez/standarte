@@ -223,13 +223,13 @@
     'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa', 'Oporto': 'oporto', 'Valencia': 'valencia', 'Mallorca': 'mallorca', 'Vigo': 'vigo', 'Batalha': 'batalha',
     'Málaga': 'malaga', 'Badajoz': 'badajoz', 'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real', 'Zaragoza': 'zaragoza',
     'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
-    'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz'
+    'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz', 'Portugal Sur': 'portugal_sur'
   };
   // Ciudad mostrada para el enlace al pilar (la del pilar, no la de la feria, para que el anchor coincida con el destino).
   const PILLAR_CITY = {
     madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', lisboa: 'Lisboa', oporto: 'Oporto', valencia: 'Valencia', mallorca: 'Mallorca', vigo: 'Vigo', batalha: 'Batalha', malaga: 'Málaga',
     badajoz: 'Badajoz', sevilla: 'Sevilla', ciudad_real: 'Ciudad Real', zaragoza: 'Zaragoza',
-    montaje_don_benito: 'Don Benito', montaje_zafra: 'Zafra'
+    montaje_don_benito: 'Don Benito', montaje_zafra: 'Zafra', portugal_sur: 'Portugal Sur'
   };
   // Región para agrupar ferias hermanas (define la densidad del clúster; Extremadura es la prioridad).
   const CITY_REGION = {
@@ -238,7 +238,7 @@
     'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco',
     'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha',
     'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia',
-    'Beja': 'portugal-sur', 'Lagoa': 'portugal-sur', 'Moncarapacho': 'portugal-sur', 'Portimão': 'portugal-sur', 'Viana do Alentejo': 'portugal-sur'
+    'Portugal Sur': 'portugal-sur'
   };
   const clusterT = {
     es: { related: 'Ferias relacionadas', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },

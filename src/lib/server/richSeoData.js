@@ -4409,5 +4409,194 @@ export const richSeoData = {
         }
       ]
     }
+  },
+  "portugal_sur": {
+    "es": {
+      "breadcrumb": "Portugal Sur",
+      "title": "Diseño y montaje de stands en el Sur de Portugal | Standarte",
+      "h1": "Diseño y montaje de stands en el Sur de Portugal",
+      "introText": "<p>Standarte diseña y monta stands a medida en el Alentejo y el Algarve, las dos grandes regiones del sur de Portugal. Con más de 20 años de experiencia y taller propio, ofrecemos un servicio llave en mano que cubre desde el diseño 3D hasta el montaje final en cualquier recinto ferial de la región.</p>",
+      "body": "\n        <h2>Las grandes ferias del sur de Portugal</h2>\n        <p>El sur de Portugal concentra algunas de las ferias más relevantes del país, donde la presencia de constructores especializados es escasa. Standarte trabaja en certámenes como OVIBEJA (Beja), referente agroalimentario y ganadero del Alentejo; FATACIL (Lagoa), la gran feria multisectorial del Algarve; FACECO (Moncarapacho, Olhão); la Feira de São Martinho (Portimão); y la Feira d'Aires (Viana do Alentejo). En todas ellas aportamos un stand profesional que destaca frente a la competencia local.</p>\n        <h2>Montaje llave en mano en el Alentejo y el Algarve</h2>\n        <p>Gestionamos cada proyecto de principio a fin desde nuestro taller propio: diseño 3D, fabricación de la estructura y el mobiliario, logística hasta el recinto, montaje e instalación, y gestión de las validaciones técnicas que exige cada feria. Esta integración nos permite garantizar plazos y calidad en toda la región, sin depender de proveedores externos, y ofrecer un acabado coherente con la imagen de cada expositor.</p>\n      ",
+      "faqs": [
+        {
+          "question": "¿En qué ferias del sur de Portugal monta stands Standarte?",
+          "answer": "Trabajamos en las principales ferias del Alentejo y el Algarve, como OVIBEJA en Beja, FATACIL en Lagoa, FACECO en Olhão, la Feira de São Martinho en Portimão y la Feira d'Aires en Viana do Alentejo, además de cualquier otro recinto de la región."
+        },
+        {
+          "question": "¿El servicio en el sur de Portugal es llave en mano?",
+          "answer": "Sí. Nos encargamos del diseño 3D, la fabricación en nuestro taller, la logística, el montaje y las validaciones técnicas, de modo que el expositor solo tiene que ocuparse de su producto y de atender a sus visitantes."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Southern Portugal",
+      "title": "Exhibition stand design and build in Southern Portugal | Standarte",
+      "h1": "Exhibition stand design and build in Southern Portugal",
+      "introText": "<p>Standarte designs and builds custom exhibition stands across the Alentejo and the Algarve, the two great regions of southern Portugal. With more than 20 years of experience and our own workshop, we offer a turnkey service that covers everything from 3D design to final installation at any exhibition venue in the region.</p>",
+      "body": "\n        <h2>The major trade fairs of southern Portugal</h2>\n        <p>Southern Portugal is home to some of the country's most important trade fairs, in a region where specialised stand builders are scarce. Standarte works at events such as OVIBEJA (Beja), the leading agri-food and livestock fair of the Alentejo; FATACIL (Lagoa), the great multi-sector fair of the Algarve; FACECO (Moncarapacho, Olhão); the Feira de São Martinho (Portimão); and the Feira d'Aires (Viana do Alentejo). At every one of them we deliver a professional stand that stands out from the local competition.</p>\n        <h2>Turnkey stand building in the Alentejo and the Algarve</h2>\n        <p>We manage each project from start to finish from our own workshop: 3D design, manufacturing of the structure and furniture, logistics to the venue, assembly and installation, and the technical approvals that each fair requires. This integration lets us guarantee deadlines and quality throughout the region, without relying on external suppliers, and deliver a finish that is consistent with each exhibitor's brand.</p>\n      ",
+      "faqs": [
+        {
+          "question": "At which trade fairs in southern Portugal does Standarte build stands?",
+          "answer": "We work at the leading fairs of the Alentejo and the Algarve, such as OVIBEJA in Beja, FATACIL in Lagoa, FACECO in Olhão, the Feira de São Martinho in Portimão and the Feira d'Aires in Viana do Alentejo, as well as any other venue in the region."
+        },
+        {
+          "question": "Is the service in southern Portugal turnkey?",
+          "answer": "Yes. We handle the 3D design, the manufacturing in our own workshop, the logistics, the assembly and the technical approvals, so the exhibitor only has to focus on their product and on welcoming their visitors."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Südportugal",
+      "title": "Messestand-Design und -Bau in Südportugal | Standarte",
+      "h1": "Messestand-Design und -Bau in Südportugal",
+      "introText": "<p>Standarte gestaltet und baut individuelle Messestände im Alentejo und an der Algarve, den beiden großen Regionen Südportugals. Mit über 20 Jahren Erfahrung und einer eigenen Werkstatt bieten wir einen schlüsselfertigen Service, der vom 3D-Design bis zur endgültigen Montage an jedem Messegelände der Region reicht.</p>",
+      "body": "\n        <h2>Die großen Messen Südportugals</h2>\n        <p>In Südportugal finden einige der wichtigsten Messen des Landes statt, in einer Region, in der spezialisierte Standbauer rar sind. Standarte arbeitet bei Veranstaltungen wie der OVIBEJA (Beja), der führenden Agrar- und Viehzuchtmesse des Alentejo; der FATACIL (Lagoa), der großen branchenübergreifenden Messe der Algarve; der FACECO (Moncarapacho, Olhão); der Feira de São Martinho (Portimão); und der Feira d'Aires (Viana do Alentejo). Bei jeder von ihnen liefern wir einen professionellen Stand, der sich von der lokalen Konkurrenz abhebt.</p>\n        <h2>Schlüsselfertiger Standbau im Alentejo und an der Algarve</h2>\n        <p>Wir betreuen jedes Projekt von Anfang bis Ende aus unserer eigenen Werkstatt: 3D-Design, Fertigung der Struktur und der Möbel, Logistik bis zum Messegelände, Aufbau und Installation sowie die technischen Abnahmen, die jede Messe verlangt. Diese Integration erlaubt es uns, Termine und Qualität in der gesamten Region zu garantieren, ohne von externen Lieferanten abhängig zu sein, und ein Finish zu liefern, das zum Erscheinungsbild jedes Ausstellers passt.</p>\n      ",
+      "faqs": [
+        {
+          "question": "Auf welchen Messen in Südportugal baut Standarte Stände?",
+          "answer": "Wir arbeiten auf den wichtigsten Messen des Alentejo und der Algarve, wie der OVIBEJA in Beja, der FATACIL in Lagoa, der FACECO in Olhão, der Feira de São Martinho in Portimão und der Feira d'Aires in Viana do Alentejo, sowie an jedem weiteren Messegelände der Region."
+        },
+        {
+          "question": "Ist der Service in Südportugal schlüsselfertig?",
+          "answer": "Ja. Wir übernehmen das 3D-Design, die Fertigung in unserer eigenen Werkstatt, die Logistik, den Aufbau und die technischen Abnahmen, sodass sich der Aussteller nur um sein Produkt und die Betreuung seiner Besucher kümmern muss."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Sud du Portugal",
+      "title": "Conception et montage de stands dans le Sud du Portugal | Standarte",
+      "h1": "Conception et montage de stands dans le Sud du Portugal",
+      "introText": "<p>Standarte conçoit et monte des stands sur mesure dans l'Alentejo et l'Algarve, les deux grandes régions du sud du Portugal. Forts de plus de 20 ans d'expérience et de notre propre atelier, nous proposons un service clé en main qui couvre tout, du design 3D jusqu'au montage final dans n'importe quel parc des expositions de la région.</p>",
+      "body": "\n        <h2>Les grandes foires du sud du Portugal</h2>\n        <p>Le sud du Portugal concentre certaines des foires les plus importantes du pays, dans une région où les constructeurs de stands spécialisés sont rares. Standarte intervient sur des salons tels que OVIBEJA (Beja), la grande foire agroalimentaire et d'élevage de l'Alentejo; FATACIL (Lagoa), la grande foire multisectorielle de l'Algarve; FACECO (Moncarapacho, Olhão); la Feira de São Martinho (Portimão); et la Feira d'Aires (Viana do Alentejo). Sur chacune d'elles, nous livrons un stand professionnel qui se démarque de la concurrence locale.</p>\n        <h2>Montage clé en main dans l'Alentejo et l'Algarve</h2>\n        <p>Nous gérons chaque projet de bout en bout depuis notre propre atelier: design 3D, fabrication de la structure et du mobilier, logistique jusqu'au parc des expositions, montage et installation, ainsi que la gestion des validations techniques exigées par chaque foire. Cette intégration nous permet de garantir les délais et la qualité dans toute la région, sans dépendre de fournisseurs externes, et de livrer une finition cohérente avec l'image de chaque exposant.</p>\n      ",
+      "faqs": [
+        {
+          "question": "Sur quelles foires du sud du Portugal Standarte monte-t-il des stands?",
+          "answer": "Nous travaillons sur les principales foires de l'Alentejo et de l'Algarve, comme OVIBEJA à Beja, FATACIL à Lagoa, FACECO à Olhão, la Feira de São Martinho à Portimão et la Feira d'Aires à Viana do Alentejo, ainsi que sur tout autre parc des expositions de la région."
+        },
+        {
+          "question": "Le service dans le sud du Portugal est-il clé en main?",
+          "answer": "Oui. Nous prenons en charge le design 3D, la fabrication dans notre propre atelier, la logistique, le montage et les validations techniques, de sorte que l'exposant n'a qu'à se concentrer sur son produit et sur l'accueil de ses visiteurs."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Sud del Portogallo",
+      "title": "Progettazione e montaggio di stand nel Sud del Portogallo | Standarte",
+      "h1": "Progettazione e montaggio di stand nel Sud del Portogallo",
+      "introText": "<p>Standarte è il riferimento per gli stand fieristici nel sud del Portogallo, tra Alentejo e Algarve. Con oltre 20 anni di esperienza e officina propria, offriamo un servizio chiavi in mano: progettazione 3D, fabbricazione, logistica, montaggio e validazioni tecniche.</p>",
+      "body": "\n        <h2>Le grandi fiere del sud del Portogallo</h2>\n        <p>Il sud del Portogallo riunisce alcuni dei principali appuntamenti fieristici del paese: OVIBEJA (Beja), il grande evento agroalimentare dell'Alentejo; FATACIL (Lagoa), fiera multisettoriale dell'Algarve; FACECO (Olhão, Moncarapacho); la Feira de São Martinho (Portimão) e la Feira d'Aires (Viana do Alentejo). Si tratta di una regione con grandi fiere e poca concorrenza specializzata, dove uno stand ben progettato fa davvero la differenza.</p>\n        <h2>Montaggio chiavi in mano in Alentejo e Algarve</h2>\n        <p>Lavoriamo con officina propria e ci occupiamo dell'intero processo: progettazione 3D, fabbricazione, logistica, installazione sul posto e smontaggio. Coordiniamo i trasporti verso Beja, Lagoa, Olhão, Portimão e Viana do Alentejo, così l'espositore deve preoccuparsi solo di ricevere clienti su uno stand pronto e impeccabile.</p>\n      ",
+      "faqs": [
+        {
+          "question": "In quali fiere del sud del Portogallo montate gli stand?",
+          "answer": "Realizziamo stand per OVIBEJA a Beja, FATACIL a Lagoa, FACECO a Olhão, la Feira de São Martinho a Portimão e la Feira d'Aires a Viana do Alentejo, oltre che per altri eventi dell'Alentejo e dell'Algarve."
+        },
+        {
+          "question": "Offrite un servizio chiavi in mano anche fuori dalla vostra zona abituale?",
+          "answer": "Sì. Grazie all'officina propria e a un team di montaggio, ci occupiamo di progettazione, fabbricazione, logistica e installazione in tutta la regione del sud del Portogallo, con un unico interlocutore dal primo schizzo allo smontaggio."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Sul de Portugal",
+      "title": "Conceção e montagem de stands no Sul de Portugal | Standarte",
+      "h1": "Conceção e montagem de stands no Sul de Portugal",
+      "introText": "<p>A Standarte é a referência em stands de feira no sul de Portugal, entre o Alentejo e o Algarve. Com mais de 20 anos de experiência e oficina própria, oferecemos um serviço chave na mão: conceção 3D, fabrico, logística, montagem e validações técnicas.</p>",
+      "body": "\n        <h2>As grandes feiras do sul de Portugal</h2>\n        <p>O sul de Portugal reúne alguns dos principais certames do país: a OVIBEJA (Beja), o grande evento agroalimentar do Alentejo; a FATACIL (Lagoa), feira multissetorial do Algarve; a FACECO (Olhão, Moncarapacho); a Feira de São Martinho (Portimão) e a Feira d'Aires (Viana do Alentejo). É uma região com grandes feiras e pouca concorrência especializada, onde um stand bem concebido marca verdadeiramente a diferença.</p>\n        <h2>Montagem chave na mão no Alentejo e no Algarve</h2>\n        <p>Trabalhamos com oficina própria e tratamos de todo o processo: conceção 3D, fabrico, logística, instalação no local e desmontagem. Coordenamos o transporte para Beja, Lagoa, Olhão, Portimão e Viana do Alentejo, para que o expositor só tenha de se preocupar em receber clientes num stand pronto e impecável.</p>\n      ",
+      "faqs": [
+        {
+          "question": "Em que feiras do sul de Portugal montam stands?",
+          "answer": "Construímos stands para a OVIBEJA em Beja, a FATACIL em Lagoa, a FACECO em Olhão, a Feira de São Martinho em Portimão e a Feira d'Aires em Viana do Alentejo, além de outros eventos do Alentejo e do Algarve."
+        },
+        {
+          "question": "Oferecem um serviço chave na mão com oficina própria?",
+          "answer": "Sim. Graças à oficina própria e a uma equipa de montagem, asseguramos a conceção, o fabrico, a logística e a instalação em toda a região do sul de Portugal, com um único interlocutor desde o primeiro esboço até à desmontagem."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Zuid-Portugal",
+      "title": "Ontwerp en montage van stands in Zuid-Portugal | Standarte",
+      "h1": "Ontwerp en montage van stands in Zuid-Portugal",
+      "introText": "<p>Standarte is de referentie voor beursstands in het zuiden van Portugal, tussen de Alentejo en de Algarve. Met meer dan 20 jaar ervaring en een eigen werkplaats bieden wij een kant-en-klare service: 3D-ontwerp, productie, logistiek, montage en technische validaties.</p>",
+      "body": "\n        <h2>De grote beurzen van Zuid-Portugal</h2>\n        <p>Het zuiden van Portugal brengt enkele van de belangrijkste beurzen van het land samen: OVIBEJA (Beja), het grote agro-voedingsevenement van de Alentejo; FATACIL (Lagoa), de multisectorale beurs van de Algarve; FACECO (Olhão, Moncarapacho); de Feira de São Martinho (Portimão) en de Feira d'Aires (Viana do Alentejo). Het is een regio met grote beurzen en weinig gespecialiseerde concurrentie, waar een goed ontworpen stand echt het verschil maakt.</p>\n        <h2>Kant-en-klare montage in de Alentejo en de Algarve</h2>\n        <p>Wij werken met een eigen werkplaats en verzorgen het hele proces: 3D-ontwerp, productie, logistiek, installatie ter plaatse en demontage. Wij coördineren het transport naar Beja, Lagoa, Olhão, Portimão en Viana do Alentejo, zodat de exposant zich alleen hoeft te bekommeren om het ontvangen van klanten op een kant-en-klare, onberispelijke stand.</p>\n      ",
+      "faqs": [
+        {
+          "question": "Op welke beurzen in Zuid-Portugal bouwen jullie stands?",
+          "answer": "Wij bouwen stands voor OVIBEJA in Beja, FATACIL in Lagoa, FACECO in Olhão, de Feira de São Martinho in Portimão en de Feira d'Aires in Viana do Alentejo, naast andere evenementen in de Alentejo en de Algarve."
+        },
+        {
+          "question": "Bieden jullie een kant-en-klare service met een eigen werkplaats?",
+          "answer": "Ja. Dankzij onze eigen werkplaats en een montageteam verzorgen wij het ontwerp, de productie, de logistiek en de installatie in heel de regio Zuid-Portugal, met één aanspreekpunt van de eerste schets tot de demontage."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "葡萄牙南部",
+      "title": "葡萄牙南部展台设计与搭建 | Standarte",
+      "h1": "葡萄牙南部展台设计与搭建",
+      "introText": "<p>Standarte 是葡萄牙南部（阿连特茹与阿尔加维地区）展台领域的标杆。凭借二十多年经验和自有工坊，我们提供一站式交钥匙服务：3D 设计、生产制造、物流运输、现场搭建与技术验收。</p>",
+      "body": "\n        <h2>葡萄牙南部的大型展会</h2>\n        <p>葡萄牙南部汇聚了该国一些最重要的展会：OVIBEJA（贝雅 Beja）是阿连特茹地区规模盛大的农业食品展；FATACIL（拉戈阿 Lagoa）是阿尔加维地区的综合性展会；FACECO 位于奥良（Olhão）的 Moncarapacho；以及波尔蒂芒（Portimão）的 Feira de São Martinho 和维亚纳-杜阿连特茹（Viana do Alentejo）的 Feira d'Aires。这是一个拥有大型展会却鲜有专业竞争对手的地区，一个精心设计的展台能真正脱颖而出。</p>\n        <h2>阿连特茹与阿尔加维的一站式搭建</h2>\n        <p>我们拥有自有工坊，全程负责整个流程：3D 设计、生产制造、物流、现场安装与拆卸。我们统筹前往贝雅、拉戈阿、奥良、波尔蒂芒和维亚纳-杜阿连特茹的运输，让参展商只需专注于在一个完工无瑕的展台上接待客户。</p>\n      ",
+      "faqs": [
+        {
+          "question": "你们在葡萄牙南部的哪些展会搭建展台？",
+          "answer": "我们为贝雅的 OVIBEJA、拉戈阿的 FATACIL、奥良的 FACECO、波尔蒂芒的 Feira de São Martinho 以及维亚纳-杜阿连特茹的 Feira d'Aires 搭建展台，同时也服务于阿连特茹和阿尔加维地区的其他展会。"
+        },
+        {
+          "question": "你们提供配备自有工坊的一站式服务吗？",
+          "answer": "是的。凭借自有工坊和专业搭建团队，我们在整个葡萄牙南部地区负责设计、制造、物流与安装，从初稿到拆卸全程由同一对接人统筹完成。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "दक्षिणी पुर्तगाल",
+      "title": "दक्षिणी पुर्तगाल में स्टैंड डिज़ाइन और असेंबली | Standarte",
+      "h1": "दक्षिणी पुर्तगाल में स्टैंड डिज़ाइन और असेंबली",
+      "introText": "<p>Standarte दक्षिणी पुर्तगाल यानी एलेंतेजू और अल्गार्वे क्षेत्र में प्रदर्शनी स्टैंड के डिज़ाइन और निर्माण में आपका भरोसेमंद साझेदार है। बीस साल के अनुभव और अपनी कार्यशाला के साथ, हम 3डी डिज़ाइन से लेकर निर्माण, लॉजिस्टिक्स और मौके पर असेंबली तक पूरी टर्नकी सेवा देते हैं।</p>",
+      "body": "\n        <h2>दक्षिणी पुर्तगाल के प्रमुख मेले</h2>\n        <p>एलेंतेजू और अल्गार्वे क्षेत्र में साल भर बड़े और प्रतिष्ठित मेले आयोजित होते हैं, जहाँ प्रतिस्पर्धा कम है और अवसर अधिक। इनमें बेजा का कृषि-खाद्य मेला OVIBEJA, लागोआ का बहुक्षेत्रीय मेला FATACIL, ओल्हाओ का FACECO, पोर्तिमाओ का Feira de São Martinho और वियाना दू एलेंतेजू का Feira d'Aires शामिल हैं। हर आयोजन में एक सुनियोजित स्टैंड आपके ब्रांड को भीड़ से अलग पहचान दिलाता है।</p>\n        <h2>एलेंतेजू और अल्गार्वे में टर्नकी असेंबली</h2>\n        <p>हमारी अपनी कार्यशाला हर परियोजना को शुरू से अंत तक संभालती है: रचनात्मक 3डी डिज़ाइन, सामग्री का निर्माण, परिवहन और लॉजिस्टिक्स, मौके पर पेशेवर इंस्टॉलेशन और सभी आवश्यक तकनीकी सत्यापन। इस तरह आप केवल अपने मेले पर ध्यान देते हैं और बाकी सब हम पर छोड़ देते हैं।</p>\n      ",
+      "faqs": [
+        {
+          "question": "क्या Standarte पूरे दक्षिणी पुर्तगाल में स्टैंड बनाता है?",
+          "answer": "हाँ। हम एलेंतेजू और अल्गार्वे के सभी मेला स्थलों पर काम करते हैं, जिनमें बेजा, लागोआ, ओल्हाओ, पोर्तिमाओ और वियाना दू एलेंतेजू शामिल हैं। हमारी टीम डिज़ाइन से असेंबली तक सब कुछ संभालती है।"
+        },
+        {
+          "question": "टर्नकी सेवा में क्या-क्या शामिल है?",
+          "answer": "इसमें 3डी डिज़ाइन, अपनी कार्यशाला में निर्माण, परिवहन और लॉजिस्टिक्स, मौके पर इंस्टॉलेशन और तकनीकी सत्यापन शामिल हैं। आपको अलग-अलग ठेकेदारों के साथ समन्वय की आवश्यकता नहीं पड़ती।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "포르투갈 남부",
+      "title": "포르투갈 남부 부스 디자인 및 설치 | Standarte",
+      "h1": "포르투갈 남부 부스 디자인 및 설치",
+      "introText": "<p>Standarte는 포르투갈 남부, 즉 알렌테주와 알가르브 지역에서 전시 부스 디자인과 시공을 책임지는 신뢰할 수 있는 파트너입니다. 20년의 경험과 자체 공방을 바탕으로 3D 디자인, 제작, 물류, 현장 설치까지 모든 과정을 아우르는 턴키 서비스를 제공합니다.</p>",
+      "body": "\n        <h2>포르투갈 남부의 주요 박람회</h2>\n        <p>알렌테주와 알가르브 지역에서는 경쟁은 적고 기회는 많은 대규모 박람회가 일년 내내 열립니다. 베자의 농식품 박람회 OVIBEJA, 라고아의 종합 박람회 FATACIL, 올량의 FACECO, 포르티망의 Feira de São Martinho, 비아나 두 알렌테주의 Feira d'Aires가 대표적입니다. 잘 설계된 부스는 이러한 행사에서 귀사의 브랜드를 돋보이게 합니다.</p>\n        <h2>알렌테주와 알가르브의 턴키 설치</h2>\n        <p>자체 공방에서 모든 프로젝트를 처음부터 끝까지 직접 진행합니다. 창의적인 3D 디자인, 자재 제작, 운송과 물류, 현장 전문 설치, 그리고 필요한 모든 기술 검증까지 포함됩니다. 고객은 박람회에만 집중하고 나머지는 저희에게 맡기시면 됩니다.</p>\n      ",
+      "faqs": [
+        {
+          "question": "Standarte는 포르투갈 남부 전역에서 부스를 시공하나요?",
+          "answer": "네. 베자, 라고아, 올량, 포르티망, 비아나 두 알렌테주를 포함한 알렌테주와 알가르브의 모든 박람회장에서 작업합니다. 저희 팀이 디자인부터 설치까지 전 과정을 담당합니다."
+        },
+        {
+          "question": "턴키 서비스에는 무엇이 포함되나요?",
+          "answer": "3D 디자인, 자체 공방에서의 제작, 운송과 물류, 현장 설치, 기술 검증이 모두 포함됩니다. 여러 협력업체를 직접 조율하실 필요가 없습니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "南ポルトガル",
+      "title": "南ポルトガルでのブース設計・施工 | Standarte",
+      "h1": "南ポルトガルでのブース設計・施工",
+      "introText": "<p>Standarteは、南ポルトガル、すなわちアレンテージョ地方とアルガルヴェ地方で展示ブースの設計と施工を担う信頼できるパートナーです。20年の経験と自社工房を活かし、3D設計から製作、物流、現場での施工まで一貫したターンキーサービスを提供します。</p>",
+      "body": "\n        <h2>南ポルトガルの主要な見本市</h2>\n        <p>アレンテージョ地方とアルガルヴェ地方では、競合が少なく機会の多い大規模な見本市が一年を通じて開催されます。ベージャの農産食品見本市OVIBEJA、ラゴアの総合見本市FATACIL、オリャンのFACECO、ポルティマンのFeira de São Martinho、ヴィアナ・ド・アレンテージョのFeira d'Airesなどが代表的です。綿密に設計されたブースは、こうした催しで御社のブランドを際立たせます。</p>\n        <h2>アレンテージョとアルガルヴェでのターンキー施工</h2>\n        <p>自社工房がすべてのプロジェクトを最初から最後まで一貫して手がけます。創造的な3D設計、資材の製作、輸送と物流、現場での専門的な施工、そして必要なすべての技術検証までを含みます。お客様は見本市に集中し、残りはすべて私たちにお任せください。</p>\n      ",
+      "faqs": [
+        {
+          "question": "Standarteは南ポルトガル全域でブースを施工しますか。",
+          "answer": "はい。ベージャ、ラゴア、オリャン、ポルティマン、ヴィアナ・ド・アレンテージョを含むアレンテージョとアルガルヴェのすべての見本市会場で対応します。私たちのチームが設計から施工まで全工程を担当します。"
+        },
+        {
+          "question": "ターンキーサービスには何が含まれますか。",
+          "answer": "3D設計、自社工房での製作、輸送と物流、現場での施工、技術検証がすべて含まれます。複数の業者を個別に調整していただく必要はありません。"
+        }
+      ]
+    }
   }
 };

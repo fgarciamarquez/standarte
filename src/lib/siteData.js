@@ -33,6 +33,7 @@ export const routes = {
     mallorca: 'diseno_montaje_stands_mallorca',
     valencia: 'diseno_montaje_stands_valencia',
     oporto: 'diseno_montaje_stands_oporto',
+    portugal_sur: 'diseno_montaje_stands_portugal_sur',
     malaga: 'diseno_montaje_stands_malaga',
     badajoz: 'diseno_montaje_stands_badajoz',
     sevilla: 'diseno_montaje_stands_sevilla',
@@ -60,6 +61,7 @@ export const routes = {
     mallorca: 'stand_design_assembly_mallorca',
     valencia: 'stand_design_assembly_valencia',
     oporto: 'stand_design_assembly_porto',
+    portugal_sur: 'stand_design_assembly_southern_portugal',
     malaga: 'stand_design_assembly_malaga',
     badajoz: 'stand_design_assembly_badajoz',
     sevilla: 'stand_design_assembly_seville',
@@ -87,6 +89,7 @@ export const routes = {
     mallorca: 'messestand_design_montage_mallorca',
     valencia: 'messestand_design_montage_valencia',
     oporto: 'messestand_design_montage_porto',
+    portugal_sur: 'messestand_design_montage_sudportugal',
     malaga: 'messestand_design_montage_malaga',
     badajoz: 'messestand_design_montage_badajoz',
     sevilla: 'messestand_design_montage_sevilla',
@@ -114,6 +117,7 @@ export const routes = {
     mallorca: 'mallorca_zhantai_sheji_dajian',
     valencia: 'valencia_zhantai_sheji_dajian',
     oporto: 'porto_zhantai_sheji_dajian',
+    portugal_sur: 'nan_putaoya_zhantai_sheji_dajian',
     malaga: 'malaga_zhantai_sheji_dajian',
     badajoz: 'badajoz_zhantai_sheji_dajian',
     sevilla: 'sevilla_zhantai_sheji_dajian',
@@ -141,6 +145,7 @@ export const routes = {
     mallorca: 'mallorca_stand_dizain_asembli',
     valencia: 'valencia_stand_dizain_asembli',
     oporto: 'porto_stand_dizain_asembli',
+    portugal_sur: 'dakshini_purtagal_stand_dizain_asembli',
     malaga: 'malaga_stand_dizain_asembli',
     badajoz: 'badajoz_stand_dizain_asembli',
     sevilla: 'sevilla_stand_dizain_asembli',
@@ -168,6 +173,7 @@ export const routes = {
     mallorca: 'design_montagem_stands_mallorca',
     valencia: 'design_montagem_stands_valencia',
     oporto: 'design_montagem_stands_porto',
+    portugal_sur: 'design_montagem_stands_sul_portugal',
     malaga: 'design_montagem_stands_malaga',
     badajoz: 'design_montagem_stands_badajoz',
     sevilla: 'design_montagem_stands_sevilla',
@@ -195,6 +201,7 @@ export const routes = {
     mallorca: 'conception_montage_stands_mallorca',
     valencia: 'conception_montage_stands_valence',
     oporto: 'conception_montage_stands_porto',
+    portugal_sur: 'conception_montage_stands_sud_portugal',
     malaga: 'conception_montage_stands_malaga',
     badajoz: 'conception_montage_stands_badajoz',
     sevilla: 'conception_montage_stands_seville',
@@ -222,6 +229,7 @@ export const routes = {
     mallorca: 'progettazione_montaggio_stand_mallorca',
     valencia: 'progettazione_montaggio_stand_valencia',
     oporto: 'progettazione_montaggio_stand_porto',
+    portugal_sur: 'progettazione_montaggio_stand_sud_portogallo',
     malaga: 'progettazione_montaggio_stand_malaga',
     badajoz: 'progettazione_montaggio_stand_badajoz',
     sevilla: 'progettazione_montaggio_stand_sevilla',
@@ -249,6 +257,7 @@ export const routes = {
     mallorca: 'mallorca-bujeu-dijain-jorip',
     valencia: 'valencia-bujeu-dijain-jorip',
     oporto: 'porto-bujeu-dijain-jorip',
+    portugal_sur: 'nambu-poreutugal-buseu-dijain-jorip',
     malaga: 'malaga-bujeu-dijain-jorip',
     badajoz: 'badajoz-bujeu-dijain-jorip',
     sevilla: 'sevilla-bujeu-dijain-jorip',
@@ -276,6 +285,7 @@ export const routes = {
     mallorca: 'マヨルカ展示会ブース設計施工',
     valencia: 'バレンシア展示会ブース設計施工',
     oporto: 'ポルト展示会ブース設計施工',
+    portugal_sur: '南ポルトガル展示会ブース設計施工',
     malaga: 'マラガ展示会ブース設計施工',
     badajoz: 'バダホス展示会ブース設計施工',
     sevilla: 'セビリア展示会ブース設計施工',
@@ -303,6 +313,7 @@ export const routes = {
     mallorca: 'standontwerp_montage_mallorca',
     valencia: 'standontwerp_montage_valencia',
     oporto: 'standontwerp_montage_porto',
+    portugal_sur: 'standontwerp_montage_zuid_portugal',
     malaga: 'standontwerp_montage_malaga',
     badajoz: 'standontwerp_montage_badajoz',
     sevilla: 'standontwerp_montage_sevilla',
@@ -1198,6 +1209,67 @@ export const copy = {
 };
 
 export const cityData = {
+  portugal_sur: {
+    "city": {
+      "es": "Portugal Sur",
+      "en": "Southern Portugal",
+      "de": "Südportugal",
+      "pt": "Sul de Portugal",
+      "fr": "Sud du Portugal",
+      "it": "Sud del Portogallo",
+      "nl": "Zuid-Portugal",
+      "zh": "葡萄牙南部",
+      "hi": "दक्षिणी पुर्तगाल",
+      "ko": "포르투갈 남부",
+      "ja": "南ポルトガル"
+    },
+    "content": {
+      "es": {
+        "intro": "Standarte diseña y monta stands en el sur de Portugal (Alentejo y Algarve), en ferias como OVIBEJA, FATACIL o la Feira d'Aires, controlando el diseño 3D, la fabricación, la logística y la instalación con taller propio.",
+        "detail": "Con 20 años de experiencia y un servicio llave en mano, cuidamos cada detalle para que agencias y expositores lleguen a la feria sin preocupaciones."
+      },
+      "en": {
+        "intro": "Standarte designs and builds exhibition stands across southern Portugal (Alentejo and Algarve), at fairs such as OVIBEJA, FATACIL or the Feira d'Aires, handling 3D design, fabrication, logistics and installation from our own workshop.",
+        "detail": "With 20 years of experience and a turnkey service, we take care of every detail so agencies and exhibitors arrive at the fair with nothing to worry about."
+      },
+      "de": {
+        "intro": "Standarte gestaltet und baut Messestände im Süden Portugals (Alentejo und Algarve), auf Messen wie OVIBEJA, FATACIL oder der Feira d'Aires, und steuert 3D-Design, Fertigung, Logistik und Montage aus der eigenen Werkstatt.",
+        "detail": "Mit 20 Jahren Erfahrung und einem schlüsselfertigen Service kümmern wir uns um jedes Detail, damit Agenturen und Aussteller sorgenfrei zur Messe kommen."
+      },
+      "pt": {
+        "intro": "A Standarte concebe e monta stands no sul de Portugal (Alentejo e Algarve), em feiras como a OVIBEJA, a FATACIL ou a Feira d'Aires, controlando o design 3D, o fabrico, a logística e a instalação com oficina própria.",
+        "detail": "Com 20 anos de experiência e um serviço chave na mão, cuidamos de cada detalhe para que agências e expositores cheguem à feira sem preocupações."
+      },
+      "fr": {
+        "intro": "Standarte conçoit et monte des stands dans le sud du Portugal (Alentejo et Algarve), sur des salons comme OVIBEJA, FATACIL ou la Feira d'Aires, en maîtrisant la conception 3D, la fabrication, la logistique et l'installation grâce à son propre atelier.",
+        "detail": "Avec 20 ans d'expérience et un service clé en main, nous soignons chaque détail pour que les agences et les exposants arrivent au salon en toute sérénité."
+      },
+      "it": {
+        "intro": "Standarte progetta e monta stand nel sud del Portogallo (Alentejo e Algarve), in fiere come OVIBEJA, FATACIL o la Feira d'Aires, gestendo design 3D, produzione, logistica e installazione con officina propria.",
+        "detail": "Con 20 anni di esperienza e un servizio chiavi in mano, curiamo ogni dettaglio affinché agenzie ed espositori arrivino in fiera senza pensieri."
+      },
+      "nl": {
+        "intro": "Standarte ontwerpt en bouwt beursstands in het zuiden van Portugal (Alentejo en Algarve), op beurzen als OVIBEJA, FATACIL of de Feira d'Aires, met beheer van 3D-ontwerp, productie, logistiek en montage vanuit een eigen werkplaats.",
+        "detail": "Met 20 jaar ervaring en een kant-en-klare service zorgen wij voor elk detail, zodat bureaus en exposanten zorgeloos op de beurs aankomen."
+      },
+      "zh": {
+        "intro": "Standarte 在葡萄牙南部（阿连特茹和阿尔加维）设计并搭建展台，服务于 OVIBEJA、FATACIL 或 Feira d'Aires 等展会，凭借自有工坊把控 3D 设计、生产、物流与安装。",
+        "detail": "凭借 20 年经验和一站式交钥匙服务，我们关注每一处细节，让代理商和参展商毫无后顾之忧地抵达展会。"
+      },
+      "hi": {
+        "intro": "Standarte दक्षिणी पुर्तगाल (अलेंतेजो और अल्गार्वे) में OVIBEJA, FATACIL या Feira d'Aires जैसे मेलों के लिए स्टॉल डिज़ाइन और तैयार करता है, और अपनी कार्यशाला से 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स और स्थापना को संभालता है।",
+        "detail": "20 साल के अनुभव और संपूर्ण टर्नकी सेवा के साथ, हम हर विवरण का ध्यान रखते हैं ताकि एजेंसियां और प्रदर्शक बिना किसी चिंता के मेले में पहुंचें।"
+      },
+      "ko": {
+        "intro": "Standarte는 포르투갈 남부(알렌테주와 알가르브)에서 OVIBEJA, FATACIL, Feira d'Aires 같은 박람회를 위한 부스를 설계하고 설치하며, 자체 작업장에서 3D 디자인, 제작, 물류, 시공을 모두 관리합니다.",
+        "detail": "20년의 경험과 턴키 서비스로 모든 디테일을 챙겨 에이전시와 참가업체가 걱정 없이 박람회에 도착할 수 있도록 합니다."
+      },
+      "ja": {
+        "intro": "Standarteはポルトガル南部（アレンテージョとアルガルヴェ）で、OVIBEJA、FATACIL、Feira d'Airesなどの展示会向けにブースを設計・施工し、自社工房で3Dデザイン、製作、物流、設営を一貫して管理します。",
+        "detail": "20年の経験とターンキーサービスで細部まで気を配り、代理店や出展者が安心して展示会に臨めるようにします。"
+      }
+    }
+  },
   madrid: {
     city: { es: 'Madrid', en: 'Madrid', de: 'Madrid', zh: '马德里', hi: 'मैड्रिड', pt: 'Madrid', fr: 'Madrid', it: 'Madrid', ko: '마드리드', ja: 'マドリード' },
     content: {
