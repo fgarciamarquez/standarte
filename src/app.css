@@ -360,7 +360,8 @@ p {
    entero, no solo el <main>), activado por la clase pre-renderizada del <main> con :has()
    — sin depender de JS, así no "desaparece". */
 html:has(main.home-warm),
-html:has(.project-detail-main) {
+html:has(.project-detail-main),
+html:has(.dedicated-seo-page) {
   background-color: #f7f6f1;
 }
 main.home-warm {
