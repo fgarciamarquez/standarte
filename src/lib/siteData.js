@@ -1,5 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
-import { jaFairSlugs, jaFairSlugsReverse } from '$lib/jaSlugs.js';
+import { jaFairSlugs, jaFairSlugsReverse, jaProjectSlugs, jaProjectSlugsReverse } from '$lib/jaSlugs.js';
 export const languages = ['es', 'pt', 'en', 'de', 'fr', 'it', 'nl', 'zh', 'hi', 'ko', 'ja'];
 
 export const languageLabels = {
@@ -2742,6 +2742,17 @@ export function fairUrl(slug, lang) {
   return `${prefix}/${fairSegment(lang)}/${getFairSlug(slug, lang)}`;
 }
 
+// --- Proyectos: solo `ja` tiene URL propia (/ja/プロジェクト/{slug-japonés}).
+// El resto de idiomas comparten /proyectos/{id} (ruta única, idioma por ?lang=).
+export function getProjectSlug(id, lang) {
+  return (lang === 'ja' && jaProjectSlugs[id]) || id;
+}
+/** URL relativa del detalle de un proyecto. */
+export function projectUrl(id, lang) {
+  if (lang === 'ja') return `/ja/プロジェクト/${getProjectSlug(id, 'ja')}`;
+  return `/proyectos/${id}${lang && lang !== 'es' ? `?lang=${lang}` : ''}`;
+}
+
 export function findRoute(path) {
   const clean = (path || '').replace(/^\/+|\/+$/g, '');
   if (clean === '') return { lang: 'es', section: 'home' };
@@ -2759,23 +2770,35 @@ export function findRoute(path) {
       return { lang: maybeLang, section: 'feria', fairSlug };
     }
   }
+  // Detalle de proyecto en japonés: /ja/プロジェクト/{slug-japonés}. El projectId
+  // devuelto es siempre el id latino (clave de projectData).
+  if (maybeLang === 'ja' && slug.startsWith('プロジェクト/')) {
+    const raw = slug.substring('プロジェクト/'.length);
+    const projectId = jaProjectSlugsReverse[raw] || raw;
+    return { lang: 'ja', section: 'project', projectId };
+  }
   const section = Object.keys(langRoutes).find((key) => langRoutes[key] === slug) || 'home';
   return { lang: maybeLang, section };
 }
 
 export function resolveRoute(path) {
-  const { lang, section, fairSlug } = findRoute(path);
+  const { lang, section, fairSlug, projectId } = findRoute(path);
   const c = copy[lang] || copy.es;
-  // Las ferias no son una clave de routes, así que pathFor(lang,'feria') devolvería
-  // la home: su canónica debe ser su propia URL de feria (igual que su hreflang).
-  const canonical = (section === 'feria' && fairSlug)
-    ? `https://standarte.es${fairUrl(fairSlug, lang)}`
-    : `https://standarte.es${pathFor(lang, section)}`;
-  return { lang, section, fairSlug, copy: c, canonical };
+  // Ferias y proyectos ja no son claves de routes; su canónica es su propia URL.
+  let canonical;
+  if (section === 'feria' && fairSlug) canonical = `https://standarte.es${fairUrl(fairSlug, lang)}`;
+  else if (section === 'project' && projectId) canonical = `https://standarte.es${projectUrl(projectId, lang)}`;
+  else canonical = `https://standarte.es${pathFor(lang, section)}`;
+  return { lang, section, fairSlug, projectId, copy: c, canonical };
 }
 
 export const prerenderEntries = languages.flatMap((lang) => {
   const normalRoutes = Object.keys(routes[lang]).map((section) => ({ path: pathFor(lang, section).replace(/^\/|\/$/g, '') }));
   const fairRoutes = fairsData.map((fair) => ({ path: fairUrl(fair.slug, lang).replace(/^\//, '') }));
-  return [...normalRoutes, ...fairRoutes];
+  // Solo `ja` tiene páginas de proyecto propias (/ja/プロジェクト/{slug}); los ids salen
+  // de las claves de jaProjectSlugs (evita importar projectData, 3,7 MB, en el cliente).
+  const projectRoutes = lang === 'ja'
+    ? Object.keys(jaProjectSlugs).map((id) => ({ path: projectUrl(id, 'ja').replace(/^\//, '') }))
+    : [];
+  return [...normalRoutes, ...fairRoutes, ...projectRoutes];
 }).filter((entry) => entry.path !== '');

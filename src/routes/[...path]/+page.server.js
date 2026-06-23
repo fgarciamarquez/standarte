@@ -1,6 +1,7 @@
 import { prerenderEntries, resolveRoute, cityData } from '$lib/siteData.js';
 import { richSeoData } from '$lib/server/richSeoData.js';
 import { fairSeoData } from '$lib/server/fairSeoData.js';
+import { getProjectById } from '$lib/projectData.js';
 
 export const entries = () => prerenderEntries;
 
@@ -12,5 +13,8 @@ export function load({ params }) {
   }
   // Contenido SEO único por feria (solo cuando la ruta es una feria concreta).
   const fairSeo = route.section === 'feria' ? (fairSeoData[route.fairSlug] || null) : null;
-  return { ...route, richSeo, fairSeo };
+  // Proyecto (solo en las URLs ja /ja/プロジェクト/{slug}). Se reutiliza el componente
+  // de proyecto con lang=ja fijo en el catch-all.
+  const project = route.section === 'project' ? (getProjectById(route.projectId) || null) : null;
+  return { ...route, richSeo, fairSeo, project };
 }

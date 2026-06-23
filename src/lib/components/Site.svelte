@@ -2,7 +2,7 @@
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
-  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl } from '$lib/siteData.js';
+  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
@@ -1134,17 +1134,17 @@
             {#each [...carouselItems, ...carouselItems] as project, dupIdx}
               <article class="carousel-card" style="width: calc(100% / var(--visible-count));" aria-hidden={dupIdx >= carouselItems.length || undefined}>
                 <div class="carousel-card-inner">
-                  <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-img-link" tabindex="-1" aria-hidden="true">
+                  <a href={projectUrl(project.id, lang)} class="carousel-img-link" tabindex="-1" aria-hidden="true">
                     <div class="carousel-img-wrap">
                       {#if project.location}<span class="carousel-loc-badge">{project.location}</span>{/if}
                       <img src={project.image.replace('.avif', '-thumb.avif')} alt="" width="480" height="360" loading="lazy" on:error={(e) => handleThumbError(e, project)} />
                     </div>
                   </a>
-                  <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-overlay" tabindex="-1" aria-hidden="true">
+                  <a href={projectUrl(project.id, lang)} class="carousel-overlay" tabindex="-1" aria-hidden="true">
                     <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
                   </a>
                   <div class="carousel-caption">
-                    <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`} class="carousel-caption-link" title={carouselTitle(project)}>
+                    <a href={projectUrl(project.id, lang)} class="carousel-caption-link" title={carouselTitle(project)}>
                       <h3>{carouselTitle(project)}</h3>
                     </a>
                   </div>
@@ -1161,7 +1161,7 @@
            descargan por tramos; estos enlaces no cargan imágenes, coste nulo). -->
       <nav class="carousel-seo-links" aria-hidden="true">
         {#each shuffledProjects as project}
-          <a href={`/proyectos/${project.id}${lang !== 'es' ? '?lang=' + lang : ''}`}>{getProjectTitle(project)}</a>
+          <a href={projectUrl(project.id, lang)}>{getProjectTitle(project)}</a>
         {/each}
       </nav>
     </section>

@@ -1,34 +1,44 @@
 <script>
   import { onMount } from 'svelte';
-  import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
+  import { pathFor, copy, languages, languageLabels, projectUrl } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
 
 
 
   export let data;
+  // Cuando el componente se renderiza desde el catch-all en una URL ja
+  // (/ja/プロジェクト/{slug}), el idioma viene fijado y se omite la detección.
+  export let forcedLang = null;
   $: project = data.project;
   // Fondo del header: primera imagen de la galería del proyecto (fallback al genérico).
   $: headerImage = (project && project.images && project.images.length) ? project.images[0] : '/img/bg2.webp';
 
   let isScrolled = false;
   let activeImageIndex = -1;
-  let lang = 'es';
+  let lang = forcedLang || 'es';
   let menuOpen = false;
 
-  // Detect language preferences
+  // Redirige al idioma destino: ja tiene URL propia; el resto usa ?lang=.
+  function gotoLang(targetLang) {
+    if (targetLang === 'ja') { window.location.href = projectUrl(project.id, 'ja'); return; }
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', targetLang);
+    window.location.href = url.toString();
+  }
+
+  // Detect language preferences (omitida cuando el idioma viene fijado por la URL ja)
   onMount(() => {
-    let urlLang = null;
-    if (typeof window !== 'undefined') {
+    if (!forcedLang && typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
-      urlLang = urlParams.get('lang');
-      
+      const urlLang = urlParams.get('lang');
+
       if (urlLang && languages.includes(urlLang)) {
         lang = urlLang;
       }
 
       if (typeof localStorage !== 'undefined') {
         const savedPref = localStorage.getItem('preferredLanguage') || localStorage.getItem('standarte_lang');
-        
+
         // If there was a lang param, save it as preferred
         if (urlLang) {
           localStorage.setItem('preferredLanguage', urlLang);
@@ -37,27 +47,23 @@
           // If no lang param (defaulting to 'es')
           localStorage.setItem('preferredLanguage', 'es');
           localStorage.setItem('standarte_lang', 'es');
-          
+
           const hasAutoRedirected = sessionStorage.getItem('hasAutoRedirected');
 
           if (!hasAutoRedirected) {
             sessionStorage.setItem('hasAutoRedirected', 'true');
             if (savedPref && savedPref !== 'es' && languages.includes(savedPref)) {
-              const url = new URL(window.location.href);
-              url.searchParams.set('lang', savedPref);
-              window.location.href = url.toString();
+              gotoLang(savedPref);
               return;
             } else if (!savedPref) {
               const browserLang = (navigator.language || navigator.languages?.[0] || 'es')
                 .split('-')[0]
                 .toLowerCase();
-              
+
               if (browserLang !== 'es' && languages.includes(browserLang)) {
                 localStorage.setItem('preferredLanguage', browserLang);
                 localStorage.setItem('standarte_lang', browserLang);
-                const url = new URL(window.location.href);
-                url.searchParams.set('lang', browserLang);
-                window.location.href = url.toString();
+                gotoLang(browserLang);
                 return;
               } else {
                 localStorage.setItem('preferredLanguage', 'es');
@@ -102,20 +108,22 @@
   };
 
   function switchLanguage(targetLang) {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('preferredLanguage', targetLang);
+      localStorage.setItem('standarte_lang', targetLang);
+    }
+    // ja tiene URL propia (/ja/プロジェクト/{slug}); ir a/desde ja exige navegar.
+    if (targetLang === 'ja' || forcedLang === 'ja') {
+      if (typeof window !== 'undefined') window.location.href = projectUrl(project.id, targetLang);
+      return;
+    }
+    // Entre idiomas no-ja: cambio en cliente con ?lang= sin recargar.
     lang = targetLang;
     if (typeof window !== 'undefined') {
-      // Update the URL query parameters cleanly without reloading
       const url = new URL(window.location.href);
-      if (targetLang === 'es') {
-        url.searchParams.delete('lang');
-      } else {
-        url.searchParams.set('lang', targetLang);
-      }
+      if (targetLang === 'es') url.searchParams.delete('lang');
+      else url.searchParams.set('lang', targetLang);
       window.history.replaceState({}, '', url.toString());
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem('preferredLanguage', targetLang);
-        localStorage.setItem('standarte_lang', targetLang);
-      }
     }
   }
 
@@ -265,12 +273,15 @@
     nl: 'Klik op een afbeelding om deze in hoge resolutie te bekijken.'
   };
 
+  // Canónica: ja tiene URL propia; el resto comparte /proyectos/{id} (sin ?lang).
+  $: canonicalPath = lang === 'ja' ? projectUrl(project.id, 'ja') : `/proyectos/${project.id}`;
+
   $: jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemPage",
     "name": seoNames[lang] || seoNames.es,
     "description": seoDescriptions[lang] || seoDescriptions.es,
-    "url": `https://standarte.es/proyectos/${project.id}`,
+    "url": `https://standarte.es${canonicalPath}`,
     "image": `https://standarte.es${project.image}`,
     "mainEntity": {
       "@type": "CreativeWork",
@@ -295,7 +306,9 @@
   <title>{project.name} | {lang === 'es' ? 'Prototipo 3D' : (lang === 'de' ? '3D-Prototyp' : (lang === 'pt' ? 'Protótipo 3D' : (lang === 'fr' ? 'Prototype 3D' : (lang === 'it' ? 'Prototipo 3D' : (lang === 'zh' ? '3D原型' : (lang === 'hi' ? '3D\u0020\u092a\u094d\u0930\u094b\u091f\u094b\u091f\u093e\u0907\u092a' : (lang === 'ko' ? '3D 프로토타입' : (lang === 'ja' ? '3Dプロトタイプ' : (lang === 'nl' ? '3D-prototype' : '3D Prototype')))))))))} | Standarte</title>
   <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <link rel="canonical" href={`https://standarte.es/proyectos/${project.id}`} />
+  <link rel="canonical" href={`https://standarte.es${canonicalPath}`} />
+  <link rel="alternate" hreflang="ja" href={`https://standarte.es${projectUrl(project.id, 'ja')}`} />
+  <link rel="alternate" hreflang="x-default" href={`https://standarte.es/proyectos/${project.id}`} />
   {@html jsonLdString}
 </svelte:head>
 

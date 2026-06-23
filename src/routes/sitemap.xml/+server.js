@@ -1,5 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
-import { languages, routes, pathFor, portfolios, fairUrl } from '$lib/siteData.js';
+import { languages, routes, pathFor, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import news from '$lib/newsData.json';
 
@@ -50,14 +50,15 @@ export async function GET() {
     });
   });
 
-  // 2. Proyectos (proyectos/[id]) — una única URL canónica por proyecto
+  // 2. Proyectos: URL compartida /proyectos/{id} (x-default + no-ja) y URL propia ja
+  //    /ja/プロジェクト/{slug}. Ambas se enlazan mutuamente por hreflang.
   getAllProjectIds().forEach((id) => {
-    urls.push({
-      loc: `${siteUrl}/proyectos/${id}`,
-      changefreq: 'monthly',
-      priority: '0.7',
-      alternates: []
-    });
+    const alternates = [
+      { hreflang: 'ja', href: `${siteUrl}${projectUrl(id, 'ja')}` },
+      { hreflang: 'x-default', href: `${siteUrl}/proyectos/${id}` }
+    ];
+    urls.push({ loc: `${siteUrl}/proyectos/${id}`, changefreq: 'monthly', priority: '0.7', alternates });
+    urls.push({ loc: `${siteUrl}${projectUrl(id, 'ja')}`, changefreq: 'monthly', priority: '0.7', alternates });
   });
 
   // 3. Noticias (noticias/[slug]) — todos los idiomas viven bajo /blog/

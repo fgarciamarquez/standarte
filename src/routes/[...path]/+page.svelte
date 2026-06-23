@@ -2,6 +2,7 @@
   import Site from '$lib/components/Site.svelte';
   import Noticias from '../blog/+page.svelte';
   import Feria from '$lib/components/Feria.svelte';
+  import ProjectPage from '../proyectos/[id]/+page.svelte';
   export let data;
 </script>
 
@@ -9,6 +10,8 @@
   <Noticias {data} />
 {:else if data.section === 'feria'}
   <Feria {data} />
+{:else if data.section === 'project'}
+  <ProjectPage {data} forcedLang="ja" />
 {:else}
   <Site {...data} />
 {/if}
