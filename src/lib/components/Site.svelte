@@ -958,10 +958,12 @@
 </header>
 
 <main class:home-warm={['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}>
+  <!-- Panel de Pat (asesor de Expansión): flotante, se carga diferido en onMount.
+       Se renderiza en home-family Y en páginas de ciudad (su layout no importa). -->
+  {#if showWelcomeAdvisor && AdvisorComponent}
+    <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />
+  {/if}
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
-    {#if showWelcomeAdvisor && AdvisorComponent}
-      <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />
-    {/if}
     <section id="local-stands" class="section local-stands">
       <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">
