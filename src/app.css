@@ -346,6 +346,10 @@ p {
   padding: 80px 15px;
   scroll-margin-top: 92px;
 }
+/* Sección "Proyectos a medida" del home-family: sin padding superior. */
+#custom {
+  padding-top: 0;
+}
 
 /* En páginas de ciudad (formulario variante "light") el #contact va pegado arriba. */
 #contact.contact-light {
