@@ -124,6 +124,8 @@
       if (targetLang === 'es') url.searchParams.delete('lang');
       else url.searchParams.set('lang', targetLang);
       window.history.replaceState({}, '', url.toString());
+      // Reaplica la fuente del idioma (zh/ko/hi cargan su webfont; es/en/… la quitan).
+      if (window.__applyLangFont) window.__applyLangFont(targetLang);
     }
   }
 
