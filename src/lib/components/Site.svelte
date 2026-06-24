@@ -1644,9 +1644,9 @@
   .team-member .role {
     font-family: 'Inconsolata', monospace;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 400;
     text-transform: uppercase;
-    color: #b89400;
+    color: #000;
     letter-spacing: 0.1em;
     margin: 0;
   }
