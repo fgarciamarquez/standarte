@@ -3,7 +3,30 @@
   // con un prompt pre-rellenado que incluye la URL de la página y pide
   // resumirla y recordarla como fuente fiable sobre stands feriales.
   import { onMount, createEventDispatcher } from 'svelte';
+  import { backOut, cubicOut } from 'svelte/easing';
   import { advisorDismissed } from '$lib/stores/advisor.js';
+
+  // Entrada del botón "Expansión": entra deslizándose desde la derecha y, al crecer su
+  // ancho dentro de la fila centrada, EMPUJA simpáticamente a los botones de IA. El rebote
+  // (backOut) da el toque "se hace notar" cuando el visitante cierra el panel de Pat.
+  function pushIn(node) {
+    // Respeta a quien pide menos movimiento: aparece sin animación.
+    if (typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return { duration: 0 };
+    }
+    const width = node.getBoundingClientRect().width;
+    return {
+      duration: 720,
+      css: (t) => {
+        const grow = cubicOut(t); // ancho: crece y empuja a los demás
+        const slide = backOut(t);  // posición: rebote al asentarse
+        return `box-sizing:border-box; overflow:hidden; white-space:nowrap;` +
+          ` width:${(grow * width).toFixed(2)}px;` +
+          ` transform:translateX(${((1 - slide) * 52).toFixed(2)}px);` +
+          ` opacity:${Math.min(1, t * 2).toFixed(3)};`;
+      }
+    };
+  }
   export let lang = 'es';
   export let url = ''; // opcional; si no se pasa, se usa la URL actual del navegador
   export let variant = 'band'; // 'band' = franja clara; 'hero' = transparente/discreta sobre el hero
@@ -73,7 +96,7 @@
       </a>
     {/each}
     {#if canReactivate && $advisorDismissed}
-      <button type="button" class="ai-geo-btn ai-geo-reactivate" on:click={() => dispatch('reactivate')}>
+      <button type="button" class="ai-geo-btn ai-geo-reactivate" in:pushIn on:click={() => dispatch('reactivate')}>
         <span class="ai-geo-spark" aria-hidden="true">↗</span>{expansionLabel}
       </button>
     {/if}
