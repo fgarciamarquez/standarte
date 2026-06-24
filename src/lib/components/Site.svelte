@@ -156,6 +156,75 @@
     }
   }
 
+  // --- Carrusel 3D dirigido por la posición del ratón ---
+  // Centro del carrusel = parado. Hacia la derecha acelera (derecha→izquierda); hacia la
+  // izquierda invierte el sentido (izquierda→derecha). Cuanto más al borde, más rápido.
+  // Sin el ratón encima, deriva suave derecha→izquierda. La pista lleva 2 copias: se hace
+  // bucle envolviendo el offset sobre el ancho de UNA copia.
+  let carouselViewportEl;
+  let carouselTrackEl;
+  let carOffset = 0;
+  let carVelocity = 0; // px/s; negativo = derecha→izquierda
+  let carSetWidth = 0; // ancho de una copia (la pista contiene dos)
+  let carRaf = null;
+  let carLast = null;
+  const CAR_BASE = 28; // velocidad por defecto (ratón fuera)
+  const CAR_MAX = 680; // velocidad máxima en el borde
+
+  function carMeasure() {
+    if (carouselTrackEl) carSetWidth = carouselTrackEl.scrollWidth / 2;
+  }
+
+  function carTick(t) {
+    if (carLast == null) carLast = t;
+    const dt = Math.min(0.05, (t - carLast) / 1000);
+    carLast = t;
+    carOffset += carVelocity * dt;
+    if (carSetWidth > 0) {
+      while (carOffset <= -carSetWidth) carOffset += carSetWidth;
+      while (carOffset > 0) carOffset -= carSetWidth;
+    }
+    if (carouselTrackEl) carouselTrackEl.style.transform = `translateX(${carOffset.toFixed(2)}px)`;
+    carRaf = requestAnimationFrame(carTick);
+  }
+
+  function carOnMove(e) {
+    if (!carouselViewportEl) return;
+    const r = carouselViewportEl.getBoundingClientRect();
+    let rel = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+    rel = Math.max(-1, Math.min(1, rel));
+    if (Math.abs(rel) < 0.06) rel = 0; // zona muerta central: parar es fácil
+    const eased = Math.sign(rel) * rel * rel; // respuesta cuadrática: más control cerca del centro
+    carVelocity = -eased * CAR_MAX;
+  }
+
+  function carOnLeave() {
+    carVelocity = -CAR_BASE; // deriva por defecto derecha→izquierda
+  }
+
+  onMount(() => {
+    if (typeof window === 'undefined') return;
+    carVelocity = -CAR_BASE;
+    carMeasure();
+    // Re-medir cuando las imágenes ya han maquetado.
+    const m1 = setTimeout(carMeasure, 400);
+    const m2 = setTimeout(carMeasure, 1500);
+    carRaf = requestAnimationFrame(carTick);
+    const onResize = () => carMeasure();
+    window.addEventListener('resize', onResize);
+    return () => {
+      if (carRaf) cancelAnimationFrame(carRaf);
+      clearTimeout(m1);
+      clearTimeout(m2);
+      window.removeEventListener('resize', onResize);
+    };
+  });
+
+  // Re-medir el ancho cuando cambie el nº de fichas reveladas.
+  $: if (carouselItems && carouselTrackEl) {
+    requestAnimationFrame(carMeasure);
+  }
+
   const modularEnabled = false;
   const languageLocales = {
     es: 'es_ES',
@@ -1172,8 +1241,9 @@
       <div class="carousel-container">
         <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'fr' ? 'Précédent' : (lang === 'it' ? 'Precedente' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))))}>‹</button>
         
-        <div class="carousel-viewport">
-          <div class="carousel-track">
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <div class="carousel-viewport" bind:this={carouselViewportEl} on:mousemove={carOnMove} on:mouseleave={carOnLeave} role="presentation">
+          <div class="carousel-track" bind:this={carouselTrackEl}>
             {#each [...carouselItems, ...carouselItems] as project, dupIdx}
               <article class="carousel-card" style="width: calc(100% / var(--visible-count));" aria-hidden={dupIdx >= carouselItems.length || undefined}>
                 <div class="carousel-card-inner">

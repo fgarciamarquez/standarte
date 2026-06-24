@@ -2233,12 +2233,11 @@ footer {
   content-visibility: visible;
   contain: none;
 }
+/* El desplazamiento lo controla JS según la X del ratón (centro=parado, bordes=rápido,
+   los lados invierten el sentido). Sin animación CSS ni pausa en hover. */
 .prototypes-carousel .carousel-track {
   width: max-content;
-  animation: carousel3d-marquee 60s linear infinite;
-}
-.prototypes-carousel .carousel-viewport:hover .carousel-track {
-  animation-play-state: paused;
+  will-change: transform;
 }
 .prototypes-carousel .carousel-card {
   width: 380px !important;
@@ -2247,10 +2246,6 @@ footer {
   .prototypes-carousel .carousel-card {
     width: 86vw !important;
   }
-}
-@keyframes carousel3d-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 .prototypes-carousel .section-header h2 {
