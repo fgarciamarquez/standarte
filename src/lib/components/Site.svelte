@@ -4,6 +4,7 @@
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
+  import { portfolioVideos } from '$lib/videosData.js';
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
@@ -80,14 +81,9 @@
 
   let menuOpen = false;
   let lightboxProject = null;
-  // Vídeos 3D del portfolio. El tile muestra solo la miniatura JPG (ligera, lazy);
-  // el .mp4 NO se descarga hasta que se abre en la ventana flotante (lightbox).
-  // Se omite el vídeo 5 a propósito.
-  const PORTFOLIO_VIDEO_NUMS = [1, 2, 3, 10, 6, 7, 8, 9];
-  const portfolioVideos = PORTFOLIO_VIDEO_NUMS.map((n) => ({
-    src: `/img/proyectos_stand_3d_standarte_${n}.mp4`,
-    thumb: `/img/proyectos_stand_3d_standarte_${n}_thumb.jpg`
-  }));
+  // Vídeos 3D del portfolio (definidos en $lib/videosData.js, compartidos con el sitemap y
+  // las páginas de visualización). El tile es la miniatura JPG (lazy) y enlaza a la watch page;
+  // el .mp4 NO se descarga hasta abrir la ventana flotante (lightbox).
   let videoLightboxSrc = null;
   let galleryExpanded = false;
   let citiesExpanded = false;
@@ -1123,10 +1119,10 @@
         <div class="portfolio-videos">
           {#each portfolioVideos as v, vi}
             <div class="video-cell">
-              <button type="button" class="video-thumb" on:click={() => openVideoLightbox(v.src)} aria-label={`Ver vídeo 3D ${vi + 1}`}>
+              <a class="video-thumb" href={`/videos/${v.slug}`} on:click|preventDefault={() => openVideoLightbox(v.src)} aria-label={v.title}>
                 <img src={v.thumb} alt={`Vídeo 3D de stand Standarte ${vi + 1}`} width="320" height="180" loading="lazy" decoding="async" />
                 <span class="video-thumb-overlay"><span class="play-badge"></span></span>
-              </button>
+              </a>
             </div>
           {/each}
         </div>

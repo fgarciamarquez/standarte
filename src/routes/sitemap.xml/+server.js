@@ -1,6 +1,7 @@
 import { fairsData } from '$lib/fairsData.js';
 import { languages, routes, pathFor, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
 import { getAllProjectIds } from '$lib/projectData.js';
+import { portfolioVideos } from '$lib/videosData.js';
 import news from '$lib/newsData.json';
 
 export const prerender = true;
@@ -28,15 +29,9 @@ function xmlEscape(s) {
     .replace(/'/g, '&apos;');
 }
 
-// Vídeos 3D del portfolio (embebidos en la home). Extensión Video de Google para
-// que Search Console los indexe: cada uno con miniatura, título, descripción y .mp4.
-const PORTFOLIO_VIDEO_NUMS = [1, 2, 3, 10, 6, 7, 8, 9]; // el 4 se sustituyó por el 10; el 5 se omite
-const portfolioVideoEntries = PORTFOLIO_VIDEO_NUMS.map((n, i) => ({
-  thumbnail: `${siteUrl}/img/proyectos_stand_3d_standarte_${n}_thumb.jpg`,
-  title: `Stand 3D Standarte — Proyecto ${i + 1}`,
-  description: `Recorrido en 3D de un stand ferial diseñado y montado a medida por Standarte (proyecto ${i + 1}).`,
-  content: `${siteUrl}/img/proyectos_stand_3d_standarte_${n}.mp4`
-}));
+// Extensión Video de Google. Cada vídeo se declara en SU página de visualización
+// (watch page /videos/<slug>), que es donde Google exige encontrar el reproductor;
+// loc = watch page, player_loc = watch page, content_loc = .mp4.
 
 export async function GET() {
   const urls = [];
@@ -64,9 +59,7 @@ export async function GET() {
           loc: `${siteUrl}${pathFor(lang, section)}`,
           changefreq: 'monthly',
           priority: section === 'home' ? '1.0' : '0.8',
-          alternates,
-          // Los vídeos del portfolio se declaran en la home en español (donde se reproducen).
-          videos: section === 'home' && lang === 'es' ? portfolioVideoEntries : undefined
+          alternates
         });
       }
     });
@@ -135,6 +128,28 @@ export async function GET() {
     });
   });
 
+  // 6. Páginas de visualización de vídeo (/videos/<slug>) — una URL por vídeo, con el
+  //    reproductor visible. Cada una declara su <video:video> (watch page para Google).
+  portfolioVideos.forEach((v) => {
+    const watch = `${siteUrl}/videos/${v.slug}`;
+    urls.push({
+      loc: watch,
+      changefreq: 'monthly',
+      priority: '0.6',
+      alternates: [],
+      videos: [
+        {
+          thumbnail: `${siteUrl}${v.thumb}`,
+          title: v.title,
+          description: v.description,
+          content: `${siteUrl}${v.src}`,
+          player: watch,
+          publicationDate: v.uploadDate
+        }
+      ]
+    });
+  });
+
   // Generar XML
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
@@ -147,6 +162,8 @@ ${url.alternates.map(alt => `    <xhtml:link rel="alternate" hreflang="${alt.hre
       <video:title>${xmlEscape(v.title)}</video:title>
       <video:description>${xmlEscape(v.description)}</video:description>
       <video:content_loc>${v.content}</video:content_loc>
+      <video:player_loc>${v.player}</video:player_loc>
+      <video:publication_date>${v.publicationDate}</video:publication_date>
     </video:video>`).join('\n') : ''}
   </url>`).join('\n')}
 </urlset>`;
