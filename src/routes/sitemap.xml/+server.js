@@ -18,6 +18,26 @@ const siteUrl = 'https://standarte.es';
 //   del build en todo degrada la confianza de Google en el campo.
 // - Cada grupo hreflang lleva x-default apuntando a la versión española.
 
+// Escape mínimo para texto dentro de XML (títulos/descripciones de vídeo).
+function xmlEscape(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+// Vídeos 3D del portfolio (embebidos en la home). Extensión Video de Google para
+// que Search Console los indexe: cada uno con miniatura, título, descripción y .mp4.
+const PORTFOLIO_VIDEO_NUMS = [1, 2, 3, 10, 6, 7, 8, 9]; // el 4 se sustituyó por el 10; el 5 se omite
+const portfolioVideoEntries = PORTFOLIO_VIDEO_NUMS.map((n, i) => ({
+  thumbnail: `${siteUrl}/img/proyectos_stand_3d_standarte_${n}_thumb.jpg`,
+  title: `Stand 3D Standarte — Proyecto ${i + 1}`,
+  description: `Recorrido en 3D de un stand ferial diseñado y montado a medida por Standarte (proyecto ${i + 1}).`,
+  content: `${siteUrl}/img/proyectos_stand_3d_standarte_${n}.mp4`
+}));
+
 export async function GET() {
   const urls = [];
 
@@ -44,7 +64,9 @@ export async function GET() {
           loc: `${siteUrl}${pathFor(lang, section)}`,
           changefreq: 'monthly',
           priority: section === 'home' ? '1.0' : '0.8',
-          alternates
+          alternates,
+          // Los vídeos del portfolio se declaran en la home en español (donde se reproducen).
+          videos: section === 'home' && lang === 'es' ? portfolioVideoEntries : undefined
         });
       }
     });
@@ -115,12 +137,17 @@ export async function GET() {
 
   // Generar XML
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 ${urls.map(url => `  <url>
     <loc>${url.loc}</loc>
 ${url.lastmod ? `    <lastmod>${url.lastmod}</lastmod>\n` : ''}    <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
-${url.alternates.map(alt => `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`).join('\n')}
+${url.alternates.map(alt => `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`).join('\n')}${url.videos ? '\n' + url.videos.map(v => `    <video:video>
+      <video:thumbnail_loc>${v.thumbnail}</video:thumbnail_loc>
+      <video:title>${xmlEscape(v.title)}</video:title>
+      <video:description>${xmlEscape(v.description)}</video:description>
+      <video:content_loc>${v.content}</video:content_loc>
+    </video:video>`).join('\n') : ''}
   </url>`).join('\n')}
 </urlset>`;
 

@@ -80,6 +80,15 @@
 
   let menuOpen = false;
   let lightboxProject = null;
+  // Vídeos 3D del portfolio. El tile muestra solo la miniatura JPG (ligera, lazy);
+  // el .mp4 NO se descarga hasta que se abre en la ventana flotante (lightbox).
+  // Se omite el vídeo 5 a propósito.
+  const PORTFOLIO_VIDEO_NUMS = [1, 2, 3, 10, 6, 7, 8, 9];
+  const portfolioVideos = PORTFOLIO_VIDEO_NUMS.map((n) => ({
+    src: `/img/proyectos_stand_3d_standarte_${n}.mp4`,
+    thumb: `/img/proyectos_stand_3d_standarte_${n}_thumb.jpg`
+  }));
+  let videoLightboxSrc = null;
   let galleryExpanded = false;
   let citiesExpanded = false;
   let legalModal = null;
@@ -543,6 +552,14 @@
     lightboxProject = null;
   }
 
+  function openVideoLightbox(src) {
+    videoLightboxSrc = src;
+  }
+
+  function closeVideoLightbox() {
+    videoLightboxSrc = null;
+  }
+
   function openLegalModal(type) {
     const titles = {
       privacy: copy.legal.privacy,
@@ -566,6 +583,11 @@
 
   function handleKeydown(event) {
     if (event.key === 'Escape') {
+      if (videoLightboxSrc) {
+        closeVideoLightbox();
+        return;
+      }
+
       if (lightboxProject) {
         closeLightbox();
         return;
@@ -1096,6 +1118,18 @@
             </div>
           </div>
         {/each}
+
+        <!-- Vídeos 3D: miniaturas pequeñas (rectángulos 16:9) que abren la ventana flotante. -->
+        <div class="portfolio-videos">
+          {#each portfolioVideos as v, vi}
+            <div class="video-cell">
+              <button type="button" class="video-thumb" on:click={() => openVideoLightbox(v.src)} aria-label={`Ver vídeo 3D ${vi + 1}`}>
+                <img src={v.thumb} alt={`Vídeo 3D de stand Standarte ${vi + 1}`} width="320" height="180" loading="lazy" decoding="async" />
+                <span class="video-thumb-overlay"><span class="play-badge"></span></span>
+              </button>
+            </div>
+          {/each}
+        </div>
       </div>
 
       {#if !galleryExpanded && filteredPortfolios.length > GALLERY_VISIBLE}
@@ -1115,6 +1149,17 @@
               <strong>{getProjectTitle(lightboxProject)}</strong>
               <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
             </div>
+          </div>
+        </div>
+      {/if}
+
+      {#if videoLightboxSrc}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Vídeo de proyecto 3D" tabindex="-1" on:click={(e) => { if (e.target === e.currentTarget) closeVideoLightbox(); }}>
+          <div class="lightbox-window lightbox-window-video" role="document">
+            <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeVideoLightbox}>×</button>
+            <!-- svelte-ignore a11y_media_has_caption -->
+            <video src={videoLightboxSrc} class="lightbox-video" controls autoplay playsinline></video>
           </div>
         </div>
       {/if}
