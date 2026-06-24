@@ -13,6 +13,13 @@
   $: project = data.project;
   // Fondo del header: primera imagen de la galería del proyecto (fallback al genérico).
   $: headerImage = (project && project.images && project.images.length) ? project.images[0] : '/img/bg2.webp';
+  // Galería unificada: el vídeo (si existe) va primero y luego las imágenes. Tanto la
+  // rejilla como la ventana flotante (lightbox) operan sobre este array, así el vídeo
+  // entra en el flujo de "siguiente/anterior" como una imagen más.
+  $: media = [
+    ...(project && project.video ? [{ type: 'video', src: project.video, poster: (project.images && project.images[0]) || null }] : []),
+    ...((project && project.images ? project.images : []).map((src) => ({ type: 'image', src })))
+  ];
 
   let isScrolled = false;
   let activeImageIndex = -1;
@@ -142,12 +149,12 @@
 
   function nextImage() {
     if (activeImageIndex === -1) return;
-    activeImageIndex = (activeImageIndex + 1) % project.images.length;
+    activeImageIndex = (activeImageIndex + 1) % media.length;
   }
 
   function prevImage() {
     if (activeImageIndex === -1) return;
-    activeImageIndex = (activeImageIndex - 1 + project.images.length) % project.images.length;
+    activeImageIndex = (activeImageIndex - 1 + media.length) % media.length;
   }
 
   function handleKeydown(event) {
@@ -401,15 +408,22 @@
       </p>
     </div>
 
-    <!-- Grid de Imágenes del Proyecto -->
+    <!-- Grid de Medios del Proyecto (vídeo + imágenes) -->
     <div class="project-gallery-grid">
-      {#each project.images as imgUrl, index}
-        <div class="gallery-item-wrap">
-          <button type="button" class="gallery-item-btn" on:click={() => openLightbox(index)} aria-label={`Ver imagen ${index + 1} de ${project.name}`}>
-            <img src={imgUrl.replace('.avif', '-thumb.avif')} alt={`Vista del stand ${project.name} - ${index + 1}`} loading="lazy" />
-            <span class="gallery-item-overlay">
-              <span class="eye-icon-white"></span>
-            </span>
+      {#each media as item, index}
+        <div class="gallery-item-wrap" class:gallery-item-video={item.type === 'video'}>
+          <button type="button" class="gallery-item-btn" on:click={() => openLightbox(index)} aria-label={item.type === 'video' ? `Ver vídeo de ${project.name}` : `Ver imagen ${index + 1} de ${project.name}`}>
+            {#if item.type === 'video'}
+              <video class="gallery-video-thumb" src={item.src} muted playsinline preload="metadata" tabindex="-1"></video>
+              <span class="gallery-item-overlay gallery-item-overlay-video">
+                <span class="play-icon-white"></span>
+              </span>
+            {:else}
+              <img src={item.src.replace('.avif', '-thumb.avif')} alt={`Vista del stand ${project.name} - ${index + 1}`} loading="lazy" />
+              <span class="gallery-item-overlay">
+                <span class="eye-icon-white"></span>
+              </span>
+            {/if}
           </button>
         </div>
       {/each}
@@ -438,7 +452,12 @@
 
       <div class="lightbox-window">
         <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
-        <img src={project.images[activeImageIndex]} alt={`Render de stand 3D ${activeImageIndex + 1} de ${project.name}`} class="lightbox-image" />
+        {#if media[activeImageIndex] && media[activeImageIndex].type === 'video'}
+          <!-- svelte-ignore a11y_media_has_caption -->
+          <video src={media[activeImageIndex].src} class="lightbox-image" controls autoplay playsinline></video>
+        {:else}
+          <img src={media[activeImageIndex].src} alt={`Render de stand 3D ${activeImageIndex + 1} de ${project.name}`} class="lightbox-image" />
+        {/if}
       </div>
 
       <button class="lightbox-nav next" type="button" aria-label="Siguiente" on:click={nextImage}>›</button>
@@ -716,6 +735,51 @@
     position: relative;
     display: block;
     overflow: hidden;
+  }
+
+  /* Vídeo del proyecto: ocupa el tile como una imagen más; al hacer clic abre el lightbox. */
+  .gallery-item-video {
+    background-color: #000;
+  }
+
+  .gallery-video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gallery-item-btn:hover .gallery-video-thumb {
+    transform: scale(1.06);
+  }
+
+  /* Marca "reproducir": visible siempre en el tile de vídeo para distinguirlo. */
+  .gallery-item-overlay-video {
+    opacity: 1;
+    background-color: rgba(22, 25, 28, 0.3);
+  }
+
+  .play-icon-white {
+    width: 46px;
+    height: 46px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: relative;
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  .play-icon-white::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 0 9px 15px;
+    border-color: transparent transparent transparent #fff;
   }
 
   .gallery-item-btn img {
