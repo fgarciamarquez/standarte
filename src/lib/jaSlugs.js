@@ -140,6 +140,9 @@ export const jaFairSlugs = {
 
 /** id de proyecto (latino) -> slug japonés */
 export const jaProjectSlugs = {
+  "stand_para_herrajes_puertas_ventanas_madrid": "ドア窓金具-マドリード",
+  "stand_para_bodega_familia_bujanda_ciudad_real": "ワイナリー-シウダー・レアル",
+  "stand_para_distribucion_vinos_ciudad_real": "ワイン流通-シウダー・レアル",
   "stand_para_empresa_de_software_de_trafico_aereo_en_madrid": "航空交通管制ソフトウェア企業-マドリード",
   "stand_para_empresa_de_apuestas_online_en_madrid": "オンラインベッティング企業-マドリード",
   "stand_para_empresa_de_software_de_apuestas_en_malaga": "ベッティングソフトウェア企業-マラガ",
