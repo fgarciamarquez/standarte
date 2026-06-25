@@ -144,7 +144,6 @@ export async function GET() {
           title: v.title,
           description: v.description,
           content: `${siteUrl}${v.src}`,
-          player: watch,
           publicationDate: v.uploadDate
         }
       ]
@@ -163,7 +162,6 @@ ${url.alternates.map(alt => `    <xhtml:link rel="alternate" hreflang="${alt.hre
       <video:title>${xmlEscape(v.title)}</video:title>
       <video:description>${xmlEscape(v.description)}</video:description>
       <video:content_loc>${v.content}</video:content_loc>
-      <video:player_loc>${v.player}</video:player_loc>
       <video:publication_date>${v.publicationDate}</video:publication_date>
     </video:video>`).join('\n') : ''}
   </url>`).join('\n')}
