@@ -425,13 +425,14 @@
   // schema.org/BreadcrumbList para reforzar la estructura ante los buscadores.
   $: breadcrumbItems = (() => {
     const items = [{ name: homeLabel[lang] || 'Home', href: pathFor(lang, 'home') }];
+    // El nivel de ciudad se incluye SOLO si tiene página propia (URL). Una ciudad sin
+    // página (p. ej. París) generaría un itemListElement intermedio sin "item", que Google
+    // marca como dato estructurado inválido. En ese caso se omite (queda Inicio / Feria).
     if (currentCityKey) {
       items.push({
         name: cityData[currentCityKey]?.city?.[lang] || cityData[currentCityKey]?.city?.es,
         href: pathFor(lang, currentCityKey)
       });
-    } else if (fair?.city) {
-      items.push({ name: localizedCity, href: null });
     }
     items.push({ name: fair.name, href: null });
     return items;
@@ -583,6 +584,7 @@
                   <a itemprop="item" href={item.href}><span itemprop="name">{item.name}</span></a>
                 {:else}
                   <span class="current" itemprop="name" aria-current={i === breadcrumbItems.length - 1 ? 'page' : undefined}>{item.name}</span>
+                  <link itemprop="item" href={canonical} />
                 {/if}
                 <meta itemprop="position" content={i + 1} />
               </li>
