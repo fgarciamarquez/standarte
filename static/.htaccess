@@ -5,6 +5,14 @@ DirectoryIndex index.html index.php
 # y como el sitemap y las canonicas usan la URL sin barra, Google las ve como "pagina con redireccion".
 DirectorySlash Off
 
+# Apache, al construir el Location de redirecciones con destino relativo (los 301 de
+# renombrado de ciudades y la migración ja), añade el puerto :443 -> https://standarte.es:443/...
+# Google marcaba esas URLs como "HTTPS no evaluado". Esta directiva limpia el puerto y deja
+# https://standarte.es/... en todas las redirecciones, sin tener que reescribir 366 reglas.
+<IfModule mod_headers.c>
+  Header always edit Location "^https://standarte\.es:443/(.*)$" "https://standarte.es/$1"
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
