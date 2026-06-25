@@ -59,9 +59,15 @@
     <p class="video-desc">{video.description}</p>
 
     <nav class="video-nav">
-      <a href={`${pathFor('es', 'home')}#custom`} class="btn-back">
-        ← Ver toda la galería de stands 3D
-      </a>
+      {#if video.projectId}
+        <a href={`/proyectos/${video.projectId}`} class="btn-back">
+          ← Ver el proyecto completo
+        </a>
+      {:else}
+        <a href={`${pathFor('es', 'home')}#custom`} class="btn-back">
+          ← Ver toda la galería de stands 3D
+        </a>
+      {/if}
     </nav>
   </article>
 </main>

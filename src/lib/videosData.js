@@ -4,8 +4,9 @@
 // Orden de aparición. El vídeo 4 se sustituyó por el 10; el 5 se omite.
 const NUMS = [1, 2, 3, 10, 6, 7, 8, 9];
 
-// Fecha de publicación (uploadDate) para el VideoObject / sitemap. Fija, no dinámica.
-const UPLOAD_DATE = '2026-06-24';
+// Fecha de publicación (uploadDate) para el VideoObject / sitemap. ISO 8601 CON zona
+// horaria (Google la exige; España en junio = CEST, +02:00). Fija, no dinámica.
+const UPLOAD_DATE = '2026-06-24T09:00:00+02:00';
 
 export const portfolioVideos = NUMS.map((num, i) => {
   const n = i + 1;
