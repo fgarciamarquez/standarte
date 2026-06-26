@@ -50,6 +50,12 @@ export const siteVideos = [
   }
 ];
 
+// Subconjunto que se muestra en la galería de la home. Las watch pages (/videos/<slug>) y el
+// sitemap siguen usando portfolioVideos COMPLETO (slugs estables, ya indexados): aquí solo
+// ocultamos algunos vídeos del carrusel de la portada, sin renumerar ni perder esas páginas.
+const GALLERY_EXCLUDE = new Set(['proyecto-3d-3', 'proyecto-3d-5', 'proyecto-3d-6', 'proyecto-3d-7']);
+export const galleryVideos = portfolioVideos.filter((v) => !GALLERY_EXCLUDE.has(v.slug));
+
 export function getVideoBySlug(slug) {
   return portfolioVideos.find((v) => v.slug === slug) || null;
 }

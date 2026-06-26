@@ -4,7 +4,7 @@
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
-  import { portfolioVideos } from '$lib/videosData.js';
+  import { galleryVideos } from '$lib/videosData.js';
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
@@ -1186,7 +1186,7 @@
 
         <!-- Vídeos 3D: miniaturas pequeñas (rectángulos 16:9) que abren la ventana flotante. -->
         <div class="portfolio-videos">
-          {#each portfolioVideos as v, vi}
+          {#each galleryVideos as v, vi}
             <div class="video-cell">
               <a class="video-thumb" href={`/videos/${v.slug}`} on:click|preventDefault={() => openVideoLightbox(v.src)} aria-label={v.title}>
                 <img src={v.thumb} alt={`Vídeo 3D de stand Standarte ${vi + 1}`} width="320" height="180" loading="lazy" decoding="async" />
