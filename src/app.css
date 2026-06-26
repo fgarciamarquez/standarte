@@ -1118,6 +1118,18 @@ article:hover .city-cover-image,
   color: #fff;
   text-align: center;
 }
+/* Área desplazable: la imagen/vídeo + el formulario de Pat pueden superar la altura de la
+   ventana; el botón de cierre queda fuera de este contenedor para no recortarse al hacer scroll. */
+.lightbox-body {
+  max-height: 88vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.lightbox-body .project-advisor {
+  max-width: 940px;
+  margin: 22px auto 0;
+  text-align: left;
+}
 
 .lightbox-window img {
   max-width: 100%;

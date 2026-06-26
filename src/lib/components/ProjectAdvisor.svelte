@@ -4,6 +4,8 @@
 
   export let lang = 'es';
   export let project = null;
+  // Tema oscuro (p. ej. al pie del lightbox de la galería, sobre fondo negro).
+  export let dark = false;
 
   let name = '';
   let email = '';
@@ -209,7 +211,7 @@
   }
 </script>
 
-<section class="project-advisor">
+<section class="project-advisor" class:dark>
   <div class="pat-card">
     <div class="pat-profile" class:submitted={status === 'success'}>
       <img
@@ -510,6 +512,42 @@
     color: #d32f2f !important;
     font-weight: 600;
     margin: 0;
+  }
+
+  /* ─── Tema oscuro (al pie del lightbox de la galería, sobre fondo negro) ─── */
+  .project-advisor.dark .pat-card {
+    background: #1c2024;
+    border-color: #34393e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+  .project-advisor.dark .pat-bubble {
+    background: #262b30;
+  }
+  .project-advisor.dark .pat-bubble::after {
+    border-right-color: #262b30;
+  }
+  .project-advisor.dark .pat-name {
+    color: #fff;
+  }
+  .project-advisor.dark .pat-intro {
+    color: #c8ccd0;
+  }
+  .project-advisor.dark .pat-form-label {
+    color: #9aa0a6;
+  }
+  .project-advisor.dark .pat-form-control {
+    background: #14171a;
+    border-color: #3a4046;
+    color: #f0f0f0;
+  }
+  .project-advisor.dark .pat-form-control::placeholder {
+    color: #7c828a;
+  }
+  .project-advisor.dark .text-success {
+    color: #7fd488 !important;
+  }
+  .project-advisor.dark .text-error {
+    color: #ff8a80 !important;
   }
 
   @media (max-width: 768px) {

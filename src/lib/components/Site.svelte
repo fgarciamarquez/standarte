@@ -5,6 +5,7 @@
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
+  import ProjectAdvisor from './ProjectAdvisor.svelte';
   import { LOCALES, localBusinessSchema } from '$lib/seo.js';
   import MicroStand from './MicroStand.svelte';
   import ContactForm from './ContactForm.svelte';
@@ -85,6 +86,13 @@
   // las páginas de visualización). El tile es la miniatura JPG (lazy) y enlaza a la watch page;
   // el .mp4 NO se descarga hasta abrir la ventana flotante (lightbox).
   let videoLightboxSrc = null;
+  // Proyecto de referencia del vídeo abierto (para el formulario de Pat del lightbox).
+  $: lightboxVideoProject = videoLightboxSrc
+    ? (() => {
+        const v = galleryVideos.find((g) => g.src === videoLightboxSrc);
+        return v ? { name: v.title } : null;
+      })()
+    : null;
   let galleryExpanded = false;
   let citiesExpanded = false;
   let legalModal = null;
@@ -1212,10 +1220,13 @@
         <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={getProjectTitle(lightboxProject)} aria-describedby="project-lightbox-description" tabindex="-1">
           <div class="lightbox-window" role="document">
             <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
-            <img src={`/${lightboxProject.full}`} alt={getProjectTitle(lightboxProject)} />
-            <div class="lightbox-caption">
-              <strong>{getProjectTitle(lightboxProject)}</strong>
-              <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
+            <div class="lightbox-body">
+              <img src={`/${lightboxProject.full}`} alt={getProjectTitle(lightboxProject)} />
+              <div class="lightbox-caption">
+                <strong>{getProjectTitle(lightboxProject)}</strong>
+                <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
+              </div>
+              <ProjectAdvisor {lang} project={lightboxProject} dark />
             </div>
           </div>
         </div>
@@ -1226,8 +1237,11 @@
         <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Vídeo de proyecto 3D" tabindex="-1" on:click={(e) => { if (e.target === e.currentTarget) closeVideoLightbox(); }}>
           <div class="lightbox-window lightbox-window-video" role="document">
             <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeVideoLightbox}>×</button>
-            <!-- svelte-ignore a11y_media_has_caption -->
-            <video src={videoLightboxSrc} class="lightbox-video" controls autoplay playsinline></video>
+            <div class="lightbox-body">
+              <!-- svelte-ignore a11y_media_has_caption -->
+              <video src={videoLightboxSrc} class="lightbox-video" controls autoplay playsinline></video>
+              <ProjectAdvisor {lang} project={lightboxVideoProject} dark />
+            </div>
           </div>
         </div>
       {/if}
