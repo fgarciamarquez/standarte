@@ -1130,6 +1130,14 @@ article:hover .city-cover-image,
   margin: 22px auto 0;
   text-align: left;
 }
+/* Lightbox de imagen (no el de vídeo): la imagen se limita al mismo ancho que el formulario
+   de Pat (940px) y se reduce su altura, para que no quede una franja de scroll a su derecha. */
+.lightbox-window:not(.lightbox-window-video) {
+  max-width: min(940px, 94vw);
+}
+.lightbox-window:not(.lightbox-window-video) .lightbox-body img {
+  max-height: 65vh;
+}
 
 .lightbox-window img {
   max-width: 100%;

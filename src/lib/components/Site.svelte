@@ -1226,7 +1226,7 @@
                 <strong>{getProjectTitle(lightboxProject)}</strong>
                 <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
               </div>
-              <ProjectAdvisor {lang} project={lightboxProject} dark />
+              <ProjectAdvisor {lang} project={lightboxProject} source={lightboxProject?.full} dark />
             </div>
           </div>
         </div>
@@ -1240,7 +1240,7 @@
             <div class="lightbox-body">
               <!-- svelte-ignore a11y_media_has_caption -->
               <video src={videoLightboxSrc} class="lightbox-video" controls autoplay playsinline></video>
-              <ProjectAdvisor {lang} project={lightboxVideoProject} dark />
+              <ProjectAdvisor {lang} project={lightboxVideoProject} source={videoLightboxSrc} dark />
             </div>
           </div>
         </div>

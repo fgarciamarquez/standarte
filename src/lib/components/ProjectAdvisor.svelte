@@ -6,6 +6,9 @@
   export let project = null;
   // Tema oscuro (p. ej. al pie del lightbox de la galería, sobre fondo negro).
   export let dark = false;
+  // Origen concreto del envío (p. ej. la imagen/vídeo ampliado en la galería). Si se indica,
+  // se añade al campo oculto form_url para saber desde qué imagen se envió el formulario.
+  export let source = '';
 
   let name = '';
   let email = '';
@@ -171,6 +174,9 @@
 
   $: t = texts[lang] || texts.es;
 
+  // Valor del campo oculto form_url: la URL de la página + (si procede) la imagen/vídeo de origen.
+  $: formUrlValue = source ? `${sourceUrl} | imagen: ${source}` : sourceUrl;
+
   async function handleSubmit(event) {
     event.preventDefault();
     if (status === 'sending') return;
@@ -186,7 +192,7 @@
     formData.append('form_email', email);
     // Reutilizamos form_feria para llevar al equipo el proyecto de referencia + la petición.
     formData.append('form_feria', `[Proyecto: ${proyectoRef}] ${description}`.trim());
-    formData.append('form_url', sourceUrl || (typeof window !== 'undefined' ? window.location.href : ''));
+    formData.append('form_url', formUrlValue || (typeof window !== 'undefined' ? window.location.href : ''));
     formData.append('form_website', honeypot);
     formData.append('form_elapsed', String(mountTime ? Date.now() - mountTime : 0));
     formData.append('form_privacidad', '1');
@@ -239,7 +245,7 @@
 
     {#if status !== 'success'}
       <form class="pat-form" on:submit={handleSubmit}>
-        <input type="hidden" name="form_url" bind:value={sourceUrl} />
+        <input type="hidden" name="form_url" value={formUrlValue} />
         <!-- Honeypot anti-spam: oculto a humanos; si un bot lo rellena, se descarta el envío. -->
         <div class="pat-hp" aria-hidden="true">
           <label for="pat_website">No rellenar este campo</label>
