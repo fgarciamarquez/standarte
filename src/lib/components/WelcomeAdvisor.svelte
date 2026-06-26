@@ -6,6 +6,12 @@
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let lang = 'en';
+  // Modo "embebido": inline dentro de una página (p. ej. bajo una noticia). Ocupa el 100%
+  // del ancho del contenedor padre (para igualar el cuerpo del artículo).
+  export let embedded = false;
+  // Switch "Activo" del pie que oculta el panel durante la sesión. En modo embebido no
+  // queremos que se pueda desactivar, así que se pasa dismissible={false}.
+  export let dismissible = true;
 
   const dispatch = createEventDispatcher();
 
@@ -640,7 +646,7 @@
   }
 </script>
 
-<section class="welcome-advisor-container">
+<section class="welcome-advisor-container" class:embedded>
   <div class="welcome-advisor-card" class:expanded={cardExpanded}>
     
     <div class="advisor-profile" class:visible={profileVisible} class:submitted={status === 'success'}>
@@ -779,7 +785,7 @@
 
   </div>
 
-  {#if cardExpanded && status !== 'success'}
+  {#if dismissible && cardExpanded && status !== 'success'}
     <div class="advisor-active-tab" transition:fade>
       <label class="advisor-active-toggle">
         <input type="checkbox" checked role="switch" aria-label={t.activeLabel} on:change={onActiveToggle} />
@@ -812,6 +818,15 @@
   .welcome-advisor-card.expanded {
     max-height: 1200px;
     opacity: 1;
+  }
+
+  /* Modo embebido: el panel ocupa todo el ancho del contenedor padre (iguala el
+     cuerpo del artículo en las páginas de noticia), sin padding lateral propio. */
+  .welcome-advisor-container.embedded {
+    padding: 36px 0 10px;
+  }
+  .welcome-advisor-container.embedded .welcome-advisor-card {
+    max-width: 100%;
   }
 
   .advisor-profile {

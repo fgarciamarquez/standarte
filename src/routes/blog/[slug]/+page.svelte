@@ -2,12 +2,22 @@
   import { onMount } from 'svelte';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
+  import WelcomeAdvisor from '$lib/components/WelcomeAdvisor.svelte';
   export let data;
   $: article = data.article;
 
   $: lang = article?.lang || 'es';
   let menuOpen = false;
   let isScrolled = false;
+
+  // Panel de Pat (WelcomeAdvisor) bajo la noticia + modal de privacidad que abre su enlace.
+  let showAdvisor = true;
+  let legalModal = null;
+  function openLegalModal(type) {
+    const titles = { privacy: currentCopy.legal?.privacy, legalNotice: currentCopy.legal?.legalNotice, cookies: currentCopy.legal?.cookies };
+    legalModal = { title: titles[type], content: currentCopy.legalText?.[type] || copy.es.legalText?.[type] || '' };
+  }
+  function closeLegalModal() { legalModal = null; }
 
   $: currentCopy = (() => {
     const byLang = copy[lang];
@@ -358,19 +368,10 @@
       {@html article.content}
     </div>
 
-    <!-- Bloque de llamado a la acción (CTA) Premium -->
-    <div class="article-cta-box">
-      <div class="cta-decorator"></div>
-      <h3>{(i18nDetail[lang] || i18nDetail.es).ctaTitle}</h3>
-      <p>
-        {@html (i18nDetail[lang] || i18nDetail.es).ctaText}
-      </p>
-      <div class="cta-actions">
-        <a href={pathFor(lang, 'contact')} class="btn-cta-gold">
-          {(i18nDetail[lang] || i18nDetail.es).ctaBtn}
-        </a>
-      </div>
-    </div>
+    <!-- Panel de Pat: invita a elegir ciudad y feria para pedir una propuesta. -->
+    {#if showAdvisor}
+      <WelcomeAdvisor {lang} embedded dismissible={false} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => (showAdvisor = false)} />
+    {/if}
   </article>
 </main>
 
@@ -415,6 +416,19 @@
     </div>
   </div>
 </footer>
+
+<!-- Modal legal (lo abre el enlace de privacidad del panel de Pat). -->
+{#if legalModal}
+  <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+  <div class="legal-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title" tabindex="-1" on:click|self={closeLegalModal}>
+    <div class="legal-modal-window" role="document">
+      <button class="legal-modal-close" type="button" aria-label="Cerrar" on:click={closeLegalModal}>×</button>
+      <div class="legal-modal-brand"><img src="/img/mini_logo_flag.svg" alt="" /></div>
+      <h2 id="legal-modal-title">{legalModal.title}</h2>
+      <div class="legal-modal-content">{@html legalModal.content}</div>
+    </div>
+  </div>
+{/if}
 
 <style>
   /* Cabecera y Navbar */
@@ -557,63 +571,6 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   }
 
-  /* Caja CTA Premium */
-  .article-cta-box {
-    margin-top: 50px;
-    background-color: #292f35;
-    border-radius: 8px;
-    padding: 40px;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 12px 32px rgba(22, 25, 28, 0.15);
-  }
-
-  .cta-decorator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 4px;
-    right: 0;
-    background: linear-gradient(90deg, var(--gold) 0%, #e6b400 100%);
-  }
-
-  .article-cta-box h3 {
-    font-size: 24px;
-    color: #fff;
-    margin: 0 0 16px;
-    line-height: 1.3;
-    font-weight: 700;
-  }
-
-  .article-cta-box p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 30px;
-  }
-
-  .btn-cta-gold {
-    background-color: var(--gold);
-    color: #111;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 16px;
-    padding: 14px 30px;
-    border-radius: 30px;
-    display: inline-block;
-    box-shadow: 0 4px 12px rgba(255, 200, 0, 0.2);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .btn-cta-gold:hover {
-    background-color: #e6b400;
-    color: #111;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(255, 200, 0, 0.3);
-  }
-
   @media (max-width: 768px) {
     .article-content-body {
       padding: 30px 20px;
@@ -621,14 +578,6 @@
 
     .hero-contents h1 {
       font-size: 26px;
-    }
-
-    .article-cta-box {
-      padding: 30px 20px;
-    }
-
-    .article-cta-box h3 {
-      font-size: 20px;
     }
   }
 </style>
