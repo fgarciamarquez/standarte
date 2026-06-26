@@ -2403,7 +2403,8 @@ footer {
 
 .carousel-track {
   display: flex;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Sin transición en transform: el movimiento lo controla el rAF (style.transform por frame).
+     Con transición, el salto del bucle (offset -carSetWidth -> 0) se animaba y causaba el "tirón". */
   will-change: transform;
 }
 
