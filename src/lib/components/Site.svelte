@@ -625,6 +625,15 @@
     lightboxProject = null;
   }
 
+  // Navegación entre proyectos dentro del lightbox (flechas/teclado), sin cerrar la ventana.
+  function navLightbox(dir) {
+    if (!lightboxProject) return;
+    const list = filteredPortfolios;
+    const i = list.indexOf(lightboxProject);
+    if (i === -1) return;
+    lightboxProject = list[(i + dir + list.length) % list.length];
+  }
+
   function openVideoLightbox(src) {
     videoLightboxSrc = src;
   }
@@ -667,6 +676,13 @@
       }
 
       if (legalModal) closeLegalModal();
+      return;
+    }
+
+    // Flechas izquierda/derecha: navegar entre proyectos cuando el lightbox de imagen está abierto.
+    if (lightboxProject && !legalModal) {
+      if (event.key === 'ArrowLeft') navLightbox(-1);
+      else if (event.key === 'ArrowRight') navLightbox(1);
     }
   }
 
@@ -1218,6 +1234,10 @@
 
       {#if lightboxProject}
         <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={getProjectTitle(lightboxProject)} aria-describedby="project-lightbox-description" tabindex="-1">
+          {#if filteredPortfolios.length > 1}
+            <button class="lightbox-nav prev" type="button" aria-label={lang === 'es' ? 'Proyecto anterior' : 'Previous project'} on:click={() => navLightbox(-1)}>‹</button>
+            <button class="lightbox-nav next" type="button" aria-label={lang === 'es' ? 'Proyecto siguiente' : 'Next project'} on:click={() => navLightbox(1)}>›</button>
+          {/if}
           <div class="lightbox-window" role="document">
             <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
             <div class="lightbox-body">
