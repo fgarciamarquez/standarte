@@ -50,6 +50,17 @@ export const siteVideos = [
   }
 ];
 
+// El 2º vídeo de la galería (slug proyecto-3d-2) muestra el stand de SKYLUXE (agencia
+// inmobiliaria, Dubai-Amsterdam) en lugar del genérico. Se mantiene el slug —su watch page
+// /videos/proyecto-3d-2 ya está indexada— y solo cambian el .mp4, la miniatura y los textos.
+const sky = portfolioVideos.find((v) => v.slug === 'proyecto-3d-2');
+if (sky) {
+  sky.src = '/img/skyluxe_video.mp4';
+  sky.thumb = '/img/skyluxe_video_thumb.jpg';
+  sky.title = 'Stand para SKYLUXE — agencia inmobiliaria en Dubai-Amsterdam | Standarte';
+  sky.description = 'Recorrido en vídeo del stand a medida que Standarte diseñó, fabricó y montó para SKYLUXE, agencia inmobiliaria, en Dubai-Amsterdam.';
+}
+
 // Subconjunto que se muestra en la galería de la home. Las watch pages (/videos/<slug>) y el
 // sitemap siguen usando portfolioVideos COMPLETO (slugs estables, ya indexados): aquí solo
 // ocultamos algunos vídeos del carrusel de la portada, sin renumerar ni perder esas páginas.
