@@ -747,7 +747,6 @@
               id="adv_nombre"
               type="text"
               class="advisor-form-control"
-              placeholder={t.namePlaceholder}
               bind:value={name}
               required
             />
@@ -758,7 +757,6 @@
               id="adv_email"
               type="email"
               class="advisor-form-control"
-              placeholder={t.emailPlaceholder}
               bind:value={email}
               required
             />

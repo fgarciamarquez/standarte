@@ -258,7 +258,6 @@
               id="pat_nombre"
               type="text"
               class="pat-form-control"
-              placeholder={t.namePlaceholder}
               bind:value={name}
               required
             />
@@ -269,7 +268,6 @@
               id="pat_email"
               type="email"
               class="pat-form-control"
-              placeholder={t.emailPlaceholder}
               bind:value={email}
               required
             />
@@ -282,7 +280,6 @@
             id="pat_desc"
             class="pat-form-control pat-textarea"
             rows="3"
-            placeholder={t.descPlaceholder}
             bind:value={description}
             required
           ></textarea>
