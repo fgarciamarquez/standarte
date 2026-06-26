@@ -1124,9 +1124,6 @@ article:hover .city-cover-image,
   max-height: 88vh;
   overflow-y: auto;
   overflow-x: hidden;
-  /* line-height 0 colapsa el line box del inline-block .lightbox-media, eliminando el hueco
-     bajo la imagen para que se funda con el formulario. */
-  line-height: 0;
 }
 .lightbox-body .project-advisor {
   max-width: 940px;
@@ -1241,7 +1238,11 @@ article:hover .city-cover-image,
 /* Leyenda sobreimpresa al pie de la foto (ahorra la línea de altura entre foto y formulario). */
 .lightbox-media {
   position: relative;
-  display: inline-block;
+  /* display:block + width:fit-content evita el hueco del inline-block bajo la imagen (para
+     fusionarla con el formulario) SIN colapsar el line-height de los campos del formulario. */
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
   line-height: 0;
   max-width: 100%;
 }
