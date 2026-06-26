@@ -2441,7 +2441,37 @@ footer {
   height: 100%;
   object-fit: cover;
   filter: grayscale(1);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  /* Empieza invisible y aparece con un fundido al cargar (en vez de un "salto"/pop-in). */
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+.carousel-img-wrap.img-loaded img {
+  opacity: 1;
+}
+/* Indicador "cargando…" sobre la miniatura mientras descarga; se desvanece al cargar. */
+.carousel-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'Inconsolata', monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  animation: carLoadingPulse 1.2s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+@keyframes carLoadingPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.75; }
+}
+.carousel-img-wrap.img-loaded .carousel-loading {
+  opacity: 0;
+  /* sin esto, la animación de pulso seguiría controlando la opacidad y no se ocultaría */
+  animation: none;
 }
 
 .carousel-card-inner:hover .carousel-img-wrap img {

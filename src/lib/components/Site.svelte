@@ -127,6 +127,17 @@
     }
   }
 
+  // Muestra "cargando…" hasta que la miniatura del carrusel termina de cargar: evita el
+  // "salto"/pop-in al pasar rápido. Marca .img-loaded en el contenedor cuando la imagen carga
+  // (también si ya estaba en caché). Funciona con los duplicados de la pista.
+  function imgLoaded(node) {
+    const wrap = node.closest('.carousel-img-wrap');
+    const mark = () => { if (wrap) wrap.classList.add('img-loaded'); };
+    if (node.complete && node.naturalWidth > 0) mark();
+    else node.addEventListener('load', mark, { once: true });
+    return { destroy() { node.removeEventListener('load', mark); } };
+  }
+
   let visibleCount = 3;
 
   function updateVisibleCount() {
@@ -1305,7 +1316,8 @@
                   <a href={projectUrl(project.id, lang)} class="carousel-img-link" tabindex="-1" aria-hidden="true">
                     <div class="carousel-img-wrap">
                       {#if project.location}<span class="carousel-loc-badge">{project.location}</span>{/if}
-                      <img src={project.image.replace('.avif', '-thumb.avif')} alt="" width="480" height="360" loading="lazy" on:error={(e) => handleThumbError(e, project)} />
+                      <span class="carousel-loading" aria-hidden="true">{lang === 'es' ? 'cargando…' : 'loading…'}</span>
+                      <img src={project.image.replace('.avif', '-thumb.avif')} alt="" width="480" height="360" loading="lazy" use:imgLoaded on:error={(e) => handleThumbError(e, project)} />
                     </div>
                   </a>
                   <a href={projectUrl(project.id, lang)} class="carousel-overlay" tabindex="-1" aria-hidden="true">
