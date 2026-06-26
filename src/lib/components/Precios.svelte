@@ -260,6 +260,13 @@
 </footer>
 
 <style>
+  /* Todo el fondo del cuerpo de la página en #f7f6f1 (también los laterales fuera del
+     contenedor centrado y el área de overscroll). */
+  :global(html:has(.precios-page)),
+  :global(html:has(.precios-page) body) {
+    background-color: #f7f6f1;
+  }
+
   .precios-page {
     max-width: var(--container);
     margin: 0 auto;
