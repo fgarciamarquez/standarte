@@ -1800,7 +1800,7 @@
   }
 
   .team-member h3 {
-    font-family: 'Russo One', serif;
+    font-family: 'Yeseva One', serif;
     font-size: 19px;
     font-weight: 400;
     color: #333;

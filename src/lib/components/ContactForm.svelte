@@ -268,7 +268,7 @@
     background: #ffc800 !important;
     border: 1px solid #ffc800 !important;
     border-radius: 30px !important;
-    font-family: 'Russo One', serif !important;
+    font-family: 'Yeseva One', serif !important;
     font-weight: 400 !important;
     font-size: 16px !important;
     letter-spacing: 0.05em !important;
@@ -355,7 +355,7 @@
     background: #25d366;
     color: #fff !important;
     border-radius: 30px;
-    font-family: 'Russo One', serif;
+    font-family: 'Yeseva One', serif;
     font-weight: 400;
     font-size: 14px;
     letter-spacing: 0.03em;
@@ -413,7 +413,7 @@
     line-height: 1.3;
   }
   .contact-person-name {
-    font-family: 'Russo One', serif;
+    font-family: 'Yeseva One', serif;
     font-weight: 400;
     font-size: 15px;
     color: #1a1e21;
