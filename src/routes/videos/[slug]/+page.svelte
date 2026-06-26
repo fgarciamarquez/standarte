@@ -1,5 +1,6 @@
 <script>
   import { pathFor } from '$lib/siteData.js';
+  import ProjectAdvisor from '$lib/components/ProjectAdvisor.svelte';
 
   export let data;
   $: video = data.video;
@@ -57,6 +58,9 @@
 
     <h1>{video.title}</h1>
     <p class="video-desc">{video.description}</p>
+
+    <!-- Panel de Pat: mismo formulario que en las páginas de proyecto. -->
+    <ProjectAdvisor lang="es" project={{ name: video.title }} />
 
     <nav class="video-nav">
       {#if video.projectId}
