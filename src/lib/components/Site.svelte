@@ -244,6 +244,63 @@
     requestAnimationFrame(carMeasure);
   }
 
+  // --- Carrusel de ferias (mismo control por ratón que el de proyectos 3D) ---
+  // La pista lleva 2 copias (grupos); se hace bucle envolviendo el offset sobre el ancho de una.
+  let fairsViewportEl;
+  let fairsTrackEl;
+  let fairOffset = 0;
+  let fairVelocity = 0;
+  let fairSetWidth = 0;
+  let fairRaf = null;
+  let fairLast = null;
+  const FAIR_BASE = 32; // deriva por defecto (ratón fuera)
+  const FAIR_MAX = 680; // velocidad máxima en el borde
+
+  function fairMeasure() {
+    if (fairsTrackEl) fairSetWidth = fairsTrackEl.scrollWidth / 2;
+  }
+  function fairTick(t) {
+    if (fairLast == null) fairLast = t;
+    const dt = Math.min(0.05, (t - fairLast) / 1000);
+    fairLast = t;
+    fairOffset += fairVelocity * dt;
+    if (fairSetWidth > 0) {
+      while (fairOffset <= -fairSetWidth) fairOffset += fairSetWidth;
+      while (fairOffset > 0) fairOffset -= fairSetWidth;
+    }
+    if (fairsTrackEl) fairsTrackEl.style.transform = `translateX(${fairOffset.toFixed(2)}px)`;
+    fairRaf = requestAnimationFrame(fairTick);
+  }
+  function fairOnMove(e) {
+    if (!fairsViewportEl) return;
+    const r = fairsViewportEl.getBoundingClientRect();
+    let rel = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+    rel = Math.max(-1, Math.min(1, rel));
+    if (Math.abs(rel) < 0.06) rel = 0; // zona muerta central
+    const eased = Math.sign(rel) * rel * rel; // respuesta cuadrática
+    fairVelocity = -eased * FAIR_MAX;
+  }
+  function fairOnLeave() {
+    fairVelocity = -FAIR_BASE; // deriva por defecto derecha→izquierda
+  }
+
+  onMount(() => {
+    if (typeof window === 'undefined') return;
+    fairVelocity = -FAIR_BASE;
+    fairMeasure();
+    const fm1 = setTimeout(fairMeasure, 400);
+    const fm2 = setTimeout(fairMeasure, 1500);
+    fairRaf = requestAnimationFrame(fairTick);
+    const onResize = () => fairMeasure();
+    window.addEventListener('resize', onResize);
+    return () => {
+      if (fairRaf) cancelAnimationFrame(fairRaf);
+      clearTimeout(fm1);
+      clearTimeout(fm2);
+      window.removeEventListener('resize', onResize);
+    };
+  });
+
   const modularEnabled = false;
   const languageLocales = {
     es: 'es_ES',
@@ -1138,10 +1195,10 @@
         </div>
       {/if}
 
-      <section class="lisbon-fairs-strip" aria-label={fairListTitles[lang] || fairListTitles.es} itemscope itemtype="https://schema.org/ItemList">
+      <section class="lisbon-fairs-strip" aria-label={fairListTitles[lang] || fairListTitles.es} itemscope itemtype="https://schema.org/ItemList" bind:this={fairsViewportEl} on:mousemove={fairOnMove} on:mouseleave={fairOnLeave}>
         <meta itemprop="name" content={fairListTitles[lang] || fairListTitles.es} />
         <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending" />
-        <div class="lisbon-fairs-track">
+        <div class="lisbon-fairs-track" bind:this={fairsTrackEl}>
           {#each [0, 1] as group}
             <div class="lisbon-fairs-group" aria-hidden={group === 1}>
               {#each fairItems as fair, index}

@@ -873,12 +873,9 @@ article:hover .city-cover-image,
 .lisbon-fairs-track {
   display: flex;
   width: max-content;
-  animation: lisbon-fairs-marquee 112s linear infinite;
+  /* El movimiento lo controla el rAF según la posición del ratón (igual que el carrusel 3D);
+     sin animación CSS ni transición en transform (evitaría tirones al hacer bucle). */
   will-change: transform;
-}
-
-.lisbon-fairs-strip:hover .lisbon-fairs-track {
-  animation-play-state: paused;
 }
 
 .lisbon-fairs-group {
@@ -966,15 +963,6 @@ article:hover .city-cover-image,
   line-height: 1;
 }
 
-@keyframes lisbon-fairs-marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
 
 .portfolio-grid {
   display: grid;
@@ -2175,9 +2163,6 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .lisbon-fairs-track {
-    animation-duration: 90s;
-  }
 
   .lisbon-fairs-group {
     gap: 30px;
