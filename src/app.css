@@ -1297,6 +1297,8 @@ article:hover .city-cover-image,
   font-size: 26px;
   line-height: 34px;
   cursor: pointer;
+  /* Siempre por encima de la imagen/vídeo (.lightbox-media crea contexto de apilado). */
+  z-index: 30;
 }
 
 .counters {

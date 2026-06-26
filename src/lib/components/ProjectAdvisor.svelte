@@ -586,7 +586,8 @@
     margin-bottom: 16px;
   }
   .project-advisor.dark .pat-bubble {
-    padding: 14px 16px;
+    background: transparent;
+    padding: 0;
   }
   .project-advisor.dark .pat-form {
     margin-top: 16px;
