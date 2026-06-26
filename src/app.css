@@ -408,7 +408,7 @@ footer > * {
 .section-header h2 {
   position: relative;
   margin: 0;
-  color: steelblue;
+  color: #444;
   font-size: 42px;
   line-height: 1.2;
   text-transform: none;
@@ -434,7 +434,7 @@ footer > * {
 .section-intro {
   max-width: 900px;
   margin: 25px auto 35px;
-  color: steelblue;
+  color: #444;
   font-family: 'Yeseva One', serif;
   font-size: 42px;
   font-weight: 400;
@@ -1819,7 +1819,7 @@ footer {
 
 .legal-modal-window h2 {
   margin: 0 0 20px;
-  color: steelblue;
+  color: #444;
   font-size: 25px;
   line-height: 1.25;
   text-align: center;
@@ -2888,7 +2888,7 @@ footer {
   font-family: 'Yeseva One', serif;
   font-weight: 400;
   font-size: 24px;
-  color: steelblue;
+  color: #444;
   margin: 40px 0 20px;
   display: inline-block;
 }
@@ -3034,7 +3034,7 @@ p b {
   font-family: 'Yeseva One', serif;
   font-weight: 400;
   font-size: 28px;
-  color: steelblue;
+  color: #444;
   text-align: center;
   margin: 0 0 40px;
   text-transform: none;
@@ -3148,7 +3148,7 @@ p b {
   font-family: 'Yeseva One', serif;
   font-weight: 400;
   font-size: 24px;
-  color: steelblue;
+  color: #444;
   margin: 0 0 22px;
   display: inline-block;
 }
