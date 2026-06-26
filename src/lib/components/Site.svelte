@@ -1182,19 +1182,22 @@
               </a>
             </div>
           </div>
-        {/each}
 
-        <!-- Vídeos 3D: miniaturas pequeñas (rectángulos 16:9) que abren la ventana flotante. -->
-        <div class="portfolio-videos">
-          {#each galleryVideos as v, vi}
-            <div class="video-cell">
-              <a class="video-thumb" href={`/videos/${v.slug}`} on:click|preventDefault={() => openVideoLightbox(v.src)} aria-label={v.title}>
-                <img src={v.thumb} alt={`Vídeo 3D de stand Standarte ${vi + 1}`} width="320" height="180" loading="lazy" decoding="async" />
-                <span class="video-thumb-overlay"><span class="play-badge"></span></span>
-              </a>
+          <!-- Vídeos 3D: fila a todo el ancho situada bajo la primera fila de fotos
+               (4 columnas en escritorio). Miniaturas 16:9 que abren la ventana flotante. -->
+          {#if i === 3}
+            <div class="portfolio-videos">
+              {#each galleryVideos as v, vi}
+                <div class="video-cell">
+                  <a class="video-thumb" href={`/videos/${v.slug}`} on:click|preventDefault={() => openVideoLightbox(v.src)} aria-label={v.title}>
+                    <img src={v.thumb} alt={`Vídeo 3D de stand Standarte ${vi + 1}`} width="320" height="180" loading="lazy" decoding="async" />
+                    <span class="video-thumb-overlay"><span class="play-badge"></span></span>
+                  </a>
+                </div>
+              {/each}
             </div>
-          {/each}
-        </div>
+          {/if}
+        {/each}
       </div>
 
       {#if !galleryExpanded && filteredPortfolios.length > GALLERY_VISIBLE}
