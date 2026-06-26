@@ -3,7 +3,7 @@
   import news from '$lib/newsData.json';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
-  import AiSourceButtons from '$lib/components/AiSourceButtons.svelte';
+  import CitySidebar from '$lib/components/CitySidebar.svelte';
 
 
 
@@ -363,32 +363,9 @@
 </header>
 
 <main class="news-main">
-  {#if lang === 'es'}
-  <section class="news-filters">
-    <div class="filters-container">
-      <button type="button" class:active={activeFilter === 'all'} on:click={() => activeFilter = 'all'}>
-        {(i18n[lang] || i18n.es).allDestinations}
-      </button>
-      <button type="button" class:active={activeFilter === 'madrid'} on:click={() => activeFilter = 'madrid'}>
-        {(cityLabels[lang] || cityLabels.es).madrid}
-      </button>
-      <button type="button" class:active={activeFilter === 'barcelona'} on:click={() => activeFilter = 'barcelona'}>
-        {(cityLabels[lang] || cityLabels.es).barcelona}
-      </button>
-      <button type="button" class:active={activeFilter === 'bilbao'} on:click={() => activeFilter = 'bilbao'}>
-        {(cityLabels[lang] || cityLabels.es).bilbao}
-      </button>
-      <button type="button" class:active={activeFilter === 'malaga'} on:click={() => activeFilter = 'malaga'}>
-        {(cityLabels[lang] || cityLabels.es).malaga}
-      </button>
-      <button type="button" class:active={activeFilter === 'lisboa'} on:click={() => activeFilter = 'lisboa'}>
-        {(cityLabels[lang] || cityLabels.es).lisboa}
-      </button>
-    </div>
-  </section>
-  {/if}
 
   <section class="news-grid-section">
+    <div class="seo-layout">
     <div class="news-grid">
       {#each filteredNews as item}
         <article class="news-card">
@@ -427,10 +404,11 @@
         </div>
       {/each}
     </div>
+      <CitySidebar {lang} section="madrid" />
+    </div>
   </section>
 </main>
 
-<AiSourceButtons {lang} />
 
 <footer>
   <div class="footer-layout">
