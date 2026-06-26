@@ -1748,7 +1748,7 @@
   }
 
   .team-member h3 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Righteous', serif;
     font-size: 19px;
     font-weight: 400;
     color: #333;

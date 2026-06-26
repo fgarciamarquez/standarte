@@ -373,7 +373,7 @@
   .pat-name {
     margin: 0;
     color: #111;
-    font-family: 'Fraunces', serif;
+    font-family: 'Righteous', serif;
     font-size: 20px;
     font-weight: 400;
   }
@@ -481,7 +481,7 @@
     border: 0;
     border-radius: 30px;
     padding: 12px 28px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Righteous', serif;
     font-size: 14px;
     font-weight: 400;
     cursor: pointer;
