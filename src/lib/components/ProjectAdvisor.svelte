@@ -258,6 +258,7 @@
               id="pat_nombre"
               type="text"
               class="pat-form-control"
+              placeholder={dark ? t.namePlaceholder : ''}
               bind:value={name}
               required
             />
@@ -268,6 +269,7 @@
               id="pat_email"
               type="email"
               class="pat-form-control"
+              placeholder={dark ? t.emailPlaceholder : ''}
               bind:value={email}
               required
             />
@@ -280,6 +282,7 @@
             id="pat_desc"
             class="pat-form-control pat-textarea"
             rows="3"
+            placeholder={dark ? t.descPlaceholder : ''}
             bind:value={description}
             required
           ></textarea>
@@ -551,6 +554,40 @@
   }
   .project-advisor.dark .text-error {
     color: #ff8a80 !important;
+  }
+
+  /* Versión compacta (ahorra alto para reducir el scroll del lightbox): sin foto de Pat, sin
+     título ni badge (solo el texto de intro), y sin etiquetas visibles (se usan placeholders).
+     Las <label> se ocultan con técnica accesible: no ocupan alto pero siguen leyéndose por
+     lectores de pantalla, ya que el placeholder no sustituye a una etiqueta para accesibilidad. */
+  .project-advisor.dark .pat-photo,
+  .project-advisor.dark .pat-bubble-header,
+  .project-advisor.dark .pat-bubble::after {
+    display: none;
+  }
+  .project-advisor.dark .pat-form-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .project-advisor.dark .pat-card {
+    padding: 22px;
+  }
+  .project-advisor.dark .pat-profile {
+    margin-bottom: 16px;
+  }
+  .project-advisor.dark .pat-bubble {
+    padding: 14px 16px;
+  }
+  .project-advisor.dark .pat-form {
+    margin-top: 16px;
+    gap: 12px;
   }
 
   @media (max-width: 768px) {
