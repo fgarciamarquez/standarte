@@ -1221,10 +1221,12 @@
           <div class="lightbox-window" role="document">
             <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
             <div class="lightbox-body">
-              <img src={`/${lightboxProject.full}`} alt={getProjectTitle(lightboxProject)} />
-              <div class="lightbox-caption">
-                <strong>{getProjectTitle(lightboxProject)}</strong>
-                <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
+              <div class="lightbox-media">
+                <img src={`/${lightboxProject.full}`} alt={getProjectTitle(lightboxProject)} />
+                <div class="lightbox-caption">
+                  <strong>{getProjectTitle(lightboxProject)}</strong>
+                  <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
+                </div>
               </div>
               <ProjectAdvisor {lang} project={lightboxProject} source={lightboxProject?.full} dark />
             </div>
