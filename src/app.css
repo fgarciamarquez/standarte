@@ -1124,15 +1124,19 @@ article:hover .city-cover-image,
   max-height: 88vh;
   overflow-y: auto;
   overflow-x: hidden;
+  /* line-height 0 colapsa el line box del inline-block .lightbox-media, eliminando el hueco
+     bajo la imagen para que se funda con el formulario. */
+  line-height: 0;
 }
 .lightbox-body .project-advisor {
   max-width: 940px;
-  margin: 22px auto 0;
+  /* Pegado a la imagen/vídeo (sin hueco) para que ambos se fusionen. */
+  margin: 0 auto;
   text-align: left;
 }
-/* Lightbox de imagen (no el de vídeo): la imagen se limita al mismo ancho que el formulario
-   de Pat (940px) y se reduce su altura, para que no quede una franja de scroll a su derecha. */
-.lightbox-window:not(.lightbox-window-video) {
+/* Imagen y vídeo del lightbox se limitan al mismo ancho que el formulario de Pat (940px);
+   la imagen además reduce su altura para evitar el scroll lateral. */
+.lightbox-window {
   max-width: min(940px, 94vw);
 }
 .lightbox-window:not(.lightbox-window-video) .lightbox-body img {
@@ -1240,6 +1244,9 @@ article:hover .city-cover-image,
   display: inline-block;
   line-height: 0;
   max-width: 100%;
+}
+.lightbox-media img {
+  display: block;
 }
 .lightbox-media .lightbox-caption {
   position: absolute;

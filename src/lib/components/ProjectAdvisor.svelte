@@ -525,6 +525,9 @@
     background: #1c2024;
     border-color: #34393e;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    /* Esquinas superiores rectas para fusionarse con la imagen/vídeo de encima. */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
   .project-advisor.dark .pat-bubble {
     background: #262b30;
