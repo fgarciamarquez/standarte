@@ -6187,6 +6187,7 @@ export const projects = [
     "name": "FOOBESPAIN",
     "location": "Madrid",
     "web": "",
+    "video": "/img/foodespain/foobespain_video.mp4",
     "image": "/img/3d_prototype_2/stand_para_exportacion_vinos_madrid.avif",
     "images": [
       "/img/3d_prototype_2/stand_para_exportacion_vinos_madrid.avif",
