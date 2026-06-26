@@ -116,7 +116,7 @@
   }
 
   h1 {
-    font-family: 'Yeseva One', serif;
+    font-family: 'Francois One', serif;
     font-weight: 400;
     font-size: 28px;
     color: #1a1e21;

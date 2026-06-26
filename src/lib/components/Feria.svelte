@@ -728,7 +728,7 @@
     min-width: 0;
   }
   .highlight {
-    font-family: 'Yeseva One', serif;
+    font-family: 'Francois One', serif;
     font-size: 1.4rem;
     line-height: 1.6;
     font-weight: 400;
