@@ -44,6 +44,195 @@ export const richSeoData = {
           "a": "Yes. We handle everything: 3D design, production, transport, assembly, electrical installation, graphics, final clean-up and the venue's technical validations. Your team simply shows up on the first day of the event."
         }
       ]
+    },
+    "de": {
+      "breadcrumb": "Santiago de Compostela",
+      "title": "Design und Montage von Messeständen in Santiago de Compostela | Cidade da Cultura | Standarte",
+      "h1": "Design und Montage von Messeständen in Santiago de Compostela",
+      "introText": "Standarte entwirft, fertigt und montiert Messestände in Santiago de Compostela, der Hauptstadt Galiciens und einem bedeutenden Zentrum für Kongresse und Messen, mit der Cidade da Cultura de Galicia (Gaiás) und dem Palacio de Congresos e Exposicións de Galicia als führenden Veranstaltungsorten sowie Veranstaltungen wie Fairway —der Messe des Jakobswegs— und der Maker Faire Galicia. Über 20 Jahre Erfahrung und eine eigene Werkstatt ermöglichen die Kontrolle über jede Phase: 3D-Design, maßgefertigte Schreinerarbeiten, Logistik und Montage mit Abnahmen vor Ort.",
+      "body": "\n        <h2>Cidade da Cultura und Kongresspalast: die Messebühne Santiagos</h2>\n        <p>Santiago de Compostela, die Hauptstadt Galiciens und Ziel des Jakobswegs, ist ein großes Zentrum für Kongresse, Kulturmessen und Tourismus. Seine beiden großen Bühnen sind die <strong>Cidade da Cultura de Galicia (Gaiás)</strong> —Austragungsort von Veranstaltungen wie <strong>Fairway</strong>, der internationalen Messe des Jakobswegs, und der <strong>Maker Faire Galicia</strong>— und der <strong>Palacio de Congresos e Exposicións de Galicia</strong>, Schauplatz großer medizinischer und wissenschaftlicher Kongresse wie GEDET (Dermatologie), SEMERGEN oder SESMI. Für ein Unternehmen, das den Tourismus-, Kultur- oder Gesundheitssektor erreichen möchte, gehört ein gut umgesetzter Messestand hier zu den rentabelsten kommerziellen Investitionen, und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir kennen die technischen Vorschriften der Veranstaltungsorte Santiagos und das Profil des Fachbesuchers, was Überraschungen und Verzögerungen bei der Montage vermeidet und es uns ermöglicht, maßgeschneiderte Stände zu realisieren – von einem Stand auf einem medizinischen Kongress bis hin zu einem großen Tourismusaussteller.</p>\n\n        <h2>3D-Design und maßgefertigte Schreinerarbeiten aus eigener Werkstatt</h2>\n        <p>Der Erfolg eines Messestands beginnt Monate vor der Montage. Unsere Designphase ist ein sorgfältiger Prozess aus Marken-Engineering und Optimierung des Besucherflusses: Auf Grundlage der Unternehmensrichtlinien Ihres Unternehmens erstellen wir einen interaktiven 3D-Prototyp, der dem Endergebnis zu 100 % entspricht, sodass Ihr Vertriebsteam die Sichtbarkeit der Marke, die Besprechungszonen und die Integration von Bildschirmen, Theken und Vitrinen prüfen kann, bevor die Fertigung beginnt.</p>\n        <p>Einer unserer größten Vorteile ist unsere <strong>eigene Werkstatt</strong> für Schreinerarbeiten und hochwertige Oberflächen. Ohne Subunternehmer behalten wir die volle Kontrolle über Materialien, Termine und Qualität, mit modernen Montagetechniken und zertifizierten Materialien für temporäre Architektur. Die teilweise Vormontage in der Werkstatt verkürzt die Arbeitszeit am Veranstaltungsort und gewährleistet eine makellose Verarbeitung.</p>\n\n        <h2>Logistik und schlüsselfertige Montage in Santiago de Compostela</h2>\n        <p>Die Endmontage ist der krönende Abschluss unseres schlüsselfertigen Service. Wir koordinieren direkt den Transport und die Verpackung, die Montage vor Ort, die Elektroinstallation von Spots und Bildschirmen, die Anbringung der Grafik und die Endreinigung. Ihr Team muss nur am ersten Veranstaltungstag erscheinen und findet einen vollständig betriebsbereiten Markenraum vor, bereit zur Kontaktgewinnung. Darüber hinaus erledigen wir alle technischen Formalitäten, die die Veranstaltungsorte verlangen – geprüfte Projekte, Brandschutzzertifikate, elektrische Abnahmen, Risikobewertungen und Versicherungen – für eine reibungslose Genehmigung.</p>\n        <p>Unsere Struktur ermöglicht es uns, Santiago und ganz Galicien mit derselben Flexibilität zu bedienen wie den Rest der Halbinsel, und bietet Agenturen und Direktausstellern einen einzigen Ansprechpartner für Design, Produktion, Logistik und Montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Entwerfen und montieren Sie Messestände in der Cidade da Cultura und im Kongresspalast von Santiago?",
+          "a": "Ja. Wir arbeiten an den Veranstaltungsorten von Santiago de Compostela —Cidade da Cultura de Galicia (Gaiás) und Palacio de Congresos e Exposicións de Galicia— auf Messen und Kongressen wie Fairway, Maker Faire Galicia oder den großen medizinischen Kongressen. Wir kennen ihre technischen Vorschriften für eine Montage ohne Überraschungen."
+        },
+        {
+          "q": "Haben Sie eine eigene Werkstatt oder vergeben Sie die Fertigung an Subunternehmer?",
+          "a": "Wir verfügen über eine eigene Werkstatt für Schreinerarbeiten und Oberflächen. Ohne Zwischenhändler kontrollieren wir Materialien, Termine und Qualität zu 100 % und verkürzen durch Vormontage in der Werkstatt die Montagezeit am Veranstaltungsort."
+        },
+        {
+          "q": "Ist der Service schlüsselfertig?",
+          "a": "Ja. Wir kümmern uns um alles: 3D-Design, Fertigung, Transport, Montage, Elektroinstallation, Grafik, Endreinigung und die technischen Abnahmen des Veranstaltungsorts. Ihr Team erscheint einfach am ersten Veranstaltungstag."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Santiago de Compostela",
+      "title": "Design e montagem de stands em Santiago de Compostela | Cidade da Cultura | Standarte",
+      "h1": "Design e montagem de stands em Santiago de Compostela",
+      "introText": "A Standarte projeta, fabrica e monta stands de feira em Santiago de Compostela, capital da Galiza e grande polo de congressos e feiras, com a Cidade da Cultura de Galicia (Gaiás) e o Palacio de Congresos e Exposicións de Galicia como recintos de referência e eventos como a Fairway —a feira do Caminho de Santiago— ou a Maker Faire Galicia. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, carpintaria à medida, logística e montagem com validações no recinto.",
+      "body": "\n        <h2>Cidade da Cultura e Palácio de Congressos: o palco ferial de Santiago</h2>\n        <p>Santiago de Compostela, capital da Galiza e meta do Caminho, é um grande polo de congressos, feiras culturais e turismo. Os seus dois grandes palcos são a <strong>Cidade da Cultura de Galicia (Gaiás)</strong> —que acolhe eventos como a <strong>Fairway</strong>, a feira internacional do Caminho de Santiago, e a <strong>Maker Faire Galicia</strong>— e o <strong>Palacio de Congresos e Exposicións de Galicia</strong>, sede de grandes congressos médicos e científicos como GEDET (dermatologia), SEMERGEN ou SESMI. Para uma empresa que quer ligar-se ao setor turístico, cultural ou da saúde, expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte faz a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Conhecemos a regulamentação técnica dos recintos de Santiago e o perfil do visitante profissional, o que evita surpresas e atrasos na montagem e nos permite resolver stands à medida, desde um espaço de congresso médico até um grande expositor turístico.</p>\n\n        <h2>Design 3D e carpintaria à medida a partir de oficina própria</h2>\n        <p>O sucesso de um stand começa meses antes da montagem. A nossa fase de design é um processo meticuloso de engenharia de marca e otimização do fluxo de visitantes: a partir das diretrizes corporativas da sua empresa, criamos um protótipo 3D interativo 100% fiel ao resultado final, para que a sua equipa comercial possa validar a visibilidade da marca, as zonas de reunião e a integração de ecrãs, balcões e vitrinas antes de a fabricação começar.</p>\n        <p>Uma das nossas maiores vantagens é dispor de <strong>oficina própria</strong> de carpintaria e acabamentos de alta qualidade. Sem subcontratações, mantemos o controlo total sobre materiais, prazos e qualidade, com técnicas modernas de montagem e materiais certificados para arquitetura efémera. A pré-montagem parcial na oficina reduz o tempo de trabalho no recinto e garante um acabamento impecável.</p>\n\n        <h2>Logística e montagem chave na mão em Santiago de Compostela</h2>\n        <p>A montagem final é o toque final do nosso serviço chave na mão. Coordenamos diretamente o transporte e a embalagem, a montagem no local, a instalação elétrica de focos e ecrãs, a colocação da gráfica e a limpeza final. A sua equipa só tem de aparecer no primeiro dia do evento e encontrará um espaço corporativo plenamente operacional e pronto para captar contactos. Além disso, tratamos de todas as formalidades técnicas que os recintos exigem —projetos visados, certificados de ignifugação, validações elétricas, avaliação de riscos e seguros— para uma aprovação fluida.</p>\n        <p>A nossa estrutura permite-nos atender Santiago e toda a Galiza com a mesma agilidade que o resto da península, oferecendo a agências e expositores diretos um único interlocutor para design, produção, logística e montagem.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Projetam e montam stands na Cidade da Cultura e no Palácio de Congressos de Santiago?",
+          "a": "Sim. Trabalhamos nos recintos de Santiago de Compostela —Cidade da Cultura de Galicia (Gaiás) e Palacio de Congresos e Exposicións de Galicia— em feiras e congressos como Fairway, Maker Faire Galicia ou os grandes congressos médicos. Conhecemos a sua regulamentação técnica para uma montagem sem surpresas."
+        },
+        {
+          "q": "Têm oficina própria ou subcontratam a fabricação?",
+          "a": "Dispomos de oficina própria de carpintaria e acabamentos. Sem intermediários, controlamos a 100% materiais, prazos e qualidade, e reduzimos o tempo de montagem no recinto através de pré-montagem na oficina."
+        },
+        {
+          "q": "O serviço é chave na mão?",
+          "a": "Sim. Tratamos de tudo: design 3D, fabricação, transporte, montagem, instalação elétrica, gráfica, limpeza final e as validações técnicas do recinto. A sua equipa só aparece no primeiro dia do evento."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Saint-Jacques-de-Compostelle",
+      "title": "Conception et montage de stands à Saint-Jacques-de-Compostelle | Cidade da Cultura | Standarte",
+      "h1": "Conception et montage de stands à Saint-Jacques-de-Compostelle",
+      "introText": "Standarte conçoit, fabrique et monte des stands d'exposition à Saint-Jacques-de-Compostelle, capitale de la Galice et grand pôle de congrès et de salons, avec la Cidade da Cultura de Galicia (Gaiás) et le Palacio de Congresos e Exposicións de Galicia comme parcs des expositions de référence et des événements comme Fairway —le salon du Chemin de Saint-Jacques— ou la Maker Faire Galicia. Plus de 20 ans d'expérience et un atelier en propre pour maîtriser chaque phase : conception 3D, menuiserie sur mesure, logistique et montage avec validations sur place.",
+      "body": "\n        <h2>Cidade da Cultura et Palais des Congrès : la scène salonnière de Santiago</h2>\n        <p>Saint-Jacques-de-Compostelle, capitale de la Galice et terme du Chemin, est un grand pôle de congrès, de salons culturels et de tourisme. Ses deux grandes scènes sont la <strong>Cidade da Cultura de Galicia (Gaiás)</strong> —qui accueille des événements comme <strong>Fairway</strong>, le salon international du Chemin de Saint-Jacques, et la <strong>Maker Faire Galicia</strong>— et le <strong>Palacio de Congresos e Exposicións de Galicia</strong>, hôte de grands congrès médicaux et scientifiques comme GEDET (dermatologie), SEMERGEN ou SESMI. Pour une entreprise qui souhaite toucher le secteur du tourisme, de la culture ou de la santé, exposer ici avec un stand bien conçu est l'un des investissements commerciaux les plus rentables, et c'est précisément là que Standarte fait la différence : nous transformons l'espace de votre marque en aimant à visiteurs à fort retour.</p>\n        <p>Nous connaissons la réglementation technique des parcs d'exposition de Santiago et le profil du visiteur professionnel, ce qui évite les surprises et les retards lors du montage et nous permet de réaliser des stands sur mesure, d'un espace de congrès médical à un grand exposant touristique.</p>\n\n        <h2>Conception 3D et menuiserie sur mesure depuis notre propre atelier</h2>\n        <p>Le succès d'un stand commence des mois avant le montage. Notre phase de conception est un processus méticuleux d'ingénierie de marque et d'optimisation du flux de visiteurs : à partir des directives de votre entreprise, nous créons un prototype 3D interactif fidèle à 100 % au résultat final, afin que votre équipe commerciale puisse valider la visibilité de la marque, les espaces de réunion et l'intégration des écrans, comptoirs et vitrines avant le début de la fabrication.</p>\n        <p>L'un de nos plus grands atouts est de disposer d'un <strong>atelier en propre</strong> de menuiserie et de finitions de haute qualité. Sans sous-traitance, nous gardons un contrôle total sur les matériaux, les délais et la qualité, avec des techniques d'assemblage modernes et des matériaux certifiés pour l'architecture éphémère. Le pré-montage partiel en atelier réduit le temps de travail sur place et garantit une finition impeccable.</p>\n\n        <h2>Logistique et montage clé en main à Saint-Jacques-de-Compostelle</h2>\n        <p>Le montage final est la touche finale de notre service clé en main. Nous coordonnons directement le transport et l'emballage, le montage sur place, l'installation électrique des spots et des écrans, la pose du graphisme et le nettoyage final. Votre équipe n'a qu'à se présenter le premier jour de l'événement pour trouver un espace d'entreprise pleinement opérationnel et prêt à capter des contacts. De plus, nous gérons toutes les formalités techniques exigées par les parcs —projets visés, certificats d'ignifugation, validations électriques, évaluation des risques et assurances— pour une approbation fluide.</p>\n        <p>Notre structure nous permet de servir Santiago et toute la Galice avec la même agilité que le reste de la péninsule, en offrant aux agences et aux exposants directs un interlocuteur unique pour la conception, la production, la logistique et le montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Concevez-vous et montez-vous des stands à la Cidade da Cultura et au Palais des Congrès de Santiago ?",
+          "a": "Oui. Nous travaillons dans les parcs d'exposition de Saint-Jacques-de-Compostelle —Cidade da Cultura de Galicia (Gaiás) et Palacio de Congresos e Exposicións de Galicia— sur des salons et congrès comme Fairway, la Maker Faire Galicia ou les grands congrès médicaux. Nous connaissons leur réglementation technique pour un montage sans surprises."
+        },
+        {
+          "q": "Avez-vous un atelier en propre ou sous-traitez-vous la fabrication ?",
+          "a": "Nous disposons de notre propre atelier de menuiserie et de finitions. Sans intermédiaires, nous contrôlons à 100 % les matériaux, les délais et la qualité, et nous réduisons le temps de montage sur place grâce au pré-montage en atelier."
+        },
+        {
+          "q": "Le service est-il clé en main ?",
+          "a": "Oui. Nous nous occupons de tout : conception 3D, fabrication, transport, montage, installation électrique, graphisme, nettoyage final et les validations techniques du parc. Votre équipe se présente simplement le premier jour de l'événement."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Santiago di Compostela",
+      "title": "Progettazione e montaggio stand a Santiago di Compostela | Cidade da Cultura | Standarte",
+      "h1": "Progettazione e montaggio stand a Santiago di Compostela",
+      "introText": "Standarte progetta, costruisce e monta stand fieristici a Santiago di Compostela, capitale della Galizia e grande polo di congressi e fiere, con la Cidade da Cultura de Galicia (Gaiás) e il Palacio de Congresos e Exposicións de Galicia come quartieri fieristici di riferimento ed eventi come Fairway —la fiera del Cammino di Santiago— o la Maker Faire Galicia. Oltre 20 anni di esperienza e laboratorio di proprietà per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica e montaggio con collaudi in loco.",
+      "body": "\n        <h2>Cidade da Cultura e Palazzo dei Congressi: il palcoscenico fieristico di Santiago</h2>\n        <p>Santiago di Compostela, capitale della Galizia e meta del Cammino, è un grande polo di congressi, fiere culturali e turismo. I suoi due grandi palcoscenici sono la <strong>Cidade da Cultura de Galicia (Gaiás)</strong> —che ospita eventi come <strong>Fairway</strong>, la fiera internazionale del Cammino di Santiago, e la <strong>Maker Faire Galicia</strong>— e il <strong>Palacio de Congresos e Exposicións de Galicia</strong>, sede di grandi congressi medici e scientifici come GEDET (dermatologia), SEMERGEN o SESMI. Per un'azienda che vuole entrare in contatto con il settore turistico, culturale o sanitario, esporre qui con uno stand ben realizzato è uno degli investimenti commerciali più redditizi, ed è proprio qui che Standarte fa la differenza: trasformiamo lo spazio del vostro marchio in una calamita di visitatori ad alto rendimento.</p>\n        <p>Conosciamo le normative tecniche dei quartieri fieristici di Santiago e il profilo del visitatore professionale, il che evita sorprese e ritardi durante il montaggio e ci permette di realizzare stand su misura, da uno spazio per congressi medici a un grande espositore turistico.</p>\n\n        <h2>Progettazione 3D e falegnameria su misura dal laboratorio di proprietà</h2>\n        <p>Il successo di uno stand inizia mesi prima del montaggio. La nostra fase di progettazione è un processo meticoloso di ingegneria del marchio e ottimizzazione del flusso dei visitatori: a partire dalle linee guida aziendali della vostra impresa, creiamo un prototipo 3D interattivo fedele al 100% al risultato finale, in modo che il vostro team commerciale possa validare la visibilità del marchio, le aree riunioni e l'integrazione di schermi, banconi e vetrine prima che inizi la produzione.</p>\n        <p>Uno dei nostri maggiori vantaggi è disporre di un <strong>laboratorio di proprietà</strong> per falegnameria e finiture di alta qualità. Senza subappalti, manteniamo il pieno controllo su materiali, tempi e qualità, con tecniche di montaggio moderne e materiali certificati per l'architettura effimera. Il pre-montaggio parziale in laboratorio riduce i tempi di lavoro in loco e garantisce una finitura impeccabile.</p>\n\n        <h2>Logistica e montaggio chiavi in mano a Santiago di Compostela</h2>\n        <p>Il montaggio finale è il tocco finale del nostro servizio chiavi in mano. Coordiniamo direttamente il trasporto e l'imballaggio, il montaggio in loco, l'installazione elettrica di faretti e schermi, l'applicazione della grafica e la pulizia finale. Il vostro team deve solo presentarsi il primo giorno dell'evento e troverà uno spazio aziendale pienamente operativo e pronto a captare contatti. Inoltre, gestiamo tutte le formalità tecniche richieste dai quartieri fieristici —progetti vistati, certificati di ignifugazione, collaudi elettrici, valutazione dei rischi e assicurazioni— per un'approvazione fluida.</p>\n        <p>La nostra struttura ci permette di servire Santiago e tutta la Galizia con la stessa agilità del resto della penisola, offrendo ad agenzie ed espositori diretti un unico interlocutore per progettazione, produzione, logistica e montaggio.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Progettate e montate stand alla Cidade da Cultura e al Palazzo dei Congressi di Santiago?",
+          "a": "Sì. Lavoriamo nei quartieri fieristici di Santiago di Compostela —Cidade da Cultura de Galicia (Gaiás) e Palacio de Congresos e Exposicións de Galicia— in fiere e congressi come Fairway, Maker Faire Galicia o i grandi congressi medici. Conosciamo le loro normative tecniche per un montaggio senza sorprese."
+        },
+        {
+          "q": "Avete un laboratorio di proprietà o subappaltate la produzione?",
+          "a": "Disponiamo di un laboratorio di proprietà per falegnameria e finiture. Senza intermediari, controlliamo al 100% materiali, tempi e qualità, e riduciamo i tempi di montaggio in loco grazie al pre-montaggio in laboratorio."
+        },
+        {
+          "q": "Il servizio è chiavi in mano?",
+          "a": "Sì. Ci occupiamo di tutto: progettazione 3D, produzione, trasporto, montaggio, installazione elettrica, grafica, pulizia finale e i collaudi tecnici del quartiere fieristico. Il vostro team si presenta semplicemente il primo giorno dell'evento."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Santiago de Compostela",
+      "title": "Standontwerp en montage in Santiago de Compostela | Cidade da Cultura | Standarte",
+      "h1": "Standontwerp en montage in Santiago de Compostela",
+      "introText": "Standarte ontwerpt, bouwt en monteert beursstands in Santiago de Compostela, de hoofdstad van Galicië en een belangrijk knooppunt voor congressen en beurzen, met de Cidade da Cultura de Galicia (Gaiás) en het Palacio de Congresos e Exposicións de Galicia als belangrijkste beurslocaties en evenementen zoals Fairway —de beurs van de Camino— en de Maker Faire Galicia. Meer dan 20 jaar ervaring en een eigen werkplaats om elke fase te beheersen: 3D-ontwerp, maatwerktimmerwerk, logistiek en montage met keuringen ter plaatse.",
+      "body": "\n        <h2>Cidade da Cultura en het congrespaleis: het beurspodium van Santiago</h2>\n        <p>Santiago de Compostela, de hoofdstad van Galicië en eindpunt van de Camino, is een groot knooppunt voor congressen, culturele beurzen en toerisme. De twee grote podia zijn de <strong>Cidade da Cultura de Galicia (Gaiás)</strong> —gastheer van evenementen zoals <strong>Fairway</strong>, de internationale beurs van de Camino, en de <strong>Maker Faire Galicia</strong>— en het <strong>Palacio de Congresos e Exposicións de Galicia</strong>, locatie van grote medische en wetenschappelijke congressen zoals GEDET (dermatologie), SEMERGEN of SESMI. Voor een bedrijf dat de toeristische, culturele of zorgsector wil bereiken, is hier exposeren met een goed uitgewerkte stand een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we veranderen de ruimte van uw merk in een bezoekersmagneet met een hoog rendement.</p>\n        <p>We kennen de technische voorschriften van de locaties in Santiago en het profiel van de zakelijke bezoeker, wat verrassingen en vertragingen tijdens de montage voorkomt en ons in staat stelt stands op maat te realiseren, van een ruimte voor een medisch congres tot een grote toeristische exposant.</p>\n\n        <h2>3D-ontwerp en maatwerktimmerwerk uit eigen werkplaats</h2>\n        <p>Het succes van een stand begint maanden voor de montage. Onze ontwerpfase is een nauwgezet proces van merk-engineering en optimalisatie van de bezoekersstroom: op basis van de bedrijfsrichtlijnen van uw onderneming maken we een interactief 3D-prototype dat 100% trouw is aan het eindresultaat, zodat uw salesteam de zichtbaarheid van het merk, de overlegzones en de integratie van schermen, balies en vitrines kan valideren voordat de productie begint.</p>\n        <p>Een van onze grootste voordelen is dat we een <strong>eigen werkplaats</strong> hebben voor timmerwerk en hoogwaardige afwerkingen. Zonder onderaannemers houden we de volledige controle over materialen, deadlines en kwaliteit, met moderne montagetechnieken en gecertificeerde materialen voor tijdelijke architectuur. De gedeeltelijke voormontage in de werkplaats verkort de werktijd ter plaatse en garandeert een vlekkeloze afwerking.</p>\n\n        <h2>Logistiek en sleutelklare montage in Santiago de Compostela</h2>\n        <p>De eindmontage is de finishing touch van onze sleutelklare service. We coördineren rechtstreeks het transport en de verpakking, de montage ter plaatse, de elektrische installatie van spots en schermen, het aanbrengen van de graphics en de eindschoonmaak. Uw team hoeft alleen op de eerste dag van het evenement te verschijnen en treft een volledig operationele bedrijfsruimte aan, klaar om contacten te leggen. Daarnaast regelen we alle technische formaliteiten die de locaties vereisen —goedgekeurde projecten, brandveiligheidscertificaten, elektrische keuringen, risicobeoordelingen en verzekeringen— voor een vlotte goedkeuring.</p>\n        <p>Onze structuur stelt ons in staat Santiago en heel Galicië met dezelfde flexibiliteit te bedienen als de rest van het schiereiland, en biedt bureaus en directe exposanten één aanspreekpunt voor ontwerp, productie, logistiek en montage.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Ontwerpen en monteren jullie stands in de Cidade da Cultura en het congrespaleis van Santiago?",
+          "a": "Ja. We werken op de locaties van Santiago de Compostela —Cidade da Cultura de Galicia (Gaiás) en Palacio de Congresos e Exposicións de Galicia— op beurzen en congressen zoals Fairway, Maker Faire Galicia of de grote medische congressen. We kennen hun technische voorschriften voor een montage zonder verrassingen."
+        },
+        {
+          "q": "Hebben jullie een eigen werkplaats of besteden jullie de productie uit?",
+          "a": "We beschikken over een eigen werkplaats voor timmerwerk en afwerkingen. Zonder tussenpersonen controleren we materialen, deadlines en kwaliteit voor 100%, en verkorten we de montagetijd ter plaatse door voormontage in de werkplaats."
+        },
+        {
+          "q": "Is de service sleutelklaar?",
+          "a": "Ja. We regelen alles: 3D-ontwerp, productie, transport, montage, elektrische installatie, graphics, eindschoonmaak en de technische keuringen van de locatie. Uw team verschijnt gewoon op de eerste dag van het evenement."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "圣地亚哥-德孔波斯特拉",
+      "title": "圣地亚哥-德孔波斯特拉展台设计与搭建 | Cidade da Cultura | Standarte",
+      "h1": "圣地亚哥-德孔波斯特拉展台设计与搭建",
+      "introText": "Standarte 在圣地亚哥-德孔波斯特拉设计、制造并搭建展会展台。这里是加利西亚自治区首府，也是会议与展会的重要枢纽，以加利西亚文化城（Cidade da Cultura，Gaiás）和加利西亚会议展览宫为核心场馆，并举办 Fairway（圣雅各朝圣之路展会）与 Maker Faire Galicia 等活动。凭借20多年经验和自有工厂，我们把控每个环节：3D设计、定制木工、物流以及带现场验收的搭建。",
+      "body": "\n        <h2>加利西亚文化城与会议宫：圣地亚哥的展会舞台</h2>\n        <p>圣地亚哥-德孔波斯特拉是加利西亚首府，也是朝圣之路的终点，是会议、文化展会与旅游的重要枢纽。其两大舞台是<strong>加利西亚文化城（Cidade da Cultura，Gaiás）</strong>——举办 <strong>Fairway</strong>（圣雅各朝圣之路国际展会）和 <strong>Maker Faire Galicia</strong> 等活动——以及<strong>加利西亚会议展览宫</strong>，承办 GEDET（皮肤科）、SEMERGEN、SESMI 等大型医学与科学会议。对于希望连接旅游、文化或医疗行业的企业而言，在此以一座精心打造的展台参展是回报最高的商业投资之一，而这正是 Standarte 脱颖而出之处：我们把贵品牌的空间变成高回报的访客磁石。</p>\n        <p>我们熟悉圣地亚哥各场馆的技术规范以及专业访客的特点，从而避免搭建中的意外与延误，并能完成各类定制展台——从医学会议空间到大型旅游展位。</p>\n\n        <h2>来自自有工厂的3D设计与定制木工</h2>\n        <p>展台的成功在搭建前数月便已开始。我们的设计阶段是品牌工程与访客动线优化的细致过程：以贵公司的品牌规范为出发点，我们制作与最终成果100%一致的交互式3D原型，让贵方销售团队在制造开始前即可确认品牌可见度、洽谈区以及屏幕、柜台和展柜的整合。</p>\n        <p>我们最大的优势之一是拥有<strong>自有工厂</strong>，提供高品质木工与饰面。无需分包，我们对材料、工期和质量保持全面把控，采用现代组装工艺与适用于临时建筑的认证材料。工厂内的部分预组装缩短了现场作业时间，确保完美的成品质量。</p>\n\n        <h2>圣地亚哥-德孔波斯特拉的物流与交钥匙搭建</h2>\n        <p>最终搭建是我们交钥匙服务的收尾。我们直接协调运输与包装、现场搭建、射灯与屏幕的电气安装、图文铺设以及最后清洁。贵团队只需在活动首日到场，即可看到一个完全就绪、可即刻获取商机的企业空间。此外，我们处理场馆所需的全部技术手续——经审核的方案、防火认证、电气验收、风险评估与保险——以确保顺利审批。</p>\n        <p>我们的体系使我们能够以与半岛其他地区同样的敏捷度服务圣地亚哥及整个加利西亚，为代理机构和直接参展商提供设计、生产、物流与搭建的单一对接人。</p>\n      ",
+      "faqs": [
+        {
+          "q": "你们在圣地亚哥的加利西亚文化城与会议宫设计搭建展台吗？",
+          "a": "是的。我们在圣地亚哥-德孔波斯特拉的场馆——加利西亚文化城（Cidade da Cultura，Gaiás）与加利西亚会议展览宫——为 Fairway、Maker Faire Galicia 以及各大医学会议提供服务。我们熟悉其技术规范，确保搭建无意外。"
+        },
+        {
+          "q": "你们有自有工厂还是外包制造？",
+          "a": "我们拥有自有木工与饰面工厂。没有中间商，我们对材料、工期和质量实现100%把控，并通过工厂预组装缩短现场搭建时间。"
+        },
+        {
+          "q": "是交钥匙服务吗？",
+          "a": "是的。我们全程负责：3D设计、制造、运输、搭建、电气安装、图文、最后清洁以及场馆的技术验收。贵团队只需在活动首日到场。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "सैंटियागो दे कॉम्पोस्टेला",
+      "title": "सैंटियागो दे कॉम्पोस्टेला में स्टैंड डिज़ाइन और असेंबली | Cidade da Cultura | Standarte",
+      "h1": "सैंटियागो दे कॉम्पोस्टेला में स्टैंड डिज़ाइन और असेंबली",
+      "introText": "Standarte सैंटियागो दे कॉम्पोस्टेला में प्रदर्शनी स्टैंड डिज़ाइन, निर्माण और असेंबली करता है—गैलिसिया की राजधानी और कांग्रेस तथा मेलों का एक प्रमुख केंद्र, जहाँ Cidade da Cultura de Galicia (Gaiás) और Palacio de Congresos e Exposicións de Galicia प्रमुख स्थल हैं और Fairway (कामिनो दे सैंटियागो मेला) तथा Maker Faire Galicia जैसे आयोजन होते हैं। 20 से अधिक वर्षों का अनुभव और अपनी कार्यशाला हर चरण को नियंत्रित करने के लिए: 3D डिज़ाइन, अनुकूलित बढ़ईगीरी, रसद और स्थल पर सत्यापन के साथ असेंबली।",
+      "body": "\n        <h2>Cidade da Cultura और कांग्रेस पैलेस: सैंटियागो का मेला मंच</h2>\n        <p>सैंटियागो दे कॉम्पोस्टेला, गैलिसिया की राजधानी और कामिनो का गंतव्य, कांग्रेस, सांस्कृतिक मेलों और पर्यटन का एक बड़ा केंद्र है। इसके दो प्रमुख मंच हैं <strong>Cidade da Cultura de Galicia (Gaiás)</strong>—जहाँ <strong>Fairway</strong> (कामिनो दे सैंटियागो का अंतरराष्ट्रीय मेला) और <strong>Maker Faire Galicia</strong> जैसे आयोजन होते हैं—और <strong>Palacio de Congresos e Exposicións de Galicia</strong>, जो GEDET (त्वचाविज्ञान), SEMERGEN या SESMI जैसे बड़े चिकित्सा और वैज्ञानिक सम्मेलनों की मेज़बानी करता है। पर्यटन, सांस्कृतिक या स्वास्थ्य क्षेत्र से जुड़ना चाहने वाली कंपनी के लिए, यहाँ एक बेहतरीन स्टैंड के साथ प्रदर्शन करना सबसे लाभदायक व्यावसायिक निवेशों में से एक है, और यहीं Standarte अंतर पैदा करता है: हम आपके ब्रांड की जगह को उच्च रिटर्न वाले आगंतुक चुंबक में बदल देते हैं।</p>\n        <p>हम सैंटियागो के स्थलों की तकनीकी नियमावली और पेशेवर आगंतुक की प्रोफ़ाइल को जानते हैं, जिससे असेंबली में आश्चर्य और देरी से बचा जाता है और हमें चिकित्सा सम्मेलन की जगह से लेकर बड़े पर्यटन प्रदर्शक तक, अनुकूलित स्टैंड बनाने में सक्षम बनाता है।</p>\n\n        <h2>अपनी कार्यशाला से 3D डिज़ाइन और अनुकूलित बढ़ईगीरी</h2>\n        <p>एक स्टैंड की सफलता असेंबली से महीनों पहले शुरू होती है। हमारा डिज़ाइन चरण ब्रांड इंजीनियरिंग और आगंतुक प्रवाह अनुकूलन की एक सूक्ष्म प्रक्रिया है: आपकी कंपनी के कॉर्पोरेट दिशानिर्देशों से शुरू करते हुए, हम अंतिम परिणाम के प्रति 100% वफादार एक इंटरैक्टिव 3D प्रोटोटाइप बनाते हैं, ताकि आपकी बिक्री टीम निर्माण शुरू होने से पहले ब्रांड दृश्यता, बैठक क्षेत्रों और स्क्रीन, काउंटर तथा शोकेस के एकीकरण को मान्य कर सके।</p>\n        <p>हमारे सबसे बड़े लाभों में से एक है उच्च गुणवत्ता वाली बढ़ईगीरी और फिनिशिंग के लिए <strong>अपनी कार्यशाला</strong> का होना। बिना उपठेके के, हम सामग्री, समयसीमा और गुणवत्ता पर पूर्ण नियंत्रण रखते हैं, आधुनिक असेंबली तकनीकों और अस्थायी वास्तुकला के लिए प्रमाणित सामग्री के साथ। कार्यशाला में आंशिक पूर्व-असेंबली स्थल पर कार्य समय को कम करती है और एक त्रुटिहीन फिनिश सुनिश्चित करती है।</p>\n\n        <h2>सैंटियागो दे कॉम्पोस्टेला में रसद और टर्नकी असेंबली</h2>\n        <p>अंतिम असेंबली हमारी टर्नकी सेवा का समापन है। हम सीधे परिवहन और पैकेजिंग, स्थल पर असेंबली, स्पॉटलाइट और स्क्रीन की विद्युत स्थापना, ग्राफिक्स की स्थापना और अंतिम सफाई का समन्वय करते हैं। आपकी टीम को बस आयोजन के पहले दिन उपस्थित होना है और एक पूरी तरह से चालू कॉर्पोरेट स्थान मिलेगा जो संपर्क बनाने के लिए तैयार है। इसके अलावा, हम स्थलों द्वारा आवश्यक सभी तकनीकी औपचारिकताओं का प्रबंधन करते हैं—स्वीकृत परियोजनाएँ, अग्निरोधक प्रमाणपत्र, विद्युत सत्यापन, जोखिम मूल्यांकन और बीमा—सुचारू अनुमोदन के लिए।</p>\n        <p>हमारी संरचना हमें सैंटियागो और पूरे गैलिसिया की सेवा प्रायद्वीप के बाकी हिस्सों जैसी ही तत्परता से करने की अनुमति देती है, एजेंसियों और प्रत्यक्ष प्रदर्शकों को डिज़ाइन, उत्पादन, रसद और असेंबली के लिए एकल संपर्क प्रदान करती है।</p>\n      ",
+      "faqs": [
+        {
+          "q": "क्या आप सैंटियागो के Cidade da Cultura और कांग्रेस पैलेस में स्टैंड डिज़ाइन और असेंबली करते हैं?",
+          "a": "हाँ। हम सैंटियागो दे कॉम्पोस्टेला के स्थलों—Cidade da Cultura de Galicia (Gaiás) और Palacio de Congresos e Exposicións de Galicia—में Fairway, Maker Faire Galicia या बड़े चिकित्सा सम्मेलनों जैसे मेलों और कांग्रेसों में काम करते हैं। हम बिना आश्चर्य की असेंबली के लिए उनकी तकनीकी नियमावली जानते हैं।"
+        },
+        {
+          "q": "क्या आपके पास अपनी कार्यशाला है या आप निर्माण उपठेके पर देते हैं?",
+          "a": "हमारे पास बढ़ईगीरी और फिनिशिंग के लिए अपनी कार्यशाला है। बिना बिचौलियों के, हम सामग्री, समयसीमा और गुणवत्ता पर 100% नियंत्रण रखते हैं, और कार्यशाला में पूर्व-असेंबली के माध्यम से स्थल पर असेंबली समय कम करते हैं।"
+        },
+        {
+          "q": "क्या सेवा टर्नकी है?",
+          "a": "हाँ। हम सब कुछ संभालते हैं: 3D डिज़ाइन, निर्माण, परिवहन, असेंबली, विद्युत स्थापना, ग्राफिक्स, अंतिम सफाई और स्थल के तकनीकी सत्यापन। आपकी टीम बस आयोजन के पहले दिन उपस्थित होती है।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "산티아고 데 콤포스텔라",
+      "title": "산티아고 데 콤포스텔라 부스 디자인 및 조립 | Cidade da Cultura | Standarte",
+      "h1": "산티아고 데 콤포스텔라 부스 디자인 및 조립",
+      "introText": "Standarte는 갈리시아의 주도이자 학회와 박람회의 주요 거점인 산티아고 데 콤포스텔라에서 전시 부스를 디자인·제작·조립합니다. Cidade da Cultura de Galicia(Gaiás)와 Palacio de Congresos e Exposicións de Galicia를 대표 전시장으로 두고 Fairway(산티아고 순례길 박람회)와 Maker Faire Galicia 같은 행사가 열립니다. 20년 이상의 경험과 자체 공장으로 3D 디자인, 맞춤 목공, 물류, 현장 검수를 포함한 조립까지 모든 단계를 직접 관리합니다.",
+      "body": "\n        <h2>Cidade da Cultura와 콘그레스 팰리스: 산티아고의 전시 무대</h2>\n        <p>갈리시아의 주도이자 순례길의 종착지인 산티아고 데 콤포스텔라는 학회, 문화 박람회, 관광의 큰 거점입니다. 두 개의 큰 무대는 <strong>Cidade da Cultura de Galicia(Gaiás)</strong>—<strong>Fairway</strong>(산티아고 순례길 국제 박람회)와 <strong>Maker Faire Galicia</strong> 같은 행사를 개최—와 <strong>Palacio de Congresos e Exposicións de Galicia</strong>로, GEDET(피부과), SEMERGEN, SESMI 등 대규모 의학·과학 학회를 유치합니다. 관광·문화·의료 분야와 연결되고자 하는 기업에게 잘 만들어진 부스로 이곳에 참가하는 것은 가장 수익성 높은 상업적 투자 중 하나이며, 바로 이 지점에서 Standarte가 차별화됩니다. 우리는 귀사 브랜드의 공간을 높은 수익을 가져오는 방문객 자석으로 바꿉니다.</p>\n        <p>우리는 산티아고 전시장의 기술 규정과 전문 방문객의 특성을 잘 알고 있어 조립 중 예기치 못한 일과 지연을 방지하며, 의학 학회용 공간부터 대형 관광 전시업체 부스까지 맞춤형 부스를 구현할 수 있습니다.</p>\n\n        <h2>자체 공장에서의 3D 디자인과 맞춤 목공</h2>\n        <p>부스의 성공은 조립 몇 달 전에 시작됩니다. 우리의 디자인 단계는 브랜드 엔지니어링과 방문객 동선 최적화의 정교한 과정입니다. 귀사의 기업 가이드라인을 바탕으로 최종 결과물과 100% 일치하는 인터랙티브 3D 프로토타입을 제작하여, 제작이 시작되기 전에 영업팀이 브랜드 가시성, 미팅 공간, 화면·카운터·진열장의 통합을 검증할 수 있습니다.</p>\n        <p>우리의 가장 큰 강점 중 하나는 고품질 목공 및 마감을 위한 <strong>자체 공장</strong>을 보유하고 있다는 점입니다. 하도급 없이 재료, 일정, 품질을 100% 통제하며, 현대적 조립 기술과 임시 건축용 인증 자재를 사용합니다. 공장에서의 부분 사전 조립은 현장 작업 시간을 줄이고 완벽한 마감을 보장합니다.</p>\n\n        <h2>산티아고 데 콤포스텔라의 물류 및 턴키 조립</h2>\n        <p>최종 조립은 턴키 서비스의 마무리입니다. 운송과 포장, 현장 조립, 스포트라이트와 화면의 전기 설치, 그래픽 부착, 최종 청소를 직접 조율합니다. 귀사 팀은 행사 첫날에 도착하기만 하면 완전히 가동되어 리드를 확보할 준비가 된 기업 공간을 만나게 됩니다. 또한 전시장이 요구하는 모든 기술 절차—승인 도면, 방화 인증서, 전기 검수, 위험 평가, 보험—를 처리하여 원활한 승인을 돕습니다.</p>\n        <p>우리의 구조 덕분에 반도의 다른 지역과 동일한 민첩성으로 산티아고와 갈리시아 전역을 지원하며, 대행사와 직접 전시업체에 디자인, 제작, 물류, 조립을 위한 단일 창구를 제공합니다.</p>\n      ",
+      "faqs": [
+        {
+          "q": "산티아고의 Cidade da Cultura와 콘그레스 팰리스에서 부스를 디자인하고 조립하나요?",
+          "a": "네. 산티아고 데 콤포스텔라의 전시장—Cidade da Cultura de Galicia(Gaiás)와 Palacio de Congresos e Exposicións de Galicia—에서 Fairway, Maker Faire Galicia 또는 대규모 의학 학회 같은 박람회와 학회에 참여합니다. 예기치 못한 일 없는 조립을 위해 해당 기술 규정을 잘 알고 있습니다."
+        },
+        {
+          "q": "자체 공장이 있나요, 아니면 제작을 외주하나요?",
+          "a": "목공 및 마감을 위한 자체 공장을 보유하고 있습니다. 중간 업체 없이 재료, 일정, 품질을 100% 통제하며, 공장 사전 조립을 통해 현장 조립 시간을 단축합니다."
+        },
+        {
+          "q": "턴키 서비스인가요?",
+          "a": "네. 3D 디자인, 제작, 운송, 조립, 전기 설치, 그래픽, 최종 청소, 전시장 기술 검수까지 모두 담당합니다. 귀사 팀은 행사 첫날에 오기만 하면 됩니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "サンティアゴ・デ・コンポステーラ",
+      "title": "サンティアゴ・デ・コンポステーラの展示会ブース設計・施工 | Cidade da Cultura | Standarte",
+      "h1": "サンティアゴ・デ・コンポステーラの展示会ブース設計・施工",
+      "introText": "Standarteはガリシア州の州都であり、学会と見本市の一大拠点であるサンティアゴ・デ・コンポステーラで展示会ブースを設計・製作・施工します。ガリシア文化都市（Cidade da Cultura、Gaiás）とガリシア会議展示宮を中核会場とし、Fairway（サンティアゴ巡礼路の見本市）やMaker Faire Galiciaなどが開催されます。20年以上の経験と自社工房により、3D設計、オーダーメイドの木工、物流、会場での検査を含む施工まで各工程を一貫して管理します。",
+      "body": "\n        <h2>ガリシア文化都市と会議宮：サンティアゴの展示舞台</h2>\n        <p>ガリシア州の州都であり巡礼路の終着地であるサンティアゴ・デ・コンポステーラは、学会、文化見本市、観光の一大拠点です。その二大舞台が、<strong>Fairway</strong>（サンティアゴ巡礼路の国際見本市）や<strong>Maker Faire Galicia</strong>などを開催する<strong>ガリシア文化都市（Cidade da Cultura、Gaiás）</strong>と、GEDET（皮膚科）、SEMERGEN、SESMIといった大規模な医学・科学学会を擁する<strong>ガリシア会議展示宮</strong>です。観光・文化・医療分野とつながりたい企業にとって、よく練られたブースでここに出展することは最も費用対効果の高い商業投資の一つであり、まさにそこでStandarteが違いを生み出します。私たちは御社ブランドの空間を、高いリターンをもたらす来場者を引き寄せる磁石へと変えます。</p>\n        <p>私たちはサンティアゴの各会場の技術規定と専門来場者の特性を熟知しており、施工時の想定外や遅延を防ぎ、医学学会のスペースから大型の観光ブースまで、オーダーメイドのブースを実現します。</p>\n\n        <h2>自社工房による3D設計とオーダーメイド木工</h2>\n        <p>ブースの成功は施工の数か月前に始まります。私たちの設計フェーズは、ブランド・エンジニアリングと来場者動線の最適化を行う緻密なプロセスです。御社の企業ガイドラインを起点に、最終結果に100%忠実なインタラクティブ3Dプロトタイプを作成し、製作開始前に営業チームがブランドの視認性、商談スペース、スクリーン・カウンター・ショーケースの統合を確認できるようにします。</p>\n        <p>私たちの最大の強みの一つは、高品質な木工と仕上げのための<strong>自社工房</strong>を持っていることです。下請けを介さず、材料・納期・品質を100%管理し、最新の組立技術と仮設建築向けの認証材料を用います。工房での部分的な事前組立により会場での作業時間を短縮し、完璧な仕上がりを保証します。</p>\n\n        <h2>サンティアゴ・デ・コンポステーラでの物流とターンキー施工</h2>\n        <p>最終施工は、私たちのターンキーサービスの締めくくりです。輸送・梱包、現場での施工、スポットライトとスクリーンの電気工事、グラフィックの設置、最終清掃まで直接調整します。御社チームはイベント初日に会場へお越しいただくだけで、完全に稼働し、すぐに見込み客を獲得できる企業空間が整っています。さらに、会場が求めるすべての技術手続き—承認図面、防炎証明、電気検査、リスク評価、保険—を代行し、円滑な承認を実現します。</p>\n        <p>当社の体制により、半島の他地域と同じ機動力でサンティアゴとガリシア全域に対応し、代理店や直接出展企業に設計・製作・物流・施工の単一窓口を提供します。</p>\n      ",
+      "faqs": [
+        {
+          "q": "サンティアゴのガリシア文化都市や会議宮でブースの設計・施工を行いますか？",
+          "a": "はい。サンティアゴ・デ・コンポステーラの会場—ガリシア文化都市（Cidade da Cultura、Gaiás）とガリシア会議展示宮—で、Fairway、Maker Faire Galicia、大規模な医学学会などの見本市・学会に対応します。想定外のない施工のため、それぞれの技術規定を熟知しています。"
+        },
+        {
+          "q": "自社工房がありますか、それとも製作を外注しますか？",
+          "a": "木工と仕上げのための自社工房を備えています。仲介業者を介さず、材料・納期・品質を100%管理し、工房での事前組立により会場での施工時間を短縮します。"
+        },
+        {
+          "q": "サービスはターンキーですか？",
+          "a": "はい。3D設計、製作、輸送、施工、電気工事、グラフィック、最終清掃、会場の技術検査まですべて担当します。御社チームはイベント初日にお越しいただくだけです。"
+        }
+      ]
     }
   },
   "services": {
