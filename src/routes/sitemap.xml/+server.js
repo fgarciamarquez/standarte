@@ -1,7 +1,7 @@
 import { fairsData } from '$lib/fairsData.js';
 import { languages, routes, pathFor, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
 import { getAllProjectIds } from '$lib/projectData.js';
-import { portfolioVideos } from '$lib/videosData.js';
+import { portfolioVideos, siteVideos } from '$lib/videosData.js';
 import { projectVideos } from '$lib/server/projectVideos.js';
 import news from '$lib/newsData.json';
 
@@ -130,8 +130,8 @@ export async function GET() {
   });
 
   // 6. Páginas de visualización de vídeo (/videos/<slug>) — una URL por vídeo, con el
-  //    reproductor visible. Incluye los 8 del carrusel y los .mp4 de cada proyecto.
-  [...portfolioVideos, ...projectVideos].forEach((v) => {
+  //    reproductor visible. Incluye los del carrusel, los de presentación y los de proyecto.
+  [...portfolioVideos, ...siteVideos, ...projectVideos].forEach((v) => {
     const watch = `${siteUrl}/videos/${v.slug}`;
     urls.push({
       loc: watch,

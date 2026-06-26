@@ -21,6 +21,35 @@ export const portfolioVideos = NUMS.map((num, i) => {
   };
 });
 
+// Vídeos de presentación de Standarte (el reproductor grande de MicroStand en la home y
+// las home de idioma). También necesitan su página de visualización + sitemap para indexarse.
+export const siteVideos = [
+  {
+    slug: 'standarte-ferias-historicas',
+    src: '/img/video_standarte_presentacion_vinos.mp4',
+    thumb: '/img/video_standarte_presentacion_vinos_poster.jpg',
+    title: 'Standarte · Ferias en entornos históricos',
+    description: 'Diseño e ingeniería respetuosa para stands en ubicaciones tradicionales e históricas, por Standarte.',
+    uploadDate: UPLOAD_DATE
+  },
+  {
+    slug: 'standarte-presentaciones-de-empresa',
+    src: '/img/video_standarte_andalucia.mp4',
+    thumb: '/img/video_standarte_andalucia_poster.jpg',
+    title: 'Standarte · Presentaciones de empresa',
+    description: 'Espacios gourmet a medida para bodegas, presentaciones de empresa y eventos especiales, por Standarte.',
+    uploadDate: UPLOAD_DATE
+  },
+  {
+    slug: 'standarte-ferias-aire-libre',
+    src: '/img/video_standarte_feria_verano.mp4',
+    thumb: '/img/video_standarte_feria_verano_poster.jpg',
+    title: 'Standarte · Ferias al aire libre de gran formato',
+    description: 'Montajes de gran escala y carpas premium de alta resistencia para ferias al aire libre, por Standarte.',
+    uploadDate: UPLOAD_DATE
+  }
+];
+
 export function getVideoBySlug(slug) {
   return portfolioVideos.find((v) => v.slug === slug) || null;
 }
