@@ -116,7 +116,7 @@
   }
 
   h1 {
-    font-family: 'Righteous', serif;
+    font-family: 'Russo One', serif;
     font-weight: 400;
     font-size: 28px;
     color: #1a1e21;

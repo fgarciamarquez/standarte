@@ -642,6 +642,15 @@
     videoLightboxSrc = null;
   }
 
+  // Navegación entre vídeos de la galería dentro del lightbox, sin cerrar la ventana.
+  function navVideo(dir) {
+    if (!videoLightboxSrc) return;
+    const list = galleryVideos;
+    const i = list.findIndex((v) => v.src === videoLightboxSrc);
+    if (i === -1) return;
+    videoLightboxSrc = list[(i + dir + list.length) % list.length].src;
+  }
+
   function openLegalModal(type) {
     const titles = {
       privacy: copy.legal.privacy,
@@ -679,8 +688,11 @@
       return;
     }
 
-    // Flechas izquierda/derecha: navegar entre proyectos cuando el lightbox de imagen está abierto.
-    if (lightboxProject && !legalModal) {
+    // Flechas izquierda/derecha: navegar entre vídeos o proyectos según el lightbox abierto.
+    if (videoLightboxSrc) {
+      if (event.key === 'ArrowLeft') navVideo(-1);
+      else if (event.key === 'ArrowRight') navVideo(1);
+    } else if (lightboxProject && !legalModal) {
       if (event.key === 'ArrowLeft') navLightbox(-1);
       else if (event.key === 'ArrowRight') navLightbox(1);
     }
@@ -1257,6 +1269,10 @@
       {#if videoLightboxSrc}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Vídeo de proyecto 3D" tabindex="-1" on:click={(e) => { if (e.target === e.currentTarget) closeVideoLightbox(); }}>
+          {#if galleryVideos.length > 1}
+            <button class="lightbox-nav prev" type="button" aria-label={lang === 'es' ? 'Vídeo anterior' : 'Previous video'} on:click={() => navVideo(-1)}>‹</button>
+            <button class="lightbox-nav next" type="button" aria-label={lang === 'es' ? 'Vídeo siguiente' : 'Next video'} on:click={() => navVideo(1)}>›</button>
+          {/if}
           <div class="lightbox-window lightbox-window-video" role="document">
             <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeVideoLightbox}>×</button>
             <div class="lightbox-body">
@@ -1784,7 +1800,7 @@
   }
 
   .team-member h3 {
-    font-family: 'Righteous', serif;
+    font-family: 'Russo One', serif;
     font-size: 19px;
     font-weight: 400;
     color: #333;

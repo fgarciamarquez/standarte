@@ -643,7 +643,7 @@
     font-size: 26px;
     color: #1a1e21;
     margin-bottom: 20px;
-    font-family: 'Righteous', serif;
+    font-family: 'Russo One', serif;
   font-weight: 400;
   }
 
@@ -697,7 +697,7 @@
     font-size: 24px;
     color: #1a1e21;
     margin: 0 0 8px;
-    font-family: 'Righteous', serif;
+    font-family: 'Russo One', serif;
   font-weight: 400;
   }
 
