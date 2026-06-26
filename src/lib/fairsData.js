@@ -880,5 +880,40 @@ export const fairsData = [
     "slug": "feira-daires-viana-do-alentejo",
     "city": "Portugal Sur",
     "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Fairway Santiago de Compostela",
+    "country": "es",
+    "slug": "fairway-santiago-de-compostela",
+    "city": "Santiago de Compostela",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Maker Faire Galicia Santiago de Compostela",
+    "country": "es",
+    "slug": "maker-faire-galicia-santiago-de-compostela",
+    "city": "Santiago de Compostela",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "GEDET Santiago de Compostela",
+    "country": "es",
+    "slug": "gedet-santiago-de-compostela",
+    "city": "Santiago de Compostela",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Congreso SEMERGEN Santiago de Compostela",
+    "country": "es",
+    "slug": "semergen-santiago-de-compostela",
+    "city": "Santiago de Compostela",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "SESMI Santiago de Compostela",
+    "country": "es",
+    "slug": "sesmi-santiago-de-compostela",
+    "city": "Santiago de Compostela",
+    "sector": "Salud y Medicina"
   }
 ];

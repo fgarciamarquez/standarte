@@ -30,6 +30,7 @@ export const routes = {
     lisboa: 'diseno_montaje_stands_lisboa',
     batalha: 'diseno_montaje_stands_batalha',
     vigo: 'diseno_montaje_stands_vigo',
+    santiago: 'diseno_montaje_stands_santiago_de_compostela',
     mallorca: 'diseno_montaje_stands_mallorca',
     valencia: 'diseno_montaje_stands_valencia',
     oporto: 'diseno_montaje_stands_oporto',
@@ -58,6 +59,7 @@ export const routes = {
     lisboa: 'stand_design_assembly_lisbon',
     batalha: 'stand_design_assembly_batalha',
     vigo: 'stand_design_assembly_vigo',
+    santiago: 'stand_design_assembly_santiago_de_compostela',
     mallorca: 'stand_design_assembly_mallorca',
     valencia: 'stand_design_assembly_valencia',
     oporto: 'stand_design_assembly_porto',
@@ -86,6 +88,7 @@ export const routes = {
     lisboa: 'messestand_design_montage_lissabon',
     batalha: 'messestand_design_montage_batalha',
     vigo: 'messestand_design_montage_vigo',
+    santiago: 'messestand_design_montage_santiago_de_compostela',
     mallorca: 'messestand_design_montage_mallorca',
     valencia: 'messestand_design_montage_valencia',
     oporto: 'messestand_design_montage_porto',
@@ -114,6 +117,7 @@ export const routes = {
     lisboa: 'lisbon_zhantai_sheji_dajian',
     batalha: 'batalha_zhantai_sheji_dajian',
     vigo: 'vigo_zhantai_sheji_dajian',
+    santiago: 'santiago_de_compostela_zhantai_sheji_dajian',
     mallorca: 'mallorca_zhantai_sheji_dajian',
     valencia: 'valencia_zhantai_sheji_dajian',
     oporto: 'porto_zhantai_sheji_dajian',
@@ -142,6 +146,7 @@ export const routes = {
     lisboa: 'lisbon_stand_dizain_asembli',
     batalha: 'batalha_stand_dizain_asembli',
     vigo: 'vigo_stand_dizain_asembli',
+    santiago: 'santiago_de_compostela_stand_dizain_asembli',
     mallorca: 'mallorca_stand_dizain_asembli',
     valencia: 'valencia_stand_dizain_asembli',
     oporto: 'porto_stand_dizain_asembli',
@@ -170,6 +175,7 @@ export const routes = {
     lisboa: 'design_montagem_stands_lisboa',
     batalha: 'design_montagem_stands_batalha',
     vigo: 'design_montagem_stands_vigo',
+    santiago: 'design_montagem_stands_santiago_de_compostela',
     mallorca: 'design_montagem_stands_mallorca',
     valencia: 'design_montagem_stands_valencia',
     oporto: 'design_montagem_stands_porto',
@@ -198,6 +204,7 @@ export const routes = {
     lisboa: 'conception_montage_stands_lisbonne',
     batalha: 'conception_montage_stands_batalha',
     vigo: 'conception_montage_stands_vigo',
+    santiago: 'conception_montage_stands_saint_jacques_de_compostelle',
     mallorca: 'conception_montage_stands_mallorca',
     valencia: 'conception_montage_stands_valence',
     oporto: 'conception_montage_stands_porto',
@@ -226,6 +233,7 @@ export const routes = {
     lisboa: 'progettazione_montaggio_stand_lisbona',
     batalha: 'progettazione_montaggio_stand_batalha',
     vigo: 'progettazione_montaggio_stand_vigo',
+    santiago: 'progettazione_montaggio_stand_santiago_di_compostela',
     mallorca: 'progettazione_montaggio_stand_mallorca',
     valencia: 'progettazione_montaggio_stand_valencia',
     oporto: 'progettazione_montaggio_stand_porto',
@@ -254,6 +262,7 @@ export const routes = {
     lisboa: 'lisbon-bujeu-dijain-jorip',
     batalha: 'batalha-bujeu-dijain-jorip',
     vigo: 'vigo-bujeu-dijain-jorip',
+    santiago: 'santiago_de_compostela-bujeu-dijain-jorip',
     mallorca: 'mallorca-bujeu-dijain-jorip',
     valencia: 'valencia-bujeu-dijain-jorip',
     oporto: 'porto-bujeu-dijain-jorip',
@@ -282,6 +291,7 @@ export const routes = {
     lisboa: 'リスボン展示会ブース設計施工',
     batalha: 'バターリャ展示会ブース設計施工',
     vigo: 'ビーゴ展示会ブース設計施工',
+    santiago: 'サンティアゴ・デ・コンポステーラ展示会ブース設計施工',
     mallorca: 'マヨルカ展示会ブース設計施工',
     valencia: 'バレンシア展示会ブース設計施工',
     oporto: 'ポルト展示会ブース設計施工',
@@ -310,6 +320,7 @@ export const routes = {
     lisboa: 'standontwerp_montage_lissabon',
     batalha: 'standontwerp_montage_batalha',
     vigo: 'standontwerp_montage_vigo',
+    santiago: 'standontwerp_montage_santiago_de_compostela',
     mallorca: 'standontwerp_montage_mallorca',
     valencia: 'standontwerp_montage_valencia',
     oporto: 'standontwerp_montage_porto',
@@ -1209,6 +1220,67 @@ export const copy = {
 };
 
 export const cityData = {
+  santiago: {
+    "city": {
+      "es": "Santiago de Compostela",
+      "en": "Santiago de Compostela",
+      "de": "Santiago de Compostela",
+      "zh": "圣地亚哥-德孔波斯特拉",
+      "hi": "सैंटियागो दे कॉम्पोस्टेला",
+      "pt": "Santiago de Compostela",
+      "fr": "Saint-Jacques-de-Compostelle",
+      "it": "Santiago di Compostela",
+      "ko": "산티아고 데 콤포스텔라",
+      "ja": "サンティアゴ・デ・コンポステーラ",
+      "nl": "Santiago de Compostela"
+    },
+    "content": {
+      "es": {
+        "intro": "Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Santiago de Compostela —capital de Galicia y gran plaza de congresos, ferias culturales y turismo del Camino, con la Cidade da Cultura de Galicia y el Palacio de Congresos e Exposicións de Galicia como recintos de referencia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+      },
+      "en": {
+        "intro": "With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Santiago de Compostela —the capital of Galicia and a major hub for congresses, cultural fairs and Camino de Santiago tourism, with the Cidade da Cultura de Galicia and the Palacio de Congresos e Exposicións de Galicia as its flagship venues— controlling every phase: 3D design, production, logistics, installation and on-site validations.",
+        "detail": "We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail."
+      },
+      "de": {
+        "intro": "Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Santiago de Compostela — der Hauptstadt Galiciens und einem bedeutenden Zentrum für Kongresse, Kulturmessen und Pilgertourismus des Jakobswegs, mit der Cidade da Cultura de Galicia und dem Palacio de Congresos e Exposicións de Galicia als führenden Veranstaltungsorten — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.",
+        "detail": "Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit."
+      },
+      "pt": {
+        "intro": "Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Santiago de Compostela — capital da Galiza e grande polo de congressos, feiras culturais e turismo do Caminho, com a Cidade da Cultura de Galicia e o Palacio de Congresos e Exposicións de Galicia como recintos de referência — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
+        "detail": "Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes."
+      },
+      "fr": {
+        "intro": "Forte de 20 ans d'expérience dans l'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Saint-Jacques-de-Compostelle — capitale de la Galice et grand pôle de congrès, de salons culturels et de tourisme du Chemin de Saint-Jacques, avec la Cidade da Cultura de Galicia et le Palacio de Congresos e Exposicións de Galicia comme parcs des expositions de référence — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.",
+        "detail": "Nous offrons aux agences et aux exposants la tranquillité d'esprit d'un montage sans surprise et une attention exceptionnelle aux détails."
+      },
+      "it": {
+        "intro": "Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Santiago di Compostela — capitale della Galizia e grande polo di congressi, fiere culturali e turismo del Cammino, con la Cidade da Cultura de Galicia e il Palacio de Congresos e Exposicións de Galicia come quartieri fieristici di riferimento — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.",
+        "detail": "Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un'eccezionale attenzione ai dettagli."
+      },
+      "nl": {
+        "intro": "Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Santiago de Compostela — de hoofdstad van Galicië en een belangrijk knooppunt voor congressen, culturele beurzen en pelgrimstoerisme van de Camino, met de Cidade da Cultura de Galicia en het Palacio de Congresos e Exposicións de Galicia als belangrijkste beurslocaties — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.",
+        "detail": "Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail."
+      },
+      "zh": {
+        "intro": "凭借在自有工厂搭建临时建筑的20年经验，Standarte 在圣地亚哥-德孔波斯特拉设计并搭建展台——这里是加利西亚自治区首府，也是会议、文化展会与圣雅各朝圣之路旅游的重要中心，以加利西亚文化城（Cidade da Cultura）和加利西亚会议展览宫为核心场馆——全程把控每个环节：3D设计、生产、物流、安装及现场验收。",
+        "detail": "我们为代理机构和参展商提供无意外的搭建保障，并对细节给予卓越关注。"
+      },
+      "hi": {
+        "intro": "अपने स्वयं के कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte सैंटियागो दे कॉम्पोस्टेला में स्टैंड डिज़ाइन और असेंबली करता है—गैलिसिया की राजधानी और कांग्रेस, सांस्कृतिक मेलों तथा कामिनो (तीर्थयात्रा) पर्यटन का एक प्रमुख केंद्र, जहाँ Cidade da Cultura de Galicia और Palacio de Congresos e Exposicións de Galicia प्रमुख प्रदर्शनी स्थल हैं—हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, उत्पादन, रसद, स्थापना और स्थल पर सत्यापन।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।"
+      },
+      "ko": {
+        "intro": "자체 공장에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 갈리시아의 주도이자 학회·문화 박람회·산티아고 순례길 관광의 주요 거점이며 Cidade da Cultura de Galicia와 Palacio de Congresos e Exposicións de Galicia를 대표 전시장으로 둔 산티아고 데 콤포스텔라에서 부스를 디자인하고 조립하며 3D 디자인, 생산, 물류, 설치, 현장 검수 등 모든 단계를 직접 관리합니다.",
+        "detail": "대행사와 직접 전시업체에 예기치 못한 일이 없는 조립과 디테일에 대한 탁월한 주의를 제공합니다."
+      },
+      "ja": {
+        "intro": "自社工房で仮設建築を手がけてきた20年の経験を背景に、Standarteはガリシア州の州都であり、学会・文化見本市・サンティアゴ巡礼路観光の一大拠点で、ガリシア文化都市（Cidade da Cultura）とガリシア会議展示宮を中核会場とするサンティアゴ・デ・コンポステーラで展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。",
+        "detail": "代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。"
+      }
+    }
+  },
   portugal_sur: {
     "city": {
       "es": "Portugal Sur",
