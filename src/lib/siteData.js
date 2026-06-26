@@ -20,6 +20,7 @@ export const routes = {
   es: {
     home: '',
     services: 'servicios',
+    precios: 'precios',
     luzpavilion: 'luzpavilion',
     custom: 'proyectos_a_medida',
     team: 'equipo',
@@ -49,6 +50,7 @@ export const routes = {
   en: {
     home: '',
     services: 'services',
+    precios: 'prices',
     luzpavilion: 'luzpavilion',
     custom: 'custom_projects',
     team: 'team',
@@ -78,6 +80,7 @@ export const routes = {
   de: {
     home: '',
     services: 'dienstleistungen',
+    precios: 'preise',
     luzpavilion: 'luzpavilion',
     custom: 'massgeschneiderte_projekte',
     team: 'team',
@@ -107,6 +110,7 @@ export const routes = {
   zh: {
     home: '',
     services: 'fuwu',
+    precios: 'jiage',
     luzpavilion: 'luzpavilion',
     custom: 'dingzhi_xiangmu',
     team: 'tuandui',
@@ -136,6 +140,7 @@ export const routes = {
   hi: {
     home: '',
     services: 'sevaen',
+    precios: 'kimat',
     luzpavilion: 'luzpavilion',
     custom: 'custom_projects',
     team: 'team',
@@ -165,6 +170,7 @@ export const routes = {
   pt: {
     home: '',
     services: 'servicos',
+    precios: 'precos',
     luzpavilion: 'luzpavilion',
     custom: 'projetos_a_medida',
     team: 'equipa',
@@ -194,6 +200,7 @@ export const routes = {
   fr: {
     home: '',
     services: 'services',
+    precios: 'tarifs',
     luzpavilion: 'luzpavilion',
     custom: 'projets_sur_mesure',
     team: 'equipe',
@@ -223,6 +230,7 @@ export const routes = {
   it: {
     home: '',
     services: 'servizi',
+    precios: 'prezzi',
     luzpavilion: 'luzpavilion',
     custom: 'progetti_su_misura',
     team: 'squadra',
@@ -252,6 +260,7 @@ export const routes = {
   ko: {
     home: '',
     services: 'jeonsigwan-seobiseu',
+    precios: 'gagyeok',
     luzpavilion: 'luzpavilion',
     custom: 'majchumhyeong-peurojekteu',
     team: 'tim',
@@ -281,6 +290,7 @@ export const routes = {
   ja: {
     home: '',
     services: '展示会ブース施工',
+    precios: '料金',
     luzpavilion: 'luzpavilion',
     custom: '施工事例',
     team: 'チーム',
@@ -310,6 +320,7 @@ export const routes = {
   nl: {
     home: '',
     services: 'diensten',
+    precios: 'prijzen',
     luzpavilion: 'luzpavilion',
     custom: 'projecten_op_maat',
     team: 'team',

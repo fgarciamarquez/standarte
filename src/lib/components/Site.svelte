@@ -302,6 +302,11 @@
   });
 
   const modularEnabled = false;
+  // Etiqueta del enlace "Precios" en el menú (la página /precios es un componente propio).
+  const preciosNavLabel = {
+    es: 'Precios', en: 'Prices', de: 'Preise', pt: 'Preços', fr: 'Tarifs', it: 'Prezzi',
+    nl: 'Prijzen', zh: '价格', hi: 'मूल्य', ko: '가격', ja: '料金'
+  };
   const languageLocales = {
     es: 'es_ES',
     en: 'en_GB',
@@ -1096,6 +1101,7 @@
         <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
+      <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
