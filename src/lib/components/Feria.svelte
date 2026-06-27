@@ -211,23 +211,23 @@
   };
 
   const cities = {
-    es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Europa': 'Europa', 'Oporto': 'Oporto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha' },
-    en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Europa': 'Europe', 'Oporto': 'Porto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha' },
-    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Zafra': 'サフラ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ' },
+    es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'A Coruña': 'A Coruña', 'Europa': 'Europa', 'Oporto': 'Oporto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha' },
+    en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'A Coruña': 'A Coruña', 'Europa': 'Europe', 'Oporto': 'Porto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha' },
+    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ' },
     // Simplified city mapping, defaulting to Spanish name if not defined to save space
   };
 
   // --- Clúster temático: cada feria enlaza con el pilar de su ciudad y con sus ferias hermanas de región ---
   // Mapea la ciudad de la feria a la sección-pilar (las que no tienen pilar propio cuelgan del más cercano).
   const CITY_TO_PILLAR = {
-    'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa', 'Oporto': 'oporto', 'Valencia': 'valencia', 'Mallorca': 'mallorca', 'Vigo': 'vigo', 'Santiago de Compostela': 'santiago', 'Batalha': 'batalha',
+    'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa', 'Oporto': 'oporto', 'Valencia': 'valencia', 'Mallorca': 'mallorca', 'Vigo': 'vigo', 'Santiago de Compostela': 'santiago', 'A Coruña': 'coruna', 'Batalha': 'batalha',
     'Málaga': 'malaga', 'Badajoz': 'badajoz', 'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real', 'Zaragoza': 'zaragoza',
     'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
     'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz', 'Portugal Sur': 'portugal_sur'
   };
   // Ciudad mostrada para el enlace al pilar (la del pilar, no la de la feria, para que el anchor coincida con el destino).
   const PILLAR_CITY = {
-    madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', lisboa: 'Lisboa', oporto: 'Oporto', valencia: 'Valencia', mallorca: 'Mallorca', vigo: 'Vigo', santiago: 'Santiago de Compostela', batalha: 'Batalha', malaga: 'Málaga',
+    madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', lisboa: 'Lisboa', oporto: 'Oporto', valencia: 'Valencia', mallorca: 'Mallorca', vigo: 'Vigo', santiago: 'Santiago de Compostela', coruna: 'A Coruña', batalha: 'Batalha', malaga: 'Málaga',
     badajoz: 'Badajoz', sevilla: 'Sevilla', ciudad_real: 'Ciudad Real', zaragoza: 'Zaragoza',
     montaje_don_benito: 'Don Benito', montaje_zafra: 'Zafra', portugal_sur: 'Portugal Sur'
   };
@@ -237,7 +237,7 @@
     'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
     'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco',
     'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha',
-    'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia', 'Santiago de Compostela': 'galicia',
+    'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia', 'Santiago de Compostela': 'galicia', 'A Coruña': 'galicia',
     'Portugal Sur': 'portugal-sur'
   };
   const clusterT = {
@@ -259,7 +259,7 @@
     'Madrid': 'IFEMA', 'Barcelona': 'Fira de Barcelona', 'Bilbao': 'BEC (Bilbao Exhibition Centre)',
     'Málaga': 'FYCMA', 'Sevilla': 'FIBES', 'Lisboa': 'FIL', 'Oporto': 'Exponor (Feira Internacional do Porto)', 'Valencia': 'Feria Valencia', 'Mallorca': 'Moll Vell de Palma / IFEBAL', 'Batalha': 'Exposalão (Centro de Exposições da Batalha)', 'Badajoz': 'IFEBA',
     'Don Benito': 'FEVAL', 'Ciudad Real': 'IFEDI',
-    'Zaragoza': 'Feria de Zaragoza', 'Vigo': 'IFEVI', 'Santiago de Compostela': 'Cidade da Cultura de Galicia / Palacio de Congresos', 'Lyon': 'Eurexpo Lyon',
+    'Zaragoza': 'Feria de Zaragoza', 'Vigo': 'IFEVI', 'Santiago de Compostela': 'Cidade da Cultura de Galicia / Palacio de Congresos', 'A Coruña': 'EXPOCoruña / Palexco', 'Lyon': 'Eurexpo Lyon',
     'Stuttgart': 'Messe Stuttgart', 'Múnich': 'Messe München', 'Núremberg': 'NürnbergMesse'
   };
   // Frase que nombra el recinto (clave SEO: "stand IFEBA", "stand FEVAL"…). Veraz y genérica.

@@ -32,6 +32,7 @@ export const routes = {
     batalha: 'diseno_montaje_stands_batalha',
     vigo: 'diseno_montaje_stands_vigo',
     santiago: 'diseno_montaje_stands_santiago_de_compostela',
+    coruna: 'diseno_montaje_stands_a_coruna',
     mallorca: 'diseno_montaje_stands_mallorca',
     valencia: 'diseno_montaje_stands_valencia',
     oporto: 'diseno_montaje_stands_oporto',
@@ -62,6 +63,7 @@ export const routes = {
     batalha: 'stand_design_assembly_batalha',
     vigo: 'stand_design_assembly_vigo',
     santiago: 'stand_design_assembly_santiago_de_compostela',
+    coruna: 'stand_design_assembly_a_coruna',
     mallorca: 'stand_design_assembly_mallorca',
     valencia: 'stand_design_assembly_valencia',
     oporto: 'stand_design_assembly_porto',
@@ -92,6 +94,7 @@ export const routes = {
     batalha: 'messestand_design_montage_batalha',
     vigo: 'messestand_design_montage_vigo',
     santiago: 'messestand_design_montage_santiago_de_compostela',
+    coruna: 'messestand_design_montage_a_coruna',
     mallorca: 'messestand_design_montage_mallorca',
     valencia: 'messestand_design_montage_valencia',
     oporto: 'messestand_design_montage_porto',
@@ -122,6 +125,7 @@ export const routes = {
     batalha: 'batalha_zhantai_sheji_dajian',
     vigo: 'vigo_zhantai_sheji_dajian',
     santiago: 'santiago_de_compostela_zhantai_sheji_dajian',
+    coruna: 'a_coruna_zhantai_sheji_dajian',
     mallorca: 'mallorca_zhantai_sheji_dajian',
     valencia: 'valencia_zhantai_sheji_dajian',
     oporto: 'porto_zhantai_sheji_dajian',
@@ -152,6 +156,7 @@ export const routes = {
     batalha: 'batalha_stand_dizain_asembli',
     vigo: 'vigo_stand_dizain_asembli',
     santiago: 'santiago_de_compostela_stand_dizain_asembli',
+    coruna: 'a_coruna_stand_dizain_asembli',
     mallorca: 'mallorca_stand_dizain_asembli',
     valencia: 'valencia_stand_dizain_asembli',
     oporto: 'porto_stand_dizain_asembli',
@@ -182,6 +187,7 @@ export const routes = {
     batalha: 'design_montagem_stands_batalha',
     vigo: 'design_montagem_stands_vigo',
     santiago: 'design_montagem_stands_santiago_de_compostela',
+    coruna: 'design_montagem_stands_a_coruna',
     mallorca: 'design_montagem_stands_mallorca',
     valencia: 'design_montagem_stands_valencia',
     oporto: 'design_montagem_stands_porto',
@@ -212,6 +218,7 @@ export const routes = {
     batalha: 'conception_montage_stands_batalha',
     vigo: 'conception_montage_stands_vigo',
     santiago: 'conception_montage_stands_saint_jacques_de_compostelle',
+    coruna: 'conception_montage_stands_la_corogne',
     mallorca: 'conception_montage_stands_mallorca',
     valencia: 'conception_montage_stands_valence',
     oporto: 'conception_montage_stands_porto',
@@ -242,6 +249,7 @@ export const routes = {
     batalha: 'progettazione_montaggio_stand_batalha',
     vigo: 'progettazione_montaggio_stand_vigo',
     santiago: 'progettazione_montaggio_stand_santiago_di_compostela',
+    coruna: 'progettazione_montaggio_stand_la_coruna',
     mallorca: 'progettazione_montaggio_stand_mallorca',
     valencia: 'progettazione_montaggio_stand_valencia',
     oporto: 'progettazione_montaggio_stand_porto',
@@ -272,6 +280,7 @@ export const routes = {
     batalha: 'batalha-bujeu-dijain-jorip',
     vigo: 'vigo-bujeu-dijain-jorip',
     santiago: 'santiago_de_compostela-bujeu-dijain-jorip',
+    coruna: 'a_coruna-bujeu-dijain-jorip',
     mallorca: 'mallorca-bujeu-dijain-jorip',
     valencia: 'valencia-bujeu-dijain-jorip',
     oporto: 'porto-bujeu-dijain-jorip',
@@ -302,6 +311,7 @@ export const routes = {
     batalha: 'バターリャ展示会ブース設計施工',
     vigo: 'ビーゴ展示会ブース設計施工',
     santiago: 'サンティアゴ・デ・コンポステーラ展示会ブース設計施工',
+    coruna: 'ア・コルーニャ展示会ブース設計施工',
     mallorca: 'マヨルカ展示会ブース設計施工',
     valencia: 'バレンシア展示会ブース設計施工',
     oporto: 'ポルト展示会ブース設計施工',
@@ -332,6 +342,7 @@ export const routes = {
     batalha: 'standontwerp_montage_batalha',
     vigo: 'standontwerp_montage_vigo',
     santiago: 'standontwerp_montage_santiago_de_compostela',
+    coruna: 'standontwerp_montage_a_coruna',
     mallorca: 'standontwerp_montage_mallorca',
     valencia: 'standontwerp_montage_valencia',
     oporto: 'standontwerp_montage_porto',
@@ -1231,6 +1242,67 @@ export const copy = {
 };
 
 export const cityData = {
+  coruna: {
+    "city": {
+      "es": "A Coruña",
+      "pt": "A Coruña",
+      "en": "A Coruña",
+      "de": "A Coruña",
+      "fr": "La Corogne",
+      "it": "La Coruña",
+      "nl": "A Coruña",
+      "zh": "拉科鲁尼亚",
+      "hi": "ए कोरुनिया",
+      "ko": "아 코루냐",
+      "ja": "ア・コルーニャ"
+    },
+    "content": {
+      "es": {
+        "intro": "Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en A Coruña —capital económica de Galicia y gran plaza atlántica de ferias y congresos, con EXPOCoruña y el Palacio de Congresos Palexco como recintos de referencia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+      },
+      "pt": {
+        "intro": "Com mais de 20 anos de experiência a construir arquitetura efémera a partir da nossa própria oficina, a Standarte concebe e monta stands na A Coruña — capital económica da Galiza e grande praça atlântica de feiras e congressos, com a EXPOCoruña e o Palacio de Exposiciones y Congresos Palexco como recintos de referência —, controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
+        "detail": "Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
+      },
+      "en": {
+        "intro": "With 20 years of experience building bespoke exhibition architecture from our own in-house workshop, Standarte designs and builds stands in A Coruña —Galicia's economic capital and a major Atlantic hub for trade fairs and congresses, with EXPOCoruña and the Palexco congress centre as its leading venues— controlling every phase: 3D design, fabrication, logistics, installation and on-site venue approvals.",
+        "detail": "We give agencies and direct exhibitors the reassurance of a build with no surprises and exceptional attention to detail."
+      },
+      "de": {
+        "intro": "Mit über 20 Jahren Erfahrung im Bau temporärer Architektur aus eigener Werkstatt plant und montiert Standarte Messestände in A Coruña – der wirtschaftlichen Hauptstadt Galiciens und großen atlantischen Messe- und Kongressstandort mit EXPOCoruña und dem Kongresspalast Palexco als zentralen Veranstaltungsorten. Wir steuern jede Phase: 3D-Design, Fertigung, Logistik, Aufbau und die Abnahmen vor Ort.",
+        "detail": "Agenturen und Direktausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus ohne böse Überraschungen und eine außergewöhnliche Liebe zum Detail."
+      },
+      "fr": {
+        "intro": "Forte de plus de 20 ans d'expérience dans la construction d'architecture éphémère depuis notre atelier intégré, Standarte conçoit et monte des stands à La Corogne — capitale économique de la Galice et grande place atlantique des salons et congrès, avec EXPOCoruña et le Palais des Expositions et Congrès Palexco comme sites de référence — en maîtrisant chaque étape : conception 3D, fabrication, logistique, installation et validations sur site.",
+        "detail": "Nous offrons aux agences et aux exposants la tranquillité d'un montage sans mauvaises surprises et un souci du détail exceptionnel."
+      },
+      "it": {
+        "intro": "Con oltre 20 anni di esperienza nella costruzione di architettura effimera dal nostro laboratorio interno, Standarte progetta e allestisce stand su misura a La Coruña —capitale economica della Galizia e grande piazza atlantica di fiere e congressi, con EXPOCoruña e il Palacio de Exposiciones y Congresos Palexco come sedi di riferimento— controllando ogni fase: progettazione 3D, produzione, logistica, installazione e validazioni in fiera.",
+        "detail": "Offriamo ad agenzie ed espositori la tranquillità di un allestimento senza imprevisti e una cura del dettaglio eccezionale."
+      },
+      "nl": {
+        "intro": "Met meer dan 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit ons eigen atelier ontwerpt en bouwt Standarte beursstands in A Coruña — de economische hoofdstad van Galicië en een belangrijk Atlantisch knooppunt voor beurzen en congressen, met EXPOCoruña en het Palacio de Exposiciones y Congresos Palexco als toonaangevende locaties. Wij houden elke fase in eigen hand: 3D-ontwerp, productie, logistiek, montage en de technische goedkeuringen op de beurslocatie.",
+        "detail": "Wij bieden bureaus en exposanten de zekerheid van een montage zonder verrassingen en een uitzonderlijke aandacht voor detail."
+      },
+      "zh": {
+        "intro": "凭借20多年搭建临时展览建筑的经验，Standarte依托自有工厂，在拉科鲁尼亚——加利西亚的经济中心、面向大西洋的展会与会议重镇，以EXPOCoruña与Palexco会展中心为核心场馆——为客户设计并搭建展台，全程把控每一个环节：3D设计、生产制造、物流运输、现场安装以及场馆技术审批。",
+        "detail": "我们为代理机构与参展商提供搭建零意外的安心保障，以及对细节近乎苛刻的关注。"
+      },
+      "hi": {
+        "intro": "अपनी निजी वर्कशॉप में अस्थायी वास्तुकला (एफेमेरल आर्किटेक्चर) के निर्माण के 20 से अधिक वर्षों के अनुभव के साथ, Standarte ए कोरुनिया में स्टैंड डिज़ाइन और असेंबल करती है — जो गैलिसिया की आर्थिक राजधानी और मेलों व सम्मेलनों का विशाल अटलांटिक केंद्र है, जहाँ EXPOCoruña और कॉन्ग्रेस सेंटर Palexco प्रमुख स्थल हैं — और हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, इंस्टॉलेशन और स्थल पर तकनीकी सत्यापन।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा वाली असेंबली का भरोसा और विवरण पर असाधारण ध्यान प्रदान करते हैं।"
+      },
+      "ko": {
+        "intro": "자체 공방에서 임시 건축물을 제작해 온 20년 이상의 경력을 바탕으로, Standarte는 아 코루냐에서 부스를 디자인하고 설치합니다. 갈리시아의 경제 중심 도시이자 대서양을 면한 전시·컨벤션의 거점인 이곳에는 EXPOCoruña와 Palexco 컨벤션 센터가 대표 전시장으로 자리하고 있으며, 저희는 3D 디자인, 제작, 물류, 설치, 전시장 승인까지 모든 단계를 직접 관리합니다.",
+        "detail": "에이전시와 출품 기업에 예기치 못한 변수 없는 설치와 디테일에 대한 탁월한 집중을 약속드립니다."
+      },
+      "ja": {
+        "intro": "20年以上の経験を持つStandarteは、自社工房から仮設建築を手がけ、ガリシア地方の経済的中心地であり、EXPOCoruñaとPalexco（パレクスコ会議場）を擁する大西洋岸の見本市・国際会議の拠点であるア・コルーニャで、ブースの設計から施工までを一貫して担います。3Dデザイン、製作、物流、設置、会場での各種申請に至るまで、すべての工程を自社で管理します。",
+        "detail": "代理店や出展企業の皆さまに、トラブルのない確実な施工と、細部にまでこだわった卓越した仕上がりをお約束します。"
+      }
+    }
+  },
   santiago: {
     "city": {
       "es": "Santiago de Compostela",

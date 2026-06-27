@@ -915,5 +915,26 @@ export const fairsData = [
     "slug": "sesmi-santiago-de-compostela",
     "city": "Santiago de Compostela",
     "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Galicia Fórum Gastronómico",
+    "country": "es",
+    "slug": "forum-gastronomico-a-coruna",
+    "city": "A Coruña",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Mundos Digitales",
+    "country": "es",
+    "slug": "mundos-digitales-a-coruna",
+    "city": "A Coruña",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "BioCultura A Coruña",
+    "country": "es",
+    "slug": "biocultura-a-coruna",
+    "city": "A Coruña",
+    "sector": "Agroalimentario y Naturaleza"
   }
 ];
