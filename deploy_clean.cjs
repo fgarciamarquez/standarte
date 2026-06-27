@@ -74,31 +74,12 @@ console.log(`  -> Detectados ${allFiles.length} archivos para procesar.`);
 
 const skipImages = process.argv.includes('--fast') || process.argv.includes('--skip-images');
 if (skipImages) {
-  console.log('  [OPT] Ejecutando en modo FAST. Se omitirá la subida de imágenes en img/*');
+  console.log('  [OPT] Modo FAST: solo se subirán imágenes NUEVAS o MODIFICADAS (las que ya están sin cambios se omiten).');
 }
 
-// Filtrar archivos candidatos (y calcular su hash de contenido)
-const candidates = [];
-const excludeList = ['.DS_Store', 'Thumbs.db', '.htaccess_local'];
-allFiles.forEach(file => {
-  const filename = path.basename(file);
-  const relativePath = path.relative(localDist, file).replace(/\\/g, '/');
-  if (excludeList.includes(filename)) {
-    return;
-  }
-  if (skipImages && (relativePath.startsWith('img/') || relativePath.includes('/img/'))) {
-    return;
-  }
-  // NUNCA subir los logs de runtime: los genera el servidor; subirlos los sobrescribiría/borraría.
-  if (/email_campaing\/data\/(send-log|clicks|cron_status)\.json$/.test(relativePath)) {
-    return;
-  }
-  candidates.push({ file, relativePath, hash: md5File(file) });
-});
-
-// Despliegue INCREMENTAL: descargar el manifiesto del servidor y subir solo lo que cambió.
-// El manifiesto (hash por fichero) vive en el servidor, así que vale igual para local y CI.
-// Se puede forzar un despliegue completo con --full (ignora el manifiesto).
+// Despliegue INCREMENTAL: descargar el manifiesto del servidor (hash por fichero) ANTES de
+// filtrar, para poder decidir qué imágenes están sin cambios. El manifiesto vive en el
+// servidor, así que vale igual para local y CI. Con --full se ignora y se resube todo.
 const forceFull = process.argv.includes('--full');
 let remoteManifest = {};
 if (!forceFull) {
@@ -113,6 +94,35 @@ if (!forceFull) {
   }
 } else {
   console.log('  -> Modo --full: se ignora el manifiesto y se sube todo.');
+}
+
+// Filtrar archivos candidatos (y calcular su hash de contenido)
+const candidates = [];
+const excludeList = ['.DS_Store', 'Thumbs.db', '.htaccess_local'];
+let fastSkipped = 0;
+allFiles.forEach(file => {
+  const filename = path.basename(file);
+  const relativePath = path.relative(localDist, file).replace(/\\/g, '/');
+  if (excludeList.includes(filename)) {
+    return;
+  }
+  // NUNCA subir los logs de runtime: los genera el servidor; subirlos los sobrescribiría/borraría.
+  if (/email_campaing\/data\/(send-log|clicks|cron_status)\.json$/.test(relativePath)) {
+    return;
+  }
+  const isImage = relativePath.startsWith('img/') || relativePath.includes('/img/');
+  const hash = md5File(file);
+  // Modo FAST: omitimos solo las imágenes que YA están en el manifiesto SIN cambios (mismo
+  // hash). Las imágenes NUEVAS o MODIFICADAS sí se suben, para que añadir una portada y
+  // desplegar nunca la deje rota (sin necesidad de acordarse de usar --full).
+  if (skipImages && isImage && remoteManifest[relativePath] === hash) {
+    fastSkipped++;
+    return;
+  }
+  candidates.push({ file, relativePath, hash });
+});
+if (skipImages && fastSkipped) {
+  console.log(`  [OPT] Modo FAST: ${fastSkipped} imágenes sin cambios omitidas; las nuevas/modificadas sí se suben.`);
 }
 
 // Subir solo los ficheros cuyo hash difiere del registrado (o nuevos)
