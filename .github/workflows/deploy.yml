@@ -7,6 +7,11 @@ name: Despliegue Manual a OVH
 
 on:
   workflow_dispatch:
+    inputs:
+      fast:
+        description: 'Modo rápido (omite imágenes img/*). Desmárcalo para subir imágenes nuevas.'
+        type: boolean
+        default: true
 
 # Evita despliegues FTP solapados (que se estorban y dejan estado mezclado):
 # un despliegue nuevo cancela el que esté en curso.
@@ -38,4 +43,4 @@ jobs:
         env:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
-        run: node deploy_clean.cjs --fast
+        run: node deploy_clean.cjs ${{ github.event.inputs.fast == 'false' && ' ' || '--fast' }}
