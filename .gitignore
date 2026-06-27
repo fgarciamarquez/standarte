@@ -21,3 +21,9 @@ static/admin/email_campaing/data/cron_status.json
 admin/email_campaing/data/clicks.json
 admin/email_campaing/data/send-log.json
 admin/email_campaing/data/cron_status.json
+
+# Originales en bruto de proyectos (fotos/vídeos fuente; la web usa las versiones procesadas
+# de static/img/, que sí están en git). No se versionan (decisión del usuario, ~88 MB).
+/img/IDh-Veteco-Madrid/
+/img/familia_bujanda/
+/img/foodespain/
