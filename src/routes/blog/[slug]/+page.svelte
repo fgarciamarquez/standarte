@@ -69,6 +69,11 @@
     it: 'Preventivo in 24h',
     ko: '24시간 내 견적'
   };
+  // Etiqueta del item "Precios" en el menú (consistente con el resto de plantillas).
+  const preciosNavLabel = {
+    es: 'Precios', en: 'Prices', de: 'Preise', pt: 'Preços', fr: 'Tarifs', it: 'Prezzi',
+    nl: 'Prijzen', zh: '价格', hi: 'मूल्य', ko: '가격', ja: '料金'
+  };
 
   const i18nDetail = {
     es: {
@@ -313,6 +318,7 @@
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
       <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
+      <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>

@@ -19,6 +19,11 @@
     fr: 'Tarifs de stands', it: 'Prezzi degli stand', pt: 'Preços de stands',
     zh: '展台价格', hi: 'स्टैंड के मूल्य', ko: '부스 가격', ja: 'ブースの料金', nl: 'Standprijzen'
   };
+  // Etiqueta del item "Precios" en el menú de navegación (consistente en todas las plantillas).
+  const preciosNavLabel = {
+    es: 'Precios', en: 'Prices', de: 'Preise', pt: 'Preços', fr: 'Tarifs', it: 'Prezzi',
+    nl: 'Prijzen', zh: '价格', hi: 'मूल्य', ko: '가격', ja: '料金'
+  };
   import FlagIcon from './FlagIcon.svelte';
 
   
@@ -542,6 +547,7 @@
       <a href={pathFor(lang, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
       <a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>
+      <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
