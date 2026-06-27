@@ -339,7 +339,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
   const cookieSettingsLabels = {
     es: 'Configurar cookies',
     en: 'Cookie settings',
@@ -431,11 +431,11 @@
   const SECTION_REGION = {
     badajoz: 'extremadura', montaje_zafra: 'extremadura', montaje_don_benito: 'extremadura', montaje_badajoz: 'extremadura',
     madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco',
-    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', santiago: 'galicia', coruna: 'galicia', batalha: 'portugal', zaragoza: 'aragon', portugal_sur: 'portugal-sur'
+    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', santiago: 'galicia', coruna: 'galicia', valladolid: 'castillayleon', salamanca: 'castillayleon', batalha: 'portugal', zaragoza: 'aragon', portugal_sur: 'portugal-sur'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
-    'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia', 'Santiago de Compostela': 'galicia', 'A Coruña': 'galicia', 'Portugal Sur': 'portugal-sur'
+    'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia', 'Santiago de Compostela': 'galicia', 'A Coruña': 'galicia', 'Valladolid': 'castillayleon', 'Salamanca': 'castillayleon', 'Portugal Sur': 'portugal-sur'
   };
   // Proyectos reales afines al perfil sectorial de cada región (obra propia; sin afirmar ubicación).
   const FEATURED_BY_REGION = {

@@ -936,5 +936,47 @@ export const fairsData = [
     "slug": "biocultura-a-coruna",
     "city": "A Coruña",
     "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "AGRARIA",
+    "country": "es",
+    "slug": "agraria-valladolid",
+    "city": "Valladolid",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "AGROVID",
+    "country": "es",
+    "slug": "agrovid-valladolid",
+    "city": "Valladolid",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "aviFORUM",
+    "country": "es",
+    "slug": "aviforum-valladolid",
+    "city": "Valladolid",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "FIMASCOTA",
+    "country": "es",
+    "slug": "fimascota-valladolid",
+    "city": "Valladolid",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "SALAMAQ",
+    "country": "es",
+    "slug": "salamaq-salamanca",
+    "city": "Salamanca",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Salón del Automóvil de Salamanca",
+    "country": "es",
+    "slug": "salon-automovil-salamanca",
+    "city": "Salamanca",
+    "sector": "Aeronáutica y Transporte"
   }
 ];

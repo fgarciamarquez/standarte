@@ -33,6 +33,8 @@ export const routes = {
     vigo: 'diseno_montaje_stands_vigo',
     santiago: 'diseno_montaje_stands_santiago_de_compostela',
     coruna: 'diseno_montaje_stands_a_coruna',
+    valladolid: 'diseno_montaje_stands_valladolid',
+    salamanca: 'diseno_montaje_stands_salamanca',
     mallorca: 'diseno_montaje_stands_mallorca',
     valencia: 'diseno_montaje_stands_valencia',
     oporto: 'diseno_montaje_stands_oporto',
@@ -64,6 +66,8 @@ export const routes = {
     vigo: 'stand_design_assembly_vigo',
     santiago: 'stand_design_assembly_santiago_de_compostela',
     coruna: 'stand_design_assembly_a_coruna',
+    valladolid: 'stand_design_assembly_valladolid',
+    salamanca: 'stand_design_assembly_salamanca',
     mallorca: 'stand_design_assembly_mallorca',
     valencia: 'stand_design_assembly_valencia',
     oporto: 'stand_design_assembly_porto',
@@ -95,6 +99,8 @@ export const routes = {
     vigo: 'messestand_design_montage_vigo',
     santiago: 'messestand_design_montage_santiago_de_compostela',
     coruna: 'messestand_design_montage_a_coruna',
+    valladolid: 'messestand_design_montage_valladolid',
+    salamanca: 'messestand_design_montage_salamanca',
     mallorca: 'messestand_design_montage_mallorca',
     valencia: 'messestand_design_montage_valencia',
     oporto: 'messestand_design_montage_porto',
@@ -126,6 +132,8 @@ export const routes = {
     vigo: 'vigo_zhantai_sheji_dajian',
     santiago: 'santiago_de_compostela_zhantai_sheji_dajian',
     coruna: 'a_coruna_zhantai_sheji_dajian',
+    valladolid: 'valladolid_zhantai_sheji_dajian',
+    salamanca: 'salamanca_zhantai_sheji_dajian',
     mallorca: 'mallorca_zhantai_sheji_dajian',
     valencia: 'valencia_zhantai_sheji_dajian',
     oporto: 'porto_zhantai_sheji_dajian',
@@ -157,6 +165,8 @@ export const routes = {
     vigo: 'vigo_stand_dizain_asembli',
     santiago: 'santiago_de_compostela_stand_dizain_asembli',
     coruna: 'a_coruna_stand_dizain_asembli',
+    valladolid: 'valladolid_stand_dizain_asembli',
+    salamanca: 'salamanca_stand_dizain_asembli',
     mallorca: 'mallorca_stand_dizain_asembli',
     valencia: 'valencia_stand_dizain_asembli',
     oporto: 'porto_stand_dizain_asembli',
@@ -188,6 +198,8 @@ export const routes = {
     vigo: 'design_montagem_stands_vigo',
     santiago: 'design_montagem_stands_santiago_de_compostela',
     coruna: 'design_montagem_stands_a_coruna',
+    valladolid: 'design_montagem_stands_valladolid',
+    salamanca: 'design_montagem_stands_salamanca',
     mallorca: 'design_montagem_stands_mallorca',
     valencia: 'design_montagem_stands_valencia',
     oporto: 'design_montagem_stands_porto',
@@ -219,6 +231,8 @@ export const routes = {
     vigo: 'conception_montage_stands_vigo',
     santiago: 'conception_montage_stands_saint_jacques_de_compostelle',
     coruna: 'conception_montage_stands_la_corogne',
+    valladolid: 'conception_montage_stands_valladolid',
+    salamanca: 'conception_montage_stands_salamanque',
     mallorca: 'conception_montage_stands_mallorca',
     valencia: 'conception_montage_stands_valence',
     oporto: 'conception_montage_stands_porto',
@@ -250,6 +264,8 @@ export const routes = {
     vigo: 'progettazione_montaggio_stand_vigo',
     santiago: 'progettazione_montaggio_stand_santiago_di_compostela',
     coruna: 'progettazione_montaggio_stand_la_coruna',
+    valladolid: 'progettazione_montaggio_stand_valladolid',
+    salamanca: 'progettazione_montaggio_stand_salamanca',
     mallorca: 'progettazione_montaggio_stand_mallorca',
     valencia: 'progettazione_montaggio_stand_valencia',
     oporto: 'progettazione_montaggio_stand_porto',
@@ -281,6 +297,8 @@ export const routes = {
     vigo: 'vigo-bujeu-dijain-jorip',
     santiago: 'santiago_de_compostela-bujeu-dijain-jorip',
     coruna: 'a_coruna-bujeu-dijain-jorip',
+    valladolid: 'valladolid-bujeu-dijain-jorip',
+    salamanca: 'salamanca-bujeu-dijain-jorip',
     mallorca: 'mallorca-bujeu-dijain-jorip',
     valencia: 'valencia-bujeu-dijain-jorip',
     oporto: 'porto-bujeu-dijain-jorip',
@@ -312,6 +330,8 @@ export const routes = {
     vigo: 'ビーゴ展示会ブース設計施工',
     santiago: 'サンティアゴ・デ・コンポステーラ展示会ブース設計施工',
     coruna: 'ア・コルーニャ展示会ブース設計施工',
+    valladolid: 'バリャドリッド展示会ブース設計施工',
+    salamanca: 'サラマンカ展示会ブース設計施工',
     mallorca: 'マヨルカ展示会ブース設計施工',
     valencia: 'バレンシア展示会ブース設計施工',
     oporto: 'ポルト展示会ブース設計施工',
@@ -343,6 +363,8 @@ export const routes = {
     vigo: 'standontwerp_montage_vigo',
     santiago: 'standontwerp_montage_santiago_de_compostela',
     coruna: 'standontwerp_montage_a_coruna',
+    valladolid: 'standontwerp_montage_valladolid',
+    salamanca: 'standontwerp_montage_salamanca',
     mallorca: 'standontwerp_montage_mallorca',
     valencia: 'standontwerp_montage_valencia',
     oporto: 'standontwerp_montage_porto',
@@ -1242,6 +1264,128 @@ export const copy = {
 };
 
 export const cityData = {
+  valladolid: {
+    "city": {
+      "es": "Valladolid",
+      "pt": "Valladolid",
+      "en": "Valladolid",
+      "de": "Valladolid",
+      "fr": "Valladolid",
+      "it": "Valladolid",
+      "nl": "Valladolid",
+      "zh": "巴利亚多利德",
+      "hi": "वायाडोलिड",
+      "ko": "바야돌리드",
+      "ja": "バリャドリッド"
+    },
+    "content": {
+      "es": {
+        "intro": "Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Valladolid —capital de Castilla y León y gran plaza ferial del noroeste, con la Feria de Valladolid (Institución Ferial de Castilla y León) como recinto de referencia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+      },
+      "pt": {
+        "intro": "Com mais de 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte concebe e monta stands em Valladolid —capital de Castela e Leão e grande praça feiral do noroeste de Espanha, tendo como recinto de referência a Feria de Valladolid (Institución Ferial de Castilla y León)— controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
+        "detail": "Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
+      },
+      "en": {
+        "intro": "With 20 years of experience building temporary architecture from our own workshop, Standarte designs and installs exhibition stands in Valladolid — capital of Castilla y León and the leading trade-fair hub of north-west Spain, with the Feria de Valladolid (Institución Ferial de Castilla y León) as its flagship venue — controlling every stage in-house: 3D design, fabrication, logistics, installation and on-site venue approvals.",
+        "detail": "We give agencies and exhibitors the reassurance of a build with no surprises and an exceptional attention to detail."
+      },
+      "de": {
+        "intro": "Mit über 20 Jahren Erfahrung im Bau temporärer Architektur aus der eigenen Werkstatt plant und montiert Standarte Messestände in Valladolid – Hauptstadt von Castilla y León und führender Messeplatz im Nordwesten Spaniens, mit der Feria de Valladolid (Institución Ferial de Castilla y León) als Leitveranstaltungsort. Wir steuern jede Phase selbst: 3D-Design, Fertigung, Logistik, Aufbau und die technischen Abnahmen am Veranstaltungsort.",
+        "detail": "Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und eine außergewöhnliche Liebe zum Detail."
+      },
+      "fr": {
+        "intro": "Forts de 20 ans d'expérience dans la construction d'architecture éphémère depuis notre propre atelier, nous concevons et montons chez Standarte des stands à Valladolid — capitale de Castille-et-León et grande place foire du nord-ouest, avec la Feria de Valladolid (Institución Ferial de Castilla y León) comme enceinte de référence — en maîtrisant chaque étape : conception 3D, fabrication, logistique, installation et validations sur site.",
+        "detail": "Nous offrons aux agences et aux exposants la sérénité d'un montage sans mauvaises surprises et une attention aux détails exceptionnelle."
+      },
+      "it": {
+        "intro": "Con oltre 20 anni di esperienza nella costruzione di architetture effimere dalla nostra officina propria, Standarte progetta e allestisce stand a Valladolid —capoluogo della Castiglia e León e grande polo fieristico del nord-ovest spagnolo, con la Feria de Valladolid (Institución Ferial de Castilla y León) come quartiere di riferimento— mantenendo il controllo su ogni fase: progettazione 3D, fabbricazione, logistica, installazione e validazioni in sede.",
+        "detail": "Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune."
+      },
+      "nl": {
+        "intro": "Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en bouwt Standarte beursstands in Valladolid — hoofdstad van Castilië en León en een van de belangrijkste beurssteden van het noordwesten, met de Feria de Valladolid (Institución Ferial de Castilla y León) als toonaangevend beurscomplex — waarbij wij elke fase in eigen hand houden: 3D-ontwerp, fabricage, logistiek, opbouw en de keuringen op de beursvloer.",
+        "detail": "Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail."
+      },
+      "zh": {
+        "intro": "凭借20多年在自有工厂打造临展空间的经验，Standarte在巴利亚多利德——卡斯蒂利亚-莱昂自治区首府、西班牙西北部重要的会展枢纽，以Feria de Valladolid（Institución Ferial de Castilla y León）为核心展馆——为客户设计并搭建展台，全程把控每一个环节：3D设计、定制生产、物流运输、现场安装以及场馆审批。",
+        "detail": "我们为代理公司和直接参展商提供毫无意外的搭建保障，以及对细节的极致关注。"
+      },
+      "hi": {
+        "intro": "अपनी कार्यशाला में अल्पकालिक वास्तुकला (ephemeral architecture) के निर्माण के 20 से अधिक वर्षों के अनुभव के साथ, Standarte वायाडोलिड में प्रदर्शनी स्टैंड डिज़ाइन और स्थापित करता है — यह Castilla y León की राजधानी और देश के उत्तर-पश्चिम का प्रमुख प्रदर्शनी केंद्र है, जहाँ Feria de Valladolid (Institución Ferial de Castilla y León) आयोजन का प्रमुख स्थल है — और हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और परिसर में तकनीकी सत्यापन।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।"
+      },
+      "ko": {
+        "intro": "자체 공장에서 임시 건축물을 제작해 온 20년 이상의 경력을 바탕으로, Standarte는 바야돌리드에서 전시 부스를 디자인하고 시공합니다. 카스티야 이 레온의 주도이자 스페인 북서부를 대표하는 전시 거점인 이곳에는 Feria de Valladolid(Institución Ferial de Castilla y León)라는 핵심 전시장이 있습니다. 3D 디자인부터 제작, 물류, 설치, 전시장 내 승인 절차까지 모든 단계를 직접 관리합니다.",
+        "detail": "대행사와 참가업체에 차질 없는 시공과 탁월한 디테일에 대한 안심을 제공합니다."
+      },
+      "ja": {
+        "intro": "自社工房で20年以上にわたり仮設建築を手がけてきたStandarteは、バリャドリッド（カスティーリャ・イ・レオン州の州都であり、北西スペインを代表する見本市拠点。Feria de Valladolid（Institución Ferial de Castilla y León）が中心会場）でブースの設計・施工を行い、3D設計・製作・物流・施工・会場での各種承認まで、すべての工程を一貫管理します。",
+        "detail": "代理店および出展企業の皆さまに、トラブルのない施工と細部まで行き届いた品質という安心をお届けします。"
+      }
+    }
+  },
+  salamanca: {
+    "city": {
+      "es": "Salamanca",
+      "pt": "Salamanca",
+      "en": "Salamanca",
+      "de": "Salamanca",
+      "fr": "Salamanque",
+      "it": "Salamanca",
+      "nl": "Salamanca",
+      "zh": "萨拉曼卡",
+      "hi": "सलमांका",
+      "ko": "살라망카",
+      "ja": "サラマンカ"
+    },
+    "content": {
+      "es": {
+        "intro": "Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Salamanca —ciudad universitaria Patrimonio de la Humanidad y plaza ferial de referencia en el oeste de Castilla y León, con el Recinto Ferial de Salamanca como sede— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+      },
+      "pt": {
+        "intro": "Com mais de 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte concebe e monta stands em Salamanca —cidade universitária Património Mundial e praça feiral de referência no oeste de Castela e Leão, tendo como sede o Recinto Ferial de Salamanca— controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
+        "detail": "Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
+      },
+      "en": {
+        "intro": "With 20 years of experience building temporary architecture from our own workshop, Standarte designs and installs exhibition stands in Salamanca — a UNESCO World Heritage university city and a leading trade-fair hub in western Castilla y León, with the Recinto Ferial de Salamanca as its venue — controlling every stage in-house: 3D design, fabrication, logistics, installation and on-site venue approvals.",
+        "detail": "We give agencies and exhibitors the reassurance of a build with no surprises and an exceptional attention to detail."
+      },
+      "de": {
+        "intro": "Mit über 20 Jahren Erfahrung im Bau temporärer Architektur aus der eigenen Werkstatt plant und montiert Standarte Messestände in Salamanca – Universitätsstadt und UNESCO-Weltkulturerbe sowie führender Messeplatz im Westen von Castilla y León, mit dem Recinto Ferial de Salamanca als Veranstaltungsort. Wir steuern jede Phase selbst: 3D-Design, Fertigung, Logistik, Aufbau und die technischen Abnahmen am Veranstaltungsort.",
+        "detail": "Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und eine außergewöhnliche Liebe zum Detail."
+      },
+      "fr": {
+        "intro": "Forts de 20 ans d'expérience dans la construction d'architecture éphémère depuis notre propre atelier, nous concevons et montons chez Standarte des stands à Salamanque — ville universitaire classée au patrimoine mondial et place foire de référence dans l'ouest de la Castille-et-León, avec le Recinto Ferial de Salamanca comme siège — en maîtrisant chaque étape : conception 3D, fabrication, logistique, installation et validations sur site.",
+        "detail": "Nous offrons aux agences et aux exposants la sérénité d'un montage sans mauvaises surprises et une attention aux détails exceptionnelle."
+      },
+      "it": {
+        "intro": "Con oltre 20 anni di esperienza nella costruzione di architetture effimere dalla nostra officina propria, Standarte progetta e allestisce stand a Salamanca —città universitaria Patrimonio dell'Umanità e polo fieristico di riferimento dell'ovest della Castiglia e León, con il Recinto Ferial de Salamanca come sede— mantenendo il controllo su ogni fase: progettazione 3D, fabbricazione, logistica, installazione e validazioni in sede.",
+        "detail": "Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune."
+      },
+      "nl": {
+        "intro": "Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en bouwt Standarte beursstands in Salamanca — universiteitsstad en Werelderfgoed en een toonaangevende beursstad in het westen van Castilië en León, met het Recinto Ferial de Salamanca als zetel — waarbij wij elke fase in eigen hand houden: 3D-ontwerp, fabricage, logistiek, opbouw en de keuringen op de beursvloer.",
+        "detail": "Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail."
+      },
+      "zh": {
+        "intro": "凭借20多年在自有工厂打造临展空间的经验，Standarte在萨拉曼卡——世界遗产大学之城、卡斯蒂利亚-莱昂西部重要的会展之地，以Recinto Ferial de Salamanca为核心场馆——为客户设计并搭建展台，全程把控每一个环节：3D设计、定制生产、物流运输、现场安装以及场馆审批。",
+        "detail": "我们为代理公司和直接参展商提供毫无意外的搭建保障，以及对细节的极致关注。"
+      },
+      "hi": {
+        "intro": "अपनी कार्यशाला में अल्पकालिक वास्तुकला (ephemeral architecture) के निर्माण के 20 से अधिक वर्षों के अनुभव के साथ, Standarte सलमांका में प्रदर्शनी स्टैंड डिज़ाइन और स्थापित करता है — यह विश्व धरोहर वाली विश्वविद्यालयी नगरी और पश्चिमी Castilla y León का प्रमुख प्रदर्शनी केंद्र है, जहाँ Recinto Ferial de Salamanca आयोजन का स्थल है — और हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और परिसर में तकनीकी सत्यापन।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।"
+      },
+      "ko": {
+        "intro": "자체 공장에서 임시 건축물을 제작해 온 20년 이상의 경력을 바탕으로, Standarte는 살라망카에서 전시 부스를 디자인하고 시공합니다. 세계문화유산으로 지정된 대학 도시이자 카스티야 이 레온 서부를 대표하는 전시 거점인 이곳에는 Recinto Ferial de Salamanca가 본거지로 자리하고 있습니다. 3D 디자인부터 제작, 물류, 설치, 전시장 내 승인 절차까지 모든 단계를 직접 관리합니다.",
+        "detail": "대행사와 참가업체에 차질 없는 시공과 탁월한 디테일에 대한 안심을 제공합니다."
+      },
+      "ja": {
+        "intro": "自社工房で20年以上にわたり仮設建築を手がけてきたStandarteは、サラマンカ（世界遺産の大学都市であり、カスティーリャ・イ・レオン州西部を代表する見本市拠点。Recinto Ferial de Salamancaがその会場）でブースの設計・施工を行い、3D設計・製作・物流・施工・会場での各種承認まで、すべての工程を一貫管理します。",
+        "detail": "代理店および出展企業の皆さまに、トラブルのない施工と細部まで行き届いた品質という安心をお届けします。"
+      }
+    }
+  },
   coruna: {
     "city": {
       "es": "A Coruña",
