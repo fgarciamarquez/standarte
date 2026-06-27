@@ -2084,7 +2084,27 @@ footer {
   }
 
   .nav-links.open {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Items del menú en una sola línea horizontal (móvil): columnas de igual ancho
+     que se reparten el espacio para que todos quepan sin envolver. */
+  .nav-links.open > a:not(.nav-cta-btn) {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 10px 0;
+    padding: 8px 3px;
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  /* El botón CTA (Presupuesto) baja a su propia fila a todo el ancho. */
+  .nav-links.open > .nav-cta-btn {
+    flex: 0 0 100%;
   }
 
   .nav-links button {
