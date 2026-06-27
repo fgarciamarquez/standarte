@@ -43,4 +43,6 @@ jobs:
         env:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
-        run: node deploy_clean.cjs ${{ github.event.inputs.fast == 'false' && ' ' || '--fast' }}
+        # fast=true (defecto) -> '--fast' (omite imágenes). fast=false -> '--full'
+        # (cualquier flag distinto de --fast hace que el script SÍ suba las imágenes).
+        run: node deploy_clean.cjs ${{ github.event.inputs.fast == 'false' && '--full' || '--fast' }}
