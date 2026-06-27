@@ -13,6 +13,12 @@
     fr: 'Villes', it: 'Città', pt: 'Cidades',
     zh: '城市', hi: 'शहर', ko: '도시', ja: '都市', nl: 'Steden'
   };
+  // Enlace cruzado a la página de precios (refuerza el clúster hacia la conversión).
+  const preciosLink = {
+    es: 'Precios de stands', en: 'Stand prices', de: 'Messestand-Preise',
+    fr: 'Tarifs de stands', it: 'Prezzi degli stand', pt: 'Preços de stands',
+    zh: '展台价格', hi: 'स्टैंड के मूल्य', ko: '부스 가격', ja: 'ブースの料金', nl: 'Standprijzen'
+  };
   import FlagIcon from './FlagIcon.svelte';
 
   
@@ -637,6 +643,9 @@
             {/if}
           </div>
         {/if}
+        <div class="aside-module">
+          <a class="cluster-pillar" href={pathFor(lang, 'precios')}>{preciosLink[lang] || preciosLink.es}</a>
+        </div>
       </aside>
     </div>
   </section>

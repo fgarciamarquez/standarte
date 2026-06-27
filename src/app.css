@@ -2993,6 +2993,20 @@ p b {
 .city-nav-module {
   margin-bottom: 2rem;
 }
+/* Enlace cruzado a la página de precios desde el sidebar de ciudad. */
+.sidebar-precios-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--primary, #1a1e21);
+  text-decoration: none;
+  border-bottom: 2px solid var(--gold, #d4af37);
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+.sidebar-precios-link:hover {
+  opacity: 0.75;
+}
 /* Ciudad actual: pastilla resaltada y no enlazable visualmente. */
 .city-nav-module .city-fairs-list li a.active {
   border-color: var(--gold);

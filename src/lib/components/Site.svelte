@@ -307,6 +307,12 @@
     es: 'Precios', en: 'Prices', de: 'Preise', pt: 'Preços', fr: 'Tarifs', it: 'Prezzi',
     nl: 'Prijzen', zh: '价格', hi: 'मूल्य', ko: '가격', ja: '料金'
   };
+  // Enlace cruzado (anchor con keyword) hacia la página de precios desde el sidebar de ciudad.
+  const preciosLink = {
+    es: 'Precios de stands', en: 'Stand prices', de: 'Messestand-Preise',
+    fr: 'Tarifs de stands', it: 'Prezzi degli stand', pt: 'Preços de stands',
+    zh: '展台价格', hi: 'स्टैंड के मूल्य', ko: '부스 가격', ja: 'ブースの料金', nl: 'Standprijzen'
+  };
   const languageLocales = {
     es: 'es_ES',
     en: 'en_GB',
@@ -1557,6 +1563,7 @@
                     </li>
                   {/each}
                 </ul>
+                <a class="sidebar-precios-link" href={pathFor(lang, 'precios')}>{preciosLink[lang] || preciosLink.es} →</a>
               </div>
 
               <div class="spotlight-card">
