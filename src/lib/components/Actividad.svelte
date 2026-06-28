@@ -7,7 +7,7 @@
   } from '$lib/siteData.js';
   import {
     tagFamilies, fairTags, tagOrder, fairsForActivity,
-    colorForTag, labelForTag
+    colorForTag, labelForTag, familyLabel
   } from '$lib/fairTags.js';
   import FlagIcon from './FlagIcon.svelte';
   import ContactForm from './ContactForm.svelte';
@@ -206,7 +206,7 @@
         {#if isIndex}
           <p class="highlight">{t.idxLead}</p>
           {#each indexGroups as g}
-            <h2 class="fam-h" style="--chip:{g.color}"><span class="chip-dot" aria-hidden="true"></span>{g.sector}</h2>
+            <h2 class="fam-h" style="--chip:{g.color}"><span class="chip-dot" aria-hidden="true"></span>{familyLabel(g.family, lang)}</h2>
             <ul class="act-card-grid">
               {#each g.tags as tg}
                 <li>

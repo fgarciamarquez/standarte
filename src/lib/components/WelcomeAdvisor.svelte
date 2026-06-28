@@ -3,7 +3,7 @@
   import { slide, fade } from 'svelte/transition';
   import { fairsData } from '$lib/fairsData.js';
   import { cityData } from '$lib/siteData.js';
-  import { fairsForActivity, colorForTag, labelForTag, tagOrder } from '$lib/fairTags.js';
+  import { fairsForActivity, colorForTag, labelForTag, tagOrder, tagFamilies, fairTags, familyLabel } from '$lib/fairTags.js';
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let lang = 'en';
@@ -321,8 +321,12 @@
   // Lista de ferias mostrada en el paso 2 según el modo.
   $: stepFairs = mode === 'activity' ? activityFairs : cityFairs;
   $: selectedActivityLabel = selectedActivity ? labelForTag(selectedActivity, lang) : '';
-  // Etiquetas para el grid del paso 1 en modo actividad (todas tienen ≥1 feria).
-  const activityChoices = tagOrder;
+  // Etiquetas del paso 1 (modo actividad) agrupadas por subfamilia (sin scroll).
+  const activityGroups = Object.keys(tagFamilies).map((fam) => ({
+    family: fam,
+    color: tagFamilies[fam].color,
+    tags: tagOrder.filter((tg) => fairTags[tg].family === fam)
+  })).filter((g) => g.tags.length);
 
   // Muchas ferias llevan el nombre de la ciudad al final (p. ej. "FITUR Madrid",
   // "ARCOmadrid") porque así se etiquetaron los grupos de campaña de email. En el
@@ -799,17 +803,23 @@
           {at.byActivity} →
         </button>
       {:else}
-        <div class="activity-selector-flex" transition:slide={{ duration: 400 }}>
-          {#each activityChoices as tag}
-            <button
-              type="button"
-              class="activity-selector-btn"
-              style="--chip:{colorForTag(tag)}"
-              on:click={() => selectActivity(tag)}
-            >
-              <span class="badge-activity-dot" aria-hidden="true"></span>
-              <span class="fair-name-text">{labelForTag(tag, lang)}</span>
-            </button>
+        <div class="activity-selector-groups" transition:slide={{ duration: 400 }}>
+          {#each activityGroups as g}
+            <div class="activity-group">
+              <span class="activity-group-head" style="--chip:{g.color}">
+                <span class="badge-activity-dot" aria-hidden="true"></span>{familyLabel(g.family, lang)}
+              </span>
+              <div class="activity-group-chips">
+                {#each g.tags as tag}
+                  <button
+                    type="button"
+                    class="activity-selector-btn"
+                    style="--chip:{colorForTag(tag)}"
+                    on:click={() => selectActivity(tag)}
+                  >{labelForTag(tag, lang)}</button>
+                {/each}
+              </div>
+            </div>
           {/each}
         </div>
         <button type="button" class="advisor-mode-switch" on:click={switchToCity}>
@@ -1193,31 +1203,47 @@
   }
   .advisor-mode-switch:hover { color: var(--gold); }
 
-  /* Grid de chips de actividad (paso 1, modo actividad), con código de color */
-  .activity-selector-flex {
+  /* Chips de actividad (paso 1, modo actividad) agrupados por subfamilia, sin scroll */
+  .activity-selector-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .activity-group-head {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--chip) 70%, #444);
+    margin-bottom: 6px;
+  }
+  .activity-group-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-    max-height: 220px;
-    overflow-y: auto;
+    gap: 7px;
   }
+  /* Letra más pequeña que los botones de ciudad/feria (14px) */
   .activity-selector-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
     background: color-mix(in srgb, var(--chip) 7%, #fff);
-    border: 1px solid color-mix(in srgb, var(--chip) 45%, transparent);
-    border-left: 4px solid var(--chip);
-    border-radius: 8px;
-    padding: 8px 14px;
+    border: 1px solid color-mix(in srgb, var(--chip) 40%, transparent);
+    border-left: 3px solid var(--chip);
+    border-radius: 6px;
+    padding: 5px 11px;
     font-family: 'Inconsolata', monospace;
-    font-size: 13.5px;
+    font-size: 12px;
     font-weight: 600;
     color: #333;
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease;
     text-align: left;
+    line-height: 1.3;
   }
   .activity-selector-btn:hover {
     background: color-mix(in srgb, var(--chip) 16%, #fff);

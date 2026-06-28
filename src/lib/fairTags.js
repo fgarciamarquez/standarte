@@ -2,19 +2,21 @@
 // families: cada familia = un 'sector' de fairsData, con su color (código de colores).
 // tags: etiqueta -> { family, label } (label en los 11 idiomas).
 // fairActivities: slug de feria -> [etiquetas] (multivalor). Fuente de verdad del etiquetado.
+// label: nombre de la familia en los 11 idiomas (cabeceras de subfamilia en el
+// índice /actividad y en el asesor Pat). sector = nombre ES (compat interna).
 export const tagFamilies = {
-  agroalimentario: { sector: "Agroalimentario y Naturaleza", color: '#3A9D4E' },
-  industria: { sector: "Industria y Logística", color: '#5B6B7A' },
-  salud: { sector: "Salud y Medicina", color: '#E05A5A' },
-  tecnologia: { sector: "Tecnología e Innovación", color: '#2F7FD1' },
-  comercio: { sector: "Comercio y Packaging", color: '#E8902A' },
-  construccion: { sector: "Construcción e Infraestructuras", color: '#A8763E' },
-  turismo: { sector: "Turismo y Hostelería", color: '#1AA7A0' },
-  transporte: { sector: "Aeronáutica y Transporte", color: '#34508C' },
-  enologia: { sector: "Enología y Vinos", color: '#7A2E46' },
-  ocio: { sector: "Arte y Ocio", color: '#8E5BB5' },
-  belleza: { sector: "Belleza y Estética", color: '#D6589E' },
-  multi: { sector: "Multisectorial y Profesional", color: '#6F757D' }
+  agroalimentario: { sector: "Agroalimentario y Naturaleza", color: '#3A9D4E', label: { es: "Agroalimentario y Naturaleza", pt: "Agroalimentar e Natureza", en: "Agrifood & Nature", de: "Agrar & Natur", fr: "Agroalimentaire et nature", it: "Agroalimentare e natura", nl: "Agrovoeding & natuur", zh: "农业食品与自然", hi: "कृषि-खाद्य एवं प्रकृति", ko: "농식품 및 자연", ja: "農産物・自然" } },
+  industria: { sector: "Industria y Logística", color: '#5B6B7A', label: { es: "Industria y Logística", pt: "Indústria e Logística", en: "Industry & Logistics", de: "Industrie & Logistik", fr: "Industrie et logistique", it: "Industria e logistica", nl: "Industrie & logistiek", zh: "工业与物流", hi: "उद्योग एवं लॉजिस्टिक्स", ko: "산업 및 물류", ja: "産業・物流" } },
+  salud: { sector: "Salud y Medicina", color: '#E05A5A', label: { es: "Salud y Medicina", pt: "Saúde e Medicina", en: "Health & Medicine", de: "Gesundheit & Medizin", fr: "Santé et médecine", it: "Salute e medicina", nl: "Gezondheid & geneeskunde", zh: "健康与医学", hi: "स्वास्थ्य एवं चिकित्सा", ko: "건강 및 의학", ja: "健康・医療" } },
+  tecnologia: { sector: "Tecnología e Innovación", color: '#2F7FD1', label: { es: "Tecnología e Innovación", pt: "Tecnologia e Inovação", en: "Technology & Innovation", de: "Technologie & Innovation", fr: "Technologie et innovation", it: "Tecnologia e innovazione", nl: "Technologie & innovatie", zh: "科技与创新", hi: "तकनीक एवं नवाचार", ko: "기술 및 혁신", ja: "テクノロジー・イノベーション" } },
+  comercio: { sector: "Comercio y Packaging", color: '#E8902A', label: { es: "Comercio y Packaging", pt: "Comércio e Packaging", en: "Retail & Packaging", de: "Handel & Verpackung", fr: "Commerce et packaging", it: "Commercio e packaging", nl: "Handel & verpakking", zh: "商贸与包装", hi: "व्यापार एवं पैकेजिंग", ko: "유통 및 패키징", ja: "商業・パッケージ" } },
+  construccion: { sector: "Construcción e Infraestructuras", color: '#A8763E', label: { es: "Construcción e Infraestructuras", pt: "Construção e Infraestruturas", en: "Construction & Infrastructure", de: "Bau & Infrastruktur", fr: "Construction et infrastructures", it: "Costruzione e infrastrutture", nl: "Bouw & infrastructuur", zh: "建筑与基础设施", hi: "निर्माण एवं अवसंरचना", ko: "건설 및 인프라", ja: "建設・インフラ" } },
+  turismo: { sector: "Turismo y Hostelería", color: '#1AA7A0', label: { es: "Turismo y Hostelería", pt: "Turismo e Hotelaria", en: "Tourism & Hospitality", de: "Tourismus & Gastgewerbe", fr: "Tourisme et hôtellerie", it: "Turismo e ospitalità", nl: "Toerisme & horeca", zh: "旅游与酒店", hi: "पर्यटन एवं आतिथ्य", ko: "관광 및 호스피탈리티", ja: "観光・ホスピタリティ" } },
+  transporte: { sector: "Aeronáutica y Transporte", color: '#34508C', label: { es: "Aeronáutica y Transporte", pt: "Aeronáutica e Transporte", en: "Aerospace & Transport", de: "Luftfahrt & Transport", fr: "Aéronautique et transport", it: "Aeronautica e trasporti", nl: "Luchtvaart & transport", zh: "航空与交通", hi: "विमानन एवं परिवहन", ko: "항공 및 운송", ja: "航空・輸送" } },
+  enologia: { sector: "Enología y Vinos", color: '#7A2E46', label: { es: "Enología y Vinos", pt: "Enologia e Vinhos", en: "Wine & Oenology", de: "Wein & Önologie", fr: "Œnologie et vins", it: "Enologia e vini", nl: "Wijn & oenologie", zh: "葡萄酒与酿酒", hi: "वाइन एवं एनोलॉजी", ko: "와인 및 양조", ja: "ワイン・醸造" } },
+  ocio: { sector: "Arte y Ocio", color: '#8E5BB5', label: { es: "Arte y Ocio", pt: "Arte e Lazer", en: "Art & Leisure", de: "Kunst & Freizeit", fr: "Art et loisirs", it: "Arte e tempo libero", nl: "Kunst & vrije tijd", zh: "艺术与休闲", hi: "कला एवं मनोरंजन", ko: "예술 및 여가", ja: "アート・レジャー" } },
+  belleza: { sector: "Belleza y Estética", color: '#D6589E', label: { es: "Belleza y Estética", pt: "Beleza e Estética", en: "Beauty & Aesthetics", de: "Schönheit & Ästhetik", fr: "Beauté et esthétique", it: "Bellezza ed estetica", nl: "Schoonheid & esthetiek", zh: "美容与美学", hi: "सौंदर्य एवं एस्थेटिक्स", ko: "뷰티 및 에스테틱", ja: "ビューティー・エステ" } },
+  multi: { sector: "Multisectorial y Profesional", color: '#6F757D', label: { es: "Multisectorial y Profesional", pt: "Multissetorial e Profissional", en: "Multi-sector & Professional", de: "Multisektoral & Professionell", fr: "Multisectoriel et professionnel", it: "Multisettoriale e professionale", nl: "Multisectoraal & professioneel", zh: "综合与专业", hi: "बहु-क्षेत्रीय एवं पेशेवर", ko: "다분야 및 전문", ja: "総合・専門" } }
 };
 
 export const fairTags = {
@@ -224,6 +226,7 @@ export const fairActivities = {
 export const activitiesForFair = (slug) => fairActivities[slug] || [];
 export const colorForTag = (tag) => (tagFamilies[fairTags[tag]?.family]?.color) || '#6F757D';
 export const labelForTag = (tag, lang) => (fairTags[tag]?.label?.[lang]) || fairTags[tag]?.label?.es || tag;
+export const familyLabel = (fam, lang) => (tagFamilies[fam]?.label?.[lang]) || tagFamilies[fam]?.sector || fam;
 
 // Lista de etiquetas en orden de familia (para el índice y los chips agrupados).
 export const tagOrder = Object.keys(fairTags).sort((a, b) => {
