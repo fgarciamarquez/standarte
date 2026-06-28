@@ -4,6 +4,7 @@
   import Feria from '$lib/components/Feria.svelte';
   import ProjectPage from '../proyectos/[id]/+page.svelte';
   import Precios from '$lib/components/Precios.svelte';
+  import Actividad from '$lib/components/Actividad.svelte';
   export let data;
 </script>
 
@@ -13,6 +14,8 @@
   <Feria {data} />
 {:else if data.section === 'precios'}
   <Precios {data} />
+{:else if data.section === 'activity' || data.section === 'activityIndex'}
+  <Actividad {data} />
 {:else if data.section === 'project'}
   <ProjectPage {data} forcedLang="ja" />
 {:else}

@@ -1,5 +1,6 @@
 import { fairsData } from '$lib/fairsData.js';
-import { languages, routes, pathFor, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
+import { languages, routes, pathFor, portfolios, fairUrl, projectUrl, activityIndexUrl, activityUrl } from '$lib/siteData.js';
+import { tagOrder } from '$lib/fairTags.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import { portfolioVideos, siteVideos } from '$lib/videosData.js';
 import { projectVideos } from '$lib/server/projectVideos.js';
@@ -115,6 +116,24 @@ export async function GET() {
       });
     });
   });
+
+  // 4b. Hubs de actividad: árbol de etiquetas para que los buscadores recorran la
+  //     interconexión por sector. Índice /actividad + un hub por etiqueta, cada uno
+  //     con grupo hreflang completo (11 idiomas) + x-default a la versión española.
+  {
+    const idxAlt = languages.map((lang) => ({ hreflang: lang, href: `${siteUrl}${activityIndexUrl(lang)}` }));
+    idxAlt.push({ hreflang: 'x-default', href: `${siteUrl}${activityIndexUrl('es')}` });
+    languages.forEach((lang) => {
+      urls.push({ loc: `${siteUrl}${activityIndexUrl(lang)}`, changefreq: 'weekly', priority: '0.7', alternates: idxAlt });
+    });
+    tagOrder.forEach((tag) => {
+      const alt = languages.map((lang) => ({ hreflang: lang, href: `${siteUrl}${activityUrl(tag, lang)}` }));
+      alt.push({ hreflang: 'x-default', href: `${siteUrl}${activityUrl(tag, 'es')}` });
+      languages.forEach((lang) => {
+        urls.push({ loc: `${siteUrl}${activityUrl(tag, lang)}`, changefreq: 'monthly', priority: '0.6', alternates: alt });
+      });
+    });
+  }
 
   // 5. Galería (galeria/[slug]) — una sola URL por proyecto: la slug es es la canónica.
   //    Las variantes de idioma renderizan el mismo contenido en español y declaran

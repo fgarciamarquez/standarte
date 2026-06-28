@@ -1,4 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
+import { tagOrder } from '$lib/fairTags.js';
 import { jaFairSlugs, jaFairSlugsReverse, jaProjectSlugs, jaProjectSlugsReverse } from '$lib/jaSlugs.js';
 export const languages = ['es', 'pt', 'en', 'de', 'fr', 'it', 'nl', 'zh', 'hi', 'ko', 'ja'];
 
@@ -3113,6 +3114,23 @@ export function fairUrl(slug, lang) {
   return `${prefix}/${fairSegment(lang)}/${getFairSlug(slug, lang)}`;
 }
 
+// --- Hubs de actividad: árbol de etiquetas para interconexión interna ---------
+// Segmento literal 'actividad' en todos los idiomas (igual criterio que el
+// segmento 'ferias' del detalle de feria). El slug de etiqueta es compartido y
+// latino en todos los idiomas (como los slugs de feria). El índice agrupa las
+// 41 actividades; cada hub /actividad/<tag> reúne las ferias de esa actividad.
+export const ACTIVITY_SEGMENT = 'actividad';
+/** URL relativa del índice de actividades. */
+export function activityIndexUrl(lang) {
+  const prefix = lang === 'es' ? '' : `/${lang}`;
+  return `${prefix}/${ACTIVITY_SEGMENT}`;
+}
+/** URL relativa del hub de una actividad. */
+export function activityUrl(tag, lang) {
+  const prefix = lang === 'es' ? '' : `/${lang}`;
+  return `${prefix}/${ACTIVITY_SEGMENT}/${tag}`;
+}
+
 // --- Proyectos: solo `ja` tiene URL propia (/ja/プロジェクト/{slug-japonés}).
 // El resto de idiomas comparten /proyectos/{id} (ruta única, idioma por ?lang=).
 export function getProjectSlug(id, lang) {
@@ -3148,19 +3166,30 @@ export function findRoute(path) {
     const projectId = jaProjectSlugsReverse[raw] || raw;
     return { lang: 'ja', section: 'project', projectId };
   }
+  // Hubs de actividad: /{lang}/actividad (índice) y /{lang}/actividad/<tag>.
+  if (slug === ACTIVITY_SEGMENT) {
+    return { lang: maybeLang, section: 'activityIndex' };
+  }
+  if (slug.startsWith(ACTIVITY_SEGMENT + '/')) {
+    const tag = slug.substring(ACTIVITY_SEGMENT.length + 1);
+    return { lang: maybeLang, section: 'activity', tag };
+  }
   const section = Object.keys(langRoutes).find((key) => langRoutes[key] === slug) || 'home';
   return { lang: maybeLang, section };
 }
 
 export function resolveRoute(path) {
-  const { lang, section, fairSlug, projectId } = findRoute(path);
+  const { lang, section, fairSlug, projectId, tag } = findRoute(path);
   const c = copy[lang] || copy.es;
-  // Ferias y proyectos ja no son claves de routes; su canónica es su propia URL.
+  // Ferias, proyectos ja y hubs de actividad no son claves de routes; su canónica
+  // es su propia URL.
   let canonical;
   if (section === 'feria' && fairSlug) canonical = `https://standarte.es${fairUrl(fairSlug, lang)}`;
   else if (section === 'project' && projectId) canonical = `https://standarte.es${projectUrl(projectId, lang)}`;
+  else if (section === 'activityIndex') canonical = `https://standarte.es${activityIndexUrl(lang)}`;
+  else if (section === 'activity' && tag) canonical = `https://standarte.es${activityUrl(tag, lang)}`;
   else canonical = `https://standarte.es${pathFor(lang, section)}`;
-  return { lang, section, fairSlug, projectId, copy: c, canonical };
+  return { lang, section, fairSlug, projectId, tag, copy: c, canonical };
 }
 
 export const prerenderEntries = languages.flatMap((lang) => {
@@ -3171,5 +3200,10 @@ export const prerenderEntries = languages.flatMap((lang) => {
   const projectRoutes = lang === 'ja'
     ? Object.keys(jaProjectSlugs).map((id) => ({ path: projectUrl(id, 'ja').replace(/^\//, '') }))
     : [];
-  return [...normalRoutes, ...fairRoutes, ...projectRoutes];
+  // Hubs de actividad: índice + un hub por etiqueta, en cada idioma.
+  const activityRoutes = [
+    { path: activityIndexUrl(lang).replace(/^\//, '') },
+    ...tagOrder.map((tag) => ({ path: activityUrl(tag, lang).replace(/^\//, '') }))
+  ];
+  return [...normalRoutes, ...fairRoutes, ...projectRoutes, ...activityRoutes];
 }).filter((entry) => entry.path !== '');

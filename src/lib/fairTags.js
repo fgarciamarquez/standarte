@@ -1,6 +1,6 @@
-// Sistema de etiquetado de ferias por actividad (Fase 0 — solo datos).
+// Sistema de etiquetado de ferias por actividad.
 // families: cada familia = un 'sector' de fairsData, con su color (código de colores).
-// tags: etiqueta -> { family, label }. (labels en más idiomas se añaden en Fase 1).
+// tags: etiqueta -> { family, label } (label en los 11 idiomas).
 // fairActivities: slug de feria -> [etiquetas] (multivalor). Fuente de verdad del etiquetado.
 export const tagFamilies = {
   agroalimentario: { sector: "Agroalimentario y Naturaleza", color: '#3A9D4E' },
@@ -18,49 +18,48 @@ export const tagFamilies = {
 };
 
 export const fairTags = {
-  "alimentacion": { family: 'agroalimentario', label: { es: "Alimentación" } },
-  "ganaderia": { family: 'agroalimentario', label: { es: "Ganadería" } },
-  "agricultura-maquinaria": { family: 'agroalimentario', label: { es: "Agricultura y maquinaria agrícola" } },
-  "ecologico": { family: 'agroalimentario', label: { es: "Ecológico y sostenible" } },
-  "pesca-mar": { family: 'agroalimentario', label: { es: "Pesca y mar" } },
-  "maquinaria-industrial": { family: 'industria', label: { es: "Maquinaria industrial" } },
-  "metal-subcontratacion": { family: 'industria', label: { es: "Metal y subcontratación" } },
-  "logistica": { family: 'industria', label: { es: "Logística" } },
-  "energia": { family: 'industria', label: { es: "Energía" } },
-  "dental": { family: 'salud', label: { es: "Dental y ortodoncia" } },
-  "optica-oftalmologia": { family: 'salud', label: { es: "Óptica y oftalmología" } },
-  "medicina-estetica": { family: 'salud', label: { es: "Medicina estética" } },
-  "farmacia": { family: 'salud', label: { es: "Farmacia" } },
-  "veterinaria": { family: 'salud', label: { es: "Veterinaria" } },
-  "congreso-medico": { family: 'salud', label: { es: "Congreso médico" } },
-  "digital-software": { family: 'tecnologia', label: { es: "Tecnología digital y software" } },
-  "audiovisual": { family: 'tecnologia', label: { es: "Audiovisual y VFX" } },
-  "fotonica": { family: 'tecnologia', label: { es: "Fotónica y optoelectrónica" } },
-  "smart-city": { family: 'tecnologia', label: { es: "Smart city" } },
-  "packaging": { family: 'comercio', label: { es: "Packaging y envase" } },
-  "moda-textil": { family: 'comercio', label: { es: "Moda y textil" } },
-  "regalo-decoracion": { family: 'comercio', label: { es: "Regalo y decoración" } },
-  "joyeria": { family: 'comercio', label: { es: "Joyería y bisutería" } },
-  "construccion": { family: 'construccion', label: { es: "Construcción" } },
-  "ventanas-cerramientos": { family: 'construccion', label: { es: "Ventanas y cerramientos" } },
-  "puertas": { family: 'construccion', label: { es: "Puertas" } },
-  "turismo": { family: 'turismo', label: { es: "Turismo" } },
-  "gastronomia-hosteleria": { family: 'turismo', label: { es: "Gastronomía y hostelería" } },
-  "automocion": { family: 'transporte', label: { es: "Automoción" } },
-  "naval": { family: 'transporte', label: { es: "Naval" } },
-  "aeronautica": { family: 'transporte', label: { es: "Aeronáutica" } },
-  "transporte": { family: 'transporte', label: { es: "Transporte y logística" } },
-  "vino": { family: 'enologia', label: { es: "Vino y enología" } },
-  "equipamiento-vino": { family: 'enologia', label: { es: "Equipamiento del vino" } },
-  "cultura-arte": { family: 'ocio', label: { es: "Cultura y arte" } },
-  "pop-videojuegos": { family: 'ocio', label: { es: "Cultura pop y videojuegos" } },
-  "mascotas": { family: 'ocio', label: { es: "Mascotas" } },
-  "belleza-peluqueria": { family: 'belleza', label: { es: "Belleza y peluquería" } },
-  "estetica": { family: 'belleza', label: { es: "Estética" } },
-  "multisectorial": { family: 'multi', label: { es: "Multisectorial" } },
-  "congreso-profesional": { family: 'multi', label: { es: "Congreso profesional" } }
+  "alimentacion": { family: "agroalimentario", label: { es: "Alimentación", pt: "Alimentação", en: "Food & beverage", de: "Lebensmittel", fr: "Alimentation", it: "Alimentare", nl: "Voeding", zh: "食品", hi: "खाद्य एवं पेय पदार्थ", ko: "식품", ja: "食品" } },
+  "ganaderia": { family: "agroalimentario", label: { es: "Ganadería", pt: "Pecuária", en: "Livestock", de: "Viehwirtschaft", fr: "Élevage", it: "Zootecnia", nl: "Veeteelt", zh: "畜牧业", hi: "पशुपालन", ko: "축산", ja: "畜産" } },
+  "agricultura-maquinaria": { family: "agroalimentario", label: { es: "Agricultura y maquinaria agrícola", pt: "Agricultura e maquinaria agrícola", en: "Agriculture & farm machinery", de: "Landwirtschaft und Landmaschinen", fr: "Agriculture et machinisme agricole", it: "Agricoltura e macchine agricole", nl: "Landbouw en landbouwmachines", zh: "农业与农业机械", hi: "कृषि एवं कृषि मशीनरी", ko: "농업 및 농기계", ja: "農業・農業機械" } },
+  "ecologico": { family: "agroalimentario", label: { es: "Ecológico y sostenible", pt: "Ecológico e sustentável", en: "Organic & sustainable", de: "Bio und Nachhaltigkeit", fr: "Bio et développement durable", it: "Biologico e sostenibile", nl: "Biologisch en duurzaam", zh: "有机与可持续", hi: "जैविक एवं टिकाऊ", ko: "친환경 및 지속가능", ja: "オーガニック・サステナブル" } },
+  "pesca-mar": { family: "agroalimentario", label: { es: "Pesca y mar", pt: "Pesca e mar", en: "Fishing & seafood", de: "Fischerei und Meer", fr: "Pêche et produits de la mer", it: "Pesca e prodotti del mare", nl: "Visserij en zee", zh: "渔业与海洋", hi: "मत्स्य पालन एवं समुद्री उत्पाद", ko: "수산 및 해양", ja: "水産・海洋" } },
+  "maquinaria-industrial": { family: "industria", label: { es: "Maquinaria industrial", pt: "Maquinaria industrial", en: "Industrial machinery", de: "Industriemaschinen", fr: "Machines industrielles", it: "Macchine industriali", nl: "Industriële machines", zh: "工业机械", hi: "औद्योगिक मशीनरी", ko: "산업 기계", ja: "産業機械" } },
+  "metal-subcontratacion": { family: "industria", label: { es: "Metal y subcontratación", pt: "Metalomecânica e subcontratação", en: "Metalworking & subcontracting", de: "Metall und Zulieferindustrie", fr: "Métal et sous-traitance", it: "Metallo e subfornitura", nl: "Metaal en toelevering", zh: "金属与工业外包", hi: "धातु एवं उप-अनुबंध", ko: "금속 및 임가공", ja: "金属・受託製造" } },
+  "logistica": { family: "industria", label: { es: "Logística", pt: "Logística", en: "Logistics", de: "Logistik", fr: "Logistique", it: "Logistica", nl: "Logistiek", zh: "物流", hi: "लॉजिस्टिक्स", ko: "물류", ja: "物流" } },
+  "energia": { family: "industria", label: { es: "Energía", pt: "Energia", en: "Energy", de: "Energie", fr: "Énergie", it: "Energia", nl: "Energie", zh: "能源", hi: "ऊर्जा", ko: "에너지", ja: "エネルギー" } },
+  "dental": { family: "salud", label: { es: "Dental y ortodoncia", pt: "Dentária e ortodontia", en: "Dental & orthodontics", de: "Dental und Kieferorthopädie", fr: "Dentaire et orthodontie", it: "Dentale e ortodonzia", nl: "Tandheelkunde en orthodontie", zh: "牙科与正畸", hi: "डेंटल एवं ऑर्थोडॉन्टिक्स", ko: "치과 및 교정", ja: "歯科・矯正歯科" } },
+  "optica-oftalmologia": { family: "salud", label: { es: "Óptica y oftalmología", pt: "Ótica e oftalmologia", en: "Optics & ophthalmology", de: "Optik und Augenheilkunde", fr: "Optique et ophtalmologie", it: "Ottica e oftalmologia", nl: "Optiek en oogheelkunde", zh: "光学与眼科", hi: "ऑप्टिक्स एवं नेत्र विज्ञान", ko: "안경 및 안과", ja: "眼鏡・眼科" } },
+  "medicina-estetica": { family: "salud", label: { es: "Medicina estética", pt: "Medicina estética", en: "Aesthetic medicine", de: "Ästhetische Medizin", fr: "Médecine esthétique", it: "Medicina estetica", nl: "Esthetische geneeskunde", zh: "医学美容", hi: "सौंदर्य चिकित्सा", ko: "미용 의학", ja: "美容医療" } },
+  "farmacia": { family: "salud", label: { es: "Farmacia", pt: "Farmácia", en: "Pharmaceuticals", de: "Pharmazie", fr: "Pharmacie", it: "Farmacia", nl: "Farmacie", zh: "制药", hi: "फार्मास्युटिकल", ko: "제약", ja: "製薬" } },
+  "veterinaria": { family: "salud", label: { es: "Veterinaria", pt: "Veterinária", en: "Veterinary", de: "Veterinärmedizin", fr: "Vétérinaire", it: "Veterinaria", nl: "Diergeneeskunde", zh: "兽医", hi: "पशु चिकित्सा", ko: "수의", ja: "動物医療" } },
+  "congreso-medico": { family: "salud", label: { es: "Congreso médico", pt: "Congresso médico", en: "Medical congress", de: "Medizinkongress", fr: "Congrès médical", it: "Congresso medico", nl: "Medisch congres", zh: "医学大会", hi: "चिकित्सा सम्मेलन", ko: "의학 학술대회", ja: "医学会議" } },
+  "digital-software": { family: "tecnologia", label: { es: "Tecnología digital y software", pt: "Tecnologia digital e software", en: "Digital tech & software", de: "Digitaltechnik und Software", fr: "Technologies numériques et logiciels", it: "Tecnologia digitale e software", nl: "Digitale technologie en software", zh: "数字技术与软件", hi: "डिजिटल तकनीक एवं सॉफ्टवेयर", ko: "디지털 기술 및 소프트웨어", ja: "デジタル技術・ソフトウェア" } },
+  "audiovisual": { family: "tecnologia", label: { es: "Audiovisual y VFX", pt: "Audiovisual e VFX", en: "Audiovisual & VFX", de: "Audiovisuelles und VFX", fr: "Audiovisuel et VFX", it: "Audiovisivo e VFX", nl: "Audiovisueel en VFX", zh: "视听与视觉特效", hi: "ऑडियोविज़ुअल एवं VFX", ko: "영상 및 VFX", ja: "映像・VFX" } },
+  "fotonica": { family: "tecnologia", label: { es: "Fotónica y optoelectrónica", pt: "Fotónica e optoeletrónica", en: "Photonics & optoelectronics", de: "Photonik und Optoelektronik", fr: "Photonique et optoélectronique", it: "Fotonica e optoelettronica", nl: "Fotonica en opto-elektronica", zh: "光子学与光电子", hi: "फोटोनिक्स एवं ऑप्टोइलेक्ट्रॉनिक्स", ko: "포토닉스 및 광전자", ja: "フォトニクス・オプトエレクトロニクス" } },
+  "smart-city": { family: "tecnologia", label: { es: "Smart city", pt: "Smart city", en: "Smart city", de: "Smart City", fr: "Smart city", it: "Smart city", nl: "Smart city", zh: "智慧城市", hi: "स्मार्ट सिटी", ko: "스마트 시티", ja: "スマートシティ" } },
+  "packaging": { family: "comercio", label: { es: "Packaging y envase", pt: "Packaging e embalagem", en: "Packaging", de: "Verpackung", fr: "Packaging et emballage", it: "Packaging e imballaggio", nl: "Verpakking", zh: "包装与封装", hi: "पैकेजिंग एवं पैकिंग", ko: "패키징 및 포장", ja: "パッケージ・包装" } },
+  "moda-textil": { family: "comercio", label: { es: "Moda y textil", pt: "Moda e têxtil", en: "Fashion & textiles", de: "Mode und Textil", fr: "Mode et textile", it: "Moda e tessile", nl: "Mode en textiel", zh: "时尚与纺织", hi: "फैशन एवं वस्त्र", ko: "패션 및 섬유", ja: "ファッション・繊維" } },
+  "regalo-decoracion": { family: "comercio", label: { es: "Regalo y decoración", pt: "Presentes e decoração", en: "Gifts & home décor", de: "Geschenkartikel und Dekoration", fr: "Cadeau et décoration", it: "Regalo e decorazione", nl: "Cadeau en decoratie", zh: "礼品与装饰", hi: "उपहार एवं सजावट", ko: "선물 및 인테리어", ja: "ギフト・インテリア" } },
+  "joyeria": { family: "comercio", label: { es: "Joyería y bisutería", pt: "Joalharia e bijutaria", en: "Jewellery & costume jewellery", de: "Schmuck und Modeschmuck", fr: "Bijouterie et joaillerie", it: "Gioielleria e bigiotteria", nl: "Juwelen en sieraden", zh: "珠宝与饰品", hi: "आभूषण एवं इमिटेशन ज्वेलरी", ko: "주얼리 및 액세서리", ja: "ジュエリー・アクセサリー" } },
+  "construccion": { family: "construccion", label: { es: "Construcción", pt: "Construção", en: "Construction", de: "Bauwesen", fr: "Construction", it: "Edilizia", nl: "Bouw", zh: "建筑", hi: "निर्माण", ko: "건설", ja: "建設" } },
+  "ventanas-cerramientos": { family: "construccion", label: { es: "Ventanas y cerramientos", pt: "Janelas e caixilharia", en: "Windows & façades", de: "Fenster und Fassaden", fr: "Fenêtres et menuiseries", it: "Serramenti e infissi", nl: "Ramen en gevelsluitingen", zh: "门窗与幕墙", hi: "खिड़कियां एवं क्लोज़र", ko: "창호 및 외장", ja: "窓・建具" } },
+  "puertas": { family: "construccion", label: { es: "Puertas", pt: "Portas", en: "Doors", de: "Türen", fr: "Portes", it: "Porte", nl: "Deuren", zh: "门业", hi: "दरवाज़े", ko: "도어", ja: "ドア" } },
+  "turismo": { family: "turismo", label: { es: "Turismo", pt: "Turismo", en: "Tourism", de: "Tourismus", fr: "Tourisme", it: "Turismo", nl: "Toerisme", zh: "旅游", hi: "पर्यटन", ko: "관광", ja: "観光" } },
+  "gastronomia-hosteleria": { family: "turismo", label: { es: "Gastronomía y hostelería", pt: "Gastronomia e hotelaria", en: "Gastronomy & hospitality", de: "Gastronomie und Hotellerie", fr: "Gastronomie et hôtellerie-restauration", it: "Gastronomia e ristorazione", nl: "Gastronomie en horeca", zh: "餐饮与酒店", hi: "गैस्ट्रोनॉमी एवं आतिथ्य", ko: "외식 및 호텔", ja: "美食・外食" } },
+  "automocion": { family: "transporte", label: { es: "Automoción", pt: "Automóvel", en: "Automotive", de: "Automobil", fr: "Automobile", it: "Automotive", nl: "Automotive", zh: "汽车", hi: "ऑटोमोटिव", ko: "자동차", ja: "自動車" } },
+  "naval": { family: "transporte", label: { es: "Naval", pt: "Naval", en: "Naval & shipbuilding", de: "Schiffbau", fr: "Naval", it: "Navale", nl: "Scheepvaart", zh: "船舶", hi: "जहाज़ निर्माण", ko: "조선", ja: "造船" } },
+  "aeronautica": { family: "transporte", label: { es: "Aeronáutica", pt: "Aeronáutica", en: "Aerospace", de: "Luft- und Raumfahrt", fr: "Aéronautique", it: "Aeronautica", nl: "Luchtvaart", zh: "航空", hi: "एयरोनॉटिक्स", ko: "항공우주", ja: "航空" } },
+  "transporte": { family: "transporte", label: { es: "Transporte y logística", pt: "Transporte e logística", en: "Transport & logistics", de: "Transport und Logistik", fr: "Transport et logistique", it: "Trasporti e logistica", nl: "Transport en logistiek", zh: "运输与物流", hi: "परिवहन एवं लॉजिस्टिक्स", ko: "운송 및 물류", ja: "運輸・物流" } },
+  "vino": { family: "enologia", label: { es: "Vino y enología", pt: "Vinho e enologia", en: "Wine & oenology", de: "Wein und Önologie", fr: "Vin et œnologie", it: "Vino ed enologia", nl: "Wijn en oenologie", zh: "葡萄酒与酿酒", hi: "वाइन एवं एनोलॉजी", ko: "와인 및 양조", ja: "ワイン・醸造" } },
+  "equipamiento-vino": { family: "enologia", label: { es: "Equipamiento del vino", pt: "Equipamento vínico", en: "Winemaking equipment", de: "Weinkellereitechnik", fr: "Équipement vinicole", it: "Attrezzature per il vino", nl: "Wijnuitrusting", zh: "葡萄酒酿造设备", hi: "वाइन उपकरण", ko: "와인 설비", ja: "ワイン関連設備" } },
+  "cultura-arte": { family: "ocio", label: { es: "Cultura y arte", pt: "Cultura e arte", en: "Culture & art", de: "Kultur und Kunst", fr: "Culture et art", it: "Cultura e arte", nl: "Cultuur en kunst", zh: "文化与艺术", hi: "संस्कृति एवं कला", ko: "문화 및 예술", ja: "文化・芸術" } },
+  "pop-videojuegos": { family: "ocio", label: { es: "Cultura pop y videojuegos", pt: "Cultura pop e videojogos", en: "Pop culture & video games", de: "Popkultur und Videospiele", fr: "Culture pop et jeux vidéo", it: "Cultura pop e videogiochi", nl: "Popcultuur en games", zh: "流行文化与电子游戏", hi: "पॉप संस्कृति एवं वीडियो गेम", ko: "대중문화 및 게임", ja: "ポップカルチャー・ゲーム" } },
+  "mascotas": { family: "ocio", label: { es: "Mascotas", pt: "Animais de estimação", en: "Pets", de: "Heimtiere", fr: "Animaux de compagnie", it: "Animali da compagnia", nl: "Huisdieren", zh: "宠物", hi: "पालतू पशु", ko: "반려동물", ja: "ペット" } },
+  "belleza-peluqueria": { family: "belleza", label: { es: "Belleza y peluquería", pt: "Beleza e cabeleireiro", en: "Beauty & hairdressing", de: "Beauty und Friseurhandwerk", fr: "Beauté et coiffure", it: "Bellezza e acconciatura", nl: "Schoonheid en kappers", zh: "美容与美发", hi: "सौंदर्य एवं हेयरड्रेसिंग", ko: "뷰티 및 헤어", ja: "美容・ヘアサロン" } },
+  "estetica": { family: "belleza", label: { es: "Estética", pt: "Estética", en: "Aesthetics", de: "Kosmetik", fr: "Esthétique", it: "Estetica", nl: "Esthetiek", zh: "美容护理", hi: "एस्थेटिक्स", ko: "에스테틱", ja: "エステティック" } },
+  "multisectorial": { family: "multi", label: { es: "Multisectorial", pt: "Multissetorial", en: "Multi-sector", de: "Branchenübergreifend", fr: "Multisectoriel", it: "Multisettoriale", nl: "Multisectoraal", zh: "综合行业", hi: "बहु-क्षेत्रीय", ko: "종합 산업", ja: "総合展示会" } },
+  "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
-
 export const fairActivities = {
   "agroexpo-feval-don-benito": ["agricultura-maquinaria"],
   "feria-de-fp-badajoz": ["multisectorial"],
@@ -211,8 +210,8 @@ export const fairActivities = {
   "ciocv-braga": ["optica-oftalmologia"],
   "foyer-health-beauty-lisboa": ["medicina-estetica","congreso-profesional"],
   "seme-medicina-estetica": ["medicina-estetica","estetica","congreso-profesional"],
-  "secpre-cirugia-plastica": ["packaging","congreso-medico","congreso-profesional"],
-  "spcpre-cirugia-plastica-portugal": ["packaging","congreso-medico","congreso-profesional"],
+  "secpre-cirugia-plastica": ["medicina-estetica","congreso-medico","congreso-profesional"],
+  "spcpre-cirugia-plastica-portugal": ["medicina-estetica","congreso-medico","congreso-profesional"],
   "spme-medicina-estetica-portugal": ["medicina-estetica","estetica","congreso-profesional"],
   "seo-oftalmologia": ["optica-oftalmologia","congreso-profesional"],
   "secoir-cirugia-ocular": ["optica-oftalmologia","congreso-profesional"],
@@ -224,3 +223,23 @@ export const fairActivities = {
 // Helpers
 export const activitiesForFair = (slug) => fairActivities[slug] || [];
 export const colorForTag = (tag) => (tagFamilies[fairTags[tag]?.family]?.color) || '#6F757D';
+export const labelForTag = (tag, lang) => (fairTags[tag]?.label?.[lang]) || fairTags[tag]?.label?.es || tag;
+
+// Lista de etiquetas en orden de familia (para el índice y los chips agrupados).
+export const tagOrder = Object.keys(fairTags).sort((a, b) => {
+  const fa = Object.keys(tagFamilies).indexOf(fairTags[a].family);
+  const fb = Object.keys(tagFamilies).indexOf(fairTags[b].family);
+  return fa - fb;
+});
+
+// Índice inverso: etiqueta -> [slugs de feria]. Se construye una vez al cargar el módulo.
+const _fairsByTag = (() => {
+  const idx = {};
+  for (const tag of Object.keys(fairTags)) idx[tag] = [];
+  for (const [slug, tags] of Object.entries(fairActivities)) {
+    for (const t of tags) (idx[t] || (idx[t] = [])).push(slug);
+  }
+  return idx;
+})();
+export const fairsForActivity = (tag) => _fairsByTag[tag] || [];
+export const fairCountForActivity = (tag) => (_fairsByTag[tag] || []).length;

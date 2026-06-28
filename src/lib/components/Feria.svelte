@@ -1,8 +1,22 @@
 <script>
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels, routes, cityData, fairUrl } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl } from '$lib/siteData.js';
+  import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import ContactForm from './ContactForm.svelte';
+
+  // Módulo "Actividad" del aside: chips con código de color que enlazan a los
+  // hubs de actividad de esta feria (interconexión por sector).
+  const ACTIVITY_NAV_LABELS = {
+    es: 'Actividad', en: 'Activity', de: 'Branche', fr: 'Activité', it: 'Attività',
+    pt: 'Atividade', nl: 'Activiteit', zh: '行业', hi: 'गतिविधि', ko: '분야', ja: '分野'
+  };
+  const ALL_ACTIVITIES_LABELS = {
+    es: 'Ver todas las actividades', en: 'See all activities', de: 'Alle Branchen ansehen',
+    fr: 'Voir toutes les activités', it: 'Vedi tutte le attività', pt: 'Ver todas as atividades',
+    nl: 'Alle activiteiten bekijken', zh: '查看所有行业', hi: 'सभी गतिविधियाँ देखें',
+    ko: '모든 분야 보기', ja: 'すべての分野を見る'
+  };
 
   // Navegación entre ciudades matriz (módulo del aside).
   // Solo las matrices (construccion_stands_*); excluye las landings de montaje secundarias
@@ -498,6 +512,8 @@
   const VENUE_SKIP_FAIRS = ['ciocv-braga', 'foyer-health-beauty-lisboa'];
   $: venue = VENUE_SKIP_FAIRS.includes(fair.slug) ? null : (VENUE_BY_CITY[fair.city] || null);
   $: venueText = venue ? ((venueLine[lang] || venueLine.es)(venue, localizedCity)) : null;
+  // Actividades (etiquetas) de esta feria, para los chips de color del aside.
+  $: fairActivityTags = activitiesForFair(fair.slug);
 </script>
 
 <svelte:head>
@@ -669,6 +685,21 @@
                 {/each}
               </ul>
             {/if}
+          </div>
+        {/if}
+        {#if fairActivityTags.length}
+          <div class="aside-module">
+            <h3>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h3>
+            <ul class="activity-chips">
+              {#each fairActivityTags as tag}
+                <li>
+                  <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
+                    <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
+                  </a>
+                </li>
+              {/each}
+            </ul>
+            <a class="activity-all" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a>
           </div>
         {/if}
         <div class="aside-module">
@@ -881,4 +912,45 @@
     color: #1a1e21;
     font-weight: 700;
   }
+  /* Chips de actividad con código de color (variable --chip por etiqueta). */
+  .activity-chips {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .activity-chips li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--chip) 45%, transparent);
+    border-left: 4px solid var(--chip);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-decoration: none;
+    background: color-mix(in srgb, var(--chip) 7%, #fff);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .activity-chips li a:hover {
+    background: color-mix(in srgb, var(--chip) 16%, #fff);
+    border-color: var(--chip);
+  }
+  .chip-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--chip);
+    flex: 0 0 auto;
+  }
+  .activity-all {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .activity-all:hover { opacity: 0.8; }
 </style>

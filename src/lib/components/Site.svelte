@@ -2,7 +2,8 @@
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
-  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl } from '$lib/siteData.js';
+  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl } from '$lib/siteData.js';
+  import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
   import ProjectAdvisor from './ProjectAdvisor.svelte';
@@ -461,6 +462,16 @@
   // Navegación entre ciudades matrices (módulo del sidebar, igual que en Feria).
   // Solo matrices (construccion_stands_*); excluye las landings de montaje secundarias.
   const CITY_NAV_KEYS = Object.keys(cityData).filter((k) => !k.startsWith('montaje_'));
+  const ACTIVITY_NAV_LABELS = {
+    es: 'Por actividad', en: 'By activity', de: 'Nach Branche', fr: 'Par activité', it: 'Per attività',
+    pt: 'Por atividade', nl: 'Per branche', zh: '按行业', hi: 'गतिविधि अनुसार', ko: '분야별', ja: '分野別'
+  };
+  const ALL_ACTIVITIES_LABELS = {
+    es: 'Ver todas las actividades', en: 'See all activities', de: 'Alle Branchen ansehen',
+    fr: 'Voir toutes les activités', it: 'Vedi tutte le attività', pt: 'Ver todas as atividades',
+    nl: 'Alle activiteiten bekijken', zh: '查看所有行业', hi: 'सभी गतिविधियाँ देखें',
+    ko: '모든 분야 보기', ja: 'すべての分野を見る'
+  };
   const CITY_NAV_LABELS = {
     es: 'Ciudades', en: 'Cities', de: 'Städte',
     fr: 'Villes', it: 'Città', pt: 'Cidades',
@@ -491,6 +502,15 @@
     ? fairItems.filter((f) => FAIR_CITY_REGION[f.city] === SECTION_REGION[section])
     : [];
   $: fairHrefSite = (slug) => fairUrl(slug, lang);
+  // Actividades presentes entre las ferias de esta región (chips de color del aside,
+  // en orden de aparición y sin repetir): conecta el pilar de ciudad con los hubs.
+  $: regionActivities = (() => {
+    const seen = [];
+    for (const f of regionFairs) {
+      for (const tag of activitiesForFair(f.slug)) if (!seen.includes(tag)) seen.push(tag);
+    }
+    return seen;
+  })();
 
   $: title = seoContent?.title || (section in cityData
     ? `${cityTitle(section)} | Standarte`
@@ -1593,6 +1613,23 @@
                   </ul>
                 </section>
               {/if}
+
+              <!-- Navegador de actividades: chips de color hacia los hubs por sector -->
+              {#if regionActivities.length}
+                <section class="activity-module sidebar-module" aria-label={ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}>
+                  <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h2>
+                  <ul class="activity-chips">
+                    {#each regionActivities as tag}
+                      <li>
+                        <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
+                          <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
+                        </a>
+                      </li>
+                    {/each}
+                  </ul>
+                  <a class="sidebar-precios-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a>
+                </section>
+              {/if}
             </div>
           </aside>
         </div>
@@ -1921,5 +1958,29 @@
   :global(.transparent-hero) {
     background: transparent !important;
     border-bottom: none !important;
+  }
+
+  /* Navegador de actividades (aside): chips de color hacia los hubs por sector. */
+  .activity-module { margin-top: 1.8rem; }
+  .activity-chips {
+    list-style: none; padding: 0; margin: 0 0 0.9rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .activity-chips li a {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.38rem 0.75rem; font-size: 0.88rem;
+    color: var(--text-color); text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--chip) 45%, transparent);
+    border-left: 4px solid var(--chip); border-radius: 6px;
+    background: color-mix(in srgb, var(--chip) 7%, #fff);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .activity-chips li a:hover {
+    background: color-mix(in srgb, var(--chip) 16%, #fff);
+    border-color: var(--chip);
+  }
+  .activity-chips .chip-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--chip); flex: 0 0 auto;
   }
 </style>
