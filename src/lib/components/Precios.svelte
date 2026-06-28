@@ -594,17 +594,18 @@
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Product',
+        '@type': 'Service',
         name: t.h1,
         description: t.metaDesc,
-        brand: { '@type': 'Brand', name: 'Standarte' },
+        serviceType: t.h1,
+        provider: { '@type': 'Organization', name: 'Standarte', url: 'https://standarte.es' },
+        areaServed: ['ES', 'PT'],
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'EUR',
           lowPrice: Math.min(...priceValues),
           highPrice: Math.max(...priceValues),
-          offerCount: tiers.length,
-          availability: 'https://schema.org/InStock'
+          offerCount: tiers.length
         }
       },
       {
