@@ -474,7 +474,11 @@
     ? fairsData.filter((f) => f.slug !== fair.slug && CITY_REGION[f.city] === fairRegion).slice(0, 12)
     : [];
   $: fairHref = (slug) => fairUrl(slug, lang);
-  $: venue = VENUE_BY_CITY[fair.city] || null;
+  // Ferias cuya sede NO es el recinto principal de su ciudad-hub (la línea genérica de
+  // recinto sería falsa; la sede real se nombra en el contenido único de la ficha).
+  // Ej.: CIOCV se asigna al hub de Oporto pero se celebra en la Universidade do Minho (Braga).
+  const VENUE_SKIP_FAIRS = ['ciocv-braga'];
+  $: venue = VENUE_SKIP_FAIRS.includes(fair.slug) ? null : (VENUE_BY_CITY[fair.city] || null);
   $: venueText = venue ? ((venueLine[lang] || venueLine.es)(venue, localizedCity)) : null;
 </script>
 

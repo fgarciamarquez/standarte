@@ -1013,5 +1013,19 @@ export const fairsData = [
     "slug": "optom-madrid",
     "city": "Madrid",
     "sector": "Salud y Medicina"
+  },
+  {
+    "name": "CIOC",
+    "country": "pt",
+    "slug": "cioc-lisboa",
+    "city": "Lisboa",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "CIOCV",
+    "country": "pt",
+    "slug": "ciocv-braga",
+    "city": "Oporto",
+    "sector": "Salud y Medicina"
   }
 ];
