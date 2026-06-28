@@ -1034,5 +1034,68 @@ export const fairsData = [
     "slug": "foyer-health-beauty-lisboa",
     "city": "Lisboa",
     "sector": "Belleza y Estética"
+  },
+  {
+    "name": "Congreso SEME (Medicina Estética)",
+    "country": "es",
+    "slug": "seme-medicina-estetica",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Congreso SECPRE (Cirugía Plástica)",
+    "country": "es",
+    "slug": "secpre-cirugia-plastica",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Congreso SPCPRE (Cirurgia Plástica)",
+    "country": "pt",
+    "slug": "spcpre-cirugia-plastica-portugal",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Congreso SPME (Medicina Estética)",
+    "country": "pt",
+    "slug": "spme-medicina-estetica-portugal",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Congreso SEO (Oftalmología)",
+    "country": "es",
+    "slug": "seo-oftalmologia",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Congreso SECOIR",
+    "country": "es",
+    "slug": "secoir-cirugia-ocular",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Reunión Nacional de Óptica (RNO)",
+    "country": "es",
+    "slug": "rno-reunion-nacional-optica",
+    "city": "Itinerante",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Congreso OPTOEL",
+    "country": "es",
+    "slug": "optoel-optoelectronica",
+    "city": "Itinerante",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Congreso SET (Trasplante)",
+    "country": "es",
+    "slug": "set-trasplante",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
   }
 ];

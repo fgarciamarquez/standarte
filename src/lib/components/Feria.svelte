@@ -414,6 +414,22 @@
   };
 
   $: localizedCity = (cities[lang] && cities[lang][fair.city]) ? cities[lang][fair.city] : fair.city;
+  // Congresos itinerantes (city === 'Itinerante'): no tienen ciudad/recinto fijos. La ficha
+  // se enfoca con honestidad — Standarte monta el stand allá donde se celebre el congreso.
+  $: isItinerant = fair.city === 'Itinerante';
+  const introItinerant = {
+    es: (name, sector) => `Standarte diseña y monta stands para ${name}, un congreso itinerante del sector de ${sector} que cambia de sede cada año. Con taller propio y equipo de montaje, llevamos tu stand allá donde se celebre, en toda España y Portugal.`,
+    en: (name, sector) => `Standarte designs and builds stands for ${name}, an itinerant congress in the ${sector} sector that changes host city every year. With our own workshop and assembly crew, we bring your stand wherever it is held, across Spain and Portugal.`,
+    de: (name, sector) => `Standarte gestaltet und baut Stände für ${name}, einen wandernden Kongress im Bereich ${sector}, der jedes Jahr den Austragungsort wechselt. Mit eigener Werkstatt und Montageteam bringen wir Ihren Stand dorthin, wo er stattfindet – in ganz Spanien und Portugal.`,
+    pt: (name, sector) => `A Standarte concebe e monta stands para ${name}, um congresso itinerante do setor de ${sector} que muda de cidade todos os anos. Com oficina própria e equipa de montagem, levamos o seu stand onde quer que se realize, em toda a Espanha e Portugal.`,
+    fr: (name, sector) => `Standarte conçoit et monte des stands pour ${name}, un congrès itinérant du secteur de ${sector} qui change de ville chaque année. Avec notre atelier propre et notre équipe de montage, nous amenons votre stand là où il se tient, partout en Espagne et au Portugal.`,
+    it: (name, sector) => `Standarte progetta e monta stand per ${name}, un congresso itinerante del settore ${sector} che cambia sede ogni anno. Con officina propria e squadra di montaggio, portiamo il tuo stand ovunque si svolga, in tutta la Spagna e il Portogallo.`,
+    nl: (name, sector) => `Standarte ontwerpt en bouwt stands voor ${name}, een rondreizend congres in de sector ${sector} dat elk jaar van stad wisselt. Met een eigen werkplaats en montageteam brengen we uw stand naar waar het plaatsvindt, in heel Spanje en Portugal.`,
+    zh: (name, sector) => `Standarte 为 ${name} 设计并搭建展台——这是 ${sector} 领域每年更换举办城市的巡回大会。我们拥有自有工厂和搭建团队，可在大会举办地为您搭建展台，覆盖西班牙和葡萄牙全境。`,
+    hi: (name, sector) => `Standarte ${name} के लिए स्टैंड डिज़ाइन और निर्माण करता है—यह ${sector} क्षेत्र का एक यात्रावर्ती सम्मेलन है जो हर साल शहर बदलता है। अपनी कार्यशाला और असेंबली टीम के साथ, हम आपका स्टैंड वहीं ले जाते हैं जहाँ यह आयोजित होता है, पूरे स्पेन और पुर्तगाल में।`,
+    ko: (name, sector) => `Standarte는 ${sector} 분야에서 매년 개최 도시가 바뀌는 순회 학회인 ${name}을(를) 위한 부스를 설계·시공합니다. 자체 작업장과 설치 팀을 통해 학회가 열리는 곳 어디든 부스를 가져다 드리며, 스페인과 포르투갈 전역을 아우릅니다.`,
+    ja: (name, sector) => `Standarteは、${sector}分野で毎年開催都市が変わる巡回型の学会である${name}向けにブースを設計・施工します。自社工房と施工チームにより、開催地どこへでもブースをお届けし、スペインとポルトガル全土をカバーします。`
+  };
   $: localizedSector = (sectors[lang] && sectors[lang][fair.sector]) ? sectors[lang][fair.sector] : fair.sector;
   $: heroExpStr = heroExp[lang] || heroExp.es;
 
@@ -458,7 +474,9 @@
   })();
   
   $: seoTitle = `${strings.heroTitle(fairDisplayName)} | Standarte`;
-  $: seoDesc = strings.intro(fair.name, localizedCity, localizedSector);
+  $: seoDesc = isItinerant
+    ? (introItinerant[lang] || introItinerant.es)(fair.name, localizedSector)
+    : strings.intro(fair.name, localizedCity, localizedSector);
 
   // Clúster: enlace al pilar de ciudad + ferias hermanas de la misma región
   $: clusterStr = clusterT[lang] || clusterT.es;
