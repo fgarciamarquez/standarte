@@ -219,7 +219,11 @@ export const fairActivities = {
   "secoir-cirugia-ocular": ["optica-oftalmologia","congreso-profesional"],
   "rno-reunion-nacional-optica": ["optica-oftalmologia","fotonica","congreso-profesional"],
   "optoel-optoelectronica": ["fotonica","congreso-profesional"],
-  "set-trasplante": ["congreso-medico","congreso-profesional"]
+  "set-trasplante": ["congreso-medico","congreso-profesional"],
+  "salon-automovil-merida": ["automocion"],
+  "feria-bodas-hogar-merida": ["regalo-decoracion"],
+  "coleccionismo-emerita-augusta-merida": ["cultura-arte"],
+  "feturex-merida": ["turismo"]
 };
 
 // Helpers

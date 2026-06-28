@@ -1097,5 +1097,33 @@ export const fairsData = [
     "slug": "set-trasplante",
     "city": "Itinerante",
     "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Salón del Automóvil de Mérida",
+    "country": "es",
+    "slug": "salon-automovil-merida",
+    "city": "Mérida",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Feria de Bodas y Hogar de Mérida",
+    "country": "es",
+    "slug": "feria-bodas-hogar-merida",
+    "city": "Mérida",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Feria de Coleccionismo Emérita Augusta",
+    "country": "es",
+    "slug": "coleccionismo-emerita-augusta-merida",
+    "city": "Mérida",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "FETUREX Feria de Turismo de Extremadura",
+    "country": "es",
+    "slug": "feturex-merida",
+    "city": "Mérida",
+    "sector": "Turismo y Hostelería"
   }
 ];
