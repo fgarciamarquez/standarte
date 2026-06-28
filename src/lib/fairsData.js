@@ -1027,5 +1027,12 @@ export const fairsData = [
     "slug": "ciocv-braga",
     "city": "Oporto",
     "sector": "Salud y Medicina"
+  },
+  {
+    "name": "FOYER Health & Beauty Summit",
+    "country": "pt",
+    "slug": "foyer-health-beauty-lisboa",
+    "city": "Lisboa",
+    "sector": "Belleza y Estética"
   }
 ];
