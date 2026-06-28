@@ -999,5 +999,19 @@ export const fairsData = [
     "slug": "forum-dental-mediterraneo-barcelona",
     "city": "Barcelona",
     "sector": "Salud y Medicina"
+  },
+  {
+    "name": "ExpoÓptica",
+    "country": "es",
+    "slug": "expooptica-madrid",
+    "city": "Madrid",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "OPTOM",
+    "country": "es",
+    "slug": "optom-madrid",
+    "city": "Madrid",
+    "sector": "Salud y Medicina"
   }
 ];
