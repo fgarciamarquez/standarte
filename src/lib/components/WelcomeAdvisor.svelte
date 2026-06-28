@@ -3,6 +3,7 @@
   import { slide, fade } from 'svelte/transition';
   import { fairsData } from '$lib/fairsData.js';
   import { cityData } from '$lib/siteData.js';
+  import { fairsForActivity, colorForTag, labelForTag, tagOrder } from '$lib/fairTags.js';
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let lang = 'en';
@@ -17,7 +18,9 @@
 
   let selectedCity = '';
   let selectedFair = '';
-  let currentStep = 1; // 1 = city selector, 2 = fairs, 3 = contact form
+  let selectedActivity = ''; // etiqueta de actividad (circuito alternativo)
+  let mode = 'city'; // 'city' (por defecto) | 'activity'
+  let currentStep = 1; // 1 = city/activity selector, 2 = fairs, 3 = contact form
 
   let cardExpanded = false;
   let profileVisible = false;
@@ -289,10 +292,37 @@
 
   $: t = texts[lang] || texts.en;
 
+  // ─── Circuito alternativo "por actividad" ───────────────────────────────
+  // Textos propios del modo actividad (separados de `texts` para no tocar los
+  // 11 bloques). Botón discreto que alterna entre elegir por ciudad o por sector.
+  const activityTexts = {
+    es: { byActivity: 'Prefiero elegir por actividad', byCity: 'Elegir por ciudad', instruction: 'Cuéntame tu sector: selecciona una actividad.', badge: 'Actividad' },
+    en: { byActivity: 'I’d rather choose by activity', byCity: 'Choose by city', instruction: 'Tell me your sector: select an activity.', badge: 'Activity' },
+    pt: { byActivity: 'Prefiro escolher por atividade', byCity: 'Escolher por cidade', instruction: 'Diga-me o seu setor: selecione uma atividade.', badge: 'Atividade' },
+    de: { byActivity: 'Lieber nach Branche wählen', byCity: 'Nach Stadt wählen', instruction: 'Nennen Sie mir Ihre Branche: Wählen Sie eine Tätigkeit.', badge: 'Branche' },
+    fr: { byActivity: 'Je préfère choisir par activité', byCity: 'Choisir par ville', instruction: 'Dites-moi votre secteur : choisissez une activité.', badge: 'Activité' },
+    it: { byActivity: 'Preferisco scegliere per attività', byCity: 'Scegli per città', instruction: 'Dimmi il tuo settore: seleziona un’attività.', badge: 'Attività' },
+    nl: { byActivity: 'Liever kiezen op branche', byCity: 'Kies op stad', instruction: 'Vertel me uw branche: kies een activiteit.', badge: 'Branche' },
+    zh: { byActivity: '我想按行业选择', byCity: '按城市选择', instruction: '告诉我您的行业：请选择一个领域。', badge: '行业' },
+    hi: { byActivity: 'मैं गतिविधि से चुनना चाहूँगा', byCity: 'शहर से चुनें', instruction: 'अपना क्षेत्र बताएं: एक गतिविधि चुनें।', badge: 'गतिविधि' },
+    ko: { byActivity: '분야로 선택할게요', byCity: '도시로 선택', instruction: '분야를 알려주세요: 하나를 선택해 주세요.', badge: '분야' },
+    ja: { byActivity: '分野で選びたい', byCity: '都市で選ぶ', instruction: '業種を教えてください：分野を選択してください。', badge: '分野' }
+  };
+  $: at = activityTexts[lang] || activityTexts.en;
+
   $: selectedCityName = cityKeyToFairCityName[selectedCity];
   $: cityFairs = selectedCityName
     ? fairsData.filter(f => f.city === selectedCityName)
     : [];
+  // Ferias de la actividad seleccionada (cruzan ciudades).
+  $: activityFairs = selectedActivity
+    ? fairsForActivity(selectedActivity).map(slug => fairsData.find(f => f.slug === slug)).filter(Boolean)
+    : [];
+  // Lista de ferias mostrada en el paso 2 según el modo.
+  $: stepFairs = mode === 'activity' ? activityFairs : cityFairs;
+  $: selectedActivityLabel = selectedActivity ? labelForTag(selectedActivity, lang) : '';
+  // Etiquetas para el grid del paso 1 en modo actividad (todas tienen ≥1 feria).
+  const activityChoices = tagOrder;
 
   // Muchas ferias llevan el nombre de la ciudad al final (p. ej. "FITUR Madrid",
   // "ARCOmadrid") porque así se etiquetaron los grupos de campaña de email. En el
@@ -461,16 +491,18 @@
   let lastStep = 1;
   let lastLang = '';
   let lastStatus = 'idle';
+  let lastMode = 'city';
   $: if (profileVisible && lang) {
-    if (currentStep !== lastStep || lang !== lastLang || status !== lastStatus) {
+    if (currentStep !== lastStep || lang !== lastLang || status !== lastStatus || mode !== lastMode) {
       lastStep = currentStep;
       lastLang = lang;
       lastStatus = status;
-      
+      lastMode = mode;
+
       if (status === 'success') {
         typeText(t.successMsg);
       } else if (currentStep === 1) {
-        typeText(t.instruction);
+        typeText(mode === 'activity' ? at.instruction : t.instruction);
       } else if (currentStep === 2) {
         typeText(t.fairInstruction);
       } else if (currentStep === 3) {
@@ -565,17 +597,57 @@
     unlockAudio();
   }
 
+  // Circuito alternativo: alterna entre elegir por ciudad o por actividad y
+  // reinicia la selección para empezar limpio en el paso 1.
+  function switchToActivity() {
+    clearInterval(typingInterval);
+    mode = 'activity';
+    selectedCity = '';
+    selectedFair = '';
+    selectedActivity = '';
+    currentStep = 1;
+    status = 'idle';
+    statusMessage = '';
+    unlockAudio();
+  }
+  function switchToCity() {
+    clearInterval(typingInterval);
+    mode = 'city';
+    selectedActivity = '';
+    selectedFair = '';
+    selectedCity = '';
+    currentStep = 1;
+    status = 'idle';
+    statusMessage = '';
+  }
+  function selectActivity(tag) {
+    clearInterval(typingInterval);
+    selectedActivity = tag;
+    currentStep = 2;
+    unlockAudio();
+  }
+
   function selectFair(fairName) {
     selectedFair = fairName;
     currentStep = 3;
     unlockAudio();
-    
-    const cityName = cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity;
+
+    const cityName = mode === 'activity'
+      ? selectedActivityLabel
+      : (cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity);
     dispatch('selectFair', { fairName, cityName });
   }
 
   function resetCity() {
     selectedCity = '';
+    selectedFair = '';
+    currentStep = 1;
+    status = 'idle';
+    statusMessage = '';
+  }
+
+  function resetActivity() {
+    selectedActivity = '';
     selectedFair = '';
     currentStep = 1;
     status = 'idle';
@@ -598,7 +670,9 @@
     formData.append('form_lang', lang);
     formData.append('form_nombre', name);
     formData.append('form_email', email);
-    formData.append('form_feria', `${selectedFair} (${selectedCityName})`);
+    formData.append('form_feria', mode === 'activity'
+      ? `${selectedFair} (${at.badge}: ${selectedActivityLabel})`
+      : `${selectedFair} (${selectedCityName})`);
     formData.append('form_url', sourceUrl || (typeof window !== 'undefined' ? window.location.href : ''));
     formData.append('form_website', honeypot);
     formData.append('form_elapsed', String(mountTime ? Date.now() - mountTime : 0));
@@ -666,13 +740,20 @@
             <span class="advisor-free-badge">{t.freeBadge}</span>
           </div>
 
-          {#if (selectedCity || selectedFair) && status !== 'success'}
+          {#if (selectedCity || selectedActivity || selectedFair) && status !== 'success'}
             <div class="advisor-selected-badges" transition:fade>
               {#if selectedCity}
                 <span class="selected-badge-pill" transition:fade>
                   <span class="fair-badge-flag flag-{cityCountry[selectedCity]}"></span>
                   {cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity}
                   <button type="button" class="remove-badge-btn" on:click={resetCity} aria-label="Remove city">×</button>
+                </span>
+              {/if}
+              {#if selectedActivity}
+                <span class="selected-badge-pill" transition:fade style="--chip:{colorForTag(selectedActivity)}">
+                  <span class="badge-activity-dot" aria-hidden="true"></span>
+                  {selectedActivityLabel}
+                  <button type="button" class="remove-badge-btn" on:click={resetActivity} aria-label="Remove activity">×</button>
                 </span>
               {/if}
               {#if selectedFair}
@@ -699,25 +780,48 @@
       </div>
     </div>
 
-    <!-- Step 1: City selector -->
+    <!-- Step 1: City selector (modo ciudad) o Activity selector (modo actividad) -->
     {#if currentStep === 1}
-      <div class="city-selector-grid" class:visible={citiesVisible} transition:slide={{ duration: 400 }}>
-        {#each cityKeys as ck}
-          <button
-            type="button"
-            class="city-selector-btn"
-            on:click={() => selectCity(ck)}
-          >
-            {cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es || ck}
-          </button>
-        {/each}
-      </div>
+      {#if mode === 'city'}
+        <div class="city-selector-grid" class:visible={citiesVisible} transition:slide={{ duration: 400 }}>
+          {#each cityKeys as ck}
+            <button
+              type="button"
+              class="city-selector-btn"
+              on:click={() => selectCity(ck)}
+            >
+              {cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es || ck}
+            </button>
+          {/each}
+        </div>
+        <!-- Segundo botón discreto: circuito alternativo por actividad -->
+        <button type="button" class="advisor-mode-switch" on:click={switchToActivity}>
+          {at.byActivity} →
+        </button>
+      {:else}
+        <div class="activity-selector-flex" transition:slide={{ duration: 400 }}>
+          {#each activityChoices as tag}
+            <button
+              type="button"
+              class="activity-selector-btn"
+              style="--chip:{colorForTag(tag)}"
+              on:click={() => selectActivity(tag)}
+            >
+              <span class="badge-activity-dot" aria-hidden="true"></span>
+              <span class="fair-name-text">{labelForTag(tag, lang)}</span>
+            </button>
+          {/each}
+        </div>
+        <button type="button" class="advisor-mode-switch" on:click={switchToCity}>
+          ← {at.byCity}
+        </button>
+      {/if}
     {/if}
 
     <!-- Step 2: Fairs selector as floating pills (Lime Green themed) -->
     {#if currentStep === 2}
       <div class="fairs-selector-flex" transition:slide={{ duration: 400 }}>
-        {#each cityFairs as fair}
+        {#each stepFairs as fair}
           <button
             type="button"
             class="fair-selector-btn"
@@ -1069,6 +1173,63 @@
   .fair-selector-btn:hover {
     border-color: var(--gold);
     background: #fffdf6;
+  }
+
+  /* Circuito por actividad: botón discreto de cambio de modo */
+  .advisor-mode-switch {
+    display: inline-block;
+    margin-top: 14px;
+    background: none;
+    border: none;
+    padding: 4px 2px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #8a8f96;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+  .advisor-mode-switch:hover { color: var(--gold); }
+
+  /* Grid de chips de actividad (paso 1, modo actividad), con código de color */
+  .activity-selector-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .activity-selector-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: color-mix(in srgb, var(--chip) 7%, #fff);
+    border: 1px solid color-mix(in srgb, var(--chip) 45%, transparent);
+    border-left: 4px solid var(--chip);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    text-align: left;
+  }
+  .activity-selector-btn:hover {
+    background: color-mix(in srgb, var(--chip) 16%, #fff);
+    border-color: var(--chip);
+  }
+  .badge-activity-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--chip);
+    flex: 0 0 auto;
+    display: inline-block;
   }
 
   .fair-badge-flag {
