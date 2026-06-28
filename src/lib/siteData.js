@@ -1331,7 +1331,7 @@ export const cityData = {
       "pt": "Salamanca",
       "en": "Salamanca",
       "de": "Salamanca",
-      "fr": "Salamanque",
+      "fr": "Salamanca",
       "it": "Salamanca",
       "nl": "Salamanca",
       "zh": "萨拉曼卡",
@@ -1341,48 +1341,48 @@ export const cityData = {
     },
     "content": {
       "es": {
-        "intro": "Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Salamanca —ciudad universitaria Patrimonio de la Humanidad y plaza ferial de referencia en el oeste de Castilla y León, con el Recinto Ferial de Salamanca como sede— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "intro": "Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Salamanca —ciudad universitaria Patrimonio de la Humanidad y plaza ferial y de congresos del oeste de Castilla y León, con el Recinto Ferial de Salamanca y el Palacio de Congresos como sedes de referencia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
         "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
       },
       "pt": {
-        "intro": "Com mais de 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte concebe e monta stands em Salamanca —cidade universitária Património Mundial e praça feiral de referência no oeste de Castela e Leão, tendo como sede o Recinto Ferial de Salamanca— controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
-        "detail": "Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
+        "intro": "Com 20 anos de experiência a construir arquitetura efémera a partir da nossa própria oficina, a Standarte concebe e monta stands em Salamanca —cidade universitária Património Mundial e praça de feiras e congressos do oeste de Castela e Leão, com o Recinto Ferial de Salamanca e o Palacio de Congresos como espaços de referência— controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
+        "detail": "Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
       },
       "en": {
-        "intro": "With 20 years of experience building temporary architecture from our own workshop, Standarte designs and installs exhibition stands in Salamanca — a UNESCO World Heritage university city and a leading trade-fair hub in western Castilla y León, with the Recinto Ferial de Salamanca as its venue — controlling every stage in-house: 3D design, fabrication, logistics, installation and on-site venue approvals.",
-        "detail": "We give agencies and exhibitors the reassurance of a build with no surprises and an exceptional attention to detail."
+        "intro": "With 20 years of experience building temporary architecture from our own workshop, Standarte designs and installs exhibition stands in Salamanca — a UNESCO World Heritage university city and the leading trade-fair and congress hub in western Castile and León, home to the Recinto Ferial de Salamanca and the Palacio de Congresos — taking charge of every stage: 3D design, fabrication, logistics, on-site installation and venue approvals.",
+        "detail": "We give agencies and exhibitors the reassurance of a build with no surprises and exceptional attention to detail."
       },
       "de": {
-        "intro": "Mit über 20 Jahren Erfahrung im Bau temporärer Architektur aus der eigenen Werkstatt plant und montiert Standarte Messestände in Salamanca – Universitätsstadt und UNESCO-Weltkulturerbe sowie führender Messeplatz im Westen von Castilla y León, mit dem Recinto Ferial de Salamanca als Veranstaltungsort. Wir steuern jede Phase selbst: 3D-Design, Fertigung, Logistik, Aufbau und die technischen Abnahmen am Veranstaltungsort.",
-        "detail": "Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und eine außergewöhnliche Liebe zum Detail."
+        "intro": "Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus der eigenen Werkstatt plant und montiert Standarte Messestände in Salamanca – Universitätsstadt und UNESCO-Welterbe sowie Messe- und Kongressstandort im Westen Kastilien-Leóns mit dem Recinto Ferial de Salamanca und dem Palacio de Congresos als zentralen Veranstaltungsorten. Wir steuern jede Phase selbst: 3D-Design, Fertigung, Logistik, Aufbau und die Abnahmen vor Ort.",
+        "detail": "Agenturen und Ausstellern bieten wir die Sicherheit eines Aufbaus ohne böse Überraschungen und eine außergewöhnliche Liebe zum Detail."
       },
       "fr": {
-        "intro": "Forts de 20 ans d'expérience dans la construction d'architecture éphémère depuis notre propre atelier, nous concevons et montons chez Standarte des stands à Salamanque — ville universitaire classée au patrimoine mondial et place foire de référence dans l'ouest de la Castille-et-León, avec le Recinto Ferial de Salamanca comme siège — en maîtrisant chaque étape : conception 3D, fabrication, logistique, installation et validations sur site.",
-        "detail": "Nous offrons aux agences et aux exposants la sérénité d'un montage sans mauvaises surprises et une attention aux détails exceptionnelle."
+        "intro": "Forts de 20 ans d'expérience dans la construction d'architecture éphémère depuis notre propre atelier, chez Standarte nous concevons et montons des stands à Salamanca — ville universitaire classée au Patrimoine mondial et place forte des salons et congrès de l'ouest de la Castille-et-León, avec le Recinto Ferial de Salamanca et le Palacio de Congresos comme sites de référence — en maîtrisant chaque étape : conception 3D, fabrication, logistique, installation et validations sur site.",
+        "detail": "Nous offrons aux agences et aux exposants la sérénité d'un montage sans mauvaises surprises et un soin du détail exceptionnel."
       },
       "it": {
-        "intro": "Con oltre 20 anni di esperienza nella costruzione di architetture effimere dalla nostra officina propria, Standarte progetta e allestisce stand a Salamanca —città universitaria Patrimonio dell'Umanità e polo fieristico di riferimento dell'ovest della Castiglia e León, con il Recinto Ferial de Salamanca come sede— mantenendo il controllo su ogni fase: progettazione 3D, fabbricazione, logistica, installazione e validazioni in sede.",
-        "detail": "Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune."
+        "intro": "Con 20 anni di esperienza nella costruzione di architettura effimera dalla nostra officina propria, Standarte progetta e allestisce stand a Salamanca —città universitaria Patrimonio dell'Umanità e polo fieristico e congressuale dell'ovest della Castiglia e León, con il Recinto Ferial de Salamanca e il Palacio de Congresos come sedi di riferimento— controllando ogni fase: progettazione 3D, produzione, logistica, installazione e omologazioni nel quartiere fieristico.",
+        "detail": "Offriamo ad agenzie ed espositori la tranquillità di un allestimento senza sorprese e una cura del dettaglio eccezionale."
       },
       "nl": {
-        "intro": "Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en bouwt Standarte beursstands in Salamanca — universiteitsstad en Werelderfgoed en een toonaangevende beursstad in het westen van Castilië en León, met het Recinto Ferial de Salamanca als zetel — waarbij wij elke fase in eigen hand houden: 3D-ontwerp, fabricage, logistiek, opbouw en de keuringen op de beursvloer.",
-        "detail": "Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail."
+        "intro": "Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en bouwt Standarte beursstands in Salamanca — universiteitsstad en Werelderfgoed, en hét beurs- en congrescentrum van West-Castilië en León, met het Recinto Ferial de Salamanca en het Palacio de Congresos als toonaangevende locaties — waarbij wij elke fase in eigen hand houden: 3D-ontwerp, productie, logistiek, installatie en de keuringen op de beursvloer.",
+        "detail": "Wij bieden bureaus en exposanten de gemoedsrust van een opbouw zonder verrassingen en oog voor detail van uitzonderlijk niveau."
       },
       "zh": {
-        "intro": "凭借20多年在自有工厂打造临展空间的经验，Standarte在萨拉曼卡——世界遗产大学之城、卡斯蒂利亚-莱昂西部重要的会展之地，以Recinto Ferial de Salamanca为核心场馆——为客户设计并搭建展台，全程把控每一个环节：3D设计、定制生产、物流运输、现场安装以及场馆审批。",
-        "detail": "我们为代理公司和直接参展商提供毫无意外的搭建保障，以及对细节的极致关注。"
+        "intro": "Standarte 拥有自有工厂和 20 年临时建筑搭建经验，为客户在萨拉曼卡设计并搭建展台。萨拉曼卡是世界遗产大学城，也是卡斯蒂利亚-莱昂西部地区的会展与会议重镇，以 Recinto Ferial de Salamanca 和 Palacio de Congresos 两大场馆为核心。从 3D 设计、工厂制作、物流运输到现场安装与场馆审批，每一个环节我们都亲自把控。",
+        "detail": "我们为代理商和参展商提供毫无意外的搭建过程，以及对细节的极致追求。"
       },
       "hi": {
-        "intro": "अपनी कार्यशाला में अल्पकालिक वास्तुकला (ephemeral architecture) के निर्माण के 20 से अधिक वर्षों के अनुभव के साथ, Standarte सलमांका में प्रदर्शनी स्टैंड डिज़ाइन और स्थापित करता है — यह विश्व धरोहर वाली विश्वविद्यालयी नगरी और पश्चिमी Castilla y León का प्रमुख प्रदर्शनी केंद्र है, जहाँ Recinto Ferial de Salamanca आयोजन का स्थल है — और हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और परिसर में तकनीकी सत्यापन।",
-        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।"
+        "intro": "अपनी कार्यशाला से अस्थायी वास्तुकला तैयार करने के 20 वर्षों के अनुभव के साथ, Standarte सलमांका में स्टैंड डिज़ाइन और स्थापित करता है — यह विश्व धरोहर वाला विश्वविद्यालय नगर और पश्चिमी Castilla y León का मेला एवं सम्मेलन केंद्र है, जहाँ Recinto Ferial de Salamanca और Palacio de Congresos प्रमुख स्थल हैं — और हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और परिसर में तकनीकी मंज़ूरियाँ।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा वाली स्थापना और हर बारीकी पर असाधारण ध्यान देने का भरोसा देते हैं।"
       },
       "ko": {
-        "intro": "자체 공장에서 임시 건축물을 제작해 온 20년 이상의 경력을 바탕으로, Standarte는 살라망카에서 전시 부스를 디자인하고 시공합니다. 세계문화유산으로 지정된 대학 도시이자 카스티야 이 레온 서부를 대표하는 전시 거점인 이곳에는 Recinto Ferial de Salamanca가 본거지로 자리하고 있습니다. 3D 디자인부터 제작, 물류, 설치, 전시장 내 승인 절차까지 모든 단계를 직접 관리합니다.",
-        "detail": "대행사와 참가업체에 차질 없는 시공과 탁월한 디테일에 대한 안심을 제공합니다."
+        "intro": "20년간 자체 공방에서 임시 전시 건축물을 제작해 온 Standarte는 살라망카에서 부스를 설계하고 시공합니다. 세계문화유산으로 지정된 대학 도시이자 카스티야이레온 서부의 박람회·컨퍼런스 거점인 이곳에는 Recinto Ferial de Salamanca와 Palacio de Congresos가 핵심 행사장으로 자리하고 있으며, 저희는 3D 설계, 제작, 물류, 설치, 행사장 인증까지 모든 단계를 직접 관리합니다.",
+        "detail": "대행사와 출품 기업에는 돌발 변수 없는 시공과 탁월한 디테일 관리를 약속드립니다."
       },
       "ja": {
-        "intro": "自社工房で20年以上にわたり仮設建築を手がけてきたStandarteは、サラマンカ（世界遺産の大学都市であり、カスティーリャ・イ・レオン州西部を代表する見本市拠点。Recinto Ferial de Salamancaがその会場）でブースの設計・施工を行い、3D設計・製作・物流・施工・会場での各種承認まで、すべての工程を一貫管理します。",
-        "detail": "代理店および出展企業の皆さまに、トラブルのない施工と細部まで行き届いた品質という安心をお届けします。"
+        "intro": "自社工房から仮設建築を手がけて20年。Standarteは、世界遺産の大学都市であり、カスティーリャ・イ・レオン州西部を代表する見本市・コングレス都市サラマンカ——Recinto Ferial de SalamancaとPalacio de Congresosを中心拠点とする——で、3Dデザイン、製作、物流、施工、会場での各種申請・承認まで全工程を一貫管理し、ブースの設計と施工を行います。",
+        "detail": "代理店および出展企業の皆さまに、サプライズのない安心の施工と、細部まで行き届いた卓越したサービスをお届けします。"
       }
     }
   },

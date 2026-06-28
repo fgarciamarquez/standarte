@@ -270,7 +270,7 @@
     'Madrid': 'IFEMA', 'Barcelona': 'Fira de Barcelona', 'Bilbao': 'BEC (Bilbao Exhibition Centre)',
     'Málaga': 'FYCMA', 'Sevilla': 'FIBES', 'Lisboa': 'FIL', 'Oporto': 'Exponor (Feira Internacional do Porto)', 'Valencia': 'Feria Valencia', 'Mallorca': 'Moll Vell de Palma / IFEBAL', 'Batalha': 'Exposalão (Centro de Exposições da Batalha)', 'Badajoz': 'IFEBA',
     'Don Benito': 'FEVAL', 'Ciudad Real': 'IFEDI',
-    'Zaragoza': 'Feria de Zaragoza', 'Vigo': 'IFEVI', 'Santiago de Compostela': 'Cidade da Cultura de Galicia / Palacio de Congresos', 'A Coruña': 'EXPOCoruña / Palexco', 'Valladolid': 'Feria de Valladolid', 'Salamanca': 'Recinto Ferial de Salamanca', 'Lyon': 'Eurexpo Lyon',
+    'Zaragoza': 'Feria de Zaragoza', 'Vigo': 'IFEVI', 'Santiago de Compostela': 'Cidade da Cultura de Galicia / Palacio de Congresos', 'A Coruña': 'EXPOCoruña / Palexco', 'Valladolid': 'Feria de Valladolid', 'Salamanca': 'Recinto Ferial de Salamanca / Palacio de Congresos', 'Lyon': 'Eurexpo Lyon',
     'Stuttgart': 'Messe Stuttgart', 'Múnich': 'Messe München', 'Núremberg': 'NürnbergMesse'
   };
   // Frase que nombra el recinto (clave SEO: "stand IFEBA", "stand FEVAL"…). Veraz y genérica.

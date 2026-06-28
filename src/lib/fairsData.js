@@ -978,5 +978,26 @@ export const fairsData = [
     "slug": "salon-automovil-salamanca",
     "city": "Salamanca",
     "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Congreso Internacional de Alineadores",
+    "country": "es",
+    "slug": "congreso-alineadores-salamanca",
+    "city": "Salamanca",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Expodental",
+    "country": "es",
+    "slug": "expodental-madrid",
+    "city": "Madrid",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Forum Dental del Mediterráneo",
+    "country": "es",
+    "slug": "forum-dental-mediterraneo-barcelona",
+    "city": "Barcelona",
+    "sector": "Salud y Medicina"
   }
 ];
