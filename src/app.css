@@ -1246,8 +1246,8 @@ article:hover .city-cover-image,
   max-width: none;
   padding: 14px 18px;
   text-align: left;
-  /* Capa negra translúcida al 20% para legibilidad sin tapar la foto. */
-  background: rgba(0, 0, 0, 0.2);
+  /* Capa negra translúcida para legibilidad de la leyenda sin tapar la foto. */
+  background: rgba(0, 0, 0, 0.55);
   /* Sombra de texto (heredada por título y descripción) para garantizar el
      contraste del texto blanco también sobre zonas claras de la foto. */
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
