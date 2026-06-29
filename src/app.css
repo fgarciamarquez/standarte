@@ -1244,9 +1244,13 @@ article:hover .city-cover-image,
   bottom: 0;
   margin: 0;
   max-width: none;
-  padding: 38px 18px 12px;
+  padding: 14px 18px;
   text-align: left;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0));
+  /* Capa negra translúcida al 20% para legibilidad sin tapar la foto. */
+  background: rgba(0, 0, 0, 0.2);
+  /* Sombra de texto (heredada por título y descripción) para garantizar el
+     contraste del texto blanco también sobre zonas claras de la foto. */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 .lightbox-media .lightbox-caption p {
   max-width: none;
@@ -1257,12 +1261,12 @@ article:hover .city-cover-image,
 .lightbox-caption strong {
   display: block;
   margin-bottom: 6px;
-  color: var(--gold);
+  color: #fff;
   font-size: 16px;
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: .02em;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 .lightbox-caption p {
