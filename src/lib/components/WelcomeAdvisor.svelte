@@ -67,6 +67,12 @@
     cityKeyToFairCityName[k] = esName;
     cityCountry[k] = fairCityIndex[esName].country;
   }
+  // Ciudades satélite que cuelgan de un pilar con botón propio (mismo criterio de
+  // clúster que el resto del sitio): sus ferias se muestran bajo el botón del pilar.
+  // P. ej. Mérida/Almendralejo/Plasencia → Badajoz. Así el botón de Badajoz incluye
+  // las ferias de IFEME (Mérida), no solo las del recinto de Badajoz.
+  const SATELLITE_TO_HUB = { 'Mérida': 'Badajoz', 'Almendralejo': 'Badajoz', 'Plasencia': 'Badajoz' };
+  const hubCityName = (city) => SATELLITE_TO_HUB[city] || city;
   const texts = {
     es: {
       title: "Hola!, soy Pat.",
@@ -312,7 +318,7 @@
 
   $: selectedCityName = cityKeyToFairCityName[selectedCity];
   $: cityFairs = selectedCityName
-    ? fairsData.filter(f => f.city === selectedCityName)
+    ? fairsData.filter(f => hubCityName(f.city) === selectedCityName)
     : [];
   // Ferias de la actividad seleccionada (cruzan ciudades).
   $: activityFairs = selectedActivity
