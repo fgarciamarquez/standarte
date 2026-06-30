@@ -6,6 +6,13 @@
   // fondo claro de las páginas de ciudad, con botones tipo pastilla como el aside.
   export let variant = 'dark';
   export let initialFair = '';
+  // Reclamo bajo el título del formulario: prototipo 3D en 72h.
+  const prototypeLabels = {
+    es: 'Prototipo 3D en 72h', en: '3D prototype in 72h', de: '3D-Prototyp in 72 Std.',
+    pt: 'Protótipo 3D em 72h', fr: 'Prototype 3D en 72h', it: 'Prototipo 3D in 72h',
+    nl: '3D-prototype in 72u', zh: '72小时内3D原型', hi: '72 घंटे में 3D प्रोटोटाइप',
+    ko: '72시간 내 3D 프로토타입', ja: '72時間で3Dプロトタイプ'
+  };
   let status = null;
   let statusMessage = '';
   let sending = false;
@@ -52,6 +59,7 @@
     <div class="contact-layout">
       <aside class="contact-us">
         <h3>{labels.contactTitle}</h3>
+        <p class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</p>
         {#if variant === 'light'}
           <!-- Nota humana: rostro de contacto real bajo el título del formulario. -->
           <figure class="contact-person">
@@ -155,6 +163,16 @@
 </section>
 
 <style>
+  /* Reclamo bajo el título del formulario (Prototipo 3D en 72h). */
+  .contact-subtitle {
+    margin: -6px 0 14px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+  }
+
   /* Campos reservados para una etapa posterior: ocultos pero presentes en el DOM */
   .field-hidden {
     display: none !important;
