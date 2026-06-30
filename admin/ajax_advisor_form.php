@@ -186,6 +186,22 @@ $results_headings = array(
 );
 $results_heading = isset($results_headings[$lang]) ? $results_headings[$lang] : $results_headings['en'];
 
+/* ---------- Nota destacada (en negrita) bajo el encabezado (11 idiomas) ---------- */
+$results_subnotes = array(
+	'es' => 'En todos los eventos listados en estas páginas Standarte puede acompañarte como instalador de vuestro stand.',
+	'en' => 'At every event listed on these pages, Standarte can support you as the installer of your stand.',
+	'de' => 'Bei allen auf diesen Seiten aufgeführten Veranstaltungen kann Standarte Sie als Monteur Ihres Standes begleiten.',
+	'pt' => 'Em todos os eventos listados nestas páginas, a Standarte pode acompanhá-lo como instalador do seu stand.',
+	'fr' => 'Pour tous les événements listés sur ces pages, Standarte peut vous accompagner en tant qu\'installateur de votre stand.',
+	'it' => 'In tutti gli eventi elencati in queste pagine, Standarte può accompagnarti come installatore del tuo stand.',
+	'nl' => 'Bij alle evenementen op deze pagina\'s kan Standarte u begeleiden als installateur van uw stand.',
+	'zh' => '在这些页面所列的所有展会中，Standarte 都能作为您展台的搭建商为您提供支持。',
+	'hi' => 'इन पृष्ठों पर सूचीबद्ध सभी आयोजनों में, Standarte आपके स्टैंड के इंस्टॉलर के रूप में आपका साथ दे सकता है।',
+	'ko' => '이 페이지에 나열된 모든 행사에서 Standarte가 귀하의 부스 설치업체로서 함께할 수 있습니다.',
+	'ja' => 'これらのページに掲載されているすべてのイベントで、Standarteはお客様のブースの施工業者としてサポートいたします。'
+);
+$results_subnote = isset($results_subnotes[$lang]) ? $results_subnotes[$lang] : $results_subnotes['en'];
+
 /* Bloque HTML con los enlaces funcionales (vacío si no hubo selección). */
 $results_html = '';
 if (!empty($resultados)) {
@@ -200,6 +216,7 @@ if (!empty($resultados)) {
 	}
 	$results_html = "<div style='margin-top:24px;background:#f5f7ff;border:1px solid #e2e8ff;border-radius:8px;padding:18px 20px;'>"
 		. "<p style='margin:0 0 12px 0;'>" . htmlspecialchars($results_heading, ENT_QUOTES, 'UTF-8') . "</p>"
+			. "<p style='margin:0 0 14px 0;'><strong>" . htmlspecialchars($results_subnote, ENT_QUOTES, 'UTF-8') . "</strong></p>"
 		. "<ul style='padding-left:20px;margin:0;'>" . $items . "</ul>"
 		. "</div>";
 }
