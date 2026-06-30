@@ -230,7 +230,13 @@ export const fairActivities = {
   "lisbon-energy-summit-lisboa": ["energia","congreso-profesional"],
   "re-plus-portugal-oporto": ["energia","congreso-profesional"],
   "eletrica-oporto": ["energia"],
-  "enerh2o-oporto": ["energia"]
+  "enerh2o-oporto": ["energia"],
+  "essencia-do-vinho-porto": ["vino"],
+  "simplesmente-vinho-porto": ["vino"],
+  "essencia-do-vinho-lisboa": ["vino"],
+  "encontro-vinhos-sabores-lisboa": ["vino"],
+  "vinhos-de-portugal-lisboa": ["vino"],
+  "vinipax-beja": ["vino"]
 };
 
 // Helpers

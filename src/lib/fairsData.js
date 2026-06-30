@@ -1174,5 +1174,47 @@ export const fairsData = [
     "slug": "enerh2o-oporto",
     "city": "Oporto",
     "sector": "Industria y Logística"
+  },
+  {
+    "name": "Essência do Vinho Porto",
+    "country": "pt",
+    "slug": "essencia-do-vinho-porto",
+    "city": "Oporto",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Simplesmente Vinho Porto",
+    "country": "pt",
+    "slug": "simplesmente-vinho-porto",
+    "city": "Oporto",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Essência do Vinho Lisboa",
+    "country": "pt",
+    "slug": "essencia-do-vinho-lisboa",
+    "city": "Lisboa",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Encontro com Vinhos e Sabores",
+    "country": "pt",
+    "slug": "encontro-vinhos-sabores-lisboa",
+    "city": "Lisboa",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Vinhos de Portugal",
+    "country": "pt",
+    "slug": "vinhos-de-portugal-lisboa",
+    "city": "Lisboa",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Vinipax Beja",
+    "country": "pt",
+    "slug": "vinipax-beja",
+    "city": "Portugal Sur",
+    "sector": "Enología y Vinos"
   }
 ];
