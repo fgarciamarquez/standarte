@@ -1132,5 +1132,47 @@ export const fairsData = [
     "slug": "salon-gas-renovable-valladolid",
     "city": "Valladolid",
     "sector": "Industria y Logística"
+  },
+  {
+    "name": "Genera",
+    "country": "es",
+    "slug": "genera-madrid",
+    "city": "Madrid",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Solar & Storage Live España",
+    "country": "es",
+    "slug": "solar-storage-live-espana-valencia",
+    "city": "Valencia",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Lisbon Energy Summit & Exhibition",
+    "country": "pt",
+    "slug": "lisbon-energy-summit-lisboa",
+    "city": "Lisboa",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "RE+ Portugal",
+    "country": "pt",
+    "slug": "re-plus-portugal-oporto",
+    "city": "Oporto",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "ELETRICA",
+    "country": "pt",
+    "slug": "eletrica-oporto",
+    "city": "Oporto",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "ENERH2O",
+    "country": "pt",
+    "slug": "enerh2o-oporto",
+    "city": "Oporto",
+    "sector": "Industria y Logística"
   }
 ];

@@ -509,7 +509,7 @@
   // Ferias cuya sede NO es el recinto principal de su ciudad-hub (la línea genérica de
   // recinto sería falsa; la sede real se nombra en el contenido único de la ficha).
   // Ej.: CIOCV se asigna al hub de Oporto pero se celebra en la Universidade do Minho (Braga).
-  const VENUE_SKIP_FAIRS = ['ciocv-braga', 'foyer-health-beauty-lisboa'];
+  const VENUE_SKIP_FAIRS = ['ciocv-braga', 'foyer-health-beauty-lisboa', 're-plus-portugal-oporto'];
   $: venue = VENUE_SKIP_FAIRS.includes(fair.slug) ? null : (VENUE_BY_CITY[fair.city] || null);
   $: venueText = venue ? ((venueLine[lang] || venueLine.es)(venue, localizedCity)) : null;
   // Actividades (etiquetas) de esta feria, para los chips de color del aside.

@@ -224,7 +224,13 @@ export const fairActivities = {
   "feria-bodas-hogar-merida": ["regalo-decoracion"],
   "coleccionismo-emerita-augusta-merida": ["cultura-arte"],
   "feturex-merida": ["turismo"],
-  "salon-gas-renovable-valladolid": ["energia"]
+  "salon-gas-renovable-valladolid": ["energia"],
+  "genera-madrid": ["energia"],
+  "solar-storage-live-espana-valencia": ["energia"],
+  "lisbon-energy-summit-lisboa": ["energia","congreso-profesional"],
+  "re-plus-portugal-oporto": ["energia","congreso-profesional"],
+  "eletrica-oporto": ["energia"],
+  "enerh2o-oporto": ["energia"]
 };
 
 // Helpers
