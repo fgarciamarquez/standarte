@@ -2,22 +2,36 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
-const { exec, execSync } = require('child_process');
 
-const curlCmd = process.platform === 'win32' ? 'curl.exe' : 'curl';
+// Transporte SFTP (sobre SSH). Sustituye al antiguo FTP por curl: una conexión
+// SSH persistente por worker (pool en paralelo) es más rápida y MUCHO más fiable
+// que abrir un canal FTP por fichero (OVH cortaba conexiones → reintentos/fallos).
+let SftpClient;
+try {
+  SftpClient = require('ssh2-sftp-client');
+} catch (e) {
+  console.error('[ERROR] Falta la dependencia ssh2-sftp-client. Ejecuta `npm ci` (o `npm install`).');
+  process.exit(1);
+}
 
-const ftpHost = 'ftp.cluster028.hosting.ovh.net';
+// Host/puerto del SFTP de OVH. El acceso SFTP entra en el HOME de la cuenta, así
+// que la raíz web es la carpeta relativa `www` (NO la ruta absoluta /www).
+const HOST = process.env.DEPLOY_HOST || 'ftp.cluster128.hosting.ovh.net';
+const PORT = parseInt(process.env.DEPLOY_PORT || '22', 10);
+const REMOTE_BASE = (process.env.DEPLOY_REMOTE_DIR || 'www').replace(/^\/+|\/+$/g, '');
 
-// Nombre del manifiesto de despliegue (vive en el servidor: /www/.deploy-manifest.json).
-// Guarda el hash MD5 de cada fichero ya subido para poder desplegar solo lo que cambió.
+// Nombre del manifiesto de despliegue (vive en el servidor: www/.deploy-manifest.json).
+// Guarda el hash MD5 de cada fichero ya subido para desplegar solo lo que cambió.
 const MANIFEST_NAME = '.deploy-manifest.json';
+const REMOTE_MANIFEST = `${REMOTE_BASE}/${MANIFEST_NAME}`;
 
 function md5File(filePath) {
   return crypto.createHash('md5').update(fs.readFileSync(filePath)).digest('hex');
 }
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// Credenciales: por entorno (CI usa secrets FTP_USER/FTP_PASS); en local,
-// como respaldo, se leen de .vscode/sftp.json (fuera del repositorio).
+// Credenciales: por entorno (CI usa secrets FTP_USER/FTP_PASS); en local, como
+// respaldo, se leen de .vscode/sftp.json (fuera del repositorio).
 let ftpUser = process.env.FTP_USER;
 let ftpPass = process.env.FTP_PASS;
 if (!ftpUser || !ftpPass) {
@@ -28,233 +42,218 @@ if (!ftpUser || !ftpPass) {
   } catch (e) { /* sin sftp.json: se valida abajo */ }
 }
 if (!ftpUser || !ftpPass) {
-  console.error('[ERROR] Faltan credenciales FTP: define FTP_USER/FTP_PASS o crea .vscode/sftp.json');
+  console.error('[ERROR] Faltan credenciales: define FTP_USER/FTP_PASS o crea .vscode/sftp.json');
   process.exit(1);
 }
-const remoteRoot = 'ftp://ftp.cluster028.hosting.ovh.net/www';
+
+const CONNECT_OPTS = {
+  host: HOST,
+  port: PORT,
+  username: ftpUser,
+  password: ftpPass,
+  readyTimeout: 25000,
+  // Reintentos de la propia conexión SSH (cortes transitorios de OVH).
+  retries: 3,
+  retry_minTimeout: 1500
+};
+
+const CONCURRENCY = Math.max(1, parseInt(process.env.DEPLOY_CONCURRENCY || '5', 10));
+const MAX_RETRIES = 4;     // reintentos por fichero
+const RETRY_DELAY = 1200;  // ms (backoff lineal por intento)
+
+const skipImages = process.argv.includes('--fast') || process.argv.includes('--skip-images');
+const forceFull = process.argv.includes('--full');
 
 console.log('==========================================================');
-console.log('   STANDARTE - Despliegue y Limpieza de Producción Node   ');
+console.log('   STANDARTE - Despliegue y Limpieza de Producción (SFTP) ');
 console.log('==========================================================\n');
+console.log(`  -> Servidor SFTP: ${HOST}:${PORT}  | raíz remota: ${REMOTE_BASE}/  | paralelo: ${CONCURRENCY}`);
 
-// 1. Tarea de Limpieza: Eliminar directorios obsoletos en OVH
-console.log('[1/3] Iniciando limpieza de directorios obsoletos...');
-try {
-  console.log("  -> Solicitando eliminación de la carpeta obsoleta 'admin/email_campaign'...");
-  const { execSync } = require('child_process');
-  execSync(`${curlCmd} -s -Q "RMD admin/email_campaign" "${remoteRoot}/" --user "${ftpUser}:${ftpPass}"`, { stdio: 'ignore' });
-  console.log('  [LIMPIADO] Carpeta obsoleta eliminada del servidor.');
-} catch (error) {
-  console.log('  -> Carpeta obsoleta no existía o ya estaba limpia en el servidor.');
+async function newClient() {
+  const c = new SftpClient();
+  await c.connect(CONNECT_OPTS);
+  return c;
 }
 
-// 2. Escanear recursivamente la carpeta /dist/ local
-console.log('\n[2/3] Escaneando archivos compilados en local...');
-const localDist = path.join(__dirname, 'dist');
-if (!fs.existsSync(localDist)) {
-  console.error('[ERROR] La carpeta local /dist/ no existe. Ejecuta primero npm run build.');
-  process.exit(1);
+async function main() {
+  // 1. Escanear la carpeta /dist/ local
+  console.log('\n[1/3] Escaneando archivos compilados en local...');
+  const localDist = path.join(__dirname, 'dist');
+  if (!fs.existsSync(localDist)) {
+    console.error('[ERROR] La carpeta local /dist/ no existe. Ejecuta primero npm run build.');
+    process.exit(1);
+  }
+  const allFiles = getFiles(localDist);
+  console.log(`  -> Detectados ${allFiles.length} archivos para procesar.`);
+  if (skipImages) {
+    console.log('  [OPT] Modo FAST: solo se suben imágenes NUEVAS o MODIFICADAS; las que ya están sin cambios se omiten.');
+  }
+
+  // Conexión de control (manifiesto, limpieza, creación de carpetas).
+  let ctrl;
+  try {
+    ctrl = await newClient();
+  } catch (e) {
+    console.error(`[ERROR] No se pudo conectar por SFTP a ${HOST}:${PORT} — ${e.message}`);
+    process.exit(1);
+  }
+
+  // Limpieza puntual: carpeta obsoleta (best-effort).
+  try {
+    await ctrl.rmdir(`${REMOTE_BASE}/admin/email_campaign`, true);
+    console.log("  [LIMPIADO] Carpeta obsoleta 'admin/email_campaign' eliminada.");
+  } catch (e) { /* no existía: ok */ }
+
+  // 2. Manifiesto remoto (hash por fichero) ANTES de filtrar.
+  let remoteManifest = {};
+  if (!forceFull) {
+    try {
+      const buf = await ctrl.get(REMOTE_MANIFEST);
+      remoteManifest = JSON.parse(buf.toString('utf8')) || {};
+      console.log(`  -> Manifiesto remoto cargado: ${Object.keys(remoteManifest).length} ficheros registrados.`);
+    } catch (e) {
+      console.log('  -> Sin manifiesto remoto (o ilegible): despliegue completo y se creará uno nuevo.');
+      remoteManifest = {};
+    }
+  } else {
+    console.log('  -> Modo --full: se ignora el manifiesto y se sube todo.');
+  }
+
+  // Filtrar candidatos y calcular hash.
+  const excludeList = ['.DS_Store', 'Thumbs.db', '.htaccess_local'];
+  const candidates = [];
+  let fastSkipped = 0;
+  allFiles.forEach((file) => {
+    const filename = path.basename(file);
+    const relativePath = path.relative(localDist, file).replace(/\\/g, '/');
+    if (excludeList.includes(filename)) return;
+    // NUNCA subir logs de runtime (los genera el servidor).
+    if (/email_campaing\/data\/(send-log|clicks|cron_status)\.json$/.test(relativePath)) return;
+    const isImage = relativePath.startsWith('img/') || relativePath.includes('/img/');
+    const hash = md5File(file);
+    if (skipImages && isImage && remoteManifest[relativePath] === hash) { fastSkipped++; return; }
+    candidates.push({ file, relativePath, hash });
+  });
+  if (skipImages && fastSkipped) {
+    console.log(`  [OPT] Modo FAST: ${fastSkipped} imágenes sin cambios omitidas.`);
+  }
+
+  const filesToUpload = candidates.filter((c) => remoteManifest[c.relativePath] !== c.hash);
+  const skipped = candidates.length - filesToUpload.length;
+
+  // Manifiesto resultante: parte del remoto + se actualiza con lo que suba bien.
+  const newManifest = Object.assign({}, remoteManifest);
+  candidates.forEach((c) => { if (remoteManifest[c.relativePath] === c.hash) newManifest[c.relativePath] = c.hash; });
+
+  console.log(`  -> Candidatos: ${candidates.length} | sin cambios: ${skipped} | A SUBIR: ${filesToUpload.length}`);
+
+  const startTime = Date.now();
+  let successCount = 0, failCount = 0, retryCount = 0;
+
+  if (filesToUpload.length > 0) {
+    console.log('\n[2/3] Creando estructura de carpetas en el servidor...');
+    // Crear todas las carpetas necesarias una vez (recursivo), de menos a más profundas.
+    const dirs = new Set();
+    filesToUpload.forEach((c) => {
+      const d = path.posix.dirname(c.relativePath);
+      if (d && d !== '.') dirs.add(d);
+    });
+    const sortedDirs = [...dirs].sort((a, b) => a.split('/').length - b.split('/').length);
+    for (const d of sortedDirs) {
+      const remoteDir = `${REMOTE_BASE}/${d}`;
+      try {
+        if (!(await ctrl.exists(remoteDir))) await ctrl.mkdir(remoteDir, true);
+      } catch (e) { /* ya existe / carrera: se ignora */ }
+    }
+
+    // 3. Subir en paralelo con un pool de conexiones SFTP.
+    console.log(`\n[3/3] Sincronizando por SFTP (${CONCURRENCY} conexiones en paralelo)...`);
+    let index = 0;
+    const total = filesToUpload.length;
+    const nextItem = () => (index < total ? filesToUpload[index++] : null);
+
+    async function worker(id) {
+      let client;
+      try { client = await newClient(); } catch (e) { client = null; }
+      let item;
+      while ((item = nextItem()) !== null) {
+        const remotePath = `${REMOTE_BASE}/${item.relativePath}`;
+        let ok = false;
+        for (let attempt = 1; attempt <= MAX_RETRIES && !ok; attempt++) {
+          try {
+            if (!client) client = await newClient();
+            await client.put(item.file, remotePath);
+            ok = true;
+          } catch (e) {
+            if (attempt < MAX_RETRIES) {
+              retryCount++;
+              await sleep(RETRY_DELAY * attempt);
+              // Reabrir la conexión por si OVH la cortó.
+              try { if (client) await client.end(); } catch (_) {}
+              client = null;
+            } else {
+              console.error(`  [FALLÓ tras ${MAX_RETRIES} intentos] ${item.relativePath}: ${e.message}`);
+              failCount++;
+            }
+          }
+        }
+        if (ok) {
+          successCount++;
+          newManifest[item.relativePath] = item.hash;
+          const n = successCount + failCount;
+          if (n % 50 === 0 || n === total) {
+            console.log(`  [Progreso ${n}/${total}] ${item.relativePath}`);
+          }
+        }
+      }
+      try { if (client) await client.end(); } catch (_) {}
+    }
+
+    await Promise.all(Array.from({ length: Math.min(CONCURRENCY, total) }, (_, i) => worker(i)));
+  } else {
+    console.log('  -> Nada que subir: el servidor ya coincide con el manifiesto.');
+  }
+
+  // Subir el manifiesto actualizado (lo que falló no se registró → se reintenta en el próximo deploy).
+  let manifestOk = false;
+  try {
+    const tmpOut = path.join(os.tmpdir(), `standarte-out-${MANIFEST_NAME}`);
+    fs.writeFileSync(tmpOut, JSON.stringify(newManifest));
+    for (let attempt = 1; attempt <= 3 && !manifestOk; attempt++) {
+      try { await ctrl.put(tmpOut, REMOTE_MANIFEST); manifestOk = true; }
+      catch (e) { await sleep(800 * attempt); }
+    }
+  } catch (e) { /* error local escribiendo manifiesto */ }
+
+  try { await ctrl.end(); } catch (_) {}
+
+  const duration = ((Date.now() - startTime) / 1000).toFixed(1);
+  console.log('\n==========================================================');
+  console.log('             DESPLIEGUE FINALIZADO                       ');
+  console.log('==========================================================');
+  console.log(`  -> Tiempo total:                          ${duration}s`);
+  console.log(`  -> Archivos sincronizados en producción:  ${successCount}`);
+  if (retryCount > 0) console.log(`  -> Reintentos por cortes de OVH:          ${retryCount}`);
+  if (failCount > 0) console.log(`  -> Transferencias fallidas:               ${failCount}`);
+  console.log(manifestOk
+    ? `  -> Manifiesto actualizado (${Object.keys(newManifest).length} ficheros).`
+    : '  [AVISO] No se pudo subir el manifiesto: el próximo deploy será completo.');
+  console.log('==========================================================');
+  console.log('¡Listo! Tu sitio web ya está online en Standarte.es.\n');
+  process.exit(failCount > 0 ? 1 : 0);
 }
 
 function getFiles(dir, fileList = []) {
   const files = fs.readdirSync(dir);
-  files.forEach(file => {
+  files.forEach((file) => {
     const filePath = path.join(dir, file);
-    if (fs.statSync(filePath).isDirectory()) {
-      getFiles(filePath, fileList);
-    } else {
-      fileList.push(filePath);
-    }
+    if (fs.statSync(filePath).isDirectory()) getFiles(filePath, fileList);
+    else fileList.push(filePath);
   });
   return fileList;
 }
 
-const allFiles = getFiles(localDist);
-console.log(`  -> Detectados ${allFiles.length} archivos para procesar.`);
-
-const skipImages = process.argv.includes('--fast') || process.argv.includes('--skip-images');
-if (skipImages) {
-  console.log('  [OPT] Modo FAST: solo se subirán imágenes NUEVAS o MODIFICADAS (las que ya están sin cambios se omiten).');
-}
-
-// Despliegue INCREMENTAL: descargar el manifiesto del servidor (hash por fichero) ANTES de
-// filtrar, para poder decidir qué imágenes están sin cambios. El manifiesto vive en el
-// servidor, así que vale igual para local y CI. Con --full se ignora y se resube todo.
-const forceFull = process.argv.includes('--full');
-let remoteManifest = {};
-if (!forceFull) {
-  try {
-    const tmpManifest = path.join(os.tmpdir(), `standarte-${MANIFEST_NAME}`);
-    execSync(`${curlCmd} -s -f -o "${tmpManifest}" "${remoteRoot}/${MANIFEST_NAME}" --user "${ftpUser}:${ftpPass}"`, { stdio: 'ignore' });
-    remoteManifest = JSON.parse(fs.readFileSync(tmpManifest, 'utf8')) || {};
-    console.log(`  -> Manifiesto remoto cargado: ${Object.keys(remoteManifest).length} ficheros registrados.`);
-  } catch (e) {
-    console.log('  -> Sin manifiesto remoto (o ilegible): se hará un despliegue completo y se creará uno nuevo.');
-    remoteManifest = {};
-  }
-} else {
-  console.log('  -> Modo --full: se ignora el manifiesto y se sube todo.');
-}
-
-// Filtrar archivos candidatos (y calcular su hash de contenido)
-const candidates = [];
-const excludeList = ['.DS_Store', 'Thumbs.db', '.htaccess_local'];
-let fastSkipped = 0;
-allFiles.forEach(file => {
-  const filename = path.basename(file);
-  const relativePath = path.relative(localDist, file).replace(/\\/g, '/');
-  if (excludeList.includes(filename)) {
-    return;
-  }
-  // NUNCA subir los logs de runtime: los genera el servidor; subirlos los sobrescribiría/borraría.
-  if (/email_campaing\/data\/(send-log|clicks|cron_status)\.json$/.test(relativePath)) {
-    return;
-  }
-  const isImage = relativePath.startsWith('img/') || relativePath.includes('/img/');
-  const hash = md5File(file);
-  // Modo FAST: omitimos solo las imágenes que YA están en el manifiesto SIN cambios (mismo
-  // hash). Las imágenes NUEVAS o MODIFICADAS sí se suben, para que añadir una portada y
-  // desplegar nunca la deje rota (sin necesidad de acordarse de usar --full).
-  if (skipImages && isImage && remoteManifest[relativePath] === hash) {
-    fastSkipped++;
-    return;
-  }
-  candidates.push({ file, relativePath, hash });
+main().catch((e) => {
+  console.error('[ERROR] Despliegue abortado:', e && e.message ? e.message : e);
+  process.exit(1);
 });
-if (skipImages && fastSkipped) {
-  console.log(`  [OPT] Modo FAST: ${fastSkipped} imágenes sin cambios omitidas; las nuevas/modificadas sí se suben.`);
-}
-
-// Subir solo los ficheros cuyo hash difiere del registrado (o nuevos)
-const filesToUpload = candidates.filter(c => remoteManifest[c.relativePath] !== c.hash);
-const skipped = candidates.length - filesToUpload.length;
-
-// Manifiesto que quedará tras este deploy: parte del remoto + se actualiza con lo que suba bien.
-const newManifest = Object.assign({}, remoteManifest);
-// Los ficheros sin cambios ya están en newManifest (heredados del remoto); se confirma su hash.
-candidates.forEach(c => { if (remoteManifest[c.relativePath] === c.hash) newManifest[c.relativePath] = c.hash; });
-
-console.log(`  -> Candidatos: ${candidates.length} | sin cambios: ${skipped} | A SUBIR: ${filesToUpload.length}`);
-
-// 3. Subir archivos recursivamente usando curl.exe con concurrencia
-console.log('\n[3/3] Sincronizando por FTP con concurrencia...');
-const maxConcurrency = 6;  // OVH corta conexiones FTP con demasiada concurrencia
-const MAX_RETRIES = 3;     // reintentar transferencias caídas (cortes transitorios de OVH)
-const RETRY_DELAY = 1200;  // ms entre reintentos (backoff lineal por intento)
-let successCount = 0;
-let failCount = 0;
-let retryCount = 0;
-let index = 0;
-let running = 0;
-const startTime = Date.now();
-
-function uploadFile(item, attempt) {
-  const { file, relativePath } = item;
-  // URL-encode path segments to support spaces and accents
-  const encodedSegments = relativePath.split('/').map(segment => encodeURIComponent(segment));
-  const remoteUrl = `${remoteRoot}/${encodedSegments.join('/')}`;
-
-  // curl.exe en Windows NO abre rutas LOCALES con caracteres no-ASCII (las interpreta en el
-  // codepage del sistema, no en UTF-8) → fallaba siempre al subir las páginas japonesas con
-  // slug no-ASCII (ej. dist/ja/マドリード展示会ブース.html). Para esos ficheros subimos desde
-  // una copia temporal con nombre ASCII; la ruta REMOTA va %-encoded (OVH la acepta).
-  let localToSend = file;
-  let tempCopy = null;
-  if (/[^\x00-\x7F]/.test(file)) {
-    try {
-      tempCopy = path.join(os.tmpdir(), `stx-${crypto.randomBytes(8).toString('hex')}.tmp`);
-      fs.copyFileSync(file, tempCopy);
-      localToSend = tempCopy;
-    } catch (e) { tempCopy = null; localToSend = file; }
-  }
-
-  // Execute curl asynchronously
-  exec(`${curlCmd} -s -T "${localToSend}" "${remoteUrl}" --ftp-create-dirs --user "${ftpUser}:${ftpPass}"`, (error) => {
-    if (tempCopy) { try { fs.unlinkSync(tempCopy); } catch (e) { /* ignore */ } }
-    if (error) {
-      if (attempt < MAX_RETRIES) {
-        // Corte transitorio de OVH: reintentar el mismo fichero tras una espera (sin liberar el slot)
-        retryCount++;
-        setTimeout(() => uploadFile(item, attempt + 1), RETRY_DELAY * attempt);
-        return;
-      }
-      console.error(`  [FALLÓ tras ${MAX_RETRIES} intentos] ${relativePath}:`, error.message);
-      failCount++;
-      // No se registra en el manifiesto: así el próximo deploy lo reintenta.
-    } else {
-      successCount++;
-      newManifest[relativePath] = item.hash;
-    }
-    running--;
-    uploadNext();
-  });
-}
-
-function uploadNext() {
-  if (index >= filesToUpload.length) {
-    if (running === 0) {
-      finishDeploy();
-    }
-    return;
-  }
-
-  const item = filesToUpload[index++];
-  running++;
-
-  // Log progress every 50 files
-  const currentNum = index;
-  const shouldLogDetail = currentNum % 50 === 0 || currentNum === 1 || currentNum === filesToUpload.length;
-  if (shouldLogDetail) {
-    console.log(`  [Progreso ${currentNum}/${filesToUpload.length}] Subiendo: ${item.relativePath}...`);
-  }
-
-  uploadFile(item, 1);
-}
-
-function finishDeploy() {
-  const duration = ((Date.now() - startTime) / 1000).toFixed(1);
-  console.log('\n==========================================================');
-  console.log('             DESPLIEGUE FINALIZADO CON ÉXITO             ');
-  console.log('==========================================================');
-  console.log(`  -> Tiempo total:                          ${duration}s`);
-  console.log(`  -> Archivos sincronizados en producción: ${successCount}`);
-  if (retryCount > 0) {
-    console.log(`  -> Reintentos por cortes de OVH:          ${retryCount}`);
-  }
-  if (failCount > 0) {
-    console.log(`  -> Transferencias fallidas:               ${failCount}`);
-  }
-
-  // Subir el manifiesto actualizado al servidor (registro de lo que está desplegado).
-  // Si algún fichero falló, su hash NO se actualizó, así que el próximo deploy lo reintenta.
-  try {
-    const tmpOut = path.join(os.tmpdir(), `standarte-out-${MANIFEST_NAME}`);
-    fs.writeFileSync(tmpOut, JSON.stringify(newManifest));
-    let manifestOk = false;
-    for (let attempt = 1; attempt <= 3 && !manifestOk; attempt++) {
-      try {
-        execSync(`${curlCmd} -s -T "${tmpOut}" "${remoteRoot}/${MANIFEST_NAME}" --ftp-create-dirs --user "${ftpUser}:${ftpPass}"`, { stdio: 'ignore' });
-        manifestOk = true;
-      } catch (e) { /* reintento */ }
-    }
-    console.log(manifestOk
-      ? `  -> Manifiesto actualizado (${Object.keys(newManifest).length} ficheros).`
-      : '  [AVISO] No se pudo subir el manifiesto: el próximo deploy será completo.');
-  } catch (e) {
-    console.log('  [AVISO] Error escribiendo el manifiesto local:', e.message);
-  }
-
-  console.log('==========================================================');
-  console.log('¡Enhorabuena! Tu sitio web y la nueva sección de Noticias ya están online en Standarte.es.\n');
-  process.exit(failCount > 0 ? 1 : 0);
-}
-
-// Iniciar subidas (o cerrar directamente si no hay nada que subir)
-if (filesToUpload.length === 0) {
-  console.log('  -> Nada que subir: el servidor ya coincide con el manifiesto.');
-  finishDeploy();
-} else {
-  for (let i = 0; i < Math.min(maxConcurrency, filesToUpload.length); i++) {
-    uploadNext();
-  }
-}
