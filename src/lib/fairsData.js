@@ -1216,5 +1216,12 @@ export const fairsData = [
     "slug": "vinipax-beja",
     "city": "Portugal Sur",
     "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Barcelona Wine Week",
+    "country": "es",
+    "slug": "barcelona-wine-week",
+    "city": "Barcelona",
+    "sector": "Enología y Vinos"
   }
 ];

@@ -236,7 +236,8 @@ export const fairActivities = {
   "essencia-do-vinho-lisboa": ["vino"],
   "encontro-vinhos-sabores-lisboa": ["vino"],
   "vinhos-de-portugal-lisboa": ["vino"],
-  "vinipax-beja": ["vino"]
+  "vinipax-beja": ["vino"],
+  "barcelona-wine-week": ["vino"]
 };
 
 // Helpers
