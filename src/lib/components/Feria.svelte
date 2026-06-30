@@ -684,19 +684,14 @@
             {/each}
           </ul>
         </div>
-        {#if pillarHref || siblingFairs.length}
+        {#if siblingFairs.length}
           <div class="aside-module">
             <h3>{clusterStr.related}</h3>
-            {#if pillarHref}
-              <a class="cluster-pillar" href={pillarHref}>{clusterStr.pillar(pillarCityLoc)}</a>
-            {/if}
-            {#if siblingFairs.length}
-              <ul class="cluster-fairs">
-                {#each siblingFairs as sib}
-                  <li><a href={fairHref(sib.slug)}><span class="fair-flag flag-{sib.country}" aria-hidden="true"></span>{sib.name}</a></li>
-                {/each}
-              </ul>
-            {/if}
+            <ul class="cluster-fairs">
+              {#each siblingFairs as sib}
+                <li><a href={fairHref(sib.slug)}><span class="fair-flag flag-{sib.country}" aria-hidden="true"></span>{sib.name}</a></li>
+              {/each}
+            </ul>
           </div>
         {/if}
         {#if fairActivityTags.length}
