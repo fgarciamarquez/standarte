@@ -1,18 +1,6 @@
 <script>
-  import { pathFor, languages, languageLabels, cityData } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels } from '$lib/siteData.js';
   import FlagIcon from './FlagIcon.svelte';
-
-  // Enlace cruzado de vuelta: precios -> páginas-pilar de ciudad (reparte autoridad
-  // y refuerza el clúster). Lista curada de las ciudades con landing propia.
-  const cityLinks = ['madrid', 'barcelona', 'bilbao', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'lisboa', 'oporto', 'vigo', 'santiago', 'coruna'].filter((k) => k in cityData);
-  const citiesTitle = {
-    es: 'Diseño y montaje de stands por ciudad', en: 'Stand design and assembly by city',
-    de: 'Messestandbau nach Stadt', pt: 'Design e montagem de stands por cidade',
-    fr: 'Conception et montage de stands par ville', it: 'Progettazione e montaggio stand per città',
-    nl: 'Standbouw per stad', zh: '各城市的展台设计与搭建',
-    hi: 'शहर के अनुसार स्टैंड डिज़ाइन और असेंबली', ko: '도시별 부스 디자인 및 조립',
-    ja: '都市別の展示会ブース設計・施工'
-  };
 
   export let data;
   $: lang = data.lang;
@@ -44,7 +32,7 @@
         singular: { name: 'Proyectos singulares', desc: 'Stands singulares y grandes eventos con gestión integral, también en ferias internacionales.' }
       },
       disclaimer: 'Precios orientativos sin IVA. El presupuesto final se ajusta a tus metros cuadrados, al diseño y a los servicios contratados.',
-      cta: 'Pídenos presupuesto a medida'
+      cta: 'Presupuesto a medida'
     },
     en: {
       navPrecios: 'Prices', metaTitle: 'Exhibition stand prices | Standarte', metaDesc: 'Indicative prices for exhibition stand design and assembly: from modular stands to premium turnkey projects. The full range with "from" figures.',
@@ -714,15 +702,6 @@
     </dl>
   </section>
 
-  <section class="precios-cities">
-    <h2>{citiesTitle[lang] || citiesTitle.es}</h2>
-    <ul class="precios-city-links">
-      {#each cityLinks as ck}
-        <li><a href={pathFor(lang, ck)}>{cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es}</a></li>
-      {/each}
-    </ul>
-  </section>
-
   <div class="precios-cta">
     <a href={pathFor(lang, 'contact')} class="btn-cta-gold">{t.cta}</a>
   </div>
@@ -850,39 +829,6 @@
     line-height: 1.65;
   }
 
-  .precios-cities {
-    max-width: 820px;
-    margin: 48px auto 0;
-  }
-  .precios-cities h2 {
-    color: #444;
-    font-family: 'Francois One', serif;
-    font-weight: 400;
-    font-size: 24px;
-    margin: 0 0 16px;
-  }
-  .precios-city-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem 0.8rem;
-  }
-  .precios-city-links li a {
-    display: inline-block;
-    padding: 0.45rem 0.9rem;
-    border: 1px solid rgba(22, 25, 28, 0.14);
-    border-radius: 999px;
-    font-size: 0.92rem;
-    color: #444;
-    text-decoration: none;
-    transition: border-color 0.2s ease, color 0.2s ease;
-  }
-  .precios-city-links li a:hover {
-    border-color: var(--gold, #d4af37);
-    color: #1a1e21;
-  }
 
   .precios-cta {
     text-align: center;

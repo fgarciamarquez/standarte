@@ -59,7 +59,7 @@
     <div class="contact-layout">
       <aside class="contact-us">
         <h3>{labels.contactTitle}</h3>
-        <p class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</p>
+        <h3 class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</h3>
         {#if variant === 'light'}
           <!-- Nota humana: rostro de contacto real bajo el título del formulario. -->
           <figure class="contact-person">
@@ -163,14 +163,10 @@
 </section>
 
 <style>
-  /* Reclamo bajo el título del formulario (Prototipo 3D en 72h). */
+  /* Reclamo bajo el título del formulario (Prototipo 3D en 72h): mismo tamaño que el h3 del
+     título (hereda .contact-us h3), solo se acerca al título con un margen negativo. */
   .contact-subtitle {
-    margin: -6px 0 14px;
-    font-family: 'Inconsolata', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--gold);
+    margin-top: -34px;
   }
 
   /* Campos reservados para una etapa posterior: ocultos pero presentes en el DOM */
