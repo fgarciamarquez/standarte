@@ -693,7 +693,7 @@
             {#if siblingFairs.length}
               <ul class="cluster-fairs">
                 {#each siblingFairs as sib}
-                  <li><a href={fairHref(sib.slug)}>{sib.name}</a></li>
+                  <li><a href={fairHref(sib.slug)}><span class="fair-flag flag-{sib.country}" aria-hidden="true"></span>{sib.name}</a></li>
                 {/each}
               </ul>
             {/if}
@@ -904,7 +904,9 @@
     gap: 0.6rem 1rem;
   }
   .cluster-fairs li a {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     padding: 0.45rem 0.9rem;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 999px;
@@ -916,6 +918,17 @@
   .cluster-fairs li a:hover {
     border-color: var(--primary);
     color: var(--primary);
+  }
+  /* Bandera del país de la feria (botones de "Ferias en las que también montamos
+     stands"): se ve a primera vista en qué país está. El degradado lo aporta la
+     clase global .flag-es/.flag-fr/.flag-de/.flag-pt (app.css). */
+  .fair-flag {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    flex: 0 0 auto;
   }
   /* Ciudad a la que pertenece esta feria: pastilla resaltada (sigue siendo enlace). */
   .cluster-fairs li a.active {
