@@ -223,7 +223,8 @@ export const fairActivities = {
   "salon-automovil-merida": ["automocion"],
   "feria-bodas-hogar-merida": ["regalo-decoracion"],
   "coleccionismo-emerita-augusta-merida": ["cultura-arte"],
-  "feturex-merida": ["turismo"]
+  "feturex-merida": ["turismo"],
+  "salon-gas-renovable-valladolid": ["energia"]
 };
 
 // Helpers

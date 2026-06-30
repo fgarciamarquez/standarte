@@ -1125,5 +1125,12 @@ export const fairsData = [
     "slug": "feturex-merida",
     "city": "Mérida",
     "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Salón del Gas Renovable",
+    "country": "es",
+    "slug": "salon-gas-renovable-valladolid",
+    "city": "Valladolid",
+    "sector": "Industria y Logística"
   }
 ];
