@@ -148,7 +148,7 @@ export const fairActivities = {
   "bisutex-madrid": ["joyeria"],
   "fitur-madrid": ["turismo"],
   "arcomadrid": ["cultura-arte"],
-  "salon-gourmets-madrid": ["alimentacion"],
+  "salon-gourmets-madrid": ["alimentacion","gastronomia-hosteleria","vino"],
   "rebuild-madrid": ["construccion"],
   "madrid-fusion": ["turismo"],
   "expofranquicia-madrid": ["multisectorial"],
