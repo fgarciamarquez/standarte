@@ -10,8 +10,8 @@
   let menuOpen = false;
   let isScrolled = false;
 
-  // ⚠️ CIFRAS PROVISIONALES — sustituir por las estimaciones reales del usuario.
-  // priceFrom en euros; se muestran como "desde X €" formateadas con separador de miles.
+  // Cifras orientativas «desde», validadas. priceFrom en euros; se muestran como
+  // "desde X €" formateadas con separador de miles.
   const tiers = [
     { key: 'modular', priceFrom: 4900 },
     { key: 'medida', priceFrom: 9900 },
