@@ -52,6 +52,10 @@ const CONNECT_OPTS = {
   username: ftpUser,
   password: ftpPass,
   readyTimeout: 25000,
+  // Keepalive: evita que OVH cierre una conexión inactiva durante subidas largas
+  // (p. ej. la conexión de control mientras los workers suben miles de ficheros).
+  keepaliveInterval: 10000,
+  keepaliveCountMax: 6,
   // Reintentos de la propia conexión SSH (cortes transitorios de OVH).
   retries: 3,
   retry_minTimeout: 1500
@@ -214,18 +218,22 @@ async function main() {
     console.log('  -> Nada que subir: el servidor ya coincide con el manifiesto.');
   }
 
-  // Subir el manifiesto actualizado (lo que falló no se registró → se reintenta en el próximo deploy).
+  try { await ctrl.end(); } catch (_) {}
+
+  // Subir el manifiesto actualizado con una conexión NUEVA en cada intento: la de
+  // control puede haber quedado inactiva (y cerrada por OVH) durante una subida larga.
+  // Lo que falló no se registró → se reintenta en el próximo deploy.
   let manifestOk = false;
   try {
     const tmpOut = path.join(os.tmpdir(), `standarte-out-${MANIFEST_NAME}`);
     fs.writeFileSync(tmpOut, JSON.stringify(newManifest));
-    for (let attempt = 1; attempt <= 3 && !manifestOk; attempt++) {
-      try { await ctrl.put(tmpOut, REMOTE_MANIFEST); manifestOk = true; }
-      catch (e) { await sleep(800 * attempt); }
+    for (let attempt = 1; attempt <= 4 && !manifestOk; attempt++) {
+      let mc = null;
+      try { mc = await newClient(); await mc.put(tmpOut, REMOTE_MANIFEST); manifestOk = true; }
+      catch (e) { await sleep(1000 * attempt); }
+      finally { try { if (mc) await mc.end(); } catch (_) {} }
     }
   } catch (e) { /* error local escribiendo manifiesto */ }
-
-  try { await ctrl.end(); } catch (_) {}
 
   const duration = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log('\n==========================================================');
