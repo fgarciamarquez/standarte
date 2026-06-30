@@ -2,6 +2,7 @@
   import { createEventDispatcher, onMount } from 'svelte';
   import { slide, fade } from 'svelte/transition';
   import { colorForTag, labelForTag, tagOrder, tagFamilies, fairTags, familyLabel } from '$lib/fairTags.js';
+  import { activityUrl } from '$lib/siteData.js';
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let lang = 'en';
@@ -268,23 +269,30 @@
   // Textos del flujo (separados de `texts` para no tocar los 11 bloques): prompt
   // del paso 1 (familia), prompt del paso 2 (etiquetas) y botones.
   const flowTexts = {
-    es: { familyPrompt: 'Para empezar, ¿a qué sector pertenece tu actividad?', tagsPrompt: 'Marca todas las actividades que te interesen.', continueBtn: 'Continuar', changeFamily: 'Cambiar de sector' },
-    en: { familyPrompt: 'To start, which sector is your business in?', tagsPrompt: 'Tick all the activities that interest you.', continueBtn: 'Continue', changeFamily: 'Change sector' },
-    pt: { familyPrompt: 'Para começar, a que setor pertence a sua atividade?', tagsPrompt: 'Marque todas as atividades que lhe interessam.', continueBtn: 'Continuar', changeFamily: 'Mudar de setor' },
-    de: { familyPrompt: 'Zu welcher Branche gehört Ihr Geschäft?', tagsPrompt: 'Markieren Sie alle Tätigkeiten, die Sie interessieren.', continueBtn: 'Weiter', changeFamily: 'Branche ändern' },
-    fr: { familyPrompt: 'Pour commencer, de quel secteur relève votre activité ?', tagsPrompt: 'Cochez toutes les activités qui vous intéressent.', continueBtn: 'Continuer', changeFamily: 'Changer de secteur' },
-    it: { familyPrompt: 'Per iniziare, a quale settore appartiene la tua attività?', tagsPrompt: 'Seleziona tutte le attività che ti interessano.', continueBtn: 'Continua', changeFamily: 'Cambia settore' },
-    nl: { familyPrompt: 'Om te beginnen, in welke branche valt uw activiteit?', tagsPrompt: 'Vink alle activiteiten aan die u interesseren.', continueBtn: 'Doorgaan', changeFamily: 'Branche wijzigen' },
-    zh: { familyPrompt: '首先，您的业务属于哪个行业？', tagsPrompt: '勾选所有您感兴趣的活动。', continueBtn: '继续', changeFamily: '更换行业' },
-    hi: { familyPrompt: 'शुरू करने के लिए, आपका व्यवसाय किस क्षेत्र में है?', tagsPrompt: 'अपनी रुचि की सभी गतिविधियाँ चुनें।', continueBtn: 'जारी रखें', changeFamily: 'क्षेत्र बदलें' },
-    ko: { familyPrompt: '먼저, 어떤 분야의 사업이신가요?', tagsPrompt: '관심 있는 활동을 모두 선택하세요.', continueBtn: '계속', changeFamily: '분야 변경' },
-    ja: { familyPrompt: 'まず、お客様の事業はどの分野ですか？', tagsPrompt: '関心のある分野をすべて選択してください。', continueBtn: '次へ', changeFamily: '分野を変更' }
+    es: { familyPrompt: 'Para empezar, ¿a qué sector pertenece tu actividad?', tagsPrompt: 'Marca todas las actividades que te interesen.', continueBtn: 'Continuar', changeFamily: 'Cambiar de sector', resultLabel: 'Resultado' },
+    en: { familyPrompt: 'To start, which sector is your business in?', tagsPrompt: 'Tick all the activities that interest you.', continueBtn: 'Continue', changeFamily: 'Change sector', resultLabel: 'Result' },
+    pt: { familyPrompt: 'Para começar, a que setor pertence a sua atividade?', tagsPrompt: 'Marque todas as atividades que lhe interessam.', continueBtn: 'Continuar', changeFamily: 'Mudar de setor', resultLabel: 'Resultado' },
+    de: { familyPrompt: 'Zu welcher Branche gehört Ihr Geschäft?', tagsPrompt: 'Markieren Sie alle Tätigkeiten, die Sie interessieren.', continueBtn: 'Weiter', changeFamily: 'Branche ändern', resultLabel: 'Ergebnis' },
+    fr: { familyPrompt: 'Pour commencer, de quel secteur relève votre activité ?', tagsPrompt: 'Cochez toutes les activités qui vous intéressent.', continueBtn: 'Continuer', changeFamily: 'Changer de secteur', resultLabel: 'Résultat' },
+    it: { familyPrompt: 'Per iniziare, a quale settore appartiene la tua attività?', tagsPrompt: 'Seleziona tutte le attività che ti interessano.', continueBtn: 'Continua', changeFamily: 'Cambia settore', resultLabel: 'Risultato' },
+    nl: { familyPrompt: 'Om te beginnen, in welke branche valt uw activiteit?', tagsPrompt: 'Vink alle activiteiten aan die u interesseren.', continueBtn: 'Doorgaan', changeFamily: 'Branche wijzigen', resultLabel: 'Resultaat' },
+    zh: { familyPrompt: '首先，您的业务属于哪个行业？', tagsPrompt: '勾选所有您感兴趣的活动。', continueBtn: '继续', changeFamily: '更换行业', resultLabel: '结果' },
+    hi: { familyPrompt: 'शुरू करने के लिए, आपका व्यवसाय किस क्षेत्र में है?', tagsPrompt: 'अपनी रुचि की सभी गतिविधियाँ चुनें।', continueBtn: 'जारी रखें', changeFamily: 'क्षेत्र बदलें', resultLabel: 'परिणाम' },
+    ko: { familyPrompt: '먼저, 어떤 분야의 사업이신가요?', tagsPrompt: '관심 있는 활동을 모두 선택하세요.', continueBtn: '계속', changeFamily: '분야 변경', resultLabel: '결과' },
+    ja: { familyPrompt: 'まず、お客様の事業はどの分野ですか？', tagsPrompt: '関心のある分野をすべて選択してください。', continueBtn: '次へ', changeFamily: '分野を変更', resultLabel: '結果' }
   };
   $: ft = flowTexts[lang] || flowTexts.en;
 
   // Derivados de la selección.
   $: familyTags = selectedFamily ? tagsOfFamily(selectedFamily) : [];
   $: selectedTagLabels = selectedTags.map((t) => labelForTag(t, lang));
+  // Resultados en vivo: cada etiqueta marcada -> su hub /actividad/<tag> (URL absoluta),
+  // en orden de selección, para que el visitante salte al instante a lo que busca.
+  $: tagResults = selectedTags.map((tag) => ({
+    tag,
+    label: labelForTag(tag, lang),
+    url: `https://standarte.es${activityUrl(tag, lang)}`
+  }));
 
   // Single Shared AudioContext Instance and preloaded AudioBuffers
   let audioCtx = null;
@@ -679,6 +687,17 @@
         {:else}
           <p class="advisor-instruction">{typedText}</p>
         {/if}
+
+        {#if currentStep === 2 && tagResults.length}
+          <ol class="adv-results" transition:slide={{ duration: 300 }}>
+            {#each tagResults as r, i (r.tag)}
+              <li class="adv-result" transition:fade={{ duration: 200 }}>
+                <span class="adv-result-num">{ft.resultLabel} {i + 1}:</span>
+                <a class="adv-result-link" href={r.url} target="_blank" rel="noopener">{r.url}</a>
+              </li>
+            {/each}
+          </ol>
+        {/if}
       </div>
     </div>
 
@@ -997,6 +1016,37 @@
     font-weight: 600;
     color: #111;
     min-height: 22px;
+  }
+
+  /* Resultados en vivo bajo el prompt del paso 2: un enlace por etiqueta marcada */
+  .adv-results {
+    list-style: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .adv-result {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .adv-result-num {
+    font-weight: 700;
+    color: #111;
+    white-space: nowrap;
+  }
+  .adv-result-link {
+    color: royalblue;
+    text-decoration: underline;
+    word-break: break-all;
+  }
+  .adv-result-link:hover {
+    color: #27408b;
   }
 
   /* Botón discreto "cambiar de sector" */
