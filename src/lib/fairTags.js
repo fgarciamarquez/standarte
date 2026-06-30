@@ -68,7 +68,7 @@ export const fairActivities = {
   "feria-de-los-mayores-de-extremadura-badajoz": ["multisectorial"],
   "fio-monfrague": ["alimentacion"],
   "feria-de-belleza-moda-y-cosmetica-badajoz": ["moda-textil"],
-  "vinac-almendralejo": ["vino"],
+  "vinac-almendralejo": ["vino","equipamiento-vino"],
   "artexania-plasencia": ["cultura-arte"],
   "fenavin-match-ciudad-real": ["vino"],
   "ferduque-ciudad-real": ["vino"],
