@@ -589,6 +589,9 @@
     formData.append('form_nombre', name);
     formData.append('form_email', email);
     formData.append('form_feria', `${familyLabel(selectedFamily, lang)} — ${selectedTagLabels.join(', ')}`);
+    // URLs de resultado (hubs /actividad/<tag>) para incrustarlas como enlaces
+    // funcionales en el correo de acuse al visitante.
+    formData.append('form_resultados', JSON.stringify(tagResults.map((r) => ({ label: r.label, url: r.url }))));
     formData.append('form_url', sourceUrl || (typeof window !== 'undefined' ? window.location.href : ''));
     formData.append('form_website', honeypot);
     formData.append('form_elapsed', String(mountTime ? Date.now() - mountTime : 0));

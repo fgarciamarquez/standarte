@@ -40,6 +40,27 @@ $url        = adv_post('form_url');
 $website    = adv_post('form_website'); // honeypot anti-spam (debe llegar vacío)
 $elapsed    = (int) adv_post('form_elapsed', '0'); // ms desde que se mostró el formulario
 
+/* ---------- Resultados (URLs de actividad seleccionadas por el visitante) ----------
+ * Llegan como JSON [{label, url}, ...]. Solo se aceptan URLs https de standarte.es
+ * para no permitir que un tercero inyecte enlaces externos en nuestros correos.   */
+$resultados = array();
+$resultados_raw = adv_post('form_resultados');
+if ($resultados_raw !== '') {
+	$decoded = json_decode($resultados_raw, true);
+	if (is_array($decoded)) {
+		foreach ($decoded as $r) {
+			if (!is_array($r)) continue;
+			$u = isset($r['url']) ? trim((string) $r['url']) : '';
+			$l = isset($r['label']) ? trim((string) $r['label']) : '';
+			if ($u === '' || !filter_var($u, FILTER_VALIDATE_URL)) continue;
+			$host = strtolower((string) parse_url($u, PHP_URL_HOST));
+			if ($host !== 'standarte.es' && $host !== 'www.standarte.es') continue;
+			$resultados[] = array('url' => $u, 'label' => $l);
+			if (count($resultados) >= 20) break; // tope defensivo
+		}
+	}
+}
+
 /* ---------- Anti-spam (honeypot + tiempo mínimo) ---------- */
 /* Descarte SILENCIOSO (acuse "success" para no dar pistas al bot) si el campo
    trampa viene relleno o el formulario se envió antes de 2,5 s (no humano). */
@@ -149,6 +170,40 @@ $emails = array(
 
 $t = isset($emails[$lang]) ? $emails[$lang] : $emails['en'];
 
+/* ---------- Encabezado de la sección de resultados (11 idiomas) ---------- */
+$results_headings = array(
+	'es' => 'Para agilizar tu búsqueda, aquí tienes el acceso directo a las páginas de las actividades que has seleccionado:',
+	'en' => 'To speed up your search, here are the direct links to the activity pages you selected:',
+	'de' => 'Um Ihre Suche zu beschleunigen, finden Sie hier die direkten Links zu den von Ihnen ausgewählten Tätigkeitsseiten:',
+	'pt' => 'Para agilizar a sua pesquisa, aqui tem o acesso direto às páginas das atividades que selecionou:',
+	'fr' => 'Pour accélérer votre recherche, voici les liens directs vers les pages des activités que vous avez sélectionnées :',
+	'it' => 'Per velocizzare la tua ricerca, ecco i link diretti alle pagine delle attività che hai selezionato:',
+	'nl' => 'Om uw zoektocht te versnellen, vindt u hier de directe links naar de door u geselecteerde activiteitenpagina\'s:',
+	'zh' => '为加快您的查找，以下是您所选活动页面的直接链接：',
+	'hi' => 'आपकी खोज को तेज़ करने के लिए, यहाँ आपके द्वारा चुनी गई गतिविधि पृष्ठों के सीधे लिंक हैं:',
+	'ko' => '검색을 빠르게 하실 수 있도록, 선택하신 활동 페이지로 바로 가는 링크를 안내드립니다:',
+	'ja' => '検索をスピードアップするため、お客様が選択された分野ページへの直接リンクをご案内します：'
+);
+$results_heading = isset($results_headings[$lang]) ? $results_headings[$lang] : $results_headings['en'];
+
+/* Bloque HTML con los enlaces funcionales (vacío si no hubo selección). */
+$results_html = '';
+if (!empty($resultados)) {
+	$items = '';
+	foreach ($resultados as $r) {
+		$u_safe = htmlspecialchars($r['url'], ENT_QUOTES, 'UTF-8');
+		$l_safe = htmlspecialchars($r['label'], ENT_QUOTES, 'UTF-8');
+		$items .= "<li style='margin-bottom:12px;'>"
+			. ($l_safe !== '' ? "<span style='font-weight:bold;color:#2b303a;'>" . $l_safe . ":</span> " : "")
+			. "<a href='" . $u_safe . "' style='color:#1a3fd4;text-decoration:underline;word-break:break-all;'>" . $u_safe . "</a>"
+			. "</li>";
+	}
+	$results_html = "<div style='margin-top:24px;background:#f5f7ff;border:1px solid #e2e8ff;border-radius:8px;padding:18px 20px;'>"
+		. "<p style='margin:0 0 12px 0;'>" . htmlspecialchars($results_heading, ENT_QUOTES, 'UTF-8') . "</p>"
+		. "<ul style='padding-left:20px;margin:0;'>" . $items . "</ul>"
+		. "</div>";
+}
+
 $greeting = str_replace('{nombre}', $nombre_safe, $t['greeting']);
 $intro    = ($feria_safe !== '')
 	? str_replace('{feria}', $feria_safe, $t['intro'])
@@ -170,6 +225,7 @@ $email_html = "
 		<p>" . $greeting . "</p>
 		<p>" . $intro . "</p>
 		<p>" . $t['advisory'] . "</p>
+		" . $results_html . "
 		<p style='margin-top: 30px; border-top: 1px dotted #dee2e6; padding-top: 20px;'>" . $t['closing'] . "</p>
 	</div>
 	<div style='margin-top: 20px; text-align: center; font-size: 12px; color: #6c757d;'>
@@ -195,7 +251,32 @@ if (!$smtp_sent) {
 	@mail($email, $t['subject'], $email_html, $headers);
 }
 
+/* ---------- Copia (CCO) del acuse enviado al cliente para javier@standarte.es ----
+ * Envío separado (el cliente nunca ve esta dirección): javier recibe exactamente el
+ * mismo correo —incluidos los enlaces de resultados— que ha recibido el visitante.  */
+$bcc_subject = '[Copia cliente] ' . $t['subject'];
+try {
+	if (!function_exists('campaign_send_smtp')) { require_once __DIR__ . '/email_campaing/mailer.php'; }
+	$bccConfig = isset($smtpConfig) ? $smtpConfig : require __DIR__ . '/email_campaing/config.php';
+	$bccConfig['reply_to'] = $email; // responder lleva directo al visitante
+	campaign_send_smtp($bccConfig, 'javier@standarte.es', $bcc_subject, $email_html);
+} catch (Exception $e) {
+	$bcc_headers = "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\nReply-To: " . $email . "\r\n";
+	@mail('javier@standarte.es', $bcc_subject, $email_html, $bcc_headers);
+}
+
 /* ---------- Aviso interno al equipo (para poder asesorar) ---------- */
+$notify_links_row = '';
+if (!empty($resultados)) {
+	$links = '';
+	foreach ($resultados as $r) {
+		$u_safe = htmlspecialchars($r['url'], ENT_QUOTES, 'UTF-8');
+		$l_safe = htmlspecialchars($r['label'], ENT_QUOTES, 'UTF-8');
+		$links .= "<div style='margin-bottom:4px;'>" . ($l_safe !== '' ? "<strong>" . $l_safe . ":</strong> " : "")
+			. "<a href='" . $u_safe . "'>" . $u_safe . "</a></div>";
+	}
+	$notify_links_row = "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;vertical-align:top;'>Resultados enviados:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . $links . "</td></tr>";
+}
 $notify_subject = 'NUEVO CONTACTO ASESOR (PAT) - ' . ($feria !== '' ? $feria : 's/feria');
 $notify_html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 	. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#333;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
@@ -205,6 +286,7 @@ $notify_html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 	. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;width:35%;'>Nombre:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . $nombre_safe . "</td></tr>"
 	. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Email:</td><td style='padding:8px;border-bottom:1px solid #eee;'><a href='mailto:" . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "</a></td></tr>"
 	. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Feria / ciudad:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . $feria_safe . "</td></tr>"
+	. $notify_links_row
 	. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Idioma:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') . "</td></tr>"
 		. ($url_safe !== '' ? "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Página de origen:</td><td style='padding:8px;border-bottom:1px solid #eee;'><a href='" . $url_safe . "'>" . $url_safe . "</a></td></tr>" : "")
 	. "</table>"
