@@ -1,0 +1,65 @@
+name: Test SFTP/SSH OVH
+
+# Prueba puntual de conectividad SFTP (puerto 22) contra OVH, usando los mismos
+# secrets que el deploy (FTP_USER / FTP_PASS). Objetivo: saber si podemos pasar
+# de FTP a SFTP/rsync (más rápido y fiable). Manual, no toca producción.
+
+on:
+  workflow_dispatch:
+    inputs:
+      host:
+        description: 'Host SFTP (por defecto el del FTP)'
+        default: 'ftp.cluster128.hosting.ovh.net'
+        required: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instalar herramientas
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp netcat-openbsd
+
+      - name: ¿Puerto 22 abierto? (SSH/SFTP activado en OVH)
+        run: |
+          HOST="${{ github.event.inputs.host }}"
+          echo "Host: $HOST"
+          if nc -z -w 10 "$HOST" 22; then
+            echo "✅ Puerto 22 ABIERTO — SSH/SFTP escuchando."
+          else
+            echo "❌ Puerto 22 CERRADO o sin alcance — probablemente SSH no está activado en el panel de OVH."
+          fi
+          echo "--- (referencia) puerto 21 FTP ---"
+          nc -z -w 10 "$HOST" 21 && echo "puerto 21 abierto" || echo "puerto 21 cerrado"
+
+      - name: Login SFTP + listar /www + prueba de escritura
+        env:
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: |
+          HOST="${{ github.event.inputs.host }}"
+          echo "Probando SFTP en sftp://$HOST (usuario en secret FTP_USER)..."
+          echo "test-$(date +%s)" > /tmp/sftp_probe.txt
+          set +e
+          lftp -u "$FTP_USER","$FTP_PASS" "sftp://$HOST" <<'EOF'
+          set sftp:auto-confirm yes
+          set net:timeout 25
+          set net:max-retries 2
+          pwd
+          echo "== Listado del directorio remoto inicial =="
+          cls -l . | head -30
+          echo "== ¿Existe /www? =="
+          cls -l /www | head -10
+          echo "== Prueba de subida a /www/_sftp_probe.txt =="
+          put -O /www /tmp/sftp_probe.txt -o _sftp_probe.txt
+          cls -l /www/_sftp_probe.txt
+          echo "== Borrando el archivo de prueba =="
+          rm -f /www/_sftp_probe.txt
+          bye
+          EOF
+          CODE=$?
+          echo "lftp exit code: $CODE"
+          if [ $CODE -eq 0 ]; then
+            echo "✅ SFTP OK: conexión, listado y escritura/borrado correctos."
+          else
+            echo "❌ SFTP falló (ver mensajes arriba). Si el puerto 22 estaba abierto pero falló el login, puede que OVH use otro usuario/host SSH."
+          fi
