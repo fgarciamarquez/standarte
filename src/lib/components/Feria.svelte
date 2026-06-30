@@ -478,6 +478,19 @@
     items.push({ name: fair.name, href: null });
     return items;
   })();
+  // Miga en JSON-LD (formato preferido por Google): URLs ABSOLUTAS y propiedad "item" en
+  // todos los elementos, incluido el último (la URL canónica de esta ficha). Evita el aviso
+  // "falta el campo item" que daba el microdato cuando el "item" del último iba en un <link>.
+  $: breadcrumbJsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((it, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: it.name,
+      item: it.href ? `https://standarte.es${it.href}` : canonical
+    }))
+  });
   $: strings = (() => {
     const byLang = t[lang];
     if (byLang) return byLang;
@@ -499,9 +512,12 @@
   $: pillarCityRaw = pillarSection ? (PILLAR_CITY[pillarSection] || fair.city) : fair.city;
   $: pillarCityLoc = (cities[lang] && cities[lang][pillarCityRaw]) ? cities[lang][pillarCityRaw] : pillarCityRaw;
   $: fairRegion = CITY_REGION[fair.city];
-  // Portada del header: ciudad-matriz si la tiene; si no, portada del clúster regional
-  // (Portugal Sur usa cover_portugal_sur). Resto sin portada -> header oscuro.
-  $: coverKey = currentCityKey || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
+  // Portada para ciudades-satélite sin página-pilar propia (no tienen currentCityKey,
+  // pero sí imagen de recinto). Clave = fair.city -> nombre del archivo cover_<x>.avif.
+  const CITY_COVER = { 'Plasencia': 'plasencia' };
+  // Portada del header: ciudad-matriz si la tiene; si no, portada de satélite o del
+  // clúster regional (Portugal Sur). Resto sin portada -> header oscuro.
+  $: coverKey = currentCityKey || CITY_COVER[fair.city] || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
   // Ferias relacionadas por ACTIVIDAD (no por lugar): otras ferias que comparten
   // al menos una etiqueta de actividad con esta. Se priorizan las que comparten más
   // etiquetas (más afines) y se limita a 12.
@@ -553,6 +569,7 @@
       <meta property="og:locale:alternate" content={languageLocales[alternateLang]} />
     {/each}
   {/if}
+  {@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
 </svelte:head>
 
 <svelte:window on:scroll|passive={updateScrollState} />
@@ -641,16 +658,15 @@
     <div class="feria-container">
       <div class="feria-text">
         <nav class="breadcrumbs feria-breadcrumbs" aria-label="Breadcrumb">
-          <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <!-- Navegación visible (los datos estructurados van en el JSON-LD del head). -->
+          <ol>
             {#each breadcrumbItems as item, i}
-              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <li>
                 {#if item.href}
-                  <a itemprop="item" href={item.href}><span itemprop="name">{item.name}</span></a>
+                  <a href={item.href}>{item.name}</a>
                 {:else}
-                  <span class="current" itemprop="name" aria-current={i === breadcrumbItems.length - 1 ? 'page' : undefined}>{item.name}</span>
-                  <link itemprop="item" href={canonical} />
+                  <span class="current" aria-current={i === breadcrumbItems.length - 1 ? 'page' : undefined}>{item.name}</span>
                 {/if}
-                <meta itemprop="position" content={i + 1} />
               </li>
               {#if i < breadcrumbItems.length - 1}
                 <li class="bc-sep" aria-hidden="true"><span class="divider">/</span></li>
