@@ -266,17 +266,17 @@
     'Portugal Sur': 'portugal-sur'
   };
   const clusterT = {
-    es: { related: 'Ferias relacionadas', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
-    en: { related: 'Related fairs', pillar: (c) => `Exhibition stand design and assembly in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
-    de: { related: 'Verwandte Messen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
-    fr: { related: 'Salons associés', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
-    pt: { related: 'Feiras relacionadas', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
-    it: { related: 'Fiere correlate', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
-    ko: { related: '관련 전시회', pillar: (c) => `${c} 부스 디자인 및 조립`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
-    zh: { related: '相关展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
-    hi: { related: 'संबंधित मेले', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
-    ja: { related: '関連する展示会', pillar: (c) => `${c}での展示会ブース設計・組立`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
-    nl: { related: 'Gerelateerde beurzen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
+    es: { related: 'Ferias en las que también montamos stands', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
+    en: { related: 'Fairs where we also build stands', pillar: (c) => `Exhibition stand design and assembly in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
+    de: { related: 'Messen, auf denen wir ebenfalls Stände bauen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
+    fr: { related: 'Salons où nous montons aussi des stands', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
+    pt: { related: 'Feiras onde também montamos stands', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
+    it: { related: 'Fiere in cui montiamo anche stand', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
+    ko: { related: '저희가 부스를 시공하는 다른 박람회', pillar: (c) => `${c} 부스 디자인 및 조립`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
+    zh: { related: '我们同样搭建展台的展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
+    hi: { related: 'जिन मेलों में हम भी स्टैंड बनाते हैं', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
+    ja: { related: '当社がブースを施工する他の展示会', pillar: (c) => `${c}での展示会ブース設計・組立`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
+    nl: { related: 'Beurzen waar wij ook stands bouwen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
   };
 
   // Recinto ferial por ciudad (solo nombres verificados; las ciudades sin entrada no muestran recinto).
@@ -502,9 +502,21 @@
   // Portada del header: ciudad-matriz si la tiene; si no, portada del clúster regional
   // (Portugal Sur usa cover_portugal_sur). Resto sin portada -> header oscuro.
   $: coverKey = currentCityKey || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
-  $: siblingFairs = fairRegion
-    ? fairsData.filter((f) => f.slug !== fair.slug && CITY_REGION[f.city] === fairRegion).slice(0, 12)
-    : [];
+  // Ferias relacionadas por ACTIVIDAD (no por lugar): otras ferias que comparten
+  // al menos una etiqueta de actividad con esta. Se priorizan las que comparten más
+  // etiquetas (más afines) y se limita a 12.
+  $: siblingFairs = (() => {
+    const tags = fairActivityTags;
+    if (!tags.length) return [];
+    const scored = [];
+    for (const f of fairsData) {
+      if (f.slug === fair.slug) continue;
+      const shared = activitiesForFair(f.slug).filter((t) => tags.includes(t)).length;
+      if (shared > 0) scored.push({ f, shared });
+    }
+    scored.sort((a, b) => b.shared - a.shared);
+    return scored.slice(0, 12).map((s) => s.f);
+  })();
   $: fairHref = (slug) => fairUrl(slug, lang);
   // Ferias cuya sede NO es el recinto principal de su ciudad-hub (la línea genérica de
   // recinto sería falsa; la sede real se nombra en el contenido único de la ficha).
