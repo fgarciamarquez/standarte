@@ -129,7 +129,7 @@ export const fairActivities = {
   "btl-lisboa": ["turismo"],
   "smopyc-zaragoza": ["maquinaria-industrial"],
   "fima-zaragoza": ["agricultura-maquinaria"],
-  "feria-internacional-ganadera-zafra": ["ganaderia"],
+  "feria-internacional-ganadera-zafra": ["ganaderia","multisectorial","agricultura-maquinaria"],
   "web-summit-lisboa": ["digital-software","congreso-profesional"],
   "tektonica-lisboa": ["construccion"],
   "biemh-bilbao": ["maquinaria-industrial"],
