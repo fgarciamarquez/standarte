@@ -1,9 +1,7 @@
 <script>
   import { createEventDispatcher, onMount } from 'svelte';
   import { slide, fade } from 'svelte/transition';
-  import { fairsData } from '$lib/fairsData.js';
-  import { cityData } from '$lib/siteData.js';
-  import { fairsForActivity, colorForTag, labelForTag, tagOrder, tagFamilies, fairTags, familyLabel } from '$lib/fairTags.js';
+  import { colorForTag, labelForTag, tagOrder, tagFamilies, fairTags, familyLabel } from '$lib/fairTags.js';
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let lang = 'en';
@@ -16,15 +14,13 @@
 
   const dispatch = createEventDispatcher();
 
-  let selectedCity = '';
-  let selectedFair = '';
-  let selectedActivity = ''; // etiqueta de actividad (circuito alternativo)
-  let mode = 'city'; // 'city' (por defecto) | 'activity'
-  let currentStep = 1; // 1 = city/activity selector, 2 = fairs, 3 = contact form
+  let selectedFamily = '';   // clave de familia de etiquetas (tagFamilies)
+  let selectedTags = [];     // etiquetas elegidas dentro de la familia (multiselección)
+  let currentStep = 1;       // 1 = familia, 2 = etiquetas (multi), 3 = formulario
 
   let cardExpanded = false;
   let profileVisible = false;
-  let citiesVisible = false;
+  let citiesVisible = false; // revela el grid tras la animación de tecleo
 
   let name = '';
   let email = '';
@@ -37,42 +33,13 @@
   let honeypot = '';
   let mountTime = 0;
 
-  // ─── Ciudades disponibles: DATA-DRIVEN ──────────────────────────────────
-  // Se derivan de cityData + fairsData para que cualquier ciudad/feria nueva
-  // que añadamos al sistema (p. ej. en un futuro Plan SEO "Absolutista")
-  // aparezca aquí AUTOMÁTICAMENTE, sin tocar este componente.
-  //   · Una ciudad entra si tiene página propia (clave no-"montaje_" en
-  //     cityData) Y al menos una feria asociada en fairsData.
-  //   · El país (para la bandera) y la lista de ferias salen de fairsData.
-  // El nexo entre ambas fuentes es el nombre en español (cityData[k].city.es
-  // coincide con fairsData[].city).
-  const fairCityIndex = (() => {
-    const idx = {}; // nombreEs -> { country, count }
-    for (const f of fairsData) {
-      if (!idx[f.city]) idx[f.city] = { country: f.country, count: 0 };
-      idx[f.city].count++;
-    }
-    return idx;
-  })();
-
-  const cityKeys = Object.keys(cityData).filter(
-    (k) => !k.startsWith('montaje_') && cityData[k]?.city?.es && fairCityIndex[cityData[k].city.es]
-  );
-
-  // Mapas derivados: clave de cityData -> nombre (para filtrar ferias) y país (bandera).
-  const cityKeyToFairCityName = {};
-  const cityCountry = {};
-  for (const k of cityKeys) {
-    const esName = cityData[k].city.es;
-    cityKeyToFairCityName[k] = esName;
-    cityCountry[k] = fairCityIndex[esName].country;
-  }
-  // Ciudades satélite que cuelgan de un pilar con botón propio (mismo criterio de
-  // clúster que el resto del sitio): sus ferias se muestran bajo el botón del pilar.
-  // P. ej. Mérida/Almendralejo/Plasencia → Badajoz. Así el botón de Badajoz incluye
-  // las ferias de IFEME (Mérida), no solo las del recinto de Badajoz.
-  const SATELLITE_TO_HUB = { 'Mérida': 'Badajoz', 'Almendralejo': 'Badajoz', 'Plasencia': 'Badajoz' };
-  const hubCityName = (city) => SATELLITE_TO_HUB[city] || city;
+  // ─── Selección por etiquetas: familia → etiquetas (multiselección) ──────
+  // Pat ya solo usa el método por etiquetas. Paso 1: el visitante elige la
+  // familia (sector); paso 2: marca una o varias etiquetas de esa familia.
+  // Todo sale de la taxonomía (tagFamilies / fairTags), así que cualquier
+  // etiqueta o familia nueva aparece aquí AUTOMÁTICAMENTE.
+  const families = Object.keys(tagFamilies).map((fam) => ({ key: fam, color: tagFamilies[fam].color }));
+  const tagsOfFamily = (fam) => tagOrder.filter((t) => fairTags[t].family === fam);
   const texts = {
     es: {
       title: "Hola!, soy Pat.",
@@ -298,58 +265,26 @@
 
   $: t = texts[lang] || texts.en;
 
-  // ─── Circuito alternativo "por actividad" ───────────────────────────────
-  // Textos propios del modo actividad (separados de `texts` para no tocar los
-  // 11 bloques). Botón discreto que alterna entre elegir por ciudad o por sector.
-  const activityTexts = {
-    es: { byActivity: 'Prefiero elegir por actividad', byCity: 'Elegir por ciudad', instruction: 'Cuéntame tu sector: selecciona una actividad.', badge: 'Actividad' },
-    en: { byActivity: 'I’d rather choose by activity', byCity: 'Choose by city', instruction: 'Tell me your sector: select an activity.', badge: 'Activity' },
-    pt: { byActivity: 'Prefiro escolher por atividade', byCity: 'Escolher por cidade', instruction: 'Diga-me o seu setor: selecione uma atividade.', badge: 'Atividade' },
-    de: { byActivity: 'Lieber nach Branche wählen', byCity: 'Nach Stadt wählen', instruction: 'Nennen Sie mir Ihre Branche: Wählen Sie eine Tätigkeit.', badge: 'Branche' },
-    fr: { byActivity: 'Je préfère choisir par activité', byCity: 'Choisir par ville', instruction: 'Dites-moi votre secteur : choisissez une activité.', badge: 'Activité' },
-    it: { byActivity: 'Preferisco scegliere per attività', byCity: 'Scegli per città', instruction: 'Dimmi il tuo settore: seleziona un’attività.', badge: 'Attività' },
-    nl: { byActivity: 'Liever kiezen op branche', byCity: 'Kies op stad', instruction: 'Vertel me uw branche: kies een activiteit.', badge: 'Branche' },
-    zh: { byActivity: '我想按行业选择', byCity: '按城市选择', instruction: '告诉我您的行业：请选择一个领域。', badge: '行业' },
-    hi: { byActivity: 'मैं गतिविधि से चुनना चाहूँगा', byCity: 'शहर से चुनें', instruction: 'अपना क्षेत्र बताएं: एक गतिविधि चुनें।', badge: 'गतिविधि' },
-    ko: { byActivity: '분야로 선택할게요', byCity: '도시로 선택', instruction: '분야를 알려주세요: 하나를 선택해 주세요.', badge: '분야' },
-    ja: { byActivity: '分野で選びたい', byCity: '都市で選ぶ', instruction: '業種を教えてください：分野を選択してください。', badge: '分野' }
+  // Textos del flujo (separados de `texts` para no tocar los 11 bloques): prompt
+  // del paso 1 (familia), prompt del paso 2 (etiquetas) y botones.
+  const flowTexts = {
+    es: { familyPrompt: 'Para empezar, ¿a qué sector pertenece tu actividad?', tagsPrompt: 'Marca todas las actividades que te interesen.', continueBtn: 'Continuar', changeFamily: 'Cambiar de sector' },
+    en: { familyPrompt: 'To start, which sector is your business in?', tagsPrompt: 'Tick all the activities that interest you.', continueBtn: 'Continue', changeFamily: 'Change sector' },
+    pt: { familyPrompt: 'Para começar, a que setor pertence a sua atividade?', tagsPrompt: 'Marque todas as atividades que lhe interessam.', continueBtn: 'Continuar', changeFamily: 'Mudar de setor' },
+    de: { familyPrompt: 'Zu welcher Branche gehört Ihr Geschäft?', tagsPrompt: 'Markieren Sie alle Tätigkeiten, die Sie interessieren.', continueBtn: 'Weiter', changeFamily: 'Branche ändern' },
+    fr: { familyPrompt: 'Pour commencer, de quel secteur relève votre activité ?', tagsPrompt: 'Cochez toutes les activités qui vous intéressent.', continueBtn: 'Continuer', changeFamily: 'Changer de secteur' },
+    it: { familyPrompt: 'Per iniziare, a quale settore appartiene la tua attività?', tagsPrompt: 'Seleziona tutte le attività che ti interessano.', continueBtn: 'Continua', changeFamily: 'Cambia settore' },
+    nl: { familyPrompt: 'Om te beginnen, in welke branche valt uw activiteit?', tagsPrompt: 'Vink alle activiteiten aan die u interesseren.', continueBtn: 'Doorgaan', changeFamily: 'Branche wijzigen' },
+    zh: { familyPrompt: '首先，您的业务属于哪个行业？', tagsPrompt: '勾选所有您感兴趣的活动。', continueBtn: '继续', changeFamily: '更换行业' },
+    hi: { familyPrompt: 'शुरू करने के लिए, आपका व्यवसाय किस क्षेत्र में है?', tagsPrompt: 'अपनी रुचि की सभी गतिविधियाँ चुनें।', continueBtn: 'जारी रखें', changeFamily: 'क्षेत्र बदलें' },
+    ko: { familyPrompt: '먼저, 어떤 분야의 사업이신가요?', tagsPrompt: '관심 있는 활동을 모두 선택하세요.', continueBtn: '계속', changeFamily: '분야 변경' },
+    ja: { familyPrompt: 'まず、お客様の事業はどの分野ですか？', tagsPrompt: '関心のある分野をすべて選択してください。', continueBtn: '次へ', changeFamily: '分野を変更' }
   };
-  $: at = activityTexts[lang] || activityTexts.en;
+  $: ft = flowTexts[lang] || flowTexts.en;
 
-  $: selectedCityName = cityKeyToFairCityName[selectedCity];
-  $: cityFairs = selectedCityName
-    ? fairsData.filter(f => hubCityName(f.city) === selectedCityName)
-    : [];
-  // Ferias de la actividad seleccionada (cruzan ciudades).
-  $: activityFairs = selectedActivity
-    ? fairsForActivity(selectedActivity).map(slug => fairsData.find(f => f.slug === slug)).filter(Boolean)
-    : [];
-  // Lista de ferias mostrada en el paso 2 según el modo.
-  $: stepFairs = mode === 'activity' ? activityFairs : cityFairs;
-  $: selectedActivityLabel = selectedActivity ? labelForTag(selectedActivity, lang) : '';
-  // Etiquetas del paso 1 (modo actividad) agrupadas por subfamilia (sin scroll).
-  const activityGroups = Object.keys(tagFamilies).map((fam) => ({
-    family: fam,
-    color: tagFamilies[fam].color,
-    tags: tagOrder.filter((tg) => fairTags[tg].family === fam)
-  })).filter((g) => g.tags.length);
-
-  // Muchas ferias llevan el nombre de la ciudad al final (p. ej. "FITUR Madrid",
-  // "ARCOmadrid") porque así se etiquetaron los grupos de campaña de email. En el
-  // asesor ese sufijo sobra: lo quitamos SOLO cuando está al final (con o sin
-  // espacio/guion), nunca cuando la ciudad forma parte real del nombre
-  // ("Madrid Tech Show", "Madrid Fusión", "Madridjoya").
-  function escapeRegExp(s) {
-    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
-  function cleanFairName(name) {
-    if (!name) return name;
-    const out = String(name).trim();
-    const city = (selectedCityName || '').trim();
-    if (!city) return out;
-    const stripped = out.replace(new RegExp('[\\s\\-]*' + escapeRegExp(city) + '$', 'i'), '').trim();
-    return stripped.length > 0 ? stripped : out;
-  }
+  // Derivados de la selección.
+  $: familyTags = selectedFamily ? tagsOfFamily(selectedFamily) : [];
+  $: selectedTagLabels = selectedTags.map((t) => labelForTag(t, lang));
 
   // Single Shared AudioContext Instance and preloaded AudioBuffers
   let audioCtx = null;
@@ -501,20 +436,18 @@
   let lastStep = 1;
   let lastLang = '';
   let lastStatus = 'idle';
-  let lastMode = 'city';
   $: if (profileVisible && lang) {
-    if (currentStep !== lastStep || lang !== lastLang || status !== lastStatus || mode !== lastMode) {
+    if (currentStep !== lastStep || lang !== lastLang || status !== lastStatus) {
       lastStep = currentStep;
       lastLang = lang;
       lastStatus = status;
-      lastMode = mode;
 
       if (status === 'success') {
         typeText(t.successMsg);
       } else if (currentStep === 1) {
-        typeText(mode === 'activity' ? at.instruction : t.instruction);
+        typeText(ft.familyPrompt);
       } else if (currentStep === 2) {
-        typeText(t.fairInstruction);
+        typeText(ft.tagsPrompt);
       } else if (currentStep === 3) {
         typeText(t.formInstruction);
       }
@@ -600,73 +533,40 @@
     };
   });
 
-  function selectCity(cityKey) {
+  // Paso 1 → 2: elegir la familia (sector).
+  function selectFamily(fam) {
     clearInterval(typingInterval);
-    selectedCity = cityKey;
+    selectedFamily = fam;
+    selectedTags = [];
     currentStep = 2;
-    unlockAudio();
-  }
-
-  // Circuito alternativo: alterna entre elegir por ciudad o por actividad y
-  // reinicia la selección para empezar limpio en el paso 1.
-  function switchToActivity() {
-    clearInterval(typingInterval);
-    mode = 'activity';
-    selectedCity = '';
-    selectedFair = '';
-    selectedActivity = '';
-    currentStep = 1;
     status = 'idle';
     statusMessage = '';
     unlockAudio();
   }
-  function switchToCity() {
-    clearInterval(typingInterval);
-    mode = 'city';
-    selectedActivity = '';
-    selectedFair = '';
-    selectedCity = '';
-    currentStep = 1;
-    status = 'idle';
-    statusMessage = '';
-  }
-  function selectActivity(tag) {
-    clearInterval(typingInterval);
-    selectedActivity = tag;
-    currentStep = 2;
+
+  // Paso 2: marcar/desmarcar etiquetas (multiselección).
+  function toggleTag(tag) {
+    selectedTags = selectedTags.includes(tag)
+      ? selectedTags.filter((t) => t !== tag)
+      : [...selectedTags, tag];
     unlockAudio();
   }
 
-  function selectFair(fairName) {
-    selectedFair = fairName;
+  // Paso 2 → 3: pasar al formulario (requiere al menos una etiqueta).
+  function goToForm() {
+    if (!selectedTags.length) return;
     currentStep = 3;
     unlockAudio();
-
-    const cityName = mode === 'activity'
-      ? selectedActivityLabel
-      : (cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity);
-    dispatch('selectFair', { fairName, cityName });
+    // Avisa al contenedor con un resumen (familia + actividades) para prerrellenar
+    // el formulario de presupuesto si procede.
+    dispatch('selectFair', { fairName: selectedTagLabels.join(', '), cityName: familyLabel(selectedFamily, lang) });
   }
 
-  function resetCity() {
-    selectedCity = '';
-    selectedFair = '';
+  // Volver al paso 1 (cambiar de sector).
+  function resetFamily() {
+    selectedFamily = '';
+    selectedTags = [];
     currentStep = 1;
-    status = 'idle';
-    statusMessage = '';
-  }
-
-  function resetActivity() {
-    selectedActivity = '';
-    selectedFair = '';
-    currentStep = 1;
-    status = 'idle';
-    statusMessage = '';
-  }
-
-  function resetFair() {
-    selectedFair = '';
-    currentStep = 2;
     status = 'idle';
     statusMessage = '';
   }
@@ -680,9 +580,7 @@
     formData.append('form_lang', lang);
     formData.append('form_nombre', name);
     formData.append('form_email', email);
-    formData.append('form_feria', mode === 'activity'
-      ? `${selectedFair} (${at.badge}: ${selectedActivityLabel})`
-      : `${selectedFair} (${selectedCityName})`);
+    formData.append('form_feria', `${familyLabel(selectedFamily, lang)} — ${selectedTagLabels.join(', ')}`);
     formData.append('form_url', sourceUrl || (typeof window !== 'undefined' ? window.location.href : ''));
     formData.append('form_website', honeypot);
     formData.append('form_elapsed', String(mountTime ? Date.now() - mountTime : 0));
@@ -750,28 +648,22 @@
             <span class="advisor-free-badge">{t.freeBadge}</span>
           </div>
 
-          {#if (selectedCity || selectedActivity || selectedFair) && status !== 'success'}
+          {#if (selectedFamily || selectedTags.length) && status !== 'success'}
             <div class="advisor-selected-badges" transition:fade>
-              {#if selectedCity}
-                <span class="selected-badge-pill" transition:fade>
-                  <span class="fair-badge-flag flag-{cityCountry[selectedCity]}"></span>
-                  {cityData[selectedCity]?.city?.[lang] || cityData[selectedCity]?.city?.es || selectedCity}
-                  <button type="button" class="remove-badge-btn" on:click={resetCity} aria-label="Remove city">×</button>
-                </span>
-              {/if}
-              {#if selectedActivity}
-                <span class="selected-badge-pill" transition:fade style="--chip:{colorForTag(selectedActivity)}">
+              {#if selectedFamily}
+                <span class="selected-badge-pill" transition:fade style="--chip:{tagFamilies[selectedFamily].color}">
                   <span class="badge-activity-dot" aria-hidden="true"></span>
-                  {selectedActivityLabel}
-                  <button type="button" class="remove-badge-btn" on:click={resetActivity} aria-label="Remove activity">×</button>
+                  {familyLabel(selectedFamily, lang)}
+                  <button type="button" class="remove-badge-btn" on:click={resetFamily} aria-label="×">×</button>
                 </span>
               {/if}
-              {#if selectedFair}
-                <span class="selected-badge-pill" transition:fade>
-                  {selectedFair}
-                  <button type="button" class="remove-badge-btn" on:click={resetFair} aria-label="Remove fair">×</button>
+              {#each selectedTags as tag (tag)}
+                <span class="selected-badge-pill" transition:fade style="--chip:{colorForTag(tag)}">
+                  <span class="badge-activity-dot" aria-hidden="true"></span>
+                  {labelForTag(tag, lang)}
+                  <button type="button" class="remove-badge-btn" on:click={() => toggleTag(tag)} aria-label="×">×</button>
                 </span>
-              {/if}
+              {/each}
             </div>
           {/if}
         </div>
@@ -790,62 +682,43 @@
       </div>
     </div>
 
-    <!-- Step 1: City selector (modo ciudad) o Activity selector (modo actividad) -->
+    <!-- Step 1: selección de FAMILIA (sector) -->
     {#if currentStep === 1}
-      {#if mode === 'city'}
-        <div class="city-selector-grid" class:visible={citiesVisible} transition:slide={{ duration: 400 }}>
-          {#each cityKeys as ck}
+      <div class="family-grid" class:visible={citiesVisible} transition:slide={{ duration: 400 }}>
+        {#each families as f}
+          <button
+            type="button"
+            class="activity-selector-btn family-btn"
+            style="--chip:{f.color}"
+            on:click={() => selectFamily(f.key)}
+          >
+            <span class="badge-activity-dot" aria-hidden="true"></span>{familyLabel(f.key, lang)}
+          </button>
+        {/each}
+      </div>
+    {/if}
+
+    <!-- Step 2: selección MÚLTIPLE de etiquetas de la familia elegida -->
+    {#if currentStep === 2}
+      <div class="tag-multi" transition:slide={{ duration: 400 }}>
+        <div class="activity-group-chips">
+          {#each familyTags as tag}
             <button
               type="button"
-              class="city-selector-btn"
-              on:click={() => selectCity(ck)}
+              class="activity-selector-btn tag-toggle"
+              class:selected={selectedTags.includes(tag)}
+              style="--chip:{colorForTag(tag)}"
+              aria-pressed={selectedTags.includes(tag)}
+              on:click={() => toggleTag(tag)}
             >
-              {cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es || ck}
+              {#if selectedTags.includes(tag)}<span class="tag-check" aria-hidden="true">✓</span>{/if}{labelForTag(tag, lang)}
             </button>
           {/each}
         </div>
-        <!-- Segundo botón discreto: circuito alternativo por actividad -->
-        <button type="button" class="advisor-mode-switch" on:click={switchToActivity}>
-          {at.byActivity} →
-        </button>
-      {:else}
-        <div class="activity-selector-groups" transition:slide={{ duration: 400 }}>
-          {#each activityGroups as g}
-            <div class="activity-group">
-              <span class="activity-group-head" style="--chip:{g.color}">
-                <span class="badge-activity-dot" aria-hidden="true"></span>{familyLabel(g.family, lang)}
-              </span>
-              <div class="activity-group-chips">
-                {#each g.tags as tag}
-                  <button
-                    type="button"
-                    class="activity-selector-btn"
-                    style="--chip:{colorForTag(tag)}"
-                    on:click={() => selectActivity(tag)}
-                  >{labelForTag(tag, lang)}</button>
-                {/each}
-              </div>
-            </div>
-          {/each}
+        <div class="tag-multi-actions">
+          <button type="button" class="advisor-mode-switch" on:click={resetFamily}>← {ft.changeFamily}</button>
+          <button type="button" class="advisor-continue-btn" disabled={!selectedTags.length} on:click={goToForm}>{ft.continueBtn}</button>
         </div>
-        <button type="button" class="advisor-mode-switch" on:click={switchToCity}>
-          ← {at.byCity}
-        </button>
-      {/if}
-    {/if}
-
-    <!-- Step 2: Fairs selector as floating pills (Lime Green themed) -->
-    {#if currentStep === 2}
-      <div class="fairs-selector-flex" transition:slide={{ duration: 400 }}>
-        {#each stepFairs as fair}
-          <button
-            type="button"
-            class="fair-selector-btn"
-            on:click={() => selectFair(cleanFairName(fair.name))}
-          >
-            <span class="fair-name-text">{cleanFairName(fair.name)}</span>
-          </button>
-        {/each}
       </div>
     {/if}
 
@@ -1126,72 +999,7 @@
     min-height: 22px;
   }
 
-  .city-selector-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 12px;
-    margin-top: 10px;
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .city-selector-grid.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .city-selector-btn {
-    background: #fff;
-    border: 1px solid #d2d2cd;
-    border-radius: 30px;
-    padding: 10px 16px;
-    font-family: 'Inconsolata', monospace;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    text-align: center;
-  }
-
-  .city-selector-btn:hover {
-    border-color: var(--gold);
-    background: #fffdf6;
-  }
-
-  /* Lime Green Fairs Selector */
-  .fairs-selector-flex {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 10px;
-  }
-
-  .fair-selector-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #fff;
-    border: 1px solid #d2d2cd;
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-family: 'Inconsolata', monospace;
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    text-align: left;
-  }
-
-  .fair-selector-btn:hover {
-    border-color: var(--gold);
-    background: #fffdf6;
-  }
-
-  /* Circuito por actividad: botón discreto de cambio de modo */
+  /* Botón discreto "cambiar de sector" */
   .advisor-mode-switch {
     display: inline-block;
     margin-top: 14px;
@@ -1209,31 +1017,12 @@
   }
   .advisor-mode-switch:hover { color: var(--gold); }
 
-  /* Chips de actividad (paso 1, modo actividad) agrupados por subfamilia, sin scroll */
-  .activity-selector-groups {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 10px;
-  }
-  .activity-group-head {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-family: 'Inconsolata', monospace;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: color-mix(in srgb, var(--chip) 70%, #444);
-    margin-bottom: 6px;
-  }
+  /* Etiquetas de actividad (multiselección del paso 2). */
   .activity-group-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 7px;
   }
-  /* Letra más pequeña que los botones de ciudad/feria (14px) */
   .activity-selector-btn {
     display: inline-flex;
     align-items: center;
@@ -1264,26 +1053,71 @@
     display: inline-block;
   }
 
-  .fair-badge-flag {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    flex-shrink: 0;
+  /* Paso 1: grid de familias (sectores) con su color. */
+  .family-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .family-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .family-btn {
+    gap: 8px;
+    padding: 8px 13px;
+    font-size: 13px;
   }
 
-  .flag-es {
-    background: linear-gradient(180deg, #aa151b 0%, #aa151b 25%, #f1bf00 25%, #f1bf00 75%, #aa151b 75%, #aa151b 100%);
+  /* Paso 2: multiselección de etiquetas. Marcadas = rellenas con su color. */
+  .tag-multi {
+    margin-top: 10px;
   }
-  .flag-pt {
-    background: linear-gradient(90deg, #006600 0%, #006600 42%, #ff0000 42%, #ff0000 100%);
+  .tag-toggle {
+    gap: 6px;
   }
-
-  .fair-name-text {
-    font-weight: 600;
+  .tag-toggle.selected {
+    background: var(--chip);
+    border-color: var(--chip);
+    color: #fff;
+  }
+  .tag-toggle.selected:hover {
+    background: var(--chip);
+  }
+  .tag-check {
+    font-weight: 700;
+    line-height: 1;
+  }
+  .tag-multi-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .advisor-continue-btn {
+    background: var(--lime, #7cb518);
+    color: #14310a;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 26px;
+    font-family: 'Inconsolata', monospace;
     font-size: 14px;
-    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+  }
+  .advisor-continue-btn:hover:not(:disabled) {
+    filter: brightness(1.05);
+  }
+  .advisor-continue-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
   }
 
   /* Advisor Mini Form Styling */
