@@ -868,6 +868,9 @@ article:hover .city-cover-image,
   border-bottom: 2px dotted #999;
   display: flex;
   align-items: center;
+  /* Reserva el gesto horizontal para arrastrar el carrusel; el vertical sigue haciendo
+     scroll de la página (necesario para usarlo con el dedo en móvil). */
+  touch-action: pan-y;
 }
 
 .lisbon-fairs-track {
@@ -2396,6 +2399,8 @@ footer {
      Mejora el rendimiento de la carga inicial en móvil y escritorio. */
   content-visibility: auto;
   contain-intrinsic-size: auto 360px;
+  /* Gesto horizontal = arrastrar el carrusel; vertical = scroll de página (uso con el dedo). */
+  touch-action: pan-y;
 }
 
 @media (max-width: 1024px) {

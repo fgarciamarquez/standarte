@@ -199,7 +199,16 @@
     if (carLast == null) carLast = t;
     const dt = Math.min(0.05, (t - carLast) / 1000);
     carLast = t;
-    carOffset += carVelocity * dt;
+    if (!carDragging) {
+      // Inercia tras un lanzamiento con el dedo: la velocidad decae suavemente hasta
+      // recuperar la deriva por defecto (no se integra mientras se arrastra: ahí manda el dedo).
+      if (carFling) {
+        const target = -CAR_BASE;
+        carVelocity = target + (carVelocity - target) * Math.pow(0.93, dt * 60);
+        if (Math.abs(carVelocity - target) < 2) { carVelocity = target; carFling = false; }
+      }
+      carOffset += carVelocity * dt;
+    }
     if (carSetWidth > 0) {
       while (carOffset <= -carSetWidth) carOffset += carSetWidth;
       while (carOffset > 0) carOffset -= carSetWidth;
@@ -220,6 +229,46 @@
 
   function carOnLeave() {
     carVelocity = -CAR_BASE; // deriva por defecto derecha→izquierda
+  }
+
+  // --- Arrastre táctil con inercia (móvil) para el carrusel 3D ---
+  let carDragging = false;
+  let carFling = false;
+  let carAxis = null; // 'h' (arrastra) | 'v' (deja scroll vertical) | null (sin decidir)
+  let carDragStartX = 0, carDragStartY = 0, carDragStartOffset = 0;
+  let carPrevX = 0, carPrevT = 0, carVx = 0;
+  function carTouchStart(e) {
+    if (!carouselViewportEl || e.touches.length !== 1) return;
+    carDragging = true; carFling = false; carAxis = null;
+    carVelocity = 0; // congelar la deriva mientras el dedo está en contacto
+    const tch = e.touches[0];
+    carDragStartX = tch.clientX; carDragStartY = tch.clientY;
+    carDragStartOffset = carOffset;
+    carPrevX = tch.clientX; carPrevT = e.timeStamp; carVx = 0;
+  }
+  function carTouchMove(e) {
+    if (!carDragging || e.touches.length !== 1) return;
+    const tch = e.touches[0];
+    const dx = tch.clientX - carDragStartX;
+    const dy = tch.clientY - carDragStartY;
+    if (carAxis === null) {
+      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return; // esperar a conocer la intención
+      carAxis = Math.abs(dx) >= Math.abs(dy) ? 'h' : 'v';
+      if (carAxis === 'v') { carDragging = false; carVelocity = -CAR_BASE; return; } // scroll de página
+    }
+    carOffset = carDragStartOffset + dx; // el tick lo envuelve y lo pinta
+    const dtms = e.timeStamp - carPrevT;
+    if (dtms > 0) carVx = (tch.clientX - carPrevX) / dtms * 1000; // px/s para la inercia
+    carPrevX = tch.clientX; carPrevT = e.timeStamp;
+  }
+  function carTouchEnd() {
+    if (!carDragging) return;
+    carDragging = false;
+    if (carAxis === 'h') {
+      carVelocity = Math.max(-3200, Math.min(3200, carVx)); // lanzar con la velocidad de salida
+      carFling = true;
+    }
+    carAxis = null;
   }
 
   onMount(() => {
@@ -264,7 +313,14 @@
     if (fairLast == null) fairLast = t;
     const dt = Math.min(0.05, (t - fairLast) / 1000);
     fairLast = t;
-    fairOffset += fairVelocity * dt;
+    if (!fairDragging) {
+      if (fairFling) {
+        const target = -FAIR_BASE;
+        fairVelocity = target + (fairVelocity - target) * Math.pow(0.93, dt * 60);
+        if (Math.abs(fairVelocity - target) < 2) { fairVelocity = target; fairFling = false; }
+      }
+      fairOffset += fairVelocity * dt;
+    }
     if (fairSetWidth > 0) {
       while (fairOffset <= -fairSetWidth) fairOffset += fairSetWidth;
       while (fairOffset > 0) fairOffset -= fairSetWidth;
@@ -283,6 +339,46 @@
   }
   function fairOnLeave() {
     fairVelocity = -FAIR_BASE; // deriva por defecto derecha→izquierda
+  }
+
+  // --- Arrastre táctil con inercia (móvil) para el carrusel de ferias ---
+  let fairDragging = false;
+  let fairFling = false;
+  let fairAxis = null;
+  let fairDragStartX = 0, fairDragStartY = 0, fairDragStartOffset = 0;
+  let fairPrevX = 0, fairPrevT = 0, fairVx = 0;
+  function fairTouchStart(e) {
+    if (!fairsViewportEl || e.touches.length !== 1) return;
+    fairDragging = true; fairFling = false; fairAxis = null;
+    fairVelocity = 0;
+    const tch = e.touches[0];
+    fairDragStartX = tch.clientX; fairDragStartY = tch.clientY;
+    fairDragStartOffset = fairOffset;
+    fairPrevX = tch.clientX; fairPrevT = e.timeStamp; fairVx = 0;
+  }
+  function fairTouchMove(e) {
+    if (!fairDragging || e.touches.length !== 1) return;
+    const tch = e.touches[0];
+    const dx = tch.clientX - fairDragStartX;
+    const dy = tch.clientY - fairDragStartY;
+    if (fairAxis === null) {
+      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      fairAxis = Math.abs(dx) >= Math.abs(dy) ? 'h' : 'v';
+      if (fairAxis === 'v') { fairDragging = false; fairVelocity = -FAIR_BASE; return; }
+    }
+    fairOffset = fairDragStartOffset + dx;
+    const dtms = e.timeStamp - fairPrevT;
+    if (dtms > 0) fairVx = (tch.clientX - fairPrevX) / dtms * 1000;
+    fairPrevX = tch.clientX; fairPrevT = e.timeStamp;
+  }
+  function fairTouchEnd() {
+    if (!fairDragging) return;
+    fairDragging = false;
+    if (fairAxis === 'h') {
+      fairVelocity = Math.max(-3200, Math.min(3200, fairVx));
+      fairFling = true;
+    }
+    fairAxis = null;
   }
 
   onMount(() => {
@@ -1227,7 +1323,7 @@
         </div>
       {/if}
 
-      <section class="lisbon-fairs-strip" aria-label={fairListTitles[lang] || fairListTitles.es} itemscope itemtype="https://schema.org/ItemList" bind:this={fairsViewportEl} on:mousemove={fairOnMove} on:mouseleave={fairOnLeave}>
+      <section class="lisbon-fairs-strip" aria-label={fairListTitles[lang] || fairListTitles.es} itemscope itemtype="https://schema.org/ItemList" bind:this={fairsViewportEl} on:mousemove={fairOnMove} on:mouseleave={fairOnLeave} on:touchstart|passive={fairTouchStart} on:touchmove|passive={fairTouchMove} on:touchend|passive={fairTouchEnd} on:touchcancel|passive={fairTouchEnd}>
         <meta itemprop="name" content={fairListTitles[lang] || fairListTitles.es} />
         <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderAscending" />
         <div class="lisbon-fairs-track" bind:this={fairsTrackEl}>
@@ -1397,7 +1493,7 @@
         <button class="carousel-nav prev" type="button" on:click={prevSlide} aria-label={lang === 'es' ? 'Anterior' : (lang === 'de' ? 'Zurück' : (lang === 'pt' ? 'Anterior' : (lang === 'fr' ? 'Précédent' : (lang === 'it' ? 'Precedente' : (lang === 'zh' ? '上一页' : (lang === 'hi' ? 'पिछला' : 'Previous'))))))}>‹</button>
         
         <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <div class="carousel-viewport" bind:this={carouselViewportEl} on:mousemove={carOnMove} on:mouseleave={carOnLeave} role="presentation">
+        <div class="carousel-viewport" bind:this={carouselViewportEl} on:mousemove={carOnMove} on:mouseleave={carOnLeave} on:touchstart|passive={carTouchStart} on:touchmove|passive={carTouchMove} on:touchend|passive={carTouchEnd} on:touchcancel|passive={carTouchEnd} role="presentation">
           <div class="carousel-track" bind:this={carouselTrackEl}>
             {#each [...carouselItems, ...carouselItems] as project, dupIdx}
               <article class="carousel-card" style="width: calc(100% / var(--visible-count));" aria-hidden={dupIdx >= carouselItems.length || undefined}>
