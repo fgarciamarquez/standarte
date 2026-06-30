@@ -1154,8 +1154,8 @@
     flex-wrap: wrap;
   }
   .advisor-continue-btn {
-    background: var(--lime, #7cb518);
-    color: #14310a;
+    background: var(--gold, #ffc800);
+    color: #111;
     border: none;
     border-radius: 30px;
     padding: 10px 26px;
