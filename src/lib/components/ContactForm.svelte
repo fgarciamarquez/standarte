@@ -1,11 +1,15 @@
 <script>
   import { onMount } from 'svelte';
+  import { fly, fade, scale } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
+  import { budgetBands, bandLabel, tierNames } from '$lib/pricingTiers.js';
   export let lang;
   export let labels;
-  // 'dark' = banda oscura por defecto (home, servicios…); 'light' = integrada con el
-  // fondo claro de las páginas de ciudad, con botones tipo pastilla como el aside.
+  // 'dark' = banda oscura por defecto; 'light' = integrada con el fondo claro de
+  // las páginas de ciudad. El asistente respeta ambas variantes.
   export let variant = 'dark';
   export let initialFair = '';
+
   // Reclamo bajo el título del formulario: prototipo 3D en 72h.
   const prototypeLabels = {
     es: 'Prototipo 3D en 72h', en: '3D prototype in 72h', de: '3D-Prototyp in 72 Std.',
@@ -13,38 +17,95 @@
     nl: '3D-prototype in 72u', zh: '72小时内3D原型', hi: '72 घंटे में 3D प्रोटोटाइप',
     ko: '72시간 내 3D 프로토타입', ja: '72時間で3Dプロトタイプ'
   };
+
+  // Textos del asistente (chrome de pasos). Los nombres de campo reutilizan `labels.form.*`.
+  const wizI18n = {
+    es: { ev: '¿Para qué feria o evento?', evSub: 'La feria y la superficie aproximada de tu espacio.', bg: '¿Qué presupuesto barajas?', bgHelp: 'Elige la banda que mejor encaje. Es orientativo: el presupuesto final lo ajustamos contigo.', pr: 'Cuéntanos tu proyecto', prSub: 'Ideas, referencias, necesidades… cuanto más sepamos, mejor.', ct: '¿Cómo te contactamos?', back: 'Atrás', next: 'Continuar', unsure: 'Aún no lo sé', edit: 'editar' },
+    en: { ev: 'Which fair or event?', evSub: 'The fair and the approximate size of your space.', bg: 'What budget are you considering?', bgHelp: 'Pick the band that fits best. It’s just a guide — we fine-tune the final quote with you.', pr: 'Tell us about your project', prSub: 'Ideas, references, needs… the more we know, the better.', ct: 'How can we reach you?', back: 'Back', next: 'Continue', unsure: 'Not sure yet', edit: 'edit' },
+    de: { ev: 'Für welche Messe oder Veranstaltung?', evSub: 'Die Messe und die ungefähre Größe Ihrer Fläche.', bg: 'Welches Budget haben Sie im Blick?', bgHelp: 'Wählen Sie die passende Spanne. Nur ein Richtwert – das endgültige Angebot stimmen wir mit Ihnen ab.', pr: 'Erzählen Sie uns von Ihrem Projekt', prSub: 'Ideen, Referenzen, Anforderungen… je mehr wir wissen, desto besser.', ct: 'Wie erreichen wir Sie?', back: 'Zurück', next: 'Weiter', unsure: 'Noch unsicher', edit: 'bearbeiten' },
+    pt: { ev: 'Para que feira ou evento?', evSub: 'A feira e a área aproximada do seu espaço.', bg: 'Que orçamento está a considerar?', bgHelp: 'Escolha a faixa que melhor encaixa. É orientativo: o orçamento final ajustamos consigo.', pr: 'Conte-nos o seu projeto', prSub: 'Ideias, referências, necessidades… quanto mais soubermos, melhor.', ct: 'Como o contactamos?', back: 'Voltar', next: 'Continuar', unsure: 'Ainda não sei', edit: 'editar' },
+    fr: { ev: 'Pour quel salon ou événement ?', evSub: 'Le salon et la surface approximative de votre espace.', bg: 'Quel budget envisagez-vous ?', bgHelp: 'Choisissez la tranche la plus adaptée. C’est indicatif : nous affinons le devis final avec vous.', pr: 'Parlez-nous de votre projet', prSub: 'Idées, références, besoins… plus nous en savons, mieux c’est.', ct: 'Comment vous contacter ?', back: 'Retour', next: 'Continuer', unsure: 'Pas encore sûr', edit: 'modifier' },
+    it: { ev: 'Per quale fiera o evento?', evSub: 'La fiera e la superficie approssimativa del tuo spazio.', bg: 'Quale budget stai considerando?', bgHelp: 'Scegli la fascia più adatta. È indicativo: il preventivo finale lo definiamo con te.', pr: 'Raccontaci il tuo progetto', prSub: 'Idee, riferimenti, esigenze… più sappiamo, meglio è.', ct: 'Come possiamo contattarti?', back: 'Indietro', next: 'Continua', unsure: 'Non lo so ancora', edit: 'modifica' },
+    nl: { ev: 'Voor welke beurs of welk evenement?', evSub: 'De beurs en de geschatte grootte van uw ruimte.', bg: 'Welk budget overweegt u?', bgHelp: 'Kies de best passende marge. Louter indicatief — de definitieve offerte stemmen we met u af.', pr: 'Vertel ons over uw project', prSub: 'Ideeën, referenties, wensen… hoe meer we weten, hoe beter.', ct: 'Hoe kunnen we u bereiken?', back: 'Terug', next: 'Doorgaan', unsure: 'Nog niet zeker', edit: 'bewerken' },
+    zh: { ev: '参加哪个展会或活动？', evSub: '展会名称及您展位的大致面积。', bg: '您考虑的预算范围？', bgHelp: '选择最合适的区间。仅供参考——最终报价我们会与您共同确定。', pr: '介绍一下您的项目', prSub: '想法、参考、需求……了解越多越好。', ct: '如何与您联系？', back: '返回', next: '继续', unsure: '暂不确定', edit: '编辑' },
+    hi: { ev: 'किस मेले या आयोजन के लिए?', evSub: 'मेला और आपके स्थान का अनुमानित क्षेत्रफल।', bg: 'आप किस बजट पर विचार कर रहे हैं?', bgHelp: 'सबसे उपयुक्त श्रेणी चुनें। यह केवल अनुमान है — अंतिम बजट हम आपके साथ तय करेंगे।', pr: 'हमें अपने प्रोजेक्ट के बारे में बताएं', prSub: 'विचार, संदर्भ, ज़रूरतें… जितना अधिक जानेंगे, उतना बेहतर।', ct: 'हम आपसे कैसे संपर्क करें?', back: 'पीछे', next: 'जारी रखें', unsure: 'अभी तय नहीं', edit: 'संपादित करें' },
+    ko: { ev: '어떤 전시회나 행사인가요?', evSub: '전시회명과 부스의 대략적인 면적.', bg: '어느 정도의 예산을 고려하시나요?', bgHelp: '가장 적합한 구간을 선택하세요. 참고용이며, 최종 견적은 함께 조정합니다.', pr: '프로젝트를 알려주세요', prSub: '아이디어, 참고자료, 요구사항… 많이 알수록 좋습니다.', ct: '어떻게 연락드릴까요?', back: '뒤로', next: '계속', unsure: '아직 미정', edit: '수정' },
+    ja: { ev: 'どの展示会・イベントですか？', evSub: '展示会名と、おおよその面積を教えてください。', bg: 'ご検討中の予算は？', bgHelp: '最適な範囲をお選びください。目安であり、最終的なお見積りは一緒に調整します。', pr: 'プロジェクトについて教えてください', prSub: 'アイデア、参考例、ご要望…情報が多いほど助かります。', ct: 'ご連絡先を教えてください', back: '戻る', next: '次へ', unsure: 'まだ未定', edit: '編集' }
+  };
+  $: wz = wizI18n[lang] || wizI18n.en;
+  $: names = tierNames[lang] || tierNames.en;
+
+  // ─── Estado del asistente ──────────────────────────────────────────────
+  const TOTAL = 4;
+  let step = 1;
+  let fair = initialFair;
+  let metros = '';
+  let rango = null;            // clave de banda, 'unsure', o null
+  let descripcion = '';
+  let nombre = '';
+  let email = '';
+  let privacy = false;
+
+  // Si un CTA externo fija la feria (Site hace bind:initialFair), la reflejamos.
+  let lastInitial = initialFair;
+  $: if (initialFair !== lastInitial) { lastInitial = initialFair; if (initialFair) fair = initialFair; }
+
+  const metrosChips = [9, 18, 30, 50];
+  const bandByKey = Object.fromEntries(budgetBands.map((b) => [b.key, b]));
+  const tierIndex = { modular: 1, medida: 2, premium: 3, singular: 4 };
+
+  // Validación por paso.
+  $: metrosNum = parseInt(metros, 10);
+  $: step1Valid = fair.trim() !== '' && metrosNum > 0;
+  $: step2Valid = rango !== null;
+  $: step3Valid = descripcion.trim() !== '';
+  $: emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  $: step4Valid = nombre.trim() !== '' && emailValid && privacy;
+  $: stepValid = step === 1 ? step1Valid : step === 2 ? step2Valid : step === 3 ? step3Valid : step4Valid;
+
+  // Etiqueta del rango elegido y descripción final (el rango viaja dentro de la
+  // descripción para que el equipo lo vea sin tocar el backend ni Supabase).
+  $: rangoLabel = rango && rango !== 'unsure'
+    ? `${names[rango]} · ${bandLabel(bandByKey[rango])}`
+    : (rango === 'unsure' ? wz.unsure : '');
+  $: descripcionFinal = rangoLabel
+    ? `${labels.form.budget}: ${rangoLabel}\n\n${descripcion}`
+    : descripcion;
+
+  // Chips de resumen (feria, metros, rango) para volver a un paso al instante.
+  $: recap = [
+    fair.trim() && { label: fair.trim(), goto: 1 },
+    metrosNum > 0 && { label: `${metrosNum} m²`, goto: 1 },
+    rango && { label: rango === 'unsure' ? wz.unsure : names[rango], goto: 2 }
+  ].filter(Boolean);
+
   let status = null;
   let statusMessage = '';
   let sending = false;
-  // Time-trap anti-spam: marca de tiempo de carga (solo cliente).
   let mountedAt = 0;
   onMount(() => { mountedAt = Date.now(); });
 
+  function goNext() { if (stepValid && step < TOTAL) step += 1; }
+  function goBack() { if (step > 1) step -= 1; }
+  function goTo(n) { if (n >= 1 && n <= TOTAL) step = n; }
+  function pickBand(key) { rango = key; }
+
   async function handleSubmit(event) {
     event.preventDefault();
+    // En pasos intermedios, Enter/submit simplemente avanza.
+    if (step < TOTAL) { goNext(); return; }
+    if (!step4Valid) return;
+
     const form = event.currentTarget;
     const formData = new FormData(form);
-    // ms transcurridos desde la carga; si por lo que sea no hay marca, enviamos un
-    // valor que pasa el filtro (fail-open) para no bloquear nunca a una persona.
     formData.append('form_elapsed', String(mountedAt ? Date.now() - mountedAt : 3000));
 
-    sending = true;
-    status = null;
-    statusMessage = '';
-
+    sending = true; status = null; statusMessage = '';
     try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData
-      });
+      const response = await fetch(form.action, { method: 'POST', body: formData });
       const result = await response.json();
-
       status = result.error === 'success' ? 'success' : 'error';
       statusMessage = result.msg || labels.formSuccess;
-
-      if (status === 'success') {
-        form.reset();
-      }
     } catch (error) {
       status = 'error';
       statusMessage = labels.formError || 'No se pudo enviar el mensaje. Por favor, inténtalo de nuevo.';
@@ -61,7 +122,6 @@
         <h3>{labels.contactTitle}</h3>
         <h3 class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</h3>
         {#if variant === 'light'}
-          <!-- Nota humana: rostro de contacto real bajo el título del formulario. -->
           <figure class="contact-person">
             <img
               class="contact-person-photo"
@@ -94,8 +154,8 @@
             </a>
           </li>
         </ul>
-        {#if statusMessage}
-          <div id="error_presupuesto_form" class:form-error={status === 'error'} class:form-success={status === 'success'}>
+        {#if statusMessage && status === 'error'}
+          <div id="error_presupuesto_form" class="form-error">
             <p class="form-note">{@html statusMessage}</p>
           </div>
         {/if}
@@ -104,58 +164,127 @@
       <div class="contact-block">
         <form id="presupuestoForm" method="post" accept-charset="UTF-8" action="/admin/ajax_presupuesto_form.php" on:submit={handleSubmit}>
           <input type="hidden" name="form_lang" value={lang} />
-
-          <!-- Honeypot anti-spam: invisible para humanos; si llega relleno, el servidor descarta el envío -->
+          <!-- Honeypot anti-spam: invisible para humanos -->
           <div class="hp-field" aria-hidden="true">
             <input type="text" name="form_web" tabindex="-1" autocomplete="off" />
           </div>
+          <!-- Campos reales: se envían con el estado del asistente -->
+          <input type="hidden" name="form_nombre" value={nombre} />
+          <input type="hidden" name="form_email" value={email} />
+          <input type="hidden" name="form_feria" value={fair} />
+          <input type="hidden" name="form_metros" value={metrosNum > 0 ? metrosNum : ''} />
+          <input type="hidden" name="form_presupuesto" value={rangoLabel} />
+          <input type="hidden" name="form_descripcion" value={descripcionFinal} />
+          <input type="hidden" name="form_privacidad" value={privacy ? '1' : ''} />
 
-          <div class="form-row">
-            <div class="col col-6 form-group">
-              <label for="form_nombre" class="form-label">{labels.form.name}</label>
-              <input id="form_nombre" class="form-control" name="form_nombre" required />
+          {#if status === 'success'}
+            <div class="wiz-success" in:scale={{ duration: 400, start: 0.9, easing: quintOut }}>
+              <div class="wiz-success-badge" aria-hidden="true">✓</div>
+              <p class="wiz-success-msg">{@html statusMessage}</p>
             </div>
-            <div class="col col-6 form-group">
-              <label for="form_email" class="form-label">{labels.form.email}</label>
-              <input id="form_email" class="form-control" name="form_email" type="email" required />
-            </div>
-            <!-- Empresa y Teléfono: ocultos por ahora (sin required para no bloquear el envío).
-                 Reservados para una etapa posterior del formulario; para reactivarlos basta con
-                 quitar la clase field-hidden (y volver a poner required en Empresa si procede). -->
-            <div class="col col-6 form-group field-hidden">
-              <label for="form_empresa" class="form-label">{labels.form.company}</label>
-              <input id="form_empresa" class="form-control" name="form_empresa" />
-            </div>
-            <div class="col col-6 form-group field-hidden">
-              <label for="form_tlf" class="form-label">{labels.form.phone}</label>
-              <input id="form_tlf" class="form-control" name="form_tlf" type="tel" />
-            </div>
-            <div class="col col-6 form-group">
-              <label for="form_feria" class="form-label">{labels.form.fair}</label>
-              <input id="form_feria" class="form-control" name="form_feria" bind:value={initialFair} required />
-            </div>
-            <div class="col col-6 form-group">
-              <label for="form_metros" class="form-label">{labels.form.meters}</label>
-              <input id="form_metros" class="form-control" name="form_metros" type="number" min="1" required />
-            </div>
-            <div class="col col-12 form-group">
-              <label for="form_descripcion" class="form-label">{labels.form.description}</label>
-              <textarea id="form_descripcion" class="form-control" name="form_descripcion" rows="6" required></textarea>
-            </div>
-            <div class="col col-12 privacy-container">
-              <div class="form-check checkbox checkbox-warning privacy-check">
-                <input id="yes_privacy" type="checkbox" name="form_privacidad" value="1" required />
-                <label for="yes_privacy">{labels.form.privacy}</label>
+          {:else}
+            <div class="wiz">
+              <!-- Progreso -->
+              <div class="wiz-progress" aria-hidden="true">
+                <div class="wiz-bar"><span class="wiz-bar-fill" style="width:{(step / TOTAL) * 100}%"></span></div>
+                <span class="wiz-count">{step} / {TOTAL}</span>
+              </div>
+
+              <!-- Resumen de selección (chips que llevan al paso) -->
+              {#if recap.length && step > 1}
+                <div class="wiz-recap" transition:fade={{ duration: 200 }}>
+                  {#each recap as r (r.label + r.goto)}
+                    <button type="button" class="wiz-chip" on:click={() => goTo(r.goto)}>
+                      <span class="wiz-chip-text">{r.label}</span>
+                      <span class="wiz-chip-edit">{wz.edit}</span>
+                    </button>
+                  {/each}
+                </div>
+              {/if}
+
+              {#key step}
+                <div class="wiz-step" in:fly={{ x: 26, duration: 320, easing: quintOut }}>
+                  {#if step === 1}
+                    <h4 class="wiz-head">{wz.ev}</h4>
+                    <p class="wiz-sub">{wz.evSub}</p>
+                    <div class="wiz-field">
+                      <label for="wz_feria" class="form-label">{labels.form.fair}</label>
+                      <input id="wz_feria" class="form-control" bind:value={fair} autocomplete="off"
+                        on:keydown={(e) => { if (e.key === 'Enter') { e.preventDefault(); goNext(); } }} />
+                    </div>
+                    <div class="wiz-field">
+                      <label for="wz_metros" class="form-label">{labels.form.meters}</label>
+                      <input id="wz_metros" class="form-control" type="number" min="1" inputmode="numeric" bind:value={metros}
+                        on:keydown={(e) => { if (e.key === 'Enter') { e.preventDefault(); goNext(); } }} />
+                      <div class="chip-row">
+                        {#each metrosChips as m}
+                          <button type="button" class="chip" class:chip-on={metrosNum === m} on:click={() => metros = String(m)}>{m} m²</button>
+                        {/each}
+                      </div>
+                    </div>
+
+                  {:else if step === 2}
+                    <h4 class="wiz-head">{wz.bg}</h4>
+                    <p class="wiz-sub">{wz.bgHelp}</p>
+                    <div class="band-grid">
+                      {#each budgetBands as b (b.key)}
+                        <button type="button" class="band-card" class:selected={rango === b.key} aria-pressed={rango === b.key} on:click={() => pickBand(b.key)}>
+                          <span class="band-scale" aria-hidden="true">
+                            {#each Array(4) as _, i}<span class="band-dot" class:on={i < tierIndex[b.key]}></span>{/each}
+                          </span>
+                          <span class="band-name">{names[b.key]}</span>
+                          <span class="band-range">{bandLabel(b)}</span>
+                          <span class="band-check" aria-hidden="true">✓</span>
+                        </button>
+                      {/each}
+                    </div>
+                    <button type="button" class="band-unsure" class:selected={rango === 'unsure'} aria-pressed={rango === 'unsure'} on:click={() => pickBand('unsure')}>
+                      {wz.unsure}
+                    </button>
+
+                  {:else if step === 3}
+                    <h4 class="wiz-head">{wz.pr}</h4>
+                    <p class="wiz-sub">{wz.prSub}</p>
+                    <div class="wiz-field">
+                      <label for="wz_desc" class="form-label">{labels.form.description}</label>
+                      <textarea id="wz_desc" class="form-control" rows="6" bind:value={descripcion}></textarea>
+                    </div>
+
+                  {:else}
+                    <h4 class="wiz-head">{wz.ct}</h4>
+                    <div class="wiz-field">
+                      <label for="wz_nombre" class="form-label">{labels.form.name}</label>
+                      <input id="wz_nombre" class="form-control" bind:value={nombre} autocomplete="name" />
+                    </div>
+                    <div class="wiz-field">
+                      <label for="wz_email" class="form-label">{labels.form.email}</label>
+                      <input id="wz_email" class="form-control" type="email" bind:value={email} autocomplete="email" />
+                    </div>
+                    <div class="privacy-container">
+                      <div class="privacy-check">
+                        <input id="wz_privacy" type="checkbox" bind:checked={privacy} />
+                        <label for="wz_privacy">{labels.form.privacy}</label>
+                      </div>
+                    </div>
+                  {/if}
+                </div>
+              {/key}
+
+              <!-- Navegación -->
+              <div class="wiz-nav">
+                {#if step > 1}
+                  <button type="button" class="wiz-back" on:click={goBack}>← {wz.back}</button>
+                {:else}
+                  <span></span>
+                {/if}
+                {#if step < TOTAL}
+                  <button type="button" class="wiz-next" disabled={!stepValid} on:click={goNext}>{wz.next} →</button>
+                {:else}
+                  <button type="submit" class="wiz-next" disabled={!stepValid || sending}>{sending ? '…' : labels.form.send}</button>
+                {/if}
               </div>
             </div>
-            <div class="col col-12 submit-container">
-              <div class="submit-button">
-                <button type="submit" class="btn btn-common" id="presupuesto_form_btn" disabled={sending}>
-                  {sending ? '...' : labels.form.send}
-                </button>
-              </div>
-            </div>
-          </div>
+          {/if}
         </form>
       </div>
     </div>
@@ -163,347 +292,140 @@
 </section>
 
 <style>
-  /* Reclamo bajo el título del formulario (Prototipo 3D en 72h): mismo tamaño que el h3 del
-     título (hereda .contact-us h3), solo se acerca al título con un margen negativo. */
-  .contact-subtitle {
-    margin-top: -34px;
-  }
+  .contact-subtitle { margin-top: -34px; }
+  .field-hidden { display: none !important; }
+  .hp-field { position: absolute; left: -9999px; top: -9999px; height: 1px; width: 1px; overflow: hidden; }
 
-  /* Campos reservados para una etapa posterior: ocultos pero presentes en el DOM */
-  .field-hidden {
-    display: none !important;
-  }
+  /* ─── Asistente ─────────────────────────────────────────────────────── */
+  .wiz { position: relative; }
 
-  /* Honeypot fuera de pantalla (no usar display:none, algunos bots lo detectan) */
-  .hp-field {
-    position: absolute;
-    left: -9999px;
-    top: -9999px;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-  }
+  .wiz-progress { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .wiz-bar { flex: 1; height: 6px; border-radius: 6px; background: rgba(255, 255, 255, 0.12); overflow: hidden; }
+  .wiz-bar-fill { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, #ffc800, #ffdb57); box-shadow: 0 0 12px rgba(255, 200, 0, 0.5); transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
+  .wiz-count { font-family: Inconsolata, monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.55); white-space: nowrap; }
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    text-align: left;
-  }
+  .wiz-recap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .wiz-chip { display: inline-flex; align-items: center; gap: 8px; padding: 5px 8px 5px 14px; border-radius: 30px; border: 1px solid rgba(255, 200, 0, 0.4); background: rgba(255, 200, 0, 0.08); color: #fff; font-size: 13px; font-family: Inconsolata, monospace; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; max-width: 100%; }
+  .wiz-chip:hover { background: rgba(255, 200, 0, 0.16); border-color: #ffc800; }
+  .wiz-chip-text { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .wiz-chip-edit { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 20px; background: rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.7); }
 
-  .form-label {
-    display: block;
-    font-family: Inconsolata, monospace;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 8px;
-    transition: color 0.25s ease;
-  }
+  .wiz-step { min-height: 232px; }
+  .wiz-head { margin: 0 0 6px; font-family: 'Francois One', serif; font-weight: 400; font-size: 26px; line-height: 1.2; color: #fff; }
+  .wiz-sub { margin: 0 0 22px; font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, 0.6); }
+  .wiz-field { margin-bottom: 18px; display: flex; flex-direction: column; }
 
-  .form-group:focus-within .form-label {
-    color: #ffc800;
-  }
+  .form-label { display: block; font-family: Inconsolata, monospace; font-size: 15px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); margin-bottom: 8px; transition: color 0.25s ease; }
+  .wiz-field:focus-within .form-label { color: #ffc800; }
 
-  .form-control {
-    width: 100% !important;
-    min-height: 54px !important;
-    margin-bottom: 0 !important;
-    padding: 14px 18px !important;
-    color: #fff !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 8px !important;
-    font-size: 16px !important;
-    font-family: Inconsolata, monospace !important;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
-  }
+  .form-control { width: 100% !important; min-height: 54px; margin: 0 !important; padding: 14px 18px; color: #fff; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; font-size: 16px; font-family: Inconsolata, monospace; transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease; }
+  .form-control::placeholder { color: rgba(255, 255, 255, 0.3); }
+  .form-control:focus { color: #fff; background: rgba(0, 0, 0, 0.25); border-color: #ffc800; box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.15); outline: none; }
+  textarea.form-control { min-height: 150px; resize: vertical; line-height: 1.5; }
 
-  .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.3) !important;
-  }
+  /* Chips rápidos de metros */
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip { padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.18); background: transparent; color: rgba(255, 255, 255, 0.75); font-family: Inconsolata, monospace; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.18s ease; }
+  .chip:hover { border-color: #ffc800; color: #fff; }
+  .chip-on { background: #ffc800; border-color: #ffc800; color: #111; }
 
-  .form-control:focus {
-    color: #fff !important;
-    background: rgba(0, 0, 0, 0.25) !important;
-    border-color: #ffc800 !important;
-    box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.15) !important;
-    outline: none !important;
-  }
+  /* Tarjetas de rango de presupuesto */
+  .band-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .band-card { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 18px; text-align: left; border-radius: 14px; border: 1.5px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.04); color: #fff; cursor: pointer; transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease; }
+  .band-card:hover { transform: translateY(-3px); border-color: rgba(255, 200, 0, 0.6); background: rgba(255, 200, 0, 0.06); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18); }
+  .band-card.selected { border-color: #ffc800; background: rgba(255, 200, 0, 0.12); box-shadow: 0 0 0 3px rgba(255, 200, 0, 0.18); }
+  .band-scale { display: flex; gap: 5px; }
+  .band-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); transition: background 0.2s ease; }
+  .band-dot.on { background: #ffc800; }
+  .band-name { font-family: 'Francois One', serif; font-weight: 400; font-size: 17px; line-height: 1.15; }
+  .band-range { font-family: Inconsolata, monospace; font-size: 15px; font-weight: 700; color: #ffc800; letter-spacing: 0.02em; }
+  .band-check { position: absolute; top: 12px; right: 12px; width: 22px; height: 22px; border-radius: 50%; background: #ffc800; color: #111; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.5); transition: opacity 0.18s ease, transform 0.18s ease; }
+  .band-card.selected .band-check { opacity: 1; transform: scale(1); }
 
-  .contact textarea.form-control {
-    min-height: 150px !important;
-    resize: vertical !important;
-  }
+  .band-unsure { width: 100%; margin-top: 12px; padding: 12px 16px; border-radius: 12px; border: 1px dashed rgba(255, 255, 255, 0.25); background: transparent; color: rgba(255, 255, 255, 0.7); font-family: Inconsolata, monospace; font-size: 14px; cursor: pointer; transition: all 0.18s ease; }
+  .band-unsure:hover { border-color: #ffc800; color: #fff; }
+  .band-unsure.selected { border-style: solid; border-color: #ffc800; background: rgba(255, 200, 0, 0.12); color: #fff; }
 
-  .privacy-container {
-    margin-top: 5px;
-    margin-bottom: 15px;
-  }
+  /* Privacidad */
+  .privacy-container { margin-top: 6px; }
+  .privacy-check { display: flex; align-items: flex-start; gap: 10px; color: rgba(255, 255, 255, 0.85); font-size: 15px; line-height: 1.4; }
+  .privacy-check input[type="checkbox"] { margin-top: 3px; accent-color: #ffc800; cursor: pointer; width: 16px; height: 16px; flex-shrink: 0; }
+  .privacy-check label { cursor: pointer; user-select: none; }
 
-  .privacy-check {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 16px;
-    line-height: 1.4;
-  }
+  /* Navegación */
+  .wiz-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 26px; }
+  .wiz-back { background: none; border: none; color: rgba(255, 255, 255, 0.6); font-family: Inconsolata, monospace; font-size: 15px; font-weight: 600; cursor: pointer; padding: 8px 4px; transition: color 0.2s ease; }
+  .wiz-back:hover { color: #fff; }
+  .wiz-next { min-width: 150px; min-height: 48px; padding: 10px 30px; color: #111; background: #ffc800; border: 1px solid #ffc800; border-radius: 30px; font-family: 'Francois One', serif; font-weight: 400; font-size: 16px; letter-spacing: 0.04em; cursor: pointer; box-shadow: 0 4px 14px rgba(255, 200, 0, 0.28); transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.2s ease; }
+  .wiz-next:hover:not(:disabled) { background: #ffd633; transform: translateY(-2px); box-shadow: 0 7px 20px rgba(255, 200, 0, 0.4); }
+  .wiz-next:active:not(:disabled) { transform: translateY(0); }
+  .wiz-next:disabled { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.35); cursor: not-allowed; box-shadow: none; }
 
-  .privacy-check input[type="checkbox"] {
-    margin-top: 3px;
-    accent-color: #ffc800;
-    cursor: pointer;
-    width: 16px;
-    height: 16px;
-  }
+  /* Éxito */
+  .wiz-success { text-align: center; padding: 40px 20px; }
+  .wiz-success-badge { width: 68px; height: 68px; margin: 0 auto 20px; border-radius: 50%; background: #2ebc5c; color: #fff; font-size: 34px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(46, 188, 92, 0.4); }
+  .wiz-success-msg { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: #fff; margin: 0; }
 
-  .privacy-check label {
-    margin-left: 0 !important;
-    cursor: pointer;
-    user-select: none;
-  }
+  .form-error { background-color: #e74c3c; color: #fff; padding: 16px 20px; border-radius: 8px; margin-top: 20px; font-size: 1.05rem; font-weight: 600; text-align: center; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); border: 2px solid #c0392b; }
+  .form-error .form-note { margin: 0; line-height: 1.5; color: #fff !important; }
 
-  .submit-container {
-    margin-top: 10px;
-  }
+  .lista_direccion { padding-left: 0 !important; margin-left: 0 !important; }
+  .whatsapp-li { list-style: none !important; margin-top: 12px !important; }
+  .contact-whatsapp { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: #25d366; color: #fff !important; border-radius: 30px; font-family: 'Francois One', serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; text-decoration: none !important; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
+  .contact-whatsapp:hover, .contact-whatsapp:focus { background: #1ebe57; color: #fff !important; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45); }
+  .contact-whatsapp svg { fill: currentColor; flex-shrink: 0; width: 18px; height: 18px; }
 
-  .btn-common {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 180px;
-    min-height: 48px;
-    margin-top: 0 !important;
-    padding: 10px 32px !important;
-    color: #000 !important;
-    background: #ffc800 !important;
-    border: 1px solid #ffc800 !important;
-    border-radius: 30px !important;
-    font-family: 'Francois One', serif !important;
-    font-weight: 400 !important;
-    font-size: 16px !important;
-    letter-spacing: 0.05em !important;
-    cursor: pointer !important;
-    box-shadow: 0 4px 12px rgba(255, 200, 0, 0.2) !important;
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, border-color 0.2s ease !important;
-  }
-
-  .btn-common:hover, .btn-common:focus {
-    background: #e6b400 !important;
-    border-color: #e6b400 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 18px rgba(255, 200, 0, 0.35) !important;
-  }
-
-  .btn-common:active {
-    transform: translateY(0) !important;
-    box-shadow: 0 3px 8px rgba(255, 200, 0, 0.2) !important;
-  }
-
-  .btn-common:disabled {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.05) !important;
-    color: rgba(255, 255, 255, 0.35) !important;
-    cursor: not-allowed !important;
-    transform: none !important;
-    box-shadow: none !important;
-  }
-
-  .form-success {
-    background-color: #2ebc5c;
-    color: #ffffff;
-    padding: 16px 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(46, 188, 92, 0.3);
-    border: 2px solid #239447;
-    animation: fadeIn 0.5s ease-out;
-  }
-
-  .form-error {
-    background-color: #e74c3c;
-    color: #ffffff;
-    padding: 16px 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-    border: 2px solid #c0392b;
-    animation: fadeIn 0.5s ease-out;
-  }
-  
-  .form-success .form-note, .form-error .form-note {
-    margin: 0;
-    line-height: 1.5;
-    color: #fff !important;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .lista_direccion {
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-  }
-
-  .whatsapp-li {
-    list-style: none !important;
-    margin-top: 12px !important;
-  }
-
-  .contact-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
-    background: #25d366;
-    color: #fff !important;
-    border-radius: 30px;
-    font-family: 'Francois One', serif;
-    font-weight: 400;
-    font-size: 14px;
-    letter-spacing: 0.03em;
-    text-decoration: none !important;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .contact-whatsapp:hover,
-  .contact-whatsapp:focus {
-    background: #1ebe57;
-    color: #fff !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
-  }
-
-  .contact-whatsapp svg {
-    fill: currentColor;
-    flex-shrink: 0;
-    width: 18px;
-    height: 18px;
+  @media (max-width: 560px) {
+    .band-grid { grid-template-columns: 1fr; }
+    .wiz-head { font-size: 22px; }
   }
 
   /* ============================================================
-     Variante clara (páginas de ciudad): el formulario se integra
-     con el fondo claro de la página y los botones adoptan el estilo
-     de pastilla de los módulos del aside (borde fino, hover dorado).
+     Variante clara (páginas de ciudad)
      ============================================================ */
-  .contact-light {
-    background: #f7f6f1;
-    color: #333;
-  }
-  .contact-light .contact-us h3 {
-    color: #1a1e21;
-  }
-  /* Nota humana: foto circular de la persona de contacto. */
-  .contact-person {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin: 0 0 24px;
-  }
-  .contact-person-photo {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    border: 2px solid rgba(0, 0, 0, 0.08);
-    flex-shrink: 0;
-  }
-  .contact-person figcaption {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.3;
-  }
-  .contact-person-name {
-    font-family: 'Francois One', serif;
-    font-weight: 400;
-    font-size: 15px;
-    color: #1a1e21;
-  }
-  .contact-person-role {
-    font-size: 13px;
-    color: #666;
-  }
-  .contact-light .contact-us p,
-  .contact-light .contact-us li {
-    color: #333;
-  }
-  .contact-light .lista_direccion {
-    border-top-color: rgba(0, 0, 0, 0.15);
-  }
+  .contact-light { background: #f7f6f1; color: #333; }
+  .contact-light .contact-us h3 { color: #1a1e21; }
+  .contact-person { display: flex; align-items: center; gap: 14px; margin: 0 0 24px; }
+  .contact-person-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(0, 0, 0, 0.08); flex-shrink: 0; }
+  .contact-person figcaption { display: flex; flex-direction: column; line-height: 1.3; }
+  .contact-person-name { font-family: 'Francois One', serif; font-weight: 400; font-size: 15px; color: #1a1e21; }
+  .contact-person-role { font-size: 13px; color: #666; }
+  .contact-light .contact-us p, .contact-light .contact-us li { color: #333; }
+  .contact-light .lista_direccion { border-top-color: rgba(0, 0, 0, 0.15); }
 
-  .contact-light .form-label {
-    color: #555;
-  }
-  .contact-light .form-group:focus-within .form-label {
-    color: #b8860b;
-  }
-  .contact-light .form-control {
-    color: #1a1e21 !important;
-    background: #fff !important;
-    border: 1px solid rgba(0, 0, 0, 0.15) !important;
-  }
-  .contact-light .form-control::placeholder {
-    color: rgba(0, 0, 0, 0.35) !important;
-  }
-  .contact-light .form-control:focus {
-    color: #1a1e21 !important;
-    background: #fff !important;
-    border-color: var(--gold) !important;
-    box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.15) !important;
-  }
-  .contact-light .privacy-check {
-    color: #555;
-  }
+  .contact-light .wiz-head { color: #1a1e21; }
+  .contact-light .wiz-sub { color: #666; }
+  .contact-light .wiz-bar { background: rgba(0, 0, 0, 0.08); }
+  .contact-light .wiz-count { color: #999; }
+  .contact-light .form-label { color: #555; }
+  .contact-light .wiz-field:focus-within .form-label { color: #b8860b; }
+  .contact-light .form-control { color: #1a1e21; background: #fff; border: 1px solid rgba(0, 0, 0, 0.15); }
+  .contact-light .form-control::placeholder { color: rgba(0, 0, 0, 0.35); }
+  .contact-light .form-control:focus { color: #1a1e21; background: #fff; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.15); }
 
-  /* Botón de envío como pastilla (igual que el aside de la derecha). */
-  .contact-light .btn-common {
-    color: #1a1e21 !important;
-    background: #fff !important;
-    border: 1px solid rgba(0, 0, 0, 0.15) !important;
-    box-shadow: none !important;
-    font-family: Inconsolata, monospace !important;
-  }
-  .contact-light .btn-common:hover,
-  .contact-light .btn-common:focus {
-    background: rgba(255, 200, 0, 0.1) !important;
-    border-color: var(--gold) !important;
-    color: #1a1e21 !important;
-    box-shadow: none !important;
-    transform: translateY(-2px) !important;
-  }
-  .contact-light .btn-common:disabled {
-    background: #fff !important;
-    border-color: rgba(0, 0, 0, 0.08) !important;
-    color: rgba(0, 0, 0, 0.3) !important;
-    box-shadow: none !important;
-  }
+  .contact-light .wiz-chip { color: #1a1e21; background: rgba(255, 200, 0, 0.12); border-color: rgba(0, 0, 0, 0.12); }
+  .contact-light .wiz-chip:hover { background: rgba(255, 200, 0, 0.22); border-color: var(--gold); }
+  .contact-light .wiz-chip-edit { background: rgba(0, 0, 0, 0.06); color: #777; }
 
-  /* WhatsApp con el mismo estilo de pastilla neutra. */
-  .contact-light .contact-whatsapp {
-    background: #fff;
-    color: #1a1e21 !important;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: none;
-  }
-  .contact-light .contact-whatsapp:hover,
-  .contact-light .contact-whatsapp:focus {
-    background: rgba(255, 200, 0, 0.1);
-    border-color: var(--gold);
-    color: #1a1e21 !important;
-    box-shadow: none;
-    transform: translateY(-2px);
-  }
+  .contact-light .chip { border-color: rgba(0, 0, 0, 0.18); color: #555; }
+  .contact-light .chip:hover { border-color: var(--gold); color: #1a1e21; }
+  .contact-light .chip-on { background: #ffc800; border-color: #ffc800; color: #111; }
+
+  .contact-light .band-card { background: #fff; border-color: rgba(0, 0, 0, 0.12); color: #1a1e21; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); }
+  .contact-light .band-card:hover { border-color: rgba(255, 200, 0, 0.75); background: #fffdf5; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08); }
+  .contact-light .band-card.selected { border-color: var(--gold); background: #fffae8; }
+  .contact-light .band-dot { background: rgba(0, 0, 0, 0.12); }
+  .contact-light .band-dot.on { background: #ffc800; }
+  .contact-light .band-range { color: #b8860b; }
+  .contact-light .band-unsure { border-color: rgba(0, 0, 0, 0.2); color: #666; }
+  .contact-light .band-unsure:hover { border-color: var(--gold); color: #1a1e21; }
+  .contact-light .band-unsure.selected { border-color: var(--gold); background: #fffae8; color: #1a1e21; }
+
+  .contact-light .privacy-check { color: #555; }
+  .contact-light .wiz-back { color: #888; }
+  .contact-light .wiz-back:hover { color: #1a1e21; }
+  .contact-light .wiz-success-msg { color: #1a1e21; }
+
+  .contact-light .contact-whatsapp { background: #fff; color: #1a1e21 !important; border: 1px solid rgba(0, 0, 0, 0.15); box-shadow: none; }
+  .contact-light .contact-whatsapp:hover, .contact-light .contact-whatsapp:focus { background: rgba(255, 200, 0, 0.1); border-color: var(--gold); color: #1a1e21 !important; box-shadow: none; transform: translateY(-2px); }
 </style>

@@ -1,5 +1,6 @@
 <script>
   import { pathFor, languages, languageLabels } from '$lib/siteData.js';
+  import { pricingTiers, fmtEuro } from '$lib/pricingTiers.js';
   import FlagIcon from './FlagIcon.svelte';
 
   export let data;
@@ -10,15 +11,10 @@
   let menuOpen = false;
   let isScrolled = false;
 
-  // Cifras orientativas «desde», validadas. priceFrom en euros; se muestran como
-  // "desde X €" formateadas con separador de miles.
-  const tiers = [
-    { key: 'modular', priceFrom: 4900 },
-    { key: 'medida', priceFrom: 9900 },
-    { key: 'premium', priceFrom: 24000 },
-    { key: 'singular', priceFrom: 60000 }
-  ];
-  const fmt = (n) => n.toLocaleString('es-ES');
+  // Cifras orientativas «desde», validadas. Fuente única en $lib/pricingTiers.js
+  // (compartidas con el asistente de presupuesto). Se muestran como "desde X €".
+  const tiers = pricingTiers;
+  const fmt = fmtEuro;
 
   const texts = {
     es: {
