@@ -54,6 +54,28 @@
   const bandByKey = Object.fromEntries(budgetBands.map((b) => [b.key, b]));
   const tierIndex = { modular: 1, medida: 2, premium: 3, singular: 4 };
 
+  // Estadística de hover sobre los botones de rango (1..4), independiente de la
+  // elección final: nº de pasadas (cada mouseenter suma 1) y tiempo sumatorio que
+  // el ratón permanece sobre cada botón (mouseenter → mouseleave).
+  let hoverCounts = { modular: 0, medida: 0, premium: 0, singular: 0 };
+  let hoverMs = { modular: 0, medida: 0, premium: 0, singular: 0 };
+  let hoverActive = null, hoverActiveStart = 0;
+  function trackHoverEnter(key) {
+    hoverCounts[key] += 1; hoverCounts = hoverCounts;
+    hoverActive = key; hoverActiveStart = Date.now();
+  }
+  function flushHover() {
+    if (hoverActive !== null) {
+      hoverMs[hoverActive] += Date.now() - hoverActiveStart;
+      hoverMs = hoverMs; hoverActive = null;
+    }
+  }
+  function trackHoverLeave(key) { if (hoverActive === key) flushHover(); }
+  const fmtSec = (ms) => (ms / 1000).toFixed(1).replace('.', ',');
+  $: hoverStats = budgetBands.map((b) => `${tierIndex[b.key]}=${hoverCounts[b.key]}`).join(', ');
+  $: hoverTimeStats = budgetBands.map((b) => `${tierIndex[b.key]}=${fmtSec(hoverMs[b.key])} seg`).join(', ');
+  $: hoverTotal = budgetBands.reduce((s, b) => s + hoverCounts[b.key], 0);
+
   // Validación por paso.
   $: metrosNum = parseInt(metros, 10);
   $: step1Valid = fair.trim() !== '' && metrosNum > 0;
@@ -68,9 +90,11 @@
   $: rangoLabel = rango && rango !== 'unsure'
     ? `${names[rango]} · ${bandLabel(bandByKey[rango])}`
     : (rango === 'unsure' ? wz.unsure : '');
-  $: descripcionFinal = rangoLabel
-    ? `${labels.form.budget}: ${rangoLabel}\n\n${descripcion}`
-    : descripcion;
+  $: descripcionFinal = [
+    rangoLabel ? `${labels.form.budget}: ${rangoLabel}` : null,
+    hoverTotal > 0 ? `Hover rangos (1-4) — pasadas: ${hoverStats} · tiempo: ${hoverTimeStats}` : null,
+    descripcion
+  ].filter(Boolean).join('\n\n');
 
   // Chips de resumen (feria, metros, rango) para volver a un paso al instante.
   $: recap = [
@@ -85,7 +109,7 @@
   let mountedAt = 0;
   onMount(() => { mountedAt = Date.now(); });
 
-  function goNext() { if (stepValid && step < TOTAL) step += 1; }
+  function goNext() { flushHover(); if (stepValid && step < TOTAL) step += 1; }
   function goBack() { if (step > 1) step -= 1; }
   function goTo(n) { if (n >= 1 && n <= TOTAL) step = n; }
   function pickBand(key) { rango = key; }
@@ -174,6 +198,8 @@
           <input type="hidden" name="form_feria" value={fair} />
           <input type="hidden" name="form_metros" value={metrosNum > 0 ? metrosNum : ''} />
           <input type="hidden" name="form_presupuesto" value={rangoLabel} />
+          <input type="hidden" name="form_hovers" value={hoverStats} />
+          <input type="hidden" name="form_hover_times" value={hoverTimeStats} />
           <input type="hidden" name="form_descripcion" value={descripcionFinal} />
           <input type="hidden" name="form_privacidad" value={privacy ? '1' : ''} />
 
@@ -228,7 +254,7 @@
                     <p class="wiz-sub">{wz.bgHelp}</p>
                     <div class="band-grid">
                       {#each budgetBands as b (b.key)}
-                        <button type="button" class="band-card" class:selected={rango === b.key} aria-pressed={rango === b.key} on:click={() => pickBand(b.key)}>
+                        <button type="button" class="band-card" class:selected={rango === b.key} aria-pressed={rango === b.key} on:click={() => pickBand(b.key)} on:mouseenter={() => trackHoverEnter(b.key)} on:mouseleave={() => trackHoverLeave(b.key)}>
                           <span class="band-scale" aria-hidden="true">
                             {#each Array(4) as _, i}<span class="band-dot" class:on={i < tierIndex[b.key]}></span>{/each}
                           </span>
