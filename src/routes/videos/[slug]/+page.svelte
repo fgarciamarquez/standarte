@@ -1,6 +1,6 @@
 <script>
-  import { pathFor } from '$lib/siteData.js';
-  import ProjectAdvisor from '$lib/components/ProjectAdvisor.svelte';
+  import { pathFor, copy } from '$lib/siteData.js';
+  import ContactForm from '$lib/components/ContactForm.svelte';
 
   export let data;
   $: video = data.video;
@@ -59,8 +59,8 @@
     <h1>{video.title}</h1>
     <p class="video-desc">{video.description}</p>
 
-    <!-- Panel de Pat: mismo formulario que en las páginas de proyecto. -->
-    <ProjectAdvisor lang="es" project={{ name: video.title }} />
+    <!-- Asistente de presupuesto progresivo (mismo que home/ciudades). -->
+    <ContactForm lang="es" labels={copy.es} variant="light" />
 
     <nav class="video-nav">
       {#if video.projectId}
