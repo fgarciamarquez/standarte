@@ -476,8 +476,23 @@
               {:else}
                 <!-- svelte-ignore a11y-unknown-role -->
                 <!-- max-camera-orbit phi=90deg: la órbita vertical no pasa de la horizontal,
-                     así el modelo NO se puede ver por debajo de la línea de suelo. -->
-                <model-viewer class="pz-lb-model" src={lightbox.src} camera-controls auto-rotate max-camera-orbit="Infinity 90deg auto" touch-action="pan-y" ar shadow-intensity="1"></model-viewer>
+                     así el modelo NO se puede ver por debajo de la línea de suelo.
+                     auto-rotate + rotation-per-second lento: al terminar de cargar, gira solo despacio.
+                     slot="poster": mientras el modelo carga se muestra "Loading…". -->
+                <model-viewer
+                  class="pz-lb-model"
+                  src={lightbox.src}
+                  camera-controls
+                  auto-rotate
+                  auto-rotate-delay="0"
+                  rotation-per-second="12deg"
+                  max-camera-orbit="Infinity 90deg auto"
+                  touch-action="pan-y"
+                  ar
+                  shadow-intensity="1"
+                >
+                  <div class="pz-lb-model-loading" slot="poster">Loading…</div>
+                </model-viewer>
               {/if}
             {:else if isDriveEmbed(lightbox.src)}<iframe class="pz-lb-iframe" src={lightbox.src} title={lightbox.title[lang]} allow="autoplay; fullscreen" allowfullscreen></iframe>
             {:else}<!-- svelte-ignore a11y-media-has-caption --><video src={lightbox.src} poster={lightbox.poster} controls autoplay loop muted playsinline></video>{/if}
@@ -565,6 +580,25 @@
   .pz-drop.over { border-color: #1b1b1a; background: #f0eee5; color: #1b1b1a; }
   .pz-lb-iframe { width: min(1100px, 94vw); aspect-ratio: 16 / 9; max-height: 80vh; border: 0; background: #000; }
   .pz-lb-model { width: min(1100px, 94vw); height: 80vh; background: #111; border: 1px solid rgba(255,255,255,0.2); --poster-color: transparent; }
+  /* "Loading…" mientras el modelo 3D carga (slot="poster" de model-viewer). */
+  .pz-lb-model-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Inconsolata', monospace;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    animation: pzModelLoadingPulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pzModelLoadingPulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
   .pz-3d-hint { font-size: 12px; color: #cfcdc4; border: 1px solid rgba(244,243,238,0.5); border-radius: 4px; padding: 5px 12px; }
   .pz-drive { margin-top: 12px; border: 1px solid #cfcdc4; border-radius: 10px; padding: 14px; background: #fbfbf7; }
   .pz-drive-head { font-size: 13px; font-weight: 700; color: #1b1b1a; margin-bottom: 10px; }
