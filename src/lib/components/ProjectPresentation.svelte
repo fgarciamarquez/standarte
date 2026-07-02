@@ -25,8 +25,8 @@
   let adminMsg = '';
 
   const t = {
-    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', titlePh: 'Título del proyecto', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', linesHint: '(una por línea)' },
-    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', titlePh: 'Project title', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', linesHint: '(one per line)' }
+    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', titlePh: 'Título del proyecto', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta de la base imponible mientras no pase la fecha límite.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…' },
+    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', titlePh: 'Project title', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted from the taxable base until the deadline passes.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…' }
   };
   $: L = t[lang];
 
@@ -35,17 +35,25 @@
   $: if (admin && data) eb = {
     title: data.title[lang] || '', memoria: data.memoria[lang] || '',
     includes: (data.includes[lang] || []).join('\n'), excludes: (data.excludes[lang] || []).join('\n'),
-    income: data.income_account || '', paid: !!data.paid
+    income: data.income_account || '', paid: !!data.paid,
+    discAmount: data.discount?.amount ? String(data.discount.amount) : '',
+    discLabel: data.discount?.label?.[lang] || '', discDeadline: data.discount?.deadline || ''
   };
 
-  // Impuestos.
+  // Impuestos y descuento por pronta decisión.
   $: ivaRate = Number(data?.iva_rate ?? 0.21);
   $: irpfRate = Number(data?.irpf_rate ?? 0.15);
-  $: base = (data?.budget || []).reduce((s, b) => s + Number(b.amount || 0), 0);
+  $: subtotal = (data?.budget || []).reduce((s, b) => s + Number(b.amount || 0), 0);
+  $: discAmount = Number(data?.discount?.amount || 0);
+  $: discDeadline = data?.discount?.deadline ? new Date(data.discount.deadline + 'T23:59:59') : null;
+  $: discValid = discAmount > 0 && (!discDeadline || new Date() <= discDeadline);
+  $: discApplied = discValid ? discAmount : 0;
+  $: base = subtotal - discApplied;            // base imponible
   $: iva = base * ivaRate;
   $: irpf = base * irpfRate;
   $: total = base + iva - irpf;
-  $: fmt = (n) => new Intl.NumberFormat(lang === 'es' ? 'es-ES' : 'en-GB', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 }).format(n);
+  $: fmt = (n) => new Intl.NumberFormat(lang === 'es' ? 'es-ES' : 'en-GB', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, useGrouping: 'always' }).format(n);
+  $: fmtDate = (d) => d ? d.toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '';
 
   const mediaComments = (mid) => (data?.comments || []).filter((c) => c.media_id === mid);
   function fmtTime(ts) {
@@ -54,9 +62,26 @@
   }
   function imageIndex(m) { return (data.media || []).filter((x) => x.type === 'image').indexOf(m) + 1; }
   function videoIndex(m) { return (data.media || []).filter((x) => x.type === 'video').indexOf(m) + 1; }
-  function openLightbox(m) { if (!admin && (m.type === 'image' || m.type === 'video')) lightbox = m; }
+  // Vídeo embebido de Google Drive → se muestra con <iframe> (reproductor de Drive).
+  const isDriveEmbed = (src) => typeof src === 'string' && src.includes('drive.google.com') && src.includes('/preview');
+  // Lista navegable del lightbox: imágenes y vídeos nativos (los de Drive llevan su
+  // propio reproductor con pantalla completa; el modelo 3D no amplía).
+  const isLbItem = (m) => m && (m.type === 'image' || (m.type === 'video' && !isDriveEmbed(m.src)));
+  $: lbList = (data?.media || []).filter(isLbItem);
+  $: lbIndex = lightbox ? lbList.indexOf(lightbox) : -1;
+  function openLightbox(m) { if (!admin && isLbItem(m)) lightbox = m; }
   function closeLightbox() { lightbox = null; }
-  function onKeydownLight(e) { if (e.key === 'Escape') closeLightbox(); }
+  function lbGo(dir) {
+    if (!lightbox || lbList.length < 2) return;
+    const i = lbList.indexOf(lightbox);
+    lightbox = lbList[(i + dir + lbList.length) % lbList.length];
+  }
+  function onKeydownLight(e) {
+    if (!lightbox) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowRight') { e.preventDefault(); lbGo(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); lbGo(-1); }
+  }
 
   // ── Cliente: comentar / enviar ──
   function submitComment(mid) {
@@ -76,9 +101,15 @@
     const f = {}; f['title_' + lang] = eb.title; f['memoria_' + lang] = eb.memoria;
     f['includes_' + lang] = eb.includes; f['excludes_' + lang] = eb.excludes;
     f.income_account = eb.income; f.paid = eb.paid ? '1' : '0';
+    f.discount_amount = eb.discAmount || '0'; f['discount_label_' + lang] = eb.discLabel; f.discount_deadline = eb.discDeadline || '';
     const r = await adminAction(token, 'save', f);
     await reload();
     saving = false; adminMsg = r && r.ok ? L.saved : 'Error';
+  }
+  async function saveMediaDesc(m) {
+    const f = { media_id: m.id };
+    f['description_' + lang] = (m.description && m.description[lang]) || '';
+    await adminAction(token, 'edit_media', f);
   }
   async function editBudget(item) {
     const f = { item_id: item.id, amount: item.amount };
@@ -98,19 +129,43 @@
   async function delMedia(id) { await adminAction(token, 'del_media', { media_id: id }); await reload(); }
   async function editMediaTitle(m) { await adminAction(token, 'save_media_placeholder', {}); }
 
+  const uploadErrMsg = {
+    unauthorized: 'Sesión caducada. Recarga la página y vuelve a entrar en modo edición.',
+    file_too_big: 'El archivo supera el límite de subida del servidor.',
+    too_big: 'El archivo supera los 100 MB permitidos.',
+    too_big_post: 'El archivo es demasiado grande para subirlo de una vez.',
+    bad_mime: 'Formato no admitido (usa imagen, vídeo o .glb).',
+    partial: 'La subida se interrumpió; inténtalo de nuevo.',
+    storage: 'No se pudo guardar en el almacenamiento.'
+  };
   async function uploadFiles(fileList) {
     const files = Array.from(fileList || []);
     if (!files.length) return;
     uploading = true; adminMsg = '';
     for (const file of files) {
       const r = await adminUpload(token, file);
-      if (!r || !r.ok) adminMsg = 'Error subiendo ' + file.name + (r && r.error ? ' (' + r.error + ')' : '');
+      if (!r || !r.ok) {
+        const code = r && r.error ? r.error : 'network';
+        adminMsg = (uploadErrMsg[code] || ('Error subiendo ' + file.name)) + (code === 'unauthorized' ? '' : ' [' + file.name + ']');
+        if (code === 'unauthorized') break;
+      }
     }
     await reload();
     uploading = false;
   }
   function onDrop(e) { e.preventDefault(); dragOver = false; if (e.dataTransfer?.files) uploadFiles(e.dataTransfer.files); }
   let fileInput;
+
+  // Enlazar media desde Google Drive (no ocupa Storage).
+  let nl = { url: '', type: 'image', title: '' };
+  async function addMediaLink() {
+    if (!nl.url.trim()) return;
+    uploading = true; adminMsg = '';
+    const r = await adminAction(token, 'add_media_link', { url: nl.url.trim(), type: nl.type, title: nl.title.trim() });
+    if (r && r.ok) { nl = { url: '', type: 'image', title: '' }; await reload(); }
+    else adminMsg = r && r.error === 'bad_drive_url' ? 'Enlace de Google Drive no válido.' : 'No se pudo enlazar el archivo.';
+    uploading = false;
+  }
   async function notifyClient() {
     saving = true;
     const r = await notifySend(token, 'internal');
@@ -158,11 +213,11 @@
         <!-- svelte-ignore a11y-no-static-element-interactions a11y-click-events-have-key-events -->
         <div
           class="pz-visual pz-visual-{m.type}"
-          class:pz-zoomable={!admin && m.type !== 'model'}
-          role={!admin && m.type !== 'model' ? 'button' : undefined}
-          tabindex={!admin && m.type !== 'model' ? 0 : undefined}
+          class:pz-zoomable={!admin && isLbItem(m)}
+          role={!admin && isLbItem(m) ? 'button' : undefined}
+          tabindex={!admin && isLbItem(m) ? 0 : undefined}
           on:click={() => openLightbox(m)}
-          on:keydown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && !admin && m.type !== 'model') { e.preventDefault(); openLightbox(m); } }}
+          on:keydown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && !admin && isLbItem(m)) { e.preventDefault(); openLightbox(m); } }}
         >
           {#if m.type === 'model'}
             <div class="pz-3d">◈ {L.model}</div>
@@ -170,11 +225,13 @@
           {:else if m.src}
             {#if m.type === 'image'}
               <img class="pz-thumb" src={m.src} alt={m.title[lang]} loading="lazy" />
+            {:else if isDriveEmbed(m.src)}
+              <iframe class="pz-thumb pz-iframe" src={m.src} title={m.title[lang]} allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
             {:else}
               <video class="pz-thumb" src={m.src} poster={m.poster} preload="metadata" muted></video>
               <span class="pz-play" aria-hidden="true">▶</span>
             {/if}
-            {#if !admin}<span class="pz-zoom-hint" aria-hidden="true">⤢</span>{/if}
+            {#if !admin && isLbItem(m)}<span class="pz-zoom-hint" aria-hidden="true">⤢</span>{/if}
           {:else}
             <span class="pz-visual-tag">{m.type === 'image' ? L.image : L.video} {m.type === 'image' ? imageIndex(m) : videoIndex(m)}</span>
             {#if m.type === 'video'}<span class="pz-play" aria-hidden="true">▶</span>{/if}
@@ -202,6 +259,13 @@
             <button type="button" on:click={() => submitComment(m.id)}>{admin ? L.reply : L.comment}</button>
           </div>
         </div>
+
+        {#if admin}
+          <div class="pz-mediadesc">
+            <label class="pz-elabel" for="desc-{m.id}">{L.mediaDescLabel}</label>
+            <input id="desc-{m.id}" class="pz-edit" bind:value={m.description[lang]} on:blur={() => saveMediaDesc(m)} placeholder={L.mediaDescPh} />
+          </div>
+        {/if}
       </article>
     {/each}
 
@@ -214,6 +278,21 @@
         on:click={() => fileInput.click()}>
         {uploading ? '⏳ Subiendo…' : '⤓ ' + L.drop}
         <input bind:this={fileInput} type="file" accept="image/*,video/*,.glb" multiple hidden on:change={(e) => uploadFiles(e.target.files)} />
+      </div>
+
+      <div class="pz-drive">
+        <div class="pz-drive-head">🔗 {L.driveTitle}</div>
+        <div class="pz-drive-row">
+          <select bind:value={nl.type} class="pz-drive-type">
+            <option value="image">{L.image}</option>
+            <option value="video">{L.video}</option>
+            <option value="model">{L.model}</option>
+          </select>
+          <input class="pz-drive-url" type="url" bind:value={nl.url} placeholder={L.driveUrlPh} />
+          <input class="pz-drive-t" type="text" bind:value={nl.title} placeholder={L.driveTitlePh} />
+          <button class="pz-drive-add" type="button" on:click={addMediaLink} disabled={uploading}>{L.driveAdd}</button>
+        </div>
+        <p class="pz-drive-hint">{L.driveHint}</p>
       </div>
     {/if}
   </section>
@@ -262,6 +341,13 @@
           {/if}
         </tbody>
         <tfoot>
+          {#if discAmount > 0}
+            <tr><td>{L.subtotal}</td><td class="num">{fmt(subtotal)}</td>{#if admin}<td></td>{/if}</tr>
+            <tr class="pz-disc" class:expired={!discValid}>
+              <td>{data.discount?.label?.[lang] || L.promptDiscount}{discDeadline ? ' · ' + L.until + ' ' + fmtDate(discDeadline) : ''}{!discValid ? ' (' + L.expired + ')' : ''}</td>
+              <td class="num">{discValid ? '− ' + fmt(discApplied) : '—'}</td>{#if admin}<td></td>{/if}
+            </tr>
+          {/if}
           <tr class="sum"><td>{L.base}</td><td class="num">{fmt(base)}</td>{#if admin}<td></td>{/if}</tr>
           <tr><td>{L.iva}</td><td class="num">+ {fmt(iva)}</td>{#if admin}<td></td>{/if}</tr>
           <tr><td>{L.irpf}</td><td class="num">− {fmt(irpf)}</td>{#if admin}<td></td>{/if}</tr>
@@ -270,6 +356,15 @@
       </table>
     </div>
     {#if admin}
+      <div class="pz-disc-edit">
+        <label class="pz-elabel">{L.promptDiscount}</label>
+        <div class="pz-disc-edit-row">
+          <input class="pz-edit pz-disc-amount" inputmode="decimal" bind:value={eb.discAmount} placeholder={L.discAmountPh} />
+          <input class="pz-edit pz-disc-date" type="date" bind:value={eb.discDeadline} />
+          <input class="pz-edit pz-disc-label" bind:value={eb.discLabel} placeholder={L.discLabelPh} />
+        </div>
+        <p class="pz-drive-hint">{L.discHint}</p>
+      </div>
       <label class="pz-elabel" style="margin-top:12px;display:block">{L.account}</label>
       <input class="pz-edit" bind:value={eb.income} placeholder={L.accountPh} />
       <label class="pz-paidtoggle"><input type="checkbox" bind:checked={eb.paid} /> {L.paid}</label>
@@ -282,15 +377,29 @@
     <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
     <div class="pz-lightbox" role="dialog" aria-modal="true" aria-label={lightbox.title[lang]} on:click|self={closeLightbox}>
       <button class="pz-lb-close" type="button" on:click={closeLightbox} aria-label="×">×</button>
-      <figure class="pz-lb-inner">
-        {#if lightbox.src}
-          {#if lightbox.type === 'image'}<img src={lightbox.src} alt={lightbox.title[lang]} />
-          {:else}<!-- svelte-ignore a11y-media-has-caption --><video src={lightbox.src} poster={lightbox.poster} controls autoplay></video>{/if}
-        {:else}
-          <div class="pz-lb-ph pz-visual-{lightbox.type}">{#if lightbox.type === 'video'}<span class="pz-play" aria-hidden="true">▶</span>{/if}</div>
-        {/if}
-        <figcaption>{lightbox.title[lang]}</figcaption>
-      </figure>
+      {#if lbList.length > 1}
+        <button class="pz-lb-nav prev" type="button" on:click|stopPropagation={() => lbGo(-1)} aria-label="Anterior">‹</button>
+        <button class="pz-lb-nav next" type="button" on:click|stopPropagation={() => lbGo(1)} aria-label="Siguiente">›</button>
+      {/if}
+      {#key lightbox.id}
+        <figure class="pz-lb-inner">
+          {#if lightbox.src}
+            {#if lightbox.type === 'image'}<img src={lightbox.src} alt={lightbox.title[lang]} />
+            {:else}<!-- svelte-ignore a11y-media-has-caption --><video src={lightbox.src} poster={lightbox.poster} controls autoplay></video>{/if}
+          {:else}
+            <div class="pz-lb-ph pz-visual-{lightbox.type}">{#if lightbox.type === 'video'}<span class="pz-play" aria-hidden="true">▶</span>{/if}</div>
+          {/if}
+          <figcaption>
+            <span class="pz-lb-caption">
+              {lightbox.title[lang]}
+              {#if lbList.length > 1}<span class="pz-lb-count">{lbIndex + 1} / {lbList.length}</span>{/if}
+            </span>
+            {#if lightbox.description && lightbox.description[lang]}
+              <span class="pz-lb-desc">{lightbox.description[lang]}</span>
+            {/if}
+          </figcaption>
+        </figure>
+      {/key}
     </div>
   {/if}
 
@@ -359,6 +468,16 @@
   .pz-compose button { border: none; background: #1b1b1a; color: #fff; padding: 0 16px; font-family: inherit; font-size: 13px; cursor: pointer; }
   .pz-drop { border: 2px dashed #b9b6a8; border-radius: 10px; padding: 26px; text-align: center; color: #7a776b; cursor: pointer; background: #faf9f4; transition: all .15s; }
   .pz-drop.over { border-color: #1b1b1a; background: #f0eee5; color: #1b1b1a; }
+  .pz-iframe { border: 0; }
+  .pz-drive { margin-top: 12px; border: 1px solid #cfcdc4; border-radius: 10px; padding: 14px; background: #fbfbf7; }
+  .pz-drive-head { font-size: 13px; font-weight: 700; color: #1b1b1a; margin-bottom: 10px; }
+  .pz-drive-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pz-drive-type { border: 1px solid #cfcdc4; border-radius: 6px; padding: 8px; font-family: inherit; font-size: 14px; background: #fff; }
+  .pz-drive-url { flex: 2 1 240px; border: 1px solid #cfcdc4; border-radius: 6px; padding: 8px 10px; font-family: inherit; font-size: 14px; }
+  .pz-drive-t { flex: 1 1 140px; border: 1px solid #cfcdc4; border-radius: 6px; padding: 8px 10px; font-family: inherit; font-size: 14px; }
+  .pz-drive-add { background: #1b1b1a; color: #fff; border: none; border-radius: 6px; padding: 8px 18px; font-family: inherit; font-weight: 700; cursor: pointer; }
+  .pz-drive-add:disabled { opacity: .5; }
+  .pz-drive-hint { font-size: 12px; color: #8a8779; margin: 8px 0 0; }
   .pz-memoria { margin: 0 0 18px; }
   .pz-inex { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .pz-inex ul { margin: 0; padding-left: 18px; }
@@ -390,6 +509,24 @@
   .pz-lb-inner img, .pz-lb-inner video { max-width: 100%; max-height: 80vh; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); background: #000; }
   .pz-lb-ph { width: min(900px, 90vw); aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; }
   .pz-lb-inner figcaption { color: #eceae2; font-family: 'Inconsolata', monospace; font-size: 15px; text-align: center; }
+  .pz-lb-count { display: inline-block; margin-left: 10px; color: #b9b6a8; font-variant-numeric: tabular-nums; }
+  .pz-lb-caption { display: block; }
+  .pz-lb-desc { display: block; margin-top: 6px; color: #cfcdc4; font-size: 13px; line-height: 1.4; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .pz-mediadesc { grid-column: 1 / -1; margin-top: 4px; }
+  .pz-mediadesc .pz-edit { margin-bottom: 0; }
+  .pz-disc { color: #2e7d32; }
+  .pz-disc.expired { color: #aaa; text-decoration: line-through; }
+  .pz-disc-edit { margin-top: 16px; border: 1px dashed #cfcdc4; border-radius: 8px; padding: 12px; background: #fbfbf7; }
+  .pz-disc-edit-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pz-disc-edit-row .pz-edit { margin-bottom: 0; }
+  .pz-disc-amount { flex: 1 1 160px; }
+  .pz-disc-date { flex: 0 0 auto; }
+  .pz-disc-label { flex: 2 1 200px; }
+  .pz-lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border: 1px solid rgba(255,255,255,0.35); background: rgba(20,20,18,0.45); color: #fff; font-size: 34px; line-height: 1; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-bottom: 4px; transition: background 0.15s; z-index: 2; }
+  .pz-lb-nav:hover { background: rgba(255,255,255,0.16); }
+  .pz-lb-nav.prev { left: 20px; }
+  .pz-lb-nav.next { right: 20px; }
+  @media (max-width: 700px) { .pz-lb-nav { width: 42px; height: 42px; font-size: 26px; } .pz-lb-nav.prev { left: 8px; } .pz-lb-nav.next { right: 8px; } }
   .pz-foot { margin-top: 44px; text-align: center; border-top: 2px solid #1b1b1a; padding-top: 24px; }
   .pz-sent { color: #2e7d32; margin: 0 0 14px; font-size: 15px; }
   .pz-send { background: #1b1b1a; color: #fff; border: none; padding: 14px 40px; font-family: inherit; font-size: 16px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; border-radius: 4px; transition: background 0.2s ease; }

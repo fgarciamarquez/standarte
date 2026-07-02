@@ -36,7 +36,12 @@ if ($action === 'whoami') {
 }
 
 /* ---------- Todo lo demás requiere sesión + un token de proyecto válido ---------- */
-if (!pa_authed()) { pa_out(array('ok' => false, 'error' => 'unauthorized')); }
+if (!pa_authed()) {
+	// Diagnóstico: distingue "no llegó la cookie" de "sesión caducada/vacía".
+	pa_out(array('ok' => false, 'error' => 'unauthorized',
+		'sess_cookie' => isset($_COOKIE[session_name()]),
+		'sess_empty' => empty($_SESSION)));
+}
 
 $token = pa_post('token');
 if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token)) { pa_out(array('ok' => false, 'error' => 'bad_token')); }
@@ -52,6 +57,10 @@ if ($action === 'save') {
 		if (isset($_POST[$k])) $fields[$k] = cpx_lines_to_array($_POST[$k]);
 	}
 	if (isset($_POST['paid'])) $fields['paid'] = in_array(pa_post('paid'), array('1', 'true'), true);
+	// Descuento por pronta decisión
+	foreach (array('discount_label_es', 'discount_label_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
+	if (isset($_POST['discount_amount'])) $fields['discount_amount'] = (float) str_replace(',', '.', pa_post('discount_amount', '0'));
+	if (isset($_POST['discount_deadline'])) { $d = pa_post('discount_deadline'); $fields['discount_deadline'] = ($d === '' ? null : $d); }
 	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));
 	$fields['updated_at'] = gmdate('c');
 	$r = cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), $fields);
@@ -91,10 +100,43 @@ if ($action === 'del_media') {
 	$r = cpx_sb('DELETE', 'client_project_media?id=eq.' . urlencode(pa_post('media_id')) . '&project_id=eq.' . urlencode($projectId));
 	pa_out(array('ok' => (int) $r['code'] < 300));
 }
+/* Editar título/descripción de un archivo (la descripción se muestra solo ampliada). */
+if ($action === 'edit_media') {
+	$fields = array();
+	foreach (array('title_es', 'title_en', 'description_es', 'description_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
+	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));
+	$r = cpx_sb('PATCH', 'client_project_media?id=eq.' . urlencode(pa_post('media_id')) . '&project_id=eq.' . urlencode($projectId), $fields);
+	pa_out(array('ok' => (int) $r['code'] < 300));
+}
+
+/* Enlazar media desde Google Drive (sin ocupar Storage): guarda la URL embebible. */
+if ($action === 'add_media_link') {
+	$type = pa_post('type', 'image');
+	if (!in_array($type, array('image', 'video', 'model'), true)) $type = 'image';
+	$id = cpx_drive_file_id(pa_post('url'));
+	if ($id === null) pa_out(array('ok' => false, 'error' => 'bad_drive_url'));
+	$src = cpx_drive_src($id, $type);
+	$title = pa_post('title', 'Google Drive');
+	$r = cpx_sb('POST', 'client_project_media', array(
+		'project_id' => $projectId, 'type' => $type, 'src' => $src,
+		'title_es' => $title, 'title_en' => $title, 'sort_order' => (int) pa_post('sort_order', '999')
+	));
+	$row = (is_array($r['body']) && isset($r['body'][0])) ? $r['body'][0] : null;
+	pa_out(array('ok' => (int) $r['code'] < 300, 'id' => $row ? $row['id'] : null, 'src' => $src, 'type' => $type));
+}
 
 /* Subida por arrastrar y soltar: fichero -> Storage -> fila de media. */
 if ($action === 'upload') {
-	if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) pa_out(array('ok' => false, 'error' => 'no_file'));
+	// Si el cuerpo supera post_max_size, PHP vacía $_POST/$_FILES: detéctalo aparte.
+	if (empty($_POST) && (int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 0) pa_out(array('ok' => false, 'error' => 'too_big_post'));
+	if (!isset($_FILES['file'])) pa_out(array('ok' => false, 'error' => 'no_file'));
+	$uerr = $_FILES['file']['error'];
+	if ($uerr !== UPLOAD_ERR_OK) {
+		$map = array(UPLOAD_ERR_INI_SIZE => 'file_too_big', UPLOAD_ERR_FORM_SIZE => 'file_too_big',
+			UPLOAD_ERR_PARTIAL => 'partial', UPLOAD_ERR_NO_FILE => 'no_file',
+			UPLOAD_ERR_NO_TMP_DIR => 'no_tmp', UPLOAD_ERR_CANT_WRITE => 'cant_write');
+		pa_out(array('ok' => false, 'error' => isset($map[$uerr]) ? $map[$uerr] : 'upload_err', 'code' => $uerr));
+	}
 	$f = $_FILES['file'];
 	if ($f['size'] > 104857600) pa_out(array('ok' => false, 'error' => 'too_big'));
 	$mime = function_exists('mime_content_type') ? (mime_content_type($f['tmp_name']) ?: $f['type']) : $f['type'];

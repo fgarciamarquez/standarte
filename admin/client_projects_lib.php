@@ -81,6 +81,23 @@ if (!function_exists('cpx_key')) {
 		return null;
 	}
 
+	/* Extrae el FILE_ID de cualquier formato de enlace de Google Drive. */
+	function cpx_drive_file_id($url) {
+		if (!is_string($url) || trim($url) === '') return null;
+		$url = trim($url);
+		if (preg_match('~/file/d/([a-zA-Z0-9_-]{10,})~', $url, $m)) return $m[1];   // /file/d/ID/view
+		if (preg_match('~[?&]id=([a-zA-Z0-9_-]{10,})~', $url, $m)) return $m[1];    // open?id= / uc?id=
+		if (preg_match('~^[a-zA-Z0-9_-]{20,}$~', $url)) return $url;                // ID pegado a secas
+		return null;
+	}
+
+	/* Construye la URL embebible de Drive según el tipo de media. */
+	function cpx_drive_src($id, $type) {
+		if ($type === 'image') return 'https://drive.google.com/thumbnail?id=' . $id . '&sz=w2000';
+		if ($type === 'video') return 'https://drive.google.com/file/d/' . $id . '/preview';
+		return 'https://drive.google.com/file/d/' . $id . '/view';                  // model (.glb) u otro
+	}
+
 	/* Plantilla inicial: textos que suelen repetirse en cada propuesta (basados en
 	 * el proyecto IDh). Se aplican al crear un proyecto nuevo y luego se editan
 	 * in situ en su página. */
