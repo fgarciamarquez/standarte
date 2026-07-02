@@ -25,8 +25,8 @@
   let adminMsg = '';
 
   const t = {
-    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', titlePh: 'Título del proyecto', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta de la base imponible mientras no pase la fecha límite.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…' },
-    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', titlePh: 'Project title', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted from the taxable base until the deadline passes.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…' }
+    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', titlePh: 'Título del proyecto', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta de la base imponible mientras no pase la fecha límite.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…', clientEmail: 'Email del cliente (para los avisos)', clientEmailPh: 'cliente@empresa.com' },
+    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', titlePh: 'Project title', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted from the taxable base until the deadline passes.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…', clientEmail: 'Client email (for notifications)', clientEmailPh: 'client@company.com' }
   };
   $: L = t[lang];
 
@@ -36,6 +36,7 @@
     title: data.title[lang] || '', memoria: data.memoria[lang] || '',
     includes: (data.includes[lang] || []).join('\n'), excludes: (data.excludes[lang] || []).join('\n'),
     income: data.income_account || '', paid: !!data.paid,
+    clientEmail: data.client_email || '',
     discAmount: data.discount?.amount ? String(data.discount.amount) : '',
     discLabel: data.discount?.label?.[lang] || '', discDeadline: data.discount?.deadline || ''
   };
@@ -101,6 +102,7 @@
     const f = {}; f['title_' + lang] = eb.title; f['memoria_' + lang] = eb.memoria;
     f['includes_' + lang] = eb.includes; f['excludes_' + lang] = eb.excludes;
     f.income_account = eb.income; f.paid = eb.paid ? '1' : '0';
+    f.client_email = eb.clientEmail;
     f.discount_amount = eb.discAmount || '0'; f['discount_label_' + lang] = eb.discLabel; f.discount_deadline = eb.discDeadline || '';
     const r = await adminAction(token, 'save', f);
     await reload();
@@ -205,6 +207,13 @@
     {L.interlocutor}: <strong>{data.interlocutor.name}</strong> · {data.interlocutor.role[lang]} ·
     <a href="mailto:{data.interlocutor.email}">{data.interlocutor.email}</a>
   </p>
+
+  {#if admin}
+    <div class="pz-admin-field">
+      <label class="pz-elabel" for="pz-client-email">{L.clientEmail}</label>
+      <input id="pz-client-email" class="pz-edit" type="email" bind:value={eb.clientEmail} placeholder={L.clientEmailPh} />
+    </div>
+  {/if}
 
   <section class="pz-block">
     <h2 class="pz-h2">{L.media}</h2>
@@ -344,7 +353,7 @@
           {#if discAmount > 0}
             <tr><td>{L.subtotal}</td><td class="num">{fmt(subtotal)}</td>{#if admin}<td></td>{/if}</tr>
             <tr class="pz-disc" class:expired={!discValid}>
-              <td>{data.discount?.label?.[lang] || L.promptDiscount}{discDeadline ? ' · ' + L.until + ' ' + fmtDate(discDeadline) : ''}{!discValid ? ' (' + L.expired + ')' : ''}</td>
+              <td>{data.discount?.label?.[lang] || L.promptDiscount}{#if discDeadline} · {L.until} <strong>{fmtDate(discDeadline)}</strong>{/if}{#if !discValid} ({L.expired}){/if}</td>
               <td class="num">{discValid ? '− ' + fmt(discApplied) : '—'}</td>{#if admin}<td></td>{/if}
             </tr>
           {/if}
@@ -512,9 +521,10 @@
   .pz-lb-count { display: inline-block; margin-left: 10px; color: #b9b6a8; font-variant-numeric: tabular-nums; }
   .pz-lb-caption { display: block; }
   .pz-lb-desc { display: block; margin-top: 6px; color: #cfcdc4; font-size: 13px; line-height: 1.4; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .pz-admin-field { margin: 6px 0 0; }
   .pz-mediadesc { grid-column: 1 / -1; margin-top: 4px; }
   .pz-mediadesc .pz-edit { margin-bottom: 0; }
-  .pz-disc { color: #2e7d32; }
+  .pz-disc { color: #c0392b; }
   .pz-disc.expired { color: #aaa; text-decoration: line-through; }
   .pz-disc-edit { margin-top: 16px; border: 1px dashed #cfcdc4; border-radius: 8px; padding: 12px; background: #fbfbf7; }
   .pz-disc-edit-row { display: flex; gap: 8px; flex-wrap: wrap; }
