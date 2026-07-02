@@ -13,7 +13,12 @@
   let sent = null;                 // mensaje de confirmación tras "Enviar"
   let lightbox = null;             // media ampliado en ventana flotante, o null
 
-  function openLightbox(m) { if (m.type === 'image' || m.type === 'video') lightbox = m; }
+  // Vídeo del lightbox sin controles: en móvil el navegador bloquea el autoplay
+  // silencioso, así que mostramos un botón de "play" para tocar y reproducir.
+  let lbVideoEl;
+  let lbPlaying = false;
+  function playLbVideo() { if (lbVideoEl) { lbVideoEl.play().catch(() => {}); } }
+  function openLightbox(m) { if (m.type === 'image' || m.type === 'video') { lbPlaying = false; lightbox = m; } }
   function closeLightbox() { lightbox = null; }
   function onKeydownLight(e) { if (e.key === 'Escape') closeLightbox(); }
 
@@ -271,7 +276,16 @@
             <img src={lightbox.src} alt={lightbox.title[lang]} />
           {:else}
             <!-- svelte-ignore a11y-media-has-caption -->
-            <video src={lightbox.src} poster={lightbox.poster} autoplay loop muted playsinline></video>
+            <div class="pz-lb-video">
+              <video src={lightbox.src} poster={lightbox.poster} autoplay loop muted playsinline
+                bind:this={lbVideoEl}
+                on:playing={() => (lbPlaying = true)}
+                on:pause={() => (lbPlaying = false)}
+                on:click={playLbVideo}></video>
+              {#if !lbPlaying}
+                <button type="button" class="pz-lb-video-play" on:click={playLbVideo} aria-label="Reproducir vídeo"><span aria-hidden="true">▶</span></button>
+              {/if}
+            </div>
           {/if}
         {:else}
           <div class="pz-lb-ph pz-visual-{lightbox.type}">
@@ -383,6 +397,19 @@
   .pz-lb-close:hover { background: rgba(255,255,255,0.12); }
   .pz-lb-inner { margin: 0; max-width: min(1100px, 94vw); max-height: 88vh; display: flex; flex-direction: column; gap: 10px; }
   .pz-lb-inner img, .pz-lb-inner video { max-width: 100%; max-height: 80vh; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); background: #000; }
+  .pz-lb-video { position: relative; display: inline-flex; max-width: 100%; }
+  .pz-lb-video video { cursor: pointer; }
+  .pz-lb-video-play {
+    position: absolute; inset: 0; margin: auto;
+    width: 76px; height: 76px; border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff; font-size: 26px; line-height: 1; padding-left: 5px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .pz-lb-video-play:hover { background: rgba(0, 0, 0, 0.65); transform: scale(1.06); }
   .pz-lb-ph { width: min(900px, 90vw); aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; }
   .pz-lb-inner figcaption { color: #eceae2; font-family: 'Inconsolata', monospace; font-size: 15px; text-align: center; }
 

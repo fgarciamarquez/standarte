@@ -144,7 +144,14 @@
     isScrolled = window.scrollY > 8;
   }
 
+  // Vídeo del lightbox sin controles: en móvil el navegador bloquea el autoplay
+  // silencioso, así que mostramos un botón de "play" para tocar y reproducir.
+  let lbVideoEl;
+  let lbPlaying = false;
+  function playLbVideo() { if (lbVideoEl) { lbVideoEl.play().catch(() => {}); } }
+
   function openLightbox(index) {
+    lbPlaying = false;
     activeImageIndex = index;
   }
 
@@ -154,11 +161,13 @@
 
   function nextImage() {
     if (activeImageIndex === -1) return;
+    lbPlaying = false;
     activeImageIndex = (activeImageIndex + 1) % media.length;
   }
 
   function prevImage() {
     if (activeImageIndex === -1) return;
+    lbPlaying = false;
     activeImageIndex = (activeImageIndex - 1 + media.length) % media.length;
   }
 
@@ -460,7 +469,16 @@
         <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
         {#if media[activeImageIndex] && media[activeImageIndex].type === 'video'}
           <!-- svelte-ignore a11y_media_has_caption -->
-          <video src={media[activeImageIndex].src} class="lightbox-image" autoplay loop muted playsinline></video>
+          <div class="lightbox-video-wrap">
+            <video src={media[activeImageIndex].src} class="lightbox-image" autoplay loop muted playsinline
+              bind:this={lbVideoEl}
+              on:playing={() => (lbPlaying = true)}
+              on:pause={() => (lbPlaying = false)}
+              on:click={playLbVideo}></video>
+            {#if !lbPlaying}
+              <button type="button" class="lightbox-video-play" on:click={playLbVideo} aria-label="Reproducir vídeo"><span aria-hidden="true">▶</span></button>
+            {/if}
+          </div>
         {:else}
           <img src={media[activeImageIndex].src} alt={`Render de stand 3D ${activeImageIndex + 1} de ${project.name}`} class="lightbox-image" />
         {/if}
@@ -582,6 +600,20 @@
     -webkit-user-select: none;
     -webkit-touch-callout: none;
   }
+  /* Vídeo del lightbox: botón de "play" (toca para reproducir en móvil, sin controles). */
+  .lightbox-video-wrap { position: relative; display: inline-flex; max-width: 100%; }
+  .lightbox-video-wrap video { cursor: pointer; }
+  .lightbox-video-play {
+    position: absolute; inset: 0; margin: auto;
+    width: 76px; height: 76px; border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff; font-size: 26px; line-height: 1; padding-left: 5px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .lightbox-video-play:hover { background: rgba(0, 0, 0, 0.65); transform: scale(1.06); }
 
   .breadcrumbs-container {
     max-width: var(--container);
