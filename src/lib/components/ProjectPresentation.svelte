@@ -451,7 +451,7 @@
       </div>
     {:else}
       <div class="pz-approve-wrap">
-        <button class="pz-approve" type="button" on:click={approve} disabled={approving}>
+        <button class="pz-approve" class:pz-approve-offer={discValid} type="button" on:click={approve} disabled={approving}>
           {approving ? '…' : (discValid ? L.approveWithOffer : L.approve)}
         </button>
       </div>
@@ -599,6 +599,8 @@
   .pz-approve-wrap { margin-top: 18px; text-align: center; }
   .pz-approve { background: #1b1b1a; color: #fff; border: none; padding: 15px 36px; font-family: inherit; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
   .pz-approve:hover:not(:disabled) { background: #c0392b; }
+  .pz-approve-offer { background: #c0392b; }
+  .pz-approve-offer:hover:not(:disabled) { background: #a5281b; }
   .pz-approve:disabled { opacity: 0.5; cursor: default; }
   .pz-payinfo { margin-top: 18px; border: 1px solid #1b1b1a; border-radius: 8px; padding: 16px 18px; background: #fff; }
   .pz-payinfo .pz-h3 { margin-top: 0; }
