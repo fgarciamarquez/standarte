@@ -495,7 +495,7 @@
                 </model-viewer>
               {/if}
             {:else if isDriveEmbed(lightbox.src)}<iframe class="pz-lb-iframe" src={lightbox.src} title={lightbox.title[lang]} allow="autoplay; fullscreen" allowfullscreen></iframe>
-            {:else}<!-- svelte-ignore a11y-media-has-caption --><video src={lightbox.src} poster={lightbox.poster} controls autoplay loop muted playsinline></video>{/if}
+            {:else}<!-- svelte-ignore a11y-media-has-caption --><video src={lightbox.src} poster={lightbox.poster} autoplay loop muted playsinline></video>{/if}
           {:else}
             <div class="pz-lb-ph pz-visual-{lightbox.type}">{#if lightbox.type === 'video'}<span class="pz-play" aria-hidden="true">▶</span>{/if}</div>
           {/if}
