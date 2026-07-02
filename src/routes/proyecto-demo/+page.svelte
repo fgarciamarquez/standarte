@@ -271,7 +271,7 @@
             <img src={lightbox.src} alt={lightbox.title[lang]} />
           {:else}
             <!-- svelte-ignore a11y-media-has-caption -->
-            <video src={lightbox.src} poster={lightbox.poster} controls autoplay></video>
+            <video src={lightbox.src} poster={lightbox.poster} autoplay loop muted playsinline></video>
           {/if}
         {:else}
           <div class="pz-lb-ph pz-visual-{lightbox.type}">

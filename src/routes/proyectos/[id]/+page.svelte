@@ -460,7 +460,7 @@
         <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
         {#if media[activeImageIndex] && media[activeImageIndex].type === 'video'}
           <!-- svelte-ignore a11y_media_has_caption -->
-          <video src={media[activeImageIndex].src} class="lightbox-image" controls autoplay playsinline></video>
+          <video src={media[activeImageIndex].src} class="lightbox-image" autoplay loop muted playsinline></video>
         {:else}
           <img src={media[activeImageIndex].src} alt={`Render de stand 3D ${activeImageIndex + 1} de ${project.name}`} class="lightbox-image" />
         {/if}
