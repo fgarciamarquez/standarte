@@ -8,7 +8,9 @@ import { join } from 'node:path';
 const DIST = 'dist';
 const ALLOW = new Set([
   // Rutas (relativas a dist/, con / inicial) que SÍ pueden llevar noindex a propósito.
-  // Ahora mismo ninguna. Ej.: '/gracias.html'
+  // Zona privada de proyectos de cliente (acceso por token; nunca debe indexarse).
+  '/proyecto.html', '/proyecto/index.html',
+  '/proyecto-demo.html', '/proyecto-demo/index.html',
 ]);
 
 function walk(dir) {
