@@ -9,6 +9,9 @@
   // las páginas de ciudad. El asistente respeta ambas variantes.
   export let variant = 'dark';
   export let initialFair = '';
+  // 'compact' = versión integrada para páginas de vídeo/proyecto: títulos en h4 y
+  // sin la ficha de la persona de contacto (Patricia).
+  export let compact = false;
 
   // Reclamo bajo el título del formulario: prototipo 3D en 72h.
   const prototypeLabels = {
@@ -139,13 +142,13 @@
   }
 </script>
 
-<section id="contact" class="section contact" class:contact-light={variant === 'light'}>
+<section id="contact" class="section contact" class:contact-light={variant === 'light'} class:contact-compact={compact}>
   <div class="contact-form">
     <div class="contact-layout">
       <aside class="contact-us">
-        <h3>{labels.contactTitle}</h3>
-        <h3 class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</h3>
-        {#if variant === 'light'}
+        <svelte:element this={compact ? 'h4' : 'h3'}>{labels.contactTitle}</svelte:element>
+        <svelte:element this={compact ? 'h4' : 'h3'} class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</svelte:element>
+        {#if variant === 'light' && !compact}
           <figure class="contact-person">
             <img
               class="contact-person-photo"
@@ -319,6 +322,12 @@
 
 <style>
   .contact-subtitle { margin-top: -34px; }
+
+  /* Versión compacta (páginas de vídeo/proyecto): títulos en h4, sin ficha de persona. */
+  .contact-us h4 { margin: 0 0 6px; font-size: 22px; line-height: 1.25; font-weight: 700; color: #fff; }
+  .contact-light .contact-us h4 { color: #1a1e21; }
+  .contact-compact .contact-subtitle { margin-top: 4px; margin-bottom: 24px; font-size: 18px; color: #b8860b; }
+
   .field-hidden { display: none !important; }
   .hp-field { position: absolute; left: -9999px; top: -9999px; height: 1px; width: 1px; overflow: hidden; }
 

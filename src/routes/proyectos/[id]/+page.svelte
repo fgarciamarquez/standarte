@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { pathFor, copy, languages, languageLabels, projectUrl } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
-  import ProjectAdvisor from '$lib/components/ProjectAdvisor.svelte';
+  import ContactForm from '$lib/components/ContactForm.svelte';
 
 
 
@@ -435,8 +435,8 @@
       {/each}
     </div>
 
-    <!-- Panel de Pat: invitación a un proyecto a medida (al final de la galería). -->
-    <ProjectAdvisor {lang} {project} />
+    <!-- Asistente de presupuesto progresivo (integrado, igual que en las páginas de vídeo). -->
+    <ContactForm {lang} labels={copy[lang] || copy.es} variant="light" compact />
 
     <!-- Volver al Inicio -->
     <div class="back-navigation">

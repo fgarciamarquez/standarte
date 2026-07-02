@@ -60,7 +60,7 @@
     <p class="video-desc">{video.description}</p>
 
     <!-- Asistente de presupuesto progresivo (mismo que home/ciudades). -->
-    <ContactForm lang="es" labels={copy.es} variant="light" />
+    <ContactForm lang="es" labels={copy.es} variant="light" compact />
 
     <nav class="video-nav">
       {#if video.projectId}
