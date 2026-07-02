@@ -63,11 +63,19 @@
   }
   function imageIndex(m) { return (data.media || []).filter((x) => x.type === 'image').indexOf(m) + 1; }
   function videoIndex(m) { return (data.media || []).filter((x) => x.type === 'video').indexOf(m) + 1; }
-  // Vídeo embebido de Google Drive → se muestra con <iframe> (reproductor de Drive).
+  // Vídeo embebido de Google Drive → se reproduce con <iframe> dentro del lightbox.
   const isDriveEmbed = (src) => typeof src === 'string' && src.includes('drive.google.com') && src.includes('/preview');
-  // Lista navegable del lightbox: imágenes y vídeos nativos (los de Drive llevan su
-  // propio reproductor con pantalla completa; el modelo 3D no amplía).
-  const isLbItem = (m) => m && (m.type === 'image' || (m.type === 'video' && !isDriveEmbed(m.src)));
+  const driveId = (src) => { const m = /\/file\/d\/([a-zA-Z0-9_-]+)/.exec(src || ''); const n = /[?&]id=([a-zA-Z0-9_-]+)/.exec(src || ''); return m ? m[1] : (n ? n[1] : null); };
+  const driveThumb = (src) => { const id = driveId(src); return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w1200` : null; };
+  const isDriveUrl = (src) => typeof src === 'string' && src.includes('drive.google.com');
+  const drivePreview = (src) => { const id = driveId(src); return id ? `https://drive.google.com/file/d/${id}/preview` : src; };
+  // Lista navegable del lightbox: imágenes, vídeos y modelos 3D con archivo.
+  const isLbItem = (m) => m && (m.type === 'image' || m.type === 'video' || (m.type === 'model' && !!m.src));
+
+  // Carga diferida del visor 3D (solo al abrir un modelo alojado en Storage).
+  let mvLoaded = false;
+  async function loadModelViewer() { if (mvLoaded) return; try { await import('@google/model-viewer'); } catch (e) {} mvLoaded = true; }
+  $: if (lightbox && lightbox.type === 'model' && lightbox.src && !isDriveUrl(lightbox.src)) loadModelViewer();
   $: lbList = (data?.media || []).filter(isLbItem);
   $: lbIndex = lightbox ? lbList.indexOf(lightbox) : -1;
   function openLightbox(m) { if (!admin && isLbItem(m)) lightbox = m; }
@@ -230,12 +238,14 @@
         >
           {#if m.type === 'model'}
             <div class="pz-3d">◈ {L.model}</div>
-            {#if m.src}<a class="pz-3d-btn" href={m.src} target="_blank" rel="noopener">{L.viewModel}</a>{/if}
+            {#if m.src && !admin}<span class="pz-3d-hint">{L.viewModel} ⤢</span>{/if}
+            {#if admin && m.src}<a class="pz-3d-btn" href={isDriveUrl(m.src) ? m.src : m.src} target="_blank" rel="noopener">{L.viewModel}</a>{/if}
           {:else if m.src}
             {#if m.type === 'image'}
               <img class="pz-thumb" src={m.src} alt={m.title[lang]} loading="lazy" />
             {:else if isDriveEmbed(m.src)}
-              <iframe class="pz-thumb pz-iframe" src={m.src} title={m.title[lang]} allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+              {#if driveThumb(m.src)}<img class="pz-thumb" src={driveThumb(m.src)} alt={m.title[lang]} loading="lazy" />{/if}
+              <span class="pz-play" aria-hidden="true">▶</span>
             {:else}
               <video class="pz-thumb" src={m.src} poster={m.poster} preload="metadata" muted></video>
               <span class="pz-play" aria-hidden="true">▶</span>
@@ -394,6 +404,14 @@
         <figure class="pz-lb-inner">
           {#if lightbox.src}
             {#if lightbox.type === 'image'}<img src={lightbox.src} alt={lightbox.title[lang]} />
+            {:else if lightbox.type === 'model'}
+              {#if isDriveUrl(lightbox.src)}
+                <iframe class="pz-lb-iframe" src={drivePreview(lightbox.src)} title={lightbox.title[lang]} allow="autoplay; fullscreen" allowfullscreen></iframe>
+              {:else}
+                <!-- svelte-ignore a11y-unknown-role -->
+                <model-viewer class="pz-lb-model" src={lightbox.src} camera-controls auto-rotate touch-action="pan-y" ar shadow-intensity="1"></model-viewer>
+              {/if}
+            {:else if isDriveEmbed(lightbox.src)}<iframe class="pz-lb-iframe" src={lightbox.src} title={lightbox.title[lang]} allow="autoplay; fullscreen" allowfullscreen></iframe>
             {:else}<!-- svelte-ignore a11y-media-has-caption --><video src={lightbox.src} poster={lightbox.poster} controls autoplay></video>{/if}
           {:else}
             <div class="pz-lb-ph pz-visual-{lightbox.type}">{#if lightbox.type === 'video'}<span class="pz-play" aria-hidden="true">▶</span>{/if}</div>
@@ -477,7 +495,9 @@
   .pz-compose button { border: none; background: #1b1b1a; color: #fff; padding: 0 16px; font-family: inherit; font-size: 13px; cursor: pointer; }
   .pz-drop { border: 2px dashed #b9b6a8; border-radius: 10px; padding: 26px; text-align: center; color: #7a776b; cursor: pointer; background: #faf9f4; transition: all .15s; }
   .pz-drop.over { border-color: #1b1b1a; background: #f0eee5; color: #1b1b1a; }
-  .pz-iframe { border: 0; }
+  .pz-lb-iframe { width: min(1100px, 94vw); aspect-ratio: 16 / 9; max-height: 80vh; border: 0; background: #000; }
+  .pz-lb-model { width: min(1100px, 94vw); height: 80vh; background: #111; border: 1px solid rgba(255,255,255,0.2); --poster-color: transparent; }
+  .pz-3d-hint { font-size: 12px; color: #cfcdc4; border: 1px solid rgba(244,243,238,0.5); border-radius: 4px; padding: 5px 12px; }
   .pz-drive { margin-top: 12px; border: 1px solid #cfcdc4; border-radius: 10px; padding: 14px; background: #fbfbf7; }
   .pz-drive-head { font-size: 13px; font-weight: 700; color: #1b1b1a; margin-bottom: 10px; }
   .pz-drive-row { display: flex; gap: 8px; flex-wrap: wrap; }
