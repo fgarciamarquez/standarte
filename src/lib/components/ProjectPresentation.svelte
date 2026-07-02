@@ -80,11 +80,18 @@
   $: if (lightbox && lightbox.type === 'model' && lightbox.src && !isDriveUrl(lightbox.src)) loadModelViewer();
   $: lbList = (data?.media || []).filter(isLbItem);
   $: lbIndex = lightbox ? lbList.indexOf(lightbox) : -1;
-  function openLightbox(m) { if (!admin && isLbItem(m)) lightbox = m; }
+  // Vídeo del lightbox: sin barra de controles, autoplay+bucle. En móvil el
+  // navegador suele bloquear el autoplay silencioso (ahorro de energía/datos),
+  // así que mostramos un botón de "play" para tocar y reproducir.
+  let lbVideoEl;
+  let lbPlaying = false;
+  function playLbVideo() { if (lbVideoEl) { lbVideoEl.play().catch(() => {}); } }
+  function openLightbox(m) { if (!admin && isLbItem(m)) { lbPlaying = false; lightbox = m; } }
   function closeLightbox() { lightbox = null; }
   function lbGo(dir) {
     if (!lightbox || lbList.length < 2) return;
     const i = lbList.indexOf(lightbox);
+    lbPlaying = false;
     lightbox = lbList[(i + dir + lbList.length) % lbList.length];
   }
   function onKeydownLight(e) {
@@ -495,7 +502,19 @@
                 </model-viewer>
               {/if}
             {:else if isDriveEmbed(lightbox.src)}<iframe class="pz-lb-iframe" src={lightbox.src} title={lightbox.title[lang]} allow="autoplay; fullscreen" allowfullscreen></iframe>
-            {:else}<!-- svelte-ignore a11y-media-has-caption --><video src={lightbox.src} poster={lightbox.poster} autoplay loop muted playsinline></video>{/if}
+            {:else}
+              <!-- svelte-ignore a11y-media-has-caption -->
+              <div class="pz-lb-video">
+                <video src={lightbox.src} poster={lightbox.poster} autoplay loop muted playsinline
+                  bind:this={lbVideoEl}
+                  on:playing={() => (lbPlaying = true)}
+                  on:pause={() => (lbPlaying = false)}
+                  on:click={playLbVideo}></video>
+                {#if !lbPlaying}
+                  <button type="button" class="pz-lb-video-play" on:click={playLbVideo} aria-label="Reproducir vídeo"><span aria-hidden="true">▶</span></button>
+                {/if}
+              </div>
+            {/if}
           {:else}
             <div class="pz-lb-ph pz-visual-{lightbox.type}">{#if lightbox.type === 'video'}<span class="pz-play" aria-hidden="true">▶</span>{/if}</div>
           {/if}
@@ -666,6 +685,20 @@
   .pz-lb-close:hover { background: rgba(255,255,255,0.12); }
   .pz-lb-inner { margin: 0; max-width: min(1100px, 94vw); max-height: 88vh; display: flex; flex-direction: column; gap: 10px; }
   .pz-lb-inner img, .pz-lb-inner video { max-width: 100%; max-height: 80vh; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); background: #000; }
+  /* Vídeo del lightbox: contenedor para el botón de "play" (toca para reproducir en móvil). */
+  .pz-lb-video { position: relative; display: inline-flex; max-width: 100%; }
+  .pz-lb-video video { cursor: pointer; }
+  .pz-lb-video-play {
+    position: absolute; inset: 0; margin: auto;
+    width: 76px; height: 76px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.45);
+    color: #fff; font-size: 26px; line-height: 1; padding-left: 5px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .pz-lb-video-play:hover { background: rgba(0,0,0,0.65); transform: scale(1.06); }
   .pz-lb-ph { width: min(900px, 90vw); aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; }
   .pz-lb-inner figcaption { color: #eceae2; font-family: 'Inconsolata', monospace; font-size: 15px; text-align: center; }
   .pz-lb-count { display: inline-block; margin-left: 10px; color: #b9b6a8; font-variant-numeric: tabular-nums; }
