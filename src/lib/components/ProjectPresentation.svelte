@@ -475,7 +475,9 @@
                 <iframe class="pz-lb-iframe" src={drivePreview(lightbox.src)} title={lightbox.title[lang]} allow="autoplay; fullscreen" allowfullscreen></iframe>
               {:else}
                 <!-- svelte-ignore a11y-unknown-role -->
-                <model-viewer class="pz-lb-model" src={lightbox.src} camera-controls auto-rotate touch-action="pan-y" ar shadow-intensity="1"></model-viewer>
+                <!-- max-camera-orbit phi=90deg: la órbita vertical no pasa de la horizontal,
+                     así el modelo NO se puede ver por debajo de la línea de suelo. -->
+                <model-viewer class="pz-lb-model" src={lightbox.src} camera-controls auto-rotate max-camera-orbit="Infinity 90deg auto" touch-action="pan-y" ar shadow-intensity="1"></model-viewer>
               {/if}
             {:else if isDriveEmbed(lightbox.src)}<iframe class="pz-lb-iframe" src={lightbox.src} title={lightbox.title[lang]} allow="autoplay; fullscreen" allowfullscreen></iframe>
             {:else}<!-- svelte-ignore a11y-media-has-caption --><video src={lightbox.src} poster={lightbox.poster} controls autoplay loop muted playsinline></video>{/if}
