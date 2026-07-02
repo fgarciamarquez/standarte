@@ -37,3 +37,38 @@ export async function notifySend(token, role) {
   const res = await fetch('/admin/ajax_proyecto_notify.php', { method: 'POST', body: fd });
   return res.json().catch(() => ({ ok: false }));
 }
+
+// ─── Modo edición (interno) ────────────────────────────────────────────────
+// Las escrituras van al endpoint PHP, que valida la sesión de admin y usa la
+// service key en servidor. La cookie de sesión viaja sola (mismo origen).
+const ADMIN_URL = '/admin/ajax_proyecto_admin.php';
+
+export async function adminWhoami() {
+  const fd = new FormData(); fd.append('action', 'whoami');
+  const r = await fetch(ADMIN_URL, { method: 'POST', body: fd });
+  return r.json().catch(() => ({ authed: false }));
+}
+export async function adminLogin(password) {
+  const fd = new FormData(); fd.append('action', 'login'); fd.append('password', password);
+  const r = await fetch(ADMIN_URL, { method: 'POST', body: fd });
+  return r.json().catch(() => ({ ok: false }));
+}
+export async function adminLogout() {
+  const fd = new FormData(); fd.append('action', 'logout');
+  const r = await fetch(ADMIN_URL, { method: 'POST', body: fd });
+  return r.json().catch(() => ({ ok: true }));
+}
+export async function adminAction(token, action, fields = {}) {
+  const fd = new FormData();
+  fd.append('action', action); fd.append('token', token);
+  for (const [k, v] of Object.entries(fields)) fd.append(k, v);
+  const r = await fetch(ADMIN_URL, { method: 'POST', body: fd });
+  return r.json().catch(() => ({ ok: false }));
+}
+export async function adminUpload(token, file, sortOrder) {
+  const fd = new FormData();
+  fd.append('action', 'upload'); fd.append('token', token); fd.append('file', file);
+  if (sortOrder != null) fd.append('sort_order', String(sortOrder));
+  const r = await fetch(ADMIN_URL, { method: 'POST', body: fd });
+  return r.json().catch(() => ({ ok: false }));
+}

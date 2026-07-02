@@ -8,14 +8,24 @@
  * la autorización, así que basta la clave publishable (SUPABASE_KEY) y no se
  * necesita la service key. Reutiliza el mailer SMTP de campañas.
  */
+session_start();
 header('Content-Type: application/json; charset=utf-8');
 
 function pn_post($k) { return isset($_POST[$k]) && is_string($_POST[$k]) ? trim($_POST[$k]) : ''; }
+function pn_admin_authed() { return isset($_SESSION['standarte_email_campaing_auth']) && $_SESSION['standarte_email_campaing_auth'] === true; }
 
 $token = pn_post('token');
 $role  = pn_post('role');
 if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token) || !in_array($role, array('client', 'internal'), true)) {
 	echo json_encode(array('ok' => false, 'error' => 'bad_request'));
+	exit;
+}
+/* El aviso "hemos respondido" solo lo puede disparar el equipo autenticado
+ * (ahora que la propia página es editable en modo admin), no cualquiera con
+ * el enlace. El aviso "el cliente comentó" (role=client) sigue abierto: lo
+ * dispara el propio visitante desde su comentario. */
+if ($role === 'internal' && !pn_admin_authed()) {
+	echo json_encode(array('ok' => false, 'error' => 'unauthorized'));
 	exit;
 }
 
