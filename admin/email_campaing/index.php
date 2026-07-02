@@ -697,6 +697,7 @@ if ($isCronEmpty) {
         <span class="status-text" id="system-status-text"><?php echo $statusLabel; ?></span>
       </div>
       <a href="manage_images.php" style="background:#ffc800; color:#111; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:0.85rem; transition: opacity 0.2s ease;">Gestionar Imágenes</a>
+      <a href="../proyectos.php" style="background:#111; color:#ffc800; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:0.85rem; transition: opacity 0.2s ease;">Zona de Proyectos</a>
       <a href="?logout=1">Cerrar Sesión</a>
     </div>
   </header>
