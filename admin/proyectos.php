@@ -41,7 +41,39 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	header('Location: proyectos.php?msg=' . urlencode('Proyecto creado. Ábrelo desde la lista para completarlo (edición en su propia página).')); exit;
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,paid,access_token,created_at&order=created_at.desc') : array();
+/* ---------- Cambiar un estado (aprobado / contrato / factura) ---------- */
+if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === 'toggle_status') {
+	$id = post('id');
+	$field = post('field');
+	$allowed = array('contract_done', 'invoice_done');
+	if (in_array($field, $allowed, true) && preg_match('/^[0-9a-f-]{36}$/', $id)) {
+		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($id), array($field => (post('value') === '1')));
+	}
+	header('Location: proyectos.php'); exit;
+}
+
+/* Insignia de solo lectura (para "Aprobado", que marca el cliente). */
+function status_badge($p, $field) {
+	$on = !empty($p[$field]);
+	return '<span class="st ' . ($on ? 'st-on' : 'st-off') . ' st-ro">' . ($on ? 'Cursado' : 'Pendiente') . '</span>';
+}
+
+/* Pinta un estado como botón que alterna Pendiente(gris) ↔ Cursado(verde). */
+function status_toggle($p, $field) {
+	$on = !empty($p[$field]);
+	$next = $on ? '0' : '1';
+	$cls = $on ? 'st st-on' : 'st st-off';
+	$txt = $on ? 'Cursado' : 'Pendiente';
+	return '<form method="post" class="st-form">'
+		. '<input type="hidden" name="action" value="toggle_status">'
+		. '<input type="hidden" name="id" value="' . h($p['id']) . '">'
+		. '<input type="hidden" name="field" value="' . h($field) . '">'
+		. '<input type="hidden" name="value" value="' . $next . '">'
+		. '<button type="submit" class="' . $cls . '" title="Cambiar estado">' . $txt . '</button>'
+		. '</form>';
+}
+
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,paid,approved,contract_done,invoice_done,access_token,created_at&order=created_at.desc') : array();
 ?>
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -61,6 +93,13 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 	.link { font-size: 12px; word-break: break-all; color: #8fd; }
 	.paid { color: #4caf50; } .draft { color: #888; }
 	.hint { font-size: 12px; color: #888; margin: -6px 0 16px; }
+	.st-form { margin: 0; }
+	.st { border: 1px solid; border-radius: 20px; padding: 4px 12px; font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; background: transparent; }
+	.st-off { color: #8a8f98; border-color: #3a3f48; }
+	.st-off:hover { border-color: #6a6f78; color: #c0c4cc; }
+	.st-on { color: #4caf50; border-color: #2e7d32; background: rgba(46,125,50,.12); }
+	.st-on:hover { background: rgba(46,125,50,.22); }
+	.st-ro { cursor: default; }
 </style></head>
 <body><div class="wrap">
 <?php if (!pj_authed()): ?>
@@ -102,10 +141,13 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 		<h3>Proyectos</h3>
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, abre el enlace del
 			proyecto: al estar tu sesión iniciada, la propia página se vuelve editable.</p>
-		<table><tr><th>Ref</th><th>Cliente</th><th>Estado</th><th>Abrir</th></tr>
+		<p class="hint">Aprobado lo marca el cliente al aprobar; contrato y factura los marcas tú al cursarlos (clic para alternar).</p>
+		<table><tr><th>Ref</th><th>Cliente</th><th>Aprobado</th><th>Contrato</th><th>Factura</th><th>Abrir</th></tr>
 		<?php foreach ($projects as $p): ?>
 			<tr><td><?= h($p['ref']) ?></td><td><?= h($p['client_name']) ?></td>
-			<td class="<?= $p['paid'] ? 'paid' : 'draft' ?>"><?= $p['paid'] ? 'Pagado' : 'Borrador' ?></td>
+			<td><?= status_badge($p, 'approved') ?></td>
+			<td><?= status_toggle($p, 'contract_done') ?></td>
+			<td><?= status_toggle($p, 'invoice_done') ?></td>
 			<td class="link"><a href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir y editar →</a></td></tr>
 		<?php endforeach; ?>
 		</table>

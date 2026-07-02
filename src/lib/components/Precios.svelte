@@ -1,7 +1,10 @@
 <script>
+  import { onMount } from 'svelte';
   import { pathFor, languages, languageLabels } from '$lib/siteData.js';
   import { pricingTiers, fmtEuro } from '$lib/pricingTiers.js';
   import FlagIcon from './FlagIcon.svelte';
+  import AiSourceButtons from './AiSourceButtons.svelte';
+  import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let data;
   $: lang = data.lang;
@@ -10,6 +13,30 @@
 
   let menuOpen = false;
   let isScrolled = false;
+
+  // ── Asesor de Pat (WelcomeAdvisor): carga diferida como en la home ──
+  let showWelcomeAdvisor = false;
+  let AdvisorComponent = null;   // se rellena con el import dinámico
+  let advisorTimeout, advisorLoadHandler;
+
+  // Reactiva a Pat desde el botón "Expansión" (junto a los botones GEO).
+  function reopenAdvisor() {
+    advisorDismissed.reactivate();
+    if (AdvisorComponent) { showWelcomeAdvisor = true; }
+    else { import('./WelcomeAdvisor.svelte').then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; }).catch(() => {}); }
+  }
+
+  onMount(() => {
+    const launchAdvisor = () => {
+      advisorTimeout = setTimeout(() => {
+        if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('standarte_advisor_dismissed') === '1') return;
+        import('./WelcomeAdvisor.svelte').then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; }).catch(() => {});
+      }, 8000);
+    };
+    if (document.readyState === 'complete') { launchAdvisor(); }
+    else { advisorLoadHandler = launchAdvisor; window.addEventListener('load', advisorLoadHandler, { once: true }); }
+    return () => { clearTimeout(advisorTimeout); if (advisorLoadHandler) window.removeEventListener('load', advisorLoadHandler); };
+  });
 
   // Cifras orientativas «desde», validadas. Fuente única en $lib/pricingTiers.js
   // (compartidas con el asistente de presupuesto). Se muestran como "desde X €".
@@ -702,6 +729,14 @@
     <a href={pathFor(lang, 'contact')} class="btn-cta-gold">{t.cta}</a>
   </div>
 </main>
+
+<AiSourceButtons {lang} variant="band" canReactivate on:reactivate={reopenAdvisor} />
+
+{#if showWelcomeAdvisor && AdvisorComponent}
+  <svelte:component this={AdvisorComponent} {lang}
+    on:openPrivacy={() => (typeof window !== 'undefined' && window.open('/privacidad', '_blank', 'noopener'))}
+    on:dismiss={() => (showWelcomeAdvisor = false)} />
+{/if}
 
 <footer class="footer">
   <div class="footer-bottom">
