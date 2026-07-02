@@ -29,6 +29,19 @@ export async function addComment(token, mediaId, body) {
   return rpc('add_client_comment', { p_token: token, p_media: mediaId, p_body: body });
 }
 
+/** El cliente aprueba el proyecto (congela la oferta si withOffer y sigue vigente). */
+export async function approveProject(token, withOffer) {
+  return rpc('approve_client_project', { p_token: token, p_with_offer: !!withOffer });
+}
+
+/** El cliente guarda sus datos de facturación (para que el equipo emita la factura). */
+export async function saveBilling(token, b) {
+  return rpc('save_client_billing', {
+    p_token: token, p_company: b.company || '', p_cif: b.cif || '', p_address: b.address || '',
+    p_postal: b.postal || '', p_city: b.city || '', p_country: b.country || ''
+  });
+}
+
 /** Dispara el aviso por email (endpoint PHP que reutiliza el mailer SMTP). */
 export async function notifySend(token, role) {
   const fd = new FormData();
