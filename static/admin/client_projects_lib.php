@@ -66,10 +66,22 @@ if (!function_exists('cpx_key')) {
 	function cpx_storage_public_url($path) {
 		return SUPABASE_URL . '/storage/v1/object/public/client-projects/' . $path;
 	}
-	/* Borra del bucket client-projects todos los ficheros subidos de un proyecto
+	/* ¿El fichero <path> del bucket lo referencia el media de OTRO proyecto?
+	 * (p. ej. un duplicado/piloto que apunta al mismo archivo). Si es así no se
+	 * debe borrar al eliminar el proyecto original, para no dejar roto al otro. */
+	function cpx_media_referenced_elsewhere($path, $excludeProjectId) {
+		$q = 'client_project_media?select=id&limit=1'
+			. '&project_id=neq.' . urlencode($excludeProjectId)
+			. '&src=like.' . rawurlencode('*' . $path);
+		$rows = cpx_rows($q);
+		return !empty($rows);
+	}
+
+	/* Borra del bucket client-projects los ficheros subidos de un proyecto
 	 * (la carpeta <projectId>/...). Best-effort: si algo falla no aborta el borrado
 	 * del proyecto. Los media enlazados de Google Drive no viven en Storage y se
-	 * ignoran (no aparecen en el listado). */
+	 * ignoran (no aparecen en el listado). Además, NO se borra ningún fichero que
+	 * otro proyecto siga referenciando (duplicados/pilotos que comparten archivo). */
 	function cpx_storage_delete_folder($projectId) {
 		if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId)) return;
 		$ch = curl_init();
@@ -88,7 +100,10 @@ if (!function_exists('cpx_key')) {
 		if (!is_array($list) || empty($list)) return;
 		$paths = array();
 		foreach ($list as $obj) {
-			if (isset($obj['name']) && $obj['name'] !== '') $paths[] = $projectId . '/' . $obj['name'];
+			if (!isset($obj['name']) || $obj['name'] === '') continue;
+			$full = $projectId . '/' . $obj['name'];
+			if (cpx_media_referenced_elsewhere($full, $projectId)) continue;  // lo usa otro proyecto: respétalo
+			$paths[] = $full;
 		}
 		if (empty($paths)) return;
 		$ch = curl_init();
