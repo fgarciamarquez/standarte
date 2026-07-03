@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl } from '$lib/siteData.js';
-  import { uspHome } from '$lib/uspSnippets.js';
+  import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
@@ -1225,6 +1225,7 @@
       {/if}
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
+      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
@@ -1801,6 +1802,7 @@
         <ul>
           <li><a href={pathFor(lang, 'services')} tabindex="-1">{copy.nav.services}</a></li>
           <li><a href={pathFor(lang, 'custom')} tabindex="-1">{copy.nav.custom}</a></li>
+          <li><a href={pathFor(lang, 'proyecto_auditado')} tabindex="-1">{uspNavLabel(lang)}</a></li>
           <li><a href={pathFor(lang, 'noticias')} tabindex="-1">{copy.nav.noticias}</a></li>
           <li><a href={pathFor(lang, 'contact')} tabindex="-1">{copy.nav.contact}</a></li>
         </ul>

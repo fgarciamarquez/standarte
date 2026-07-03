@@ -1,8 +1,6 @@
-// Microcopys del Sistema de Proyecto Auditado (super-recurso) para destacarlo en
-// sitios prioritarios: sección de la home, y una frase enlazada (banco de 3 variantes
-// por idioma, elegida por hash del slug para no crear boilerplate) en fichas de feria
-// y hubs de actividad. Todo enlaza a la landing /proyecto-auditado (pathFor
-// (lang,"proyecto_auditado")).
+// Microcopys del Sistema de Proyecto Auditado (super-recurso): sección de la home,
+// frase enlazada (banco de 3 variantes por idioma, por hash del slug) para fichas/hubs,
+// y etiqueta corta de menú (navLabel). Todo enlaza a /proyecto-auditado.
 export const uspSnippets = {
   "es": {
     "homeHeading": "Lo que ves es lo que se construye",
@@ -12,7 +10,8 @@ export const uspSnippets = {
       "Con nuestro Sistema de Proyecto Auditado, lo que apruebas en el prototipo es exactamente lo que montamos.",
       "Cada proyecto queda en un expediente verificable: el prototipo que apruebas es el stand que construimos.",
       "Trabajamos con proyecto auditado y archivable, tu garantía de que recibes lo aprobado, sin sorpresas."
-    ]
+    ],
+    "navLabel": "Proyecto auditado"
   },
   "pt": {
     "homeHeading": "O que vês é o que se constrói",
@@ -22,7 +21,8 @@ export const uspSnippets = {
       "Com o nosso Sistema de Projeto Auditado, o que aprovas no protótipo é exatamente o que montamos.",
       "Cada projeto fica num processo verificável: o protótipo que aprovas é o stand que construímos.",
       "Trabalhamos com projeto auditado e arquivável, a tua garantia de que recebes o aprovado, sem surpresas."
-    ]
+    ],
+    "navLabel": "Projeto auditado"
   },
   "en": {
     "homeHeading": "What you see is what we build",
@@ -32,7 +32,8 @@ export const uspSnippets = {
       "With our Audited Project System, what you approve in the prototype is exactly what we build.",
       "Every project stays in a verifiable record: the prototype you approve is the stand we build.",
       "We work with an audited, archivable project, your guarantee that you get what was approved, with no surprises."
-    ]
+    ],
+    "navLabel": "Audited project"
   },
   "de": {
     "homeHeading": "Was du siehst, wird gebaut",
@@ -42,7 +43,8 @@ export const uspSnippets = {
       "Mit unserem System des auditierten Projekts ist das, was du am Prototyp freigibst, genau das, was wir bauen.",
       "Jedes Projekt bleibt in einer prüfbaren Akte: Der Prototyp, den du freigibst, ist der Stand, den wir bauen.",
       "Wir arbeiten mit einem auditierten und archivierbaren Projekt, deine Garantie, dass du das Freigegebene erhältst, ohne Überraschungen."
-    ]
+    ],
+    "navLabel": "Auditiertes Projekt"
   },
   "fr": {
     "homeHeading": "Ce que tu vois est ce qui se construit",
@@ -52,7 +54,8 @@ export const uspSnippets = {
       "Avec notre Système de Projet Audité, ce que tu approuves sur le prototype est exactement ce que nous montons.",
       "Chaque projet reste dans un dossier vérifiable : le prototype que tu approuves est le stand que nous construisons.",
       "Nous travaillons avec un projet audité et archivable, ta garantie de recevoir ce qui a été approuvé, sans surprises."
-    ]
+    ],
+    "navLabel": "Projet audité"
   },
   "it": {
     "homeHeading": "Ciò che vedi è ciò che si costruisce",
@@ -62,7 +65,8 @@ export const uspSnippets = {
       "Con il nostro Sistema di Progetto Verificato, ciò che approvi sul prototipo è esattamente ciò che montiamo.",
       "Ogni progetto resta in un fascicolo verificabile: il prototipo che approvi è lo stand che costruiamo.",
       "Lavoriamo con un progetto verificato e archiviabile, la tua garanzia di ricevere ciò che è stato approvato, senza sorprese."
-    ]
+    ],
+    "navLabel": "Progetto verificato"
   },
   "nl": {
     "homeHeading": "Wat je ziet, is wat we bouwen",
@@ -72,7 +76,8 @@ export const uspSnippets = {
       "Met ons Systeem van het Geauditeerde Project is wat je op het prototype goedkeurt precies wat wij bouwen.",
       "Elk project blijft in een verifieerbaar dossier: het prototype dat je goedkeurt is de stand die wij bouwen.",
       "Wij werken met een geauditeerd en archiveerbaar project, jouw garantie dat je krijgt wat is goedgekeurd, zonder verrassingen."
-    ]
+    ],
+    "navLabel": "Gecontroleerd project"
   },
   "zh": {
     "homeHeading": "所见即所建",
@@ -82,7 +87,8 @@ export const uspSnippets = {
       "有了我们的审核项目系统，您在原型上批准的，正是我们所搭建的。",
       "每个项目都保存在可核验的档案中：您批准的原型，就是我们搭建的展台。",
       "我们采用可审核、可存档的项目，这是您获得所批准成果的保证，绝无意外。"
-    ]
+    ],
+    "navLabel": "审计项目"
   },
   "hi": {
     "homeHeading": "जो दिखता है, वही बनता है",
@@ -92,7 +98,8 @@ export const uspSnippets = {
       "हमारी ऑडिटेड प्रोजेक्ट प्रणाली के साथ, प्रोटोटाइप में आप जो स्वीकृत करते हैं, ठीक वही हम बनाते हैं।",
       "हर परियोजना एक सत्यापन-योग्य दस्तावेज़ में रहती है: जिस प्रोटोटाइप को आप स्वीकृत करते हैं, वही स्टैंड हम बनाते हैं।",
       "हम ऑडिटेड और संग्रहणीय परियोजना के साथ काम करते हैं, यह आपकी गारंटी है कि आपको स्वीकृत वस्तु ही मिले, बिना किसी आश्चर्य के।"
-    ]
+    ],
+    "navLabel": "ऑडिट परियोजना"
   },
   "ko": {
     "homeHeading": "보이는 그대로 지어집니다",
@@ -102,7 +109,8 @@ export const uspSnippets = {
       "저희 감사 프로젝트 시스템으로, 프로토타입에서 승인하신 것이 곧 저희가 시공하는 것입니다.",
       "모든 프로젝트는 검증 가능한 문서로 남습니다: 승인하신 프로토타입이 저희가 시공하는 부스입니다.",
       "저희는 감사 및 보관이 가능한 프로젝트로 작업하며, 이는 승인하신 것을 그대로 받으신다는, 예기치 못한 일이 없다는 보장입니다."
-    ]
+    ],
+    "navLabel": "감사 프로젝트"
   },
   "ja": {
     "homeHeading": "見たままを建てます",
@@ -112,7 +120,8 @@ export const uspSnippets = {
       "当社の監査済みプロジェクトシステムなら、プロトタイプで承認いただいたものが、そのまま施工するものです。",
       "各プロジェクトは検証可能な記録に残ります。承認いただいたプロトタイプが、私たちの建てるブースです。",
       "私たちは監査済みで保管可能なプロジェクトで作業します。これは承認どおりのものを、想定外なく受け取れる保証です。"
-    ]
+    ],
+    "navLabel": "監査プロジェクト"
   }
 };
 
@@ -121,11 +130,10 @@ function pickIndex(slug, n) {
   for (let i = 0; i < slug.length; i++) h = ((h * 33) ^ slug.charCodeAt(i)) >>> 0;
   return h % n;
 }
-/** Frase corta del sistema auditado, variada por slug, para fichas/hubs. */
 export function pickUspLine(lang, slug) {
   const o = uspSnippets[lang] || uspSnippets.es;
   const arr = (o.lines && o.lines.length) ? o.lines : uspSnippets.es.lines;
   return arr[pickIndex(String(slug || ""), arr.length)];
 }
-/** Bloque de home + CTA por idioma. */
 export function uspHome(lang) { return uspSnippets[lang] || uspSnippets.es; }
+export function uspNavLabel(lang) { return (uspSnippets[lang] || uspSnippets.es).navLabel; }

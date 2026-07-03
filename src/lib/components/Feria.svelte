@@ -4,7 +4,7 @@
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { pickIntroVariant } from '$lib/introVariants.js';
-  import { pickUspLine, uspHome } from '$lib/uspSnippets.js';
+  import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import ContactForm from './ContactForm.svelte';
 
   // Módulo "Actividad" del aside: chips con código de color que enlazan a los
@@ -621,6 +621,7 @@
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
       <a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
+      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
