@@ -117,6 +117,35 @@ if (pc_post('action') === 'recipients') {
 	pc_json(array('ok' => true, 'recipients' => $r, 'total' => count($r)));
 }
 
+/* ---------- AJAX: lista de PENDIENTES (los que NO recibieron envío con éxito) ----------
+ * Pendiente = destinatario de "Últimos accesos" sin upsert reciente en contacts
+ * (los envíos con éxito hacen upsert con updated_at; así excluimos a los ya enviados).
+ * El reenvío 1-a-1 se hace desde el navegador, espaciado, con sesión admin. */
+function pc_recent_sent_set($cutoffMinutes) {
+	$set = array();
+	if (!defined('SUPABASE_URL') || !defined('SUPABASE_KEY')) return $set;
+	$iso = gmdate('Y-m-d\TH:i:s\Z', time() - $cutoffMinutes * 60);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/contacts?select=email&updated_at=gte.' . urlencode($iso) . '&limit=5000');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('apikey: ' . SUPABASE_KEY, 'Authorization: Bearer ' . SUPABASE_KEY));
+	$rows = json_decode(curl_exec($ch), true);
+	curl_close($ch);
+	if (is_array($rows)) foreach ($rows as $r) { if (!empty($r['email'])) $set[strtolower($r['email'])] = true; }
+	return $set;
+}
+if (pc_post('action') === 'pending') {
+	if (!pc_authed()) pc_json(array('ok' => false, 'error' => 'no autorizado'));
+	$mins = (int) pc_post('within_minutes', '180');
+	if ($mins < 10) $mins = 10;
+	$recent = pc_recent_sent_set($mins);
+	$pending = array();
+	foreach (pc_recipients() as $e) { if (!isset($recent[$e])) $pending[] = $e; }
+	pc_json(array('ok' => true, 'recipients' => $pending, 'total' => count($pending)));
+}
+
 $total = pc_authed() ? count(pc_recipients()) : 0;
 ?>
 <!doctype html>
@@ -173,6 +202,15 @@ $total = pc_authed() ? count(pc_recipients()) : 0;
 		<div class="log" id="log" style="display:none"></div>
 	</div>
 
+	<div class="card">
+		<h3>3 · Reenviar pendientes (poco a poco, ~1 h)</h3>
+		<p class="hint">Reenvía solo a los que NO recibieron el correo con éxito (p. ej. los que fallaron por el límite antispam), espaciando <strong>~70 s</strong> cada envío para no volver a saturar. Respeta bajas/rebotes y no repite a los ya enviados. <strong>Deja esta pestaña abierta hasta que termine.</strong></p>
+		<div class="bar"><span id="pBarFill"></span></div>
+		<p class="hint"><span id="pProgTxt">—</span> · <span class="ok" id="pOkTxt">0 enviados</span> · <span class="ko" id="pKoTxt">0 fallidos</span></p>
+		<button class="danger" id="btnPending" onclick="sendPending()">Reenviar pendientes</button>
+		<div class="log" id="pLog" style="display:none"></div>
+	</div>
+
 	<script>
 		var sending = false;
 		function post(data) {
@@ -218,6 +256,34 @@ $total = pc_authed() ? count(pc_recipients()) : 0;
 			}
 			logLine('— Fin: ' + ok + ' enviados, ' + ko + ' fallidos de ' + total + ' —', ok ? 'ok' : 'ko');
 			btn.disabled = false; btnT.disabled = false; sending = false;
+		}
+		function plog(t, c) { var l = document.getElementById('pLog'); l.style.display = 'block'; var d = document.createElement('div'); d.className = c || ''; d.textContent = t; l.insertBefore(d, l.firstChild); }
+		async function sendPending() {
+			if (sending) return;
+			var res = await post({ action: 'pending' });
+			if (!res.ok) { alert('No se pudo cargar la lista de pendientes.'); return; }
+			var list = res.recipients, total = list.length;
+			if (!total) { alert('No hay pendientes: todos han recibido el correo con éxito.'); return; }
+			if (!confirm('Reenviar el correo del piloto a ' + total + ' pendientes, espaciados ~70 s (tardará ~' + Math.round(total * 70 / 60) + ' min).\n\nNo cierres esta pestaña hasta que termine.')) return;
+			sending = true;
+			var btn = document.getElementById('btnPending'), btnA = document.getElementById('btnAll'), btnT = document.getElementById('btnTest');
+			btn.disabled = true; btnA.disabled = true; btnT.disabled = true;
+			var ok = 0, ko = 0;
+			document.getElementById('pProgTxt').textContent = '0 / ' + total;
+			for (var i = 0; i < total; i++) {
+				var email = list[i];
+				try {
+					var r = await post({ action: 'send_one', email: email });
+					if (r.ok) { ok++; plog('✓ ' + email, 'ok'); } else { ko++; plog('✗ ' + email + ' — ' + (r.error || 'error'), 'ko'); }
+				} catch (e) { ko++; plog('✗ ' + email + ' — error de red', 'ko'); }
+				document.getElementById('pProgTxt').textContent = (i + 1) + ' / ' + total;
+				document.getElementById('pOkTxt').textContent = ok + ' enviados';
+				document.getElementById('pKoTxt').textContent = ko + ' fallidos';
+				document.getElementById('pBarFill').style.width = Math.round(((i + 1) / total) * 100) + '%';
+				if (i < total - 1) await new Promise(function (res) { setTimeout(res, 70000); });
+			}
+			plog('— Fin: ' + ok + ' enviados, ' + ko + ' fallidos de ' + total + ' —', ok ? 'ok' : 'ko');
+			btn.disabled = false; btnA.disabled = false; btnT.disabled = false; sending = false;
 		}
 	</script>
 <?php endif; ?>
