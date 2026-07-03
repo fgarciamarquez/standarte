@@ -107,7 +107,7 @@ $html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 	. ($commentsHtml !== '' ? "<div style='margin:16px auto;padding:14px;background:#f6f6f2;border-radius:8px;text-align:left;max-width:560px;'>" . $commentsHtml . "</div>" : "")
 	. "<p style='text-align:center;margin:20px 0 0;'><a href='" . htmlspecialchars($projectUrl, ENT_QUOTES, 'UTF-8') . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>Abrir el proyecto</a></p>"
 	. ($firstImgOpt !== '' ? "<p style='text-align:center;margin:24px 0 0;'><a href='" . htmlspecialchars($projectUrl, ENT_QUOTES, 'UTF-8') . "'><img src='" . htmlspecialchars($firstImgOpt, ENT_QUOTES, 'UTF-8') . "' width='600' alt='Vista del proyecto' style='display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;border:1px solid #e6e6e0;' /></a></p>" : "")
-	. "<p style='text-align:center;font-size:12px;color:#888;margin-top:20px;'>Standarte &middot; standarte.es</p>"
+	. "<p style='text-align:center;font-size:12px;color:#888;margin-top:20px;'>Sistema de seguimiento de proyectos 100% Asegurado.<br><a href='https://standarte.es' style='color:#888;text-decoration:none;'>https://standarte.es</a></p>"
 	. "</body></html>";
 
 $sent = false;
