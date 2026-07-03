@@ -93,7 +93,7 @@ if ($role === 'client') {
 } else {
 	$to = isset($p['client_email']) ? $p['client_email'] : '';
 	$subject = 'Standarte ha actualizado el proyecto — ' . $p['ref'];
-	$intro = 'Hemos respondido a tus comentarios y actualizado el proyecto <strong>' . htmlspecialchars($titleEs, ENT_QUOTES, 'UTF-8') . '</strong>.';
+	$intro = 'Standarte ha respondido a los últimos comentarios y el proyecto se ha actualizado.';
 }
 if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
 	echo json_encode(array('ok' => false, 'error' => 'no_recipient'));
@@ -102,10 +102,11 @@ if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
 
 $html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 	. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;text-align:center;'>"
-	. "<p style='text-align:center;margin:0 0 16px;'>" . $intro . "</p>"
+	. "<p style='text-align:center;margin:0 0 6px;'>" . $intro . "</p>"
+	. "<p style='text-align:center;margin:0 0 16px;font-weight:bold;font-size:17px;'>" . htmlspecialchars($titleEs, ENT_QUOTES, 'UTF-8') . "</p>"
 	. ($commentsHtml !== '' ? "<div style='margin:16px auto;padding:14px;background:#f6f6f2;border-radius:8px;text-align:left;max-width:560px;'>" . $commentsHtml . "</div>" : "")
 	. "<p style='text-align:center;margin:20px 0 0;'><a href='" . htmlspecialchars($projectUrl, ENT_QUOTES, 'UTF-8') . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>Abrir el proyecto</a></p>"
-	. ($firstImgOpt !== '' ? "<p style='text-align:center;margin:24px 0 0;'><img src='" . htmlspecialchars($firstImgOpt, ENT_QUOTES, 'UTF-8') . "' width='600' alt='Vista del proyecto' style='display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;border:1px solid #e6e6e0;' /></p>" : "")
+	. ($firstImgOpt !== '' ? "<p style='text-align:center;margin:24px 0 0;'><a href='" . htmlspecialchars($projectUrl, ENT_QUOTES, 'UTF-8') . "'><img src='" . htmlspecialchars($firstImgOpt, ENT_QUOTES, 'UTF-8') . "' width='600' alt='Vista del proyecto' style='display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;border:1px solid #e6e6e0;' /></a></p>" : "")
 	. "<p style='text-align:center;font-size:12px;color:#888;margin-top:20px;'>Standarte &middot; standarte.es</p>"
 	. "</body></html>";
 
