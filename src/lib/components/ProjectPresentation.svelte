@@ -233,8 +233,8 @@
 
   <header class="pz-top">
     <div class="pz-id">
-      <span class="pz-client">{data.client_name}</span>
-      <span class="pz-ref">{L.ref}: {data.ref}</span>
+      <span class="pz-client" class:pz-blur={demo}>{data.client_name}</span>
+      <span class="pz-ref">{L.ref}: <span class:pz-blur={demo}>{data.ref}</span></span>
     </div>
     <div class="pz-toggle" role="group" aria-label="idioma">
       <button class:on={lang === 'es'} on:click={() => lang = 'es'}>ES</button>
@@ -245,7 +245,7 @@
   {#if admin}
     <input class="pz-edit pz-edit-title" bind:value={eb.title} placeholder={L.titlePh} />
   {:else}
-    <h1 class="pz-title">{data.title[lang]}</h1>
+    <h1 class="pz-title" class:pz-blur={demo}>{data.title[lang]}</h1>
   {/if}
   <p class="pz-inter">
     {L.interlocutor}: <strong>{data.interlocutor.name}</strong> · {data.interlocutor.role[lang]} ·
@@ -407,7 +407,7 @@
           <tr class="sum"><td>{L.base}</td><td class="num">{fmt(base)}</td>{#if admin}<td></td>{/if}</tr>
           <tr><td>{L.iva}</td><td class="num">+ {fmt(iva)}</td>{#if admin}<td></td>{/if}</tr>
           <tr><td>{L.irpf}</td><td class="num">− {fmt(irpf)}</td>{#if admin}<td></td>{/if}</tr>
-          <tr class="grand"><td>{L.total}</td><td class="num">{fmt(total)}</td>{#if admin}<td></td>{/if}</tr>
+          <tr class="grand"><td>{L.total}</td><td class="num"><span class:pz-blur={demo}>{fmt(total)}</span></td>{#if admin}<td></td>{/if}</tr>
         </tfoot>
       </table>
     </div>
@@ -573,6 +573,9 @@
   .pz-toggle button { background: #fff; border: none; padding: 6px 12px; font-family: inherit; font-size: 13px; cursor: pointer; color: #1b1b1a; }
   .pz-toggle button.on { background: #1b1b1a; color: #fff; }
   .pz-title { font-size: 26px; font-weight: 700; margin: 22px 0 6px; letter-spacing: -0.01em; }
+  /* Piloto público: emborrona (redacta visualmente) el nombre del proyecto y el
+     total del presupuesto para no exponer cliente/importes reales. */
+  .pz-blur { filter: blur(6px); -webkit-user-select: none; user-select: none; }
   .pz-inter { margin: 0 0 6px; font-size: 14px; color: #444; }
   .pz-inter a { color: #1b1b1a; }
   .pz-block { margin-top: 40px; }
