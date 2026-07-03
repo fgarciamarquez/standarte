@@ -92,7 +92,7 @@ if ($role === 'client') {
 	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> ha enviado comentarios sobre el proyecto <strong>' . htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>.';
 } else {
 	$to = isset($p['client_email']) ? $p['client_email'] : '';
-	$subject = 'Standarte ha actualizado tu proyecto — ' . $p['ref'];
+	$subject = 'Standarte ha actualizado el proyecto — ' . $p['ref'];
 	$intro = 'Hemos respondido a tus comentarios y actualizado el proyecto <strong>' . htmlspecialchars($titleEs, ENT_QUOTES, 'UTF-8') . '</strong>.';
 }
 if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
@@ -102,11 +102,11 @@ if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
 
 $html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 	. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;text-align:center;'>"
-	. "<p>" . $intro . "</p>"
-	. ($commentsHtml !== '' ? "<div style='margin:16px 0;padding:14px;background:#f6f6f2;border-radius:8px;text-align:left;'>" . $commentsHtml . "</div>" : "")
-	. "<p style='margin-top:20px;'><a href='" . htmlspecialchars($projectUrl, ENT_QUOTES, 'UTF-8') . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>Abrir el proyecto</a></p>"
-	. ($firstImgOpt !== '' ? "<p style='margin:24px 0 0;'><img src='" . htmlspecialchars($firstImgOpt, ENT_QUOTES, 'UTF-8') . "' width='600' alt='Vista del proyecto' style='display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;border:1px solid #e6e6e0;' /></p>" : "")
-	. "<p style='font-size:12px;color:#888;margin-top:20px;'>Standarte &middot; standarte.es</p>"
+	. "<p style='text-align:center;margin:0 0 16px;'>" . $intro . "</p>"
+	. ($commentsHtml !== '' ? "<div style='margin:16px auto;padding:14px;background:#f6f6f2;border-radius:8px;text-align:left;max-width:560px;'>" . $commentsHtml . "</div>" : "")
+	. "<p style='text-align:center;margin:20px 0 0;'><a href='" . htmlspecialchars($projectUrl, ENT_QUOTES, 'UTF-8') . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>Abrir el proyecto</a></p>"
+	. ($firstImgOpt !== '' ? "<p style='text-align:center;margin:24px 0 0;'><img src='" . htmlspecialchars($firstImgOpt, ENT_QUOTES, 'UTF-8') . "' width='600' alt='Vista del proyecto' style='display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;border:1px solid #e6e6e0;' /></p>" : "")
+	. "<p style='text-align:center;font-size:12px;color:#888;margin-top:20px;'>Standarte &middot; standarte.es</p>"
 	. "</body></html>";
 
 $sent = false;
