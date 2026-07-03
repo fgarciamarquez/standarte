@@ -805,6 +805,34 @@ export const fairsData = [
     "sector": "Industria y Logística"
   },
   {
+    "name": "World Maritime Week",
+    "country": "es",
+    "slug": "world-maritime-week-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Marine Energy Week",
+    "country": "es",
+    "slug": "marine-energy-week-bilbao",
+    "city": "Bilbao",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Blue Zone Forum",
+    "country": "es",
+    "slug": "blue-zone-forum",
+    "city": "España",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "SEA Portugal",
+    "country": "pt",
+    "slug": "sea-portugal",
+    "city": "Portugal",
+    "sector": "Tecnología e Innovación"
+  },
+  {
     "name": "Nortrans",
     "country": "es",
     "slug": "nortrans-vigo",
