@@ -84,7 +84,7 @@ function status_toggle($p, $field) {
 		. '</form>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,paid,approved,contract_done,invoice_done,access_token,created_at&order=created_at.desc') : array();
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,paid,approved,contract_done,invoice_done,access_token,is_demo,created_at&order=created_at.desc') : array();
 ?>
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -113,6 +113,7 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 	.st-ro { cursor: default; }
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
+	.demo-badge { display: inline-block; background: rgba(255,200,0,.14); color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
 </style></head>
 <body><div class="wrap">
 <?php if (!pj_authed()): ?>
@@ -157,7 +158,8 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 		<p class="hint">Aprobado lo marca el cliente al aprobar; contrato y factura los marcas tú al cursarlos (clic para alternar).</p>
 		<table><tr><th>Ref</th><th>Cliente</th><th>Aprobado</th><th>Contrato</th><th>Factura</th><th>Abrir</th><th></th></tr>
 		<?php foreach ($projects as $p): ?>
-			<tr><td><?= h($p['ref']) ?></td><td><?= h($p['client_name']) ?></td>
+			<tr><td><?= h($p['ref']) ?></td>
+			<td><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Proyecto piloto público</span><?php else: ?><?= h($p['client_name']) ?><?php endif; ?></td>
 			<td><?= status_badge($p, 'approved') ?></td>
 			<td><?= status_toggle($p, 'contract_done') ?></td>
 			<td><?= status_toggle($p, 'invoice_done') ?></td>

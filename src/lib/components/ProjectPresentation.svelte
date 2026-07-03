@@ -30,6 +30,11 @@
   };
   $: L = t[lang];
 
+  // Proyecto piloto público: se enseña a mucha gente, así que la interfaz se ve
+  // entera (aprobar, comentar, enviar) pero esos botones quedan inertes. En modo
+  // edición interno (admin) sigue siendo plenamente operativo.
+  $: demo = !admin && !!data?.is_demo;
+
   // Buffers de edición (se reinician al cambiar de idioma o al recargar datos).
   let eb = {};
   $: if (admin && data) eb = {
@@ -104,6 +109,7 @@
   // ── Cliente: aprobar ──
   let approving = false;
   async function approve() {
+    if (demo) return;
     approving = true;
     try { await approveProject(token, discValid); await reload(); } catch (e) {} finally { approving = false; }
   }
@@ -123,6 +129,7 @@
 
   // ── Cliente: comentar / enviar ──
   function submitComment(mid) {
+    if (demo) return;
     const text = (drafts[mid] || '').trim();
     if (!text) return;
     drafts = { ...drafts, [mid]: '' };
@@ -303,8 +310,8 @@
             {/if}
           </div>
           <div class="pz-compose">
-            <input type="text" placeholder={admin ? L.replyPh : L.commentPh} bind:value={drafts[m.id]} on:keydown={(e) => { if (e.key === 'Enter') submitComment(m.id); }} />
-            <button type="button" on:click={() => submitComment(m.id)}>{admin ? L.reply : L.comment}</button>
+            <input type="text" placeholder={admin ? L.replyPh : L.commentPh} bind:value={drafts[m.id]} disabled={demo} on:keydown={(e) => { if (e.key === 'Enter') submitComment(m.id); }} />
+            <button type="button" on:click={() => submitComment(m.id)} disabled={demo}>{admin ? L.reply : L.comment}</button>
           </div>
         </div>
 
@@ -458,7 +465,7 @@
       </div>
     {:else}
       <div class="pz-approve-wrap">
-        <button class="pz-approve" class:pz-approve-offer={discValid} type="button" on:click={approve} disabled={approving}>
+        <button class="pz-approve" class:pz-approve-offer={discValid} type="button" on:click={approve} disabled={approving || demo}>
           {approving ? '…' : (discValid ? L.approveWithOffer : L.approve)}
         </button>
       </div>
@@ -535,7 +542,7 @@
   {#if !admin}
     <footer class="pz-foot">
       {#if sent}<p class="pz-sent">✓ {role === 'client' ? L.sentClient : L.sentInternal}</p>{/if}
-      <button class="pz-send" type="button" disabled={busy} on:click={() => dispatch('send')}>
+      <button class="pz-send" type="button" disabled={busy || demo} on:click={() => dispatch('send')}>
         {busy ? '…' : L.send} →
       </button>
     </footer>
@@ -595,6 +602,7 @@
   .pz-compose input { flex: 1; border: none; padding: 10px; font-family: inherit; font-size: 14px; background: #fff; }
   .pz-compose input:focus { outline: none; background: #fbfbf7; }
   .pz-compose button { border: none; background: #1b1b1a; color: #fff; padding: 0 16px; font-family: inherit; font-size: 13px; cursor: pointer; }
+  .pz-compose input:disabled, .pz-compose button:disabled { opacity: .5; cursor: not-allowed; }
   .pz-drop { border: 2px dashed #b9b6a8; border-radius: 10px; padding: 26px; text-align: center; color: #7a776b; cursor: pointer; background: #faf9f4; transition: all .15s; }
   .pz-drop.over { border-color: #1b1b1a; background: #f0eee5; color: #1b1b1a; }
   .pz-lb-iframe { width: min(1100px, 94vw); aspect-ratio: 16 / 9; max-height: 80vh; border: 0; background: #000; }
