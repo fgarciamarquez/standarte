@@ -114,6 +114,23 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
 	.demo-badge { display: inline-block; background: rgba(255,200,0,.14); color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+	/* Listado de proyectos en capas (sin <table>): grid en escritorio, apilado en móvil. */
+	.pj-list { display: flex; flex-direction: column; }
+	.pj-head, .pj-card { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1.4fr) auto auto auto minmax(0,1fr) auto; gap: 10px; align-items: center; }
+	.pj-head { padding: 0 8px 8px; border-bottom: 1px solid #2c3038; font-size: 14px; }
+	.pj-card { padding: 10px 8px; border-bottom: 1px solid #2c3038; font-size: 14px; }
+	.pj-cell { min-width: 0; }
+	.pj-v { min-width: 0; overflow-wrap: anywhere; }
+	.pj-k { display: none; }
+	.pj-open .link { word-break: normal; }
+	@media (max-width: 640px) {
+		.pj-head { display: none; }
+		.pj-card { grid-template-columns: 1fr; gap: 8px; padding: 14px 6px; }
+		.pj-cell { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+		.pj-k { display: inline; color: #9aa; text-transform: uppercase; font-size: 11px; letter-spacing: .06em; flex: 0 0 auto; }
+		.pj-v { text-align: right; }
+		.pj-ref .pj-v { font-weight: 700; }
+	}
 </style></head>
 <body><div class="wrap">
 <?php if (!pj_authed()): ?>
@@ -156,21 +173,26 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, abre el enlace del
 			proyecto: al estar tu sesión iniciada, la propia página se vuelve editable.</p>
 		<p class="hint">Aprobado lo marca el cliente al aprobar; contrato y factura los marcas tú al cursarlos (clic para alternar).</p>
-		<table><tr><th>Ref</th><th>Cliente</th><th>Aprobado</th><th>Contrato</th><th>Factura</th><th>Abrir</th><th></th></tr>
-		<?php foreach ($projects as $p): ?>
-			<tr><td><?= h($p['ref']) ?></td>
-			<td><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Proyecto piloto público</span><?php else: ?><?= h($p['client_name']) ?><?php endif; ?></td>
-			<td><?= status_badge($p, 'approved') ?></td>
-			<td><?= status_toggle($p, 'contract_done') ?></td>
-			<td><?= status_toggle($p, 'invoice_done') ?></td>
-			<td class="link"><a href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir y editar →</a></td>
-			<td><form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
-				<input type="hidden" name="action" value="delete_project">
-				<input type="hidden" name="id" value="<?= h($p['id']) ?>">
-				<button type="submit" class="del" title="Borrar proyecto">Borrar</button>
-			</form></td></tr>
-		<?php endforeach; ?>
-		</table>
+		<div class="pj-list">
+			<div class="pj-head">
+				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura</span><span>Abrir</span><span></span>
+			</div>
+			<?php foreach ($projects as $p): ?>
+			<div class="pj-card">
+				<div class="pj-cell pj-ref"><span class="pj-k">Ref</span><span class="pj-v"><?= h($p['ref']) ?></span></div>
+				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Proyecto piloto público</span><?php else: ?><?= h($p['client_name']) ?><?php endif; ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Aprobado</span><span class="pj-v"><?= status_badge($p, 'approved') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_done') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Factura</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
+				<div class="pj-cell pj-open"><span class="pj-k">Abrir</span><span class="pj-v"><a class="link" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir y editar →</a></span></div>
+				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v"><form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
+					<input type="hidden" name="action" value="delete_project">
+					<input type="hidden" name="id" value="<?= h($p['id']) ?>">
+					<button type="submit" class="del" title="Borrar proyecto">Borrar</button>
+				</form></span></div>
+			</div>
+			<?php endforeach; ?>
+		</div>
 	</div>
 <?php endif; ?>
 </div></body></html>
