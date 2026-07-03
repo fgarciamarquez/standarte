@@ -60,6 +60,22 @@ $titleEs     = isset($p['title']['es']) ? $p['title']['es'] : $p['ref'];
 $interEmail  = isset($p['interlocutor']['email']) ? $p['interlocutor']['email'] : '';
 $projectUrl  = 'https://standarte.es/proyecto?t=' . $token;
 
+/* Primera imagen del proyecto, servida optimizada por la transformación de imagen de
+ * Supabase Storage (redimensiona/comprime en el CDN a ~640px): el correo NO embebe la
+ * imagen (solo la referencia), así que pesa muy poco. */
+$firstImgUrl = '';
+if (!empty($p['media']) && is_array($p['media'])) {
+	foreach ($p['media'] as $m) {
+		if (isset($m['type']) && $m['type'] === 'image' && !empty($m['src'])) { $firstImgUrl = $m['src']; break; }
+	}
+}
+$firstImgOpt = '';
+if ($firstImgUrl !== '') {
+	$firstImgOpt = (strpos($firstImgUrl, '/storage/v1/object/public/') !== false)
+		? str_replace('/storage/v1/object/public/', '/storage/v1/render/image/public/', $firstImgUrl) . (strpos($firstImgUrl, '?') === false ? '?' : '&') . 'width=640&quality=62&resize=contain'
+		: $firstImgUrl;
+}
+
 /* Últimos comentarios para incrustar en el aviso. */
 $commentsHtml = '';
 if (!empty($p['comments']) && is_array($p['comments'])) {
@@ -85,11 +101,12 @@ if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
 }
 
 $html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
-	. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
+	. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;text-align:center;'>"
 	. "<p>" . $intro . "</p>"
-	. ($commentsHtml !== '' ? "<div style='margin:16px 0;padding:14px;background:#f6f6f2;border-radius:8px;'>" . $commentsHtml . "</div>" : "")
+	. ($commentsHtml !== '' ? "<div style='margin:16px 0;padding:14px;background:#f6f6f2;border-radius:8px;text-align:left;'>" . $commentsHtml . "</div>" : "")
 	. "<p style='margin-top:20px;'><a href='" . htmlspecialchars($projectUrl, ENT_QUOTES, 'UTF-8') . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>Abrir el proyecto</a></p>"
-	. "<p style='font-size:12px;color:#888;margin-top:20px;'>Standarte · standarte.es</p>"
+	. ($firstImgOpt !== '' ? "<p style='margin:24px 0 0;'><img src='" . htmlspecialchars($firstImgOpt, ENT_QUOTES, 'UTF-8') . "' width='600' alt='Vista del proyecto' style='display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;border:1px solid #e6e6e0;' /></p>" : "")
+	. "<p style='font-size:12px;color:#888;margin-top:20px;'>Standarte &middot; standarte.es</p>"
 	. "</body></html>";
 
 $sent = false;
