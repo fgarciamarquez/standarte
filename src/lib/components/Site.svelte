@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl } from '$lib/siteData.js';
+  import { uspHome } from '$lib/uspSnippets.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
@@ -1531,6 +1532,17 @@
       </nav>
     </section>
 
+    <!-- Sistema de Proyecto Auditado (super-recurso): destaque en la home con enlace
+         a la landing /proyecto-auditado. Va tras los prototipos 3D por afinidad temática
+         (lo que ves en el prototipo es lo que se construye). -->
+    <section id="proyecto-auditado" class="section audited-teaser">
+      <div class="audited-teaser-inner">
+        <h2>{uspHome(lang).homeHeading}</h2>
+        <p>{uspHome(lang).homeText}</p>
+        <a class="audited-cta" href={pathFor(lang, 'proyecto_auditado')}>{uspHome(lang).cta} →</a>
+      </div>
+    </section>
+
     <section class="counters section">
       <div class="counter-grid">
         {#each counterItems as item, index}
@@ -2079,4 +2091,20 @@
     width: 9px; height: 9px; border-radius: 50%;
     background: var(--chip); flex: 0 0 auto;
   }
+  /* Destaque del Sistema de Proyecto Auditado en la home. */
+  .audited-teaser { text-align: center; }
+  .audited-teaser-inner {
+    max-width: 760px; margin: 0 auto; padding: 2.4rem 1.6rem;
+    border: 1px solid rgba(224, 180, 0, 0.5);
+    border-radius: 12px;
+    background: rgba(224, 180, 0, 0.05);
+  }
+  .audited-teaser-inner h2 { margin: 0 0 0.8rem; }
+  .audited-teaser-inner p { margin: 0 auto 1.4rem; max-width: 620px; line-height: 1.6; }
+  .audited-cta {
+    display: inline-block; padding: 0.85rem 1.8rem;
+    background: #1b1b1a; color: #fff; border-radius: 6px;
+    font-weight: 700; text-decoration: none;
+  }
+  .audited-cta:hover { background: #000; }
 </style>

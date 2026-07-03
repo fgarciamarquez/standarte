@@ -21,6 +21,7 @@ export const routes = {
   es: {
     home: '',
     services: 'servicios',
+    proyecto_auditado: 'proyecto-auditado',
     precios: 'precios',
     luzpavilion: 'luzpavilion',
     custom: 'proyectos_a_medida',
@@ -54,6 +55,7 @@ export const routes = {
   en: {
     home: '',
     services: 'services',
+    proyecto_auditado: 'audited-project',
     precios: 'prices',
     luzpavilion: 'luzpavilion',
     custom: 'custom_projects',
@@ -87,6 +89,7 @@ export const routes = {
   de: {
     home: '',
     services: 'dienstleistungen',
+    proyecto_auditado: 'auditiertes-projekt',
     precios: 'preise',
     luzpavilion: 'luzpavilion',
     custom: 'massgeschneiderte_projekte',
@@ -120,6 +123,7 @@ export const routes = {
   zh: {
     home: '',
     services: 'fuwu',
+    proyecto_auditado: 'shenji-xiangmu',
     precios: 'jiage',
     luzpavilion: 'luzpavilion',
     custom: 'dingzhi_xiangmu',
@@ -153,6 +157,7 @@ export const routes = {
   hi: {
     home: '',
     services: 'sevaen',
+    proyecto_auditado: 'audit-pariyojana',
     precios: 'kimat',
     luzpavilion: 'luzpavilion',
     custom: 'custom_projects',
@@ -186,6 +191,7 @@ export const routes = {
   pt: {
     home: '',
     services: 'servicos',
+    proyecto_auditado: 'projeto-auditado',
     precios: 'precos',
     luzpavilion: 'luzpavilion',
     custom: 'projetos_a_medida',
@@ -219,6 +225,7 @@ export const routes = {
   fr: {
     home: '',
     services: 'services',
+    proyecto_auditado: 'projet-audite',
     precios: 'tarifs',
     luzpavilion: 'luzpavilion',
     custom: 'projets_sur_mesure',
@@ -252,6 +259,7 @@ export const routes = {
   it: {
     home: '',
     services: 'servizi',
+    proyecto_auditado: 'progetto-verificato',
     precios: 'prezzi',
     luzpavilion: 'luzpavilion',
     custom: 'progetti_su_misura',
@@ -285,6 +293,7 @@ export const routes = {
   ko: {
     home: '',
     services: 'jeonsigwan-seobiseu',
+    proyecto_auditado: 'gamsa-peurojekteu',
     precios: 'gagyeok',
     luzpavilion: 'luzpavilion',
     custom: 'majchumhyeong-peurojekteu',
@@ -318,6 +327,7 @@ export const routes = {
   ja: {
     home: '',
     services: '展示会ブース施工',
+    proyecto_auditado: '監査プロジェクト',
     precios: '料金',
     luzpavilion: 'luzpavilion',
     custom: '施工事例',
@@ -351,6 +361,7 @@ export const routes = {
   nl: {
     home: '',
     services: 'diensten',
+    proyecto_auditado: 'gecontroleerd-project',
     precios: 'prijzen',
     luzpavilion: 'luzpavilion',
     custom: 'projecten_op_maat',

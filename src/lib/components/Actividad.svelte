@@ -9,6 +9,7 @@
     tagFamilies, fairTags, tagOrder, fairsForActivity,
     colorForTag, labelForTag, familyLabel
   } from '$lib/fairTags.js';
+  import { pickUspLine, uspHome } from '$lib/uspSnippets.js';
   import FlagIcon from './FlagIcon.svelte';
   import ContactForm from './ContactForm.svelte';
 
@@ -223,6 +224,8 @@
           {#if activitySeo?.intro?.[lang]}
             <div class="act-intro">{@html activitySeo.intro[lang]}</div>
           {/if}
+          <p class="audited-note">{pickUspLine(lang, tag)}
+            <a href={pathFor(lang, 'proyecto_auditado')}>{uspHome(lang).cta} →</a></p>
           <h2 class="fairs-h">{t.fairsH}</h2>
           {#each hubGroups as grp}
             <h3 class="grp-city">{grp.label}</h3>
@@ -305,6 +308,13 @@
     font-weight: 400; margin-bottom: 2rem;
   }
   .act-text :global(p) { margin-bottom: 1.5rem; color: var(--text-color); }
+  .audited-note {
+    margin: 0 0 1.5rem; padding: 0.85rem 1.1rem;
+    border-left: 3px solid var(--accent-color, #e0b400);
+    background: rgba(224, 180, 0, 0.06); border-radius: 0 6px 6px 0;
+    font-size: 1.02rem; line-height: 1.55;
+  }
+  .audited-note a { font-weight: 700; white-space: nowrap; }
   .fam-h, .fairs-h {
     display: inline-flex; align-items: center; gap: 0.6rem;
     font-size: 1.5rem; margin: 2.5rem 0 1.2rem;

@@ -3,6 +3,8 @@
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
+  import { pickIntroVariant } from '$lib/introVariants.js';
+  import { pickUspLine, uspHome } from '$lib/uspSnippets.js';
   import ContactForm from './ContactForm.svelte';
 
   // Módulo "Actividad" del aside: chips con código de color que enlazan a los
@@ -501,9 +503,11 @@
   })();
   
   $: seoTitle = `${strings.heroTitle(fairDisplayName)} | Standarte`;
+  // No itinerante: intro variada por slug (banco de variantes) para evitar que ~175
+  // fichas compartan la misma meta-description (riesgo de duplicado ante Google).
   $: seoDesc = isItinerant
     ? (introItinerant[lang] || introItinerant.es)(fair.name, localizedSector)
-    : strings.intro(fair.name, localizedCity, localizedSector);
+    : pickIntroVariant(lang, fair.slug, fair.name, localizedCity, localizedSector);
 
   // Clúster: enlace al pilar de ciudad + ferias hermanas de la misma región
   $: clusterStr = clusterT[lang] || clusterT.es;
@@ -678,6 +682,8 @@
         {#if fairBody}
           <div class="fair-unique">{@html fairBody}</div>
         {/if}
+        <p class="audited-note">{pickUspLine(lang, fair.slug)}
+          <a href={pathFor(lang, 'proyecto_auditado')}>{uspHome(lang).cta} →</a></p>
         <p>{strings.intro2}</p>
         {#if venueText}
           <p class="feria-venue">{venueText}</p>
@@ -830,6 +836,20 @@
   .feria-text p {
     margin-bottom: 1.5rem;
     color: var(--text-color);
+  }
+  /* Nota del Sistema de Proyecto Auditado: enlace interno al super-recurso. */
+  .audited-note {
+    margin: 0 0 1.5rem;
+    padding: 0.85rem 1.1rem;
+    border-left: 3px solid var(--accent-color, #e0b400);
+    background: rgba(224, 180, 0, 0.06);
+    border-radius: 0 6px 6px 0;
+    font-size: 1.02rem;
+    line-height: 1.55;
+  }
+  .audited-note a {
+    font-weight: 700;
+    white-space: nowrap;
   }
   /* Párrafos del bloque único (inyectados con @html, fuera del scope de Svelte). */
   .fair-unique :global(p) {

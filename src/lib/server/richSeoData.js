@@ -2,6 +2,283 @@
 // Cada artículo contiene entre 650 y 850 palabras de redacción profesional, estructurada en HTML semántico.
 
 export const richSeoData = {
+  "proyecto_auditado": {
+    "es": {
+      "breadcrumb": "Proyecto auditado",
+      "title": "Sistema de Proyecto Auditado de Standarte | Garantía de prototipo | Standarte",
+      "h1": "Sistema de Proyecto Auditado: lo que ve el cliente es lo que se construye",
+      "introText": "El sistema propio de Standarte que deja cada proyecto de stand en un expediente verificable y archivable —propuesta, presupuesto, prototipo 3D, aprobaciones y comentarios— que actúa como testigo del acuerdo y garantiza que se construye exactamente lo aprobado.",
+      "body": "<h2>Qué es el Proyecto Auditado</h2><p>El Proyecto Auditado es el sistema propio de gestión y seguimiento con el que Standarte documenta cada encargo de diseño y construcción de stands. Reúne en un único espacio privado la propuesta gráfica, el modelo 3D interactivo, la memoria de producción y el presupuesto detallado, y registra cada aprobación y comentario del cliente. El resultado es un expediente verificable y archivable que actúa como testigo del acuerdo en todo momento.</p><h2>Lo que el cliente ve es lo que se construye</h2><p>Antes de fabricar nada, el cliente revisa y aprueba el prototipo del stand en pantalla. A partir de esa aprobación el proyecto queda congelado y trazado: cualquier cambio se documenta y se vuelve a aprobar. Así eliminamos la principal fuente de conflicto del sector —que lo entregado no sea lo prometido— con una garantía simple: lo que se aprueba en el prototipo es lo que se levanta en la feria.</p><h2>Un expediente verificable y archivable</h2><p>Cada proyecto conserva su historial completo: versiones de diseño, presupuesto, fechas, aprobaciones y conversación con el equipo. El cliente accede con un enlace privado e individual a su proyecto, y el expediente permanece archivado como prueba objetiva del acuerdo, útil tanto para el cliente como para Standarte.</p><h2>Transparencia que genera confianza</h2><p>El Proyecto Auditado convierte la relación en algo medible y sin sorpresas: presupuesto claro, alcance definido, prototipo aprobado y seguimiento en tiempo real. Es la forma en que Standarte respalda con hechos su compromiso de calidad en cada stand que diseña, produce y monta con taller propio.</p><h2>Para quién</h2><p>Para cualquier empresa que exponga en ferias y quiera contratar su stand con la tranquilidad de saber, desde el primer día y por escrito, exactamente qué recibirá. Si preparas tu presencia en una feria, este sistema es tu garantía.</p>",
+      "faqs": [
+        {
+          "q": "¿Qué garantiza el Sistema de Proyecto Auditado?",
+          "a": "Que el stand que se construye es exactamente el que el cliente aprobó en el prototipo. Cada propuesta, presupuesto, aprobación y cambio queda registrado en un expediente verificable."
+        },
+        {
+          "q": "¿Cómo accede el cliente a su proyecto?",
+          "a": "Mediante un enlace privado e individual a su expediente, donde revisa el diseño, el modelo 3D, el presupuesto y el estado del proyecto, y puede comentar y aprobar."
+        },
+        {
+          "q": "¿El expediente se conserva?",
+          "a": "Sí. El proyecto queda archivado con todo su historial —versiones, fechas y aprobaciones— como testigo objetivo del acuerdo."
+        },
+        {
+          "q": "¿Tiene coste adicional?",
+          "a": "No. El Proyecto Auditado forma parte del servicio de diseño y construcción de stands de Standarte."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Projeto auditado",
+      "title": "Sistema de Projeto Auditado da Standarte | Garantia de protótipo | Standarte",
+      "h1": "Sistema de Projeto Auditado: o que o cliente vê é o que se constrói",
+      "introText": "O sistema próprio da Standarte que reúne cada projeto de stand num processo verificável e arquivável —proposta, orçamento, protótipo 3D, aprovações e comentários— que atua como testemunho do acordo e garante que se constrói exatamente o que foi aprovado.",
+      "body": "<h2>O que é o Projeto Auditado</h2><p>O Projeto Auditado é o sistema próprio de gestão e acompanhamento com o qual a Standarte documenta cada encomenda de design e construção de stands. Reúne num único espaço privado a proposta gráfica, o modelo 3D interativo, a memória de produção e o orçamento detalhado, e regista cada aprovação e comentário do cliente. O resultado é um processo verificável e arquivável que atua como testemunho do acordo a todo o momento.</p><h2>O que o cliente vê é o que se constrói</h2><p>Antes de fabricar seja o que for, o cliente revê e aprova o protótipo do stand no ecrã. A partir dessa aprovação o projeto fica congelado e rastreado: qualquer alteração é documentada e aprovada de novo. Assim eliminamos a principal fonte de conflito do setor —que o entregue não seja o prometido— com uma garantia simples: o que se aprova no protótipo é o que se ergue na feira.</p><h2>Um processo verificável e arquivável</h2><p>Cada projeto conserva o seu histórico completo: versões de design, orçamento, datas, aprovações e conversa com a equipa. O cliente acede através de uma ligação privada e individual ao seu projeto, e o processo permanece arquivado como prova objetiva do acordo, útil tanto para o cliente como para a Standarte.</p><h2>Transparência que gera confiança</h2><p>O Projeto Auditado transforma a relação em algo mensurável e sem surpresas: orçamento claro, âmbito definido, protótipo aprovado e acompanhamento em tempo real. É a forma como a Standarte apoia com factos o seu compromisso de qualidade em cada stand que desenha, produz e monta com oficina própria.</p><h2>Para quem</h2><p>Para qualquer empresa que exponha em feiras e queira contratar o seu stand com a tranquilidade de saber, desde o primeiro dia e por escrito, exatamente o que vai receber. Se preparas a tua presença numa feira, este sistema é a tua garantia.</p>",
+      "faqs": [
+        {
+          "q": "O que garante o Sistema de Projeto Auditado?",
+          "a": "Que o stand que se constrói é exatamente aquele que o cliente aprovou no protótipo. Cada proposta, orçamento, aprovação e alteração fica registada num processo verificável."
+        },
+        {
+          "q": "Como acede o cliente ao seu projeto?",
+          "a": "Através de uma ligação privada e individual ao seu processo, onde revê o design, o modelo 3D, o orçamento e o estado do projeto, e pode comentar e aprovar."
+        },
+        {
+          "q": "O processo é conservado?",
+          "a": "Sim. O projeto fica arquivado com todo o seu histórico —versões, datas e aprovações— como testemunho objetivo do acordo."
+        },
+        {
+          "q": "Tem custo adicional?",
+          "a": "Não. O Projeto Auditado faz parte do serviço de design e construção de stands da Standarte."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Audited project",
+      "title": "Standarte Audited Project System | Prototype guarantee | Standarte",
+      "h1": "Audited Project System: what the client sees is what gets built",
+      "introText": "Standarte's own system that turns every stand project into a verifiable, archivable record —proposal, budget, 3D prototype, approvals and comments— acting as witness to the agreement and guaranteeing that exactly what was approved gets built.",
+      "body": "<h2>What the Audited Project is</h2><p>The Audited Project is the in-house management and tracking system with which Standarte documents every stand design and construction assignment. It brings together in a single private space the graphic proposal, the interactive 3D model, the production brief and the detailed budget, and records every client approval and comment. The result is a verifiable, archivable record that acts as witness to the agreement at all times.</p><h2>What the client sees is what gets built</h2><p>Before anything is manufactured, the client reviews and approves the stand prototype on screen. From that approval the project is frozen and traced: any change is documented and approved again. This way we eliminate the sector's main source of conflict —that what is delivered is not what was promised— with a simple guarantee: what is approved in the prototype is what rises at the fair.</p><h2>A verifiable, archivable record</h2><p>Every project keeps its complete history: design versions, budget, dates, approvals and the conversation with the team. The client accesses their project through a private, individual link, and the record remains archived as objective proof of the agreement, useful for both the client and Standarte.</p><h2>Transparency that builds trust</h2><p>The Audited Project turns the relationship into something measurable and free of surprises: clear budget, defined scope, approved prototype and real-time tracking. It is how Standarte backs up its quality commitment with facts on every stand it designs, produces and installs with its own workshop.</p><h2>Who it is for</h2><p>For any company that exhibits at fairs and wants to commission its stand with the peace of mind of knowing, from day one and in writing, exactly what it will receive. If you are preparing your presence at a fair, this system is your guarantee.</p>",
+      "faqs": [
+        {
+          "q": "What does the Audited Project System guarantee?",
+          "a": "That the stand being built is exactly the one the client approved in the prototype. Every proposal, budget, approval and change is recorded in a verifiable file."
+        },
+        {
+          "q": "How does the client access their project?",
+          "a": "Through a private, individual link to their file, where they review the design, the 3D model, the budget and the project status, and can comment and approve."
+        },
+        {
+          "q": "Is the record kept?",
+          "a": "Yes. The project is archived with its full history —versions, dates and approvals— as objective witness to the agreement."
+        },
+        {
+          "q": "Is there an additional cost?",
+          "a": "No. The Audited Project is part of Standarte's stand design and construction service."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Auditiertes Projekt",
+      "title": "Standarte System des Auditierten Projekts | Prototyp-Garantie | Standarte",
+      "h1": "System des Auditierten Projekts: Was der Kunde sieht, wird gebaut",
+      "introText": "Das eigene System von Standarte, das jedes Standprojekt in einer überprüfbaren und archivierbaren Akte festhält —Angebot, Budget, 3D-Prototyp, Freigaben und Kommentare— die als Zeuge der Vereinbarung dient und garantiert, dass genau das Freigegebene gebaut wird.",
+      "body": "<h2>Was das Auditierte Projekt ist</h2><p>Das Auditierte Projekt ist das eigene Verwaltungs- und Nachverfolgungssystem, mit dem Standarte jeden Auftrag zur Gestaltung und zum Bau von Ständen dokumentiert. Es vereint in einem einzigen privaten Raum das grafische Angebot, das interaktive 3D-Modell, das Produktionskonzept und das detaillierte Budget und erfasst jede Freigabe und jeden Kommentar des Kunden. Das Ergebnis ist eine überprüfbare und archivierbare Akte, die jederzeit als Zeuge der Vereinbarung dient.</p><h2>Was der Kunde sieht, wird gebaut</h2><p>Bevor irgendetwas gefertigt wird, prüft und genehmigt der Kunde den Prototyp des Standes am Bildschirm. Ab dieser Freigabe ist das Projekt eingefroren und nachvollziehbar: Jede Änderung wird dokumentiert und erneut freigegeben. So beseitigen wir die Hauptquelle für Konflikte in der Branche —dass das Gelieferte nicht dem Versprochenen entspricht— mit einer einfachen Garantie: Was im Prototyp freigegeben wird, ist das, was auf der Messe aufgebaut wird.</p><h2>Eine überprüfbare und archivierbare Akte</h2><p>Jedes Projekt bewahrt seinen vollständigen Verlauf: Designversionen, Budget, Termine, Freigaben und die Konversation mit dem Team. Der Kunde greift über einen privaten und individuellen Link auf sein Projekt zu, und die Akte bleibt als objektiver Beweis der Vereinbarung archiviert, nützlich sowohl für den Kunden als auch für Standarte.</p><h2>Transparenz, die Vertrauen schafft</h2><p>Das Auditierte Projekt verwandelt die Beziehung in etwas Messbares und Überraschungsfreies: klares Budget, definierter Umfang, freigegebener Prototyp und Nachverfolgung in Echtzeit. So untermauert Standarte mit Fakten sein Qualitätsversprechen bei jedem Stand, den es mit eigener Werkstatt gestaltet, produziert und aufbaut.</p><h2>Für wen</h2><p>Für jedes Unternehmen, das auf Messen ausstellt und seinen Stand mit der Gewissheit beauftragen möchte, vom ersten Tag an und schriftlich genau zu wissen, was es erhält. Wenn Sie Ihren Messeauftritt vorbereiten, ist dieses System Ihre Garantie.</p>",
+      "faqs": [
+        {
+          "q": "Was garantiert das System des Auditierten Projekts?",
+          "a": "Dass der gebaute Stand genau der ist, den der Kunde im Prototyp freigegeben hat. Jedes Angebot, Budget, jede Freigabe und Änderung wird in einer überprüfbaren Akte erfasst."
+        },
+        {
+          "q": "Wie greift der Kunde auf sein Projekt zu?",
+          "a": "Über einen privaten und individuellen Link zu seiner Akte, wo er das Design, das 3D-Modell, das Budget und den Projektstatus prüft und kommentieren und freigeben kann."
+        },
+        {
+          "q": "Wird die Akte aufbewahrt?",
+          "a": "Ja. Das Projekt wird mit seinem gesamten Verlauf —Versionen, Termine und Freigaben— als objektiver Zeuge der Vereinbarung archiviert."
+        },
+        {
+          "q": "Fallen zusätzliche Kosten an?",
+          "a": "Nein. Das Auditierte Projekt ist Teil des Standdesign- und Standbau-Service von Standarte."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Projet audité",
+      "title": "Système de Projet Audité de Standarte | Garantie de prototype | Standarte",
+      "h1": "Système de Projet Audité : ce que le client voit est ce qui est construit",
+      "introText": "Le système propre à Standarte qui consigne chaque projet de stand dans un dossier vérifiable et archivable —proposition, devis, prototype 3D, validations et commentaires— qui fait office de témoin de l'accord et garantit que ce qui est construit correspond exactement à ce qui a été validé.",
+      "body": "<h2>Ce qu'est le Projet Audité</h2><p>Le Projet Audité est le système propre de gestion et de suivi avec lequel Standarte documente chaque commande de conception et de construction de stands. Il réunit dans un espace privé unique la proposition graphique, le modèle 3D interactif, la note de production et le devis détaillé, et enregistre chaque validation et commentaire du client. Le résultat est un dossier vérifiable et archivable qui fait office de témoin de l'accord à tout moment.</p><h2>Ce que le client voit est ce qui est construit</h2><p>Avant toute fabrication, le client examine et valide le prototype du stand à l'écran. À partir de cette validation, le projet est figé et tracé : tout changement est documenté et validé à nouveau. Nous éliminons ainsi la principale source de conflit du secteur —que le livré ne corresponde pas au promis— avec une garantie simple : ce qui est validé sur le prototype est ce qui est dressé sur le salon.</p><h2>Un dossier vérifiable et archivable</h2><p>Chaque projet conserve son historique complet : versions de conception, devis, dates, validations et conversation avec l'équipe. Le client accède à son projet via un lien privé et individuel, et le dossier reste archivé comme preuve objective de l'accord, utile tant pour le client que pour Standarte.</p><h2>Une transparence qui inspire confiance</h2><p>Le Projet Audité transforme la relation en quelque chose de mesurable et sans surprises : devis clair, périmètre défini, prototype validé et suivi en temps réel. C'est la manière dont Standarte étaye par des faits son engagement de qualité sur chaque stand qu'elle conçoit, produit et monte avec son propre atelier.</p><h2>Pour qui</h2><p>Pour toute entreprise qui expose sur des salons et souhaite commander son stand avec la tranquillité de savoir, dès le premier jour et par écrit, exactement ce qu'elle recevra. Si vous préparez votre présence sur un salon, ce système est votre garantie.</p>",
+      "faqs": [
+        {
+          "q": "Que garantit le Système de Projet Audité ?",
+          "a": "Que le stand construit est exactement celui que le client a validé sur le prototype. Chaque proposition, devis, validation et changement est consigné dans un dossier vérifiable."
+        },
+        {
+          "q": "Comment le client accède-t-il à son projet ?",
+          "a": "Par un lien privé et individuel vers son dossier, où il examine la conception, le modèle 3D, le devis et l'état du projet, et peut commenter et valider."
+        },
+        {
+          "q": "Le dossier est-il conservé ?",
+          "a": "Oui. Le projet est archivé avec tout son historique —versions, dates et validations— comme témoin objectif de l'accord."
+        },
+        {
+          "q": "Y a-t-il un coût supplémentaire ?",
+          "a": "Non. Le Projet Audité fait partie du service de conception et de construction de stands de Standarte."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Progetto verificato",
+      "title": "Sistema di Progetto Verificato di Standarte | Garanzia di prototipo | Standarte",
+      "h1": "Sistema di Progetto Verificato: ciò che il cliente vede è ciò che si costruisce",
+      "introText": "Il sistema proprietario di Standarte che raccoglie ogni progetto di stand in un fascicolo verificabile e archiviabile —proposta, preventivo, prototipo 3D, approvazioni e commenti— che funge da testimone dell'accordo e garantisce che si costruisca esattamente ciò che è stato approvato.",
+      "body": "<h2>Che cos'è il Progetto Verificato</h2><p>Il Progetto Verificato è il sistema proprietario di gestione e monitoraggio con cui Standarte documenta ogni incarico di progettazione e costruzione di stand. Riunisce in un unico spazio privato la proposta grafica, il modello 3D interattivo, la relazione di produzione e il preventivo dettagliato, e registra ogni approvazione e commento del cliente. Il risultato è un fascicolo verificabile e archiviabile che funge da testimone dell'accordo in ogni momento.</p><h2>Ciò che il cliente vede è ciò che si costruisce</h2><p>Prima di fabbricare qualsiasi cosa, il cliente esamina e approva il prototipo dello stand a schermo. Da quell'approvazione il progetto viene congelato e tracciato: qualsiasi modifica viene documentata e nuovamente approvata. Eliminiamo così la principale fonte di conflitto del settore —che il consegnato non sia quello promesso— con una garanzia semplice: ciò che si approva nel prototipo è ciò che si allestisce alla fiera.</p><h2>Un fascicolo verificabile e archiviabile</h2><p>Ogni progetto conserva la sua cronologia completa: versioni di design, preventivo, date, approvazioni e conversazione con il team. Il cliente accede al suo progetto tramite un link privato e individuale, e il fascicolo resta archiviato come prova oggettiva dell'accordo, utile sia per il cliente sia per Standarte.</p><h2>Trasparenza che genera fiducia</h2><p>Il Progetto Verificato trasforma il rapporto in qualcosa di misurabile e senza sorprese: preventivo chiaro, ambito definito, prototipo approvato e monitoraggio in tempo reale. È il modo in cui Standarte sostiene con i fatti il suo impegno di qualità in ogni stand che progetta, produce e allestisce con officina propria.</p><h2>Per chi</h2><p>Per qualsiasi azienda che espone in fiere e vuole commissionare il proprio stand con la tranquillità di sapere, fin dal primo giorno e per iscritto, esattamente cosa riceverà. Se prepari la tua presenza in una fiera, questo sistema è la tua garanzia.</p>",
+      "faqs": [
+        {
+          "q": "Cosa garantisce il Sistema di Progetto Verificato?",
+          "a": "Che lo stand costruito è esattamente quello che il cliente ha approvato nel prototipo. Ogni proposta, preventivo, approvazione e modifica viene registrata in un fascicolo verificabile."
+        },
+        {
+          "q": "Come accede il cliente al suo progetto?",
+          "a": "Tramite un link privato e individuale al suo fascicolo, dove esamina il design, il modello 3D, il preventivo e lo stato del progetto, e può commentare e approvare."
+        },
+        {
+          "q": "Il fascicolo viene conservato?",
+          "a": "Sì. Il progetto resta archiviato con tutta la sua cronologia —versioni, date e approvazioni— come testimone oggettivo dell'accordo."
+        },
+        {
+          "q": "Ha un costo aggiuntivo?",
+          "a": "No. Il Progetto Verificato fa parte del servizio di progettazione e costruzione di stand di Standarte."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Geauditeerd project",
+      "title": "Standarte Systeem voor Geauditeerde Projecten | Prototypegarantie | Standarte",
+      "h1": "Systeem voor Geauditeerde Projecten: wat de klant ziet, wordt gebouwd",
+      "introText": "Het eigen systeem van Standarte dat elk standproject vastlegt in een verifieerbaar en archiveerbaar dossier —voorstel, offerte, 3D-prototype, goedkeuringen en opmerkingen— dat als getuige van de overeenkomst fungeert en garandeert dat precies wordt gebouwd wat is goedgekeurd.",
+      "body": "<h2>Wat het Geauditeerde Project is</h2><p>Het Geauditeerde Project is het eigen beheer- en opvolgsysteem waarmee Standarte elke opdracht voor ontwerp en bouw van stands documenteert. Het brengt in één enkele privéruimte het grafische voorstel, het interactieve 3D-model, het productiedossier en de gedetailleerde offerte samen, en registreert elke goedkeuring en opmerking van de klant. Het resultaat is een verifieerbaar en archiveerbaar dossier dat te allen tijde als getuige van de overeenkomst fungeert.</p><h2>Wat de klant ziet, wordt gebouwd</h2><p>Voordat er iets wordt vervaardigd, bekijkt en keurt de klant het prototype van de stand op het scherm goed. Vanaf die goedkeuring wordt het project bevroren en getraceerd: elke wijziging wordt gedocumenteerd en opnieuw goedgekeurd. Zo elimineren we de belangrijkste bron van conflict in de sector —dat het geleverde niet het beloofde is— met een eenvoudige garantie: wat in het prototype wordt goedgekeurd, is wat op de beurs wordt opgebouwd.</p><h2>Een verifieerbaar en archiveerbaar dossier</h2><p>Elk project bewaart zijn volledige geschiedenis: ontwerpversies, offerte, data, goedkeuringen en het gesprek met het team. De klant krijgt toegang tot zijn project via een privé en individuele link, en het dossier blijft gearchiveerd als objectief bewijs van de overeenkomst, nuttig voor zowel de klant als Standarte.</p><h2>Transparantie die vertrouwen wekt</h2><p>Het Geauditeerde Project maakt de relatie meetbaar en zonder verrassingen: duidelijke offerte, afgebakende omvang, goedgekeurd prototype en opvolging in realtime. Zo onderbouwt Standarte met feiten zijn kwaliteitsbelofte bij elke stand die het met eigen werkplaats ontwerpt, produceert en opbouwt.</p><h2>Voor wie</h2><p>Voor elk bedrijf dat op beurzen exposeert en zijn stand wil bestellen met de gerustheid dat het vanaf de eerste dag en schriftelijk precies weet wat het zal ontvangen. Als je je aanwezigheid op een beurs voorbereidt, is dit systeem jouw garantie.</p>",
+      "faqs": [
+        {
+          "q": "Wat garandeert het Systeem voor Geauditeerde Projecten?",
+          "a": "Dat de gebouwde stand precies die is die de klant in het prototype heeft goedgekeurd. Elk voorstel, offerte, goedkeuring en wijziging wordt vastgelegd in een verifieerbaar dossier."
+        },
+        {
+          "q": "Hoe krijgt de klant toegang tot zijn project?",
+          "a": "Via een privé en individuele link naar zijn dossier, waar hij het ontwerp, het 3D-model, de offerte en de projectstatus bekijkt en kan becommentariëren en goedkeuren."
+        },
+        {
+          "q": "Wordt het dossier bewaard?",
+          "a": "Ja. Het project blijft gearchiveerd met zijn volledige geschiedenis —versies, data en goedkeuringen— als objectieve getuige van de overeenkomst."
+        },
+        {
+          "q": "Zijn er extra kosten?",
+          "a": "Nee. Het Geauditeerde Project maakt deel uit van de dienst voor ontwerp en bouw van stands van Standarte."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "受审项目",
+      "title": "Standarte 受审项目系统 | 原型保证 | Standarte",
+      "h1": "受审项目系统：客户所见即所建",
+      "introText": "Standarte 自有的系统，将每一个展台项目整理为可核查、可存档的档案——方案、报价、3D 原型、审批与评论——作为协议的见证，确保所建造的正是获批的内容。",
+      "body": "<h2>什么是受审项目</h2><p>受审项目是 Standarte 用来记录每一项展台设计与建造委托的自有管理与跟踪系统。它在一个私密空间中汇集图形方案、交互式 3D 模型、生产说明和详细报价，并记录客户的每一次审批和评论。其成果是一份可核查、可存档的档案，始终作为协议的见证。</p><h2>客户所见即所建</h2><p>在制造任何东西之前，客户先在屏幕上审阅并批准展台原型。自该批准起，项目即被冻结并留痕：任何变更都会被记录并重新批准。我们由此消除了行业最主要的冲突根源——交付之物与承诺之物不符——并给出一个简单的保证：在原型中获批的，就是在展会上搭建的。</p><h2>一份可核查、可存档的档案</h2><p>每个项目都保留其完整历史：设计版本、报价、日期、审批以及与团队的对话。客户通过一个私密且专属的链接访问其项目，档案作为协议的客观证据被存档保留，对客户和 Standarte 都同样有用。</p><h2>建立信任的透明度</h2><p>受审项目让合作关系变得可衡量且没有意外：清晰的报价、明确的范围、已批准的原型和实时跟踪。这正是 Standarte 以事实支撑其质量承诺的方式，体现在它以自有工坊设计、生产并搭建的每一个展台上。</p><h2>面向谁</h2><p>面向任何在展会参展、并希望在委托展台时从第一天起就以书面形式确切知道将获得什么、从而安心的企业。如果你正在筹备参展，这套系统就是你的保证。</p>",
+      "faqs": [
+        {
+          "q": "受审项目系统保证什么？",
+          "a": "保证所建造的展台正是客户在原型中批准的那一个。每一份方案、报价、审批和变更都记录在一份可核查的档案中。"
+        },
+        {
+          "q": "客户如何访问自己的项目？",
+          "a": "通过一个私密且专属的链接进入其档案，在其中审阅设计、3D 模型、报价和项目状态，并可评论和批准。"
+        },
+        {
+          "q": "档案会被保留吗？",
+          "a": "会。项目连同其全部历史——版本、日期和审批——一起存档，作为协议的客观见证。"
+        },
+        {
+          "q": "是否有额外费用？",
+          "a": "没有。受审项目是 Standarte 展台设计与建造服务的一部分。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "ऑडिट किया गया प्रोजेक्ट",
+      "title": "Standarte ऑडिट किया गया प्रोजेक्ट सिस्टम | प्रोटोटाइप गारंटी | Standarte",
+      "h1": "ऑडिट किया गया प्रोजेक्ट सिस्टम: ग्राहक जो देखता है, वही बनता है",
+      "introText": "Standarte की अपनी प्रणाली जो हर स्टैंड प्रोजेक्ट को एक सत्यापन योग्य और संग्रहणीय दस्तावेज़ में समेट देती है —प्रस्ताव, बजट, 3D प्रोटोटाइप, स्वीकृतियाँ और टिप्पणियाँ— जो समझौते के साक्षी के रूप में कार्य करती है और यह सुनिश्चित करती है कि ठीक वही बनाया जाए जो स्वीकृत हुआ था।",
+      "body": "<h2>ऑडिट किया गया प्रोजेक्ट क्या है</h2><p>ऑडिट किया गया प्रोजेक्ट वह अपनी प्रबंधन और निगरानी प्रणाली है जिससे Standarte स्टैंड के डिज़ाइन और निर्माण के हर काम को दर्ज करता है। यह एक ही निजी स्थान में ग्राफिक प्रस्ताव, इंटरैक्टिव 3D मॉडल, उत्पादन विवरण और विस्तृत बजट को एकत्र करता है, और ग्राहक की हर स्वीकृति और टिप्पणी को दर्ज करता है। परिणाम एक सत्यापन योग्य और संग्रहणीय दस्तावेज़ है जो हर समय समझौते के साक्षी के रूप में कार्य करता है।</p><h2>ग्राहक जो देखता है, वही बनता है</h2><p>कुछ भी बनाने से पहले, ग्राहक स्क्रीन पर स्टैंड के प्रोटोटाइप की समीक्षा करता है और उसे स्वीकृत करता है। उस स्वीकृति से प्रोजेक्ट स्थिर और अंकित हो जाता है: किसी भी बदलाव को दर्ज किया जाता है और फिर से स्वीकृत किया जाता है। इस तरह हम क्षेत्र के मुख्य विवाद-स्रोत को समाप्त कर देते हैं —कि जो सौंपा गया वह वादे के अनुरूप न हो— एक सरल गारंटी के साथ: जो प्रोटोटाइप में स्वीकृत होता है, वही मेले में खड़ा किया जाता है।</p><h2>एक सत्यापन योग्य और संग्रहणीय दस्तावेज़</h2><p>हर प्रोजेक्ट अपना पूरा इतिहास सहेजता है: डिज़ाइन के संस्करण, बजट, तिथियाँ, स्वीकृतियाँ और टीम के साथ बातचीत। ग्राहक एक निजी और व्यक्तिगत लिंक से अपने प्रोजेक्ट तक पहुँचता है, और दस्तावेज़ समझौते के वस्तुनिष्ठ प्रमाण के रूप में संग्रहीत रहता है, जो ग्राहक और Standarte दोनों के लिए उपयोगी है।</p><h2>विश्वास पैदा करने वाली पारदर्शिता</h2><p>ऑडिट किया गया प्रोजेक्ट रिश्ते को मापने योग्य और आश्चर्य-रहित बना देता है: स्पष्ट बजट, परिभाषित दायरा, स्वीकृत प्रोटोटाइप और वास्तविक समय में निगरानी। यही वह तरीका है जिससे Standarte अपने गुणवत्ता के वचन को तथ्यों से समर्थित करता है, हर उस स्टैंड में जिसे वह अपनी कार्यशाला से डिज़ाइन, उत्पादन और स्थापित करता है।</p><h2>किसके लिए</h2><p>हर उस कंपनी के लिए जो मेलों में प्रदर्शन करती है और अपने स्टैंड का ऑर्डर इस आश्वस्ति के साथ देना चाहती है कि पहले दिन से और लिखित रूप में उसे ठीक-ठीक पता हो कि उसे क्या मिलेगा। यदि आप किसी मेले में अपनी उपस्थिति की तैयारी कर रहे हैं, तो यह प्रणाली आपकी गारंटी है।</p>",
+      "faqs": [
+        {
+          "q": "ऑडिट किया गया प्रोजेक्ट सिस्टम क्या गारंटी देता है?",
+          "a": "कि जो स्टैंड बनाया जाता है वह ठीक वही है जिसे ग्राहक ने प्रोटोटाइप में स्वीकृत किया था। हर प्रस्ताव, बजट, स्वीकृति और बदलाव एक सत्यापन योग्य दस्तावेज़ में दर्ज होता है।"
+        },
+        {
+          "q": "ग्राहक अपने प्रोजेक्ट तक कैसे पहुँचता है?",
+          "a": "अपने दस्तावेज़ के एक निजी और व्यक्तिगत लिंक के माध्यम से, जहाँ वह डिज़ाइन, 3D मॉडल, बजट और प्रोजेक्ट की स्थिति की समीक्षा करता है, और टिप्पणी तथा स्वीकृति दे सकता है।"
+        },
+        {
+          "q": "क्या दस्तावेज़ सहेजा जाता है?",
+          "a": "हाँ। प्रोजेक्ट अपने पूरे इतिहास —संस्करण, तिथियाँ और स्वीकृतियाँ— के साथ समझौते के वस्तुनिष्ठ साक्षी के रूप में संग्रहीत रहता है।"
+        },
+        {
+          "q": "क्या इसका कोई अतिरिक्त शुल्क है?",
+          "a": "नहीं। ऑडिट किया गया प्रोजेक्ट Standarte की स्टैंड डिज़ाइन और निर्माण सेवा का हिस्सा है।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "감사 프로젝트",
+      "title": "Standarte 감사 프로젝트 시스템 | 프로토타입 보증 | Standarte",
+      "h1": "감사 프로젝트 시스템: 고객이 보는 것이 곧 제작되는 것",
+      "introText": "모든 부스 프로젝트를 검증 가능하고 보관 가능한 기록으로 정리하는 Standarte 고유의 시스템 —제안서, 견적, 3D 프로토타입, 승인 및 의견— 으로, 합의의 증거 역할을 하며 승인된 그대로 제작됨을 보증합니다.",
+      "body": "<h2>감사 프로젝트란</h2><p>감사 프로젝트는 Standarte가 모든 부스 디자인 및 시공 의뢰를 기록하는 고유의 관리·추적 시스템입니다. 하나의 비공개 공간에 그래픽 제안, 인터랙티브 3D 모델, 제작 사양서, 상세 견적을 한데 모으고, 고객의 모든 승인과 의견을 기록합니다. 그 결과는 언제나 합의의 증거 역할을 하는 검증 가능하고 보관 가능한 기록입니다.</p><h2>고객이 보는 것이 곧 제작되는 것</h2><p>무엇을 제작하기 전에 고객은 화면에서 부스 프로토타입을 검토하고 승인합니다. 그 승인 시점부터 프로젝트는 고정되고 추적됩니다: 어떤 변경이든 문서화되어 다시 승인됩니다. 이렇게 우리는 업계의 주된 분쟁 요인 —납품물이 약속과 다른 것— 을 간단한 보증으로 없앱니다: 프로토타입에서 승인된 것이 박람회에서 세워지는 것입니다.</p><h2>검증 가능하고 보관 가능한 기록</h2><p>모든 프로젝트는 전체 이력을 보존합니다: 디자인 버전, 견적, 날짜, 승인 및 팀과의 대화. 고객은 비공개 개별 링크로 자신의 프로젝트에 접속하며, 기록은 합의의 객관적 증거로 보관되어 고객과 Standarte 모두에게 유용합니다.</p><h2>신뢰를 만드는 투명성</h2><p>감사 프로젝트는 관계를 측정 가능하고 예상치 못한 일이 없는 것으로 바꿉니다: 명확한 견적, 정의된 범위, 승인된 프로토타입, 실시간 추적. 이것이 Standarte가 자체 공방에서 디자인·생산·설치하는 모든 부스에서 품질 약속을 사실로 뒷받침하는 방식입니다.</p><h2>대상</h2><p>박람회에 전시하며 첫날부터 서면으로 정확히 무엇을 받게 될지 아는 안심 속에서 부스를 의뢰하고자 하는 모든 기업을 위한 것입니다. 박람회 참가를 준비하고 있다면, 이 시스템이 당신의 보증입니다.</p>",
+      "faqs": [
+        {
+          "q": "감사 프로젝트 시스템은 무엇을 보증하나요?",
+          "a": "제작되는 부스가 고객이 프로토타입에서 승인한 바로 그것임을 보증합니다. 모든 제안, 견적, 승인, 변경이 검증 가능한 기록에 남습니다."
+        },
+        {
+          "q": "고객은 자신의 프로젝트에 어떻게 접속하나요?",
+          "a": "자신의 기록으로 연결되는 비공개 개별 링크를 통해 접속하며, 그곳에서 디자인, 3D 모델, 견적, 프로젝트 상태를 검토하고 의견을 남기고 승인할 수 있습니다."
+        },
+        {
+          "q": "기록은 보관되나요?",
+          "a": "네. 프로젝트는 모든 이력 —버전, 날짜, 승인— 과 함께 합의의 객관적 증거로 보관됩니다."
+        },
+        {
+          "q": "추가 비용이 있나요?",
+          "a": "아니요. 감사 프로젝트는 Standarte의 부스 디자인 및 시공 서비스의 일부입니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "監査済みプロジェクト",
+      "title": "Standarte 監査済みプロジェクトシステム | プロトタイプ保証 | Standarte",
+      "h1": "監査済みプロジェクトシステム：顧客が見るものが、そのまま造られる",
+      "introText": "すべてのブースプロジェクトを検証可能で保管可能な記録にまとめる Standarte 独自のシステム —提案、見積もり、3D プロトタイプ、承認、コメント— で、合意の証人として機能し、承認されたものが正確に造られることを保証します。",
+      "body": "<h2>監査済みプロジェクトとは</h2><p>監査済みプロジェクトは、Standarte がブースの設計・施工の各案件を記録する独自の管理・追跡システムです。一つのプライベートな空間に、グラフィック提案、インタラクティブな 3D モデル、製作仕様書、詳細な見積もりをまとめ、顧客のすべての承認とコメントを記録します。その成果は、常に合意の証人として機能する、検証可能で保管可能な記録です。</p><h2>顧客が見るものが、そのまま造られる</h2><p>何かを製作する前に、顧客は画面上でブースのプロトタイプを確認し承認します。その承認以降、プロジェクトは凍結され追跡されます：いかなる変更も文書化され、再度承認されます。こうして私たちは、業界最大の紛争の原因 —納品されたものが約束と異なること— を、シンプルな保証で解消します：プロトタイプで承認されたものが、見本市で立ち上がるものです。</p><h2>検証可能で保管可能な記録</h2><p>各プロジェクトは完全な履歴を保存します：デザインのバージョン、見積もり、日付、承認、チームとの会話。顧客はプライベートで個別のリンクから自分のプロジェクトにアクセスし、記録は合意の客観的な証拠として保管され、顧客にも Standarte にも役立ちます。</p><h2>信頼を生む透明性</h2><p>監査済みプロジェクトは、関係を測定可能で驚きのないものに変えます：明確な見積もり、定義された範囲、承認済みのプロトタイプ、リアルタイムの追跡。これが、Standarte が自社工房で設計・製作・設営するすべてのブースにおいて、品質へのコミットメントを事実で裏付ける方法です。</p><h2>対象</h2><p>見本市に出展し、初日から書面で、何を受け取るのかを正確に知る安心感とともにブースを発注したいすべての企業のためのものです。見本市への出展を準備しているなら、このシステムがあなたの保証です。</p>",
+      "faqs": [
+        {
+          "q": "監査済みプロジェクトシステムは何を保証しますか？",
+          "a": "造られるブースが、顧客がプロトタイプで承認したものと正確に一致することを保証します。すべての提案、見積もり、承認、変更が検証可能な記録に残ります。"
+        },
+        {
+          "q": "顧客はどのように自分のプロジェクトにアクセスしますか？",
+          "a": "自分の記録へのプライベートで個別のリンクを通じてアクセスし、そこでデザイン、3D モデル、見積もり、プロジェクトの状態を確認し、コメントや承認ができます。"
+        },
+        {
+          "q": "記録は保管されますか？",
+          "a": "はい。プロジェクトはすべての履歴 —バージョン、日付、承認— とともに、合意の客観的な証人として保管されます。"
+        },
+        {
+          "q": "追加費用はかかりますか？",
+          "a": "いいえ。監査済みプロジェクトは Standarte のブース設計・施工サービスの一部です。"
+        }
+      ]
+    }
+  },
   "valladolid": {
     "es": {
       "breadcrumb": "Valladolid",
