@@ -66,6 +66,44 @@ if (!function_exists('cpx_key')) {
 	function cpx_storage_public_url($path) {
 		return SUPABASE_URL . '/storage/v1/object/public/client-projects/' . $path;
 	}
+	/* Borra del bucket client-projects todos los ficheros subidos de un proyecto
+	 * (la carpeta <projectId>/...). Best-effort: si algo falla no aborta el borrado
+	 * del proyecto. Los media enlazados de Google Drive no viven en Storage y se
+	 * ignoran (no aparecen en el listado). */
+	function cpx_storage_delete_folder($projectId) {
+		if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId)) return;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/list/client-projects');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('prefix' => $projectId . '/', 'limit' => 1000)));
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'apikey: ' . cpx_key(), 'Authorization: Bearer ' . cpx_key(), 'Content-Type: application/json'
+		));
+		$resp = curl_exec($ch);
+		curl_close($ch);
+		$list = json_decode($resp, true);
+		if (!is_array($list) || empty($list)) return;
+		$paths = array();
+		foreach ($list as $obj) {
+			if (isset($obj['name']) && $obj['name'] !== '') $paths[] = $projectId . '/' . $obj['name'];
+		}
+		if (empty($paths)) return;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/client-projects');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('prefixes' => $paths)));
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'apikey: ' . cpx_key(), 'Authorization: Bearer ' . cpx_key(), 'Content-Type: application/json'
+		));
+		curl_exec($ch);
+		curl_close($ch);
+	}
 	/* Tipos aceptados: mime/extensión permitidos -> [extensión, tipo de media]. */
 	function cpx_media_kind($mime, $filename) {
 		$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));

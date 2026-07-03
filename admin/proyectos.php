@@ -52,6 +52,17 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	header('Location: proyectos.php'); exit;
 }
 
+/* ---------- Borrar proyecto (cascada: media, presupuesto y comentarios) ---------- */
+if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === 'delete_project') {
+	$id = post('id');
+	if (preg_match('/^[0-9a-f-]{36}$/', $id)) {
+		cpx_storage_delete_folder($id);                               // ficheros subidos (best-effort)
+		cpx_sb('DELETE', 'client_projects?id=eq.' . urlencode($id));  // la fila arrastra las tablas hijas (ON DELETE CASCADE)
+		header('Location: proyectos.php?msg=' . urlencode('Proyecto borrado.')); exit;
+	}
+	header('Location: proyectos.php'); exit;
+}
+
 /* Insignia de solo lectura (para "Aprobado", que marca el cliente). */
 function status_badge($p, $field) {
 	$on = !empty($p[$field]);
@@ -100,6 +111,8 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 	.st-on { color: #4caf50; border-color: #2e7d32; background: rgba(46,125,50,.12); }
 	.st-on:hover { background: rgba(46,125,50,.22); }
 	.st-ro { cursor: default; }
+	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
+	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
 </style></head>
 <body><div class="wrap">
 <?php if (!pj_authed()): ?>
@@ -142,13 +155,18 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, abre el enlace del
 			proyecto: al estar tu sesión iniciada, la propia página se vuelve editable.</p>
 		<p class="hint">Aprobado lo marca el cliente al aprobar; contrato y factura los marcas tú al cursarlos (clic para alternar).</p>
-		<table><tr><th>Ref</th><th>Cliente</th><th>Aprobado</th><th>Contrato</th><th>Factura</th><th>Abrir</th></tr>
+		<table><tr><th>Ref</th><th>Cliente</th><th>Aprobado</th><th>Contrato</th><th>Factura</th><th>Abrir</th><th></th></tr>
 		<?php foreach ($projects as $p): ?>
 			<tr><td><?= h($p['ref']) ?></td><td><?= h($p['client_name']) ?></td>
 			<td><?= status_badge($p, 'approved') ?></td>
 			<td><?= status_toggle($p, 'contract_done') ?></td>
 			<td><?= status_toggle($p, 'invoice_done') ?></td>
-			<td class="link"><a href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir y editar →</a></td></tr>
+			<td class="link"><a href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir y editar →</a></td>
+			<td><form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
+				<input type="hidden" name="action" value="delete_project">
+				<input type="hidden" name="id" value="<?= h($p['id']) ?>">
+				<button type="submit" class="del" title="Borrar proyecto">Borrar</button>
+			</form></td></tr>
 		<?php endforeach; ?>
 		</table>
 	</div>
