@@ -52,6 +52,7 @@ export const fairTags = {
   "naval": { family: "transporte", label: { es: "Naval", pt: "Naval", en: "Naval & shipbuilding", de: "Schiffbau", fr: "Naval", it: "Navale", nl: "Scheepvaart", zh: "船舶", hi: "जहाज़ निर्माण", ko: "조선", ja: "造船" } },
   "aeronautica": { family: "transporte", label: { es: "Aeronáutica", pt: "Aeronáutica", en: "Aerospace", de: "Luft- und Raumfahrt", fr: "Aéronautique", it: "Aeronautica", nl: "Luchtvaart", zh: "航空", hi: "एयरोनॉटिक्स", ko: "항공우주", ja: "航空" } },
   "transporte": { family: "transporte", label: { es: "Transporte y logística", pt: "Transporte e logística", en: "Transport & logistics", de: "Transport und Logistik", fr: "Transport et logistique", it: "Trasporti e logistica", nl: "Transport en logistiek", zh: "运输与物流", hi: "परिवहन एवं लॉजिस्टिक्स", ko: "운송 및 물류", ja: "運輸・物流" } },
+  "movilidad": { family: "transporte", label: { es: "Movilidad, ITS y tráfico", pt: "Mobilidade, ITS e tráfego", en: "Mobility, ITS & traffic", de: "Mobilität, ITS & Verkehr", fr: "Mobilité, ITS et trafic", it: "Mobilità, ITS e traffico", nl: "Mobiliteit, ITS & verkeer", zh: "出行、ITS 与交通", hi: "गतिशीलता, ITS एवं यातायात", ko: "모빌리티, ITS 및 교통", ja: "モビリティ・ITS・交通" } },
   "vino": { family: "enologia", label: { es: "Vino y enología", pt: "Vinho e enologia", en: "Wine & oenology", de: "Wein und Önologie", fr: "Vin et œnologie", it: "Vino ed enologia", nl: "Wijn en oenologie", zh: "葡萄酒与酿酒", hi: "वाइन एवं एनोलॉजी", ko: "와인 및 양조", ja: "ワイン・醸造" } },
   "equipamiento-vino": { family: "enologia", label: { es: "Equipamiento del vino", pt: "Equipamento vínico", en: "Winemaking equipment", de: "Weinkellereitechnik", fr: "Équipement vinicole", it: "Attrezzature per il vino", nl: "Wijnuitrusting", zh: "葡萄酒酿造设备", hi: "वाइन उपकरण", ko: "와인 설비", ja: "ワイン関連設備" } },
   "cultura-arte": { family: "ocio", label: { es: "Cultura y arte", pt: "Cultura e arte", en: "Culture & art", de: "Kultur und Kunst", fr: "Culture et art", it: "Cultura e arte", nl: "Cultuur en kunst", zh: "文化与艺术", hi: "संस्कृति एवं कला", ko: "문화 및 예술", ja: "文化・芸術" } },
@@ -112,7 +113,7 @@ export const fairActivities = {
   "alimentaria-barcelona": ["alimentacion"],
   "hispack-barcelona": ["packaging"],
   "hostelco-barcelona": ["gastronomia-hosteleria"],
-  "smart-city-expo-world-congress-barcelona": ["digital-software","smart-city","congreso-profesional"],
+  "smart-city-expo-world-congress-barcelona": ["digital-software","smart-city","congreso-profesional","movilidad"],
   "construmat-barcelona": ["construccion"],
   "iot-solutions-world-congress-barcelona": ["digital-software","congreso-profesional"],
   "smart-doors-madrid": ["smart-city","puertas"],
@@ -237,7 +238,11 @@ export const fairActivities = {
   "encontro-vinhos-sabores-lisboa": ["vino"],
   "vinhos-de-portugal-lisboa": ["vino"],
   "vinipax-beja": ["vino"],
-  "barcelona-wine-week": ["vino"]
+  "barcelona-wine-week": ["vino"],
+  "its-european-congress": ["movilidad","smart-city","congreso-profesional"],
+  "congreso-its-espana": ["movilidad","congreso-profesional"],
+  "trafic-madrid": ["movilidad"],
+  "global-mobility-call-madrid": ["movilidad","smart-city","congreso-profesional"]
 };
 
 // Helpers

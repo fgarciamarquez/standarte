@@ -1223,5 +1223,33 @@ export const fairsData = [
     "slug": "barcelona-wine-week",
     "city": "Barcelona",
     "sector": "Enología y Vinos"
+  },
+  {
+    "name": "ITS European Congress",
+    "country": "es",
+    "slug": "its-european-congress",
+    "city": "Itinerante",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Congreso ITS España",
+    "country": "es",
+    "slug": "congreso-its-espana",
+    "city": "Itinerante",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "TRAFIC Madrid",
+    "country": "es",
+    "slug": "trafic-madrid",
+    "city": "Madrid",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Global Mobility Call",
+    "country": "es",
+    "slug": "global-mobility-call-madrid",
+    "city": "Madrid",
+    "sector": "Aeronáutica y Transporte"
   }
 ];
