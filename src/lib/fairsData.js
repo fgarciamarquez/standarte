@@ -1225,6 +1225,27 @@ export const fairsData = [
     "sector": "Enología y Vinos"
   },
   {
+    "name": "Salón de los Vinos de Aragón",
+    "country": "es",
+    "slug": "salon-vinos-aragon-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Wine Paris",
+    "country": "fr",
+    "slug": "wine-paris",
+    "city": "París",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "ProWein Düsseldorf",
+    "country": "de",
+    "slug": "prowein-dusseldorf",
+    "city": "Düsseldorf",
+    "sector": "Enología y Vinos"
+  },
+  {
     "name": "ITS European Congress",
     "country": "es",
     "slug": "its-european-congress",
