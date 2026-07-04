@@ -833,6 +833,41 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "Feira de São Mateus",
+    "country": "pt",
+    "slug": "feira-sao-mateus-elvas",
+    "city": "Elvas",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feira Nacional de Agricultura",
+    "country": "pt",
+    "slug": "feira-nacional-agricultura-santarem",
+    "city": "Santarém",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "FERSANT",
+    "country": "pt",
+    "slug": "fersant-santarem",
+    "city": "Santarém",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Agroglobal",
+    "country": "pt",
+    "slug": "agroglobal-santarem",
+    "city": "Santarém",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Lusoflora",
+    "country": "pt",
+    "slug": "lusoflora-santarem",
+    "city": "Santarém",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Nortrans",
     "country": "es",
     "slug": "nortrans-vigo",
