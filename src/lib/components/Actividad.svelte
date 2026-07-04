@@ -10,6 +10,7 @@
     colorForTag, labelForTag, familyLabel
   } from '$lib/fairTags.js';
   import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
+  import { activityPitch } from '$lib/activityPitch.js';
   import FlagIcon from './FlagIcon.svelte';
   import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
@@ -208,6 +209,7 @@
 
         {#if isIndex}
           <p class="highlight">{t.idxLead}</p>
+          <p class="act-pitch">{activityPitch(lang).text}</p>
           {#each indexGroups as g}
             <h2 class="fam-h" style="--chip:{g.color}"><span class="chip-dot" aria-hidden="true"></span>{familyLabel(g.family, lang)}</h2>
             <ul class="act-card-grid">

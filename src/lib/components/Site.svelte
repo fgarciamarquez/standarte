@@ -6,6 +6,7 @@
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { coverage } from '$lib/coverageCopy.js';
+  import { activityPitch } from '$lib/activityPitch.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
@@ -1294,6 +1295,13 @@
           <h2>{coverage(lang).heading}</h2>
           <p>{coverage(lang).text}</p>
         </div>
+        <!-- Malla única de ferias por sector/actividad: recurso imprescindible, mismo
+             constructor y misma calidad en todos los lugares, para rendimiento estratégico. -->
+        <div class="coverage-claim activity-pitch">
+          <h2>{activityPitch(lang).heading}</h2>
+          <p>{activityPitch(lang).text}</p>
+          <a class="tool-cta" href={activityIndexUrl(lang)}>{activityPitch(lang).cta} →</a>
+        </div>
       {/if}
       <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">
@@ -2155,4 +2163,6 @@
   .coverage-claim { max-width: 820px; margin: 0 auto 1.6rem; text-align: center; padding: 0 1rem; }
   .coverage-claim h2 { margin: 0 0 0.6rem; }
   .coverage-claim p { margin: 0; line-height: 1.65; color: var(--text-color); }
+  .activity-pitch { margin-top: 2rem; }
+  .activity-pitch .tool-cta { margin-top: 1.1rem; }
 </style>
