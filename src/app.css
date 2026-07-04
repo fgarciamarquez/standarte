@@ -2109,9 +2109,15 @@ footer {
     white-space: nowrap;
   }
 
-  /* El botón CTA (Presupuesto) baja a su propia fila a todo el ancho. */
+  /* El botón CTA (Presupuesto) baja a su propia fila (flex-basis 100% fuerza el
+     salto), centrado y con aire a los lados (max-width + margin auto) para que no
+     se corte contra los bordes de la pantalla y el texto quede centrado. */
   .nav-links.open > .nav-cta-btn {
     flex: 0 0 100%;
+    max-width: calc(100% - 32px);
+    margin: 12px auto;
+    justify-content: center;
+    text-align: center;
   }
 
   .nav-links button {
