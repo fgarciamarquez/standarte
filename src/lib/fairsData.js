@@ -560,6 +560,34 @@ export const fairsData = [
     "sector": "Belleza y Estética"
   },
   {
+    "name": "CosmoBeauty Barcelona",
+    "country": "es",
+    "slug": "cosmobeauty-barcelona",
+    "city": "Barcelona",
+    "sector": "Belleza y Estética"
+  },
+  {
+    "name": "Beauty Forum Valencia",
+    "country": "es",
+    "slug": "beauty-forum-valencia",
+    "city": "Valencia",
+    "sector": "Belleza y Estética"
+  },
+  {
+    "name": "Expomedes",
+    "country": "es",
+    "slug": "expomedes-madrid",
+    "city": "Madrid",
+    "sector": "Belleza y Estética"
+  },
+  {
+    "name": "In Beauty",
+    "country": "pt",
+    "slug": "in-beauty-lisboa",
+    "city": "Lisboa",
+    "sector": "Belleza y Estética"
+  },
+  {
     "name": "Madrid Tech Show",
     "country": "es",
     "slug": "madrid-tech-show",
