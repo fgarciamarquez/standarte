@@ -1,6 +1,6 @@
 <script>
   import { fairsData as fairItems } from '$lib/fairsData.js';
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
@@ -988,6 +988,23 @@
     }
   }
 
+  // "Hablar con Pat" (sección de herramientas): el panel de Pat se renderiza arriba
+  // del <main>, así que además de cargarlo/mostrarlo, desplazamos la página hasta él
+  // para que el visitante lo vea desplegarse.
+  async function openPatAndScroll() {
+    advisorDismissed.reactivate();
+    if (!AdvisorComponent) {
+      try { const m = await import('./WelcomeAdvisor.svelte'); AdvisorComponent = m.default; } catch (e) {}
+    }
+    showWelcomeAdvisor = true;
+    await tick();
+    requestAnimationFrame(() => {
+      const el = document.querySelector('.welcome-advisor-container') || document.querySelector('.welcome-advisor-card');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   onMount(() => {
     displayedCounters = counterItems.map(() => 0);
 
@@ -1565,7 +1582,7 @@
         <article class="tool-card" itemscope itemtype="https://schema.org/Service">
           <h3 itemprop="name">{toolsCopy(lang).patTitle}</h3>
           <p itemprop="description">{toolsCopy(lang).patText}</p>
-          <button type="button" class="tool-cta" on:click={reopenAdvisor}>{toolsCopy(lang).patCta} →</button>
+          <button type="button" class="tool-cta" on:click={openPatAndScroll}>{toolsCopy(lang).patCta} →</button>
         </article>
         <article class="tool-card" itemscope itemtype="https://schema.org/Service">
           <h3 itemprop="name">{toolsCopy(lang).guaranteeTitle}</h3>
