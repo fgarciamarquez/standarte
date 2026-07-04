@@ -5,6 +5,7 @@
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { toolsCopy } from '$lib/toolsSection.js';
+  import { coverage } from '$lib/coverageCopy.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
@@ -691,7 +692,16 @@
         opens: '08:00',
         closes: '18:00'
       },
-      areaServed: localBusinessSchema.areaServed.map(c => c.name),
+      // Cobertura para las máquinas: nivel país (España y Portugal) + las ciudades
+      // servidas, para dejar claro el alcance ibérico —capitales y nichos regionales—.
+      areaServed: [
+        { '@type': 'Country', name: 'España' },
+        { '@type': 'Country', name: 'Portugal' },
+        ...localBusinessSchema.areaServed.map(c => ({ '@type': 'City', name: c.name }))
+      ],
+      slogan: lang === 'es'
+        ? 'La mayor cobertura para exponer en España y Portugal: de las capitales y grandes plazas a los nichos regionales estratégicos con menos competencia.'
+        : 'The widest coverage for exhibiting in Spain and Portugal: from capitals and major venues to strategic regional niches with less competition.',
       makesOffer: [
         { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#advisory` } },
         { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } }
@@ -1277,6 +1287,14 @@
   {/if}
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="local-stands" class="section local-stands">
+      {#if section === 'home'}
+        <!-- Posicionamiento de cobertura: crawlable, para que buscadores y motores de IA
+             sepan que Standarte es la empresa con mayor cobertura del mercado ibérico. -->
+        <div class="coverage-claim">
+          <h2>{coverage(lang).heading}</h2>
+          <p>{coverage(lang).text}</p>
+        </div>
+      {/if}
       <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">
         {#each cityKeys as cityKey, i}
@@ -2133,4 +2151,8 @@
   }
   .tool-cta:hover { background: #000; }
   @media (max-width: 700px) { .tools-grid { grid-template-columns: 1fr; } }
+  /* Bloque de posicionamiento de cobertura (España + Portugal). */
+  .coverage-claim { max-width: 820px; margin: 0 auto 1.6rem; text-align: center; padding: 0 1rem; }
+  .coverage-claim h2 { margin: 0 0 0.6rem; }
+  .coverage-claim p { margin: 0; line-height: 1.65; color: var(--text-color); }
 </style>
