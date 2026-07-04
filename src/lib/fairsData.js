@@ -483,6 +483,13 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "Agroexpo",
+    "country": "es",
+    "slug": "agroexpo-don-benito",
+    "city": "Don Benito",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Web Summit Lisboa",
     "country": "es",
     "slug": "web-summit-lisboa",
