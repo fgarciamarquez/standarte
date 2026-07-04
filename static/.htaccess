@@ -22,6 +22,7 @@ DirectorySlash Off
   # No existe página de privacidad propia (el texto legal es un modal del pie) ni index.php: a la home.
   RewriteRule ^index\.php$ https://standarte.es/ [R=301,L]
   RewriteRule ^privacy_policy\.php$ https://standarte.es/ [R=301,L]
+  RewriteRule ^cookie_policy\.php$ https://standarte.es/ [R=301,L]
 
   # Redirigir carpetas de idiomas a sus archivos HTML correspondientes para evitar error 403/500 por no tener index.html
   RewriteCond %{REQUEST_URI} ^/en/?$

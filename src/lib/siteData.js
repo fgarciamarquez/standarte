@@ -3153,6 +3153,29 @@ export function projectUrl(id, lang) {
   return `/proyectos/${id}${lang && lang !== 'es' ? `?lang=${lang}` : ''}`;
 }
 
+// Botón CTA del menú ("Presupuesto en 24h"): dividido en la palabra principal y el
+// sufijo "en 24h", para poder ocultar el sufijo en pantallas medianas (evita que el
+// botón salte a dos líneas y deforme el menú). El sufijo se envuelve en .cta-24h.
+const ctaMain = {
+  es: 'Presupuesto', en: 'Quote', de: 'Angebot', pt: 'Orçamento', fr: 'Devis', it: 'Preventivo',
+  nl: 'Offerte', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', ko: '24시간 내 견적', ja: '24時間で見積もり'
+};
+const cta24h = {
+  es: 'en 24h', en: 'in 24h', de: 'in 24h', pt: 'em 24h', fr: 'en 24h', it: 'in 24h',
+  nl: 'binnen 24u', zh: '', hi: '', ko: '', ja: ''
+};
+export function ctaBudget(lang) {
+  const main = ctaMain[lang] || ctaMain.es;
+  const s = (lang in cta24h ? cta24h[lang] : cta24h.es);
+  return { main, h24: s ? ' ' + s : '' };
+}
+
+// Etiqueta corta "Precios" para el botón del sidebar (antes "Precios de stands").
+export const preciosNav = {
+  es: 'Precios', en: 'Prices', de: 'Preise', pt: 'Preços', fr: 'Tarifs', it: 'Prezzi',
+  nl: 'Prijzen', zh: '价格', hi: 'मूल्य', ko: '가격', ja: '料金'
+};
+
 export function findRoute(path) {
   const clean = (path || '').replace(/^\/+|\/+$/g, '');
   if (clean === '') return { lang: 'es', section: 'home' };

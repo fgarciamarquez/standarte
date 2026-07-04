@@ -1,10 +1,11 @@
 <script>
   import { onMount } from 'svelte';
   import news from '$lib/newsData.json';
-  import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
+  import { pathFor, copy, languages, languageLabels, ctaBudget } from '$lib/siteData.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
   import CitySidebar from '$lib/components/CitySidebar.svelte';
+  import SiteFooter from '$lib/components/SiteFooter.svelte';
 
 
 
@@ -355,7 +356,7 @@
           {/each}
         </div>
       </div>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
     </div>
   </nav>
 
@@ -418,49 +419,7 @@
 </main>
 
 
-<footer>
-  <div class="footer-layout">
-    <div class="footer-left">
-      <ul class="footer-links">
-        <li><a href={pathFor(lang, 'services')} class="footer-link-button">{currentCopy.nav.services}</a></li>
-        <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
-        <li><a href={pathFor(lang, 'noticias')} class="footer-link-button active">{currentCopy.nav.noticias}</a></li>
-        <li class="footer-lang-item">
-          <div class="footer-lang-menu">
-            <span class="footer-lang-trigger" role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={22} /></span>
-            <div class="footer-lang-dropdown">
-              {#each languages as option}
-                <a
-                  href={pathFor(option, 'noticias')}
-                  class:active={option === lang}
-                  on:click={() => {
-                    if (typeof localStorage !== 'undefined') {
-                      localStorage.setItem('standarte_lang', option);
-                      localStorage.setItem('preferredLanguage', option);
-                    }
-                  }}
-                  class="footer-lang-option"
-                >
-                  <FlagIcon langCode={option} size={18} />
-                  <span class="footer-lang-name">{languageLabels[option]}</span>
-                </a>
-              {/each}
-            </div>
-          </div>
-        </li>
-        <li><a href={pathFor(lang, 'contact')} class="footer-link-button">{currentCopy.nav.contact}</a></li>
-      </ul>
-    </div>
-    <div class="copyright">
-      <p>
-        Standarte © 2026.
-        <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer" style="margin-left: 15px; display: inline-block;">
-          Admin
-        </a>
-      </p>
-    </div>
-  </div>
-</footer>
+<SiteFooter {lang} copy={currentCopy} langHref={(option) => pathFor(option, 'noticias')} />
 
 <style>
   /* Header y Navbar de subpágina */

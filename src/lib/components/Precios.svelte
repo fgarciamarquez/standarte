@@ -1,9 +1,11 @@
 <script>
   import { onMount } from 'svelte';
-  import { pathFor, languages, languageLabels } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, ctaBudget } from '$lib/siteData.js';
   import { pricingTiers, fmtEuro } from '$lib/pricingTiers.js';
+  import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from './FlagIcon.svelte';
   import AiSourceButtons from './AiSourceButtons.svelte';
+  import SiteFooter from './SiteFooter.svelte';
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let data;
@@ -665,6 +667,7 @@
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
       <a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>
       <a href={pathFor(lang, 'precios')} class="active">{t.navPrecios}</a>
+      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
       <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
@@ -676,15 +679,22 @@
           {/each}
         </div>
       </div>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
     </div>
   </nav>
   <div class="hero-subpage">
     <div class="hero-contents">
       <h1>{t.h1}</h1>
     </div>
+    <AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />
   </div>
 </header>
+
+{#if showWelcomeAdvisor && AdvisorComponent}
+  <svelte:component this={AdvisorComponent} {lang}
+    on:openPrivacy={() => (typeof window !== 'undefined' && window.open('/privacidad', '_blank', 'noopener'))}
+    on:dismiss={() => (showWelcomeAdvisor = false)} />
+{/if}
 
 <main class="precios-page">
   <p class="precios-intro">{t.intro}</p>
@@ -724,30 +734,9 @@
       {/each}
     </dl>
   </section>
-
-  <div class="precios-cta">
-    <a href={pathFor(lang, 'contact')} class="btn-cta-gold">{t.cta}</a>
-  </div>
 </main>
 
-<AiSourceButtons {lang} variant="band" canReactivate on:reactivate={reopenAdvisor} />
-
-{#if showWelcomeAdvisor && AdvisorComponent}
-  <svelte:component this={AdvisorComponent} {lang}
-    on:openPrivacy={() => (typeof window !== 'undefined' && window.open('/privacidad', '_blank', 'noopener'))}
-    on:dismiss={() => (showWelcomeAdvisor = false)} />
-{/if}
-
-<footer class="footer">
-  <div class="footer-bottom">
-    <p>&copy; {new Date().getFullYear()} {copy.footer}</p>
-    <div class="footer-links">
-      <a href="/legal">{copy.legal.legalNotice}</a>
-      <a href="/privacidad">{copy.legal.privacy}</a>
-      <a href="/cookies">{copy.legal.cookies}</a>
-    </div>
-  </div>
-</footer>
+<SiteFooter {lang} {copy} langHref={(option) => pathFor(option, 'precios')} />
 
 <style>
   /* Todo el fondo del cuerpo de la página en #f7f6f1 (también los laterales fuera del
@@ -859,24 +848,4 @@
     font-size: 16px;
     line-height: 1.65;
   }
-
-
-  .precios-cta {
-    text-align: center;
-    margin-top: 48px;
-  }
-  .btn-cta-gold {
-    display: inline-block;
-    background-color: var(--gold);
-    color: #111;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 15px;
-    padding: 14px 32px;
-    border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(255, 200, 0, 0.2);
-    transition: all 0.25s ease;
-  }
-  .btn-cta-gold:hover { background-color: #e6b400; transform: translateY(-2px); }
 </style>

@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
-  import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
+  import { pathFor, copy, languages, languageLabels, ctaBudget } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
   import WelcomeAdvisor from '$lib/components/WelcomeAdvisor.svelte';
+  import SiteFooter from '$lib/components/SiteFooter.svelte';
   export let data;
   $: article = data.article;
 
@@ -340,7 +341,7 @@
           {/each}
         </div>
       </div>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
     </div>
   </nav>
 
@@ -381,47 +382,7 @@
   </article>
 </main>
 
-<footer>
-  <div class="footer-layout">
-    <div class="footer-left">
-      <ul class="footer-links">
-        <li><a href={pathFor(lang, 'services')} class="footer-link-button">{currentCopy.nav.services}</a></li>
-        <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
-        <li><a href={pathFor(lang, 'noticias')} class="footer-link-button active">{currentCopy.nav.noticias}</a></li>
-        <li class="footer-lang-item">
-          <div class="footer-lang-menu">
-            <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><i class="world-icon" aria-hidden="true"></i> {lang.toUpperCase()}</span>
-            <div class="footer-lang-dropdown">
-              {#each languages as option}
-                <a
-                  href={getAlternateUrl(option)}
-                  class:active={option === lang}
-                  on:click={() => {
-                    if (typeof localStorage !== 'undefined') {
-                      localStorage.setItem('standarte_lang', option);
-                      localStorage.setItem('preferredLanguage', option);
-                    }
-                  }}
-                >
-                  {languageLabels[option]}
-                </a>
-              {/each}
-            </div>
-          </div>
-        </li>
-        <li><a href={pathFor(lang, 'contact')} class="footer-link-button">{currentCopy.nav.contact}</a></li>
-      </ul>
-    </div>
-    <div class="copyright">
-      <p>
-        Standarte © 2026.
-        <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer" style="margin-left: 15px; display: inline-block;">
-          Admin
-        </a>
-      </p>
-    </div>
-  </div>
-</footer>
+<SiteFooter {lang} copy={currentCopy} langHref={getAlternateUrl} />
 
 <!-- Modal legal (lo abre el enlace de privacidad del panel de Pat). -->
 {#if legalModal}

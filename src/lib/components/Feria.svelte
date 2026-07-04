@@ -1,11 +1,12 @@
 <script>
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { pickIntroVariant } from '$lib/introVariants.js';
   import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import ContactForm from './ContactForm.svelte';
+  import SiteFooter from './SiteFooter.svelte';
 
   // Módulo "Actividad" del aside: chips con código de color que enlazan a los
   // hubs de actividad de esta feria (interconexión por sector).
@@ -647,7 +648,7 @@
         href="#contact"
         class="nav-cta-btn"
         on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
-      >{ctaLabels[lang] || ctaLabels.es}</a>
+      >{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
     </div>
   </nav>
   
@@ -730,12 +731,12 @@
                   </a>
                 </li>
               {/each}
+              <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a></li>
             </ul>
-            <a class="activity-all" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a>
           </div>
         {/if}
         <div class="aside-module">
-          <a class="cluster-pillar" href={pathFor(lang, 'precios')}>{preciosLink[lang] || preciosLink.es}</a>
+          <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
         </div>
       </aside>
     </div>
@@ -746,16 +747,7 @@
     <ContactForm labels={copy} {lang} variant="light" />
   </section>
 </main>
-<footer class="footer">
-  <div class="footer-bottom">
-    <p>&copy; {new Date().getFullYear()} {copy.footer}</p>
-    <div class="footer-links">
-      <a href="/legal">{copy.legal.legalNotice}</a>
-      <a href="/privacidad">{copy.legal.privacy}</a>
-      <a href="/cookies">{copy.legal.cookies}</a>
-    </div>
-  </div>
-</footer>
+<SiteFooter {lang} {copy} langHref={(option) => fairUrl(fairSlug, option)} />
 
 <style>
   .feria-page {

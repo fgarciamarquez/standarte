@@ -2763,6 +2763,14 @@ footer {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   box-shadow: none !important;
   text-shadow: none !important;
+  white-space: nowrap; /* el botón nunca salta a dos líneas */
+}
+
+/* En pantallas medianas (nav horizontal pero apretado) ocultamos el sufijo "en 24h"
+   del botón CTA para que no deforme el menú. En escritorio grande y en el menú
+   hamburguesa (<=768px, vertical) se muestra completo. */
+@media (min-width: 769px) and (max-width: 1180px) {
+  .nav-cta-btn .cta-24h { display: none; }
 }
 
 .nav-links .nav-cta-btn:hover,
@@ -3241,6 +3249,46 @@ p b {
   color: #1a1e21;
   background: rgba(212, 175, 55, 0.08);
 }
+
+/* Botón "Precios" del sidebar: píldora sólida destacada, para diferenciarse a golpe
+   de vista del resto de enlaces del panel (se encuentra por su forma). */
+.precios-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  width: 88px;
+  height: 88px;
+  padding: 0;
+  background: var(--gold);
+  color: #111;
+  font-weight: 700;
+  font-family: 'Inconsolata', monospace;
+  font-size: 13px;
+  line-height: 1.2;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(255, 200, 0, 0.32);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.precios-pill:hover { background: #e6b400; transform: translateY(-1px); color: #111; }
+
+/* Enlace "Ver todas las actividades": flota tras el último chip, en azul royal.
+   Reseteamos el aspecto de "chip" (fondo/borde/padding) para que sea un enlace plano;
+   !important vence al estilo con hash del componente (.activity-chips li a). */
+.ver-todas-link {
+  display: inline-flex !important;
+  align-items: center;
+  color: #4169e1 !important; /* Royal Blue */
+  background: none !important;
+  border: none !important;
+  padding: 2px 2px !important;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.ver-todas-link:hover { color: #2a4bc0 !important; }
 @media (max-width: 768px) {
   .city-fairs h2 {
     font-size: 20px;

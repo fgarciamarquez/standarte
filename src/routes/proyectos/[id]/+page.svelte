@@ -1,7 +1,9 @@
 <script>
   import { onMount } from 'svelte';
-  import { pathFor, copy, languages, languageLabels, projectUrl } from '$lib/siteData.js';
+  import { pathFor, copy, languages, languageLabels, projectUrl, ctaBudget } from '$lib/siteData.js';
+  import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
+  import SiteFooter from '$lib/components/SiteFooter.svelte';
   import ContactForm from '$lib/components/ContactForm.svelte';
 
 
@@ -253,6 +255,21 @@
     nl: '3D-projecten'
   };
 
+  // Enlace modesto al sistema de garantía (Proyecto Auditado), bajo el texto del proyecto.
+  const descubreGarantia = {
+    es: 'Descubre nuestro sistema de garantía',
+    en: 'Discover our guarantee system',
+    de: 'Entdecke unser Garantiesystem',
+    pt: 'Descubra o nosso sistema de garantia',
+    zh: '了解我们的保障体系',
+    hi: 'हमारी गारंटी प्रणाली जानें',
+    fr: 'Découvrez notre système de garantie',
+    it: 'Scopri il nostro sistema di garanzia',
+    ko: '우리의 보증 시스템 알아보기',
+    ja: '当社の保証システムを見る',
+    nl: 'Ontdek ons garantiesysteem'
+  };
+
   const backToMainPages = {
     es: 'Volver',
     en: 'Back',
@@ -362,6 +379,7 @@
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
+      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
       <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
@@ -379,7 +397,7 @@
           {/each}
         </div>
       </div>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaLabels[lang] || ctaLabels.es}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
     </div>
   </nav>
 
@@ -414,6 +432,11 @@
         {@html project.valuesText[lang] || project.valuesText.es}
       </div>
     </div>
+
+    <!-- Enlace modesto al Proyecto Auditado (al final del texto, antes de la galería). -->
+    <p class="audited-link-wrap">
+      <a class="audited-link" href={pathFor(lang, 'proyecto_auditado')}>{descubreGarantia[lang] || descubreGarantia.es} →</a>
+    </p>
 
     <!-- Título Galería -->
     <div class="gallery-title-wrapper">
@@ -489,44 +512,7 @@
   {/if}
 </main>
 
-<footer>
-  <div class="footer-layout">
-    <div class="footer-left">
-      <ul class="footer-links">
-        <li><a href={pathFor(lang, 'services')} class="footer-link-button">{currentCopy.nav.services}</a></li>
-        <li><a href={pathFor(lang, 'custom')} class="footer-link-button">{currentCopy.nav.custom}</a></li>
-        <li><a href={pathFor(lang, 'noticias')} class="footer-link-button">{currentCopy.nav.noticias}</a></li>
-        <li class="footer-lang-item">
-          <div class="footer-lang-menu">
-            <span class="footer-lang-trigger" role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={22} /></span>
-            <div class="footer-lang-dropdown">
-              {#each languages as option}
-                <button
-                  type="button"
-                  class:active={option === lang}
-                  on:click={() => switchLanguage(option)}
-                  class="footer-lang-option"
-                >
-                  <FlagIcon langCode={option} size={18} />
-                  <span class="footer-lang-name">{languageLabels[option]}</span>
-                </button>
-              {/each}
-            </div>
-          </div>
-        </li>
-        <li><a href={pathFor(lang, 'contact')} class="footer-link-button">{currentCopy.nav.contact}</a></li>
-      </ul>
-    </div>
-    <div class="copyright">
-      <p>
-        Standarte © 2026.
-        <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="noopener noreferrer" style="margin-left: 15px; display: inline-block;">
-          Admin
-        </a>
-      </p>
-    </div>
-  </div>
-</footer>
+<SiteFooter {lang} copy={currentCopy} langHref={(option) => projectUrl(project.id, option)} />
 
 <style>
   /* Cabecera y Navbar */
@@ -724,6 +710,21 @@
 
   .btn-web:hover {
     color: #111;
+  }
+
+  /* Enlace modesto al Proyecto Auditado (bajo el texto, antes de la galería). */
+  .audited-link-wrap {
+    margin: -24px 0 44px;
+  }
+  .audited-link {
+    font-size: 14px;
+    color: #4169e1; /* Royal Blue */
+    border-bottom: 1px dotted rgba(65, 105, 225, 0.5);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .audited-link:hover {
+    color: #2a4bc0;
+    border-color: #2a4bc0;
   }
 
   /* Título Galería */

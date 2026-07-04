@@ -3,7 +3,7 @@
   import { fairsData } from '$lib/fairsData.js';
   import {
     pathFor, languages, languageLabels, fairUrl,
-    activityUrl, activityIndexUrl
+    activityUrl, activityIndexUrl, ctaBudget, preciosNav
   } from '$lib/siteData.js';
   import {
     tagFamilies, fairTags, tagOrder, fairsForActivity,
@@ -12,6 +12,7 @@
   import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from './FlagIcon.svelte';
   import ContactForm from './ContactForm.svelte';
+  import SiteFooter from './SiteFooter.svelte';
 
   export let data;
   $: ({ lang, copy, canonical, section, tag, activitySeo } = data);
@@ -162,7 +163,7 @@
           {/each}
         </div>
       </div>
-      <a href="#contact" class="nav-cta-btn" on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{ctaLabels[lang] || ctaLabels.es}</a>
+      <a href="#contact" class="nav-cta-btn" on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
     </div>
   </nav>
   <div class="hero-subpage">
@@ -251,14 +252,12 @@
                   </a>
                 </li>
               {/each}
+              <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{t.allAct} →</a></li>
             </ul>
           </div>
         {/if}
         <div class="aside-module">
-          <a class="cluster-pillar" href={activityIndexUrl(lang)}>{t.allAct} →</a>
-        </div>
-        <div class="aside-module">
-          <a class="cluster-pillar" href={pathFor(lang, 'precios')}>{preciosLink[lang] || preciosLink.es}</a>
+          <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
         </div>
       </aside>
     </div>
@@ -270,16 +269,7 @@
   </section>
 </main>
 
-<footer class="footer">
-  <div class="footer-bottom">
-    <p>&copy; {new Date().getFullYear()} {copy.footer}</p>
-    <div class="footer-links">
-      <a href="/legal">{copy.legal.legalNotice}</a>
-      <a href="/privacidad">{copy.legal.privacy}</a>
-      <a href="/cookies">{copy.legal.cookies}</a>
-    </div>
-  </div>
-</footer>
+<SiteFooter {lang} {copy} langHref={(option) => isIndex ? activityIndexUrl(option) : activityUrl(tag, option)} />
 
 <style>
   .act-page { min-height: 100vh; display: flex; flex-direction: column; }

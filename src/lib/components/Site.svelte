@@ -2,7 +2,7 @@
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
-  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl } from '$lib/siteData.js';
+  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
@@ -13,9 +13,9 @@
   import ContactForm from './ContactForm.svelte';
   import AiSourceButtons from './AiSourceButtons.svelte';
   import { advisorDismissed } from '$lib/stores/advisor.js';
-  import CookieConsent from './CookieConsent.svelte';
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
+  import SiteFooter from './SiteFooter.svelte';
   // WelcomeAdvisor NO se importa de forma estática: se carga con import dinámico
   // (chunk aparte) tras cargar la página, para no colgar del bundle principal.
 
@@ -97,7 +97,6 @@
     : null;
   let galleryExpanded = false;
   let citiesExpanded = false;
-  let legalModal = null;
   let isScrolled = false;
   let ignoreNextScroll = false;
 
@@ -400,6 +399,11 @@
   });
 
   const modularEnabled = false;
+  // Título de la sección de proyectos 3D en la home (antes "Proyectos de Bajo Coste").
+  const projects3DTitle = {
+    es: 'Proyectos 3D', en: '3D Projects', de: '3D-Projekte', pt: 'Projetos 3D', fr: 'Projets 3D',
+    it: 'Progetti 3D', nl: '3D-projecten', zh: '3D 项目', hi: '3D परियोजनाएँ', ko: '3D 프로젝트', ja: '3Dプロジェクト'
+  };
   // Etiqueta del enlace "Precios" en el menú (la página /precios es un componente propio).
   const preciosNavLabel = {
     es: 'Precios', en: 'Prices', de: 'Preise', pt: 'Preços', fr: 'Tarifs', it: 'Prezzi',
@@ -438,32 +442,6 @@
     nl: 'nl-NL'
   };
   const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'ciudad_real', 'zaragoza'];
-  const cookieSettingsLabels = {
-    es: 'Configurar cookies',
-    en: 'Cookie settings',
-    de: 'Cookie-Einstellungen',
-    zh: 'Cookie 设置',
-    hi: 'कुकी सेटिंग्स',
-    pt: 'Configurar cookies',
-    fr: 'Configurer les cookies',
-    it: 'Impostazioni cookie',
-    ko: '쿠키 설정',
-    ja: 'クッキー設定',
-    nl: 'Cookies configureren'
-  };
-  const campaignManagerLabels = {
-    es: 'Admin',
-    en: 'Admin',
-    de: 'Admin',
-    zh: '管理',
-    hi: 'Admin',
-    pt: 'Admin',
-    fr: 'Admin',
-    it: 'Admin',
-    ko: 'Admin',
-    ja: '管理',
-    nl: 'Admin'
-  };
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -847,27 +825,6 @@
     videoLightboxSrc = list[(i + dir + list.length) % list.length].src;
   }
 
-  function openLegalModal(type) {
-    const titles = {
-      privacy: copy.legal.privacy,
-      legalNotice: copy.legal.legalNotice,
-      cookies: copy.legal.cookies
-    };
-
-    legalModal = {
-      title: titles[type],
-      content: copy.legalText?.[type] || ''
-    };
-  }
-
-  function closeLegalModal() {
-    legalModal = null;
-  }
-
-  function openCookieSettings() {
-    window.dispatchEvent(new CustomEvent('standarte:open-cookie-settings'));
-  }
-
   function handleKeydown(event) {
     if (event.key === 'Escape') {
       if (videoLightboxSrc) {
@@ -880,7 +837,6 @@
         return;
       }
 
-      if (legalModal) closeLegalModal();
       return;
     }
 
@@ -888,7 +844,7 @@
     if (videoLightboxSrc) {
       if (event.key === 'ArrowLeft') navVideo(-1);
       else if (event.key === 'ArrowRight') navVideo(1);
-    } else if (lightboxProject && !legalModal) {
+    } else if (lightboxProject) {
       if (event.key === 'ArrowLeft') navLightbox(-1);
       else if (event.key === 'ArrowRight') navLightbox(1);
     }
@@ -1247,7 +1203,7 @@
           {/each}
         </div>
       </div>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaLabels[lang] || ctaLabels.es}</a>
+      <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
     </div>
   </nav>
   
@@ -1487,9 +1443,9 @@
     <!-- Nueva Sección: Prototipos 3D Premium -->
     <section id="prototipos-3d" class="section prototypes-carousel">
       <div class="section-header">
-        <h2>{copy.projects3D?.title || 'Otros Proyectos'}</h2>
+        <h2>{projects3DTitle[lang] || projects3DTitle.es}</h2>
         <span></span>
-        <p>{copy.projects3D?.subtitle || 'Explora nuestras propuestas 3D y su relación con nuestros valores de diseño.'}</p>
+        <p><strong>{uspHome(lang).homeHeading}</strong><br />{uspHome(lang).homeText}</p>
       </div>
 
       <div class="carousel-container">
@@ -1534,16 +1490,6 @@
       </nav>
     </section>
 
-    <!-- Sistema de Proyecto Auditado (super-recurso): destaque en la home con enlace
-         a la landing /proyecto-auditado. Va tras los prototipos 3D por afinidad temática
-         (lo que ves en el prototipo es lo que se construye). -->
-    <section id="proyecto-auditado" class="section audited-teaser">
-      <div class="audited-teaser-inner">
-        <h2>{uspHome(lang).homeHeading}</h2>
-        <p>{uspHome(lang).homeText}</p>
-        <a class="audited-cta" href={pathFor(lang, 'proyecto_auditado')}>{uspHome(lang).cta} →</a>
-      </div>
-    </section>
 
     <section class="counters section">
       <div class="counter-grid">
@@ -1693,7 +1639,7 @@
                     </li>
                   {/each}
                 </ul>
-                <a class="sidebar-precios-link" href={pathFor(lang, 'precios')}>{preciosLink[lang] || preciosLink.es} →</a>
+                <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
               </div>
 
               <div class="spotlight-card">
@@ -1736,8 +1682,8 @@
                         </a>
                       </li>
                     {/each}
+                    <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a></li>
                   </ul>
-                  <a class="sidebar-precios-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a>
                 </section>
               {/if}
             </div>
@@ -1767,71 +1713,7 @@
   <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} />
 </main>
 
-<footer>
-  <div class="footer-layout">
-    <div class="footer-left">
-      <ul class="footer-links">
-        <li><button id="politicaPrivacidad" class="_gold footer-link-button" type="button" on:click={() => openLegalModal('privacy')}>{copy.legal.privacy}</button></li>
-        <li><button id="avisoLegal" class="_gold footer-link-button" type="button" on:click={() => openLegalModal('legalNotice')}>{copy.legal.legalNotice}</button></li>
-        <li><button id="politicaCookies" class="_gold footer-link-button" type="button" on:click={() => openLegalModal('cookies')}>{copy.legal.cookies}</button></li>
-        <li><button class="_gold footer-link-button" type="button" on:click={openCookieSettings}>{cookieSettingsLabels[lang] || cookieSettingsLabels.es}</button></li>
-        <li><a href={pathFor(lang, 'noticias')} class="_gold footer-link-button">{copy.nav.noticias}</a></li>
-        <li class="footer-lang-item">
-          <div class="footer-lang-menu">
-            <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
-            <div class="footer-lang-dropdown">
-              {#each languages as option}
-                <a
-                  href={pathFor(option, section)}
-                  class:active={option === lang}
-                  on:click={() => {
-                    if (typeof localStorage !== 'undefined') {
-                      localStorage.setItem('standarte_lang', option);
-                      localStorage.setItem('preferredLanguage', option);
-                    }
-                  }}
-                >
-                  <FlagIcon langCode={option} size={16} />
-                  <span>{languageLabels[option]}</span>
-                </a>
-              {/each}
-            </div>
-          </div>
-        </li>
-      </ul>
-      <nav class="footer-site-map" aria-label="Standarte" hidden aria-hidden="true">
-        <ul>
-          <li><a href={pathFor(lang, 'services')} tabindex="-1">{copy.nav.services}</a></li>
-          <li><a href={pathFor(lang, 'custom')} tabindex="-1">{copy.nav.custom}</a></li>
-          <li><a href={pathFor(lang, 'proyecto_auditado')} tabindex="-1">{uspNavLabel(lang)}</a></li>
-          <li><a href={pathFor(lang, 'noticias')} tabindex="-1">{copy.nav.noticias}</a></li>
-          <li><a href={pathFor(lang, 'contact')} tabindex="-1">{copy.nav.contact}</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="copyright">
-      <p>
-        CopyRight: {new Date().getFullYear()}.
-        <a href="/admin/email_campaing/" class="_gold footer-link-button" target="_blank" rel="external noopener noreferrer" style="margin-left: 15px; display: inline-block;">
-          {campaignManagerLabels[lang] || campaignManagerLabels.es}
-        </a>
-      </p>
-    </div>
-  </div>
-</footer>
-
-{#if legalModal}
-  <div class="legal-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title" tabindex="-1">
-    <div class="legal-modal-window" role="document">
-      <button class="legal-modal-close" type="button" aria-label="Cerrar" on:click={closeLegalModal}>×</button>
-      <div class="legal-modal-brand"><img src="/img/mini_logo_flag.svg" alt="" /></div>
-      <h2 id="legal-modal-title">{legalModal.title}</h2>
-      <div class="legal-modal-content">{@html legalModal.content}</div>
-    </div>
-  </div>
-{/if}
-
-<CookieConsent {lang} />
+<SiteFooter {lang} {copy} langHref={(option) => pathFor(option, section)} />
 
 <style>
   /* Header oscuro de las subpáginas con .static-header (custom/luzpavilion/team): su
