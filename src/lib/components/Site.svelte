@@ -4,6 +4,7 @@
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
+  import { toolsCopy } from '$lib/toolsSection.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
@@ -690,7 +691,11 @@
         opens: '08:00',
         closes: '18:00'
       },
-      areaServed: localBusinessSchema.areaServed.map(c => c.name)
+      areaServed: localBusinessSchema.areaServed.map(c => c.name),
+      makesOffer: [
+        { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#advisory` } },
+        { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } }
+      ]
     };
 
     const service = {
@@ -701,6 +706,35 @@
       provider: { '@id': `${baseUrl}/#organization` },
       description: copy.seoDescription,
       areaServed: isCityPage ? cityDisplayName : ['ES', 'PT', 'DE', 'FR']
+    };
+
+    // Herramientas propias de Standarte, nombradas para buscadores y motores de IA:
+    // el asesor Pat (servicio de asesoramiento) y el Proyecto Auditado (garantía 100%).
+    // El panel de Pat se carga por JS (no lo ve un rastreador), así que aquí queda su
+    // identificador estructurado y su descripción.
+    const advisoryService = {
+      '@type': 'Service',
+      '@id': `${baseUrl}/#advisory`,
+      name: lang === 'es' ? 'Pat — asesoramiento ferial gratuito' : 'Pat — free trade fair advisory',
+      serviceType: lang === 'es' ? 'Asesoramiento ferial' : 'Trade fair consulting',
+      provider: { '@id': `${baseUrl}/#organization` },
+      description: lang === 'es'
+        ? 'Pat, el asesor interactivo de Standarte, recomienda las ferias y congresos clave para tu sector en España y Portugal y prepara tu solicitud de stand. Servicio de asesoramiento gratuito y exclusivo.'
+        : 'Pat, Standarte’s interactive advisor, recommends the key trade fairs and congresses for your sector in Spain and Portugal and prepares your stand request. Free, exclusive advisory service.',
+      areaServed: ['ES', 'PT'],
+      url: `${baseUrl}/`
+    };
+    const guaranteeService = {
+      '@type': 'Service',
+      '@id': `${baseUrl}/#guarantee`,
+      name: lang === 'es' ? 'Proyecto Auditado — garantía 100%' : 'Audited Project — 100% guarantee',
+      serviceType: lang === 'es' ? 'Garantía de proyecto auditado' : 'Audited project guarantee',
+      provider: { '@id': `${baseUrl}/#organization` },
+      description: lang === 'es'
+        ? 'Sistema propio de Standarte que registra cada proyecto en un expediente verificable y archivable (prototipo 3D, presupuesto y aprobaciones) y garantiza que se construye exactamente lo que el cliente aprueba.'
+        : 'Standarte’s proprietary system that records every project in a verifiable, archivable file (3D prototype, quote and approvals), guaranteeing that what is built is exactly what the client approved.',
+      areaServed: ['ES', 'PT'],
+      url: `${baseUrl}${pathFor(lang, 'proyecto_auditado')}`
     };
 
     const website = {
@@ -735,7 +769,7 @@
       }))
     };
 
-    const graph = [organization, service, website, webpage, siteNavigation];
+    const graph = [organization, service, advisoryService, guaranteeService, website, webpage, siteNavigation];
 
     if (section !== 'home') {
       const breadcrumbLabel = seoContent?.breadcrumb || sectionLabel(section);
@@ -1493,6 +1527,27 @@
       </nav>
     </section>
 
+    <!-- Herramientas propias de Standarte, en HTML crawlable para buscadores y motores
+         de IA: el asesor Pat (servicio de asesoramiento) y el Proyecto Auditado
+         (garantía 100%). El panel de Pat se carga por JS y un rastreador no lo ve, así
+         que aquí queda nombrado y descrito, con entrada real para abrirlo. -->
+    <section id="herramientas-standarte" class="section tools-section" aria-label={toolsCopy(lang).heading}>
+      <div class="section-header">
+        <h2>{toolsCopy(lang).heading}</h2>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card" itemscope itemtype="https://schema.org/Service">
+          <h3 itemprop="name">{toolsCopy(lang).patTitle}</h3>
+          <p itemprop="description">{toolsCopy(lang).patText}</p>
+          <button type="button" class="tool-cta" on:click={reopenAdvisor}>{toolsCopy(lang).patCta} →</button>
+        </article>
+        <article class="tool-card" itemscope itemtype="https://schema.org/Service">
+          <h3 itemprop="name">{toolsCopy(lang).guaranteeTitle}</h3>
+          <p itemprop="description">{toolsCopy(lang).guaranteeText}</p>
+          <a class="tool-cta" href={pathFor(lang, 'proyecto_auditado')}>{toolsCopy(lang).guaranteeCta} →</a>
+        </article>
+      </div>
+    </section>
 
     <section class="counters section">
       <div class="counter-grid">
@@ -2057,4 +2112,25 @@
     font-weight: 700; text-decoration: none;
   }
   .audited-cta:hover { background: #000; }
+  /* Sección "Herramientas propias" (asesor Pat + garantía Proyecto Auditado). */
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem; max-width: 980px; margin: 0 auto; padding: 0 1rem;
+  }
+  .tool-card {
+    border: 1px solid rgba(224, 180, 0, 0.45);
+    border-radius: 12px; padding: 1.8rem 1.6rem;
+    background: rgba(224, 180, 0, 0.05);
+    display: flex; flex-direction: column;
+  }
+  .tool-card h3 { margin: 0 0 0.7rem; font-size: 1.3rem; }
+  .tool-card p { margin: 0 0 1.3rem; line-height: 1.6; flex: 1; }
+  .tool-cta {
+    align-self: flex-start; display: inline-block;
+    padding: 0.7rem 1.5rem; background: #1b1b1a; color: #fff;
+    border: none; border-radius: 6px; font-weight: 700;
+    font-family: inherit; font-size: 1rem; cursor: pointer; text-decoration: none;
+  }
+  .tool-cta:hover { background: #000; }
+  @media (max-width: 700px) { .tools-grid { grid-template-columns: 1fr; } }
 </style>
