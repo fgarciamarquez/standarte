@@ -426,6 +426,10 @@
   </div>
 
   <article class="project-container">
+    <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
+      <img src="/img/100x100-guaranted.png" alt="" loading="lazy" />
+    </a>
+
     <!-- Carta del Valor de Diseño y Textos -->
     <div class="values-card">
       <div class="values-content">
@@ -637,9 +641,40 @@
 
   /* Contenedor del Proyecto */
   .project-container {
+    position: relative;
     max-width: var(--container);
     margin: 0 auto;
     padding: 30px 15px 0;
+  }
+
+  /* Sello de garantía: flota sobre la esquina superior derecha, pisando el texto
+     a propósito (como un sello físico sobre un documento). */
+  .guarantee-stamp {
+    display: block;
+    position: absolute;
+    top: -55px;
+    right: 6px;
+    width: 150px;
+    height: 150px;
+    z-index: 5;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+    transition: transform 0.2s ease;
+  }
+  .guarantee-stamp:hover {
+    transform: scale(1.05);
+  }
+  .guarantee-stamp img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 768px) {
+    .guarantee-stamp {
+      width: 100px;
+      height: 100px;
+      top: -34px;
+      right: 4px;
+    }
   }
 
   /* Carta de Valores */

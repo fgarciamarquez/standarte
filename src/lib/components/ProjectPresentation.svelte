@@ -259,7 +259,10 @@
     </div>
   {/if}
 
-  <section class="pz-block">
+  <section class="pz-block pz-media-block">
+    <a class="pz-guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado" target="_blank" rel="noopener">
+      <img src="/img/100x100-guaranted.png" alt="" loading="lazy" />
+    </a>
     <h2 class="pz-h2">{L.media}</h2>
     {#each data.media as m (m.id)}
       <article class="pz-media">
@@ -551,7 +554,41 @@
 
 <style>
   :global(html:has(.pz)), :global(html:has(.pz) body) { background: #f4f3ee; }
-  .pz { max-width: 920px; margin: 0 auto; padding: 28px 18px 80px; font-family: 'Inconsolata', ui-monospace, 'SF Mono', 'JetBrains Mono', monospace; color: #1b1b1a; font-size: 15px; line-height: 1.5; }
+  .pz { position: relative; max-width: 920px; margin: 0 auto; padding: 28px 18px 80px; font-family: 'Inconsolata', ui-monospace, 'SF Mono', 'JetBrains Mono', monospace; color: #1b1b1a; font-size: 15px; line-height: 1.5; }
+
+  /* Sello de garantía: mismo tamaño que en la ficha pública de proyecto
+     (src/routes/proyectos/[id]/+page.svelte), pero aquí a la altura de la
+     cabecera "PROPUESTA GRÁFICA" en lugar de arriba del todo de la página. */
+  .pz-media-block {
+    position: relative;
+  }
+  .pz-guarantee-stamp {
+    display: block;
+    position: absolute;
+    top: -18px;
+    right: 6px;
+    width: 150px;
+    height: 150px;
+    z-index: 5;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+    transition: transform 0.2s ease;
+  }
+  .pz-guarantee-stamp:hover {
+    transform: scale(1.05);
+  }
+  .pz-guarantee-stamp img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 768px) {
+    .pz-guarantee-stamp {
+      width: 100px;
+      height: 100px;
+      top: -10px;
+      right: 4px;
+    }
+  }
   .pz-admin { padding-top: 68px; }
 
   .pz-adminbar { position: fixed; top: 0; left: 0; right: 0; z-index: 900; display: flex; align-items: center; gap: 12px; padding: 10px 18px; background: #1b1b1a; color: #fff; }

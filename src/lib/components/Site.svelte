@@ -1315,6 +1315,9 @@
     </section>
 
     <section id="services" class="section services">
+      <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
+        <img src="/img/100x100-guaranted.png" alt="" loading="lazy" />
+      </a>
       <div class="section-header">
         <h2>{copy.servicesTitle}</h2>
         <span></span>
@@ -1607,6 +1610,11 @@
         <div class="seo-layout">
           <!-- Artículo principal de redacción profesional -->
           <article class="seo-article">
+            {#if section === 'proyecto_auditado'}
+              <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
+                <img src="/img/100x100-guaranted.png" alt="" loading="lazy" />
+              </a>
+            {/if}
             {#if isCityPage || section === 'proyecto_auditado'}
               <nav class="breadcrumbs feria-breadcrumbs" aria-label="Breadcrumb">
                 <ol itemscope itemtype="https://schema.org/BreadcrumbList">
@@ -1721,6 +1729,63 @@
      vive en el global .static-header (app.css); se relocaliza aquí, donde se necesita. */
   .static-header {
     background: #16191c !important;
+  }
+
+  /* Sello de garantía en /proyecto-auditado y en la sección "Servicios" de la
+     home: mismo tamaño y posición que en la ficha pública de proyecto
+     (src/routes/proyectos/[id]/+page.svelte), arriba a la derecha. */
+  .seo-article,
+  .services {
+    position: relative;
+  }
+  .guarantee-stamp {
+    display: block;
+    position: absolute;
+    top: -55px;
+    right: 6px;
+    width: 150px;
+    height: 150px;
+    z-index: 5;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+    transition: transform 0.2s ease;
+  }
+  .guarantee-stamp:hover {
+    transform: scale(1.05);
+  }
+  .guarantee-stamp img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 768px) {
+    .guarantee-stamp {
+      width: 100px;
+      height: 100px;
+      top: -34px;
+      right: 4px;
+    }
+  }
+
+  /* Variante del sello para la sección "Servicios": más grande, más centrada y
+     más arriba (pisa a propósito el carrusel de ferias de encima). */
+  #services .guarantee-stamp {
+    top: -95px;
+    left: 83.33%; /* centro de la 3ª de 3 columnas iguales de .service-grid */
+    right: auto;
+    transform: translateX(-50%);
+    width: 190px;
+    height: 190px;
+  }
+  #services .guarantee-stamp:hover {
+    transform: translateX(-50%) scale(1.05);
+  }
+  @media (max-width: 768px) {
+    #services .guarantee-stamp {
+      top: -60px;
+      left: 50%;
+      width: 130px;
+      height: 130px;
+    }
   }
 
   /* Galería y ciudades: ocultar elementos extra sin sacarlos del DOM (SEO + descarga diferida) */
