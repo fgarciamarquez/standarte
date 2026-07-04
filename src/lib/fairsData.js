@@ -1155,6 +1155,34 @@ export const fairsData = [
     "sector": "Salud y Medicina"
   },
   {
+    "name": "Infarma",
+    "country": "es",
+    "slug": "infarma",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Farmaforum",
+    "country": "es",
+    "slug": "farmaforum-madrid",
+    "city": "Madrid",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Congreso Nacional de Farmacéuticos Comunitarios",
+    "country": "es",
+    "slug": "congreso-farmaceuticos-comunitarios",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Congreso Nacional de la SEFH (Farmacia Hospitalaria)",
+    "country": "es",
+    "slug": "congreso-sefh-farmacia-hospitalaria",
+    "city": "Itinerante",
+    "sector": "Salud y Medicina"
+  },
+  {
     "name": "Congreso SECOIR",
     "country": "es",
     "slug": "secoir-cirugia-ocular",
