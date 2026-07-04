@@ -469,6 +469,20 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "Feria Internacional Ganadera de Trujillo",
+    "country": "es",
+    "slug": "feria-internacional-ganadera-trujillo",
+    "city": "Trujillo",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria Nacional del Queso de Trujillo",
+    "country": "es",
+    "slug": "feria-nacional-queso-trujillo",
+    "city": "Trujillo",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Web Summit Lisboa",
     "country": "es",
     "slug": "web-summit-lisboa",
