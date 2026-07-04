@@ -11,7 +11,7 @@ export const uspSnippets = {
       "Cada proyecto queda en un expediente verificable: el prototipo que apruebas es el stand que construimos.",
       "Trabajamos con proyecto auditado y archivable, tu garantía de que recibes lo aprobado, sin sorpresas."
     ],
-    "navLabel": "Proyecto auditado"
+    "navLabel": "Garantía"
   },
   "pt": {
     "homeHeading": "O que vês é o que se constrói",
@@ -22,7 +22,7 @@ export const uspSnippets = {
       "Cada projeto fica num processo verificável: o protótipo que aprovas é o stand que construímos.",
       "Trabalhamos com projeto auditado e arquivável, a tua garantia de que recebes o aprovado, sem surpresas."
     ],
-    "navLabel": "Projeto auditado"
+    "navLabel": "Garantia"
   },
   "en": {
     "homeHeading": "What you see is what we build",
@@ -33,7 +33,7 @@ export const uspSnippets = {
       "Every project stays in a verifiable record: the prototype you approve is the stand we build.",
       "We work with an audited, archivable project, your guarantee that you get what was approved, with no surprises."
     ],
-    "navLabel": "Audited project"
+    "navLabel": "Guarantee"
   },
   "de": {
     "homeHeading": "Was du siehst, wird gebaut",
@@ -44,7 +44,7 @@ export const uspSnippets = {
       "Jedes Projekt bleibt in einer prüfbaren Akte: Der Prototyp, den du freigibst, ist der Stand, den wir bauen.",
       "Wir arbeiten mit einem auditierten und archivierbaren Projekt, deine Garantie, dass du das Freigegebene erhältst, ohne Überraschungen."
     ],
-    "navLabel": "Auditiertes Projekt"
+    "navLabel": "Garantie"
   },
   "fr": {
     "homeHeading": "Ce que tu vois est ce qui se construit",
@@ -55,7 +55,7 @@ export const uspSnippets = {
       "Chaque projet reste dans un dossier vérifiable : le prototype que tu approuves est le stand que nous construisons.",
       "Nous travaillons avec un projet audité et archivable, ta garantie de recevoir ce qui a été approuvé, sans surprises."
     ],
-    "navLabel": "Projet audité"
+    "navLabel": "Garantie"
   },
   "it": {
     "homeHeading": "Ciò che vedi è ciò che si costruisce",
@@ -66,7 +66,7 @@ export const uspSnippets = {
       "Ogni progetto resta in un fascicolo verificabile: il prototipo che approvi è lo stand che costruiamo.",
       "Lavoriamo con un progetto verificato e archiviabile, la tua garanzia di ricevere ciò che è stato approvato, senza sorprese."
     ],
-    "navLabel": "Progetto verificato"
+    "navLabel": "Garanzia"
   },
   "nl": {
     "homeHeading": "Wat je ziet, is wat we bouwen",
@@ -77,7 +77,7 @@ export const uspSnippets = {
       "Elk project blijft in een verifieerbaar dossier: het prototype dat je goedkeurt is de stand die wij bouwen.",
       "Wij werken met een geauditeerd en archiveerbaar project, jouw garantie dat je krijgt wat is goedgekeurd, zonder verrassingen."
     ],
-    "navLabel": "Gecontroleerd project"
+    "navLabel": "Garantie"
   },
   "zh": {
     "homeHeading": "所见即所建",
@@ -88,7 +88,7 @@ export const uspSnippets = {
       "每个项目都保存在可核验的档案中：您批准的原型，就是我们搭建的展台。",
       "我们采用可审核、可存档的项目，这是您获得所批准成果的保证，绝无意外。"
     ],
-    "navLabel": "审计项目"
+    "navLabel": "保障"
   },
   "hi": {
     "homeHeading": "जो दिखता है, वही बनता है",
@@ -99,7 +99,7 @@ export const uspSnippets = {
       "हर परियोजना एक सत्यापन-योग्य दस्तावेज़ में रहती है: जिस प्रोटोटाइप को आप स्वीकृत करते हैं, वही स्टैंड हम बनाते हैं।",
       "हम ऑडिटेड और संग्रहणीय परियोजना के साथ काम करते हैं, यह आपकी गारंटी है कि आपको स्वीकृत वस्तु ही मिले, बिना किसी आश्चर्य के।"
     ],
-    "navLabel": "ऑडिट परियोजना"
+    "navLabel": "गारंटी"
   },
   "ko": {
     "homeHeading": "보이는 그대로 지어집니다",
@@ -110,7 +110,7 @@ export const uspSnippets = {
       "모든 프로젝트는 검증 가능한 문서로 남습니다: 승인하신 프로토타입이 저희가 시공하는 부스입니다.",
       "저희는 감사 및 보관이 가능한 프로젝트로 작업하며, 이는 승인하신 것을 그대로 받으신다는, 예기치 못한 일이 없다는 보장입니다."
     ],
-    "navLabel": "감사 프로젝트"
+    "navLabel": "보증"
   },
   "ja": {
     "homeHeading": "見たままを建てます",
@@ -121,7 +121,7 @@ export const uspSnippets = {
       "各プロジェクトは検証可能な記録に残ります。承認いただいたプロトタイプが、私たちの建てるブースです。",
       "私たちは監査済みで保管可能なプロジェクトで作業します。これは承認どおりのものを、想定外なく受け取れる保証です。"
     ],
-    "navLabel": "監査プロジェクト"
+    "navLabel": "保証"
   }
 };
 

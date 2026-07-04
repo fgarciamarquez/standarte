@@ -1261,7 +1261,7 @@
   {:else if seoContent}
     <div class="hero-subpage" class:transparent-hero={section === 'services'} class:on-hero-photo={animatedHero}>
       <div class="hero-contents">
-        {#if !isCityPage}
+        {#if !isCityPage && section !== 'proyecto_auditado'}
           <nav class="breadcrumbs" aria-label="Breadcrumb">
             <ol>
               <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : 'Home'}</a></li>
@@ -1274,6 +1274,7 @@
         <p class="hero-lead">{seoContent.introText}</p>
       </div>
       {#if animatedHero}<AiSourceButtons {lang} variant="hero" showLabel={false} canReactivate on:reactivate={reopenAdvisor} />{/if}
+      {#if section === 'proyecto_auditado'}<AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />{/if}
     </div>
   {/if}
 </header>
@@ -1660,7 +1661,7 @@
         <div class="seo-layout">
           <!-- Artículo principal de redacción profesional -->
           <article class="seo-article">
-            {#if isCityPage}
+            {#if isCityPage || section === 'proyecto_auditado'}
               <nav class="breadcrumbs feria-breadcrumbs" aria-label="Breadcrumb">
                 <ol itemscope itemtype="https://schema.org/BreadcrumbList">
                   <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">

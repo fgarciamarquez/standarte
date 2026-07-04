@@ -935,13 +935,13 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem 1rem;
+    gap: 4px;
   }
   .cluster-fairs li a {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    padding: 0.45rem 0.9rem;
+    padding: 5px 13px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 999px;
     font-size: 0.92rem;

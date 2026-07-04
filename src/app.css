@@ -219,7 +219,7 @@ p {
   gap: 6px;
   min-height: 40px;
   margin: 20px 0;
-  padding: 0 22px;
+  padding: 0 14px;
   color: #fff;
   background: transparent;
   border: 0;
@@ -2902,6 +2902,12 @@ footer {
   margin: 0 auto;
 }
 
+/* Botones GEO sobre el hero oscuro de subpágina (p. ej. /proyecto-auditado): la
+   etiqueta del componente es #111 (pensada para foto clara), aquí se aclara. */
+.hero-subpage .ai-geo-hero .ai-geo-label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
 /* Dedicated SEO Page Content Grid */
 .dedicated-seo-page {
   background: #f7f6f1;
@@ -3217,11 +3223,11 @@ p b {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 4px;
 }
 .city-fairs-list li a {
   display: inline-block;
-  padding: 9px 16px;
+  padding: 5px 13px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 999px;
   font-family: 'Inconsolata', monospace;

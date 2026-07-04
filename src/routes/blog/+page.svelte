@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import news from '$lib/newsData.json';
   import { pathFor, copy, languages, languageLabels } from '$lib/siteData.js';
+  import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
   import CitySidebar from '$lib/components/CitySidebar.svelte';
 
@@ -332,6 +333,7 @@
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
       <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
+      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
