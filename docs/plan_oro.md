@@ -75,4 +75,6 @@ perder el histórico); solo el contenido.
 
 ## Historial de aplicación
 
-- **Badajoz** — primera aplicación (prueba). Objetivo: acaparar el SEO de la ciudad.
+- **Badajoz** (ES) — primera aplicación (prueba). Objetivo: acaparar el SEO de la ciudad.
+- **Zaragoza** (ES) — Feria de Zaragoza (FIMA, SMOPYC, Enomaq, Tecnovid, Oleomaq, Figan,
+  Salón de los Vinos de Aragón).
