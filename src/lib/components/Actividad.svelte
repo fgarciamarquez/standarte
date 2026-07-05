@@ -1,8 +1,10 @@
 <script>
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
+  import { projectIndex } from '$lib/projectIndex.js';
+  import { projectsForActivity } from '$lib/projectTags.js';
   import {
-    pathFor, languages, languageLabels, fairUrl,
+    pathFor, languages, languageLabels, fairUrl, projectUrl,
     activityUrl, activityIndexUrl, ctaBudget, preciosNav
   } from '$lib/siteData.js';
   import {
@@ -29,6 +31,7 @@
   const ctaLabels = { es: 'Presupuesto en 24h', en: 'Quote in 24h', de: 'Angebot in 24h', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'Orçamento em 24h', fr: 'Devis en 24h', it: 'Preventivo in 24h', ko: '24시간 내 견적', ja: '24時間で見積もり', nl: 'Offerte binnen 24u' };
   const preciosNavLabel = { es: 'Precios', en: 'Prices', de: 'Preise', pt: 'Preços', fr: 'Tarifs', it: 'Prezzi', nl: 'Prijzen', zh: '价格', hi: 'मूल्य', ko: '가격', ja: '料金' };
   const preciosLink = { es: 'Precios de stands', en: 'Stand prices', de: 'Messestand-Preise', fr: 'Tarifs de stands', it: 'Prezzi degli stand', pt: 'Preços de stands', zh: '展台价格', hi: 'स्टैंड के मूल्य', ko: '부스 가격', ja: 'ブースの料金', nl: 'Standprijzen' };
+  const projectsH = { es: 'Proyectos 3D de esta actividad', pt: 'Projetos 3D desta atividade', en: '3D projects for this activity', de: '3D-Projekte dieser Branche', fr: 'Projets 3D de cette activité', it: 'Progetti 3D di questa attività', nl: '3D-projecten van deze branche', zh: '该行业的3D项目', hi: 'इस गतिविधि की 3D परियोजनाएं', ko: '이 분야의 3D 프로젝트', ja: 'この分野の3Dプロジェクト' };
 
   // Textos de la plantilla (índice y hub) en los 11 idiomas.
   const T = {
@@ -57,6 +60,10 @@
       .filter(Boolean);
   }
   $: hubFairs = !isIndex && tag ? fairsForTag(tag) : [];
+  // Proyectos 3D del portfolio etiquetados con esta actividad (malla interna).
+  $: hubProjects = !isIndex && tag
+    ? projectsForActivity(tag).map((id) => projectIndex.find((p) => p.id === id)).filter(Boolean)
+    : [];
   // Agrupación por ciudad (las itinerantes van a un grupo propio al final).
   $: hubGroups = (() => {
     const groups = {};
@@ -105,7 +112,10 @@
   };
   $: itemListLd = isIndex
     ? { '@context': 'https://schema.org', '@type': 'ItemList', name: pageH1, itemListElement: tagOrder.map((tg, i) => ({ '@type': 'ListItem', position: i + 1, name: labelForTag(tg, lang), url: `https://standarte.es${activityUrl(tg, lang)}` })) }
-    : { '@context': 'https://schema.org', '@type': 'ItemList', name: pageH1, itemListElement: hubFairs.map((f, i) => ({ '@type': 'ListItem', position: i + 1, name: f.name, url: `https://standarte.es${fairUrl(f.slug, lang)}` })) };
+    : { '@context': 'https://schema.org', '@type': 'ItemList', name: pageH1, itemListElement: [
+        ...hubFairs.map((f, i) => ({ '@type': 'ListItem', position: i + 1, name: f.name, url: `https://standarte.es${fairUrl(f.slug, lang)}` })),
+        ...hubProjects.map((p, i) => ({ '@type': 'ListItem', position: hubFairs.length + i + 1, name: p.name, url: `https://standarte.es${projectUrl(p.id, lang)}` }))
+      ] };
 
   const headHrefHome = (l) => `https://standarte.es${pathFor(l, 'home')}`;
 </script>
@@ -239,6 +249,22 @@
               {/each}
             </ul>
           {/each}
+          {#if hubProjects.length}
+            <h2 class="fairs-h projects-h">{projectsH[lang] || projectsH.es}</h2>
+            <ul class="hub-projects">
+              {#each hubProjects as pr}
+                <li>
+                  <a href={projectUrl(pr.id, lang)}>
+                    {#if pr.image}<img src={pr.image.replace('.avif', '-thumb.avif')} alt={pr.name} loading="lazy" />{/if}
+                    <span class="hp-text">
+                      <span class="hp-name">{(pr.title && (pr.title[lang] || pr.title.es)) || pr.name}</span>
+                      {#if pr.location}<span class="hp-loc">{pr.location}</span>{/if}
+                    </span>
+                  </a>
+                </li>
+              {/each}
+            </ul>
+          {/if}
         {/if}
       </div>
 
@@ -339,6 +365,21 @@
     transition: border-color 0.2s ease, color 0.2s ease;
   }
   .fair-list li a:hover { border-color: var(--primary); color: var(--primary); }
+  .projects-h { margin-top: 2.4rem; }
+  .hub-projects {
+    list-style: none; padding: 0; margin: 0.4rem 0 0;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;
+  }
+  .hub-projects li a {
+    display: flex; flex-direction: column; text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;
+    background: #fff; transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hub-projects li a:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1); }
+  .hub-projects img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #ececec; }
+  .hp-text { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.7rem 0.85rem; }
+  .hp-name { font-weight: 600; color: #1a1e21; font-size: 0.95rem; line-height: 1.35; }
+  .hp-loc { font-size: 0.82rem; color: #6b7178; }
   .act-form-divider {
     width: 100%; max-width: 1140px; margin: 0 auto;
     border: 0; border-top: 1px solid rgba(0, 0, 0, 0.12);

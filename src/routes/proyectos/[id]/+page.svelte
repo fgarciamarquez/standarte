@@ -1,6 +1,8 @@
 <script>
   import { onMount } from 'svelte';
-  import { pathFor, copy, languages, languageLabels, projectUrl, ctaBudget } from '$lib/siteData.js';
+  import { pathFor, copy, languages, languageLabels, projectUrl, ctaBudget, activityUrl } from '$lib/siteData.js';
+  import { tagsForProject } from '$lib/projectTags.js';
+  import { labelForTag, colorForTag } from '$lib/fairTags.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
   import SiteFooter from '$lib/components/SiteFooter.svelte';
@@ -9,6 +11,9 @@
 
 
   export let data;
+  // Etiquetas de actividad de este proyecto (mismo sistema que las ferias). Se hornean
+  // en projectTags.js en el build desde Supabase; enlazan a los hubs /actividad/<tag>.
+  $: projTags = (data && data.project) ? tagsForProject(data.project.id) : [];
   // Cuando el componente se renderiza desde el catch-all en una URL ja
   // (/ja/プロジェクト/{slug}), el idioma viene fijado y se omite la detección.
   export let forcedLang = null;
@@ -270,6 +275,34 @@
     nl: 'Ontdek ons garantiesysteem'
   };
 
+  // Encabezado y texto del bloque de actividades feriales del proyecto.
+  const activitiesTitle = {
+    es: 'Sectores y actividades feriales',
+    en: 'Sectors and trade-fair activities',
+    de: 'Branchen und Messeaktivitäten',
+    pt: 'Setores e atividades feirais',
+    zh: '行业与展会活动',
+    hi: 'क्षेत्र और मेला गतिविधियाँ',
+    fr: 'Secteurs et activités de salon',
+    it: 'Settori e attività fieristiche',
+    ko: '분야 및 박람회 활동',
+    ja: '分野と展示会の活動',
+    nl: 'Sectoren en beursactiviteiten'
+  };
+  const activitiesLead = {
+    es: 'Este stand pertenece a las siguientes actividades feriales. Explora todas las ferias del mismo sector donde diseñamos y montamos:',
+    en: 'This stand belongs to the following trade-fair activities. Explore all the fairs in the same sector where we design and build:',
+    de: 'Dieser Stand gehört zu den folgenden Messeaktivitäten. Entdecken Sie alle Messen derselben Branche, für die wir entwerfen und bauen:',
+    pt: 'Este stand pertence às seguintes atividades feirais. Explore todas as feiras do mesmo setor onde concebemos e montamos:',
+    zh: '该展台属于以下展会活动。浏览我们在同一行业设计与搭建展台的所有展会：',
+    hi: 'यह स्टैंड निम्नलिखित मेला गतिविधियों से संबंधित है। उसी क्षेत्र के सभी मेले देखें जहाँ हम स्टैंड डिज़ाइन और निर्माण करते हैं:',
+    fr: 'Ce stand relève des activités de salon suivantes. Explorez tous les salons du même secteur où nous concevons et montons :',
+    it: 'Questo stand appartiene alle seguenti attività fieristiche. Esplora tutte le fiere dello stesso settore dove progettiamo e allestiamo:',
+    ko: '이 부스는 다음 박람회 활동에 속합니다. 당사가 부스를 디자인·시공하는 동일 분야의 모든 박람회를 살펴보세요:',
+    ja: 'このブースは以下の展示会活動に属します。当社がブースを設計・施工する同じ分野のすべての展示会をご覧ください：',
+    nl: 'Deze stand hoort bij de volgende beursactiviteiten. Ontdek alle beurzen in dezelfde sector waar wij ontwerpen en bouwen:'
+  };
+
   const backToMainPages = {
     es: 'Volver',
     en: 'Back',
@@ -322,6 +355,14 @@
     "description": seoDescriptions[lang] || seoDescriptions.es,
     "url": `https://standarte.es${canonicalPath}`,
     "image": `https://standarte.es${project.image}`,
+    ...(projTags.length ? {
+      "keywords": projTags.map((tg) => labelForTag(tg, lang)).join(', '),
+      "about": projTags.map((tg) => ({
+        "@type": "Thing",
+        "name": labelForTag(tg, lang),
+        "url": `https://standarte.es${activityUrl(tg, lang)}`
+      }))
+    } : {}),
     "mainEntity": {
       "@type": "CreativeWork",
       "name": creativeWorkNames[lang] || creativeWorkNames.es,
@@ -441,6 +482,23 @@
     <p class="audited-link-wrap">
       <a class="audited-link" href={pathFor(lang, 'proyecto_auditado')}>{descubreGarantia[lang] || descubreGarantia.es} →</a>
     </p>
+
+    <!-- Actividades feriales del proyecto (malla interna hacia los hubs /actividad/<tag>). -->
+    {#if projTags.length}
+      <section class="project-activities" aria-label={activitiesTitle[lang] || activitiesTitle.es}>
+        <h2>{activitiesTitle[lang] || activitiesTitle.es}</h2>
+        <p>{activitiesLead[lang] || activitiesLead.es}</p>
+        <ul class="activity-tag-chips">
+          {#each projTags as tg}
+            <li>
+              <a href={activityUrl(tg, lang)} style="--chip:{colorForTag(tg)}">
+                <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tg, lang)}
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </section>
+    {/if}
 
     <!-- Título Galería -->
     <div class="gallery-title-wrapper">
@@ -760,6 +818,59 @@
   .audited-link:hover {
     color: #2a4bc0;
     border-color: #2a4bc0;
+  }
+
+  /* Actividades feriales del proyecto (chips con color hacia los hubs /actividad). */
+  .project-activities {
+    margin: 0 0 50px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .project-activities h2 {
+    font-size: 22px;
+    color: #1a1e21;
+    margin: 0 0 8px;
+    font-family: 'Francois One', serif;
+    font-weight: 400;
+  }
+  .project-activities p {
+    font-size: 15px;
+    color: #666;
+    margin: 0 0 18px;
+  }
+  .activity-tag-chips {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .activity-tag-chips li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.92rem;
+    color: #2a2a2a;
+    text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--chip) 45%, transparent);
+    border-left: 4px solid var(--chip);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--chip) 8%, #fff);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .activity-tag-chips li a:hover {
+    background: color-mix(in srgb, var(--chip) 16%, #fff);
+    border-color: var(--chip);
+    transform: translateY(-2px);
+  }
+  .activity-tag-chips .chip-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--chip);
+    flex: 0 0 auto;
   }
 
   /* Título Galería */

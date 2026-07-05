@@ -12,6 +12,9 @@ static/admin/email_campaing/data/smtp_password.txt
 admin/email_campaing/data/smtp_password.txt
 dist/admin/email_campaing/data/smtp_password.txt
 src/lib/projectIndex.js
+src/lib/projectTags.js
+static/admin/data/
+admin/data/
 .vscode/sftp.json
 .claude/
 # Logs de runtime del gestor de emails: los genera el servidor, no deben versionarse ni desplegarse
