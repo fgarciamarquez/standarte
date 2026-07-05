@@ -5,6 +5,7 @@
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { toolsCopy } from '$lib/toolsSection.js';
+  import { pricingTiers } from '$lib/pricingTiers.js';
   import { coverage } from '$lib/coverageCopy.js';
   import { activityPitch } from '$lib/activityPitch.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
@@ -705,9 +706,16 @@
         : 'The widest coverage for exhibiting in Spain and Portugal: from capitals and major venues to strategic regional niches with less competition.',
       makesOffer: [
         { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#advisory` } },
-        { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } }
+        { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } },
+        { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#instant-quote` } }
       ]
     };
+
+    // Rango real del tramo premium (de pricingTiers): desde su cifra hasta la del
+    // siguiente tramo. Se usa en el AggregateOffer del cálculo instantáneo.
+    const premiumIdx = pricingTiers.findIndex((t) => t.key === 'premium');
+    const premiumFrom = pricingTiers[premiumIdx]?.priceFrom;
+    const premiumTo = pricingTiers[premiumIdx + 1]?.priceFrom;
 
     const service = {
       '@type': 'Service',
@@ -747,6 +755,41 @@
       areaServed: ['ES', 'PT'],
       url: `${baseUrl}${pathFor(lang, 'proyecto_auditado')}`
     };
+    // Servicio de cálculo instantáneo: previsión de precio de un stand PREMIUM a partir
+    // de los metros cuadrados del espacio. Deja claro a buscadores y motores de IA que
+    // existe la herramienta, sobre qué categoría opera y con qué dato de entrada (m²).
+    const instantQuoteService = {
+      '@type': 'Service',
+      '@id': `${baseUrl}/#instant-quote`,
+      name: lang === 'es' ? 'Cálculo instantáneo de stand premium' : 'Instant premium stand estimate',
+      serviceType: lang === 'es' ? 'Presupuesto instantáneo de stand' : 'Instant stand quote',
+      provider: { '@id': `${baseUrl}/#organization` },
+      description: lang === 'es'
+        ? 'Herramienta propia de Standarte que calcula al instante una previsión de precio para un stand de categoría premium a partir de los metros cuadrados del espacio. Resultado en segundos, orientativo y sin compromiso.'
+        : 'Standarte’s own tool that instantly estimates the price of a premium-category exhibition stand from the size of the space in square metres. Result in seconds, indicative and with no obligation.',
+      areaServed: ['ES', 'PT'],
+      url: `${baseUrl}${pathFor(lang, 'precios')}`,
+      // El input del cálculo es la superficie del stand en metros cuadrados (MTK).
+      serviceOutput: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'EUR',
+        valueAddedTaxIncluded: false
+      },
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'EUR',
+        ...(premiumFrom != null ? { lowPrice: premiumFrom } : {}),
+        ...(premiumTo != null ? { highPrice: premiumTo } : {}),
+        offerCount: 1,
+        itemOffered: {
+          '@type': 'Service',
+          name: lang === 'es' ? 'Stand premium' : 'Premium stand',
+          description: lang === 'es'
+            ? 'Stand de categoría premium presupuestado según los metros cuadrados del espacio.'
+            : 'Premium-category stand quoted according to the size of the space in square metres.'
+        }
+      }
+    };
 
     const website = {
       '@type': 'WebSite',
@@ -780,7 +823,7 @@
       }))
     };
 
-    const graph = [organization, service, advisoryService, guaranteeService, website, webpage, siteNavigation];
+    const graph = [organization, service, advisoryService, guaranteeService, instantQuoteService, website, webpage, siteNavigation];
 
     if (section !== 'home') {
       const breadcrumbLabel = seoContent?.breadcrumb || sectionLabel(section);
@@ -1589,6 +1632,11 @@
           <p itemprop="description">{toolsCopy(lang).guaranteeText}</p>
           <a class="tool-cta" href={pathFor(lang, 'proyecto_auditado')}>{toolsCopy(lang).guaranteeCta} →</a>
         </article>
+        <article class="tool-card" itemscope itemtype="https://schema.org/Service">
+          <h3 itemprop="name">{toolsCopy(lang).estimateTitle}</h3>
+          <p itemprop="description">{toolsCopy(lang).estimateText}</p>
+          <a class="tool-cta" href={pathFor(lang, 'precios')}>{toolsCopy(lang).estimateCta} →</a>
+        </article>
       </div>
     </section>
 
@@ -2157,8 +2205,8 @@
   .audited-cta:hover { background: #000; }
   /* Sección "Herramientas propias" (asesor Pat + garantía Proyecto Auditado). */
   .tools-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 1.4rem; max-width: 980px; margin: 0 auto; padding: 0 1rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.4rem; max-width: 1120px; margin: 0 auto; padding: 0 1rem;
   }
   .tool-card {
     border: 1px solid rgba(224, 180, 0, 0.45);
