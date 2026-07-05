@@ -13,6 +13,14 @@
   // sin la ficha de la persona de contacto (Patricia).
   export let compact = false;
 
+  // Antetítulo (eyebrow) sobre el título del formulario: previsión instantánea.
+  const forecastLabels = {
+    es: 'Previsión instantánea', en: 'Instant estimate', de: 'Sofort-Schätzung',
+    pt: 'Previsão instantânea', fr: 'Estimation instantanée', it: 'Stima istantanea',
+    nl: 'Directe raming', zh: '即时预估', hi: 'तत्काल अनुमान',
+    ko: '즉시 예상 견적', ja: '即時試算'
+  };
+
   // Reclamo bajo el título del formulario: prototipo 3D en 72h.
   const prototypeLabels = {
     es: 'Prototipo 3D en 72h', en: '3D prototype in 72h', de: '3D-Prototyp in 72 Std.',
@@ -146,6 +154,7 @@
   <div class="contact-form">
     <div class="contact-layout">
       <aside class="contact-us">
+        <p class="contact-eyebrow">{forecastLabels[lang] || forecastLabels.es}</p>
         <svelte:element this={compact ? 'h4' : 'h3'}>{labels.contactTitle}</svelte:element>
         <svelte:element this={compact ? 'h4' : 'h3'} class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</svelte:element>
         {#if variant === 'light' && !compact}
@@ -321,6 +330,17 @@
 </section>
 
 <style>
+  /* Antetítulo sobre "Presupuesto en 24h": pequeño, mayúsculas, acento dorado. */
+  .contact-eyebrow {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b8860b;
+  }
+  .contact-compact .contact-eyebrow { margin-bottom: 6px; }
+
   .contact-subtitle { margin-top: -34px; }
 
   /* Versión compacta (páginas de vídeo/proyecto): títulos en h4, sin ficha de persona. */
