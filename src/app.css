@@ -2976,6 +2976,30 @@ footer {
   font-weight: 700;
 }
 
+/* Subpuntos (listas del cuerpo, p. ej. "Cómo trabajamos, paso a paso" o "Tipos de
+   stand"): letra algo más pequeña que los párrafos y con más aire entre ítems, para
+   que respiren y se lean mejor. Las negritas van en serif (la Inconsolata en negrita
+   resulta pesada dentro de una lista densa). */
+.seo-article ol,
+.seo-article ul {
+  font-family: 'Inconsolata', monospace;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin: 0 0 25px;
+  padding-left: 22px;
+}
+.seo-article li {
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+.seo-article li strong,
+.seo-article li b {
+  font-family: serif;
+  font-weight: 700;
+  color: #111;
+}
+
 /* Negritas dentro de párrafos <p>: familia serif por defecto (el cuerpo es
    Inconsolata monospace, que en negrita resulta pesado). */
 p strong,
