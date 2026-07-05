@@ -54,6 +54,10 @@ perder el histórico); solo el contenido.
   2. *Cómo trabajamos, paso a paso* (`<ol>` de 6 pasos; incluye **prototipo 3D 72 h** y **Proyecto Auditado**).
   3. *Tipos de stand que construimos en {Ciudad}* (`<ul>`) + **cálculo instantáneo por m²** → `/precios`.
   4. *Ferias y sectores en {Ciudad} y {Región}* → enlaces a **ferias** `/ferias/<slug>` y **hubs** `/actividad/<tag>`.
+  4bis. *(Extensión, plazas de máxima competencia)* **Documentación técnica del recinto**
+     → especificaciones reales del recinto (pabellones, m², alturas útiles, instalaciones)
+     + gestión de acometidas, CAE y certificados de reacción al fuego. Sube la
+     especialización y el E‑E‑A‑T. Usar datos verificables (buscar el recinto oficial).
   5. *La mayor cobertura de la Península: {Ciudad}, España y Portugal* → otras ciudades + Portugal.
   6. *Pat, tu asesor ferial gratuito* → inicio `/`.
   7. *Garantía 100 %: Sistema de Proyecto Auditado* → `/proyecto-auditado`.
@@ -78,3 +82,7 @@ perder el histórico); solo el contenido.
 - **Badajoz** (ES) — primera aplicación (prueba). Objetivo: acaparar el SEO de la ciudad.
 - **Zaragoza** (ES) — Feria de Zaragoza (FIMA, SMOPYC, Enomaq, Tecnovid, Oleomaq, Figan,
   Salón de los Vinos de Aragón).
+- **Lisboa** (ES + PT) — plaza portuguesa de máxima competencia. Aplicado en los dos
+  idiomas relevantes (PT para el SERP local, ES para el canónico/expositor español) e
+  incorpora la **sección de documentación técnica del recinto FIL** (Feira Internacional
+  de Lisboa: 4 pabellones, ~10.368 m², alturas 12–15 m, instalaciones y certificados).
