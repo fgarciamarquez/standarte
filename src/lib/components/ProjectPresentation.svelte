@@ -731,10 +731,13 @@
   .pz-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(20, 20, 18, 0.88); }
   .pz-lb-close { position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: #fff; font-size: 26px; line-height: 1; border-radius: 50%; cursor: pointer; }
   .pz-lb-close:hover { background: rgba(255,255,255,0.12); }
-  .pz-lb-inner { margin: 0; max-width: min(1100px, 94vw); max-height: 88vh; display: flex; flex-direction: column; gap: 10px; }
-  .pz-lb-inner img, .pz-lb-inner video { max-width: 100%; max-height: 80vh; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); background: #000; }
+  .pz-lb-inner { margin: 0; max-width: min(1100px, 94vw); max-height: 88vh; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  /* Tope DEFINITO en unidades de viewport (no %): un max-width en % se resuelve contra
+     el contenedor inline-flex, cuya anchura depende del propio vídeo → nunca limitaba y
+     en móvil el vídeo desbordaba toda la pantalla. min(1100px,92vw) siempre acota. */
+  .pz-lb-inner img, .pz-lb-inner video { max-width: min(1100px, 92vw); max-height: 80vh; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); background: #000; }
   /* Vídeo del lightbox: contenedor para el botón de "play" (toca para reproducir en móvil). */
-  .pz-lb-video { position: relative; display: inline-flex; max-width: 100%; }
+  .pz-lb-video { position: relative; display: flex; justify-content: center; align-items: center; max-width: 100%; min-width: 0; }
   .pz-lb-video video { cursor: pointer; }
   .pz-lb-video-play {
     position: absolute; inset: 0; margin: auto;
