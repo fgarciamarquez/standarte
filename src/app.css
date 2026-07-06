@@ -3246,6 +3246,31 @@ p b {
 .city-fairs {
   margin-top: 50px;
 }
+/* B1: módulo de cobertura verificable (recuento de ferias + garantía + Pat). */
+.sidebar-sticky .coverage-proof {
+  border: 1px solid rgba(224, 180, 0, 0.45);
+  background: rgba(224, 180, 0, 0.06);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin: 0 0 1.6rem;
+}
+.sidebar-sticky .coverage-proof p {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #2a2a2a;
+}
+.sidebar-sticky .coverage-proof .coverage-pat {
+  display: inline-block;
+  background: #4169e1;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.sidebar-sticky .coverage-proof .coverage-pat:hover { background: #2a4bc0; }
 /* Cuando el módulo vive dentro del sidebar (debajo de Casos de Éxito):
    espaciado y título coherentes con los otros módulos del aside. */
 .sidebar-sticky .city-fairs.sidebar-module {

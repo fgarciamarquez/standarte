@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { pathFor, copy, languages, languageLabels, projectUrl, ctaBudget, activityUrl } from '$lib/siteData.js';
+  import { pathFor, copy, languages, languageLabels, projectUrl, ctaBudget, activityUrl, cityData } from '$lib/siteData.js';
   import { tagsForProject } from '$lib/projectTags.js';
   import { labelForTag, colorForTag } from '$lib/fairTags.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
@@ -14,6 +14,19 @@
   // Etiquetas de actividad de este proyecto (mismo sistema que las ferias). Se hornean
   // en projectTags.js en el build desde Supabase; enlazan a los hubs /actividad/<tag>.
   $: projTags = (data && data.project) ? tagsForProject(data.project.id) : [];
+  // G2: página de ciudad-matriz a la que pertenece la ubicación del proyecto (si existe),
+  // para enlazar el proyecto con su página comercial de ciudad.
+  $: projCityKey = (data && data.project)
+    ? (Object.keys(cityData).find((k) => !k.startsWith('montaje_') && cityData[k]?.city?.es === data.project.location) || null)
+    : null;
+  const cityLinkLabel = {
+    es: (c) => `Diseñamos y montamos stands en ${c}`, en: (c) => `We design and build stands in ${c}`,
+    pt: (c) => `Concebemos e montamos stands em ${c}`, de: (c) => `Wir planen und bauen Stände in ${c}`,
+    fr: (c) => `Nous concevons et montons des stands à ${c}`, it: (c) => `Progettiamo e allestiamo stand a ${c}`,
+    nl: (c) => `Wij ontwerpen en bouwen stands in ${c}`, zh: (c) => `我们在${c}设计并搭建展台`,
+    hi: (c) => `हम ${c} में स्टैंड डिज़ाइन और निर्माण करते हैं`, ko: (c) => `${c}에서 부스를 디자인·시공합니다`,
+    ja: (c) => `${c}でブースを設計・施工します`
+  };
   // Cuando el componente se renderiza desde el catch-all en una URL ja
   // (/ja/プロジェクト/{slug}), el idioma viene fijado y se omite la detección.
   export let forcedLang = null;
@@ -499,6 +512,12 @@
         </ul>
       </section>
     {/if}
+    <!-- G2: enlace a la página comercial de la ciudad del proyecto. -->
+    {#if projCityKey}
+      <p class="project-city-link">
+        <a href={pathFor(lang, projCityKey)}>{(cityLinkLabel[lang] || cityLinkLabel.es)(project.location)} →</a>
+      </p>
+    {/if}
 
     <!-- Título Galería -->
     <div class="gallery-title-wrapper">
@@ -833,6 +852,16 @@
     font-family: 'Francois One', serif;
     font-weight: 400;
   }
+  .project-city-link {
+    margin: 0 0 40px;
+    font-size: 15px;
+  }
+  .project-city-link a {
+    color: #4169e1;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  .project-city-link a:hover { color: #2a4bc0; }
   .project-activities p {
     font-size: 15px;
     color: #666;

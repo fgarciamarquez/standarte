@@ -34,6 +34,12 @@ export async function approveProject(token, withOffer) {
   return rpc('approve_client_project', { p_token: token, p_with_offer: !!withOffer });
 }
 
+/** C1: cita de cierre de expediente (opcional). Vía aditiva: no toca el RPC de
+ * aprobación; solo guarda el testimonio si el expediente ya está aprobado. */
+export async function saveTestimonial(token, text) {
+  return rpc('save_client_testimonial', { p_token: token, p_text: text || '' });
+}
+
 /** El cliente guarda sus datos de facturación (para que el equipo emita la factura). */
 export async function saveBilling(token, b) {
   return rpc('save_client_billing', {

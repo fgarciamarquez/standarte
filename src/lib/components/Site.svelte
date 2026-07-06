@@ -540,6 +540,22 @@
     ja: '当社がブースの設計・施工を行う近隣の展示会',
     nl: 'Beurzen in de regio waar wij stands ontwerpen en bouwen'
   };
+  // B1: prueba de cobertura por ciudad (recuento real de ferias + garantía + Pat).
+  const coverageProof = {
+    es: (n, c) => `Cobertura verificable en ${c}: montamos en ${n} ferias de la zona con el mismo equipo y la garantía de Proyecto Auditado.`,
+    en: (n, c) => `Verifiable coverage in ${c}: we build at ${n} fairs in the area with the same team and the Audited Project guarantee.`,
+    pt: (n, c) => `Cobertura verificável em ${c}: montamos em ${n} feiras da zona com a mesma equipa e a garantia de Projeto Auditado.`,
+    de: (n, c) => `Nachweisbare Abdeckung in ${c}: Wir bauen auf ${n} Messen der Region mit demselben Team und der Garantie des Auditierten Projekts.`,
+    fr: (n, c) => `Couverture vérifiable à ${c} : nous montons sur ${n} salons de la région avec la même équipe et la garantie du Projet Audité.`,
+    it: (n, c) => `Copertura verificabile a ${c}: allestiamo in ${n} fiere della zona con lo stesso team e la garanzia del Progetto Verificato.`,
+    nl: (n, c) => `Verifieerbare dekking in ${c}: wij bouwen op ${n} beurzen in de regio met hetzelfde team en de garantie van het Geauditeerd Project.`,
+    zh: (n, c) => `${c}的可核实覆盖：我们由同一团队在该地区的 ${n} 场展会搭建展台，并提供“已审核项目”保障。`,
+    hi: (n, c) => `${c} में सत्यापन-योग्य कवरेज: हम उसी टीम के साथ क्षेत्र के ${n} मेलों में स्टैंड बनाते हैं, ऑडिटेड प्रोजेक्ट की गारंटी के साथ।`,
+    ko: (n, c) => `${c}의 검증 가능한 커버리지: 동일한 팀이 이 지역 ${n}개 박람회에서 시공하며 감사받은 프로젝트 보증을 제공합니다.`,
+    ja: (n, c) => `${c}の検証可能なカバレッジ：同じチームがこの地域の${n}の展示会で施工し、監査済みプロジェクトの保証を提供します。`
+  };
+  const coveragePatCta = { es: 'Habla con Pat', en: 'Talk to Pat', pt: 'Fale com o Pat', de: 'Mit Pat sprechen', fr: 'Parler avec Pat', it: 'Parlare con Pat', nl: 'Met Pat praten', zh: '与 Pat 交谈', hi: 'Pat से बात करें', ko: 'Pat와 대화하기', ja: 'Patと話す' };
+  $: cityDisplayName = (section && cityData[section]) ? (cityData[section].city?.[lang] || cityData[section].city?.es || '') : '';
   // Navegación entre ciudades matrices (módulo del sidebar, igual que en Feria).
   // Solo matrices (construccion_stands_*); excluye las landings de montaje secundarias.
   const CITY_NAV_KEYS = Object.keys(cityData).filter((k) => !k.startsWith('montaje_'));
@@ -1798,6 +1814,13 @@
           <!-- Sidebar con casos de éxito reales -->
           <aside class="seo-sidebar">
             <div class="sidebar-sticky">
+              <!-- B1: prueba de cobertura verificable (recuento real de ferias) + Pat. -->
+              {#if (section in cityData) && regionFairs.length && cityDisplayName}
+                <section class="coverage-proof sidebar-module">
+                  <p>{(coverageProof[lang] || coverageProof.es)(regionFairs.length, cityDisplayName)}</p>
+                  <a class="coverage-pat" href={pathFor(lang, 'home')}>{coveragePatCta[lang] || coveragePatCta.es} →</a>
+                </section>
+              {/if}
               <div class="city-nav-module">
                 <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
                 <ul class="city-fairs-list">

@@ -398,7 +398,7 @@ export const copy = {
   es: {
     faqsTitle: 'Preguntas Frecuentes', successStoriesTitle: 'Casos de Éxito', featuredProjectsIntro: 'Proyectos destacados de carpintería a medida y diseño de stands:', 
     nav: { home: 'Inicio', services: 'Servicios', custom: 'Galería', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
-    seoTitle: 'Standarte | Diseño y montaje de stands en España y Portugal',
+    seoTitle: 'Standarte | Diseño y montaje de stands en España y Portugal · Proyecto Auditado',
     seoDescription: 'Servicios de stands feriales con asesoría de expansión incluida. Diseñamos y montamos tu stand en España y Portugal. Presupuesto en 24h.',
     heroTitle: 'Diseño y montaje de stands en España y Portugal',
     heroSubtitle: 'Espacios que inspiran',
@@ -478,7 +478,7 @@ export const copy = {
   en: {
     faqsTitle: 'Frequently Asked Questions', successStoriesTitle: 'Success Stories', featuredProjectsIntro: 'Featured custom carpentry and exhibition stand design projects:', 
     nav: { home: 'Home', services: 'Services', custom: 'Gallery', noticias: 'Blog', contact: 'Contact', language: 'Language' },
-    seoTitle: 'Standarte | Stand design and assembly in Spain and Portugal',
+    seoTitle: 'Standarte | Exhibition stand design and build in Spain and Portugal · Audited Project',
     seoDescription: 'Exhibition stand services with expansion advisory included. We design, assemble and install your stand for trade fairs across Spain and Portugal.',
     heroTitle: 'Exhibition stand design and assembly in Spain and Portugal',
     heroSubtitle: 'high quality work',
@@ -558,7 +558,7 @@ export const copy = {
   de: {
     faqsTitle: 'Häufig gestellte Fragen', successStoriesTitle: 'Erfolgsgeschichten', featuredProjectsIntro: 'Ausgewählte Projekte für maßgeschneiderte Tischlerei und Messestanddesign:', 
     nav: { home: 'Startseite', services: 'Dienstleistungen', custom: 'Galerie', noticias: 'Blog', contact: 'Kontakt', language: 'Sprache' },
-    seoTitle: 'Standarte | Messestand Design und Montage',
+    seoTitle: 'Standarte | Messestand-Design und Montage in Spanien und Portugal',
     seoDescription: 'Messestand-Services inklusive Expansionsberatung. Wir entwerfen, fertigen und montieren Ihren Stand für Messen in Spanien und Portugal.',
     heroTitle: 'Messestand Design und Montage in Spanien und Portugal',
     heroSubtitle: 'Arbeiten von hoher Qualität',
@@ -638,7 +638,7 @@ export const copy = {
   zh: {
     faqsTitle: '常见问题', successStoriesTitle: '成功案例', featuredProjectsIntro: '特色定制木工和展台设计项目：', 
     nav: { home: '首页', services: '服务', custom: '展台图库', noticias: '博客', contact: '联系', language: '语言' },
-    seoTitle: 'Standarte | 展台设计与搭建',
+    seoTitle: 'Standarte | 西班牙和葡萄牙展台设计与搭建',
     seoDescription: '展会展台服务，含市场拓展咨询：为您在西班牙和葡萄牙的展会设计、制作并搭建专属展台。',
     heroTitle: '西班牙和葡萄牙的展台设计与搭建',
     heroSubtitle: '高质量的工作',
@@ -714,7 +714,7 @@ export const copy = {
   hi: {
     faqsTitle: 'अक्सर पूछे जाने वाले प्रश्न', successStoriesTitle: 'सफलता की कहानियाँ', featuredProjectsIntro: 'विशेष कस्टम बढ़ईगीरी और प्रदर्शनी स्टैंड डिजाइन परियोजनाएं:', 
     nav: { home: 'होम', services: 'सेवाएँ', custom: 'गैलरी', noticias: 'ब्लॉग', contact: 'संपर्क', language: 'भाषा' },
-    seoTitle: 'Standarte | प्रदर्शनी स्टैंड डिजाइन और असेंबली',
+    seoTitle: 'Standarte | स्पेन और पुर्तगाल में स्टैंड डिज़ाइन और असेंबली',
     seoDescription: 'स्टैंड सेवाएँ, विस्तार परामर्श सहित। स्पेन और पुर्तगाल की प्रदर्शनियों के लिए आपके स्टैंड का डिज़ाइन, असेंबली और स्थापना।',
     heroTitle: 'स्पेन और पुर्तगाल में स्टैंड डिज़ाइन और असेंबली',
     heroSubtitle: 'उच्च गुणवत्ता का काम',
@@ -790,7 +790,7 @@ export const copy = {
   pt: {
     faqsTitle: 'Perguntas Frequentes', successStoriesTitle: 'Casos de Sucesso', featuredProjectsIntro: 'Projetos destacados de marcenaria à medida e design de stands:', 
     nav: { home: 'Início', services: 'Serviços', custom: 'Galeria', noticias: 'Blog', contact: 'Contacto', language: 'Idioma' },
-    seoTitle: 'Standarte | Montagem de stands em Espanha e Portugal',
+    seoTitle: 'Standarte | Design e montagem de stands em Espanha e Portugal · Projeto Auditado',
     seoDescription: 'Serviços de stands de feira com consultoria de expansão incluída. Concebemos, produzimos e montamos o seu stand em Espanha e Portugal.',
     heroTitle: 'Design e montagem de stands em Espanha e Portugal',
     heroSubtitle: 'Espaços que inspiram',
