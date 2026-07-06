@@ -86,3 +86,6 @@ perder el histórico); solo el contenido.
   idiomas relevantes (PT para el SERP local, ES para el canónico/expositor español) e
   incorpora la **sección de documentación técnica del recinto FIL** (Feira Internacional
   de Lisboa: 4 pabellones, ~10.368 m², alturas 12–15 m, instalaciones y certificados).
+- **Don Benito** (ES) — página de *montaje* (`montaje_don_benito`), recinto **FEVAL**
+  (Agroexpo). Oro con sección técnica de FEVAL (22.000 m² cubiertos, 20.000 m² exterior,
+  edificio multifuncional de 10.000 m²) y keyword "montaje" conservada. URL sin cambios.
