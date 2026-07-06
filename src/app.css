@@ -3000,6 +3000,21 @@ footer {
   color: #111;
 }
 
+/* Enlaces del cuerpo (párrafos y listas del contenido, p. ej. las ferias enlazadas):
+   estilo de enlace clásico, azul royal y subrayado. Acotado a hijos directos para NO
+   afectar a las migas de pan (que van dentro de <nav>). */
+.seo-article > p a,
+.seo-article > ol a,
+.seo-article > ul a {
+  color: #4169e1; /* royal blue */
+  text-decoration: underline;
+}
+.seo-article > p a:hover,
+.seo-article > ol a:hover,
+.seo-article > ul a:hover {
+  color: #2a4bc0;
+}
+
 /* Negritas dentro de párrafos <p>: familia serif por defecto (el cuerpo es
    Inconsolata monospace, que en negrita resulta pesado). */
 p strong,
