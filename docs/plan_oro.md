@@ -104,3 +104,6 @@ la última edición REAL de su contenido, no la del build.
   edificio multifuncional de 10.000 m²) y keyword "montaje" conservada. URL sin cambios.
 - **Ciudad Real** (ES) — Pabellón Ferial (IFEDI), eje **FENAVIN** (Feria Nacional del
   Vino) y el clúster del vino de La Mancha; ferias FERCAM, FERCATUR, FERDUQUE.
+- **Zafra** (ES) — página de *montaje* (`montaje_zafra`), eje **Feria Internacional
+  Ganadera de Zafra (FIG)** (ganadería + maquinaria). Oro con sección técnica del recinto
+  (Pabellones A/B, Institucional, Carpas 1/2, exterior de maquinaria); keyword "montaje".
