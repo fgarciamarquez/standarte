@@ -1,8 +1,10 @@
 <script>
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, projectUrl } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag, fairTags } from '$lib/fairTags.js';
+  import { projectsForActivity } from '$lib/projectTags.js';
+  import { projectIndex } from '$lib/projectIndex.js';
   import { pickIntroVariant } from '$lib/introVariants.js';
   import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import ContactForm from './ContactForm.svelte';
@@ -587,6 +589,46 @@
   };
   $: da = (directAnswer[lang] || directAnswer.es);
   $: pc = (patCta[lang] || patCta.es);
+
+  // #4 (G1) Proyecto 3D real del mismo sector que esta feria (malla feria → proyecto).
+  // Solo se muestra si hay un proyecto etiquetado con alguna actividad de la feria.
+  $: fairProject = (() => {
+    for (const t of fairActivityTags) {
+      const ids = projectsForActivity(t);
+      if (ids.length) { const p = projectIndex.find((x) => x.id === ids[0]); if (p) return p; }
+    }
+    return null;
+  })();
+  const projLead = { es: 'Así montamos para este sector:', pt: 'Assim montamos para este setor:', en: 'This is how we build for this sector:', de: 'So bauen wir für diese Branche:', fr: 'Voici comment nous construisons pour ce secteur :', it: 'Ecco come allestiamo per questo settore:', nl: 'Zo bouwen wij voor deze sector:', zh: '我们如此为该行业搭建：', hi: 'इस क्षेत्र के लिए हम ऐसे बनाते हैं:', ko: '이 분야를 위해 이렇게 시공합니다:', ja: 'この分野ではこのように施工します：' };
+  const projCta = { es: 'ver un stand nuestro', pt: 'ver um stand nosso', en: 'see one of our stands', de: 'einen unserer Stände ansehen', fr: 'voir un de nos stands', it: 'vedi un nostro stand', nl: 'bekijk een van onze stands', zh: '查看我们的展台', hi: 'हमारा एक स्टैंड देखें', ko: '당사 부스 보기', ja: '当社のブースを見る' };
+
+  // #3 (D1) JSON-LD: Service (con proveedor y ciudad) + FAQPage (nombra Pat y Proyecto
+  // Auditado). El FAQPage solo se emite en ES/PT/EN (prioridad ibérica) para no publicar
+  // preguntas en un idioma que no coincida con la página.
+  $: serviceJsonLd = JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Service', '@id': canonical + '#service',
+    name: strings.heroTitle(fairDisplayName), serviceType: 'Exhibition stand builder',
+    provider: { '@type': 'Organization', name: 'Standarte', url: 'https://standarte.es', logo: 'https://standarte.es/img/logo_standarte_rectanular.png' },
+    areaServed: { '@type': 'City', name: fair.city }, description: seoDesc, url: canonical
+  }).replace(/</g, '\\u003c');
+  const faqLd = {
+    es: (n) => [
+      [`¿Quién diseña y monta stands en ${n}?`, `Standarte: diseño, fabricación en taller propio y montaje llave en mano, con prototipo 3D en 72 h, presupuesto en 24 h y la garantía de Proyecto Auditado (lo que ves es lo que se construye).`],
+      [`¿Cómo sé si ${n} es la feria adecuada para mi producto?`, `Pat, el asesor ferial gratuito de Standarte, te recomienda las ferias de tu sector en España y Portugal en un minuto.`]
+    ],
+    pt: (n) => [
+      [`Quem concebe e monta stands na ${n}?`, `A Standarte: design, fabrico em oficina própria e montagem chave-na-mão, com protótipo 3D em 72 h, orçamento em 24 h e a garantia de Projeto Auditado (o que vê é o que se constrói).`],
+      [`Como sei se a ${n} é a feira certa para o meu produto?`, `O Pat, o consultor de feiras gratuito da Standarte, recomenda as feiras do seu setor em Portugal e Espanha num minuto.`]
+    ],
+    en: (n) => [
+      [`Who designs and builds stands at ${n}?`, `Standarte: design, in-house manufacturing and turnkey assembly, with a 3D prototype in 72h, a quote in 24h and the Audited Project guarantee (what you see is what gets built).`],
+      [`How do I know if ${n} is the right fair for my product?`, `Pat, Standarte's free trade-fair advisor, recommends the fairs for your sector in Spain and Portugal in a minute.`]
+    ]
+  };
+  $: faqJsonLd = faqLd[lang] ? JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'FAQPage', '@id': canonical + '#faq',
+    mainEntity: faqLd[lang](fair.name).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }))
+  }).replace(/</g, '\\u003c') : null;
 </script>
 
 <svelte:head>
@@ -613,6 +655,8 @@
     {/each}
   {/if}
   {@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
+  {@html `<script type="application/ld+json">${serviceJsonLd}<\/script>`}
+  {#if faqJsonLd}{@html `<script type="application/ld+json">${faqJsonLd}<\/script>`}{/if}
 </svelte:head>
 
 <svelte:window on:scroll|passive={updateScrollState} />
@@ -701,6 +745,10 @@
   <section class="feria-details section">
     <div class="feria-container">
       <div class="feria-text">
+        <!-- A2: sello del Sistema de Proyecto Auditado (garantía verificable). -->
+        <a class="feria-guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
+          <img src="/img/100x100-guaranted.png" alt="" loading="lazy" />
+        </a>
         <nav class="breadcrumbs feria-breadcrumbs" aria-label="Breadcrumb">
           <!-- Navegación visible (los datos estructurados van en el JSON-LD del head). -->
           <ol>
@@ -748,6 +796,16 @@
             </li>
           {/each}
         </ul>
+        <!-- G1: malla feria → proyecto 3D real del mismo sector (si existe). -->
+        {#if fairProject}
+          <a class="feria-project-link" href={projectUrl(fairProject.id, lang)}>
+            {#if fairProject.image}<img src={fairProject.image.replace('.avif', '-thumb.avif')} alt={fairProject.name} loading="lazy" />{/if}
+            <span class="feria-project-text">
+              <span class="feria-project-lead">{projLead[lang] || projLead.es}</span>
+              <span class="feria-project-name">{(fairProject.title && (fairProject.title[lang] || fairProject.title.es)) || fairProject.name} — {projCta[lang] || projCta.es} →</span>
+            </span>
+          </a>
+        {/if}
       </div>
       <aside class="feria-aside">
         <div class="aside-module">
@@ -866,7 +924,34 @@
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     min-width: 0;
+    position: relative;
   }
+  /* A2: sello de garantía flotando sobre la esquina superior derecha de la ficha. */
+  .feria-guarantee-stamp {
+    position: absolute;
+    top: -34px;
+    right: 18px;
+    width: 104px;
+    height: 104px;
+    z-index: 4;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.22));
+    transition: transform 0.2s ease;
+  }
+  .feria-guarantee-stamp:hover { transform: scale(1.05); }
+  .feria-guarantee-stamp img { display: block; width: 100%; height: 100%; }
+  @media (max-width: 768px) { .feria-guarantee-stamp { width: 78px; height: 78px; top: -22px; right: 8px; } }
+  /* G1: enlace a un proyecto 3D real del sector de la feria. */
+  .feria-project-link {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; margin: 0.4rem 0 1.6rem;
+    border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden;
+    background: #fff; transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .feria-project-link:hover { box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1); transform: translateY(-2px); }
+  .feria-project-link img { width: 120px; height: 84px; object-fit: cover; flex: 0 0 auto; background: #ececec; }
+  .feria-project-text { display: flex; flex-direction: column; gap: 0.25rem; padding: 0.6rem 0.9rem 0.6rem 0; }
+  .feria-project-lead { font-size: 0.85rem; color: #6b7178; }
+  .feria-project-name { font-weight: 700; color: #4169e1; line-height: 1.35; }
   .highlight {
     font-family: 'Francois One', serif;
     font-size: 1.4rem;
