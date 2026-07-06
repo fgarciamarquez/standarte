@@ -8,11 +8,12 @@
 //
 // Clave = sección de `routes` (siteData.js). Valor = fecha ISO (YYYY-MM-DD).
 export const seoFreshness = {
-  badajoz: '2026-07-05',
-  zaragoza: '2026-07-05',
+  badajoz: '2026-07-06',
+  zaragoza: '2026-07-06',
   lisboa: '2026-07-06',
   montaje_don_benito: '2026-07-06',
-  ciudad_real: '2026-07-06'
+  ciudad_real: '2026-07-06',
+  montaje_zafra: '2026-07-06'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
