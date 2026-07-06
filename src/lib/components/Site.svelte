@@ -540,6 +540,26 @@
     ja: '当社がブースの設計・施工を行う近隣の展示会',
     nl: 'Beurzen in de regio waar wij stands ontwerpen en bouwen'
   };
+  // Móvil: cuando hay muchas ferias, la nube de píldoras se condensa en un <details>
+  // (pila de botones) que se despliega al tocar, para no saturar antes de las FAQs.
+  const FAIRS_COLLAPSE_THRESHOLD = 8;
+  const fairsCloudOpenCta = {
+    es: (n) => `Ver las ${n} ferias`,
+    en: (n) => `See all ${n} fairs`,
+    de: (n) => `Alle ${n} Messen ansehen`,
+    fr: (n) => `Voir les ${n} salons`,
+    pt: (n) => `Ver as ${n} feiras`,
+    it: (n) => `Vedi le ${n} fiere`,
+    ko: (n) => `${n}개 전시회 모두 보기`,
+    zh: (n) => `查看全部 ${n} 场展会`,
+    hi: (n) => `सभी ${n} मेले देखें`,
+    ja: (n) => `${n}件の展示会をすべて見る`,
+    nl: (n) => `Bekijk alle ${n} beurzen`
+  };
+  const fairsCloudCloseCta = {
+    es: 'Ocultar', en: 'Hide', de: 'Ausblenden', fr: 'Masquer', pt: 'Ocultar',
+    it: 'Nascondi', ko: '접기', zh: '收起', hi: 'छिपाएँ', ja: '閉じる', nl: 'Verbergen'
+  };
   // B1: prueba de cobertura por ciudad (recuento real de ferias + garantía + Pat).
   const coverageProof = {
     es: (n, c) => `Cobertura verificable en ${c}: montamos en ${n} ferias de la zona con el mismo equipo y la garantía de Proyecto Auditado.`,
@@ -1855,11 +1875,29 @@
               {#if regionFairs.length}
                 <section class="city-fairs sidebar-module" aria-label={cityFairsLabel[lang] || cityFairsLabel.es}>
                   <h2>{cityFairsLabel[lang] || cityFairsLabel.es}</h2>
-                  <ul class="city-fairs-list">
-                    {#each regionFairs as fair}
-                      <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
-                    {/each}
-                  </ul>
+                  {#if regionFairs.length > FAIRS_COLLAPSE_THRESHOLD}
+                    <!-- Nube numerosa: se condensa en móvil (pila de botones) y se
+                         despliega al tocar. En escritorio el CSS la fuerza abierta. -->
+                    <details class="fairs-collapse">
+                      <summary class="fairs-collapse-summary">
+                        <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
+                        <span class="fairs-collapse-open">{(fairsCloudOpenCta[lang] || fairsCloudOpenCta.es)(regionFairs.length)}</span>
+                        <span class="fairs-collapse-close">{fairsCloudCloseCta[lang] || fairsCloudCloseCta.es}</span>
+                        <span class="fairs-collapse-chevron" aria-hidden="true"></span>
+                      </summary>
+                      <ul class="city-fairs-list">
+                        {#each regionFairs as fair}
+                          <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
+                        {/each}
+                      </ul>
+                    </details>
+                  {:else}
+                    <ul class="city-fairs-list">
+                      {#each regionFairs as fair}
+                        <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
+                      {/each}
+                    </ul>
+                  {/if}
                 </section>
               {/if}
 

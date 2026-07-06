@@ -3372,6 +3372,104 @@ p b {
   }
 }
 
+/* Nube de ferias colapsable: cuando son numerosas, en móvil se condensa en una
+   "pila de botones" (un <details> sin JS) que se despliega al tocar, para no
+   saturar la vista antes de las FAQs. En escritorio se muestra siempre expandida. */
+.fairs-collapse {
+  margin: 0;
+}
+.fairs-collapse > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.06);
+  font-family: 'Inconsolata', monospace;
+  font-size: 15px;
+  color: #1a1e21;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.fairs-collapse > summary::-webkit-details-marker {
+  display: none;
+}
+.fairs-collapse > summary:hover {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.12);
+}
+/* Icono: tres "botones" superpuestos, la metáfora del estado condensado. */
+.fairs-stack {
+  position: relative;
+  width: 34px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+.fairs-stack span {
+  position: absolute;
+  top: 50%;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #fff;
+}
+.fairs-stack span:nth-child(1) {
+  left: 0;
+  width: 22px;
+  transform: translateY(-50%) rotate(-8deg);
+  opacity: 0.55;
+}
+.fairs-stack span:nth-child(2) {
+  left: 5px;
+  width: 24px;
+  transform: translateY(-50%);
+  opacity: 0.8;
+}
+.fairs-stack span:nth-child(3) {
+  left: 11px;
+  width: 22px;
+  transform: translateY(-50%) rotate(8deg);
+  background: rgba(212, 175, 55, 0.16);
+  border-color: var(--gold);
+}
+.fairs-collapse-close {
+  display: none;
+}
+.fairs-collapse[open] > summary .fairs-collapse-open {
+  display: none;
+}
+.fairs-collapse[open] > summary .fairs-collapse-close {
+  display: inline;
+}
+.fairs-collapse-chevron {
+  width: 8px;
+  height: 8px;
+  margin-left: 2px;
+  border-right: 2px solid #666;
+  border-bottom: 2px solid #666;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.fairs-collapse[open] > summary .fairs-collapse-chevron {
+  transform: rotate(-135deg);
+}
+.fairs-collapse > .city-fairs-list {
+  margin-top: 12px;
+}
+@media (min-width: 769px) {
+  /* Escritorio: sin disparador, la lista siempre visible (hay espacio de sobra). */
+  .fairs-collapse > summary {
+    display: none !important;
+  }
+  .fairs-collapse > .city-fairs-list {
+    display: flex !important;
+    margin-top: 0;
+  }
+}
+
 
 
 
