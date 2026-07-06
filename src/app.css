@@ -3456,7 +3456,8 @@ p b {
 .fairs-collapse[open] > summary .fairs-collapse-chevron {
   transform: rotate(-135deg);
 }
-.fairs-collapse > .city-fairs-list {
+.fairs-collapse > .city-fairs-list,
+.fairs-collapse > .activity-chips {
   margin-top: 12px;
 }
 @media (min-width: 769px) {
@@ -3464,7 +3465,8 @@ p b {
   .fairs-collapse > summary {
     display: none !important;
   }
-  .fairs-collapse > .city-fairs-list {
+  .fairs-collapse > .city-fairs-list,
+  .fairs-collapse > .activity-chips {
     display: flex !important;
     margin-top: 0;
   }

@@ -560,6 +560,21 @@
     es: 'Ocultar', en: 'Hide', de: 'Ausblenden', fr: 'Masquer', pt: 'Ocultar',
     it: 'Nascondi', ko: '접기', zh: '收起', hi: 'छिपाएँ', ja: '閉じる', nl: 'Verbergen'
   };
+  // Mismo patrón para el navegador de actividades (chips de color) del sidebar.
+  const ACTIVITIES_COLLAPSE_THRESHOLD = 6;
+  const activitiesCloudOpenCta = {
+    es: (n) => `Ver ${n} actividades`,
+    en: (n) => `See ${n} activities`,
+    de: (n) => `${n} Aktivitäten ansehen`,
+    fr: (n) => `Voir ${n} activités`,
+    pt: (n) => `Ver ${n} atividades`,
+    it: (n) => `Vedi ${n} attività`,
+    ko: (n) => `${n}개 분야 보기`,
+    zh: (n) => `查看 ${n} 个领域`,
+    hi: (n) => `${n} गतिविधियाँ देखें`,
+    ja: (n) => `${n}件の分野を見る`,
+    nl: (n) => `Bekijk ${n} activiteiten`
+  };
   // B1: prueba de cobertura por ciudad (recuento real de ferias + garantía + Pat).
   const coverageProof = {
     es: (n, c) => `Cobertura verificable en ${c}: montamos en ${n} ferias de la zona con el mismo equipo y la garantía de Proyecto Auditado.`,
@@ -1905,16 +1920,37 @@
               {#if regionActivities.length}
                 <section class="activity-module sidebar-module" aria-label={ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}>
                   <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h2>
-                  <ul class="activity-chips">
-                    {#each regionActivities as tag}
-                      <li>
-                        <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
-                          <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
-                        </a>
-                      </li>
-                    {/each}
-                    <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a></li>
-                  </ul>
+                  {#if regionActivities.length > ACTIVITIES_COLLAPSE_THRESHOLD}
+                    <details class="fairs-collapse">
+                      <summary class="fairs-collapse-summary">
+                        <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
+                        <span class="fairs-collapse-open">{(activitiesCloudOpenCta[lang] || activitiesCloudOpenCta.es)(regionActivities.length)}</span>
+                        <span class="fairs-collapse-close">{fairsCloudCloseCta[lang] || fairsCloudCloseCta.es}</span>
+                        <span class="fairs-collapse-chevron" aria-hidden="true"></span>
+                      </summary>
+                      <ul class="activity-chips">
+                        {#each regionActivities as tag}
+                          <li>
+                            <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
+                              <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
+                            </a>
+                          </li>
+                        {/each}
+                        <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a></li>
+                      </ul>
+                    </details>
+                  {:else}
+                    <ul class="activity-chips">
+                      {#each regionActivities as tag}
+                        <li>
+                          <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
+                            <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
+                          </a>
+                        </li>
+                      {/each}
+                      <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a></li>
+                    </ul>
+                  {/if}
                 </section>
               {/if}
             </div>
