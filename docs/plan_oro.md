@@ -89,3 +89,5 @@ perder el histórico); solo el contenido.
 - **Don Benito** (ES) — página de *montaje* (`montaje_don_benito`), recinto **FEVAL**
   (Agroexpo). Oro con sección técnica de FEVAL (22.000 m² cubiertos, 20.000 m² exterior,
   edificio multifuncional de 10.000 m²) y keyword "montaje" conservada. URL sin cambios.
+- **Ciudad Real** (ES) — Pabellón Ferial (IFEDI), eje **FENAVIN** (Feria Nacional del
+  Vino) y el clúster del vino de La Mancha; ferias FERCAM, FERCATUR, FERDUQUE.
