@@ -16,6 +16,9 @@
 
   let menuOpen = false;
   let isScrolled = false;
+  // El header sobre el hero es semitransparente y se vuelve sólido al hacer scroll.
+  // Sin este listener, isScrolled nunca cambiaba y el menú quedaba ilegible al bajar.
+  function updateScrollState() { isScrolled = typeof window !== 'undefined' && window.scrollY > 8; }
 
   // ── Asesor de Pat (WelcomeAdvisor): carga diferida como en la home ──
   let showWelcomeAdvisor = false;
@@ -30,6 +33,7 @@
   }
 
   onMount(() => {
+    updateScrollState();
     const launchAdvisor = () => {
       advisorTimeout = setTimeout(() => {
         if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('standarte_advisor_dismissed') === '1') return;
@@ -647,8 +651,9 @@
   {@html jsonLdScript}
 </svelte:head>
 
+<svelte:window on:scroll|passive={updateScrollState} />
 <header class="site-header static-header">
-  <nav class="nav" class:scrolled={isScrolled}>
+  <nav class="nav" class:scrolled={isScrolled || menuOpen}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
     <div class="nav-right">
       <div class="lang-menu lang-menu-mobile">
