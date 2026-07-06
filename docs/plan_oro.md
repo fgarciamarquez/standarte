@@ -107,3 +107,11 @@ la última edición REAL de su contenido, no la del build.
 - **Zafra** (ES) — página de *montaje* (`montaje_zafra`), eje **Feria Internacional
   Ganadera de Zafra (FIG)** (ganadería + maquinaria). Oro con sección técnica del recinto
   (Pabellones A/B, Institucional, Carpas 1/2, exterior de maquinaria); keyword "montaje".
+- **Oporto / Porto** (ES + PT) — plaza portuguesa muy disputada con rivales locales fuertes.
+  Recinto **Exponor** (Matosinhos/Leça da Palmeira): 6 pabellones, ~45.000 m² cubiertos de
+  ~180.000 m² totales, auditorio para 945, business center de 8 salas, 2.500 plazas de
+  parking, a 10 min del centro y del aeropuerto. Sección técnica del recinto incluida. Las
+  16 ferias de Porto/Braga en nuestro mapa (Concreta, EMAF, Expomecânica, Expocosmética,
+  Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
+  Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
+  prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
