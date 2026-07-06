@@ -38,6 +38,7 @@
 
   let initialFair = '';
   let showWelcomeAdvisor = false;
+  let patInitialFamily = ''; // sector inicial de Pat cuando llega desde una feria (#pat=)
   let advisorTimeout;
   let AdvisorComponent = null; // se rellena con el import dinámico
   let advisorLoadHandler;      // ref del listener 'load' para poder limpiarlo
@@ -1056,6 +1057,16 @@
   onMount(() => {
     displayedCounters = counterItems.map(() => 0);
 
+    // CTA contextual de Pat desde las páginas de feria: llegan con "#pat=<familia>".
+    // Abrimos a Pat de inmediato, ya sembrado con ese sector (sin esperar los 8 s).
+    if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('pat')) {
+      patInitialFamily = new URLSearchParams(window.location.search).get('pat') || '';
+      advisorDismissed.reactivate();
+      import('./WelcomeAdvisor.svelte')
+        .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
+        .catch(() => {});
+    }
+
     // El asesor se invoca SOLO una vez la página ha terminado de cargar, y su
     // código se trae con import dinámico (chunk aparte) para no comprometer el
     // rendimiento de la carga principal.
@@ -1349,7 +1360,7 @@
   <!-- Panel de Pat (asesor de Expansión): flotante, se carga diferido en onMount.
        Se renderiza en home-family Y en páginas de ciudad (su layout no importa). -->
   {#if showWelcomeAdvisor && AdvisorComponent}
-    <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />
+    <svelte:component this={AdvisorComponent} {lang} initialFamily={patInitialFamily} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />
   {/if}
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="local-stands" class="section local-stands">

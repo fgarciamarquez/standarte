@@ -12,6 +12,9 @@
   // Switch "Activo" del pie que oculta el panel durante la sesión. En modo embebido no
   // queremos que se pueda desactivar, así que se pasa dismissible={false}.
   export let dismissible = true;
+  // Sector inicial (clave de tagFamilies): cuando Pat se abre desde una página de feria
+  // (CTA contextual "#pat=<familia>"), arranca ya en el sector de esa feria.
+  export let initialFamily = '';
 
   const dispatch = createEventDispatcher();
 
@@ -517,6 +520,12 @@
       profileVisible = true;
       triggerNotificationChime();
     }, 600);
+
+    // Siembra contextual: si llega con un sector inicial válido (desde una feria),
+    // saltamos al paso 2 con ese sector ya elegido (reutiliza selectFamily).
+    if (initialFamily && tagFamilies[initialFamily]) {
+      setTimeout(() => selectFamily(initialFamily), 1100);
+    }
 
     // Desbloqueo del audio en el primer gesto. Usamos 'pointerdown' (en fase de
     // captura) porque llega ANTES que el 'click', así el audio ya está activo

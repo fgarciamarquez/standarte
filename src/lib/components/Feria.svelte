@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
-  import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
+  import { activitiesForFair, colorForTag, labelForTag, fairTags } from '$lib/fairTags.js';
   import { pickIntroVariant } from '$lib/introVariants.js';
   import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import ContactForm from './ContactForm.svelte';
@@ -549,6 +549,44 @@
   $: venueText = venue ? ((venueLine[lang] || venueLine.es)(venue, localizedCity)) : null;
   // Actividades (etiquetas) de esta feria, para los chips de color del aside.
   $: fairActivityTags = activitiesForFair(fair.slug);
+
+  // --- Pat contextual: familia (sector) de esta feria a partir de su primera etiqueta.
+  // El CTA lleva a la home con "#pat=<familia>", que abre a Pat ya en ese sector.
+  $: patFamily = (fairActivityTags.length && fairTags[fairActivityTags[0]]) ? fairTags[fairActivityTags[0]].family : '';
+  $: patHref = pathFor(lang, 'home') + (patFamily ? '?pat=' + patFamily : '');
+
+  // --- Respuesta directa (GEO): 2-3 frases citables al inicio, con los instrumentos
+  // propios (prototipo 3D 72h, presupuesto 24h, Proyecto Auditado) y la cobertura ES+PT.
+  const directAnswer = {
+    es: (n, c) => `En ${n} (${c}), Standarte diseña, fabrica y monta tu stand con prototipo 3D en 72 h, presupuesto en 24 h y la garantía de Proyecto Auditado: lo que ves es lo que se construye. Cobertura propia en toda España y Portugal, con más de 169 proyectos y 158 ferias a la espalda.`,
+    pt: (n, c) => `Na ${n} (${c}), a Standarte concebe, fabrica e monta o seu stand com protótipo 3D em 72 h, orçamento em 24 h e a garantia de Projeto Auditado: o que vê é o que se constrói. Cobertura própria em toda a Espanha e Portugal, com mais de 169 projetos e 158 feiras.`,
+    en: (n, c) => `At ${n} (${c}), Standarte designs, builds and assembles your stand with a 3D prototype in 72h, a quote in 24h and the Audited Project guarantee: what you see is what gets built. Own coverage across Spain and Portugal, with 169+ projects and 158 fairs.`,
+    de: (n, c) => `Auf der ${n} (${c}) plant, fertigt und montiert Standarte Ihren Stand mit 3D-Prototyp in 72 Std., Angebot in 24 Std. und der Garantie des Auditierten Projekts: Was Sie sehen, wird gebaut. Eigene Abdeckung in ganz Spanien und Portugal, mit über 169 Projekten und 158 Messen.`,
+    fr: (n, c) => `Au salon ${n} (${c}), Standarte conçoit, fabrique et monte votre stand avec prototype 3D en 72 h, devis en 24 h et la garantie du Projet Audité : ce que vous voyez est ce qui est construit. Couverture propre dans toute l'Espagne et le Portugal, avec plus de 169 projets et 158 salons.`,
+    it: (n, c) => `Alla ${n} (${c}), Standarte progetta, produce e allestisce il tuo stand con prototipo 3D in 72 h, preventivo in 24 h e la garanzia del Progetto Verificato: ciò che vedi è ciò che viene costruito. Copertura propria in tutta la Spagna e il Portogallo, con oltre 169 progetti e 158 fiere.`,
+    nl: (n, c) => `Op ${n} (${c}) ontwerpt, bouwt en monteert Standarte uw stand met een 3D-prototype in 72 u, een offerte in 24 u en de garantie van het Geauditeerd Project: wat u ziet is wat wordt gebouwd. Eigen dekking in heel Spanje en Portugal, met meer dan 169 projecten en 158 beurzen.`,
+    zh: (n, c) => `在${c}的${n}，Standarte 为您设计、制造并搭建展台：72小时3D原型、24小时报价，以及“已审核项目”保障——所见即所建。自有团队覆盖西班牙和葡萄牙全境，拥有超过169个项目和158场展会经验。`,
+    hi: (n, c) => `${c} में ${n} के लिए, Standarte आपका स्टैंड डिज़ाइन, निर्माण और स्थापित करता है: 72 घंटे में 3D प्रोटोटाइप, 24 घंटे में कोटेशन और ऑडिटेड प्रोजेक्ट की गारंटी — जो आप देखते हैं वही बनता है। स्पेन और पुर्तगाल में अपनी कवरेज, 169+ प्रोजेक्ट और 158 मेलों के अनुभव के साथ।`,
+    ko: (n, c) => `${c}의 ${n}에서 Standarte는 72시간 3D 프로토타입, 24시간 견적, 감사받은 프로젝트 보증으로 부스를 디자인·제작·시공합니다. 보이는 그대로 제작됩니다. 스페인과 포르투갈 전역 자체 커버리지, 169개 이상의 프로젝트와 158개 박람회 경험.`,
+    ja: (n, c) => `${c}の${n}で、Standarteは72時間で3Dプロトタイプ、24時間で見積もり、監査済みプロジェクトの保証とともにブースを設計・製作・施工します。見たものがそのまま形になります。スペインとポルトガル全土を自社でカバーし、169件以上のプロジェクトと158の展示会の実績。`
+  };
+
+  // --- CTA contextual de Pat (por sector) en la ficha de feria.
+  const patCta = {
+    es: { q: (n) => `¿No sabes si ${n} encaja con tu producto?`, sub: 'Pat, nuestro asesor ferial gratuito, te recomienda las ferias de tu sector en España y Portugal en un minuto.', cta: 'Hablar con Pat' },
+    pt: { q: (n) => `Não sabe se a ${n} encaixa com o seu produto?`, sub: 'O Pat, o nosso consultor de feiras gratuito, recomenda as feiras do seu setor em Portugal e Espanha num minuto.', cta: 'Falar com o Pat' },
+    en: { q: (n) => `Not sure if ${n} is right for your product?`, sub: 'Pat, our free trade-fair advisor, recommends the fairs for your sector in Spain and Portugal in a minute.', cta: 'Talk to Pat' },
+    de: { q: (n) => `Unsicher, ob die ${n} zu Ihrem Produkt passt?`, sub: 'Pat, unser kostenloser Messeberater, empfiehlt in einer Minute die Messen Ihrer Branche in Spanien und Portugal.', cta: 'Mit Pat sprechen' },
+    fr: { q: (n) => `Vous ne savez pas si ${n} vous convient ?`, sub: 'Pat, notre conseiller salon gratuit, vous recommande les salons de votre secteur en Espagne et au Portugal en une minute.', cta: 'Parler avec Pat' },
+    it: { q: (n) => `Non sai se ${n} fa per te?`, sub: 'Pat, il nostro consulente fieristico gratuito, ti consiglia le fiere del tuo settore in Spagna e Portogallo in un minuto.', cta: 'Parlare con Pat' },
+    nl: { q: (n) => `Niet zeker of ${n} bij u past?`, sub: 'Pat, onze gratis beursadviseur, beveelt in een minuut de beurzen in uw sector in Spanje en Portugal aan.', cta: 'Met Pat praten' },
+    zh: { q: (n) => `不确定 ${n} 是否适合您的产品？`, sub: '我们的免费展会顾问 Pat 一分钟内为您推荐西班牙和葡萄牙您所在行业的展会。', cta: '与 Pat 交谈' },
+    hi: { q: (n) => `पक्का नहीं कि ${n} आपके लिए सही है?`, sub: 'हमारा मुफ़्त सलाहकार Pat एक मिनट में स्पेन और पुर्तगाल में आपके क्षेत्र के मेलों की सिफ़ारिश करता है।', cta: 'Pat से बात करें' },
+    ko: { q: (n) => `${n}이(가) 적합한지 모르시겠나요?`, sub: '무료 어드바이저 Pat이 스페인과 포르투갈에서 귀사 분야의 박람회를 1분 만에 추천합니다.', cta: 'Pat와 대화하기' },
+    ja: { q: (n) => `${n}が自社に合うかお悩みですか？`, sub: '無料アドバイザーのPatが、スペインとポルトガルであなたの分野の展示会を1分で提案します。', cta: 'Patと話す' }
+  };
+  $: da = (directAnswer[lang] || directAnswer.es);
+  $: pc = (patCta[lang] || patCta.es);
 </script>
 
 <svelte:head>
@@ -680,6 +718,16 @@
             {/each}
           </ol>
         </nav>
+        <!-- Respuesta directa citable (GEO): instrumentos propios + cobertura ES/PT. -->
+        <p class="feria-direct-answer">{da(fair.name, localizedCity)}</p>
+        <!-- CTA contextual de Pat, sembrado por el sector de esta feria. -->
+        <a class="feria-pat-cta" href={patHref} rel="nofollow">
+          <span class="feria-pat-text">
+            <span class="feria-pat-q">{pc.q(fair.name)}</span>
+            <span class="feria-pat-sub">{pc.sub}</span>
+          </span>
+          <span class="feria-pat-btn">{pc.cta} →</span>
+        </a>
         <p class="highlight">{seoDesc}</p>
         {#if fairBody}
           <div class="fair-unique">{@html fairBody}</div>
@@ -826,6 +874,46 @@
     font-weight: 400;
     margin-bottom: 2rem;
   }
+  /* Respuesta directa citable (GEO): destacada, al inicio del cuerpo. */
+  .feria-direct-answer {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #2a2a2a;
+    background: #f7f6f1;
+    border-left: 4px solid var(--primary, #e0b400);
+    padding: 1rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0 0 1.4rem;
+  }
+  /* CTA contextual de Pat, sembrado por sector. */
+  .feria-pat-cta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-decoration: none;
+    border: 1px solid rgba(65, 105, 225, 0.35);
+    background: rgba(65, 105, 225, 0.05);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+    margin: 0 0 1.8rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .feria-pat-cta:hover { background: rgba(65, 105, 225, 0.1); border-color: rgba(65, 105, 225, 0.6); }
+  .feria-pat-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+  .feria-pat-q { font-weight: 700; color: #1a1e21; font-size: 1.02rem; }
+  .feria-pat-sub { color: #555; font-size: 0.92rem; line-height: 1.45; }
+  .feria-pat-btn {
+    flex: 0 0 auto;
+    background: #4169e1;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.6rem 1.1rem;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .feria-pat-cta:hover .feria-pat-btn { background: #2a4bc0; }
   .feria-text p {
     margin-bottom: 1.5rem;
     color: var(--text-color);
