@@ -66,6 +66,18 @@ perder el histórico); solo el contenido.
 - **faqs** — 6 preguntas competitivas: ¿lo hacéis vosotros o subcontratáis? · ¿cuánto cuesta
   (m²)? · ¿con cuánta antelación? · ¿montáis también en Portugal? · ¿qué garantía? · ¿en qué recintos?
 
+## Frescura (dateModified / lastmod)
+
+Cada página Oro emite una señal de frescura **honesta** para los motores: la fecha de
+la última edición REAL de su contenido, no la del build.
+
+- La fecha vive en `src/lib/seoFreshness.js` (`{ sección: 'YYYY-MM-DD' }`).
+- Se emite como `dateModified` en el JSON-LD `WebPage` (Site.svelte) y como `<lastmod>`
+  real en el sitemap.
+- **Al reescribir el contenido de una ciudad, actualiza su fecha en `seoFreshness.js`.**
+  No usar la fecha del build (un lastmod que cambia sin cambiar el contenido resta
+  confianza ante Google).
+
 ## Reglas
 
 - Densidad de keyword natural: «diseño y construcción de stands en {Ciudad}», «stands para

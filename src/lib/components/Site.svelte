@@ -6,6 +6,7 @@
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
+  import { freshnessFor } from '$lib/seoFreshness.js';
   import { coverage } from '$lib/coverageCopy.js';
   import { activityPitch } from '$lib/activityPitch.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
@@ -801,6 +802,9 @@
       publisher: { '@id': `${baseUrl}/#organization` }
     };
 
+    // Frescura honesta: fecha de última actualización REAL del contenido (páginas Oro).
+    // Solo se emite si la sección tiene una fecha registrada en seoFreshness.
+    const freshness = freshnessFor(section);
     const webpage = {
       '@type': 'WebPage',
       '@id': `${canonical}#webpage`,
@@ -808,7 +812,8 @@
       name: title,
       description,
       inLanguage: contentLanguages[lang] || 'es-ES',
-      isPartOf: { '@id': `${baseUrl}/#website` }
+      isPartOf: { '@id': `${baseUrl}/#website` },
+      ...(freshness ? { dateModified: freshness } : {})
     };
 
     const siteNavigation = {

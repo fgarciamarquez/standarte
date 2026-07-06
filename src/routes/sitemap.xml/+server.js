@@ -1,5 +1,6 @@
 import { fairsData } from '$lib/fairsData.js';
 import { languages, routes, pathFor, portfolios, fairUrl, projectUrl, activityIndexUrl, activityUrl } from '$lib/siteData.js';
+import { seoFreshness } from '$lib/seoFreshness.js';
 import { tagOrder } from '$lib/fairTags.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import { portfolioVideos, siteVideos } from '$lib/videosData.js';
@@ -55,10 +56,14 @@ export async function GET() {
       alternates.push({ hreflang: 'x-default', href: `${siteUrl}${pathFor('es', section)}` });
     }
 
+    // lastmod real solo para páginas con fecha de contenido registrada (plan Oro);
+    // el resto no emite lastmod (no usar la fecha del build: antipatrón para Google).
+    const lastmod = seoFreshness[section];
     languages.forEach((lang) => {
       if (routes[lang] && routes[lang][section] !== undefined) {
         urls.push({
           loc: `${siteUrl}${pathFor(lang, section)}`,
+          lastmod,
           changefreq: 'monthly',
           priority: section === 'home' ? '1.0' : '0.8',
           alternates
