@@ -5,6 +5,7 @@
   import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from './FlagIcon.svelte';
   import AiSourceButtons from './AiSourceButtons.svelte';
+  import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
@@ -735,6 +736,9 @@
     </dl>
   </section>
 </main>
+
+<!-- Formulario de cálculo de presupuesto (asistente): al final de la página. -->
+<ContactForm labels={copy} {lang} variant="light" />
 
 <SiteFooter {lang} {copy} langHref={(option) => pathFor(option, 'precios')} />
 
