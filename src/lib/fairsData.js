@@ -1,5 +1,54 @@
 export const fairsData = [
   {
+    "name": "Futurmoda",
+    "country": "es",
+    "slug": "futurmoda-elche",
+    "city": "Elche",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Firauto",
+    "country": "es",
+    "slug": "firauto-elche",
+    "city": "Elche",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Alicante Gastronómica",
+    "country": "es",
+    "slug": "alicante-gastronomica",
+    "city": "Alicante",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "FAME Innowa",
+    "country": "es",
+    "slug": "fame-innowa-torre-pacheco",
+    "city": "Torre Pacheco",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "EQUIMUR",
+    "country": "es",
+    "slug": "equimur-torre-pacheco",
+    "city": "Torre Pacheco",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "HortiFruit",
+    "country": "es",
+    "slug": "hortifruit-torre-pacheco",
+    "city": "Torre Pacheco",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "FECONS",
+    "country": "es",
+    "slug": "fecons-torre-pacheco",
+    "city": "Torre Pacheco",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
     "name": "Agroexpo Feval Don Benito",
     "country": "es",
     "slug": "agroexpo-feval-don-benito",

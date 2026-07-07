@@ -64,6 +64,13 @@ export const fairTags = {
   "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
 export const fairActivities = {
+  "futurmoda-elche": ["moda-textil", "maquinaria-industrial"],
+  "firauto-elche": ["automocion"],
+  "alicante-gastronomica": ["gastronomia-hosteleria"],
+  "fame-innowa-torre-pacheco": ["agricultura-maquinaria", "ganaderia"],
+  "equimur-torre-pacheco": ["ganaderia"],
+  "hortifruit-torre-pacheco": ["agricultura-maquinaria", "alimentacion"],
+  "fecons-torre-pacheco": ["construccion"],
   "agroexpo-feval-don-benito": ["agricultura-maquinaria"],
   "feria-de-fp-badajoz": ["multisectorial"],
   "feria-de-los-mayores-de-extremadura-badajoz": ["multisectorial"],
