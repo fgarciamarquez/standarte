@@ -1865,7 +1865,7 @@
               {#if (section in cityData) && regionFairs.length && cityDisplayName}
                 <section class="coverage-proof sidebar-module">
                   <p>{(coverageProof[lang] || coverageProof.es)(regionFairs.length, cityDisplayName)}</p>
-                  <a class="coverage-pat" href={pathFor(lang, 'home')}>{coveragePatCta[lang] || coveragePatCta.es} →</a>
+                  <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
                 </section>
               {/if}
               <div class="city-nav-module">

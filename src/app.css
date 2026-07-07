@@ -3267,7 +3267,10 @@ p b {
   font-weight: 700;
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
+  border: none;
   border-radius: 6px;
+  font-family: inherit;
+  cursor: pointer;
   text-decoration: none;
 }
 .sidebar-sticky .coverage-proof .coverage-pat:hover { background: #2a4bc0; }
