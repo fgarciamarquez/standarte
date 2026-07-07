@@ -126,6 +126,14 @@ sin nube de ferias porque aún no tenemos ferias suyas en el mapa), en los **11 
   Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
   Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
   prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
+- **Mallorca** (ES + EN) — capital náutica del Mediterráneo. Doble escenario: **Palau de
+  Congressos de Palma** (2.340 m² de exposición: planta baja 1.640 m² a 11 m + entreplanta
+  700 m², 2 auditorios 1.966/471, 22 salas) y **Palma International Boat Show** al aire libre
+  en el Moll Vell del Port de Palma + Marina Port de Mallorca (>300 expositores, 600 barcos).
+  Oro con énfasis náutico/superyate y en la **logística insular** como diferencial. Las 4
+  ferias enlazadas: Palma Boat Show, Superyacht Village (náutica), Baleart (cultura/artesanía),
+  Dijous Bo (multisectorial). Cobertura a Valencia y Barcelona (puertos de conexión), Madrid,
+  Lisboa y Oporto. URL sin cambios.
 - **Barcelona** (ES + EN) — una de las grandes capitales feriales del mundo. Recinto **Fira
   de Barcelona** (Gran Via + Montjuïc): 400.000 m² totales; Gran Via (L'Hospitalet), obra de
   Toyo Ito, 240.000 m² brutos en 8 pabellones interconectados, Eje Central elevado de 1 km,
