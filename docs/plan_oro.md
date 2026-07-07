@@ -115,6 +115,13 @@ la última edición REAL de su contenido, no la del build.
   Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
   Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
   prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
+- **Málaga** (ES + EN) — capital tecnológica del sur. Recinto **FYCMA (Palacio de Ferias y
+  Congresos de Málaga)**, obra de Ángel Asenjo (2003): ~60.000 m² totales, 19.500 m² de
+  exposición en 2 pabellones, 2 auditorios, 15 salas multiusos, 1.200 plazas de parking,
+  >20.000 visitantes. Sección técnica del recinto incluida. Las 8 ferias de FYCMA enlazadas
+  por sector (DES, Greencities + Foro, H&T, SIMED, Expo AgriTech, San Diego Comic-Con Málaga,
+  Cadena Multisectorial) más las 3 de Sevilla (TIS, Auténtica, Fireca) enlazadas a la página
+  de Sevilla. Cobertura ibérica a Madrid, Barcelona, Valencia, Lisboa y Oporto. URL sin cambios.
 - **Bilbao** (ES + EN) — gran capital industrial del norte. Recinto **BEC (Bilbao Exhibition
   Centre)** en Ansio (Barakaldo), conectado por metro: 150.000 m² de exposición en 6
   pabellones diáfanos sin columnas (4×15.000 + 2×21.000 m²), inaugurado en 2004, con la
