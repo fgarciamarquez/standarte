@@ -19,7 +19,8 @@ export const seoFreshness = {
   portugal_sur: '2026-07-07',
   madrid: '2026-07-07',
   bilbao: '2026-07-07',
-  malaga: '2026-07-07'
+  malaga: '2026-07-07',
+  sevilla: '2026-07-07'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

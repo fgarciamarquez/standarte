@@ -115,6 +115,14 @@ la última edición REAL de su contenido, no la del build.
   Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
   Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
   prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
+- **Sevilla** (ES + EN) — gran capital ferial y de congresos del sur. Recinto **FIBES
+  (Palacio de Exposiciones y Congresos de Sevilla)**: FIBES I (3 pabellones diáfanos de
+  7.200 m² sin pilares, arquetas cada 8 m + cúpula) y FIBES II (Palacio de Congresos 2012,
+  mayor auditorio de España, 3.200 plazas). >40.000 m² de exposición, 5 auditorios, 71
+  salas. Sección técnica del recinto incluida. Las 3 ferias de FIBES enlazadas: TIS
+  (Tourism Innovation Summit, tecnología/turismo), Auténtica (alimentación premium), Fireca
+  (multisectorial). Cobertura andaluza cruzada con Málaga (FYCMA) + Madrid, Barcelona,
+  Valencia, Lisboa y Oporto. URL sin cambios.
 - **Málaga** (ES + EN) — capital tecnológica del sur. Recinto **FYCMA (Palacio de Ferias y
   Congresos de Málaga)**, obra de Ángel Asenjo (2003): ~60.000 m² totales, 19.500 m² de
   exposición en 2 pabellones, 2 auditorios, 15 salas multiusos, 1.200 plazas de parking,
