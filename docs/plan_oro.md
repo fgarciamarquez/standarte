@@ -115,6 +115,15 @@ la última edición REAL de su contenido, no la del build.
   Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
   Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
   prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
+- **Barcelona** (ES + EN) — una de las grandes capitales feriales del mundo. Recinto **Fira
+  de Barcelona** (Gran Via + Montjuïc): 400.000 m² totales; Gran Via (L'Hospitalet), obra de
+  Toyo Ito, 240.000 m² brutos en 8 pabellones interconectados, Eje Central elevado de 1 km,
+  2 helipuertos, ~5.000 plazas de parking, cubierta fotovoltaica (+60.000 m² en 2026);
+  Montjuïc para formatos urbanos. Sección técnica del recinto incluida. Las 13 ferias de
+  Fira enlazadas por sector: MWC, ISE, Smart City Expo, IoT Solutions (tech/AV/smart);
+  Expoquimia, Hispack, Equiplast (packaging); Alimentaria, Hostelco, Barcelona Wine Week
+  (alimentación/vino); Construmat, Cosmobeauty, Fórum Dental Mediterráneo. Cobertura ibérica
+  a Madrid, Valencia, Zaragoza, Bilbao, Lisboa y Oporto. URL sin cambios.
 - **Sevilla** (ES + EN) — gran capital ferial y de congresos del sur. Recinto **FIBES
   (Palacio de Exposiciones y Congresos de Sevilla)**: FIBES I (3 pabellones diáfanos de
   7.200 m² sin pilares, arquetas cada 8 m + cúpula) y FIBES II (Palacio de Congresos 2012,
