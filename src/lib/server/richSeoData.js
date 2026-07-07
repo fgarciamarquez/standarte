@@ -4,381 +4,381 @@
 export const richSeoData = {
   "alicante": {
     "es": {
-      "breadcrumb": "Alicante",
-      "title": "Diseño y montaje de stands en Alicante | IFA Elche | Standarte",
-      "h1": "Diseño y montaje de stands en Alicante (IFA)",
-      "introText": "Standarte diseña, fabrica y monta stands feriales en Alicante, con la Institución Ferial Alicantina (IFA) en Elche como recinto de referencia y certámenes como Futurmoda o Alicante Gastronómica. Más de 20 años de experiencia y taller propio para controlar cada fase: diseño 3D, carpintería a medida, logística y montaje con validaciones en el recinto.",
-      "body": "\n        <h2>La IFA de Elche, el recinto ferial de la provincia de Alicante</h2>\n        <p>Alicante es un gran motor económico del sureste peninsular, y su epicentro ferial es la <strong>Institución Ferial Alicantina (IFA)</strong>, ubicada en Elche. En sus pabellones se celebran citas de referencia como <strong>Futurmoda</strong> —el gran salón de componentes, maquinaria y tecnología para el calzado y la marroquinería, en el corazón del principal clúster zapatero de Europa—, <strong>Alicante Gastronómica</strong> o <strong>Firauto</strong>. Exponer aquí con un stand bien resuelto es una de las inversiones comerciales más rentables, y ahí es donde Standarte marca la diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Conocemos la normativa técnica de los pabellones de IFA y el perfil del visitante profesional, lo que evita sorpresas y retrasos en el montaje y nos permite resolver stands a medida, desde un gran expositor de maquinaria hasta un espacio de marca de diseño libre.</p>\n\n        <h2>Montaje llave en mano desde taller propio</h2>\n        <p>Gestionamos cada proyecto de principio a fin desde nuestro taller propio: diseño 3D, fabricación de la estructura y el mobiliario, logística hasta el recinto, montaje e instalación, y gestión de las validaciones técnicas que exige la feria. Cada aprobación queda registrada con nuestro <a href=\"/proyecto-auditado\">Sistema de Proyecto Auditado</a>, garantía 100&nbsp;% de que se construye lo aprobado. Calcula tu inversión al instante en <a href=\"/precios\">precios de stands</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "¿En qué ferias de Alicante monta stands Standarte?",
-          "a": "Trabajamos en los principales certámenes de la Institución Ferial Alicantina (IFA) en Elche, como Futurmoda, Alicante Gastronómica o Firauto, además de cualquier otro recinto de la provincia."
-        },
-        {
-          "q": "¿El servicio en Alicante es llave en mano?",
-          "a": "Sí. Nos encargamos del diseño 3D, la fabricación en nuestro taller, la logística, el montaje y las validaciones técnicas, con la garantía de nuestro Sistema de Proyecto Auditado."
-        }
-      ]
+  "breadcrumb": "Alicante",
+  "title": "Diseño y montaje de stands en Alicante | IFA Elche | Standarte",
+  "h1": "Diseño y montaje de stands en Alicante (IFA)",
+  "introText": "Standarte diseña, fabrica y monta stands feriales en Alicante, con la Institución Ferial Alicantina (IFA) en Elche como recinto de referencia y certámenes como Futurmoda o Alicante Gastronómica. Más de 20 años de experiencia y taller propio para controlar cada fase: diseño 3D, carpintería a medida, logística y montaje con validaciones en el recinto.",
+  "body": "\n        <h2>La IFA de Elche, el recinto ferial de la provincia de Alicante</h2>\n        <p>Alicante es un gran motor económico del sureste peninsular, y su epicentro ferial es la <strong>Institución Ferial Alicantina (IFA)</strong>, ubicada en Elche. En sus pabellones se celebran citas de referencia como <a href=\"/ferias/futurmoda-elche\">Futurmoda</a> —el gran salón de componentes, maquinaria y tecnología para el calzado y la marroquinería, en el corazón del principal clúster zapatero de Europa—, <a href=\"/ferias/alicante-gastronomica\">Alicante Gastronómica</a> o <a href=\"/ferias/firauto-elche\">Firauto</a>. Exponer aquí con un stand bien resuelto es una de las inversiones comerciales más rentables, y ahí es donde Standarte marca la diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Conocemos la normativa técnica de los pabellones de IFA y el perfil del visitante profesional, lo que evita sorpresas y retrasos en el montaje y nos permite resolver stands a medida, desde un gran expositor de maquinaria hasta un espacio de marca de diseño libre.</p>\n\n        <h2>Montaje llave en mano desde taller propio</h2>\n        <p>Gestionamos cada proyecto de principio a fin desde nuestro taller propio: diseño 3D, fabricación de la estructura y el mobiliario, logística hasta el recinto, montaje e instalación, y gestión de las validaciones técnicas que exige la feria. Cada aprobación queda registrada con nuestro <a href=\"/proyecto-auditado\">Sistema de Proyecto Auditado</a>, garantía 100&nbsp;% de que se construye lo aprobado. Calcula tu inversión al instante en <a href=\"/precios\">precios de stands</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "¿En qué ferias de Alicante monta stands Standarte?",
+      "a": "Trabajamos en los principales certámenes de la Institución Ferial Alicantina (IFA) en Elche, como Futurmoda, Alicante Gastronómica o Firauto, además de cualquier otro recinto de la provincia."
     },
-    "en": {
-      "breadcrumb": "Alicante",
-      "title": "Exhibition stand design and build in Alicante | IFA Elche | Standarte",
-      "h1": "Exhibition stand design and build in Alicante (IFA)",
-      "introText": "Standarte designs, manufactures and builds exhibition stands in Alicante, with the Institución Ferial Alicantina (IFA) in Elche as its flagship venue and events such as Futurmoda and Alicante Gastronómica. More than 20 years of experience and our own workshop to control every stage: 3D design, custom carpentry, logistics and assembly with on-site venue approvals.",
-      "body": "\n        <h2>IFA in Elche, the trade-fair venue of the Alicante province</h2>\n        <p>Alicante is a major economic engine of south-east Spain, and its trade-fair hub is the <strong>Institución Ferial Alicantina (IFA)</strong>, located in Elche. Its halls host leading events such as <strong>Futurmoda</strong> —the great show of components, machinery and technology for footwear and leather goods, at the heart of Europe's main shoemaking cluster—, <strong>Alicante Gastronómica</strong> and <strong>Firauto</strong>. Exhibiting here with a well-resolved stand is one of the most profitable commercial investments, and that is where Standarte makes the difference: we turn your brand's space into a high-return visitor magnet.</p>\n        <p>We know the technical regulations of the IFA halls and the profile of the professional visitor, which avoids surprises and delays during assembly and lets us deliver custom stands, from a large machinery display to a free-design brand space.</p>\n\n        <h2>Turnkey assembly from our own workshop</h2>\n        <p>We manage every project from start to finish from our own workshop: 3D design, fabrication of the structure and furniture, logistics to the venue, assembly and installation, and management of the technical approvals the fair requires. Every approval is recorded with our <a href=\"/en/audited-project\">Audited Project system</a>, a 100&nbsp;% guarantee that what is built is what was approved. Calculate your investment instantly on <a href=\"/en/prices\">stand prices</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Which Alicante fairs does Standarte build stands at?",
-          "a": "We work at the main events of the Institución Ferial Alicantina (IFA) in Elche, such as Futurmoda, Alicante Gastronómica and Firauto, as well as any other venue in the province."
-        },
-        {
-          "q": "Is the service in Alicante turnkey?",
-          "a": "Yes. We handle the 3D design, fabrication in our workshop, logistics, assembly and technical approvals, backed by our Audited Project system."
-        }
-      ]
-    },
-    "de": {
-      "breadcrumb": "Alicante",
-      "title": "Messestand-Design und -Montage in Alicante | IFA Elche | Standarte",
-      "h1": "Messestand-Design und -Montage in Alicante (IFA)",
-      "introText": "Standarte plant, fertigt und montiert Messestände in Alicante, mit der Institución Ferial Alicantina (IFA) in Elche als führendem Veranstaltungsort und Messen wie Futurmoda oder Alicante Gastronómica. Über 20 Jahre Erfahrung und eigene Werkstatt, um jede Phase zu steuern: 3D-Design, maßgefertigte Schreinerei, Logistik und Aufbau mit technischen Abnahmen am Veranstaltungsort.",
-      "body": "\n        <h2>Die IFA in Elche, der Messeplatz der Provinz Alicante</h2>\n        <p>Alicante ist ein wichtiger Wirtschaftsmotor im Südosten Spaniens, und ihr Messezentrum ist die <strong>Institución Ferial Alicantina (IFA)</strong> in Elche. In ihren Hallen finden führende Messen wie die <strong>Futurmoda</strong> —die große Messe für Komponenten, Maschinen und Technologie der Schuh- und Lederwarenindustrie im Herzen des wichtigsten Schuh-Clusters Europas—, die <strong>Alicante Gastronómica</strong> oder die <strong>Firauto</strong> statt. Hier mit einem gut durchdachten Stand auszustellen, gehört zu den rentabelsten Vertriebsinvestitionen, und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir kennen die technischen Vorschriften der IFA-Hallen und das Profil des Fachbesuchers, was Überraschungen und Verzögerungen beim Aufbau vermeidet und uns maßgeschneiderte Stände ermöglicht – vom großen Maschinenstand bis zum frei gestalteten Markenraum.</p>\n\n        <h2>Schlüsselfertige Montage aus eigener Werkstatt</h2>\n        <p>Wir betreuen jedes Projekt von Anfang bis Ende aus unserer eigenen Werkstatt: 3D-Design, Fertigung von Struktur und Mobiliar, Logistik zum Veranstaltungsort, Aufbau und Installation sowie die technischen Abnahmen, die die Messe verlangt. Jede Freigabe wird mit unserem <a href=\"/de/auditiertes-projekt\">System Auditiertes Projekt</a> festgehalten – 100&nbsp;%ige Garantie, dass gebaut wird, was freigegeben wurde. Berechnen Sie Ihre Investition sofort unter <a href=\"/de/preise\">Standpreise</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Auf welchen Messen in Alicante baut Standarte Stände?",
-          "a": "Wir arbeiten auf den wichtigsten Messen der Institución Ferial Alicantina (IFA) in Elche, wie Futurmoda, Alicante Gastronómica oder Firauto, sowie auf jedem anderen Veranstaltungsort der Provinz."
-        },
-        {
-          "q": "Ist der Service in Alicante schlüsselfertig?",
-          "a": "Ja. Wir übernehmen 3D-Design, Fertigung in unserer Werkstatt, Logistik, Aufbau und technische Abnahmen, abgesichert durch unser System Auditiertes Projekt."
-        }
-      ]
-    },
-    "pt": {
-      "breadcrumb": "Alicante",
-      "title": "Design e montagem de stands em Alicante | IFA Elche | Standarte",
-      "h1": "Design e montagem de stands em Alicante (IFA)",
-      "introText": "A Standarte concebe, fabrica e monta stands de feira em Alicante, com a Institución Ferial Alicantina (IFA) em Elche como recinto de referência e certames como a Futurmoda ou a Alicante Gastronómica. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, carpintaria à medida, logística e montagem com validações no recinto.",
-      "body": "\n        <h2>A IFA de Elche, o recinto feiral da província de Alicante</h2>\n        <p>Alicante é um grande motor económico do sudeste peninsular, e o seu epicentro feiral é a <strong>Institución Ferial Alicantina (IFA)</strong>, em Elche. Nos seus pavilhões realizam-se certames de referência como a <strong>Futurmoda</strong> —o grande salão de componentes, maquinaria e tecnologia para o calçado e a marroquinaria, no coração do principal cluster de calçado da Europa—, a <strong>Alicante Gastronómica</strong> ou a <strong>Firauto</strong>. Expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte marca a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Conhecemos a regulamentação técnica dos pavilhões da IFA e o perfil do visitante profissional, o que evita surpresas e atrasos na montagem e nos permite resolver stands à medida, desde um grande expositor de maquinaria até um espaço de marca de design livre.</p>\n\n        <h2>Montagem chave na mão a partir de oficina própria</h2>\n        <p>Gerimos cada projeto de início ao fim a partir da nossa oficina própria: design 3D, fabrico da estrutura e do mobiliário, logística até ao recinto, montagem e instalação, e gestão das validações técnicas que a feira exige. Cada aprovação fica registada com o nosso <a href=\"/pt/projeto-auditado\">Sistema de Projeto Auditado</a>, garantia de 100&nbsp;% de que se constrói o aprovado. Calcule o seu investimento ao instante em <a href=\"/pt/precos\">preços de stands</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Em que feiras de Alicante a Standarte monta stands?",
-          "a": "Trabalhamos nos principais certames da Institución Ferial Alicantina (IFA) em Elche, como a Futurmoda, a Alicante Gastronómica ou a Firauto, além de qualquer outro recinto da província."
-        },
-        {
-          "q": "O serviço em Alicante é chave na mão?",
-          "a": "Sim. Tratamos do design 3D, do fabrico na nossa oficina, da logística, da montagem e das validações técnicas, com a garantia do nosso Sistema de Projeto Auditado."
-        }
-      ]
-    },
-    "fr": {
-      "breadcrumb": "Alicante",
-      "title": "Conception et montage de stands à Alicante | IFA Elche | Standarte",
-      "h1": "Conception et montage de stands à Alicante (IFA)",
-      "introText": "Standarte conçoit, fabrique et monte des stands à Alicante, avec l'Institución Ferial Alicantina (IFA) à Elche comme enceinte de référence et des salons comme Futurmoda ou Alicante Gastronómica. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque étape : conception 3D, menuiserie sur mesure, logistique et montage avec validations sur site.",
-      "body": "\n        <h2>L'IFA à Elche, l'enceinte foire de la province d'Alicante</h2>\n        <p>Alicante est un grand moteur économique du sud-est de l'Espagne, et son épicentre foire est l'<strong>Institución Ferial Alicantina (IFA)</strong>, à Elche. Ses halls accueillent des salons de référence comme <strong>Futurmoda</strong> —le grand salon des composants, machines et technologies pour la chaussure et la maroquinerie, au cœur du principal cluster de la chaussure d'Europe—, <strong>Alicante Gastronómica</strong> ou <strong>Firauto</strong>. Exposer ici avec un stand bien conçu est l'un des investissements commerciaux les plus rentables, et c'est là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs à fort retour.</p>\n        <p>Nous connaissons la réglementation technique des halls de l'IFA et le profil du visiteur professionnel, ce qui évite les surprises et les retards de montage et nous permet de réaliser des stands sur mesure, du grand présentoir de machines à un espace de marque au design libre.</p>\n\n        <h2>Montage clé en main depuis notre atelier</h2>\n        <p>Nous gérons chaque projet de bout en bout depuis notre propre atelier : conception 3D, fabrication de la structure et du mobilier, logistique jusqu'au site, montage et installation, et gestion des validations techniques exigées par le salon. Chaque validation est consignée avec notre <a href=\"/fr/projet-audite\">Système de Projet Audité</a>, garantie à 100&nbsp;% que ce qui est construit correspond à ce qui a été validé. Calculez votre investissement instantanément dans <a href=\"/fr/tarifs\">tarifs des stands</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Sur quels salons d'Alicante Standarte monte-t-elle des stands ?",
-          "a": "Nous travaillons sur les principaux salons de l'Institución Ferial Alicantina (IFA) à Elche, comme Futurmoda, Alicante Gastronómica ou Firauto, ainsi que sur tout autre site de la province."
-        },
-        {
-          "q": "Le service à Alicante est-il clé en main ?",
-          "a": "Oui. Nous nous occupons de la conception 3D, de la fabrication dans notre atelier, de la logistique, du montage et des validations techniques, avec la garantie de notre Système de Projet Audité."
-        }
-      ]
-    },
-    "it": {
-      "breadcrumb": "Alicante",
-      "title": "Progettazione e allestimento stand ad Alicante | IFA Elche | Standarte",
-      "h1": "Progettazione e allestimento stand ad Alicante (IFA)",
-      "introText": "Standarte progetta, fabbrica e allestisce stand fieristici ad Alicante, con l'Institución Ferial Alicantina (IFA) a Elche come quartiere di riferimento e fiere come Futurmoda o Alicante Gastronómica. Oltre 20 anni di esperienza e officina propria per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica e allestimento con validazioni in sede.",
-      "body": "\n        <h2>L'IFA di Elche, il quartiere fieristico della provincia di Alicante</h2>\n        <p>Alicante è un grande motore economico del sud-est spagnolo, e il suo epicentro fieristico è l'<strong>Institución Ferial Alicantina (IFA)</strong>, a Elche. Nei suoi padiglioni si tengono fiere di riferimento come <strong>Futurmoda</strong> —il grande salone di componenti, macchinari e tecnologia per la calzatura e la pelletteria, nel cuore del principale cluster calzaturiero d'Europa—, <strong>Alicante Gastronómica</strong> o <strong>Firauto</strong>. Esporre qui con uno stand ben risolto è uno degli investimenti commerciali più redditizi, ed è qui che Standarte fa la differenza: trasformiamo lo spazio del suo marchio in una calamita di visitatori ad alto ritorno.</p>\n        <p>Conosciamo la normativa tecnica dei padiglioni dell'IFA e il profilo del visitatore professionale, il che evita sorprese e ritardi nell'allestimento e ci permette di realizzare stand su misura, da un grande espositore di macchinari a uno spazio di marca dal design libero.</p>\n\n        <h2>Allestimento chiavi in mano dalla nostra officina</h2>\n        <p>Gestiamo ogni progetto dall'inizio alla fine dalla nostra officina propria: progettazione 3D, fabbricazione della struttura e degli arredi, logistica fino alla sede, allestimento e installazione, e gestione delle validazioni tecniche richieste dalla fiera. Ogni approvazione viene registrata con il nostro <a href=\"/it/progetto-verificato\">Sistema di Progetto Verificato</a>, garanzia al 100&nbsp;% che si costruisce ciò che è stato approvato. Calcola il tuo investimento all'istante in <a href=\"/it/prezzi\">prezzi degli stand</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "In quali fiere di Alicante Standarte allestisce stand?",
-          "a": "Lavoriamo nelle principali fiere dell'Institución Ferial Alicantina (IFA) a Elche, come Futurmoda, Alicante Gastronómica o Firauto, oltre a qualsiasi altro quartiere della provincia."
-        },
-        {
-          "q": "Il servizio ad Alicante è chiavi in mano?",
-          "a": "Sì. Ci occupiamo di progettazione 3D, fabbricazione nella nostra officina, logistica, allestimento e validazioni tecniche, con la garanzia del nostro Sistema di Progetto Verificato."
-        }
-      ]
-    },
-    "nl": {
-      "breadcrumb": "Alicante",
-      "title": "Ontwerp en montage van beursstands in Alicante | IFA Elche | Standarte",
-      "h1": "Ontwerp en montage van beursstands in Alicante (IFA)",
-      "introText": "Standarte ontwerpt, produceert en bouwt beursstands in Alicante, met de Institución Ferial Alicantina (IFA) in Elche als toonaangevend beurscomplex en beurzen als Futurmoda en Alicante Gastronómica. Ruim 20 jaar ervaring en een eigen werkplaats om elke fase in eigen hand te houden: 3D-ontwerp, maatwerktimmerwerk, logistiek en opbouw met keuringen op de beursvloer.",
-      "body": "\n        <h2>De IFA in Elche, het beurscomplex van de provincie Alicante</h2>\n        <p>Alicante is een belangrijke economische motor van het zuidoosten van Spanje, en het beurshart is de <strong>Institución Ferial Alicantina (IFA)</strong> in Elche. In de hallen vinden toonaangevende beurzen plaats zoals <strong>Futurmoda</strong> —de grote beurs voor componenten, machines en technologie voor schoeisel en lederwaren, in het hart van het belangrijkste schoenencluster van Europa—, <strong>Alicante Gastronómica</strong> en <strong>Firauto</strong>. Hier exposeren met een goed doordachte stand is een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we maken van de ruimte van uw merk een bezoekersmagneet met een hoog rendement.</p>\n        <p>Wij kennen de technische voorschriften van de IFA-hallen en het profiel van de vakbezoeker, wat verrassingen en vertragingen bij de opbouw voorkomt en ons in staat stelt stands op maat te realiseren, van een grote machinepresentatie tot een vrij ontworpen merkruimte.</p>\n\n        <h2>Kant-en-klare opbouw vanuit onze eigen werkplaats</h2>\n        <p>Wij beheren elk project van begin tot eind vanuit onze eigen werkplaats: 3D-ontwerp, fabricage van de structuur en het meubilair, logistiek naar het complex, opbouw en installatie, en het beheer van de technische keuringen die de beurs vereist. Elke goedkeuring wordt vastgelegd met ons <a href=\"/nl/gecontroleerd-project\">Gecontroleerd Project-systeem</a>, een 100&nbsp;%-garantie dat wordt gebouwd wat is goedgekeurd. Bereken uw investering direct bij <a href=\"/nl/prijzen\">standprijzen</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Op welke beurzen in Alicante bouwt Standarte stands?",
-          "a": "We werken op de belangrijkste beurzen van de Institución Ferial Alicantina (IFA) in Elche, zoals Futurmoda, Alicante Gastronómica en Firauto, en op elk ander complex in de provincie."
-        },
-        {
-          "q": "Is de service in Alicante kant-en-klaar?",
-          "a": "Ja. Wij verzorgen het 3D-ontwerp, de fabricage in onze werkplaats, de logistiek, de opbouw en de technische keuringen, met de garantie van ons Gecontroleerd Project-systeem."
-        }
-      ]
-    },
-    "zh": {
-      "breadcrumb": "阿利坎特",
-      "title": "阿利坎特展台设计与搭建 | IFA 埃尔切 | Standarte",
-      "h1": "阿利坎特展台设计与搭建（IFA）",
-      "introText": "Standarte在阿利坎特设计、制作并搭建展台，以位于埃尔切的阿利坎特会展机构（IFA）为核心展馆，服务于Futurmoda、Alicante Gastronómica等展会。20多年经验、自有工厂，全程把控每一个环节：3D设计、定制木作、物流与现场审批下的搭建。",
-      "body": "\n        <h2>埃尔切的IFA——阿利坎特省的会展场馆</h2>\n        <p>阿利坎特是西班牙东南部重要的经济引擎，其会展中心是位于埃尔切的<strong>阿利坎特会展机构（IFA）</strong>。这里举办众多标杆展会，如<strong>Futurmoda</strong>——位于欧洲主要制鞋产业集群核心、面向鞋类与皮具的零部件、机械与技术盛会——以及<strong>Alicante Gastronómica</strong>和<strong>Firauto</strong>。在这里以一个精心打造的展台参展，是回报最高的商业投资之一，而这正是Standarte的价值所在：我们把您品牌的空间变成高回报的观众磁石。</p>\n        <p>我们熟悉IFA各展馆的技术规范和专业观众画像，从而避免搭建中的意外与延误，并能量身打造展台——从大型机械展示到自由设计的品牌空间。</p>\n\n        <h2>自有工厂的一站式搭建</h2>\n        <p>我们在自有工厂中全程管理每个项目：3D设计、结构与家具制作、运输至场馆、搭建安装，以及展会要求的技术审批。每一次确认都通过我们的<a href=\"/zh/shenji-xiangmu\">审计项目系统</a>记录在案，100%保证所建即所批。立即在<a href=\"/zh/jiage\">展台价格</a>中计算您的投资。</p>\n      ",
-      "faqs": [
-        {
-          "q": "Standarte在阿利坎特的哪些展会搭建展台？",
-          "a": "我们参与位于埃尔切的阿利坎特会展机构（IFA）的主要展会，如Futurmoda、Alicante Gastronómica和Firauto，也涵盖该省的其他任何场馆。"
-        },
-        {
-          "q": "阿利坎特的服务是一站式的吗？",
-          "a": "是的。我们负责3D设计、自有工厂制作、物流、搭建与技术审批，并以我们的审计项目系统作为保障。"
-        }
-      ]
-    },
-    "hi": {
-      "breadcrumb": "अलिकांते",
-      "title": "अलिकांते में स्टैंड डिज़ाइन और निर्माण | IFA एल्चे | Standarte",
-      "h1": "अलिकांते में स्टैंड डिज़ाइन और निर्माण (IFA)",
-      "introText": "Standarte अलिकांते में प्रदर्शनी स्टैंड डिज़ाइन, निर्माण और स्थापित करता है, जहाँ एल्चे स्थित Institución Ferial Alicantina (IFA) प्रमुख स्थल है और Futurmoda तथा Alicante Gastronómica जैसे आयोजन होते हैं। 20 से अधिक वर्षों का अनुभव और अपनी कार्यशाला के साथ हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, कस्टम बढ़ईगीरी, लॉजिस्टिक्स और परिसर में सत्यापन के साथ स्थापना।",
-      "body": "\n        <h2>एल्चे की IFA — अलिकांते प्रांत का प्रदर्शनी परिसर</h2>\n        <p>अलिकांते दक्षिण-पूर्वी स्पेन का एक बड़ा आर्थिक इंजन है, और इसका प्रदर्शनी केंद्र एल्चे में स्थित <strong>Institución Ferial Alicantina (IFA)</strong> है। इसके हॉल में <strong>Futurmoda</strong> —यूरोप के प्रमुख जूता क्लस्टर के केंद्र में, फुटवियर और चमड़ा-उत्पादों के घटकों, मशीनरी और तकनीक का बड़ा आयोजन—, <strong>Alicante Gastronómica</strong> और <strong>Firauto</strong> जैसे प्रमुख आयोजन होते हैं। यहाँ एक सुगठित स्टैंड के साथ प्रदर्शन करना सबसे लाभदायक व्यावसायिक निवेशों में से एक है, और यहीं Standarte फर्क लाता है: हम आपके ब्रांड की जगह को उच्च-प्रतिफल वाला विज़िटर-मैग्नेट बना देते हैं।</p>\n        <p>हम IFA हॉल के तकनीकी नियमों और पेशेवर विज़िटर की प्रोफ़ाइल को जानते हैं, जिससे स्थापना में अप्रत्याशित बाधाएँ और देरी टलती हैं और हम कस्टम स्टैंड बना पाते हैं — बड़े मशीनरी डिस्प्ले से लेकर मुक्त-डिज़ाइन ब्रांड स्पेस तक।</p>\n\n        <h2>अपनी कार्यशाला से टर्नकी स्थापना</h2>\n        <p>हम हर परियोजना को शुरू से अंत तक अपनी कार्यशाला से संभालते हैं: 3D डिज़ाइन, संरचना और फ़र्नीचर का निर्माण, परिसर तक लॉजिस्टिक्स, स्थापना, और मेले द्वारा अपेक्षित तकनीकी सत्यापन। हर स्वीकृति हमारे <a href=\"/hi/audit-pariyojana\">ऑडिटेड प्रोजेक्ट सिस्टम</a> में दर्ज होती है — 100% गारंटी कि जो स्वीकृत हुआ वही बनता है। <a href=\"/hi/kimat\">स्टैंड की कीमतें</a> में अपना निवेश तुरंत जानें।</p>\n      ",
-      "faqs": [
-        {
-          "q": "Standarte अलिकांते की किन मेलों में स्टैंड बनाता है?",
-          "a": "हम एल्चे में Institución Ferial Alicantina (IFA) के प्रमुख आयोजनों — जैसे Futurmoda, Alicante Gastronómica और Firauto — के साथ-साथ प्रांत के किसी भी अन्य परिसर में काम करते हैं।"
-        },
-        {
-          "q": "क्या अलिकांते में सेवा टर्नकी है?",
-          "a": "हाँ। हम 3D डिज़ाइन, अपनी कार्यशाला में निर्माण, लॉजिस्टिक्स, स्थापना और तकनीकी सत्यापन संभालते हैं, जिसकी गारंटी हमारा ऑडिटेड प्रोजेक्ट सिस्टम देता है।"
-        }
-      ]
-    },
-    "ko": {
-      "breadcrumb": "알리칸테",
-      "title": "알리칸테 부스 디자인·시공 | IFA 엘체 | Standarte",
-      "h1": "알리칸테 부스 디자인·시공 (IFA)",
-      "introText": "Standarte는 엘체에 있는 알리칸테 전시기관(IFA)을 중심 전시장으로 하여 알리칸테에서 전시 부스를 디자인·제작·시공합니다. Futurmoda, Alicante Gastronómica 등 전시회를 지원하며, 20년 이상의 경력과 자체 공방으로 3D 디자인, 맞춤 목공, 물류, 전시장 승인까지 모든 단계를 직접 관리합니다.",
-      "body": "\n        <h2>엘체의 IFA — 알리칸테주의 전시장</h2>\n        <p>알리칸테는 스페인 남동부의 큰 경제 동력이며, 그 전시 중심은 엘체에 있는 <strong>알리칸테 전시기관(IFA)</strong>입니다. 이곳에서는 유럽 최대 신발 클러스터의 중심에서 열리는 신발·가죽제품 부품·기계·기술 박람회 <strong>Futurmoda</strong>, <strong>Alicante Gastronómica</strong>, <strong>Firauto</strong> 같은 주요 전시회가 열립니다. 잘 구성된 부스로 이곳에 참가하는 것은 가장 수익성 높은 상업적 투자 중 하나이며, 바로 여기서 Standarte가 차별화됩니다. 우리는 귀사 브랜드의 공간을 높은 투자 대비 효과의 방문객 자석으로 만듭니다.</p>\n        <p>우리는 IFA 전시홀의 기술 규정과 전문 방문객의 특성을 잘 알고 있어 시공 중 예상치 못한 문제와 지연을 방지하고, 대형 기계 전시부터 자유 디자인 브랜드 공간까지 맞춤 부스를 구현합니다.</p>\n\n        <h2>자체 공방을 통한 턴키 시공</h2>\n        <p>우리는 자체 공방에서 모든 프로젝트를 처음부터 끝까지 관리합니다: 3D 디자인, 구조물·가구 제작, 전시장까지의 물류, 설치, 그리고 전시회가 요구하는 기술 승인. 모든 승인은 당사의 <a href=\"/ko/gamsa-peurojekteu\">감사 프로젝트 시스템</a>에 기록되어 승인된 그대로 시공됨을 100% 보장합니다. <a href=\"/ko/gagyeok\">부스 가격</a>에서 투자 비용을 바로 계산해 보세요.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Standarte는 알리칸테의 어떤 전시회에서 부스를 시공하나요?",
-          "a": "엘체의 알리칸테 전시기관(IFA) 주요 전시회인 Futurmoda, Alicante Gastronómica, Firauto는 물론 이 지역의 다른 어떤 전시장에서도 작업합니다."
-        },
-        {
-          "q": "알리칸테 서비스는 턴키인가요?",
-          "a": "네. 3D 디자인, 자체 공방 제작, 물류, 시공, 기술 승인까지 모두 담당하며 당사의 감사 프로젝트 시스템으로 보증합니다."
-        }
-      ]
-    },
-    "ja": {
-      "breadcrumb": "アリカンテ",
-      "title": "アリカンテの展示ブース設計・施工 | IFA エルチェ | Standarte",
-      "h1": "アリカンテの展示ブース設計・施工（IFA）",
-      "introText": "Standarteは、エルチェのアリカンテ見本市機構（IFA）を基幹会場として、アリカンテで展示ブースの設計・製作・施工を行います。FuturmodaやAlicante Gastronómicaなどの展示会に対応し、20年以上の経験と自社工房で、3D設計、オーダーメイド木工、物流、会場審査までの全工程を管理します。",
-      "body": "\n        <h2>エルチェのIFA——アリカンテ県の展示会場</h2>\n        <p>アリカンテはスペイン南東部の大きな経済エンジンであり、その見本市の中心はエルチェにある<strong>アリカンテ見本市機構（IFA）</strong>です。そのホールでは、欧州最大の製靴クラスターの中心で開催される靴・革製品の部品・機械・技術の大展示会<strong>Futurmoda</strong>、<strong>Alicante Gastronómica</strong>、<strong>Firauto</strong>などの主要展示会が行われます。ここで練り込まれたブースで出展することは最も収益性の高い商業投資の一つであり、まさにそこでStandarteが違いを生みます。私たちは貴社ブランドの空間を、投資対効果の高い来場者の磁石に変えます。</p>\n        <p>私たちはIFA各ホールの技術規定と専門来場者の profile を熟知しており、施工中の想定外や遅延を防ぎ、大型機械の展示から自由設計のブランド空間まで、オーダーメイドのブースを実現します。</p>\n\n        <h2>自社工房によるターンキー施工</h2>\n        <p>私たちは自社工房で各プロジェクトを最初から最後まで管理します：3D設計、構造体と什器の製作、会場までの物流、施工・設置、そして展示会が求める技術審査。すべての承認は当社の<a href=\"/ja/監査プロジェクト\">監査プロジェクト・システム</a>に記録され、承認どおりに施工されることを100%保証します。<a href=\"/ja/料金\">ブース価格</a>で投資額を即座に計算できます。</p>\n      ",
-      "faqs": [
-        {
-          "q": "Standarteはアリカンテのどの展示会でブースを施工しますか？",
-          "a": "エルチェのアリカンテ見本市機構（IFA）の主要展示会であるFuturmoda、Alicante Gastronómica、Firautoをはじめ、同県の他の会場でも対応します。"
-        },
-        {
-          "q": "アリカンテのサービスはターンキーですか？",
-          "a": "はい。3D設計、自社工房での製作、物流、施工、技術審査までを担当し、当社の監査プロジェクト・システムで保証します。"
-        }
-      ]
+    {
+      "q": "¿El servicio en Alicante es llave en mano?",
+      "a": "Sí. Nos encargamos del diseño 3D, la fabricación en nuestro taller, la logística, el montaje y las validaciones técnicas, con la garantía de nuestro Sistema de Proyecto Auditado."
     }
+  ]
+},
+    "en": {
+  "breadcrumb": "Alicante",
+  "title": "Exhibition stand design and build in Alicante | IFA Elche | Standarte",
+  "h1": "Exhibition stand design and build in Alicante (IFA)",
+  "introText": "Standarte designs, manufactures and builds exhibition stands in Alicante, with the Institución Ferial Alicantina (IFA) in Elche as its flagship venue and events such as Futurmoda and Alicante Gastronómica. More than 20 years of experience and our own workshop to control every stage: 3D design, custom carpentry, logistics and assembly with on-site venue approvals.",
+  "body": "\n        <h2>IFA in Elche, the trade-fair venue of the Alicante province</h2>\n        <p>Alicante is a major economic engine of south-east Spain, and its trade-fair hub is the <strong>Institución Ferial Alicantina (IFA)</strong>, located in Elche. Its halls host leading events such as <a href=\"/en/ferias/futurmoda-elche\">Futurmoda</a> —the great show of components, machinery and technology for footwear and leather goods, at the heart of Europe's main shoemaking cluster—, <a href=\"/en/ferias/alicante-gastronomica\">Alicante Gastronómica</a> and <a href=\"/en/ferias/firauto-elche\">Firauto</a>. Exhibiting here with a well-resolved stand is one of the most profitable commercial investments, and that is where Standarte makes the difference: we turn your brand's space into a high-return visitor magnet.</p>\n        <p>We know the technical regulations of the IFA halls and the profile of the professional visitor, which avoids surprises and delays during assembly and lets us deliver custom stands, from a large machinery display to a free-design brand space.</p>\n\n        <h2>Turnkey assembly from our own workshop</h2>\n        <p>We manage every project from start to finish from our own workshop: 3D design, fabrication of the structure and furniture, logistics to the venue, assembly and installation, and management of the technical approvals the fair requires. Every approval is recorded with our <a href=\"/en/audited-project\">Audited Project system</a>, a 100&nbsp;% guarantee that what is built is what was approved. Calculate your investment instantly on <a href=\"/en/prices\">stand prices</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Which Alicante fairs does Standarte build stands at?",
+      "a": "We work at the main events of the Institución Ferial Alicantina (IFA) in Elche, such as Futurmoda, Alicante Gastronómica and Firauto, as well as any other venue in the province."
+    },
+    {
+      "q": "Is the service in Alicante turnkey?",
+      "a": "Yes. We handle the 3D design, fabrication in our workshop, logistics, assembly and technical approvals, backed by our Audited Project system."
+    }
+  ]
+},
+    "de": {
+  "breadcrumb": "Alicante",
+  "title": "Messestand-Design und -Montage in Alicante | IFA Elche | Standarte",
+  "h1": "Messestand-Design und -Montage in Alicante (IFA)",
+  "introText": "Standarte plant, fertigt und montiert Messestände in Alicante, mit der Institución Ferial Alicantina (IFA) in Elche als führendem Veranstaltungsort und Messen wie Futurmoda oder Alicante Gastronómica. Über 20 Jahre Erfahrung und eigene Werkstatt, um jede Phase zu steuern: 3D-Design, maßgefertigte Schreinerei, Logistik und Aufbau mit technischen Abnahmen am Veranstaltungsort.",
+  "body": "\n        <h2>Die IFA in Elche, der Messeplatz der Provinz Alicante</h2>\n        <p>Alicante ist ein wichtiger Wirtschaftsmotor im Südosten Spaniens, und ihr Messezentrum ist die <strong>Institución Ferial Alicantina (IFA)</strong> in Elche. In ihren Hallen finden führende Messen wie die <a href=\"/de/ferias/futurmoda-elche\">Futurmoda</a> —die große Messe für Komponenten, Maschinen und Technologie der Schuh- und Lederwarenindustrie im Herzen des wichtigsten Schuh-Clusters Europas—, die <a href=\"/de/ferias/alicante-gastronomica\">Alicante Gastronómica</a> oder die <a href=\"/de/ferias/firauto-elche\">Firauto</a> statt. Hier mit einem gut durchdachten Stand auszustellen, gehört zu den rentabelsten Vertriebsinvestitionen, und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir kennen die technischen Vorschriften der IFA-Hallen und das Profil des Fachbesuchers, was Überraschungen und Verzögerungen beim Aufbau vermeidet und uns maßgeschneiderte Stände ermöglicht – vom großen Maschinenstand bis zum frei gestalteten Markenraum.</p>\n\n        <h2>Schlüsselfertige Montage aus eigener Werkstatt</h2>\n        <p>Wir betreuen jedes Projekt von Anfang bis Ende aus unserer eigenen Werkstatt: 3D-Design, Fertigung von Struktur und Mobiliar, Logistik zum Veranstaltungsort, Aufbau und Installation sowie die technischen Abnahmen, die die Messe verlangt. Jede Freigabe wird mit unserem <a href=\"/de/auditiertes-projekt\">System Auditiertes Projekt</a> festgehalten – 100&nbsp;%ige Garantie, dass gebaut wird, was freigegeben wurde. Berechnen Sie Ihre Investition sofort unter <a href=\"/de/preise\">Standpreise</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Auf welchen Messen in Alicante baut Standarte Stände?",
+      "a": "Wir arbeiten auf den wichtigsten Messen der Institución Ferial Alicantina (IFA) in Elche, wie Futurmoda, Alicante Gastronómica oder Firauto, sowie auf jedem anderen Veranstaltungsort der Provinz."
+    },
+    {
+      "q": "Ist der Service in Alicante schlüsselfertig?",
+      "a": "Ja. Wir übernehmen 3D-Design, Fertigung in unserer Werkstatt, Logistik, Aufbau und technische Abnahmen, abgesichert durch unser System Auditiertes Projekt."
+    }
+  ]
+},
+    "pt": {
+  "breadcrumb": "Alicante",
+  "title": "Design e montagem de stands em Alicante | IFA Elche | Standarte",
+  "h1": "Design e montagem de stands em Alicante (IFA)",
+  "introText": "A Standarte concebe, fabrica e monta stands de feira em Alicante, com a Institución Ferial Alicantina (IFA) em Elche como recinto de referência e certames como a Futurmoda ou a Alicante Gastronómica. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, carpintaria à medida, logística e montagem com validações no recinto.",
+  "body": "\n        <h2>A IFA de Elche, o recinto feiral da província de Alicante</h2>\n        <p>Alicante é um grande motor económico do sudeste peninsular, e o seu epicentro feiral é a <strong>Institución Ferial Alicantina (IFA)</strong>, em Elche. Nos seus pavilhões realizam-se certames de referência como a <a href=\"/pt/ferias/futurmoda-elche\">Futurmoda</a> —o grande salão de componentes, maquinaria e tecnologia para o calçado e a marroquinaria, no coração do principal cluster de calçado da Europa—, a <a href=\"/pt/ferias/alicante-gastronomica\">Alicante Gastronómica</a> ou a <a href=\"/pt/ferias/firauto-elche\">Firauto</a>. Expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte marca a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Conhecemos a regulamentação técnica dos pavilhões da IFA e o perfil do visitante profissional, o que evita surpresas e atrasos na montagem e nos permite resolver stands à medida, desde um grande expositor de maquinaria até um espaço de marca de design livre.</p>\n\n        <h2>Montagem chave na mão a partir de oficina própria</h2>\n        <p>Gerimos cada projeto de início ao fim a partir da nossa oficina própria: design 3D, fabrico da estrutura e do mobiliário, logística até ao recinto, montagem e instalação, e gestão das validações técnicas que a feira exige. Cada aprovação fica registada com o nosso <a href=\"/pt/projeto-auditado\">Sistema de Projeto Auditado</a>, garantia de 100&nbsp;% de que se constrói o aprovado. Calcule o seu investimento ao instante em <a href=\"/pt/precos\">preços de stands</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Em que feiras de Alicante a Standarte monta stands?",
+      "a": "Trabalhamos nos principais certames da Institución Ferial Alicantina (IFA) em Elche, como a Futurmoda, a Alicante Gastronómica ou a Firauto, além de qualquer outro recinto da província."
+    },
+    {
+      "q": "O serviço em Alicante é chave na mão?",
+      "a": "Sim. Tratamos do design 3D, do fabrico na nossa oficina, da logística, da montagem e das validações técnicas, com a garantia do nosso Sistema de Projeto Auditado."
+    }
+  ]
+},
+    "fr": {
+  "breadcrumb": "Alicante",
+  "title": "Conception et montage de stands à Alicante | IFA Elche | Standarte",
+  "h1": "Conception et montage de stands à Alicante (IFA)",
+  "introText": "Standarte conçoit, fabrique et monte des stands à Alicante, avec l'Institución Ferial Alicantina (IFA) à Elche comme enceinte de référence et des salons comme Futurmoda ou Alicante Gastronómica. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque étape : conception 3D, menuiserie sur mesure, logistique et montage avec validations sur site.",
+  "body": "\n        <h2>L'IFA à Elche, l'enceinte foire de la province d'Alicante</h2>\n        <p>Alicante est un grand moteur économique du sud-est de l'Espagne, et son épicentre foire est l'<strong>Institución Ferial Alicantina (IFA)</strong>, à Elche. Ses halls accueillent des salons de référence comme <a href=\"/fr/ferias/futurmoda-elche\">Futurmoda</a> —le grand salon des composants, machines et technologies pour la chaussure et la maroquinerie, au cœur du principal cluster de la chaussure d'Europe—, <a href=\"/fr/ferias/alicante-gastronomica\">Alicante Gastronómica</a> ou <a href=\"/fr/ferias/firauto-elche\">Firauto</a>. Exposer ici avec un stand bien conçu est l'un des investissements commerciaux les plus rentables, et c'est là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs à fort retour.</p>\n        <p>Nous connaissons la réglementation technique des halls de l'IFA et le profil du visiteur professionnel, ce qui évite les surprises et les retards de montage et nous permet de réaliser des stands sur mesure, du grand présentoir de machines à un espace de marque au design libre.</p>\n\n        <h2>Montage clé en main depuis notre atelier</h2>\n        <p>Nous gérons chaque projet de bout en bout depuis notre propre atelier : conception 3D, fabrication de la structure et du mobilier, logistique jusqu'au site, montage et installation, et gestion des validations techniques exigées par le salon. Chaque validation est consignée avec notre <a href=\"/fr/projet-audite\">Système de Projet Audité</a>, garantie à 100&nbsp;% que ce qui est construit correspond à ce qui a été validé. Calculez votre investissement instantanément dans <a href=\"/fr/tarifs\">tarifs des stands</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Sur quels salons d'Alicante Standarte monte-t-elle des stands ?",
+      "a": "Nous travaillons sur les principaux salons de l'Institución Ferial Alicantina (IFA) à Elche, comme Futurmoda, Alicante Gastronómica ou Firauto, ainsi que sur tout autre site de la province."
+    },
+    {
+      "q": "Le service à Alicante est-il clé en main ?",
+      "a": "Oui. Nous nous occupons de la conception 3D, de la fabrication dans notre atelier, de la logistique, du montage et des validations techniques, avec la garantie de notre Système de Projet Audité."
+    }
+  ]
+},
+    "it": {
+  "breadcrumb": "Alicante",
+  "title": "Progettazione e allestimento stand ad Alicante | IFA Elche | Standarte",
+  "h1": "Progettazione e allestimento stand ad Alicante (IFA)",
+  "introText": "Standarte progetta, fabbrica e allestisce stand fieristici ad Alicante, con l'Institución Ferial Alicantina (IFA) a Elche come quartiere di riferimento e fiere come Futurmoda o Alicante Gastronómica. Oltre 20 anni di esperienza e officina propria per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica e allestimento con validazioni in sede.",
+  "body": "\n        <h2>L'IFA di Elche, il quartiere fieristico della provincia di Alicante</h2>\n        <p>Alicante è un grande motore economico del sud-est spagnolo, e il suo epicentro fieristico è l'<strong>Institución Ferial Alicantina (IFA)</strong>, a Elche. Nei suoi padiglioni si tengono fiere di riferimento come <a href=\"/it/ferias/futurmoda-elche\">Futurmoda</a> —il grande salone di componenti, macchinari e tecnologia per la calzatura e la pelletteria, nel cuore del principale cluster calzaturiero d'Europa—, <a href=\"/it/ferias/alicante-gastronomica\">Alicante Gastronómica</a> o <a href=\"/it/ferias/firauto-elche\">Firauto</a>. Esporre qui con uno stand ben risolto è uno degli investimenti commerciali più redditizi, ed è qui che Standarte fa la differenza: trasformiamo lo spazio del suo marchio in una calamita di visitatori ad alto ritorno.</p>\n        <p>Conosciamo la normativa tecnica dei padiglioni dell'IFA e il profilo del visitatore professionale, il che evita sorprese e ritardi nell'allestimento e ci permette di realizzare stand su misura, da un grande espositore di macchinari a uno spazio di marca dal design libero.</p>\n\n        <h2>Allestimento chiavi in mano dalla nostra officina</h2>\n        <p>Gestiamo ogni progetto dall'inizio alla fine dalla nostra officina propria: progettazione 3D, fabbricazione della struttura e degli arredi, logistica fino alla sede, allestimento e installazione, e gestione delle validazioni tecniche richieste dalla fiera. Ogni approvazione viene registrata con il nostro <a href=\"/it/progetto-verificato\">Sistema di Progetto Verificato</a>, garanzia al 100&nbsp;% che si costruisce ciò che è stato approvato. Calcola il tuo investimento all'istante in <a href=\"/it/prezzi\">prezzi degli stand</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "In quali fiere di Alicante Standarte allestisce stand?",
+      "a": "Lavoriamo nelle principali fiere dell'Institución Ferial Alicantina (IFA) a Elche, come Futurmoda, Alicante Gastronómica o Firauto, oltre a qualsiasi altro quartiere della provincia."
+    },
+    {
+      "q": "Il servizio ad Alicante è chiavi in mano?",
+      "a": "Sì. Ci occupiamo di progettazione 3D, fabbricazione nella nostra officina, logistica, allestimento e validazioni tecniche, con la garanzia del nostro Sistema di Progetto Verificato."
+    }
+  ]
+},
+    "nl": {
+  "breadcrumb": "Alicante",
+  "title": "Ontwerp en montage van beursstands in Alicante | IFA Elche | Standarte",
+  "h1": "Ontwerp en montage van beursstands in Alicante (IFA)",
+  "introText": "Standarte ontwerpt, produceert en bouwt beursstands in Alicante, met de Institución Ferial Alicantina (IFA) in Elche als toonaangevend beurscomplex en beurzen als Futurmoda en Alicante Gastronómica. Ruim 20 jaar ervaring en een eigen werkplaats om elke fase in eigen hand te houden: 3D-ontwerp, maatwerktimmerwerk, logistiek en opbouw met keuringen op de beursvloer.",
+  "body": "\n        <h2>De IFA in Elche, het beurscomplex van de provincie Alicante</h2>\n        <p>Alicante is een belangrijke economische motor van het zuidoosten van Spanje, en het beurshart is de <strong>Institución Ferial Alicantina (IFA)</strong> in Elche. In de hallen vinden toonaangevende beurzen plaats zoals <a href=\"/nl/ferias/futurmoda-elche\">Futurmoda</a> —de grote beurs voor componenten, machines en technologie voor schoeisel en lederwaren, in het hart van het belangrijkste schoenencluster van Europa—, <a href=\"/nl/ferias/alicante-gastronomica\">Alicante Gastronómica</a> en <a href=\"/nl/ferias/firauto-elche\">Firauto</a>. Hier exposeren met een goed doordachte stand is een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we maken van de ruimte van uw merk een bezoekersmagneet met een hoog rendement.</p>\n        <p>Wij kennen de technische voorschriften van de IFA-hallen en het profiel van de vakbezoeker, wat verrassingen en vertragingen bij de opbouw voorkomt en ons in staat stelt stands op maat te realiseren, van een grote machinepresentatie tot een vrij ontworpen merkruimte.</p>\n\n        <h2>Kant-en-klare opbouw vanuit onze eigen werkplaats</h2>\n        <p>Wij beheren elk project van begin tot eind vanuit onze eigen werkplaats: 3D-ontwerp, fabricage van de structuur en het meubilair, logistiek naar het complex, opbouw en installatie, en het beheer van de technische keuringen die de beurs vereist. Elke goedkeuring wordt vastgelegd met ons <a href=\"/nl/gecontroleerd-project\">Gecontroleerd Project-systeem</a>, een 100&nbsp;%-garantie dat wordt gebouwd wat is goedgekeurd. Bereken uw investering direct bij <a href=\"/nl/prijzen\">standprijzen</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Op welke beurzen in Alicante bouwt Standarte stands?",
+      "a": "We werken op de belangrijkste beurzen van de Institución Ferial Alicantina (IFA) in Elche, zoals Futurmoda, Alicante Gastronómica en Firauto, en op elk ander complex in de provincie."
+    },
+    {
+      "q": "Is de service in Alicante kant-en-klaar?",
+      "a": "Ja. Wij verzorgen het 3D-ontwerp, de fabricage in onze werkplaats, de logistiek, de opbouw en de technische keuringen, met de garantie van ons Gecontroleerd Project-systeem."
+    }
+  ]
+},
+    "zh": {
+  "breadcrumb": "阿利坎特",
+  "title": "阿利坎特展台设计与搭建 | IFA 埃尔切 | Standarte",
+  "h1": "阿利坎特展台设计与搭建（IFA）",
+  "introText": "Standarte在阿利坎特设计、制作并搭建展台，以位于埃尔切的阿利坎特会展机构（IFA）为核心展馆，服务于Futurmoda、Alicante Gastronómica等展会。20多年经验、自有工厂，全程把控每一个环节：3D设计、定制木作、物流与现场审批下的搭建。",
+  "body": "\n        <h2>埃尔切的IFA——阿利坎特省的会展场馆</h2>\n        <p>阿利坎特是西班牙东南部重要的经济引擎，其会展中心是位于埃尔切的<strong>阿利坎特会展机构（IFA）</strong>。这里举办众多标杆展会，如<a href=\"/zh/ferias/futurmoda-elche\">Futurmoda</a>——位于欧洲主要制鞋产业集群核心、面向鞋类与皮具的零部件、机械与技术盛会——以及<a href=\"/zh/ferias/alicante-gastronomica\">Alicante Gastronómica</a>和<a href=\"/zh/ferias/firauto-elche\">Firauto</a>。在这里以一个精心打造的展台参展，是回报最高的商业投资之一，而这正是Standarte的价值所在：我们把您品牌的空间变成高回报的观众磁石。</p>\n        <p>我们熟悉IFA各展馆的技术规范和专业观众画像，从而避免搭建中的意外与延误，并能量身打造展台——从大型机械展示到自由设计的品牌空间。</p>\n\n        <h2>自有工厂的一站式搭建</h2>\n        <p>我们在自有工厂中全程管理每个项目：3D设计、结构与家具制作、运输至场馆、搭建安装，以及展会要求的技术审批。每一次确认都通过我们的<a href=\"/zh/shenji-xiangmu\">审计项目系统</a>记录在案，100%保证所建即所批。立即在<a href=\"/zh/jiage\">展台价格</a>中计算您的投资。</p>\n      ",
+  "faqs": [
+    {
+      "q": "Standarte在阿利坎特的哪些展会搭建展台？",
+      "a": "我们参与位于埃尔切的阿利坎特会展机构（IFA）的主要展会，如Futurmoda、Alicante Gastronómica和Firauto，也涵盖该省的其他任何场馆。"
+    },
+    {
+      "q": "阿利坎特的服务是一站式的吗？",
+      "a": "是的。我们负责3D设计、自有工厂制作、物流、搭建与技术审批，并以我们的审计项目系统作为保障。"
+    }
+  ]
+},
+    "hi": {
+  "breadcrumb": "अलिकांते",
+  "title": "अलिकांते में स्टैंड डिज़ाइन और निर्माण | IFA एल्चे | Standarte",
+  "h1": "अलिकांते में स्टैंड डिज़ाइन और निर्माण (IFA)",
+  "introText": "Standarte अलिकांते में प्रदर्शनी स्टैंड डिज़ाइन, निर्माण और स्थापित करता है, जहाँ एल्चे स्थित Institución Ferial Alicantina (IFA) प्रमुख स्थल है और Futurmoda तथा Alicante Gastronómica जैसे आयोजन होते हैं। 20 से अधिक वर्षों का अनुभव और अपनी कार्यशाला के साथ हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, कस्टम बढ़ईगीरी, लॉजिस्टिक्स और परिसर में सत्यापन के साथ स्थापना।",
+  "body": "\n        <h2>एल्चे की IFA — अलिकांते प्रांत का प्रदर्शनी परिसर</h2>\n        <p>अलिकांते दक्षिण-पूर्वी स्पेन का एक बड़ा आर्थिक इंजन है, और इसका प्रदर्शनी केंद्र एल्चे में स्थित <strong>Institución Ferial Alicantina (IFA)</strong> है। इसके हॉल में <a href=\"/hi/ferias/futurmoda-elche\">Futurmoda</a> —यूरोप के प्रमुख जूता क्लस्टर के केंद्र में, फुटवियर और चमड़ा-उत्पादों के घटकों, मशीनरी और तकनीक का बड़ा आयोजन—, <a href=\"/hi/ferias/alicante-gastronomica\">Alicante Gastronómica</a> और <a href=\"/hi/ferias/firauto-elche\">Firauto</a> जैसे प्रमुख आयोजन होते हैं। यहाँ एक सुगठित स्टैंड के साथ प्रदर्शन करना सबसे लाभदायक व्यावसायिक निवेशों में से एक है, और यहीं Standarte फर्क लाता है: हम आपके ब्रांड की जगह को उच्च-प्रतिफल वाला विज़िटर-मैग्नेट बना देते हैं।</p>\n        <p>हम IFA हॉल के तकनीकी नियमों और पेशेवर विज़िटर की प्रोफ़ाइल को जानते हैं, जिससे स्थापना में अप्रत्याशित बाधाएँ और देरी टलती हैं और हम कस्टम स्टैंड बना पाते हैं — बड़े मशीनरी डिस्प्ले से लेकर मुक्त-डिज़ाइन ब्रांड स्पेस तक।</p>\n\n        <h2>अपनी कार्यशाला से टर्नकी स्थापना</h2>\n        <p>हम हर परियोजना को शुरू से अंत तक अपनी कार्यशाला से संभालते हैं: 3D डिज़ाइन, संरचना और फ़र्नीचर का निर्माण, परिसर तक लॉजिस्टिक्स, स्थापना, और मेले द्वारा अपेक्षित तकनीकी सत्यापन। हर स्वीकृति हमारे <a href=\"/hi/audit-pariyojana\">ऑडिटेड प्रोजेक्ट सिस्टम</a> में दर्ज होती है — 100% गारंटी कि जो स्वीकृत हुआ वही बनता है। <a href=\"/hi/kimat\">स्टैंड की कीमतें</a> में अपना निवेश तुरंत जानें।</p>\n      ",
+  "faqs": [
+    {
+      "q": "Standarte अलिकांते की किन मेलों में स्टैंड बनाता है?",
+      "a": "हम एल्चे में Institución Ferial Alicantina (IFA) के प्रमुख आयोजनों — जैसे Futurmoda, Alicante Gastronómica और Firauto — के साथ-साथ प्रांत के किसी भी अन्य परिसर में काम करते हैं।"
+    },
+    {
+      "q": "क्या अलिकांते में सेवा टर्नकी है?",
+      "a": "हाँ। हम 3D डिज़ाइन, अपनी कार्यशाला में निर्माण, लॉजिस्टिक्स, स्थापना और तकनीकी सत्यापन संभालते हैं, जिसकी गारंटी हमारा ऑडिटेड प्रोजेक्ट सिस्टम देता है।"
+    }
+  ]
+},
+    "ko": {
+  "breadcrumb": "알리칸테",
+  "title": "알리칸테 부스 디자인·시공 | IFA 엘체 | Standarte",
+  "h1": "알리칸테 부스 디자인·시공 (IFA)",
+  "introText": "Standarte는 엘체에 있는 알리칸테 전시기관(IFA)을 중심 전시장으로 하여 알리칸테에서 전시 부스를 디자인·제작·시공합니다. Futurmoda, Alicante Gastronómica 등 전시회를 지원하며, 20년 이상의 경력과 자체 공방으로 3D 디자인, 맞춤 목공, 물류, 전시장 승인까지 모든 단계를 직접 관리합니다.",
+  "body": "\n        <h2>엘체의 IFA — 알리칸테주의 전시장</h2>\n        <p>알리칸테는 스페인 남동부의 큰 경제 동력이며, 그 전시 중심은 엘체에 있는 <strong>알리칸테 전시기관(IFA)</strong>입니다. 이곳에서는 유럽 최대 신발 클러스터의 중심에서 열리는 신발·가죽제품 부품·기계·기술 박람회 <a href=\"/ko/ferias/futurmoda-elche\">Futurmoda</a>, <a href=\"/ko/ferias/alicante-gastronomica\">Alicante Gastronómica</a>, <a href=\"/ko/ferias/firauto-elche\">Firauto</a> 같은 주요 전시회가 열립니다. 잘 구성된 부스로 이곳에 참가하는 것은 가장 수익성 높은 상업적 투자 중 하나이며, 바로 여기서 Standarte가 차별화됩니다. 우리는 귀사 브랜드의 공간을 높은 투자 대비 효과의 방문객 자석으로 만듭니다.</p>\n        <p>우리는 IFA 전시홀의 기술 규정과 전문 방문객의 특성을 잘 알고 있어 시공 중 예상치 못한 문제와 지연을 방지하고, 대형 기계 전시부터 자유 디자인 브랜드 공간까지 맞춤 부스를 구현합니다.</p>\n\n        <h2>자체 공방을 통한 턴키 시공</h2>\n        <p>우리는 자체 공방에서 모든 프로젝트를 처음부터 끝까지 관리합니다: 3D 디자인, 구조물·가구 제작, 전시장까지의 물류, 설치, 그리고 전시회가 요구하는 기술 승인. 모든 승인은 당사의 <a href=\"/ko/gamsa-peurojekteu\">감사 프로젝트 시스템</a>에 기록되어 승인된 그대로 시공됨을 100% 보장합니다. <a href=\"/ko/gagyeok\">부스 가격</a>에서 투자 비용을 바로 계산해 보세요.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Standarte는 알리칸테의 어떤 전시회에서 부스를 시공하나요?",
+      "a": "엘체의 알리칸테 전시기관(IFA) 주요 전시회인 Futurmoda, Alicante Gastronómica, Firauto는 물론 이 지역의 다른 어떤 전시장에서도 작업합니다."
+    },
+    {
+      "q": "알리칸테 서비스는 턴키인가요?",
+      "a": "네. 3D 디자인, 자체 공방 제작, 물류, 시공, 기술 승인까지 모두 담당하며 당사의 감사 프로젝트 시스템으로 보증합니다."
+    }
+  ]
+},
+    "ja": {
+  "breadcrumb": "アリカンテ",
+  "title": "アリカンテの展示ブース設計・施工 | IFA エルチェ | Standarte",
+  "h1": "アリカンテの展示ブース設計・施工（IFA）",
+  "introText": "Standarteは、エルチェのアリカンテ見本市機構（IFA）を基幹会場として、アリカンテで展示ブースの設計・製作・施工を行います。FuturmodaやAlicante Gastronómicaなどの展示会に対応し、20年以上の経験と自社工房で、3D設計、オーダーメイド木工、物流、会場審査までの全工程を管理します。",
+  "body": "\n        <h2>エルチェのIFA——アリカンテ県の展示会場</h2>\n        <p>アリカンテはスペイン南東部の大きな経済エンジンであり、その見本市の中心はエルチェにある<strong>アリカンテ見本市機構（IFA）</strong>です。そのホールでは、欧州最大の製靴クラスターの中心で開催される靴・革製品の部品・機械・技術の大展示会<a href=\"/ja/ferias/futurmoda-elche\">Futurmoda</a>、<a href=\"/ja/ferias/alicante-gastronomica\">Alicante Gastronómica</a>、<a href=\"/ja/ferias/firauto-elche\">Firauto</a>などの主要展示会が行われます。ここで練り込まれたブースで出展することは最も収益性の高い商業投資の一つであり、まさにそこでStandarteが違いを生みます。私たちは貴社ブランドの空間を、投資対効果の高い来場者の磁石に変えます。</p>\n        <p>私たちはIFA各ホールの技術規定と専門来場者の profile を熟知しており、施工中の想定外や遅延を防ぎ、大型機械の展示から自由設計のブランド空間まで、オーダーメイドのブースを実現します。</p>\n\n        <h2>自社工房によるターンキー施工</h2>\n        <p>私たちは自社工房で各プロジェクトを最初から最後まで管理します：3D設計、構造体と什器の製作、会場までの物流、施工・設置、そして展示会が求める技術審査。すべての承認は当社の<a href=\"/ja/監査プロジェクト\">監査プロジェクト・システム</a>に記録され、承認どおりに施工されることを100%保証します。<a href=\"/ja/料金\">ブース価格</a>で投資額を即座に計算できます。</p>\n      ",
+  "faqs": [
+    {
+      "q": "Standarteはアリカンテのどの展示会でブースを施工しますか？",
+      "a": "エルチェのアリカンテ見本市機構（IFA）の主要展示会であるFuturmoda、Alicante Gastronómica、Firautoをはじめ、同県の他の会場でも対応します。"
+    },
+    {
+      "q": "アリカンテのサービスはターンキーですか？",
+      "a": "はい。3D設計、自社工房での製作、物流、施工、技術審査までを担当し、当社の監査プロジェクト・システムで保証します。"
+    }
+  ]
+}
   },
   "murcia": {
     "es": {
-      "breadcrumb": "Murcia",
-      "title": "Diseño y montaje de stands en Murcia | IFEPA Torre Pacheco | Standarte",
-      "h1": "Diseño y montaje de stands en Murcia (IFEPA)",
-      "introText": "Standarte diseña, fabrica y monta stands feriales en la Región de Murcia, con IFEPA (Institución Ferial de la Región de Murcia) en Torre Pacheco como recinto de referencia y un calendario fuerte en el ámbito agrícola, ganadero y comercial. Más de 20 años de experiencia y taller propio para controlar cada fase: diseño 3D, carpintería a medida, logística y montaje con validaciones en el recinto.",
-      "body": "\n        <h2>IFEPA en Torre Pacheco, el recinto ferial de la Región de Murcia</h2>\n        <p>La Región de Murcia, la gran huerta agroalimentaria del sureste, concentra su actividad ferial en <strong>IFEPA (Institución Ferial de la Región de Murcia)</strong>, en Torre Pacheco. Su recinto acoge certámenes sectoriales de referencia, especialmente en el ámbito <strong>agrícola, ganadero y comercial</strong>, que reflejan el peso del campo, la maquinaria agrícola y el comercio en la economía murciana. Exponer aquí con un stand bien resuelto es una de las inversiones comerciales más rentables, y ahí es donde Standarte marca la diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Conocemos la normativa técnica de los pabellones de IFEPA y el perfil del visitante profesional, lo que evita sorpresas y retrasos en el montaje y nos permite resolver stands a medida, desde un gran expositor de maquinaria agrícola hasta un espacio comercial de diseño libre.</p>\n\n        <h2>Montaje llave en mano desde taller propio</h2>\n        <p>Gestionamos cada proyecto de principio a fin desde nuestro taller propio: diseño 3D, fabricación de la estructura y el mobiliario, logística hasta el recinto, montaje e instalación, y gestión de las validaciones técnicas que exige la feria. Cada aprobación queda registrada con nuestro <a href=\"/proyecto-auditado\">Sistema de Proyecto Auditado</a>, garantía 100&nbsp;% de que se construye lo aprobado. Calcula tu inversión al instante en <a href=\"/precios\">precios de stands</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "¿En qué ferias de Murcia monta stands Standarte?",
-          "a": "Trabajamos en los certámenes de IFEPA (Institución Ferial de la Región de Murcia) en Torre Pacheco, con especial presencia en las ferias agrícolas, ganaderas y comerciales, además de cualquier otro recinto de la región."
-        },
-        {
-          "q": "¿El servicio en Murcia es llave en mano?",
-          "a": "Sí. Nos encargamos del diseño 3D, la fabricación en nuestro taller, la logística, el montaje y las validaciones técnicas, con la garantía de nuestro Sistema de Proyecto Auditado."
-        }
-      ]
+  "breadcrumb": "Murcia",
+  "title": "Diseño y montaje de stands en Murcia | IFEPA Torre Pacheco | Standarte",
+  "h1": "Diseño y montaje de stands en Murcia (IFEPA)",
+  "introText": "Standarte diseña, fabrica y monta stands feriales en la Región de Murcia, con IFEPA (Institución Ferial de la Región de Murcia) en Torre Pacheco como recinto de referencia y un calendario fuerte en el ámbito agrícola, ganadero y comercial. Más de 20 años de experiencia y taller propio para controlar cada fase: diseño 3D, carpintería a medida, logística y montaje con validaciones en el recinto.",
+  "body": "\n        <h2>IFEPA en Torre Pacheco, el recinto ferial de la Región de Murcia</h2>\n        <p>La Región de Murcia, la gran huerta agroalimentaria del sureste, concentra su actividad ferial en <strong>IFEPA (Institución Ferial de la Región de Murcia)</strong>, en Torre Pacheco. Su recinto acoge certámenes sectoriales de referencia, especialmente en el ámbito <strong>agrícola, ganadero y comercial</strong>, que reflejan el peso del campo, la maquinaria agrícola y el comercio en la economía murciana. Exponer aquí con un stand bien resuelto es una de las inversiones comerciales más rentables, y ahí es donde Standarte marca la diferencia: convertimos el espacio de su marca en un imán de visitantes con alto retorno.</p>\n        <p>Conocemos la normativa técnica de los pabellones de IFEPA y el perfil del visitante profesional, lo que evita sorpresas y retrasos en el montaje y nos permite resolver stands a medida, desde un gran expositor de maquinaria agrícola hasta un espacio comercial de diseño libre.</p>\n        <p>Montamos en los grandes certámenes de IFEPA: <a href=\"/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a> (agrícola, maquinaria y ganadería), <a href=\"/ferias/equimur-torre-pacheco\">EQUIMUR</a> (caballo de pura raza), <a href=\"/ferias/hortifruit-torre-pacheco\">HortiFruit</a> (hortofrutícola) y <a href=\"/ferias/fecons-torre-pacheco\">FECONS</a> (construcción).</p>\n\n        <h2>Montaje llave en mano desde taller propio</h2>\n        <p>Gestionamos cada proyecto de principio a fin desde nuestro taller propio: diseño 3D, fabricación de la estructura y el mobiliario, logística hasta el recinto, montaje e instalación, y gestión de las validaciones técnicas que exige la feria. Cada aprobación queda registrada con nuestro <a href=\"/proyecto-auditado\">Sistema de Proyecto Auditado</a>, garantía 100&nbsp;% de que se construye lo aprobado. Calcula tu inversión al instante en <a href=\"/precios\">precios de stands</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "¿En qué ferias de Murcia monta stands Standarte?",
+      "a": "Trabajamos en los certámenes de IFEPA (Institución Ferial de la Región de Murcia) en Torre Pacheco, con especial presencia en las ferias agrícolas, ganaderas y comerciales, además de cualquier otro recinto de la región."
     },
-    "en": {
-      "breadcrumb": "Murcia",
-      "title": "Exhibition stand design and build in Murcia | IFEPA Torre Pacheco | Standarte",
-      "h1": "Exhibition stand design and build in Murcia (IFEPA)",
-      "introText": "Standarte designs, manufactures and builds exhibition stands in the Region of Murcia, with IFEPA (the regional trade-fair institution) in Torre Pacheco as its flagship venue and a strong calendar in the agricultural, livestock and commercial fields. More than 20 years of experience and our own workshop to control every stage: 3D design, custom carpentry, logistics and assembly with on-site venue approvals.",
-      "body": "\n        <h2>IFEPA in Torre Pacheco, the trade-fair venue of the Region of Murcia</h2>\n        <p>The Region of Murcia, the great agri-food garden of the south-east, concentrates its trade-fair activity at <strong>IFEPA (the regional trade-fair institution)</strong>, in Torre Pacheco. Its grounds host leading sector events, especially in the <strong>agricultural, livestock and commercial</strong> fields, reflecting the weight of farming, agricultural machinery and trade in the Murcian economy. Exhibiting here with a well-resolved stand is one of the most profitable commercial investments, and that is where Standarte makes the difference: we turn your brand's space into a high-return visitor magnet.</p>\n        <p>We know the technical regulations of the IFEPA halls and the profile of the professional visitor, which avoids surprises and delays during assembly and lets us deliver custom stands, from a large agricultural-machinery display to a free-design commercial space.</p>\n\n        <h2>Turnkey assembly from our own workshop</h2>\n        <p>We manage every project from start to finish from our own workshop: 3D design, fabrication of the structure and furniture, logistics to the venue, assembly and installation, and management of the technical approvals the fair requires. Every approval is recorded with our <a href=\"/en/audited-project\">Audited Project system</a>, a 100&nbsp;% guarantee that what is built is what was approved. Calculate your investment instantly on <a href=\"/en/prices\">stand prices</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Which Murcia fairs does Standarte build stands at?",
-          "a": "We work at the events of IFEPA (the regional trade-fair institution) in Torre Pacheco, with a special presence at agricultural, livestock and commercial fairs, as well as any other venue in the region."
-        },
-        {
-          "q": "Is the service in Murcia turnkey?",
-          "a": "Yes. We handle the 3D design, fabrication in our workshop, logistics, assembly and technical approvals, backed by our Audited Project system."
-        }
-      ]
-    },
-    "de": {
-      "breadcrumb": "Murcia",
-      "title": "Messestand-Design und -Montage in Murcia | IFEPA Torre Pacheco | Standarte",
-      "h1": "Messestand-Design und -Montage in Murcia (IFEPA)",
-      "introText": "Standarte plant, fertigt und montiert Messestände in der Region Murcia, mit der IFEPA (Messegesellschaft der Region Murcia) in Torre Pacheco als führendem Veranstaltungsort und einem starken Kalender im Bereich Landwirtschaft, Viehzucht und Handel. Über 20 Jahre Erfahrung und eigene Werkstatt, um jede Phase zu steuern: 3D-Design, maßgefertigte Schreinerei, Logistik und Aufbau mit technischen Abnahmen am Veranstaltungsort.",
-      "body": "\n        <h2>Die IFEPA in Torre Pacheco, der Messeplatz der Region Murcia</h2>\n        <p>Die Region Murcia, der große Agrar- und Lebensmittelgarten des Südostens, bündelt ihre Messeaktivität in der <strong>IFEPA (Messegesellschaft der Region Murcia)</strong> in Torre Pacheco. Ihr Gelände beherbergt führende Fachmessen, besonders in den Bereichen <strong>Landwirtschaft, Viehzucht und Handel</strong>, die das Gewicht von Landwirtschaft, Agrartechnik und Handel in der murcianischen Wirtschaft widerspiegeln. Hier mit einem gut durchdachten Stand auszustellen, gehört zu den rentabelsten Vertriebsinvestitionen, und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir kennen die technischen Vorschriften der IFEPA-Hallen und das Profil des Fachbesuchers, was Überraschungen und Verzögerungen beim Aufbau vermeidet und uns maßgeschneiderte Stände ermöglicht – vom großen Agrartechnik-Stand bis zum frei gestalteten Handelsraum.</p>\n\n        <h2>Schlüsselfertige Montage aus eigener Werkstatt</h2>\n        <p>Wir betreuen jedes Projekt von Anfang bis Ende aus unserer eigenen Werkstatt: 3D-Design, Fertigung von Struktur und Mobiliar, Logistik zum Veranstaltungsort, Aufbau und Installation sowie die technischen Abnahmen, die die Messe verlangt. Jede Freigabe wird mit unserem <a href=\"/de/auditiertes-projekt\">System Auditiertes Projekt</a> festgehalten – 100&nbsp;%ige Garantie, dass gebaut wird, was freigegeben wurde. Berechnen Sie Ihre Investition sofort unter <a href=\"/de/preise\">Standpreise</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Auf welchen Messen in Murcia baut Standarte Stände?",
-          "a": "Wir arbeiten auf den Messen der IFEPA (Messegesellschaft der Region Murcia) in Torre Pacheco, mit besonderem Schwerpunkt auf Landwirtschafts-, Viehzucht- und Handelsmessen, sowie auf jedem anderen Veranstaltungsort der Region."
-        },
-        {
-          "q": "Ist der Service in Murcia schlüsselfertig?",
-          "a": "Ja. Wir übernehmen 3D-Design, Fertigung in unserer Werkstatt, Logistik, Aufbau und technische Abnahmen, abgesichert durch unser System Auditiertes Projekt."
-        }
-      ]
-    },
-    "pt": {
-      "breadcrumb": "Múrcia",
-      "title": "Design e montagem de stands em Múrcia | IFEPA Torre Pacheco | Standarte",
-      "h1": "Design e montagem de stands em Múrcia (IFEPA)",
-      "introText": "A Standarte concebe, fabrica e monta stands de feira na Região de Múrcia, com a IFEPA (Instituição Feiral da Região de Múrcia) em Torre Pacheco como recinto de referência e um calendário forte no âmbito agrícola, pecuário e comercial. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, carpintaria à medida, logística e montagem com validações no recinto.",
-      "body": "\n        <h2>A IFEPA em Torre Pacheco, o recinto feiral da Região de Múrcia</h2>\n        <p>A Região de Múrcia, a grande horta agroalimentar do sudeste, concentra a sua atividade feiral na <strong>IFEPA (Instituição Feiral da Região de Múrcia)</strong>, em Torre Pacheco. O seu recinto acolhe certames sectoriais de referência, sobretudo no âmbito <strong>agrícola, pecuário e comercial</strong>, que refletem o peso do campo, da maquinaria agrícola e do comércio na economia murciana. Expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte marca a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Conhecemos a regulamentação técnica dos pavilhões da IFEPA e o perfil do visitante profissional, o que evita surpresas e atrasos na montagem e nos permite resolver stands à medida, desde um grande expositor de maquinaria agrícola até um espaço comercial de design livre.</p>\n\n        <h2>Montagem chave na mão a partir de oficina própria</h2>\n        <p>Gerimos cada projeto de início ao fim a partir da nossa oficina própria: design 3D, fabrico da estrutura e do mobiliário, logística até ao recinto, montagem e instalação, e gestão das validações técnicas que a feira exige. Cada aprovação fica registada com o nosso <a href=\"/pt/projeto-auditado\">Sistema de Projeto Auditado</a>, garantia de 100&nbsp;% de que se constrói o aprovado. Calcule o seu investimento ao instante em <a href=\"/pt/precos\">preços de stands</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Em que feiras de Múrcia a Standarte monta stands?",
-          "a": "Trabalhamos nos certames da IFEPA (Instituição Feiral da Região de Múrcia) em Torre Pacheco, com especial presença nas feiras agrícolas, pecuárias e comerciais, além de qualquer outro recinto da região."
-        },
-        {
-          "q": "O serviço em Múrcia é chave na mão?",
-          "a": "Sim. Tratamos do design 3D, do fabrico na nossa oficina, da logística, da montagem e das validações técnicas, com a garantia do nosso Sistema de Projeto Auditado."
-        }
-      ]
-    },
-    "fr": {
-      "breadcrumb": "Murcie",
-      "title": "Conception et montage de stands à Murcie | IFEPA Torre Pacheco | Standarte",
-      "h1": "Conception et montage de stands à Murcie (IFEPA)",
-      "introText": "Standarte conçoit, fabrique et monte des stands dans la Région de Murcie, avec l'IFEPA (institution foire de la Région de Murcie) à Torre Pacheco comme enceinte de référence et un calendrier solide dans les domaines agricole, de l'élevage et commercial. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque étape : conception 3D, menuiserie sur mesure, logistique et montage avec validations sur site.",
-      "body": "\n        <h2>L'IFEPA à Torre Pacheco, l'enceinte foire de la Région de Murcie</h2>\n        <p>La Région de Murcie, le grand potager agroalimentaire du sud-est, concentre son activité foire à l'<strong>IFEPA (institution foire de la Région de Murcie)</strong>, à Torre Pacheco. Son enceinte accueille des salons sectoriels de référence, surtout dans les domaines <strong>agricole, de l'élevage et commercial</strong>, qui reflètent le poids de l'agriculture, du machinisme agricole et du commerce dans l'économie murcienne. Exposer ici avec un stand bien conçu est l'un des investissements commerciaux les plus rentables, et c'est là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs à fort retour.</p>\n        <p>Nous connaissons la réglementation technique des halls de l'IFEPA et le profil du visiteur professionnel, ce qui évite les surprises et les retards de montage et nous permet de réaliser des stands sur mesure, du grand présentoir de machines agricoles à un espace commercial au design libre.</p>\n\n        <h2>Montage clé en main depuis notre atelier</h2>\n        <p>Nous gérons chaque projet de bout en bout depuis notre propre atelier : conception 3D, fabrication de la structure et du mobilier, logistique jusqu'au site, montage et installation, et gestion des validations techniques exigées par le salon. Chaque validation est consignée avec notre <a href=\"/fr/projet-audite\">Système de Projet Audité</a>, garantie à 100&nbsp;% que ce qui est construit correspond à ce qui a été validé. Calculez votre investissement instantanément dans <a href=\"/fr/tarifs\">tarifs des stands</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Sur quels salons de Murcie Standarte monte-t-elle des stands ?",
-          "a": "Nous travaillons sur les salons de l'IFEPA (institution foire de la Région de Murcie) à Torre Pacheco, avec une présence particulière sur les salons agricoles, d'élevage et commerciaux, ainsi que sur tout autre site de la région."
-        },
-        {
-          "q": "Le service à Murcie est-il clé en main ?",
-          "a": "Oui. Nous nous occupons de la conception 3D, de la fabrication dans notre atelier, de la logistique, du montage et des validations techniques, avec la garantie de notre Système de Projet Audité."
-        }
-      ]
-    },
-    "it": {
-      "breadcrumb": "Murcia",
-      "title": "Progettazione e allestimento stand a Murcia | IFEPA Torre Pacheco | Standarte",
-      "h1": "Progettazione e allestimento stand a Murcia (IFEPA)",
-      "introText": "Standarte progetta, fabbrica e allestisce stand fieristici nella Regione di Murcia, con l'IFEPA (istituzione fieristica della Regione di Murcia) a Torre Pacheco come quartiere di riferimento e un calendario forte in ambito agricolo, zootecnico e commerciale. Oltre 20 anni di esperienza e officina propria per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica e allestimento con validazioni in sede.",
-      "body": "\n        <h2>L'IFEPA a Torre Pacheco, il quartiere fieristico della Regione di Murcia</h2>\n        <p>La Regione di Murcia, il grande orto agroalimentare del sud-est, concentra la sua attività fieristica all'<strong>IFEPA (istituzione fieristica della Regione di Murcia)</strong>, a Torre Pacheco. Il suo quartiere ospita fiere di settore di riferimento, soprattutto in ambito <strong>agricolo, zootecnico e commerciale</strong>, che riflettono il peso dell'agricoltura, dei macchinari agricoli e del commercio nell'economia murciana. Esporre qui con uno stand ben risolto è uno degli investimenti commerciali più redditizi, ed è qui che Standarte fa la differenza: trasformiamo lo spazio del suo marchio in una calamita di visitatori ad alto ritorno.</p>\n        <p>Conosciamo la normativa tecnica dei padiglioni dell'IFEPA e il profilo del visitatore professionale, il che evita sorprese e ritardi nell'allestimento e ci permette di realizzare stand su misura, da un grande espositore di macchinari agricoli a uno spazio commerciale dal design libero.</p>\n\n        <h2>Allestimento chiavi in mano dalla nostra officina</h2>\n        <p>Gestiamo ogni progetto dall'inizio alla fine dalla nostra officina propria: progettazione 3D, fabbricazione della struttura e degli arredi, logistica fino alla sede, allestimento e installazione, e gestione delle validazioni tecniche richieste dalla fiera. Ogni approvazione viene registrata con il nostro <a href=\"/it/progetto-verificato\">Sistema di Progetto Verificato</a>, garanzia al 100&nbsp;% che si costruisce ciò che è stato approvato. Calcola il tuo investimento all'istante in <a href=\"/it/prezzi\">prezzi degli stand</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "In quali fiere di Murcia Standarte allestisce stand?",
-          "a": "Lavoriamo nelle fiere dell'IFEPA (istituzione fieristica della Regione di Murcia) a Torre Pacheco, con una presenza particolare nelle fiere agricole, zootecniche e commerciali, oltre a qualsiasi altro quartiere della regione."
-        },
-        {
-          "q": "Il servizio a Murcia è chiavi in mano?",
-          "a": "Sì. Ci occupiamo di progettazione 3D, fabbricazione nella nostra officina, logistica, allestimento e validazioni tecniche, con la garanzia del nostro Sistema di Progetto Verificato."
-        }
-      ]
-    },
-    "nl": {
-      "breadcrumb": "Murcia",
-      "title": "Ontwerp en montage van beursstands in Murcia | IFEPA Torre Pacheco | Standarte",
-      "h1": "Ontwerp en montage van beursstands in Murcia (IFEPA)",
-      "introText": "Standarte ontwerpt, produceert en bouwt beursstands in de regio Murcia, met IFEPA (de beursinstelling van de regio Murcia) in Torre Pacheco als toonaangevend beurscomplex en een sterke kalender op agrarisch, veeteelt- en commercieel gebied. Ruim 20 jaar ervaring en een eigen werkplaats om elke fase in eigen hand te houden: 3D-ontwerp, maatwerktimmerwerk, logistiek en opbouw met keuringen op de beursvloer.",
-      "body": "\n        <h2>IFEPA in Torre Pacheco, het beurscomplex van de regio Murcia</h2>\n        <p>De regio Murcia, de grote agrovoedingstuin van het zuidoosten, concentreert haar beursactiviteit bij <strong>IFEPA (de beursinstelling van de regio Murcia)</strong>, in Torre Pacheco. Het terrein huisvest toonaangevende vakbeurzen, vooral op <strong>agrarisch, veeteelt- en commercieel</strong> gebied, die het gewicht van landbouw, landbouwmachines en handel in de Murciaanse economie weerspiegelen. Hier exposeren met een goed doordachte stand is een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we maken van de ruimte van uw merk een bezoekersmagneet met een hoog rendement.</p>\n        <p>Wij kennen de technische voorschriften van de IFEPA-hallen en het profiel van de vakbezoeker, wat verrassingen en vertragingen bij de opbouw voorkomt en ons in staat stelt stands op maat te realiseren, van een grote landbouwmachinepresentatie tot een vrij ontworpen commerciële ruimte.</p>\n\n        <h2>Kant-en-klare opbouw vanuit onze eigen werkplaats</h2>\n        <p>Wij beheren elk project van begin tot eind vanuit onze eigen werkplaats: 3D-ontwerp, fabricage van de structuur en het meubilair, logistiek naar het complex, opbouw en installatie, en het beheer van de technische keuringen die de beurs vereist. Elke goedkeuring wordt vastgelegd met ons <a href=\"/nl/gecontroleerd-project\">Gecontroleerd Project-systeem</a>, een 100&nbsp;%-garantie dat wordt gebouwd wat is goedgekeurd. Bereken uw investering direct bij <a href=\"/nl/prijzen\">standprijzen</a>.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Op welke beurzen in Murcia bouwt Standarte stands?",
-          "a": "We werken op de beurzen van IFEPA (de beursinstelling van de regio Murcia) in Torre Pacheco, met een bijzondere aanwezigheid op agrarische, veeteelt- en handelsbeurzen, en op elk ander complex in de regio."
-        },
-        {
-          "q": "Is de service in Murcia kant-en-klaar?",
-          "a": "Ja. Wij verzorgen het 3D-ontwerp, de fabricage in onze werkplaats, de logistiek, de opbouw en de technische keuringen, met de garantie van ons Gecontroleerd Project-systeem."
-        }
-      ]
-    },
-    "zh": {
-      "breadcrumb": "穆尔西亚",
-      "title": "穆尔西亚展台设计与搭建 | IFEPA 托雷帕切科 | Standarte",
-      "h1": "穆尔西亚展台设计与搭建（IFEPA）",
-      "introText": "Standarte在穆尔西亚大区设计、制作并搭建展台，以位于托雷帕切科的穆尔西亚大区会展机构（IFEPA）为核心展馆，其展会日程在农业、畜牧与商业领域尤为突出。20多年经验、自有工厂，全程把控每一个环节：3D设计、定制木作、物流与现场审批下的搭建。",
-      "body": "\n        <h2>托雷帕切科的IFEPA——穆尔西亚大区的会展场馆</h2>\n        <p>穆尔西亚大区是西班牙东南部的“欧洲菜园”，其会展活动集中于位于托雷帕切科的<strong>穆尔西亚大区会展机构（IFEPA）</strong>。场馆举办众多标杆性行业展会，尤其在<strong>农业、畜牧与商业</strong>领域，体现出农业、农机与商贸在穆尔西亚经济中的分量。在这里以一个精心打造的展台参展，是回报最高的商业投资之一，而这正是Standarte的价值所在：我们把您品牌的空间变成高回报的观众磁石。</p>\n        <p>我们熟悉IFEPA各展馆的技术规范和专业观众画像，从而避免搭建中的意外与延误，并能量身打造展台——从大型农机展示到自由设计的商业空间。</p>\n\n        <h2>自有工厂的一站式搭建</h2>\n        <p>我们在自有工厂中全程管理每个项目：3D设计、结构与家具制作、运输至场馆、搭建安装，以及展会要求的技术审批。每一次确认都通过我们的<a href=\"/zh/shenji-xiangmu\">审计项目系统</a>记录在案，100%保证所建即所批。立即在<a href=\"/zh/jiage\">展台价格</a>中计算您的投资。</p>\n      ",
-      "faqs": [
-        {
-          "q": "Standarte在穆尔西亚的哪些展会搭建展台？",
-          "a": "我们参与位于托雷帕切科的穆尔西亚大区会展机构（IFEPA）的展会，尤其活跃于农业、畜牧与商业类展会，也涵盖该大区的其他任何场馆。"
-        },
-        {
-          "q": "穆尔西亚的服务是一站式的吗？",
-          "a": "是的。我们负责3D设计、自有工厂制作、物流、搭建与技术审批，并以我们的审计项目系统作为保障。"
-        }
-      ]
-    },
-    "hi": {
-      "breadcrumb": "मुर्सिया",
-      "title": "मुर्सिया में स्टैंड डिज़ाइन और निर्माण | IFEPA टोरे पाचेको | Standarte",
-      "h1": "मुर्सिया में स्टैंड डिज़ाइन और निर्माण (IFEPA)",
-      "introText": "Standarte मुर्सिया क्षेत्र में प्रदर्शनी स्टैंड डिज़ाइन, निर्माण और स्थापित करता है, जहाँ टोरे पाचेको स्थित IFEPA (मुर्सिया क्षेत्र की मेला संस्था) प्रमुख स्थल है और जिसका कैलेंडर कृषि, पशुधन एवं वाणिज्यिक क्षेत्रों में विशेष रूप से मजबूत है। 20 से अधिक वर्षों का अनुभव और अपनी कार्यशाला के साथ हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, कस्टम बढ़ईगीरी, लॉजिस्टिक्स और परिसर में सत्यापन के साथ स्थापना।",
-      "body": "\n        <h2>टोरे पाचेको की IFEPA — मुर्सिया क्षेत्र का प्रदर्शनी परिसर</h2>\n        <p>मुर्सिया क्षेत्र, दक्षिण-पूर्व का विशाल कृषि-खाद्य उद्यान, अपनी प्रदर्शनी गतिविधि को टोरे पाचेको स्थित <strong>IFEPA (मुर्सिया क्षेत्र की मेला संस्था)</strong> में केंद्रित करता है। इसका परिसर प्रमुख क्षेत्रीय आयोजनों की मेज़बानी करता है, विशेषकर <strong>कृषि, पशुधन और वाणिज्यिक</strong> क्षेत्रों में, जो मुर्सिया की अर्थव्यवस्था में खेती, कृषि-मशीनरी और व्यापार के महत्व को दर्शाते हैं। यहाँ एक सुगठित स्टैंड के साथ प्रदर्शन करना सबसे लाभदायक व्यावसायिक निवेशों में से एक है, और यहीं Standarte फर्क लाता है: हम आपके ब्रांड की जगह को उच्च-प्रतिफल वाला विज़िटर-मैग्नेट बना देते हैं।</p>\n        <p>हम IFEPA हॉल के तकनीकी नियमों और पेशेवर विज़िटर की प्रोफ़ाइल को जानते हैं, जिससे स्थापना में अप्रत्याशित बाधाएँ और देरी टलती हैं और हम कस्टम स्टैंड बना पाते हैं — बड़े कृषि-मशीनरी डिस्प्ले से लेकर मुक्त-डिज़ाइन वाणिज्यिक स्थान तक।</p>\n\n        <h2>अपनी कार्यशाला से टर्नकी स्थापना</h2>\n        <p>हम हर परियोजना को शुरू से अंत तक अपनी कार्यशाला से संभालते हैं: 3D डिज़ाइन, संरचना और फ़र्नीचर का निर्माण, परिसर तक लॉजिस्टिक्स, स्थापना, और मेले द्वारा अपेक्षित तकनीकी सत्यापन। हर स्वीकृति हमारे <a href=\"/hi/audit-pariyojana\">ऑडिटेड प्रोजेक्ट सिस्टम</a> में दर्ज होती है — 100% गारंटी कि जो स्वीकृत हुआ वही बनता है। <a href=\"/hi/kimat\">स्टैंड की कीमतें</a> में अपना निवेश तुरंत जानें।</p>\n      ",
-      "faqs": [
-        {
-          "q": "Standarte मुर्सिया की किन मेलों में स्टैंड बनाता है?",
-          "a": "हम टोरे पाचेको में IFEPA (मुर्सिया क्षेत्र की मेला संस्था) के आयोजनों में काम करते हैं, विशेषकर कृषि, पशुधन और वाणिज्यिक मेलों में, साथ ही क्षेत्र के किसी भी अन्य परिसर में।"
-        },
-        {
-          "q": "क्या मुर्सिया में सेवा टर्नकी है?",
-          "a": "हाँ। हम 3D डिज़ाइन, अपनी कार्यशाला में निर्माण, लॉजिस्टिक्स, स्थापना और तकनीकी सत्यापन संभालते हैं, जिसकी गारंटी हमारा ऑडिटेड प्रोजेक्ट सिस्टम देता है।"
-        }
-      ]
-    },
-    "ko": {
-      "breadcrumb": "무르시아",
-      "title": "무르시아 부스 디자인·시공 | IFEPA 토레파체코 | Standarte",
-      "h1": "무르시아 부스 디자인·시공 (IFEPA)",
-      "introText": "Standarte는 토레파체코에 있는 무르시아 지방 전시기관(IFEPA)을 중심 전시장으로 하여 무르시아 지방에서 전시 부스를 디자인·제작·시공합니다. 농업·축산·상업 분야에서 특히 강한 전시 일정을 지원하며, 20년 이상의 경력과 자체 공방으로 3D 디자인, 맞춤 목공, 물류, 전시장 승인까지 모든 단계를 직접 관리합니다.",
-      "body": "\n        <h2>토레파체코의 IFEPA — 무르시아 지방의 전시장</h2>\n        <p>동남부의 거대한 농식품 텃밭인 무르시아 지방은 전시 활동을 토레파체코에 있는 <strong>무르시아 지방 전시기관(IFEPA)</strong>에 집중하고 있습니다. 이곳은 특히 <strong>농업·축산·상업</strong> 분야의 주요 전시회를 개최하며, 이는 무르시아 경제에서 농업, 농기계, 상업이 차지하는 비중을 반영합니다. 잘 구성된 부스로 이곳에 참가하는 것은 가장 수익성 높은 상업적 투자 중 하나이며, 바로 여기서 Standarte가 차별화됩니다. 우리는 귀사 브랜드의 공간을 높은 투자 대비 효과의 방문객 자석으로 만듭니다.</p>\n        <p>우리는 IFEPA 전시홀의 기술 규정과 전문 방문객의 특성을 잘 알고 있어 시공 중 예상치 못한 문제와 지연을 방지하고, 대형 농기계 전시부터 자유 디자인 상업 공간까지 맞춤 부스를 구현합니다.</p>\n\n        <h2>자체 공방을 통한 턴키 시공</h2>\n        <p>우리는 자체 공방에서 모든 프로젝트를 처음부터 끝까지 관리합니다: 3D 디자인, 구조물·가구 제작, 전시장까지의 물류, 설치, 그리고 전시회가 요구하는 기술 승인. 모든 승인은 당사의 <a href=\"/ko/gamsa-peurojekteu\">감사 프로젝트 시스템</a>에 기록되어 승인된 그대로 시공됨을 100% 보장합니다. <a href=\"/ko/gagyeok\">부스 가격</a>에서 투자 비용을 바로 계산해 보세요.</p>\n      ",
-      "faqs": [
-        {
-          "q": "Standarte는 무르시아의 어떤 전시회에서 부스를 시공하나요?",
-          "a": "토레파체코의 무르시아 지방 전시기관(IFEPA) 전시회, 특히 농업·축산·상업 전시회를 중심으로 작업하며 이 지방의 다른 어떤 전시장에서도 작업합니다."
-        },
-        {
-          "q": "무르시아 서비스는 턴키인가요?",
-          "a": "네. 3D 디자인, 자체 공방 제작, 물류, 시공, 기술 승인까지 모두 담당하며 당사의 감사 프로젝트 시스템으로 보증합니다."
-        }
-      ]
-    },
-    "ja": {
-      "breadcrumb": "ムルシア",
-      "title": "ムルシアの展示ブース設計・施工 | IFEPA トレ・パチェコ | Standarte",
-      "h1": "ムルシアの展示ブース設計・施工（IFEPA）",
-      "introText": "Standarteは、トレ・パチェコのムルシア州見本市機構（IFEPA）を基幹会場として、ムルシア州で展示ブースの設計・製作・施工を行います。農業・畜産・商業分野でとくに強い開催日程に対応し、20年以上の経験と自社工房で、3D設計、オーダーメイド木工、物流、会場審査までの全工程を管理します。",
-      "body": "\n        <h2>トレ・パチェコのIFEPA——ムルシア州の展示会場</h2>\n        <p>南東部の広大な農食料の菜園であるムルシア州は、その見本市活動をトレ・パチェコの<strong>ムルシア州見本市機構（IFEPA）</strong>に集約しています。会場ではとくに<strong>農業・畜産・商業</strong>分野の主要な業界展示会が開催され、ムルシア経済における農業・農業機械・商業の比重を反映しています。ここで練り込まれたブースで出展することは最も収益性の高い商業投資の一つであり、まさにそこでStandarteが違いを生みます。私たちは貴社ブランドの空間を、投資対効果の高い来場者の磁石に変えます。</p>\n        <p>私たちはIFEPA各ホールの技術規定と専門来場者の特性を熟知しており、施工中の想定外や遅延を防ぎ、大型農業機械の展示から自由設計の商業空間まで、オーダーメイドのブースを実現します。</p>\n\n        <h2>自社工房によるターンキー施工</h2>\n        <p>私たちは自社工房で各プロジェクトを最初から最後まで管理します：3D設計、構造体と什器の製作、会場までの物流、施工・設置、そして展示会が求める技術審査。すべての承認は当社の<a href=\"/ja/監査プロジェクト\">監査プロジェクト・システム</a>に記録され、承認どおりに施工されることを100%保証します。<a href=\"/ja/料金\">ブース価格</a>で投資額を即座に計算できます。</p>\n      ",
-      "faqs": [
-        {
-          "q": "Standarteはムルシアのどの展示会でブースを施工しますか？",
-          "a": "トレ・パチェコのムルシア州見本市機構（IFEPA）の展示会、とくに農業・畜産・商業系の展示会を中心に、同州の他の会場でも対応します。"
-        },
-        {
-          "q": "ムルシアのサービスはターンキーですか？",
-          "a": "はい。3D設計、自社工房での製作、物流、施工、技術審査までを担当し、当社の監査プロジェクト・システムで保証します。"
-        }
-      ]
+    {
+      "q": "¿El servicio en Murcia es llave en mano?",
+      "a": "Sí. Nos encargamos del diseño 3D, la fabricación en nuestro taller, la logística, el montaje y las validaciones técnicas, con la garantía de nuestro Sistema de Proyecto Auditado."
     }
+  ]
+},
+    "en": {
+  "breadcrumb": "Murcia",
+  "title": "Exhibition stand design and build in Murcia | IFEPA Torre Pacheco | Standarte",
+  "h1": "Exhibition stand design and build in Murcia (IFEPA)",
+  "introText": "Standarte designs, manufactures and builds exhibition stands in the Region of Murcia, with IFEPA (the regional trade-fair institution) in Torre Pacheco as its flagship venue and a strong calendar in the agricultural, livestock and commercial fields. More than 20 years of experience and our own workshop to control every stage: 3D design, custom carpentry, logistics and assembly with on-site venue approvals.",
+  "body": "\n        <h2>IFEPA in Torre Pacheco, the trade-fair venue of the Region of Murcia</h2>\n        <p>The Region of Murcia, the great agri-food garden of the south-east, concentrates its trade-fair activity at <strong>IFEPA (the regional trade-fair institution)</strong>, in Torre Pacheco. Its grounds host leading sector events, especially in the <strong>agricultural, livestock and commercial</strong> fields, reflecting the weight of farming, agricultural machinery and trade in the Murcian economy. Exhibiting here with a well-resolved stand is one of the most profitable commercial investments, and that is where Standarte makes the difference: we turn your brand's space into a high-return visitor magnet.</p>\n        <p>We know the technical regulations of the IFEPA halls and the profile of the professional visitor, which avoids surprises and delays during assembly and lets us deliver custom stands, from a large agricultural-machinery display to a free-design commercial space.</p>\n        <p>We build at IFEPA's major events: <a href=\"/en/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a> (agriculture, machinery and livestock), <a href=\"/en/ferias/equimur-torre-pacheco\">EQUIMUR</a> (purebred horses), <a href=\"/en/ferias/hortifruit-torre-pacheco\">HortiFruit</a> (fruit and vegetables) and <a href=\"/en/ferias/fecons-torre-pacheco\">FECONS</a> (construction).</p>\n\n        <h2>Turnkey assembly from our own workshop</h2>\n        <p>We manage every project from start to finish from our own workshop: 3D design, fabrication of the structure and furniture, logistics to the venue, assembly and installation, and management of the technical approvals the fair requires. Every approval is recorded with our <a href=\"/en/audited-project\">Audited Project system</a>, a 100&nbsp;% guarantee that what is built is what was approved. Calculate your investment instantly on <a href=\"/en/prices\">stand prices</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Which Murcia fairs does Standarte build stands at?",
+      "a": "We work at the events of IFEPA (the regional trade-fair institution) in Torre Pacheco, with a special presence at agricultural, livestock and commercial fairs, as well as any other venue in the region."
+    },
+    {
+      "q": "Is the service in Murcia turnkey?",
+      "a": "Yes. We handle the 3D design, fabrication in our workshop, logistics, assembly and technical approvals, backed by our Audited Project system."
+    }
+  ]
+},
+    "de": {
+  "breadcrumb": "Murcia",
+  "title": "Messestand-Design und -Montage in Murcia | IFEPA Torre Pacheco | Standarte",
+  "h1": "Messestand-Design und -Montage in Murcia (IFEPA)",
+  "introText": "Standarte plant, fertigt und montiert Messestände in der Region Murcia, mit der IFEPA (Messegesellschaft der Region Murcia) in Torre Pacheco als führendem Veranstaltungsort und einem starken Kalender im Bereich Landwirtschaft, Viehzucht und Handel. Über 20 Jahre Erfahrung und eigene Werkstatt, um jede Phase zu steuern: 3D-Design, maßgefertigte Schreinerei, Logistik und Aufbau mit technischen Abnahmen am Veranstaltungsort.",
+  "body": "\n        <h2>Die IFEPA in Torre Pacheco, der Messeplatz der Region Murcia</h2>\n        <p>Die Region Murcia, der große Agrar- und Lebensmittelgarten des Südostens, bündelt ihre Messeaktivität in der <strong>IFEPA (Messegesellschaft der Region Murcia)</strong> in Torre Pacheco. Ihr Gelände beherbergt führende Fachmessen, besonders in den Bereichen <strong>Landwirtschaft, Viehzucht und Handel</strong>, die das Gewicht von Landwirtschaft, Agrartechnik und Handel in der murcianischen Wirtschaft widerspiegeln. Hier mit einem gut durchdachten Stand auszustellen, gehört zu den rentabelsten Vertriebsinvestitionen, und genau hier macht Standarte den Unterschied: Wir verwandeln den Raum Ihrer Marke in einen Besuchermagneten mit hoher Rendite.</p>\n        <p>Wir kennen die technischen Vorschriften der IFEPA-Hallen und das Profil des Fachbesuchers, was Überraschungen und Verzögerungen beim Aufbau vermeidet und uns maßgeschneiderte Stände ermöglicht – vom großen Agrartechnik-Stand bis zum frei gestalteten Handelsraum.</p>\n        <p>Wir bauen auf den großen Messen der IFEPA: <a href=\"/de/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a> (Landwirtschaft, Maschinen und Viehzucht), <a href=\"/de/ferias/equimur-torre-pacheco\">EQUIMUR</a> (Rassepferde), <a href=\"/de/ferias/hortifruit-torre-pacheco\">HortiFruit</a> (Obst und Gemüse) und <a href=\"/de/ferias/fecons-torre-pacheco\">FECONS</a> (Bauwesen).</p>\n\n        <h2>Schlüsselfertige Montage aus eigener Werkstatt</h2>\n        <p>Wir betreuen jedes Projekt von Anfang bis Ende aus unserer eigenen Werkstatt: 3D-Design, Fertigung von Struktur und Mobiliar, Logistik zum Veranstaltungsort, Aufbau und Installation sowie die technischen Abnahmen, die die Messe verlangt. Jede Freigabe wird mit unserem <a href=\"/de/auditiertes-projekt\">System Auditiertes Projekt</a> festgehalten – 100&nbsp;%ige Garantie, dass gebaut wird, was freigegeben wurde. Berechnen Sie Ihre Investition sofort unter <a href=\"/de/preise\">Standpreise</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Auf welchen Messen in Murcia baut Standarte Stände?",
+      "a": "Wir arbeiten auf den Messen der IFEPA (Messegesellschaft der Region Murcia) in Torre Pacheco, mit besonderem Schwerpunkt auf Landwirtschafts-, Viehzucht- und Handelsmessen, sowie auf jedem anderen Veranstaltungsort der Region."
+    },
+    {
+      "q": "Ist der Service in Murcia schlüsselfertig?",
+      "a": "Ja. Wir übernehmen 3D-Design, Fertigung in unserer Werkstatt, Logistik, Aufbau und technische Abnahmen, abgesichert durch unser System Auditiertes Projekt."
+    }
+  ]
+},
+    "pt": {
+  "breadcrumb": "Múrcia",
+  "title": "Design e montagem de stands em Múrcia | IFEPA Torre Pacheco | Standarte",
+  "h1": "Design e montagem de stands em Múrcia (IFEPA)",
+  "introText": "A Standarte concebe, fabrica e monta stands de feira na Região de Múrcia, com a IFEPA (Instituição Feiral da Região de Múrcia) em Torre Pacheco como recinto de referência e um calendário forte no âmbito agrícola, pecuário e comercial. Mais de 20 anos de experiência e oficina própria para controlar cada fase: design 3D, carpintaria à medida, logística e montagem com validações no recinto.",
+  "body": "\n        <h2>A IFEPA em Torre Pacheco, o recinto feiral da Região de Múrcia</h2>\n        <p>A Região de Múrcia, a grande horta agroalimentar do sudeste, concentra a sua atividade feiral na <strong>IFEPA (Instituição Feiral da Região de Múrcia)</strong>, em Torre Pacheco. O seu recinto acolhe certames sectoriais de referência, sobretudo no âmbito <strong>agrícola, pecuário e comercial</strong>, que refletem o peso do campo, da maquinaria agrícola e do comércio na economia murciana. Expor aqui com um stand bem resolvido é um dos investimentos comerciais mais rentáveis, e é aí que a Standarte marca a diferença: transformamos o espaço da sua marca num íman de visitantes com elevado retorno.</p>\n        <p>Conhecemos a regulamentação técnica dos pavilhões da IFEPA e o perfil do visitante profissional, o que evita surpresas e atrasos na montagem e nos permite resolver stands à medida, desde um grande expositor de maquinaria agrícola até um espaço comercial de design livre.</p>\n        <p>Montamos nos grandes certames da IFEPA: <a href=\"/pt/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a> (agrícola, maquinaria e pecuária), <a href=\"/pt/ferias/equimur-torre-pacheco\">EQUIMUR</a> (cavalo de raça pura), <a href=\"/pt/ferias/hortifruit-torre-pacheco\">HortiFruit</a> (hortofrutícola) e <a href=\"/pt/ferias/fecons-torre-pacheco\">FECONS</a> (construção).</p>\n\n        <h2>Montagem chave na mão a partir de oficina própria</h2>\n        <p>Gerimos cada projeto de início ao fim a partir da nossa oficina própria: design 3D, fabrico da estrutura e do mobiliário, logística até ao recinto, montagem e instalação, e gestão das validações técnicas que a feira exige. Cada aprovação fica registada com o nosso <a href=\"/pt/projeto-auditado\">Sistema de Projeto Auditado</a>, garantia de 100&nbsp;% de que se constrói o aprovado. Calcule o seu investimento ao instante em <a href=\"/pt/precos\">preços de stands</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Em que feiras de Múrcia a Standarte monta stands?",
+      "a": "Trabalhamos nos certames da IFEPA (Instituição Feiral da Região de Múrcia) em Torre Pacheco, com especial presença nas feiras agrícolas, pecuárias e comerciais, além de qualquer outro recinto da região."
+    },
+    {
+      "q": "O serviço em Múrcia é chave na mão?",
+      "a": "Sim. Tratamos do design 3D, do fabrico na nossa oficina, da logística, da montagem e das validações técnicas, com a garantia do nosso Sistema de Projeto Auditado."
+    }
+  ]
+},
+    "fr": {
+  "breadcrumb": "Murcie",
+  "title": "Conception et montage de stands à Murcie | IFEPA Torre Pacheco | Standarte",
+  "h1": "Conception et montage de stands à Murcie (IFEPA)",
+  "introText": "Standarte conçoit, fabrique et monte des stands dans la Région de Murcie, avec l'IFEPA (institution foire de la Région de Murcie) à Torre Pacheco comme enceinte de référence et un calendrier solide dans les domaines agricole, de l'élevage et commercial. Plus de 20 ans d'expérience et un atelier propre pour maîtriser chaque étape : conception 3D, menuiserie sur mesure, logistique et montage avec validations sur site.",
+  "body": "\n        <h2>L'IFEPA à Torre Pacheco, l'enceinte foire de la Région de Murcie</h2>\n        <p>La Région de Murcie, le grand potager agroalimentaire du sud-est, concentre son activité foire à l'<strong>IFEPA (institution foire de la Région de Murcie)</strong>, à Torre Pacheco. Son enceinte accueille des salons sectoriels de référence, surtout dans les domaines <strong>agricole, de l'élevage et commercial</strong>, qui reflètent le poids de l'agriculture, du machinisme agricole et du commerce dans l'économie murcienne. Exposer ici avec un stand bien conçu est l'un des investissements commerciaux les plus rentables, et c'est là que Standarte fait la différence : nous transformons l'espace de votre marque en un aimant à visiteurs à fort retour.</p>\n        <p>Nous connaissons la réglementation technique des halls de l'IFEPA et le profil du visiteur professionnel, ce qui évite les surprises et les retards de montage et nous permet de réaliser des stands sur mesure, du grand présentoir de machines agricoles à un espace commercial au design libre.</p>\n        <p>Nous montons sur les grands salons de l'IFEPA : <a href=\"/fr/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a> (agriculture, machines et élevage), <a href=\"/fr/ferias/equimur-torre-pacheco\">EQUIMUR</a> (chevaux de pure race), <a href=\"/fr/ferias/hortifruit-torre-pacheco\">HortiFruit</a> (fruits et légumes) et <a href=\"/fr/ferias/fecons-torre-pacheco\">FECONS</a> (construction).</p>\n\n        <h2>Montage clé en main depuis notre atelier</h2>\n        <p>Nous gérons chaque projet de bout en bout depuis notre propre atelier : conception 3D, fabrication de la structure et du mobilier, logistique jusqu'au site, montage et installation, et gestion des validations techniques exigées par le salon. Chaque validation est consignée avec notre <a href=\"/fr/projet-audite\">Système de Projet Audité</a>, garantie à 100&nbsp;% que ce qui est construit correspond à ce qui a été validé. Calculez votre investissement instantanément dans <a href=\"/fr/tarifs\">tarifs des stands</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Sur quels salons de Murcie Standarte monte-t-elle des stands ?",
+      "a": "Nous travaillons sur les salons de l'IFEPA (institution foire de la Région de Murcie) à Torre Pacheco, avec une présence particulière sur les salons agricoles, d'élevage et commerciaux, ainsi que sur tout autre site de la région."
+    },
+    {
+      "q": "Le service à Murcie est-il clé en main ?",
+      "a": "Oui. Nous nous occupons de la conception 3D, de la fabrication dans notre atelier, de la logistique, du montage et des validations techniques, avec la garantie de notre Système de Projet Audité."
+    }
+  ]
+},
+    "it": {
+  "breadcrumb": "Murcia",
+  "title": "Progettazione e allestimento stand a Murcia | IFEPA Torre Pacheco | Standarte",
+  "h1": "Progettazione e allestimento stand a Murcia (IFEPA)",
+  "introText": "Standarte progetta, fabbrica e allestisce stand fieristici nella Regione di Murcia, con l'IFEPA (istituzione fieristica della Regione di Murcia) a Torre Pacheco come quartiere di riferimento e un calendario forte in ambito agricolo, zootecnico e commerciale. Oltre 20 anni di esperienza e officina propria per controllare ogni fase: progettazione 3D, falegnameria su misura, logistica e allestimento con validazioni in sede.",
+  "body": "\n        <h2>L'IFEPA a Torre Pacheco, il quartiere fieristico della Regione di Murcia</h2>\n        <p>La Regione di Murcia, il grande orto agroalimentare del sud-est, concentra la sua attività fieristica all'<strong>IFEPA (istituzione fieristica della Regione di Murcia)</strong>, a Torre Pacheco. Il suo quartiere ospita fiere di settore di riferimento, soprattutto in ambito <strong>agricolo, zootecnico e commerciale</strong>, che riflettono il peso dell'agricoltura, dei macchinari agricoli e del commercio nell'economia murciana. Esporre qui con uno stand ben risolto è uno degli investimenti commerciali più redditizi, ed è qui che Standarte fa la differenza: trasformiamo lo spazio del suo marchio in una calamita di visitatori ad alto ritorno.</p>\n        <p>Conosciamo la normativa tecnica dei padiglioni dell'IFEPA e il profilo del visitatore professionale, il che evita sorprese e ritardi nell'allestimento e ci permette di realizzare stand su misura, da un grande espositore di macchinari agricoli a uno spazio commerciale dal design libero.</p>\n        <p>Allestiamo nelle grandi fiere dell'IFEPA: <a href=\"/it/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a> (agricoltura, macchinari e zootecnia), <a href=\"/it/ferias/equimur-torre-pacheco\">EQUIMUR</a> (cavalli di razza pura), <a href=\"/it/ferias/hortifruit-torre-pacheco\">HortiFruit</a> (ortofrutta) e <a href=\"/it/ferias/fecons-torre-pacheco\">FECONS</a> (edilizia).</p>\n\n        <h2>Allestimento chiavi in mano dalla nostra officina</h2>\n        <p>Gestiamo ogni progetto dall'inizio alla fine dalla nostra officina propria: progettazione 3D, fabbricazione della struttura e degli arredi, logistica fino alla sede, allestimento e installazione, e gestione delle validazioni tecniche richieste dalla fiera. Ogni approvazione viene registrata con il nostro <a href=\"/it/progetto-verificato\">Sistema di Progetto Verificato</a>, garanzia al 100&nbsp;% che si costruisce ciò che è stato approvato. Calcola il tuo investimento all'istante in <a href=\"/it/prezzi\">prezzi degli stand</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "In quali fiere di Murcia Standarte allestisce stand?",
+      "a": "Lavoriamo nelle fiere dell'IFEPA (istituzione fieristica della Regione di Murcia) a Torre Pacheco, con una presenza particolare nelle fiere agricole, zootecniche e commerciali, oltre a qualsiasi altro quartiere della regione."
+    },
+    {
+      "q": "Il servizio a Murcia è chiavi in mano?",
+      "a": "Sì. Ci occupiamo di progettazione 3D, fabbricazione nella nostra officina, logistica, allestimento e validazioni tecniche, con la garanzia del nostro Sistema di Progetto Verificato."
+    }
+  ]
+},
+    "nl": {
+  "breadcrumb": "Murcia",
+  "title": "Ontwerp en montage van beursstands in Murcia | IFEPA Torre Pacheco | Standarte",
+  "h1": "Ontwerp en montage van beursstands in Murcia (IFEPA)",
+  "introText": "Standarte ontwerpt, produceert en bouwt beursstands in de regio Murcia, met IFEPA (de beursinstelling van de regio Murcia) in Torre Pacheco als toonaangevend beurscomplex en een sterke kalender op agrarisch, veeteelt- en commercieel gebied. Ruim 20 jaar ervaring en een eigen werkplaats om elke fase in eigen hand te houden: 3D-ontwerp, maatwerktimmerwerk, logistiek en opbouw met keuringen op de beursvloer.",
+  "body": "\n        <h2>IFEPA in Torre Pacheco, het beurscomplex van de regio Murcia</h2>\n        <p>De regio Murcia, de grote agrovoedingstuin van het zuidoosten, concentreert haar beursactiviteit bij <strong>IFEPA (de beursinstelling van de regio Murcia)</strong>, in Torre Pacheco. Het terrein huisvest toonaangevende vakbeurzen, vooral op <strong>agrarisch, veeteelt- en commercieel</strong> gebied, die het gewicht van landbouw, landbouwmachines en handel in de Murciaanse economie weerspiegelen. Hier exposeren met een goed doordachte stand is een van de meest rendabele commerciële investeringen, en juist daar maakt Standarte het verschil: we maken van de ruimte van uw merk een bezoekersmagneet met een hoog rendement.</p>\n        <p>Wij kennen de technische voorschriften van de IFEPA-hallen en het profiel van de vakbezoeker, wat verrassingen en vertragingen bij de opbouw voorkomt en ons in staat stelt stands op maat te realiseren, van een grote landbouwmachinepresentatie tot een vrij ontworpen commerciële ruimte.</p>\n        <p>Wij bouwen op de grote beurzen van IFEPA: <a href=\"/nl/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a> (landbouw, machines en veeteelt), <a href=\"/nl/ferias/equimur-torre-pacheco\">EQUIMUR</a> (raspaarden), <a href=\"/nl/ferias/hortifruit-torre-pacheco\">HortiFruit</a> (groenten en fruit) en <a href=\"/nl/ferias/fecons-torre-pacheco\">FECONS</a> (bouw).</p>\n\n        <h2>Kant-en-klare opbouw vanuit onze eigen werkplaats</h2>\n        <p>Wij beheren elk project van begin tot eind vanuit onze eigen werkplaats: 3D-ontwerp, fabricage van de structuur en het meubilair, logistiek naar het complex, opbouw en installatie, en het beheer van de technische keuringen die de beurs vereist. Elke goedkeuring wordt vastgelegd met ons <a href=\"/nl/gecontroleerd-project\">Gecontroleerd Project-systeem</a>, een 100&nbsp;%-garantie dat wordt gebouwd wat is goedgekeurd. Bereken uw investering direct bij <a href=\"/nl/prijzen\">standprijzen</a>.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Op welke beurzen in Murcia bouwt Standarte stands?",
+      "a": "We werken op de beurzen van IFEPA (de beursinstelling van de regio Murcia) in Torre Pacheco, met een bijzondere aanwezigheid op agrarische, veeteelt- en handelsbeurzen, en op elk ander complex in de regio."
+    },
+    {
+      "q": "Is de service in Murcia kant-en-klaar?",
+      "a": "Ja. Wij verzorgen het 3D-ontwerp, de fabricage in onze werkplaats, de logistiek, de opbouw en de technische keuringen, met de garantie van ons Gecontroleerd Project-systeem."
+    }
+  ]
+},
+    "zh": {
+  "breadcrumb": "穆尔西亚",
+  "title": "穆尔西亚展台设计与搭建 | IFEPA 托雷帕切科 | Standarte",
+  "h1": "穆尔西亚展台设计与搭建（IFEPA）",
+  "introText": "Standarte在穆尔西亚大区设计、制作并搭建展台，以位于托雷帕切科的穆尔西亚大区会展机构（IFEPA）为核心展馆，其展会日程在农业、畜牧与商业领域尤为突出。20多年经验、自有工厂，全程把控每一个环节：3D设计、定制木作、物流与现场审批下的搭建。",
+  "body": "\n        <h2>托雷帕切科的IFEPA——穆尔西亚大区的会展场馆</h2>\n        <p>穆尔西亚大区是西班牙东南部的“欧洲菜园”，其会展活动集中于位于托雷帕切科的<strong>穆尔西亚大区会展机构（IFEPA）</strong>。场馆举办众多标杆性行业展会，尤其在<strong>农业、畜牧与商业</strong>领域，体现出农业、农机与商贸在穆尔西亚经济中的分量。在这里以一个精心打造的展台参展，是回报最高的商业投资之一，而这正是Standarte的价值所在：我们把您品牌的空间变成高回报的观众磁石。</p>\n        <p>我们熟悉IFEPA各展馆的技术规范和专业观众画像，从而避免搭建中的意外与延误，并能量身打造展台——从大型农机展示到自由设计的商业空间。</p>\n        <p>我们在IFEPA的重要展会上搭建展台：<a href=\"/zh/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a>（农业、农机与畜牧）、<a href=\"/zh/ferias/equimur-torre-pacheco\">EQUIMUR</a>（纯种马）、<a href=\"/zh/ferias/hortifruit-torre-pacheco\">HortiFruit</a>（果蔬）与<a href=\"/zh/ferias/fecons-torre-pacheco\">FECONS</a>（建筑）。</p>\n\n        <h2>自有工厂的一站式搭建</h2>\n        <p>我们在自有工厂中全程管理每个项目：3D设计、结构与家具制作、运输至场馆、搭建安装，以及展会要求的技术审批。每一次确认都通过我们的<a href=\"/zh/shenji-xiangmu\">审计项目系统</a>记录在案，100%保证所建即所批。立即在<a href=\"/zh/jiage\">展台价格</a>中计算您的投资。</p>\n      ",
+  "faqs": [
+    {
+      "q": "Standarte在穆尔西亚的哪些展会搭建展台？",
+      "a": "我们参与位于托雷帕切科的穆尔西亚大区会展机构（IFEPA）的展会，尤其活跃于农业、畜牧与商业类展会，也涵盖该大区的其他任何场馆。"
+    },
+    {
+      "q": "穆尔西亚的服务是一站式的吗？",
+      "a": "是的。我们负责3D设计、自有工厂制作、物流、搭建与技术审批，并以我们的审计项目系统作为保障。"
+    }
+  ]
+},
+    "hi": {
+  "breadcrumb": "मुर्सिया",
+  "title": "मुर्सिया में स्टैंड डिज़ाइन और निर्माण | IFEPA टोरे पाचेको | Standarte",
+  "h1": "मुर्सिया में स्टैंड डिज़ाइन और निर्माण (IFEPA)",
+  "introText": "Standarte मुर्सिया क्षेत्र में प्रदर्शनी स्टैंड डिज़ाइन, निर्माण और स्थापित करता है, जहाँ टोरे पाचेको स्थित IFEPA (मुर्सिया क्षेत्र की मेला संस्था) प्रमुख स्थल है और जिसका कैलेंडर कृषि, पशुधन एवं वाणिज्यिक क्षेत्रों में विशेष रूप से मजबूत है। 20 से अधिक वर्षों का अनुभव और अपनी कार्यशाला के साथ हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, कस्टम बढ़ईगीरी, लॉजिस्टिक्स और परिसर में सत्यापन के साथ स्थापना।",
+  "body": "\n        <h2>टोरे पाचेको की IFEPA — मुर्सिया क्षेत्र का प्रदर्शनी परिसर</h2>\n        <p>मुर्सिया क्षेत्र, दक्षिण-पूर्व का विशाल कृषि-खाद्य उद्यान, अपनी प्रदर्शनी गतिविधि को टोरे पाचेको स्थित <strong>IFEPA (मुर्सिया क्षेत्र की मेला संस्था)</strong> में केंद्रित करता है। इसका परिसर प्रमुख क्षेत्रीय आयोजनों की मेज़बानी करता है, विशेषकर <strong>कृषि, पशुधन और वाणिज्यिक</strong> क्षेत्रों में, जो मुर्सिया की अर्थव्यवस्था में खेती, कृषि-मशीनरी और व्यापार के महत्व को दर्शाते हैं। यहाँ एक सुगठित स्टैंड के साथ प्रदर्शन करना सबसे लाभदायक व्यावसायिक निवेशों में से एक है, और यहीं Standarte फर्क लाता है: हम आपके ब्रांड की जगह को उच्च-प्रतिफल वाला विज़िटर-मैग्नेट बना देते हैं।</p>\n        <p>हम IFEPA हॉल के तकनीकी नियमों और पेशेवर विज़िटर की प्रोफ़ाइल को जानते हैं, जिससे स्थापना में अप्रत्याशित बाधाएँ और देरी टलती हैं और हम कस्टम स्टैंड बना पाते हैं — बड़े कृषि-मशीनरी डिस्प्ले से लेकर मुक्त-डिज़ाइन वाणिज्यिक स्थान तक।</p>\n        <p>हम IFEPA के प्रमुख आयोजनों में स्टैंड बनाते हैं: <a href=\"/hi/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a> (कृषि, मशीनरी एवं पशुधन), <a href=\"/hi/ferias/equimur-torre-pacheco\">EQUIMUR</a> (शुद्ध नस्ल के घोड़े), <a href=\"/hi/ferias/hortifruit-torre-pacheco\">HortiFruit</a> (फल-सब्ज़ी) और <a href=\"/hi/ferias/fecons-torre-pacheco\">FECONS</a> (निर्माण)।</p>\n\n        <h2>अपनी कार्यशाला से टर्नकी स्थापना</h2>\n        <p>हम हर परियोजना को शुरू से अंत तक अपनी कार्यशाला से संभालते हैं: 3D डिज़ाइन, संरचना और फ़र्नीचर का निर्माण, परिसर तक लॉजिस्टिक्स, स्थापना, और मेले द्वारा अपेक्षित तकनीकी सत्यापन। हर स्वीकृति हमारे <a href=\"/hi/audit-pariyojana\">ऑडिटेड प्रोजेक्ट सिस्टम</a> में दर्ज होती है — 100% गारंटी कि जो स्वीकृत हुआ वही बनता है। <a href=\"/hi/kimat\">स्टैंड की कीमतें</a> में अपना निवेश तुरंत जानें।</p>\n      ",
+  "faqs": [
+    {
+      "q": "Standarte मुर्सिया की किन मेलों में स्टैंड बनाता है?",
+      "a": "हम टोरे पाचेको में IFEPA (मुर्सिया क्षेत्र की मेला संस्था) के आयोजनों में काम करते हैं, विशेषकर कृषि, पशुधन और वाणिज्यिक मेलों में, साथ ही क्षेत्र के किसी भी अन्य परिसर में।"
+    },
+    {
+      "q": "क्या मुर्सिया में सेवा टर्नकी है?",
+      "a": "हाँ। हम 3D डिज़ाइन, अपनी कार्यशाला में निर्माण, लॉजिस्टिक्स, स्थापना और तकनीकी सत्यापन संभालते हैं, जिसकी गारंटी हमारा ऑडिटेड प्रोजेक्ट सिस्टम देता है।"
+    }
+  ]
+},
+    "ko": {
+  "breadcrumb": "무르시아",
+  "title": "무르시아 부스 디자인·시공 | IFEPA 토레파체코 | Standarte",
+  "h1": "무르시아 부스 디자인·시공 (IFEPA)",
+  "introText": "Standarte는 토레파체코에 있는 무르시아 지방 전시기관(IFEPA)을 중심 전시장으로 하여 무르시아 지방에서 전시 부스를 디자인·제작·시공합니다. 농업·축산·상업 분야에서 특히 강한 전시 일정을 지원하며, 20년 이상의 경력과 자체 공방으로 3D 디자인, 맞춤 목공, 물류, 전시장 승인까지 모든 단계를 직접 관리합니다.",
+  "body": "\n        <h2>토레파체코의 IFEPA — 무르시아 지방의 전시장</h2>\n        <p>동남부의 거대한 농식품 텃밭인 무르시아 지방은 전시 활동을 토레파체코에 있는 <strong>무르시아 지방 전시기관(IFEPA)</strong>에 집중하고 있습니다. 이곳은 특히 <strong>농업·축산·상업</strong> 분야의 주요 전시회를 개최하며, 이는 무르시아 경제에서 농업, 농기계, 상업이 차지하는 비중을 반영합니다. 잘 구성된 부스로 이곳에 참가하는 것은 가장 수익성 높은 상업적 투자 중 하나이며, 바로 여기서 Standarte가 차별화됩니다. 우리는 귀사 브랜드의 공간을 높은 투자 대비 효과의 방문객 자석으로 만듭니다.</p>\n        <p>우리는 IFEPA 전시홀의 기술 규정과 전문 방문객의 특성을 잘 알고 있어 시공 중 예상치 못한 문제와 지연을 방지하고, 대형 농기계 전시부터 자유 디자인 상업 공간까지 맞춤 부스를 구현합니다.</p>\n        <p>우리는 IFEPA의 주요 전시회에서 부스를 시공합니다: <a href=\"/ko/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a>(농업·기계·축산), <a href=\"/ko/ferias/equimur-torre-pacheco\">EQUIMUR</a>(순종마), <a href=\"/ko/ferias/hortifruit-torre-pacheco\">HortiFruit</a>(청과), <a href=\"/ko/ferias/fecons-torre-pacheco\">FECONS</a>(건설).</p>\n\n        <h2>자체 공방을 통한 턴키 시공</h2>\n        <p>우리는 자체 공방에서 모든 프로젝트를 처음부터 끝까지 관리합니다: 3D 디자인, 구조물·가구 제작, 전시장까지의 물류, 설치, 그리고 전시회가 요구하는 기술 승인. 모든 승인은 당사의 <a href=\"/ko/gamsa-peurojekteu\">감사 프로젝트 시스템</a>에 기록되어 승인된 그대로 시공됨을 100% 보장합니다. <a href=\"/ko/gagyeok\">부스 가격</a>에서 투자 비용을 바로 계산해 보세요.</p>\n      ",
+  "faqs": [
+    {
+      "q": "Standarte는 무르시아의 어떤 전시회에서 부스를 시공하나요?",
+      "a": "토레파체코의 무르시아 지방 전시기관(IFEPA) 전시회, 특히 농업·축산·상업 전시회를 중심으로 작업하며 이 지방의 다른 어떤 전시장에서도 작업합니다."
+    },
+    {
+      "q": "무르시아 서비스는 턴키인가요?",
+      "a": "네. 3D 디자인, 자체 공방 제작, 물류, 시공, 기술 승인까지 모두 담당하며 당사의 감사 프로젝트 시스템으로 보증합니다."
+    }
+  ]
+},
+    "ja": {
+  "breadcrumb": "ムルシア",
+  "title": "ムルシアの展示ブース設計・施工 | IFEPA トレ・パチェコ | Standarte",
+  "h1": "ムルシアの展示ブース設計・施工（IFEPA）",
+  "introText": "Standarteは、トレ・パチェコのムルシア州見本市機構（IFEPA）を基幹会場として、ムルシア州で展示ブースの設計・製作・施工を行います。農業・畜産・商業分野でとくに強い開催日程に対応し、20年以上の経験と自社工房で、3D設計、オーダーメイド木工、物流、会場審査までの全工程を管理します。",
+  "body": "\n        <h2>トレ・パチェコのIFEPA——ムルシア州の展示会場</h2>\n        <p>南東部の広大な農食料の菜園であるムルシア州は、その見本市活動をトレ・パチェコの<strong>ムルシア州見本市機構（IFEPA）</strong>に集約しています。会場ではとくに<strong>農業・畜産・商業</strong>分野の主要な業界展示会が開催され、ムルシア経済における農業・農業機械・商業の比重を反映しています。ここで練り込まれたブースで出展することは最も収益性の高い商業投資の一つであり、まさにそこでStandarteが違いを生みます。私たちは貴社ブランドの空間を、投資対効果の高い来場者の磁石に変えます。</p>\n        <p>私たちはIFEPA各ホールの技術規定と専門来場者の特性を熟知しており、施工中の想定外や遅延を防ぎ、大型農業機械の展示から自由設計の商業空間まで、オーダーメイドのブースを実現します。</p>\n        <p>私たちはIFEPAの主要な展示会でブースを施工します：<a href=\"/ja/ferias/fame-innowa-torre-pacheco\">FAME Innowa</a>（農業・機械・畜産）、<a href=\"/ja/ferias/equimur-torre-pacheco\">EQUIMUR</a>（純血種の馬）、<a href=\"/ja/ferias/hortifruit-torre-pacheco\">HortiFruit</a>（青果）、<a href=\"/ja/ferias/fecons-torre-pacheco\">FECONS</a>（建設）。</p>\n\n        <h2>自社工房によるターンキー施工</h2>\n        <p>私たちは自社工房で各プロジェクトを最初から最後まで管理します：3D設計、構造体と什器の製作、会場までの物流、施工・設置、そして展示会が求める技術審査。すべての承認は当社の<a href=\"/ja/監査プロジェクト\">監査プロジェクト・システム</a>に記録され、承認どおりに施工されることを100%保証します。<a href=\"/ja/料金\">ブース価格</a>で投資額を即座に計算できます。</p>\n      ",
+  "faqs": [
+    {
+      "q": "Standarteはムルシアのどの展示会でブースを施工しますか？",
+      "a": "トレ・パチェコのムルシア州見本市機構（IFEPA）の展示会、とくに農業・畜産・商業系の展示会を中心に、同州の他の会場でも対応します。"
+    },
+    {
+      "q": "ムルシアのサービスはターンキーですか？",
+      "a": "はい。3D設計、自社工房での製作、物流、施工、技術審査までを担当し、当社の監査プロジェクト・システムで保証します。"
+    }
+  ]
+}
   },
   "proyecto_auditado": {
     "es": {
