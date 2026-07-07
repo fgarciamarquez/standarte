@@ -115,3 +115,10 @@ la última edición REAL de su contenido, no la del build.
   Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
   Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
   prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
+- **Vigo** (ES) — polo industrial atlántico. Recinto **IFEVI** (Cotogrande, a 100 m del
+  aeropuerto de Vigo-Peinador): ~116.000 m² totales, 3 pabellones de 8.000/10.000/12.000 m²
+  (~30.000 m² de exposición), salas de 100–160 m², ~100 eventos y 1M visitantes/año. Sección
+  técnica del recinto incluida. Ejes Navalia (naval), Conxemar (pesca/mar) y Nortrans
+  (transporte). Cobertura gallega enlazada: las 11 ferias de Vigo + Santiago (Fairway, Maker
+  Faire, GEDET, SEMERGEN, SESMI) + A Coruña (Fórum Gastronómico, Mundos Digitales, BioCultura)
+  a sus páginas y hubs. URL sin cambios.
