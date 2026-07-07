@@ -115,6 +115,15 @@ la última edición REAL de su contenido, no la del build.
   Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
   Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
   prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
+- **Bilbao** (ES + EN) — gran capital industrial del norte. Recinto **BEC (Bilbao Exhibition
+  Centre)** en Ansio (Barakaldo), conectado por metro: 150.000 m² de exposición en 6
+  pabellones diáfanos sin columnas (4×15.000 + 2×21.000 m²), inaugurado en 2004, con la
+  Bizkaia Arena (mayor sala polivalente de España, 26.000 personas). Sección técnica del
+  recinto incluida, con énfasis industrial (maquinaria pesada, suelos reforzados, CAE/PRL,
+  importación temporal de maquinaria). Las 8 ferias del BEC enlazadas por sector: BIEMH,
+  Pumps & Valves, Maintenance (maquinaria industrial); Subcontratación, Addit3D (metal);
+  BeDigital (digital); World Maritime Week, Marine Energy Week (naval/energía). Cobertura
+  ibérica a Madrid, Barcelona, Zaragoza, Vigo, Lisboa y Oporto. URL sin cambios.
 - **Madrid** (ES + EN) — la plaza más competida y el mayor polo ferial de España. Recinto
   **IFEMA (Feria de Madrid)** (Campo de las Naciones, junto a Barajas): 12 pabellones,
   >200.000 m² cubiertos, pabellones 6/8/10 hasta 15 m de altura libre (dobles alturas y
