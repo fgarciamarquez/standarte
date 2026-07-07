@@ -542,6 +542,18 @@
   };
   // Móvil: cuando hay muchas ferias, la nube de píldoras se condensa en un <details>
   // (pila de botones) que se despliega al tocar, para no saturar antes de las FAQs.
+  // La ofuscación es SOLO para móvil: en escritorio el <details> debe estar abierto de
+  // verdad (Chrome moderno oculta el contenido de un <details> cerrado con
+  // content-visibility, algo que no se puede contrarrestar solo con CSS en la lista hija).
+  // El markup lleva `open` por defecto (visible sin JS y para los crawlers); esta acción
+  // lo colapsa en móvil al montar y lo reabre al cruzar el breakpoint hacia escritorio.
+  function chipCollapse(node) {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const apply = () => { node.open = !mq.matches; };
+    apply();
+    mq.addEventListener('change', apply);
+    return { destroy() { mq.removeEventListener('change', apply); } };
+  }
   const FAIRS_COLLAPSE_THRESHOLD = 8;
   const fairsCloudOpenCta = {
     es: (n) => `Ver las ${n} ferias`,
@@ -1893,7 +1905,7 @@
                   {#if regionFairs.length > FAIRS_COLLAPSE_THRESHOLD}
                     <!-- Nube numerosa: se condensa en móvil (pila de botones) y se
                          despliega al tocar. En escritorio el CSS la fuerza abierta. -->
-                    <details class="fairs-collapse">
+                    <details class="fairs-collapse" open use:chipCollapse>
                       <summary class="fairs-collapse-summary">
                         <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
                         <span class="fairs-collapse-open">{(fairsCloudOpenCta[lang] || fairsCloudOpenCta.es)(regionFairs.length)}</span>
@@ -1921,7 +1933,7 @@
                 <section class="activity-module sidebar-module" aria-label={ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}>
                   <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h2>
                   {#if regionActivities.length > ACTIVITIES_COLLAPSE_THRESHOLD}
-                    <details class="fairs-collapse">
+                    <details class="fairs-collapse" open use:chipCollapse>
                       <summary class="fairs-collapse-summary">
                         <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
                         <span class="fairs-collapse-open">{(activitiesCloudOpenCta[lang] || activitiesCloudOpenCta.es)(regionActivities.length)}</span>
