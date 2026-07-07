@@ -115,6 +115,13 @@ la última edición REAL de su contenido, no la del build.
   Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
   Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
   prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
+- **Portugal Sur** (ES + PT + EN) — página *regional* (Alentejo + Algarve), sin ciudad ni
+  recinto único: Oro adaptado a región. Recinto de referencia **Parque de Feiras e
+  Exposições de Beja «Manuel de Castro e Brito»** (~10 ha, sede de OVIBEJA y VINIPAX);
+  en el Algarve, FATACIL (Lagoa). Solo 2 ferias con página propia en el mapa —OVIBEJA
+  (alimentación) y VINIPAX (vino), ambas en Beja— enlazadas a sus páginas y hubs; el resto
+  (FATACIL, FACECO, São Martinho, Feira d'Aires) se menciona sin enlace por no tener página.
+  Cobertura ibérica enlazada a Lisboa, Oporto, Madrid y Barcelona. URL sin cambios.
 - **Vigo** (ES) — polo industrial atlántico. Recinto **IFEVI** (Cotogrande, a 100 m del
   aeropuerto de Vigo-Peinador): ~116.000 m² totales, 3 pabellones de 8.000/10.000/12.000 m²
   (~30.000 m² de exposición), salas de 100–160 m², ~100 eventos y 1M visitantes/año. Sección
