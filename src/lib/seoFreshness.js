@@ -21,7 +21,9 @@ export const seoFreshness = {
   bilbao: '2026-07-07',
   malaga: '2026-07-07',
   sevilla: '2026-07-07',
-  barcelona: '2026-07-07'
+  barcelona: '2026-07-07',
+  alicante: '2026-07-07',
+  murcia: '2026-07-07'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

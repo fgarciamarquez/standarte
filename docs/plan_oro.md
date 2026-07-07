@@ -89,6 +89,17 @@ la última edición REAL de su contenido, no la del build.
   traduce a los otros 10 idiomas con subagentes, insertando en `richSeoData.js`. Para una
   *primera prueba* puede aplicarse solo a ES y propagar tras validar el modelo.
 
+## Páginas Absolutistas nuevas (no Oro)
+
+Ciudades creadas desde cero con el modelo **Absolutista** (ligero: intro + 2 H2 + 2 FAQs,
+sin nube de ferias porque aún no tenemos ferias suyas en el mapa), en los **11 idiomas**
+(routes + cityData + richSeoData + mapeo de región + cityKeys):
+
+- **Alicante** — recinto **IFA (Institución Ferial Alicantina)** en Elche; ejes Futurmoda
+  (calzado/marroquinería), Alicante Gastronómica, Firauto. Región `comunidadvalenciana`.
+- **Murcia** — recinto **IFEPA (Institución Ferial de la Región de Murcia)** en Torre
+  Pacheco; enfoque agrícola, ganadero y comercial. Región `murcia`.
+
 ## Historial de aplicación
 
 - **Badajoz** (ES) — primera aplicación (prueba). Objetivo: acaparar el SEO de la ciudad.

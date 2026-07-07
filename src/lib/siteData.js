@@ -39,6 +39,8 @@ export const routes = {
     salamanca: 'diseno_montaje_stands_salamanca',
     mallorca: 'diseno_montaje_stands_mallorca',
     valencia: 'diseno_montaje_stands_valencia',
+    alicante: 'diseno_montaje_stands_alicante',
+    murcia: 'diseno_montaje_stands_murcia',
     oporto: 'diseno_montaje_stands_oporto',
     portugal_sur: 'diseno_montaje_stands_portugal_sur',
     malaga: 'diseno_montaje_stands_malaga',
@@ -73,6 +75,8 @@ export const routes = {
     salamanca: 'stand_design_assembly_salamanca',
     mallorca: 'stand_design_assembly_mallorca',
     valencia: 'stand_design_assembly_valencia',
+    alicante: 'stand_design_assembly_alicante',
+    murcia: 'stand_design_assembly_murcia',
     oporto: 'stand_design_assembly_porto',
     portugal_sur: 'stand_design_assembly_southern_portugal',
     malaga: 'stand_design_assembly_malaga',
@@ -107,6 +111,8 @@ export const routes = {
     salamanca: 'messestand_design_montage_salamanca',
     mallorca: 'messestand_design_montage_mallorca',
     valencia: 'messestand_design_montage_valencia',
+    alicante: 'messestand_design_montage_alicante',
+    murcia: 'messestand_design_montage_murcia',
     oporto: 'messestand_design_montage_porto',
     portugal_sur: 'messestand_design_montage_sudportugal',
     malaga: 'messestand_design_montage_malaga',
@@ -141,6 +147,8 @@ export const routes = {
     salamanca: 'salamanca_zhantai_sheji_dajian',
     mallorca: 'mallorca_zhantai_sheji_dajian',
     valencia: 'valencia_zhantai_sheji_dajian',
+    alicante: 'alicante_zhantai_sheji_dajian',
+    murcia: 'murcia_zhantai_sheji_dajian',
     oporto: 'porto_zhantai_sheji_dajian',
     portugal_sur: 'nan_putaoya_zhantai_sheji_dajian',
     malaga: 'malaga_zhantai_sheji_dajian',
@@ -175,6 +183,8 @@ export const routes = {
     salamanca: 'salamanca_stand_dizain_asembli',
     mallorca: 'mallorca_stand_dizain_asembli',
     valencia: 'valencia_stand_dizain_asembli',
+    alicante: 'alicante_stand_dizain_asembli',
+    murcia: 'murcia_stand_dizain_asembli',
     oporto: 'porto_stand_dizain_asembli',
     portugal_sur: 'dakshini_purtagal_stand_dizain_asembli',
     malaga: 'malaga_stand_dizain_asembli',
@@ -209,6 +219,8 @@ export const routes = {
     salamanca: 'design_montagem_stands_salamanca',
     mallorca: 'design_montagem_stands_mallorca',
     valencia: 'design_montagem_stands_valencia',
+    alicante: 'design_montagem_stands_alicante',
+    murcia: 'design_montagem_stands_murcia',
     oporto: 'design_montagem_stands_porto',
     portugal_sur: 'design_montagem_stands_sul_portugal',
     malaga: 'design_montagem_stands_malaga',
@@ -243,6 +255,8 @@ export const routes = {
     salamanca: 'conception_montage_stands_salamanque',
     mallorca: 'conception_montage_stands_mallorca',
     valencia: 'conception_montage_stands_valence',
+    alicante: 'conception_montage_stands_alicante',
+    murcia: 'conception_montage_stands_murcie',
     oporto: 'conception_montage_stands_porto',
     portugal_sur: 'conception_montage_stands_sud_portugal',
     malaga: 'conception_montage_stands_malaga',
@@ -277,6 +291,8 @@ export const routes = {
     salamanca: 'progettazione_montaggio_stand_salamanca',
     mallorca: 'progettazione_montaggio_stand_mallorca',
     valencia: 'progettazione_montaggio_stand_valencia',
+    alicante: 'progettazione_montaggio_stand_alicante',
+    murcia: 'progettazione_montaggio_stand_murcia',
     oporto: 'progettazione_montaggio_stand_porto',
     portugal_sur: 'progettazione_montaggio_stand_sud_portogallo',
     malaga: 'progettazione_montaggio_stand_malaga',
@@ -311,6 +327,8 @@ export const routes = {
     salamanca: 'salamanca-bujeu-dijain-jorip',
     mallorca: 'mallorca-bujeu-dijain-jorip',
     valencia: 'valencia-bujeu-dijain-jorip',
+    alicante: 'alicante-bujeu-dijain-jorip',
+    murcia: 'murcia-bujeu-dijain-jorip',
     oporto: 'porto-bujeu-dijain-jorip',
     portugal_sur: 'nambu-poreutugal-buseu-dijain-jorip',
     malaga: 'malaga-bujeu-dijain-jorip',
@@ -345,6 +363,8 @@ export const routes = {
     salamanca: 'サラマンカ展示会ブース設計施工',
     mallorca: 'マヨルカ展示会ブース設計施工',
     valencia: 'バレンシア展示会ブース設計施工',
+    alicante: 'アリカンテ展示会ブース設計施工',
+    murcia: 'ムルシア展示会ブース設計施工',
     oporto: 'ポルト展示会ブース設計施工',
     portugal_sur: '南ポルトガル展示会ブース設計施工',
     malaga: 'マラガ展示会ブース設計施工',
@@ -379,6 +399,8 @@ export const routes = {
     salamanca: 'standontwerp_montage_salamanca',
     mallorca: 'standontwerp_montage_mallorca',
     valencia: 'standontwerp_montage_valencia',
+    alicante: 'standontwerp_montage_alicante',
+    murcia: 'standontwerp_montage_murcia',
     oporto: 'standontwerp_montage_porto',
     portugal_sur: 'standontwerp_montage_zuid_portugal',
     malaga: 'standontwerp_montage_malaga',
@@ -1276,6 +1298,128 @@ export const copy = {
 };
 
 export const cityData = {
+  alicante: {
+    "city": {
+      "es": "Alicante",
+      "en": "Alicante",
+      "de": "Alicante",
+      "pt": "Alicante",
+      "fr": "Alicante",
+      "it": "Alicante",
+      "nl": "Alicante",
+      "zh": "阿利坎特",
+      "hi": "अलिकांते",
+      "ko": "알리칸테",
+      "ja": "アリカンテ"
+    },
+    "content": {
+      "es": {
+        "intro": "Con más de 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Alicante —con la Institución Ferial Alicantina (IFA) en Elche como recinto de referencia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+      },
+      "en": {
+        "intro": "With more than 20 years of experience building temporary architecture from our own workshop, Standarte designs and installs exhibition stands in Alicante — with the Institución Ferial Alicantina (IFA) in Elche as its flagship venue — controlling every stage: 3D design, fabrication, logistics, installation and on-site venue approvals.",
+        "detail": "We give agencies and exhibitors the reassurance of a build with no surprises and an exceptional attention to detail."
+      },
+      "de": {
+        "intro": "Mit über 20 Jahren Erfahrung im Bau temporärer Architektur aus der eigenen Werkstatt plant und montiert Standarte Messestände in Alicante – mit der Institución Ferial Alicantina (IFA) in Elche als führendem Veranstaltungsort – und steuert jede Phase selbst: 3D-Design, Fertigung, Logistik, Aufbau und die technischen Abnahmen am Veranstaltungsort.",
+        "detail": "Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und eine außergewöhnliche Liebe zum Detail."
+      },
+      "pt": {
+        "intro": "Com mais de 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte concebe e monta stands em Alicante —com a Institución Ferial Alicantina (IFA) em Elche como recinto de referência— controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
+        "detail": "Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
+      },
+      "fr": {
+        "intro": "Forts de plus de 20 ans d'expérience dans la construction d'architecture éphémère depuis notre propre atelier, nous concevons et montons chez Standarte des stands à Alicante — avec l'Institución Ferial Alicantina (IFA) à Elche comme enceinte de référence — en maîtrisant chaque étape : conception 3D, fabrication, logistique, installation et validations sur site.",
+        "detail": "Nous offrons aux agences et aux exposants la sérénité d'un montage sans mauvaises surprises et une attention aux détails exceptionnelle."
+      },
+      "it": {
+        "intro": "Con oltre 20 anni di esperienza nella costruzione di architetture effimere dalla nostra officina propria, Standarte progetta e allestisce stand ad Alicante —con l'Institución Ferial Alicantina (IFA) a Elche come quartiere di riferimento— mantenendo il controllo su ogni fase: progettazione 3D, fabbricazione, logistica, installazione e validazioni in sede.",
+        "detail": "Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune."
+      },
+      "nl": {
+        "intro": "Met ruim 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en bouwt Standarte beursstands in Alicante — met de Institución Ferial Alicantina (IFA) in Elche als toonaangevend beurscomplex — waarbij wij elke fase in eigen hand houden: 3D-ontwerp, fabricage, logistiek, opbouw en de keuringen op de beursvloer.",
+        "detail": "Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail."
+      },
+      "zh": {
+        "intro": "凭借20多年在自有工厂打造临展空间的经验，Standarte在阿利坎特设计并搭建展台——以位于埃尔切的阿利坎特会展机构（IFA）为核心展馆——全程把控每一个环节：3D设计、定制生产、物流、现场安装与场馆审批。",
+        "detail": "我们为代理公司和直接参展商提供毫无意外的搭建保障，以及对细节的极致关注。"
+      },
+      "hi": {
+        "intro": "अपनी कार्यशाला में अल्पकालिक वास्तुकला के निर्माण के 20 से अधिक वर्षों के अनुभव के साथ, Standarte अलिकांते में प्रदर्शनी स्टैंड डिज़ाइन और स्थापित करता है — जहाँ एल्चे स्थित Institución Ferial Alicantina (IFA) प्रमुख स्थल है — और हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और परिसर में तकनीकी सत्यापन।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।"
+      },
+      "ko": {
+        "intro": "자체 공방에서 임시 건축물을 제작해 온 20년 이상의 경력을 바탕으로, Standarte는 엘체의 알리칸테 전시기관(IFA)을 중심 전시장으로 하여 알리칸테에서 부스를 디자인·시공하며 3D 디자인, 제작, 물류, 설치, 전시장 승인까지 모든 단계를 직접 관리합니다.",
+        "detail": "에이전시와 참가업체에 예상치 못한 문제 없는 시공과 탁월한 디테일을 보장합니다."
+      },
+      "ja": {
+        "intro": "自社工房で仮設建築を手がけてきた20年以上の経験をもとに、Standarteはエルチェのアリカンテ見本市機構（IFA）を基幹会場として、アリカンテでブースを設計・施工し、3D設計、製作、物流、設置、会場審査までの全工程を管理します。",
+        "detail": "代理店や出展者に、想定外のない施工と卓越したディテールへのこだわりをお約束します。"
+      }
+    }
+  },
+  murcia: {
+    "city": {
+      "es": "Murcia",
+      "en": "Murcia",
+      "de": "Murcia",
+      "pt": "Múrcia",
+      "fr": "Murcie",
+      "it": "Murcia",
+      "nl": "Murcia",
+      "zh": "穆尔西亚",
+      "hi": "मुर्सिया",
+      "ko": "무르시아",
+      "ja": "ムルシア"
+    },
+    "content": {
+      "es": {
+        "intro": "Con más de 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en la Región de Murcia —con IFEPA en Torre Pacheco como recinto de referencia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+      },
+      "en": {
+        "intro": "With more than 20 years of experience building temporary architecture from our own workshop, Standarte designs and installs exhibition stands in the Region of Murcia — with IFEPA in Torre Pacheco as its flagship venue — controlling every stage: 3D design, fabrication, logistics, installation and on-site venue approvals.",
+        "detail": "We give agencies and exhibitors the reassurance of a build with no surprises and an exceptional attention to detail."
+      },
+      "de": {
+        "intro": "Mit über 20 Jahren Erfahrung im Bau temporärer Architektur aus der eigenen Werkstatt plant und montiert Standarte Messestände in der Region Murcia – mit der IFEPA in Torre Pacheco als führendem Veranstaltungsort – und steuert jede Phase selbst: 3D-Design, Fertigung, Logistik, Aufbau und die technischen Abnahmen am Veranstaltungsort.",
+        "detail": "Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und eine außergewöhnliche Liebe zum Detail."
+      },
+      "pt": {
+        "intro": "Com mais de 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte concebe e monta stands na Região de Múrcia —com a IFEPA em Torre Pacheco como recinto de referência— controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
+        "detail": "Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
+      },
+      "fr": {
+        "intro": "Forts de plus de 20 ans d'expérience dans la construction d'architecture éphémère depuis notre propre atelier, nous concevons et montons chez Standarte des stands dans la Région de Murcie — avec l'IFEPA à Torre Pacheco comme enceinte de référence — en maîtrisant chaque étape : conception 3D, fabrication, logistique, installation et validations sur site.",
+        "detail": "Nous offrons aux agences et aux exposants la sérénité d'un montage sans mauvaises surprises et une attention aux détails exceptionnelle."
+      },
+      "it": {
+        "intro": "Con oltre 20 anni di esperienza nella costruzione di architetture effimere dalla nostra officina propria, Standarte progetta e allestisce stand nella Regione di Murcia —con l'IFEPA a Torre Pacheco come quartiere di riferimento— mantenendo il controllo su ogni fase: progettazione 3D, fabbricazione, logistica, installazione e validazioni in sede.",
+        "detail": "Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune."
+      },
+      "nl": {
+        "intro": "Met ruim 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en bouwt Standarte beursstands in de regio Murcia — met IFEPA in Torre Pacheco als toonaangevend beurscomplex — waarbij wij elke fase in eigen hand houden: 3D-ontwerp, fabricage, logistiek, opbouw en de keuringen op de beursvloer.",
+        "detail": "Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail."
+      },
+      "zh": {
+        "intro": "凭借20多年在自有工厂打造临展空间的经验，Standarte在穆尔西亚大区设计并搭建展台——以位于托雷帕切科的穆尔西亚大区会展机构（IFEPA）为核心展馆——全程把控每一个环节：3D设计、定制生产、物流、现场安装与场馆审批。",
+        "detail": "我们为代理公司和直接参展商提供毫无意外的搭建保障，以及对细节的极致关注。"
+      },
+      "hi": {
+        "intro": "अपनी कार्यशाला में अल्पकालिक वास्तुकला के निर्माण के 20 से अधिक वर्षों के अनुभव के साथ, Standarte मुर्सिया क्षेत्र में प्रदर्शनी स्टैंड डिज़ाइन और स्थापित करता है — जहाँ टोरे पाचेको स्थित IFEPA प्रमुख स्थल है — और हम हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और परिसर में तकनीकी सत्यापन।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।"
+      },
+      "ko": {
+        "intro": "자체 공방에서 임시 건축물을 제작해 온 20년 이상의 경력을 바탕으로, Standarte는 토레파체코의 무르시아 지방 전시기관(IFEPA)을 중심 전시장으로 하여 무르시아 지방에서 부스를 디자인·시공하며 3D 디자인, 제작, 물류, 설치, 전시장 승인까지 모든 단계를 직접 관리합니다.",
+        "detail": "에이전시와 참가업체에 예상치 못한 문제 없는 시공과 탁월한 디테일을 보장합니다."
+      },
+      "ja": {
+        "intro": "自社工房で仮設建築を手がけてきた20年以上の経験をもとに、Standarteはトレ・パチェコのムルシア州見本市機構（IFEPA）を基幹会場として、ムルシア州でブースを設計・施工し、3D設計、製作、物流、設置、会場審査までの全工程を管理します。",
+        "detail": "代理店や出展者に、想定外のない施工と卓越したディテールへのこだわりをお約束します。"
+      }
+    }
+  },
   valladolid: {
     "city": {
       "es": "Valladolid",
