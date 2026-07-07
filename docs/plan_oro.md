@@ -115,6 +115,16 @@ la última edición REAL de su contenido, no la del build.
   Empack, ITF, Portojóia, Decor Hotel, Expocarne, CIOCV Braga, RE+, Elétrica, EnerH2O,
   Essência do Vinho, Simplesmente Vinho, Portugal Smart Cities) enlazadas a sus páginas —
   prueba de cobertura real que ningún competidor local puede demostrar. URL sin cambios.
+- **Madrid** (ES + EN) — la plaza más competida y el mayor polo ferial de España. Recinto
+  **IFEMA (Feria de Madrid)** (Campo de las Naciones, junto a Barajas): 12 pabellones,
+  >200.000 m² cubiertos, pabellones 6/8/10 hasta 15 m de altura libre (dobles alturas y
+  suspensiones), 3 centros de convenciones, 14.000 plazas de parking, >60 ferias y 3M
+  visitantes/año. Sección técnica del recinto incluida. Las 27 ferias del clúster de Madrid
+  (FITUR, Fruit Attraction, Salón Gourmets, MOMAD, Intergift, Madridjoya, Bisutex, Salón
+  Look, Expodental, Expoóptica, OPTOM, Farmaforum, Expomedes, Veteco, Rebuild, The District,
+  Piscimad, Smart Doors, Madrid Tech Show, Trafic, Global Mobility Call, Genera, Empack,
+  Iberpet, Expofranquicia, ARCO, Madrid Fusión) enlazadas a sus páginas y hubs por sector.
+  Cobertura ibérica a Barcelona, Valencia, Bilbao, Sevilla, Lisboa y Oporto. URL sin cambios.
 - **Portugal Sur** (ES + PT + EN) — página *regional* (Alentejo + Algarve), sin ciudad ni
   recinto único: Oro adaptado a región. Recinto de referencia **Parque de Feiras e
   Exposições de Beja «Manuel de Castro e Brito»** (~10 ha, sede de OVIBEJA y VINIPAX);
