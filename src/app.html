@@ -52,21 +52,14 @@
           var ua = navigator.userAgent.toLowerCase();
           if (ua.indexOf('googlebot') !== -1 || ua.indexOf('bingbot') !== -1 || ua.indexOf('crawler') !== -1 || ua.indexOf('spider') !== -1) return;
           
+          // Solo redirigimos si el usuario ELIGIÓ antes un idioma (preferencia guardada).
+          // Antes, sin preferencia, se auto-detectaba el idioma del navegador y se
+          // redirigía la home ES a /xx/. Eliminado por coherencia con el resto del sitio:
+          // auto-redirigir por idioma es un antipatrón SEO (Google recomienda hreflang +
+          // elección del usuario). La home ES permanece en '/' y el cambio es explícito.
           var savedLang = localStorage.getItem('standarte_lang');
-          if (savedLang === 'es') return;
-          if (savedLang && savedLang !== 'es') {
+          if (savedLang && savedLang !== 'es' && ['en','de','zh','hi','pt','fr','it','ko','ja'].includes(savedLang)) {
             window.location.replace('/' + savedLang + '/');
-            return;
-          }
-          if (!savedLang) {
-            var browserLang = (navigator.language || navigator.userLanguage || '').substring(0, 2).toLowerCase();
-            if (browserLang === 'es') return;
-            var supportedLangs = ['en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja'];
-            if (supportedLangs.includes(browserLang)) {
-              window.location.replace('/' + browserLang + '/');
-            } else {
-              window.location.replace('/en/');
-            }
           }
         }
       })();
