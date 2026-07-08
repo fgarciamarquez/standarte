@@ -1,5 +1,131 @@
 export const fairsData = [
   {
+    "name": "Infoagro Exhibition",
+    "country": "es",
+    "slug": "infoagro-exhibition-aguadulce",
+    "city": "Aguadulce",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Expolevante",
+    "country": "es",
+    "slug": "expolevante-el-ejido",
+    "city": "El Ejido",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Sun&Blue Congress",
+    "country": "es",
+    "slug": "sun-blue-congress-almeria",
+    "city": "Almería",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Expoliva",
+    "country": "es",
+    "slug": "expoliva-jaen",
+    "city": "Jaén",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Ibercaza",
+    "country": "es",
+    "slug": "ibercaza-jaen",
+    "city": "Jaén",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria de los Pueblos",
+    "country": "es",
+    "slug": "feria-de-los-pueblos-jaen",
+    "city": "Jaén",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Congreso Internacional de Frutos Rojos",
+    "country": "es",
+    "slug": "congreso-internacional-frutos-rojos-huelva",
+    "city": "Huelva",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria del Jamón y Cerdo Ibérico de Aracena",
+    "country": "es",
+    "slug": "feria-jamon-cerdo-iberico-aracena",
+    "city": "Aracena",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria Nacional de la Gamba, la Chirla y el Boquerón",
+    "country": "es",
+    "slug": "feria-gamba-chirla-boqueron-punta-umbria",
+    "city": "Punta Umbría",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Intercaza",
+    "country": "es",
+    "slug": "intercaza-cordoba",
+    "city": "Córdoba",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches",
+    "country": "es",
+    "slug": "feria-agroganadera-pedroches-pozoblanco",
+    "city": "Pozoblanco",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches",
+    "country": "es",
+    "slug": "feria-jamon-bellota-dop-pedroches-villanueva-cordoba",
+    "city": "Villanueva de Córdoba",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria General de Muestras de Armilla",
+    "country": "es",
+    "slug": "feria-general-muestras-armilla",
+    "city": "Armilla",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feria de la Ciencia",
+    "country": "es",
+    "slug": "feria-de-la-ciencia-granada",
+    "city": "Granada",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "CONCAB Granada",
+    "country": "es",
+    "slug": "concab-granada",
+    "city": "Armilla",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Blue Zone Forum Navalia Meeting",
+    "country": "es",
+    "slug": "blue-zone-forum-navalia-meeting-cadiz",
+    "city": "Cádiz",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Feria del Caballo de Jerez",
+    "country": "es",
+    "slug": "feria-del-caballo-jerez",
+    "city": "Jerez de la Frontera",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Fegasur",
+    "country": "es",
+    "slug": "fegasur-jerez",
+    "city": "Jerez de la Frontera",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Futurmoda",
     "country": "es",
     "slug": "futurmoda-elche",

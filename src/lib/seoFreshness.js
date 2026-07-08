@@ -30,7 +30,13 @@ export const seoFreshness = {
   santiago: '2026-07-08',
   valladolid: '2026-07-08',
   salamanca: '2026-07-08',
-  batalha: '2026-07-08'
+  batalha: '2026-07-08',
+  almeria: '2026-07-08',
+  jaen: '2026-07-08',
+  huelva: '2026-07-08',
+  cordoba: '2026-07-08',
+  granada: '2026-07-08',
+  cadiz: '2026-07-08'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

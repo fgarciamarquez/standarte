@@ -80,23 +80,14 @@
 
           if (!hasAutoRedirected) {
             sessionStorage.setItem('hasAutoRedirected', 'true');
+            // Solo redirigimos si el usuario ELIGIÓ antes un idioma (preferencia guardada).
+            // Eliminada la auto-detección del idioma del navegador: Googlebot ejecutaba ese
+            // JS y la URL canónica del proyecto acababa redirigida a ?lang=xx, marcándose
+            // como "Página con redirección" en Search Console e impidiendo su indexación.
+            // El idioma correcto ya se comunica por hreflang; el cambio es por acción explícita.
             if (savedPref && savedPref !== 'es' && languages.includes(savedPref)) {
               gotoLang(savedPref);
               return;
-            } else if (!savedPref) {
-              const browserLang = (navigator.language || navigator.languages?.[0] || 'es')
-                .split('-')[0]
-                .toLowerCase();
-
-              if (browserLang !== 'es' && languages.includes(browserLang)) {
-                localStorage.setItem('preferredLanguage', browserLang);
-                localStorage.setItem('standarte_lang', browserLang);
-                gotoLang(browserLang);
-                return;
-              } else {
-                localStorage.setItem('preferredLanguage', 'es');
-                localStorage.setItem('standarte_lang', 'es');
-              }
             }
           }
         }

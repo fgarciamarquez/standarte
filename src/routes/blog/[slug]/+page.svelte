@@ -193,23 +193,13 @@
 
       if (lang === 'es' && !hasAutoRedirected) {
         sessionStorage.setItem('hasAutoRedirected', 'true');
+        // Solo redirigimos si el usuario ELIGIÓ antes un idioma (preferencia guardada).
+        // Eliminada la auto-detección del idioma del navegador: Googlebot ejecutaba ese
+        // JS y la versión ES quedaba como "Página con redirección" en Search Console,
+        // bloqueando su indexación. El idioma correcto ya se comunica por hreflang.
         if (savedPref && savedPref !== 'es' && languages.includes(savedPref)) {
           window.location.href = pathFor(savedPref, 'noticias');
           return;
-        } else if (!savedPref) {
-          const browserLang = (navigator.language || navigator.languages?.[0] || 'es')
-            .split('-')[0]
-            .toLowerCase();
-          
-          if (browserLang !== 'es' && languages.includes(browserLang)) {
-            localStorage.setItem('preferredLanguage', browserLang);
-            localStorage.setItem('standarte_lang', browserLang);
-            window.location.href = pathFor(browserLang, 'noticias');
-            return;
-          } else {
-            localStorage.setItem('preferredLanguage', 'es');
-            localStorage.setItem('standarte_lang', 'es');
-          }
         }
       }
     }

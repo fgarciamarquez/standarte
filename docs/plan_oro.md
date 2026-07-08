@@ -205,3 +205,24 @@ la última edición REAL de su contenido, no la del build.
   (transporte). Cobertura gallega enlazada: las 11 ferias de Vigo + Santiago (Fairway, Maker
   Faire, GEDET, SEMERGEN, SESMI) + A Coruña (Fórum Gastronómico, Mundos Digitales, BioCultura)
   a sus páginas y hubs. URL sin cambios.
+- **Almería, Jaén, Huelva, Córdoba, Granada y Cádiz** (ES + EN) — clúster de 6 provincias
+  andaluzas creadas desde cero (routes + cityData + richSeoData, 11 idiomas para el
+  esqueleto; ES+EN para el contenido Oro) con 20 ferias verificadas por búsqueda web,
+  corrigiendo varios datos erróneos del encargo original (Expoliva es de Jaén, no de
+  Córdoba; "Andalucía Beauty" y el "Salón Inmobiliario de Granada" no existían con esos
+  nombres; IFECO en Córdoba cerró en 2012 — Intercaza se celebra hoy en el **CEFC**).
+  Recintos con sección técnica verificada: **IFEJA** (Jaén, +30.000 m², pabellón interior
+  10.800 m² + exterior cubierto 7.200 m²), **Palacio de Congresos Casa Colón** (Huelva,
+  854 m² de salas, sala mayor 530 m², aforo 822-1.112), **CEFC** (Córdoba, 12.000 m²
+  totales, sala principal 4.688 m², aforo hasta 5.000, parking 637 plazas), **FERMASA**
+  (Granada/Armilla, 60.000 m² + 20.000 m² exteriores) y **Parque de las Ciencias de
+  Andalucía** (Granada, 70.000 m², pabellones Leonardo da Vinci y Tecno-Foro), **Palacio
+  de Congresos de Cádiz** (~7.500 m², Sala Mayor 1.900 m²) e **IFECA-Jerez** (40.000 m²
+  de parcela, 12.000 m² cubiertos, 17 m de altura libre); Aguadulce y Campohermoso
+  (Almería) con datos de superficie pero sin recinto con nombre propio verificado más
+  allá del ya usado. Ferias satélite (Torre Pacheco→Murcia, Aguadulce/El Ejido→Almería,
+  Aracena/Punta Umbría→Huelva, Pozoblanco/Villanueva de Córdoba→Córdoba, Armilla→Granada,
+  Jerez de la Frontera→Cádiz) enlazadas al pilar de su provincia vía `CITY_TO_PILLAR`; de
+  paso se corrigió un fallo preexistente por el que Murcia (solo con ferias en Torre
+  Pacheco) no mostraba la bandera de país en la miga de pan. `seoFreshness` actualizado a
+  2026-07-08 para las 6 secciones.

@@ -51,6 +51,12 @@ export const routes = {
     montaje_zafra: 'montaje_stand_zafra',
     montaje_don_benito: 'montaje_stand_don_benito',
     montaje_badajoz: 'montaje_stand_badajoz',
+    almeria: 'diseno_montaje_stands_almeria',
+    jaen: 'diseno_montaje_stands_jaen',
+    huelva: 'diseno_montaje_stands_huelva',
+    cordoba: 'diseno_montaje_stands_cordoba',
+    granada: 'diseno_montaje_stands_granada',
+    cadiz: 'diseno_montaje_stands_cadiz',
     noticias: 'blog',
     ferias: 'ferias'
   },
@@ -87,6 +93,12 @@ export const routes = {
     montaje_zafra: 'exhibition_stand_assembly_zafra',
     montaje_don_benito: 'exhibition_stand_assembly_don_benito',
     montaje_badajoz: 'exhibition_stand_assembly_badajoz',
+    almeria: 'stand_design_assembly_almeria',
+    jaen: 'stand_design_assembly_jaen',
+    huelva: 'stand_design_assembly_huelva',
+    cordoba: 'stand_design_assembly_cordoba',
+    granada: 'stand_design_assembly_granada',
+    cadiz: 'stand_design_assembly_cadiz',
     noticias: 'blog',
     ferias: 'fairs'
   },
@@ -123,6 +135,12 @@ export const routes = {
     montaje_zafra: 'messestandmontage_zafra',
     montaje_don_benito: 'messestandmontage_don_benito',
     montaje_badajoz: 'messestandmontage_badajoz',
+    almeria: 'messestand_design_montage_almeria',
+    jaen: 'messestand_design_montage_jaen',
+    huelva: 'messestand_design_montage_huelva',
+    cordoba: 'messestand_design_montage_cordoba',
+    granada: 'messestand_design_montage_granada',
+    cadiz: 'messestand_design_montage_cadiz',
     noticias: 'blog',
     ferias: 'messen'
   },
@@ -159,6 +177,12 @@ export const routes = {
     montaje_zafra: 'zafra_zhantai_dajian',
     montaje_don_benito: 'don_benito_zhantai_dajian',
     montaje_badajoz: 'badajoz_zhantai_dajian_montaje',
+    almeria: 'almeria_zhantai_sheji_dajian',
+    jaen: 'jaen_zhantai_sheji_dajian',
+    huelva: 'huelva_zhantai_sheji_dajian',
+    cordoba: 'cordoba_zhantai_sheji_dajian',
+    granada: 'granada_zhantai_sheji_dajian',
+    cadiz: 'cadiz_zhantai_sheji_dajian',
     noticias: 'blog',
     ferias: 'zhanhui'
   },
@@ -195,6 +219,12 @@ export const routes = {
     montaje_zafra: 'zafra_stand_nirman',
     montaje_don_benito: 'don_benito_stand_nirman',
     montaje_badajoz: 'badajoz_stand_nirman_montaje',
+    almeria: 'almeria_stand_dizain_asembli',
+    jaen: 'jaen_stand_dizain_asembli',
+    huelva: 'huelva_stand_dizain_asembli',
+    cordoba: 'cordoba_stand_dizain_asembli',
+    granada: 'granada_stand_dizain_asembli',
+    cadiz: 'cadiz_stand_dizain_asembli',
     noticias: 'blog',
     ferias: 'mele'
   },
@@ -231,6 +261,12 @@ export const routes = {
     montaje_zafra: 'montagem_stand_zafra',
     montaje_don_benito: 'montagem_stand_don_benito',
     montaje_badajoz: 'montagem_stand_badajoz',
+    almeria: 'design_montagem_stands_almeria',
+    jaen: 'design_montagem_stands_jaen',
+    huelva: 'design_montagem_stands_huelva',
+    cordoba: 'design_montagem_stands_cordoba',
+    granada: 'design_montagem_stands_granada',
+    cadiz: 'design_montagem_stands_cadiz',
     noticias: 'blog',
     ferias: 'feiras'
   },
@@ -267,6 +303,12 @@ export const routes = {
     montaje_zafra: 'montage_stands_zafra',
     montaje_don_benito: 'montage_stands_don_benito',
     montaje_badajoz: 'montage_stands_badajoz',
+    almeria: 'conception_montage_stands_almeria',
+    jaen: 'conception_montage_stands_jaen',
+    huelva: 'conception_montage_stands_huelva',
+    cordoba: 'conception_montage_stands_cordoue',
+    granada: 'conception_montage_stands_grenade',
+    cadiz: 'conception_montage_stands_cadix',
     noticias: 'blog',
     ferias: 'salons'
   },
@@ -303,6 +345,12 @@ export const routes = {
     montaje_zafra: 'allestimento_stand_zafra',
     montaje_don_benito: 'allestimento_stand_don_benito',
     montaje_badajoz: 'allestimento_stand_badajoz',
+    almeria: 'progettazione_montaggio_stand_almeria',
+    jaen: 'progettazione_montaggio_stand_jaen',
+    huelva: 'progettazione_montaggio_stand_huelva',
+    cordoba: 'progettazione_montaggio_stand_cordoba',
+    granada: 'progettazione_montaggio_stand_granada',
+    cadiz: 'progettazione_montaggio_stand_cadice',
     noticias: 'blog',
     ferias: 'fiere'
   },
@@ -339,6 +387,12 @@ export const routes = {
     montaje_zafra: 'zafra-bujeu-jejak',
     montaje_don_benito: 'don-benito-bujeu-jejak',
     montaje_badajoz: 'badajoz-bujeu-jejak-montaje',
+    almeria: 'almeria-bujeu-dijain-jorip',
+    jaen: 'jaen-bujeu-dijain-jorip',
+    huelva: 'huelva-bujeu-dijain-jorip',
+    cordoba: 'cordoba-bujeu-dijain-jorip',
+    granada: 'granada-bujeu-dijain-jorip',
+    cadiz: 'cadiz-bujeu-dijain-jorip',
     noticias: 'blog',
     ferias: 'jeonsihoe'
   },
@@ -375,6 +429,12 @@ export const routes = {
     montaje_zafra: 'サフラ展示会ブース設営',
     montaje_don_benito: 'ドンベニート展示会ブース設営',
     montaje_badajoz: 'バダホス展示会ブース設営',
+    almeria: 'アルメリア展示会ブース設計施工',
+    jaen: 'ハエン展示会ブース設計施工',
+    huelva: 'ウエルバ展示会ブース設計施工',
+    cordoba: 'コルドバ展示会ブース設計施工',
+    granada: 'グラナダ展示会ブース設計施工',
+    cadiz: 'カディス展示会ブース設計施工',
     noticias: 'blog',
     ferias: '展示会情報'
   },
@@ -411,6 +471,12 @@ export const routes = {
     montaje_zafra: 'standmontage_zafra',
     montaje_don_benito: 'standmontage_don_benito',
     montaje_badajoz: 'standmontage_badajoz',
+    almeria: 'standontwerp_montage_almeria',
+    jaen: 'standontwerp_montage_jaen',
+    huelva: 'standontwerp_montage_huelva',
+    cordoba: 'standontwerp_montage_cordoba',
+    granada: 'standontwerp_montage_granada',
+    cadiz: 'standontwerp_montage_cadiz',
     noticias: 'blog',
     ferias: 'beurzen'
   }
@@ -2507,6 +2573,276 @@ export const cityData = {
       ko: {
         intro: '바다호스와 IFEBA 전시 센터는 포르투갈과의 국경 무역 관문이며 Feciex 및 Fehispor와 같은 주요 무역 박람회를 개최합니다.',
         detail: '우리는 IFEBA의 10,000제곱미터 실내 전시관과 대규모 야외 공간에 프리미엄 맞춤형 목재 부스의 설계, 제작 및 설치를 수행합니다.'
+      }
+    }
+  },
+  almeria: {
+    city: { es: 'Almería', en: 'Almeria', de: 'Almería', zh: '阿尔梅里亚', hi: 'अल्मेरिया', pt: 'Almería', fr: 'Almeria', it: 'Almeria', ko: '알메리아', ja: 'アルメリア' },
+    content: {
+      ja: {
+        intro: 'アルメリアはスペイン南東部を代表する農業食品・技術見本市の拠点で、Infoagro Exhibition（アグアドゥルセ展示会議場）やExpolevante（カンポエルモソ展示会議センター、エル・エヒード）といった主要な催事を擁しています。20年の経験と最高水準の自社工房を持つStandarteが、両会場でのブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
+      },
+      es: {
+        intro: 'Almería es un referente agroalimentario y tecnológico del sureste de España, con eventos de gran peso como Infoagro Exhibition (Palacio de Exposiciones y Congresos de Aguadulce) y Expolevante (Centro de Exposiciones y Congresos de Campohermoso, El Ejido). Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en ambos recintos.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Almeria is a leading agri-food and technology hub in south-eastern Spain, home to major events such as Infoagro Exhibition (Palacio de Exposiciones y Congresos de Aguadulce) and Expolevante (Centro de Exposiciones y Congresos de Campohermoso, El Ejido). With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation and coordination of stands at both venues.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Almería ist ein bedeutendes Zentrum für Agrar- und Technologiemessen im Südosten Spaniens, mit wichtigen Veranstaltungen wie der Infoagro Exhibition (Palacio de Exposiciones y Congresos de Aguadulce) und der Expolevante (Centro de Exposiciones y Congresos de Campohermoso, El Ejido). Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen in beiden Messehallen.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'Almería é um importante polo agroalimentar e tecnológico do sudeste de Espanha, com eventos de grande relevo como a Infoagro Exhibition (Palacio de Exposiciones y Congresos de Aguadulce) e a Expolevante (Centro de Exposiciones y Congresos de Campohermoso, El Ejido). Com 20 anos de experiência e uma oficina própria de primeiro nível, a Standarte assume o design técnico, produção, instalação e coordenação de stands em ambos os recintos.',
+        detail: 'A nossa equipa garante a marcas corporativas e agências criativas uma execução robusta, pontual e com acabamentos de alta gama.'
+      },
+      fr: {
+        intro: 'Almería est un pôle agroalimentaire et technologique majeur du sud-est de l\'Espagne, avec des événements de premier plan comme Infoagro Exhibition (Palacio de Exposiciones y Congresos de Aguadulce) et Expolevante (Centro de Exposiciones y Congresos de Campohermoso, El Ejido). Avec 20 ans d\'expérience et un atelier propre de premier niveau, Standarte assure la conception technique, la production, l\'installation et la coordination des stands sur ces deux sites.',
+        detail: 'Notre équipe garantit aux marques corporatives et aux agences créatives une exécution robuste, ponctuelle et aux finitions haut de gamme.'
+      },
+      it: {
+        intro: 'Almería è un polo agroalimentare e tecnologico di primo piano nel sud-est della Spagna, con eventi di rilievo come Infoagro Exhibition (Palacio de Exposiciones y Congresos de Aguadulce) ed Expolevante (Centro de Exposiciones y Congresos de Campohermoso, El Ejido). Con 20 anni di esperienza e un\'officina propria di alto livello, Standarte si occupa della progettazione tecnica, produzione, installazione e coordinamento degli stand in entrambe le sedi.',
+        detail: 'Il nostro team garantisce a marchi aziendali e agenzie creative un\'esecuzione solida, puntuale e con finiture di alta gamma.'
+      },
+      zh: {
+        intro: '阿尔梅里亚是西班牙东南部重要的农业食品与科技会展中心，拥有Infoagro Exhibition（阿瓜杜尔塞展览会议宫）和Expolevante（坎波埃尔莫索会展中心，埃尔埃希多）等重要展会。凭借20年经验和顶级自有工厂，Standarte负责这两处场馆展台的技术设计、生产、安装与协调。',
+        detail: '我们的团队保证为企业品牌和创意代理机构提供稳健、准时、高端质感的搭建服务。'
+      },
+      hi: {
+        intro: 'अल्मेरिया स्पेन के दक्षिण-पूर्व में एक प्रमुख कृषि-खाद्य और प्रौद्योगिकी केंद्र है, जहाँ Infoagro Exhibition (Palacio de Exposiciones y Congresos de Aguadulce) और Expolevante (Centro de Exposiciones y Congresos de Campohermoso, El Ejido) जैसे बड़े आयोजन होते हैं। 20 वर्षों के अनुभव और शीर्ष स्तरीय अपनी कार्यशाला के साथ, Standarte दोनों स्थलों पर स्टैंड के तकनीकी डिज़ाइन, निर्माण, स्थापना और समन्वय की ज़िम्मेदारी लेता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांड्स और क्रिएटिव एजेंसियों को एक मजबूत, समय पर और उच्च स्तरीय फिनिश वाला निष्पादन सुनिश्चित करती है।'
+      },
+      ko: {
+        intro: '알메리아는 스페인 남동부의 대표적인 농식품·기술 전시 거점으로, Infoagro Exhibition(아과둘세 전시컨벤션궁)과 Expolevante(캄포에르모소 전시컨벤션센터, 엘에히도) 같은 주요 행사를 개최합니다. 20년의 경험과 최고 수준의 자체 공방을 갖춘 Standarte가 두 전시장 모두에서 부스의 기술 설계, 제작, 설치 및 조율을 담당합니다.',
+        detail: '저희 팀은 기업 브랜드와 크리에이티브 에이전시에 견고하고 시간을 엄수하며 고급스러운 마감의 시공을 보장합니다.'
+      }
+    }
+  },
+  jaen: {
+    city: { es: 'Jaén', en: 'Jaen', de: 'Jaén', zh: '哈恩', hi: 'हाएन', pt: 'Jaén', fr: 'Jaen', it: 'Jaen', ko: '하엔', ja: 'ハエン' },
+    content: {
+      ja: {
+        intro: 'ハエンは世界最大のオリーブオイル産地であり、IFEJA（ハエン見本市・会議宮）はExpoliva、Ibercaza、Feria de los Pueblosといった主要な催事を開催しています。20年の経験と最高水準の自社工房を持つStandarteが、IFEJAでのブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
+      },
+      es: {
+        intro: 'Jaén es la mayor región productora de aceite de oliva del mundo, y su recinto IFEJA (Palacio de Ferias y Congresos de Jaén) acoge certámenes de referencia como Expoliva, Ibercaza y la Feria de los Pueblos. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en IFEJA.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Jaen is the world\'s largest olive-oil producing region, and its IFEJA venue (Palacio de Ferias y Congresos de Jaén) hosts flagship events such as Expoliva, Ibercaza and Feria de los Pueblos. With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation and coordination of stands at IFEJA.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Jaén ist die weltweit größte Olivenöl-Anbauregion, und das Messegelände IFEJA (Palacio de Ferias y Congresos de Jaén) beherbergt führende Veranstaltungen wie Expoliva, Ibercaza und die Feria de los Pueblos. Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen bei IFEJA.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'Jaén é a maior região produtora de azeite do mundo, e o seu recinto IFEJA (Palacio de Ferias y Congresos de Jaén) acolhe eventos de referência como a Expoliva, a Ibercaza e a Feria de los Pueblos. Com 20 anos de experiência e uma oficina própria de primeiro nível, a Standarte assume o design técnico, produção, instalação e coordenação de stands na IFEJA.',
+        detail: 'A nossa equipa garante a marcas corporativas e agências criativas uma execução robusta, pontual e com acabamentos de alta gama.'
+      },
+      fr: {
+        intro: 'Jaén est la plus grande région productrice d\'huile d\'olive au monde, et son site IFEJA (Palacio de Ferias y Congresos de Jaén) accueille des événements phares comme Expoliva, Ibercaza et la Feria de los Pueblos. Avec 20 ans d\'expérience et un atelier propre de premier niveau, Standarte assure la conception technique, la production, l\'installation et la coordination des stands à IFEJA.',
+        detail: 'Notre équipe garantit aux marques corporatives et aux agences créatives une exécution robuste, ponctuelle et aux finitions haut de gamme.'
+      },
+      it: {
+        intro: 'Jaén è la più grande regione produttrice di olio d\'oliva al mondo, e il suo polo fieristico IFEJA (Palacio de Ferias y Congresos de Jaén) ospita eventi di riferimento come Expoliva, Ibercaza e la Feria de los Pueblos. Con 20 anni di esperienza e un\'officina propria di alto livello, Standarte si occupa della progettazione tecnica, produzione, installazione e coordinamento degli stand presso IFEJA.',
+        detail: 'Il nostro team garantisce a marchi aziendali e agenzie creative un\'esecuzione solida, puntuale e con finiture di alta gamma.'
+      },
+      zh: {
+        intro: '哈恩是世界最大的橄榄油产区，其IFEJA展览会议宫举办Expoliva、Ibercaza和Feria de los Pueblos等重要展会。凭借20年经验和顶级自有工厂，Standarte负责IFEJA展台的技术设计、生产、安装与协调。',
+        detail: '我们的团队保证为企业品牌和创意代理机构提供稳健、准时、高端质感的搭建服务。'
+      },
+      hi: {
+        intro: 'हाएन दुनिया का सबसे बड़ा जैतून तेल उत्पादक क्षेत्र है, और इसका IFEJA स्थल (Palacio de Ferias y Congresos de Jaén) Expoliva, Ibercaza और Feria de los Pueblos जैसे प्रमुख आयोजनों की मेजबानी करता है। 20 वर्षों के अनुभव और शीर्ष स्तरीय अपनी कार्यशाला के साथ, Standarte IFEJA में स्टैंड के तकनीकी डिज़ाइन, निर्माण, स्थापना और समन्वय की ज़िम्मेदारी लेता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांड्स और क्रिएटिव एजेंसियों को एक मजबूत, समय पर और उच्च स्तरीय फिनिश वाला निष्पादन सुनिश्चित करती है।'
+      },
+      ko: {
+        intro: '하엔은 세계 최대의 올리브오일 생산지로, IFEJA 전시장(하엔 전시컨벤션궁)에서 Expoliva, Ibercaza, Feria de los Pueblos 같은 대표 행사가 열립니다. 20년의 경험과 최고 수준의 자체 공방을 갖춘 Standarte가 IFEJA에서 부스의 기술 설계, 제작, 설치 및 조율을 담당합니다.',
+        detail: '저희 팀은 기업 브랜드와 크리에이티브 에이전시에 견고하고 시간을 엄수하며 고급스러운 마감의 시공을 보장합니다.'
+      }
+    }
+  },
+  huelva: {
+    city: { es: 'Huelva', en: 'Huelva', de: 'Huelva', zh: '韦尔瓦', hi: 'हुएल्वा', pt: 'Huelva', fr: 'Huelva', it: 'Huelva', ko: '우엘바', ja: 'ウエルバ' },
+    content: {
+      ja: {
+        intro: 'ウエルバはベリー類の生産で世界的な存在感を持つ農業県で、フルトス・ロホス国際会議（カサ・コロン会議場）、アラセナのイベリコハム・豚肉見本市、プンタ・ウンブリアの海老・アサリ・カタクチイワシ全国見本市といった主要な催事を擁しています。20年の経験と最高水準の自社工房を持つStandarteが、これらすべての会場でブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
+      },
+      es: {
+        intro: 'Huelva es una potencia agrícola mundial en frutos rojos, con eventos de gran peso como el Congreso Internacional de Frutos Rojos (Palacio de Congresos Casa Colón), la Feria del Jamón y Cerdo Ibérico de Aracena y la Feria Nacional de la Gamba, la Chirla y el Boquerón en Punta Umbría. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en todos estos recintos.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Huelva is a world-class agricultural powerhouse in berries, home to major events such as the Congreso Internacional de Frutos Rojos (Palacio de Congresos Casa Colón), the Feria del Jamón y Cerdo Ibérico in Aracena and the Feria Nacional de la Gamba, la Chirla y el Boquerón in Punta Umbría. With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation and coordination of stands at all these venues.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Huelva ist eine weltweit führende Anbauregion für Beerenfrüchte, mit bedeutenden Veranstaltungen wie dem Congreso Internacional de Frutos Rojos (Palacio de Congresos Casa Colón), der Feria del Jamón y Cerdo Ibérico in Aracena und der Feria Nacional de la Gamba, la Chirla y el Boquerón in Punta Umbría. Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen an all diesen Standorten.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'Huelva é uma potência agrícola mundial em frutos vermelhos, com eventos de grande relevo como o Congreso Internacional de Frutos Rojos (Palacio de Congresos Casa Colón), a Feria del Jamón y Cerdo Ibérico em Aracena e a Feria Nacional de la Gamba, la Chirla y el Boquerón em Punta Umbría. Com 20 anos de experiência e uma oficina própria de primeiro nível, a Standarte assume o design técnico, produção, instalação e coordenação de stands em todos estes recintos.',
+        detail: 'A nossa equipa garante a marcas corporativas e agências criativas uma execução robusta, pontual e com acabamentos de alta gama.'
+      },
+      fr: {
+        intro: 'Huelva est une puissance agricole mondiale dans les fruits rouges, avec des événements de premier plan comme le Congreso Internacional de Frutos Rojos (Palacio de Congresos Casa Colón), la Feria del Jamón y Cerdo Ibérico à Aracena et la Feria Nacional de la Gamba, la Chirla y el Boquerón à Punta Umbría. Avec 20 ans d\'expérience et un atelier propre de premier niveau, Standarte assure la conception technique, la production, l\'installation et la coordination des stands sur tous ces sites.',
+        detail: 'Notre équipe garantit aux marques corporatives et aux agences créatives une exécution robuste, ponctuelle et aux finitions haut de gamme.'
+      },
+      it: {
+        intro: 'Huelva è una potenza agricola mondiale nei frutti di bosco, con eventi di rilievo come il Congreso Internacional de Frutos Rojos (Palacio de Congresos Casa Colón), la Feria del Jamón y Cerdo Ibérico ad Aracena e la Feria Nacional de la Gamba, la Chirla y el Boquerón a Punta Umbría. Con 20 anni di esperienza e un\'officina propria di alto livello, Standarte si occupa della progettazione tecnica, produzione, installazione e coordinamento degli stand in tutte queste sedi.',
+        detail: 'Il nostro team garantisce a marchi aziendali e agenzie creative un\'esecuzione solida, puntuale e con finiture di alta gamma.'
+      },
+      zh: {
+        intro: '韦尔瓦是世界级浆果农业强区，拥有Congreso Internacional de Frutos Rojos（卡萨科隆会议宫）、阿拉塞纳伊比利亚火腿猪肉展和蓬塔翁布里亚全国虾类展等重要展会。凭借20年经验和顶级自有工厂，Standarte负责所有这些场馆展台的技术设计、生产、安装与协调。',
+        detail: '我们的团队保证为企业品牌和创意代理机构提供稳健、准时、高端质感的搭建服务。'
+      },
+      hi: {
+        intro: 'हुएल्वा बेरी उत्पादन में विश्व स्तरीय कृषि शक्ति है, जहाँ Congreso Internacional de Frutos Rojos (Palacio de Congresos Casa Colón), अरासेना में Feria del Jamón y Cerdo Ibérico और पुंता उम्ब्रिया में Feria Nacional de la Gamba, la Chirla y el Boquerón जैसे बड़े आयोजन होते हैं। 20 वर्षों के अनुभव और शीर्ष स्तरीय अपनी कार्यशाला के साथ, Standarte इन सभी स्थलों पर स्टैंड के तकनीकी डिज़ाइन, निर्माण, स्थापना और समन्वय की ज़िम्मेदारी लेता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांड्स और क्रिएटिव एजेंसियों को एक मजबूत, समय पर और उच्च स्तरीय फिनिश वाला निष्पादन सुनिश्चित करती है।'
+      },
+      ko: {
+        intro: '우엘바는 베리류 재배로 세계적 위상을 가진 농업 지역으로, 프루토스 로호스 국제회의(카사 콜론 회의장), 아라세나의 이베리코 하몬·돈육 박람회, 푼타 움브리아의 새우·조개·멸치 전국 박람회 같은 주요 행사를 개최합니다. 20년의 경험과 최고 수준의 자체 공방을 갖춘 Standarte가 이 모든 전시장에서 부스의 기술 설계, 제작, 설치 및 조율을 담당합니다.',
+        detail: '저희 팀은 기업 브랜드와 크리에이티브 에이전시에 견고하고 시간을 엄수하며 고급스러운 마감의 시공을 보장합니다.'
+      }
+    }
+  },
+  cordoba: {
+    city: { es: 'Córdoba', en: 'Cordoba', de: 'Córdoba', zh: '科尔多瓦', hi: 'कोर्दोबा', pt: 'Córdova', fr: 'Cordoue', it: 'Cordova', ko: '코르도바', ja: 'コルドバ' },
+    content: {
+      ja: {
+        intro: 'コルドバはアンダルシアの主要な農牧業展示会拠点で、CEFCでのIbercaza（狩猟見本市）や、ロス・ペドロチェス地方のポソブランコとビリャヌエバ・デ・コルドバで開催される農牧業見本市を擁しています。20年の経験と最高水準の自社工房を持つStandarteが、これらすべての会場でブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
+      },
+      es: {
+        intro: 'Córdoba es un polo agroganadero de referencia en Andalucía, con eventos como Intercaza (CEFC), la Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches en Pozoblanco y la Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches en Villanueva de Córdoba. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en todos estos certámenes.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Cordoba is a leading agricultural and livestock hub in Andalusia, home to events such as Intercaza (CEFC), the Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches in Pozoblanco and the Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches in Villanueva de Córdoba. With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation and coordination of stands at all these events.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Córdoba ist ein führendes Zentrum für Land- und Viehwirtschaft in Andalusien, mit Veranstaltungen wie Intercaza (CEFC), der Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches in Pozoblanco und der Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches in Villanueva de Córdoba. Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen bei all diesen Veranstaltungen.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'Córdova é um polo agropecuário de referência na Andaluzia, com eventos como a Intercaza (CEFC), a Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches em Pozoblanco e a Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches em Villanueva de Córdoba. Com 20 anos de experiência e uma oficina própria de primeiro nível, a Standarte assume o design técnico, produção, instalação e coordenação de stands em todos estes certames.',
+        detail: 'A nossa equipa garante a marcas corporativas e agências criativas uma execução robusta, pontual e com acabamentos de alta gama.'
+      },
+      fr: {
+        intro: 'Cordoue est un pôle agricole et d\'élevage de référence en Andalousie, avec des événements comme Intercaza (CEFC), la Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches à Pozoblanco et la Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches à Villanueva de Córdoba. Avec 20 ans d\'expérience et un atelier propre de premier niveau, Standarte assure la conception technique, la production, l\'installation et la coordination des stands lors de tous ces événements.',
+        detail: 'Notre équipe garantit aux marques corporatives et aux agences créatives une exécution robuste, ponctuelle et aux finitions haut de gamme.'
+      },
+      it: {
+        intro: 'Cordova è un polo agricolo e zootecnico di riferimento in Andalusia, con eventi come Intercaza (CEFC), la Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches a Pozoblanco e la Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches a Villanueva de Córdoba. Con 20 anni di esperienza e un\'officina propria di alto livello, Standarte si occupa della progettazione tecnica, produzione, installazione e coordinamento degli stand in tutti questi eventi.',
+        detail: 'Il nostro team garantisce a marchi aziendali e agenzie creative un\'esecuzione solida, puntuale e con finiture di alta gamma.'
+      },
+      zh: {
+        intro: '科尔多瓦是安达卢西亚重要的农牧业中心，拥有CEFC举办的Intercaza狩猎展、波索布兰科的洛斯佩德罗切斯农牧食品展和比利亚努埃瓦-德科尔多瓦的DOP洛斯佩德罗切斯伊比利亚火腿展等活动。凭借20年经验和顶级自有工厂，Standarte负责所有这些展会展台的技术设计、生产、安装与协调。',
+        detail: '我们的团队保证为企业品牌和创意代理机构提供稳健、准时、高端质感的搭建服务。'
+      },
+      hi: {
+        intro: 'कोर्दोबा अंडालूसिया में एक प्रमुख कृषि एवं पशुधन केंद्र है, जहाँ Intercaza (CEFC), पोसोब्लांको में Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches और विल्यानुएवा दे कोर्दोबा में Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches जैसे आयोजन होते हैं। 20 वर्षों के अनुभव और शीर्ष स्तरीय अपनी कार्यशाला के साथ, Standarte इन सभी आयोजनों में स्टैंड के तकनीकी डिज़ाइन, निर्माण, स्थापना और समन्वय की ज़िम्मेदारी लेता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांड्स और क्रिएटिव एजेंसियों को एक मजबूत, समय पर और उच्च स्तरीय फिनिश वाला निष्पादन सुनिश्चित करती है।'
+      },
+      ko: {
+        intro: '코르도바는 안달루시아의 대표적인 농축산 거점으로, CEFC의 Intercaza(수렵 박람회), 포소블랑코의 로스 페드로체스 농축산식품 박람회, 비야누에바 데 코르도바의 로스 페드로체스 DOP 이베리코 하몬 박람회 같은 행사를 개최합니다. 20년의 경험과 최고 수준의 자체 공방을 갖춘 Standarte가 이 모든 행사에서 부스의 기술 설계, 제작, 설치 및 조율을 담당합니다.',
+        detail: '저희 팀은 기업 브랜드와 크리에이티브 에이전시에 견고하고 시간을 엄수하며 고급스러운 마감의 시공을 보장합니다.'
+      }
+    }
+  },
+  granada: {
+    city: { es: 'Granada', en: 'Granada', de: 'Granada', zh: '格拉纳达', hi: 'ग्रानादा', pt: 'Granada', fr: 'Grenade', it: 'Granada', ko: '그라나다', ja: 'グラナダ' },
+    content: {
+      ja: {
+        intro: 'グラナダは、アルミジャのFERMASA（グラナダ総合見本市会場）で開催されるFeria General de MuestrasやCONCAB（グラナダ馬術見本市）、グラナダ市内のパルケ・デ・ラス・シエンシアスで開催されるFeria de la Cienciaといった主要な催事を擁しています。20年の経験と最高水準の自社工房を持つStandarteが、これらすべての会場でブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
+      },
+      es: {
+        intro: 'Granada acoge certámenes de referencia como la Feria General de Muestras y CONCAB en FERMASA (Armilla), y la Feria de la Ciencia en el Parque de las Ciencias de Andalucía, en la propia capital. Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en todos estos recintos.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Granada hosts flagship events such as the Feria General de Muestras and CONCAB at FERMASA (Armilla), and the Feria de la Ciencia at the Parque de las Ciencias de Andalucía, in the capital itself. With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation and coordination of stands at all these venues.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Granada ist Gastgeber führender Veranstaltungen wie der Feria General de Muestras und CONCAB bei FERMASA (Armilla) sowie der Feria de la Ciencia im Parque de las Ciencias de Andalucía in der Hauptstadt selbst. Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen an all diesen Standorten.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'Granada acolhe eventos de referência como a Feria General de Muestras e o CONCAB na FERMASA (Armilla), e a Feria de la Ciencia no Parque de las Ciencias de Andalucía, na própria capital. Com 20 anos de experiência e uma oficina própria de primeiro nível, a Standarte assume o design técnico, produção, instalação e coordenação de stands em todos estes recintos.',
+        detail: 'A nossa equipa garante a marcas corporativas e agências criativas uma execução robusta, pontual e com acabamentos de alta gama.'
+      },
+      fr: {
+        intro: 'Grenade accueille des événements phares comme la Feria General de Muestras et CONCAB à FERMASA (Armilla), ainsi que la Feria de la Ciencia au Parque de las Ciencias de Andalucía, dans la capitale même. Avec 20 ans d\'expérience et un atelier propre de premier niveau, Standarte assure la conception technique, la production, l\'installation et la coordination des stands sur tous ces sites.',
+        detail: 'Notre équipe garantit aux marques corporatives et aux agences créatives une exécution robuste, ponctuelle et aux finitions haut de gamme.'
+      },
+      it: {
+        intro: 'Granada ospita eventi di riferimento come la Feria General de Muestras e il CONCAB a FERMASA (Armilla), e la Feria de la Ciencia al Parque de las Ciencias de Andalucía, nella stessa capitale. Con 20 anni di esperienza e un\'officina propria di alto livello, Standarte si occupa della progettazione tecnica, produzione, installazione e coordinamento degli stand in tutte queste sedi.',
+        detail: 'Il nostro team garantisce a marchi aziendali e agenzie creative un\'esecuzione solida, puntuale e con finiture di alta gamma.'
+      },
+      zh: {
+        intro: '格拉纳达拥有在阿尔米利亚FERMASA举办的Feria General de Muestras展会和CONCAB马展，以及在格拉纳达市区安达卢西亚科学公园举办的Feria de la Ciencia科学展等重要活动。凭借20年经验和顶级自有工厂，Standarte负责所有这些场馆展台的技术设计、生产、安装与协调。',
+        detail: '我们的团队保证为企业品牌和创意代理机构提供稳健、准时、高端质感的搭建服务。'
+      },
+      hi: {
+        intro: 'ग्रानादा में अरमिला के FERMASA में Feria General de Muestras और CONCAB, तथा राजधानी में ही Parque de las Ciencias de Andalucía में Feria de la Ciencia जैसे प्रमुख आयोजन होते हैं। 20 वर्षों के अनुभव और शीर्ष स्तरीय अपनी कार्यशाला के साथ, Standarte इन सभी स्थलों पर स्टैंड के तकनीकी डिज़ाइन, निर्माण, स्थापना और समन्वय की ज़िम्मेदारी लेता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांड्स और क्रिएटिव एजेंसियों को एक मजबूत, समय पर और उच्च स्तरीय फिनिश वाला निष्पादन सुनिश्चित करती है।'
+      },
+      ko: {
+        intro: '그라나다는 아르미야의 FERMASA에서 열리는 Feria General de Muestras와 CONCAB, 그리고 주도 내 안달루시아 과학공원에서 열리는 Feria de la Ciencia 같은 대표 행사를 개최합니다. 20년의 경험과 최고 수준의 자체 공방을 갖춘 Standarte가 이 모든 전시장에서 부스의 기술 설계, 제작, 설치 및 조율을 담당합니다.',
+        detail: '저희 팀은 기업 브랜드와 크리에이티브 에이전시에 견고하고 시간을 엄수하며 고급스러운 마감의 시공을 보장합니다.'
+      }
+    }
+  },
+  cadiz: {
+    city: { es: 'Cádiz', en: 'Cadiz', de: 'Cádiz', zh: '加的斯', hi: 'काडिज़', pt: 'Cádiz', fr: 'Cadix', it: 'Cadice', ko: '카디스', ja: 'カディス' },
+    content: {
+      ja: {
+        intro: 'カディスは造船・ブルーエコノミーの拠点であると同時に、ヘレス・デ・ラ・フロンテーラの馬術・農牧の伝統でも知られています。カディス会議場で開催されるBlue Zone Forum Navalia Meeting、そしてヘレスのFeria del CaballoやFegasur（IFECA-Jerez）といった主要な催事を擁しています。20年の経験と最高水準の自社工房を持つStandarteが、これらすべての会場でブースの技術設計・製作・設営・コーディネーションを担います。',
+        detail: '当社のチームは、企業ブランドやクリエイティブ代理店に、堅実かつ時間厳守で、ハイエンドな仕上がりの組立を保証します。'
+      },
+      es: {
+        intro: 'Cádiz combina su vocación naval y de economía azul con la tradición ecuestre y agroganadera de Jerez de la Frontera, con eventos como el Blue Zone Forum Navalia Meeting (Palacio de Congresos de Cádiz), la Feria del Caballo de Jerez y Fegasur (IFECA-Jerez). Con 20 años de experiencia y un taller propio de primer nivel, Standarte asume el diseño técnico, producción, instalación y coordinación de stands en todos estos certámenes.',
+        detail: 'Nuestro equipo garantiza a marcas corporativas y agencias creativas una ejecución robusta, puntual y con acabados de alta gama.'
+      },
+      en: {
+        intro: 'Cadiz combines its naval and blue-economy vocation with the equestrian and agricultural tradition of Jerez de la Frontera, with events such as the Blue Zone Forum Navalia Meeting (Palacio de Congresos de Cádiz), the Feria del Caballo de Jerez and Fegasur (IFECA-Jerez). With 20 years of experience and a top-level own workshop, Standarte takes on the technical design, production, installation and coordination of stands at all these events.',
+        detail: 'Our team guarantees corporate brands and creative agencies a robust, timely execution with high-end finishes.'
+      },
+      de: {
+        intro: 'Cádiz verbindet seine Ausrichtung auf Schiffbau und Blue Economy mit der Reit- und Agrartradition von Jerez de la Frontera, mit Veranstaltungen wie dem Blue Zone Forum Navalia Meeting (Palacio de Congresos de Cádiz), der Feria del Caballo de Jerez und Fegasur (IFECA-Jerez). Mit 20 Jahren Erfahrung und einer erstklassigen eigenen Werkstatt übernimmt Standarte das technische Design, die Produktion, die Montage und die Koordination von Ständen bei all diesen Veranstaltungen.',
+        detail: 'Unser Team garantiert Marken und Kreativagenturen eine robuste, pünktliche Ausführung mit hochwertigen Oberflächen.'
+      },
+      pt: {
+        intro: 'Cádiz combina a sua vocação naval e de economia azul com a tradição equestre e agropecuária de Jerez de la Frontera, com eventos como o Blue Zone Forum Navalia Meeting (Palacio de Congresos de Cádiz), a Feria del Caballo de Jerez e a Fegasur (IFECA-Jerez). Com 20 anos de experiência e uma oficina própria de primeiro nível, a Standarte assume o design técnico, produção, instalação e coordenação de stands em todos estes certames.',
+        detail: 'A nossa equipa garante a marcas corporativas e agências criativas uma execução robusta, pontual e com acabamentos de alta gama.'
+      },
+      fr: {
+        intro: 'Cadix conjugue sa vocation navale et d\'économie bleue avec la tradition équestre et agricole de Jerez de la Frontera, avec des événements comme le Blue Zone Forum Navalia Meeting (Palacio de Congresos de Cádiz), la Feria del Caballo de Jerez et Fegasur (IFECA-Jerez). Avec 20 ans d\'expérience et un atelier propre de premier niveau, Standarte assure la conception technique, la production, l\'installation et la coordination des stands lors de tous ces événements.',
+        detail: 'Notre équipe garantit aux marques corporatives et aux agences créatives une exécution robuste, ponctuelle et aux finitions haut de gamme.'
+      },
+      it: {
+        intro: 'Cadice unisce la sua vocazione navale e di economia blu alla tradizione equestre e agricola di Jerez de la Frontera, con eventi come il Blue Zone Forum Navalia Meeting (Palacio de Congresos de Cádiz), la Feria del Caballo de Jerez e Fegasur (IFECA-Jerez). Con 20 anni di esperienza e un\'officina propria di alto livello, Standarte si occupa della progettazione tecnica, produzione, installazione e coordinamento degli stand in tutti questi eventi.',
+        detail: 'Il nostro team garantisce a marchi aziendali e agenzie creative un\'esecuzione solida, puntuale e con finiture di alta gamma.'
+      },
+      zh: {
+        intro: '加的斯将造船与蓝色经济的定位与赫雷斯-德拉弗龙特拉的马术和农牧传统相结合，拥有加的斯会议宫举办的Blue Zone Forum Navalia Meeting、赫雷斯马术节和IFECA-Jerez举办的Fegasur农牧展等重要活动。凭借20年经验和顶级自有工厂，Standarte负责所有这些活动展台的技术设计、生产、安装与协调。',
+        detail: '我们的团队保证为企业品牌和创意代理机构提供稳健、准时、高端质感的搭建服务。'
+      },
+      hi: {
+        intro: 'काडिज़ अपनी नौसैनिक एवं ब्लू इकॉनमी की पहचान को हेरेस दे ला फ्रोंतेरा की अश्व एवं कृषि परंपरा के साथ जोड़ता है, जहाँ Blue Zone Forum Navalia Meeting (Palacio de Congresos de Cádiz), Feria del Caballo de Jerez और Fegasur (IFECA-Jerez) जैसे आयोजन होते हैं। 20 वर्षों के अनुभव और शीर्ष स्तरीय अपनी कार्यशाला के साथ, Standarte इन सभी आयोजनों में स्टैंड के तकनीकी डिज़ाइन, निर्माण, स्थापना और समन्वय की ज़िम्मेदारी लेता है।',
+        detail: 'हमारी टीम कॉर्पोरेट ब्रांड्स और क्रिएटिव एजेंसियों को एक मजबूत, समय पर और उच्च स्तरीय फिनिश वाला निष्पादन सुनिश्चित करती है।'
+      },
+      ko: {
+        intro: '카디스는 조선·블루이코노미 지향성과 헤레스 데 라 프론테라의 승마·농축산 전통을 함께 갖춘 지역으로, 카디스 회의장에서 열리는 Blue Zone Forum Navalia Meeting, 헤레스의 Feria del Caballo, IFECA-Jerez의 Fegasur 같은 대표 행사를 개최합니다. 20년의 경험과 최고 수준의 자체 공방을 갖춘 Standarte가 이 모든 행사에서 부스의 기술 설계, 제작, 설치 및 조율을 담당합니다.',
+        detail: '저희 팀은 기업 브랜드와 크리에이티브 에이전시에 견고하고 시간을 엄수하며 고급스러운 마감의 시공을 보장합니다.'
       }
     }
   }

@@ -503,8 +503,11 @@
   $: isCityPage = section in cityData;
   // País de la ciudad-matriz (bandera circular en la miga de pan "Inicio / Ciudad"):
   // se deriva de cualquier feria alojada en esa ciudad, mismo dato que usa Feria.svelte.
+  // CITY_FLAG_FALLBACK cubre pilares cuyas ferias están en un municipio satélite sin
+  // coincidencia exacta de nombre (p. ej. Murcia solo tiene ferias en Torre Pacheco).
+  const CITY_FLAG_FALLBACK = { murcia: 'es', salamanca: 'es' };
   $: cityFlagCountry = isCityPage
-    ? (fairItems.find((f) => f.city === (cityData[section]?.city?.es || null))?.country || null)
+    ? (fairItems.find((f) => f.city === (cityData[section]?.city?.es || null))?.country || CITY_FLAG_FALLBACK[section] || null)
     : null;
   // Proyectos del pilar: para regiones con perfil sectorial marcado mostramos obra real afín
   // (no se afirma que sean de esa ciudad; el intro es genérico "muestra de nuestro trabajo").
@@ -1110,6 +1113,17 @@
     }
   }
 
+  // Clic delegado dentro del cuerpo SEO (`{@html}`): los enlaces del contenido son HTML
+  // estático y no pueden invocar funciones Svelte, así que interceptamos aquí los enlaces
+  // internos a Pat (`href="#pat"`). Pat vive en la propia página (parte superior), de modo
+  // que en vez de navegar, lo abrimos y desplazamos hasta él.
+  function handleSeoBodyClick(e) {
+    const link = e.target.closest && e.target.closest('a[href="#pat"]');
+    if (!link) return;
+    e.preventDefault();
+    openPatAndScroll();
+  }
+
   // "Hablar con Pat" (sección de herramientas): el panel de Pat se renderiza arriba
   // del <main>, así que además de cargarlo/mostrarlo, desplazamos la página hasta él
   // para que el visitante lo vea desplegarse.
@@ -1183,23 +1197,15 @@
 
       if (lang === 'es' && !hasAutoRedirected) {
         sessionStorage.setItem('hasAutoRedirected', 'true');
+        // Solo redirigimos si el usuario ELIGIÓ antes un idioma (preferencia guardada).
+        // ANTES había además una auto-detección del idioma del navegador que redirigía
+        // (window.location) a esa versión. ELIMINADA: Googlebot ejecuta ese JS, de modo
+        // que la versión ES (canónica / x-default) de cada página quedaba marcada como
+        // "Página con redirección" en Search Console e impedía su indexación. El idioma
+        // correcto ya se comunica por hreflang; el cambio es siempre por acción del usuario.
         if (savedPref && savedPref !== 'es' && languages.includes(savedPref)) {
           window.location.href = pathFor(savedPref, section);
           return;
-        } else if (!savedPref) {
-          const browserLang = (navigator.language || navigator.languages?.[0] || 'es')
-            .split('-')[0]
-            .toLowerCase();
-          
-          if (browserLang !== 'es' && languages.includes(browserLang)) {
-            localStorage.setItem('preferredLanguage', browserLang);
-            localStorage.setItem('standarte_lang', browserLang);
-            window.location.href = pathFor(browserLang, section);
-            return;
-          } else {
-            localStorage.setItem('preferredLanguage', 'es');
-            localStorage.setItem('standarte_lang', 'es');
-          }
         }
       }
     }
@@ -1430,6 +1436,11 @@
 </header>
 
 <main class:home-warm={['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}>
+  <!-- Ancla estática de Pat: destino del enlace "#pat" del cuerpo SEO. Debe existir
+       siempre en el HTML prerenderizado (el panel de Pat se carga diferido, así que su
+       propio contenedor no sirve de destino fiable). El clic al enlace lo intercepta
+       handleSeoBodyClick, que abre y despliega a Pat. -->
+  <span id="pat" aria-hidden="true"></span>
   <!-- Panel de Pat (asesor de Expansión): flotante, se carga diferido en onMount.
        Se renderiza en home-family Y en páginas de ciudad (su layout no importa). -->
   {#if showWelcomeAdvisor && AdvisorComponent}
@@ -1844,7 +1855,8 @@
       <div class="seo-container">
         <div class="seo-layout">
           <!-- Artículo principal de redacción profesional -->
-          <article class="seo-article">
+          <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
+          <article class="seo-article" on:click={handleSeoBodyClick}>
             {#if section === 'proyecto_auditado'}
               <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
                 <img src="/img/100x100-guaranted.png" alt="" loading="lazy" />
