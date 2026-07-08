@@ -1787,8 +1787,7 @@ footer {
   padding: 36px 42px 38px;
   overflow-y: auto;
   color: #333;
-  background: #fff;
-  border-top: 6px solid var(--gold);
+  background: #f7f6f1;
   box-shadow: 0 20px 55px rgba(0, 0, 0, .35);
 }
 
@@ -1839,7 +1838,6 @@ footer {
   color: #fff;
   background: var(--dark);
   border: 1px solid #111;
-  border-top: 6px solid var(--gold);
   box-shadow: 0 18px 50px rgba(0, 0, 0, .42);
 }
 
