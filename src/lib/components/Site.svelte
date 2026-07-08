@@ -963,6 +963,27 @@
     return `Diseño y montaje de stand en ${fairName}`;
   }
 
+  // Sufijo de ciudad para el nombre en negrita de la marquesina de ferias
+  // ("Intercaza (Córdoba)"). Se omite en ferias sin ciudad concreta (itinerantes o
+  // regionales) y cuando el nombre de la feria ya contiene la ciudad, para no duplicar.
+  const NON_SPECIFIC_FAIR_CITIES = new Set(['Itinerante', 'Europa', 'España', 'Portugal', 'Portugal Sur']);
+  function localizedFairCity(esCity) {
+    const key = Object.keys(cityData).find((k) => cityData[k]?.city?.es === esCity);
+    return (key && (cityData[key].city[lang] || cityData[key].city.es)) || esCity;
+  }
+  function fairCitySuffix(fair) {
+    const city = fair && fair.city;
+    if (!city || NON_SPECIFIC_FAIR_CITIES.has(city)) return '';
+    const loc = localizedFairCity(city);
+    const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const nn = norm(fair.name);
+    // Omite el sufijo si el nombre ya contiene la ciudad (completa o su primera
+    // palabra significativa, p. ej. "Feria del Caballo de Jerez" → no "(Jerez de la Frontera)").
+    const cityFirstWord = norm(loc).split(/[\s,]+/)[0];
+    if (nn.includes(norm(city)) || nn.includes(norm(loc)) || (cityFirstWord.length >= 4 && nn.includes(cityFirstWord))) return '';
+    return ` (${loc})`;
+  }
+
   function openLightbox(project) {
     lightboxProject = project;
   }
@@ -1516,7 +1537,7 @@
                     <meta itemprop="position" content={index + 1} />
                     <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
                     <span class="lisbon-fair-copy">
-                      <strong itemprop="name">{fair.name}</strong>
+                      <strong itemprop="name">{fair.name}{fairCitySuffix(fair)}</strong>
                       <small itemprop="description">{fairSeoText(fair.name)}</small>
                     </span>
                   </a>
@@ -1524,7 +1545,7 @@
                   <a href={fairUrl(fair.slug, lang)} class="lisbon-fair-item" tabindex="-1" aria-hidden="true" style="text-decoration:none; color:inherit;">
                     <span class={`fair-flag-icon flag-${fair.country}`} aria-hidden="true"></span>
                     <span class="lisbon-fair-copy">
-                      <strong>{fair.name}</strong>
+                      <strong>{fair.name}{fairCitySuffix(fair)}</strong>
                       <small>{fairSeoText(fair.name)}</small>
                     </span>
                   </a>
