@@ -3120,6 +3120,10 @@ p b {
   margin-left: -8px;
   border-radius: 6px;
   transition: background 0.2s ease;
+  /* Tarjeta clicable (abre el lightbox): sin estilos de enlace heredados. */
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .sidebar-project-card:hover {

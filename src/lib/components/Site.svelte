@@ -1645,28 +1645,6 @@
         </div>
       {/if}
 
-      {#if lightboxProject}
-        <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={getProjectTitle(lightboxProject)} aria-describedby="project-lightbox-description" tabindex="-1">
-          {#if filteredPortfolios.length > 1}
-            <button class="lightbox-nav prev" type="button" aria-label={lang === 'es' ? 'Proyecto anterior' : 'Previous project'} on:click={() => navLightbox(-1)}>‹</button>
-            <button class="lightbox-nav next" type="button" aria-label={lang === 'es' ? 'Proyecto siguiente' : 'Next project'} on:click={() => navLightbox(1)}>›</button>
-          {/if}
-          <div class="lightbox-window" role="document">
-            <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
-            <div class="lightbox-body">
-              <div class="lightbox-media">
-                <img src={`/${lightboxProject.full}`} alt={getProjectTitle(lightboxProject)} />
-                <div class="lightbox-caption">
-                  <strong>{getProjectTitle(lightboxProject)}</strong>
-                  <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
-                </div>
-              </div>
-              <ProjectAdvisor {lang} project={lightboxProject} source={lightboxProject?.full} dark />
-            </div>
-          </div>
-        </div>
-      {/if}
-
       {#if videoLightboxSrc}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Vídeo de proyecto 3D" tabindex="-1" on:click={(e) => { if (e.target === e.currentTarget) closeVideoLightbox(); }}>
@@ -1933,13 +1911,13 @@
 
                 <div class="sidebar-projects">
                   {#each selectedPortfolios as project}
-                    <div class="sidebar-project-card">
+                    <a class="sidebar-project-card" href="/galeria/{project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={getProjectTitle(project)}>
                       <img src={`/${project.thumb.replace(/\.avif$/, '-sb.avif')}`} alt={getProjectTitle(project)} class="sidebar-project-img" width="300" height="169" loading="lazy" decoding="async" />
                       <div class="sidebar-project-info">
                         <h4>{getProjectTitle(project)}</h4>
                         <p>{projectDescription(project)}</p>
                       </div>
-                    </div>
+                    </a>
                   {/each}
                 </div>
               </div>
@@ -2036,6 +2014,31 @@
   {/if}
 
   <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} />
+
+  <!-- Lightbox de proyecto: fuera de las ramas de sección (home / ciudad) para que esté
+       disponible en AMBAS. Lo disparan tanto el grid de la galería (home) como las
+       tarjetas de "Casos de Éxito" del aside de las páginas de ciudad. -->
+  {#if lightboxProject}
+    <div class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label={getProjectTitle(lightboxProject)} aria-describedby="project-lightbox-description" tabindex="-1">
+      {#if filteredPortfolios.length > 1}
+        <button class="lightbox-nav prev" type="button" aria-label={lang === 'es' ? 'Proyecto anterior' : 'Previous project'} on:click={() => navLightbox(-1)}>‹</button>
+        <button class="lightbox-nav next" type="button" aria-label={lang === 'es' ? 'Proyecto siguiente' : 'Next project'} on:click={() => navLightbox(1)}>›</button>
+      {/if}
+      <div class="lightbox-window" role="document">
+        <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeLightbox}>×</button>
+        <div class="lightbox-body">
+          <div class="lightbox-media">
+            <img src={`/${lightboxProject.full}`} alt={getProjectTitle(lightboxProject)} />
+            <div class="lightbox-caption">
+              <strong>{getProjectTitle(lightboxProject)}</strong>
+              <p id="project-lightbox-description">{projectDescription(lightboxProject)}</p>
+            </div>
+          </div>
+          <ProjectAdvisor {lang} project={lightboxProject} source={lightboxProject?.full} dark />
+        </div>
+      </div>
+    </div>
+  {/if}
 </main>
 
 <SiteFooter {lang} {copy} langHref={(option) => pathFor(option, section)} />
