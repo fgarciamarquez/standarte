@@ -684,6 +684,11 @@
     return 'Standarte';
   }
 
+  const COVER_OVERRIDE = { murcia: 'murcia-v2', alicante: 'alicante-v2' };
+  function coverBase(id) {
+    return COVER_OVERRIDE[id] || id;
+  }
+
   function cityTitle(id) {
     const city = cityData[id]?.city?.[lang] || cityData[id]?.city?.es || '';
     if (lang === 'de') return `Messestand Design und Montage in ${city}`;
@@ -1325,8 +1330,8 @@
     <!-- Páginas de ciudad: la portada de la ciudad como fondo del header (responsive). -->
     <img
       class="hero-bg-city"
-      src="/img/cover_{section}.avif"
-      srcset="/img/cover_{section}-mobile.avif 480w, /img/cover_{section}-md.avif 640w, /img/cover_{section}.avif 800w"
+      src="/img/cover_{coverBase(section)}.avif"
+      srcset="/img/cover_{coverBase(section)}-mobile.avif 480w, /img/cover_{coverBase(section)}-md.avif 640w, /img/cover_{coverBase(section)}.avif 800w"
       sizes="100vw"
       alt=""
       aria-hidden="true"
@@ -1454,8 +1459,8 @@
             <a href={pathFor(lang, cityKey)} class="city-cover-link" aria-label={cityTitle(cityKey)}>
               <div class="city-cover-container">
                 <img
-                  src="/img/cover_{cityKey}.avif"
-                  srcset="/img/cover_{cityKey}-mobile.avif 480w, /img/cover_{cityKey}-md.avif 640w, /img/cover_{cityKey}.avif 800w"
+                  src="/img/cover_{coverBase(cityKey)}.avif"
+                  srcset="/img/cover_{coverBase(cityKey)}-mobile.avif 480w, /img/cover_{coverBase(cityKey)}-md.avif 640w, /img/cover_{coverBase(cityKey)}.avif 800w"
                   sizes="(max-width: 768px) 90vw, 380px"
                   width="640"
                   height="360"

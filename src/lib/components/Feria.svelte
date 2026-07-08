@@ -525,9 +525,13 @@
   // Portada para ciudades-satélite sin página-pilar propia (no tienen currentCityKey,
   // pero sí imagen de recinto). Clave = fair.city -> nombre del archivo cover_<x>.avif.
   const CITY_COVER = { 'Plasencia': 'plasencia' };
+  // Ficheros renombrados para esquivar una caché de respuestas obsoleta de OVH
+  // (los nombres originales cover_murcia/cover_alicante quedaron atascados en text/html).
+  const COVER_OVERRIDE = { murcia: 'murcia-v2', alicante: 'alicante-v2' };
   // Portada del header: ciudad-matriz si la tiene; si no, portada de satélite o del
   // clúster regional (Portugal Sur). Resto sin portada -> header oscuro.
   $: coverKey = currentCityKey || CITY_COVER[fair.city] || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
+  $: coverBase = coverKey ? (COVER_OVERRIDE[coverKey] || coverKey) : null;
   // Ferias relacionadas por ACTIVIDAD (no por lugar): otras ferias que comparten
   // al menos una etiqueta de actividad con esta. Se priorizan las que comparten más
   // etiquetas (más afines) y se limita a 12.
@@ -668,8 +672,8 @@
     <!-- Portada del header: ciudad-matriz o portada del clúster regional (Portugal Sur). -->
     <img
       class="hero-bg-city"
-      src="/img/cover_{coverKey}.avif"
-      srcset="/img/cover_{coverKey}-mobile.avif 480w, /img/cover_{coverKey}-md.avif 640w, /img/cover_{coverKey}.avif 800w"
+      src="/img/cover_{coverBase}.avif"
+      srcset="/img/cover_{coverBase}-mobile.avif 480w, /img/cover_{coverBase}-md.avif 640w, /img/cover_{coverBase}.avif 800w"
       sizes="100vw"
       alt=""
       aria-hidden="true"
