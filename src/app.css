@@ -1571,7 +1571,11 @@ article:hover .city-cover-image,
 .contact-us h3 {
   margin: 0 0 45px;
   color: #fff;
-  font-size: 36px;
+  /* Los tres reclamos ("Previsión en 5 seg." / "Presupuesto en 24h" / "Prototipo 3D
+     en 72h") escalan de forma fluida con el ancho de pantalla en vez de quedarse en su
+     máximo: ~22px en móvil → 36px en escritorio (la columna es estrecha en tamaños
+     intermedios, donde 36px se quedaba grande). */
+  font-size: clamp(1.375rem, 1rem + 1.8vw, 2.25rem);
   line-height: 1.2;
 }
 
