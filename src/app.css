@@ -943,6 +943,25 @@ article:hover .city-cover-image,
   content: none;
 }
 
+/* Bandera circular del país (ferias hermanas, miga de pan de feria/ciudad):
+   el degradado lo aporta .flag-es/.flag-pt/.flag-de/.flag-fr de arriba. */
+.fair-flag {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  flex: 0 0 auto;
+}
+/* Misma bandera, incrustada en una miga de pan: ajuste de tamaño/vertical
+   para encajar delante del texto mayúsculo monoespaciado. */
+.bc-flag {
+  width: 13px;
+  height: 13px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+
 .lisbon-fair-copy {
   display: inline-flex;
   flex-direction: column;

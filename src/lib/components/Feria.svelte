@@ -477,7 +477,10 @@
     if (currentCityKey) {
       items.push({
         name: cityData[currentCityKey]?.city?.[lang] || cityData[currentCityKey]?.city?.es,
-        href: pathFor(lang, currentCityKey)
+        href: pathFor(lang, currentCityKey),
+        // Bandera del país (España/Portugal se tratan de forma conjunta en las
+        // ferias): orienta de un vistazo en qué país está la ciudad-matriz.
+        flag: fair.country
       });
     }
     items.push({ name: fair.name, href: null });
@@ -754,6 +757,7 @@
           <ol>
             {#each breadcrumbItems as item, i}
               <li>
+                {#if item.flag}<span class="fair-flag flag-{item.flag} bc-flag" aria-hidden="true"></span>{/if}
                 {#if item.href}
                   <a href={item.href}>{item.name}</a>
                 {:else}
@@ -1118,17 +1122,8 @@
     border-color: var(--primary);
     color: var(--primary);
   }
-  /* Bandera del país de la feria (botones de "Ferias en las que también montamos
-     stands"): se ve a primera vista en qué país está. El degradado lo aporta la
-     clase global .flag-es/.flag-fr/.flag-de/.flag-pt (app.css). */
-  .fair-flag {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    flex: 0 0 auto;
-  }
+  /* .fair-flag / .bc-flag: promovidas a global (app.css) — las usan tanto la
+     miga de pan de esta ficha como la de las páginas de ciudad (Site.svelte). */
   /* Ciudad a la que pertenece esta feria: pastilla resaltada (sigue siendo enlace). */
   .cluster-fairs li a.active {
     border-color: var(--gold);

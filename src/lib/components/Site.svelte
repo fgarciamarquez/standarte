@@ -501,6 +501,11 @@
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
   $: isCityPage = section in cityData;
+  // País de la ciudad-matriz (bandera circular en la miga de pan "Inicio / Ciudad"):
+  // se deriva de cualquier feria alojada en esa ciudad, mismo dato que usa Feria.svelte.
+  $: cityFlagCountry = isCityPage
+    ? (fairItems.find((f) => f.city === (cityData[section]?.city?.es || null))?.country || null)
+    : null;
   // Proyectos del pilar: para regiones con perfil sectorial marcado mostramos obra real afín
   // (no se afirma que sean de esa ciudad; el intro es genérico "muestra de nuestro trabajo").
   $: selectedPortfolios = (FEATURED_BY_REGION[SECTION_REGION[section]] || [])
@@ -1849,6 +1854,7 @@
                   </li>
                   <li class="bc-sep" aria-hidden="true"><span class="divider">/</span></li>
                   <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    {#if cityFlagCountry}<span class="fair-flag flag-{cityFlagCountry} bc-flag" aria-hidden="true"></span>{/if}
                     <span class="current" itemprop="name" aria-current="page">{seoContent.breadcrumb}</span>
                     <meta itemprop="position" content="2" />
                   </li>
