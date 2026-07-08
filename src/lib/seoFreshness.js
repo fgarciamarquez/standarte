@@ -22,9 +22,15 @@ export const seoFreshness = {
   malaga: '2026-07-07',
   sevilla: '2026-07-07',
   barcelona: '2026-07-07',
-  alicante: '2026-07-07',
-  murcia: '2026-07-07',
-  mallorca: '2026-07-07'
+  alicante: '2026-07-08',
+  murcia: '2026-07-08',
+  mallorca: '2026-07-07',
+  valencia: '2026-07-08',
+  coruna: '2026-07-08',
+  santiago: '2026-07-08',
+  valladolid: '2026-07-08',
+  salamanca: '2026-07-08',
+  batalha: '2026-07-08'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

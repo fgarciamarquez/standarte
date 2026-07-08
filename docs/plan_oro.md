@@ -89,16 +89,12 @@ la última edición REAL de su contenido, no la del build.
   traduce a los otros 10 idiomas con subagentes, insertando en `richSeoData.js`. Para una
   *primera prueba* puede aplicarse solo a ES y propagar tras validar el modelo.
 
-## Páginas Absolutistas nuevas (no Oro)
+## Ciudades creadas desde cero (routes + cityData + richSeoData, 11 idiomas)
 
-Ciudades creadas desde cero con el modelo **Absolutista** (ligero: intro + 2 H2 + 2 FAQs,
-sin nube de ferias porque aún no tenemos ferias suyas en el mapa), en los **11 idiomas**
-(routes + cityData + richSeoData + mapeo de región + cityKeys):
-
-- **Alicante** — recinto **IFA (Institución Ferial Alicantina)** en Elche; ejes Futurmoda
-  (calzado/marroquinería), Alicante Gastronómica, Firauto. Región `comunidadvalenciana`.
-- **Murcia** — recinto **IFEPA (Institución Ferial de la Región de Murcia)** en Torre
-  Pacheco; enfoque agrícola, ganadero y comercial. Región `murcia`.
+- **Alicante** (IFA, Elche) y **Murcia** (IFEPA, Torre Pacheco) — creadas primero como
+  Absolutistas y luego **subidas a Oro** (ES + EN). Sus ferias (Futurmoda, Firauto, Alicante
+  Gastronómica; FAME Innowa, EQUIMUR, HortiFruit, FECONS) están dadas de alta con página
+  propia y contenido SEO único, enlazadas en cuerpo y en la nube del sidebar.
 
 ## Historial de aplicación
 
@@ -134,6 +130,24 @@ sin nube de ferias porque aún no tenemos ferias suyas en el mapa), en los **11 
   ferias enlazadas: Palma Boat Show, Superyacht Village (náutica), Baleart (cultura/artesanía),
   Dijous Bo (multisectorial). Cobertura a Valencia y Barcelona (puertos de conexión), Madrid,
   Lisboa y Oporto. URL sin cambios.
+- **Valencia** (ES + EN) — recinto **Feria Valencia** (Benimámet): 10 pabellones, +110.000 m²
+  de exposición en sus grandes citas. 10 ferias enlazadas (Cevisama, Hábitat, Textilhogar,
+  Espacio Cocina SICI, Eurobrico, Fimma-Maderalia, Iberflora, Gastrónoma, Beauty Forum,
+  Solar & Storage Live). Cobertura a Barcelona, Madrid, Alicante, Murcia, Mallorca, Lisboa, Oporto.
+- **A Coruña** (ES) — recinto **ExpoCoruña** (18.000 m² cubiertos + 8.000 exteriores). Ferias:
+  Fórum Gastronómico, Mundos Digitales, BioCultura. Cobertura gallega (Santiago, Vigo) + Madrid/Bilbao.
+- **Santiago de Compostela** (ES) — **Palacio de Congresos y Exposiciones de Galicia** (auditorio
+  2.100, 22 salas). Ferias/congresos: Fairway, Maker Faire Galicia, GEDET, SEMERGEN, SESMI.
+- **Valladolid** (ES) — **Feria de Valladolid** (4 pabellones, auditorio 600, Centro de Congresos).
+  Ferias: AGRARIA, AGROVID, aviFORUM, FIMASCOTA, Salón del Gas Renovable.
+- **Salamanca** (ES) — **Recinto Ferial de Salamanca** (La Salina/Diputación, +40.000 m²).
+  Ejes: SALAMAQ (agropecuaria), Salón del Automóvil, Congreso de Alineadores.
+- **Batalha** (ES + PT + EN) — **Exposalão** (120.000 m², 3 pabellones, entre Lisboa y Oporto).
+  Ferias: Moldplas, Expometal, Stone Ibérica, Vidrotec, Decorhotel. Cobertura Lisboa/Oporto/Madrid.
+- **Alicante** (ES + EN) — **IFA – Fira Alacant** (Elche, +20 ferias, 300.000 visitantes/año).
+  Ferias: Futurmoda, Firauto, Alicante Gastronómica. Cobertura Valencia/Murcia/Madrid/Barcelona.
+- **Murcia** (ES + EN) — **IFEPA** (Torre Pacheco, fundada 1984). Ferias: FAME Innowa, EQUIMUR,
+  HortiFruit, FECONS. Cobertura Alicante/Valencia/Madrid/Barcelona.
 - **Barcelona** (ES + EN) — una de las grandes capitales feriales del mundo. Recinto **Fira
   de Barcelona** (Gran Via + Montjuïc): 400.000 m² totales; Gran Via (L'Hospitalet), obra de
   Toyo Ito, 240.000 m² brutos en 8 pabellones interconectados, Eje Central elevado de 1 km,
