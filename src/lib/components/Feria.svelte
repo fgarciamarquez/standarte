@@ -917,12 +917,12 @@
     gap: 48px;
     align-items: start;
   }
-  /* Cuerpo principal en caja blanca, igual que el artículo de las páginas de ciudad. */
+  /* Cuerpo principal: fondo transparente, sin caja ni sombra (igual que .seo-article). */
   .feria-text {
-    background: #fff;
-    padding: 50px;
+    background: transparent;
+    padding: 0;
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    box-shadow: none;
     min-width: 0;
     position: relative;
   }

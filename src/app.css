@@ -2942,11 +2942,14 @@ footer {
 
 /* Article Styling */
 .seo-article {
-  background: #fff;
-  padding: 50px;
+  background: transparent;
+  padding: 0;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  box-shadow: none;
   min-width: 0; /* permite que la columna del grid encoja en movil (sin esto, min-content desborda) */
+}
+.seo-article ol[itemscope] {
+  padding-left: 0;
 }
 
 .seo-article h2 {
@@ -3211,9 +3214,9 @@ p b {
   }
   
   .seo-article {
-    padding: 30px;
+    padding: 0;
   }
-  
+
   .sidebar-sticky {
     position: static;
     border-left: none;
@@ -3495,7 +3498,7 @@ p b {
     padding: 40px 15px;
   }
   .seo-article {
-    padding: 25px 20px;
+    padding: 0;
   }
 }
 
