@@ -57,6 +57,9 @@ export const routes = {
     cordoba: 'diseno_montaje_stands_cordoba',
     granada: 'diseno_montaje_stands_granada',
     cadiz: 'diseno_montaje_stands_cadiz',
+    santarem: 'diseno_montaje_stands_santarem',
+    trujillo: 'diseno_montaje_stands_trujillo',
+    elche: 'diseno_montaje_stands_elche',
     noticias: 'blog',
     ferias: 'ferias'
   },
@@ -99,6 +102,9 @@ export const routes = {
     cordoba: 'stand_design_assembly_cordoba',
     granada: 'stand_design_assembly_granada',
     cadiz: 'stand_design_assembly_cadiz',
+    santarem: 'stand_design_assembly_santarem',
+    trujillo: 'stand_design_assembly_trujillo',
+    elche: 'stand_design_assembly_elche',
     noticias: 'blog',
     ferias: 'fairs'
   },
@@ -141,6 +147,9 @@ export const routes = {
     cordoba: 'messestand_design_montage_cordoba',
     granada: 'messestand_design_montage_granada',
     cadiz: 'messestand_design_montage_cadiz',
+    santarem: 'messestand_design_montage_santarem',
+    trujillo: 'messestand_design_montage_trujillo',
+    elche: 'messestand_design_montage_elche',
     noticias: 'blog',
     ferias: 'messen'
   },
@@ -183,6 +192,9 @@ export const routes = {
     cordoba: 'cordoba_zhantai_sheji_dajian',
     granada: 'granada_zhantai_sheji_dajian',
     cadiz: 'cadiz_zhantai_sheji_dajian',
+    santarem: 'santarem_zhantai_sheji_dajian',
+    trujillo: 'trujillo_zhantai_sheji_dajian',
+    elche: 'elche_zhantai_sheji_dajian',
     noticias: 'blog',
     ferias: 'zhanhui'
   },
@@ -225,6 +237,9 @@ export const routes = {
     cordoba: 'cordoba_stand_dizain_asembli',
     granada: 'granada_stand_dizain_asembli',
     cadiz: 'cadiz_stand_dizain_asembli',
+    santarem: 'santarem_stand_dizain_asembli',
+    trujillo: 'trujillo_stand_dizain_asembli',
+    elche: 'elche_stand_dizain_asembli',
     noticias: 'blog',
     ferias: 'mele'
   },
@@ -267,6 +282,9 @@ export const routes = {
     cordoba: 'design_montagem_stands_cordoba',
     granada: 'design_montagem_stands_granada',
     cadiz: 'design_montagem_stands_cadiz',
+    santarem: 'design_montagem_stands_santarem',
+    trujillo: 'design_montagem_stands_trujillo',
+    elche: 'design_montagem_stands_elche',
     noticias: 'blog',
     ferias: 'feiras'
   },
@@ -309,6 +327,9 @@ export const routes = {
     cordoba: 'conception_montage_stands_cordoue',
     granada: 'conception_montage_stands_grenade',
     cadiz: 'conception_montage_stands_cadix',
+    santarem: 'conception_montage_stands_santarem',
+    trujillo: 'conception_montage_stands_trujillo',
+    elche: 'conception_montage_stands_elche',
     noticias: 'blog',
     ferias: 'salons'
   },
@@ -351,6 +372,9 @@ export const routes = {
     cordoba: 'progettazione_montaggio_stand_cordoba',
     granada: 'progettazione_montaggio_stand_granada',
     cadiz: 'progettazione_montaggio_stand_cadice',
+    santarem: 'progettazione_montaggio_stand_santarem',
+    trujillo: 'progettazione_montaggio_stand_trujillo',
+    elche: 'progettazione_montaggio_stand_elche',
     noticias: 'blog',
     ferias: 'fiere'
   },
@@ -393,6 +417,9 @@ export const routes = {
     cordoba: 'cordoba-bujeu-dijain-jorip',
     granada: 'granada-bujeu-dijain-jorip',
     cadiz: 'cadiz-bujeu-dijain-jorip',
+    santarem: 'santarem-bujeu-dijain-jorip',
+    trujillo: 'trujillo-bujeu-dijain-jorip',
+    elche: 'elche-bujeu-dijain-jorip',
     noticias: 'blog',
     ferias: 'jeonsihoe'
   },
@@ -435,6 +462,9 @@ export const routes = {
     cordoba: 'コルドバ展示会ブース設計施工',
     granada: 'グラナダ展示会ブース設計施工',
     cadiz: 'カディス展示会ブース設計施工',
+    santarem: 'サンタレン展示会ブース設計施工',
+    trujillo: 'トルヒージョ展示会ブース設計施工',
+    elche: 'エルチェ展示会ブース設計施工',
     noticias: 'blog',
     ferias: '展示会情報'
   },
@@ -477,6 +507,9 @@ export const routes = {
     cordoba: 'standontwerp_montage_cordoba',
     granada: 'standontwerp_montage_granada',
     cadiz: 'standontwerp_montage_cadiz',
+    santarem: 'standontwerp_montage_santarem',
+    trujillo: 'standontwerp_montage_trujillo',
+    elche: 'standontwerp_montage_elche',
     noticias: 'blog',
     ferias: 'beurzen'
   }
@@ -2843,6 +2876,153 @@ export const cityData = {
       ko: {
         intro: '카디스는 조선·블루이코노미 지향성과 헤레스 데 라 프론테라의 승마·농축산 전통을 함께 갖춘 지역으로, 카디스 회의장에서 열리는 Blue Zone Forum Navalia Meeting, 헤레스의 Feria del Caballo, IFECA-Jerez의 Fegasur 같은 대표 행사를 개최합니다. 20년의 경험과 최고 수준의 자체 공방을 갖춘 Standarte가 이 모든 행사에서 부스의 기술 설계, 제작, 설치 및 조율을 담당합니다.',
         detail: '저희 팀은 기업 브랜드와 크리에이티브 에이전시에 견고하고 시간을 엄수하며 고급스러운 마감의 시공을 보장합니다.'
+      }
+    }
+  },
+  santarem: {
+    city: { es: 'Santarém', en: 'Santarem', de: 'Santarém', zh: '桑塔伦', hi: 'सांतारेम', pt: 'Santarém', fr: 'Santarém', it: 'Santarém', ko: '산타렘', ja: 'サンタレン' },
+    content: {
+      es: {
+        intro: 'Santarém es la capital ferial agrícola de Portugal gracias al CNEMA (Centro Nacional de Exposições e Mercados Agrícolas), el mayor recinto del país, sede de la Feira Nacional de Agricultura, FERSANT, Agroglobal y Lusoflora. Con 20 años de experiencia y taller propio, Standarte diseña, fabrica, instala y coordina stands en el CNEMA.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional en todo el Ribatejo.'
+      },
+      en: {
+        intro: 'Santarém is Portugal\'s agricultural fair capital thanks to CNEMA (Centro Nacional de Exposições e Mercados Agrícolas), the country\'s largest venue and home to the Feira Nacional de Agricultura, FERSANT, Agroglobal and Lusoflora. With 20 years of experience and its own workshop, Standarte designs, builds, installs and coordinates stands at CNEMA.',
+        detail: 'We give agencies and exhibitors the reassurance of a build with no surprises and exceptional attention to detail across the Ribatejo.'
+      },
+      de: {
+        intro: 'Santarém ist dank des CNEMA (Centro Nacional de Exposições e Mercados Agrícolas), dem größten Messegelände Portugals, die landwirtschaftliche Messehauptstadt des Landes und Austragungsort der Feira Nacional de Agricultura, FERSANT, Agroglobal und Lusoflora. Mit 20 Jahren Erfahrung und eigener Werkstatt plant, fertigt, installiert und koordiniert Standarte Messestände im CNEMA.',
+        detail: 'Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und eine außergewöhnliche Liebe zum Detail im gesamten Ribatejo.'
+      },
+      pt: {
+        intro: 'Santarém é a capital das feiras agrícolas de Portugal graças ao CNEMA (Centro Nacional de Exposições e Mercados Agrícolas), o maior recinto do país, sede da Feira Nacional de Agricultura, da FERSANT, da Agroglobal e da Lusoflora. Com 20 anos de experiência e oficina própria, a Standarte concebe, produz, instala e coordena stands no CNEMA.',
+        detail: 'Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional em todo o Ribatejo.'
+      },
+      fr: {
+        intro: 'Santarém est la capitale des salons agricoles du Portugal grâce au CNEMA (Centro Nacional de Exposições e Mercados Agrícolas), le plus grand site du pays, siège de la Feira Nacional de Agricultura, de FERSANT, d\'Agroglobal et de Lusoflora. Avec 20 ans d\'expérience et notre propre atelier, Standarte conçoit, fabrique, installe et coordonne des stands au CNEMA.',
+        detail: 'Nous offrons aux agences et aux exposants la sérénité d\'un montage sans mauvaises surprises et une attention aux détails exceptionnelle dans tout le Ribatejo.'
+      },
+      it: {
+        intro: 'Santarém è la capitale fieristica agricola del Portogallo grazie al CNEMA (Centro Nacional de Exposições e Mercados Agrícolas), il più grande polo fieristico del paese, sede della Feira Nacional de Agricultura, di FERSANT, Agroglobal e Lusoflora. Con 20 anni di esperienza e officina propria, Standarte progetta, produce, installa e coordina stand al CNEMA.',
+        detail: 'Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune in tutto il Ribatejo.'
+      },
+      nl: {
+        intro: 'Santarém is dankzij het CNEMA (Centro Nacional de Exposições e Mercados Agrícolas), het grootste beurscomplex van Portugal, de landbouwbeurshoofdstad van het land en gastheer van de Feira Nacional de Agricultura, FERSANT, Agroglobal en Lusoflora. Met 20 jaar ervaring en een eigen werkplaats ontwerpt, produceert, installeert en coördineert Standarte stands in het CNEMA.',
+        detail: 'Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail in de hele Ribatejo-regio.'
+      },
+      zh: {
+        intro: '桑塔伦凭借葡萄牙最大的展馆CNEMA（国家农业展览与市场中心）成为葡萄牙的农业展会之都，是全国农业展、FERSANT、Agroglobal和Lusoflora的举办地。凭借20年经验和自有工厂，Standarte在CNEMA设计、生产、安装并协调展台。',
+        detail: '我们为代理公司和参展商提供整个里巴特茹地区毫无意外的搭建保障，以及对细节的极致关注。'
+      },
+      hi: {
+        intro: 'Santarém, पुर्तगाल के सबसे बड़े स्थल CNEMA (Centro Nacional de Exposições e Mercados Agrícolas) की बदौलत देश की कृषि मेला राजधानी है, जो Feira Nacional de Agricultura, FERSANT, Agroglobal और Lusoflora की मेज़बानी करता है। 20 वर्षों के अनुभव और अपनी कार्यशाला के साथ, Standarte CNEMA में स्टैंड डिज़ाइन, निर्माण, स्थापित और समन्वित करता है।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को पूरे Ribatejo क्षेत्र में बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।'
+      },
+      ko: {
+        intro: '산타렘은 포르투갈 최대 전시장인 CNEMA(Centro Nacional de Exposições e Mercados Agrícolas) 덕분에 포르투갈의 농업 박람회 수도로, Feira Nacional de Agricultura, FERSANT, Agroglobal, Lusoflora가 열리는 곳입니다. 20년의 경험과 자체 공방을 갖춘 Standarte가 CNEMA에서 부스를 설계, 제작, 설치 및 조율합니다.',
+        detail: '저희는 리바테주 전역에서 에이전시와 참가업체에 예상치 못한 문제 없는 시공과 탁월한 디테일을 보장합니다.'
+      },
+      ja: {
+        intro: 'サンタレンはポルトガル最大の会場であるCNEMA（国立農業展示・市場センター）を擁し、Feira Nacional de Agricultura、FERSANT、Agroglobal、Lusofloraが開催される同国の農業見本市の首都です。20年の経験と自社工房を持つStandarteが、CNEMAでのブースの設計・製作・設置・調整を担います。',
+        detail: '当社は代理店や出展者に、リバテージョ地方全域で想定外のない施工と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  trujillo: {
+    city: { es: 'Trujillo', en: 'Trujillo', de: 'Trujillo', zh: '特鲁希略', hi: 'त्रुखिलो', pt: 'Trujillo', fr: 'Trujillo', it: 'Trujillo', ko: '트루히요', ja: 'トルヒージョ' },
+    content: {
+      es: {
+        intro: 'Trujillo (Cáceres) es una plaza agroganadera y gastronómica de referencia en Extremadura, con la Feria Agroganadera de Trujillo y la Feria Nacional del Queso, que llena su monumental Plaza Mayor. Con 20 años de experiencia y taller propio, Standarte diseña, fabrica, instala y coordina stands en Trujillo.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'Trujillo (Cáceres) is a leading agri-livestock and gastronomic hub in Extremadura, home to the Feria Agroganadera de Trujillo and the Feria Nacional del Queso, which fills its monumental Plaza Mayor. With 20 years of experience and its own workshop, Standarte designs, builds, installs and coordinates stands in Trujillo.',
+        detail: 'We give agencies and exhibitors the reassurance of a build with no surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Trujillo (Cáceres) ist ein bedeutender Standort für Landwirtschaft, Viehzucht und Gastronomie in Extremadura, mit der Feria Agroganadera de Trujillo und der Feria Nacional del Queso, die den monumentalen Plaza Mayor füllen. Mit 20 Jahren Erfahrung und eigener Werkstatt plant, fertigt, installiert und koordiniert Standarte Messestände in Trujillo.',
+        detail: 'Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und eine außergewöhnliche Liebe zum Detail.'
+      },
+      pt: {
+        intro: 'Trujillo (Cáceres) é uma praça de referência agropecuária e gastronómica na Estremadura espanhola, com a Feria Agroganadera de Trujillo e a Feria Nacional del Queso, que enchem a sua monumental Plaza Mayor. Com 20 anos de experiência e oficina própria, a Standarte concebe, produz, instala e coordena stands em Trujillo.',
+        detail: 'Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional.'
+      },
+      fr: {
+        intro: 'Trujillo (Cáceres) est une place de référence agropastorale et gastronomique en Estrémadure, avec la Feria Agroganadera de Trujillo et la Feria Nacional del Queso, qui remplissent sa monumentale Plaza Mayor. Avec 20 ans d\'expérience et notre propre atelier, Standarte conçoit, fabrique, installe et coordonne des stands à Trujillo.',
+        detail: 'Nous offrons aux agences et aux exposants la sérénité d\'un montage sans mauvaises surprises et une attention aux détails exceptionnelle.'
+      },
+      it: {
+        intro: 'Trujillo (Cáceres) è una piazza di riferimento agro-zootecnico e gastronomico in Estremadura, con la Feria Agroganadera de Trujillo e la Feria Nacional del Queso, che riempiono la sua monumentale Plaza Mayor. Con 20 anni di esperienza e officina propria, Standarte progetta, produce, installa e coordina stand a Trujillo.',
+        detail: 'Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune.'
+      },
+      nl: {
+        intro: 'Trujillo (Cáceres) is een toonaangevende locatie voor landbouw, veeteelt en gastronomie in Extremadura, met de Feria Agroganadera de Trujillo en de Feria Nacional del Queso, die het monumentale Plaza Mayor vullen. Met 20 jaar ervaring en een eigen werkplaats ontwerpt, produceert, installeert en coördineert Standarte stands in Trujillo.',
+        detail: 'Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '特鲁希略（卡塞雷斯）是埃斯特雷马杜拉重要的农牧业与美食中心，特鲁希略农牧展和国家奶酪展在此举行，展会填满了其宏伟的大广场（Plaza Mayor）。凭借20年经验和自有工厂，Standarte在特鲁希略设计、生产、安装并协调展台。',
+        detail: '我们为代理公司和参展商提供毫无意外的搭建保障，以及对细节的极致关注。'
+      },
+      hi: {
+        intro: 'Trujillo (Cáceres) एक्स्ट्रीमादुरा में कृषि-पशुपालन और गैस्ट्रोनॉमी का एक प्रमुख केंद्र है, जहाँ Feria Agroganadera de Trujillo और Feria Nacional del Queso इसके भव्य Plaza Mayor को भर देते हैं। 20 वर्षों के अनुभव और अपनी कार्यशाला के साथ, Standarte Trujillo में स्टैंड डिज़ाइन, निर्माण, स्थापित और समन्वित करता है।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।'
+      },
+      ko: {
+        intro: '트루히요(카세레스)는 엑스트레마두라의 대표적인 농축산·미식 거점으로, 트루히요 농축산 박람회와 전국 치즈 박람회가 웅장한 마요르 광장을 채웁니다. 20년의 경험과 자체 공방을 갖춘 Standarte가 트루히요에서 부스를 설계, 제작, 설치 및 조율합니다.',
+        detail: '저희는 에이전시와 참가업체에 예상치 못한 문제 없는 시공과 탁월한 디테일을 보장합니다.'
+      },
+      ja: {
+        intro: 'トルヒージョ（カセレス）はエストレマドゥーラを代表する農畜産・美食の拠点で、トルヒージョ農畜産見本市と全国チーズ見本市が壮大なマヨール広場を埋め尽くします。20年の経験と自社工房を持つStandarteが、トルヒージョでのブースの設計・製作・設置・調整を担います。',
+        detail: '当社は代理店や出展者に、想定外のない施工と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  elche: {
+    city: { es: 'Elche', en: 'Elche', de: 'Elche', zh: '埃尔切', hi: 'एल्चे', pt: 'Elche', fr: 'Elche', it: 'Elche', ko: '엘체', ja: 'エルチェ' },
+    content: {
+      es: {
+        intro: 'Elche alberga IFA – Institución Ferial Alicantina, el gran recinto ferial de la provincia de Alicante, sede de Futurmoda —el salón del principal clúster del calzado de Europa— y Firauto. Con 20 años de experiencia y taller propio, Standarte diseña, fabrica, instala y coordina stands en IFA (Elche).',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'Elche is home to IFA – Institución Ferial Alicantina, the major exhibition venue of the Alicante province, host to Futurmoda —the salon of Europe\'s main footwear cluster— and Firauto. With 20 years of experience and its own workshop, Standarte designs, builds, installs and coordinates stands at IFA (Elche).',
+        detail: 'We give agencies and exhibitors the reassurance of a build with no surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Elche beherbergt IFA – Institución Ferial Alicantina, das große Messegelände der Provinz Alicante, Austragungsort von Futurmoda —der Fachmesse des führenden Schuh-Clusters Europas— und Firauto. Mit 20 Jahren Erfahrung und eigener Werkstatt plant, fertigt, installiert und koordiniert Standarte Messestände bei IFA (Elche).',
+        detail: 'Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und eine außergewöhnliche Liebe zum Detail.'
+      },
+      pt: {
+        intro: 'Elche acolhe a IFA – Institución Ferial Alicantina, o grande recinto ferial da província de Alicante, sede da Futurmoda —o salão do principal cluster de calçado da Europa— e da Firauto. Com 20 anos de experiência e oficina própria, a Standarte concebe, produz, instala e coordena stands na IFA (Elche).',
+        detail: 'Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional.'
+      },
+      fr: {
+        intro: 'Elche accueille l\'IFA – Institución Ferial Alicantina, le grand parc des expositions de la province d\'Alicante, siège de Futurmoda —le salon du principal cluster de la chaussure d\'Europe— et de Firauto. Avec 20 ans d\'expérience et notre propre atelier, Standarte conçoit, fabrique, installe et coordonne des stands à l\'IFA (Elche).',
+        detail: 'Nous offrons aux agences et aux exposants la sérénité d\'un montage sans mauvaises surprises et une attention aux détails exceptionnelle.'
+      },
+      it: {
+        intro: 'Elche ospita l\'IFA – Institución Ferial Alicantina, il grande quartiere fieristico della provincia di Alicante, sede di Futurmoda —il salone del principale cluster calzaturiero d\'Europa— e di Firauto. Con 20 anni di esperienza e officina propria, Standarte progetta, produce, installa e coordina stand presso IFA (Elche).',
+        detail: 'Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune.'
+      },
+      nl: {
+        intro: 'Elche is de thuisbasis van IFA – Institución Ferial Alicantina, het grote beurscomplex van de provincie Alicante, gastheer van Futurmoda —de vakbeurs van Europa\'s belangrijkste schoenencluster— en Firauto. Met 20 jaar ervaring en een eigen werkplaats ontwerpt, produceert, installeert en coördineert Standarte stands bij IFA (Elche).',
+        detail: 'Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '埃尔切拥有IFA——阿利坎特省重要展览场馆，是Futurmoda（欧洲主要制鞋产业集群展会）和Firauto的举办地。凭借20年经验和自有工厂，Standarte在IFA（埃尔切）设计、生产、安装并协调展台。',
+        detail: '我们为代理公司和参展商提供毫无意外的搭建保障，以及对细节的极致关注。'
+      },
+      hi: {
+        intro: 'एल्चे में IFA – Institución Ferial Alicantina है, जो अलिकांते प्रांत का प्रमुख प्रदर्शनी स्थल है और Futurmoda —यूरोप के प्रमुख जूता क्लस्टर का सैलून— तथा Firauto की मेज़बानी करता है। 20 वर्षों के अनुभव और अपनी कार्यशाला के साथ, Standarte IFA (एल्चे) में स्टैंड डिज़ाइन, निर्माण, स्थापित और समन्वित करता है।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।'
+      },
+      ko: {
+        intro: '엘체에는 알리칸테주의 대표 전시장인 IFA – Institución Ferial Alicantina가 있으며, 유럽 최대 신발 클러스터의 전시회인 Futurmoda와 Firauto를 개최합니다. 20년의 경험과 자체 공방을 갖춘 Standarte가 IFA(엘체)에서 부스를 설계, 제작, 설치 및 조율합니다.',
+        detail: '저희는 에이전시와 참가업체에 예상치 못한 문제 없는 시공과 탁월한 디테일을 보장합니다.'
+      },
+      ja: {
+        intro: 'エルチェには、アリカンテ県を代表する見本市会場IFA – Institución Ferial Alicantinaがあり、欧州最大の製靴クラスターの見本市であるFuturmodaとFirautoの会場となっています。20年の経験と自社工房を持つStandarteが、IFA（エルチェ）でのブースの設計・製作・設置・調整を担います。',
+        detail: '当社は代理店や出展者に、想定外のない施工と卓越したディテールへのこだわりをお約束します。'
       }
     }
   }

@@ -838,6 +838,18 @@ article:hover .city-cover-image,
   line-height: 1.65;
 }
 
+/* Segundo párrafo de la tarjeta de ciudad: en vez del texto genérico repetido, lista las
+   ferias reales que colgamos de ese pilar ("Standarte construye en: ..."), en azul Royal,
+   cursiva y algo más pequeño que el resto de texto de la tarjeta. */
+.city-grid p.city-builds-at {
+  font-size: 14px;
+  color: #1a1e21;
+}
+.city-grid p.city-builds-at em {
+  color: #4169e1;
+  font-style: italic;
+}
+
 /* El único enlace del grid es ahora la columna completa (.city-cover-link), que envuelve
    imagen + textos. No le imponemos inline-block/negrita/tamaño (eran de un enlace de texto
    antiguo): que la imagen y los textos conserven su estilo propio. */
@@ -1361,7 +1373,7 @@ article:hover .city-cover-image,
 .counters {
   position: relative;
   color: #fff;
-  background: url('/img/taller_standarte_sombra.webp') fixed center center / cover no-repeat;
+  background: url('/img/taller_standarte_sombra.avif') fixed center center / cover no-repeat;
 }
 
 .counter-grid {
@@ -3553,7 +3565,7 @@ p b {
     background-image: image-set(url('/img/hero-area-mobile.avif') type('image/avif'), url('/img/hero-area-mobile.webp') type('image/webp'));
   }
   .counters {
-    background: url('/img/taller_standarte_sombra-mobile.webp') scroll center center / cover no-repeat;
+    background: url('/img/taller_standarte_sombra-mobile.avif') scroll center center / cover no-repeat;
   }
 }
 

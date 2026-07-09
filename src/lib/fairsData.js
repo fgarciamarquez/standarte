@@ -1,5 +1,54 @@
 export const fairsData = [
   {
+    "name": "INTUR",
+    "country": "es",
+    "slug": "intur-valladolid",
+    "city": "Valladolid",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "FROMAGO Cheese Experience",
+    "country": "es",
+    "slug": "fromago-cheese-experience-zamora",
+    "city": "Zamora",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Expovicaman",
+    "country": "es",
+    "slug": "expovicaman-albacete",
+    "city": "Albacete",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "FARCAMA",
+    "country": "es",
+    "slug": "farcama-toledo",
+    "city": "Toledo",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Feria de Artesanía de Valladolid",
+    "country": "es",
+    "slug": "feria-artesania-valladolid",
+    "city": "Valladolid",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Feria del Vino D.O. Bierzo",
+    "country": "es",
+    "slug": "feria-vino-do-bierzo-cacabelos",
+    "city": "Cacabelos",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Feria Churra",
+    "country": "es",
+    "slug": "feria-churra-palencia",
+    "city": "Palencia",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Infoagro Exhibition",
     "country": "es",
     "slug": "infoagro-exhibition-aguadulce",
@@ -231,11 +280,11 @@ export const fairsData = [
     "sector": "Enología y Vinos"
   },
   {
-    "name": "Ferduque Ciudad Real",
+    "name": "FERDUQUE",
     "country": "es",
     "slug": "ferduque-ciudad-real",
-    "city": "Ciudad Real",
-    "sector": "Enología y Vinos"
+    "city": "Porzuna",
+    "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "JEC World Paris",
@@ -287,10 +336,10 @@ export const fairsData = [
     "sector": "Multisectorial y Profesional"
   },
   {
-    "name": "Fercam Manzanares Ciudad Real",
+    "name": "FERCAM",
     "country": "es",
     "slug": "fercam-manzanares-ciudad-real",
-    "city": "Ciudad Real",
+    "city": "Manzanares",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
@@ -644,7 +693,7 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
-    "name": "Feria Internacional Ganadera de Trujillo",
+    "name": "Feria Agroganadera de Trujillo",
     "country": "es",
     "slug": "feria-internacional-ganadera-trujillo",
     "city": "Trujillo",

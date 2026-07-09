@@ -447,7 +447,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'murcia'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -522,12 +522,16 @@
     badajoz: 'extremadura', montaje_zafra: 'extremadura', montaje_don_benito: 'extremadura', montaje_badajoz: 'extremadura',
     madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco',
     malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', santiago: 'galicia', coruna: 'galicia', valladolid: 'castillayleon', salamanca: 'castillayleon', batalha: 'portugal', zaragoza: 'aragon', portugal_sur: 'portugal-sur', alicante: 'comunidadvalenciana', murcia: 'murcia',
-    almeria: 'andalucia', jaen: 'andalucia', huelva: 'andalucia', cordoba: 'andalucia', granada: 'andalucia', cadiz: 'andalucia'
+    almeria: 'andalucia', jaen: 'andalucia', huelva: 'andalucia', cordoba: 'andalucia', granada: 'andalucia', cadiz: 'andalucia',
+    santarem: 'portugal', trujillo: 'extremadura', elche: 'comunidadvalenciana'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
     'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia', 'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Oporto': 'portugal', 'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon', 'Vigo': 'galicia', 'Santiago de Compostela': 'galicia', 'A Coruña': 'galicia', 'Valladolid': 'castillayleon', 'Salamanca': 'castillayleon', 'Portugal Sur': 'portugal-sur', 'Elche': 'comunidadvalenciana', 'Alicante': 'comunidadvalenciana', 'Torre Pacheco': 'murcia',
-    'Almería': 'andalucia', 'Aguadulce': 'andalucia', 'El Ejido': 'andalucia', 'Jaén': 'andalucia', 'Huelva': 'andalucia', 'Aracena': 'andalucia', 'Punta Umbría': 'andalucia', 'Córdoba': 'andalucia', 'Pozoblanco': 'andalucia', 'Villanueva de Córdoba': 'andalucia', 'Granada': 'andalucia', 'Armilla': 'andalucia', 'Cádiz': 'andalucia', 'Jerez de la Frontera': 'andalucia'
+    'Almería': 'andalucia', 'Aguadulce': 'andalucia', 'El Ejido': 'andalucia', 'Jaén': 'andalucia', 'Huelva': 'andalucia', 'Aracena': 'andalucia', 'Punta Umbría': 'andalucia', 'Córdoba': 'andalucia', 'Pozoblanco': 'andalucia', 'Villanueva de Córdoba': 'andalucia', 'Granada': 'andalucia', 'Armilla': 'andalucia', 'Cádiz': 'andalucia', 'Jerez de la Frontera': 'andalucia',
+    'Manzanares': 'castillalamancha', 'Porzuna': 'castillalamancha', 'Albacete': 'castillalamancha', 'Toledo': 'castillalamancha',
+    'Zamora': 'castillayleon', 'Palencia': 'castillayleon', 'Cacabelos': 'castillayleon',
+    'Santarém': 'portugal', 'Trujillo': 'extremadura', 'Elche': 'comunidadvalenciana'
   };
   // Proyectos reales afines al perfil sectorial de cada región (obra propia; sin afirmar ubicación).
   const FEATURED_BY_REGION = {
@@ -713,6 +717,41 @@
     const byLang = city?.content?.[lang] || city?.content?.es || {};
     return byLang;
   }
+
+  // Municipio de la feria -> cityKey del pilar (incluye satélites: Torre Pacheco->murcia,
+  // Aguadulce/El Ejido->almeria, etc.). Copia de CITY_TO_PILLAR en Feria.svelte, para poder
+  // listar "Standarte construye en: <ferias>" en la tarjeta de cada ciudad de la home.
+  const FAIR_CITY_PILLAR = {
+    'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa', 'Oporto': 'oporto', 'Valencia': 'valencia', 'Mallorca': 'mallorca', 'Vigo': 'vigo', 'Santiago de Compostela': 'santiago', 'A Coruña': 'coruna', 'Valladolid': 'valladolid', 'Salamanca': 'salamanca', 'Batalha': 'batalha',
+    'Málaga': 'malaga', 'Badajoz': 'badajoz', 'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real', 'Zaragoza': 'zaragoza',
+    'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
+    'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz', 'Portugal Sur': 'portugal_sur',
+    'Aguadulce': 'almeria', 'El Ejido': 'almeria', 'Almería': 'almeria', 'Jaén': 'jaen',
+    'Huelva': 'huelva', 'Aracena': 'huelva', 'Punta Umbría': 'huelva',
+    'Murcia': 'murcia', 'Torre Pacheco': 'murcia',
+    'Córdoba': 'cordoba', 'Pozoblanco': 'cordoba', 'Villanueva de Córdoba': 'cordoba',
+    'Granada': 'granada', 'Armilla': 'granada',
+    'Cádiz': 'cadiz', 'Jerez de la Frontera': 'cadiz',
+    'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
+    'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche'
+  };
+  function fairsForCity(cityKey) {
+    const esName = cityData[cityKey]?.city?.es;
+    return fairItems.filter((f) => f.city === esName || FAIR_CITY_PILLAR[f.city] === cityKey);
+  }
+  const CITY_CARD_FAIRS_MAX = 4;
+  const buildsAtLabel = {
+    es: 'Standarte construye en:', en: 'Standarte builds at:', de: 'Standarte baut auf:',
+    pt: 'A Standarte constrói em:', fr: 'Standarte construit à :', it: 'Standarte costruisce a:',
+    nl: 'Standarte bouwt bij:', zh: 'Standarte 承建于：', hi: 'Standarte यहाँ निर्माण करता है:',
+    ko: 'Standarte 시공 현장:', ja: 'Standarteが施工:'
+  };
+  const buildsAtMore = {
+    es: (n) => `+${n} más`, en: (n) => `+${n} more`, de: (n) => `+${n} weitere`,
+    pt: (n) => `+${n} mais`, fr: (n) => `+${n} de plus`, it: (n) => `+${n} altre`,
+    nl: (n) => `+${n} meer`, zh: (n) => `+${n} 更多`, hi: (n) => `+${n} और`,
+    ko: (n) => `+${n}개 더`, ja: (n) => `他+${n}件`
+  };
 
 
   function getProjectTitle(project) {
@@ -1489,6 +1528,7 @@
       <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">
         {#each cityKeys as cityKey, i}
+          {@const cityFairs = fairsForCity(cityKey)}
           <article id={cityKey} class:cities-hidden={!citiesExpanded && i >= CITIES_VISIBLE && cityKey !== section}>
             <a href={pathFor(lang, cityKey)} class="city-cover-link" aria-label={cityTitle(cityKey)}>
               <div class="city-cover-container">
@@ -1505,7 +1545,14 @@
               </div>
               <h3>{cityTitle(cityKey)}</h3>
               <p>{cityContent(cityKey).intro}</p>
-              <p>{cityContent(cityKey).detail}</p>
+              {#if cityFairs.length}
+                <p class="city-builds-at">
+                  {buildsAtLabel[lang] || buildsAtLabel.es}
+                  <em>{cityFairs.slice(0, CITY_CARD_FAIRS_MAX).map((f) => f.name).join(', ')}{#if cityFairs.length > CITY_CARD_FAIRS_MAX}{' '}{(buildsAtMore[lang] || buildsAtMore.es)(cityFairs.length - CITY_CARD_FAIRS_MAX)}{/if}</em>
+                </p>
+              {:else}
+                <p>{cityContent(cityKey).detail}</p>
+              {/if}
               <span class="city-link-circle" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -1559,7 +1606,7 @@
 
     <section id="services" class="section services">
       <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
-        <img src="/img/100x100-guaranted.png" alt="" loading="lazy" />
+        <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
       </a>
       <div class="section-header">
         <h2>{copy.servicesTitle}</h2>
@@ -1860,7 +1907,7 @@
           <article class="seo-article" on:click={handleSeoBodyClick}>
             {#if section === 'proyecto_auditado'}
               <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
-                <img src="/img/100x100-guaranted.png" alt="" loading="lazy" />
+                <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
               </a>
             {/if}
             {#if isCityPage || section === 'proyecto_auditado'}
