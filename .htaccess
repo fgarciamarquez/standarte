@@ -796,4 +796,26 @@ DirectorySlash Off
   Redirect 301 /proyectos/stand_vegevital_desarrollado_en_bilbao/ /proyectos/stand_para_empresa_de_agricultura_en_bilbao
   Redirect 301 /proyectos/stand_weiler_desarrollado_en_madrid /proyectos/stand_para_empresa_de_maquinas_herramienta_en_madrid
   Redirect 301 /proyectos/stand_weiler_desarrollado_en_madrid/ /proyectos/stand_para_empresa_de_maquinas_herramienta_en_madrid
+
+  # --- Defensa básica contra extractores/clonadores de la web (wget --mirror, HTTrack...) ---
+  # No afecta a buscadores (Googlebot/Bingbot) ni a los rastreadores de IA que la web busca
+  # captar a propósito (GPTBot, ClaudeBot, PerplexityBot...): solo bloquea firmas de
+  # herramientas de descarga/clonado masivo. Excluye los dos endpoints PHP que el cron de
+  # GitHub Actions invoca con curl (cron_drip.php, bounce-handler.php) para no romperlos.
+  RewriteCond %{REQUEST_URI} !^/admin/email_campaing/cron_drip\.php [NC]
+  RewriteCond %{REQUEST_URI} !^/bounce-handler\.php [NC]
+  RewriteCond %{HTTP_USER_AGENT} (HTTrack|WebCopier|WebZIP|WebReaper|Teleport|SiteSucker|Offline\ Explorer|WebStripper|larbin|libwww-perl|python-requests|python-urllib|^Scrapy|node-fetch|^Wget|^curl) [NC]
+  RewriteRule ^ - [F,L]
+
+  # --- Protección anti-hotlink de imágenes: evita que otros dominios embeban directamente
+  # las fotos de /img/ (ahorra ancho de banda y dificulta la reutilización directa). Se
+  # permite SIEMPRE que no haya Referer (así no se rompe Google Imágenes, RSS, ni los
+  # navegadores que lo ocultan por privacidad) y el propio dominio, buscadores y redes
+  # sociales que generan vista previa al compartir un enlace.
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?standarte\.es [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?google\. [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?bing\.com [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?(facebook|fb|twitter|x|linkedin|whatsapp)\.(com|me) [NC]
+  RewriteRule \.(jpe?g|png|gif|avif|webp|svg)$ - [F,L,NC]
 </IfModule>
