@@ -27,6 +27,9 @@
   // Solo las matrices (construccion_stands_*); excluye las landings de montaje secundarias
   // (montaje_zafra/don_benito/badajoz), que además duplicarían la etiqueta "Badajoz".
   const CITY_KEYS = Object.keys(cityData).filter((k) => !k.startsWith('montaje_'));
+  function cityLabel(ck, l) {
+    return cityData[ck]?.city?.[l] || cityData[ck]?.city?.es;
+  }
   const CITY_NAV_LABELS = {
     es: 'Ciudades', en: 'Cities', de: 'Städte',
     fr: 'Villes', it: 'Città', pt: 'Cidades',
@@ -94,6 +97,7 @@
   // activa en el módulo "Ciudades". El nexo es el nombre en español
   // (cityData[k].city.es coincide con fair.city, p. ej. "Madrid").
   $: currentCityKey = CITY_KEYS.find((k) => cityData[k]?.city?.es === fair?.city) || null;
+  $: sortedCityKeys = [...CITY_KEYS].sort((a, b) => cityLabel(a, lang).localeCompare(cityLabel(b, lang), lang));
   // Contenido SEO único de esta feria (HTML por idioma); fallback a ES si falta el idioma.
   $: fairBody = data.fairSeo ? (data.fairSeo[lang] || data.fairSeo.en || data.fairSeo.es || null) : null;
   
@@ -858,8 +862,8 @@
         <div class="aside-module">
           <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
           <ul class="cluster-fairs">
-            {#each CITY_KEYS as ck}
-              <li><a href={pathFor(lang, ck)} class:active={ck === currentCityKey}>{cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es}</a></li>
+            {#each sortedCityKeys as ck}
+              <li><a href={pathFor(lang, ck)} class:active={ck === currentCityKey}>{cityLabel(ck, lang)}</a></li>
             {/each}
           </ul>
         </div>

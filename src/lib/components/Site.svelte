@@ -620,6 +620,10 @@
   // Navegación entre ciudades matrices (módulo del sidebar, igual que en Feria).
   // Solo matrices (construccion_stands_*); excluye las landings de montaje secundarias.
   const CITY_NAV_KEYS = Object.keys(cityData).filter((k) => !k.startsWith('montaje_'));
+  function cityNavLabel(ck, l) {
+    return cityData[ck]?.city?.[l] || cityData[ck]?.city?.es;
+  }
+  $: sortedCityNavKeys = [...CITY_NAV_KEYS].sort((a, b) => cityNavLabel(a, lang).localeCompare(cityNavLabel(b, lang), lang));
   const ACTIVITY_NAV_LABELS = {
     es: 'Por actividad', en: 'By activity', de: 'Nach Branche', fr: 'Par activité', it: 'Per attività',
     pt: 'Por atividade', nl: 'Per branche', zh: '按行业', hi: 'गतिविधि अनुसार', ko: '분야별', ja: '分野別'
@@ -1942,10 +1946,10 @@
               <div class="city-nav-module">
                 <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
                 <ul class="city-fairs-list">
-                  {#each CITY_NAV_KEYS as ck}
+                  {#each sortedCityNavKeys as ck}
                     <li>
                       <a href={pathFor(lang, ck)} class:active={ck === section}>
-                        {cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es}
+                        {cityNavLabel(ck, lang)}
                       </a>
                     </li>
                   {/each}

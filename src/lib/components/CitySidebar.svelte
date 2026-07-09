@@ -9,6 +9,9 @@
   export let section = 'madrid';
 
   const CITY_NAV_KEYS = Object.keys(cityData).filter((k) => !k.startsWith('montaje_'));
+  function cityLabel(ck, l) {
+    return cityData[ck]?.city?.[l] || cityData[ck]?.city?.es;
+  }
   const CITY_NAV_LABELS = {
     es: 'Ciudades', en: 'Cities', de: 'Städte', fr: 'Villes', it: 'Città', pt: 'Cidades',
     zh: '城市', hi: 'शहर', ko: '도시', ja: '都市', nl: 'Steden'
@@ -61,6 +64,7 @@
     return p?.description?.[lang] || p?.description?.es || '';
   }
 
+  $: sortedCityKeys = [...CITY_NAV_KEYS].sort((a, b) => cityLabel(a, lang).localeCompare(cityLabel(b, lang), lang));
   $: region = SECTION_REGION[section];
   $: selectedPortfolios = (FEATURED_BY_REGION[region] || [])
     .map((k) => portfolios.find((p) => p.alt && p.alt.includes(k)))
@@ -75,10 +79,10 @@
     <div class="city-nav-module">
       <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
       <ul class="city-fairs-list">
-        {#each CITY_NAV_KEYS as ck}
+        {#each sortedCityKeys as ck}
           <li>
             <a href={pathFor(lang, ck)} class:active={ck === section}>
-              {cityData[ck]?.city?.[lang] || cityData[ck]?.city?.es}
+              {cityLabel(ck, lang)}
             </a>
           </li>
         {/each}
