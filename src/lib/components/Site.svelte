@@ -680,8 +680,20 @@
       ? copy.seoTitle
       : `${sectionLabel(section)} | Standarte`);
 
+  // El <meta description> exige ≤160 caracteres, pero seoContent.introText es el párrafo
+  // de cabecera pensado para lectura completa (visible en el hero y para motores de IA/GEO
+  // que resumen la página) — no se acorta ahí. Por eso el meta usa una versión truncada
+  // en frase/palabra completa, independiente del texto visible.
+  function metaDescriptionFrom(text, max = 157) {
+    if (!text || text.length <= max) return text;
+    const sentenceEnd = text.slice(0, max + 1).lastIndexOf('. ');
+    if (sentenceEnd > max * 0.5) return text.slice(0, sentenceEnd + 1);
+    const wordBoundary = text.slice(0, max).lastIndexOf(' ');
+    return text.slice(0, wordBoundary > 0 ? wordBoundary : max).trimEnd() + '…';
+  }
+
   $: description = seoContent
-    ? seoContent.introText
+    ? metaDescriptionFrom(seoContent.introText)
     : (section in cityData
       ? `${cityTitle(section)}. ${copy.citiesIntro}`
       : copy.seoDescription);
