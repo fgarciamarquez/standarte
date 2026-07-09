@@ -2511,7 +2511,7 @@ footer {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.92);
   font-family: 'Inconsolata', monospace;
   font-size: 13px;
   letter-spacing: 0.12em;
@@ -2519,8 +2519,8 @@ footer {
   transition: opacity 0.3s ease;
 }
 @keyframes carLoadingPulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.75; }
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
 }
 .carousel-img-wrap.img-loaded .carousel-loading {
   opacity: 0;
@@ -2579,7 +2579,7 @@ footer {
 
 .carousel-caption h3 {
   font-size: 14px;
-  color: #b0b0b0;
+  color: #e2e2e2;
   margin: 0 0 6px 0;
   font-weight: 400;
   font-family: 'Inconsolata', monospace;

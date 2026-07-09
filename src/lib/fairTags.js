@@ -64,6 +64,13 @@ export const fairTags = {
   "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
 export const fairActivities = {
+  "mindtech-vigo": ["metal-subcontratacion"],
+  "galicia-escena-pro-santiago-de-compostela": ["cultura-arte"],
+  "semana-verde-galicia-silleda": ["multisectorial", "ganaderia"],
+  "turexpo-galicia-silleda": ["turismo"],
+  "xantar-ourense": ["gastronomia-hosteleria"],
+  "termatalia-ourense": ["turismo"],
+  "galiforest-boqueixon": ["agricultura-maquinaria", "ecologico"],
   "infoagro-exhibition-aguadulce": ["agricultura-maquinaria", "ecologico"],
   "expolevante-el-ejido": ["agricultura-maquinaria"],
   "sun-blue-congress-almeria": ["turismo", "ecologico"],

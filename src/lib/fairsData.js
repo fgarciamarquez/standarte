@@ -1148,6 +1148,13 @@ export const fairsData = [
     "sector": "Aeronáutica y Transporte"
   },
   {
+    "name": "Mindtech",
+    "country": "es",
+    "slug": "mindtech-vigo",
+    "city": "Vigo",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "Moldplás",
     "country": "pt",
     "slug": "moldplas-batalha",
@@ -1251,6 +1258,48 @@ export const fairsData = [
     "slug": "sesmi-santiago-de-compostela",
     "city": "Santiago de Compostela",
     "sector": "Salud y Medicina"
+  },
+  {
+    "name": "Galicia Escena PRO",
+    "country": "es",
+    "slug": "galicia-escena-pro-santiago-de-compostela",
+    "city": "Santiago de Compostela",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Semana Verde de Galicia",
+    "country": "es",
+    "slug": "semana-verde-galicia-silleda",
+    "city": "Silleda",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Turexpo Galicia",
+    "country": "es",
+    "slug": "turexpo-galicia-silleda",
+    "city": "Silleda",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Xantar",
+    "country": "es",
+    "slug": "xantar-ourense",
+    "city": "Ourense",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Termatalia",
+    "country": "es",
+    "slug": "termatalia-ourense",
+    "city": "Ourense",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Galiforest",
+    "country": "es",
+    "slug": "galiforest-boqueixon",
+    "city": "Boqueixón",
+    "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Galicia Fórum Gastronómico",

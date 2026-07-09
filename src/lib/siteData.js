@@ -32,6 +32,8 @@ export const routes = {
     bilbao: 'diseno_montaje_stands_bilbao',
     lisboa: 'diseno_montaje_stands_lisboa',
     batalha: 'diseno_montaje_stands_batalha',
+    silleda: 'diseno_montaje_stands_silleda',
+    ourense: 'diseno_montaje_stands_ourense',
     vigo: 'diseno_montaje_stands_vigo',
     santiago: 'diseno_montaje_stands_santiago_de_compostela',
     coruna: 'diseno_montaje_stands_a_coruna',
@@ -77,6 +79,8 @@ export const routes = {
     bilbao: 'stand_design_assembly_bilbao',
     lisboa: 'stand_design_assembly_lisbon',
     batalha: 'stand_design_assembly_batalha',
+    silleda: 'stand_design_assembly_silleda',
+    ourense: 'stand_design_assembly_ourense',
     vigo: 'stand_design_assembly_vigo',
     santiago: 'stand_design_assembly_santiago_de_compostela',
     coruna: 'stand_design_assembly_a_coruna',
@@ -122,6 +126,8 @@ export const routes = {
     bilbao: 'messestand_design_montage_bilbao',
     lisboa: 'messestand_design_montage_lissabon',
     batalha: 'messestand_design_montage_batalha',
+    silleda: 'messestand_design_montage_silleda',
+    ourense: 'messestand_design_montage_ourense',
     vigo: 'messestand_design_montage_vigo',
     santiago: 'messestand_design_montage_santiago_de_compostela',
     coruna: 'messestand_design_montage_a_coruna',
@@ -167,6 +173,8 @@ export const routes = {
     bilbao: 'bilbao_zhantai_sheji_dajian',
     lisboa: 'lisbon_zhantai_sheji_dajian',
     batalha: 'batalha_zhantai_sheji_dajian',
+    silleda: 'silleda_zhantai_sheji_dajian',
+    ourense: 'ourense_zhantai_sheji_dajian',
     vigo: 'vigo_zhantai_sheji_dajian',
     santiago: 'santiago_de_compostela_zhantai_sheji_dajian',
     coruna: 'a_coruna_zhantai_sheji_dajian',
@@ -212,6 +220,8 @@ export const routes = {
     bilbao: 'bilbao_stand_dizain_asembli',
     lisboa: 'lisbon_stand_dizain_asembli',
     batalha: 'batalha_stand_dizain_asembli',
+    silleda: 'silleda_stand_dizain_asembli',
+    ourense: 'ourense_stand_dizain_asembli',
     vigo: 'vigo_stand_dizain_asembli',
     santiago: 'santiago_de_compostela_stand_dizain_asembli',
     coruna: 'a_coruna_stand_dizain_asembli',
@@ -257,6 +267,8 @@ export const routes = {
     bilbao: 'design_montagem_stands_bilbao',
     lisboa: 'design_montagem_stands_lisboa',
     batalha: 'design_montagem_stands_batalha',
+    silleda: 'design_montagem_stands_silleda',
+    ourense: 'design_montagem_stands_ourense',
     vigo: 'design_montagem_stands_vigo',
     santiago: 'design_montagem_stands_santiago_de_compostela',
     coruna: 'design_montagem_stands_a_coruna',
@@ -302,6 +314,8 @@ export const routes = {
     bilbao: 'conception_montage_stands_bilbao',
     lisboa: 'conception_montage_stands_lisbonne',
     batalha: 'conception_montage_stands_batalha',
+    silleda: 'conception_montage_stands_silleda',
+    ourense: 'conception_montage_stands_ourense',
     vigo: 'conception_montage_stands_vigo',
     santiago: 'conception_montage_stands_saint_jacques_de_compostelle',
     coruna: 'conception_montage_stands_la_corogne',
@@ -347,6 +361,8 @@ export const routes = {
     bilbao: 'progettazione_montaggio_stand_bilbao',
     lisboa: 'progettazione_montaggio_stand_lisbona',
     batalha: 'progettazione_montaggio_stand_batalha',
+    silleda: 'progettazione_montaggio_stand_silleda',
+    ourense: 'progettazione_montaggio_stand_ourense',
     vigo: 'progettazione_montaggio_stand_vigo',
     santiago: 'progettazione_montaggio_stand_santiago_di_compostela',
     coruna: 'progettazione_montaggio_stand_la_coruna',
@@ -392,6 +408,8 @@ export const routes = {
     bilbao: 'bilbao-bujeu-dijain-jorip',
     lisboa: 'lisbon-bujeu-dijain-jorip',
     batalha: 'batalha-bujeu-dijain-jorip',
+    silleda: 'silleda-bujeu-dijain-jorip',
+    ourense: 'ourense-bujeu-dijain-jorip',
     vigo: 'vigo-bujeu-dijain-jorip',
     santiago: 'santiago_de_compostela-bujeu-dijain-jorip',
     coruna: 'a_coruna-bujeu-dijain-jorip',
@@ -437,6 +455,8 @@ export const routes = {
     bilbao: 'ビルバオ展示会ブース設計施工',
     lisboa: 'リスボン展示会ブース設計施工',
     batalha: 'バターリャ展示会ブース設計施工',
+    silleda: 'シジェダ展示会ブース設計施工',
+    ourense: 'オウレンセ展示会ブース設計施工',
     vigo: 'ビーゴ展示会ブース設計施工',
     santiago: 'サンティアゴ・デ・コンポステーラ展示会ブース設計施工',
     coruna: 'ア・コルーニャ展示会ブース設計施工',
@@ -482,6 +502,8 @@ export const routes = {
     bilbao: 'standontwerp_montage_bilbao',
     lisboa: 'standontwerp_montage_lissabon',
     batalha: 'standontwerp_montage_batalha',
+    silleda: 'standontwerp_montage_silleda',
+    ourense: 'standontwerp_montage_ourense',
     vigo: 'standontwerp_montage_vigo',
     santiago: 'standontwerp_montage_santiago_de_compostela',
     coruna: 'standontwerp_montage_a_coruna',
@@ -2049,6 +2071,104 @@ export const cityData = {
       },
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、StandarteはMarinha Grandeの金型・プラスチック産業クラスターに隣接するポルトガル中部の主要会場Exposalãoを擁するバターリャで展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。',
+        detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
+      }
+    }
+  },
+  silleda: {
+    city: { es: 'Silleda', en: 'Silleda', de: 'Silleda', zh: '锡列达', hi: 'सिलेदा', pt: 'Silleda', fr: 'Silleda', it: 'Silleda', ko: '실레다', ja: 'シジェダ', nl: 'Silleda' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Silleda —sede de la Feira Internacional de Galicia (FIG), el mayor recinto multisectorial de Galicia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Silleda —home to the Feira Internacional de Galicia (FIG), Galicia\'s largest multi-sector venue— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Silleda — Standort der Feira Internacional de Galicia (FIG), des größten multisektoralen Messegeländes Galiciens — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Silleda — sede da Feira Internacional de Galicia (FIG), o maior recinto multissetorial da Galiza — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Silleda — siège de la Feira Internacional de Galicia (FIG), le plus grand parc des expositions multisectoriel de Galice — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Silleda — sede della Feira Internacional de Galicia (FIG), il più grande polo fieristico multisettoriale della Galizia — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Silleda — locatie van de Feira Internacional de Galicia (FIG), het grootste multisectorale beurscomplex van Galicië — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在锡列达设计并搭建展台——这里是加利西亚国际展览中心（FIG）所在地，加利西亚规模最大的综合性展会场馆——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，并对细节给予卓越关注。'
+      },
+      hi: {
+        intro: 'अपने स्वयं के कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte सिलेदा में स्टैंड डिज़ाइन और असेंबली करता है—Feira Internacional de Galicia (FIG) का घर, गैलिसिया का सबसे बड़ा बहु-क्षेत्रीय प्रदर्शनी स्थल—हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, उत्पादन, रसद, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공장에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 갈리시아 최대의 종합 전시장인 Feira Internacional de Galicia(FIG)가 위치한 실레다에서 부스를 디자인하고 조립하며 3D 디자인, 생산, 물류, 설치, 현장 검수 등 모든 단계를 직접 관리합니다.',
+        detail: '대행사와 직접 전시업체에 예기치 못한 일이 없는 조립과 디테일에 대한 탁월한 주의를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、Standarteはガリシア最大級の総合見本市会場Feira Internacional de Galicia（FIG）を擁するシジェダで展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。',
+        detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
+      }
+    }
+  },
+  ourense: {
+    city: { es: 'Ourense', en: 'Ourense', de: 'Ourense', zh: '奥伦塞', hi: 'ओरेंसे', pt: 'Ourense', fr: 'Ourense', it: 'Ourense', ko: '오우렌세', ja: 'オウレンセ', nl: 'Ourense' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Ourense —sede de Expourense, recinto de referencia del turismo gastronómico y termal de Galicia— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Ourense —home to Expourense, Galicia\'s leading venue for gastronomic and thermal tourism— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Ourense — Standort von Expourense, dem führenden Messegelände Galiciens für Gastronomie- und Thermaltourismus — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Ourense — sede do Expourense, o recinto de referência do turismo gastronómico e termal da Galiza — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Ourense — siège d\'Expourense, le parc des expositions de référence du tourisme gastronomique et thermal de Galice — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Ourense — sede di Expourense, il polo fieristico di riferimento del turismo gastronomico e termale della Galizia — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Ourense — locatie van Expourense, het toonaangevende beurscomplex van Galicië voor gastronomisch en thermaal toerisme — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在奥伦塞设计并搭建展台——这里是奥伦塞展览中心（Expourense）所在地，加利西亚美食与温泉旅游的重要展会场馆——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，并对细节给予卓越关注。'
+      },
+      hi: {
+        intro: 'अपने स्वयं के कारखाने से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte ओरेंसे में स्टैंड डिज़ाइन और असेंबली करता है—Expourense का घर, गैलिसिया के गैस्ट्रोनॉमिक और थर्मल पर्यटन का प्रमुख प्रदर्शनी स्थल—हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, उत्पादन, रसद, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공장에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 갈리시아 미식 및 온천 관광의 대표 전시장인 Expourense가 위치한 오우렌세에서 부스를 디자인하고 조립하며 3D 디자인, 생산, 물류, 설치, 현장 검수 등 모든 단계를 직접 관리합니다.',
+        detail: '대행사와 직접 전시업체에 예기치 못한 일이 없는 조립과 디테일에 대한 탁월한 주의를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、Standarteはガリシアの美食・温泉観光の代表的な会場Expourenseを擁するオウレンセで展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。',
         detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
       }
     }

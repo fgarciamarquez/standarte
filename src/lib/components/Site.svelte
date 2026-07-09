@@ -447,7 +447,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -523,7 +523,8 @@
     madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco',
     malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', santiago: 'galicia', coruna: 'galicia', valladolid: 'castillayleon', salamanca: 'castillayleon', batalha: 'portugal', zaragoza: 'aragon', portugal_sur: 'portugal-sur', alicante: 'comunidadvalenciana', murcia: 'murcia',
     almeria: 'andalucia', jaen: 'andalucia', huelva: 'andalucia', cordoba: 'andalucia', granada: 'andalucia', cadiz: 'andalucia',
-    santarem: 'portugal', trujillo: 'extremadura', elche: 'comunidadvalenciana'
+    santarem: 'portugal', trujillo: 'extremadura', elche: 'comunidadvalenciana',
+    silleda: 'galicia', ourense: 'galicia'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -531,7 +532,8 @@
     'Almería': 'andalucia', 'Aguadulce': 'andalucia', 'El Ejido': 'andalucia', 'Jaén': 'andalucia', 'Huelva': 'andalucia', 'Aracena': 'andalucia', 'Punta Umbría': 'andalucia', 'Córdoba': 'andalucia', 'Pozoblanco': 'andalucia', 'Villanueva de Córdoba': 'andalucia', 'Granada': 'andalucia', 'Armilla': 'andalucia', 'Cádiz': 'andalucia', 'Jerez de la Frontera': 'andalucia',
     'Manzanares': 'castillalamancha', 'Porzuna': 'castillalamancha', 'Albacete': 'castillalamancha', 'Toledo': 'castillalamancha',
     'Zamora': 'castillayleon', 'Palencia': 'castillayleon', 'Cacabelos': 'castillayleon',
-    'Santarém': 'portugal', 'Trujillo': 'extremadura', 'Elche': 'comunidadvalenciana'
+    'Santarém': 'portugal', 'Trujillo': 'extremadura', 'Elche': 'comunidadvalenciana',
+    'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia'
   };
   // Proyectos reales afines al perfil sectorial de cada región (obra propia; sin afirmar ubicación).
   const FEATURED_BY_REGION = {
@@ -749,7 +751,8 @@
     'Granada': 'granada', 'Armilla': 'granada',
     'Cádiz': 'cadiz', 'Jerez de la Frontera': 'cadiz',
     'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
-    'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche'
+    'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche',
+    'Silleda': 'silleda', 'Ourense': 'ourense'
   };
   function fairsForCity(cityKey) {
     const esName = cityData[cityKey]?.city?.es;

@@ -20,7 +20,8 @@
     madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco', malaga: 'andalucia',
     sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal',
     valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', batalha: 'portugal',
-    zaragoza: 'aragon', badajoz: 'extremadura', portugal_sur: 'portugal-sur'
+    zaragoza: 'aragon', badajoz: 'extremadura', portugal_sur: 'portugal-sur',
+    silleda: 'galicia', ourense: 'galicia'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura',
@@ -28,7 +29,8 @@
     'Madrid': 'madrid', 'Barcelona': 'cataluna', 'Bilbao': 'paisvasco', 'Málaga': 'andalucia',
     'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Oporto': 'portugal',
     'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon',
-    'Vigo': 'galicia', 'Portugal Sur': 'portugal-sur'
+    'Vigo': 'galicia', 'Portugal Sur': 'portugal-sur',
+    'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia'
   };
   const FEATURED_BY_REGION = {
     extremadura: ['Bellota', 'Intermaher', 'Elumatec'],
