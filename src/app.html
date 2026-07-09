@@ -46,6 +46,25 @@
         }
       })();
     </script>
+    <!-- Microsoft Clarity — solo se inyecta cuando el usuario da consentimiento de "Medición"
+         (mismo criterio que analytics_storage de Google Consent Mode arriba). CookieConsent.svelte
+         llama a window.loadClarity() al aceptar/tener guardada esa preferencia. -->
+    <script>
+      (function () {
+        window.clarity = window.clarity || function () {
+          (window.clarity.q = window.clarity.q || []).push(arguments);
+        };
+        window.loadClarity = function () {
+          if (window.__clarityLoaded) return;
+          window.__clarityLoaded = true;
+          var t = document.createElement('script');
+          t.async = true;
+          t.src = 'https://www.clarity.ms/tag/xjrr949owt?ref=bwt';
+          var y = document.getElementsByTagName('script')[0];
+          y.parentNode.insertBefore(t, y);
+        };
+      })();
+    </script>
     <script>
       (function() {
         if (window.location.pathname === '/') {

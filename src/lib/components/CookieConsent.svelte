@@ -178,6 +178,13 @@
     window.gtag('consent', 'update', consentState(prefs));
   }
 
+  function updateClarityConsent(prefs) {
+    if (typeof window === 'undefined') return;
+    if (prefs.analytics && window.loadClarity) {
+      window.loadClarity();
+    }
+  }
+
   function saveConsent(choice, prefs) {
     const nextPreferences = { ...prefs };
     const payload = {
@@ -190,6 +197,7 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
     preferences = nextPreferences;
     updateGoogleConsent(nextPreferences);
+    updateClarityConsent(nextPreferences);
     visible = false;
     settingsOpen = false;
   }
@@ -232,6 +240,7 @@
     if (storedPreferences) {
       preferences = { ...preferences, ...storedPreferences };
       updateGoogleConsent(preferences);
+      updateClarityConsent(preferences);
     } else {
       visible = true;
     }
