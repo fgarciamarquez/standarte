@@ -33,6 +33,8 @@ export const routes = {
     lisboa: 'diseno_montaje_stands_lisboa',
     batalha: 'diseno_montaje_stands_batalha',
     silleda: 'diseno_montaje_stands_silleda',
+    lleida: 'diseno_montaje_stands_lleida',
+    girona: 'diseno_montaje_stands_girona',
     ourense: 'diseno_montaje_stands_ourense',
     vigo: 'diseno_montaje_stands_vigo',
     santiago: 'diseno_montaje_stands_santiago_de_compostela',
@@ -80,6 +82,8 @@ export const routes = {
     lisboa: 'stand_design_assembly_lisbon',
     batalha: 'stand_design_assembly_batalha',
     silleda: 'stand_design_assembly_silleda',
+    lleida: 'stand_design_assembly_lleida',
+    girona: 'stand_design_assembly_girona',
     ourense: 'stand_design_assembly_ourense',
     vigo: 'stand_design_assembly_vigo',
     santiago: 'stand_design_assembly_santiago_de_compostela',
@@ -127,6 +131,8 @@ export const routes = {
     lisboa: 'messestand_design_montage_lissabon',
     batalha: 'messestand_design_montage_batalha',
     silleda: 'messestand_design_montage_silleda',
+    lleida: 'messestand_design_montage_lleida',
+    girona: 'messestand_design_montage_girona',
     ourense: 'messestand_design_montage_ourense',
     vigo: 'messestand_design_montage_vigo',
     santiago: 'messestand_design_montage_santiago_de_compostela',
@@ -174,6 +180,8 @@ export const routes = {
     lisboa: 'lisbon_zhantai_sheji_dajian',
     batalha: 'batalha_zhantai_sheji_dajian',
     silleda: 'silleda_zhantai_sheji_dajian',
+    lleida: 'lleida_zhantai_sheji_dajian',
+    girona: 'girona_zhantai_sheji_dajian',
     ourense: 'ourense_zhantai_sheji_dajian',
     vigo: 'vigo_zhantai_sheji_dajian',
     santiago: 'santiago_de_compostela_zhantai_sheji_dajian',
@@ -221,6 +229,8 @@ export const routes = {
     lisboa: 'lisbon_stand_dizain_asembli',
     batalha: 'batalha_stand_dizain_asembli',
     silleda: 'silleda_stand_dizain_asembli',
+    lleida: 'lleida_stand_dizain_asembli',
+    girona: 'girona_stand_dizain_asembli',
     ourense: 'ourense_stand_dizain_asembli',
     vigo: 'vigo_stand_dizain_asembli',
     santiago: 'santiago_de_compostela_stand_dizain_asembli',
@@ -268,6 +278,8 @@ export const routes = {
     lisboa: 'design_montagem_stands_lisboa',
     batalha: 'design_montagem_stands_batalha',
     silleda: 'design_montagem_stands_silleda',
+    lleida: 'design_montagem_stands_lleida',
+    girona: 'design_montagem_stands_girona',
     ourense: 'design_montagem_stands_ourense',
     vigo: 'design_montagem_stands_vigo',
     santiago: 'design_montagem_stands_santiago_de_compostela',
@@ -315,6 +327,8 @@ export const routes = {
     lisboa: 'conception_montage_stands_lisbonne',
     batalha: 'conception_montage_stands_batalha',
     silleda: 'conception_montage_stands_silleda',
+    lleida: 'conception_montage_stands_lleida',
+    girona: 'conception_montage_stands_girona',
     ourense: 'conception_montage_stands_ourense',
     vigo: 'conception_montage_stands_vigo',
     santiago: 'conception_montage_stands_saint_jacques_de_compostelle',
@@ -362,6 +376,8 @@ export const routes = {
     lisboa: 'progettazione_montaggio_stand_lisbona',
     batalha: 'progettazione_montaggio_stand_batalha',
     silleda: 'progettazione_montaggio_stand_silleda',
+    lleida: 'progettazione_montaggio_stand_lleida',
+    girona: 'progettazione_montaggio_stand_girona',
     ourense: 'progettazione_montaggio_stand_ourense',
     vigo: 'progettazione_montaggio_stand_vigo',
     santiago: 'progettazione_montaggio_stand_santiago_di_compostela',
@@ -409,6 +425,8 @@ export const routes = {
     lisboa: 'lisbon-bujeu-dijain-jorip',
     batalha: 'batalha-bujeu-dijain-jorip',
     silleda: 'silleda-bujeu-dijain-jorip',
+    lleida: 'lleida-bujeu-dijain-jorip',
+    girona: 'girona-bujeu-dijain-jorip',
     ourense: 'ourense-bujeu-dijain-jorip',
     vigo: 'vigo-bujeu-dijain-jorip',
     santiago: 'santiago_de_compostela-bujeu-dijain-jorip',
@@ -456,6 +474,8 @@ export const routes = {
     lisboa: 'リスボン展示会ブース設計施工',
     batalha: 'バターリャ展示会ブース設計施工',
     silleda: 'シジェダ展示会ブース設計施工',
+    lleida: 'リェイダ展示会ブース設計施工',
+    girona: 'ジローナ展示会ブース設計施工',
     ourense: 'オウレンセ展示会ブース設計施工',
     vigo: 'ビーゴ展示会ブース設計施工',
     santiago: 'サンティアゴ・デ・コンポステーラ展示会ブース設計施工',
@@ -503,6 +523,8 @@ export const routes = {
     lisboa: 'standontwerp_montage_lissabon',
     batalha: 'standontwerp_montage_batalha',
     silleda: 'standontwerp_montage_silleda',
+    lleida: 'standontwerp_montage_lleida',
+    girona: 'standontwerp_montage_girona',
     ourense: 'standontwerp_montage_ourense',
     vigo: 'standontwerp_montage_vigo',
     santiago: 'standontwerp_montage_santiago_de_compostela',
@@ -2072,6 +2094,104 @@ export const cityData = {
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験を背景に、StandarteはMarinha Grandeの金型・プラスチック産業クラスターに隣接するポルトガル中部の主要会場Exposalãoを擁するバターリャで展示ブースを設計・施工し、3D設計、製作、物流、設営、会場での検査まで各工程を一貫して管理します。',
         detail: '代理店や出展企業の皆さまに、想定外のない設営と、細部まで行き届いた卓越した対応をお届けします。'
+      }
+    }
+  },
+  lleida: {
+    city: { es: 'Lleida', en: 'Lleida', de: 'Lleida', zh: '莱里达', hi: 'ल्येइदा', pt: 'Lleida', fr: 'Lleida', it: 'Lleida', ko: '예이다', ja: 'リェイダ', nl: 'Lleida' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Lleida —sede de Fira de Lleida, en los pabellones de los Camps Elisis, con citas de referencia como Municipàlia y la Fira de Sant Miquel— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Lleida —home to Fira de Lleida, in the Camps Elisis pavilions, with flagship events such as Municipàlia and Fira de Sant Miquel— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Lleida — Standort der Fira de Lleida in den Pavillons der Camps Elisis, mit Leitmessen wie Municipàlia und der Fira de Sant Miquel — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Lleida — sede da Fira de Lleida, nos pavilhões dos Camps Elisis, com certames de referência como a Municipàlia e a Fira de Sant Miquel — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Lleida — siège de la Fira de Lleida, dans les pavillons des Camps Elisis, avec des rendez-vous de référence comme Municipàlia et la Fira de Sant Miquel — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Lleida — sede della Fira de Lleida, nei padiglioni dei Camps Elisis, con appuntamenti di riferimento come Municipàlia e la Fira de Sant Miquel — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Lleida — locatie van Fira de Lleida, in de paviljoens van de Camps Elisis, met toonaangevende evenementen zoals Municipàlia en de Fira de Sant Miquel — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在莱里达设计并搭建展台——这里是莱里达展览中心（Fira de Lleida）所在地，位于 Camps Elisis 展馆群，拥有 Municipàlia 和 Fira de Sant Miquel 等标杆展会——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障和卓越的细节把控。'
+      },
+      hi: {
+        intro: 'अपनी कार्यशाला से अस्थायी वास्तुकला निर्माण के 20 वर्षों के अनुभव के साथ, Standarte ल्येइदा में स्टैंड डिज़ाइन और असेंबल करता है — यह Fira de Lleida का घर है, Camps Elisis पवेलियन में, जहाँ Municipàlia और Fira de Sant Miquel जैसे प्रमुख आयोजन होते हैं — और हर चरण को नियंत्रित करता है: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली की मानसिक शांति और असाधारण बारीकी प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로 Standarte는 예이다에서 부스를 디자인하고 시공합니다 — 이곳은 Camps Elisis 전시관에 자리한 Fira de Lleida의 본거지로, Municipàlia와 Fira de Sant Miquel 같은 대표 행사가 열립니다 — 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 단계를 직접 관리합니다.',
+        detail: '에이전시와 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはリェイダで展示会ブースの設計・施工を行います。ここはCamps ElisisパビリオンにあるFira de Lleidaの本拠地で、MunicipàliaやFira de Sant Miquelといった主要見本市が開催されます。3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  girona: {
+    city: { es: 'Girona', en: 'Girona', de: 'Girona', zh: '赫罗纳', hi: 'जिरोना', pt: 'Girona', fr: 'Gérone', it: 'Girona', ko: '지로나', ja: 'ジローナ', nl: 'Girona' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Girona —sede de Fira de Girona, en el Palau de Fires, con citas de referencia como el Fòrum Gastronòmic— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Girona —home to Fira de Girona, at the Palau de Fires, with flagship events such as the Fòrum Gastronòmic— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Girona — Standort der Fira de Girona im Palau de Fires, mit Leitveranstaltungen wie dem Fòrum Gastronòmic — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Girona — sede da Fira de Girona, no Palau de Fires, com certames de referência como o Fòrum Gastronòmic — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Gérone — siège de la Fira de Girona, au Palau de Fires, avec des rendez-vous de référence comme le Fòrum Gastronòmic — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Girona — sede della Fira de Girona, al Palau de Fires, con appuntamenti di riferimento come il Fòrum Gastronòmic — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Girona — locatie van Fira de Girona, in het Palau de Fires, met toonaangevende evenementen zoals het Fòrum Gastronòmic — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在赫罗纳设计并搭建展台——这里是赫罗纳展览中心（Fira de Girona）所在地，位于 Palau de Fires 展馆，拥有 Fòrum Gastronòmic 等标杆展会——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障和卓越的细节把控。'
+      },
+      hi: {
+        intro: 'अपनी कार्यशाला से अस्थायी वास्तुकला निर्माण के 20 वर्षों के अनुभव के साथ, Standarte जिरोना में स्टैंड डिज़ाइन और असेंबल करता है — यह Palau de Fires में स्थित Fira de Girona का घर है, जहाँ Fòrum Gastronòmic जैसे प्रमुख आयोजन होते हैं — और हर चरण को नियंत्रित करता है: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली की मानसिक शांति और असाधारण बारीकी प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로 Standarte는 지로나에서 부스를 디자인하고 시공합니다 — 이곳은 Palau de Fires에 자리한 Fira de Girona의 본거지로, Fòrum Gastronòmic 같은 대표 행사가 열립니다 — 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 단계를 직접 관리합니다.',
+        detail: '에이전시와 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、StandarteはジローナのPalau de FiresにあるFira de Gironaで展示会ブースの設計・施工を行います。ここではFòrum Gastronòmicなどの主要見本市が開催されます。3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }
   },

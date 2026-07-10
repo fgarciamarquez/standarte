@@ -64,6 +64,13 @@ export const fairTags = {
   "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
 export const fairActivities = {
+  "seafood-expo-global-barcelona": ["pesca-mar", "alimentacion"],
+  "sil-barcelona": ["logistica"],
+  "automobile-barcelona": ["automocion"],
+  "piscina-wellness-barcelona": ["construccion", "turismo"],
+  "municipalia-lleida": ["construccion", "smart-city"],
+  "fira-sant-miquel-lleida": ["agricultura-maquinaria"],
+  "forum-gastronomic-girona": ["gastronomia-hosteleria", "alimentacion"],
   "mindtech-vigo": ["metal-subcontratacion"],
   "galicia-escena-pro-santiago-de-compostela": ["cultura-arte"],
   "semana-verde-galicia-silleda": ["multisectorial", "ganaderia"],

@@ -5,6 +5,11 @@
   import { activityUrl } from '$lib/siteData.js';
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
+  // Malla ibérica (PatMesh): NO se importa de forma estática. El propio panel de
+  // Pat ya se carga en diferido; el mapa se descarga en un chunk aparte con un
+  // retardo adicional tras montarse el panel, para no penalizar la carga inicial.
+  let MeshComponent = null;
+
   export let lang = 'en';
   // Modo "embebido": inline dentro de una página (p. ej. bajo una noticia). Ocupa el 100%
   // del ancho del contenedor padre (para igualar el cuerpo del artículo).
@@ -49,7 +54,7 @@
       title: "Hola!, soy Pat.",
       freeBadge: "Servicio gratuito",
       activeLabel: "Activo",
-      intro: "Si buscas expandirte en España y Portugal, te puedo asesorar para elegir los eventos clave.",
+      intro: "Si buscas expandirte en España y Portugal, establece con nosotros un plan.\nTe ofrecemos presencia global y sinergias de ahorro.",
       instruction: "En base a lo que ya conoces, definiré tu perfil. Selecciona una ciudad.",
       cta: "Obtener presupuesto para esta feria",
       formInstruction: "Por favor, introduce tus datos y te enviaré un breve informe con las ferias más interesantes para tu sector.",
@@ -69,7 +74,7 @@
       title: "Hi! I'm Pat.",
       freeBadge: "Free service",
       activeLabel: "Active",
-      intro: "If you are looking to expand in Spain and Portugal, I can advise you on choosing the key events.",
+      intro: "If you are looking to expand in Spain and Portugal, build a plan with us.\nWe offer you nationwide presence and cost-saving synergies.",
       instruction: "Based on what you already know, I'll define your profile. Select a city.",
       cta: "Get a quote for this fair",
       formInstruction: "Please enter your details and I'll send you a brief report with the most interesting trade shows for your sector.",
@@ -89,7 +94,7 @@
       title: "Olá!, sou a Pat.",
       freeBadge: "Serviço gratuito",
       activeLabel: "Ativo",
-      intro: "Se procura expandir-se em Espanha e Portugal, posso aconselhá-lo na escolha dos eventos fundamentais.",
+      intro: "Se procura expandir-se em Espanha e Portugal, defina um plano connosco.\nOferecemos-lhe presença global e sinergias de poupança.",
       instruction: "Com base no que já conhece, vou definir o seu perfil. Escolha uma cidade.",
       cta: "Pedir orçamento para esta feira",
       formInstruction: "Por favor, introduza os seus dados e enviar-lhe-ei um breve relatório com as feiras mais interessantes para o seu setor.",
@@ -109,7 +114,7 @@
       title: "Hallo!, ich bin Pat.",
       freeBadge: "Kostenloser Service",
       activeLabel: "Aktiv",
-      intro: "Wenn Sie in Spanien und Portugal expandieren möchten, kann ich Sie bei der Auswahl der wichtigsten Messen beraten.",
+      intro: "Wenn Sie in Spanien und Portugal expandieren möchten, erstellen Sie mit uns einen Plan.\nWir bieten Ihnen flächendeckende Präsenz und Einsparsynergien.",
       instruction: "Anhand dessen, was Sie bereits kennen, erstelle ich Ihr Profil. Wählen Sie eine Stadt.",
       cta: "Angebot für diese Messe anfordern",
       formInstruction: "Bitte geben Sie Ihre Daten ein und ich sende Ihnen einen kurzen Bericht mit den interessantesten Messen für Ihre Branche.",
@@ -129,7 +134,7 @@
       title: "Bonjour !, je suis Pat.",
       freeBadge: "Service gratuit",
       activeLabel: "Actif",
-      intro: "Si vous cherchez à vous développer en Espagne et au Portugal, je peux vous conseiller pour choisir les événements de premier plan.",
+      intro: "Si vous cherchez à vous développer en Espagne et au Portugal, établissez un plan avec nous.\nNous vous offrons une présence globale et des synergies d'économies.",
       instruction: "À partir de ce que vous connaissez déjà, je définirai votre profil. Choisissez une ville.",
       cta: "Demander un devis pour ce salon",
       formInstruction: "Veuillez saisir vos coordonnées et je vous enverrai un bref rapport avec les salons les plus intéressants pour votre secteur.",
@@ -149,7 +154,7 @@
       title: "Ciao!, sono Pat.",
       freeBadge: "Servizio gratuito",
       activeLabel: "Attivo",
-      intro: "Se desideri espanderti in Spagna e Portogallo, posso consigliarti nella scelta degli eventi chiave.",
+      intro: "Se desideri espanderti in Spagna e Portogallo, definisci un piano con noi.\nTi offriamo presenza globale e sinergie di risparmio.",
       instruction: "In base a ciò che già conosci, definirò il tuo profilo. Scegli una città.",
       cta: "Richiedi un preventivo per questa fiera",
       formInstruction: "Inserisci i tuoi dati e ti invierò un breve report con le fiere più interessanti per il tuo settore.",
@@ -169,7 +174,7 @@
       title: "Hallo!, ik ben Pat.",
       freeBadge: "Gratis service",
       activeLabel: "Actief",
-      intro: "Als u wilt uitbreiden in Spanje en Portugal, kan ik u adviseren bij het kiezen van de belangrijkste evenementen.",
+      intro: "Als u wilt uitbreiden in Spanje en Portugal, stel dan samen met ons een plan op.\nWij bieden u landelijke dekking en besparingssynergieën.",
       instruction: "Op basis van wat u al kent, bepaal ik uw profiel. Kies een stad.",
       cta: "Vraag een offerte aan voor deze beurs",
       formInstruction: "Voer uw gegevens in en ik stuur u een kort rapport met de interessantste beurzen voor uw sector.",
@@ -189,7 +194,7 @@
       title: "你好！我是 Pat。",
       freeBadge: "免费服务",
       activeLabel: "已启用",
-      intro: "如果您想在西班牙和葡萄牙拓展业务，我可以为您提供选择关键展会的建议。",
+      intro: "如果您想在西班牙和葡萄牙拓展业务，就与我们一起制定计划吧。\n我们为您提供全域覆盖和降本增效的协同优势。",
       instruction: "根据您已了解的情况，我会确定您的需求画像。请选择一个城市。",
       cta: "索取该展会的报价",
       formInstruction: "请填写您的信息，我会向您发送一份简要报告，列出最适合您所在行业的展会。",
@@ -209,7 +214,7 @@
       title: "नमस्ते!, मैं Pat हूँ।",
       freeBadge: "निःशुल्क सेवा",
       activeLabel: "सक्रिय",
-      intro: "यदि आप स्पेन और पुर्तगाल में विस्तार करना चाहते हैं, तो मैं आपको प्रमुख कार्यक्रमों को चुनने में सलाह दे सकती हूँ।",
+      intro: "यदि आप स्पेन और पुर्तगाल में विस्तार करना चाहते हैं, तो हमारे साथ एक योजना बनाएं।\nहम आपको व्यापक उपस्थिति और बचत की सिनर्जी प्रदान करते हैं।",
       instruction: "आप जो पहले से जानते हैं उसके आधार पर, मैं आपकी प्रोफ़ाइल तय करूँगी। एक शहर चुनें।",
       cta: "इस मेले के लिए कोटेशन प्राप्त करें",
       formInstruction: "कृपया अपनी जानकारी दर्ज करें, और मैं आपको आपके क्षेत्र के लिए सबसे दिलचस्प मेलों के साथ एक संक्षिप्त रिपोर्ट भेजूँगी।",
@@ -229,7 +234,7 @@
       title: "안녕하세요! Pat입니다.",
       freeBadge: "무료 서비스",
       activeLabel: "활성",
-      intro: "스페인과 포르투갈에서 사업을 확장하고자 하신다면, 핵심 이벤트를 선택할 수 있도록 조언해 드릴 수 있습니다.",
+      intro: "스페인과 포르투갈에서 사업을 확장하고자 하신다면, 저희와 함께 계획을 세워 보세요.\n전국적인 커버리지와 비용 절감 시너지를 제공해 드립니다.",
       instruction: "이미 알고 계신 내용을 바탕으로 고객님의 프로필을 파악하겠습니다. 도시를 선택해 주세요.",
       cta: "이 전시회 견적 요청하기",
       formInstruction: "정보를 입력해 주시면, 귀하의 업종에 가장 적합한 전시회를 정리한 간략한 리포트를 보내드리겠습니다.",
@@ -249,7 +254,7 @@
       title: "こんにちは！Patです。",
       freeBadge: "無料サービス",
       activeLabel: "有効",
-      intro: "スペインやポルトガルでの事業拡大をお考えなら、主要なイベント選びのアドバイスをいたします。",
+      intro: "スペインやポルトガルでの事業拡大をお考えなら、私たちと一緒にプランを立てましょう。\n広域カバレッジとコスト削減のシナジーをご提供します。",
       instruction: "すでにご存じの内容をもとに、お客様のプロフィールを把握します。都市を選択してください。",
       cta: "この展示会の見積もりを依頼する",
       formInstruction: "お客様の情報をご入力いただければ、お客様の業種に最適な展示会をまとめた簡単なレポートをお送りします。",
@@ -520,6 +525,15 @@
       profileVisible = true;
       triggerNotificationChime();
     }, 600);
+
+    // Malla ibérica: descarga diferida del chunk del mapa 1,5 s después de
+    // montarse el panel (tiempo de sobra para que el flujo de Pat ya esté
+    // operativo), y aparece con transición cuando está lista.
+    dismissTimers.push(setTimeout(() => {
+      import('./PatMesh.svelte')
+        .then((m) => { MeshComponent = m.default; })
+        .catch(() => {});
+    }, 1500));
 
     // Siembra contextual: si llega con un sector inicial válido (desde una feria),
     // saltamos al paso 2 con ese sector ya elegido (reutiliza selectFamily).
@@ -805,6 +819,15 @@
       </form>
     {/if}
 
+    <!-- Malla ibérica: representación gráfica en vivo de la selección de Pat.
+         Los botones de sector/actividad de arriba actúan como selector; el mapa
+         refleja qué ciudades y ferias corresponden a lo marcado. -->
+    {#if MeshComponent && status !== 'success'}
+      <div class="advisor-mesh" transition:fade={{ duration: 400 }}>
+        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} />
+      </div>
+    {/if}
+
   </div>
 
   {#if dismissible && cardExpanded && status !== 'success'}
@@ -838,8 +861,14 @@
   }
 
   .welcome-advisor-card.expanded {
-    max-height: 1200px;
+    /* Amplio para dar cabida a la malla ibérica (PatMesh) bajo el flujo del asesor. */
+    max-height: 2600px;
     opacity: 1;
+  }
+
+  /* Contenedor de la malla ibérica bajo el flujo de Pat. */
+  .advisor-mesh {
+    margin-top: 26px;
   }
 
   /* Modo embebido: el panel ocupa todo el ancho del contenedor padre (iguala el
@@ -1023,6 +1052,11 @@
     color: #444;
   }
 
+  /* El intro lleva un \n antes de la frase de valor: renderizarlo como salto de línea. */
+  .advisor-intro {
+    white-space: pre-line;
+  }
+
   .advisor-instruction {
     margin-bottom: 0;
     font-weight: 600;
@@ -1071,7 +1105,7 @@
     font-family: 'Inconsolata', monospace;
     font-size: 13px;
     font-weight: 600;
-    color: #8a8f96;
+    color: royalblue;
     cursor: pointer;
     text-decoration: underline;
     text-underline-offset: 3px;

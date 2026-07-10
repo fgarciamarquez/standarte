@@ -1638,6 +1638,55 @@ export const fairsData = [
     "sector": "Enología y Vinos"
   },
   {
+    "name": "Seafood Expo Global Barcelona",
+    "country": "es",
+    "slug": "seafood-expo-global-barcelona",
+    "city": "Barcelona",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "SIL Barcelona",
+    "country": "es",
+    "slug": "sil-barcelona",
+    "city": "Barcelona",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Automobile Barcelona",
+    "country": "es",
+    "slug": "automobile-barcelona",
+    "city": "Barcelona",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Piscina & Wellness Barcelona",
+    "country": "es",
+    "slug": "piscina-wellness-barcelona",
+    "city": "Barcelona",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Municipàlia Lleida",
+    "country": "es",
+    "slug": "municipalia-lleida",
+    "city": "Lleida",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Fira de Sant Miquel Lleida",
+    "country": "es",
+    "slug": "fira-sant-miquel-lleida",
+    "city": "Lleida",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Fòrum Gastronòmic Girona",
+    "country": "es",
+    "slug": "forum-gastronomic-girona",
+    "city": "Girona",
+    "sector": "Turismo y Hostelería"
+  },
+  {
     "name": "Salón de los Vinos de Aragón",
     "country": "es",
     "slug": "salon-vinos-aragon-zaragoza",
