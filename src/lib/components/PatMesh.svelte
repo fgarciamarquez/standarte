@@ -12,6 +12,31 @@
   import { fairsData } from '$lib/fairsData.js';
   import { tagFamilies, fairTags, fairActivities, labelForTag, familyLabel } from '$lib/fairTags.js';
   import { IBERIA_PATH, CITY_POINTS } from '$lib/iberiaMeshData.js';
+  import { pathFor } from '$lib/siteData.js';
+
+  // Ciudad del mapa → sección-pilar de ciudad (misma convención que CITY_TO_PILLAR
+  // en Feria.svelte / FAIR_CITY_PILLAR en Site.svelte: los satélites cuelgan de su
+  // pilar). Las ciudades sin entrada no tienen página propia y su punto no enlaza.
+  const CITY_PILLAR = {
+    'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa',
+    'Oporto': 'oporto', 'Valencia': 'valencia', 'Mallorca': 'mallorca', 'Vigo': 'vigo',
+    'Santiago de Compostela': 'santiago', 'A Coruña': 'coruna', 'Valladolid': 'valladolid',
+    'Salamanca': 'salamanca', 'Batalha': 'batalha', 'Málaga': 'malaga', 'Badajoz': 'badajoz',
+    'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real', 'Zaragoza': 'zaragoza',
+    'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
+    'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz',
+    'Portugal Sur': 'portugal_sur',
+    'Aguadulce': 'almeria', 'El Ejido': 'almeria', 'Almería': 'almeria', 'Jaén': 'jaen',
+    'Huelva': 'huelva', 'Aracena': 'huelva', 'Punta Umbría': 'huelva',
+    'Murcia': 'murcia', 'Torre Pacheco': 'murcia',
+    'Córdoba': 'cordoba', 'Pozoblanco': 'cordoba', 'Villanueva de Córdoba': 'cordoba',
+    'Granada': 'granada', 'Armilla': 'granada',
+    'Cádiz': 'cadiz', 'Jerez de la Frontera': 'cadiz',
+    'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
+    'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche', 'Alicante': 'alicante',
+    'Silleda': 'silleda', 'Ourense': 'ourense',
+    'Lleida': 'lleida', 'Girona': 'girona'
+  };
 
   export let lang = 'en';
   export let selectedFamily = '';
@@ -211,10 +236,18 @@
     const cityGroup = el('g', {});
     svgEl.appendChild(cityGroup);
     const maxCityTotal = Math.max(...cities.map((c) => c.total));
+    const cityLinks = []; // anclas <a> de ciudad, para refrescar href al cambiar de idioma
     cities.forEach((city) => {
       const r = 2.4 + Math.sqrt(city.total / maxCityTotal) * 7.5;
       const isMajor = city.total >= 9;
-      const g = el('g', { class: 'pm-city' + (isMajor ? ' major' : '') });
+      // Cada punto-ciudad con página pilar propia es un enlace directo a ella
+      // (donde se listan sus ferias). Las ciudades sin pilar quedan como <g> normal.
+      const pillar = CITY_PILLAR[city.name];
+      const g = el(pillar ? 'a' : 'g', { class: 'pm-city' + (isMajor ? ' major' : '') });
+      if (pillar) {
+        g._pillar = pillar;
+        cityLinks.push(g);
+      }
       g._city = city;
       // área de hover invisible más generosa que el punto (los nodos pequeños son diminutos)
       g.appendChild(el('circle', { class: 'pm-hit', cx: city.x, cy: city.y, r: Math.max(r, 9) }));
@@ -247,6 +280,11 @@
       famKeys.forEach((f) => {
         famEls[f].texts[0].node.textContent = familyLabel(f, currentLang);
         famEls[f].texts[1].node.textContent = famTotals[f] + ' ' + currentPWord;
+      });
+      // href de cada punto-ciudad → su página pilar en el idioma activo
+      cityLinks.forEach((a) => {
+        a.setAttribute('href', pathFor(currentLang, a._pillar));
+        a.setAttribute('aria-label', a._city.name);
       });
     }
 
