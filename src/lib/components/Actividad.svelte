@@ -388,16 +388,17 @@
   .act-aside { border-left: 1px solid rgba(0, 0, 0, 0.12); padding-left: 40px; position: sticky; top: 100px; }
   .act-aside h3 { font-size: 1.4rem; margin: 0 0 1.2rem; }
   .aside-module + .aside-module { margin-top: 2rem; }
-  .activity-chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .activity-chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  /* Etiquetas estilo "badge": píldora suave y compacta, sin borde. */
   .activity-chips li a {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    padding: 0.4rem 0.8rem; font-size: 0.9rem; color: var(--text-color); text-decoration: none;
-    border: 1px solid color-mix(in srgb, var(--chip) 45%, transparent);
-    border-left: 4px solid var(--chip); border-radius: 6px;
-    background: color-mix(in srgb, var(--chip) 7%, #fff);
-    transition: background 0.2s ease, border-color 0.2s ease;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.2rem 0.62rem; font-size: 0.78rem; font-weight: 500;
+    color: color-mix(in srgb, var(--chip) 62%, #12211a); text-decoration: none;
+    border: none; border-radius: 999px;
+    background: color-mix(in srgb, var(--chip) 12%, #fff);
+    transition: background 0.2s ease;
   }
-  .activity-chips li a:hover { background: color-mix(in srgb, var(--chip) 16%, #fff); border-color: var(--chip); }
+  .activity-chips li a:hover { background: color-mix(in srgb, var(--chip) 20%, #fff); }
   .cluster-pillar {
     display: inline-block; font-weight: 600; color: var(--primary); text-decoration: none;
     border-bottom: 2px solid var(--primary); padding-bottom: 2px;

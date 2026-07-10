@@ -2412,23 +2412,23 @@
   .activity-module { margin-top: 1.8rem; }
   .activity-chips {
     list-style: none; padding: 0; margin: 0 0 0.9rem;
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.35rem;
   }
+  /* Etiquetas estilo "badge": píldora suave y compacta (fondo tenue + punto + texto del
+     color de la actividad, oscurecido para legibilidad). Forma simple, sin borde. */
   .activity-chips li a {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    padding: 0.38rem 0.75rem; font-size: 0.88rem;
-    color: var(--text-color); text-decoration: none;
-    border: 1px solid color-mix(in srgb, var(--chip) 45%, transparent);
-    border-left: 4px solid var(--chip); border-radius: 6px;
-    background: color-mix(in srgb, var(--chip) 7%, #fff);
-    transition: background 0.2s ease, border-color 0.2s ease;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.2rem 0.62rem; font-size: 0.78rem; font-weight: 500;
+    color: color-mix(in srgb, var(--chip) 62%, #12211a); text-decoration: none;
+    border: none; border-radius: 999px;
+    background: color-mix(in srgb, var(--chip) 12%, #fff);
+    transition: background 0.2s ease;
   }
   .activity-chips li a:hover {
-    background: color-mix(in srgb, var(--chip) 16%, #fff);
-    border-color: var(--chip);
+    background: color-mix(in srgb, var(--chip) 20%, #fff);
   }
   .activity-chips .chip-dot {
-    width: 9px; height: 9px; border-radius: 50%;
+    width: 7px; height: 7px; border-radius: 50%;
     background: var(--chip); flex: 0 0 auto;
   }
   /* Destaque del Sistema de Proyecto Auditado en la home. */

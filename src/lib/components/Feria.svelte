@@ -1193,29 +1193,29 @@
     margin: 0 0 1rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.35rem;
   }
+  /* Etiquetas estilo "badge": píldora suave y compacta, sin borde. */
   .activity-chips li a {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    padding: 0.4rem 0.8rem;
-    border: 1px solid color-mix(in srgb, var(--chip) 45%, transparent);
-    border-left: 4px solid var(--chip);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: var(--text-color);
+    gap: 0.35rem;
+    padding: 0.2rem 0.62rem;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--chip) 62%, #12211a);
     text-decoration: none;
-    background: color-mix(in srgb, var(--chip) 7%, #fff);
-    transition: background 0.2s ease, border-color 0.2s ease;
+    background: color-mix(in srgb, var(--chip) 12%, #fff);
+    transition: background 0.2s ease;
   }
   .activity-chips li a:hover {
-    background: color-mix(in srgb, var(--chip) 16%, #fff);
-    border-color: var(--chip);
+    background: color-mix(in srgb, var(--chip) 20%, #fff);
   }
   .chip-dot {
-    width: 9px;
-    height: 9px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--chip);
     flex: 0 0 auto;
