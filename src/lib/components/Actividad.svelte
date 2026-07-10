@@ -392,7 +392,7 @@
   /* Etiquetas estilo "badge": píldora suave y compacta, sin borde. */
   .activity-chips li a {
     display: inline-flex; align-items: center; gap: 0.35rem;
-    padding: 0.2rem 0.62rem; font-size: 0.78rem; font-weight: 500;
+    padding: 0.2rem 0.62rem; font-size: 0.9rem; font-weight: 500;
     color: color-mix(in srgb, var(--chip) 62%, #12211a); text-decoration: none;
     border: none; border-radius: 999px;
     background: color-mix(in srgb, var(--chip) 12%, #fff);

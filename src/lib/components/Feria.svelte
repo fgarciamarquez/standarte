@@ -1203,7 +1203,7 @@
     padding: 0.2rem 0.62rem;
     border: none;
     border-radius: 999px;
-    font-size: 0.78rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: color-mix(in srgb, var(--chip) 62%, #12211a);
     text-decoration: none;

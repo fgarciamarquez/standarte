@@ -1127,30 +1127,29 @@
     flex-wrap: wrap;
     gap: 7px;
   }
+  /* Etiquetas estilo "badge": píldora suave y compacta, sin borde (igual que la web). */
   .activity-selector-btn {
     display: inline-flex;
     align-items: center;
-    background: color-mix(in srgb, var(--chip) 7%, #fff);
-    border: 1px solid color-mix(in srgb, var(--chip) 40%, transparent);
-    border-left: 3px solid var(--chip);
-    border-radius: 6px;
-    padding: 5px 11px;
+    background: color-mix(in srgb, var(--chip) 12%, #fff);
+    border: none;
+    border-radius: 999px;
+    padding: 5px 12px;
     font-family: 'Inconsolata', monospace;
     font-size: 12px;
     font-weight: 600;
-    color: #333;
+    color: color-mix(in srgb, var(--chip) 62%, #12211a);
     cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    transition: background 0.2s ease;
     text-align: left;
     line-height: 1.3;
   }
   .activity-selector-btn:hover {
-    background: color-mix(in srgb, var(--chip) 16%, #fff);
-    border-color: var(--chip);
+    background: color-mix(in srgb, var(--chip) 20%, #fff);
   }
   .badge-activity-dot {
-    width: 9px;
-    height: 9px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--chip);
     flex: 0 0 auto;
