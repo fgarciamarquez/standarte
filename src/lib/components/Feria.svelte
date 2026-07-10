@@ -633,17 +633,17 @@
 
   // --- CTA contextual de Pat (por sector) en la ficha de feria.
   const patCta = {
-    es: { q: (n) => `${n} es sólo una pieza en tu plan de expansión.`, sub: 'Pat, nuestro asesor ferial gratuito, te muestra nuestra malla de cobertura en España y Portugal.', cta: 'Hablar con Pat' },
-    pt: { q: (n) => `A ${n} é apenas uma peça no seu plano de expansão.`, sub: 'O Pat, o nosso consultor de feiras gratuito, mostra-lhe a nossa malha de cobertura em Portugal e Espanha.', cta: 'Falar com o Pat' },
-    en: { q: (n) => `${n} is just one piece of your expansion plan.`, sub: 'Pat, our free trade-fair advisor, shows you our coverage network across Spain and Portugal.', cta: 'Talk to Pat' },
-    de: { q: (n) => `Die ${n} ist nur ein Baustein Ihres Expansionsplans.`, sub: 'Pat, unser kostenloser Messeberater, zeigt Ihnen unser Abdeckungsnetz in Spanien und Portugal.', cta: 'Mit Pat sprechen' },
-    fr: { q: (n) => `${n} n'est qu'une pièce de votre plan d'expansion.`, sub: 'Pat, notre conseiller salon gratuit, vous montre notre maillage de couverture en Espagne et au Portugal.', cta: 'Parler avec Pat' },
-    it: { q: (n) => `${n} è solo un tassello del tuo piano di espansione.`, sub: 'Pat, il nostro consulente fieristico gratuito, ti mostra la nostra rete di copertura in Spagna e Portogallo.', cta: 'Parlare con Pat' },
-    nl: { q: (n) => `${n} is slechts één schakel in uw expansieplan.`, sub: 'Pat, onze gratis beursadviseur, toont u ons dekkingsnetwerk in Spanje en Portugal.', cta: 'Met Pat praten' },
-    zh: { q: (n) => `${n} 只是您扩张计划中的一环。`, sub: '我们的免费展会顾问 Pat 为您展示我们在西班牙和葡萄牙的覆盖网络。', cta: '与 Pat 交谈' },
-    hi: { q: (n) => `${n} आपकी विस्तार योजना का सिर्फ़ एक हिस्सा है।`, sub: 'हमारा मुफ़्त सलाहकार Pat आपको स्पेन और पुर्तगाल में हमारा कवरेज नेटवर्क दिखाता है।', cta: 'Pat से बात करें' },
-    ko: { q: (n) => `${n}은(는) 귀사 확장 계획의 한 조각일 뿐입니다.`, sub: '무료 어드바이저 Pat이 스페인과 포르투갈의 저희 커버리지 네트워크를 보여드립니다.', cta: 'Pat와 대화하기' },
-    ja: { q: (n) => `${n}は貴社の拡大計画の一部にすぎません。`, sub: '無料アドバイザーのPatが、スペインとポルトガルにおける当社のカバレッジ網をご案内します。', cta: 'Patと話す' }
+    es: { q: (n) => `${n} es sólo una pieza en tu plan de expansión.`, sub: 'En Standarte te ofrecemos una malla de cobertura de enorme profundidad para cumplir con tus objetivos.', cta: 'Descubrir' },
+    pt: { q: (n) => `A ${n} é apenas uma peça no seu plano de expansão.`, sub: 'Na Standarte oferecemos-lhe uma malha de cobertura de enorme profundidade para cumprir os seus objetivos.', cta: 'Descobrir' },
+    en: { q: (n) => `${n} is just one piece of your expansion plan.`, sub: 'At Standarte we offer you a coverage network of enormous depth to meet your goals.', cta: 'Discover' },
+    de: { q: (n) => `Die ${n} ist nur ein Baustein Ihres Expansionsplans.`, sub: 'Bei Standarte bieten wir Ihnen ein außerordentlich tiefes Abdeckungsnetz, um Ihre Ziele zu erreichen.', cta: 'Entdecken' },
+    fr: { q: (n) => `${n} n'est qu'une pièce de votre plan d'expansion.`, sub: 'Chez Standarte, nous vous offrons un maillage de couverture d\'une profondeur immense pour atteindre vos objectifs.', cta: 'Découvrir' },
+    it: { q: (n) => `${n} è solo un tassello del tuo piano di espansione.`, sub: 'In Standarte ti offriamo una rete di copertura di enorme profondità per raggiungere i tuoi obiettivi.', cta: 'Scopri' },
+    nl: { q: (n) => `${n} is slechts één schakel in uw expansieplan.`, sub: 'Bij Standarte bieden wij u een dekkingsnetwerk van enorme diepgang om uw doelen te bereiken.', cta: 'Ontdekken' },
+    zh: { q: (n) => `${n} 只是您扩张计划中的一环。`, sub: '在 Standarte，我们为您提供纵深极广的覆盖网络，助您实现目标。', cta: '探索' },
+    hi: { q: (n) => `${n} आपकी विस्तार योजना का सिर्फ़ एक हिस्सा है।`, sub: 'Standarte में हम आपको आपके लक्ष्यों को पूरा करने के लिए अत्यंत गहन कवरेज नेटवर्क प्रदान करते हैं।', cta: 'जानें' },
+    ko: { q: (n) => `${n}은(는) 귀사 확장 계획의 한 조각일 뿐입니다.`, sub: 'Standarte는 귀사의 목표 달성을 위해 폭넓고 깊이 있는 커버리지 네트워크를 제공합니다.', cta: '알아보기' },
+    ja: { q: (n) => `${n}は貴社の拡大計画の一部にすぎません。`, sub: 'Standarteは、貴社の目標達成のために圧倒的な奥行きのカバレッジ網をご提供します。', cta: '詳しく見る' }
   };
   $: da = (directAnswer[lang] || directAnswer.es);
   $: pc = (patCta[lang] || patCta.es);
