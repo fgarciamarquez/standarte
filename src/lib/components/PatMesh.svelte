@@ -8,7 +8,7 @@
   // El SVG se construye imperativamente en onMount (no se prerenderiza: Pat ya
   // se carga en diferido en cliente) y la flotación usa rAF, solo mientras el
   // mapa es visible (IntersectionObserver) y sin prefers-reduced-motion.
-  import { onMount } from 'svelte';
+  import { onMount, createEventDispatcher } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { tagFamilies, fairTags, fairActivities, labelForTag, familyLabel } from '$lib/fairTags.js';
   import { IBERIA_PATH, CITY_POINTS } from '$lib/iberiaMeshData.js';
@@ -41,6 +41,8 @@
   export let lang = 'en';
   export let selectedFamily = '';
   export let selectedTags = [];
+
+  const dispatch = createEventDispatcher();
 
   const participationsWord = {
     es: 'participaciones', en: 'participations', pt: 'participações', de: 'Beteiligungen',
@@ -356,9 +358,16 @@
       tooltipEl.classList.remove('visible');
       render();
     }
+    // Clic en un punto-ciudad enlazado: avisar al panel (que se cierra para que
+    // el cambio de URL sea evidente) y dejar que SvelteKit gestione la navegación.
+    function onClick(e) {
+      const a = e.target.closest('.pm-city');
+      if (a && a._pillar) dispatch('navigate', { city: a._city.name });
+    }
     cityGroup.addEventListener('mouseover', onOver);
     cityGroup.addEventListener('mousemove', onMove);
     cityGroup.addEventListener('mouseout', onOut);
+    cityGroup.addEventListener('click', onClick);
 
     // ── Flotación (solo con el mapa visible y sin reduced-motion) ──
     let rafId = 0;
@@ -423,6 +432,7 @@
         cityGroup.removeEventListener('mouseover', onOver);
         cityGroup.removeEventListener('mousemove', onMove);
         cityGroup.removeEventListener('mouseout', onOut);
+        cityGroup.removeEventListener('click', onClick);
       }
     };
   }

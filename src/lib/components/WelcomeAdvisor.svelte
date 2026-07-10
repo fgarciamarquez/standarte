@@ -653,6 +653,14 @@
     }
   }
 
+  // Clic en un punto-ciudad de la malla: el visitante navega a la página de esa
+  // ciudad, así que cerramos el panel para que el cambio de URL sea evidente
+  // (sin marcar el descarte de sesión: Pat puede volver a aparecer donde toque).
+  function onMeshNavigate() {
+    cardExpanded = false;
+    dismissTimers.push(setTimeout(() => { dispatch('dismiss'); }, 320));
+  }
+
   // Deslizador "Activo": al desactivarlo, el panel desaparece durante toda la sesión.
   function onActiveToggle(e) {
     if (e.currentTarget.checked) return; // sigue activo
@@ -824,7 +832,7 @@
          refleja qué ciudades y ferias corresponden a lo marcado. -->
     {#if MeshComponent && status !== 'success'}
       <div class="advisor-mesh" transition:fade={{ duration: 400 }}>
-        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} />
+        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} on:navigate={onMeshNavigate} />
       </div>
     {/if}
 
