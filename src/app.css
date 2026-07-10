@@ -339,6 +339,17 @@ p {
   line-height: 1.2;
   text-shadow: 1px 1px 0 #000;
 }
+/* Claim de categoría bajo el H1 de la home: "expansión comercial ferial". Más específico
+   que .hero p para no heredar su tamaño móvil (36px); escala con clamp(). */
+.hero .contents .hero-claim {
+  margin: 0 auto;
+  max-width: 760px;
+  color: #fff;
+  font-size: clamp(16px, 2.1vw, 23px);
+  line-height: 1.55;
+  font-weight: 400;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
 
 
 .section {

@@ -1495,6 +1495,7 @@
     <section id="home" class="hero">
       <div class="contents">
         <h1>{copy.heroTitle}</h1>
+        {#if section === 'home' && copy.heroSubtitle}<p class="hero-claim">{copy.heroSubtitle}</p>{/if}
       </div>
       <AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />
     </section>
