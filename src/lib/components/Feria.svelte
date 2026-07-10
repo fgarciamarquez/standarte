@@ -633,17 +633,17 @@
 
   // --- CTA contextual de Pat (por sector) en la ficha de feria.
   const patCta = {
-    es: { q: (n) => `¿No sabes si ${n} encaja con tu producto?`, sub: 'Pat, nuestro asesor ferial gratuito, te recomienda las ferias de tu sector en España y Portugal en un minuto.', cta: 'Hablar con Pat' },
-    pt: { q: (n) => `Não sabe se a ${n} encaixa com o seu produto?`, sub: 'O Pat, o nosso consultor de feiras gratuito, recomenda as feiras do seu setor em Portugal e Espanha num minuto.', cta: 'Falar com o Pat' },
-    en: { q: (n) => `Not sure if ${n} is right for your product?`, sub: 'Pat, our free trade-fair advisor, recommends the fairs for your sector in Spain and Portugal in a minute.', cta: 'Talk to Pat' },
-    de: { q: (n) => `Unsicher, ob die ${n} zu Ihrem Produkt passt?`, sub: 'Pat, unser kostenloser Messeberater, empfiehlt in einer Minute die Messen Ihrer Branche in Spanien und Portugal.', cta: 'Mit Pat sprechen' },
-    fr: { q: (n) => `Vous ne savez pas si ${n} vous convient ?`, sub: 'Pat, notre conseiller salon gratuit, vous recommande les salons de votre secteur en Espagne et au Portugal en une minute.', cta: 'Parler avec Pat' },
-    it: { q: (n) => `Non sai se ${n} fa per te?`, sub: 'Pat, il nostro consulente fieristico gratuito, ti consiglia le fiere del tuo settore in Spagna e Portogallo in un minuto.', cta: 'Parlare con Pat' },
-    nl: { q: (n) => `Niet zeker of ${n} bij u past?`, sub: 'Pat, onze gratis beursadviseur, beveelt in een minuut de beurzen in uw sector in Spanje en Portugal aan.', cta: 'Met Pat praten' },
-    zh: { q: (n) => `不确定 ${n} 是否适合您的产品？`, sub: '我们的免费展会顾问 Pat 一分钟内为您推荐西班牙和葡萄牙您所在行业的展会。', cta: '与 Pat 交谈' },
-    hi: { q: (n) => `पक्का नहीं कि ${n} आपके लिए सही है?`, sub: 'हमारा मुफ़्त सलाहकार Pat एक मिनट में स्पेन और पुर्तगाल में आपके क्षेत्र के मेलों की सिफ़ारिश करता है।', cta: 'Pat से बात करें' },
-    ko: { q: (n) => `${n}이(가) 적합한지 모르시겠나요?`, sub: '무료 어드바이저 Pat이 스페인과 포르투갈에서 귀사 분야의 박람회를 1분 만에 추천합니다.', cta: 'Pat와 대화하기' },
-    ja: { q: (n) => `${n}が自社に合うかお悩みですか？`, sub: '無料アドバイザーのPatが、スペインとポルトガルであなたの分野の展示会を1分で提案します。', cta: 'Patと話す' }
+    es: { q: (n) => `${n} es sólo una pieza en tu plan de expansión.`, sub: 'Pat, nuestro asesor ferial gratuito, te muestra nuestra malla de cobertura en España y Portugal.', cta: 'Hablar con Pat' },
+    pt: { q: (n) => `A ${n} é apenas uma peça no seu plano de expansão.`, sub: 'O Pat, o nosso consultor de feiras gratuito, mostra-lhe a nossa malha de cobertura em Portugal e Espanha.', cta: 'Falar com o Pat' },
+    en: { q: (n) => `${n} is just one piece of your expansion plan.`, sub: 'Pat, our free trade-fair advisor, shows you our coverage network across Spain and Portugal.', cta: 'Talk to Pat' },
+    de: { q: (n) => `Die ${n} ist nur ein Baustein Ihres Expansionsplans.`, sub: 'Pat, unser kostenloser Messeberater, zeigt Ihnen unser Abdeckungsnetz in Spanien und Portugal.', cta: 'Mit Pat sprechen' },
+    fr: { q: (n) => `${n} n'est qu'une pièce de votre plan d'expansion.`, sub: 'Pat, notre conseiller salon gratuit, vous montre notre maillage de couverture en Espagne et au Portugal.', cta: 'Parler avec Pat' },
+    it: { q: (n) => `${n} è solo un tassello del tuo piano di espansione.`, sub: 'Pat, il nostro consulente fieristico gratuito, ti mostra la nostra rete di copertura in Spagna e Portogallo.', cta: 'Parlare con Pat' },
+    nl: { q: (n) => `${n} is slechts één schakel in uw expansieplan.`, sub: 'Pat, onze gratis beursadviseur, toont u ons dekkingsnetwerk in Spanje en Portugal.', cta: 'Met Pat praten' },
+    zh: { q: (n) => `${n} 只是您扩张计划中的一环。`, sub: '我们的免费展会顾问 Pat 为您展示我们在西班牙和葡萄牙的覆盖网络。', cta: '与 Pat 交谈' },
+    hi: { q: (n) => `${n} आपकी विस्तार योजना का सिर्फ़ एक हिस्सा है।`, sub: 'हमारा मुफ़्त सलाहकार Pat आपको स्पेन और पुर्तगाल में हमारा कवरेज नेटवर्क दिखाता है।', cta: 'Pat से बात करें' },
+    ko: { q: (n) => `${n}은(는) 귀사 확장 계획의 한 조각일 뿐입니다.`, sub: '무료 어드바이저 Pat이 스페인과 포르투갈의 저희 커버리지 네트워크를 보여드립니다.', cta: 'Pat와 대화하기' },
+    ja: { q: (n) => `${n}は貴社の拡大計画の一部にすぎません。`, sub: '無料アドバイザーのPatが、スペインとポルトガルにおける当社のカバレッジ網をご案内します。', cta: 'Patと話す' }
   };
   $: da = (directAnswer[lang] || directAnswer.es);
   $: pc = (patCta[lang] || patCta.es);
