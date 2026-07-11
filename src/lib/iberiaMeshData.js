@@ -102,29 +102,46 @@ export function projectLatLon(lat, lon) {
 // de puntos) situado en el océano a la altura de Cádiz y a su izquierda. Así la
 // malla de Pat "llega" a las islas sin sacrificar la escala peninsular.
 // Coordenadas en px absolutos (misma proyección visual, NO projectLatLon).
+// Centro del inset (px). Para mover TODO el recuadro (islas + puntos + anillo)
+// basta cambiar estas dos cifras: las islas y las ciudades se definen en offsets
+// relativos al centro y se trasladan aquí. Situado en el océano, abajo-izquierda
+// de Cádiz, con aire suficiente para que se lea como una traslación artificial.
+const CAN_CX = -5;
+const CAN_CY = 735;
+const CAN_R = 92;
+
+// Polígonos simples de las 7 islas (oeste→este), en offsets px RELATIVOS al centro.
+const CAN_ISLANDS_BASE = [
+  'M -70,28 L -65,24 L -58,29 L -63,34 Z',                 // El Hierro
+  'M -60,-14 L -54,-8 L -56,1 L -61,3 L -62,-6 Z',         // La Palma
+  'M -44,15 L -39,12 L -33,16 L -38,20 L -43,19 Z',        // La Gomera
+  'M -36,4 L -20,1 L -13,10 L -22,17 L -33,13 Z',          // Tenerife
+  'M -6,17 L 2,12 L 12,16 L 13,24 L 5,29 L -4,25 Z',       // Gran Canaria
+  'M 36,14 L 46,4 L 58,-6 L 63,-1 L 53,10 L 42,19 Z',      // Fuerteventura
+  'M 54,-12 L 62,-21 L 72,-25 L 75,-18 L 67,-11 L 58,-8 Z' // Lanzarote
+];
+
+// Traslada un path 'M x,y L x,y … Z' sumando (dx, dy) a cada par de coordenadas.
+const shiftPath = (d, dx, dy) =>
+  d.replace(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g, (_, x, y) => `${+x + dx},${+y + dy}`);
+
 export const CANARIAS_INSET = {
-  cx: 40, cy: 685, r: 92,
-  // Polígonos muy simples de las 7 islas (oeste→este), en px absolutos.
-  islands: [
-    'M -30,713 L -25,709 L -18,714 L -23,719 Z',            // El Hierro
-    'M -20,671 L -14,677 L -16,686 L -21,688 L -22,679 Z',  // La Palma
-    'M -4,700 L 1,697 L 7,701 L 2,705 L -3,704 Z',          // La Gomera
-    'M 4,689 L 20,686 L 27,695 L 18,702 L 7,698 Z',         // Tenerife
-    'M 34,702 L 42,697 L 52,701 L 53,709 L 45,714 L 36,710 Z', // Gran Canaria
-    'M 76,699 L 86,689 L 98,679 L 103,684 L 93,695 L 82,704 Z', // Fuerteventura
-    'M 94,673 L 102,664 L 112,660 L 115,667 L 107,674 L 98,677 Z' // Lanzarote
-  ]
+  cx: CAN_CX, cy: CAN_CY, r: CAN_R,
+  islands: CAN_ISLANDS_BASE.map((d) => shiftPath(d, CAN_CX, CAN_CY))
 };
 
-// Puntos-ciudad del archipiélago DENTRO del inset (px absolutos): cada ciudad
-// ferial canaria se ancla sobre su isla, y el hub "Islas Canarias" al centro.
-const CANARIAS_CITY_POINTS = {
-  'Islas Canarias': [40, 685],
-  'Tenerife': [16, 694],
-  'Gran Canaria': [44, 704],
-  'Las Palmas': [52, 695],
-  'Fuerteventura': [89, 690]
+// Puntos-ciudad del archipiélago DENTRO del inset: cada ciudad ferial canaria se
+// ancla sobre su isla (offset relativo al centro) y el hub "Islas Canarias" al centro.
+const CANARIAS_CITY_BASE = {
+  'Islas Canarias': [0, 0],
+  'Tenerife': [-24, 9],
+  'Gran Canaria': [4, 19],
+  'Las Palmas': [12, 10],
+  'Fuerteventura': [49, 5]
 };
+const CANARIAS_CITY_POINTS = Object.fromEntries(
+  Object.entries(CANARIAS_CITY_BASE).map(([name, [dx, dy]]) => [name, [CAN_CX + dx, CAN_CY + dy]])
+);
 
 // Ciudad → [x, y] en px: península/Baleares por proyección + inset canario.
 export const CITY_POINTS = {

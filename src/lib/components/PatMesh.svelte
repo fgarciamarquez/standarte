@@ -528,7 +528,10 @@
     transition: opacity 0.25s ease;
   }
   .pm-wrap :global(.pm-family.dimmed text) { opacity: 0.3; }
-  .pm-wrap :global(.pm-family-count) { fill: #f7f6f1; font-weight: 700; paint-order: stroke; stroke: rgba(0, 0, 0, 0.35); stroke-width: 0.7px; }
+  /* El número dentro del círculo va claro (#f7f6f1). El selector incluye `text`
+     para ganar en especificidad a `.pm-family text { fill: #1a1e21 }`; si no, el
+     número saldría oscuro y no se vería sobre el color del nodo. */
+  .pm-wrap :global(.pm-family text.pm-family-count) { fill: #f7f6f1; font-weight: 700; paint-order: stroke; stroke: rgba(0, 0, 0, 0.4); stroke-width: 0.7px; }
 
   .pm-wrap :global(.pm-tag circle) { transition: opacity 0.2s ease; }
   .pm-wrap :global(.pm-tag.dimmed circle) { opacity: 0.15; }
