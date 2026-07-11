@@ -85,6 +85,9 @@
     : (selectedFamily ? Object.keys(fairTags).filter((t) => fairTags[t].family === selectedFamily) : []);
 
   $: if (api) api.update(activeTags, lang, pWord);
+  // Al navegar entre ciudades (nube de ciudades del sidebar), el mapa persiste y
+  // solo cambia initialCity: reubicamos el :hover por defecto a la nueva ciudad.
+  $: if (api) api.setDefaultCity(initialCity);
 
   function buildMesh() {
     const NS = 'http://www.w3.org/2000/svg';
@@ -500,6 +503,15 @@
           currentPWord = newPWord;
           applyLabels();
         }
+        renderState();
+      },
+      // Reubica la ciudad resaltada por defecto (al cambiar de página de ciudad
+      // sin recargar). Reactiva el :hover por defecto sobre la nueva ciudad.
+      setDefaultCity(cityName) {
+        const next = cityName ? (cityMap[cityName] || null) : null;
+        if (next === defaultCity && defaultActive) return;
+        defaultCity = next;
+        defaultActive = !!defaultCity;
         renderState();
       },
       destroy() {
