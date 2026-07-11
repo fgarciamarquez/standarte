@@ -76,7 +76,8 @@ export const CITY_LATLON = {
 // ciudad extranjera nueva para que el guardián de build no la reclame.
 export const NON_MAP_CITIES = [
   'Düsseldorf', 'España', 'Europa', 'Itinerante', 'Lyon',
-  'Múnich', 'Núremberg', 'París', 'Portugal', 'Stuttgart'
+  'Múnich', 'Núremberg', 'París', 'Portugal', 'Stuttgart',
+  'Islas Canarias', 'Fuerteventura', 'Tenerife', 'Gran Canaria', 'Las Palmas'
 ];
 
 // Proyección equirectangular: origen lat 43.9N / lon -9.5W, escala 92 px/grado,

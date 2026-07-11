@@ -47,6 +47,7 @@ export const routes = {
     murcia: 'diseno_montaje_stands_murcia',
     oporto: 'diseno_montaje_stands_oporto',
     portugal_sur: 'diseno_montaje_stands_portugal_sur',
+    islas_canarias: 'diseno_montaje_stands_islas_canarias',
     malaga: 'diseno_montaje_stands_malaga',
     badajoz: 'diseno_montaje_stands_badajoz',
     sevilla: 'diseno_montaje_stands_sevilla',
@@ -96,6 +97,7 @@ export const routes = {
     murcia: 'stand_design_assembly_murcia',
     oporto: 'stand_design_assembly_porto',
     portugal_sur: 'stand_design_assembly_southern_portugal',
+    islas_canarias: 'stand_design_assembly_canary_islands',
     malaga: 'stand_design_assembly_malaga',
     badajoz: 'stand_design_assembly_badajoz',
     sevilla: 'stand_design_assembly_seville',
@@ -145,6 +147,7 @@ export const routes = {
     murcia: 'messestand_design_montage_murcia',
     oporto: 'messestand_design_montage_porto',
     portugal_sur: 'messestand_design_montage_sudportugal',
+    islas_canarias: 'messestand_design_montage_kanarische_inseln',
     malaga: 'messestand_design_montage_malaga',
     badajoz: 'messestand_design_montage_badajoz',
     sevilla: 'messestand_design_montage_sevilla',
@@ -194,6 +197,7 @@ export const routes = {
     murcia: 'murcia_zhantai_sheji_dajian',
     oporto: 'porto_zhantai_sheji_dajian',
     portugal_sur: 'nan_putaoya_zhantai_sheji_dajian',
+    islas_canarias: 'canarias_zhantai_sheji_dajian',
     malaga: 'malaga_zhantai_sheji_dajian',
     badajoz: 'badajoz_zhantai_sheji_dajian',
     sevilla: 'sevilla_zhantai_sheji_dajian',
@@ -243,6 +247,7 @@ export const routes = {
     murcia: 'murcia_stand_dizain_asembli',
     oporto: 'porto_stand_dizain_asembli',
     portugal_sur: 'dakshini_purtagal_stand_dizain_asembli',
+    islas_canarias: 'canary_islands_stand_dizain_asembli',
     malaga: 'malaga_stand_dizain_asembli',
     badajoz: 'badajoz_stand_dizain_asembli',
     sevilla: 'sevilla_stand_dizain_asembli',
@@ -292,6 +297,7 @@ export const routes = {
     murcia: 'design_montagem_stands_murcia',
     oporto: 'design_montagem_stands_porto',
     portugal_sur: 'design_montagem_stands_sul_portugal',
+    islas_canarias: 'design_montagem_stands_ilhas_canarias',
     malaga: 'design_montagem_stands_malaga',
     badajoz: 'design_montagem_stands_badajoz',
     sevilla: 'design_montagem_stands_sevilla',
@@ -341,6 +347,7 @@ export const routes = {
     murcia: 'conception_montage_stands_murcie',
     oporto: 'conception_montage_stands_porto',
     portugal_sur: 'conception_montage_stands_sud_portugal',
+    islas_canarias: 'conception_montage_stands_iles_canaries',
     malaga: 'conception_montage_stands_malaga',
     badajoz: 'conception_montage_stands_badajoz',
     sevilla: 'conception_montage_stands_seville',
@@ -390,6 +397,7 @@ export const routes = {
     murcia: 'progettazione_montaggio_stand_murcia',
     oporto: 'progettazione_montaggio_stand_porto',
     portugal_sur: 'progettazione_montaggio_stand_sud_portogallo',
+    islas_canarias: 'progettazione_montaggio_stand_isole_canarie',
     malaga: 'progettazione_montaggio_stand_malaga',
     badajoz: 'progettazione_montaggio_stand_badajoz',
     sevilla: 'progettazione_montaggio_stand_sevilla',
@@ -439,6 +447,7 @@ export const routes = {
     murcia: 'murcia-bujeu-dijain-jorip',
     oporto: 'porto-bujeu-dijain-jorip',
     portugal_sur: 'nambu-poreutugal-buseu-dijain-jorip',
+    islas_canarias: 'canary-islands-buseu-dijain-jorip',
     malaga: 'malaga-bujeu-dijain-jorip',
     badajoz: 'badajoz-bujeu-dijain-jorip',
     sevilla: 'sevilla-bujeu-dijain-jorip',
@@ -488,6 +497,7 @@ export const routes = {
     murcia: 'ムルシア展示会ブース設計施工',
     oporto: 'ポルト展示会ブース設計施工',
     portugal_sur: '南ポルトガル展示会ブース設計施工',
+    islas_canarias: 'カナリア諸島展示会ブース設計施工',
     malaga: 'マラガ展示会ブース設計施工',
     badajoz: 'バダホス展示会ブース設計施工',
     sevilla: 'セビリア展示会ブース設計施工',
@@ -537,6 +547,7 @@ export const routes = {
     murcia: 'standontwerp_montage_murcia',
     oporto: 'standontwerp_montage_porto',
     portugal_sur: 'standontwerp_montage_zuid_portugal',
+    islas_canarias: 'standontwerp_montage_canarische_eilanden',
     malaga: 'standontwerp_montage_malaga',
     badajoz: 'standontwerp_montage_badajoz',
     sevilla: 'standontwerp_montage_sevilla',
@@ -1441,6 +1452,67 @@ export const copy = {
 };
 
 export const cityData = {
+  islas_canarias: {
+    "city": {
+      "es": "Islas Canarias",
+      "en": "Canary Islands",
+      "de": "Kanarische Inseln",
+      "pt": "Ilhas Canárias",
+      "fr": "Îles Canaries",
+      "it": "Isole Canarie",
+      "nl": "Canarische Eilanden",
+      "zh": "加那利群岛",
+      "hi": "कैनरी द्वीप समूह",
+      "ko": "카나리아 제도",
+      "ja": "カナリア諸島"
+    },
+    "content": {
+      "es": {
+        "intro": "Con más de 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en las Islas Canarias —con INFECAR (Gran Canaria) y el Recinto Ferial de Tenerife como recintos de referencia— resolviendo la logística marítima al archipiélago y controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+      },
+      "en": {
+        "intro": "With more than 20 years of experience building temporary architecture from our own workshop, Standarte designs and installs exhibition stands in the Canary Islands — with INFECAR (Gran Canaria) and the Tenerife Exhibition Centre as flagship venues — handling the sea logistics to the archipelago and controlling every stage: 3D design, fabrication, logistics, installation and on-site venue approvals.",
+        "detail": "We give agencies and exhibitors the reassurance of a build with no surprises and an exceptional attention to detail."
+      },
+      "de": {
+        "intro": "Mit über 20 Jahren Erfahrung plant und montiert Standarte Messestände auf den Kanarischen Inseln – mit INFECAR (Gran Canaria) und dem Messegelände von Teneriffa als Leitveranstaltungsorten – und übernimmt die Seelogistik zum Archipel.",
+        "detail": "Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und außergewöhnliche Detailtreue."
+      },
+      "pt": {
+        "intro": "Com mais de 20 anos de experiência, a Standarte concebe e monta stands nas Ilhas Canárias — com o INFECAR (Gran Canaria) e o Recinto Feiral de Tenerife como recintos de referência — resolvendo a logística marítima ao arquipélago.",
+        "detail": "Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
+      },
+      "fr": {
+        "intro": "Forts de plus de 20 ans d'expérience, nous concevons et montons chez Standarte des stands aux Îles Canaries — avec l'INFECAR (Gran Canaria) et le Parc des expositions de Tenerife comme enceintes de référence — en assurant la logistique maritime vers l'archipel.",
+        "detail": "Nous offrons aux agences et aux exposants la sérénité d'un montage sans mauvaises surprises et une attention aux détails exceptionnelle."
+      },
+      "it": {
+        "intro": "Con oltre 20 anni di esperienza, Standarte progetta e allestisce stand alle Isole Canarie — con l'INFECAR (Gran Canaria) e il Quartiere fieristico di Tenerife come riferimenti — gestendo la logistica marittima all'arcipelago.",
+        "detail": "Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune."
+      },
+      "nl": {
+        "intro": "Met ruim 20 jaar ervaring ontwerpt en bouwt Standarte beursstands op de Canarische Eilanden — met INFECAR (Gran Canaria) en het beurscomplex van Tenerife als toonaangevende locaties — en verzorgt de zeevracht naar de archipel.",
+        "detail": "Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail."
+      },
+      "zh": {
+        "intro": "凭借20多年经验，Standarte 在加那利群岛设计并搭建展台——以 INFECAR（大加那利岛）和特内里费展览中心为核心展馆——并负责前往群岛的海运物流。",
+        "detail": "我们为代理公司和参展商提供毫无意外的搭建保障，以及对细节的极致关注。"
+      },
+      "hi": {
+        "intro": "20 से अधिक वर्षों के अनुभव के साथ, Standarte कैनरी द्वीप समूह में स्टैंड डिज़ाइन और स्थापित करता है — INFECAR (ग्रान कनारिया) और तेनेरीफ़े परिसर प्रमुख स्थलों के रूप में — और द्वीपसमूह तक समुद्री लॉजिस्टिक्स संभालता है।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।"
+      },
+      "ko": {
+        "intro": "20년 이상의 경력을 바탕으로 Standarte는 INFECAR(그란카나리아)와 테네리페 전시장을 중심 전시장으로 하여 카나리아 제도에서 부스를 디자인·시공하며 제도까지의 해상 물류를 담당합니다.",
+        "detail": "에이전시와 참가업체에 예상치 못한 문제 없는 시공과 탁월한 디테일을 보장합니다."
+      },
+      "ja": {
+        "intro": "20年以上の経験をもとに、StandarteはINFECAR（グラン・カナリア）とテネリフェ展示会場を基幹会場として、カナリア諸島でブースを設計・施工し、諸島への海上物流を担います。",
+        "detail": "代理店や出展者に、想定外のない施工と卓越したディテールへのこだわりをお約束します。"
+      }
+    }
+  },
   alicante: {
     "city": {
       "es": "Alicante",

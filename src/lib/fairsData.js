@@ -1,5 +1,75 @@
 export const fairsData = [
   {
+    "name": "FEAGA",
+    "country": "es",
+    "slug": "feaga-fuerteventura",
+    "city": "Fuerteventura",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "GastroCanarias",
+    "country": "es",
+    "slug": "gastrocanarias-tenerife",
+    "city": "Tenerife",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Gran Canaria Me Gusta",
+    "country": "es",
+    "slug": "gran-canaria-me-gusta",
+    "city": "Gran Canaria",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "FIMAR",
+    "country": "es",
+    "slug": "fimar-las-palmas",
+    "city": "Las Palmas",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Salón Atlántico de Logística y Transporte",
+    "country": "es",
+    "slug": "salon-atlantico-logistica-transporte",
+    "city": "Islas Canarias",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Feria Internacional de Moda de Tenerife",
+    "country": "es",
+    "slug": "moda-tenerife",
+    "city": "Tenerife",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "ExpoDeca",
+    "country": "es",
+    "slug": "expodeca",
+    "city": "Islas Canarias",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Feboda",
+    "country": "es",
+    "slug": "feboda",
+    "city": "Islas Canarias",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Canarias Destino Startup",
+    "country": "es",
+    "slug": "canarias-destino-startup",
+    "city": "Islas Canarias",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Feria Empresarial del Norte de Gran Canaria",
+    "country": "es",
+    "slug": "feria-empresarial-norte-gran-canaria",
+    "city": "Gran Canaria",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
     "name": "Futurália",
     "country": "pt",
     "slug": "futuralia-lisboa",

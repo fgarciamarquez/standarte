@@ -64,6 +64,16 @@ export const fairTags = {
   "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
 export const fairActivities = {
+  "feaga-fuerteventura": ["agricultura-maquinaria", "ganaderia"],
+  "gastrocanarias-tenerife": ["gastronomia-hosteleria"],
+  "gran-canaria-me-gusta": ["alimentacion", "gastronomia-hosteleria"],
+  "fimar-las-palmas": ["pesca-mar", "naval"],
+  "salon-atlantico-logistica-transporte": ["logistica", "transporte"],
+  "moda-tenerife": ["moda-textil"],
+  "expodeca": ["regalo-decoracion"],
+  "feboda": ["multisectorial"],
+  "canarias-destino-startup": ["digital-software"],
+  "feria-empresarial-norte-gran-canaria": ["multisectorial"],
   "futuralia-lisboa": ["multisectorial"],
   "seafood-expo-global-barcelona": ["pesca-mar", "alimentacion"],
   "sil-barcelona": ["logistica"],

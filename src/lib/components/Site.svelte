@@ -447,7 +447,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'islas_canarias'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -521,7 +521,7 @@
   const SECTION_REGION = {
     badajoz: 'extremadura', montaje_zafra: 'extremadura', montaje_don_benito: 'extremadura', montaje_badajoz: 'extremadura',
     madrid: 'madrid', barcelona: 'cataluna', bilbao: 'paisvasco',
-    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', santiago: 'galicia', coruna: 'galicia', valladolid: 'castillayleon', salamanca: 'castillayleon', batalha: 'portugal', zaragoza: 'aragon', portugal_sur: 'portugal-sur', alicante: 'comunidadvalenciana', murcia: 'murcia',
+    malaga: 'andalucia', sevilla: 'andalucia', ciudad_real: 'castillalamancha', lisboa: 'portugal', oporto: 'portugal', valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', santiago: 'galicia', coruna: 'galicia', valladolid: 'castillayleon', salamanca: 'castillayleon', batalha: 'portugal', zaragoza: 'aragon', portugal_sur: 'portugal-sur', alicante: 'comunidadvalenciana', murcia: 'murcia', islas_canarias: 'canarias',
     almeria: 'andalucia', jaen: 'andalucia', huelva: 'andalucia', cordoba: 'andalucia', granada: 'andalucia', cadiz: 'andalucia',
     santarem: 'portugal', trujillo: 'extremadura', elche: 'comunidadvalenciana',
     silleda: 'galicia', ourense: 'galicia',
@@ -535,7 +535,8 @@
     'Zamora': 'castillayleon', 'Palencia': 'castillayleon', 'Cacabelos': 'castillayleon',
     'Santarém': 'portugal', 'Trujillo': 'extremadura', 'Elche': 'comunidadvalenciana',
     'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia',
-    'Lleida': 'cataluna', 'Girona': 'cataluna'
+    'Lleida': 'cataluna', 'Girona': 'cataluna',
+    'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias'
   };
   // Proyectos reales afines al perfil sectorial de cada región (obra propia; sin afirmar ubicación).
   const FEATURED_BY_REGION = {
@@ -749,6 +750,7 @@
     'Aguadulce': 'almeria', 'El Ejido': 'almeria', 'Almería': 'almeria', 'Jaén': 'jaen',
     'Huelva': 'huelva', 'Aracena': 'huelva', 'Punta Umbría': 'huelva',
     'Murcia': 'murcia', 'Torre Pacheco': 'murcia',
+    'Islas Canarias': 'islas_canarias', 'Fuerteventura': 'islas_canarias', 'Tenerife': 'islas_canarias', 'Gran Canaria': 'islas_canarias', 'Las Palmas': 'islas_canarias',
     'Córdoba': 'cordoba', 'Pozoblanco': 'cordoba', 'Villanueva de Córdoba': 'cordoba',
     'Granada': 'granada', 'Armilla': 'granada',
     'Cádiz': 'cadiz', 'Jerez de la Frontera': 'cadiz',
@@ -1027,7 +1029,7 @@
   // Sufijo de ciudad para el nombre en negrita de la marquesina de ferias
   // ("Intercaza (Córdoba)"). Se omite en ferias sin ciudad concreta (itinerantes o
   // regionales) y cuando el nombre de la feria ya contiene la ciudad, para no duplicar.
-  const NON_SPECIFIC_FAIR_CITIES = new Set(['Itinerante', 'Europa', 'España', 'Portugal', 'Portugal Sur']);
+  const NON_SPECIFIC_FAIR_CITIES = new Set(['Itinerante', 'Europa', 'España', 'Portugal', 'Portugal Sur', 'Islas Canarias']);
   function localizedFairCity(esCity) {
     const key = Object.keys(cityData).find((k) => cityData[k]?.city?.es === esCity);
     return (key && (cityData[key].city[lang] || cityData[key].city.es)) || esCity;
