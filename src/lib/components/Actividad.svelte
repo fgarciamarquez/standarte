@@ -229,7 +229,7 @@
 <main class="act-page" class:is-index={isIndex}>
   <!-- Panel de Pat (asesor de Expansión): flotante, se carga diferido. Igual que en la home. -->
   {#if showWelcomeAdvisor && AdvisorComponent}
-    <svelte:component this={AdvisorComponent} {lang} initialFamily={presetFamily} initialTags={presetTags} on:selectFair={handleSelectFair} on:openPrivacy={() => {}} on:dismiss={() => showWelcomeAdvisor = false} />
+    <svelte:component this={AdvisorComponent} {lang} initialFamily={presetFamily} initialTags={presetTags} containerBg="#f7f6f1" on:selectFair={handleSelectFair} on:openPrivacy={() => {}} on:dismiss={() => showWelcomeAdvisor = false} />
   {/if}
   <section class="act-details section">
     <div class="act-container">

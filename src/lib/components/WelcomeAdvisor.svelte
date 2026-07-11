@@ -25,6 +25,9 @@
   export let initialTags = [];
   // Ciudad de la página (páginas de ciudad): el mapa arranca con su :hover por defecto.
   export let initialCity = '';
+  // Color de fondo del contenedor del panel (opcional). Por defecto transparente;
+  // en las páginas de actividad (/actividad/*) se pasa un tono claro de fondo.
+  export let containerBg = '';
 
   const dispatch = createEventDispatcher();
 
@@ -681,7 +684,7 @@
   }
 </script>
 
-<section class="welcome-advisor-container" class:embedded>
+<section class="welcome-advisor-container" class:embedded style={containerBg ? `background:${containerBg}` : ''}>
   <div class="welcome-advisor-card" class:expanded={cardExpanded}>
     
     <div class="advisor-profile" class:visible={profileVisible} class:submitted={status === 'success'}>
