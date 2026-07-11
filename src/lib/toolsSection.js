@@ -5,7 +5,7 @@
 export const toolsSection = {
   "es": {
     "heading": "Herramientas propias de Standarte",
-    "patTitle": "Pat, tu asesor ferial gratuito",
+    "patTitle": "Pat, tu asistente de expansión",
     "patText": "Pat es el asesor interactivo de Standarte: recomienda las ferias y congresos clave para tu sector en España y Portugal y prepara tu solicitud de stand en un minuto. Un servicio de asesoramiento gratuito y exclusivo, pensado para acertar con los eventos donde exponer.",
     "patCta": "Hablar con Pat",
     "guaranteeTitle": "Proyecto Auditado, tu garantía 100%",
