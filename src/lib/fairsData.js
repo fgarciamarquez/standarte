@@ -1,5 +1,12 @@
 export const fairsData = [
   {
+    "name": "Futurália",
+    "country": "pt",
+    "slug": "futuralia-lisboa",
+    "city": "Lisboa",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
     "name": "INTUR",
     "country": "es",
     "slug": "intur-valladolid",

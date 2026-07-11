@@ -64,6 +64,7 @@ export const fairTags = {
   "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
 export const fairActivities = {
+  "futuralia-lisboa": ["multisectorial"],
   "seafood-expo-global-barcelona": ["pesca-mar", "alimentacion"],
   "sil-barcelona": ["logistica"],
   "automobile-barcelona": ["automocion"],
