@@ -54,7 +54,7 @@
       title: "Hola!, soy Pat.",
       freeBadge: "Servicio gratuito",
       activeLabel: "Activo",
-      intro: "Si buscas expandirte en España y Portugal, establece con nosotros un plan.\nTe ofrecemos presencia global y sinergias de ahorro.",
+      intro: "Si buscas expandirte en España y Portugal, establece con nosotros un plan.\nAbajo te muestro nuestro exclusivo mapa de cobertura. En todos estos puntos podemos ofrecerte presencia física.",
       instruction: "En base a lo que ya conoces, definiré tu perfil. Selecciona una ciudad.",
       cta: "Obtener presupuesto para esta feria",
       formInstruction: "Por favor, introduce tus datos y te enviaré un breve informe con las ferias más interesantes para tu sector.",
