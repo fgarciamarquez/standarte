@@ -42,6 +42,13 @@
     'Fuerteventura': 'islas_canarias'
   };
 
+  // Familias cuyo rótulo se fuerza a un lado concreto del nodo (en lugar del lado
+  // automático por posición) porque en su ubicación el texto se salía del marco.
+  const FORCED_LABEL_SIDE = {
+    agroalimentario: 'start', // a la derecha del nodo
+    turismo: 'end'            // a la izquierda del nodo
+  };
+
   export let lang = 'en';
   export let selectedFamily = '';
   export let selectedTags = [];
@@ -241,7 +248,11 @@
       const g = el('g', { class: 'pm-family' });
       const c = el('circle', { cx: p.x, cy: p.y, r, fill: tagFamilies[f].color, 'fill-opacity': 0.9 });
       g.appendChild(c);
-      const anchor = p.x < cx - 40 ? 'end' : (p.x > cx + 40 ? 'start' : 'middle');
+      // Lado del rótulo por defecto según la posición del nodo; algunas familias
+      // se fuerzan a un lado concreto porque en su posición (arriba/abajo) el
+      // rótulo se salía del marco: agroalimentario → derecha, turismo → izquierda.
+      const forcedSide = FORCED_LABEL_SIDE[f];
+      const anchor = forcedSide || (p.x < cx - 40 ? 'end' : (p.x > cx + 40 ? 'start' : 'middle'));
       const dx = anchor === 'end' ? -(r + 9) : (anchor === 'start' ? r + 9 : 0);
       const dy = anchor === 'middle' ? (p.y < cy ? -(r + 10) : r + 20) : 4;
       const t1 = el('text', { x: p.x + dx, y: p.y + dy, 'text-anchor': anchor, 'font-size': 13, 'font-weight': 600 });
