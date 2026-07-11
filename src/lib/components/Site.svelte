@@ -2455,9 +2455,9 @@
     gap: 1.4rem; max-width: 1120px; margin: 0 auto; padding: 0 1rem;
   }
   .tool-card {
-    border: 1px solid rgba(224, 180, 0, 0.45);
+    border: none;
     border-radius: 12px; padding: 1.8rem 1.6rem;
-    background: rgba(224, 180, 0, 0.05);
+    background: transparent;
     display: flex; flex-direction: column;
   }
   .tool-card h3 { margin: 0 0 0.7rem; font-size: 1.3rem; }
@@ -2469,6 +2469,12 @@
     font-family: inherit; font-size: 1rem; cursor: pointer; text-decoration: none;
   }
   .tool-cta:hover { background: #000; }
+  /* Los CTA de las tres columnas de "Herramientas propias" son enlaces simples. */
+  .tools-grid .tool-cta {
+    padding: 0; background: none; border: none; border-radius: 0;
+    color: royalblue; font-weight: 700; text-decoration: none;
+  }
+  .tools-grid .tool-cta:hover { background: none; text-decoration: underline; }
   @media (max-width: 700px) { .tools-grid { grid-template-columns: 1fr; } }
   /* Bloque de posicionamiento de cobertura (España + Portugal). */
   .coverage-claim { max-width: 820px; margin: 0 auto 1.6rem; text-align: center; padding: 0 1rem; }
