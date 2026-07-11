@@ -23,6 +23,12 @@
   $: ({ lang, copy, canonical, section, tag, activitySeo } = data);
   $: isIndex = section === 'activityIndex';
 
+  // Preselección para el panel de Pat en las páginas interiores de actividad:
+  // la familia (sector) y la etiqueta del hub actual, para que Pat abra en el
+  // paso 2 y el mapa llegue resaltando esta actividad.
+  $: presetFamily = (!isIndex && tag && fairTags[tag]) ? fairTags[tag].family : '';
+  $: presetTags = (!isIndex && tag && fairTags[tag]) ? [tag] : [];
+
   let isScrolled = false;
   let menuOpen = false;
   function updateScrollState() { isScrolled = typeof window !== 'undefined' && window.scrollY > 8; }
@@ -46,7 +52,7 @@
   }
   onMount(() => {
     updateScrollState();
-    if (!isIndex) return;
+    // Se lanza tanto en el índice como en los hubs interiores (con preselección).
     const launch = () => {
       advisorTimeout = setTimeout(() => {
         if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('standarte_advisor_dismissed') === '1') return;
@@ -215,7 +221,7 @@
     <div class="hero-contents act-hero-contents">
       {#if !isIndex}<span class="act-hero-tag" style="--chip:{colorForTag(tag)}"><span class="chip-dot" aria-hidden="true"></span>{tagLabel}</span>{/if}
       <h1>{pageH1}</h1>
-      {#if isIndex}<AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />{/if}
+      <AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />
     </div>
   </div>
 </header>
@@ -223,7 +229,7 @@
 <main class="act-page" class:is-index={isIndex}>
   <!-- Panel de Pat (asesor de Expansión): flotante, se carga diferido. Igual que en la home. -->
   {#if showWelcomeAdvisor && AdvisorComponent}
-    <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => {}} on:dismiss={() => showWelcomeAdvisor = false} />
+    <svelte:component this={AdvisorComponent} {lang} initialFamily={presetFamily} initialTags={presetTags} on:selectFair={handleSelectFair} on:openPrivacy={() => {}} on:dismiss={() => showWelcomeAdvisor = false} />
   {/if}
   <section class="act-details section">
     <div class="act-container">
