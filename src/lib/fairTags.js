@@ -64,6 +64,10 @@ export const fairTags = {
   "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
 export const fairActivities = {
+  "cargo-freight-portugal-summit": ["transporte"],
+  "techlogistics-lisboa": ["transporte"],
+  "scm-conference": ["transporte"],
+  "airspace-world-lisboa": ["aeronautica"],
   "expomadeira": ["multisectorial"],
   "feira-agropecuaria-madeira": ["agricultura-maquinaria", "ganaderia"],
   "feira-emprego-formacao-empreendedorismo-madeira": ["multisectorial"],
@@ -225,7 +229,7 @@ export const fairActivities = {
   "expofranquicia-madrid": ["multisectorial"],
   "concreta-oporto": ["construccion"],
   "expocosmetica-oporto": ["belleza-peluqueria","estetica"],
-  "empack-oporto": ["packaging"],
+  "empack-oporto": ["packaging", "transporte"],
   "itf-intertex-oporto": ["maquinaria-industrial"],
   "expomecanica-oporto": ["transporte"],
   "emaf-oporto": ["maquinaria-industrial"],

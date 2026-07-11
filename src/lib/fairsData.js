@@ -1,5 +1,33 @@
 export const fairsData = [
   {
+    "name": "Cargo Freight Portugal Summit",
+    "country": "pt",
+    "slug": "cargo-freight-portugal-summit",
+    "city": "Mealhada",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "TechLogistics",
+    "country": "pt",
+    "slug": "techlogistics-lisboa",
+    "city": "Lisboa",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "SCM Conference",
+    "country": "pt",
+    "slug": "scm-conference",
+    "city": "Sobral de Monte Agraço",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Airspace World",
+    "country": "pt",
+    "slug": "airspace-world-lisboa",
+    "city": "Lisboa",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
     "name": "Expomadeira",
     "country": "pt",
     "slug": "expomadeira",
