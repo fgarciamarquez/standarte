@@ -11,39 +11,8 @@
   import { onMount, createEventDispatcher } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { tagFamilies, fairTags, fairActivities, labelForTag, familyLabel } from '$lib/fairTags.js';
-  import { IBERIA_PATH, CITY_POINTS, MAP_INSETS } from '$lib/iberiaMeshData.js';
+  import { IBERIA_PATH, CITY_POINTS, MAP_INSETS, CITY_PILLAR } from '$lib/iberiaMeshData.js';
   import { pathFor } from '$lib/siteData.js';
-
-  // Ciudad del mapa → sección-pilar de ciudad (misma convención que CITY_TO_PILLAR
-  // en Feria.svelte / FAIR_CITY_PILLAR en Site.svelte: los satélites cuelgan de su
-  // pilar). Las ciudades sin entrada no tienen página propia y su punto no enlaza.
-  const CITY_PILLAR = {
-    'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa',
-    'Oporto': 'oporto', 'Valencia': 'valencia', 'Mallorca': 'mallorca', 'Vigo': 'vigo',
-    'Santiago de Compostela': 'santiago', 'A Coruña': 'coruna', 'Valladolid': 'valladolid',
-    'Salamanca': 'salamanca', 'Batalha': 'batalha', 'Málaga': 'malaga', 'Badajoz': 'badajoz',
-    'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real', 'Zaragoza': 'zaragoza',
-    'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
-    'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz',
-    'Portugal Sur': 'portugal_sur',
-    'Aguadulce': 'almeria', 'El Ejido': 'almeria', 'Almería': 'almeria', 'Jaén': 'jaen',
-    'Huelva': 'huelva', 'Aracena': 'huelva', 'Punta Umbría': 'huelva',
-    'Murcia': 'murcia', 'Torre Pacheco': 'murcia',
-    'Córdoba': 'cordoba', 'Pozoblanco': 'cordoba', 'Villanueva de Córdoba': 'cordoba',
-    'Granada': 'granada', 'Armilla': 'granada',
-    'Cádiz': 'cadiz', 'Jerez de la Frontera': 'cadiz',
-    'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
-    'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche', 'Alicante': 'alicante',
-    'Silleda': 'silleda', 'Ourense': 'ourense',
-    'Lleida': 'lleida', 'Girona': 'girona',
-    // Todas las ciudades del inset canario cuelgan del hub Islas Canarias.
-    'Islas Canarias': 'islas_canarias', 'Tenerife': 'islas_canarias',
-    'Gran Canaria': 'islas_canarias', 'Las Palmas': 'islas_canarias',
-    'Fuerteventura': 'islas_canarias',
-    // Inset de Madeira → hub Islas de Madeira.
-    'Islas de Madeira': 'islas_de_madeira', 'Funchal': 'islas_de_madeira',
-    'Madeira': 'islas_de_madeira'
-  };
 
   // Familias cuyo rótulo se fuerza a un lado concreto del nodo (en lugar del lado
   // automático por posición) porque en su ubicación el texto se salía del marco.
@@ -162,6 +131,26 @@
     });
 
     // ── Construcción del SVG ──
+    // Marca de agua tejida (capa de FONDO, la primera que se dibuja): patrón
+    // "STANDARTE" repetido en diagonal como filigrana, pero CONFINADA a la forma
+    // de la península (mismo path que la costa). Así es la textura de la tierra,
+    // entre el blanco del fondo y el mapa: el mar y los márgenes quedan limpios y
+    // la costa, las líneas y los nodos se dibujan por encima. Como es un relleno
+    // de patrón integrado en el landmass, es más difícil de quitar que un texto.
+    const wmDefs = el('defs', {});
+    const wmPat = el('pattern', {
+      id: 'pm-wm-pat', patternUnits: 'userSpaceOnUse',
+      width: 360, height: 200, patternTransform: 'rotate(-28)'
+    });
+    [[0, 34], [180, 134]].forEach(([tx, ty]) => {
+      const t = el('text', { class: 'pm-wm-tile', x: tx, y: ty });
+      t.textContent = 'STANDARTE';
+      wmPat.appendChild(t);
+    });
+    wmDefs.appendChild(wmPat);
+    svgEl.appendChild(wmDefs);
+    svgEl.appendChild(el('path', { class: 'pm-watermark-fill', d: IBERIA_PATH, fill: 'url(#pm-wm-pat)' }));
+
     const gratGroup = el('g', {});
     for (let gx = -300; gx < 1270; gx += 120) {
       gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: gx, y1: -150, x2: gx, y2: 900 }));
@@ -559,6 +548,19 @@
     width: 100%;
     height: auto;
     aspect-ratio: 1630 / 1050;
+  }
+
+  /* Marca de agua tejida: filigrana "STANDARTE" repetida sobre todo el mapa. */
+  .pm-wrap :global(.pm-wm-tile) {
+    font-family: 'Francois One', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.3em;
+    fill: #1a1e21;
+  }
+  .pm-wrap :global(.pm-watermark-fill) {
+    opacity: 0.05;
+    pointer-events: none;
+    user-select: none;
   }
 
   .pm-wrap :global(.pm-coast) {

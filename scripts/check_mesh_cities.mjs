@@ -7,7 +7,7 @@
 // Así, al añadir ferias o ciudades nuevas, el build recuerda mantener el mapa.
 import { fairsData } from '../src/lib/fairsData.js';
 import { fairActivities } from '../src/lib/fairTags.js';
-import { CITY_POINTS, NON_MAP_CITIES } from '../src/lib/iberiaMeshData.js';
+import { CITY_POINTS, NON_MAP_CITIES, CITY_PILLAR, UNLINKED_CITIES } from '../src/lib/iberiaMeshData.js';
 
 let errors = 0;
 
@@ -35,9 +35,22 @@ if (untaggedFairs.length) {
   untaggedFairs.forEach((s) => console.error(`    - ${s}`));
 }
 
+// 3. Toda ciudad con punto en el mapa debe enlazar (CITY_PILLAR) o estar
+//    declarada como informativa (UNLINKED_CITIES). Evita que una ciudad nueva se
+//    quede sin enlace en el mapa y ausente del gemelo SEO (MeshCoverageLinks).
+const pillarless = Object.keys(CITY_POINTS)
+  .filter((c) => !CITY_PILLAR[c] && !UNLINKED_CITIES.includes(c))
+  .sort();
+
+if (pillarless.length) {
+  errors++;
+  console.error('✗ [mesh] Ciudades mapeadas sin pilar de enlace (no enlazarían en el mapa ni en el gemelo SEO):');
+  pillarless.forEach((c) => console.error(`    - "${c}" → añade su CITY_PILLAR o inclúyela en UNLINKED_CITIES`));
+}
+
 if (errors) {
   console.error(`check_mesh_cities: ${errors} problema(s). Corrige antes de desplegar.`);
   process.exit(1);
 }
 
-console.log(`✓ check_mesh_cities: ${Object.keys(CITY_POINTS).length} ciudades mapeadas, ${NON_MAP_CITIES.length} excluidas, todas las ferias peninsulares etiquetadas.`);
+console.log(`✓ check_mesh_cities: ${Object.keys(CITY_POINTS).length} ciudades mapeadas (${UNLINKED_CITIES.length} informativas sin enlace), ${NON_MAP_CITIES.length} excluidas, todas las ferias peninsulares etiquetadas y con pilar.`);

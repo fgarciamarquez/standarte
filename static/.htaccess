@@ -819,4 +819,17 @@ DirectorySlash Off
   RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?bing\.com [NC]
   RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?(facebook|fb|twitter|x|linkedin|whatsapp)\.(com|me) [NC]
   RewriteRule \.(jpe?g|png|gif|avif|webp|svg)$ - [F,L,NC]
+
+  # --- Protección anti-hotlink del aplicativo JS/CSS (incluido el mapa de Pat): impide que
+  # otros dominios embeban o sirvan directamente los chunks del sitio, de modo que una copia
+  # del bundle en otra web no se cargue desde aquí. Mismo criterio SEGURO que las imágenes:
+  # se permite SIEMPRE sin Referer (no rompe carga directa, buscadores ni navegadores que lo
+  # ocultan por privacidad) y desde el propio dominio, buscadores y redes sociales. Las
+  # peticiones del propio sitio son de mismo origen (Referer standarte.es) → nunca se bloquean.
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?standarte\.es [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?google\. [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?bing\.com [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?(facebook|fb|twitter|x|linkedin|whatsapp)\.(com|me) [NC]
+  RewriteRule \.(js|css)$ - [F,L,NC]
 </IfModule>

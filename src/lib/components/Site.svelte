@@ -21,6 +21,7 @@
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
   import SiteFooter from './SiteFooter.svelte';
+  import MeshCoverageLinks from './MeshCoverageLinks.svelte';
   // WelcomeAdvisor NO se importa de forma estática: se carga con import dinámico
   // (chunk aparte) tras cargar la página, para no colgar del bundle principal.
 
@@ -447,7 +448,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'islas_canarias', 'islas_de_madeira'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -525,7 +526,8 @@
     almeria: 'andalucia', jaen: 'andalucia', huelva: 'andalucia', cordoba: 'andalucia', granada: 'andalucia', cadiz: 'andalucia',
     santarem: 'portugal', trujillo: 'extremadura', elche: 'comunidadvalenciana',
     silleda: 'galicia', ourense: 'galicia',
-    lleida: 'cataluna', girona: 'cataluna'
+    lleida: 'cataluna', girona: 'cataluna',
+    santander: 'cantabria', gijon: 'asturias'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -536,6 +538,7 @@
     'Santarém': 'portugal', 'Trujillo': 'extremadura', 'Elche': 'comunidadvalenciana',
     'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia',
     'Lleida': 'cataluna', 'Girona': 'cataluna',
+    'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'
   };
@@ -763,7 +766,8 @@
     'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
     'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche',
     'Silleda': 'silleda', 'Ourense': 'ourense',
-    'Lleida': 'lleida', 'Girona': 'girona'
+    'Lleida': 'lleida', 'Girona': 'girona',
+    'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   function fairsForCity(cityKey) {
     const esName = cityData[cityKey]?.city?.es;
@@ -1555,6 +1559,9 @@
           <p>{activityPitch(lang).text}</p>
           <a class="tool-cta" href={activityIndexUrl(lang)}>{activityPitch(lang).cta} →</a>
         </div>
+        <!-- Gemelo SEO de la malla de Pat: grafo de cobertura ciudad↔actividad como
+             HTML rastreable (enlaza a las páginas-ciudad y a los hubs /actividad). -->
+        <MeshCoverageLinks {lang} />
       {/if}
       <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">

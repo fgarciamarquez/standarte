@@ -64,6 +64,16 @@ export const fairTags = {
   "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
 export const fairActivities = {
+  "artesantander": ["cultura-arte"],
+  "biocantabria-santander": ["ecologico", "alimentacion"],
+  "feria-apicola-cantabria-torrelavega": ["ganaderia", "alimentacion"],
+  "feria-concesionarios-torrelavega": ["automocion"],
+  "fidma-gijon": ["multisectorial"],
+  "agropec-gijon": ["ganaderia", "agricultura-maquinaria"],
+  "salon-competicion-asturias-gijon": ["automocion"],
+  "asturforesta-tineo": ["agricultura-maquinaria", "ecologico"],
+  "feria-muestras-tineo": ["multisectorial"],
+  "agroalimentaria-vegadeo": ["alimentacion", "ecologico"],
   "cargo-freight-portugal-summit": ["transporte"],
   "techlogistics-lisboa": ["transporte"],
   "scm-conference": ["transporte"],

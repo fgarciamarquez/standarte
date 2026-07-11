@@ -247,7 +247,7 @@
   const cities = {
     es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Mérida': 'Mérida', 'A Coruña': 'A Coruña', 'Valladolid': 'Valladolid', 'Salamanca': 'Salamanca', 'Europa': 'Europa', 'Oporto': 'Oporto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha', 'Almería': 'Almería', 'Aguadulce': 'Aguadulce', 'El Ejido': 'El Ejido' },
     en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Mérida': 'Mérida', 'A Coruña': 'A Coruña', 'Valladolid': 'Valladolid', 'Salamanca': 'Salamanca', 'Europa': 'Europe', 'Oporto': 'Porto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha', 'Almería': 'Almeria', 'Aguadulce': 'Aguadulce', 'El Ejido': 'El Ejido', 'Jaén': 'Jaen', 'Huelva': 'Huelva', 'Aracena': 'Aracena', 'Punta Umbría': 'Punta Umbria', 'Córdoba': 'Cordoba', 'Pozoblanco': 'Pozoblanco', 'Villanueva de Córdoba': 'Villanueva de Cordoba', 'Granada': 'Granada', 'Armilla': 'Armilla', 'Cádiz': 'Cadiz', 'Jerez de la Frontera': 'Jerez de la Frontera', 'Manzanares': 'Manzanares', 'Porzuna': 'Porzuna', 'Zamora': 'Zamora', 'Albacete': 'Albacete', 'Toledo': 'Toledo', 'Cacabelos': 'Cacabelos', 'Palencia': 'Palencia', 'Santarém': 'Santarem', 'Trujillo': 'Trujillo', 'Elche': 'Elche' },
-    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Mérida': 'メリダ', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Valladolid': 'バリャドリッド', 'Salamanca': 'サラマンカ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ', 'Almería': 'アルメリア', 'Aguadulce': 'アグアドゥルセ', 'El Ejido': 'エル・エヒード', 'Jaén': 'ハエン', 'Huelva': 'ウエルバ', 'Aracena': 'アラセナ', 'Punta Umbría': 'プンタ・ウンブリア', 'Córdoba': 'コルドバ', 'Pozoblanco': 'ポソブランコ', 'Villanueva de Córdoba': 'ビリャヌエバ・デ・コルドバ', 'Granada': 'グラナダ', 'Armilla': 'アルミジャ', 'Cádiz': 'カディス', 'Jerez de la Frontera': 'ヘレス・デ・ラ・フロンテーラ', 'Manzanares': 'マンサナレス', 'Porzuna': 'ポルスナ', 'Zamora': 'サモラ', 'Albacete': 'アルバセテ', 'Toledo': 'トレド', 'Cacabelos': 'カカベロス', 'Palencia': 'パレンシア', 'Santarém': 'サンタレン', 'Trujillo': 'トルヒージョ', 'Elche': 'エルチェ', 'Silleda': 'シジェダ', 'Ourense': 'オウレンセ', 'Boqueixón': 'ボケイション', 'Lleida': 'リェイダ', 'Girona': 'ジローナ' },
+    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Mérida': 'メリダ', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Valladolid': 'バリャドリッド', 'Salamanca': 'サラマンカ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ', 'Almería': 'アルメリア', 'Aguadulce': 'アグアドゥルセ', 'El Ejido': 'エル・エヒード', 'Jaén': 'ハエン', 'Huelva': 'ウエルバ', 'Aracena': 'アラセナ', 'Punta Umbría': 'プンタ・ウンブリア', 'Córdoba': 'コルドバ', 'Pozoblanco': 'ポソブランコ', 'Villanueva de Córdoba': 'ビリャヌエバ・デ・コルドバ', 'Granada': 'グラナダ', 'Armilla': 'アルミジャ', 'Cádiz': 'カディス', 'Jerez de la Frontera': 'ヘレス・デ・ラ・フロンテーラ', 'Manzanares': 'マンサナレス', 'Porzuna': 'ポルスナ', 'Zamora': 'サモラ', 'Albacete': 'アルバセテ', 'Toledo': 'トレド', 'Cacabelos': 'カカベロス', 'Palencia': 'パレンシア', 'Santarém': 'サンタレン', 'Trujillo': 'トルヒージョ', 'Elche': 'エルチェ', 'Silleda': 'シジェダ', 'Ourense': 'オウレンセ', 'Boqueixón': 'ボケイション', 'Lleida': 'リェイダ', 'Girona': 'ジローナ', 'Santander': 'サンタンデール', 'Torrelavega': 'トレラベガ', 'Gijón': 'ヒホン', 'Tineo': 'ティネオ', 'Vegadeo': 'ベガデオ' },
     // Simplified city mapping, defaulting to Spanish name if not defined to save space
   };
 
@@ -267,7 +267,9 @@
     'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
     'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche',
     'Silleda': 'silleda', 'Ourense': 'ourense',
-    'Lleida': 'lleida', 'Girona': 'girona'
+    'Lleida': 'lleida', 'Girona': 'girona',
+    'Santander': 'santander', 'Torrelavega': 'santander',
+    'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   // Ciudad mostrada para el enlace al pilar (la del pilar, no la de la feria, para que el anchor coincida con el destino).
   const PILLAR_CITY = {
@@ -277,7 +279,8 @@
     cordoba: 'Córdoba', granada: 'Granada', cadiz: 'Cádiz',
     santarem: 'Santarém', trujillo: 'Trujillo', elche: 'Elche',
     silleda: 'Silleda', ourense: 'Ourense',
-    lleida: 'Lleida', girona: 'Girona'
+    lleida: 'Lleida', girona: 'Girona',
+    santander: 'Santander', gijon: 'Gijón'
   };
   // Región para agrupar ferias hermanas (define la densidad del clúster; Extremadura es la prioridad).
   const CITY_REGION = {
@@ -296,7 +299,9 @@
     'Zamora': 'castillayleon', 'Palencia': 'castillayleon', 'Cacabelos': 'castillayleon',
     'Santarém': 'portugal', 'Trujillo': 'extremadura', 'Elche': 'comunidadvalenciana',
     'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia',
-    'Lleida': 'cataluna', 'Girona': 'cataluna'
+    'Lleida': 'cataluna', 'Girona': 'cataluna',
+    'Santander': 'cantabria', 'Torrelavega': 'cantabria',
+    'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
   const clusterT = {
     es: { related: 'Ferias en las que también montamos stands', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
@@ -328,7 +333,9 @@
     'Albacete': 'IFAB (Instituto Ferial de Albacete)',
     'Santarém': 'CNEMA (Centro Nacional de Exposições e Mercados Agrícolas)', 'Elche': 'IFA – Institución Ferial Alicantina',
     'Silleda': 'Feira Internacional de Galicia (FIG)', 'Ourense': 'Expourense',
-    'Lleida': 'Fira de Lleida (Camps Elisis)', 'Girona': 'Fira de Girona (Palau de Fires)'
+    'Lleida': 'Fira de Lleida (Camps Elisis)', 'Girona': 'Fira de Girona (Palau de Fires)',
+    'Santander': 'Palacio de Exposiciones y Congresos de Santander', 'Torrelavega': 'Mercado Nacional de Ganados de Torrelavega',
+    'Gijón': 'Recinto Ferial de Asturias Luis Adaro'
   };
   // Frase que nombra el recinto (clave SEO: "stand IFEBA", "stand FEVAL"…). Veraz y genérica.
   const venueLine = {
@@ -604,7 +611,8 @@
     'essencia-do-vinho-porto', 'simplesmente-vinho-porto', 'essencia-do-vinho-lisboa',
     'encontro-vinhos-sabores-lisboa', 'vinhos-de-portugal-lisboa',
     'concab-granada', 'feria-del-caballo-jerez',
-    'feria-artesania-valladolid'];
+    'feria-artesania-valladolid',
+    'feria-concesionarios-torrelavega'];
   $: venue = VENUE_SKIP_FAIRS.includes(fair.slug) ? null : (VENUE_BY_CITY[fair.city] || null);
   $: venueText = venue ? ((venueLine[lang] || venueLine.es)(venue, localizedCity)) : null;
   // Actividades (etiquetas) de esta feria, para los chips de color del aside.

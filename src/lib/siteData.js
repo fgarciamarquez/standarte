@@ -33,6 +33,8 @@ export const routes = {
     lisboa: 'diseno_montaje_stands_lisboa',
     batalha: 'diseno_montaje_stands_batalha',
     silleda: 'diseno_montaje_stands_silleda',
+    santander: 'diseno_montaje_stands_santander',
+    gijon: 'diseno_montaje_stands_gijon',
     lleida: 'diseno_montaje_stands_lleida',
     girona: 'diseno_montaje_stands_girona',
     ourense: 'diseno_montaje_stands_ourense',
@@ -84,6 +86,8 @@ export const routes = {
     lisboa: 'stand_design_assembly_lisbon',
     batalha: 'stand_design_assembly_batalha',
     silleda: 'stand_design_assembly_silleda',
+    santander: 'stand_design_assembly_santander',
+    gijon: 'stand_design_assembly_gijon',
     lleida: 'stand_design_assembly_lleida',
     girona: 'stand_design_assembly_girona',
     ourense: 'stand_design_assembly_ourense',
@@ -135,6 +139,8 @@ export const routes = {
     lisboa: 'messestand_design_montage_lissabon',
     batalha: 'messestand_design_montage_batalha',
     silleda: 'messestand_design_montage_silleda',
+    santander: 'messestand_design_montage_santander',
+    gijon: 'messestand_design_montage_gijon',
     lleida: 'messestand_design_montage_lleida',
     girona: 'messestand_design_montage_girona',
     ourense: 'messestand_design_montage_ourense',
@@ -186,6 +192,8 @@ export const routes = {
     lisboa: 'lisbon_zhantai_sheji_dajian',
     batalha: 'batalha_zhantai_sheji_dajian',
     silleda: 'silleda_zhantai_sheji_dajian',
+    santander: 'santander_zhantai_sheji_dajian',
+    gijon: 'gijon_zhantai_sheji_dajian',
     lleida: 'lleida_zhantai_sheji_dajian',
     girona: 'girona_zhantai_sheji_dajian',
     ourense: 'ourense_zhantai_sheji_dajian',
@@ -237,6 +245,8 @@ export const routes = {
     lisboa: 'lisbon_stand_dizain_asembli',
     batalha: 'batalha_stand_dizain_asembli',
     silleda: 'silleda_stand_dizain_asembli',
+    santander: 'santander_stand_dizain_asembli',
+    gijon: 'gijon_stand_dizain_asembli',
     lleida: 'lleida_stand_dizain_asembli',
     girona: 'girona_stand_dizain_asembli',
     ourense: 'ourense_stand_dizain_asembli',
@@ -288,6 +298,8 @@ export const routes = {
     lisboa: 'design_montagem_stands_lisboa',
     batalha: 'design_montagem_stands_batalha',
     silleda: 'design_montagem_stands_silleda',
+    santander: 'design_montagem_stands_santander',
+    gijon: 'design_montagem_stands_gijon',
     lleida: 'design_montagem_stands_lleida',
     girona: 'design_montagem_stands_girona',
     ourense: 'design_montagem_stands_ourense',
@@ -339,6 +351,8 @@ export const routes = {
     lisboa: 'conception_montage_stands_lisbonne',
     batalha: 'conception_montage_stands_batalha',
     silleda: 'conception_montage_stands_silleda',
+    santander: 'conception_montage_stands_santander',
+    gijon: 'conception_montage_stands_gijon',
     lleida: 'conception_montage_stands_lleida',
     girona: 'conception_montage_stands_girona',
     ourense: 'conception_montage_stands_ourense',
@@ -390,6 +404,8 @@ export const routes = {
     lisboa: 'progettazione_montaggio_stand_lisbona',
     batalha: 'progettazione_montaggio_stand_batalha',
     silleda: 'progettazione_montaggio_stand_silleda',
+    santander: 'progettazione_montaggio_stand_santander',
+    gijon: 'progettazione_montaggio_stand_gijon',
     lleida: 'progettazione_montaggio_stand_lleida',
     girona: 'progettazione_montaggio_stand_girona',
     ourense: 'progettazione_montaggio_stand_ourense',
@@ -441,6 +457,8 @@ export const routes = {
     lisboa: 'lisbon-bujeu-dijain-jorip',
     batalha: 'batalha-bujeu-dijain-jorip',
     silleda: 'silleda-bujeu-dijain-jorip',
+    santander: 'santander-bujeu-dijain-jorip',
+    gijon: 'gijon-bujeu-dijain-jorip',
     lleida: 'lleida-bujeu-dijain-jorip',
     girona: 'girona-bujeu-dijain-jorip',
     ourense: 'ourense-bujeu-dijain-jorip',
@@ -492,6 +510,8 @@ export const routes = {
     lisboa: 'リスボン展示会ブース設計施工',
     batalha: 'バターリャ展示会ブース設計施工',
     silleda: 'シジェダ展示会ブース設計施工',
+    santander: 'サンタンデール展示会ブース設計施工',
+    gijon: 'ヒホン展示会ブース設計施工',
     lleida: 'リェイダ展示会ブース設計施工',
     girona: 'ジローナ展示会ブース設計施工',
     ourense: 'オウレンセ展示会ブース設計施工',
@@ -543,6 +563,8 @@ export const routes = {
     lisboa: 'standontwerp_montage_lissabon',
     batalha: 'standontwerp_montage_batalha',
     silleda: 'standontwerp_montage_silleda',
+    santander: 'standontwerp_montage_santander',
+    gijon: 'standontwerp_montage_gijon',
     lleida: 'standontwerp_montage_lleida',
     girona: 'standontwerp_montage_girona',
     ourense: 'standontwerp_montage_ourense',
@@ -588,7 +610,7 @@ export const copy = {
     seoTitle: 'Standarte | Diseño y montaje de stands en España y Portugal · Proyecto Auditado',
     seoDescription: 'Standarte: la empresa ideal para tu estrategia de expansión presencial en España y Portugal, gracias a nuestra extensa cobertura de eventos.',
     heroTitle: 'Crece en las ferias de España y Portugal',
-    heroSubtitle: 'Diseño y construcción de stands, elección estratégica de ferias y la mayor cobertura ibérica con un solo socio. Convertimos tu presencia ferial en expansión comercial.',
+    heroSubtitle: 'Diseño y construcción de stands. La mayor cobertura ibérica con capacidad de expansión comercial.',
     servicesTitle: 'Servicios',
     services: [
       ['Diseño e Ingeniería', 'Nuestro equipo profesional tomará nota de las necesidades de su proyecto que, con todo detalle, quedarán reflejadas en un diseño 3D personalizado que podrá explorar y revisar antes del comienzo de la fabricación. La imagen del prototipo será 100% fidedigna al resultado final.'],
@@ -2335,6 +2357,104 @@ export const cityData = {
       },
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、StandarteはジローナのPalau de FiresにあるFira de Gironaで展示会ブースの設計・施工を行います。ここではFòrum Gastronòmicなどの主要見本市が開催されます。3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  santander: {
+    city: { es: 'Santander', en: 'Santander', de: 'Santander', zh: '桑坦德', hi: 'सांतान्देर', pt: 'Santander', fr: 'Santander', it: 'Santander', ko: '산탄데르', ja: 'サンタンデール', nl: 'Santander' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Santander —sede del Palacio de Exposiciones y Congresos, con citas como ARTESANTANDER y BioCantabria— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Santander —home to the Palacio de Exposiciones y Congresos, with events such as ARTESANTANDER and BioCantabria— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Santander — Standort des Palacio de Exposiciones y Congresos, mit Veranstaltungen wie ARTESANTANDER und BioCantabria — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Santander — sede do Palacio de Exposiciones y Congresos, com certames como a ARTESANTANDER e a BioCantabria — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Santander — siège du Palacio de Exposiciones y Congresos, avec des rendez-vous comme ARTESANTANDER et BioCantabria — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Santander — sede del Palacio de Exposiciones y Congresos, con appuntamenti come ARTESANTANDER e BioCantabria — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Santander — locatie van het Palacio de Exposiciones y Congresos, met evenementen zoals ARTESANTANDER en BioCantabria — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在桑坦德设计并搭建展台——这里是会展与会议宫（Palacio de Exposiciones y Congresos）所在地，举办 ARTESANTANDER 和 BioCantabria 等展会——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障和卓越的细节把控。'
+      },
+      hi: {
+        intro: 'अपनी कार्यशाला से अस्थायी वास्तुकला निर्माण के 20 वर्षों के अनुभव के साथ, Standarte सांतान्देर में स्टैंड डिज़ाइन और असेंबल करता है — यह Palacio de Exposiciones y Congresos का घर है, जहाँ ARTESANTANDER और BioCantabria जैसे आयोजन होते हैं — और हर चरण को नियंत्रित करता है: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली की मानसिक शांति और असाधारण बारीकी प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로 Standarte는 산탄데르에서 부스를 디자인하고 시공합니다 — 이곳은 ARTESANTANDER와 BioCantabria 같은 행사가 열리는 Palacio de Exposiciones y Congresos의 본거지로, 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 단계를 직접 관리합니다.',
+        detail: '에이전시와 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはサンタンデールで展示会ブースの設計・施工を行います。ここはARTESANTANDERやBioCantabriaなどが開催されるPalacio de Exposiciones y Congresosの本拠地で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  gijon: {
+    city: { es: 'Gijón', en: 'Gijón', de: 'Gijón', zh: '希洪', hi: 'ख़िख़ोन', pt: 'Gijón', fr: 'Gijón', it: 'Gijón', ko: '히혼', ja: 'ヒホン', nl: 'Gijón' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Gijón —sede del Recinto Ferial Luis Adaro, con grandes citas como FIDMA, AGROPEC y el Salón de Competición de Asturias— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Gijón —home to the Recinto Ferial Luis Adaro, with major events such as FIDMA, AGROPEC and the Salón de Competición de Asturias— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Gijón — Standort des Recinto Ferial Luis Adaro, mit Großveranstaltungen wie FIDMA, AGROPEC und dem Salón de Competición de Asturias — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Gijón — sede do Recinto Ferial Luis Adaro, com grandes certames como a FIDMA, a AGROPEC e o Salón de Competición de Asturias — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Gijón — siège du Recinto Ferial Luis Adaro, avec de grands rendez-vous comme FIDMA, AGROPEC et le Salón de Competición de Asturias — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Gijón — sede del Recinto Ferial Luis Adaro, con grandi appuntamenti come FIDMA, AGROPEC e il Salón de Competición de Asturias — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Gijón — locatie van het Recinto Ferial Luis Adaro, met grote evenementen zoals FIDMA, AGROPEC en de Salón de Competición de Asturias — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借在自有工厂搭建临时建筑的20年经验，Standarte 在希洪设计并搭建展台——这里是路易斯·阿达罗展览中心（Recinto Ferial Luis Adaro）所在地，举办 FIDMA、AGROPEC 和阿斯图里亚斯竞技沙龙等大型展会——全程把控每个环节：3D设计、生产、物流、安装及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障和卓越的细节把控。'
+      },
+      hi: {
+        intro: 'अपनी कार्यशाला से अस्थायी वास्तुकला निर्माण के 20 वर्षों के अनुभव के साथ, Standarte ख़िख़ोन में स्टैंड डिज़ाइन और असेंबल करता है — यह Recinto Ferial Luis Adaro का घर है, जहाँ FIDMA, AGROPEC और Salón de Competición de Asturias जैसे बड़े आयोजन होते हैं — और हर चरण को नियंत्रित करता है: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली की मानसिक शांति और असाधारण बारीकी प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로 Standarte는 히혼에서 부스를 디자인하고 시공합니다 — 이곳은 FIDMA, AGROPEC, Salón de Competición de Asturias 같은 대형 행사가 열리는 Recinto Ferial Luis Adaro의 본거지로, 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 단계를 직접 관리합니다.',
+        detail: '에이전시와 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはヒホンで展示会ブースの設計・施工を行います。ここはFIDMA、AGROPEC、アストゥリアス・モータースポーツサロンなどの大型見本市が開催されるRecinto Ferial Luis Adaroの本拠地で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }

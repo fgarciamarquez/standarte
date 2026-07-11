@@ -22,7 +22,8 @@
     valencia: 'comunidadvalenciana', mallorca: 'baleares', vigo: 'galicia', batalha: 'portugal',
     zaragoza: 'aragon', badajoz: 'extremadura', portugal_sur: 'portugal-sur',
     silleda: 'galicia', ourense: 'galicia',
-    lleida: 'cataluna', girona: 'cataluna'
+    lleida: 'cataluna', girona: 'cataluna',
+    santander: 'cantabria', gijon: 'asturias'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura',
@@ -32,7 +33,8 @@
     'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon',
     'Vigo': 'galicia', 'Portugal Sur': 'portugal-sur',
     'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia',
-    'Lleida': 'cataluna', 'Girona': 'cataluna'
+    'Lleida': 'cataluna', 'Girona': 'cataluna',
+    'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
   const FEATURED_BY_REGION = {
     extremadura: ['Bellota', 'Intermaher', 'Elumatec'],

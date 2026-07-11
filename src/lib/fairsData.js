@@ -1,5 +1,75 @@
 export const fairsData = [
   {
+    "name": "ARTESANTANDER",
+    "country": "es",
+    "slug": "artesantander",
+    "city": "Santander",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "BioCantabria",
+    "country": "es",
+    "slug": "biocantabria-santander",
+    "city": "Santander",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria Nacional Apícola de Cantabria",
+    "country": "es",
+    "slug": "feria-apicola-cantabria-torrelavega",
+    "city": "Torrelavega",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria de Concesionarios de Torrelavega",
+    "country": "es",
+    "slug": "feria-concesionarios-torrelavega",
+    "city": "Torrelavega",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "FIDMA – Feria Internacional de Muestras de Asturias",
+    "country": "es",
+    "slug": "fidma-gijon",
+    "city": "Gijón",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "AGROPEC Gijón",
+    "country": "es",
+    "slug": "agropec-gijon",
+    "city": "Gijón",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Salón de Competición de Asturias",
+    "country": "es",
+    "slug": "salon-competicion-asturias-gijon",
+    "city": "Gijón",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Asturforesta",
+    "country": "es",
+    "slug": "asturforesta-tineo",
+    "city": "Tineo",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria de Muestras de Tineo",
+    "country": "es",
+    "slug": "feria-muestras-tineo",
+    "city": "Tineo",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feria Agroalimentaria de Vegadeo",
+    "country": "es",
+    "slug": "agroalimentaria-vegadeo",
+    "city": "Vegadeo",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Cargo Freight Portugal Summit",
     "country": "pt",
     "slug": "cargo-freight-portugal-summit",

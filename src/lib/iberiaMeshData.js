@@ -22,6 +22,7 @@ export const CITY_LATLON = {
   'Aracena': [37.89, -6.56],
   'Armilla': [37.13, -3.63],
   'Badajoz': [38.88, -6.97],
+  'Gijón': [43.54, -5.66],
   'Barcelona': [41.39, 2.17],
   'Batalha': [39.66, -8.83],
   'Bilbao': [43.26, -2.93],
@@ -56,12 +57,16 @@ export const CITY_LATLON = {
   'Pozoblanco': [38.38, -4.85],
   'Punta Umbría': [37.19, -6.97],
   'Salamanca': [40.97, -5.66],
+  'Santander': [43.46, -3.81],
   'Santarém': [39.24, -8.68],
   'Santiago de Compostela': [42.88, -8.54],
   'Sevilla': [37.39, -5.99],
   'Silleda': [42.70, -8.24],
   'Sobral de Monte Agraço': [39.02, -9.15],
+  'Tineo': [43.34, -6.41],
   'Toledo': [39.86, -4.02],
+  'Torrelavega': [43.35, -4.05],
+  'Vegadeo': [43.48, -7.06],
   'Torre Pacheco': [37.75, -0.96],
   'Trujillo': [39.46, -5.88],
   'Valencia': [39.47, -0.38],
@@ -155,9 +160,12 @@ const MAD_CY = 477;
 const MAD_R = 60;
 
 const MAD_ISLANDS_BASE = [
-  'M -42,4 L -28,-2 L -8,-4 L 14,-2 L 26,5 L 12,10 L -10,11 L -30,9 Z', // Madeira (principal)
-  'M 32,-30 L 38,-32 L 42,-27 L 37,-23 Z',                             // Porto Santo
-  'M 7,20 L 11,19 L 13,28 L 9,29 Z'                                    // Desertas
+  // Madeira: isla alargada E-O (proporción ~3:1) con punta O (Ponta do Pargo) y
+  // península fina al ENE (Ponta de São Lourenço).
+  'M -40,3 L -26,-7 L -6,-10 L 12,-8 L 22,-5 L 33,-8 L 34,-5 L 24,-1 L 14,6 L -4,10 L -24,9 Z',
+  'M 28,-26 L 38,-34 L 41,-31 L 31,-23 Z', // Porto Santo (islote alargado al NE)
+  'M 15,15 L 17,15 L 16,31 L 14,31 Z',     // Desertas (slivers verticales finos al SE)
+  'M 20,18 L 21,18 L 20,28 L 19,28 Z'
 ];
 
 export const MADEIRA_INSET = {
@@ -187,6 +195,49 @@ export const CITY_POINTS = {
   ...CANARIAS_CITY_POINTS,
   ...MADEIRA_CITY_POINTS
 };
+
+// Ciudad del mapa → sección-pilar de su página de ciudad (misma convención que
+// CITY_TO_PILLAR en Feria.svelte): las poblaciones satélite cuelgan de su ciudad
+// matriz. Fuente única para el enlazado del mapa (PatMesh) y de su gemelo SEO
+// server-renderizado (MeshCoverageLinks). Las ciudades sin entrada no tienen
+// página propia y no enlazan.
+export const CITY_PILLAR = {
+  'Madrid': 'madrid', 'Barcelona': 'barcelona', 'Bilbao': 'bilbao', 'Lisboa': 'lisboa',
+  'Oporto': 'oporto', 'Valencia': 'valencia', 'Mallorca': 'mallorca', 'Vigo': 'vigo',
+  'Santiago de Compostela': 'santiago', 'A Coruña': 'coruna', 'Valladolid': 'valladolid',
+  'Salamanca': 'salamanca', 'Batalha': 'batalha', 'Málaga': 'malaga', 'Badajoz': 'badajoz',
+  'Sevilla': 'sevilla', 'Ciudad Real': 'ciudad_real', 'Zaragoza': 'zaragoza',
+  'Don Benito': 'montaje_don_benito', 'Zafra': 'montaje_zafra',
+  'Almendralejo': 'badajoz', 'Plasencia': 'badajoz', 'Mérida': 'badajoz',
+  'Portugal Sur': 'portugal_sur',
+  'Aguadulce': 'almeria', 'El Ejido': 'almeria', 'Almería': 'almeria', 'Jaén': 'jaen',
+  'Huelva': 'huelva', 'Aracena': 'huelva', 'Punta Umbría': 'huelva',
+  'Murcia': 'murcia', 'Torre Pacheco': 'murcia',
+  'Córdoba': 'cordoba', 'Pozoblanco': 'cordoba', 'Villanueva de Córdoba': 'cordoba',
+  'Granada': 'granada', 'Armilla': 'granada',
+  'Cádiz': 'cadiz', 'Jerez de la Frontera': 'cadiz',
+  'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
+  'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche', 'Alicante': 'alicante',
+  'Silleda': 'silleda', 'Ourense': 'ourense',
+  'Lleida': 'lleida', 'Girona': 'girona',
+  'Santander': 'santander', 'Torrelavega': 'santander',
+  'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon',
+  'Islas Canarias': 'islas_canarias', 'Tenerife': 'islas_canarias',
+  'Gran Canaria': 'islas_canarias', 'Las Palmas': 'islas_canarias',
+  'Fuerteventura': 'islas_canarias',
+  'Islas de Madeira': 'islas_de_madeira', 'Funchal': 'islas_de_madeira',
+  'Madeira': 'islas_de_madeira'
+};
+
+// Ciudades con punto en el mapa pero SIN página-ciudad propia ni pilar asignado:
+// salen como punto informativo (sin enlace) y no aparecen en el gemelo SEO. Es
+// una exclusión EXPLÍCITA para que el guardián (check_mesh_cities) distinga entre
+// "deliberadamente sin enlace" y "olvidé asignarle pilar". Al añadir una ciudad
+// nueva: o le pones CITY_PILLAR (se enlaza) o la incluyes aquí (queda informativa).
+export const UNLINKED_CITIES = [
+  'Albacete', 'Boqueixón', 'Cacabelos', 'Elvas', 'Mealhada',
+  'Palencia', 'Sobral de Monte Agraço', 'Toledo', 'Zamora'
+];
 
 // Contorno simplificado de la península ibérica (px, misma proyección).
 export const IBERIA_PATH = "M 15.5,92 L 38.8,170.2 L 44.4,202.4 L 52.9,253 L 52.9,299.9 L 44.4,345 L 7,395.6 L 2.1,478.4 L 28.2,501.4 L 44.4,547.4 L 37.4,633 L 146.6,621 L 172.7,618.2 L 225.5,678 L 274.2,726.8 L 358,671.6 L 495.4,662.4 L 600.5,579.6 L 635.7,515.2 L 647,409.4 L 729.4,292.6 L 757.6,257.6 L 821,234.6 L 903.5,145.4 L 873.9,133.4 L 711.8,110.4 L 567.3,82.8 L 530,53.4 L 456.7,47.8 L 401.7,39.6 L 270.6,30.4 L 89.5,38.6 L 15.5,92 Z";
