@@ -147,6 +147,9 @@
     }
     svgEl.appendChild(gratGroup);
     svgEl.appendChild(el('path', { class: 'pm-coast', d: IBERIA_PATH }));
+    // Mallorca: polígono simple (misma proyección px) para que la isla tenga tierra
+    // bajo su punto y se vea que la malla llega hasta Baleares. Punto Palma ≈ (856, 398).
+    svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 826,384 L 848,368 L 892,360 L 884,388 L 864,401 L 846,405 L 834,396 Z' }));
 
     const edgeD = (x1, y1, x2, y2) => {
       const mx = (x1 + x2) / 2 + (y2 - y1) * 0.06;
