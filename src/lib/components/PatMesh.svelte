@@ -229,10 +229,11 @@
       const dy = anchor === 'middle' ? (p.y < cy ? -(r + 10) : r + 20) : 4;
       const t1 = el('text', { x: p.x + dx, y: p.y + dy, 'text-anchor': anchor, 'font-size': 13, 'font-weight': 600 });
       g.appendChild(t1);
-      const t2 = el('text', { class: 'pm-family-count', x: p.x + dx, y: p.y + dy + 14, 'text-anchor': anchor, 'font-size': 10 });
+      const t2 = el('text', { class: 'pm-family-count', x: p.x, y: p.y, 'text-anchor': 'middle', 'dominant-baseline': 'central', 'font-size': Math.max(9, Math.min(r * 0.9, 15)), 'font-weight': 700 });
       g.appendChild(t2);
       famGroup.appendChild(g);
-      famEls[f] = { g, circle: c, texts: [{ node: t1, dx, dy }, { node: t2, dx, dy: dy + 14 }] };
+      // texts[1] (el número) va centrado DENTRO del círculo del nodo (dx/dy = 0).
+      famEls[f] = { g, circle: c, texts: [{ node: t1, dx, dy }, { node: t2, dx: 0, dy: 0 }] };
     });
 
     const cityGroup = el('g', {});
@@ -281,7 +282,7 @@
       tagKeys.forEach((t) => { tagEls[t].text.textContent = labelForTag(t, currentLang); });
       famKeys.forEach((f) => {
         famEls[f].texts[0].node.textContent = familyLabel(f, currentLang);
-        famEls[f].texts[1].node.textContent = famTotals[f] + ' ' + currentPWord;
+        famEls[f].texts[1].node.textContent = famTotals[f];
       });
       // href de cada punto-ciudad → su página pilar en el idioma activo
       cityLinks.forEach((a) => {
@@ -501,7 +502,7 @@
     transition: opacity 0.25s ease;
   }
   .pm-wrap :global(.pm-family.dimmed text) { opacity: 0.3; }
-  .pm-wrap :global(.pm-family-count) { fill: #7a7f76; }
+  .pm-wrap :global(.pm-family-count) { fill: #fff; font-weight: 700; paint-order: stroke; stroke: rgba(0, 0, 0, 0.35); stroke-width: 0.7px; }
 
   .pm-wrap :global(.pm-tag circle) { transition: opacity 0.2s ease; }
   .pm-wrap :global(.pm-tag.dimmed circle) { opacity: 0.15; }
