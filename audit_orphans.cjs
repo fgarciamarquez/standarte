@@ -1,20 +1,21 @@
-// Auditoría de ficheros HUÉRFANOS en el servidor de producción (OVH).
+// Auditoría / limpieza de ficheros HUÉRFANOS en producción (OVH), vía MANIFIESTO.
 //
-// Compara lo que hay en el servidor (www/) con tu build local (dist/) y lista
-// los ficheros del servidor que YA NO existen en el build: son los huérfanos que
-// se acumulan (páginas renombradas/eliminadas) y consumen inodos/espacio, hasta
-// impedir subir ficheros nuevos ("Write stream error: Failure").
+// En vez de rastrear todo el servidor por SFTP (lentísimo), descarga el manifiesto
+// del deploy (www/.deploy-manifest.json) —que ya lista todos los ficheros subidos—
+// y calcula los huérfanos comparándolo con tu build local (dist/). Rápido: baja 1
+// fichero y hace el diff en memoria.
 //
 // SEGURIDAD:
-//   - Por defecto es DRY-RUN: solo LISTA, no borra nada.
-//   - Nunca toca ficheros del servidor que no deben borrarse (PHP, secretos,
-//     datos de campañas, .htaccess, el manifiesto, la carpeta admin/…): ver PROTECT.
-//   - Para borrar de verdad hay que pasar --delete EXPLÍCITAMENTE (tras revisar la lista).
+//   - Por defecto DRY-RUN: solo lista (orphans_report.txt), no borra nada.
+//   - Nunca considera huérfano lo que debe permanecer (PHP, secretos, datos de
+//     campañas, .htaccess, admin/, ocultos): ver isProtected().
+//   - Para borrar de verdad: --delete (tras revisar la lista). Al borrar, actualiza
+//     el manifiesto remoto para que quede limpio.
 //
-// USO (desde tu ordenador, con .vscode/sftp.json presente):
-//   npm run build            # para tener dist/ al día
-//   node audit_orphans.cjs             # DRY-RUN: escribe orphans_report.txt
-//   node audit_orphans.cjs --delete    # borra los huérfanos listados (tras revisarlos)
+// USO (desde tu ordenador, con .vscode/sftp.json):
+//   npm run build
+//   node audit_orphans.cjs            # DRY-RUN
+//   node audit_orphans.cjs --delete   # borra los huérfanos (tras revisarlos)
 
 const fs = require('fs');
 const path = require('path');
@@ -26,10 +27,14 @@ catch (e) { console.error('[ERROR] Falta ssh2-sftp-client. Ejecuta `npm ci`.'); 
 const HOST = process.env.DEPLOY_HOST || 'ftp.cluster128.hosting.ovh.net';
 const PORT = parseInt(process.env.DEPLOY_PORT || '22', 10);
 const REMOTE_BASE = (process.env.DEPLOY_REMOTE_DIR || 'www').replace(/^\/+|\/+$/g, '');
+const MANIFEST_NAME = '.deploy-manifest.json';
+const REMOTE_MANIFEST = `${REMOTE_BASE}/${MANIFEST_NAME}`;
 
 const DO_DELETE = process.argv.includes('--delete');
+const DELETE_CONCURRENCY = 4;
+const MAX_RETRIES = 4;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// Credenciales: env (CI) o .vscode/sftp.json (local), igual que deploy_clean.cjs.
 let ftpUser = process.env.FTP_USER;
 let ftpPass = process.env.FTP_PASS;
 if (!ftpUser || !ftpPass) {
@@ -44,21 +49,27 @@ if (!ftpUser || !ftpPass) {
   process.exit(1);
 }
 
-// Ficheros del servidor que NUNCA se consideran huérfanos (no están en dist pero
-// deben permanecer): generados en runtime, secretos y configuración del hosting.
+const CONNECT_OPTS = {
+  host: HOST, port: PORT, username: ftpUser, password: ftpPass,
+  readyTimeout: 25000, keepaliveInterval: 10000, keepaliveCountMax: 6,
+  retries: 3, retry_minTimeout: 1500
+};
+async function newClient() { const c = new SftpClient(); await c.connect(CONNECT_OPTS); return c; }
+
+// Ficheros del servidor que NUNCA son huérfanos (no están en dist pero deben quedarse).
 function isProtected(rel) {
   return (
-    rel === '.deploy-manifest.json' ||
+    rel === MANIFEST_NAME ||
     /(^|\/)\.htaccess$/.test(rel) ||
     /(^|\/)\.well-known(\/|$)/.test(rel) ||
-    rel.startsWith('admin/') ||                 // panel PHP + datos/secretos de campañas
-    rel.includes('email_campaing/') ||          // datos y logs de campañas (runtime)
+    rel.startsWith('admin/') ||
+    rel.includes('email_campaing/') ||
     rel.includes('email_campaign/') ||
-    rel.endsWith('.php') ||                      // cualquier PHP del servidor (incl. secretos)
+    rel.endsWith('.php') ||
     rel.includes('supabase-config') ||
     rel.includes('smtp_password') ||
     rel.includes('bounce') ||
-    /(^|\/)\./.test(rel)                         // cualquier fichero/carpeta oculta
+    /(^|\/)\./.test(rel)
   );
 }
 
@@ -72,75 +83,100 @@ function getLocalFiles(dir, base, out) {
   return out;
 }
 
-async function listRemote(client, dir, base, out) {
-  let entries;
-  try { entries = await client.list(dir); }
-  catch (e) { return; }
-  for (const e of entries) {
-    const rel = base ? `${base}/${e.name}` : e.name;
-    if (e.type === 'd') await listRemote(client, `${dir}/${e.name}`, rel, out);
-    else out.push({ rel, size: e.size || 0 });
-  }
-}
-
-const human = (n) => (n < 1024 ? `${n} B` : n < 1048576 ? `${(n / 1024).toFixed(1)} KB` : `${(n / 1048576).toFixed(1)} MB`);
-
 async function main() {
   console.log('==========================================================');
-  console.log('   STANDARTE - Auditoría de huérfanos en producción       ');
+  console.log('   STANDARTE - Auditoría de huérfanos (vía manifiesto)    ');
   console.log('==========================================================\n');
-  console.log(`  Servidor: ${HOST}:${PORT}  | raíz remota: ${REMOTE_BASE}/  | modo: ${DO_DELETE ? 'BORRADO REAL (--delete)' : 'DRY-RUN (solo lista)'}\n`);
+  console.log(`  Servidor: ${HOST}:${PORT} | raíz: ${REMOTE_BASE}/ | modo: ${DO_DELETE ? 'BORRADO (--delete)' : 'DRY-RUN'}\n`);
 
   const localDist = path.join(__dirname, 'dist');
-  if (!fs.existsSync(localDist)) {
-    console.error('[ERROR] No existe dist/. Ejecuta primero `npm run build`.');
+  if (!fs.existsSync(localDist)) { console.error('[ERROR] No existe dist/. Ejecuta `npm run build` antes.'); process.exit(1); }
+  const local = getLocalFiles(localDist, '', new Set());
+  console.log(`  [1/3] Build local: ${local.size} ficheros.`);
+
+  console.log('  [2/3] Descargando el manifiesto del servidor...');
+  const ctrl = await newClient();
+  let manifest;
+  try {
+    const buf = await ctrl.get(REMOTE_MANIFEST);
+    manifest = JSON.parse(buf.toString('utf8')) || {};
+  } catch (e) {
+    console.error(`[ERROR] No se pudo leer ${REMOTE_MANIFEST}: ${e.message}`);
+    try { await ctrl.end(); } catch (_) {}
     process.exit(1);
   }
-  const local = getLocalFiles(localDist, '', new Set());
-  console.log(`  [1/3] Build local: ${local.size} ficheros en dist/.`);
+  const keys = Object.keys(manifest);
+  console.log(`        Manifiesto: ${keys.length} ficheros registrados en el servidor.`);
 
-  console.log('  [2/3] Listando el servidor (puede tardar 1-2 min)...');
-  const client = new SftpClient();
-  await client.connect({ host: HOST, port: PORT, username: ftpUser, password: ftpPass, readyTimeout: 25000, keepaliveInterval: 10000 });
-  const remote = [];
-  await listRemote(client, REMOTE_BASE, '', remote);
-  console.log(`        Servidor: ${remote.length} ficheros bajo ${REMOTE_BASE}/.`);
+  const orphans = keys.filter((k) => !local.has(k) && !isProtected(k));
+  const protectedNotLocal = keys.filter((k) => !local.has(k) && isProtected(k));
 
-  const orphans = remote.filter((f) => !local.has(f.rel) && !isProtected(f.rel));
-  const protectedNotLocal = remote.filter((f) => !local.has(f.rel) && isProtected(f.rel));
-  const totalSize = orphans.reduce((s, f) => s + f.size, 0);
-
-  // Desglose por primer segmento de ruta, para ver de dónde vienen.
   const byTop = {};
-  orphans.forEach((f) => { const top = f.rel.split('/')[0] || '(raíz)'; byTop[top] = (byTop[top] || 0) + 1; });
+  orphans.forEach((k) => { const t = k.split('/')[0] || '(raíz)'; byTop[t] = (byTop[t] || 0) + 1; });
 
   console.log(`\n  [3/3] Resultado:`);
-  console.log(`        Huérfanos (a borrar):     ${orphans.length}  (${human(totalSize)})`);
-  console.log(`        Protegidos (se conservan): ${protectedNotLocal.length}  (PHP, datos de campañas, .htaccess, ocultos…)`);
+  console.log(`        Huérfanos (a borrar):      ${orphans.length}`);
+  console.log(`        Protegidos (se conservan): ${protectedNotLocal.length}`);
   console.log(`\n        Huérfanos por carpeta de primer nivel:`);
   Object.entries(byTop).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => console.log(`          ${String(v).padStart(6)}  ${k}/`));
 
-  const report = orphans.map((f) => f.rel).sort();
-  fs.writeFileSync(path.join(__dirname, 'orphans_report.txt'), report.join('\n') + '\n');
-  fs.writeFileSync(path.join(__dirname, 'protected_report.txt'), protectedNotLocal.map((f) => f.rel).sort().join('\n') + '\n');
-  console.log(`\n  -> Lista completa de huérfanos: orphans_report.txt`);
-  console.log(`  -> Lista de protegidos (revisa que NADA importante quede aquí como borrable): protected_report.txt`);
+  fs.writeFileSync(path.join(__dirname, 'orphans_report.txt'), orphans.slice().sort().join('\n') + '\n');
+  fs.writeFileSync(path.join(__dirname, 'protected_report.txt'), protectedNotLocal.slice().sort().join('\n') + '\n');
+  console.log(`\n  -> Lista completa: orphans_report.txt (y protected_report.txt)`);
 
-  if (DO_DELETE) {
-    console.log(`\n  [DELETE] Borrando ${orphans.length} huérfanos...`);
-    let del = 0, fail = 0;
-    for (const f of orphans) {
-      try { await client.delete(`${REMOTE_BASE}/${f.rel}`); del++; if (del % 100 === 0) console.log(`          borrados ${del}/${orphans.length}`); }
-      catch (e) { fail++; console.error(`          [FALLO al borrar] ${f.rel}: ${e.message}`); }
-    }
-    console.log(`  [DELETE] Hecho: ${del} borrados, ${fail} fallidos.`);
-    console.log(`  NOTA: el manifiesto (.deploy-manifest.json) aún lista los huérfanos; el próximo deploy no los re-sube, pero conviene un deploy con --full para regenerarlo limpio.`);
-  } else {
-    console.log(`\n  DRY-RUN: no se ha borrado nada. Revisa orphans_report.txt y, si está bien, ejecuta:`);
+  if (!DO_DELETE) {
+    console.log(`\n  DRY-RUN: no se ha borrado nada. Revisa orphans_report.txt y luego ejecuta:`);
     console.log(`     node audit_orphans.cjs --delete`);
+    try { await ctrl.end(); } catch (_) {}
+    return;
   }
 
-  try { await client.end(); } catch (e) {}
+  // ---- Borrado con pool de conexiones + reintentos (OVH corta conexiones) ----
+  console.log(`\n  [DELETE] Borrando ${orphans.length} huérfanos con ${DELETE_CONCURRENCY} conexiones...`);
+  const deleted = new Set();
+  let idx = 0, done = 0, fail = 0;
+  const nextItem = () => (idx < orphans.length ? orphans[idx++] : null);
+
+  async function worker() {
+    let client = null;
+    try { client = await newClient(); } catch (e) { client = null; }
+    let rel;
+    while ((rel = nextItem()) !== null) {
+      let ok = false;
+      for (let a = 1; a <= MAX_RETRIES && !ok; a++) {
+        try {
+          if (!client) client = await newClient();
+          await client.delete(`${REMOTE_BASE}/${rel}`);
+          ok = true;
+        } catch (e) {
+          // "No such file" cuenta como éxito: ya no está → huérfano resuelto.
+          if (/no such file|not exist|no existe/i.test(e.message)) { ok = true; break; }
+          if (a < MAX_RETRIES) { await sleep(1000 * a); try { if (client) await client.end(); } catch (_) {} client = null; }
+          else { fail++; console.error(`          [FALLO] ${rel}: ${e.message}`); }
+        }
+      }
+      if (ok) { deleted.add(rel); done++; if (done % 100 === 0 || done === orphans.length) console.log(`          ${done}/${orphans.length}`); }
+    }
+    try { if (client) await client.end(); } catch (_) {}
+  }
+  await Promise.all(Array.from({ length: Math.min(DELETE_CONCURRENCY, orphans.length) }, worker));
+  console.log(`  [DELETE] Hecho: ${deleted.size} borrados, ${fail} fallidos.`);
+
+  // Actualizar el manifiesto remoto quitando lo borrado (deja el servidor coherente).
+  if (deleted.size) {
+    for (const rel of deleted) delete manifest[rel];
+    try {
+      const c2 = await newClient();
+      const tmp = path.join(require('os').tmpdir(), `standarte-audit-${MANIFEST_NAME}`);
+      fs.writeFileSync(tmp, JSON.stringify(manifest));
+      await c2.put(tmp, REMOTE_MANIFEST);
+      await c2.end();
+      console.log(`  [OK] Manifiesto actualizado: ${Object.keys(manifest).length} ficheros.`);
+    } catch (e) {
+      console.error(`  [AVISO] No se pudo reescribir el manifiesto: ${e.message}. El próximo deploy no re-sube los huérfanos; si quieres, lanza un deploy con --full para regenerarlo.`);
+    }
+  }
+  try { await ctrl.end(); } catch (_) {}
 }
 
 main().catch((e) => { console.error('[ERROR]', e.message); process.exit(1); });
