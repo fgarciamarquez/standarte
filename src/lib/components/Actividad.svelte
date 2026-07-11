@@ -16,6 +16,8 @@
   import FlagIcon from './FlagIcon.svelte';
   import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
+  import AiSourceButtons from './AiSourceButtons.svelte';
+  import { advisorDismissed } from '$lib/stores/advisor.js';
 
   export let data;
   $: ({ lang, copy, canonical, section, tag, activitySeo } = data);
@@ -24,7 +26,39 @@
   let isScrolled = false;
   let menuOpen = false;
   function updateScrollState() { isScrolled = typeof window !== 'undefined' && window.scrollY > 8; }
-  onMount(updateScrollState);
+
+  // Panel de Pat (asesor de Expansión) + botones GEO, igual que en la home. Solo en el
+  // índice /actividad. WelcomeAdvisor se carga con import dinámico (chunk aparte).
+  let showWelcomeAdvisor = false;
+  let AdvisorComponent = null;
+  let advisorTimeout;
+  let initialFair = '';
+  function handleSelectFair(event) {
+    const { fairName, cityName } = event.detail;
+    initialFair = `${fairName} (${cityName})`;
+  }
+  function reopenAdvisor() {
+    advisorDismissed.reactivate();
+    if (AdvisorComponent) { showWelcomeAdvisor = true; return; }
+    import('./WelcomeAdvisor.svelte')
+      .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
+      .catch(() => {});
+  }
+  onMount(() => {
+    updateScrollState();
+    if (!isIndex) return;
+    const launch = () => {
+      advisorTimeout = setTimeout(() => {
+        if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('standarte_advisor_dismissed') === '1') return;
+        import('./WelcomeAdvisor.svelte')
+          .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
+          .catch(() => {});
+      }, 8000);
+    };
+    if (typeof document !== 'undefined' && document.readyState === 'complete') launch();
+    else if (typeof window !== 'undefined') window.addEventListener('load', launch, { once: true });
+    return () => clearTimeout(advisorTimeout);
+  });
 
   const languageLocales = { es: 'es_ES', en: 'en_GB', de: 'de_DE', zh: 'zh_CN', hi: 'hi_IN', pt: 'pt_PT', fr: 'fr_FR', it: 'it_IT', ko: 'ko_KR', ja: 'ja_JP', nl: 'nl_NL' };
   const contentLanguages = { es: 'es-ES', en: 'en-GB', de: 'de-DE', zh: 'zh-CN', hi: 'hi-IN', pt: 'pt-PT', fr: 'fr-FR', it: 'it-IT', ko: 'ko-KR', ja: 'ja-JP', nl: 'nl-NL' };
@@ -181,11 +215,16 @@
     <div class="hero-contents act-hero-contents">
       {#if !isIndex}<span class="act-hero-tag" style="--chip:{colorForTag(tag)}"><span class="chip-dot" aria-hidden="true"></span>{tagLabel}</span>{/if}
       <h1>{pageH1}</h1>
+      {#if isIndex}<AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />{/if}
     </div>
   </div>
 </header>
 
-<main class="act-page">
+<main class="act-page" class:is-index={isIndex}>
+  <!-- Panel de Pat (asesor de Expansión): flotante, se carga diferido. Igual que en la home. -->
+  {#if showWelcomeAdvisor && AdvisorComponent}
+    <svelte:component this={AdvisorComponent} {lang} on:selectFair={handleSelectFair} on:openPrivacy={() => {}} on:dismiss={() => showWelcomeAdvisor = false} />
+  {/if}
   <section class="act-details section">
     <div class="act-container">
       <div class="act-text">
@@ -293,7 +332,7 @@
 
   <hr class="act-form-divider" />
   <section class="section grey-bg">
-    <ContactForm labels={copy} {lang} variant="light" />
+    <ContactForm labels={copy} {lang} variant="light" bind:initialFair={initialFair} />
   </section>
 </main>
 
@@ -321,6 +360,10 @@
   .act-text {
     background: #fff; padding: 50px; border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); min-width: 0;
+  }
+  /* Índice /actividad: el cuerpo va sin tarjeta (fondo transparente, sin sombra ni padding). */
+  .act-page.is-index .act-text {
+    background: transparent; padding: 0; box-shadow: none;
   }
   .highlight {
     font-family: 'Francois One', serif; font-size: 1.4rem; line-height: 1.6;
