@@ -12,7 +12,7 @@
   import { fairsData } from '$lib/fairsData.js';
   import { tagFamilies, fairTags, fairActivities, labelForTag, familyLabel } from '$lib/fairTags.js';
   import { IBERIA_PATH, CITY_POINTS, MAP_INSETS, CITY_PILLAR } from '$lib/iberiaMeshData.js';
-  import { pathFor } from '$lib/siteData.js';
+  import { pathFor, activityUrl } from '$lib/siteData.js';
 
   // Familias cuyo rótulo se fuerza a un lado concreto del nodo (en lugar del lado
   // automático por posición) porque en su ubicación el texto se salía del marco.
@@ -41,9 +41,60 @@
   };
   $: pWord = participationsWord[lang] || participationsWord.en;
 
+  // Ventana conversacional (voz de Pat): cuenta al cliente qué está viendo. Dos
+  // variantes por idioma —'family' (elige un sector completo) y 'sub' (afina en
+  // actividades)— con el número {N} y singular/plural. El {N} se resalta en render.
+  const selectionMsg = {
+    es: {
+      family: (n) => `¡Fantástico! En este sector tenemos ${n} feria${n === 1 ? '' : 's'} para ti.`,
+      sub: (n) => n === 1 ? `Ya es 1 feria a la que te podemos llevar.` : `Ya son ${n} ferias a las que te podemos llevar.`
+    },
+    en: {
+      family: (n) => `Fantastic! In this sector we have ${n} fair${n === 1 ? '' : 's'} for you.`,
+      sub: (n) => `That's already ${n} fair${n === 1 ? '' : 's'} we can take you to.`
+    },
+    pt: {
+      family: (n) => `Fantástico! Neste setor temos ${n} feira${n === 1 ? '' : 's'} para ti.`,
+      sub: (n) => n === 1 ? `Já é 1 feira à qual te podemos levar.` : `Já são ${n} feiras às quais te podemos levar.`
+    },
+    de: {
+      family: (n) => `Fantastisch! In dieser Branche haben wir ${n} Messe${n === 1 ? '' : 'n'} für Sie.`,
+      sub: (n) => n === 1 ? `Das ist bereits 1 Messe, zu der wir Sie bringen können.` : `Das sind bereits ${n} Messen, zu denen wir Sie bringen können.`
+    },
+    fr: {
+      family: (n) => `Fantastique ! Dans ce secteur, nous avons ${n} salon${n === 1 ? '' : 's'} pour vous.`,
+      sub: (n) => n === 1 ? `Cela fait déjà 1 salon où nous pouvons vous emmener.` : `Cela fait déjà ${n} salons où nous pouvons vous emmener.`
+    },
+    it: {
+      family: (n) => n === 1 ? `Fantastico! In questo settore abbiamo 1 fiera per te.` : `Fantastico! In questo settore abbiamo ${n} fiere per te.`,
+      sub: (n) => n === 1 ? `È già 1 fiera a cui possiamo portarti.` : `Sono già ${n} fiere a cui possiamo portarti.`
+    },
+    nl: {
+      family: (n) => n === 1 ? `Fantastisch! In deze sector hebben we 1 beurs voor u.` : `Fantastisch! In deze sector hebben we ${n} beurzen voor u.`,
+      sub: (n) => n === 1 ? `Dat is al 1 beurs waar we u naartoe kunnen brengen.` : `Dat zijn al ${n} beurzen waar we u naartoe kunnen brengen.`
+    },
+    zh: {
+      family: (n) => `太棒了！在这个行业，我们为您准备了 ${n} 场展会。`,
+      sub: (n) => `已经有 ${n} 场展会我们可以带您参加了。`
+    },
+    hi: {
+      family: (n) => `शानदार! इस क्षेत्र में हमारे पास आपके लिए ${n} मेले हैं।`,
+      sub: (n) => `अब ${n} मेले हैं जहाँ हम आपको ले जा सकते हैं।`
+    },
+    ko: {
+      family: (n) => `환상적이네요! 이 분야에는 고객님을 위한 ${n}개의 박람회가 있습니다.`,
+      sub: (n) => `저희가 모실 수 있는 박람회가 벌써 ${n}개입니다.`
+    },
+    ja: {
+      family: (n) => `素晴らしい！この分野には、あなたのための展示会が${n}件あります。`,
+      sub: (n) => `すでに${n}件の展示会にご案内できます。`
+    }
+  };
+
   let svgEl;
   let tooltipEl;
   let wrapEl;
+  let calloutEl;
   let api = null;
 
   // Etiquetas activas derivadas del estado de Pat: si hay etiquetas marcadas se
@@ -53,7 +104,12 @@
     ? selectedTags
     : (selectedFamily ? Object.keys(fairTags).filter((t) => fairTags[t].family === selectedFamily) : []);
 
-  $: if (api) api.update(activeTags, lang, pWord);
+  // Modo de la selección para la ventana conversacional: 'sub' si el cliente ha
+  // marcado actividades concretas (subselección), 'family' si solo ha elegido el
+  // sector completo, '' si no hay selección.
+  $: selMode = selectedTags.length ? 'sub' : (selectedFamily ? 'family' : '');
+
+  $: if (api) api.update(activeTags, lang, pWord, selMode);
   // Al navegar entre ciudades (nube de ciudades del sidebar), el mapa persiste y
   // solo cambia initialCity: reubicamos el :hover por defecto a la nueva ciudad.
   $: if (api) api.setDefaultCity(initialCity);
@@ -319,6 +375,10 @@
     let defaultCity = initialCity ? (cityMap[initialCity] || null) : null;
     let defaultActive = !!defaultCity;
 
+    // Ventana conversacional: se muestra con selección activa. currentMode indica
+    // si es sector completo ('family') o subselección ('sub').
+    let currentMode = '';
+
     function applyLabels() {
       tagKeys.forEach((t) => { tagEls[t].text.textContent = labelForTag(t, currentLang); });
       famKeys.forEach((f) => {
@@ -344,14 +404,43 @@
         te.text.setAttribute('opacity', (any && active.has(t)) ? 1 : (te.alwaysLabel && on ? 0.9 : 0));
       });
       famKeys.forEach((f) => {
-        const famOn = !any || tagsByFam[f].some((t) => active.has(t));
+        const inFam = tagsByFam[f].filter((t) => active.has(t));
+        const famOn = !any || inFam.length > 0;
         famEls[f].g.classList.toggle('dimmed', !famOn);
+        // Número del nódulo: con selección activa muestra los eventos de la SUB-
+        // selección dentro de esa familia; sin selección (o familia no tocada), el total.
+        const num = (any && inFam.length) ? inFam.reduce((s, t) => s + tagTotals[t], 0) : famTotals[f];
+        famEls[f].texts[1].node.textContent = num;
       });
       cityGroup.childNodes.forEach((n) => {
         if (!any) { n.classList.remove('dimmed'); return; }
         const has = Object.keys(n._city.tags).some((t) => active.has(t));
         n.classList.toggle('dimmed', !has);
       });
+      // Ventana conversacional: total de eventos de la selección actual (suma de
+      // las etiquetas activas), con texto según el modo (sector/subselección).
+      if (any) {
+        const total = [...active].reduce((s, t) => s + (tagTotals[t] || 0), 0);
+        const msgs = selectionMsg[currentLang] || selectionMsg.en;
+        const build = msgs[currentMode] || msgs.family;
+        const msg = build(total).replace(/(\d[\d.,]*)/, '<b class="pm-callout-n">$1</b>');
+        let html = '<div class="pm-callout-msg">' + msg + '</div>';
+        // Resultados: enlaces a los hubs /actividad de las actividades elegidas
+        // (solo en subselección), con la URL reducida para no deformar la isla.
+        if (currentMode === 'sub' && currentActive.length) {
+          const links = currentActive.map((t) => {
+            const path = activityUrl(t, currentLang);
+            const shown = 'standarte.es' + path;
+            return '<a class="pm-callout-link" href="' + path + '" target="_blank" rel="noopener" title="' +
+              labelForTag(t, currentLang) + '">' + shown + '</a>';
+          }).join('');
+          html += '<div class="pm-callout-results">' + links + '</div>';
+        }
+        calloutEl.innerHTML = html;
+        calloutEl.classList.add('visible');
+      } else {
+        calloutEl.classList.remove('visible');
+      }
     }
 
     // Estado a pintar: una selección activa manda; si no la hay pero seguimos en
@@ -368,6 +457,7 @@
 
     // ── Hover de ciudad: desglose en tooltip + resaltado temporal ──
     function highlightCity(city, evt) {
+      calloutEl.classList.remove('visible'); // la isla es de selección, no de hover
       edges.forEach((p) => { p.style.opacity = p._city === city ? 0.9 : 0.03; });
       spokes.forEach((p) => { p.style.opacity = city.tags[p._tag] ? 0.7 : 0.06; });
       tagKeys.forEach((t) => {
@@ -485,8 +575,9 @@
     }
 
     return {
-      update(active, newLang, newPWord) {
+      update(active, newLang, newPWord, mode) {
         currentActive = active;
+        currentMode = mode || '';
         if (newLang !== currentLang || newPWord !== currentPWord) {
           currentLang = newLang;
           currentPWord = newPWord;
@@ -517,7 +608,7 @@
 
   onMount(() => {
     const built = buildMesh();
-    built.update(activeTags, lang, pWord);
+    built.update(activeTags, lang, pWord, selMode);
     api = built;
     return built.destroy;
   });
@@ -533,6 +624,8 @@
     aria-label="Standarte network map: cities, activities and sectors in Spain and Portugal"
   ></svg>
   <div class="pm-tooltip" bind:this={tooltipEl}></div>
+  <!-- Ventana conversacional de Pat: cuenta al cliente qué está viendo. -->
+  <div class="pm-events-callout" bind:this={calloutEl} aria-live="polite"></div>
 </div>
 
 <style>
@@ -549,6 +642,64 @@
     height: auto;
     aspect-ratio: 1630 / 1050;
   }
+
+  /* Ventana conversacional de Pat sobre el gráfico: cuenta al cliente qué ve. */
+  .pm-events-callout {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    padding: 11px 18px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #d6d7d0;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #1a1e21;
+    text-align: center;
+    max-width: min(360px, calc(100% - 28px));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    z-index: 6;
+  }
+  /* La clase .visible se añade por JS (imperativo), así que Svelte no la ve en el
+     markup y podaría la regla como "no usada": :global evita esa poda. */
+  .pm-events-callout:global(.visible) {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .pm-events-callout :global(.pm-callout-n) {
+    font-weight: 700;
+    color: royalblue;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.15em;
+  }
+  /* Resultados dentro de la isla: enlaces a los hubs /actividad con la URL
+     reducida y truncada (ellipsis) para que no deformen la ventana. */
+  .pm-events-callout :global(.pm-callout-results) {
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid #ecece3;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .pm-events-callout :global(.pm-callout-link) {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'Inconsolata', ui-monospace, monospace;
+    font-size: 12px;
+    color: royalblue;
+    text-decoration: none;
+    pointer-events: auto; /* clicable pese al pointer-events:none de la isla */
+  }
+  .pm-events-callout :global(.pm-callout-link):hover { text-decoration: underline; }
 
   /* Marca de agua tejida: filigrana "STANDARTE" repetida sobre todo el mapa. */
   .pm-wrap :global(.pm-wm-tile) {

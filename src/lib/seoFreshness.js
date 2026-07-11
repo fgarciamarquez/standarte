@@ -38,7 +38,13 @@ export const seoFreshness = {
   huelva: '2026-07-08',
   cordoba: '2026-07-08',
   granada: '2026-07-08',
-  cadiz: '2026-07-08'
+  cadiz: '2026-07-08',
+  silleda: '2026-07-10',
+  ourense: '2026-07-10',
+  lleida: '2026-07-10',
+  girona: '2026-07-10',
+  santander: '2026-07-11',
+  gijon: '2026-07-11'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

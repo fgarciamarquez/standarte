@@ -736,16 +736,8 @@
           <p class="advisor-instruction">{typedText}</p>
         {/if}
 
-        {#if currentStep === 2 && tagResults.length}
-          <ol class="adv-results" transition:slide={{ duration: 300 }}>
-            {#each tagResults as r, i (r.tag)}
-              <li class="adv-result" transition:fade={{ duration: 200 }}>
-                <span class="adv-result-num">{ft.resultLabel} {i + 1}:</span>
-                <a class="adv-result-link" href={r.url} target="_blank" rel="noopener">{r.url}</a>
-              </li>
-            {/each}
-          </ol>
-        {/if}
+        <!-- Los resultados (enlaces a los hubs /actividad) se muestran ahora dentro
+             de la isla del mapa (PatMesh), con la URL reducida. -->
       </div>
     </div>
 
