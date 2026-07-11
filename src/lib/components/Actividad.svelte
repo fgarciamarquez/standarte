@@ -228,7 +228,7 @@
   <section class="act-details section">
     <div class="act-container">
       <div class="act-text">
-        <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <nav class="breadcrumbs act-breadcrumbs" aria-label="Breadcrumb">
           <ol itemscope itemtype="https://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
               <a itemprop="item" href={pathFor(lang, 'home')}><span itemprop="name">{t.crumbHome}</span></a>

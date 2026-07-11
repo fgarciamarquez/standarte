@@ -2923,6 +2923,12 @@ footer {
   color: #d32f2f;
 }
 
+/* Miga de pan de las páginas de actividad (fondo claro): el separador base es
+   blanco al 30 % —pensado para el héroe oscuro— y ahí no se veía. */
+.breadcrumbs.act-breadcrumbs .divider {
+  color: #c2c2c2;
+}
+
 /* Miga de pan dentro del cuerpo de la ficha de feria (fondo claro). */
 .breadcrumbs.feria-breadcrumbs {
   margin: 0 0 22px;
