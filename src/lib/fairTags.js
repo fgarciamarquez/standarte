@@ -64,6 +64,12 @@ export const fairTags = {
   "congreso-profesional": { family: "multi", label: { es: "Congreso profesional", pt: "Congresso profissional", en: "Professional congress", de: "Fachkongress", fr: "Congrès professionnel", it: "Congresso professionale", nl: "Vakcongres", zh: "专业大会", hi: "पेशेवर सम्मेलन", ko: "전문 학술대회", ja: "専門学会・会議" } },
 };
 export const fairActivities = {
+  "expomadeira": ["multisectorial"],
+  "feira-agropecuaria-madeira": ["agricultura-maquinaria", "ganaderia"],
+  "feira-emprego-formacao-empreendedorismo-madeira": ["multisectorial"],
+  "feira-empreendedorismo-madeira": ["digital-software"],
+  "festa-vinho-madeira": ["vino"],
+  "cider-fest-madeira": ["gastronomia-hosteleria"],
   "feaga-fuerteventura": ["agricultura-maquinaria", "ganaderia"],
   "gastrocanarias-tenerife": ["gastronomia-hosteleria"],
   "gran-canaria-me-gusta": ["alimentacion", "gastronomia-hosteleria"],

@@ -1,5 +1,47 @@
 export const fairsData = [
   {
+    "name": "Expomadeira",
+    "country": "pt",
+    "slug": "expomadeira",
+    "city": "Funchal",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feira Agropecuária da Madeira",
+    "country": "pt",
+    "slug": "feira-agropecuaria-madeira",
+    "city": "Madeira",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feira do Emprego, Formação e Empreendedorismo",
+    "country": "pt",
+    "slug": "feira-emprego-formacao-empreendedorismo-madeira",
+    "city": "Islas de Madeira",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feira do Empreendedorismo da Madeira",
+    "country": "pt",
+    "slug": "feira-empreendedorismo-madeira",
+    "city": "Islas de Madeira",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Festa do Vinho da Madeira",
+    "country": "pt",
+    "slug": "festa-vinho-madeira",
+    "city": "Funchal",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Cider Fest Madeira",
+    "country": "pt",
+    "slug": "cider-fest-madeira",
+    "city": "Madeira",
+    "sector": "Turismo y Hostelería"
+  },
+  {
     "name": "FEAGA",
     "country": "es",
     "slug": "feaga-fuerteventura",

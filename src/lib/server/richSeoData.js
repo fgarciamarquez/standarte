@@ -2,6 +2,227 @@
 // Cada artículo contiene entre 650 y 850 palabras de redacción profesional, estructurada en HTML semántico.
 
 export const richSeoData = {
+  "islas_de_madeira": {
+    "es": {
+      "breadcrumb": "Islas de Madeira",
+      "title": "Diseño y construcción de stands en Islas de Madeira (Funchal) | Standarte",
+      "h1": "Diseño y construcción de stands en Madeira",
+      "introText": "Diseñamos y construimos stands para las ferias de Madeira de principio a fin: diseño, fabricación en taller propio, transporte marítimo a la isla, montaje y desmontaje con un solo interlocutor. Prototipo 3D en 72 h, dominio de la logística insular, documentación técnica de los recintos y garantía de Proyecto Auditado. Presencia en Expomadeira, la Festa do Vinho da Madeira y la Feira Agropecuária da Madeira.",
+      "body": "\n        <h2>Diseño y construcción de stands en Madeira: un solo proveedor, sin subcontratar</h2>\n        <p>En <strong>Standarte</strong> diseñamos y construimos tu <strong>stand para las ferias de Madeira</strong> de principio a fin: diseño, fabricación en <strong>taller propio</strong>, transporte marítimo al archipiélago, montaje y desmontaje. Un <strong>único interlocutor</strong> para todo el proyecto, sin subcontratar ni intermediarios, con más de <strong>20 años de experiencia</strong> y presencia en los grandes certámenes madeirenses —<a href=\"/ferias/expomadeira\">Expomadeira</a>, la <a href=\"/ferias/festa-vinho-madeira\">Festa do Vinho da Madeira</a> o la <a href=\"/ferias/feira-agropecuaria-madeira\">Feira Agropecuária da Madeira</a>—. Al controlar cada fase internamente, los plazos son más firmes y el acabado que apruebas es exactamente el que se levanta en el recinto.</p>\n\n        <h2>Cómo trabajamos tu stand en Madeira, paso a paso</h2>\n        <ol>\n          <li><strong>Briefing y objetivos.</strong> Entendemos tu marca, tu producto y qué quieres conseguir en la feria para dimensionar el espacio y la inversión.</li>\n          <li><strong>Diseño y prototipo 3D en 72 h.</strong> Proyectamos el stand con software de ingeniería 3D de alta fidelidad y te entregamos un prototipo fotorrealista para validar cada detalle antes de fabricar nada.</li>\n          <li><strong>Validación con el Sistema de <a href=\"/proyecto-auditado\">Proyecto Auditado</a>.</strong> Cada aprobación —diseño, presupuesto y cambios— queda registrada en un expediente verificable y archivable: nuestra garantía 100&nbsp;% de que se construye lo aprobado.</li>\n          <li><strong>Fabricación en taller propio.</strong> Producimos la carpintería a medida, mobiliario y gráfica con control de calidad artesanal.</li>\n          <li><strong>Transporte insular y montaje.</strong> Coordinamos la logística marítima a la isla y nuestros montadores levantan el stand con la prefabricación terminada 24&nbsp;h antes de la apertura.</li>\n          <li><strong>Desmontaje.</strong> Retiramos el stand al cierre del certamen sin que tengas que ocuparte de nada.</li>\n        </ol>\n\n        <h2>Tipos de stand que construimos en Madeira</h2>\n        <ul>\n          <li><strong>Stand modular</strong>: rápido y reutilizable, ideal para presencias recurrentes en el Madeira Tecnopolo.</li>\n          <li><strong>Stand a medida</strong>: diseño único en carpintería premium, adaptado a tu espacio.</li>\n          <li><strong>Stand premium y de doble altura</strong>: gran impacto, altillo, salas de reunión y zonas VIP.</li>\n          <li><strong>Stand isla y córner</strong>: aprovechamiento óptimo según la ubicación en el recinto.</li>\n          <li><strong>Integración audiovisual</strong>: iluminación LED de bajo consumo, pantallas y multimedia.</li>\n        </ul>\n        <p>¿Cuánto cuesta un stand en Madeira? Con nuestro <strong>cálculo instantáneo según los metros cuadrados</strong> obtienes en segundos una previsión de precio para un stand de categoría premium. Consulta los tramos y calcula tu inversión en <a href=\"/precios\">precios de stands</a>.</p>\n\n        <h2>Documentación técnica de los recintos de Madeira</h2>\n        <p>El principal recinto del archipiélago es el <strong>Madeira Tecnopolo</strong>, en Funchal: un parque tecnológico y de congresos con pabellón de exposiciones y auditorio que acoge Expomadeira, ferias profesionales y grandes eventos de la isla. Funchal cuenta además con el <strong>Centro de Congressos da Madeira</strong> y espacios al aire libre donde se celebran la Festa do Vinho y otras citas populares. Esta variedad permite desde stands modulares hasta islas de gran formato y dobles alturas.</p>\n        <p>Dominamos la documentación técnica que exigen estos recintos: solicitud de acometidas eléctricas y de agua, proyectos visados para trabajos en altura, planes de coordinación de actividades y los <strong>certificados de reacción al fuego</strong> de maderas y textiles. Entregamos toda la documentación a la oficina técnica de cada feria y dejamos el stand montado y verificado 24&nbsp;h antes de la apertura.</p>\n\n        <h2>Ferias y sectores en Madeira</h2>\n        <p>El archipiélago concentra un calendario ferial propio y muy diverso, y montamos en él —cada nombre enlaza a su feria porque de verdad la cubrimos—. En el ámbito <a href=\"/actividad/multisectorial\">multisectorial</a> y del empleo: <a href=\"/ferias/expomadeira\">Expomadeira</a>, la <a href=\"/ferias/feira-emprego-formacao-empreendedorismo-madeira\">Feira do Emprego, Formação e Empreendedorismo</a> y la <a href=\"/ferias/feira-empreendedorismo-madeira\">Feira do Empreendedorismo da Madeira</a> (<a href=\"/actividad/digital-software\">tecnología e innovación</a>).</p>\n        <p>En el sector primario y agroalimentario: la <a href=\"/ferias/feira-agropecuaria-madeira\">Feira Agropecuária da Madeira</a> (<a href=\"/actividad/agricultura-maquinaria\">agrícola</a> y <a href=\"/actividad/ganaderia\">ganadera</a>); y en gastronomía y enología: la <a href=\"/ferias/festa-vinho-madeira\">Festa do Vinho da Madeira</a> (<a href=\"/actividad/vino\">vino</a>) y el <a href=\"/ferias/cider-fest-madeira\">Cider Fest Madeira</a> (<a href=\"/actividad/gastronomia-hosteleria\">gastronomía</a>). Que todas aparezcan enlazadas es la prueba de una cobertura real que ningún competidor local puede demostrar.</p>\n\n        <h2>La mayor cobertura de la Península y las islas</h2>\n        <p>Este es nuestro mayor diferencial: Standarte ofrece la <strong>mayor cobertura peninsular e insular</strong> con un <strong>mismo constructor</strong> y las <strong>mismas cotas de calidad</strong>. Resolvemos la <strong>logística marítima a Madeira</strong> como parte del servicio, sin sorpresas, y montamos con la misma solvencia en <a href=\"/diseno_montaje_stands_lisboa\">Lisboa</a>, <a href=\"/diseno_montaje_stands_oporto\">Oporto</a>, <a href=\"/diseno_montaje_stands_madrid\">Madrid</a>, <a href=\"/diseno_montaje_stands_barcelona\">Barcelona</a> y las <a href=\"/diseno_montaje_stands_islas_canarias\">Islas Canarias</a>. Esta malla ibérica y atlántica es un activo que ningún proveedor local puede igualar.</p>\n\n        <h2>Pat, tu asistente de expansión</h2>\n        <p>Antes incluso de diseñar el stand, <strong>Pat</strong> —nuestro asesor interactivo— te recomienda las ferias y congresos clave para tu sector en España y Portugal y prepara tu solicitud en un minuto. Un servicio de asesoramiento gratuito y exclusivo para acertar con los eventos donde exponer. <a href=\"/\">Habla con Pat</a> desde la página de inicio.</p>\n\n        <h2>Garantía 100&nbsp;%: el Sistema de Proyecto Auditado</h2>\n        <p>Cada proyecto queda registrado en un expediente verificable y archivable —prototipo 3D, presupuesto y aprobaciones— que actúa como testigo del acuerdo y garantiza que se construye exactamente lo que apruebas, sin sorpresas. Es nuestra herramienta propia de confianza: descubre el <a href=\"/proyecto-auditado\">Sistema de Proyecto Auditado</a>.</p>\n\n        <h2>Logística de montaje en Madeira</h2>\n        <p>La insularidad no es un obstáculo con Standarte: prefabricamos el stand completo en nuestro taller peninsular y coordinamos el transporte marítimo a Funchal, de modo que llega listo para montar sin sorpresas de plazos ni de coste. Calcula tu inversión al instante en <a href=\"/precios\">precios de stands</a>.</p>\n\n        <h2>Por qué elegir a Standarte para tu stand en Madeira</h2>\n        <p>Más de 20 años de experiencia, taller propio, más de <a href=\"/#prototipos-3d\">136 proyectos 3D</a> en cartera y una valoración media de 4,9/5. Sumamos lo que la competencia local no ofrece junto: <strong>prototipo 3D en 72&nbsp;h</strong>, <strong>cálculo instantáneo de precio por m²</strong>, <strong>garantía de Proyecto Auditado</strong>, asesoramiento de Pat, dominio de la <strong>logística insular</strong> y la <strong>mayor cobertura de España y Portugal</strong>. Con Standarte tu marca transmite en Madeira solidez, calidad técnica y máximo compromiso comercial.</p>\n        <p><strong>Pide tu presupuesto en 24&nbsp;h</strong> o calcula tu stand al instante en <a href=\"/precios\">precios</a>. Diseñamos, fabricamos y montamos tu stand en Madeira con una sola llamada.</p>\n      ",
+      "faqs": [
+        {
+          "q": "¿Diseñáis, fabricáis y montáis vosotros el stand o subcontratáis?",
+          "a": "Todo el proceso es interno, sin subcontratas: diseñamos, fabricamos en nuestro taller propio, transportamos a la isla, montamos y desmontamos. Un único interlocutor para todo el proyecto, con plazos más firmes y sin problemas de coordinación."
+        },
+        {
+          "q": "¿Cómo resolvéis la logística a un archipiélago como Madeira?",
+          "a": "La insularidad es parte de nuestro servicio: prefabricamos el stand completo en nuestro taller peninsular y coordinamos el transporte marítimo a Funchal, de modo que llega listo para montar sin sorpresas de plazos ni de coste."
+        },
+        {
+          "q": "¿En qué ferias de Madeira montáis stands?",
+          "a": "Trabajamos en el calendario isleño: Expomadeira, la Feira Agropecuária da Madeira, la Feira do Emprego, Formação e Empreendedorismo, la Feira do Empreendedorismo da Madeira, la Festa do Vinho da Madeira y el Cider Fest Madeira."
+        },
+        {
+          "q": "¿Qué recintos hay en Madeira?",
+          "a": "El principal es el Madeira Tecnopolo, en Funchal, un parque tecnológico y de congresos con pabellón de exposiciones y auditorio. Funchal cuenta además con el Centro de Congressos da Madeira y espacios al aire libre para eventos populares."
+        },
+        {
+          "q": "¿Cuánto cuesta un stand en Madeira?",
+          "a": "Depende de los metros cuadrados y del tipo de stand (modular, a medida o premium). Con nuestro cálculo instantáneo según los m² obtienes en segundos una previsión de precio; el presupuesto en firme lo ajustamos contigo."
+        },
+        {
+          "q": "¿Montáis también en la Península y en Canarias?",
+          "a": "Sí. Ofrecemos la mayor cobertura peninsular e insular con el mismo constructor y las mismas cotas de calidad: montamos en Madeira, Lisboa, Oporto, Madrid, Barcelona, las Islas Canarias y en toda España y Portugal, con la misma solvencia."
+        }
+      ]
+    },
+    "en": {
+      "breadcrumb": "Madeira Islands",
+      "title": "Exhibition stand design and construction in the Madeira Islands (Funchal) | Standarte",
+      "h1": "Exhibition stand design and construction in Madeira",
+      "introText": "We design and build exhibition stands for Madeira's fairs from start to finish: design, in-house manufacturing, sea transport to the island, assembly and dismantling with a single point of contact. 3D prototype in 72h, mastery of island logistics, venue technical documentation and the Audited Project guarantee. Presence at Expomadeira, the Madeira Wine Festival and the Madeira Agricultural Fair.",
+      "body": "\n        <h2>Exhibition stand design and construction in Madeira: one provider, no subcontracting</h2>\n        <p>At <strong>Standarte</strong> we design and build your <strong>stand for Madeira's fairs</strong> from start to finish: design, in-house manufacturing in our <strong>own workshop</strong>, sea transport to the archipelago, assembly and dismantling. A <strong>single point of contact</strong> for the whole project, with no subcontractors or middlemen, more than <strong>20 years of experience</strong> and a presence at the island's major events —<a href=\"/en/ferias/expomadeira\">Expomadeira</a>, the <a href=\"/en/ferias/festa-vinho-madeira\">Madeira Wine Festival</a> and the <a href=\"/en/ferias/feira-agropecuaria-madeira\">Madeira Agricultural Fair</a>—. Because we control every stage internally, deadlines are firmer and the finish you approve is exactly what is built at the venue.</p>\n\n        <h2>How we build your stand in Madeira, step by step</h2>\n        <ol>\n          <li><strong>Briefing and objectives.</strong> We understand your brand, your product and your goals at the fair to size the space and the investment.</li>\n          <li><strong>Design and 3D prototype in 72h.</strong> We engineer the stand with high-fidelity 3D software and deliver a photorealistic prototype so you can validate every detail before anything is built.</li>\n          <li><strong>Validation with the <a href=\"/en/audited-project\">Audited Project</a> system.</strong> Every approval —design, quote and changes— is recorded in a verifiable, archivable file: our 100&nbsp;% guarantee that what is built is what you approved.</li>\n          <li><strong>In-house manufacturing.</strong> We produce the custom carpentry, furniture and graphics under artisan-level quality control.</li>\n          <li><strong>Island transport and assembly.</strong> We coordinate the sea logistics to the island and our fitters raise the stand with the pre-fabrication completed 24&nbsp;h before the opening.</li>\n          <li><strong>Dismantling.</strong> We remove the stand once the event closes so you don't have to deal with a thing.</li>\n        </ol>\n\n        <h2>Types of stand we build in Madeira</h2>\n        <ul>\n          <li><strong>Modular stand</strong>: fast and reusable, ideal for recurring appearances at Madeira Tecnopolo.</li>\n          <li><strong>Custom stand</strong>: unique design in premium carpentry, tailored to your space.</li>\n          <li><strong>Premium and double-decker stand</strong>: high impact, mezzanine, meeting rooms and VIP areas.</li>\n          <li><strong>Island and corner stand</strong>: optimal use of space depending on your location at the venue.</li>\n          <li><strong>Audiovisual integration</strong>: low-consumption LED lighting, screens and multimedia.</li>\n        </ul>\n        <p>How much does a stand in Madeira cost? With our <strong>instant calculation based on square metres</strong> you get a price forecast for a premium-category stand in seconds. Check the price bands and calculate your investment on <a href=\"/en/prices\">stand prices</a>.</p>\n\n        <h2>Technical documentation of the Madeira venues</h2>\n        <p>The archipelago's main venue is <strong>Madeira Tecnopolo</strong>, in Funchal: a technology and congress park with an exhibition pavilion and auditorium that hosts Expomadeira, professional fairs and the island's major events. Funchal also has the <strong>Madeira Congress Centre</strong> and open-air spaces where the Wine Festival and other popular events are held. This variety accommodates everything from modular stands to large-format islands and double-decker builds.</p>\n        <p>We master the technical documentation these venues require: electrical and water connection requests, certified projects for work at height, activity coordination plans and the <strong>fire-reaction certificates</strong> for timber and textiles. We submit all documentation to each fair's technical office and leave the stand assembled and checked 24&nbsp;h before the opening.</p>\n\n        <h2>Fairs and sectors in Madeira</h2>\n        <p>The archipelago has its own diverse trade-fair calendar and we build across it —each name links to its fair because we genuinely cover it—. In the <a href=\"/en/actividad/multisectorial\">multi-sector</a> and employment field: <a href=\"/en/ferias/expomadeira\">Expomadeira</a>, the <a href=\"/en/ferias/feira-emprego-formacao-empreendedorismo-madeira\">Employment, Training and Entrepreneurship Fair</a> and the <a href=\"/en/ferias/feira-empreendedorismo-madeira\">Madeira Entrepreneurship Fair</a> (<a href=\"/en/actividad/digital-software\">technology and innovation</a>).</p>\n        <p>In the primary and agri-food sector: the <a href=\"/en/ferias/feira-agropecuaria-madeira\">Madeira Agricultural Fair</a> (<a href=\"/en/actividad/agricultura-maquinaria\">agriculture</a> and <a href=\"/en/actividad/ganaderia\">livestock</a>); and in gastronomy and oenology: the <a href=\"/en/ferias/festa-vinho-madeira\">Madeira Wine Festival</a> (<a href=\"/en/actividad/vino\">wine</a>) and <a href=\"/en/ferias/cider-fest-madeira\">Cider Fest Madeira</a> (<a href=\"/en/actividad/gastronomia-hosteleria\">gastronomy</a>). That every one of them appears linked is proof of real coverage no local competitor can demonstrate.</p>\n\n        <h2>The widest mainland and island coverage</h2>\n        <p>This is our biggest differentiator: Standarte offers the <strong>widest mainland and island coverage</strong> with the <strong>same builder</strong> and the <strong>same quality standards</strong>. We handle the <strong>sea logistics to Madeira</strong> as part of the service, with no surprises, and build with the same reliability in <a href=\"/en/stand_design_assembly_lisbon\">Lisbon</a>, <a href=\"/en/stand_design_assembly_porto\">Porto</a>, <a href=\"/en/stand_design_assembly_madrid\">Madrid</a>, <a href=\"/en/stand_design_assembly_barcelona\">Barcelona</a> and the <a href=\"/en/stand_design_assembly_canary_islands\">Canary Islands</a>. This Iberian and Atlantic network is an asset no local provider can match.</p>\n\n        <h2>Pat, your expansion assistant</h2>\n        <p>Even before designing the stand, <strong>Pat</strong> —our interactive advisor— recommends the key fairs and congresses for your sector in Spain and Portugal and prepares your request in a minute. A free, exclusive advisory service to get the events where you exhibit right. <a href=\"/en\">Talk to Pat</a> from the home page.</p>\n\n        <h2>100&nbsp;% guarantee: the Audited Project system</h2>\n        <p>Every project is recorded in a verifiable, archivable file —3D prototype, quote and approvals— that acts as a witness to the agreement and guarantees that exactly what you approve is built, with no surprises. It's our own trust tool: discover the <a href=\"/en/audited-project\">Audited Project system</a>.</p>\n\n        <h2>Assembly logistics in Madeira</h2>\n        <p>Being an archipelago is no obstacle with Standarte: we pre-fabricate the whole stand in our mainland workshop and coordinate sea transport to Funchal, so it arrives ready to assemble with no surprises in schedule or cost. Calculate your investment instantly on <a href=\"/en/prices\">stand prices</a>.</p>\n\n        <h2>Why choose Standarte for your stand in Madeira</h2>\n        <p>More than 20 years of experience, our own workshop, a portfolio of over <a href=\"/en/#prototipos-3d\">136 3D projects</a> and an average rating of 4.9/5. We bring together what local competitors don't offer as a package: <strong>3D prototype in 72&nbsp;h</strong>, <strong>instant price calculation per m²</strong>, <strong>Audited Project guarantee</strong>, Pat's advice, mastery of <strong>island logistics</strong> and the <strong>widest coverage in Spain and Portugal</strong>. With Standarte your brand conveys solidity, technical quality and full commercial commitment in Madeira.</p>\n        <p><strong>Request your quote within 24&nbsp;h</strong> or calculate your stand instantly on <a href=\"/en/prices\">prices</a>. We design, manufacture and build your stand in Madeira with a single call.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Do you design, manufacture and build the stand yourselves, or subcontract?",
+          "a": "The entire process is in-house, with no subcontractors: we design, manufacture in our own workshop, transport to the island, assemble and dismantle. A single point of contact for the whole project, with firmer deadlines and no coordination problems."
+        },
+        {
+          "q": "How do you handle logistics to an archipelago like Madeira?",
+          "a": "Being an archipelago is part of our service: we pre-fabricate the whole stand in our mainland workshop and coordinate sea transport to Funchal, so it arrives ready to assemble with no surprises in schedule or cost."
+        },
+        {
+          "q": "Which Madeira fairs do you build stands at?",
+          "a": "We work across the island's calendar: Expomadeira, the Madeira Agricultural Fair, the Employment, Training and Entrepreneurship Fair, the Madeira Entrepreneurship Fair, the Madeira Wine Festival and Cider Fest Madeira."
+        },
+        {
+          "q": "What venues are there in Madeira?",
+          "a": "The main one is Madeira Tecnopolo, in Funchal, a technology and congress park with an exhibition pavilion and auditorium. Funchal also has the Madeira Congress Centre and open-air spaces for popular events."
+        },
+        {
+          "q": "How much does a stand in Madeira cost?",
+          "a": "It depends on the square metres and the type of stand (modular, custom or premium). With our instant calculation based on m² you get a price forecast in seconds; the firm quote we fine-tune with you."
+        },
+        {
+          "q": "Do you also build on the mainland and in the Canary Islands?",
+          "a": "Yes. We offer the widest mainland and island coverage with the same builder and the same quality standards: we build in Madeira, Lisbon, Porto, Madrid, Barcelona, the Canary Islands and across all of Spain and Portugal, with the same reliability."
+        }
+      ]
+    },
+    "de": {
+      "breadcrumb": "Madeira-Inseln",
+      "title": "Messestand-Design und -Montage auf Madeira | Standarte",
+      "h1": "Messestand-Design und -Montage auf Madeira",
+      "introText": "Wir konzipieren und montieren Messestände auf Madeira —mit dem Madeira Tecnopolo (Funchal) als wichtigstem Veranstaltungsort— und steuern jede Phase: 3D-Design, Fertigung in eigener Werkstatt, Logistik, Aufbau und technische Abnahmen.",
+      "body": "\n        <p>Mit über 20 Jahren Erfahrung plant und montiert Standarte Messestände auf Madeira – mit dem Madeira Tecnopolo (Funchal) als Leitveranstaltungsort – und übernimmt die Seelogistik zur Insel.</p>\n        <h2>Madeira, ein Messeplatz im Atlantik</h2>\n        <p>Die Insel hat einen eigenen, vielfältigen Messekalender: <a href=\"/de/ferias/expomadeira\">Expomadeira</a>, die <a href=\"/de/ferias/festa-vinho-madeira\">Festa do Vinho da Madeira</a>, die <a href=\"/de/ferias/feira-agropecuaria-madeira\">Feira Agropecuária da Madeira</a> und weitere. Der wichtigste Veranstaltungsort ist der Madeira Tecnopolo in Funchal.</p>\n        <h2>Schlüsselfertige Montage mit Seelogistik zur Insel</h2>\n        <p>Wir betreuen jedes Projekt aus unserer eigenen Werkstatt und koordinieren den Seetransport nach Funchal. Jede Freigabe wird mit unserem <a href=\"/de/auditiertes-projekt\">System Auditiertes Projekt</a> festgehalten. Berechnen Sie Ihre Investition unter <a href=\"/de/preise\">Standpreise</a>.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Auf welchen Messen Madeiras bauen Sie Stände?",
+          "a": "Auf Expomadeira, der Festa do Vinho da Madeira, der Feira Agropecuária und weiteren Messen der Insel, vor allem im Madeira Tecnopolo in Funchal."
+        },
+        {
+          "q": "Wie lösen Sie die Logistik zur Insel?",
+          "a": "Wir fertigen den Stand komplett in unserer Werkstatt auf dem Festland vor und koordinieren den Seetransport nach Funchal – ohne Überraschungen bei Terminen oder Kosten."
+        }
+      ]
+    },
+    "pt": {
+      "breadcrumb": "Ilhas da Madeira",
+      "title": "Design e montagem de stands na Madeira | Standarte",
+      "h1": "Design e montagem de stands na Madeira",
+      "introText": "Concebemos e montamos stands na Madeira —com o Madeira Tecnopolo (Funchal) como recinto de referência— controlando cada fase: design 3D, fabrico em oficina própria, logística, montagem e validações técnicas.",
+      "body": "\n        <p>Com mais de 20 anos de experiência, a Standarte concebe e monta stands na Madeira — com o Madeira Tecnopolo (Funchal) como recinto de referência — resolvendo a logística marítima à ilha.</p>\n        <h2>A Madeira, uma praça feiral do Atlântico</h2>\n        <p>A ilha tem um calendário feiral próprio e diverso: <a href=\"/pt/ferias/expomadeira\">Expomadeira</a>, a <a href=\"/pt/ferias/festa-vinho-madeira\">Festa do Vinho da Madeira</a>, a <a href=\"/pt/ferias/feira-agropecuaria-madeira\">Feira Agropecuária da Madeira</a> e muitas outras. O recinto principal é o Madeira Tecnopolo, no Funchal.</p>\n        <h2>Montagem chave na mão com logística marítima à ilha</h2>\n        <p>Gerimos cada projeto a partir da nossa oficina própria e coordenamos o transporte marítimo para o Funchal. Cada aprovação fica registada com o nosso <a href=\"/pt/projeto-auditado\">Sistema de Projeto Auditado</a>. Calcule o seu investimento em <a href=\"/pt/precos\">preços de stands</a>.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Em que feiras da Madeira montam stands?",
+          "a": "Na Expomadeira, na Festa do Vinho da Madeira, na Feira Agropecuária e noutras feiras da ilha, sobretudo no Madeira Tecnopolo, no Funchal."
+        },
+        {
+          "q": "Como resolvem a logística para a ilha?",
+          "a": "Pré-fabricamos o stand completo na nossa oficina peninsular e coordenamos o transporte marítimo para o Funchal — sem surpresas de prazos nem de custo."
+        }
+      ]
+    },
+    "fr": {
+      "breadcrumb": "Îles de Madère",
+      "title": "Conception et montage de stands à Madère | Standarte",
+      "h1": "Conception et montage de stands à Madère",
+      "introText": "Nous concevons et montons des stands à Madère —avec le Madeira Tecnopolo (Funchal) comme enceinte de référence— en maîtrisant chaque étape : conception 3D, fabrication en atelier propre, logistique, montage et validations techniques.",
+      "body": "\n        <p>Forts de plus de 20 ans d'expérience, nous concevons et montons chez Standarte des stands à Madère — avec le Madeira Tecnopolo (Funchal) comme enceinte de référence — en assurant la logistique maritime vers l'île.</p>\n        <h2>Madère, une place foire de l'Atlantique</h2>\n        <p>L'île a son propre calendrier de salons, très divers : <a href=\"/fr/ferias/expomadeira\">Expomadeira</a>, la <a href=\"/fr/ferias/festa-vinho-madeira\">Festa do Vinho da Madeira</a>, la <a href=\"/fr/ferias/feira-agropecuaria-madeira\">Feira Agropecuária da Madeira</a> et bien d'autres. L'enceinte principale est le Madeira Tecnopolo, à Funchal.</p>\n        <h2>Montage clé en main avec logistique maritime vers l'île</h2>\n        <p>Nous gérons chaque projet depuis notre propre atelier et coordonnons le transport maritime vers Funchal. Chaque validation est consignée avec notre <a href=\"/fr/projet-audite\">Système de Projet Audité</a>. Calculez votre investissement dans <a href=\"/fr/tarifs\">tarifs des stands</a>.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Sur quels salons de Madère montez-vous des stands ?",
+          "a": "Sur Expomadeira, la Festa do Vinho da Madeira, la Feira Agropecuária et d'autres salons de l'île, principalement au Madeira Tecnopolo, à Funchal."
+        },
+        {
+          "q": "Comment gérez-vous la logistique vers l'île ?",
+          "a": "Nous préfabriquons le stand complet dans notre atelier continental et coordonnons le transport maritime vers Funchal — sans mauvaises surprises de délais ni de coût."
+        }
+      ]
+    },
+    "it": {
+      "breadcrumb": "Isole di Madera",
+      "title": "Progettazione e allestimento stand a Madeira | Standarte",
+      "h1": "Progettazione e allestimento stand a Madeira",
+      "introText": "Progettiamo e allestiamo stand a Madeira —con il Madeira Tecnopolo (Funchal) come quartiere di riferimento— controllando ogni fase: progettazione 3D, fabbricazione in officina propria, logistica, allestimento e validazioni tecniche.",
+      "body": "\n        <p>Con oltre 20 anni di esperienza, Standarte progetta e allestisce stand a Madeira — con il Madeira Tecnopolo (Funchal) come riferimento — gestendo la logistica marittima all'isola.</p>\n        <h2>Madeira, una piazza fieristica dell'Atlantico</h2>\n        <p>L'isola ha un proprio calendario fieristico, molto vario: <a href=\"/it/ferias/expomadeira\">Expomadeira</a>, la <a href=\"/it/ferias/festa-vinho-madeira\">Festa do Vinho da Madeira</a>, la <a href=\"/it/ferias/feira-agropecuaria-madeira\">Feira Agropecuária da Madeira</a> e molte altre. Il quartiere principale è il Madeira Tecnopolo, a Funchal.</p>\n        <h2>Allestimento chiavi in mano con logistica marittima all'isola</h2>\n        <p>Gestiamo ogni progetto dalla nostra officina propria e coordiniamo il trasporto marittimo a Funchal. Ogni approvazione viene registrata con il nostro <a href=\"/it/progetto-verificato\">Sistema di Progetto Verificato</a>. Calcola il tuo investimento in <a href=\"/it/prezzi\">prezzi degli stand</a>.</p>\n      ",
+      "faqs": [
+        {
+          "q": "In quali fiere di Madeira allestite stand?",
+          "a": "In Expomadeira, nella Festa do Vinho da Madeira, nella Feira Agropecuária e in altre fiere dell'isola, soprattutto al Madeira Tecnopolo, a Funchal."
+        },
+        {
+          "q": "Come gestite la logistica all'isola?",
+          "a": "Prefabbrichiamo lo stand completo nella nostra officina peninsulare e coordiniamo il trasporto marittimo a Funchal — senza sorprese di tempi né di costo."
+        }
+      ]
+    },
+    "nl": {
+      "breadcrumb": "Madeira-eilanden",
+      "title": "Ontwerp en montage van beursstands op Madeira | Standarte",
+      "h1": "Ontwerp en montage van beursstands op Madeira",
+      "introText": "Wij ontwerpen en bouwen beursstands op Madeira —met het Madeira Tecnopolo (Funchal) als toonaangevende locatie— en houden elke fase in eigen hand: 3D-ontwerp, fabricage in eigen werkplaats, logistiek, opbouw en technische keuringen.",
+      "body": "\n        <p>Met ruim 20 jaar ervaring ontwerpt en bouwt Standarte beursstands op Madeira — met het Madeira Tecnopolo (Funchal) als toonaangevende locatie — en verzorgt de zeevracht naar het eiland.</p>\n        <h2>Madeira, een beursplaats in de Atlantische Oceaan</h2>\n        <p>Het eiland heeft een eigen, gevarieerde beurskalender: <a href=\"/nl/ferias/expomadeira\">Expomadeira</a>, de <a href=\"/nl/ferias/festa-vinho-madeira\">Festa do Vinho da Madeira</a>, de <a href=\"/nl/ferias/feira-agropecuaria-madeira\">Feira Agropecuária da Madeira</a> en vele andere. De belangrijkste locatie is het Madeira Tecnopolo, in Funchal.</p>\n        <h2>Kant-en-klare opbouw met zeevracht naar het eiland</h2>\n        <p>Wij beheren elk project vanuit onze eigen werkplaats en coördineren het zeetransport naar Funchal. Elke goedkeuring wordt vastgelegd met ons <a href=\"/nl/gecontroleerd-project\">Gecontroleerd Project-systeem</a>. Bereken uw investering bij <a href=\"/nl/prijzen\">standprijzen</a>.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Op welke beurzen van Madeira bouwt u stands?",
+          "a": "Op Expomadeira, de Festa do Vinho da Madeira, de Feira Agropecuária en andere beurzen van het eiland, vooral in het Madeira Tecnopolo, in Funchal."
+        },
+        {
+          "q": "Hoe regelt u de logistiek naar het eiland?",
+          "a": "Wij prefabriceren de volledige stand in onze werkplaats op het vasteland en coördineren het zeetransport naar Funchal — zonder verrassingen in planning of kosten."
+        }
+      ]
+    },
+    "zh": {
+      "breadcrumb": "马德拉群岛",
+      "title": "马德拉展台设计与搭建 | Standarte",
+      "h1": "马德拉展台设计与搭建",
+      "introText": "我们在马德拉设计并搭建展台——以丰沙尔的 Madeira Tecnopolo 为核心展馆——全程把控每一环节：3D设计、自有工厂制作、物流、搭建与技术审批。",
+      "body": "\n        <p>凭借20多年经验，Standarte 在马德拉设计并搭建展台——以丰沙尔的 Madeira Tecnopolo 为核心展馆——并负责前往海岛的海运物流。</p>\n        <h2>马德拉——大西洋上的会展舞台</h2>\n        <p>该岛拥有丰富的本地展会日程：<a href=\"/zh/ferias/expomadeira\">Expomadeira</a>、<a href=\"/zh/ferias/festa-vinho-madeira\">马德拉葡萄酒节</a>、<a href=\"/zh/ferias/feira-agropecuaria-madeira\">马德拉农牧业展</a>等。核心展馆是位于丰沙尔的 Madeira Tecnopolo。</p>\n        <h2>一站式搭建，含前往海岛的海运物流</h2>\n        <p>我们在自有工厂中全程管理项目，并协调前往丰沙尔的海运。每次确认都通过我们的<a href=\"/zh/shenji-xiangmu\">审计项目系统</a>记录在案。可在<a href=\"/zh/jiage\">展台价格</a>中计算您的投资。</p>\n      ",
+      "faqs": [
+        {
+          "q": "你们在马德拉的哪些展会搭建展台？",
+          "a": "Expomadeira、马德拉葡萄酒节、马德拉农牧业展等岛上展会，主要在丰沙尔的 Madeira Tecnopolo。"
+        },
+        {
+          "q": "如何解决前往海岛的物流？",
+          "a": "我们在半岛的自有工厂预制整套展台，并协调海运至丰沙尔，交期与成本均无意外。"
+        }
+      ]
+    },
+    "hi": {
+      "breadcrumb": "मडीरा द्वीप समूह",
+      "title": "मडीरा में स्टैंड डिज़ाइन और निर्माण | Standarte",
+      "h1": "मडीरा में स्टैंड डिज़ाइन और निर्माण",
+      "introText": "हम मडीरा में प्रदर्शनी स्टैंड डिज़ाइन और स्थापित करते हैं — जहाँ फुंचल का Madeira Tecnopolo प्रमुख स्थल है — और हर चरण को नियंत्रित करते हैं: 3D डिज़ाइन, अपनी कार्यशाला में निर्माण, लॉजिस्टिक्स, स्थापना और तकनीकी सत्यापन।",
+      "body": "\n        <p>20 से अधिक वर्षों के अनुभव के साथ, Standarte मडीरा में स्टैंड डिज़ाइन और स्थापित करता है — फुंचल का Madeira Tecnopolo प्रमुख स्थल के रूप में — और द्वीप तक समुद्री लॉजिस्टिक्स संभालता है।</p>\n        <h2>मडीरा — अटलांटिक का एक प्रदर्शनी केंद्र</h2>\n        <p>इस द्वीप का अपना विविध मेला-कैलेंडर है: <a href=\"/hi/ferias/expomadeira\">Expomadeira</a>, <a href=\"/hi/ferias/festa-vinho-madeira\">मडीरा वाइन उत्सव</a>, <a href=\"/hi/ferias/feira-agropecuaria-madeira\">मडीरा कृषि-पशुपालन मेला</a> और कई अन्य। प्रमुख स्थल फुंचल स्थित Madeira Tecnopolo है।</p>\n        <h2>टर्नकी स्थापना, द्वीप तक समुद्री लॉजिस्टिक्स सहित</h2>\n        <p>हम हर परियोजना को अपनी कार्यशाला से संभालते हैं और फुंचल तक समुद्री परिवहन का समन्वय करते हैं। हर स्वीकृति हमारे <a href=\"/hi/audit-pariyojana\">ऑडिटेड प्रोजेक्ट सिस्टम</a> में दर्ज होती है। <a href=\"/hi/kimat\">स्टैंड की कीमतें</a> में अपना निवेश जानें।</p>\n      ",
+      "faqs": [
+        {
+          "q": "Standarte मडीरा की किन मेलों में स्टैंड बनाता है?",
+          "a": "Expomadeira, मडीरा वाइन उत्सव, कृषि-पशुपालन मेला और द्वीप के अन्य मेलों में — मुख्यतः फुंचल के Madeira Tecnopolo में।"
+        },
+        {
+          "q": "द्वीप तक लॉजिस्टिक्स कैसे संभालते हैं?",
+          "a": "हम प्रायद्वीपीय कार्यशाला में पूरा स्टैंड पूर्व-निर्मित करते हैं और फुंचल तक समुद्री परिवहन का समन्वय करते हैं — समय या लागत में बिना किसी अप्रत्याशित बाधा के।"
+        }
+      ]
+    },
+    "ko": {
+      "breadcrumb": "마데이라 제도",
+      "title": "마데이라 부스 디자인·시공 | Standarte",
+      "h1": "마데이라 부스 디자인·시공",
+      "introText": "Standarte는 푼샬의 Madeira Tecnopolo를 중심 전시장으로 하여 마데이라에서 부스를 디자인·시공하며, 3D 디자인, 자체 공방 제작, 물류, 설치, 기술 승인까지 모든 단계를 직접 관리합니다.",
+      "body": "\n        <p>20년 이상의 경력을 바탕으로 Standarte는 푼샬의 Madeira Tecnopolo를 중심 전시장으로 하여 마데이라에서 부스를 디자인·시공하며 섬까지의 해상 물류를 담당합니다.</p>\n        <h2>마데이라 — 대서양의 전시 무대</h2>\n        <p>섬은 다양한 자체 전시 일정을 갖추고 있습니다: <a href=\"/ko/ferias/expomadeira\">Expomadeira</a>, <a href=\"/ko/ferias/festa-vinho-madeira\">마데이라 와인 축제</a>, <a href=\"/ko/ferias/feira-agropecuaria-madeira\">마데이라 농축산 박람회</a> 등. 중심 전시장은 푼샬의 Madeira Tecnopolo입니다.</p>\n        <h2>섬까지의 해상 물류를 포함한 턴키 시공</h2>\n        <p>우리는 자체 공방에서 모든 프로젝트를 관리하고 푼샬로의 해상 운송을 조율합니다. 모든 승인은 당사의 <a href=\"/ko/gamsa-peurojekteu\">감사 프로젝트 시스템</a>에 기록됩니다. <a href=\"/ko/gagyeok\">부스 가격</a>에서 투자 비용을 계산해 보세요.</p>\n      ",
+      "faqs": [
+        {
+          "q": "Standarte는 마데이라의 어떤 전시회에서 부스를 시공하나요?",
+          "a": "Expomadeira, 마데이라 와인 축제, 농축산 박람회 등 섬의 전시회에서 작업하며 주로 푼샬의 Madeira Tecnopolo에서 진행합니다."
+        },
+        {
+          "q": "섬까지의 물류는 어떻게 해결하나요?",
+          "a": "반도의 자체 공방에서 부스 전체를 사전 제작하고 푼샬로의 해상 운송을 조율하여 일정과 비용에 예상치 못한 문제 없이 도착합니다."
+        }
+      ]
+    },
+    "ja": {
+      "breadcrumb": "マデイラ諸島",
+      "title": "マデイラの展示ブース設計・施工 | Standarte",
+      "h1": "マデイラの展示ブース設計・施工",
+      "introText": "Standarteは、フンシャルのMadeira Tecnopoloを基幹会場として、マデイラでブースを設計・施工し、3D設計、自社工房での製作、物流、施工、技術審査までの全工程を管理します。",
+      "body": "\n        <p>20年以上の経験をもとに、StandarteはフンシャルのMadeira Tecnopoloを基幹会場として、マデイラでブースを設計・施工し、島への海上物流を担います。</p>\n        <h2>マデイラ——大西洋の見本市の舞台</h2>\n        <p>島は独自の多彩な見本市カレンダーを有します：<a href=\"/ja/ferias/expomadeira\">Expomadeira</a>、<a href=\"/ja/ferias/festa-vinho-madeira\">マデイラ・ワイン祭り</a>、<a href=\"/ja/ferias/feira-agropecuaria-madeira\">マデイラ農牧業見本市</a>など。基幹会場はフンシャルのMadeira Tecnopoloです。</p>\n        <h2>島への海上物流を含むターンキー施工</h2>\n        <p>私たちは自社工房で各プロジェクトを管理し、フンシャルへの海上輸送を調整します。すべての承認は当社の<a href=\"/ja/監査プロジェクト\">監査プロジェクト・システム</a>に記録されます。<a href=\"/ja/料金\">ブース価格</a>で投資額を計算できます。</p>\n      ",
+      "faqs": [
+        {
+          "q": "Standarteはマデイラのどの展示会でブースを施工しますか？",
+          "a": "Expomadeira、マデイラ・ワイン祭り、農牧業見本市など島の展示会で、主にフンシャルのMadeira Tecnopoloで行います。"
+        },
+        {
+          "q": "島への物流はどう解決しますか？",
+          "a": "本土の自社工房でブース一式を事前製作し、フンシャルへの海上輸送を調整するため、納期やコストで想定外が生じません。"
+        }
+      ]
+    }
+  },
   "islas_canarias": {
     "es": {
       "breadcrumb": "Islas Canarias",

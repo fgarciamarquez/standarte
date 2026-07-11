@@ -126,7 +126,7 @@ const shiftPath = (d, dx, dy) =>
   d.replace(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g, (_, x, y) => `${+x + dx},${+y + dy}`);
 
 export const CANARIAS_INSET = {
-  cx: CAN_CX, cy: CAN_CY, r: CAN_R,
+  cx: CAN_CX, cy: CAN_CY, r: CAN_R, label: 'Islas Canarias',
   islands: CAN_ISLANDS_BASE.map((d) => shiftPath(d, CAN_CX, CAN_CY))
 };
 
@@ -143,12 +143,47 @@ const CANARIAS_CITY_POINTS = Object.fromEntries(
   Object.entries(CANARIAS_CITY_BASE).map(([name, [dx, dy]]) => [name, [CAN_CX + dx, CAN_CY + dy]])
 );
 
-// Ciudad → [x, y] en px: península/Baleares por proyección + inset canario.
+// ── Inset de Madeira ──────────────────────────────────────────────────────
+// Mismo criterio que Canarias: el archipiélago de Madeira queda a ~1.000 km al
+// suroeste del continente. Se traslada a un recuadro (circunferencia de borde de
+// puntos) situado a la IZQUIERDA del gráfico, a la altura de Lisboa. Más pequeño
+// que el canario (Madeira + Porto Santo + Desertas).
+const MAD_CX = -175;
+const MAD_CY = 477;
+const MAD_R = 60;
+
+const MAD_ISLANDS_BASE = [
+  'M -42,4 L -28,-2 L -8,-4 L 14,-2 L 26,5 L 12,10 L -10,11 L -30,9 Z', // Madeira (principal)
+  'M 32,-30 L 38,-32 L 42,-27 L 37,-23 Z',                             // Porto Santo
+  'M 7,20 L 11,19 L 13,28 L 9,29 Z'                                    // Desertas
+];
+
+export const MADEIRA_INSET = {
+  cx: MAD_CX, cy: MAD_CY, r: MAD_R, label: 'Islas de Madeira',
+  islands: MAD_ISLANDS_BASE.map((d) => shiftPath(d, MAD_CX, MAD_CY))
+};
+
+// Puntos-ciudad de Madeira dentro del inset (offset relativo al centro).
+const MADEIRA_CITY_BASE = {
+  'Islas de Madeira': [-8, 3],
+  'Funchal': [10, 6],
+  'Madeira': [-26, 3]
+};
+const MADEIRA_CITY_POINTS = Object.fromEntries(
+  Object.entries(MADEIRA_CITY_BASE).map(([name, [dx, dy]]) => [name, [MAD_CX + dx, MAD_CY + dy]])
+);
+
+// Insets que PatMesh dibuja (anillo de puntos + islas). Añadir aquí uno nuevo
+// basta para que se pinte automáticamente.
+export const MAP_INSETS = [CANARIAS_INSET, MADEIRA_INSET];
+
+// Ciudad → [x, y] en px: península/Baleares por proyección + insets canario y madeirense.
 export const CITY_POINTS = {
   ...Object.fromEntries(
     Object.entries(CITY_LATLON).map(([name, [lat, lon]]) => [name, projectLatLon(lat, lon)])
   ),
-  ...CANARIAS_CITY_POINTS
+  ...CANARIAS_CITY_POINTS,
+  ...MADEIRA_CITY_POINTS
 };
 
 // Contorno simplificado de la península ibérica (px, misma proyección).

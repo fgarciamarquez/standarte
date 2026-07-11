@@ -11,7 +11,7 @@
   import { onMount, createEventDispatcher } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { tagFamilies, fairTags, fairActivities, labelForTag, familyLabel } from '$lib/fairTags.js';
-  import { IBERIA_PATH, CITY_POINTS, CANARIAS_INSET } from '$lib/iberiaMeshData.js';
+  import { IBERIA_PATH, CITY_POINTS, MAP_INSETS } from '$lib/iberiaMeshData.js';
   import { pathFor } from '$lib/siteData.js';
 
   // Ciudad del mapa → sección-pilar de ciudad (misma convención que CITY_TO_PILLAR
@@ -39,7 +39,10 @@
     // Todas las ciudades del inset canario cuelgan del hub Islas Canarias.
     'Islas Canarias': 'islas_canarias', 'Tenerife': 'islas_canarias',
     'Gran Canaria': 'islas_canarias', 'Las Palmas': 'islas_canarias',
-    'Fuerteventura': 'islas_canarias'
+    'Fuerteventura': 'islas_canarias',
+    // Inset de Madeira → hub Islas de Madeira.
+    'Islas de Madeira': 'islas_de_madeira', 'Funchal': 'islas_de_madeira',
+    'Madeira': 'islas_de_madeira'
   };
 
   // Familias cuyo rótulo se fuerza a un lado concreto del nodo (en lugar del lado
@@ -48,6 +51,10 @@
     agroalimentario: 'start', // a la derecha del nodo
     turismo: 'end'            // a la izquierda del nodo
   };
+
+  // Ciudades-hub de un inset: se nombran con el rótulo del recuadro (pm-inset-label),
+  // así que su nodo NO lleva rótulo permanente propio (evita duplicar el nombre).
+  const INSET_HUB_CITIES = new Set(['Islas Canarias', 'Islas de Madeira']);
 
   export let lang = 'en';
   export let selectedFamily = '';
@@ -162,15 +169,22 @@
     // bajo su punto y se vea que la malla llega hasta Baleares. Punto Palma ≈ (856, 398).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 826,384 L 848,368 L 892,360 L 884,388 L 864,401 L 846,405 L 834,396 Z' }));
 
-    // Inset de Canarias: traslación artificial del archipiélago (circunferencia de
-    // borde de puntos + islas simples) a la altura de Cádiz, a su izquierda, para
-    // que la malla llegue a las islas sin agrandar el mapa peninsular.
-    const canGroup = el('g', { class: 'pm-canarias' });
-    canGroup.appendChild(el('circle', {
-      class: 'pm-canarias-ring', cx: CANARIAS_INSET.cx, cy: CANARIAS_INSET.cy, r: CANARIAS_INSET.r
-    }));
-    CANARIAS_INSET.islands.forEach((d) => canGroup.appendChild(el('path', { class: 'pm-coast pm-island', d })));
-    svgEl.appendChild(canGroup);
+    // Insets (Canarias, Madeira): traslación artificial de cada archipiélago a un
+    // recuadro (circunferencia de borde de puntos + islas simples) para que la
+    // malla llegue a las islas sin agrandar el mapa peninsular.
+    MAP_INSETS.forEach((inset) => {
+      const g = el('g', { class: 'pm-inset' });
+      g.appendChild(el('circle', { class: 'pm-inset-ring', cx: inset.cx, cy: inset.cy, r: inset.r }));
+      inset.islands.forEach((d) => g.appendChild(el('path', { class: 'pm-coast pm-island', d })));
+      if (inset.label) {
+        const cap = el('text', {
+          class: 'pm-inset-label', x: inset.cx, y: inset.cy + inset.r + 15, 'text-anchor': 'middle'
+        });
+        cap.textContent = inset.label;
+        g.appendChild(cap);
+      }
+      svgEl.appendChild(g);
+    });
 
     const edgeD = (x1, y1, x2, y2) => {
       const mx = (x1 + x2) / 2 + (y2 - y1) * 0.06;
@@ -283,7 +297,7 @@
       // área de hover invisible más generosa que el punto (los nodos pequeños son diminutos)
       g.appendChild(el('circle', { class: 'pm-hit', cx: city.x, cy: city.y, r: Math.max(r, 9) }));
       g.appendChild(el('circle', { cx: city.x, cy: city.y, r }));
-      if (city.total >= 4) {
+      if (city.total >= 4 && !INSET_HUB_CITIES.has(city.name)) {
         const t = el('text', { x: city.x, y: city.y - (r + 6), 'text-anchor': 'middle', 'font-size': isMajor ? 12 : 10 });
         t.textContent = city.name;
         g.appendChild(t);
@@ -506,14 +520,24 @@
     stroke: #b9bcb4;
     stroke-width: 1.6;
   }
-  /* Circunferencia del inset canario: borde de puntos, sin relleno. Señala que
-     es una traslación artificial del espacio, no una ubicación real. */
-  .pm-wrap :global(.pm-canarias-ring) {
+  /* Circunferencia de los insets (Canarias, Madeira): borde de puntos, sin
+     relleno. Señala que es una traslación artificial del espacio, no una
+     ubicación real. */
+  .pm-wrap :global(.pm-inset-ring) {
     fill: none;
     stroke: #b9bcb4;
     stroke-width: 1.4;
     stroke-dasharray: 2 5;
     opacity: 0.85;
+  }
+  /* Rótulo del inset, a modo de leyenda bajo el recuadro. */
+  .pm-wrap :global(.pm-inset-label) {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    fill: #5c6157;
+    letter-spacing: 0.02em;
+    pointer-events: none;
   }
   .pm-wrap :global(.pm-graticule) {
     stroke: #d3d4cd;

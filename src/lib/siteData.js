@@ -48,6 +48,7 @@ export const routes = {
     oporto: 'diseno_montaje_stands_oporto',
     portugal_sur: 'diseno_montaje_stands_portugal_sur',
     islas_canarias: 'diseno_montaje_stands_islas_canarias',
+    islas_de_madeira: 'diseno_montaje_stands_islas_madeira',
     malaga: 'diseno_montaje_stands_malaga',
     badajoz: 'diseno_montaje_stands_badajoz',
     sevilla: 'diseno_montaje_stands_sevilla',
@@ -98,6 +99,7 @@ export const routes = {
     oporto: 'stand_design_assembly_porto',
     portugal_sur: 'stand_design_assembly_southern_portugal',
     islas_canarias: 'stand_design_assembly_canary_islands',
+    islas_de_madeira: 'stand_design_assembly_madeira_islands',
     malaga: 'stand_design_assembly_malaga',
     badajoz: 'stand_design_assembly_badajoz',
     sevilla: 'stand_design_assembly_seville',
@@ -148,6 +150,7 @@ export const routes = {
     oporto: 'messestand_design_montage_porto',
     portugal_sur: 'messestand_design_montage_sudportugal',
     islas_canarias: 'messestand_design_montage_kanarische_inseln',
+    islas_de_madeira: 'messestand_design_montage_madeira_inseln',
     malaga: 'messestand_design_montage_malaga',
     badajoz: 'messestand_design_montage_badajoz',
     sevilla: 'messestand_design_montage_sevilla',
@@ -198,6 +201,7 @@ export const routes = {
     oporto: 'porto_zhantai_sheji_dajian',
     portugal_sur: 'nan_putaoya_zhantai_sheji_dajian',
     islas_canarias: 'canarias_zhantai_sheji_dajian',
+    islas_de_madeira: 'madala_qundao_zhantai_sheji_dajian',
     malaga: 'malaga_zhantai_sheji_dajian',
     badajoz: 'badajoz_zhantai_sheji_dajian',
     sevilla: 'sevilla_zhantai_sheji_dajian',
@@ -248,6 +252,7 @@ export const routes = {
     oporto: 'porto_stand_dizain_asembli',
     portugal_sur: 'dakshini_purtagal_stand_dizain_asembli',
     islas_canarias: 'canary_islands_stand_dizain_asembli',
+    islas_de_madeira: 'madeira_dweep_stand_dizain_asembli',
     malaga: 'malaga_stand_dizain_asembli',
     badajoz: 'badajoz_stand_dizain_asembli',
     sevilla: 'sevilla_stand_dizain_asembli',
@@ -298,6 +303,7 @@ export const routes = {
     oporto: 'design_montagem_stands_porto',
     portugal_sur: 'design_montagem_stands_sul_portugal',
     islas_canarias: 'design_montagem_stands_ilhas_canarias',
+    islas_de_madeira: 'design_montagem_stands_ilhas_madeira',
     malaga: 'design_montagem_stands_malaga',
     badajoz: 'design_montagem_stands_badajoz',
     sevilla: 'design_montagem_stands_sevilla',
@@ -348,6 +354,7 @@ export const routes = {
     oporto: 'conception_montage_stands_porto',
     portugal_sur: 'conception_montage_stands_sud_portugal',
     islas_canarias: 'conception_montage_stands_iles_canaries',
+    islas_de_madeira: 'conception_montage_stands_iles_madere',
     malaga: 'conception_montage_stands_malaga',
     badajoz: 'conception_montage_stands_badajoz',
     sevilla: 'conception_montage_stands_seville',
@@ -398,6 +405,7 @@ export const routes = {
     oporto: 'progettazione_montaggio_stand_porto',
     portugal_sur: 'progettazione_montaggio_stand_sud_portogallo',
     islas_canarias: 'progettazione_montaggio_stand_isole_canarie',
+    islas_de_madeira: 'progettazione_montaggio_stand_isole_madera',
     malaga: 'progettazione_montaggio_stand_malaga',
     badajoz: 'progettazione_montaggio_stand_badajoz',
     sevilla: 'progettazione_montaggio_stand_sevilla',
@@ -448,6 +456,7 @@ export const routes = {
     oporto: 'porto-bujeu-dijain-jorip',
     portugal_sur: 'nambu-poreutugal-buseu-dijain-jorip',
     islas_canarias: 'canary-islands-buseu-dijain-jorip',
+    islas_de_madeira: 'madeira-jedo-buseu-dijain-jorip',
     malaga: 'malaga-bujeu-dijain-jorip',
     badajoz: 'badajoz-bujeu-dijain-jorip',
     sevilla: 'sevilla-bujeu-dijain-jorip',
@@ -498,6 +507,7 @@ export const routes = {
     oporto: 'ポルト展示会ブース設計施工',
     portugal_sur: '南ポルトガル展示会ブース設計施工',
     islas_canarias: 'カナリア諸島展示会ブース設計施工',
+    islas_de_madeira: 'マデイラ諸島展示会ブース設計施工',
     malaga: 'マラガ展示会ブース設計施工',
     badajoz: 'バダホス展示会ブース設計施工',
     sevilla: 'セビリア展示会ブース設計施工',
@@ -548,6 +558,7 @@ export const routes = {
     oporto: 'standontwerp_montage_porto',
     portugal_sur: 'standontwerp_montage_zuid_portugal',
     islas_canarias: 'standontwerp_montage_canarische_eilanden',
+    islas_de_madeira: 'standontwerp_montage_madeira_eilanden',
     malaga: 'standontwerp_montage_malaga',
     badajoz: 'standontwerp_montage_badajoz',
     sevilla: 'standontwerp_montage_sevilla',
@@ -1452,6 +1463,67 @@ export const copy = {
 };
 
 export const cityData = {
+  islas_de_madeira: {
+    "city": {
+      "es": "Islas de Madeira",
+      "en": "Madeira Islands",
+      "de": "Madeira-Inseln",
+      "pt": "Ilhas da Madeira",
+      "fr": "Îles de Madère",
+      "it": "Isole di Madera",
+      "nl": "Madeira-eilanden",
+      "zh": "马德拉群岛",
+      "hi": "मडीरा द्वीप समूह",
+      "ko": "마데이라 제도",
+      "ja": "マデイラ諸島"
+    },
+    "content": {
+      "es": {
+        "intro": "Con más de 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en las Islas de Madeira —con el Madeira Tecnopolo (Funchal) como recinto de referencia— resolviendo la logística marítima al archipiélago y controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+        "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+      },
+      "en": {
+        "intro": "With more than 20 years of experience building temporary architecture from our own workshop, Standarte designs and installs exhibition stands in the Madeira Islands — with Madeira Tecnopolo (Funchal) as the flagship venue — handling the sea logistics to the archipelago and controlling every stage: 3D design, fabrication, logistics, installation and on-site venue approvals.",
+        "detail": "We give agencies and exhibitors the reassurance of a build with no surprises and an exceptional attention to detail."
+      },
+      "de": {
+        "intro": "Mit über 20 Jahren Erfahrung plant und montiert Standarte Messestände auf Madeira – mit dem Madeira Tecnopolo (Funchal) als Leitveranstaltungsort – und übernimmt die Seelogistik zur Insel.",
+        "detail": "Agenturen und Ausstellern bieten wir die Sicherheit eines reibungslosen Aufbaus und außergewöhnliche Detailtreue."
+      },
+      "pt": {
+        "intro": "Com mais de 20 anos de experiência, a Standarte concebe e monta stands na Madeira — com o Madeira Tecnopolo (Funchal) como recinto de referência — resolvendo a logística marítima à ilha.",
+        "detail": "Damos às agências e aos expositores a tranquilidade de uma montagem sem surpresas e uma atenção ao detalhe excecional."
+      },
+      "fr": {
+        "intro": "Forts de plus de 20 ans d'expérience, nous concevons et montons chez Standarte des stands à Madère — avec le Madeira Tecnopolo (Funchal) comme enceinte de référence — en assurant la logistique maritime vers l'île.",
+        "detail": "Nous offrons aux agences et aux exposants la sérénité d'un montage sans mauvaises surprises et une attention aux détails exceptionnelle."
+      },
+      "it": {
+        "intro": "Con oltre 20 anni di esperienza, Standarte progetta e allestisce stand a Madeira — con il Madeira Tecnopolo (Funchal) come riferimento — gestendo la logistica marittima all'isola.",
+        "detail": "Offriamo ad agenzie ed espositori la serenità di un allestimento senza imprevisti e una cura del dettaglio fuori dal comune."
+      },
+      "nl": {
+        "intro": "Met ruim 20 jaar ervaring ontwerpt en bouwt Standarte beursstands op Madeira — met het Madeira Tecnopolo (Funchal) als toonaangevende locatie — en verzorgt de zeevracht naar het eiland.",
+        "detail": "Wij bieden bureaus en exposanten de zekerheid van een opbouw zonder verrassingen en een uitzonderlijke aandacht voor detail."
+      },
+      "zh": {
+        "intro": "凭借20多年经验，Standarte 在马德拉设计并搭建展台——以丰沙尔的 Madeira Tecnopolo 为核心展馆——并负责前往海岛的海运物流。",
+        "detail": "我们为代理公司和参展商提供毫无意外的搭建保障，以及对细节的极致关注。"
+      },
+      "hi": {
+        "intro": "20 से अधिक वर्षों के अनुभव के साथ, Standarte मडीरा में स्टैंड डिज़ाइन और स्थापित करता है — फुंचल का Madeira Tecnopolo प्रमुख स्थल के रूप में — और द्वीप तक समुद्री लॉजिस्टिक्स संभालता है।",
+        "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी अप्रत्याशित बाधा के सहज स्थापना और हर बारीकी पर असाधारण ध्यान का भरोसा देते हैं।"
+      },
+      "ko": {
+        "intro": "20년 이상의 경력을 바탕으로 Standarte는 푼샬의 Madeira Tecnopolo를 중심 전시장으로 하여 마데이라에서 부스를 디자인·시공하며 섬까지의 해상 물류를 담당합니다.",
+        "detail": "에이전시와 참가업체에 예상치 못한 문제 없는 시공과 탁월한 디테일을 보장합니다."
+      },
+      "ja": {
+        "intro": "20年以上の経験をもとに、StandarteはフンシャルのMadeira Tecnopoloを基幹会場として、マデイラでブースを設計・施工し、島への海上物流を担います。",
+        "detail": "代理店や出展者に、想定外のない施工と卓越したディテールへのこだわりをお約束します。"
+      }
+    }
+  },
   islas_canarias: {
     "city": {
       "es": "Islas Canarias",

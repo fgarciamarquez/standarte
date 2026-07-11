@@ -25,6 +25,7 @@ export const seoFreshness = {
   alicante: '2026-07-08',
   murcia: '2026-07-08',
   islas_canarias: '2026-07-11',
+  islas_de_madeira: '2026-07-11',
   mallorca: '2026-07-07',
   valencia: '2026-07-08',
   coruna: '2026-07-08',
