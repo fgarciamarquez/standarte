@@ -11,7 +11,7 @@
   import { onMount, createEventDispatcher } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { tagFamilies, fairTags, fairActivities, labelForTag, familyLabel } from '$lib/fairTags.js';
-  import { IBERIA_PATH, CITY_POINTS } from '$lib/iberiaMeshData.js';
+  import { IBERIA_PATH, CITY_POINTS, CANARIAS_INSET } from '$lib/iberiaMeshData.js';
   import { pathFor } from '$lib/siteData.js';
 
   // Ciudad del mapa → sección-pilar de ciudad (misma convención que CITY_TO_PILLAR
@@ -35,7 +35,11 @@
     'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
     'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche', 'Alicante': 'alicante',
     'Silleda': 'silleda', 'Ourense': 'ourense',
-    'Lleida': 'lleida', 'Girona': 'girona'
+    'Lleida': 'lleida', 'Girona': 'girona',
+    // Todas las ciudades del inset canario cuelgan del hub Islas Canarias.
+    'Islas Canarias': 'islas_canarias', 'Tenerife': 'islas_canarias',
+    'Gran Canaria': 'islas_canarias', 'Las Palmas': 'islas_canarias',
+    'Fuerteventura': 'islas_canarias'
   };
 
   export let lang = 'en';
@@ -150,6 +154,16 @@
     // Mallorca: polígono simple (misma proyección px) para que la isla tenga tierra
     // bajo su punto y se vea que la malla llega hasta Baleares. Punto Palma ≈ (856, 398).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 826,384 L 848,368 L 892,360 L 884,388 L 864,401 L 846,405 L 834,396 Z' }));
+
+    // Inset de Canarias: traslación artificial del archipiélago (circunferencia de
+    // borde de puntos + islas simples) a la altura de Cádiz, a su izquierda, para
+    // que la malla llegue a las islas sin agrandar el mapa peninsular.
+    const canGroup = el('g', { class: 'pm-canarias' });
+    canGroup.appendChild(el('circle', {
+      class: 'pm-canarias-ring', cx: CANARIAS_INSET.cx, cy: CANARIAS_INSET.cy, r: CANARIAS_INSET.r
+    }));
+    CANARIAS_INSET.islands.forEach((d) => canGroup.appendChild(el('path', { class: 'pm-coast pm-island', d })));
+    svgEl.appendChild(canGroup);
 
     const edgeD = (x1, y1, x2, y2) => {
       const mx = (x1 + x2) / 2 + (y2 - y1) * 0.06;
@@ -480,6 +494,15 @@
     fill: rgba(26, 30, 33, 0.05);
     stroke: #b9bcb4;
     stroke-width: 1.6;
+  }
+  /* Circunferencia del inset canario: borde de puntos, sin relleno. Señala que
+     es una traslación artificial del espacio, no una ubicación real. */
+  .pm-wrap :global(.pm-canarias-ring) {
+    fill: none;
+    stroke: #b9bcb4;
+    stroke-width: 1.4;
+    stroke-dasharray: 2 5;
+    opacity: 0.85;
   }
   .pm-wrap :global(.pm-graticule) {
     stroke: #d3d4cd;

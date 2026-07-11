@@ -74,10 +74,10 @@ export const CITY_LATLON = {
 // Ciudades de fairsData SIN punto en el mapa: ferias internacionales fuera de
 // la península y entradas genéricas sin ubicación fija. Añadir aquí cualquier
 // ciudad extranjera nueva para que el guardián de build no la reclame.
+// (Las ciudades canarias NO van aquí: tienen su propio inset, ver más abajo.)
 export const NON_MAP_CITIES = [
   'Düsseldorf', 'España', 'Europa', 'Itinerante', 'Lyon',
-  'Múnich', 'Núremberg', 'París', 'Portugal', 'Stuttgart',
-  'Islas Canarias', 'Fuerteventura', 'Tenerife', 'Gran Canaria', 'Las Palmas'
+  'Múnich', 'Núremberg', 'París', 'Portugal', 'Stuttgart'
 ];
 
 // Proyección equirectangular: origen lat 43.9N / lon -9.5W, escala 92 px/grado,
@@ -94,10 +94,45 @@ export function projectLatLon(lat, lon) {
   return [x, y];
 }
 
-// Ciudad → [x, y] en px, derivado de CITY_LATLON.
-export const CITY_POINTS = Object.fromEntries(
-  Object.entries(CITY_LATLON).map(([name, [lat, lon]]) => [name, projectLatLon(lat, lon)])
-);
+// ── Inset de Canarias ─────────────────────────────────────────────────────
+// Las islas quedan a ~1.000 km al suroeste de la península: proyectarlas real-
+// mente obligaría a agrandar el mapa y encoger todo lo demás. En su lugar se
+// hace la MISMA convención que los mapas oficiales de España: una traslación
+// artificial del archipiélago a un recuadro (aquí una circunferencia de borde
+// de puntos) situado en el océano a la altura de Cádiz y a su izquierda. Así la
+// malla de Pat "llega" a las islas sin sacrificar la escala peninsular.
+// Coordenadas en px absolutos (misma proyección visual, NO projectLatLon).
+export const CANARIAS_INSET = {
+  cx: 40, cy: 685, r: 92,
+  // Polígonos muy simples de las 7 islas (oeste→este), en px absolutos.
+  islands: [
+    'M -30,713 L -25,709 L -18,714 L -23,719 Z',            // El Hierro
+    'M -20,671 L -14,677 L -16,686 L -21,688 L -22,679 Z',  // La Palma
+    'M -4,700 L 1,697 L 7,701 L 2,705 L -3,704 Z',          // La Gomera
+    'M 4,689 L 20,686 L 27,695 L 18,702 L 7,698 Z',         // Tenerife
+    'M 34,702 L 42,697 L 52,701 L 53,709 L 45,714 L 36,710 Z', // Gran Canaria
+    'M 76,699 L 86,689 L 98,679 L 103,684 L 93,695 L 82,704 Z', // Fuerteventura
+    'M 94,673 L 102,664 L 112,660 L 115,667 L 107,674 L 98,677 Z' // Lanzarote
+  ]
+};
+
+// Puntos-ciudad del archipiélago DENTRO del inset (px absolutos): cada ciudad
+// ferial canaria se ancla sobre su isla, y el hub "Islas Canarias" al centro.
+const CANARIAS_CITY_POINTS = {
+  'Islas Canarias': [40, 685],
+  'Tenerife': [16, 694],
+  'Gran Canaria': [44, 704],
+  'Las Palmas': [52, 695],
+  'Fuerteventura': [89, 690]
+};
+
+// Ciudad → [x, y] en px: península/Baleares por proyección + inset canario.
+export const CITY_POINTS = {
+  ...Object.fromEntries(
+    Object.entries(CITY_LATLON).map(([name, [lat, lon]]) => [name, projectLatLon(lat, lon)])
+  ),
+  ...CANARIAS_CITY_POINTS
+};
 
 // Contorno simplificado de la península ibérica (px, misma proyección).
 export const IBERIA_PATH = "M 15.5,92 L 38.8,170.2 L 44.4,202.4 L 52.9,253 L 52.9,299.9 L 44.4,345 L 7,395.6 L 2.1,478.4 L 28.2,501.4 L 44.4,547.4 L 37.4,633 L 146.6,621 L 172.7,618.2 L 225.5,678 L 274.2,726.8 L 358,671.6 L 495.4,662.4 L 600.5,579.6 L 635.7,515.2 L 647,409.4 L 729.4,292.6 L 757.6,257.6 L 821,234.6 L 903.5,145.4 L 873.9,133.4 L 711.8,110.4 L 567.3,82.8 L 530,53.4 L 456.7,47.8 L 401.7,39.6 L 270.6,30.4 L 89.5,38.6 L 15.5,92 Z";
