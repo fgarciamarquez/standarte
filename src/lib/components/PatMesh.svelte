@@ -59,6 +59,9 @@
   export let lang = 'en';
   export let selectedFamily = '';
   export let selectedTags = [];
+  // Ciudad a resaltar por defecto al abrir el mapa (páginas de ciudad): el mapa
+  // arranca mostrando el estado :hover de esa ciudad hasta que el usuario interactúa.
+  export let initialCity = '';
 
   const dispatch = createEventDispatcher();
 
@@ -319,6 +322,10 @@
     let currentActive = [];
     let currentLang = '';
     let currentPWord = '';
+    // Ciudad de la página (si la hay): estado :hover por defecto al abrir, mientras
+    // no haya selección activa ni interacción del usuario.
+    let defaultCity = initialCity ? (cityMap[initialCity] || null) : null;
+    let defaultActive = !!defaultCity;
 
     function applyLabels() {
       tagKeys.forEach((t) => { tagEls[t].text.textContent = labelForTag(t, currentLang); });
@@ -355,6 +362,18 @@
       });
     }
 
+    // Estado a pintar: una selección activa manda; si no la hay pero seguimos en
+    // el estado inicial de una página de ciudad, se muestra el :hover de esa ciudad;
+    // en cualquier otro caso, el render neutro.
+    function renderState() {
+      if (!currentActive.length && defaultActive && defaultCity) {
+        highlightCity(defaultCity, null);
+      } else {
+        if (currentActive.length) defaultActive = false;
+        render();
+      }
+    }
+
     // ── Hover de ciudad: desglose en tooltip + resaltado temporal ──
     function highlightCity(city, evt) {
       edges.forEach((p) => { p.style.opacity = p._city === city ? 0.9 : 0.03; });
@@ -375,7 +394,8 @@
         .join('');
       tooltipEl.innerHTML = '<h4>' + city.name + '</h4><ul>' + rows + '</ul>';
       tooltipEl.classList.add('visible');
-      positionTooltip(evt);
+      if (evt) positionTooltip(evt);
+      else positionTooltipAtNode(city);
     }
 
     function positionTooltip(evt) {
@@ -385,9 +405,23 @@
       tooltipEl.style.top = (evt.clientY - rect.top - 14) + 'px';
     }
 
+    // Posiciona el tooltip sobre el nodo (sin ratón): para el :hover por defecto de
+    // la ciudad de la página. Usa la matriz SVG→pantalla del propio mapa.
+    function positionTooltipAtNode(city) {
+      const ctm = svgEl.getScreenCTM();
+      if (!ctm) return;
+      const pt = svgEl.createSVGPoint();
+      pt.x = city.x; pt.y = city.y;
+      const scr = pt.matrixTransform(ctm);
+      const rect = wrapEl.getBoundingClientRect();
+      tooltipEl.style.left = (scr.x - rect.left) + 'px';
+      tooltipEl.style.top = (scr.y - rect.top - 14) + 'px';
+    }
+
     function onOver(e) {
       const g = e.target.closest('.pm-city');
       if (!g) return;
+      defaultActive = false; // el usuario ya interactúa: se abandona el :hover por defecto
       if (g._hint) g._hint.classList.add('visible');
       highlightCity(g._city, e);
     }
@@ -399,7 +433,7 @@
       if (!g) return;
       if (g._hint) g._hint.classList.remove('visible');
       tooltipEl.classList.remove('visible');
-      render();
+      renderState();
     }
     // Clic en un punto-ciudad enlazado: avisar al panel (que se cierra para que
     // el cambio de URL sea evidente) y dejar que SvelteKit gestione la navegación.
@@ -466,7 +500,7 @@
           currentPWord = newPWord;
           applyLabels();
         }
-        render();
+        renderState();
       },
       destroy() {
         running = false;

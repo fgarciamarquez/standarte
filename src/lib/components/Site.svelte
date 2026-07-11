@@ -623,6 +623,10 @@
   };
   const coveragePatCta = { es: 'Habla con Pat', en: 'Talk to Pat', pt: 'Fale com o Pat', de: 'Mit Pat sprechen', fr: 'Parler avec Pat', it: 'Parlare con Pat', nl: 'Met Pat praten', zh: '与 Pat 交谈', hi: 'Pat से बात करें', ko: 'Pat와 대화하기', ja: 'Patと話す' };
   $: cityDisplayName = (section && cityData[section]) ? (cityData[section].city?.[lang] || cityData[section].city?.es || '') : '';
+  // Nombre canónico (ES) de la ciudad de la página: coincide con el campo `city`
+  // de fairsData, que es como PatMesh identifica sus nodos. Con esto el mapa de Pat
+  // arranca mostrando el :hover de esta ciudad en las páginas de ciudad.
+  $: patInitialCity = (section && cityData[section]) ? (cityData[section].city?.es || '') : '';
   // Navegación entre ciudades matrices (módulo del sidebar, igual que en Feria).
   // Solo matrices (construccion_stands_*); excluye las landings de montaje secundarias.
   const CITY_NAV_KEYS = Object.keys(cityData).filter((k) => !k.startsWith('montaje_'));
@@ -1533,7 +1537,7 @@
   <!-- Panel de Pat (asesor de Expansión): flotante, se carga diferido en onMount.
        Se renderiza en home-family Y en páginas de ciudad (su layout no importa). -->
   {#if showWelcomeAdvisor && AdvisorComponent}
-    <svelte:component this={AdvisorComponent} {lang} initialFamily={patInitialFamily} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />
+    <svelte:component this={AdvisorComponent} {lang} initialFamily={patInitialFamily} initialCity={patInitialCity} on:selectFair={handleSelectFair} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => showWelcomeAdvisor = false} />
   {/if}
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="local-stands" class="section local-stands">

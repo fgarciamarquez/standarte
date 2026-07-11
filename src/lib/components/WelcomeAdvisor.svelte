@@ -23,6 +23,8 @@
   // Etiquetas a preseleccionar dentro de initialFamily (p. ej. desde un hub de
   // /actividad): Pat abre en el paso 2 con ellas marcadas y el mapa resaltado.
   export let initialTags = [];
+  // Ciudad de la página (páginas de ciudad): el mapa arranca con su :hover por defecto.
+  export let initialCity = '';
 
   const dispatch = createEventDispatcher();
 
@@ -841,7 +843,7 @@
          refleja qué ciudades y ferias corresponden a lo marcado. -->
     {#if MeshComponent && status !== 'success'}
       <div class="advisor-mesh" transition:fade={{ duration: 400 }}>
-        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} on:navigate={onMeshNavigate} />
+        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} {initialCity} on:navigate={onMeshNavigate} />
       </div>
     {/if}
 
