@@ -3,6 +3,7 @@
   import { fly, fade, scale } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { budgetBands, bandLabel, tierNames } from '$lib/pricingTiers.js';
+  import { fairsData } from '$lib/fairsData.js';
   export let lang;
   export let labels;
   // 'dark' = banda oscura por defecto; 'light' = integrada con el fondo claro de
@@ -60,6 +61,43 @@
   // Si un CTA externo fija la feria (Site hace bind:initialFair), la reflejamos.
   let lastInitial = initialFair;
   $: if (initialFair !== lastInitial) { lastInitial = initialFair; if (initialFair) fair = initialFair; }
+
+  // ── Autocompletado del campo FERIA sobre la malla de ferias (fairsData) ──
+  // Predicción según lo que escribe el cliente: filtra por nombre o ciudad
+  // (sin distinguir mayúsculas ni acentos) y muestra las coincidencias.
+  const normFair = (s) => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const NON_CITY = ['Itinerante', 'España', 'Europa', 'Portugal', 'Portugal Sur'];
+  const fairOptions = (() => {
+    const seen = new Set(); const out = [];
+    for (const f of fairsData) {
+      const k = normFair(f.name);
+      if (!k || seen.has(k)) continue;
+      seen.add(k);
+      // Ciudad solo como pista secundaria si NO está ya dentro del nombre (evita
+      // redundancias tipo "Fima Zaragoza — Zaragoza"), y nunca para pseudo-ciudades.
+      const showCity = f.city && !NON_CITY.includes(f.city) && !k.includes(normFair(f.city));
+      out.push({ name: f.name, city: showCity ? f.city : '' });
+    }
+    return out.sort((a, b) => a.name.localeCompare(b.name, 'es'));
+  })();
+  let fairFocused = false;
+  let fairActiveIdx = -1;
+  $: fairQuery = normFair(fair);
+  $: fairMatches = (fairFocused && fairQuery.length >= 1)
+    ? fairOptions.filter((o) => normFair(o.name).includes(fairQuery) || normFair(o.city).includes(fairQuery)).slice(0, 8)
+    : [];
+  // No mostrar el desplegable si el texto ya coincide exactamente con la única opción.
+  $: showFairSuggest = fairMatches.length > 0 && !(fairMatches.length === 1 && normFair(fairMatches[0].name) === fairQuery);
+  function pickFair(o) { fair = o.name; fairFocused = false; fairActiveIdx = -1; }
+  function fairKeydown(e) {
+    if (showFairSuggest) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); fairActiveIdx = Math.min(fairActiveIdx + 1, fairMatches.length - 1); return; }
+      if (e.key === 'ArrowUp') { e.preventDefault(); fairActiveIdx = Math.max(fairActiveIdx - 1, 0); return; }
+      if (e.key === 'Enter' && fairActiveIdx >= 0 && fairMatches[fairActiveIdx]) { e.preventDefault(); pickFair(fairMatches[fairActiveIdx]); return; }
+      if (e.key === 'Escape') { fairFocused = false; fairActiveIdx = -1; return; }
+    }
+    if (e.key === 'Enter') { e.preventDefault(); goNext(); }
+  }
 
   const metrosChips = [9, 18, 30, 50];
   const bandByKey = Object.fromEntries(budgetBands.map((b) => [b.key, b]));
@@ -245,10 +283,28 @@
                   {#if step === 1}
                     <h4 class="wiz-head">{wz.ev}</h4>
                     <p class="wiz-sub">{wz.evSub}</p>
-                    <div class="wiz-field">
+                    <div class="wiz-field wiz-field--ac">
                       <label for="wz_feria" class="form-label">{labels.form.fair}</label>
                       <input id="wz_feria" class="form-control" bind:value={fair} autocomplete="off"
-                        on:keydown={(e) => { if (e.key === 'Enter') { e.preventDefault(); goNext(); } }} />
+                        role="combobox" aria-autocomplete="list" aria-expanded={showFairSuggest} aria-controls="wz_feria_list"
+                        on:input={() => { fairFocused = true; fairActiveIdx = -1; }}
+                        on:focus={() => fairFocused = true}
+                        on:blur={() => setTimeout(() => { fairFocused = false; }, 150)}
+                        on:keydown={fairKeydown} />
+                      {#if showFairSuggest}
+                        <ul id="wz_feria_list" class="ac-list" role="listbox">
+                          {#each fairMatches as o, i (o.name)}
+                            <li role="option" aria-selected={i === fairActiveIdx}>
+                              <button type="button" class="ac-item" class:ac-active={i === fairActiveIdx}
+                                on:mousedown|preventDefault={() => pickFair(o)}
+                                on:mouseenter={() => fairActiveIdx = i}>
+                                <span class="ac-name">{o.name}</span>
+                                {#if o.city}<span class="ac-city">{o.city}</span>{/if}
+                              </button>
+                            </li>
+                          {/each}
+                        </ul>
+                      {/if}
                     </div>
                     <div class="wiz-field">
                       <label for="wz_metros" class="form-label">{labels.form.meters}</label>
@@ -372,6 +428,27 @@
   .form-control::placeholder { color: rgba(255, 255, 255, 0.3); }
   .form-control:focus { color: #fff; background: rgba(0, 0, 0, 0.25); border-color: #ffc800; box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.15); outline: none; }
   textarea.form-control { min-height: 150px; resize: vertical; line-height: 1.5; }
+
+  /* Autocompletado del campo FERIA: panel flotante de predicciones sobre la malla. */
+  .wiz-field--ac { position: relative; }
+  .ac-list {
+    position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 6px);
+    margin: 0; padding: 5px; list-style: none;
+    background: #fff; border: 1px solid #e2e2de; border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+    max-height: 264px; overflow-y: auto;
+  }
+  .ac-list li { margin: 0; }
+  .ac-item {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    width: 100%; text-align: left; cursor: pointer;
+    background: none; border: none; border-radius: 7px;
+    padding: 9px 11px; font-family: Inconsolata, monospace; font-size: 15px;
+    color: royalblue; text-transform: uppercase;
+  }
+  .ac-item:hover, .ac-active { background: #f2f4f7; }
+  .ac-name { font-weight: 400; }
+  .ac-city { font-size: 0.82em; color: rgba(65, 105, 225, 0.65); white-space: nowrap; }
 
   /* Chips rápidos de metros */
   .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
