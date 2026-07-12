@@ -6,7 +6,8 @@
   import { projectsForActivity } from '$lib/projectTags.js';
   import { projectIndex } from '$lib/projectIndex.js';
   import { pickIntroVariant } from '$lib/introVariants.js';
-  import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
+  import { pickUspLine, uspNavLabel } from '$lib/uspSnippets.js';
+  import { CITY_POINTS } from '$lib/iberiaMeshData.js';
   import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
 
@@ -623,6 +624,23 @@
   $: patFamily = (fairActivityTags.length && fairTags[fairActivityTags[0]]) ? fairTags[fairActivityTags[0]].family : '';
   $: patHref = pathFor(lang, 'home') + (patFamily ? '?pat=' + patFamily : '');
 
+  // Ferias acumuladas de los sectores/actividades de ESTA feria: nº de ferias DISTINTAS
+  // del catálogo que comparten alguno de los sectores (familias) de esta feria. Es el
+  // "te ofrecemos N ferias para presentar tus productos" del reclamo de expansión.
+  $: n2Fairs = (() => {
+    const fams = new Set(fairActivityTags.map((t) => fairTags[t] && fairTags[t].family).filter(Boolean));
+    if (!fams.size) return 0;
+    let count = 0;
+    for (const f of fairsData) {
+      // Mismo universo que el panel de Pat (solo ferias con punto en el mapa), para que
+      // el número coincida con lo que muestra Pat al abrir el enlace sembrado del sector.
+      if (!CITY_POINTS[f.city]) continue;
+      const ts = activitiesForFair(f.slug);
+      if (ts.some((t) => fairTags[t] && fams.has(fairTags[t].family))) count++;
+    }
+    return count;
+  })();
+
   // --- Respuesta directa (GEO): 2-3 frases citables al inicio, con los instrumentos
   // propios (prototipo 3D 72h, presupuesto 24h, Proyecto Auditado) y la cobertura ES+PT.
   const directAnswer = {
@@ -639,19 +657,21 @@
     ja: (n, c) => `${c}の${n}で、Standarteは72時間で3Dプロトタイプ、24時間で見積もり、監査済みプロジェクトの保証とともにブースを設計・製作・施工します。見たものがそのまま形になります。スペインとポルトガル全土を自社でカバーし、169件以上のプロジェクトと158の展示会の実績。`
   };
 
-  // --- CTA contextual de Pat (por sector) en la ficha de feria.
+  // --- Reclamo de expansión de Pat: se integra al FINAL de la respuesta directa
+  // (no en recuadro). "before" precede al enlace, "link" es el texto enlazado
+  // ("N ferias", royal blue + subrayado, apunta a patHref) y "after" lo cierra.
   const patCta = {
-    es: { q: (n) => `${n} es sólo una pieza en tu plan de expansión.`, sub: 'En Standarte te ofrecemos una malla de cobertura de enorme profundidad para cumplir con tus objetivos.', cta: 'Descubrir' },
-    pt: { q: (n) => `A ${n} é apenas uma peça no seu plano de expansão.`, sub: 'Na Standarte oferecemos-lhe uma malha de cobertura de enorme profundidade para cumprir os seus objetivos.', cta: 'Descobrir' },
-    en: { q: (n) => `${n} is just one piece of your expansion plan.`, sub: 'At Standarte we offer you a coverage network of enormous depth to meet your goals.', cta: 'Discover' },
-    de: { q: (n) => `Die ${n} ist nur ein Baustein Ihres Expansionsplans.`, sub: 'Bei Standarte bieten wir Ihnen ein außerordentlich tiefes Abdeckungsnetz, um Ihre Ziele zu erreichen.', cta: 'Entdecken' },
-    fr: { q: (n) => `${n} n'est qu'une pièce de votre plan d'expansion.`, sub: 'Chez Standarte, nous vous offrons un maillage de couverture d\'une profondeur immense pour atteindre vos objectifs.', cta: 'Découvrir' },
-    it: { q: (n) => `${n} è solo un tassello del tuo piano di espansione.`, sub: 'In Standarte ti offriamo una rete di copertura di enorme profondità per raggiungere i tuoi obiettivi.', cta: 'Scopri' },
-    nl: { q: (n) => `${n} is slechts één schakel in uw expansieplan.`, sub: 'Bij Standarte bieden wij u een dekkingsnetwerk van enorme diepgang om uw doelen te bereiken.', cta: 'Ontdekken' },
-    zh: { q: (n) => `${n} 只是您扩张计划中的一环。`, sub: '在 Standarte，我们为您提供纵深极广的覆盖网络，助您实现目标。', cta: '探索' },
-    hi: { q: (n) => `${n} आपकी विस्तार योजना का सिर्फ़ एक हिस्सा है।`, sub: 'Standarte में हम आपको आपके लक्ष्यों को पूरा करने के लिए अत्यंत गहन कवरेज नेटवर्क प्रदान करते हैं।', cta: 'जानें' },
-    ko: { q: (n) => `${n}은(는) 귀사 확장 계획의 한 조각일 뿐입니다.`, sub: 'Standarte는 귀사의 목표 달성을 위해 폭넓고 깊이 있는 커버리지 네트워크를 제공합니다.', cta: '알아보기' },
-    ja: { q: (n) => `${n}は貴社の拡大計画の一部にすぎません。`, sub: 'Standarteは、貴社の目標達成のために圧倒的な奥行きのカバレッジ網をご提供します。', cta: '詳しく見る' }
+    es: { before: (n) => `Si ${n} es sólo una pieza en tu expansión, en Standarte te ofrecemos `, link: (m) => `${m} ferias`, after: ' para presentar tus productos.' },
+    pt: { before: (n) => `Se a ${n} é apenas uma peça na sua expansão, na Standarte oferecemos-lhe `, link: (m) => `${m} feiras`, after: ' para apresentar os seus produtos.' },
+    en: { before: (n) => `If ${n} is just one piece of your expansion, at Standarte we offer you `, link: (m) => `${m} fairs`, after: ' to present your products.' },
+    de: { before: (n) => `Wenn die ${n} nur ein Baustein Ihrer Expansion ist, bieten wir Ihnen bei Standarte `, link: (m) => `${m} Messen`, after: ', um Ihre Produkte zu präsentieren.' },
+    fr: { before: (n) => `Si ${n} n'est qu'une pièce de votre expansion, chez Standarte nous vous offrons `, link: (m) => `${m} salons`, after: ' pour présenter vos produits.' },
+    it: { before: (n) => `Se ${n} è solo un tassello della tua espansione, in Standarte ti offriamo `, link: (m) => `${m} fiere`, after: ' per presentare i tuoi prodotti.' },
+    nl: { before: (n) => `Als ${n} slechts één schakel in uw expansie is, bieden wij u bij Standarte `, link: (m) => `${m} beurzen`, after: ' om uw producten te presenteren.' },
+    zh: { before: (n) => `如果${n}只是您扩张中的一环，Standarte 为您提供 `, link: (m) => `${m} 场展会`, after: ' 来展示您的产品。' },
+    hi: { before: (n) => `यदि ${n} आपके विस्तार का केवल एक हिस्सा है, तो Standarte आपको `, link: (m) => `${m} मेले`, after: ' आपके उत्पाद प्रस्तुत करने के लिए प्रदान करता है।' },
+    ko: { before: (n) => `${n}이(가) 귀사 확장의 한 조각일 뿐이라면, Standarte는 귀사의 제품을 선보일 `, link: (m) => `${m}개 박람회`, after: '를 제공합니다.' },
+    ja: { before: (n) => `${n}が貴社の拡大の一部にすぎないなら、Standarteは貴社の製品を紹介する `, link: (m) => `${m}件の展示会`, after: ' をご提供します。' }
   };
   $: da = (directAnswer[lang] || directAnswer.es);
   $: pc = (patCta[lang] || patCta.es);
@@ -667,6 +687,10 @@
   })();
   const projLead = { es: 'Así montamos para este sector:', pt: 'Assim montamos para este setor:', en: 'This is how we build for this sector:', de: 'So bauen wir für diese Branche:', fr: 'Voici comment nous construisons pour ce secteur :', it: 'Ecco come allestiamo per questo settore:', nl: 'Zo bouwen wij voor deze sector:', zh: '我们如此为该行业搭建：', hi: 'इस क्षेत्र के लिए हम ऐसे बनाते हैं:', ko: '이 분야를 위해 이렇게 시공합니다:', ja: 'この分野ではこのように施工します：' };
   const projCta = { es: 'ver un stand nuestro', pt: 'ver um stand nosso', en: 'see one of our stands', de: 'einen unserer Stände ansehen', fr: 'voir un de nos stands', it: 'vedi un nostro stand', nl: 'bekijk een van onze stands', zh: '查看我们的展台', hi: 'हमारा एक स्टैंड देखें', ko: '당사 부스 보기', ja: '当社のブースを見る' };
+  // Pie de foto del ejemplo gráfico (imagen del proyecto a todo el ancho).
+  const projExample = { es: 'Ejemplo de diseño para este sector', pt: 'Exemplo de design para este setor', en: 'Example design for this sector', de: 'Beispiel-Design für diese Branche', fr: 'Exemple de design pour ce secteur', it: 'Esempio di design per questo settore', nl: 'Voorbeeldontwerp voor deze sector', zh: '该行业的设计示例', hi: 'इस क्षेत्र के लिए डिज़ाइन का उदाहरण', ko: '이 분야의 디자인 예시', ja: 'この分野のデザイン例' };
+  // Enlace corto del bloque de Proyecto Auditado (aside), antes "Descubre el Proyecto Auditado".
+  const moreInfoLabel = { es: 'Más información', pt: 'Mais informação', en: 'More info', de: 'Mehr Infos', fr: 'Plus d\'informations', it: 'Più informazioni', nl: 'Meer info', zh: '了解更多', hi: 'अधिक जानकारी', ko: '자세히 보기', ja: '詳細を見る' };
 
   // #3 (D1) JSON-LD: Service (con proveedor y ciudad) + FAQPage (nombra Pat y Proyecto
   // Auditado). El FAQPage solo se emite en ES/PT/EN (prioridad ibérica) para no publicar
@@ -833,8 +857,10 @@
             {/each}
           </ol>
         </nav>
-        <!-- Respuesta directa citable (GEO): instrumentos propios + cobertura ES/PT. -->
-        <p class="feria-direct-answer">{da(fair.name, localizedCity)}</p>
+        <!-- Respuesta directa citable (GEO): instrumentos propios + cobertura ES/PT.
+             Cierra con el reclamo de expansión: "…te ofrecemos N ferias…", donde
+             "N ferias" enlaza a Pat (sembrado con el sector de esta feria). -->
+        <p class="feria-direct-answer">{da(fair.name, localizedCity)} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}</p>
         <!-- Página de destino: CTA prioritario tras el primer párrafo que baja al
              formulario del final para que el visitante pida presupuesto sin perderse. -->
         <a
@@ -842,63 +868,62 @@
           href="#feria-presupuesto"
           on:click={(e) => { e.preventDefault(); document.getElementById('feria-presupuesto')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
         >{strings.cta}</a>
-        <!-- CTA contextual de Pat, sembrado por el sector de esta feria. -->
-        <a class="feria-pat-cta" href={patHref} rel="nofollow">
-          <span class="feria-pat-text">
-            <span class="feria-pat-q">{pc.q(fair.name)}</span>
-            <span class="feria-pat-sub">{pc.sub}</span>
-          </span>
-          <span class="feria-pat-btn">{pc.cta} →</span>
-        </a>
         <p class="highlight">{seoDesc}</p>
         {#if fairBody}
           <div class="fair-unique">{@html fairBody}</div>
         {/if}
-        <p class="audited-note">{pickUspLine(lang, fair.slug)}
-          <a href={pathFor(lang, 'proyecto_auditado')}>{uspHome(lang).cta} →</a></p>
         <p>{strings.intro2}</p>
+        <!-- G1: proyecto 3D real del mismo sector (si existe): la parte gráfica es el
+             gancho — se muestra a todo el ancho de la columna con pie de foto, tras el
+             segundo párrafo del cuerpo (el de modelado 3D) y antes de "Servicios". -->
+        {#if fairProject}
+          <a class="feria-project-figure" href={projectUrl(fairProject.id, lang)}>
+            {#if fairProject.image}<img src={fairProject.image} alt={(fairProject.title && (fairProject.title[lang] || fairProject.title.es)) || fairProject.name} loading="lazy" />{/if}
+            <span class="feria-project-caption">{projExample[lang] || projExample.es}</span>
+          </a>
+        {/if}
         {#if venueText}
           <p class="feria-venue">{venueText}</p>
         {/if}
 
-        <h3>{strings.services}</h3>
-        <ul class="services-list">
-          {#each copy.services as service}
-            <li>
-              <strong>{service[0]}</strong>
-              <p>{service[1]}</p>
-            </li>
-          {/each}
-        </ul>
-        <!-- G1: malla feria → proyecto 3D real del mismo sector (si existe). -->
-        {#if fairProject}
-          <a class="feria-project-link" href={projectUrl(fairProject.id, lang)}>
-            {#if fairProject.image}<img src={fairProject.image.replace('.avif', '-thumb.avif')} alt={fairProject.name} loading="lazy" />{/if}
-            <span class="feria-project-text">
-              <span class="feria-project-lead">{projLead[lang] || projLead.es}</span>
-              <span class="feria-project-name">{(fairProject.title && (fairProject.title[lang] || fairProject.title.es)) || fairProject.name} — {projCta[lang] || projCta.es} →</span>
-            </span>
-          </a>
-        {/if}
+        <!-- Servicios para expositores: información secundaria, escamoteada (plegada)
+             para no distraer del mensaje troncal y el CTA. -->
+        <details class="feria-collapse">
+          <summary>{strings.services}</summary>
+          <ul class="services-list">
+            {#each copy.services as service}
+              <li>
+                <strong>{service[0]}</strong>
+                <p>{service[1]}</p>
+              </li>
+            {/each}
+          </ul>
+        </details>
       </div>
       <aside class="feria-aside">
+        <!-- Proyecto Auditado: asunto troncal, destacado en la columna derecha. -->
         <div class="aside-module">
-          <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
+          <p class="audited-note">{pickUspLine(lang, fair.slug)}
+            <a href={pathFor(lang, 'proyecto_auditado')}>{moreInfoLabel[lang] || moreInfoLabel.es} →</a></p>
+        </div>
+        <!-- Nubes de navegación secundaria plegadas: no distraen del lead. -->
+        <details class="aside-module feria-aside-collapse">
+          <summary>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</summary>
           <ul class="cluster-fairs">
             {#each sortedCityKeys as ck}
               <li><a href={pathFor(lang, ck)} class:active={ck === currentCityKey}>{cityLabel(ck, lang)}</a></li>
             {/each}
           </ul>
-        </div>
+        </details>
         {#if siblingFairs.length}
-          <div class="aside-module">
-            <h3>{clusterStr.related}</h3>
+          <details class="aside-module feria-aside-collapse">
+            <summary>{clusterStr.related}</summary>
             <ul class="cluster-fairs">
               {#each siblingFairs as sib}
                 <li><a href={fairHref(sib.slug)}><span class="fair-flag flag-{sib.country}" aria-hidden="true"></span>{sib.name}</a></li>
               {/each}
             </ul>
-          </div>
+          </details>
         {/if}
         {#if fairActivityTags.length}
           <div class="aside-module">
@@ -1014,18 +1039,22 @@
   .feria-guarantee-stamp:hover { transform: scale(1.05); }
   .feria-guarantee-stamp img { display: block; width: 100%; height: 100%; }
   @media (max-width: 768px) { .feria-guarantee-stamp { width: 78px; height: 78px; top: -22px; right: 8px; } }
-  /* G1: enlace a un proyecto 3D real del sector de la feria. */
-  .feria-project-link {
-    display: flex; align-items: center; gap: 14px;
-    text-decoration: none; margin: 0.4rem 0 1.6rem;
-    border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden;
+  /* G1: proyecto 3D real del sector, a todo el ancho de la columna (gancho gráfico). */
+  .feria-project-figure {
+    display: block; text-decoration: none; margin: 1.6rem 0;
+    border-radius: 10px; overflow: hidden;
     background: #fff; transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
-  .feria-project-link:hover { box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1); transform: translateY(-2px); }
-  .feria-project-link img { width: 120px; height: 84px; object-fit: cover; flex: 0 0 auto; background: #ececec; }
-  .feria-project-text { display: flex; flex-direction: column; gap: 0.25rem; padding: 0.6rem 0.9rem 0.6rem 0; }
-  .feria-project-lead { font-size: 0.85rem; color: #6b7178; }
-  .feria-project-name { font-weight: 700; color: #4169e1; line-height: 1.35; }
+  .feria-project-figure:hover { box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12); transform: translateY(-2px); }
+  .feria-project-figure img {
+    display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #ececec;
+  }
+  .feria-project-caption {
+    display: block; padding: 0.6rem 0.9rem;
+    font-size: 0.9rem; color: #6b7178; background: #f7f6f1;
+    text-align: center; font-style: italic;
+  }
+  .feria-project-figure:hover .feria-project-caption { color: #4169e1; }
   .highlight {
     font-family: 'Francois One', serif;
     font-size: 1.4rem;
@@ -1060,35 +1089,13 @@
     border-radius: 0 8px 8px 0;
     margin: 0 0 1.4rem;
   }
-  /* CTA contextual de Pat, sembrado por sector. */
-  .feria-pat-cta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    text-decoration: none;
-    border: 1px solid rgba(65, 105, 225, 0.35);
-    background: rgba(65, 105, 225, 0.05);
-    border-radius: 10px;
-    padding: 0.9rem 1.1rem;
-    margin: 0 0 1.8rem;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-  .feria-pat-cta:hover { background: rgba(65, 105, 225, 0.1); border-color: rgba(65, 105, 225, 0.6); }
-  .feria-pat-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
-  .feria-pat-q { font-weight: 700; color: #1a1e21; font-size: 1.02rem; }
-  .feria-pat-sub { color: #555; font-size: 0.92rem; line-height: 1.45; }
-  .feria-pat-btn {
-    flex: 0 0 auto;
-    background: #4169e1;
-    color: #fff;
-    font-weight: 700;
-    padding: 0.6rem 1.1rem;
-    border-radius: 6px;
+  /* Enlace de expansión integrado en la respuesta directa (royal blue + subrayado). */
+  .feria-expansion-link {
+    color: royalblue;
+    text-decoration: underline;
+    font-weight: 600;
     white-space: nowrap;
   }
-  .feria-pat-cta:hover .feria-pat-btn { background: #2a4bc0; }
   .feria-text p {
     margin-bottom: 1.5rem;
     color: var(--text-color);
@@ -1111,12 +1118,6 @@
   .fair-unique :global(p) {
     margin-bottom: 1.5rem;
     color: var(--text-color);
-  }
-  .feria-text h3 {
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    display: inline-block;
   }
   .services-list {
     list-style: none;
@@ -1155,6 +1156,34 @@
   .aside-module + .aside-module {
     margin-top: 2rem;
   }
+
+  /* ── Bloques plegables (van al grano; la info secundaria queda escamoteada) ── */
+  .feria-collapse { margin: 1.6rem 0; }
+  .feria-collapse > summary,
+  .feria-aside-collapse > summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    color: #1a1e21;
+  }
+  .feria-collapse > summary::-webkit-details-marker,
+  .feria-aside-collapse > summary::-webkit-details-marker { display: none; }
+  .feria-collapse > summary::marker,
+  .feria-aside-collapse > summary::marker { content: ''; }
+  .feria-collapse > summary::before,
+  .feria-aside-collapse > summary::before {
+    content: '▸';
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: var(--primary, #e0b400);
+    transition: transform 0.2s ease;
+  }
+  .feria-collapse[open] > summary::before,
+  .feria-aside-collapse[open] > summary::before { transform: rotate(90deg); }
+  .feria-collapse > summary { font-size: 1.5rem; }
+  .feria-collapse[open] > summary { margin-bottom: 1.2rem; }
+  .feria-aside-collapse > summary { font-size: 1.4rem; }
+  .feria-aside-collapse[open] > summary { margin-bottom: 1.2rem; }
   @media (max-width: 900px) {
     .feria-container {
       grid-template-columns: 1fr;
