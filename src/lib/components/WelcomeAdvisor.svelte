@@ -596,12 +596,17 @@
     selectedTags = selectedTags.includes(tag)
       ? selectedTags.filter((t) => t !== tag)
       : [...selectedTags, tag];
+    // El preview se calcula en el mouseenter y quedaría obsoleto tras el click (sobre
+    // todo al deseleccionar sin sacar el ratón): se limpia para que el mapa muestre el
+    // estado REAL ya; el preview vuelve a activarse en el siguiente hover.
+    previewTags = [];
     unlockAudio();
   }
 
   // Paso 2 → 3: pasar al formulario (requiere al menos una etiqueta).
   function goToForm() {
     if (!selectedTags.length) return;
+    previewTags = []; // evitar preview obsoleto al avanzar al formulario
     currentStep = 3;
     unlockAudio();
     // Avisa al contenedor con un resumen (familia + actividades) para prerrellenar

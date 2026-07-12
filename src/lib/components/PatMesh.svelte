@@ -160,11 +160,14 @@
       if (!tags || !tags.length) continue;
       let c = cityMap[f.city];
       if (!c) {
-        c = { name: f.city, x: pt[0], y: pt[1], tags: {}, total: 0 };
+        c = { name: f.city, x: pt[0], y: pt[1], tags: {}, total: 0, fairs: [] };
         cityMap[f.city] = c;
         cities.push(c);
       }
       for (const t of tags) { c.tags[t] = (c.tags[t] || 0) + 1; c.total++; }
+      // Conjunto de etiquetas de ESTA feria: base para contar ferias DISTINTAS (una
+      // feria con varias actividades no debe contarse varias veces).
+      c.fairs.push(new Set(tags));
     }
 
     const famKeys = Object.keys(tagFamilies);
@@ -175,6 +178,28 @@
     famKeys.forEach((f) => { famTotals[f] = 0; });
     tagKeys.forEach((t) => { famTotals[fairTags[t].family] += tagTotals[t]; });
     const famColor = (t) => tagFamilies[fairTags[t].family].color;
+
+    // ── Conteo de ferias DISTINTAS ──
+    // tagTotals/famTotals suman feria×etiqueta (sirven para el TAMAÑO de los nódulos),
+    // pero los NÚMEROS que se muestran deben contar ferias distintas: una feria con
+    // varias actividades seleccionadas cuenta una sola vez. Se usa la lista de conjuntos
+    // de etiquetas por feria.
+    const allFairs = []; // { tags:Set } de cada feria del mapa
+    cities.forEach((c) => c.fairs.forEach((tset) => allFairs.push(tset)));
+    // Ferias distintas por sector (número por defecto del nódulo de familia).
+    const famFairTotal = {};
+    famKeys.forEach((f) => {
+      famFairTotal[f] = allFairs.reduce((n, ts) => n + ([...ts].some((t) => fairTags[t].family === f) ? 1 : 0), 0);
+    });
+    // Ferias distintas (globales) con al menos una etiqueta del conjunto activo.
+    const countFairs = (activeSet) =>
+      allFairs.reduce((n, ts) => n + ([...ts].some((t) => activeSet.has(t)) ? 1 : 0), 0);
+    // Ferias distintas de la familia f con al menos una etiqueta ACTIVA de esa familia.
+    const countFairsFamily = (f, activeSet) =>
+      allFairs.reduce((n, ts) => n + ([...ts].some((t) => activeSet.has(t) && fairTags[t].family === f) ? 1 : 0), 0);
+    // Ferias distintas de una ciudad concreta dentro de la familia f (para el :hover de ciudad).
+    const countCityFairsFamily = (city, f) =>
+      city.fairs.reduce((n, ts) => n + ([...ts].some((t) => fairTags[t].family === f) ? 1 : 0), 0);
 
     // ── Posiciones base: familias en elipse exterior, etiquetas en abanico ──
     const famPos = {};
@@ -414,7 +439,7 @@
       tagKeys.forEach((t) => { tagEls[t].text.textContent = labelForTag(t, currentLang); });
       famKeys.forEach((f) => {
         famEls[f].texts[0].node.textContent = familyLabel(f, currentLang);
-        famEls[f].texts[1].node.textContent = famTotals[f];
+        famEls[f].texts[1].node.textContent = famFairTotal[f];
       });
       // href de cada punto-ciudad → su página pilar en el idioma activo
       cityLinks.forEach((a) => {
@@ -440,7 +465,7 @@
         famEls[f].g.classList.toggle('dimmed', !famOn);
         // Número del nódulo: con selección activa muestra los eventos de la SUB-
         // selección dentro de esa familia; sin selección (o familia no tocada), el total.
-        const num = (any && inFam.length) ? inFam.reduce((s, t) => s + tagTotals[t], 0) : famTotals[f];
+        const num = (any && inFam.length) ? countFairsFamily(f, active) : famFairTotal[f];
         famEls[f].texts[1].node.textContent = num;
       });
       cityGroup.childNodes.forEach((n) => {
@@ -453,7 +478,7 @@
       // Ventana conversacional: total de eventos de la selección actual (suma de
       // las etiquetas activas), con texto según el modo (sector/subselección).
       if (any) {
-        const total = [...active].reduce((s, t) => s + (tagTotals[t] || 0), 0);
+        const total = countFairs(active);
         const msgs = selectionMsg[currentLang] || selectionMsg.en;
         const build = msgs[currentMode] || msgs.family;
         const msg = build(total).replace(/(\d[\d.,]*)/, '<b class="pm-callout-n">$1</b>');
@@ -500,7 +525,7 @@
       famKeys.forEach((f) => {
         // Ferias de ESTA ciudad en el sector (suma de sus etiquetas de la familia):
         // el dígito del nódulo responde al :hover mostrando el número de esa ciudad.
-        const inCity = tagsByFam[f].reduce((s, t) => s + (city.tags[t] || 0), 0);
+        const inCity = countCityFairsFamily(city, f);
         famEls[f].g.classList.toggle('dimmed', inCity === 0);
         famEls[f].texts[1].node.textContent = inCity;
       });
