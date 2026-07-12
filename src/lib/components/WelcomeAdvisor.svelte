@@ -33,6 +33,7 @@
 
   let selectedFamily = '';   // clave de familia de etiquetas (tagFamilies)
   let selectedTags = [];     // etiquetas elegidas dentro de la familia (multiselección)
+  let previewTags = [];      // etiquetas en preview por :hover sobre un botón (adelanto del click)
   let currentStep = 1;       // 1 = familia, 2 = etiquetas (multi), 3 = formulario
 
   let cardExpanded = false;
@@ -583,6 +584,7 @@
     clearInterval(typingInterval);
     selectedFamily = fam;
     selectedTags = [];
+    previewTags = []; // el mouseleave no dispara al desmontar el botón: se limpia aquí
     currentStep = 2;
     status = 'idle';
     statusMessage = '';
@@ -611,6 +613,7 @@
   function resetFamily() {
     selectedFamily = '';
     selectedTags = [];
+    previewTags = []; // limpiar el preview al volver al paso 1
     currentStep = 1;
     status = 'idle';
     statusMessage = '';
@@ -750,6 +753,10 @@
             class="activity-selector-btn family-btn"
             style="--chip:{f.color}"
             on:click={() => selectFamily(f.key)}
+            on:mouseenter={() => previewTags = tagsOfFamily(f.key)}
+            on:mouseleave={() => previewTags = []}
+            on:focus={() => previewTags = tagsOfFamily(f.key)}
+            on:blur={() => previewTags = []}
           >
             <span class="badge-activity-dot" aria-hidden="true"></span>{familyLabel(f.key, lang)}
           </button>
@@ -770,6 +777,10 @@
               style="--chip:{colorForTag(tag)}"
               aria-pressed={selectedTags.includes(tag)}
               on:click={() => toggleTag(tag)}
+              on:mouseenter={() => previewTags = selectedTags.includes(tag) ? selectedTags : [...selectedTags, tag]}
+              on:mouseleave={() => previewTags = []}
+              on:focus={() => previewTags = selectedTags.includes(tag) ? selectedTags : [...selectedTags, tag]}
+              on:blur={() => previewTags = []}
             >
               {#if selectedTags.includes(tag)}<span class="tag-check" aria-hidden="true">✓</span>{/if}{labelForTag(tag, lang)}
             </button>
@@ -837,7 +848,7 @@
          refleja qué ciudades y ferias corresponden a lo marcado. -->
     {#if MeshComponent && status !== 'success'}
       <div class="advisor-mesh" transition:fade={{ duration: 400 }}>
-        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} {initialCity} showContinue={currentStep === 2} on:navigate={onMeshNavigate} on:continue={goToForm} />
+        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} {previewTags} {initialCity} showContinue={currentStep === 2} on:navigate={onMeshNavigate} on:continue={goToForm} />
       </div>
     {/if}
 

@@ -34,6 +34,9 @@
   // El botón "Continuar" (avanzar al formulario) vive ahora en la isla informativa;
   // solo se muestra en el paso 2 con subselección. WelcomeAdvisor pasa currentStep===2.
   export let showContinue = false;
+  // Preview de :hover: etiquetas a resaltar temporalmente mientras el usuario pasa el
+  // ratón por un botón de sector/actividad (adelanto de lo que hará el click).
+  export let previewTags = [];
 
   const dispatch = createEventDispatcher();
 
@@ -130,6 +133,7 @@
   }
 
   $: if (api) api.update(activeTags, lang, pWord, selMode, showContinue);
+  $: if (api) api.setPreview(previewTags);
   // Al navegar entre ciudades (nube de ciudades del sidebar), el mapa persiste y
   // solo cambia initialCity: reubicamos el :hover por defecto a la nueva ciudad.
   $: if (api) api.setDefaultCity(initialCity);
@@ -401,6 +405,10 @@
     // Cuando WelcomeAdvisor está en el paso de subselección (paso 2), la isla ofrece
     // el botón "Continuar" que avanza al formulario vía el evento 'continue'.
     let currentShowContinue = false;
+    // Preview por :hover sobre los botones de sector/actividad de Pat: resalta esas
+    // etiquetas temporalmente (adelanto de lo que hará el click) sin tocar la selección
+    // real ni la isla. null = sin preview.
+    let previewSet = null;
 
     function applyLabels() {
       tagKeys.forEach((t) => { tagEls[t].text.textContent = labelForTag(t, currentLang); });
@@ -415,8 +423,8 @@
       });
     }
 
-    function render() {
-      const active = new Set(currentActive);
+    function render(activeArg, isPreview) {
+      const active = new Set(activeArg || currentActive);
       const any = active.size > 0;
       edges.forEach((p) => { p.style.opacity = any ? (active.has(p._tag) ? 0.8 : 0.03) : ''; });
       spokes.forEach((p) => { p.style.opacity = any ? (active.has(p._tag) ? 0.75 : 0.06) : ''; });
@@ -440,6 +448,8 @@
         const has = Object.keys(n._city.tags).some((t) => active.has(t));
         n.classList.toggle('dimmed', !has);
       });
+      // En preview (:hover de botón) solo se adelanta el resaltado; la isla no se toca.
+      if (isPreview) return;
       // Ventana conversacional: total de eventos de la selección actual (suma de
       // las etiquetas activas), con texto según el modo (sector/subselección).
       if (any) {
@@ -467,6 +477,8 @@
     // el estado inicial de una página de ciudad, se muestra el :hover de esa ciudad;
     // en cualquier otro caso, el render neutro.
     function renderState() {
+      // El preview de :hover sobre un botón manda sobre todo lo demás mientras dura.
+      if (previewSet) { render(previewSet, true); return; }
       if (!currentActive.length && defaultActive && defaultCity) {
         highlightCity(defaultCity, null);
       } else {
@@ -733,6 +745,12 @@
 
     return {
       setLens,
+      // Preview por :hover de botón: resalta `tags` temporalmente; con lista vacía o
+      // nula se limpia y se vuelve al estado real (selección / :hover de ciudad).
+      setPreview(tags) {
+        previewSet = (tags && tags.length) ? tags : null;
+        renderState();
+      },
       update(active, newLang, newPWord, mode, showCont) {
         currentActive = active;
         currentMode = mode || '';
