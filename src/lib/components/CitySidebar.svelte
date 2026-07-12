@@ -34,6 +34,8 @@
     'Vigo': 'galicia', 'Portugal Sur': 'portugal-sur',
     'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia',
     'Lleida': 'cataluna', 'Girona': 'cataluna',
+    'Irún': 'paisvasco',
+    'Logroño': 'larioja', 'Alfaro': 'larioja', 'Calahorra': 'larioja',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
   const FEATURED_BY_REGION = {

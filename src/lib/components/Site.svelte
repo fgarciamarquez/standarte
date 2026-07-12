@@ -538,6 +538,8 @@
     'Santarém': 'portugal', 'Trujillo': 'extremadura', 'Elche': 'comunidadvalenciana',
     'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia',
     'Lleida': 'cataluna', 'Girona': 'cataluna',
+    'Irún': 'paisvasco',
+    'Logroño': 'larioja', 'Alfaro': 'larioja', 'Calahorra': 'larioja',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'
