@@ -348,7 +348,13 @@ export const fairActivities = {
   "bioterra-irun": ["ecologico","alimentacion","construccion"],
   "caravantur-irun": ["turismo","movilidad"],
   "uhinak-irun": ["ecologico","pesca-mar"],
-  "go-mobility-irun": ["movilidad"]
+  "go-mobility-irun": ["movilidad"],
+  "rioja-wine-trade-mission-logrono": ["vino"],
+  "planeta-rioja-logrono": ["vino"],
+  "feria-formacion-profesional-la-rioja-logrono": ["congreso-profesional","multisectorial"],
+  "feria-vehiculo-ocasion-logrono": ["automocion"],
+  "feria-maquinaria-agricola-alfaro": ["agricultura-maquinaria"],
+  "ferias-agroalimentarias-rioja-oriental-calahorra": ["alimentacion"]
 };
 
 // Helpers

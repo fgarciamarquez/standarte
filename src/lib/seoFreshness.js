@@ -45,7 +45,8 @@ export const seoFreshness = {
   girona: '2026-07-10',
   santander: '2026-07-11',
   gijon: '2026-07-11',
-  irun: '2026-07-12'
+  irun: '2026-07-12',
+  logrono: '2026-07-12'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

@@ -1993,5 +1993,47 @@ export const fairsData = [
     "slug": "go-mobility-irun",
     "city": "Irún",
     "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Rioja Wine Trade Mission",
+    "country": "es",
+    "slug": "rioja-wine-trade-mission-logrono",
+    "city": "Logroño",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Planeta Rioja",
+    "country": "es",
+    "slug": "planeta-rioja-logrono",
+    "city": "Logroño",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Feria de Formación Profesional de La Rioja",
+    "country": "es",
+    "slug": "feria-formacion-profesional-la-rioja-logrono",
+    "city": "Logroño",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feria del Vehículo de Ocasión de Logroño",
+    "country": "es",
+    "slug": "feria-vehiculo-ocasion-logrono",
+    "city": "Logroño",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Feria de Maquinaria Agrícola de Alfaro",
+    "country": "es",
+    "slug": "feria-maquinaria-agricola-alfaro",
+    "city": "Alfaro",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Ferias Agroalimentarias de la Rioja Oriental",
+    "country": "es",
+    "slug": "ferias-agroalimentarias-rioja-oriental-calahorra",
+    "city": "Calahorra",
+    "sector": "Agroalimentario y Naturaleza"
   }
 ];
