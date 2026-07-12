@@ -448,7 +448,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -527,7 +527,7 @@
     santarem: 'portugal', trujillo: 'extremadura', elche: 'comunidadvalenciana',
     silleda: 'galicia', ourense: 'galicia',
     lleida: 'cataluna', girona: 'cataluna',
-    santander: 'cantabria', gijon: 'asturias'
+    santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -766,7 +766,7 @@
     'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
     'Santarém': 'santarem', 'Trujillo': 'trujillo', 'Elche': 'elche',
     'Silleda': 'silleda', 'Ourense': 'ourense',
-    'Lleida': 'lleida', 'Girona': 'girona',
+    'Lleida': 'lleida', 'Girona': 'girona', 'Irún': 'irun',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   function fairsForCity(cityKey) {

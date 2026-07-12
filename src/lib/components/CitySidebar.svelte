@@ -23,7 +23,7 @@
     zaragoza: 'aragon', badajoz: 'extremadura', portugal_sur: 'portugal-sur',
     silleda: 'galicia', ourense: 'galicia',
     lleida: 'cataluna', girona: 'cataluna',
-    santander: 'cantabria', gijon: 'asturias'
+    santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura',

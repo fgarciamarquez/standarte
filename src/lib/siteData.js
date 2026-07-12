@@ -34,6 +34,7 @@ export const routes = {
     batalha: 'diseno_montaje_stands_batalha',
     silleda: 'diseno_montaje_stands_silleda',
     santander: 'diseno_montaje_stands_santander',
+    irun: 'diseno_montaje_stands_irun',
     gijon: 'diseno_montaje_stands_gijon',
     lleida: 'diseno_montaje_stands_lleida',
     girona: 'diseno_montaje_stands_girona',
@@ -87,6 +88,7 @@ export const routes = {
     batalha: 'stand_design_assembly_batalha',
     silleda: 'stand_design_assembly_silleda',
     santander: 'stand_design_assembly_santander',
+    irun: 'stand_design_assembly_irun',
     gijon: 'stand_design_assembly_gijon',
     lleida: 'stand_design_assembly_lleida',
     girona: 'stand_design_assembly_girona',
@@ -140,6 +142,7 @@ export const routes = {
     batalha: 'messestand_design_montage_batalha',
     silleda: 'messestand_design_montage_silleda',
     santander: 'messestand_design_montage_santander',
+    irun: 'messestand_design_montage_irun',
     gijon: 'messestand_design_montage_gijon',
     lleida: 'messestand_design_montage_lleida',
     girona: 'messestand_design_montage_girona',
@@ -193,6 +196,7 @@ export const routes = {
     batalha: 'batalha_zhantai_sheji_dajian',
     silleda: 'silleda_zhantai_sheji_dajian',
     santander: 'santander_zhantai_sheji_dajian',
+    irun: 'irun_zhantai_sheji_dajian',
     gijon: 'gijon_zhantai_sheji_dajian',
     lleida: 'lleida_zhantai_sheji_dajian',
     girona: 'girona_zhantai_sheji_dajian',
@@ -246,6 +250,7 @@ export const routes = {
     batalha: 'batalha_stand_dizain_asembli',
     silleda: 'silleda_stand_dizain_asembli',
     santander: 'santander_stand_dizain_asembli',
+    irun: 'irun_stand_dizain_asembli',
     gijon: 'gijon_stand_dizain_asembli',
     lleida: 'lleida_stand_dizain_asembli',
     girona: 'girona_stand_dizain_asembli',
@@ -299,6 +304,7 @@ export const routes = {
     batalha: 'design_montagem_stands_batalha',
     silleda: 'design_montagem_stands_silleda',
     santander: 'design_montagem_stands_santander',
+    irun: 'design_montagem_stands_irun',
     gijon: 'design_montagem_stands_gijon',
     lleida: 'design_montagem_stands_lleida',
     girona: 'design_montagem_stands_girona',
@@ -352,6 +358,7 @@ export const routes = {
     batalha: 'conception_montage_stands_batalha',
     silleda: 'conception_montage_stands_silleda',
     santander: 'conception_montage_stands_santander',
+    irun: 'conception_montage_stands_irun',
     gijon: 'conception_montage_stands_gijon',
     lleida: 'conception_montage_stands_lleida',
     girona: 'conception_montage_stands_girona',
@@ -405,6 +412,7 @@ export const routes = {
     batalha: 'progettazione_montaggio_stand_batalha',
     silleda: 'progettazione_montaggio_stand_silleda',
     santander: 'progettazione_montaggio_stand_santander',
+    irun: 'progettazione_montaggio_stand_irun',
     gijon: 'progettazione_montaggio_stand_gijon',
     lleida: 'progettazione_montaggio_stand_lleida',
     girona: 'progettazione_montaggio_stand_girona',
@@ -458,6 +466,7 @@ export const routes = {
     batalha: 'batalha-bujeu-dijain-jorip',
     silleda: 'silleda-bujeu-dijain-jorip',
     santander: 'santander-bujeu-dijain-jorip',
+    irun: 'irun-buseu-dijain-jorip',
     gijon: 'gijon-bujeu-dijain-jorip',
     lleida: 'lleida-bujeu-dijain-jorip',
     girona: 'girona-bujeu-dijain-jorip',
@@ -511,6 +520,7 @@ export const routes = {
     batalha: 'バターリャ展示会ブース設計施工',
     silleda: 'シジェダ展示会ブース設計施工',
     santander: 'サンタンデール展示会ブース設計施工',
+    irun: 'イルン展示会ブース設計施工',
     gijon: 'ヒホン展示会ブース設計施工',
     lleida: 'リェイダ展示会ブース設計施工',
     girona: 'ジローナ展示会ブース設計施工',
@@ -564,6 +574,7 @@ export const routes = {
     batalha: 'standontwerp_montage_batalha',
     silleda: 'standontwerp_montage_silleda',
     santander: 'standontwerp_montage_santander',
+    irun: 'standontwerp_montage_irun',
     gijon: 'standontwerp_montage_gijon',
     lleida: 'standontwerp_montage_lleida',
     girona: 'standontwerp_montage_girona',
@@ -2406,6 +2417,55 @@ export const cityData = {
       },
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはサンタンデールで展示会ブースの設計・施工を行います。ここはARTESANTANDERやBioCantabriaなどが開催されるPalacio de Exposiciones y Congresosの本拠地で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  irun: {
+    city: { es: 'Irún', en: 'Irún', de: 'Irún', zh: '伊伦', hi: 'इरुन', pt: 'Irún', fr: 'Irún', it: 'Irún', ko: '이룬', ja: 'イルン', nl: 'Irún' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Irún —sede de Ficoba, el recinto ferial de Gipuzkoa, con citas como MUBIL Mobility Expo, Go Mobility, Bioterra y UNIRE— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Irún —home to Ficoba, the Gipuzkoa exhibition centre, with events such as MUBIL Mobility Expo, Go Mobility, Bioterra and UNIRE— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Irún — Standort von Ficoba, dem Messegelände von Gipuzkoa, mit Veranstaltungen wie MUBIL Mobility Expo, Go Mobility, Bioterra und UNIRE — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Irún — sede da Ficoba, o recinto de feiras de Gipuzkoa, com certames como a MUBIL Mobility Expo, a Go Mobility, a Bioterra e a UNIRE — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Irún — siège de Ficoba, le parc des expositions du Gipuzkoa, avec des rendez-vous comme MUBIL Mobility Expo, Go Mobility, Bioterra et UNIRE — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Irún — sede di Ficoba, il quartiere fieristico di Gipuzkoa, con appuntamenti come MUBIL Mobility Expo, Go Mobility, Bioterra e UNIRE — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Irún — locatie van Ficoba, het beurscomplex van Gipuzkoa, met evenementen zoals MUBIL Mobility Expo, Go Mobility, Bioterra en UNIRE — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在伊伦为展会设计并搭建展台——这里是吉普斯夸展览中心 Ficoba 的所在地，举办 MUBIL Mobility Expo、Go Mobility、Bioterra 和 UNIRE 等展会——全程掌控每个环节：3D设计、制造、物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte इरुन में स्टैंड डिज़ाइन और स्थापित करता है — यह गिपुज़कोआ के प्रदर्शनी केंद्र Ficoba का स्थान है, जहाँ MUBIL Mobility Expo, Go Mobility, Bioterra और UNIRE जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 이룬에서 전시회 부스를 디자인하고 시공합니다. 이곳은 MUBIL Mobility Expo, Go Mobility, Bioterra, UNIRE 등이 열리는 기푸스코아 전시장 Ficoba의 소재지로, 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはイルンで展示会ブースの設計・施工を行います。ここはMUBIL Mobility Expo、Go Mobility、Bioterra、UNIREなどが開催されるギプスコアの見本市会場Ficobaの本拠地で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }

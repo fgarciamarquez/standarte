@@ -1951,5 +1951,47 @@ export const fairsData = [
     "slug": "global-mobility-call-madrid",
     "city": "Madrid",
     "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "MUBIL Mobility Expo",
+    "country": "es",
+    "slug": "mubil-mobility-expo-irun",
+    "city": "Irún",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "UNIRE",
+    "country": "es",
+    "slug": "unire-irun",
+    "city": "Irún",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Bioterra",
+    "country": "es",
+    "slug": "bioterra-irun",
+    "city": "Irún",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Caravantur",
+    "country": "es",
+    "slug": "caravantur-irun",
+    "city": "Irún",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Uhinak",
+    "country": "es",
+    "slug": "uhinak-irun",
+    "city": "Irún",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Go Mobility",
+    "country": "es",
+    "slug": "go-mobility-irun",
+    "city": "Irún",
+    "sector": "Aeronáutica y Transporte"
   }
 ];

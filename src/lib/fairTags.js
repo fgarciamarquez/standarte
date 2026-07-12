@@ -342,7 +342,13 @@ export const fairActivities = {
   "its-european-congress": ["movilidad","smart-city","congreso-profesional"],
   "congreso-its-espana": ["movilidad","congreso-profesional"],
   "trafic-madrid": ["movilidad"],
-  "global-mobility-call-madrid": ["movilidad","smart-city","congreso-profesional"]
+  "global-mobility-call-madrid": ["movilidad","smart-city","congreso-profesional"],
+  "mubil-mobility-expo-irun": ["movilidad","energia"],
+  "unire-irun": ["metal-subcontratacion","maquinaria-industrial"],
+  "bioterra-irun": ["ecologico","alimentacion","construccion"],
+  "caravantur-irun": ["turismo","movilidad"],
+  "uhinak-irun": ["ecologico","pesca-mar"],
+  "go-mobility-irun": ["movilidad"]
 };
 
 // Helpers
