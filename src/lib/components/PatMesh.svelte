@@ -486,7 +486,11 @@
         tagEls[t].text.setAttribute('opacity', on ? 1 : 0);
       });
       famKeys.forEach((f) => {
-        famEls[f].g.classList.toggle('dimmed', !tagsByFam[f].some((t) => city.tags[t]));
+        // Ferias de ESTA ciudad en el sector (suma de sus etiquetas de la familia):
+        // el dígito del nódulo responde al :hover mostrando el número de esa ciudad.
+        const inCity = tagsByFam[f].reduce((s, t) => s + (city.tags[t] || 0), 0);
+        famEls[f].g.classList.toggle('dimmed', inCity === 0);
+        famEls[f].texts[1].node.textContent = inCity;
       });
       cityGroup.childNodes.forEach((n) => n.classList.toggle('dimmed', n._city !== city));
       const rows = Object.keys(city.tags)
