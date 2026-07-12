@@ -12,7 +12,7 @@
   import { fairsData } from '$lib/fairsData.js';
   import { tagFamilies, fairTags, fairActivities, labelForTag, familyLabel } from '$lib/fairTags.js';
   import { IBERIA_PATH, CITY_POINTS, MAP_INSETS, CITY_PILLAR } from '$lib/iberiaMeshData.js';
-  import { pathFor, activityUrl } from '$lib/siteData.js';
+  import { pathFor } from '$lib/siteData.js';
 
   // Familias cuyo rótulo se fuerza a un lado concreto del nodo (en lugar del lado
   // automático por posición) porque en su ubicación el texto se salía del marco.
@@ -31,6 +31,9 @@
   // Ciudad a resaltar por defecto al abrir el mapa (páginas de ciudad): el mapa
   // arranca mostrando el estado :hover de esa ciudad hasta que el usuario interactúa.
   export let initialCity = '';
+  // El botón "Continuar" (avanzar al formulario) vive ahora en la isla informativa;
+  // solo se muestra en el paso 2 con subselección. WelcomeAdvisor pasa currentStep===2.
+  export let showContinue = false;
 
   const dispatch = createEventDispatcher();
 
@@ -46,48 +49,48 @@
   // actividades)— con el número {N} y singular/plural. El {N} se resalta en render.
   const selectionMsg = {
     es: {
-      family: (n) => `¡Fantástico! En este sector tenemos ${n} feria${n === 1 ? '' : 's'} para ti.`,
-      sub: (n) => n === 1 ? `Ya es 1 feria a la que te podemos llevar.` : `Ya son ${n} ferias a las que te podemos llevar.`
+      family: (n) => `En este sector tenemos ${n} feria${n === 1 ? '' : 's'}.`,
+      sub: (n) => n === 1 ? `Ahora es 1 feria a la que puedes asistir.` : `Ahora son ${n} ferias a las que puedes asistir. Aprovecha la oferta que ofrecemos si contratas más de 1 stand con nosotros.`
     },
     en: {
-      family: (n) => `Fantastic! In this sector we have ${n} fair${n === 1 ? '' : 's'} for you.`,
-      sub: (n) => `That's already ${n} fair${n === 1 ? '' : 's'} we can take you to.`
+      family: (n) => `In this sector we have ${n} fair${n === 1 ? '' : 's'}.`,
+      sub: (n) => n === 1 ? `Now there's 1 fair you can attend.` : `Now there are ${n} fairs you can attend. Take advantage of our offer if you book more than one stand with us.`
     },
     pt: {
-      family: (n) => `Fantástico! Neste setor temos ${n} feira${n === 1 ? '' : 's'} para ti.`,
-      sub: (n) => n === 1 ? `Já é 1 feira à qual te podemos levar.` : `Já são ${n} feiras às quais te podemos levar.`
+      family: (n) => `Neste setor temos ${n} feira${n === 1 ? '' : 's'}.`,
+      sub: (n) => n === 1 ? `Agora é 1 feira à qual podes assistir.` : `Agora são ${n} feiras às quais podes assistir. Aproveita a oferta que temos se contratares mais de 1 stand connosco.`
     },
     de: {
-      family: (n) => `Fantastisch! In dieser Branche haben wir ${n} Messe${n === 1 ? '' : 'n'} für Sie.`,
-      sub: (n) => n === 1 ? `Das ist bereits 1 Messe, zu der wir Sie bringen können.` : `Das sind bereits ${n} Messen, zu denen wir Sie bringen können.`
+      family: (n) => `In dieser Branche haben wir ${n} Messe${n === 1 ? '' : 'n'}.`,
+      sub: (n) => n === 1 ? `Jetzt ist es 1 Messe, die Sie besuchen können.` : `Jetzt sind es ${n} Messen, die Sie besuchen können. Nutzen Sie unser Angebot, wenn Sie mehr als einen Stand bei uns buchen.`
     },
     fr: {
-      family: (n) => `Fantastique ! Dans ce secteur, nous avons ${n} salon${n === 1 ? '' : 's'} pour vous.`,
-      sub: (n) => n === 1 ? `Cela fait déjà 1 salon où nous pouvons vous emmener.` : `Cela fait déjà ${n} salons où nous pouvons vous emmener.`
+      family: (n) => `Dans ce secteur, nous avons ${n} salon${n === 1 ? '' : 's'}.`,
+      sub: (n) => n === 1 ? `Maintenant, c'est 1 salon auquel vous pouvez assister.` : `Maintenant, ce sont ${n} salons auxquels vous pouvez assister. Profitez de notre offre si vous réservez plus d'un stand avec nous.`
     },
     it: {
-      family: (n) => n === 1 ? `Fantastico! In questo settore abbiamo 1 fiera per te.` : `Fantastico! In questo settore abbiamo ${n} fiere per te.`,
-      sub: (n) => n === 1 ? `È già 1 fiera a cui possiamo portarti.` : `Sono già ${n} fiere a cui possiamo portarti.`
+      family: (n) => n === 1 ? `In questo settore abbiamo 1 fiera.` : `In questo settore abbiamo ${n} fiere.`,
+      sub: (n) => n === 1 ? `Ora è 1 fiera a cui puoi partecipare.` : `Ora sono ${n} fiere a cui puoi partecipare. Approfitta dell'offerta che proponiamo se prenoti più di uno stand con noi.`
     },
     nl: {
-      family: (n) => n === 1 ? `Fantastisch! In deze sector hebben we 1 beurs voor u.` : `Fantastisch! In deze sector hebben we ${n} beurzen voor u.`,
-      sub: (n) => n === 1 ? `Dat is al 1 beurs waar we u naartoe kunnen brengen.` : `Dat zijn al ${n} beurzen waar we u naartoe kunnen brengen.`
+      family: (n) => n === 1 ? `In deze sector hebben we 1 beurs.` : `In deze sector hebben we ${n} beurzen.`,
+      sub: (n) => n === 1 ? `Nu is het 1 beurs die u kunt bezoeken.` : `Nu zijn het ${n} beurzen die u kunt bezoeken. Profiteer van onze aanbieding als u meer dan één stand bij ons boekt.`
     },
     zh: {
-      family: (n) => `太棒了！在这个行业，我们为您准备了 ${n} 场展会。`,
-      sub: (n) => `已经有 ${n} 场展会我们可以带您参加了。`
+      family: (n) => `在这个行业，我们有 ${n} 场展会。`,
+      sub: (n) => n === 1 ? `现在有 1 场展会您可以参加。` : `现在有 ${n} 场展会您可以参加。如果您与我们预订超过 1 个展位，即可享受我们提供的优惠。`
     },
     hi: {
-      family: (n) => `शानदार! इस क्षेत्र में हमारे पास आपके लिए ${n} मेले हैं।`,
-      sub: (n) => `अब ${n} मेले हैं जहाँ हम आपको ले जा सकते हैं।`
+      family: (n) => `इस क्षेत्र में हमारे पास ${n} मेले हैं।`,
+      sub: (n) => n === 1 ? `अब 1 मेला है जिसमें आप शामिल हो सकते हैं।` : `अब ${n} मेले हैं जिनमें आप शामिल हो सकते हैं। हमारे साथ 1 से अधिक स्टैंड बुक करने पर हमारी पेशकश का लाभ उठाएँ।`
     },
     ko: {
-      family: (n) => `환상적이네요! 이 분야에는 고객님을 위한 ${n}개의 박람회가 있습니다.`,
-      sub: (n) => `저희가 모실 수 있는 박람회가 벌써 ${n}개입니다.`
+      family: (n) => `이 분야에는 ${n}개의 박람회가 있습니다.`,
+      sub: (n) => n === 1 ? `이제 참석하실 수 있는 박람회가 1개입니다.` : `이제 참석하실 수 있는 박람회가 ${n}개입니다. 저희와 부스를 2개 이상 예약하시면 제공되는 혜택을 누려보세요.`
     },
     ja: {
-      family: (n) => `素晴らしい！この分野には、あなたのための展示会が${n}件あります。`,
-      sub: (n) => `すでに${n}件の展示会にご案内できます。`
+      family: (n) => `この分野には、展示会が${n}件あります。`,
+      sub: (n) => n === 1 ? `今、ご参加いただける展示会が1件あります。` : `今、ご参加いただける展示会が${n}件あります。1つ以上のブースをご契約いただくと、特典をご利用いただけます。`
     }
   };
 
@@ -109,7 +112,24 @@
   // sector completo, '' si no hay selección.
   $: selMode = selectedTags.length ? 'sub' : (selectedFamily ? 'family' : '');
 
-  $: if (api) api.update(activeTags, lang, pWord, selMode);
+  // Etiqueta del botón "Continuar" (mismas palabras que el flujo de Pat).
+  const continueLabel = {
+    es: 'Continuar', en: 'Continue', pt: 'Continuar', de: 'Weiter', fr: 'Continuer',
+    it: 'Continua', nl: 'Doorgaan', zh: '继续', hi: 'जारी रखें', ko: '계속', ja: '次へ'
+  };
+
+  // Lupa: título accesible del botón que activa/desactiva la lente de aumento.
+  const lensTitle = {
+    es: 'Lupa', en: 'Magnifier', pt: 'Lupa', de: 'Lupe', fr: 'Loupe', it: 'Lente',
+    nl: 'Vergrootglas', zh: '放大镜', hi: 'आवर्धक लेंस', ko: '돋보기', ja: '拡大鏡'
+  };
+  let lensActive = false;
+  function toggleLens() {
+    lensActive = !lensActive;
+    if (api) api.setLens(lensActive);
+  }
+
+  $: if (api) api.update(activeTags, lang, pWord, selMode, showContinue);
   // Al navegar entre ciudades (nube de ciudades del sidebar), el mapa persiste y
   // solo cambia initialCity: reubicamos el :hover por defecto a la nueva ciudad.
   $: if (api) api.setDefaultCity(initialCity);
@@ -378,6 +398,9 @@
     // Ventana conversacional: se muestra con selección activa. currentMode indica
     // si es sector completo ('family') o subselección ('sub').
     let currentMode = '';
+    // Cuando WelcomeAdvisor está en el paso de subselección (paso 2), la isla ofrece
+    // el botón "Continuar" que avanza al formulario vía el evento 'continue'.
+    let currentShowContinue = false;
 
     function applyLabels() {
       tagKeys.forEach((t) => { tagEls[t].text.textContent = labelForTag(t, currentLang); });
@@ -425,16 +448,13 @@
         const build = msgs[currentMode] || msgs.family;
         const msg = build(total).replace(/(\d[\d.,]*)/, '<b class="pm-callout-n">$1</b>');
         let html = '<div class="pm-callout-msg">' + msg + '</div>';
-        // Resultados: enlaces a los hubs /actividad de las actividades elegidas
-        // (solo en subselección), con la URL reducida para no deformar la isla.
-        if (currentMode === 'sub' && currentActive.length) {
-          const links = currentActive.map((t) => {
-            const path = activityUrl(t, currentLang);
-            const shown = 'standarte.es' + path;
-            return '<a class="pm-callout-link" href="' + path + '" target="_blank" rel="noopener" title="' +
-              labelForTag(t, currentLang) + '">' + shown + '</a>';
-          }).join('');
-          html += '<div class="pm-callout-results">' + links + '</div>';
+        // Las URLs de resultado NO se muestran en la isla (se reservan para el envío
+        // al cliente: WelcomeAdvisor las calcula en tagResults y las manda en
+        // form_resultados). En subselección la isla solo ofrece el botón "Continuar".
+        if (currentMode === 'sub' && currentActive.length && currentShowContinue) {
+          // Botón "Continuar": avanza al formulario. Delegado por click en calloutEl.
+          const cta = (continueLabel[currentLang] || continueLabel.en);
+          html += '<button type="button" class="pm-callout-continue">' + cta + '</button>';
         }
         calloutEl.innerHTML = html;
         calloutEl.classList.add('visible');
@@ -528,6 +548,68 @@
     cityGroup.addEventListener('mouseout', onOut);
     cityGroup.addEventListener('click', onClick);
 
+    // Botón "Continuar" de la isla: delegación de click (el botón se re-renderiza
+    // en cada render()). Avanza el flujo de Pat al formulario.
+    function onCalloutClick(e) {
+      if (e.target.closest('.pm-callout-continue')) dispatch('continue');
+    }
+    calloutEl.addEventListener('click', onCalloutClick);
+
+    // ── Isla arrastrable (mouse + táctil) ──
+    // En móvil la isla es casi tan grande como el mapa y puede taparlo por completo:
+    // se puede reubicar arrastrándola desde el texto del mensaje (asa). Los enlaces y
+    // el botón "Continuar" no la mueven. El margen de arrastre es el ancestro que
+    // recorta (la tarjeta del asesor, más alta que el mapa), así se puede subir por
+    // encima de los chips y dejar el mapa a la vista.
+    let dragState = null;
+    // Ancestro que recorta el contenido (overflow != visible); si no hay, el viewport.
+    function clipRect() {
+      let el = wrapEl.parentElement;
+      while (el) {
+        const o = getComputedStyle(el).overflow;
+        if (o && o !== 'visible') return el.getBoundingClientRect();
+        el = el.parentElement;
+      }
+      return { left: 0, top: 0, right: window.innerWidth, bottom: window.innerHeight };
+    }
+    function onCalloutPointerMove(e) {
+      if (!dragState) return;
+      const wrapRect = wrapEl.getBoundingClientRect();
+      const b = clipRect();
+      const cw = calloutEl.offsetWidth;
+      const ch = calloutEl.offsetHeight;
+      const m = 6; // margen para no pegarla al borde del recorte
+      let left = dragState.ox + (e.clientX - dragState.sx);
+      let top = dragState.oy + (e.clientY - dragState.sy);
+      const minLeft = (b.left - wrapRect.left) + m;
+      const maxLeft = (b.right - wrapRect.left) - cw - m;
+      const minTop = (b.top - wrapRect.top) + m;
+      const maxTop = (b.bottom - wrapRect.top) - ch - m;
+      left = Math.max(minLeft, Math.min(left, maxLeft));
+      top = Math.max(minTop, Math.min(top, maxTop));
+      calloutEl.style.left = left + 'px';
+      calloutEl.style.top = top + 'px';
+      calloutEl.style.transform = 'none';
+    }
+    function onCalloutPointerUp() {
+      dragState = null;
+      calloutEl.classList.remove('dragging');
+      window.removeEventListener('pointermove', onCalloutPointerMove);
+      window.removeEventListener('pointerup', onCalloutPointerUp);
+    }
+    function onCalloutPointerDown(e) {
+      // Solo se arrastra desde el texto; no desde los enlaces ni el botón "Continuar".
+      if (!e.target.closest('.pm-callout-msg')) return;
+      const wrapRect = wrapEl.getBoundingClientRect();
+      const rect = calloutEl.getBoundingClientRect();
+      dragState = { ox: rect.left - wrapRect.left, oy: rect.top - wrapRect.top, sx: e.clientX, sy: e.clientY };
+      calloutEl.classList.add('dragging');
+      window.addEventListener('pointermove', onCalloutPointerMove);
+      window.addEventListener('pointerup', onCalloutPointerUp);
+      e.preventDefault();
+    }
+    calloutEl.addEventListener('pointerdown', onCalloutPointerDown);
+
     // ── Flotación (solo con el mapa visible y sin reduced-motion) ──
     let rafId = 0;
     let running = false;
@@ -574,10 +656,83 @@
       rafId = requestAnimationFrame(frame);
     }
 
+    // ── Lupa: lente circular que amplía la zona del mapa bajo el puntero ──
+    // Se envuelve TODO el contenido ya construido en un grupo con id para poder
+    // clonarlo ampliado con <use> (referencia viva: refleja la flotación en tiempo
+    // real). La lente se dibuja por encima y solo aparece cuando la lupa está activa.
+    const scene = el('g', { id: 'pm-scene' });
+    while (svgEl.firstChild) scene.appendChild(svgEl.firstChild);
+    svgEl.appendChild(scene);
+
+    const LENS_R = 130;    // radio de la lente en coordenadas del viewBox
+    const LENS_ZOOM = 2;   // factor de aumento
+    let lensOn = false;
+
+    const lensDefs = el('defs', {});
+    const lensClip = el('clipPath', { id: 'pm-lens-clip', clipPathUnits: 'userSpaceOnUse' });
+    const lensClipCircle = el('circle', { cx: 0, cy: 0, r: LENS_R });
+    lensClip.appendChild(lensClipCircle);
+    lensDefs.appendChild(lensClip);
+    svgEl.appendChild(lensDefs);
+
+    const lensLayer = el('g', { class: 'pm-lens' });
+    const lensClipGroup = el('g', { 'clip-path': 'url(#pm-lens-clip)' });
+    const lensUse = el('use', {});
+    lensUse.setAttribute('href', '#pm-scene');
+    lensUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#pm-scene');
+    lensClipGroup.appendChild(lensUse);
+    lensLayer.appendChild(lensClipGroup);
+    const lensRing = el('circle', { class: 'pm-lens-ring', cx: 0, cy: 0, r: LENS_R });
+    lensLayer.appendChild(lensRing);
+    lensLayer.style.display = 'none';
+    svgEl.appendChild(lensLayer);
+
+    function svgPointFromClient(clientX, clientY) {
+      const ctm = svgEl.getScreenCTM();
+      if (!ctm) return null;
+      const pt = svgEl.createSVGPoint();
+      pt.x = clientX; pt.y = clientY;
+      return pt.matrixTransform(ctm.inverse());
+    }
+    function positionLens(clientX, clientY) {
+      const p = svgPointFromClient(clientX, clientY);
+      if (!p) return;
+      const k = LENS_ZOOM;
+      lensClipCircle.setAttribute('cx', p.x);
+      lensClipCircle.setAttribute('cy', p.y);
+      lensRing.setAttribute('cx', p.x);
+      lensRing.setAttribute('cy', p.y);
+      // Ampliación centrada en el punto bajo el cursor: el punto se mantiene fijo.
+      lensUse.setAttribute('transform', `translate(${p.x * (1 - k)} ${p.y * (1 - k)}) scale(${k})`);
+    }
+    function onLensPointerMove(e) {
+      if (!lensOn) return;
+      e.preventDefault();
+      positionLens(e.clientX, e.clientY);
+    }
+    function setLens(on) {
+      lensOn = on;
+      if (on) {
+        lensLayer.style.display = '';
+        svgEl.style.touchAction = 'none'; // en táctil, arrastrar mueve la lente sin hacer scroll
+        const r = svgEl.getBoundingClientRect();
+        positionLens(r.left + r.width / 2, r.top + r.height / 2); // arranca en el centro
+        svgEl.addEventListener('pointermove', onLensPointerMove);
+        svgEl.addEventListener('pointerdown', onLensPointerMove);
+      } else {
+        lensLayer.style.display = 'none';
+        svgEl.style.touchAction = '';
+        svgEl.removeEventListener('pointermove', onLensPointerMove);
+        svgEl.removeEventListener('pointerdown', onLensPointerMove);
+      }
+    }
+
     return {
-      update(active, newLang, newPWord, mode) {
+      setLens,
+      update(active, newLang, newPWord, mode, showCont) {
         currentActive = active;
         currentMode = mode || '';
+        currentShowContinue = !!showCont;
         if (newLang !== currentLang || newPWord !== currentPWord) {
           currentLang = newLang;
           currentPWord = newPWord;
@@ -602,13 +757,19 @@
         cityGroup.removeEventListener('mousemove', onMove);
         cityGroup.removeEventListener('mouseout', onOut);
         cityGroup.removeEventListener('click', onClick);
+        calloutEl.removeEventListener('click', onCalloutClick);
+        calloutEl.removeEventListener('pointerdown', onCalloutPointerDown);
+        window.removeEventListener('pointermove', onCalloutPointerMove);
+        window.removeEventListener('pointerup', onCalloutPointerUp);
+        svgEl.removeEventListener('pointermove', onLensPointerMove);
+        svgEl.removeEventListener('pointerdown', onLensPointerMove);
       }
     };
   }
 
   onMount(() => {
     const built = buildMesh();
-    built.update(activeTags, lang, pWord, selMode);
+    built.update(activeTags, lang, pWord, selMode, showContinue);
     api = built;
     return built.destroy;
   });
@@ -626,6 +787,20 @@
   <div class="pm-tooltip" bind:this={tooltipEl}></div>
   <!-- Ventana conversacional de Pat: cuenta al cliente qué está viendo. -->
   <div class="pm-events-callout" bind:this={calloutEl} aria-live="polite"></div>
+  <!-- Lupa: activa una lente circular que amplía el mapa bajo el puntero. -->
+  <button
+    type="button"
+    class="pm-lens-toggle"
+    class:active={lensActive}
+    on:click={toggleLens}
+    title={lensTitle[lang] || lensTitle.en}
+    aria-label={lensTitle[lang] || lensTitle.en}
+    aria-pressed={lensActive}
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z" />
+    </svg>
+  </button>
 </div>
 
 <style>
@@ -634,6 +809,54 @@
      los neutros (costa, retícula, textos) se adaptan al fondo claro. */
   .pm-wrap {
     position: relative;
+  }
+
+  /* ── Lupa ── */
+  /* Botón que activa/desactiva la lente de aumento (esquina superior derecha). */
+  .pm-lens-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid #d6d7d0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    color: #4a4f52;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    z-index: 7;
+  }
+  .pm-lens-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+  .pm-lens-toggle:hover {
+    background: #fff;
+    color: royalblue;
+  }
+  /* Activa: resaltada en Azul Royal para que se vea que la lente está encendida. */
+  .pm-lens-toggle.active {
+    background: royalblue;
+    border-color: royalblue;
+    color: #fff;
+  }
+  /* Aro de la lente sobre el mapa. La capa de la lente no captura el puntero para
+     que la interacción siga llegando al mapa real de debajo. */
+  :global(.pm-lens) {
+    pointer-events: none;
+  }
+  :global(.pm-lens-ring) {
+    fill: none;
+    stroke: royalblue;
+    stroke-width: 3;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.28));
   }
 
   .pm-map {
@@ -671,50 +894,72 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
+  /* Durante el arrastre no hay transición (el reposicionamiento debe ser inmediato). */
+  .pm-events-callout:global(.dragging) {
+    transition: opacity 0.22s ease;
+  }
+  /* El texto del mensaje es el asa: recibe puntero y no dispara scroll táctil.
+     El cursor "mano" del sistema no se puede recolorear, así que se usa un cursor
+     personalizado: una mano SVG en Azul Royal (con fallback a grab/grabbing). */
+  .pm-events-callout :global(.pm-callout-msg) {
+    pointer-events: auto;
+    cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='32'%20height='32'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%234169e1'%20stroke='%23fff'%20stroke-width='1'%20d='M23,5.5V20c0,2.2-1.8,4-4,4h-7.3c-1.08,0-2.1-.43-2.85-1.19L1,14.83c0,0,1.26-1.23,1.3-1.25c.22-.19.49-.29.79-.29c.22,0,.42.06.6.16c.04.01,4.31,2.46,4.31,2.46V4c0-.83.67-1.5,1.5-1.5S12,3.17,12,4v7h1V1.5c0-.83.67-1.5,1.5-1.5S16,.67,16,1.5V11h1V2.5c0-.83.67-1.5,1.5-1.5s1.5.67,1.5,1.5V11h1V5.5c0-.83.67-1.5,1.5-1.5s1.5.67,1.5,1.5z'/%3E%3C/svg%3E") 12 4, grab;
+    touch-action: none;
+    user-select: none;
+  }
+  /* Asa visible (gris): indica que la ventana se puede desplazar — también en
+     táctil, donde no hay cursor. */
+  .pm-events-callout :global(.pm-callout-msg)::before {
+    content: '';
+    display: block;
+    width: 34px;
+    height: 4px;
+    margin: 0 auto 8px;
+    border-radius: 2px;
+    background: #d7d7d2;
+  }
+  .pm-events-callout:global(.dragging) :global(.pm-callout-msg) {
+    cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='32'%20height='32'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%234169e1'%20stroke='%23fff'%20stroke-width='1'%20d='M23,5.5V20c0,2.2-1.8,4-4,4h-7.3c-1.08,0-2.1-.43-2.85-1.19L1,14.83c0,0,1.26-1.23,1.3-1.25c.22-.19.49-.29.79-.29c.22,0,.42.06.6.16c.04.01,4.31,2.46,4.31,2.46V4c0-.83.67-1.5,1.5-1.5S12,3.17,12,4v7h1V1.5c0-.83.67-1.5,1.5-1.5S16,.67,16,1.5V11h1V2.5c0-.83.67-1.5,1.5-1.5s1.5.67,1.5,1.5V11h1V5.5c0-.83.67-1.5,1.5-1.5s1.5.67,1.5,1.5z'/%3E%3C/svg%3E") 12 4, grabbing;
+  }
+  .pm-events-callout:global(.dragging) :global(.pm-callout-msg)::before { background: #c2c2bb; }
   .pm-events-callout :global(.pm-callout-n) {
     font-weight: 700;
     color: royalblue;
     font-variant-numeric: tabular-nums;
     font-size: 1.15em;
   }
-  /* Resultados dentro de la isla: enlaces a los hubs /actividad con la URL
-     reducida y truncada (ellipsis) para que no deformen la ventana. */
-  .pm-events-callout :global(.pm-callout-results) {
-    margin-top: 7px;
-    padding-top: 7px;
-    border-top: 1px solid #ecece3;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-  .pm-events-callout :global(.pm-callout-link) {
+  /* Botón "Continuar" integrado en la isla: avanza al formulario de Pat. */
+  .pm-events-callout :global(.pm-callout-continue) {
     display: block;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    margin: 9px auto 0;
+    background: var(--gold, #ffc800);
+    color: #111;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 15px;
     font-family: 'Inconsolata', ui-monospace, monospace;
     font-size: 12px;
-    color: royalblue;
-    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
     pointer-events: auto; /* clicable pese al pointer-events:none de la isla */
+    transition: filter 0.2s ease;
   }
-  .pm-events-callout :global(.pm-callout-link):hover { text-decoration: underline; }
+  .pm-events-callout :global(.pm-callout-continue):hover { filter: brightness(1.05); }
 
   /* Marca de agua tejida: filigrana "STANDARTE" repetida sobre todo el mapa. */
-  .pm-wrap :global(.pm-wm-tile) {
+  :global(.pm-wm-tile) {
     font-family: 'Francois One', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 26px;
     letter-spacing: 0.3em;
     fill: #1a1e21;
   }
-  .pm-wrap :global(.pm-watermark-fill) {
+  :global(.pm-watermark-fill) {
     opacity: 0.05;
     pointer-events: none;
     user-select: none;
   }
 
-  .pm-wrap :global(.pm-coast) {
+  :global(.pm-coast) {
     fill: rgba(26, 30, 33, 0.05);
     stroke: #b9bcb4;
     stroke-width: 1.6;
@@ -722,7 +967,7 @@
   /* Circunferencia de los insets (Canarias, Madeira): borde de puntos, sin
      relleno. Señala que es una traslación artificial del espacio, no una
      ubicación real. */
-  .pm-wrap :global(.pm-inset-ring) {
+  :global(.pm-inset-ring) {
     fill: none;
     stroke: #b9bcb4;
     stroke-width: 1.4;
@@ -730,7 +975,7 @@
     opacity: 0.85;
   }
   /* Rótulo del inset, a modo de leyenda bajo el recuadro. */
-  .pm-wrap :global(.pm-inset-label) {
+  :global(.pm-inset-label) {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     font-size: 12px;
     font-weight: 600;
@@ -738,38 +983,38 @@
     letter-spacing: 0.02em;
     pointer-events: none;
   }
-  .pm-wrap :global(.pm-graticule) {
+  :global(.pm-graticule) {
     stroke: #d3d4cd;
     stroke-width: 0.6;
     stroke-dasharray: 1 5;
     fill: none;
     opacity: 0.6;
   }
-  .pm-wrap :global(.pm-edge),
-  .pm-wrap :global(.pm-spoke) {
+  :global(.pm-edge),
+  :global(.pm-spoke) {
     fill: none;
     stroke-linecap: round;
     transition: opacity 0.25s ease;
   }
 
-  .pm-wrap :global(.pm-family circle) { transition: fill-opacity 0.2s ease; }
-  .pm-wrap :global(.pm-family.dimmed circle) { fill-opacity: 0.18; }
-  .pm-wrap :global(.pm-family text) {
+  :global(.pm-family circle) { transition: fill-opacity 0.2s ease; }
+  :global(.pm-family.dimmed circle) { fill-opacity: 0.18; }
+  :global(.pm-family text) {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     letter-spacing: 0.03em;
     fill: #1a1e21;
     pointer-events: none;
     transition: opacity 0.25s ease;
   }
-  .pm-wrap :global(.pm-family.dimmed text) { opacity: 0.3; }
+  :global(.pm-family.dimmed text) { opacity: 0.3; }
   /* El número dentro del círculo va claro (#f7f6f1). El selector incluye `text`
      para ganar en especificidad a `.pm-family text { fill: #1a1e21 }`; si no, el
      número saldría oscuro y no se vería sobre el color del nodo. */
-  .pm-wrap :global(.pm-family text.pm-family-count) { fill: #f7f6f1; font-weight: 700; paint-order: stroke; stroke: rgba(0, 0, 0, 0.4); stroke-width: 0.7px; }
+  :global(.pm-family text.pm-family-count) { fill: #f7f6f1; font-weight: 700; paint-order: stroke; stroke: rgba(0, 0, 0, 0.4); stroke-width: 0.7px; }
 
-  .pm-wrap :global(.pm-tag circle) { transition: opacity 0.2s ease; }
-  .pm-wrap :global(.pm-tag.dimmed circle) { opacity: 0.15; }
-  .pm-wrap :global(.pm-tag text) {
+  :global(.pm-tag circle) { transition: opacity 0.2s ease; }
+  :global(.pm-tag.dimmed circle) { opacity: 0.15; }
+  :global(.pm-tag text) {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     font-size: 9.5px;
     letter-spacing: 0.02em;
@@ -777,9 +1022,9 @@
     pointer-events: none;
     transition: opacity 0.2s ease;
   }
-  .pm-wrap :global(.pm-tag.dimmed text) { opacity: 0.12; }
+  :global(.pm-tag.dimmed text) { opacity: 0.12; }
 
-  .pm-wrap :global(.pm-city circle) {
+  :global(.pm-city circle) {
     fill: #d9a441;
     stroke: #f8f9fa;
     stroke-width: 1;
@@ -787,30 +1032,30 @@
     transition: opacity 0.25s ease;
   }
   /* Área de hover invisible (más grande que el punto en las ciudades pequeñas). */
-  .pm-wrap :global(.pm-city circle.pm-hit) {
+  :global(.pm-city circle.pm-hit) {
     fill: transparent;
     stroke: none;
   }
   /* Nombre discreto de las ciudades sin rótulo: solo visible al pasar el ratón. */
-  .pm-wrap :global(.pm-city-hint) {
+  :global(.pm-city-hint) {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     fill: #7a7f76;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.15s ease;
   }
-  .pm-wrap :global(.pm-city-hint.visible) {
+  :global(.pm-city-hint.visible) {
     opacity: 0.9;
   }
-  .pm-wrap :global(.pm-city.dimmed circle) { opacity: 0.24; }
-  .pm-wrap :global(.pm-city text) {
+  :global(.pm-city.dimmed circle) { opacity: 0.24; }
+  :global(.pm-city text) {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     fill: #5c6157;
     pointer-events: none;
     transition: opacity 0.25s ease;
   }
-  .pm-wrap :global(.pm-city.dimmed text) { opacity: 0.22; }
-  .pm-wrap :global(.pm-city.major text) { fill: #1a1e21; font-weight: 600; }
+  :global(.pm-city.dimmed text) { opacity: 0.22; }
+  :global(.pm-city.major text) { fill: #1a1e21; font-weight: 600; }
 
   .pm-tooltip {
     position: absolute;

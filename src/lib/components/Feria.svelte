@@ -835,6 +835,13 @@
         </nav>
         <!-- Respuesta directa citable (GEO): instrumentos propios + cobertura ES/PT. -->
         <p class="feria-direct-answer">{da(fair.name, localizedCity)}</p>
+        <!-- Página de destino: CTA prioritario tras el primer párrafo que baja al
+             formulario del final para que el visitante pida presupuesto sin perderse. -->
+        <a
+          class="feria-budget-cta"
+          href="#feria-presupuesto"
+          on:click={(e) => { e.preventDefault(); document.getElementById('feria-presupuesto')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+        >{strings.cta}</a>
         <!-- CTA contextual de Pat, sembrado por el sector de esta feria. -->
         <a class="feria-pat-cta" href={patHref} rel="nofollow">
           <span class="feria-pat-text">
@@ -916,7 +923,7 @@
   </section>
 
   <hr class="feria-form-divider" />
-  <section class="section grey-bg">
+  <section id="feria-presupuesto" class="section grey-bg">
     <ContactForm labels={copy} {lang} variant="light" />
   </section>
 </main>
@@ -1026,6 +1033,22 @@
     font-weight: 400;
     margin-bottom: 2rem;
   }
+  /* Página de destino: botón de conversión (píldora amarilla, texto negro) que baja
+     al formulario. Prioriza la petición de presupuesto tras el primer párrafo. */
+  .feria-budget-cta {
+    display: inline-block;
+    margin: 0.25rem 0 1.75rem;
+    padding: 0.8rem 1.9rem;
+    background: #ffc800;
+    color: #111;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1.02rem;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(224, 180, 0, 0.28);
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+  .feria-budget-cta:hover { filter: brightness(1.05); transform: translateY(-1px); }
   /* Respuesta directa citable (GEO): destacada, al inicio del cuerpo. */
   .feria-direct-answer {
     font-size: 1.05rem;

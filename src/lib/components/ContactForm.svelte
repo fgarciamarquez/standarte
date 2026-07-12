@@ -22,12 +22,12 @@
     ko: '5초 견적', ja: '5秒で試算'
   };
 
-  // Reclamo bajo el título del formulario: prototipo 3D en 72h.
+  // Reclamo bajo el título del formulario: prototipo 3D en 3 días.
   const prototypeLabels = {
-    es: 'Prototipo 3D en 72h', en: '3D prototype in 72h', de: '3D-Prototyp in 72 Std.',
-    pt: 'Protótipo 3D em 72h', fr: 'Prototype 3D en 72h', it: 'Prototipo 3D in 72h',
-    nl: '3D-prototype in 72u', zh: '72小时内3D原型', hi: '72 घंटे में 3D प्रोटोटाइप',
-    ko: '72시간 내 3D 프로토타입', ja: '72時間で3Dプロトタイプ'
+    es: 'Prototipo 3D en 3 días', en: '3D prototype in 3 days', de: '3D-Prototyp in 3 Tagen',
+    pt: 'Protótipo 3D em 3 dias', fr: 'Prototype 3D en 3 jours', it: 'Prototipo 3D in 3 giorni',
+    nl: '3D-prototype in 3 dagen', zh: '3天内3D原型', hi: '3 दिन में 3D प्रोटोटाइप',
+    ko: '3일 내 3D 프로토타입', ja: '3日で3Dプロトタイプ'
   };
 
   // Textos del asistente (chrome de pasos). Los nombres de campo reutilizan `labels.form.*`.

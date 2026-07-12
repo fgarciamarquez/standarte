@@ -62,7 +62,7 @@
       title: "Hola!, soy Pat.",
       freeBadge: "Servicio gratuito",
       activeLabel: "Activo",
-      intro: "Además de contratar un stand, puedes planificar una expansión completa.\nAbajo te muestro nuestro mapa de cobertura. En todos estos puntos os ofrecemos presencia técnica.",
+      intro: "Además de contratar un stand, puedes planificar una expansión.\nAbajo te muestro nuestro mapa de cobertura.",
       instruction: "En base a lo que ya conoces, definiré tu perfil. Selecciona una ciudad.",
       cta: "Obtener presupuesto para esta feria",
       formInstruction: "Por favor, introduce tus datos y te enviaré un breve informe con las ferias más interesantes para tu sector.",
@@ -761,6 +761,7 @@
     {#if currentStep === 2}
       <div class="tag-multi" transition:slide={{ duration: 400 }}>
         <div class="activity-group-chips">
+          <button type="button" class="tag-reset" on:click={resetFamily} title={ft.changeFamily} aria-label={ft.changeFamily}>×</button>
           {#each familyTags as tag}
             <button
               type="button"
@@ -774,10 +775,8 @@
             </button>
           {/each}
         </div>
-        <div class="tag-multi-actions">
-          <button type="button" class="advisor-mode-switch" on:click={resetFamily}>← {ft.changeFamily}</button>
-          <button type="button" class="advisor-continue-btn" disabled={!selectedTags.length} on:click={goToForm}>{ft.continueBtn}</button>
-        </div>
+        <!-- El botón "Continuar" se ha integrado en la ventana informativa del mapa
+             (isla de PatMesh); avanza el flujo vía el evento 'continue'. -->
       </div>
     {/if}
 
@@ -838,7 +837,7 @@
          refleja qué ciudades y ferias corresponden a lo marcado. -->
     {#if MeshComponent && status !== 'success'}
       <div class="advisor-mesh" transition:fade={{ duration: 400 }}>
-        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} {initialCity} on:navigate={onMeshNavigate} />
+        <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} {initialCity} showContinue={currentStep === 2} on:navigate={onMeshNavigate} on:continue={goToForm} />
       </div>
     {/if}
 
@@ -1109,23 +1108,27 @@
     color: #27408b;
   }
 
-  /* Botón discreto "cambiar de sector" */
-  .advisor-mode-switch {
-    display: inline-block;
-    margin-top: 14px;
-    background: none;
-    border: none;
-    padding: 4px 2px;
+  /* Botón "×" rojo al principio de la cadena de etiquetas: anula la selección
+     (cambiar de sector). Sustituye al antiguo enlace "← Cambiar de sector". */
+  .tag-reset {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    flex: none;
+    border-radius: 999px;
+    border: 1px solid #e05a5a;
+    background: color-mix(in srgb, #e05a5a 10%, #fff);
+    color: #e05a5a;
     font-family: 'Inconsolata', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    color: royalblue;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
     cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    transition: color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
   }
-  .advisor-mode-switch:hover { color: var(--gold); }
+  .tag-reset:hover { background: #e05a5a; color: #fff; }
 
   /* Etiquetas de actividad (multiselección del paso 2). */
   .activity-group-chips {
@@ -1201,34 +1204,6 @@
     font-weight: 700;
     line-height: 1;
   }
-  .tag-multi-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .advisor-continue-btn {
-    background: var(--gold, #ffc800);
-    color: #111;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 26px;
-    font-family: 'Inconsolata', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: filter 0.2s ease, opacity 0.2s ease;
-  }
-  .advisor-continue-btn:hover:not(:disabled) {
-    filter: brightness(1.05);
-  }
-  .advisor-continue-btn:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-  }
-
   /* Advisor Mini Form Styling */
   .advisor-mini-form {
     margin-top: 20px;
@@ -1255,6 +1230,16 @@
   @media (max-width: 640px) {
     .advisor-form-row {
       grid-template-columns: 1fr;
+    }
+    /* Nube de sectores (paso 1) más compacta en móvil: menos separación entre
+       botones y menos padding para que quepan mejor en pantalla estrecha. */
+    .family-grid {
+      gap: 5px;
+    }
+    .family-btn {
+      gap: 6px;
+      padding: 5px 10px;
+      font-size: 12px;
     }
   }
 

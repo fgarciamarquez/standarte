@@ -23,7 +23,6 @@
   // ── Asesor de Pat (WelcomeAdvisor): carga diferida como en la home ──
   let showWelcomeAdvisor = false;
   let AdvisorComponent = null;   // se rellena con el import dinámico
-  let advisorTimeout, advisorLoadHandler;
 
   // Reactiva a Pat desde el botón "Expansión" (junto a los botones GEO).
   function reopenAdvisor() {
@@ -34,15 +33,8 @@
 
   onMount(() => {
     updateScrollState();
-    const launchAdvisor = () => {
-      advisorTimeout = setTimeout(() => {
-        if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('standarte_advisor_dismissed') === '1') return;
-        import('./WelcomeAdvisor.svelte').then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; }).catch(() => {});
-      }, 8000);
-    };
-    if (document.readyState === 'complete') { launchAdvisor(); }
-    else { advisorLoadHandler = launchAdvisor; window.addEventListener('load', advisorLoadHandler, { once: true }); }
-    return () => { clearTimeout(advisorTimeout); if (advisorLoadHandler) window.removeEventListener('load', advisorLoadHandler); };
+    // Pat NO se abre solo fuera de la portada: aquí se activa con el disparador
+    // "Expansión" del hero (AiSourceButtons → reopenAdvisor).
   });
 
   // Cifras orientativas «desde», validadas. Fuente única en $lib/pricingTiers.js

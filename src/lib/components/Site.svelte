@@ -1250,9 +1250,10 @@
         .catch(() => {});
     }
 
-    // El asesor se invoca SOLO una vez la página ha terminado de cargar, y su
-    // código se trae con import dinámico (chunk aparte) para no comprometer el
-    // rendimiento de la carga principal.
+    // El asesor se abre de forma AUTÓNOMA (tras un retardo) SOLO en la portada.
+    // En el resto de páginas (ciudades y hermanas) Pat se activa con un disparador
+    // (botón "Expansión" del hero, "Hablar con Pat", enlaces #pat…). Su código se
+    // trae con import dinámico (chunk aparte) para no comprometer la carga principal.
     const launchAdvisor = () => {
       advisorTimeout = setTimeout(() => {
         // Si el visitante ya completó el formulario del asesor en esta sesión,
@@ -1263,11 +1264,13 @@
           .catch(() => {});
       }, 8000); // antes 2000 ms; +6 s para que Pat aparezca más tarde
     };
-    if (document.readyState === 'complete') {
-      launchAdvisor();
-    } else {
-      advisorLoadHandler = launchAdvisor;
-      window.addEventListener('load', advisorLoadHandler, { once: true });
+    if (section === 'home') {
+      if (document.readyState === 'complete') {
+        launchAdvisor();
+      } else {
+        advisorLoadHandler = launchAdvisor;
+        window.addEventListener('load', advisorLoadHandler, { once: true });
+      }
     }
 
     if (initialLightboxSlug) {

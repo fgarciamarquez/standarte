@@ -37,12 +37,13 @@
   // índice /actividad. WelcomeAdvisor se carga con import dinámico (chunk aparte).
   let showWelcomeAdvisor = false;
   let AdvisorComponent = null;
-  let advisorTimeout;
   let initialFair = '';
   function handleSelectFair(event) {
     const { fairName, cityName } = event.detail;
     initialFair = `${fairName} (${cityName})`;
   }
+  // El panel de Pat NO se abre solo: aquí solo se muestra cuando el usuario lo pide
+  // (disparador del aside o botón de reactivar del hero). Carga diferida del chunk.
   function reopenAdvisor() {
     advisorDismissed.reactivate();
     if (AdvisorComponent) { showWelcomeAdvisor = true; return; }
@@ -52,18 +53,6 @@
   }
   onMount(() => {
     updateScrollState();
-    // Se lanza tanto en el índice como en los hubs interiores (con preselección).
-    const launch = () => {
-      advisorTimeout = setTimeout(() => {
-        if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('standarte_advisor_dismissed') === '1') return;
-        import('./WelcomeAdvisor.svelte')
-          .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
-          .catch(() => {});
-      }, 8000);
-    };
-    if (typeof document !== 'undefined' && document.readyState === 'complete') launch();
-    else if (typeof window !== 'undefined') window.addEventListener('load', launch, { once: true });
-    return () => clearTimeout(advisorTimeout);
   });
 
   const languageLocales = { es: 'es_ES', en: 'en_GB', de: 'de_DE', zh: 'zh_CN', hi: 'hi_IN', pt: 'pt_PT', fr: 'fr_FR', it: 'it_IT', ko: 'ko_KR', ja: 'ja_JP', nl: 'nl_NL' };
@@ -71,6 +60,15 @@
   const ctaLabels = { es: 'Presupuesto en 24h', en: 'Quote in 24h', de: 'Angebot in 24h', zh: '24小时内报价', hi: '24 घंटे में कोटेशन', pt: 'Orçamento em 24h', fr: 'Devis en 24h', it: 'Preventivo in 24h', ko: '24시간 내 견적', ja: '24時間で見積もり', nl: 'Offerte binnen 24u' };
   const preciosNavLabel = { es: 'Precios', en: 'Prices', de: 'Preise', pt: 'Preços', fr: 'Tarifs', it: 'Prezzi', nl: 'Prijzen', zh: '价格', hi: 'मूल्य', ko: '가격', ja: '料金' };
   const preciosLink = { es: 'Precios de stands', en: 'Stand prices', de: 'Messestand-Preise', fr: 'Tarifs de stands', it: 'Prezzi degli stand', pt: 'Preços de stands', zh: '展台价格', hi: 'स्टैंड के मूल्य', ko: '부스 가격', ja: 'ブースの料金', nl: 'Standprijzen' };
+  // Disparador del panel de Pat (asesor de Expansión) en el aside de los hubs.
+  const patTrigger = {
+    es: 'Planifica tu expansión con Pat', en: 'Plan your expansion with Pat',
+    pt: 'Planeia a tua expansão com a Pat', de: 'Planen Sie Ihre Expansion mit Pat',
+    fr: 'Planifiez votre expansion avec Pat', it: 'Pianifica la tua espansione con Pat',
+    nl: 'Plan je expansie met Pat', zh: '与 Pat 一起规划您的扩张',
+    hi: 'Pat के साथ अपने विस्तार की योजना बनाएं', ko: 'Pat과 함께 확장을 계획하세요',
+    ja: 'Pat と一緒に拡大を計画'
+  };
   const projectsH = { es: 'Proyectos 3D de esta actividad', pt: 'Projetos 3D desta atividade', en: '3D projects for this activity', de: '3D-Projekte dieser Branche', fr: 'Projets 3D de cette activité', it: 'Progetti 3D di questa attività', nl: '3D-projecten van deze branche', zh: '该行业的3D项目', hi: 'इस गतिविधि की 3D परियोजनाएं', ko: '이 분야의 3D 프로젝트', ja: 'この分野の3Dプロジェクト' };
 
   // Textos de la plantilla (índice y hub) en los 11 idiomas.
@@ -314,6 +312,16 @@
       </div>
 
       <aside class="act-aside">
+        {#if !isIndex}
+          <div class="aside-module pat-trigger-module">
+            <button type="button" class="pat-trigger" on:click={reopenAdvisor}>
+              <span class="pat-trigger-avatar" aria-hidden="true">
+                <img src="/img/team/patricia_jimenez-mobile.avif" alt="" loading="lazy" width="40" height="40" />
+              </span>
+              <span class="pat-trigger-text">{patTrigger[lang] || patTrigger.es}</span>
+            </button>
+          </div>
+        {/if}
         {#if !isIndex && siblingTags.length}
           <div class="aside-module">
             <h3>{t.related}</h3>
@@ -363,13 +371,11 @@
     display: grid; grid-template-columns: minmax(0, 1fr) 300px;
     gap: 48px; align-items: start;
   }
+  /* El cuerpo de texto va sin tarjeta: fondo transparente, sin padding ni sombra
+     (tanto en el índice /actividad como en los hubs por actividad). */
   .act-text {
-    background: #fff; padding: 50px; border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); min-width: 0;
-  }
-  /* Índice /actividad: el cuerpo va sin tarjeta (fondo transparente, sin sombra ni padding). */
-  .act-page.is-index .act-text {
-    background: transparent; padding: 0; box-shadow: none;
+    background: transparent; padding: 0; border-radius: 0;
+    box-shadow: none; min-width: 0;
   }
   .highlight {
     font-family: 'Francois One', serif; font-size: 1.4rem; line-height: 1.6;
@@ -437,6 +443,22 @@
   .act-aside { border-left: 1px solid rgba(0, 0, 0, 0.12); padding-left: 40px; position: sticky; top: 100px; }
   .act-aside h3 { font-size: 1.4rem; margin: 0 0 1.2rem; }
   .aside-module + .aside-module { margin-top: 2rem; }
+  /* Disparador del panel de Pat: abre el asesor solo al pulsar (ya no auto-abre). */
+  .pat-trigger {
+    display: flex; align-items: center; gap: 0.75rem; width: 100%;
+    padding: 0.85rem 1rem; border: none; border-left: 4px solid #ffc800;
+    border-radius: 0 10px 10px 0; background: #16191c; color: #fff;
+    text-align: left; cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .pat-trigger:hover { background: #23272b; transform: translateY(-1px); }
+  .pat-trigger-avatar img {
+    width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+    display: block; flex: 0 0 auto; border: 2px solid #ffc800;
+  }
+  .pat-trigger-text {
+    font-family: 'Francois One', serif; font-size: 1.02rem; line-height: 1.3;
+  }
   .activity-chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
   /* Etiquetas estilo "badge": píldora suave y compacta, sin borde. */
   .activity-chips li a {
