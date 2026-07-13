@@ -313,6 +313,7 @@
     'Vitoria': 'paisvasco',
     'Aranda de Duero': 'castillayleon',
     'Peso da Régua': 'portugal',
+    'San Vicente de Alcántara': 'extremadura',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria',
     'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };

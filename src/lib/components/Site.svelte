@@ -545,6 +545,7 @@
     'Vitoria': 'paisvasco',
     'Aranda de Duero': 'castillayleon',
     'Peso da Régua': 'portugal',
+    'San Vicente de Alcántara': 'extremadura',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'

@@ -2161,5 +2161,33 @@ export const fairsData = [
     "slug": "festa-saberes-sabores-douro-regua",
     "city": "Peso da Régua",
     "sector": "Enología y Vinos"
+  },
+  {
+    "name": "SIEB",
+    "country": "es",
+    "slug": "sieb-valladolid",
+    "city": "Valladolid",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Enotécnica & Olitécnica",
+    "country": "pt",
+    "slug": "enotecnica-olitecnica-oporto",
+    "city": "Oporto",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Enoforum",
+    "country": "es",
+    "slug": "enoforum-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "FICOR",
+    "country": "es",
+    "slug": "ficor-san-vicente-alcantara",
+    "city": "San Vicente de Alcántara",
+    "sector": "Enología y Vinos"
   }
 ];

@@ -32,6 +32,7 @@ export const CITY_LATLON = {
   'Vitoria': [42.85, -2.67],
   'Aranda de Duero': [41.67, -3.69],
   'Peso da Régua': [41.16, -7.79],
+  'San Vicente de Alcántara': [39.36, -7.13],
   'Alfaro': [42.18, -1.75],
   'Calahorra': [42.30, -1.96],
   'Boqueixón': [42.79, -8.40],
@@ -250,7 +251,7 @@ export const CITY_PILLAR = {
 // nueva: o le pones CITY_PILLAR (se enlaza) o la incluyes aquí (queda informativa).
 export const UNLINKED_CITIES = [
   'Albacete', 'Boqueixón', 'Cacabelos', 'Elvas', 'Mealhada',
-  'Palencia', 'Sobral de Monte Agraço', 'Toledo', 'Zamora'
+  'Palencia', 'San Vicente de Alcántara', 'Sobral de Monte Agraço', 'Toledo', 'Zamora'
 ];
 
 // Contorno simplificado de la península ibérica (px, misma proyección).

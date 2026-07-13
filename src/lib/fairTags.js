@@ -372,7 +372,11 @@ export const fairActivities = {
   "congreso-la-cierna-aranda": ["vino","congreso-profesional"],
   "douro-porto-wine-festival-regua": ["vino","gastronomia-hosteleria"],
   "feira-vinhos-sabores-altos-regua": ["vino","gastronomia-hosteleria"],
-  "festa-saberes-sabores-douro-regua": ["vino","gastronomia-hosteleria"]
+  "festa-saberes-sabores-douro-regua": ["vino","gastronomia-hosteleria"],
+  "sieb-valladolid": ["equipamiento-vino"],
+  "enotecnica-olitecnica-oporto": ["vino","equipamiento-vino"],
+  "enoforum-zaragoza": ["vino","equipamiento-vino"],
+  "ficor-san-vicente-alcantara": ["equipamiento-vino","packaging"]
 };
 
 // Helpers

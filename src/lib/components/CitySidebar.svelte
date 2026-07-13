@@ -39,6 +39,7 @@
     'Lleida': 'cataluna', 'Girona': 'cataluna',
     'Irún': 'paisvasco', 'Vitoria': 'paisvasco',
     'Aranda de Duero': 'castillayleon', 'Peso da Régua': 'portugal',
+    'San Vicente de Alcántara': 'extremadura',
     'Logroño': 'larioja', 'Alfaro': 'larioja', 'Calahorra': 'larioja',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
