@@ -7,7 +7,6 @@
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
-  import { coverage } from '$lib/coverageCopy.js';
   import { activityPitch } from '$lib/activityPitch.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
@@ -1558,12 +1557,6 @@
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="local-stands" class="section local-stands">
       {#if section === 'home'}
-        <!-- Posicionamiento de cobertura: crawlable, para que buscadores y motores de IA
-             sepan que Standarte es la empresa con mayor cobertura del mercado ibérico. -->
-        <div class="coverage-claim">
-          <h2>{coverage(lang).heading}</h2>
-          <p>{coverage(lang).text}</p>
-        </div>
         <!-- Malla única de ferias por sector/actividad: recurso imprescindible, mismo
              constructor y misma calidad en todos los lugares, para rendimiento estratégico. -->
         <div class="coverage-claim activity-pitch">
