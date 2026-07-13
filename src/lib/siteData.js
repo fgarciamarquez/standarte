@@ -38,6 +38,8 @@ export const routes = {
     logrono: 'diseno_montaje_stands_logrono',
     pamplona: 'diseno_montaje_stands_pamplona',
     vitoria: 'diseno_montaje_stands_vitoria',
+    aranda: 'diseno_montaje_stands_aranda_de_duero',
+    regua: 'diseno_montaje_stands_peso_da_regua',
     gijon: 'diseno_montaje_stands_gijon',
     lleida: 'diseno_montaje_stands_lleida',
     girona: 'diseno_montaje_stands_girona',
@@ -95,6 +97,8 @@ export const routes = {
     logrono: 'stand_design_assembly_logrono',
     pamplona: 'stand_design_assembly_pamplona',
     vitoria: 'stand_design_assembly_vitoria',
+    aranda: 'stand_design_assembly_aranda_de_duero',
+    regua: 'stand_design_assembly_peso_da_regua',
     gijon: 'stand_design_assembly_gijon',
     lleida: 'stand_design_assembly_lleida',
     girona: 'stand_design_assembly_girona',
@@ -152,6 +156,8 @@ export const routes = {
     logrono: 'messestand_design_montage_logrono',
     pamplona: 'messestand_design_montage_pamplona',
     vitoria: 'messestand_design_montage_vitoria',
+    aranda: 'messestand_design_montage_aranda_de_duero',
+    regua: 'messestand_design_montage_peso_da_regua',
     gijon: 'messestand_design_montage_gijon',
     lleida: 'messestand_design_montage_lleida',
     girona: 'messestand_design_montage_girona',
@@ -209,6 +215,8 @@ export const routes = {
     logrono: 'logrono_zhantai_sheji_dajian',
     pamplona: 'pamplona_zhantai_sheji_dajian',
     vitoria: 'vitoria_zhantai_sheji_dajian',
+    aranda: 'aranda_zhantai_sheji_dajian',
+    regua: 'regua_zhantai_sheji_dajian',
     gijon: 'gijon_zhantai_sheji_dajian',
     lleida: 'lleida_zhantai_sheji_dajian',
     girona: 'girona_zhantai_sheji_dajian',
@@ -266,6 +274,8 @@ export const routes = {
     logrono: 'logrono_stand_dizain_asembli',
     pamplona: 'pamplona_stand_dizain_asembli',
     vitoria: 'vitoria_stand_dizain_asembli',
+    aranda: 'aranda_stand_dizain_asembli',
+    regua: 'regua_stand_dizain_asembli',
     gijon: 'gijon_stand_dizain_asembli',
     lleida: 'lleida_stand_dizain_asembli',
     girona: 'girona_stand_dizain_asembli',
@@ -323,6 +333,8 @@ export const routes = {
     logrono: 'design_montagem_stands_logrono',
     pamplona: 'design_montagem_stands_pamplona',
     vitoria: 'design_montagem_stands_vitoria',
+    aranda: 'design_montagem_stands_aranda_de_duero',
+    regua: 'design_montagem_stands_peso_da_regua',
     gijon: 'design_montagem_stands_gijon',
     lleida: 'design_montagem_stands_lleida',
     girona: 'design_montagem_stands_girona',
@@ -380,6 +392,8 @@ export const routes = {
     logrono: 'conception_montage_stands_logrono',
     pamplona: 'conception_montage_stands_pamplona',
     vitoria: 'conception_montage_stands_vitoria',
+    aranda: 'conception_montage_stands_aranda_de_duero',
+    regua: 'conception_montage_stands_peso_da_regua',
     gijon: 'conception_montage_stands_gijon',
     lleida: 'conception_montage_stands_lleida',
     girona: 'conception_montage_stands_girona',
@@ -437,6 +451,8 @@ export const routes = {
     logrono: 'progettazione_montaggio_stand_logrono',
     pamplona: 'progettazione_montaggio_stand_pamplona',
     vitoria: 'progettazione_montaggio_stand_vitoria',
+    aranda: 'progettazione_montaggio_stand_aranda_de_duero',
+    regua: 'progettazione_montaggio_stand_peso_da_regua',
     gijon: 'progettazione_montaggio_stand_gijon',
     lleida: 'progettazione_montaggio_stand_lleida',
     girona: 'progettazione_montaggio_stand_girona',
@@ -494,6 +510,8 @@ export const routes = {
     logrono: 'logrono-buseu-dijain-jorip',
     pamplona: 'pamplona-buseu-dijain-jorip',
     vitoria: 'vitoria-buseu-dijain-jorip',
+    aranda: 'aranda-buseu-dijain-jorip',
+    regua: 'regua-buseu-dijain-jorip',
     gijon: 'gijon-bujeu-dijain-jorip',
     lleida: 'lleida-bujeu-dijain-jorip',
     girona: 'girona-bujeu-dijain-jorip',
@@ -551,6 +569,8 @@ export const routes = {
     logrono: 'ログローニョ展示会ブース設計施工',
     pamplona: 'パンプローナ展示会ブース設計施工',
     vitoria: 'ビトリア展示会ブース設計施工',
+    aranda: 'アランダ・デ・ドゥエロ展示会ブース設計施工',
+    regua: 'ペーゾ・ダ・レグア展示会ブース設計施工',
     gijon: 'ヒホン展示会ブース設計施工',
     lleida: 'リェイダ展示会ブース設計施工',
     girona: 'ジローナ展示会ブース設計施工',
@@ -608,6 +628,8 @@ export const routes = {
     logrono: 'standontwerp_montage_logrono',
     pamplona: 'standontwerp_montage_pamplona',
     vitoria: 'standontwerp_montage_vitoria',
+    aranda: 'standontwerp_montage_aranda_de_duero',
+    regua: 'standontwerp_montage_peso_da_regua',
     gijon: 'standontwerp_montage_gijon',
     lleida: 'standontwerp_montage_lleida',
     girona: 'standontwerp_montage_girona',
@@ -2647,6 +2669,104 @@ export const cityData = {
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはビトリア＝ガステイスで展示会ブースの設計・施工を行います。ここはArdoaraba、AVANZA（アラバの職業訓練見本市）、ストックフェアなどが開催されるアラバ県およびバスク州の州都で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  aranda: {
+    city: { es: 'Aranda de Duero', en: 'Aranda de Duero', de: 'Aranda de Duero', zh: '阿兰达·德杜罗', hi: 'आरंदा दे दुएरो', pt: 'Aranda de Duero', fr: 'Aranda de Duero', it: 'Aranda de Duero', ko: '아란다 데 두에로', ja: 'アランダ・デ・ドゥエロ', nl: 'Aranda de Duero' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Aranda de Duero —capital de la Ribera del Duero, con citas como Espacio Ribera, los Premios Envero / EnveroFest y el Congreso La Cierna— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a bodegas, agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Aranda de Duero —capital of the Ribera del Duero wine region, with events such as Espacio Ribera, the Premios Envero / EnveroFest and the La Cierna Congress— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer wineries, agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Aranda de Duero — Hauptstadt des Weinbaugebiets Ribera del Duero, mit Veranstaltungen wie Espacio Ribera, den Premios Envero / EnveroFest und dem Kongress La Cierna — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Weingütern, Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Aranda de Duero — capital da Ribera del Duero, com certames como o Espacio Ribera, os Premios Envero / EnveroFest e o Congresso La Cierna — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a adegas, agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Aranda de Duero — capitale de la Ribera del Duero, avec des rendez-vous comme Espacio Ribera, les Premios Envero / EnveroFest et le Congrès La Cierna — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux caves, aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Aranda de Duero — capitale della Ribera del Duero, con appuntamenti come Espacio Ribera, i Premios Envero / EnveroFest e il Congresso La Cierna — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo a cantine, agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Aranda de Duero — hoofdstad van het wijngebied Ribera del Duero, met evenementen zoals Espacio Ribera, de Premios Envero / EnveroFest en het La Cierna-congres — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden wijnhuizen, agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在阿兰达·德杜罗为展会设计并搭建展台——这里是杜罗河岸（Ribera del Duero）产区的首府，举办 Espacio Ribera、Premios Envero / EnveroFest 和 La Cierna 大会等展会——全程掌控每个环节：3D设计、制造、物流、安装以及现场验收。',
+        detail: '我们为酒庄、代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte आरंदा दे दुएरो में स्टैंड डिज़ाइन और स्थापित करता है — यह Ribera del Duero वाइन क्षेत्र की राजधानी है, जहाँ Espacio Ribera, Premios Envero / EnveroFest और La Cierna कांग्रेस जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम वाइनरी, एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 아란다 데 두에로에서 전시회 부스를 디자인하고 시공합니다. 이곳은 Espacio Ribera, Premios Envero / EnveroFest, La Cierna 콩그레스 등이 열리는 리베라 델 두에로(Ribera del Duero) 와인 산지의 주도로, 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '와이너리, 에이전시, 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはアランダ・デ・ドゥエロで展示会ブースの設計・施工を行います。ここはEspacio Ribera、Premios Envero / EnveroFest、La Cierna会議などが開催されるリベラ・デル・ドゥエロ（Ribera del Duero）ワイン産地の中心地で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: 'ワイナリーにも代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  regua: {
+    city: { es: 'Peso da Régua', en: 'Peso da Régua', de: 'Peso da Régua', zh: '佩索达雷瓜', hi: 'पेसो दा रेगुआ', pt: 'Peso da Régua', fr: 'Peso da Régua', it: 'Peso da Régua', ko: '페소 다 레구아', ja: 'ペーゾ・ダ・レグア', nl: 'Peso da Régua' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Peso da Régua —corazón del Douro portugués y del vino de Oporto, con citas como el Douro & Porto Wine Festival, la Feira dos Vinhos e Sabores dos Altos y la Festa dos Saberes e Sabores do Douro— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a bodegas, agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Peso da Régua —the heart of the Portuguese Douro and Port wine, with events such as the Douro & Porto Wine Festival, the Feira dos Vinhos e Sabores dos Altos and the Festa dos Saberes e Sabores do Douro— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer wineries, agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Peso da Régua — dem Herzen des portugiesischen Douro und des Portweins, mit Veranstaltungen wie dem Douro & Porto Wine Festival, der Feira dos Vinhos e Sabores dos Altos und der Festa dos Saberes e Sabores do Douro — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Weingütern, Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands no Peso da Régua — coração do Douro e do vinho do Porto, com certames como o Douro & Porto Wine Festival, a Feira dos Vinhos e Sabores dos Altos e a Festa dos Saberes e Sabores do Douro — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a adegas, agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Peso da Régua — cœur du Douro portugais et du vin de Porto, avec des rendez-vous comme le Douro & Porto Wine Festival, la Feira dos Vinhos e Sabores dos Altos et la Festa dos Saberes e Sabores do Douro — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux caves, aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Peso da Régua — cuore del Douro portoghese e del vino di Porto, con appuntamenti come il Douro & Porto Wine Festival, la Feira dos Vinhos e Sabores dos Altos e la Festa dos Saberes e Sabores do Douro — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo a cantine, agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Peso da Régua — het hart van de Portugese Douro en de portwijn, met evenementen zoals het Douro & Porto Wine Festival, de Feira dos Vinhos e Sabores dos Altos en de Festa dos Saberes e Sabores do Douro — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden wijnhuizen, agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在佩索达雷瓜为展会设计并搭建展台——这里是葡萄牙杜罗河（Douro）与波特酒的核心地带，举办 Douro & Porto Wine Festival、Feira dos Vinhos e Sabores dos Altos 和 Festa dos Saberes e Sabores do Douro 等展会——全程掌控每个环节：3D设计、制造、物流、安装以及现场验收。',
+        detail: '我们为酒庄、代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte पेसो दा रेगुआ में स्टैंड डिज़ाइन और स्थापित करता है — यह पुर्तगाली Douro और पोर्ट वाइन का हृदय है, जहाँ Douro & Porto Wine Festival, Feira dos Vinhos e Sabores dos Altos और Festa dos Saberes e Sabores do Douro जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम वाइनरी, एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 페소 다 레구아에서 전시회 부스를 디자인하고 시공합니다. 이곳은 Douro & Porto Wine Festival, Feira dos Vinhos e Sabores dos Altos, Festa dos Saberes e Sabores do Douro 등이 열리는 포르투갈 도루(Douro)와 포트와인의 중심지로, 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '와이너리, 에이전시, 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはペーゾ・ダ・レグアで展示会ブースの設計・施工を行います。ここはDouro & Porto Wine Festival、Feira dos Vinhos e Sabores dos Altos、Festa dos Saberes e Sabores do Douroなどが開催されるポルトガルのドウロ（Douro）とポートワインの中心地で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: 'ワイナリーにも代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }
   },

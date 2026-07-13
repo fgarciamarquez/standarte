@@ -48,7 +48,9 @@ export const seoFreshness = {
   irun: '2026-07-12',
   logrono: '2026-07-12',
   pamplona: '2026-07-13',
-  vitoria: '2026-07-13'
+  vitoria: '2026-07-13',
+  aranda: '2026-07-13',
+  regua: '2026-07-13'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

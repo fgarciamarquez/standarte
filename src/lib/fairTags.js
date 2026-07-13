@@ -366,7 +366,13 @@ export const fairActivities = {
   "avanza-fp-alava-vitoria": ["congreso-profesional","multisectorial"],
   "empleo-gune-vitoria": ["congreso-profesional"],
   "feria-stocks-vitoria": ["moda-textil","regalo-decoracion"],
-  "lanberri-vitoria": ["cultura-arte"]
+  "lanberri-vitoria": ["cultura-arte"],
+  "espacio-ribera-aranda": ["vino"],
+  "premios-envero-enverofest-aranda": ["vino","gastronomia-hosteleria"],
+  "congreso-la-cierna-aranda": ["vino","congreso-profesional"],
+  "douro-porto-wine-festival-regua": ["vino","gastronomia-hosteleria"],
+  "feira-vinhos-sabores-altos-regua": ["vino","gastronomia-hosteleria"],
+  "festa-saberes-sabores-douro-regua": ["vino","gastronomia-hosteleria"]
 };
 
 // Helpers

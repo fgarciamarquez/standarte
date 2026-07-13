@@ -25,7 +25,8 @@
     lleida: 'cataluna', girona: 'cataluna',
     santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco', logrono: 'larioja',
     pamplona: 'navarra',
-    vitoria: 'paisvasco'
+    vitoria: 'paisvasco',
+    aranda: 'castillayleon', regua: 'portugal'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura',
@@ -37,6 +38,7 @@
     'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia',
     'Lleida': 'cataluna', 'Girona': 'cataluna',
     'Irún': 'paisvasco', 'Vitoria': 'paisvasco',
+    'Aranda de Duero': 'castillayleon', 'Peso da Régua': 'portugal',
     'Logroño': 'larioja', 'Alfaro': 'larioja', 'Calahorra': 'larioja',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };

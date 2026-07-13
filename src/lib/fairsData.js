@@ -2119,5 +2119,47 @@ export const fairsData = [
     "slug": "lanberri-vitoria",
     "city": "Vitoria",
     "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Espacio Ribera",
+    "country": "es",
+    "slug": "espacio-ribera-aranda",
+    "city": "Aranda de Duero",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Premios Envero / EnveroFest",
+    "country": "es",
+    "slug": "premios-envero-enverofest-aranda",
+    "city": "Aranda de Duero",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Congreso La Cierna",
+    "country": "es",
+    "slug": "congreso-la-cierna-aranda",
+    "city": "Aranda de Duero",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Douro & Porto Wine Festival",
+    "country": "pt",
+    "slug": "douro-porto-wine-festival-regua",
+    "city": "Peso da Régua",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Feira dos Vinhos e Sabores dos Altos",
+    "country": "pt",
+    "slug": "feira-vinhos-sabores-altos-regua",
+    "city": "Peso da Régua",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Festa dos Saberes e Sabores do Douro",
+    "country": "pt",
+    "slug": "festa-saberes-sabores-douro-regua",
+    "city": "Peso da Régua",
+    "sector": "Enología y Vinos"
   }
 ];
