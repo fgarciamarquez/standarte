@@ -2158,7 +2158,7 @@
               {#if (section in cityData) && regionFairs.length && cityDisplayName}
                 <section class="coverage-proof sidebar-module">
                   <button type="button" class="coverage-map-thumb" on:click={openPatAndScroll} aria-label={coveragePatCta[lang] || coveragePatCta.es}>
-                    <img src="/img/pat-map-preview.avif" alt={coverageMapAlt[lang] || coverageMapAlt.es} width="1287" height="853" loading="lazy" decoding="async" />
+                    <img src="/img/pat-map-preview.avif" alt={coverageMapAlt[lang] || coverageMapAlt.es} width="1287" height="824" loading="lazy" decoding="async" />
                   </button>
                   <p>{(coverageProof[lang] || coverageProof.es)(regionFairs.length, cityDisplayName)}</p>
                   <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
