@@ -595,6 +595,12 @@
     const m = section.match(/^(\s*)<h2>([\s\S]*?)<\/h2>([\s\S]*)$/);
     return m ? { lead: m[1], heading: m[2], rest: m[3] } : { lead: '', heading: '', rest: section };
   }
+  // Quita el último <p>…</p> de un fragmento (el CTA "Pide tu presupuesto…" que
+  // cierra "Por qué elegir").
+  function dropLastParagraph(html) {
+    const i = html.lastIndexOf('<p>');
+    return i >= 0 ? html.slice(0, i) : html;
+  }
   function collapseSection(section) {
     const { lead, heading, rest } = heading2Parts(section);
     if (!heading) return section;
@@ -636,8 +642,10 @@
       docSection = collapseSection(merged);
     }
     let porqueSection = iPorQue >= 0 ? sections[iPorQue] : null;
-    if (canMerge && iPorQue >= 0) {
-      porqueSection = `${P[iPorQue].lead}<h2>${P[iPorQue].heading}</h2>${P[iGar].rest}${canCob ? P[iCob].rest : ''}${P[iPorQue].rest}`;
+    if (iPorQue >= 0) {
+      const base = dropLastParagraph(P[iPorQue].rest); // fuera el CTA "Pide tu presupuesto…"
+      const prepend = canMerge ? `${P[iGar].rest}${canCob ? P[iCob].rest : ''}` : '';
+      porqueSection = `${P[iPorQue].lead}<h2>${P[iPorQue].heading}</h2>${prepend}${base}`;
     }
 
     const skip = new Set();
