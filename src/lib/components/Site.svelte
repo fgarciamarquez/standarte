@@ -7,7 +7,6 @@
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
-  import { activityPitch } from '$lib/activityPitch.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
@@ -1557,13 +1556,6 @@
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="local-stands" class="section local-stands">
       {#if section === 'home'}
-        <!-- Malla única de ferias por sector/actividad: recurso imprescindible, mismo
-             constructor y misma calidad en todos los lugares, para rendimiento estratégico. -->
-        <div class="coverage-claim activity-pitch">
-          <h2>{activityPitch(lang).heading}</h2>
-          <p>{activityPitch(lang).text}</p>
-          <a class="tool-cta" href={activityIndexUrl(lang)}>{activityPitch(lang).cta} →</a>
-        </div>
         <!-- Gemelo SEO de la malla de Pat: grafo de cobertura ciudad↔actividad como
              HTML rastreable (enlaza a las páginas-ciudad y a los hubs /actividad). -->
         <MeshCoverageLinks {lang} />

@@ -3,6 +3,7 @@
   import { slide, fade } from 'svelte/transition';
   import { colorForTag, labelForTag, tagOrder, tagFamilies, fairTags, familyLabel } from '$lib/fairTags.js';
   import { activityUrl } from '$lib/siteData.js';
+  import { activityPitch } from '$lib/activityPitch.js';
   import { advisorDismissed } from '$lib/stores/advisor.js';
 
   // Malla ibérica (PatMesh): NO se importa de forma estática. El propio panel de
@@ -855,6 +856,12 @@
       <div class="advisor-mesh" transition:fade={{ duration: 400 }}>
         <svelte:component this={MeshComponent} {lang} {selectedFamily} {selectedTags} {previewTags} {initialCity} showContinue={currentStep === 2} on:navigate={onMeshNavigate} on:continue={goToForm} />
       </div>
+      <!-- Posicionamiento de la malla de actividades bajo el mapa: mismo texto SEO,
+           en pequeño y separado por una línea fina. Sin CTA (el mapa ya filtra). -->
+      <div class="advisor-activity-pitch">
+        <h3>{activityPitch(lang).heading}</h3>
+        <p>{activityPitch(lang).text}</p>
+      </div>
     {/if}
 
   </div>
@@ -898,6 +905,30 @@
   /* Contenedor de la malla ibérica bajo el flujo de Pat. */
   .advisor-mesh {
     margin-top: 26px;
+  }
+
+  /* Texto de posicionamiento de la malla de actividades, bajo el mapa: letra
+     pequeña y separado por una línea fina. */
+  .advisor-activity-pitch {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .advisor-activity-pitch h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3a3f42;
+  }
+  .advisor-activity-pitch p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.55;
+    color: #6b7075;
   }
 
   /* Modo embebido: el panel ocupa todo el ancho del contenedor padre (iguala el
