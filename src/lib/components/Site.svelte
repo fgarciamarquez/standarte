@@ -498,6 +498,8 @@
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
   // Cuerpo reestructurado para ciudades Oro (reordena "Ferias y sectores" + colapsables).
   $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang) : seoContent.body) : '';
+  // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
+  $: h1Text = seoContent ? ((section in cityData) ? rewriteTitulo(seoContent.h1, lang) : seoContent.h1) : '';
   // Hero con fondo animado (fotos en movimiento) en la home Y en las páginas matriz de ciudad.
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
@@ -629,6 +631,27 @@
     const m = heading.match(map.from);
     return m ? `${lead}<h2>${map.to(m[1])}</h2>${rest}` : section;
   }
+  // Reescritura SEO del título principal (h1 de la página y h2 del primer apartado):
+  // "Diseño y construcción de stands en {c}[: …]" → "Diseño, construcción y montaje de
+  // stands en {c}." Cada idioma captura la ciudad e ignora la coletilla tras ":".
+  const tituloPrincipal = {
+    es: { from: /^Diseño y construcción de stands en (.+?)\s*(?::.*)?$/, to: (c) => `Diseño, construcción y montaje de stands en ${c}.` },
+    en: { from: /^Exhibition stand design and construction in (.+?)\s*(?::.*)?$/, to: (c) => `Exhibition stand design, construction and assembly in ${c}.` },
+    de: { from: /^Design und Bau von Messeständen in (.+?)\s*(?::.*)?$/, to: (c) => `Design, Bau und Montage von Messeständen in ${c}.` },
+    pt: { from: /^Design e construção de stands em (.+?)\s*(?::.*)?$/, to: (c) => `Design, construção e montagem de stands em ${c}.` },
+    fr: { from: /^Conception et construction de stands à (.+?)\s*(?::.*)?$/, to: (c) => `Conception, construction et montage de stands à ${c}.` },
+    it: { from: /^Progettazione e costruzione di stand a (.+?)\s*(?::.*)?$/, to: (c) => `Progettazione, costruzione e montaggio di stand a ${c}.` },
+    nl: { from: /^Ontwerp en bouw van beursstands in (.+?)\s*(?::.*)?$/, to: (c) => `Ontwerp, bouw en montage van beursstands in ${c}.` },
+    zh: { from: /^(.+?)展台设计与搭建(?:：.*)?$/, to: (c) => `${c}展台设计、搭建与安装。` },
+    hi: { from: /^(.+?) में स्टैंड का डिज़ाइन और निर्माण(?::.*)?$/, to: (c) => `${c} में स्टैंड का डिज़ाइन, निर्माण और असेंबली।` },
+    ko: { from: /^(.+?)의 부스 디자인 및 시공(?::.*)?$/, to: (c) => `${c}의 부스 디자인, 제작 및 설치.` },
+    ja: { from: /^(.+?)のスタンド設計・施工(?:：.*)?$/, to: (c) => `${c}のスタンド設計・施工・設営。` }
+  };
+  function rewriteTitulo(text, lang) {
+    const map = tituloPrincipal[lang] || tituloPrincipal.es;
+    const m = text ? text.match(map.from) : null;
+    return m ? map.to(m[1]) : text;
+  }
   function heading2Parts(section) {
     const m = section.match(/^(\s*)<h2>([\s\S]*?)<\/h2>([\s\S]*)$/);
     return m ? { lead: m[1], heading: m[2], rest: m[3] } : { lead: '', heading: '', rest: section };
@@ -646,6 +669,12 @@
   }
   function transformOroBody(html, lang) {
     if (!html || !html.includes('<h2>')) return html;
+    // Reescribir el título del primer apartado (h2) igual que el h1.
+    const tmap = tituloPrincipal[lang] || tituloPrincipal.es;
+    html = html.replace(/<h2>([\s\S]*?)<\/h2>/, (full, h) => {
+      const m = h.match(tmap.from);
+      return m ? `<h2>${tmap.to(m[1])}</h2>` : full;
+    });
     // Inyectar el CTA amarillo justo tras el primer párrafo del cuerpo.
     const cta = `<a class="oro-cta-espacio" href="#contact">${ctaEspacio[lang] || ctaEspacio.es}</a>`;
     const pEnd = html.indexOf('</p>');
@@ -1662,7 +1691,7 @@
             </ol>
           </nav>
         {/if}
-        <h1>{seoContent.h1}</h1>
+        <h1>{h1Text}</h1>
         <p class="hero-lead">{seoContent.introText}</p>
       </div>
       {#if animatedHero}<AiSourceButtons {lang} variant="hero" showLabel={false} canReactivate on:reactivate={reopenAdvisor} />{/if}
