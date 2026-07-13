@@ -40,6 +40,8 @@ export const routes = {
     vitoria: 'diseno_montaje_stands_vitoria',
     aranda: 'diseno_montaje_stands_aranda_de_duero',
     regua: 'diseno_montaje_stands_peso_da_regua',
+    ibiza: 'diseno_montaje_stands_ibiza',
+    menorca: 'diseno_montaje_stands_menorca',
     gijon: 'diseno_montaje_stands_gijon',
     lleida: 'diseno_montaje_stands_lleida',
     girona: 'diseno_montaje_stands_girona',
@@ -99,6 +101,8 @@ export const routes = {
     vitoria: 'stand_design_assembly_vitoria',
     aranda: 'stand_design_assembly_aranda_de_duero',
     regua: 'stand_design_assembly_peso_da_regua',
+    ibiza: 'stand_design_assembly_ibiza',
+    menorca: 'stand_design_assembly_menorca',
     gijon: 'stand_design_assembly_gijon',
     lleida: 'stand_design_assembly_lleida',
     girona: 'stand_design_assembly_girona',
@@ -158,6 +162,8 @@ export const routes = {
     vitoria: 'messestand_design_montage_vitoria',
     aranda: 'messestand_design_montage_aranda_de_duero',
     regua: 'messestand_design_montage_peso_da_regua',
+    ibiza: 'messestand_design_montage_ibiza',
+    menorca: 'messestand_design_montage_menorca',
     gijon: 'messestand_design_montage_gijon',
     lleida: 'messestand_design_montage_lleida',
     girona: 'messestand_design_montage_girona',
@@ -217,6 +223,8 @@ export const routes = {
     vitoria: 'vitoria_zhantai_sheji_dajian',
     aranda: 'aranda_zhantai_sheji_dajian',
     regua: 'regua_zhantai_sheji_dajian',
+    ibiza: 'ibiza_zhantai_sheji_dajian',
+    menorca: 'menorca_zhantai_sheji_dajian',
     gijon: 'gijon_zhantai_sheji_dajian',
     lleida: 'lleida_zhantai_sheji_dajian',
     girona: 'girona_zhantai_sheji_dajian',
@@ -276,6 +284,8 @@ export const routes = {
     vitoria: 'vitoria_stand_dizain_asembli',
     aranda: 'aranda_stand_dizain_asembli',
     regua: 'regua_stand_dizain_asembli',
+    ibiza: 'ibiza_stand_dizain_asembli',
+    menorca: 'menorca_stand_dizain_asembli',
     gijon: 'gijon_stand_dizain_asembli',
     lleida: 'lleida_stand_dizain_asembli',
     girona: 'girona_stand_dizain_asembli',
@@ -335,6 +345,8 @@ export const routes = {
     vitoria: 'design_montagem_stands_vitoria',
     aranda: 'design_montagem_stands_aranda_de_duero',
     regua: 'design_montagem_stands_peso_da_regua',
+    ibiza: 'design_montagem_stands_ibiza',
+    menorca: 'design_montagem_stands_menorca',
     gijon: 'design_montagem_stands_gijon',
     lleida: 'design_montagem_stands_lleida',
     girona: 'design_montagem_stands_girona',
@@ -394,6 +406,8 @@ export const routes = {
     vitoria: 'conception_montage_stands_vitoria',
     aranda: 'conception_montage_stands_aranda_de_duero',
     regua: 'conception_montage_stands_peso_da_regua',
+    ibiza: 'conception_montage_stands_ibiza',
+    menorca: 'conception_montage_stands_menorca',
     gijon: 'conception_montage_stands_gijon',
     lleida: 'conception_montage_stands_lleida',
     girona: 'conception_montage_stands_girona',
@@ -453,6 +467,8 @@ export const routes = {
     vitoria: 'progettazione_montaggio_stand_vitoria',
     aranda: 'progettazione_montaggio_stand_aranda_de_duero',
     regua: 'progettazione_montaggio_stand_peso_da_regua',
+    ibiza: 'progettazione_montaggio_stand_ibiza',
+    menorca: 'progettazione_montaggio_stand_menorca',
     gijon: 'progettazione_montaggio_stand_gijon',
     lleida: 'progettazione_montaggio_stand_lleida',
     girona: 'progettazione_montaggio_stand_girona',
@@ -512,6 +528,8 @@ export const routes = {
     vitoria: 'vitoria-buseu-dijain-jorip',
     aranda: 'aranda-buseu-dijain-jorip',
     regua: 'regua-buseu-dijain-jorip',
+    ibiza: 'ibiza-buseu-dijain-jorip',
+    menorca: 'menorca-buseu-dijain-jorip',
     gijon: 'gijon-bujeu-dijain-jorip',
     lleida: 'lleida-bujeu-dijain-jorip',
     girona: 'girona-bujeu-dijain-jorip',
@@ -571,6 +589,8 @@ export const routes = {
     vitoria: 'ビトリア展示会ブース設計施工',
     aranda: 'アランダ・デ・ドゥエロ展示会ブース設計施工',
     regua: 'ペーゾ・ダ・レグア展示会ブース設計施工',
+    ibiza: 'イビサ展示会ブース設計施工',
+    menorca: 'メノルカ展示会ブース設計施工',
     gijon: 'ヒホン展示会ブース設計施工',
     lleida: 'リェイダ展示会ブース設計施工',
     girona: 'ジローナ展示会ブース設計施工',
@@ -630,6 +650,8 @@ export const routes = {
     vitoria: 'standontwerp_montage_vitoria',
     aranda: 'standontwerp_montage_aranda_de_duero',
     regua: 'standontwerp_montage_peso_da_regua',
+    ibiza: 'standontwerp_montage_ibiza',
+    menorca: 'standontwerp_montage_menorca',
     gijon: 'standontwerp_montage_gijon',
     lleida: 'standontwerp_montage_lleida',
     girona: 'standontwerp_montage_girona',
@@ -2767,6 +2789,104 @@ export const cityData = {
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはペーゾ・ダ・レグアで展示会ブースの設計・施工を行います。ここはDouro & Porto Wine Festival、Feira dos Vinhos e Sabores dos Altos、Festa dos Saberes e Sabores do Douroなどが開催されるポルトガルのドウロ（Douro）とポートワインの中心地で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: 'ワイナリーにも代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  ibiza: {
+    city: { es: 'Ibiza', en: 'Ibiza', de: 'Ibiza', zh: '伊维萨', hi: 'इबीसा', pt: 'Ibiza', fr: 'Ibiza', it: 'Ibiza', ko: '이비사', ja: 'イビサ', nl: 'Ibiza' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Ibiza —isla balear de proyección internacional, con citas como HORECA Baleares Ibiza, la Fira de la Mar y la Feria de Stocks— controlando cada fase: diseño 3D, fabricación, logística en barco, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, incluso al otro lado del mar.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Ibiza —a Balearic island with international reach, with events such as HORECA Baleares Ibiza, the Fira de la Mar and the Stocks Fair— controlling every phase: 3D design, production, sea logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, even across the sea.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände auf Ibiza — einer international ausstrahlenden Baleareninsel, mit Veranstaltungen wie HORECA Baleares Ibiza, der Fira de la Mar und der Stocks-Messe — und kontrolliert jede Phase: 3D-Design, Produktion, Seelogistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch über das Meer hinweg.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Ibiza — ilha balear de projeção internacional, com certames como a HORECA Baleares Ibiza, a Fira de la Mar e a Feira de Stocks — controlando cada fase: design 3D, fabrico, logística por barco, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, mesmo do outro lado do mar.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Ibiza — île des Baléares à rayonnement international, avec des rendez-vous comme HORECA Baleares Ibiza, la Fira de la Mar et le Salon des Stocks — en maîtrisant chaque phase : conception 3D, fabrication, logistique par bateau, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails, même de l\'autre côté de la mer.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Ibiza — isola delle Baleari di proiezione internazionale, con appuntamenti come HORECA Baleares Ibiza, la Fira de la Mar e la Fiera degli Stock — controllando ogni fase: progettazione 3D, produzione, logistica via nave, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli, anche dall\'altra parte del mare.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands op Ibiza — een Balearen-eiland met internationale uitstraling, met evenementen zoals HORECA Baleares Ibiza, de Fira de la Mar en de Stocks-beurs — met volledige controle over elke fase: 3D-ontwerp, productie, zeelogistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, zelfs aan de overkant van de zee.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在伊维萨为展会设计并搭建展台——这座具有国际影响力的巴利阿里群岛之一，举办 HORECA Baleares Ibiza、Fira de la Mar 和库存特卖会等展会——全程掌控每个环节：3D设计、制造、海运物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便远隔重洋。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte इबीसा में स्टैंड डिज़ाइन और स्थापित करता है — यह अंतर्राष्ट्रीय पहुँच वाला बालियारिक द्वीप है, जहाँ HORECA Baleares Ibiza, Fira de la Mar और स्टॉक मेला जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, समुद्री लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को समुद्र के उस पार भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 이비사에서 전시회 부스를 디자인하고 시공합니다. 이곳은 HORECA Baleares Ibiza, Fira de la Mar, 스톡 박람회 등이 열리는 국제적 위상의 발레아레스 제도로, 3D 디자인, 제작, 해상 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 바다 건너에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはイビサで展示会ブースの設計・施工を行います。ここはHORECA Baleares Ibiza、Fira de la Mar、ストックフェアなどが開催される国際的な知名度を誇るバレアレス諸島の島で、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、海を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  menorca: {
+    city: { es: 'Menorca', en: 'Menorca', de: 'Menorca', zh: '梅诺卡', hi: 'मेनोर्का', pt: 'Menorca', fr: 'Minorque', it: 'Minorca', ko: '메노르카', ja: 'メノルカ', nl: 'Menorca' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Menorca —isla balear y Reserva de Biosfera, con citas como HORECA Baleares Menorca, la Fira del Camp de Alaior y Arrels— controlando cada fase: diseño 3D, fabricación, logística en barco, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, incluso al otro lado del mar.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Menorca —a Balearic island and Biosphere Reserve, with events such as HORECA Baleares Menorca, the Fira del Camp in Alaior and Arrels— controlling every phase: 3D design, production, sea logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, even across the sea.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände auf Menorca — einer Baleareninsel und Biosphärenreservat, mit Veranstaltungen wie HORECA Baleares Menorca, der Fira del Camp in Alaior und Arrels — und kontrolliert jede Phase: 3D-Design, Produktion, Seelogistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch über das Meer hinweg.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Menorca — ilha balear e Reserva da Biosfera, com certames como a HORECA Baleares Menorca, a Fira del Camp de Alaior e a Arrels — controlando cada fase: design 3D, fabrico, logística por barco, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, mesmo do outro lado do mar.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Minorque — île des Baléares et Réserve de biosphère, avec des rendez-vous comme HORECA Baleares Menorca, la Fira del Camp d\'Alaior et Arrels — en maîtrisant chaque phase : conception 3D, fabrication, logistique par bateau, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails, même de l\'autre côté de la mer.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Minorca — isola delle Baleari e Riserva della Biosfera, con appuntamenti come HORECA Baleares Menorca, la Fira del Camp di Alaior e Arrels — controllando ogni fase: progettazione 3D, produzione, logistica via nave, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli, anche dall\'altra parte del mare.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands op Menorca — een Balearen-eiland en Biosfeerreservaat, met evenementen zoals HORECA Baleares Menorca, de Fira del Camp in Alaior en Arrels — met volledige controle over elke fase: 3D-ontwerp, productie, zeelogistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, zelfs aan de overkant van de zee.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在梅诺卡为展会设计并搭建展台——这座巴利阿里群岛之一，也是生物圈保护区，举办 HORECA Baleares Menorca、阿莱奥尔的 Fira del Camp 和 Arrels 等展会——全程掌控每个环节：3D设计、制造、海运物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便远隔重洋。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte मेनोर्का में स्टैंड डिज़ाइन और स्थापित करता है — यह एक बालियारिक द्वीप और बायोस्फीयर रिज़र्व है, जहाँ HORECA Baleares Menorca, अलाइओर की Fira del Camp और Arrels जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, समुद्री लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को समुद्र के उस पार भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 메노르카에서 전시회 부스를 디자인하고 시공합니다. 이곳은 HORECA Baleares Menorca, 알라이오르의 Fira del Camp, Arrels 등이 열리는 발레아레스 제도이자 생물권 보전지역으로, 3D 디자인, 제작, 해상 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 바다 건너에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはメノルカで展示会ブースの設計・施工を行います。ここはHORECA Baleares Menorca、アライオールのFira del Camp、Arrelsなどが開催されるバレアレス諸島の島であり生物圏保存地域で、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、海を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }
   },

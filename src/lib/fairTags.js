@@ -376,7 +376,17 @@ export const fairActivities = {
   "sieb-valladolid": ["equipamiento-vino"],
   "enotecnica-olitecnica-oporto": ["vino","equipamiento-vino"],
   "enoforum-zaragoza": ["vino","equipamiento-vino"],
-  "ficor-san-vicente-alcantara": ["equipamiento-vino","packaging"]
+  "ficor-san-vicente-alcantara": ["equipamiento-vino","packaging"],
+  "horeca-baleares-mallorca": ["gastronomia-hosteleria"],
+  "fira-vi-pollenca-mallorca": ["vino"],
+  "wine-days-binissalem-mallorca": ["vino","gastronomia-hosteleria"],
+  "fira-sipia-alcudia-mallorca": ["gastronomia-hosteleria","pesca-mar"],
+  "horeca-baleares-ibiza": ["gastronomia-hosteleria"],
+  "fira-mar-ibiza": ["naval","pesca-mar"],
+  "feria-stocks-ibiza": ["moda-textil","regalo-decoracion"],
+  "horeca-baleares-menorca": ["gastronomia-hosteleria"],
+  "fira-camp-alaior-menorca": ["ganaderia","alimentacion"],
+  "arrels-menorca": ["alimentacion","gastronomia-hosteleria"]
 };
 
 // Helpers

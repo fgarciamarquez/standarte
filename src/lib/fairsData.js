@@ -2189,5 +2189,75 @@ export const fairsData = [
     "slug": "ficor-san-vicente-alcantara",
     "city": "San Vicente de Alcántara",
     "sector": "Enología y Vinos"
+  },
+  {
+    "name": "HORECA Baleares Mallorca",
+    "country": "es",
+    "slug": "horeca-baleares-mallorca",
+    "city": "Mallorca",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Fira del Vi de Pollença",
+    "country": "es",
+    "slug": "fira-vi-pollenca-mallorca",
+    "city": "Mallorca",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Wine Days Mallorca – DO Binissalem",
+    "country": "es",
+    "slug": "wine-days-binissalem-mallorca",
+    "city": "Mallorca",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Fira de la Sípia",
+    "country": "es",
+    "slug": "fira-sipia-alcudia-mallorca",
+    "city": "Mallorca",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "HORECA Baleares Ibiza",
+    "country": "es",
+    "slug": "horeca-baleares-ibiza",
+    "city": "Ibiza",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Fira de la Mar",
+    "country": "es",
+    "slug": "fira-mar-ibiza",
+    "city": "Ibiza",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Feria de Stocks de Ibiza",
+    "country": "es",
+    "slug": "feria-stocks-ibiza",
+    "city": "Ibiza",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "HORECA Baleares Menorca",
+    "country": "es",
+    "slug": "horeca-baleares-menorca",
+    "city": "Menorca",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Fira del Camp",
+    "country": "es",
+    "slug": "fira-camp-alaior-menorca",
+    "city": "Menorca",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Arrels, Fira de Producte Local i Cuina de Menorca",
+    "country": "es",
+    "slug": "arrels-menorca",
+    "city": "Menorca",
+    "sector": "Agroalimentario y Naturaleza"
   }
 ];

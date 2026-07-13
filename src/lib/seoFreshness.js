@@ -50,7 +50,9 @@ export const seoFreshness = {
   pamplona: '2026-07-13',
   vitoria: '2026-07-13',
   aranda: '2026-07-13',
-  regua: '2026-07-13'
+  regua: '2026-07-13',
+  ibiza: '2026-07-13',
+  menorca: '2026-07-13'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
