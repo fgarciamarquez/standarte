@@ -448,7 +448,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -527,7 +527,8 @@
     santarem: 'portugal', trujillo: 'extremadura', elche: 'comunidadvalenciana',
     silleda: 'galicia', ourense: 'galicia',
     lleida: 'cataluna', girona: 'cataluna',
-    santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco', logrono: 'larioja'
+    santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco', logrono: 'larioja',
+    pamplona: 'navarra'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -540,6 +541,7 @@
     'Lleida': 'cataluna', 'Girona': 'cataluna',
     'Irún': 'paisvasco',
     'Logroño': 'larioja', 'Alfaro': 'larioja', 'Calahorra': 'larioja',
+    'Pamplona': 'navarra',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'
@@ -770,6 +772,7 @@
     'Silleda': 'silleda', 'Ourense': 'ourense',
     'Lleida': 'lleida', 'Girona': 'girona', 'Irún': 'irun',
     'Logroño': 'logrono', 'Alfaro': 'logrono', 'Calahorra': 'logrono',
+    'Pamplona': 'pamplona',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   function fairsForCity(cityKey) {

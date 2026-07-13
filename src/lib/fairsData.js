@@ -2035,5 +2035,54 @@ export const fairsData = [
     "slug": "ferias-agroalimentarias-rioja-oriental-calahorra",
     "city": "Calahorra",
     "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "NAVARTUR",
+    "country": "es",
+    "slug": "navartur-pamplona",
+    "city": "Pamplona",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Salón del Estudiante y Futuro Profesional",
+    "country": "es",
+    "slug": "salon-estudiante-futuro-profesional-pamplona",
+    "city": "Pamplona",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "EDIFICA",
+    "country": "es",
+    "slug": "edifica-pamplona",
+    "city": "Pamplona",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Navarra Jobs",
+    "country": "es",
+    "slug": "navarra-jobs-pamplona",
+    "city": "Pamplona",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feria Navarra Ecológica",
+    "country": "es",
+    "slug": "feria-navarra-ecologica-pamplona",
+    "city": "Pamplona",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Navarra Wine & Gastronomy",
+    "country": "es",
+    "slug": "navarra-wine-gastronomy-pamplona",
+    "city": "Pamplona",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Feria Internacional de Turismo Reyno de Navarra",
+    "country": "es",
+    "slug": "feria-turismo-reyno-navarra-pamplona",
+    "city": "Pamplona",
+    "sector": "Turismo y Hostelería"
   }
 ];

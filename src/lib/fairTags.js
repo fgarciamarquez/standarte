@@ -354,7 +354,14 @@ export const fairActivities = {
   "feria-formacion-profesional-la-rioja-logrono": ["congreso-profesional","multisectorial"],
   "feria-vehiculo-ocasion-logrono": ["automocion"],
   "feria-maquinaria-agricola-alfaro": ["agricultura-maquinaria"],
-  "ferias-agroalimentarias-rioja-oriental-calahorra": ["alimentacion"]
+  "ferias-agroalimentarias-rioja-oriental-calahorra": ["alimentacion"],
+  "navartur-pamplona": ["turismo"],
+  "salon-estudiante-futuro-profesional-pamplona": ["congreso-profesional","multisectorial"],
+  "edifica-pamplona": ["construccion"],
+  "navarra-jobs-pamplona": ["congreso-profesional"],
+  "feria-navarra-ecologica-pamplona": ["ecologico","alimentacion"],
+  "navarra-wine-gastronomy-pamplona": ["vino","gastronomia-hosteleria"],
+  "feria-turismo-reyno-navarra-pamplona": ["turismo"]
 };
 
 // Helpers

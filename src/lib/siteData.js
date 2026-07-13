@@ -36,6 +36,7 @@ export const routes = {
     santander: 'diseno_montaje_stands_santander',
     irun: 'diseno_montaje_stands_irun',
     logrono: 'diseno_montaje_stands_logrono',
+    pamplona: 'diseno_montaje_stands_pamplona',
     gijon: 'diseno_montaje_stands_gijon',
     lleida: 'diseno_montaje_stands_lleida',
     girona: 'diseno_montaje_stands_girona',
@@ -91,6 +92,7 @@ export const routes = {
     santander: 'stand_design_assembly_santander',
     irun: 'stand_design_assembly_irun',
     logrono: 'stand_design_assembly_logrono',
+    pamplona: 'stand_design_assembly_pamplona',
     gijon: 'stand_design_assembly_gijon',
     lleida: 'stand_design_assembly_lleida',
     girona: 'stand_design_assembly_girona',
@@ -146,6 +148,7 @@ export const routes = {
     santander: 'messestand_design_montage_santander',
     irun: 'messestand_design_montage_irun',
     logrono: 'messestand_design_montage_logrono',
+    pamplona: 'messestand_design_montage_pamplona',
     gijon: 'messestand_design_montage_gijon',
     lleida: 'messestand_design_montage_lleida',
     girona: 'messestand_design_montage_girona',
@@ -201,6 +204,7 @@ export const routes = {
     santander: 'santander_zhantai_sheji_dajian',
     irun: 'irun_zhantai_sheji_dajian',
     logrono: 'logrono_zhantai_sheji_dajian',
+    pamplona: 'pamplona_zhantai_sheji_dajian',
     gijon: 'gijon_zhantai_sheji_dajian',
     lleida: 'lleida_zhantai_sheji_dajian',
     girona: 'girona_zhantai_sheji_dajian',
@@ -256,6 +260,7 @@ export const routes = {
     santander: 'santander_stand_dizain_asembli',
     irun: 'irun_stand_dizain_asembli',
     logrono: 'logrono_stand_dizain_asembli',
+    pamplona: 'pamplona_stand_dizain_asembli',
     gijon: 'gijon_stand_dizain_asembli',
     lleida: 'lleida_stand_dizain_asembli',
     girona: 'girona_stand_dizain_asembli',
@@ -311,6 +316,7 @@ export const routes = {
     santander: 'design_montagem_stands_santander',
     irun: 'design_montagem_stands_irun',
     logrono: 'design_montagem_stands_logrono',
+    pamplona: 'design_montagem_stands_pamplona',
     gijon: 'design_montagem_stands_gijon',
     lleida: 'design_montagem_stands_lleida',
     girona: 'design_montagem_stands_girona',
@@ -366,6 +372,7 @@ export const routes = {
     santander: 'conception_montage_stands_santander',
     irun: 'conception_montage_stands_irun',
     logrono: 'conception_montage_stands_logrono',
+    pamplona: 'conception_montage_stands_pamplona',
     gijon: 'conception_montage_stands_gijon',
     lleida: 'conception_montage_stands_lleida',
     girona: 'conception_montage_stands_girona',
@@ -421,6 +428,7 @@ export const routes = {
     santander: 'progettazione_montaggio_stand_santander',
     irun: 'progettazione_montaggio_stand_irun',
     logrono: 'progettazione_montaggio_stand_logrono',
+    pamplona: 'progettazione_montaggio_stand_pamplona',
     gijon: 'progettazione_montaggio_stand_gijon',
     lleida: 'progettazione_montaggio_stand_lleida',
     girona: 'progettazione_montaggio_stand_girona',
@@ -476,6 +484,7 @@ export const routes = {
     santander: 'santander-bujeu-dijain-jorip',
     irun: 'irun-buseu-dijain-jorip',
     logrono: 'logrono-buseu-dijain-jorip',
+    pamplona: 'pamplona-buseu-dijain-jorip',
     gijon: 'gijon-bujeu-dijain-jorip',
     lleida: 'lleida-bujeu-dijain-jorip',
     girona: 'girona-bujeu-dijain-jorip',
@@ -531,6 +540,7 @@ export const routes = {
     santander: 'サンタンデール展示会ブース設計施工',
     irun: 'イルン展示会ブース設計施工',
     logrono: 'ログローニョ展示会ブース設計施工',
+    pamplona: 'パンプローナ展示会ブース設計施工',
     gijon: 'ヒホン展示会ブース設計施工',
     lleida: 'リェイダ展示会ブース設計施工',
     girona: 'ジローナ展示会ブース設計施工',
@@ -586,6 +596,7 @@ export const routes = {
     santander: 'standontwerp_montage_santander',
     irun: 'standontwerp_montage_irun',
     logrono: 'standontwerp_montage_logrono',
+    pamplona: 'standontwerp_montage_pamplona',
     gijon: 'standontwerp_montage_gijon',
     lleida: 'standontwerp_montage_lleida',
     girona: 'standontwerp_montage_girona',
@@ -2526,6 +2537,55 @@ export const cityData = {
       },
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはログローニョで展示会ブースの設計・施工を行います。ここはRioja Wine Trade Mission、Planeta Rioja、中古車見本市などが開催されるラ・リオハ州の州都で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  pamplona: {
+    city: { es: 'Pamplona', en: 'Pamplona', de: 'Pamplona', zh: '潘普洛纳', hi: 'पाम्प्लोना', pt: 'Pamplona', fr: 'Pampelune', it: 'Pamplona', ko: '팜플로나', ja: 'パンプローナ', nl: 'Pamplona' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Pamplona —capital de Navarra, con citas como NAVARTUR, EDIFICA y la Feria Internacional de Turismo Reyno de Navarra— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Pamplona —capital of Navarre, with events such as NAVARTUR, EDIFICA and the Reyno de Navarra International Tourism Fair— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Pamplona — Hauptstadt von Navarra, mit Veranstaltungen wie NAVARTUR, EDIFICA und der Internationalen Tourismusmesse Reyno de Navarra — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Pamplona — capital de Navarra, com certames como a NAVARTUR, a EDIFICA e a Feira Internacional de Turismo Reyno de Navarra — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Pampelune — capitale de la Navarre, avec des rendez-vous comme NAVARTUR, EDIFICA et le Salon international du tourisme Reyno de Navarra — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Pamplona — capoluogo della Navarra, con appuntamenti come NAVARTUR, EDIFICA e la Fiera Internazionale del Turismo Reyno de Navarra — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Pamplona — hoofdstad van Navarra, met evenementen zoals NAVARTUR, EDIFICA en de Internationale Toerismebeurs Reyno de Navarra — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在潘普洛纳为展会设计并搭建展台——这里是纳瓦拉（Navarra）首府，举办 NAVARTUR、EDIFICA 和纳瓦拉王国国际旅游展等展会——全程掌控每个环节：3D设计、制造、物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte पाम्प्लोना में स्टैंड डिज़ाइन और स्थापित करता है — यह Navarra की राजधानी है, जहाँ NAVARTUR, EDIFICA और Reyno de Navarra अंतर्राष्ट्रीय पर्यटन मेला जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 팜플로나에서 전시회 부스를 디자인하고 시공합니다. 이곳은 NAVARTUR, EDIFICA, 레이노 데 나바라 국제 관광 박람회 등이 열리는 나바라(Navarra)의 주도로, 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはパンプローナで展示会ブースの設計・施工を行います。ここはNAVARTUR、EDIFICA、レイノ・デ・ナバラ国際観光見本市などが開催されるナバラ州の州都で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }
