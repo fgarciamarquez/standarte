@@ -312,6 +312,10 @@
     // Mallorca: polígono simple (misma proyección px) para que la isla tenga tierra
     // bajo su punto y se vea que la malla llega hasta Baleares. Punto Palma ≈ (856, 398).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 826,384 L 848,368 L 892,360 L 884,388 L 864,401 L 846,405 L 834,396 Z' }));
+    // Ibiza: pequeña isla triangular al suroeste de Mallorca. Punto ≈ (770, 459).
+    svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 754,458 L 762,448 L 775,447 L 785,455 L 783,466 L 772,472 L 760,468 Z' }));
+    // Menorca: isla alargada NE-SO al noreste de Mallorca. Punto ≈ (959, 363).
+    svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 942,369 L 950,361 L 965,355 L 980,358 L 976,367 L 961,371 L 949,373 Z' }));
 
     // Insets (Canarias, Madeira): traslación artificial de cada archipiélago a un
     // recuadro (circunferencia de borde de puntos + islas simples) para que la
