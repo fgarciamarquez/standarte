@@ -497,7 +497,7 @@
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
   // Cuerpo reestructurado para ciudades Oro (reordena "Ferias y sectores" + colapsables).
-  $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body) : seoContent.body) : '';
+  $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang) : seoContent.body) : '';
   // Hero con fondo animado (fotos en movimiento) en la home Y en las páginas matriz de ciudad.
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
@@ -591,6 +591,21 @@
   // "Tipos de stand" y "Documentación técnica"; integrar "Logística" como párrafo
   // final de "Documentación"; eliminar "Pat" (reiterativo); mover "Garantía" como
   // primer párrafo de "Por qué elegir".
+  // CTA amarillo (píldora) que se inyecta tras el primer párrafo del cuerpo Oro y
+  // lleva al formulario de presupuesto del pie (#contact).
+  const ctaEspacio = {
+    es: 'Solicitar presupuesto de stand para este espacio',
+    en: 'Request a stand quote for this venue',
+    de: 'Standangebot für diesen Veranstaltungsort anfordern',
+    pt: 'Pedir orçamento de stand para este espaço',
+    fr: 'Demander un devis de stand pour ce lieu',
+    it: 'Richiedi un preventivo per uno stand in questa sede',
+    nl: 'Vraag een standofferte aan voor deze locatie',
+    zh: '为此场馆申请展台报价',
+    hi: 'इस स्थल के लिए स्टैंड कोटेशन का अनुरोध करें',
+    ko: '이 장소의 부스 견적 요청하기',
+    ja: 'この会場のブース見積もりを依頼する'
+  };
   function heading2Parts(section) {
     const m = section.match(/^(\s*)<h2>([\s\S]*?)<\/h2>([\s\S]*)$/);
     return m ? { lead: m[1], heading: m[2], rest: m[3] } : { lead: '', heading: '', rest: section };
@@ -606,14 +621,18 @@
     if (!heading) return section;
     return `${lead}<details class="oro-collapse"><summary class="oro-collapse-sum"><h2 class="oro-collapse-h">${heading}</h2><span class="oro-collapse-chevron" aria-hidden="true"></span></summary><div class="oro-collapse-body">${rest}</div></details>`;
   }
-  function transformOroBody(html) {
+  function transformOroBody(html, lang) {
     if (!html || !html.includes('<h2>')) return html;
+    // Inyectar el CTA amarillo justo tras el primer párrafo del cuerpo.
+    const cta = `<a class="oro-cta-espacio" href="#contact">${ctaEspacio[lang] || ctaEspacio.es}</a>`;
+    const pEnd = html.indexOf('</p>');
+    html = pEnd >= 0 ? html.slice(0, pEnd + 4) + cta + html.slice(pEnd + 4) : html;
     const parts = html.split(/(?=<h2>)/);
     let prefix = '';
     let sections = parts;
     if (!/^\s*<h2>/.test(parts[0])) { prefix = parts[0]; sections = parts.slice(1); }
     const n = sections.length;
-    if (n < 5) return html;
+    if (n < 5) return html; // cuerpo breve: solo el CTA, sin reestructura
     let iComo = -1, iTipos = -1, iFerias = -1, iPat = -1, iPorQue = -1;
     sections.forEach((s, i) => {
       if (iComo < 0 && /<ol[ >]/.test(s)) iComo = i;
@@ -654,7 +673,7 @@
     if (canCob) skip.add(iCob);
     const render = (i) => {
       if (i === iDoc && docSection !== undefined) return docSection;
-      if (i === iPorQue && porqueSection !== null) return porqueSection;
+      if (i === iPorQue && porqueSection !== null) return collapseSection(porqueSection);
       if (i === iComo || i === iTipos) return collapseSection(sections[i]);
       return sections[i];
     };

@@ -3561,6 +3561,26 @@ p b {
 .oro-collapse-body { padding: 0 1.1rem 1rem; }
 .oro-collapse-body > :first-child { margin-top: 0; }
 
+/* CTA amarillo (píldora) tras el primer párrafo → formulario de presupuesto (#contact). */
+.oro-cta-espacio {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.2rem 0 1.6rem;
+  padding: 0.75rem 1.6rem;
+  background: var(--gold, #ffc800);
+  color: #111;
+  font-family: 'Inconsolata', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.28);
+  transition: filter 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+.oro-cta-espacio:hover { filter: brightness(1.05); box-shadow: 0 6px 18px rgba(212, 175, 55, 0.36); }
+.oro-cta-espacio:active { transform: scale(0.98); }
+
 
 
 
