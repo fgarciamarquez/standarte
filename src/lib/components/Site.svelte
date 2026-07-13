@@ -623,6 +623,11 @@
     // encaja (Garantía justo tras Pat, Logística tras Garantía). Si no, se degrada:
     // solo reordena "Ferias" y colapsa "Cómo trabajamos"/"Tipos"/"Documentación".
     const canMerge = iPat >= 0 && iGar === iPat + 1 && iLog === iPat + 2 && iDoc >= 0 && iDoc !== iComo && iDoc !== iTipos;
+    // "La mayor cobertura" va justo tras "Ferias y sectores"; se integra como 2.º
+    // párrafo de "Por qué elegir" (tras el de Garantía).
+    const iCob = iFerias > 0 ? iFerias + 1 : -1;
+    const canCob = canMerge && iCob > 0 && iCob < n &&
+      ![iComo, iTipos, iDoc, iPat, iGar, iLog, iPorQue].includes(iCob);
     const P = sections.map(heading2Parts);
 
     let docSection;
@@ -632,12 +637,13 @@
     }
     let porqueSection = iPorQue >= 0 ? sections[iPorQue] : null;
     if (canMerge && iPorQue >= 0) {
-      porqueSection = `${P[iPorQue].lead}<h2>${P[iPorQue].heading}</h2>${P[iGar].rest}${P[iPorQue].rest}`;
+      porqueSection = `${P[iPorQue].lead}<h2>${P[iPorQue].heading}</h2>${P[iGar].rest}${canCob ? P[iCob].rest : ''}${P[iPorQue].rest}`;
     }
 
     const skip = new Set();
     if (iPat >= 0) skip.add(iPat);
     if (canMerge) { skip.add(iGar); skip.add(iLog); }
+    if (canCob) skip.add(iCob);
     const render = (i) => {
       if (i === iDoc && docSection !== undefined) return docSection;
       if (i === iPorQue && porqueSection !== null) return porqueSection;
