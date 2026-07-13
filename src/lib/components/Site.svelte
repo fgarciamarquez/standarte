@@ -811,6 +811,7 @@
     ja: () => `このイベントをより広範なキャンペーンに組み込み、シナジーによるコスト削減を実現しましょう。`
   };
   const coveragePatCta = { es: 'Más información', en: 'More information', pt: 'Mais informação', de: 'Mehr erfahren', fr: 'Plus d\'informations', it: 'Maggiori informazioni', nl: 'Meer informatie', zh: '了解更多', hi: 'अधिक जानकारी', ko: '자세히 보기', ja: '詳しく見る' };
+  const coverageMapAlt = { es: 'Mapa de cobertura ferial de Standarte en España y Portugal', en: 'Standarte trade fair coverage map across Spain and Portugal', pt: 'Mapa de cobertura de feiras da Standarte em Espanha e Portugal', de: 'Standarte-Messeabdeckungskarte in Spanien und Portugal', fr: 'Carte de couverture des salons de Standarte en Espagne et au Portugal', it: 'Mappa di copertura fieristica di Standarte in Spagna e Portogallo', nl: 'Standarte-beursdekkingskaart in Spanje en Portugal', zh: 'Standarte 在西班牙和葡萄牙的展会覆盖地图', hi: 'स्पेन और पुर्तगाल में Standarte का मेला कवरेज मानचित्र', ko: '스페인과 포르투갈의 Standarte 전시회 커버리지 지도', ja: 'スペインとポルトガルにおけるStandarteの展示会カバレッジマップ' };
   $: cityDisplayName = (section && cityData[section]) ? (cityData[section].city?.[lang] || cityData[section].city?.es || '') : '';
   // Nombre canónico (ES) de la ciudad de la página: coincide con el campo `city`
   // de fairsData, que es como PatMesh identifica sus nodos. Con esto el mapa de Pat
@@ -2156,6 +2157,9 @@
               <!-- B1: prueba de cobertura verificable (recuento real de ferias) + Pat. -->
               {#if (section in cityData) && regionFairs.length && cityDisplayName}
                 <section class="coverage-proof sidebar-module">
+                  <button type="button" class="coverage-map-thumb" on:click={openPatAndScroll} aria-label={coveragePatCta[lang] || coveragePatCta.es}>
+                    <img src="/img/pat-map-preview.avif" alt={coverageMapAlt[lang] || coverageMapAlt.es} width="1287" height="853" loading="lazy" decoding="async" />
+                  </button>
                   <p>{(coverageProof[lang] || coverageProof.es)(regionFairs.length, cityDisplayName)}</p>
                   <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
                 </section>

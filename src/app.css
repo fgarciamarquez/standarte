@@ -3581,6 +3581,24 @@ p b {
 .oro-cta-espacio:hover { filter: brightness(1.05); box-shadow: 0 6px 18px rgba(212, 175, 55, 0.36); }
 .oro-cta-espacio:active { transform: scale(0.98); }
 
+/* Miniatura del mapa de Pat sobre el texto del recuadro de cobertura (sidebar).
+   Caja con esquinas levemente redondeadas; abre el mapa (mismo enlace que el botón). */
+.coverage-map-thumb {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  line-height: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.coverage-map-thumb:hover { border-color: var(--gold, #ffc800); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+.coverage-map-thumb img { width: 100%; height: auto; display: block; }
+
 /* Imagen del primer caso de éxito en el cuerpo (todo el ancho de la columna). */
 .oro-case-figure { margin: 1.7rem 0; }
 .oro-case-figure a { display: block; }
