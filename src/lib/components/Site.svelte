@@ -610,17 +610,17 @@
   // de éxito en {ciudad} paso a paso". Cada idioma captura la ciudad del título
   // original (estructura fija por plantilla) y la reinserta en el nuevo título.
   const comoTitulo = {
-    es: { from: /^Cómo trabajamos tu stand en (.+?),?\s*paso a paso$/, to: (c) => `Cómo lograr tener un stand de éxito en ${c} paso a paso` },
-    en: { from: /^How we build your stand in (.+?),?\s*step by step$/, to: (c) => `How to achieve a successful stand in ${c} step by step` },
-    de: { from: /^So arbeiten wir Schritt für Schritt an deinem Messestand in (.+)$/, to: (c) => `So gelingt Ihnen in ${c} Schritt für Schritt ein erfolgreicher Messestand` },
-    pt: { from: /^Como trabalhamos o teu stand em (.+?),?\s*passo a passo$/, to: (c) => `Como conseguir um stand de sucesso em ${c} passo a passo` },
-    fr: { from: /^Comment nous concevons votre stand à (.+?),?\s*étape par étape$/, to: (c) => `Comment réussir votre stand à ${c} étape par étape` },
-    it: { from: /^Come lavoriamo il tuo stand a (.+?),?\s*passo dopo passo$/, to: (c) => `Come ottenere uno stand di successo a ${c} passo dopo passo` },
-    nl: { from: /^Hoe wij jouw stand in (.+?) aanpakken,?\s*stap voor stap$/, to: (c) => `Hoe u stap voor stap een succesvolle stand in ${c} realiseert` },
-    zh: { from: /^我们如何一步步打造您在(.+?)的展台$/, to: (c) => `如何一步步在${c}打造成功的展台` },
-    hi: { from: /^हम (.+?) में आपके स्टैंड पर कैसे काम करते हैं,?\s*चरण दर चरण$/, to: (c) => `${c} में सफल स्टैंड कैसे बनाएं, चरण दर चरण` },
-    ko: { from: /^(.+?)의 부스 작업 방식,?\s*단계별로$/, to: (c) => `${c}에서 성공적인 부스를 만드는 방법, 단계별 가이드` },
-    ja: { from: /^(.+?)のスタンド制作の進め方、ステップごとに$/, to: (c) => `${c}で成功する展示会ブースを実現する方法（ステップバイステップ）` }
+    es: { from: /^Cómo trabajamos tu stand en (.+?),?\s*paso a paso$/, to: (c) => `Claves para lograr tener un stand de éxito en ${c} paso a paso` },
+    en: { from: /^How we build your stand in (.+?),?\s*step by step$/, to: (c) => `Keys to achieving a successful stand in ${c} step by step` },
+    de: { from: /^So arbeiten wir Schritt für Schritt an deinem Messestand in (.+)$/, to: (c) => `Schlüssel für einen erfolgreichen Messestand in ${c} Schritt für Schritt` },
+    pt: { from: /^Como trabalhamos o teu stand em (.+?),?\s*passo a passo$/, to: (c) => `Chaves para conseguir um stand de sucesso em ${c} passo a passo` },
+    fr: { from: /^Comment nous concevons votre stand à (.+?),?\s*étape par étape$/, to: (c) => `Les clés pour réussir votre stand à ${c} étape par étape` },
+    it: { from: /^Come lavoriamo il tuo stand a (.+?),?\s*passo dopo passo$/, to: (c) => `Le chiavi per ottenere uno stand di successo a ${c} passo dopo passo` },
+    nl: { from: /^Hoe wij jouw stand in (.+?) aanpakken,?\s*stap voor stap$/, to: (c) => `Sleutels tot een succesvolle stand in ${c}, stap voor stap` },
+    zh: { from: /^我们如何一步步打造您在(.+?)的展台$/, to: (c) => `在${c}打造成功展台的关键，一步步来` },
+    hi: { from: /^हम (.+?) में आपके स्टैंड पर कैसे काम करते हैं,?\s*चरण दर चरण$/, to: (c) => `${c} में सफल स्टैंड बनाने की कुंजी, चरण दर चरण` },
+    ko: { from: /^(.+?)의 부스 작업 방식,?\s*단계별로$/, to: (c) => `${c}에서 성공적인 부스를 만드는 핵심 비결, 단계별 가이드` },
+    ja: { from: /^(.+?)のスタンド制作の進め方、ステップごとに$/, to: (c) => `${c}で成功する展示会ブースを実現する鍵（ステップバイステップ）` }
   };
   function rewriteComoHeading(section, lang) {
     const map = comoTitulo[lang] || comoTitulo.es;
