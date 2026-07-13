@@ -496,6 +496,8 @@
   // Para japonés (sin rich-ja todavía) usamos null en vez de caer al español:
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
+  // Cuerpo reestructurado para ciudades Oro (reordena "Ferias y sectores" + colapsables).
+  $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body) : seoContent.body) : '';
   // Hero con fondo animado (fotos en movimiento) en la home Y en las páginas matriz de ciudad.
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
@@ -580,14 +582,41 @@
   // content-visibility, algo que no se puede contrarrestar solo con CSS en la lista hija).
   // El markup lleva `open` por defecto (visible sin JS y para los crawlers); esta acción
   // lo colapsa en móvil al montar y lo reabre al cruzar el breakpoint hacia escritorio.
-  function chipCollapse(node) {
-    const mq = window.matchMedia('(max-width: 768px)');
-    const apply = () => { node.open = !mq.matches; };
-    apply();
-    mq.addEventListener('change', apply);
-    return { destroy() { mq.removeEventListener('change', apply); } };
+  // Reestructura el cuerpo (HTML) de las páginas de ciudad Oro: sube la sección
+  // "Ferias y sectores" al 2.º puesto y colapsa "Cómo trabajamos… paso a paso" y
+  // "Tipos de stand…". Identifica las secciones por FIRMA de contenido (no por texto,
+  // para que funcione en los 11 idiomas): la de <ol> es "Cómo trabajamos", la de <ul>
+  // es "Tipos de stand", y la que enlaza a la vez /ferias/ y /actividad/ es "Ferias y
+  // sectores". Corre en prerender (string puro), así el <details> queda en el HTML
+  // estático (colapsado pero rastreable por Google).
+  function collapseSection(section) {
+    const m = section.match(/^(\s*)<h2>([\s\S]*?)<\/h2>([\s\S]*)$/);
+    if (!m) return section;
+    const [, lead, heading, rest] = m;
+    return `${lead}<details class="oro-collapse"><summary class="oro-collapse-sum"><h2 class="oro-collapse-h">${heading}</h2><span class="oro-collapse-chevron" aria-hidden="true"></span></summary><div class="oro-collapse-body">${rest}</div></details>`;
   }
-  const FAIRS_COLLAPSE_THRESHOLD = 8;
+  function transformOroBody(html) {
+    if (!html || !html.includes('<h2>')) return html;
+    const parts = html.split(/(?=<h2>)/);
+    let prefix = '';
+    let sections = parts;
+    if (!/^\s*<h2>/.test(parts[0])) { prefix = parts[0]; sections = parts.slice(1); }
+    if (sections.length < 4) return html;
+    const feriasCount = (s) => (s.match(/\/ferias\//g) || []).length;
+    const actCount = (s) => (s.match(/\/actividad\//g) || []).length;
+    let iComo = -1, iTipos = -1, iFerias = -1;
+    sections.forEach((s, i) => {
+      if (iComo < 0 && /<ol[ >]/.test(s)) iComo = i;
+      if (iTipos < 0 && /<ul[ >]/.test(s)) iTipos = i;
+      if (iFerias < 0 && feriasCount(s) > 0 && actCount(s) > 0) iFerias = i;
+    });
+    const wrapped = sections.map((s, i) => (i === iComo || i === iTipos) ? collapseSection(s) : s);
+    const out = [wrapped[0]];
+    if (iFerias > 0) out.push(sections[iFerias]); // "Ferias y sectores" sube al 2.º puesto (sin colapsar)
+    for (let i = 1; i < wrapped.length; i++) { if (i === iFerias) continue; out.push(wrapped[i]); }
+    return prefix + out.join('');
+  }
+  const FAIRS_COLLAPSE_THRESHOLD = 0;
   const fairsCloudOpenCta = {
     es: (n) => `Ver las ${n} ferias`,
     en: (n) => `See all ${n} fairs`,
@@ -606,7 +635,7 @@
     it: 'Nascondi', ko: '접기', zh: '收起', hi: 'छिपाएँ', ja: '閉じる', nl: 'Verbergen'
   };
   // Mismo patrón para el navegador de actividades (chips de color) del sidebar.
-  const ACTIVITIES_COLLAPSE_THRESHOLD = 6;
+  const ACTIVITIES_COLLAPSE_THRESHOLD = 0;
   const activitiesCloudOpenCta = {
     es: (n) => `Ver ${n} actividades`,
     en: (n) => `See ${n} activities`,
@@ -1971,7 +2000,7 @@
                 </ol>
               </nav>
             {/if}
-            {@html seoContent.body}
+            {@html bodyHtml}
           </article>
           
           <!-- Sidebar con casos de éxito reales -->
@@ -1985,16 +2014,23 @@
                 </section>
               {/if}
               <div class="city-nav-module">
-                <h3>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</h3>
-                <ul class="city-fairs-list">
-                  {#each sortedCityNavKeys as ck}
-                    <li>
-                      <a href={pathFor(lang, ck)} class:active={ck === section}>
-                        {cityNavLabel(ck, lang)}
-                      </a>
-                    </li>
-                  {/each}
-                </ul>
+                <details class="fairs-collapse">
+                  <summary class="fairs-collapse-summary">
+                    <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
+                    <span class="fairs-collapse-open">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es} ({sortedCityNavKeys.length})</span>
+                    <span class="fairs-collapse-close">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</span>
+                    <span class="fairs-collapse-chevron" aria-hidden="true"></span>
+                  </summary>
+                  <ul class="city-fairs-list">
+                    {#each sortedCityNavKeys as ck}
+                      <li>
+                        <a href={pathFor(lang, ck)} class:active={ck === section}>
+                          {cityNavLabel(ck, lang)}
+                        </a>
+                      </li>
+                    {/each}
+                  </ul>
+                </details>
                 <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
               </div>
 
@@ -2021,7 +2057,7 @@
                   {#if regionFairs.length > FAIRS_COLLAPSE_THRESHOLD}
                     <!-- Nube numerosa: se condensa en móvil (pila de botones) y se
                          despliega al tocar. En escritorio el CSS la fuerza abierta. -->
-                    <details class="fairs-collapse" open use:chipCollapse>
+                    <details class="fairs-collapse">
                       <summary class="fairs-collapse-summary">
                         <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
                         <span class="fairs-collapse-open">{(fairsCloudOpenCta[lang] || fairsCloudOpenCta.es)(regionFairs.length)}</span>
@@ -2049,7 +2085,7 @@
                 <section class="activity-module sidebar-module" aria-label={ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}>
                   <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h2>
                   {#if regionActivities.length > ACTIVITIES_COLLAPSE_THRESHOLD}
-                    <details class="fairs-collapse" open use:chipCollapse>
+                    <details class="fairs-collapse">
                       <summary class="fairs-collapse-summary">
                         <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
                         <span class="fairs-collapse-open">{(activitiesCloudOpenCta[lang] || activitiesCloudOpenCta.es)(regionActivities.length)}</span>

@@ -3520,17 +3520,46 @@ p b {
 .fairs-collapse > .activity-chips {
   margin-top: 12px;
 }
-@media (min-width: 769px) {
-  /* Escritorio: sin disparador, la lista siempre visible (hay espacio de sobra). */
-  .fairs-collapse > summary {
-    display: none !important;
-  }
-  .fairs-collapse > .city-fairs-list,
-  .fairs-collapse > .activity-chips {
-    display: flex !important;
-    margin-top: 0;
-  }
+/* Paneles colapsables dentro del cuerpo de las páginas de ciudad Oro
+   ("Cómo trabajamos…" y "Tipos de stand…"): cerrados por defecto. El <h2> va
+   dentro del <summary> para conservar la jerarquía de encabezados (SEO). */
+.oro-collapse {
+  margin: 1.6rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: rgba(212, 175, 55, 0.035);
+  overflow: hidden;
 }
+.oro-collapse > summary.oro-collapse-sum {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 0.8rem 1.1rem;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease;
+}
+.oro-collapse > summary::-webkit-details-marker { display: none; }
+.oro-collapse > summary:hover { background: rgba(212, 175, 55, 0.09); }
+.oro-collapse .oro-collapse-h {
+  margin: 0;
+  font-size: 1.18rem;
+  line-height: 1.3;
+}
+.oro-collapse-chevron {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #7a7f76;
+  border-bottom: 2px solid #7a7f76;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.oro-collapse[open] .oro-collapse-chevron { transform: rotate(-135deg); }
+.oro-collapse-body { padding: 0 1.1rem 1rem; }
+.oro-collapse-body > :first-child { margin-top: 0; }
 
 
 
