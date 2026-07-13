@@ -580,19 +580,24 @@
   // La ofuscación es SOLO para móvil: en escritorio el <details> debe estar abierto de
   // verdad (Chrome moderno oculta el contenido de un <details> cerrado con
   // content-visibility, algo que no se puede contrarrestar solo con CSS en la lista hija).
-  // El markup lleva `open` por defecto (visible sin JS y para los crawlers); esta acción
-  // lo colapsa en móvil al montar y lo reabre al cruzar el breakpoint hacia escritorio.
-  // Reestructura el cuerpo (HTML) de las páginas de ciudad Oro: sube la sección
-  // "Ferias y sectores" al 2.º puesto y colapsa "Cómo trabajamos… paso a paso" y
-  // "Tipos de stand…". Identifica las secciones por FIRMA de contenido (no por texto,
-  // para que funcione en los 11 idiomas): la de <ol> es "Cómo trabajamos", la de <ul>
-  // es "Tipos de stand", y la que enlaza a la vez /ferias/ y /actividad/ es "Ferias y
-  // sectores". Corre en prerender (string puro), así el <details> queda en el HTML
-  // estático (colapsado pero rastreable por Google).
-  function collapseSection(section) {
+  // Reestructura el cuerpo (HTML) de las páginas de ciudad Oro. Corre en prerender
+  // (string puro), así los <details> quedan en el HTML estático: colapsados pero
+  // rastreables por Google (el <h2> se conserva dentro del <summary>). Las secciones
+  // se identifican por FIRMA (no por texto → i18n-safe): <ol>="Cómo trabajamos";
+  // <ul>="Tipos de stand"; enlace a /ferias/ (o 展示会情報) + /actividad/="Ferias y
+  // sectores"; #pat="Pat"; #prototipos-3d="Por qué elegir" (última). Documentación,
+  // Garantía y Logística se derivan por posición (maquetación uniforme) con guardas.
+  // Operaciones: subir "Ferias y sectores" al 2.º puesto; colapsar "Cómo trabajamos",
+  // "Tipos de stand" y "Documentación técnica"; integrar "Logística" como párrafo
+  // final de "Documentación"; eliminar "Pat" (reiterativo); mover "Garantía" como
+  // primer párrafo de "Por qué elegir".
+  function heading2Parts(section) {
     const m = section.match(/^(\s*)<h2>([\s\S]*?)<\/h2>([\s\S]*)$/);
-    if (!m) return section;
-    const [, lead, heading, rest] = m;
+    return m ? { lead: m[1], heading: m[2], rest: m[3] } : { lead: '', heading: '', rest: section };
+  }
+  function collapseSection(section) {
+    const { lead, heading, rest } = heading2Parts(section);
+    if (!heading) return section;
     return `${lead}<details class="oro-collapse"><summary class="oro-collapse-sum"><h2 class="oro-collapse-h">${heading}</h2><span class="oro-collapse-chevron" aria-hidden="true"></span></summary><div class="oro-collapse-body">${rest}</div></details>`;
   }
   function transformOroBody(html) {
@@ -601,19 +606,47 @@
     let prefix = '';
     let sections = parts;
     if (!/^\s*<h2>/.test(parts[0])) { prefix = parts[0]; sections = parts.slice(1); }
-    if (sections.length < 4) return html;
-    const feriasCount = (s) => (s.match(/\/ferias\//g) || []).length;
-    const actCount = (s) => (s.match(/\/actividad\//g) || []).length;
-    let iComo = -1, iTipos = -1, iFerias = -1;
+    const n = sections.length;
+    if (n < 5) return html;
+    let iComo = -1, iTipos = -1, iFerias = -1, iPat = -1, iPorQue = -1;
     sections.forEach((s, i) => {
       if (iComo < 0 && /<ol[ >]/.test(s)) iComo = i;
       if (iTipos < 0 && /<ul[ >]/.test(s)) iTipos = i;
-      if (iFerias < 0 && feriasCount(s) > 0 && actCount(s) > 0) iFerias = i;
+      if (iFerias < 0 && /\/(ferias|展示会情報)\//.test(s) && /\/actividad\//.test(s)) iFerias = i;
+      if (iPat < 0 && /#pat/.test(s)) iPat = i;
+      if (/#prototipos-3d/.test(s)) iPorQue = i; // el último con el enlace a los prototipos
     });
-    const wrapped = sections.map((s, i) => (i === iComo || i === iTipos) ? collapseSection(s) : s);
-    const out = [wrapped[0]];
-    if (iFerias > 0) out.push(sections[iFerias]); // "Ferias y sectores" sube al 2.º puesto (sin colapsar)
-    for (let i = 1; i < wrapped.length; i++) { if (i === iFerias) continue; out.push(wrapped[i]); }
+    const iDoc = iFerias > 0 ? iFerias - 1 : -1;
+    const iGar = iPorQue > 1 ? iPorQue - 2 : -1;
+    const iLog = iPorQue > 0 ? iPorQue - 1 : -1;
+    // Merge de Garantía/Logística y borrado de Pat solo si la maquetación estándar
+    // encaja (Garantía justo tras Pat, Logística tras Garantía). Si no, se degrada:
+    // solo reordena "Ferias" y colapsa "Cómo trabajamos"/"Tipos"/"Documentación".
+    const canMerge = iPat >= 0 && iGar === iPat + 1 && iLog === iPat + 2 && iDoc >= 0 && iDoc !== iComo && iDoc !== iTipos;
+    const P = sections.map(heading2Parts);
+
+    let docSection;
+    if (iDoc >= 0) {
+      const merged = canMerge ? `${P[iDoc].lead}<h2>${P[iDoc].heading}</h2>${P[iDoc].rest}${P[iLog].rest}` : sections[iDoc];
+      docSection = collapseSection(merged);
+    }
+    let porqueSection = iPorQue >= 0 ? sections[iPorQue] : null;
+    if (canMerge && iPorQue >= 0) {
+      porqueSection = `${P[iPorQue].lead}<h2>${P[iPorQue].heading}</h2>${P[iGar].rest}${P[iPorQue].rest}`;
+    }
+
+    const skip = new Set();
+    if (iPat >= 0) skip.add(iPat);
+    if (canMerge) { skip.add(iGar); skip.add(iLog); }
+    const render = (i) => {
+      if (i === iDoc && docSection !== undefined) return docSection;
+      if (i === iPorQue && porqueSection !== null) return porqueSection;
+      if (i === iComo || i === iTipos) return collapseSection(sections[i]);
+      return sections[i];
+    };
+    const out = [render(0)];
+    if (iFerias > 0 && !skip.has(iFerias)) out.push(render(iFerias)); // "Ferias y sectores" → 2.º
+    for (let i = 1; i < n; i++) { if (i === iFerias || skip.has(i)) continue; out.push(render(i)); }
     return prefix + out.join('');
   }
   const FAIRS_COLLAPSE_THRESHOLD = 0;
