@@ -810,7 +810,7 @@
     ko: () => `이 행사를 훨씬 폭넓은 캠페인에 통합하여 시너지로 비용을 절감하세요.`,
     ja: () => `このイベントをより広範なキャンペーンに組み込み、シナジーによるコスト削減を実現しましょう。`
   };
-  const coveragePatCta = { es: 'Habla con Pat', en: 'Talk to Pat', pt: 'Fale com o Pat', de: 'Mit Pat sprechen', fr: 'Parler avec Pat', it: 'Parlare con Pat', nl: 'Met Pat praten', zh: '与 Pat 交谈', hi: 'Pat से बात करें', ko: 'Pat와 대화하기', ja: 'Patと話す' };
+  const coveragePatCta = { es: 'Más información', en: 'More information', pt: 'Mais informação', de: 'Mehr erfahren', fr: 'Plus d\'informations', it: 'Maggiori informazioni', nl: 'Meer informatie', zh: '了解更多', hi: 'अधिक जानकारी', ko: '자세히 보기', ja: '詳しく見る' };
   $: cityDisplayName = (section && cityData[section]) ? (cityData[section].city?.[lang] || cityData[section].city?.es || '') : '';
   // Nombre canónico (ES) de la ciudad de la página: coincide con el campo `city`
   // de fairsData, que es como PatMesh identifica sus nodos. Con esto el mapa de Pat
