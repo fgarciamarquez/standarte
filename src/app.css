@@ -3581,6 +3581,23 @@ p b {
 .oro-cta-espacio:hover { filter: brightness(1.05); box-shadow: 0 6px 18px rgba(212, 175, 55, 0.36); }
 .oro-cta-espacio:active { transform: scale(0.98); }
 
+/* Imagen del primer caso de éxito en el cuerpo (todo el ancho de la columna). */
+.oro-case-figure { margin: 1.7rem 0; }
+.oro-case-figure a { display: block; }
+.oro-case-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+.oro-case-figure figcaption {
+  margin-top: 0.55rem;
+  font-size: 13px;
+  font-style: italic;
+  color: #7a7f76;
+  text-align: center;
+}
+
 
 
 

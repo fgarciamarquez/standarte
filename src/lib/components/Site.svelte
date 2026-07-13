@@ -514,11 +514,10 @@
     : null;
   // Proyectos del pilar: para regiones con perfil sectorial marcado mostramos obra real afín
   // (no se afirma que sean de esa ciudad; el intro es genérico "muestra de nuestro trabajo").
-  $: selectedPortfolios = (FEATURED_BY_REGION[SECTION_REGION[section]] || [])
-    .map((k) => portfolios.find((p) => p.alt && p.alt.includes(k)))
-    .filter(Boolean)
-    .concat(portfolios.slice(0, 3))
-    .slice(0, 3);
+  // Casos de éxito: SIEMPRE de las 12 primeras imágenes de la galería de la home.
+  // La 1.ª se muestra grande en el cuerpo; el sidebar ("Otros casos de éxito") toma
+  // las siguientes.
+  $: selectedPortfolios = portfolios.slice(1, 4);
 
   // --- Clúster pilar→ferias: en cada página de ciudad, enlazar a las ferias de su región ---
   const SECTION_REGION = {
@@ -607,6 +606,27 @@
     hi: 'इस स्थल के लिए स्टैंड कोटेशन का अनुरोध करें',
     ko: '이 장소의 부스 견적 요청하기',
     ja: 'この会場のブース見積もりを依頼する'
+  };
+  // Título del panel de casos de éxito del sidebar (el primer caso pasa al cuerpo).
+  const otrosCasosTitle = {
+    es: 'Otros casos de éxito', en: 'Other success stories', de: 'Weitere Erfolgsgeschichten',
+    pt: 'Outros casos de sucesso', fr: 'Autres réussites', it: 'Altri casi di successo',
+    nl: 'Andere succesverhalen', zh: '其他成功案例', hi: 'अन्य सफलता की कहानियाँ',
+    ko: '다른 성공 사례', ja: 'その他の導入事例'
+  };
+  // Pie de la imagen del primer caso de éxito insertada en el cuerpo.
+  const casoEjemploCaption = {
+    es: 'Ejemplo de trabajo realizado por nuestro equipo',
+    en: 'Example of work carried out by our team',
+    de: 'Beispiel für die Arbeit unseres Teams',
+    pt: 'Exemplo de trabalho realizado pela nossa equipa',
+    fr: 'Exemple de travail réalisé par notre équipe',
+    it: 'Esempio di lavoro realizzato dal nostro team',
+    nl: 'Voorbeeld van werk uitgevoerd door ons team',
+    zh: '我们团队完成的作品示例',
+    hi: 'हमारी टीम द्वारा किए गए कार्य का उदाहरण',
+    ko: '저희 팀이 진행한 작업 예시',
+    ja: '当社チームが手がけた施工例'
   };
   // Reescritura SEO del título de "Cómo trabajamos…" → "Cómo lograr tener un stand
   // de éxito en {ciudad} paso a paso". Cada idioma captura la ciudad del título
@@ -723,6 +743,10 @@
     if (iPat >= 0) skip.add(iPat);
     if (canMerge) { skip.add(iGar); skip.add(iLog); }
     if (canCob) skip.add(iCob);
+    // Imagen del primer caso de éxito (primera de las 12 de la galería) que se inserta
+    // tras el apartado "Claves para lograr…", a todo el ancho de la columna.
+    const caso = portfolios[0];
+    const caseFigure = caso ? `<figure class="oro-case-figure"><a href="/galeria/${caso.slugs.es}"><img src="/${caso.thumb.replace(/\.avif$/, '-md.avif')}" srcset="/${caso.thumb.replace(/\.avif$/, '-sb.avif')} 300w, /${caso.thumb.replace(/\.avif$/, '-md.avif')} 800w" sizes="(max-width: 900px) 92vw, 640px" width="800" height="450" alt="${getProjectTitle(caso)}" loading="lazy" decoding="async" /></a><figcaption>${casoEjemploCaption[lang] || casoEjemploCaption.es}</figcaption></figure>` : '';
     const render = (i) => {
       if (i === iDoc && docSection !== undefined) return docSection;
       if (i === iPorQue && porqueSection !== null) return collapseSection(porqueSection);
@@ -732,7 +756,11 @@
     };
     const out = [render(0)];
     if (iFerias > 0 && !skip.has(iFerias)) out.push(render(iFerias)); // "Ferias y sectores" → 2.º
-    for (let i = 1; i < n; i++) { if (i === iFerias || skip.has(i)) continue; out.push(render(i)); }
+    for (let i = 1; i < n; i++) {
+      if (i === iFerias || skip.has(i)) continue;
+      out.push(render(i));
+      if (i === iComo && caseFigure) out.push(caseFigure); // imagen tras "Claves para lograr…"
+    }
     return prefix + out.join('');
   }
   const FAIRS_COLLAPSE_THRESHOLD = 0;
@@ -2154,7 +2182,7 @@
               </div>
 
               <div class="spotlight-card">
-                <h3>{copy.successStoriesTitle}</h3>
+                <h3>{otrosCasosTitle[lang] || otrosCasosTitle.es}</h3>
 
                 <div class="sidebar-projects">
                   {#each selectedPortfolios as project}
