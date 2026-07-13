@@ -605,7 +605,7 @@
   // CTA amarillo (píldora) que se inyecta tras el primer párrafo del cuerpo Oro y
   // lleva al formulario de presupuesto del pie (#contact).
   const ctaEspacio = {
-    es: 'Solicitar presupuesto de stand para este espacio',
+    es: 'Solicitar presupuesto',
     en: 'Request a stand quote for this venue',
     de: 'Standangebot für diesen Veranstaltungsort anfordern',
     pt: 'Pedir orçamento de stand para este espaço',
