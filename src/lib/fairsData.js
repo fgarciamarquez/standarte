@@ -2084,5 +2084,40 @@ export const fairsData = [
     "slug": "feria-turismo-reyno-navarra-pamplona",
     "city": "Pamplona",
     "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Ardoaraba",
+    "country": "es",
+    "slug": "ardoaraba-vitoria",
+    "city": "Vitoria",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "AVANZA – Feria de FP de Álava",
+    "country": "es",
+    "slug": "avanza-fp-alava-vitoria",
+    "city": "Vitoria",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Empleo Gune",
+    "country": "es",
+    "slug": "empleo-gune-vitoria",
+    "city": "Vitoria",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feria de Stocks",
+    "country": "es",
+    "slug": "feria-stocks-vitoria",
+    "city": "Vitoria",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Lanberri",
+    "country": "es",
+    "slug": "lanberri-vitoria",
+    "city": "Vitoria",
+    "sector": "Arte y Ocio"
   }
 ];

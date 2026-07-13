@@ -361,7 +361,12 @@ export const fairActivities = {
   "navarra-jobs-pamplona": ["congreso-profesional"],
   "feria-navarra-ecologica-pamplona": ["ecologico","alimentacion"],
   "navarra-wine-gastronomy-pamplona": ["vino","gastronomia-hosteleria"],
-  "feria-turismo-reyno-navarra-pamplona": ["turismo"]
+  "feria-turismo-reyno-navarra-pamplona": ["turismo"],
+  "ardoaraba-vitoria": ["vino","gastronomia-hosteleria"],
+  "avanza-fp-alava-vitoria": ["congreso-profesional","multisectorial"],
+  "empleo-gune-vitoria": ["congreso-profesional"],
+  "feria-stocks-vitoria": ["moda-textil","regalo-decoracion"],
+  "lanberri-vitoria": ["cultura-arte"]
 };
 
 // Helpers

@@ -47,6 +47,50 @@
   };
   $: pWord = participationsWord[lang] || participationsWord.en;
 
+  // ── Contador flotante tipo marcador ──
+  // Ventana flotante que muestra SOLO el número de ferias que se están visionando
+  // en el mapa en cada momento, con la palabra "Eventos" debajo en pequeño. Se
+  // alimenta desde el render imperativo (pushCount): total de ferias en estado
+  // neutro, ferias del sector al pasar el ratón por un botón (previewTags) o al
+  // seleccionarlo, y ferias de la ciudad al hacer :hover sobre su punto. El número
+  // rueda animado (tween) como un marcador deportivo.
+  const eventsWord = {
+    es: 'Eventos', en: 'Events', pt: 'Eventos', de: 'Events', fr: 'Événements',
+    it: 'Eventi', nl: 'Evenementen', zh: '展会', hi: 'आयोजन', ko: '이벤트', ja: 'イベント'
+  };
+  $: evWord = eventsWord[lang] || eventsWord.en;
+  let counterShown = 0;   // número pintado (reactivo) — rueda con la animación
+  let counterLast = -1;   // último objetivo recibido (evita re-animar sin cambio)
+  let counterPulse = 0;   // se incrementa en cada cambio → replay del pulso vía {#key}
+  let counterRaf = 0;
+  let counterFrom = 0, counterTo = 0, counterStart = 0;
+  const COUNTER_DUR = 650;
+  // Paso de animación del marcador (nivel superior: la asignación a counterShown queda
+  // instrumentada por Svelte con certeza). Rueda el número con easing cubicOut.
+  function counterStep(now) {
+    const p = Math.min(1, (now - counterStart) / COUNTER_DUR);
+    const e = 1 - Math.pow(1 - p, 3);
+    counterShown = Math.round(counterFrom + (counterTo - counterFrom) * e);
+    if (p < 1) counterRaf = requestAnimationFrame(counterStep);
+  }
+  // Llamado desde buildMesh (closure): fija el nuevo objetivo del marcador y lo rueda
+  // desde el valor actual como un marcador deportivo. Salta directo al valor final si
+  // la pestaña está oculta (rAF congelado) o el usuario pidió reduced-motion.
+  function pushCount(n) {
+    if (n === counterLast) return;
+    counterLast = n;
+    counterPulse++;
+    const noAnim = typeof window === 'undefined'
+      || (typeof document !== 'undefined' && document.hidden)
+      || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (noAnim) { counterShown = n; return; }
+    counterFrom = counterShown;
+    counterTo = n;
+    counterStart = performance.now();
+    cancelAnimationFrame(counterRaf);
+    counterRaf = requestAnimationFrame(counterStep);
+  }
+
   // Ventana conversacional (voz de Pat): cuenta al cliente qué está viendo. Dos
   // variantes por idioma —'family' (elige un sector completo) y 'sub' (afina en
   // actividades)— con el número {N} y singular/plural. El {N} se resalta en render.
@@ -451,6 +495,9 @@
     function render(activeArg, isPreview) {
       const active = new Set(activeArg || currentActive);
       const any = active.size > 0;
+      // Marcador flotante: nº de ferias visibles ahora mismo. Con selección/preview,
+      // las ferias distintas del conjunto activo; en estado neutro, el total del mapa.
+      pushCount(any ? countFairs(active) : allFairs.length);
       edges.forEach((p) => { p.style.opacity = any ? (active.has(p._tag) ? 0.8 : 0.03) : ''; });
       spokes.forEach((p) => { p.style.opacity = any ? (active.has(p._tag) ? 0.75 : 0.06) : ''; });
       tagKeys.forEach((t) => {
@@ -515,6 +562,7 @@
     // ── Hover de ciudad: desglose en tooltip + resaltado temporal ──
     function highlightCity(city, evt) {
       calloutEl.classList.remove('visible'); // la isla es de selección, no de hover
+      pushCount(city.fairs.length); // marcador: ferias distintas de esta ciudad
       edges.forEach((p) => { p.style.opacity = p._city === city ? 0.9 : 0.03; });
       spokes.forEach((p) => { p.style.opacity = city.tags[p._tag] ? 0.7 : 0.06; });
       tagKeys.forEach((t) => {
@@ -818,7 +866,7 @@
     const built = buildMesh();
     built.update(activeTags, lang, pWord, selMode, showContinue);
     api = built;
-    return built.destroy;
+    return () => { cancelAnimationFrame(counterRaf); built.destroy(); };
   });
 </script>
 
@@ -832,6 +880,14 @@
     aria-label="Standarte network map: cities, activities and sectors in Spain and Portugal"
   ></svg>
   <div class="pm-tooltip" bind:this={tooltipEl}></div>
+  <!-- Marcador flotante: nº de ferias que se están visionando ahora en el mapa.
+       Grande arriba, "Eventos" pequeño debajo; rueda animado como un marcador. -->
+  <div class="pm-counter" aria-hidden="true">
+    {#key counterPulse}
+      <span class="pm-counter-num">{counterShown}</span>
+    {/key}
+    <span class="pm-counter-label">{evWord}</span>
+  </div>
   <!-- Ventana conversacional de Pat: cuenta al cliente qué está viendo. -->
   <div class="pm-events-callout" bind:this={calloutEl} aria-live="polite"></div>
   <!-- Lupa: activa una lente circular que amplía el mapa bajo el puntero. -->
@@ -856,6 +912,63 @@
      los neutros (costa, retícula, textos) se adaptan al fondo claro. */
   .pm-wrap {
     position: relative;
+  }
+
+  /* ── Marcador flotante de eventos visibles ── */
+  /* Ventana flotante (esquina superior izquierda) que muestra SOLO el número de
+     ferias visibles en el mapa y la palabra "Eventos" debajo. No captura el puntero
+     para no bloquear el hover del mapa. */
+  .pm-counter {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 94px;
+    height: 94px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #d6d7d0;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    pointer-events: none;
+    user-select: none;
+  }
+  .pm-counter-num {
+    font-family: 'Inconsolata', ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1;
+    color: #333;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+    /* Se remonta con {#key counterPulse} en cada cambio de objetivo → replay del pop. */
+    animation: pm-counter-pop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .pm-counter-label {
+    margin-top: 2px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #7a7f76;
+  }
+  @keyframes pm-counter-pop {
+    0% { transform: translateY(-3px) scale(1.22); opacity: 0.4; }
+    55% { transform: translateY(0) scale(0.96); }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pm-counter-num { animation: none; }
+  }
+  @media (max-width: 560px) {
+    .pm-counter { width: 74px; height: 74px; }
+    .pm-counter-num { font-size: 29px; }
+    .pm-counter-label { font-size: 9px; letter-spacing: 0.1em; }
   }
 
   /* ── Lupa ── */
