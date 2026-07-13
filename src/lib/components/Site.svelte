@@ -497,7 +497,7 @@
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
   // Cuerpo reestructurado para ciudades Oro (reordena "Ferias y sectores" + colapsables).
-  $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang) : seoContent.body) : '';
+  $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang, bodyCase) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
   $: h1Text = seoContent ? ((section in cityData) ? rewriteTitulo(seoContent.h1, lang) : seoContent.h1) : '';
   // Hero con fondo animado (fotos en movimiento) en la home Y en las páginas matriz de ciudad.
@@ -515,9 +515,19 @@
   // Proyectos del pilar: para regiones con perfil sectorial marcado mostramos obra real afín
   // (no se afirma que sean de esa ciudad; el intro es genérico "muestra de nuestro trabajo").
   // Casos de éxito: SIEMPRE de las 12 primeras imágenes de la galería de la home.
-  // La 1.ª se muestra grande en el cuerpo; el sidebar ("Otros casos de éxito") toma
-  // las siguientes.
-  $: selectedPortfolios = portfolios.slice(1, 4);
+  // Para que la foto del cuerpo NO sea siempre la misma en todas las ciudades, se elige
+  // de forma determinista según la sección (misma ciudad → misma foto estable, sin depender
+  // de Math.random para no romper el prerender). El sidebar ("Otros casos de éxito") toma
+  // otras 3 de las 12, excluyendo la del cuerpo.
+  function hashStr(s) {
+    let h = 0;
+    for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+    return Math.abs(h);
+  }
+  $: casePool = portfolios.slice(0, 12);
+  $: caseIndex = casePool.length ? hashStr(section) % casePool.length : 0;
+  $: bodyCase = casePool[caseIndex] || null;
+  $: selectedPortfolios = casePool.filter((_, i) => i !== caseIndex).slice(0, 3);
 
   // --- Clúster pilar→ferias: en cada página de ciudad, enlazar a las ferias de su región ---
   const SECTION_REGION = {
@@ -687,7 +697,7 @@
     if (!heading) return section;
     return `${lead}<details class="oro-collapse"><summary class="oro-collapse-sum"><h2 class="oro-collapse-h">${heading}</h2><span class="oro-collapse-chevron" aria-hidden="true"></span></summary><div class="oro-collapse-body">${rest}</div></details>`;
   }
-  function transformOroBody(html, lang) {
+  function transformOroBody(html, lang, bodyCase) {
     if (!html || !html.includes('<h2>')) return html;
     // Reescribir el título del primer apartado (h2) igual que el h1.
     const tmap = tituloPrincipal[lang] || tituloPrincipal.es;
@@ -745,7 +755,7 @@
     if (canCob) skip.add(iCob);
     // Imagen del primer caso de éxito (primera de las 12 de la galería) que se inserta
     // tras el apartado "Claves para lograr…", a todo el ancho de la columna.
-    const caso = portfolios[0];
+    const caso = bodyCase || portfolios[0];
     const caseFigure = caso ? `<figure class="oro-case-figure"><a href="/galeria/${caso.slugs.es}"><img src="/${caso.thumb.replace(/\.avif$/, '-md.avif')}" srcset="/${caso.thumb.replace(/\.avif$/, '-sb.avif')} 300w, /${caso.thumb.replace(/\.avif$/, '-md.avif')} 800w" sizes="(max-width: 900px) 92vw, 640px" width="800" height="450" alt="${getProjectTitle(caso)}" loading="lazy" decoding="async" /></a><figcaption>${casoEjemploCaption[lang] || casoEjemploCaption.es}</figcaption></figure>` : '';
     const render = (i) => {
       if (i === iDoc && docSection !== undefined) return docSection;

@@ -3563,7 +3563,9 @@ p b {
 
 /* CTA amarillo (píldora) tras el primer párrafo → formulario de presupuesto (#contact). */
 .oro-cta-espacio {
-  display: inline-flex;
+  display: flex;             /* block-level (los <h2> del cuerpo son inline-block): así el CTA ocupa su propia línea */
+  width: fit-content;
+  max-width: 100%;
   align-items: center;
   margin: 0.2rem 0 1.6rem;
   padding: 0.75rem 1.6rem;
