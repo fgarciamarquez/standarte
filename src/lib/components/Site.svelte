@@ -606,16 +606,16 @@
   // lleva al formulario de presupuesto del pie (#contact).
   const ctaEspacio = {
     es: 'Solicitar presupuesto',
-    en: 'Request a stand quote for this venue',
-    de: 'Standangebot für diesen Veranstaltungsort anfordern',
-    pt: 'Pedir orçamento de stand para este espaço',
-    fr: 'Demander un devis de stand pour ce lieu',
-    it: 'Richiedi un preventivo per uno stand in questa sede',
-    nl: 'Vraag een standofferte aan voor deze locatie',
-    zh: '为此场馆申请展台报价',
-    hi: 'इस स्थल के लिए स्टैंड कोटेशन का अनुरोध करें',
-    ko: '이 장소의 부스 견적 요청하기',
-    ja: 'この会場のブース見積もりを依頼する'
+    en: 'Request a quote',
+    de: 'Angebot anfordern',
+    pt: 'Solicitar orçamento',
+    fr: 'Demander un devis',
+    it: 'Richiedi un preventivo',
+    nl: 'Offerte aanvragen',
+    zh: '索取报价',
+    hi: 'कोटेशन का अनुरोध करें',
+    ko: '견적 요청하기',
+    ja: '見積もりを依頼する'
   };
   // Título del panel de casos de éxito del sidebar (el primer caso pasa al cuerpo).
   const otrosCasosTitle = {
@@ -845,9 +845,9 @@
     ko: '모든 분야 보기', ja: 'すべての分野を見る'
   };
   const CITY_NAV_LABELS = {
-    es: 'Ciudades', en: 'Cities', de: 'Städte',
-    fr: 'Villes', it: 'Città', pt: 'Cidades',
-    zh: '城市', hi: 'शहर', ko: '도시', ja: '都市', nl: 'Steden'
+    es: 'Ciudades a las que vamos', en: 'Cities we travel to', de: 'Städte, in die wir kommen',
+    fr: 'Villes où nous allons', it: 'Città in cui andiamo', pt: 'Cidades onde vamos',
+    zh: '我们前往的城市', hi: 'जिन शहरों में हम जाते हैं', ko: '저희가 가는 도시', ja: '当社が伺う都市', nl: 'Steden waar we naartoe gaan'
   };
   // Las FAQs se muestran en una rejilla de dos columnas: deben ser siempre pares.
   // Si la página trae un número impar, añadimos esta pregunta genérica (válida para

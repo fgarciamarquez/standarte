@@ -3559,8 +3559,15 @@ p b {
   transition: transform 0.2s ease;
 }
 .oro-collapse[open] .oro-collapse-chevron { transform: rotate(-135deg); }
-.oro-collapse-body { padding: 0 1.1rem 1rem; }
+.oro-collapse-body { padding: 0.65rem 1.1rem 1rem; }
 .oro-collapse-body > :first-child { margin-top: 0; }
+/* El contenido plegado usa SIEMPRE el mismo estilo (modelo: la lista de "Claves para
+   lograr…"): párrafos igualados a las listas del cuerpo (14,5 px / 1.7), no a los 16 px
+   de los párrafos sueltos, para que todos los apartados desplegados se lean igual. */
+.oro-collapse-body p {
+  font-size: 14.5px;
+  line-height: 1.7;
+}
 
 /* CTA amarillo (píldora) tras el primer párrafo → formulario de presupuesto (#contact). */
 .oro-cta-espacio {

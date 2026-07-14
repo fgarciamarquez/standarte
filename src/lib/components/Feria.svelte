@@ -32,9 +32,9 @@
     return cityData[ck]?.city?.[l] || cityData[ck]?.city?.es;
   }
   const CITY_NAV_LABELS = {
-    es: 'Ciudades', en: 'Cities', de: 'Städte',
-    fr: 'Villes', it: 'Città', pt: 'Cidades',
-    zh: '城市', hi: 'शहर', ko: '도시', ja: '都市', nl: 'Steden'
+    es: 'Ciudades a las que vamos', en: 'Cities we travel to', de: 'Städte, in die wir kommen',
+    fr: 'Villes où nous allons', it: 'Città in cui andiamo', pt: 'Cidades onde vamos',
+    zh: '我们前往的城市', hi: 'जिन शहरों में हम जाते हैं', ko: '저희가 가는 도시', ja: '当社が伺う都市', nl: 'Steden waar we naartoe gaan'
   };
   // Enlace cruzado a la página de precios (refuerza el clúster hacia la conversión).
   const preciosLink = {
@@ -322,17 +322,17 @@
     'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
   const clusterT = {
-    es: { related: 'Ferias en las que también montamos stands', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
-    en: { related: 'Fairs where we also build stands', pillar: (c) => `Exhibition stand design and assembly in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
-    de: { related: 'Messen, auf denen wir ebenfalls Stände bauen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
-    fr: { related: 'Salons où nous montons aussi des stands', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
-    pt: { related: 'Feiras onde também montamos stands', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
-    it: { related: 'Fiere in cui montiamo anche stand', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
-    ko: { related: '저희가 부스를 시공하는 다른 박람회', pillar: (c) => `${c} 부스 디자인 및 조립`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
-    zh: { related: '我们同样搭建展台的展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
-    hi: { related: 'जिन मेलों में हम भी स्टैंड बनाते हैं', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
-    ja: { related: '当社がブースを施工する他の展示会', pillar: (c) => `${c}での展示会ブース設計・組立`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
-    nl: { related: 'Beurzen waar wij ook stands bouwen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
+    es: { related: 'Ferias en las que construimos', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
+    en: { related: 'Fairs where we build', pillar: (c) => `Exhibition stand design and assembly in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
+    de: { related: 'Messen, auf denen wir bauen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
+    fr: { related: 'Salons où nous construisons', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
+    pt: { related: 'Feiras onde construímos', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
+    it: { related: 'Fiere in cui costruiamo', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
+    ko: { related: '저희가 시공하는 박람회', pillar: (c) => `${c} 부스 디자인 및 조립`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
+    zh: { related: '我们搭建的展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
+    hi: { related: 'जिन मेलों में हम निर्माण करते हैं', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
+    ja: { related: '当社が施工する展示会', pillar: (c) => `${c}での展示会ブース設計・組立`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
+    nl: { related: 'Beurzen waar wij bouwen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
   };
 
   // Recinto ferial por ciudad (solo nombres verificados; las ciudades sin entrada no muestran recinto).
@@ -391,7 +391,7 @@
       intro: (name, city, sector) => `Standarte ofrece servicios integrales de diseño y montaje de stands de alta carpintería para la feria ${name} en ${city}. Como evento destacado del sector de ${sector}, su marca requiere un espacio que transmita excelencia técnica e innovación.`,
       intro2: 'Nos encargamos del modelado 3D, la fabricación en nuestro propio taller y el montaje final, asegurando que su espacio destaque por encima de la competencia sin depender de terceros.',
       services: 'Servicios para expositores',
-      cta: 'Solicitar Presupuesto para esta feria',
+      cta: 'Solicitar presupuesto',
       back: 'Volver al inicio'
     },
     en: {
@@ -400,7 +400,7 @@
       intro: (name, city, sector) => `Standarte offers comprehensive high-quality stand design and assembly services for the ${name} fair in ${city}. As a key event in the ${sector} sector, your brand requires a space that conveys technical excellence and innovation.`,
       intro2: 'We take care of the 3D modeling, manufacturing in our own workshop, and the final assembly, ensuring that your space stands out from the competition without relying on third parties.',
       services: 'Services for exhibitors',
-      cta: 'Request a Quote for this fair',
+      cta: 'Request a quote',
       back: 'Back to home'
     },
     de: {
@@ -409,7 +409,7 @@
       intro: (name, city, sector) => `Standarte bietet umfassende Dienstleistungen im Bereich hochwertiges Messestand-Design und -Montage für die Messe ${name} in ${city}. Als wichtiges Ereignis im Bereich ${sector} erfordert Ihre Marke einen Raum, der technische Exzellenz und Innovation vermittelt.`,
       intro2: 'Wir kümmern uns um die 3D-Modellierung, die Fertigung in unserer eigenen Werkstatt und die Endmontage und stellen sicher, dass sich Ihr Raum von der Konkurrenz abhebt.',
       services: 'Dienstleistungen für Aussteller',
-      cta: 'Angebot für diese Messe anfordern',
+      cta: 'Angebot anfordern',
       back: 'Zurück zur Startseite'
     },
     fr: {
@@ -418,7 +418,7 @@
       intro: (name, city, sector) => `Standarte propose des services complets de conception et de montage de stands de haute qualité pour le salon ${name} à ${city}. En tant qu'événement clé du secteur de ${sector}, votre marque a besoin d'un espace qui transmet l'excellence.`,
       intro2: 'Nous prenons en charge la modélisation 3D, la fabrication dans notre propre atelier et le montage final, garantissant que votre espace se démarque de la concurrence.',
       services: 'Services pour les exposants',
-      cta: 'Demander un devis pour ce salon',
+      cta: 'Demander un devis',
       back: "Retour à l'accueil"
     },
     pt: {
@@ -427,7 +427,7 @@
       intro: (name, city, sector) => `A Standarte oferece serviços abrangentes de design e montagem de stands de alta qualidade para a feira ${name} em ${city}. Sendo um evento chave no setor de ${sector}, a sua presença requer excelência.`,
       intro2: 'Cuidamos da modelação 3D, fabricação na nossa própria oficina e montagem final, garantindo um resultado impecável.',
       services: 'Serviços para expositores',
-      cta: 'Solicitar Orçamento para esta feira',
+      cta: 'Solicitar orçamento',
       back: 'Voltar ao início'
     },
     it: {
@@ -463,7 +463,7 @@
       intro: (name, city, sector) => `Standarte ${city} में ${name} मेले के लिए उच्च गुणवत्ता वाले स्टैंड डिज़ाइन प्रदान करता है। ${sector} क्षेत्र में एक प्रमुख घटना के रूप में, आपके ब्रांड को उत्कृष्टता की आवश्यकता है।`,
       intro2: 'हम 3D मॉडलिंग, अपनी कार्यशाला में निर्माण और अंतिम असेंबली का ध्यान रखते हैं।',
       services: 'प्रदर्शकों के लिए सेवाएं',
-      cta: 'एक बोली का अनुरोध करें',
+      cta: 'कोटेशन का अनुरोध करें',
       back: 'होम पर वापस जाएं'
     },
     ja: {
@@ -472,7 +472,7 @@
       intro: (name, city, sector) => `Standarteは、${city}で開催される${name}に向けて、高品質な木工ブースの設計・施工をトータルでご提供します。${sector}分野を代表する見本市として、貴社のブランドには技術的な卓越性と革新性を伝える空間が求められます。`,
       intro2: '3Dモデリング、自社工房での製作、現地での最終設営まで一貫して担い、第三者に頼ることなく貴社のブースが競合より際立つことをお約束します。',
       services: '出展企業向けサービス',
-      cta: 'この見本市の見積もりを依頼する',
+      cta: '見積もりを依頼する',
       back: 'ホームに戻る'
     },
     nl: {
@@ -481,7 +481,7 @@
       intro: (name, city, sector) => `Standarte biedt complete diensten voor ontwerp en montage van hoogwaardige stands voor de beurs ${name} in ${city}. Als belangrijk evenement in de sector ${sector} vraagt uw merk om een ruimte die technische excellentie en innovatie uitstraalt.`,
       intro2: 'Wij verzorgen de 3D-modellering, de productie in onze eigen werkplaats en de eindmontage, zodat uw ruimte zich onderscheidt van de concurrentie zonder afhankelijk te zijn van derden.',
       services: 'Diensten voor exposanten',
-      cta: 'Offerte aanvragen voor deze beurs',
+      cta: 'Offerte aanvragen',
       back: 'Terug naar home'
     }
   };
