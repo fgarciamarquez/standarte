@@ -2259,5 +2259,82 @@ export const fairsData = [
     "slug": "arrels-menorca",
     "city": "Menorca",
     "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Bet On Ceuta",
+    "country": "es",
+    "slug": "bet-on-ceuta",
+    "city": "Ceuta",
+    "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "Ceuta Impulsa",
+    "country": "es",
+    "slug": "ceuta-impulsa",
+    "city": "Ceuta",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Odissea, Economía Azul de Ceuta",
+    "country": "es",
+    "slug": "odissea-economia-azul-ceuta",
+    "city": "Ceuta",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria de Oportunidades Económicas de Melilla",
+    "country": "es",
+    "slug": "feria-oportunidades-economicas-melilla",
+    "city": "Melilla",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Feria de Representación Intercultural de Melilla",
+    "country": "es",
+    "slug": "feria-representacion-intercultural-melilla",
+    "city": "Melilla",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Eventos Empresariales Proyecto Melilla",
+    "country": "es",
+    "slug": "eventos-empresariales-proyecto-melilla",
+    "city": "Melilla",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Maroc in Mode (MIM) Tánger",
+    "country": "ma",
+    "slug": "maroc-in-mode-mim-tanger",
+    "city": "Tánger",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Tanger Nexus",
+    "country": "ma",
+    "slug": "tanger-nexus",
+    "city": "Tánger",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Tanger Fashion Week",
+    "country": "ma",
+    "slug": "tanger-fashion-week",
+    "city": "Tánger",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Encuentros Industriales AMITH Nord",
+    "country": "ma",
+    "slug": "amith-nord-tanger",
+    "city": "Tánger",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Eventos Industriales Tanger Med",
+    "country": "ma",
+    "slug": "eventos-industriales-tanger-med",
+    "city": "Tánger",
+    "sector": "Industria y Logística"
   }
 ];

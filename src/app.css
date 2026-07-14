@@ -966,6 +966,15 @@ article:hover .city-cover-image,
   content: none;
 }
 
+/* Marruecos (ferias de Tánger): campo rojo con emblema verde central (aproximación
+   del pentagrama con un punto verde, dentro del sistema de banderas por gradiente). */
+.flag-ma {
+  background: radial-gradient(circle at 50% 50%, #006233 0 26%, #c1272d 26% 100%);
+}
+.flag-ma::before {
+  content: none;
+}
+
 /* Bandera circular del país (ferias hermanas, miga de pan de feria/ciudad):
    el degradado lo aporta .flag-es/.flag-pt/.flag-de/.flag-fr de arriba. */
 .fair-flag {

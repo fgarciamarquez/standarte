@@ -42,6 +42,9 @@ export const routes = {
     regua: 'diseno_montaje_stands_peso_da_regua',
     ibiza: 'diseno_montaje_stands_ibiza',
     menorca: 'diseno_montaje_stands_menorca',
+    ceuta: 'diseno_montaje_stands_ceuta',
+    melilla: 'diseno_montaje_stands_melilla',
+    tanger: 'diseno_montaje_stands_tanger',
     gijon: 'diseno_montaje_stands_gijon',
     lleida: 'diseno_montaje_stands_lleida',
     girona: 'diseno_montaje_stands_girona',
@@ -103,6 +106,9 @@ export const routes = {
     regua: 'stand_design_assembly_peso_da_regua',
     ibiza: 'stand_design_assembly_ibiza',
     menorca: 'stand_design_assembly_menorca',
+    ceuta: 'stand_design_assembly_ceuta',
+    melilla: 'stand_design_assembly_melilla',
+    tanger: 'stand_design_assembly_tangier',
     gijon: 'stand_design_assembly_gijon',
     lleida: 'stand_design_assembly_lleida',
     girona: 'stand_design_assembly_girona',
@@ -164,6 +170,9 @@ export const routes = {
     regua: 'messestand_design_montage_peso_da_regua',
     ibiza: 'messestand_design_montage_ibiza',
     menorca: 'messestand_design_montage_menorca',
+    ceuta: 'messestand_design_montage_ceuta',
+    melilla: 'messestand_design_montage_melilla',
+    tanger: 'messestand_design_montage_tanger',
     gijon: 'messestand_design_montage_gijon',
     lleida: 'messestand_design_montage_lleida',
     girona: 'messestand_design_montage_girona',
@@ -225,6 +234,9 @@ export const routes = {
     regua: 'regua_zhantai_sheji_dajian',
     ibiza: 'ibiza_zhantai_sheji_dajian',
     menorca: 'menorca_zhantai_sheji_dajian',
+    ceuta: 'ceuta_zhantai_sheji_dajian',
+    melilla: 'melilla_zhantai_sheji_dajian',
+    tanger: 'tanger_zhantai_sheji_dajian',
     gijon: 'gijon_zhantai_sheji_dajian',
     lleida: 'lleida_zhantai_sheji_dajian',
     girona: 'girona_zhantai_sheji_dajian',
@@ -286,6 +298,9 @@ export const routes = {
     regua: 'regua_stand_dizain_asembli',
     ibiza: 'ibiza_stand_dizain_asembli',
     menorca: 'menorca_stand_dizain_asembli',
+    ceuta: 'ceuta_stand_dizain_asembli',
+    melilla: 'melilla_stand_dizain_asembli',
+    tanger: 'tanger_stand_dizain_asembli',
     gijon: 'gijon_stand_dizain_asembli',
     lleida: 'lleida_stand_dizain_asembli',
     girona: 'girona_stand_dizain_asembli',
@@ -347,6 +362,9 @@ export const routes = {
     regua: 'design_montagem_stands_peso_da_regua',
     ibiza: 'design_montagem_stands_ibiza',
     menorca: 'design_montagem_stands_menorca',
+    ceuta: 'design_montagem_stands_ceuta',
+    melilla: 'design_montagem_stands_melilla',
+    tanger: 'design_montagem_stands_tanger',
     gijon: 'design_montagem_stands_gijon',
     lleida: 'design_montagem_stands_lleida',
     girona: 'design_montagem_stands_girona',
@@ -408,6 +426,9 @@ export const routes = {
     regua: 'conception_montage_stands_peso_da_regua',
     ibiza: 'conception_montage_stands_ibiza',
     menorca: 'conception_montage_stands_menorca',
+    ceuta: 'conception_montage_stands_ceuta',
+    melilla: 'conception_montage_stands_melilla',
+    tanger: 'conception_montage_stands_tanger',
     gijon: 'conception_montage_stands_gijon',
     lleida: 'conception_montage_stands_lleida',
     girona: 'conception_montage_stands_girona',
@@ -469,6 +490,9 @@ export const routes = {
     regua: 'progettazione_montaggio_stand_peso_da_regua',
     ibiza: 'progettazione_montaggio_stand_ibiza',
     menorca: 'progettazione_montaggio_stand_menorca',
+    ceuta: 'progettazione_montaggio_stand_ceuta',
+    melilla: 'progettazione_montaggio_stand_melilla',
+    tanger: 'progettazione_montaggio_stand_tangeri',
     gijon: 'progettazione_montaggio_stand_gijon',
     lleida: 'progettazione_montaggio_stand_lleida',
     girona: 'progettazione_montaggio_stand_girona',
@@ -530,6 +554,9 @@ export const routes = {
     regua: 'regua-buseu-dijain-jorip',
     ibiza: 'ibiza-buseu-dijain-jorip',
     menorca: 'menorca-buseu-dijain-jorip',
+    ceuta: 'ceuta-buseu-dijain-jorip',
+    melilla: 'melilla-buseu-dijain-jorip',
+    tanger: 'tanger-buseu-dijain-jorip',
     gijon: 'gijon-bujeu-dijain-jorip',
     lleida: 'lleida-bujeu-dijain-jorip',
     girona: 'girona-bujeu-dijain-jorip',
@@ -591,6 +618,9 @@ export const routes = {
     regua: 'ペーゾ・ダ・レグア展示会ブース設計施工',
     ibiza: 'イビサ展示会ブース設計施工',
     menorca: 'メノルカ展示会ブース設計施工',
+    ceuta: 'セウタ展示会ブース設計施工',
+    melilla: 'メリリャ展示会ブース設計施工',
+    tanger: 'タンジェ展示会ブース設計施工',
     gijon: 'ヒホン展示会ブース設計施工',
     lleida: 'リェイダ展示会ブース設計施工',
     girona: 'ジローナ展示会ブース設計施工',
@@ -652,6 +682,9 @@ export const routes = {
     regua: 'standontwerp_montage_peso_da_regua',
     ibiza: 'standontwerp_montage_ibiza',
     menorca: 'standontwerp_montage_menorca',
+    ceuta: 'standontwerp_montage_ceuta',
+    melilla: 'standontwerp_montage_melilla',
+    tanger: 'standontwerp_montage_tanger',
     gijon: 'standontwerp_montage_gijon',
     lleida: 'standontwerp_montage_lleida',
     girona: 'standontwerp_montage_girona',
@@ -2887,6 +2920,153 @@ export const cityData = {
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはメノルカで展示会ブースの設計・施工を行います。ここはHORECA Baleares Menorca、アライオールのFira del Camp、Arrelsなどが開催されるバレアレス諸島の島であり生物圏保存地域で、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、海を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  ceuta: {
+    city: { es: 'Ceuta', en: 'Ceuta', de: 'Ceuta', zh: '休达', hi: 'सेउता', pt: 'Ceuta', fr: 'Ceuta', it: 'Ceuta', ko: '세우타', ja: 'セウタ', nl: 'Ceuta' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Ceuta —ciudad autónoma en el Estrecho de Gibraltar, con citas como Bet On Ceuta, Ceuta Impulsa y las jornadas de economía azul Odissea— controlando cada fase: diseño 3D, fabricación, logística por barco, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, también al otro lado del Estrecho.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Ceuta —an autonomous city on the Strait of Gibraltar, with events such as Bet On Ceuta, Ceuta Impulsa and the Odissea blue-economy sessions— controlling every phase: 3D design, production, sea logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, on the other side of the Strait too.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Ceuta — einer autonomen Stadt an der Straße von Gibraltar, mit Veranstaltungen wie Bet On Ceuta, Ceuta Impulsa und den Odissea-Tagen zur blauen Wirtschaft — und kontrolliert jede Phase: 3D-Design, Produktion, Seelogistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch auf der anderen Seite der Meerenge.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Ceuta — cidade autónoma no Estreito de Gibraltar, com certames como a Bet On Ceuta, a Ceuta Impulsa e as jornadas de economia azul Odissea — controlando cada fase: design 3D, fabrico, logística por barco, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, também do outro lado do Estreito.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Ceuta — ville autonome sur le détroit de Gibraltar, avec des rendez-vous comme Bet On Ceuta, Ceuta Impulsa et les journées d\'économie bleue Odissea — en maîtrisant chaque phase : conception 3D, fabrication, logistique par bateau, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails, de l\'autre côté du détroit aussi.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Ceuta — città autonoma sullo Stretto di Gibilterra, con appuntamenti come Bet On Ceuta, Ceuta Impulsa e le giornate di economia blu Odissea — controllando ogni fase: progettazione 3D, produzione, logistica via nave, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli, anche dall\'altra parte dello Stretto.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Ceuta — een autonome stad aan de Straat van Gibraltar, met evenementen zoals Bet On Ceuta, Ceuta Impulsa en de Odissea-dagen over de blauwe economie — met volledige controle over elke fase: 3D-ontwerp, productie, zeelogistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, ook aan de overkant van de zeestraat.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在休达为展会设计并搭建展台——这座位于直布罗陀海峡的自治市，举办 Bet On Ceuta、Ceuta Impulsa 以及蓝色经济活动 Odissea 等展会——全程掌控每个环节：3D设计、制造、海运物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便在海峡的另一侧。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte सेउता में स्टैंड डिज़ाइन और स्थापित करता है — यह जिब्राल्टर जलडमरूमध्य पर स्थित एक स्वायत्त शहर है, जहाँ Bet On Ceuta, Ceuta Impulsa और नीली अर्थव्यवस्था आयोजन Odissea जैसे कार्यक्रम होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, समुद्री लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को जलडमरूमध्य के उस पार भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 세우타에서 전시회 부스를 디자인하고 시공합니다. 이곳은 Bet On Ceuta, Ceuta Impulsa, 블루 이코노미 행사 Odissea 등이 열리는 지브롤터 해협의 자치시로, 3D 디자인, 제작, 해상 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 해협 건너에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはセウタで展示会ブースの設計・施工を行います。ここはBet On Ceuta、Ceuta Impulsa、ブルーエコノミーのイベントOdisseaなどが開催されるジブラルタル海峡の自治都市で、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、海峡を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  melilla: {
+    city: { es: 'Melilla', en: 'Melilla', de: 'Melilla', zh: '梅利利亚', hi: 'मेलिला', pt: 'Melilla', fr: 'Melilla', it: 'Melilla', ko: '멜리야', ja: 'メリリャ', nl: 'Melilla' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Melilla —ciudad autónoma en la costa norteafricana del Mediterráneo, con citas como la Feria de Oportunidades Económicas, la Feria de Representación Intercultural y los eventos empresariales de Proyecto Melilla— controlando cada fase: diseño 3D, fabricación, logística por barco, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, también al otro lado del mar.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Melilla —an autonomous city on the North African Mediterranean coast, with events such as the Economic Opportunities Fair, the Intercultural Representation Fair and the Proyecto Melilla business events— controlling every phase: 3D design, production, sea logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, across the sea too.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Melilla — einer autonomen Stadt an der nordafrikanischen Mittelmeerküste, mit Veranstaltungen wie der Messe für wirtschaftliche Chancen, der Messe für interkulturelle Repräsentation und den Unternehmensevents von Proyecto Melilla — und kontrolliert jede Phase: 3D-Design, Produktion, Seelogistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch über das Meer hinweg.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Melilla — cidade autónoma na costa norte-africana do Mediterrâneo, com certames como a Feira de Oportunidades Económicas, a Feira de Representação Intercultural e os eventos empresariais do Proyecto Melilla — controlando cada fase: design 3D, fabrico, logística por barco, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, também do outro lado do mar.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Melilla — ville autonome sur la côte méditerranéenne d\'Afrique du Nord, avec des rendez-vous comme la Foire des opportunités économiques, la Foire de représentation interculturelle et les événements d\'entreprise de Proyecto Melilla — en maîtrisant chaque phase : conception 3D, fabrication, logistique par bateau, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails, de l\'autre côté de la mer aussi.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Melilla — città autonoma sulla costa nordafricana del Mediterraneo, con appuntamenti come la Fiera delle Opportunità Economiche, la Fiera di Rappresentazione Interculturale e gli eventi aziendali di Proyecto Melilla — controllando ogni fase: progettazione 3D, produzione, logistica via nave, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli, anche dall\'altra parte del mare.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Melilla — een autonome stad aan de Noord-Afrikaanse Middellandse Zeekust, met evenementen zoals de Beurs voor Economische Kansen, de Beurs voor Interculturele Representatie en de zakelijke evenementen van Proyecto Melilla — met volledige controle over elke fase: 3D-ontwerp, productie, zeelogistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, ook aan de overkant van de zee.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在梅利利亚为展会设计并搭建展台——这座位于北非地中海沿岸的自治市，举办经济机遇展、跨文化representación展以及 Proyecto Melilla 企业活动等——全程掌控每个环节：3D设计、制造、海运物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便远隔重洋。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte मेलिला में स्टैंड डिज़ाइन और स्थापित करता है — यह भूमध्यसागर के उत्तरी अफ्रीकी तट पर स्थित एक स्वायत्त शहर है, जहाँ आर्थिक अवसर मेला, अंतरसांस्कृतिक प्रतिनिधित्व मेला और Proyecto Melilla के व्यावसायिक आयोजन जैसे कार्यक्रम होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, समुद्री लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को समुद्र के उस पार भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 멜리야에서 전시회 부스를 디자인하고 시공합니다. 이곳은 경제 기회 박람회, 다문화 대표 박람회, Proyecto Melilla 비즈니스 행사 등이 열리는 북아프리카 지중해 연안의 자치시로, 3D 디자인, 제작, 해상 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 바다 건너에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはメリリャで展示会ブースの設計・施工を行います。ここは経済機会見本市、異文化表現見本市、Proyecto Melillaのビジネスイベントなどが開催される北アフリカ地中海岸の自治都市で、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、海を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  tanger: {
+    city: { es: 'Tánger', en: 'Tangier', de: 'Tanger', zh: '丹吉尔', hi: 'तंजियर', pt: 'Tânger', fr: 'Tanger', it: 'Tangeri', ko: '탕헤르', ja: 'タンジェ', nl: 'Tanger' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Tánger —puerta de Marruecos frente al Estrecho de Gibraltar y polo textil, industrial y logístico, con citas como Maroc in Mode (MIM), Tanger Nexus, la Tanger Fashion Week, los encuentros AMITH Nord y los eventos industriales de Tanger Med— controlando cada fase: diseño 3D, fabricación, logística por barco, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, también al otro lado del Estrecho.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Tangier —Morocco’s gateway across the Strait of Gibraltar and a textile, industrial and logistics hub, with events such as Maroc in Mode (MIM), Tanger Nexus, Tanger Fashion Week, the AMITH Nord meetings and the Tanger Med industrial events— controlling every phase: 3D design, production, sea logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, on the other side of the Strait too.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Tanger — Marokkos Tor an der Straße von Gibraltar und Textil-, Industrie- und Logistikzentrum, mit Veranstaltungen wie Maroc in Mode (MIM), Tanger Nexus, der Tanger Fashion Week, den AMITH-Nord-Treffen und den Industrieveranstaltungen von Tanger Med — und kontrolliert jede Phase: 3D-Design, Produktion, Seelogistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch auf der anderen Seite der Meerenge.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Tânger — porta de Marrocos frente ao Estreito de Gibraltar e polo têxtil, industrial e logístico, com certames como a Maroc in Mode (MIM), a Tanger Nexus, a Tanger Fashion Week, os encontros AMITH Nord e os eventos industriais de Tanger Med — controlando cada fase: design 3D, fabrico, logística por barco, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, também do outro lado do Estreito.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d’expérience dans l’architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Tanger — porte du Maroc face au détroit de Gibraltar et pôle textile, industriel et logistique, avec des rendez-vous comme Maroc in Mode (MIM), Tanger Nexus, la Tanger Fashion Week, les rencontres AMITH Nord et les événements industriels de Tanger Med — en maîtrisant chaque phase : conception 3D, fabrication, logistique par bateau, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d’esprit d’un montage sans surprise et une attention exceptionnelle aux détails, de l’autre côté du détroit aussi.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Tangeri — porta del Marocco di fronte allo Stretto di Gibilterra e polo tessile, industriale e logistico, con appuntamenti come Maroc in Mode (MIM), Tanger Nexus, la Tanger Fashion Week, gli incontri AMITH Nord e gli eventi industriali di Tanger Med — controllando ogni fase: progettazione 3D, produzione, logistica via nave, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un’eccezionale attenzione ai dettagli, anche dall’altra parte dello Stretto.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Tanger — de poort van Marokko aan de Straat van Gibraltar en een textiel-, industrie- en logistiek knooppunt, met evenementen zoals Maroc in Mode (MIM), Tanger Nexus, de Tanger Fashion Week, de AMITH Nord-ontmoetingen en de industriële evenementen van Tanger Med — met volledige controle over elke fase: 3D-ontwerp, productie, zeelogistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, ook aan de overkant van de zeestraat.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在丹吉尔为展会设计并搭建展台——这座位于直布罗陀海峡对岸的摩洛哥门户，也是纺织、工业与物流枢纽，举办 Maroc in Mode (MIM)、Tanger Nexus、Tanger Fashion Week、AMITH Nord 会议以及 Tanger Med 工业活动等——全程掌控每个环节：3D设计、制造、海运物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便在海峡的另一侧。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte तंजियर में स्टैंड डिज़ाइन और स्थापित करता है — यह जिब्राल्टर जलडमरूमध्य के सामने मोरक्को का प्रवेशद्वार और एक वस्त्र, औद्योगिक एवं लॉजिस्टिक्स केंद्र है, जहाँ Maroc in Mode (MIM), Tanger Nexus, Tanger Fashion Week, AMITH Nord बैठकें और Tanger Med के औद्योगिक आयोजन जैसे कार्यक्रम होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, समुद्री लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को जलडमरूमध्य के उस पार भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 탕헤르에서 전시회 부스를 디자인하고 시공합니다. 이곳은 지브롤터 해협 건너편에 위치한 모로코의 관문이자 섬유·산업·물류 거점으로, Maroc in Mode (MIM), Tanger Nexus, Tanger Fashion Week, AMITH Nord 미팅, Tanger Med 산업 행사 등이 열리며, 3D 디자인, 제작, 해상 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 해협 건너에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはタンジェで展示会ブースの設計・施工を行います。ここはジブラルタル海峡を挟んだモロコの玄関口であり、繊維・産業・物流の拠点で、Maroc in Mode (MIM)、Tanger Nexus、Tanger Fashion Week、AMITH Nordの会合、Tanger Medの産業イベントなどが開催され、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、海峡を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }
   },

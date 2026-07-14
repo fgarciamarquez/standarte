@@ -60,7 +60,10 @@ export const seoFreshness = {
   aranda: '2026-07-14',
   regua: '2026-07-14',
   ibiza: '2026-07-14',
-  menorca: '2026-07-14'
+  menorca: '2026-07-14',
+  ceuta: '2026-07-14',
+  melilla: '2026-07-14',
+  tanger: '2026-07-14'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

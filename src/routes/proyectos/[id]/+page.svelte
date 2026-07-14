@@ -576,6 +576,15 @@
           </div>
         {:else}
           <img src={media[activeImageIndex].src} alt={`Render de stand 3D ${activeImageIndex + 1} de ${project.name}`} class="lightbox-image" />
+          <!-- Marca de agua discreta: línea diagonal fina que cruza la foto con "STANDARTE"
+               en el centro. Solo en imágenes ampliadas (no en los vídeos). -->
+          <div class="lightbox-watermark" aria-hidden="true">
+            <div class="wm-row">
+              <span class="wm-line"></span>
+              <span class="wm-brand">STANDARTE</span>
+              <span class="wm-line"></span>
+            </div>
+          </div>
         {/if}
       </div>
 
@@ -1095,6 +1104,44 @@
     max-width: 90vw;
     max-height: 85vh;
     object-fit: contain;
+  }
+
+  /* Marca de agua discreta sobre la foto ampliada: una línea diagonal fina que cruza la
+     imagen, interrumpida en el centro por "STANDARTE". Cubre exactamente la imagen (la
+     ventana se ajusta a su tamaño) y no intercepta clics. */
+  .lightbox-watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .lightbox-watermark .wm-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 150%;
+    transform: rotate(-30deg);
+    opacity: 0.5;
+  }
+  .lightbox-watermark .wm-line {
+    flex: 1;
+    height: 0;
+    border-top: 1px dotted rgba(255, 255, 255, 0.75);
+  }
+  .lightbox-watermark .wm-brand {
+    flex: 0 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Inconsolata', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-left: 0.4em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
   }
 
   .lightbox-close {

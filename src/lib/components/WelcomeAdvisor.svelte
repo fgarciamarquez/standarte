@@ -1184,32 +1184,47 @@
     gap: 7px;
   }
   /* Etiquetas estilo "badge": píldora suave y compacta, sin borde (igual que la web). */
+  /* Estilo ÚNICO para toda la jerarquía de etiquetas del panel de Pat (familias del
+     paso 1 y sub-etiquetas del paso 2): mismo tamaño de letra, padding, gap y SIEMPRE
+     un borde delimitador del color de la etiqueta (--chip). El paso 1 es el modelo. */
   .activity-selector-btn {
     display: inline-flex;
     align-items: center;
+    gap: 8px;
     background: color-mix(in srgb, var(--chip) 12%, #fff);
-    border: none;
+    border: 1px solid var(--chip);
     border-radius: 999px;
-    padding: 5px 12px;
+    padding: 4px 9px;
     font-family: 'Inconsolata', monospace;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     color: color-mix(in srgb, var(--chip) 62%, #12211a);
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease;
     text-align: left;
     line-height: 1.3;
   }
   .activity-selector-btn:hover {
     background: color-mix(in srgb, var(--chip) 20%, #fff);
   }
+  /* Punto de la etiqueta: HUECO por defecto (anillo del color). Se rellena (sólido) en
+     :hover y en estado seleccionado. Misma lógica en toda la jerarquía de etiquetas. */
   .badge-activity-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--chip);
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px var(--chip);
     flex: 0 0 auto;
     display: inline-block;
+    transition: background 0.2s ease;
+  }
+  /* Sólido al pasar por encima (cualquier botón de etiqueta) y en las píldoras de
+     selección (que representan una etiqueta YA seleccionada). */
+  .activity-selector-btn:hover .badge-activity-dot,
+  .activity-selector-btn.selected .badge-activity-dot,
+  .selected-badge-pill .badge-activity-dot {
+    background: var(--chip);
   }
 
   /* Paso 1: grid de familias (sectores) con su color. */
@@ -1226,18 +1241,12 @@
     opacity: 1;
     transform: translateY(0);
   }
-  .family-btn {
-    gap: 8px;
-    padding: 8px 13px;
-    font-size: 13px;
-  }
+  /* .family-btn y .tag-toggle heredan el estilo único de .activity-selector-btn
+     (mismo tamaño en toda la jerarquía). */
 
   /* Paso 2: multiselección de etiquetas. Marcadas = rellenas con su color. */
   .tag-multi {
     margin-top: 10px;
-  }
-  .tag-toggle {
-    gap: 6px;
   }
   .tag-toggle.selected {
     background: var(--chip);
@@ -1278,12 +1287,12 @@
     .advisor-form-row {
       grid-template-columns: 1fr;
     }
-    /* Nube de sectores (paso 1) más compacta en móvil: menos separación entre
-       botones y menos padding para que quepan mejor en pantalla estrecha. */
+    /* Etiquetas más compactas en móvil (toda la jerarquía por igual): menos separación
+       y padding para que quepan mejor en pantalla estrecha. */
     .family-grid {
       gap: 5px;
     }
-    .family-btn {
+    .activity-selector-btn {
       gap: 6px;
       padding: 5px 10px;
       font-size: 12px;

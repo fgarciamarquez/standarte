@@ -27,7 +27,7 @@
     pamplona: 'navarra',
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
-    ibiza: 'ibiza', menorca: 'menorca'
+    ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura',
@@ -41,7 +41,7 @@
     'Irún': 'paisvasco', 'Vitoria': 'paisvasco',
     'Aranda de Duero': 'castillayleon', 'Peso da Régua': 'portugal',
     'San Vicente de Alcántara': 'extremadura',
-    'Ibiza': 'ibiza', 'Menorca': 'menorca',
+    'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger',
     'Logroño': 'larioja', 'Alfaro': 'larioja', 'Calahorra': 'larioja',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };

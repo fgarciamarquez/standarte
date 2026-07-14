@@ -14,8 +14,8 @@
   // Módulo "Actividad" del aside: chips con código de color que enlazan a los
   // hubs de actividad de esta feria (interconexión por sector).
   const ACTIVITY_NAV_LABELS = {
-    es: 'Selección por actividades', en: 'Selection by activity', de: 'Auswahl nach Branche', fr: 'Sélection par activité', it: 'Selezione per attività',
-    pt: 'Seleção por atividade', nl: 'Selectie per branche', zh: '按行业筛选', hi: 'गतिविधि अनुसार चयन', ko: '분야별 선택', ja: '分野別セレクション'
+    es: 'Actividades asociadas a esta feria', en: 'Activities linked to this fair', de: 'Branchen dieser Messe', fr: 'Activités liées à ce salon', it: 'Attività legate a questa fiera',
+    pt: 'Atividades associadas a esta feira', nl: 'Activiteiten van deze beurs', zh: '与本展会相关的行业', hi: 'इस मेले से जुड़ी गतिविधियाँ', ko: '이 박람회 관련 분야', ja: 'この展示会に関連する分野'
   };
   const ALL_ACTIVITIES_LABELS = {
     es: 'Ver todas las actividades', en: 'See all activities', de: 'Alle Branchen ansehen',
@@ -248,7 +248,7 @@
   const cities = {
     es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Mérida': 'Mérida', 'A Coruña': 'A Coruña', 'Valladolid': 'Valladolid', 'Salamanca': 'Salamanca', 'Europa': 'Europa', 'Oporto': 'Oporto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha', 'Almería': 'Almería', 'Aguadulce': 'Aguadulce', 'El Ejido': 'El Ejido' },
     en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Mérida': 'Mérida', 'A Coruña': 'A Coruña', 'Valladolid': 'Valladolid', 'Salamanca': 'Salamanca', 'Europa': 'Europe', 'Oporto': 'Porto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha', 'Almería': 'Almeria', 'Aguadulce': 'Aguadulce', 'El Ejido': 'El Ejido', 'Jaén': 'Jaen', 'Huelva': 'Huelva', 'Aracena': 'Aracena', 'Punta Umbría': 'Punta Umbria', 'Córdoba': 'Cordoba', 'Pozoblanco': 'Pozoblanco', 'Villanueva de Córdoba': 'Villanueva de Cordoba', 'Granada': 'Granada', 'Armilla': 'Armilla', 'Cádiz': 'Cadiz', 'Jerez de la Frontera': 'Jerez de la Frontera', 'Manzanares': 'Manzanares', 'Porzuna': 'Porzuna', 'Zamora': 'Zamora', 'Albacete': 'Albacete', 'Toledo': 'Toledo', 'Cacabelos': 'Cacabelos', 'Palencia': 'Palencia', 'Santarém': 'Santarem', 'Trujillo': 'Trujillo', 'Elche': 'Elche' },
-    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Mérida': 'メリダ', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Valladolid': 'バリャドリッド', 'Salamanca': 'サラマンカ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ', 'Almería': 'アルメリア', 'Aguadulce': 'アグアドゥルセ', 'El Ejido': 'エル・エヒード', 'Jaén': 'ハエン', 'Huelva': 'ウエルバ', 'Aracena': 'アラセナ', 'Punta Umbría': 'プンタ・ウンブリア', 'Córdoba': 'コルドバ', 'Pozoblanco': 'ポソブランコ', 'Villanueva de Córdoba': 'ビリャヌエバ・デ・コルドバ', 'Granada': 'グラナダ', 'Armilla': 'アルミジャ', 'Cádiz': 'カディス', 'Jerez de la Frontera': 'ヘレス・デ・ラ・フロンテーラ', 'Manzanares': 'マンサナレス', 'Porzuna': 'ポルスナ', 'Zamora': 'サモラ', 'Albacete': 'アルバセテ', 'Toledo': 'トレド', 'Cacabelos': 'カカベロス', 'Palencia': 'パレンシア', 'Santarém': 'サンタレン', 'Trujillo': 'トルヒージョ', 'Elche': 'エルチェ', 'Silleda': 'シジェダ', 'Ourense': 'オウレンセ', 'Boqueixón': 'ボケイション', 'Lleida': 'リェイダ', 'Girona': 'ジローナ', 'Santander': 'サンタンデール', 'Torrelavega': 'トレラベガ', 'Gijón': 'ヒホン', 'Tineo': 'ティネオ', 'Vegadeo': 'ベガデオ', 'Irún': 'イルン', 'Logroño': 'ログローニョ', 'Alfaro': 'アルファロ', 'Calahorra': 'カラオラ', 'Pamplona': 'パンプローナ', 'Vitoria': 'ビトリア', 'Aranda de Duero': 'アランダ・デ・ドゥエロ', 'Peso da Régua': 'ペーゾ・ダ・レグア', 'Ibiza': 'イビサ', 'Menorca': 'メノルカ' },
+    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Mérida': 'メリダ', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Valladolid': 'バリャドリッド', 'Salamanca': 'サラマンカ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ', 'Almería': 'アルメリア', 'Aguadulce': 'アグアドゥルセ', 'El Ejido': 'エル・エヒード', 'Jaén': 'ハエン', 'Huelva': 'ウエルバ', 'Aracena': 'アラセナ', 'Punta Umbría': 'プンタ・ウンブリア', 'Córdoba': 'コルドバ', 'Pozoblanco': 'ポソブランコ', 'Villanueva de Córdoba': 'ビリャヌエバ・デ・コルドバ', 'Granada': 'グラナダ', 'Armilla': 'アルミジャ', 'Cádiz': 'カディス', 'Jerez de la Frontera': 'ヘレス・デ・ラ・フロンテーラ', 'Manzanares': 'マンサナレス', 'Porzuna': 'ポルスナ', 'Zamora': 'サモラ', 'Albacete': 'アルバセテ', 'Toledo': 'トレド', 'Cacabelos': 'カカベロス', 'Palencia': 'パレンシア', 'Santarém': 'サンタレン', 'Trujillo': 'トルヒージョ', 'Elche': 'エルチェ', 'Silleda': 'シジェダ', 'Ourense': 'オウレンセ', 'Boqueixón': 'ボケイション', 'Lleida': 'リェイダ', 'Girona': 'ジローナ', 'Santander': 'サンタンデール', 'Torrelavega': 'トレラベガ', 'Gijón': 'ヒホン', 'Tineo': 'ティネオ', 'Vegadeo': 'ベガデオ', 'Irún': 'イルン', 'Logroño': 'ログローニョ', 'Alfaro': 'アルファロ', 'Calahorra': 'カラオラ', 'Pamplona': 'パンプローナ', 'Vitoria': 'ビトリア', 'Aranda de Duero': 'アランダ・デ・ドゥエロ', 'Peso da Régua': 'ペーゾ・ダ・レグア', 'Ibiza': 'イビサ', 'Menorca': 'メノルカ', 'Ceuta': 'セウタ', 'Melilla': 'メリリャ', 'Tánger': 'タンジェ' },
     // Simplified city mapping, defaulting to Spanish name if not defined to save space
   };
 
@@ -277,6 +277,9 @@
     'Peso da Régua': 'regua',
     'Ibiza': 'ibiza',
     'Menorca': 'menorca',
+    'Ceuta': 'ceuta',
+    'Melilla': 'melilla',
+    'Tánger': 'tanger',
     'Santander': 'santander', 'Torrelavega': 'santander',
     'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
@@ -288,7 +291,7 @@
     cordoba: 'Córdoba', granada: 'Granada', cadiz: 'Cádiz',
     santarem: 'Santarém', trujillo: 'Trujillo', elche: 'Elche',
     silleda: 'Silleda', ourense: 'Ourense',
-    lleida: 'Lleida', girona: 'Girona', irun: 'Irún', logrono: 'Logroño', pamplona: 'Pamplona', vitoria: 'Vitoria', aranda: 'Aranda de Duero', regua: 'Peso da Régua', ibiza: 'Ibiza', menorca: 'Menorca',
+    lleida: 'Lleida', girona: 'Girona', irun: 'Irún', logrono: 'Logroño', pamplona: 'Pamplona', vitoria: 'Vitoria', aranda: 'Aranda de Duero', regua: 'Peso da Régua', ibiza: 'Ibiza', menorca: 'Menorca', ceuta: 'Ceuta', melilla: 'Melilla', tanger: 'Tánger',
     santander: 'Santander', gijon: 'Gijón'
   };
   // Región para agrupar ferias hermanas (define la densidad del clúster; Extremadura es la prioridad).
@@ -318,21 +321,24 @@
     'San Vicente de Alcántara': 'extremadura',
     'Ibiza': 'ibiza',
     'Menorca': 'menorca',
+    'Ceuta': 'ceuta',
+    'Melilla': 'melilla',
+    'Tánger': 'tanger',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria',
     'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
   const clusterT = {
-    es: { related: 'Ferias en las que construimos', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
-    en: { related: 'Fairs where we build', pillar: (c) => `Exhibition stand design and assembly in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
-    de: { related: 'Messen, auf denen wir bauen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
-    fr: { related: 'Salons où nous construisons', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
-    pt: { related: 'Feiras onde construímos', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
-    it: { related: 'Fiere in cui costruiamo', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
-    ko: { related: '저희가 시공하는 박람회', pillar: (c) => `${c} 부스 디자인 및 조립`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
-    zh: { related: '我们搭建的展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
-    hi: { related: 'जिन मेलों में हम निर्माण करते हैं', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
-    ja: { related: '当社が施工する展示会', pillar: (c) => `${c}での展示会ブース設計・組立`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
-    nl: { related: 'Beurzen waar wij bouwen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
+    es: { related: 'Ferias relacionadas con esta actividad en las que construimos', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
+    en: { related: 'Fairs related to this activity where we build', pillar: (c) => `Exhibition stand design and assembly in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
+    de: { related: 'Messen zu dieser Branche, auf denen wir bauen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
+    fr: { related: 'Salons liés à cette activité où nous construisons', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
+    pt: { related: 'Feiras relacionadas com esta atividade onde construímos', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
+    it: { related: 'Fiere legate a questa attività in cui costruiamo', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
+    ko: { related: '이 분야와 관련해 저희가 시공하는 박람회', pillar: (c) => `${c} 부스 디자인 및 조립`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
+    zh: { related: '与该行业相关且我们搭建的展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
+    hi: { related: 'इस गतिविधि से संबंधित मेले जिनमें हम निर्माण करते हैं', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
+    ja: { related: 'この分野に関連し当社が施工する展示会', pillar: (c) => `${c}での展示会ブース設計・組立`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
+    nl: { related: 'Beurzen gerelateerd aan deze activiteit waar wij bouwen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
   };
 
   // Recinto ferial por ciudad (solo nombres verificados; las ciudades sin entrada no muestran recinto).
@@ -360,6 +366,8 @@
     'Peso da Régua': 'Peso da Régua (Cais da Régua, Douro)',
     'Ibiza': 'Ibiza (recinto ferial de Ibiza)',
     'Menorca': 'Menorca (recinto ferial de Maó)',
+    'Ceuta': 'Ceuta (Palacio de Congresos de Ceuta)',
+    'Melilla': 'Melilla (Palacio de Congresos y Exposiciones de Melilla)',
     'Santander': 'Palacio de Exposiciones y Congresos de Santander', 'Torrelavega': 'Mercado Nacional de Ganados de Torrelavega',
     'Gijón': 'Recinto Ferial de Asturias Luis Adaro'
   };

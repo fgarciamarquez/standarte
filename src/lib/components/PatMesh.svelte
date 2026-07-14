@@ -316,6 +316,12 @@
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 754,458 L 762,448 L 775,447 L 785,455 L 783,466 L 772,472 L 760,468 Z' }));
     // Menorca: isla alargada NE-SO al noreste de Mallorca. Punto ≈ (959, 363).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 942,369 L 950,361 L 965,355 L 980,358 L 976,367 L 961,371 L 949,373 Z' }));
+    // Costa norteafricana (Estrecho + Mediterráneo marroquí): landmass para situar sobre
+    // tierra los puntos de Ceuta (≈294,737) y Melilla (≈462,792), separada de la Península
+    // por el Estrecho de Gibraltar. La costa se extiende al oeste (Cabo Espartel/Tánger,
+    // ≈260,747) para acoger próximas ferias en Tánger, y desaparece por el borde inferior
+    // del mapa (misma proyección equirectangular).
+    svgEl.appendChild(el('path', { class: 'pm-coast pm-africa', d: 'M 236,980 L 246,760 L 252,746 L 262,747 L 286,734 L 294,736 L 302,752 L 340,772 L 372,784 L 393,790 L 425,800 L 452,793 L 462,790 L 498,806 L 540,814 L 592,826 L 640,980 Z' }));
 
     // Insets (Canarias, Madeira): traslación artificial de cada archipiélago a un
     // recuadro (circunferencia de borde de puntos + islas simples) para que la

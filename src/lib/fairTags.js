@@ -386,7 +386,18 @@ export const fairActivities = {
   "feria-stocks-ibiza": ["moda-textil","regalo-decoracion"],
   "horeca-baleares-menorca": ["gastronomia-hosteleria"],
   "fira-camp-alaior-menorca": ["ganaderia","alimentacion"],
-  "arrels-menorca": ["alimentacion","gastronomia-hosteleria"]
+  "arrels-menorca": ["alimentacion","gastronomia-hosteleria"],
+  "bet-on-ceuta": ["digital-software","smart-city"],
+  "ceuta-impulsa": ["multisectorial","congreso-profesional"],
+  "odissea-economia-azul-ceuta": ["pesca-mar","multisectorial"],
+  "feria-oportunidades-economicas-melilla": ["multisectorial","congreso-profesional"],
+  "feria-representacion-intercultural-melilla": ["cultura-arte","multisectorial"],
+  "eventos-empresariales-proyecto-melilla": ["congreso-profesional","multisectorial"],
+  "maroc-in-mode-mim-tanger": ["moda-textil"],
+  "tanger-nexus": ["multisectorial","congreso-profesional"],
+  "tanger-fashion-week": ["moda-textil","joyeria"],
+  "amith-nord-tanger": ["moda-textil"],
+  "eventos-industriales-tanger-med": ["logistica","maquinaria-industrial"]
 };
 
 // Helpers

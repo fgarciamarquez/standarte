@@ -446,7 +446,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'vitoria', 'aranda', 'regua', 'ibiza', 'menorca', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'vitoria', 'aranda', 'regua', 'ibiza', 'menorca', 'ceuta', 'melilla', 'tanger', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -542,7 +542,7 @@
     pamplona: 'navarra',
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
-    ibiza: 'ibiza', menorca: 'menorca'
+    ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -560,7 +560,7 @@
     'Aranda de Duero': 'castillayleon',
     'Peso da Régua': 'portugal',
     'San Vicente de Alcántara': 'extremadura',
-    'Ibiza': 'ibiza', 'Menorca': 'menorca',
+    'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'
@@ -574,17 +574,17 @@
     aragon: ['Intermaher', 'Zayer', 'Bellota'] // maquinaria pesada/agrícola e industrial — perfil de FIMA y SMOPYC en la Feria de Zaragoza
   };
   const cityFairsLabel = {
-    es: 'Ferias de la zona en las que diseñamos y montamos stands',
-    en: 'Fairs in the area where we design and build stands',
-    de: 'Messen in der Region, auf denen wir Stände gestalten und bauen',
-    fr: 'Salons de la région où nous concevons et construisons des stands',
-    pt: 'Feiras da região onde concebemos e montamos stands',
-    it: 'Fiere della zona in cui progettiamo e allestiamo stand',
-    ko: '저희가 부스를 디자인하고 시공하는 인근 전시회',
-    zh: '我们在该地区设计和搭建展台的展会',
-    hi: 'इस क्षेत्र के मेले जहाँ हम स्टैंड डिज़ाइन और निर्माण करते हैं',
-    ja: '当社がブースの設計・施工を行う近隣の展示会',
-    nl: 'Beurzen in de regio waar wij stands ontwerpen en bouwen'
+    es: 'Ferias relacionadas con lo que se expone aquí',
+    en: 'Fairs related to what is exhibited here',
+    de: 'Messen zu den hier gezeigten Themen',
+    fr: 'Salons liés à ce qui s\'expose ici',
+    pt: 'Feiras relacionadas com o que se expõe aqui',
+    it: 'Fiere legate a ciò che si espone qui',
+    ko: '이곳에서 전시되는 것과 관련된 박람회',
+    zh: '与本地展出内容相关的展会',
+    hi: 'यहाँ प्रदर्शित सामग्री से संबंधित मेले',
+    ja: 'ここで展示される内容に関連する展示会',
+    nl: 'Beurzen gerelateerd aan wat hier wordt getoond'
   };
   // Móvil: cuando hay muchas ferias, la nube de píldoras se condensa en un <details>
   // (pila de botones) que se despliega al tocar, para no saturar antes de las FAQs.
@@ -835,8 +835,8 @@
   }
   $: sortedCityNavKeys = [...CITY_NAV_KEYS].sort((a, b) => cityNavLabel(a, lang).localeCompare(cityNavLabel(b, lang), lang));
   const ACTIVITY_NAV_LABELS = {
-    es: 'Selección por actividades', en: 'Selection by activity', de: 'Auswahl nach Branche', fr: 'Sélection par activité', it: 'Selezione per attività',
-    pt: 'Seleção por atividade', nl: 'Selectie per branche', zh: '按行业筛选', hi: 'गतिविधि अनुसार चयन', ko: '분야별 선택', ja: '分野別セレクション'
+    es: 'Actividades asociadas a esta ciudad', en: 'Activities linked to this city', de: 'Branchen in dieser Stadt', fr: 'Activités liées à cette ville', it: 'Attività legate a questa città',
+    pt: 'Atividades associadas a esta cidade', nl: 'Activiteiten in deze stad', zh: '与本市相关的行业', hi: 'इस शहर से जुड़ी गतिविधियाँ', ko: '이 도시 관련 분야', ja: 'この都市に関連する分野'
   };
   const ALL_ACTIVITIES_LABELS = {
     es: 'Ver todas las actividades', en: 'See all activities', de: 'Alle Branchen ansehen',
@@ -971,6 +971,9 @@
     'Peso da Régua': 'regua',
     'Ibiza': 'ibiza',
     'Menorca': 'menorca',
+    'Ceuta': 'ceuta',
+    'Melilla': 'melilla',
+    'Tánger': 'tanger',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   function fairsForCity(cityKey) {
