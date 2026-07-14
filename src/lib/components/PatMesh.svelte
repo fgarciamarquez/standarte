@@ -1127,6 +1127,8 @@
     fill: rgba(26, 30, 33, 0.05);
     stroke: #b9bcb4;
     stroke-width: 1.6;
+    /* Sombra suave para despegar el perfil de la tierra del fondo (mejora la lectura). */
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
   }
   /* Circunferencia de los insets (Canarias, Madeira): borde de puntos, sin
      relleno. Señala que es una traslación artificial del espacio, no una
