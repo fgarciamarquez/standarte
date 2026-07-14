@@ -3517,7 +3517,8 @@ p b {
   transform: rotate(-135deg);
 }
 .fairs-collapse > .city-fairs-list,
-.fairs-collapse > .activity-chips {
+.fairs-collapse > .activity-chips,
+.fairs-collapse > .cluster-fairs {
   margin-top: 12px;
 }
 /* Paneles colapsables dentro del cuerpo de las páginas de ciudad Oro

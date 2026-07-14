@@ -710,6 +710,31 @@
     }
     return null;
   })();
+  // Foto de caso de éxito en el cuerpo (igual que en las páginas de ciudad): se muestra
+  // SIEMPRE. Preferimos un proyecto del mismo sector (fairProject); si no hay, elegimos de
+  // forma determinista por feria una de las 12 primeras de la galería (hash, sin Math.random
+  // para no romper el prerender).
+  function hashStr(s) {
+    let h = 0;
+    for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+    return Math.abs(h);
+  }
+  $: caseProject = fairProject
+    || (projectIndex.length ? projectIndex[hashStr(fair.slug) % Math.min(12, projectIndex.length)] : null);
+  // Pie de la foto de caso (texto idéntico al de las páginas de ciudad).
+  const casoEjemplo = {
+    es: 'Ejemplo de trabajo realizado por nuestro equipo',
+    en: 'Example of work carried out by our team',
+    de: 'Beispiel für die Arbeit unseres Teams',
+    pt: 'Exemplo de trabalho realizado pela nossa equipa',
+    fr: 'Exemple de travail réalisé par notre équipe',
+    it: 'Esempio di lavoro realizzato dal nostro team',
+    nl: 'Voorbeeld van werk uitgevoerd door ons team',
+    zh: '我们团队完成的作品示例',
+    hi: 'हमारी टीम द्वारा किए गए कार्य का उदाहरण',
+    ko: '저희 팀이 진행한 작업 예시',
+    ja: '当社チームが手がけた施工例'
+  };
   const projLead = { es: 'Así montamos para este sector:', pt: 'Assim montamos para este setor:', en: 'This is how we build for this sector:', de: 'So bauen wir für diese Branche:', fr: 'Voici comment nous construisons pour ce secteur :', it: 'Ecco come allestiamo per questo settore:', nl: 'Zo bouwen wij voor deze sector:', zh: '我们如此为该行业搭建：', hi: 'इस क्षेत्र के लिए हम ऐसे बनाते हैं:', ko: '이 분야를 위해 이렇게 시공합니다:', ja: 'この分野ではこのように施工します：' };
   const projCta = { es: 'ver un stand nuestro', pt: 'ver um stand nosso', en: 'see one of our stands', de: 'einen unserer Stände ansehen', fr: 'voir un de nos stands', it: 'vedi un nostro stand', nl: 'bekijk een van onze stands', zh: '查看我们的展台', hi: 'हमारा एक स्टैंड देखें', ko: '당사 부스 보기', ja: '当社のブースを見る' };
   // Pie de foto del ejemplo gráfico (imagen del proyecto a todo el ancho).
@@ -889,7 +914,7 @@
         <!-- Página de destino: CTA prioritario tras el primer párrafo que baja al
              formulario del final para que el visitante pida presupuesto sin perderse. -->
         <a
-          class="feria-budget-cta"
+          class="oro-cta-espacio"
           href="#feria-presupuesto"
           on:click={(e) => { e.preventDefault(); document.getElementById('feria-presupuesto')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
         >{strings.cta}</a>
@@ -901,11 +926,13 @@
         <!-- G1: proyecto 3D real del mismo sector (si existe): la parte gráfica es el
              gancho — se muestra a todo el ancho de la columna con pie de foto, tras el
              segundo párrafo del cuerpo (el de modelado 3D) y antes de "Servicios". -->
-        {#if fairProject}
-          <a class="feria-project-figure" href={projectUrl(fairProject.id, lang)}>
-            {#if fairProject.image}<img src={fairProject.image} alt={(fairProject.title && (fairProject.title[lang] || fairProject.title.es)) || fairProject.name} loading="lazy" />{/if}
-            <span class="feria-project-caption">{projExample[lang] || projExample.es}</span>
-          </a>
+        {#if caseProject}
+          <figure class="oro-case-figure">
+            <a href={projectUrl(caseProject.id, lang)}>
+              {#if caseProject.image}<img src={caseProject.image} alt={(caseProject.title && (caseProject.title[lang] || caseProject.title.es)) || caseProject.name} width="800" height="450" loading="lazy" decoding="async" />{/if}
+            </a>
+            <figcaption>{casoEjemplo[lang] || casoEjemplo.es}</figcaption>
+          </figure>
         {/if}
         {#if venueText}
           <p class="feria-venue">{venueText}</p>
@@ -913,16 +940,21 @@
 
         <!-- Servicios para expositores: información secundaria, escamoteada (plegada)
              para no distraer del mensaje troncal y el CTA. -->
-        <details class="feria-collapse">
-          <summary>{strings.services}</summary>
-          <ul class="services-list">
-            {#each copy.services as service}
-              <li>
-                <strong>{service[0]}</strong>
-                <p>{service[1]}</p>
-              </li>
-            {/each}
-          </ul>
+        <details class="oro-collapse">
+          <summary class="oro-collapse-sum">
+            <h2 class="oro-collapse-h">{strings.services}</h2>
+            <span class="oro-collapse-chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="oro-collapse-body">
+            <ul class="services-list">
+              {#each copy.services as service}
+                <li>
+                  <strong>{service[0]}</strong>
+                  <p>{service[1]}</p>
+                </li>
+              {/each}
+            </ul>
+          </div>
         </details>
       </div>
       <aside class="feria-aside">
@@ -932,8 +964,13 @@
             <a href={pathFor(lang, 'proyecto_auditado')}>{moreInfoLabel[lang] || moreInfoLabel.es} →</a></p>
         </div>
         <!-- Nubes de navegación secundaria plegadas: no distraen del lead. -->
-        <details class="aside-module feria-aside-collapse">
-          <summary>{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</summary>
+        <details class="aside-module fairs-collapse">
+          <summary class="fairs-collapse-summary">
+            <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="fairs-collapse-open">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es} ({sortedCityKeys.length})</span>
+            <span class="fairs-collapse-close">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</span>
+            <span class="fairs-collapse-chevron" aria-hidden="true"></span>
+          </summary>
           <ul class="cluster-fairs">
             {#each sortedCityKeys as ck}
               <li><a href={pathFor(lang, ck)} class:active={ck === currentCityKey}>{cityLabel(ck, lang)}</a></li>
@@ -941,8 +978,13 @@
           </ul>
         </details>
         {#if siblingFairs.length}
-          <details class="aside-module feria-aside-collapse">
-            <summary>{clusterStr.related}</summary>
+          <details class="aside-module fairs-collapse">
+            <summary class="fairs-collapse-summary">
+              <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="fairs-collapse-open">{clusterStr.related} ({siblingFairs.length})</span>
+              <span class="fairs-collapse-close">{clusterStr.related}</span>
+              <span class="fairs-collapse-chevron" aria-hidden="true"></span>
+            </summary>
             <ul class="cluster-fairs">
               {#each siblingFairs as sib}
                 <li><a href={fairHref(sib.slug)}><span class="fair-flag flag-{sib.country}" aria-hidden="true"></span>{sib.name}</a></li>
@@ -1064,22 +1106,7 @@
   .feria-guarantee-stamp:hover { transform: scale(1.05); }
   .feria-guarantee-stamp img { display: block; width: 100%; height: 100%; }
   @media (max-width: 768px) { .feria-guarantee-stamp { width: 78px; height: 78px; top: -22px; right: 8px; } }
-  /* G1: proyecto 3D real del sector, a todo el ancho de la columna (gancho gráfico). */
-  .feria-project-figure {
-    display: block; text-decoration: none; margin: 1.6rem 0;
-    border-radius: 10px; overflow: hidden;
-    background: #fff; transition: box-shadow 0.2s ease, transform 0.2s ease;
-  }
-  .feria-project-figure:hover { box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12); transform: translateY(-2px); }
-  .feria-project-figure img {
-    display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #ececec;
-  }
-  .feria-project-caption {
-    display: block; padding: 0.6rem 0.9rem;
-    font-size: 0.9rem; color: #6b7178; background: #f7f6f1;
-    text-align: center; font-style: italic;
-  }
-  .feria-project-figure:hover .feria-project-caption { color: #4169e1; }
+  /* Foto de caso de éxito: usa la clase global .oro-case-figure (igual que en ciudad). */
   .highlight {
     font-family: 'Francois One', serif;
     font-size: 1.4rem;
@@ -1087,22 +1114,7 @@
     font-weight: 400;
     margin-bottom: 2rem;
   }
-  /* Página de destino: botón de conversión (píldora amarilla, texto negro) que baja
-     al formulario. Prioriza la petición de presupuesto tras el primer párrafo. */
-  .feria-budget-cta {
-    display: inline-block;
-    margin: 0.25rem 0 1.75rem;
-    padding: 0.8rem 1.9rem;
-    background: #ffc800;
-    color: #111;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 1.02rem;
-    text-decoration: none;
-    box-shadow: 0 6px 16px rgba(224, 180, 0, 0.28);
-    transition: filter 0.2s ease, transform 0.2s ease;
-  }
-  .feria-budget-cta:hover { filter: brightness(1.05); transform: translateY(-1px); }
+  /* CTA de conversión: usa la clase global .oro-cta-espacio (igual que en ciudad). */
   /* Respuesta directa citable (GEO): destacada, al inicio del cuerpo. */
   .feria-direct-answer {
     font-size: 1.05rem;
@@ -1182,33 +1194,8 @@
     margin-top: 2rem;
   }
 
-  /* ── Bloques plegables (van al grano; la info secundaria queda escamoteada) ── */
-  .feria-collapse { margin: 1.6rem 0; }
-  .feria-collapse > summary,
-  .feria-aside-collapse > summary {
-    cursor: pointer;
-    list-style: none;
-    font-weight: 700;
-    color: #1a1e21;
-  }
-  .feria-collapse > summary::-webkit-details-marker,
-  .feria-aside-collapse > summary::-webkit-details-marker { display: none; }
-  .feria-collapse > summary::marker,
-  .feria-aside-collapse > summary::marker { content: ''; }
-  .feria-collapse > summary::before,
-  .feria-aside-collapse > summary::before {
-    content: '▸';
-    display: inline-block;
-    margin-right: 0.5rem;
-    color: var(--primary, #e0b400);
-    transition: transform 0.2s ease;
-  }
-  .feria-collapse[open] > summary::before,
-  .feria-aside-collapse[open] > summary::before { transform: rotate(90deg); }
-  .feria-collapse > summary { font-size: 1.5rem; }
-  .feria-collapse[open] > summary { margin-bottom: 1.2rem; }
-  .feria-aside-collapse > summary { font-size: 1.4rem; }
-  .feria-aside-collapse[open] > summary { margin-bottom: 1.2rem; }
+  /* ── Bloques plegables: ahora usan las clases globales .oro-collapse (cuerpo) y
+     .fairs-collapse (sidebar), idénticas a las de las páginas de ciudad. ── */
   @media (max-width: 900px) {
     .feria-container {
       grid-template-columns: 1fr;
