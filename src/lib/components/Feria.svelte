@@ -14,8 +14,8 @@
   // Módulo "Actividad" del aside: chips con código de color que enlazan a los
   // hubs de actividad de esta feria (interconexión por sector).
   const ACTIVITY_NAV_LABELS = {
-    es: 'Actividad', en: 'Activity', de: 'Branche', fr: 'Activité', it: 'Attività',
-    pt: 'Atividade', nl: 'Activiteit', zh: '行业', hi: 'गतिविधि', ko: '분야', ja: '分野'
+    es: 'Selección por actividades', en: 'Selection by activity', de: 'Auswahl nach Branche', fr: 'Sélection par activité', it: 'Selezione per attività',
+    pt: 'Seleção por atividade', nl: 'Selectie per branche', zh: '按行业筛选', hi: 'गतिविधि अनुसार चयन', ko: '분야별 선택', ja: '分野別セレクション'
   };
   const ALL_ACTIVITIES_LABELS = {
     es: 'Ver todas las actividades', en: 'See all activities', de: 'Alle Branchen ansehen',
@@ -1267,13 +1267,14 @@
     flex-wrap: wrap;
     gap: 0.35rem;
   }
-  /* Etiquetas estilo "badge": píldora suave y compacta, sin borde. */
+  /* Etiquetas estilo "badge": píldora suave y compacta, con borde fino del color de la
+     actividad (--chip) para delimitarla. Aspecto idéntico en feria, ciudad e índice. */
   .activity-chips li a {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
     padding: 0.2rem 0.62rem;
-    border: none;
+    border: 1px solid var(--chip);
     border-radius: 999px;
     font-size: 0.9rem;
     font-weight: 500;

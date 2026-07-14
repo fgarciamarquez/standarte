@@ -3461,39 +3461,19 @@ p b {
   border-color: var(--gold);
   background: rgba(212, 175, 55, 0.12);
 }
-/* Icono: tres "botones" superpuestos, la metáfora del estado condensado. */
+/* Icono: tres puntos redondos gruesos monocromos (metáfora "…" de contenido condensado). */
 .fairs-stack {
-  position: relative;
-  width: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3.5px;
   height: 20px;
   flex: 0 0 auto;
 }
 .fairs-stack span {
-  position: absolute;
-  top: 50%;
-  height: 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  background: #fff;
-}
-.fairs-stack span:nth-child(1) {
-  left: 0;
-  width: 22px;
-  transform: translateY(-50%) rotate(-8deg);
-  opacity: 0.55;
-}
-.fairs-stack span:nth-child(2) {
-  left: 5px;
-  width: 24px;
-  transform: translateY(-50%);
-  opacity: 0.8;
-}
-.fairs-stack span:nth-child(3) {
-  left: 11px;
-  width: 22px;
-  transform: translateY(-50%) rotate(8deg);
-  background: rgba(212, 175, 55, 0.16);
-  border-color: var(--gold);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1a1e21;
 }
 .fairs-collapse-close {
   display: none;
@@ -3516,10 +3496,13 @@ p b {
 .fairs-collapse[open] > summary .fairs-collapse-chevron {
   transform: rotate(-135deg);
 }
-.fairs-collapse > .city-fairs-list,
-.fairs-collapse > .activity-chips,
-.fairs-collapse > .cluster-fairs {
-  margin-top: 12px;
+/* Aire entre el desplegador y la primera fila del contenido abierto. El selector con
+   [open] eleva la especificidad para ganar al `.activity-chips { margin: 0 }` scoped de
+   los componentes (si no, la nube de etiquetas queda pegada al summary). */
+.fairs-collapse[open] > .city-fairs-list,
+.fairs-collapse[open] > .activity-chips,
+.fairs-collapse[open] > .cluster-fairs {
+  margin-top: 16px;
 }
 /* Paneles colapsables dentro del cuerpo de las páginas de ciudad Oro
    ("Cómo trabajamos…" y "Tipos de stand…"): cerrados por defecto. El <h2> va

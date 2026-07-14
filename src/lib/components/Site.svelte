@@ -835,8 +835,8 @@
   }
   $: sortedCityNavKeys = [...CITY_NAV_KEYS].sort((a, b) => cityNavLabel(a, lang).localeCompare(cityNavLabel(b, lang), lang));
   const ACTIVITY_NAV_LABELS = {
-    es: 'Por actividad', en: 'By activity', de: 'Nach Branche', fr: 'Par activité', it: 'Per attività',
-    pt: 'Por atividade', nl: 'Per branche', zh: '按行业', hi: 'गतिविधि अनुसार', ko: '분야별', ja: '分野別'
+    es: 'Selección por actividades', en: 'Selection by activity', de: 'Auswahl nach Branche', fr: 'Sélection par activité', it: 'Selezione per attività',
+    pt: 'Seleção por atividade', nl: 'Selectie per branche', zh: '按行业筛选', hi: 'गतिविधि अनुसार चयन', ko: '분야별 선택', ja: '分野別セレクション'
   };
   const ALL_ACTIVITIES_LABELS = {
     es: 'Ver todas las actividades', en: 'See all activities', de: 'Alle Branchen ansehen',
@@ -2637,9 +2637,9 @@
      color de la actividad, oscurecido para legibilidad). Forma simple, sin borde. */
   .activity-chips li a {
     display: inline-flex; align-items: center; gap: 0.35rem;
-    padding: 0.2rem 0.62rem; font-size: 0.88rem; font-weight: 500;
+    padding: 0.2rem 0.62rem; font-size: 0.9rem; font-weight: 500;
     color: color-mix(in srgb, var(--chip) 62%, #12211a); text-decoration: none;
-    border: none; border-radius: 999px;
+    border: 1px solid var(--chip); border-radius: 999px;
     background: color-mix(in srgb, var(--chip) 12%, #fff);
     transition: background 0.2s ease;
   }
