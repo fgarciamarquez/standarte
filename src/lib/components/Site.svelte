@@ -446,7 +446,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'vitoria', 'aranda', 'regua', 'ibiza', 'menorca', 'ceuta', 'melilla', 'tanger', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'vitoria', 'aranda', 'regua', 'ibiza', 'menorca', 'ceuta', 'melilla', 'tanger', 'andorra', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -508,7 +508,7 @@
   // se deriva de cualquier feria alojada en esa ciudad, mismo dato que usa Feria.svelte.
   // CITY_FLAG_FALLBACK cubre pilares cuyas ferias están en un municipio satélite sin
   // coincidencia exacta de nombre (p. ej. Murcia solo tiene ferias en Torre Pacheco).
-  const CITY_FLAG_FALLBACK = { murcia: 'es', salamanca: 'es' };
+  const CITY_FLAG_FALLBACK = { murcia: 'es', salamanca: 'es', andorra: 'ad' };
   $: cityFlagCountry = isCityPage
     ? (fairItems.find((f) => f.city === (cityData[section]?.city?.es || null))?.country || CITY_FLAG_FALLBACK[section] || null)
     : null;
@@ -542,7 +542,8 @@
     pamplona: 'navarra',
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
-    ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger'
+    ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger',
+    andorra: 'andorra'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -561,6 +562,7 @@
     'Peso da Régua': 'portugal',
     'San Vicente de Alcántara': 'extremadura',
     'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger',
+    'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'
@@ -974,6 +976,8 @@
     'Ceuta': 'ceuta',
     'Melilla': 'melilla',
     'Tánger': 'tanger',
+    'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
+    'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   function fairsForCity(cityKey) {
@@ -2589,7 +2593,7 @@
   }
 
   .team-member h3 {
-    font-family: 'Francois One', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 19px;
     font-weight: 400;
     color: #333;

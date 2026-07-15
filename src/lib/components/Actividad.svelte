@@ -378,7 +378,7 @@
     box-shadow: none; min-width: 0;
   }
   .highlight {
-    font-family: 'Francois One', serif; font-size: 1.4rem; line-height: 1.6;
+    font-family: 'Roboto', sans-serif; font-size: 1.4rem; line-height: 1.6;
     font-weight: 400; margin-bottom: 2rem;
   }
   .act-text :global(p) { margin-bottom: 1.5rem; color: var(--text-color); }
@@ -457,7 +457,7 @@
     display: block; flex: 0 0 auto; border: 2px solid #ffc800;
   }
   .pat-trigger-text {
-    font-family: 'Francois One', serif; font-size: 1.02rem; line-height: 1.3;
+    font-family: 'Roboto', sans-serif; font-size: 1.02rem; line-height: 1.3;
   }
   .activity-chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
   /* Etiquetas estilo "badge": píldora suave y compacta, con borde fino del color de la

@@ -248,7 +248,7 @@
   const cities = {
     es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Mérida': 'Mérida', 'A Coruña': 'A Coruña', 'Valladolid': 'Valladolid', 'Salamanca': 'Salamanca', 'Europa': 'Europa', 'Oporto': 'Oporto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha', 'Almería': 'Almería', 'Aguadulce': 'Aguadulce', 'El Ejido': 'El Ejido' },
     en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Mérida': 'Mérida', 'A Coruña': 'A Coruña', 'Valladolid': 'Valladolid', 'Salamanca': 'Salamanca', 'Europa': 'Europe', 'Oporto': 'Porto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha', 'Almería': 'Almeria', 'Aguadulce': 'Aguadulce', 'El Ejido': 'El Ejido', 'Jaén': 'Jaen', 'Huelva': 'Huelva', 'Aracena': 'Aracena', 'Punta Umbría': 'Punta Umbria', 'Córdoba': 'Cordoba', 'Pozoblanco': 'Pozoblanco', 'Villanueva de Córdoba': 'Villanueva de Cordoba', 'Granada': 'Granada', 'Armilla': 'Armilla', 'Cádiz': 'Cadiz', 'Jerez de la Frontera': 'Jerez de la Frontera', 'Manzanares': 'Manzanares', 'Porzuna': 'Porzuna', 'Zamora': 'Zamora', 'Albacete': 'Albacete', 'Toledo': 'Toledo', 'Cacabelos': 'Cacabelos', 'Palencia': 'Palencia', 'Santarém': 'Santarem', 'Trujillo': 'Trujillo', 'Elche': 'Elche' },
-    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Mérida': 'メリダ', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Valladolid': 'バリャドリッド', 'Salamanca': 'サラマンカ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ', 'Almería': 'アルメリア', 'Aguadulce': 'アグアドゥルセ', 'El Ejido': 'エル・エヒード', 'Jaén': 'ハエン', 'Huelva': 'ウエルバ', 'Aracena': 'アラセナ', 'Punta Umbría': 'プンタ・ウンブリア', 'Córdoba': 'コルドバ', 'Pozoblanco': 'ポソブランコ', 'Villanueva de Córdoba': 'ビリャヌエバ・デ・コルドバ', 'Granada': 'グラナダ', 'Armilla': 'アルミジャ', 'Cádiz': 'カディス', 'Jerez de la Frontera': 'ヘレス・デ・ラ・フロンテーラ', 'Manzanares': 'マンサナレス', 'Porzuna': 'ポルスナ', 'Zamora': 'サモラ', 'Albacete': 'アルバセテ', 'Toledo': 'トレド', 'Cacabelos': 'カカベロス', 'Palencia': 'パレンシア', 'Santarém': 'サンタレン', 'Trujillo': 'トルヒージョ', 'Elche': 'エルチェ', 'Silleda': 'シジェダ', 'Ourense': 'オウレンセ', 'Boqueixón': 'ボケイション', 'Lleida': 'リェイダ', 'Girona': 'ジローナ', 'Santander': 'サンタンデール', 'Torrelavega': 'トレラベガ', 'Gijón': 'ヒホン', 'Tineo': 'ティネオ', 'Vegadeo': 'ベガデオ', 'Irún': 'イルン', 'Logroño': 'ログローニョ', 'Alfaro': 'アルファロ', 'Calahorra': 'カラオラ', 'Pamplona': 'パンプローナ', 'Vitoria': 'ビトリア', 'Aranda de Duero': 'アランダ・デ・ドゥエロ', 'Peso da Régua': 'ペーゾ・ダ・レグア', 'Ibiza': 'イビサ', 'Menorca': 'メノルカ', 'Ceuta': 'セウタ', 'Melilla': 'メリリャ', 'Tánger': 'タンジェ' },
+    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Mérida': 'メリダ', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Valladolid': 'バリャドリッド', 'Salamanca': 'サラマンカ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ', 'Almería': 'アルメリア', 'Aguadulce': 'アグアドゥルセ', 'El Ejido': 'エル・エヒード', 'Jaén': 'ハエン', 'Huelva': 'ウエルバ', 'Aracena': 'アラセナ', 'Punta Umbría': 'プンタ・ウンブリア', 'Córdoba': 'コルドバ', 'Pozoblanco': 'ポソブランコ', 'Villanueva de Córdoba': 'ビリャヌエバ・デ・コルドバ', 'Granada': 'グラナダ', 'Armilla': 'アルミジャ', 'Cádiz': 'カディス', 'Jerez de la Frontera': 'ヘレス・デ・ラ・フロンテーラ', 'Manzanares': 'マンサナレス', 'Porzuna': 'ポルスナ', 'Zamora': 'サモラ', 'Albacete': 'アルバセテ', 'Toledo': 'トレド', 'Cacabelos': 'カカベロス', 'Palencia': 'パレンシア', 'Santarém': 'サンタレン', 'Trujillo': 'トルヒージョ', 'Elche': 'エルチェ', 'Silleda': 'シジェダ', 'Ourense': 'オウレンセ', 'Boqueixón': 'ボケイション', 'Lleida': 'リェイダ', 'Girona': 'ジローナ', 'Santander': 'サンタンデール', 'Torrelavega': 'トレラベガ', 'Gijón': 'ヒホン', 'Tineo': 'ティネオ', 'Vegadeo': 'ベガデオ', 'Irún': 'イルン', 'Logroño': 'ログローニョ', 'Alfaro': 'アルファロ', 'Calahorra': 'カラオラ', 'Pamplona': 'パンプローナ', 'Vitoria': 'ビトリア', 'Aranda de Duero': 'アランダ・デ・ドゥエロ', 'Peso da Régua': 'ペーゾ・ダ・レグア', 'Ibiza': 'イビサ', 'Menorca': 'メノルカ', 'Ceuta': 'セウタ', 'Melilla': 'メリリャ', 'Tánger': 'タンジェ', 'Andorra': 'アンドラ', 'Andorra la Vella': 'アンドラ・ラ・ベリャ', 'Escaldes-Engordany': 'エスカルデス・エンゴルダニ', 'Encamp': 'エンカンプ', 'Ordino': 'オルディノ', 'Soldeu': 'ソルデウ' },
     // Simplified city mapping, defaulting to Spanish name if not defined to save space
   };
 
@@ -280,6 +280,8 @@
     'Ceuta': 'ceuta',
     'Melilla': 'melilla',
     'Tánger': 'tanger',
+    'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
+    'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Santander': 'santander', 'Torrelavega': 'santander',
     'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
@@ -291,7 +293,7 @@
     cordoba: 'Córdoba', granada: 'Granada', cadiz: 'Cádiz',
     santarem: 'Santarém', trujillo: 'Trujillo', elche: 'Elche',
     silleda: 'Silleda', ourense: 'Ourense',
-    lleida: 'Lleida', girona: 'Girona', irun: 'Irún', logrono: 'Logroño', pamplona: 'Pamplona', vitoria: 'Vitoria', aranda: 'Aranda de Duero', regua: 'Peso da Régua', ibiza: 'Ibiza', menorca: 'Menorca', ceuta: 'Ceuta', melilla: 'Melilla', tanger: 'Tánger',
+    lleida: 'Lleida', girona: 'Girona', irun: 'Irún', logrono: 'Logroño', pamplona: 'Pamplona', vitoria: 'Vitoria', aranda: 'Aranda de Duero', regua: 'Peso da Régua', ibiza: 'Ibiza', menorca: 'Menorca', ceuta: 'Ceuta', melilla: 'Melilla', tanger: 'Tánger', andorra: 'Andorra',
     santander: 'Santander', gijon: 'Gijón'
   };
   // Región para agrupar ferias hermanas (define la densidad del clúster; Extremadura es la prioridad).
@@ -324,6 +326,8 @@
     'Ceuta': 'ceuta',
     'Melilla': 'melilla',
     'Tánger': 'tanger',
+    'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
+    'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria',
     'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
@@ -366,6 +370,11 @@
     'Peso da Régua': 'Peso da Régua (Cais da Régua, Douro)',
     'Ibiza': 'Ibiza (recinto ferial de Ibiza)',
     'Menorca': 'Menorca (recinto ferial de Maó)',
+    'Andorra la Vella': 'Andorra la Vella (carpa del Parc Central)',
+    'Escaldes-Engordany': 'Escaldes-Engordany (El Prat del Roure)',
+    'Encamp': 'Encamp (Prat Gran de l\'Areny)',
+    'Ordino': 'Ordino (Plana dels Camps i La Cortinada)',
+    'Soldeu': 'Soldeu (Plaça Casa Calbó, Canillo)',
     'Ceuta': 'Ceuta (Palacio de Congresos de Ceuta)',
     'Melilla': 'Melilla (Palacio de Congresos y Exposiciones de Melilla)',
     'Santander': 'Palacio de Exposiciones y Congresos de Santander', 'Torrelavega': 'Mercado Nacional de Ganados de Torrelavega',
@@ -394,7 +403,7 @@
 
   const t = {
     es: {
-      heroTitle: (name) => `Diseño y montaje de stands en ${name}`,
+      heroTitle: (name) => `Diseño, construcción y montaje de stands en ${name}`,
       heroSubtitle: (city) => `Diseño y montaje de stands en ${city} con más de 20 años de experiencia y taller propio.`,
       intro: (name, city, sector) => `Standarte ofrece servicios integrales de diseño y montaje de stands de alta carpintería para la feria ${name} en ${city}. Como evento destacado del sector de ${sector}, su marca requiere un espacio que transmita excelencia técnica e innovación.`,
       intro2: 'Nos encargamos del modelado 3D, la fabricación en nuestro propio taller y el montaje final, asegurando que su espacio destaque por encima de la competencia sin depender de terceros.',
@@ -614,7 +623,11 @@
   $: fairRegion = CITY_REGION[fair.city];
   // Portada para ciudades-satélite sin página-pilar propia (no tienen currentCityKey,
   // pero sí imagen de recinto). Clave = fair.city -> nombre del archivo cover_<x>.avif.
-  const CITY_COVER = { 'Plasencia': 'plasencia', 'Aguadulce': 'almeria', 'El Ejido': 'almeria', 'Aracena': 'huelva', 'Punta Umbría': 'huelva', 'Torre Pacheco': 'murcia', 'Pozoblanco': 'cordoba', 'Villanueva de Córdoba': 'cordoba', 'Armilla': 'granada', 'Jerez de la Frontera': 'cadiz', 'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real' };
+  const CITY_COVER = { 'Plasencia': 'plasencia', 'Aguadulce': 'almeria', 'El Ejido': 'almeria', 'Aracena': 'huelva', 'Punta Umbría': 'huelva', 'Torre Pacheco': 'murcia', 'Pozoblanco': 'cordoba', 'Villanueva de Córdoba': 'cordoba', 'Armilla': 'granada', 'Jerez de la Frontera': 'cadiz', 'Manzanares': 'ciudad_real', 'Porzuna': 'ciudad_real',
+    // Andorra: el pilar se llama "Andorra" y ninguna feria está en una ciudad con ese
+    // nombre, así que la coincidencia exacta de currentCityKey falla y las parroquias
+    // se quedarían sin portada. Todas heredan la del hub.
+    'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra' };
   // Ficheros renombrados para esquivar una caché de respuestas obsoleta de OVH
   // (los nombres originales cover_murcia/cover_alicante quedaron atascados en text/html).
   const COVER_OVERRIDE = { murcia: 'murcia-v2', alicante: 'alicante-v2' };
@@ -709,14 +722,17 @@
   $: da = (directAnswer[lang] || directAnswer.es);
   $: pc = (patCta[lang] || patCta.es);
 
-  // #4 (G1) Proyecto 3D real del mismo sector que esta feria (malla feria → proyecto).
-  // Solo se muestra si hay un proyecto etiquetado con alguna actividad de la feria.
-  $: fairProject = (() => {
+  // #4 (G1) Proyectos 3D reales del mismo sector que esta feria (malla feria → proyecto).
+  // "La categoría" es la PRIMERA actividad de la feria que tenga proyectos: se devuelven
+  // TODOS los suyos para pasarlos en bucle con fundido (antes solo se usaba el primero).
+  $: fairProjects = (() => {
     for (const t of fairActivityTags) {
-      const ids = projectsForActivity(t);
-      if (ids.length) { const p = projectIndex.find((x) => x.id === ids[0]); if (p) return p; }
+      const ps = projectsForActivity(t)
+        .map((id) => projectIndex.find((x) => x.id === id))
+        .filter((p) => p && p.image);
+      if (ps.length) return ps;
     }
-    return null;
+    return [];
   })();
   // Foto de caso de éxito en el cuerpo (igual que en las páginas de ciudad): se muestra
   // SIEMPRE. Preferimos un proyecto del mismo sector (fairProject); si no hay, elegimos de
@@ -727,8 +743,25 @@
     for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
     return Math.abs(h);
   }
-  $: caseProject = fairProject
-    || (projectIndex.length ? projectIndex[hashStr(fair.slug) % Math.min(12, projectIndex.length)] : null);
+  // Lista que se pasa en bucle. Si la feria no tiene proyectos de su sector, se queda la
+  // única foto determinista de siempre (sin bucle: no hay "categoría" de la que tirar).
+  $: caseProjects = fairProjects.length
+    ? fairProjects
+    : (projectIndex.length ? [projectIndex[hashStr(fair.slug) % Math.min(12, projectIndex.length)]] : []);
+  // Al cambiar de feria (navegación cliente) el bucle vuelve a empezar.
+  let caseIdx = 0;
+  $: fair.slug, (caseIdx = 0);
+  $: caseProject = caseProjects[caseIdx] || caseProjects[0] || null;
+
+  // Bucle infinito de la foto de caso: 6 s por imagen, fundido por CSS. Se respeta
+  // prefers-reduced-motion (quien lo pide se queda con la primera foto, fija).
+  onMount(() => {
+    if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => {
+      if (caseProjects.length > 1) caseIdx = (caseIdx + 1) % caseProjects.length;
+    }, 6000);
+    return () => clearInterval(id);
+  });
   // Pie de la foto de caso (texto idéntico al de las páginas de ciudad).
   const casoEjemplo = {
     es: 'Ejemplo de trabajo realizado por nuestro equipo',
@@ -936,8 +969,22 @@
              segundo párrafo del cuerpo (el de modelado 3D) y antes de "Servicios". -->
         {#if caseProject}
           <figure class="oro-case-figure">
-            <a href={projectUrl(caseProject.id, lang)}>
-              {#if caseProject.image}<img src={caseProject.image} alt={(caseProject.title && (caseProject.title[lang] || caseProject.title.es)) || caseProject.name} width="800" height="450" loading="lazy" decoding="async" />{/if}
+            <!-- Bucle con fundido entre las fotos del mismo sector. La primera va en flujo
+                 y fija el alto de la caja (como cuando había una sola); el resto se apilan
+                 encima en absoluto. El enlace apunta siempre a la foto visible. -->
+            <a href={projectUrl(caseProject.id, lang)} class="oro-case-stack">
+              {#each caseProjects as p, i (p.id)}
+                <img
+                  class="oro-case-img"
+                  class:is-base={i === 0}
+                  class:is-active={i === caseIdx}
+                  src={p.image}
+                  alt={(p.title && (p.title[lang] || p.title.es)) || p.name}
+                  width="800" height="450"
+                  loading="lazy"
+                  decoding="async"
+                />
+              {/each}
             </a>
             <figcaption>{casoEjemplo[lang] || casoEjemplo.es}</figcaption>
           </figure>
@@ -1116,7 +1163,7 @@
   @media (max-width: 768px) { .feria-guarantee-stamp { width: 78px; height: 78px; top: -22px; right: 8px; } }
   /* Foto de caso de éxito: usa la clase global .oro-case-figure (igual que en ciudad). */
   .highlight {
-    font-family: 'Francois One', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
     line-height: 1.6;
     font-weight: 400;

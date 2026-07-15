@@ -417,7 +417,7 @@
   .wiz-chip-edit { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 20px; background: rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.7); }
 
   .wiz-step { min-height: 232px; }
-  .wiz-head { margin: 0 0 6px; font-family: 'Francois One', serif; font-weight: 400; font-size: 26px; line-height: 1.2; color: #fff; }
+  .wiz-head { margin: 0 0 6px; font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 26px; line-height: 1.2; color: #fff; }
   .wiz-sub { margin: 0 0 22px; font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, 0.6); }
   .wiz-field { margin-bottom: 18px; display: flex; flex-direction: column; }
 
@@ -464,7 +464,7 @@
   .band-scale { display: flex; gap: 5px; }
   .band-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); transition: background 0.2s ease; }
   .band-dot.on { background: #ffc800; }
-  .band-name { font-family: 'Francois One', serif; font-weight: 400; font-size: 17px; line-height: 1.15; }
+  .band-name { font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 17px; line-height: 1.15; }
   .band-range { font-family: Inconsolata, monospace; font-size: 15px; font-weight: 700; color: #ffc800; letter-spacing: 0.02em; }
   .band-check { position: absolute; top: 12px; right: 12px; width: 22px; height: 22px; border-radius: 50%; background: #ffc800; color: #111; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.5); transition: opacity 0.18s ease, transform 0.18s ease; }
   .band-card.selected .band-check { opacity: 1; transform: scale(1); }
@@ -483,7 +483,7 @@
   .wiz-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 26px; }
   .wiz-back { background: none; border: none; color: rgba(255, 255, 255, 0.6); font-family: Inconsolata, monospace; font-size: 15px; font-weight: 600; cursor: pointer; padding: 8px 4px; transition: color 0.2s ease; }
   .wiz-back:hover { color: #fff; }
-  .wiz-next { min-width: 150px; min-height: 48px; padding: 10px 30px; color: #111; background: #ffc800; border: 1px solid #ffc800; border-radius: 30px; font-family: 'Francois One', serif; font-weight: 400; font-size: 16px; letter-spacing: 0.04em; cursor: pointer; box-shadow: 0 4px 14px rgba(255, 200, 0, 0.28); transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.2s ease; }
+  .wiz-next { min-width: 150px; min-height: 48px; padding: 10px 30px; color: #111; background: #ffc800; border: 1px solid #ffc800; border-radius: 30px; font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 16px; letter-spacing: 0.04em; cursor: pointer; box-shadow: 0 4px 14px rgba(255, 200, 0, 0.28); transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.2s ease; }
   .wiz-next:hover:not(:disabled) { background: #ffd633; transform: translateY(-2px); box-shadow: 0 7px 20px rgba(255, 200, 0, 0.4); }
   .wiz-next:active:not(:disabled) { transform: translateY(0); }
   .wiz-next:disabled { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.35); cursor: not-allowed; box-shadow: none; }
@@ -498,7 +498,7 @@
 
   .lista_direccion { padding-left: 0 !important; margin-left: 0 !important; }
   .whatsapp-li { list-style: none !important; margin-top: 12px !important; }
-  .contact-whatsapp { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: #25d366; color: #fff !important; border-radius: 30px; font-family: 'Francois One', serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; text-decoration: none !important; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
+  .contact-whatsapp { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: #25d366; color: #fff !important; border-radius: 30px; font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.03em; text-decoration: none !important; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
   .contact-whatsapp:hover, .contact-whatsapp:focus { background: #1ebe57; color: #fff !important; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45); }
   .contact-whatsapp svg { fill: currentColor; flex-shrink: 0; width: 18px; height: 18px; }
 
@@ -515,7 +515,7 @@
   .contact-person { display: flex; align-items: center; gap: 14px; margin: 0 0 24px; }
   .contact-person-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(0, 0, 0, 0.08); flex-shrink: 0; }
   .contact-person figcaption { display: flex; flex-direction: column; line-height: 1.3; }
-  .contact-person-name { font-family: 'Francois One', serif; font-weight: 400; font-size: 15px; color: #1a1e21; }
+  .contact-person-name { font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 15px; color: #1a1e21; }
   .contact-person-role { font-size: 13px; color: #666; }
   .contact-light .contact-us p, .contact-light .contact-us li { color: #333; }
   .contact-light .lista_direccion { border-top-color: rgba(0, 0, 0, 0.15); }

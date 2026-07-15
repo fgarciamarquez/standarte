@@ -781,14 +781,14 @@
   .precio-card h2 {
     margin: 0;
     color: #444;
-    font-family: 'Francois One', serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 22px;
   }
   .precio-amount {
     margin: 0;
     color: #111;
-    font-family: 'Francois One', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 26px;
   }
   .precio-desc {
@@ -816,7 +816,7 @@
   .precios-factors h2,
   .precios-faq h2 {
     color: #444;
-    font-family: 'Francois One', serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 24px;
     margin: 0 0 16px;

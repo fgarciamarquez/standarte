@@ -2336,5 +2336,54 @@ export const fairsData = [
     "slug": "eventos-industriales-tanger-med",
     "city": "Tánger",
     "sector": "Industria y Logística"
+  },
+  {
+    "name": "Fira d'Andorra la Vella",
+    "country": "ad",
+    "slug": "fira-andorra-la-vella",
+    "city": "Andorra la Vella",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Enfira't",
+    "country": "ad",
+    "slug": "enfirat-encamp",
+    "city": "Encamp",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Andorra Taste",
+    "country": "ad",
+    "slug": "andorra-taste",
+    "city": "Escaldes-Engordany",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Fira del Vermut d'Andorra",
+    "country": "ad",
+    "slug": "fira-del-vermut-andorra",
+    "city": "Ordino",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Fira del Bestiar d'Ordino",
+    "country": "ad",
+    "slug": "fira-del-bestiar-ordino",
+    "city": "Ordino",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Mercat de la Vall",
+    "country": "ad",
+    "slug": "mercat-de-la-vall-andorra",
+    "city": "Andorra la Vella",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Fira Outlet de Soldeu",
+    "country": "ad",
+    "slug": "fira-outlet-soldeu",
+    "city": "Soldeu",
+    "sector": "Comercio y Packaging"
   }
 ];

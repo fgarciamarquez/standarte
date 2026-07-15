@@ -397,7 +397,14 @@ export const fairActivities = {
   "tanger-nexus": ["multisectorial","congreso-profesional"],
   "tanger-fashion-week": ["moda-textil","joyeria"],
   "amith-nord-tanger": ["moda-textil"],
-  "eventos-industriales-tanger-med": ["logistica","maquinaria-industrial"]
+  "eventos-industriales-tanger-med": ["logistica","maquinaria-industrial"],
+  "fira-andorra-la-vella": ["multisectorial","turismo"],
+  "enfirat-encamp": ["multisectorial","automocion"],
+  "andorra-taste": ["gastronomia-hosteleria","congreso-profesional"],
+  "fira-del-vermut-andorra": ["vino","gastronomia-hosteleria"],
+  "fira-del-bestiar-ordino": ["ganaderia","alimentacion"],
+  "mercat-de-la-vall-andorra": ["regalo-decoracion","alimentacion"],
+  "fira-outlet-soldeu": ["moda-textil","regalo-decoracion"]
 };
 
 // Helpers

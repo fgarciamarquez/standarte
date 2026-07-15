@@ -588,12 +588,9 @@
         famEls[f].texts[1].node.textContent = inCity;
       });
       cityGroup.childNodes.forEach((n) => n.classList.toggle('dimmed', n._city !== city));
-      const rows = Object.keys(city.tags)
-        .sort((a, b) => city.tags[b] - city.tags[a])
-        .map((t) => '<li><span><span class="pm-sw" style="background:' + famColor(t) + '"></span>' +
-          labelForTag(t, currentLang) + '</span><b>' + city.tags[t] + '</b></li>')
-        .join('');
-      tooltipEl.innerHTML = '<h4>' + city.name + '</h4><ul>' + rows + '</ul>';
+      // El tooltip muestra solo el nombre de la ciudad: el desglose por actividad ya lo
+      // cuenta el resaltado del propio mapa (nódulos y familias) al hacer :hover.
+      tooltipEl.textContent = city.name;
       tooltipEl.classList.add('visible');
       if (evt) positionTooltip(evt);
       else positionTooltipAtNode(city);
@@ -1118,7 +1115,7 @@
 
   /* Marca de agua tejida: filigrana "STANDARTE" repetida sobre todo el mapa. */
   :global(.pm-wm-tile) {
-    font-family: 'Francois One', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 26px;
     letter-spacing: 0.3em;
     fill: #1a1e21;
@@ -1232,45 +1229,39 @@
   .pm-tooltip {
     position: absolute;
     pointer-events: none;
-    padding: 10px 12px;
+    padding: 6px 10px;
     max-width: 250px;
     opacity: 0;
     transform: translate(-50%, -100%);
     transition: opacity 0.12s ease;
     z-index: 5;
-    background: rgba(255, 255, 255, 0.94);
-    border: 1px solid #d6d7d0;
+    background: rgba(26, 30, 33, 0.96);
+    border: 1px solid rgba(244, 244, 242, 0.14);
     border-radius: 4px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(6px);
-  }
-  .pm-tooltip.visible { opacity: 1; }
-  .pm-tooltip :global(h4) {
+    /* Solo lleva el nombre de la ciudad (texto plano), así que la tipografía va aquí.
+       Misma familia y tamaño que los rótulos de localidad del mapa (.pm-city-hint). */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    margin: 0 0 6px;
-    color: #1a1e21;
+    font-size: 13px;
+    line-height: 1.3;
     font-weight: 600;
+    color: #f4f4f2;
   }
-  .pm-tooltip :global(ul) { list-style: none; margin: 0; padding: 0; }
-  .pm-tooltip :global(li) {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: 11px;
-    color: #5c6157;
-    padding: 2px 0;
+  /* Piquito inferior: señala el punto exacto de la ciudad. El tooltip se ancla con
+     translate(-50%,-100%), así que el vértice cae centrado sobre el nódulo. */
+  .pm-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-top-color: rgba(26, 30, 33, 0.96);
   }
-  .pm-tooltip :global(li b) {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    color: #1a1e21;
-    font-variant-numeric: tabular-nums;
-  }
-  .pm-tooltip :global(.pm-sw) {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    margin-right: 6px;
-  }
+  /* `visible` la añade el JS (classList.add), nunca está en el marcado: sin :global()
+     Svelte poda este selector por "no usado" y el tooltip jamás llega a opacity 1. */
+  .pm-tooltip:global(.visible) { opacity: 1; }
 </style>

@@ -45,6 +45,7 @@ export const routes = {
     ceuta: 'diseno_montaje_stands_ceuta',
     melilla: 'diseno_montaje_stands_melilla',
     tanger: 'diseno_montaje_stands_tanger',
+    andorra: 'diseno_montaje_stands_andorra',
     gijon: 'diseno_montaje_stands_gijon',
     lleida: 'diseno_montaje_stands_lleida',
     girona: 'diseno_montaje_stands_girona',
@@ -109,6 +110,7 @@ export const routes = {
     ceuta: 'stand_design_assembly_ceuta',
     melilla: 'stand_design_assembly_melilla',
     tanger: 'stand_design_assembly_tangier',
+    andorra: 'stand_design_assembly_andorra',
     gijon: 'stand_design_assembly_gijon',
     lleida: 'stand_design_assembly_lleida',
     girona: 'stand_design_assembly_girona',
@@ -173,6 +175,7 @@ export const routes = {
     ceuta: 'messestand_design_montage_ceuta',
     melilla: 'messestand_design_montage_melilla',
     tanger: 'messestand_design_montage_tanger',
+    andorra: 'messestand_design_montage_andorra',
     gijon: 'messestand_design_montage_gijon',
     lleida: 'messestand_design_montage_lleida',
     girona: 'messestand_design_montage_girona',
@@ -237,6 +240,7 @@ export const routes = {
     ceuta: 'ceuta_zhantai_sheji_dajian',
     melilla: 'melilla_zhantai_sheji_dajian',
     tanger: 'tanger_zhantai_sheji_dajian',
+    andorra: 'andorra_zhantai_sheji_dajian',
     gijon: 'gijon_zhantai_sheji_dajian',
     lleida: 'lleida_zhantai_sheji_dajian',
     girona: 'girona_zhantai_sheji_dajian',
@@ -301,6 +305,7 @@ export const routes = {
     ceuta: 'ceuta_stand_dizain_asembli',
     melilla: 'melilla_stand_dizain_asembli',
     tanger: 'tanger_stand_dizain_asembli',
+    andorra: 'andorra_stand_dizain_asembli',
     gijon: 'gijon_stand_dizain_asembli',
     lleida: 'lleida_stand_dizain_asembli',
     girona: 'girona_stand_dizain_asembli',
@@ -365,6 +370,7 @@ export const routes = {
     ceuta: 'design_montagem_stands_ceuta',
     melilla: 'design_montagem_stands_melilla',
     tanger: 'design_montagem_stands_tanger',
+    andorra: 'design_montagem_stands_andorra',
     gijon: 'design_montagem_stands_gijon',
     lleida: 'design_montagem_stands_lleida',
     girona: 'design_montagem_stands_girona',
@@ -429,6 +435,7 @@ export const routes = {
     ceuta: 'conception_montage_stands_ceuta',
     melilla: 'conception_montage_stands_melilla',
     tanger: 'conception_montage_stands_tanger',
+    andorra: 'conception_montage_stands_andorre',
     gijon: 'conception_montage_stands_gijon',
     lleida: 'conception_montage_stands_lleida',
     girona: 'conception_montage_stands_girona',
@@ -493,6 +500,7 @@ export const routes = {
     ceuta: 'progettazione_montaggio_stand_ceuta',
     melilla: 'progettazione_montaggio_stand_melilla',
     tanger: 'progettazione_montaggio_stand_tangeri',
+    andorra: 'progettazione_montaggio_stand_andorra',
     gijon: 'progettazione_montaggio_stand_gijon',
     lleida: 'progettazione_montaggio_stand_lleida',
     girona: 'progettazione_montaggio_stand_girona',
@@ -557,6 +565,7 @@ export const routes = {
     ceuta: 'ceuta-buseu-dijain-jorip',
     melilla: 'melilla-buseu-dijain-jorip',
     tanger: 'tanger-buseu-dijain-jorip',
+    andorra: 'andorra-buseu-dijain-jorip',
     gijon: 'gijon-bujeu-dijain-jorip',
     lleida: 'lleida-bujeu-dijain-jorip',
     girona: 'girona-bujeu-dijain-jorip',
@@ -621,6 +630,7 @@ export const routes = {
     ceuta: 'セウタ展示会ブース設計施工',
     melilla: 'メリリャ展示会ブース設計施工',
     tanger: 'タンジェ展示会ブース設計施工',
+    andorra: 'アンドラ展示会ブース設計施工',
     gijon: 'ヒホン展示会ブース設計施工',
     lleida: 'リェイダ展示会ブース設計施工',
     girona: 'ジローナ展示会ブース設計施工',
@@ -685,6 +695,7 @@ export const routes = {
     ceuta: 'standontwerp_montage_ceuta',
     melilla: 'standontwerp_montage_melilla',
     tanger: 'standontwerp_montage_tanger',
+    andorra: 'standontwerp_montage_andorra',
     gijon: 'standontwerp_montage_gijon',
     lleida: 'standontwerp_montage_lleida',
     girona: 'standontwerp_montage_girona',
@@ -3067,6 +3078,55 @@ export const cityData = {
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはタンジェで展示会ブースの設計・施工を行います。ここはジブラルタル海峡を挟んだモロコの玄関口であり、繊維・産業・物流の拠点で、Maroc in Mode (MIM)、Tanger Nexus、Tanger Fashion Week、AMITH Nordの会合、Tanger Medの産業イベントなどが開催され、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、海峡を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  andorra: {
+    city: { es: 'Andorra', en: 'Andorra', de: 'Andorra', zh: '安道尔', hi: 'अंडोरा', pt: 'Andorra', fr: 'Andorre', it: 'Andorra', ko: '안도라', ja: 'アンドラ', nl: 'Andorra' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Andorra —principado del Pirineo entre España y Francia, con citas como la Fira d\'Andorra la Vella, Andorra Taste y l\'Enfira\'t d\'Encamp— controlando cada fase: diseño 3D, fabricación, tránsito aduanero, transporte de montaña, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, también al otro lado de la frontera.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Andorra —a Pyrenean principality between Spain and France, with events such as the Fira d\'Andorra la Vella, Andorra Taste and Enfira\'t in Encamp— controlling every phase: 3D design, production, customs clearance, mountain transport, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, on the other side of the border too.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Andorra — einem Fürstentum in den Pyrenäen zwischen Spanien und Frankreich, mit Veranstaltungen wie der Fira d\'Andorra la Vella, Andorra Taste und dem Enfira\'t in Encamp — und kontrolliert jede Phase: 3D-Design, Produktion, Zollabfertigung, Bergtransport, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch auf der anderen Seite der Grenze.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Andorra — principado dos Pirenéus entre Espanha e França, com certames como a Fira d\'Andorra la Vella, a Andorra Taste e o Enfira\'t de Encamp — controlando cada fase: design 3D, fabrico, trânsito aduaneiro, transporte de montanha, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, também do outro lado da fronteira.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands en Andorre — principauté des Pyrénées entre l\'Espagne et la France, avec des rendez-vous comme la Fira d\'Andorra la Vella, Andorra Taste et l\'Enfira\'t d\'Encamp — en maîtrisant chaque phase : conception 3D, fabrication, transit douanier, transport de montagne, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails, de l\'autre côté de la frontière aussi.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand ad Andorra — principato dei Pirenei tra Spagna e Francia, con appuntamenti come la Fira d\'Andorra la Vella, Andorra Taste e l\'Enfira\'t di Encamp — controllando ogni fase: progettazione 3D, produzione, transito doganale, trasporto di montagna, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli, anche dall\'altra parte del confine.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Andorra — een vorstendom in de Pyreneeën tussen Spanje en Frankrijk, met evenementen zoals de Fira d\'Andorra la Vella, Andorra Taste en de Enfira\'t in Encamp — met volledige controle over elke fase: 3D-ontwerp, productie, douaneafhandeling, bergtransport, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, ook aan de overkant van de grens.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在安道尔为展会设计并搭建展台——这个位于西班牙与法国之间的比利牛斯山公国，举办 Fira d\'Andorra la Vella、Andorra Taste 以及恩坎普的 Enfira\'t 等展会——全程掌控每个环节：3D设计、制造、海关通关、山区运输、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便在边境的另一侧。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte अंडोरा में स्टैंड डिज़ाइन और स्थापित करता है — यह स्पेन और फ़्रांस के बीच पिरेनीज़ में स्थित एक रियासत है, जहाँ Fira d\'Andorra la Vella, Andorra Taste और एनकांप का Enfira\'t जैसे कार्यक्रम होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, सीमा शुल्क निकासी, पर्वतीय परिवहन, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को सीमा के उस पार भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 안도라에서 전시회 부스를 디자인하고 시공합니다. 이곳은 Fira d\'Andorra la Vella, Andorra Taste, 엔캄프의 Enfira\'t 등이 열리는 스페인과 프랑스 사이 피레네의 공국으로, 3D 디자인, 제작, 통관, 산악 운송, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 국경 건너에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはアンドラで展示会ブースの設計・施工を行います。ここはFira d\'Andorra la Vella、Andorra Taste、エンカンプのEnfira\'tなどが開催されるスペインとフランスに挟まれたピレネーの公国で、3D設計、製作、通関、山岳輸送、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、国境を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }
   },
