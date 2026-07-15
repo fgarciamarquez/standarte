@@ -497,7 +497,7 @@
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
   // Cuerpo reestructurado para ciudades Oro (reordena "Ferias y sectores" + colapsables).
-  $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang, bodyCase) : seoContent.body) : '';
+  $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
   $: h1Text = seoContent ? ((section in cityData) ? rewriteTitulo(seoContent.h1, lang) : seoContent.h1) : '';
   // Hero con fondo animado (fotos en movimiento) en la home Y en las páginas matriz de ciudad.
@@ -528,6 +528,36 @@
   $: caseIndex = casePool.length ? hashStr(section) % casePool.length : 0;
   $: bodyCase = casePool[caseIndex] || null;
   $: selectedPortfolios = casePool.filter((_, i) => i !== caseIndex).slice(0, 3);
+  // Secuencia del bucle de la foto del cuerpo: las mismas 12 del pozo, rotadas para
+  // EMPEZAR por la que ya le toca a esta ciudad (bodyCase). Así lo prerenderizado no
+  // cambia y cada ciudad sigue abriendo con su foto estable.
+  $: caseSeq = casePool.length
+    ? casePool.map((_, k) => casePool[(caseIndex + k) % casePool.length])
+    : [];
+
+  // Bucle de la foto del cuerpo: 6 s por imagen, el fundido lo hace el CSS. La figura la
+  // inyecta transformOroBody con {@html}, así que aquí no hay reactividad de Svelte y el
+  // ciclo se lleva a mano sobre el DOM. Se respeta prefers-reduced-motion (queda fija la
+  // primera). Se rearranca cuando cambia bodyHtml (cambio de ciudad o de idioma).
+  let caseLoopId = null;
+  function startCaseLoop() {
+    if (caseLoopId) { clearInterval(caseLoopId); caseLoopId = null; }
+    if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const stack = document.querySelector('.oro-case-stack');
+    if (!stack) return;
+    const imgs = [...stack.querySelectorAll('.oro-case-img')];
+    if (imgs.length < 2) return;
+    let i = 0;
+    caseLoopId = setInterval(() => {
+      imgs[i].classList.remove('is-active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('is-active');
+      // el enlace acompaña a la foto visible: cada una es de un proyecto distinto
+      if (imgs[i].dataset.href) stack.setAttribute('href', imgs[i].dataset.href);
+    }, 6000);
+  }
+  $: if (typeof document !== 'undefined' && bodyHtml) tick().then(startCaseLoop);
+  onMount(() => () => { if (caseLoopId) clearInterval(caseLoopId); });
 
   // --- Clúster pilar→ferias: en cada página de ciudad, enlazar a las ferias de su región ---
   const SECTION_REGION = {
@@ -755,10 +785,13 @@
     if (iPat >= 0) skip.add(iPat);
     if (canMerge) { skip.add(iGar); skip.add(iLog); }
     if (canCob) skip.add(iCob);
-    // Imagen del primer caso de éxito (primera de las 12 de la galería) que se inserta
-    // tras el apartado "Claves para lograr…", a todo el ancho de la columna.
-    const caso = bodyCase || portfolios[0];
-    const caseFigure = caso ? `<figure class="oro-case-figure"><a href="/galeria/${caso.slugs.es}"><img src="/${caso.thumb.replace(/\.avif$/, '-md.avif')}" srcset="/${caso.thumb.replace(/\.avif$/, '-sb.avif')} 300w, /${caso.thumb.replace(/\.avif$/, '-md.avif')} 800w" sizes="(max-width: 900px) 92vw, 640px" width="800" height="450" alt="${getProjectTitle(caso)}" loading="lazy" decoding="async" /></a><figcaption>${casoEjemploCaption[lang] || casoEjemploCaption.es}</figcaption></figure>` : '';
+    // Imagen de caso de éxito que se inserta tras el apartado "Claves para lograr…", a
+    // todo el ancho de la columna. Es un bucle con fundido por las 12 de la galería
+    // (mismo patrón que las páginas de feria): la primera va en flujo y fija el alto y
+    // el resto se apilan encima. El pie de foto es único y no cambia. El enlace lo
+    // reapunta el bucle (startCaseLoop) a la foto visible en cada momento.
+    const seq = (caseSeq && caseSeq.length) ? caseSeq : (portfolios[0] ? [portfolios[0]] : []);
+    const caseFigure = seq.length ? `<figure class="oro-case-figure"><a href="/galeria/${seq[0].slugs.es}" class="oro-case-stack">${seq.map((c, k) => `<img class="oro-case-img${k === 0 ? ' is-base is-active' : ''}" data-href="/galeria/${c.slugs.es}" src="/${c.thumb.replace(/\.avif$/, '-md.avif')}" srcset="/${c.thumb.replace(/\.avif$/, '-sb.avif')} 300w, /${c.thumb.replace(/\.avif$/, '-md.avif')} 800w" sizes="(max-width: 900px) 92vw, 640px" width="800" height="450" alt="${getProjectTitle(c)}" loading="lazy" decoding="async" />`).join('')}</a><figcaption>${casoEjemploCaption[lang] || casoEjemploCaption.es}</figcaption></figure>` : '';
     const render = (i) => {
       if (i === iDoc && docSection !== undefined) return docSection;
       if (i === iPorQue && porqueSection !== null) return collapseSection(porqueSection);

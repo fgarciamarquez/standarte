@@ -42,9 +42,17 @@
 
   // Texto del botón de reactivación de Pat (asesor de Expansión) por idioma.
   const expansionLabels = {
-    es: 'Expansión', en: 'Expansion', de: 'Expansion', fr: 'Expansion',
-    it: 'Espansione', pt: 'Expansão', zh: '业务拓展', hi: 'विस्तार',
-    ko: '사업 확장', ja: '事業拡大', nl: 'Expansie'
+    es: 'Explora nuestra red de Expansión',
+    en: 'Explore our Expansion network',
+    de: 'Entdecke unser Expansionsnetz',
+    fr: 'Explorez notre réseau d\'Expansion',
+    it: 'Esplora la nostra rete di Espansione',
+    pt: 'Explora a nossa rede de Expansão',
+    zh: '探索我们的业务拓展网络',
+    hi: 'हमारा विस्तार नेटवर्क देखें',
+    ko: '사업 확장 네트워크 살펴보기',
+    ja: '事業拡大ネットワークを見る',
+    nl: 'Ontdek ons Expansienetwerk'
   };
   $: expansionLabel = expansionLabels[lang] || expansionLabels.es;
 
@@ -211,10 +219,45 @@
     box-shadow: 0 3px 10px rgba(255, 200, 0, 0.4);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    /* Contiene el reflejo dentro de la píldora y lo recorta al borde redondeado. */
+    position: relative;
+    overflow: hidden;
+    animation: goldPulse 2.8s ease-in-out infinite;
+  }
+  /* Reflejo especular que barre el botón: es lo que lo hace leer como metal pulido
+     y no como un simple parpadeo. Va sincronizado con el pulso (mismo período). */
+  .ai-geo .ai-geo-btn.ai-geo-reactivate::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    pointer-events: none;
+    background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+    transform: translateX(-140%);
+    animation: goldSheen 2.8s ease-in-out infinite;
+  }
+  /* Luminosidad + halo: sube y baja sin llegar a saturar el dorado. */
+  @keyframes goldPulse {
+    0%, 100% { filter: brightness(1); box-shadow: 0 3px 10px rgba(255, 200, 0, 0.4); }
+    50% { filter: brightness(1.14); box-shadow: 0 3px 18px rgba(255, 200, 0, 0.75); }
+  }
+  @keyframes goldSheen {
+    0% { transform: translateX(-140%); }
+    55%, 100% { transform: translateX(320%); }
   }
   .ai-geo .ai-geo-btn.ai-geo-reactivate:hover,
   .ai-geo .ai-geo-btn.ai-geo-reactivate:focus {
     background: #e0b000;
     transform: translateY(-1px);
+  }
+  /* Quien pide menos movimiento se queda con el botón dorado fijo. */
+  @media (prefers-reduced-motion: reduce) {
+    .ai-geo .ai-geo-btn.ai-geo-reactivate,
+    .ai-geo .ai-geo-btn.ai-geo-reactivate::after {
+      animation: none;
+    }
+    .ai-geo .ai-geo-btn.ai-geo-reactivate::after { opacity: 0; }
   }
 </style>

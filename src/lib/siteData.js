@@ -742,7 +742,6 @@ export const copy = {
     seoTitle: 'Standarte | Diseño y montaje de stands en España y Portugal · Proyecto Auditado',
     seoDescription: 'Standarte: la empresa ideal para tu estrategia de expansión presencial en España y Portugal, gracias a nuestra extensa cobertura de eventos.',
     heroTitle: 'Crece en las ferias de España y Portugal',
-    heroSubtitle: 'Diseño y construcción de stands. La mayor cobertura ibérica con capacidad de expansión comercial.',
     servicesTitle: 'Servicios',
     services: [
       ['Diseño e Ingeniería', 'Nuestro equipo profesional tomará nota de las necesidades de su proyecto que, con todo detalle, quedarán reflejadas en un diseño 3D personalizado que podrá explorar y revisar antes del comienzo de la fabricación. La imagen del prototipo será 100% fidedigna al resultado final.'],
@@ -790,7 +789,7 @@ export const copy = {
         }
       ]
     },
-    citiesIntro: 'Diseñamos y montamos stands para ferias y eventos en ciudades clave de España y Portugal.',
+    citiesIntro: 'Diseño, construcción y montaje de stands en ciudades clave de España y Portugal',
     customTitle: 'Galería',
     customSubtitle: 'Clasificados por la técnica de montaje principal.',
     filters: { all: 'Todos', textil: 'Textil', madera: 'Madera' },
@@ -822,7 +821,6 @@ export const copy = {
     seoTitle: 'Standarte | Exhibition stand design and build in Spain and Portugal · Audited Project',
     seoDescription: 'Standarte: the ideal partner for your on-site expansion strategy across Spain and Portugal, backed by our extensive event coverage.',
     heroTitle: 'Grow at trade fairs across Spain and Portugal',
-    heroSubtitle: 'Stand design and construction, strategic fair selection and the widest Iberian coverage with a single partner. We turn your trade-fair presence into commercial growth.',
     servicesTitle: 'Services',
     services: [
       ['Design and Engineering', 'Our professional team will take note of the needs of your project, which, in detail, will be reflected in a customized 3D prototype that you can explore and review before the start of manufacturing. The image of the prototype will be 100% faithful to the final result.'],
@@ -870,7 +868,7 @@ export const copy = {
         }
       ]
     },
-    citiesIntro: 'We design, produce and install exhibition stands for trade fairs and events in key cities across Spain and Portugal.',
+    citiesIntro: 'Exhibition stand design, construction and assembly in key cities of Spain and Portugal',
     customTitle: 'Gallery',
     customSubtitle: 'Classified by main assembly technique.',
     filters: { all: 'All', textil: 'Textile', madera: 'Wood' },
@@ -902,7 +900,6 @@ export const copy = {
     seoTitle: 'Standarte | Messestand-Design und Montage in Spanien und Portugal',
     seoDescription: 'Standarte: der ideale Partner für Ihre Expansionsstrategie vor Ort in Spanien und Portugal, dank unserer breiten Messe-Abdeckung.',
     heroTitle: 'Wachsen Sie auf Messen in Spanien und Portugal',
-    heroSubtitle: 'Standdesign und -bau, strategische Messeauswahl und die größte iberische Abdeckung mit einem einzigen Partner. Wir machen aus Ihrem Messeauftritt echtes Geschäftswachstum.',
     servicesTitle: 'Dienstleistungen',
     services: [
       ['Design und Ingenieurwesen', 'Unser Team wird die Bedürfnisse Ihres Projekts im Detail notieren, die sich in einem 3D-Prototypen widerspiegeln werden, den Sie vor Beginn der Fertigung erkunden und überprüfen können. Das Bild des Prototyps wird zu 100% dem endgültigen Ergebnis entsprechen.'],
@@ -950,7 +947,7 @@ export const copy = {
         }
       ]
     },
-    citiesIntro: 'Wir entwerfen, produzieren und montieren Messestände für Messen und Events in wichtigen Städten Spaniens und Portugals.',
+    citiesIntro: 'Design, Bau und Montage von Messeständen in Schlüsselstädten Spaniens und Portugals',
     customTitle: 'Galerie',
     customSubtitle: 'Nach Haupt-Montagetechnik geordnet.',
     filters: { all: 'Alle', textil: 'Textil', madera: 'Holz' },
@@ -982,7 +979,6 @@ export const copy = {
     seoTitle: 'Standarte | 西班牙和葡萄牙展台设计与搭建',
     seoDescription: 'Standarte：凭借广泛的展会覆盖，是您在西班牙和葡萄牙实现线下扩张战略的理想合作伙伴。',
     heroTitle: '在西班牙和葡萄牙的展会上实现增长',
-    heroSubtitle: '展台设计与搭建、参展策略与最广泛的伊比利亚覆盖，全程由唯一合作伙伴负责。我们把您的参展转化为真正的商业扩张。',
     servicesTitle: '服务',
     services: [['设计与工程', '我们的团队将记录您项目的需求，这些需求将以细节的方式体现在一个3D原型中，您可以在制造开始之前进行探索和审查。原型的图像将百分之百忠实于最终结果。'], ['展台搭建', '在搭建过程中，我们采用最先进的组装技术和特定用于短暂建筑的材料。这使我们能够提供一个无瑕的外观，从而在第一眼就能展示出质量。'], ['安装和验证', '我们包揽一切。您可以在展会的第一天轻松自如地亮相，而且一切都已准备就绪，可以开始您的商业工作。无论是在马德里、法兰克福、北京还是芝加哥的展会，我们都能提供展台、餐饮、文具等服务。']],
     micro: {
@@ -1026,7 +1022,7 @@ export const copy = {
         }
       ]
     },
-    citiesIntro: '我们在西班牙和葡萄牙重点城市为展会和活动设计、制作并搭建展台。',
+    citiesIntro: '西班牙与葡萄牙重点城市的展台设计、搭建与安装',
     customTitle: '展台图库',
     customSubtitle: '按主要搭建技术分类。',
     filters: { all: '全部', textil: '纺织品', madera: '木材' },
@@ -1058,7 +1054,6 @@ export const copy = {
     seoTitle: 'Standarte | स्पेन और पुर्तगाल में स्टैंड डिज़ाइन और असेंबली',
     seoDescription: 'Standarte: स्पेन और पुर्तगाल में आपकी उपस्थिति विस्तार रणनीति के लिए आदर्श भागीदार, हमारी व्यापक इवेंट कवरेज की बदौलत।',
     heroTitle: 'स्पेन और पुर्तगाल की प्रदर्शनियों में आगे बढ़ें',
-    heroSubtitle: 'स्टैंड डिज़ाइन और निर्माण, रणनीतिक मेला चयन और सबसे व्यापक इबेरियन कवरेज — एक ही साझेदार के साथ। हम आपकी प्रदर्शनी उपस्थिति को वास्तविक व्यावसायिक विस्तार में बदलते हैं।',
     servicesTitle: 'सेवाएँ',
     services: [['डिज़ाइन और इंजीनियरिंग', 'हमारी टीम आपके परियोजना की आवश्यकताओं का नोट लेगी, जिसे से संपूर्ण विस्तार से एक 3D प्रोटोटाइप में प्रतिबिंबित किया जाएगा, जिसे आप असेंबली की शुरुआत से पहले जांच सकते हैं और समीक्षा कर सकते हैं। प्रोटोटाइप की छवि अंतिम परिणाम के लिए 100% विश्वसनीय होगी।'], ['बूथ असेंबली', 'असेंबली प्रक्रिया में हम अल्पकालिक निर्माण में उपयोग के लिए विशिष्ट सामग्रियों के साथ सबसे आधुनिक असेंबली तकनीकों को लागू करते हैं। यह हमें एक त्रुटिहीन उपस्थिति प्रदान करने की अनुमति देता है जो पहली नज़र में गुणवत्ता प्रदर्शित करेगी।'], ['समारोह और मान्यताएँ', 'हम हर चीज़ का ख्याल रखते हैं. मन की पूर्ण शांति के साथ आप मेले के पहले दिन आ सकते हैं, और आपको अपना व्यावसायिक कार्य शुरू करने के लिए सब कुछ तैयार मिलेगा। स्टैंड, खानपान, स्टेशनरी,... चाहे यह मैड्रिड, फ्रैंकफर्ट, बीजिंग या शिकागो में मेला हो।']],
     micro: {
@@ -1102,7 +1097,7 @@ export const copy = {
         }
       ]
     },
-    citiesIntro: 'हम स्पेन और पुर्तगाल के प्रमुख शहरों में मेलों और इवेंट्स के लिए प्रदर्शनी स्टैंड डिजाइन, असेंबली और इंस्टॉल करते हैं।',
+    citiesIntro: 'स्पेन और पुर्तगाल के प्रमुख शहरों में स्टैंड का डिज़ाइन, निर्माण और असेंबली',
     customTitle: 'गैलरी',
     customSubtitle: 'मुख्य असेंबली तकनीक के अनुसार वर्गीकृत।',
     filters: { all: 'सभी', textil: 'वस्त्र', madera: 'लकड़ी' },
@@ -1134,7 +1129,6 @@ export const copy = {
     seoTitle: 'Standarte | Design e montagem de stands em Espanha e Portugal · Projeto Auditado',
     seoDescription: 'A Standarte: a empresa ideal para a sua estratégia de expansão presencial em Espanha e Portugal, graças à nossa ampla cobertura de eventos.',
     heroTitle: 'Cresça nas feiras de Espanha e Portugal',
-    heroSubtitle: 'Design e construção de stands, seleção estratégica de feiras e a maior cobertura ibérica com um único parceiro. Transformamos a sua presença em feiras em expansão comercial.',
     servicesTitle: 'Serviços',
     services: [
       ['Projeto e Engenharia', 'Nossa equipe tomará nota das necessidades do seu projeto, que, detalhadamente, serão refletidas em um protótipo 3D que você poderá explorar e revisar antes do início da fabricação. A imagem do protótipo será 100% fiel ao resultado final.'],
@@ -1182,7 +1176,7 @@ export const copy = {
         }
       ]
     },
-    citiesIntro: 'Desenhamos, produzimos e montamos stands para feiras e eventos em cidades-chave de Espanha e Portugal.',
+    citiesIntro: 'Design, construção e montagem de stands em cidades-chave de Espanha e Portugal',
     customTitle: 'Galeria',
     customSubtitle: 'Classificados pela técnica principal de montagem.',
     filters: { all: 'Tudo', textil: 'Têxtil', madera: 'Madeira' },
@@ -1217,7 +1211,6 @@ export const copy = {
     seoTitle: 'Standarte | Monteur de stands en Espagne et Portugal',
     seoDescription: 'Standarte : le partenaire idéal pour votre stratégie d\'expansion physique en Espagne et au Portugal, grâce à notre large couverture d\'événements.',
     heroTitle: 'Développez-vous sur les salons d\'Espagne et du Portugal',
-    heroSubtitle: 'Conception et construction de stands, choix stratégique des salons et la plus large couverture ibérique avec un seul partenaire. Nous transformons votre présence en salon en croissance commerciale.',
     servicesTitle: 'Services',
     services: [
       ['Conception et Ingénierie', 'Notre équipe professionnelle prendra note des besoins de votre projet, qui seront reflétés en détail dans un prototype 3D personnalisé que vous pourrez explorer et réviser avant le début de la fabrication. L\'image du prototype sera 100% fidèle au résultat final.'],
@@ -1253,7 +1246,7 @@ export const copy = {
         { src: '/img/video_standarte_feria_verano.mp4', title: 'Salons en plein air grand format', subtitle: 'Montages à grande échelle et tentes premium haute résistance.' }
       ]
     },
-    citiesIntro: 'Nous concevons, fabriquons et montons des stands pour des salons et événements dans les principales villes d\'Espagne et Portugal.',
+    citiesIntro: 'Conception, construction et montage de stands dans les villes clés d\'Espagne et du Portugal',
     customTitle: 'Galerie',
     customSubtitle: 'Classés par technique de montage principale.',
     filters: { all: 'Tous', textil: 'Textile', madera: 'Bois' },
@@ -1281,7 +1274,6 @@ export const copy = {
     seoTitle: 'Standarte | Allestimenti fieristici in Spagna e Portogallo',
     seoDescription: 'Standarte: il partner ideale per la tua strategia di espansione fisica in Spagna e Portogallo, grazie alla nostra ampia copertura di fiere.',
     heroTitle: 'Cresci nelle fiere di Spagna e Portogallo',
-    heroSubtitle: 'Progettazione e costruzione di stand, scelta strategica delle fiere e la più ampia copertura iberica con un unico partner. Trasformiamo la tua presenza fieristica in espansione commerciale.',
     servicesTitle: 'Servizi',
     services: [
       ['Progettazione e Ingegneria', 'Il nostro team professionale prenderà nota delle esigenze del tuo progetto, che saranno riflesse in dettaglio in un prototipo 3D personalizzato che potrai esplorare e rivedere prima dell\'inizio della produzione. L\'immagine del prototipo sarà fedele al 100% al risultato finale.'],
@@ -1317,7 +1309,7 @@ export const copy = {
         { src: '/img/video_standarte_feria_verano.mp4', title: 'Fiere all\'aperto di grande formato', subtitle: 'Allestimenti su larga scala e tende premium ad alta resistenza.' }
       ]
     },
-    citiesIntro: 'Progettiamo, produciamo e allestiamo stand per fiere ed eventi nelle principali città di Spagna e Portogallo.',
+    citiesIntro: 'Progettazione, costruzione e montaggio di stand nelle città chiave di Spagna e Portogallo',
     customTitle: 'Galleria',
     customSubtitle: 'Classificati per tecnica di montaggio principale.',
     filters: { all: 'Tutti', Tessile: 'Tessile', Legno: 'Legno' },
@@ -1351,7 +1343,6 @@ export const copy = {
   "seoTitle": "Standarte | 마드리드, 바르셀로나, 빌바오, 말라가, 리스본의 전시 부스 디자인·설치 전문",
   "seoDescription": "Standarte는 폭넓은 전시회 커버리지를 바탕으로 스페인과 포르투갈 현지 확장 전략에 이상적인 파트너입니다.",
   "heroTitle": "스페인과 포르투갈 전시회에서 성장하세요",
-  "heroSubtitle": "부스 디자인·시공, 전략적 전시회 선정, 그리고 가장 넓은 이베리아 커버리지를 단일 파트너와 함께. 귀사의 전시회 참가를 실질적인 사업 확장으로 바꿉니다.",
   "servicesTitle": "서비스",
   "services": [
     [
@@ -1408,7 +1399,7 @@ export const copy = {
       }
     ]
   },
-  "citiesIntro": "우리는 스페인과 포르투갈의 주요 도시에서 열리는 무역 박람회와 행사용 전시 부스를 설계, 제작 및 설치합니다.",
+  "citiesIntro": "스페인과 포르투갈 주요 도시의 부스 디자인, 제작 및 설치",
   "customTitle": "갤러리",
   "customSubtitle": "주요 조립 기술별로 분류됩니다.",
   "filters": {
@@ -1484,7 +1475,6 @@ export const copy = {
     seoTitle: '海外展示会ブースの設計・製作・組立 | スペイン・ポルトガル | Standarte',
     seoDescription: 'Standarteは、幅広い展示会カバレッジにより、スペイン・ポルトガルでの現地拡大戦略に最適なパートナーです。',
     heroTitle: 'スペイン・ポルトガルの展示会でビジネスを伸ばす',
-    heroSubtitle: 'ブースの設計・施工、出展する展示会の戦略的な選定、そして最も広いイベリア半島カバレッジを、単一のパートナーで。展示会への出展を実際の事業拡大に変えます。',
     servicesTitle: 'サービス',
     services: [
       ['設計とエンジニアリング', '専門チームがお客様のプロジェクトのご要望を細部まで把握し、それをオーダーメイドの3Dプロトタイプに反映します。製作を開始する前にご確認・ご検討いただけます。プロトタイプの画像は完成品を100%忠実に再現します。'],
@@ -1520,7 +1510,7 @@ export const copy = {
         { src: '/img/video_standarte_feria_verano.mp4', title: '大型屋外展示会', subtitle: '大規模な設営とプレミアムな高耐久テント。' }
       ]
     },
-    citiesIntro: 'スペインとポルトガルの主要都市で開催される展示会やイベント向けに、展示ブースの設計・製作・組立を行っています。',
+    citiesIntro: 'スペイン・ポルトガルの主要都市でのスタンド設計・施工・設営',
     customTitle: 'ギャラリー',
     customSubtitle: '主な組立技術別に分類しています。',
     filters: { all: 'すべて', textil: 'テキスタイル', madera: '木材' },
@@ -1552,7 +1542,6 @@ export const copy = {
     seoTitle: 'Standarte | Standontwerp en montage in Spanje en Portugal',
     seoDescription: 'Standarte: de ideale partner voor uw fysieke expansiestrategie in Spanje en Portugal, dankzij onze brede beursdekking.',
     heroTitle: 'Groei op beurzen in Spanje en Portugal',
-    heroSubtitle: 'Standontwerp en -bouw, strategische beurskeuze en de breedste Iberische dekking met één partner. Wij maken van uw beursdeelname echte commerciële groei.',
     servicesTitle: 'Diensten',
     services: [
       ['Ontwerp en engineering', 'Ons professionele team noteert de behoeften van uw project en verwerkt deze tot in detail in een gepersonaliseerd 3D-ontwerp dat u kunt verkennen en beoordelen vóór de productie begint. Het beeld van het prototype is 100% getrouw aan het eindresultaat.'],
@@ -1588,7 +1577,7 @@ export const copy = {
         { src: '/img/video_standarte_feria_verano.mp4', title: 'Grootschalige openluchtbeurzen', subtitle: 'Grootschalige opbouw en premium tenten met hoge weerstand.' }
       ]
     },
-    citiesIntro: 'Wij ontwerpen, produceren en monteren stands voor beurzen en evenementen in belangrijke steden in Spanje en Portugal.',
+    citiesIntro: 'Ontwerp, bouw en montage van beursstands in belangrijke steden in Spanje en Portugal',
     customTitle: 'Galerij',
     customSubtitle: 'Geordend op de belangrijkste montagetechniek.',
     filters: { all: 'Alle', textil: 'Textiel', madera: 'Hout' },
