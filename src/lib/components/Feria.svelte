@@ -815,7 +815,7 @@
 <svelte:head>
   <title>{seoTitle}</title>
   <meta name="description" content={seoDesc} />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
   {#each languages as alternateLang}
@@ -959,7 +959,10 @@
           href="#feria-presupuesto"
           on:click={(e) => { e.preventDefault(); document.getElementById('feria-presupuesto')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
         >{strings.cta}</a>
-        <p class="highlight">{seoDesc}</p>
+        <!-- h2 (no <p>): es la respuesta directa de la ficha y encabeza el cuerpo. Hereda
+             el font-weight: 900 !important de h1-h5 (app.css), así que se lee como
+             encabezado; .highlight solo le aporta tamaño e interlineado. -->
+        <h2 class="highlight">{seoDesc}</h2>
         {#if fairBody}
           <div class="fair-unique">{@html fairBody}</div>
         {/if}
@@ -1162,11 +1165,12 @@
   .feria-guarantee-stamp img { display: block; width: 100%; height: 100%; }
   @media (max-width: 768px) { .feria-guarantee-stamp { width: 78px; height: 78px; top: -22px; right: 8px; } }
   /* Foto de caso de éxito: usa la clase global .oro-case-figure (igual que en ciudad). */
+  /* Viste al <h2> de respuesta directa. El peso y la familia los fija la regla global
+     h1-h5 de app.css (Roboto 900 !important), así que aquí solo van tamaño, interlineado
+     y separación: declarar font-weight sería código muerto, el !important lo anularía. */
   .highlight {
-    font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
     line-height: 1.6;
-    font-weight: 400;
     margin-bottom: 2rem;
   }
   /* CTA de conversión: usa la clase global .oro-cta-espacio (igual que en ciudad). */

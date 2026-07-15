@@ -269,7 +269,7 @@
 <svelte:head>
   <title>{seoTitles[lang] || seoTitles.es}</title>
   <meta name="description" content={seoDescriptions[lang] || seoDescriptions.es} />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href={`https://standarte.es${pathFor(lang, 'noticias')}`} />
   <!-- Preload LCP background image for layout widths -->
   <link

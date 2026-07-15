@@ -1632,8 +1632,11 @@
 <svelte:head>
   <title>{title}</title>
   <meta name="description" content={description} />
+  <!-- Una sola meta para todos los rastreadores. NO añadir una <meta name="googlebot">:
+       las directivas por rastreador tienen prioridad sobre esta, así que una que dijera
+       solo "index, follow" dejaría fuera max-image-preview:large para Google. Y no aporta
+       nada: index/follow ya es el comportamiento por defecto. -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="googlebot" content="index, follow" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
   {#if (animatedHero && !isCityPage) || section === 'contact' || section === 'services'}

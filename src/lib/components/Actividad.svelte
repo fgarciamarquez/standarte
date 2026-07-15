@@ -161,7 +161,7 @@
 <svelte:head>
   <title>{pageTitle}</title>
   <meta name="description" content={metaDesc} />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
   {#each languages as alt}

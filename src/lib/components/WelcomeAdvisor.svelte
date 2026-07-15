@@ -926,7 +926,7 @@
   }
   .advisor-activity-pitch p {
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.55;
     color: #6b7075;
   }
