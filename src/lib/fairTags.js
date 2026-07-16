@@ -404,7 +404,8 @@ export const fairActivities = {
   "fira-del-vermut-andorra": ["vino","gastronomia-hosteleria"],
   "fira-del-bestiar-ordino": ["ganaderia","alimentacion"],
   "mercat-de-la-vall-andorra": ["regalo-decoracion","alimentacion"],
-  "fira-outlet-soldeu": ["moda-textil","regalo-decoracion"]
+  "fira-outlet-soldeu": ["moda-textil","regalo-decoracion"],
+  "motortec-madrid": ["automocion","maquinaria-industrial"]
 };
 
 // Helpers

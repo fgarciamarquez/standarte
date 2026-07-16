@@ -2385,5 +2385,12 @@ export const fairsData = [
     "slug": "fira-outlet-soldeu",
     "city": "Soldeu",
     "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Motortec Madrid",
+    "country": "es",
+    "slug": "motortec-madrid",
+    "city": "Madrid",
+    "sector": "Aeronáutica y Transporte"
   }
 ];
