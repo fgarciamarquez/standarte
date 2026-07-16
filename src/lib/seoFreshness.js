@@ -23,7 +23,7 @@ export const seoFreshness = {
   oporto: '2026-07-14',
   vigo: '2026-07-14',
   portugal_sur: '2026-07-14',
-  madrid: '2026-07-14',
+  madrid: '2026-07-16',
   bilbao: '2026-07-14',
   malaga: '2026-07-14',
   sevilla: '2026-07-14',
