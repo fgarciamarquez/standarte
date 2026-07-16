@@ -46,6 +46,7 @@ export const routes = {
     melilla: 'diseno_montaje_stands_melilla',
     tanger: 'diseno_montaje_stands_tanger',
     andorra: 'diseno_montaje_stands_andorra',
+    teruel: 'diseno_montaje_stands_teruel',
     gijon: 'diseno_montaje_stands_gijon',
     lleida: 'diseno_montaje_stands_lleida',
     girona: 'diseno_montaje_stands_girona',
@@ -111,6 +112,7 @@ export const routes = {
     melilla: 'stand_design_assembly_melilla',
     tanger: 'stand_design_assembly_tangier',
     andorra: 'stand_design_assembly_andorra',
+    teruel: 'stand_design_assembly_teruel',
     gijon: 'stand_design_assembly_gijon',
     lleida: 'stand_design_assembly_lleida',
     girona: 'stand_design_assembly_girona',
@@ -176,6 +178,7 @@ export const routes = {
     melilla: 'messestand_design_montage_melilla',
     tanger: 'messestand_design_montage_tanger',
     andorra: 'messestand_design_montage_andorra',
+    teruel: 'messestand_design_montage_teruel',
     gijon: 'messestand_design_montage_gijon',
     lleida: 'messestand_design_montage_lleida',
     girona: 'messestand_design_montage_girona',
@@ -241,6 +244,7 @@ export const routes = {
     melilla: 'melilla_zhantai_sheji_dajian',
     tanger: 'tanger_zhantai_sheji_dajian',
     andorra: 'andorra_zhantai_sheji_dajian',
+    teruel: 'teruel_zhantai_sheji_dajian',
     gijon: 'gijon_zhantai_sheji_dajian',
     lleida: 'lleida_zhantai_sheji_dajian',
     girona: 'girona_zhantai_sheji_dajian',
@@ -306,6 +310,7 @@ export const routes = {
     melilla: 'melilla_stand_dizain_asembli',
     tanger: 'tanger_stand_dizain_asembli',
     andorra: 'andorra_stand_dizain_asembli',
+    teruel: 'teruel_stand_dizain_asembli',
     gijon: 'gijon_stand_dizain_asembli',
     lleida: 'lleida_stand_dizain_asembli',
     girona: 'girona_stand_dizain_asembli',
@@ -371,6 +376,7 @@ export const routes = {
     melilla: 'design_montagem_stands_melilla',
     tanger: 'design_montagem_stands_tanger',
     andorra: 'design_montagem_stands_andorra',
+    teruel: 'design_montagem_stands_teruel',
     gijon: 'design_montagem_stands_gijon',
     lleida: 'design_montagem_stands_lleida',
     girona: 'design_montagem_stands_girona',
@@ -436,6 +442,7 @@ export const routes = {
     melilla: 'conception_montage_stands_melilla',
     tanger: 'conception_montage_stands_tanger',
     andorra: 'conception_montage_stands_andorre',
+    teruel: 'conception_montage_stands_teruel',
     gijon: 'conception_montage_stands_gijon',
     lleida: 'conception_montage_stands_lleida',
     girona: 'conception_montage_stands_girona',
@@ -501,6 +508,7 @@ export const routes = {
     melilla: 'progettazione_montaggio_stand_melilla',
     tanger: 'progettazione_montaggio_stand_tangeri',
     andorra: 'progettazione_montaggio_stand_andorra',
+    teruel: 'progettazione_montaggio_stand_teruel',
     gijon: 'progettazione_montaggio_stand_gijon',
     lleida: 'progettazione_montaggio_stand_lleida',
     girona: 'progettazione_montaggio_stand_girona',
@@ -566,6 +574,7 @@ export const routes = {
     melilla: 'melilla-buseu-dijain-jorip',
     tanger: 'tanger-buseu-dijain-jorip',
     andorra: 'andorra-buseu-dijain-jorip',
+    teruel: 'teruel-buseu-dijain-jorip',
     gijon: 'gijon-bujeu-dijain-jorip',
     lleida: 'lleida-bujeu-dijain-jorip',
     girona: 'girona-bujeu-dijain-jorip',
@@ -631,6 +640,7 @@ export const routes = {
     melilla: 'メリリャ展示会ブース設計施工',
     tanger: 'タンジェ展示会ブース設計施工',
     andorra: 'アンドラ展示会ブース設計施工',
+    teruel: 'テルエル展示会ブース設計施工',
     gijon: 'ヒホン展示会ブース設計施工',
     lleida: 'リェイダ展示会ブース設計施工',
     girona: 'ジローナ展示会ブース設計施工',
@@ -696,6 +706,7 @@ export const routes = {
     melilla: 'standontwerp_montage_melilla',
     tanger: 'standontwerp_montage_tanger',
     andorra: 'standontwerp_montage_andorra',
+    teruel: 'standontwerp_montage_teruel',
     gijon: 'standontwerp_montage_gijon',
     lleida: 'standontwerp_montage_lleida',
     girona: 'standontwerp_montage_girona',
@@ -3116,6 +3127,55 @@ export const cityData = {
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはアンドラで展示会ブースの設計・施工を行います。ここはFira d\'Andorra la Vella、Andorra Taste、エンカンプのEnfira\'tなどが開催されるスペインとフランスに挟まれたピレネーの公国で、3D設計、製作、通関、山岳輸送、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、国境を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  teruel: {
+    city: { es: 'Teruel', en: 'Teruel', de: 'Teruel', zh: '特鲁埃尔', hi: 'टेरुएल', pt: 'Teruel', fr: 'Teruel', it: 'Teruel', ko: '테루엘', ja: 'テルエル', nl: 'Teruel' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en la provincia de Teruel —tierra del jamón con DOP, con citas como la Feria del Jamón de Teruel y Alimentos de Calidad en la capital, ExpoCalamocha y AgroAlcañiz— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, también en el interior de Aragón.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in the province of Teruel —land of the PDO cured ham, with events such as the Feria del Jamón de Teruel y Alimentos de Calidad in the capital, ExpoCalamocha and AgroAlcañiz— controlling every phase: 3D design, production, logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, in inland Aragón too.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in der Provinz Teruel — Heimat des Schinkens mit geschützter Ursprungsbezeichnung, mit Veranstaltungen wie der Feria del Jamón de Teruel y Alimentos de Calidad in der Hauptstadt, ExpoCalamocha und AgroAlcañiz — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch im Inneren Aragoniens.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands na província de Teruel — terra do presunto com DOP, com certames como a Feria del Jamón de Teruel y Alimentos de Calidad na capital, a ExpoCalamocha e a AgroAlcañiz — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, também no interior de Aragão.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d\'expérience dans l\'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands dans la province de Teruel — terre du jambon AOP, avec des rendez-vous comme la Feria del Jamón de Teruel y Alimentos de Calidad dans la capitale, ExpoCalamocha et AgroAlcañiz — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d\'esprit d\'un montage sans surprise et une attention exceptionnelle aux détails, à l\'intérieur de l\'Aragon aussi.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand nella provincia di Teruel — terra del prosciutto DOP, con appuntamenti come la Feria del Jamón de Teruel y Alimentos de Calidad nel capoluogo, ExpoCalamocha e AgroAlcañiz — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un\'eccezionale attenzione ai dettagli, anche nell\'entroterra dell\'Aragona.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in de provincie Teruel — het land van de ham met beschermde oorsprongsbenaming, met evenementen zoals de Feria del Jamón de Teruel y Alimentos de Calidad in de hoofdstad, ExpoCalamocha en AgroAlcañiz — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, ook in het binnenland van Aragón.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在特鲁埃尔省为展会设计并搭建展台——这里是原产地保护火腿之乡，举办首府的 Feria del Jamón de Teruel y Alimentos de Calidad、ExpoCalamocha 以及 AgroAlcañiz 等展会——全程掌控每个环节：3D设计、制造、物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便在阿拉贡内陆地区。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte टेरुएल प्रांत में स्टैंड डिज़ाइन और स्थापित करता है — यह DOP हैम की भूमि है, जहाँ राजधानी में Feria del Jamón de Teruel y Alimentos de Calidad, ExpoCalamocha और AgroAlcañiz जैसे कार्यक्रम होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को आरागोन के भीतरी इलाकों में भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 테루엘 주에서 전시회 부스를 디자인하고 시공합니다. 이곳은 원산지 명칭 보호(DOP) 하몽의 고장으로, 주도에서 열리는 Feria del Jamón de Teruel y Alimentos de Calidad, ExpoCalamocha, AgroAlcañiz 등이 개최되며, 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 아라곤 내륙에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはテルエル県で展示会ブースの設計・施工を行います。ここは原産地呼称保護（DOP）生ハムの産地で、県都で開催されるFeria del Jamón de Teruel y Alimentos de Calidad、ExpoCalamocha、AgroAlcañizなどの見本市が開かれ、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、アラゴンの内陸でも想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }
   },

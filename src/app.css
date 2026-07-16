@@ -118,6 +118,26 @@ p {
   pointer-events: none;
 }
 
+/* Crédito de portada (licencia CC BY-SA): discreto en la esquina inferior derecha del
+   hero, legible sobre la foto. Solo aparece en portadas que lo exigen (p. ej. Tánger). */
+.cover-credit {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  z-index: 2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.cover-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cover-credit a:hover { color: #fff; }
+
 .site-header.hero-anim .hero { position: relative; z-index: 1; } /* contenido por encima de las capas */
 .site-header.hero-anim .hero-subpage { position: relative; z-index: 1; }
 /* Ciudades matriz: mismo fondo animado que la home, con overlay translúcido para
@@ -3707,6 +3727,33 @@ p b {
   .counters {
     background: url('/img/taller_standarte_sombra-mobile.avif') scroll center center / cover no-repeat;
   }
+}
+
+/* Espacio excepcional: homenaje a Jorge Oteiza en el sidebar de Bilbao */
+.oteiza-tribute {
+  margin: 0 0 1.4rem;
+  text-align: center;
+}
+.oteiza-tribute img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.oteiza-tribute figcaption {
+  margin-top: 0.45rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #8a8f88;
+}
+.oteiza-tribute figcaption span {
+  display: block;
+}
+.oteiza-tribute figcaption span[lang='eu'] {
+  font-style: italic;
+  opacity: 0.75;
 }
 
 

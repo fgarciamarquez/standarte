@@ -405,7 +405,10 @@ export const fairActivities = {
   "fira-del-bestiar-ordino": ["ganaderia","alimentacion"],
   "mercat-de-la-vall-andorra": ["regalo-decoracion","alimentacion"],
   "fira-outlet-soldeu": ["moda-textil","regalo-decoracion"],
-  "motortec-madrid": ["automocion","maquinaria-industrial"]
+  "motortec-madrid": ["automocion","maquinaria-industrial"],
+  "feria-jamon-teruel": ["alimentacion","gastronomia-hosteleria"],
+  "expocalamocha": ["ganaderia","agricultura-maquinaria"],
+  "agroalcaniz": ["agricultura-maquinaria","maquinaria-industrial"]
 };
 
 // Helpers

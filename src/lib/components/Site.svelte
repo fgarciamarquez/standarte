@@ -573,7 +573,7 @@
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
     ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger',
-    andorra: 'andorra'
+    andorra: 'andorra', teruel: 'aragon'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -593,6 +593,7 @@
     'San Vicente de Alcántara': 'extremadura',
     'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra',
+    'Teruel': 'aragon', 'Calamocha': 'aragon', 'Alcañiz': 'aragon',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'
@@ -958,6 +959,18 @@
   function coverBase(id) {
     return COVER_OVERRIDE[id] || id;
   }
+  // Créditos de portada obligatorios: portadas bajo licencia con atribución (CC BY-SA).
+  // Tánger usa una foto aérea de Tanger Med (Wikimedia Commons, CC BY-SA 4.0): la licencia
+  // exige acreditar autor, enlazar a la licencia e indicar que se ha modificado (recortada).
+  const COVER_CREDIT = {
+    tanger: {
+      author: 'Tanger Med',
+      authorUrl: 'https://commons.wikimedia.org/wiki/File:Vue_g%C3%A9n%C3%A9raleH13A0659.JPG',
+      licenseName: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/deed.es'
+    }
+  };
+  $: coverCredit = COVER_CREDIT[section] || null;
 
   function cityTitle(id) {
     const city = cityData[id]?.city?.[lang] || cityData[id]?.city?.es || '';
@@ -1011,6 +1024,7 @@
     'Tánger': 'tanger',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
+    'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   function fairsForCity(cityKey) {
@@ -1689,6 +1703,11 @@
       aria-hidden="true"
       fetchpriority="high"
     />
+    {#if coverCredit}
+      <!-- Atribución obligatoria de la portada (CC BY-SA): autor + licencia enlazados;
+           title indica que la imagen se ha modificado (recortada/reescalada). -->
+      <span class="cover-credit" title="Imagen recortada y reescalada">© <a href={coverCredit.authorUrl} target="_blank" rel="noopener nofollow">{coverCredit.author}</a> · <a href={coverCredit.licenseUrl} target="_blank" rel="license noopener nofollow">{coverCredit.licenseName}</a></span>
+    {/if}
   {:else if animatedHero}
     <div class="hero-bg-layer hero-bg-a" aria-hidden="true"></div>
     <div class="hero-bg-layer hero-bg-b" aria-hidden="true"></div>
@@ -2209,6 +2228,16 @@
           <!-- Sidebar con casos de éxito reales -->
           <aside class="seo-sidebar">
             <div class="sidebar-sticky">
+              <!-- Espacio excepcional: homenaje a Jorge Oteiza (solo Bilbao), sobre la tarjeta del mapa de Pat. -->
+              {#if section === 'bilbao'}
+                <figure class="oteiza-tribute">
+                  <img src="/img/homenaje-oteiza-bilbao.avif" alt="Homenaje a Jorge Oteiza" width="481" height="415" loading="lazy" decoding="async" />
+                  <figcaption>
+                    <span lang="es">Homenaje a Jorge Oteiza</span>
+                    <span lang="eu">Jorge Oteizari omenaldia</span>
+                  </figcaption>
+                </figure>
+              {/if}
               <!-- B1: prueba de cobertura verificable (recuento real de ferias) + Pat. -->
               {#if (section in cityData) && regionFairs.length && cityDisplayName}
                 <section class="coverage-proof sidebar-module">

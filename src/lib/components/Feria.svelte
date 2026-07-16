@@ -248,7 +248,7 @@
   const cities = {
     es: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Málaga', 'Lisboa': 'Lisboa', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Sevilla', 'París': 'París', 'Stuttgart': 'Stuttgart', 'Múnich': 'Múnich', 'Núremberg': 'Núremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Mérida': 'Mérida', 'A Coruña': 'A Coruña', 'Valladolid': 'Valladolid', 'Salamanca': 'Salamanca', 'Europa': 'Europa', 'Oporto': 'Oporto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha', 'Almería': 'Almería', 'Aguadulce': 'Aguadulce', 'El Ejido': 'El Ejido' },
     en: { 'Madrid': 'Madrid', 'Barcelona': 'Barcelona', 'Málaga': 'Malaga', 'Lisboa': 'Lisbon', 'Bilbao': 'Bilbao', 'Badajoz': 'Badajoz', 'Zaragoza': 'Zaragoza', 'Ciudad Real': 'Ciudad Real', 'Sevilla': 'Seville', 'París': 'Paris', 'Stuttgart': 'Stuttgart', 'Múnich': 'Munich', 'Núremberg': 'Nuremberg', 'Lyon': 'Lyon', 'Vigo': 'Vigo', 'Santiago de Compostela': 'Santiago de Compostela', 'Don Benito': 'Don Benito', 'Almendralejo': 'Almendralejo', 'Plasencia': 'Plasencia', 'Mérida': 'Mérida', 'A Coruña': 'A Coruña', 'Valladolid': 'Valladolid', 'Salamanca': 'Salamanca', 'Europa': 'Europe', 'Oporto': 'Porto', 'Valencia': 'Valencia', 'Mallorca': 'Mallorca', 'Batalha': 'Batalha', 'Almería': 'Almeria', 'Aguadulce': 'Aguadulce', 'El Ejido': 'El Ejido', 'Jaén': 'Jaen', 'Huelva': 'Huelva', 'Aracena': 'Aracena', 'Punta Umbría': 'Punta Umbria', 'Córdoba': 'Cordoba', 'Pozoblanco': 'Pozoblanco', 'Villanueva de Córdoba': 'Villanueva de Cordoba', 'Granada': 'Granada', 'Armilla': 'Armilla', 'Cádiz': 'Cadiz', 'Jerez de la Frontera': 'Jerez de la Frontera', 'Manzanares': 'Manzanares', 'Porzuna': 'Porzuna', 'Zamora': 'Zamora', 'Albacete': 'Albacete', 'Toledo': 'Toledo', 'Cacabelos': 'Cacabelos', 'Palencia': 'Palencia', 'Santarém': 'Santarem', 'Trujillo': 'Trujillo', 'Elche': 'Elche' },
-    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Mérida': 'メリダ', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Valladolid': 'バリャドリッド', 'Salamanca': 'サラマンカ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ', 'Almería': 'アルメリア', 'Aguadulce': 'アグアドゥルセ', 'El Ejido': 'エル・エヒード', 'Jaén': 'ハエン', 'Huelva': 'ウエルバ', 'Aracena': 'アラセナ', 'Punta Umbría': 'プンタ・ウンブリア', 'Córdoba': 'コルドバ', 'Pozoblanco': 'ポソブランコ', 'Villanueva de Córdoba': 'ビリャヌエバ・デ・コルドバ', 'Granada': 'グラナダ', 'Armilla': 'アルミジャ', 'Cádiz': 'カディス', 'Jerez de la Frontera': 'ヘレス・デ・ラ・フロンテーラ', 'Manzanares': 'マンサナレス', 'Porzuna': 'ポルスナ', 'Zamora': 'サモラ', 'Albacete': 'アルバセテ', 'Toledo': 'トレド', 'Cacabelos': 'カカベロス', 'Palencia': 'パレンシア', 'Santarém': 'サンタレン', 'Trujillo': 'トルヒージョ', 'Elche': 'エルチェ', 'Silleda': 'シジェダ', 'Ourense': 'オウレンセ', 'Boqueixón': 'ボケイション', 'Lleida': 'リェイダ', 'Girona': 'ジローナ', 'Santander': 'サンタンデール', 'Torrelavega': 'トレラベガ', 'Gijón': 'ヒホン', 'Tineo': 'ティネオ', 'Vegadeo': 'ベガデオ', 'Irún': 'イルン', 'Logroño': 'ログローニョ', 'Alfaro': 'アルファロ', 'Calahorra': 'カラオラ', 'Pamplona': 'パンプローナ', 'Vitoria': 'ビトリア', 'Aranda de Duero': 'アランダ・デ・ドゥエロ', 'Peso da Régua': 'ペーゾ・ダ・レグア', 'Ibiza': 'イビサ', 'Menorca': 'メノルカ', 'Ceuta': 'セウタ', 'Melilla': 'メリリャ', 'Tánger': 'タンジェ', 'Andorra': 'アンドラ', 'Andorra la Vella': 'アンドラ・ラ・ベリャ', 'Escaldes-Engordany': 'エスカルデス・エンゴルダニ', 'Encamp': 'エンカンプ', 'Ordino': 'オルディノ', 'Soldeu': 'ソルデウ' },
+    ja: { 'Madrid': 'マドリード', 'Barcelona': 'バルセロナ', 'Málaga': 'マラガ', 'Lisboa': 'リスボン', 'Bilbao': 'ビルバオ', 'Badajoz': 'バダホス', 'Zaragoza': 'サラゴサ', 'Ciudad Real': 'シウダーレアル', 'Sevilla': 'セビリア', 'París': 'パリ', 'Stuttgart': 'シュトゥットガルト', 'Múnich': 'ミュンヘン', 'Núremberg': 'ニュルンベルク', 'Lyon': 'リヨン', 'Vigo': 'ビーゴ', 'Santiago de Compostela': 'サンティアゴ・デ・コンポステーラ', 'Don Benito': 'ドンベニート', 'Almendralejo': 'アルメンドラレホ', 'Plasencia': 'プラセンシア', 'Mérida': 'メリダ', 'Zafra': 'サフラ', 'A Coruña': 'ア・コルーニャ', 'Valladolid': 'バリャドリッド', 'Salamanca': 'サラマンカ', 'Europa': 'ヨーロッパ', 'Oporto': 'ポルト', 'Valencia': 'バレンシア', 'Mallorca': 'マヨルカ', 'Batalha': 'バターリャ', 'Almería': 'アルメリア', 'Aguadulce': 'アグアドゥルセ', 'El Ejido': 'エル・エヒード', 'Jaén': 'ハエン', 'Huelva': 'ウエルバ', 'Aracena': 'アラセナ', 'Punta Umbría': 'プンタ・ウンブリア', 'Córdoba': 'コルドバ', 'Pozoblanco': 'ポソブランコ', 'Villanueva de Córdoba': 'ビリャヌエバ・デ・コルドバ', 'Granada': 'グラナダ', 'Armilla': 'アルミジャ', 'Cádiz': 'カディス', 'Jerez de la Frontera': 'ヘレス・デ・ラ・フロンテーラ', 'Manzanares': 'マンサナレス', 'Porzuna': 'ポルスナ', 'Zamora': 'サモラ', 'Albacete': 'アルバセテ', 'Toledo': 'トレド', 'Cacabelos': 'カカベロス', 'Palencia': 'パレンシア', 'Santarém': 'サンタレン', 'Trujillo': 'トルヒージョ', 'Elche': 'エルチェ', 'Silleda': 'シジェダ', 'Ourense': 'オウレンセ', 'Boqueixón': 'ボケイション', 'Lleida': 'リェイダ', 'Girona': 'ジローナ', 'Santander': 'サンタンデール', 'Torrelavega': 'トレラベガ', 'Gijón': 'ヒホン', 'Tineo': 'ティネオ', 'Vegadeo': 'ベガデオ', 'Irún': 'イルン', 'Logroño': 'ログローニョ', 'Alfaro': 'アルファロ', 'Calahorra': 'カラオラ', 'Pamplona': 'パンプローナ', 'Vitoria': 'ビトリア', 'Aranda de Duero': 'アランダ・デ・ドゥエロ', 'Peso da Régua': 'ペーゾ・ダ・レグア', 'Ibiza': 'イビサ', 'Menorca': 'メノルカ', 'Ceuta': 'セウタ', 'Melilla': 'メリリャ', 'Tánger': 'タンジェ', 'Andorra': 'アンドラ', 'Andorra la Vella': 'アンドラ・ラ・ベリャ', 'Escaldes-Engordany': 'エスカルデス・エンゴルダニ', 'Encamp': 'エンカンプ', 'Ordino': 'オルディノ', 'Soldeu': 'ソルデウ', 'Teruel': 'テルエル', 'Calamocha': 'カラモチャ', 'Alcañiz': 'アルカニス' },
     // Simplified city mapping, defaulting to Spanish name if not defined to save space
   };
 
@@ -282,6 +282,7 @@
     'Tánger': 'tanger',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
+    'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
     'Santander': 'santander', 'Torrelavega': 'santander',
     'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
@@ -293,7 +294,7 @@
     cordoba: 'Córdoba', granada: 'Granada', cadiz: 'Cádiz',
     santarem: 'Santarém', trujillo: 'Trujillo', elche: 'Elche',
     silleda: 'Silleda', ourense: 'Ourense',
-    lleida: 'Lleida', girona: 'Girona', irun: 'Irún', logrono: 'Logroño', pamplona: 'Pamplona', vitoria: 'Vitoria', aranda: 'Aranda de Duero', regua: 'Peso da Régua', ibiza: 'Ibiza', menorca: 'Menorca', ceuta: 'Ceuta', melilla: 'Melilla', tanger: 'Tánger', andorra: 'Andorra',
+    lleida: 'Lleida', girona: 'Girona', irun: 'Irún', logrono: 'Logroño', pamplona: 'Pamplona', vitoria: 'Vitoria', aranda: 'Aranda de Duero', regua: 'Peso da Régua', ibiza: 'Ibiza', menorca: 'Menorca', ceuta: 'Ceuta', melilla: 'Melilla', tanger: 'Tánger', andorra: 'Andorra', teruel: 'Teruel',
     santander: 'Santander', gijon: 'Gijón'
   };
   // Región para agrupar ferias hermanas (define la densidad del clúster; Extremadura es la prioridad).
@@ -328,6 +329,7 @@
     'Tánger': 'tanger',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
+    'Teruel': 'aragon', 'Calamocha': 'aragon', 'Alcañiz': 'aragon',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria',
     'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
@@ -375,6 +377,7 @@
     'Encamp': 'Encamp (Prat Gran de l\'Areny)',
     'Ordino': 'Ordino (Plana dels Camps i La Cortinada)',
     'Soldeu': 'Soldeu (Plaça Casa Calbó, Canillo)',
+    'Calamocha': 'Institución Ferial de Calamocha (IFC)', 'Alcañiz': 'Recinto Ferial de Alcañiz',
     'Ceuta': 'Ceuta (Palacio de Congresos de Ceuta)',
     'Melilla': 'Melilla (Palacio de Congresos y Exposiciones de Melilla)',
     'Santander': 'Palacio de Exposiciones y Congresos de Santander', 'Torrelavega': 'Mercado Nacional de Ganados de Torrelavega',
@@ -627,7 +630,9 @@
     // Andorra: el pilar se llama "Andorra" y ninguna feria está en una ciudad con ese
     // nombre, así que la coincidencia exacta de currentCityKey falla y las parroquias
     // se quedarían sin portada. Todas heredan la del hub.
-    'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra' };
+    'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra',
+    // Teruel: la capital tiene página-pilar (currentCityKey), pero Calamocha y Alcañiz cuelgan del hub provincial.
+    'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel' };
   // Ficheros renombrados para esquivar una caché de respuestas obsoleta de OVH
   // (los nombres originales cover_murcia/cover_alicante quedaron atascados en text/html).
   const COVER_OVERRIDE = { murcia: 'murcia-v2', alicante: 'alicante-v2' };
@@ -635,6 +640,11 @@
   // clúster regional (Portugal Sur). Resto sin portada -> header oscuro.
   $: coverKey = currentCityKey || CITY_COVER[fair.city] || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
   $: coverBase = coverKey ? (COVER_OVERRIDE[coverKey] || coverKey) : null;
+  // Crédito obligatorio si la portada del hero está bajo licencia CC BY-SA (misma foto que
+  // el pilar de esa ciudad). Tánger usa una aérea de Tanger Med (Wikimedia, CC BY-SA 4.0).
+  $: coverCredit = coverBase === 'tanger'
+    ? { author: 'Tanger Med', authorUrl: 'https://commons.wikimedia.org/wiki/File:Vue_g%C3%A9n%C3%A9raleH13A0659.JPG', licenseName: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/deed.es' }
+    : null;
   // Ferias relacionadas por ACTIVIDAD (no por lugar): otras ferias que comparten
   // al menos una etiqueta de actividad con esta. Se priorizan las que comparten más
   // etiquetas (más afines) y se limita a 12.
@@ -853,6 +863,10 @@
       aria-hidden="true"
       fetchpriority="high"
     />
+    {#if coverCredit}
+      <!-- Atribución obligatoria de la portada (CC BY-SA): autor + licencia enlazados. -->
+      <span class="cover-credit" title="Imagen recortada y reescalada">© <a href={coverCredit.authorUrl} target="_blank" rel="noopener nofollow">{coverCredit.author}</a> · <a href={coverCredit.licenseUrl} target="_blank" rel="license noopener nofollow">{coverCredit.licenseName}</a></span>
+    {/if}
   {/if}
   <nav class="nav" class:scrolled={isScrolled}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>

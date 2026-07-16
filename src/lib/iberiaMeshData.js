@@ -43,6 +43,9 @@ export const CITY_LATLON = {
   'Encamp': [42.5361, 1.5836],
   'Ordino': [42.5556, 1.5331],
   'Soldeu': [42.5772, 1.6672],
+  'Teruel': [40.3456, -1.1065],
+  'Calamocha': [40.9186, -1.2969],
+  'Alcañiz': [41.0498, -0.1339],
   'Alfaro': [42.18, -1.75],
   'Calahorra': [42.30, -1.96],
   'Boqueixón': [42.79, -8.40],
@@ -253,6 +256,8 @@ export const CITY_PILLAR = {
   // Andorra: el hub es el país entero; las cinco parroquias con feria cuelgan del mismo pilar.
   'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
   'Ordino': 'andorra', 'Soldeu': 'andorra',
+  // Teruel: el hub es la provincia; la capital y los municipios feriales cuelgan del mismo pilar.
+  'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
   'Santander': 'santander', 'Torrelavega': 'santander',
   'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon',
   'Islas Canarias': 'islas_canarias', 'Tenerife': 'islas_canarias',

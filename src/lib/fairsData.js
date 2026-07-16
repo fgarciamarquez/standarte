@@ -2392,5 +2392,26 @@ export const fairsData = [
     "slug": "motortec-madrid",
     "city": "Madrid",
     "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Feria del Jamón de Teruel y Alimentos de Calidad",
+    "country": "es",
+    "slug": "feria-jamon-teruel",
+    "city": "Teruel",
+    "sector": "Agroalimentario y Gourmet"
+  },
+  {
+    "name": "ExpoCalamocha",
+    "country": "es",
+    "slug": "expocalamocha",
+    "city": "Calamocha",
+    "sector": "Agroganadero y Maquinaria"
+  },
+  {
+    "name": "AgroAlcañiz",
+    "country": "es",
+    "slug": "agroalcaniz",
+    "city": "Alcañiz",
+    "sector": "Agroindustria y Maquinaria"
   }
 ];

@@ -28,7 +28,7 @@
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
     ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger',
-    andorra: 'andorra'
+    andorra: 'andorra', teruel: 'aragon'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura',
@@ -45,6 +45,7 @@
     'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
+    'Teruel': 'aragon', 'Calamocha': 'aragon', 'Alcañiz': 'aragon',
     'Logroño': 'larioja', 'Alfaro': 'larioja', 'Calahorra': 'larioja',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
