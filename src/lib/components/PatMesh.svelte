@@ -1151,7 +1151,7 @@
     fill: #1a1e21;
   }
   :global(.pm-watermark-fill) {
-    opacity: 0.05;
+    opacity: 0.08;
     pointer-events: none;
     user-select: none;
   }

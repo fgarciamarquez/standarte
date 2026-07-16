@@ -959,6 +959,11 @@
   function coverBase(id) {
     return COVER_OVERRIDE[id] || id;
   }
+  // Homenaje cultural en el sidebar de ciertas ciudades (imagen + pie discreto), sobre la tarjeta del mapa de Pat.
+  const CITY_TRIBUTE = {
+    bilbao: { img: 'homenaje-oteiza-bilbao', w: 481, h: 415, lines: [{ lang: 'es', t: 'Homenaje a Jorge Oteiza' }, { lang: 'eu', t: 'Jorge Oteizari omenaldia' }] },
+    zaragoza: { img: 'homenaje-pradilla-zaragoza', w: 680, h: 904, lines: [{ lang: 'es', t: 'Homenaje a Francisco Pradilla' }] }
+  };
   // Créditos de portada obligatorios: portadas bajo licencia con atribución (CC BY-SA).
   // Tánger usa una foto aérea de Tanger Med (Wikimedia Commons, CC BY-SA 4.0): la licencia
   // exige acreditar autor, enlazar a la licencia e indicar que se ha modificado (recortada).
@@ -2228,13 +2233,14 @@
           <!-- Sidebar con casos de éxito reales -->
           <aside class="seo-sidebar">
             <div class="sidebar-sticky">
-              <!-- Espacio excepcional: homenaje a Jorge Oteiza (solo Bilbao), sobre la tarjeta del mapa de Pat. -->
-              {#if section === 'bilbao'}
-                <figure class="oteiza-tribute">
-                  <img src="/img/homenaje-oteiza-bilbao.avif" alt="Homenaje a Jorge Oteiza" width="481" height="415" loading="lazy" decoding="async" />
+              <!-- Espacio excepcional: homenaje cultural (imagen + pie discreto) sobre la tarjeta del mapa de Pat. -->
+              {#if CITY_TRIBUTE[section]}
+                <figure class="city-tribute">
+                  <img src="/img/{CITY_TRIBUTE[section].img}.avif" alt={CITY_TRIBUTE[section].lines[0].t} width={CITY_TRIBUTE[section].w} height={CITY_TRIBUTE[section].h} loading="lazy" decoding="async" />
                   <figcaption>
-                    <span lang="es">Homenaje a Jorge Oteiza</span>
-                    <span lang="eu">Jorge Oteizari omenaldia</span>
+                    {#each CITY_TRIBUTE[section].lines as ln}
+                      <span lang={ln.lang}>{ln.t}</span>
+                    {/each}
                   </figcaption>
                 </figure>
               {/if}

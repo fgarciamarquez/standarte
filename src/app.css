@@ -3729,18 +3729,18 @@ p b {
   }
 }
 
-/* Espacio excepcional: homenaje a Jorge Oteiza en el sidebar de Bilbao */
-.oteiza-tribute {
+/* Espacio excepcional: homenaje cultural (imagen + pie discreto) en el sidebar de ciertas ciudades */
+.city-tribute {
   margin: 0 0 1.4rem;
   text-align: center;
 }
-.oteiza-tribute img {
+.city-tribute img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 8px;
 }
-.oteiza-tribute figcaption {
+.city-tribute figcaption {
   margin-top: 0.45rem;
   font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
   font-size: 0.68rem;
@@ -3748,10 +3748,10 @@ p b {
   letter-spacing: 0.02em;
   color: #8a8f88;
 }
-.oteiza-tribute figcaption span {
+.city-tribute figcaption span {
   display: block;
 }
-.oteiza-tribute figcaption span[lang='eu'] {
+.city-tribute figcaption span[lang='eu'] {
   font-style: italic;
   opacity: 0.75;
 }
