@@ -1012,8 +1012,8 @@ article:hover .city-cover-image,
 
 .lisbon-fair-copy strong {
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 700;
   line-height: 1.2;
   text-transform: none;
 }
@@ -2271,7 +2271,7 @@ footer {
   }
 
   .lisbon-fair-copy strong {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .lisbon-fair-copy small {

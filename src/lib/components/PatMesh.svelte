@@ -711,6 +711,11 @@
     let running = false;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const start = performance.now();
+    // Posición del puntero en coordenadas del viewBox para el magnetismo de los nodos
+    // de sector; null cuando el cursor no está sobre el mapa (la atracción se apaga).
+    let magnetMouse = null;
+    const MAGNET_R = 105;   // radio de influencia (unidades del viewBox)
+    const MAGNET_MAX = 30;  // desplazamiento máximo hacia el puntero
 
     function frame(now) {
       if (!running) return;
@@ -719,6 +724,19 @@
         const p = famPos[f];
         p.x = p.bx + Math.sin(t * p.speed + p.phase) * 10 + Math.sin(t * p.speed * 1.7 + p.phase * 2.3) * 4;
         p.y = p.by + Math.cos(t * p.speed * 0.8 + p.phase) * 8 + Math.cos(t * p.speed * 1.3 + p.phase * 1.9) * 3.5;
+        // Magnetismo: si el puntero está cerca, el nodo de sector se inclina hacia él
+        // con una fuerza que decae con la distancia (0 en el borde del radio). Como
+        // p.x/p.y se recalculan desde la base cada frame, al alejarse vuelve a flotar.
+        if (magnetMouse) {
+          const mdx = magnetMouse.x - p.x, mdy = magnetMouse.y - p.y;
+          const md = Math.hypot(mdx, mdy);
+          if (md < MAGNET_R && md > 0.01) {
+            const pull = 1 - md / MAGNET_R;                       // 1 cerca → 0 en el borde
+            const disp = Math.min(pull * pull * MAGNET_MAX, md * 0.55); // sin pasar del cursor
+            p.x += (mdx / md) * disp;
+            p.y += (mdy / md) * disp;
+          }
+        }
         const fe = famEls[f];
         fe.circle.setAttribute('cx', p.x); fe.circle.setAttribute('cy', p.y);
         fe.texts.forEach((lbl) => {
@@ -750,6 +768,16 @@
     } else if (!reducedMotion) {
       running = true;
       rafId = requestAnimationFrame(frame);
+    }
+
+    // ── Magnetismo del puntero sobre los nodos de sector ──
+    // Solo actualiza la posición del ratón; la atracción la aplica el bucle frame.
+    // svgPointFromClient está declarada más abajo (function hoisting).
+    function onMagnetMove(e) { magnetMouse = svgPointFromClient(e.clientX, e.clientY); }
+    function onMagnetLeave() { magnetMouse = null; }
+    if (!reducedMotion) {
+      svgEl.addEventListener('pointermove', onMagnetMove);
+      svgEl.addEventListener('pointerleave', onMagnetLeave);
     }
 
     // ── Lupa: lente circular que amplía la zona del mapa bajo el puntero ──
@@ -865,6 +893,8 @@
         window.removeEventListener('pointerup', onCalloutPointerUp);
         svgEl.removeEventListener('pointermove', onLensPointerMove);
         svgEl.removeEventListener('pointerdown', onLensPointerMove);
+        svgEl.removeEventListener('pointermove', onMagnetMove);
+        svgEl.removeEventListener('pointerleave', onMagnetLeave);
       }
     };
   }

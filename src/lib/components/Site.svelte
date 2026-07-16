@@ -1795,12 +1795,14 @@
   {/if}
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="local-stands" class="section local-stands">
+      <h2 class="section-intro">{copy.citiesIntro}</h2>
       {#if section === 'home'}
         <!-- Gemelo SEO de la malla de Pat: grafo de cobertura ciudad↔actividad como
-             HTML rastreable (enlaza a las páginas-ciudad y a los hubs /actividad). -->
+             HTML rastreable (enlaza a las páginas-ciudad y a los hubs /actividad).
+             Va DEBAJO del titular de ciudades; el enlace "[ Ver todas las ciudades ]"
+             queda como acceso discreto a la malla completa. -->
         <MeshCoverageLinks {lang} />
       {/if}
-      <h2 class="section-intro">{copy.citiesIntro}</h2>
       <div class="city-grid">
         {#each cityKeys as cityKey, i}
           {@const cityFairs = fairsForCity(cityKey)}

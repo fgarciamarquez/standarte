@@ -100,9 +100,10 @@
   $: t = T[lang] || T.es;
 </script>
 
-<!-- Sección sin encabezado ni entradilla visibles: se retiraron a petición y queda solo el
-     desplegable con la malla de enlaces. `t.heading` se conserva en el aria-label para que
-     la sección siga teniendo nombre accesible. -->
+<!-- Sección sin encabezado ni entradilla: la malla de enlaces va en un <details> CERRADO
+     por defecto. Así el contenido está en el HTML (rastreable por buscadores = SEO) pero
+     oculto a la vista, para no servir la lista completa de enlaces a la competencia. El
+     aria-label conserva el nombre accesible de la sección. -->
 <section class="mesh-seo" aria-label={t.heading}>
   <details class="mesh-seo-details">
     <summary>[ {t.summary} ]</summary>
@@ -144,7 +145,6 @@
     padding: 0 1rem;
     text-align: center;
   }
-  .mesh-seo h2 { margin: 0 0 0.6rem; }
   .mesh-seo-details {
     text-align: left;
   }
@@ -153,14 +153,15 @@
     padding: 0.9rem 0;
     font-family: 'Inconsolata', monospace;
     font-weight: 400;
-    color: royalblue;
+    font-size: 0.8rem;
+    color: #7a7f76;
     text-align: center;
     list-style: none;
   }
   .mesh-seo-details > summary::-webkit-details-marker { display: none; }
   .mesh-seo-details > summary::marker { content: ''; }
   .mesh-seo-details[open] > summary { margin-bottom: 1rem; }
-  /* Explicación de la super-característica: texto legible y citable, dentro del desplegable. */
+  /* Explicación de la super-característica: texto legible y citable. */
   /* Bloque explicativo bajo la lista de sectores, ocupando el hueco de la columna. */
   .mesh-seo-feature {
     margin-top: 1.2rem;

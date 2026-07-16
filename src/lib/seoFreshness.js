@@ -12,7 +12,7 @@
 //
 // Clave = sección de `routes` (siteData.js). Valor = fecha ISO (YYYY-MM-DD).
 export const seoFreshness = {
-  badajoz: '2026-07-14',
+  badajoz: '2026-07-16',
   montaje_badajoz: '2026-07-14',
   zaragoza: '2026-07-14',
   lisboa: '2026-07-16',
