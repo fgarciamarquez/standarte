@@ -1,7 +1,7 @@
 <script>
   import { onMount, tick } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, projectUrl } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, ctaBudget, preciosNav, projectUrl } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag, fairTags } from '$lib/fairTags.js';
   import { projectsForActivity } from '$lib/projectTags.js';
   import { projectIndex } from '$lib/projectIndex.js';
@@ -44,18 +44,6 @@
     });
   }
 
-  // Módulo "Actividad" del aside: chips con código de color que enlazan a los
-  // hubs de actividad de esta feria (interconexión por sector).
-  const ACTIVITY_NAV_LABELS = {
-    es: 'Actividades asociadas a esta feria', en: 'Activities linked to this fair', de: 'Branchen dieser Messe', fr: 'Activités liées à ce salon', it: 'Attività legate a questa fiera',
-    pt: 'Atividades associadas a esta feira', nl: 'Activiteiten van deze beurs', zh: '与本展会相关的行业', hi: 'इस मेले से जुड़ी गतिविधियाँ', ko: '이 박람회 관련 분야', ja: 'この展示会に関連する分野'
-  };
-  const ALL_ACTIVITIES_LABELS = {
-    es: 'Ver todas las actividades', en: 'See all activities', de: 'Alle Branchen ansehen',
-    fr: 'Voir toutes les activités', it: 'Vedi tutte le attività', pt: 'Ver todas as atividades',
-    nl: 'Alle activiteiten bekijken', zh: '查看所有行业', hi: 'सभी गतिविधियाँ देखें',
-    ko: '모든 분야 보기', ja: 'すべての分野を見る'
-  };
 
   // Navegación entre ciudades matriz (módulo del aside).
   // Solo las matrices (construccion_stands_*); excluye las landings de montaje secundarias
@@ -1026,6 +1014,19 @@
              el font-weight: 900 !important de h1-h5 (app.css), así que se lee como
              encabezado; .highlight solo le aporta tamaño e interlineado. -->
         <h2 class="highlight">{seoDesc}</h2>
+        <!-- Etiquetas de actividad de ESTA feria: identifican el evento por sector, así que
+             viven bajo el h2 del cuerpo (antes estaban perdidas en un módulo del aside). -->
+        {#if fairActivityTags.length}
+          <ul class="activity-chips fair-activity-chips">
+            {#each fairActivityTags as tag}
+              <li>
+                <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
+                  <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
+                </a>
+              </li>
+            {/each}
+          </ul>
+        {/if}
         {#if fairBody}
           <div class="fair-unique">{@html fairBody}</div>
         {/if}
@@ -1125,21 +1126,6 @@
               {/each}
             </ul>
           </details>
-        {/if}
-        {#if fairActivityTags.length}
-          <div class="aside-module">
-            <h3>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h3>
-            <ul class="activity-chips">
-              {#each fairActivityTags as tag}
-                <li>
-                  <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
-                    <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
-                  </a>
-                </li>
-              {/each}
-              <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a></li>
-            </ul>
-          </div>
         {/if}
         <div class="aside-module">
           <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
@@ -1402,6 +1388,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
+  }
+  /* En el cuerpo van bajo el h2 de respuesta directa: algo más de aire arriba y abajo
+     para que se lean como la firma sectorial del evento y no se peguen al titular. */
+  .fair-activity-chips {
+    margin: 0.9rem 0 1.6rem;
   }
   /* Etiquetas estilo "badge": píldora suave y compacta, con borde fino del color de la
      actividad (--chip) para delimitarla. Aspecto idéntico en feria, ciudad e índice. */

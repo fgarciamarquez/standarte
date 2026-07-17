@@ -937,11 +937,17 @@
     aria-label={lensTitle[lang] || lensTitle.en}
     aria-pressed={lensActive}
   >
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="10.6" />
-      <circle cx="12" cy="12" r="7" />
-      <circle cx="12" cy="12" r="3.6" />
-      <path class="pm-lens-plus" d="M12 9.9v4.2M9.9 12h4.2" />
+    <!-- viewBox 1:1 en píxeles (92 = caja interior del botón de 94px con su borde de 1px),
+         así los radios se razonan en px reales. El botón tiene radio 47; 1,5 mm = 5,67 px,
+         por lo que el anillo exterior arranca en r = 47 - 5,67 ≈ 41,3. Los otros cuatro
+         bajan a intervalos regulares de 8,33. -->
+    <svg viewBox="0 0 92 92" aria-hidden="true">
+      <circle class="pm-ring pm-ring-1" cx="46" cy="46" r="41.3" />
+      <circle class="pm-ring pm-ring-2" cx="46" cy="46" r="33" />
+      <circle class="pm-ring pm-ring-3" cx="46" cy="46" r="24.6" />
+      <circle class="pm-ring pm-ring-4" cx="46" cy="46" r="16.3" />
+      <circle class="pm-ring pm-ring-5" cx="46" cy="46" r="8" />
+      <path class="pm-lens-plus" d="M46 32v28M32 46h28" />
     </svg>
   </button>
 </div>
@@ -1013,17 +1019,21 @@
 
   /* ── Lupa ── */
   /* Botón que activa/desactiva la lente de aumento (esquina superior derecha). */
+  /* Mismo tamaño y mismo `top` que .pm-counter (94px / 10px): las dos ventanas flotantes
+     del mapa quedan alineadas y del mismo calibre, una en cada esquina superior. */
   .pm-lens-toggle {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 48px;
-    height: 48px;
+    width: 94px;
+    height: 94px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    border: 1px solid #d6d7d0;
+    /* Aro blanco ancho: con box-sizing:border-box el borde come hacia dentro, así que
+       el icono queda más embebido (el svg se mide en %, ver abajo). */
+    border: 8px solid #fff;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -1034,17 +1044,30 @@
   }
   /* Icono: círculos concéntricos (diana) con un "+" central. Es de TRAZO, no de relleno:
      con fill los círculos se convertirían en discos macizos y taparían el "+". */
+  /* En % (no en px fijos): así el icono se reajusta solo a la caja interior si cambia el
+     grosor del aro, en vez de desbordarse. */
   .pm-lens-toggle svg {
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
     fill: none;
-    stroke: currentColor;
-    stroke-width: 1.3;
   }
-  /* El "+" va en Azul Royal para destacar dentro de la diana. */
+  /* Los cinco anillos, finos y en gris claro (el viewBox va 1:1, así que 1 = 1 px).
+     Se desvanecen de fuera hacia dentro: el exterior a plena opacidad y el interior
+     transparente del todo, así la diana se difumina hacia el centro y deja respirar al "+".
+     El anillo 5 queda invisible a propósito (cierra la progresión). */
+  .pm-lens-toggle svg .pm-ring {
+    stroke: #c8cbc6;
+    stroke-width: 1;
+  }
+  .pm-lens-toggle svg .pm-ring-1 { stroke-opacity: 0.85; }
+  .pm-lens-toggle svg .pm-ring-2 { stroke-opacity: 0.72; }
+  .pm-lens-toggle svg .pm-ring-3 { stroke-opacity: 0.46; }
+  .pm-lens-toggle svg .pm-ring-4 { stroke-opacity: 0.22; }
+  .pm-lens-toggle svg .pm-ring-5 { stroke-opacity: 0; }
+  /* El "+" va en Azul Royal para destacar dentro de la diana: dos líneas finas y largas. */
   .pm-lens-toggle svg .pm-lens-plus {
     stroke: royalblue;
-    stroke-width: 2.4;
+    stroke-width: 1.4;
     stroke-linecap: round;
   }
   .pm-lens-toggle:hover {

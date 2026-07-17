@@ -909,23 +909,30 @@
 
   /* Texto de posicionamiento de la malla de actividades, bajo el mapa: letra
      pequeña y separado por una línea fina. */
+  /* La línea va pegada al mapa (sin margen arriba) y cruza la ventana de lado a lado:
+     los -30px la sacan del padding del .welcome-advisor-card para que toque ambos bordes.
+     El ancho de lectura (640px) pasa al texto, no al contenedor; si no, la línea se
+     quedaría corta y centrada. */
   .advisor-activity-pitch {
-    margin-top: 20px;
-    padding-top: 18px;
+    margin: 0 -30px;
+    padding: 18px 30px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     text-align: center;
+  }
+  /* `margin: 0 auto` (no `margin: 0`): el bloque de 640px se centra en la ventana. Con el
+     atajo a cero se quedaba pegado a la izquierda, porque el contenedor ya ocupa todo el ancho. */
+  .advisor-activity-pitch h3,
+  .advisor-activity-pitch p {
     max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
   }
   .advisor-activity-pitch h3 {
-    margin: 0 0 6px;
+    margin: 0 auto 6px;
     font-size: 14px;
     font-weight: 600;
     color: #3a3f42;
   }
   .advisor-activity-pitch p {
-    margin: 0;
+    margin: 0 auto;
     font-size: 14px;
     line-height: 1.55;
     color: #6b7075;
