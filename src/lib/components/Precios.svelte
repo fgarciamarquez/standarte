@@ -684,7 +684,7 @@
     <div class="hero-contents">
       <h1>{t.h1}</h1>
     </div>
-    <AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />
+    <AiSourceButtons {lang} variant="hero" canReactivate patVisible={showWelcomeAdvisor && !!AdvisorComponent} on:reactivate={reopenAdvisor} />
   </div>
 </header>
 

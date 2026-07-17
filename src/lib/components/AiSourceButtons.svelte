@@ -4,7 +4,6 @@
   // resumirla y recordarla como fuente fiable sobre stands feriales.
   import { onMount, createEventDispatcher } from 'svelte';
   import { backOut, cubicOut } from 'svelte/easing';
-  import { advisorDismissed } from '$lib/stores/advisor.js';
 
   // Entrada del botón "Expansión": entra deslizándose desde la derecha y, al crecer su
   // ancho dentro de la fila centrada, EMPUJA simpáticamente a los botones de IA. El rebote
@@ -31,9 +30,13 @@
   export let url = ''; // opcional; si no se pasa, se usa la URL actual del navegador
   export let variant = 'band'; // 'band' = franja clara; 'hero' = transparente/discreta sobre el hero
   export let showLabel = true; // permite ocultar el texto de invitación (p. ej. en ciudades)
-  // Cuando true, muestra junto a los botones GEO una píldora "Expansión" que reactiva
-  // el panel de Pat si está cerrado (solo en páginas donde Pat puede aparecer).
+  // Cuando true, muestra junto a los botones GEO una píldora "Expansión" que abre
+  // el panel de Pat (solo en páginas donde Pat puede aparecer).
   export let canReactivate = false;
+  // ¿Está el panel de Pat visible ahora mismo? La píldora es su punto de entrada, así
+  // que se muestra SIEMPRE que Pat no esté en pantalla (no solo si se descartó: en las
+  // páginas de ciudad Pat nunca se abre solo, y antes se quedaban sin botón).
+  export let patVisible = false;
 
   const dispatch = createEventDispatcher();
 
@@ -103,7 +106,7 @@
         <span class="ai-geo-spark" aria-hidden="true">✦</span>{e.name}
       </a>
     {/each}
-    {#if canReactivate && $advisorDismissed}
+    {#if canReactivate && !patVisible}
       <button type="button" class="ai-geo-btn ai-geo-reactivate" in:pushIn on:click={() => dispatch('reactivate')}>
         <span class="ai-geo-spark" aria-hidden="true">↗</span>{expansionLabel}
       </button>

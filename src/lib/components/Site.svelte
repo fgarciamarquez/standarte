@@ -16,6 +16,8 @@
   import ContactForm from './ContactForm.svelte';
   import AiSourceButtons from './AiSourceButtons.svelte';
   import { advisorDismissed } from '$lib/stores/advisor.js';
+  import { coverageProof, coveragePatCta, coverageMapAlt } from '$lib/coverageStrings.js';
+  import { navFlagCountry, CITY_FLAG_FALLBACK } from '$lib/cityFlags.js';
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
   import SiteFooter from './SiteFooter.svelte';
@@ -41,6 +43,9 @@
   let advisorTimeout;
   let AdvisorComponent = null; // se rellena con el import dinámico
   let advisorLoadHandler;      // ref del listener 'load' para poder limpiarlo
+  // Misma condición con la que se renderiza el panel de Pat más abajo. La píldora
+  // "Expansión" de los botones GEO se muestra justo cuando esto es false.
+  $: patVisible = showWelcomeAdvisor && !!AdvisorComponent;
 
   function handleSelectFair(event) {
     const { fairName, cityName } = event.detail;
@@ -506,9 +511,8 @@
   $: isCityPage = section in cityData;
   // País de la ciudad-matriz (bandera circular en la miga de pan "Inicio / Ciudad"):
   // se deriva de cualquier feria alojada en esa ciudad, mismo dato que usa Feria.svelte.
-  // CITY_FLAG_FALLBACK cubre pilares cuyas ferias están en un municipio satélite sin
-  // coincidencia exacta de nombre (p. ej. Murcia solo tiene ferias en Torre Pacheco).
-  const CITY_FLAG_FALLBACK = { murcia: 'es', salamanca: 'es', andorra: 'ad' };
+  // CITY_FLAG_FALLBACK (en $lib/cityFlags.js) cubre pilares cuyas ferias están en un
+  // municipio satélite sin coincidencia exacta (p. ej. Murcia solo tiene ferias en Torre Pacheco).
   $: cityFlagCountry = isCityPage
     ? (fairItems.find((f) => f.city === (cityData[section]?.city?.es || null))?.country || CITY_FLAG_FALLBACK[section] || null)
     : null;
@@ -527,7 +531,6 @@
   $: casePool = portfolios.slice(0, 12);
   $: caseIndex = casePool.length ? hashStr(section) % casePool.length : 0;
   $: bodyCase = casePool[caseIndex] || null;
-  $: selectedPortfolios = casePool.filter((_, i) => i !== caseIndex).slice(0, 3);
   // Secuencia del bucle de la foto del cuerpo: las mismas 12 del pozo, rotadas para
   // EMPEZAR por la que ya le toca a esta ciudad (bodyCase). Así lo prerenderizado no
   // cambia y cada ciudad sigue abriendo con su foto estable.
@@ -619,6 +622,20 @@
     ja: 'ここで展示される内容に関連する展示会',
     nl: 'Beurzen gerelateerd aan wat hier wordt getoond'
   };
+  // Reclamo de ahorro por sinergias, sobre la nube de ferias del sidebar (en rojo).
+  const fairsSavingsNote = {
+    es: 'Ahorre al contratar con nosotros en varios eventos',
+    en: 'Save by booking with us for several events',
+    de: 'Sparen Sie, wenn Sie uns für mehrere Veranstaltungen buchen',
+    fr: 'Économisez en nous confiant plusieurs événements',
+    pt: 'Poupe ao contratar connosco em vários eventos',
+    it: 'Risparmia affidandoci più eventi',
+    ko: '여러 행사를 함께 맡기시면 비용을 절감할 수 있습니다',
+    zh: '将多个展会交给我们，即可节省成本',
+    hi: 'कई आयोजनों के लिए हमें चुनें और लागत बचाएँ',
+    ja: '複数のイベントをまとめてご依頼いただくとコストを削減できます',
+    nl: 'Bespaar door meerdere evenementen aan ons toe te vertrouwen'
+  };
   // Móvil: cuando hay muchas ferias, la nube de píldoras se condensa en un <details>
   // (pila de botones) que se despliega al tocar, para no saturar antes de las FAQs.
   // La ofuscación es SOLO para móvil: en escritorio el <details> debe estar abierto de
@@ -649,13 +666,6 @@
     hi: 'कोटेशन का अनुरोध करें',
     ko: '견적 요청하기',
     ja: '見積もりを依頼する'
-  };
-  // Título del panel de casos de éxito del sidebar (el primer caso pasa al cuerpo).
-  const otrosCasosTitle = {
-    es: 'Otros casos de éxito', en: 'Other success stories', de: 'Weitere Erfolgsgeschichten',
-    pt: 'Outros casos de sucesso', fr: 'Autres réussites', it: 'Altri casi di successo',
-    nl: 'Andere succesverhalen', zh: '其他成功案例', hi: 'अन्य सफलता की कहानियाँ',
-    ko: '다른 성공 사례', ja: 'その他の導入事例'
   };
   // Pie de la imagen del primer caso de éxito insertada en el cuerpo.
   const casoEjemploCaption = {
@@ -842,22 +852,8 @@
     ja: (n) => `${n}件の分野を見る`,
     nl: (n) => `Bekijk ${n} activiteiten`
   };
-  // B1: prueba de cobertura por ciudad (recuento real de ferias + garantía + Pat).
-  const coverageProof = {
-    es: () => `Integra este evento en una campaña mucho más amplia y consigue ahorro por sinergias.`,
-    en: () => `Integrate this event into a much broader campaign and save through synergies.`,
-    pt: () => `Integre este evento numa campanha muito mais ampla e obtenha poupança por sinergias.`,
-    de: () => `Binden Sie diese Veranstaltung in eine viel umfassendere Kampagne ein und sparen Sie durch Synergien.`,
-    fr: () => `Intégrez cet événement dans une campagne bien plus large et réalisez des économies grâce aux synergies.`,
-    it: () => `Integra questo evento in una campagna molto più ampia e risparmia grazie alle sinergie.`,
-    nl: () => `Integreer dit evenement in een veel bredere campagne en bespaar dankzij synergie.`,
-    zh: () => `将此活动纳入更广泛的营销活动，通过协同效应实现成本节约。`,
-    hi: () => `इस आयोजन को एक बहुत व्यापक अभियान में शामिल करें और तालमेल से बचत प्राप्त करें।`,
-    ko: () => `이 행사를 훨씬 폭넓은 캠페인에 통합하여 시너지로 비용을 절감하세요.`,
-    ja: () => `このイベントをより広範なキャンペーンに組み込み、シナジーによるコスト削減を実現しましょう。`
-  };
-  const coveragePatCta = { es: 'Más información', en: 'More information', pt: 'Mais informação', de: 'Mehr erfahren', fr: 'Plus d\'informations', it: 'Maggiori informazioni', nl: 'Meer informatie', zh: '了解更多', hi: 'अधिक जानकारी', ko: '자세히 보기', ja: '詳しく見る' };
-  const coverageMapAlt = { es: 'Mapa de cobertura ferial de Standarte en España y Portugal', en: 'Standarte trade fair coverage map across Spain and Portugal', pt: 'Mapa de cobertura de feiras da Standarte em Espanha e Portugal', de: 'Standarte-Messeabdeckungskarte in Spanien und Portugal', fr: 'Carte de couverture des salons de Standarte en Espagne et au Portugal', it: 'Mappa di copertura fieristica di Standarte in Spagna e Portogallo', nl: 'Standarte-beursdekkingskaart in Spanje en Portugal', zh: 'Standarte 在西班牙和葡萄牙的展会覆盖地图', hi: 'स्पेन और पुर्तगाल में Standarte का मेला कवरेज मानचित्र', ko: '스페인과 포르투갈의 Standarte 전시회 커버리지 지도', ja: 'スペインとポルトガルにおけるStandarteの展示会カバレッジマップ' };
+  // B1: prueba de cobertura por ciudad (mapa de Pat + reclamo + CTA). Los textos se
+  // comparten con las páginas de feria desde $lib/coverageStrings.js.
   $: cityDisplayName = (section && cityData[section]) ? (cityData[section].city?.[lang] || cityData[section].city?.es || '') : '';
   // Nombre canónico (ES) de la ciudad de la página: coincide con el campo `city`
   // de fairsData, que es como PatMesh identifica sus nodos. Con esto el mapa de Pat
@@ -962,7 +958,7 @@
   // Homenaje cultural en el sidebar de ciertas ciudades (imagen + pie discreto), sobre la tarjeta del mapa de Pat.
   const CITY_TRIBUTE = {
     bilbao: { img: 'homenaje-oteiza-bilbao', w: 481, h: 415, lines: [{ lang: 'es', t: 'Homenaje a Jorge Oteiza' }, { lang: 'eu', t: 'Jorge Oteizari omenaldia' }] },
-    zaragoza: { img: 'homenaje-pradilla-zaragoza', w: 680, h: 904, lines: [{ lang: 'es', t: 'Homenaje a Francisco Pradilla' }] }
+    zaragoza: { img: 'homenaje-pradilla-zaragoza', w: 680, h: 904, lines: [{ lang: 'es', t: 'Francisco Pradilla. Pintor zaragozano' }] }
   };
   // Créditos de portada obligatorios: portadas bajo licencia con atribución (CC BY-SA).
   // Tánger usa una foto aérea de Tanger Med (Wikimedia Commons, CC BY-SA 4.0): la licencia
@@ -1783,7 +1779,7 @@
         <h1>{copy.heroTitle}</h1>
         {#if section === 'home' && copy.heroSubtitle}<p class="hero-claim">{copy.heroSubtitle}</p>{/if}
       </div>
-      <AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />
+      <AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />
     </section>
   {:else if seoContent}
     <div class="hero-subpage" class:transparent-hero={section === 'services'} class:on-hero-photo={animatedHero}>
@@ -1800,8 +1796,8 @@
         <h1>{h1Text}</h1>
         <p class="hero-lead">{seoContent.introText}</p>
       </div>
-      {#if animatedHero}<AiSourceButtons {lang} variant="hero" showLabel={false} canReactivate on:reactivate={reopenAdvisor} />{/if}
-      {#if section === 'proyecto_auditado'}<AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />{/if}
+      {#if animatedHero}<AiSourceButtons {lang} variant="hero" showLabel={false} canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
+      {#if section === 'proyecto_auditado'}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
     </div>
   {/if}
 </header>
@@ -2254,6 +2250,41 @@
                   <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
                 </section>
               {/if}
+
+              <!-- Clúster pilar→ferias: enlaces a las ferias de la región -->
+              {#if regionFairs.length}
+                <section class="city-fairs sidebar-module" aria-label={cityFairsLabel[lang] || cityFairsLabel.es}>
+                  {#if regionFairs.length > FAIRS_COLLAPSE_THRESHOLD}
+                    <!-- Nube numerosa: PLEGADA por defecto; se despliega al pulsar. El título
+                         va DENTRO del <summary> (es la pestaña); sigue siendo <h2> para no
+                         romper la jerarquía de encabezados de la página (SEO).
+                         El reclamo de ahorro va tras el summary, sobre los botones. -->
+                    <details class="fairs-collapse">
+                      <summary class="fairs-collapse-summary">
+                        <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
+                        <h2>{cityFairsLabel[lang] || cityFairsLabel.es} ({regionFairs.length})</h2>
+                        <span class="fairs-collapse-chevron" aria-hidden="true"></span>
+                      </summary>
+                      <p class="fairs-savings-note">{fairsSavingsNote[lang] || fairsSavingsNote.es}</p>
+                      <ul class="city-fairs-list">
+                        {#each regionFairs as fair}
+                          <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
+                        {/each}
+                      </ul>
+                    </details>
+                  {:else}
+                    <!-- Pocas ferias: sin desplegable, el título va como encabezado normal. -->
+                    <h2>{cityFairsLabel[lang] || cityFairsLabel.es}</h2>
+                    <p class="fairs-savings-note">{fairsSavingsNote[lang] || fairsSavingsNote.es}</p>
+                    <ul class="city-fairs-list">
+                      {#each regionFairs as fair}
+                        <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
+                      {/each}
+                    </ul>
+                  {/if}
+                </section>
+              {/if}
+
               <div class="city-nav-module">
                 <details class="fairs-collapse">
                   <summary class="fairs-collapse-summary">
@@ -2266,6 +2297,7 @@
                     {#each sortedCityNavKeys as ck}
                       <li>
                         <a href={pathFor(lang, ck)} class:active={ck === section}>
+                          {#if navFlagCountry(ck)}<span class="city-nav-flag flag-{navFlagCountry(ck)}" aria-hidden="true"></span>{/if}
                           {cityNavLabel(ck, lang)}
                         </a>
                       </li>
@@ -2275,62 +2307,15 @@
                 <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
               </div>
 
-              <div class="spotlight-card">
-                <h3>{otrosCasosTitle[lang] || otrosCasosTitle.es}</h3>
-
-                <div class="sidebar-projects">
-                  {#each selectedPortfolios as project}
-                    <a class="sidebar-project-card" href="/galeria/{project.slugs.es}" on:click|preventDefault={() => openLightbox(project)} aria-label={getProjectTitle(project)}>
-                      <img src={`/${project.thumb.replace(/\.avif$/, '-sb.avif')}`} alt={getProjectTitle(project)} class="sidebar-project-img" width="300" height="169" loading="lazy" decoding="async" />
-                      <div class="sidebar-project-info">
-                        <h4>{getProjectTitle(project)}</h4>
-                        <p>{projectDescription(project)}</p>
-                      </div>
-                    </a>
-                  {/each}
-                </div>
-              </div>
-
-              <!-- Clúster pilar→ferias: enlaces a las ferias de la región -->
-              {#if regionFairs.length}
-                <section class="city-fairs sidebar-module" aria-label={cityFairsLabel[lang] || cityFairsLabel.es}>
-                  <h2>{cityFairsLabel[lang] || cityFairsLabel.es}</h2>
-                  {#if regionFairs.length > FAIRS_COLLAPSE_THRESHOLD}
-                    <!-- Nube numerosa: se condensa en móvil (pila de botones) y se
-                         despliega al tocar. En escritorio el CSS la fuerza abierta. -->
-                    <details class="fairs-collapse">
-                      <summary class="fairs-collapse-summary">
-                        <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
-                        <span class="fairs-collapse-open">{(fairsCloudOpenCta[lang] || fairsCloudOpenCta.es)(regionFairs.length)}</span>
-                        <span class="fairs-collapse-close">{fairsCloudCloseCta[lang] || fairsCloudCloseCta.es}</span>
-                        <span class="fairs-collapse-chevron" aria-hidden="true"></span>
-                      </summary>
-                      <ul class="city-fairs-list">
-                        {#each regionFairs as fair}
-                          <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
-                        {/each}
-                      </ul>
-                    </details>
-                  {:else}
-                    <ul class="city-fairs-list">
-                      {#each regionFairs as fair}
-                        <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
-                      {/each}
-                    </ul>
-                  {/if}
-                </section>
-              {/if}
-
               <!-- Navegador de actividades: chips de color hacia los hubs por sector -->
               {#if regionActivities.length}
                 <section class="activity-module sidebar-module" aria-label={ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}>
-                  <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h2>
                   {#if regionActivities.length > ACTIVITIES_COLLAPSE_THRESHOLD}
+                    <!-- Mismo patrón que la nube de ferias: el <h2> es la pestaña del desplegable. -->
                     <details class="fairs-collapse">
                       <summary class="fairs-collapse-summary">
                         <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
-                        <span class="fairs-collapse-open">{(activitiesCloudOpenCta[lang] || activitiesCloudOpenCta.es)(regionActivities.length)}</span>
-                        <span class="fairs-collapse-close">{fairsCloudCloseCta[lang] || fairsCloudCloseCta.es}</span>
+                        <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es} ({regionActivities.length})</h2>
                         <span class="fairs-collapse-chevron" aria-hidden="true"></span>
                       </summary>
                       <ul class="activity-chips">
@@ -2345,6 +2330,8 @@
                       </ul>
                     </details>
                   {:else}
+                    <!-- Pocas actividades: sin desplegable, el título va como encabezado normal. -->
+                    <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h2>
                     <ul class="activity-chips">
                       {#each regionActivities as tag}
                         <li>

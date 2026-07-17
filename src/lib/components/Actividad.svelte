@@ -219,7 +219,7 @@
     <div class="hero-contents act-hero-contents">
       {#if !isIndex}<span class="act-hero-tag" style="--chip:{colorForTag(tag)}"><span class="chip-dot" aria-hidden="true"></span>{tagLabel}</span>{/if}
       <h1>{pageH1}</h1>
-      <AiSourceButtons {lang} variant="hero" canReactivate on:reactivate={reopenAdvisor} />
+      <AiSourceButtons {lang} variant="hero" canReactivate patVisible={showWelcomeAdvisor && !!AdvisorComponent} on:reactivate={reopenAdvisor} />
     </div>
   </div>
 </header>
@@ -281,7 +281,7 @@
           {#if activitySeo?.intro?.[lang]}
             <div class="act-intro">{@html activitySeo.intro[lang]}</div>
           {/if}
-          <p class="audited-note">{pickUspLine(lang, tag)}
+          <p class="audited-note">{@html pickUspLine(lang, tag)}
             <a href={pathFor(lang, 'proyecto_auditado')}>{uspHome(lang).cta} →</a></p>
           <h2 class="fairs-h">{t.fairsH}</h2>
           {#each hubGroups as grp}
@@ -388,7 +388,7 @@
     background: rgba(224, 180, 0, 0.06); border-radius: 0 6px 6px 0;
     font-size: 1.02rem; line-height: 1.55;
   }
-  .audited-note a { font-weight: 700; white-space: nowrap; }
+  .audited-note a { font-weight: 700; white-space: nowrap; color: royalblue; }
   .fam-h, .fairs-h {
     display: inline-flex; align-items: center; gap: 0.6rem;
     font-size: 1.5rem; margin: 2.5rem 0 1.2rem;

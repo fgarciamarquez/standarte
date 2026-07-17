@@ -938,7 +938,10 @@
     aria-pressed={lensActive}
   >
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z" />
+      <circle cx="12" cy="12" r="10.6" />
+      <circle cx="12" cy="12" r="7" />
+      <circle cx="12" cy="12" r="3.6" />
+      <path class="pm-lens-plus" d="M12 9.9v4.2M9.9 12h4.2" />
     </svg>
   </button>
 </div>
@@ -1014,8 +1017,8 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 38px;
-    height: 38px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1029,10 +1032,20 @@
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     z-index: 7;
   }
+  /* Icono: círculos concéntricos (diana) con un "+" central. Es de TRAZO, no de relleno:
+     con fill los círculos se convertirían en discos macizos y taparían el "+". */
   .pm-lens-toggle svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.3;
+  }
+  /* El "+" va en Azul Royal para destacar dentro de la diana. */
+  .pm-lens-toggle svg .pm-lens-plus {
+    stroke: royalblue;
+    stroke-width: 2.4;
+    stroke-linecap: round;
   }
   .pm-lens-toggle:hover {
     background: #fff;
@@ -1043,6 +1056,10 @@
     background: royalblue;
     border-color: royalblue;
     color: #fff;
+  }
+  /* Con la lente activa el fondo ya es Azul Royal: el "+" pasa a blanco o desaparecería. */
+  .pm-lens-toggle.active svg .pm-lens-plus {
+    stroke: #fff;
   }
   /* Aro de la lente sobre el mapa. La capa de la lente no captura el puntero para
      que la interacción siga llegando al mapa real de debajo. */

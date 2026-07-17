@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, projectUrl } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag, fairTags } from '$lib/fairTags.js';
@@ -10,6 +10,39 @@
   import { CITY_POINTS } from '$lib/iberiaMeshData.js';
   import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
+  import AiSourceButtons from './AiSourceButtons.svelte';
+  import { advisorDismissed } from '$lib/stores/advisor.js';
+  import { coverageProof, coveragePatCta, coverageMapAlt } from '$lib/coverageStrings.js';
+  import { navFlagCountry } from '$lib/cityFlags.js';
+
+  // Panel de Pat (asesor de Expansión) + botones GEO, igual que en ciudades y hubs.
+  // Aquí NO se abre solo: solo cuando el visitante lo pide con la píldora "Expansión".
+  // WelcomeAdvisor se trae con import dinámico (chunk aparte) para no lastrar la carga.
+  let showWelcomeAdvisor = false;
+  let AdvisorComponent = null;
+  $: patVisible = showWelcomeAdvisor && !!AdvisorComponent;
+  function reopenAdvisor() {
+    advisorDismissed.reactivate();
+    if (AdvisorComponent) { showWelcomeAdvisor = true; return; }
+    import('./WelcomeAdvisor.svelte')
+      .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
+      .catch(() => {});
+  }
+  // CTA del panel de cobertura (mapa + "Acapara el mercado"): Pat se renderiza arriba
+  // del <main>, así que además de abrirlo desplazamos la página hasta él.
+  async function openPatAndScroll() {
+    advisorDismissed.reactivate();
+    if (!AdvisorComponent) {
+      try { const m = await import('./WelcomeAdvisor.svelte'); AdvisorComponent = m.default; } catch (e) {}
+    }
+    showWelcomeAdvisor = true;
+    await tick();
+    requestAnimationFrame(() => {
+      const el = document.querySelector('.welcome-advisor-container') || document.querySelector('.welcome-advisor-card');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   // Módulo "Actividad" del aside: chips con código de color que enlazan a los
   // hubs de actividad de esta feria (interconexión por sector).
@@ -648,6 +681,12 @@
   // Ferias relacionadas por ACTIVIDAD (no por lugar): otras ferias que comparten
   // al menos una etiqueta de actividad con esta. Se priorizan las que comparten más
   // etiquetas (más afines) y se limita a 12.
+  // Las ferias de Francia y Alemania no cuelgan de ningún hub-ciudad, y al empatar en
+  // etiquetas quedaban SIEMPRE detrás de las domésticas (el orden de fairsData decide el
+  // empate), así que el tope de 12 las dejaba fuera en sectores con mucha feria de casa
+  // (p. ej. vino: Wine Paris y ProWein no salían). Se añaden aparte para que la afinidad
+  // por sector las incluya siempre.
+  const HUB_COUNTRIES = ['es', 'pt', 'ad', 'ma'];
   $: siblingFairs = (() => {
     const tags = fairActivityTags;
     if (!tags.length) return [];
@@ -658,7 +697,11 @@
       if (shared > 0) scored.push({ f, shared });
     }
     scored.sort((a, b) => b.shared - a.shared);
-    return scored.slice(0, 12).map((s) => s.f);
+    const top = scored.slice(0, 12).map((s) => s.f);
+    const sinHub = scored
+      .filter((s) => !HUB_COUNTRIES.includes(s.f.country) && !top.includes(s.f))
+      .map((s) => s.f);
+    return [...top, ...sinHub];
   })();
   $: fairHref = (slug) => fairUrl(slug, lang);
   // Ferias cuya sede NO es el recinto principal de su ciudad-hub (la línea genérica de
@@ -932,11 +975,17 @@
   <div class="hero-subpage" class:on-hero-photo={coverKey}>
     <div class="hero-contents feria-hero-contents">
       <h1>{strings.heroTitle(fairDisplayName)}{heroExpStr}</h1>
+      <AiSourceButtons {lang} variant="hero" showLabel={false} canReactivate {patVisible} on:reactivate={reopenAdvisor} />
     </div>
   </div>
 </header>
 
 <main class="feria-page">
+  <!-- Panel de Pat (asesor de Expansión): flotante, carga diferida. Se siembra con el
+       sector y la ciudad de ESTA feria, para que arranque ya en su contexto. -->
+  {#if showWelcomeAdvisor && AdvisorComponent}
+    <svelte:component this={AdvisorComponent} {lang} initialFamily={patFamily} initialCity={fair.city} initialTags={fairActivityTags} on:openPrivacy={() => {}} on:dismiss={() => showWelcomeAdvisor = false} />
+  {/if}
   <section class="feria-details section">
     <div class="feria-container">
       <div class="feria-text">
@@ -1030,9 +1079,17 @@
         </details>
       </div>
       <aside class="feria-aside">
+        <!-- Prueba de cobertura: miniatura del mapa de Pat + CTA que lo abre. -->
+        <section class="coverage-proof aside-module">
+          <button type="button" class="coverage-map-thumb" on:click={openPatAndScroll} aria-label={coverageMapAlt[lang] || coverageMapAlt.es}>
+            <img src="/img/pat-map-preview.avif" alt={coverageMapAlt[lang] || coverageMapAlt.es} width="1287" height="824" loading="lazy" decoding="async" />
+          </button>
+          <p>{(coverageProof[lang] || coverageProof.es)()}</p>
+          <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
+        </section>
         <!-- Proyecto Auditado: asunto troncal, destacado en la columna derecha. -->
         <div class="aside-module">
-          <p class="audited-note">{pickUspLine(lang, fair.slug)}
+          <p class="audited-note">{@html pickUspLine(lang, fair.slug)}
             <a href={pathFor(lang, 'proyecto_auditado')}>{moreInfoLabel[lang] || moreInfoLabel.es} →</a></p>
         </div>
         <!-- Nubes de navegación secundaria plegadas: no distraen del lead. -->
@@ -1045,7 +1102,12 @@
           </summary>
           <ul class="cluster-fairs">
             {#each sortedCityKeys as ck}
-              <li><a href={pathFor(lang, ck)} class:active={ck === currentCityKey}>{cityLabel(ck, lang)}</a></li>
+              <li>
+                <a href={pathFor(lang, ck)} class:active={ck === currentCityKey}>
+                  {#if navFlagCountry(ck)}<span class="city-nav-flag flag-{navFlagCountry(ck)}" aria-hidden="true"></span>{/if}
+                  {cityLabel(ck, lang)}
+                </a>
+              </li>
             {/each}
           </ul>
         </details>
@@ -1059,7 +1121,7 @@
             </summary>
             <ul class="cluster-fairs">
               {#each siblingFairs as sib}
-                <li><a href={fairHref(sib.slug)}><span class="fair-flag flag-{sib.country}" aria-hidden="true"></span>{sib.name}</a></li>
+                <li><a href={fairHref(sib.slug)}>{#if sib.country !== 'es'}<span class="fair-flag flag-{sib.country}" aria-hidden="true"></span>{/if}{sib.name}</a></li>
               {/each}
             </ul>
           </details>
@@ -1223,6 +1285,7 @@
   .audited-note a {
     font-weight: 700;
     white-space: nowrap;
+    color: royalblue;
   }
   /* Párrafos del bloque único (inyectados con @html, fuera del scope de Svelte). */
   .fair-unique :global(p) {

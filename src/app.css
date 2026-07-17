@@ -3342,20 +3342,22 @@ p b {
   margin-top: 50px;
 }
 /* B1: módulo de cobertura verificable (recuento de ferias + garantía + Pat). */
-.sidebar-sticky .coverage-proof {
+/* Panel de prueba de cobertura: vive en el sidebar de ciudad (.sidebar-sticky) y en el
+   aside de las páginas de feria (.feria-aside), así que NO se acota a un contenedor. */
+.coverage-proof {
   border: 1px solid rgba(224, 180, 0, 0.45);
   background: rgba(224, 180, 0, 0.06);
   border-radius: 10px;
   padding: 1rem 1.1rem;
   margin: 0 0 1.6rem;
 }
-.sidebar-sticky .coverage-proof p {
+.coverage-proof p {
   margin: 0 0 0.7rem;
   font-size: 0.95rem;
   line-height: 1.5;
   color: #2a2a2a;
 }
-.sidebar-sticky .coverage-proof .coverage-pat {
+.coverage-proof .coverage-pat {
   display: inline-block;
   background: #4169e1;
   color: #fff;
@@ -3368,11 +3370,12 @@ p b {
   cursor: pointer;
   text-decoration: none;
 }
-.sidebar-sticky .coverage-proof .coverage-pat:hover { background: #2a4bc0; }
-/* Cuando el módulo vive dentro del sidebar (debajo de Casos de Éxito):
-   espaciado y título coherentes con los otros módulos del aside. */
+.coverage-proof .coverage-pat:hover { background: #2a4bc0; }
+/* Cuando el módulo vive dentro del sidebar (bajo la tarjeta de Pat, sobre la nube de
+   ciudades): espaciado y título coherentes con los otros módulos del aside. */
 .sidebar-sticky .city-fairs.sidebar-module {
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .sidebar-sticky .city-fairs.sidebar-module h2 {
   font-family: 'Roboto', sans-serif;
@@ -3417,6 +3420,55 @@ p b {
   color: #1a1e21;
   background: rgba(212, 175, 55, 0.08);
 }
+/* Reclamo de ahorro por sinergias, sobre la nube de ferias del sidebar. */
+.fairs-savings-note {
+  position: relative;
+  margin: 14px 0 12px;
+  padding: 10px 12px 10px 34px;
+  color: #c0392b;
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 400;
+  background: rgba(192, 57, 43, 0.06);
+  border: 1px solid rgba(192, 57, 43, 0.28);
+  border-radius: 6px;
+  animation: savingsPulse 2.8s ease-in-out infinite;
+}
+/* Carita feliz: emoji a color. El glifo monocromo (\263A) sobre chapa roja quedaba
+   ilegible a este tamaño, así que se usa el emoji tal cual, sin chapa. */
+.fairs-savings-note::before {
+  content: '🙂';
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  font-size: 15px;
+  line-height: 1;
+}
+@keyframes savingsPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(192, 57, 43, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.13);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fairs-savings-note {
+    animation: none;
+  }
+}
+
+/* Bandera circular a la izquierda del nombre en la nube "Ciudades a las que vamos" (solo ciudades no españolas). */
+.city-nav-flag {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  vertical-align: middle;
+  overflow: hidden;
+}
 
 /* Botón "Precios" del sidebar: píldora sólida destacada, para diferenciarse a golpe
    de vista del resto de enlaces del panel (se encuentra por su forma). */
@@ -3427,11 +3479,13 @@ p b {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 14px;
+  /* 2rem = el mismo aire que deja el módulo de ciudades por debajo, así el botón queda
+     equidistante entre la pestaña de "Ciudades a las que vamos" y el panel siguiente. */
+  margin-top: 2rem;
   width: 88px;
   height: 88px;
   padding: 0;
-  background: transparent;
+  background: rgba(212, 175, 55, 0.06); /* mismo fondo que las pestañas de los desplegables */
   color: #2a2a2a;
   font-weight: 700;
   font-family: 'Inconsolata', monospace;
@@ -3494,6 +3548,28 @@ p b {
 }
 .fairs-collapse > summary::-webkit-details-marker {
   display: none;
+}
+/* Título integrado en la pestaña del desplegable: se mantiene como <h2> por la jerarquía
+   de encabezados (SEO), pero adopta la tipografía de la píldora del summary. El selector
+   lleva 3 clases + 2 elementos a propósito: así gana a `.sidebar-sticky
+   .city-fairs.sidebar-module h2` (3 clases + 1 elemento), que si no impondría Roboto 1.4rem
+   y sus márgenes, y reventaría la píldora. */
+.sidebar-sticky .sidebar-module .fairs-collapse > summary h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+}
+/* "Ciudades a las que vamos" es la única pestaña cuyo rótulo NO es un <h2> (ese módulo no
+   encabeza contenido propio), así que no le llega el peso 900 de la regla global de
+   encabezados y se veía más fina que las otras dos. Se le iguala a mano el peso y el
+   interletraje para que las tres píldoras del panel se lean idénticas. */
+.city-nav-module .fairs-collapse > summary .fairs-collapse-open,
+.city-nav-module .fairs-collapse > summary .fairs-collapse-close {
+  font-weight: 900;
+  letter-spacing: -0.15px;
 }
 .fairs-collapse > summary:hover {
   border-color: var(--gold);
