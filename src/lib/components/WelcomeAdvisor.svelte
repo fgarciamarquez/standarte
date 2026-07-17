@@ -860,7 +860,7 @@
            en pequeño y separado por una línea fina. Sin CTA (el mapa ya filtra). -->
       <div class="advisor-activity-pitch">
         <h3>{activityPitch(lang).heading}</h3>
-        <p>{activityPitch(lang).text}</p>
+        <p>{activityPitch(lang).mapText}</p>
       </div>
     {/if}
 
@@ -926,15 +926,16 @@
     max-width: 640px;
   }
   .advisor-activity-pitch h3 {
-    margin: 0 auto 6px;
-    font-size: 14px;
+    margin: 0 auto 8px;
+    font-size: 20px;
     font-weight: 600;
-    color: #3a3f42;
+    /* Mismo rojo que el aviso de ahorro del sidebar, para no meter un tono nuevo. */
+    color: #c0392b;
   }
   .advisor-activity-pitch p {
     margin: 0 auto;
-    font-size: 14px;
-    line-height: 1.55;
+    font-size: 17px;
+    line-height: 1.5;
     color: #6b7075;
   }
 

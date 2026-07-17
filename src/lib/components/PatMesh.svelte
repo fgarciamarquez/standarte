@@ -1190,8 +1190,10 @@
     letter-spacing: 0.3em;
     fill: #1a1e21;
   }
+  /* Contraste al alza: la filigrana es la defensa contra quien copie el mapa por captura
+     de pantalla, así que debe sobrevivir al recorte sin llegar a estorbar la lectura. */
   :global(.pm-watermark-fill) {
-    opacity: 0.08;
+    opacity: 0.12;
     pointer-events: none;
     user-select: none;
   }
