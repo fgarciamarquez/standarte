@@ -929,8 +929,7 @@
     margin: 0 auto 8px;
     font-size: 20px;
     font-weight: 600;
-    /* Mismo rojo que el aviso de ahorro del sidebar, para no meter un tono nuevo. */
-    color: #c0392b;
+    color: #3a3f42;
   }
   .advisor-activity-pitch p {
     margin: 0 auto;

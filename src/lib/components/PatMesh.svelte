@@ -1084,6 +1084,15 @@
   .pm-lens-toggle.active svg .pm-lens-plus {
     stroke: #fff;
   }
+  /* En móvil no se ofrece la lente: ahí se hace zoom con los dedos y el botón (94px) se
+     comería una esquina del mapa. Mismo corte que el contador (560px), pero la regla va
+     DESPUÉS de `.pm-lens-toggle`: las media queries no suman especificidad, así que
+     puesta antes la pisaba el `display: flex` de la regla base. */
+  @media (max-width: 560px) {
+    .pm-lens-toggle {
+      display: none;
+    }
+  }
   /* Aro de la lente sobre el mapa. La capa de la lente no captura el puntero para
      que la interacción siga llegando al mapa real de debajo. */
   :global(.pm-lens) {
