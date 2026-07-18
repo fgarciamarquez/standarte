@@ -532,16 +532,25 @@ Cada una de estas llaves debe ser un objeto con los siguientes campos:
         const languages = ['es', 'en', 'de', 'pt', 'zh', 'hi', 'fr', 'it'];
         const newArticles = [];
 
+        // Slugify latino: quita acentos y todo lo que no sea [a-z0-9]. Los t\u00edtulos en
+        // escrituras no latinas (zh, hi...) se quedaban en un slug vac\u00edo/degenerado ("bec",
+        // "fira-barcelona", "ifema-2025") y colisionaban entre art\u00edculos, corrompiendo el
+        // <html lang> y el hreflang (Google los marcaba como duplicados). Si el slug propio
+        // es degenerado, se usa la base del slug ESPA\u00d1OL + el c\u00f3digo de idioma: \u00fanico y estable.
+        const slugify = (t) => t
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9\s-]/g, "")
+          .trim()
+          .replace(/\s+/g, "-");
+        const esSlugBase = slugify(generatedArticle.es.title);
+
         for (const lang of languages) {
           const itemLang = generatedArticle[lang];
-          
-          const slug = itemLang.title
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/[^a-z0-9\s-]/g, "")
-            .trim()
-            .replace(/\s+/g, "-");
+
+          let slug = slugify(itemLang.title);
+          if (slug.replace(/-/g, '').length < 4) slug = `${esSlugBase}-${lang}`;
 
           const finalArticle = {
             slug: slug,
