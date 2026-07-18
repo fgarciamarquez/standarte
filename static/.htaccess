@@ -798,6 +798,18 @@ DirectorySlash Off
   Redirect 301 /proyectos/stand_weiler_desarrollado_en_madrid /proyectos/stand_para_empresa_de_maquinas_herramienta_en_madrid
   Redirect 301 /proyectos/stand_weiler_desarrollado_en_madrid/ /proyectos/stand_para_empresa_de_maquinas_herramienta_en_madrid
 
+  # --- Barra final -> canónica sin barra (301) ---
+  # Las páginas de contenido canonizan SIN barra; Google descubrió variantes con barra final
+  # (legado del sitio anterior/sitemaps viejos) que servían 200 y quedaban como "Página
+  # alternativa con etiqueta canónica adecuada" (excluidas de indexación). Este 301 las
+  # consolida en su canónica. Exclusiones imprescindibles:
+  #  - Homes de idioma (/xx/): su canónica SÍ lleva barra (sitemap y enlaces internos usan /en/, /pt/...).
+  #  - /proyectos/: ya tienen sus propios Redirect 301 arriba (evita redirecciones dobles).
+  #  - Los /X/__data.json no terminan en barra, así que la navegación SvelteKit no se ve afectada.
+  RewriteCond %{REQUEST_URI} !^/[a-z]{2}/$
+  RewriteCond %{REQUEST_URI} !^/proyectos/
+  RewriteRule ^(.+)/$ https://standarte.es/$1 [R=301,L]
+
   # --- Defensa básica contra extractores/clonadores de la web (wget --mirror, HTTrack...) ---
   # No afecta a buscadores (Googlebot/Bingbot) ni a los rastreadores de IA que la web busca
   # captar a propósito (GPTBot, ClaudeBot, PerplexityBot...): solo bloquea firmas de
