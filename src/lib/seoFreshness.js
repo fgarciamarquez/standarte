@@ -65,7 +65,12 @@ export const seoFreshness = {
   melilla: '2026-07-14',
   tanger: '2026-07-14',
   andorra: '2026-07-15',
-  teruel: '2026-07-16'
+  teruel: '2026-07-16',
+  marsella: '2026-07-17',
+  cannes: '2026-07-17',
+  avignon: '2026-07-17',
+  toulouse: '2026-07-17',
+  perpignan: '2026-07-17'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */

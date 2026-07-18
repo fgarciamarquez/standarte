@@ -2413,5 +2413,82 @@ export const fairsData = [
     "slug": "agroalcaniz",
     "city": "Alcañiz",
     "sector": "Agroindustria y Maquinaria"
+  },
+  {
+    "name": "Foire Internationale de Marseille",
+    "country": "fr",
+    "slug": "foire-internationale-marseille",
+    "city": "Marsella",
+    "sector": "Multisectorial y Gran Público"
+  },
+  {
+    "name": "Cannes Yachting Festival",
+    "country": "fr",
+    "slug": "cannes-yachting-festival",
+    "city": "Cannes",
+    "sector": "Náutica y Yates"
+  },
+  {
+    "name": "MAPIC",
+    "country": "fr",
+    "slug": "mapic-cannes",
+    "city": "Cannes",
+    "sector": "Retail e Inmobiliario Comercial"
+  },
+  {
+    "name": "MED'Agri",
+    "country": "fr",
+    "slug": "medagri-avignon",
+    "city": "Aviñón",
+    "sector": "Agricultura Mediterránea"
+  },
+  {
+    "name": "Foire Internationale de Toulouse",
+    "country": "fr",
+    "slug": "foire-internationale-toulouse",
+    "city": "Toulouse",
+    "sector": "Multisectorial y Gran Público"
+  },
+  {
+    "name": "CFIA Toulouse",
+    "country": "fr",
+    "slug": "cfia-toulouse",
+    "city": "Toulouse",
+    "sector": "Agroindustria y Maquinaria"
+  },
+  {
+    "name": "SEPEM Industries Toulouse",
+    "country": "fr",
+    "slug": "sepem-industries-toulouse",
+    "city": "Toulouse",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Aerospace Test & Development Show",
+    "country": "fr",
+    "slug": "aerospace-test-development-show-toulouse",
+    "city": "Toulouse",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Aeromart Toulouse",
+    "country": "fr",
+    "slug": "aeromart-toulouse",
+    "city": "Toulouse",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "Salon SIANE",
+    "country": "fr",
+    "slug": "siane-toulouse",
+    "city": "Toulouse",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Foire Exposition de Perpignan",
+    "country": "fr",
+    "slug": "foire-exposition-perpignan",
+    "city": "Perpiñán",
+    "sector": "Multisectorial y Gran Público"
   }
 ];

@@ -91,6 +91,13 @@
     hi: 'और देखें', pt: 'Ver mais', fr: 'Voir plus', it: 'Vedi altro',
     ko: '더 보기', ja: 'もっと見る', nl: 'Meer zien'
   };
+  // Etiqueta propia del botón que despliega la lista de ciudades (la galería de fotos
+  // usa galleryMoreLabels genérico; aquí queremos nombrar explícitamente "ciudades").
+  const citiesMoreLabels = {
+    es: 'Ver más ciudades', en: 'See more cities', de: 'Mehr Städte anzeigen', zh: '查看更多城市',
+    hi: 'और शहर देखें', pt: 'Ver mais cidades', fr: 'Voir plus de villes', it: 'Vedi altre città',
+    ko: '더 많은 도시 보기', ja: 'さらに都市を見る', nl: 'Meer steden bekijken'
+  };
 
   let menuOpen = false;
   let lightboxProject = null;
@@ -576,7 +583,8 @@
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
     ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger',
-    andorra: 'andorra', teruel: 'aragon'
+    andorra: 'andorra', teruel: 'aragon',
+    marsella: 'francia-sur', cannes: 'francia-sur', avignon: 'francia-sur', toulouse: 'francia-sur', perpignan: 'francia-sur'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -597,6 +605,7 @@
     'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'aragon', 'Calamocha': 'aragon', 'Alcañiz': 'aragon',
+    'Marsella': 'francia-sur', 'Cannes': 'francia-sur', 'Aviñón': 'francia-sur', 'Toulouse': 'francia-sur', 'Perpiñán': 'francia-sur',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'
@@ -1026,6 +1035,7 @@
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
+    'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon', 'Toulouse': 'toulouse', 'Perpiñán': 'perpignan',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   function fairsForCity(cityKey) {
@@ -1864,7 +1874,7 @@
       {#if !citiesExpanded && cityKeys.length > CITIES_VISIBLE}
         <div class="gallery-more-wrap">
           <button type="button" class="gallery-more-btn" on:click={() => (citiesExpanded = true)}>
-            {galleryMoreLabels[lang] || galleryMoreLabels.es}
+            {citiesMoreLabels[lang] || citiesMoreLabels.es}
           </button>
         </div>
       {/if}

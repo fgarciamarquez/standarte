@@ -408,7 +408,18 @@ export const fairActivities = {
   "motortec-madrid": ["automocion","maquinaria-industrial"],
   "feria-jamon-teruel": ["alimentacion","gastronomia-hosteleria"],
   "expocalamocha": ["ganaderia","agricultura-maquinaria"],
-  "agroalcaniz": ["agricultura-maquinaria","maquinaria-industrial"]
+  "agroalcaniz": ["agricultura-maquinaria","maquinaria-industrial"],
+  "foire-internationale-marseille": ["multisectorial"],
+  "cannes-yachting-festival": ["naval","turismo"],
+  "mapic-cannes": ["congreso-profesional","regalo-decoracion"],
+  "medagri-avignon": ["agricultura-maquinaria","ganaderia"],
+  "foire-internationale-toulouse": ["multisectorial"],
+  "cfia-toulouse": ["alimentacion", "packaging", "maquinaria-industrial"],
+  "sepem-industries-toulouse": ["maquinaria-industrial", "metal-subcontratacion"],
+  "aerospace-test-development-show-toulouse": ["aeronautica"],
+  "aeromart-toulouse": ["aeronautica", "congreso-profesional"],
+  "siane-toulouse": ["maquinaria-industrial", "metal-subcontratacion"],
+  "foire-exposition-perpignan": ["multisectorial"]
 };
 
 // Helpers

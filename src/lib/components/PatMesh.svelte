@@ -97,7 +97,7 @@
   const selectionMsg = {
     es: {
       family: (n) => `En este sector tenemos ${n} feria${n === 1 ? '' : 's'}.`,
-      sub: (n) => n === 1 ? `Ahora es 1 feria a la que puedes asistir.` : `Ahora son ${n} ferias a las que puedes asistir. Aprovecha la oferta que ofrecemos si contratas más de 1 stand con nosotros.`
+      sub: (n) => n === 1 ? `Ahora es 1 feria a la que puedes asistir.` : `Ahora son ${n} ferias a las que puedes asistir. Ahorra al contratar varios eventos con nosotros.`
     },
     en: {
       family: (n) => `In this sector we have ${n} fair${n === 1 ? '' : 's'}.`,
@@ -309,6 +309,11 @@
     }
     svgEl.appendChild(gratGroup);
     svgEl.appendChild(el('path', { class: 'pm-coast', d: IBERIA_PATH }));
+    // Frontera España↔Francia (cresta pirenaica): símbolo cartográfico de dos líneas
+    // paralelas de rayas. La cresta va de Cap de Creus (Mediterráneo) al Atlántico
+    // (Irún); las dos líneas son la misma polilínea desplazada ±2,5 px en vertical.
+    svgEl.appendChild(el('path', { class: 'pm-border', d: 'M 903.5,142.9 L 873.9,130.9 L 711.8,107.9 L 567.3,80.3 L 543,49.5' }));
+    svgEl.appendChild(el('path', { class: 'pm-border', d: 'M 903.5,147.9 L 873.9,135.9 L 711.8,112.9 L 567.3,85.3 L 543,54.5' }));
     // Mallorca: polígono simple (misma proyección px) para que la isla tenga tierra
     // bajo su punto y se vea que la malla llega hasta Baleares. Punto Palma ≈ (856, 398).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 826,384 L 848,368 L 892,360 L 884,388 L 864,401 L 846,405 L 834,396 Z' }));
@@ -1018,13 +1023,14 @@
   }
 
   /* ── Lupa ── */
-  /* Botón que activa/desactiva la lente de aumento (esquina superior derecha). */
-  /* Mismo tamaño y mismo `top` que .pm-counter (94px / 10px): las dos ventanas flotantes
-     del mapa quedan alineadas y del mismo calibre, una en cada esquina superior. */
+  /* Botón que activa/desactiva la lente de aumento (columna izquierda, bajo el contador). */
+  /* Mismo diámetro exterior que .pm-counter (94px con box-sizing:border-box): las dos ventanas
+     flotantes quedan apiladas en la esquina superior izquierda y con idéntica circunferencia.
+     top = 10 (top del contador) + 94 (alto del contador) + 12 (separación). */
   .pm-lens-toggle {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 116px;
+    left: 10px;
     width: 94px;
     height: 94px;
     display: flex;
@@ -1035,7 +1041,9 @@
        el icono queda más embebido (el svg se mide en %, ver abajo). */
     border: 8px solid #fff;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.96);
+    /* Degradado concéntrico: transparente en el centro → blanco opaco en el borde,
+       así el icono "respira" y el aro se funde con el borde blanco. */
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.96) 100%);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     color: #4a4f52;
     cursor: pointer;
@@ -1207,6 +1215,14 @@
     user-select: none;
   }
 
+  /* Frontera España↔Francia: dos líneas de rayas paralelas, gris apagado, sin relleno. */
+  :global(.pm-border) {
+    fill: none;
+    stroke: #a7aaa2;
+    stroke-width: 1.1;
+    stroke-dasharray: 5 3;
+    opacity: 0.85;
+  }
   :global(.pm-coast) {
     fill: rgba(26, 30, 33, 0.05);
     stroke: #b9bcb4;
