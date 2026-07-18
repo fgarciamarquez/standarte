@@ -47,6 +47,18 @@ DirectorySlash Off
   # --- Migración /noticias -> /blog (301 para conservar el SEO de lo ya indexado) ---
   # Artículos: todos los idiomas vivían bajo /noticias/<slug>
   RewriteRule ^noticias/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
+  # Artículos con PREFIJO de idioma (URLs antiguas indexadas: /pt/noticias/<slug>,
+  # /hi/samachar/<slug>...). Los artículos actuales viven en /blog/<slug> (sin prefijo),
+  # así que se redirige el slug. Requieren <slug> tras el segmento, por lo que no chocan
+  # con las redirecciones de listado de abajo (^xx/segmento/?$).
+  RewriteRule ^en/news/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
+  RewriteRule ^de/nachrichten/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
+  RewriteRule ^zh/xinwen/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
+  RewriteRule ^hi/samachar/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
+  RewriteRule ^pt/noticias/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
+  RewriteRule ^fr/actualites/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
+  RewriteRule ^it/notizie/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
+  RewriteRule ^ko/sosig/(.+?)/?$ https://standarte.es/blog/$1 [R=301,L]
   # Listado ES y variantes de idioma antiguas -> /blog equivalente
   RewriteRule ^noticias/?$ https://standarte.es/blog [R=301,L]
   RewriteRule ^en/news/?$ https://standarte.es/en/blog [R=301,L]
