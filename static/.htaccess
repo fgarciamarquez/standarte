@@ -556,6 +556,20 @@ DirectorySlash Off
   RewriteCond %{REQUEST_URI} ^/blog/?$
   RewriteRule ^ blog.html [L]
 
+  # --- Barra final -> canónica sin barra (301) ---
+  # DEBE ir ANTES del enrutado a .html de abajo: esa regla (^(.+?)/?$ -> $1.html [L]) sirve
+  # <ruta>.html también para la variante CON barra, dejándola en 200. Google encontró esas
+  # variantes con barra (legado) y las marcaba como "Página alternativa con etiqueta canónica
+  # adecuada" (excluidas). Este 301 las consolida en su canónica sin barra. Exclusiones:
+  #  - Homes de idioma (/xx/): su canónica lleva barra (ya resueltas arriba; se excluyen por seguridad).
+  #  - /proyectos/: los slugs viejos tienen Redirect 301 propio (evita saltos dobles); los actuales quedan igual.
+  #  - /admin: territorio PHP (panel de correos); sirve su index.php de directorio, no debe perder la barra.
+  #  - /X/__data.json no termina en barra: la navegación SvelteKit no se ve afectada.
+  RewriteCond %{REQUEST_URI} !^/[a-z]{2}/$
+  RewriteCond %{REQUEST_URI} !^/proyectos/
+  RewriteCond %{REQUEST_URI} !^/admin
+  RewriteRule ^(.+)/$ https://standarte.es/$1 [R=301,L]
+
   # /admin es territorio PHP (panel de correos): que use su index.php normal,
   # nunca el .html. Sin esta exclusión, el .html basura que el prerender pueda
   # dejar en admin/ eclipsaría el panel.
@@ -797,18 +811,6 @@ DirectorySlash Off
   Redirect 301 /proyectos/stand_vegevital_desarrollado_en_bilbao/ /proyectos/stand_para_empresa_de_agricultura_en_bilbao
   Redirect 301 /proyectos/stand_weiler_desarrollado_en_madrid /proyectos/stand_para_empresa_de_maquinas_herramienta_en_madrid
   Redirect 301 /proyectos/stand_weiler_desarrollado_en_madrid/ /proyectos/stand_para_empresa_de_maquinas_herramienta_en_madrid
-
-  # --- Barra final -> canónica sin barra (301) ---
-  # Las páginas de contenido canonizan SIN barra; Google descubrió variantes con barra final
-  # (legado del sitio anterior/sitemaps viejos) que servían 200 y quedaban como "Página
-  # alternativa con etiqueta canónica adecuada" (excluidas de indexación). Este 301 las
-  # consolida en su canónica. Exclusiones imprescindibles:
-  #  - Homes de idioma (/xx/): su canónica SÍ lleva barra (sitemap y enlaces internos usan /en/, /pt/...).
-  #  - /proyectos/: ya tienen sus propios Redirect 301 arriba (evita redirecciones dobles).
-  #  - Los /X/__data.json no terminan en barra, así que la navegación SvelteKit no se ve afectada.
-  RewriteCond %{REQUEST_URI} !^/[a-z]{2}/$
-  RewriteCond %{REQUEST_URI} !^/proyectos/
-  RewriteRule ^(.+)/$ https://standarte.es/$1 [R=301,L]
 
   # --- Defensa básica contra extractores/clonadores de la web (wget --mirror, HTTrack...) ---
   # No afecta a buscadores (Googlebot/Bingbot) ni a los rastreadores de IA que la web busca
