@@ -3,6 +3,7 @@
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, ctaBudget, preciosNav, projectUrl } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag, fairTags } from '$lib/fairTags.js';
+  import { fairFreshnessFor } from '$lib/seoFreshness.js';
   import { projectsForActivity } from '$lib/projectTags.js';
   import { projectIndex } from '$lib/projectIndex.js';
   import { pickIntroVariant } from '$lib/introVariants.js';
@@ -835,11 +836,16 @@
   // #3 (D1) JSON-LD: Service (con proveedor y ciudad) + FAQPage (nombra Pat y Proyecto
   // Auditado). El FAQPage solo se emite en ES/PT/EN (prioridad ibérica) para no publicar
   // preguntas en un idioma que no coincida con la página.
+  // Frescura honesta: solo se emite dateModified si la ficha tiene fecha real registrada
+  // en fairFreshness (clústeres prioritarios refrescados). Señal de reindexación coherente
+  // con el <lastmod> del sitemap.
+  $: fairFreshness = fairFreshnessFor(fair.slug);
   $: serviceJsonLd = JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Service', '@id': canonical + '#service',
     name: strings.heroTitle(fairDisplayName), serviceType: 'Exhibition stand builder',
     provider: { '@type': 'Organization', name: 'Standarte', url: 'https://standarte.es', logo: 'https://standarte.es/img/logo_standarte_rectanular.png' },
-    areaServed: { '@type': 'City', name: fair.city }, description: seoDesc, url: canonical
+    areaServed: { '@type': 'City', name: fair.city }, description: seoDesc, url: canonical,
+    ...(fairFreshness ? { dateModified: fairFreshness } : {})
   }).replace(/</g, '\\u003c');
   const faqLd = {
     es: (n) => [

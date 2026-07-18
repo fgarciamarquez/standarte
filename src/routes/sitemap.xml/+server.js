@@ -1,6 +1,6 @@
 import { fairsData } from '$lib/fairsData.js';
 import { languages, routes, pathFor, portfolios, fairUrl, projectUrl, activityIndexUrl, activityUrl } from '$lib/siteData.js';
-import { seoFreshness } from '$lib/seoFreshness.js';
+import { seoFreshness, fairFreshness } from '$lib/seoFreshness.js';
 import { tagOrder } from '$lib/fairTags.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import { portfolioVideos, siteVideos } from '$lib/videosData.js';
@@ -105,6 +105,8 @@ export async function GET() {
   });
 
   // 4. Ferias (ferias/[slug]) por idioma
+  //    lastmod real solo para las fichas con fecha registrada en fairFreshness (clústeres
+  //    prioritarios refrescados); el resto no emite lastmod (no usar la fecha del build).
   fairsData.forEach((fair) => {
     const alternates = languages.map((altLang) => ({
       hreflang: altLang,
@@ -112,9 +114,11 @@ export async function GET() {
     }));
     alternates.push({ hreflang: 'x-default', href: `${siteUrl}${fairUrl(fair.slug, 'es')}` });
 
+    const lastmod = fairFreshness[fair.slug];
     languages.forEach((lang) => {
       urls.push({
         loc: `${siteUrl}${fairUrl(fair.slug, lang)}`,
+        lastmod,
         changefreq: 'monthly',
         priority: '0.7',
         alternates

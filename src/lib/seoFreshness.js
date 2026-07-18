@@ -27,7 +27,7 @@ export const seoFreshness = {
   bilbao: '2026-07-14',
   malaga: '2026-07-14',
   sevilla: '2026-07-14',
-  barcelona: '2026-07-14',
+  barcelona: '2026-07-18',
   alicante: '2026-07-14',
   elche: '2026-07-14',
   murcia: '2026-07-14',
@@ -76,4 +76,35 @@ export const seoFreshness = {
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
 export function freshnessFor(section) {
   return (section && seoFreshness[section]) || null;
+}
+
+// Frescura por FERIA satélite (páginas /ferias/<slug>). Misma filosofía honesta que
+// seoFreshness: fecha ISO real de la última revisión del contenido de la ficha o de su
+// clúster-ciudad. Se emite como <lastmod> en el sitemap y como dateModified en el JSON-LD
+// de la feria, para que los motores reindexen las satélites junto con su hub prioritario.
+// Clave = slug de feria (fairsData). Solo llevan fecha las ferias realmente refrescadas.
+export const fairFreshness = {
+  // Barcelona (Plaza Prioritaria) — clúster de 17 ferias satélite refrescado 2026-07-18.
+  'mwc-barcelona': '2026-07-18',
+  'ise-barcelona': '2026-07-18',
+  'smart-city-expo-world-congress-barcelona': '2026-07-18',
+  'iot-solutions-world-congress-barcelona': '2026-07-18',
+  'alimentaria-barcelona': '2026-07-18',
+  'hostelco-barcelona': '2026-07-18',
+  'barcelona-wine-week': '2026-07-18',
+  'seafood-expo-global-barcelona': '2026-07-18',
+  'expoquimia-barcelona': '2026-07-18',
+  'hispack-barcelona': '2026-07-18',
+  'equiplast-barcelona': '2026-07-18',
+  'construmat-barcelona': '2026-07-18',
+  'piscina-wellness-barcelona': '2026-07-18',
+  'cosmobeauty-barcelona': '2026-07-18',
+  'forum-dental-mediterraneo-barcelona': '2026-07-18',
+  'sil-barcelona': '2026-07-18',
+  'automobile-barcelona': '2026-07-18'
+};
+
+/** Fecha de última actualización de una ficha de feria, o null si no la tiene. */
+export function fairFreshnessFor(slug) {
+  return (slug && fairFreshness[slug]) || null;
 }
