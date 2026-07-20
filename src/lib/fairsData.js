@@ -2553,5 +2553,61 @@ export const fairsData = [
     "slug": "foire-exposition-perpignan",
     "city": "Perpiñán",
     "sector": "Multisectorial y Gran Público"
+  },
+  {
+    "name": "Foire Internationale de Bordeaux",
+    "country": "fr",
+    "slug": "foire-internationale-bordeaux",
+    "city": "Burdeos",
+    "sector": "Multisectorial y Gran Público"
+  },
+  {
+    "name": "Vinitech-Sifel",
+    "country": "fr",
+    "slug": "vinitech-sifel-bordeaux",
+    "city": "Burdeos",
+    "sector": "Viticultura y Agroindustria"
+  },
+  {
+    "name": "Equitaine",
+    "country": "fr",
+    "slug": "equitaine-bordeaux",
+    "city": "Burdeos",
+    "sector": "Sector Ecuestre"
+  },
+  {
+    "name": "Salon de l'Agriculture Nouvelle-Aquitaine",
+    "country": "fr",
+    "slug": "salon-agriculture-nouvelle-aquitaine-bordeaux",
+    "city": "Burdeos",
+    "sector": "Agricultura y Ganadería"
+  },
+  {
+    "name": "Art3f Bordeaux",
+    "country": "fr",
+    "slug": "art3f-bordeaux",
+    "city": "Burdeos",
+    "sector": "Cultura y Arte"
+  },
+  {
+    "name": "Grand Salon Habitat",
+    "country": "fr",
+    "slug": "grand-salon-habitat-bordeaux",
+    "city": "Burdeos",
+    "sector": "Construcción y Hábitat"
+  },
+  {
+    "name": "Salon des Vins des Vignerons Indépendants",
+    "country": "fr",
+    "slug": "salon-vins-vignerons-independants-bordeaux",
+    "city": "Burdeos",
+    "sector": "Vino"
+  },
+  {
+    "name": "Cycl'Eau Nouvelle-Aquitaine",
+    "country": "fr",
+    "slug": "cycleau-nouvelle-aquitaine-bordeaux",
+    "city": "Burdeos",
+    "sector": "Agua e Infraestructuras"
   }
 ];

@@ -52,6 +52,8 @@ export const CITY_LATLON = {
   'Aviñón': [43.9493, 4.8055],
   'Toulouse': [43.6045, 1.4442],
   'Perpiñán': [42.6887, 2.8948],
+  // Suroeste atlántico francés (Nueva Aquitania): el mapa se extiende al noroeste.
+  'Burdeos': [44.8378, -0.5792],
   'Alfaro': [42.18, -1.75],
   'Calahorra': [42.30, -1.96],
   'Boqueixón': [42.79, -8.40],
@@ -267,6 +269,8 @@ export const CITY_PILLAR = {
   // Sur de Francia (arco mediterráneo): hubs propios en el mapa extendido.
   'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon',
   'Toulouse': 'toulouse', 'Perpiñán': 'perpignan',
+  // Suroeste atlántico francés (Nueva Aquitania).
+  'Burdeos': 'burdeos',
   'Santander': 'santander', 'Torrelavega': 'santander',
   'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon',
   'Islas Canarias': 'islas_canarias', 'Tenerife': 'islas_canarias',
@@ -287,8 +291,9 @@ export const UNLINKED_CITIES = [
 ];
 
 // Contorno simplificado de la península ibérica (px, misma proyección).
-// Contorno Iberia + lóbulo del sur de Francia (arco mediterráneo). Tras Cap de Creus
-// (903.5,145.4) se inserta la costa francesa W→E hasta Niza y el interior E→W sobre
-// Toulouse/Aviñón; los puntos de la frontera pirenaica (873.9,133.4 y 711.8,110.4) pasan
-// a ser interiores del bloque combinado y se retiran. Verificado con point-in-polygon.
-export const IBERIA_PATH = "M 15.5,92 L 38.8,170.2 L 44.4,202.4 L 52.9,253 L 52.9,299.9 L 44.4,345 L 7,395.6 L 2.1,478.4 L 28.2,501.4 L 44.4,547.4 L 37.4,633 L 146.6,621 L 172.7,618.2 L 225.5,678 L 274.2,726.8 L 358,671.6 L 495.4,662.4 L 600.5,579.6 L 635.7,515.2 L 647,409.4 L 729.4,292.6 L 757.6,257.6 L 821,234.6 L 903.5,145.4 L 912.7,50.6 L 990.2,50.6 L 1048,57 L 1103,73.6 L 1164.3,32.2 L 1198.1,13.8 L 1191,-41.4 L 1007.8,-59.8 L 764.7,-41.4 L 697.7,69 L 567.3,82.8 L 530,53.4 L 456.7,47.8 L 401.7,39.6 L 270.6,30.4 L 89.5,38.6 L 15.5,92 Z";
+// Contorno Iberia + lóbulo del sur de Francia (arco mediterráneo) + saliente atlántico
+// de Nueva Aquitania. Tras Cap de Creus (903.5,145.4) se inserta la costa francesa W→E
+// hasta Niza y el interior E→W; sobre Toulouse la costa asciende al NO para envolver
+// Burdeos (≈628.6,-86.3) por el estuario de la Gironda y baja por la costa de las Landas
+// hasta el arranque vasco (567.3,82.8). Verificado con point-in-polygon.
+export const IBERIA_PATH = "M 15.5,92 L 38.8,170.2 L 44.4,202.4 L 52.9,253 L 52.9,299.9 L 44.4,345 L 7,395.6 L 2.1,478.4 L 28.2,501.4 L 44.4,547.4 L 37.4,633 L 146.6,621 L 172.7,618.2 L 225.5,678 L 274.2,726.8 L 358,671.6 L 495.4,662.4 L 600.5,579.6 L 635.7,515.2 L 647,409.4 L 729.4,292.6 L 757.6,257.6 L 821,234.6 L 903.5,145.4 L 912.7,50.6 L 990.2,50.6 L 1048,57 L 1103,73.6 L 1164.3,32.2 L 1198.1,13.8 L 1191,-41.4 L 1007.8,-59.8 L 764.7,-41.4 L 655,-120 L 560,-70 L 560,20 L 567.3,82.8 L 530,53.4 L 456.7,47.8 L 401.7,39.6 L 270.6,30.4 L 89.5,38.6 L 15.5,92 Z";

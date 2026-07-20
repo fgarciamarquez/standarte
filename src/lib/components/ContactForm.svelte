@@ -149,20 +149,21 @@
       .sort((a, b) => (cityRank(a.f.city) - cityRank(b.f.city)) || (b.sc - a.sc))
       .map((x) => x.f);
   })();
-  // Selección múltiple (slugs), con TOPE de 3 ferias. Se reinicia si cambia la feria.
-  const MAX_EXTRA = 3;
+  // Selección múltiple (slugs), con TOPE de 2 ferias extra. Se reinicia si cambia la feria.
+  const MAX_EXTRA = 2;
   let selectedFairs = [];
   let synForSlug = '';
   $: if ((typedFair?.slug || '') !== synForSlug) { synForSlug = typedFair?.slug || ''; selectedFairs = []; }
   function toggleFairPick(slug) {
     if (selectedFairs.includes(slug)) { selectedFairs = selectedFairs.filter((s) => s !== slug); return; }
-    if (selectedFairs.length >= MAX_EXTRA) return; // no más de 2
+    if (selectedFairs.length >= MAX_EXTRA) return; // no más de 2 extra
     selectedFairs = [...selectedFairs, slug];
   }
-  // Ahorro por sinergia: 1 feria = 15%, 2 = 25%, 3 = 35% (máximo).
-  const savingsScale = [0, 15, 25, 35];
-  // Escalera de descuentos que se muestra siempre (gris) y se ilumina al seleccionar.
-  const savingsTiers = [{ n: 1, pct: 15 }, { n: 2, pct: 25 }, { n: 3, pct: 35 }];
+  // Ahorro por sinergia, ÚNICO (no acumulado). Contando la feria consultada:
+  // 2 eventos (1 feria elegida) = 15%, 3 eventos (2 elegidas) = 25%.
+  const savingsScale = [0, 15, 25];
+  // Escalera de descuentos que se muestra siempre (gris); se ilumina SOLO el tramo activo.
+  const savingsTiers = [{ n: 1, pct: 15 }, { n: 2, pct: 25 }];
   $: ahorroPct = savingsScale[Math.min(selectedFairs.length, MAX_EXTRA)];
   $: feriasExtraLabel = selectedFairs.map((s) => fairBySlug.get(s)?.name).filter(Boolean).join(', ');
 
@@ -388,7 +389,7 @@
                     <p class="wiz-sub">{syn.sub}:
                       <span class="syn-ladder" aria-live="polite">
                         {#each savingsTiers as t}
-                          <span class="syn-pct" class:on={selectedFairs.length >= t.n}>-{t.pct}%</span>
+                          <span class="syn-pct" class:on={selectedFairs.length === t.n}>-{t.pct}%</span>
                         {/each}
                       </span>
                     </p>

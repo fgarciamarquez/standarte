@@ -2,7 +2,7 @@
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
-  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
+  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, routes } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
@@ -22,6 +22,7 @@
   import LangFlagIntro from './LangFlagIntro.svelte';
   import SiteFooter from './SiteFooter.svelte';
   import MeshCoverageLinks from './MeshCoverageLinks.svelte';
+  import { CITY_LATLON, CITY_PILLAR } from '$lib/iberiaMeshData.js';
   // WelcomeAdvisor NO se importa de forma estática: se carga con import dinámico
   // (chunk aparte) tras cargar la página, para no colgar del bundle principal.
 
@@ -584,7 +585,7 @@
     aranda: 'castillayleon', regua: 'portugal',
     ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger',
     andorra: 'andorra', teruel: 'aragon',
-    marsella: 'francia-sur', cannes: 'francia-sur', avignon: 'francia-sur', toulouse: 'francia-sur', perpignan: 'francia-sur'
+    marsella: 'francia-sur', cannes: 'francia-sur', avignon: 'francia-sur', toulouse: 'francia-sur', perpignan: 'francia-sur', burdeos: 'francia-sur'
   };
   const FAIR_CITY_REGION = {
     'Badajoz': 'extremadura', 'Don Benito': 'extremadura', 'Almendralejo': 'extremadura', 'Plasencia': 'extremadura', 'Mérida': 'extremadura', 'Zafra': 'extremadura', 'Cáceres': 'extremadura',
@@ -605,7 +606,7 @@
     'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'aragon', 'Calamocha': 'aragon', 'Alcañiz': 'aragon',
-    'Marsella': 'francia-sur', 'Cannes': 'francia-sur', 'Aviñón': 'francia-sur', 'Toulouse': 'francia-sur', 'Perpiñán': 'francia-sur',
+    'Marsella': 'francia-sur', 'Cannes': 'francia-sur', 'Aviñón': 'francia-sur', 'Toulouse': 'francia-sur', 'Perpiñán': 'francia-sur', 'Burdeos': 'francia-sur',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
     'Islas de Madeira': 'madeira', 'Funchal': 'madeira', 'Madeira': 'madeira'
@@ -925,6 +926,45 @@
     return seen;
   })();
 
+  // Panel "Conexiones" del nodo CIUDAD: ciudades-hub más cercanas del mapa (malla
+  // geográfica ciudad↔ciudad, que no existía como enlace) + sectores presentes. Cada
+  // ciudad genera vecinos distintos por su posición real en el mapa.
+  const CITY_COUNTRY_MAP = (() => { const m = {}; for (const f of fairItems) if (!(f.city in m)) m[f.city] = f.country; return m; })();
+  const conexCityT = {
+    es: { title: 'Conexiones', near: 'Ciudades cercanas', acts: 'Sectores presentes' },
+    en: { title: 'Connections', near: 'Nearby cities', acts: 'Sectors present' },
+    de: { title: 'Verbindungen', near: 'Städte in der Nähe', acts: 'Vertretene Branchen' },
+    pt: { title: 'Ligações', near: 'Cidades próximas', acts: 'Setores presentes' },
+    fr: { title: 'Connexions', near: 'Villes proches', acts: 'Secteurs présents' },
+    it: { title: 'Connessioni', near: 'Città vicine', acts: 'Settori presenti' },
+    nl: { title: 'Verbindingen', near: 'Steden in de buurt', acts: 'Aanwezige sectoren' },
+    zh: { title: '关联', near: '邻近城市', acts: '涵盖领域' },
+    hi: { title: 'कनेक्शन', near: 'निकटवर्ती शहर', acts: 'मौजूद क्षेत्र' },
+    ko: { title: '연결', near: '인근 도시', acts: '해당 분야' },
+    ja: { title: '関連', near: '近隣の都市', acts: '対象分野' }
+  };
+  $: cxc = conexCityT[lang] || conexCityT.es;
+  $: nearbyCities = (() => {
+    if (!(section in cityData)) return [];
+    const originName = cityData[section]?.city?.es;
+    const origin = originName && CITY_LATLON[originName];
+    if (!origin) return [];
+    const cand = [];
+    for (const [name, ll] of Object.entries(CITY_LATLON)) {
+      const key = CITY_PILLAR[name];
+      if (!key || key === section) continue;
+      if (!routes[lang] || routes[lang][key] === undefined) continue;
+      const d = (ll[0] - origin[0]) ** 2 + (ll[1] - origin[1]) ** 2;
+      cand.push({ key, name: cityData[key]?.city?.[lang] || cityData[key]?.city?.es || name, country: CITY_COUNTRY_MAP[name] || 'es', d });
+    }
+    cand.sort((a, b) => a.d - b.d);
+    const seen = new Set(); const uniq = [];
+    for (const c of cand) { if (seen.has(c.key)) continue; seen.add(c.key); uniq.push(c); if (uniq.length >= 6) break; }
+    return uniq;
+  })();
+  $: connCityActivities = regionActivities.slice(0, 12);
+  $: connCityCount = nearbyCities.length + connCityActivities.length;
+
   $: title = seoContent?.title || (section in cityData
     ? `${cityTitle(section)} | Standarte`
     : section === 'home'
@@ -1035,7 +1075,7 @@
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
-    'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon', 'Toulouse': 'toulouse', 'Perpiñán': 'perpignan',
+    'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon', 'Toulouse': 'toulouse', 'Perpiñán': 'perpignan', 'Burdeos': 'burdeos',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
   function fairsForCity(cityKey) {
@@ -2258,6 +2298,40 @@
                   </button>
                   <p>{(coverageProof[lang] || coverageProof.es)(regionFairs.length, cityDisplayName)}</p>
                   <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
+                  <!-- Panel "Conexiones": vínculos internos del nodo del mapa de esta ciudad
+                       (ciudades cercanas + sectores presentes). Enlaces <a> reales, rastreables. -->
+                  {#if connCityCount}
+                    <details class="fairs-collapse conn-panel">
+                      <summary class="fairs-collapse-summary">
+                        <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
+                        <span class="fairs-collapse-open">{cxc.title} ({connCityCount})</span>
+                        <span class="fairs-collapse-close">{cxc.title}</span>
+                        <span class="fairs-collapse-chevron" aria-hidden="true"></span>
+                      </summary>
+                      <div class="cc-body">
+                        {#if nearbyCities.length}
+                          <div class="cc-group">
+                            <span class="cc-label">{cxc.near}</span>
+                            <ul class="cc-fairs">
+                              {#each nearbyCities as c}
+                                <li><a href={pathFor(lang, c.key)}>{#if c.country !== 'es'}<span class="fair-flag flag-{c.country}" aria-hidden="true"></span>{/if}{c.name}</a></li>
+                              {/each}
+                            </ul>
+                          </div>
+                        {/if}
+                        {#if connCityActivities.length}
+                          <div class="cc-group">
+                            <span class="cc-label">{cxc.acts}</span>
+                            <span class="cc-chips">
+                              {#each connCityActivities as tag}
+                                <a class="cc-chip" href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">{labelForTag(tag, lang)}</a>
+                              {/each}
+                            </span>
+                          </div>
+                        {/if}
+                      </div>
+                    </details>
+                  {/if}
                 </section>
               {/if}
 

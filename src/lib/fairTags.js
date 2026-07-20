@@ -428,7 +428,15 @@ export const fairActivities = {
   "aerospace-test-development-show-toulouse": ["aeronautica"],
   "aeromart-toulouse": ["aeronautica", "congreso-profesional"],
   "siane-toulouse": ["maquinaria-industrial", "metal-subcontratacion"],
-  "foire-exposition-perpignan": ["multisectorial"]
+  "foire-exposition-perpignan": ["multisectorial"],
+  "foire-internationale-bordeaux": ["multisectorial"],
+  "vinitech-sifel-bordeaux": ["vino", "equipamiento-vino", "agricultura-maquinaria"],
+  "equitaine-bordeaux": ["ganaderia"],
+  "salon-agriculture-nouvelle-aquitaine-bordeaux": ["agricultura-maquinaria", "ganaderia"],
+  "art3f-bordeaux": ["cultura-arte"],
+  "grand-salon-habitat-bordeaux": ["construccion", "regalo-decoracion"],
+  "salon-vins-vignerons-independants-bordeaux": ["vino"],
+  "cycleau-nouvelle-aquitaine-bordeaux": ["energia", "construccion"]
 };
 
 // Helpers

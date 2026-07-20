@@ -5,12 +5,13 @@
   import { projectsForActivity } from '$lib/projectTags.js';
   import {
     pathFor, languages, languageLabels, fairUrl, projectUrl,
-    activityUrl, activityIndexUrl, ctaBudget, preciosNav
+    activityUrl, activityIndexUrl, ctaBudget, preciosNav, cityData, routes
   } from '$lib/siteData.js';
   import {
     tagFamilies, fairTags, tagOrder, fairsForActivity,
     colorForTag, labelForTag, familyLabel
   } from '$lib/fairTags.js';
+  import { CITY_PILLAR } from '$lib/iberiaMeshData.js';
   import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { activityPitch } from '$lib/activityPitch.js';
   import FlagIcon from './FlagIcon.svelte';
@@ -118,6 +119,39 @@
   $: siblingTags = !isIndex && tag
     ? tagOrder.filter((x) => x !== tag && fairTags[x]?.family === fairTags[tag]?.family)
     : [];
+
+  // Panel "Conexiones" del nodo ACTIVIDAD: vínculos internos específicos de esta
+  // actividad en el mapa. Ciudades-hub donde la cubrimos (enlace nuevo actividad→ciudad,
+  // que el cuerpo no daba) + actividades afines de la misma familia (sector).
+  const conexActT = {
+    es: { title: 'Conexiones', cities: 'Ciudades donde montamos' },
+    en: { title: 'Connections', cities: 'Cities we build in' },
+    de: { title: 'Verbindungen', cities: 'Städte, in denen wir bauen' },
+    pt: { title: 'Ligações', cities: 'Cidades onde montamos' },
+    fr: { title: 'Connexions', cities: 'Villes où nous montons' },
+    it: { title: 'Connessioni', cities: 'Città in cui montiamo' },
+    nl: { title: 'Verbindingen', cities: 'Steden waar we bouwen' },
+    zh: { title: '关联', cities: '我们搭建的城市' },
+    hi: { title: 'कनेक्शन', cities: 'जिन शहरों में हम बनाते हैं' },
+    ko: { title: '연결', cities: '시공 도시' },
+    ja: { title: '関連', cities: '施工都市' }
+  };
+  $: cxa = conexActT[lang] || conexActT.es;
+  $: hubCities = (() => {
+    if (isIndex || !tag) return [];
+    const seen = new Set();
+    const out = [];
+    for (const f of hubFairs) {
+      const key = CITY_PILLAR[f.city];
+      if (!key || seen.has(key)) continue;
+      if (!routes[lang] || routes[lang][key] === undefined) continue;
+      seen.add(key);
+      out.push({ key, name: cityData[key]?.city?.[lang] || cityData[key]?.city?.es || f.city, country: f.country });
+      if (out.length >= 12) break;
+    }
+    return out;
+  })();
+  $: connActCount = hubCities.length + siblingTags.length;
 
   // --- Datos del ÍNDICE --------------------------------------------------------
   // Actividades agrupadas por familia, en el orden de tagFamilies.
@@ -322,20 +356,40 @@
             </button>
           </div>
         {/if}
-        {#if !isIndex && siblingTags.length}
-          <div class="aside-module">
-            <h3>{t.related}</h3>
-            <ul class="activity-chips">
-              {#each siblingTags as sg}
-                <li>
-                  <a href={activityUrl(sg, lang)} style="--chip:{colorForTag(sg)}">
-                    <span class="chip-dot" aria-hidden="true"></span>{labelForTag(sg, lang)}
-                  </a>
-                </li>
-              {/each}
-              <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{t.allAct} →</a></li>
-            </ul>
-          </div>
+        {#if !isIndex && connActCount}
+          <!-- Panel "Conexiones": vínculos internos del nodo del mapa de esta actividad
+               (ciudades donde la cubrimos + actividades afines). Enlaces <a> reales. -->
+          <details class="aside-module fairs-collapse conn-panel">
+            <summary class="fairs-collapse-summary">
+              <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="fairs-collapse-open">{cxa.title} ({connActCount})</span>
+              <span class="fairs-collapse-close">{cxa.title}</span>
+              <span class="fairs-collapse-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="cc-body">
+              {#if hubCities.length}
+                <div class="cc-group">
+                  <span class="cc-label">{cxa.cities}</span>
+                  <ul class="cc-fairs">
+                    {#each hubCities as c}
+                      <li><a href={pathFor(lang, c.key)}>{#if c.country !== 'es'}<span class="fair-flag flag-{c.country}" aria-hidden="true"></span>{/if}{c.name}</a></li>
+                    {/each}
+                  </ul>
+                </div>
+              {/if}
+              {#if siblingTags.length}
+                <div class="cc-group">
+                  <span class="cc-label">{t.related}</span>
+                  <span class="cc-chips">
+                    {#each siblingTags as sg}
+                      <a class="cc-chip" href={activityUrl(sg, lang)} style="--chip:{colorForTag(sg)}">{labelForTag(sg, lang)}</a>
+                    {/each}
+                    <a class="ver-todas-link" href={activityIndexUrl(lang)}>{t.allAct} →</a>
+                  </span>
+                </div>
+              {/if}
+            </div>
+          </details>
         {/if}
         <div class="aside-module">
           <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>

@@ -70,7 +70,8 @@ export const seoFreshness = {
   cannes: '2026-07-17',
   avignon: '2026-07-17',
   toulouse: '2026-07-17',
-  perpignan: '2026-07-17'
+  perpignan: '2026-07-17',
+  burdeos: '2026-07-20'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
@@ -112,7 +113,16 @@ export const fairFreshness = {
   'solutions-cse-marseille': '2026-07-18',
   'japan-expo-sud-marseille': '2026-07-18',
   'herofestival-marseille': '2026-07-18',
-  'siac-marseille': '2026-07-18'
+  'siac-marseille': '2026-07-18',
+  // Burdeos (Nueva Aquitania) — clúster de 8 ferias satélite, 2026-07-20.
+  'foire-internationale-bordeaux': '2026-07-20',
+  'vinitech-sifel-bordeaux': '2026-07-20',
+  'equitaine-bordeaux': '2026-07-20',
+  'salon-agriculture-nouvelle-aquitaine-bordeaux': '2026-07-20',
+  'art3f-bordeaux': '2026-07-20',
+  'grand-salon-habitat-bordeaux': '2026-07-20',
+  'salon-vins-vignerons-independants-bordeaux': '2026-07-20',
+  'cycleau-nouvelle-aquitaine-bordeaux': '2026-07-20'
 };
 
 /** Fecha de última actualización de una ficha de feria, o null si no la tiene. */
