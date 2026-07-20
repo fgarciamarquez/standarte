@@ -715,29 +715,6 @@
   // Actividades (etiquetas) de esta feria, para los chips de color del aside.
   $: fairActivityTags = activitiesForFair(fair.slug);
 
-  // --- Panel "Conexiones": el generador de vínculos internos específico de ESTA feria
-  // (su nodo en el mapa). Reúne los enlaces de relación propios del nodo —ciudad-hub,
-  // sus actividades y sus ferias afines— para tejer la malla SEO desde el mapa. Cada
-  // feria produce un conjunto distinto, así que ninguna ficha repite el mismo bloque.
-  const conexionesT = {
-    es: { title: 'Conexiones', city: 'Ciudad', activities: 'Actividades' },
-    en: { title: 'Connections', city: 'City', activities: 'Activities' },
-    de: { title: 'Verbindungen', city: 'Stadt', activities: 'Aktivitäten' },
-    pt: { title: 'Ligações', city: 'Cidade', activities: 'Atividades' },
-    fr: { title: 'Connexions', city: 'Ville', activities: 'Activités' },
-    it: { title: 'Connessioni', city: 'Città', activities: 'Attività' },
-    nl: { title: 'Verbindingen', city: 'Stad', activities: 'Activiteiten' },
-    zh: { title: '关联', city: '城市', activities: '活动' },
-    hi: { title: 'कनेक्शन', city: 'शहर', activities: 'गतिविधियाँ' },
-    ko: { title: '연결', city: '도시', activities: '활동' },
-    ja: { title: '関連', city: '都市', activities: 'アクティビティ' }
-  };
-  $: cx = conexionesT[lang] || conexionesT.es;
-  $: connCityHref = breadcrumbCityKey ? pathFor(lang, breadcrumbCityKey) : null;
-  $: connCityName = breadcrumbCityKey ? cityLabel(breadcrumbCityKey, lang) : null;
-  $: connSiblings = siblingFairs.slice(0, 8);
-  $: connCount = (connCityHref ? 1 : 0) + fairActivityTags.length + connSiblings.length;
-
   // --- Pat contextual: familia (sector) de esta feria a partir de su primera etiqueta.
   // El CTA lleva a la home con "#pat=<familia>", que abre a Pat ya en ese sector.
   $: patFamily = (fairActivityTags.length && fairTags[fairActivityTags[0]]) ? fairTags[fairActivityTags[0]].family : '';
@@ -1124,47 +1101,6 @@
           </button>
           <p>{(coverageProof[lang] || coverageProof.es)()}</p>
           <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
-          <!-- Panel "Conexiones": vínculos internos generados desde el nodo del mapa de
-               esta feria (ciudad-hub + actividades + ferias afines). Desplegable, cerrado
-               por defecto, justo bajo el CTA. Enlaces <a> reales -> rastreables por Google. -->
-          {#if connCount}
-            <details class="fairs-collapse conn-panel">
-              <summary class="fairs-collapse-summary">
-                <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
-                <span class="fairs-collapse-open">{cx.title} ({connCount})</span>
-                <span class="fairs-collapse-close">{cx.title}</span>
-                <span class="fairs-collapse-chevron" aria-hidden="true"></span>
-              </summary>
-              <div class="cc-body">
-                {#if connCityHref}
-                  <div class="cc-group">
-                    <span class="cc-label">{cx.city}</span>
-                    <a class="cc-city" href={connCityHref}>{#if fair.country !== 'es'}<span class="fair-flag flag-{fair.country}" aria-hidden="true"></span>{/if}{connCityName}</a>
-                  </div>
-                {/if}
-                {#if fairActivityTags.length}
-                  <div class="cc-group">
-                    <span class="cc-label">{cx.activities}</span>
-                    <span class="cc-chips">
-                      {#each fairActivityTags as tag}
-                        <a class="cc-chip" href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">{labelForTag(tag, lang)}</a>
-                      {/each}
-                    </span>
-                  </div>
-                {/if}
-                {#if connSiblings.length}
-                  <div class="cc-group">
-                    <span class="cc-label">{clusterStr.related}</span>
-                    <ul class="cluster-fairs cc-fairs">
-                      {#each connSiblings as sib}
-                        <li><a href={fairHref(sib.slug)}>{#if sib.country !== 'es'}<span class="fair-flag flag-{sib.country}" aria-hidden="true"></span>{/if}{sib.name}</a></li>
-                      {/each}
-                    </ul>
-                  </div>
-                {/if}
-              </div>
-            </details>
-          {/if}
         </section>
         <!-- Proyecto Auditado: asunto troncal, destacado en la columna derecha. -->
         <div class="aside-module">
