@@ -4,6 +4,7 @@
   import { quintOut } from 'svelte/easing';
   import { budgetBands, bandLabel, tierNames } from '$lib/pricingTiers.js';
   import { fairsData } from '$lib/fairsData.js';
+  import { activitiesForFair, fairsForActivity } from '$lib/fairTags.js';
   export let lang;
   export let labels;
   // 'dark' = banda oscura por defecto; 'light' = integrada con el fondo claro de
@@ -47,8 +48,24 @@
   $: wz = wizI18n[lang] || wizI18n.en;
   $: names = tierNames[lang] || tierNames.en;
 
+  // Textos del paso "ferias del mismo sector" (sinergia). Objeto aparte por sencillez.
+  const synI18n = {
+    es: { title: '¿Vas a otras ferias del sector?', sub: 'Selecciona las que te interesen y observa el porcentaje de ahorro', none: 'No hemos encontrado otras ferias del mismo sector. Puedes continuar.' },
+    en: { title: 'Attending other fairs in your sector?', sub: 'Pick the ones you like and watch the savings percentage', none: 'We found no other fairs in the same sector. You can continue.' },
+    de: { title: 'Weitere Messen Ihrer Branche?', sub: 'Wählen Sie die passenden aus und sehen Sie den Rabattprozentsatz', none: 'Keine weiteren Messen derselben Branche gefunden. Sie können fortfahren.' },
+    pt: { title: 'Vai a outras feiras do setor?', sub: 'Selecione as que lhe interessam e veja a percentagem de poupança', none: 'Não encontrámos outras feiras do mesmo setor. Pode continuar.' },
+    fr: { title: 'D’autres salons de votre secteur ?', sub: 'Sélectionnez ceux qui vous intéressent et observez le pourcentage de remise', none: 'Aucun autre salon du même secteur trouvé. Vous pouvez continuer.' },
+    it: { title: 'Vai ad altre fiere del settore?', sub: 'Seleziona quelle che ti interessano e osserva la percentuale di risparmio', none: 'Nessun’altra fiera dello stesso settore trovata. Puoi continuare.' },
+    nl: { title: 'Naar andere beurzen in uw sector?', sub: 'Kies de beurzen die u interesseren en bekijk het kortingspercentage', none: 'Geen andere beurzen in dezelfde sector gevonden. U kunt doorgaan.' },
+    zh: { title: '还参加同行业的其他展会吗？', sub: '选择您感兴趣的展会，查看节省比例', none: '未找到同行业的其他展会。您可以继续。' },
+    hi: { title: 'क्या आप अपने क्षेत्र के अन्य मेलों में भी जा रहे हैं?', sub: 'अपनी पसंद के मेले चुनें और बचत का प्रतिशत देखें', none: 'उसी क्षेत्र का कोई अन्य मेला नहीं मिला। आप जारी रख सकते हैं।' },
+    ko: { title: '같은 분야의 다른 전시회도 참가하시나요?', sub: '관심 있는 전시회를 선택하고 절감 비율을 확인하세요', none: '같은 분야의 다른 전시회를 찾지 못했습니다. 계속 진행할 수 있습니다.' },
+    ja: { title: '同じ分野の他の展示会にも出展しますか？', sub: '気になる展示会を選び、割引率をご確認ください', none: '同じ分野の他の展示会は見つかりませんでした。続行できます。' }
+  };
+  $: syn = synI18n[lang] || synI18n.en;
+
   // ─── Estado del asistente ──────────────────────────────────────────────
-  const TOTAL = 4;
+  const TOTAL = 5;
   let step = 1;
   let fair = initialFair;
   let metros = '';
@@ -103,6 +120,53 @@
   const bandByKey = Object.fromEntries(budgetBands.map((b) => [b.key, b]));
   const tierIndex = { modular: 1, medida: 2, premium: 3, singular: 4 };
 
+  // ── Paso 2: ferias del MISMO sector/actividad que la escrita (sinergia) ──
+  const fairBySlug = new Map(fairsData.map((f) => [f.slug, f]));
+  // Feria reconocida a partir de lo escrito: primero match exacto y, si no, por
+  // inclusión (para que "Cosmobeauty" case con "CosmoBeauty Barcelona", etc.).
+  $: typedFair = !fairQuery ? null
+    : (fairsData.find((f) => normFair(f.name) === fairQuery)
+      || (fairQuery.length >= 3 ? fairsData.find((f) => normFair(f.name).includes(fairQuery)) : null)
+      || null);
+  // Prioridad por tamaño de ciudad: primero se muestran las ferias de las plazas
+  // más grandes (menor índice = ciudad mayor); las no listadas van al final.
+  const CITY_RANK = ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Zaragoza', 'Málaga', 'Murcia', 'Palma', 'Bilbao', 'Marsella', 'Toulouse', 'Lisboa', 'Oporto'];
+  const cityRank = (c) => { const i = CITY_RANK.indexOf(c); return i === -1 ? 999 : i; };
+  // Hermanas: comparten etiqueta de actividad (peso 1) o mismo sector (peso 0,5).
+  // Se ordenan por CIUDAD MÁS GRANDE primero y, a igualdad, por afinidad. Máx. 6.
+  $: siblingFairs = (() => {
+    if (!typedFair) return [];
+    const score = new Map();
+    for (const t of activitiesForFair(typedFair.slug))
+      for (const s of fairsForActivity(t)) { if (s !== typedFair.slug) score.set(s, (score.get(s) || 0) + 1); }
+    for (const f of fairsData)
+      if (f.slug !== typedFair.slug && f.sector && f.sector === typedFair.sector)
+        score.set(f.slug, (score.get(f.slug) || 0) + 0.5);
+    // Todas las ferias afines disponibles (se permiten varias por ciudad); el carrusel
+    // horizontal deja recorrerlas. Orden: ciudades grandes primero, luego afinidad.
+    return [...score.entries()]
+      .map(([s, sc]) => ({ f: fairBySlug.get(s), sc }))
+      .filter((x) => x.f)
+      .sort((a, b) => (cityRank(a.f.city) - cityRank(b.f.city)) || (b.sc - a.sc))
+      .map((x) => x.f);
+  })();
+  // Selección múltiple (slugs), con TOPE de 3 ferias. Se reinicia si cambia la feria.
+  const MAX_EXTRA = 3;
+  let selectedFairs = [];
+  let synForSlug = '';
+  $: if ((typedFair?.slug || '') !== synForSlug) { synForSlug = typedFair?.slug || ''; selectedFairs = []; }
+  function toggleFairPick(slug) {
+    if (selectedFairs.includes(slug)) { selectedFairs = selectedFairs.filter((s) => s !== slug); return; }
+    if (selectedFairs.length >= MAX_EXTRA) return; // no más de 2
+    selectedFairs = [...selectedFairs, slug];
+  }
+  // Ahorro por sinergia: 1 feria = 15%, 2 = 25%, 3 = 35% (máximo).
+  const savingsScale = [0, 15, 25, 35];
+  // Escalera de descuentos que se muestra siempre (gris) y se ilumina al seleccionar.
+  const savingsTiers = [{ n: 1, pct: 15 }, { n: 2, pct: 25 }, { n: 3, pct: 35 }];
+  $: ahorroPct = savingsScale[Math.min(selectedFairs.length, MAX_EXTRA)];
+  $: feriasExtraLabel = selectedFairs.map((s) => fairBySlug.get(s)?.name).filter(Boolean).join(', ');
+
   // Estadística de hover sobre los botones de rango (1..4), independiente de la
   // elección final: nº de pasadas (cada mouseenter suma 1) y tiempo sumatorio que
   // el ratón permanece sobre cada botón (mouseenter → mouseleave).
@@ -132,7 +196,8 @@
   $: step3Valid = descripcion.trim() !== '';
   $: emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   $: step4Valid = nombre.trim() !== '' && emailValid && privacy;
-  $: stepValid = step === 1 ? step1Valid : step === 2 ? step2Valid : step === 3 ? step3Valid : step4Valid;
+  // Paso 2 = ferias sugeridas (opcional, siempre válido). Los demás se desplazan.
+  $: stepValid = step === 1 ? step1Valid : step === 2 ? true : step === 3 ? step2Valid : step === 4 ? step3Valid : step4Valid;
 
   // Etiqueta del rango elegido y descripción final (el rango viaja dentro de la
   // descripción para que el equipo lo vea sin tocar el backend ni Supabase).
@@ -141,6 +206,7 @@
     : (rango === 'unsure' ? wz.unsure : '');
   $: descripcionFinal = [
     rangoLabel ? `${labels.form.budget}: ${rangoLabel}` : null,
+    feriasExtraLabel ? `Ferias de interés (sinergia): ${feriasExtraLabel} — ahorro estimado ${ahorroPct}%` : null,
     hoverTotal > 0 ? `Hover rangos (1-4) — pasadas: ${hoverStats} · tiempo: ${hoverTimeStats}` : null,
     descripcion
   ].filter(Boolean).join('\n\n');
@@ -149,7 +215,8 @@
   $: recap = [
     fair.trim() && { label: fair.trim(), goto: 1 },
     metrosNum > 0 && { label: `${metrosNum} m²`, goto: 1 },
-    rango && { label: rango === 'unsure' ? wz.unsure : names[rango], goto: 2 }
+    selectedFairs.length && { label: `+${selectedFairs.length} · -${ahorroPct}%`, goto: 2 },
+    rango && { label: rango === 'unsure' ? wz.unsure : names[rango], goto: 3 }
   ].filter(Boolean);
 
   let status = null;
@@ -318,6 +385,29 @@
                     </div>
 
                   {:else if step === 2}
+                    <h4 class="wiz-head">{syn.title}</h4>
+                    <p class="wiz-sub">{syn.sub}:
+                      <span class="syn-ladder" aria-live="polite">
+                        {#each savingsTiers as t}
+                          <span class="syn-pct" class:on={selectedFairs.length >= t.n}>-{t.pct}%</span>
+                        {/each}
+                      </span>
+                    </p>
+                    {#if siblingFairs.length}
+                      <div class="syn-grid">
+                        {#each siblingFairs as f (f.slug)}
+                          <button type="button" class="syn-card" class:selected={selectedFairs.includes(f.slug)} disabled={selectedFairs.length >= MAX_EXTRA && !selectedFairs.includes(f.slug)} aria-pressed={selectedFairs.includes(f.slug)} on:click={() => toggleFairPick(f.slug)}>
+                            <span class="syn-check" aria-hidden="true">✓</span>
+                            <span class="syn-name">{f.name}</span>
+                            {#if f.city && !NON_CITY.includes(f.city)}<span class="syn-city">{f.city}</span>{/if}
+                          </button>
+                        {/each}
+                      </div>
+                    {:else}
+                      <p class="syn-none">{syn.none}</p>
+                    {/if}
+
+                  {:else if step === 3}
                     <h4 class="wiz-head">{wz.bg}</h4>
                     <p class="wiz-sub">{wz.bgHelp}</p>
                     <div class="band-grid">
@@ -336,7 +426,7 @@
                       {wz.unsure}
                     </button>
 
-                  {:else if step === 3}
+                  {:else if step === 4}
                     <h4 class="wiz-head">{wz.pr}</h4>
                     <p class="wiz-sub">{wz.prSub}</p>
                     <div class="wiz-field">
@@ -472,6 +562,42 @@
   .band-unsure { width: 100%; margin-top: 12px; padding: 12px 16px; border-radius: 12px; border: 1px dashed rgba(255, 255, 255, 0.25); background: transparent; color: rgba(255, 255, 255, 0.7); font-family: Inconsolata, monospace; font-size: 14px; cursor: pointer; transition: all 0.18s ease; }
   .band-unsure:hover { border-color: #ffc800; color: #fff; }
   .band-unsure.selected { border-style: solid; border-color: #ffc800; background: rgba(255, 200, 0, 0.12); color: #fff; }
+
+  /* ─── Paso 2: ferias del mismo sector (sinergia) ─── */
+  /* Evita que el carrusel nowrap ensanche su columna de grid (min-width:auto blowout). */
+  .contact-block { min-width: 0; }
+  .wiz, .wiz-step { min-width: 0; }
+  /* Carrusel horizontal: el cliente recorre todas las plazas disponibles deslizando. */
+  .syn-grid { display: flex; flex-wrap: nowrap; gap: 10px; overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  .syn-grid::-webkit-scrollbar { height: 7px; }
+  .syn-grid::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.22); border-radius: 4px; }
+  .syn-card { flex: 0 0 auto; width: 210px; scroll-snap-align: start; position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 13px 14px 13px 40px; text-align: left; border-radius: 12px; border: 1.5px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.04); color: #fff; cursor: pointer; transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease; }
+  .syn-card:hover { transform: translateY(-2px); border-color: rgba(255, 200, 0, 0.6); background: rgba(255, 200, 0, 0.06); }
+  .syn-card.selected { border-color: #ffc800; background: rgba(255, 200, 0, 0.12); }
+  .syn-check { position: absolute; left: 13px; top: 50%; transform: translateY(-50%) scale(0.7); width: 19px; height: 19px; border-radius: 6px; border: 1.5px solid rgba(255, 255, 255, 0.3); color: #111; background: transparent; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; opacity: 0.35; transition: opacity 0.18s ease, transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease; }
+  .syn-card.selected .syn-check { opacity: 1; transform: translateY(-50%) scale(1); background: #ffc800; border-color: #ffc800; }
+  .syn-name { font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 1.2; }
+  .syn-city { font-family: Inconsolata, monospace; font-size: 12px; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; letter-spacing: 0.03em; }
+  /* Escalera de descuentos: los tres tramos se muestran siempre en gris atenuado y
+     cada dígito se ilumina (rojo) al alcanzar su número de ferias seleccionadas. */
+  .syn-ladder { display: inline-flex; gap: 0.5em; align-items: baseline; white-space: nowrap; }
+  .syn-pct { font-family: 'Roboto', sans-serif; font-weight: 900; color: rgba(255, 255, 255, 0.28); transition: color 0.2s ease; }
+  .syn-pct.on { color: #e02424; }
+  /* Tarjeta bloqueada al alcanzar el tope de selecciones. */
+  .syn-card:disabled { opacity: 0.4; cursor: not-allowed; }
+  .syn-card:disabled:hover { transform: none; border-color: rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.04); }
+  .syn-none { font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, 0.6); }
+  /* Variante clara (páginas de ciudad) */
+  .contact-light .syn-card { background: #fff; border-color: rgba(0, 0, 0, 0.12); color: #1a1e21; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); }
+  .contact-light .syn-card:hover { border-color: rgba(255, 200, 0, 0.75); background: #fffdf5; }
+  .contact-light .syn-card.selected { border-color: var(--gold); background: #fffae8; }
+  .contact-light .syn-check { border-color: rgba(0, 0, 0, 0.25); }
+  .contact-light .syn-city { color: rgba(0, 0, 0, 0.45); }
+  .contact-light .syn-card:disabled:hover { border-color: rgba(0, 0, 0, 0.12); background: #fff; }
+  .contact-light .syn-pct { color: rgba(0, 0, 0, 0.28); }
+  .contact-light .syn-pct.on { color: #e02424; }
+  .contact-light .syn-none { color: #666; }
+  .contact-light .syn-grid::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.22); }
 
   /* Privacidad */
   .privacy-container { margin-top: 6px; }
