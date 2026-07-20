@@ -139,9 +139,8 @@
     const score = new Map();
     for (const t of activitiesForFair(typedFair.slug))
       for (const s of fairsForActivity(t)) { if (s !== typedFair.slug) score.set(s, (score.get(s) || 0) + 1); }
-    for (const f of fairsData)
-      if (f.slug !== typedFair.slug && f.sector && f.sector === typedFair.sector)
-        score.set(f.slug, (score.get(f.slug) || 0) + 0.5);
+    // Solo por ACTIVIDAD compartida (el sector es demasiado amplio y trae ferias
+    // poco relevantes). La puntuación = nº de etiquetas de actividad en común.
     // Todas las ferias afines disponibles (se permiten varias por ciudad); el carrusel
     // horizontal deja recorrerlas. Orden: ciudades grandes primero, luego afinidad.
     return [...score.entries()]
@@ -399,7 +398,10 @@
                           <button type="button" class="syn-card" class:selected={selectedFairs.includes(f.slug)} disabled={selectedFairs.length >= MAX_EXTRA && !selectedFairs.includes(f.slug)} aria-pressed={selectedFairs.includes(f.slug)} on:click={() => toggleFairPick(f.slug)}>
                             <span class="syn-check" aria-hidden="true">✓</span>
                             <span class="syn-name">{f.name}</span>
-                            {#if f.city && !NON_CITY.includes(f.city)}<span class="syn-city">{f.city}</span>{/if}
+                            <span class="syn-meta">
+                              {#if f.country && f.country !== 'es'}<span class="fair-flag flag-{f.country}" aria-hidden="true"></span>{/if}
+                              {#if f.city && !NON_CITY.includes(f.city)}<span class="syn-city">{f.city}</span>{/if}
+                            </span>
                           </button>
                         {/each}
                       </div>
@@ -577,6 +579,9 @@
   .syn-check { position: absolute; left: 13px; top: 50%; transform: translateY(-50%) scale(0.7); width: 19px; height: 19px; border-radius: 6px; border: 1.5px solid rgba(255, 255, 255, 0.3); color: #111; background: transparent; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; opacity: 0.35; transition: opacity 0.18s ease, transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease; }
   .syn-card.selected .syn-check { opacity: 1; transform: translateY(-50%) scale(1); background: #ffc800; border-color: #ffc800; }
   .syn-name { font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 1.2; }
+  /* Línea de ciudad con bandera redonda del país (solo ferias no españolas). */
+  .syn-meta { display: flex; align-items: center; gap: 6px; }
+  .syn-meta :global(.fair-flag) { width: 12px; height: 12px; }
   .syn-city { font-family: Inconsolata, monospace; font-size: 12px; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; letter-spacing: 0.03em; }
   /* Escalera de descuentos: los tres tramos se muestran siempre en gris atenuado y
      cada dígito se ilumina (rojo) al alcanzar su número de ferias seleccionadas. */
