@@ -66,7 +66,7 @@ export const seoFreshness = {
   tanger: '2026-07-14',
   andorra: '2026-07-15',
   teruel: '2026-07-16',
-  marsella: '2026-07-17',
+  marsella: '2026-07-18',
   cannes: '2026-07-17',
   avignon: '2026-07-17',
   toulouse: '2026-07-17',
@@ -101,7 +101,18 @@ export const fairFreshness = {
   'cosmobeauty-barcelona': '2026-07-18',
   'forum-dental-mediterraneo-barcelona': '2026-07-18',
   'sil-barcelona': '2026-07-18',
-  'automobile-barcelona': '2026-07-18'
+  'automobile-barcelona': '2026-07-18',
+  // Marsella (refuerzo sur de Francia) — clúster de 10 ferias satélite, 2026-07-18.
+  'foire-internationale-marseille': '2026-07-18',
+  'euromaritime-marseille': '2026-07-18',
+  'sirha-mediterranee-marseille': '2026-07-18',
+  'beauty-profs-marseille': '2026-07-18',
+  'savim-marseille': '2026-07-18',
+  'salon-piscine-jardin-marseille': '2026-07-18',
+  'solutions-cse-marseille': '2026-07-18',
+  'japan-expo-sud-marseille': '2026-07-18',
+  'herofestival-marseille': '2026-07-18',
+  'siac-marseille': '2026-07-18'
 };
 
 /** Fecha de última actualización de una ficha de feria, o null si no la tiene. */

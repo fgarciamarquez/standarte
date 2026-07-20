@@ -2422,6 +2422,69 @@ export const fairsData = [
     "sector": "Multisectorial y Gran Público"
   },
   {
+    "name": "Euromaritime",
+    "country": "fr",
+    "slug": "euromaritime-marseille",
+    "city": "Marsella",
+    "sector": "Náutica y Yates"
+  },
+  {
+    "name": "Sirha Méditerranée",
+    "country": "fr",
+    "slug": "sirha-mediterranee-marseille",
+    "city": "Marsella",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Beauty Prof's",
+    "country": "fr",
+    "slug": "beauty-profs-marseille",
+    "city": "Marsella",
+    "sector": "Belleza y Estética"
+  },
+  {
+    "name": "SAVIM",
+    "country": "fr",
+    "slug": "savim-marseille",
+    "city": "Marsella",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Salon Piscine & Jardin",
+    "country": "fr",
+    "slug": "salon-piscine-jardin-marseille",
+    "city": "Marsella",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "Solutions CSE Marseille",
+    "country": "fr",
+    "slug": "solutions-cse-marseille",
+    "city": "Marsella",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Japan Expo Sud",
+    "country": "fr",
+    "slug": "japan-expo-sud-marseille",
+    "city": "Marsella",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "HeroFestival",
+    "country": "fr",
+    "slug": "herofestival-marseille",
+    "city": "Marsella",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "SIAC Marseille",
+    "country": "fr",
+    "slug": "siac-marseille",
+    "city": "Marsella",
+    "sector": "Arte y Ocio"
+  },
+  {
     "name": "Cannes Yachting Festival",
     "country": "fr",
     "slug": "cannes-yachting-festival",
