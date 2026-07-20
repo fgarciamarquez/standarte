@@ -960,7 +960,7 @@
     return 'Standarte';
   }
 
-  const COVER_OVERRIDE = { murcia: 'murcia-v2', alicante: 'alicante-v2', islas_canarias: 'islas_canarias-v2', islas_de_madeira: 'islas_de_madeira-v2' };
+  const COVER_OVERRIDE = { murcia: 'murcia-v2', alicante: 'alicante-v2', islas_canarias: 'islas_canarias-v2', islas_de_madeira: 'islas_de_madeira-v2', burdeos: 'burdeos-v2' };
   function coverBase(id) {
     return COVER_OVERRIDE[id] || id;
   }

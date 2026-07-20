@@ -664,7 +664,7 @@
     'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon', 'Toulouse': 'toulouse', 'Perpiñán': 'perpignan' };
   // Ficheros renombrados para esquivar una caché de respuestas obsoleta de OVH
   // (los nombres originales cover_murcia/cover_alicante quedaron atascados en text/html).
-  const COVER_OVERRIDE = { murcia: 'murcia-v2', alicante: 'alicante-v2' };
+  const COVER_OVERRIDE = { murcia: 'murcia-v2', alicante: 'alicante-v2', burdeos: 'burdeos-v2' };
   // Portada del header: ciudad-matriz si la tiene; si no, portada de satélite o del
   // clúster regional (Portugal Sur). Resto sin portada -> header oscuro.
   $: coverKey = currentCityKey || CITY_COVER[fair.city] || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
@@ -986,7 +986,7 @@
   <!-- Panel de Pat (asesor de Expansión): flotante, carga diferida. Se siembra con el
        sector y la ciudad de ESTA feria, para que arranque ya en su contexto. -->
   {#if showWelcomeAdvisor && AdvisorComponent}
-    <svelte:component this={AdvisorComponent} {lang} initialFamily={patFamily} initialCity={fair.city} initialTags={fairActivityTags} on:openPrivacy={() => {}} on:dismiss={() => showWelcomeAdvisor = false} />
+    <svelte:component this={AdvisorComponent} {lang} initialFamily={patFamily} initialCity={fair.city} initialTags={fairActivityTags} containerBg="#f7f6f1" on:openPrivacy={() => {}} on:dismiss={() => showWelcomeAdvisor = false} />
   {/if}
   <section class="feria-details section">
     <div class="feria-container">
