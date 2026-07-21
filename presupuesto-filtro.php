@@ -10,11 +10,17 @@ if (!file_exists($supaConfigPath)) {
 require_once $supaConfigPath;
 require_once __DIR__ . '/admin/presupuesto_form_object.php';
 
-// 2. Obtener parámetros
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-$token = isset($_GET['token']) ? trim($_GET['token']) : '';
-$action = isset($_GET['action']) ? trim($_GET['action']) : '';
-$lang = isset($_GET['lang']) ? trim($_GET['lang']) : 'es';
+// 2. Obtener parámetros. IMPORTANTE: la respuesta (Sí/No) SOLO se ejecuta con un POST
+//    del botón "Confirmar". Los enlaces del correo son GET y únicamente muestran la página
+//    de confirmación: así los escáneres/antivirus de correo (que visitan todos los enlaces
+//    automáticamente) NO disparan la respuesta ni envían correos contradictorios.
+$is_post = ($_SERVER['REQUEST_METHOD'] === 'POST');
+$src = $is_post ? $_POST : $_GET;
+$id = isset($src['id']) ? intval($src['id']) : 0;
+$token = isset($src['token']) ? trim($src['token']) : '';
+$action = isset($src['action']) ? trim($src['action']) : '';
+$lang = isset($src['lang']) ? trim($src['lang']) : 'es';
+$confirmed = $is_post && isset($src['confirm']) && $src['confirm'] === '1';
 
 if (!in_array($lang, ['es', 'en', 'de', 'pt', 'fr'])) {
     $lang = 'es';
@@ -77,6 +83,60 @@ $expected_token = md5($id . $email . 'StandarteBudgetSelectionSalt');
 if ($token !== $expected_token) {
     die("Error: Token de seguridad no coincide.");
 }
+
+// 4b. Shell de página (mismo estilo que los correos) + textos de confirmación.
+function render_filtro_page($title, $body_html) {
+    echo "<!DOCTYPE html><html lang='es'><head><meta charset='utf-8'>"
+       . "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+       . "<meta name='robots' content='noindex,nofollow'>"
+       . "<title>" . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . " | Standarte</title></head>"
+       . "<body style='font-family:Arial,sans-serif;color:#2b303a;line-height:1.6;background:#f7f6f1;margin:0;padding:24px;'>"
+       . "<div style='max-width:560px;margin:40px auto;background:#fff;border:1px solid #e9ecef;border-radius:10px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.06);'>"
+       . "<div style='background:#292f35;padding:22px;text-align:center;'><img src='https://standarte.es/img/logo_stand-arte_blanco.svg' alt='Standarte' style='width:170px;'></div>"
+       . "<div style='padding:30px 26px;'>" . $body_html . "</div></div></body></html>";
+}
+$confirm_t = array(
+    'es' => array('title' => 'Confirma tu respuesta', 'yes' => 'Vas a confirmar que el presupuesto estimado de tu empresa es <strong>SUPERIOR</strong> al mínimo indicado para este stand. Al confirmar, nuestro equipo se pondrá en contacto contigo.', 'no' => 'Vas a indicar que el presupuesto estimado de tu empresa es <strong>INFERIOR</strong> al mínimo indicado para este stand.', 'btn' => 'Confirmar'),
+    'en' => array('title' => 'Confirm your answer', 'yes' => "You are about to confirm that your company's estimated budget is <strong>HIGHER</strong> than the minimum indicated for this stand. Once confirmed, our team will contact you.", 'no' => "You are about to indicate that your company's estimated budget is <strong>LOWER</strong> than the minimum indicated for this stand.", 'btn' => 'Confirm'),
+    'de' => array('title' => 'Bestätigen Sie Ihre Antwort', 'yes' => 'Sie bestätigen, dass das geschätzte Budget Ihres Unternehmens <strong>HÖHER</strong> als der angegebene Mindestbetrag ist. Nach der Bestätigung wird sich unser Team mit Ihnen in Verbindung setzen.', 'no' => 'Sie geben an, dass das geschätzte Budget Ihres Unternehmens <strong>NIEDRIGER</strong> als der angegebene Mindestbetrag ist.', 'btn' => 'Bestätigen'),
+    'pt' => array('title' => 'Confirme a sua resposta', 'yes' => 'Vai confirmar que o orçamento estimado da sua empresa é <strong>SUPERIOR</strong> ao mínimo indicado para este stand. Ao confirmar, a nossa equipa entrará em contacto consigo.', 'no' => 'Vai indicar que o orçamento estimado da sua empresa é <strong>INFERIOR</strong> ao mínimo indicado para este stand.', 'btn' => 'Confirmar'),
+    'fr' => array('title' => 'Confirmez votre réponse', 'yes' => 'Vous allez confirmer que le budget estimé de votre entreprise est <strong>SUPÉRIEUR</strong> au minimum indiqué pour ce stand. Après confirmation, notre équipe vous contactera.', 'no' => 'Vous allez indiquer que le budget estimé de votre entreprise est <strong>INFÉRIEUR</strong> au minimum indiqué pour ce stand.', 'btn' => 'Confirmer'),
+);
+$done_t = array(
+    'es' => array('title' => 'Respuesta ya registrada', 'body' => 'Ya hemos recibido tu respuesta a esta solicitud. Gracias por tu interés en Standarte.'),
+    'en' => array('title' => 'Answer already recorded', 'body' => 'We have already received your response to this request. Thank you for your interest in Standarte.'),
+    'de' => array('title' => 'Antwort bereits erfasst', 'body' => 'Wir haben Ihre Antwort auf diese Anfrage bereits erhalten. Vielen Dank für Ihr Interesse an Standarte.'),
+    'pt' => array('title' => 'Resposta já registada', 'body' => 'Já recebemos a sua resposta a este pedido. Obrigado pelo seu interesse na Standarte.'),
+    'fr' => array('title' => 'Réponse déjà enregistrée', 'body' => 'Nous avons déjà reçu votre réponse à cette demande. Merci de votre intérêt pour Standarte.'),
+);
+
+// 4c. Idempotencia: si el lead ya respondió (Y_SUPERIOR/N_INFERIOR), no reprocesar ni
+//     reenviar correos (evita duplicados por doble clic o reenvío del enlace).
+$estado_actual = isset($lead['respuesta_enviada']) ? $lead['respuesta_enviada'] : 'N';
+if (in_array($estado_actual, array('Y_SUPERIOR', 'N_INFERIOR'), true)) {
+    $d = isset($done_t[$lang]) ? $done_t[$lang] : $done_t['en'];
+    render_filtro_page($d['title'], "<h2 style='margin-top:0;color:#292f35;border-bottom:2px solid #ffc800;padding-bottom:10px;'>" . $d['title'] . "</h2><p>" . $d['body'] . "</p>");
+    exit;
+}
+
+// 4d. Sin confirmar (visita GET desde el correo): mostrar SOLO la página de confirmación.
+//     Nada se escribe ni se envía hasta que la persona pulse "Confirmar" (POST).
+if (!$confirmed) {
+    $c = isset($confirm_t[$lang]) ? $confirm_t[$lang] : $confirm_t['en'];
+    $line = ($action === 'yes') ? $c['yes'] : $c['no'];
+    $form = "<form method='post' action='/presupuesto-filtro.php' style='text-align:center;margin-top:26px;'>"
+          . "<input type='hidden' name='id' value='" . (int)$id . "'>"
+          . "<input type='hidden' name='token' value='" . htmlspecialchars($token, ENT_QUOTES, 'UTF-8') . "'>"
+          . "<input type='hidden' name='action' value='" . htmlspecialchars($action, ENT_QUOTES, 'UTF-8') . "'>"
+          . "<input type='hidden' name='lang' value='" . htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') . "'>"
+          . "<input type='hidden' name='confirm' value='1'>"
+          . "<button type='submit' style='background:#ffc800;color:#000;border:0;padding:14px 34px;font-weight:bold;font-size:16px;border-radius:30px;cursor:pointer;'>" . $c['btn'] . "</button>"
+          . "</form>";
+    render_filtro_page($c['title'], "<h2 style='margin-top:0;color:#292f35;border-bottom:2px solid #ffc800;padding-bottom:10px;'>" . $c['title'] . "</h2><p>" . $line . "</p>" . $form);
+    exit;
+}
+
+// === A partir de aquí: POST confirmado por la persona -> se ejecuta la respuesta. ===
 
 // 5. Determinar estado de actualización
 $status_db = ($action === 'yes') ? 'Y_SUPERIOR' : 'N_INFERIOR';

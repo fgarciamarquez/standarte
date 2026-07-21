@@ -278,6 +278,7 @@ include("config.php");
 	$audiovisual          = post_value('audiovisual');
 	$form_presupuesto          = post_value('form_presupuesto');
 	$form_descripcion          = post_value('form_descripcion');
+	$form_sinergia          = post_value('form_sinergia');
 	$form_lang          = post_value('form_lang', 'es');
 	$allowed_form_langs = array('es', 'en', 'de', 'zh', 'hi', 'pt');
 	if (!in_array($form_lang, $allowed_form_langs)) {
@@ -612,6 +613,13 @@ if (!filter_var($form_email, FILTER_VALIDATE_EMAIL)) {
 	$threshold = $metros_val * $multiplier;
 	$form_presupuesto = number_format($threshold, 0, '', '') . ' €';
 
+	// Sinergia (paso 2 del formulario): ferias extra + ahorro. Se guarda como su propia
+	// línea DENTRO de la descripción almacenada (sin cambiar el esquema de Supabase) para
+	// que aparezca también en el correo del filtro; en el aviso al equipo va como fila aparte.
+	$descripcion_store = $form_sinergia !== ''
+		? $form_descripcion . "\n\nFerias de interés (sinergia): " . $form_sinergia
+		: $form_descripcion;
+
 $data_insert = json_encode(array(
 	'nombre' => $form_nombre,
 	'empresa' => $form_empresa,
@@ -621,7 +629,7 @@ $data_insert = json_encode(array(
 	'localizacion' => $form_localizacion,
 	'metros' => $form_metros,
 	'presupuesto' => $form_presupuesto,
-	'descripcion' => $form_descripcion,
+	'descripcion' => $descripcion_store,
 	'opciones' => $form_opciones,
 	'respuesta_enviada' => $form_respuesta
 ), JSON_UNESCAPED_UNICODE);
@@ -802,6 +810,7 @@ curl_close($ch);
 		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Metros:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_metros) . " m&sup2;</td></tr>"
 		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Presupuesto m&iacute;n. estimado:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . htmlspecialchars($form_presupuesto) . "</td></tr>"
 		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Descripci&oacute;n:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . nl2br(htmlspecialchars($form_descripcion)) . "</td></tr>"
+		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Otras ferias (sinergia):</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . ($form_sinergia !== '' ? htmlspecialchars($form_sinergia) : '&mdash;') . "</td></tr>"
 		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Opciones:</td><td style='padding:8px;border-bottom:1px solid #eee;font-size:13px;'>" . $form_opciones . "</td></tr>"
 		. "</table>"
 		. "<p style='margin-top:18px;font-size:13px;color:#777;'>Aviso autom&aacute;tico al recibir el formulario. El lead tambi&eacute;n queda guardado en Supabase (id " . (int)$inserted_id . ").</p>"

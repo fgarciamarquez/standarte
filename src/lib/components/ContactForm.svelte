@@ -206,10 +206,12 @@
     : (rango === 'unsure' ? wz.unsure : '');
   $: descripcionFinal = [
     rangoLabel ? `${labels.form.budget}: ${rangoLabel}` : null,
-    feriasExtraLabel ? `Ferias de interés (sinergia): ${feriasExtraLabel} — ahorro estimado ${ahorroPct}%` : null,
     hoverTotal > 0 ? `Hover rangos (1-4) — pasadas: ${hoverStats} · tiempo: ${hoverTimeStats}` : null,
     descripcion
   ].filter(Boolean).join('\n\n');
+  // Sinergia (paso 2) en su PROPIO campo: ferias extra elegidas + ahorro estimado.
+  // Viaja aparte (form_sinergia) para que el equipo la vea como fila dedicada en el aviso.
+  $: sinergiaValue = feriasExtraLabel ? `${feriasExtraLabel} — ahorro estimado ${ahorroPct}%` : '';
 
   // Chips de resumen (feria, metros, rango) para volver a un paso al instante.
   $: recap = [
@@ -318,6 +320,7 @@
           <input type="hidden" name="form_hovers" value={hoverStats} />
           <input type="hidden" name="form_hover_times" value={hoverTimeStats} />
           <input type="hidden" name="form_descripcion" value={descripcionFinal} />
+          <input type="hidden" name="form_sinergia" value={sinergiaValue} />
           <input type="hidden" name="form_privacidad" value={privacy ? '1' : ''} />
 
           {#if status === 'success'}
