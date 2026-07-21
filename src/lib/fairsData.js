@@ -2555,6 +2555,48 @@ export const fairsData = [
     "sector": "Multisectorial y Gran Público"
   },
   {
+    "name": "MEDFEL",
+    "country": "fr",
+    "slug": "medfel-perpignan",
+    "city": "Perpiñán",
+    "sector": "Frutas, Hortalizas y Distribución"
+  },
+  {
+    "name": "Salon Viv'Habitat",
+    "country": "fr",
+    "slug": "viv-habitat-perpignan",
+    "city": "Perpiñán",
+    "sector": "Construcción y Hábitat"
+  },
+  {
+    "name": "Salon Tourisme & Loisirs",
+    "country": "fr",
+    "slug": "tourisme-loisirs-perpignan",
+    "city": "Perpiñán",
+    "sector": "Turismo y Ocio"
+  },
+  {
+    "name": "Eco-Maison",
+    "country": "fr",
+    "slug": "eco-maison-perpignan",
+    "city": "Perpiñán",
+    "sector": "Construcción Sostenible"
+  },
+  {
+    "name": "Retro Mécanic",
+    "country": "fr",
+    "slug": "retro-mecanic-perpignan",
+    "city": "Perpiñán",
+    "sector": "Automoción Clásica"
+  },
+  {
+    "name": "Salon du Mariage",
+    "country": "fr",
+    "slug": "salon-mariage-perpignan",
+    "city": "Perpiñán",
+    "sector": "Bodas y Celebraciones"
+  },
+  {
     "name": "Foire Internationale de Bordeaux",
     "country": "fr",
     "slug": "foire-internationale-bordeaux",

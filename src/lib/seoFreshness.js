@@ -70,7 +70,7 @@ export const seoFreshness = {
   cannes: '2026-07-17',
   avignon: '2026-07-17',
   toulouse: '2026-07-17',
-  perpignan: '2026-07-17',
+  perpignan: '2026-07-21',
   burdeos: '2026-07-20'
 };
 
@@ -122,7 +122,15 @@ export const fairFreshness = {
   'art3f-bordeaux': '2026-07-20',
   'grand-salon-habitat-bordeaux': '2026-07-20',
   'salon-vins-vignerons-independants-bordeaux': '2026-07-20',
-  'cycleau-nouvelle-aquitaine-bordeaux': '2026-07-20'
+  'cycleau-nouvelle-aquitaine-bordeaux': '2026-07-20',
+  // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
+  'medfel-perpignan': '2026-07-21',
+  'viv-habitat-perpignan': '2026-07-21',
+  'tourisme-loisirs-perpignan': '2026-07-21',
+  'eco-maison-perpignan': '2026-07-21',
+  'retro-mecanic-perpignan': '2026-07-21',
+  'salon-mariage-perpignan': '2026-07-21',
+  'foire-exposition-perpignan': '2026-07-21'
 };
 
 /** Fecha de última actualización de una ficha de feria, o null si no la tiene. */
