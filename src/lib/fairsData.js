@@ -522,7 +522,7 @@ export const fairsData = [
     "country": "fr",
     "slug": "global-industrie-paris",
     "city": "París",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Industria y Logística"
   },
   {
     "name": "Ecuextre Badajoz",
@@ -550,7 +550,7 @@ export const fairsData = [
     "country": "pt",
     "slug": "sil-lisboa",
     "city": "Lisboa",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Construcción e Infraestructuras"
   },
   {
     "name": "FERCAM",
@@ -620,7 +620,7 @@ export const fairsData = [
     "country": "es",
     "slug": "expo-agritech-malaga",
     "city": "Málaga",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Simed Málaga",
@@ -760,21 +760,21 @@ export const fairsData = [
     "country": "es",
     "slug": "iberpet-madrid",
     "city": "Madrid",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Arte y Ocio"
   },
   {
     "name": "H&T Málaga",
     "country": "es",
     "slug": "ht-malaga",
     "city": "Málaga",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Turismo y Hostelería"
   },
   {
     "name": "Eurosatory Paris",
     "country": "fr",
     "slug": "eurosatory-paris",
     "city": "París",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "Empack Madrid",
@@ -788,7 +788,7 @@ export const fairsData = [
     "country": "es",
     "slug": "expoquimia-barcelona",
     "city": "Barcelona",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Industria y Logística"
   },
   {
     "name": "MWC Barcelona",
@@ -844,7 +844,7 @@ export const fairsData = [
     "country": "es",
     "slug": "iot-solutions-world-congress-barcelona",
     "city": "Barcelona",
-    "sector": "Industria y Logística"
+    "sector": "Tecnología e Innovación"
   },
   {
     "name": "SMART DOORS Madrid",
@@ -858,7 +858,7 @@ export const fairsData = [
     "country": "es",
     "slug": "equiplast-barcelona",
     "city": "Barcelona",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Industria y Logística"
   },
   {
     "name": "TIS Sevilla",
@@ -886,14 +886,14 @@ export const fairsData = [
     "country": "pt",
     "slug": "lisbon-food-affair",
     "city": "Lisboa",
-    "sector": "Comercio y Packaging"
+    "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Snackex Lisboa",
     "country": "pt",
     "slug": "snackex-lisboa",
     "city": "Lisboa",
-    "sector": "Comercio y Packaging"
+    "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "GSE Expo Lisboa",
@@ -1012,7 +1012,7 @@ export const fairsData = [
     "country": "es",
     "slug": "bedigital-bilbao",
     "city": "Bilbao",
-    "sector": "Industria y Logística"
+    "sector": "Tecnología e Innovación"
   },
   {
     "name": "Pumps & Valves Bilbao",
@@ -1334,7 +1334,7 @@ export const fairsData = [
     "country": "es",
     "slug": "navalia-vigo",
     "city": "Vigo",
-    "sector": "Industria y Logística"
+    "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "World Maritime Week",
@@ -1348,21 +1348,21 @@ export const fairsData = [
     "country": "es",
     "slug": "marine-energy-week-bilbao",
     "city": "Bilbao",
-    "sector": "Tecnología e Innovación"
+    "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "Blue Zone Forum",
     "country": "es",
     "slug": "blue-zone-forum",
     "city": "España",
-    "sector": "Tecnología e Innovación"
+    "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "SEA Portugal",
     "country": "pt",
     "slug": "sea-portugal",
     "city": "Portugal",
-    "sector": "Tecnología e Innovación"
+    "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "Feira de São Mateus",
@@ -1586,7 +1586,7 @@ export const fairsData = [
     "country": "es",
     "slug": "agraria-valladolid",
     "city": "Valladolid",
-    "sector": "Industria y Logística"
+    "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "AGROVID",
@@ -1607,7 +1607,7 @@ export const fairsData = [
     "country": "es",
     "slug": "fimascota-valladolid",
     "city": "Valladolid",
-    "sector": "Comercio y Packaging"
+    "sector": "Arte y Ocio"
   },
   {
     "name": "SALAMAQ",
