@@ -300,11 +300,28 @@ export const UNLINKED_CITIES = [
 ];
 
 // Contorno simplificado de la península ibérica (px, misma proyección).
-// Contorno Iberia + lóbulo del sur de Francia (arco mediterráneo) + saliente atlántico
-// de Nueva Aquitania. Tras Cap de Creus (903.5,145.4) se inserta la costa francesa W→E
-// hasta Niza y el interior E→W; sobre Toulouse la costa asciende al NO para envolver
-// Burdeos (≈628.6,-86.3) por el estuario de la Gironda y baja por la costa de las Landas
-// hasta el arranque vasco (567.3,82.8). Entre Niza y Burdeos el interior sube en un pico
-// hacia el norte (valle del Ródano) para envolver Lyon (≈1010.3,-171.5). Verificado con
+// Contorno Iberia + Francia hasta un CORTE SIMBÓLICO en el norte y el este: el mapa
+// seguirá creciendo, así que ni Francia "termina" en y=-200 (≈46,1°N, justo al norte
+// de Lyon) ni la tierra acaba al este de Niza — ambos cortes se dibujan aparte con
+// línea de puntos (IBERIA_CUT_PATH) en vez de fingir una geografía cerrada.
+// Geografía real (trazo sólido): tras Cap de Creus (903.5,145.4) la costa
+// mediterránea francesa W→E hasta Niza (1198.1,13.8), donde termina la costa firme.
+// Al oeste, la costa atlántica baja desde el corte (592,-200, costa de Aunis) por
+// Royan/boca de la Gironda (598,-158), el estuario que envuelve Burdeos (655,-120;
+// ciudad ≈628.7,-86.3) y las Landas hasta el arranque vasco (567.3,82.8).
+// Cortes punteados: vertical recto Niza→(1198.1,-200) y horizontal hasta (592,-200).
+// Lyon (≈1010.3,-171.5) queda dentro del valle del Ródano. Verificado con
 // point-in-polygon.
-export const IBERIA_PATH = "M 15.5,92 L 38.8,170.2 L 44.4,202.4 L 52.9,253 L 52.9,299.9 L 44.4,345 L 7,395.6 L 2.1,478.4 L 28.2,501.4 L 44.4,547.4 L 37.4,633 L 146.6,621 L 172.7,618.2 L 225.5,678 L 274.2,726.8 L 358,671.6 L 495.4,662.4 L 600.5,579.6 L 635.7,515.2 L 647,409.4 L 729.4,292.6 L 757.6,257.6 L 821,234.6 L 903.5,145.4 L 912.7,50.6 L 990.2,50.6 L 1048,57 L 1103,73.6 L 1164.3,32.2 L 1198.1,13.8 L 1191,-41.4 L 1090,-60 L 1010,-195 L 930,-60 L 764.7,-41.4 L 655,-120 L 560,-70 L 560,20 L 567.3,82.8 L 530,53.4 L 456.7,47.8 L 401.7,39.6 L 270.6,30.4 L 89.5,38.6 L 15.5,92 Z";
+export const IBERIA_PATH = "M 15.5,92 L 38.8,170.2 L 44.4,202.4 L 52.9,253 L 52.9,299.9 L 44.4,345 L 7,395.6 L 2.1,478.4 L 28.2,501.4 L 44.4,547.4 L 37.4,633 L 146.6,621 L 172.7,618.2 L 225.5,678 L 274.2,726.8 L 358,671.6 L 495.4,662.4 L 600.5,579.6 L 635.7,515.2 L 647,409.4 L 729.4,292.6 L 757.6,257.6 L 821,234.6 L 903.5,145.4 L 912.7,50.6 L 990.2,50.6 L 1048,57 L 1103,73.6 L 1164.3,32.2 L 1198.1,13.8 L 1198.1,-200 L 592,-200 L 598,-158 L 655,-120 L 560,-70 L 560,20 L 567.3,82.8 L 530,53.4 L 456.7,47.8 L 401.7,39.6 L 270.6,30.4 L 89.5,38.6 L 15.5,92 Z";
+
+// Trazo del contorno SIN los bordes de corte (para pintarlo sólido) y los cortes
+// aparte (para pintarlos punteados). Derivados de IBERIA_PATH en tiempo de carga
+// para que nunca se desincronicen del polígono de relleno.
+const _pts = IBERIA_PATH.replace(/^M\s*/, '').replace(/\s*Z$/, '').split(/\s+L\s+/);
+const _iE = _pts.indexOf('1198.1,13.8'); // Niza: aquí acaba la costa sólida
+const _iW = _pts.indexOf('592,-200');
+// Camino abierto: corte O → costa atlántica → Iberia entera → costa francesa → Niza.
+// (_pts[último] repite el punto inicial, se descarta para no duplicarlo.)
+export const IBERIA_OUTLINE_PATH = 'M ' + _pts.slice(_iW, _pts.length - 1).concat(_pts.slice(0, _iE + 1)).join(' L ');
+// Un solo vector recto vertical (Niza → línea superior) + el corte horizontal norte.
+export const IBERIA_CUT_PATH = 'M 1198.1,13.8 L 1198.1,-200 L 592,-200';

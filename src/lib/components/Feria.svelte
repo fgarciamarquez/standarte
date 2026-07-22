@@ -15,6 +15,7 @@
   import { advisorDismissed } from '$lib/stores/advisor.js';
   import { coverageProof, coveragePatCta, coverageMapAlt } from '$lib/coverageStrings.js';
   import { navFlagCountry } from '$lib/cityFlags.js';
+  import { synergyOfferCatalog, relatedFairsItemList } from '$lib/meshSeo.js';
 
   // Panel de Pat (asesor de Expansión) + botones GEO, igual que en ciudades y hubs.
   // Aquí NO se abre solo: solo cuando el visitante lo pide con la píldora "Expansión".
@@ -848,13 +849,25 @@
   // en fairFreshness (clústeres prioritarios refrescados). Señal de reindexación coherente
   // con el <lastmod> del sitemap.
   $: fairFreshness = fairFreshnessFor(fair.slug);
+  // hasOfferCatalog: la campaña multi-feria (sinergia) como catálogo de ofertas —
+  // la señal machine-readable de que las ferias de la malla se contratan en paquete.
   $: serviceJsonLd = JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Service', '@id': canonical + '#service',
     name: strings.heroTitle(fairDisplayName), serviceType: 'Exhibition stand builder',
     provider: { '@type': 'Organization', name: 'Standarte', url: 'https://standarte.es', logo: 'https://standarte.es/img/logo_standarte_rectanular.png' },
     areaServed: { '@type': 'City', name: fair.city }, description: seoDesc, url: canonical,
+    hasOfferCatalog: synergyOfferCatalog(lang),
     ...(fairFreshness ? { dateModified: fairFreshness } : {})
   }).replace(/</g, '\\u003c');
+  // La malla relacional para las máquinas: ItemList con las MISMAS ferias que el
+  // módulo visible "Ferias relacionadas" (siblingFairs) — nunca puede divergir.
+  $: meshJsonLd = (() => {
+    const ld = relatedFairsItemList({
+      canonical, lang, fairName: fairDisplayName,
+      items: siblingFairs, urlFor: (slug) => fairUrl(slug, lang)
+    });
+    return ld ? JSON.stringify(ld).replace(/</g, '\\u003c') : null;
+  })();
   const faqLd = {
     es: (n) => [
       [`¿Quién diseña y monta stands en ${n}?`, `Standarte: diseño, fabricación en taller propio y montaje llave en mano, con prototipo 3D en 72 h, presupuesto en 24 h y la garantía de Proyecto Auditado (lo que ves es lo que se construye).`],
@@ -900,6 +913,7 @@
   {/if}
   {@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
   {@html `<script type="application/ld+json">${serviceJsonLd}<\/script>`}
+  {#if meshJsonLd}{@html `<script type="application/ld+json">${meshJsonLd}<\/script>`}{/if}
   {#if faqJsonLd}{@html `<script type="application/ld+json">${faqJsonLd}<\/script>`}{/if}
 </svelte:head>
 

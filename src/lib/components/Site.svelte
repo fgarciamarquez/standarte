@@ -8,6 +8,7 @@
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
+  import { synergyOfferCatalog, cityFairsItemList } from '$lib/meshSeo.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
   import ProjectAdvisor from './ProjectAdvisor.svelte';
@@ -1148,7 +1149,10 @@
       serviceType: isCityPage ? 'Diseño y montaje de stands' : 'Exhibition Stand Builder',
       provider: { '@id': `${baseUrl}/#organization` },
       description: copy.seoDescription,
-      areaServed: isCityPage ? cityDisplayName : ['ES', 'PT', 'DE', 'FR']
+      areaServed: isCityPage ? cityDisplayName : ['ES', 'PT', 'DE', 'FR'],
+      // Campaña multi-feria (sinergia): las ferias de la malla se contratan como
+      // paquete con descuento único — la potencia relacional, machine-readable.
+      ...(isCityPage ? { hasOfferCatalog: synergyOfferCatalog(lang) } : {})
     };
 
     // Herramientas propias de Standarte, nombradas para buscadores y motores de IA:
@@ -1273,6 +1277,20 @@
           }
         ]
       });
+    }
+
+    // La malla en la página de ciudad: ItemList con las MISMAS ferias del módulo
+    // visible del pilar (regionFairs) y las actividades de sus chips como `about`
+    // apuntando a los hubs /actividad. Cierra el triángulo ciudad→ferias→actividades
+    // que el mapa de Pat dibuja visualmente pero los rastreadores no ven.
+    if (isCityPage && regionFairs.length) {
+      graph.push(cityFairsItemList({
+        canonical, lang, cityName: cityDisplayName,
+        items: regionFairs, activities: regionActivities,
+        urlFor: (slug) => fairUrl(slug, lang),
+        activityUrlFor: (tag) => activityUrl(tag, lang),
+        activityLabelFor: (tag) => labelForTag(tag, lang)
+      }));
     }
 
     if (seoContent?.faqs && seoContent.faqs.length > 0) {

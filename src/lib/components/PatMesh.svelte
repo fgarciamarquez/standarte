@@ -11,7 +11,7 @@
   import { onMount, createEventDispatcher } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { tagFamilies, fairTags, fairActivities, labelForTag, familyLabel } from '$lib/fairTags.js';
-  import { IBERIA_PATH, CITY_POINTS, MAP_INSETS, CITY_PILLAR } from '$lib/iberiaMeshData.js';
+  import { IBERIA_PATH, IBERIA_OUTLINE_PATH, IBERIA_CUT_PATH, CITY_POINTS, MAP_INSETS, CITY_PILLAR } from '$lib/iberiaMeshData.js';
   import { pathFor } from '$lib/siteData.js';
 
   // Familias cuyo rótulo se fuerza a un lado concreto del nodo (en lugar del lado
@@ -308,7 +308,12 @@
       gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: -360, y1: gy, x2: 1270, y2: gy }));
     }
     svgEl.appendChild(gratGroup);
-    svgEl.appendChild(el('path', { class: 'pm-coast', d: IBERIA_PATH }));
+    // El polígono se rellena sin borde; el contorno geográfico se traza aparte en
+    // sólido y el borde superior (corte simbólico al norte de Lyon: el mapa seguirá
+    // creciendo, Francia no acaba ahí) en línea de puntos.
+    svgEl.appendChild(el('path', { class: 'pm-coast pm-coast-fill', d: IBERIA_PATH }));
+    svgEl.appendChild(el('path', { class: 'pm-coast-outline', d: IBERIA_OUTLINE_PATH }));
+    svgEl.appendChild(el('path', { class: 'pm-cut-line', d: IBERIA_CUT_PATH }));
     // Mallorca: polígono simple (misma proyección px) para que la isla tenga tierra
     // bajo su punto y se vea que la malla llega hasta Baleares. Punto Palma ≈ (856, 398).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 826,384 L 848,368 L 892,360 L 884,388 L 864,401 L 846,405 L 834,396 Z' }));
@@ -316,14 +321,22 @@
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 754,458 L 762,448 L 775,447 L 785,455 L 783,466 L 772,472 L 760,468 Z' }));
     // Menorca: isla alargada NE-SO al noreste de Mallorca. Punto ≈ (959, 363).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 942,369 L 950,361 L 965,355 L 980,358 L 976,367 L 961,371 L 949,373 Z' }));
-    // Costa norteafricana (Estrecho + Mediterráneo marroquí): landmass para situar sobre
-    // separada de la Península por el Estrecho de Gibraltar. Contorno realista de Marruecos
-    // (misma proyección equirectangular): costa mediterránea W→E desde el Estrecho (Cabo
-    // Espartel/Tánger → Ceuta → Alhucemas → Melilla → frontera argelina) y fachada ATLÁNTICA
-    // como diagonal NE→SO (Larache → Kenitra → RABAT ≈188,909 → CASABLANCA ≈135,950 →
-    // El Jadida), de modo que ambas ciudades quedan correctamente junto a la costa. Puntos de
-    // costa apenas a barlovento de las ciudades reales para dejarlas justo tierra adentro.
-    svgEl.appendChild(el('path', { class: 'pm-coast pm-africa', d: 'M 248,744 L 262,736 L 290,730 L 335,748 L 392,782 L 470,785 L 545,822 L 625,905 L 600,1025 L 300,1028 L 60,1005 L 112,962 L 172,918 L 192,890 L 224,808 Z' }));
+    // Costa norteafricana (Estrecho + Mediterráneo marroquí), separada de la Península
+    // por el Estrecho de Gibraltar. Contorno realista de Marruecos (misma proyección):
+    // costa mediterránea W→E desde el Estrecho (Cabo Espartel/Tánger → Ceuta →
+    // Alhucemas → Melilla) hasta Saïdia (514,810, la frontera argelina en la costa) y
+    // fachada ATLÁNTICA como diagonal NE→SO (Larache → Kenitra → RABAT ≈188,909 →
+    // CASABLANCA ≈135,950 → El Jadida). Al este de Melilla la tierra CONTINÚA (Argelia)
+    // pero queda fuera del objetivo comercial: el dibujo se cierra con un CORTE recto
+    // vertical punteado (514,810 → 514,1010, ya fuera del lienzo por abajo), igual que
+    // los cortes simbólicos del norte y el este de Francia. Mismo esquema que Iberia:
+    // relleno sin borde + costa sólida (abierta) + corte punteado.
+    const AFRICA_PATH = 'M 248,744 L 262,736 L 290,730 L 335,748 L 392,782 L 470,785 L 514,810 L 514,1010 L 60,1005 L 112,962 L 172,918 L 192,890 L 224,808 Z';
+    svgEl.appendChild(el('path', { class: 'pm-coast pm-coast-fill pm-africa', d: AFRICA_PATH }));
+    // Costa sólida: sube por la fachada atlántica (desde el borde inferior del lienzo),
+    // dobla el Estrecho y recorre el Mediterráneo hasta Saïdia.
+    svgEl.appendChild(el('path', { class: 'pm-coast-outline', d: 'M 60,1005 L 112,962 L 172,918 L 192,890 L 224,808 L 248,744 L 262,736 L 290,730 L 335,748 L 392,782 L 470,785 L 514,810' }));
+    svgEl.appendChild(el('path', { class: 'pm-cut-line', d: 'M 514,810 L 514,1010' }));
 
     // Insets (Canarias, Madeira): traslación artificial de cada archipiélago a un
     // recuadro (circunferencia de borde de puntos + islas simples) para que la
@@ -1218,6 +1231,25 @@
     stroke-width: 1.6;
     /* Sombra suave para despegar el perfil de la tierra del fondo (mejora la lectura). */
     filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+  }
+  /* El polígono principal Iberia+Francia se rellena sin borde: su contorno se pinta
+     con los dos trazos siguientes (costa sólida + corte norte punteado). */
+  :global(.pm-coast-fill) {
+    stroke: none;
+  }
+  :global(.pm-coast-outline) {
+    fill: none;
+    stroke: #b9bcb4;
+    stroke-width: 1.6;
+  }
+  /* Corte simbólico al norte de Lyon: línea de puntos, para que no parezca que la
+     geografía francesa termina ahí. */
+  :global(.pm-cut-line) {
+    fill: none;
+    stroke: #b9bcb4;
+    stroke-width: 1.6;
+    stroke-dasharray: 2 7;
+    stroke-linecap: round;
   }
   /* Circunferencia de los insets (Canarias, Madeira): borde de puntos, sin
      relleno. Señala que es una traslación artificial del espacio, no una
