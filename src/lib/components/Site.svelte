@@ -458,7 +458,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'vitoria', 'aranda', 'regua', 'ibiza', 'menorca', 'ceuta', 'melilla', 'tanger', 'casablanca', 'andorra', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira', 'marsella', 'toulouse', 'burdeos', 'perpignan', 'avignon', 'cannes'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'vitoria', 'aranda', 'regua', 'ibiza', 'menorca', 'ceuta', 'melilla', 'tanger', 'casablanca', 'rabat', 'andorra', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira', 'marsella', 'toulouse', 'burdeos', 'perpignan', 'avignon', 'cannes'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -582,7 +582,7 @@
     pamplona: 'navarra',
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
-    ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger', casablanca: 'casablanca',
+    ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger', casablanca: 'casablanca', rabat: 'rabat',
     andorra: 'andorra', teruel: 'aragon',
     marsella: 'francia-sur', cannes: 'francia-sur', avignon: 'francia-sur', toulouse: 'francia-sur', perpignan: 'francia-sur', burdeos: 'francia-sur'
   };
@@ -602,7 +602,7 @@
     'Aranda de Duero': 'castillayleon',
     'Peso da Régua': 'portugal',
     'San Vicente de Alcántara': 'extremadura',
-    'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger', 'Casablanca': 'casablanca',
+    'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger', 'Casablanca': 'casablanca', 'Rabat': 'rabat',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'aragon', 'Calamocha': 'aragon', 'Alcañiz': 'aragon',
     'Marsella': 'francia-sur', 'Cannes': 'francia-sur', 'Aviñón': 'francia-sur', 'Toulouse': 'francia-sur', 'Perpiñán': 'francia-sur', 'Burdeos': 'francia-sur',
@@ -1033,6 +1033,7 @@
     'Melilla': 'melilla',
     'Tánger': 'tanger',
     'Casablanca': 'casablanca',
+    'Rabat': 'rabat',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',

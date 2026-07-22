@@ -302,18 +302,13 @@
 
     const gratGroup = el('g', {});
     for (let gx = -300; gx < 1270; gx += 120) {
-      gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: gx, y1: -150, x2: gx, y2: 1030 }));
+      gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: gx, y1: -150, x2: gx, y2: 975 }));
     }
-    for (let gy = -120; gy < 1030; gy += 110) {
+    for (let gy = -120; gy < 975; gy += 110) {
       gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: -360, y1: gy, x2: 1270, y2: gy }));
     }
     svgEl.appendChild(gratGroup);
     svgEl.appendChild(el('path', { class: 'pm-coast', d: IBERIA_PATH }));
-    // Frontera España↔Francia (cresta pirenaica): símbolo cartográfico de dos líneas
-    // paralelas de rayas. La cresta va de Cap de Creus (Mediterráneo) al Atlántico
-    // (Irún); las dos líneas son la misma polilínea desplazada ±2,5 px en vertical.
-    svgEl.appendChild(el('path', { class: 'pm-border', d: 'M 903.5,142.9 L 873.9,130.9 L 711.8,107.9 L 567.3,80.3 L 543,49.5' }));
-    svgEl.appendChild(el('path', { class: 'pm-border', d: 'M 903.5,147.9 L 873.9,135.9 L 711.8,112.9 L 567.3,85.3 L 543,54.5' }));
     // Mallorca: polígono simple (misma proyección px) para que la isla tenga tierra
     // bajo su punto y se vea que la malla llega hasta Baleares. Punto Palma ≈ (856, 398).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 826,384 L 848,368 L 892,360 L 884,388 L 864,401 L 846,405 L 834,396 Z' }));
@@ -322,11 +317,13 @@
     // Menorca: isla alargada NE-SO al noreste de Mallorca. Punto ≈ (959, 363).
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 942,369 L 950,361 L 965,355 L 980,358 L 976,367 L 961,371 L 949,373 Z' }));
     // Costa norteafricana (Estrecho + Mediterráneo marroquí): landmass para situar sobre
-    // tierra los puntos de Ceuta (≈294,737) y Melilla (≈462,792), separada de la Península
-    // por el Estrecho de Gibraltar. Además de la costa mediterránea (W→E), el contorno baja
-    // por la fachada ATLÁNTICA de Marruecos hasta envolver Casablanca (≈135,950), que queda
-    // así dentro de la zona territorial. Misma proyección equirectangular.
-    svgEl.appendChild(el('path', { class: 'pm-coast pm-africa', d: 'M 246,760 L 252,745 L 262,745 L 286,728 L 294,728 L 302,748 L 340,772 L 372,784 L 393,790 L 425,800 L 452,793 L 462,790 L 498,806 L 540,814 L 592,826 L 640,980 L 320,1010 L 110,975 L 130,880 L 185,800 Z' }));
+    // separada de la Península por el Estrecho de Gibraltar. Contorno realista de Marruecos
+    // (misma proyección equirectangular): costa mediterránea W→E desde el Estrecho (Cabo
+    // Espartel/Tánger → Ceuta → Alhucemas → Melilla → frontera argelina) y fachada ATLÁNTICA
+    // como diagonal NE→SO (Larache → Kenitra → RABAT ≈188,909 → CASABLANCA ≈135,950 →
+    // El Jadida), de modo que ambas ciudades quedan correctamente junto a la costa. Puntos de
+    // costa apenas a barlovento de las ciudades reales para dejarlas justo tierra adentro.
+    svgEl.appendChild(el('path', { class: 'pm-coast pm-africa', d: 'M 248,744 L 262,736 L 290,730 L 335,748 L 392,782 L 470,785 L 545,822 L 625,905 L 600,1025 L 300,1028 L 60,1005 L 112,962 L 172,918 L 192,890 L 224,808 Z' }));
 
     // Insets (Canarias, Madeira): traslación artificial de cada archipiélago a un
     // recuadro (circunferencia de borde de puntos + islas simples) para que la
@@ -916,7 +913,7 @@
   <svg
     class="pm-map"
     bind:this={svgEl}
-    viewBox="-360 -150 1630 1180"
+    viewBox="-360 -150 1630 1125"
     preserveAspectRatio="xMidYMid meet"
     role="img"
     aria-label="Standarte network map: cities, activities and sectors in Spain and Portugal"
@@ -1117,7 +1114,7 @@
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 1630 / 1050;
+    aspect-ratio: 1630 / 1125;
   }
 
   /* Ventana conversacional de Pat sobre el gráfico: cuenta al cliente qué ve. */
@@ -1215,14 +1212,6 @@
     user-select: none;
   }
 
-  /* Frontera España↔Francia: dos líneas de rayas paralelas, gris apagado, sin relleno. */
-  :global(.pm-border) {
-    fill: none;
-    stroke: #a7aaa2;
-    stroke-width: 1.1;
-    stroke-dasharray: 5 3;
-    opacity: 0.85;
-  }
   :global(.pm-coast) {
     fill: rgba(26, 30, 33, 0.05);
     stroke: #b9bcb4;

@@ -457,7 +457,11 @@ export const fairActivities = {
   "morocco-textile-expo-casablanca": ["moda-textil"],
   "stitch-tex-casablanca": ["moda-textil", "maquinaria-industrial"],
   "maroc-in-mode-mim-casablanca": ["moda-textil"],
-  "ctw-china-trade-week-casablanca": ["multisectorial", "congreso-profesional"]
+  "ctw-china-trade-week-casablanca": ["multisectorial", "congreso-profesional"],
+  "siel-rabat": ["cultura-arte", "congreso-profesional"],
+  "visa-for-music-rabat": ["cultura-arte", "congreso-profesional"],
+  "forum-etudiant-rabat": ["congreso-profesional"],
+  "cimqusef-rabat": ["congreso-profesional"]
 };
 
 // Helpers

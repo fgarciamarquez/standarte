@@ -72,7 +72,8 @@ export const seoFreshness = {
   toulouse: '2026-07-17',
   perpignan: '2026-07-21',
   burdeos: '2026-07-20',
-  casablanca: '2026-07-22'
+  casablanca: '2026-07-22',
+  rabat: '2026-07-22'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
@@ -140,6 +141,11 @@ export const fairFreshness = {
   'stitch-tex-casablanca': '2026-07-22',
   'maroc-in-mode-mim-casablanca': '2026-07-22',
   'ctw-china-trade-week-casablanca': '2026-07-22',
+  // Rabat (Marruecos) — clúster de 4 ferias satélite (edición/cultura/educación), 2026-07-22.
+  'siel-rabat': '2026-07-22',
+  'visa-for-music-rabat': '2026-07-22',
+  'forum-etudiant-rabat': '2026-07-22',
+  'cimqusef-rabat': '2026-07-22',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'medfel-perpignan': '2026-07-21',
   'viv-habitat-perpignan': '2026-07-21',

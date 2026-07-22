@@ -50,6 +50,7 @@ export const routes = {
     melilla: 'diseno_montaje_stands_melilla',
     tanger: 'diseno_montaje_stands_tanger',
     casablanca: 'diseno_montaje_stands_casablanca',
+    rabat: 'diseno_montaje_stands_rabat',
     andorra: 'diseno_montaje_stands_andorra',
     teruel: 'diseno_montaje_stands_teruel',
     marsella: 'diseno_montaje_stands_marsella',
@@ -123,6 +124,7 @@ export const routes = {
     melilla: 'stand_design_assembly_melilla',
     tanger: 'stand_design_assembly_tangier',
     casablanca: 'stand_design_assembly_casablanca',
+    rabat: 'stand_design_assembly_rabat',
     andorra: 'stand_design_assembly_andorra',
     teruel: 'stand_design_assembly_teruel',
     marsella: 'stand_design_assembly_marseille',
@@ -196,6 +198,7 @@ export const routes = {
     melilla: 'messestand_design_montage_melilla',
     tanger: 'messestand_design_montage_tanger',
     casablanca: 'messestand_design_montage_casablanca',
+    rabat: 'messestand_design_montage_rabat',
     andorra: 'messestand_design_montage_andorra',
     teruel: 'messestand_design_montage_teruel',
     marsella: 'messestand_design_montage_marseille',
@@ -269,6 +272,7 @@ export const routes = {
     melilla: 'melilla_zhantai_sheji_dajian',
     tanger: 'tanger_zhantai_sheji_dajian',
     casablanca: 'casablanca_zhantai_sheji_dajian',
+    rabat: 'rabat_zhantai_sheji_dajian',
     andorra: 'andorra_zhantai_sheji_dajian',
     teruel: 'teruel_zhantai_sheji_dajian',
     marsella: 'marseille_zhantai_sheji_dajian',
@@ -342,6 +346,7 @@ export const routes = {
     melilla: 'melilla_stand_dizain_asembli',
     tanger: 'tanger_stand_dizain_asembli',
     casablanca: 'casablanca_stand_dizain_asembli',
+    rabat: 'rabat_stand_dizain_asembli',
     andorra: 'andorra_stand_dizain_asembli',
     teruel: 'teruel_stand_dizain_asembli',
     marsella: 'marseille_stand_dizain_asembli',
@@ -415,6 +420,7 @@ export const routes = {
     melilla: 'design_montagem_stands_melilla',
     tanger: 'design_montagem_stands_tanger',
     casablanca: 'design_montagem_stands_casablanca',
+    rabat: 'design_montagem_stands_rabat',
     andorra: 'design_montagem_stands_andorra',
     teruel: 'design_montagem_stands_teruel',
     marsella: 'design_montagem_stands_marseille',
@@ -488,6 +494,7 @@ export const routes = {
     melilla: 'conception_montage_stands_melilla',
     tanger: 'conception_montage_stands_tanger',
     casablanca: 'conception_montage_stands_casablanca',
+    rabat: 'conception_montage_stands_rabat',
     andorra: 'conception_montage_stands_andorre',
     teruel: 'conception_montage_stands_teruel',
     marsella: 'conception_montage_stands_marseille',
@@ -561,6 +568,7 @@ export const routes = {
     melilla: 'progettazione_montaggio_stand_melilla',
     tanger: 'progettazione_montaggio_stand_tangeri',
     casablanca: 'progettazione_montaggio_stand_casablanca',
+    rabat: 'progettazione_montaggio_stand_rabat',
     andorra: 'progettazione_montaggio_stand_andorra',
     teruel: 'progettazione_montaggio_stand_teruel',
     marsella: 'progettazione_montaggio_stand_marseille',
@@ -634,6 +642,7 @@ export const routes = {
     melilla: 'melilla-buseu-dijain-jorip',
     tanger: 'tanger-buseu-dijain-jorip',
     casablanca: 'casablanca-buseu-dijain-jorip',
+    rabat: 'rabat-buseu-dijain-jorip',
     andorra: 'andorra-buseu-dijain-jorip',
     teruel: 'teruel-buseu-dijain-jorip',
     marsella: 'marseille-buseu-dijain-jorip',
@@ -707,6 +716,7 @@ export const routes = {
     melilla: 'メリリャ展示会ブース設計施工',
     tanger: 'タンジェ展示会ブース設計施工',
     casablanca: 'カサブランカ展示会ブース設計施工',
+    rabat: 'ラバト展示会ブース設計施工',
     andorra: 'アンドラ展示会ブース設計施工',
     teruel: 'テルエル展示会ブース設計施工',
     marsella: 'マルセイユ展示会ブース設計施工',
@@ -780,6 +790,7 @@ export const routes = {
     melilla: 'standontwerp_montage_melilla',
     tanger: 'standontwerp_montage_tanger',
     casablanca: 'standontwerp_montage_casablanca',
+    rabat: 'standontwerp_montage_rabat',
     andorra: 'standontwerp_montage_andorra',
     teruel: 'standontwerp_montage_teruel',
     marsella: 'standontwerp_montage_marseille',
@@ -3207,6 +3218,55 @@ export const cityData = {
       },
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはカサブランカで展示会ブースの設計・施工を行います。ここはモロッコの経済的中心都市であり、同国最大の大西洋岸の港湾、そしてCICEC会場を擁する主要な見本市開催地で、Logismed、Morocco Food Expo、Elec Expo、SISTEP、Plast Expoなどが開催され、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、海峡を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  rabat: {
+    city: { es: 'Rabat', en: 'Rabat', de: 'Rabat', zh: '拉巴特', hi: 'रबात', pt: 'Rabat', fr: 'Rabat', it: 'Rabat', ko: '라바트', ja: 'ラバト', nl: 'Rabat' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Rabat —capital de Marruecos y Capital Mundial del Libro UNESCO 2026, plaza de la edición, la cultura y la educación, con citas como el SIEL (Salon International de l\'Édition et du Livre) en el recinto OLM Souissi y Visa For Music— controlando cada fase: diseño 3D, fabricación, logística por barco, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, también al otro lado del Estrecho.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Rabat —Morocco’s capital and UNESCO World Book Capital 2026, a hub of publishing, culture and education, with events such as SIEL (the International Publishing and Book Fair) at the OLM Souissi venue and Visa For Music— controlling every phase: 3D design, production, sea logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, on the other side of the Strait too.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Rabat — der Hauptstadt Marokkos und UNESCO-Welthauptstadt des Buches 2026, einem Zentrum für Verlagswesen, Kultur und Bildung, mit Veranstaltungen wie der SIEL (Internationale Buchmesse) im OLM-Souissi-Gelände und Visa For Music — und kontrolliert jede Phase: 3D-Design, Produktion, Seelogistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch auf der anderen Seite der Meerenge.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Rabat — capital de Marrocos e Capital Mundial do Livro UNESCO 2026, praça da edição, da cultura e da educação, com certames como o SIEL (Salon International de l\'Édition et du Livre) no recinto OLM Souissi e o Visa For Music — controlando cada fase: design 3D, fabrico, logística por barco, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, também do outro lado do Estreito.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d’expérience dans l’architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Rabat — capitale du Maroc et Capitale mondiale du livre UNESCO 2026, place de l’édition, de la culture et de l’éducation, avec des rendez-vous comme le SIEL (Salon International de l’Édition et du Livre) au parc OLM Souissi et Visa For Music — en maîtrisant chaque phase : conception 3D, fabrication, logistique par bateau, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d’esprit d’un montage sans surprise et une attention exceptionnelle aux détails, de l’autre côté du détroit aussi.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Rabat — capitale del Marocco e Capitale mondiale del libro UNESCO 2026, piazza dell’editoria, della cultura e dell’istruzione, con appuntamenti come il SIEL (Salon International de l’Édition et du Livre) al polo OLM Souissi e Visa For Music — controllando ogni fase: progettazione 3D, produzione, logistica via nave, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un’eccezionale attenzione ai dettagli, anche dall’altra parte dello Stretto.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Rabat — de hoofdstad van Marokko en UNESCO Wereldhoofdstad van het Boek 2026, een knooppunt van uitgeverij, cultuur en onderwijs, met evenementen zoals de SIEL (internationale boekenbeurs) op het OLM Souissi-terrein en Visa For Music — met volledige controle over elke fase: 3D-ontwerp, productie, zeelogistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, ook aan de overkant van de zeestraat.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在拉巴特为展会设计并搭建展台——这是摩洛哥的首都，也是2026年联合国教科文组织世界图书之都，是出版、文化与教育的重镇，举办 SIEL 国际图书展（OLM Souissi 会场）和 Visa For Music 等活动——全程掌控每个环节：3D设计、制造、海运物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便在海峡的另一侧。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte रबात में स्टैंड डिज़ाइन और स्थापित करता है — यह मोरक्को की राजधानी और यूनेस्को विश्व पुस्तक राजधानी 2026 है, जो प्रकाशन, संस्कृति और शिक्षा का केंद्र है, जहाँ OLM Souissi परिसर में SIEL (अंतरराष्ट्रीय पुस्तक मेला) और Visa For Music जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, समुद्री लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को जलडमरूमध्य के उस पार भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 라바트에서 전시회 부스를 디자인하고 시공합니다. 이곳은 모로코의 수도이자 2026 유네스코 세계 책의 수도로, 출판·문화·교육의 중심지이며, OLM Souissi 전시장에서 열리는 SIEL(국제 도서전)과 Visa For Music 등이 개최되고, 3D 디자인, 제작, 해상 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 해협 건너에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはラバトで展示会ブースの設計・施工を行います。ここはモロッコの首都であり、2026年ユネスコ「世界図書首都」で、出版・文化・教育の中心地です。OLM Souissi会場で開催されるSIEL（国際ブックフェア）やVisa For Musicなどが行われ、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、海峡を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }

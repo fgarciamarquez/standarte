@@ -775,14 +775,22 @@
   // #4 (G1) Proyectos 3D reales del mismo sector que esta feria (malla feria → proyecto).
   // "La categoría" es la PRIMERA actividad de la feria que tenga proyectos: se devuelven
   // TODOS los suyos para pasarlos en bucle con fundido (antes solo se usaba el primero).
+  // Si la primera etiqueta con resultado solo aporta 1 foto, el bucle se ve estático
+  // (misma imagen "cambiando" a sí misma). Para sectores minoritarios (edición, congresos)
+  // seguimos acumulando de las siguientes etiquetas del tag hasta reunir al menos 2, sin
+  // perder la prioridad: la(s) foto(s) del sector más afín van siempre primero.
   $: fairProjects = (() => {
+    const seen = new Set();
+    let acc = [];
     for (const t of fairActivityTags) {
       const ps = projectsForActivity(t)
         .map((id) => projectIndex.find((x) => x.id === id))
-        .filter((p) => p && p.image);
-      if (ps.length) return ps;
+        .filter((p) => p && p.image && !seen.has(p.id));
+      ps.forEach((p) => seen.add(p.id));
+      acc = acc.concat(ps);
+      if (acc.length >= 2) break;
     }
-    return [];
+    return acc;
   })();
   // Foto de caso de éxito en el cuerpo (igual que en las páginas de ciudad): se muestra
   // SIEMPRE. Preferimos un proyecto del mismo sector (fairProject); si no hay, elegimos de

@@ -2666,5 +2666,9 @@ export const fairsData = [
   { "name": "Morocco Textile Expo", "country": "ma", "slug": "morocco-textile-expo-casablanca", "city": "Casablanca", "sector": "Textil" },
   { "name": "Morocco Stitch & Tex", "country": "ma", "slug": "stitch-tex-casablanca", "city": "Casablanca", "sector": "Maquinaria Textil" },
   { "name": "Maroc in Mode (MIM)", "country": "ma", "slug": "maroc-in-mode-mim-casablanca", "city": "Casablanca", "sector": "Moda" },
-  { "name": "China Trade Week Morocco (CTW)", "country": "ma", "slug": "ctw-china-trade-week-casablanca", "city": "Casablanca", "sector": "Comercio Internacional" }
+  { "name": "China Trade Week Morocco (CTW)", "country": "ma", "slug": "ctw-china-trade-week-casablanca", "city": "Casablanca", "sector": "Comercio Internacional" },
+  { "name": "SIEL — Salon International de l'Édition et du Livre", "country": "ma", "slug": "siel-rabat", "city": "Rabat", "sector": "Edición y Libro" },
+  { "name": "Visa For Music", "country": "ma", "slug": "visa-for-music-rabat", "city": "Rabat", "sector": "Industria Musical" },
+  { "name": "Forum de l'Étudiant, de la Formation et de l'Emploi", "country": "ma", "slug": "forum-etudiant-rabat", "city": "Rabat", "sector": "Formación y Empleo" },
+  { "name": "CIMQUSEF", "country": "ma", "slug": "cimqusef-rabat", "city": "Rabat", "sector": "Calidad y Educación" }
 ];
