@@ -574,7 +574,8 @@
   .contact-block { min-width: 0; }
   .wiz, .wiz-step { min-width: 0; }
   /* Carrusel horizontal: el cliente recorre todas las plazas disponibles deslizando. */
-  .syn-grid { display: flex; flex-wrap: nowrap; gap: 10px; overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  /* Dos filas (dos alturas) con flujo por columnas: reduce a la mitad el largo del scroll. */
+  .syn-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(2, auto); grid-auto-columns: 210px; gap: 10px; overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
   .syn-grid::-webkit-scrollbar { height: 7px; }
   .syn-grid::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.22); border-radius: 4px; }
   .syn-card { flex: 0 0 auto; width: 210px; scroll-snap-align: start; position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 13px 14px 13px 40px; text-align: left; border-radius: 12px; border: 1.5px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.04); color: #fff; cursor: pointer; transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease; }

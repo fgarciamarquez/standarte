@@ -674,11 +674,9 @@ curl_close($ch);
 		exit;
 	}
 
-	/*____________________SCRIPT MAIL (INTERACTIVE PRE-SELECTION)________________________*/
-	$token = md5($inserted_id . $form_email . 'StandarteBudgetSelectionSalt');
-	$link_yes = "https://standarte.es/presupuesto-filtro.php?id=" . $inserted_id . "&token=" . $token . "&action=yes&lang=" . $form_lang;
-	$link_no = "https://standarte.es/presupuesto-filtro.php?id=" . $inserted_id . "&token=" . $token . "&action=no&lang=" . $form_lang;
-
+	/*____________________SCRIPT MAIL (ACUSE DE RECIBO AL CLIENTE)________________________*/
+	// Correo de agradecimiento/acuse de recibo. Ya NO se pregunta al cliente si su
+	// presupuesto supera el mínimo (se retiró el filtro Sí/No por email).
 	$interactive_emails = array(
 		'es' => array(
 			'subject' => 'Solicitud de presupuesto recibida - Standarte',
@@ -740,6 +738,16 @@ curl_close($ch);
 	$t = isset($interactive_emails[$form_lang]) ? $interactive_emails[$form_lang] : $interactive_emails['en'];
 	$fair_comment = get_fair_comment($form_feria, $form_lang);
 
+	// Cuerpo del acuse de recibo (sin pregunta de presupuesto ni botones Sí/No).
+	$ack_body = array(
+		'es' => 'Hemos recibido correctamente tu solicitud y nuestro equipo ya la está estudiando. En breve nos pondremos en contacto contigo para concretar los detalles y avanzar con el diseño de vuestro stand.<br><br>Si quieres agilizar el proceso, puedes enviarnos un <strong>brief</strong> con tus ideas o ejemplos de stands que te gusten a <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.',
+		'en' => 'We have successfully received your request and our team is already reviewing it. We will contact you shortly to discuss the details and move forward with the design of your stand.<br><br>To speed up the process, you can send us a <strong>brief</strong> with your ideas or examples of stands you like to <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.',
+		'pt' => 'Recebemos corretamente o seu pedido e a nossa equipa já o está a analisar. Em breve entraremos em contacto consigo para concretizar os detalhes e avançar com o design do vosso stand.<br><br>Para agilizar o processo, pode enviar-nos um <strong>briefing</strong> com as suas ideias ou exemplos de stands de que goste para <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.',
+		'de' => 'Wir haben Ihre Anfrage erhalten und unser Team prüft sie bereits. Wir werden uns in Kürze mit Ihnen in Verbindung setzen, um die Details zu besprechen und mit der Gestaltung Ihres Standes zu beginnen.<br><br>Um den Prozess zu beschleunigen, können Sie uns ein <strong>Briefing</strong> mit Ihren Ideen oder Beispielen an <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a> senden.',
+		'fr' => 'Nous avons bien reçu votre demande et notre équipe l\'étudie déjà. Nous vous contacterons sous peu pour préciser les détails et avancer sur la conception de votre stand.<br><br>Pour accélérer le processus, vous pouvez nous envoyer un <strong>brief</strong> avec vos idées ou des exemples de stands que vous aimez à <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.',
+	);
+	$ack_text = isset($ack_body[$form_lang]) ? $ack_body[$form_lang] : $ack_body['en'];
+
 	$email_html = "
 	<!DOCTYPE html>
 	<html>
@@ -755,15 +763,7 @@ curl_close($ch);
 			<p>" . str_replace('{nombre}', $form_nombre, $t['greeting']) . "</p>
 			<p>" . str_replace('{feria}', $form_feria, $t['intro']) . "</p>
 			<p>" . $fair_comment . "</p>
-			<p>" . $t['schedule'] . "</p>
-			<p>" . str_replace(array('{metros}', '{calculo}'), array($form_metros, $form_presupuesto), $t['ask']) . "</p>
-			<p style='font-weight: 600; margin-top: 25px; text-align: center;'>" . $t['question'] . "</p>
-			
-			<div style='text-align: center; margin: 30px 0;'>
-				<a href='" . $link_yes . "' style='display: inline-block; background-color: #ffc800; color: #000000; text-decoration: none; padding: 12px 28px; font-weight: bold; border-radius: 30px; margin: 5px 10px; box-shadow: 0 4px 10px rgba(255,200,0,0.3);'> " . $t['btn_yes'] . " </a>
-				<a href='" . $link_no . "' style='display: inline-block; background-color: #f1f3f5; color: #495057; text-decoration: none; padding: 12px 28px; font-weight: bold; border-radius: 30px; margin: 5px 10px; border: 1px solid #dee2e6;'> " . $t['btn_no'] . " </a>
-			</div>
-			
+			<p>" . $ack_text . "</p>
 			<p style='margin-top: 30px; border-top: 1px dotted #dee2e6; padding-top: 20px;'>" . $t['closing'] . "</p>
 		</div>
 		<div style='margin-top: 20px; text-align: center; font-size: 12px; color: #6c757d;'>
