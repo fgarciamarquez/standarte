@@ -2,7 +2,7 @@
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
-  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav } from '$lib/siteData.js';
+  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
@@ -458,7 +458,7 @@
     ja: 'ja-JP',
     nl: 'nl-NL'
   };
-  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'vitoria', 'aranda', 'regua', 'ibiza', 'menorca', 'ceuta', 'melilla', 'tanger', 'andorra', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira', 'marsella', 'toulouse', 'burdeos', 'perpignan', 'avignon', 'cannes'];
+  const cityKeys = ['madrid', 'lisboa', 'oporto', 'portugal_sur', 'santarem', 'valencia', 'mallorca', 'vigo', 'coruna', 'santiago', 'valladolid', 'salamanca', 'batalha', 'bilbao', 'barcelona', 'malaga', 'badajoz', 'trujillo', 'sevilla', 'almeria', 'jaen', 'huelva', 'cordoba', 'granada', 'cadiz', 'ciudad_real', 'zaragoza', 'alicante', 'elche', 'murcia', 'silleda', 'ourense', 'lleida', 'girona', 'irun', 'logrono', 'pamplona', 'vitoria', 'aranda', 'regua', 'ibiza', 'menorca', 'ceuta', 'melilla', 'tanger', 'casablanca', 'andorra', 'santander', 'gijon', 'islas_canarias', 'islas_de_madeira', 'marsella', 'toulouse', 'burdeos', 'perpignan', 'avignon', 'cannes'];
   const fairListTitles = {
     es: 'Ferias destacadas en España, Portugal, Alemania y Francia para diseño y montaje de stands',
     en: 'Featured fairs in Spain, Portugal, Germany and France for exhibition stand design and assembly',
@@ -582,7 +582,7 @@
     pamplona: 'navarra',
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
-    ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger',
+    ibiza: 'ibiza', menorca: 'menorca', ceuta: 'ceuta', melilla: 'melilla', tanger: 'tanger', casablanca: 'casablanca',
     andorra: 'andorra', teruel: 'aragon',
     marsella: 'francia-sur', cannes: 'francia-sur', avignon: 'francia-sur', toulouse: 'francia-sur', perpignan: 'francia-sur', burdeos: 'francia-sur'
   };
@@ -602,7 +602,7 @@
     'Aranda de Duero': 'castillayleon',
     'Peso da Régua': 'portugal',
     'San Vicente de Alcántara': 'extremadura',
-    'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger',
+    'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger', 'Casablanca': 'casablanca',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'aragon', 'Calamocha': 'aragon', 'Alcañiz': 'aragon',
     'Marsella': 'francia-sur', 'Cannes': 'francia-sur', 'Aviñón': 'francia-sur', 'Toulouse': 'francia-sur', 'Perpiñán': 'francia-sur', 'Burdeos': 'francia-sur',
@@ -1032,6 +1032,7 @@
     'Ceuta': 'ceuta',
     'Melilla': 'melilla',
     'Tánger': 'tanger',
+    'Casablanca': 'casablanca',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
@@ -1703,8 +1704,9 @@
 <svelte:window on:keydown={handleKeydown} on:scroll|passive={updateScrollState} />
 
 <header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services' && !animatedHero} class:hero-anim={animatedHero}>
-  {#if isCityPage && !section.startsWith('montaje_')}
-    <!-- Páginas de ciudad: la portada de la ciudad como fondo del header (responsive). -->
+  {#if isCityPage && !section.startsWith('montaje_') && !CITIES_WITHOUT_COVER.includes(section)}
+    <!-- Páginas de ciudad: la portada de la ciudad como fondo del header (responsive).
+         Las ciudades sin portada (CITIES_WITHOUT_COVER) usan el fondo oscuro del header. -->
     <img
       class="hero-bg-city"
       src="/img/cover_{coverBase(section)}.avif"

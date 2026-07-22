@@ -1,7 +1,7 @@
 <script>
   import { onMount, tick } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, ctaBudget, preciosNav, projectUrl } from '$lib/siteData.js';
+  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, ctaBudget, preciosNav, projectUrl, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag, fairTags } from '$lib/fairTags.js';
   import { fairFreshnessFor } from '$lib/seoFreshness.js';
   import { projectsForActivity } from '$lib/projectTags.js';
@@ -668,7 +668,7 @@
   // Portada del header: ciudad-matriz si la tiene; si no, portada de satélite o del
   // clúster regional (Portugal Sur). Resto sin portada -> header oscuro.
   $: coverKey = currentCityKey || CITY_COVER[fair.city] || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
-  $: coverBase = coverKey ? (COVER_OVERRIDE[coverKey] || coverKey) : null;
+  $: coverBase = (coverKey && !CITIES_WITHOUT_COVER.includes(coverKey)) ? (COVER_OVERRIDE[coverKey] || coverKey) : null;
   // Crédito obligatorio si la portada del hero está bajo licencia CC BY-SA (misma foto que
   // el pilar de esa ciudad). Tánger usa una aérea de Tanger Med (Wikimedia, CC BY-SA 4.0).
   $: coverCredit = coverBase === 'tanger'
@@ -897,8 +897,9 @@
 
 <svelte:window on:scroll|passive={updateScrollState} />
 <header class="site-header static-header">
-  {#if coverKey}
-    <!-- Portada del header: ciudad-matriz o portada del clúster regional (Portugal Sur). -->
+  {#if coverBase}
+    <!-- Portada del header: ciudad-matriz o portada del clúster regional (Portugal Sur).
+         Sin coverBase (ciudad sin portada aún) el header usa su fondo oscuro. -->
     <img
       class="hero-bg-city"
       src="/img/cover_{coverBase}.avif"

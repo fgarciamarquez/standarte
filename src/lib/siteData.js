@@ -3,6 +3,10 @@ import { tagOrder } from '$lib/fairTags.js';
 import { jaFairSlugs, jaFairSlugsReverse, jaProjectSlugs, jaProjectSlugsReverse } from '$lib/jaSlugs.js';
 export const languages = ['es', 'pt', 'en', 'de', 'fr', 'it', 'nl', 'zh', 'hi', 'ko', 'ja'];
 
+// Ciudades-hub SIN portada propia (cover_<key>.avif) todavía: su cabecera usa el fondo
+// oscuro por defecto en vez de una foto. Al aportar la imagen, quitar la clave de aquí.
+export const CITIES_WITHOUT_COVER = [];
+
 export const languageLabels = {
   es: 'ES Español',
   en: 'EN English',
@@ -45,6 +49,7 @@ export const routes = {
     ceuta: 'diseno_montaje_stands_ceuta',
     melilla: 'diseno_montaje_stands_melilla',
     tanger: 'diseno_montaje_stands_tanger',
+    casablanca: 'diseno_montaje_stands_casablanca',
     andorra: 'diseno_montaje_stands_andorra',
     teruel: 'diseno_montaje_stands_teruel',
     marsella: 'diseno_montaje_stands_marsella',
@@ -117,6 +122,7 @@ export const routes = {
     ceuta: 'stand_design_assembly_ceuta',
     melilla: 'stand_design_assembly_melilla',
     tanger: 'stand_design_assembly_tangier',
+    casablanca: 'stand_design_assembly_casablanca',
     andorra: 'stand_design_assembly_andorra',
     teruel: 'stand_design_assembly_teruel',
     marsella: 'stand_design_assembly_marseille',
@@ -189,6 +195,7 @@ export const routes = {
     ceuta: 'messestand_design_montage_ceuta',
     melilla: 'messestand_design_montage_melilla',
     tanger: 'messestand_design_montage_tanger',
+    casablanca: 'messestand_design_montage_casablanca',
     andorra: 'messestand_design_montage_andorra',
     teruel: 'messestand_design_montage_teruel',
     marsella: 'messestand_design_montage_marseille',
@@ -261,6 +268,7 @@ export const routes = {
     ceuta: 'ceuta_zhantai_sheji_dajian',
     melilla: 'melilla_zhantai_sheji_dajian',
     tanger: 'tanger_zhantai_sheji_dajian',
+    casablanca: 'casablanca_zhantai_sheji_dajian',
     andorra: 'andorra_zhantai_sheji_dajian',
     teruel: 'teruel_zhantai_sheji_dajian',
     marsella: 'marseille_zhantai_sheji_dajian',
@@ -333,6 +341,7 @@ export const routes = {
     ceuta: 'ceuta_stand_dizain_asembli',
     melilla: 'melilla_stand_dizain_asembli',
     tanger: 'tanger_stand_dizain_asembli',
+    casablanca: 'casablanca_stand_dizain_asembli',
     andorra: 'andorra_stand_dizain_asembli',
     teruel: 'teruel_stand_dizain_asembli',
     marsella: 'marseille_stand_dizain_asembli',
@@ -405,6 +414,7 @@ export const routes = {
     ceuta: 'design_montagem_stands_ceuta',
     melilla: 'design_montagem_stands_melilla',
     tanger: 'design_montagem_stands_tanger',
+    casablanca: 'design_montagem_stands_casablanca',
     andorra: 'design_montagem_stands_andorra',
     teruel: 'design_montagem_stands_teruel',
     marsella: 'design_montagem_stands_marseille',
@@ -477,6 +487,7 @@ export const routes = {
     ceuta: 'conception_montage_stands_ceuta',
     melilla: 'conception_montage_stands_melilla',
     tanger: 'conception_montage_stands_tanger',
+    casablanca: 'conception_montage_stands_casablanca',
     andorra: 'conception_montage_stands_andorre',
     teruel: 'conception_montage_stands_teruel',
     marsella: 'conception_montage_stands_marseille',
@@ -549,6 +560,7 @@ export const routes = {
     ceuta: 'progettazione_montaggio_stand_ceuta',
     melilla: 'progettazione_montaggio_stand_melilla',
     tanger: 'progettazione_montaggio_stand_tangeri',
+    casablanca: 'progettazione_montaggio_stand_casablanca',
     andorra: 'progettazione_montaggio_stand_andorra',
     teruel: 'progettazione_montaggio_stand_teruel',
     marsella: 'progettazione_montaggio_stand_marseille',
@@ -621,6 +633,7 @@ export const routes = {
     ceuta: 'ceuta-buseu-dijain-jorip',
     melilla: 'melilla-buseu-dijain-jorip',
     tanger: 'tanger-buseu-dijain-jorip',
+    casablanca: 'casablanca-buseu-dijain-jorip',
     andorra: 'andorra-buseu-dijain-jorip',
     teruel: 'teruel-buseu-dijain-jorip',
     marsella: 'marseille-buseu-dijain-jorip',
@@ -693,6 +706,7 @@ export const routes = {
     ceuta: 'セウタ展示会ブース設計施工',
     melilla: 'メリリャ展示会ブース設計施工',
     tanger: 'タンジェ展示会ブース設計施工',
+    casablanca: 'カサブランカ展示会ブース設計施工',
     andorra: 'アンドラ展示会ブース設計施工',
     teruel: 'テルエル展示会ブース設計施工',
     marsella: 'マルセイユ展示会ブース設計施工',
@@ -765,6 +779,7 @@ export const routes = {
     ceuta: 'standontwerp_montage_ceuta',
     melilla: 'standontwerp_montage_melilla',
     tanger: 'standontwerp_montage_tanger',
+    casablanca: 'standontwerp_montage_casablanca',
     andorra: 'standontwerp_montage_andorra',
     teruel: 'standontwerp_montage_teruel',
     marsella: 'standontwerp_montage_marseille',
@@ -3143,6 +3158,55 @@ export const cityData = {
       },
       ja: {
         intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはタンジェで展示会ブースの設計・施工を行います。ここはジブラルタル海峡を挟んだモロコの玄関口であり、繊維・産業・物流の拠点で、Maroc in Mode (MIM)、Tanger Nexus、Tanger Fashion Week、AMITH Nordの会合、Tanger Medの産業イベントなどが開催され、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
+        detail: '代理店にも出展者にも、海峡を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
+      }
+    }
+  },
+  casablanca: {
+    city: { es: 'Casablanca', en: 'Casablanca', de: 'Casablanca', zh: '卡萨布兰卡', hi: 'कासाब्लांका', pt: 'Casablanca', fr: 'Casablanca', it: 'Casablanca', ko: '카사블랑카', ja: 'カサブランカ', nl: 'Casablanca' },
+    content: {
+      es: {
+        intro: 'Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Casablanca —capital económica de Marruecos, mayor puerto atlántico del país y gran plaza ferial en el recinto CICEC, con citas como Logismed, Morocco Food Expo, Elec Expo, SISTEP y Plast Expo— controlando cada fase: diseño 3D, fabricación, logística por barco, instalación y validaciones en el recinto.',
+        detail: 'Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional, también al otro lado del Estrecho.'
+      },
+      en: {
+        intro: 'With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in Casablanca —Morocco’s economic capital, the country’s largest Atlantic port and a major fairground at the CICEC venue, with events such as Logismed, Morocco Food Expo, Elec Expo, SISTEP and Plast Expo— controlling every phase: 3D design, production, sea logistics, installation and on-site validations.',
+        detail: 'We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail, on the other side of the Strait too.'
+      },
+      de: {
+        intro: 'Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in Casablanca — Marokkos Wirtschaftshauptstadt, der größte Atlantikhafen des Landes und ein bedeutender Messestandort im CICEC-Gelände, mit Veranstaltungen wie Logismed, Morocco Food Expo, Elec Expo, SISTEP und Plast Expo — und kontrolliert jede Phase: 3D-Design, Produktion, Seelogistik, Montage und Abnahmen vor Ort.',
+        detail: 'Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit, auch auf der anderen Seite der Meerenge.'
+      },
+      pt: {
+        intro: 'Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em Casablanca — capital económica de Marrocos, o maior porto atlântico do país e uma grande praça de feiras no recinto CICEC, com certames como Logismed, Morocco Food Expo, Elec Expo, SISTEP e Plast Expo — controlando cada fase: design 3D, fabrico, logística por barco, instalação e validações no recinto.',
+        detail: 'Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes, também do outro lado do Estreito.'
+      },
+      fr: {
+        intro: 'Forte de 20 ans d’expérience dans l’architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Casablanca — capitale économique du Maroc, plus grand port atlantique du pays et grande place de salons au parc CICEC, avec des rendez-vous comme Logismed, Morocco Food Expo, Elec Expo, SISTEP et Plast Expo — en maîtrisant chaque phase : conception 3D, fabrication, logistique par bateau, montage et validations sur place.',
+        detail: 'Nous offrons aux agences et aux exposants la tranquillité d’esprit d’un montage sans surprise et une attention exceptionnelle aux détails, de l’autre côté du détroit aussi.'
+      },
+      it: {
+        intro: 'Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a Casablanca — capitale economica del Marocco, il maggior porto atlantico del paese e un’importante sede fieristica nel polo CICEC, con appuntamenti come Logismed, Morocco Food Expo, Elec Expo, SISTEP e Plast Expo — controllando ogni fase: progettazione 3D, produzione, logistica via nave, montaggio e collaudi in loco.',
+        detail: 'Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un’eccezionale attenzione ai dettagli, anche dall’altra parte dello Stretto.'
+      },
+      nl: {
+        intro: 'Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in Casablanca — de economische hoofdstad van Marokko, de grootste Atlantische haven van het land en een belangrijke beurslocatie in het CICEC-terrein, met evenementen zoals Logismed, Morocco Food Expo, Elec Expo, SISTEP en Plast Expo — met volledige controle over elke fase: 3D-ontwerp, productie, zeelogistiek, montage en keuringen ter plaatse.',
+        detail: 'Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail, ook aan de overkant van de zeestraat.'
+      },
+      zh: {
+        intro: '凭借20年在自有工厂打造临时建筑的经验，Standarte 在卡萨布兰卡为展会设计并搭建展台——这是摩洛哥的经济首都、该国最大的大西洋港口，也是 CICEC 会展中心的重要展览地，举办 Logismed、Morocco Food Expo、Elec Expo、SISTEP 和 Plast Expo 等展会——全程掌控每个环节：3D设计、制造、海运物流、安装以及现场验收。',
+        detail: '我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控，即便在海峡的另一侧。'
+      },
+      hi: {
+        intro: 'अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte कासाब्लांका में स्टैंड डिज़ाइन और स्थापित करता है — यह मोरक्को की आर्थिक राजधानी, देश का सबसे बड़ा अटलांटिक बंदरगाह और CICEC परिसर का एक प्रमुख मेला स्थल है, जहाँ Logismed, Morocco Food Expo, Elec Expo, SISTEP और Plast Expo जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, समुद्री लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।',
+        detail: 'हम एजेंसियों और प्रदर्शकों को जलडमरूमध्य के उस पार भी बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।'
+      },
+      ko: {
+        intro: '자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 카사블랑카에서 전시회 부스를 디자인하고 시공합니다. 이곳은 모로코의 경제 수도이자 이 나라 최대의 대서양 항구이며 CICEC 전시장의 주요 개최지로, Logismed, Morocco Food Expo, Elec Expo, SISTEP, Plast Expo 등이 열리며, 3D 디자인, 제작, 해상 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.',
+        detail: '에이전시와 참가 업체에 해협 건너에서도 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다.'
+      },
+      ja: {
+        intro: '自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはカサブランカで展示会ブースの設計・施工を行います。ここはモロッコの経済的中心都市であり、同国最大の大西洋岸の港湾、そしてCICEC会場を擁する主要な見本市開催地で、Logismed、Morocco Food Expo、Elec Expo、SISTEP、Plast Expoなどが開催され、3D設計、製作、海上物流、設営、会場での検収まで、すべての工程を自社で管理します。',
         detail: '代理店にも出展者にも、海峡を越えても想定外のない設営と卓越したディテールへのこだわりをお約束します。'
       }
     }

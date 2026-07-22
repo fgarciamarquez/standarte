@@ -442,7 +442,22 @@ export const fairActivities = {
   "art3f-bordeaux": ["cultura-arte"],
   "grand-salon-habitat-bordeaux": ["construccion", "regalo-decoracion"],
   "salon-vins-vignerons-independants-bordeaux": ["vino"],
-  "cycleau-nouvelle-aquitaine-bordeaux": ["energia", "construccion"]
+  "cycleau-nouvelle-aquitaine-bordeaux": ["energia", "construccion"],
+  "logismed-casablanca": ["logistica", "transporte", "congreso-profesional"],
+  "morocco-food-expo-casablanca": ["alimentacion"],
+  "siema-casablanca": ["alimentacion", "maquinaria-industrial"],
+  "siab-casablanca": ["alimentacion", "gastronomia-hosteleria"],
+  "elec-expo-casablanca": ["energia", "maquinaria-industrial"],
+  "ener-event-casablanca": ["energia"],
+  "plast-expo-casablanca": ["maquinaria-industrial"],
+  "pack-expo-casablanca": ["packaging"],
+  "sistep-casablanca": ["maquinaria-industrial", "metal-subcontratacion"],
+  "imme-casablanca": ["metal-subcontratacion", "maquinaria-industrial"],
+  "morocco-medical-expo-casablanca": ["congreso-medico", "farmacia"],
+  "morocco-textile-expo-casablanca": ["moda-textil"],
+  "stitch-tex-casablanca": ["moda-textil", "maquinaria-industrial"],
+  "maroc-in-mode-mim-casablanca": ["moda-textil"],
+  "ctw-china-trade-week-casablanca": ["multisectorial", "congreso-profesional"]
 };
 
 // Helpers

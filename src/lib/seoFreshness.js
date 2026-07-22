@@ -71,7 +71,8 @@ export const seoFreshness = {
   avignon: '2026-07-17',
   toulouse: '2026-07-17',
   perpignan: '2026-07-21',
-  burdeos: '2026-07-20'
+  burdeos: '2026-07-20',
+  casablanca: '2026-07-22'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
@@ -123,6 +124,22 @@ export const fairFreshness = {
   'grand-salon-habitat-bordeaux': '2026-07-20',
   'salon-vins-vignerons-independants-bordeaux': '2026-07-20',
   'cycleau-nouvelle-aquitaine-bordeaux': '2026-07-20',
+  // Casablanca (Marruecos) — clúster de 15 ferias satélite, 2026-07-22.
+  'logismed-casablanca': '2026-07-22',
+  'morocco-food-expo-casablanca': '2026-07-22',
+  'siema-casablanca': '2026-07-22',
+  'siab-casablanca': '2026-07-22',
+  'elec-expo-casablanca': '2026-07-22',
+  'ener-event-casablanca': '2026-07-22',
+  'plast-expo-casablanca': '2026-07-22',
+  'pack-expo-casablanca': '2026-07-22',
+  'sistep-casablanca': '2026-07-22',
+  'imme-casablanca': '2026-07-22',
+  'morocco-medical-expo-casablanca': '2026-07-22',
+  'morocco-textile-expo-casablanca': '2026-07-22',
+  'stitch-tex-casablanca': '2026-07-22',
+  'maroc-in-mode-mim-casablanca': '2026-07-22',
+  'ctw-china-trade-week-casablanca': '2026-07-22',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'medfel-perpignan': '2026-07-21',
   'viv-habitat-perpignan': '2026-07-21',

@@ -38,6 +38,8 @@ export const CITY_LATLON = {
   'Ceuta': [35.8894, -5.3213],
   'Melilla': [35.2923, -2.9381],
   'Tánger': [35.7595, -5.8340],
+  // Marruecos atlántico: el mapa se extiende al sur para incluir la capital económica.
+  'Casablanca': [33.5731, -7.5898],
   'Andorra la Vella': [42.5063, 1.5218],
   'Escaldes-Engordany': [42.5100, 1.5390],
   'Encamp': [42.5361, 1.5836],
@@ -261,6 +263,7 @@ export const CITY_PILLAR = {
   'Ceuta': 'ceuta',
   'Melilla': 'melilla',
   'Tánger': 'tanger',
+  'Casablanca': 'casablanca',
   // Andorra: el hub es el país entero; las cinco parroquias con feria cuelgan del mismo pilar.
   'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
   'Ordino': 'andorra', 'Soldeu': 'andorra',

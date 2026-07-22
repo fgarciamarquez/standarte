@@ -302,9 +302,9 @@
 
     const gratGroup = el('g', {});
     for (let gx = -300; gx < 1270; gx += 120) {
-      gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: gx, y1: -150, x2: gx, y2: 900 }));
+      gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: gx, y1: -150, x2: gx, y2: 1030 }));
     }
-    for (let gy = -120; gy < 920; gy += 110) {
+    for (let gy = -120; gy < 1030; gy += 110) {
       gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: -360, y1: gy, x2: 1270, y2: gy }));
     }
     svgEl.appendChild(gratGroup);
@@ -323,10 +323,10 @@
     svgEl.appendChild(el('path', { class: 'pm-coast pm-island', d: 'M 942,369 L 950,361 L 965,355 L 980,358 L 976,367 L 961,371 L 949,373 Z' }));
     // Costa norteafricana (Estrecho + Mediterráneo marroquí): landmass para situar sobre
     // tierra los puntos de Ceuta (≈294,737) y Melilla (≈462,792), separada de la Península
-    // por el Estrecho de Gibraltar. La costa se extiende al oeste (Cabo Espartel/Tánger,
-    // ≈260,747) para acoger próximas ferias en Tánger, y desaparece por el borde inferior
-    // del mapa (misma proyección equirectangular).
-    svgEl.appendChild(el('path', { class: 'pm-coast pm-africa', d: 'M 236,980 L 246,760 L 252,746 L 262,747 L 286,734 L 294,736 L 302,752 L 340,772 L 372,784 L 393,790 L 425,800 L 452,793 L 462,790 L 498,806 L 540,814 L 592,826 L 640,980 Z' }));
+    // por el Estrecho de Gibraltar. Además de la costa mediterránea (W→E), el contorno baja
+    // por la fachada ATLÁNTICA de Marruecos hasta envolver Casablanca (≈135,950), que queda
+    // así dentro de la zona territorial. Misma proyección equirectangular.
+    svgEl.appendChild(el('path', { class: 'pm-coast pm-africa', d: 'M 246,760 L 252,745 L 262,745 L 286,728 L 294,728 L 302,748 L 340,772 L 372,784 L 393,790 L 425,800 L 452,793 L 462,790 L 498,806 L 540,814 L 592,826 L 640,980 L 320,1010 L 110,975 L 130,880 L 185,800 Z' }));
 
     // Insets (Canarias, Madeira): traslación artificial de cada archipiélago a un
     // recuadro (circunferencia de borde de puntos + islas simples) para que la
@@ -916,7 +916,7 @@
   <svg
     class="pm-map"
     bind:this={svgEl}
-    viewBox="-360 -150 1630 1050"
+    viewBox="-360 -150 1630 1180"
     preserveAspectRatio="xMidYMid meet"
     role="img"
     aria-label="Standarte network map: cities, activities and sectors in Spain and Portugal"

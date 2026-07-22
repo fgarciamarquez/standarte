@@ -2651,5 +2651,20 @@ export const fairsData = [
     "slug": "cycleau-nouvelle-aquitaine-bordeaux",
     "city": "Burdeos",
     "sector": "Agua e Infraestructuras"
-  }
+  },
+  { "name": "Logismed", "country": "ma", "slug": "logismed-casablanca", "city": "Casablanca", "sector": "Logística y Supply Chain" },
+  { "name": "Morocco Food Expo", "country": "ma", "slug": "morocco-food-expo-casablanca", "city": "Casablanca", "sector": "Alimentación" },
+  { "name": "Morocco SIEMA Expo", "country": "ma", "slug": "siema-casablanca", "city": "Casablanca", "sector": "Procesado y Maquinaria Alimentaria" },
+  { "name": "SIAB Expo Maroc", "country": "ma", "slug": "siab-casablanca", "city": "Casablanca", "sector": "Alimentación y Bebidas" },
+  { "name": "Elec Expo", "country": "ma", "slug": "elec-expo-casablanca", "city": "Casablanca", "sector": "Electricidad e Industria" },
+  { "name": "Ener Event", "country": "ma", "slug": "ener-event-casablanca", "city": "Casablanca", "sector": "Energías Renovables" },
+  { "name": "Plast Expo", "country": "ma", "slug": "plast-expo-casablanca", "city": "Casablanca", "sector": "Plásticos" },
+  { "name": "Pack Expo Morocco", "country": "ma", "slug": "pack-expo-casablanca", "city": "Casablanca", "sector": "Packaging" },
+  { "name": "SISTEP Industriel", "country": "ma", "slug": "sistep-casablanca", "city": "Casablanca", "sector": "Industria y Subcontratación" },
+  { "name": "IMME", "country": "ma", "slug": "imme-casablanca", "city": "Casablanca", "sector": "Metalurgia y Mecánica" },
+  { "name": "Morocco Medical Expo", "country": "ma", "slug": "morocco-medical-expo-casablanca", "city": "Casablanca", "sector": "Sanidad" },
+  { "name": "Morocco Textile Expo", "country": "ma", "slug": "morocco-textile-expo-casablanca", "city": "Casablanca", "sector": "Textil" },
+  { "name": "Morocco Stitch & Tex", "country": "ma", "slug": "stitch-tex-casablanca", "city": "Casablanca", "sector": "Maquinaria Textil" },
+  { "name": "Maroc in Mode (MIM)", "country": "ma", "slug": "maroc-in-mode-mim-casablanca", "city": "Casablanca", "sector": "Moda" },
+  { "name": "China Trade Week Morocco (CTW)", "country": "ma", "slug": "ctw-china-trade-week-casablanca", "city": "Casablanca", "sector": "Comercio Internacional" }
 ];
