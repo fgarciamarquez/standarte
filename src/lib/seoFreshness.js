@@ -73,7 +73,8 @@ export const seoFreshness = {
   perpignan: '2026-07-21',
   burdeos: '2026-07-20',
   casablanca: '2026-07-22',
-  rabat: '2026-07-22'
+  rabat: '2026-07-22',
+  lyon: '2026-07-22'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
@@ -146,6 +147,13 @@ export const fairFreshness = {
   'visa-for-music-rabat': '2026-07-22',
   'forum-etudiant-rabat': '2026-07-22',
   'cimqusef-rabat': '2026-07-22',
+  'sirha-lyon': '2026-07-22',
+  'global-industrie-lyon': '2026-07-22',
+  'pollutec-lyon': '2026-07-22',
+  'piscine-global-lyon': '2026-07-22',
+  'preventica-lyon': '2026-07-22',
+  'prod-pack-lyon': '2026-07-22',
+  'bepositive-lyon': '2026-07-22',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'medfel-perpignan': '2026-07-21',
   'viv-habitat-perpignan': '2026-07-21',

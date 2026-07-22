@@ -302,7 +302,7 @@
 
     const gratGroup = el('g', {});
     for (let gx = -300; gx < 1270; gx += 120) {
-      gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: gx, y1: -150, x2: gx, y2: 975 }));
+      gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: gx, y1: -210, x2: gx, y2: 975 }));
     }
     for (let gy = -120; gy < 975; gy += 110) {
       gratGroup.appendChild(el('line', { class: 'pm-graticule', x1: -360, y1: gy, x2: 1270, y2: gy }));
@@ -913,7 +913,7 @@
   <svg
     class="pm-map"
     bind:this={svgEl}
-    viewBox="-360 -150 1630 1125"
+    viewBox="-360 -210 1630 1185"
     preserveAspectRatio="xMidYMid meet"
     role="img"
     aria-label="Standarte network map: cities, activities and sectors in Spain and Portugal"
@@ -1114,7 +1114,7 @@
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 1630 / 1125;
+    aspect-ratio: 1630 / 1185;
   }
 
   /* Ventana conversacional de Pat sobre el gráfico: cuenta al cliente qué ve. */

@@ -49,6 +49,8 @@ export const CITY_LATLON = {
   'Teruel': [40.3456, -1.1065],
   'Calamocha': [40.9186, -1.2969],
   'Alcañiz': [41.0498, -0.1339],
+  // Ródano arriba desde Aviñón: el mapa se extiende al norte para incluir Lyon.
+  'Lyon': [45.7640, 4.8357],
   // Sur de Francia (arco mediterráneo): el mapa se extiende para incluirlas.
   'Marsella': [43.2965, 5.3698],
   'Cannes': [43.5528, 7.0174],
@@ -116,7 +118,7 @@ export const CITY_LATLON = {
 // ciudad extranjera nueva para que el guardián de build no la reclame.
 // (Las ciudades canarias NO van aquí: tienen su propio inset, ver más abajo.)
 export const NON_MAP_CITIES = [
-  'Düsseldorf', 'España', 'Europa', 'Itinerante', 'Lyon',
+  'Düsseldorf', 'España', 'Europa', 'Itinerante',
   'Múnich', 'Núremberg', 'París', 'Portugal', 'Stuttgart'
 ];
 
@@ -271,6 +273,8 @@ export const CITY_PILLAR = {
   'Ordino': 'andorra', 'Soldeu': 'andorra',
   // Teruel: el hub es la provincia; la capital y los municipios feriales cuelgan del mismo pilar.
   'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
+  // Ródano arriba desde Aviñón: hub propio en el mapa extendido.
+  'Lyon': 'lyon',
   // Sur de Francia (arco mediterráneo): hubs propios en el mapa extendido.
   'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon',
   'Toulouse': 'toulouse', 'Perpiñán': 'perpignan',
@@ -300,5 +304,7 @@ export const UNLINKED_CITIES = [
 // de Nueva Aquitania. Tras Cap de Creus (903.5,145.4) se inserta la costa francesa W→E
 // hasta Niza y el interior E→W; sobre Toulouse la costa asciende al NO para envolver
 // Burdeos (≈628.6,-86.3) por el estuario de la Gironda y baja por la costa de las Landas
-// hasta el arranque vasco (567.3,82.8). Verificado con point-in-polygon.
-export const IBERIA_PATH = "M 15.5,92 L 38.8,170.2 L 44.4,202.4 L 52.9,253 L 52.9,299.9 L 44.4,345 L 7,395.6 L 2.1,478.4 L 28.2,501.4 L 44.4,547.4 L 37.4,633 L 146.6,621 L 172.7,618.2 L 225.5,678 L 274.2,726.8 L 358,671.6 L 495.4,662.4 L 600.5,579.6 L 635.7,515.2 L 647,409.4 L 729.4,292.6 L 757.6,257.6 L 821,234.6 L 903.5,145.4 L 912.7,50.6 L 990.2,50.6 L 1048,57 L 1103,73.6 L 1164.3,32.2 L 1198.1,13.8 L 1191,-41.4 L 1007.8,-59.8 L 764.7,-41.4 L 655,-120 L 560,-70 L 560,20 L 567.3,82.8 L 530,53.4 L 456.7,47.8 L 401.7,39.6 L 270.6,30.4 L 89.5,38.6 L 15.5,92 Z";
+// hasta el arranque vasco (567.3,82.8). Entre Niza y Burdeos el interior sube en un pico
+// hacia el norte (valle del Ródano) para envolver Lyon (≈1010.3,-171.5). Verificado con
+// point-in-polygon.
+export const IBERIA_PATH = "M 15.5,92 L 38.8,170.2 L 44.4,202.4 L 52.9,253 L 52.9,299.9 L 44.4,345 L 7,395.6 L 2.1,478.4 L 28.2,501.4 L 44.4,547.4 L 37.4,633 L 146.6,621 L 172.7,618.2 L 225.5,678 L 274.2,726.8 L 358,671.6 L 495.4,662.4 L 600.5,579.6 L 635.7,515.2 L 647,409.4 L 729.4,292.6 L 757.6,257.6 L 821,234.6 L 903.5,145.4 L 912.7,50.6 L 990.2,50.6 L 1048,57 L 1103,73.6 L 1164.3,32.2 L 1198.1,13.8 L 1191,-41.4 L 1090,-60 L 1010,-195 L 930,-60 L 764.7,-41.4 L 655,-120 L 560,-70 L 560,20 L 567.3,82.8 L 530,53.4 L 456.7,47.8 L 401.7,39.6 L 270.6,30.4 L 89.5,38.6 L 15.5,92 Z";

@@ -665,11 +665,53 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "SIRHA",
+    "country": "fr",
+    "slug": "sirha-lyon",
+    "city": "Lyon",
+    "sector": "Gastronomía y Hostelería"
+  },
+  {
+    "name": "Global Industrie",
+    "country": "fr",
+    "slug": "global-industrie-lyon",
+    "city": "Lyon",
+    "sector": "Industria y Manufactura"
+  },
+  {
     "name": "Pollutec Lyon",
     "country": "fr",
     "slug": "pollutec-lyon",
     "city": "Lyon",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Medioambiente y Tecnologías Limpias"
+  },
+  {
+    "name": "Piscine Global Europe",
+    "country": "fr",
+    "slug": "piscine-global-lyon",
+    "city": "Lyon",
+    "sector": "Piscinas, Spa y Wellness"
+  },
+  {
+    "name": "Préventica Lyon",
+    "country": "fr",
+    "slug": "preventica-lyon",
+    "city": "Lyon",
+    "sector": "Prevención de Riesgos Laborales"
+  },
+  {
+    "name": "Prod&Pack",
+    "country": "fr",
+    "slug": "prod-pack-lyon",
+    "city": "Lyon",
+    "sector": "Envasado y Producción Agroalimentaria"
+  },
+  {
+    "name": "BEPOSITIVE",
+    "country": "fr",
+    "slug": "bepositive-lyon",
+    "city": "Lyon",
+    "sector": "Transición Energética y Construcción"
   },
   {
     "name": "bauma Munich",
