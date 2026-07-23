@@ -1000,7 +1000,7 @@
   <div class="hero-subpage" class:on-hero-photo={coverKey}>
     <div class="hero-contents feria-hero-contents">
       <h1>{strings.heroTitle(fairDisplayName)}{heroExpStr}</h1>
-      <AiSourceButtons {lang} variant="hero" showLabel={false} canReactivate {patVisible} on:reactivate={reopenAdvisor} />
+      <AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />
     </div>
   </div>
 </header>

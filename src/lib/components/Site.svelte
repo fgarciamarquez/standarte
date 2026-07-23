@@ -1827,7 +1827,7 @@
         <h1>{h1Text}</h1>
         <p class="hero-lead">{seoContent.introText}</p>
       </div>
-      {#if animatedHero}<AiSourceButtons {lang} variant="hero" showLabel={false} canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
+      {#if animatedHero}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
       {#if section === 'proyecto_auditado'}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
     </div>
   {/if}
@@ -2233,8 +2233,10 @@
           <!-- Artículo principal de redacción profesional -->
           <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
           <article class="seo-article" on:click={handleSeoBodyClick}>
-            {#if section === 'proyecto_auditado'}
-              <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
+            <!-- Sello del Sistema de Proyecto Auditado: en TODAS las páginas de ciudad
+                 (igual que en las de feria) y en la propia página de la garantía. -->
+            {#if isCityPage || section === 'proyecto_auditado'}
+              <a class="guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
                 <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
               </a>
             {/if}
