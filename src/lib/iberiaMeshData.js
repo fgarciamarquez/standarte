@@ -52,6 +52,8 @@ export const CITY_LATLON = {
   // Ródano arriba desde Aviñón: el mapa se extiende al norte para incluir Lyon.
   'Lyon': [45.7640, 4.8357],
   // Sur de Francia (arco mediterráneo): el mapa se extiende para incluirlas.
+  'Montpellier': [43.6108, 3.8767],
+  'Niza': [43.7102, 7.2620],
   'Marsella': [43.2965, 5.3698],
   'Cannes': [43.5528, 7.0174],
   'Aviñón': [43.9493, 4.8055],
@@ -276,6 +278,7 @@ export const CITY_PILLAR = {
   // Ródano arriba desde Aviñón: hub propio en el mapa extendido.
   'Lyon': 'lyon',
   // Sur de Francia (arco mediterráneo): hubs propios en el mapa extendido.
+  'Montpellier': 'montpellier', 'Niza': 'niza',
   'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon',
   'Toulouse': 'toulouse', 'Perpiñán': 'perpignan',
   // Suroeste atlántico francés (Nueva Aquitania).

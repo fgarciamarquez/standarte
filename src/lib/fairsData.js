@@ -714,6 +714,83 @@ export const fairsData = [
     "sector": "Transición Energética y Construcción"
   },
   {
+    "name": "SITEVI",
+    "country": "fr",
+    "slug": "sitevi-montpellier",
+    "city": "Montpellier",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "Millésime Bio",
+    "country": "fr",
+    "slug": "millesime-bio-montpellier",
+    "city": "Montpellier",
+    "sector": "Enología y Vinos"
+  },
+  {
+    "name": "SETT",
+    "country": "fr",
+    "slug": "sett-montpellier",
+    "city": "Montpellier",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "EnerGaïa",
+    "country": "fr",
+    "slug": "energaia-montpellier",
+    "city": "Montpellier",
+    "sector": "Energías Renovables"
+  },
+  {
+    "name": "SIPRHO",
+    "country": "fr",
+    "slug": "siprho-montpellier",
+    "city": "Montpellier",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Antibody Industrial Symposium",
+    "country": "fr",
+    "slug": "ais-montpellier",
+    "city": "Montpellier",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "AGECOTEL",
+    "country": "fr",
+    "slug": "agecotel-nice",
+    "city": "Niza",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Nice Boating Tomorrow",
+    "country": "fr",
+    "slug": "nice-boating-tomorrow",
+    "city": "Niza",
+    "sector": "Náutica Sostenible"
+  },
+  {
+    "name": "IBT Côte d'Azur",
+    "country": "fr",
+    "slug": "ibt-cote-azur",
+    "city": "Niza",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Les Entreprenariales",
+    "country": "fr",
+    "slug": "entreprenariales-nice",
+    "city": "Niza",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "SOLUCOP",
+    "country": "fr",
+    "slug": "solucop-nice",
+    "city": "Niza",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
     "name": "bauma Munich",
     "country": "de",
     "slug": "bauma-munich",
