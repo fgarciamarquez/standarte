@@ -1,0 +1,20 @@
+---
+tipo: ciudad
+en_mapa: true
+n_ferias: 8
+lat: 41.65
+lon: -0.88
+---
+# Zaragoza
+
+Ciudad dibujada en el mapa de Pat.
+
+## Ferias aquí
+- [[Enoforum]]
+- [[Enomaq]]
+- [[Figan]]
+- [[Fima Zaragoza]]
+- [[Oleomaq]]
+- [[Salón de los Vinos de Aragón]]
+- [[Smopyc Zaragoza]]
+- [[Tecnovid]]

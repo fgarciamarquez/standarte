@@ -1,0 +1,55 @@
+name: Sync Obsidian (mapa de Pat)
+
+# Mantiene la bóveda de Obsidian (obsidian/pat-map) sincronizada con los datos de
+# ferias del mapa de Pat. Se dispara automáticamente cuando cambian los datos
+# fuente; regenera el vault y, si hay cambios, los commitea de vuelta al repo.
+# Obsidian, en el lado del usuario, se mantiene al día tirando del repo (plugin
+# Obsidian Git / auto-pull).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/lib/fairsData.js'
+      - 'src/lib/fairTags.js'
+      - 'src/lib/iberiaMeshData.js'
+      - 'scripts/export_obsidian_mesh.mjs'
+  workflow_dispatch:
+
+# Necesario para que el bot pueda commitear el vault regenerado.
+permissions:
+  contents: write
+
+# Evita solapes si llegan varios push seguidos.
+concurrency:
+  group: sync-obsidian
+  cancel-in-progress: true
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # El exportador solo usa módulos nativos de Node + los datos (ESM puro sin
+      # dependencias externas), así que no hace falta `npm ci`.
+      - name: Regenerar la bóveda de Obsidian
+        run: node scripts/export_obsidian_mesh.mjs --out obsidian/pat-map
+
+      - name: Commitear si hay cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add obsidian/pat-map
+          if git diff --cached --quiet; then
+            echo "Bóveda sin cambios; nada que commitear."
+          else
+            git commit -m "chore(obsidian): sincroniza mapa de Pat [skip ci]"
+            git push
+          fi
