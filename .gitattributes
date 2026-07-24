@@ -1,0 +1,4 @@
+# La bóveda de Obsidian (autogenerada) se fija a saltos de línea LF para evitar
+# que git la marque como modificada por conversiones CRLF en Windows, lo que
+# rompía el auto-pull del complemento Git.
+obsidian/pat-map/** text eol=lf
