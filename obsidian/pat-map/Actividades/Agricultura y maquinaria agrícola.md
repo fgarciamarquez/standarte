@@ -2,7 +2,7 @@
 tipo: actividad
 clave: agricultura-maquinaria
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 35
+n_ferias: 36
 ---
 # Agricultura y maquinaria agrícola
 
@@ -43,4 +43,5 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[MEDFEL]]
 - [[SITEVI]]
 - [[Salon de l'Agriculture Nouvelle-Aquitaine]]
+- [[Sommet de l'Élevage]]
 - [[Vinitech-Sifel]]

@@ -2,7 +2,7 @@
 tipo: actividad
 clave: ganaderia
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 27
+n_ferias: 28
 ---
 # Ganadería
 
@@ -35,4 +35,5 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[SALAMAQ]]
 - [[Salon de l'Agriculture Nouvelle-Aquitaine]]
 - [[Semana Verde de Galicia]]
+- [[Sommet de l'Élevage]]
 - [[aviFORUM]]

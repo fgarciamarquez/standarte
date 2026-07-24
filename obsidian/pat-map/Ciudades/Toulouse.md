@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 6
+n_ferias: 7
 lat: 43.6045
 lon: 1.4442
 ---
@@ -15,4 +15,5 @@ Ciudad dibujada en el mapa de Pat.
 - [[CFIA Toulouse]]
 - [[Foire Internationale de Toulouse]]
 - [[SEPEM Industries Toulouse]]
+- [[SMAHRT]]
 - [[Salon SIANE]]

@@ -2,13 +2,14 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 34
+n_ferias: 36
 ---
 # Maquinaria industrial
 
 Actividad del sector [[Industria y Logística]].
 
 ## Ferias
+- [[ALINA]]
 - [[AMB Stuttgart]]
 - [[AgroAlcañiz]]
 - [[BIEMH Bilbao]]
@@ -35,6 +36,7 @@ Actividad del sector [[Industria y Logística]].
 - [[Plast Expo]]
 - [[Prod&Pack]]
 - [[Pumps & Valves Bilbao]]
+- [[SEPEM Industries Sud-Est]]
 - [[SEPEM Industries Toulouse]]
 - [[SISTEP Industriel]]
 - [[SPS Nuremberg]]

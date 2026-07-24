@@ -2,7 +2,7 @@
 tipo: actividad
 clave: turismo
 sector: "Turismo y Hostelería"
-n_ferias: 22
+n_ferias: 24
 ---
 # Turismo
 
@@ -23,11 +23,13 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Fitur Madrid]]
 - [[INTUR]]
 - [[Madrid Fusión]]
+- [[Mountain Planet]]
 - [[NAVARTUR]]
 - [[Piscina & Wellness Barcelona]]
 - [[Piscine Global Europe]]
 - [[SETT]]
 - [[Salon Tourisme & Loisirs]]
 - [[Sun&Blue Congress]]
+- [[TFWA World Exhibition]]
 - [[Termatalia]]
 - [[Turexpo Galicia]]

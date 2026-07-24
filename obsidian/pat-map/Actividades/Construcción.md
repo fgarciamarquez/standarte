@@ -2,7 +2,7 @@
 tipo: actividad
 clave: construccion
 sector: "Construcción e Infraestructuras"
-n_ferias: 26
+n_ferias: 28
 ---
 # Construcción
 
@@ -20,6 +20,8 @@ Actividad del sector [[Construcción e Infraestructuras]].
 - [[FECONS]]
 - [[Grand Salon Habitat]]
 - [[IBT Côte d'Azur]]
+- [[MIPIM]]
+- [[Mountain Planet]]
 - [[Municipàlia Lleida]]
 - [[Piscimad Madrid]]
 - [[Piscina & Wellness Barcelona]]

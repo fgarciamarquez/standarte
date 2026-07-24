@@ -2,7 +2,7 @@
 tipo: actividad
 clave: gastronomia-hosteleria
 sector: "Turismo y Hostelería"
-n_ferias: 35
+n_ferias: 36
 ---
 # Gastronomía y hostelería
 
@@ -39,6 +39,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[SIAB Expo Maroc]]
 - [[SIPRHO]]
 - [[SIRHA]]
+- [[SMAHRT]]
 - [[Salon du Mariage]]
 - [[Salón Gourmets Madrid]]
 - [[Sirha Méditerranée]]

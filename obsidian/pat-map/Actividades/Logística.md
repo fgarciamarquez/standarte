@@ -2,7 +2,7 @@
 tipo: actividad
 clave: logistica
 sector: "Industria y Logística"
-n_ferias: 7
+n_ferias: 8
 ---
 # Logística
 
@@ -14,5 +14,6 @@ Actividad del sector [[Industria y Logística]].
 - [[LogiMAT Stuttgart]]
 - [[Logismed]]
 - [[MEDFEL]]
+- [[SEPEM Industries Sud-Est]]
 - [[SIL Barcelona]]
 - [[Salón Atlántico de Logística y Transporte]]

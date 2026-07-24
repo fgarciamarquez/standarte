@@ -2,13 +2,14 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 42
+n_ferias: 43
 ---
 # Alimentación
 
 Actividad del sector [[Agroalimentario y Naturaleza]].
 
 ## Ferias
+- [[ALINA]]
 - [[Alimentaria Barcelona]]
 - [[Arrels, Fira de Producte Local i Cuina de Menorca]]
 - [[BioCantabria]]

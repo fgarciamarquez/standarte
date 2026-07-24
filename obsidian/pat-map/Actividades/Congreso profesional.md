@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-profesional
 sector: "Multisectorial y Profesional"
-n_ferias: 48
+n_ferias: 53
 ---
 # Congreso profesional
 
@@ -45,15 +45,20 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[Logismed]]
 - [[MAPIC]]
 - [[MEDFEL]]
+- [[MIPIM]]
+- [[Mountain Planet]]
 - [[Navarra Jobs]]
 - [[Portugal Smart Cities Summit]]
+- [[Préventica Bordeaux]]
 - [[Préventica Lyon]]
 - [[RE+ Portugal]]
 - [[Reunión Nacional de Óptica (RNO)]]
+- [[SEPEM Industries Sud-Est]]
 - [[SIEL — Salon International de l'Édition et du Livre]]
 - [[Salón del Estudiante y Futuro Profesional]]
 - [[Smart City Expo World Congress Barcelona]]
 - [[Solutions CSE Marseille]]
+- [[Sommet de l'Élevage]]
 - [[Tanger Nexus]]
 - [[Visa For Music]]
 - [[Web Summit Lisboa]]
