@@ -4,6 +4,7 @@ slug: expomecanica-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true
+con_texto: false
 ---
 # ExpoMecânica
 

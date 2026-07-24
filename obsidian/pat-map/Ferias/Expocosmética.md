@@ -4,6 +4,7 @@ slug: expocosmetica-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true
+con_texto: false
 ---
 # Expocosmética
 

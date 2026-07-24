@@ -4,6 +4,7 @@ slug: empack-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true
+con_texto: false
 ---
 # Empack Porto
 

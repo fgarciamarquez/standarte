@@ -4,6 +4,7 @@ slug: itf-intertex-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true
+con_texto: false
 ---
 # ITF Intertex Portugal
 

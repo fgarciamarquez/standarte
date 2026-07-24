@@ -4,6 +4,7 @@ slug: baleart-mallorca
 pais: es
 ciudad: "Mallorca"
 en_mapa: true
+con_texto: false
 ---
 # Baleart
 

@@ -4,6 +4,7 @@ slug: nortrans-vigo
 pais: es
 ciudad: "Vigo"
 en_mapa: true
+con_texto: false
 ---
 # Nortrans
 

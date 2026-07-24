@@ -4,6 +4,7 @@ slug: decorhotel-batalha
 pais: pt
 ciudad: "Batalha"
 en_mapa: true
+con_texto: false
 ---
 # Decorhotel
 

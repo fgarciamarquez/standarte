@@ -4,6 +4,7 @@ slug: decor-hotel-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true
+con_texto: false
 ---
 # Decor Hotel
 

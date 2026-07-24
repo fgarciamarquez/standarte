@@ -13,6 +13,7 @@ on:
       - 'src/lib/fairsData.js'
       - 'src/lib/fairTags.js'
       - 'src/lib/iberiaMeshData.js'
+      - 'src/lib/server/fairSeoData.js'
       - 'scripts/export_obsidian_mesh.mjs'
   workflow_dispatch:
 

@@ -4,6 +4,7 @@ slug: palma-international-boat-show
 pais: es
 ciudad: "Mallorca"
 en_mapa: true
+con_texto: false
 ---
 # Palma International Boat Show
 

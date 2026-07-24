@@ -4,6 +4,7 @@ slug: palma-superyacht-village
 pais: es
 ciudad: "Mallorca"
 en_mapa: true
+con_texto: false
 ---
 # Palma Superyacht Village
 

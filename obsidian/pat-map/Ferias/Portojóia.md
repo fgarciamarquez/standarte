@@ -4,6 +4,7 @@ slug: portojoia-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true
+con_texto: false
 ---
 # Portojóia
 

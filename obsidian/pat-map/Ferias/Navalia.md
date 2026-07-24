@@ -4,6 +4,7 @@ slug: navalia-vigo
 pais: es
 ciudad: "Vigo"
 en_mapa: true
+con_texto: false
 ---
 # Navalia
 

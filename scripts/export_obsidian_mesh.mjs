@@ -27,6 +27,7 @@ import { fileURLToPath } from 'node:url';
 import { fairsData } from '../src/lib/fairsData.js';
 import { fairTags, tagFamilies, fairActivities } from '../src/lib/fairTags.js';
 import { CITY_POINTS, CITY_LATLON } from '../src/lib/iberiaMeshData.js';
+import { fairSeoData } from '../src/lib/server/fairSeoData.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -51,6 +52,24 @@ const tagLabel = (tag) => (fairTags[tag]?.label?.[LANG]) || fairTags[tag]?.label
 
 // Escapa comillas para valores YAML entrecomillados.
 const yamlStr = (s) => `"${String(s).replace(/"/g, '\\"')}"`;
+
+// Convierte el HTML de las descripciones (fairSeoData) a Markdown legible.
+// El contenido es sencillo (<p>, y ocasionalmente <strong>/<em>/<a>/<br>/listas).
+function htmlToMd(html) {
+  if (!html) return '';
+  let s = String(html);
+  s = s.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gis, '[$2]($1)');
+  s = s.replace(/<\/?(strong|b)>/gi, '**').replace(/<\/?(em|i)>/gi, '*');
+  s = s.replace(/<li[^>]*>/gi, '- ').replace(/<\/li>/gi, '\n');
+  s = s.replace(/<\/?(ul|ol)[^>]*>/gi, '\n');
+  s = s.replace(/<br\s*\/?>/gi, '\n');
+  s = s.replace(/<h[1-6][^>]*>(.*?)<\/h[1-6]>/gis, '\n\n**$1**\n\n');
+  s = s.replace(/<\/p>/gi, '\n\n').replace(/<p[^>]*>/gi, '');
+  s = s.replace(/<[^>]+>/g, '');                 // cualquier otra etiqueta
+  s = s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+       .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, ' ');
+  return s.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+}
 
 function writeNote(sub, title, frontmatter, body) {
   const fm = Object.entries(frontmatter)
@@ -90,7 +109,7 @@ for (const sub of SUBS) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-let nSec = 0, nAct = 0, nFer = 0, nCiu = 0;
+let nSec = 0, nAct = 0, nFer = 0, nCiu = 0, nTxt = 0;
 
 // ── Sectores ────────────────────────────────────────────────────────────────
 for (const fam of Object.keys(tagFamilies)) {
@@ -124,17 +143,21 @@ for (const fair of fairsData) {
   const tags = (fairActivities[fair.slug] || []).map(tagLabel).sort();
   const fams = [...familiesByFair[fair.slug]].map(famLabel).sort();
   const onMap = Object.prototype.hasOwnProperty.call(CITY_POINTS, fair.city);
+  const desc = htmlToMd(fairSeoData[fair.slug]?.[LANG] || fairSeoData[fair.slug]?.es || '');
+  if (desc) nTxt++;
   writeNote('Ferias', fairTitle(fair), {
     tipo: 'feria',
     slug: fair.slug,
     pais: fair.country || '',
     ciudad: yamlStr(fair.city),
-    en_mapa: onMap
+    en_mapa: onMap,
+    con_texto: !!desc
   }, `# ${safe(fair.name)}\n\n` +
      `- Ciudad: ${link(fair.city)}\n` +
      `- Sector(es): ${fams.map(link).join(', ') || '—'}\n\n` +
      `## Actividades\n` +
-     (tags.length ? tags.map((t) => `- ${link(t)}`).join('\n') : '_(sin actividades)_'));
+     (tags.length ? tags.map((t) => `- ${link(t)}`).join('\n') : '_(sin actividades)_') +
+     (desc ? `\n\n## Descripción\n${desc}` : ''));
   nFer++;
 }
 
@@ -167,4 +190,4 @@ const idx = `---\ntipo: indice\n---\n# Mapa de Pat — Malla de relaciones\n\n` 
 fs.writeFileSync(path.join(OUT, 'Mapa de Pat.md'), idx, 'utf8');
 
 console.log(`✔ Vault de Obsidian generado en: ${OUT}`);
-console.log(`  Sectores: ${nSec} | Actividades: ${nAct} | Ferias: ${nFer} | Ciudades: ${nCiu} | idioma: ${LANG}`);
+console.log(`  Sectores: ${nSec} | Actividades: ${nAct} | Ferias: ${nFer} (con texto: ${nTxt}) | Ciudades: ${nCiu} | idioma: ${LANG}`);
