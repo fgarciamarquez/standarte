@@ -6,6 +6,8 @@
   import FlagIcon from '$lib/components/FlagIcon.svelte';
   import CitySidebar from '$lib/components/CitySidebar.svelte';
   import SiteFooter from '$lib/components/SiteFooter.svelte';
+  import AiSourceButtons from '$lib/components/AiSourceButtons.svelte';
+  import { advisorDismissed } from '$lib/stores/advisor.js';
 
 
 
@@ -14,6 +16,17 @@
   let menuOpen = false;
   let isScrolled = false;
   let activeFilter = 'all';
+
+  // ── Asesor de Pat (WelcomeAdvisor): carga diferida, igual que en Precios/Site ──
+  let showWelcomeAdvisor = false;
+  let AdvisorComponent = null; // se rellena con el import dinámico
+
+  // Reactiva a Pat desde el botón "Expansión" del hero (AiSourceButtons → reopenAdvisor).
+  function reopenAdvisor() {
+    advisorDismissed.reactivate();
+    if (AdvisorComponent) { showWelcomeAdvisor = true; }
+    else { import('$lib/components/WelcomeAdvisor.svelte').then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; }).catch(() => {}); }
+  }
 
   // Obtenemos los textos traducidos
   $: currentCopy = data?.copy || copy[lang] || copy.es;
@@ -358,8 +371,15 @@
         {(i18n[lang] || i18n.es).lead}
       </p>
     </div>
+    <AiSourceButtons {lang} variant="hero" canReactivate patVisible={showWelcomeAdvisor && !!AdvisorComponent} on:reactivate={reopenAdvisor} />
   </div>
 </header>
+
+{#if showWelcomeAdvisor && AdvisorComponent}
+  <svelte:component this={AdvisorComponent} {lang} containerBg="#f7f6f1"
+    on:openPrivacy={() => (typeof window !== 'undefined' && window.open('/privacidad', '_blank', 'noopener'))}
+    on:dismiss={() => (showWelcomeAdvisor = false)} />
+{/if}
 
 <main class="news-main">
 

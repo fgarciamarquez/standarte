@@ -57,7 +57,7 @@
   <section class="ai-geo ai-geo-{variant}" aria-label={expansionLabel}>
     <div class="ai-geo-row">
       <button type="button" class="ai-geo-btn ai-geo-reactivate" in:pushIn on:click={() => dispatch('reactivate')}>
-        <span class="ai-geo-spark" aria-hidden="true">↗</span>{expansionLabel}
+        {expansionLabel}
       </button>
     </div>
   </section>
@@ -99,15 +99,19 @@
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, opacity 0.15s ease;
   }
   .ai-geo-band .ai-geo-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    padding: 15px 30px;
+    font-size: 1.15rem;
   }
   .ai-geo-hero .ai-geo-btn {
-    padding: 7px 15px;
-    font-size: 0.78rem;
+    padding: 12px 26px;
+    font-size: 1.05rem;
   }
 
-  .ai-geo-spark { font-size: 0.85em; opacity: 0.85; }
+  /* En móvil, letra algo más pequeña para que el texto quepa en una sola línea. */
+  @media (max-width: 480px) {
+    .ai-geo-hero .ai-geo-btn { font-size: 0.92rem; padding: 11px 20px; }
+    .ai-geo-band .ai-geo-btn { font-size: 1rem; padding: 13px 24px; }
+  }
 
   /* Botón "Expansión": reactiva el panel de Pat. Píldora dorada sólida, en MAYÚSCULAS;
      hereda el tamaño (padding/font-size) de la variante actual (band o hero). */

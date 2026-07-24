@@ -715,6 +715,22 @@
   $: venueText = venue ? ((venueLine[lang] || venueLine.es)(venue, localizedCity)) : null;
   // Actividades (etiquetas) de esta feria, para los chips de color del aside.
   $: fairActivityTags = activitiesForFair(fair.slug);
+  // Ferias de la familia "Vino y enología" (tags "vino"/"equipamiento-vino"): muestran
+  // el vídeo de presentación de stands de vino bajo la foto de caso de éxito.
+  $: isWineFair = fairActivityTags.some((t) => fairTags[t] && fairTags[t].family === 'enologia');
+  const wineVideoTitle = {
+    es: 'Stands de verano especiales para el sector del vino',
+    en: 'Special summer stands for the wine sector',
+    de: 'Spezielle Sommerstände für die Weinbranche',
+    pt: 'Stands de verão especiais para o setor do vinho',
+    fr: 'Stands d\'été spéciaux pour le secteur du vin',
+    it: 'Stand estivi speciali per il settore vitivinicolo',
+    nl: 'Speciale zomerstands voor de wijnsector',
+    zh: '专为葡萄酒行业打造的夏季特别展台',
+    hi: 'वाइन क्षेत्र के लिए विशेष ग्रीष्मकालीन स्टैंड',
+    ko: '와인 업계를 위한 특별 여름 부스',
+    ja: 'ワイン業界向け特別サマースタンド'
+  };
 
   // --- Pat contextual: familia (sector) de esta feria a partir de su primera etiqueta.
   // El CTA lleva a la home con "#pat=<familia>", que abre a Pat ya en ese sector.
@@ -1093,6 +1109,15 @@
             <figcaption>{casoEjemplo[lang] || casoEjemplo.es}</figcaption>
           </figure>
         {/if}
+        {#if isWineFair}
+          <section class="fair-wine-video">
+            <h2>{wineVideoTitle[lang] || wineVideoTitle.es}</h2>
+            <!-- svelte-ignore a11y_media_has_caption -->
+            <video controls playsinline preload="metadata" poster="/img/video_standarte_presentacion_vinos_poster.jpg">
+              <source src="/img/video_standarte_presentacion_vinos.mp4" type="video/mp4" />
+            </video>
+          </section>
+        {/if}
         {#if venueText}
           <p class="feria-venue">{venueText}</p>
         {/if}
@@ -1309,6 +1334,19 @@
     font-weight: 700;
     white-space: nowrap;
     color: royalblue;
+  }
+  /* Vídeo de presentación de stands de vino (solo ferias de Vino y enología). */
+  .fair-wine-video {
+    margin: 1.7rem 0;
+  }
+  .fair-wine-video h2 {
+    margin-bottom: 0.85rem;
+  }
+  .fair-wine-video video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
   }
   /* Párrafos del bloque único (inyectados con @html, fuera del scope de Svelte). */
   .fair-unique :global(p) {
