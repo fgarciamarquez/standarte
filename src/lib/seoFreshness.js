@@ -67,16 +67,18 @@ export const seoFreshness = {
   andorra: '2026-07-15',
   teruel: '2026-07-16',
   marsella: '2026-07-18',
-  cannes: '2026-07-17',
+  cannes: '2026-07-24',
   avignon: '2026-07-17',
-  toulouse: '2026-07-17',
+  toulouse: '2026-07-24',
   perpignan: '2026-07-21',
-  burdeos: '2026-07-20',
+  burdeos: '2026-07-24',
   casablanca: '2026-07-22',
   rabat: '2026-07-22',
   lyon: '2026-07-22',
   montpellier: '2026-07-23',
-  niza: '2026-07-23'
+  niza: '2026-07-23',
+  grenoble: '2026-07-24',
+  clermont_ferrand: '2026-07-24'
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
@@ -167,6 +169,14 @@ export const fairFreshness = {
   'ibt-cote-azur': '2026-07-23',
   'entreprenariales-nice': '2026-07-23',
   'solucop-nice': '2026-07-23',
+  'mipim-cannes': '2026-07-24',
+  'tfwa-cannes': '2026-07-24',
+  'alina-bordeaux': '2026-07-24',
+  'preventica-bordeaux': '2026-07-24',
+  'smahrt-toulouse': '2026-07-24',
+  'mountain-planet-grenoble': '2026-07-24',
+  'sepem-industries-sud-est-grenoble': '2026-07-24',
+  'sommet-elevage-clermont-ferrand': '2026-07-24',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'medfel-perpignan': '2026-07-21',
   'viv-habitat-perpignan': '2026-07-21',

@@ -51,6 +51,10 @@ export const CITY_LATLON = {
   'Alcañiz': [41.0498, -0.1339],
   // Ródano arriba desde Aviñón: el mapa se extiende al norte para incluir Lyon.
   'Lyon': [45.7640, 4.8357],
+  // Alpes al sureste de Lyon: Grenoble, dentro del mismo polígono ya trazado.
+  'Grenoble': [45.19, 5.72],
+  // Macizo Central, al oeste de Lyon: Clermont-Ferrand, dentro del mismo polígono.
+  'Clermont-Ferrand': [45.7797, 3.0868],
   // Sur de Francia (arco mediterráneo): el mapa se extiende para incluirlas.
   'Montpellier': [43.6108, 3.8767],
   'Niza': [43.7102, 7.2620],
@@ -277,6 +281,10 @@ export const CITY_PILLAR = {
   'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
   // Ródano arriba desde Aviñón: hub propio en el mapa extendido.
   'Lyon': 'lyon',
+  // Alpes al sureste de Lyon: hub propio.
+  'Grenoble': 'grenoble',
+  // Macizo Central: hub propio.
+  'Clermont-Ferrand': 'clermont_ferrand',
   // Sur de Francia (arco mediterráneo): hubs propios en el mapa extendido.
   'Montpellier': 'montpellier', 'Niza': 'niza',
   'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon',

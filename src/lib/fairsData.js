@@ -714,6 +714,27 @@ export const fairsData = [
     "sector": "Transición Energética y Construcción"
   },
   {
+    "name": "Sommet de l'Élevage",
+    "country": "fr",
+    "slug": "sommet-elevage-clermont-ferrand",
+    "city": "Clermont-Ferrand",
+    "sector": "Ganadería y Genética Animal"
+  },
+  {
+    "name": "Mountain Planet",
+    "country": "fr",
+    "slug": "mountain-planet-grenoble",
+    "city": "Grenoble",
+    "sector": "Equipamiento y Turismo de Montaña"
+  },
+  {
+    "name": "SEPEM Industries Sud-Est",
+    "country": "fr",
+    "slug": "sepem-industries-sud-est-grenoble",
+    "city": "Grenoble",
+    "sector": "Servicios y Mantenimiento Industrial"
+  },
+  {
     "name": "SITEVI",
     "country": "fr",
     "slug": "sitevi-montpellier",
@@ -2618,6 +2639,20 @@ export const fairsData = [
     "sector": "Retail e Inmobiliario Comercial"
   },
   {
+    "name": "MIPIM",
+    "country": "fr",
+    "slug": "mipim-cannes",
+    "city": "Cannes",
+    "sector": "Inmobiliario e Inversión"
+  },
+  {
+    "name": "TFWA World Exhibition",
+    "country": "fr",
+    "slug": "tfwa-cannes",
+    "city": "Cannes",
+    "sector": "Travel Retail y Duty Free"
+  },
+  {
     "name": "MED'Agri",
     "country": "fr",
     "slug": "medagri-avignon",
@@ -2665,6 +2700,13 @@ export const fairsData = [
     "slug": "siane-toulouse",
     "city": "Toulouse",
     "sector": "Industria y Logística"
+  },
+  {
+    "name": "SMAHRT",
+    "country": "fr",
+    "slug": "smahrt-toulouse",
+    "city": "Toulouse",
+    "sector": "Gastronomía y Hostelería"
   },
   {
     "name": "Foire Exposition de Perpignan",
@@ -2770,6 +2812,20 @@ export const fairsData = [
     "slug": "cycleau-nouvelle-aquitaine-bordeaux",
     "city": "Burdeos",
     "sector": "Agua e Infraestructuras"
+  },
+  {
+    "name": "ALINA",
+    "country": "fr",
+    "slug": "alina-bordeaux",
+    "city": "Burdeos",
+    "sector": "Industria Agroalimentaria"
+  },
+  {
+    "name": "Préventica Bordeaux",
+    "country": "fr",
+    "slug": "preventica-bordeaux",
+    "city": "Burdeos",
+    "sector": "Prevención de Riesgos Laborales"
   },
   { "name": "Logismed", "country": "ma", "slug": "logismed-casablanca", "city": "Casablanca", "sector": "Logística y Supply Chain" },
   { "name": "Morocco Food Expo", "country": "ma", "slug": "morocco-food-expo-casablanca", "city": "Casablanca", "sector": "Alimentación" },
