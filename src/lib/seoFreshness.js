@@ -177,6 +177,8 @@ export const fairFreshness = {
   'mountain-planet-grenoble': '2026-07-24',
   'sepem-industries-sud-est-grenoble': '2026-07-24',
   'sommet-elevage-clermont-ferrand': '2026-07-24',
+  'smopyc-zaragoza': '2026-07-24',
+  'tecnovid-zaragoza': '2026-07-24',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'medfel-perpignan': '2026-07-21',
   'viv-habitat-perpignan': '2026-07-21',
