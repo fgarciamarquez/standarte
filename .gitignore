@@ -30,3 +30,7 @@ admin/email_campaing/data/cron_status.json
 /img/IDh-Veteco-Madrid/
 /img/familia_bujanda/
 /img/foodespain/
+
+# Config local de Obsidian: si abres el repo como bóveda (obsidian/pat-map), Obsidian
+# crea .obsidian/ en la raíz con ajustes/plugins locales; no debe versionarse.
+.obsidian/
