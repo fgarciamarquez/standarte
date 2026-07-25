@@ -47,8 +47,21 @@ if (errors.length) {
   process.exit(1);
 }
 
+// Ferias ancla (src/lib/fairAnchors.js): deciden qué entra en el "Calendario de
+// expansión" cuando hay más candidatas que huecos. Un slug que ya no exista en el
+// catálogo no da error en tiempo de ejecución (simplemente nunca puntúa), así que
+// pasaría inadvertido y degradaría la selección en silencio: aquí sí rompe el build.
+const anchorsSrc = read('../src/lib/fairAnchors.js');
+const anchorSlugs = [...anchorsSrc.matchAll(/^\s{2}'([^']+)'/gm)].map((m) => m[1]);
+const anchorGhosts = anchorSlugs.filter((s) => !slugs.has(s));
+if (anchorGhosts.length) {
+  console.error('✖ check_fair_dates: ferias ancla que ya no existen en fairsData.js:');
+  anchorGhosts.forEach((s) => console.error('   - ' + s));
+  process.exit(1);
+}
+
 const total = Object.keys(fairDates).length;
-console.log(`✓ check_fair_dates: ${withDate} ferias con fecha futura válida (de ${total} registradas).`);
+console.log(`✓ check_fair_dates: ${withDate} ferias con fecha futura válida (de ${total} registradas); ${anchorSlugs.length} ferias ancla verificadas.`);
 if (past.length) {
   console.warn(`⚠ ${past.length} feria(s) con la edición ya celebrada — refrescar cuando se publiquen las nuevas fechas (el sitio, mientras tanto, no muestra fecha):`);
   past.forEach((p) => console.warn('   - ' + p));

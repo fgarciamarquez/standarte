@@ -188,7 +188,23 @@ export const fairFreshness = {
   'eco-maison-perpignan': '2026-07-21',
   'retro-mecanic-perpignan': '2026-07-21',
   'salon-mariage-perpignan': '2026-07-21',
-  'foire-exposition-perpignan': '2026-07-21'
+  'foire-exposition-perpignan': '2026-07-21',
+  // Ferias que estrenan fecha verificada de su próxima edición (2026-07-25). El dato
+  // aparece en la respuesta directa de la ficha ("En X (Ciudad - 3-7 sep 2026)…"), así
+  // que es contenido nuevo real y toca reindexar.
+  'conxemar-vigo': '2026-07-25',
+  'navalia-vigo': '2026-07-25',
+  'agroglobal-santarem': '2026-07-25',
+  'salamaq-salamanca': '2026-07-25',
+  'fatacil-lagoa': '2026-07-25',
+  'expometal-batalha': '2026-07-25',
+  'stone-iberica-batalha': '2026-07-25',
+  'forum-gastronomico-a-coruna': '2026-07-25',
+  'biocultura-a-coruna': '2026-07-25',
+  'fecons-torre-pacheco': '2026-07-25',
+  'agraria-valladolid': '2026-07-25',
+  'infarma': '2026-07-25',
+  'expooptica-madrid': '2026-07-25'
 };
 
 /** Fecha de última actualización de una ficha de feria, o null si no la tiene. */

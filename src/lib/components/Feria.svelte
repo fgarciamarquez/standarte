@@ -1,8 +1,8 @@
 <script>
   import { onMount, tick } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
-  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, ctaBudget, preciosNav, projectUrl, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
-  import { activitiesForFair, colorForTag, labelForTag, fairTags } from '$lib/fairTags.js';
+  import { pathFor, languages, languageLabels, routes, cityData, fairUrl, ctaBudget, preciosNav, projectUrl, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
+  import { activitiesForFair, fairTags } from '$lib/fairTags.js';
   import { formatFairDates } from '$lib/fairDates.js';
   import { fairFreshnessFor } from '$lib/seoFreshness.js';
   import { projectsForActivity } from '$lib/projectTags.js';
@@ -1047,10 +1047,6 @@
   <section class="feria-details section">
     <div class="feria-container">
       <div class="feria-text">
-        <!-- A2: sello del Sistema de Proyecto Auditado (garantía verificable). -->
-        <a class="feria-guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
-          <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
-        </a>
         <nav class="breadcrumbs feria-breadcrumbs" aria-label="Breadcrumb">
           <!-- Navegación visible (los datos estructurados van en el JSON-LD del head). -->
           <ol>
@@ -1084,19 +1080,9 @@
              el font-weight: 900 !important de h1-h5 (app.css), así que se lee como
              encabezado; .highlight solo le aporta tamaño e interlineado. -->
         <h2 class="highlight">{seoDesc}</h2>
-        <!-- Etiquetas de actividad de ESTA feria: identifican el evento por sector, así que
-             viven bajo el h2 del cuerpo (antes estaban perdidas en un módulo del aside). -->
-        {#if fairActivityTags.length}
-          <ul class="activity-chips fair-activity-chips">
-            {#each fairActivityTags as tag}
-              <li>
-                <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
-                  <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
-                </a>
-              </li>
-            {/each}
-          </ul>
-        {/if}
+        <!-- Las etiquetas de actividad de esta feria ya no van aquí: viven en el
+             "Calendario de expansión" (FairTimeline), donde funcionan como leyenda
+             del criterio con el que se eligen las ferias de la línea. -->
         {#if fairBody}
           <div class="fair-unique">{@html fairBody}</div>
         {/if}
@@ -1162,6 +1148,7 @@
              actividad. Cierra el cuerpo, justo antes del formulario, para que el
              visitante llegue a pedir presupuesto ya orientado en el calendario. -->
         <FairTimeline {lang} slug={fair.slug} name={fair.name} tags={fairActivityTags}
+          summaries={data.fairTimelineSummaries || {}}
           cityLabel={(c) => (cities[lang] && cities[lang][c]) ? cities[lang][c] : c} />
       </div>
       <aside class="feria-aside">
@@ -1173,8 +1160,13 @@
           <p>{(coverageProof[lang] || coverageProof.es)()}</p>
           <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
         </section>
-        <!-- Proyecto Auditado: asunto troncal, destacado en la columna derecha. -->
+        <!-- Proyecto Auditado: asunto troncal, destacado en la columna derecha. El sello
+             de garantía lo encabeza (antes flotaba suelto sobre la esquina de la ficha,
+             sin decir de qué era garantía); aquí ilustra justo el texto que lo explica. -->
         <div class="aside-module">
+          <a class="feria-guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
+            <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
+          </a>
           <p class="audited-note">{@html pickUspLine(lang, fair.slug)}
             <a href={pathFor(lang, 'proyecto_auditado')}>{moreInfoLabel[lang] || moreInfoLabel.es} →</a></p>
         </div>
@@ -1297,20 +1289,20 @@
     min-width: 0;
     position: relative;
   }
-  /* A2: sello de garantía flotando sobre la esquina superior derecha de la ficha. */
+  /* Sello de garantía: encabeza el módulo de Proyecto Auditado, centrado sobre el texto
+     que lo explica. En flujo normal (ya no flota sobre la esquina de la ficha). */
+  /* El sello se centra con su propio margen automático: el módulo no lleva
+     text-align, para que el párrafo con filete siga alineado a la izquierda. */
   .feria-guarantee-stamp {
-    position: absolute;
-    top: -34px;
-    right: 18px;
+    display: block;
     width: 104px;
     height: 104px;
-    z-index: 4;
+    margin: 0 auto 0.9rem;
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.22));
     transition: transform 0.2s ease;
   }
   .feria-guarantee-stamp:hover { transform: scale(1.05); }
   .feria-guarantee-stamp img { display: block; width: 100%; height: 100%; }
-  @media (max-width: 768px) { .feria-guarantee-stamp { width: 78px; height: 78px; top: -22px; right: 8px; } }
   /* Foto de caso de éxito: usa la clase global .oro-case-figure (igual que en ciudad). */
   /* Viste al <h2> de respuesta directa. El peso y la familia los fija la regla global
      h1-h5 de app.css (Roboto 900 !important), así que aquí solo van tamaño, interlineado
@@ -1350,8 +1342,10 @@
     border-left: 3px solid var(--accent-color, #e0b400);
     background: rgba(224, 180, 0, 0.06);
     border-radius: 0 6px 6px 0;
-    font-size: 1.02rem;
-    line-height: 1.55;
+    /* Mismo cuerpo que el resto de módulos del aside (.coverage-proof p): un tamaño
+       distinto por módulo desordenaba visualmente la columna. */
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
   .audited-note a {
     font-weight: 700;
@@ -1478,46 +1472,8 @@
     color: #1a1e21;
     font-weight: 700;
   }
-  /* Chips de actividad con código de color (variable --chip por etiqueta). */
-  .activity-chips {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-  /* En el cuerpo van bajo el h2 de respuesta directa: algo más de aire arriba y abajo
-     para que se lean como la firma sectorial del evento y no se peguen al titular. */
-  .fair-activity-chips {
-    margin: 0.9rem 0 1.6rem;
-  }
-  /* Etiquetas estilo "badge": píldora suave y compacta, con borde fino del color de la
-     actividad (--chip) para delimitarla. Aspecto idéntico en feria, ciudad e índice. */
-  .activity-chips li a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.2rem 0.62rem;
-    border: 1px solid var(--chip);
-    border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: color-mix(in srgb, var(--chip) 62%, #12211a);
-    text-decoration: none;
-    background: color-mix(in srgb, var(--chip) 12%, #fff);
-    transition: background 0.2s ease;
-  }
-  .activity-chips li a:hover {
-    background: color-mix(in srgb, var(--chip) 20%, #fff);
-  }
-  .chip-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--chip);
-    flex: 0 0 auto;
-  }
+  /* Los chips de actividad de la ficha se han mudado a FairTimeline.svelte, que lleva
+     ahora su propio bloque de estilos (el CSS de Svelte está aislado por componente). */
   .activity-all {
     font-size: 0.88rem;
     font-weight: 600;

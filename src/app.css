@@ -3357,20 +3357,25 @@ p b {
   line-height: 1.5;
   color: #2a2a2a;
 }
+/* Llamada a abrir el mapa de Pat: enlace, no botón. Como botón competía visualmente
+   con el CTA de presupuesto —el único que debe leerse como acción principal—. */
 .coverage-proof .coverage-pat {
-  display: inline-block;
-  background: #4169e1;
-  color: #fff;
+  display: inline;
+  background: none;
+  color: #4169e1;
   font-weight: 700;
   font-size: 0.9rem;
-  padding: 0.5rem 1rem;
+  padding: 0;
   border: none;
-  border-radius: 6px;
   font-family: inherit;
   cursor: pointer;
   text-decoration: none;
 }
-.coverage-proof .coverage-pat:hover { background: #2a4bc0; }
+.coverage-proof .coverage-pat:hover,
+.coverage-proof .coverage-pat:focus-visible {
+  color: #2a4bc0;
+  text-decoration: underline;
+}
 /* Cuando el módulo vive dentro del sidebar (bajo la tarjeta de Pat, sobre la nube de
    ciudades): espaciado y título coherentes con los otros módulos del aside. */
 .sidebar-sticky .city-fairs.sidebar-module {
