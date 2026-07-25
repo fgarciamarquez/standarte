@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 8
+n_ferias: 9
 lat: 41.65
 lon: -0.88
 ---
@@ -16,5 +16,6 @@ Ciudad dibujada en el mapa de Pat.
 - [[Fima Zaragoza]]
 - [[Oleomaq]]
 - [[Salón de los Vinos de Aragón]]
+- [[Smagua Zaragoza]]
 - [[Smopyc Zaragoza]]
 - [[Tecnovid]]
