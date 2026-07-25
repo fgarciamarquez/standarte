@@ -1,4 +1,7 @@
+// Carga SOLO en servidor (antes +page.js, universal): así el prerender resuelve el
+// proyecto y la página no arrastra nada extra al bundle del cliente.
 import { portfolios } from '$lib/siteData.js';
+import { cityIntrosFor } from '$lib/server/cityContent.js';
 import { error } from '@sveltejs/kit';
 
 export const prerender = true;
@@ -27,6 +30,8 @@ export function load({ params }) {
     
     return {
         slug: slug,
-        project: project
+        project: project,
+        // Textos de las tarjetas de ciudad que pinta Site.svelte, ya en un solo idioma.
+        cityIntros: cityIntrosFor('es')
     };
 }

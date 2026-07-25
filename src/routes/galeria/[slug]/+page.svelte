@@ -29,5 +29,6 @@
   copy={currentCopy}
   canonical={`https://standarte.es/galeria/${canonicalSlug}`}
   initialLightboxSlug={data.slug}
+  cityIntros={data.cityIntros || {}}
   emitHreflang={false}
 />

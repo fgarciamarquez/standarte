@@ -23,12 +23,17 @@
   import LangFlagIntro from './LangFlagIntro.svelte';
   import SiteFooter from './SiteFooter.svelte';
   import MeshCoverageLinks from './MeshCoverageLinks.svelte';
+  import FairSearch from './FairSearch.svelte';
   // WelcomeAdvisor NO se importa de forma estática: se carga con import dinámico
   // (chunk aparte) tras cargar la página, para no colgar del bundle principal.
 
   export let lang;
   export let section;
   export let copy;
+  // Textos intro/detail de las tarjetas de ciudad, ya resueltos al idioma de la página
+  // por el load del servidor (ver $lib/server/cityContent.js). Antes vivían dentro de
+  // cityData, en siteData.js, y sus 11 idiomas viajaban al cliente en TODAS las páginas.
+  export let cityIntros = {};
   export let canonical;
   export let initialLightboxSlug = null;
   // Las páginas de galería reutilizan Site con section="custom"; ahí el hreflang
@@ -998,9 +1003,7 @@
   }
 
   function cityContent(id) {
-    const city = cityData[id];
-    const byLang = city?.content?.[lang] || city?.content?.es || {};
-    return byLang;
+    return cityIntros[id] || {};
   }
 
   // Municipio de la feria -> cityKey del pilar (incluye satélites: Torre Pacheco->murcia,
@@ -1834,6 +1837,12 @@
 </header>
 
 <main class:home-warm={['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}>
+  <!-- Buscador de ferias: primer elemento de la portada, nada más pasar el hero. Es la
+       vía directa para quien ya sabe a qué feria va; el resto de la página sigue siendo
+       la vía de descubrimiento (ciudades, actividades, Pat). -->
+  {#if section === 'home'}
+    <FairSearch {lang} />
+  {/if}
   <!-- Ancla estática de Pat: destino del enlace "#pat" del cuerpo SEO. Debe existir
        siempre en el HTML prerenderizado (el panel de Pat se carga diferido, así que su
        propio contenedor no sirve de destino fiable). El clic al enlace lo intercepta

@@ -1,3 +1,6 @@
+// Carga SOLO en servidor (antes era +page.js, universal): así newsData.json —unos
+// 790 KB— se queda en el prerender en vez de viajar al bundle del cliente. Cada
+// artículo se lleva embebido su propio contenido y nada más.
 import news from '$lib/newsData.json';
 import { error } from '@sveltejs/kit';
 

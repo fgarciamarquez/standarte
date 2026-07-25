@@ -204,7 +204,15 @@ export const fairFreshness = {
   'fecons-torre-pacheco': '2026-07-25',
   'agraria-valladolid': '2026-07-25',
   'infarma': '2026-07-25',
-  'expooptica-madrid': '2026-07-25'
+  'expooptica-madrid': '2026-07-25',
+  // Ferias que estrenan ficha propia (antes no tenían cuerpo único, y por eso tampoco
+  // aparecían con resumen en el calendario sectorial de otras ferias).
+  'figan-zaragoza': '2026-07-25',
+  'concreta-oporto': '2026-07-25',
+  'enomaq-zaragoza': '2026-07-25',
+  // Estrenan fecha verificada de su próxima edición.
+  'feria-internacional-ganadera-zafra': '2026-07-25',
+  'termatalia-ourense': '2026-07-25'
 };
 
 /** Fecha de última actualización de una ficha de feria, o null si no la tiene. */

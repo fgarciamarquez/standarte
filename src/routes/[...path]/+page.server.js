@@ -4,8 +4,20 @@ import { fairSeoData } from '$lib/server/fairSeoData.js';
 import { activitySeoData } from '$lib/server/activitySeoData.js';
 import { getProjectById } from '$lib/projectData.js';
 import { timelineNodes } from '$lib/fairTimelineNodes.js';
+import newsRaw from '$lib/newsData.json';
+import { cityIntrosFor } from '$lib/server/cityContent.js';
 
 export const entries = () => prerenderEntries;
+
+// Portadas de noticia para el listado del blog (el catch-all también sirve /blog en
+// los 11 idiomas). Solo los campos que pinta la tarjeta: el cuerpo del artículo es el
+// 78 % del peso de newsData.json y en el listado no se usa. Importar el JSON desde el
+// componente lo metía en el bundle del cliente de TODO el sitio.
+const newsCards = newsRaw.map((n) => ({
+  slug: n.slug, title: n.title, excerpt: n.excerpt, date: n.date,
+  location: n.location, lang: n.lang, image: n.image,
+  sourceName: n.sourceName, sourceUrl: n.sourceUrl
+}));
 
 // Primera frase de la ficha de una feria: es el resumen que ya escribimos para el
 // cuerpo de su página, así que sirve tal cual como tooltip del calendario sectorial
@@ -47,5 +59,10 @@ export function load({ params }) {
   // Proyecto (solo en las URLs ja /ja/プロジェクト/{slug}). Se reutiliza el componente
   // de proyecto con lang=ja fijo en el catch-all.
   const project = route.section === 'project' ? (getProjectById(route.projectId) || null) : null;
-  return { ...route, richSeo, fairSeo, fairTimelineSummaries, activitySeo, project };
+  const news = route.section === 'noticias' ? newsCards : null;
+  // Las tarjetas de ciudad solo las pinta Site.svelte; las fichas de feria, de proyecto
+  // y de actividad no las llevan, así que ahí ni se adjuntan.
+  const SITE_SECTIONS = new Set(['feria', 'project', 'activity', 'activityIndex', 'noticias']);
+  const cityIntros = SITE_SECTIONS.has(route.section) ? null : cityIntrosFor(route.lang || 'es');
+  return { ...route, richSeo, fairSeo, fairTimelineSummaries, activitySeo, project, news, cityIntros };
 }

@@ -62,6 +62,23 @@ if (anchorGhosts.length) {
 
 const total = Object.keys(fairDates).length;
 console.log(`✓ check_fair_dates: ${withDate} ferias con fecha futura válida (de ${total} registradas); ${anchorSlugs.length} ferias ancla verificadas.`);
+
+// Ferias ANCLA sin fecha futura: son las que encabezan el calendario de su sector, así
+// que sin fecha no salen en ninguno. Las fechas caducan solas cada año, de modo que esta
+// lista no se agota nunca: es un recordatorio recurrente de dónde mirar primero cuando
+// los organizadores publican su siguiente edición. Nunca rompe el build —que una feria
+// no haya anunciado fechas no es un error nuestro—, solo señala dónde rinde revisar.
+const futureDated = new Set(
+  Object.entries(fairDates)
+    .filter(([, e]) => e && e.start && (e.end || e.start) >= today)
+    .map(([slug]) => slug)
+);
+const anchorsNoDate = anchorSlugs.filter((s) => !futureDated.has(s));
+if (anchorsNoDate.length) {
+  const nameOf = new Map([...fairsSrc.matchAll(/"name":\s*"([^"]+)",\s*"country":[^}]*?"slug":\s*"([^"]+)"/g)].map((m) => [m[2], m[1]]));
+  console.warn(`⚠ ${anchorsNoDate.length} feria(s) de referencia sin fecha futura — revisar si su organizador ya publicó la próxima edición:`);
+  anchorsNoDate.forEach((s) => console.warn('   - ' + (nameOf.get(s) || s)));
+}
 if (past.length) {
   console.warn(`⚠ ${past.length} feria(s) con la edición ya celebrada — refrescar cuando se publiquen las nuevas fechas (el sitio, mientras tanto, no muestra fecha):`);
   past.forEach((p) => console.warn('   - ' + p));

@@ -923,6 +923,20 @@
 
 <svelte:head>
   <title>{seoTitle}</title>
+  <!-- Preload de la portada del header: es el elemento LCP y su <img> aparece en el
+       cuerpo, después de las ~30 etiquetas modulepreload que SvelteKit pone en el head.
+       Sin esta pista el navegador móvil descubre la imagen tarde y compite por el ancho
+       de banda con el JS. Mismo srcset/sizes que la etiqueta real, para no descargar dos. -->
+  {#if coverBase}
+    <link
+      rel="preload"
+      as="image"
+      href="/img/cover_{coverBase}.avif"
+      imagesrcset="/img/cover_{coverBase}-mobile.avif 480w, /img/cover_{coverBase}-md.avif 640w, /img/cover_{coverBase}.avif 800w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+  {/if}
   <meta name="description" content={seoDesc} />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />

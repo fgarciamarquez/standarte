@@ -1,6 +1,5 @@
 <script>
   import { onMount } from 'svelte';
-  import news from '$lib/newsData.json';
   import { pathFor, copy, languages, languageLabels, ctaBudget } from '$lib/siteData.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
@@ -13,6 +12,9 @@
 
   export let data = {};
   export let lang = data?.lang || 'es';
+  // Las noticias llegan por el load del servidor (ver +page.server.js): importar aquí
+  // newsData.json metía ~790 KB en el bundle del cliente de TODO el sitio.
+  $: news = data?.news || [];
   let menuOpen = false;
   let isScrolled = false;
   let activeFilter = 'all';
