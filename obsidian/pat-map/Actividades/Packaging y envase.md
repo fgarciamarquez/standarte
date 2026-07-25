@@ -2,7 +2,7 @@
 tipo: actividad
 clave: packaging
 sector: "Comercio y Packaging"
-n_ferias: 13
+n_ferias: 14
 ---
 # Packaging y envase
 
@@ -19,6 +19,7 @@ Actividad del sector [[Comercio y Packaging]].
 - [[FICOR]]
 - [[Feria Hábitat València]]
 - [[Hispack Barcelona]]
+- [[Labelexpo Europe]]
 - [[MEDFEL]]
 - [[Pack Expo Morocco]]
 - [[Prod&Pack]]

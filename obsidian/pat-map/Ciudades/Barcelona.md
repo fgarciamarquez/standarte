@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 17
+n_ferias: 18
 lat: 41.39
 lon: 2.17
 ---
@@ -22,6 +22,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Hostelco Barcelona]]
 - [[ISE Barcelona]]
 - [[IoT Solutions World Congress Barcelona]]
+- [[Labelexpo Europe]]
 - [[MWC Barcelona]]
 - [[Piscina & Wellness Barcelona]]
 - [[SIL Barcelona]]
