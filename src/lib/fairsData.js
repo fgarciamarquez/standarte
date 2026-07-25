@@ -1036,6 +1036,13 @@ export const fairsData = [
     "sector": "Industria y Logística"
   },
   {
+    "name": "Smagua Zaragoza",
+    "country": "es",
+    "slug": "smagua-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Fima Zaragoza",
     "country": "es",
     "slug": "fima-zaragoza",

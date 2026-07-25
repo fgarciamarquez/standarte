@@ -14,7 +14,7 @@
 export const seoFreshness = {
   badajoz: '2026-07-16',
   montaje_badajoz: '2026-07-14',
-  zaragoza: '2026-07-16',
+  zaragoza: '2026-07-25',
   lisboa: '2026-07-16',
   montaje_don_benito: '2026-07-14',
   ciudad_real: '2026-07-14',
@@ -179,6 +179,7 @@ export const fairFreshness = {
   'sommet-elevage-clermont-ferrand': '2026-07-24',
   'smopyc-zaragoza': '2026-07-24',
   'tecnovid-zaragoza': '2026-07-24',
+  'smagua-zaragoza': '2026-07-25',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'medfel-perpignan': '2026-07-21',
   'viv-habitat-perpignan': '2026-07-21',

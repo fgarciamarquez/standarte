@@ -226,6 +226,7 @@ export const fairActivities = {
   "pegs-europe-lisboa": ["congreso-medico"],
   "btl-lisboa": ["turismo"],
   "smopyc-zaragoza": ["maquinaria-industrial"],
+  "smagua-zaragoza": ["ecologico"],
   "fima-zaragoza": ["agricultura-maquinaria"],
   "feria-internacional-ganadera-zafra": ["ganaderia","multisectorial","agricultura-maquinaria"],
   "feria-internacional-ganadera-trujillo": ["ganaderia","multisectorial","agricultura-maquinaria"],
