@@ -209,6 +209,7 @@ export const fairActivities = {
   "ise-barcelona": ["audiovisual"],
   "alimentaria-barcelona": ["alimentacion"],
   "hispack-barcelona": ["packaging"],
+  "labelexpo-barcelona": ["packaging"],
   "hostelco-barcelona": ["gastronomia-hosteleria"],
   "smart-city-expo-world-congress-barcelona": ["digital-software","smart-city","congreso-profesional","movilidad"],
   "construmat-barcelona": ["construccion"],

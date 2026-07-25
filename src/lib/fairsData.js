@@ -917,6 +917,13 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
+    "name": "Labelexpo Europe",
+    "country": "es",
+    "slug": "labelexpo-barcelona",
+    "city": "Barcelona",
+    "sector": "Comercio y Packaging"
+  },
+  {
     "name": "Hostelco Barcelona",
     "country": "es",
     "slug": "hostelco-barcelona",
