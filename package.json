@@ -8,7 +8,7 @@
     "dev": "vite --host 0.0.0.0",
     "prebuild": "node scripts/build_project_index.mjs && node scripts/build_admin_data.mjs && node scripts/fetch_project_tags.mjs",
     "build": "vite build",
-    "postbuild": "node scripts/postbuild_lang_homes.mjs && node scripts/check_noindex.mjs && node scripts/check_html_lang.mjs && node scripts/check_broken_links.mjs && node scripts/check_mesh_cities.mjs",
+    "postbuild": "node scripts/postbuild_lang_homes.mjs && node scripts/check_noindex.mjs && node scripts/check_html_lang.mjs && node scripts/check_broken_links.mjs && node scripts/check_mesh_cities.mjs && node scripts/check_fair_dates.mjs",
     "preview": "vite preview --host 0.0.0.0"
   },
   "devDependencies": {

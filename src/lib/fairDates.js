@@ -1,0 +1,330 @@
+// Fechas de la PRÓXIMA edición de cada feria (y su periodicidad).
+//
+// Se usan para dar frescura a las fichas de feria (la respuesta directa muestra
+// "En X (Ciudad - 28 & 29 abril 2027), Standarte diseña…") y como fuente de la
+// línea de tiempo sectorial que orienta al cliente para contratar campañas
+// multi-feria.
+//
+// REGLAS DE MANTENIMIENTO (importantes):
+//  1. Solo se anotan fechas VERIFICADAS en fuente oficial (web de la feria o del
+//     recinto). Una fecha equivocada en una página comercial es peor que ninguna:
+//     ante la duda, se deja fuera. Por eso muchas ferias no aparecen aquí.
+//  2. NO se extrapolan fechas de ediciones futuras a partir de la periodicidad.
+//     Que una feria sea bienal no autoriza a inventar la edición de dentro de 2 años:
+//     hasta que la organización la publica, la feria se queda sin fecha.
+//  3. Las fechas CADUCAN. `scripts/check_fair_dates.mjs` avisa en cada build de las
+//     que ya han pasado, para revisarlas. El propio sitio nunca muestra una fecha
+//     pasada (ver `formatFairDates`), así que una fecha caducada degrada a "sin
+//     fecha", nunca a un dato falso.
+//
+// Formato: slug de feria (fairsData) -> { start, end, cadence, source }
+//   start/end : fecha ISO YYYY-MM-DD (misma fecha en ambas si dura un día)
+//   cadence   : 'annual' | 'biennial' | 'triennial' | 'unknown'
+//   source    : URL donde se verificó (para poder auditar y refrescar el dato)
+export const fairDates = {
+  'fidma-gijon': { start: '2026-08-01', end: '2026-08-16', cadence: 'annual', source: 'https://recintoferialasturias.camaragijon.es/es/cargarAplicacionAgenda.do' },
+  'mercat-de-la-vall-andorra': { start: '2026-08-01', end: '2026-08-02', cadence: 'annual', source: 'https://www.agenda.ad/activitat/andorra-la-vella/fires-i-mercats/mercat-de-la-vall-21714' },
+  'festa-vinho-madeira': { start: '2026-08-23', end: '2026-09-13', cadence: 'annual', source: 'https://visitmadeira.com/en/whats-on/events/wine-festival/' },
+  'cannes-yachting-festival': { start: '2026-09-08', end: '2026-09-13', cadence: 'annual', source: 'https://www.cannesyachtingfestival.com/en-gb/practical-information.html' },
+  'esra-congress-lisboa': { start: '2026-09-09', end: '2026-09-12', cadence: 'annual', source: 'https://esracongress.com/' },
+  'feria-navarra-ecologica-pamplona': { start: '2026-09-11', end: '2026-09-13', cadence: 'annual', source: 'https://www.navarraecologica.org/es/agenda-cursos-bio/xi-feria-navarra-ecologica' },
+  'autentica-sevilla': { start: '2026-09-14', end: '2026-09-15', cadence: 'annual', source: 'https://fibes.es/eventos/' },
+  'amb-stuttgart': { start: '2026-09-15', end: '2026-09-19', cadence: 'biennial', source: 'https://www.messe-stuttgart.de/amb/' },
+  'foro-greencities-malaga': { start: '2026-09-15', end: '2026-09-16', cadence: 'annual', source: 'https://greencities.fycma.com/greencities-se-celebrara-el-15-y-16-de-septiembre-y-reunira-a-gestores-municipales-con-el-objetivo-de-definir-soluciones-sostenibles-para-el-futuro-de-los-territorios/' },
+  'greencities-malaga': { start: '2026-09-15', end: '2026-09-16', cadence: 'annual', source: 'https://greencities.fycma.com/' },
+  'gse-expo-lisboa': { start: '2026-09-15', end: '2026-09-17', cadence: 'biennial', source: 'https://www.gse-expo-europe.com/visit' },
+  'andorra-taste': { start: '2026-09-16', end: '2026-09-20', cadence: 'annual', source: 'https://www.turiski.es/andorra-taste-2026-territorio-gastronomia-alta-montana/' },
+  'feciex-badajoz': { start: '2026-09-17', end: '2026-09-20', cadence: 'annual', source: 'https://feriabadajoz.es/ferias/feciex/' },
+  'fromago-cheese-experience-zamora': { start: '2026-09-17', end: '2026-09-20', cadence: 'biennial', source: 'https://fromago.info/en/' },
+  'portojoia-oporto': { start: '2026-09-17', end: '2026-09-20', cadence: 'annual', source: 'https://exponor.pt/portojoia/' },
+  'intercaza-cordoba': { start: '2026-09-18', end: '2026-09-20', cadence: 'annual', source: 'https://intercaza.com/' },
+  'cfia-toulouse': { start: '2026-09-22', end: '2026-09-24', cadence: 'biennial', source: 'https://toulouse.cfiaexpo.com/en' },
+  'farmaforum-madrid': { start: '2026-09-22', end: '2026-09-23', cadence: 'annual', source: 'https://www.ifema.es/farmaforum' },
+  'morocco-food-expo-casablanca': { start: '2026-09-22', end: '2026-09-24', cadence: 'annual', source: 'https://www.moroccofoodexpo.com/' },
+  'sepem-industries-toulouse': { start: '2026-09-22', end: '2026-09-24', cadence: 'biennial', source: 'https://toulouse.sepem-industries.com/' },
+  'siema-casablanca': { start: '2026-09-22', end: '2026-09-24', cadence: 'annual', source: 'https://www.siemamaroc.com/' },
+  'the-district-madrid': { start: '2026-09-22', end: '2026-09-24', cadence: 'annual', source: 'https://www.esmadrid.com/agenda/district-ifema-madrid' },
+  'enerh2o-oporto': { start: '2026-09-23', end: '2026-09-24', cadence: 'annual', source: 'https://www.enerh2o.com/en/home-pt-english/' },
+  'bisutex-madrid': { start: '2026-09-24', end: '2026-09-27', cadence: 'annual', source: 'https://www.ifema.es/en/bisutex' },
+  'madridjoya-madrid': { start: '2026-09-24', end: '2026-09-27', cadence: 'annual', source: 'https://www.ifema.es/en/madrid-joya' },
+  'agropec-gijon': { start: '2026-09-25', end: '2026-09-27', cadence: 'annual', source: 'https://recintoferialasturias.camaragijon.es/es/cargarAplicacionAgenda.do' },
+  'foire-internationale-marseille': { start: '2026-09-25', end: '2026-10-05', cadence: 'annual', source: 'https://www.foiredemarseille.com/' },
+  'ibercaza-jaen': { start: '2026-09-25', end: '2026-09-27', cadence: 'annual', source: 'https://www.ifeja.org/ibercaza/contenidos.php?secc=109' },
+  'tfwa-cannes': { start: '2026-09-27', end: '2026-10-01', cadence: 'annual', source: 'https://www.tfwa.com/tfwa-world-exhibition-conference-2026' },
+  'espacio-cocina-sici-valencia': { start: '2026-09-28', end: '2026-10-01', cadence: 'biennial', source: 'https://espaciococina.feriavalencia.com/' },
+  'habitat-valencia': { start: '2026-09-28', end: '2026-10-01', cadence: 'annual', source: 'https://www.feriahabitatvalencia.com/' },
+  'textilhogar-valencia': { start: '2026-09-28', end: '2026-10-01', cadence: 'annual', source: 'https://www.textilhogar.com/' },
+  'aerospace-test-development-show-toulouse': { start: '2026-09-29', end: '2026-09-30', cadence: 'annual', source: 'https://aerotestdevelopmentshow.com/' },
+  'salon-gas-renovable-valladolid': { start: '2026-09-29', end: '2026-09-30', cadence: 'annual', source: 'https://www.salondelgasrenovable.com/en/' },
+  'san-diego-comic-con-malaga': { start: '2026-10-01', end: '2026-10-04', cadence: 'annual', source: 'https://sandiegocomicconmalaga.com/' },
+  'eurobrico-valencia': { start: '2026-10-06', end: '2026-10-08', cadence: 'biennial', source: 'https://eurobrico.feriavalencia.com/eurobrico-fija-sus-fechas-para-2026-junto-a-iberflora-y-refuerza-su-apuesta-por-el-comprador-internacional/' },
+  'fruit-attraction-madrid': { start: '2026-10-06', end: '2026-10-08', cadence: 'annual', source: 'https://www.ifema.es/en/fruit-attraction' },
+  'iberflora-valencia': { start: '2026-10-06', end: '2026-10-08', cadence: 'annual', source: 'https://iberflora.feriavalencia.com/iberflora-cierra-fechas-para-2026-del-6-al-8-de-octubre-en-feria-valencia/' },
+  'preventica-lyon': { start: '2026-10-06', end: '2026-10-08', cadence: 'unknown', source: 'https://www.preventica.com/salon/lyon-2026' },
+  'sommet-elevage-clermont-ferrand': { start: '2026-10-06', end: '2026-10-09', cadence: 'annual', source: 'https://www.sommet-elevage.fr/en' },
+  'tis-sevilla': { start: '2026-10-06', end: '2026-10-08', cadence: 'annual', source: 'https://one.gob.es/en/diary/tourism-innovation-summit-2026' },
+  'canarias-destino-startup': { start: '2026-10-07', end: '2026-10-09', cadence: 'annual', source: 'https://www.canariasdestinostartup.com/en' },
+  'viv-habitat-perpignan': { start: '2026-10-09', end: '2026-10-12', cadence: 'annual', source: 'https://www.congres-perpignan.com/events/viv-habitat/' },
+  'esicm-lives-lisboa': { start: '2026-10-10', end: '2026-10-14', cadence: 'annual', source: 'https://www.esicm.org/events/39th-annual-congress-lisbon/' },
+  'medagri-avignon': { start: '2026-10-13', end: '2026-10-15', cadence: 'biennial', source: 'https://www.med-agri.com/' },
+  'siane-toulouse': { start: '2026-10-13', end: '2026-10-15', cadence: 'annual', source: 'https://www.salonsiane.com/en/' },
+  'world-aviation-festival-lisboa': { start: '2026-10-13', end: '2026-10-15', cadence: 'annual', source: 'https://www.terrapinn.com/conference/aviation-festival/index.stm' },
+  'salon-mariage-perpignan': { start: '2026-10-17', end: '2026-10-18', cadence: 'annual', source: 'https://www.congres-perpignan.com/events/salon-du-mariage-2026/' },
+  'fira-andorra-la-vella': { start: '2026-10-23', end: '2026-10-25', cadence: 'annual', source: 'https://elperiodic.ad/parroquies/les-empreses-ja-poden-inscriures-per-participar-en-la-47a-fira-dandorra-la-vella-que-se-celebrara-a-loctubre/' },
+  'in-beauty-lisboa': { start: '2026-10-24', end: '2026-10-26', cadence: 'annual', source: 'https://exponor.pt/in-beauty/' },
+  'gastronoma-valencia': { start: '2026-10-26', end: '2026-10-28', cadence: 'annual', source: 'https://www.gastronoma.es/' },
+  'baleart-mallorca': { start: '2026-10-29', end: '2026-11-01', cadence: 'annual', source: 'https://www.fibwidiario.com/articulo/cultura/baleart-2026-abre-inscripciones-incorporando-novedades-artesanos-baleares/20260709115509322386.html' },
+  'expo-agritech-malaga': { start: '2026-11-03', end: '2026-11-05', cadence: 'annual', source: 'https://www.expoagritech.com/' },
+  'mapic-cannes': { start: '2026-11-03', end: '2026-11-04', cadence: 'annual', source: 'https://www.mapic.com/' },
+  'maroc-in-mode-mim-casablanca': { start: '2026-11-03', end: '2026-11-05', cadence: 'annual', source: 'https://mim.org.ma/' },
+  'sett-montpellier': { start: '2026-11-03', end: '2026-11-05', cadence: 'annual', source: 'https://www.salonsett.com/fr/infos-pratiques/dates-et-acces' },
+  'smart-city-expo-world-congress-barcelona': { start: '2026-11-03', end: '2026-11-05', cadence: 'annual', source: 'https://www.smartcityexpo.com/the-event/' },
+  'decor-hotel-oporto': { start: '2026-11-04', end: '2026-11-06', cadence: 'biennial', source: 'https://exposalao.pt/feira/decor_hotel' },
+  'expocarne-oporto': { start: '2026-11-04', end: '2026-11-06', cadence: 'biennial', source: 'https://exposalao.pt/feira/expocarne' },
+  'madrid-tech-show': { start: '2026-11-04', end: '2026-11-05', cadence: 'annual', source: 'https://www.ifema.es/madrid-tech-show' },
+  'fehispor-badajoz': { start: '2026-11-05', end: '2026-11-08', cadence: 'annual', source: 'https://www.feriabadajoz.es/evento/fehispor/' },
+  'essencia-do-vinho-lisboa': { start: '2026-11-07', end: '2026-11-09', cadence: 'annual', source: 'https://www.essenciadovinho.com/' },
+  'herofestival-marseille': { start: '2026-11-07', end: '2026-11-08', cadence: 'annual', source: 'https://www.herofestival.fr/' },
+  'web-summit-lisboa': { start: '2026-11-09', end: '2026-11-12', cadence: 'annual', source: 'https://websummit.com/web-summit-2026/' },
+  'fimma-maderalia-valencia': { start: '2026-11-10', end: '2026-11-13', cadence: 'biennial', source: 'https://fimma-maderalia.feriavalencia.com/noticias/fimma-maderalia-celebrara-su-proxima-edicion-del-10-al-13-de-noviembre-de-2026/' },
+  'piscimad-madrid': { start: '2026-11-10', end: '2026-11-13', cadence: 'biennial', source: 'https://www.ifema.es/en/piscimad' },
+  'smart-doors-madrid': { start: '2026-11-10', end: '2026-11-13', cadence: 'biennial', source: 'https://www.ifema.es/en/smart-doors' },
+  'veteco-madrid': { start: '2026-11-10', end: '2026-11-13', cadence: 'biennial', source: 'https://www.ifema.es/en/veteco' },
+  'empack-madrid': { start: '2026-11-11', end: '2026-11-12', cadence: 'annual', source: 'https://www.empackmadrid.com/en/empack-packaging-innovations-madrid/about-us/empack-madrid/' },
+  'tanger-nexus': { start: '2026-11-11', end: '2026-11-15', cadence: 'annual', source: 'https://www.nexusexposummit.com/en/live' },
+  'expodeca': { start: '2026-11-12', end: '2026-11-15', cadence: 'annual', source: 'https://infecar.es/ferias-y-eventos/expodeca-2026-feria-de-la-actividad-fisica-y-el-deporte-de-canarias/' },
+  'intur-valladolid': { start: '2026-11-12', end: '2026-11-15', cadence: 'annual', source: 'https://feriavalladolid.com/intur/' },
+  'simed-malaga': { start: '2026-11-12', end: '2026-11-14', cadence: 'annual', source: 'https://fycma.com/simed-2026-strengthens-its-international-reach-in-a-new-edition-focused-on-public-private-collaboration-investment-and-applied-innovation/' },
+  'salon-look-madrid': { start: '2026-11-13', end: '2026-11-15', cadence: 'annual', source: 'https://www.ifema.es/en/look' },
+  'beauty-profs-marseille': { start: '2026-11-14', end: '2026-11-15', cadence: 'annual', source: 'https://beauty-profs.com/en/' },
+  'pegs-europe-lisboa': { start: '2026-11-16', end: '2026-11-19', cadence: 'annual', source: 'https://www.pegsummiteurope.com/' },
+  'ibt-cote-azur': { start: '2026-11-17', end: '2026-11-17', cadence: 'annual', source: 'https://www.cote-azur.cci.fr/exposez-a-ibt-cote-dazur-le-rdv-de-lindustrie-et-de-la-construction-azureennes/' },
+  'piscine-global-lyon': { start: '2026-11-17', end: '2026-11-20', cadence: 'biennial', source: 'https://www.piscine-global.com/en' },
+  'concreta-oporto': { start: '2026-11-18', end: '2026-11-21', cadence: 'annual', source: 'https://exponor.pt/concreta/' },
+  'ctw-china-trade-week-casablanca': { start: '2026-11-18', end: '2026-11-20', cadence: 'annual', source: 'https://ctwmorocco.com/' },
+  'eletrica-oporto': { start: '2026-11-18', end: '2026-11-21', cadence: 'biennial', source: 'https://exponor.pt/en/event-calendar/' },
+  'visa-for-music-rabat': { start: '2026-11-18', end: '2026-11-21', cadence: 'annual', source: 'https://visaformusic.com/en/home/' },
+  'cioc-lisboa': { start: '2026-11-19', end: '2026-11-21', cadence: 'annual', source: 'https://www.omd.pt/congresso/2026/en/' },
+  'savim-marseille': { start: '2026-11-20', end: '2026-11-23', cadence: 'annual', source: 'https://www.salons-savim.fr/marseille/infos-pratiques-salon-savim-marseille/' },
+  'genera-madrid': { start: '2026-11-24', end: '2026-11-26', cadence: 'annual', source: 'https://www.ifema.es/en/genera' },
+  'sepem-industries-sud-est-grenoble': { start: '2026-11-24', end: '2026-11-26', cadence: 'biennial', source: 'https://grenoble.sepem-industries.com/content/practical-information' },
+  'sps-nuremberg': { start: '2026-11-24', end: '2026-11-26', cadence: 'annual', source: 'https://sps.mesago.com/nuernberg/en.html' },
+  'elec-expo-casablanca': { start: '2026-11-25', end: '2026-11-28', cadence: 'annual', source: 'https://elecexpo.ma/en/' },
+  'ener-event-casablanca': { start: '2026-11-25', end: '2026-11-28', cadence: 'annual', source: 'https://global-events.ma/en/class/elec-expo/' },
+  'solucop-nice': { start: '2026-11-26', end: '2026-11-27', cadence: 'annual', source: 'https://www.solucop.com/nice/' },
+  'aeromart-toulouse': { start: '2026-12-01', end: '2026-12-03', cadence: 'biennial', source: 'https://aeromart-toulouse.com/' },
+  'vinitech-sifel-bordeaux': { start: '2026-12-01', end: '2026-12-03', cadence: 'biennial', source: 'https://www.vinitech-sifel.com/en' },
+  'energaia-montpellier': { start: '2026-12-09', end: '2026-12-10', cadence: 'annual', source: 'https://www.energaia.fr/en/' },
+  'iberocio-badajoz': { start: '2026-12-26', end: '2026-12-30', cadence: 'annual', source: 'https://www.feriabadajoz.es/evento/iberocio/' },
+  'fitur-madrid': { start: '2027-01-20', end: '2027-01-24', cadence: 'annual', source: 'https://www.ifema.es/en/fitur' },
+  'sirha-lyon': { start: '2027-01-21', end: '2027-01-25', cadence: 'biennial', source: 'https://www.sirha-lyon.com/en' },
+  'millesime-bio-montpellier': { start: '2027-01-25', end: '2027-01-27', cadence: 'annual', source: 'https://www.millesime-bio.com/en/' },
+  'agraria-valladolid': { start: '2027-01-26', end: '2027-01-29', cadence: 'biennial', source: 'https://feriavalladolid.com/agraria/agraria-la-bienal-de-maquinaria-agricola-celebrara-su-novena-edicion-en-enero-de-2027/' },
+  'enomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
+  'oleomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
+  'tecnovid-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
+  'madrid-fusion': { start: '2027-02-01', end: '2027-02-03', cadence: 'annual', source: 'https://www.ifema.es/madrid-fusion' },
+  'ise-barcelona': { start: '2027-02-02', end: '2027-02-05', cadence: 'annual', source: 'https://www.iseurope.org/location-opening-hours' },
+  'intergift-madrid': { start: '2027-02-03', end: '2027-02-06', cadence: 'annual', source: 'https://www.ifema.es/en/intergift' },
+  'salon-estudiante-futuro-profesional-pamplona': { start: '2027-02-04', end: '2027-02-05', cadence: 'annual', source: 'https://baluarte.com/es/agenda/evento/salon-del-estudiante-y-el-empleo-4-5-febrero-2027' },
+  'barcelona-wine-week': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://www.barcelonawineweek.com/en/' },
+  'horeca-baleares-mallorca': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://horecabaleares.com/' },
+  'ht-malaga': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://fycma.com/ht-2027-tendra-lugar-del-8-al-10-de-febrero-de-2027-con-una-oferta-ampliada-y-mayor-proyeccion-internacional/' },
+  'siprho-montpellier': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://www.siprho.com/' },
+  'sirha-mediterranee-marseille': { start: '2027-02-14', end: '2027-02-16', cadence: 'annual', source: 'https://www.sirha-mediterranee.com/en' },
+  'lisbon-food-affair': { start: '2027-02-15', end: '2027-02-17', cadence: 'annual', source: 'https://lisbonfoodaffair.fil.pt/' },
+  'wine-paris': { start: '2027-02-15', end: '2027-02-17', cadence: 'annual', source: 'https://wineparis.com/opening-hours-access-and-map' },
+  'smagua-zaragoza': { start: '2027-02-16', end: '2027-02-18', cadence: 'biennial', source: 'https://www.feriazaragoza.es/en/smagua' },
+  'essencia-do-vinho-porto': { start: '2027-02-18', end: '2027-02-21', cadence: 'annual', source: 'https://www.essenciadovinho.com/' },
+  'feria-turismo-reyno-navarra-pamplona': { start: '2027-02-19', end: '2027-02-21', cadence: 'annual', source: 'https://navartur.es/' },
+  'navartur-pamplona': { start: '2027-02-19', end: '2027-02-21', cadence: 'annual', source: 'https://navartur.es/' },
+  'addit3d-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://www.metalindustria.com/noticias/20260721/bedigital-acompanando-industria-en-su-transformacion-digital' },
+  'bedigital-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://www.metalindustria.com/noticias/20260721/bedigital-acompanando-industria-en-su-transformacion-digital' },
+  'maintenance-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/maintenance-bilbao-2027/' },
+  'pumps-valves-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/pumps-valves-2027/' },
+  'subcontratacion-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://www.camarabilbao.com/empresa/soluciones-empresariales/subcontratacion-industrial/subcontex-abre-inscripcion-participar-industry-bilbao-202604221026/' },
+  'feria-de-los-mayores-de-extremadura-badajoz': { start: '2027-02-25', end: '2027-02-28', cadence: 'annual', source: 'https://feriabadajoz.es/ferias/feria-de-mayores/' },
+  'mwc-barcelona': { start: '2027-03-01', end: '2027-03-04', cadence: 'annual', source: 'https://www.mwcbarcelona.com/about' },
+  'jec-world-paris': { start: '2027-03-02', end: '2027-03-04', cadence: 'annual', source: 'https://www.jec-world.events/' },
+  'arcomadrid': { start: '2027-03-03', end: '2027-03-07', cadence: 'annual', source: 'https://www.ifema.es/en/arco/madrid' },
+  'btl-lisboa': { start: '2027-03-03', end: '2027-03-07', cadence: 'annual', source: 'https://btl.fil.pt/' },
+  'prowein-dusseldorf': { start: '2027-03-07', end: '2027-03-09', cadence: 'annual', source: 'https://www.prowein.de/de/Daten_Fakten' },
+  'marine-energy-week-bilbao': { start: '2027-03-09', end: '2027-03-10', cadence: 'biennial', source: 'https://www.interempresas.net/construccion-naval/652560-World-Maritime-Week-2027-confirma-primeras-empresas-instituciones-sexta-edicion-Bilbao.html' },
+  'world-maritime-week-bilbao': { start: '2027-03-09', end: '2027-03-10', cadence: 'biennial', source: 'https://www.interempresas.net/construccion-naval/652560-World-Maritime-Week-2027-confirma-primeras-empresas-instituciones-sexta-edicion-Bilbao.html' },
+  'iberpet-madrid': { start: '2027-03-10', end: '2027-03-12', cadence: 'annual', source: 'https://www.ifema.es/en/iberpet' },
+  'salon-vins-vignerons-independants-bordeaux': { start: '2027-03-12', end: '2027-03-14', cadence: 'annual', source: 'https://www.vignerons-independants.com/agenda-des-salons/bordeaux-2027' },
+  'global-industrie-lyon': { start: '2027-03-15', end: '2027-03-18', cadence: 'annual', source: 'https://www.global-industrie.com/' },
+  'figan-zaragoza': { start: '2027-03-16', end: '2027-03-19', cadence: 'biennial', source: 'https://www.feriazaragoza.es/figan' },
+  'logimat-stuttgart': { start: '2027-03-16', end: '2027-03-18', cadence: 'annual', source: 'https://www.logimat-messe.de/en' },
+  'mipim-cannes': { start: '2027-03-16', end: '2027-03-19', cadence: 'annual', source: 'https://www.mipim.com/en-gb.html' },
+  'rebuild-madrid': { start: '2027-03-16', end: '2027-03-18', cadence: 'annual', source: 'https://www.interempresas.net/Construccion/652055-Rebuild-2027-pondra-foco-integracion-sistemas-impulsar-construccion-industrializada.html' },
+  'futuralia-lisboa': { start: '2027-03-17', end: '2027-03-20', cadence: 'annual', source: 'https://futuralia.fil.pt/' },
+  'siac-marseille': { start: '2027-03-19', end: '2027-03-22', cadence: 'annual', source: 'https://siac-marseille.fr/visiter-le-siac/' },
+  'bepositive-lyon': { start: '2027-03-31', end: '2027-04-02', cadence: 'biennial', source: 'https://www.bepositive-events.com/en/practical-information' },
+  'morocco-textile-expo-casablanca': { start: '2027-04-01', end: '2027-04-04', cadence: 'annual', source: 'https://moroccofashiontex.net/' },
+  'hannover-messe': { start: '2027-04-05', end: '2027-04-08', cadence: 'annual', source: 'https://www.hannovermesse.de/en/for-visitors/opening-hours/' },
+  'sagalexpo-lisboa': { start: '2027-04-05', end: '2027-04-07', cadence: 'annual', source: 'https://sagalexpo.pt/' },
+  'motortec-madrid': { start: '2027-04-07', end: '2027-04-10', cadence: 'biennial', source: 'https://www.ifema.es/en/motortec' },
+  'foire-internationale-toulouse': { start: '2027-04-09', end: '2027-04-18', cadence: 'annual', source: 'https://www.foiredetoulouse.com/infos-pratiques' },
+  'automobile-barcelona': { start: '2027-04-10', end: '2027-04-18', cadence: 'biennial', source: 'https://www.automobilebarcelona.com/en/' },
+  'feaga-fuerteventura': { start: '2027-04-15', end: '2027-04-18', cadence: 'annual', source: 'https://feaga.net/' },
+  'seafood-expo-global-barcelona': { start: '2027-04-20', end: '2027-04-22', cadence: 'annual', source: 'https://www.seafoodexpo.com/global/' },
+  'sil-lisboa': { start: '2027-04-22', end: '2027-04-24', cadence: 'annual', source: 'https://imobiliario.fil.pt/' },
+  'tektonica-lisboa': { start: '2027-04-22', end: '2027-04-24', cadence: 'unknown', source: 'https://tektonica.fil.pt/' },
+  'salon-gourmets-madrid': { start: '2027-04-26', end: '2027-04-29', cadence: 'annual', source: 'https://www.gourmets.net/salon-gourmets/visitar/datos-de-interes' },
+  'empack-oporto': { start: '2027-04-28', end: '2027-04-29', cadence: 'annual', source: 'https://www.empacklogisticsautomationporto.com/en/' },
+  'medfel-perpignan': { start: '2027-04-28', end: '2027-04-29', cadence: 'annual', source: 'https://medfel.com/' },
+  'palma-international-boat-show': { start: '2027-04-28', end: '2027-05-01', cadence: 'annual', source: 'https://palmainternationalboatshow.com/' },
+  'palma-superyacht-village': { start: '2027-04-28', end: '2027-05-01', cadence: 'annual', source: 'https://palmasuperyachtvillage.com/' },
+  'hispack-barcelona': { start: '2027-05-04', end: '2027-05-07', cadence: 'triennial', source: 'https://www.hispack.com/en/general-information/' },
+  'infoagro-exhibition-aguadulce': { start: '2027-05-05', end: '2027-05-07', cadence: 'biennial', source: 'https://www.infoagro.com/noticias/2026/los_caminos_de_quienes_lideran_el_agro_volveran_a_encontrarse_en_infoa.asp' },
+  'itf-intertex-oporto': { start: '2027-05-11', end: '2027-05-13', cadence: 'annual', source: 'https://intertexportugal.com/' },
+  'expoliva-jaen': { start: '2027-05-12', end: '2027-05-15', cadence: 'biennial', source: 'https://oleumxauen.es/la-organizacion-de-expoliva-2027-fija-la-celebracion-de-la-muestra-bienal-entre-el-12-y-el-15-de-mayo-antes-de-las-elecciones-municipales/' },
+  'solar-storage-live-espana-valencia': { start: '2027-05-12', end: '2027-05-13', cadence: 'annual', source: 'https://www.terrapinn.com/exhibition/solar-storage-live-espana/index.stm' },
+  'construmat-barcelona': { start: '2027-05-18', end: '2027-05-20', cadence: 'biennial', source: 'https://www.construmat.com/en/evento/' },
+  'airspace-world-lisboa': { start: '2027-05-25', end: '2027-05-27', cadence: 'annual', source: 'https://airspaceworld.com/' },
+  'asturforesta-tineo': { start: '2027-05-27', end: '2027-05-29', cadence: 'biennial', source: 'https://www.asturforesta.es/' },
+  'emaf-oporto': { start: '2027-06-01', end: '2027-06-04', cadence: 'biennial', source: 'https://exponor.pt/emaf/' },
+  'cycleau-nouvelle-aquitaine-bordeaux': { start: '2027-06-02', end: '2027-06-03', cadence: 'biennial', source: 'https://www.cycleau.fr/evenements/cycl-eau-bordeaux-nouvelle-aquitaine' },
+  'des-malaga': { start: '2027-06-08', end: '2027-06-10', cadence: 'annual', source: 'https://www.des-show.com/es/' },
+  'sil-barcelona': { start: '2027-06-09', end: '2027-06-11', cadence: 'annual', source: 'https://www.silbcn.com/en/' },
+  'ecuextre-badajoz': { start: '2027-06-10', end: '2027-06-13', cadence: 'annual', source: 'https://feriabadajoz.es/ferias/ecuextre-y-toro/' },
+  'automatica-munich': { start: '2027-06-22', end: '2027-06-25', cadence: 'biennial', source: 'https://automatica-munich.com/en/' },
+  'labelexpo-barcelona': { start: '2027-10-05', end: '2027-10-08', cadence: 'biennial', source: 'https://www.loupe-europe.com/' },
+  'pollutec-lyon': { start: '2027-10-12', end: '2027-10-15', cadence: 'biennial', source: 'https://www.pollutec.com/en-gb/practical-info.html' },
+  'piscina-wellness-barcelona': { start: '2027-11-15', end: '2027-11-18', cadence: 'biennial', source: 'https://www.piscinabarcelona.es/' },
+  'prod-pack-lyon': { start: '2027-11-16', end: '2027-11-18', cadence: 'biennial', source: 'https://www.prodandpack.com/en/practical-informations' },
+  'smahrt-toulouse': { start: '2028-01-30', end: '2028-02-01', cadence: 'biennial', source: 'https://www.smahrt.com/en' },
+  'euromaritime-marseille': { start: '2028-02-01', end: '2028-02-03', cadence: 'biennial', source: 'https://www.euromaritime.fr/' },
+  'biemh-bilbao': { start: '2028-03-06', end: '2028-03-10', cadence: 'biennial', source: 'https://www.interempresas.net/MetalMecanica/624748-BIEMH-cierra-su-edicion-de-2026-como-referente-del-manufacturing-avanzado.html' },
+  'alimentaria-barcelona': { start: '2028-03-20', end: '2028-03-23', cadence: 'biennial', source: 'https://www.alimentaria.com/' },
+  'hostelco-barcelona': { start: '2028-03-20', end: '2028-03-23', cadence: 'biennial', source: 'https://www.hostelco.com/en/' },
+  'bauma-munich': { start: '2028-04-03', end: '2028-04-09', cadence: 'triennial', source: 'https://bauma.de/en/trade-fair/' },
+  'mountain-planet-grenoble': { start: '2028-04-11', end: '2028-04-13', cadence: 'biennial', source: 'https://www.mountain-planet.com/en/' },
+  'expooptica-madrid': { start: '2028-04-23', end: '2028-04-25', cadence: 'biennial', source: 'https://www.ifema.es/en/expooptica' }
+};
+
+/** Periodicidad de una feria, en los 11 idiomas (para la línea de tiempo). */
+export const cadenceLabels = {
+  annual: { es: 'anual', en: 'annual', de: 'jährlich', pt: 'anual', fr: 'annuel', it: 'annuale', nl: 'jaarlijks', zh: '每年', hi: 'वार्षिक', ko: '매년', ja: '毎年' },
+  biennial: { es: 'bienal', en: 'biennial', de: 'zweijährlich', pt: 'bienal', fr: 'biennal', it: 'biennale', nl: 'tweejaarlijks', zh: '每两年', hi: 'द्विवार्षिक', ko: '격년', ja: '隔年' },
+  triennial: { es: 'trienal', en: 'triennial', de: 'dreijährlich', pt: 'trienal', fr: 'triennal', it: 'triennale', nl: 'driejaarlijks', zh: '每三年', hi: 'त्रिवार्षिक', ko: '3년마다', ja: '3年ごと' }
+};
+
+const MONTHS = {
+  es: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+  pt: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+  fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+  it: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'],
+  nl: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+  hi: ['जनवरी', 'फ़रवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर']
+};
+// zh/ja/ko no usan nombre de mes: se formatean con cifras y sus propios sufijos.
+const CJK = {
+  zh: (y, m, d1, d2, m2) => m2 && m2 !== m
+    ? `${y}年${m}月${d1}日-${m2}月${d2}日`
+    : (d2 && d2 !== d1 ? `${y}年${m}月${d1}-${d2}日` : `${y}年${m}月${d1}日`),
+  ja: (y, m, d1, d2, m2) => m2 && m2 !== m
+    ? `${y}年${m}月${d1}日〜${m2}月${d2}日`
+    : (d2 && d2 !== d1 ? `${y}年${m}月${d1}〜${d2}日` : `${y}年${m}月${d1}日`),
+  ko: (y, m, d1, d2, m2) => m2 && m2 !== m
+    ? `${y}년 ${m}월 ${d1}일~${m2}월 ${d2}일`
+    : (d2 && d2 !== d1 ? `${y}년 ${m}월 ${d1}~${d2}일` : `${y}년 ${m}월 ${d1}일`)
+};
+
+/** Parte una fecha ISO en [año, mes(1-12), día] sin depender de la zona horaria. */
+function parseISO(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  return m ? [+m[1], +m[2], +m[3]] : null;
+}
+
+/**
+ * Fecha de la próxima edición ya formateada para mostrar, o null si la feria no
+ * tiene fecha registrada o si la que hay YA HA PASADO (nunca se muestra una
+ * fecha caducada: es preferible no decir nada).
+ *
+ * @param {string} slug  slug de la feria (fairsData)
+ * @param {string} lang  idioma de la página
+ * @param {string} today fecha ISO de referencia (por defecto, hoy)
+ */
+export function formatFairDates(slug, lang = 'es', today = null) {
+  const entry = fairDates[slug];
+  if (!entry || !entry.start) return null;
+  const start = parseISO(entry.start);
+  const end = parseISO(entry.end || entry.start);
+  if (!start || !end) return null;
+
+  // Fecha caducada -> no se muestra. Se compara con el ÚLTIMO día de la feria:
+  // mientras el certamen esté en curso, la fecha sigue siendo información válida.
+  const ref = today || new Date().toISOString().slice(0, 10);
+  if ((entry.end || entry.start) < ref) return null;
+
+  const [y1, m1, d1] = start;
+  const [y2, m2, d2] = end;
+
+  if (CJK[lang]) return CJK[lang](y2, m1, d1, d2, m2);
+
+  const months = MONTHS[lang] || MONTHS.es;
+  const mn1 = months[m1 - 1];
+  const mn2 = months[m2 - 1];
+
+  // Cruza de mes (o de año): "28 abril - 2 mayo 2027"
+  if (m1 !== m2 || y1 !== y2) {
+    return y1 !== y2
+      ? `${d1} ${mn1} ${y1} - ${d2} ${mn2} ${y2}`
+      : `${d1} ${mn1} - ${d2} ${mn2} ${y2}`;
+  }
+  // Un solo día: "28 abril 2027"
+  if (d1 === d2) return `${d1} ${mn1} ${y1}`;
+  // Dos días consecutivos: "28 & 29 abril 2027"
+  if (d2 - d1 === 1) return `${d1} & ${d2} ${mn1} ${y1}`;
+  // Rango: "15-18 abril 2027"
+  return `${d1}-${d2} ${mn1} ${y1}`;
+}
+
+/** Entrada cruda (start/end/cadence) de una feria, o null. */
+export function fairDatesFor(slug) {
+  return fairDates[slug] || null;
+}
+
+// Mes abreviado para espacios estrechos (nodos de la línea de tiempo).
+const MONTHS_SHORT = {
+  es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+  en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  de: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+  pt: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+  fr: ['jan', 'fév', 'mar', 'avr', 'mai', 'juin', 'juil', 'août', 'sep', 'oct', 'nov', 'déc'],
+  it: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
+  nl: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+  hi: ['जन', 'फ़र', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुल', 'अग', 'सित', 'अक्तू', 'नव', 'दिस']
+};
+
+/**
+ * Igual que formatFairDates pero en versión corta ("28-29 abr 2027"), para los
+ * nodos de la línea de tiempo. Devuelve null con los mismos criterios (sin fecha
+ * registrada o fecha ya pasada).
+ */
+export function formatFairDatesShort(slug, lang = 'es', today = null) {
+  const entry = fairDates[slug];
+  if (!entry || !entry.start) return null;
+  const start = parseISO(entry.start);
+  const end = parseISO(entry.end || entry.start);
+  if (!start || !end) return null;
+  const ref = today || new Date().toISOString().slice(0, 10);
+  if ((entry.end || entry.start) < ref) return null;
+
+  const [y1, m1, d1] = start;
+  const [y2, m2, d2] = end;
+  if (CJK[lang]) return CJK[lang](y2, m1, d1, d2, m2);
+
+  const months = MONTHS_SHORT[lang] || MONTHS_SHORT.es;
+  const mn1 = months[m1 - 1];
+  const mn2 = months[m2 - 1];
+  if (m1 !== m2 || y1 !== y2) {
+    return y1 !== y2 ? `${d1} ${mn1} ${y1} - ${d2} ${mn2} ${y2}` : `${d1} ${mn1} - ${d2} ${mn2} ${y2}`;
+  }
+  if (d1 === d2) return `${d1} ${mn1} ${y1}`;
+  return `${d1}-${d2} ${mn1} ${y1}`;
+}

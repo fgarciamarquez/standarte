@@ -3,6 +3,7 @@
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, activityUrl, ctaBudget, preciosNav, projectUrl, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
   import { activitiesForFair, colorForTag, labelForTag, fairTags } from '$lib/fairTags.js';
+  import { formatFairDates } from '$lib/fairDates.js';
   import { fairFreshnessFor } from '$lib/seoFreshness.js';
   import { projectsForActivity } from '$lib/projectTags.js';
   import { projectIndex } from '$lib/projectIndex.js';
@@ -12,6 +13,7 @@
   import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
   import AiSourceButtons from './AiSourceButtons.svelte';
+  import FairTimeline from './FairTimeline.svelte';
   import { advisorDismissed } from '$lib/stores/advisor.js';
   import { coverageProof, coveragePatCta, coverageMapAlt } from '$lib/coverageStrings.js';
   import { navFlagCountry } from '$lib/cityFlags.js';
@@ -553,6 +555,21 @@
   };
 
   $: localizedCity = (cities[lang] && cities[lang][fair.city]) ? cities[lang][fair.city] : fair.city;
+  // Fechas de la próxima edición (fairDates): dan frescura a la respuesta directa
+  // —"(Oporto - 28 & 29 abril 2027)"—. Devuelve null si la feria no tiene fecha
+  // verificada o si la registrada ya pasó, y entonces se muestra solo la ciudad.
+  $: fairDateLabel = formatFairDates(fair.slug, lang);
+  // En es/pt/en/de/fr/it/nl la respuesta directa ya envuelve la ciudad en paréntesis
+  // —"(Oporto - 28 & 29 abril 2027)"—, así que basta con el guion. En zh/ja/ko/hi la
+  // ciudad va suelta dentro de la frase ("在{ciudad}的{feria}"), y ahí el guion se lee
+  // forzado: la fecha se encierra entre paréntesis (de ancho completo en zh/ja).
+  $: cityWithDate = !fairDateLabel
+    ? localizedCity
+    : (lang === 'zh' || lang === 'ja')
+      ? `${localizedCity}（${fairDateLabel}）`
+      : (lang === 'ko' || lang === 'hi')
+        ? `${localizedCity} (${fairDateLabel})`
+        : `${localizedCity} - ${fairDateLabel}`;
   // Congresos itinerantes (city === 'Itinerante'): no tienen ciudad/recinto fijos. La ficha
   // se enfoca con honestidad — Standarte monta el stand allá donde se celebre el congreso.
   $: isItinerant = fair.city === 'Itinerante';
@@ -1055,7 +1072,7 @@
         <!-- Respuesta directa citable (GEO): instrumentos propios + cobertura ES/PT.
              Cierra con el reclamo de expansión: "…te ofrecemos N ferias…", donde
              "N ferias" enlaza a Pat (sembrado con el sector de esta feria). -->
-        <p class="feria-direct-answer">{da(fair.name, localizedCity)} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}</p>
+        <p class="feria-direct-answer">{da(fair.name, cityWithDate)} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}</p>
         <!-- Página de destino: CTA prioritario tras el primer párrafo que baja al
              formulario del final para que el visitante pida presupuesto sin perderse. -->
         <a
@@ -1140,6 +1157,12 @@
             </ul>
           </div>
         </details>
+
+        <!-- Línea de tiempo sectorial: sitúa esta feria y las próximas de su misma
+             actividad. Cierra el cuerpo, justo antes del formulario, para que el
+             visitante llegue a pedir presupuesto ya orientado en el calendario. -->
+        <FairTimeline {lang} slug={fair.slug} name={fair.name} tags={fairActivityTags}
+          cityLabel={(c) => (cities[lang] && cities[lang][c]) ? cities[lang][c] : c} />
       </div>
       <aside class="feria-aside">
         <!-- Prueba de cobertura: miniatura del mapa de Pat + CTA que lo abre. -->
