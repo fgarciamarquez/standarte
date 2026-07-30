@@ -7,7 +7,7 @@
   import { fairFreshnessFor } from '$lib/seoFreshness.js';
   import { projectsForActivity } from '$lib/projectTags.js';
   import { projectIndex } from '$lib/projectIndex.js';
-  import { pickIntroVariant } from '$lib/introVariants.js';
+  import { pickIntroVariant, foreignCountryName } from '$lib/introVariants.js';
   import { pickUspLine, uspNavLabel } from '$lib/uspSnippets.js';
   import { CITY_POINTS } from '$lib/iberiaMeshData.js';
   import ContactForm from './ContactForm.svelte';
@@ -661,7 +661,7 @@
   // fichas compartan la misma meta-description (riesgo de duplicado ante Google).
   $: seoDesc = isItinerant
     ? (introItinerant[lang] || introItinerant.es)(fair.name, localizedSector)
-    : pickIntroVariant(lang, fair.slug, fair.name, localizedCity, localizedSector);
+    : pickIntroVariant(lang, fair.slug, fair.name, localizedCity, localizedSector, fair.country);
 
   // Clúster: enlace al pilar de ciudad + ferias hermanas de la misma región
   $: clusterStr = clusterT[lang] || clusterT.es;
@@ -774,17 +774,34 @@
   // --- Respuesta directa (GEO): 2-3 frases citables al inicio, con los instrumentos
   // propios (prototipo 3D 72h, presupuesto 24h, Proyecto Auditado) y la cobertura ES+PT.
   const directAnswer = {
-    es: (n, c) => `En ${n} (${c}), Standarte diseña, fabrica y monta tu stand con prototipo 3D en 72 h, presupuesto en 24 h y la garantía de Proyecto Auditado: lo que ves es lo que se construye. Cobertura propia en toda España y Portugal, con más de 169 proyectos y 158 ferias a la espalda.`,
-    pt: (n, c) => `Na ${n} (${c}), a Standarte concebe, fabrica e monta o seu stand com protótipo 3D em 72 h, orçamento em 24 h e a garantia de Projeto Auditado: o que vê é o que se constrói. Cobertura própria em toda a Espanha e Portugal, com mais de 169 projetos e 158 feiras.`,
-    en: (n, c) => `At ${n} (${c}), Standarte designs, builds and assembles your stand with a 3D prototype in 72h, a quote in 24h and the Audited Project guarantee: what you see is what gets built. Own coverage across Spain and Portugal, with 169+ projects and 158 fairs.`,
-    de: (n, c) => `Auf der ${n} (${c}) plant, fertigt und montiert Standarte Ihren Stand mit 3D-Prototyp in 72 Std., Angebot in 24 Std. und der Garantie des Auditierten Projekts: Was Sie sehen, wird gebaut. Eigene Abdeckung in ganz Spanien und Portugal, mit über 169 Projekten und 158 Messen.`,
-    fr: (n, c) => `Au salon ${n} (${c}), Standarte conçoit, fabrique et monte votre stand avec prototype 3D en 72 h, devis en 24 h et la garantie du Projet Audité : ce que vous voyez est ce qui est construit. Couverture propre dans toute l'Espagne et le Portugal, avec plus de 169 projets et 158 salons.`,
-    it: (n, c) => `Alla ${n} (${c}), Standarte progetta, produce e allestisce il tuo stand con prototipo 3D in 72 h, preventivo in 24 h e la garanzia del Progetto Verificato: ciò che vedi è ciò che viene costruito. Copertura propria in tutta la Spagna e il Portogallo, con oltre 169 progetti e 158 fiere.`,
-    nl: (n, c) => `Op ${n} (${c}) ontwerpt, bouwt en monteert Standarte uw stand met een 3D-prototype in 72 u, een offerte in 24 u en de garantie van het Geauditeerd Project: wat u ziet is wat wordt gebouwd. Eigen dekking in heel Spanje en Portugal, met meer dan 169 projecten en 158 beurzen.`,
-    zh: (n, c) => `在${c}的${n}，Standarte 为您设计、制造并搭建展台：72小时3D原型、24小时报价，以及“已审核项目”保障——所见即所建。自有团队覆盖西班牙和葡萄牙全境，拥有超过169个项目和158场展会经验。`,
-    hi: (n, c) => `${c} में ${n} के लिए, Standarte आपका स्टैंड डिज़ाइन, निर्माण और स्थापित करता है: 72 घंटे में 3D प्रोटोटाइप, 24 घंटे में कोटेशन और ऑडिटेड प्रोजेक्ट की गारंटी — जो आप देखते हैं वही बनता है। स्पेन और पुर्तगाल में अपनी कवरेज, 169+ प्रोजेक्ट और 158 मेलों के अनुभव के साथ।`,
-    ko: (n, c) => `${c}의 ${n}에서 Standarte는 72시간 3D 프로토타입, 24시간 견적, 감사받은 프로젝트 보증으로 부스를 디자인·제작·시공합니다. 보이는 그대로 제작됩니다. 스페인과 포르투갈 전역 자체 커버리지, 169개 이상의 프로젝트와 158개 박람회 경험.`,
-    ja: (n, c) => `${c}の${n}で、Standarteは72時間で3Dプロトタイプ、24時間で見積もり、監査済みプロジェクトの保証とともにブースを設計・製作・施工します。見たものがそのまま形になります。スペインとポルトガル全土を自社でカバーし、169件以上のプロジェクトと158の展示会の実績。`
+    es: (n, c, g) => `En ${n} (${c}), Standarte diseña, fabrica y monta tu stand con prototipo 3D en 72 h, presupuesto en 24 h y la garantía de Proyecto Auditado: lo que ves es lo que se construye. ${g}`,
+    pt: (n, c, g) => `Na ${n} (${c}), a Standarte concebe, fabrica e monta o seu stand com protótipo 3D em 72 h, orçamento em 24 h e a garantia de Projeto Auditado: o que vê é o que se constrói. ${g}`,
+    en: (n, c, g) => `At ${n} (${c}), Standarte designs, builds and assembles your stand with a 3D prototype in 72h, a quote in 24h and the Audited Project guarantee: what you see is what gets built. ${g}`,
+    de: (n, c, g) => `Auf der ${n} (${c}) plant, fertigt und montiert Standarte Ihren Stand mit 3D-Prototyp in 72 Std., Angebot in 24 Std. und der Garantie des Auditierten Projekts: Was Sie sehen, wird gebaut. ${g}`,
+    fr: (n, c, g) => `Au salon ${n} (${c}), Standarte conçoit, fabrique et monte votre stand avec prototype 3D en 72 h, devis en 24 h et la garantie du Projet Audité : ce que vous voyez est ce qui est construit. ${g}`,
+    it: (n, c, g) => `Alla ${n} (${c}), Standarte progetta, produce e allestisce il tuo stand con prototipo 3D in 72 h, preventivo in 24 h e la garanzia del Progetto Verificato: ciò che vedi è ciò che viene costruito. ${g}`,
+    nl: (n, c, g) => `Op ${n} (${c}) ontwerpt, bouwt en monteert Standarte uw stand met een 3D-prototype in 72 u, een offerte in 24 u en de garantie van het Geauditeerd Project: wat u ziet is wat wordt gebouwd. ${g}`,
+    zh: (n, c, g) => `在${c}的${n}，Standarte 为您设计、制造并搭建展台：72小时3D原型、24小时报价，以及“已审核项目”保障——所见即所建。${g}`,
+    hi: (n, c, g) => `${c} में ${n} के लिए, Standarte आपका स्टैंड डिज़ाइन, निर्माण और स्थापित करता है: 72 घंटे में 3D प्रोटोटाइप, 24 घंटे में कोटेशन और ऑडिटेड प्रोजेक्ट की गारंटी — जो आप देखते हैं वही बनता है। ${g}`,
+    ko: (n, c, g) => `${c}의 ${n}에서 Standarte는 72시간 3D 프로토타입, 24시간 견적, 감사받은 프로젝트 보증으로 부스를 디자인·제작·시공합니다. 보이는 그대로 제작됩니다. ${g}`,
+    ja: (n, c, g) => `${c}の${n}で、Standarteは72時間で3Dプロトタイプ、24時間で見積もり、監査済みプロジェクトの保証とともにブースを設計・製作・施工します。見たものがそのまま形になります。${g}`
+  };
+
+  // Coletilla de cobertura geográfica del bloque GEO: para ferias de ES/PT afirma
+  // la cobertura ibérica; para las extranjeras (fr/de/ch/ma/ad) integra el país en
+  // una enumeración ("España, Portugal y {país}") para dar la pertinencia correcta.
+  const geoTail = {
+    es: { home: 'Cobertura propia en toda España y Portugal, con más de 169 proyectos y 158 ferias a la espalda.', intl: (p) => `Cobertura propia en España, Portugal y ${p}, con transporte internacional, más de 169 proyectos y 158 ferias.` },
+    pt: { home: 'Cobertura própria em toda a Espanha e Portugal, com mais de 169 projetos e 158 feiras.', intl: (p) => `Cobertura própria em Espanha, Portugal e ${p}, com transporte internacional, mais de 169 projetos e 158 feiras.` },
+    en: { home: 'Own coverage across Spain and Portugal, with 169+ projects and 158 fairs.', intl: (p) => `Own coverage across Spain, Portugal and ${p}, with international transport, 169+ projects and 158 fairs.` },
+    de: { home: 'Eigene Abdeckung in ganz Spanien und Portugal, mit über 169 Projekten und 158 Messen.', intl: (p) => `Eigene Abdeckung in Spanien, Portugal und ${p}, mit internationalem Transport, über 169 Projekten und 158 Messen.` },
+    fr: { home: "Couverture propre dans toute l'Espagne et le Portugal, avec plus de 169 projets et 158 salons.", intl: (p) => `Couverture propre en Espagne, au Portugal et ${p}, avec transport international, plus de 169 projets et 158 salons.` },
+    it: { home: 'Copertura propria in tutta la Spagna e il Portogallo, con oltre 169 progetti e 158 fiere.', intl: (p) => `Copertura propria in Spagna, Portogallo e ${p}, con trasporto internazionale, oltre 169 progetti e 158 fiere.` },
+    nl: { home: 'Eigen dekking in heel Spanje en Portugal, met meer dan 169 projecten en 158 beurzen.', intl: (p) => `Eigen dekking in Spanje, Portugal en ${p}, met internationaal transport, meer dan 169 projecten en 158 beurzen.` },
+    zh: { home: '自有团队覆盖西班牙和葡萄牙全境，拥有超过169个项目和158场展会经验。', intl: (p) => `自有团队覆盖西班牙、葡萄牙及${p}，提供国际运输，拥有超过169个项目和158场展会经验。` },
+    hi: { home: 'स्पेन और पुर्तगाल में अपनी कवरेज, 169+ प्रोजेक्ट और 158 मेलों के अनुभव के साथ।', intl: (p) => `स्पेन, पुर्तगाल और ${p} में अपनी कवरेज, अंतरराष्ट्रीय परिवहन, 169+ प्रोजेक्ट और 158 मेलों के साथ।` },
+    ko: { home: '스페인과 포르투갈 전역 자체 커버리지, 169개 이상의 프로젝트와 158개 박람회 경험.', intl: (p) => `스페인, 포르투갈 및 ${p} 자체 커버리지, 국제 운송, 169개 이상의 프로젝트와 158개 박람회 경험.` },
+    ja: { home: 'スペインとポルトガル全土を自社でカバーし、169件以上のプロジェクトと158の展示会の実績。', intl: (p) => `スペイン・ポルトガルおよび${p}を自社でカバーし、国際輸送に対応、169件以上のプロジェクトと158の展示会の実績。` }
   };
 
   // --- Reclamo de expansión de Pat: se integra al FINAL de la respuesta directa
@@ -805,6 +822,9 @@
   };
   $: da = (directAnswer[lang] || directAnswer.es);
   $: pc = (patCta[lang] || patCta.es);
+  // País localizado si la feria está fuera de ES/PT; coletilla de cobertura GEO acorde.
+  $: foreignCName = foreignCountryName[fair.country] ? (foreignCountryName[fair.country][lang] || foreignCountryName[fair.country].en) : '';
+  $: geoTailText = (() => { const gt = geoTail[lang] || geoTail.es; return foreignCName ? gt.intl(foreignCName) : gt.home; })();
 
   // #4 (G1) Proyectos 3D reales del mismo sector que esta feria (malla feria → proyecto).
   // "La categoría" es la PRIMERA actividad de la feria que tenga proyectos: se devuelven
@@ -1082,7 +1102,7 @@
         <!-- Respuesta directa citable (GEO): instrumentos propios + cobertura ES/PT.
              Cierra con el reclamo de expansión: "…te ofrecemos N ferias…", donde
              "N ferias" enlaza a Pat (sembrado con el sector de esta feria). -->
-        <p class="feria-direct-answer">{da(fair.name, cityWithDate)} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}</p>
+        <p class="feria-direct-answer">{da(fair.name, cityWithDate, geoTailText)} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}</p>
         <!-- Página de destino: CTA prioritario tras el primer párrafo que baja al
              formulario del final para que el visitante pida presupuesto sin perderse. -->
         <a

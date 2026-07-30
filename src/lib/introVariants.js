@@ -101,9 +101,24 @@ function pickIndex(slug, n) {
   return h % n;
 }
 
-/** Devuelve la intro variada para una feria, con los marcadores sustituidos. */
-export function pickIntroVariant(lang, slug, name, city, sector) {
+// Nombre del país (localizado) para las ferias fuera de ES/PT. Se integra en la
+// meta-description (ciudad → "ciudad (País)") para dar la pertinencia geográfica
+// correcta a las ferias de Francia, Alemania, Suiza, Marruecos y Andorra.
+export const foreignCountryName = {
+  fr: { es: 'Francia', pt: 'França', en: 'France', de: 'Frankreich', fr: 'France', it: 'Francia', nl: 'Frankrijk', zh: '法国', hi: 'फ़्रांस', ko: '프랑스', ja: 'フランス' },
+  de: { es: 'Alemania', pt: 'Alemanha', en: 'Germany', de: 'Deutschland', fr: 'Allemagne', it: 'Germania', nl: 'Duitsland', zh: '德国', hi: 'जर्मनी', ko: '독일', ja: 'ドイツ' },
+  ch: { es: 'Suiza', pt: 'Suíça', en: 'Switzerland', de: 'Schweiz', fr: 'Suisse', it: 'Svizzera', nl: 'Zwitserland', zh: '瑞士', hi: 'स्विट्ज़रलैंड', ko: '스위스', ja: 'スイス' },
+  ma: { es: 'Marruecos', pt: 'Marrocos', en: 'Morocco', de: 'Marokko', fr: 'Maroc', it: 'Marocco', nl: 'Marokko', zh: '摩洛哥', hi: 'मोरक्को', ko: '모로코', ja: 'モロッコ' },
+  ad: { es: 'Andorra', pt: 'Andorra', en: 'Andorra', de: 'Andorra', fr: 'Andorre', it: 'Andorra', nl: 'Andorra', zh: '安道尔', hi: 'अंडोरा', ko: '안도라', ja: 'アンドラ' }
+};
+
+/** Devuelve la intro variada para una feria, con los marcadores sustituidos.
+ *  Para ferias fuera de ES/PT, la ciudad se anota con su país ("París (Francia)")
+ *  para reforzar la pertinencia geográfica de la ficha en la búsqueda. */
+export function pickIntroVariant(lang, slug, name, city, sector, country) {
   const arr = (introVariants[lang] && introVariants[lang].length) ? introVariants[lang] : introVariants.es;
   const v = arr[pickIndex(String(slug || ""), arr.length)];
-  return v.replace(/\{\{name\}\}/g, name).replace(/\{\{city\}\}/g, city).replace(/\{\{sector\}\}/g, sector);
+  const cc = foreignCountryName[country];
+  const cityLabel = cc ? `${city}, ${cc[lang] || cc.en}` : city;
+  return v.replace(/\{\{name\}\}/g, name).replace(/\{\{city\}\}/g, cityLabel).replace(/\{\{sector\}\}/g, sector);
 }
