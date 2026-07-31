@@ -11,7 +11,7 @@ Ciudad dibujada en el mapa de Pat.
 
 ## Ferias aquí
 - [[Enoforum]]
-- [[Enomaq]]
+- [[Enomaq Zaragoza]]
 - [[Figan]]
 - [[Fima Zaragoza]]
 - [[Oleomaq]]

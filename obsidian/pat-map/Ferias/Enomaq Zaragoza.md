@@ -1,12 +1,12 @@
 ---
 tipo: feria
-slug: enomaq-zaragoza
+slug: stand-enomaq-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true
 con_texto: true
 ---
-# Enomaq
+# Enomaq Zaragoza
 
 - Ciudad: [[Zaragoza]]
 - Sector(es): [[Enología y Vinos]]

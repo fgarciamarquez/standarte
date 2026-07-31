@@ -15,7 +15,7 @@ Actividad del sector [[Enología y Vinos]].
 - [[Douro & Porto Wine Festival]]
 - [[Encontro com Vinhos e Sabores]]
 - [[Enoforum]]
-- [[Enomaq]]
+- [[Enomaq Zaragoza]]
 - [[Enotécnica & Olitécnica]]
 - [[Espacio Ribera]]
 - [[Essência do Vinho Lisboa]]

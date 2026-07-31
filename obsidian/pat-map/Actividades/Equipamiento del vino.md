@@ -11,7 +11,7 @@ Actividad del sector [[Enología y Vinos]].
 ## Ferias
 - [[AGROVID]]
 - [[Enoforum]]
-- [[Enomaq]]
+- [[Enomaq Zaragoza]]
 - [[Enotécnica & Olitécnica]]
 - [[FICOR]]
 - [[SIEB]]
