@@ -71,6 +71,81 @@
   let metros = '';
   let rango = null;            // clave de banda, 'unsure', o null
   let descripcion = '';
+
+  // ── Archivos adjuntos del paso 4 (planos, fotos, briefing) ──────────────────
+  // Los mismos límites que aplica el servidor en ajax_presupuesto_form.php. Aquí se
+  // comprueban para avisar al momento; la validación que manda es la del servidor.
+  const FILE_MAX_COUNT = 5;
+  const FILE_MAX_BYTES = 8 * 1024 * 1024;
+  const FILE_MAX_TOTAL = 20 * 1024 * 1024;
+  const FILE_EXT = ['pdf','jpg','jpeg','png','webp','avif','gif','dwg','dxf','zip','doc','docx','xls','xlsx','ppt','pptx','ai','psd','svg','txt'];
+  let archivos = [];
+  let dragOver = false;
+  let fileError = '';
+  let fileInputEl;
+
+  // Textos del adjuntador. `hint` resume qué se puede subir; los tres mensajes de
+  // error son funciones porque llevan dentro el nombre del archivo o el límite.
+  const fileCopy = {
+    es: { title: 'Planos, fotos o referencias', drop: 'Arrastra tus archivos aquí', or: 'o', browse: 'selecciónalos', hint: 'PDF, imágenes, DWG, ZIP… hasta 5 archivos de 8 MB', remove: 'Quitar',
+      max: (n) => `Máximo ${n} archivos`, type: (f) => `${f}: tipo no admitido`, big: (f) => `${f}: supera 8 MB`, total: 'Se supera el total de 20 MB' },
+    en: { title: 'Drawings, photos or references', drop: 'Drag your files here', or: 'or', browse: 'browse', hint: 'PDF, images, DWG, ZIP… up to 5 files of 8 MB', remove: 'Remove',
+      max: (n) => `Maximum ${n} files`, type: (f) => `${f}: file type not allowed`, big: (f) => `${f}: over 8 MB`, total: 'Total of 20 MB exceeded' },
+    de: { title: 'Pläne, Fotos oder Referenzen', drop: 'Dateien hierher ziehen', or: 'oder', browse: 'auswählen', hint: 'PDF, Bilder, DWG, ZIP… bis zu 5 Dateien à 8 MB', remove: 'Entfernen',
+      max: (n) => `Maximal ${n} Dateien`, type: (f) => `${f}: Dateityp nicht zulässig`, big: (f) => `${f}: über 8 MB`, total: 'Gesamtgrenze von 20 MB überschritten' },
+    pt: { title: 'Plantas, fotos ou referências', drop: 'Arraste os seus ficheiros para aqui', or: 'ou', browse: 'selecione-os', hint: 'PDF, imagens, DWG, ZIP… até 5 ficheiros de 8 MB', remove: 'Remover',
+      max: (n) => `Máximo ${n} ficheiros`, type: (f) => `${f}: tipo não admitido`, big: (f) => `${f}: excede 8 MB`, total: 'Excede o total de 20 MB' },
+    fr: { title: 'Plans, photos ou références', drop: 'Glissez vos fichiers ici', or: 'ou', browse: 'sélectionnez-les', hint: 'PDF, images, DWG, ZIP… jusqu’à 5 fichiers de 8 Mo', remove: 'Retirer',
+      max: (n) => `${n} fichiers maximum`, type: (f) => `${f} : type non autorisé`, big: (f) => `${f} : dépasse 8 Mo`, total: 'Total de 20 Mo dépassé' },
+    it: { title: 'Disegni, foto o riferimenti', drop: 'Trascina qui i tuoi file', or: 'oppure', browse: 'selezionali', hint: 'PDF, immagini, DWG, ZIP… fino a 5 file da 8 MB', remove: 'Rimuovi',
+      max: (n) => `Massimo ${n} file`, type: (f) => `${f}: tipo non ammesso`, big: (f) => `${f}: supera 8 MB`, total: 'Superato il totale di 20 MB' },
+    nl: { title: 'Tekeningen, foto’s of referenties', drop: 'Sleep je bestanden hierheen', or: 'of', browse: 'selecteer ze', hint: 'PDF, afbeeldingen, DWG, ZIP… tot 5 bestanden van 8 MB', remove: 'Verwijderen',
+      max: (n) => `Maximaal ${n} bestanden`, type: (f) => `${f}: bestandstype niet toegestaan`, big: (f) => `${f}: groter dan 8 MB`, total: 'Totaal van 20 MB overschreden' },
+    zh: { title: '图纸、照片或参考资料', drop: '将文件拖到这里', or: '或', browse: '选择文件', hint: 'PDF、图片、DWG、ZIP…最多 5 个文件，每个 8 MB', remove: '移除',
+      max: (n) => `最多 ${n} 个文件`, type: (f) => `${f}：不支持的文件类型`, big: (f) => `${f}：超过 8 MB`, total: '已超过 20 MB 的总上限' },
+    hi: { title: 'नक्शे, तस्वीरें या संदर्भ', drop: 'अपनी फ़ाइलें यहाँ खींचें', or: 'या', browse: 'चुनें', hint: 'PDF, छवियाँ, DWG, ZIP… अधिकतम 5 फ़ाइलें, प्रत्येक 8 MB', remove: 'हटाएँ',
+      max: (n) => `अधिकतम ${n} फ़ाइलें`, type: (f) => `${f}: यह प्रकार मान्य नहीं`, big: (f) => `${f}: 8 MB से बड़ी`, total: '20 MB की कुल सीमा पार' },
+    ko: { title: '도면, 사진 또는 참고 자료', drop: '파일을 여기로 끌어다 놓으세요', or: '또는', browse: '파일 선택', hint: 'PDF, 이미지, DWG, ZIP… 최대 5개, 각 8 MB', remove: '삭제',
+      max: (n) => `최대 ${n}개 파일`, type: (f) => `${f}: 허용되지 않는 형식`, big: (f) => `${f}: 8 MB 초과`, total: '총 20 MB를 초과했습니다' },
+    ja: { title: '図面・写真・参考資料', drop: 'ファイルをここにドラッグ', or: 'または', browse: '選択する', hint: 'PDF、画像、DWG、ZIP… 最大5件、各8 MB', remove: '削除',
+      max: (n) => `最大${n}件まで`, type: (f) => `${f}：対応していない形式`, big: (f) => `${f}：8 MB を超えています`, total: '合計20 MBを超えています' }
+  };
+  $: fx = fileCopy[lang] || fileCopy.es;
+
+  const extOf = (n) => (n.split('.').pop() || '').toLowerCase();
+  const humanSize = (b) => (b >= 1024 * 1024 ? (b / 1024 / 1024).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB');
+
+  function addFiles(list) {
+    const incoming = Array.from(list || []);
+    if (!incoming.length) return;
+    const errs = [];
+    let total = archivos.reduce((s, f) => s + f.size, 0);
+    const next = [...archivos];
+    for (const f of incoming) {
+      if (next.length >= FILE_MAX_COUNT) { errs.push(fx.max(FILE_MAX_COUNT)); break; }
+      // Mismo nombre y tamaño: es el mismo archivo soltado dos veces.
+      if (next.some((x) => x.name === f.name && x.size === f.size)) continue;
+      if (!FILE_EXT.includes(extOf(f.name))) { errs.push(fx.type(f.name)); continue; }
+      if (f.size > FILE_MAX_BYTES) { errs.push(fx.big(f.name)); continue; }
+      if (total + f.size > FILE_MAX_TOTAL) { errs.push(fx.total); continue; }
+      next.push(f); total += f.size;
+    }
+    archivos = next;
+    fileError = errs.join(' · ');
+  }
+
+  function removeFile(i) {
+    archivos = archivos.filter((_, k) => k !== i);
+    fileError = '';
+    // Se limpia el input para poder volver a elegir el mismo archivo recién quitado.
+    if (fileInputEl) fileInputEl.value = '';
+  }
+
+  function onDrop(e) {
+    e.preventDefault();
+    dragOver = false;
+    addFiles(e.dataTransfer?.files);
+  }
   let nombre = '';
   let email = '';
   let privacy = false;
@@ -241,6 +316,9 @@
     const form = event.currentTarget;
     const formData = new FormData(form);
     formData.append('form_elapsed', String(mountedAt ? Date.now() - mountedAt : 3000));
+    // Los archivos se añaden a mano porque la lista la gestiona el componente (se puede
+    // soltar, elegir y quitar): el <input type="file"> no refleja ese estado.
+    for (const f of archivos) formData.append('form_archivos[]', f, f.name);
 
     sending = true; status = null; statusMessage = '';
     try {
@@ -435,9 +513,58 @@
                   {:else if step === 4}
                     <h4 class="wiz-head">{wz.pr}</h4>
                     <p class="wiz-sub">{wz.prSub}</p>
-                    <div class="wiz-field">
-                      <label for="wz_desc" class="form-label">{labels.form.description}</label>
-                      <textarea id="wz_desc" class="form-control" rows="6" bind:value={descripcion}></textarea>
+                    <!-- Descripción y adjuntos, en paralelo: el cliente que ya tiene
+                         plano lo suelta y escribe menos. En móvil se apilan. -->
+                    <div class="wiz-project">
+                      <div class="wiz-field">
+                        <label for="wz_desc" class="form-label">{labels.form.description}</label>
+                        <textarea id="wz_desc" class="form-control" rows="6" bind:value={descripcion}></textarea>
+                      </div>
+                      <div class="wiz-field">
+                        <span class="form-label">{fx.title}</span>
+                        <!-- svelte-ignore a11y-no-static-element-interactions -->
+                        <div
+                          class="dropzone"
+                          class:is-over={dragOver}
+                          on:dragover|preventDefault={() => (dragOver = true)}
+                          on:dragleave={() => (dragOver = false)}
+                          on:drop={onDrop}
+                        >
+                          <svg class="dz-icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                          </svg>
+                          <p class="dz-text">
+                            {fx.drop}<br />
+                            <span class="dz-or">{fx.or}</span>
+                            <button type="button" class="dz-browse" on:click={() => fileInputEl && fileInputEl.click()}>{fx.browse}</button>
+                          </p>
+                          <p class="dz-hint">{fx.hint}</p>
+                          <!-- Sin name: la lista la gestiona el componente y se adjunta
+                               al FormData en el envío (ver handleSubmit). -->
+                          <input
+                            bind:this={fileInputEl}
+                            class="dz-input"
+                            type="file"
+                            multiple
+                            accept=".pdf,.jpg,.jpeg,.png,.webp,.avif,.gif,.dwg,.dxf,.zip,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.ai,.psd,.svg,.txt"
+                            on:change={(e) => addFiles(e.currentTarget.files)}
+                          />
+                        </div>
+                        {#if archivos.length}
+                          <ul class="dz-list">
+                            {#each archivos as f, i (f.name + f.size)}
+                              <li>
+                                <span class="dz-name" title={f.name}>{f.name}</span>
+                                <span class="dz-size">{humanSize(f.size)}</span>
+                                <button type="button" class="dz-remove" title={fx.remove} aria-label="{fx.remove}: {f.name}" on:click={() => removeFile(i)}>×</button>
+                              </li>
+                            {/each}
+                          </ul>
+                        {/if}
+                        {#if fileError}<p class="dz-error" role="status">{fileError}</p>{/if}
+                      </div>
                     </div>
 
                   {:else}
@@ -524,6 +651,90 @@
   .form-control::placeholder { color: rgba(255, 255, 255, 0.3); }
   .form-control:focus { color: #fff; background: rgba(0, 0, 0, 0.25); border-color: #ffc800; box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.15); outline: none; }
   textarea.form-control { min-height: 150px; resize: vertical; line-height: 1.5; }
+
+  /* Paso 4: descripción a la izquierda, adjuntos a la derecha. Dos tercios para el
+     texto y uno para los archivos: lo que se espera del cliente es sobre todo que
+     cuente el proyecto; adjuntar es un extra. */
+  .wiz-project {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.1rem;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .wiz-project { grid-template-columns: 1fr; }
+  }
+  /* La zona de soltar iguala la altura del textarea para que las dos columnas
+     empiecen y acaben a la vez cuando aún no hay archivos en la lista. */
+  .dropzone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 150px;
+    padding: 1rem;
+    text-align: center;
+    border: 2px dashed #c9c9c2;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.015);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .dropzone.is-over {
+    border-color: var(--gold, #ffc800);
+    background: rgba(255, 200, 0, 0.1);
+  }
+  .dz-icon { color: #8a8f86; flex: none; }
+  .dropzone.is-over .dz-icon { color: #b89400; }
+  .dz-text { margin: 0; font-size: 0.92rem; line-height: 1.45; color: #2a2a2a; }
+  .dz-or { color: #6c7169; }
+  .dz-browse {
+    padding: 0;
+    font: inherit;
+    color: #4169e1;
+    font-weight: 700;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .dz-hint { margin: 0; font-size: 0.78rem; color: #6c7169; line-height: 1.4; }
+  /* El input real se oculta pero sigue siendo accesible por teclado desde el botón. */
+  .dz-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .dz-list { margin: 0.6rem 0 0; padding: 0; list-style: none; }
+  .dz-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  }
+  .dz-name { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dz-size { flex: none; color: #6c7169; font-size: 0.78rem; }
+  .dz-remove {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: #6c7169;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .dz-remove:hover { color: #b3261e; background: rgba(179, 38, 30, 0.08); }
+  .dz-error { margin: 0.5rem 0 0; font-size: 0.82rem; color: #b3261e; line-height: 1.4; }
 
   /* Autocompletado del campo FERIA: panel flotante de predicciones sobre la malla. */
   .wiz-field--ac { position: relative; }

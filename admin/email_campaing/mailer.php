@@ -73,7 +73,15 @@
      return $response;
  }
  
- function campaign_build_raw_message($config, $to, $subject, $html)
+/**
+ * Adjuntos: $attachments es una lista de array('name' => ..., 'type' => ..., 'data' => ...).
+ *
+ * Se añadió para que el formulario de presupuesto pueda mandar los planos y fotos que
+ * sube el cliente. El parámetro es OPCIONAL y, si llega vacío, el mensaje se construye
+ * exactamente igual que antes (mismas cabeceras, mismo cuerpo): las campañas de email
+ * marketing, que son el uso principal de este mailer, no cambian en nada.
+ */
+ function campaign_build_raw_message($config, $to, $subject, $html, $attachments = array())
  {
      $fromEmail = $config['from_email'];
      $replyTo = $config['reply_to'];
@@ -83,11 +91,15 @@
      $messageIdHost = preg_replace('/^www\./', '', parse_url($config['site_url'], PHP_URL_HOST));
      $messageId = sprintf('<%s.%s@%s>', date('YmdHis'), bin2hex(function_exists('random_bytes') ? random_bytes(6) : openssl_random_pseudo_bytes(6)), $messageIdHost);
  
+     $hasAttachments = !empty($attachments);
+     $boundary = $hasAttachments ? 'sb_' . bin2hex(function_exists('random_bytes') ? random_bytes(12) : openssl_random_pseudo_bytes(12)) : '';
+
      $headers = array(
          'Date: ' . date('r'),
          'MIME-Version: 1.0',
-         'Content-Type: text/html; charset=UTF-8',
-         'Content-Transfer-Encoding: 8bit',
+         $hasAttachments
+             ? 'Content-Type: multipart/mixed; boundary="' . $boundary . '"'
+             : 'Content-Type: text/html; charset=UTF-8',
          'From: ' . $encodedFromName . ' <' . $fromEmail . '>',
          'To: <' . $to . '>',
          'Subject: ' . $encodedSubject,
@@ -97,11 +109,36 @@
          'Message-ID: ' . $messageId,
          'X-Mailer: Standarte Email Campaign'
      );
- 
-     return implode("\r\n", $headers) . "\r\n\r\n" . $html;
+     // Sin adjuntos, la codificación va en la cabecera principal (como siempre). Con
+     // adjuntos va en cada parte, así que aquí no debe aparecer.
+     if (!$hasAttachments) {
+         array_splice($headers, 3, 0, 'Content-Transfer-Encoding: 8bit');
+     }
+
+     if (!$hasAttachments) {
+         return implode("\r\n", $headers) . "\r\n\r\n" . $html;
+     }
+
+     $body = '--' . $boundary . "\r\n"
+         . "Content-Type: text/html; charset=UTF-8\r\n"
+         . "Content-Transfer-Encoding: 8bit\r\n\r\n"
+         . $html . "\r\n";
+
+     foreach ($attachments as $file) {
+         $name = isset($file['name']) ? $file['name'] : 'adjunto';
+         $type = isset($file['type']) && $file['type'] !== '' ? $file['type'] : 'application/octet-stream';
+         $body .= '--' . $boundary . "\r\n"
+             . 'Content-Type: ' . $type . '; name="' . campaign_encode_header($name) . "\"\r\n"
+             . "Content-Transfer-Encoding: base64\r\n"
+             . 'Content-Disposition: attachment; filename="' . campaign_encode_header($name) . "\"\r\n\r\n"
+             . chunk_split(base64_encode($file['data']), 76, "\r\n");
+     }
+     $body .= '--' . $boundary . "--\r\n";
+
+     return implode("\r\n", $headers) . "\r\n\r\n" . $body;
  }
  
- function campaign_send_smtp($config, $to, $subject, $html)
+ function campaign_send_smtp($config, $to, $subject, $html, $attachments = array())
  {
      if (empty($config['smtp']) || empty($config['smtp']['enabled']) || empty($config['smtp']['password'])) {
          throw new Exception('SMTP no configurado: falta la contraseña del buzón.');
@@ -144,7 +181,7 @@
          campaign_smtp_command($socket, 'RCPT TO:<' . $to . '>', array(250, 251));
          campaign_smtp_command($socket, 'DATA', array(354));
  
-         $message = campaign_build_raw_message($config, $to, $subject, $html);
+         $message = campaign_build_raw_message($config, $to, $subject, $html, $attachments);
          $message = preg_replace('/^\./m', '..', $message);
          fwrite($socket, $message . "\r\n.\r\n");
          $response = campaign_smtp_read($socket);

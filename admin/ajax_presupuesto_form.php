@@ -795,6 +795,53 @@ curl_close($ch);
 	// Se envía SIEMPRE al recibir el formulario, sin depender de que el lead pulse
 	// Sí/No en el email de filtro. Por SMTP firmado (DKIM); si fallara, mail() como
 	// último recurso (el aviso va a info@standarte.es, buzón del propio OVH).
+	/* ---------- Archivos adjuntos del paso 4 (planos, fotos, briefing) ----------
+	 * Llegan como form_archivos[]. No se guardan en disco: se leen y se adjuntan al
+	 * aviso interno, que es donde los necesita el equipo para presupuestar.
+	 *
+	 * Se valida en servidor aunque el navegador ya filtre: la extensión contra una
+	 * lista blanca (nada de ejecutables ni scripts), el tamaño por fichero y el total,
+	 * y el número de ficheros. El nombre se sanea porque viaja a una cabecera MIME.  */
+	$attachments = array();
+	$attach_names = array();
+	$attach_skipped = array();
+	$ATTACH_MAX_FILES = 5;
+	$ATTACH_MAX_BYTES = 8 * 1024 * 1024;   // por fichero
+	$ATTACH_MAX_TOTAL = 20 * 1024 * 1024;  // suma de todos
+	$ATTACH_EXT = array('pdf','jpg','jpeg','png','webp','avif','gif','dwg','dxf','zip','doc','docx','xls','xlsx','ppt','pptx','ai','psd','svg','txt');
+	if (!empty($_FILES['form_archivos']) && is_array($_FILES['form_archivos']['name'])) {
+		$total = 0;
+		$count = count($_FILES['form_archivos']['name']);
+		for ($i = 0; $i < $count; $i++) {
+			if (count($attachments) >= $ATTACH_MAX_FILES) { $attach_skipped[] = 'límite de ' . $ATTACH_MAX_FILES . ' archivos'; break; }
+			if ((int) $_FILES['form_archivos']['error'][$i] !== UPLOAD_ERR_OK) { continue; }
+			$tmp  = $_FILES['form_archivos']['tmp_name'][$i];
+			$size = (int) $_FILES['form_archivos']['size'][$i];
+			$raw  = (string) $_FILES['form_archivos']['name'][$i];
+			if (!is_uploaded_file($tmp)) { continue; }
+			$ext = strtolower(pathinfo($raw, PATHINFO_EXTENSION));
+			if (!in_array($ext, $ATTACH_EXT, true)) { $attach_skipped[] = $raw . ' (tipo no admitido)'; continue; }
+			if ($size <= 0 || $size > $ATTACH_MAX_BYTES) { $attach_skipped[] = $raw . ' (supera 8 MB)'; continue; }
+			if ($total + $size > $ATTACH_MAX_TOTAL) { $attach_skipped[] = $raw . ' (se supera el total de 20 MB)'; continue; }
+			$data = @file_get_contents($tmp);
+			if ($data === false) { continue; }
+			// Nombre saneado: sin rutas ni caracteres que rompan la cabecera MIME.
+			$safe = preg_replace('/[^\w.\- ]+/u', '_', basename($raw));
+			if ($safe === '' || $safe === null) { $safe = 'adjunto.' . $ext; }
+			$attachments[] = array('name' => $safe, 'type' => 'application/octet-stream', 'data' => $data);
+			$attach_names[] = $safe . ' (' . round($size / 1024) . ' KB)';
+			$total += $size;
+		}
+	}
+	$attach_row = '';
+	if (!empty($attach_names) || !empty($attach_skipped)) {
+		$txt = !empty($attach_names) ? htmlspecialchars(implode(', ', $attach_names), ENT_QUOTES, 'UTF-8') : '&mdash;';
+		if (!empty($attach_skipped)) {
+			$txt .= "<div style='color:#b3261e;font-size:13px;margin-top:4px;'>No adjuntados: " . htmlspecialchars(implode('; ', $attach_skipped), ENT_QUOTES, 'UTF-8') . '</div>';
+		}
+		$attach_row = "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Archivos:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . $txt . "</td></tr>";
+	}
+
 	$admin_notify_subject = 'NUEVA SOLICITUD WEB - ' . $form_feria . ' - ' . $form_empresa;
 	$admin_notify_html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#333;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
@@ -812,6 +859,7 @@ curl_close($ch);
 		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Descripci&oacute;n:</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . nl2br(htmlspecialchars($form_descripcion)) . "</td></tr>"
 		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Otras ferias (sinergia):</td><td style='padding:8px;border-bottom:1px solid #eee;'>" . ($form_sinergia !== '' ? htmlspecialchars($form_sinergia) : '&mdash;') . "</td></tr>"
 		. "<tr><td style='padding:8px;border-bottom:1px solid #eee;font-weight:bold;'>Opciones:</td><td style='padding:8px;border-bottom:1px solid #eee;font-size:13px;'>" . $form_opciones . "</td></tr>"
+		. $attach_row
 		. "</table>"
 		. "<p style='margin-top:18px;font-size:13px;color:#777;'>Aviso autom&aacute;tico al recibir el formulario. El lead tambi&eacute;n queda guardado en Supabase (id " . (int)$inserted_id . ").</p>"
 		. "</div></body></html>";
@@ -819,7 +867,7 @@ curl_close($ch);
 		if (!function_exists('campaign_send_smtp')) { require_once __DIR__ . '/email_campaing/mailer.php'; }
 		$notifyConfig = require __DIR__ . '/email_campaing/config.php';
 		$notifyConfig['from_name'] = 'Standarte Leads';
-		campaign_send_smtp($notifyConfig, 'info@standarte.es', $admin_notify_subject, $admin_notify_html);
+		campaign_send_smtp($notifyConfig, 'info@standarte.es', $admin_notify_subject, $admin_notify_html, $attachments);
 	} catch (Exception $e) {
 		$notify_headers = "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte Leads <info@standarte.es>\r\nReply-To: " . $form_email . "\r\n";
 		@mail('info@standarte.es', $admin_notify_subject, $admin_notify_html, $notify_headers);
