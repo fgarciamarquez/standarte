@@ -212,7 +212,29 @@ export const fairFreshness = {
   'stand-enomaq-zaragoza': '2026-07-25',
   // Estrenan fecha verificada de su próxima edición.
   'feria-internacional-ganadera-zafra': '2026-07-25',
-  'termatalia-ourense': '2026-07-25'
+  'termatalia-ourense': '2026-07-25',
+  // 20 ferias que estrenan ficha propia (antes sin cuerpo único ni resumen en el
+  // calendario sectorial de otras ferias).
+  'habitat-valencia': '2026-07-26',
+  'fimma-maderalia-valencia': '2026-07-26',
+  'iberflora-valencia': '2026-07-26',
+  'gastronoma-valencia': '2026-07-26',
+  'espacio-cocina-sici-valencia': '2026-07-26',
+  'eurobrico-valencia': '2026-07-26',
+  'textilhogar-valencia': '2026-07-26',
+  'emaf-oporto': '2026-07-26',
+  'empack-oporto': '2026-07-26',
+  'expocarne-oporto': '2026-07-26',
+  'itf-intertex-oporto': '2026-07-26',
+  'portojoia-oporto': '2026-07-26',
+  'decor-hotel-oporto': '2026-07-26',
+  'expometal-batalha': '2026-07-26',
+  'stone-iberica-batalha': '2026-07-26',
+  'palma-international-boat-show': '2026-07-26',
+  'palma-superyacht-village': '2026-07-26',
+  'baleart-mallorca': '2026-07-26',
+  'oleomaq-zaragoza': '2026-07-26',
+  'navalia-vigo': '2026-07-26'
 };
 
 /** Fecha de última actualización de una ficha de feria, o null si no la tiene. */
