@@ -607,6 +607,12 @@ DirectorySlash Off
   AddType image/webp .webp
   AddType video/mp4 .mp4
   AddType video/webm .webm
+  # Las fuentes se sirven desde aquí desde que dejamos de usar Google Fonts. Sin este
+  # AddType el servidor no resuelve su tipo: no mandaba Content-Type (mal, porque
+  # enviamos X-Content-Type-Options: nosniff) y tampoco se aplicaba el ExpiresByType
+  # font/woff2 de más abajo, así que se redescargaban en cada visita.
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
 </IfModule>
 
 <IfModule mod_expires.c>
