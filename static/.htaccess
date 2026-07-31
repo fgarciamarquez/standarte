@@ -284,6 +284,9 @@ DirectorySlash Off
   RewriteRule ^ja/ferias/dijous-bo-mallorca/?$ https://standarte.es/ja/展示会情報/ディジョウスボ-マヨルカ [R=301,L]
   RewriteRule ^ja/ferias/figan-zaragoza/?$ https://standarte.es/ja/展示会情報/フィガン-サラゴサ [R=301,L]
   RewriteRule ^ja/ferias/enomaq-zaragoza/?$ https://standarte.es/ja/展示会情報/エノマック-サラゴサ [R=301,L]
+  # 301 por el renombrado de slug enomaq-zaragoza -> stand-enomaq-zaragoza (ES + idiomas latinos, y alias raw ja).
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/enomaq-zaragoza/?$ https://standarte.es/$1ferias/stand-enomaq-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/enomaq-zaragoza/?$ https://standarte.es/ja/展示会情報/stand-enomaq-zaragoza [R=301,L]
   RewriteRule ^ja/ferias/oleomaq-zaragoza/?$ https://standarte.es/ja/展示会情報/オレオマック-サラゴサ [R=301,L]
   RewriteRule ^ja/ferias/tecnovid-zaragoza/?$ https://standarte.es/ja/展示会情報/テクノビッド-サラゴサ [R=301,L]
   RewriteRule ^ja/ferias/navalia-vigo/?$ https://standarte.es/ja/展示会情報/ナバリア-ビーゴ [R=301,L]

@@ -209,7 +209,7 @@ export const fairFreshness = {
   // aparecían con resumen en el calendario sectorial de otras ferias).
   'figan-zaragoza': '2026-07-25',
   'concreta-oporto': '2026-07-25',
-  'enomaq-zaragoza': '2026-07-25',
+  'stand-enomaq-zaragoza': '2026-07-25',
   // Estrenan fecha verificada de su próxima edición.
   'feria-internacional-ganadera-zafra': '2026-07-25',
   'termatalia-ourense': '2026-07-25'

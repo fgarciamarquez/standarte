@@ -8,7 +8,7 @@
 // Las ferias sin entrada aquí siguen usando el texto de plantilla de Feria.svelte.
 
 export const fairSeoData = {
-  "enomaq-zaragoza": {
+  "stand-enomaq-zaragoza": {
     "es": "<p>Enomaq es el Salón Internacional de Maquinaria y Equipos para Bodegas y del Embotellado, celebrado en la Feria de Zaragoza. Reúne prensas, depósitos, líneas de embotellado, barricas y tecnología de bodega ante enólogos y responsables de producción de toda la península.</p><p>Exponer maquinaria de bodega exige suelos preparados para carga, acometidas de agua y aire y espacio para demostraciones. En Standarte resolvemos esa ingeniería y la integramos en un stand que deja ver el equipo trabajando.</p>",
     "en": "<p>Enomaq is the International Winery and Bottling Machinery and Equipment Show, held at Feria de Zaragoza. It brings together presses, tanks, bottling lines, barrels and cellar technology before winemakers and production managers from across Iberia.</p><p>Exhibiting winery machinery calls for floors rated for heavy loads, water and air supplies and room for demonstrations. At Standarte we solve that engineering and build it into a stand that lets visitors see the equipment at work.</p>",
     "de": "<p>Enomaq ist die Internationale Fachmesse für Kellereimaschinen, Ausrüstung und Abfülltechnik auf dem Messegelände von Zaragoza. Sie vereint Pressen, Tanks, Abfülllinien, Fässer und Kellertechnik vor Önologen und Produktionsleitern der gesamten Iberischen Halbinsel.</p><p>Kellereimaschinen zu zeigen erfordert lastfähige Böden, Wasser- und Druckluftanschlüsse sowie Platz für Vorführungen. Standarte löst diese technischen Anforderungen und fügt sie in einen Stand ein, der die Anlagen im Betrieb zeigt.</p>",

@@ -281,7 +281,7 @@ export const fairActivities = {
   "baleart-mallorca": ["cultura-arte"],
   "dijous-bo-mallorca": ["multisectorial"],
   "figan-zaragoza": ["alimentacion"],
-  "enomaq-zaragoza": ["vino","equipamiento-vino"],
+  "stand-enomaq-zaragoza": ["vino","equipamiento-vino"],
   "oleomaq-zaragoza": ["alimentacion"],
   "tecnovid-zaragoza": ["vino","equipamiento-vino"],
   "navalia-vigo": ["naval"],

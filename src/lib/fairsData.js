@@ -1421,9 +1421,9 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
-    "name": "Enomaq",
+    "name": "Enomaq Zaragoza",
     "country": "es",
-    "slug": "enomaq-zaragoza",
+    "slug": "stand-enomaq-zaragoza",
     "city": "Zaragoza",
     "sector": "Enología y Vinos"
   },

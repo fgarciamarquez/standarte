@@ -127,7 +127,7 @@ export const fairDates = {
   'sirha-lyon': { start: '2027-01-21', end: '2027-01-25', cadence: 'biennial', source: 'https://www.sirha-lyon.com/en' },
   'millesime-bio-montpellier': { start: '2027-01-25', end: '2027-01-27', cadence: 'annual', source: 'https://www.millesime-bio.com/en/' },
   'agraria-valladolid': { start: '2027-01-26', end: '2027-01-29', cadence: 'biennial', source: 'https://feriavalladolid.com/agraria/' },
-  'enomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
+  'stand-enomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
   'oleomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
   'tecnovid-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
   'madrid-fusion': { start: '2027-02-01', end: '2027-02-03', cadence: 'annual', source: 'https://www.ifema.es/madrid-fusion' },

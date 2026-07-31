@@ -74,7 +74,7 @@ export const nationalAnchors = new Set([
   'empack-madrid',
   'empack-oporto',
   'energaia-montpellier',
-  'enomaq-zaragoza',
+  'stand-enomaq-zaragoza',
   'equiplast-barcelona',
   'essencia-do-vinho-porto',
   'euromaritime-marseille',
