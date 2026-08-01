@@ -839,6 +839,12 @@ DirectorySlash Off
   RewriteCond %{HTTP_USER_AGENT} (HTTrack|WebCopier|WebZIP|WebReaper|Teleport|SiteSucker|Offline\ Explorer|WebStripper|larbin|libwww-perl|python-requests|python-urllib|^Scrapy|node-fetch|^Wget|^curl) [NC]
   RewriteRule ^ - [F,L]
 
+  # --- Datos internos del panel de administración: nunca por HTTP ---------------------
+  # Los .txt/.json/.log bajo /admin/ son ficheros de trabajo del sistema de campañas
+  # (contraseña del buzón, registro de envíos con correos, clics). Se detectó el
+  # 2026-08-01 que respondían 200 a cualquiera que conociera la ruta.
+  RewriteRule ^admin/.*.(txt|json|log|ini|bak|sql)$ - [F,L]
+
   # --- Protección anti-hotlink de imágenes: evita que otros dominios embeban directamente
   # las fotos de /img/ (ahorra ancho de banda y dificulta la reutilización directa). Se
   # permite SIEMPRE que no haya Referer (así no se rompe Google Imágenes, RSS, ni los

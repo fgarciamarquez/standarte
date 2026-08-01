@@ -1,0 +1,20 @@
+# Datos internos del sistema de campañas: NADA de esta carpeta debe servirse por HTTP.
+#
+# Contiene la contraseña del buzón SMTP (smtp_password.txt) y los registros de envío y
+# de clics, que llevan direcciones de correo de destinatarios (dato personal). El panel
+# de campañas sí estaba protegido, pero estos ficheros colgaban sueltos y respondían 200
+# a cualquiera que conociera la ruta: se detectó el 2026-08-01 auditando la web.
+#
+# Los scripts PHP siguen leyéndolos con normalidad: acceden por sistema de ficheros,
+# no por HTTP, así que esta regla no afecta al funcionamiento de las campañas.
+
+# Apache 2.4
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+
+# Apache 2.2 (por si el hosting aún lo usa)
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>
