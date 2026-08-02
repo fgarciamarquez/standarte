@@ -16,13 +16,6 @@
   export let compact = false;
 
   // Antetítulo sobre el título del formulario: previsión en 5 segundos.
-  const forecastLabels = {
-    es: 'Previsión en 5 seg.', en: 'Estimate in 5 sec.', de: 'Schätzung in 5 Sek.',
-    pt: 'Previsão em 5 seg.', fr: 'Estimation en 5 s.', it: 'Stima in 5 sec.',
-    nl: 'Raming in 5 sec.', zh: '5秒预估', hi: '5 सेकंड में अनुमान',
-    ko: '5초 견적', ja: '5秒で試算'
-  };
-
   // Reclamo bajo el título del formulario: prototipo 3D en 3 días.
   const prototypeLabels = {
     es: 'Prototipo 3D en 3 días', en: '3D prototype in 3 days', de: '3D-Prototyp in 3 Tagen',
@@ -339,7 +332,6 @@
   <div class="contact-form">
     <div class="contact-layout">
       <aside class="contact-us">
-        <svelte:element this={compact ? 'h4' : 'h3'} class="contact-forecast">{forecastLabels[lang] || forecastLabels.es}</svelte:element>
         <svelte:element this={compact ? 'h4' : 'h3'}>{labels.contactTitle}</svelte:element>
         <svelte:element this={compact ? 'h4' : 'h3'} class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</svelte:element>
         {#if variant === 'light' && !compact}
@@ -609,12 +601,6 @@
 </section>
 
 <style>
-  /* Antetítulo "Previsión en 5 seg.": misma tipografía que las dos líneas siguientes
-     (hereda de .contact-us h3/h4); solo ajustamos el margen para que el trío quede
-     apretado, igual que la relación título → subtítulo. */
-  .contact-forecast { margin-bottom: 11px; }
-  .contact-compact .contact-forecast { margin-bottom: 4px; }
-
   .contact-subtitle { margin-top: -34px; }
 
   /* Versión compacta (páginas de vídeo/proyecto): títulos en h4, sin ficha de persona. */
