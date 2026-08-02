@@ -44,7 +44,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Mercat de la Vall]]
 - [[Morocco Food Expo]]
 - [[Morocco SIEMA Expo]]
-- [[Oleomaq]]
+- [[Oleomaq Zaragoza]]
 - [[Ovibeja]]
 - [[Prod&Pack]]
 - [[SIAB Expo Maroc]]

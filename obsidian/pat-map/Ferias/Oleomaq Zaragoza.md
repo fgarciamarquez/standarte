@@ -1,12 +1,12 @@
 ---
 tipo: feria
-slug: oleomaq-zaragoza
+slug: stand-oleomaq-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true
 con_texto: true
 ---
-# Oleomaq
+# Oleomaq Zaragoza
 
 - Ciudad: [[Zaragoza]]
 - Sector(es): [[Agroalimentario y Naturaleza]]

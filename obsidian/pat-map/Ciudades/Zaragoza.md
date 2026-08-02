@@ -14,7 +14,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Enomaq Zaragoza]]
 - [[Figan]]
 - [[Fima Zaragoza]]
-- [[Oleomaq]]
+- [[Oleomaq Zaragoza]]
 - [[Salón de los Vinos de Aragón]]
 - [[Smagua Zaragoza]]
 - [[Smopyc Zaragoza]]
