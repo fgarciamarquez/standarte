@@ -142,7 +142,7 @@ export const nationalAnchors = new Set([
   'smopyc-zaragoza',
   'solar-storage-live-espana-valencia',
   'subcontratacion-bilbao',
-  'tecnovid-zaragoza',
+  'stand-tecnovid-zaragoza',
   'tektonica-lisboa',
   'termatalia-ourense',
   'the-district-madrid',

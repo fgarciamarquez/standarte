@@ -129,7 +129,7 @@ export const fairDates = {
   'agraria-valladolid': { start: '2027-01-26', end: '2027-01-29', cadence: 'biennial', source: 'https://feriavalladolid.com/agraria/' },
   'stand-enomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
   'oleomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
-  'tecnovid-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
+  'stand-tecnovid-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
   'madrid-fusion': { start: '2027-02-01', end: '2027-02-03', cadence: 'annual', source: 'https://www.ifema.es/madrid-fusion' },
   'ise-barcelona': { start: '2027-02-02', end: '2027-02-05', cadence: 'annual', source: 'https://www.iseurope.org/location-opening-hours' },
   'intergift-madrid': { start: '2027-02-03', end: '2027-02-06', cadence: 'annual', source: 'https://www.ifema.es/en/intergift' },

@@ -179,7 +179,7 @@ export const fairFreshness = {
   'sepem-industries-sud-est-grenoble': '2026-07-24',
   'sommet-elevage-clermont-ferrand': '2026-07-24',
   'smopyc-zaragoza': '2026-07-24',
-  'tecnovid-zaragoza': '2026-07-24',
+  'stand-tecnovid-zaragoza': '2026-08-02',
   'smagua-zaragoza': '2026-07-25',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'medfel-perpignan': '2026-07-21',

@@ -283,7 +283,7 @@ export const fairActivities = {
   "figan-zaragoza": ["alimentacion"],
   "stand-enomaq-zaragoza": ["vino","equipamiento-vino"],
   "oleomaq-zaragoza": ["alimentacion"],
-  "tecnovid-zaragoza": ["vino","equipamiento-vino"],
+  "stand-tecnovid-zaragoza": ["vino","equipamiento-vino"],
   "navalia-vigo": ["naval"],
   "world-maritime-week-bilbao": ["naval","energia"],
   "marine-energy-week-bilbao": ["naval","energia"],

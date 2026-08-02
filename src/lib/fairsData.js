@@ -1435,9 +1435,9 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
-    "name": "Tecnovid",
+    "name": "Tecnovid Zaragoza",
     "country": "es",
-    "slug": "tecnovid-zaragoza",
+    "slug": "stand-tecnovid-zaragoza",
     "city": "Zaragoza",
     "sector": "Enología y Vinos"
   },
