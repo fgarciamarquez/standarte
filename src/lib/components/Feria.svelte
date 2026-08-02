@@ -302,6 +302,14 @@
     'Peso da Régua': 'regua',
     'Ibiza': 'ibiza',
     'Menorca': 'menorca',
+    // Archipiélagos: las ferias se declaran por isla o por capital, pero el hub es el
+    // del archipiélago. Faltaban aquí (sí estaban en el mapa gemelo de Site.svelte), así
+    // que diez fichas insulares se quedaban sin breadcrumb de ciudad y sin enlace al hub.
+    'Islas Canarias': 'islas_canarias', 'Tenerife': 'islas_canarias',
+    'Gran Canaria': 'islas_canarias', 'Las Palmas': 'islas_canarias',
+    'Fuerteventura': 'islas_canarias',
+    'Islas de Madeira': 'islas_de_madeira', 'Madeira': 'islas_de_madeira',
+    'Funchal': 'islas_de_madeira',
     'Ceuta': 'ceuta',
     'Melilla': 'melilla',
     'Tánger': 'tanger',
@@ -820,6 +828,34 @@
     ko: { before: (n) => `${n}이(가) 귀사 확장의 한 조각일 뿐이라면, Standarte는 귀사의 제품을 선보일 `, link: (m) => `${m}개 박람회`, after: '를 제공합니다.' },
     ja: { before: (n) => `${n}が貴社の拡大の一部にすぎないなら、Standarteは貴社の製品を紹介する `, link: (m) => `${m}件の展示会`, after: ' をご提供します。' }
   };
+  // ── Enlace contextual a la página-ciudad, dentro de la respuesta directa ──────
+  // Hasta ahora las fichas solo enlazaban a su ciudad desde el breadcrumb y desde la
+  // nube lateral, ambos con el texto "Zaragoza" a secas: ninguna de las dos posiciones
+  // transmite la expresión por la que compite la página-ciudad, y la nube reparte la
+  // señal entre las 60+ ciudades por igual. Este enlace va en el primer párrafo (la
+  // zona de más peso) y su texto ES la expresión objetivo, para que las fichas de
+  // feria —que posicionan bien— empujen al hub de su ciudad, que tiene más competencia.
+  const cityLink = {
+    es: { before: 'Consulta nuestro servicio de ', anchor: (c) => `diseño, construcción y montaje de stands en ${c}`, after: '.' },
+    en: { before: 'See our ', anchor: (c) => `exhibition stand design, construction and assembly in ${c}`, after: ' service.' },
+    de: { before: 'Mehr zu ', anchor: (c) => `Messestand-Design, -Bau und -Montage in ${c}`, after: '.' },
+    pt: { before: 'Conheça o nosso serviço de ', anchor: (c) => `design, construção e montagem de stands em ${c}`, after: '.' },
+    fr: { before: 'Découvrez notre service de ', anchor: (c) => `conception, construction et montage de stands à ${c}`, after: '.' },
+    it: { before: 'Scopri il nostro servizio di ', anchor: (c) => `progettazione, costruzione e montaggio di stand a ${c}`, after: '.' },
+    nl: { before: 'Bekijk onze dienst ', anchor: (c) => `ontwerp, bouw en montage van beursstands in ${c}`, after: '.' },
+    zh: { before: '了解我们在', anchor: (c) => `${c}的展台设计、制作与搭建`, after: '服务。' },
+    hi: { before: '', anchor: (c) => `${c} में स्टैंड का डिज़ाइन, निर्माण और स्थापना`, after: ' सेवा देखें।' },
+    ko: { before: '', anchor: (c) => `${c} 부스 디자인·제작·설치`, after: ' 서비스를 확인하세요.' },
+    ja: { before: '', anchor: (c) => `${c}での展示会ブースの設計・製作・施工`, after: 'サービスをご覧ください。' }
+  };
+  $: cl = cityLink[lang] || cityLink.es;
+  // Se enlaza al hub de su ciudad y, si la feria está en una satélite sin página propia
+  // (Plasencia, Aguadulce, Torre Pacheco…), al pilar del que cuelga: mismo criterio que
+  // ya usa el breadcrumb. Sin destino —"Itinerante", "España", "Europa"— no se pinta.
+  $: cityLinkKey = currentCityKey || CITY_TO_PILLAR[fair.city] || null;
+  $: cityHref = cityLinkKey ? pathFor(lang, cityLinkKey) : null;
+  $: cityLinkName = cityLinkKey ? cityLabel(cityLinkKey, lang) : '';
+
   $: da = (directAnswer[lang] || directAnswer.es);
   $: pc = (patCta[lang] || patCta.es);
   // País localizado si la feria está fuera de ES/PT; coletilla de cobertura GEO acorde.
@@ -1102,7 +1138,7 @@
         <!-- Respuesta directa citable (GEO): instrumentos propios + cobertura ES/PT.
              Cierra con el reclamo de expansión: "…te ofrecemos N ferias…", donde
              "N ferias" enlaza a Pat (sembrado con el sector de esta feria). -->
-        <p class="feria-direct-answer">{da(fair.name, cityWithDate, geoTailText)} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}</p>
+        <p class="feria-direct-answer">{da(fair.name, cityWithDate, geoTailText)} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}{#if cityHref} {cl.before}<a class="feria-city-link" href={cityHref}>{cl.anchor(cityLinkName)}</a>{cl.after}{/if}</p>
         <!-- Página de destino: CTA prioritario tras el primer párrafo que baja al
              formulario del final para que el visitante pida presupuesto sin perderse. -->
         <a
@@ -1347,6 +1383,16 @@
     margin-bottom: 2rem;
   }
   /* CTA de conversión: usa la clase global .oro-cta-espacio (igual que en ciudad). */
+  /* Enlace al hub de ciudad dentro de la respuesta directa: mismo azul que el resto
+     de enlaces del cuerpo, sin nofollow (aquí sí queremos transmitir autoridad). */
+  .feria-city-link {
+    color: #4169e1;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .feria-city-link:hover,
+  .feria-city-link:focus { text-decoration: underline; }
+
   /* Respuesta directa citable (GEO): destacada, al inicio del cuerpo. */
   .feria-direct-answer {
     font-size: 1.05rem;
