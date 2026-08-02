@@ -16,6 +16,6 @@ Actividad del sector [[Enología y Vinos]].
 - [[FICOR]]
 - [[SIEB]]
 - [[SITEVI]]
-- [[Tecnovid]]
+- [[Tecnovid Zaragoza]]
 - [[Vinac Almendralejo]]
 - [[Vinitech-Sifel]]

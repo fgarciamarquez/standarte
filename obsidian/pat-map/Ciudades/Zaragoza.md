@@ -18,4 +18,4 @@ Ciudad dibujada en el mapa de Pat.
 - [[Salón de los Vinos de Aragón]]
 - [[Smagua Zaragoza]]
 - [[Smopyc Zaragoza]]
-- [[Tecnovid]]
+- [[Tecnovid Zaragoza]]

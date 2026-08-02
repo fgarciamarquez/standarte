@@ -1,12 +1,12 @@
 ---
 tipo: feria
-slug: tecnovid-zaragoza
+slug: stand-tecnovid-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true
 con_texto: true
 ---
-# Tecnovid
+# Tecnovid Zaragoza
 
 - Ciudad: [[Zaragoza]]
 - Sector(es): [[Enología y Vinos]]

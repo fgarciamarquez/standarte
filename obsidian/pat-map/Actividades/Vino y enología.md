@@ -38,7 +38,7 @@ Actividad del sector [[Enología y Vinos]].
 - [[Salón Gourmets Madrid]]
 - [[Salón de los Vinos de Aragón]]
 - [[Simplesmente Vinho Porto]]
-- [[Tecnovid]]
+- [[Tecnovid Zaragoza]]
 - [[Vinac Almendralejo]]
 - [[Vinhos de Portugal]]
 - [[Vinipax Beja]]
