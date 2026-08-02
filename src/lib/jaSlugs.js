@@ -122,7 +122,7 @@ export const jaFairSlugs = {
   "dijous-bo-mallorca": "ディジョウスボ-マヨルカ",
   "figan-zaragoza": "フィガン-サラゴサ",
   "stand-enomaq-zaragoza": "エノマック-サラゴサ",
-  "oleomaq-zaragoza": "オレオマック-サラゴサ",
+  "stand-oleomaq-zaragoza": "オレオマック-サラゴサ",
   "stand-tecnovid-zaragoza": "テクノビッド-サラゴサ",
   "navalia-vigo": "ナバリア-ビーゴ",
   "nortrans-vigo": "ノルトランス-ビーゴ",

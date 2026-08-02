@@ -282,7 +282,7 @@ export const fairActivities = {
   "dijous-bo-mallorca": ["multisectorial"],
   "figan-zaragoza": ["alimentacion"],
   "stand-enomaq-zaragoza": ["vino","equipamiento-vino"],
-  "oleomaq-zaragoza": ["alimentacion"],
+  "stand-oleomaq-zaragoza": ["alimentacion"],
   "stand-tecnovid-zaragoza": ["vino","equipamiento-vino"],
   "navalia-vigo": ["naval"],
   "world-maritime-week-bilbao": ["naval","energia"],

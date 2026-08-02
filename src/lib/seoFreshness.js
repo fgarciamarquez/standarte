@@ -233,7 +233,7 @@ export const fairFreshness = {
   'palma-international-boat-show': '2026-07-26',
   'palma-superyacht-village': '2026-07-26',
   'baleart-mallorca': '2026-07-26',
-  'oleomaq-zaragoza': '2026-07-26',
+  'stand-oleomaq-zaragoza': '2026-07-26',
   'navalia-vigo': '2026-07-26'
 };
 
