@@ -2,7 +2,7 @@
 tipo: actividad
 clave: gastronomia-hosteleria
 sector: "Turismo y Hostelería"
-n_ferias: 36
+n_ferias: 38
 ---
 # Gastronomía y hostelería
 
@@ -14,6 +14,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Andorra Taste]]
 - [[Ardoaraba]]
 - [[Arrels, Fira de Producte Local i Cuina de Menorca]]
+- [[Belmoda Granada]]
 - [[Cider Fest Madeira]]
 - [[Douro & Porto Wine Festival]]
 - [[Feira de São Mateus]]
@@ -40,6 +41,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[SIPRHO]]
 - [[SIRHA]]
 - [[SMAHRT]]
+- [[Sabores de Nuestra Tierra]]
 - [[Salon du Mariage]]
 - [[Salón Gourmets Madrid]]
 - [[Sirha Méditerranée]]

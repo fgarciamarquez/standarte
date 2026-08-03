@@ -2,7 +2,7 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 43
+n_ferias: 44
 ---
 # Alimentación
 
@@ -48,6 +48,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Ovibeja]]
 - [[Prod&Pack]]
 - [[SIAB Expo Maroc]]
+- [[Sabores de Nuestra Tierra]]
 - [[Salón Gourmets Madrid]]
 - [[Seafood Expo Global Barcelona]]
 - [[Sirha Méditerranée]]

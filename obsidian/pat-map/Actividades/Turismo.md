@@ -2,7 +2,7 @@
 tipo: actividad
 clave: turismo
 sector: "Turismo y Hostelería"
-n_ferias: 24
+n_ferias: 25
 ---
 # Turismo
 
@@ -18,6 +18,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Fairway Santiago de Compostela]]
 - [[Feria Internacional de Turismo Reyno de Navarra]]
 - [[Feria de los Pueblos]]
+- [[Feria de los Pueblos de Granada]]
 - [[Feria del Caballo de Jerez]]
 - [[Fira d'Andorra la Vella]]
 - [[Fitur Madrid]]

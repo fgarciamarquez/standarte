@@ -2,7 +2,7 @@
 tipo: actividad
 clave: multisectorial
 sector: "Multisectorial y Profesional"
-n_ferias: 48
+n_ferias: 49
 ---
 # Multisectorial
 
@@ -44,6 +44,7 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[Feria de Representación Intercultural de Melilla]]
 - [[Feria de los Mayores de Extremadura Badajoz]]
 - [[Feria de los Pueblos]]
+- [[Feria de los Pueblos de Granada]]
 - [[Fira d'Andorra la Vella]]
 - [[Fireca Sevilla]]
 - [[Foire Exposition de Perpignan]]

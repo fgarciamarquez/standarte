@@ -2,13 +2,14 @@
 tipo: actividad
 clave: regalo-decoracion
 sector: "Comercio y Packaging"
-n_ferias: 11
+n_ferias: 12
 ---
 # Regalo y decoración
 
 Actividad del sector [[Comercio y Packaging]].
 
 ## Ferias
+- [[Belmoda Granada]]
 - [[ExpoDeca]]
 - [[Feria de Bodas y Hogar de Mérida]]
 - [[Feria de Stocks]]
