@@ -799,9 +799,17 @@
     // Se envuelve TODO el contenido ya construido en un grupo con id para poder
     // clonarlo ampliado con <use> (referencia viva: refleja la flotación en tiempo
     // real). La lente se dibuja por encima y solo aparece cuando la lupa está activa.
+    // La escena va envuelta en un grupo aparte que es el que se atenúa al activar la
+    // lupa. La envoltura es imprescindible: la lente es un <use> que clona #pm-scene, y
+    // si la opacidad estuviera en el propio #pm-scene el clon se atenuaría con él y la
+    // lente se vería igual de apagada. Al ponerla en el PADRE, el clon del hijo sale a
+    // plena opacidad. Además así solo se atenúa lo dibujado —costas, malla, nodos—: el
+    // mar es el fondo del panel visto a través del SVG, y no cambia de color.
+    const sceneDim = el('g', { class: 'pm-scene-dim' });
     const scene = el('g', { id: 'pm-scene' });
     while (svgEl.firstChild) scene.appendChild(svgEl.firstChild);
-    svgEl.appendChild(scene);
+    sceneDim.appendChild(scene);
+    svgEl.appendChild(sceneDim);
 
     const LENS_R = 130;    // radio de la lente en coordenadas del viewBox
     const LENS_ZOOM = 2;   // factor de aumento
@@ -851,6 +859,7 @@
     }
     function setLens(on) {
       lensOn = on;
+      sceneDim.classList.toggle('is-dimmed', on);
       if (on) {
         lensLayer.style.display = '';
         svgEl.style.touchAction = 'none'; // en táctil, arrastrar mueve la lente sin hacer scroll
@@ -1116,11 +1125,25 @@
   :global(.pm-lens) {
     pointer-events: none;
   }
+  /* Aro de la lupa: blanco y grueso, para que el borde de la lente se lea sobre
+     cualquier zona del mapa (mar, tierra, líneas de la malla). La sombra se refuerza
+     un poco porque un aro blanco necesita más contorno que uno azul para despegarse
+     de las zonas claras. */
   :global(.pm-lens-ring) {
     fill: none;
-    stroke: royalblue;
-    stroke-width: 3;
-    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.28));
+    stroke: #fff;
+    stroke-width: 16;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.38));
+  }
+  /* Con la lupa activa se atenúa lo DIBUJADO del mapa (costas, malla, nodos), no se
+     superpone ningún velo: el mar es el fondo del panel visto a través del SVG, así que
+     conserva exactamente su color y no aparece ningún rectángulo ni corte de tono. La
+     lente queda a plena opacidad porque clona el grupo interior, no este. */
+  :global(.pm-scene-dim) {
+    transition: opacity 0.18s ease;
+  }
+  :global(.pm-scene-dim.is-dimmed) {
+    opacity: 0.3;
   }
 
   .pm-map {
