@@ -45,7 +45,7 @@ export const seoFreshness = {
   jaen: '2026-07-14',
   huelva: '2026-07-14',
   cordoba: '2026-07-14',
-  granada: '2026-07-14',
+  granada: '2026-08-03',
   cadiz: '2026-07-14',
   silleda: '2026-07-14',
   ourense: '2026-07-14',
@@ -234,6 +234,10 @@ export const fairFreshness = {
   'palma-superyacht-village': '2026-07-26',
   'baleart-mallorca': '2026-07-26',
   'stand-oleomaq-zaragoza': '2026-07-26',
+  // Granada: tres ferias nuevas de Fermasa (Armilla) incorporadas al catálogo.
+  'belmoda-granada': '2026-08-03',
+  'sabores-nuestra-tierra-granada': '2026-08-03',
+  'feria-pueblos-granada': '2026-08-03',
   'navalia-vigo': '2026-07-26'
 };
 

@@ -25,6 +25,7 @@ export const fairDates = {
   'fidma-gijon': { start: '2026-08-01', end: '2026-08-16', cadence: 'annual', source: 'https://recintoferialasturias.camaragijon.es/es/cargarAplicacionAgenda.do' },
   'mercat-de-la-vall-andorra': { start: '2026-08-01', end: '2026-08-02', cadence: 'annual', source: 'https://www.agenda.ad/activitat/andorra-la-vella/fires-i-mercats/mercat-de-la-vall-21714' },
   'fatacil-lagoa': { start: '2026-08-21', end: '2026-08-30', cadence: 'annual', source: 'https://www.cm-lagoa.pt/conhecer/eventos/evento/fatacil-2026' },
+  'belmoda-granada': { start: '2026-11-06', end: '2026-11-08', cadence: 'annual', source: 'https://fermasa.org/belmoda-salon-de-la-boda-y-la-comunion/' },
   'festa-vinho-madeira': { start: '2026-08-23', end: '2026-09-13', cadence: 'annual', source: 'https://visitmadeira.com/en/whats-on/events/wine-festival/' },
   'salamaq-salamanca': { start: '2026-09-03', end: '2026-09-07', cadence: 'annual', source: 'https://www.lasalina.es/noticias/fechassalamaq26.html' },
   'cannes-yachting-festival': { start: '2026-09-08', end: '2026-09-13', cadence: 'annual', source: 'https://www.cannesyachtingfestival.com/en-gb/practical-information.html' },

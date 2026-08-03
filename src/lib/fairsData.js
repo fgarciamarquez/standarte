@@ -371,6 +371,27 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "Belmoda Granada",
+    "country": "es",
+    "slug": "belmoda-granada",
+    "city": "Armilla",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Sabores de Nuestra Tierra",
+    "country": "es",
+    "slug": "sabores-nuestra-tierra-granada",
+    "city": "Armilla",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Feria de los Pueblos de Granada",
+    "country": "es",
+    "slug": "feria-pueblos-granada",
+    "city": "Armilla",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
     "name": "Blue Zone Forum Navalia Meeting",
     "country": "es",
     "slug": "blue-zone-forum-navalia-meeting-cadiz",
