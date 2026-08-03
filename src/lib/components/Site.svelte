@@ -111,6 +111,12 @@
   // las páginas de visualización). El tile es la miniatura JPG (lazy) y enlaza a la watch page;
   // el .mp4 NO se descarga hasta abrir la ventana flotante (lightbox).
   let videoLightboxSrc = null;
+  // Miniatura del vídeo abierto, usada como `poster` del visor: es la misma imagen que
+  // el visitante acaba de pulsar en la galería, así que la tiene ya en caché y el salto
+  // de la miniatura al visor es instantáneo, sin pantalla negra mientras carga el vídeo.
+  $: videoLightboxPoster = videoLightboxSrc
+    ? (galleryVideos.find((g) => g.src === videoLightboxSrc)?.thumb || null)
+    : null;
   // Proyecto de referencia del vídeo abierto (para el formulario de Pat del lightbox).
   $: lightboxVideoProject = videoLightboxSrc
     ? (() => {
@@ -2040,7 +2046,23 @@
             <button class="lightbox-close" type="button" aria-label="Cerrar" on:click={closeVideoLightbox}>×</button>
             <div class="lightbox-body">
               <!-- svelte-ignore a11y_media_has_caption -->
-              <video src={videoLightboxSrc} class="lightbox-video" autoplay loop muted playsinline></video>
+              <!-- poster + controls + preload: sin ellos, cuando el navegador bloquea la
+                   reproducción automática (ahorro de datos, batería, ajustes de privacidad)
+                   o mientras descarga los ~2 MB del vídeo, el visitante se quedaba ante un
+                   rectángulo negro y SIN forma de darle a reproducir. Con el póster ve el
+                   fotograma desde el primer instante y, si el autoplay no arranca, los
+                   controles le dejan hacerlo a mano. -->
+              <video
+                src={videoLightboxSrc}
+                poster={videoLightboxPoster}
+                class="lightbox-video"
+                preload="auto"
+                controls
+                autoplay
+                loop
+                muted
+                playsinline
+              ></video>
               <ProjectAdvisor {lang} project={lightboxVideoProject} source={videoLightboxSrc} dark />
             </div>
           </div>
