@@ -724,6 +724,14 @@
     // ── Flotación (solo con el mapa visible y sin reduced-motion) ──
     let rafId = 0;
     let running = false;
+    // Se declara aquí arriba (y no junto al resto de la lupa) porque el bucle de
+    // flotación y el IntersectionObserver necesitan consultarla: con la lupa activa la
+    // flotación se congela y no debe reanudarse sola al volver el mapa a la pantalla.
+    let lensOn = false;
+    // El IntersectionObserver solo avisa cuando la visibilidad CAMBIA, así que se guarda
+    // el estado: al apagar la lupa hay que saber si el mapa está a la vista para no
+    // reanudar la flotación de algo que nadie está mirando.
+    let inView = true;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const start = performance.now();
     // Posición del puntero en coordenadas del viewBox para el magnetismo de los nodos
@@ -776,7 +784,8 @@
     if (!reducedMotion && 'IntersectionObserver' in window) {
       observer = new IntersectionObserver((entries) => {
         const visible = entries[0].isIntersecting;
-        if (visible && !running) { running = true; rafId = requestAnimationFrame(frame); }
+        inView = visible;
+        if (visible && !running && !lensOn) { running = true; rafId = requestAnimationFrame(frame); }
         else if (!visible && running) { running = false; cancelAnimationFrame(rafId); }
       }, { threshold: 0.05 });
       observer.observe(wrapEl);
@@ -813,7 +822,6 @@
 
     const LENS_R = 130;    // radio de la lente en coordenadas del viewBox
     const LENS_ZOOM = 2;   // factor de aumento
-    let lensOn = false;
 
     const lensDefs = el('defs', {});
     const lensClip = el('clipPath', { id: 'pm-lens-clip', clipPathUnits: 'userSpaceOnUse' });
@@ -834,12 +842,24 @@
     lensLayer.style.display = 'none';
     svgEl.appendChild(lensLayer);
 
+    // getScreenCTM() obliga al navegador a recalcular la geometría de la página al vuelo,
+    // y se llamaba en CADA pointermove (dos veces: lupa y magnetismo). Esa era la causa
+    // principal del tirón. La matriz solo cambia si el SVG se mueve o cambia de tamaño,
+    // así que se guarda y se invalida al hacer scroll o redimensionar.
+    let ctmCache = null;
+    const invalidateCtm = () => { ctmCache = null; };
+    window.addEventListener('scroll', invalidateCtm, { passive: true });
+    window.addEventListener('resize', invalidateCtm);
+
     function svgPointFromClient(clientX, clientY) {
-      const ctm = svgEl.getScreenCTM();
-      if (!ctm) return null;
+      if (!ctmCache) {
+        const m = svgEl.getScreenCTM();
+        if (!m) return null;
+        ctmCache = m.inverse();
+      }
       const pt = svgEl.createSVGPoint();
       pt.x = clientX; pt.y = clientY;
-      return pt.matrixTransform(ctm.inverse());
+      return pt.matrixTransform(ctmCache);
     }
     function positionLens(clientX, clientY) {
       const p = svgPointFromClient(clientX, clientY);
@@ -852,17 +872,43 @@
       // Ampliación centrada en el punto bajo el cursor: el punto se mantiene fijo.
       lensUse.setAttribute('transform', `translate(${p.x * (1 - k)} ${p.y * (1 - k)}) scale(${k})`);
     }
+    // Los eventos de puntero llegan más deprisa que los fotogramas (un ratón de 240 Hz
+    // dispara cuatro por cada pintura). Se guarda solo la última posición y se aplica una
+    // vez por fotograma: mover la lente varias veces entre dos pinturas es trabajo tirado
+    // y es lo que se percibe como parpadeo.
+    let lensPending = null;
+    let lensRaf = 0;
+    function lensFrame() {
+      lensRaf = 0;
+      const p = lensPending;
+      lensPending = null;
+      if (p) positionLens(p.x, p.y);
+    }
     function onLensPointerMove(e) {
       if (!lensOn) return;
       e.preventDefault();
-      positionLens(e.clientX, e.clientY);
+      lensPending = { x: e.clientX, y: e.clientY };
+      if (!lensRaf) lensRaf = requestAnimationFrame(lensFrame);
     }
+
+    // Con la lupa activa se congela la flotación de la malla. La lente es un <use> que
+    // clona la escena en vivo: si la escena se repinta 60 veces por segundo, el navegador
+    // rehace también el clon ampliado y recortado, es decir, dibuja el mapa dos veces por
+    // fotograma —y el recorte circular es de lo más caro que hay en SVG—. Congelada, el
+    // clon solo se rehace cuando la lente se mueve, que es justo lo que se está mirando.
+    let floatWasRunning = false;
     function setLens(on) {
       lensOn = on;
       sceneDim.classList.toggle('is-dimmed', on);
       if (on) {
+        floatWasRunning = running;
+        if (running) { running = false; cancelAnimationFrame(rafId); }
+        // Sin flotación el magnetismo no tiene efecto: se desconecta para no gastar un
+        // cálculo de coordenadas por evento mientras se arrastra la lente.
+        if (!reducedMotion) svgEl.removeEventListener('pointermove', onMagnetMove);
         lensLayer.style.display = '';
         svgEl.style.touchAction = 'none'; // en táctil, arrastrar mueve la lente sin hacer scroll
+        ctmCache = null;                  // el panel pudo moverse desde la última vez
         const r = svgEl.getBoundingClientRect();
         positionLens(r.left + r.width / 2, r.top + r.height / 2); // arranca en el centro
         svgEl.addEventListener('pointermove', onLensPointerMove);
@@ -872,6 +918,10 @@
         svgEl.style.touchAction = '';
         svgEl.removeEventListener('pointermove', onLensPointerMove);
         svgEl.removeEventListener('pointerdown', onLensPointerMove);
+        if (lensRaf) { cancelAnimationFrame(lensRaf); lensRaf = 0; }
+        lensPending = null;
+        if (!reducedMotion) svgEl.addEventListener('pointermove', onMagnetMove);
+        if (floatWasRunning && !running && inView) { running = true; rafId = requestAnimationFrame(frame); }
       }
     }
 
@@ -906,7 +956,10 @@
       destroy() {
         running = false;
         cancelAnimationFrame(rafId);
+        if (lensRaf) cancelAnimationFrame(lensRaf);
         if (observer) observer.disconnect();
+        window.removeEventListener('scroll', invalidateCtm);
+        window.removeEventListener('resize', invalidateCtm);
         cityGroup.removeEventListener('mouseover', onOver);
         cityGroup.removeEventListener('mousemove', onMove);
         cityGroup.removeEventListener('mouseout', onOut);
