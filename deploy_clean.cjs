@@ -145,6 +145,22 @@ async function main() {
   const filesToUpload = candidates.filter((c) => remoteManifest[c.relativePath] !== c.hash);
   const skipped = candidates.length - filesToUpload.length;
 
+  // Orden de subida SIN ventana rota: primero los bundles (_app/) y demás estáticos,
+  // el HTML al final. Motivo: los bundles llevan hash en el nombre, así que el HTML
+  // antiguo convive sin problema con los bundles nuevos; pero si el HTML nuevo llega
+  // antes que su JavaScript/CSS (orden alfabético de antes), durante ese rato las
+  // páginas piden ficheros que aún no existen y la web se ve rota (pasó: ~10 min de
+  // 404 en el chunk principal con la portada ya actualizada). Dentro de cada fase se
+  // mantiene el orden natural. El manifiesto solo registra lo subido con éxito, así
+  // que un corte a mitad deja igualmente un estado coherente y reanudable.
+  const uploadPhase = (p) => {
+    if (p.startsWith('_app/')) return 0;                      // bundles con hash: inofensivos por adelantado
+    if (!/\.(html|htm)$/i.test(p) && p !== 'sitemap.xml') return 1; // resto de estáticos (img, fonts, css, php…)
+    if (/\.(html|htm)$/i.test(p)) return 2;                   // HTML: ya con todos sus recursos en el servidor
+    return 3;                                                 // sitemap.xml: el último, cuando todo lo que anuncia existe
+  };
+  const PHASE_NAMES = ['bundles (_app)', 'estáticos', 'HTML', 'sitemap'];
+
   // Manifiesto resultante: parte del remoto + se actualiza con lo que suba bien.
   const newManifest = Object.assign({}, remoteManifest);
   candidates.forEach((c) => { if (remoteManifest[c.relativePath] === c.hash) newManifest[c.relativePath] = c.hash; });
@@ -170,50 +186,69 @@ async function main() {
       } catch (e) { /* ya existe / carrera: se ignora */ }
     }
 
-    // 3. Subir en paralelo con un pool de conexiones SFTP.
-    console.log(`\n[3/3] Sincronizando por SFTP (${CONCURRENCY} conexiones en paralelo)...`);
-    let index = 0;
+    // 3. Subir en paralelo con un pool de conexiones SFTP, POR FASES con barrera:
+    // no arranca ningún HTML hasta que TODOS los bundles y estáticos están arriba
+    // (ver uploadPhase). Sin la barrera, con varios workers el primer HTML podía
+    // adelantarse a los últimos chunks y reabrir la ventana rota unos segundos.
     const total = filesToUpload.length;
-    const nextItem = () => (index < total ? filesToUpload[index++] : null);
+    const phases = [[], [], [], []];
+    filesToUpload.forEach((c) => phases[uploadPhase(c.relativePath)].push(c));
+    console.log(`\n[3/3] Sincronizando por SFTP (${CONCURRENCY} conexiones; fases: ${phases.map((p, i) => `${PHASE_NAMES[i]} ${p.length}`).join(' → ')})...`);
 
-    async function worker(id) {
-      let client;
-      try { client = await newClient(); } catch (e) { client = null; }
-      let item;
-      while ((item = nextItem()) !== null) {
-        const remotePath = `${REMOTE_BASE}/${item.relativePath}`;
-        let ok = false;
-        for (let attempt = 1; attempt <= MAX_RETRIES && !ok; attempt++) {
-          try {
-            if (!client) client = await newClient();
-            await client.put(item.file, remotePath);
-            ok = true;
-          } catch (e) {
-            if (attempt < MAX_RETRIES) {
-              retryCount++;
-              await sleep(RETRY_DELAY * attempt);
-              // Reabrir la conexión por si OVH la cortó.
-              try { if (client) await client.end(); } catch (_) {}
-              client = null;
-            } else {
-              console.error(`  [FALLÓ tras ${MAX_RETRIES} intentos] ${item.relativePath}: ${e.message}`);
-              failCount++;
+    async function runPhase(items) {
+      let index = 0;
+      const nextItem = () => (index < items.length ? items[index++] : null);
+
+      async function worker(id) {
+        let client;
+        try { client = await newClient(); } catch (e) { client = null; }
+        let item;
+        while ((item = nextItem()) !== null) {
+          const remotePath = `${REMOTE_BASE}/${item.relativePath}`;
+          let ok = false;
+          for (let attempt = 1; attempt <= MAX_RETRIES && !ok; attempt++) {
+            try {
+              if (!client) client = await newClient();
+              await client.put(item.file, remotePath);
+              ok = true;
+            } catch (e) {
+              if (attempt < MAX_RETRIES) {
+                retryCount++;
+                await sleep(RETRY_DELAY * attempt);
+                // Reabrir la conexión por si OVH la cortó.
+                try { if (client) await client.end(); } catch (_) {}
+                client = null;
+              } else {
+                console.error(`  [FALLÓ tras ${MAX_RETRIES} intentos] ${item.relativePath}: ${e.message}`);
+                failCount++;
+              }
+            }
+          }
+          if (ok) {
+            successCount++;
+            newManifest[item.relativePath] = item.hash;
+            const n = successCount + failCount;
+            if (n % 50 === 0 || n === total) {
+              console.log(`  [Progreso ${n}/${total}] ${item.relativePath}`);
             }
           }
         }
-        if (ok) {
-          successCount++;
-          newManifest[item.relativePath] = item.hash;
-          const n = successCount + failCount;
-          if (n % 50 === 0 || n === total) {
-            console.log(`  [Progreso ${n}/${total}] ${item.relativePath}`);
-          }
-        }
+        try { if (client) await client.end(); } catch (_) {}
       }
-      try { if (client) await client.end(); } catch (_) {}
+
+      await Promise.all(Array.from({ length: Math.min(CONCURRENCY, items.length) }, (_, i) => worker(i)));
     }
 
-    await Promise.all(Array.from({ length: Math.min(CONCURRENCY, total) }, (_, i) => worker(i)));
+    for (let ph = 0; ph < phases.length; ph++) {
+      if (!phases[ph].length) continue;
+      // Si en la fase de bundles/estáticos hubo fallos definitivos, NO se sube el HTML:
+      // publicar páginas que referencian ficheros ausentes es justo lo que se evita aquí.
+      if (ph >= 2 && failCount > 0) {
+        console.error(`  [ABORTADO] ${failCount} fichero(s) de fases previas fallaron: no se sube ${PHASE_NAMES[ph]} para no publicar HTML con recursos ausentes. Reejecuta el deploy.`);
+        break;
+      }
+      await runPhase(phases[ph]);
+    }
   } else {
     console.log('  -> Nada que subir: el servidor ya coincide con el manifiesto.');
   }
