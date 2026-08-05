@@ -246,9 +246,16 @@
     carRaf = requestAnimationFrame(carTick);
   }
 
+  // getBoundingClientRect() obliga al navegador a recalcular la geometría de la página, y
+  // llamarlo en CADA movimiento del puntero es lo que Lighthouse señala como "redistribución
+  // forzada". El rectángulo del carrusel solo cambia al entrar, al redimensionar o al hacer
+  // scroll, así que se guarda y se refresca en esos tres momentos.
+  let carRect = null;
+  function carRefreshRect() { carRect = carouselViewportEl ? carouselViewportEl.getBoundingClientRect() : null; }
   function carOnMove(e) {
     if (!carouselViewportEl) return;
-    const r = carouselViewportEl.getBoundingClientRect();
+    if (!carRect) carRefreshRect();
+    const r = carRect;
     let rel = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
     rel = Math.max(-1, Math.min(1, rel));
     if (Math.abs(rel) < 0.06) rel = 0; // zona muerta central: parar es fácil
@@ -258,6 +265,7 @@
 
   function carOnLeave() {
     carVelocity = -CAR_BASE; // deriva por defecto derecha→izquierda
+    carRect = null;          // al volver a entrar se vuelve a medir
   }
 
   // --- Arrastre táctil con inercia (móvil) para el carrusel 3D ---
@@ -308,13 +316,19 @@
     const m1 = setTimeout(carMeasure, 400);
     const m2 = setTimeout(carMeasure, 1500);
     carRaf = requestAnimationFrame(carTick);
-    const onResize = () => carMeasure();
+    // El rectángulo cacheado de los dos carruseles queda obsoleto si la página se mueve
+    // bajo ellos o cambia de tamaño; se invalida y se vuelve a medir en el primer
+    // movimiento del puntero, no aquí (medir en el propio scroll sería el mismo problema).
+    const invalidateRects = () => { carRect = null; fairRect = null; };
+    const onResize = () => { carMeasure(); invalidateRects(); };
     window.addEventListener('resize', onResize);
+    window.addEventListener('scroll', invalidateRects, { passive: true });
     return () => {
       if (carRaf) cancelAnimationFrame(carRaf);
       clearTimeout(m1);
       clearTimeout(m2);
       window.removeEventListener('resize', onResize);
+      window.removeEventListener('scroll', invalidateRects);
     };
   });
 
@@ -357,9 +371,14 @@
     if (fairsTrackEl) fairsTrackEl.style.transform = `translateX(${fairOffset.toFixed(2)}px)`;
     fairRaf = requestAnimationFrame(fairTick);
   }
+  // Mismo criterio que en carOnMove: el rectángulo se cachea para no forzar un recálculo
+  // de geometría por cada movimiento del puntero.
+  let fairRect = null;
+  function fairRefreshRect() { fairRect = fairsViewportEl ? fairsViewportEl.getBoundingClientRect() : null; }
   function fairOnMove(e) {
     if (!fairsViewportEl) return;
-    const r = fairsViewportEl.getBoundingClientRect();
+    if (!fairRect) fairRefreshRect();
+    const r = fairRect;
     let rel = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
     rel = Math.max(-1, Math.min(1, rel));
     if (Math.abs(rel) < 0.06) rel = 0; // zona muerta central
@@ -368,6 +387,7 @@
   }
   function fairOnLeave() {
     fairVelocity = -FAIR_BASE; // deriva por defecto derecha→izquierda
+    fairRect = null;           // al volver a entrar se vuelve a medir
   }
 
   // --- Arrastre táctil con inercia (móvil) para el carrusel de ferias ---
@@ -1949,7 +1969,7 @@
 
     <section id="services" class="section services">
       <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
-        <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
+        <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
       </a>
       <div class="section-header">
         <h2>{copy.servicesTitle}</h2>
@@ -2268,7 +2288,7 @@
                  (igual que en las de feria) y en la propia página de la garantía. -->
             {#if isCityPage || section === 'proyecto_auditado'}
               <a class="guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
-                <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
+                <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
               </a>
             {/if}
             {#if isCityPage || section === 'proyecto_auditado'}

@@ -6,6 +6,7 @@ import { getProjectById } from '$lib/projectData.js';
 import { timelineNodes } from '$lib/fairTimelineNodes.js';
 import newsRaw from '$lib/newsData.json';
 import { cityIntrosFor } from '$lib/server/cityContent.js';
+import { texts as pricingTexts, extraData as pricingExtra } from '$lib/server/pricingCopy.js';
 
 export const entries = () => prerenderEntries;
 
@@ -64,5 +65,13 @@ export function load({ params }) {
   // y de actividad no las llevan, así que ahí ni se adjuntan.
   const SITE_SECTIONS = new Set(['feria', 'project', 'activity', 'activityIndex', 'noticias']);
   const cityIntros = SITE_SECTIONS.has(route.section) ? null : cityIntrosFor(route.lang || 'es');
-  return { ...route, richSeo, fairSeo, fairTimelineSummaries, activitySeo, project, news, cityIntros };
+  // Textos de la página de precios, ya resueltos al idioma de la página. Antes vivían
+  // dentro de Precios.svelte con los 11 idiomas, y como la ruta comodín importa de forma
+  // estática los seis componentes de página, ese peso lo descargaba también quien entraba
+  // a una ficha de feria o a la portada.
+  const pl = route.lang || 'es';
+  const pricingCopy = route.section === 'precios'
+    ? { ...(pricingTexts[pl] || pricingTexts.es), ...(pricingExtra[pl] || pricingExtra.es) }
+    : null;
+  return { ...route, richSeo, fairSeo, fairTimelineSummaries, activitySeo, project, news, cityIntros, pricingCopy };
 }

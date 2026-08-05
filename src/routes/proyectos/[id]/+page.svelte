@@ -472,7 +472,7 @@
 
   <article class="project-container">
     <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
-      <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
+      <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
     </a>
 
     <!-- Carta del Valor de Diseño y Textos -->

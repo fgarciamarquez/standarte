@@ -267,7 +267,7 @@
 
   <section class="pz-block pz-media-block">
     <a class="pz-guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado" target="_blank" rel="noopener">
-      <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
+      <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
     </a>
     <h2 class="pz-h2">{L.media}</h2>
     {#each data.media as m (m.id)}

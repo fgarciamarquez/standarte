@@ -1235,7 +1235,7 @@
              sin decir de qué era garantía); aquí ilustra justo el texto que lo explica. -->
         <div class="aside-module">
           <a class="feria-guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
-            <img src="/img/100x100-guaranted.avif" alt="" loading="lazy" />
+            <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
           </a>
           <p class="audited-note">{@html pickUspLine(lang, fair.slug)}
             <a href={pathFor(lang, 'proyecto_auditado')}>{moreInfoLabel[lang] || moreInfoLabel.es} →</a></p>
