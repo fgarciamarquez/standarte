@@ -732,7 +732,12 @@
     // el estado: al apagar la lupa hay que saber si el mapa está a la vista para no
     // reanudar la flotación de algo que nadie está mirando.
     let inView = true;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // La flotación de la malla mueve cientos de atributos SVG en cada fotograma. En un
+    // móvil de gama media eso se come el hilo principal justo cuando Pat aparece, y el
+    // mapa se lee igual de bien quieto: en pantallas pequeñas se dibuja estático. En
+    // escritorio se mantiene la animación, que es donde aporta.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      || window.matchMedia('(max-width: 900px)').matches;
     const start = performance.now();
     // Posición del puntero en coordenadas del viewBox para el magnetismo de los nodos
     // de sector; null cuando el cursor no está sobre el mapa (la atracción se apaga).

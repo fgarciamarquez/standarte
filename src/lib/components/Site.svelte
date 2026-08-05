@@ -315,7 +315,19 @@
     // Re-medir cuando las imágenes ya han maquetado.
     const m1 = setTimeout(carMeasure, 400);
     const m2 = setTimeout(carMeasure, 1500);
-    carRaf = requestAnimationFrame(carTick);
+    // Igual que la tira de ferias: el carrusel 3D vive muy abajo en la página y no tiene
+    // sentido animarlo mientras no se ve.
+    let carObs = null;
+    if ('IntersectionObserver' in window) {
+      carObs = new IntersectionObserver((entries) => {
+        const visible = entries[0].isIntersecting;
+        if (visible && !carRaf) { carLast = null; carRaf = requestAnimationFrame(carTick); }
+        else if (!visible && carRaf) { cancelAnimationFrame(carRaf); carRaf = 0; }
+      }, { threshold: 0 });
+      if (carouselViewportEl) carObs.observe(carouselViewportEl);
+    } else {
+      carRaf = requestAnimationFrame(carTick);
+    }
     // El rectángulo cacheado de los dos carruseles queda obsoleto si la página se mueve
     // bajo ellos o cambia de tamaño; se invalida y se vuelve a medir en el primer
     // movimiento del puntero, no aquí (medir en el propio scroll sería el mismo problema).
@@ -325,6 +337,7 @@
     window.addEventListener('scroll', invalidateRects, { passive: true });
     return () => {
       if (carRaf) cancelAnimationFrame(carRaf);
+      if (carObs) carObs.disconnect();
       clearTimeout(m1);
       clearTimeout(m2);
       window.removeEventListener('resize', onResize);
@@ -436,11 +449,26 @@
     fairMeasure();
     const fm1 = setTimeout(fairMeasure, 400);
     const fm2 = setTimeout(fairMeasure, 1500);
-    fairRaf = requestAnimationFrame(fairTick);
+    // La tira de ferias es el 65 % de los nodos de la portada (≈4.700) y arranca a más de
+    // 4.000 px de scroll: animarla desde el montaje obligaba al navegador a recomponerla
+    // 60 veces por segundo sin que nadie la viera, que es de lo que más se queja Lighthouse
+    // en móvil (Style & Layout). Solo se anima mientras está en pantalla.
+    let fairObs = null;
+    if ('IntersectionObserver' in window) {
+      fairObs = new IntersectionObserver((entries) => {
+        const visible = entries[0].isIntersecting;
+        if (visible && !fairRaf) { fairLast = null; fairRaf = requestAnimationFrame(fairTick); }
+        else if (!visible && fairRaf) { cancelAnimationFrame(fairRaf); fairRaf = 0; }
+      }, { threshold: 0 });
+      if (fairsViewportEl) fairObs.observe(fairsViewportEl);
+    } else {
+      fairRaf = requestAnimationFrame(fairTick);
+    }
     const onResize = () => fairMeasure();
     window.addEventListener('resize', onResize);
     return () => {
       if (fairRaf) cancelAnimationFrame(fairRaf);
+      if (fairObs) fairObs.disconnect();
       clearTimeout(fm1);
       clearTimeout(fm2);
       window.removeEventListener('resize', onResize);
@@ -1572,6 +1600,14 @@
     // En el resto de páginas (ciudades y hermanas) Pat se activa con un disparador
     // (botón "Expansión" del hero, "Hablar con Pat", enlaces #pat…). Su código se
     // trae con import dinámico (chunk aparte) para no comprometer la carga principal.
+    // Retardo de aparición de Pat. En escritorio, 8 s como siempre. En móvil, 25 s: el
+    // asesor monta el mapa (≈1.200 nodos más) y arrancarlo a los 8 s cae de lleno en el
+    // tramo que miden las herramientas de rendimiento y en el momento en que el visitante
+    // todavía está cargando la página con una CPU modesta. Retrasarlo no renuncia a captar
+    // —quien se queda leyendo lo sigue viendo— pero deja respirar al arranque.
+    const advisorDelay = () =>
+      (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) ? 25000 : 8000;
+
     const launchAdvisor = () => {
       advisorTimeout = setTimeout(() => {
         // Si el visitante ya completó el formulario del asesor en esta sesión,
@@ -1580,7 +1616,7 @@
         import('./WelcomeAdvisor.svelte')
           .then((m) => { AdvisorComponent = m.default; showWelcomeAdvisor = true; })
           .catch(() => {});
-      }, 8000); // antes 2000 ms; +6 s para que Pat aparezca más tarde
+      }, advisorDelay()); // escritorio 8 s; móvil 25 s (ver advisorDelay)
     };
     if (section === 'home') {
       if (document.readyState === 'complete') {

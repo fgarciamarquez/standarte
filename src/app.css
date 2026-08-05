@@ -902,6 +902,12 @@ article:hover .city-cover-image,
   width: 100%;
   max-width: none;
   height: 2cm;
+  /* Esta tira concentra unos 4.700 nodos: dos tercios de toda la portada. Con `contain`
+     el navegador sabe que nada de dentro afecta a la maquetación de fuera, así que no
+     recalcula la página entera cuando el carrusel se mueve. Es lo que más alivia el
+     apartado "Style & Layout" en móvil. El contenido sigue en el HTML y es indexable:
+     esto no oculta nada, solo acota el alcance del cálculo. */
+  contain: layout paint style;
   margin-left: 0;
   margin-right: 0;
   overflow: hidden;
