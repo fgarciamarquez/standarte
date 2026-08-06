@@ -35,14 +35,17 @@
   // edición interno (admin) sigue siendo plenamente operativo.
   $: demo = !admin && !!data?.is_demo;
 
-  // Buffers de edición (se reinician al cambiar de idioma o al recargar datos).
-  // Se comparan las REFERENCIAS (ebFrom/ebLang): el recálculo en vivo de los totales
-  // reasigna `data` sobre sí mismo en cada pulsación, y sin esta guarda el buffer se
-  // reiniciaría a cada tecla, borrando lo escrito y aún no guardado (p. ej. el descuento).
+  // Buffer de edición. Se inicializa UNA vez por sesión de edición (y al cambiar de
+  // idioma), nunca al recargar datos: cada guardado parcial (celda del presupuesto,
+  // descripción de un archivo, mover un archivo…) recarga `data` del servidor, y si el
+  // buffer se reconstruyera entonces, machacaría lo tecleado y aún sin guardar — así se
+  // perdió un descuento por pronta decisión que se escribió antes de tocar otra cosa.
+  // Dentro de la sesión el único que escribe es el propio editor, así que el buffer es
+  // la verdad más reciente; lo guardado converge con él en cada "Guardar cambios".
   let eb = {};
-  let ebFrom = null;
+  let ebInit = false;
   let ebLang = null;
-  $: if (admin && data && (data !== ebFrom || lang !== ebLang)) { ebFrom = data; ebLang = lang; eb = {
+  $: if (admin && data && (!ebInit || lang !== ebLang)) { ebInit = true; ebLang = lang; eb = {
     title: data.title[lang] || '', memoria: data.memoria[lang] || '',
     includes: (data.includes[lang] || []).join('\n'), excludes: (data.excludes[lang] || []).join('\n'),
     income: data.income_account || '', paid: !!data.paid,
@@ -170,6 +173,15 @@
     const r = await adminAction(token, 'save', f);
     await reload();
     saving = false; adminMsg = r && r.ok ? L.saved : 'Error';
+  }
+  // El descuento se persiste al salir de cualquiera de sus tres campos, como las celdas
+  // del presupuesto: así no depende de que se pulse "Guardar cambios" al final, que es
+  // donde se perdía si por medio hubo cualquier otro guardado parcial.
+  async function saveDiscount() {
+    const f = { discount_amount: eb.discAmount || '0', discount_deadline: eb.discDeadline || '' };
+    f['discount_label_' + lang] = eb.discLabel || '';
+    await adminAction(token, 'save', f);
+    await reload();
   }
   async function saveMediaDesc(m) {
     const f = { media_id: m.id };
@@ -468,9 +480,9 @@
       <div class="pz-disc-edit">
         <label class="pz-elabel">{L.promptDiscount}</label>
         <div class="pz-disc-edit-row">
-          <input class="pz-edit pz-disc-amount" inputmode="decimal" bind:value={eb.discAmount} placeholder={L.discAmountPh} />
-          <input class="pz-edit pz-disc-date" type="date" bind:value={eb.discDeadline} />
-          <input class="pz-edit pz-disc-label" bind:value={eb.discLabel} placeholder={L.discLabelPh} />
+          <input class="pz-edit pz-disc-amount" inputmode="decimal" bind:value={eb.discAmount} on:blur={saveDiscount} placeholder={L.discAmountPh} />
+          <input class="pz-edit pz-disc-date" type="date" bind:value={eb.discDeadline} on:change={saveDiscount} />
+          <input class="pz-edit pz-disc-label" bind:value={eb.discLabel} on:blur={saveDiscount} placeholder={L.discLabelPh} />
         </div>
         <p class="pz-drive-hint">{L.discHint}</p>
       </div>
