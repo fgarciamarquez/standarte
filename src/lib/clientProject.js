@@ -57,6 +57,16 @@ export async function notifySend(token, role) {
   return res.json().catch(() => ({ ok: false }));
 }
 
+/** Marca de "visto": la página del proyecto lo dispara al abrirla el cliente.
+ * Registra la visita y el servidor decide si avisa al equipo (máx. 1 cada 6 h).
+ * Silencioso a propósito: si falla no debe afectar en nada a la visita. */
+export function visitPing(token) {
+  const fd = new FormData();
+  fd.append('token', token);
+  fd.append('role', 'visit');
+  fetch('/admin/ajax_proyecto_notify.php', { method: 'POST', body: fd, keepalive: true }).catch(() => {});
+}
+
 // ─── Modo edición (interno) ────────────────────────────────────────────────
 // Las escrituras van al endpoint PHP, que valida la sesión de admin y usa la
 // service key en servidor. La cookie de sesión viaja sola (mismo origen).

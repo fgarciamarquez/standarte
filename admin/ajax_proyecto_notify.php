@@ -4,6 +4,9 @@
  * Al pulsar "Enviar":
  *   - role=client   -> avisa al interlocutor interno de que el cliente comentó.
  *   - role=internal -> avisa al cliente (con enlace) de que hay respuestas.
+ *   - role=visit    -> lo dispara la propia página al abrirla el CLIENTE: registra la
+ *                      visita y, como mucho una vez cada 6 h por proyecto (lo decide la
+ *                      BD de forma atómica), avisa al interlocutor de que la ha visto.
  * Lee el proyecto vía la RPC get_client_project (SECURITY DEFINER): el token es
  * la autorización, así que basta la clave publishable (SUPABASE_KEY) y no se
  * necesita la service key. Reutiliza el mailer SMTP de campañas.
@@ -16,8 +19,14 @@ function pn_admin_authed() { return isset($_SESSION['standarte_email_campaing_au
 
 $token = pn_post('token');
 $role  = pn_post('role');
-if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token) || !in_array($role, array('client', 'internal'), true)) {
+if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token) || !in_array($role, array('client', 'internal', 'visit'), true)) {
 	echo json_encode(array('ok' => false, 'error' => 'bad_request'));
+	exit;
+}
+/* Si quien abre la página es el propio equipo (sesión de admin), no es una visita
+ * del cliente: ni se registra ni se avisa. */
+if ($role === 'visit' && pn_admin_authed()) {
+	echo json_encode(array('ok' => true, 'skipped' => 'admin'));
 	exit;
 }
 /* El aviso "hemos respondido" solo lo puede disparar el equipo autenticado
@@ -31,6 +40,30 @@ if ($role === 'internal' && !pn_admin_authed()) {
 
 require_once __DIR__ . '/../supabase-config.php';
 require_once __DIR__ . '/email_campaing/mailer.php';
+
+/* Visita del cliente: touch_client_visit registra la visita y devuelve true SOLO si
+ * toca avisar (nunca en el piloto público, y máximo una vez cada 6 h por proyecto).
+ * La decisión vive en la BD para que dos pestañas abiertas a la vez no dupliquen. */
+if ($role === 'visit') {
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/rest/v1/rpc/touch_client_visit');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('p_token' => $token)));
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		'apikey: ' . SUPABASE_KEY,
+		'Authorization: Bearer ' . SUPABASE_KEY,
+		'Content-Type: application/json'
+	));
+	$vr = curl_exec($ch);
+	curl_close($ch);
+	if (trim((string) $vr) !== 'true') {
+		echo json_encode(array('ok' => true, 'notified' => false));
+		exit;
+	}
+}
 
 /* Proyecto por token vía RPC (la función valida el token; devuelve null si no existe). */
 $ch = curl_init();
@@ -90,10 +123,24 @@ if ($role === 'client') {
 	$to = $interEmail;
 	$subject = 'Nuevos comentarios de ' . $clientName . ' — ' . $p['ref'];
 	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> ha enviado comentarios sobre el proyecto <strong>' . htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>.';
+} elseif ($role === 'visit') {
+	/* Aviso interno de "visto": sin hilo de comentarios ni imagen, solo el hecho. */
+	$to = $interEmail;
+	$subject = 'El cliente ha abierto el proyecto — ' . $p['ref'];
+	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> acaba de abrir la presentación del proyecto <strong>' . htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>.';
+	$commentsHtml = '';
+	$firstImgOpt = '';
 } else {
 	$to = isset($p['client_email']) ? $p['client_email'] : '';
-	$subject = 'Standarte ha actualizado el proyecto — ' . $p['ref'];
-	$intro = 'Standarte ha respondido a los últimos comentarios y el proyecto se ha actualizado.';
+	/* Primera presentación (sin conversación todavía) vs. actualización con respuestas:
+	 * el texto de "hemos respondido a los comentarios" no encaja cuando aún no hay hilo. */
+	if ($commentsHtml === '') {
+		$subject = 'Su proyecto está listo para consultar — ' . $p['ref'];
+		$intro = 'Hemos preparado la presentación de su proyecto y ya puede consultarla.';
+	} else {
+		$subject = 'Standarte ha actualizado el proyecto — ' . $p['ref'];
+		$intro = 'Standarte ha respondido a los últimos comentarios y el proyecto se ha actualizado.';
+	}
 }
 if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
 	echo json_encode(array('ok' => false, 'error' => 'no_recipient'));

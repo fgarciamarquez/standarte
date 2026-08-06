@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import ProjectPresentation from '$lib/components/ProjectPresentation.svelte';
-  import { fetchProject, addComment, notifySend, adminWhoami, adminLogin, adminLogout } from '$lib/clientProject.js';
+  import { fetchProject, addComment, notifySend, adminWhoami, adminLogin, adminLogout, visitPing } from '$lib/clientProject.js';
 
   let project = null;
   let status = 'loading';   // loading | ok | notfound | error
@@ -27,7 +27,12 @@
     } catch (e) { status = 'error'; return; }
     // Detectar sesión de admin aparte, sin bloquear el render (en dev el PHP no
     // responde y quedaría colgado; aquí solo activa el modo edición si procede).
-    adminWhoami().then((who) => { admin = !!(who && who.authed); }).catch(() => {});
+    // Si NO es el equipo, es el cliente abriendo su enlace: se marca la visita
+    // (el servidor vuelve a comprobar la sesión y aplica el límite de avisos).
+    adminWhoami().then((who) => {
+      admin = !!(who && who.authed);
+      if (!admin) visitPing(token);
+    }).catch(() => {});
   });
 
   async function reloadProject() {

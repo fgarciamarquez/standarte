@@ -84,7 +84,19 @@ function status_toggle($p, $field) {
 		. '</form>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,paid,approved,contract_done,invoice_done,access_token,is_demo,created_at&order=created_at.desc') : array();
+/* Última visita del cliente (la anota touch_client_visit cuando abre su enlace).
+ * Se muestra en hora española; verde si fue en las últimas 24 h, «—» si nunca entró. */
+function visit_badge($p) {
+	if (empty($p['last_client_visit'])) return '<span class="visit-never" title="El cliente aún no ha abierto el proyecto">—</span>';
+	try {
+		$d = new DateTime($p['last_client_visit']);
+		$d->setTimezone(new DateTimeZone('Europe/Madrid'));
+	} catch (Exception $e) { return '<span class="visit-never">—</span>'; }
+	$recent = (time() - $d->getTimestamp()) < 86400;
+	return '<span class="visit' . ($recent ? ' visit-recent' : '') . '" title="Última visita del cliente">' . $d->format('d/m H:i') . '</span>';
+}
+
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,paid,approved,contract_done,invoice_done,access_token,is_demo,created_at,last_client_visit&order=created_at.desc') : array();
 ?>
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -116,7 +128,10 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 	.demo-badge { display: inline-block; background: rgba(255,200,0,.14); color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
 	/* Listado de proyectos en capas (sin <table>): grid en escritorio, apilado en móvil. */
 	.pj-list { display: flex; flex-direction: column; }
-	.pj-head, .pj-card { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1.4fr) auto auto auto minmax(0,1fr) auto; gap: 10px; align-items: center; }
+	.pj-head, .pj-card { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1.4fr) auto auto auto auto minmax(0,1fr) auto; gap: 10px; align-items: center; }
+	.visit { font-size: 12px; color: #9aa; white-space: nowrap; }
+	.visit-recent { color: #4caf50; font-weight: 700; }
+	.visit-never { color: #555; }
 	.pj-head { padding: 0 8px 8px; border-bottom: 1px solid #2c3038; font-size: 14px; }
 	.pj-card { padding: 10px 8px; border-bottom: 1px solid #2c3038; font-size: 14px; }
 	.pj-cell { min-width: 0; }
@@ -126,9 +141,9 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 	@media (max-width: 640px) {
 		.pj-head { display: none; }
 		.pj-card { grid-template-columns: 1fr; gap: 8px; padding: 14px 6px; }
-		.pj-cell { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+		.pj-cell { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 		.pj-k { display: inline; color: #9aa; text-transform: uppercase; font-size: 11px; letter-spacing: .06em; flex: 0 0 auto; }
-		.pj-v { text-align: right; }
+		.pj-v { flex: 1 1 auto; min-width: 0; text-align: right; overflow-wrap: anywhere; word-break: break-word; }
 		.pj-ref .pj-v { font-weight: 700; }
 	}
 </style></head>
@@ -175,7 +190,7 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 		<p class="hint">Aprobado lo marca el cliente al aprobar; contrato y factura los marcas tú al cursarlos (clic para alternar).</p>
 		<div class="pj-list">
 			<div class="pj-head">
-				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura</span><span>Abrir</span><span></span>
+				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura</span><span>Visto</span><span>Abrir</span><span></span>
 			</div>
 			<?php foreach ($projects as $p): ?>
 			<div class="pj-card">
@@ -184,6 +199,7 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 				<div class="pj-cell"><span class="pj-k">Aprobado</span><span class="pj-v"><?= status_badge($p, 'approved') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_done') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Factura</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Visto</span><span class="pj-v"><?= visit_badge($p) ?></span></div>
 				<div class="pj-cell pj-open"><span class="pj-k">Abrir</span><span class="pj-v"><a class="link" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir y editar →</a></span></div>
 				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v"><form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
 					<input type="hidden" name="action" value="delete_project">
