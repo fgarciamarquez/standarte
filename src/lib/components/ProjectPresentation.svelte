@@ -36,23 +36,36 @@
   $: demo = !admin && !!data?.is_demo;
 
   // Buffers de edición (se reinician al cambiar de idioma o al recargar datos).
+  // Se comparan las REFERENCIAS (ebFrom/ebLang): el recálculo en vivo de los totales
+  // reasigna `data` sobre sí mismo en cada pulsación, y sin esta guarda el buffer se
+  // reiniciaría a cada tecla, borrando lo escrito y aún no guardado (p. ej. el descuento).
   let eb = {};
-  $: if (admin && data) eb = {
+  let ebFrom = null;
+  let ebLang = null;
+  $: if (admin && data && (data !== ebFrom || lang !== ebLang)) { ebFrom = data; ebLang = lang; eb = {
     title: data.title[lang] || '', memoria: data.memoria[lang] || '',
     includes: (data.includes[lang] || []).join('\n'), excludes: (data.excludes[lang] || []).join('\n'),
     income: data.income_account || '', paid: !!data.paid,
     clientEmail: data.client_email || '',
     discAmount: data.discount?.amount ? String(data.discount.amount) : '',
     discLabel: data.discount?.label?.[lang] || '', discDeadline: data.discount?.deadline || ''
-  };
+  }; }
 
   // Impuestos y descuento por pronta decisión.
+  // amt(): mismo criterio que el PHP al guardar ((float) con coma aceptada como decimal),
+  // para que el total que se ve mientras se teclea coincida con el que quedará fijado.
+  const amt = (v) => { const n = Number(String(v ?? '').trim().replace(',', '.')); return Number.isFinite(n) ? n : 0; };
   $: ivaRate = Number(data?.iva_rate ?? 0.21);
   $: irpfRate = Number(data?.irpf_rate ?? 0.15);
-  $: subtotal = (data?.budget || []).reduce((s, b) => s + Number(b.amount || 0), 0);
+  $: subtotal = (data?.budget || []).reduce((s, b) => s + amt(b.amount), 0);
   $: approved = !!data?.approved;
-  $: discAmount = Number(data?.discount?.amount || 0);
-  $: discDeadline = data?.discount?.deadline ? new Date(data.discount.deadline + 'T23:59:59') : null;
+  // En modo edición los totales siguen lo TECLEADO (buffer eb) en tiempo real; al guardar,
+  // reload() trae lo persistido y ambos caminos convergen. Fuera de edición, lo guardado.
+  $: discSrc = admin && eb.title !== undefined
+    ? { amount: eb.discAmount, deadline: eb.discDeadline }
+    : { amount: data?.discount?.amount, deadline: data?.discount?.deadline };
+  $: discAmount = amt(discSrc.amount);
+  $: discDeadline = discSrc.deadline ? new Date(discSrc.deadline + 'T23:59:59') : null;
   $: discValid = discAmount > 0 && (!discDeadline || new Date() <= discDeadline);
   // Al aprobar se congela: si se aprobó con oferta se mantiene el descuento; si no, desaparece.
   $: discApplied = approved ? (data?.approved_with_offer ? discAmount : 0) : (discValid ? discAmount : 0);
@@ -179,6 +192,26 @@
   }
   async function delBudget(id) { await adminAction(token, 'del_budget', { item_id: id }); await reload(); }
   async function delMedia(id) { await adminAction(token, 'del_media', { media_id: id }); await reload(); }
+
+  // Reordenar archivos con las flechas ↑/↓. Se intercambia en local al instante
+  // (respuesta inmediata) y se manda al servidor la lista COMPLETA de ids en su
+  // nuevo orden; el PHP numera sort_order 1..N, así que el resultado es estable
+  // aunque los archivos hubieran entrado todos con el 999 por defecto.
+  let reordering = false;
+  async function moveMedia(m, dir) {
+    if (reordering || !data?.media) return;
+    const list = [...data.media];
+    const i = list.findIndex((x) => x.id === m.id);
+    const j = i + dir;
+    if (i < 0 || j < 0 || j >= list.length) return;
+    [list[i], list[j]] = [list[j], list[i]];
+    data = { ...data, media: list };
+    reordering = true;
+    const r = await adminAction(token, 'reorder_media', { order: list.map((x) => x.id).join(',') });
+    if (!r || !r.ok) adminMsg = 'No se pudo guardar el orden.';
+    await reload();
+    reordering = false;
+  }
   async function editMediaTitle(m) { await adminAction(token, 'save_media_placeholder', {}); }
 
   const uploadErrMsg = {
@@ -270,7 +303,7 @@
       <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
     </a>
     <h2 class="pz-h2">{L.media}</h2>
-    {#each data.media as m (m.id)}
+    {#each data.media as m, mi (m.id)}
       <article class="pz-media">
         <!-- svelte-ignore a11y-no-static-element-interactions a11y-click-events-have-key-events -->
         <div
@@ -301,7 +334,14 @@
             {#if m.type === 'video'}<span class="pz-play" aria-hidden="true">▶</span>{/if}
             <span class="pz-visual-title">{m.title[lang]}</span>
           {/if}
-          {#if admin}<button class="pz-del-media" title={L.del} on:click|stopPropagation={() => delMedia(m.id)}>×</button>{/if}
+          {#if admin}
+            <button class="pz-del-media" title={L.del} on:click|stopPropagation={() => delMedia(m.id)}>×</button>
+            <div class="pz-order">
+              <button class="pz-ord-btn" title="Subir en el orden" disabled={mi === 0 || reordering} on:click|stopPropagation={() => moveMedia(m, -1)}>↑</button>
+              <span class="pz-ord-n">{mi + 1}</span>
+              <button class="pz-ord-btn" title="Bajar en el orden" disabled={mi === data.media.length - 1 || reordering} on:click|stopPropagation={() => moveMedia(m, 1)}>↓</button>
+            </div>
+          {/if}
         </div>
 
         <div class="pz-chat">
@@ -390,7 +430,11 @@
             <tr>
               {#if admin}
                 <td><input class="pz-cell" bind:value={it.concept[lang]} on:blur={() => editBudget(it)} /></td>
-                <td class="num"><input class="pz-cell pz-cell-num" bind:value={it.amount} on:blur={() => editBudget(it)} /></td>
+                <!-- La autoasignación de `data` fuerza el recálculo de los totales en cada
+                     pulsación: al teclear se muta la fila dentro de data.budget y los `$:`
+                     que dependen de `data` no se re-ejecutan solos. Al salir del campo
+                     (blur) se persiste y reload() deja fijado lo guardado. -->
+                <td class="num"><input class="pz-cell pz-cell-num" inputmode="decimal" bind:value={it.amount} on:input={() => { data = data; }} on:blur={() => editBudget(it)} /></td>
                 <td><button class="pz-del" on:click={() => delBudget(it.id)}>×</button></td>
               {:else}
                 <td>{it.concept[lang]}</td><td class="num">{fmt(Number(it.amount))}</td>
@@ -638,6 +682,12 @@
   .pz-3d { font-size: 20px; letter-spacing: 0.1em; }
   .pz-3d-btn { background: none; border: 1px solid #f4f3ee; color: #f4f3ee; padding: 6px 14px; border-radius: 4px; font-family: inherit; font-size: 12px; cursor: pointer; text-decoration: none; }
   .pz-del-media { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border: none; border-radius: 50%; background: rgba(192,57,43,.9); color: #fff; font-size: 16px; cursor: pointer; z-index: 3; }
+  /* Controles de orden (solo en modo edición): esquina superior izquierda, el borrar queda a la derecha. */
+  .pz-order { position: absolute; top: 6px; left: 6px; display: flex; align-items: center; gap: 4px; z-index: 3; background: rgba(0,0,0,.55); border-radius: 14px; padding: 2px 6px; }
+  .pz-ord-btn { width: 24px; height: 24px; border: none; border-radius: 50%; background: rgba(255,255,255,.15); color: #fff; font-size: 14px; line-height: 1; cursor: pointer; }
+  .pz-ord-btn:hover:not(:disabled) { background: #ffc800; color: #111; }
+  .pz-ord-btn:disabled { opacity: .35; cursor: default; }
+  .pz-ord-n { color: #fff; font-size: 12px; font-weight: 700; min-width: 14px; text-align: center; }
   .pz-chat { display: flex; flex-direction: column; border: 1px solid #cfcdc4; background: #fff; min-height: 100%; }
   .pz-thread { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; max-height: 240px; overflow-y: auto; }
   .pz-empty { color: #999; font-size: 13px; margin: 0; }

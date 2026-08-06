@@ -100,6 +100,24 @@ if ($action === 'del_media') {
 	$r = cpx_sb('DELETE', 'client_project_media?id=eq.' . urlencode(pa_post('media_id')) . '&project_id=eq.' . urlencode($projectId));
 	pa_out(array('ok' => (int) $r['code'] < 300));
 }
+/* Reordenar los archivos: recibe TODOS los ids del proyecto en el orden deseado
+ * (separados por comas) y numera sort_order 1..N. Se exige la lista completa para
+ * que el orden resultante sea exactamente el que se ve en pantalla al soltar. */
+if ($action === 'reorder_media') {
+	$ids = array_values(array_filter(array_map('trim', explode(',', pa_post('order')))));
+	if (empty($ids)) pa_out(array('ok' => false, 'error' => 'no_order'));
+	$ok = true; $n = 1;
+	foreach ($ids as $mid) {
+		if (!preg_match('/^[0-9a-f-]{36}$/', $mid)) { $ok = false; continue; }
+		// El filtro por project_id impide renumerar media de otro proyecto aunque
+		// llegue un id ajeno en la lista.
+		$r = cpx_sb('PATCH', 'client_project_media?id=eq.' . urlencode($mid) . '&project_id=eq.' . urlencode($projectId), array('sort_order' => $n));
+		if ((int) $r['code'] >= 300) $ok = false;
+		$n++;
+	}
+	pa_out(array('ok' => $ok));
+}
+
 /* Editar título/descripción de un archivo (la descripción se muestra solo ampliada). */
 if ($action === 'edit_media') {
 	$fields = array();
