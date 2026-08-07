@@ -22,7 +22,6 @@
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
   import SiteFooter from './SiteFooter.svelte';
-  import MeshCoverageLinks from './MeshCoverageLinks.svelte';
   import FairSearch from './FairSearch.svelte';
   // WelcomeAdvisor NO se importa de forma estática: se carga con import dinámico
   // (chunk aparte) tras cargar la página, para no colgar del bundle principal.
@@ -1918,13 +1917,12 @@
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="local-stands" class="section local-stands">
       <h2 class="section-intro">{copy.citiesIntro}</h2>
-      {#if section === 'home'}
-        <!-- Gemelo SEO de la malla de Pat: grafo de cobertura ciudad↔actividad como
-             HTML rastreable (enlaza a las páginas-ciudad y a los hubs /actividad).
-             Va DEBAJO del titular de ciudades; el enlace "[ Ver todas las ciudades ]"
-             queda como acceso discreto a la malla completa. -->
-        <MeshCoverageLinks {lang} />
-      {/if}
+      <!-- El gemelo visible de la malla ("[ Ver todas las ciudades ]", componente
+           MeshCoverageLinks) se retiró de la home el 2026-08-07: cientos de enlaces
+           colgando de la portada diluían su autoridad. La malla como señal para
+           motores se mantiene por la vía del JSON-LD (meshSeo.js), sin coste de
+           enlazado visible. El componente sigue en el historial de git si se quiere
+           recuperar en una página interna. -->
       <div class="city-grid">
         {#each cityKeys as cityKey, i}
           {@const cityFairs = fairsForCity(cityKey)}
