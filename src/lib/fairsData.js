@@ -2121,6 +2121,13 @@ export const fairsData = [
     "sector": "Aeronáutica y Transporte"
   },
   {
+    "name": "FIAA Madrid",
+    "country": "es",
+    "slug": "fiaa-madrid",
+    "city": "Madrid",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
     "name": "Global Mobility Call",
     "country": "es",
     "slug": "global-mobility-call-madrid",

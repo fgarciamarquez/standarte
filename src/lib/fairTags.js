@@ -367,6 +367,7 @@ export const fairActivities = {
   "its-european-congress": ["movilidad","smart-city","congreso-profesional"],
   "congreso-its-espana": ["movilidad","congreso-profesional"],
   "trafic-madrid": ["movilidad"],
+  "fiaa-madrid": ["transporte","movilidad","automocion"],
   "global-mobility-call-madrid": ["movilidad","smart-city","congreso-profesional"],
   "mubil-mobility-expo-irun": ["movilidad","energia"],
   "unire-irun": ["metal-subcontratacion","maquinaria-industrial"],

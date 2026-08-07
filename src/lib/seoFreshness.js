@@ -23,7 +23,7 @@ export const seoFreshness = {
   oporto: '2026-07-14',
   vigo: '2026-07-14',
   portugal_sur: '2026-07-14',
-  madrid: '2026-07-16',
+  madrid: '2026-08-07',
   bilbao: '2026-07-14',
   malaga: '2026-07-14',
   sevilla: '2026-07-14',
@@ -180,6 +180,10 @@ export const fairFreshness = {
   'sommet-elevage-clermont-ferrand': '2026-07-24',
   'smopyc-zaragoza': '2026-07-24',
   'stand-tecnovid-zaragoza': '2026-08-02',
+
+  // Madrid: alta de FIAA (bus y autocar, IFEMA) en el hub.
+
+  'fiaa-madrid': '2026-08-07',
   'smagua-zaragoza': '2026-07-25',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'medfel-perpignan': '2026-07-21',

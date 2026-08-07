@@ -43,6 +43,8 @@ export const fairDates = {
   'intercaza-cordoba': { start: '2026-09-18', end: '2026-09-20', cadence: 'annual', source: 'https://intercaza.com/' },
   'cfia-toulouse': { start: '2026-09-22', end: '2026-09-24', cadence: 'biennial', source: 'https://toulouse.cfiaexpo.com/en' },
   'farmaforum-madrid': { start: '2026-09-22', end: '2026-09-23', cadence: 'annual', source: 'https://www.ifema.es/farmaforum' },
+  // FIAA no declara periodicidad en su web; el histórico de ediciones (2022, 2024, 2026) es bienal.
+  'fiaa-madrid': { start: '2026-09-22', end: '2026-09-24', cadence: 'biennial', source: 'https://www.ifema.es/fiaa' },
   'morocco-food-expo-casablanca': { start: '2026-09-22', end: '2026-09-24', cadence: 'annual', source: 'https://www.moroccofoodexpo.com/' },
   'sepem-industries-toulouse': { start: '2026-09-22', end: '2026-09-24', cadence: 'biennial', source: 'https://toulouse.sepem-industries.com/' },
   'siema-casablanca': { start: '2026-09-22', end: '2026-09-24', cadence: 'annual', source: 'https://www.siemamaroc.com/' },
