@@ -74,8 +74,25 @@
   const mountedAt = Date.now();
 
   $: q = norm(query);
+  // Ranking del predictor. El corte plano a 8 con orden alfabético dejaba ferias fuera
+  // sin remedio: al teclear "Madrid" coincidían las ~29 de la ciudad y solo se veían las
+  // 8 primeras por alfabeto (FIAA, por la F, no aparecía nunca). Ahora: primero lo que
+  // EMPIEZA por lo tecleado (nombre antes que ciudad), después lo que lo contiene; y el
+  // tope sube a 40 con la lista desplazable, para que una ciudad muestre todas sus ferias.
+  const rank = (o, term) => {
+    if (o.key.startsWith(term)) return 0;
+    if (o.cityKey && o.cityKey.startsWith(term)) return 1;
+    if (o.key.includes(term)) return 2;
+    if (o.cityKey && o.cityKey.includes(term)) return 3;
+    return 9;
+  };
   $: matches = (q.length >= 1)
-    ? options.filter((o) => o.key.includes(q) || (o.cityKey && o.cityKey.includes(q))).slice(0, 8)
+    ? options
+        .map((o) => ({ o, r: rank(o, q) }))
+        .filter((x) => x.r < 9)
+        .sort((a, b) => a.r - b.r || a.o.name.localeCompare(b.o.name, 'es'))
+        .map((x) => x.o)
+        .slice(0, 40)
     : [];
   $: showSuggest = focused && matches.length > 0;
 
