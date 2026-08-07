@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 28
+n_ferias: 29
 lat: 40.42
 lon: -3.7
 ---
@@ -17,6 +17,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Expofranquicia Madrid]]
 - [[Expomedes]]
 - [[ExpoÓptica]]
+- [[FIAA Madrid]]
 - [[Farmaforum]]
 - [[Fitur Madrid]]
 - [[Fruit Attraction Madrid]]

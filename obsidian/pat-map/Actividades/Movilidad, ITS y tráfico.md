@@ -2,7 +2,7 @@
 tipo: actividad
 clave: movilidad
 sector: "Aeronáutica y Transporte"
-n_ferias: 9
+n_ferias: 10
 ---
 # Movilidad, ITS y tráfico
 
@@ -11,6 +11,7 @@ Actividad del sector [[Aeronáutica y Transporte]].
 ## Ferias
 - [[Caravantur]]
 - [[Congreso ITS España]]
+- [[FIAA Madrid]]
 - [[Global Mobility Call]]
 - [[Go Mobility]]
 - [[ITS European Congress]]
