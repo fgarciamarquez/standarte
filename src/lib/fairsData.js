@@ -373,21 +373,21 @@ export const fairsData = [
   {
     "name": "Belmoda Granada",
     "country": "es",
-    "slug": "belmoda-granada",
+    "slug": "stand-belmoda-granada",
     "city": "Armilla",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "Sabores de Nuestra Tierra",
     "country": "es",
-    "slug": "sabores-nuestra-tierra-granada",
+    "slug": "stand-sabores-nuestra-tierra-granada",
     "city": "Armilla",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Feria de los Pueblos de Granada",
     "country": "es",
-    "slug": "feria-pueblos-granada",
+    "slug": "stand-feria-pueblos-granada",
     "city": "Armilla",
     "sector": "Multisectorial y Profesional"
   },
@@ -457,7 +457,7 @@ export const fairsData = [
   {
     "name": "FECONS",
     "country": "es",
-    "slug": "fecons-torre-pacheco",
+    "slug": "stand-fecons-torre-pacheco",
     "city": "Torre Pacheco",
     "sector": "Construcción e Infraestructuras"
   },
@@ -688,147 +688,147 @@ export const fairsData = [
   {
     "name": "SIRHA",
     "country": "fr",
-    "slug": "sirha-lyon",
+    "slug": "stand-sirha-lyon",
     "city": "Lyon",
     "sector": "Gastronomía y Hostelería"
   },
   {
     "name": "Global Industrie",
     "country": "fr",
-    "slug": "global-industrie-lyon",
+    "slug": "stand-global-industrie-lyon",
     "city": "Lyon",
     "sector": "Industria y Manufactura"
   },
   {
     "name": "Pollutec Lyon",
     "country": "fr",
-    "slug": "pollutec-lyon",
+    "slug": "stand-pollutec-lyon",
     "city": "Lyon",
     "sector": "Medioambiente y Tecnologías Limpias"
   },
   {
     "name": "Piscine Global Europe",
     "country": "fr",
-    "slug": "piscine-global-lyon",
+    "slug": "stand-piscine-global-lyon",
     "city": "Lyon",
     "sector": "Piscinas, Spa y Wellness"
   },
   {
     "name": "Préventica Lyon",
     "country": "fr",
-    "slug": "preventica-lyon",
+    "slug": "stand-preventica-lyon",
     "city": "Lyon",
     "sector": "Prevención de Riesgos Laborales"
   },
   {
     "name": "Prod&Pack",
     "country": "fr",
-    "slug": "prod-pack-lyon",
+    "slug": "stand-prod-pack-lyon",
     "city": "Lyon",
     "sector": "Envasado y Producción Agroalimentaria"
   },
   {
     "name": "BEPOSITIVE",
     "country": "fr",
-    "slug": "bepositive-lyon",
+    "slug": "stand-bepositive-lyon",
     "city": "Lyon",
     "sector": "Transición Energética y Construcción"
   },
   {
     "name": "Sommet de l'Élevage",
     "country": "fr",
-    "slug": "sommet-elevage-clermont-ferrand",
+    "slug": "stand-sommet-elevage-clermont-ferrand",
     "city": "Clermont-Ferrand",
     "sector": "Ganadería y Genética Animal"
   },
   {
     "name": "Mountain Planet",
     "country": "fr",
-    "slug": "mountain-planet-grenoble",
+    "slug": "stand-mountain-planet-grenoble",
     "city": "Grenoble",
     "sector": "Equipamiento y Turismo de Montaña"
   },
   {
     "name": "SEPEM Industries Sud-Est",
     "country": "fr",
-    "slug": "sepem-industries-sud-est-grenoble",
+    "slug": "stand-sepem-industries-sud-est-grenoble",
     "city": "Grenoble",
     "sector": "Servicios y Mantenimiento Industrial"
   },
   {
     "name": "SITEVI",
     "country": "fr",
-    "slug": "sitevi-montpellier",
+    "slug": "stand-sitevi-montpellier",
     "city": "Montpellier",
     "sector": "Enología y Vinos"
   },
   {
     "name": "Millésime Bio",
     "country": "fr",
-    "slug": "millesime-bio-montpellier",
+    "slug": "stand-millesime-bio-montpellier",
     "city": "Montpellier",
     "sector": "Enología y Vinos"
   },
   {
     "name": "SETT",
     "country": "fr",
-    "slug": "sett-montpellier",
+    "slug": "stand-sett-montpellier",
     "city": "Montpellier",
     "sector": "Turismo y Hostelería"
   },
   {
     "name": "EnerGaïa",
     "country": "fr",
-    "slug": "energaia-montpellier",
+    "slug": "stand-energaia-montpellier",
     "city": "Montpellier",
     "sector": "Energías Renovables"
   },
   {
     "name": "SIPRHO",
     "country": "fr",
-    "slug": "siprho-montpellier",
+    "slug": "stand-siprho-montpellier",
     "city": "Montpellier",
     "sector": "Turismo y Hostelería"
   },
   {
     "name": "Antibody Industrial Symposium",
     "country": "fr",
-    "slug": "ais-montpellier",
+    "slug": "stand-ais-montpellier",
     "city": "Montpellier",
     "sector": "Salud y Medicina"
   },
   {
     "name": "AGECOTEL",
     "country": "fr",
-    "slug": "agecotel-nice",
+    "slug": "stand-agecotel-nice",
     "city": "Niza",
     "sector": "Turismo y Hostelería"
   },
   {
     "name": "Nice Boating Tomorrow",
     "country": "fr",
-    "slug": "nice-boating-tomorrow",
+    "slug": "stand-nice-boating-tomorrow",
     "city": "Niza",
     "sector": "Náutica Sostenible"
   },
   {
     "name": "IBT Côte d'Azur",
     "country": "fr",
-    "slug": "ibt-cote-azur",
+    "slug": "stand-ibt-cote-azur",
     "city": "Niza",
     "sector": "Industria y Logística"
   },
   {
     "name": "Les Entreprenariales",
     "country": "fr",
-    "slug": "entreprenariales-nice",
+    "slug": "stand-entreprenariales-nice",
     "city": "Niza",
     "sector": "Multisectorial y Profesional"
   },
   {
     "name": "SOLUCOP",
     "country": "fr",
-    "slug": "solucop-nice",
+    "slug": "stand-solucop-nice",
     "city": "Niza",
     "sector": "Construcción e Infraestructuras"
   },
@@ -849,7 +849,7 @@ export const fairsData = [
   {
     "name": "Conxemar Vigo",
     "country": "es",
-    "slug": "conxemar-vigo",
+    "slug": "stand-conxemar-vigo",
     "city": "Vigo",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -905,70 +905,70 @@ export const fairsData = [
   {
     "name": "Expoquimia Barcelona",
     "country": "es",
-    "slug": "expoquimia-barcelona",
+    "slug": "stand-expoquimia-barcelona",
     "city": "Barcelona",
     "sector": "Industria y Logística"
   },
   {
     "name": "MWC Barcelona",
     "country": "es",
-    "slug": "mwc-barcelona",
+    "slug": "stand-mwc-barcelona",
     "city": "Barcelona",
     "sector": "Tecnología e Innovación"
   },
   {
     "name": "ISE Barcelona",
     "country": "es",
-    "slug": "ise-barcelona",
+    "slug": "stand-ise-barcelona",
     "city": "Barcelona",
     "sector": "Tecnología e Innovación"
   },
   {
     "name": "Alimentaria Barcelona",
     "country": "es",
-    "slug": "alimentaria-barcelona",
+    "slug": "stand-alimentaria-barcelona",
     "city": "Barcelona",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Hispack Barcelona",
     "country": "es",
-    "slug": "hispack-barcelona",
+    "slug": "stand-hispack-barcelona",
     "city": "Barcelona",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "Labelexpo Europe",
     "country": "es",
-    "slug": "labelexpo-barcelona",
+    "slug": "stand-labelexpo-barcelona",
     "city": "Barcelona",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "Hostelco Barcelona",
     "country": "es",
-    "slug": "hostelco-barcelona",
+    "slug": "stand-hostelco-barcelona",
     "city": "Barcelona",
     "sector": "Turismo y Hostelería"
   },
   {
     "name": "Smart City Expo World Congress Barcelona",
     "country": "es",
-    "slug": "smart-city-expo-world-congress-barcelona",
+    "slug": "stand-smart-city-expo-world-congress-barcelona",
     "city": "Barcelona",
     "sector": "Tecnología e Innovación"
   },
   {
     "name": "Construmat Barcelona",
     "country": "es",
-    "slug": "construmat-barcelona",
+    "slug": "stand-construmat-barcelona",
     "city": "Barcelona",
     "sector": "Construcción e Infraestructuras"
   },
   {
     "name": "IoT Solutions World Congress Barcelona",
     "country": "es",
-    "slug": "iot-solutions-world-congress-barcelona",
+    "slug": "stand-iot-solutions-world-congress-barcelona",
     "city": "Barcelona",
     "sector": "Tecnología e Innovación"
   },
@@ -982,7 +982,7 @@ export const fairsData = [
   {
     "name": "Equiplast Barcelona",
     "country": "es",
-    "slug": "equiplast-barcelona",
+    "slug": "stand-equiplast-barcelona",
     "city": "Barcelona",
     "sector": "Industria y Logística"
   },
@@ -1059,14 +1059,14 @@ export const fairsData = [
   {
     "name": "Smopyc Zaragoza",
     "country": "es",
-    "slug": "smopyc-zaragoza",
+    "slug": "stand-smopyc-zaragoza",
     "city": "Zaragoza",
     "sector": "Industria y Logística"
   },
   {
     "name": "Smagua Zaragoza",
     "country": "es",
-    "slug": "smagua-zaragoza",
+    "slug": "stand-smagua-zaragoza",
     "city": "Zaragoza",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1080,7 +1080,7 @@ export const fairsData = [
   {
     "name": "Feria Internacional Ganadera de Zafra",
     "country": "es",
-    "slug": "feria-internacional-ganadera-zafra",
+    "slug": "stand-feria-internacional-ganadera-zafra",
     "city": "Zafra",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1178,7 +1178,7 @@ export const fairsData = [
   {
     "name": "CosmoBeauty Barcelona",
     "country": "es",
-    "slug": "cosmobeauty-barcelona",
+    "slug": "stand-cosmobeauty-barcelona",
     "city": "Barcelona",
     "sector": "Belleza y Estética"
   },
@@ -1290,7 +1290,7 @@ export const fairsData = [
   {
     "name": "Concreta",
     "country": "pt",
-    "slug": "concreta-oporto",
+    "slug": "stand-concreta-oporto",
     "city": "Oporto",
     "sector": "Construcción e Infraestructuras"
   },
@@ -1304,14 +1304,14 @@ export const fairsData = [
   {
     "name": "Empack Porto",
     "country": "pt",
-    "slug": "empack-oporto",
+    "slug": "stand-empack-oporto",
     "city": "Oporto",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "ITF Intertex Portugal",
     "country": "pt",
-    "slug": "itf-intertex-oporto",
+    "slug": "stand-itf-intertex-oporto",
     "city": "Oporto",
     "sector": "Industria y Logística"
   },
@@ -1325,28 +1325,28 @@ export const fairsData = [
   {
     "name": "Emaf",
     "country": "pt",
-    "slug": "emaf-oporto",
+    "slug": "stand-emaf-oporto",
     "city": "Oporto",
     "sector": "Industria y Logística"
   },
   {
     "name": "Portojóia",
     "country": "pt",
-    "slug": "portojoia-oporto",
+    "slug": "stand-portojoia-oporto",
     "city": "Oporto",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "Decor Hotel",
     "country": "pt",
-    "slug": "decor-hotel-oporto",
+    "slug": "stand-decor-hotel-oporto",
     "city": "Oporto",
     "sector": "Turismo y Hostelería"
   },
   {
     "name": "Expocarne Porto",
     "country": "pt",
-    "slug": "expocarne-oporto",
+    "slug": "stand-expocarne-oporto",
     "city": "Oporto",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1360,70 +1360,70 @@ export const fairsData = [
   {
     "name": "Feria Hábitat València",
     "country": "es",
-    "slug": "habitat-valencia",
+    "slug": "stand-habitat-valencia",
     "city": "Valencia",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "Textilhogar",
     "country": "es",
-    "slug": "textilhogar-valencia",
+    "slug": "stand-textilhogar-valencia",
     "city": "Valencia",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "Espacio Cocina SICI",
     "country": "es",
-    "slug": "espacio-cocina-sici-valencia",
+    "slug": "stand-espacio-cocina-sici-valencia",
     "city": "Valencia",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "Fimma + Maderalia",
     "country": "es",
-    "slug": "fimma-maderalia-valencia",
+    "slug": "stand-fimma-maderalia-valencia",
     "city": "Valencia",
     "sector": "Industria y Logística"
   },
   {
     "name": "Iberflora",
     "country": "es",
-    "slug": "iberflora-valencia",
+    "slug": "stand-iberflora-valencia",
     "city": "Valencia",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Gastrónoma",
     "country": "es",
-    "slug": "gastronoma-valencia",
+    "slug": "stand-gastronoma-valencia",
     "city": "Valencia",
     "sector": "Turismo y Hostelería"
   },
   {
     "name": "Eurobrico",
     "country": "es",
-    "slug": "eurobrico-valencia",
+    "slug": "stand-eurobrico-valencia",
     "city": "Valencia",
     "sector": "Comercio y Packaging"
   },
   {
     "name": "Palma International Boat Show",
     "country": "es",
-    "slug": "palma-international-boat-show",
+    "slug": "stand-palma-international-boat-show",
     "city": "Mallorca",
     "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "Palma Superyacht Village",
     "country": "es",
-    "slug": "palma-superyacht-village",
+    "slug": "stand-palma-superyacht-village",
     "city": "Mallorca",
     "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "Baleart",
     "country": "es",
-    "slug": "baleart-mallorca",
+    "slug": "stand-baleart-mallorca",
     "city": "Mallorca",
     "sector": "Arte y Ocio"
   },
@@ -1437,7 +1437,7 @@ export const fairsData = [
   {
     "name": "Figan",
     "country": "es",
-    "slug": "figan-zaragoza",
+    "slug": "stand-figan-zaragoza",
     "city": "Zaragoza",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1465,7 +1465,7 @@ export const fairsData = [
   {
     "name": "Navalia",
     "country": "es",
-    "slug": "navalia-vigo",
+    "slug": "stand-navalia-vigo",
     "city": "Vigo",
     "sector": "Aeronáutica y Transporte"
   },
@@ -1521,7 +1521,7 @@ export const fairsData = [
   {
     "name": "Agroglobal",
     "country": "pt",
-    "slug": "agroglobal-santarem",
+    "slug": "stand-agroglobal-santarem",
     "city": "Santarém",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1556,14 +1556,14 @@ export const fairsData = [
   {
     "name": "Expometal",
     "country": "pt",
-    "slug": "expometal-batalha",
+    "slug": "stand-expometal-batalha",
     "city": "Batalha",
     "sector": "Industria y Logística"
   },
   {
     "name": "Stone Ibérica",
     "country": "pt",
-    "slug": "stone-iberica-batalha",
+    "slug": "stand-stone-iberica-batalha",
     "city": "Batalha",
     "sector": "Construcción e Infraestructuras"
   },
@@ -1591,7 +1591,7 @@ export const fairsData = [
   {
     "name": "Fatacil",
     "country": "pt",
-    "slug": "fatacil-lagoa",
+    "slug": "stand-fatacil-lagoa",
     "city": "Portugal Sur",
     "sector": "Multisectorial y Profesional"
   },
@@ -1682,7 +1682,7 @@ export const fairsData = [
   {
     "name": "Termatalia",
     "country": "es",
-    "slug": "termatalia-ourense",
+    "slug": "stand-termatalia-ourense",
     "city": "Ourense",
     "sector": "Turismo y Hostelería"
   },
@@ -1696,7 +1696,7 @@ export const fairsData = [
   {
     "name": "Galicia Fórum Gastronómico",
     "country": "es",
-    "slug": "forum-gastronomico-a-coruna",
+    "slug": "stand-forum-gastronomico-a-coruna",
     "city": "A Coruña",
     "sector": "Turismo y Hostelería"
   },
@@ -1710,14 +1710,14 @@ export const fairsData = [
   {
     "name": "BioCultura A Coruña",
     "country": "es",
-    "slug": "biocultura-a-coruna",
+    "slug": "stand-biocultura-a-coruna",
     "city": "A Coruña",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "AGRARIA",
     "country": "es",
-    "slug": "agraria-valladolid",
+    "slug": "stand-agraria-valladolid",
     "city": "Valladolid",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1745,7 +1745,7 @@ export const fairsData = [
   {
     "name": "SALAMAQ",
     "country": "es",
-    "slug": "salamaq-salamanca",
+    "slug": "stand-salamaq-salamanca",
     "city": "Salamanca",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1773,14 +1773,14 @@ export const fairsData = [
   {
     "name": "Forum Dental del Mediterráneo",
     "country": "es",
-    "slug": "forum-dental-mediterraneo-barcelona",
+    "slug": "stand-forum-dental-mediterraneo-barcelona",
     "city": "Barcelona",
     "sector": "Salud y Medicina"
   },
   {
     "name": "ExpoÓptica",
     "country": "es",
-    "slug": "expooptica-madrid",
+    "slug": "stand-expooptica-madrid",
     "city": "Madrid",
     "sector": "Salud y Medicina"
   },
@@ -1850,7 +1850,7 @@ export const fairsData = [
   {
     "name": "Infarma",
     "country": "es",
-    "slug": "infarma",
+    "slug": "stand-infarma",
     "city": "Itinerante",
     "sector": "Salud y Medicina"
   },
@@ -2025,35 +2025,35 @@ export const fairsData = [
   {
     "name": "Barcelona Wine Week",
     "country": "es",
-    "slug": "barcelona-wine-week",
+    "slug": "stand-barcelona-wine-week",
     "city": "Barcelona",
     "sector": "Enología y Vinos"
   },
   {
     "name": "Seafood Expo Global Barcelona",
     "country": "es",
-    "slug": "seafood-expo-global-barcelona",
+    "slug": "stand-seafood-expo-global-barcelona",
     "city": "Barcelona",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "SIL Barcelona",
     "country": "es",
-    "slug": "sil-barcelona",
+    "slug": "stand-sil-barcelona",
     "city": "Barcelona",
     "sector": "Industria y Logística"
   },
   {
     "name": "Automobile Barcelona",
     "country": "es",
-    "slug": "automobile-barcelona",
+    "slug": "stand-automobile-barcelona",
     "city": "Barcelona",
     "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "Piscina & Wellness Barcelona",
     "country": "es",
-    "slug": "piscina-wellness-barcelona",
+    "slug": "stand-piscina-wellness-barcelona",
     "city": "Barcelona",
     "sector": "Construcción e Infraestructuras"
   },
@@ -2123,7 +2123,7 @@ export const fairsData = [
   {
     "name": "FIAA Madrid",
     "country": "es",
-    "slug": "fiaa-madrid",
+    "slug": "stand-fiaa-madrid",
     "city": "Madrid",
     "sector": "Aeronáutica y Transporte"
   },
@@ -2599,70 +2599,70 @@ export const fairsData = [
   {
     "name": "Foire Internationale de Marseille",
     "country": "fr",
-    "slug": "foire-internationale-marseille",
+    "slug": "stand-foire-internationale-marseille",
     "city": "Marsella",
     "sector": "Multisectorial y Gran Público"
   },
   {
     "name": "Euromaritime",
     "country": "fr",
-    "slug": "euromaritime-marseille",
+    "slug": "stand-euromaritime-marseille",
     "city": "Marsella",
     "sector": "Náutica y Yates"
   },
   {
     "name": "Sirha Méditerranée",
     "country": "fr",
-    "slug": "sirha-mediterranee-marseille",
+    "slug": "stand-sirha-mediterranee-marseille",
     "city": "Marsella",
     "sector": "Turismo y Hostelería"
   },
   {
     "name": "Beauty Prof's",
     "country": "fr",
-    "slug": "beauty-profs-marseille",
+    "slug": "stand-beauty-profs-marseille",
     "city": "Marsella",
     "sector": "Belleza y Estética"
   },
   {
     "name": "SAVIM",
     "country": "fr",
-    "slug": "savim-marseille",
+    "slug": "stand-savim-marseille",
     "city": "Marsella",
     "sector": "Enología y Vinos"
   },
   {
     "name": "Salon Piscine & Jardin",
     "country": "fr",
-    "slug": "salon-piscine-jardin-marseille",
+    "slug": "stand-salon-piscine-jardin-marseille",
     "city": "Marsella",
     "sector": "Construcción e Infraestructuras"
   },
   {
     "name": "Solutions CSE Marseille",
     "country": "fr",
-    "slug": "solutions-cse-marseille",
+    "slug": "stand-solutions-cse-marseille",
     "city": "Marsella",
     "sector": "Multisectorial y Profesional"
   },
   {
     "name": "Japan Expo Sud",
     "country": "fr",
-    "slug": "japan-expo-sud-marseille",
+    "slug": "stand-japan-expo-sud-marseille",
     "city": "Marsella",
     "sector": "Arte y Ocio"
   },
   {
     "name": "HeroFestival",
     "country": "fr",
-    "slug": "herofestival-marseille",
+    "slug": "stand-herofestival-marseille",
     "city": "Marsella",
     "sector": "Arte y Ocio"
   },
   {
     "name": "SIAC Marseille",
     "country": "fr",
-    "slug": "siac-marseille",
+    "slug": "stand-siac-marseille",
     "city": "Marsella",
     "sector": "Arte y Ocio"
   },
@@ -2683,14 +2683,14 @@ export const fairsData = [
   {
     "name": "MIPIM",
     "country": "fr",
-    "slug": "mipim-cannes",
+    "slug": "stand-mipim-cannes",
     "city": "Cannes",
     "sector": "Inmobiliario e Inversión"
   },
   {
     "name": "TFWA World Exhibition",
     "country": "fr",
-    "slug": "tfwa-cannes",
+    "slug": "stand-tfwa-cannes",
     "city": "Cannes",
     "sector": "Travel Retail y Duty Free"
   },
@@ -2746,146 +2746,146 @@ export const fairsData = [
   {
     "name": "SMAHRT",
     "country": "fr",
-    "slug": "smahrt-toulouse",
+    "slug": "stand-smahrt-toulouse",
     "city": "Toulouse",
     "sector": "Gastronomía y Hostelería"
   },
   {
     "name": "Foire Exposition de Perpignan",
     "country": "fr",
-    "slug": "foire-exposition-perpignan",
+    "slug": "stand-foire-exposition-perpignan",
     "city": "Perpiñán",
     "sector": "Multisectorial y Gran Público"
   },
   {
     "name": "MEDFEL",
     "country": "fr",
-    "slug": "medfel-perpignan",
+    "slug": "stand-medfel-perpignan",
     "city": "Perpiñán",
     "sector": "Frutas, Hortalizas y Distribución"
   },
   {
     "name": "Salon Viv'Habitat",
     "country": "fr",
-    "slug": "viv-habitat-perpignan",
+    "slug": "stand-viv-habitat-perpignan",
     "city": "Perpiñán",
     "sector": "Construcción y Hábitat"
   },
   {
     "name": "Salon Tourisme & Loisirs",
     "country": "fr",
-    "slug": "tourisme-loisirs-perpignan",
+    "slug": "stand-tourisme-loisirs-perpignan",
     "city": "Perpiñán",
     "sector": "Turismo y Ocio"
   },
   {
     "name": "Eco-Maison",
     "country": "fr",
-    "slug": "eco-maison-perpignan",
+    "slug": "stand-eco-maison-perpignan",
     "city": "Perpiñán",
     "sector": "Construcción Sostenible"
   },
   {
     "name": "Retro Mécanic",
     "country": "fr",
-    "slug": "retro-mecanic-perpignan",
+    "slug": "stand-retro-mecanic-perpignan",
     "city": "Perpiñán",
     "sector": "Automoción Clásica"
   },
   {
     "name": "Salon du Mariage",
     "country": "fr",
-    "slug": "salon-mariage-perpignan",
+    "slug": "stand-salon-mariage-perpignan",
     "city": "Perpiñán",
     "sector": "Bodas y Celebraciones"
   },
   {
     "name": "Foire Internationale de Bordeaux",
     "country": "fr",
-    "slug": "foire-internationale-bordeaux",
+    "slug": "stand-foire-internationale-bordeaux",
     "city": "Burdeos",
     "sector": "Multisectorial y Gran Público"
   },
   {
     "name": "Vinitech-Sifel",
     "country": "fr",
-    "slug": "vinitech-sifel-bordeaux",
+    "slug": "stand-vinitech-sifel-bordeaux",
     "city": "Burdeos",
     "sector": "Viticultura y Agroindustria"
   },
   {
     "name": "Equitaine",
     "country": "fr",
-    "slug": "equitaine-bordeaux",
+    "slug": "stand-equitaine-bordeaux",
     "city": "Burdeos",
     "sector": "Sector Ecuestre"
   },
   {
     "name": "Salon de l'Agriculture Nouvelle-Aquitaine",
     "country": "fr",
-    "slug": "salon-agriculture-nouvelle-aquitaine-bordeaux",
+    "slug": "stand-salon-agriculture-nouvelle-aquitaine-bordeaux",
     "city": "Burdeos",
     "sector": "Agricultura y Ganadería"
   },
   {
     "name": "Art3f Bordeaux",
     "country": "fr",
-    "slug": "art3f-bordeaux",
+    "slug": "stand-art3f-bordeaux",
     "city": "Burdeos",
     "sector": "Cultura y Arte"
   },
   {
     "name": "Grand Salon Habitat",
     "country": "fr",
-    "slug": "grand-salon-habitat-bordeaux",
+    "slug": "stand-grand-salon-habitat-bordeaux",
     "city": "Burdeos",
     "sector": "Construcción y Hábitat"
   },
   {
     "name": "Salon des Vins des Vignerons Indépendants",
     "country": "fr",
-    "slug": "salon-vins-vignerons-independants-bordeaux",
+    "slug": "stand-salon-vins-vignerons-independants-bordeaux",
     "city": "Burdeos",
     "sector": "Vino"
   },
   {
     "name": "Cycl'Eau Nouvelle-Aquitaine",
     "country": "fr",
-    "slug": "cycleau-nouvelle-aquitaine-bordeaux",
+    "slug": "stand-cycleau-nouvelle-aquitaine-bordeaux",
     "city": "Burdeos",
     "sector": "Agua e Infraestructuras"
   },
   {
     "name": "ALINA",
     "country": "fr",
-    "slug": "alina-bordeaux",
+    "slug": "stand-alina-bordeaux",
     "city": "Burdeos",
     "sector": "Industria Agroalimentaria"
   },
   {
     "name": "Préventica Bordeaux",
     "country": "fr",
-    "slug": "preventica-bordeaux",
+    "slug": "stand-preventica-bordeaux",
     "city": "Burdeos",
     "sector": "Prevención de Riesgos Laborales"
   },
-  { "name": "Logismed", "country": "ma", "slug": "logismed-casablanca", "city": "Casablanca", "sector": "Logística y Supply Chain" },
-  { "name": "Morocco Food Expo", "country": "ma", "slug": "morocco-food-expo-casablanca", "city": "Casablanca", "sector": "Alimentación" },
-  { "name": "Morocco SIEMA Expo", "country": "ma", "slug": "siema-casablanca", "city": "Casablanca", "sector": "Procesado y Maquinaria Alimentaria" },
-  { "name": "SIAB Expo Maroc", "country": "ma", "slug": "siab-casablanca", "city": "Casablanca", "sector": "Alimentación y Bebidas" },
-  { "name": "Elec Expo", "country": "ma", "slug": "elec-expo-casablanca", "city": "Casablanca", "sector": "Electricidad e Industria" },
-  { "name": "Ener Event", "country": "ma", "slug": "ener-event-casablanca", "city": "Casablanca", "sector": "Energías Renovables" },
-  { "name": "Plast Expo", "country": "ma", "slug": "plast-expo-casablanca", "city": "Casablanca", "sector": "Plásticos" },
-  { "name": "Pack Expo Morocco", "country": "ma", "slug": "pack-expo-casablanca", "city": "Casablanca", "sector": "Packaging" },
-  { "name": "SISTEP Industriel", "country": "ma", "slug": "sistep-casablanca", "city": "Casablanca", "sector": "Industria y Subcontratación" },
-  { "name": "IMME", "country": "ma", "slug": "imme-casablanca", "city": "Casablanca", "sector": "Metalurgia y Mecánica" },
-  { "name": "Morocco Medical Expo", "country": "ma", "slug": "morocco-medical-expo-casablanca", "city": "Casablanca", "sector": "Sanidad" },
-  { "name": "Morocco Textile Expo", "country": "ma", "slug": "morocco-textile-expo-casablanca", "city": "Casablanca", "sector": "Textil" },
-  { "name": "Morocco Stitch & Tex", "country": "ma", "slug": "stitch-tex-casablanca", "city": "Casablanca", "sector": "Maquinaria Textil" },
-  { "name": "Maroc in Mode (MIM)", "country": "ma", "slug": "maroc-in-mode-mim-casablanca", "city": "Casablanca", "sector": "Moda" },
-  { "name": "China Trade Week Morocco (CTW)", "country": "ma", "slug": "ctw-china-trade-week-casablanca", "city": "Casablanca", "sector": "Comercio Internacional" },
-  { "name": "SIEL — Salon International de l'Édition et du Livre", "country": "ma", "slug": "siel-rabat", "city": "Rabat", "sector": "Edición y Libro" },
-  { "name": "Visa For Music", "country": "ma", "slug": "visa-for-music-rabat", "city": "Rabat", "sector": "Industria Musical" },
-  { "name": "Forum de l'Étudiant, de la Formation et de l'Emploi", "country": "ma", "slug": "forum-etudiant-rabat", "city": "Rabat", "sector": "Formación y Empleo" },
-  { "name": "CIMQUSEF", "country": "ma", "slug": "cimqusef-rabat", "city": "Rabat", "sector": "Calidad y Educación" }
+  { "name": "Logismed", "country": "ma", "slug": "stand-logismed-casablanca", "city": "Casablanca", "sector": "Logística y Supply Chain" },
+  { "name": "Morocco Food Expo", "country": "ma", "slug": "stand-morocco-food-expo-casablanca", "city": "Casablanca", "sector": "Alimentación" },
+  { "name": "Morocco SIEMA Expo", "country": "ma", "slug": "stand-siema-casablanca", "city": "Casablanca", "sector": "Procesado y Maquinaria Alimentaria" },
+  { "name": "SIAB Expo Maroc", "country": "ma", "slug": "stand-siab-casablanca", "city": "Casablanca", "sector": "Alimentación y Bebidas" },
+  { "name": "Elec Expo", "country": "ma", "slug": "stand-elec-expo-casablanca", "city": "Casablanca", "sector": "Electricidad e Industria" },
+  { "name": "Ener Event", "country": "ma", "slug": "stand-ener-event-casablanca", "city": "Casablanca", "sector": "Energías Renovables" },
+  { "name": "Plast Expo", "country": "ma", "slug": "stand-plast-expo-casablanca", "city": "Casablanca", "sector": "Plásticos" },
+  { "name": "Pack Expo Morocco", "country": "ma", "slug": "stand-pack-expo-casablanca", "city": "Casablanca", "sector": "Packaging" },
+  { "name": "SISTEP Industriel", "country": "ma", "slug": "stand-sistep-casablanca", "city": "Casablanca", "sector": "Industria y Subcontratación" },
+  { "name": "IMME", "country": "ma", "slug": "stand-imme-casablanca", "city": "Casablanca", "sector": "Metalurgia y Mecánica" },
+  { "name": "Morocco Medical Expo", "country": "ma", "slug": "stand-morocco-medical-expo-casablanca", "city": "Casablanca", "sector": "Sanidad" },
+  { "name": "Morocco Textile Expo", "country": "ma", "slug": "stand-morocco-textile-expo-casablanca", "city": "Casablanca", "sector": "Textil" },
+  { "name": "Morocco Stitch & Tex", "country": "ma", "slug": "stand-stitch-tex-casablanca", "city": "Casablanca", "sector": "Maquinaria Textil" },
+  { "name": "Maroc in Mode (MIM)", "country": "ma", "slug": "stand-maroc-in-mode-mim-casablanca", "city": "Casablanca", "sector": "Moda" },
+  { "name": "China Trade Week Morocco (CTW)", "country": "ma", "slug": "stand-ctw-china-trade-week-casablanca", "city": "Casablanca", "sector": "Comercio Internacional" },
+  { "name": "SIEL — Salon International de l'Édition et du Livre", "country": "ma", "slug": "stand-siel-rabat", "city": "Rabat", "sector": "Edición y Libro" },
+  { "name": "Visa For Music", "country": "ma", "slug": "stand-visa-for-music-rabat", "city": "Rabat", "sector": "Industria Musical" },
+  { "name": "Forum de l'Étudiant, de la Formation et de l'Emploi", "country": "ma", "slug": "stand-forum-etudiant-rabat", "city": "Rabat", "sector": "Formación y Empleo" },
+  { "name": "CIMQUSEF", "country": "ma", "slug": "stand-cimqusef-rabat", "city": "Rabat", "sector": "Calidad y Educación" }
 ];
