@@ -571,6 +571,15 @@
   $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
   $: h1Text = seoContent ? ((section in cityData) ? rewriteTitulo(seoContent.h1, lang) : seoContent.h1) : '';
+  // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
+  // los OTROS idiomas, enlazando a la versión de la página en ese idioma. Son enlaces
+  // internos rastreables (prerenderizados) que refuerzan los hreflang con autoridad
+  // interna real, para acelerar la indexación de las versiones no-ES.
+  $: langBandLinks = (section in cityData && richSeo)
+    ? languages
+        .filter((l) => l !== lang && richSeo[l] && richSeo[l].h1)
+        .map((l) => ({ lang: l, href: pathFor(l, section), text: rewriteTitulo(richSeo[l].h1, l) }))
+    : [];
   // Hero con fondo animado (fotos en movimiento) en la home Y en las páginas matriz de ciudad.
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
@@ -1897,6 +1906,18 @@
   {/if}
 </header>
 
+{#if langBandLinks.length}
+  <!-- Carrusel de idiomas (SEO): H1 traducido, cada texto enlaza a su versión de idioma. -->
+  <nav class="lang-h1-band" aria-label="This page in other languages">
+    <div class="lang-h1-track">
+      {#each langBandLinks as l, i}
+        {#if i > 0}<span class="lang-h1-sep" aria-hidden="true">/</span>{/if}
+        <a href={l.href} hreflang={l.lang} lang={l.lang}>{l.text}</a>
+      {/each}
+    </div>
+  </nav>
+{/if}
+
 <main class:home-warm={['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}>
   <!-- Buscador de ferias: primer elemento de la portada, nada más pasar el hero. Es la
        vía directa para quien ya sabe a qué feria va; el resto de la página sigue siendo
@@ -2884,4 +2905,38 @@
   .coverage-claim p { margin: 0; line-height: 1.65; color: var(--text-color); }
   .activity-pitch { margin-top: 2rem; }
   .activity-pitch .tool-cta { margin-top: 1.1rem; }
+  /* Carrusel de idiomas (SEO): banda a ancho completo entre el header y el main de las
+     páginas de ciudad. Poca altura, texto normal, sin banderas; los H1 traducidos se
+     separan con "/" y desfilan en un carrusel CSS (ida y vuelta, pausa al hover).
+     Los enlaces están completos en el HTML prerenderizado: Google los ve siempre. */
+  .lang-h1-band {
+    width: 100%;
+    background: #f7f6f1;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    padding: 7px 0;
+    white-space: nowrap;
+  }
+  .lang-h1-track {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0 1rem;
+    animation: lang-h1-scroll 90s linear infinite alternate;
+  }
+  .lang-h1-band:hover .lang-h1-track,
+  .lang-h1-band:focus-within .lang-h1-track { animation-play-state: paused; }
+  .lang-h1-track a {
+    color: #555;
+    text-decoration: none;
+  }
+  .lang-h1-track a:hover { color: #111; text-decoration: underline; }
+  .lang-h1-sep { color: #b8860b; margin: 0 0.65em; }
+  @keyframes lang-h1-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(min(0px, calc(100vw - 100%))); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lang-h1-band { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lang-h1-track { animation: none; }
+  }
 </style>
