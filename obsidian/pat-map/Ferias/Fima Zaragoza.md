@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fima-zaragoza
+slug: stand-fima-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

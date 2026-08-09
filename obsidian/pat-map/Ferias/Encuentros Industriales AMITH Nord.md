@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: amith-nord-tanger
+slug: stand-amith-nord-tanger
 pais: ma
 ciudad: "Tánger"
 en_mapa: true

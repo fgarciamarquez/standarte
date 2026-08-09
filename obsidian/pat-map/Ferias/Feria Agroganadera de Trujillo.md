@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-internacional-ganadera-trujillo
+slug: stand-feria-internacional-ganadera-trujillo
 pais: es
 ciudad: "Trujillo"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fehispor-badajoz
+slug: stand-fehispor-badajoz
 pais: es
 ciudad: "Badajoz"
 en_mapa: true

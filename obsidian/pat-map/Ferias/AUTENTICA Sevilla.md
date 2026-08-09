@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: autentica-sevilla
+slug: stand-autentica-sevilla
 pais: es
 ciudad: "Sevilla"
 en_mapa: true

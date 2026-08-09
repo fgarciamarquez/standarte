@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fairway-santiago-de-compostela
+slug: stand-fairway-santiago-de-compostela
 pais: es
 ciudad: "Santiago de Compostela"
 en_mapa: true

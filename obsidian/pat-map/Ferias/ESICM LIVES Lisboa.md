@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: esicm-lives-lisboa
+slug: stand-esicm-lives-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

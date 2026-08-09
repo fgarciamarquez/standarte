@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: techlogistics-lisboa
+slug: stand-techlogistics-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

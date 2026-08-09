@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: gedet-santiago-de-compostela
+slug: stand-gedet-santiago-de-compostela
 pais: es
 ciudad: "Santiago de Compostela"
 en_mapa: true

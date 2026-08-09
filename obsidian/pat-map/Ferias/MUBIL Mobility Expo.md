@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: mubil-mobility-expo-irun
+slug: stand-mubil-mobility-expo-irun
 pais: es
 ciudad: "Irún"
 en_mapa: true

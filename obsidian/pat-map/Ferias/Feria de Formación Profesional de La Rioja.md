@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-formacion-profesional-la-rioja-logrono
+slug: stand-feria-formacion-profesional-la-rioja-logrono
 pais: es
 ciudad: "Logroño"
 en_mapa: true

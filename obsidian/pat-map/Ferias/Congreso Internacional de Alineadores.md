@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: congreso-alineadores-salamanca
+slug: stand-congreso-alineadores-salamanca
 pais: es
 ciudad: "Salamanca"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: lanberri-vitoria
+slug: stand-lanberri-vitoria
 pais: es
 ciudad: "Vitoria"
 en_mapa: true

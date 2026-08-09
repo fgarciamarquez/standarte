@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-empresarial-norte-gran-canaria
+slug: stand-feria-empresarial-norte-gran-canaria
 pais: es
 ciudad: "Gran Canaria"
 en_mapa: true

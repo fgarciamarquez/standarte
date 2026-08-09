@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: municipalia-lleida
+slug: stand-municipalia-lleida
 pais: es
 ciudad: "Lleida"
 en_mapa: true

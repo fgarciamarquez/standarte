@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: hannover-messe
+slug: stand-hannover-messe
 pais: de
 ciudad: "Europa"
 en_mapa: false

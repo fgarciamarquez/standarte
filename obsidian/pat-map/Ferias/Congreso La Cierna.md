@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: congreso-la-cierna-aranda
+slug: stand-congreso-la-cierna-aranda
 pais: es
 ciudad: "Aranda de Duero"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: festa-saberes-sabores-douro-regua
+slug: stand-festa-saberes-sabores-douro-regua
 pais: pt
 ciudad: "Peso da Régua"
 en_mapa: true

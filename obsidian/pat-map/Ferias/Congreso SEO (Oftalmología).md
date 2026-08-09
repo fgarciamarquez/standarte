@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: seo-oftalmologia
+slug: stand-seo-oftalmologia
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

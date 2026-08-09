@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agroalimentaria-vegadeo
+slug: stand-agroalimentaria-vegadeo
 pais: es
 ciudad: "Vegadeo"
 en_mapa: true

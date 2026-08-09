@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feira-de-sao-martinho-portimao
+slug: stand-feira-de-sao-martinho-portimao
 pais: pt
 ciudad: "Portugal Sur"
 en_mapa: true

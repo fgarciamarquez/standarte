@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agroexpo-feval-don-benito
+slug: stand-agroexpo-feval-don-benito
 pais: es
 ciudad: "Don Benito"
 en_mapa: true

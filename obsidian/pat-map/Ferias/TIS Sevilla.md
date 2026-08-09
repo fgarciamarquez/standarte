@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: tis-sevilla
+slug: stand-tis-sevilla
 pais: es
 ciudad: "Sevilla"
 en_mapa: true

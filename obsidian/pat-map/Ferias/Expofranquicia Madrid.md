@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expofranquicia-madrid
+slug: stand-expofranquicia-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

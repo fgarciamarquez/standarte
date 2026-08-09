@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: btl-lisboa
+slug: stand-btl-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

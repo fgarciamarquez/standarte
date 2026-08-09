@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: intercaza-cordoba
+slug: stand-intercaza-cordoba
 pais: es
 ciudad: "Córdoba"
 en_mapa: true

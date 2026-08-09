@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-del-bestiar-ordino
+slug: stand-fira-del-bestiar-ordino
 pais: ad
 ciudad: "Ordino"
 en_mapa: true

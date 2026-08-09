@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sil-lisboa
+slug: stand-sil-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

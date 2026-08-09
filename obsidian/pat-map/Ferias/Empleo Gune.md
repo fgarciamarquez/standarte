@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: empleo-gune-vitoria
+slug: stand-empleo-gune-vitoria
 pais: es
 ciudad: "Vitoria"
 en_mapa: true

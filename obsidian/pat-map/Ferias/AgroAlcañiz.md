@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agroalcaniz
+slug: stand-agroalcaniz
 pais: es
 ciudad: "Alcañiz"
 en_mapa: true

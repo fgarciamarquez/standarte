@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expomecanica-oporto
+slug: stand-expomecanica-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

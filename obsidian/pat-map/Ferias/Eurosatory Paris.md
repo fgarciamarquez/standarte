@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: eurosatory-paris
+slug: stand-eurosatory-paris
 pais: fr
 ciudad: "París"
 en_mapa: false

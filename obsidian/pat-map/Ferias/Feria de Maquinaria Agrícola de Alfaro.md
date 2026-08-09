@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-maquinaria-agricola-alfaro
+slug: stand-feria-maquinaria-agricola-alfaro
 pais: es
 ciudad: "Alfaro"
 en_mapa: true

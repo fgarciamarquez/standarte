@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fercam-manzanares-ciudad-real
+slug: stand-fercam-manzanares-ciudad-real
 pais: es
 ciudad: "Manzanares"
 en_mapa: true

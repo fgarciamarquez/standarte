@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-de-fp-badajoz
+slug: stand-feria-de-fp-badajoz
 pais: es
 ciudad: "Badajoz"
 en_mapa: true

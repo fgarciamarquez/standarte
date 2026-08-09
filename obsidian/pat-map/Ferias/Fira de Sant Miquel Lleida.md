@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-sant-miquel-lleida
+slug: stand-fira-sant-miquel-lleida
 pais: es
 ciudad: "Lleida"
 en_mapa: true

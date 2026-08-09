@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: spcpre-cirugia-plastica-portugal
+slug: stand-spcpre-cirugia-plastica-portugal
 pais: pt
 ciudad: "Itinerante"
 en_mapa: false

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-nacional-queso-trujillo
+slug: stand-feria-nacional-queso-trujillo
 pais: es
 ciudad: "Trujillo"
 en_mapa: true

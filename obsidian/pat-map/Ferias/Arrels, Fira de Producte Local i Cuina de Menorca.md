@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: arrels-menorca
+slug: stand-arrels-menorca
 pais: es
 ciudad: "Menorca"
 en_mapa: true

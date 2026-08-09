@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: maroc-in-mode-mim-tanger
+slug: stand-maroc-in-mode-mim-tanger
 pais: ma
 ciudad: "Tánger"
 en_mapa: true

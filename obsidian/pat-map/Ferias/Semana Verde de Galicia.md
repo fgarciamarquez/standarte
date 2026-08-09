@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: semana-verde-galicia-silleda
+slug: stand-semana-verde-galicia-silleda
 pais: es
 ciudad: "Silleda"
 en_mapa: true

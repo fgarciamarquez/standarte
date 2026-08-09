@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cfia-toulouse
+slug: stand-cfia-toulouse
 pais: fr
 ciudad: "Toulouse"
 en_mapa: true

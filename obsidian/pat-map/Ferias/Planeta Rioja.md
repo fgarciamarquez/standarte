@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: planeta-rioja-logrono
+slug: stand-planeta-rioja-logrono
 pais: es
 ciudad: "Logroño"
 en_mapa: true

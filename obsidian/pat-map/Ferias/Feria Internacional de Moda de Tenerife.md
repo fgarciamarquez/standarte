@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: moda-tenerife
+slug: stand-moda-tenerife
 pais: es
 ciudad: "Tenerife"
 en_mapa: true

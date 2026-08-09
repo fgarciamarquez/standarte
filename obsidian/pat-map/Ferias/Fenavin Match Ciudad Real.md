@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fenavin-match-ciudad-real
+slug: stand-fenavin-match-ciudad-real
 pais: es
 ciudad: "Ciudad Real"
 en_mapa: true

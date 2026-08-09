@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-automovil-salamanca
+slug: stand-salon-automovil-salamanca
 pais: es
 ciudad: "Salamanca"
 en_mapa: true

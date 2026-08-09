@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sps-nuremberg
+slug: stand-sps-nuremberg
 pais: de
 ciudad: "Núremberg"
 en_mapa: false

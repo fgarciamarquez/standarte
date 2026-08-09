@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: addit3d-bilbao
+slug: stand-addit3d-bilbao
 pais: es
 ciudad: "Bilbao"
 en_mapa: true

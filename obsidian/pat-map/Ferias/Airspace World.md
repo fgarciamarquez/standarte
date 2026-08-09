@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: airspace-world-lisboa
+slug: stand-airspace-world-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

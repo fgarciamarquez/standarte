@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-vehiculo-ocasion-logrono
+slug: stand-feria-vehiculo-ocasion-logrono
 pais: es
 ciudad: "Logroño"
 en_mapa: true

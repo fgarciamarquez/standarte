@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: farmaforum-madrid
+slug: stand-farmaforum-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

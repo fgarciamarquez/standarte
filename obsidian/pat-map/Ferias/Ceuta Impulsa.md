@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ceuta-impulsa
+slug: stand-ceuta-impulsa
 pais: es
 ciudad: "Ceuta"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: blue-zone-forum
+slug: stand-blue-zone-forum
 pais: es
 ciudad: "España"
 en_mapa: false

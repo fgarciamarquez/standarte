@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: iberpet-madrid
+slug: stand-iberpet-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

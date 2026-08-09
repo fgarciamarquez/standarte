@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: biocantabria-santander
+slug: stand-biocantabria-santander
 pais: es
 ciudad: "Santander"
 en_mapa: true

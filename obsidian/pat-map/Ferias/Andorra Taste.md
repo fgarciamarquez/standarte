@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: andorra-taste
+slug: stand-andorra-taste
 pais: ad
 ciudad: "Escaldes-Engordany"
 en_mapa: true

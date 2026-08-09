@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fromago-cheese-experience-zamora
+slug: stand-fromago-cheese-experience-zamora
 pais: es
 ciudad: "Zamora"
 en_mapa: true

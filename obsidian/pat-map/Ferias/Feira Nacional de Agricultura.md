@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feira-nacional-agricultura-santarem
+slug: stand-feira-nacional-agricultura-santarem
 pais: pt
 ciudad: "Santarém"
 en_mapa: true

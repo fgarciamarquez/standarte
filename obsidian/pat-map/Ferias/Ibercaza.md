@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ibercaza-jaen
+slug: stand-ibercaza-jaen
 pais: es
 ciudad: "Jaén"
 en_mapa: true

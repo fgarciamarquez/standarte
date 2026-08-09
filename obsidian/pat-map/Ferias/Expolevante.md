@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expolevante-el-ejido
+slug: stand-expolevante-el-ejido
 pais: es
 ciudad: "El Ejido"
 en_mapa: true

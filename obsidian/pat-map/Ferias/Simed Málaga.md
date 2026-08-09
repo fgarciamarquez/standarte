@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: simed-malaga
+slug: stand-simed-malaga
 pais: es
 ciudad: "Málaga"
 en_mapa: true

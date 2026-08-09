@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-outlet-soldeu
+slug: stand-fira-outlet-soldeu
 pais: ad
 ciudad: "Soldeu"
 en_mapa: true

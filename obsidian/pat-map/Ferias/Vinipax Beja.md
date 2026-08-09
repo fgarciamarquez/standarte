@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: vinipax-beja
+slug: stand-vinipax-beja
 pais: pt
 ciudad: "Portugal Sur"
 en_mapa: true

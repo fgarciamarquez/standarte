@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-stocks-ibiza
+slug: stand-feria-stocks-ibiza
 pais: es
 ciudad: "Ibiza"
 en_mapa: true

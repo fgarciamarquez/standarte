@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: moldplas-batalha
+slug: stand-moldplas-batalha
 pais: pt
 ciudad: "Batalha"
 en_mapa: true

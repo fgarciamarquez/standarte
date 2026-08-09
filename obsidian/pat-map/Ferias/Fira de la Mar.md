@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-mar-ibiza
+slug: stand-fira-mar-ibiza
 pais: es
 ciudad: "Ibiza"
 en_mapa: true

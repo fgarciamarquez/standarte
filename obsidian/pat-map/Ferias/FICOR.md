@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ficor-san-vicente-alcantara
+slug: stand-ficor-san-vicente-alcantara
 pais: es
 ciudad: "San Vicente de Alcántara"
 en_mapa: true

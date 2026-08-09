@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: edifica-pamplona
+slug: stand-edifica-pamplona
 pais: es
 ciudad: "Pamplona"
 en_mapa: true

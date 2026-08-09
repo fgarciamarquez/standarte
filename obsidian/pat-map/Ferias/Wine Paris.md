@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: wine-paris
+slug: stand-wine-paris
 pais: fr
 ciudad: "París"
 en_mapa: false

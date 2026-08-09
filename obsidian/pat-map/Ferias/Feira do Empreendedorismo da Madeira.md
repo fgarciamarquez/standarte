@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feira-empreendedorismo-madeira
+slug: stand-feira-empreendedorismo-madeira
 pais: pt
 ciudad: "Islas de Madeira"
 en_mapa: true

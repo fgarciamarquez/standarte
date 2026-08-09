@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sieb-valladolid
+slug: stand-sieb-valladolid
 pais: es
 ciudad: "Valladolid"
 en_mapa: true

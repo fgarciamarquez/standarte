@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: pegs-europe-lisboa
+slug: stand-pegs-europe-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

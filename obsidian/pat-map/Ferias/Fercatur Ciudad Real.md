@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fercatur-ciudad-real
+slug: stand-fercatur-ciudad-real
 pais: es
 ciudad: "Ciudad Real"
 en_mapa: true

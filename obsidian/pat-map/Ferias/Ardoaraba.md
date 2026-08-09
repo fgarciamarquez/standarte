@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ardoaraba-vitoria
+slug: stand-ardoaraba-vitoria
 pais: es
 ciudad: "Vitoria"
 en_mapa: true

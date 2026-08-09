@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-churra-palencia
+slug: stand-feria-churra-palencia
 pais: es
 ciudad: "Palencia"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: aviforum-valladolid
+slug: stand-aviforum-valladolid
 pais: es
 ciudad: "Valladolid"
 en_mapa: true

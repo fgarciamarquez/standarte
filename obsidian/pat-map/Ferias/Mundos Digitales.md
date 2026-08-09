@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: mundos-digitales-a-coruna
+slug: stand-mundos-digitales-a-coruna
 pais: es
 ciudad: "A Coruña"
 en_mapa: true

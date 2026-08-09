@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: logimat-stuttgart
+slug: stand-logimat-stuttgart
 pais: de
 ciudad: "Stuttgart"
 en_mapa: false

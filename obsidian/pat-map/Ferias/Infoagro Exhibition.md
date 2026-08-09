@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: infoagro-exhibition-aguadulce
+slug: stand-infoagro-exhibition-aguadulce
 pais: es
 ciudad: "Aguadulce"
 en_mapa: true

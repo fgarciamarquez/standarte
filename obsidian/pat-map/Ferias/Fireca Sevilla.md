@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fireca-sevilla
+slug: stand-fireca-sevilla
 pais: es
 ciudad: "Sevilla"
 en_mapa: true

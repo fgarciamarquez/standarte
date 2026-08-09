@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-de-los-mayores-de-extremadura-badajoz
+slug: stand-feria-de-los-mayores-de-extremadura-badajoz
 pais: es
 ciudad: "Badajoz"
 en_mapa: true

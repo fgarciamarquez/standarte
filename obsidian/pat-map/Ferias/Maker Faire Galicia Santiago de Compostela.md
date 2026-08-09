@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: maker-faire-galicia-santiago-de-compostela
+slug: stand-maker-faire-galicia-santiago-de-compostela
 pais: es
 ciudad: "Santiago de Compostela"
 en_mapa: true

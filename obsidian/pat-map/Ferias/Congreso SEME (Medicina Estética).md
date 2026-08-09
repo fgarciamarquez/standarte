@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: seme-medicina-estetica
+slug: stand-seme-medicina-estetica
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

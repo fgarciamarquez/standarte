@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: enerh2o-oporto
+slug: stand-enerh2o-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: alicante-gastronomica
+slug: stand-alicante-gastronomica
 pais: es
 ciudad: "Alicante"
 en_mapa: true

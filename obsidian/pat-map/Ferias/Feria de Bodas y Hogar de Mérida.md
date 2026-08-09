@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-bodas-hogar-merida
+slug: stand-feria-bodas-hogar-merida
 pais: es
 ciudad: "Mérida"
 en_mapa: true

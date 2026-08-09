@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feturex-merida
+slug: stand-feturex-merida
 pais: es
 ciudad: "Mérida"
 en_mapa: true

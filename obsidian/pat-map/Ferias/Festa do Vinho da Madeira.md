@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: festa-vinho-madeira
+slug: stand-festa-vinho-madeira
 pais: pt
 ciudad: "Funchal"
 en_mapa: true

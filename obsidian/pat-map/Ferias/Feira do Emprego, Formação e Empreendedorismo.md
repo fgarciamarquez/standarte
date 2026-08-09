@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feira-emprego-formacao-empreendedorismo-madeira
+slug: stand-feira-emprego-formacao-empreendedorismo-madeira
 pais: pt
 ciudad: "Islas de Madeira"
 en_mapa: true

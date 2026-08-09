@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: artesantander
+slug: stand-artesantander
 pais: es
 ciudad: "Santander"
 en_mapa: true

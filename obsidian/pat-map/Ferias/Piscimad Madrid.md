@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: piscimad-madrid
+slug: stand-piscimad-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: the-district-madrid
+slug: stand-the-district-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

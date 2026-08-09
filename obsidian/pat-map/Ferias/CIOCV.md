@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ciocv-braga
+slug: stand-ciocv-braga
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

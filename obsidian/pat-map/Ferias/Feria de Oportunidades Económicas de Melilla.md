@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-oportunidades-economicas-melilla
+slug: stand-feria-oportunidades-economicas-melilla
 pais: es
 ciudad: "Melilla"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agropec-gijon
+slug: stand-agropec-gijon
 pais: es
 ciudad: "Gijón"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: madrid-tech-show
+slug: stand-madrid-tech-show
 pais: es
 ciudad: "Madrid"
 en_mapa: true

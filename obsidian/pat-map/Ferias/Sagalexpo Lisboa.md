@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sagalexpo-lisboa
+slug: stand-sagalexpo-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

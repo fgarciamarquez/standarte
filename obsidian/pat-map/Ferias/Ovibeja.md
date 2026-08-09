@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ovibeja-beja
+slug: stand-ovibeja-beja
 pais: pt
 ciudad: "Portugal Sur"
 en_mapa: true

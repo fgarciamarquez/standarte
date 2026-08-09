@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: uhinak-irun
+slug: stand-uhinak-irun
 pais: es
 ciudad: "Irún"
 en_mapa: true

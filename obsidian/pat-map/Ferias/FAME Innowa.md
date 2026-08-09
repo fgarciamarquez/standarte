@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fame-innowa-torre-pacheco
+slug: stand-fame-innowa-torre-pacheco
 pais: es
 ciudad: "Torre Pacheco"
 en_mapa: true

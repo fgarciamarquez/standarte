@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: re-plus-portugal-oporto
+slug: stand-re-plus-portugal-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

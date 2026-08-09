@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feira-agropecuaria-madeira
+slug: stand-feira-agropecuaria-madeira
 pais: pt
 ciudad: "Madeira"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-sipia-alcudia-mallorca
+slug: stand-fira-sipia-alcudia-mallorca
 pais: es
 ciudad: "Mallorca"
 en_mapa: true

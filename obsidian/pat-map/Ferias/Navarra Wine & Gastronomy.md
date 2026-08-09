@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: navarra-wine-gastronomy-pamplona
+slug: stand-navarra-wine-gastronomy-pamplona
 pais: es
 ciudad: "Pamplona"
 en_mapa: true

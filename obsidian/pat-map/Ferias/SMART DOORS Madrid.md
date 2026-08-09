@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: smart-doors-madrid
+slug: stand-smart-doors-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: madrid-fusion
+slug: stand-madrid-fusion
 pais: es
 ciudad: "Madrid"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-jamon-bellota-dop-pedroches-villanueva-cordoba
+slug: stand-feria-jamon-bellota-dop-pedroches-villanueva-cordoba
 pais: es
 ciudad: "Villanueva de Córdoba"
 en_mapa: true

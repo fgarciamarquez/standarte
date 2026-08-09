@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: beauty-forum-valencia
+slug: stand-beauty-forum-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

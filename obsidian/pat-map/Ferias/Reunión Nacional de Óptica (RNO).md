@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: rno-reunion-nacional-optica
+slug: stand-rno-reunion-nacional-optica
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

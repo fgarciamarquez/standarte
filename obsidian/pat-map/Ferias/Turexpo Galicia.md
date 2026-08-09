@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: turexpo-galicia-silleda
+slug: stand-turexpo-galicia-silleda
 pais: es
 ciudad: "Silleda"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: premios-envero-enverofest-aranda
+slug: stand-premios-envero-enverofest-aranda
 pais: es
 ciudad: "Aranda de Duero"
 en_mapa: true

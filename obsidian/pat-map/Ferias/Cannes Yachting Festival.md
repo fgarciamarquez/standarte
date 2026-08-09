@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cannes-yachting-festival
+slug: stand-cannes-yachting-festival
 pais: fr
 ciudad: "Cannes"
 en_mapa: true

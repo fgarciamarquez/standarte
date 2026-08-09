@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: in-beauty-lisboa
+slug: stand-in-beauty-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

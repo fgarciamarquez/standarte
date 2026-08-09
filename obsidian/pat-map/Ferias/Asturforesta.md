@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: asturforesta-tineo
+slug: stand-asturforesta-tineo
 pais: es
 ciudad: "Tineo"
 en_mapa: true

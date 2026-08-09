@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: san-diego-comic-con-malaga
+slug: stand-san-diego-comic-con-malaga
 pais: es
 ciudad: "Málaga"
 en_mapa: true

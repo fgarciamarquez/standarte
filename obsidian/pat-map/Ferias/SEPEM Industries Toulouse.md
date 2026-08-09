@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sepem-industries-toulouse
+slug: stand-sepem-industries-toulouse
 pais: fr
 ciudad: "Toulouse"
 en_mapa: true

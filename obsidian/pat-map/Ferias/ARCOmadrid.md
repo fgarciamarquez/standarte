@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: arcomadrid
+slug: stand-arcomadrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

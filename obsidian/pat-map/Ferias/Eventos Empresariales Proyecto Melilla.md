@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: eventos-empresariales-proyecto-melilla
+slug: stand-eventos-empresariales-proyecto-melilla
 pais: es
 ciudad: "Melilla"
 en_mapa: true

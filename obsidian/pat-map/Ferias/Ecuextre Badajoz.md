@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ecuextre-badajoz
+slug: stand-ecuextre-badajoz
 pais: es
 ciudad: "Badajoz"
 en_mapa: true

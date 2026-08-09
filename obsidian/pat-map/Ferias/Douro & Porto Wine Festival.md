@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: douro-porto-wine-festival-regua
+slug: stand-douro-porto-wine-festival-regua
 pais: pt
 ciudad: "Peso da Régua"
 en_mapa: true

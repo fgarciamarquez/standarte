@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: maintenance-bilbao
+slug: stand-maintenance-bilbao
 pais: es
 ciudad: "Bilbao"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: bisutex-madrid
+slug: stand-bisutex-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: foyer-health-beauty-lisboa
+slug: stand-foyer-health-beauty-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

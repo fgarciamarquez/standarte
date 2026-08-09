@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ferduque-ciudad-real
+slug: stand-ferduque-ciudad-real
 pais: es
 ciudad: "Porzuna"
 en_mapa: true

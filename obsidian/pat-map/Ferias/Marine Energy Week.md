@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: marine-energy-week-bilbao
+slug: stand-marine-energy-week-bilbao
 pais: es
 ciudad: "Bilbao"
 en_mapa: true

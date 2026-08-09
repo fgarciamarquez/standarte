@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-turismo-reyno-navarra-pamplona
+slug: stand-feria-turismo-reyno-navarra-pamplona
 pais: es
 ciudad: "Pamplona"
 en_mapa: true

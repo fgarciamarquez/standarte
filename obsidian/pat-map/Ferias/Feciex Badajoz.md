@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feciex-badajoz
+slug: stand-feciex-badajoz
 pais: es
 ciudad: "Badajoz"
 en_mapa: true

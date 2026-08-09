@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fimascota-valladolid
+slug: stand-fimascota-valladolid
 pais: es
 ciudad: "Valladolid"
 en_mapa: true

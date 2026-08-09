@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: world-aviation-festival-lisboa
+slug: stand-world-aviation-festival-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

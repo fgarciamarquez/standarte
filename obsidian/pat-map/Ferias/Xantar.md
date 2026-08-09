@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: xantar-ourense
+slug: stand-xantar-ourense
 pais: es
 ciudad: "Ourense"
 en_mapa: true

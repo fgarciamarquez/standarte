@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: amb-stuttgart
+slug: stand-amb-stuttgart
 pais: de
 ciudad: "Stuttgart"
 en_mapa: false

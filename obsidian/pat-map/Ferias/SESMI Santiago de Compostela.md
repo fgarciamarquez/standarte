@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sesmi-santiago-de-compostela
+slug: stand-sesmi-santiago-de-compostela
 pais: es
 ciudad: "Santiago de Compostela"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: trafic-madrid
+slug: stand-trafic-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

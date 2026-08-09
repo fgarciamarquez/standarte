@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-del-vermut-andorra
+slug: stand-fira-del-vermut-andorra
 pais: ad
 ciudad: "Ordino"
 en_mapa: true

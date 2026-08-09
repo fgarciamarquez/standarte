@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: lusoflora-santarem
+slug: stand-lusoflora-santarem
 pais: pt
 ciudad: "Santarém"
 en_mapa: true

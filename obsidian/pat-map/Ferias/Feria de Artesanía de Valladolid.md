@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-artesania-valladolid
+slug: stand-feria-artesania-valladolid
 pais: es
 ciudad: "Valladolid"
 en_mapa: true

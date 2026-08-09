@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-jamon-teruel
+slug: stand-feria-jamon-teruel
 pais: es
 ciudad: "Teruel"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: essencia-do-vinho-porto
+slug: stand-essencia-do-vinho-porto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

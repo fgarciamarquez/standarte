@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: tanger-fashion-week
+slug: stand-tanger-fashion-week
 pais: ma
 ciudad: "Tánger"
 en_mapa: true

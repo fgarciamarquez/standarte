@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: dijous-bo-mallorca
+slug: stand-dijous-bo-mallorca
 pais: es
 ciudad: "Mallorca"
 en_mapa: true

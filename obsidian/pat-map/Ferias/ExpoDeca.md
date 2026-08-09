@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expodeca
+slug: stand-expodeca
 pais: es
 ciudad: "Islas Canarias"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-gamba-chirla-boqueron-punta-umbria
+slug: stand-feria-gamba-chirla-boqueron-punta-umbria
 pais: es
 ciudad: "Punta Umbría"
 en_mapa: true

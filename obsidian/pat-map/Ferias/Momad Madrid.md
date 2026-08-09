@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: momad-madrid
+slug: stand-momad-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

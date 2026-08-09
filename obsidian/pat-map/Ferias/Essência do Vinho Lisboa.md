@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: essencia-do-vinho-lisboa
+slug: stand-essencia-do-vinho-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

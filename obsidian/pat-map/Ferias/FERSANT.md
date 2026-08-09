@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fersant-santarem
+slug: stand-fersant-santarem
 pais: pt
 ciudad: "Santarém"
 en_mapa: true

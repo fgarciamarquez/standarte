@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: intur-valladolid
+slug: stand-intur-valladolid
 pais: es
 ciudad: "Valladolid"
 en_mapa: true

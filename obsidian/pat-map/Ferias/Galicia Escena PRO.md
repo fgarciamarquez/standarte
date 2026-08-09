@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: galicia-escena-pro-santiago-de-compostela
+slug: stand-galicia-escena-pro-santiago-de-compostela
 pais: es
 ciudad: "Santiago de Compostela"
 en_mapa: true

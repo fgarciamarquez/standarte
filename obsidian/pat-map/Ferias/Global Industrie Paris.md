@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: global-industrie-paris
+slug: stand-global-industrie-paris
 pais: fr
 ciudad: "París"
 en_mapa: false

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: tektonica-lisboa
+slug: stand-tektonica-lisboa
 pais: es
 ciudad: "Lisboa"
 en_mapa: true

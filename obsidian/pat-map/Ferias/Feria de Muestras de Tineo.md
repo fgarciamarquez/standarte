@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-muestras-tineo
+slug: stand-feria-muestras-tineo
 pais: es
 ciudad: "Tineo"
 en_mapa: true

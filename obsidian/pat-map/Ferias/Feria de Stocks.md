@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-stocks-vitoria
+slug: stand-feria-stocks-vitoria
 pais: es
 ciudad: "Vitoria"
 en_mapa: true

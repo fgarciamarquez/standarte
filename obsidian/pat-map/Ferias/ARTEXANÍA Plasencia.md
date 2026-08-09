@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: artexania-plasencia
+slug: stand-artexania-plasencia
 pais: es
 ciudad: "Plasencia"
 en_mapa: true

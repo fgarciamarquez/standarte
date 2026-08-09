@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: enfirat-encamp
+slug: stand-enfirat-encamp
 pais: ad
 ciudad: "Encamp"
 en_mapa: true

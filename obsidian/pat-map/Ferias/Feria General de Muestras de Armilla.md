@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-general-muestras-armilla
+slug: stand-feria-general-muestras-armilla
 pais: es
 ciudad: "Armilla"
 en_mapa: true

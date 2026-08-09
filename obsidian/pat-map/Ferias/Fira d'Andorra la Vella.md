@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-andorra-la-vella
+slug: stand-fira-andorra-la-vella
 pais: ad
 ciudad: "Andorra la Vella"
 en_mapa: true

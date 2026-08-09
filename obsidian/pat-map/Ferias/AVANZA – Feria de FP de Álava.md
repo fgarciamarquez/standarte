@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: avanza-fp-alava-vitoria
+slug: stand-avanza-fp-alava-vitoria
 pais: es
 ciudad: "Vitoria"
 en_mapa: true

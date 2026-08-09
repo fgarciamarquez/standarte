@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-look-madrid
+slug: stand-salon-look-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

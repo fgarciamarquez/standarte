@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: bedigital-bilbao
+slug: stand-bedigital-bilbao
 pais: es
 ciudad: "Bilbao"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expodental-madrid
+slug: stand-expodental-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

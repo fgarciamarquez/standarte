@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: secpre-cirugia-plastica
+slug: stand-secpre-cirugia-plastica
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

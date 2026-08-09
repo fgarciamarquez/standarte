@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: bauma-munich
+slug: stand-bauma-munich
 pais: de
 ciudad: "Múnich"
 en_mapa: false

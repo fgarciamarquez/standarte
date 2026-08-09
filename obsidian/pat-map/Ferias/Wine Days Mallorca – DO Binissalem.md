@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: wine-days-binissalem-mallorca
+slug: stand-wine-days-binissalem-mallorca
 pais: es
 ciudad: "Mallorca"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: subcontratacion-bilbao
+slug: stand-subcontratacion-bilbao
 pais: es
 ciudad: "Bilbao"
 en_mapa: true

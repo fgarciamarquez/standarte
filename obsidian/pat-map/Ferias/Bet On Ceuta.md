@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: bet-on-ceuta
+slug: stand-bet-on-ceuta
 pais: es
 ciudad: "Ceuta"
 en_mapa: true

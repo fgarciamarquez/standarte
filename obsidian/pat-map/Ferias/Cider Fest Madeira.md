@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cider-fest-madeira
+slug: stand-cider-fest-madeira
 pais: pt
 ciudad: "Madeira"
 en_mapa: true

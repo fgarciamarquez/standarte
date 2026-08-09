@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-gourmets-madrid
+slug: stand-salon-gourmets-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

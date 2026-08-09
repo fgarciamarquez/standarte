@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: mercat-de-la-vall-andorra
+slug: stand-mercat-de-la-vall-andorra
 pais: ad
 ciudad: "Andorra la Vella"
 en_mapa: true

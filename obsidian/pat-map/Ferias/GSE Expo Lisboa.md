@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: gse-expo-lisboa
+slug: stand-gse-expo-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

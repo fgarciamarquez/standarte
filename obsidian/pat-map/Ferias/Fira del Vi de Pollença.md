@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-vi-pollenca-mallorca
+slug: stand-fira-vi-pollenca-mallorca
 pais: es
 ciudad: "Mallorca"
 en_mapa: true

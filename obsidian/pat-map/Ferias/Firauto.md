@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: firauto-elche
+slug: stand-firauto-elche
 pais: es
 ciudad: "Elche"
 en_mapa: true

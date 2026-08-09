@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feira-sao-mateus-elvas
+slug: stand-feira-sao-mateus-elvas
 pais: pt
 ciudad: "Elvas"
 en_mapa: true

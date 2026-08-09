@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: canarias-destino-startup
+slug: stand-canarias-destino-startup
 pais: es
 ciudad: "Islas Canarias"
 en_mapa: true

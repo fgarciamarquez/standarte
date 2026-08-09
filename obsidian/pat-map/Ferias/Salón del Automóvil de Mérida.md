@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-automovil-merida
+slug: stand-salon-automovil-merida
 pais: es
 ciudad: "Mérida"
 en_mapa: true

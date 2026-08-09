@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fitur-madrid
+slug: stand-fitur-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

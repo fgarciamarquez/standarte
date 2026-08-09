@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: vidrotec-batalha
+slug: stand-vidrotec-batalha
 pais: pt
 ciudad: "Batalha"
 en_mapa: true

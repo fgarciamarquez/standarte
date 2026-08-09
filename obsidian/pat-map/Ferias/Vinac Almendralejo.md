@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: vinac-almendralejo
+slug: stand-vinac-almendralejo
 pais: es
 ciudad: "Almendralejo"
 en_mapa: true

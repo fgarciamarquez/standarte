@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-concesionarios-torrelavega
+slug: stand-feria-concesionarios-torrelavega
 pais: es
 ciudad: "Torrelavega"
 en_mapa: true

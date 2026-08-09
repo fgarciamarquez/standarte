@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: blue-zone-forum-navalia-meeting-cadiz
+slug: stand-blue-zone-forum-navalia-meeting-cadiz
 pais: es
 ciudad: "Cádiz"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ht-malaga
+slug: stand-ht-malaga
 pais: es
 ciudad: "Málaga"
 en_mapa: true

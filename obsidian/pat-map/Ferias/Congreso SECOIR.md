@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: secoir-cirugia-ocular
+slug: stand-secoir-cirugia-ocular
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

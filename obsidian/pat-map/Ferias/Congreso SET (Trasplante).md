@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: set-trasplante
+slug: stand-set-trasplante
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

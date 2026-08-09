@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-agroganadera-pedroches-pozoblanco
+slug: stand-feria-agroganadera-pedroches-pozoblanco
 pais: es
 ciudad: "Pozoblanco"
 en_mapa: true

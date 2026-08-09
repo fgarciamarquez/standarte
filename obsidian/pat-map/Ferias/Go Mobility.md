@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: go-mobility-irun
+slug: stand-go-mobility-irun
 pais: es
 ciudad: "Irún"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agroexpo-don-benito
+slug: stand-agroexpo-don-benito
 pais: es
 ciudad: "Don Benito"
 en_mapa: true

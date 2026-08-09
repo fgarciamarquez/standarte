@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cioc-lisboa
+slug: stand-cioc-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

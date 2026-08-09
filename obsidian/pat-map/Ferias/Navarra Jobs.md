@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: navarra-jobs-pamplona
+slug: stand-navarra-jobs-pamplona
 pais: es
 ciudad: "Pamplona"
 en_mapa: true

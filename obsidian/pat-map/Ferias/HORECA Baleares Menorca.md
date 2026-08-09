@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: horeca-baleares-menorca
+slug: stand-horeca-baleares-menorca
 pais: es
 ciudad: "Menorca"
 en_mapa: true

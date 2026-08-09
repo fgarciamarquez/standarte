@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: motortec-madrid
+slug: stand-motortec-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fegasur-jerez
+slug: stand-fegasur-jerez
 pais: es
 ciudad: "Jerez de la Frontera"
 en_mapa: true

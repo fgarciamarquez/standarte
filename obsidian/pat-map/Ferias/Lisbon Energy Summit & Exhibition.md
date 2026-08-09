@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: lisbon-energy-summit-lisboa
+slug: stand-lisbon-energy-summit-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

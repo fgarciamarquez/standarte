@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: forum-gastronomic-girona
+slug: stand-forum-gastronomic-girona
 pais: es
 ciudad: "Girona"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: encontro-vinhos-sabores-lisboa
+slug: stand-encontro-vinhos-sabores-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

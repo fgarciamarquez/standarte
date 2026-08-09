@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: spme-medicina-estetica-portugal
+slug: stand-spme-medicina-estetica-portugal
 pais: pt
 ciudad: "Itinerante"
 en_mapa: false

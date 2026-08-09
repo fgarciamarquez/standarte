@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: espacio-ribera-aranda
+slug: stand-espacio-ribera-aranda
 pais: es
 ciudad: "Aranda de Duero"
 en_mapa: true

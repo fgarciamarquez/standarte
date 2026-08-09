@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: optom-madrid
+slug: stand-optom-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

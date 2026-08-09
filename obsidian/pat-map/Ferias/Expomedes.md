@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expomedes-madrid
+slug: stand-expomedes-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

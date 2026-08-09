@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: web-summit-lisboa
+slug: stand-web-summit-lisboa
 pais: es
 ciudad: "Lisboa"
 en_mapa: true

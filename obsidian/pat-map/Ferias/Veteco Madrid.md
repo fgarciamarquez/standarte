@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: veteco-madrid
+slug: stand-veteco-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

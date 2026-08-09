@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fidma-gijon
+slug: stand-fidma-gijon
 pais: es
 ciudad: "Gijón"
 en_mapa: true

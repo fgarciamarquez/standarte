@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: biemh-bilbao
+slug: stand-biemh-bilbao
 pais: es
 ciudad: "Bilbao"
 en_mapa: true

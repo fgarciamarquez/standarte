@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cevisama-valencia
+slug: stand-cevisama-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

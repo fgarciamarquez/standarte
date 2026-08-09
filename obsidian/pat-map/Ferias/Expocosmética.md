@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expocosmetica-oporto
+slug: stand-expocosmetica-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

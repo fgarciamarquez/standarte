@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fruit-attraction-madrid
+slug: stand-fruit-attraction-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

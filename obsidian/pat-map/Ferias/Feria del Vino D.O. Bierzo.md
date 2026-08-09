@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-vino-do-bierzo-cacabelos
+slug: stand-feria-vino-do-bierzo-cacabelos
 pais: es
 ciudad: "Cacabelos"
 en_mapa: true

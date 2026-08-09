@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: equimur-torre-pacheco
+slug: stand-equimur-torre-pacheco
 pais: es
 ciudad: "Torre Pacheco"
 en_mapa: true

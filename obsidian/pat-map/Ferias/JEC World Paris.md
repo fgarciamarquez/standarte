@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: jec-world-paris
+slug: stand-jec-world-paris
 pais: fr
 ciudad: "París"
 en_mapa: false

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expomadeira
+slug: stand-expomadeira
 pais: pt
 ciudad: "Funchal"
 en_mapa: true

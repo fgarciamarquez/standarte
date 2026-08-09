@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fira-camp-alaior-menorca
+slug: stand-fira-camp-alaior-menorca
 pais: es
 ciudad: "Menorca"
 en_mapa: true

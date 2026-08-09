@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: foire-internationale-toulouse
+slug: stand-foire-internationale-toulouse
 pais: fr
 ciudad: "Toulouse"
 en_mapa: true

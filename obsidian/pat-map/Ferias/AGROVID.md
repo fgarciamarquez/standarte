@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agrovid-valladolid
+slug: stand-agrovid-valladolid
 pais: es
 ciudad: "Valladolid"
 en_mapa: true

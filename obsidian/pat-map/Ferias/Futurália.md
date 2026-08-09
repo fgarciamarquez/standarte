@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: futuralia-lisboa
+slug: stand-futuralia-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

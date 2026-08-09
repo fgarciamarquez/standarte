@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ferias-agroalimentarias-rioja-oriental-calahorra
+slug: stand-ferias-agroalimentarias-rioja-oriental-calahorra
 pais: es
 ciudad: "Calahorra"
 en_mapa: true

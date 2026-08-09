@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: simplesmente-vinho-porto
+slug: stand-simplesmente-vinho-porto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

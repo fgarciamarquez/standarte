@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: scm-conference
+slug: stand-scm-conference
 pais: pt
 ciudad: "Sobral de Monte Agraço"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: world-maritime-week-bilbao
+slug: stand-world-maritime-week-bilbao
 pais: es
 ciudad: "Bilbao"
 en_mapa: true

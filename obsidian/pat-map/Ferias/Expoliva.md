@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expoliva-jaen
+slug: stand-expoliva-jaen
 pais: es
 ciudad: "Jaén"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expocalamocha
+slug: stand-expocalamocha
 pais: es
 ciudad: "Calamocha"
 en_mapa: true

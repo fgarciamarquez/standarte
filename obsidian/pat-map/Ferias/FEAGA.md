@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feaga-fuerteventura
+slug: stand-feaga-fuerteventura
 pais: es
 ciudad: "Fuerteventura"
 en_mapa: true

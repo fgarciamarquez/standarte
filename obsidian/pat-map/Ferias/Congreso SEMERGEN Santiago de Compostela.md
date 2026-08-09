@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: semergen-santiago-de-compostela
+slug: stand-semergen-santiago-de-compostela
 pais: es
 ciudad: "Santiago de Compostela"
 en_mapa: true

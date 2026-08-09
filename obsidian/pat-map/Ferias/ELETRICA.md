@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: eletrica-oporto
+slug: stand-eletrica-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

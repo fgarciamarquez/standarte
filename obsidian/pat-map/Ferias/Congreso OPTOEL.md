@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: optoel-optoelectronica
+slug: stand-optoel-optoelectronica
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

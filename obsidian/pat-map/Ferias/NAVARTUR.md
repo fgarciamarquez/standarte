@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: navartur-pamplona
+slug: stand-navartur-pamplona
 pais: es
 ciudad: "Pamplona"
 en_mapa: true

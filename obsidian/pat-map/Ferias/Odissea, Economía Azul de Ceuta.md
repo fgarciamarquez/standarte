@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: odissea-economia-azul-ceuta
+slug: stand-odissea-economia-azul-ceuta
 pais: es
 ciudad: "Ceuta"
 en_mapa: true

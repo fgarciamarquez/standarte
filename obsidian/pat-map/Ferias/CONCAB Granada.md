@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: concab-granada
+slug: stand-concab-granada
 pais: es
 ciudad: "Armilla"
 en_mapa: true

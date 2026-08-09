@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feira-vinhos-sabores-altos-regua
+slug: stand-feira-vinhos-sabores-altos-regua
 pais: pt
 ciudad: "Peso da Régua"
 en_mapa: true

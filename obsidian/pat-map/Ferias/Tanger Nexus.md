@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: tanger-nexus
+slug: stand-tanger-nexus
 pais: ma
 ciudad: "Tánger"
 en_mapa: true

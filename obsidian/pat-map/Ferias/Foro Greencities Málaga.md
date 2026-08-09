@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: foro-greencities-malaga
+slug: stand-foro-greencities-malaga
 pais: es
 ciudad: "Málaga"
 en_mapa: true

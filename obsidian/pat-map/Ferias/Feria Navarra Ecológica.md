@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-navarra-ecologica-pamplona
+slug: stand-feria-navarra-ecologica-pamplona
 pais: es
 ciudad: "Pamplona"
 en_mapa: true

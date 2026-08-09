@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: horeca-baleares-mallorca
+slug: stand-horeca-baleares-mallorca
 pais: es
 ciudad: "Mallorca"
 en_mapa: true

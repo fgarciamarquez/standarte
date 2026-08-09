@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sea-portugal
+slug: stand-sea-portugal
 pais: pt
 ciudad: "Portugal"
 en_mapa: false

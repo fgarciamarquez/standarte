@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: mindtech-vigo
+slug: stand-mindtech-vigo
 pais: es
 ciudad: "Vigo"
 en_mapa: true

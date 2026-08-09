@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: snackex-lisboa
+slug: stand-snackex-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

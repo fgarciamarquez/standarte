@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-de-los-pueblos-jaen
+slug: stand-feria-de-los-pueblos-jaen
 pais: es
 ciudad: "Jaén"
 en_mapa: true

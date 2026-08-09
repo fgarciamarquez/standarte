@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expo-agritech-malaga
+slug: stand-expo-agritech-malaga
 pais: es
 ciudad: "Málaga"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: horeca-baleares-ibiza
+slug: stand-horeca-baleares-ibiza
 pais: es
 ciudad: "Ibiza"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: automatica-munich
+slug: stand-automatica-munich
 pais: de
 ciudad: "Múnich"
 en_mapa: false

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: solar-storage-live-espana-valencia
+slug: stand-solar-storage-live-espana-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

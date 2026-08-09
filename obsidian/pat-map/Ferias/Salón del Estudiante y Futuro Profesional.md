@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-estudiante-futuro-profesional-pamplona
+slug: stand-salon-estudiante-futuro-profesional-pamplona
 pais: es
 ciudad: "Pamplona"
 en_mapa: true

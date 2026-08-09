@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-competicion-asturias-gijon
+slug: stand-salon-competicion-asturias-gijon
 pais: es
 ciudad: "Gijón"
 en_mapa: true

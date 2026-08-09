@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: unire-irun
+slug: stand-unire-irun
 pais: es
 ciudad: "Irún"
 en_mapa: true

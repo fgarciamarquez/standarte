@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: enotecnica-olitecnica-oporto
+slug: stand-enotecnica-olitecnica-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

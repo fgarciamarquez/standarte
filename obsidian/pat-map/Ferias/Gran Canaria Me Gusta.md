@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: gran-canaria-me-gusta
+slug: stand-gran-canaria-me-gusta
 pais: es
 ciudad: "Gran Canaria"
 en_mapa: true

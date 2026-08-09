@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: mapic-cannes
+slug: stand-mapic-cannes
 pais: fr
 ciudad: "Cannes"
 en_mapa: true

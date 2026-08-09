@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: prowein-dusseldorf
+slug: stand-prowein-dusseldorf
 pais: de
 ciudad: "Düsseldorf"
 en_mapa: false

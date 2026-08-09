@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: iberocio-badajoz
+slug: stand-iberocio-badajoz
 pais: es
 ciudad: "Badajoz"
 en_mapa: true

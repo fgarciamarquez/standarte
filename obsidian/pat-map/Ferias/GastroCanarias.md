@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: gastrocanarias-tenerife
+slug: stand-gastrocanarias-tenerife
 pais: es
 ciudad: "Tenerife"
 en_mapa: true

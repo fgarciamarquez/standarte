@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: its-european-congress
+slug: stand-its-european-congress
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: global-mobility-call-madrid
+slug: stand-global-mobility-call-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

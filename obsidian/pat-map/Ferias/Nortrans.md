@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: nortrans-vigo
+slug: stand-nortrans-vigo
 pais: es
 ciudad: "Vigo"
 en_mapa: true

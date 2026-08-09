@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: galiforest-boqueixon
+slug: stand-galiforest-boqueixon
 pais: es
 ciudad: "Boqueixón"
 en_mapa: true

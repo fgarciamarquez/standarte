@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: aerospace-test-development-show-toulouse
+slug: stand-aerospace-test-development-show-toulouse
 pais: fr
 ciudad: "Toulouse"
 en_mapa: true

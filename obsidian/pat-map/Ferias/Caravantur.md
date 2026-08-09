@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: caravantur-irun
+slug: stand-caravantur-irun
 pais: es
 ciudad: "Irún"
 en_mapa: true

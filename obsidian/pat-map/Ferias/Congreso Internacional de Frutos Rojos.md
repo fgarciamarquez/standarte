@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: congreso-internacional-frutos-rojos-huelva
+slug: stand-congreso-internacional-frutos-rojos-huelva
 pais: es
 ciudad: "Huelva"
 en_mapa: true

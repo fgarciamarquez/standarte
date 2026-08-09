@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: vinhos-de-portugal-lisboa
+slug: stand-vinhos-de-portugal-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

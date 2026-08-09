@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: eventos-industriales-tanger-med
+slug: stand-eventos-industriales-tanger-med
 pais: ma
 ciudad: "Tánger"
 en_mapa: true

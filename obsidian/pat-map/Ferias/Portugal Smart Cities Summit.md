@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: portugal-smart-cities-summit
+slug: stand-portugal-smart-cities-summit
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

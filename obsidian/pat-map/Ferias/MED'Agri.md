@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: medagri-avignon
+slug: stand-medagri-avignon
 pais: fr
 ciudad: "Aviñón"
 en_mapa: true

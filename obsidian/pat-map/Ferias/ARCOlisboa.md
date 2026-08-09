@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: arcolisboa
+slug: stand-arcolisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

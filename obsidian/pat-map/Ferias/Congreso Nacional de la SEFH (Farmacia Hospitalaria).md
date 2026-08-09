@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: congreso-sefh-farmacia-hospitalaria
+slug: stand-congreso-sefh-farmacia-hospitalaria
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

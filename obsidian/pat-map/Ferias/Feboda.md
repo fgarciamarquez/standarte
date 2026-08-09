@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feboda
+slug: stand-feboda
 pais: es
 ciudad: "Islas Canarias"
 en_mapa: true

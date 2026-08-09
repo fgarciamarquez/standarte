@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: bioterra-irun
+slug: stand-bioterra-irun
 pais: es
 ciudad: "Irún"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: madridjoya-madrid
+slug: stand-madridjoya-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

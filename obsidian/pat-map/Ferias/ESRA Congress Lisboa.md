@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: esra-congress-lisboa
+slug: stand-esra-congress-lisboa
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

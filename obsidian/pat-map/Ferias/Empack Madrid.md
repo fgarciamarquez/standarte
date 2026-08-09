@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: empack-madrid
+slug: stand-empack-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: rebuild-madrid
+slug: stand-rebuild-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

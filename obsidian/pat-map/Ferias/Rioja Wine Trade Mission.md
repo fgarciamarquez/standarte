@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: rioja-wine-trade-mission-logrono
+slug: stand-rioja-wine-trade-mission-logrono
 pais: es
 ciudad: "Logroño"
 en_mapa: true

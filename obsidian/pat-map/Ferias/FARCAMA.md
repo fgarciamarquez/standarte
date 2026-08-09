@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: farcama-toledo
+slug: stand-farcama-toledo
 pais: es
 ciudad: "Toledo"
 en_mapa: true

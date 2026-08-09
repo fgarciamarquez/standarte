@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: lisbon-food-affair
+slug: stand-lisbon-food-affair
 pais: pt
 ciudad: "Lisboa"
 en_mapa: true

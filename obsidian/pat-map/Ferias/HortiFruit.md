@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: hortifruit-torre-pacheco
+slug: stand-hortifruit-torre-pacheco
 pais: es
 ciudad: "Torre Pacheco"
 en_mapa: true

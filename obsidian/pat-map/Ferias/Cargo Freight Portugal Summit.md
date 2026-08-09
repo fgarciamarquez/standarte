@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cargo-freight-portugal-summit
+slug: stand-cargo-freight-portugal-summit
 pais: pt
 ciudad: "Mealhada"
 en_mapa: true

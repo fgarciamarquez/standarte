@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-de-la-ciencia-granada
+slug: stand-feria-de-la-ciencia-granada
 pais: es
 ciudad: "Granada"
 en_mapa: true

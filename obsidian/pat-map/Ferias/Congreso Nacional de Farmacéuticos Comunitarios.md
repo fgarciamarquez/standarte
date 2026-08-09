@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: congreso-farmaceuticos-comunitarios
+slug: stand-congreso-farmaceuticos-comunitarios
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

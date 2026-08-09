@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fimar-las-palmas
+slug: stand-fimar-las-palmas
 pais: es
 ciudad: "Las Palmas"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-de-belleza-moda-y-cosmetica-badajoz
+slug: stand-feria-de-belleza-moda-y-cosmetica-badajoz
 pais: es
 ciudad: "Badajoz"
 en_mapa: true

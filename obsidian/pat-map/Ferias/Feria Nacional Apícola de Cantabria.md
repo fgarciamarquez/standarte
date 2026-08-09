@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-apicola-cantabria-torrelavega
+slug: stand-feria-apicola-cantabria-torrelavega
 pais: es
 ciudad: "Torrelavega"
 en_mapa: true

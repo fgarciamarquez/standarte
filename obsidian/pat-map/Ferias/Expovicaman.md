@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expovicaman-albacete
+slug: stand-expovicaman-albacete
 pais: es
 ciudad: "Albacete"
 en_mapa: true

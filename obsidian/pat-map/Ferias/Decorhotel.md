@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: decorhotel-batalha
+slug: stand-decorhotel-batalha
 pais: pt
 ciudad: "Batalha"
 en_mapa: true

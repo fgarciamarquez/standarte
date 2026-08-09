@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: congreso-its-espana
+slug: stand-congreso-its-espana
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

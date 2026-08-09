@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: faceco-moncarapacho
+slug: stand-faceco-moncarapacho
 pais: pt
 ciudad: "Portugal Sur"
 en_mapa: true

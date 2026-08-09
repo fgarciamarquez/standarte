@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feira-daires-viana-do-alentejo
+slug: stand-feira-daires-viana-do-alentejo
 pais: pt
 ciudad: "Portugal Sur"
 en_mapa: true

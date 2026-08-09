@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: futurmoda-elche
+slug: stand-futurmoda-elche
 pais: es
 ciudad: "Elche"
 en_mapa: true

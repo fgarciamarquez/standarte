@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-representacion-intercultural-melilla
+slug: stand-feria-representacion-intercultural-melilla
 pais: es
 ciudad: "Melilla"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sun-blue-congress-almeria
+slug: stand-sun-blue-congress-almeria
 pais: es
 ciudad: "Almería"
 en_mapa: true

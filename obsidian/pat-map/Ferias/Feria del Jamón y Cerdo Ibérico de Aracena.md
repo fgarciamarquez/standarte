@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-jamon-cerdo-iberico-aracena
+slug: stand-feria-jamon-cerdo-iberico-aracena
 pais: es
 ciudad: "Aracena"
 en_mapa: true

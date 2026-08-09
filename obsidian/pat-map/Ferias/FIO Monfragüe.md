@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fio-monfrague
+slug: stand-fio-monfrague
 pais: es
 ciudad: "Europa"
 en_mapa: false

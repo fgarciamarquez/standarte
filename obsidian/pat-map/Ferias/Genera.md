@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: genera-madrid
+slug: stand-genera-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true
