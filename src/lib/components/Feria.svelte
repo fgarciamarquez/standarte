@@ -609,6 +609,18 @@
     if (cityNames.some((c) => c && nn.includes(norm(c)))) return fair.name;
     return `${fair.name} (${localizedCity})`;
   })();
+  // Carrusel de idiomas (SEO, mismo módulo que en las páginas de ciudad): el heroTitle
+  // ("Diseño, construcción y montaje de stands en {feria}", SIN la coletilla de
+  // experiencia) traducido a cada uno de los OTROS idiomas, enlazando a la versión de
+  // la ficha en ese idioma. Enlaces prerenderizados y rastreables que refuerzan los
+  // hreflang con autoridad interna para acelerar la indexación de las versiones no-ES.
+  $: langBandLinks = languages
+    .filter((l) => l !== lang)
+    .map((l) => {
+      const cityLoc = (cities[l] && cities[l][fair.city]) ? cities[l][fair.city] : fair.city;
+      const nameFor = fairDisplayName === fair.name ? fair.name : `${fair.name} (${cityLoc})`;
+      return { lang: l, href: fairUrl(fair.slug, l), text: (t[l] || t.es).heroTitle(nameFor) };
+    });
 
   // Miga de pan completa: Inicio -> Ciudad -> Feria. La ciudad se enlaza si tiene
   // página propia (currentCityKey); si no, se muestra como texto. El último paso
@@ -1108,6 +1120,18 @@
   </div>
 </header>
 
+{#if langBandLinks.length}
+  <!-- Carrusel de idiomas (SEO): título traducido, cada texto enlaza a su versión de idioma. -->
+  <nav class="lang-h1-band" aria-label="This page in other languages">
+    <div class="lang-h1-track">
+      {#each langBandLinks as l, i}
+        {#if i > 0}<span class="lang-h1-sep" aria-hidden="true">/</span>{/if}
+        <a href={l.href} hreflang={l.lang} lang={l.lang}>{l.text}</a>
+      {/each}
+    </div>
+  </nav>
+{/if}
+
 <main class="feria-page">
   <!-- Panel de Pat (asesor de Expansión): flotante, carga diferida. Se siembra con el
        sector y la ciudad de ESTA feria, para que arranque ya en su contexto. -->
@@ -1561,4 +1585,38 @@
     text-decoration: none;
   }
   .activity-all:hover { opacity: 0.8; }
+  /* Carrusel de idiomas (SEO): mismo módulo y presentación que en las páginas de
+     ciudad (Site.svelte). Banda a ancho completo entre header y main; los títulos
+     traducidos se separan con "/" y desfilan en un carrusel CSS (ida y vuelta,
+     pausa al hover). Los enlaces están completos en el HTML prerenderizado. */
+  .lang-h1-band {
+    width: 100%;
+    background: #f7f6f1;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    padding: 7px 0;
+    white-space: nowrap;
+  }
+  .lang-h1-track {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0 1rem;
+    animation: lang-h1-scroll 90s linear infinite alternate;
+  }
+  .lang-h1-band:hover .lang-h1-track,
+  .lang-h1-band:focus-within .lang-h1-track { animation-play-state: paused; }
+  .lang-h1-track a {
+    color: #555;
+    text-decoration: none;
+  }
+  .lang-h1-track a:hover { color: #111; text-decoration: underline; }
+  .lang-h1-sep { color: #b8860b; margin: 0 0.65em; }
+  @keyframes lang-h1-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(min(0px, calc(100vw - 100%))); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lang-h1-band { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lang-h1-track { animation: none; }
+  }
 </style>
