@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: viv-habitat-perpignan
+slug: stand-viv-habitat-perpignan
 pais: fr
 ciudad: "Perpiñán"
 en_mapa: true

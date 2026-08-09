@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: energaia-montpellier
+slug: stand-energaia-montpellier
 pais: fr
 ciudad: "Montpellier"
 en_mapa: true

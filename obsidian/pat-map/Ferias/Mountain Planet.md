@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: mountain-planet-grenoble
+slug: stand-mountain-planet-grenoble
 pais: fr
 ciudad: "Grenoble"
 en_mapa: true

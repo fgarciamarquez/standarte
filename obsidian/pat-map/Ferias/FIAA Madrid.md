@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fiaa-madrid
+slug: stand-fiaa-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

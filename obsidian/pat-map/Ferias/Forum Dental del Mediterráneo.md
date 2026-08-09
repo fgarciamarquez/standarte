@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: forum-dental-mediterraneo-barcelona
+slug: stand-forum-dental-mediterraneo-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: millesime-bio-montpellier
+slug: stand-millesime-bio-montpellier
 pais: fr
 ciudad: "Montpellier"
 en_mapa: true

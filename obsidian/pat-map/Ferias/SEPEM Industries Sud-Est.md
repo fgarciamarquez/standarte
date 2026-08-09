@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sepem-industries-sud-est-grenoble
+slug: stand-sepem-industries-sud-est-grenoble
 pais: fr
 ciudad: "Grenoble"
 en_mapa: true

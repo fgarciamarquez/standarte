@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: piscine-global-lyon
+slug: stand-piscine-global-lyon
 pais: fr
 ciudad: "Lyon"
 en_mapa: true

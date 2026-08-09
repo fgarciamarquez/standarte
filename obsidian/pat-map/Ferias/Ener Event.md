@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ener-event-casablanca
+slug: stand-ener-event-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

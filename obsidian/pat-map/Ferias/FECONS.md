@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fecons-torre-pacheco
+slug: stand-fecons-torre-pacheco
 pais: es
 ciudad: "Torre Pacheco"
 en_mapa: true

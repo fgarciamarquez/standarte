@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: smagua-zaragoza
+slug: stand-smagua-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

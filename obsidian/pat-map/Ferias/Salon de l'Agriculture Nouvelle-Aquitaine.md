@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-agriculture-nouvelle-aquitaine-bordeaux
+slug: stand-salon-agriculture-nouvelle-aquitaine-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

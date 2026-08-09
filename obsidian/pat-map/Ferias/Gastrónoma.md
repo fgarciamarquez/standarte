@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: gastronoma-valencia
+slug: stand-gastronoma-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

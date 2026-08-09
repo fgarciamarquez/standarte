@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expometal-batalha
+slug: stand-expometal-batalha
 pais: pt
 ciudad: "Batalha"
 en_mapa: true

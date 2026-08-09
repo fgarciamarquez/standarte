@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: visa-for-music-rabat
+slug: stand-visa-for-music-rabat
 pais: ma
 ciudad: "Rabat"
 en_mapa: true

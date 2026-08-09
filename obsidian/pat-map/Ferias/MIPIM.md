@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: mipim-cannes
+slug: stand-mipim-cannes
 pais: fr
 ciudad: "Cannes"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: morocco-medical-expo-casablanca
+slug: stand-morocco-medical-expo-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

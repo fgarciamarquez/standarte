@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: tfwa-cannes
+slug: stand-tfwa-cannes
 pais: fr
 ciudad: "Cannes"
 en_mapa: true

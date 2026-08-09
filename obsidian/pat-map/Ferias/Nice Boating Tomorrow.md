@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: nice-boating-tomorrow
+slug: stand-nice-boating-tomorrow
 pais: fr
 ciudad: "Niza"
 en_mapa: true

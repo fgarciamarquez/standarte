@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cycleau-nouvelle-aquitaine-bordeaux
+slug: stand-cycleau-nouvelle-aquitaine-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stitch-tex-casablanca
+slug: stand-stitch-tex-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

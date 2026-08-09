@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: siac-marseille
+slug: stand-siac-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: logismed-casablanca
+slug: stand-logismed-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

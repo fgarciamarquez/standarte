@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ais-montpellier
+slug: stand-ais-montpellier
 pais: fr
 ciudad: "Montpellier"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sabores-nuestra-tierra-granada
+slug: stand-sabores-nuestra-tierra-granada
 pais: es
 ciudad: "Armilla"
 en_mapa: true

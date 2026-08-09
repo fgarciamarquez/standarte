@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: maroc-in-mode-mim-casablanca
+slug: stand-maroc-in-mode-mim-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

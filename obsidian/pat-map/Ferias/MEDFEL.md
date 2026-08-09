@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: medfel-perpignan
+slug: stand-medfel-perpignan
 pais: fr
 ciudad: "Perpiñán"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: beauty-profs-marseille
+slug: stand-beauty-profs-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: global-industrie-lyon
+slug: stand-global-industrie-lyon
 pais: fr
 ciudad: "Lyon"
 en_mapa: true

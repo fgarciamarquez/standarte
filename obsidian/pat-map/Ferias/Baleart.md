@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: baleart-mallorca
+slug: stand-baleart-mallorca
 pais: es
 ciudad: "Mallorca"
 en_mapa: true

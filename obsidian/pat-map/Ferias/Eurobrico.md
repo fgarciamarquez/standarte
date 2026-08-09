@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: eurobrico-valencia
+slug: stand-eurobrico-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

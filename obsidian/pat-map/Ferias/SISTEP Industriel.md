@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sistep-casablanca
+slug: stand-sistep-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: siab-casablanca
+slug: stand-siab-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: decor-hotel-oporto
+slug: stand-decor-hotel-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

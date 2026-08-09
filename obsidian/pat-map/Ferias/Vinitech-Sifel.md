@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: vinitech-sifel-bordeaux
+slug: stand-vinitech-sifel-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

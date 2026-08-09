@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: preventica-bordeaux
+slug: stand-preventica-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

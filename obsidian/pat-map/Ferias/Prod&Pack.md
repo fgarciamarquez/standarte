@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: prod-pack-lyon
+slug: stand-prod-pack-lyon
 pais: fr
 ciudad: "Lyon"
 en_mapa: true

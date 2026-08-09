@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cosmobeauty-barcelona
+slug: stand-cosmobeauty-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

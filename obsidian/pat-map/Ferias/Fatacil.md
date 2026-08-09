@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fatacil-lagoa
+slug: stand-fatacil-lagoa
 pais: pt
 ciudad: "Portugal Sur"
 en_mapa: true

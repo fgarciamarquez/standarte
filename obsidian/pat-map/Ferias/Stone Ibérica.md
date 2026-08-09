@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stone-iberica-batalha
+slug: stand-stone-iberica-batalha
 pais: pt
 ciudad: "Batalha"
 en_mapa: true

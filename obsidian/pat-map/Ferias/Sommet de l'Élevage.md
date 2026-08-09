@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sommet-elevage-clermont-ferrand
+slug: stand-sommet-elevage-clermont-ferrand
 pais: fr
 ciudad: "Clermont-Ferrand"
 en_mapa: true

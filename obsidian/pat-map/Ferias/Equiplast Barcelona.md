@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: equiplast-barcelona
+slug: stand-equiplast-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: empack-oporto
+slug: stand-empack-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

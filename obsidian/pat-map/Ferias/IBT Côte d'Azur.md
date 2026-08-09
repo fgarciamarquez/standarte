@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ibt-cote-azur
+slug: stand-ibt-cote-azur
 pais: fr
 ciudad: "Niza"
 en_mapa: true

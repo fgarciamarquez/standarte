@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: euromaritime-marseille
+slug: stand-euromaritime-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

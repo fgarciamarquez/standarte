@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: siel-rabat
+slug: stand-siel-rabat
 pais: ma
 ciudad: "Rabat"
 en_mapa: true

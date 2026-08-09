@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: textilhogar-valencia
+slug: stand-textilhogar-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

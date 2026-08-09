@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ctw-china-trade-week-casablanca
+slug: stand-ctw-china-trade-week-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agroglobal-santarem
+slug: stand-agroglobal-santarem
 pais: pt
 ciudad: "Santarém"
 en_mapa: true

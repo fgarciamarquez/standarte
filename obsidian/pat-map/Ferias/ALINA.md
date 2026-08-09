@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: alina-bordeaux
+slug: stand-alina-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

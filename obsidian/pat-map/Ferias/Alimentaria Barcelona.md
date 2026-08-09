@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: alimentaria-barcelona
+slug: stand-alimentaria-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sirha-lyon
+slug: stand-sirha-lyon
 pais: fr
 ciudad: "Lyon"
 en_mapa: true

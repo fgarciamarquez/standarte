@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sirha-mediterranee-marseille
+slug: stand-sirha-mediterranee-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

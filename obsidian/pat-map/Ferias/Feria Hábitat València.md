@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: habitat-valencia
+slug: stand-habitat-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

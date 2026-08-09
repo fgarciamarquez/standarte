@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-mariage-perpignan
+slug: stand-salon-mariage-perpignan
 pais: fr
 ciudad: "Perpiñán"
 en_mapa: true

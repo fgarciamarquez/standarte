@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: herofestival-marseille
+slug: stand-herofestival-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

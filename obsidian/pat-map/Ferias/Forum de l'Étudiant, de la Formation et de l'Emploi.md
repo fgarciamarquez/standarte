@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: forum-etudiant-rabat
+slug: stand-forum-etudiant-rabat
 pais: ma
 ciudad: "Rabat"
 en_mapa: true

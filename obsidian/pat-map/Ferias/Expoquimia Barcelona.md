@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expoquimia-barcelona
+slug: stand-expoquimia-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

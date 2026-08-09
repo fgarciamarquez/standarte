@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: sil-barcelona
+slug: stand-sil-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

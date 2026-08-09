@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-piscine-jardin-marseille
+slug: stand-salon-piscine-jardin-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

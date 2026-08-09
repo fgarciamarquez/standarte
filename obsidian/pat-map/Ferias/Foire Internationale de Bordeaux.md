@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: foire-internationale-bordeaux
+slug: stand-foire-internationale-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

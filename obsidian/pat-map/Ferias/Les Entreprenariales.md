@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: entreprenariales-nice
+slug: stand-entreprenariales-nice
 pais: fr
 ciudad: "Niza"
 en_mapa: true

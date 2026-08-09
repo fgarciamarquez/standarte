@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: infarma
+slug: stand-infarma
 pais: es
 ciudad: "Itinerante"
 en_mapa: false

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: equitaine-bordeaux
+slug: stand-equitaine-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

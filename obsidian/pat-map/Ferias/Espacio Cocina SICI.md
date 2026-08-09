@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: espacio-cocina-sici-valencia
+slug: stand-espacio-cocina-sici-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

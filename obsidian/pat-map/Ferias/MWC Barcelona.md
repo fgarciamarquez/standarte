@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: mwc-barcelona
+slug: stand-mwc-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

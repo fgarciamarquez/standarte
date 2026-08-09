@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expooptica-madrid
+slug: stand-expooptica-madrid
 pais: es
 ciudad: "Madrid"
 en_mapa: true

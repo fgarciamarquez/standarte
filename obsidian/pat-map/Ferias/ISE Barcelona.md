@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: ise-barcelona
+slug: stand-ise-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

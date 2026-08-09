@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agecotel-nice
+slug: stand-agecotel-nice
 pais: fr
 ciudad: "Niza"
 en_mapa: true

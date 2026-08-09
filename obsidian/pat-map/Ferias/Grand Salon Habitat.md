@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: grand-salon-habitat-bordeaux
+slug: stand-grand-salon-habitat-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

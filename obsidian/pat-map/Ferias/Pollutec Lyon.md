@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: pollutec-lyon
+slug: stand-pollutec-lyon
 pais: fr
 ciudad: "Lyon"
 en_mapa: true

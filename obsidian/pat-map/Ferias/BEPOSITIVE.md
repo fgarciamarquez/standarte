@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: bepositive-lyon
+slug: stand-bepositive-lyon
 pais: fr
 ciudad: "Lyon"
 en_mapa: true

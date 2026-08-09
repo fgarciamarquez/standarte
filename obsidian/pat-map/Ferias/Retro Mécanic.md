@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: retro-mecanic-perpignan
+slug: stand-retro-mecanic-perpignan
 pais: fr
 ciudad: "Perpiñán"
 en_mapa: true

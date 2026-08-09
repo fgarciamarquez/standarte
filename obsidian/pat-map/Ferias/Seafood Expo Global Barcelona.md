@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: seafood-expo-global-barcelona
+slug: stand-seafood-expo-global-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: palma-superyacht-village
+slug: stand-palma-superyacht-village
 pais: es
 ciudad: "Mallorca"
 en_mapa: true

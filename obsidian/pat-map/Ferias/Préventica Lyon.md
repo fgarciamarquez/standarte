@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: preventica-lyon
+slug: stand-preventica-lyon
 pais: fr
 ciudad: "Lyon"
 en_mapa: true

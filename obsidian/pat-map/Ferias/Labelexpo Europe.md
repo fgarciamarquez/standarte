@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: labelexpo-barcelona
+slug: stand-labelexpo-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

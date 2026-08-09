@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: portojoia-oporto
+slug: stand-portojoia-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: imme-casablanca
+slug: stand-imme-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

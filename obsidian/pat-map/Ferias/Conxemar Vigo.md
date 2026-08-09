@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: conxemar-vigo
+slug: stand-conxemar-vigo
 pais: es
 ciudad: "Vigo"
 en_mapa: true

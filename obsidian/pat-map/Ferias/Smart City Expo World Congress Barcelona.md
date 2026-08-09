@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: smart-city-expo-world-congress-barcelona
+slug: stand-smart-city-expo-world-congress-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

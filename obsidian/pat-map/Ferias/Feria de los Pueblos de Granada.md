@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-pueblos-granada
+slug: stand-feria-pueblos-granada
 pais: es
 ciudad: "Armilla"
 en_mapa: true

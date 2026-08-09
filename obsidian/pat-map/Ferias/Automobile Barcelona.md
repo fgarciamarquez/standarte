@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: automobile-barcelona
+slug: stand-automobile-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

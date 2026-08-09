@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: piscina-wellness-barcelona
+slug: stand-piscina-wellness-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

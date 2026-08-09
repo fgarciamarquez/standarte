@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: barcelona-wine-week
+slug: stand-barcelona-wine-week
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

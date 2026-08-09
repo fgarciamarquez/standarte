@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: solucop-nice
+slug: stand-solucop-nice
 pais: fr
 ciudad: "Niza"
 en_mapa: true

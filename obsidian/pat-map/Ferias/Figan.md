@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: figan-zaragoza
+slug: stand-figan-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

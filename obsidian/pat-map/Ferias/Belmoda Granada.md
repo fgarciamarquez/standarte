@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: belmoda-granada
+slug: stand-belmoda-granada
 pais: es
 ciudad: "Armilla"
 en_mapa: true

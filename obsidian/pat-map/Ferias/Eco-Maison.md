@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: eco-maison-perpignan
+slug: stand-eco-maison-perpignan
 pais: fr
 ciudad: "Perpiñán"
 en_mapa: true

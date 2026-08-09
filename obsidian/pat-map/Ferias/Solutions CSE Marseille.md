@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: solutions-cse-marseille
+slug: stand-solutions-cse-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

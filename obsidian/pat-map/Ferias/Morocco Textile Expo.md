@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: morocco-textile-expo-casablanca
+slug: stand-morocco-textile-expo-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

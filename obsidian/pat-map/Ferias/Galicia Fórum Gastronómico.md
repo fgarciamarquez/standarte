@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: forum-gastronomico-a-coruna
+slug: stand-forum-gastronomico-a-coruna
 pais: es
 ciudad: "A Coruña"
 en_mapa: true

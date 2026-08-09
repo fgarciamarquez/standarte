@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: hostelco-barcelona
+slug: stand-hostelco-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

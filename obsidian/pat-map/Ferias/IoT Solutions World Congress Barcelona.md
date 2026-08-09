@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: iot-solutions-world-congress-barcelona
+slug: stand-iot-solutions-world-congress-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

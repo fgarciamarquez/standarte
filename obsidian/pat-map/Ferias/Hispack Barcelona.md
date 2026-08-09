@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: hispack-barcelona
+slug: stand-hispack-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

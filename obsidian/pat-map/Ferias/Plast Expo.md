@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: plast-expo-casablanca
+slug: stand-plast-expo-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

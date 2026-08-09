@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: pack-expo-casablanca
+slug: stand-pack-expo-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

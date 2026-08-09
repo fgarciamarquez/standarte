@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: foire-internationale-marseille
+slug: stand-foire-internationale-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: biocultura-a-coruna
+slug: stand-biocultura-a-coruna
 pais: es
 ciudad: "A Coruña"
 en_mapa: true

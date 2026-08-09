@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salon-vins-vignerons-independants-bordeaux
+slug: stand-salon-vins-vignerons-independants-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

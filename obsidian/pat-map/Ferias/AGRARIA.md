@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: agraria-valladolid
+slug: stand-agraria-valladolid
 pais: es
 ciudad: "Valladolid"
 en_mapa: true

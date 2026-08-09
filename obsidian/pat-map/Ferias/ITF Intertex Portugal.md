@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: itf-intertex-oporto
+slug: stand-itf-intertex-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

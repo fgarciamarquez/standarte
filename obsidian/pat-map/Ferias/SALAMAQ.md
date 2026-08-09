@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: salamaq-salamanca
+slug: stand-salamaq-salamanca
 pais: es
 ciudad: "Salamanca"
 en_mapa: true

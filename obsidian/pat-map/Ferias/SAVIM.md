@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: savim-marseille
+slug: stand-savim-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

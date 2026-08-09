@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: art3f-bordeaux
+slug: stand-art3f-bordeaux
 pais: fr
 ciudad: "Burdeos"
 en_mapa: true

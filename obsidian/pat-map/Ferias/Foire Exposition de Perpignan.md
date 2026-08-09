@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: foire-exposition-perpignan
+slug: stand-foire-exposition-perpignan
 pais: fr
 ciudad: "Perpiñán"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: expocarne-oporto
+slug: stand-expocarne-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

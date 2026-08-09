@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: smahrt-toulouse
+slug: stand-smahrt-toulouse
 pais: fr
 ciudad: "Toulouse"
 en_mapa: true

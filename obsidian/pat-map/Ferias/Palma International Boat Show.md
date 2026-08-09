@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: palma-international-boat-show
+slug: stand-palma-international-boat-show
 pais: es
 ciudad: "Mallorca"
 en_mapa: true

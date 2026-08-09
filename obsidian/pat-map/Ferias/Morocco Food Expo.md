@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: morocco-food-expo-casablanca
+slug: stand-morocco-food-expo-casablanca
 pais: ma
 ciudad: "Casablanca"
 en_mapa: true

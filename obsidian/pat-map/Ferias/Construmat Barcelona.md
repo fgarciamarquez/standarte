@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: construmat-barcelona
+slug: stand-construmat-barcelona
 pais: es
 ciudad: "Barcelona"
 en_mapa: true

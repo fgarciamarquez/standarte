@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: siprho-montpellier
+slug: stand-siprho-montpellier
 pais: fr
 ciudad: "Montpellier"
 en_mapa: true

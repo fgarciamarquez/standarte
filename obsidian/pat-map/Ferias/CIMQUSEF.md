@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: cimqusef-rabat
+slug: stand-cimqusef-rabat
 pais: ma
 ciudad: "Rabat"
 en_mapa: true

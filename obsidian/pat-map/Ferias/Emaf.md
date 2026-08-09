@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: emaf-oporto
+slug: stand-emaf-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

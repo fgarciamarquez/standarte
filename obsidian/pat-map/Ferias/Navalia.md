@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: navalia-vigo
+slug: stand-navalia-vigo
 pais: es
 ciudad: "Vigo"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: concreta-oporto
+slug: stand-concreta-oporto
 pais: pt
 ciudad: "Oporto"
 en_mapa: true

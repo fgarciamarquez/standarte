@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: feria-internacional-ganadera-zafra
+slug: stand-feria-internacional-ganadera-zafra
 pais: es
 ciudad: "Zafra"
 en_mapa: true

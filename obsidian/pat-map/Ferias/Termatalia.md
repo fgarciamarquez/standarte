@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: termatalia-ourense
+slug: stand-termatalia-ourense
 pais: es
 ciudad: "Ourense"
 en_mapa: true

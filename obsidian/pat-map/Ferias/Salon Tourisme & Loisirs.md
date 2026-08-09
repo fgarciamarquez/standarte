@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: tourisme-loisirs-perpignan
+slug: stand-tourisme-loisirs-perpignan
 pais: fr
 ciudad: "Perpiñán"
 en_mapa: true

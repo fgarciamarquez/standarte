@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: japan-expo-sud-marseille
+slug: stand-japan-expo-sud-marseille
 pais: fr
 ciudad: "Marsella"
 en_mapa: true

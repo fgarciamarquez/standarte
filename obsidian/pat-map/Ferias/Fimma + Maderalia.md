@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: fimma-maderalia-valencia
+slug: stand-fimma-maderalia-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true

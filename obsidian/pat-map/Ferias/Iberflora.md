@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: iberflora-valencia
+slug: stand-iberflora-valencia
 pais: es
 ciudad: "Valencia"
 en_mapa: true
