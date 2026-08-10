@@ -85,18 +85,21 @@
   }
   function tlOnLeave() { tlVel = 0; tlRect = null; }
 
+  // `claim` es el mensaje de posicionamiento fundamental de las fichas de feria
+  // ("stand de calidad + red de expansión exclusiva ES/PT"), aquí anclado al módulo
+  // que ES esa red: la promesa se lee junto a su prueba.
   const strings = {
-    es: { title: 'Calendario de expansión', current: 'Estás aquí', tbc: 'Próxima edición por confirmar' },
-    en: { title: 'Expansion calendar', current: 'You are here', tbc: 'Next edition to be confirmed' },
-    de: { title: 'Expansionskalender', current: 'Sie sind hier', tbc: 'Nächste Ausgabe noch offen' },
-    pt: { title: 'Calendário de expansão', current: 'Está aqui', tbc: 'Próxima edição por confirmar' },
-    fr: { title: 'Calendrier d\'expansion', current: 'Vous êtes ici', tbc: 'Prochaine édition à confirmer' },
-    it: { title: 'Calendario di espansione', current: 'Sei qui', tbc: 'Prossima edizione da confermare' },
-    nl: { title: 'Expansiekalender', current: 'U bent hier', tbc: 'Volgende editie nog te bevestigen' },
-    zh: { title: '拓展日历', current: '当前展会', tbc: '下届日期待定' },
-    hi: { title: 'विस्तार कैलेंडर', current: 'आप यहाँ हैं', tbc: 'अगला संस्करण प्रतीक्षित' },
-    ko: { title: '확장 캘린더', current: '현재 박람회', tbc: '다음 회차 미정' },
-    ja: { title: '拡大カレンダー', current: '現在の展示会', tbc: '次回開催は未定' }
+    es: { title: 'Calendario de expansión', current: 'Estás aquí', tbc: 'Próxima edición por confirmar', claim: 'Stand de calidad + red de expansión exclusiva en España y Portugal: contrata las ferias de tu sector como una sola campaña.' },
+    en: { title: 'Expansion calendar', current: 'You are here', tbc: 'Next edition to be confirmed', claim: 'Quality stand + exclusive expansion network across Spain and Portugal: book your sector\'s fairs as a single campaign.' },
+    de: { title: 'Expansionskalender', current: 'Sie sind hier', tbc: 'Nächste Ausgabe noch offen', claim: 'Qualitätsstand + exklusives Expansionsnetz in Spanien und Portugal: buchen Sie die Messen Ihrer Branche als eine Kampagne.' },
+    pt: { title: 'Calendário de expansão', current: 'Está aqui', tbc: 'Próxima edição por confirmar', claim: 'Stand de qualidade + rede de expansão exclusiva em Espanha e Portugal: contrate as feiras do seu setor como uma única campanha.' },
+    fr: { title: 'Calendrier d\'expansion', current: 'Vous êtes ici', tbc: 'Prochaine édition à confirmer', claim: 'Stand de qualité + réseau d\'expansion exclusif en Espagne et au Portugal : réservez les salons de votre secteur comme une seule campagne.' },
+    it: { title: 'Calendario di espansione', current: 'Sei qui', tbc: 'Prossima edizione da confermare', claim: 'Stand di qualità + rete di espansione esclusiva in Spagna e Portogallo: prenota le fiere del tuo settore come un\'unica campagna.' },
+    nl: { title: 'Expansiekalender', current: 'U bent hier', tbc: 'Volgende editie nog te bevestigen', claim: 'Kwaliteitsstand + exclusief expansienetwerk in Spanje en Portugal: boek de beurzen van uw sector als één campagne.' },
+    zh: { title: '拓展日历', current: '当前展会', tbc: '下届日期待定', claim: '高品质展台 + 西班牙和葡萄牙独家扩张网络：将您所在行业的展会作为一场整体行动统一预订。' },
+    hi: { title: 'विस्तार कैलेंडर', current: 'आप यहाँ हैं', tbc: 'अगला संस्करण प्रतीक्षित', claim: 'गुणवत्तापूर्ण स्टैंड + स्पेन और पुर्तगाल में विशेष विस्तार नेटवर्क: अपने क्षेत्र के मेले एक ही अभियान के रूप में बुक करें।' },
+    ko: { title: '확장 캘린더', current: '현재 박람회', tbc: '다음 회차 미정', claim: '품질 높은 부스 + 스페인·포르투갈 독점 확장 네트워크: 귀사 분야의 박람회를 하나의 캠페인으로 계약하세요.' },
+    ja: { title: '拡大カレンダー', current: '現在の展示会', tbc: '次回開催は未定', claim: '高品質なブース + スペイン・ポルトガル独自の拡大ネットワーク：業界の展示会をひとつのキャンペーンとして契約できます。' }
   };
   $: s = strings[lang] || strings.es;
 
@@ -124,6 +127,7 @@
 {#if nodes.length > 1}
   <section class="fair-timeline" aria-label={s.title}>
     <h2>{s.title}</h2>
+    <p class="ft-claim">{s.claim}</p>
     <!-- Las etiquetas de actividad viven aquí (antes iban bajo el h2 de respuesta
          directa): identifican el sector y son justo el criterio con el que se han
          elegido las ferias de la línea, así que se leen como su leyenda. -->
@@ -181,6 +185,14 @@
   .fair-timeline {
     margin: 4.2rem 0 0;
   }
+  /* Mensaje de posicionamiento bajo el título del módulo. */
+  .ft-claim {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #555;
+  }
+  .ft-claim + .ft-chips { margin-top: 0.9rem; }
   /* Chips de actividad: mismo aspecto que en la ficha y en los índices (el estilo se
      repite aquí porque el CSS de Svelte está aislado por componente). */
   .ft-chips {
