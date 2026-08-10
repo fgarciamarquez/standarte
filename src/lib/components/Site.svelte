@@ -525,10 +525,10 @@
     zh: '西班牙、葡萄牙、德国和法国展台设计与搭建重点展会',
     hi: 'स्पेन, पुर्तगाल, जर्मनी और फ्रांस में स्टैंड डिज़ाइन और असेंबली के लिए प्रमुख मेले',
     pt: 'Feiras em destaque em Espanha, Portugal, Alemanha e França para design e montagem de stands',
-    ko: '전시 부스 디자인 및 조립을 위한 스페인, 포르투갈, 독일, 프랑스의 주요 박람회',
+    ko: '전시 부스 디자인 및 시공을 위한 스페인, 포르투갈, 독일, 프랑스의 주요 박람회',
     fr: 'Salons phares en Espagne, Portugal, Allemagne et France pour la conception et le montage de stands',
     it: 'Fiere di rilievo in Spagna, Portogallo, Germania e Francia per la progettazione e il montaggio di stand',
-    ja: 'スペイン・ポルトガル・ドイツ・フランスの主要見本市（展示会ブース設計・組立）',
+    ja: 'スペイン・ポルトガル・ドイツ・フランスの主要見本市（展示会ブース設計・施工）',
     nl: 'Belangrijke beurzen in Spanje, Portugal, Duitsland en Frankrijk voor standontwerp en montage'
   };
   const counterItems = [
@@ -786,16 +786,16 @@
   // stands en {c}." Cada idioma captura la ciudad e ignora la coletilla tras ":".
   const tituloPrincipal = {
     es: { from: /^Diseño y construcción de stands en (.+?)\s*(?::.*)?$/, to: (c) => `Diseño, construcción y montaje de stands en ${c}.` },
-    en: { from: /^Exhibition stand design and construction in (.+?)\s*(?::.*)?$/, to: (c) => `Exhibition stand design, construction and assembly in ${c}.` },
+    en: { from: /^Exhibition stand design and construction in (.+?)\s*(?::.*)?$/, to: (c) => `Exhibition stand design and build in ${c}.` },
     de: { from: /^Design und Bau von Messeständen in (.+?)\s*(?::.*)?$/, to: (c) => `Design, Bau und Montage von Messeständen in ${c}.` },
     pt: { from: /^Design e construção de stands em (.+?)\s*(?::.*)?$/, to: (c) => `Design, construção e montagem de stands em ${c}.` },
     fr: { from: /^Conception et construction de stands à (.+?)\s*(?::.*)?$/, to: (c) => `Conception, construction et montage de stands à ${c}.` },
-    it: { from: /^Progettazione e costruzione di stand a (.+?)\s*(?::.*)?$/, to: (c) => `Progettazione, costruzione e montaggio di stand a ${c}.` },
+    it: { from: /^Progettazione e costruzione di stand a (.+?)\s*(?::.*)?$/, to: (c) => `Progettazione, costruzione e allestimento di stand a ${c}.` },
     nl: { from: /^Ontwerp en bouw van beursstands in (.+?)\s*(?::.*)?$/, to: (c) => `Ontwerp, bouw en montage van beursstands in ${c}.` },
     zh: { from: /^(.+?)展台设计与搭建(?:：.*)?$/, to: (c) => `${c}展台设计、搭建与安装。` },
     hi: { from: /^(.+?) में स्टैंड का डिज़ाइन और निर्माण(?::.*)?$/, to: (c) => `${c} में स्टैंड का डिज़ाइन, निर्माण और असेंबली।` },
     ko: { from: /^(.+?)의 부스 디자인 및 시공(?::.*)?$/, to: (c) => `${c}의 부스 디자인, 제작 및 설치.` },
-    ja: { from: /^(.+?)のスタンド設計・施工(?:：.*)?$/, to: (c) => `${c}のスタンド設計・施工・設営。` }
+    ja: { from: /^(.+?)のブース設計・施工(?:：.*)?$/, to: (c) => `${c}のブース設計・施工・設営。` }
   };
   function rewriteTitulo(text, lang) {
     const map = tituloPrincipal[lang] || tituloPrincipal.es;
@@ -1059,8 +1059,8 @@
     if (lang === 'it') return `Progettazione e montaggio stand a ${city}`;
     if (lang === 'zh') return `${city} 展台设计与搭建`;
     if (lang === 'hi') return `${city} में स्टैंड डिज़ाइन और असेंबली`;
-    if (lang === 'ko') return `${city} 전시 부스 디자인 및 조립`;
-    if (lang === 'ja') return `${city}での展示会ブース設計・組立`;
+    if (lang === 'ko') return `${city} 전시 부스 디자인 및 시공`;
+    if (lang === 'ja') return `${city}での展示会ブース設計・施工`;
     return `Diseño y montaje de stands en ${city}`;
   }
 
@@ -1210,7 +1210,7 @@
     const service = {
       '@type': 'Service',
       '@id': `${baseUrl}/#service`,
-      name: lang === 'es' ? 'Diseño y montaje de stands para ferias' : 'Exhibition stand design and assembly',
+      name: lang === 'es' ? 'Diseño y montaje de stands para ferias' : 'Exhibition stand design and build',
       serviceType: isCityPage ? 'Diseño y montaje de stands' : 'Exhibition Stand Builder',
       provider: { '@id': `${baseUrl}/#organization` },
       description: copy.seoDescription,

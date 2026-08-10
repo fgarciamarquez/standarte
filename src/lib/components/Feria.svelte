@@ -371,15 +371,15 @@
   };
   const clusterT = {
     es: { related: 'Ferias relacionadas con esta actividad en las que construimos', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
-    en: { related: 'Fairs related to this activity where we build', pillar: (c) => `Exhibition stand design and assembly in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
+    en: { related: 'Fairs related to this activity where we build', pillar: (c) => `Exhibition stand design and build in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
     de: { related: 'Messen zu dieser Branche, auf denen wir bauen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
     fr: { related: 'Salons liés à cette activité où nous construisons', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
     pt: { related: 'Feiras relacionadas com esta atividade onde construímos', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
     it: { related: 'Fiere legate a questa attività in cui costruiamo', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
-    ko: { related: '이 분야와 관련해 저희가 시공하는 박람회', pillar: (c) => `${c} 부스 디자인 및 조립`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
+    ko: { related: '이 분야와 관련해 저희가 시공하는 박람회', pillar: (c) => `${c} 부스 디자인 및 시공`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
     zh: { related: '与该行业相关且我们搭建的展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
     hi: { related: 'इस गतिविधि से संबंधित मेले जिनमें हम निर्माण करते हैं', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
-    ja: { related: 'この分野に関連し当社が施工する展示会', pillar: (c) => `${c}での展示会ブース設計・組立`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
+    ja: { related: 'この分野に関連し当社が施工する展示会', pillar: (c) => `${c}での展示会ブース設計・施工`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
     nl: { related: 'Beurzen gerelateerd aan deze activiteit waar wij bouwen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
   };
 
@@ -454,8 +454,8 @@
       back: 'Volver al inicio'
     },
     en: {
-      heroTitle: (name) => `Exhibition stand design and assembly at ${name}`,
-      heroSubtitle: (city) => `Exhibition stand design and assembly in ${city} with more than 20 years of experience and our own workshop.`,
+      heroTitle: (name) => `Exhibition stand design and build at ${name}`,
+      heroSubtitle: (city) => `Exhibition stand design and build in ${city} with more than 20 years of experience and our own workshop.`,
       intro: (name, city, sector) => `Standarte offers comprehensive high-quality stand design and assembly services for the ${name} fair in ${city}. As a key event in the ${sector} sector, your brand requires a space that conveys technical excellence and innovation.`,
       intro2: 'We take care of the 3D modeling, manufacturing in our own workshop, and the final assembly, ensuring that your space stands out from the competition without relying on third parties.',
       services: 'Services for exhibitors',
@@ -490,7 +490,7 @@
       back: 'Voltar ao início'
     },
     it: {
-      heroTitle: (name) => `Progettazione e montaggio di stand a ${name}`,
+      heroTitle: (name) => `Progettazione e allestimento di stand a ${name}`,
       heroSubtitle: (city) => `Progettazione e montaggio stand a ${city} con oltre 20 anni di esperienza e officina propria.`,
       intro: (name, city, sector) => `Standarte offre servizi completi di progettazione e montaggio di stand per la fiera ${name} a ${city}. Come evento chiave nel settore di ${sector}, il tuo brand richiede eccellenza.`,
       intro2: 'Ci occupiamo della modellazione 3D, della produzione nella nostra officina e dell\'assemblaggio finale.',
@@ -499,8 +499,8 @@
       back: 'Torna alla home'
     },
     ko: {
-      heroTitle: (name) => `${name} 전시 부스 디자인 및 조립`,
-      heroSubtitle: (city) => `${city}에서 20년 이상의 경험과 자체 작업장을 갖춘 부스 디자인 및 조립.`,
+      heroTitle: (name) => `${name} 전시 부스 디자인 및 시공`,
+      heroSubtitle: (city) => `${city}에서 20년 이상의 경험과 자체 작업장을 갖춘 부스 디자인 및 시공.`,
       intro: (name, city, sector) => `Standarte는 ${city}에서 열리는 ${name} 전시회를 위한 프리미엄 부스 디자인 및 시공 서비스를 제공합니다. ${sector} 분야의 주요 행사로서 완벽한 공간이 필요합니다.`,
       intro2: '3D 모델링, 자체 작업장 제작, 최종 설치까지 모두 책임집니다.',
       services: '참여업체를 위한 서비스',
@@ -526,8 +526,8 @@
       back: 'होम पर वापस जाएं'
     },
     ja: {
-      heroTitle: (name) => `${name}での展示会ブース設計・組立`,
-      heroSubtitle: (city) => `${city}での展示会ブース設計・組立。20年以上の経験と自社工房を有しています。`,
+      heroTitle: (name) => `${name}での展示会ブース設計・施工`,
+      heroSubtitle: (city) => `${city}での展示会ブース設計・施工。20年以上の経験と自社工房を有しています。`,
       intro: (name, city, sector) => `Standarteは、${city}で開催される${name}に向けて、高品質な木工ブースの設計・施工をトータルでご提供します。${sector}分野を代表する見本市として、貴社のブランドには技術的な卓越性と革新性を伝える空間が求められます。`,
       intro2: '3Dモデリング、自社工房での製作、現地での最終設営まで一貫して担い、第三者に頼ることなく貴社のブースが競合より際立つことをお約束します。',
       services: '出展企業向けサービス',
