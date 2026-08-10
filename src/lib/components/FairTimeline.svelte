@@ -37,8 +37,53 @@
       trackEl.scrollLeft = Math.max(0, cur.offsetLeft - trackEl.clientWidth / 2 + cur.offsetWidth / 2);
     };
     raf1 = requestAnimationFrame(() => { raf2 = requestAnimationFrame(center); });
-    return () => { cancelAnimationFrame(raf1); cancelAnimationFrame(raf2); };
+    // El desplazamiento por posición del ratón es solo de escritorio; en táctil manda
+    // el arrastre nativo del raíl (overflow-x). La invalidación del rect en scroll y
+    // resize evita medir la geometría en cada movimiento (patrón del carrusel 3D).
+    tlFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const invalidate = () => { tlRect = null; };
+    window.addEventListener('scroll', invalidate, { passive: true });
+    window.addEventListener('resize', invalidate, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf1); cancelAnimationFrame(raf2);
+      if (tlRaf) cancelAnimationFrame(tlRaf);
+      window.removeEventListener('scroll', invalidate);
+      window.removeEventListener('resize', invalidate);
+    };
   });
+
+  // --- Desplazamiento del raíl dirigido por la posición del ratón (escritorio) ---
+  // Mismo lenguaje que el carrusel de proyectos 3D de la portada: el centro es zona
+  // muerta; hacia la derecha el raíl avanza (muestra las citas siguientes) y hacia la
+  // izquierda retrocede, más rápido cuanto más cerca del borde (respuesta cuadrática).
+  let tlFine = false;   // ¿puntero fino con hover? (escritorio)
+  let tlRect = null;    // rect cacheado del raíl
+  let tlVel = 0;        // px/s; positivo = avanzar hacia la derecha
+  let tlRaf = null;
+  let tlLast = null;
+  const TL_MAX = 560;   // velocidad máxima en el borde
+  function tlTick(t) {
+    if (tlLast == null) tlLast = t;
+    const dt = Math.min(0.05, (t - tlLast) / 1000);
+    tlLast = t;
+    if (tlVel !== 0 && trackEl) {
+      trackEl.scrollLeft += tlVel * dt; // el navegador acota solo el rango
+      tlRaf = requestAnimationFrame(tlTick);
+    } else {
+      tlRaf = null; tlLast = null;
+    }
+  }
+  function tlOnMove(e) {
+    if (!tlFine || !trackEl) return;
+    if (!tlRect) tlRect = trackEl.getBoundingClientRect();
+    const r = tlRect;
+    let rel = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+    rel = Math.max(-1, Math.min(1, rel));
+    if (Math.abs(rel) < 0.06) rel = 0; // zona muerta central: parar es fácil
+    tlVel = Math.sign(rel) * rel * rel * TL_MAX;
+    if (tlVel !== 0 && !tlRaf) tlRaf = requestAnimationFrame(tlTick);
+  }
+  function tlOnLeave() { tlVel = 0; tlRect = null; }
 
   const strings = {
     es: { title: 'Calendario de expansión', current: 'Estás aquí', tbc: 'Próxima edición por confirmar' },
@@ -94,6 +139,8 @@
       </ul>
     {/if}
 
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div class="ft-zone" role="presentation" on:mousemove={tlOnMove} on:mouseleave={tlOnLeave}>
     <ol class="ft-track" bind:this={trackEl}>
       {#each nodes as n (n.slug)}
         <li class="ft-node" class:is-current={n.current} aria-current={n.current ? 'true' : undefined}>
@@ -121,6 +168,7 @@
         </li>
       {/each}
     </ol>
+    </div>
   </section>
 {/if}
 
@@ -190,17 +238,27 @@
     display: flex;
     gap: 0;
     position: relative;
-    /* Sin recorte en anchuras donde los 7 nódulos caben: `overflow-x: auto` recorta
-       también en vertical y se comía el tooltip, que sale hacia arriba. El scroll
-       lateral se activa más abajo, solo cuando el raíl deja de caber. */
-    overflow: visible;
+    /* Con 14 hitos el raíl nunca cabe entero: siempre es desplazable. La barra de
+       scroll se oculta porque la navegación es por posición del ratón (escritorio)
+       o por arrastre nativo (táctil). */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .ft-track::-webkit-scrollbar { display: none; }
   @media (max-width: 900px) {
-    .ft-track {
-      overflow-x: auto;
-      scroll-snap-type: x proximity;
-      -webkit-overflow-scrolling: touch;
-    }
+    .ft-track { scroll-snap-type: x proximity; }
+  }
+  /* Escritorio: `overflow-x: auto` recorta también en vertical y se comería el
+     tooltip, que sale hacia ARRIBA. El truco: un padding-top amplio (compensado con
+     margen negativo para no mover el raíl) mete el tooltip dentro de la caja de
+     scroll, donde ya no se recorta. Ese padding invisible taparía los chips de
+     actividad de encima, así que el raíl no captura punteros (pointer-events: none)
+     y los reactivan los nódulos; los eventos burbujean hasta .ft-zone, que dirige
+     el desplazamiento. */
+  @media (hover: hover) and (pointer: fine) {
+    .ft-track { padding-top: 160px; margin-top: -148px; pointer-events: none; }
+    .ft-node { pointer-events: auto; }
   }
   /* La línea se dibuja por NODO, no sobre el contenedor: un pseudo-elemento
      absoluto en un contenedor con scroll se limita al ancho visible y dejaría un
@@ -321,6 +379,12 @@
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
+  }
+  /* Móvil/táctil: sin tooltips. En pantalla táctil el :hover se dispara con el tap
+     (tapando el propio enlace que se quiere pulsar) y el resumen no aporta en ese
+     contexto; el usuario navega la línea por arrastre. */
+  @media (hover: none), (pointer: coarse) {
+    .ft-tip { display: none; }
   }
   .ft-name-current { color: #1a1e21; }
 

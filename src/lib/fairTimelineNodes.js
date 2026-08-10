@@ -9,7 +9,11 @@ import { activitiesForFair } from '$lib/fairTags.js';
 import { fairDates, fairDatesFor, formatFairDatesShort } from '$lib/fairDates.js';
 import { anchorWeight } from '$lib/fairAnchors.js';
 
-export const MAX_NODES = 7; // la banda ocupa todo el ancho, así que caben más hitos
+// 14 hitos: con 7, el ranking por relevancia (afinidad + ancla de sector) llenaba la
+// línea solo con las grandes citas europeas; al doblar el aforo entran también las
+// ferias nacionales (ES/PT) del sector. En escritorio ya no caben todos a la vista:
+// el raíl se desplaza en horizontal guiado por la posición del ratón (FairTimeline).
+export const MAX_NODES = 14;
 
 // Nodos: esta feria (siempre, aunque no tenga fecha) + las citas de su sector que
 // más le convienen al expositor, en orden cronológico.
