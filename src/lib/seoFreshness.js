@@ -14,7 +14,7 @@
 export const seoFreshness = {
   badajoz: '2026-07-16',
   montaje_badajoz: '2026-07-14',
-  zaragoza: '2026-08-07',
+  zaragoza: '2026-08-10',
   lisboa: '2026-08-07',
   montaje_don_benito: '2026-07-14',
   ciudad_real: '2026-07-14',
