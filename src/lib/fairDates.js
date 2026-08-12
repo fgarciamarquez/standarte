@@ -211,7 +211,7 @@ export const fairDates = {
   'stand-prod-pack-lyon': { start: '2027-11-16', end: '2027-11-18', cadence: 'biennial', source: 'https://www.prodandpack.com/en/practical-informations' },
   'stand-smahrt-toulouse': { start: '2028-01-30', end: '2028-02-01', cadence: 'biennial', source: 'https://www.smahrt.com/en' },
   'stand-euromaritime-marseille': { start: '2028-02-01', end: '2028-02-03', cadence: 'biennial', source: 'https://www.euromaritime.fr/' },
-  'stand-biemh-bilbao': { start: '2028-03-06', end: '2028-03-10', cadence: 'biennial', source: 'https://www.interempresas.net/MetalMecanica/624748-BIEMH-cierra-su-edicion-de-2026-como-referente-del-manufacturing-avanzado.html' },
+  'stands-biemh-bilbao': { start: '2028-03-06', end: '2028-03-10', cadence: 'biennial', source: 'https://www.interempresas.net/MetalMecanica/624748-BIEMH-cierra-su-edicion-de-2026-como-referente-del-manufacturing-avanzado.html' },
   'stand-alimentaria-barcelona': { start: '2028-03-20', end: '2028-03-23', cadence: 'biennial', source: 'https://www.alimentaria.com/' },
   'stand-hostelco-barcelona': { start: '2028-03-20', end: '2028-03-23', cadence: 'biennial', source: 'https://www.hostelco.com/en/' },
   'stand-bauma-munich': { start: '2028-04-03', end: '2028-04-09', cadence: 'triennial', source: 'https://bauma.de/en/trade-fair/' },

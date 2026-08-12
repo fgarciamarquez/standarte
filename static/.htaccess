@@ -293,8 +293,11 @@ DirectorySlash Off
   # (texto japonés) no se ven afectadas: [a-z0-9-]+ no las casa. El guardián de build
   # scripts/check_fair_slugs.mjs asegura que toda feria nueva nazca con el prefijo,
   # de modo que esta regla nunca capture una URL legítima.
-  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/(?!stand-)([a-z0-9-]+)/?$ https://standarte.es/$1ferias/stand-$2 [R=301,L]
-  RewriteRule ^ja/展示会情報/(?!stand-)([a-z0-9-]+)/?$ https://standarte.es/ja/展示会情報/stand-$1 [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/(?!stands?-)([a-z0-9-]+)/?$ https://standarte.es/$1ferias/stand-$2 [R=301,L]
+  RewriteRule ^ja/展示会情報/(?!stands?-)([a-z0-9-]+)/?$ https://standarte.es/ja/展示会情報/stand-$1 [R=301,L]
+  # BIEMH usa el plural por decision editorial: su URL singular anterior redirige.
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-biemh-bilbao/?$ https://standarte.es/$1ferias/stands-biemh-bilbao [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-biemh-bilbao/?$ https://standarte.es/ja/展示会情報/stands-biemh-bilbao [R=301,L]
   RewriteRule ^ja/ferias/oleomaq-zaragoza/?$ https://standarte.es/ja/展示会情報/オレオマック-サラゴサ [R=301,L]
   RewriteRule ^ja/ferias/tecnovid-zaragoza/?$ https://standarte.es/ja/展示会情報/テクノビッド-サラゴサ [R=301,L]
 

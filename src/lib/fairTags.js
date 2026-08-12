@@ -238,7 +238,7 @@ export const fairActivities = {
   "stand-agroexpo-don-benito": ["agricultura-maquinaria","ganaderia","multisectorial"],
   "stand-web-summit-lisboa": ["digital-software","congreso-profesional"],
   "stand-tektonica-lisboa": ["construccion"],
-  "stand-biemh-bilbao": ["maquinaria-industrial"],
+  "stands-biemh-bilbao": ["maquinaria-industrial"],
   "stand-subcontratacion-bilbao": ["metal-subcontratacion"],
   "stand-addit3d-bilbao": ["metal-subcontratacion"],
   "stand-bedigital-bilbao": ["digital-software"],

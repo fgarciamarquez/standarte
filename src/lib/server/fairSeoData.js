@@ -3773,7 +3773,7 @@ export const fairSeoData = {
 
   // ===== Lote 6d: Bilbao (BEC — Bilbao Exhibition Centre, +INDUSTRY) =====
 
-  'stand-biemh-bilbao': {
+  'stands-biemh-bilbao': {
     es: `<p>BIEMH, la Bienal Internacional de Máquina-Herramienta, es la gran feria industrial de España y una de las mayores de Europa, celebrada en el BEC (Bilbao Exhibition Centre), en Barakaldo. Reúne máquina-herramienta, fabricación avanzada, robótica y digitalización industrial.</p><p>Exhibir máquina-herramienta exige stands con suelos muy reforzados, potencia eléctrica y espacio para demostraciones. En Standarte resolvemos esa ingeniería y la integramos en un diseño técnico de gran presencia.</p>`,
     en: `<p>BIEMH, the International Machine-Tool Biennial, is Spain's leading industrial fair and one of the largest in Europe, held at the BEC (Bilbao Exhibition Centre) in Barakaldo. It brings together machine tools, advanced manufacturing, robotics and industrial digitalisation.</p><p>Displaying machine tools calls for stands with strongly reinforced floors, electrical power and space for demonstrations. At Standarte we solve that engineering and integrate it into a technical design with strong presence.</p>`,
     de: `<p>BIEMH, die Internationale Werkzeugmaschinen-Biennale, ist Spaniens führende Industriemesse und eine der größten Europas und findet im BEC (Bilbao Exhibition Centre) in Barakaldo statt. Sie vereint Werkzeugmaschinen, fortschrittliche Fertigung, Robotik und industrielle Digitalisierung.</p><p>Die Präsentation von Werkzeugmaschinen erfordert Stände mit stark verstärkten Böden, Stromversorgung und Platz für Vorführungen. Bei Standarte lösen wir diese Technik und integrieren sie in ein technisches Design mit großer Präsenz.</p>`,

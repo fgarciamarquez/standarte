@@ -59,7 +59,7 @@ export const nationalAnchors = new Set([
   'stand-arcomadrid',
   'stand-automobile-barcelona',
   'stand-barcelona-wine-week',
-  'stand-biemh-bilbao',
+  'stands-biemh-bilbao',
   'stand-biocultura-a-coruna',
   'stand-btl-lisboa',
   'stand-cevisama-valencia',

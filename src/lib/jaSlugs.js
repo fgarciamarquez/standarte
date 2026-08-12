@@ -79,7 +79,7 @@ export const jaFairSlugs = {
   "stand-feria-internacional-ganadera-zafra": "国際畜産フェア-サフラ",
   "stand-web-summit-lisboa": "ウェブサミット-リスボン",
   "stand-tektonica-lisboa": "テクトニカ-リスボン",
-  "stand-biemh-bilbao": "biemh-ビルバオ",
+  "stands-biemh-bilbao": "biemh-ビルバオ",
   "stand-subcontratacion-bilbao": "下請けフェア-ビルバオ",
   "stand-addit3d-bilbao": "アディット3d-ビルバオ",
   "stand-bedigital-bilbao": "ビーデジタル-ビルバオ",
