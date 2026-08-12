@@ -1008,9 +1008,12 @@
       [`How do I know if ${n} is the right fair for my product?`, `Pat, Standarte's free trade-fair advisor, recommends the fairs for your sector in Spain and Portugal in a minute.`]
     ]
   };
-  $: faqJsonLd = faqLd[lang] ? JSON.stringify({
+  // A las dos preguntas de plantilla se suman, si existen, las FAQs de objecion
+  // propias de esta feria (fairFaqExtra, capa Platino de las fichas).
+  $: faqPairs = faqLd[lang] ? [...faqLd[lang](fair.name), ...((data.fairFaq && data.fairFaq[lang]) || [])] : null;
+  $: faqJsonLd = faqPairs ? JSON.stringify({
     '@context': 'https://schema.org', '@type': 'FAQPage', '@id': canonical + '#faq',
-    mainEntity: faqLd[lang](fair.name).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }))
+    mainEntity: faqPairs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }))
   }).replace(/</g, '\\u003c') : null;
 </script>
 

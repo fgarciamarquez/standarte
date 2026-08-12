@@ -184,7 +184,7 @@ export const fairFreshness = {
   // Madrid: alta de FIAA (bus y autocar, IFEMA) en el hub.
 
   'stand-fiaa-madrid': '2026-08-07',
-  'stand-smagua-zaragoza': '2026-07-25',
+  'stand-smagua-zaragoza': '2026-08-12',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-07-21',
   'stand-viv-habitat-perpignan': '2026-07-21',

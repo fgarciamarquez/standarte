@@ -1,6 +1,6 @@
 import { prerenderEntries, resolveRoute, cityData } from '$lib/siteData.js';
 import { richSeoData } from '$lib/server/richSeoData.js';
-import { fairSeoData } from '$lib/server/fairSeoData.js';
+import { fairSeoData, fairFaqExtra } from '$lib/server/fairSeoData.js';
 import { activitySeoData } from '$lib/server/activitySeoData.js';
 import { getProjectById } from '$lib/projectData.js';
 import { timelineNodes } from '$lib/fairTimelineNodes.js';
@@ -52,6 +52,8 @@ export function load({ params }) {
   }
   // Contenido SEO único por feria (solo cuando la ruta es una feria concreta).
   const fairSeo = route.section === 'feria' ? (fairSeoData[route.fairSlug] || null) : null;
+  // FAQs de objecion propias de la feria (capa Platino); null si esa ficha no las tiene.
+  const fairFaq = route.section === 'feria' ? (fairFaqExtra[route.fairSlug] || null) : null;
   const fairTimelineSummaries = route.section === 'feria'
     ? timelineSummaries(route.fairSlug, route.lang || 'es')
     : null;
@@ -73,5 +75,5 @@ export function load({ params }) {
   const pricingCopy = route.section === 'precios'
     ? { ...(pricingTexts[pl] || pricingTexts.es), ...(pricingExtra[pl] || pricingExtra.es) }
     : null;
-  return { ...route, richSeo, fairSeo, fairTimelineSummaries, activitySeo, project, news, cityIntros, pricingCopy };
+  return { ...route, richSeo, fairSeo, fairFaq, fairTimelineSummaries, activitySeo, project, news, cityIntros, pricingCopy };
 }
