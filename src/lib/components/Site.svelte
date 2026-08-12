@@ -88,6 +88,11 @@
   // Galería: nº de fotos visibles antes del botón "Ver más" (el resto queda en el
   // DOM pero oculto con display:none, sin descargarse hasta desplegar).
   const GALLERY_VISIBLE = 12;
+  // Botón "Ver más" de la galería: oculto por decisión editorial. Las fotos que
+  // exceden GALLERY_VISIBLE siguen en el DOM (y por tanto disponibles para los
+  // rastreadores), pero ya no hay control para desplegarlas. Poner a true para
+  // recuperar el botón.
+  const GALLERY_MORE_BTN = false;
   // Ciudades de id="local-stands": nº visible antes del botón "Ver más"; el resto
   // queda en el DOM (con sus textos y enlaces, para SEO) pero oculto con display:none.
   const CITIES_VISIBLE = 3;
@@ -2120,7 +2125,7 @@
         {/each}
       </div>
 
-      {#if !galleryExpanded && filteredPortfolios.length > GALLERY_VISIBLE}
+      {#if GALLERY_MORE_BTN && !galleryExpanded && filteredPortfolios.length > GALLERY_VISIBLE}
         <div class="gallery-more-wrap">
           <button type="button" class="gallery-more-btn" on:click={() => (galleryExpanded = true)}>
             {galleryMoreLabels[lang] || galleryMoreLabels.es}
