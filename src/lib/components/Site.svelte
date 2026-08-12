@@ -584,6 +584,24 @@
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
   $: isCityPage = section in cityData;
+  // Segunda línea del H1 en las páginas de ciudad: el claim de marca ("Stand de
+  // calidad + red de expansión", el valor diferencial que la competencia no puede
+  // emular), con el "+" en rojo. Mismo módulo que en las fichas de feria. Sustituye
+  // al párrafo hero-lead, que repetía contenido ya presente en el cuerpo.
+  const heroClaim = {
+    es: 'Stand de calidad + red de expansión',
+    pt: 'Stand de qualidade + rede de expansão',
+    en: 'Quality stand + expansion network',
+    de: 'Qualitätsstand + Expansionsnetz',
+    fr: "Stand de qualité + réseau d'expansion",
+    it: 'Stand di qualità + rete di espansione',
+    nl: 'Kwaliteitsstand + expansienetwerk',
+    zh: '高品质展台 + 扩张网络',
+    hi: 'गुणवत्तापूर्ण स्टैंड + विस्तार नेटवर्क',
+    ko: '품질 높은 부스 + 확장 네트워크',
+    ja: '高品質なブース + 拡大ネットワーク'
+  };
+  $: heroClaimParts = (heroClaim[lang] || heroClaim.es).split('+');
   // País de la ciudad-matriz (bandera circular en la miga de pan "Inicio / Ciudad"):
   // se deriva de cualquier feria alojada en esa ciudad, mismo dato que usa Feria.svelte.
   // CITY_FLAG_FALLBACK (en $lib/cityFlags.js) cubre pilares cuyas ferias están en un
@@ -1897,8 +1915,8 @@
             </ol>
           </nav>
         {/if}
-        <h1>{h1Text}</h1>
-        <p class="hero-lead">{seoContent.introText}</p>
+        <h1>{h1Text}{#if isCityPage}<span class="h1-claim">{heroClaimParts[0]}<span class="h1-plus">+</span>{heroClaimParts[1]}</span>{/if}</h1>
+        {#if !isCityPage}<p class="hero-lead">{seoContent.introText}</p>{/if}
       </div>
       {#if animatedHero}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
       {#if section === 'proyecto_auditado'}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
@@ -2905,6 +2923,20 @@
   .coverage-claim p { margin: 0; line-height: 1.65; color: var(--text-color); }
   .activity-pitch { margin-top: 2rem; }
   .activity-pitch .tool-cta { margin-top: 1.1rem; }
+  /* Segunda línea del H1 (páginas de ciudad): el claim de marca, mismo módulo que en
+     las fichas de feria. Bloque propio, algo más pequeño para conservar la jerarquía. */
+  .h1-claim {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 0.78em;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .h1-plus {
+    color: #ff3b30;
+    font-weight: 700;
+    padding: 0 0.08em;
+  }
   /* Carrusel de idiomas (SEO): banda a ancho completo entre el header y el main de las
      páginas de ciudad. Poca altura, texto normal, sin banderas; los H1 traducidos se
      separan con "/" y desfilan en un carrusel CSS (ida y vuelta, pausa al hover).
