@@ -33,7 +33,7 @@ export const routes = {
     contact: 'contacto',
     madrid: 'diseno_montaje_stands_madrid',
     barcelona: 'diseno_montaje_stands_barcelona',
-    bilbao: 'diseno-montaje-stands-bilbao',
+    bilbao: 'diseno-construccion-montaje-stand-bilbao',
     lisboa: 'diseno_montaje_stands_lisboa',
     batalha: 'diseno_montaje_stands_batalha',
     silleda: 'diseno_montaje_stands_silleda',
