@@ -548,18 +548,21 @@
   // Coletilla de valor (experiencia + taller propio) que antes vivía en el subtítulo <p>.
   // Se funde en el H1 para que la cabecera tenga un solo texto sin repetir
   // "Diseño y montaje de stands en…". Lleva su propio separador inicial por idioma.
-  const heroExp = {
-    es: ' con más de 20 años de experiencia y taller propio',
-    en: ' with over 20 years of experience and our own workshop',
-    de: ' mit über 20 Jahren Erfahrung und eigener Werkstatt',
-    fr: " avec plus de 20 ans d'expérience et notre propre atelier",
-    pt: ' com mais de 20 anos de experiência e oficina própria',
-    it: ' con oltre 20 anni di esperienza e officina propria',
-    ko: ' — 20년 이상의 경험과 자체 작업장 보유',
-    zh: '，拥有超过20年的经验和自有工厂',
-    hi: ' — 20 से अधिक वर्षों का अनुभव और अपनी खुद की कार्यशाला',
-    ja: '。20年以上の経験と自社工房を有しています',
-    nl: ' met meer dan 20 jaar ervaring en een eigen werkplaats'
+  // Segunda línea del H1: el claim de marca en corto ("Stand de calidad + red de
+  // expansión"), en sustitución de la antigua coletilla de experiencia que se repetía
+  // en todas las fichas. El "+" se pinta en rojo (span aparte en el markup).
+  const heroClaim = {
+    es: 'Stand de calidad + red de expansión',
+    pt: 'Stand de qualidade + rede de expansão',
+    en: 'Quality stand + expansion network',
+    de: 'Qualitätsstand + Expansionsnetz',
+    fr: "Stand de qualité + réseau d'expansion",
+    it: 'Stand di qualità + rete di espansione',
+    nl: 'Kwaliteitsstand + expansienetwerk',
+    zh: '高品质展台 + 扩张网络',
+    hi: 'गुणवत्तापूर्ण स्टैंड + विस्तार नेटवर्क',
+    ko: '품질 높은 부스 + 확장 네트워크',
+    ja: '高品質なブース + 拡大ネットワーク'
   };
 
   $: localizedCity = (cities[lang] && cities[lang][fair.city]) ? cities[lang][fair.city] : fair.city;
@@ -595,7 +598,8 @@
     ja: (name, sector) => `Standarteは、${sector}分野で毎年開催都市が変わる巡回型の学会である${name}向けにブースを設計・施工します。自社工房と施工チームにより、開催地どこへでもブースをお届けし、スペインとポルトガル全土をカバーします。`
   };
   $: localizedSector = (sectors[lang] && sectors[lang][fair.sector]) ? sectors[lang][fair.sector] : fair.sector;
-  $: heroExpStr = heroExp[lang] || heroExp.es;
+  // Partes del claim alrededor del "+": [antes, después], para colorear solo el signo.
+  $: heroClaimParts = (heroClaim[lang] || heroClaim.es).split('+');
 
   // Valor del título: si el nombre de la feria NO incluye ya su ciudad (en ningún idioma),
   // le añadimos la ciudad localizada entre paréntesis para captar la búsqueda local
@@ -1135,7 +1139,7 @@
   
   <div class="hero-subpage" class:on-hero-photo={coverKey}>
     <div class="hero-contents feria-hero-contents">
-      <h1>{strings.heroTitle(fairDisplayName)}{heroExpStr}</h1>
+      <h1>{strings.heroTitle(fairDisplayName)}<span class="h1-claim">{heroClaimParts[0]}<span class="h1-plus">+</span>{heroClaimParts[1]}</span></h1>
       <AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />
     </div>
   </div>
@@ -1352,6 +1356,20 @@
   }
   .feria-hero-contents {
     text-align: center;
+  }
+  /* Segunda línea del H1: el claim de marca. Bloque propio (salto de línea), algo
+     más pequeño que la primera línea para mantener la jerarquía del título. */
+  .h1-claim {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 0.78em;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .h1-plus {
+    color: #ff3b30;
+    font-weight: 700;
+    padding: 0 0.08em;
   }
   /* Header de feria: misma portada que la página de su ciudad-matriz (foto de fondo
      + overlay oscuro vía .hero-bg-city / .hero-subpage.on-hero-photo, reglas globales),
