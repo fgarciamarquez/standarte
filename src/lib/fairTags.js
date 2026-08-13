@@ -207,6 +207,7 @@ export const fairActivities = {
   "stand-ht-malaga": ["gastronomia-hosteleria"],
   "stand-eurosatory-paris": ["aeronautica"],
   "stand-empack-madrid": ["packaging"],
+  "stand-hygienalia-madrid": ["maquinaria-industrial"],
   "stand-expoquimia-barcelona": ["packaging", "maquinaria-industrial"],
   "stand-mwc-barcelona": ["digital-software"],
   "stand-ise-barcelona": ["audiovisual"],

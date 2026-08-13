@@ -903,6 +903,13 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
+    "name": "Hygienalia Madrid",
+    "country": "es",
+    "slug": "stand-hygienalia-madrid",
+    "city": "Madrid",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "Expoquimia Barcelona",
     "country": "es",
     "slug": "stand-expoquimia-barcelona",
