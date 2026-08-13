@@ -1129,7 +1129,7 @@ export const fairsData = [
   {
     "name": "Subcontratación Bilbao",
     "country": "es",
-    "slug": "stand-subcontratacion-bilbao",
+    "slug": "stands-subcontratacion-bilbao",
     "city": "Bilbao",
     "sector": "Industria y Logística"
   },
@@ -1150,14 +1150,14 @@ export const fairsData = [
   {
     "name": "Pumps & Valves Bilbao",
     "country": "es",
-    "slug": "stand-pumps-valves-bilbao",
+    "slug": "stands-pumps-valves-bilbao",
     "city": "Bilbao",
     "sector": "Industria y Logística"
   },
   {
     "name": "Maintenance Bilbao",
     "country": "es",
-    "slug": "stand-maintenance-bilbao",
+    "slug": "stands-maintenance-bilbao",
     "city": "Bilbao",
     "sector": "Industria y Logística"
   },

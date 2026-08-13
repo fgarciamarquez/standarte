@@ -3786,7 +3786,7 @@ export const fairSeoData = {
     ja: `<p>BIEMH（国際工作機械ビエンナーレ）はスペインを代表する産業見本市で、欧州最大級でもあり、バラカルドのBEC（ビルバオ展示センター）で開催されます。工作機械・先進製造・ロボティクス・産業デジタル化が集まります。</p><p>工作機械の展示には、強く補強された床や電源、実演スペースを備えたブースが必要です。Standarteはそうしたエンジニアリングを解決し、存在感のある技術的なデザインに統合します。</p>`
   },
 
-  'stand-subcontratacion-bilbao': {
+  'stands-subcontratacion-bilbao': {
     es: `<p>Subcontratación es la feria de procesos y equipos de fabricación, celebrada en el BEC (Bilbao Exhibition Centre) dentro del encuentro industrial +INDUSTRY. Conecta a empresas y contratistas que buscan proveedores de fabricación especializada.</p><p>Aquí el stand industrial debe ser robusto y funcional, con espacio para piezas y reuniones técnicas. En Standarte construimos estands resistentes y bien acabados, adaptados a un entorno de fabricación.</p>`,
     en: `<p>Subcontratación is the manufacturing processes and equipment fair, held at the BEC (Bilbao Exhibition Centre) within the +INDUSTRY industrial meeting. It connects companies and contractors looking for specialised manufacturing suppliers.</p><p>Here the industrial stand must be sturdy and functional, with space for parts and technical meetings. At Standarte we build robust, well-finished stands suited to a manufacturing environment.</p>`,
     de: `<p>Subcontratación ist die Messe für Fertigungsprozesse und -ausrüstung, die im BEC (Bilbao Exhibition Centre) im Rahmen des Industrietreffens +INDUSTRY stattfindet. Sie verbindet Unternehmen und Auftragnehmer, die spezialisierte Fertigungslieferanten suchen.</p><p>Hier muss der Industriestand robust und funktional sein, mit Platz für Bauteile und Fachgespräche. Bei Standarte bauen wir robuste, gut verarbeitete Stände für ein Fertigungsumfeld.</p>`,
@@ -3825,7 +3825,7 @@ export const fairSeoData = {
     ja: `<p>BeDIGITALは産業のデジタル変革・自動化（インダストリー4.0）の見本市で、BEC（ビルバオ展示センター）の産業イベント+INDUSTRYの一部として開催されます。産業向けのデジタル化・ロボティクス・データソリューションが集まります。</p><p>技術系の来場者に向けて、ブースはイノベーションを示し、デモエリアや商談スペースを備える必要があります。Standarteは信頼を生むテクノロジー主体のハイエンドな空間を設計します。</p>`
   },
 
-  'stand-pumps-valves-bilbao': {
+  'stands-pumps-valves-bilbao': {
     es: `<p>Pumps & Valves es la feria de bombas, válvulas y equipos para procesos industriales, celebrada en el BEC (Bilbao Exhibition Centre) dentro del encuentro industrial +INDUSTRY. Reúne a fabricantes y a la industria de proceso de toda Europa.</p><p>Exhibir equipos industriales exige stands robustos, con suelos resistentes y espacio para maquinaria. En Standarte resolvemos esa ingeniería y la integramos en un diseño que da protagonismo a cada equipo.</p>`,
     en: `<p>Pumps & Valves is the fair for pumps, valves and equipment for industrial processes, held at the BEC (Bilbao Exhibition Centre) within the +INDUSTRY industrial meeting. It brings together manufacturers and the process industry from across Europe.</p><p>Displaying industrial equipment calls for sturdy stands with strong floors and space for machinery. At Standarte we solve that engineering and integrate it into a design that puts every piece of equipment in the spotlight.</p>`,
     de: `<p>Pumps & Valves ist die Messe für Pumpen, Ventile und Ausrüstung für industrielle Prozesse, die im BEC (Bilbao Exhibition Centre) im Rahmen des Industrietreffens +INDUSTRY stattfindet. Sie vereint Hersteller und die Prozessindustrie aus ganz Europa.</p><p>Die Präsentation von Industrieausrüstung erfordert robuste Stände mit tragfähigen Böden und Platz für Maschinen. Bei Standarte lösen wir diese Technik und integrieren sie in ein Design, das jedes Gerät in Szene setzt.</p>`,
@@ -3838,7 +3838,7 @@ export const fairSeoData = {
     ja: `<p>Pumps & Valvesは産業プロセス向けのポンプ・バルブ・設備の見本市で、BEC（ビルバオ展示センター）の産業イベント+INDUSTRYの一部として開催されます。欧州各地のメーカーやプロセス産業が集まります。</p><p>産業設備の展示には、床が頑丈で機械を置くスペースのある頑丈なブースが必要です。Standarteはそうしたエンジニアリングを解決し、各機材を主役にするデザインに統合します。</p>`
   },
 
-  'stand-maintenance-bilbao': {
+  'stands-maintenance-bilbao': {
     es: `<p>Maintenance es la feria del mantenimiento industrial, celebrada en el BEC (Bilbao Exhibition Centre) dentro del encuentro industrial +INDUSTRY. Reúne soluciones, servicios y tecnología para el mantenimiento de la industria.</p><p>Aquí el stand industrial debe ser funcional y resistente, con espacio para equipos y reuniones técnicas. En Standarte construimos estands sólidos y bien acabados, adaptados a un entorno industrial.</p>`,
     en: `<p>Maintenance is the industrial maintenance fair, held at the BEC (Bilbao Exhibition Centre) within the +INDUSTRY industrial meeting. It brings together solutions, services and technology for industrial maintenance.</p><p>Here the industrial stand must be functional and sturdy, with space for equipment and technical meetings. At Standarte we build solid, well-finished stands suited to an industrial environment.</p>`,
     de: `<p>Maintenance ist die Messe für industrielle Instandhaltung, die im BEC (Bilbao Exhibition Centre) im Rahmen des Industrietreffens +INDUSTRY stattfindet. Sie vereint Lösungen, Dienstleistungen und Technologie für die industrielle Instandhaltung.</p><p>Hier muss der Industriestand funktional und robust sein, mit Platz für Geräte und Fachgespräche. Bei Standarte bauen wir solide, gut verarbeitete Stände für ein industrielles Umfeld.</p>`,

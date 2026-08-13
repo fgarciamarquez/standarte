@@ -141,7 +141,7 @@ export const nationalAnchors = new Set([
   'stand-smagua-zaragoza',
   'stand-smopyc-zaragoza',
   'stand-solar-storage-live-espana-valencia',
-  'stand-subcontratacion-bilbao',
+  'stands-subcontratacion-bilbao',
   'stand-tecnovid-zaragoza',
   'stand-tektonica-lisboa',
   'stand-termatalia-ourense',
