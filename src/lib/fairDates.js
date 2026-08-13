@@ -10,6 +10,9 @@
 //     recinto). Una fecha equivocada en una página comercial es peor que ninguna:
 //     ante la duda, se deja fuera. Por eso muchas ferias no aparecen aquí.
 //  2. NO se extrapolan fechas de ediciones futuras a partir de la periodicidad.
+//     EXCEPCION `approx: true`: cuando la organizacion confirma el AÑO pero aun no
+//     las fechas, se anota con approx y el sitio muestra solo "2027 (por confirmar)",
+//     nunca un dia concreto inventado. start/end solo se usan para ordenar.
 //     Que una feria sea bienal no autoriza a inventar la edición de dentro de 2 años:
 //     hasta que la organización la publica, la feria se queda sin fecha.
 //  3. Las fechas CADUCAN. `scripts/check_fair_dates.mjs` avisa en cada build de las
@@ -211,6 +214,9 @@ export const fairDates = {
   'stand-prod-pack-lyon': { start: '2027-11-16', end: '2027-11-18', cadence: 'biennial', source: 'https://www.prodandpack.com/en/practical-informations' },
   'stand-smahrt-toulouse': { start: '2028-01-30', end: '2028-02-01', cadence: 'biennial', source: 'https://www.smahrt.com/en' },
   'stand-euromaritime-marseille': { start: '2028-02-01', end: '2028-02-03', cadence: 'biennial', source: 'https://www.euromaritime.fr/' },
+  // Ano confirmado por la periodicidad bienal y la edicion de 2025; IFEMA aun no
+  // publica los dias, asi que va como aproximada (se muestra solo el ano).
+  'stand-hygienalia-madrid': { start: '2027-11-01', end: '2027-11-30', cadence: 'biennial', approx: true, source: 'https://www.hygienalia.com/' },
   'stands-biemh-bilbao': { start: '2028-03-06', end: '2028-03-10', cadence: 'biennial', source: 'https://www.interempresas.net/MetalMecanica/624748-BIEMH-cierra-su-edicion-de-2026-como-referente-del-manufacturing-avanzado.html' },
   'stand-alimentaria-barcelona': { start: '2028-03-20', end: '2028-03-23', cadence: 'biennial', source: 'https://www.alimentaria.com/' },
   'stand-hostelco-barcelona': { start: '2028-03-20', end: '2028-03-23', cadence: 'biennial', source: 'https://www.hostelco.com/en/' },
@@ -221,6 +227,13 @@ export const fairDates = {
 };
 
 /** Periodicidad de una feria, en los 11 idiomas (para la línea de tiempo). */
+// Sufijo para fechas aproximadas (`approx: true`): el año es firme, el día no.
+export const approxLabels = {
+  es: 'por confirmar', pt: 'por confirmar', en: 'to be confirmed', de: 'noch offen',
+  fr: 'à confirmer', it: 'da confermare', nl: 'nog te bevestigen', zh: '待定',
+  hi: 'पुष्टि होनी बाकी', ko: '미정', ja: '未定'
+};
+
 export const cadenceLabels = {
   annual: { es: 'anual', en: 'annual', de: 'jährlich', pt: 'anual', fr: 'annuel', it: 'annuale', nl: 'jaarlijks', zh: '每年', hi: 'वार्षिक', ko: '매년', ja: '毎年' },
   biennial: { es: 'bienal', en: 'biennial', de: 'zweijährlich', pt: 'bienal', fr: 'biennal', it: 'biennale', nl: 'tweejaarlijks', zh: '每两年', hi: 'द्विवार्षिक', ko: '격년', ja: '隔年' },
@@ -266,6 +279,15 @@ function parseISO(iso) {
  * @param {string} today fecha ISO de referencia (por defecto, hoy)
  */
 export function formatFairDates(slug, lang = 'es', today = null) {
+  {
+    const e = fairDates[slug];
+    if (e && e.approx && e.start) {
+      const ref0 = today || new Date().toISOString().slice(0, 10);
+      if ((e.end || e.start) < ref0) return null;
+      const lbl = approxLabels[lang] || approxLabels.es;
+      return `${e.start.slice(0, 4)} (${lbl})`;
+    }
+  }
   const entry = fairDates[slug];
   if (!entry || !entry.start) return null;
   const start = parseISO(entry.start);
@@ -323,6 +345,15 @@ const MONTHS_SHORT = {
  * registrada o fecha ya pasada).
  */
 export function formatFairDatesShort(slug, lang = 'es', today = null) {
+  {
+    const e = fairDates[slug];
+    if (e && e.approx && e.start) {
+      const ref0 = today || new Date().toISOString().slice(0, 10);
+      if ((e.end || e.start) < ref0) return null;
+      const lbl = approxLabels[lang] || approxLabels.es;
+      return `${e.start.slice(0, 4)} (${lbl})`;
+    }
+  }
   const entry = fairDates[slug];
   if (!entry || !entry.start) return null;
   const start = parseISO(entry.start);
