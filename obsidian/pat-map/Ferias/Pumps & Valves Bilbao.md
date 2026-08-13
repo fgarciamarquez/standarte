@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-pumps-valves-bilbao
+slug: stands-pumps-valves-bilbao
 pais: es
 ciudad: "Bilbao"
 en_mapa: true
