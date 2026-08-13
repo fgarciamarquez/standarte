@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 29
+n_ferias: 30
 lat: 40.42
 lon: -3.7
 ---
@@ -23,6 +23,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Fruit Attraction Madrid]]
 - [[Genera]]
 - [[Global Mobility Call]]
+- [[Hygienalia Madrid]]
 - [[Iberpet Madrid]]
 - [[Intergift Madrid]]
 - [[Madrid Fusión]]

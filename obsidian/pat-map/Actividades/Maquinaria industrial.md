@@ -2,7 +2,7 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 36
+n_ferias: 37
 ---
 # Maquinaria industrial
 
@@ -24,6 +24,7 @@ Actividad del sector [[Industria y Logística]].
 - [[Global Industrie]]
 - [[Global Industrie Paris]]
 - [[Hannover Messe]]
+- [[Hygienalia Madrid]]
 - [[IBT Côte d'Azur]]
 - [[IMME]]
 - [[ITF Intertex Portugal]]
