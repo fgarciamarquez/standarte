@@ -12,6 +12,7 @@ con_texto: true
 - Sector(es): [[Industria y Logística]]
 
 ## Actividades
+- [[Limpieza e higiene profesional]]
 - [[Maquinaria industrial]]
 
 ## Descripción
