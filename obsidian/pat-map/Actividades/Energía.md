@@ -2,7 +2,7 @@
 tipo: actividad
 clave: energia
 sector: "Industria y Logística"
-n_ferias: 17
+n_ferias: 18
 ---
 # Energía
 
@@ -14,6 +14,7 @@ Actividad del sector [[Industria y Logística]].
 - [[Cycl'Eau Nouvelle-Aquitaine]]
 - [[ELETRICA]]
 - [[ENERH2O]]
+- [[EXPOFIMER Zaragoza]]
 - [[Elec Expo]]
 - [[Ener Event]]
 - [[EnerGaïa]]

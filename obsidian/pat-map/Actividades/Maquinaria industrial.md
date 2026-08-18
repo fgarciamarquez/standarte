@@ -2,7 +2,7 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 37
+n_ferias: 38
 ---
 # Maquinaria industrial
 
@@ -40,6 +40,7 @@ Actividad del sector [[Industria y Logística]].
 - [[SEPEM Industries Sud-Est]]
 - [[SEPEM Industries Toulouse]]
 - [[SISTEP Industriel]]
+- [[SPAPER Zaragoza]]
 - [[SPS Nuremberg]]
 - [[Salon SIANE]]
 - [[Smopyc Zaragoza]]
