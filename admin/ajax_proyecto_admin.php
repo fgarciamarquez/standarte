@@ -51,7 +51,7 @@ if (!$projectId) { pa_out(array('ok' => false, 'error' => 'not_found')); }
 if ($action === 'save') {
 	$fields = array();
 	$plain = array('ref', 'client_name', 'client_email', 'title_es', 'title_en', 'memoria_es', 'memoria_en',
-		'interlocutor_name', 'interlocutor_email', 'income_account');
+		'interlocutor_name', 'interlocutor_email', 'income_account', 'bic_code');
 	foreach ($plain as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
 	foreach (array('includes_es', 'includes_en', 'excludes_es', 'excludes_en') as $k) {
 		if (isset($_POST[$k])) $fields[$k] = cpx_lines_to_array($_POST[$k]);

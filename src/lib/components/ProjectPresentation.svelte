@@ -4,7 +4,7 @@
   // - Modo edición (admin=true): la misma página se vuelve editable in situ
   //   (títulos, memoria, incluye/excluye, presupuesto, media con arrastrar y
   //   soltar, respuestas, pagado) usando el endpoint PHP con la service key.
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
   import { adminAction, adminUpload, notifySend, approveProject, saveBilling, saveTestimonial } from '$lib/clientProject.js';
   const dispatch = createEventDispatcher();
 
@@ -25,8 +25,8 @@
   let adminMsg = '';
 
   const t = {
-    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', titlePh: 'Título del proyecto', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta de la base imponible mientras no pase la fecha límite.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…', clientEmail: 'Email del cliente (para los avisos)', clientEmailPh: 'cliente@empresa.com', approve: 'Aprobar proyecto', approveWithOffer: 'Aprobar proyecto con oferta', testimonialPh: '¿Una frase sobre cómo fue trabajar con nosotros? (opcional, la usaríamos con tu permiso)', approved: 'APROBADO', approvedOn: 'Aprobado el', payTitle: 'Datos para el ingreso', subject: 'Asunto', beneficiary: 'Beneficiario', owner: 'titular de Standarte', billingTitle: 'Datos para la factura', razon: 'Razón social', cif: 'CIF', address: 'Dirección', postal: 'Código postal', city: 'Ciudad', country: 'País', saveBilling: 'Guardar datos de facturación', billingSaved: 'Datos guardados. Gracias.', thanks: 'Gracias por su confianza. Nuestro equipo le hará llegar la factura y el contrato en breve. Un cordial saludo. El equipo de Standarte.' },
-    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', titlePh: 'Project title', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted from the taxable base until the deadline passes.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…', clientEmail: 'Client email (for notifications)', clientEmailPh: 'client@company.com', approve: 'Approve project', approveWithOffer: 'Approve project with offer', testimonialPh: 'A line about how it was to work with us? (optional, used with your permission)', approved: 'APPROVED', approvedOn: 'Approved on', payTitle: 'Payment details', subject: 'Subject', beneficiary: 'Beneficiary', owner: 'Standarte owner', billingTitle: 'Billing details', razon: 'Legal name', cif: 'Tax ID (CIF)', address: 'Address', postal: 'Postal code', city: 'City', country: 'Country', saveBilling: 'Save billing details', billingSaved: 'Details saved. Thank you.', thanks: 'Thank you for your trust. Our team will send you the invoice and the contract shortly. Best regards, the Standarte team.' }
+    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', titlePh: 'Título del proyecto', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', bicPh: 'BIC / SWIFT del banco', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta de la base imponible mientras no pase la fecha límite.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…', clientEmail: 'Email del cliente (para los avisos)', clientEmailPh: 'cliente@empresa.com', approve: 'Aprobar proyecto', approveWithOffer: 'Aprobar proyecto con oferta', testimonialPh: '¿Una frase sobre cómo fue trabajar con nosotros? (opcional, la usaríamos con tu permiso)', approved: 'APROBADO', approvedOn: 'Aprobado el', payTitle: 'Datos para el ingreso', subject: 'Asunto', beneficiary: 'Beneficiario', owner: 'titular de Standarte', billingTitle: 'Datos para la factura', razon: 'Razón social', cif: 'CIF', address: 'Dirección', postal: 'Código postal', city: 'Ciudad', country: 'País', saveBilling: 'Guardar datos de facturación', billingSaved: 'Datos guardados. Gracias.', thanks: 'Gracias por su confianza. Nuestro equipo le hará llegar la factura y el contrato en breve. Un cordial saludo. El equipo de Standarte.' },
+    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', titlePh: 'Project title', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', bicPh: 'Bank BIC / SWIFT', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted from the taxable base until the deadline passes.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…', clientEmail: 'Client email (for notifications)', clientEmailPh: 'client@company.com', approve: 'Approve project', approveWithOffer: 'Approve project with offer', testimonialPh: 'A line about how it was to work with us? (optional, used with your permission)', approved: 'APPROVED', approvedOn: 'Approved on', payTitle: 'Payment details', subject: 'Subject', beneficiary: 'Beneficiary', owner: 'Standarte owner', billingTitle: 'Billing details', razon: 'Legal name', cif: 'Tax ID (CIF)', address: 'Address', postal: 'Postal code', city: 'City', country: 'Country', saveBilling: 'Save billing details', billingSaved: 'Details saved. Thank you.', thanks: 'Thank you for your trust. Our team will send you the invoice and the contract shortly. Best regards, the Standarte team.' }
   };
   $: L = t[lang];
 
@@ -48,7 +48,7 @@
   $: if (admin && data && (!ebInit || lang !== ebLang)) { ebInit = true; ebLang = lang; eb = {
     title: data.title[lang] || '', memoria: data.memoria[lang] || '',
     includes: (data.includes[lang] || []).join('\n'), excludes: (data.excludes[lang] || []).join('\n'),
-    income: data.income_account || '', paid: !!data.paid,
+    income: data.income_account || '', bic: data.bic_code || '', paid: !!data.paid,
     clientEmail: data.client_email || '',
     discAmount: data.discount?.amount ? String(data.discount.amount) : '',
     discLabel: data.discount?.label?.[lang] || '', discDeadline: data.discount?.deadline || ''
@@ -78,6 +78,31 @@
   $: total = base + iva - irpf;
   $: fmt = (n) => new Intl.NumberFormat(lang === 'es' ? 'es-ES' : 'en-GB', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, useGrouping: 'always' }).format(n);
   $: fmtDate = (d) => d ? d.toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '';
+  // ── Contravalor en dolares de los balances ────────────────────────────────
+  // El presupuesto se emite en EUROS: el dolar es solo una referencia para el
+  // cliente internacional, por eso se marca como aproximado y se cita la fuente
+  // y la fecha del cambio (BCE via Frankfurter, sin clave ni cookies). Si la
+  // peticion falla, `usdRate` queda a null y no se muestra nada: nunca se
+  // inventa un cambio.
+  let usdRate = null;
+  let usdDate = '';
+  onMount(async () => {
+    try {
+      const r = await fetch('https://api.frankfurter.app/latest?from=EUR&to=USD');
+      if (!r.ok) return;
+      const j = await r.json();
+      if (j && j.rates && Number.isFinite(j.rates.USD)) { usdRate = j.rates.USD; usdDate = j.date || ''; }
+    } catch (e) { /* sin conexion: el presupuesto se queda solo en euros */ }
+  });
+  $: fmtUsd = (n) => usdRate
+    ? new Intl.NumberFormat(lang === 'es' ? 'es-ES' : 'en-GB', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, useGrouping: 'always' }).format(n * usdRate)
+    : '';
+  $: rateNote = usdRate
+    ? (lang === 'es'
+        ? `Contravalor orientativo · 1 € = ${usdRate.toFixed(4)} $ (BCE${usdDate ? ', ' + fmtDate(new Date(usdDate)) : ''})`
+        : `Indicative conversion · 1 € = ${usdRate.toFixed(4)} $ (ECB${usdDate ? ', ' + fmtDate(new Date(usdDate)) : ''})`)
+    : '';
+
 
   const mediaComments = (mid) => (data?.comments || []).filter((c) => c.media_id === mid);
   function fmtTime(ts) {
@@ -167,7 +192,7 @@
     saving = true; adminMsg = '';
     const f = {}; f['title_' + lang] = eb.title; f['memoria_' + lang] = eb.memoria;
     f['includes_' + lang] = eb.includes; f['excludes_' + lang] = eb.excludes;
-    f.income_account = eb.income; f.paid = eb.paid ? '1' : '0';
+    f.income_account = eb.income; f.bic_code = eb.bic; f.paid = eb.paid ? '1' : '0';
     f.client_email = eb.clientEmail;
     f.discount_amount = eb.discAmount || '0'; f['discount_label_' + lang] = eb.discLabel; f.discount_deadline = eb.discDeadline || '';
     const r = await adminAction(token, 'save', f);
@@ -463,18 +488,19 @@
         </tbody>
         <tfoot>
           {#if discAmount > 0}
-            <tr><td>{L.subtotal}</td><td class="num">{fmt(subtotal)}</td>{#if admin}<td></td>{/if}</tr>
+            <tr><td>{L.subtotal}</td><td class="num">{fmt(subtotal)}{#if usdRate}<span class="pz-usd">{fmtUsd(subtotal)}</span>{/if}</td>{#if admin}<td></td>{/if}</tr>
             <tr class="pz-disc" class:expired={discApplied === 0}>
               <td>{data.discount?.label?.[lang] || L.promptDiscount}{#if discDeadline} · {L.until} <strong>{fmtDate(discDeadline)}</strong>{/if}{#if discApplied === 0} ({L.expired}){/if}</td>
-              <td class="num">{discApplied > 0 ? '− ' + fmt(discApplied) : '—'}</td>{#if admin}<td></td>{/if}
+              <td class="num">{discApplied > 0 ? '− ' + fmt(discApplied) : '—'}{#if usdRate && discApplied > 0}<span class="pz-usd">− {fmtUsd(discApplied)}</span>{/if}</td>{#if admin}<td></td>{/if}
             </tr>
           {/if}
-          <tr class="sum"><td>{L.base}</td><td class="num">{fmt(base)}</td>{#if admin}<td></td>{/if}</tr>
-          <tr><td>{L.iva}</td><td class="num">+ {fmt(iva)}</td>{#if admin}<td></td>{/if}</tr>
-          <tr><td>{L.irpf}</td><td class="num">− {fmt(irpf)}</td>{#if admin}<td></td>{/if}</tr>
-          <tr class="grand"><td>{L.total}</td><td class="num"><span class:pz-blur={demo}>{fmt(total)}</span></td>{#if admin}<td></td>{/if}</tr>
+          <tr class="sum"><td>{L.base}</td><td class="num">{fmt(base)}{#if usdRate}<span class="pz-usd">{fmtUsd(base)}</span>{/if}</td>{#if admin}<td></td>{/if}</tr>
+          <tr><td>{L.iva}</td><td class="num">+ {fmt(iva)}{#if usdRate}<span class="pz-usd">+ {fmtUsd(iva)}</span>{/if}</td>{#if admin}<td></td>{/if}</tr>
+          <tr><td>{L.irpf}</td><td class="num">− {fmt(irpf)}{#if usdRate}<span class="pz-usd">− {fmtUsd(irpf)}</span>{/if}</td>{#if admin}<td></td>{/if}</tr>
+          <tr class="grand"><td>{L.total}</td><td class="num"><span class:pz-blur={demo}>{fmt(total)}</span>{#if usdRate}<span class="pz-usd" class:pz-blur={demo}>{fmtUsd(total)}</span>{/if}</td>{#if admin}<td></td>{/if}</tr>
         </tfoot>
       </table>
+      {#if rateNote}<p class="pz-rate-note">{rateNote}</p>{/if}
     </div>
     {#if admin}
       <div class="pz-disc-edit">
@@ -488,6 +514,8 @@
       </div>
       <label class="pz-elabel" style="margin-top:12px;display:block">{L.account}</label>
       <input class="pz-edit" bind:value={eb.income} placeholder={L.accountPh} />
+      <label class="pz-elabel" style="margin-top:12px;display:block">BIC</label>
+      <input class="pz-edit" bind:value={eb.bic} placeholder={L.bicPh} />
       <label class="pz-paidtoggle"><input type="checkbox" bind:checked={eb.paid} /> {L.paid}</label>
       {#if approved}
         <div class="pz-admin-bill">
@@ -506,7 +534,7 @@
         <h3 class="pz-h3">{L.payTitle}</h3>
         <dl class="pz-paylist">
           {#if data.income_account}<div><dt>{L.account}</dt><dd>{data.income_account}</dd></div>{/if}
-          <div><dt>BIC</dt><dd>CJALESSSXXX</dd></div>
+          {#if data.bic_code}<div><dt>BIC</dt><dd>{data.bic_code}</dd></div>{/if}
           <div><dt>{L.subject}</dt><dd>{data.title[lang]}</dd></div>
           <div><dt>{L.beneficiary}</dt><dd>Francisco Javier García Márquez · DNI 34779359R <span class="pz-owner">({L.owner})</span></dd></div>
         </dl>
@@ -849,4 +877,7 @@
   .pz-send:hover:not(:disabled) { background: #000; }
   .pz-send:disabled { opacity: 0.5; cursor: default; }
   @media (max-width: 700px) { .pz-media { grid-template-columns: 1fr; } .pz-inex { grid-template-columns: 1fr; } }
+  /* Contravalor en dolares bajo cada cifra en euros del resumen. */
+  .pz-usd { display: block; font-size: 0.82em; font-weight: 400; color: #8a8f97; margin-top: 2px; }
+  .pz-rate-note { margin: 8px 0 0; font-size: 0.78rem; color: #8a8f97; text-align: right; }
 </style>
