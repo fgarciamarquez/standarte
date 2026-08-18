@@ -1505,6 +1505,34 @@ export const fairsData = [
     "sector": "Aeronáutica y Transporte"
   },
   {
+    "name": "Industry Tools by Ferroforma",
+    "country": "es",
+    "slug": "stand-ferroforma-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "SINAVAL Bilbao",
+    "country": "es",
+    "slug": "stand-sinaval-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Eurofishing Bilbao",
+    "country": "es",
+    "slug": "stand-eurofishing-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Pick & Pack Bilbao",
+    "country": "es",
+    "slug": "stand-pick-pack-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "Blue Zone Forum",
     "country": "es",
     "slug": "stand-blue-zone-forum",

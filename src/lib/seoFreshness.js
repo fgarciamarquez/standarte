@@ -188,6 +188,10 @@ export const fairFreshness = {
   'stand-cascais-international-health-forum': '2026-08-18',
   'stand-expofimer-zaragoza': '2026-08-18',
   'stand-spaper-zaragoza': '2026-08-18',
+  'stand-ferroforma-bilbao': '2026-08-18',
+  'stand-sinaval-bilbao': '2026-08-18',
+  'stand-eurofishing-bilbao': '2026-08-18',
+  'stand-pick-pack-bilbao': '2026-08-18',
   'stand-smagua-zaragoza': '2026-08-12',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-07-21',
