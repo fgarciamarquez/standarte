@@ -2,7 +2,7 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 39
+n_ferias: 40
 ---
 # Maquinaria industrial
 
@@ -45,6 +45,7 @@ Actividad del sector [[Industria y Logística]].
 - [[SPS Nuremberg]]
 - [[Salon SIANE]]
 - [[Smopyc Zaragoza]]
+- [[Steel Tech Congress & Expo]]
 - [[UNIRE]]
 - [[automatica Munich]]
 - [[bauma Munich]]

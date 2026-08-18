@@ -2,7 +2,7 @@
 tipo: actividad
 clave: turismo
 sector: "Turismo y Hostelería"
-n_ferias: 25
+n_ferias: 26
 ---
 # Turismo
 
@@ -14,6 +14,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Caravantur]]
 - [[Decor Hotel]]
 - [[Decorhotel]]
+- [[Expovacaciones Bilbao]]
 - [[FETUREX Feria de Turismo de Extremadura]]
 - [[Fairway Santiago de Compostela]]
 - [[Feria Internacional de Turismo Reyno de Navarra]]

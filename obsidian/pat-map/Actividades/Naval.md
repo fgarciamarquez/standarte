@@ -2,7 +2,7 @@
 tipo: actividad
 clave: naval
 sector: "Aeronáutica y Transporte"
-n_ferias: 14
+n_ferias: 15
 ---
 # Naval
 
@@ -16,6 +16,7 @@ Actividad del sector [[Aeronáutica y Transporte]].
 - [[Euromaritime]]
 - [[FIMAR]]
 - [[Fira de la Mar]]
+- [[Futureport Bilbao]]
 - [[Marine Energy Week]]
 - [[Navalia]]
 - [[Nice Boating Tomorrow]]

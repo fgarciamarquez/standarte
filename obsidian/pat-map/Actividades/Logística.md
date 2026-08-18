@@ -2,7 +2,7 @@
 tipo: actividad
 clave: logistica
 sector: "Industria y Logística"
-n_ferias: 9
+n_ferias: 10
 ---
 # Logística
 
@@ -11,6 +11,7 @@ Actividad del sector [[Industria y Logística]].
 ## Ferias
 - [[Euromaritime]]
 - [[Eventos Industriales Tanger Med]]
+- [[Futureport Bilbao]]
 - [[LogiMAT Stuttgart]]
 - [[Logismed]]
 - [[MEDFEL]]

@@ -2,7 +2,7 @@
 tipo: actividad
 clave: metal-subcontratacion
 sector: "Industria y Logística"
-n_ferias: 11
+n_ferias: 12
 ---
 # Metal y subcontratación
 
@@ -18,5 +18,6 @@ Actividad del sector [[Industria y Logística]].
 - [[SEPEM Industries Toulouse]]
 - [[SISTEP Industriel]]
 - [[Salon SIANE]]
+- [[Steel Tech Congress & Expo]]
 - [[Subcontratación Bilbao]]
 - [[UNIRE]]
