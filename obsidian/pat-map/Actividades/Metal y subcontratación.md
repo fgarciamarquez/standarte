@@ -2,7 +2,7 @@
 tipo: actividad
 clave: metal-subcontratacion
 sector: "Industria y Logística"
-n_ferias: 10
+n_ferias: 11
 ---
 # Metal y subcontratación
 
@@ -13,6 +13,7 @@ Actividad del sector [[Industria y Logística]].
 - [[Expometal]]
 - [[Global Industrie]]
 - [[IMME]]
+- [[Industry Tools by Ferroforma]]
 - [[Mindtech]]
 - [[SEPEM Industries Toulouse]]
 - [[SISTEP Industriel]]

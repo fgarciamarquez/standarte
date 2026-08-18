@@ -2,7 +2,7 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 38
+n_ferias: 39
 ---
 # Maquinaria industrial
 
@@ -28,6 +28,7 @@ Actividad del sector [[Industria y Logística]].
 - [[IBT Côte d'Azur]]
 - [[IMME]]
 - [[ITF Intertex Portugal]]
+- [[Industry Tools by Ferroforma]]
 - [[JEC World Paris]]
 - [[Maintenance Bilbao]]
 - [[Moldplás]]

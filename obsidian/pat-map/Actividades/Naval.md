@@ -2,7 +2,7 @@
 tipo: actividad
 clave: naval
 sector: "Aeronáutica y Transporte"
-n_ferias: 12
+n_ferias: 14
 ---
 # Naval
 
@@ -12,6 +12,7 @@ Actividad del sector [[Aeronáutica y Transporte]].
 - [[Blue Zone Forum]]
 - [[Blue Zone Forum Navalia Meeting]]
 - [[Cannes Yachting Festival]]
+- [[Eurofishing Bilbao]]
 - [[Euromaritime]]
 - [[FIMAR]]
 - [[Fira de la Mar]]
@@ -20,4 +21,5 @@ Actividad del sector [[Aeronáutica y Transporte]].
 - [[Nice Boating Tomorrow]]
 - [[Portugal Smart Cities Summit]]
 - [[SEA Portugal]]
+- [[SINAVAL Bilbao]]
 - [[World Maritime Week]]
