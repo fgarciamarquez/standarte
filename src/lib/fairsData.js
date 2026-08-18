@@ -1533,6 +1533,27 @@ export const fairsData = [
     "sector": "Industria y Logística"
   },
   {
+    "name": "Futureport Bilbao",
+    "country": "es",
+    "slug": "stand-futureport-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Steel Tech Congress & Expo",
+    "country": "es",
+    "slug": "stand-steel-tech-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "Expovacaciones Bilbao",
+    "country": "es",
+    "slug": "stand-expovacaciones-bilbao",
+    "city": "Bilbao",
+    "sector": "Turismo y Hostelería"
+  },
+  {
     "name": "Blue Zone Forum",
     "country": "es",
     "slug": "stand-blue-zone-forum",
