@@ -224,6 +224,7 @@ export const fairActivities = {
   "stand-tis-sevilla": ["digital-software"],
   "stand-autentica-sevilla": ["multisectorial"],
   "stand-esicm-lives-lisboa": ["congreso-medico"],
+  "stand-cascais-international-health-forum": ["congreso-medico"],
   "stand-lisbon-food-affair": ["alimentacion"],
   "stand-snackex-lisboa": ["alimentacion"],
   "stand-gse-expo-lisboa": ["aeronautica"],

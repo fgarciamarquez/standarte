@@ -1799,6 +1799,13 @@ export const fairsData = [
     "sector": "Salud y Medicina"
   },
   {
+    "name": "Cascais International Health Forum",
+    "country": "pt",
+    "slug": "stand-cascais-international-health-forum",
+    "city": "Lisboa",
+    "sector": "Salud y Medicina"
+  },
+  {
     "name": "CIOC",
     "country": "pt",
     "slug": "stand-cioc-lisboa",

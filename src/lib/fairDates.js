@@ -117,6 +117,7 @@ export const fairDates = {
   'stand-ctw-china-trade-week-casablanca': { start: '2026-11-18', end: '2026-11-20', cadence: 'annual', source: 'https://ctwmorocco.com/' },
   'stand-eletrica-oporto': { start: '2026-11-18', end: '2026-11-21', cadence: 'biennial', source: 'https://exponor.pt/en/event-calendar/' },
   'stand-visa-for-music-rabat': { start: '2026-11-18', end: '2026-11-21', cadence: 'annual', source: 'https://visaformusic.com/en/home/' },
+  'stand-cascais-international-health-forum': { start: '2026-09-24', end: '2026-09-25', cadence: 'annual', source: 'https://cascaisinternationalhealthforum.com/' },
   'stand-cioc-lisboa': { start: '2026-11-19', end: '2026-11-21', cadence: 'annual', source: 'https://www.omd.pt/congresso/2026/en/' },
   'stand-savim-marseille': { start: '2026-11-20', end: '2026-11-23', cadence: 'annual', source: 'https://www.salons-savim.fr/marseille/infos-pratiques-salon-savim-marseille/' },
   'stand-genera-madrid': { start: '2026-11-24', end: '2026-11-26', cadence: 'annual', source: 'https://www.ifema.es/en/genera' },

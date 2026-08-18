@@ -185,6 +185,7 @@ export const fairFreshness = {
 
   'stand-fiaa-madrid': '2026-08-07',
   'stand-hygienalia-madrid': '2026-08-13',
+  'stand-cascais-international-health-forum': '2026-08-18',
   'stand-smagua-zaragoza': '2026-08-12',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-07-21',
