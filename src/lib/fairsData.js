@@ -1078,6 +1078,20 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "EXPOFIMER Zaragoza",
+    "country": "es",
+    "slug": "stand-expofimer-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "SPAPER Zaragoza",
+    "country": "es",
+    "slug": "stand-spaper-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "Fima Zaragoza",
     "country": "es",
     "slug": "stand-fima-zaragoza",

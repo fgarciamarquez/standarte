@@ -149,6 +149,8 @@ export const fairDates = {
   'stand-lisbon-food-affair': { start: '2027-02-15', end: '2027-02-17', cadence: 'annual', source: 'https://lisbonfoodaffair.fil.pt/' },
   'stand-wine-paris': { start: '2027-02-15', end: '2027-02-17', cadence: 'annual', source: 'https://wineparis.com/opening-hours-access-and-map' },
   'stand-smagua-zaragoza': { start: '2027-02-16', end: '2027-02-18', cadence: 'biennial', source: 'https://www.feriazaragoza.es/en/smagua' },
+  'stand-expofimer-zaragoza': { start: '2027-03-10', end: '2027-03-11', cadence: 'annual', source: 'https://www.feriazaragoza.es/expofimer' },
+  'stand-spaper-zaragoza': { start: '2027-02-16', end: '2027-02-18', cadence: 'biennial', source: 'https://www.feriazaragoza.es/spaper' },
   'stand-essencia-do-vinho-porto': { start: '2027-02-18', end: '2027-02-21', cadence: 'annual', source: 'https://www.essenciadovinho.com/' },
   'stand-feria-turismo-reyno-navarra-pamplona': { start: '2027-02-19', end: '2027-02-21', cadence: 'annual', source: 'https://navartur.es/' },
   'stand-navartur-pamplona': { start: '2027-02-19', end: '2027-02-21', cadence: 'annual', source: 'https://navartur.es/' },
