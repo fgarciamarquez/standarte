@@ -1573,6 +1573,16 @@
     }
   }
 
+  // Buscador de ferias en páginas de ciudad: el mismo FairSearch de la portada,
+  // oculto tras el botón "Busca tu feria" del hero (en la portada va siempre visible).
+  let citySearchOpen = false;
+  function toggleCitySearch() {
+    citySearchOpen = !citySearchOpen;
+    if (citySearchOpen && typeof document !== 'undefined') {
+      setTimeout(() => document.getElementById('city-fair-search')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
+    }
+  }
+
   // Reactivar Pat desde el botón "Expansión" (junto a los botones GEO): limpia el
   // descarte de la sesión y vuelve a mostrar el panel (cargándolo si aún no estaba).
   function reopenAdvisor() {
@@ -1923,7 +1933,7 @@
         <h1>{h1Text}{#if isCityPage}<span class="h1-claim">{heroClaimParts[0]}<span class="h1-plus">+</span>{heroClaimParts[1]}</span>{/if}</h1>
         {#if !isCityPage}<p class="hero-lead">{seoContent.introText}</p>{/if}
       </div>
-      {#if animatedHero}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
+      {#if animatedHero}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} cityTools={isCityPage} on:reactivate={reopenAdvisor} on:togglesearch={toggleCitySearch} />{/if}
       {#if section === 'proyecto_auditado'}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
     </div>
   {/if}
@@ -1947,6 +1957,10 @@
        la vía de descubrimiento (ciudades, actividades, Pat). -->
   {#if section === 'home'}
     <FairSearch {lang} />
+  {:else if isCityPage && citySearchOpen}
+    <div id="city-fair-search">
+      <FairSearch {lang} />
+    </div>
   {/if}
   <!-- Ancla estática de Pat: destino del enlace "#pat" del cuerpo SEO. Debe existir
        siempre en el HTML prerenderizado (el panel de Pat se carga diferido, así que su

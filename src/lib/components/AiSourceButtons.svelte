@@ -31,6 +31,10 @@
   // Solo se muestra donde Pat puede aparecer y mientras su panel no esté en pantalla.
   export let canReactivate = false;
   export let patVisible = false;
+  // Páginas de ciudad: la fila pasa a ser un trío de herramientas — botón que
+  // muestra/oculta el buscador de ferias (el de la portada), botón de Pat con el
+  // texto corto "Red de Expansión" y enlace directo al índice /actividad.
+  export let cityTools = false;
 
   const dispatch = createEventDispatcher();
 
@@ -50,15 +54,71 @@
     ja: '事業拡大ネットワークを見る',
     nl: 'Ontdek ons Expansienetwerk'
   };
-  $: expansionLabel = expansionLabels[lang] || expansionLabels.es;
+  // Versión corta para el trío de ciudad: sin el verbo, cabe junto a los otros dos.
+  const expansionShortLabels = {
+    es: 'Red de Expansión',
+    en: 'Expansion network',
+    de: 'Expansionsnetz',
+    fr: 'Réseau d\'Expansion',
+    it: 'Rete di Espansione',
+    pt: 'Rede de Expansão',
+    zh: '业务拓展网络',
+    hi: 'विस्तार नेटवर्क',
+    ko: '확장 네트워크',
+    ja: '拡大ネットワーク',
+    nl: 'Expansienetwerk'
+  };
+  const searchLabels = {
+    es: 'Busca tu feria',
+    en: 'Find your fair',
+    de: 'Finde deine Messe',
+    fr: 'Trouvez votre salon',
+    it: 'Trova la tua fiera',
+    pt: 'Encontra a tua feira',
+    zh: '搜索展会',
+    hi: 'अपना मेला खोजें',
+    ko: '박람회 검색',
+    ja: '見本市を検索',
+    nl: 'Vind je beurs'
+  };
+  // Mismas palabras que usa el propio índice /actividad (crumbAct de Actividad.svelte).
+  const activityLabels = {
+    es: 'Actividades',
+    pt: 'Atividades',
+    en: 'Activities',
+    de: 'Branchen',
+    fr: 'Activités',
+    it: 'Attività',
+    nl: 'Branches',
+    zh: '行业',
+    hi: 'गतिविधियाँ',
+    ko: '분야',
+    ja: '分野'
+  };
+  $: expansionLabel = cityTools
+    ? (expansionShortLabels[lang] || expansionShortLabels.es)
+    : (expansionLabels[lang] || expansionLabels.es);
+  $: searchLabel = searchLabels[lang] || searchLabels.es;
+  $: activityLabel = activityLabels[lang] || activityLabels.es;
+  $: actividadHref = lang === 'es' ? '/actividad' : `/${lang}/actividad`;
 </script>
 
-{#if canReactivate && !patVisible}
+{#if cityTools || (canReactivate && !patVisible)}
   <section class="ai-geo ai-geo-{variant}" aria-label={expansionLabel}>
     <div class="ai-geo-row">
-      <button type="button" class="ai-geo-btn ai-geo-reactivate" in:pushIn on:click={() => dispatch('reactivate')}>
-        {expansionLabel}
-      </button>
+      {#if cityTools}
+        <button type="button" class="ai-geo-btn ai-geo-tool" on:click={() => dispatch('togglesearch')}>
+          {searchLabel}
+        </button>
+      {/if}
+      {#if canReactivate && !patVisible}
+        <button type="button" class="ai-geo-btn ai-geo-reactivate" in:pushIn on:click={() => dispatch('reactivate')}>
+          {expansionLabel}
+        </button>
+      {/if}
+      {#if cityTools}
+        <a class="ai-geo-btn ai-geo-tool" href={actividadHref}>{activityLabel}</a>
+      {/if}
     </div>
   </section>
 {/if}
@@ -111,6 +171,24 @@
   @media (max-width: 480px) {
     .ai-geo-hero .ai-geo-btn { font-size: 0.92rem; padding: 11px 20px; }
     .ai-geo-band .ai-geo-btn { font-size: 1rem; padding: 13px 24px; }
+  }
+
+  /* Botones-herramienta del trío de ciudad (buscador y Actividades): píldora oscura
+     translúcida que acompaña al dorado sin competir con él. */
+  .ai-geo .ai-geo-btn.ai-geo-tool {
+    background: rgba(26, 30, 33, 0.82);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    font-family: inherit;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+  .ai-geo .ai-geo-btn.ai-geo-tool:hover,
+  .ai-geo .ai-geo-btn.ai-geo-tool:focus {
+    background: rgba(26, 30, 33, 0.96);
+    transform: translateY(-1px);
   }
 
   /* Botón "Expansión": reactiva el panel de Pat. Píldora dorada sólida, en MAYÚSCULAS;
