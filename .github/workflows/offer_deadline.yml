@@ -1,0 +1,17 @@
+name: Offer Deadline Notice
+
+on:
+  schedule:
+    # 06:03 y 07:03 UTC: una de las dos corresponde a las 08:xx de Madrid según el
+    # horario (verano/invierno). El PHP descarta la llamada fuera de ventana y la
+    # columna offer_notice_sent_at desduplica, así que nunca sale un aviso doble.
+    - cron: '3 6,7 * * *'
+  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  offer-deadline-notice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar cron de ofertas en OVH
+        run: |
+          curl -sS "https://standarte.es/admin/cron_oferta.php?token=TKN-oferta-4e7b2a9c1f"
