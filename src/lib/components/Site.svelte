@@ -808,7 +808,7 @@
   // "Diseño y construcción de stands en {c}[: …]" → "Diseño, construcción y montaje de
   // stands en {c}." Cada idioma captura la ciudad e ignora la coletilla tras ":".
   const tituloPrincipal = {
-    es: { from: /^Diseño y construcción de stands en (.+?)\s*(?::.*)?$/, to: (c) => `Diseño, construcción y montaje de stands en ${c}.` },
+    es: { from: /^Diseño y construcción de stands en (.+?)\s*(?::.*)?$/, to: (c) => `Diseño, construcción y montaje de stands para ferias en ${c}.` },
     en: { from: /^Exhibition stand design and construction in (.+?)\s*(?::.*)?$/, to: (c) => `Exhibition stand design and build in ${c}.` },
     de: { from: /^Design und Bau von Messeständen in (.+?)\s*(?::.*)?$/, to: (c) => `Design, Bau und Montage von Messeständen in ${c}.` },
     pt: { from: /^Design e construção de stands em (.+?)\s*(?::.*)?$/, to: (c) => `Design, construção e montagem de stands em ${c}.` },
