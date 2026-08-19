@@ -1554,6 +1554,27 @@ export const fairsData = [
     "sector": "Turismo y Hostelería"
   },
   {
+    "name": "Egurtek Bilbao",
+    "country": "es",
+    "slug": "stand-egurtek-bilbao",
+    "city": "Bilbao",
+    "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "+Industry Bilbao",
+    "country": "es",
+    "slug": "stand-plus-industry-bilbao",
+    "city": "Bilbao",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "weAR Bilbao",
+    "country": "es",
+    "slug": "stand-wear-bilbao",
+    "city": "Bilbao",
+    "sector": "Tecnología e Innovación"
+  },
+  {
     "name": "Blue Zone Forum",
     "country": "es",
     "slug": "stand-blue-zone-forum",

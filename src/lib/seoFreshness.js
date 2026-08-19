@@ -195,6 +195,9 @@ export const fairFreshness = {
   'stand-futureport-bilbao': '2026-08-18',
   'stand-steel-tech-bilbao': '2026-08-18',
   'stand-expovacaciones-bilbao': '2026-08-18',
+  'stand-egurtek-bilbao': '2026-08-18',
+  'stand-plus-industry-bilbao': '2026-08-18',
+  'stand-wear-bilbao': '2026-08-18',
   'stand-smagua-zaragoza': '2026-08-12',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-07-21',
