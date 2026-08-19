@@ -288,7 +288,7 @@
             <h3 class="grp-city">{grp.label}</h3>
             <ul class="fair-list">
               {#each grp.fairs as f}
-                <li><a href={fairUrl(f.slug, lang)}>{f.name}</a></li>
+                <li><a href={fairUrl(f.slug, lang)}>{#if f.country && f.country !== 'es'}<span class="fair-flag flag-{f.country} fl-flag" aria-hidden="true"></span>{/if}{f.name}</a></li>
               {/each}
             </ul>
           {/each}
@@ -414,12 +414,15 @@
   .grp-city { font-size: 1.15rem; margin: 1.6rem 0 0.6rem; color: #1a1e21; }
   .fair-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; }
   .fair-list li a {
-    display: inline-block; padding: 0.45rem 0.9rem;
+    display: inline-flex; align-items: center; padding: 0.45rem 0.9rem;
     border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 999px;
     font-size: 0.92rem; color: var(--text-color); text-decoration: none;
     transition: border-color 0.2s ease, color 0.2s ease;
   }
   .fair-list li a:hover { border-color: var(--primary); color: var(--primary); }
+  /* Bandera circular del país, integrada en la píldora, solo en ferias fuera de España
+     (el degradado del círculo lo aportan las clases globales .fair-flag/.flag-XX). */
+  .fair-list li a .fl-flag { width: 13px; height: 13px; margin-right: 7px; }
   .projects-h { margin-top: 2.4rem; }
   .hub-projects {
     list-style: none; padding: 0; margin: 0.4rem 0 0;
