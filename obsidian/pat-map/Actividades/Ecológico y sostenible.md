@@ -2,7 +2,7 @@
 tipo: actividad
 clave: ecologico
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 18
+n_ferias: 19
 ---
 # Ecológico y sostenible
 
@@ -14,6 +14,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[BioCultura A Coruña]]
 - [[Bioterra]]
 - [[Eco-Maison]]
+- [[Egurtek Bilbao]]
 - [[EnerGaïa]]
 - [[Feria Agroalimentaria de Vegadeo]]
 - [[Feria Navarra Ecológica]]

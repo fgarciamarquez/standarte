@@ -2,13 +2,14 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 40
+n_ferias: 42
 ---
 # Maquinaria industrial
 
 Actividad del sector [[Industria y Logística]].
 
 ## Ferias
+- [[+Industry Bilbao]]
 - [[ALINA]]
 - [[AMB Stuttgart]]
 - [[AgroAlcañiz]]
@@ -49,3 +50,4 @@ Actividad del sector [[Industria y Logística]].
 - [[UNIRE]]
 - [[automatica Munich]]
 - [[bauma Munich]]
+- [[weAR Bilbao]]

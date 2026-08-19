@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 15
+n_ferias: 18
 lat: 43.26
 lon: -2.93
 ---
@@ -10,9 +10,11 @@ lon: -2.93
 Ciudad dibujada en el mapa de Pat.
 
 ## Ferias aquí
+- [[+Industry Bilbao]]
 - [[Addit3D Bilbao]]
 - [[BIEMH Bilbao]]
 - [[BeDIGITAL Bilbao]]
+- [[Egurtek Bilbao]]
 - [[Eurofishing Bilbao]]
 - [[Expovacaciones Bilbao]]
 - [[Futureport Bilbao]]
@@ -25,3 +27,4 @@ Ciudad dibujada en el mapa de Pat.
 - [[Steel Tech Congress & Expo]]
 - [[Subcontratación Bilbao]]
 - [[World Maritime Week]]
+- [[weAR Bilbao]]

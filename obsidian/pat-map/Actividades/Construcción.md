@@ -2,7 +2,7 @@
 tipo: actividad
 clave: construccion
 sector: "Construcción e Infraestructuras"
-n_ferias: 28
+n_ferias: 29
 ---
 # Construcción
 
@@ -17,6 +17,7 @@ Actividad del sector [[Construcción e Infraestructuras]].
 - [[Cycl'Eau Nouvelle-Aquitaine]]
 - [[EDIFICA]]
 - [[Eco-Maison]]
+- [[Egurtek Bilbao]]
 - [[FECONS]]
 - [[Grand Salon Habitat]]
 - [[IBT Côte d'Azur]]

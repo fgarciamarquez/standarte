@@ -2,7 +2,7 @@
 tipo: actividad
 clave: digital-software
 sector: "Tecnología e Innovación"
-n_ferias: 18
+n_ferias: 19
 ---
 # Tecnología digital y software
 
@@ -27,3 +27,4 @@ Actividad del sector [[Tecnología e Innovación]].
 - [[TIS Sevilla]]
 - [[Web Summit Lisboa]]
 - [[automatica Munich]]
+- [[weAR Bilbao]]
