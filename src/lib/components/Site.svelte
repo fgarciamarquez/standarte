@@ -8,6 +8,7 @@
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
   import { activitiesForFair, colorForTag, labelForTag } from '$lib/fairTags.js';
+  import { fairDatesFor, formatFairDatesShort } from '$lib/fairDates.js';
   import { synergyOfferCatalog, cityFairsItemList } from '$lib/meshSeo.js';
   import { projectIndex as projects } from '$lib/projectIndex.js';
   import { galleryVideos } from '$lib/videosData.js';
@@ -1015,6 +1016,34 @@
     }
     return seen;
   })();
+
+  // Capa 2 del plan SEO frente a clústeres-plantilla: próximas ferias de la región
+  // con FECHA VERIFICADA y futura (fairDates nunca inventa fechas), en orden
+  // cronológico. La frescura real es lo que una página clonada no puede imitar;
+  // si ninguna feria de la región tiene fecha futura, el módulo no se muestra.
+  $: upcomingRegionFairs = regionFairs
+    .map((f) => {
+      const date = formatFairDatesShort(f.slug, lang);
+      if (!date) return null;
+      const e = fairDatesFor(f.slug);
+      return { slug: f.slug, name: f.name, date, iso: e.start };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.iso.localeCompare(b.iso))
+    .slice(0, 10);
+  const upcomingFairsLabel = {
+    es: 'Próximas ferias con fechas confirmadas',
+    en: 'Upcoming fairs with confirmed dates',
+    de: 'Kommende Messen mit bestätigten Terminen',
+    fr: 'Prochains salons aux dates confirmées',
+    it: 'Prossime fiere con date confermate',
+    pt: 'Próximas feiras com datas confirmadas',
+    nl: 'Komende beurzen met bevestigde data',
+    zh: '日期已确认的近期展会',
+    hi: 'पुष्ट तिथियों वाले आगामी मेले',
+    ko: '일정이 확정된 다가오는 박람회',
+    ja: '開催日確定の今後の見本市'
+  };
 
   $: title = seoContent?.title || (section in cityData
     ? `${cityTitle(section)} | Standarte`
@@ -2424,6 +2453,19 @@
                   </button>
                   <p>{(coverageProof[lang] || coverageProof.es)(regionFairs.length, cityDisplayName)}</p>
                   <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
+                </section>
+              {/if}
+
+              <!-- Próximas ferias con fecha verificada: frescura que un clúster de
+                   páginas-plantilla no puede clonar (capa 2 del plan SEO). -->
+              {#if (section in cityData) && upcomingRegionFairs.length}
+                <section class="city-fairs sidebar-module city-upcoming" aria-label={upcomingFairsLabel[lang] || upcomingFairsLabel.es}>
+                  <h2>{upcomingFairsLabel[lang] || upcomingFairsLabel.es}</h2>
+                  <ul class="city-upcoming-list">
+                    {#each upcomingRegionFairs as fair}
+                      <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a><span class="cu-date">{fair.date}</span></li>
+                    {/each}
+                  </ul>
                 </section>
               {/if}
 

@@ -3407,6 +3407,17 @@ p b {
   margin: 0 0 22px;
   display: inline-block;
 }
+/* Próximas ferias con fecha (capa 2 SEO): lista compacta nombre — fecha. */
+.city-upcoming-list { list-style: none; padding: 0; margin: 0.4rem 0 0; }
+.city-upcoming-list li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  padding: 5px 0; border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+.city-upcoming-list li:last-child { border-bottom: none; }
+.city-upcoming-list a { text-decoration: none; color: inherit; }
+.city-upcoming-list a:hover { color: var(--primary); }
+.cu-date { white-space: nowrap; font-size: 0.85em; font-weight: 600; color: #6b6f75; }
+
 .city-fairs-list {
   list-style: none;
   padding: 0;
