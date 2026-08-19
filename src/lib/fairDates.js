@@ -176,6 +176,7 @@ export const fairDates = {
   'stand-steel-tech-bilbao': { start: '2027-10-19', end: '2027-10-21', cadence: 'biennial', source: 'https://steeltech.bilbaoexhibitioncentre.com/' },
   'stand-expovacaciones-bilbao': { start: '2026-05-08', end: '2026-05-10', cadence: 'annual', source: 'https://expovacaciones.bilbaoexhibitioncentre.com/' },
   'stand-egurtek-bilbao': { start: '2026-10-28', end: '2026-10-29', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/eventos/egurtek-2026/' },
+  'stand-canagua-energia-gran-canaria': { start: '2026-10-21', end: '2026-10-23', cadence: 'biennial', source: 'https://infecar.es/en/ferias-y-eventos/15th-canagua-and-energy-international-fair/' },
   'stand-plus-industry-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-wear-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-iberpet-madrid': { start: '2027-03-10', end: '2027-03-12', cadence: 'annual', source: 'https://www.ifema.es/en/iberpet' },

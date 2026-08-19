@@ -161,6 +161,13 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "Canagua & Energía",
+    "country": "es",
+    "slug": "stand-canagua-energia-gran-canaria",
+    "city": "Gran Canaria",
+    "sector": "Medioambiente y Tecnologías Limpias"
+  },
+  {
     "name": "FIMAR",
     "country": "es",
     "slug": "stand-fimar-las-palmas",

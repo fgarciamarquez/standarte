@@ -90,6 +90,7 @@ export const fairActivities = {
   "stand-gastrocanarias-tenerife": ["gastronomia-hosteleria"],
   "stand-gran-canaria-me-gusta": ["alimentacion", "gastronomia-hosteleria"],
   "stand-fimar-las-palmas": ["pesca-mar", "naval"],
+  "stand-canagua-energia-gran-canaria": ["energia","ecologico"],
   "stand-salon-atlantico-logistica-transporte": ["logistica", "transporte"],
   "stand-moda-tenerife": ["moda-textil"],
   "stand-expodeca": ["regalo-decoracion"],
