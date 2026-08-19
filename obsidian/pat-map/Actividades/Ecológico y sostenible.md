@@ -2,7 +2,7 @@
 tipo: actividad
 clave: ecologico
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 19
+n_ferias: 20
 ---
 # Ecológico y sostenible
 
@@ -13,6 +13,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[BioCantabria]]
 - [[BioCultura A Coruña]]
 - [[Bioterra]]
+- [[Canagua & Energía]]
 - [[Eco-Maison]]
 - [[Egurtek Bilbao]]
 - [[EnerGaïa]]

@@ -2,7 +2,7 @@
 tipo: actividad
 clave: energia
 sector: "Industria y Logística"
-n_ferias: 18
+n_ferias: 19
 ---
 # Energía
 
@@ -11,6 +11,7 @@ Actividad del sector [[Industria y Logística]].
 ## Ferias
 - [[BEPOSITIVE]]
 - [[Blue Zone Forum Navalia Meeting]]
+- [[Canagua & Energía]]
 - [[Cycl'Eau Nouvelle-Aquitaine]]
 - [[ELETRICA]]
 - [[ENERH2O]]
