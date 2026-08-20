@@ -810,16 +810,16 @@
   // stands en {c}." Cada idioma captura la ciudad e ignora la coletilla tras ":".
   const tituloPrincipal = {
     es: { from: /^Diseño y construcción de stands en (.+?)\s*(?::.*)?$/, to: (c) => `Diseño, construcción y montaje de stands para ferias en ${c}.` },
-    en: { from: /^Exhibition stand design and construction in (.+?)\s*(?::.*)?$/, to: (c) => `Exhibition stand design and build in ${c}.` },
-    de: { from: /^Design und Bau von Messeständen in (.+?)\s*(?::.*)?$/, to: (c) => `Design, Bau und Montage von Messeständen in ${c}.` },
-    pt: { from: /^Design e construção de stands em (.+?)\s*(?::.*)?$/, to: (c) => `Design, construção e montagem de stands para feiras em ${c}.` },
-    fr: { from: /^Conception et construction de stands à (.+?)\s*(?::.*)?$/, to: (c) => `Conception, construction et montage de stands pour salons à ${c}.` },
-    it: { from: /^Progettazione e costruzione di stand a (.+?)\s*(?::.*)?$/, to: (c) => `Progettazione, costruzione e allestimento di stand fieristici a ${c}.` },
-    nl: { from: /^Ontwerp en bouw van beursstands in (.+?)\s*(?::.*)?$/, to: (c) => `Ontwerp, bouw en montage van beursstands in ${c}.` },
-    zh: { from: /^(.+?)展台设计与搭建(?:：.*)?$/, to: (c) => `${c}展会展台设计、搭建与安装。` },
-    hi: { from: /^(.+?) में स्टैंड का डिज़ाइन और निर्माण(?::.*)?$/, to: (c) => `${c} में मेला स्टैंड का डिज़ाइन, निर्माण और असेंबली।` },
-    ko: { from: /^(.+?)의 부스 디자인 및 시공(?::.*)?$/, to: (c) => `${c}의 박람회 부스 디자인, 제작 및 설치.` },
-    ja: { from: /^(.+?)のブース設計・施工(?:：.*)?$/, to: (c) => `${c}の展示会ブース設計・施工・設営。` }
+    en: { from: /^(?:(?:Exhibition|Trade show) )?[Ss]tand [Dd]esign and (?:[Cc]onstruction|[Bb]uild|[Aa]ssembly) in (.+?)\s*(?::.*)?$/, to: (c) => `Exhibition stand design and build for trade fairs in ${c}.` },
+    de: { from: /^(?:Messestand-? ?Design und (?:-?Bau|-?Montage|Konstruktion)|Design und (?:Bau|Montage) von Messeständen|Standentwurf und -bau|Standdesign und (?:Standbau|-bau)|Messestandbau und -design) (?:in|auf|bei) (.+?)\s*(?::.*)?$/, to: (c) => `Design, Bau und Montage von Messeständen in ${c}.` },
+    pt: { from: /^(?:Design|Conceção) e (?:construção|montagem) de stands (?:em|no|na|nas) (.+?)\s*(?::.*)?$/, to: (c) => `Design, construção e montagem de stands para feiras em ${c}.` },
+    fr: { from: /^Conception et (?:construction|montage) de stands (?:à|en|aux|dans) (.+?)\s*(?::.*)?$/, to: (c) => `Conception, construction et montage de stands pour salons à ${c}.` },
+    it: { from: /^Progettazione e (?:costruzione|allestimento|montaggio)(?: di)? stand(?: fieristici)? (?:a|ad|in|alle) (.+?)\s*(?::.*)?$/, to: (c) => `Progettazione, costruzione e allestimento di stand fieristici a ${c}.` },
+    nl: { from: /^(?:Ontwerp en (?:bouw|montage|opbouw) van (?:beursstands|stands)|Standontwerp en (?:-bouw|montage)) (?:in|op) (.+?)\s*(?::.*)?$/, to: (c) => `Ontwerp, bouw en montage van beursstands in ${c}.` },
+    zh: { from: /^(.+?)展[台位]设计与搭建(?:：.*)?$/, to: (c) => `${c}展会展台设计、搭建与安装。` },
+    hi: { from: /^(.+?) में स्टैंड (?:का )?डिज़ाइन और निर्माण(?::.*)?$/, to: (c) => `${c} में मेला स्टैंड का डिज़ाइन, निर्माण और असेंबली।` },
+    ko: { from: /^(.+?)(?:의 부스| 스탠드| 전시 부스| 부스) 디자인 및 시공(?::.*)?$/, to: (c) => `${c}의 박람회 부스 디자인, 제작 및 설치.` },
+    ja: { from: /^(.+?)(?:の|での)(?:展示会|展示)?ブース(?:の)?設計・施工(?:：.*)?$/, to: (c) => `${c}の展示会ブース設計・施工・設営。` }
   };
   function rewriteTitulo(text, lang) {
     const map = tituloPrincipal[lang] || tituloPrincipal.es;

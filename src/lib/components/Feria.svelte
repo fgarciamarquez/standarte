@@ -454,7 +454,7 @@
       back: 'Volver al inicio'
     },
     en: {
-      heroTitle: (name) => `Exhibition stand design and build at ${name}`,
+      heroTitle: (name) => `Trade fair stand design and build at ${name}`,
       heroSubtitle: (city) => `Exhibition stand design and build in ${city} with more than 20 years of experience and our own workshop.`,
       intro: (name, city, sector) => `Standarte offers comprehensive high-quality stand design and assembly services for the ${name} fair in ${city}. As a key event in the ${sector} sector, your brand requires a space that conveys technical excellence and innovation.`,
       intro2: 'We take care of the 3D modeling, manufacturing in our own workshop, and the final assembly, ensuring that your space stands out from the competition without relying on third parties.',
