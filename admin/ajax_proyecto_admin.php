@@ -61,6 +61,8 @@ if ($action === 'save') {
 	foreach (array('discount_label_es', 'discount_label_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
 	if (isset($_POST['discount_amount'])) $fields['discount_amount'] = (float) str_replace(',', '.', pa_post('discount_amount', '0'));
 	if (isset($_POST['discount_deadline'])) { $d = pa_post('discount_deadline'); $fields['discount_deadline'] = ($d === '' ? null : $d); }
+	// Impuestos activables y con porcentaje editable (0 = desactivado)
+	foreach (array('iva_rate', 'irpf_rate') as $k) { if (isset($_POST[$k])) $fields[$k] = (float) str_replace(',', '.', pa_post($k, '0')); }
 	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));
 	$fields['updated_at'] = gmdate('c');
 	$r = cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), $fields);
