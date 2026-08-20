@@ -873,16 +873,16 @@
   // zona de más peso) y su texto ES la expresión objetivo, para que las fichas de
   // feria —que posicionan bien— empujen al hub de su ciudad, que tiene más competencia.
   const cityLink = {
-    es: { before: 'Consulta nuestro servicio de ', anchor: (c) => `diseño, construcción y montaje de stands en ${c}`, after: '.' },
-    en: { before: 'See our ', anchor: (c) => `exhibition stand design, construction and assembly in ${c}`, after: ' service.' },
+    es: { before: 'Consulta nuestro servicio de ', anchor: (c) => `diseño y construcción de stands para ferias en ${c}`, after: '.' },
+    en: { before: 'See our ', anchor: (c) => `exhibition stand design and build for trade fairs in ${c}`, after: ' service.' },
     de: { before: 'Mehr zu ', anchor: (c) => `Messestand-Design, -Bau und -Montage in ${c}`, after: '.' },
-    pt: { before: 'Conheça o nosso serviço de ', anchor: (c) => `design, construção e montagem de stands em ${c}`, after: '.' },
-    fr: { before: 'Découvrez notre service de ', anchor: (c) => `conception, construction et montage de stands à ${c}`, after: '.' },
-    it: { before: 'Scopri il nostro servizio di ', anchor: (c) => `progettazione, costruzione e montaggio di stand a ${c}`, after: '.' },
+    pt: { before: 'Conheça o nosso serviço de ', anchor: (c) => `design e construção de stands para feiras em ${c}`, after: '.' },
+    fr: { before: 'Découvrez notre service de ', anchor: (c) => `conception et construction de stands pour salons à ${c}`, after: '.' },
+    it: { before: 'Scopri il nostro servizio di ', anchor: (c) => `progettazione e costruzione di stand fieristici a ${c}`, after: '.' },
     nl: { before: 'Bekijk onze dienst ', anchor: (c) => `ontwerp, bouw en montage van beursstands in ${c}`, after: '.' },
-    zh: { before: '了解我们在', anchor: (c) => `${c}的展台设计、制作与搭建`, after: '服务。' },
-    hi: { before: '', anchor: (c) => `${c} में स्टैंड का डिज़ाइन, निर्माण और स्थापना`, after: ' सेवा देखें।' },
-    ko: { before: '', anchor: (c) => `${c} 부스 디자인·제작·설치`, after: ' 서비스를 확인하세요.' },
+    zh: { before: '了解我们在', anchor: (c) => `${c}的展会展台设计、制作与搭建`, after: '服务。' },
+    hi: { before: '', anchor: (c) => `${c} में मेला स्टैंड का डिज़ाइन, निर्माण और स्थापना`, after: ' सेवा देखें।' },
+    ko: { before: '', anchor: (c) => `${c} 박람회 부스 디자인·제작·설치`, after: ' 서비스를 확인하세요.' },
     ja: { before: '', anchor: (c) => `${c}での展示会ブースの設計・製作・施工`, after: 'サービスをご覧ください。' }
   };
   $: cl = cityLink[lang] || cityLink.es;
