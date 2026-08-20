@@ -445,7 +445,7 @@
 
   const t = {
     es: {
-      heroTitle: (name) => `Diseño, construcción y montaje de stands en ${name}`,
+      heroTitle: (name) => `Diseño, construcción y montaje de stands para ferias en ${name}`,
       heroSubtitle: (city) => `Diseño y montaje de stands en ${city} con más de 20 años de experiencia y taller propio.`,
       intro: (name, city, sector) => `Standarte ofrece servicios integrales de diseño y montaje de stands de alta carpintería para la feria ${name} en ${city}. Como evento destacado del sector de ${sector}, su marca requiere un espacio que transmita excelencia técnica e innovación.`,
       intro2: 'Nos encargamos del modelado 3D, la fabricación en nuestro propio taller y el montaje final, asegurando que su espacio destaque por encima de la competencia sin depender de terceros.',
@@ -472,7 +472,7 @@
       back: 'Zurück zur Startseite'
     },
     fr: {
-      heroTitle: (name) => `Conception et montage de stands pour ${name}`,
+      heroTitle: (name) => `Conception et montage de stands de salon pour ${name}`,
       heroSubtitle: (city) => `Conception et montage de stands à ${city} avec plus de 20 ans d'expérience et notre propre atelier.`,
       intro: (name, city, sector) => `Standarte propose des services complets de conception et de montage de stands de haute qualité pour le salon ${name} à ${city}. En tant qu'événement clé du secteur de ${sector}, votre marque a besoin d'un espace qui transmet l'excellence.`,
       intro2: 'Nous prenons en charge la modélisation 3D, la fabrication dans notre propre atelier et le montage final, garantissant que votre espace se démarque de la concurrence.',
@@ -481,7 +481,7 @@
       back: "Retour à l'accueil"
     },
     pt: {
-      heroTitle: (name) => `Design e montagem de stands na ${name}`,
+      heroTitle: (name) => `Design e montagem de stands para feiras na ${name}`,
       heroSubtitle: (city) => `Design e montagem de stands em ${city} com mais de 20 anos de experiência e oficina própria.`,
       intro: (name, city, sector) => `A Standarte oferece serviços abrangentes de design e montagem de stands de alta qualidade para a feira ${name} em ${city}. Sendo um evento chave no setor de ${sector}, a sua presença requer excelência.`,
       intro2: 'Cuidamos da modelação 3D, fabricação na nossa própria oficina e montagem final, garantindo um resultado impecável.',
@@ -490,7 +490,7 @@
       back: 'Voltar ao início'
     },
     it: {
-      heroTitle: (name) => `Progettazione e allestimento di stand a ${name}`,
+      heroTitle: (name) => `Progettazione e allestimento di stand fieristici a ${name}`,
       heroSubtitle: (city) => `Progettazione e montaggio stand a ${city} con oltre 20 anni di esperienza e officina propria.`,
       intro: (name, city, sector) => `Standarte offre servizi completi di progettazione e montaggio di stand per la fiera ${name} a ${city}. Come evento chiave nel settore di ${sector}, il tuo brand richiede eccellenza.`,
       intro2: 'Ci occupiamo della modellazione 3D, della produzione nella nostra officina e dell\'assemblaggio finale.',
