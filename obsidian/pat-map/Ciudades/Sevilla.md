@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 3
+n_ferias: 4
 lat: 37.39
 lon: -5.99
 ---
@@ -12,4 +12,5 @@ Ciudad dibujada en el mapa de Pat.
 ## Ferias aquí
 - [[AUTENTICA Sevilla]]
 - [[Fireca Sevilla]]
+- [[MMH Sevilla]]
 - [[TIS Sevilla]]
