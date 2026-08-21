@@ -199,6 +199,7 @@ export const fairFreshness = {
   'stand-plus-industry-bilbao': '2026-08-18',
   'stand-wear-bilbao': '2026-08-18',
   'stand-canagua-energia-gran-canaria': '2026-08-19',
+  'stand-mmh-sevilla': '2026-08-20',
   'stand-smagua-zaragoza': '2026-08-12',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-07-21',

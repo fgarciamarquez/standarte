@@ -202,6 +202,7 @@ export const fairActivities = {
   "stand-solucop-nice": ["construccion"],
   "stand-bauma-munich": ["maquinaria-industrial"],
   "stand-fireca-sevilla": ["multisectorial"],
+  "stand-mmh-sevilla": ["maquinaria-industrial","metal-subcontratacion"],
   "stand-conxemar-vigo": ["alimentacion","pesca-mar"],
   "stand-veteco-madrid": ["ventanas-cerramientos"],
   "stand-piscimad-madrid": ["construccion"],

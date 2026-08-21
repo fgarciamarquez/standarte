@@ -854,6 +854,13 @@ export const fairsData = [
     "sector": "Multisectorial y Profesional"
   },
   {
+    "name": "MMH Sevilla",
+    "country": "es",
+    "slug": "stand-mmh-sevilla",
+    "city": "Sevilla",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "Conxemar Vigo",
     "country": "es",
     "slug": "stand-conxemar-vigo",
