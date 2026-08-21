@@ -6,6 +6,11 @@
  * el admin de email). Las escrituras usan siempre la service key de Supabase en
  * servidor: el navegador nunca la ve, solo la cookie de sesión de PHP.
  */
+/* La sesión de edición debe sobrevivir una jornada: con el gc por defecto (~24 min)
+ * caducaba en mitad de la edición y el modo edición desaparecía al recargar
+ * ("el botón de guardar no aparece"). 12 h de vida para cookie y datos. */
+ini_set('session.gc_maxlifetime', '43200');
+session_set_cookie_params(43200);
 session_start();
 header('Content-Type: application/json; charset=utf-8');
 

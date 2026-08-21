@@ -82,7 +82,8 @@
 
 {#if status === 'ok' && project}
   <ProjectPresentation data={project} role="client" {busy} {sent} {admin} {token} reload={reloadProject}
-    on:comment={handleComment} on:send={handleSend} />
+    on:comment={handleComment} on:send={handleSend}
+    on:expired={() => { admin = false; showLogin = true; }} />
 {:else}
   <div class="pz-state">
     {#if status === 'loading'}
