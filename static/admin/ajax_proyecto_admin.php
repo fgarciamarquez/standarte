@@ -66,6 +66,9 @@ if ($action === 'save') {
 	foreach (array('discount_label_es', 'discount_label_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
 	if (isset($_POST['discount_amount'])) $fields['discount_amount'] = (float) str_replace(',', '.', pa_post('discount_amount', '0'));
 	if (isset($_POST['discount_deadline'])) { $d = pa_post('discount_deadline'); $fields['discount_deadline'] = ($d === '' ? null : $d); }
+	// Validez de la propuesta y forma de pago
+	if (isset($_POST['proposal_valid_until'])) { $d = pa_post('proposal_valid_until'); $fields['proposal_valid_until'] = ($d === '' ? null : $d); }
+	foreach (array('payment_terms_es', 'payment_terms_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
 	// Impuestos activables y con porcentaje editable (0 = desactivado)
 	foreach (array('iva_rate', 'irpf_rate') as $k) { if (isset($_POST[$k])) $fields[$k] = (float) str_replace(',', '.', pa_post($k, '0')); }
 	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));
