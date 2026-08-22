@@ -124,6 +124,22 @@
   // (cityData[k].city.es coincide con fair.city, p. ej. "Madrid").
   $: currentCityKey = CITY_KEYS.find((k) => cityData[k]?.city?.es === fair?.city) || null;
   $: sortedCityKeys = [...CITY_KEYS].sort((a, b) => cityLabel(a, lang).localeCompare(cityLabel(b, lang), lang));
+  // Anti-dilución de autoridad (mismo criterio que en las páginas de ciudad): la nube
+  // dejaba 64 enlaces a ciudades sin contexto en cada ficha. Ahora enlaza solo la
+  // ciudad de la propia feria —el hub que la ficha debe empujar— y las plazas
+  // estratégicas, con un enlace único a la portada, que conserva el mapa completo.
+  const CITY_NAV_STRATEGIC = ['madrid', 'barcelona', 'bilbao', 'lisboa'];
+  $: shownCityKeys = (() => {
+    const picks = currentCityKey ? [currentCityKey] : [];
+    for (const k of CITY_NAV_STRATEGIC) if (!picks.includes(k)) picks.push(k);
+    return picks.sort((a, b) => cityLabel(a, lang).localeCompare(cityLabel(b, lang), lang));
+  })();
+  const ALL_CITIES_LABELS = {
+    es: 'Ver todas las ciudades', en: 'See all cities', de: 'Alle Städte ansehen',
+    fr: 'Voir toutes les villes', it: 'Vedi tutte le città', pt: 'Ver todas as cidades',
+    nl: 'Alle steden bekijken', zh: '查看所有城市', hi: 'सभी शहर देखें',
+    ko: '모든 도시 보기', ja: 'すべての都市を見る'
+  };
   // Contenido SEO único de esta feria (HTML por idioma); fallback a ES si falta el idioma.
   $: fairBody = data.fairSeo ? (data.fairSeo[lang] || data.fairSeo.en || data.fairSeo.es || null) : null;
   
@@ -1296,12 +1312,12 @@
         <details class="aside-module fairs-collapse">
           <summary class="fairs-collapse-summary">
             <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
-            <span class="fairs-collapse-open">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es} ({sortedCityKeys.length})</span>
+            <span class="fairs-collapse-open">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es} ({shownCityKeys.length})</span>
             <span class="fairs-collapse-close">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</span>
             <span class="fairs-collapse-chevron" aria-hidden="true"></span>
           </summary>
           <ul class="cluster-fairs">
-            {#each sortedCityKeys as ck}
+            {#each shownCityKeys as ck}
               <li>
                 <a href={pathFor(lang, ck)} class:active={ck === currentCityKey}>
                   {#if navFlagCountry(ck)}<span class="city-nav-flag flag-{navFlagCountry(ck)}" aria-hidden="true"></span>{/if}
@@ -1309,6 +1325,7 @@
                 </a>
               </li>
             {/each}
+            <li class="city-nav-all"><a href={pathFor(lang, 'home')}>{ALL_CITIES_LABELS[lang] || ALL_CITIES_LABELS.es} →</a></li>
           </ul>
         </details>
         {#if siblingFairs.length}
