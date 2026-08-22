@@ -49,28 +49,6 @@
         <li><button id="politicaCookies" class="_gold footer-link-button" type="button" on:click={() => openLegalModal('cookies')}>{copy.legal.cookies}</button></li>
         <li><button class="_gold footer-link-button" type="button" on:click={openCookieSettings}>{cookieSettingsLabels[lang] || cookieSettingsLabels.es}</button></li>
         <li><a href={pathFor(lang, 'noticias')} class="_gold footer-link-button">{copy.nav.noticias}</a></li>
-        <li class="footer-lang-item">
-          <div class="footer-lang-menu">
-            <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
-            <div class="footer-lang-dropdown">
-              {#each languages as option}
-                <a
-                  href={langHref(option)}
-                  class:active={option === lang}
-                  on:click={() => {
-                    if (typeof localStorage !== 'undefined') {
-                      localStorage.setItem('standarte_lang', option);
-                      localStorage.setItem('preferredLanguage', option);
-                    }
-                  }}
-                >
-                  <FlagIcon langCode={option} size={16} />
-                  <span>{languageLabels[option]}</span>
-                </a>
-              {/each}
-            </div>
-          </div>
-        </li>
       </ul>
       <nav class="footer-site-map" aria-label="Standarte" hidden aria-hidden="true">
         <ul>

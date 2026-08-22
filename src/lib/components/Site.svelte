@@ -967,6 +967,26 @@
     return cityData[ck]?.city?.[l] || cityData[ck]?.city?.es;
   }
   $: sortedCityNavKeys = [...CITY_NAV_KEYS].sort((a, b) => cityNavLabel(a, lang).localeCompare(cityNavLabel(b, lang), lang));
+  // Anti-dilución de autoridad: en páginas de ciudad, el módulo de ciudades deja de
+  // enlazar a las 64 (malla plana sin contexto, y cada página se enlazaba a sí misma)
+  // y muestra solo las vecinas de su región más las plazas estratégicas, con un enlace
+  // único "Ver todas" a la portada, que ya lista el mapa completo (el descubrimiento
+  // por rastreo queda intacto vía portada y sitemap).
+  const CITY_NAV_STRATEGIC = ['madrid', 'barcelona', 'bilbao', 'lisboa'];
+  $: cityNavShownKeys = isCityPage
+    ? (() => {
+        const region = SECTION_REGION[section];
+        const picks = CITY_NAV_KEYS.filter((k) => k !== section && region && SECTION_REGION[k] === region);
+        for (const k of CITY_NAV_STRATEGIC) if (k !== section && !picks.includes(k)) picks.push(k);
+        return picks.slice(0, 10).sort((a, b) => cityNavLabel(a, lang).localeCompare(cityNavLabel(b, lang), lang));
+      })()
+    : sortedCityNavKeys;
+  const ALL_CITIES_LABELS = {
+    es: 'Ver todas las ciudades', en: 'See all cities', de: 'Alle Städte ansehen',
+    fr: 'Voir toutes les villes', it: 'Vedi tutte le città', pt: 'Ver todas as cidades',
+    nl: 'Alle steden bekijken', zh: '查看所有城市', hi: 'सभी शहर देखें',
+    ko: '모든 도시 보기', ja: 'すべての都市を見る'
+  };
   const ACTIVITY_NAV_LABELS = {
     es: 'Actividades asociadas a esta ciudad', en: 'Activities linked to this city', de: 'Branchen in dieser Stadt', fr: 'Activités liées à cette ville', it: 'Attività legate a questa città',
     pt: 'Atividades associadas a esta cidade', nl: 'Activiteiten in deze stad', zh: '与本市相关的行业', hi: 'इस शहर से जुड़ी गतिविधियाँ', ko: '이 도시 관련 분야', ja: 'この都市に関連する分野'
@@ -2507,19 +2527,20 @@
                 <details class="fairs-collapse">
                   <summary class="fairs-collapse-summary">
                     <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
-                    <span class="fairs-collapse-open">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es} ({sortedCityNavKeys.length})</span>
+                    <span class="fairs-collapse-open">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es} ({cityNavShownKeys.length})</span>
                     <span class="fairs-collapse-close">{CITY_NAV_LABELS[lang] || CITY_NAV_LABELS.es}</span>
                     <span class="fairs-collapse-chevron" aria-hidden="true"></span>
                   </summary>
                   <ul class="city-fairs-list">
-                    {#each sortedCityNavKeys as ck}
+                    {#each cityNavShownKeys as ck}
                       <li>
-                        <a href={pathFor(lang, ck)} class:active={ck === section}>
+                        <a href={pathFor(lang, ck)}>
                           {#if navFlagCountry(ck)}<span class="city-nav-flag flag-{navFlagCountry(ck)}" aria-hidden="true"></span>{/if}
                           {cityNavLabel(ck, lang)}
                         </a>
                       </li>
                     {/each}
+                    {#if isCityPage}<li class="city-nav-all"><a href={pathFor(lang, 'home')}>{ALL_CITIES_LABELS[lang] || ALL_CITIES_LABELS.es} →</a></li>{/if}
                   </ul>
                 </details>
                 <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
