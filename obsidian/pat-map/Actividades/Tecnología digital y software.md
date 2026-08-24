@@ -2,7 +2,7 @@
 tipo: actividad
 clave: digital-software
 sector: "Tecnología e Innovación"
-n_ferias: 19
+n_ferias: 20
 ---
 # Tecnología digital y software
 
@@ -18,6 +18,7 @@ Actividad del sector [[Tecnología e Innovación]].
 - [[Foro Greencities Málaga]]
 - [[GreenCities Málaga]]
 - [[IoT Solutions World Congress Barcelona]]
+- [[Lisboa Games Week]]
 - [[MWC Barcelona]]
 - [[Madrid Tech Show]]
 - [[Maker Faire Galicia Santiago de Compostela]]

@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 24
+n_ferias: 26
 lat: 38.72
 lon: -9.14
 ---
@@ -23,8 +23,10 @@ Ciudad dibujada en el mapa de Pat.
 - [[Futurália]]
 - [[GSE Expo Lisboa]]
 - [[In Beauty]]
+- [[Lisboa Games Week]]
 - [[Lisbon Energy Summit & Exhibition]]
 - [[Lisbon Food Affair]]
+- [[Nauticampo]]
 - [[PEGS Europe Lisboa]]
 - [[SIL Lisboa]]
 - [[Sagalexpo Lisboa]]

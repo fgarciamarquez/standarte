@@ -2,7 +2,7 @@
 tipo: actividad
 clave: turismo
 sector: "Turismo y Hostelería"
-n_ferias: 26
+n_ferias: 27
 ---
 # Turismo
 
@@ -27,6 +27,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Madrid Fusión]]
 - [[Mountain Planet]]
 - [[NAVARTUR]]
+- [[Nauticampo]]
 - [[Piscina & Wellness Barcelona]]
 - [[Piscine Global Europe]]
 - [[SETT]]
