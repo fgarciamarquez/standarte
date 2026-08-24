@@ -62,6 +62,9 @@ if ($action === 'save') {
 		if (isset($_POST[$k])) $fields[$k] = cpx_lines_to_array($_POST[$k]);
 	}
 	if (isset($_POST['paid'])) $fields['paid'] = in_array(pa_post('paid'), array('1', 'true'), true);
+	// Paralización del proyecto con motivo en texto libre
+	if (isset($_POST['paused'])) $fields['paused'] = in_array(pa_post('paused'), array('1', 'true'), true);
+	if (isset($_POST['paused_reason'])) $fields['paused_reason'] = pa_post('paused_reason');
 	// Descuento por pronta decisión
 	foreach (array('discount_label_es', 'discount_label_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
 	if (isset($_POST['discount_amount'])) $fields['discount_amount'] = (float) str_replace(',', '.', pa_post('discount_amount', '0'));
