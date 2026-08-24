@@ -182,6 +182,8 @@ export const fairDates = {
   'stand-hip-madrid': { start: '2027-03-01', end: '2027-03-03', cadence: 'annual', source: 'https://www.ifema.es/hip' },
   'stand-meat-attraction-madrid': { start: '2027-02-16', end: '2027-02-18', cadence: 'biennial', source: 'https://www.ifema.es/en/meat-attraction/news/dates-2027' },
   'stand-sicur-madrid': { start: '2026-02-24', end: '2026-02-27', cadence: 'biennial', source: 'https://www.ifema.es/en/sicur' },
+  'stand-lisboa-games-week': { start: '2026-11-19', end: '2026-11-22', cadence: 'annual', source: 'https://fil.lisbonvenues.pt/en/events/fil/lisboa-games-week/' },
+  'stand-nauticampo-lisboa': { start: '2026-02-12', end: '2026-02-16', cadence: 'annual', source: 'https://www.fil.pt/a-nauticampo-esta-de-regresso-de-12-a-16-de-fevereiro-na-fil/' },
   'stand-plus-industry-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-wear-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-iberpet-madrid': { start: '2027-03-10', end: '2027-03-12', cadence: 'annual', source: 'https://www.ifema.es/en/iberpet' },

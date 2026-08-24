@@ -236,6 +236,8 @@ export const fairActivities = {
   "stand-world-aviation-festival-lisboa": ["aeronautica"],
   "stand-pegs-europe-lisboa": ["congreso-medico"],
   "stand-btl-lisboa": ["turismo"],
+  "stand-lisboa-games-week": ["pop-videojuegos","digital-software"],
+  "stand-nauticampo-lisboa": ["nautica","turismo"],
   "stand-smopyc-zaragoza": ["maquinaria-industrial"],
   "stand-smagua-zaragoza": ["ecologico"],
   "stand-expofimer-zaragoza": ["energia"],

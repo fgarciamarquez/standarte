@@ -1078,6 +1078,20 @@ export const fairsData = [
     "sector": "Turismo y Hostelería"
   },
   {
+    "name": "Lisboa Games Week",
+    "country": "pt",
+    "slug": "stand-lisboa-games-week",
+    "city": "Lisboa",
+    "sector": "Arte y Ocio"
+  },
+  {
+    "name": "Nauticampo",
+    "country": "pt",
+    "slug": "stand-nauticampo-lisboa",
+    "city": "Lisboa",
+    "sector": "Náutica y Yates"
+  },
+  {
     "name": "Smopyc Zaragoza",
     "country": "es",
     "slug": "stand-smopyc-zaragoza",
