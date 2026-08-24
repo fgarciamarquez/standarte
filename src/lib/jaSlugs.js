@@ -120,7 +120,7 @@ export const jaFairSlugs = {
   "stand-palma-superyacht-village": "パルマスーパーヨットビレッジ-マヨルカ",
   "stand-baleart-mallorca": "バレアート-マヨルカ",
   "stand-dijous-bo-mallorca": "ディジョウスボ-マヨルカ",
-  "stand-figan-zaragoza": "フィガン-サラゴサ",
+  "stands-figan-zaragoza": "フィガン-サラゴサ",
   "stand-enomaq-zaragoza": "エノマック-サラゴサ",
   "stand-oleomaq-zaragoza": "オレオマック-サラゴサ",
   "stand-tecnovid-zaragoza": "テクノビッド-サラゴサ",

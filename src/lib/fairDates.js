@@ -197,7 +197,7 @@ export const fairDates = {
   'stand-iberpet-madrid': { start: '2027-03-10', end: '2027-03-12', cadence: 'annual', source: 'https://www.ifema.es/en/iberpet' },
   'stand-salon-vins-vignerons-independants-bordeaux': { start: '2027-03-12', end: '2027-03-14', cadence: 'annual', source: 'https://www.vignerons-independants.com/agenda-des-salons/bordeaux-2027' },
   'stand-global-industrie-lyon': { start: '2027-03-15', end: '2027-03-18', cadence: 'annual', source: 'https://www.global-industrie.com/' },
-  'stand-figan-zaragoza': { start: '2027-03-16', end: '2027-03-19', cadence: 'biennial', source: 'https://www.feriazaragoza.es/figan' },
+  'stands-figan-zaragoza': { start: '2027-03-16', end: '2027-03-19', cadence: 'biennial', source: 'https://www.feriazaragoza.es/figan' },
   'stand-infarma': { start: '2027-03-16', end: '2027-03-18', cadence: 'annual', source: 'https://www.stand-infarma.es/' },
   'stand-logimat-stuttgart': { start: '2027-03-16', end: '2027-03-18', cadence: 'annual', source: 'https://www.logimat-messe.de/en' },
   'stand-mipim-cannes': { start: '2027-03-16', end: '2027-03-19', cadence: 'annual', source: 'https://www.mipim.com/en-gb.html' },

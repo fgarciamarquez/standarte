@@ -298,7 +298,7 @@ export const fairActivities = {
   "stand-palma-superyacht-village": ["transporte"],
   "stand-baleart-mallorca": ["cultura-arte"],
   "stand-dijous-bo-mallorca": ["multisectorial"],
-  "stand-figan-zaragoza": ["alimentacion"],
+  "stands-figan-zaragoza": ["alimentacion"],
   "stand-enomaq-zaragoza": ["vino","equipamiento-vino"],
   "stand-oleomaq-zaragoza": ["alimentacion"],
   "stand-tecnovid-zaragoza": ["vino","equipamiento-vino"],

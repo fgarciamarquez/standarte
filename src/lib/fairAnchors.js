@@ -89,7 +89,7 @@ export const nationalAnchors = new Set([
   'stand-fenavin-match-ciudad-real',
   'stand-feria-internacional-ganadera-zafra',
   'stand-fidma-gijon',
-  'stand-figan-zaragoza',
+  'stands-figan-zaragoza',
   'stand-fima-zaragoza',
   'stand-fimma-maderalia-valencia',
   'stand-fira-andorra-la-vella',

@@ -1514,7 +1514,7 @@ export const fairsData = [
   {
     "name": "Figan",
     "country": "es",
-    "slug": "stand-figan-zaragoza",
+    "slug": "stands-figan-zaragoza",
     "city": "Zaragoza",
     "sector": "Agroalimentario y Naturaleza"
   },

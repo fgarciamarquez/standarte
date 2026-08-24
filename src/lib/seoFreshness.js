@@ -236,7 +236,7 @@ export const fairFreshness = {
   'stand-expooptica-madrid': '2026-07-25',
   // Ferias que estrenan ficha propia (antes no tenían cuerpo único, y por eso tampoco
   // aparecían con resumen en el calendario sectorial de otras ferias).
-  'stand-figan-zaragoza': '2026-07-25',
+  'stands-figan-zaragoza': '2026-07-25',
   'stand-concreta-oporto': '2026-07-25',
   'stand-enomaq-zaragoza': '2026-07-25',
   // Estrenan fecha verificada de su próxima edición.
