@@ -298,6 +298,10 @@ DirectorySlash Off
   # BIEMH usa el plural por decision editorial: su URL singular anterior redirige.
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-biemh-bilbao/?$ https://standarte.es/$1ferias/stands-biemh-bilbao [R=301,L]
   RewriteRule ^ja/展示会情報/stand-biemh-bilbao/?$ https://standarte.es/ja/展示会情報/stands-biemh-bilbao [R=301,L]
+  # Agroexpo pasa a plural (mismo criterio anti-denuncia que las cuatro del BEC)
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-agroexpo-don-benito/?$ https://standarte.es/$1ferias/stands-agroexpo-don-benito [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-agroexpo-don-benito/?$ https://standarte.es/ja/展示会情報/stands-agroexpo-don-benito [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-agroexpo-feval-don-benito/?$ https://standarte.es/$1ferias/stands-agroexpo-feval-don-benito [R=301,L]
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-pumps-valves-bilbao/?$ https://standarte.es/$1ferias/stands-pumps-valves-bilbao [R=301,L]
   RewriteRule ^ja/展示会情報/stand-pumps-valves-bilbao/?$ https://standarte.es/ja/展示会情報/stands-pumps-valves-bilbao [R=301,L]
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-subcontratacion-bilbao/?$ https://standarte.es/$1ferias/stands-subcontratacion-bilbao [R=301,L]

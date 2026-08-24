@@ -10,7 +10,7 @@
 
 /** slug latino de feria -> slug japonés */
 export const jaFairSlugs = {
-  "stand-agroexpo-feval-don-benito": "アグロエクスポフェバル-ドンベニート",
+  "stands-agroexpo-feval-don-benito": "アグロエクスポフェバル-ドンベニート",
   "stand-feria-de-fp-badajoz": "fp職業訓練フェア-バダホス",
   "stand-feria-de-los-mayores-de-extremadura-badajoz": "高齢者フェア-バダホス",
   "stand-fio-monfrague": "fio-ヨーロッパ",

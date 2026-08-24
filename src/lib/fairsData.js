@@ -471,7 +471,7 @@ export const fairsData = [
   {
     "name": "Agroexpo Feval Don Benito",
     "country": "es",
-    "slug": "stand-agroexpo-feval-don-benito",
+    "slug": "stands-agroexpo-feval-don-benito",
     "city": "Don Benito",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1150,7 +1150,7 @@ export const fairsData = [
   {
     "name": "Agroexpo",
     "country": "es",
-    "slug": "stand-agroexpo-don-benito",
+    "slug": "stands-agroexpo-don-benito",
     "city": "Don Benito",
     "sector": "Agroalimentario y Naturaleza"
   },
