@@ -2765,6 +2765,20 @@ export const fairsData = [
     "sector": "Agroganadero y Maquinaria"
   },
   {
+    "name": "FEMOGA",
+    "country": "es",
+    "slug": "stand-femoga-sarinena",
+    "city": "Sariñena",
+    "sector": "Agroganadero y Maquinaria"
+  },
+  {
+    "name": "FERMA Barbastro",
+    "country": "es",
+    "slug": "stand-ferma-barbastro",
+    "city": "Barbastro",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
     "name": "AgroAlcañiz",
     "country": "es",
     "slug": "stand-agroalcaniz",

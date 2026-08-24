@@ -48,6 +48,8 @@ export const CITY_LATLON = {
   'Soldeu': [42.5772, 1.6672],
   'Teruel': [40.3456, -1.1065],
   'Calamocha': [40.9186, -1.2969],
+  'Sariñena': [41.7933, -0.1552],
+  'Barbastro': [42.0361, 0.1263],
   'Alcañiz': [41.0498, -0.1339],
   // Ródano arriba desde Aviñón: el mapa se extiende al norte para incluir Lyon.
   'Lyon': [45.7640, 4.8357],
@@ -279,6 +281,7 @@ export const CITY_PILLAR = {
   'Ordino': 'andorra', 'Soldeu': 'andorra',
   // Teruel: el hub es la provincia; la capital y los municipios feriales cuelgan del mismo pilar.
   'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
+  'Sariñena': 'zaragoza', 'Barbastro': 'zaragoza',
   // Ródano arriba desde Aviñón: hub propio en el mapa extendido.
   'Lyon': 'lyon',
   // Alpes al sureste de Lyon: hub propio.

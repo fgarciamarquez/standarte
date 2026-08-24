@@ -210,6 +210,8 @@ export const fairFreshness = {
   'stand-gustoko-bilbao': '2026-08-24',
   'stand-interior-exterior-design-meetings-cannes': '2026-08-24',
   'stand-aratur-zaragoza': '2026-08-24',
+  'stand-femoga-sarinena': '2026-08-24',
+  'stand-ferma-barbastro': '2026-08-24',
   'stand-smagua-zaragoza': '2026-08-12',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-07-21',

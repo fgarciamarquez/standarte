@@ -462,6 +462,8 @@ export const fairActivities = {
   "stand-motortec-madrid": ["automocion","maquinaria-industrial"],
   "stand-feria-jamon-teruel": ["alimentacion","gastronomia-hosteleria"],
   "stand-expocalamocha": ["ganaderia","agricultura-maquinaria"],
+  "stand-femoga-sarinena": ["agricultura-maquinaria","ganaderia"],
+  "stand-ferma-barbastro": ["multisectorial","alimentacion"],
   "stand-agroalcaniz": ["agricultura-maquinaria","maquinaria-industrial"],
   "stand-foire-internationale-marseille": ["multisectorial"],
   "stand-euromaritime-marseille": ["naval", "logistica"],

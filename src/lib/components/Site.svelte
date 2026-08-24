@@ -697,6 +697,7 @@
     'Ibiza': 'ibiza', 'Menorca': 'menorca', 'Ceuta': 'ceuta', 'Melilla': 'melilla', 'Tánger': 'tanger', 'Casablanca': 'casablanca', 'Rabat': 'rabat',
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra', 'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'aragon', 'Calamocha': 'aragon', 'Alcañiz': 'aragon',
+    'Sariñena': 'aragon', 'Barbastro': 'aragon',
     'Marsella': 'francia-sur', 'Cannes': 'francia-sur', 'Aviñón': 'francia-sur', 'Toulouse': 'francia-sur', 'Perpiñán': 'francia-sur', 'Burdeos': 'francia-sur', 'Lyon': 'francia-sur', 'Montpellier': 'francia-sur', 'Niza': 'francia-sur',
     'Santander': 'cantabria', 'Torrelavega': 'cantabria', 'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias',
     'Islas Canarias': 'canarias', 'Fuerteventura': 'canarias', 'Tenerife': 'canarias', 'Gran Canaria': 'canarias', 'Las Palmas': 'canarias',
@@ -1175,6 +1176,7 @@
     'Andorra la Vella': 'andorra', 'Escaldes-Engordany': 'andorra', 'Encamp': 'andorra',
     'Ordino': 'andorra', 'Soldeu': 'andorra',
     'Teruel': 'teruel', 'Calamocha': 'teruel', 'Alcañiz': 'teruel',
+    'Sariñena': 'zaragoza', 'Barbastro': 'zaragoza',
     'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon', 'Toulouse': 'toulouse', 'Perpiñán': 'perpignan', 'Burdeos': 'burdeos', 'Lyon': 'lyon', 'Montpellier': 'montpellier', 'Niza': 'niza',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
