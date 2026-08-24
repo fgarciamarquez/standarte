@@ -2,7 +2,7 @@
 tipo: actividad
 clave: gastronomia-hosteleria
 sector: "Turismo y Hostelería"
-n_ferias: 40
+n_ferias: 41
 ---
 # Gastronomía y hostelería
 
@@ -12,6 +12,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[AGECOTEL]]
 - [[Alicante Gastronómica]]
 - [[Andorra Taste]]
+- [[Aratur]]
 - [[Ardoaraba]]
 - [[Arrels, Fira de Producte Local i Cuina de Menorca]]
 - [[Belmoda Granada]]

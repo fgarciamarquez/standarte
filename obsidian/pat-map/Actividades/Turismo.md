@@ -2,13 +2,14 @@
 tipo: actividad
 clave: turismo
 sector: "Turismo y Hostelería"
-n_ferias: 27
+n_ferias: 28
 ---
 # Turismo
 
 Actividad del sector [[Turismo y Hostelería]].
 
 ## Ferias
+- [[Aratur]]
 - [[BTL Lisboa]]
 - [[Cannes Yachting Festival]]
 - [[Caravantur]]
