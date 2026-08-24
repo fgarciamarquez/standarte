@@ -2,7 +2,7 @@
 tipo: actividad
 clave: multisectorial
 sector: "Multisectorial y Profesional"
-n_ferias: 49
+n_ferias: 50
 ---
 # Multisectorial
 
@@ -21,6 +21,7 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[Eventos Empresariales Proyecto Melilla]]
 - [[Expofranquicia Madrid]]
 - [[Expomadeira]]
+- [[FERMA Barbastro]]
 - [[FERSANT]]
 - [[FIDMA – Feria Internacional de Muestras de Asturias]]
 - [[Faceco]]

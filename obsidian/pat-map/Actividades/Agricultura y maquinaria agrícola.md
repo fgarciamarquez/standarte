@@ -2,7 +2,7 @@
 tipo: actividad
 clave: agricultura-maquinaria
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 36
+n_ferias: 37
 ---
 # Agricultura y maquinaria agrícola
 
@@ -25,6 +25,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Expovicaman]]
 - [[FAME Innowa]]
 - [[FEAGA]]
+- [[FEMOGA]]
 - [[FERCAM]]
 - [[FERDUQUE]]
 - [[Feira Agropecuária da Madeira]]

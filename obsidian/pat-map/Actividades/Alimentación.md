@@ -2,7 +2,7 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 49
+n_ferias: 50
 ---
 # Alimentación
 
@@ -20,6 +20,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Expocarne Porto]]
 - [[Expoliva]]
 - [[F4F – Expo FoodTech]]
+- [[FERMA Barbastro]]
 - [[FIO Monfragüe]]
 - [[FROMAGO Cheese Experience]]
 - [[Feira Nacional de Agricultura]]

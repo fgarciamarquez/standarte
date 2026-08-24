@@ -2,7 +2,7 @@
 tipo: actividad
 clave: ganaderia
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 28
+n_ferias: 29
 ---
 # Ganadería
 
@@ -18,6 +18,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Expovicaman]]
 - [[FAME Innowa]]
 - [[FEAGA]]
+- [[FEMOGA]]
 - [[FERDUQUE]]
 - [[Fegasur]]
 - [[Feira Agropecuária da Madeira]]

@@ -9,8 +9,8 @@ Estructura: **Sector → Actividad → Feria → Ciudad**.
 ## Resumen
 - Sectores: 12
 - Actividades: 45
-- Ferias: 455
-- Ciudades: 115
+- Ferias: 457
+- Ciudades: 117
 
 ## Carpetas
 - Sectores/
