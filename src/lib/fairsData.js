@@ -1631,6 +1631,20 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "F4F \u2013 Expo FoodTech",
+    "country": "es",
+    "slug": "stand-f4f-expo-foodtech-bilbao",
+    "city": "Bilbao",
+    "sector": "Procesado y Maquinaria Alimentaria"
+  },
+  {
+    "name": "Gustoko Bilbao",
+    "country": "es",
+    "slug": "stand-gustoko-bilbao",
+    "city": "Bilbao",
+    "sector": "Agroalimentario y Gourmet"
+  },
+  {
     "name": "Blue Zone Forum",
     "country": "es",
     "slug": "stand-blue-zone-forum",
@@ -2826,6 +2840,13 @@ export const fairsData = [
     "slug": "stand-cannes-yachting-festival",
     "city": "Cannes",
     "sector": "Náutica y Yates"
+  },
+  {
+    "name": "Interior & Exterior Design Meetings",
+    "country": "fr",
+    "slug": "stand-interior-exterior-design-meetings-cannes",
+    "city": "Cannes",
+    "sector": "Construcción y Hábitat"
   },
   {
     "name": "MAPIC",
