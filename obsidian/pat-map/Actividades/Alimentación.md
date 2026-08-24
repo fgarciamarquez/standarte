@@ -2,7 +2,7 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 47
+n_ferias: 49
 ---
 # Alimentación
 
@@ -19,6 +19,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Conxemar Vigo]]
 - [[Expocarne Porto]]
 - [[Expoliva]]
+- [[F4F – Expo FoodTech]]
 - [[FIO Monfragüe]]
 - [[FROMAGO Cheese Experience]]
 - [[Feira Nacional de Agricultura]]
@@ -37,6 +38,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Fruit Attraction Madrid]]
 - [[Fòrum Gastronòmic Girona]]
 - [[Gran Canaria Me Gusta]]
+- [[Gustoko Bilbao]]
 - [[HIP Madrid]]
 - [[HortiFruit]]
 - [[Iberflora]]

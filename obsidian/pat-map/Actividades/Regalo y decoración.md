@@ -2,7 +2,7 @@
 tipo: actividad
 clave: regalo-decoracion
 sector: "Comercio y Packaging"
-n_ferias: 12
+n_ferias: 13
 ---
 # Regalo y decoración
 
@@ -17,6 +17,7 @@ Actividad del sector [[Comercio y Packaging]].
 - [[Fira Outlet de Soldeu]]
 - [[Grand Salon Habitat]]
 - [[Intergift Madrid]]
+- [[Interior & Exterior Design Meetings]]
 - [[MAPIC]]
 - [[Mercat de la Vall]]
 - [[Salon Viv'Habitat]]

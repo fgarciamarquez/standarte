@@ -2,7 +2,7 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 45
+n_ferias: 46
 ---
 # Maquinaria industrial
 
@@ -21,6 +21,7 @@ Actividad del sector [[Industria y Logística]].
 - [[Equiplast Barcelona]]
 - [[Eventos Industriales Tanger Med]]
 - [[Expoquimia Barcelona]]
+- [[F4F – Expo FoodTech]]
 - [[Fimma + Maderalia]]
 - [[Futurmoda]]
 - [[Global Industrie]]

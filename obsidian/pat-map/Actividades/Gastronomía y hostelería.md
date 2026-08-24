@@ -2,7 +2,7 @@
 tipo: actividad
 clave: gastronomia-hosteleria
 sector: "Turismo y Hostelería"
-n_ferias: 39
+n_ferias: 40
 ---
 # Gastronomía y hostelería
 
@@ -29,6 +29,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[GastroCanarias]]
 - [[Gastrónoma]]
 - [[Gran Canaria Me Gusta]]
+- [[Gustoko Bilbao]]
 - [[H&T Málaga]]
 - [[HIP Madrid]]
 - [[HORECA Baleares Ibiza]]

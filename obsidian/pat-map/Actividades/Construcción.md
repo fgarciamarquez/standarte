@@ -2,7 +2,7 @@
 tipo: actividad
 clave: construccion
 sector: "Construcción e Infraestructuras"
-n_ferias: 29
+n_ferias: 30
 ---
 # Construcción
 
@@ -21,6 +21,7 @@ Actividad del sector [[Construcción e Infraestructuras]].
 - [[FECONS]]
 - [[Grand Salon Habitat]]
 - [[IBT Côte d'Azur]]
+- [[Interior & Exterior Design Meetings]]
 - [[MIPIM]]
 - [[Mountain Planet]]
 - [[Municipàlia Lleida]]
