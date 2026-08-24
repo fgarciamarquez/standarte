@@ -1106,6 +1106,13 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "Aratur",
+    "country": "es",
+    "slug": "stand-aratur-zaragoza",
+    "city": "Zaragoza",
+    "sector": "Turismo y Hostelería"
+  },
+  {
     "name": "EXPOFIMER Zaragoza",
     "country": "es",
     "slug": "stand-expofimer-zaragoza",

@@ -192,6 +192,7 @@ export const fairDates = {
   'stand-secoir-cirugia-ocular': { start: '2027-05-19', end: '2027-05-21', cadence: 'annual', source: 'https://secoir.org/congresos/' },
   'stand-rno-reunion-nacional-optica': { start: '2024-07-03', end: '2024-07-05', cadence: 'triennial', source: 'https://www.rno2024.es/' },
   'stand-interior-exterior-design-meetings-cannes': { start: '2026-11-24', end: '2026-11-26', cadence: 'annual', source: 'https://www.interior-exterior-design-meetings.fr/en/' },
+  'stand-aratur-zaragoza': { start: '2026-05-15', end: '2026-05-17', cadence: 'annual', source: 'https://www.feriazaragoza.es/en/prensa/aratur-celebra-su-20a-edicion-nuevas-incorporaciones-nacionales-internacionales' },
   'stand-plus-industry-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-wear-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-iberpet-madrid': { start: '2027-03-10', end: '2027-03-12', cadence: 'annual', source: 'https://www.ifema.es/en/iberpet' },

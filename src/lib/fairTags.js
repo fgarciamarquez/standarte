@@ -240,6 +240,7 @@ export const fairActivities = {
   "stand-nauticampo-lisboa": ["nautica","turismo"],
   "stand-smopyc-zaragoza": ["maquinaria-industrial"],
   "stand-smagua-zaragoza": ["ecologico"],
+  "stand-aratur-zaragoza": ["turismo","gastronomia-hosteleria"],
   "stand-expofimer-zaragoza": ["energia"],
   "stand-spaper-zaragoza": ["papel-carton","maquinaria-industrial"],
   "stand-fima-zaragoza": ["agricultura-maquinaria"],
