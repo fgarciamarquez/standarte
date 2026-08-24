@@ -1288,6 +1288,34 @@ export const fairsData = [
     "sector": "Turismo y Hostelería"
   },
   {
+    "name": "Advanced Manufacturing Madrid",
+    "country": "es",
+    "slug": "stand-advanced-manufacturing-madrid",
+    "city": "Madrid",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "HIP Madrid",
+    "country": "es",
+    "slug": "stand-hip-madrid",
+    "city": "Madrid",
+    "sector": "Gastronomía y Hostelería"
+  },
+  {
+    "name": "Meat Attraction",
+    "country": "es",
+    "slug": "stand-meat-attraction-madrid",
+    "city": "Madrid",
+    "sector": "Alimentación y Bebidas"
+  },
+  {
+    "name": "SICUR Madrid",
+    "country": "es",
+    "slug": "stand-sicur-madrid",
+    "city": "Madrid",
+    "sector": "Prevención de Riesgos Laborales"
+  },
+  {
     "name": "ARCOmadrid",
     "country": "es",
     "slug": "stand-arcomadrid",
