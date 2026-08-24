@@ -2,7 +2,7 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 45
+n_ferias: 47
 ---
 # Alimentación
 
@@ -37,10 +37,12 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Fruit Attraction Madrid]]
 - [[Fòrum Gastronòmic Girona]]
 - [[Gran Canaria Me Gusta]]
+- [[HIP Madrid]]
 - [[HortiFruit]]
 - [[Iberflora]]
 - [[Lisbon Food Affair]]
 - [[MEDFEL]]
+- [[Meat Attraction]]
 - [[Mercat de la Vall]]
 - [[Morocco Food Expo]]
 - [[Morocco SIEMA Expo]]
