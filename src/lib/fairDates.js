@@ -195,6 +195,8 @@ export const fairDates = {
   'stand-aratur-zaragoza': { start: '2026-05-15', end: '2026-05-17', cadence: 'annual', source: 'https://www.feriazaragoza.es/en/prensa/aratur-celebra-su-20a-edicion-nuevas-incorporaciones-nacionales-internacionales' },
   'stand-femoga-sarinena': { start: '2026-09-25', end: '2026-09-27', cadence: 'annual', source: 'https://www.femoga.com/' },
   'stand-ferma-barbastro': { start: '2026-08-24', end: '2026-08-26', cadence: 'annual', source: 'https://fermabarbastro.com/' },
+  'stand-fine-valladolid': { start: '2027-03-10', end: '2027-03-11', cadence: 'annual', source: 'https://feriavalladolid.com/fine-la-feria-internacional-de-enoturismo-celebrara-su-octava-edicion-en-marzo-de-2027/' },
+  'stand-technology-show-valladolid': { start: '2026-09-23', end: '2026-09-24', cadence: 'annual', source: 'https://feriavalladolid.com/calendario-ferial/' },
   'stand-plus-industry-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-wear-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-iberpet-madrid': { start: '2027-03-10', end: '2027-03-12', cadence: 'annual', source: 'https://www.ifema.es/en/iberpet' },

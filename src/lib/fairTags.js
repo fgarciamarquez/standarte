@@ -151,6 +151,8 @@ export const fairActivities = {
   "stand-fenavin-match-ciudad-real": ["vino"],
   "stand-ferduque-ciudad-real": ["ganaderia", "agricultura-maquinaria"],
   "stand-intur-valladolid": ["turismo"],
+  "stand-fine-valladolid": ["vino","turismo"],
+  "stand-technology-show-valladolid": ["digital-software"],
   "stand-fromago-cheese-experience-zamora": ["alimentacion"],
   "stand-expovicaman-albacete": ["agricultura-maquinaria", "ganaderia"],
   "stand-farcama-toledo": ["cultura-arte"],

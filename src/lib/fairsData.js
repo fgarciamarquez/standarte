@@ -231,6 +231,20 @@ export const fairsData = [
     "sector": "Turismo y Hostelería"
   },
   {
+    "name": "FINE Valladolid",
+    "country": "es",
+    "slug": "stand-fine-valladolid",
+    "city": "Valladolid",
+    "sector": "Turismo y Hostelería"
+  },
+  {
+    "name": "Technology Show Valladolid",
+    "country": "es",
+    "slug": "stand-technology-show-valladolid",
+    "city": "Valladolid",
+    "sector": "Tecnología e Innovación"
+  },
+  {
     "name": "FROMAGO Cheese Experience",
     "country": "es",
     "slug": "stand-fromago-cheese-experience-zamora",

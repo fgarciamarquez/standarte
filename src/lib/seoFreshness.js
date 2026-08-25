@@ -212,6 +212,8 @@ export const fairFreshness = {
   'stand-aratur-zaragoza': '2026-08-24',
   'stand-femoga-sarinena': '2026-08-24',
   'stand-ferma-barbastro': '2026-08-24',
+  'stand-fine-valladolid': '2026-08-25',
+  'stand-technology-show-valladolid': '2026-08-25',
   'stand-smagua-zaragoza': '2026-08-12',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-07-21',
