@@ -2,7 +2,7 @@
 tipo: actividad
 clave: vino
 sector: "Enología y Vinos"
-n_ferias: 36
+n_ferias: 37
 ---
 # Vino y enología
 
@@ -20,6 +20,7 @@ Actividad del sector [[Enología y Vinos]].
 - [[Espacio Ribera]]
 - [[Essência do Vinho Lisboa]]
 - [[Essência do Vinho Porto]]
+- [[FINE Valladolid]]
 - [[Feira dos Vinhos e Sabores dos Altos]]
 - [[Fenavin Match Ciudad Real]]
 - [[Feria del Vino D.O. Bierzo]]
