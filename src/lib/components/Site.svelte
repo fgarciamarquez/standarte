@@ -1408,7 +1408,7 @@
       }))
     };
 
-    const graph = [organization, service, advisoryService, guaranteeService, instantQuoteService, website, webpage, siteNavigation];
+    const graph = [organization, service, advisoryService, ...(BRAND.leadGen ? [] : [guaranteeService]), instantQuoteService, website, webpage, siteNavigation];
 
     if (section !== 'home') {
       const breadcrumbLabel = seoContent?.breadcrumb || sectionLabel(section);
@@ -2315,11 +2315,15 @@
           <p itemprop="description">{toolsCopy(lang).patText}</p>
           <button type="button" class="tool-cta" on:click={openPatAndScroll}>{toolsCopy(lang).patCta} →</button>
         </article>
-        <article class="tool-card" itemscope itemtype="https://schema.org/Service">
-          <h3 itemprop="name">{toolsCopy(lang).guaranteeTitle}</h3>
-          <p itemprop="description">{toolsCopy(lang).guaranteeText}</p>
-          <a class="tool-cta" href={pathFor(lang, 'proyecto_auditado')}>{toolsCopy(lang).guaranteeCta} →</a>
-        </article>
+        {#if !BRAND.leadGen}
+          <!-- El Proyecto Auditado (garantía 100%) es un concepto exclusivo de Standarte;
+               la marca de captación de leads no lo ofrece. -->
+          <article class="tool-card" itemscope itemtype="https://schema.org/Service">
+            <h3 itemprop="name">{toolsCopy(lang).guaranteeTitle}</h3>
+            <p itemprop="description">{toolsCopy(lang).guaranteeText}</p>
+            <a class="tool-cta" href={pathFor(lang, 'proyecto_auditado')}>{toolsCopy(lang).guaranteeCta} →</a>
+          </article>
+        {/if}
         <article class="tool-card" itemscope itemtype="https://schema.org/Service">
           <h3 itemprop="name">{toolsCopy(lang).estimateTitle}</h3>
           <p itemprop="description">{toolsCopy(lang).estimateText}</p>
