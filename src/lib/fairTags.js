@@ -381,6 +381,7 @@ export const fairActivities = {
   "stand-genera-madrid": ["energia"],
   "stand-solar-storage-live-espana-valencia": ["energia"],
   "stand-lisbon-energy-summit-lisboa": ["energia","congreso-profesional"],
+  "stand-sbc-summit-lisboa": ["digital-software","congreso-profesional"],
   "stand-re-plus-portugal-oporto": ["energia","congreso-profesional"],
   "stand-eletrica-oporto": ["energia"],
   "stand-enerh2o-oporto": ["energia"],

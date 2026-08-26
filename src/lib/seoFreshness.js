@@ -15,7 +15,7 @@ export const seoFreshness = {
   badajoz: '2026-08-12',
   montaje_badajoz: '2026-08-12',
   zaragoza: '2026-08-10',
-  lisboa: '2026-08-07',
+  lisboa: '2026-08-26',
   montaje_don_benito: '2026-08-12',
   ciudad_real: '2026-08-12',
   trujillo: '2026-08-12',
@@ -214,6 +214,7 @@ export const fairFreshness = {
   'stand-ferma-barbastro': '2026-08-24',
   'stand-fine-valladolid': '2026-08-25',
   'stand-technology-show-valladolid': '2026-08-25',
+  'stand-sbc-summit-lisboa': '2026-08-26',
   'stand-smagua-zaragoza': '2026-08-12',
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-07-21',

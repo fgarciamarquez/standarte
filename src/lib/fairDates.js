@@ -183,6 +183,7 @@ export const fairDates = {
   'stand-meat-attraction-madrid': { start: '2027-02-16', end: '2027-02-18', cadence: 'biennial', source: 'https://www.ifema.es/en/meat-attraction/news/dates-2027' },
   'stand-sicur-madrid': { start: '2026-02-24', end: '2026-02-27', cadence: 'biennial', source: 'https://www.ifema.es/en/sicur' },
   'stand-lisboa-games-week': { start: '2026-11-19', end: '2026-11-22', cadence: 'annual', source: 'https://fil.lisbonvenues.pt/en/events/fil/lisboa-games-week/' },
+  'stand-sbc-summit-lisboa': { start: '2026-09-29', end: '2026-10-01', cadence: 'annual', source: 'https://sbcevents.com/sbc-summit/' },
   'stand-nauticampo-lisboa': { start: '2026-02-12', end: '2026-02-16', cadence: 'annual', source: 'https://www.fil.pt/a-nauticampo-esta-de-regresso-de-12-a-16-de-fevereiro-na-fil/' },
   'stand-f4f-expo-foodtech-bilbao': { start: '2027-05-26', end: '2027-05-27', cadence: 'annual', source: 'https://www.expofoodtech.com/' },
   'stand-gustoko-bilbao': { start: '2026-03-13', end: '2026-03-15', cadence: 'annual', source: 'https://gustoko.bilbaoexhibitioncentre.com/' },

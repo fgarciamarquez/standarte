@@ -2149,6 +2149,13 @@ export const fairsData = [
     "sector": "Industria y Logística"
   },
   {
+    "name": "SBC Summit Lisbon",
+    "country": "pt",
+    "slug": "stand-sbc-summit-lisboa",
+    "city": "Lisboa",
+    "sector": "Tecnología e Innovación"
+  },
+  {
     "name": "RE+ Portugal",
     "country": "pt",
     "slug": "stand-re-plus-portugal-oporto",
