@@ -3,6 +3,7 @@
   // mismos estilos globales de app.css, mismo modal legal y aviso de cookies).
   // Se extrajo de Site.svelte para que TODA la web comparta un solo origen de verdad.
   import { pathFor, languages, languageLabels } from '$lib/siteData.js';
+  import { BRAND } from '$lib/brand.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from './FlagIcon.svelte';
   import LangFlagIntro from './LangFlagIntro.svelte';
@@ -48,14 +49,16 @@
         <li><button id="avisoLegal" class="_gold footer-link-button" type="button" on:click={() => openLegalModal('legalNotice')}>{copy.legal.legalNotice}</button></li>
         <li><button id="politicaCookies" class="_gold footer-link-button" type="button" on:click={() => openLegalModal('cookies')}>{copy.legal.cookies}</button></li>
         <li><button class="_gold footer-link-button" type="button" on:click={openCookieSettings}>{cookieSettingsLabels[lang] || cookieSettingsLabels.es}</button></li>
-        <li><a href={pathFor(lang, 'noticias')} class="_gold footer-link-button">{copy.nav.noticias}</a></li>
+        {#if !BRAND.leadGen}<li><a href={pathFor(lang, 'noticias')} class="_gold footer-link-button">{copy.nav.noticias}</a></li>{/if}
       </ul>
       <nav class="footer-site-map" aria-label="Standarte" hidden aria-hidden="true">
         <ul>
           <li><a href={pathFor(lang, 'services')} tabindex="-1">{copy.nav.services}</a></li>
           <li><a href={pathFor(lang, 'custom')} tabindex="-1">{copy.nav.custom}</a></li>
-          <li><a href={pathFor(lang, 'proyecto_auditado')} tabindex="-1">{uspNavLabel(lang)}</a></li>
-          <li><a href={pathFor(lang, 'noticias')} tabindex="-1">{copy.nav.noticias}</a></li>
+          {#if !BRAND.leadGen}
+            <li><a href={pathFor(lang, 'proyecto_auditado')} tabindex="-1">{uspNavLabel(lang)}</a></li>
+            <li><a href={pathFor(lang, 'noticias')} tabindex="-1">{copy.nav.noticias}</a></li>
+          {/if}
           <li><a href={pathFor(lang, 'contact')} tabindex="-1">{copy.nav.contact}</a></li>
         </ul>
       </nav>

@@ -576,10 +576,13 @@
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
   // Cuerpo reestructurado para ciudades Oro (reordena "Ferias y sectores" + colapsables).
-  // StandQuote: los enlaces a Pat del cuerpo SEO (`href="#pat"`) se convierten en
-  // texto plano — el panel no existe en esa marca y quedarían muertos.
+  // StandQuote: los enlaces del cuerpo SEO hacia conceptos que esa marca no ofrece
+  // (Pat `#pat`, la garantía /proyecto-auditado y la página de /precios, en todos los
+  // idiomas) se convierten en texto plano para no publicitar apartados retirados.
+  const SQ_STRIPPED_ROUTES = '(?:proyecto-auditado|audited-project|auditiertes-projekt|projet-audite|projeto-auditado|progetto-verificato|gecontroleerd-project|shenji-xiangmu|audit-pariyojana|gamsa-peurojekteu|監査プロジェクト|precios|prices|preise|tarifs|prezzi|precos|prijzen|jiage|kimat|gagyeok|料金)';
+  const SQ_STRIP_RE = new RegExp('<a href="(?:#pat|\\/(?:[a-z]{2}\\/)?' + SQ_STRIPPED_ROUTES + ')"[^>]*>([\\s\\S]*?)<\\/a>', 'g');
   function stripPatLinks(html) {
-    return BRAND.leadGen && html ? html.replace(/<a href="#pat"[^>]*>([\s\S]*?)<\/a>/g, '$1') : html;
+    return BRAND.leadGen && html ? html.replace(SQ_STRIP_RE, '$1') : html;
   }
   $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
@@ -1312,9 +1315,9 @@
       makesOffer: [
         ...(BRAND.leadGen ? [] : [
           { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#advisory` } },
-          { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } }
-        ]),
-        { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#instant-quote` } }
+          { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } },
+          { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#instant-quote` } }
+        ])
       ]
     };
 
@@ -1437,7 +1440,7 @@
       }))
     };
 
-    const graph = [organization, service, ...(BRAND.leadGen ? [] : [advisoryService, guaranteeService]), instantQuoteService, website, webpage, siteNavigation];
+    const graph = [organization, service, ...(BRAND.leadGen ? [] : [advisoryService, guaranteeService, instantQuoteService]), website, webpage, siteNavigation];
 
     if (section !== 'home') {
       const breadcrumbLabel = seoContent?.breadcrumb || sectionLabel(section);
@@ -1981,9 +1984,11 @@
         <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
       <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
-      <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
-      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
-      <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      {#if !BRAND.leadGen}
+        <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
+        <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
+        <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      {/if}
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
         <div>
@@ -2288,7 +2293,7 @@
       <div class="section-header">
         <h2>{projects3DTitle[lang] || projects3DTitle.es}</h2>
         <span></span>
-        <p><strong>{uspHome(lang).homeHeading}</strong><br />{uspHome(lang).homeText}</p>
+        <p>{#if !BRAND.leadGen}<strong>{uspHome(lang).homeHeading}</strong><br />{uspHome(lang).homeText}{/if}</p>
       </div>
 
       <div class="carousel-container">
@@ -2485,7 +2490,7 @@
           <article class="seo-article" on:click={handleSeoBodyClick}>
             <!-- Sello del Sistema de Proyecto Auditado: en TODAS las páginas de ciudad
                  (igual que en las de feria) y en la propia página de la garantía. -->
-            {#if isCityPage || section === 'proyecto_auditado'}
+            {#if (isCityPage || section === 'proyecto_auditado') && !BRAND.leadGen}
               <a class="guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
                 <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
               </a>
@@ -2601,7 +2606,7 @@
                     {#if isCityPage}<li class="city-nav-all"><a href={pathFor(lang, 'home')}>{ALL_CITIES_LABELS[lang] || ALL_CITIES_LABELS.es} →</a></li>{/if}
                   </ul>
                 </details>
-                <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
+                {#if !BRAND.leadGen}<a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>{/if}
               </div>
 
               <!-- Navegador de actividades: chips de color hacia los hubs por sector -->

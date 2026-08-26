@@ -1154,9 +1154,11 @@
       <a href={pathFor(lang, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
       <a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>
-      <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
-      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
-      <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      {#if !BRAND.leadGen}
+        <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
+        <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
+        <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      {/if}
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
@@ -1331,13 +1333,15 @@
         <!-- Proyecto Auditado: asunto troncal, destacado en la columna derecha. El sello
              de garantía lo encabeza (antes flotaba suelto sobre la esquina de la ficha,
              sin decir de qué era garantía); aquí ilustra justo el texto que lo explica. -->
-        <div class="aside-module">
-          <a class="feria-guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
-            <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
-          </a>
-          <p class="audited-note">{@html pickUspLine(lang, fair.slug)}
-            <a href={pathFor(lang, 'proyecto_auditado')}>{moreInfoLabel[lang] || moreInfoLabel.es} →</a></p>
-        </div>
+        {#if !BRAND.leadGen}
+          <div class="aside-module">
+            <a class="feria-guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
+              <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
+            </a>
+            <p class="audited-note">{@html pickUspLine(lang, fair.slug)}
+              <a href={pathFor(lang, 'proyecto_auditado')}>{moreInfoLabel[lang] || moreInfoLabel.es} →</a></p>
+          </div>
+        {/if}
         <!-- Nubes de navegación secundaria plegadas: no distraen del lead. -->
         <details class="aside-module fairs-collapse">
           <summary class="fairs-collapse-summary">
@@ -1374,7 +1378,7 @@
           </details>
         {/if}
         <div class="aside-module">
-          <a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>
+          {#if !BRAND.leadGen}<a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>{/if}
         </div>
       </aside>
     </div>
