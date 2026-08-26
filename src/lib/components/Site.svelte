@@ -1,5 +1,6 @@
 <script>
   import { BRAND } from '$lib/brand.js';
+  import LeadForm from './LeadForm.svelte';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
@@ -2008,6 +2009,9 @@
   <!-- Buscador de ferias: primer elemento de la portada, nada más pasar el hero. Es la
        vía directa para quien ya sabe a qué feria va; el resto de la página sigue siendo
        la vía de descubrimiento (ciudades, actividades, Pat). -->
+  {#if BRAND.leadGen && (isCityPage || section === 'home')}
+    <LeadForm {lang} cityName={isCityPage ? cityDisplayName : ''} />
+  {/if}
   {#if section === 'home'}
     <FairSearch {lang} />
   {:else if isCityPage && citySearchOpen}
