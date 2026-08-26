@@ -1068,6 +1068,18 @@
     ja: '開催日確定の今後の見本市'
   };
 
+  // Titular de la portada en modo captación (StandQuote): promesa directa del
+  // marketplace en lugar del mensaje de constructor de Standarte.
+  const SQ_HERO = {
+    es: 'Recibe 5 presupuestos gratis para tu stand',
+    en: 'Get 5 free quotes for your stand',
+    pt: 'Receba 5 orçamentos grátis para o seu stand',
+    de: 'Erhalten Sie 5 kostenlose Angebote für Ihren Messestand',
+    fr: 'Recevez 5 devis gratuits pour votre stand',
+    it: 'Ricevi 5 preventivi gratuiti per il tuo stand'
+  };
+  $: sqHeroTitle = SQ_HERO[lang] || SQ_HERO.en;
+
   $: title = seoContent?.title || (section in cityData
     ? `${cityTitle(section)} | Standarte`
     : section === 'home'
@@ -1967,7 +1979,7 @@
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="home" class="hero">
       <div class="contents">
-        <h1>{copy.heroTitle}</h1>
+        <h1>{BRAND.leadGen && section === 'home' ? sqHeroTitle : copy.heroTitle}</h1>
         {#if section === 'home' && copy.heroSubtitle}<p class="hero-claim">{copy.heroSubtitle}</p>{/if}
       </div>
       <AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />
