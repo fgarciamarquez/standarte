@@ -4,6 +4,7 @@
   // emplazamientos). Reactiva el panel de Pat en las páginas donde puede aparecer.
   // El nombre del fichero se conserva para no tocar los 5 puntos de uso.
   import { createEventDispatcher } from 'svelte';
+  import { BRAND } from '$lib/brand.js';
   import { backOut, cubicOut } from 'svelte/easing';
 
   // Entrada del botón: entra deslizándose desde la derecha con un rebote (backOut)
@@ -103,7 +104,7 @@
   $: actividadHref = lang === 'es' ? '/actividad' : `/${lang}/actividad`;
 </script>
 
-{#if cityTools || (canReactivate && !patVisible)}
+{#if cityTools || (canReactivate && !patVisible && !BRAND.leadGen)}
   <section class="ai-geo ai-geo-{variant}" aria-label={expansionLabel}>
     <div class="ai-geo-row">
       {#if cityTools}
@@ -111,7 +112,7 @@
           {searchLabel}
         </button>
       {/if}
-      {#if canReactivate && !patVisible}
+      {#if canReactivate && !patVisible && !BRAND.leadGen}
         <button type="button" class="ai-geo-btn ai-geo-reactivate" in:pushIn on:click={() => dispatch('reactivate')}>
           {expansionLabel}
         </button>

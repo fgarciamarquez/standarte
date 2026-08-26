@@ -576,7 +576,12 @@
   // así la página muestra su título/intro japonés en lugar de un cuerpo en otro idioma.
   $: seoContent = richSeo ? (richSeo[lang] || (lang === 'ja' ? null : (richSeo.en || richSeo.es)) || null) : null;
   // Cuerpo reestructurado para ciudades Oro (reordena "Ferias y sectores" + colapsables).
-  $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq) : seoContent.body) : '';
+  // StandQuote: los enlaces a Pat del cuerpo SEO (`href="#pat"`) se convierten en
+  // texto plano — el panel no existe en esa marca y quedarían muertos.
+  function stripPatLinks(html) {
+    return BRAND.leadGen && html ? html.replace(/<a href="#pat"[^>]*>([\s\S]*?)<\/a>/g, '$1') : html;
+  }
+  $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
   $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : rewriteTitulo(seoContent.h1, lang)) : seoContent.h1) : '';
   // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
@@ -1305,8 +1310,10 @@
         ? 'La mayor cobertura para exponer en España y Portugal: de las capitales y grandes plazas a los nichos regionales estratégicos con menos competencia.'
         : 'The widest coverage for exhibiting in Spain and Portugal: from capitals and major venues to strategic regional niches with less competition.',
       makesOffer: [
-        { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#advisory` } },
-        ...(BRAND.leadGen ? [] : [{ '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } }]),
+        ...(BRAND.leadGen ? [] : [
+          { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#advisory` } },
+          { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } }
+        ]),
         { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#instant-quote` } }
       ]
     };
@@ -1430,7 +1437,7 @@
       }))
     };
 
-    const graph = [organization, service, advisoryService, ...(BRAND.leadGen ? [] : [guaranteeService]), instantQuoteService, website, webpage, siteNavigation];
+    const graph = [organization, service, ...(BRAND.leadGen ? [] : [advisoryService, guaranteeService]), instantQuoteService, website, webpage, siteNavigation];
 
     if (section !== 'home') {
       const breadcrumbLabel = seoContent?.breadcrumb || sectionLabel(section);
@@ -1673,6 +1680,7 @@
   // Reactivar Pat desde el botón "Expansión" (junto a los botones GEO): limpia el
   // descarte de la sesión y vuelve a mostrar el panel (cargándolo si aún no estaba).
   function reopenAdvisor() {
+    if (BRAND.leadGen) return; // StandQuote no lleva a Pat
     advisorDismissed.reactivate();
     if (AdvisorComponent) {
       showWelcomeAdvisor = true;
@@ -1698,6 +1706,7 @@
   // del <main>, así que además de cargarlo/mostrarlo, desplazamos la página hasta él
   // para que el visitante lo vea desplegarse.
   async function openPatAndScroll() {
+    if (BRAND.leadGen) return; // StandQuote no lleva a Pat
     advisorDismissed.reactivate();
     if (!AdvisorComponent) {
       try { const m = await import('./WelcomeAdvisor.svelte'); AdvisorComponent = m.default; } catch (e) {}
@@ -1716,7 +1725,7 @@
 
     // CTA contextual de Pat desde las páginas de feria: llegan con "#pat=<familia>".
     // Abrimos a Pat de inmediato, ya sembrado con ese sector (sin esperar los 8 s).
-    if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('pat')) {
+    if (typeof window !== 'undefined' && !BRAND.leadGen && new URLSearchParams(window.location.search).has('pat')) {
       patInitialFamily = new URLSearchParams(window.location.search).get('pat') || '';
       advisorDismissed.reactivate();
       import('./WelcomeAdvisor.svelte')
@@ -1737,6 +1746,7 @@
       (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) ? 25000 : 8000;
 
     const launchAdvisor = () => {
+      if (BRAND.leadGen) return; // StandQuote no monta el panel de Pat
       advisorTimeout = setTimeout(() => {
         // Si el visitante ya completó el formulario del asesor en esta sesión,
         // no lo volvemos a mostrar para no molestar.
@@ -2327,6 +2337,7 @@
          de IA: el asesor Pat (servicio de asesoramiento) y el Proyecto Auditado
          (garantía 100%). El panel de Pat se carga por JS y un rastreador no lo ve, así
          que aquí queda nombrado y descrito, con entrada real para abrirlo. -->
+    {#if !BRAND.leadGen}
     <section id="herramientas-standarte" class="section tools-section" aria-label={toolsCopy(lang).heading}>
       <div class="section-header">
         <h2>{toolsCopy(lang).heading}</h2>
@@ -2353,6 +2364,7 @@
         </article>
       </div>
     </section>
+    {/if}
 
     <section class="counters section">
       <div class="counter-grid">
@@ -2512,7 +2524,7 @@
                 </figure>
               {/if}
               <!-- B1: prueba de cobertura verificable (recuento real de ferias) + Pat. -->
-              {#if (section in cityData) && regionFairs.length && cityDisplayName}
+              {#if (section in cityData) && regionFairs.length && cityDisplayName && !BRAND.leadGen}
                 <section class="coverage-proof sidebar-module">
                   <button type="button" class="coverage-map-thumb" on:click={openPatAndScroll} aria-label={coveragePatCta[lang] || coveragePatCta.es}>
                     <img src="/img/pat-map-preview.avif" alt={coverageMapAlt[lang] || coverageMapAlt.es} width="1287" height="824" loading="lazy" decoding="async" />

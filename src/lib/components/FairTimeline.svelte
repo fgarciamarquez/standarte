@@ -6,6 +6,7 @@
   //
   // Solo entran ferias con fecha VERIFICADA y futura (fairDates); las que no tienen
   // fecha simplemente no aparecen, así que el módulo nunca inventa un calendario.
+  import { BRAND } from '$lib/brand.js';
   import { colorForTag, labelForTag } from '$lib/fairTags.js';
   import { cadenceLabels } from '$lib/fairDates.js';
   import { timelineNodes } from '$lib/fairTimelineNodes.js';
@@ -127,7 +128,7 @@
 {#if nodes.length > 1}
   <section class="fair-timeline" aria-label={s.title}>
     <h2>{s.title}</h2>
-    <p class="ft-claim">{s.claim}</p>
+    {#if !BRAND.leadGen}<p class="ft-claim">{s.claim}</p>{/if}
     <!-- Las etiquetas de actividad viven aquí (antes iban bajo el h2 de respuesta
          directa): identifican el sector y son justo el criterio con el que se han
          elegido las ferias de la línea, así que se leen como su leyenda. -->

@@ -1,5 +1,5 @@
 <script>
-  import { BRAND } from '$lib/brand.js';
+  import { BRAND, SITE_ORIGIN } from '$lib/brand.js';
   import LeadForm from './LeadForm.svelte';
   import { onMount, tick } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
@@ -742,10 +742,12 @@
     ja: '高品質なブース + スペイン・ポルトガル独自の拡大ネットワーク。'
   };
   $: coreMsgText = coreMsg[lang] || coreMsg.es;
+  // StandQuote no lleva el mensaje de posicionamiento de Standarte ("Stand de
+  // calidad + red de expansión…"): es un concepto exclusivo de la marca madre.
   $: seoDesc = (isItinerant
     ? (introItinerant[lang] || introItinerant.es)(fair.name, localizedSector)
     : pickIntroVariant(lang, fair.slug, fair.name, localizedCity, localizedSector, fair.country))
-    + ' ' + (coreMsg[lang] || coreMsg.es);
+    + (BRAND.leadGen ? '' : ' ' + (coreMsg[lang] || coreMsg.es));
 
   // Clúster: enlace al pilar de ciudad + ferias hermanas de la misma región
   $: clusterStr = clusterT[lang] || clusterT.es;
@@ -1020,7 +1022,9 @@
   $: serviceJsonLd = JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Service', '@id': canonical + '#service',
     name: strings.heroTitle(fairDisplayName), serviceType: 'Exhibition stand builder',
-    provider: { '@type': 'Organization', name: 'Standarte', url: 'https://standarte.es', logo: 'https://standarte.es/img/logo_standarte_rectanular.png', slogan: coreMsgText },
+    provider: BRAND.leadGen
+      ? { '@type': 'Organization', name: 'StandQuote', url: SITE_ORIGIN }
+      : { '@type': 'Organization', name: 'Standarte', url: 'https://standarte.es', logo: 'https://standarte.es/img/logo_standarte_rectanular.png', slogan: coreMsgText },
     areaServed: { '@type': 'City', name: fair.city }, description: seoDesc, url: canonical,
     hasOfferCatalog: synergyOfferCatalog(lang),
     ...(fairFreshness ? { dateModified: fairFreshness } : {})
@@ -1232,7 +1236,7 @@
         <!-- Respuesta directa citable (GEO): instrumentos propios + cobertura ES/PT.
              Cierra con el reclamo de expansión: "…te ofrecemos N ferias…", donde
              "N ferias" enlaza a Pat (sembrado con el sector de esta feria). -->
-        <p class="feria-direct-answer"><strong class="feria-core-claim">{coreMsgText}</strong> {da(fair.name, cityWithDate, geoTailText)} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}{#if cityHref} {cl.before}<a class="feria-city-link" href={cityHref}>{cl.anchor(cityLinkName)}</a>{cl.after}{/if}</p>
+        <p class="feria-direct-answer">{#if !BRAND.leadGen}<strong class="feria-core-claim">{coreMsgText}</strong> {/if}{da(fair.name, cityWithDate, geoTailText)}{#if !BRAND.leadGen} {pc.before(fair.name)}<a class="feria-expansion-link" href={patHref} rel="nofollow">{pc.link(n2Fairs)}</a>{pc.after}{/if}{#if cityHref} {cl.before}<a class="feria-city-link" href={cityHref}>{cl.anchor(cityLinkName)}</a>{cl.after}{/if}</p>
         <!-- Página de destino: CTA prioritario tras el primer párrafo que baja al
              formulario del final para que el visitante pida presupuesto sin perderse. -->
         <a
