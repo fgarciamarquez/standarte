@@ -2,7 +2,7 @@
 tipo: actividad
 clave: digital-software
 sector: "Tecnología e Innovación"
-n_ferias: 21
+n_ferias: 22
 ---
 # Tecnología digital y software
 
@@ -24,6 +24,7 @@ Actividad del sector [[Tecnología e Innovación]].
 - [[Maker Faire Galicia Santiago de Compostela]]
 - [[Mundos Digitales]]
 - [[Portugal Smart Cities Summit]]
+- [[SBC Summit Lisbon]]
 - [[Smart City Expo World Congress Barcelona]]
 - [[TIS Sevilla]]
 - [[Technology Show Valladolid]]

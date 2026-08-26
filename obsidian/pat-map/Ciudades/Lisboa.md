@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 26
+n_ferias: 27
 lat: 38.72
 lon: -9.14
 ---
@@ -28,6 +28,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Lisbon Food Affair]]
 - [[Nauticampo]]
 - [[PEGS Europe Lisboa]]
+- [[SBC Summit Lisbon]]
 - [[SIL Lisboa]]
 - [[Sagalexpo Lisboa]]
 - [[Snackex Lisboa]]
