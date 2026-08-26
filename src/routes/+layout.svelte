@@ -1,5 +1,6 @@
 <script>
   import '../app.css';
+  import '../brandTheme.css';
   import SchemaLocalBusiness from '$lib/components/SchemaLocalBusiness.svelte';
   import { page } from '$app/stores';
   import { browser } from '$app/environment';

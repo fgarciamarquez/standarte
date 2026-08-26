@@ -1,3 +1,4 @@
+import { SITE_ORIGIN } from './brand.js';
 import { fairsData } from '$lib/fairsData.js';
 import { tagOrder } from '$lib/fairTags.js';
 import { jaFairSlugs, jaFairSlugsReverse, jaProjectSlugs, jaProjectSlugsReverse } from '$lib/jaSlugs.js';
@@ -2925,11 +2926,11 @@ export function resolveRoute(path) {
   // Ferias, proyectos ja y hubs de actividad no son claves de routes; su canónica
   // es su propia URL.
   let canonical;
-  if (section === 'feria' && fairSlug) canonical = `https://standarte.es${fairUrl(fairSlug, lang)}`;
-  else if (section === 'project' && projectId) canonical = `https://standarte.es${projectUrl(projectId, lang)}`;
-  else if (section === 'activityIndex') canonical = `https://standarte.es${activityIndexUrl(lang)}`;
-  else if (section === 'activity' && tag) canonical = `https://standarte.es${activityUrl(tag, lang)}`;
-  else canonical = `https://standarte.es${pathFor(lang, section)}`;
+  if (section === 'feria' && fairSlug) canonical = `${SITE_ORIGIN}${fairUrl(fairSlug, lang)}`;
+  else if (section === 'project' && projectId) canonical = `${SITE_ORIGIN}${projectUrl(projectId, lang)}`;
+  else if (section === 'activityIndex') canonical = `${SITE_ORIGIN}${activityIndexUrl(lang)}`;
+  else if (section === 'activity' && tag) canonical = `${SITE_ORIGIN}${activityUrl(tag, lang)}`;
+  else canonical = `${SITE_ORIGIN}${pathFor(lang, section)}`;
   return { lang, section, fairSlug, projectId, tag, copy: c, canonical };
 }
 

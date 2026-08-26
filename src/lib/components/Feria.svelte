@@ -1,4 +1,5 @@
 <script>
+  import { BRAND } from '$lib/brand.js';
   import { onMount, tick } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, ctaBudget, preciosNav, projectUrl, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
@@ -1039,6 +1040,7 @@
 
 <svelte:head>
   <title>{seoTitle}</title>
+  {#if BRAND.draft}<meta name="robots" content="noindex, nofollow" />{/if}
   <!-- Preload de la portada del header: es el elemento LCP y su <img> aparece en el
        cuerpo, después de las ~30 etiquetas modulepreload que SvelteKit pone en el head.
        Sin esta pista el navegador móvil descubre la imagen tarde y compite por el ancho

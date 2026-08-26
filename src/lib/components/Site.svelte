@@ -1,4 +1,5 @@
 <script>
+  import { BRAND } from '$lib/brand.js';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
@@ -1833,6 +1834,7 @@
 
 <svelte:head>
   <title>{title}</title>
+  {#if BRAND.draft}<meta name="robots" content="noindex, nofollow" />{/if}
   <meta name="description" content={description} />
   <!-- Una sola meta para todos los rastreadores. NO añadir una <meta name="googlebot">:
        las directivas por rastreador tienen prioridad sobre esta, así que una que dijera

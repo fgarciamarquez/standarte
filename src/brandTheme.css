@@ -1,0 +1,18 @@
+/* Tema visual de StandQuote (marca de captación de leads en standquote.com).
+   Semilla de la fase 1: acento propio sobre la estructura compartida. El diseño
+   definitivo se ampliará aquí; todo va scopeado bajo [data-brand="standquote"],
+   así que la web de Standarte no se ve afectada en absoluto. */
+[data-brand="standquote"] {
+  --brand-accent: #0e7490;      /* azul petróleo: identidad provisional */
+  --brand-accent-dark: #0a5a70;
+}
+[data-brand="standquote"] .ai-geo .ai-geo-btn.ai-geo-reactivate {
+  background: var(--brand-accent);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(14, 116, 144, 0.4);
+  animation: none;
+}
+[data-brand="standquote"] .ai-geo .ai-geo-btn.ai-geo-reactivate::after { opacity: 0; animation: none; }
+[data-brand="standquote"] .ai-geo .ai-geo-btn.ai-geo-reactivate:hover,
+[data-brand="standquote"] .ai-geo .ai-geo-btn.ai-geo-reactivate:focus { background: var(--brand-accent-dark); }
+[data-brand="standquote"] .nav-cta-btn { background: var(--brand-accent); }

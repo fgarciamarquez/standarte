@@ -1,4 +1,5 @@
 <script>
+  import { BRAND } from '$lib/brand.js';
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { projectIndex } from '$lib/projectIndex.js';
@@ -160,6 +161,7 @@
 
 <svelte:head>
   <title>{pageTitle}</title>
+  {#if BRAND.draft}<meta name="robots" content="noindex, nofollow" />{/if}
   <meta name="description" content={metaDesc} />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />

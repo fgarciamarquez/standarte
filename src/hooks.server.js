@@ -26,6 +26,6 @@ function langFromPath(pathname) {
 export async function handle({ event, resolve }) {
   const lang = langFromPath(event.url.pathname);
   return resolve(event, {
-    transformPageChunk: ({ html }) => html.replace('<html lang="es">', `<html lang="${lang}">`)
+    transformPageChunk: ({ html }) => html.replace(/<html lang="es"/, `<html lang="${lang}"`)
   });
 }

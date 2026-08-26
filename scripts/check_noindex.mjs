@@ -6,6 +6,15 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 const DIST = 'dist';
+
+// Excepción de marca: un build con PUBLIC_BRAND en modo borrador (p. ej.
+// standquote antes del visto bueno) lleva noindex GLOBAL a propósito — es su
+// candado hasta abrirse a indexación. El guardián lo registra y no bloquea.
+const DRAFT_BRANDS = new Set(['standquote']);
+if (DRAFT_BRANDS.has(process.env.PUBLIC_BRAND || '')) {
+  console.log(`[check-noindex] ✔ OK — build de marca '${process.env.PUBLIC_BRAND}' en modo borrador: noindex global intencionado.`);
+  process.exit(0);
+}
 const ALLOW = new Set([
   // Rutas (relativas a dist/, con / inicial) que SÍ pueden llevar noindex a propósito.
   // Zona privada de proyectos de cliente (acceso por token; nunca debe indexarse).

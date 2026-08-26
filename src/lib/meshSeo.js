@@ -9,7 +9,8 @@
 // del paso de sinergia del formulario: 2 eventos −15%, 3 eventos −25%, únicos, no
 // acumulados — ver savingsScale en ContactForm.svelte).
 
-const BASE = 'https://standarte.es';
+import { SITE_ORIGIN } from './brand.js';
+const BASE = SITE_ORIGIN;
 
 // ── Textos por idioma ──────────────────────────────────────────────────────
 const L = {

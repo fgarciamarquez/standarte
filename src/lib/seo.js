@@ -1,3 +1,4 @@
+import { SITE_ORIGIN, BRAND } from './brand.js';
 /**
  * Centralized SEO & Structured Data configuration for Standarte.es
  */
@@ -19,12 +20,12 @@ export const LOCALES = [
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://standarte.es/#organization",
+  "@id": `${SITE_ORIGIN}/#organization`,
   "name": "Standarte",
   "description": "Diseño, fabricación y montaje de stands a medida para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Zafra, Don Benito, Ciudad Real y Lisboa.",
-  "url": "https://standarte.es/",
+  "url": `${SITE_ORIGIN}/`,
   "telephone": "+34 637 894 819",
-  "email": "info@standarte.es",
+  "email": BRAND.email,
   "address": [
     {
       "@type": "PostalAddress",
@@ -59,7 +60,7 @@ export const localBusinessSchema = {
     { "@type": "City", "name": "Don Benito" },
     { "@type": "City", "name": "Cáceres" }
   ],
-  "image": "https://standarte.es/img/logo_standarte_rectanular.png",
+  "image": `${SITE_ORIGIN}/img/logo_standarte_rectanular.png`,
   "priceRange": "€€€",
   "sameAs": []
 };
