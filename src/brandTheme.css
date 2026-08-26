@@ -1,18 +1,26 @@
 /* Tema visual de StandQuote (marca de captación de leads en standquote.com).
-   Semilla de la fase 1: acento propio sobre la estructura compartida. El diseño
-   definitivo se ampliará aquí; todo va scopeado bajo [data-brand="standquote"],
-   así que la web de Standarte no se ve afectada en absoluto. */
+   Semilla de la fase 1: acento propio sobre la estructura compartida. Todo va
+   scopeado bajo [data-brand="standquote"], así que la web de Standarte no se ve
+   afectada. Los !important son deliberados: esta piel debe imponerse a los
+   estilos scopeados de los componentes (Svelte les añade su clase de ámbito y
+   ganarían la cascada) sin tocar los componentes en sí. */
 [data-brand="standquote"] {
   --brand-accent: #0e7490;      /* azul petróleo: identidad provisional */
   --brand-accent-dark: #0a5a70;
 }
-[data-brand="standquote"] .ai-geo .ai-geo-btn.ai-geo-reactivate {
-  background: var(--brand-accent);
-  color: #fff;
-  box-shadow: 0 3px 10px rgba(14, 116, 144, 0.4);
-  animation: none;
+[data-brand="standquote"] .ai-geo-btn.ai-geo-reactivate {
+  background: var(--brand-accent) !important;
+  color: #fff !important;
+  box-shadow: 0 3px 10px rgba(14, 116, 144, 0.4) !important;
+  animation: none !important;
+  filter: none !important;
 }
-[data-brand="standquote"] .ai-geo .ai-geo-btn.ai-geo-reactivate::after { opacity: 0; animation: none; }
-[data-brand="standquote"] .ai-geo .ai-geo-btn.ai-geo-reactivate:hover,
-[data-brand="standquote"] .ai-geo .ai-geo-btn.ai-geo-reactivate:focus { background: var(--brand-accent-dark); }
-[data-brand="standquote"] .nav-cta-btn { background: var(--brand-accent); }
+[data-brand="standquote"] .ai-geo-btn.ai-geo-reactivate::after {
+  opacity: 0 !important;
+  animation: none !important;
+}
+[data-brand="standquote"] .ai-geo-btn.ai-geo-reactivate:hover,
+[data-brand="standquote"] .ai-geo-btn.ai-geo-reactivate:focus {
+  background: var(--brand-accent-dark) !important;
+}
+[data-brand="standquote"] .nav-cta-btn { background: var(--brand-accent) !important; }
