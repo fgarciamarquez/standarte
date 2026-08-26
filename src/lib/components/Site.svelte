@@ -578,7 +578,7 @@
   // Cuerpo reestructurado para ciudades Oro (reordena "Ferias y sectores" + colapsables).
   $: bodyHtml = seoContent ? ((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
-  $: h1Text = seoContent ? ((section in cityData) ? rewriteTitulo(seoContent.h1, lang) : seoContent.h1) : '';
+  $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : rewriteTitulo(seoContent.h1, lang)) : seoContent.h1) : '';
   // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
   // los OTROS idiomas, enlazando a la versión de la página en ese idioma. Son enlaces
   // internos rastreables (prerenderizados) que refuerzan los hreflang con autoridad
@@ -828,6 +828,28 @@
     const map = tituloPrincipal[lang] || tituloPrincipal.es;
     const m = text ? text.match(map.from) : null;
     return m ? map.to(m[1]) : text;
+  }
+  // StandQuote: el hero de las páginas de ciudad se enfoca al oficio de constructor
+  // ("Constructores de stands para ferias en {c}") en lugar del titular de servicio
+  // de Standarte. Reutiliza la captura de ciudad de tituloPrincipal.
+  const SQ_CITY_HERO = {
+    es: (c) => `Constructores de stands para ferias en ${c}`,
+    en: (c) => `Exhibition stand builders for trade fairs in ${c}`,
+    pt: (c) => `Construtores de stands para feiras em ${c}`,
+    de: (c) => `Messestandbauer für Messen in ${c}`,
+    fr: (c) => `Constructeurs de stands pour salons à ${c}`,
+    it: (c) => `Costruttori di stand fieristici a ${c}`,
+    nl: (c) => `Standbouwers voor beurzen in ${c}`,
+    zh: (c) => `${c}展会展台搭建商`,
+    hi: (c) => `${c} में मेला स्टैंड निर्माता`,
+    ko: (c) => `${c} 박람회 부스 제작 업체`,
+    ja: (c) => `${c}の展示会ブース施工会社`
+  };
+  function sqRewriteTitulo(text, lang) {
+    const map = tituloPrincipal[lang] || tituloPrincipal.es;
+    const m = text ? text.match(map.from) : null;
+    const t = SQ_CITY_HERO[lang] || SQ_CITY_HERO.es;
+    return m ? t(m[1]) : rewriteTitulo(text, lang);
   }
   function heading2Parts(section) {
     const m = section.match(/^(\s*)<h2>([\s\S]*?)<\/h2>([\s\S]*)$/);
@@ -1284,7 +1306,7 @@
         : 'The widest coverage for exhibiting in Spain and Portugal: from capitals and major venues to strategic regional niches with less competition.',
       makesOffer: [
         { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#advisory` } },
-        { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } },
+        ...(BRAND.leadGen ? [] : [{ '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#guarantee` } }]),
         { '@type': 'Offer', itemOffered: { '@id': `${baseUrl}/#instant-quote` } }
       ]
     };
@@ -1917,7 +1939,7 @@
     <div class="hero-bg-layer hero-bg-b" aria-hidden="true"></div>
   {/if}
   <nav class="nav" class:scrolled={isScrolled}>
-    <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
+    <a class="brand" href={pathFor(lang, 'home')} aria-label={BRAND.leadGen ? 'StandQuote' : 'Standarte'}></a>
     <div class="nav-right">
       <div class="lang-menu lang-menu-mobile">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><LangFlagIntro {lang} size={20} /></span>
@@ -1996,7 +2018,7 @@
             </ol>
           </nav>
         {/if}
-        <h1>{h1Text}{#if isCityPage}<span class="h1-claim">{heroClaimParts[0]}<span class="h1-plus">+</span>{heroClaimParts[1]}</span>{/if}</h1>
+        <h1>{h1Text}{#if isCityPage && !BRAND.leadGen}<span class="h1-claim">{heroClaimParts[0]}<span class="h1-plus">+</span>{heroClaimParts[1]}</span>{/if}</h1>
         {#if !isCityPage}<p class="hero-lead">{seoContent.introText}</p>{/if}
       </div>
       {#if animatedHero}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} cityTools={isCityPage} on:reactivate={reopenAdvisor} on:togglesearch={toggleCitySearch} />{/if}

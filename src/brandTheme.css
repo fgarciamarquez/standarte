@@ -7,6 +7,52 @@
 [data-brand="standquote"] {
   --brand-accent: #0e7490;      /* azul petróleo: identidad provisional */
   --brand-accent-dark: #0a5a70;
+  --brand-lime: #a3e635;        /* verde lima del punto del logotipo */
+}
+
+/* Logotipo de StandQuote: la palabra "standquote" en la misma tipografía que el
+   hero (Inconsolata, la de todo el cuerpo), con un círculo verde lima al final
+   elevado como una potencia. Se dibuja con ::before/::after sobre el ancla .brand
+   (que en Standarte es un SVG de fondo), así que no se toca ningún componente. */
+[data-brand="standquote"] .brand {
+  background: none !important;
+  width: auto !important;
+  min-width: 200px;
+  display: flex !important;
+  align-items: center;
+  text-decoration: none;
+}
+[data-brand="standquote"] .brand::before {
+  content: "standquote";
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000;
+}
+[data-brand="standquote"] .brand::after {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--brand-lime);
+  margin-left: 3px;
+  transform: translateY(-11px); /* subido, como un exponente */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+/* Con la barra sólida (scrolled, fondo claro) el texto pasa a oscuro, igual que
+   hace Standarte al cambiar su SVG de blanco a negro. */
+[data-brand="standquote"] .nav.scrolled .brand::before {
+  color: #16242c;
+  text-shadow: none;
+}
+@media (max-width: 768px) {
+  [data-brand="standquote"] .brand::before { font-size: 25px; }
+  [data-brand="standquote"] .brand::after { width: 9px; height: 9px; transform: translateY(-9px); }
+  [data-brand="standquote"] .brand { min-width: 150px; }
 }
 [data-brand="standquote"] .ai-geo-btn.ai-geo-reactivate {
   background: var(--brand-accent) !important;

@@ -701,6 +701,24 @@
     return t.es;
   })();
   
+  // StandQuote: el hero de las páginas de feria se enfoca al oficio de constructor,
+  // igual que en las páginas de ciudad ("Constructores de stands para ferias en {n}").
+  const SQ_FAIR_HERO = {
+    es: (n) => `Constructores de stands para ferias en ${n}`,
+    en: (n) => `Exhibition stand builders at ${n}`,
+    pt: (n) => `Construtores de stands para feiras na ${n}`,
+    de: (n) => `Messestandbauer auf der ${n}`,
+    fr: (n) => `Constructeurs de stands pour ${n}`,
+    it: (n) => `Costruttori di stand fieristici a ${n}`,
+    nl: (n) => `Standbouwers op ${n}`,
+    zh: (n) => `${n}展会展台搭建商`,
+    hi: (n) => `${n} में मेला स्टॉल निर्माता`,
+    ko: (n) => `${n} 박람회 부스 제작 업체`,
+    ja: (n) => `${n}の展示会ブース施工会社`
+  };
+  $: fairHeroTitle = BRAND.leadGen
+    ? (SQ_FAIR_HERO[lang] || SQ_FAIR_HERO.es)(fairDisplayName)
+    : strings.heroTitle(fairDisplayName);
   $: seoTitle = `${strings.heroTitle(fairDisplayName)} | Standarte`;
   // No itinerante: intro variada por slug (banco de variantes) para evitar que ~175
   // fichas compartan la misma meta-description (riesgo de duplicado ante Google).
@@ -1103,7 +1121,7 @@
     {/if}
   {/if}
   <nav class="nav" class:scrolled={isScrolled}>
-    <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
+    <a class="brand" href={pathFor(lang, 'home')} aria-label={BRAND.leadGen ? 'StandQuote' : 'Standarte'}></a>
     <div class="nav-right">
       <div class="lang-menu lang-menu-mobile">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
@@ -1165,7 +1183,7 @@
   
   <div class="hero-subpage" class:on-hero-photo={coverKey}>
     <div class="hero-contents feria-hero-contents">
-      <h1>{strings.heroTitle(fairDisplayName)}<span class="h1-claim">{heroClaimParts[0]}<span class="h1-plus">+</span>{heroClaimParts[1]}</span></h1>
+      <h1>{fairHeroTitle}{#if !BRAND.leadGen}<span class="h1-claim">{heroClaimParts[0]}<span class="h1-plus">+</span>{heroClaimParts[1]}</span>{/if}</h1>
       <AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />
     </div>
   </div>
