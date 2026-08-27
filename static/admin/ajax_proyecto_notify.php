@@ -19,7 +19,7 @@ function pn_admin_authed() { return isset($_SESSION['standarte_email_campaing_au
 
 $token = pn_post('token');
 $role  = pn_post('role');
-if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token) || !in_array($role, array('client', 'internal', 'visit'), true)) {
+if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token) || !in_array($role, array('client', 'internal', 'visit', 'approved'), true)) {
 	echo json_encode(array('ok' => false, 'error' => 'bad_request'));
 	exit;
 }
@@ -119,7 +119,72 @@ if (!empty($p['comments']) && is_array($p['comments'])) {
 	}
 }
 
-if ($role === 'client') {
+
+/* Aprobación del presupuesto: la dispara la propia página del CLIENTE justo después
+ * de aprobar. Todo el contenido (conceptos, oferta congelada, impuestos, total) se lee
+ * de la BD vía get_client_project, nunca del POST: con el token no se puede inyectar
+ * ni un céntimo. Solo avisa si el proyecto ESTÁ aprobado de verdad. */
+if ($role === 'approved') {
+	if (empty($p['approved'])) {
+		echo json_encode(array('ok' => false, 'error' => 'not_approved'));
+		exit;
+	}
+	$subtotal = 0.0; $rowsHtml = '';
+	$cell = "padding:6px 8px;border-bottom:1px solid #e6e6e0;";
+	if (!empty($p['budget']) && is_array($p['budget'])) {
+		foreach ($p['budget'] as $b) {
+			$a = (float) str_replace(',', '.', (string) (isset($b['amount']) ? $b['amount'] : 0));
+			$subtotal += $a;
+			$c = isset($b['concept']['es']) ? $b['concept']['es'] : (isset($b['concept']['en']) ? $b['concept']['en'] : '');
+			$rowsHtml .= "<tr><td style='" . $cell . "'>" . htmlspecialchars($c, ENT_QUOTES, 'UTF-8') . "</td>"
+				. "<td style='" . $cell . "text-align:right;white-space:nowrap;'>" . number_format($a, 2, ',', '.') . "&nbsp;€</td></tr>";
+		}
+	}
+	/* Oferta congelada al aprobar: entera hasta la fecha límite y −1.000 €/semana
+	 * después (misma regla que la página y que cron_oferta.php). */
+	$disc = 0.0;
+	if (!empty($p['approved_with_offer']) && !empty($p['discount']['amount'])) {
+		$dAmount = (float) str_replace(',', '.', (string) $p['discount']['amount']);
+		$dDeadline = !empty($p['discount']['deadline']) ? strtotime($p['discount']['deadline'] . ' 23:59:59') : null;
+		$ts = !empty($p['approved_at']) ? strtotime($p['approved_at']) : time();
+		if ($dAmount > 0) {
+			$disc = (!$dDeadline || $ts <= $dDeadline) ? $dAmount : max(0.0, $dAmount - 1000.0 * ceil(($ts - $dDeadline) / 604800.0));
+		}
+	}
+	$ivaRate  = isset($p['iva_rate'])  ? (float) $p['iva_rate']  : 0.21;
+	$irpfRate = isset($p['irpf_rate']) ? (float) $p['irpf_rate'] : 0.15;
+	$baseImp = $subtotal - $disc;
+	$iva  = $baseImp * $ivaRate;
+	$irpf = $baseImp * $irpfRate;
+	$totalAp = $baseImp + $iva - $irpf;
+	$fmtE = function ($n) { return number_format($n, 2, ',', '.') . '&nbsp;€'; };
+	$sumRow = function ($label, $val, $bold = false) use ($cell) {
+		$w = $bold ? 'font-weight:bold;font-size:16px;' : '';
+		return "<tr><td style='" . $cell . $w . "'>" . $label . "</td><td style='" . $cell . $w . "text-align:right;white-space:nowrap;'>" . $val . "</td></tr>";
+	};
+	$tabla = "<table style='width:100%;border-collapse:collapse;font-size:14px;'>"
+		. "<tr><th style='" . $cell . "text-align:left;'>Concepto</th><th style='" . $cell . "text-align:right;'>Importe</th></tr>"
+		. $rowsHtml;
+	if ($disc > 0) {
+		$tabla .= $sumRow('Subtotal', $fmtE($subtotal));
+		$tabla .= $sumRow('Descuento por pronta decisión (congelado al aprobar)', '− ' . $fmtE($disc));
+	}
+	$tabla .= $sumRow('Base imponible', $fmtE($baseImp));
+	if ($ivaRate > 0)  { $tabla .= $sumRow('IVA (' . rtrim(rtrim(number_format($ivaRate * 100, 2, ',', ''), '0'), ',') . '%)', '+ ' . $fmtE($iva)); }
+	if ($irpfRate > 0) { $tabla .= $sumRow('IRPF (−' . rtrim(rtrim(number_format($irpfRate * 100, 2, ',', ''), '0'), ',') . '%)', '− ' . $fmtE($irpf)); }
+	$tabla .= $sumRow('TOTAL APROBADO', $fmtE($totalAp), true);
+	$tabla .= '</table>';
+	$when = !empty($p['approved_at']) ? date('d/m/Y H:i', strtotime($p['approved_at'])) : date('d/m/Y H:i');
+	$conOferta = !empty($p['approved_with_offer']) ? ' (con oferta por pronta decisión)' : '';
+
+	$to = ($interEmail !== '' && filter_var($interEmail, FILTER_VALIDATE_EMAIL)) ? $interEmail : 'info@standarte.es';
+	$subject = 'Presupuesto APROBADO — ' . $p['ref'] . ' · ' . $clientName . ' · ' . number_format($totalAp, 2, ',', '.') . ' €';
+	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> ha APROBADO el presupuesto del proyecto <strong>'
+		. htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>' . $conOferta . ' el ' . $when . '.';
+	/* La tabla viaja en el mismo hueco (caja gris) que el hilo de comentarios. */
+	$commentsHtml = $tabla;
+	$firstImgOpt = '';
+} elseif ($role === 'client') {
 	$to = $interEmail;
 	$subject = 'Nuevos comentarios de ' . $clientName . ' — ' . $p['ref'];
 	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> ha enviado comentarios sobre el proyecto <strong>' . htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>.';

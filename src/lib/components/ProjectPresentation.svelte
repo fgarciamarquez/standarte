@@ -207,6 +207,9 @@
       await approveProject(token, discValid);
       // Vía aditiva: solo tras aprobar, y sin bloquear la aprobación si falla.
       if (testimonial.trim()) { try { await saveTestimonial(token, testimonial.trim()); } catch (e) {} }
+      // Aviso interno con los conceptos y el total aprobados (el PHP lo compone
+      // leyendo la BD; si el email falla, la aprobación no se ve afectada).
+      try { notifySend(token, 'approved'); } catch (e) {}
       await reload();
     } catch (e) {} finally { approving = false; }
   }
