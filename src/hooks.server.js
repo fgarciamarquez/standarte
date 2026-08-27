@@ -12,8 +12,13 @@
 //  2. Artículos del blog: viven todos bajo /blog/<slug> SIN prefijo de idioma
 //     (el slug ya es único por idioma), así que el idioma se busca en newsData.
 import news from './lib/newsData.json';
+import { BRAND } from '$lib/brand.js';
 
 const LANGS = new Set(['en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja', 'nl']);
+// StandQuote no hereda el rastreo de Google de Standarte (G-80WWV05ZTM): el hook
+// elimina del HTML el bloque completo delimitado por <!-- ga:start --> … <!-- ga:end -->
+// en app.html. En Standarte el bloque queda tal cual.
+const GA_BLOCK = /<!-- ga:start[\s\S]*?<!-- ga:end -->/;
 const newsLangBySlug = new Map(news.map((n) => [n.slug, n.lang]));
 
 function langFromPath(pathname) {
@@ -26,6 +31,10 @@ function langFromPath(pathname) {
 export async function handle({ event, resolve }) {
   const lang = langFromPath(event.url.pathname);
   return resolve(event, {
-    transformPageChunk: ({ html }) => html.replace(/<html lang="es"/, `<html lang="${lang}"`)
+    transformPageChunk: ({ html }) => {
+      let out = html.replace(/<html lang="es"/, `<html lang="${lang}"`);
+      if (BRAND.leadGen) out = out.replace(GA_BLOCK, '<!-- sin rastreo de Google en esta marca -->');
+      return out;
+    }
   });
 }

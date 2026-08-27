@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- ga:start — bloque de rastreo de Google (Consent Mode + GA4 de Standarte).
+         En la marca StandQuote el hook de servidor lo elimina entero del HTML
+         (ver src/hooks.server.js): esa web no hereda el analytics de Standarte. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -46,6 +49,7 @@
         }
       })();
     </script>
+    <!-- ga:end -->
     <!-- Microsoft Clarity — solo se inyecta cuando el usuario da consentimiento de "Medición"
          (mismo criterio que analytics_storage de Google Consent Mode arriba). CookieConsent.svelte
          llama a window.loadClarity() al aceptar/tener guardada esa preferencia. -->
