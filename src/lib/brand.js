@@ -70,3 +70,20 @@ const SQ_CITIES_INTRO = {
   ja: 'スペイン、ポルトガル、フランス、モロッコ各都市の優良ブース施工会社が私たちと提携しています'
 };
 export const sqCitiesIntro = (lang) => SQ_CITIES_INTRO[lang] || SQ_CITIES_INTRO.es;
+
+// Título del carrusel de proyectos 3D en StandQuote: en el marketplace los renders
+// se presentan como muestras de las propuestas que recibe el cliente.
+const SQ_PROPOSALS_TITLE = {
+  es: 'Ejemplos de propuestas realizadas',
+  en: 'Examples of delivered proposals',
+  pt: 'Exemplos de propostas realizadas',
+  de: 'Beispiele umgesetzter Vorschläge',
+  fr: 'Exemples de propositions réalisées',
+  it: 'Esempi di proposte realizzate',
+  nl: 'Voorbeelden van gerealiseerde voorstellen',
+  zh: '已完成方案示例',
+  hi: 'पूर्ण किए गए प्रस्तावों के उदाहरण',
+  ko: '완료된 제안 사례',
+  ja: '実施済み提案の例'
+};
+export const sqProposalsTitle = (lang) => SQ_PROPOSALS_TITLE[lang] || SQ_PROPOSALS_TITLE.es;

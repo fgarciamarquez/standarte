@@ -1,5 +1,5 @@
 <script>
-  import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro } from '$lib/brand.js';
+  import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro, sqProposalsTitle } from '$lib/brand.js';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
@@ -2357,7 +2357,7 @@
     <!-- Nueva Sección: Prototipos 3D Premium -->
     <section id="prototipos-3d" class="section prototypes-carousel">
       <div class="section-header">
-        <h2>{projects3DTitle[lang] || projects3DTitle.es}</h2>
+        <h2>{BRAND.leadGen ? sqProposalsTitle(lang) : (projects3DTitle[lang] || projects3DTitle.es)}</h2>
         <span></span>
         <p>{#if !BRAND.leadGen}<strong>{uspHome(lang).homeHeading}</strong><br />{uspHome(lang).homeText}{/if}</p>
       </div>

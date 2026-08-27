@@ -17,38 +17,44 @@ export const LOCALES = [
   { lang: 'nl', ogLocale: 'nl_NL', prefix: '/nl' }
 ];
 
+// En StandQuote la entidad es el marketplace: Organization sin señas físicas de
+// Standarte (direcciones, teléfono, geo). En Standarte, el LocalBusiness completo.
 export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": BRAND.leadGen ? "Organization" : "LocalBusiness",
   "@id": `${SITE_ORIGIN}/#organization`,
-  "name": "Standarte",
-  "description": "Diseño, fabricación y montaje de stands a medida para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Zafra, Don Benito, Ciudad Real y Lisboa.",
+  "name": BRAND.name,
+  "description": BRAND.leadGen
+    ? "Marketplace de stands para ferias: recibe 3 propuestas para tu stand adaptadas a tu presupuesto, de constructores verificados en España, Portugal, Francia y Marruecos."
+    : "Diseño, fabricación y montaje de stands a medida para ferias en Madrid, Barcelona, Bilbao, Málaga, Badajoz, Zafra, Don Benito, Ciudad Real y Lisboa.",
   "url": `${SITE_ORIGIN}/`,
-  "telephone": "+34 637 894 819",
   "email": BRAND.email,
-  "address": [
-    {
-      "@type": "PostalAddress",
-      "streetAddress": "Av. de Castilla 2",
-      "addressLocality": "San Fernando de Henares",
-      "addressRegion": "Madrid",
-      "postalCode": "28830",
-      "addressCountry": "ES"
-    },
-    {
-      "@type": "PostalAddress",
-      "streetAddress": "C/ Los Sauces 24",
-      "addressLocality": "Cáceres",
-      "addressRegion": "Cáceres",
-      "postalCode": "10004",
-      "addressCountry": "ES"
+  ...(BRAND.leadGen ? {} : {
+    "telephone": "+34 637 894 819",
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. de Castilla 2",
+        "addressLocality": "San Fernando de Henares",
+        "addressRegion": "Madrid",
+        "postalCode": "28830",
+        "addressCountry": "ES"
+      },
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "C/ Los Sauces 24",
+        "addressLocality": "Cáceres",
+        "addressRegion": "Cáceres",
+        "postalCode": "10004",
+        "addressCountry": "ES"
+      }
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.4124",
+      "longitude": "-3.6983"
     }
-  ],
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "40.4124",
-    "longitude": "-3.6983"
-  },
+  }),
   "areaServed": [
     { "@type": "City", "name": "Madrid" },
     { "@type": "City", "name": "Barcelona" },
@@ -61,7 +67,7 @@ export const localBusinessSchema = {
     { "@type": "City", "name": "Cáceres" }
   ],
   "image": `${SITE_ORIGIN}/img/logo_standarte_rectanular.png`,
-  "priceRange": "€€€",
+  ...(BRAND.leadGen ? {} : { "priceRange": "€€€" }), // propiedad de LocalBusiness, no de Organization
   "sameAs": []
 };
 
