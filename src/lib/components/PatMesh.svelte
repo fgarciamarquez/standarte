@@ -217,7 +217,14 @@
     const famKeys = Object.keys(tagFamilies);
     const tagTotals = {};
     cities.forEach((c) => Object.keys(c.tags).forEach((t) => { tagTotals[t] = (tagTotals[t] || 0) + c.tags[t]; }));
-    const tagKeys = Object.keys(tagTotals);
+    // Cinturón: una etiqueta usada en fairActivities pero sin definición en fairTags
+    // no debe tumbar el mapa entero (pasó con 'nautica' el 2026-08-27) — se excluye
+    // del dibujo y se avisa por consola para que el dato se corrija.
+    const tagKeys = Object.keys(tagTotals).filter((t) => {
+      if (fairTags[t]) return true;
+      console.warn(`[PatMesh] etiqueta sin definición en fairTags: "${t}" (excluida del mapa)`);
+      return false;
+    });
     const famTotals = {};
     famKeys.forEach((f) => { famTotals[f] = 0; });
     tagKeys.forEach((t) => { famTotals[fairTags[t].family] += tagTotals[t]; });
