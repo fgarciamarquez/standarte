@@ -11,6 +11,7 @@
   import { projectIndex } from '$lib/projectIndex.js';
   import { pickIntroVariant, foreignCountryName } from '$lib/introVariants.js';
   import { pickUspLine, uspNavLabel } from '$lib/uspSnippets.js';
+  import { fairH2 } from '$lib/h2Seo.js';
   import { CITY_POINTS } from '$lib/iberiaMeshData.js';
   import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
@@ -143,7 +144,13 @@
     ko: '모든 도시 보기', ja: 'すべての都市を見る'
   };
   // Contenido SEO único de esta feria (HTML por idioma); fallback a ES si falta el idioma.
-  $: fairBody = data.fairSeo ? (data.fairSeo[lang] || data.fairSeo.en || data.fairSeo.es || null) : null;
+  // Patrón de reincidencia (2026-08-27): el H2 de urgencia del cuerpo único
+  // ("¿Cuándo es tu próxima edición de X?") se compone como el resto de
+  // apartados: "{Stands para X}: ¿cuándo es tu próxima edición?" (h2Seo.js).
+  $: fairBodyRaw = data.fairSeo ? (data.fairSeo[lang] || data.fairSeo.en || data.fairSeo.es || null) : null;
+  $: fairBody = fairBodyRaw
+    ? fairBodyRaw.replace(/<h2>[\s\S]*?<\/h2>/g, `<h2>${fairH2(lang, fairDisplayName, 'cuandoEdicion')}</h2>`)
+    : null;
   
   const sectors = {
     es: {
@@ -1299,7 +1306,7 @@
              para no distraer del mensaje troncal y el CTA. -->
         <details class="oro-collapse">
           <summary class="oro-collapse-sum">
-            <h2 class="oro-collapse-h">{strings.services}</h2>
+            <h2 class="oro-collapse-h">{fairH2(lang, fairDisplayName, 'services')}</h2>
             <span class="oro-collapse-chevron" aria-hidden="true"></span>
           </summary>
           <div class="oro-collapse-body">

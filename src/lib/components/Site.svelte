@@ -6,6 +6,7 @@
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
+  import { cityH2 } from '$lib/h2Seo.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
@@ -584,7 +585,7 @@
   function stripPatLinks(html) {
     return BRAND.leadGen && html ? html.replace(SQ_STRIP_RE, '$1') : html;
   }
-  $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq) : seoContent.body) : '';
+  $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq, cityDisplayName) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
   $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : rewriteTitulo(seoContent.h1, lang)) : seoContent.h1) : '';
   // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
@@ -874,7 +875,7 @@
     if (!heading) return section;
     return `${lead}<details class="oro-collapse"><summary class="oro-collapse-sum"><h2 class="oro-collapse-h">${heading}</h2><span class="oro-collapse-chevron" aria-hidden="true"></span></summary><div class="oro-collapse-body">${rest}</div></details>`;
   }
-  function transformOroBody(html, lang, bodyCase) {
+  function transformOroBody(html, lang, bodyCase, cityName) {
     if (!html || !html.includes('<h2>')) return html;
     // Reescribir el título del primer apartado (h2) igual que el h1.
     const tmap = tituloPrincipal[lang] || tituloPrincipal.es;
@@ -914,16 +915,36 @@
       ![iComo, iTipos, iDoc, iPat, iGar, iLog, iPorQue].includes(iCob);
     const P = sections.map(heading2Parts);
 
+    // Patrón de reincidencia (2026-08-27): los H2 de apartado se componen como
+    // "{expresión objetivo}: {parte particular}" (h2Seo.js) para que todos los
+    // encabezados empujen el objetivo central de la página. Con ciudad conocida,
+    // cada arquetipo clasificado recibe su H2 compuesto; sin ciudad (o secciones
+    // no clasificadas que no sean el bloque de urgencia), se deja el original.
+    const compose = (key) => (cityName ? cityH2(lang, cityName, key) : null);
+    const withH2 = (section, h2) => {
+      if (!h2) return section;
+      const { lead, heading, rest } = heading2Parts(section);
+      return heading ? `${lead}<h2>${h2}</h2>${rest}` : section;
+    };
+    // El H2 de urgencia (Platino) es una pregunta con la ciudad dentro; se
+    // reconoce por su arranque interrogativo y pasa a la forma compuesta.
+    const URGENCY_HINTS = { es: '¿Cuándo', en: 'When', de: 'Wann', pt: 'Quando', fr: 'Quand', it: 'Quando', nl: 'Wanneer', zh: '什么时候', hi: 'कब', ko: '언제', ja: 'いつ' };
+    const isUrgency = (h) => {
+      const hint = URGENCY_HINTS[lang] || URGENCY_HINTS.es;
+      return /[?？]\s*$/.test(h) && h.includes(hint);
+    };
+
     let docSection;
     if (iDoc >= 0) {
-      const merged = canMerge ? `${P[iDoc].lead}<h2>${P[iDoc].heading}</h2>${P[iDoc].rest}${P[iLog].rest}` : sections[iDoc];
+      const docH2 = compose('doc') || P[iDoc].heading;
+      const merged = canMerge ? `${P[iDoc].lead}<h2>${docH2}</h2>${P[iDoc].rest}${P[iLog].rest}` : withH2(sections[iDoc], compose('doc'));
       docSection = collapseSection(merged);
     }
     let porqueSection = iPorQue >= 0 ? sections[iPorQue] : null;
     if (iPorQue >= 0) {
       const base = dropLastParagraph(P[iPorQue].rest); // fuera el CTA "Pide tu presupuesto…"
       const prepend = canMerge ? `${P[iGar].rest}${canCob ? P[iCob].rest : ''}` : '';
-      porqueSection = `${P[iPorQue].lead}<h2>${P[iPorQue].heading}</h2>${prepend}${base}`;
+      porqueSection = `${P[iPorQue].lead}<h2>${compose('porque') || P[iPorQue].heading}</h2>${prepend}${base}`;
     }
 
     const skip = new Set();
@@ -940,8 +961,10 @@
     const render = (i) => {
       if (i === iDoc && docSection !== undefined) return docSection;
       if (i === iPorQue && porqueSection !== null) return collapseSection(porqueSection);
-      if (i === iComo) return collapseSection(rewriteComoHeading(sections[i], lang));
-      if (i === iTipos) return collapseSection(sections[i]);
+      if (i === iComo) return collapseSection(cityName ? withH2(sections[i], compose('como')) : rewriteComoHeading(sections[i], lang));
+      if (i === iTipos) return collapseSection(withH2(sections[i], compose('tipos')));
+      if (i === iFerias) return withH2(sections[i], compose('ferias'));
+      if (i > 0 && cityName && isUrgency(P[i].heading || '')) return withH2(sections[i], compose('cuandoFeria'));
       return sections[i];
     };
     const out = [render(0)];
@@ -2543,7 +2566,7 @@
                    páginas-plantilla no puede clonar (capa 2 del plan SEO). -->
               {#if (section in cityData) && upcomingRegionFairs.length}
                 <section class="city-fairs sidebar-module city-upcoming" aria-label={upcomingFairsLabel[lang] || upcomingFairsLabel.es}>
-                  <h2>{upcomingFairsLabel[lang] || upcomingFairsLabel.es}</h2>
+                  <h2>{cityDisplayName ? cityH2(lang, cityDisplayName, 'upcoming') : (upcomingFairsLabel[lang] || upcomingFairsLabel.es)}</h2>
                   <ul class="city-upcoming-list">
                     {#each upcomingRegionFairs as fair}
                       <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a><span class="cu-date">{fair.date}</span></li>
@@ -2593,7 +2616,7 @@
         <!-- FAQs Section (B2B FAQ grids) — siempre en número par -->
         {#if faqsEven.length > 0}
           <section class="seo-faqs">
-            <h2>{copy.faqsTitle}</h2>
+            <h2>{isCityPage && cityDisplayName ? cityH2(lang, cityDisplayName, 'faqs') : copy.faqsTitle}</h2>
             <div class="faq-grid">
               {#each faqsEven as faq}
                 <article class="faq-item">
