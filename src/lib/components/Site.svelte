@@ -956,7 +956,9 @@
       if (!cityName || !sectionKey) return '';
       const src = `/img/seo/stands-para-ferias-en-${sectionKey.replace(/_/g, '-')}-documentacion-tecnica-del-recinto.mp4`;
       const t = compose('doc');
-      return `<figure class="oro-seo-figure oro-seo-video"><video controls playsinline preload="none" title="${t}" aria-label="${t}"><source src="${src}" type="video/mp4" /></video></figure>`;
+      // preload="metadata" (patrón del vídeo del vino, probado en producción): el
+      // navegador trae el primer fotograma y la duración, y el play arranca al gesto.
+      return `<figure class="oro-seo-figure oro-seo-video"><video src="${src}" controls playsinline preload="metadata" title="${t}" aria-label="${t}"></video></figure>`;
     };
     // El H2 de urgencia (Platino) es una pregunta con la ciudad dentro; se
     // reconoce por su arranque interrogativo y pasa a la forma compuesta.
