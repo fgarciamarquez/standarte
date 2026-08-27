@@ -1,5 +1,5 @@
 <script>
-  import { BRAND, SITE_ORIGIN } from '$lib/brand.js';
+  import { BRAND, SITE_ORIGIN, sqClaimLead } from '$lib/brand.js';
   import { onMount, tick } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, ctaBudget, preciosNav, projectUrl, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
@@ -725,7 +725,7 @@
   $: fairHeroTitle = BRAND.leadGen
     ? (SQ_FAIR_HERO[lang] || SQ_FAIR_HERO.es)(fairDisplayName)
     : strings.heroTitle(fairDisplayName);
-  $: seoTitle = `${strings.heroTitle(fairDisplayName)} | Standarte`;
+  $: seoTitle = `${BRAND.leadGen ? fairHeroTitle : strings.heroTitle(fairDisplayName)} | ${BRAND.name}`;
   // No itinerante: intro variada por slug (banco de variantes) para evitar que ~175
   // fichas compartan la misma meta-description (riesgo de duplicado ante Google).
   // Mensaje de posicionamiento FUNDAMENTAL de las fichas de feria: debe quedar grabado
@@ -750,7 +750,10 @@
   $: coreMsgText = coreMsg[lang] || coreMsg.es;
   // StandQuote no lleva el mensaje de posicionamiento de Standarte ("Stand de
   // calidad + red de expansión…"): es un concepto exclusivo de la marca madre.
-  $: seoDesc = (isItinerant
+  // En StandQuote el claim central ABRE la descripción (meta + og + H2 destacado
+  // visible): la promesa del marketplace por delante en cada ficha.
+  $: seoDesc = (BRAND.leadGen ? sqClaimLead(lang) : '')
+    + (isItinerant
     ? (introItinerant[lang] || introItinerant.es)(fair.name, localizedSector)
     : pickIntroVariant(lang, fair.slug, fair.name, localizedCity, localizedSector, fair.country))
     + (BRAND.leadGen ? '' : ' ' + (coreMsg[lang] || coreMsg.es));

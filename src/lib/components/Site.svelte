@@ -1,5 +1,5 @@
 <script>
-  import { BRAND } from '$lib/brand.js';
+  import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro } from '$lib/brand.js';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
@@ -1157,23 +1157,15 @@
     ja: '開催日確定の今後の見本市'
   };
 
-  // Titular de la portada en modo captación (StandQuote): promesa directa del
-  // marketplace en lugar del mensaje de constructor de Standarte.
-  const SQ_HERO = {
-    es: 'Recibe 5 presupuestos gratis para tu stand',
-    en: 'Get 5 free quotes for your stand',
-    pt: 'Receba 5 orçamentos grátis para o seu stand',
-    de: 'Erhalten Sie 5 kostenlose Angebote für Ihren Messestand',
-    fr: 'Recevez 5 devis gratuits pour votre stand',
-    it: 'Ricevi 5 preventivi gratuiti per il tuo stand'
-  };
-  $: sqHeroTitle = SQ_HERO[lang] || SQ_HERO.en;
+  // Titular de la portada en modo captación (StandQuote): el claim central del
+  // marketplace (brand.js) en lugar del mensaje de constructor de Standarte.
+  $: sqHeroTitle = sqClaim(lang);
 
   $: title = seoContent?.title || (section in cityData
-    ? `${cityTitle(section)} | Standarte`
+    ? `${cityTitle(section)} | ${BRAND.name}`
     : section === 'home'
-      ? copy.seoTitle
-      : `${sectionLabel(section)} | Standarte`);
+      ? (BRAND.leadGen ? `StandQuote | ${sqClaim(lang)}` : copy.seoTitle)
+      : `${sectionLabel(section)} | ${BRAND.name}`);
 
   // El <meta description> exige ≤160 caracteres, pero seoContent.introText es el párrafo
   // de cabecera pensado para lectura completa (visible en el hero y para motores de IA/GEO
@@ -1187,11 +1179,14 @@
     return text.slice(0, wordBoundary > 0 ? wordBoundary : max).trimEnd() + '…';
   }
 
-  $: description = seoContent
+  $: baseDescription = seoContent
     ? metaDescriptionFrom(seoContent.introText)
     : (section in cityData
-      ? `${cityTitle(section)}. ${copy.citiesIntro}`
+      ? `${cityTitle(section)}. ${BRAND.leadGen ? sqCitiesIntro(lang) : copy.citiesIntro}`
       : copy.seoDescription);
+  // StandQuote: el claim central abre TODAS las meta descriptions — es el texto que
+  // Google muestra bajo el resultado, así que la promesa va siempre por delante.
+  $: description = BRAND.leadGen ? metaDescriptionFrom(`${sqClaimLead(lang)}${baseDescription}`) : baseDescription;
 
   $: structuredData = JSON.stringify(buildStructuredData());
   $: structuredDataScript = `<script type="application/ld+json">${structuredData.replace(/</g, '\\u003c')}<` + '/script>';
@@ -2140,7 +2135,7 @@
   {/if}
   {#if ['home', 'contact', 'services', 'custom', 'luzpavilion', 'team'].includes(section)}
     <section id="local-stands" class="section local-stands">
-      <h2 class="section-intro">{copy.citiesIntro}</h2>
+      <h2 class="section-intro">{BRAND.leadGen ? sqCitiesIntro(lang) : copy.citiesIntro}</h2>
       <!-- El gemelo visible de la malla ("[ Ver todas las ciudades ]", componente
            MeshCoverageLinks) se retiró de la home el 2026-08-07: cientos de enlaces
            colgando de la portada diluían su autoridad. La malla como señal para
