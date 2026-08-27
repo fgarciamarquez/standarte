@@ -82,6 +82,17 @@ function archetypeFor(label) {
   return best;
 }
 
+// Vídeo del apartado "documentación técnica del recinto": misma técnica de
+// nombre-keyword, sobre el pool de vídeos de proyectos 3D (rotación determinista
+// por ciudad para que las plazas no repitan todas el mismo). Copias por hash:
+// el deploy compara por MD5, así que solo suben la primera vez.
+const VIDEO_POOL = [1, 2, 3, 6, 7, 8, 9, 10].map((i) => `img/proyectos_stand_3d_standarte_${i}.mp4`);
+const videoFor = (key) => {
+  let h = 0;
+  for (const ch of key) h = (h * 31 + ch.charCodeAt(0)) % 9973;
+  return VIDEO_POOL[h % VIDEO_POOL.length];
+};
+
 const outDir = path.join(root, 'static/img/seo');
 mkdirSync(outDir, { recursive: true });
 let count = 0;
@@ -91,7 +102,8 @@ for (const { key, label } of cities) {
   const jobs = [
     [ov.ferias || ARCH_SRC[archetypeFor(label)], `stands-para-ferias-en-${slug}-ferias-y-sectores.avif`],
     [ov.tipos || SRC_TIPOS, `stands-para-ferias-en-${slug}-tipos-de-stand.avif`],
-    [ov.porque || SRC_PORQUE, `stands-para-ferias-en-${slug}-por-que-elegirnos.avif`]
+    [ov.porque || SRC_PORQUE, `stands-para-ferias-en-${slug}-por-que-elegirnos.avif`],
+    [videoFor(key), `stands-para-ferias-en-${slug}-documentacion-tecnica-del-recinto.mp4`]
   ];
   for (const [src, name] of jobs) {
     copyFileSync(path.join(root, 'static', src.replace(/^img\//, 'img/')), path.join(outDir, name));

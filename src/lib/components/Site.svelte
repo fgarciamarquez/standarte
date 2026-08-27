@@ -939,6 +939,14 @@
       const pEnd2 = section.indexOf('</p>');
       return pEnd2 >= 0 ? section.slice(0, pEnd2 + 4) + img + section.slice(pEnd2 + 4) : section + img;
     };
+    // Vídeo keyword del apartado de documentación técnica (mismo patrón que las
+    // imágenes; preload="none": dentro del plegable no descarga nada hasta el play).
+    const seoVideo = () => {
+      if (!cityName || !sectionKey) return '';
+      const src = `/img/seo/stands-para-ferias-en-${sectionKey.replace(/_/g, '-')}-documentacion-tecnica-del-recinto.mp4`;
+      const t = compose('doc');
+      return `<figure class="oro-seo-figure oro-seo-video"><video controls playsinline preload="none" title="${t}" aria-label="${t}"><source src="${src}" type="video/mp4" /></video></figure>`;
+    };
     // El H2 de urgencia (Platino) es una pregunta con la ciudad dentro; se
     // reconoce por su arranque interrogativo y pasa a la forma compuesta.
     const URGENCY_HINTS = { es: '¿Cuándo', en: 'When', de: 'Wann', pt: 'Quando', fr: 'Quand', it: 'Quando', nl: 'Wanneer', zh: '什么时候', hi: 'कब', ko: '언제', ja: 'いつ' };
@@ -951,7 +959,7 @@
     if (iDoc >= 0) {
       const docH2 = compose('doc') || P[iDoc].heading;
       const merged = canMerge ? `${P[iDoc].lead}<h2>${docH2}</h2>${P[iDoc].rest}${P[iLog].rest}` : withH2(sections[iDoc], compose('doc'));
-      docSection = collapseSection(merged);
+      docSection = collapseSection(withImg(merged, seoVideo()));
     }
     let porqueSection = iPorQue >= 0 ? sections[iPorQue] : null;
     if (iPorQue >= 0) {

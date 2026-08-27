@@ -3725,9 +3725,10 @@ p b {
 .coverage-map-thumb img { width: 100%; height: auto; display: block; }
 
 /* Imagen del primer caso de éxito en el cuerpo (todo el ancho de la columna). */
-/* Imagen de refuerzo de apartado (nombre-keyword, ver scripts/build_seo_images.mjs). */
+/* Imagen/vídeo de refuerzo de apartado (nombre-keyword, ver scripts/build_seo_images.mjs). */
 .oro-seo-figure { margin: 1.4rem 0; }
 .oro-seo-figure img { width: 100%; height: auto; display: block; border-radius: 8px; }
+.oro-seo-video video { width: 100%; height: auto; display: block; border-radius: 8px; background: #16242c; }
 
 .oro-case-figure { margin: 1.7rem 0; }
 .oro-case-figure a { display: block; }
