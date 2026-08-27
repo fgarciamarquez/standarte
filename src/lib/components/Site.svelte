@@ -2581,44 +2581,11 @@
                 {#if !BRAND.leadGen}<a class="precios-pill" href={pathFor(lang, 'precios')}>{preciosNav[lang] || preciosNav.es}</a>{/if}
               </div>
 
-              <!-- Navegador de actividades: chips de color hacia los hubs por sector -->
-              {#if regionActivities.length}
-                <section class="activity-module sidebar-module" aria-label={ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}>
-                  {#if regionActivities.length > ACTIVITIES_COLLAPSE_THRESHOLD}
-                    <!-- Mismo patrón que la nube de ferias: el <h2> es la pestaña del desplegable. -->
-                    <details class="fairs-collapse">
-                      <summary class="fairs-collapse-summary">
-                        <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
-                        <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es} ({regionActivities.length})</h2>
-                        <span class="fairs-collapse-chevron" aria-hidden="true"></span>
-                      </summary>
-                      <ul class="activity-chips">
-                        {#each regionActivities as tag}
-                          <li>
-                            <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
-                              <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
-                            </a>
-                          </li>
-                        {/each}
-                        <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a></li>
-                      </ul>
-                    </details>
-                  {:else}
-                    <!-- Pocas actividades: sin desplegable, el título va como encabezado normal. -->
-                    <h2>{ACTIVITY_NAV_LABELS[lang] || ACTIVITY_NAV_LABELS.es}</h2>
-                    <ul class="activity-chips">
-                      {#each regionActivities as tag}
-                        <li>
-                          <a href={activityUrl(tag, lang)} style="--chip:{colorForTag(tag)}">
-                            <span class="chip-dot" aria-hidden="true"></span>{labelForTag(tag, lang)}
-                          </a>
-                        </li>
-                      {/each}
-                      <li><a class="ver-todas-link" href={activityIndexUrl(lang)}>{ALL_ACTIVITIES_LABELS[lang] || ALL_ACTIVITIES_LABELS.es} →</a></li>
-                    </ul>
-                  {/if}
-                </section>
-              {/if}
+              <!-- El navegador de actividades del sidebar ("Actividades asociadas a esta
+                   ciudad") se retiró el 2026-08-27 en ambas marcas, igual que la nube de
+                   ferias: sus chips diluían la autoridad del pilar. Los hubs /actividad
+                   siguen enlazados desde el botón "Actividades" del hero, las etiquetas
+                   de las fichas de feria y los cuerpos SEO; el módulo queda en git. -->
             </div>
           </aside>
         </div>
