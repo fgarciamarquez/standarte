@@ -1033,12 +1033,13 @@
       ? { '@type': 'Organization', name: 'StandQuote', url: SITE_ORIGIN }
       : { '@type': 'Organization', name: 'Standarte', url: 'https://standarte.es', logo: 'https://standarte.es/img/logo_standarte_rectanular.png', slogan: coreMsgText },
     areaServed: { '@type': 'City', name: fair.city }, description: seoDesc, url: canonical,
-    hasOfferCatalog: synergyOfferCatalog(lang),
+    ...(BRAND.leadGen ? {} : { hasOfferCatalog: synergyOfferCatalog(lang) }),
     ...(fairFreshness ? { dateModified: fairFreshness } : {})
   }).replace(/</g, '\\u003c');
   // La malla relacional para las máquinas: ItemList con las MISMAS ferias que el
   // módulo visible "Ferias relacionadas" (siblingFairs) — nunca puede divergir.
   $: meshJsonLd = (() => {
+    if (BRAND.leadGen) return null; // la malla de expansión es un servicio de Standarte
     const ld = relatedFairsItemList({
       canonical, lang, fairName: fairDisplayName,
       items: siblingFairs, urlFor: (slug) => fairUrl(slug, lang)

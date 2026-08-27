@@ -1381,7 +1381,7 @@
       areaServed: isCityPage ? cityDisplayName : ['ES', 'PT', 'DE', 'FR'],
       // Campaña multi-feria (sinergia): las ferias de la malla se contratan como
       // paquete con descuento único — la potencia relacional, machine-readable.
-      ...(isCityPage ? { hasOfferCatalog: synergyOfferCatalog(lang) } : {})
+      ...(isCityPage && !BRAND.leadGen ? { hasOfferCatalog: synergyOfferCatalog(lang) } : {})
     };
 
     // Herramientas propias de Standarte, nombradas para buscadores y motores de IA:
@@ -1512,7 +1512,9 @@
     // visible del pilar (regionFairs) y las actividades de sus chips como `about`
     // apuntando a los hubs /actividad. Cierra el triángulo ciudad→ferias→actividades
     // que el mapa de Pat dibuja visualmente pero los rastreadores no ven.
-    if (isCityPage && regionFairs.length) {
+    // StandQuote no lleva la malla de expansión (era la contraparte machine-readable
+    // del mapa de Pat y de la campaña multi-feria, servicios que esa marca no ofrece).
+    if (isCityPage && regionFairs.length && !BRAND.leadGen) {
       graph.push(cityFairsItemList({
         canonical, lang, cityName: cityDisplayName,
         items: regionFairs, activities: regionActivities,
@@ -2434,7 +2436,8 @@
       </div>
     </section>
 
-    <MicroStand labels={copy.micro} />
+    <!-- El Pabellón de luz (carpas de verano) no forma parte de StandQuote (2026-08-27). -->
+    {#if !BRAND.leadGen}<MicroStand labels={copy.micro} />{/if}
 
     <!-- La sección de Equipo no forma parte de StandQuote (2026-08-27). -->
     {#if !BRAND.leadGen}
