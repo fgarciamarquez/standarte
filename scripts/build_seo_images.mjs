@@ -58,6 +58,16 @@ const ARCH_SRC = {
 const SRC_TIPOS = 'img/trabajos/trabajos_promueve/thumbs/STANDS_2017_EMO_HANNOVER_ZAYER_1-md.avif';
 const SRC_PORQUE = 'img/trabajos/trabajos_promueve/thumbs/04-bost-emo-2023_2-md.avif';
 
+// Excepciones por ciudad (petición 2026-08-27): en estas plazas las tres imágenes
+// salen de la parte PÚBLICA de la galería de la portada (las 12 primeras, visibles
+// directamente; el resto del carrusel está en el DOM pero oculto con display:none).
+const PUBLIC_SET = {
+  ferias: 'img/trabajos/TCELUMATEC/2-md.avif',   // stand industrial Elumatec
+  tipos: 'img/trabajos/TCCONSTELLIUM/1-md.avif', // gran escala Constellium
+  porque: 'img/trabajos/TCMAGNOLIA/1-md.avif'    // carpintería premium Magnolia
+};
+const CITY_OVERRIDES = { bilbao: PUBLIC_SET, irun: PUBLIC_SET, vitoria: PUBLIC_SET };
+
 function archetypeFor(label) {
   const counts = {};
   for (const f of fairsData) {
@@ -77,10 +87,11 @@ mkdirSync(outDir, { recursive: true });
 let count = 0;
 for (const { key, label } of cities) {
   const slug = key.replace(/_/g, '-');
+  const ov = CITY_OVERRIDES[key] || {};
   const jobs = [
-    [ARCH_SRC[archetypeFor(label)], `stands-para-ferias-en-${slug}-ferias-y-sectores.avif`],
-    [SRC_TIPOS, `stands-para-ferias-en-${slug}-tipos-de-stand.avif`],
-    [SRC_PORQUE, `stands-para-ferias-en-${slug}-por-que-elegirnos.avif`]
+    [ov.ferias || ARCH_SRC[archetypeFor(label)], `stands-para-ferias-en-${slug}-ferias-y-sectores.avif`],
+    [ov.tipos || SRC_TIPOS, `stands-para-ferias-en-${slug}-tipos-de-stand.avif`],
+    [ov.porque || SRC_PORQUE, `stands-para-ferias-en-${slug}-por-que-elegirnos.avif`]
   ];
   for (const [src, name] of jobs) {
     copyFileSync(path.join(root, 'static', src.replace(/^img\//, 'img/')), path.join(outDir, name));
