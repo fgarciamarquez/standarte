@@ -2552,39 +2552,11 @@
                 </section>
               {/if}
 
-              <!-- Clúster pilar→ferias: enlaces a las ferias de la región -->
-              {#if regionFairs.length}
-                <section class="city-fairs sidebar-module" aria-label={cityFairsLabel[lang] || cityFairsLabel.es}>
-                  {#if regionFairs.length > FAIRS_COLLAPSE_THRESHOLD}
-                    <!-- Nube numerosa: PLEGADA por defecto; se despliega al pulsar. El título
-                         va DENTRO del <summary> (es la pestaña); sigue siendo <h2> para no
-                         romper la jerarquía de encabezados de la página (SEO).
-                         El reclamo de ahorro va tras el summary, sobre los botones. -->
-                    <details class="fairs-collapse">
-                      <summary class="fairs-collapse-summary">
-                        <span class="fairs-stack" aria-hidden="true"><span></span><span></span><span></span></span>
-                        <h2>{cityFairsLabel[lang] || cityFairsLabel.es} ({regionFairs.length})</h2>
-                        <span class="fairs-collapse-chevron" aria-hidden="true"></span>
-                      </summary>
-                      <p class="fairs-savings-note">{fairsSavingsNote[lang] || fairsSavingsNote.es}</p>
-                      <ul class="city-fairs-list">
-                        {#each regionFairs as fair}
-                          <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
-                        {/each}
-                      </ul>
-                    </details>
-                  {:else}
-                    <!-- Pocas ferias: sin desplegable, el título va como encabezado normal. -->
-                    <h2>{cityFairsLabel[lang] || cityFairsLabel.es}</h2>
-                    <p class="fairs-savings-note">{fairsSavingsNote[lang] || fairsSavingsNote.es}</p>
-                    <ul class="city-fairs-list">
-                      {#each regionFairs as fair}
-                        <li><a href={fairHrefSite(fair.slug)}>{fair.name}</a></li>
-                      {/each}
-                    </ul>
-                  {/if}
-                </section>
-              {/if}
+              <!-- El clúster pilar→ferias del sidebar ("Ferias relacionadas con lo que se
+                   expone aquí") se retiró el 2026-08-27 en ambas marcas: decenas de
+                   enlaces colgando de cada página-pilar diluían su autoridad. La señal
+                   para motores se mantiene por la vía del JSON-LD (malla/meshSeo), sin
+                   coste de enlazado visible; el módulo sigue en el historial de git. -->
 
               <div class="city-nav-module">
                 <details class="fairs-collapse">
