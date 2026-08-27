@@ -585,7 +585,7 @@
   function stripPatLinks(html) {
     return BRAND.leadGen && html ? html.replace(SQ_STRIP_RE, '$1') : html;
   }
-  $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq, cityDisplayName) : seoContent.body) : '';
+  $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq, cityDisplayName, section) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
   $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : rewriteTitulo(seoContent.h1, lang)) : seoContent.h1) : '';
   // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
@@ -875,7 +875,7 @@
     if (!heading) return section;
     return `${lead}<details class="oro-collapse"><summary class="oro-collapse-sum"><h2 class="oro-collapse-h">${heading}</h2><span class="oro-collapse-chevron" aria-hidden="true"></span></summary><div class="oro-collapse-body">${rest}</div></details>`;
   }
-  function transformOroBody(html, lang, bodyCase, cityName) {
+  function transformOroBody(html, lang, bodyCase, cityName, sectionKey) {
     if (!html || !html.includes('<h2>')) return html;
     // Reescribir el título del primer apartado (h2) igual que el h1.
     const tmap = tituloPrincipal[lang] || tituloPrincipal.es;
@@ -926,6 +926,19 @@
       const { lead, heading, rest } = heading2Parts(section);
       return heading ? `${lead}<h2>${h2}</h2>${rest}` : section;
     };
+    // Imagen de refuerzo del apartado (obra propia elegida por actividad en el
+    // generador scripts/build_seo_images.mjs): el NOMBRE del fichero y el alt
+    // replican el H2 compuesto, para que título, texto e imagen empujen lo mismo.
+    const seoImg = (key, fileSec) => {
+      if (!cityName || !sectionKey) return '';
+      const src = `/img/seo/stands-para-ferias-en-${sectionKey.replace(/_/g, '-')}-${fileSec}.avif`;
+      return `<figure class="oro-seo-figure"><img src="${src}" alt="${compose(key)}" loading="lazy" decoding="async" width="800" height="450" /></figure>`;
+    };
+    const withImg = (section, img) => {
+      if (!img) return section;
+      const pEnd2 = section.indexOf('</p>');
+      return pEnd2 >= 0 ? section.slice(0, pEnd2 + 4) + img + section.slice(pEnd2 + 4) : section + img;
+    };
     // El H2 de urgencia (Platino) es una pregunta con la ciudad dentro; se
     // reconoce por su arranque interrogativo y pasa a la forma compuesta.
     const URGENCY_HINTS = { es: '¿Cuándo', en: 'When', de: 'Wann', pt: 'Quando', fr: 'Quand', it: 'Quando', nl: 'Wanneer', zh: '什么时候', hi: 'कब', ko: '언제', ja: 'いつ' };
@@ -944,7 +957,7 @@
     if (iPorQue >= 0) {
       const base = dropLastParagraph(P[iPorQue].rest); // fuera el CTA "Pide tu presupuesto…"
       const prepend = canMerge ? `${P[iGar].rest}${canCob ? P[iCob].rest : ''}` : '';
-      porqueSection = `${P[iPorQue].lead}<h2>${compose('porque') || P[iPorQue].heading}</h2>${prepend}${base}`;
+      porqueSection = withImg(`${P[iPorQue].lead}<h2>${compose('porque') || P[iPorQue].heading}</h2>${prepend}${base}`, seoImg('porque', 'por-que-elegirnos'));
     }
 
     const skip = new Set();
@@ -962,8 +975,8 @@
       if (i === iDoc && docSection !== undefined) return docSection;
       if (i === iPorQue && porqueSection !== null) return collapseSection(porqueSection);
       if (i === iComo) return collapseSection(cityName ? withH2(sections[i], compose('como')) : rewriteComoHeading(sections[i], lang));
-      if (i === iTipos) return collapseSection(withH2(sections[i], compose('tipos')));
-      if (i === iFerias) return withH2(sections[i], compose('ferias'));
+      if (i === iTipos) return collapseSection(withImg(withH2(sections[i], compose('tipos')), seoImg('tipos', 'tipos-de-stand')));
+      if (i === iFerias) return withImg(withH2(sections[i], compose('ferias')), seoImg('ferias', 'ferias-y-sectores'));
       if (i > 0 && cityName && isUrgency(P[i].heading || '')) return withH2(sections[i], compose('cuandoFeria'));
       return sections[i];
     };
