@@ -19,6 +19,11 @@ const LANGS = new Set(['en', 'de', 'zh', 'hi', 'pt', 'fr', 'it', 'ko', 'ja', 'nl
 // elimina del HTML el bloque completo delimitado por <!-- ga:start --> … <!-- ga:end -->
 // en app.html. En Standarte el bloque queda tal cual.
 const GA_BLOCK = /<!-- ga:start[\s\S]*?<!-- ga:end -->/;
+// Sello de build SOLO para StandQuote (Vercel): identifica qué compilación sirve el
+// CDN al diagnosticar cachés/deploys ("a veces veo la versión vieja"). En Standarte
+// NO se emite: un sello por build cambiaría el hash de TODAS las páginas y rompería
+// el deploy incremental por FTP.
+const SQ_BUILD_STAMP = new Date().toISOString().slice(0, 16) + 'Z';
 const newsLangBySlug = new Map(news.map((n) => [n.slug, n.lang]));
 
 function langFromPath(pathname) {
@@ -33,7 +38,10 @@ export async function handle({ event, resolve }) {
   return resolve(event, {
     transformPageChunk: ({ html }) => {
       let out = html.replace(/<html lang="es"/, `<html lang="${lang}"`);
-      if (BRAND.leadGen) out = out.replace(GA_BLOCK, '<!-- sin rastreo de Google en esta marca -->');
+      if (BRAND.leadGen) {
+        out = out.replace(GA_BLOCK, '<!-- sin rastreo de Google en esta marca -->');
+        out = out.replace('</head>', `<meta name="sq-build" content="${SQ_BUILD_STAMP}" /></head>`);
+      }
       return out;
     }
   });
