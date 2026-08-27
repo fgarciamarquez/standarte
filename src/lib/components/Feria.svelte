@@ -1,6 +1,5 @@
 <script>
   import { BRAND, SITE_ORIGIN } from '$lib/brand.js';
-  import LeadForm from './LeadForm.svelte';
   import { onMount, tick } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, ctaBudget, preciosNav, projectUrl, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
@@ -1216,7 +1215,8 @@
 {/if}
 
 <main class="feria-page">
-  {#if BRAND.leadGen}<LeadForm {lang} fairName={fairDisplayName} fairSlug={fair.slug} cityName={fair.city} />{/if}
+  <!-- El formulario de leads del principio se retiró (2026-08-27): StandQuote usará
+       el formulario del final de la página, adaptado (pendiente de especificación). -->
   <!-- Panel de Pat (asesor de Expansión): flotante, carga diferida. Se siembra con el
        sector y la ciudad de ESTA feria, para que arranque ya en su contexto. -->
   {#if showWelcomeAdvisor && AdvisorComponent}

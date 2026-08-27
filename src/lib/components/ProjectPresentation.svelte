@@ -5,6 +5,7 @@
   //   (títulos, memoria, incluye/excluye, presupuesto, media con arrastrar y
   //   soltar, respuestas, pagado) usando el endpoint PHP con la service key.
   import { createEventDispatcher, onMount } from 'svelte';
+  import { BRAND } from '$lib/brand.js';
   import { adminAction, adminUpload, notifySend, approveProject, saveBilling, saveTestimonial } from '$lib/clientProject.js';
   const dispatch = createEventDispatcher();
 
@@ -417,9 +418,11 @@
   {/if}
 
   <section class="pz-block pz-media-block">
-    <a class="pz-guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado" target="_blank" rel="noopener">
-      <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
-    </a>
+    {#if !BRAND.leadGen}
+      <a class="pz-guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado" target="_blank" rel="noopener">
+        <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
+      </a>
+    {/if}
     <h2 class="pz-h2">{L.media}</h2>
     {#each data.media as m, mi (m.id)}
       <article class="pz-media">

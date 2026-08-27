@@ -201,6 +201,29 @@ export function cityH2(lang, cityName, key) {
   return `${p}${sep(lang)}${label(key, lang)}`;
 }
 
+// Composición GENÉRICA para cualquier apartado sin arquetipo propio: el texto original
+// del H2 pasa a ser la parte particular, con la ciudad redundante retirada (mejor
+// esfuerzo), los dos puntos internos convertidos en raya y la inicial en minúscula
+// donde la lengua lo pide (el alemán conserva sus mayúsculas; siglas y cifras, también).
+export function cityH2Custom(lang, cityName, particular) {
+  const p = (CITY_PREFIX[lang] || CITY_PREFIX.es)(cityName);
+  let rest = String(particular || '').trim();
+  if (cityName) {
+    rest = rest.split(cityName).join(' ')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\s+(en|em|in|a|ad|à|auf|op|bei|zu|de|da|do|dos|das|del|na|no|per|pour|voor|für)\s*([,:;—–-]|$)/gi, '$2')
+      .replace(/\s+([,:;)])/g, '$1')
+      .replace(/^\s*[,:;—–-]\s*/, '')
+      .replace(/[\s,:;—–-]+$/, '')
+      .trim();
+  }
+  rest = rest.replace(/:\s+/, ' — ');
+  if (!['de', 'zh', 'hi', 'ko', 'ja'].includes(lang) && !/^([A-Z0-9]{2}|\d)/.test(rest)) {
+    rest = rest.charAt(0).toLowerCase() + rest.slice(1);
+  }
+  return rest ? `${p}${sep(lang)}${rest}` : null;
+}
+
 // H2 de apartado en una página de FERIA: "Stands para SMAGUA: servicios para expositores".
 export function fairH2(lang, fairName, key) {
   const p = (FAIR_PREFIX[lang] || FAIR_PREFIX.es)(fairName);

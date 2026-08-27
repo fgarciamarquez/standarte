@@ -1,12 +1,11 @@
 <script>
   import { BRAND } from '$lib/brand.js';
-  import LeadForm from './LeadForm.svelte';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
-  import { cityH2 } from '$lib/h2Seo.js';
+  import { cityH2, cityH2Custom } from '$lib/h2Seo.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
@@ -892,7 +891,19 @@
     let sections = parts;
     if (!/^\s*<h2>/.test(parts[0])) { prefix = parts[0]; sections = parts.slice(1); }
     const n = sections.length;
-    if (n < 5) return html; // cuerpo breve: solo el CTA, sin reestructura
+    // Composición genérica también en cuerpos breves (sin reestructura): todos los
+    // H2 salvo el principal reinciden igualmente en la expresión objetivo.
+    const genericTail = (s) => {
+      const { lead, heading, rest } = heading2Parts(s);
+      const h2 = heading && cityName ? cityH2Custom(lang, cityName, heading) : null;
+      return h2 ? `${lead}<h2>${h2}</h2>${rest}` : s;
+    };
+    // El primer H2 solo se respeta si ES la expresión principal (tituloPrincipal la
+    // reescribió); en cuerpos no estándar (p. ej. arranque por el recinto) también
+    // se compone, para que ningún H2 quede fuera del patrón.
+    const MAIN_OK = { es: 'Diseño, construcción y montaje', en: 'Exhibition stand design and build', de: 'Design, Bau und Montage', pt: 'Design, construção e montagem', fr: 'Conception, construction et montage', it: 'Progettazione, costruzione', nl: 'Ontwerp, bouw en montage', zh: '设计、搭建与安装', hi: 'डिज़ाइन, निर्माण और असेंबली', ko: '디자인, 제작 및 설치', ja: '設計・施工・設営' };
+    const firstIsMain = (s) => (heading2Parts(s).heading || '').includes(MAIN_OK[lang] || MAIN_OK.es);
+    if (n < 5) return cityName ? prefix + sections.map((s, i) => (i === 0 && firstIsMain(s) ? s : genericTail(s))).join('') : html;
     let iComo = -1, iTipos = -1, iFerias = -1, iPat = -1, iPorQue = -1;
     sections.forEach((s, i) => {
       if (iComo < 0 && /<ol[ >]/.test(s)) iComo = i;
@@ -986,9 +997,13 @@
       if (i === iTipos) return collapseSection(withImg(withH2(sections[i], compose('tipos')), seoImg('tipos', 'tipos-de-stand')));
       if (i === iFerias) return withImg(withH2(sections[i], compose('ferias')), seoImg('ferias', 'ferias-y-sectores'));
       if (i > 0 && cityName && isUrgency(P[i].heading || '')) return withH2(sections[i], compose('cuandoFeria'));
+      // Cualquier otro apartado superviviente (garantía, logística, cobertura, diseño 3D,
+      // recinto, introducción de región…): composición genérica sobre su propio texto,
+      // para que TODOS los H2 reincidan en la expresión objetivo (2026-08-27).
+      if (i > 0 && cityName && P[i].heading) return withH2(sections[i], cityH2Custom(lang, cityName, P[i].heading));
       return sections[i];
     };
-    const out = [render(0)];
+    const out = [firstIsMain(sections[0]) ? render(0) : genericTail(sections[0])];
     if (iFerias > 0 && !skip.has(iFerias)) out.push(render(iFerias)); // "Ferias y sectores" → 2.º
     for (let i = 1; i < n; i++) {
       if (i === iFerias || skip.has(i)) continue;
@@ -2104,9 +2119,8 @@
   <!-- Buscador de ferias: primer elemento de la portada, nada más pasar el hero. Es la
        vía directa para quien ya sabe a qué feria va; el resto de la página sigue siendo
        la vía de descubrimiento (ciudades, actividades, Pat). -->
-  {#if BRAND.leadGen && (isCityPage || section === 'home')}
-    <LeadForm {lang} cityName={isCityPage ? cityDisplayName : ''} />
-  {/if}
+  <!-- El formulario de leads del principio se retiró (2026-08-27): StandQuote usará
+       el formulario del final de la página, adaptado (pendiente de especificación). -->
   {#if section === 'home'}
     <FairSearch {lang} />
   {:else if isCityPage && citySearchOpen}
@@ -2212,9 +2226,11 @@
     </section>
 
     <section id="services" class="section services">
-      <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
-        <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
-      </a>
+      {#if !BRAND.leadGen}
+        <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
+          <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
+        </a>
+      {/if}
       <div class="section-header">
         <h2>{copy.servicesTitle}</h2>
         <span></span>
