@@ -83,9 +83,12 @@
         }
       })();
     </script>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- Favicon por marca: PUBLIC_BRAND vacío en Standarte (/favicon.svg) y
+         'standquote' en StandQuote (/faviconstandquote.svg — círculo verde lima,
+         el mismo del punto-potencia de su logotipo). -->
+    <link rel="icon" type="image/svg+xml" href="/favicon%sveltekit.env.PUBLIC_BRAND%.svg" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon%sveltekit.env.PUBLIC_BRAND%.png" />
+    <link rel="shortcut icon" href="/favicon%sveltekit.env.PUBLIC_BRAND%.ico" type="image/x-icon" />
     <!-- Fuentes autoalojadas, incrustadas y variables. Ver static/fonts/fonts.css -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/roboto-latin.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/inconsolata-latin.woff2" crossorigin />
