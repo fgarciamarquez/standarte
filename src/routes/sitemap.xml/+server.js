@@ -6,10 +6,14 @@ import { getAllProjectIds } from '$lib/projectData.js';
 import { portfolioVideos, siteVideos } from '$lib/videosData.js';
 import { projectVideos } from '$lib/server/projectVideos.js';
 import news from '$lib/newsData.json';
+import { BRAND, SITE_ORIGIN } from '$lib/brand.js';
 
 export const prerender = true;
 
-const siteUrl = 'https://standarte.es';
+const siteUrl = SITE_ORIGIN;
+
+// Secciones que StandQuote no ofrece: fuera de su sitemap (blog, precios, garantía, galería).
+const SQ_EXCLUDED_SECTIONS = new Set(['noticias', 'precios', 'proyecto_auditado', 'custom', 'team']);
 
 // Notas de diseño (no romper sin motivo):
 // - Los proyectos se listan UNA vez por id, sin variantes ?lang=: la página es
@@ -40,7 +44,7 @@ export async function GET() {
   const urls = [];
 
   // 1. Secciones estáticas (home, servicios, ciudades, contacto...) por idioma
-  const staticSections = Object.keys(routes.es);
+  const staticSections = Object.keys(routes.es).filter((s) => !(BRAND.leadGen && SQ_EXCLUDED_SECTIONS.has(s)));
 
   staticSections.forEach((section) => {
     const alternates = [];
@@ -84,7 +88,7 @@ export async function GET() {
   });
 
   // 3. Noticias (noticias/[slug]) — todos los idiomas viven bajo /blog/
-  news.forEach((article) => {
+  (BRAND.leadGen ? [] : news).forEach((article) => {
     const group = news.filter(item => item.date === article.date && item.location === article.location);
     const alternates = group.map(item => ({
       hreflang: item.lang,

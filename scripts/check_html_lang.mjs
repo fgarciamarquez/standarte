@@ -42,6 +42,10 @@ for (const file of htmlFiles(dist)) {
     expected = LANGS.has(first) ? first : 'es';
   }
   const head = readFileSync(file, 'utf8').slice(0, 500);
+  // Stubs de redirección (SvelteKit los escribe para los redirect 308 del prerender,
+  // p. ej. las secciones retiradas de StandQuote): solo llevan un meta refresh y un
+  // enlace, sin contenido indexable — no aplica la comprobación de idioma.
+  if (/http-equiv="refresh"/.test(head)) continue;
   const m = head.match(/<html[^>]*\slang="([^"]*)"/);
   if (!m) { errors.push(`${rel}: sin atributo lang`); continue; }
   if (m[1] !== expected) errors.push(`${rel}: lang="${m[1]}" (esperado "${expected}")`);

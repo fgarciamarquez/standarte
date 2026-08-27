@@ -1,4 +1,4 @@
-import { SITE_ORIGIN } from './brand.js';
+import { BRAND, SITE_ORIGIN } from './brand.js';
 import { fairsData } from '$lib/fairsData.js';
 import { tagOrder } from '$lib/fairTags.js';
 import { jaFairSlugs, jaFairSlugsReverse, jaProjectSlugs, jaProjectSlugsReverse } from '$lib/jaSlugs.js';
@@ -2934,8 +2934,13 @@ export function resolveRoute(path) {
   return { lang, section, fairSlug, projectId, tag, copy: c, canonical };
 }
 
+// Secciones que StandQuote no ofrece: sus páginas ni se generan en esa marca.
+export const SQ_REMOVED_SECTIONS = new Set(['noticias', 'precios', 'proyecto_auditado', 'custom', 'team']);
+
 export const prerenderEntries = languages.flatMap((lang) => {
-  const normalRoutes = Object.keys(routes[lang]).map((section) => ({ path: pathFor(lang, section).replace(/^\/|\/$/g, '') }));
+  const normalRoutes = Object.keys(routes[lang])
+    .filter((section) => !(BRAND.leadGen && SQ_REMOVED_SECTIONS.has(section)))
+    .map((section) => ({ path: pathFor(lang, section).replace(/^\/|\/$/g, '') }));
   const fairRoutes = fairsData.map((fair) => ({ path: fairUrl(fair.slug, lang).replace(/^\//, '') }));
   // Solo `ja` tiene páginas de proyecto propias (/ja/プロジェクト/{slug}); los ids salen
   // de las claves de jaProjectSlugs (evita importar projectData, 3,7 MB, en el cliente).

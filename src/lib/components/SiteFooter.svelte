@@ -54,7 +54,7 @@
       <nav class="footer-site-map" aria-label="Standarte" hidden aria-hidden="true">
         <ul>
           <li><a href={pathFor(lang, 'services')} tabindex="-1">{copy.nav.services}</a></li>
-          <li><a href={pathFor(lang, 'custom')} tabindex="-1">{copy.nav.custom}</a></li>
+          {#if !BRAND.leadGen}<li><a href={pathFor(lang, 'custom')} tabindex="-1">{copy.nav.custom}</a></li>{/if}
           {#if !BRAND.leadGen}
             <li><a href={pathFor(lang, 'proyecto_auditado')} tabindex="-1">{uspNavLabel(lang)}</a></li>
             <li><a href={pathFor(lang, 'noticias')} tabindex="-1">{copy.nav.noticias}</a></li>

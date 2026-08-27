@@ -3,9 +3,11 @@
 // artículo se lleva embebido su propio contenido y nada más.
 import news from '$lib/newsData.json';
 import { error } from '@sveltejs/kit';
+import { BRAND } from '$lib/brand.js';
 
+// StandQuote no lleva blog: sin entries, ningún artículo se prerenderiza.
 export const entries = () => {
-  return news.map(item => ({ slug: item.slug }));
+  return BRAND.leadGen ? [] : news.map(item => ({ slug: item.slug }));
 };
 
 export function load({ params }) {

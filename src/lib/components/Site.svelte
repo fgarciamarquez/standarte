@@ -1311,8 +1311,8 @@
     const baseUrl = 'https://standarte.es';
     const navigationItems = [
       ['Servicios', pathFor('es', 'services')],
-      ['Galería', pathFor('es', 'custom')],
-      ['Equipo', pathFor('es', 'team')],
+      ...(BRAND.leadGen ? [] : [['Galería', pathFor('es', 'custom')]]),
+      ...(BRAND.leadGen ? [] : [['Equipo', pathFor('es', 'team')]]),
       ['Contacto', pathFor('es', 'contact')],
       ['Diseño y montaje de stands en Madrid', pathFor('es', 'madrid')],
       ['Diseño y montaje de stands en Barcelona', pathFor('es', 'barcelona')],
@@ -2027,7 +2027,7 @@
       {#if modularEnabled}
         <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
-      <a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
@@ -2248,6 +2248,8 @@
       </div>
     </section>
 
+    <!-- La Galería no forma parte de StandQuote (2026-08-27): sección y menú solo en Standarte. -->
+    {#if !BRAND.leadGen}
     <section id="custom" class="section portfolio">
       <div class="section-header">
         <h2>{copy.customTitle}</h2>
@@ -2331,6 +2333,7 @@
         </div>
       {/if}
     </section>
+    {/if}
 
     <!-- Nueva Sección: Prototipos 3D Premium -->
     <section id="prototipos-3d" class="section prototypes-carousel">
@@ -2433,6 +2436,8 @@
 
     <MicroStand labels={copy.micro} />
 
+    <!-- La sección de Equipo no forma parte de StandQuote (2026-08-27). -->
+    {#if !BRAND.leadGen}
     <section id="team" class="section team">
       <div class="section-header">
         <h2>{copy.teamTitle}</h2>
@@ -2525,6 +2530,7 @@
         </article>
       </div>
     </section>
+    {/if}
   {:else if seoContent}
     <div class="dedicated-seo-page">
       <div class="seo-container">

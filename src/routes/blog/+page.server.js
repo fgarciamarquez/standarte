@@ -1,4 +1,6 @@
 import news from '$lib/newsData.json';
+import { redirect } from '@sveltejs/kit';
+import { BRAND } from '$lib/brand.js';
 
 // newsData.json pesa ~790 KB. Importado desde el componente entraba en el bundle del
 // CLIENTE, y como el catch-all (/[...path]) importa el componente del blog de forma
@@ -11,6 +13,9 @@ import news from '$lib/newsData.json';
 export const prerender = true;
 
 export function load() {
+  // StandQuote no lleva blog: /blog queda como redirección a la portada (la ruta
+  // estática entra sola en el prerender, así que no basta con quitar los enlaces).
+  if (BRAND.leadGen) throw redirect(308, '/');
   return {
     news: news.map((n) => ({
       slug: n.slug,

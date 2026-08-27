@@ -1,5 +1,6 @@
 <script>
   import { pathFor, copy } from '$lib/siteData.js';
+  import { BRAND } from '$lib/brand.js';
   import ContactForm from '$lib/components/ContactForm.svelte';
 
   export let data;
@@ -67,10 +68,13 @@
         <a href={`/proyectos/${video.projectId}`} class="btn-back">
           ← Ver el proyecto completo
         </a>
-      {:else}
+      {:else if !BRAND.leadGen}
         <a href={`${pathFor('es', 'home')}#custom`} class="btn-back">
           ← Ver toda la galería de stands 3D
         </a>
+      {:else}
+        <!-- StandQuote no lleva galería en la portada: vuelta simple al inicio. -->
+        <a href={pathFor('es', 'home')} class="btn-back">← Volver al inicio</a>
       {/if}
     </nav>
   </article>

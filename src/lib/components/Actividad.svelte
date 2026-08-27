@@ -200,10 +200,12 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
-      <a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>
-      <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
-      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
-      <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen}
+        <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
+        <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
+        <a href={pathFor(lang, 'noticias')}>{copy.nav.noticias}</a>
+      {/if}
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>

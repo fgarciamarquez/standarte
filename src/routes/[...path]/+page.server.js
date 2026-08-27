@@ -1,4 +1,6 @@
-import { prerenderEntries, resolveRoute, cityData } from '$lib/siteData.js';
+import { prerenderEntries, resolveRoute, cityData, SQ_REMOVED_SECTIONS } from '$lib/siteData.js';
+import { redirect } from '@sveltejs/kit';
+import { BRAND } from '$lib/brand.js';
 import { richSeoData } from '$lib/server/richSeoData.js';
 import { fairSeoData, fairFaqExtra } from '$lib/server/fairSeoData.js';
 import { activitySeoData } from '$lib/server/activitySeoData.js';
@@ -46,6 +48,11 @@ function timelineSummaries(fairSlug, lang) {
 
 export function load({ params }) {
   const route = resolveRoute(params.path || '');
+  // StandQuote: las secciones retiradas redirigen a la portada de su idioma
+  // (cinturón por si alguna URL llega enlazada desde fuera; ni se prerenderizan).
+  if (BRAND.leadGen && SQ_REMOVED_SECTIONS.has(route.section)) {
+    throw redirect(308, route.lang && route.lang !== 'es' ? `/${route.lang}/` : '/');
+  }
   const richSeo = richSeoData[route.section] || null;
   if (!richSeo && (route.section in cityData || route.section === 'services')) {
     console.warn(`[seo] Falta richSeoData["${route.section}"]`);

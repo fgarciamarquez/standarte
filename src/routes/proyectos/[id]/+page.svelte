@@ -4,6 +4,7 @@
   import { tagsForProject } from '$lib/projectTags.js';
   import { labelForTag, colorForTag } from '$lib/fairTags.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
+  import { BRAND } from '$lib/brand.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
   import SiteFooter from '$lib/components/SiteFooter.svelte';
   import ContactForm from '$lib/components/ContactForm.svelte';
@@ -422,10 +423,12 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{currentCopy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
-      <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
-      <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
-      <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
-      <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen}
+        <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
+        <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
+        <a href={pathFor(lang, 'noticias')}>{currentCopy.nav.noticias}</a>
+      {/if}
       <div class="lang-menu lang-menu-desktop">
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
