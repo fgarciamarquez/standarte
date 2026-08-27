@@ -139,7 +139,7 @@
           {/each}
         </div>
       </div>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'contact')} class="nav-cta-btn">{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>{/if}
     </div>
   </nav>
   <div class="hero-subpage">

@@ -1189,11 +1189,13 @@
           {/each}
         </div>
       </div>
-      <a
-        href="#contact"
-        class="nav-cta-btn"
-        on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
-      >{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
+      {#if !BRAND.leadGen}
+        <a
+          href="#contact"
+          class="nav-cta-btn"
+          on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+        >{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
+      {/if}
     </div>
   </nav>
   

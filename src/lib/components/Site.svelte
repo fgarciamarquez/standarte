@@ -2065,7 +2065,7 @@
           {/each}
         </div>
       </div>
-      <a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>{/if}
     </div>
   </nav>
   
@@ -2117,7 +2117,13 @@
   <!-- El formulario de leads del principio se retiró (2026-08-27): StandQuote usará
        el formulario del final de la página, adaptado (pendiente de especificación). -->
   {#if section === 'home'}
-    <FairSearch {lang} />
+    {#if BRAND.leadGen}
+      <!-- StandQuote (2026-08-27): el formulario de contacto sube a la posición del
+           buscador (justo bajo el hero) y el buscador de un solo campo se retira. -->
+      <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} />
+    {:else}
+      <FairSearch {lang} />
+    {/if}
   {:else if isCityPage && citySearchOpen}
     <div id="city-fair-search">
       <FairSearch {lang} />
@@ -2431,6 +2437,8 @@
     </section>
     {/if}
 
+    <!-- Los contadores no forman parte de StandQuote (2026-08-27). -->
+    {#if !BRAND.leadGen}
     <section class="counters section">
       <div class="counter-grid">
         {#each counterItems as item, index}
@@ -2446,6 +2454,7 @@
         {/each}
       </div>
     </section>
+    {/if}
 
     <!-- El Pabellón de luz (carpas de verano) no forma parte de StandQuote (2026-08-27). -->
     {#if !BRAND.leadGen}<MicroStand labels={copy.micro} />{/if}
@@ -2674,7 +2683,11 @@
     </div>
   {/if}
 
-  <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} />
+  <!-- En la portada de StandQuote el formulario vive arriba (posición del buscador):
+       no se duplica al pie. En el resto de páginas y en Standarte, aquí como siempre. -->
+  {#if !(BRAND.leadGen && section === 'home')}
+    <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} />
+  {/if}
 
   <!-- Lightbox de proyecto: fuera de las ramas de sección (home / ciudad) para que esté
        disponible en AMBAS. Lo disparan tanto el grid de la galería (home) como las
