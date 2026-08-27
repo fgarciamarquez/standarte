@@ -12,8 +12,8 @@ con_texto: true
 - Sector(es): [[Turismo y Hostelería]]
 
 ## Actividades
+- [[Náutica]]
 - [[Turismo]]
-- [[nautica]]
 
 ## Descripción
 Nauticampo es el Salón Internacional de la Náutica de Recreo, el Deporte, la Aventura, el Caravaning y las Piscinas — la gran feria del aire libre en Portugal, celebrada cada año en la FIL (Parque das Naçōes): embarcaciones y motores, autocaravanas y camping, piscinas, spas y equipamiento outdoor ante decenas de miles de visitantes.
