@@ -19,6 +19,9 @@
   // StandQuote: título único del formulario (lo fija la pestaña activa del sistema
   // de pestañas de la portada); sustituye al par "Presupuesto en 24h / Prototipo 3D".
   export let sqTitle = '';
+  // StandQuote: servicio de la pestaña activa (Stand/Azafatas/Ferias). Se antepone a
+  // la descripción en el envío para que cada lead llegue etiquetado, sin tocar el PHP.
+  export let sqService = '';
 
   // Antetítulo sobre el título del formulario: previsión en 5 segundos.
   // Reclamo bajo el título del formulario: prototipo 3D en 3 días.
@@ -313,6 +316,7 @@
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    if (sqService) formData.set('form_descripcion', `[Servicio: ${sqService}] ` + (formData.get('form_descripcion') || ''));
     formData.append('form_elapsed', String(mountedAt ? Date.now() - mountedAt : 3000));
     // Los archivos se añaden a mano porque la lista la gestiona el componente (se puede
     // soltar, elegir y quitar): el <input type="file"> no refleja ese estado.

@@ -92,6 +92,49 @@
 @media (max-width: 480px) {
   [data-brand="standquote"] .sq-tab { padding: 10px 14px; font-size: 14px; }
 }
+
+/* "Cómo funciona": los pasos usan la maqueta de la casa (section-header con
+   subrayado + tool-card/tools-grid); aquí solo lo propio de la marca — el
+   número en el punto-potencia lima del logotipo y los distintivos. */
+[data-brand="standquote"] .sq-how-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brand-lime);
+  color: #16242c;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 0.7rem;
+}
+[data-brand="standquote"] .sq-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 26px;
+  list-style: none;
+  margin: 26px auto 0;
+  padding: 0 1rem;
+  max-width: 1120px;
+}
+[data-brand="standquote"] .sq-badges li {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 15px;
+  color: #16242c;
+}
+[data-brand="standquote"] .sq-badges li::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--brand-lime);
+  margin-right: 8px;
+}
 [data-brand="standquote"] .ai-geo-btn.ai-geo-reactivate {
   background: var(--brand-accent) !important;
   color: #fff !important;

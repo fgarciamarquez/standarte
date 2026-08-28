@@ -87,3 +87,64 @@ const SQ_PROPOSALS_TITLE = {
   ja: '実施済み提案の例'
 };
 export const sqProposalsTitle = (lang) => SQ_PROPOSALS_TITLE[lang] || SQ_PROPOSALS_TITLE.es;
+
+// "Cómo funciona" del marketplace (fase 1 frente a Neventum): tres pasos + los
+// distintivos de confianza. Solo afirmaciones honestas — nada de cifras inventadas.
+const SQ_HOW = {
+  es: { title: 'Cómo funciona', steps: [
+      ['Cuéntanos tu stand', 'La feria, los metros y tu presupuesto, en un minuto.'],
+      ['Seleccionamos 3 constructores', 'Verificados y con experiencia en tu ciudad y en tu feria.'],
+      ['Compara y elige', 'Tres propuestas adaptadas a tu presupuesto. Tú decides.']
+    ], badges: ['Constructores verificados', '3 propuestas comparables', 'Gratis y sin compromiso'] },
+  en: { title: 'How it works', steps: [
+      ['Tell us about your stand', 'The fair, the square metres and your budget — in one minute.'],
+      ['We select 3 builders', 'Verified, with experience in your city and your fair.'],
+      ['Compare and choose', 'Three proposals tailored to your budget. You decide.']
+    ], badges: ['Verified builders', '3 comparable proposals', 'Free, no obligation'] },
+  pt: { title: 'Como funciona', steps: [
+      ['Fale-nos do seu stand', 'A feira, os metros e o seu orçamento, num minuto.'],
+      ['Selecionamos 3 construtores', 'Verificados e com experiência na sua cidade e na sua feira.'],
+      ['Compare e escolha', 'Três propostas adaptadas ao seu orçamento. Você decide.']
+    ], badges: ['Construtores verificados', '3 propostas comparáveis', 'Grátis e sem compromisso'] },
+  de: { title: 'So funktioniert es', steps: [
+      ['Erzählen Sie uns von Ihrem Stand', 'Messe, Quadratmeter und Budget — in einer Minute.'],
+      ['Wir wählen 3 Standbauer aus', 'Verifiziert, mit Erfahrung in Ihrer Stadt und auf Ihrer Messe.'],
+      ['Vergleichen und wählen', 'Drei Vorschläge, angepasst an Ihr Budget. Sie entscheiden.']
+    ], badges: ['Verifizierte Standbauer', '3 vergleichbare Vorschläge', 'Kostenlos und unverbindlich'] },
+  fr: { title: 'Comment ça marche', steps: [
+      ['Parlez-nous de votre stand', 'Le salon, les mètres carrés et votre budget, en une minute.'],
+      ['Nous sélectionnons 3 constructeurs', 'Vérifiés, avec de l’expérience dans votre ville et votre salon.'],
+      ['Comparez et choisissez', 'Trois propositions adaptées à votre budget. Vous décidez.']
+    ], badges: ['Constructeurs vérifiés', '3 propositions comparables', 'Gratuit et sans engagement'] },
+  it: { title: 'Come funziona', steps: [
+      ['Raccontaci il tuo stand', 'La fiera, i metri quadri e il tuo budget, in un minuto.'],
+      ['Selezioniamo 3 costruttori', 'Verificati e con esperienza nella tua città e nella tua fiera.'],
+      ['Confronta e scegli', 'Tre proposte su misura per il tuo budget. Decidi tu.']
+    ], badges: ['Costruttori verificati', '3 proposte comparabili', 'Gratis e senza impegno'] },
+  nl: { title: 'Hoe het werkt', steps: [
+      ['Vertel ons over uw stand', 'De beurs, de vierkante meters en uw budget — in één minuut.'],
+      ['Wij selecteren 3 standbouwers', 'Geverifieerd, met ervaring in uw stad en op uw beurs.'],
+      ['Vergelijk en kies', 'Drie voorstellen op maat van uw budget. U beslist.']
+    ], badges: ['Geverifieerde standbouwers', '3 vergelijkbare voorstellen', 'Gratis en vrijblijvend'] },
+  zh: { title: '如何运作', steps: [
+      ['告诉我们您的展台需求', '展会、面积和预算，一分钟填写。'],
+      ['我们甄选3家搭建商', '经过验证，熟悉您的城市和展会。'],
+      ['比较并选择', '3个契合您预算的方案，由您决定。']
+    ], badges: ['经过验证的搭建商', '3个可比方案', '免费且无义务'] },
+  hi: { title: 'यह कैसे काम करता है', steps: [
+      ['अपने स्टैंड के बारे में बताएं', 'मेला, क्षेत्रफल और बजट — एक मिनट में।'],
+      ['हम 3 निर्माता चुनते हैं', 'सत्यापित, आपके शहर और मेले के अनुभव के साथ।'],
+      ['तुलना करें और चुनें', 'आपके बजट के अनुसार 3 प्रस्ताव। निर्णय आपका।']
+    ], badges: ['सत्यापित निर्माता', '3 तुलनीय प्रस्ताव', 'मुफ़्त और बिना बाध्यता'] },
+  ko: { title: '이용 방법', steps: [
+      ['부스에 대해 알려주세요', '박람회, 면적, 예산 — 1분이면 충분합니다.'],
+      ['3개 제작사를 선정합니다', '검증된 업체, 해당 도시와 박람회 경험 보유.'],
+      ['비교하고 선택하세요', '예산에 맞춘 3개의 제안. 결정은 고객의 몫입니다.']
+    ], badges: ['검증된 제작사', '비교 가능한 3개 제안', '무료·무의무'] },
+  ja: { title: 'ご利用の流れ', steps: [
+      ['ブースについて教えてください', '展示会・面積・ご予算を1分で入力。'],
+      ['3社の施工会社を選定', '認証済みで、その都市と展示会の経験を持つ会社です。'],
+      ['比較して選ぶ', 'ご予算に合わせた3つの提案。決めるのはお客様です。']
+    ], badges: ['認証済み施工会社', '比較できる3つの提案', '無料・義務なし'] }
+};
+export const sqHow = (lang) => SQ_HOW[lang] || SQ_HOW.es;

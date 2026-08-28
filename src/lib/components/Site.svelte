@@ -1,5 +1,5 @@
 <script>
-  import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro, sqProposalsTitle } from '$lib/brand.js';
+  import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro, sqProposalsTitle, sqHow } from '$lib/brand.js';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
@@ -2147,8 +2147,31 @@
             </button>
           {/each}
         </div>
-        <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} sqTitle={(SQ_TABS.find((t) => t.key === sqTab) || SQ_TABS[0]).title[lang] || (SQ_TABS.find((t) => t.key === sqTab) || SQ_TABS[0]).title.es} />
+        <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} sqTitle={(SQ_TABS.find((t) => t.key === sqTab) || SQ_TABS[0]).title[lang] || (SQ_TABS.find((t) => t.key === sqTab) || SQ_TABS[0]).title.es} sqService={(SQ_TABS.find((t) => t.key === sqTab) || SQ_TABS[0]).label.es} />
       </div>
+      <!-- Cómo funciona (fase 1 del marketplace): 3 pasos + distintivos de confianza.
+           Maquetado con el patrón de la casa: section-header con subrayado y las
+           tarjetas tool-card/tools-grid de la sección de herramientas. -->
+      <section class="section sq-how" aria-label={sqHow(lang).title}>
+        <div class="section-header">
+          <h2>{sqHow(lang).title}</h2>
+          <span></span>
+        </div>
+        <div class="tools-grid">
+          {#each sqHow(lang).steps as [t, d], i}
+            <article class="tool-card">
+              <span class="sq-how-num" aria-hidden="true">{i + 1}</span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </article>
+          {/each}
+        </div>
+        <ul class="sq-badges">
+          {#each sqHow(lang).badges as b}
+            <li>{b}</li>
+          {/each}
+        </ul>
+      </section>
     {:else}
       <FairSearch {lang} />
     {/if}
