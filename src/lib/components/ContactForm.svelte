@@ -16,6 +16,10 @@
   // sin la ficha de la persona de contacto (Patricia).
   export let compact = false;
 
+  // StandQuote: título único del formulario (lo fija la pestaña activa del sistema
+  // de pestañas de la portada); sustituye al par "Presupuesto en 24h / Prototipo 3D".
+  export let sqTitle = '';
+
   // Antetítulo sobre el título del formulario: previsión en 5 segundos.
   // Reclamo bajo el título del formulario: prototipo 3D en 3 días.
   const prototypeLabels = {
@@ -333,8 +337,12 @@
   <div class="contact-form">
     <div class="contact-layout">
       <aside class="contact-us">
-        <svelte:element this={compact ? 'h4' : 'h3'}>{labels.contactTitle}</svelte:element>
-        <svelte:element this={compact ? 'h4' : 'h3'} class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</svelte:element>
+        {#if sqTitle}
+          <svelte:element this={compact ? 'h4' : 'h3'}>{sqTitle}</svelte:element>
+        {:else}
+          <svelte:element this={compact ? 'h4' : 'h3'}>{labels.contactTitle}</svelte:element>
+          <svelte:element this={compact ? 'h4' : 'h3'} class="contact-subtitle">{prototypeLabels[lang] || prototypeLabels.es}</svelte:element>
+        {/if}
         {#if variant === 'light' && !compact}
           <figure class="contact-person">
             <img

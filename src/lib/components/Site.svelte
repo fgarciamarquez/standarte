@@ -1163,6 +1163,21 @@
   // marketplace (brand.js) en lugar del mensaje de constructor de Standarte.
   $: sqHeroTitle = sqClaim(lang);
 
+  // Pestañas del formulario de la portada StandQuote: cada servicio del marketplace
+  // con su etiqueta (lóbulo) y el título que fija dentro del formulario.
+  const SQ_TABS = [
+    { key: 'stand',
+      label: { es: 'Stand', en: 'Stand', pt: 'Stand', de: 'Stand', fr: 'Stand', it: 'Stand', nl: 'Stand', zh: '展台', hi: 'स्टैंड', ko: '부스', ja: 'ブース' },
+      title: { es: 'Stands', en: 'Stands', pt: 'Stands', de: 'Stands', fr: 'Stands', it: 'Stand', nl: 'Stands', zh: '展台', hi: 'स्टैंड', ko: '부스', ja: 'ブース' } },
+    { key: 'azafatas',
+      label: { es: 'Azafatas', en: 'Hostesses', pt: 'Hospedeiras', de: 'Hostessen', fr: 'Hôtesses', it: 'Hostess', nl: 'Hostessen', zh: '礼仪接待', hi: 'होस्टेस', ko: '행사 도우미', ja: 'コンパニオン' },
+      title: { es: 'Azafatas', en: 'Hostesses', pt: 'Hospedeiras', de: 'Hostessen', fr: 'Hôtesses', it: 'Hostess', nl: 'Hostessen', zh: '礼仪接待', hi: 'होस्टेस', ko: '행사 도우미', ja: 'コンパニオン' } },
+    { key: 'ferias',
+      label: { es: 'Ferias', en: 'Fairs', pt: 'Feiras', de: 'Messen', fr: 'Salons', it: 'Fiere', nl: 'Beurzen', zh: '展会', hi: 'मेले', ko: '박람회', ja: '展示会' },
+      title: { es: 'Ferias', en: 'Fairs', pt: 'Feiras', de: 'Messen', fr: 'Salons', it: 'Fiere', nl: 'Beurzen', zh: '展会', hi: 'मेले', ko: '박람회', ja: '展示会' } }
+  ];
+  let sqTab = 'stand';
+
   $: title = seoContent?.title || (section in cityData
     ? `${cityTitle(section)} | ${BRAND.name}`
     : section === 'home'
@@ -2120,9 +2135,20 @@
        el formulario del final de la página, adaptado (pendiente de especificación). -->
   {#if section === 'home'}
     {#if BRAND.leadGen}
-      <!-- StandQuote (2026-08-27): el formulario de contacto sube a la posición del
-           buscador (justo bajo el hero) y el buscador de un solo campo se retira. -->
-      <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} />
+      <!-- StandQuote (2026-08-28): el formulario vive bajo el hero dentro de un
+           sistema de pestañas (Stand / Azafatas / Ferias). Por ahora las tres
+           pestañas comparten el mismo formulario y solo cambia el título; la
+           adaptación de campos por servicio queda pendiente de especificación. -->
+      <div class="sq-tabs-wrap">
+        <div class="sq-tabs" role="tablist" aria-label="Servicios">
+          {#each SQ_TABS as t (t.key)}
+            <button type="button" role="tab" class="sq-tab" class:active={sqTab === t.key} aria-selected={sqTab === t.key} on:click={() => (sqTab = t.key)}>
+              {t.label[lang] || t.label.es}
+            </button>
+          {/each}
+        </div>
+        <ContactForm {lang} labels={copy} variant="light" bind:initialFair={initialFair} sqTitle={(SQ_TABS.find((t) => t.key === sqTab) || SQ_TABS[0]).title[lang] || (SQ_TABS.find((t) => t.key === sqTab) || SQ_TABS[0]).title.es} />
+      </div>
     {:else}
       <FairSearch {lang} />
     {/if}

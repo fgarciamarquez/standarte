@@ -54,6 +54,44 @@
   [data-brand="standquote"] .brand::after { width: 9px; height: 9px; transform: translateY(-9px); }
   [data-brand="standquote"] .brand { min-width: 150px; }
 }
+
+/* Pestañas del formulario de la portada (Stand / Azafatas / Ferias): lóbulos unidos
+   por arriba al bloque del formulario, con la activa en el acento de marca. */
+[data-brand="standquote"] .sq-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 26px auto -6px;
+  max-width: 720px;
+  padding: 0 15px;
+}
+[data-brand="standquote"] .sq-tab {
+  appearance: none;
+  border: 1px solid #d8d8d2;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  background: #eceae4;
+  color: #4a4a46;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 12px 26px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+[data-brand="standquote"] .sq-tab:hover { background: #e2e0d8; }
+[data-brand="standquote"] .sq-tab.active {
+  background: var(--brand-accent);
+  border-color: var(--brand-accent);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 -2px 8px rgba(14, 116, 144, 0.25);
+}
+@media (max-width: 480px) {
+  [data-brand="standquote"] .sq-tab { padding: 10px 14px; font-size: 14px; }
+}
 [data-brand="standquote"] .ai-geo-btn.ai-geo-reactivate {
   background: var(--brand-accent) !important;
   color: #fff !important;
