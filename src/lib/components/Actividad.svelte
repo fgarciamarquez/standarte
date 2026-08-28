@@ -1,5 +1,5 @@
 <script>
-  import { BRAND } from '$lib/brand.js';
+  import { BRAND, sqLoginLabel } from '$lib/brand.js';
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { projectIndex } from '$lib/projectIndex.js';
@@ -216,6 +216,7 @@
           {/each}
         </div>
       </div>
+      {#if BRAND.leadGen}<a class="sq-login" href="/login">{sqLoginLabel(lang)}</a>{/if}
       {#if !BRAND.leadGen}<a href="#contact" class="nav-cta-btn" on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>{/if}
     </div>
   </nav>

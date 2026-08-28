@@ -126,6 +126,24 @@
   font-size: 15px;
   color: #16242c;
 }
+/* "Login/Registro" del menú: a la derecha del selector de banderas, como enlace
+   destacado con el acento de marca. */
+[data-brand="standquote"] .sq-login {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  margin-left: 6px;
+  border-radius: 22px;
+  background: var(--brand-accent);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+[data-brand="standquote"] .sq-login:hover { background: var(--brand-accent-dark); }
+
 [data-brand="standquote"] .sq-badges li::before {
   content: "";
   display: inline-block;

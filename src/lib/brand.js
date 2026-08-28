@@ -148,3 +148,11 @@ const SQ_HOW = {
     ], badges: ['認証済み施工会社', '比較できる3つの提案', '無料・義務なし'] }
 };
 export const sqHow = (lang) => SQ_HOW[lang] || SQ_HOW.es;
+
+// Opción de menú "Login/Registro" (acceso de constructores asociados, fase 2).
+const SQ_LOGIN = {
+  es: 'Login/Registro', en: 'Login/Sign up', pt: 'Login/Registo', de: 'Login/Registrierung',
+  fr: 'Connexion/Inscription', it: 'Login/Registrazione', nl: 'Inloggen/Registreren',
+  zh: '登录/注册', hi: 'लॉगिन/पंजीकरण', ko: '로그인/가입', ja: 'ログイン/登録'
+};
+export const sqLoginLabel = (lang) => SQ_LOGIN[lang] || SQ_LOGIN.es;

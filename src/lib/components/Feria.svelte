@@ -10,6 +10,7 @@
   import { projectIndex } from '$lib/projectIndex.js';
   import { pickIntroVariant, foreignCountryName } from '$lib/introVariants.js';
   import { pickUspLine, uspNavLabel } from '$lib/uspSnippets.js';
+  import { sqLoginLabel } from '$lib/brand.js';
   import { fairH2 } from '$lib/h2Seo.js';
   import { CITY_POINTS } from '$lib/iberiaMeshData.js';
   import ContactForm from './ContactForm.svelte';
@@ -1189,6 +1190,7 @@
           {/each}
         </div>
       </div>
+      {#if BRAND.leadGen}<a class="sq-login" href="/login">{sqLoginLabel(lang)}</a>{/if}
       {#if !BRAND.leadGen}
         <a
           href="#contact"

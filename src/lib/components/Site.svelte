@@ -1,5 +1,5 @@
 <script>
-  import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro, sqProposalsTitle, sqHow } from '$lib/brand.js';
+  import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro, sqProposalsTitle, sqHow, sqLoginLabel } from '$lib/brand.js';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
@@ -2082,6 +2082,7 @@
           {/each}
         </div>
       </div>
+      {#if BRAND.leadGen}<a class="sq-login" href="/login">{sqLoginLabel(lang)}</a>{/if}
       {#if !BRAND.leadGen}<a href={pathFor(lang, 'contact')} class="nav-cta-btn" on:click={(e) => handleNavClick(e, 'contact')}>{ctaBudget(lang).main}<span class="cta-24h">{ctaBudget(lang).h24}</span></a>{/if}
     </div>
   </nav>
@@ -2277,6 +2278,8 @@
       </section>
     </section>
 
+    <!-- La sección de Servicios no forma parte de StandQuote (2026-08-28). -->
+    {#if !BRAND.leadGen}
     <section id="services" class="section services">
       {#if !BRAND.leadGen}
         <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
@@ -2317,6 +2320,7 @@
         {/each}
       </div>
     </section>
+    {/if}
 
     <!-- La Galería no forma parte de StandQuote (2026-08-27): sección y menú solo en Standarte. -->
     {#if !BRAND.leadGen}
