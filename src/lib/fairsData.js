@@ -1171,7 +1171,7 @@ export const fairsData = [
   {
     "name": "Agroexpo",
     "country": "es",
-    "slug": "stands-agroexpo-don-benito",
+    "slug": "stands-agroexpo",
     "city": "Don Benito",
     "sector": "Agroalimentario y Naturaleza"
   },

@@ -250,7 +250,7 @@ export const fairActivities = {
   "stand-feria-internacional-ganadera-zafra": ["ganaderia","multisectorial","agricultura-maquinaria"],
   "stand-feria-internacional-ganadera-trujillo": ["ganaderia","multisectorial","agricultura-maquinaria"],
   "stand-feria-nacional-queso-trujillo": ["alimentacion","gastronomia-hosteleria"],
-  "stands-agroexpo-don-benito": ["agricultura-maquinaria","ganaderia","multisectorial"],
+  "stands-agroexpo": ["agricultura-maquinaria","ganaderia","multisectorial"],
   "stand-web-summit-lisboa": ["digital-software","congreso-profesional"],
   "stand-tektonica-lisboa": ["construccion"],
   "stands-biemh-bilbao": ["maquinaria-industrial"],
