@@ -23,6 +23,9 @@
 //
 // Clave = sección de `routes` (siteData.js). Valor = fecha ISO (YYYY-MM-DD).
 export const seoFreshness = {
+  // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
+  // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
+  home: '2026-08-28',
   badajoz: '2026-08-28',
   montaje_badajoz: '2026-08-28',
   zaragoza: '2026-08-28',

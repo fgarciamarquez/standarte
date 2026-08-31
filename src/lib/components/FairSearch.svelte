@@ -7,7 +7,8 @@
   // (ContactForm.svelte): filtra por nombre o ciudad, sin distinguir mayúsculas ni
   // acentos. Aquí, además, cada sugerencia lleva ya la URL de su ficha.
   import { fairsData } from '$lib/fairsData.js';
-  import { fairUrl } from '$lib/siteData.js';
+  import { tagOrder, labelForTag, fairsForActivity } from '$lib/fairTags.js';
+  import { fairUrl, activityUrl } from '$lib/siteData.js';
 
   export let lang = 'es';
 
@@ -15,50 +16,69 @@
   // Ciudades "de relleno" del catálogo: no aportan pista y ensucian la sugerencia.
   const NON_CITY = ['Itinerante', 'España', 'Europa', 'Portugal', 'Portugal Sur'];
 
-  const options = (() => {
+  const fairOptions = (() => {
     const seen = new Set(); const out = [];
     for (const f of fairsData) {
       const k = norm(f.name);
       if (!k || seen.has(k)) continue;
       seen.add(k);
       const showCity = f.city && !NON_CITY.includes(f.city) && !k.includes(norm(f.city));
-      out.push({ name: f.name, city: showCity ? f.city : '', slug: f.slug, key: k, cityKey: norm(f.city) });
+      out.push({ type: 'fair', name: f.name, city: showCity ? f.city : '', slug: f.slug, key: k, cityKey: norm(f.city) });
     }
     return out.sort((a, b) => a.name.localeCompare(b.name, 'es'));
   })();
 
+  // Actividades (hubs /actividad/<tag>): el visitante que no sabe el nombre de su
+  // feria sí sabe su sector, así que buscar "alimentación" o "vino" debe llevarle al
+  // hub con todas las ferias de esa actividad. Las etiquetas se traducen, de modo que
+  // las opciones se recalculan con el idioma de la página.
+  $: activityOptions = tagOrder.map((tg) => {
+    const label = labelForTag(tg, lang);
+    return {
+      type: 'activity',
+      name: label,
+      tag: tg,
+      count: fairsForActivity(tg).length,
+      slug: 'act:' + tg,
+      key: norm(label),
+      cityKey: ''
+    };
+  }).filter((o) => o.key && o.count > 0);
+
+  $: options = [...activityOptions, ...fairOptions];
+
   const strings = {
-    es: { legend: 'Busca la feria que te interese', ph: 'Nombre de la feria o ciudad…', go: 'Buscar',
+    es: { legend: 'Busca la feria que te interese', ph: 'Feria, ciudad o actividad…', go: 'Buscar', actBadge: 'Actividad', countFairs: (n) => `${n} ${n === 1 ? 'feria' : 'ferias'}`,
       notFound: 'Esa feria no consta en nuestra base de datos, pero en breve estará dada de alta.',
       sending: 'Comprobando…', error: 'No hemos podido registrar tu consulta. Inténtalo de nuevo en unos minutos.' },
-    en: { legend: 'Search for the trade fair you are interested in', ph: 'Fair or city name…', go: 'Search',
+    en: { legend: 'Search for the trade fair you are interested in', ph: 'Fair, city or activity…', go: 'Search', actBadge: 'Activity', countFairs: (n) => `${n} ${n === 1 ? 'fair' : 'fairs'}`,
       notFound: 'That fair is not in our database yet, but it will be added shortly.',
       sending: 'Checking…', error: 'We could not register your query. Please try again in a few minutes.' },
-    de: { legend: 'Suchen Sie die Messe, die Sie interessiert', ph: 'Name der Messe oder Stadt…', go: 'Suchen',
+    de: { legend: 'Suchen Sie die Messe, die Sie interessiert', ph: 'Messe, Stadt oder Branche…', go: 'Suchen', actBadge: 'Branche', countFairs: (n) => `${n} ${n === 1 ? 'Messe' : 'Messen'}`,
       notFound: 'Diese Messe ist noch nicht in unserer Datenbank, wird aber in Kürze aufgenommen.',
       sending: 'Wird geprüft…', error: 'Ihre Anfrage konnte nicht registriert werden. Bitte versuchen Sie es in einigen Minuten erneut.' },
-    pt: { legend: 'Procure a feira que lhe interessa', ph: 'Nome da feira ou cidade…', go: 'Procurar',
+    pt: { legend: 'Procure a feira que lhe interessa', ph: 'Feira, cidade ou atividade…', go: 'Procurar', actBadge: 'Atividade', countFairs: (n) => `${n} ${n === 1 ? 'feira' : 'feiras'}`,
       notFound: 'Essa feira não consta na nossa base de dados, mas em breve será dada de alta.',
       sending: 'A verificar…', error: 'Não foi possível registar a sua consulta. Tente novamente dentro de alguns minutos.' },
-    fr: { legend: 'Cherchez le salon qui vous intéresse', ph: 'Nom du salon ou ville…', go: 'Rechercher',
+    fr: { legend: 'Cherchez le salon qui vous intéresse', ph: 'Salon, ville ou activité…', go: 'Rechercher', actBadge: 'Activité', countFairs: (n) => `${n} ${n === 1 ? 'salon' : 'salons'}`,
       notFound: "Ce salon ne figure pas dans notre base de données, mais il y sera ajouté sous peu.",
       sending: 'Vérification…', error: "Nous n'avons pas pu enregistrer votre demande. Réessayez dans quelques minutes." },
-    it: { legend: 'Cerca la fiera che ti interessa', ph: 'Nome della fiera o città…', go: 'Cerca',
+    it: { legend: 'Cerca la fiera che ti interessa', ph: 'Fiera, città o attività…', go: 'Cerca', actBadge: 'Attività', countFairs: (n) => `${n} ${n === 1 ? 'fiera' : 'fiere'}`,
       notFound: 'Questa fiera non è ancora nel nostro archivio, ma sarà inserita a breve.',
       sending: 'Verifica in corso…', error: 'Non è stato possibile registrare la tua richiesta. Riprova tra qualche minuto.' },
-    nl: { legend: 'Zoek de beurs die u interesseert', ph: 'Naam van de beurs of stad…', go: 'Zoeken',
+    nl: { legend: 'Zoek de beurs die u interesseert', ph: 'Beurs, stad of branche…', go: 'Zoeken', actBadge: 'Branche', countFairs: (n) => `${n} ${n === 1 ? 'beurs' : 'beurzen'}`,
       notFound: 'Deze beurs staat nog niet in onze database, maar wordt binnenkort toegevoegd.',
       sending: 'Bezig met controleren…', error: 'We konden uw vraag niet registreren. Probeer het over enkele minuten opnieuw.' },
-    zh: { legend: '搜索您感兴趣的展会', ph: '展会名称或城市…', go: '搜索',
+    zh: { legend: '搜索您感兴趣的展会', ph: '展会、城市或行业…', go: '搜索', actBadge: '行业', countFairs: (n) => `${n} 场展会`,
       notFound: '该展会尚未收录在我们的数据库中，但很快就会加入。',
       sending: '正在查询…', error: '未能提交您的查询，请几分钟后重试。' },
-    hi: { legend: 'वह मेला खोजें जिसमें आपकी रुचि है', ph: 'मेले या शहर का नाम…', go: 'खोजें',
+    hi: { legend: 'वह मेला खोजें जिसमें आपकी रुचि है', ph: 'मेला, शहर या क्षेत्र…', go: 'खोजें', actBadge: 'क्षेत्र', countFairs: (n) => `${n} मेले`,
       notFound: 'यह मेला अभी हमारे डेटाबेस में नहीं है, लेकिन शीघ्र ही जोड़ दिया जाएगा।',
       sending: 'जाँच जारी…', error: 'हम आपकी पूछताछ दर्ज नहीं कर सके। कृपया कुछ मिनट बाद पुनः प्रयास करें।' },
-    ko: { legend: '관심 있는 박람회를 검색하세요', ph: '박람회명 또는 도시…', go: '검색',
+    ko: { legend: '관심 있는 박람회를 검색하세요', ph: '박람회, 도시 또는 분야…', go: '검색', actBadge: '분야', countFairs: (n) => `박람회 ${n}건`,
       notFound: '해당 박람회는 아직 데이터베이스에 없지만 곧 등록될 예정입니다.',
       sending: '확인 중…', error: '문의를 등록하지 못했습니다. 잠시 후 다시 시도해 주세요.' },
-    ja: { legend: '気になる展示会を検索', ph: '展示会名または都市名…', go: '検索',
+    ja: { legend: '気になる展示会を検索', ph: '展示会・都市・分野…', go: '検索', actBadge: '分野', countFairs: (n) => `展示会 ${n}件`,
       notFound: 'その展示会はまだ当社のデータベースにありませんが、まもなく登録されます。',
       sending: '確認中…', error: 'お問い合わせを登録できませんでした。数分後にもう一度お試しください。' }
   };
@@ -90,15 +110,19 @@
     ? options
         .map((o) => ({ o, r: rank(o, q) }))
         .filter((x) => x.r < 9)
-        .sort((a, b) => a.r - b.r || a.o.name.localeCompare(b.o.name, 'es'))
+        .sort((a, b) => a.r - b.r
+          || (a.o.type === b.o.type ? 0 : a.o.type === 'activity' ? -1 : 1)
+          || a.o.name.localeCompare(b.o.name, 'es'))
         .map((x) => x.o)
         .slice(0, 40)
     : [];
   $: showSuggest = focused && matches.length > 0;
 
+  const hrefFor = (o) => (o.type === 'activity' ? activityUrl(o.tag, lang) : fairUrl(o.slug, lang));
+
   function go(o) {
     if (!o) return;
-    window.location.href = fairUrl(o.slug, lang);
+    window.location.href = hrefFor(o);
   }
 
   // Enviar: si hay una coincidencia clara, se va a su ficha; si no, se registra.
@@ -168,9 +192,13 @@
         <ul class="fs-list" id="fs-list" role="listbox">
           {#each matches as o, i (o.slug)}
             <li role="option" aria-selected={i === activeIdx}>
-              <a href={fairUrl(o.slug, lang)} class:active={i === activeIdx} on:mousedown|preventDefault={() => go(o)}>
+              <a href={hrefFor(o)} class:active={i === activeIdx} on:mousedown|preventDefault={() => go(o)}>
                 <span class="fs-name">{o.name}</span>
-                {#if o.city}<span class="fs-city">{o.city}</span>{/if}
+                {#if o.type === 'activity'}
+                  <span class="fs-act">{s.actBadge} · {s.countFairs(o.count)}</span>
+                {:else if o.city}
+                  <span class="fs-city">{o.city}</span>
+                {/if}
               </a>
             </li>
           {/each}
@@ -281,6 +309,16 @@
   .fs-list a.active { background: rgba(255, 200, 0, 0.16); }
   .fs-name { font-weight: 700; font-size: 0.98rem; }
   .fs-city { font-size: 0.85rem; color: #6c7169; white-space: nowrap; }
+  /* Insignia de los resultados de ACTIVIDAD: el mismo peso visual que la ciudad,
+     con el dorado de marca para que se lean como otro tipo de destino (hub). */
+  .fs-act {
+    margin-left: auto;
+    padding-left: 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #8a6d00;
+    white-space: nowrap;
+  }
 
   .fs-msg {
     max-width: 540px;
