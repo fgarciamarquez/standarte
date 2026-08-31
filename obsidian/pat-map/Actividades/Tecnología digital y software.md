@@ -2,7 +2,7 @@
 tipo: actividad
 clave: digital-software
 sector: "Tecnología e Innovación"
-n_ferias: 22
+n_ferias: 23
 ---
 # Tecnología digital y software
 
@@ -27,6 +27,7 @@ Actividad del sector [[Tecnología e Innovación]].
 - [[SBC Summit Lisbon]]
 - [[Smart City Expo World Congress Barcelona]]
 - [[TIS Sevilla]]
+- [[Talent Land España]]
 - [[Technology Show Valladolid]]
 - [[Web Summit Lisboa]]
 - [[automatica Munich]]

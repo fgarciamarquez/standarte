@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 8
+n_ferias: 9
 lat: 36.72
 lon: -4.42
 ---
@@ -18,3 +18,4 @@ Ciudad dibujada en el mapa de Pat.
 - [[H&T Málaga]]
 - [[San Diego Comic-Con Málaga]]
 - [[Simed Málaga]]
+- [[Talent Land España]]

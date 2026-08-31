@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-profesional
 sector: "Multisectorial y Profesional"
-n_ferias: 55
+n_ferias: 56
 ---
 # Congreso profesional
 
@@ -61,6 +61,7 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[Smart City Expo World Congress Barcelona]]
 - [[Solutions CSE Marseille]]
 - [[Sommet de l'Élevage]]
+- [[Talent Land España]]
 - [[Tanger Nexus]]
 - [[Visa For Music]]
 - [[Web Summit Lisboa]]
