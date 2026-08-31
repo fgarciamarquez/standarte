@@ -2,7 +2,7 @@
 tipo: actividad
 clave: moda-textil
 sector: "Comercio y Packaging"
-n_ferias: 16
+n_ferias: 17
 ---
 # Moda y textil
 
@@ -19,6 +19,7 @@ Actividad del sector [[Comercio y Packaging]].
 - [[Futurmoda]]
 - [[Maroc in Mode (MIM)]]
 - [[Maroc in Mode (MIM) Tánger]]
+- [[Modtissimo]]
 - [[Momad Madrid]]
 - [[Morocco Stitch & Tex]]
 - [[Morocco Textile Expo]]

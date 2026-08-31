@@ -2,7 +2,7 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 50
+n_ferias: 51
 ---
 # Alimentación
 
@@ -59,3 +59,4 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Seafood Expo Global Barcelona]]
 - [[Sirha Méditerranée]]
 - [[Snackex Lisboa]]
+- [[Tecnipão]]

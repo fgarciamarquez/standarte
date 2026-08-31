@@ -2,7 +2,7 @@
 tipo: actividad
 clave: regalo-decoracion
 sector: "Comercio y Packaging"
-n_ferias: 13
+n_ferias: 14
 ---
 # Regalo y decoración
 
@@ -15,6 +15,7 @@ Actividad del sector [[Comercio y Packaging]].
 - [[Feria de Stocks]]
 - [[Feria de Stocks de Ibiza]]
 - [[Fira Outlet de Soldeu]]
+- [[Gift Paper]]
 - [[Grand Salon Habitat]]
 - [[Intergift Madrid]]
 - [[Interior & Exterior Design Meetings]]

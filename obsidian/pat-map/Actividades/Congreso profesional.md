@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-profesional
 sector: "Multisectorial y Profesional"
-n_ferias: 54
+n_ferias: 55
 ---
 # Congreso profesional
 
@@ -51,6 +51,7 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[Portugal Smart Cities Summit]]
 - [[Préventica Bordeaux]]
 - [[Préventica Lyon]]
+- [[Qualifica]]
 - [[RE+ Portugal]]
 - [[Reunión Nacional de Óptica (RNO)]]
 - [[SBC Summit Lisbon]]

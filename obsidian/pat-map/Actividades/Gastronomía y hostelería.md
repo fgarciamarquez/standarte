@@ -2,7 +2,7 @@
 tipo: actividad
 clave: gastronomia-hosteleria
 sector: "Turismo y Hostelería"
-n_ferias: 41
+n_ferias: 42
 ---
 # Gastronomía y hostelería
 
@@ -48,5 +48,6 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Salon du Mariage]]
 - [[Salón Gourmets Madrid]]
 - [[Sirha Méditerranée]]
+- [[Tecnipão]]
 - [[Wine Days Mallorca – DO Binissalem]]
 - [[Xantar]]
