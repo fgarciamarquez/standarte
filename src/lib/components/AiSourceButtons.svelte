@@ -117,9 +117,9 @@
           {expansionLabel}
         </button>
       {/if}
-      {#if cityTools}
-        <a class="ai-geo-btn ai-geo-tool" href={actividadHref}>{activityLabel}</a>
-      {/if}
+      <!-- El botón "Actividades" se retiró del trío del hero de las páginas de ciudad
+           (2026-08-28) en ambas marcas: los hubs /actividad siguen enlazados desde las
+           etiquetas de las fichas de feria y los cuerpos SEO. -->
     </div>
   </section>
 {/if}
