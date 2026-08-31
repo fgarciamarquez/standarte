@@ -102,6 +102,13 @@ export function freshnessFor(section) {
 // clúster-ciudad. Se emite como <lastmod> en el sitemap y como dateModified en el JSON-LD
 // de la feria, para que los motores reindexen las satélites junto con su hub prioritario.
 // Clave = slug de feria (fairsData). Solo llevan fecha las ferias realmente refrescadas.
+// Frescura de las páginas de actividad (/actividad y /actividad/<tag>). Hasta el
+// 2026-08-28 no emitían lastmod: el sitemap las daba sin fecha pese a cambiar de
+// contenido. Se actualiza a mano, como el resto, cuando cambia lo que se ve.
+//   2026-08-28: acción + sujeto ("Standarte diseña y construye stands para el sector
+//   de X") al frente de cada hub y H2 "Stand para …" en el índice.
+export const activityFreshness = '2026-08-28';
+
 export const fairFreshness = {
   // Barcelona (Plaza Prioritaria) — clúster de 17 ferias satélite refrescado 2026-07-18.
   'stand-mwc-barcelona': '2026-08-27',

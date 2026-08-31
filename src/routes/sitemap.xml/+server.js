@@ -1,6 +1,6 @@
 import { fairsData } from '$lib/fairsData.js';
 import { languages, routes, pathFor, portfolios, fairUrl, projectUrl, activityIndexUrl, activityUrl } from '$lib/siteData.js';
-import { seoFreshness, fairFreshness } from '$lib/seoFreshness.js';
+import { seoFreshness, fairFreshness, activityFreshness } from '$lib/seoFreshness.js';
 import { tagOrder } from '$lib/fairTags.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import { portfolioVideos, siteVideos } from '$lib/videosData.js';
@@ -137,13 +137,13 @@ export async function GET() {
     const idxAlt = languages.map((lang) => ({ hreflang: lang, href: `${siteUrl}${activityIndexUrl(lang)}` }));
     idxAlt.push({ hreflang: 'x-default', href: `${siteUrl}${activityIndexUrl('es')}` });
     languages.forEach((lang) => {
-      urls.push({ loc: `${siteUrl}${activityIndexUrl(lang)}`, changefreq: 'weekly', priority: '0.7', alternates: idxAlt });
+      urls.push({ loc: `${siteUrl}${activityIndexUrl(lang)}`, lastmod: activityFreshness, changefreq: 'weekly', priority: '0.7', alternates: idxAlt });
     });
     tagOrder.forEach((tag) => {
       const alt = languages.map((lang) => ({ hreflang: lang, href: `${siteUrl}${activityUrl(tag, lang)}` }));
       alt.push({ hreflang: 'x-default', href: `${siteUrl}${activityUrl(tag, 'es')}` });
       languages.forEach((lang) => {
-        urls.push({ loc: `${siteUrl}${activityUrl(tag, lang)}`, changefreq: 'monthly', priority: '0.6', alternates: alt });
+        urls.push({ loc: `${siteUrl}${activityUrl(tag, lang)}`, lastmod: activityFreshness, changefreq: 'monthly', priority: '0.6', alternates: alt });
       });
     });
   }

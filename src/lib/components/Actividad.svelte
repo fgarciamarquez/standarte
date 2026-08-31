@@ -14,6 +14,7 @@
   } from '$lib/fairTags.js';
   import { pickUspLine, uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { activityPitch } from '$lib/activityPitch.js';
+  import { familyH2, actionLead, hubH2 } from '$lib/activitySeoLead.js';
   import FlagIcon from './FlagIcon.svelte';
   import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
@@ -269,7 +270,9 @@
           <p class="highlight">{t.idxLead}</p>
           <p class="act-pitch">{activityPitch(lang).text}</p>
           {#each indexGroups as g}
-            <h2 class="fam-h" style="--chip:{g.color}"><span class="chip-dot" aria-hidden="true"></span>{familyLabel(g.family, lang)}</h2>
+            <!-- El H2 declara la acción ("Stand para …"), no solo el nombre del sector:
+                 sin ella los motores no vinculaban estas páginas con el servicio. -->
+            <h2 class="fam-h" style="--chip:{g.color}"><span class="chip-dot" aria-hidden="true"></span>{familyH2(lang, familyLabel(g.family, lang))}</h2>
             <ul class="act-card-grid">
               {#each g.tags as tg}
                 <li>
@@ -283,12 +286,17 @@
           {/each}
         {:else}
           <p class="highlight">{activitySeo?.intro?.[lang] ? '' : t.hubLead(tagLabel)}</p>
-          {#if activitySeo?.intro?.[lang]}
-            <div class="act-intro">{@html activitySeo.intro[lang]}</div>
-          {/if}
+          <!-- Acción + sujeto SIEMPRE al frente del cuerpo (activitySeoLead.js): la
+               intro del sector describe el mercado, pero es esta frase la que declara
+               qué hace Standarte en él. Compuesta, así ninguna actividad se queda sin
+               ella (lo vigila scripts/check_activity_lead.mjs). -->
+          <div class="act-intro">
+            <p class="act-action-lead">{actionLead(lang, tagLabel)}</p>
+            {#if activitySeo?.intro?.[lang]}{@html activitySeo.intro[lang]}{/if}
+          </div>
           <p class="audited-note">{@html pickUspLine(lang, tag)}
             <a href={pathFor(lang, 'proyecto_auditado')}>{uspHome(lang).cta} →</a></p>
-          <h2 class="fairs-h">{t.fairsH}</h2>
+          <h2 class="fairs-h">{hubH2(lang, t.hubH1(tagLabel), 'fairs')}</h2>
           {#each hubGroups as grp}
             <h3 class="grp-city">{grp.label}</h3>
             <ul class="fair-list">
@@ -298,7 +306,7 @@
             </ul>
           {/each}
           {#if hubProjects.length}
-            <h2 class="fairs-h projects-h">{projectsH[lang] || projectsH.es}</h2>
+            <h2 class="fairs-h projects-h">{hubH2(lang, t.hubH1(tagLabel), 'projects')}</h2>
             <ul class="hub-projects">
               {#each hubProjects as pr}
                 <li>
