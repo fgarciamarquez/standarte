@@ -90,6 +90,8 @@ export const routes = {
     // Páginas paralelas de "constructor de stands" (defensa ante denuncias falsas).
     // Solo en español; ver src/lib/builderPages.js.
     constructor_stand_zaragoza: 'constructor_stand_zaragoza',
+    constructor_stand_madrid: 'constructor_stand_madrid',
+    constructor_stand_barcelona: 'constructor_stand_barcelona',
     constructor_stand_oporto: 'constructor_stand_oporto',
     constructor_stand_lisboa: 'constructor_stand_lisboa',
     constructor_stand_bilbao: 'constructor_stand_bilbao',
@@ -2946,6 +2948,7 @@ export function resolveRoute(path) {
 export const SQ_REMOVED_SECTIONS = new Set([
   'noticias', 'precios', 'proyecto_auditado', 'custom', 'team',
   // Las páginas de "constructor de stands" son un activo defensivo de Standarte.
+  'constructor_stand_madrid', 'constructor_stand_barcelona',
   'constructor_stand_zaragoza', 'constructor_stand_oporto', 'constructor_stand_lisboa',
   'constructor_stand_bilbao', 'constructor_stand_badajoz', 'constructor_stand_don_benito'
 ]);

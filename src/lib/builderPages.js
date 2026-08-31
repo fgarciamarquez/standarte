@@ -20,6 +20,8 @@
 // preparadas —comentadas— las 301 que envían la URL principal a su alternativa.
 export const builderPages = {
   constructor_stand_zaragoza:   { city: 'zaragoza',    cityName: 'Zaragoza',   indexable: true },
+  constructor_stand_madrid:     { city: 'madrid',      cityName: 'Madrid',     indexable: true },
+  constructor_stand_barcelona:  { city: 'barcelona',   cityName: 'Barcelona',  indexable: true },
   constructor_stand_oporto:     { city: 'oporto',      cityName: 'Oporto',     indexable: true },
   constructor_stand_lisboa:     { city: 'lisboa',      cityName: 'Lisboa',     indexable: true },
   constructor_stand_bilbao:     { city: 'bilbao',      cityName: 'Bilbao',     indexable: true },

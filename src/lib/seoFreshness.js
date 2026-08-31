@@ -25,6 +25,8 @@
 export const seoFreshness = {
   // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
   constructor_stand_zaragoza: '2026-08-31',
+  constructor_stand_madrid: '2026-08-31',
+  constructor_stand_barcelona: '2026-08-31',
   constructor_stand_oporto: '2026-08-31',
   constructor_stand_lisboa: '2026-08-31',
   constructor_stand_bilbao: '2026-08-31',

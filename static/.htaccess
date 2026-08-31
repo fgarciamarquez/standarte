@@ -89,6 +89,8 @@ DirectorySlash Off
   # vuelve a comentarla. No descomentar varias "por si acaso": mientras la principal
   # funcione, redirigirla sería regalar su posicionamiento.
   # RewriteRule ^diseno_montaje_stands_zaragoza/?$ https://standarte.es/constructor_stand_zaragoza [R=301,L]
+  # RewriteRule ^diseno_montaje_stands_madrid/?$ https://standarte.es/constructor_stand_madrid [R=301,L]
+  # RewriteRule ^diseno_montaje_stands_barcelona/?$ https://standarte.es/constructor_stand_barcelona [R=301,L]
   # RewriteRule ^diseno-construccion-montaje-stands-oporto/?$ https://standarte.es/constructor_stand_oporto [R=301,L]
   # RewriteRule ^diseno_montaje_stands_lisboa/?$ https://standarte.es/constructor_stand_lisboa [R=301,L]
   # RewriteRule ^diseno-construccion-montaje-stand-bilbao/?$ https://standarte.es/constructor_stand_bilbao [R=301,L]

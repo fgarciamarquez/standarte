@@ -51,6 +51,39 @@ export const builderSeoData = {
     }
   },
 
+  constructor_stand_madrid: {
+    es: {
+      breadcrumb: 'Constructor de stands en Madrid',
+      title: 'Constructor de stands en Madrid | Taller propio junto a IFEMA | Standarte',
+      h1: 'Constructor de stands en Madrid',
+      introText: 'Construimos stands a medida para IFEMA desde nuestro taller de San Fernando de Henares, a quince minutos del recinto: carpintería, estructura, mobiliario y gráfica fabricados por nuestro equipo, con capacidad de resolver cualquier ajuste el mismo día del montaje.',
+      body: `
+        <h2>Constructor de stands en Madrid: taller propio a quince minutos de IFEMA</h2>
+        <p>Nuestro taller está en San Fernando de Henares, en el corredor del Henares, a unos diez kilómetros de la Feria de Madrid. En una plaza como IFEMA esa distancia no es un dato de folleto: es la diferencia entre resolver un imprevisto de montaje en una hora o esperar a un transporte desde otra provincia. Fabricamos aquí y montamos allí, con el mismo equipo.</p>
+        <p>IFEMA es además el recinto más denso de España en calendario: sus doce pabellones encadenan certámenes casi sin respiro, y eso comprime las ventanas de montaje y desmontaje. Por eso construimos con premontaje en taller —el stand se arma entero antes de salir— y llegamos al pabellón a ensamblar, no a improvisar.</p>
+        ${paso('Madrid')}
+        ${tipos('Madrid')}
+        <h2>Constructor de stands en Madrid: ferias del recinto</h2>
+        <p>Construimos para todo el calendario de IFEMA: <a href="/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/ferias/stand-sicur-madrid">SICUR</a>, <a href="/ferias/stand-salon-look-madrid">Salón Look</a>, <a href="/ferias/stand-veteco-madrid">Veteco</a>, <a href="/ferias/stand-madrid-tech-show">Madrid Tech Show</a>, <a href="/ferias/stand-hip-madrid">HIP</a>, <a href="/ferias/stand-meat-attraction-madrid">Meat Attraction</a> y <a href="/ferias/stand-advanced-manufacturing-madrid">Advanced Manufacturing</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno_montaje_stands_madrid">stands para ferias en Madrid</a>.</p>
+        ${porque('Madrid')}`
+    }
+  },  constructor_stand_barcelona: {
+    es: {
+      breadcrumb: 'Constructor de stands en Barcelona',
+      title: 'Constructor de stands en Barcelona | Taller propio | Standarte',
+      h1: 'Constructor de stands en Barcelona',
+      introText: 'Construimos stands a medida para Fira de Barcelona —Gran Via y Montjuïc— con fabricación en taller propio y premontaje antes de salir: estructuras calculadas y certificadas, acabados de carpintería premium y montaje ajustado a las ventanas cortas de los grandes congresos.',
+      body: `
+        <h2>Constructor de stands en Barcelona: construir para Gran Via y para Montjuïc</h2>
+        <p>Barcelona no es un recinto, son dos con carácter distinto. Gran Via, en L'Hospitalet, es un recinto moderno y de gran escala que acoge los certámenes internacionales más exigentes —del <a href="/ferias/stand-mwc-barcelona">MWC</a> al <a href="/ferias/stand-ise-barcelona">ISE</a>—, con normativa estricta de montaje y expositores acostumbrados a un acabado impecable. Montjuïc, en la ciudad, impone otras reglas: espacios más compartimentados y accesos más ajustados para la descarga.</p>
+        <p>Construir aquí exige anticipación: el cálculo estructural y la documentación de las dobles alturas se presentan con plazo, las ventanas de montaje son caras y cortas, y no hay margen para resolver en pabellón lo que debió resolverse en taller. Por eso premontamos el stand completo antes de cargarlo y llegamos a Fira con la gráfica puesta y la instalación probada.</p>
+        ${paso('Barcelona')}
+        ${tipos('Barcelona')}
+        <h2>Constructor de stands en Barcelona: ferias del recinto</h2>
+        <p>Construimos para las grandes citas de Fira: <a href="/ferias/stand-mwc-barcelona">MWC</a>, <a href="/ferias/stand-ise-barcelona">ISE</a>, <a href="/ferias/stand-alimentaria-barcelona">Alimentaria</a>, <a href="/ferias/stand-hispack-barcelona">Hispack</a>, <a href="/ferias/stand-hostelco-barcelona">Hostelco</a>, <a href="/ferias/stand-construmat-barcelona">Construmat</a>, <a href="/ferias/stand-expoquimia-barcelona">Expoquimia</a> y <a href="/ferias/stand-smart-city-expo-world-congress-barcelona">Smart City Expo World Congress</a>. El servicio completo de diseño y montaje está en <a href="/diseno_montaje_stands_barcelona">stands para ferias en Barcelona</a>.</p>
+        ${porque('Barcelona')}`
+    }
+  },
   constructor_stand_oporto: {
     es: {
       breadcrumb: 'Constructor de stands en Oporto',
