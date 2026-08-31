@@ -1,5 +1,5 @@
 import { fairsData } from '$lib/fairsData.js';
-import { languages, routes, pathFor, portfolios, fairUrl, projectUrl, activityIndexUrl, activityUrl } from '$lib/siteData.js';
+import { languages, routes, pathFor, portfolios, fairUrl, projectUrl, activityIndexUrl, activityUrl, SQ_REMOVED_SECTIONS } from '$lib/siteData.js';
 import { seoFreshness, fairFreshness, activityFreshness } from '$lib/seoFreshness.js';
 import { tagOrder } from '$lib/fairTags.js';
 import { getAllProjectIds } from '$lib/projectData.js';
@@ -12,8 +12,10 @@ export const prerender = true;
 
 const siteUrl = SITE_ORIGIN;
 
-// Secciones que StandQuote no ofrece: fuera de su sitemap (blog, precios, garantía, galería).
-const SQ_EXCLUDED_SECTIONS = new Set(['noticias', 'precios', 'proyecto_auditado', 'custom', 'team']);
+// Secciones que StandQuote no ofrece. ÚNICA fuente de verdad: la misma lista que usa
+// el generador de páginas (siteData.js). Tenerla duplicada aquí hizo que el sitemap de
+// StandQuote anunciara páginas que esa marca no genera —404 servidos a Google—.
+const SQ_EXCLUDED_SECTIONS = SQ_REMOVED_SECTIONS;
 
 // Notas de diseño (no romper sin motivo):
 // - Los proyectos se listan UNA vez por id, sin variantes ?lang=: la página es

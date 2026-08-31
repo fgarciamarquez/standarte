@@ -2,6 +2,7 @@ import { prerenderEntries, resolveRoute, cityData, SQ_REMOVED_SECTIONS } from '$
 import { redirect } from '@sveltejs/kit';
 import { BRAND } from '$lib/brand.js';
 import { richSeoData } from '$lib/server/richSeoData.js';
+import { builderSeoData } from '$lib/server/builderSeoData.js';
 import { fairSeoData, fairFaqExtra } from '$lib/server/fairSeoData.js';
 import { activitySeoData } from '$lib/server/activitySeoData.js';
 import { getProjectById } from '$lib/projectData.js';
@@ -53,7 +54,8 @@ export function load({ params }) {
   if (BRAND.leadGen && SQ_REMOVED_SECTIONS.has(route.section)) {
     throw redirect(308, route.lang && route.lang !== 'es' ? `/${route.lang}/` : '/');
   }
-  const richSeo = richSeoData[route.section] || null;
+  // Las páginas paralelas de constructor tienen su propio origen de contenido.
+  const richSeo = richSeoData[route.section] || builderSeoData[route.section] || null;
   if (!richSeo && (route.section in cityData || route.section === 'services')) {
     console.warn(`[seo] Falta richSeoData["${route.section}"]`);
   }

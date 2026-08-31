@@ -40,7 +40,13 @@ function* htmlFiles(dir) {
 const unescape = (s) => s
   .replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/&#39;/g, "'").replace(/&quot;/g, '"');
 
+// Páginas paralelas de "constructor de stands" (src/lib/builderPages.js): comparten
+// el CTA con las de ciudad, pero su expresión objetivo es OTRA y su patrón también.
+// Se validan con el mismo rigor, contra su propio prefijo.
+const BUILDER_PREFIX = 'Constructor de stands en';
+
 let cityPages = 0;
+let builderPages = 0;
 const errors = [];
 for (const file of htmlFiles(dist)) {
   const html = readFileSync(file, 'utf8');
@@ -49,10 +55,14 @@ for (const file of htmlFiles(dist)) {
   // (la portada/contacto comparten la expresión en su intro y no cuentan).
   if (!html.includes('class="oro-cta-espacio')) continue; // el ELEMENTO, no la regla CSS inlineada
   const h2s = [...html.matchAll(/<h2[^>]*>([^<]{2,160})<\/h2>/g)].map((m) => unescape(m[1]).trim());
-  cityPages++;
+  const rel = path.relative(dist, file).replace(/\\/g, '/');
+  const isBuilder = /(^|\/)constructor_stand_/.test(rel);
+  if (isBuilder) builderPages++; else cityPages++;
   for (const t of h2s) {
-    const ok = MAIN.some((p) => t.includes(p)) || PREFIXES.some((p) => t.includes(p));
-    if (!ok) errors.push(`${path.relative(dist, file)}: "${t.slice(0, 90)}"`);
+    const ok = isBuilder
+      ? t.includes(BUILDER_PREFIX)
+      : (MAIN.some((p) => t.includes(p)) || PREFIXES.some((p) => t.includes(p)));
+    if (!ok) errors.push(`${rel}: "${t.slice(0, 90)}"`);
   }
 }
 
@@ -62,4 +72,4 @@ if (errors.length) {
   if (errors.length > 25) console.error(`  ... y ${errors.length - 25} más`);
   process.exit(1);
 }
-console.log(`[check-h2] ✔ OK — todos los H2 siguen el patrón de reincidencia en ${cityPages} páginas de ciudad.`);
+console.log(`[check-h2] ✔ OK — todos los H2 siguen el patrón de reincidencia en ${cityPages} páginas de ciudad y ${builderPages} de constructor.`);

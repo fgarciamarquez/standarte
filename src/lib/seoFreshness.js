@@ -23,6 +23,13 @@
 //
 // Clave = sección de `routes` (siteData.js). Valor = fecha ISO (YYYY-MM-DD).
 export const seoFreshness = {
+  // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
+  constructor_stand_zaragoza: '2026-08-31',
+  constructor_stand_oporto: '2026-08-31',
+  constructor_stand_lisboa: '2026-08-31',
+  constructor_stand_bilbao: '2026-08-31',
+  constructor_stand_badajoz: '2026-08-31',
+  constructor_stand_don_benito: '2026-08-31',
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
   home: '2026-08-28',

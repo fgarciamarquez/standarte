@@ -87,6 +87,14 @@ export const routes = {
     sevilla: 'diseno_montaje_stands_sevilla',
     ciudad_real: 'diseno_montaje_stands_ciudad_real',
     zaragoza: 'diseno_montaje_stands_zaragoza',
+    // Páginas paralelas de "constructor de stands" (defensa ante denuncias falsas).
+    // Solo en español; ver src/lib/builderPages.js.
+    constructor_stand_zaragoza: 'constructor_stand_zaragoza',
+    constructor_stand_oporto: 'constructor_stand_oporto',
+    constructor_stand_lisboa: 'constructor_stand_lisboa',
+    constructor_stand_bilbao: 'constructor_stand_bilbao',
+    constructor_stand_badajoz: 'constructor_stand_badajoz',
+    constructor_stand_don_benito: 'constructor_stand_don_benito',
     montaje_zafra: 'montaje_stand_zafra',
     montaje_don_benito: 'montaje_stand_don_benito',
     montaje_badajoz: 'montaje_stand_badajoz',
@@ -2935,7 +2943,12 @@ export function resolveRoute(path) {
 }
 
 // Secciones que StandQuote no ofrece: sus páginas ni se generan en esa marca.
-export const SQ_REMOVED_SECTIONS = new Set(['noticias', 'precios', 'proyecto_auditado', 'custom', 'team']);
+export const SQ_REMOVED_SECTIONS = new Set([
+  'noticias', 'precios', 'proyecto_auditado', 'custom', 'team',
+  // Las páginas de "constructor de stands" son un activo defensivo de Standarte.
+  'constructor_stand_zaragoza', 'constructor_stand_oporto', 'constructor_stand_lisboa',
+  'constructor_stand_bilbao', 'constructor_stand_badajoz', 'constructor_stand_don_benito'
+]);
 
 export const prerenderEntries = languages.flatMap((lang) => {
   const normalRoutes = Object.keys(routes[lang])

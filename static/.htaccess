@@ -81,6 +81,20 @@ DirectorySlash Off
   # 2026-08-31: Oporto cambia de URL como defensa ante denuncias (mismo criterio que
   # Bilbao: hifenación, verbo 'construcción' y 'stands' en plural). 301 directa.
   RewriteRule ^diseno_montaje_stands_oporto/?$ https://standarte.es/diseno-construccion-montaje-stands-oporto [R=301,L]
+
+  # ─── PLAN DE EMERGENCIA ANTE DENUNCIA FALSA (preparado, NO activo) ──────────────
+  # Si una denuncia tumba el posicionamiento de una página de ciudad, descomenta SOLO
+  # su línea: la URL atacada pasará a redirigir a su página paralela de constructor,
+  # que ya lleva tiempo indexada y con autoridad propia. Al resolverse la denuncia,
+  # vuelve a comentarla. No descomentar varias "por si acaso": mientras la principal
+  # funcione, redirigirla sería regalar su posicionamiento.
+  # RewriteRule ^diseno_montaje_stands_zaragoza/?$ https://standarte.es/constructor_stand_zaragoza [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-oporto/?$ https://standarte.es/constructor_stand_oporto [R=301,L]
+  # RewriteRule ^diseno_montaje_stands_lisboa/?$ https://standarte.es/constructor_stand_lisboa [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stand-bilbao/?$ https://standarte.es/constructor_stand_bilbao [R=301,L]
+  # RewriteRule ^diseno_montaje_stands_badajoz/?$ https://standarte.es/constructor_stand_badajoz [R=301,L]
+  # RewriteRule ^montaje_stand_don_benito/?$ https://standarte.es/constructor_stand_don_benito [R=301,L]
+  # ───────────────────────────────────────────────────────────────────────────────
   RewriteRule ^construccion_stands_lisboa/?$ https://standarte.es/diseno_montaje_stands_lisboa [R=301,L]
   RewriteRule ^construccion_stands_malaga/?$ https://standarte.es/diseno_montaje_stands_malaga [R=301,L]
   RewriteRule ^construccion_stands_badajoz/?$ https://standarte.es/diseno_montaje_stands_badajoz [R=301,L]

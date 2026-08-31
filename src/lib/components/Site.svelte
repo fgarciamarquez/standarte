@@ -1,5 +1,6 @@
 <script>
   import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro, sqProposalsTitle, sqHow, sqLoginLabel } from '$lib/brand.js';
+  import { builderPages, isBuilderPage, builderPageForCity } from '$lib/builderPages.js';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
@@ -1012,7 +1013,13 @@
       out.push(render(i));
       if (i === iComo && caseFigure) out.push(caseFigure); // imagen tras "Claves para lograr…"
     }
-    return prefix + out.join('');
+    // Camino hacia la página paralela de constructor de esa plaza (defensa ante
+    // denuncias): un único enlace contextual, en español, al final del cuerpo.
+    const bp = sectionKey && lang === 'es' && !BRAND.leadGen ? builderPageForCity(sectionKey) : null;
+    const bpLink = bp
+      ? `<p class="oro-builder-link">¿Buscas quién <a href="${pathFor('es', bp)}">construye stands en ${cityName}</a>? Fabricamos en taller propio, sin subcontratar.</p>`
+      : '';
+    return prefix + out.join('') + bpLink;
   }
   const FAIRS_COLLAPSE_THRESHOLD = 0;
   const fairsCloudOpenCta = {
@@ -1961,7 +1968,13 @@
        las directivas por rastreador tienen prioridad sobre esta, así que una que dijera
        solo "index, follow" dejaría fuera max-image-preview:large para Google. Y no aporta
        nada: index/follow ya es el comportamiento por defecto. -->
+  {#if isBuilderPage(section) && !builderPages[section].indexable}
+    <!-- Página paralela aparcada a propósito (ver src/lib/builderPages.js): sigue viva
+         y enlazada, pero fuera del índice mientras el interruptor esté a false. -->
+    <meta name="robots" content="noindex, follow" />
+  {:else}
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  {/if}
   <meta http-equiv="content-language" content={contentLanguages[lang] || 'es-ES'} />
   <link rel="canonical" href={canonical} />
   {#if (animatedHero && !isCityPage) || section === 'contact' || section === 'services'}
