@@ -2555,6 +2555,34 @@ export const fairsData = [
     "sector": "Enología y Vinos"
   },
   {
+    "name": "Modtissimo",
+    "country": "pt",
+    "slug": "stands-modtissimo-oporto",
+    "city": "Oporto",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Qualifica",
+    "country": "pt",
+    "slug": "stands-qualifica-oporto",
+    "city": "Oporto",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
+    "name": "Gift Paper",
+    "country": "pt",
+    "slug": "stands-gift-paper-oporto",
+    "city": "Oporto",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Tecnipão",
+    "country": "pt",
+    "slug": "stands-tecnipao-oporto",
+    "city": "Oporto",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Enoforum",
     "country": "es",
     "slug": "stand-enoforum-zaragoza",

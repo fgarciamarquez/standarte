@@ -77,6 +77,10 @@ DirectorySlash Off
   # Piloto guion medio (2026-08-11): la URL histórica con guiones bajos redirige a la nueva.
   RewriteRule ^diseno_montaje_stands_bilbao/?$ https://standarte.es/diseno-construccion-montaje-stand-bilbao [R=301,L]
   RewriteRule ^diseno-montaje-stands-bilbao/?$ https://standarte.es/diseno-construccion-montaje-stand-bilbao [R=301,L]
+
+  # 2026-08-31: Oporto cambia de URL como defensa ante denuncias (mismo criterio que
+  # Bilbao: hifenación, verbo 'construcción' y 'stands' en plural). 301 directa.
+  RewriteRule ^diseno_montaje_stands_oporto/?$ https://standarte.es/diseno-construccion-montaje-stands-oporto [R=301,L]
   RewriteRule ^construccion_stands_lisboa/?$ https://standarte.es/diseno_montaje_stands_lisboa [R=301,L]
   RewriteRule ^construccion_stands_malaga/?$ https://standarte.es/diseno_montaje_stands_malaga [R=301,L]
   RewriteRule ^construccion_stands_badajoz/?$ https://standarte.es/diseno_montaje_stands_badajoz [R=301,L]

@@ -78,7 +78,7 @@ export const routes = {
     valencia: 'diseno_montaje_stands_valencia',
     alicante: 'diseno_montaje_stands_alicante',
     murcia: 'diseno_montaje_stands_murcia',
-    oporto: 'diseno_montaje_stands_oporto',
+    oporto: 'diseno-construccion-montaje-stands-oporto',
     portugal_sur: 'diseno_montaje_stands_portugal_sur',
     islas_canarias: 'diseno_montaje_stands_islas_canarias',
     islas_de_madeira: 'diseno_montaje_stands_islas_madeira',

@@ -34,7 +34,7 @@ export const seoFreshness = {
   ciudad_real: '2026-08-28',
   trujillo: '2026-08-28',
   montaje_zafra: '2026-08-28',
-  oporto: '2026-08-28',
+  oporto: '2026-08-31',
   vigo: '2026-08-28',
   portugal_sur: '2026-08-28',
   madrid: '2026-08-28',
@@ -113,6 +113,10 @@ export function freshnessFor(section) {
 export const activityFreshness = '2026-08-28';
 
 export const fairFreshness = {
+  'stands-modtissimo-oporto': '2026-08-31',
+  'stands-qualifica-oporto': '2026-08-31',
+  'stands-gift-paper-oporto': '2026-08-31',
+  'stands-tecnipao-oporto': '2026-08-31',
   // Barcelona (Plaza Prioritaria) — clúster de 17 ferias satélite refrescado 2026-07-18.
   'stand-mwc-barcelona': '2026-08-27',
   'stand-ise-barcelona': '2026-08-27',
