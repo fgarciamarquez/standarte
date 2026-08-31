@@ -917,6 +917,13 @@ export const fairsData = [
     "sector": "Turismo y Hostelería"
   },
   {
+    "name": "Talent Land España",
+    "country": "es",
+    "slug": "stands-talent-land-malaga",
+    "city": "Málaga",
+    "sector": "Tecnología e Innovación"
+  },
+  {
     "name": "Eurosatory Paris",
     "country": "fr",
     "slug": "stand-eurosatory-paris",

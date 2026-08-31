@@ -144,6 +144,7 @@ export const fairDates = {
   'stand-barcelona-wine-week': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://www.barcelonawineweek.com/en/' },
   'stand-horeca-baleares-mallorca': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://horecabaleares.com/' },
   'stand-ht-malaga': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://fycma.com/ht-2027-tendra-lugar-del-8-al-10-de-febrero-de-2027-con-una-oferta-ampliada-y-mayor-proyeccion-internacional/' },
+  'stands-talent-land-malaga': { start: '2026-11-24', end: '2026-11-26', cadence: 'annual', source: 'https://talent-land.es/' },
   'stand-siprho-montpellier': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://www.siprho.com/' },
   'stand-sirha-mediterranee-marseille': { start: '2027-02-14', end: '2027-02-16', cadence: 'annual', source: 'https://www.sirha-mediterranee.com/en' },
   'stand-lisbon-food-affair': { start: '2027-02-15', end: '2027-02-17', cadence: 'annual', source: 'https://lisbonfoodaffair.fil.pt/' },

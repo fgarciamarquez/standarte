@@ -213,6 +213,7 @@ export const fairActivities = {
   "stand-greencities-malaga": ["digital-software","smart-city"],
   "stand-iberpet-madrid": ["mascotas"],
   "stand-ht-malaga": ["gastronomia-hosteleria"],
+  "stands-talent-land-malaga": ["digital-software","congreso-profesional"],
   "stand-eurosatory-paris": ["aeronautica"],
   "stand-empack-madrid": ["packaging"],
   "stand-hygienalia-madrid": ["limpieza-higiene","maquinaria-industrial"],
