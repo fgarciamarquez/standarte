@@ -41,6 +41,27 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	header('Location: proyectos.php?msg=' . urlencode('Proyecto creado. Ábrelo desde la lista para completarlo (edición en su propia página).')); exit;
 }
 
+/* ---------- Duplicar proyecto ----------
+ * Muchas propuestas se parecen entre sí: se duplica una y se cambian cuatro cosas.
+ * La copia nace en borrador, con enlace propio y sin nada del cliente original
+ * (visitas, aprobación, datos fiscales ni comentarios). Ver cpx_duplicate_project. */
+if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === 'duplicate_project') {
+	$res = cpx_duplicate_project(post('source_id'), array(
+		'ref' => post('ref'), 'client_name' => post('client_name'), 'client_email' => post('client_email'),
+		'title_es' => post('title_es'), 'title_en' => post('title_en')
+	), post('copy_budget') === '1', post('copy_media') === '1');
+	if (!empty($res['ok'])) {
+		$copiado = array();
+		if (!empty($res['budget'])) $copiado[] = $res['budget'] . ' conceptos de presupuesto';
+		if (!empty($res['media'])) $copiado[] = $res['media'] . ' archivos';
+		$m = 'Proyecto duplicado como «' . $res['ref'] . '»'
+			. (empty($copiado) ? '' : ' (con ' . implode(' y ', $copiado) . ')')
+			. '. Ábrelo desde la lista para ajustar la fecha del descuento y la validez de la propuesta, que no se copian.';
+		header('Location: proyectos.php?msg=' . urlencode($m)); exit;
+	}
+	header('Location: proyectos.php?msg=' . urlencode('No se pudo duplicar el proyecto (' . (isset($res['error']) ? $res['error'] : 'error') . ').')); exit;
+}
+
 /* ---------- Cambiar un estado (aprobado / contrato / factura) ---------- */
 if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === 'toggle_status') {
 	$id = post('id');
@@ -96,7 +117,12 @@ function visit_badge($p) {
 	return '<span class="visit' . ($recent ? ' visit-recent' : '') . '" title="Última visita del cliente">' . $d->format('d/m H:i') . '</span>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,paid,approved,contract_done,invoice_done,access_token,is_demo,created_at,last_client_visit&order=created_at.desc') : array();
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_done,invoice_done,access_token,is_demo,created_at,last_client_visit&order=created_at.desc') : array();
+/* Duplicar: proyecto de origen preseleccionado (?dup=ID desde el botón de cada fila)
+ * y recuento de conceptos/archivos de cada uno para las etiquetas del formulario. */
+$dupId = isset($_GET['dup']) && preg_match('/^[0-9a-f-]{36}$/', $_GET['dup']) ? $_GET['dup'] : '';
+$counts = pj_authed() ? cpx_child_counts() : array('budget' => array(), 'media' => array());
+function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $counts[$kind][$id] : 0; }
 ?>
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -125,6 +151,12 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 	.st-ro { cursor: default; }
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
+	.dup { background: transparent; color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; text-decoration: none; display: inline-block; }
+	.dup:hover { background: rgba(255,200,0,.14); border-color: #ffc800; }
+	.pj-acts { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
+	/* Las casillas no deben estirarse al 100 % como el resto de inputs. */
+	input[type=checkbox] { width: auto; margin: 0 8px 0 0; vertical-align: middle; }
+	.chk-l { display: block; text-transform: none; letter-spacing: 0; font-size: 13px; color: #c8ccd4; margin-bottom: 8px; cursor: pointer; }
 	.demo-badge { display: inline-block; background: rgba(255,200,0,.14); color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
 	/* Listado de proyectos en capas (sin <table>): grid en escritorio, apilado en móvil. */
 	.pj-list { display: flex; flex-direction: column; }
@@ -183,6 +215,39 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 		</form>
 	</div>
 
+	<?php if (!empty($projects)): ?>
+	<div class="card" id="dup">
+		<h3>Duplicar un proyecto</h3>
+		<p class="hint">Copia memoria, incluidos y excluidos, forma de pago, impuestos, cuenta e interlocutor, y —si lo marcas— el
+			presupuesto y los archivos. <strong>No</strong> copia los comentarios, ni los datos fiscales del cliente original, ni la
+			fecha del descuento ni la validez de la propuesta: esas dos fechas se ponen de nuevo en la copia para no enseñar al
+			cliente nuevo una oferta ya vencida. La copia nace en borrador, con su propio enlace.</p>
+		<form method="post" class="row">
+			<input type="hidden" name="action" value="duplicate_project">
+			<div style="grid-column:1/3">
+				<label>Proyecto de origen</label>
+				<select name="source_id" id="dup-src" required>
+					<?php foreach ($projects as $p): ?>
+					<option value="<?= h($p['id']) ?>" data-ref="<?= h($p['ref']) ?>"
+						data-b="<?= cnt($counts, 'budget', $p['id']) ?>" data-m="<?= cnt($counts, 'media', $p['id']) ?>"
+						<?= ($dupId === $p['id'] ? 'selected' : '') ?>><?= h($p['ref']) ?> — <?= h($p['client_name'] !== '' ? $p['client_name'] : 'sin cliente') ?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<input name="ref" id="dup-ref" placeholder="Ref del nuevo proyecto" required>
+			<input name="client_name" placeholder="Cliente" required>
+			<input name="client_email" placeholder="Email del cliente" type="email">
+			<input name="title_es" placeholder="Título ES (solo si cambia)">
+			<input name="title_en" placeholder="Título EN (solo si cambia)">
+			<div style="grid-column:1/3">
+				<label class="chk-l"><input type="checkbox" name="copy_budget" value="1" checked> Copiar el presupuesto (<span id="dup-b">0</span> conceptos)</label>
+				<label class="chk-l"><input type="checkbox" name="copy_media" value="1"> Copiar los archivos (<span id="dup-m">0</span>): la copia apunta a los mismos ficheros, no se suben de nuevo</label>
+			</div>
+			<div style="grid-column:1/3"><button type="submit">Duplicar proyecto</button></div>
+		</form>
+	</div>
+	<?php endif; ?>
+
 	<div class="card">
 		<h3>Proyectos</h3>
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, abre el enlace del
@@ -201,7 +266,9 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 				<div class="pj-cell"><span class="pj-k">Factura</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Visto</span><span class="pj-v"><?= visit_badge($p) ?></span></div>
 				<div class="pj-cell pj-open"><span class="pj-k">Abrir</span><span class="pj-v"><a class="link" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir y editar →</a></span></div>
-				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v"><form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
+				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v pj-acts">
+					<a class="dup" href="proyectos.php?dup=<?= h($p['id']) ?>#dup" title="Duplicar este proyecto">Duplicar</a>
+					<form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
 					<input type="hidden" name="action" value="delete_project">
 					<input type="hidden" name="id" value="<?= h($p['id']) ?>">
 					<button type="submit" class="del" title="Borrar proyecto">Borrar</button>
@@ -210,5 +277,26 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,pa
 			<?php endforeach; ?>
 		</div>
 	</div>
+<?php endif; ?>
+<?php if (pj_authed() && !empty($projects)): ?>
+<script>
+/* Al elegir origen: propone «REF COPIA» (si no has escrito ya una ref propia) y
+   actualiza los recuentos de las casillas. */
+(function () {
+	var sel = document.getElementById('dup-src'), ref = document.getElementById('dup-ref');
+	if (!sel || !ref) return;
+	var touched = false;
+	ref.addEventListener('input', function () { touched = true; });
+	function sync(prefill) {
+		var o = sel.options[sel.selectedIndex];
+		if (!o) return;
+		document.getElementById('dup-b').textContent = o.getAttribute('data-b') || '0';
+		document.getElementById('dup-m').textContent = o.getAttribute('data-m') || '0';
+		if (prefill && !touched) ref.value = (o.getAttribute('data-ref') || '') + ' COPIA';
+	}
+	sel.addEventListener('change', function () { sync(true); });
+	sync(true);
+})();
+</script>
 <?php endif; ?>
 </div></body></html>

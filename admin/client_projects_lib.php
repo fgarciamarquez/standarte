@@ -168,4 +168,112 @@ if (!function_exists('cpx_key')) {
 			'interlocutor_email' => 'javier@standarte.es'
 		);
 	}
+
+	/* ---------- Duplicar un proyecto ----------
+	 * Muchas propuestas se parecen: duplicar una y retocarla ahorra rehacer memoria,
+	 * incluidos/excluidos, forma de pago y presupuesto.
+	 *
+	 * Qué NO viaja a la copia (cpx_project_no_copy), y por qué:
+	 *  - Identidad y estado: id, access_token (la copia nace con enlace propio),
+	 *    created_at/updated_at, status, approved/approved_at/approved_with_offer,
+	 *    paid, contract_done, invoice_done, paused, is_demo, testimonial.
+	 *  - Rastro del cliente original: last_client_visit, visit_notified_at,
+	 *    offer_notice_sent_at.
+	 *  - Datos fiscales del cliente original (billing_*): son suyos y no pueden
+	 *    aparecer en la propuesta de otra empresa.
+	 *  - Fechas que caducan: discount_deadline y proposal_valid_until. El importe y
+	 *    la etiqueta del descuento sí se copian (la estructura comercial se repite),
+	 *    pero la fecha se deja vacía para no enseñar al cliente nuevo un descuento
+	 *    ya vencido —que además mengua 1.000 € por semana transcurrida—.
+	 *  - ref, client_name y client_email: los pone quien duplica.
+	 * Los comentarios (client_project_comments) nunca se copian: son la conversación
+	 * con el otro cliente.
+	 */
+	function cpx_project_no_copy() {
+		return array(
+			'id', 'access_token', 'created_at', 'updated_at',
+			'ref', 'client_name', 'client_email',
+			'status', 'paid', 'approved', 'approved_at', 'approved_with_offer',
+			'contract_done', 'invoice_done', 'is_demo', 'testimonial',
+			'last_client_visit', 'visit_notified_at', 'offer_notice_sent_at',
+			'paused', 'paused_reason',
+			'billing_company', 'billing_cif', 'billing_address', 'billing_postal_code',
+			'billing_city', 'billing_country',
+			'discount_deadline', 'proposal_valid_until'
+		);
+	}
+
+	/* Cuenta conceptos de presupuesto y archivos por proyecto (dos consultas para
+	 * toda la lista, no una por fila): alimenta las etiquetas del formulario. */
+	function cpx_child_counts() {
+		$out = array('budget' => array(), 'media' => array());
+		foreach (cpx_rows('client_project_budget_items?select=project_id') as $r) {
+			if (!isset($r['project_id'])) continue;
+			$out['budget'][$r['project_id']] = (isset($out['budget'][$r['project_id']]) ? $out['budget'][$r['project_id']] : 0) + 1;
+		}
+		foreach (cpx_rows('client_project_media?select=project_id') as $r) {
+			if (!isset($r['project_id'])) continue;
+			$out['media'][$r['project_id']] = (isset($out['media'][$r['project_id']]) ? $out['media'][$r['project_id']] : 0) + 1;
+		}
+		return $out;
+	}
+
+	/* Crea la copia. $overrides: ref, client_name, client_email, title_es, title_en.
+	 * Devuelve array(ok, id, token, ref, budget, media[, error]). */
+	function cpx_duplicate_project($srcId, $overrides = array(), $withBudget = true, $withMedia = false) {
+		if (!preg_match('/^[0-9a-f-]{36}$/', (string) $srcId)) return array('ok' => false, 'error' => 'bad_id');
+		$rows = cpx_rows('client_projects?id=eq.' . urlencode($srcId) . '&select=*&limit=1');
+		if (empty($rows[0])) return array('ok' => false, 'error' => 'not_found');
+		$src = $rows[0];
+
+		$skip = array_flip(cpx_project_no_copy());
+		$row = array();
+		foreach ($src as $k => $v) { if (!isset($skip[$k])) $row[$k] = $v; }
+
+		$row['access_token'] = bin2hex(random_bytes(16));   // enlace propio: el del original sigue siendo del original
+		$row['status'] = 'draft';
+		$row['updated_at'] = gmdate('c');
+		$ref = isset($overrides['ref']) ? trim($overrides['ref']) : '';
+		$row['ref'] = ($ref !== '') ? $ref : trim($src['ref'] . ' COPIA');
+		$row['client_name'] = isset($overrides['client_name']) ? trim($overrides['client_name']) : '';
+		$row['client_email'] = isset($overrides['client_email']) ? trim($overrides['client_email']) : '';
+		foreach (array('title_es', 'title_en') as $k) {
+			if (isset($overrides[$k]) && trim($overrides[$k]) !== '') $row[$k] = trim($overrides[$k]);
+		}
+
+		$r = cpx_sb('POST', 'client_projects', $row);
+		if ((int) $r['code'] >= 300 || !isset($r['body'][0]['id'])) {
+			return array('ok' => false, 'error' => 'insert', 'code' => $r['code']);
+		}
+		$newId = $r['body'][0]['id'];
+		$out = array('ok' => true, 'id' => $newId, 'token' => $row['access_token'], 'ref' => $row['ref'], 'budget' => 0, 'media' => 0);
+
+		if ($withBudget) {
+			$items = cpx_rows('client_project_budget_items?project_id=eq.' . urlencode($srcId)
+				. '&select=concept_es,concept_en,amount,sort_order&order=sort_order.asc');
+			if (!empty($items)) {
+				foreach ($items as $i => $it) { $items[$i]['project_id'] = $newId; }
+				$ri = cpx_sb('POST', 'client_project_budget_items', $items);
+				$out['budget'] = ((int) $ri['code'] < 300 && is_array($ri['body'])) ? count($ri['body']) : 0;
+				if ((int) $ri['code'] >= 300) $out['budget_error'] = $ri['code'];
+			}
+		}
+
+		if ($withMedia) {
+			/* Las filas nuevas apuntan al MISMO fichero del bucket que el original: no se
+			 * copia nada en Storage (ni se duplica el gasto). Borrar después uno de los dos
+			 * proyectos no deja al otro sin imágenes: cpx_storage_delete_folder respeta los
+			 * ficheros que sigue referenciando otro proyecto. */
+			$media = cpx_rows('client_project_media?project_id=eq.' . urlencode($srcId)
+				. '&select=type,src,poster,title_es,title_en,description_es,description_en,sort_order&order=sort_order.asc');
+			if (!empty($media)) {
+				foreach ($media as $i => $m) { $media[$i]['project_id'] = $newId; }
+				$rm = cpx_sb('POST', 'client_project_media', $media);
+				$out['media'] = ((int) $rm['code'] < 300 && is_array($rm['body'])) ? count($rm['body']) : 0;
+				if ((int) $rm['code'] >= 300) $out['media_error'] = $rm['code'];
+			}
+		}
+
+		return $out;
+	}
 }
