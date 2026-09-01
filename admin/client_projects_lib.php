@@ -276,4 +276,93 @@ if (!function_exists('cpx_key')) {
 
 		return $out;
 	}
+
+	/* ---------- Aviso al cliente: nueva fecha de la oferta ----------
+	 * La oferta por pronta decisión (importe + texto breve + fecha límite) es un
+	 * compromiso con fecha: si se le pone una nueva o se cambia la que había, el
+	 * cliente tiene que enterarse, porque de esa fecha depende lo que se ahorra.
+	 *
+	 * Se envía SOLO cuando el aviso significa algo: hay oferta con importe, la fecha
+	 * nueva no ha pasado ya, el proyecto no está aprobado (la oferta ya se congeló),
+	 * ni pausado, ni es el piloto público, y hay email de cliente válido.
+	 * Devuelve true si el correo salió.
+	 */
+	function cpx_offer_deadline_email($p, $deadline) {
+		$to = isset($p['client_email']) ? trim($p['client_email']) : '';
+		if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) return false;
+
+		$ref     = isset($p['ref']) ? $p['ref'] : '';
+		$titleEs = !empty($p['title_es']) ? $p['title_es'] : $ref;
+		$titleEn = !empty($p['title_en']) ? $p['title_en'] : $titleEs;
+		$amount  = isset($p['discount_amount']) ? (float) $p['discount_amount'] : 0.0;
+		$labelEs = !empty($p['discount_label_es']) ? $p['discount_label_es'] : 'Descuento por pronta decisión';
+		$labelEn = !empty($p['discount_label_en']) ? $p['discount_label_en'] : 'Early-decision discount';
+		$url     = 'https://standarte.es/proyecto?t=' . (isset($p['access_token']) ? $p['access_token'] : '');
+		$h       = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+
+		/* El descuento se guarda en euros; el cliente lo entiende mejor como porcentaje,
+		 * así que se dan los dos. El porcentaje se calcula sobre la suma del presupuesto:
+		 * si aún no hay conceptos, se omite en vez de inventar una referencia. */
+		$subtotal = 0.0;
+		foreach (cpx_rows('client_project_budget_items?select=amount&project_id=eq.' . urlencode($p['id'])) as $it) {
+			$subtotal += (float) $it['amount'];
+		}
+		$pct = ($subtotal > 0) ? round($amount / $subtotal * 100, 1) : null;
+		$pctEs = $pct === null ? '' : ' (un ' . rtrim(rtrim(number_format($pct, 1, ',', '.'), '0'), ',') . '&nbsp;% del presupuesto)';
+		$pctEn = $pct === null ? '' : ' (' . rtrim(rtrim(number_format($pct, 1, '.', ','), '0'), '.') . '% of the quote)';
+
+		$eurEs = number_format($amount, ($amount == round($amount) ? 0 : 2), ',', '.') . '&nbsp;€';
+		$eurEn = '€' . number_format($amount, ($amount == round($amount) ? 0 : 2), '.', ',');
+		$ts    = strtotime($deadline . ' 12:00:00');
+		$fEs   = date('d/m/Y', $ts);
+		$fEn   = date('F j, Y', $ts);
+
+		$subject = 'Nueva fecha para su oferta / New offer date — ' . $ref;
+
+		$es = "<p style='margin:0 0 16px;text-align:left;'>La oferta de su proyecto <strong>" . $h($titleEs) . "</strong> (" . $h($ref) . ") "
+			. "es válida <strong>hasta el " . $fEs . "</strong>. " . $h($labelEs) . ": <strong>" . $eurEs . "</strong>" . $pctEs . ". "
+			. "Si aprueba el proyecto antes de esa fecha, se descuenta entera; después se reduce 1.000 € por cada semana transcurrida. "
+			. "Aprobar el proyecto no impide seguir haciendo modificaciones.</p>";
+
+		$en = "<p style='margin:0 0 16px;text-align:left;color:#555;'>The offer on your project <strong>" . $h($titleEn) . "</strong> (" . $h($ref) . ") "
+			. "is valid <strong>until " . $fEn . "</strong>. " . $h($labelEn) . ": <strong>" . $eurEn . "</strong>" . $pctEn . ". "
+			. "If you approve the project before that date it is deducted in full; afterwards it shrinks by €1,000 for each elapsed week. "
+			. "Approving the project does not prevent further modifications.</p>";
+
+		$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
+			. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
+			. $es . $en
+			. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>Abrir el proyecto / Open the project</a></p>"
+			. "<p style='margin:28px 0 0;text-align:left;'>Un cordial saludo,<br>Best regards,<br><strong>Equipo de Standarte / The Standarte team</strong></p>"
+			. "<p style='text-align:center;font-size:12px;color:#888;margin-top:24px;'>Mensaje automatizado del sistema de gestión de proyectos de Standarte.<br>Automated message from Standarte's project management system.<br><a href='https://standarte.es' style='color:#888;text-decoration:none;'>https://standarte.es</a></p>"
+			. "</body></html>";
+
+		require_once __DIR__ . '/email_campaing/mailer.php';
+		$sent = false;
+		try {
+			$cfg = require __DIR__ . '/email_campaing/config.php';
+			$sent = campaign_send_smtp($cfg, $to, $subject, $html);
+		} catch (Exception $e) {
+			$sent = false;
+		}
+		if (!$sent) {
+			$sent = @mail($to, $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
+		}
+		return (bool) $sent;
+	}
+
+	/* ¿Toca avisar al cliente de la fecha de la oferta?
+	 * $after es la fila TAL COMO QUEDA tras guardar (importe y texto pueden cambiar en
+	 * el mismo guardado que la fecha), y la comparación de fechas se hace con la
+	 * anterior. Se separa del envío para poder razonarla —y probarla— sin mandar nada. */
+	function cpx_should_notify_offer($after, $oldDeadline, $newDeadline, $today = null) {
+		$today = $today ?: date('Y-m-d');
+		if (!$newDeadline) return false;                                   // se ha borrado la fecha: no hay nada que anunciar
+		if ($newDeadline === $oldDeadline) return false;                   // no ha cambiado
+		if ($newDeadline < $today) return false;                           // fecha ya pasada: no es una oferta que ofrecer
+		if ((float) (isset($after['discount_amount']) ? $after['discount_amount'] : 0) <= 0) return false;  // sin importe no hay oferta
+		if (!empty($after['approved'])) return false;                      // aprobado: la oferta ya quedó congelada
+		if (!empty($after['is_demo']) || !empty($after['paused'])) return false;   // piloto público o proyecto parado
+		return true;
+	}
 }

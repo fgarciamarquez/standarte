@@ -76,8 +76,37 @@ if ($action === 'save') {
 	foreach (array('iva_rate', 'irpf_rate') as $k) { if (isset($_POST[$k])) $fields[$k] = (float) str_replace(',', '.', pa_post($k, '0')); }
 	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));
 	$fields['updated_at'] = gmdate('c');
+
+	/* Fecha de la oferta: si en este guardado se pone una nueva o se cambia la que
+	 * había, hay que avisar al cliente —de esa fecha depende lo que se ahorra—. Se lee
+	 * la fila ANTES de escribir para saber si de verdad cambia; sin ese cotejo, cada
+	 * autoguardado de los campos del descuento (se guardan al perder el foco) mandaría
+	 * un correo aunque no se hubiera tocado la fecha. */
+	$before = null;
+	if (array_key_exists('discount_deadline', $fields)) {
+		$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId)
+			. '&select=id,ref,title_es,title_en,client_email,access_token,approved,is_demo,paused,'
+			. 'discount_amount,discount_label_es,discount_label_en,discount_deadline&limit=1');
+		$before = isset($rows[0]) ? $rows[0] : null;
+	}
+
 	$r = cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), $fields);
-	pa_out(array('ok' => (int) $r['code'] < 300));
+	$ok = (int) $r['code'] < 300;
+
+	$offerNotified = false;
+	if ($ok && $before) {
+		$oldDeadline = isset($before['discount_deadline']) ? $before['discount_deadline'] : null;
+		$newDeadline = $fields['discount_deadline'];
+		$after = array_merge($before, $fields);
+		if (cpx_should_notify_offer($after, $oldDeadline, $newDeadline)) {
+			$offerNotified = cpx_offer_deadline_email($after, $newDeadline);
+			/* La fecha ha cambiado: el aviso automático del día del vencimiento
+			 * (cron_oferta.php) debe poder volver a salir para la fecha nueva; si no,
+			 * el proyecto se quedaba con el aviso de la fecha vieja ya consumido. */
+			cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), array('offer_notice_sent_at' => null));
+		}
+	}
+	pa_out(array('ok' => $ok, 'offer_notified' => $offerNotified));
 }
 
 if ($action === 'add_budget') {
