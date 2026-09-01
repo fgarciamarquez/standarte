@@ -315,8 +315,13 @@ DirectorySlash Off
   # + 9 idiomas latinos y en el alias latino de /ja/. Las URLs canónicas japonesas
   # (texto japonés) no se ven afectadas: [a-z0-9-]+ no las casa. El guardián de build
   # scripts/check_fair_slugs.mjs asegura que toda feria nueva nazca con el prefijo,
-  # de modo que esta regla nunca capture una URL legítima.
-  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/(?!stands?-)([a-z0-9-]+)/?$ https://standarte.es/$1ferias/stand-$2 [R=301,L]
+  # de modo que esta regla nunca capture una ficha legítima.
+  # 'constructor-' queda FUERA: bajo /ferias/ no solo viven fichas, también las páginas
+  # paralelas de defensa (/ferias/constructor-stand-figan). Sin esta exclusión, esta
+  # regla las mandaba a /ferias/stand-constructor-stand-figan —inexistente— y Google
+  # las veía como 404 (pasó el 2026-09-01, recién publicada). Lo vigila ahora
+  # scripts/check_htaccess_redirects.mjs contra las URLs reales del sitemap.
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/(?!stands?-|constructor-)([a-z0-9-]+)/?$ https://standarte.es/$1ferias/stand-$2 [R=301,L]
   RewriteRule ^ja/展示会情報/(?!stands?-)([a-z0-9-]+)/?$ https://standarte.es/ja/展示会情報/stand-$1 [R=301,L]
   # BIEMH usa el plural por decision editorial: su URL singular anterior redirige.
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-biemh-bilbao/?$ https://standarte.es/$1ferias/stands-biemh-bilbao [R=301,L]
