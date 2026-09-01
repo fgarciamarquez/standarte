@@ -96,6 +96,9 @@ DirectorySlash Off
   # RewriteRule ^diseno-construccion-montaje-stand-bilbao/?$ https://standarte.es/constructor_stand_bilbao [R=301,L]
   # RewriteRule ^diseno_montaje_stands_badajoz/?$ https://standarte.es/constructor_stand_badajoz [R=301,L]
   # RewriteRule ^montaje_stand_don_benito/?$ https://standarte.es/constructor_stand_don_benito [R=301,L]
+  # Igual, pero defendiendo una FICHA DE FERIA: FIGAN ya fue denunciada y, tras pasar
+  # a plural, no ha recuperado posición; su paralela vive bajo /ferias/.
+  # RewriteRule ^ferias/stands-figan-zaragoza/?$ https://standarte.es/ferias/constructor-stand-figan [R=301,L]
   # ───────────────────────────────────────────────────────────────────────────────
   RewriteRule ^construccion_stands_lisboa/?$ https://standarte.es/diseno_montaje_stands_lisboa [R=301,L]
   RewriteRule ^construccion_stands_malaga/?$ https://standarte.es/diseno_montaje_stands_malaga [R=301,L]

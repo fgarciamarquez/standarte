@@ -172,5 +172,46 @@ export const builderSeoData = {
         <p>Construimos para <a href="/ferias/stands-agroexpo">Agroexpo</a> y el resto del calendario de <a href="/ferias/stands-agroexpo-feval-don-benito">FEVAL</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/montaje_stand_don_benito">montaje de stands en Don Benito</a>.</p>
         ${porque('Don Benito')}`
     }
+  },
+
+  /* Defensa de una FICHA DE FERIA (no de una ciudad): FIGAN. La ficha
+   * /ferias/stands-figan-zaragoza fue denunciada, cambió de URL y no ha recuperado
+   * posición. Esta página ataca otra intención —"constructor de stands para
+   * FIGAN"— desde la CONSTRUCCIÓN (taller, estructura, cargas, higiene), y deja la
+   * venta del servicio de diseño y montaje a la ficha. Vive en
+   * /ferias/constructor-stand-figan. */
+  constructor_stand_figan: {
+    es: {
+      breadcrumb: 'Constructor de stands para FIGAN',
+      title: 'Constructor de stands para FIGAN (Zaragoza) | Taller propio | Standarte',
+      h1: 'Constructor de stands para FIGAN, Zaragoza',
+      introText: 'Construimos stands a medida para FIGAN, la Feria Internacional para la Producción Animal de la Feria de Zaragoza, desde nuestro propio taller: estructura, carpintería, suelos técnicos, mobiliario y gráfica fabricados por nuestro equipo, sin subcontratar la producción.',
+      body: `
+        <h2>Constructor de stands para FIGAN: qué exige construir en producción animal</h2>
+        <p>FIGAN no es una feria de catálogo: se exponen silos, comederos, jaulas de alojamiento, sistemas de ventilación, robots de ordeño y maquinaria de granja que llegan al pabellón en camión y pesan toneladas. Construir aquí empieza por lo que no se ve —reparto de cargas en el suelo, refuerzos bajo el equipo, previsión de acometidas de agua y potencia con el recinto— y solo después se resuelve el acabado.</p>
+        <p>El segundo condicionante es la higiene y el trasiego: cuatro días de visitas técnicas, demostraciones en marcha y público con botas de granja. Elegimos materiales lavables y cantos protegidos donde toca el visitante, y dejamos el resto en acabados nobles a la altura de la vista. La consecuencia práctica: el stand aguanta la feria entera con el mismo aspecto del primer día.</p>
+        <h2>Constructor de stands para FIGAN: cómo se construye tu stand, paso a paso</h2>
+        <ol>
+          <li><strong>Levantamiento del proyecto.</strong> Medidas reales del espacio contratado en la Feria de Zaragoza, altura libre del pabellón, accesos de carga y peso de los equipos que vas a exponer.</li>
+          <li><strong>Ingeniería y prototipo 3D.</strong> Se calculan estructura, refuerzos y despiece, y se resuelven las instalaciones; recibes un prototipo fotorrealista que es exactamente lo que se va a construir.</li>
+          <li><strong>Fabricación en taller propio.</strong> Carpintería a medida, mobiliario y gráfica producidos por nuestro equipo, con control de calidad pieza a pieza.</li>
+          <li><strong>Premontaje.</strong> El stand se arma en taller antes de salir: los ajustes se hacen aquí y no a contrarreloj en el pabellón.</li>
+          <li><strong>Transporte y montaje.</strong> Nuestros propios montadores y carpinteros levantan el stand y coordinan la entrada de tu maquinaria, con la prefabricación terminada 24&nbsp;h antes de la apertura.</li>
+          <li><strong>Desmontaje y almacenaje.</strong> Retiramos el stand al cierre y guardamos los elementos reutilizables para la siguiente convocatoria, que en FIGAN llega cada dos años.</li>
+        </ol>
+        <h2>Constructor de stands para FIGAN: qué construimos</h2>
+        <ul>
+          <li><strong>Stand con maquinaria pesada.</strong> Suelo técnico calculado, refuerzos puntuales y pasos de instalación previstos para exponer equipos en funcionamiento.</li>
+          <li><strong>Stand de diseño libre en carpintería.</strong> Estructura y paramentos fabricados a medida, con acabados lacados, chapados o textiles.</li>
+          <li><strong>Stand de doble altura.</strong> Cálculo estructural, escalera y sala de reuniones arriba cuando el pabellón lo permite: metros de negociación sin gastar metros de exposición.</li>
+          <li><strong>Zonas de demostración y sala técnica.</strong> Espacios cerrados o semicerrados con control de ruido para explicar procesos, datos de producción y planes sanitarios sin gritar.</li>
+          <li><strong>Mobiliario y expositores propios.</strong> Mostradores, vitrinas y soportes construidos para tu producto —no comprados en catálogo— y almacén oculto para el material de campaña.</li>
+        </ul>
+        <h2>Constructor de stands para FIGAN: y para el resto de la Feria de Zaragoza</h2>
+        <p>El mismo taller construye para todo el calendario del recinto: <a href="/ferias/stand-fima-zaragoza">FIMA</a>, <a href="/ferias/stand-smopyc-zaragoza">SMOPYC</a>, <a href="/ferias/stand-smagua-zaragoza">SMAGUA</a>, <a href="/ferias/stand-aratur-zaragoza">Aratur</a> y <a href="/ferias/stand-expofimer-zaragoza">EXPOFIMER</a>. Si lo que buscas es la ficha de la feria —fechas de la próxima edición, sectores y el servicio completo de diseño y montaje—, está en <a href="/ferias/stands-figan-zaragoza">stands para FIGAN</a>; y el servicio para la plaza, en <a href="/diseno_montaje_stands_zaragoza">stands para ferias en Zaragoza</a> y en <a href="/constructor_stand_zaragoza">constructor de stands en Zaragoza</a>.</p>
+        <h2>Constructor de stands para FIGAN: por qué construir con Standarte</h2>
+        <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un cambio de última hora sin depender de la agenda de otro taller. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en FIGAN</a></p>`
+    }
   }
 };

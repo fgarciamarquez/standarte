@@ -25,6 +25,7 @@
 export const seoFreshness = {
   // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
   constructor_stand_zaragoza: '2026-08-31',
+  constructor_stand_figan: '2026-09-01',
   constructor_stand_madrid: '2026-08-31',
   constructor_stand_barcelona: '2026-08-31',
   constructor_stand_oporto: '2026-08-31',
@@ -277,7 +278,7 @@ export const fairFreshness = {
   'stand-expooptica-madrid': '2026-08-27',
   // Ferias que estrenan ficha propia (antes no tenían cuerpo único, y por eso tampoco
   // aparecían con resumen en el calendario sectorial de otras ferias).
-  'stands-figan-zaragoza': '2026-08-27',
+  'stands-figan-zaragoza': '2026-09-01',
   'stand-concreta-oporto': '2026-08-27',
   'stand-enomaq-zaragoza': '2026-08-27',
   // Estrenan fecha verificada de su próxima edición.

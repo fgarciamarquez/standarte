@@ -26,10 +26,19 @@ export const builderPages = {
   constructor_stand_lisboa:     { city: 'lisboa',      cityName: 'Lisboa',     indexable: true },
   constructor_stand_bilbao:     { city: 'bilbao',      cityName: 'Bilbao',     indexable: true },
   constructor_stand_badajoz:    { city: 'badajoz',     cityName: 'Badajoz',    indexable: true },
-  constructor_stand_don_benito: { city: 'montaje_don_benito', cityName: 'Don Benito', indexable: true }
+  constructor_stand_don_benito: { city: 'montaje_don_benito', cityName: 'Don Benito', indexable: true },
+  // Defensa de una FICHA DE FERIA, no de una ciudad: FIGAN sufrió una denuncia y, tras
+  // el cambio de URL a plural (stands-figan-zaragoza), la ficha no ha recuperado su
+  // posición. Esta página vive bajo /ferias/ y ataca la intención "constructor de
+  // stands para FIGAN" con contenido propio de construcción; `fair` es la ficha que
+  // defiende (enlace cruzado y 301 de emergencia preparada en static/.htaccess).
+  constructor_stand_figan: { fair: 'stands-figan-zaragoza', fairName: 'FIGAN', cityName: 'Zaragoza', indexable: true }
 };
 
 export const isBuilderPage = (section) => Object.prototype.hasOwnProperty.call(builderPages, section);
 /** Sección de constructor asociada a una página de ciudad (para el enlace cruzado). */
 export const builderPageForCity = (citySection) =>
-  Object.keys(builderPages).find((k) => builderPages[k].city === citySection) || null;
+  Object.keys(builderPages).find((k) => builderPages[k].city && builderPages[k].city === citySection) || null;
+/** Página paralela que defiende una ficha de feria (para el enlace desde la ficha). */
+export const builderPageForFair = (fairSlug) =>
+  Object.keys(builderPages).find((k) => builderPages[k].fair === fairSlug) || null;

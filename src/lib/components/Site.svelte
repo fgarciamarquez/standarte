@@ -4,7 +4,7 @@
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
-  import { languages, languageLabels, pathFor, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
+  import { languages, languageLabels, pathFor, routes, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { cityH2, cityH2Custom } from '$lib/h2Seo.js';
   import { toolsCopy } from '$lib/toolsSection.js';
@@ -1996,10 +1996,16 @@
     />
   {/if}
   {#if emitHreflang}
-    {#each LOCALES as loc}
+    <!-- Solo se declara alternativa el idioma que TIENE esta sección. Sin el filtro,
+         una página que solo existe en español (las paralelas de constructor) declaraba
+         como versión inglesa la portada /en/: un hreflang que no se corresponde ni
+         devuelve el enlace, y que Google descarta o interpreta mal. -->
+    {#each LOCALES.filter((loc) => routes[loc.lang]?.[section] !== undefined) as loc}
       <link rel="alternate" hreflang={loc.lang} href={`https://standarte.es${pathFor(loc.lang, section)}`} />
     {/each}
-    <link rel="alternate" hreflang="x-default" href={`https://standarte.es${pathFor('es', section)}`} />
+    {#if routes.es?.[section] !== undefined}
+      <link rel="alternate" hreflang="x-default" href={`https://standarte.es${pathFor('es', section)}`} />
+    {/if}
   {/if}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Standarte" />

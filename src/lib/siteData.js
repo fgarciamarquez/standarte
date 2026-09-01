@@ -1,4 +1,5 @@
 import { BRAND, SITE_ORIGIN } from './brand.js';
+import { isBuilderPage } from './builderPages.js';
 import { fairsData } from '$lib/fairsData.js';
 import { tagOrder } from '$lib/fairTags.js';
 import { jaFairSlugs, jaFairSlugsReverse, jaProjectSlugs, jaProjectSlugsReverse } from '$lib/jaSlugs.js';
@@ -97,6 +98,9 @@ export const routes = {
     constructor_stand_bilbao: 'constructor_stand_bilbao',
     constructor_stand_badajoz: 'constructor_stand_badajoz',
     constructor_stand_don_benito: 'constructor_stand_don_benito',
+    // Defensa de una ficha de feria: vive bajo /ferias/ (ver findRoute, que la
+    // resuelve antes que el detalle de feria porque comparten prefijo).
+    constructor_stand_figan: 'ferias/constructor-stand-figan',
     montaje_zafra: 'montaje_stand_zafra',
     montaje_don_benito: 'montaje_stand_don_benito',
     montaje_badajoz: 'montaje_stand_badajoz',
@@ -2903,6 +2907,12 @@ export function findRoute(path) {
   const langRoutes = routes[maybeLang] || routes.es;
   // Detalle de feria: acepta el segmento del idioma (ja: 展示会情報) y, por compat,
   // el 'ferias' antiguo. El fairSlug devuelto es siempre el latino (clave de datos).
+  // Páginas paralelas de constructor que viven BAJO /ferias/ (defensa de una ficha):
+  // se resuelven antes que el detalle de feria, con el que comparten prefijo. Solo
+  // existen en español, así que en el resto de idiomas ni se consultan.
+  const builderUnderFairs = Object.keys(langRoutes)
+    .find((key) => isBuilderPage(key) && langRoutes[key] === slug);
+  if (builderUnderFairs) return { lang: maybeLang, section: builderUnderFairs };
   const seg = fairSegment(maybeLang);
   for (const candidate of [seg, 'ferias']) {
     if (slug.startsWith(candidate + '/')) {
@@ -2950,7 +2960,8 @@ export const SQ_REMOVED_SECTIONS = new Set([
   // Las páginas de "constructor de stands" son un activo defensivo de Standarte.
   'constructor_stand_madrid', 'constructor_stand_barcelona',
   'constructor_stand_zaragoza', 'constructor_stand_oporto', 'constructor_stand_lisboa',
-  'constructor_stand_bilbao', 'constructor_stand_badajoz', 'constructor_stand_don_benito'
+  'constructor_stand_bilbao', 'constructor_stand_badajoz', 'constructor_stand_don_benito',
+  'constructor_stand_figan'
 ]);
 
 export const prerenderEntries = languages.flatMap((lang) => {
