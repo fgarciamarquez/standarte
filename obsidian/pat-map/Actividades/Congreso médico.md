@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-medico
 sector: "Salud y Medicina"
-n_ferias: 11
+n_ferias: 12
 ---
 # Congreso médico
 
@@ -10,6 +10,7 @@ Actividad del sector [[Salud y Medicina]].
 
 ## Ferias
 - [[Cascais International Health Forum]]
+- [[Congreso ANECORM]]
 - [[Congreso Nacional de la SEFH (Farmacia Hospitalaria)]]
 - [[Congreso SECPRE (Cirugía Plástica)]]
 - [[Congreso SET (Trasplante)]]
