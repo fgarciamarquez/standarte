@@ -8,7 +8,7 @@
     "dev": "vite --host 0.0.0.0",
     "prebuild": "node scripts/build_project_index.mjs && node scripts/build_admin_data.mjs && node scripts/fetch_project_tags.mjs && node scripts/build_seo_images.mjs",
     "build": "vite build",
-    "postbuild": "node scripts/postbuild_lang_homes.mjs && node scripts/check_noindex.mjs && node scripts/check_html_lang.mjs && node scripts/check_broken_links.mjs && node scripts/check_mesh_cities.mjs && node scripts/check_fair_dates.mjs && node scripts/check_fair_search.mjs && node scripts/check_fair_slugs.mjs && node scripts/check_h2_pattern.mjs && node scripts/check_activity_lead.mjs && node scripts/check_htaccess_redirects.mjs",
+    "postbuild": "node scripts/postbuild_lang_homes.mjs && node scripts/check_noindex.mjs && node scripts/check_html_lang.mjs && node scripts/check_broken_links.mjs && node scripts/check_mesh_cities.mjs && node scripts/check_fair_dates.mjs && node scripts/check_fair_search.mjs && node scripts/check_fair_slugs.mjs && node scripts/check_fair_tags.mjs && node scripts/check_h2_pattern.mjs && node scripts/check_activity_lead.mjs && node scripts/check_htaccess_redirects.mjs",
     "preview": "vite preview --host 0.0.0.0"
   },
   "devDependencies": {
@@ -18,6 +18,7 @@
     "@vitalets/google-translate-api": "^9.2.1",
     "bing-translate-api": "^4.2.0",
     "p-limit": "^7.3.0",
+    "playwright-core": "^1.62.1",
     "sharp": "^0.34.5",
     "svelte": "^5.0.0",
     "vite": "^5.4.0"

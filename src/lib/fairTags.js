@@ -382,7 +382,7 @@ export const fairActivities = {
   "stand-salon-gas-renovable-valladolid": ["energia"],
   "stand-genera-madrid": ["energia"],
   "stand-solar-storage-live-espana-valencia": ["energia"],
-  "stands-anecorm-valencia": ["congreso-medico","salud"],
+  "stands-anecorm-valencia": ["congreso-medico"],
   "stand-lisbon-energy-summit-lisboa": ["energia","congreso-profesional"],
   "stand-sbc-summit-lisboa": ["digital-software","congreso-profesional"],
   "stand-re-plus-portugal-oporto": ["energia","congreso-profesional"],
@@ -537,7 +537,11 @@ export const fairActivities = {
 };
 
 // Helpers
-export const activitiesForFair = (slug) => fairActivities[slug] || [];
+// Etiquetas de una feria, SIN las que no existan en fairTags: una etiqueta fantasma
+// (un desliz al dar de alta una feria) reventaba el mapa de Pat, y quien consume esto
+// no tiene por qué defenderse de un dato mal escrito. El guardián de build
+// scripts/check_fair_tags.mjs impide además que llegue a publicarse.
+export const activitiesForFair = (slug) => (fairActivities[slug] || []).filter((t) => fairTags[t]);
 export const colorForTag = (tag) => (tagFamilies[fairTags[tag]?.family]?.color) || '#6F757D';
 export const labelForTag = (tag, lang) => (fairTags[tag]?.label?.[lang]) || fairTags[tag]?.label?.es || tag;
 export const familyLabel = (fam, lang) => (tagFamilies[fam]?.label?.[lang]) || tagFamilies[fam]?.sector || fam;

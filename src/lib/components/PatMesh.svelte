@@ -200,8 +200,17 @@
     for (const f of fairsData) {
       const pt = CITY_POINTS[f.city];
       if (!pt) continue;
-      const tags = fairActivities[f.slug];
-      if (!tags || !tags.length) continue;
+      // Se filtran aquí las etiquetas sin definición en fairTags: el cinturón que
+      // había más abajo solo protegía el cálculo de tagKeys, pero los conjuntos por
+      // ciudad seguían llevándolas y el dibujo reventaba igual ("reading 'family'",
+      // con 'nautica' en agosto y con 'salud' el 2026-09-02). Saneando en la lectura,
+      // ningún consumidor de más abajo puede toparse con una etiqueta fantasma.
+      const tags = (fairActivities[f.slug] || []).filter((t) => {
+        if (fairTags[t]) return true;
+        console.warn(`[PatMesh] etiqueta sin definición en fairTags: "${t}" (feria ${f.slug}, excluida)`);
+        return false;
+      });
+      if (!tags.length) continue;
       let c = cityMap[f.city];
       if (!c) {
         c = { name: f.city, x: pt[0], y: pt[1], tags: {}, total: 0, fairs: [] };
@@ -217,14 +226,7 @@
     const famKeys = Object.keys(tagFamilies);
     const tagTotals = {};
     cities.forEach((c) => Object.keys(c.tags).forEach((t) => { tagTotals[t] = (tagTotals[t] || 0) + c.tags[t]; }));
-    // Cinturón: una etiqueta usada en fairActivities pero sin definición en fairTags
-    // no debe tumbar el mapa entero (pasó con 'nautica' el 2026-08-27) — se excluye
-    // del dibujo y se avisa por consola para que el dato se corrija.
-    const tagKeys = Object.keys(tagTotals).filter((t) => {
-      if (fairTags[t]) return true;
-      console.warn(`[PatMesh] etiqueta sin definición en fairTags: "${t}" (excluida del mapa)`);
-      return false;
-    });
+    const tagKeys = Object.keys(tagTotals).filter((t) => fairTags[t]);   // ya saneado arriba
     const famTotals = {};
     famKeys.forEach((f) => { famTotals[f] = 0; });
     tagKeys.forEach((t) => { famTotals[fairTags[t].family] += tagTotals[t]; });
