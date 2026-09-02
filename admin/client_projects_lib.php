@@ -277,61 +277,87 @@ if (!function_exists('cpx_key')) {
 		return $out;
 	}
 
-	/* ---------- Aviso al cliente: nueva fecha de la oferta ----------
-	 * La oferta por pronta decisión (importe + texto breve + fecha límite) es un
-	 * compromiso con fecha: si se le pone una nueva o se cambia la que había, el
-	 * cliente tiene que enterarse, porque de esa fecha depende lo que se ahorra.
-	 *
-	 * Se envía SOLO cuando el aviso significa algo: hay oferta con importe, la fecha
-	 * nueva no ha pasado ya, el proyecto no está aprobado (la oferta ya se congeló),
-	 * ni pausado, ni es el piloto público, y hay email de cliente válido.
+	/* ---------- Aviso al cliente: fechas de la propuesta ----------
+	 * Dos fechas comprometen al cliente y por eso se le avisan al cambiarlas:
+	 *   - La fecha de la OFERTA (descuento por pronta decisión): de ella depende lo
+	 *     que se ahorra, y pasada mengua 1.000 € por semana.
+	 *   - La VALIDEZ DE LA PROPUESTA: pasada esa fecha el proyecto se muestra como
+	 *     caducado y no se puede aprobar.
+	 * Un solo correo cubre las dos: si se cambian en el mismo guardado —cosa normal al
+	 * prorrogar—, el cliente recibe un aviso, no dos.
+	 * $offerDeadline y $validUntil son las fechas que HAN CAMBIADO (null = esa no).
 	 * Devuelve true si el correo salió.
 	 */
-	function cpx_offer_deadline_email($p, $deadline) {
+	function cpx_project_dates_email($p, $offerDeadline = null, $validUntil = null) {
+		if (!$offerDeadline && !$validUntil) return false;
 		$to = isset($p['client_email']) ? trim($p['client_email']) : '';
 		if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) return false;
 
 		$ref     = isset($p['ref']) ? $p['ref'] : '';
 		$titleEs = !empty($p['title_es']) ? $p['title_es'] : $ref;
 		$titleEn = !empty($p['title_en']) ? $p['title_en'] : $titleEs;
-		$amount  = isset($p['discount_amount']) ? (float) $p['discount_amount'] : 0.0;
-		$labelEs = !empty($p['discount_label_es']) ? $p['discount_label_es'] : 'Descuento por pronta decisión';
-		$labelEn = !empty($p['discount_label_en']) ? $p['discount_label_en'] : 'Early-decision discount';
 		$url     = 'https://standarte.es/proyecto?t=' . (isset($p['access_token']) ? $p['access_token'] : '');
 		$h       = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+		$fEs     = function ($d) { return date('d/m/Y', strtotime($d . ' 12:00:00')); };
+		$fEn     = function ($d) { return date('F j, Y', strtotime($d . ' 12:00:00')); };
 
-		/* El descuento se guarda en euros; el cliente lo entiende mejor como porcentaje,
-		 * así que se dan los dos. El porcentaje se calcula sobre la suma del presupuesto:
-		 * si aún no hay conceptos, se omite en vez de inventar una referencia. */
-		$subtotal = 0.0;
-		foreach (cpx_rows('client_project_budget_items?select=amount&project_id=eq.' . urlencode($p['id'])) as $it) {
-			$subtotal += (float) $it['amount'];
+		$es = array();
+		$en = array();
+
+		if ($offerDeadline) {
+			$amount  = isset($p['discount_amount']) ? (float) $p['discount_amount'] : 0.0;
+			$labelEs = !empty($p['discount_label_es']) ? $p['discount_label_es'] : 'Descuento por pronta decisión';
+			$labelEn = !empty($p['discount_label_en']) ? $p['discount_label_en'] : 'Early-decision discount';
+
+			/* El descuento se guarda en euros; el cliente lo entiende mejor como porcentaje,
+			 * así que se dan los dos. El porcentaje se calcula sobre la suma del presupuesto:
+			 * si aún no hay conceptos, se omite en vez de inventar una referencia. */
+			$subtotal = 0.0;
+			foreach (cpx_rows('client_project_budget_items?select=amount&project_id=eq.' . urlencode($p['id'])) as $it) {
+				$subtotal += (float) $it['amount'];
+			}
+			$pct = ($subtotal > 0) ? round($amount / $subtotal * 100, 1) : null;
+			$pctEs = $pct === null ? '' : ' (un ' . rtrim(rtrim(number_format($pct, 1, ',', '.'), '0'), ',') . '&nbsp;% del presupuesto)';
+			$pctEn = $pct === null ? '' : ' (' . rtrim(rtrim(number_format($pct, 1, '.', ','), '0'), '.') . '% of the quote)';
+			$eurEs = number_format($amount, ($amount == round($amount) ? 0 : 2), ',', '.') . '&nbsp;€';
+			$eurEn = '€' . number_format($amount, ($amount == round($amount) ? 0 : 2), '.', ',');
+
+			$es[] = "La oferta de su proyecto <strong>" . $h($titleEs) . "</strong> (" . $h($ref) . ") "
+				. "es válida <strong>hasta el " . $fEs($offerDeadline) . "</strong>. " . $h($labelEs) . ": <strong>" . $eurEs . "</strong>" . $pctEs . ". "
+				. "Si aprueba el proyecto antes de esa fecha, se descuenta entera; después se reduce 1.000 € por cada semana transcurrida.";
+			$en[] = "The offer on your project <strong>" . $h($titleEn) . "</strong> (" . $h($ref) . ") "
+				. "is valid <strong>until " . $fEn($offerDeadline) . "</strong>. " . $h($labelEn) . ": <strong>" . $eurEn . "</strong>" . $pctEn . ". "
+				. "If you approve the project before that date it is deducted in full; afterwards it shrinks by €1,000 for each elapsed week.";
 		}
-		$pct = ($subtotal > 0) ? round($amount / $subtotal * 100, 1) : null;
-		$pctEs = $pct === null ? '' : ' (un ' . rtrim(rtrim(number_format($pct, 1, ',', '.'), '0'), ',') . '&nbsp;% del presupuesto)';
-		$pctEn = $pct === null ? '' : ' (' . rtrim(rtrim(number_format($pct, 1, '.', ','), '0'), '.') . '% of the quote)';
 
-		$eurEs = number_format($amount, ($amount == round($amount) ? 0 : 2), ',', '.') . '&nbsp;€';
-		$eurEn = '€' . number_format($amount, ($amount == round($amount) ? 0 : 2), '.', ',');
-		$ts    = strtotime($deadline . ' 12:00:00');
-		$fEs   = date('d/m/Y', $ts);
-		$fEn   = date('F j, Y', $ts);
+		if ($validUntil) {
+			/* Si en el mismo correo ya se ha presentado el proyecto (párrafo de la oferta),
+			 * esta frase no repite el título: sería redundante en un texto que se quiere corto. */
+			$suj  = $offerDeadline ? 'La propuesta' : 'La propuesta de su proyecto <strong>' . $h($titleEs) . '</strong> (' . $h($ref) . ')';
+			$sujE = $offerDeadline ? 'The proposal' : 'The proposal for your project <strong>' . $h($titleEn) . '</strong> (' . $h($ref) . ')';
+			$es[] = $suj . " es válida <strong>hasta el " . $fEs($validUntil) . "</strong>. "
+				. "Pasada esa fecha, los precios y condiciones dejan de estar garantizados y habría que revisarlos.";
+			$en[] = $sujE . " is valid <strong>until " . $fEn($validUntil) . "</strong>. "
+				. "After that date, prices and terms are no longer guaranteed and would need to be reviewed.";
+		}
 
-		$subject = 'Nueva fecha para su oferta / New offer date — ' . $ref;
+		$cierreEs = ' Aprobar el proyecto no impide seguir haciendo modificaciones.';
+		$cierreEn = ' Approving the project does not prevent further modifications.';
 
-		$es = "<p style='margin:0 0 16px;text-align:left;'>La oferta de su proyecto <strong>" . $h($titleEs) . "</strong> (" . $h($ref) . ") "
-			. "es válida <strong>hasta el " . $fEs . "</strong>. " . $h($labelEs) . ": <strong>" . $eurEs . "</strong>" . $pctEs . ". "
-			. "Si aprueba el proyecto antes de esa fecha, se descuenta entera; después se reduce 1.000 € por cada semana transcurrida. "
-			. "Aprobar el proyecto no impide seguir haciendo modificaciones.</p>";
+		if ($offerDeadline && $validUntil) {
+			$subject = 'Nuevas fechas de su propuesta / New dates for your proposal — ' . $ref;
+		} elseif ($offerDeadline) {
+			$subject = 'Nueva fecha para su oferta / New offer date — ' . $ref;
+		} else {
+			$subject = 'Nueva validez de su propuesta / New proposal validity — ' . $ref;
+		}
 
-		$en = "<p style='margin:0 0 16px;text-align:left;color:#555;'>The offer on your project <strong>" . $h($titleEn) . "</strong> (" . $h($ref) . ") "
-			. "is valid <strong>until " . $fEn . "</strong>. " . $h($labelEn) . ": <strong>" . $eurEn . "</strong>" . $pctEn . ". "
-			. "If you approve the project before that date it is deducted in full; afterwards it shrinks by €1,000 for each elapsed week. "
-			. "Approving the project does not prevent further modifications.</p>";
+		$pEs = "<p style='margin:0 0 16px;text-align:left;'>" . implode(' ', $es) . $cierreEs . "</p>";
+		$pEn = "<p style='margin:0 0 16px;text-align:left;color:#555;'>" . implode(' ', $en) . $cierreEn . "</p>";
 
 		$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 			. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
-			. $es . $en
+			. $pEs . $pEn
 			. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>Abrir el proyecto / Open the project</a></p>"
 			. "<p style='margin:28px 0 0;text-align:left;'>Un cordial saludo,<br>Best regards,<br><strong>Equipo de Standarte / The Standarte team</strong></p>"
 			. "<p style='text-align:center;font-size:12px;color:#888;margin-top:24px;'>Mensaje automatizado del sistema de gestión de proyectos de Standarte.<br>Automated message from Standarte's project management system.<br><a href='https://standarte.es' style='color:#888;text-decoration:none;'>https://standarte.es</a></p>"
@@ -351,7 +377,16 @@ if (!function_exists('cpx_key')) {
 		return (bool) $sent;
 	}
 
-	/* ¿Toca avisar al cliente de la fecha de la oferta?
+	/* Estado que impide cualquier aviso de fechas: aprobado (ya no hay nada que
+	 * decidir), pausado, piloto público o sin email de cliente. */
+	function cpx_dates_notifiable($after) {
+		if (!empty($after['approved'])) return false;
+		if (!empty($after['is_demo']) || !empty($after['paused'])) return false;
+		$to = isset($after['client_email']) ? trim($after['client_email']) : '';
+		return $to !== '' && (bool) filter_var($to, FILTER_VALIDATE_EMAIL);
+	}
+
+	/* ¿Toca avisar de la fecha de la OFERTA?
 	 * $after es la fila TAL COMO QUEDA tras guardar (importe y texto pueden cambiar en
 	 * el mismo guardado que la fecha), y la comparación de fechas se hace con la
 	 * anterior. Se separa del envío para poder razonarla —y probarla— sin mandar nada. */
@@ -361,8 +396,16 @@ if (!function_exists('cpx_key')) {
 		if ($newDeadline === $oldDeadline) return false;                   // no ha cambiado
 		if ($newDeadline < $today) return false;                           // fecha ya pasada: no es una oferta que ofrecer
 		if ((float) (isset($after['discount_amount']) ? $after['discount_amount'] : 0) <= 0) return false;  // sin importe no hay oferta
-		if (!empty($after['approved'])) return false;                      // aprobado: la oferta ya quedó congelada
-		if (!empty($after['is_demo']) || !empty($after['paused'])) return false;   // piloto público o proyecto parado
-		return true;
+		return cpx_dates_notifiable($after);
+	}
+
+	/* ¿Toca avisar de la VALIDEZ DE LA PROPUESTA? Mismas reglas, sin la del importe:
+	 * la validez existe haya descuento o no. */
+	function cpx_should_notify_valid_until($after, $oldDate, $newDate, $today = null) {
+		$today = $today ?: date('Y-m-d');
+		if (!$newDate) return false;                                       // se ha borrado: la propuesta pasa a no caducar, no hay aviso que dar
+		if ($newDate === $oldDate) return false;                           // no ha cambiado
+		if ($newDate < $today) return false;                               // ya vencida: anunciarla sería anunciar una propuesta muerta
+		return cpx_dates_notifiable($after);
 	}
 }
