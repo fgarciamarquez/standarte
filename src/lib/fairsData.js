@@ -2149,6 +2149,13 @@ export const fairsData = [
     "sector": "Industria y Logística"
   },
   {
+    "name": "Congreso ANECORM",
+    "country": "es",
+    "slug": "stands-anecorm-valencia",
+    "city": "Valencia",
+    "sector": "Salud y Medicina"
+  },
+  {
     "name": "Lisbon Energy Summit & Exhibition",
     "country": "pt",
     "slug": "stand-lisbon-energy-summit-lisboa",

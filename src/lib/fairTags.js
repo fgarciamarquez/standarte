@@ -382,6 +382,7 @@ export const fairActivities = {
   "stand-salon-gas-renovable-valladolid": ["energia"],
   "stand-genera-madrid": ["energia"],
   "stand-solar-storage-live-espana-valencia": ["energia"],
+  "stands-anecorm-valencia": ["congreso-medico","salud"],
   "stand-lisbon-energy-summit-lisboa": ["energia","congreso-profesional"],
   "stand-sbc-summit-lisboa": ["digital-software","congreso-profesional"],
   "stand-re-plus-portugal-oporto": ["energia","congreso-profesional"],

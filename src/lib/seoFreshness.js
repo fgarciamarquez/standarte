@@ -59,7 +59,7 @@ export const seoFreshness = {
   islas_canarias: '2026-08-28',
   islas_de_madeira: '2026-08-28',
   mallorca: '2026-08-28',
-  valencia: '2026-08-28',
+  valencia: '2026-09-02',
   coruna: '2026-08-28',
   santiago: '2026-08-28',
   valladolid: '2026-08-28',
@@ -124,6 +124,7 @@ export function freshnessFor(section) {
 export const activityFreshness = '2026-08-28';
 
 export const fairFreshness = {
+  'stands-anecorm-valencia': '2026-09-02',
   'stands-agroexpo': '2026-09-01',
   'stands-talent-land-malaga': '2026-08-31',
   'stands-modtissimo-oporto': '2026-08-31',

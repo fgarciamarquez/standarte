@@ -25,6 +25,7 @@
 //   cadence   : 'annual' | 'biennial' | 'triennial' | 'unknown'
 //   source    : URL donde se verificó (para poder auditar y refrescar el dato)
 export const fairDates = {
+  'stands-anecorm-valencia': { start: '2026-10-14', end: '2026-10-16', cadence: 'annual', source: 'https://anecorm.org/congreso2026/' },
   'stand-fidma-gijon': { start: '2026-08-01', end: '2026-08-16', cadence: 'annual', source: 'https://recintoferialasturias.camaragijon.es/es/cargarAplicacionAgenda.do' },
   'stand-mercat-de-la-vall-andorra': { start: '2026-08-01', end: '2026-08-02', cadence: 'annual', source: 'https://www.agenda.ad/activitat/andorra-la-vella/fires-i-mercats/mercat-de-la-vall-21714' },
   'stand-fatacil-lagoa': { start: '2026-08-21', end: '2026-08-30', cadence: 'annual', source: 'https://www.cm-lagoa.pt/conhecer/eventos/evento/fatacil-2026' },
