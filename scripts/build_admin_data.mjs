@@ -34,10 +34,28 @@ const families = Object.keys(tagFamilies).map((fam) => ({
     .map((slug) => ({ slug, label: labelForTag(slug, 'es'), color: colorForTag(slug) }))
 })).filter((f) => f.tags.length);
 
+// Catálogo de eventos (ferias y congresos) para el selector predictivo del alta de
+// proyectos de cliente: el proyecto se relaciona con un evento guardando solo su slug,
+// y el nombre y la fecha se resuelven aquí, de la misma fuente que el sitio público.
+// Se incluyen las ferias SIN fecha (el proyecto puede ser de una edición aún sin
+// publicar) y la fecha ya formateada, para que el panel no tenga que saber de formatos.
+const { fairsData } = await import(pathToFileURL(path.join(root, 'src', 'lib', 'fairsData.js')).href);
+const { fairDates, formatFairDates } = await import(pathToFileURL(path.join(root, 'src', 'lib', 'fairDates.js')).href);
+const fairs = fairsData
+  .map((f) => ({
+    slug: f.slug,
+    name: f.name,
+    city: f.city || '',
+    start: (fairDates[f.slug] && fairDates[f.slug].start) || '',
+    dates: formatFairDates(f.slug, 'es') || ''
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name, 'es'));
+
 for (const base of [path.join(root, 'static', 'admin', 'data'), path.join(root, 'admin', 'data')]) {
   mkdirSync(base, { recursive: true });
   writeFileSync(path.join(base, 'projects_index.json'), JSON.stringify(projectsIndex));
   writeFileSync(path.join(base, 'tags.json'), JSON.stringify({ families }));
+  writeFileSync(path.join(base, 'fairs.json'), JSON.stringify(fairs));
 }
 
-console.log(`build_admin_data: ${projectsIndex.length} proyectos, ${families.reduce((n, f) => n + f.tags.length, 0)} etiquetas.`);
+console.log(`build_admin_data: ${projectsIndex.length} proyectos, ${families.reduce((n, f) => n + f.tags.length, 0)} etiquetas, ${fairs.length} eventos.`);

@@ -26,8 +26,8 @@
   let adminMsg = '';
 
   const t = {
-    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', offerNotified: 'Guardado. Hemos avisado al cliente de la nueva fecha de la oferta.', validNotified: 'Guardado. Hemos avisado al cliente de la nueva validez de la propuesta.', datesNotified: 'Guardado. Hemos avisado al cliente de las nuevas fechas.', titlePh: 'Título del proyecto', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', bicPh: 'BIC / SWIFT del banco', pausedTitle: 'Proyecto paralizado', pausedLabel: 'Paralizar proyecto', pausedReasonLabel: 'Motivo', pausedReasonPh: 'Motivo (p. ej., falta de pago)…', pausedClientNote: 'Este proyecto está temporalmente paralizado. Para reactivarlo, contacta con nosotros.', validUntil: 'Propuesta válida hasta el', proposalExpired: 'propuesta caducada', proposalExpiredNote: 'La propuesta ha caducado: contacta con nosotros para renovarla.', payTerms: 'Forma de pago', payTermsPh: 'Forma de pago (texto libre)…', validUntilLabel: 'Propuesta válida hasta', sessionExpired: 'Sesión caducada: entra de nuevo con «acceso interno» y repite el último cambio.', taxesTitle: 'Impuestos', applyIva: 'Aplicar IVA (suma a la base)', applyIrpf: 'Aplicar IRPF (resta a la base)', totalUsd: 'Total en dólares (USD)', taxHint: 'Desactívalos para clientes extranjeros, o ajusta el porcentaje si facturas desde una sucursal en otro país. Por defecto: IVA 21%, IRPF 15%.', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta entera de la base imponible hasta la fecha límite; después se reduce 1.000 € por semana transcurrida hasta extinguirse, y la fecha que ve el cliente avanza una semana con cada reducción.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…', clientEmail: 'Email del cliente (para los avisos)', clientEmailPh: 'cliente@empresa.com', approve: 'Aprobar proyecto', approveWithOffer: 'Aprobar proyecto con oferta', testimonialPh: '¿Una frase sobre cómo fue trabajar con nosotros? (opcional, la usaríamos con tu permiso)', approved: 'APROBADO', approvedOn: 'Aprobado el', payTitle: 'Datos para el ingreso', subject: 'Asunto', beneficiary: 'Beneficiario', owner: 'titular de Standarte', billingTitle: 'Datos para la factura', razon: 'Razón social', cif: 'CIF', address: 'Dirección', postal: 'Código postal', city: 'Ciudad', country: 'País', saveBilling: 'Guardar datos de facturación', billingSaved: 'Datos guardados. Gracias.', thanks: 'Gracias por su confianza. Nuestro equipo le hará llegar la factura y el contrato en breve. Un cordial saludo. El equipo de Standarte.' },
-    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', offerNotified: 'Saved. The client has been notified of the new offer date.', validNotified: 'Saved. The client has been notified of the new proposal validity.', datesNotified: 'Saved. The client has been notified of the new dates.', titlePh: 'Project title', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', bicPh: 'Bank BIC / SWIFT', pausedTitle: 'Project on hold', pausedLabel: 'Put project on hold', pausedReasonLabel: 'Reason', pausedReasonPh: 'Reason (e.g., pending payment)…', pausedClientNote: 'This project is temporarily on hold. To reactivate it, please contact us.', validUntil: 'Proposal valid until', proposalExpired: 'proposal expired', proposalExpiredNote: 'This proposal has expired: contact us to renew it.', payTerms: 'Payment terms', payTermsPh: 'Payment terms (free text)…', validUntilLabel: 'Proposal valid until', sessionExpired: 'Session expired: log in again via “internal access” and repeat your last change.', taxesTitle: 'Taxes', applyIva: 'Apply VAT (added to the base)', applyIrpf: 'Apply IRPF (subtracted from the base)', totalUsd: 'Total in US dollars (USD)', taxHint: 'Disable them for foreign clients, or adjust the percentage if invoicing from a branch in another country. Defaults: VAT 21%, IRPF 15%.', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted in full from the taxable base until the deadline; afterwards it shrinks by €1,000 per elapsed week until it runs out, and the date shown to the client rolls forward one week with each reduction.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…', clientEmail: 'Client email (for notifications)', clientEmailPh: 'client@company.com', approve: 'Approve project', approveWithOffer: 'Approve project with offer', testimonialPh: 'A line about how it was to work with us? (optional, used with your permission)', approved: 'APPROVED', approvedOn: 'Approved on', payTitle: 'Payment details', subject: 'Subject', beneficiary: 'Beneficiary', owner: 'Standarte owner', billingTitle: 'Billing details', razon: 'Legal name', cif: 'Tax ID (CIF)', address: 'Address', postal: 'Postal code', city: 'City', country: 'Country', saveBilling: 'Save billing details', billingSaved: 'Details saved. Thank you.', thanks: 'Thank you for your trust. Our team will send you the invoice and the contract shortly. Best regards, the Standarte team.' }
+    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', offerNotified: 'Guardado. Hemos avisado al cliente de la nueva fecha de la oferta.', validNotified: 'Guardado. Hemos avisado al cliente de la nueva validez de la propuesta.', datesNotified: 'Guardado. Hemos avisado al cliente de las nuevas fechas.', titlePh: 'Título del proyecto', event: 'Evento', eventPh: 'Relaciona el proyecto con una feria o congreso…', eventNone: 'Sin evento asociado', eventClear: 'quitar', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', bicPh: 'BIC / SWIFT del banco', pausedTitle: 'Proyecto paralizado', pausedLabel: 'Paralizar proyecto', pausedReasonLabel: 'Motivo', pausedReasonPh: 'Motivo (p. ej., falta de pago)…', pausedClientNote: 'Este proyecto está temporalmente paralizado. Para reactivarlo, contacta con nosotros.', validUntil: 'Propuesta válida hasta el', proposalExpired: 'propuesta caducada', proposalExpiredNote: 'La propuesta ha caducado: contacta con nosotros para renovarla.', payTerms: 'Forma de pago', payTermsPh: 'Forma de pago (texto libre)…', validUntilLabel: 'Propuesta válida hasta', sessionExpired: 'Sesión caducada: entra de nuevo con «acceso interno» y repite el último cambio.', taxesTitle: 'Impuestos', applyIva: 'Aplicar IVA (suma a la base)', applyIrpf: 'Aplicar IRPF (resta a la base)', totalUsd: 'Total en dólares (USD)', taxHint: 'Desactívalos para clientes extranjeros, o ajusta el porcentaje si facturas desde una sucursal en otro país. Por defecto: IVA 21%, IRPF 15%.', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta entera de la base imponible hasta la fecha límite; después se reduce 1.000 € por semana transcurrida hasta extinguirse, y la fecha que ve el cliente avanza una semana con cada reducción.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…', clientEmail: 'Email del cliente (para los avisos)', clientEmailPh: 'cliente@empresa.com', approve: 'Aprobar proyecto', approveWithOffer: 'Aprobar proyecto con oferta', testimonialPh: '¿Una frase sobre cómo fue trabajar con nosotros? (opcional, la usaríamos con tu permiso)', approved: 'APROBADO', approvedOn: 'Aprobado el', payTitle: 'Datos para el ingreso', subject: 'Asunto', beneficiary: 'Beneficiario', owner: 'titular de Standarte', billingTitle: 'Datos para la factura', razon: 'Razón social', cif: 'CIF', address: 'Dirección', postal: 'Código postal', city: 'Ciudad', country: 'País', saveBilling: 'Guardar datos de facturación', billingSaved: 'Datos guardados. Gracias.', thanks: 'Gracias por su confianza. Nuestro equipo le hará llegar la factura y el contrato en breve. Un cordial saludo. El equipo de Standarte.' },
+    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', offerNotified: 'Saved. The client has been notified of the new offer date.', validNotified: 'Saved. The client has been notified of the new proposal validity.', datesNotified: 'Saved. The client has been notified of the new dates.', titlePh: 'Project title', event: 'Event', eventPh: 'Link the project to a trade fair or congress…', eventNone: 'No event linked', eventClear: 'remove', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', bicPh: 'Bank BIC / SWIFT', pausedTitle: 'Project on hold', pausedLabel: 'Put project on hold', pausedReasonLabel: 'Reason', pausedReasonPh: 'Reason (e.g., pending payment)…', pausedClientNote: 'This project is temporarily on hold. To reactivate it, please contact us.', validUntil: 'Proposal valid until', proposalExpired: 'proposal expired', proposalExpiredNote: 'This proposal has expired: contact us to renew it.', payTerms: 'Payment terms', payTermsPh: 'Payment terms (free text)…', validUntilLabel: 'Proposal valid until', sessionExpired: 'Session expired: log in again via “internal access” and repeat your last change.', taxesTitle: 'Taxes', applyIva: 'Apply VAT (added to the base)', applyIrpf: 'Apply IRPF (subtracted from the base)', totalUsd: 'Total in US dollars (USD)', taxHint: 'Disable them for foreign clients, or adjust the percentage if invoicing from a branch in another country. Defaults: VAT 21%, IRPF 15%.', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted in full from the taxable base until the deadline; afterwards it shrinks by €1,000 per elapsed week until it runs out, and the date shown to the client rolls forward one week with each reduction.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…', clientEmail: 'Client email (for notifications)', clientEmailPh: 'client@company.com', approve: 'Approve project', approveWithOffer: 'Approve project with offer', testimonialPh: 'A line about how it was to work with us? (optional, used with your permission)', approved: 'APPROVED', approvedOn: 'Approved on', payTitle: 'Payment details', subject: 'Subject', beneficiary: 'Beneficiary', owner: 'Standarte owner', billingTitle: 'Billing details', razon: 'Legal name', cif: 'Tax ID (CIF)', address: 'Address', postal: 'Postal code', city: 'City', country: 'Country', saveBilling: 'Save billing details', billingSaved: 'Details saved. Thank you.', thanks: 'Thank you for your trust. Our team will send you the invoice and the contract shortly. Best regards, the Standarte team.' }
   };
   $: L = t[lang];
 
@@ -61,6 +61,74 @@
     irpfOn: Number(data.irpf_rate ?? 0.15) > 0,
     irpfPct: String(Math.round(Number(data.irpf_rate ?? 0.15) * 10000) / 100 || 15)
   }; }
+
+  // ── Evento relacionado (feria o congreso) ──
+  // El proyecto guarda solo el slug; el nombre y la fecha se resuelven aquí contra el
+  // catálogo del sitio, así que una feria que cambia de fecha se actualiza sola. El
+  // catálogo (fairsData + fairDates) pesa demasiado para cargarlo en toda visita: se
+  // importa en dinámico y solo cuando hace falta —hay evento que mostrar o se está
+  // editando—, de modo que el cliente que abre su proyecto no lo descarga.
+  let fairMod = null;
+  let fairLoading = false;
+  async function loadFairs() {
+    if (fairMod || fairLoading) return;
+    fairLoading = true;
+    try {
+      const [a, b] = await Promise.all([import('$lib/fairsData.js'), import('$lib/fairDates.js')]);
+      fairMod = { fairs: a.fairsData, fmt: b.formatFairDates };
+    } catch (e) { fairMod = null; } finally { fairLoading = false; }
+  }
+  $: if (data && (data.fair_slug || admin)) loadFairs();
+
+  const fairHref = (slug, l) => (l === 'es' ? `/ferias/${slug}` : `/${l}/ferias/${slug}`);
+  // Evento actual: en modo edición manda lo elegido en el buffer (respuesta inmediata
+  // al elegir), y fuera de él, lo guardado.
+  $: currentFairSlug = (admin && eb.fairSlug !== undefined) ? eb.fairSlug : (data?.fair_slug || '');
+  $: fairInfo = (fairMod && currentFairSlug)
+    ? (() => {
+        const f = fairMod.fairs.find((x) => x.slug === currentFairSlug);
+        return f ? { slug: f.slug, name: f.name, city: f.city || '', dates: fairMod.fmt(f.slug, lang) || '' } : null;
+      })()
+    : null;
+
+  // Predictor del selector: mismo ranking que el buscador de la portada (primero lo
+  // que EMPIEZA por lo tecleado, nombre antes que ciudad).
+  const fnorm = (x) => (x || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  let fairQuery = '';
+  let fairIdx = -1;
+  let fairFocus = false;
+  $: fairMatches = (() => {
+    const q = fnorm(fairQuery);
+    if (!q || !fairMod) return [];
+    const rank = (f) => {
+      const k = fnorm(f.name), c = fnorm(f.city);
+      if (k.startsWith(q)) return 0;
+      if (c && c.startsWith(q)) return 1;
+      if (k.includes(q)) return 2;
+      if (c && c.includes(q)) return 3;
+      return 9;
+    };
+    return fairMod.fairs.map((f) => ({ f, r: rank(f) })).filter((x) => x.r < 9)
+      .sort((a, b) => a.r - b.r || a.f.name.localeCompare(b.f.name, 'es'))
+      .slice(0, 40)
+      .map((x) => ({ slug: x.f.slug, name: x.f.name, city: x.f.city || '', dates: fairMod.fmt(x.f.slug, lang) || '' }));
+  })();
+
+  async function pickFair(slug) {
+    eb.fairSlug = slug;
+    fairQuery = ''; fairIdx = -1; fairFocus = false;
+    const r = await adminAction(token, 'save', { fair_slug: slug });
+    if (saveResult(r)) await reload();
+  }
+  function fairKeydown(e) {
+    if (fairMatches.length) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); fairIdx = Math.min(fairIdx + 1, fairMatches.length - 1); return; }
+      if (e.key === 'ArrowUp') { e.preventDefault(); fairIdx = Math.max(fairIdx - 1, 0); return; }
+      if (e.key === 'Escape') { fairFocus = false; fairIdx = -1; return; }
+      if (e.key === 'Enter') { e.preventDefault(); pickFair(fairMatches[fairIdx >= 0 ? fairIdx : 0].slug); return; }
+    }
+    if (e.key === 'Enter') e.preventDefault();
+  }
 
   // Impuestos y descuento por pronta decisión.
   // amt(): mismo criterio que el PHP al guardar ((float) con coma aceptada como decimal),
@@ -414,8 +482,36 @@
 
   {#if admin}
     <input class="pz-edit pz-edit-title" bind:value={eb.title} placeholder={L.titlePh} />
+    <!-- Evento relacionado: predictor igual que el buscador de la portada. Se guarda
+         al elegir (no espera a "Guardar cambios"), como los campos del descuento. -->
+    <div class="pz-event-edit">
+      <label class="pz-elabel" for="pz-event">{L.event}</label>
+      {#if fairInfo}
+        <p class="pz-event pz-event-current">
+          <a href={fairHref(fairInfo.slug, lang)} target="_blank" rel="noopener">{fairInfo.name}</a>{#if fairInfo.city} · {fairInfo.city}{/if}{#if fairInfo.dates} · <strong>{fairInfo.dates}</strong>{/if}
+          <button type="button" class="pz-event-clear" on:click={() => pickFair('')}>{L.eventClear}</button>
+        </p>
+      {/if}
+      <input id="pz-event" class="pz-edit" autocomplete="off" bind:value={fairQuery}
+        placeholder={L.eventPh} on:focus={() => fairFocus = true}
+        on:blur={() => setTimeout(() => fairFocus = false, 120)} on:keydown={fairKeydown} />
+      {#if fairFocus && fairMatches.length}
+        <ul class="pz-event-list">
+          {#each fairMatches as m, i}
+            <li class:on={i === fairIdx}>
+              <button type="button" on:mousedown|preventDefault={() => pickFair(m.slug)}>
+                <strong>{m.name}</strong>{#if m.city} <span class="pz-event-city">· {m.city}</span>{/if}{#if m.dates} <span class="pz-event-date">· {m.dates}</span>{/if}
+              </button>
+            </li>
+          {/each}
+        </ul>
+      {/if}
+    </div>
   {:else}
     <h1 class="pz-title" class:pz-blur={demo}>{data.title[lang]}</h1>
+    {#if fairInfo}
+      <p class="pz-event">{L.event}: <a href={fairHref(fairInfo.slug, lang)}>{fairInfo.name}</a>{#if fairInfo.city} · {fairInfo.city}{/if}{#if fairInfo.dates} · <strong>{fairInfo.dates}</strong>{/if}</p>
+    {/if}
   {/if}
   <p class="pz-inter">
     {L.interlocutor}: <strong>{data.interlocutor.name}</strong> · {data.interlocutor.role[lang]} ·
@@ -823,6 +919,19 @@
 
   .pz-edit { width: 100%; box-sizing: border-box; background: #fff; border: 1px solid #cfcdc4; border-radius: 6px; padding: 10px 12px; font-family: inherit; font-size: 15px; color: #1b1b1a; margin-bottom: 10px; }
   .pz-edit-title { font-size: 22px; font-weight: 700; margin: 18px 0 6px; }
+  .pz-event { font-size: 14px; color: #555; margin: 0 0 10px; }
+  .pz-event a { color: #1b1b1a; text-decoration: underline; text-underline-offset: 2px; }
+  .pz-event strong { color: #1b1b1a; }
+  .pz-event-edit { position: relative; margin-bottom: 6px; }
+  .pz-event-current { margin: 2px 0 6px; }
+  .pz-event-clear { background: transparent; border: none; color: #c62828; cursor: pointer; font: inherit; font-size: 12px; padding: 0 0 0 8px; }
+  .pz-event-list { position: absolute; z-index: 30; left: 0; right: 0; top: 100%; margin: -6px 0 0; padding: 0; list-style: none; max-height: 260px; overflow-y: auto; background: #fff; border: 1px solid #cfcdc4; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+  .pz-event-list li { border-bottom: 1px solid #eee; }
+  .pz-event-list li:last-child { border-bottom: none; }
+  .pz-event-list li.on, .pz-event-list li:hover { background: #f6f6f2; }
+  .pz-event-list button { display: block; width: 100%; text-align: left; background: transparent; border: none; padding: 8px 10px; font: inherit; font-size: 14px; color: #1b1b1a; cursor: pointer; }
+  .pz-event-city { color: #888; }
+  .pz-event-date { color: #8a6d00; }
   .pz-elabel { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #888; }
 
   .pz-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 2px solid #1b1b1a; padding-bottom: 12px; }

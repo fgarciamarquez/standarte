@@ -408,4 +408,33 @@ if (!function_exists('cpx_key')) {
 		if ($newDate < $today) return false;                               // ya vencida: anunciarla sería anunciar una propuesta muerta
 		return cpx_dates_notifiable($after);
 	}
+
+	/* ---------- Catálogo de eventos (ferias y congresos) ----------
+	 * Lo genera scripts/build_admin_data.mjs desde fairsData.js en cada build
+	 * (admin/data/fairs.json, gitignored). El proyecto guarda solo el slug: así el
+	 * nombre y la fecha se leen siempre del catálogo vivo y no se quedan viejos.
+	 */
+	function cpx_fairs_catalog() {
+		static $cache = null;
+		if ($cache !== null) return $cache;
+		$f = __DIR__ . '/data/fairs.json';
+		$raw = is_readable($f) ? file_get_contents($f) : '';
+		$data = $raw !== '' ? json_decode($raw, true) : null;
+		$cache = is_array($data) ? $data : array();
+		return $cache;
+	}
+
+	/* ¿El slug existe en el catálogo? Evita guardar una referencia rota si alguien
+	 * escribe a mano en el campo en vez de elegir de la lista. */
+	function cpx_fair_exists($slug) {
+		if (!is_string($slug) || !preg_match('/^[a-z0-9-]{3,80}$/', $slug)) return false;
+		foreach (cpx_fairs_catalog() as $f) { if (isset($f['slug']) && $f['slug'] === $slug) return true; }
+		return false;
+	}
+
+	/* Nombre + ciudad + fecha de un evento, para pintarlo donde haga falta. */
+	function cpx_fair_info($slug) {
+		foreach (cpx_fairs_catalog() as $f) { if (isset($f['slug']) && $f['slug'] === $slug) return $f; }
+		return null;
+	}
 }

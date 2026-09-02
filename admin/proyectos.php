@@ -35,6 +35,11 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	$row['title_es'] = post('title_es');
 	$row['title_en'] = post('title_en');
 	if (post('interlocutor_email') !== '') $row['interlocutor_email'] = post('interlocutor_email');
+	// Evento (feria o congreso) con el que se relaciona el proyecto: se guarda SOLO el
+	// slug, y solo si existe en el catálogo, para que un valor tecleado a mano no deje
+	// una referencia rota. El nombre y la fecha se resuelven después desde fairsData.
+	$fair = post('fair_slug');
+	if ($fair !== '' && cpx_fair_exists($fair)) $row['fair_slug'] = $fair;
 	$row['access_token'] = $token;
 	$row['status'] = 'draft';
 	cpx_sb('POST', 'client_projects', $row);
@@ -151,6 +156,16 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.st-ro { cursor: default; }
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
+	/* Selector predictivo de evento: mismo comportamiento que el buscador de la
+	   portada (ranking por nombre y ciudad, lista desplazable, teclado). */
+	.ev-field { position: relative; }
+	.ev-list { position: absolute; z-index: 20; left: 0; right: 0; margin: -6px 0 0; padding: 0; list-style: none; max-height: 280px; overflow-y: auto; background: #12141a; border: 1px solid #3a3f48; border-radius: 6px; }
+	.ev-list li { padding: 8px 10px; cursor: pointer; font-size: 14px; border-bottom: 1px solid #23262d; }
+	.ev-list li:last-child { border-bottom: none; }
+	.ev-list li.on, .ev-list li:hover { background: #23262d; }
+	.ev-city { color: #8a8f98; }
+	.ev-date { color: #ffc800; }
+	.ev-clear { background: transparent; border: none; color: #e57373; cursor: pointer; font: inherit; font-size: 12px; padding: 0 0 0 8px; }
 	.dup { background: transparent; color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; text-decoration: none; display: inline-block; }
 	.dup:hover { background: rgba(255,200,0,.14); border-color: #ffc800; }
 	.pj-acts { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
@@ -211,6 +226,13 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<input name="title_es" placeholder="Título ES">
 			<input name="title_en" placeholder="Título EN">
 			<input name="interlocutor_email" placeholder="Email interlocutor (opc.)">
+			<div style="grid-column:1/3" class="ev-field">
+				<label for="ev-input">Evento (feria o congreso)</label>
+				<input id="ev-input" autocomplete="off" placeholder="Escribe el nombre del evento o su ciudad…">
+				<input type="hidden" name="fair_slug" id="ev-slug">
+				<ul id="ev-list" class="ev-list" hidden></ul>
+				<p class="hint" id="ev-chosen" hidden></p>
+			</div>
 			<div style="grid-column:1/3"><button type="submit">Crear proyecto</button></div>
 		</form>
 	</div>
@@ -277,6 +299,76 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<?php endforeach; ?>
 		</div>
 	</div>
+<?php endif; ?>
+<?php if (pj_authed()): ?>
+<script>
+/* Selector predictivo de evento (alta de proyecto). Copia el comportamiento del
+   buscador de la portada: ranking que antepone lo que EMPIEZA por lo tecleado
+   (nombre antes que ciudad), lista desplazable de hasta 40 y navegación con teclado.
+   El catálogo se sirve como JSON generado en el build (data/fairs.json). */
+(function () {
+  var input = document.getElementById('ev-input'), hidden = document.getElementById('ev-slug'),
+      list = document.getElementById('ev-list'), chosen = document.getElementById('ev-chosen');
+  if (!input) return;
+  var fairs = [], matches = [], idx = -1;
+  var norm = function (t) { return (t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); };
+
+  fetch('data/fairs.json').then(function (r) { return r.json(); }).then(function (d) {
+    fairs = (d || []).map(function (f) { return { s: f.slug, n: f.name, c: f.city || '', d: f.dates || '', k: norm(f.name), ck: norm(f.city) }; });
+  }).catch(function () { input.placeholder = 'No se pudo cargar el catálogo de eventos'; });
+
+  function rank(o, q) {
+    if (o.k.indexOf(q) === 0) return 0;
+    if (o.ck && o.ck.indexOf(q) === 0) return 1;
+    if (o.k.indexOf(q) > -1) return 2;
+    if (o.ck && o.ck.indexOf(q) > -1) return 3;
+    return 9;
+  }
+  function render() {
+    list.innerHTML = '';
+    matches.forEach(function (o, i) {
+      var li = document.createElement('li');
+      li.className = (i === idx ? 'on' : '');
+      li.innerHTML = '<strong></strong> <span class="ev-city"></span> <span class="ev-date"></span>';
+      li.querySelector('strong').textContent = o.n;
+      li.querySelector('.ev-city').textContent = o.c ? '· ' + o.c : '';
+      li.querySelector('.ev-date').textContent = o.d ? '· ' + o.d : '';
+      li.addEventListener('mousedown', function (e) { e.preventDefault(); pick(o); });
+      list.appendChild(li);
+    });
+    list.hidden = matches.length === 0;
+  }
+  function pick(o) {
+    hidden.value = o.s; input.value = o.n;
+    chosen.textContent = 'Evento elegido: ' + o.n + (o.c ? ' (' + o.c + ')' : '') + (o.d ? ' · ' + o.d : '');
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'ev-clear'; btn.textContent = 'quitar';
+    btn.addEventListener('click', function () { hidden.value = ''; input.value = ''; chosen.hidden = true; });
+    chosen.appendChild(btn);
+    chosen.hidden = false;
+    matches = []; idx = -1; list.hidden = true;
+  }
+  input.addEventListener('input', function () {
+    hidden.value = '';                      // lo tecleado deja de valer hasta elegir de la lista
+    var q = norm(input.value);
+    matches = q ? fairs.map(function (o) { return { o: o, r: rank(o, q) }; })
+      .filter(function (x) { return x.r < 9; })
+      .sort(function (a, b) { return a.r - b.r || a.o.n.localeCompare(b.o.n, 'es'); })
+      .slice(0, 40).map(function (x) { return x.o; }) : [];
+    idx = -1; render();
+  });
+  input.addEventListener('keydown', function (e) {
+    if (!list.hidden) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); idx = Math.min(idx + 1, matches.length - 1); render(); return; }
+      if (e.key === 'ArrowUp') { e.preventDefault(); idx = Math.max(idx - 1, 0); render(); return; }
+      if (e.key === 'Escape') { list.hidden = true; idx = -1; return; }
+      if (e.key === 'Enter') { e.preventDefault(); pick(matches[idx >= 0 ? idx : 0]); return; }
+    }
+    if (e.key === 'Enter' && !hidden.value) e.preventDefault();   // no enviar el alta por error
+  });
+  input.addEventListener('blur', function () { setTimeout(function () { list.hidden = true; }, 120); });
+})();
+</script>
 <?php endif; ?>
 <?php if (pj_authed() && !empty($projects)): ?>
 <script>
