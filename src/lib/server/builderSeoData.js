@@ -213,5 +213,45 @@ export const builderSeoData = {
         <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un cambio de última hora sin depender de la agenda de otro taller. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en FIGAN</a></p>`
     }
+  },
+
+  /* Defensa de la otra ficha denunciada: Agroexpo (FEVAL, Don Benito). Mismo
+   * planteamiento que la de FIGAN: intención "constructor de stands para Agroexpo"
+   * y texto de CONSTRUCCIÓN. Se diferencia también de la página de plaza
+   * (constructor_stand_don_benito): allí se habla del recinto y su calendario; aquí,
+   * de lo que exige ESTA feria —exterior, maquinaria de gran formato, ganado—. */
+  constructor_stand_agroexpo: {
+    es: {
+      breadcrumb: 'Constructor de stands para Agroexpo',
+      title: 'Constructor de stands para Agroexpo (Don Benito) | Taller propio | Standarte',
+      h1: 'Constructor de stands para Agroexpo, Don Benito',
+      introText: 'Construimos stands a medida para Agroexpo, la feria agropecuaria de FEVAL (Don Benito), desde nuestro taller de Cáceres, a menos de una hora del recinto: estructuras para maquinaria de gran formato, exposición exterior e interior, y acabados que aguantan cinco días de feria de campo.',
+      body: `
+        <h2>Constructor de stands para Agroexpo: qué exige construir en una feria de campo</h2>
+        <p>Agroexpo no se visita con las manos en los bolsillos: el agricultor se sube a la máquina, abre la cabina, mide el enganche y pregunta por el consumo. Eso cambia cómo se construye. Hay que dimensionar el suelo para el peso real del tractor o la cosechadora, dejar el paso franco alrededor del equipo, y renunciar a los acabados delicados en las zonas donde la gente se apoya y toca.</p>
+        <p>El segundo condicionante es que aquí se expone dentro y fuera. En parcela exterior mandan el anclaje, la nivelación del terreno y la resistencia al viento y a la lluvia de enero en las Vegas Altas; dentro, la altura libre y la carga del pabellón. Construimos las dos cosas con el mismo criterio y el mismo equipo, para que la marca se vea igual de sólida en la parcela y en el hall.</p>
+        <h2>Constructor de stands para Agroexpo: cómo se construye tu stand, paso a paso</h2>
+        <ol>
+          <li><strong>Levantamiento del proyecto.</strong> Medidas reales de la parcela o el espacio interior en FEVAL, accesos de carga, y peso y dimensiones de la maquinaria que vas a exponer.</li>
+          <li><strong>Ingeniería y prototipo 3D.</strong> Estructura, anclajes, refuerzos de suelo e instalaciones resueltos antes de cortar; recibes un prototipo fotorrealista que es lo que se va a construir.</li>
+          <li><strong>Fabricación en taller propio.</strong> Carpintería a medida, mobiliario y gráfica producidos por nuestro equipo en Cáceres, con control de calidad pieza a pieza.</li>
+          <li><strong>Premontaje.</strong> El stand se arma en taller antes de salir: los ajustes se hacen aquí, no con la máquina ya descargada en la parcela.</li>
+          <li><strong>Transporte y montaje.</strong> Nuestros montadores y carpinteros levantan el stand y coordinan la entrada de tus equipos, con la prefabricación terminada 24&nbsp;h antes de la apertura.</li>
+          <li><strong>Desmontaje y almacenaje.</strong> Retiramos el stand al cierre y guardamos los elementos reutilizables para la edición siguiente: Agroexpo es anual y repetir sale mucho más barato que empezar de cero.</li>
+        </ol>
+        <h2>Constructor de stands para Agroexpo: qué construimos</h2>
+        <ul>
+          <li><strong>Stand exterior para maquinaria.</strong> Plataformas, tarimas y anclajes calculados para exponer tractores, remolques y equipos de riego con seguridad y buena imagen.</li>
+          <li><strong>Stand de diseño libre en carpintería.</strong> Estructura y paramentos fabricados a medida, con acabados lacados, chapados o textiles para el interior de FEVAL.</li>
+          <li><strong>Mostrador y sala de reunión.</strong> Un sitio donde sentarse a cerrar la venta —con mesa, sombra y algo de aislamiento del ruido—, que en una feria agropecuaria es donde se firma.</li>
+          <li><strong>Almacén y zona de servicio.</strong> Espacio cerrado para catálogos, muestras de producto, ropa de trabajo y avituallamiento del equipo comercial durante los cinco días.</li>
+          <li><strong>Elementos reutilizables.</strong> Piezas de sistema propias que se reconfiguran de una edición a la siguiente y abaratan la presencia recurrente.</li>
+        </ul>
+        <h2>Constructor de stands para Agroexpo: y para el resto de FEVAL y Extremadura</h2>
+        <p>El mismo taller construye para el resto del calendario del recinto —<a href="/ferias/stands-agroexpo-feval-don-benito">FEVAL</a>— y para las plazas extremeñas: <a href="/montaje_stand_don_benito">Don Benito</a>, <a href="/diseno_montaje_stands_badajoz">Badajoz</a>, <a href="/montaje_stand_zafra">Zafra</a> y <a href="/diseno_montaje_stands_trujillo">Trujillo</a>. La ficha de la feria —sectores y servicio completo de diseño y montaje— está en <a href="/ferias/stands-agroexpo">stands para Agroexpo</a>, y la página de plaza, en <a href="/constructor_stand_don_benito">constructor de stands en Don Benito</a>.</p>
+        <h2>Constructor de stands para Agroexpo: por qué construir con Standarte</h2>
+        <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos, a menos de una hora de FEVAL. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un imprevisto el mismo día del montaje. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Agroexpo</a></p>`
+    }
   }
 };

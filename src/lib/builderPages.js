@@ -32,7 +32,9 @@ export const builderPages = {
   // posición. Esta página vive bajo /ferias/ y ataca la intención "constructor de
   // stands para FIGAN" con contenido propio de construcción; `fair` es la ficha que
   // defiende (enlace cruzado y 301 de emergencia preparada en static/.htaccess).
-  constructor_stand_figan: { fair: 'stands-figan-zaragoza', fairName: 'FIGAN', cityName: 'Zaragoza', indexable: true }
+  constructor_stand_figan: { fair: 'stands-figan-zaragoza', fairName: 'FIGAN', cityName: 'Zaragoza', indexable: true },
+  // Agroexpo: la otra ficha denunciada (pasó a stands-agroexpo por el mismo motivo).
+  constructor_stand_agroexpo: { fair: 'stands-agroexpo', fairName: 'Agroexpo', cityName: 'Don Benito', indexable: true }
 };
 
 export const isBuilderPage = (section) => Object.prototype.hasOwnProperty.call(builderPages, section);

@@ -26,6 +26,7 @@ export const seoFreshness = {
   // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
   constructor_stand_zaragoza: '2026-08-31',
   constructor_stand_figan: '2026-09-01',
+  constructor_stand_agroexpo: '2026-09-01',
   constructor_stand_madrid: '2026-08-31',
   constructor_stand_barcelona: '2026-08-31',
   constructor_stand_oporto: '2026-08-31',
@@ -123,6 +124,7 @@ export function freshnessFor(section) {
 export const activityFreshness = '2026-08-28';
 
 export const fairFreshness = {
+  'stands-agroexpo': '2026-09-01',
   'stands-talent-land-malaga': '2026-08-31',
   'stands-modtissimo-oporto': '2026-08-31',
   'stands-qualifica-oporto': '2026-08-31',
