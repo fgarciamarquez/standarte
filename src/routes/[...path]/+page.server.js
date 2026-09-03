@@ -3,6 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import { BRAND } from '$lib/brand.js';
 import { richSeoData } from '$lib/server/richSeoData.js';
 import { builderSeoData } from '$lib/server/builderSeoData.js';
+import { builderFacts } from '$lib/server/builderFacts.js';
 import { fairSeoData, fairFaqExtra } from '$lib/server/fairSeoData.js';
 import { activitySeoData } from '$lib/server/activitySeoData.js';
 import { getProjectById } from '$lib/projectData.js';
@@ -56,6 +57,9 @@ export function load({ params }) {
   }
   // Las páginas paralelas de constructor tienen su propio origen de contenido.
   const richSeo = richSeoData[route.section] || builderSeoData[route.section] || null;
+  // Ficha de datos de las páginas paralelas: se compone en servidor (ver
+  // server/builderFacts.js) y llega ya resuelta en el HTML, sin coste en el cliente.
+  const facts = builderSeoData[route.section] ? builderFacts(route.section, route.lang || 'es') : null;
   if (!richSeo && (route.section in cityData || route.section === 'services')) {
     console.warn(`[seo] Falta richSeoData["${route.section}"]`);
   }
@@ -84,5 +88,5 @@ export function load({ params }) {
   const pricingCopy = route.section === 'precios'
     ? { ...(pricingTexts[pl] || pricingTexts.es), ...(pricingExtra[pl] || pricingExtra.es) }
     : null;
-  return { ...route, richSeo, fairSeo, fairFaq, fairTimelineSummaries, activitySeo, project, news, cityIntros, pricingCopy };
+  return { ...route, richSeo, facts, fairSeo, fairFaq, fairTimelineSummaries, activitySeo, project, news, cityIntros, pricingCopy };
 }

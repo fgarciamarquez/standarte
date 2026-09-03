@@ -44,13 +44,20 @@ const unescape = (s) => s
 // el CTA con las de ciudad, pero su expresión objetivo es OTRA y su patrón también.
 // Se validan con el mismo rigor, contra su propio prefijo.
 // 'en {ciudad}' para las de plaza, 'para {feria}' para las que defienden una ficha.
-const BUILDER_PREFIXES = ['Constructor de stands en', 'Constructor de stands para'];
+const BUILDER_PREFIXES = ['Constructor de stands en', 'Constructor de stands para', 'Stand builder in', 'Stand builder for'];
 
 // Rutas de las páginas paralelas, leídas de siteData.js: algunas viven BAJO /ferias/
 // (defensa de una ficha) y el recorrido de arriba no entra en esa carpeta, así que se
 // añaden a mano. Si mañana se crea otra, el guardián la cubre sin tocar nada.
 const siteDataSrc = readFileSync(path.join(root, 'src/lib/siteData.js'), 'utf8');
 const builderSlugs = [...siteDataSrc.matchAll(/^\s+(constructor_[a-z_]+):\s*'([^']+)'/gm)].map((m) => m[2]);
+// Las páginas paralelas viven en español y en inglés; las inglesas cuelgan de /en/.
+const builderRels = builderSlugs.flatMap((slug) => [slug, `en/${slug}`]);
+// Ficheros que el adaptador puede generar para cada una: <ruta>.html o <ruta>/index.html.
+// Identificarlas por ruta conocida (y no por un patrón en el nombre) es lo que permite
+// que la versión inglesa —stand_builder_…— se valide con su propio prefijo en vez de
+// tomarse por una página de ciudad.
+const builderFiles = new Set(builderRels.flatMap((r) => [`${r}.html`, `${r}/index.html`]));
 
 let cityPages = 0;
 let builderPages = 0;
@@ -65,7 +72,7 @@ for (const file of htmlFiles(dist)) {
   const h2s = [...html.matchAll(/<h2[^>]*>([^<]{2,160})<\/h2>/g)].map((m) => unescape(m[1]).trim());
   const rel = path.relative(dist, file).replace(/\\/g, '/');
   seen.add(rel);
-  const isBuilder = /(^|\/)constructor[_-]stand/.test(rel);
+  const isBuilder = builderFiles.has(rel);   // por ruta conocida, no por el nombre
   if (isBuilder) builderPages++; else cityPages++;
   for (const t of h2s) {
     const ok = isBuilder
@@ -76,7 +83,7 @@ for (const file of htmlFiles(dist)) {
 }
 
 // Segunda pasada: las páginas paralelas que el recorrido no alcanza (las de /ferias/).
-for (const slug of builderSlugs) {
+for (const slug of builderRels) {
   // El adaptador escribe la página como <slug>.html (y deja solo __data.json en la
   // carpeta homónima); se admiten las dos formas por si eso cambia.
   const rel = [`${slug}.html`, `${slug}/index.html`].find((r) => existsSync(path.join(dist, r)));

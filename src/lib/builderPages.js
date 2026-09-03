@@ -18,23 +18,26 @@
 //             canibalización con la página de ciudad.
 // En una emergencia (denuncia que tumbe la principal), en static/.htaccess están
 // preparadas —comentadas— las 301 que envían la URL principal a su alternativa.
+// `venue` y `workshop` alimentan la FICHA DE DATOS de cada página (server/builderFacts.js):
+// el recinto de la plaza y desde dónde fabricamos. Son hechos nuestros —taller y
+// distancia real—, no datos copiados de un calendario ajeno.
 export const builderPages = {
-  constructor_stand_zaragoza:   { city: 'zaragoza',    cityName: 'Zaragoza',   indexable: true },
-  constructor_stand_madrid:     { city: 'madrid',      cityName: 'Madrid',     indexable: true },
-  constructor_stand_barcelona:  { city: 'barcelona',   cityName: 'Barcelona',  indexable: true },
-  constructor_stand_oporto:     { city: 'oporto',      cityName: 'Oporto',     indexable: true },
-  constructor_stand_lisboa:     { city: 'lisboa',      cityName: 'Lisboa',     indexable: true },
-  constructor_stand_bilbao:     { city: 'bilbao',      cityName: 'Bilbao',     indexable: true },
-  constructor_stand_badajoz:    { city: 'badajoz',     cityName: 'Badajoz',    indexable: true },
-  constructor_stand_don_benito: { city: 'montaje_don_benito', cityName: 'Don Benito', indexable: true },
+  constructor_stand_zaragoza:   { city: 'zaragoza',    cityName: 'Zaragoza',   venue: 'Feria de Zaragoza',            workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_madrid:     { city: 'madrid',      cityName: 'Madrid',     venue: 'IFEMA Madrid',                 workshop: { es: 'San Fernando de Henares, a ~10 km de IFEMA', en: 'San Fernando de Henares, ~10 km from IFEMA' }, indexable: true },
+  constructor_stand_barcelona:  { city: 'barcelona',   cityName: 'Barcelona',  venue: 'Fira de Barcelona (Gran Via y Montjuïc)', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_oporto:     { city: 'oporto',      cityName: 'Oporto',     venue: 'Exponor (Feira Internacional do Porto)',  workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_lisboa:     { city: 'lisboa',      cityName: 'Lisboa',     venue: 'FIL — Feira Internacional de Lisboa',     workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_bilbao:     { city: 'bilbao',      cityName: 'Bilbao',     venue: 'BEC — Bilbao Exhibition Centre',          workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_badajoz:    { city: 'badajoz',     cityName: 'Badajoz',    venue: 'IFEBA — Institución Ferial de Badajoz',   workshop: { es: 'Cáceres, a menos de 1 h de Badajoz', en: 'Cáceres, under 1 h from Badajoz' }, indexable: true },
+  constructor_stand_don_benito: { city: 'montaje_don_benito', cityName: 'Don Benito', venue: 'FEVAL (Don Benito)',               workshop: { es: 'Cáceres, a menos de 1 h del recinto', en: 'Cáceres, under 1 h from the venue' }, indexable: true },
   // Defensa de una FICHA DE FERIA, no de una ciudad: FIGAN sufrió una denuncia y, tras
   // el cambio de URL a plural (stands-figan-zaragoza), la ficha no ha recuperado su
   // posición. Esta página vive bajo /ferias/ y ataca la intención "constructor de
   // stands para FIGAN" con contenido propio de construcción; `fair` es la ficha que
   // defiende (enlace cruzado y 301 de emergencia preparada en static/.htaccess).
-  constructor_stand_figan: { fair: 'stands-figan-zaragoza', fairName: 'FIGAN', cityName: 'Zaragoza', indexable: true },
+  constructor_stand_figan: { fair: 'stands-figan-zaragoza', fairName: 'FIGAN', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
   // Agroexpo: la otra ficha denunciada (pasó a stands-agroexpo por el mismo motivo).
-  constructor_stand_agroexpo: { fair: 'stands-agroexpo', fairName: 'Agroexpo', cityName: 'Don Benito', indexable: true }
+  constructor_stand_agroexpo: { fair: 'stands-agroexpo', fairName: 'Agroexpo', cityName: 'Don Benito', venue: 'FEVAL (Don Benito)', workshop: { es: 'Cáceres, a menos de 1 h del recinto', en: 'Cáceres, under 1 h from the venue' }, indexable: true }
 };
 
 export const isBuilderPage = (section) => Object.prototype.hasOwnProperty.call(builderPages, section);

@@ -31,6 +31,37 @@ const porque = (c) => `
         <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un cambio de última hora sin depender de la agenda de otro taller. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en ${c}</a></p>`;
 
+
+// --- Versión inglesa -------------------------------------------------------------
+// Mismo esqueleto que la española y MENOS texto: estas páginas compiten con los
+// calendarios de ferias, que ganan por consulta rápida (la ficha de datos de arriba),
+// no por extensión. Los H2 repiten la expresión objetivo, como en español.
+const pasoEn = (c) => `
+        <h2>Stand builder in ${c}: how your stand is built, step by step</h2>
+        <ol>
+          <li><strong>Survey.</strong> Real measurements of the contracted space, hall clear height and venue rules before anything is drawn.</li>
+          <li><strong>Engineering and 3D prototype.</strong> Structure, loads, services and cutting list resolved first; you get a photorealistic prototype of what will actually be built.</li>
+          <li><strong>Manufacturing in our own workshop.</strong> Bespoke joinery, furniture and graphics produced by our team, checked piece by piece.</li>
+          <li><strong>Pre-assembly.</strong> The stand is put together in the workshop before it ships: adjustments happen here, not against the clock in the hall.</li>
+          <li><strong>Transport and installation.</strong> Our own fitters and joiners build it on site, finished 24&nbsp;h before opening.</li>
+          <li><strong>Dismantling and storage.</strong> We remove the stand at closing and keep the reusable parts for your next show.</li>
+        </ol>`;
+
+const tiposEn = (c) => `
+        <h2>Stand builder in ${c}: what we build</h2>
+        <ul>
+          <li><strong>Custom-design joinery stand.</strong> Structure and walls made to measure, in lacquered, veneered or textile finishes.</li>
+          <li><strong>Double-decker stand.</strong> Structural calculation, staircase and an upper meeting floor where the hall allows it.</li>
+          <li><strong>Reusable modular stand.</strong> Our own system parts, reconfigured show after show, which makes a recurring presence cheaper.</li>
+          <li><strong>Stand with machinery or heavy product.</strong> Technical floors, reinforcement and services planned to exhibit equipment running.</li>
+          <li><strong>Furniture and display elements.</strong> Counters, cabinets, displays and hidden storage built for your product, not bought from a catalogue.</li>
+        </ul>`;
+
+const porqueEn = (c) => `
+        <h2>Stand builder in ${c}: why build with Standarte</h2>
+        <p>We are builders, not middlemen: the stand is made in <strong>our own workshop</strong>, by our team and to our schedule. One person responsible from start to finish, a quote without a third party's margin, and the ability to solve a last-minute change without waiting for someone else's workshop. Every approval is recorded in the <a href="/en/audited-project">Audited Project System</a>: what you approve is, literally, what gets built.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in ${c}</a></p>`;
+
 export const builderSeoData = {
 
   constructor_stand_zaragoza: {
@@ -255,3 +286,171 @@ export const builderSeoData = {
     }
   }
 };
+
+// ── Versiones en inglés ────────────────────────────────────────────────────────────
+// Se añaden como capa aparte (no anidadas en cada ficha) para que se lean de corrido y
+// para que la estructura española quede intacta. Deliberadamente MÁS CORTAS: aquí se
+// compite con los calendarios de ferias, que ganan por consulta rápida —la ficha de
+// datos que compone server/builderFacts.js—, no por extensión, y sin una sola imagen.
+const EN = {
+  constructor_stand_zaragoza: {
+    breadcrumb: 'Stand builder in Zaragoza',
+    title: 'Stand builder in Zaragoza | Own workshop | Standarte',
+    h1: 'Stand builder in Zaragoza',
+    introText: 'We build custom stands for Feria de Zaragoza from our own workshop: joinery, structure, furniture and graphics made by our team, with no subcontracted production. A 3D prototype before the first cut, and the build finished 24 h before opening.',
+    body: `
+        <h2>Stand builder in Zaragoza: in-house manufacturing for Feria de Zaragoza</h2>
+        <p>Feria de Zaragoza hosts some of Spain's most demanding shows for stand construction: <a href="/en/ferias/stand-fima-zaragoza">FIMA</a> and <a href="/en/ferias/stands-figan-zaragoza">FIGAN</a> exhibit farm and livestock machinery weighing several tonnes, and <a href="/en/ferias/stand-smopyc-zaragoza">SMOPYC</a> public works equipment. A stand for those shows is not decoration: it is a structure that has to carry weight, survive four days of traffic and still look immaculate.</p>
+        ${pasoEn('Zaragoza')}
+        ${tiposEn('Zaragoza')}
+        <h2>Stand builder in Zaragoza: shows at the venue</h2>
+        <p>We build for the whole venue calendar: <a href="/en/ferias/stand-fima-zaragoza">FIMA</a>, <a href="/en/ferias/stands-figan-zaragoza">FIGAN</a>, <a href="/en/ferias/stand-smopyc-zaragoza">SMOPYC</a>, <a href="/en/ferias/stand-smagua-zaragoza">SMAGUA</a> and <a href="/en/ferias/stand-expofimer-zaragoza">EXPOFIMER</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_zaragoza">trade fair stands in Zaragoza</a> page.</p>
+        ${porqueEn('Zaragoza')}`
+  },
+  constructor_stand_madrid: {
+    breadcrumb: 'Stand builder in Madrid',
+    title: 'Stand builder in Madrid | Workshop next to IFEMA | Standarte',
+    h1: 'Stand builder in Madrid',
+    introText: 'We build custom stands for IFEMA from our workshop in San Fernando de Henares, fifteen minutes from the venue: joinery, structure, furniture and graphics made by our team, with the ability to solve any adjustment on installation day.',
+    body: `
+        <h2>Stand builder in Madrid: our own workshop fifteen minutes from IFEMA</h2>
+        <p>Our workshop is in San Fernando de Henares, about ten kilometres from Feria de Madrid. On a site like IFEMA that distance is not a brochure line: it is the difference between solving an installation problem in an hour or waiting for a lorry from another province. IFEMA is also Spain's densest calendar — twelve halls, one show after another — which compresses build-up windows. That is why we pre-assemble in the workshop and arrive at the hall to assemble, not to improvise.</p>
+        ${pasoEn('Madrid')}
+        ${tiposEn('Madrid')}
+        <h2>Stand builder in Madrid: shows at the venue</h2>
+        <p>We build across IFEMA's calendar: <a href="/en/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/en/ferias/stand-sicur-madrid">SICUR</a>, <a href="/en/ferias/stand-veteco-madrid">Veteco</a>, <a href="/en/ferias/stand-madrid-tech-show">Madrid Tech Show</a> and <a href="/en/ferias/stand-meat-attraction-madrid">Meat Attraction</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_madrid">trade fair stands in Madrid</a> page.</p>
+        ${porqueEn('Madrid')}`
+  },
+  constructor_stand_barcelona: {
+    breadcrumb: 'Stand builder in Barcelona',
+    title: 'Stand builder in Barcelona | Own workshop | Standarte',
+    h1: 'Stand builder in Barcelona',
+    introText: 'We build custom stands for Fira de Barcelona — Gran Via and Montjuïc — from our own workshop: structural calculation and documentation for double-deckers, pre-assembly before shipping, and our own fitters on site.',
+    body: `
+        <h2>Stand builder in Barcelona: two venues, two sets of rules</h2>
+        <p>Fira de Barcelona is not one site but two, and each has its own rules: Gran Via, modern and with generous clear heights, and Montjuïc, historic and tighter. Building here means reading the right rulebook before drawing, and filing the structural calculation for a double-decker in time. Installation hours in Barcelona are expensive and short, so we pre-assemble the stand in the workshop and arrive to assemble.</p>
+        ${pasoEn('Barcelona')}
+        ${tiposEn('Barcelona')}
+        <h2>Stand builder in Barcelona: shows at the venue</h2>
+        <p>We build across the Fira calendar: <a href="/en/ferias/stand-mwc-barcelona">MWC</a>, <a href="/en/ferias/stand-ise-barcelona">ISE</a>, <a href="/en/ferias/stand-alimentaria-barcelona">Alimentaria</a>, <a href="/en/ferias/stand-hostelco-barcelona">Hostelco</a> and <a href="/en/ferias/stand-smart-city-expo-world-congress-barcelona">Smart City Expo</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_barcelona">trade fair stands in Barcelona</a> page.</p>
+        ${porqueEn('Barcelona')}`
+  },
+  constructor_stand_oporto: {
+    breadcrumb: 'Stand builder in Porto',
+    title: 'Stand builder in Porto | Own workshop | Standarte',
+    h1: 'Stand builder in Porto',
+    introText: 'We build custom stands for Exponor (Feira Internacional do Porto) from our own workshop: joinery, structure, furniture and graphics made by our team, transported and installed by us, with a single point of contact throughout.',
+    body: `
+        <h2>Stand builder in Porto: building for Exponor</h2>
+        <p>Exponor concentrates the industrial and export-driven north of Portugal: machinery, textiles, food and technical shows where the visitor is a professional buyer who inspects the product up close. That sets the build standard — solid finishes at hand height, faithful lighting and room to negotiate.</p>
+        ${pasoEn('Porto')}
+        ${tiposEn('Porto')}
+        <h2>Stand builder in Porto: shows at the venue</h2>
+        <p>We build across the Exponor calendar: <a href="/en/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/en/ferias/stands-qualifica-oporto">Qualifica</a>, <a href="/en/ferias/stand-emaf-oporto">EMAF</a> and <a href="/en/ferias/stand-itf-intertex-oporto">ITF Intertex</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_porto">trade fair stands in Porto</a> page.</p>
+        ${porqueEn('Porto')}`
+  },
+  constructor_stand_lisboa: {
+    breadcrumb: 'Stand builder in Lisbon',
+    title: 'Stand builder in Lisbon | Own workshop | Standarte',
+    h1: 'Stand builder in Lisbon',
+    introText: 'We build custom stands for FIL (Feira Internacional de Lisboa) and the city’s congress venues from our own workshop: bespoke joinery, structure, furniture and graphics, installed by our own team.',
+    body: `
+        <h2>Stand builder in Lisbon: building for FIL and the Parque das Nações venues</h2>
+        <p>Lisbon combines large trade shows at FIL with international congresses, and the two demand different things from a stand: exhibition floor space on one side, meeting and demonstration areas on the other. We build both with the same workshop and the same team.</p>
+        ${pasoEn('Lisbon')}
+        ${tiposEn('Lisbon')}
+        <h2>Stand builder in Lisbon: shows at the venue</h2>
+        <p>We build across the Lisbon calendar: <a href="/en/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/en/ferias/stand-tektonica-lisboa">Tektónica</a> and <a href="/en/ferias/stand-nauticampo-lisboa">Nauticampo</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_lisbon">trade fair stands in Lisbon</a> page.</p>
+        ${porqueEn('Lisbon')}`
+  },
+  constructor_stand_bilbao: {
+    breadcrumb: 'Stand builder in Bilbao',
+    title: 'Stand builder in Bilbao | Own workshop | Standarte',
+    h1: 'Stand builder in Bilbao',
+    introText: 'We build custom stands for BEC (Bilbao Exhibition Centre) from our own workshop: structures sized for industrial machinery, technical floors and finishes that hold up through a heavy-traffic show.',
+    body: `
+        <h2>Stand builder in Bilbao: industrial machinery sets the standard</h2>
+        <p>BEC is the venue of Spanish industry: machine tools, subcontracting, additive manufacturing. Exhibiting here usually means putting a machine on the stand, so the build starts with floor loading and reinforcement and only then moves to finishes.</p>
+        ${pasoEn('Bilbao')}
+        ${tiposEn('Bilbao')}
+        <h2>Stand builder in Bilbao: shows at the venue</h2>
+        <p>We build across the BEC calendar: <a href="/en/ferias/stands-biemh-bilbao">BIEMH</a>, <a href="/en/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/en/ferias/stand-subcontratacion-bilbao">Subcontratación</a> and <a href="/en/ferias/stand-plus-industry-bilbao">+Industry</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_bilbao">trade fair stands in Bilbao</a> page.</p>
+        ${porqueEn('Bilbao')}`
+  },
+  constructor_stand_badajoz: {
+    breadcrumb: 'Stand builder in Badajoz',
+    title: 'Stand builder in Badajoz | Workshop in Cáceres | Standarte',
+    h1: 'Stand builder in Badajoz',
+    introText: 'We build custom stands for IFEBA from our workshop in Cáceres, under an hour from the venue: bespoke joinery, furniture and graphics, installed by our own team and adjusted the same day if needed.',
+    body: `
+        <h2>Stand builder in Badajoz: a workshop under an hour from IFEBA</h2>
+        <p>Being based in Extremadura is the practical advantage here: we manufacture in Cáceres and install at IFEBA with the same team, so a change on build-up day is solved in hours, not in days. It also makes a cross-border presence in Portugal straightforward.</p>
+        ${pasoEn('Badajoz')}
+        ${tiposEn('Badajoz')}
+        <h2>Stand builder in Badajoz: shows at the venue</h2>
+        <p>We build for the IFEBA calendar and the rest of Extremadura, including <a href="/en/ferias/stands-agroexpo">Agroexpo</a> in Don Benito. The full design-and-build service is on our <a href="/en/stand_design_assembly_badajoz">trade fair stands in Badajoz</a> page.</p>
+        ${porqueEn('Badajoz')}`
+  },
+  constructor_stand_don_benito: {
+    breadcrumb: 'Stand builder in Don Benito',
+    title: 'Stand builder in Don Benito | Workshop in Cáceres | Standarte',
+    h1: 'Stand builder in Don Benito',
+    introText: 'We build custom stands for FEVAL (Don Benito) from our workshop in Cáceres: structures ready for farm machinery, clear demonstration areas and finishes that survive a field show.',
+    body: `
+        <h2>Stand builder in Don Benito: building for FEVAL and Extremadura’s farming shows</h2>
+        <p>FEVAL is the reference venue of the Vegas Altas, and its main event, <a href="/en/ferias/stands-agroexpo">Agroexpo</a>, is a field show in the literal sense: large farm machinery, indoor and outdoor exhibition, and a professional audience that climbs onto the machines. The stand has to be built for that.</p>
+        ${pasoEn('Don Benito')}
+        ${tiposEn('Don Benito')}
+        <h2>Stand builder in Don Benito: shows at the venue</h2>
+        <p>We build for <a href="/en/ferias/stands-agroexpo">Agroexpo</a> and the rest of the <a href="/en/ferias/stands-agroexpo-feval-don-benito">FEVAL</a> calendar. The full assembly service for the town is on our <a href="/en/exhibition_stand_assembly_don_benito">stand assembly in Don Benito</a> page.</p>
+        ${porqueEn('Don Benito')}`
+  },
+  constructor_stand_figan: {
+    breadcrumb: 'Stand builder for FIGAN',
+    title: 'Stand builder for FIGAN (Zaragoza) | Own workshop | Standarte',
+    h1: 'Stand builder for FIGAN, Zaragoza',
+    introText: 'We build custom stands for FIGAN, the International Animal Production Show at Feria de Zaragoza, from our own workshop: structure, joinery, technical floors, furniture and graphics made by our team.',
+    body: `
+        <h2>Stand builder for FIGAN: what building for animal production demands</h2>
+        <p>FIGAN is not a catalogue show: silos, feeders, housing systems, ventilation, milking robots and farm machinery arrive by lorry and weigh tonnes. Building here starts with what nobody sees — floor loading, reinforcement under the equipment, water and power services agreed with the venue — and only then moves to the finish.</p>
+        <p>The second constraint is hygiene and traffic: four days of technical visits, live demonstrations and visitors in farm boots. We use washable materials and protected edges where people touch, and keep the fine finishes at eye level.</p>
+        <h2>Stand builder for FIGAN: how your stand is built</h2>
+        <ol>
+          <li><strong>Survey.</strong> Real measurements at Feria de Zaragoza, clear height, loading access and the weight of the equipment you will exhibit.</li>
+          <li><strong>Engineering and 3D prototype.</strong> Structure, reinforcement, services and cutting list resolved before anything is cut.</li>
+          <li><strong>Manufacturing and pre-assembly in our workshop.</strong> Adjustments happen here, not against the clock in the hall.</li>
+          <li><strong>Transport and installation.</strong> Our own team builds it and coordinates the entry of your machinery, finished 24&nbsp;h before opening.</li>
+          <li><strong>Dismantling and storage.</strong> We keep the reusable parts for the next edition — FIGAN is biennial, and reusing is far cheaper than starting over.</li>
+        </ol>
+        <h2>Stand builder for FIGAN: and for the rest of Feria de Zaragoza</h2>
+        <p>The same workshop builds for the whole venue calendar: <a href="/en/ferias/stand-fima-zaragoza">FIMA</a>, <a href="/en/ferias/stand-smopyc-zaragoza">SMOPYC</a> and <a href="/en/ferias/stand-smagua-zaragoza">SMAGUA</a>. The event page — dates, sectors and the full design-and-build service — is at <a href="/en/ferias/stands-figan-zaragoza">stands for FIGAN</a>, and the city service at <a href="/en/stand_builder_zaragoza">stand builder in Zaragoza</a>.</p>
+        ${porqueEn('FIGAN')}`
+  },
+  constructor_stand_agroexpo: {
+    breadcrumb: 'Stand builder for Agroexpo',
+    title: 'Stand builder for Agroexpo (Don Benito) | Own workshop | Standarte',
+    h1: 'Stand builder for Agroexpo, Don Benito',
+    introText: 'We build custom stands for Agroexpo, the agricultural and livestock show at FEVAL (Don Benito), from our workshop in Cáceres, under an hour from the venue: structures for large machinery, indoor and outdoor exhibition, and finishes that last five days of a field show.',
+    body: `
+        <h2>Stand builder for Agroexpo: what a field show demands</h2>
+        <p>Nobody visits Agroexpo with their hands in their pockets: the farmer climbs onto the machine, opens the cab and asks about fuel consumption. That changes how you build. The floor is sized for the real weight of a tractor or harvester, the space around the equipment is kept clear, and delicate finishes are dropped wherever people lean and touch.</p>
+        <p>The second constraint is that exhibiting here happens indoors and outdoors. On an outdoor plot, anchoring, levelling and resistance to January wind and rain govern; indoors, clear height and floor loading do. We build both to the same standard, so the brand looks equally solid on the plot and in the hall.</p>
+        <h2>Stand builder for Agroexpo: how your stand is built</h2>
+        <ol>
+          <li><strong>Survey.</strong> Real measurements of the plot or indoor space at FEVAL, loading access, and the size and weight of your equipment.</li>
+          <li><strong>Engineering and 3D prototype.</strong> Structure, anchoring, floor reinforcement and services resolved before anything is cut.</li>
+          <li><strong>Manufacturing and pre-assembly in Cáceres.</strong> The stand is put together in the workshop before it ships.</li>
+          <li><strong>Transport and installation.</strong> Our own team builds it and coordinates the entry of your machinery, finished 24&nbsp;h before opening.</li>
+          <li><strong>Dismantling and storage.</strong> Agroexpo is annual: keeping the reusable parts makes the next edition far cheaper.</li>
+        </ol>
+        <h2>Stand builder for Agroexpo: and for the rest of FEVAL and Extremadura</h2>
+        <p>The same workshop builds for the rest of the <a href="/en/ferias/stands-agroexpo-feval-don-benito">FEVAL</a> calendar and across Extremadura: <a href="/en/exhibition_stand_assembly_don_benito">Don Benito</a>, <a href="/en/stand_design_assembly_badajoz">Badajoz</a> and <a href="/en/exhibition_stand_assembly_zafra">Zafra</a>. The event page is at <a href="/en/ferias/stands-agroexpo">stands for Agroexpo</a>, and the town service at <a href="/en/stand_builder_don_benito">stand builder in Don Benito</a>.</p>
+        ${porqueEn('Agroexpo')}`
+  }
+};
+
+// Se cuelgan de cada ficha: builderSeoData[seccion].en. Si mañana se añade una página
+// paralela sin versión inglesa, simplemente no aparece en inglés (no se genera ruta).
+for (const [k, v] of Object.entries(EN)) {
+  if (builderSeoData[k]) builderSeoData[k].en = v;
+}

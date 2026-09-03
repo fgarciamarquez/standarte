@@ -45,6 +45,7 @@
   // Datos SEO enriquecidos de la sección actual (todas las lenguas), inyectados
   // por el load del servidor; richSeoData.js completo ya no viaja al cliente.
   export let richSeo = null;
+  export let facts = null;   // ficha de datos de las páginas paralelas (server/builderFacts.js)
 
   let initialFair = '';
   let showWelcomeAdvisor = false;
@@ -2128,6 +2129,18 @@
         {/if}
         <h1>{h1Text}{#if isCityPage && !BRAND.leadGen}<span class="h1-claim">{heroClaimParts[0]}<span class="h1-plus">+</span>{heroClaimParts[1]}</span>{/if}</h1>
         {#if !isCityPage}<p class="hero-lead">{seoContent.introText}</p>{/if}
+        {#if facts && facts.rows.length}
+          <!-- Ficha de datos: la consulta rápida (qué, cuándo, dónde, de qué sector)
+               que gana un calendario de ferias, resuelta con datos nuestros. -->
+          <table class="bf-table">
+            <caption>{facts.title}</caption>
+            <tbody>
+              {#each facts.rows as r}
+                <tr><th scope="row">{r.k}</th><td>{#if r.href}<a href={r.href}>{r.v}</a>{:else}{r.v}{/if}</td></tr>
+              {/each}
+            </tbody>
+          </table>
+        {/if}
       </div>
       {#if animatedHero}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} cityTools={isCityPage} on:reactivate={reopenAdvisor} on:togglesearch={toggleCitySearch} />{/if}
       {#if section === 'proyecto_auditado'}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
@@ -2792,6 +2805,14 @@
 <SiteFooter {lang} {copy} langHref={(option) => pathFor(option, section)} />
 
 <style>
+  /* Ficha de datos de las páginas paralelas: tabla sobria, sin imágenes y legible de
+     un vistazo también en móvil (la clave de estas páginas es ir ligeras). */
+  .bf-table { width: 100%; max-width: 640px; border-collapse: collapse; margin: 18px 0 10px; font-size: 15px; }
+  .bf-table caption { text-align: left; font-weight: 700; padding-bottom: 8px; letter-spacing: .02em; }
+  .bf-table th, .bf-table td { text-align: left; padding: 7px 10px; border-bottom: 1px solid rgba(0,0,0,.12); vertical-align: top; }
+  .bf-table th { font-weight: 400; opacity: .75; width: 42%; }
+  .bf-table td { font-weight: 700; }
+
   /* Header oscuro de las subpáginas con .static-header (custom/luzpavilion/team): su
      hero lleva título blanco, así que conservan el fondo #16191c. La propiedad ya no
      vive en el global .static-header (app.css); se relocaliza aquí, donde se necesita. */
