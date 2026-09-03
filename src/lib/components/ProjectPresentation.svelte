@@ -7,6 +7,7 @@
   import { createEventDispatcher, onMount } from 'svelte';
   import { BRAND } from '$lib/brand.js';
   import { adminAction, adminUpload, notifySend, approveProject, saveBilling, saveTestimonial } from '$lib/clientProject.js';
+  import { paymentAccounts, paymentAccountById, paymentAccountByIban } from '$lib/paymentAccounts.js';
   const dispatch = createEventDispatcher();
 
   export let data;
@@ -50,6 +51,7 @@
     title: data.title[lang] || '', memoria: data.memoria[lang] || '',
     includes: (data.includes[lang] || []).join('\n'), excludes: (data.excludes[lang] || []).join('\n'),
     income: data.income_account || '', bic: data.bic_code || '', paid: !!data.paid,
+    accountId: (paymentAccountByIban(data.income_account)?.id) || '',
     clientEmail: data.client_email || '',
     discAmount: data.discount?.amount ? String(data.discount.amount) : '',
     discLabel: data.discount?.label?.[lang] || '', discDeadline: data.discount?.deadline || '',
@@ -61,6 +63,21 @@
     irpfOn: Number(data.irpf_rate ?? 0.15) > 0,
     irpfPct: String(Math.round(Number(data.irpf_rate ?? 0.15) * 10000) / 100 || 15)
   }; }
+
+  // ── Cuenta de ingreso ──
+  // Se elige de la lista cerrada (src/lib/paymentAccounts.js) y de ahí salen el IBAN y
+  // el BIC: escribirlos a mano en la página que el cliente usa para pagar era el sitio
+  // donde un dígito mal copiado costaba más caro. Si un proyecto antiguo tiene una
+  // cuenta que no está en la lista, se conserva y se muestra como opción propia: nada
+  // se cambia solo.
+  $: legacyAccount = (admin && eb.income && !paymentAccountByIban(eb.income))
+    ? { id: '__legacy', bank: L.accountPh, iban: eb.income, bic: eb.bic || '' }
+    : null;
+  function pickAccount(id) {
+    const a = paymentAccountById(id);
+    if (!a) return;
+    eb.accountId = a.id; eb.income = a.iban; eb.bic = a.bic;
+  }
 
   // ── Evento relacionado (feria o congreso) ──
   // El proyecto guarda solo el slug; el nombre y la fecha se resuelven aquí contra el
@@ -724,10 +741,14 @@
       <input class="pz-edit pz-disc-date" type="date" bind:value={eb.validUntil} />
       <label class="pz-elabel" style="margin-top:12px;display:block">{L.payTerms}</label>
       <input class="pz-edit" bind:value={eb.payTerms} placeholder={L.payTermsPh} />
-      <label class="pz-elabel" style="margin-top:12px;display:block">{L.account}</label>
-      <input class="pz-edit" bind:value={eb.income} placeholder={L.accountPh} />
-      <label class="pz-elabel" style="margin-top:12px;display:block">BIC</label>
-      <input class="pz-edit" bind:value={eb.bic} placeholder={L.bicPh} />
+      <label class="pz-elabel" style="margin-top:12px;display:block" for="pz-account">{L.account}</label>
+      <select id="pz-account" class="pz-edit" value={eb.accountId || (legacyAccount ? '__legacy' : '')}
+        on:change={(e) => pickAccount(e.currentTarget.value)}>
+        {#if legacyAccount}<option value="__legacy">{legacyAccount.iban}{#if legacyAccount.bic} · BIC {legacyAccount.bic}{/if}</option>{/if}
+        {#each paymentAccounts as a}
+          <option value={a.id}>{a.bank} — {a.iban} · BIC {a.bic}</option>
+        {/each}
+      </select>
       <label class="pz-elabel" style="margin-top:12px;display:block">{L.taxesTitle}</label>
       <div class="pz-tax-row">
         <label class="pz-paidtoggle pz-taxtoggle"><input type="checkbox" bind:checked={eb.ivaOn} /> {L.applyIva}</label>

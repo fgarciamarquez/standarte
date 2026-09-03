@@ -437,4 +437,26 @@ if (!function_exists('cpx_key')) {
 		foreach (cpx_fairs_catalog() as $f) { if (isset($f['slug']) && $f['slug'] === $slug) return $f; }
 		return null;
 	}
+
+	/* ---------- Cuentas de ingreso ----------
+	 * Las tres únicas cuentas que se usan, generadas en el build desde
+	 * src/lib/paymentAccounts.js (admin/data/accounts.json). El alta ofrece un
+	 * desplegable y resuelve aquí el IBAN y el BIC: así el número de cuenta que ve el
+	 * cliente NUNCA se teclea a mano, que es donde se colaba el error caro.
+	 */
+	function cpx_accounts() {
+		static $cache = null;
+		if ($cache !== null) return $cache;
+		$f = __DIR__ . '/data/accounts.json';
+		$raw = is_readable($f) ? file_get_contents($f) : '';
+		$data = $raw !== '' ? json_decode($raw, true) : null;
+		$cache = is_array($data) ? $data : array();
+		return $cache;
+	}
+
+	/* Cuenta por id (la del desplegable); null si no existe. */
+	function cpx_account($id) {
+		foreach (cpx_accounts() as $a) { if (isset($a['id']) && $a['id'] === $id) return $a; }
+		return null;
+	}
 }

@@ -40,6 +40,11 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	// una referencia rota. El nombre y la fecha se resuelven después desde fairsData.
 	$fair = post('fair_slug');
 	if ($fair !== '' && cpx_fair_exists($fair)) $row['fair_slug'] = $fair;
+	// Cuenta de ingreso: llega el ID del desplegable y el IBAN/BIC se resuelven del
+	// catálogo, nunca de lo que venga en el formulario.
+	$acc = cpx_account(post('account_id'));
+	if (!$acc) { $all = cpx_accounts(); $acc = isset($all[0]) ? $all[0] : null; }
+	if ($acc) { $row['income_account'] = $acc['iban']; $row['bic_code'] = $acc['bic']; }
 	$row['access_token'] = $token;
 	$row['status'] = 'draft';
 	cpx_sb('POST', 'client_projects', $row);
@@ -226,6 +231,15 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<input name="title_es" placeholder="Título ES">
 			<input name="title_en" placeholder="Título EN">
 			<input name="interlocutor_email" placeholder="Email interlocutor (opc.)">
+			<div style="grid-column:1/3">
+				<label for="account_id">Cuenta de ingreso</label>
+				<select name="account_id" id="account_id">
+					<?php foreach (cpx_accounts() as $a): ?>
+					<option value="<?= h($a['id']) ?>"><?= h($a['bank']) ?> — <?= h($a['iban']) ?> · BIC <?= h($a['bic']) ?></option>
+					<?php endforeach; ?>
+				</select>
+				<p class="hint">El titular es siempre Francisco Javier García Márquez. Se puede cambiar luego desde la propia página del proyecto.</p>
+			</div>
 			<div style="grid-column:1/3" class="ev-field">
 				<label for="ev-input">Evento (feria o congreso)</label>
 				<input id="ev-input" autocomplete="off" placeholder="Escribe el nombre del evento o su ciudad…">

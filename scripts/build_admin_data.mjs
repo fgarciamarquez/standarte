@@ -51,11 +51,16 @@ const fairs = fairsData
   }))
   .sort((a, b) => a.name.localeCompare(b.name, 'es'));
 
+// Cuentas de ingreso: el panel las ofrece en un desplegable para que el IBAN no se
+// teclee nunca a mano (fuente única: src/lib/paymentAccounts.js).
+const { paymentAccounts } = await import(pathToFileURL(path.join(root, 'src', 'lib', 'paymentAccounts.js')).href);
+
 for (const base of [path.join(root, 'static', 'admin', 'data'), path.join(root, 'admin', 'data')]) {
   mkdirSync(base, { recursive: true });
   writeFileSync(path.join(base, 'projects_index.json'), JSON.stringify(projectsIndex));
   writeFileSync(path.join(base, 'tags.json'), JSON.stringify({ families }));
   writeFileSync(path.join(base, 'fairs.json'), JSON.stringify(fairs));
+  writeFileSync(path.join(base, 'accounts.json'), JSON.stringify(paymentAccounts));
 }
 
-console.log(`build_admin_data: ${projectsIndex.length} proyectos, ${families.reduce((n, f) => n + f.tags.length, 0)} etiquetas, ${fairs.length} eventos.`);
+console.log(`build_admin_data: ${projectsIndex.length} proyectos, ${families.reduce((n, f) => n + f.tags.length, 0)} etiquetas, ${fairs.length} eventos, ${paymentAccounts.length} cuentas.`);
