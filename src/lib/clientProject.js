@@ -94,6 +94,18 @@ export async function adminAction(token, action, fields = {}) {
   const r = await fetch(ADMIN_URL, { method: 'POST', body: fd });
   return r.json().catch(() => ({ ok: false }));
 }
+export async function adminUploadDoc(token, file, kind, title) {
+  const fd = new FormData();
+  fd.append('action', 'upload_doc'); fd.append('token', token); fd.append('file', file);
+  fd.append('kind', kind || 'otro');
+  if (title) fd.append('title', title);
+  const r = await fetch(ADMIN_URL, { method: 'POST', body: fd });
+  return r.json().catch(() => ({ ok: false }));
+}
+/** URL de descarga de un documento: el PHP valida el token y redirige a una URL
+ *  firmada de 60 s (los PDF no viven en el bucket público). */
+export const docUrl = (token, id) => `/admin/ajax_proyecto_doc.php?t=${encodeURIComponent(token)}&id=${encodeURIComponent(id)}`;
+
 export async function adminUpload(token, file, sortOrder) {
   const fd = new FormData();
   fd.append('action', 'upload'); fd.append('token', token); fd.append('file', file);

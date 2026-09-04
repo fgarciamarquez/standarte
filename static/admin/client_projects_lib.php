@@ -84,6 +84,9 @@ if (!function_exists('cpx_key')) {
 	 * otro proyecto siga referenciando (duplicados/pilotos que comparten archivo). */
 	function cpx_storage_delete_folder($projectId) {
 		if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId)) return;
+		// El listado de Storage no es recursivo: la documentación vive en <id>/docs/ y
+		// sin esta llamada se quedaba huérfana en el bucket al borrar el proyecto.
+		cpx_storage_delete_prefix($projectId . '/docs/');
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/list/client-projects');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -119,6 +122,41 @@ if (!function_exists('cpx_key')) {
 		curl_exec($ch);
 		curl_close($ch);
 	}
+	/* Borra todos los objetos bajo un prefijo del bucket (no recursivo: un nivel).
+	 * Se usa para la subcarpeta docs/ de cada proyecto, que el listado de la carpeta
+	 * raíz no alcanza. */
+	function cpx_storage_delete_prefix($prefix) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/list/client-projects');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('prefix' => $prefix, 'limit' => 1000)));
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'apikey: ' . cpx_key(), 'Authorization: Bearer ' . cpx_key(), 'Content-Type: application/json'
+		));
+		$resp = curl_exec($ch);
+		curl_close($ch);
+		$list = json_decode($resp, true);
+		if (!is_array($list) || empty($list)) return;
+		$paths = array();
+		foreach ($list as $obj) { if (!empty($obj['name'])) $paths[] = $prefix . $obj['name']; }
+		if (empty($paths)) return;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/client-projects');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('prefixes' => $paths)));
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'apikey: ' . cpx_key(), 'Authorization: Bearer ' . cpx_key(), 'Content-Type: application/json'
+		));
+		curl_exec($ch);
+		curl_close($ch);
+	}
+
 	/* Tipos aceptados: mime/extensión permitidos -> [extensión, tipo de media]. */
 	function cpx_media_kind($mime, $filename) {
 		$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
@@ -458,5 +496,60 @@ if (!function_exists('cpx_key')) {
 	function cpx_account($id) {
 		foreach (cpx_accounts() as $a) { if (isset($a['id']) && $a['id'] === $id) return $a; }
 		return null;
+	}
+
+	/* ---------- Documentación del proyecto (PDF) ----------
+	 * Contrato y facturas del proyecto aprobado. NO viven en el bucket público como
+	 * las imágenes: son datos fiscales del cliente, así que la fila guarda la RUTA y
+	 * la descarga se sirve con una URL firmada de corta vida, previa comprobación del
+	 * token del proyecto (ajax_proyecto_doc.php). Adivinar la ruta no basta.
+	 */
+	function cpx_storage_signed_url($path, $seconds = 60) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/sign/client-projects/' . $path);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('expiresIn' => (int) $seconds)));
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'apikey: ' . cpx_key(), 'Authorization: Bearer ' . cpx_key(), 'Content-Type: application/json'
+		));
+		$resp = curl_exec($ch);
+		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+		if ((int) $code >= 300) return null;
+		$j = json_decode($resp, true);
+		$signed = isset($j['signedURL']) ? $j['signedURL'] : (isset($j['signedUrl']) ? $j['signedUrl'] : null);
+		if (!$signed) return null;
+		return SUPABASE_URL . '/storage/v1' . (strpos($signed, '/') === 0 ? $signed : '/' . $signed);
+	}
+
+	/* Borra un objeto del bucket (best-effort). */
+	function cpx_storage_delete_object($path) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/client-projects');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('prefixes' => array($path))));
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'apikey: ' . cpx_key(), 'Authorization: Bearer ' . cpx_key(), 'Content-Type: application/json'
+		));
+		curl_exec($ch);
+		curl_close($ch);
+	}
+
+	/* Etiqueta legible del tipo de documento (para el correo y el panel). */
+	function cpx_doc_kind_label($kind, $lang = 'es') {
+		$m = array(
+			'contrato' => array('es' => 'Contrato', 'en' => 'Contract'),
+			'factura_anticipo' => array('es' => 'Factura de anticipo', 'en' => 'Advance invoice'),
+			'factura_final' => array('es' => 'Factura final', 'en' => 'Final invoice'),
+			'otro' => array('es' => 'Documento', 'en' => 'Document')
+		);
+		$k = isset($m[$kind]) ? $m[$kind] : $m['otro'];
+		return isset($k[$lang]) ? $k[$lang] : $k['es'];
 	}
 }

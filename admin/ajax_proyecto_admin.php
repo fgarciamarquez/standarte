@@ -235,6 +235,48 @@ if ($action === 'upload') {
 	pa_out(array('ok' => (int) $r['code'] < 300, 'id' => $row ? $row['id'] : null, 'src' => $src, 'type' => $type, 'title' => $title));
 }
 
+/* ---------- Documentación del proyecto aprobado (PDF) ----------
+ * Solo PDF y hasta 20 MB. El fichero va a <projectId>/docs/ del bucket y la fila
+ * guarda la ruta, no una URL pública: son contrato y facturas del cliente. */
+if ($action === 'upload_doc') {
+	if (empty($_POST) && (int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 0) pa_out(array('ok' => false, 'error' => 'too_big_post'));
+	if (!isset($_FILES['file'])) pa_out(array('ok' => false, 'error' => 'no_file'));
+	$f = $_FILES['file'];
+	if ($f['error'] !== UPLOAD_ERR_OK) pa_out(array('ok' => false, 'error' => 'upload_err', 'code' => $f['error']));
+	if ($f['size'] > 20971520) pa_out(array('ok' => false, 'error' => 'too_big'));
+	$mime = function_exists('mime_content_type') ? (mime_content_type($f['tmp_name']) ?: $f['type']) : $f['type'];
+	$ext = strtolower(pathinfo($f['name'], PATHINFO_EXTENSION));
+	if ($mime !== 'application/pdf' || $ext !== 'pdf') pa_out(array('ok' => false, 'error' => 'not_pdf', 'mime' => $mime));
+
+	$kind = pa_post('kind', 'otro');
+	if (!in_array($kind, array('contrato', 'factura_anticipo', 'factura_final', 'otro'), true)) $kind = 'otro';
+	$path = $projectId . '/docs/' . bin2hex(random_bytes(8)) . '.pdf';
+	$code = cpx_storage_upload($path, $f['tmp_name'], 'application/pdf');
+	if ((int) $code >= 300) pa_out(array('ok' => false, 'error' => 'storage', 'code' => $code));
+
+	$title = pa_post('title');
+	if ($title === '') $title = pathinfo($f['name'], PATHINFO_FILENAME);
+	$r = cpx_sb('POST', 'client_project_docs', array(
+		'project_id' => $projectId, 'kind' => $kind, 'title' => mb_substr($title, 0, 120),
+		'path' => $path, 'size_bytes' => (int) $f['size']
+	));
+	if ((int) $r['code'] >= 300) { cpx_storage_delete_object($path); pa_out(array('ok' => false, 'error' => 'db', 'code' => $r['code'])); }
+	$row = (is_array($r['body']) && isset($r['body'][0])) ? $r['body'][0] : null;
+	pa_out(array('ok' => true, 'id' => $row ? $row['id'] : null));
+}
+
+if ($action === 'del_doc') {
+	$id = pa_post('doc_id');
+	if (!preg_match('/^[0-9a-f-]{36}$/', $id)) pa_out(array('ok' => false, 'error' => 'bad_id'));
+	// El filtro por project_id impide borrar el documento de otro proyecto aunque
+	// llegue un id ajeno.
+	$rows = cpx_rows('client_project_docs?id=eq.' . urlencode($id) . '&project_id=eq.' . urlencode($projectId) . '&select=path&limit=1');
+	if (empty($rows[0]['path'])) pa_out(array('ok' => false, 'error' => 'not_found'));
+	$r = cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($id) . '&project_id=eq.' . urlencode($projectId));
+	if ((int) $r['code'] < 300) cpx_storage_delete_object($rows[0]['path']);
+	pa_out(array('ok' => (int) $r['code'] < 300));
+}
+
 if ($action === 'reply') {
 	$body = pa_post('body');
 	if ($body === '') pa_out(array('ok' => false, 'error' => 'empty'));

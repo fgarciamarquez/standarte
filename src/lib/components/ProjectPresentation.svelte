@@ -6,7 +6,7 @@
   //   soltar, respuestas, pagado) usando el endpoint PHP con la service key.
   import { createEventDispatcher, onMount } from 'svelte';
   import { BRAND } from '$lib/brand.js';
-  import { adminAction, adminUpload, notifySend, approveProject, saveBilling, saveTestimonial } from '$lib/clientProject.js';
+  import { adminAction, adminUpload, adminUploadDoc, docUrl, notifySend, approveProject, saveBilling, saveTestimonial } from '$lib/clientProject.js';
   import { paymentAccounts, paymentAccountById, paymentAccountByIban } from '$lib/paymentAccounts.js';
   const dispatch = createEventDispatcher();
 
@@ -27,8 +27,8 @@
   let adminMsg = '';
 
   const t = {
-    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', offerNotified: 'Guardado. Hemos avisado al cliente de la nueva fecha de la oferta.', validNotified: 'Guardado. Hemos avisado al cliente de la nueva validez de la propuesta.', datesNotified: 'Guardado. Hemos avisado al cliente de las nuevas fechas.', titlePh: 'Título del proyecto', event: 'Evento', eventPh: 'Relaciona el proyecto con una feria o congreso…', eventNone: 'Sin evento asociado', eventClear: 'quitar', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', bicPh: 'BIC / SWIFT del banco', pausedTitle: 'Proyecto paralizado', pausedLabel: 'Paralizar proyecto', pausedReasonLabel: 'Motivo', pausedReasonPh: 'Motivo (p. ej., falta de pago)…', pausedClientNote: 'Este proyecto está temporalmente paralizado. Para reactivarlo, contacta con nosotros.', validUntil: 'Propuesta válida hasta el', proposalExpired: 'propuesta caducada', proposalExpiredNote: 'La propuesta ha caducado: contacta con nosotros para renovarla.', payTerms: 'Forma de pago', payTermsPh: 'Forma de pago (texto libre)…', validUntilLabel: 'Propuesta válida hasta', sessionExpired: 'Sesión caducada: entra de nuevo con «acceso interno» y repite el último cambio.', taxesTitle: 'Impuestos', applyIva: 'Aplicar IVA (suma a la base)', applyIrpf: 'Aplicar IRPF (resta a la base)', totalUsd: 'Total en dólares (USD)', taxHint: 'Desactívalos para clientes extranjeros, o ajusta el porcentaje si facturas desde una sucursal en otro país. Por defecto: IVA 21%, IRPF 15%.', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta entera de la base imponible hasta la fecha límite; después se reduce 1.000 € por semana transcurrida hasta extinguirse, y la fecha que ve el cliente avanza una semana con cada reducción.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…', clientEmail: 'Email del cliente (para los avisos)', clientEmailPh: 'cliente@empresa.com', approve: 'Aprobar proyecto', approveWithOffer: 'Aprobar proyecto con oferta', testimonialPh: '¿Una frase sobre cómo fue trabajar con nosotros? (opcional, la usaríamos con tu permiso)', approved: 'APROBADO', approvedOn: 'Aprobado el', payTitle: 'Datos para el ingreso', subject: 'Asunto', beneficiary: 'Beneficiario', owner: 'titular de Standarte', billingTitle: 'Datos para la factura', razon: 'Razón social', cif: 'CIF', address: 'Dirección', postal: 'Código postal', city: 'Ciudad', country: 'País', saveBilling: 'Guardar datos de facturación', billingSaved: 'Datos guardados. Gracias.', thanks: 'Gracias por su confianza. Nuestro equipo le hará llegar la factura y el contrato en breve. Un cordial saludo. El equipo de Standarte.' },
-    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', offerNotified: 'Saved. The client has been notified of the new offer date.', validNotified: 'Saved. The client has been notified of the new proposal validity.', datesNotified: 'Saved. The client has been notified of the new dates.', titlePh: 'Project title', event: 'Event', eventPh: 'Link the project to a trade fair or congress…', eventNone: 'No event linked', eventClear: 'remove', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', bicPh: 'Bank BIC / SWIFT', pausedTitle: 'Project on hold', pausedLabel: 'Put project on hold', pausedReasonLabel: 'Reason', pausedReasonPh: 'Reason (e.g., pending payment)…', pausedClientNote: 'This project is temporarily on hold. To reactivate it, please contact us.', validUntil: 'Proposal valid until', proposalExpired: 'proposal expired', proposalExpiredNote: 'This proposal has expired: contact us to renew it.', payTerms: 'Payment terms', payTermsPh: 'Payment terms (free text)…', validUntilLabel: 'Proposal valid until', sessionExpired: 'Session expired: log in again via “internal access” and repeat your last change.', taxesTitle: 'Taxes', applyIva: 'Apply VAT (added to the base)', applyIrpf: 'Apply IRPF (subtracted from the base)', totalUsd: 'Total in US dollars (USD)', taxHint: 'Disable them for foreign clients, or adjust the percentage if invoicing from a branch in another country. Defaults: VAT 21%, IRPF 15%.', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted in full from the taxable base until the deadline; afterwards it shrinks by €1,000 per elapsed week until it runs out, and the date shown to the client rolls forward one week with each reduction.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…', clientEmail: 'Client email (for notifications)', clientEmailPh: 'client@company.com', approve: 'Approve project', approveWithOffer: 'Approve project with offer', testimonialPh: 'A line about how it was to work with us? (optional, used with your permission)', approved: 'APPROVED', approvedOn: 'Approved on', payTitle: 'Payment details', subject: 'Subject', beneficiary: 'Beneficiary', owner: 'Standarte owner', billingTitle: 'Billing details', razon: 'Legal name', cif: 'Tax ID (CIF)', address: 'Address', postal: 'Postal code', city: 'City', country: 'Country', saveBilling: 'Save billing details', billingSaved: 'Details saved. Thank you.', thanks: 'Thank you for your trust. Our team will send you the invoice and the contract shortly. Best regards, the Standarte team.' }
+    es: { interlocutor: 'Interlocutor', media: 'Propuesta gráfica', memoria: 'Memoria de producción', includes: 'Este presupuesto incluye', excludes: 'Este presupuesto no incluye', budget: 'Presupuesto', concept: 'Concepto', amount: 'Importe', base: 'Base imponible', iva: 'IVA (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Cuenta de ingreso', paid: 'PAGADO', ref: 'Ref', commentPh: 'Escribe un comentario…', replyPh: 'Responder al cliente…', comment: 'Comentar', reply: 'Responder', noComments: 'Sin comentarios todavía.', send: 'Enviar comentarios', sentClient: 'Comentarios enviados. Hemos avisado al equipo de Standarte.', sentInternal: 'Aviso enviado al cliente.', image: 'Imagen', video: 'Vídeo', model: 'Modelo 3D', client: 'Cliente', team: 'Standarte', viewModel: 'Ver modelo 3D interactivo', edit: 'Modo edición', save: 'Guardar cambios', notify: 'Avisar al cliente', drop: 'Arrastra aquí imágenes, vídeos o un .glb (o haz clic)', addLine: 'Añadir concepto', del: 'Eliminar', saved: 'Cambios guardados.', offerNotified: 'Guardado. Hemos avisado al cliente de la nueva fecha de la oferta.', validNotified: 'Guardado. Hemos avisado al cliente de la nueva validez de la propuesta.', datesNotified: 'Guardado. Hemos avisado al cliente de las nuevas fechas.', titlePh: 'Título del proyecto', event: 'Evento', eventPh: 'Relaciona el proyecto con una feria o congreso…', eventNone: 'Sin evento asociado', eventClear: 'quitar', memoriaPh: 'Memoria de producción…', accountPh: 'IBAN / cuenta de ingreso', bicPh: 'BIC / SWIFT del banco', pausedTitle: 'Proyecto paralizado', pausedLabel: 'Paralizar proyecto', pausedReasonLabel: 'Motivo', pausedReasonPh: 'Motivo (p. ej., falta de pago)…', pausedClientNote: 'Este proyecto está temporalmente paralizado. Para reactivarlo, contacta con nosotros.', validUntil: 'Propuesta válida hasta el', proposalExpired: 'propuesta caducada', proposalExpiredNote: 'La propuesta ha caducado: contacta con nosotros para renovarla.', payTerms: 'Forma de pago', payTermsPh: 'Forma de pago (texto libre)…', validUntilLabel: 'Propuesta válida hasta', sessionExpired: 'Sesión caducada: entra de nuevo con «acceso interno» y repite el último cambio.', taxesTitle: 'Impuestos', applyIva: 'Aplicar IVA (suma a la base)', applyIrpf: 'Aplicar IRPF (resta a la base)', totalUsd: 'Total en dólares (USD)', taxHint: 'Desactívalos para clientes extranjeros, o ajusta el porcentaje si facturas desde una sucursal en otro país. Por defecto: IVA 21%, IRPF 15%.', linesHint: '(una por línea)', driveTitle: 'O enlaza desde Google Drive', driveHint: 'El archivo debe estar compartido como «Cualquiera con el enlace».', driveUrlPh: 'Pega el enlace de Google Drive…', driveTitlePh: 'Título (opcional)', driveAdd: 'Enlazar', subtotal: 'Subtotal', promptDiscount: 'Descuento por pronta decisión', until: 'hasta el', expired: 'caducado', discAmountPh: 'Importe del descuento (€)', discLabelPh: 'Texto del descuento (opcional)', discHint: 'Se resta entera de la base imponible hasta la fecha límite; después se reduce 1.000 € por semana transcurrida hasta extinguirse, y la fecha que ve el cliente avanza una semana con cada reducción.', mediaDescLabel: 'Descripción (solo en la ampliada)', mediaDescPh: 'Descripción breve del archivo…', clientEmail: 'Email del cliente (para los avisos)', clientEmailPh: 'cliente@empresa.com', approve: 'Aprobar proyecto', approveWithOffer: 'Aprobar proyecto con oferta', testimonialPh: '¿Una frase sobre cómo fue trabajar con nosotros? (opcional, la usaríamos con tu permiso)', approved: 'APROBADO', approvedOn: 'Aprobado el', payTitle: 'Datos para el ingreso', subject: 'Asunto', beneficiary: 'Beneficiario', owner: 'titular de Standarte', billingTitle: 'Datos para la factura', razon: 'Razón social', cif: 'CIF', address: 'Dirección', postal: 'Código postal', city: 'Ciudad', country: 'País', saveBilling: 'Guardar datos de facturación', billingSaved: 'Datos guardados. Gracias.', docsTitle: 'Documentación', docsEmpty: 'Todavía no hay documentos.', docsEmptyAdmin: 'Sube aquí el contrato y las facturas (PDF).', docAdd: 'Subir PDF', docKind: 'Tipo', docTitlePh: 'Nombre del documento (opcional)', docContract: 'Contrato', docAdvance: 'Factura de anticipo', docFinal: 'Factura final', docOther: 'Otro documento', docDownload: 'Descargar', docNotPdf: 'Solo se admiten archivos PDF.', docTooBig: 'El archivo supera los 20 MB.', docError: 'No se pudo subir el documento.', thanks: 'Gracias por su confianza. Nuestro equipo le hará llegar la factura y el contrato en breve. Un cordial saludo. El equipo de Standarte.' },
+    en: { interlocutor: 'Contact', media: 'Visual proposal', memoria: 'Production memo', includes: 'This quote includes', excludes: 'This quote does not include', budget: 'Quote', concept: 'Item', amount: 'Amount', base: 'Taxable base', iva: 'VAT (21%)', irpf: 'IRPF (−15%)', total: 'TOTAL', account: 'Payment account', paid: 'PAID', ref: 'Ref', commentPh: 'Write a comment…', replyPh: 'Reply to the client…', comment: 'Comment', reply: 'Reply', noComments: 'No comments yet.', send: 'Send comments', sentClient: 'Comments sent. The Standarte team has been notified.', sentInternal: 'Notification sent to the client.', image: 'Image', video: 'Video', model: '3D model', client: 'Client', team: 'Standarte', viewModel: 'Open interactive 3D model', edit: 'Edit mode', save: 'Save changes', notify: 'Notify client', drop: 'Drag images, videos or a .glb here (or click)', addLine: 'Add item', del: 'Delete', saved: 'Changes saved.', offerNotified: 'Saved. The client has been notified of the new offer date.', validNotified: 'Saved. The client has been notified of the new proposal validity.', datesNotified: 'Saved. The client has been notified of the new dates.', titlePh: 'Project title', event: 'Event', eventPh: 'Link the project to a trade fair or congress…', eventNone: 'No event linked', eventClear: 'remove', memoriaPh: 'Production memo…', accountPh: 'IBAN / payment account', bicPh: 'Bank BIC / SWIFT', pausedTitle: 'Project on hold', pausedLabel: 'Put project on hold', pausedReasonLabel: 'Reason', pausedReasonPh: 'Reason (e.g., pending payment)…', pausedClientNote: 'This project is temporarily on hold. To reactivate it, please contact us.', validUntil: 'Proposal valid until', proposalExpired: 'proposal expired', proposalExpiredNote: 'This proposal has expired: contact us to renew it.', payTerms: 'Payment terms', payTermsPh: 'Payment terms (free text)…', validUntilLabel: 'Proposal valid until', sessionExpired: 'Session expired: log in again via “internal access” and repeat your last change.', taxesTitle: 'Taxes', applyIva: 'Apply VAT (added to the base)', applyIrpf: 'Apply IRPF (subtracted from the base)', totalUsd: 'Total in US dollars (USD)', taxHint: 'Disable them for foreign clients, or adjust the percentage if invoicing from a branch in another country. Defaults: VAT 21%, IRPF 15%.', linesHint: '(one per line)', driveTitle: 'Or link from Google Drive', driveHint: 'The file must be shared as “Anyone with the link”.', driveUrlPh: 'Paste the Google Drive link…', driveTitlePh: 'Title (optional)', driveAdd: 'Link', subtotal: 'Subtotal', promptDiscount: 'Early-decision discount', until: 'until', expired: 'expired', discAmountPh: 'Discount amount (€)', discLabelPh: 'Discount label (optional)', discHint: 'Subtracted in full from the taxable base until the deadline; afterwards it shrinks by €1,000 per elapsed week until it runs out, and the date shown to the client rolls forward one week with each reduction.', mediaDescLabel: 'Description (shown only when enlarged)', mediaDescPh: 'Short description of the file…', clientEmail: 'Client email (for notifications)', clientEmailPh: 'client@company.com', approve: 'Approve project', approveWithOffer: 'Approve project with offer', testimonialPh: 'A line about how it was to work with us? (optional, used with your permission)', approved: 'APPROVED', approvedOn: 'Approved on', payTitle: 'Payment details', subject: 'Subject', beneficiary: 'Beneficiary', owner: 'Standarte owner', billingTitle: 'Billing details', razon: 'Legal name', cif: 'Tax ID (CIF)', address: 'Address', postal: 'Postal code', city: 'City', country: 'Country', saveBilling: 'Save billing details', billingSaved: 'Details saved. Thank you.', docsTitle: 'Documents', docsEmpty: 'No documents yet.', docsEmptyAdmin: 'Upload the contract and invoices here (PDF).', docAdd: 'Upload PDF', docKind: 'Type', docTitlePh: 'Document name (optional)', docContract: 'Contract', docAdvance: 'Advance invoice', docFinal: 'Final invoice', docOther: 'Other document', docDownload: 'Download', docNotPdf: 'Only PDF files are accepted.', docTooBig: 'The file is larger than 20 MB.', docError: 'The document could not be uploaded.', thanks: 'Thank you for your trust. Our team will send you the invoice and the contract shortly. Best regards, the Standarte team.' }
   };
   $: L = t[lang];
 
@@ -77,6 +77,34 @@
     const a = paymentAccountById(id);
     if (!a) return;
     eb.accountId = a.id; eb.income = a.iban; eb.bic = a.bic;
+  }
+
+  // ── Documentación del proyecto aprobado (PDF) ──
+  // Contrato y facturas. No se mezclan con la propuesta gráfica —ni por tabla ni por
+  // pantalla—: aquello es lo que el cliente enseña a su equipo, esto son sus papeles.
+  // La descarga pasa por el PHP, que valida el token y firma una URL de 60 s.
+  let docKind = 'contrato';
+  let docTitle = '';
+  let docBusy = false;
+  let docMsg = '';
+  $: docs = data?.docs || [];
+  const docKindLabel = (k) => ({ contrato: L.docContract, factura_anticipo: L.docAdvance, factura_final: L.docFinal }[k] || L.docOther);
+  const docSize = (n) => (n > 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`);
+  async function uploadDoc(e) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    docMsg = '';
+    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) { docMsg = L.docNotPdf; e.target.value = ''; return; }
+    if (file.size > 20971520) { docMsg = L.docTooBig; e.target.value = ''; return; }
+    docBusy = true;
+    try {
+      const r = await adminUploadDoc(token, file, docKind, docTitle);
+      if (r && r.ok) { docTitle = ''; await reload(); } else { docMsg = L.docError; }
+    } catch (err) { docMsg = L.docError; } finally { docBusy = false; e.target.value = ''; }
+  }
+  async function delDoc(id) {
+    docBusy = true;
+    try { await adminAction(token, 'del_doc', { doc_id: id }); await reload(); } finally { docBusy = false; }
   }
 
   // ── Evento relacionado (feria o congreso) ──
@@ -801,6 +829,41 @@
           {#if billingMsg}<span class="pz-billing-msg">{billingMsg}</span>{/if}
         </div>
 
+        <!-- Documentación: contrato y facturas del proyecto aprobado. -->
+        <h3 class="pz-h3 pz-billing-h3">{L.docsTitle}</h3>
+        {#if docs.length}
+          <ul class="pz-docs">
+            {#each docs as d}
+              <li>
+                <a class="pz-doc-link" href={docUrl(token, d.id)} target="_blank" rel="noopener">
+                  <span class="pz-doc-kind">{docKindLabel(d.kind)}</span>
+                  <span class="pz-doc-title">{d.title}</span>
+                  <span class="pz-doc-meta">PDF · {docSize(d.size_bytes || 0)}</span>
+                </a>
+                {#if admin}<button type="button" class="pz-doc-del" on:click={() => delDoc(d.id)} disabled={docBusy}>{L.del}</button>{/if}
+              </li>
+            {/each}
+          </ul>
+        {:else}
+          <p class="pz-docs-empty">{admin ? L.docsEmptyAdmin : L.docsEmpty}</p>
+        {/if}
+        {#if admin}
+          <div class="pz-doc-add">
+            <select bind:value={docKind} class="pz-edit pz-doc-select" aria-label={L.docKind}>
+              <option value="contrato">{L.docContract}</option>
+              <option value="factura_anticipo">{L.docAdvance}</option>
+              <option value="factura_final">{L.docFinal}</option>
+              <option value="otro">{L.docOther}</option>
+            </select>
+            <input class="pz-edit pz-doc-t" bind:value={docTitle} placeholder={L.docTitlePh} />
+            <label class="pz-abtn pz-doc-btn" class:pz-doc-busy={docBusy}>
+              {docBusy ? '…' : L.docAdd}
+              <input type="file" accept="application/pdf,.pdf" on:change={uploadDoc} disabled={docBusy} hidden />
+            </label>
+          </div>
+          {#if docMsg}<p class="pz-doc-msg">{docMsg}</p>{/if}
+        {/if}
+
         <p class="pz-thanks">{L.thanks}</p>
       </div>
     {:else}
@@ -1083,6 +1146,21 @@
   .pz-billing-actions { margin-top: 12px; display: flex; align-items: center; gap: 12px; }
   .pz-billing-actions .pz-abtn { background: #1b1b1a; color: #fff; }
   .pz-billing-msg { font-size: 13px; color: #2e7d32; }
+  .pz-docs { list-style: none; margin: 8px 0 0; padding: 0; }
+  .pz-docs li { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #e2e0d7; padding: 8px 0; }
+  .pz-doc-link { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; text-decoration: none; color: #1b1b1a; flex: 1 1 auto; min-width: 0; }
+  .pz-doc-link:hover .pz-doc-title { text-decoration: underline; }
+  .pz-doc-kind { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #8a6d00; font-weight: 700; }
+  .pz-doc-title { font-weight: 700; overflow-wrap: anywhere; }
+  .pz-doc-meta { font-size: 12px; color: #888; }
+  .pz-doc-del { background: transparent; border: none; color: #c62828; cursor: pointer; font: inherit; font-size: 12px; }
+  .pz-docs-empty { font-size: 14px; color: #666; margin: 8px 0 0; }
+  .pz-doc-add { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+  .pz-doc-select { width: auto; margin: 0; }
+  .pz-doc-t { flex: 1 1 220px; margin: 0; }
+  .pz-doc-btn { cursor: pointer; display: inline-block; }
+  .pz-doc-busy { opacity: .6; pointer-events: none; }
+  .pz-doc-msg { font-size: 13px; color: #c62828; margin: 8px 0 0; }
   .pz-thanks { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid #e2e0d7; font-size: 14px; line-height: 1.6; color: #444; }
   .pz-admin-bill { margin-top: 14px; border: 1px solid #cfcdc4; border-radius: 8px; padding: 12px 14px; background: #fbfbf7; }
   .pz-bill-ro { margin-top: 8px; }
