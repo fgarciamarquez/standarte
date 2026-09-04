@@ -31,9 +31,20 @@
     busy = true;
     try {
       const r = await adminUploadDoc(token, file, kind, title);
-      if (r && r.ok) { title = ''; await reload(); } else { msg = L.docError; }
+      if (r && r.ok) { title = ''; await reload(); } else { msg = errorText(r); }
     } catch (err) { msg = L.docError; } finally { busy = false; e.target.value = ''; }
   }
+  // El motivo real del fallo se enseña junto al mensaje: un "no se pudo subir" a secas
+  // obligaba a desplegar solo para averiguar qué había pasado (ocurrió: el bucket
+  // rechazaba los PDF y desde fuera no había forma de saberlo).
+  function errorText(r) {
+    const e = r && r.error;
+    if (e === 'not_pdf') return L.docNotPdf;
+    if (e === 'too_big' || e === 'too_big_post') return L.docTooBig;
+    if (e === 'unauthorized') return L.sessionExpired;
+    return `${L.docError}${e ? ` (${e}${r.code ? ' ' + r.code : ''})` : ''}`;
+  }
+
   async function del(id) {
     busy = true;
     try { await adminAction(token, 'del_doc', { doc_id: id }); await reload(); } finally { busy = false; }

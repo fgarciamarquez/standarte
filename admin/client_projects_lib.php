@@ -43,10 +43,12 @@ if (!function_exists('cpx_key')) {
 		return isset($rows[0]['id']) ? $rows[0]['id'] : null;
 	}
 
-	/* Sube un fichero al bucket client-projects (service key) y devuelve el código HTTP. */
-	function cpx_storage_upload($path, $localFile, $mime) {
+	/* Sube un fichero a un bucket (service key) y devuelve el código HTTP.
+	 * El bucket por defecto es el público de la propuesta gráfica; la documentación
+	 * (PDF) va al privado 'client-docs'. */
+	function cpx_storage_upload($path, $localFile, $mime, $bucket = 'client-projects') {
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/client-projects/' . $path);
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/' . $bucket . '/' . $path);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 		curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($localFile));
@@ -84,9 +86,9 @@ if (!function_exists('cpx_key')) {
 	 * otro proyecto siga referenciando (duplicados/pilotos que comparten archivo). */
 	function cpx_storage_delete_folder($projectId) {
 		if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId)) return;
-		// El listado de Storage no es recursivo: la documentación vive en <id>/docs/ y
-		// sin esta llamada se quedaba huérfana en el bucket al borrar el proyecto.
-		cpx_storage_delete_prefix($projectId . '/docs/');
+		// La documentación vive en OTRO bucket (privado) y en una subcarpeta que el
+		// listado —no recursivo— no alcanza: se limpia aparte para no dejarla huérfana.
+		cpx_storage_delete_prefix($projectId . '/docs/', 'client-docs');
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/list/client-projects');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -125,9 +127,9 @@ if (!function_exists('cpx_key')) {
 	/* Borra todos los objetos bajo un prefijo del bucket (no recursivo: un nivel).
 	 * Se usa para la subcarpeta docs/ de cada proyecto, que el listado de la carpeta
 	 * raíz no alcanza. */
-	function cpx_storage_delete_prefix($prefix) {
+	function cpx_storage_delete_prefix($prefix, $bucket = 'client-projects') {
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/list/client-projects');
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/list/' . $bucket);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('prefix' => $prefix, 'limit' => 1000)));
@@ -144,7 +146,7 @@ if (!function_exists('cpx_key')) {
 		foreach ($list as $obj) { if (!empty($obj['name'])) $paths[] = $prefix . $obj['name']; }
 		if (empty($paths)) return;
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/client-projects');
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/' . $bucket);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('prefixes' => $paths)));
@@ -504,9 +506,9 @@ if (!function_exists('cpx_key')) {
 	 * la descarga se sirve con una URL firmada de corta vida, previa comprobación del
 	 * token del proyecto (ajax_proyecto_doc.php). Adivinar la ruta no basta.
 	 */
-	function cpx_storage_signed_url($path, $seconds = 60) {
+	function cpx_storage_signed_url($path, $seconds = 60, $bucket = 'client-docs') {
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/sign/client-projects/' . $path);
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/sign/' . $bucket . '/' . $path);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('expiresIn' => (int) $seconds)));
@@ -526,9 +528,9 @@ if (!function_exists('cpx_key')) {
 	}
 
 	/* Borra un objeto del bucket (best-effort). */
-	function cpx_storage_delete_object($path) {
+	function cpx_storage_delete_object($path, $bucket = 'client-docs') {
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/client-projects');
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/' . $bucket);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('prefixes' => array($path))));

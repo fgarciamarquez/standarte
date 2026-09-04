@@ -250,8 +250,11 @@ if ($action === 'upload_doc') {
 
 	$kind = pa_post('kind', 'otro');
 	if (!in_array($kind, array('contrato', 'factura_anticipo', 'factura_final', 'otro'), true)) $kind = 'otro';
+	// Bucket PRIVADO y solo-PDF: el público de la propuesta gráfica no admite
+	// application/pdf en su lista blanca (ahí fallaba la subida) y además serviría los
+	// contratos por URL pública.
 	$path = $projectId . '/docs/' . bin2hex(random_bytes(8)) . '.pdf';
-	$code = cpx_storage_upload($path, $f['tmp_name'], 'application/pdf');
+	$code = cpx_storage_upload($path, $f['tmp_name'], 'application/pdf', 'client-docs');
 	if ((int) $code >= 300) pa_out(array('ok' => false, 'error' => 'storage', 'code' => $code));
 
 	$title = pa_post('title');
