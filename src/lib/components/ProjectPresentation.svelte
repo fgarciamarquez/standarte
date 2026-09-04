@@ -6,7 +6,8 @@
   //   soltar, respuestas, pagado) usando el endpoint PHP con la service key.
   import { createEventDispatcher, onMount } from 'svelte';
   import { BRAND } from '$lib/brand.js';
-  import { adminAction, adminUpload, adminUploadDoc, docUrl, notifySend, approveProject, saveBilling, saveTestimonial } from '$lib/clientProject.js';
+  import { adminAction, adminUpload, notifySend, approveProject, saveBilling, saveTestimonial } from '$lib/clientProject.js';
+  import ProjectDocs from '$lib/components/ProjectDocs.svelte';
   import { paymentAccounts, paymentAccountById, paymentAccountByIban } from '$lib/paymentAccounts.js';
   const dispatch = createEventDispatcher();
 
@@ -79,33 +80,9 @@
     eb.accountId = a.id; eb.income = a.iban; eb.bic = a.bic;
   }
 
-  // ── Documentación del proyecto aprobado (PDF) ──
-  // Contrato y facturas. No se mezclan con la propuesta gráfica —ni por tabla ni por
-  // pantalla—: aquello es lo que el cliente enseña a su equipo, esto son sus papeles.
-  // La descarga pasa por el PHP, que valida el token y firma una URL de 60 s.
-  let docKind = 'contrato';
-  let docTitle = '';
-  let docBusy = false;
-  let docMsg = '';
+  // Documentación del proyecto aprobado: el bloque vive en ProjectDocs.svelte porque
+  // se pinta en las dos ramas de la plantilla (edición y vista de cliente).
   $: docs = data?.docs || [];
-  const docKindLabel = (k) => ({ contrato: L.docContract, factura_anticipo: L.docAdvance, factura_final: L.docFinal }[k] || L.docOther);
-  const docSize = (n) => (n > 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`);
-  async function uploadDoc(e) {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-    docMsg = '';
-    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) { docMsg = L.docNotPdf; e.target.value = ''; return; }
-    if (file.size > 20971520) { docMsg = L.docTooBig; e.target.value = ''; return; }
-    docBusy = true;
-    try {
-      const r = await adminUploadDoc(token, file, docKind, docTitle);
-      if (r && r.ok) { docTitle = ''; await reload(); } else { docMsg = L.docError; }
-    } catch (err) { docMsg = L.docError; } finally { docBusy = false; e.target.value = ''; }
-  }
-  async function delDoc(id) {
-    docBusy = true;
-    try { await adminAction(token, 'del_doc', { doc_id: id }); await reload(); } finally { docBusy = false; }
-  }
 
   // ── Evento relacionado (feria o congreso) ──
   // El proyecto guarda solo el slug; el nombre y la fecha se resuelven aquí contra el
@@ -802,6 +779,9 @@
               <div><dt>{L.address}</dt><dd>{[data.billing.address, data.billing.postal_code, data.billing.city, data.billing.country].filter(Boolean).join(' · ') || '—'}</dd></div>
             </dl>
           {/if}
+          <!-- Aquí es donde el equipo sube el contrato y las facturas: esta rama es la
+               única que se pinta en modo edición. -->
+          <ProjectDocs {docs} {admin} {token} {L} {reload} />
         </div>
       {/if}
     {:else if approved}
@@ -829,40 +809,7 @@
           {#if billingMsg}<span class="pz-billing-msg">{billingMsg}</span>{/if}
         </div>
 
-        <!-- Documentación: contrato y facturas del proyecto aprobado. -->
-        <h3 class="pz-h3 pz-billing-h3">{L.docsTitle}</h3>
-        {#if docs.length}
-          <ul class="pz-docs">
-            {#each docs as d}
-              <li>
-                <a class="pz-doc-link" href={docUrl(token, d.id)} target="_blank" rel="noopener">
-                  <span class="pz-doc-kind">{docKindLabel(d.kind)}</span>
-                  <span class="pz-doc-title">{d.title}</span>
-                  <span class="pz-doc-meta">PDF · {docSize(d.size_bytes || 0)}</span>
-                </a>
-                {#if admin}<button type="button" class="pz-doc-del" on:click={() => delDoc(d.id)} disabled={docBusy}>{L.del}</button>{/if}
-              </li>
-            {/each}
-          </ul>
-        {:else}
-          <p class="pz-docs-empty">{admin ? L.docsEmptyAdmin : L.docsEmpty}</p>
-        {/if}
-        {#if admin}
-          <div class="pz-doc-add">
-            <select bind:value={docKind} class="pz-edit pz-doc-select" aria-label={L.docKind}>
-              <option value="contrato">{L.docContract}</option>
-              <option value="factura_anticipo">{L.docAdvance}</option>
-              <option value="factura_final">{L.docFinal}</option>
-              <option value="otro">{L.docOther}</option>
-            </select>
-            <input class="pz-edit pz-doc-t" bind:value={docTitle} placeholder={L.docTitlePh} />
-            <label class="pz-abtn pz-doc-btn" class:pz-doc-busy={docBusy}>
-              {docBusy ? '…' : L.docAdd}
-              <input type="file" accept="application/pdf,.pdf" on:change={uploadDoc} disabled={docBusy} hidden />
-            </label>
-          </div>
-          {#if docMsg}<p class="pz-doc-msg">{docMsg}</p>{/if}
-        {/if}
+        <ProjectDocs {docs} {admin} {token} {L} {reload} />
 
         <p class="pz-thanks">{L.thanks}</p>
       </div>
@@ -1146,21 +1093,6 @@
   .pz-billing-actions { margin-top: 12px; display: flex; align-items: center; gap: 12px; }
   .pz-billing-actions .pz-abtn { background: #1b1b1a; color: #fff; }
   .pz-billing-msg { font-size: 13px; color: #2e7d32; }
-  .pz-docs { list-style: none; margin: 8px 0 0; padding: 0; }
-  .pz-docs li { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #e2e0d7; padding: 8px 0; }
-  .pz-doc-link { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; text-decoration: none; color: #1b1b1a; flex: 1 1 auto; min-width: 0; }
-  .pz-doc-link:hover .pz-doc-title { text-decoration: underline; }
-  .pz-doc-kind { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #8a6d00; font-weight: 700; }
-  .pz-doc-title { font-weight: 700; overflow-wrap: anywhere; }
-  .pz-doc-meta { font-size: 12px; color: #888; }
-  .pz-doc-del { background: transparent; border: none; color: #c62828; cursor: pointer; font: inherit; font-size: 12px; }
-  .pz-docs-empty { font-size: 14px; color: #666; margin: 8px 0 0; }
-  .pz-doc-add { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
-  .pz-doc-select { width: auto; margin: 0; }
-  .pz-doc-t { flex: 1 1 220px; margin: 0; }
-  .pz-doc-btn { cursor: pointer; display: inline-block; }
-  .pz-doc-busy { opacity: .6; pointer-events: none; }
-  .pz-doc-msg { font-size: 13px; color: #c62828; margin: 8px 0 0; }
   .pz-thanks { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid #e2e0d7; font-size: 14px; line-height: 1.6; color: #444; }
   .pz-admin-bill { margin-top: 14px; border: 1px solid #cfcdc4; border-radius: 8px; padding: 12px 14px; background: #fbfbf7; }
   .pz-bill-ro { margin-top: 8px; }
