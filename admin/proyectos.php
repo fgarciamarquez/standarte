@@ -197,6 +197,11 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.st-ro { cursor: default; }
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
+	/* Borrar como aspa: la columna de acciones no necesita la palabra, y así el
+	   ancho que ganaba el texto se lo queda la ref y el cliente. El nombre del
+	   proyecto va en title y aria-label, que es donde de verdad hace falta. */
+	.del-x { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; border-radius: 6px; }
+	.del-x svg { display: block; }
 	/* Selector predictivo de evento: mismo comportamiento que el buscador de la
 	   portada (ranking por nombre y ciudad, lista desplazable, teclado). */
 	.ev-field { position: relative; }
@@ -353,7 +358,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 					<form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
 					<input type="hidden" name="action" value="delete_project">
 					<input type="hidden" name="id" value="<?= h($p['id']) ?>">
-					<button type="submit" class="del" title="Borrar proyecto">Borrar</button>
+					<button type="submit" class="del del-x" title="Borrar el proyecto «<?= h($p['ref']) ?>»" aria-label="Borrar el proyecto <?= h($p['ref']) ?>"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M2 2 L14 14 M14 2 L2 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></button>
 				</form></span></div>
 			</div>
 			<?php endforeach; ?>
