@@ -241,6 +241,15 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.pj-openlink { color: #e6e6e6; text-decoration: none; border-bottom: 1px dotted #6a6f78; }
 	.pj-openlink:hover { color: #ffc800; border-bottom-color: #ffc800; }
 	.pj-openlink .demo-badge { border-bottom: none; }
+	/* Copiar el enlace del proyecto para pegarlo en un correo: el enlace lleva el token,
+	   así que copiarlo a mano desde la barra del navegador obligaba a abrirlo antes. */
+	.pj-clientv { display: flex; align-items: center; gap: 8px; }
+	.pj-copy { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; padding: 0; background: transparent; border: 1px solid #3a3f48; border-radius: 5px; color: #8a8f98; cursor: pointer; }
+	.pj-copy:hover { color: #ffc800; border-color: #7a6413; }
+	.pj-copy .pj-copy-ok { display: none; }
+	.pj-copy.ok { color: #4caf50; border-color: #2e7d32; }
+	.pj-copy.ok .pj-copy-i { display: none; }
+	.pj-copy.ok .pj-copy-ok { display: block; }
 	.pj-ref .pj-v { overflow-wrap: normal; word-break: normal; }
 	.pj-acts { white-space: nowrap; }
 	@media (max-width: 640px) {
@@ -351,7 +360,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<?php foreach ($projects as $p): ?>
 			<div class="pj-card">
 				<div class="pj-cell pj-ref"><span class="pj-k">Ref</span><span class="pj-v"><?= h($p['ref']) ?></span></div>
-				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v"><a class="pj-openlink" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener" title="Abrir el proyecto «<?= h($p['ref']) ?>» (editable con tu sesión iniciada)"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Piloto público</span><?php else: ?><?= h($p['client_name'] !== '' ? $p['client_name'] : 'sin cliente') ?><?php endif; ?></a></span></div>
+				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v pj-clientv"><a class="pj-openlink" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener" title="Abrir el proyecto «<?= h($p['ref']) ?>» (editable con tu sesión iniciada)"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Piloto público</span><?php else: ?><?= h($p['client_name'] !== '' ? $p['client_name'] : 'sin cliente') ?><?php endif; ?></a><button type="button" class="pj-copy" data-url="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" title="Copiar el enlace del proyecto «<?= h($p['ref']) ?>»" aria-label="Copiar el enlace del proyecto <?= h($p['ref']) ?>"><svg class="pj-copy-i" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><rect x="5.5" y="5.5" width="8" height="9" rx="1.5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M10.5 3.5 H3.9 A1.4 1.4 0 0 0 2.5 4.9 V12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg><svg class="pj-copy-ok" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M3 8.5 L6.5 12 L13 4.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button></span></div>
 				<div class="pj-cell"><span class="pj-k">Aprobado</span><span class="pj-v"><?= status_badge($p, 'approved') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_done') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Factura 1</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
@@ -368,6 +377,32 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<?php endforeach; ?>
 		</div>
 	</div>
+<?php endif; ?>
+<?php if (pj_authed()): ?>
+<script>
+/* Copiar al portapapeles el enlace del proyecto. Con respaldo por textarea porque el
+   API de portapapeles solo existe en contexto seguro: en producción (https) va por
+   navigator.clipboard, y en el espejo local de MAMP (http) por el camino viejo. */
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest ? e.target.closest('.pj-copy') : null;
+  if (!btn) return;
+  var url = btn.getAttribute('data-url') || '';
+  var done = function () {
+    btn.classList.add('ok');
+    setTimeout(function () { btn.classList.remove('ok'); }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).then(done).catch(function () { legacy(); });
+  } else { legacy(); }
+  function legacy() {
+    var ta = document.createElement('textarea');
+    ta.value = url; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (err) { window.prompt('Copia el enlace:', url); }
+    document.body.removeChild(ta);
+  }
+});
+</script>
 <?php endif; ?>
 <?php if (pj_authed()): ?>
 <script>
