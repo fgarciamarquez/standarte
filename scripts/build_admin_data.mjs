@@ -47,7 +47,8 @@ const fairs = fairsData
     name: f.name,
     city: f.city || '',
     start: (fairDates[f.slug] && fairDates[f.slug].start) || '',
-    dates: formatFairDates(f.slug, 'es') || ''
+    dates: formatFairDates(f.slug, 'es') || '',
+    dates_en: formatFairDates(f.slug, 'en') || ''   // el contrato en inglés las necesita en inglés
   }))
   .sort((a, b) => a.name.localeCompare(b.name, 'es'));
 

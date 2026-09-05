@@ -30,8 +30,10 @@ export async function addComment(token, mediaId, body) {
 }
 
 /** El cliente aprueba el proyecto (congela la oferta si withOffer y sigue vigente). */
-export async function approveProject(token, withOffer) {
-  return rpc('approve_client_project', { p_token: token, p_with_offer: !!withOffer });
+/** Aprueba el proyecto. `lang` es el idioma en que el cliente lo está viendo: decide
+ *  el idioma en que se redactará el contrato. */
+export async function approveProject(token, withOffer, lang = 'es') {
+  return rpc('approve_client_project', { p_token: token, p_with_offer: !!withOffer, p_lang: lang === 'en' ? 'en' : 'es' });
 }
 
 /** C1: cita de cierre de expediente (opcional). Vía aditiva: no toca el RPC de

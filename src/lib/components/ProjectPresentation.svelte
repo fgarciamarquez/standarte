@@ -294,7 +294,7 @@
     if (demo) return;
     approving = true;
     try {
-      await approveProject(token, discValid);
+      await approveProject(token, discValid, lang);   // el idioma decide el del contrato
       // Vía aditiva: solo tras aprobar, y sin bloquear la aprobación si falla.
       if (testimonial.trim()) { try { await saveTestimonial(token, testimonial.trim()); } catch (e) {} }
       // Aviso interno con los conceptos y el total aprobados (el PHP lo compone

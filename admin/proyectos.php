@@ -79,6 +79,24 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	$value = post('value');
 	$allowed = array('contract_state' => 'contract_done', 'invoice_state' => 'invoice_done', 'invoice2_state' => 'invoice2_done');
 	if (isset($allowed[$field]) && in_array($value, array('pendiente', 'emitido', 'cursado'), true) && preg_match('/^[0-9a-f-]{36}$/', $id)) {
+		/* Contrato → «Emitido» es la orden de EMITIRLO: se genera el PDF con los datos del
+		 * proyecto, se guarda en su Documentación y se envía al cliente (contract_lib.php).
+		 * Si falta algo (aprobación, email, evento, presupuesto) el estado NO cambia y se
+		 * dice qué falta, en vez de marcar como emitido un contrato que no existe. */
+		if ($field === 'contract_state' && $value === 'emitido') {
+			require_once __DIR__ . '/contract_lib.php';
+			$res = cpx_contract_issue($id);
+			if (empty($res['ok'])) {
+				header('Location: proyectos.php?msg=' . urlencode('No se ha emitido el contrato: ' . implode('; ', $res['errors']) . '.')); exit;
+			}
+			cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($id), array('contract_state' => 'emitido', 'contract_done' => false));
+			$m = 'Contrato emitido en ' . ($res['lang'] === 'en' ? 'inglés' : 'español') . ' con el sello ' . $res['code']
+				. ' (' . number_format($res['total'], 2, ',', '.') . ' €)'
+				. ($res['sent'] ? ' y enviado a ' . $res['email'] : '')
+				. '. Está en la Documentación del proyecto.'
+				. (!empty($res['warnings']) ? ' Avisos: ' . implode('; ', $res['warnings']) . '.' : '');
+			header('Location: proyectos.php?msg=' . urlencode($m)); exit;
+		}
 		// El booleano antiguo se mantiene en sincronía (true solo si «cursado») para que
 		// nada que aún lo lea se quede con un dato viejo.
 		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($id), array(
@@ -383,7 +401,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		<h3>Proyectos</h3>
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, pincha el nombre del
 			cliente: al estar tu sesión iniciada, la propia página del proyecto se vuelve editable.</p>
-		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto).</p>
+		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto). En <strong>Contrato</strong>, pasar a «Emitido» genera el contrato con los datos del proyecto y se lo envía al cliente.</p>
 		<div class="pj-list">
 			<div class="pj-head">
 				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura 1</span><span>Factura 2</span><span>Visto</span><span></span>
