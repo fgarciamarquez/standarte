@@ -97,7 +97,26 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 /* Insignia de solo lectura (para "Aprobado", que marca el cliente). */
 function status_badge($p, $field) {
 	$on = !empty($p[$field]);
-	return '<span class="st ' . ($on ? 'st-on' : 'st-off') . ' st-ro">' . ($on ? 'Cursado' : 'Pendiente') . '</span>';
+	if ($on) return '<span class="st st-on st-ro">Cursado</span>';
+	/* Oferta vencida sin aprobar: «Pendiente» decía lo mismo el primer día que tres
+	 * meses después del plazo, y son situaciones distintas —esta pide una decisión:
+	 * renovar la oferta o cerrar el proyecto—. Solo cuenta si de verdad había oferta
+	 * (importe > 0): una fecha suelta sin importe no vence nada. */
+	$exp = offer_expired($p);
+	if ($exp) {
+		return '<span class="st st-exp st-ro" title="La oferta venció el ' . h($exp) . ' y el proyecto sigue sin aprobar">Caducado</span>';
+	}
+	return '<span class="st st-off st-ro">Pendiente</span>';
+}
+
+/* Fecha (d/m/Y) en que venció la oferta, o null si no venció (o no había). */
+function offer_expired($p) {
+	if (!empty($p['approved'])) return null;
+	$d = isset($p['discount_deadline']) ? $p['discount_deadline'] : null;
+	if (!$d || (float) (isset($p['discount_amount']) ? $p['discount_amount'] : 0) <= 0) return null;
+	if ($d >= date('Y-m-d')) return null;
+	$ts = strtotime($d . ' 12:00:00');
+	return $ts ? date('d/m/Y', $ts) : $d;
 }
 
 /* Pinta un estado como botón que alterna Pendiente(gris) ↔ Cursado(verde). */
@@ -127,7 +146,7 @@ function visit_badge($p) {
 	return '<span class="visit' . ($recent ? ' visit-recent' : '') . '" title="Última visita del cliente">' . $d->format('d/m H:i') . '</span>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_done,invoice_done,access_token,is_demo,created_at,last_client_visit&order=created_at.desc') : array();
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_done,invoice_done,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
 /* Duplicar: proyecto de origen preseleccionado (?dup=ID desde el botón de cada fila)
  * y recuento de conceptos/archivos de cada uno para las etiquetas del formulario. */
 $dupId = isset($_GET['dup']) && preg_match('/^[0-9a-f-]{36}$/', $_GET['dup']) ? $_GET['dup'] : '';
@@ -174,6 +193,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.st-off:hover { border-color: #6a6f78; color: #c0c4cc; }
 	.st-on { color: #4caf50; border-color: #2e7d32; background: rgba(46,125,50,.12); }
 	.st-on:hover { background: rgba(46,125,50,.22); }
+	.st-exp { color: #e57373; border-color: #5a2a2a; background: rgba(198,40,40,.12); }
 	.st-ro { cursor: default; }
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
