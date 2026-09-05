@@ -98,31 +98,26 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 function status_badge($p, $field) {
 	if (!empty($p[$field])) return '<span class="st st-on st-ro">Cursado</span>';
 
-	/* Qué significa aquí «Caducado»: que el cliente ya no puede decidir en las
-	 * condiciones que se le ofrecieron. Se calcula con LA MISMA regla que ve él en su
-	 * página (ProjectPresentation.svelte), no con la fecha a secas:
-	 *   - La propuesta caduca de golpe: pasada `proposal_valid_until` no puede aprobar.
-	 *   - La oferta NO muere en su fecha: mengua 1.000 € por semana transcurrida y la
-	 *     fecha que se le muestra avanza una semana con cada reducción. Solo se agota
-	 *     cuando el importe llega a 0. Comparar con la fecha bruta marcaba como
-	 *     caducados proyectos con oferta viva (pasó con MEERMEAT: 3.900 € con plazo del
-	 *     20/08 sigue valiendo 900 € y su fecha visible es del 10/09).
+	/* El estado lo marca UNA sola fecha: la caducidad absoluta del proyecto
+	 * (`proposal_valid_until`), que es cuando el cliente deja de poder aprobar. La
+	 * oferta por pronta decisión NO decide aquí: mengua con las semanas y se agota
+	 * antes que la propuesta, y usarla marcaba como caducados proyectos que seguían
+	 * vivos —pasó con ABA, con propuesta hasta el 08/09—. La oferta solo se cuenta
+	 * como información al pasar el ratón. Sin fecha de validez, un proyecto no caduca.
 	 */
-	$hoy = time();
 	$valid = isset($p['proposal_valid_until']) ? $p['proposal_valid_until'] : null;
-	if ($valid && $hoy > strtotime($valid . ' 23:59:59')) {
-		return '<span class="st st-exp st-ro" title="La propuesta caducó el ' . h(date('d/m/Y', strtotime($valid . ' 12:00:00'))) . ': el cliente ya no puede aprobarla">Caducado</span>';
-	}
 	$off = offer_state($p);
-	if ($off && $off['left'] <= 0) {
-		$t = 'La oferta de ' . h(eur($off['amount'])) . ' se agotó';
-		$t .= $valid ? ' (la propuesta sigue válida hasta el ' . h(date('d/m/Y', strtotime($valid . ' 12:00:00'))) . ')' : ' y la propuesta no tiene fecha de validez';
-		return '<span class="st st-exp st-ro" title="' . $t . '">Caducado</span>';
+	$offTxt = ($off && $off['left'] > 0)
+		? ' · oferta vigente de ' . eur($off['left']) . ' hasta el ' . date('d/m/Y', $off['shown'])
+		: (($off) ? ' · la oferta de ' . eur($off['amount']) . ' ya se agotó' : '');
+
+	if ($valid && time() > strtotime($valid . ' 23:59:59')) {
+		return '<span class="st st-exp st-ro" title="' . h('La propuesta caducó el ' . date('d/m/Y', strtotime($valid . ' 12:00:00')) . ': el cliente ya no puede aprobarla') . '">Caducado</span>';
 	}
-	$t = 'Sin aprobar todavía';
-	if ($off) $t = 'Oferta vigente de ' . h(eur($off['left'])) . ' hasta el ' . h(date('d/m/Y', $off['shown']));
-	if ($valid) $t .= ' · propuesta válida hasta el ' . h(date('d/m/Y', strtotime($valid . ' 12:00:00')));
-	return '<span class="st st-off st-ro" title="' . $t . '">Pendiente</span>';
+	$t = $valid
+		? 'Sin aprobar · la propuesta vale hasta el ' . date('d/m/Y', strtotime($valid . ' 12:00:00'))
+		: 'Sin aprobar · la propuesta no tiene fecha de caducidad';
+	return '<span class="st st-off st-ro" title="' . h($t . $offTxt) . '">Pendiente</span>';
 }
 
 /* Estado de la oferta por pronta decisión con la regla del sitio: importe que queda
