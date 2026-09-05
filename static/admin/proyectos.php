@@ -141,6 +141,9 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	body { font-family: 'Inconsolata', ui-monospace, monospace; background: #16181c; color: #e6e6e6; margin: 0; padding: 24px; font-size: 15px; }
 	a { color: #ffc800; } h1,h2,h3 { font-weight: 700; }
 	.wrap { max-width: 900px; margin: 0 auto; }
+	/* El listado de proyectos tiene ocho columnas: con 900 px la ref y el cliente se
+	   partían letra a letra. Esta pantalla es interna, así que se le da aire. */
+	.wrap-wide { max-width: 1180px; }
 	.card { background: #1e2127; border: 1px solid #2c3038; border-radius: 8px; padding: 18px; margin-bottom: 18px; }
 	input, select { width: 100%; box-sizing: border-box; background: #12141a; border: 1px solid #333; color: #eee; padding: 8px 10px; font-family: inherit; font-size: 14px; border-radius: 5px; margin-bottom: 8px; }
 	label { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: #9aa; }
@@ -178,28 +181,38 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	input[type=checkbox] { width: auto; margin: 0 8px 0 0; vertical-align: middle; }
 	.chk-l { display: block; text-transform: none; letter-spacing: 0; font-size: 13px; color: #c8ccd4; margin-bottom: 8px; cursor: pointer; }
 	.demo-badge { display: inline-block; background: rgba(255,200,0,.14); color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
-	/* Listado de proyectos en capas (sin <table>): grid en escritorio, apilado en móvil. */
-	.pj-list { display: flex; flex-direction: column; }
-	.pj-head, .pj-card { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1.4fr) auto auto auto auto minmax(0,1fr) auto; gap: 10px; align-items: center; }
+	/* Listado de proyectos en capas (sin <table>): grid en escritorio, apilado en móvil.
+	   UNA sola rejilla para cabecera y filas. Antes cada fila era su propia grid con el
+	   mismo patrón de columnas, pero como los anchos son 'auto'/'fr' se resolvían con el
+	   contenido de CADA fila: la cabecera caía en posiciones distintas a las de las
+	   celdas. Con `display: contents` las celdas suben a la rejilla común y todo queda a
+	   plomo; los separadores los dibuja cada celda, porque un elemento con
+	   `display: contents` no pinta su propio borde. */
+	.pj-list { display: grid; grid-template-columns: minmax(112px,1.1fr) minmax(150px,1.6fr) auto auto auto auto auto auto; column-gap: 10px; align-items: center; }
+	.pj-head, .pj-card { display: contents; }
 	.visit { font-size: 12px; color: #9aa; white-space: nowrap; }
 	.visit-recent { color: #4caf50; font-weight: 700; }
 	.visit-never { color: #555; }
-	.pj-head { padding: 0 8px 8px; border-bottom: 1px solid #2c3038; font-size: 14px; }
-	.pj-card { padding: 10px 8px; border-bottom: 1px solid #2c3038; font-size: 14px; }
+	.pj-head > span { padding: 0 8px 8px; border-bottom: 1px solid #2c3038; font-size: 14px; }
+	.pj-card > .pj-cell { padding: 10px 8px; border-bottom: 1px solid #2c3038; font-size: 14px; }
 	.pj-cell { min-width: 0; }
 	.pj-v { min-width: 0; overflow-wrap: anywhere; }
 	.pj-k { display: none; }
-	.pj-open .link { word-break: normal; }
+	.pj-open .link { word-break: normal; white-space: nowrap; }
+	.pj-ref .pj-v { overflow-wrap: normal; word-break: normal; }
+	.pj-acts { white-space: nowrap; }
 	@media (max-width: 640px) {
+		.pj-list { display: block; }
 		.pj-head { display: none; }
-		.pj-card { grid-template-columns: 1fr; gap: 8px; padding: 14px 6px; }
+		.pj-card { display: block; padding: 14px 6px; border-bottom: 1px solid #2c3038; }
+		.pj-card > .pj-cell { border-bottom: none; padding: 4px 0; }
 		.pj-cell { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 		.pj-k { display: inline; color: #9aa; text-transform: uppercase; font-size: 11px; letter-spacing: .06em; flex: 0 0 auto; }
 		.pj-v { flex: 1 1 auto; min-width: 0; text-align: right; overflow-wrap: anywhere; word-break: break-word; }
 		.pj-ref .pj-v { font-weight: 700; }
 	}
 </style></head>
-<body><div class="wrap">
+<body><div class="wrap wrap-wide">
 <?php if (!pj_authed()): ?>
 	<h1>Proyectos · Admin</h1>
 	<form method="post" class="card" style="max-width:360px">
@@ -296,12 +309,12 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<?php foreach ($projects as $p): ?>
 			<div class="pj-card">
 				<div class="pj-cell pj-ref"><span class="pj-k">Ref</span><span class="pj-v"><?= h($p['ref']) ?></span></div>
-				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Proyecto piloto público</span><?php else: ?><?= h($p['client_name']) ?><?php endif; ?></span></div>
+				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Piloto público</span><?php else: ?><?= h($p['client_name']) ?><?php endif; ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Aprobado</span><span class="pj-v"><?= status_badge($p, 'approved') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_done') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Factura</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Visto</span><span class="pj-v"><?= visit_badge($p) ?></span></div>
-				<div class="pj-cell pj-open"><span class="pj-k">Abrir</span><span class="pj-v"><a class="link" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir y editar →</a></span></div>
+				<div class="pj-cell pj-open"><span class="pj-k">Abrir</span><span class="pj-v"><a class="link" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir →</a></span></div>
 				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v pj-acts">
 					<a class="dup" href="proyectos.php?dup=<?= h($p['id']) ?>#dup" title="Duplicar este proyecto">Duplicar</a>
 					<form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
