@@ -125,6 +125,27 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	header('Location: proyectos.php'); exit;
 }
 
+/* ---------- Enviarme una prueba: contrato + Factura 1 SOLO a Javier, sin guardar nada ---------- */
+if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === 'test_docs') {
+	$id = post('id');
+	if (!preg_match('/^[0-9a-f-]{36}$/', $id)) { header('Location: proyectos.php'); exit; }
+	/* Genera los dos PDF con los datos reales del proyecto y los manda a javier@standarte.es
+	 * con el asunto [PRUEBA]. No toca Documentación, ni el registro de facturas, ni los
+	 * estados, ni al cliente: sirve para ver cómo saldrían antes de emitir de verdad. */
+	require_once __DIR__ . '/contract_lib.php';
+	require_once __DIR__ . '/invoice_lib.php';
+	$c = cpx_contract_issue($id, array('dry_run' => true));
+	$f = cpx_invoice_issue($id, 1, '', array('dry_run' => true));
+	$parts = array();
+	$parts[] = empty($c['ok']) ? 'Contrato: no se pudo generar (' . implode('; ', $c['errors']) . ')'
+		: 'Contrato de prueba en ' . ($c['lang'] === 'en' ? 'inglés' : 'español') . ' por ' . number_format($c['total'], 2, ',', '.') . ' €' . ($c['sent'] ? ' enviado' : ' generado pero el correo NO ha salido (revisa SMTP)')
+			. (!empty($c['warnings']) ? ' [avisos: ' . implode('; ', $c['warnings']) . ']' : '');
+	$parts[] = empty($f['ok']) ? 'Factura 1: no se pudo generar (' . implode('; ', $f['errors']) . ')'
+		: 'Factura 1 de prueba por ' . number_format($f['total'], 2, ',', '.') . ' €' . ($f['sent'] ? ' enviada' : ' generada pero el correo NO ha salido (revisa SMTP)')
+			. (!empty($f['warnings']) ? ' [avisos: ' . implode('; ', $f['warnings']) . ']' : '');
+	header('Location: proyectos.php?msg=' . urlencode('PRUEBA solo a javier@standarte.es, nada guardado ni enviado al cliente. ' . implode('. ', $parts) . '.')); exit;
+}
+
 /* ---------- Borrar proyecto (cascada: media, presupuesto y comentarios) ---------- */
 if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === 'delete_project') {
 	$id = post('id');
@@ -295,6 +316,8 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.ev-clear { background: transparent; border: none; color: #e57373; cursor: pointer; font: inherit; font-size: 12px; padding: 0 0 0 8px; }
 	.dup { background: transparent; color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; text-decoration: none; display: inline-block; }
 	.dup:hover { background: rgba(255,200,0,.14); border-color: #ffc800; }
+	.test { background: transparent; color: #8fb8ff; border: 1px solid #2f4a7a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
+	.test:hover { background: rgba(143,184,255,.14); border-color: #8fb8ff; }
 	.pj-acts { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
 	/* Las casillas no deben estirarse al 100 % como el resto de inputs. */
 	input[type=checkbox] { width: auto; margin: 0 8px 0 0; vertical-align: middle; }
@@ -433,7 +456,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		<h3>Proyectos</h3>
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, pincha el nombre del
 			cliente: al estar tu sesión iniciada, la propia página del proyecto se vuelve editable.</p>
-		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto). En <strong>Contrato</strong>, pasar a «Emitido» genera el contrato con los datos del proyecto y se lo envía al cliente.</p>
+		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto). En <strong>Contrato</strong>, pasar a «Emitido» genera el contrato con los datos del proyecto y se lo envía al cliente. <strong>Prueba</strong> te manda solo a ti (javier@standarte.es) el contrato y la Factura 1 tal y como saldrían, sin guardar nada ni avisar al cliente.</p>
 		<div class="pj-list">
 			<div class="pj-head">
 				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura 1</span><span>Factura 2</span><span>Visto</span><span></span>
@@ -448,6 +471,11 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 				<div class="pj-cell"><span class="pj-k">Factura 2</span><span class="pj-v"><?= status_toggle($p, 'invoice2_state') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Visto</span><span class="pj-v"><?= visit_badge($p) ?></span></div>
 				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v pj-acts">
+					<form method="post" class="st-form" onsubmit="return confirm('Enviar a javier@standarte.es una PRUEBA del contrato y de la Factura 1 del proyecto «<?= h($p['ref']) ?>».\n\nNo se guarda nada, no cambia ningún estado y el cliente no recibe nada.');">
+					<input type="hidden" name="action" value="test_docs">
+					<input type="hidden" name="id" value="<?= h($p['id']) ?>">
+					<button type="submit" class="test" title="Enviarme una prueba del contrato y la Factura 1 (solo a javier@standarte.es; no se guarda ni se envía al cliente)">Prueba</button>
+					</form>
 					<a class="dup" href="proyectos.php?dup=<?= h($p['id']) ?>#dup" title="Duplicar este proyecto">Duplicar</a>
 					<form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
 					<input type="hidden" name="action" value="delete_project">

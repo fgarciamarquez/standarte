@@ -250,9 +250,11 @@ function cpx_send_with_copy($to, $subject, $html, $attachment) {
 }
 
 /* ---------- Orquestación ---------- */
-function cpx_invoice_issue($projectId, $which, $number) {
+function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	$which = ((int) $which === 2) ? 2 : 1;
-	$number = trim((string) $number);
+	$dry = !empty($opts['dry_run']);
+	/* En modo prueba el número es ficticio y no se comprueba contra la serie. */
+	$number = $dry ? 'PRUEBA-' . date('ymd') : trim((string) $number);
 	$errors = array(); $warnings = array();
 	if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId)) return array('ok' => false, 'errors' => array('id inválido'));
 	if ($number === '' || mb_strlen($number) > 30 || !preg_match('/^[A-Za-z0-9][A-Za-z0-9\/\-_.]*$/', $number)) $errors[] = 'el número de factura está vacío o tiene caracteres raros';
@@ -271,7 +273,7 @@ function cpx_invoice_issue($projectId, $which, $number) {
 	$inv = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&select=which,number,meta,amount_eur&order=issued_at.asc');
 	$prev1 = null; foreach ($inv as $r) { if ((int) $r['which'] === 1) $prev1 = $r; }
 	if ($which === 2 && (!isset($p['invoice_state']) || $p['invoice_state'] !== 'cursado')) $errors[] = 'la Factura 2 solo se emite cuando la Factura 1 está cursada (cobrada)';
-	if ($number !== '' && cpx_invoice_number_taken($number)) $errors[] = 'el número ' . $number . ' ya está usado en otra factura';
+	if (!$dry && $number !== '' && cpx_invoice_number_taken($number)) $errors[] = 'el número ' . $number . ' ya está usado en otra factura';
 	if ($errors) return array('ok' => false, 'errors' => $errors);
 
 	$am = cpx_invoice_amounts($p, $budget, $which, $prev1);
@@ -305,6 +307,27 @@ function cpx_invoice_issue($projectId, $which, $number) {
 
 	$T = cpx_invoice_texts($lang);
 	$safe = preg_replace('/[^A-Za-z0-9_-]+/', '_', $number);
+
+	/* Correo al cliente (se compone ya para poder mandarlo tal cual a Javier en modo prueba). */
+	$url = 'https://standarte.es/proyecto?t=' . $p['access_token'];
+	$h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
+		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
+		. "<p style='margin:0 0 16px;'>" . sprintf($which === 1 ? $T['mail_body1'] : $T['mail_body2'], $h($number), $h($title), $h($p['ref']), $h(cpx_money($am['total'], $lang, 'EUR'))) . "</p>"
+		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
+		. "<p style='margin:28px 0 0;'>" . $T['sign'] . "</p></body></html>";
+	$subject = sprintf($T['mail_subject'], $number, $p['ref']);
+	$attachment = array('name' => 'factura-' . $safe . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes);
+
+	/* Modo prueba: mismo PDF, pero sin guardar en Documentación ni en el registro de
+	 * facturas, y el correo va SOLO a Javier con el asunto marcado. */
+	if ($dry) {
+		$warnings[] = 'el número ' . $number . ' es ficticio: la factura real llevará el que introduzcas al emitirla';
+		$attachment['name'] = 'PRUEBA-' . $attachment['name'];
+		$sent = cpx_test_mail($subject, $p, $email, $html, $attachment, $warnings);
+		return array('ok' => true, 'dry_run' => true, 'number' => $number, 'which' => $which, 'lang' => $lang, 'email' => CPX_ADMIN_MAIL, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);
+	}
+
 	$path = $projectId . '/docs/factura-' . $which . '-' . strtolower($safe) . '.pdf';
 	$tmp = tempnam(sys_get_temp_dir(), 'std-inv-'); file_put_contents($tmp, $pdfBytes);
 	$up = cpx_storage_upload($path, $tmp, 'application/pdf', 'client-docs'); @unlink($tmp);
@@ -325,14 +348,7 @@ function cpx_invoice_issue($projectId, $which, $number) {
 	}
 
 	/* Envío: cliente + copia a Javier. */
-	$url = 'https://standarte.es/proyecto?t=' . $p['access_token'];
-	$h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
-	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
-		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
-		. "<p style='margin:0 0 16px;'>" . sprintf($which === 1 ? $T['mail_body1'] : $T['mail_body2'], $h($number), $h($title), $h($p['ref']), $h(cpx_money($am['total'], $lang, 'EUR'))) . "</p>"
-		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
-		. "<p style='margin:28px 0 0;'>" . $T['sign'] . "</p></body></html>";
-	$sent = cpx_send_with_copy($email, sprintf($T['mail_subject'], $number, $p['ref']), $html, array('name' => 'factura-' . $safe . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes));
+	$sent = cpx_send_with_copy($email, $subject, $html, $attachment);
 	if (!$sent) $warnings[] = 'la factura se ha generado y guardado, pero el correo al cliente NO ha salido (revisa SMTP)';
 
 	return array('ok' => true, 'number' => $number, 'which' => $which, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);

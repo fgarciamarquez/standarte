@@ -321,8 +321,32 @@ function cpx_contract_pdf($d) {
 	return $pdf->Output('S');
 }
 
+/* ---------- Modo prueba: enviar un documento SOLO a Javier, sin tocar el proyecto ---------- */
+define('CPX_ADMIN_MAIL', 'javier@standarte.es');
+
+/* Correo de prueba con el PDF adjunto. El asunto va marcado con [PRUEBA] y el cuerpo
+ * explica que nada se ha guardado ni enviado al cliente, y qué habría recibido éste. */
+function cpx_test_mail($subject, $p, $clientEmail, $clientHtml, $attachment, $warnings) {
+	$h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
+		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:640px;margin:0 auto;padding:20px;'>"
+		. "<div style='background:#fff3cd;border:1px solid #e0b400;border-radius:8px;padding:12px 16px;margin:0 0 18px;font-size:14px;'>"
+		. "<strong>PRUEBA</strong> · Proyecto " . $h($p['ref']) . " · Este documento se ha generado con los datos reales del proyecto pero "
+		. "<strong>no se ha guardado</strong> en su Documentación, no ha cambiado ningún estado y <strong>no se ha enviado al cliente</strong>"
+		. ($clientEmail !== '' ? " (" . $h($clientEmail) . ")" : "") . "."
+		. (!empty($warnings) ? "<br>Avisos: " . $h(implode('; ', $warnings)) . "." : "")
+		. "<br>Debajo, el correo tal y como lo recibiría el cliente.</div>"
+		. "<div style='border-top:1px dashed #bbb;padding-top:16px;'>" . $clientHtml . "</div>"
+		. "</body></html>";
+	try {
+		require_once __DIR__ . '/email_campaing/mailer.php';
+		$cfg = require __DIR__ . '/email_campaing/config.php';
+		return (bool) campaign_send_smtp($cfg, CPX_ADMIN_MAIL, '[PRUEBA] ' . $subject, $html, array($attachment));
+	} catch (Exception $e) { return false; }
+}
+
 /* ---------- Orquestación: emitir el contrato de un proyecto ---------- */
-function cpx_contract_issue($projectId) {
+function cpx_contract_issue($projectId, $opts = array()) {
 	$errors = array(); $warnings = array();
 	if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId)) return array('ok' => false, 'errors' => array('id inválido'));
 	$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=*&limit=1');
@@ -378,6 +402,30 @@ function cpx_contract_issue($projectId) {
 	$pdfBytes = cpx_contract_pdf($d);
 	if ($image) @unlink($image['file']);
 
+	/* Correo al cliente: adjunto + enlace a su proyecto (se compone ya para poder mandarlo
+	 * tal cual a Javier en modo prueba). */
+	$T = cpx_contract_texts($lang);
+	$url = 'https://standarte.es/proyecto?t=' . $p['access_token'];
+	$h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
+		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
+		. "<p style='margin:0 0 16px;'>" . sprintf($T['mail_body'], $h($p['title_' . $lang] !== '' ? $p['title_' . $lang] : $p['ref']), $h($p['ref']), $h($code)) . "</p>"
+		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
+		. "<p style='margin:28px 0 0;'>" . ($lang === 'en' ? 'Best regards,<br><strong>The Standarte team</strong>' : 'Un cordial saludo,<br><strong>Equipo de Standarte</strong>') . "</p>"
+		. "</body></html>";
+	$subject = sprintf($T['mail_subject'], $p['ref']);
+	$att = array(array('name' => 'contrato-' . preg_replace('/[^A-Za-z0-9_-]+/', '_', $p['ref']) . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes));
+
+	/* Modo prueba: mismo PDF, pero no se guarda nada (ni Documentación ni sello en el
+	 * proyecto) y el correo va SOLO a Javier. El código del sello no queda registrado, así
+	 * que verificar.php dirá «no encontrado» para él: es lo esperado en una prueba. */
+	if (!empty($opts['dry_run'])) {
+		$warnings[] = 'el código ' . $code . ' es de prueba y no se verifica en verificar.php';
+		$att[0]['name'] = 'PRUEBA-' . $att[0]['name'];
+		$sent = cpx_test_mail($subject, $p, $email, $html, $att[0], $warnings);
+		return array('ok' => true, 'dry_run' => true, 'code' => $code, 'lang' => $lang, 'total' => $tot['total'], 'email' => CPX_ADMIN_MAIL, 'sent' => $sent, 'warnings' => $warnings);
+	}
+
 	/* Guardar en la Documentación privada del proyecto. */
 	$tmpPdf = tempnam(sys_get_temp_dir(), 'std-contract-');
 	file_put_contents($tmpPdf, $pdfBytes);
@@ -385,7 +433,6 @@ function cpx_contract_issue($projectId) {
 	$up = cpx_storage_upload($path, $tmpPdf, 'application/pdf', 'client-docs');
 	@unlink($tmpPdf);
 	if ((int) $up >= 300) return array('ok' => false, 'errors' => array('Storage rechazó el PDF (código ' . $up . ')'));
-	$T = cpx_contract_texts($lang);
 	$title = sprintf($T['doc_title'], $p['ref']);
 	$ins = cpx_sb('POST', 'client_project_docs', array('project_id' => $projectId, 'kind' => 'contrato', 'title' => $title, 'path' => $path, 'size_bytes' => strlen($pdfBytes)));
 	if ((int) $ins['code'] >= 300) { cpx_storage_delete_object($path, 'client-docs'); return array('ok' => false, 'errors' => array('no se pudo registrar el documento (' . $ins['code'] . ')')); }
@@ -396,26 +443,15 @@ function cpx_contract_issue($projectId) {
 		'contract_meta' => array('lang' => $lang, 'total_eur' => $tot['total'], 'advance_eur' => $d['advance'], 'rates' => $rates, 'client' => $client, 'fair' => $fairName, 'path' => $path)
 	));
 
-	/* Enviar al cliente: adjunto + enlace a su proyecto. */
-	$url = 'https://standarte.es/proyecto?t=' . $p['access_token'];
-	$h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
-	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
-		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
-		. "<p style='margin:0 0 16px;'>" . sprintf($T['mail_body'], $h($p['title_' . $lang] !== '' ? $p['title_' . $lang] : $p['ref']), $h($p['ref']), $h($code)) . "</p>"
-		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
-		. "<p style='margin:28px 0 0;'>" . ($lang === 'en' ? 'Best regards,<br><strong>The Standarte team</strong>' : 'Un cordial saludo,<br><strong>Equipo de Standarte</strong>') . "</p>"
-		. "</body></html>";
-	/* Al cliente y, en copia, a Javier (javier@standarte.es): así el emisor conserva lo
-	 * que ha mandado sin tener que entrar al proyecto. */
+	/* Enviar al cliente y, en copia, a Javier: así el emisor conserva lo que ha mandado
+	 * sin tener que entrar al proyecto. */
 	$sent = false;
 	try {
 		require_once __DIR__ . '/email_campaing/mailer.php';
 		$cfg = require __DIR__ . '/email_campaing/config.php';
-		$subject = sprintf($T['mail_subject'], $p['ref']);
-		$att = array(array('name' => 'contrato-' . preg_replace('/[^A-Za-z0-9_-]+/', '_', $p['ref']) . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes));
 		$sent = campaign_send_smtp($cfg, $email, $subject, $html, $att);
-		if (strcasecmp('javier@standarte.es', $email) !== 0) {
-			try { campaign_send_smtp($cfg, 'javier@standarte.es', '[Copia] ' . $subject, $html, $att); } catch (Exception $e) {}
+		if (strcasecmp(CPX_ADMIN_MAIL, $email) !== 0) {
+			try { campaign_send_smtp($cfg, CPX_ADMIN_MAIL, '[Copia] ' . $subject, $html, $att); } catch (Exception $e) {}
 		}
 	} catch (Exception $e) { $sent = false; }
 	if (!$sent) $warnings[] = 'el contrato se ha generado y guardado, pero el correo al cliente NO ha salido (revisa SMTP)';
