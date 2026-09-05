@@ -34,7 +34,9 @@ function cpx_invoice_texts($lang) {
 			'date' => 'Fecha de emisión: %s.', 'due' => 'Fecha de vencimiento: %s.', 'number' => 'Número de factura: %s',
 			'bank' => 'BANCO: %s', 'iban' => 'TRANSFERENCIA A (IBAN): %s.', 'bic' => 'BIC: %s',
 			'matter' => 'CONCEPTO DE LA TRANSFERENCIA: "%s"', 'beneficiary' => 'BENEFICIARIO: "JAVIER GARCIA MARQUEZ (titular de Standarte)"',
-			'line1' => 'Stand (80 %% anticipo) · %s', 'line2' => 'Stand (20 %% restante) · %s',
+			'th_concept' => 'Concepto', 'th_qty' => 'Cant.', 'th_unit' => 'Precio', 'th_amount' => 'Importe', 'included' => 'Incluido',
+			'subtotal' => 'Total del proyecto aprobado', 'discount' => 'Descuento por pronto pago (aprobación en plazo)',
+			'adv1' => 'Base imponible · anticipo del 80 % (esta factura)', 'adv2' => 'Anticipo ya facturado (factura %s)', 'rest2' => 'Base imponible · 20 % restante (esta factura)',
 			'base' => 'Base imponible', 'iva' => 'IVA (%s %%)', 'irpf' => 'IRPF (−%s %%)', 'total' => 'TOTAL', 'total_usd' => 'TOTAL (USD)', 'total_gbp' => 'TOTAL (GBP)',
 			'rates_note' => 'Conversiones orientativas al tipo de cambio del BCE del %s. El importe facturado es el expresado en euros.',
 			'no_iva' => 'Operación no sujeta al IVA español: servicio prestado a un empresario o profesional no establecido en el territorio de aplicación del impuesto (art. 69.Uno.1º de la Ley 37/1992 del IVA). El destinatario, en su caso, autoliquida el impuesto en su país.',
@@ -51,7 +53,9 @@ function cpx_invoice_texts($lang) {
 			'date' => 'Invoice date: %s.', 'due' => 'Invoice due date: %s.', 'number' => 'Invoice number: %s',
 			'bank' => 'BANK NAME: %s', 'iban' => 'TRANSFER TO (IBAN): %s.', 'bic' => 'BIC: %s',
 			'matter' => 'MATTER UNDER TRANSFER: "%s"', 'beneficiary' => 'TRANSFER BENEFICIARY: "JAVIER GARCIA MARQUEZ (Standarte\'s Owner)"',
-			'line1' => 'Stand (80%% advance) · %s', 'line2' => 'Stand (remaining 20%%) · %s',
+			'th_concept' => 'Description', 'th_qty' => 'Qty', 'th_unit' => 'Unit price', 'th_amount' => 'Amount', 'included' => 'Included',
+			'subtotal' => 'Approved project total', 'discount' => 'Early-payment discount (approved within the deadline)',
+			'adv1' => 'Taxable base · 80% advance (this invoice)', 'adv2' => 'Advance already invoiced (invoice %s)', 'rest2' => 'Taxable base · remaining 20% (this invoice)',
 			'base' => 'Taxable base', 'iva' => 'VAT (%s%%)', 'irpf' => 'IRPF withholding (−%s%%)', 'total' => 'TOTAL', 'total_usd' => 'TOTAL (USD)', 'total_gbp' => 'TOTAL (GBP)',
 			'rates_note' => 'Indicative conversions at the ECB exchange rate of %s. The invoiced amount is the amount expressed in euros.',
 			'no_iva' => 'Not subject to Spanish VAT: service supplied to a business customer not established in the Spanish VAT territory (Article 69.One.1 of Spanish VAT Law 37/1992). Where applicable, the recipient accounts for the tax in its own country (reverse charge).',
@@ -106,7 +110,9 @@ function cpx_invoice_amounts($p, $budget, $which, $prev1) {
 	}
 	$iva = round($base * $ivaRate, 2);
 	$irpf = round($base * $irpfRate, 2);
-	return array('base' => $base, 'iva' => $iva, 'irpf' => $irpf, 'iva_rate' => $ivaRate, 'irpf_rate' => $irpfRate, 'total' => round($base + $iva - $irpf, 2), 'project_total' => $tot['total']);
+	return array('base' => $base, 'iva' => $iva, 'irpf' => $irpf, 'iva_rate' => $ivaRate, 'irpf_rate' => $irpfRate, 'total' => round($base + $iva - $irpf, 2), 'project_total' => $tot['total'],
+		'subtotal' => round($tot['subtotal'], 2), 'discount' => round($tot['discount'], 2),
+		'base1' => ($which === 2) ? $base1 : null, 'prev_number' => ($which === 2 && $prev1 && isset($prev1['number'])) ? $prev1['number'] : null);
 }
 
 class StandarteInvoicePdf extends FPDF {
@@ -188,26 +194,46 @@ function cpx_invoice_pdf($d) {
 	/* Logo a la derecha. */
 	if (!empty($d['logo'])) { try { $pdf->Image($d['logo'], 150, 40, 42); } catch (Exception $e) {} }
 
-	/* Tabla contable. */
-	$ty = max($yy + 12, 128);
+	/* Tabla contable: un renglón por concepto aprobado (incluidos los de 0 €, que salen
+	 * como «Incluido»), el total del proyecto, el descuento si lo hubo, y de ahí la base
+	 * de ESTA factura (80 % o el resto). Si hay muchos conceptos, los renglones se
+	 * estrechan para que todo quepa antes de la regla inferior (y = 275). */
+	$items = isset($d['items']) ? $d['items'] : array();
+	$extraRows = 5 + count($items) + ($d['amounts']['iva_rate'] > 0 ? 1 : 0) + ($d['amounts']['irpf_rate'] > 0 ? 1 : 0) + ($d['rates'] ? 2 : 0) + ($d['amounts']['discount'] > 0 ? 1 : 0) + ($d['which'] === 2 ? 1 : 0);
+	$ty = max($yy + 10, 118);
+	$rowH = min(6.4, max(4.6, (250 - $ty) / max(1, $extraRows)));
+	$fs = $rowH < 5.6 ? 8 : 9;
 	$cx = array(62, 122, 134, 162, 192);          // bordes de columna: concepto (ancho) | cant. | precio | importe
-	$rowH = 6.4;
 	$pdf->SetDrawColor(140, 140, 140);
-	$row = function ($label, $qty, $unit, $amount, $bold = false, $top = true) use ($pdf, &$ty, $cx, $rowH, $L) {
-		$pdf->SetFont('Helvetica', $bold ? 'B' : '', 9);
+	$row = function ($label, $qty, $unit, $amount, $bold = false, $top = true, $grey = false) use ($pdf, &$ty, $cx, $rowH, $fs, $L) {
+		$pdf->SetFont('Helvetica', $bold ? 'B' : '', $fs);
+		if ($grey) $pdf->SetTextColor(110, 110, 110);
 		if ($top) $pdf->Line($cx[0], $ty, $cx[4], $ty);
-		$pdf->Fit($cx[0] + 1, $ty + 1, $cx[1] - $cx[0] - 2, $label, $bold ? 'B' : '', 9);
-		$pdf->SetFont('Helvetica', $bold ? 'B' : '', 9);
+		$pdf->Fit($cx[0] + 1, $ty + 1, $cx[1] - $cx[0] - 2, $label, $bold ? 'B' : '', $fs);
+		$pdf->SetFont('Helvetica', $bold ? 'B' : '', $fs);
 		$pdf->SetXY($cx[1], $ty + 1);     $pdf->Cell($cx[2] - $cx[1] - 1, $rowH - 2, $pdf->t($qty), 0, 0, 'R');
 		$pdf->SetXY($cx[2] + 1, $ty + 1); $pdf->Cell($cx[3] - $cx[2] - 2, $rowH - 2, $pdf->t($unit), 0, 0, 'R');
 		$pdf->SetXY($cx[3] + 1, $ty + 1); $pdf->Cell($cx[4] - $cx[3] - 2, $rowH - 2, $pdf->t($amount), 0, 0, 'R');
+		if ($grey) $pdf->SetTextColor(0, 0, 0);
 		$ty += $rowH;
 		$pdf->Line($cx[0], $ty, $cx[4], $ty);
 	};
 	$eur = function ($n) use ($L) { return cpx_money($n, $L, 'EUR'); };
-	$lineLabel = sprintf($d['which'] === 1 ? $T['line1'] : $T['line2'], $d['title']);
-	$row($lineLabel, '1', $eur($d['amounts']['base']), $eur($d['amounts']['base']));
-	$row($T['base'], '', '', $eur($d['amounts']['base']), false, false);
+	/* Cabecera de columnas, en gris. */
+	$row($T['th_concept'], $T['th_qty'], $T['th_unit'], $T['th_amount'], false, true, true);
+	if ($items) {
+		foreach ($items as $it) {
+			$row($it['label'], '1', $it['amount'] > 0 ? $eur($it['amount']) : $T['included'], $it['amount'] > 0 ? $eur($it['amount']) : $T['included'], false, false);
+		}
+	} else {
+		$row($d['title'], '1', $eur($d['amounts']['subtotal']), $eur($d['amounts']['subtotal']), false, false);
+	}
+	$pdf->SetLineWidth(0.5);
+	$row($T['subtotal'], '', '', $eur($d['amounts']['subtotal']), true, true);
+	$pdf->SetLineWidth(0.2);
+	if ($d['amounts']['discount'] > 0) $row($T['discount'], '', '', '− ' . $eur($d['amounts']['discount']), false, false);
+	if ($d['which'] === 2 && $d['amounts']['base1'] !== null) $row(sprintf($T['adv2'], $d['amounts']['prev_number'] !== null ? $d['amounts']['prev_number'] : '—'), '', '', '− ' . $eur($d['amounts']['base1']), false, false);
+	$row($d['which'] === 1 ? $T['adv1'] : $T['rest2'], '', '', $eur($d['amounts']['base']), false, false);
 	if ($d['amounts']['iva_rate'] > 0) $row(sprintf($T['iva'], cpx_pct_label($d['amounts']['iva_rate'], $L)), '', '', '+ ' . $eur($d['amounts']['iva']), false, false);
 	if ($d['amounts']['irpf_rate'] > 0) $row(sprintf($T['irpf'], cpx_pct_label($d['amounts']['irpf_rate'], $L)), '', '', '− ' . $eur($d['amounts']['irpf']), false, false);
 	$pdf->SetLineWidth(0.5);
@@ -269,7 +295,7 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	if ($client === '') $errors[] = 'falta la razón social (o el nombre del cliente)';
 	$iban = trim((string) (isset($p['income_account']) ? $p['income_account'] : ''));
 	if ($iban === '') $errors[] = 'el proyecto no tiene cuenta de ingreso';
-	$budget = cpx_rows('client_project_budget_items?project_id=eq.' . urlencode($projectId) . '&select=amount&order=sort_order.asc');
+	$budget = cpx_rows('client_project_budget_items?project_id=eq.' . urlencode($projectId) . '&select=amount,concept_es,concept_en&order=sort_order.asc,id.asc');
 	$inv = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&select=which,number,meta,amount_eur&order=issued_at.asc');
 	$prev1 = null; foreach ($inv as $r) { if ((int) $r['which'] === 1) $prev1 = $r; }
 	if ($which === 2 && (!isset($p['invoice_state']) || $p['invoice_state'] !== 'cursado')) $errors[] = 'la Factura 2 solo se emite cuando la Factura 1 está cursada (cobrada)';
@@ -301,8 +327,16 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 
 	$title = trim((string) (!empty($p['title_' . $lang]) ? $p['title_' . $lang] : $p['ref']));
 	$logo = __DIR__ . '/lib/logo-sello.png';
+	/* TODOS los conceptos del presupuesto aprobado, también los de 0 €: verlos en la
+	 * factura es lo que le confirma al cliente que esos servicios están incluidos. */
+	$items = array();
+	foreach ($budget as $b) {
+		$label = trim((string) (!empty($b['concept_' . $lang]) ? $b['concept_' . $lang] : (!empty($b['concept_es']) ? $b['concept_es'] : (isset($b['concept_en']) ? $b['concept_en'] : ''))));
+		if ($label === '') continue;
+		$items[] = array('label' => $label, 'amount' => (float) str_replace(',', '.', (string) (isset($b['amount']) ? $b['amount'] : 0)));
+	}
 	$d = array('lang' => $lang, 'which' => $which, 'number' => $number, 'issued' => $issued, 'client' => $client, 'client_lines' => $clientLines,
-		'bank' => $bank, 'iban' => $iban, 'bic' => $bic, 'matter' => $matter, 'title' => $title, 'amounts' => $am, 'rates' => $rates, 'logo' => is_readable($logo) ? $logo : null);
+		'bank' => $bank, 'iban' => $iban, 'bic' => $bic, 'matter' => $matter, 'title' => $title, 'items' => $items, 'amounts' => $am, 'rates' => $rates, 'logo' => is_readable($logo) ? $logo : null);
 	$pdfBytes = cpx_invoice_pdf($d);
 
 	$T = cpx_invoice_texts($lang);

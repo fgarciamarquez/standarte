@@ -192,6 +192,15 @@ function cpx_contract_fetch_image($url) {
 /* ---------- El PDF ---------- */
 class StandarteContractPdf extends FPDF {
 	public $lang = 'es';
+	public $logo = null;   // PNG monocromo de Standarte para la cabecera (lib/logo-sello.png)
+	/* Cabecera corporativa: el logotipo monocromo arriba a la derecha en TODAS las
+	 * páginas (cuerpo, firmas y anexo). FPDF la llama en cada AddPage; si el PNG no
+	 * se pudiera leer, la página sale sin logo antes que abortar la emisión. */
+	public function Header() {
+		if ($this->logo && is_readable($this->logo)) {
+			try { $this->Image($this->logo, $this->w - $this->rMargin - 24, 9, 24); } catch (Exception $e) {}
+		}
+	}
 	// FPDF trabaja en cp1252: cubre español, inglés y el símbolo del euro. Lo que no
 	// exista en esa página (un nombre en otro alfabeto) se translitera en vez de romper.
 	public function t($s) {
@@ -263,7 +272,9 @@ function cpx_contract_pdf($d) {
 	$pdf = new StandarteContractPdf('P', 'mm', 'A4');
 	$pdf->lang = $d['lang'];
 	$pdf->AliasNbPages();
-	$pdf->SetMargins(22, 22, 22);
+	$pdf->logo = !empty($d['logo']) ? $d['logo'] : null;
+	// Margen superior mayor que el lateral: deja sitio al logotipo de la cabecera.
+	$pdf->SetMargins(22, 28, 22);
 	$pdf->SetAutoPageBreak(true, 22);
 	$pdf->SetTitle($pdf->t(sprintf($T['doc_title'], $d['ref'])), false);
 	$pdf->SetAuthor('Standarte', false);
