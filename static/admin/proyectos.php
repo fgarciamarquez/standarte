@@ -96,27 +96,53 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 
 /* Insignia de solo lectura (para "Aprobado", que marca el cliente). */
 function status_badge($p, $field) {
-	$on = !empty($p[$field]);
-	if ($on) return '<span class="st st-on st-ro">Cursado</span>';
-	/* Oferta vencida sin aprobar: «Pendiente» decía lo mismo el primer día que tres
-	 * meses después del plazo, y son situaciones distintas —esta pide una decisión:
-	 * renovar la oferta o cerrar el proyecto—. Solo cuenta si de verdad había oferta
-	 * (importe > 0): una fecha suelta sin importe no vence nada. */
-	$exp = offer_expired($p);
-	if ($exp) {
-		return '<span class="st st-exp st-ro" title="La oferta venció el ' . h($exp) . ' y el proyecto sigue sin aprobar">Caducado</span>';
+	if (!empty($p[$field])) return '<span class="st st-on st-ro">Cursado</span>';
+
+	/* Qué significa aquí «Caducado»: que el cliente ya no puede decidir en las
+	 * condiciones que se le ofrecieron. Se calcula con LA MISMA regla que ve él en su
+	 * página (ProjectPresentation.svelte), no con la fecha a secas:
+	 *   - La propuesta caduca de golpe: pasada `proposal_valid_until` no puede aprobar.
+	 *   - La oferta NO muere en su fecha: mengua 1.000 € por semana transcurrida y la
+	 *     fecha que se le muestra avanza una semana con cada reducción. Solo se agota
+	 *     cuando el importe llega a 0. Comparar con la fecha bruta marcaba como
+	 *     caducados proyectos con oferta viva (pasó con MEERMEAT: 3.900 € con plazo del
+	 *     20/08 sigue valiendo 900 € y su fecha visible es del 10/09).
+	 */
+	$hoy = time();
+	$valid = isset($p['proposal_valid_until']) ? $p['proposal_valid_until'] : null;
+	if ($valid && $hoy > strtotime($valid . ' 23:59:59')) {
+		return '<span class="st st-exp st-ro" title="La propuesta caducó el ' . h(date('d/m/Y', strtotime($valid . ' 12:00:00'))) . ': el cliente ya no puede aprobarla">Caducado</span>';
 	}
-	return '<span class="st st-off st-ro">Pendiente</span>';
+	$off = offer_state($p);
+	if ($off && $off['left'] <= 0) {
+		$t = 'La oferta de ' . h(eur($off['amount'])) . ' se agotó';
+		$t .= $valid ? ' (la propuesta sigue válida hasta el ' . h(date('d/m/Y', strtotime($valid . ' 12:00:00'))) . ')' : ' y la propuesta no tiene fecha de validez';
+		return '<span class="st st-exp st-ro" title="' . $t . '">Caducado</span>';
+	}
+	$t = 'Sin aprobar todavía';
+	if ($off) $t = 'Oferta vigente de ' . h(eur($off['left'])) . ' hasta el ' . h(date('d/m/Y', $off['shown']));
+	if ($valid) $t .= ' · propuesta válida hasta el ' . h(date('d/m/Y', strtotime($valid . ' 12:00:00')));
+	return '<span class="st st-off st-ro" title="' . $t . '">Pendiente</span>';
 }
 
-/* Fecha (d/m/Y) en que venció la oferta, o null si no venció (o no había). */
-function offer_expired($p) {
-	if (!empty($p['approved'])) return null;
+/* Estado de la oferta por pronta decisión con la regla del sitio: importe que queda
+ * hoy y fecha que se le muestra al cliente. null si el proyecto no tiene oferta. */
+function offer_state($p) {
+	$amount = (float) (isset($p['discount_amount']) ? $p['discount_amount'] : 0);
 	$d = isset($p['discount_deadline']) ? $p['discount_deadline'] : null;
-	if (!$d || (float) (isset($p['discount_amount']) ? $p['discount_amount'] : 0) <= 0) return null;
-	if ($d >= date('Y-m-d')) return null;
-	$ts = strtotime($d . ' 12:00:00');
-	return $ts ? date('d/m/Y', $ts) : $d;
+	if ($amount <= 0 || !$d) return null;
+	$deadline = strtotime($d . ' 23:59:59');
+	if ($deadline === false) return null;
+	$now = time();
+	if ($now <= $deadline) return array('amount' => $amount, 'left' => $amount, 'shown' => $deadline);
+	$weeks = (int) ceil(($now - $deadline) / 604800);          // semanas transcurridas
+	$left = max(0.0, $amount - 1000.0 * $weeks);               // 1.000 € menos por semana
+	return array('amount' => $amount, 'left' => $left, 'shown' => $left > 0 ? $deadline + $weeks * 604800 : $deadline);
+}
+
+/* Importe en euros, sin decimales cuando es redondo (como en la ficha del cliente). */
+function eur($n) {
+	return number_format((float) $n, ((float) $n == round($n) ? 0 : 2), ',', '.') . ' €';
 }
 
 /* Pinta un estado como botón que alterna Pendiente(gris) ↔ Cursado(verde). */
