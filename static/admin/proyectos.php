@@ -145,6 +145,19 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	   partían letra a letra. Esta pantalla es interna, así que se le da aire. */
 	.wrap-wide { max-width: 1180px; }
 	.card { background: #1e2127; border: 1px solid #2c3038; border-radius: 8px; padding: 18px; margin-bottom: 18px; }
+	/* Alta y duplicado van PLEGADOS: lo que se consulta a diario es la lista de
+	   proyectos, y con los dos formularios abiertos quedaba a dos pantallas de scroll.
+	   <details> nativo: sin JavaScript y accesible con teclado. El de duplicar se abre
+	   solo cuando se llega desde el botón «Duplicar» de una fila (?dup=…). */
+	details.fold { padding: 0; }
+	details.fold > summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; align-items: center; gap: 10px; user-select: none; }
+	details.fold > summary::-webkit-details-marker { display: none; }
+	details.fold > summary::before { content: '▸'; color: #ffc800; font-size: 13px; line-height: 1; }
+	details.fold[open] > summary::before { content: '▾'; }
+	details.fold > summary:hover .fold-t { color: #fff; }
+	.fold-t { font-weight: 700; font-size: 1.17em; }
+	details.fold > *:not(summary) { padding: 0 18px; }
+	details.fold > *:last-child { padding-bottom: 18px; }
 	input, select { width: 100%; box-sizing: border-box; background: #12141a; border: 1px solid #333; color: #eee; padding: 8px 10px; font-family: inherit; font-size: 14px; border-radius: 5px; margin-bottom: 8px; }
 	label { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: #9aa; }
 	button { background: #ffc800; color: #111; border: none; padding: 9px 18px; font-family: inherit; font-weight: 700; border-radius: 5px; cursor: pointer; }
@@ -234,8 +247,8 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		</div>
 	<?php endif; ?>
 
-	<div class="card">
-		<h3>Nuevo proyecto</h3>
+	<details class="card fold">
+		<summary><span class="fold-t">Nuevo proyecto</span></summary>
 		<form method="post" class="row">
 			<input type="hidden" name="action" value="create_project">
 			<input name="ref" placeholder="Ref (p. ej. IDh 2026/0062)" required>
@@ -262,11 +275,11 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			</div>
 			<div style="grid-column:1/3"><button type="submit">Crear proyecto</button></div>
 		</form>
-	</div>
+	</details>
 
 	<?php if (!empty($projects)): ?>
-	<div class="card" id="dup">
-		<h3>Duplicar un proyecto</h3>
+	<details class="card fold" id="dup"<?= $dupId ? ' open' : '' ?>>
+		<summary><span class="fold-t">Duplicar un proyecto</span></summary>
 		<p class="hint">Copia memoria, incluidos y excluidos, forma de pago, impuestos, cuenta e interlocutor, y —si lo marcas— el
 			presupuesto y los archivos. <strong>No</strong> copia los comentarios, ni los datos fiscales del cliente original, ni la
 			fecha del descuento ni la validez de la propuesta: esas dos fechas se ponen de nuevo en la copia para no enseñar al
@@ -294,7 +307,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			</div>
 			<div style="grid-column:1/3"><button type="submit">Duplicar proyecto</button></div>
 		</form>
-	</div>
+	</details>
 	<?php endif; ?>
 
 	<div class="card">
