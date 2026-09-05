@@ -216,7 +216,7 @@ if (!function_exists('cpx_key')) {
 	 * Qué NO viaja a la copia (cpx_project_no_copy), y por qué:
 	 *  - Identidad y estado: id, access_token (la copia nace con enlace propio),
 	 *    created_at/updated_at, status, approved/approved_at/approved_with_offer,
-	 *    paid, contract_done, invoice_done, paused, is_demo, testimonial.
+	 *    paid, contract_done, invoice_done, invoice2_done, paused, is_demo, testimonial.
 	 *  - Rastro del cliente original: last_client_visit, visit_notified_at,
 	 *    offer_notice_sent_at.
 	 *  - Datos fiscales del cliente original (billing_*): son suyos y no pueden
@@ -234,7 +234,7 @@ if (!function_exists('cpx_key')) {
 			'id', 'access_token', 'created_at', 'updated_at',
 			'ref', 'client_name', 'client_email',
 			'status', 'paid', 'approved', 'approved_at', 'approved_with_offer',
-			'contract_done', 'invoice_done', 'is_demo', 'testimonial',
+			'contract_done', 'invoice_done', 'invoice2_done', 'is_demo', 'testimonial',
 			'last_client_visit', 'visit_notified_at', 'offer_notice_sent_at',
 			'paused', 'paused_reason',
 			'billing_company', 'billing_cif', 'billing_address', 'billing_postal_code',

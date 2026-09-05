@@ -76,7 +76,7 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === 'toggle_status') {
 	$id = post('id');
 	$field = post('field');
-	$allowed = array('contract_done', 'invoice_done');
+	$allowed = array('contract_done', 'invoice_done', 'invoice2_done');
 	if (in_array($field, $allowed, true) && preg_match('/^[0-9a-f-]{36}$/', $id)) {
 		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($id), array($field => (post('value') === '1')));
 	}
@@ -146,7 +146,7 @@ function visit_badge($p) {
 	return '<span class="visit' . ($recent ? ' visit-recent' : '') . '" title="Última visita del cliente">' . $d->format('d/m H:i') . '</span>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_done,invoice_done,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_done,invoice_done,invoice2_done,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
 /* Duplicar: proyecto de origen preseleccionado (?dup=ID desde el botón de cada fila)
  * y recuento de conceptos/archivos de cada uno para las etiquetas del formulario. */
 $dupId = isset($_GET['dup']) && preg_match('/^[0-9a-f-]{36}$/', $_GET['dup']) ? $_GET['dup'] : '';
@@ -226,7 +226,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	   celdas. Con `display: contents` las celdas suben a la rejilla común y todo queda a
 	   plomo; los separadores los dibuja cada celda, porque un elemento con
 	   `display: contents` no pinta su propio borde. */
-	.pj-list { display: grid; grid-template-columns: minmax(112px,1.1fr) minmax(170px,1.8fr) auto auto auto auto auto; column-gap: 10px; align-items: center; }
+	.pj-list { display: grid; grid-template-columns: minmax(112px,1.1fr) minmax(150px,1.6fr) auto auto auto auto auto auto; column-gap: 10px; align-items: center; }
 	.pj-head, .pj-card { display: contents; }
 	.visit { font-size: 12px; color: #9aa; white-space: nowrap; }
 	.visit-recent { color: #4caf50; font-weight: 700; }
@@ -346,7 +346,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		<p class="hint">Aprobado lo marca el cliente al aprobar; contrato y factura los marcas tú al cursarlos (clic para alternar).</p>
 		<div class="pj-list">
 			<div class="pj-head">
-				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura</span><span>Visto</span><span></span>
+				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura 1</span><span>Factura 2</span><span>Visto</span><span></span>
 			</div>
 			<?php foreach ($projects as $p): ?>
 			<div class="pj-card">
@@ -354,7 +354,8 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v"><a class="pj-openlink" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener" title="Abrir el proyecto «<?= h($p['ref']) ?>» (editable con tu sesión iniciada)"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Piloto público</span><?php else: ?><?= h($p['client_name'] !== '' ? $p['client_name'] : 'sin cliente') ?><?php endif; ?></a></span></div>
 				<div class="pj-cell"><span class="pj-k">Aprobado</span><span class="pj-v"><?= status_badge($p, 'approved') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_done') ?></span></div>
-				<div class="pj-cell"><span class="pj-k">Factura</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Factura 1</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Factura 2</span><span class="pj-v"><?= status_toggle($p, 'invoice2_done') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Visto</span><span class="pj-v"><?= visit_badge($p) ?></span></div>
 				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v pj-acts">
 					<a class="dup" href="proyectos.php?dup=<?= h($p['id']) ?>#dup" title="Duplicar este proyecto">Duplicar</a>
