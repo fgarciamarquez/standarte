@@ -76,9 +76,15 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === 'toggle_status') {
 	$id = post('id');
 	$field = post('field');
-	$allowed = array('contract_done', 'invoice_done', 'invoice2_done');
-	if (in_array($field, $allowed, true) && preg_match('/^[0-9a-f-]{36}$/', $id)) {
-		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($id), array($field => (post('value') === '1')));
+	$value = post('value');
+	$allowed = array('contract_state' => 'contract_done', 'invoice_state' => 'invoice_done', 'invoice2_state' => 'invoice2_done');
+	if (isset($allowed[$field]) && in_array($value, array('pendiente', 'emitido', 'cursado'), true) && preg_match('/^[0-9a-f-]{36}$/', $id)) {
+		// El booleano antiguo se mantiene en sincronía (true solo si «cursado») para que
+		// nada que aún lo lea se quede con un dato viejo.
+		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($id), array(
+			$field => $value,
+			$allowed[$field] => ($value === 'cursado')
+		));
 	}
 	header('Location: proyectos.php'); exit;
 }
@@ -140,18 +146,20 @@ function eur($n) {
 	return number_format((float) $n, ((float) $n == round($n) ? 0 : 2), ',', '.') . ' €';
 }
 
-/* Pinta un estado como botón que alterna Pendiente(gris) ↔ Cursado(verde). */
+/* Pinta un estado como botón que cicla Pendiente(gris) → Emitido(azul) → Cursado(verde).
+ * «Emitido» es el paso intermedio que faltaba —contrato enviado, factura emitida— y
+ * «Cursado» pasa a significar cobrado o contrato devuelto firmado. */
 function status_toggle($p, $field) {
-	$on = !empty($p[$field]);
-	$next = $on ? '0' : '1';
-	$cls = $on ? 'st st-on' : 'st st-off';
-	$txt = $on ? 'Cursado' : 'Pendiente';
+	$estados = array('pendiente' => 'Pendiente', 'emitido' => 'Emitido', 'cursado' => 'Cursado');
+	$clases = array('pendiente' => 'st st-off', 'emitido' => 'st st-mid', 'cursado' => 'st st-on');
+	$siguiente = array('pendiente' => 'emitido', 'emitido' => 'cursado', 'cursado' => 'pendiente');
+	$estado = isset($p[$field]) && isset($estados[$p[$field]]) ? $p[$field] : 'pendiente';
 	return '<form method="post" class="st-form">'
 		. '<input type="hidden" name="action" value="toggle_status">'
 		. '<input type="hidden" name="id" value="' . h($p['id']) . '">'
 		. '<input type="hidden" name="field" value="' . h($field) . '">'
-		. '<input type="hidden" name="value" value="' . $next . '">'
-		. '<button type="submit" class="' . $cls . '" title="Cambiar estado">' . $txt . '</button>'
+		. '<input type="hidden" name="value" value="' . $siguiente[$estado] . '">'
+		. '<button type="submit" class="' . $clases[$estado] . '" title="Cambiar a «' . $estados[$siguiente[$estado]] . '»">' . $estados[$estado] . '</button>'
 		. '</form>';
 }
 
@@ -167,7 +175,7 @@ function visit_badge($p) {
 	return '<span class="visit' . ($recent ? ' visit-recent' : '') . '" title="Última visita del cliente">' . $d->format('d/m H:i') . '</span>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_done,invoice_done,invoice2_done,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_state,invoice_state,invoice2_state,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
 /* Duplicar: proyecto de origen preseleccionado (?dup=ID desde el botón de cada fila)
  * y recuento de conceptos/archivos de cada uno para las etiquetas del formulario. */
 $dupId = isset($_GET['dup']) && preg_match('/^[0-9a-f-]{36}$/', $_GET['dup']) ? $_GET['dup'] : '';
@@ -212,6 +220,8 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.st { border: 1px solid; border-radius: 20px; padding: 4px 12px; font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; background: transparent; }
 	.st-off { color: #8a8f98; border-color: #3a3f48; }
 	.st-off:hover { border-color: #6a6f78; color: #c0c4cc; }
+	.st-mid { color: #64b5f6; border-color: #1e5f9e; background: rgba(30,95,158,.14); }
+	.st-mid:hover { background: rgba(30,95,158,.26); }
 	.st-on { color: #4caf50; border-color: #2e7d32; background: rgba(46,125,50,.12); }
 	.st-on:hover { background: rgba(46,125,50,.22); }
 	.st-exp { color: #e57373; border-color: #5a2a2a; background: rgba(198,40,40,.12); }
@@ -373,7 +383,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		<h3>Proyectos</h3>
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, pincha el nombre del
 			cliente: al estar tu sesión iniciada, la propia página del proyecto se vuelve editable.</p>
-		<p class="hint">Aprobado lo marca el cliente al aprobar; contrato y factura los marcas tú al cursarlos (clic para alternar).</p>
+		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto).</p>
 		<div class="pj-list">
 			<div class="pj-head">
 				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura 1</span><span>Factura 2</span><span>Visto</span><span></span>
@@ -383,9 +393,9 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 				<div class="pj-cell pj-ref"><span class="pj-k">Ref</span><span class="pj-v"><?= h($p['ref']) ?></span></div>
 				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v pj-clientv"><a class="pj-openlink" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener" title="Abrir el proyecto «<?= h($p['ref']) ?>» (editable con tu sesión iniciada)"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Piloto público</span><?php else: ?><?= h($p['client_name'] !== '' ? $p['client_name'] : 'sin cliente') ?><?php endif; ?></a><button type="button" class="pj-copy" data-url="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" title="Copiar el enlace del proyecto «<?= h($p['ref']) ?>»" aria-label="Copiar el enlace del proyecto <?= h($p['ref']) ?>"><svg class="pj-copy-i" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><rect x="5.5" y="5.5" width="8" height="9" rx="1.5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M10.5 3.5 H3.9 A1.4 1.4 0 0 0 2.5 4.9 V12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg><svg class="pj-copy-ok" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path d="M3 8.5 L6.5 12 L13 4.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button></span></div>
 				<div class="pj-cell"><span class="pj-k">Aprobado</span><span class="pj-v"><?= status_badge($p, 'approved') ?></span></div>
-				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_done') ?></span></div>
-				<div class="pj-cell"><span class="pj-k">Factura 1</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
-				<div class="pj-cell"><span class="pj-k">Factura 2</span><span class="pj-v"><?= status_toggle($p, 'invoice2_done') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_state') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Factura 1</span><span class="pj-v"><?= status_toggle($p, 'invoice_state') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Factura 2</span><span class="pj-v"><?= status_toggle($p, 'invoice2_state') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Visto</span><span class="pj-v"><?= visit_badge($p) ?></span></div>
 				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v pj-acts">
 					<a class="dup" href="proyectos.php?dup=<?= h($p['id']) ?>#dup" title="Duplicar este proyecto">Duplicar</a>
