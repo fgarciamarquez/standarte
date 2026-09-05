@@ -83,6 +83,24 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 		 * proyecto, se guarda en su Documentación y se envía al cliente (contract_lib.php).
 		 * Si falta algo (aprobación, email, evento, presupuesto) el estado NO cambia y se
 		 * dice qué falta, en vez de marcar como emitido un contrato que no existe. */
+		/* Facturas → «Emitido» = EMITIRLA con el número que trae el formulario (lo pide un
+		 * cuadro al pulsar; ver invoice_lib.php). Si algo falta o el número está repetido,
+		 * el estado no cambia y se dice qué pasa. */
+		if (($field === 'invoice_state' || $field === 'invoice2_state') && $value === 'emitido') {
+			require_once __DIR__ . '/invoice_lib.php';
+			$which = ($field === 'invoice2_state') ? 2 : 1;
+			$res = cpx_invoice_issue($id, $which, post('invoice_number'));
+			if (empty($res['ok'])) {
+				header('Location: proyectos.php?msg=' . urlencode('No se ha emitido la factura ' . $which . ': ' . implode('; ', $res['errors']) . '.')); exit;
+			}
+			cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($id), array($field => 'emitido', $allowed[$field] => false));
+			$m = 'Factura ' . $which . ' nº ' . $res['number'] . ' emitida en ' . ($res['lang'] === 'en' ? 'inglés' : 'español')
+				. ' por ' . number_format($res['total'], 2, ',', '.') . ' €'
+				. ($res['sent'] ? ', enviada a ' . $res['email'] . ' con copia a javier@standarte.es' : '')
+				. '. Está en la Documentación del proyecto.'
+				. (!empty($res['warnings']) ? ' Avisos: ' . implode('; ', $res['warnings']) . '.' : '');
+			header('Location: proyectos.php?msg=' . urlencode($m)); exit;
+		}
 		if ($field === 'contract_state' && $value === 'emitido') {
 			require_once __DIR__ . '/contract_lib.php';
 			$res = cpx_contract_issue($id);
@@ -172,12 +190,22 @@ function status_toggle($p, $field) {
 	$clases = array('pendiente' => 'st st-off', 'emitido' => 'st st-mid', 'cursado' => 'st st-on');
 	$siguiente = array('pendiente' => 'emitido', 'emitido' => 'cursado', 'cursado' => 'pendiente');
 	$estado = isset($p[$field]) && isset($estados[$p[$field]]) ? $p[$field] : 'pendiente';
-	return '<form method="post" class="st-form">'
+	$esFactura = ($field === 'invoice_state' || $field === 'invoice2_state');
+	/* La Factura 2 no se puede emitir hasta que la 1 esté cobrada («Cursado»). */
+	if ($field === 'invoice2_state' && $estado === 'pendiente' && (!isset($p['invoice_state']) || $p['invoice_state'] !== 'cursado')) {
+		return '<span class="st st-off st-ro st-locked" title="Se emite cuando la Factura 1 esté cursada (cobrada)">Pendiente</span>';
+	}
+	$titulo = ($esFactura && $estado === 'pendiente')
+		? 'Emitir la factura ' . ($field === 'invoice2_state' ? '2 (20 %)' : '1 (80 %)') . ': te pedirá el número'
+		: (($field === 'contract_state' && $estado === 'pendiente') ? 'Emitir el contrato y enviarlo al cliente' : 'Cambiar a «' . $estados[$siguiente[$estado]] . '»');
+	$ask = ($esFactura && $estado === 'pendiente') ? ' ask-number' : '';
+	return '<form method="post" class="st-form' . $ask . '" data-suggest="' . h(isset($GLOBALS['nextInvoice']) ? $GLOBALS['nextInvoice'] : '') . '">'
 		. '<input type="hidden" name="action" value="toggle_status">'
 		. '<input type="hidden" name="id" value="' . h($p['id']) . '">'
 		. '<input type="hidden" name="field" value="' . h($field) . '">'
 		. '<input type="hidden" name="value" value="' . $siguiente[$estado] . '">'
-		. '<button type="submit" class="' . $clases[$estado] . '" title="Cambiar a «' . $estados[$siguiente[$estado]] . '»">' . $estados[$estado] . '</button>'
+		. ($ask ? '<input type="hidden" name="invoice_number" value="">' : '')
+		. '<button type="submit" class="' . $clases[$estado] . '" title="' . h($titulo) . '">' . $estados[$estado] . '</button>'
 		. '</form>';
 }
 
@@ -198,6 +226,9 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,ti
  * y recuento de conceptos/archivos de cada uno para las etiquetas del formulario. */
 $dupId = isset($_GET['dup']) && preg_match('/^[0-9a-f-]{36}$/', $_GET['dup']) ? $_GET['dup'] : '';
 $counts = pj_authed() ? cpx_child_counts() : array('budget' => array(), 'media' => array());
+/* Siguiente número de factura de la serie, para sugerirlo en el cuadro al emitir. */
+require_once __DIR__ . '/invoice_lib.php';
+$nextInvoice = pj_authed() ? cpx_next_invoice_number() : '';
 function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $counts[$kind][$id] : 0; }
 ?>
 <!doctype html>
@@ -244,6 +275,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.st-on:hover { background: rgba(46,125,50,.22); }
 	.st-exp { color: #e57373; border-color: #5a2a2a; background: rgba(198,40,40,.12); }
 	.st-ro { cursor: default; }
+	.st-locked { opacity: .45; cursor: not-allowed; }
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
 	/* Borrar como aspa: la columna de acciones no necesita la palabra, y así el
@@ -426,6 +458,26 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<?php endforeach; ?>
 		</div>
 	</div>
+<?php endif; ?>
+<?php if (pj_authed()): ?>
+<script>
+/* Emitir una factura pide su número antes de enviar el formulario: se sugiere el
+   siguiente de la serie y el gestor lo confirma o lo corrige. Cancelar no hace nada. */
+document.addEventListener('submit', function (e) {
+  var f = e.target;
+  if (!f.classList || !f.classList.contains('ask-number')) return;
+  var campo = f.querySelector('input[name=invoice_number]');
+  if (!campo || campo.value) return;
+  e.preventDefault();
+  var cual = (f.querySelector('input[name=field]') || {}).value === 'invoice2_state' ? '2 (20 % restante)' : '1 (80 % anticipo)';
+  var n = window.prompt('Número de la factura ' + cual + ':', f.getAttribute('data-suggest') || '');
+  if (n === null) return;
+  n = n.trim();
+  if (!n) { window.alert('Hace falta un número de factura.'); return; }
+  campo.value = n;
+  f.submit();
+});
+</script>
 <?php endif; ?>
 <?php if (pj_authed()): ?>
 <script>

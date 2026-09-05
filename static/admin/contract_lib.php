@@ -405,12 +405,18 @@ function cpx_contract_issue($projectId) {
 		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
 		. "<p style='margin:28px 0 0;'>" . ($lang === 'en' ? 'Best regards,<br><strong>The Standarte team</strong>' : 'Un cordial saludo,<br><strong>Equipo de Standarte</strong>') . "</p>"
 		. "</body></html>";
+	/* Al cliente y, en copia, a Javier (javier@standarte.es): así el emisor conserva lo
+	 * que ha mandado sin tener que entrar al proyecto. */
 	$sent = false;
 	try {
 		require_once __DIR__ . '/email_campaing/mailer.php';
 		$cfg = require __DIR__ . '/email_campaing/config.php';
-		$sent = campaign_send_smtp($cfg, $email, sprintf($T['mail_subject'], $p['ref']), $html,
-			array(array('name' => 'contrato-' . preg_replace('/[^A-Za-z0-9_-]+/', '_', $p['ref']) . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes)));
+		$subject = sprintf($T['mail_subject'], $p['ref']);
+		$att = array(array('name' => 'contrato-' . preg_replace('/[^A-Za-z0-9_-]+/', '_', $p['ref']) . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes));
+		$sent = campaign_send_smtp($cfg, $email, $subject, $html, $att);
+		if (strcasecmp('javier@standarte.es', $email) !== 0) {
+			try { campaign_send_smtp($cfg, 'javier@standarte.es', '[Copia] ' . $subject, $html, $att); } catch (Exception $e) {}
+		}
 	} catch (Exception $e) { $sent = false; }
 	if (!$sent) $warnings[] = 'el contrato se ha generado y guardado, pero el correo al cliente NO ha salido (revisa SMTP)';
 
