@@ -226,7 +226,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	   celdas. Con `display: contents` las celdas suben a la rejilla común y todo queda a
 	   plomo; los separadores los dibuja cada celda, porque un elemento con
 	   `display: contents` no pinta su propio borde. */
-	.pj-list { display: grid; grid-template-columns: minmax(112px,1.1fr) minmax(150px,1.6fr) auto auto auto auto auto auto; column-gap: 10px; align-items: center; }
+	.pj-list { display: grid; grid-template-columns: minmax(112px,1.1fr) minmax(170px,1.8fr) auto auto auto auto auto; column-gap: 10px; align-items: center; }
 	.pj-head, .pj-card { display: contents; }
 	.visit { font-size: 12px; color: #9aa; white-space: nowrap; }
 	.visit-recent { color: #4caf50; font-weight: 700; }
@@ -236,7 +236,11 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.pj-cell { min-width: 0; }
 	.pj-v { min-width: 0; overflow-wrap: anywhere; }
 	.pj-k { display: none; }
-	.pj-open .link { word-break: normal; white-space: nowrap; }
+	/* El nombre del cliente ES el enlace al proyecto: la columna «Abrir» gastaba un
+	   ancho entero para repetir lo que ya se entiende pinchando el nombre. */
+	.pj-openlink { color: #e6e6e6; text-decoration: none; border-bottom: 1px dotted #6a6f78; }
+	.pj-openlink:hover { color: #ffc800; border-bottom-color: #ffc800; }
+	.pj-openlink .demo-badge { border-bottom: none; }
 	.pj-ref .pj-v { overflow-wrap: normal; word-break: normal; }
 	.pj-acts { white-space: nowrap; }
 	@media (max-width: 640px) {
@@ -337,22 +341,21 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 
 	<div class="card">
 		<h3>Proyectos</h3>
-		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, abre el enlace del
-			proyecto: al estar tu sesión iniciada, la propia página se vuelve editable.</p>
+		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, pincha el nombre del
+			cliente: al estar tu sesión iniciada, la propia página del proyecto se vuelve editable.</p>
 		<p class="hint">Aprobado lo marca el cliente al aprobar; contrato y factura los marcas tú al cursarlos (clic para alternar).</p>
 		<div class="pj-list">
 			<div class="pj-head">
-				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura</span><span>Visto</span><span>Abrir</span><span></span>
+				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura</span><span>Visto</span><span></span>
 			</div>
 			<?php foreach ($projects as $p): ?>
 			<div class="pj-card">
 				<div class="pj-cell pj-ref"><span class="pj-k">Ref</span><span class="pj-v"><?= h($p['ref']) ?></span></div>
-				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Piloto público</span><?php else: ?><?= h($p['client_name']) ?><?php endif; ?></span></div>
+				<div class="pj-cell pj-client"><span class="pj-k">Cliente</span><span class="pj-v"><a class="pj-openlink" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener" title="Abrir el proyecto «<?= h($p['ref']) ?>» (editable con tu sesión iniciada)"><?php if (!empty($p['is_demo'])): ?><span class="demo-badge">Piloto público</span><?php else: ?><?= h($p['client_name'] !== '' ? $p['client_name'] : 'sin cliente') ?><?php endif; ?></a></span></div>
 				<div class="pj-cell"><span class="pj-k">Aprobado</span><span class="pj-v"><?= status_badge($p, 'approved') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_done') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Factura</span><span class="pj-v"><?= status_toggle($p, 'invoice_done') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Visto</span><span class="pj-v"><?= visit_badge($p) ?></span></div>
-				<div class="pj-cell pj-open"><span class="pj-k">Abrir</span><span class="pj-v"><a class="link" href="https://standarte.es/proyecto?t=<?= h($p['access_token']) ?>" target="_blank" rel="noopener">Abrir →</a></span></div>
 				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v pj-acts">
 					<a class="dup" href="proyectos.php?dup=<?= h($p['id']) ?>#dup" title="Duplicar este proyecto">Duplicar</a>
 					<form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
