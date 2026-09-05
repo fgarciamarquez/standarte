@@ -528,6 +528,21 @@ if (!function_exists('cpx_key')) {
 		return SUPABASE_URL . '/storage/v1' . (strpos($signed, '/') === 0 ? $signed : '/' . $signed);
 	}
 
+	/* Descarga un objeto de un bucket privado (con la service key). Devuelve los bytes
+	 * o null si Storage no lo sirve. Sirve para reenviar un PDF ya emitido sin regenerarlo. */
+	function cpx_storage_download($path, $bucket = 'client-docs') {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, SUPABASE_URL . '/storage/v1/object/' . $bucket . '/' . $path);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('apikey: ' . cpx_key(), 'Authorization: Bearer ' . cpx_key()));
+		$body = curl_exec($ch);
+		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+		return ((int) $code < 300 && is_string($body) && $body !== '') ? $body : null;
+	}
+
 	/* Borra un objeto del bucket (best-effort). */
 	function cpx_storage_delete_object($path, $bucket = 'client-docs') {
 		$ch = curl_init();

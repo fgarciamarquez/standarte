@@ -13,6 +13,32 @@
   export let token = '';
   export let L;
   export let reload = async () => {};
+  // Estado del trámite de cada tipo de documento (client_projects.contract_state /
+  // invoice_state / invoice2_state), indexado por `kind`. Lo cambia el equipo desde el
+  // panel: «Emitido» = enviado y a la espera; «Cursado» = firmado devuelto o cobrado.
+  export let states = {};
+
+  // Etiqueta de estado junto al documento. Latente (a la espera) en verde, con botón
+  // de reenvío por si el cliente perdió el correo; pasivo (resuelto) en gris.
+  function docState(d) {
+    const st = states && states[d.kind];
+    if (!st || st === 'pendiente') return null;
+    const isContract = d.kind === 'contrato';
+    if (st === 'emitido') return { cls: 'pz-tag-live', text: isContract ? L.stContractWait : L.stInvoiceWait, live: true };
+    if (st === 'cursado') return { cls: 'pz-tag-done', text: isContract ? L.stContractDone : L.stInvoiceDone, live: false };
+    return null;
+  }
+
+  let resent = {};   // id → email al que se reenvió (para el aviso en línea)
+  let resendErr = '';
+  async function resend(id) {
+    busy = true; resendErr = '';
+    try {
+      const r = await adminAction(token, 'resend_doc', { doc_id: id });
+      if (r && r.ok) resent = { ...resent, [id]: r.email };
+      else resendErr = r && r.error === 'unauthorized' ? L.sessionExpired : `${L.resendError}${r && r.error ? ` (${r.error})` : ''}`;
+    } catch (err) { resendErr = L.resendError; } finally { busy = false; }
+  }
 
   let kind = 'contrato';
   let title = '';
@@ -61,6 +87,19 @@
           <span class="pz-doc-title">{d.title}</span>
           <span class="pz-doc-meta">PDF · {size(d.size_bytes || 0)}</span>
         </a>
+        {#if docState(d)}
+          {@const st = docState(d)}
+          <span class="pz-doc-state">
+            <span class="pz-tag {st.cls}">{st.text}</span>
+            {#if admin && st.live}
+              {#if resent[d.id]}
+                <span class="pz-doc-resent">{L.resent} {resent[d.id]}</span>
+              {:else}
+                <button type="button" class="pz-doc-resend" on:click={() => resend(d.id)} disabled={busy} title={L.resendTitle}>{L.resend}</button>
+              {/if}
+            {/if}
+          </span>
+        {/if}
         {#if admin}<button type="button" class="pz-doc-del" on:click={() => del(d.id)} disabled={busy}>{L.del}</button>{/if}
       </li>
     {/each}
@@ -83,6 +122,7 @@
     </label>
   </div>
   {#if msg}<p class="pz-doc-msg">{msg}</p>{/if}
+  {#if resendErr}<p class="pz-doc-msg">{resendErr}</p>{/if}
 {/if}
 
 <style>
@@ -96,6 +136,15 @@
   .pz-doc-title { font-weight: 700; overflow-wrap: anywhere; }
   .pz-doc-meta { font-size: 12px; color: #888; }
   .pz-doc-del { background: transparent; border: none; color: #c62828; cursor: pointer; font: inherit; font-size: 12px; }
+  .pz-doc-state { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; flex: 0 1 auto; justify-content: flex-end; }
+  .pz-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .03em; line-height: 1.3; padding: 4px 9px; border-radius: 12px; white-space: normal; text-align: center; }
+  .pz-tag-live { background: #e6f4ea; color: #1e7e34; border: 1px solid #b7dfc0; }
+  .pz-tag-done { background: #efefec; color: #6b6b66; border: 1px solid #d9d8d0; }
+  .pz-doc-resend { background: transparent; border: 1px solid #1e7e34; color: #1e7e34; border-radius: 12px; padding: 3px 9px; font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; }
+  .pz-doc-resend:hover { background: #e6f4ea; }
+  .pz-doc-resend:disabled { opacity: .5; cursor: default; }
+  .pz-doc-resent { font-size: 11px; color: #1e7e34; }
+  @media (max-width: 560px) { .pz-docs li { flex-wrap: wrap; } .pz-doc-state { flex-basis: 100%; justify-content: flex-start; } }
   .pz-docs-empty { font-size: 14px; color: #666; margin: 8px 0 0; }
   .pz-doc-add { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
   .pz-edit { background: #fff; border: 1px solid #cfcdc4; border-radius: 6px; padding: 10px 12px; font-family: inherit; font-size: 15px; color: #1b1b1a; }

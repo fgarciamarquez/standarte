@@ -353,3 +353,46 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 
 	return array('ok' => true, 'number' => $number, 'which' => $which, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);
 }
+
+
+/* ---------- Reenviar un documento ya emitido ----------
+ * El cliente ha perdido el correo: se le vuelve a mandar el MISMO PDF que hay en su
+ * Documentación (no se regenera nada, no cambia ningún estado), con copia a Javier.
+ * Vale para cualquier documento del proyecto, también los subidos a mano. */
+function cpx_doc_resend($projectId, $docId) {
+	if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId) || !preg_match('/^[0-9a-f-]{36}$/', (string) $docId)) return array('ok' => false, 'error' => 'bad_id');
+	$docs = cpx_rows('client_project_docs?id=eq.' . urlencode($docId) . '&project_id=eq.' . urlencode($projectId) . '&select=id,kind,title,path&limit=1');
+	if (empty($docs[0]['path'])) return array('ok' => false, 'error' => 'not_found');
+	$doc = $docs[0];
+	$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=ref,title_es,title_en,client_email,approved_lang,access_token&limit=1');
+	if (empty($rows[0])) return array('ok' => false, 'error' => 'not_found');
+	$p = $rows[0];
+	$email = isset($p['client_email']) ? trim($p['client_email']) : '';
+	if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) return array('ok' => false, 'error' => 'no_email');
+	$pdf = cpx_storage_download($doc['path'], 'client-docs');
+	if ($pdf === null) return array('ok' => false, 'error' => 'storage');
+
+	$lang = (isset($p['approved_lang']) && $p['approved_lang'] === 'en') ? 'en' : 'es';
+	$kindLabel = cpx_doc_kind_label($doc['kind'], $lang);
+	$title = trim((string) (!empty($p['title_' . $lang]) ? $p['title_' . $lang] : $p['ref']));
+	$h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+	$url = 'https://standarte.es/proyecto?t=' . $p['access_token'];
+	if ($lang === 'en') {
+		$subject = sprintf('%s for your project %s (resent) — Standarte', $kindLabel, $p['ref']);
+		$body = sprintf('As requested, please find attached again the document <strong>%s</strong> (%s) for your project <strong>%s</strong> (%s). It is also available at any time in the Documents section of your project.', $h($doc['title']), $h(strtolower($kindLabel)), $h($title), $h($p['ref']));
+		$button = 'Open the project'; $sign = 'Best regards,<br><strong>The Standarte team</strong>';
+	} else {
+		$subject = sprintf('%s de su proyecto %s (reenvío) — Standarte', $kindLabel, $p['ref']);
+		$body = sprintf('Como nos ha solicitado, le adjuntamos de nuevo el documento <strong>%s</strong> (%s) de su proyecto <strong>%s</strong> (%s). Lo tiene también disponible en todo momento en la Documentación de su proyecto.', $h($doc['title']), $h(mb_strtolower($kindLabel)), $h($title), $h($p['ref']));
+		$button = 'Abrir el proyecto'; $sign = 'Un cordial saludo,<br><strong>Equipo de Standarte</strong>';
+	}
+	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
+		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
+		. "<p style='margin:0 0 16px;'>" . $body . "</p>"
+		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($button) . "</a></p>"
+		. "<p style='margin:28px 0 0;'>" . $sign . "</p></body></html>";
+	$name = preg_replace('/[^A-Za-z0-9_-]+/', '_', $doc['title']);
+	if ($name === '' || $name === '_') $name = $doc['kind'];
+	$sent = cpx_send_with_copy($email, $subject, $html, array('name' => $name . '.pdf', 'type' => 'application/pdf', 'data' => $pdf));
+	return $sent ? array('ok' => true, 'email' => $email, 'lang' => $lang) : array('ok' => false, 'error' => 'smtp', 'email' => $email);
+}

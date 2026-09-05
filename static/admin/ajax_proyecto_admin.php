@@ -280,6 +280,15 @@ if ($action === 'del_doc') {
 	pa_out(array('ok' => (int) $r['code'] < 300));
 }
 
+/* Reenviar al cliente un documento de su Documentación (botón «Reenviar» junto a la
+ * etiqueta de estado). Mismo PDF, sin regenerar ni tocar estados; copia a Javier. */
+if ($action === 'resend_doc') {
+	$id = pa_post('doc_id');
+	if (!preg_match('/^[0-9a-f-]{36}$/', $id)) pa_out(array('ok' => false, 'error' => 'bad_id'));
+	require_once __DIR__ . '/invoice_lib.php';
+	pa_out(cpx_doc_resend($projectId, $id));
+}
+
 if ($action === 'reply') {
 	$body = pa_post('body');
 	if ($body === '') pa_out(array('ok' => false, 'error' => 'empty'));
