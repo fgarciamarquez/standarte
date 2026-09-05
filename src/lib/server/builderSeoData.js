@@ -454,3 +454,61 @@ const EN = {
 for (const [k, v] of Object.entries(EN)) {
   if (builderSeoData[k]) builderSeoData[k].en = v;
 }
+
+
+// --- Versión portuguesa ----------------------------------------------------------
+// Solo Oporto: es la única plaza de estas páginas donde el comprador busca en su
+// propio idioma («construtor de stands no Porto») y donde la competencia local se
+// posiciona en portugués. El resto de las plazas son españolas y su búsqueda nativa
+// ya está cubierta en castellano; abrir ahí una versión pt sería una traducción sin
+// demanda que solo diluye.
+// La expresión objetivo lleva artículo —«no Porto», no «em Porto»—, así que los
+// helpers reciben ya el locativo completo y sirven igual para otra plaza («em Lisboa»).
+const pasoPt = (c) => `
+        <h2>Construtor de stands ${c}: como se constrói o seu stand, passo a passo</h2>
+        <ol>
+          <li><strong>Levantamento.</strong> Medidas reais do espaço contratado, pé-direito do pavilhão e regras do recinto antes de se desenhar seja o que for.</li>
+          <li><strong>Engenharia e protótipo 3D.</strong> Estrutura, cargas, instalações e mapa de corte resolvidos primeiro; recebe um protótipo fotorrealista do que vai ser construído.</li>
+          <li><strong>Fabrico em oficina própria.</strong> Carpintaria à medida, mobiliário e grafismo produzidos pela nossa equipa, com controlo peça a peça.</li>
+          <li><strong>Pré-montagem.</strong> O stand é montado na oficina antes de seguir viagem: os acertos fazem-se aqui, não contra o relógio no pavilhão.</li>
+          <li><strong>Transporte e montagem.</strong> Os nossos montadores e carpinteiros levantam o stand, pronto 24&nbsp;h antes da abertura.</li>
+          <li><strong>Desmontagem e armazenamento.</strong> Retiramos o stand no encerramento e guardamos as peças reutilizáveis para a edição seguinte.</li>
+        </ol>`;
+
+const tiposPt = (c) => `
+        <h2>Construtor de stands ${c}: o que construímos</h2>
+        <ul>
+          <li><strong>Stand de design livre em carpintaria.</strong> Estrutura e paredes feitas à medida, com acabamentos lacados, folheados ou têxteis.</li>
+          <li><strong>Stand de dois pisos.</strong> Cálculo estrutural, escada e piso superior de reuniões quando o pavilhão o permite.</li>
+          <li><strong>Stand modular reutilizável.</strong> Peças de sistema próprias, reconfiguradas feira após feira, que baixam o custo de uma presença recorrente.</li>
+          <li><strong>Stand com maquinaria ou produto pesado.</strong> Pavimentos técnicos, reforços e ramais previstos para expor equipamento a funcionar.</li>
+          <li><strong>Mobiliário e elementos de exposição.</strong> Balcões, vitrinas, expositores e arrumação oculta, construídos para o seu produto e não comprados em catálogo.</li>
+        </ul>`;
+
+const porquePt = (c) => `
+        <h2>Construtor de stands ${c}: porquê construir com a Standarte</h2>
+        <p>Somos construtores, não intermediários: o stand é fabricado na <strong>nossa oficina</strong>, pela nossa equipa e no nosso prazo. Isso significa um único responsável do princípio ao fim, um orçamento sem a margem de terceiros e capacidade para resolver uma alteração de última hora sem depender da agenda de outra oficina. Cada aprovação fica registada no <a href="/pt/projeto-auditado">Sistema de Projeto Auditado</a>: o que aprova é, literalmente, o que se constrói.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand ${c}</a></p>`;
+
+const PT = {
+  constructor_stand_oporto: {
+    breadcrumb: 'Construtor de stands no Porto',
+    title: 'Construtor de stands no Porto | Oficina própria | Standarte',
+    h1: 'Construtor de stands no Porto',
+    introText: 'Construímos stands à medida para a Exponor (Feira Internacional do Porto) com fabrico em oficina própria: carpintaria, estrutura, mobiliário e grafismo produzidos pela nossa equipa, transporte tratado por nós e montagem terminada antes da abertura.',
+    body: `
+        <h2>Construtor de stands no Porto: fabrico próprio para a Exponor</h2>
+        <p>A Exponor, em Leça da Palmeira, concentra o norte industrial e exportador de Portugal: têxtil e confeção, construção e decoração, alimentação, cosmética e metalomecânica. É um visitante profissional, que se aproxima do produto e o inspeciona de perto — e isso define o padrão de construção: acabamentos sólidos à altura da mão, iluminação fiel à cor real e espaço para negociar sentado.</p>
+        <p>Cada setor pede uma construção diferente: painéis de mostruário para o têxtil, prateleiras iluminadas para o produto pequeno, pavimentos técnicos e ramais previstos para maquinaria a funcionar. Fabricamos tudo na nossa oficina, pré-montamos o stand antes de o carregar e chegamos ao pavilhão para montar, não para improvisar.</p>
+        ${pasoPt('no Porto')}
+        ${tiposPt('no Porto')}
+        <h2>Construtor de stands no Porto: feiras do recinto</h2>
+        <p>Construímos para o calendário da Exponor e da área do Porto: <a href="/pt/ferias/stand-concreta-oporto">Concreta</a>, <a href="/pt/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/pt/ferias/stand-expocosmetica-oporto">Expocosmética</a>, <a href="/pt/ferias/stands-qualifica-oporto">Qualifica</a>, <a href="/pt/ferias/stand-emaf-oporto">Emaf</a>, <a href="/pt/ferias/stand-itf-intertex-oporto">ITF Intertex</a> e <a href="/pt/ferias/stands-tecnipao-oporto">Tecnipão</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_porto">stands para feiras no Porto</a>.</p>
+        ${porquePt('no Porto')}`
+  }
+};
+
+// Se cuelgan como builderSeoData[seccion].pt, igual que la capa inglesa.
+for (const [k, v] of Object.entries(PT)) {
+  if (builderSeoData[k]) builderSeoData[k].pt = v;
+}

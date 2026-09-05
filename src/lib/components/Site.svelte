@@ -1016,9 +1016,17 @@
     }
     // Camino hacia la página paralela de constructor de esa plaza (defensa ante
     // denuncias): un único enlace contextual, en español, al final del cuerpo.
-    const bp = sectionKey && lang === 'es' && !BRAND.leadGen ? builderPageForCity(sectionKey) : null;
+    // Solo se enlaza si la paralela EXISTE en ese idioma (routes[lang]): en portugués
+    // solo la hay para Oporto, y un enlace a una ruta inexistente acabaría en la
+    // portada.
+    const bpCandidate = sectionKey && !BRAND.leadGen ? builderPageForCity(sectionKey) : null;
+    const bp = bpCandidate && routes[lang]?.[bpCandidate] !== undefined ? bpCandidate : null;
     const bpLink = bp
-      ? `<p class="oro-builder-link">¿Buscas quién <a href="${pathFor('es', bp)}">construye stands en ${cityName}</a>? Fabricamos en taller propio, sin subcontratar.</p>`
+      ? (lang === 'pt'
+        ? `<p class="oro-builder-link">Procura quem <a href="${pathFor('pt', bp)}">constrói stands no Porto</a>? Fabricamos em oficina própria, sem subcontratar.</p>`
+        : (lang === 'es'
+          ? `<p class="oro-builder-link">¿Buscas quién <a href="${pathFor('es', bp)}">construye stands en ${cityName}</a>? Fabricamos en taller propio, sin subcontratar.</p>`
+          : ''))
       : '';
     return prefix + out.join('') + bpLink;
   }

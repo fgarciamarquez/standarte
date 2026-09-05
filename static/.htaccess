@@ -113,6 +113,10 @@ DirectorySlash Off
   # RewriteRule ^en/exhibition_stand_assembly_don_benito/?$ https://standarte.es/en/stand_builder_don_benito [R=301,L]
   # RewriteRule ^en/ferias/stands-figan-zaragoza/?$ https://standarte.es/en/ferias/stand-builder-figan [R=301,L]
   # RewriteRule ^en/ferias/stands-agroexpo/?$ https://standarte.es/en/ferias/stand-builder-agroexpo [R=301,L]
+  #
+  # Portugués: solo Oporto tiene paralela en pt (es la única plaza donde el comprador
+  # busca en su idioma).
+  # RewriteRule ^pt/design_montagem_stands_porto/?$ https://standarte.es/pt/construtor_stands_porto [R=301,L]
   # ───────────────────────────────────────────────────────────────────────────────
   RewriteRule ^construccion_stands_lisboa/?$ https://standarte.es/diseno_montaje_stands_lisboa [R=301,L]
   RewriteRule ^construccion_stands_malaga/?$ https://standarte.es/diseno_montaje_stands_malaga [R=301,L]

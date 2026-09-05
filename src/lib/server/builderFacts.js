@@ -28,6 +28,13 @@ const L = {
     workshop: 'Where it is built', service: 'What we do', lead: 'Recommended lead time', sheet: 'Event fact sheet', sheetCity: 'Location fact sheet',
     serviceValue: 'Design, engineering, in-house manufacturing, transport, installation and dismantling',
     leadValue: '6-8 weeks', tbc: 'To be confirmed', fairsUnit: (n) => `${n} ${n === 1 ? 'fair' : 'fairs'}`
+  },
+  pt: {
+    event: 'Evento', nextEdition: 'Próxima edição', cadence: 'Periodicidade', venue: 'Recinto',
+    city: 'Cidade', sector: 'Setor', activities: 'Atividades', fairsCovered: 'Feiras do recinto no nosso catálogo',
+    workshop: 'Onde se fabrica', service: 'O que fazemos', lead: 'Prazo recomendado', sheet: 'Ficha do evento', sheetCity: 'Ficha da cidade',
+    serviceValue: 'Design, engenharia, fabrico em oficina própria, transporte, montagem e desmontagem',
+    leadValue: '6-8 semanas', tbc: 'Por confirmar', fairsUnit: (n) => `${n} ${n === 1 ? 'feira' : 'feiras'}`
   }
 };
 
@@ -53,7 +60,9 @@ export function builderFacts(section, lang = 'es') {
     if (tags.length) rows.push({ k: t.activities, v: tags.join(', ') });
   } else {
     if (cfg.venue) rows.push({ k: t.venue, v: cfg.venue });
-    rows.push({ k: t.city, v: cfg.cityName });
+    // El nombre de la ciudad, escrito como lo escribe el lector (Oporto → Porto en
+    // inglés y en portugués). La clave del catálogo sigue siendo la española.
+    rows.push({ k: t.city, v: (cfg.cityNames && cfg.cityNames[lang]) || cfg.cityName });
     // Cuántas ferias de esa ciudad cubrimos: es un dato NUESTRO (el catálogo) y la
     // mejor prueba de cobertura real frente a un directorio.
     const n = fairsData.filter((f) => f.city === cfg.cityName).length;

@@ -44,15 +44,18 @@ const unescape = (s) => s
 // el CTA con las de ciudad, pero su expresión objetivo es OTRA y su patrón también.
 // Se validan con el mismo rigor, contra su propio prefijo.
 // 'en {ciudad}' para las de plaza, 'para {feria}' para las que defienden una ficha.
-const BUILDER_PREFIXES = ['Constructor de stands en', 'Constructor de stands para', 'Stand builder in', 'Stand builder for'];
+const BUILDER_PREFIXES = ['Constructor de stands en', 'Constructor de stands para', 'Stand builder in',
+  'Stand builder for', 'Construtor de stands no', 'Construtor de stands em'];
 
 // Rutas de las páginas paralelas, leídas de siteData.js: algunas viven BAJO /ferias/
 // (defensa de una ficha) y el recorrido de arriba no entra en esa carpeta, así que se
 // añaden a mano. Si mañana se crea otra, el guardián la cubre sin tocar nada.
 const siteDataSrc = readFileSync(path.join(root, 'src/lib/siteData.js'), 'utf8');
 const builderSlugs = [...siteDataSrc.matchAll(/^\s+(constructor_[a-z_]+):\s*'([^']+)'/gm)].map((m) => m[2]);
-// Las páginas paralelas viven en español y en inglés; las inglesas cuelgan de /en/.
-const builderRels = builderSlugs.flatMap((slug) => [slug, `en/${slug}`]);
+// Las páginas paralelas viven en español, en inglés y (Oporto) en portugués; las
+// traducidas cuelgan de /en/ y /pt/. Se prueban las tres formas para cada slug: la que
+// no exista simplemente no se encuentra en dist.
+const builderRels = builderSlugs.flatMap((slug) => [slug, `en/${slug}`, `pt/${slug}`]);
 // Ficheros que el adaptador puede generar para cada una: <ruta>.html o <ruta>/index.html.
 // Identificarlas por ruta conocida (y no por un patrón en el nombre) es lo que permite
 // que la versión inglesa —stand_builder_…— se valide con su propio prefijo en vez de

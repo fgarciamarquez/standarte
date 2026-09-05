@@ -21,6 +21,10 @@
 // 2026-08-28: retirada del botón "Actividades" del trío del hero en todas las páginas
 // de ciudad (ambas marcas). Cambio visible: se actualiza la fecha de las afectadas.
 //
+// 2026-09-05: la paralela de Oporto suma versión PORTUGUESA propia (no traducida) y
+// la página de ciudad de Oporto en pt gana el enlace contextual hacia ella. Cambio
+// visible en ambas: se actualiza su fecha.
+//
 // Clave = sección de `routes` (siteData.js). Valor = fecha ISO (YYYY-MM-DD).
 export const seoFreshness = {
   // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
@@ -29,7 +33,7 @@ export const seoFreshness = {
   constructor_stand_agroexpo: '2026-09-01',
   constructor_stand_madrid: '2026-08-31',
   constructor_stand_barcelona: '2026-08-31',
-  constructor_stand_oporto: '2026-08-31',
+  constructor_stand_oporto: '2026-09-05',   // + versión portuguesa
   constructor_stand_lisboa: '2026-08-31',
   constructor_stand_bilbao: '2026-08-31',
   constructor_stand_badajoz: '2026-08-31',
@@ -45,7 +49,7 @@ export const seoFreshness = {
   ciudad_real: '2026-08-28',
   trujillo: '2026-08-28',
   montaje_zafra: '2026-08-28',
-  oporto: '2026-08-31',
+  oporto: '2026-09-05',   // enlace a la paralela portuguesa
   vigo: '2026-08-28',
   portugal_sur: '2026-08-28',
   madrid: '2026-08-28',
