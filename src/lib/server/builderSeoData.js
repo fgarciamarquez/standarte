@@ -57,6 +57,13 @@ const tiposEn = (c) => `
           <li><strong>Furniture and display elements.</strong> Counters, cabinets, displays and hidden storage built for your product, not bought from a catalogue.</li>
         </ul>`;
 
+// Las páginas que defienden una FERIA cierran con «for {feria}», no «in {feria}»:
+// con el helper de ciudad decían "Stand builder in FIGAN", que en inglés no se sostiene.
+const porqueEnFair = (f) => `
+        <h2>Stand builder for ${f}: why build with Standarte</h2>
+        <p>We are builders, not middlemen: the stand is made in <strong>our own workshop</strong>, by our team and to our schedule. One person responsible from start to finish, a quote without a third party's margin, and the ability to solve a last-minute change without waiting for someone else's workshop. Every approval is recorded in the <a href="/en/audited-project">Audited Project System</a>: what you approve is, literally, what gets built.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand at ${f}</a></p>`;
+
 const porqueEn = (c) => `
         <h2>Stand builder in ${c}: why build with Standarte</h2>
         <p>We are builders, not middlemen: the stand is made in <strong>our own workshop</strong>, by our team and to our schedule. One person responsible from start to finish, a quote without a third party's margin, and the ability to solve a last-minute change without waiting for someone else's workshop. Every approval is recorded in the <a href="/en/audited-project">Audited Project System</a>: what you approve is, literally, what gets built.</p>
@@ -285,6 +292,48 @@ export const builderSeoData = {
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Agroexpo</a></p>`
     }
   }
+,
+
+  /* BIEMH (BEC, Bilbao): la mayor cita industrial del norte y la ficha más expuesta de
+   * Bilbao. La paralela se levanta ANTES de que haya denuncia —a diferencia de FIGAN y
+   * Agroexpo, que nacieron después— para tener la reserva ya posicionada si algún día
+   * cae. Se diferencia de la página de plaza (constructor_stand_bilbao): allí, el
+   * recinto y su calendario; aquí, lo que exige ESTA feria —máquina-herramienta en
+   * marcha, cargas, virutas y seguridad de máquina—. */
+  constructor_stand_biemh: {
+    es: {
+      breadcrumb: 'Constructor de stands para BIEMH',
+      title: 'Constructor de stands para BIEMH (Bilbao) | Taller propio | Standarte',
+      h1: 'Constructor de stands para BIEMH, Bilbao',
+      introText: 'Construimos stands a medida para BIEMH, la Bienal Española de la Máquina-Herramienta del BEC (Bilbao Exhibition Centre), desde nuestro propio taller: estructura, suelos técnicos, carpintería, mobiliario y gráfica fabricados por nuestro equipo, con la maquinaria expuesta en marcha y el stand terminado antes de la apertura.',
+      body: `
+        <h2>Constructor de stands para BIEMH: qué exige construir con máquina-herramienta en marcha</h2>
+        <p>En BIEMH no se enseña un catálogo: se enseña un centro de mecanizado cortando viruta. Eso cambia el orden de la construcción. Primero se resuelve lo que no se ve —reparto de cargas, refuerzos bajo bancada, paso de la potencia trifásica, aire comprimido y recogida de taladrina— y solo después se decide el acabado. Un stand proyectado al revés acaba con la máquina fuera de sitio o con una acometida imposible de legalizar.</p>
+        <p>El BEC juega a favor: sus pabellones son diáfanos, sin columnas, y admiten cargas muy altas, así que el límite real no suele ser el suelo sino la coordinación. Nosotros la asumimos entera: solicitud de acometidas al recinto, plan de coordinación de actividades empresariales, certificados de reacción al fuego de maderas y textiles, y la ventana de descarga para que tu máquina entre antes de que el pasillo se llene.</p>
+        <h2>Constructor de stands para BIEMH: cómo se construye tu stand, paso a paso</h2>
+        <ol>
+          <li><strong>Levantamiento del proyecto.</strong> Medidas reales del espacio contratado en el BEC, altura libre, accesos de descarga y peso, huella y consumo de cada máquina que vas a exponer.</li>
+          <li><strong>Ingeniería y prototipo 3D.</strong> Se calculan estructura, refuerzos y despiece, y se resuelven potencia, aire y evacuación; recibes un prototipo fotorrealista que es exactamente lo que se va a construir.</li>
+          <li><strong>Fabricación en taller propio.</strong> Carpintería a medida, mobiliario y gráfica producidos por nuestro equipo, con control de calidad pieza a pieza.</li>
+          <li><strong>Premontaje.</strong> El stand se arma entero en taller antes de salir: los ajustes se hacen aquí, no a contrarreloj en el pabellón.</li>
+          <li><strong>Transporte y montaje.</strong> Nuestros montadores y carpinteros levantan el stand y coordinan la entrada de la maquinaria con el recinto, con la prefabricación terminada 24&nbsp;h antes de la apertura.</li>
+          <li><strong>Desmontaje y almacenaje.</strong> Retiramos el stand al cierre y guardamos los elementos reutilizables para la siguiente convocatoria, que en BIEMH llega cada dos años.</li>
+        </ol>
+        <h2>Constructor de stands para BIEMH: qué construimos</h2>
+        <ul>
+          <li><strong>Stand para maquinaria en demostración.</strong> Suelo técnico calculado, refuerzos puntuales, canalizaciones ocultas y espacio de seguridad alrededor de la máquina para que trabaje con público delante.</li>
+          <li><strong>Stand isla de gran formato.</strong> Aprovechamiento de los pabellones diáfanos del BEC, con visibilidad desde los cuatro pasillos y recorrido interior ordenado.</li>
+          <li><strong>Stand de doble altura.</strong> Cálculo estructural, escalera y sala de reuniones arriba: metros de negociación sin gastar metros de exposición, que en una feria de máquina cara es la diferencia.</li>
+          <li><strong>Sala técnica y zona de datos.</strong> Espacio cerrado o semicerrado con control de ruido para hablar de tolerancias, ciclos y amortización sin competir con el zumbido del pabellón.</li>
+          <li><strong>Mobiliario y expositores propios.</strong> Mostradores, vitrinas de utillaje y soportes de pieza construidos para tu producto, más almacén oculto para embalaje y recambios.</li>
+        </ul>
+        <h2>Constructor de stands para BIEMH: y para el resto del BEC</h2>
+        <p>El mismo taller construye para todo el calendario del recinto: <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-bedigital-bilbao">BeDigital</a> e <a href="/ferias/stand-ferroforma-bilbao">Industry Tools by Ferroforma</a>, las citas que comparten plataforma en <a href="/ferias/stand-plus-industry-bilbao">+Industry</a>. Si lo que buscas es la ficha de la feria —fechas de la próxima edición, sectores y el servicio completo de diseño y montaje—, está en <a href="/ferias/stands-biemh-bilbao">stands para BIEMH</a>; y el servicio para la plaza, en <a href="/diseno-construccion-montaje-stand-bilbao">stands para ferias en Bilbao</a> y en <a href="/constructor_stand_bilbao">constructor de stands en Bilbao</a>.</p>
+        <h2>Constructor de stands para BIEMH: por qué construir con Standarte</h2>
+        <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un cambio de última hora sin depender de la agenda de otro taller. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en BIEMH</a></p>`
+    }
+  }
 };
 
 // ── Versiones en inglés ────────────────────────────────────────────────────────────
@@ -424,7 +473,7 @@ const EN = {
         </ol>
         <h2>Stand builder for FIGAN: and for the rest of Feria de Zaragoza</h2>
         <p>The same workshop builds for the whole venue calendar: <a href="/en/ferias/stand-fima-zaragoza">FIMA</a>, <a href="/en/ferias/stand-smopyc-zaragoza">SMOPYC</a> and <a href="/en/ferias/stand-smagua-zaragoza">SMAGUA</a>. The event page — dates, sectors and the full design-and-build service — is at <a href="/en/ferias/stands-figan-zaragoza">stands for FIGAN</a>, and the city service at <a href="/en/stand_builder_zaragoza">stand builder in Zaragoza</a>.</p>
-        ${porqueEn('FIGAN')}`
+        ${porqueEnFair('FIGAN')}`
   },
   constructor_stand_agroexpo: {
     breadcrumb: 'Stand builder for Agroexpo',
@@ -445,7 +494,28 @@ const EN = {
         </ol>
         <h2>Stand builder for Agroexpo: and for the rest of FEVAL and Extremadura</h2>
         <p>The same workshop builds for the rest of the <a href="/en/ferias/stands-agroexpo-feval-don-benito">FEVAL</a> calendar and across Extremadura: <a href="/en/exhibition_stand_assembly_don_benito">Don Benito</a>, <a href="/en/stand_design_assembly_badajoz">Badajoz</a> and <a href="/en/exhibition_stand_assembly_zafra">Zafra</a>. The event page is at <a href="/en/ferias/stands-agroexpo">stands for Agroexpo</a>, and the town service at <a href="/en/stand_builder_don_benito">stand builder in Don Benito</a>.</p>
-        ${porqueEn('Agroexpo')}`
+        ${porqueEnFair('Agroexpo')}`
+  },
+  constructor_stand_biemh: {
+    breadcrumb: 'Stand builder for BIEMH',
+    title: 'Stand builder for BIEMH (Bilbao) | Own workshop | Standarte',
+    h1: 'Stand builder for BIEMH, Bilbao',
+    introText: 'We build custom stands for BIEMH, the Spanish Machine Tool Biennial at the BEC (Bilbao Exhibition Centre), from our own workshop: structure, technical floors, joinery, furniture and graphics made by our team, with your machinery running and the stand finished before opening.',
+    body: `
+        <h2>Stand builder for BIEMH: what building around live machine tools demands</h2>
+        <p>At BIEMH nobody shows a catalogue: they show a machining centre cutting metal. That reverses the order of the build. First comes what nobody sees — floor loading, reinforcement under the bed, three-phase power, compressed air and coolant handling — and only then the finish. A stand designed the other way round ends up with the machine in the wrong place or a supply that cannot be signed off.</p>
+        <p>The BEC helps: its halls are column-free and take very high floor loads, so the real constraint is usually coordination, not the slab. We take that on in full: service requests to the venue, the works-coordination plan, fire-reaction certificates for timber and textiles, and the unloading slot that gets your machine in before the aisle fills up.</p>
+        <h2>Stand builder for BIEMH: how your stand is built</h2>
+        <ol>
+          <li><strong>Survey.</strong> Real measurements at the BEC, clear height, unloading access, and the weight, footprint and power draw of every machine you will exhibit.</li>
+          <li><strong>Engineering and 3D prototype.</strong> Structure, reinforcement, power, air and extraction resolved before anything is cut; you get a photorealistic prototype of what will actually be built.</li>
+          <li><strong>Manufacturing and pre-assembly in our workshop.</strong> The stand is put together before it ships: adjustments happen there, not against the clock in the hall.</li>
+          <li><strong>Transport and installation.</strong> Our own fitters build it and coordinate the entry of your machinery with the venue, finished 24&nbsp;h before opening.</li>
+          <li><strong>Dismantling and storage.</strong> We keep the reusable parts for the next edition — BIEMH is biennial, and reusing beats starting over.</li>
+        </ol>
+        <h2>Stand builder for BIEMH: and for the rest of the BEC</h2>
+        <p>The same workshop builds across the venue calendar: <a href="/en/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/en/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/en/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/en/ferias/stands-maintenance-bilbao">Maintenance</a> and <a href="/en/ferias/stand-bedigital-bilbao">BeDigital</a>, the shows that share the <a href="/en/ferias/stand-plus-industry-bilbao">+Industry</a> platform. The event page — dates, sectors and the full design-and-build service — is at <a href="/en/ferias/stands-biemh-bilbao">stands for BIEMH</a>, and the city service at <a href="/en/stand_builder_bilbao">stand builder in Bilbao</a>.</p>
+        ${porqueEnFair('BIEMH')}`
   }
 };
 

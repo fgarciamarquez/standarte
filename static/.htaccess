@@ -100,6 +100,8 @@ DirectorySlash Off
   # a plural, no ha recuperado posición; su paralela vive bajo /ferias/.
   # RewriteRule ^ferias/stands-figan-zaragoza/?$ https://standarte.es/ferias/constructor-stand-figan [R=301,L]
   # RewriteRule ^ferias/stands-agroexpo/?$ https://standarte.es/ferias/constructor-stand-agroexpo [R=301,L]
+  # BIEMH: la paralela existe como reserva; aún no ha habido denuncia sobre su ficha.
+  # RewriteRule ^ferias/stands-biemh-bilbao/?$ https://standarte.es/ferias/constructor-stand-biemh [R=301,L]
   #
   # Mismas reglas para la versión INGLESA de cada página (las paralelas existen ya en
   # es/en): si la denuncia afecta a la URL inglesa, se descomenta la suya.
@@ -113,6 +115,7 @@ DirectorySlash Off
   # RewriteRule ^en/exhibition_stand_assembly_don_benito/?$ https://standarte.es/en/stand_builder_don_benito [R=301,L]
   # RewriteRule ^en/ferias/stands-figan-zaragoza/?$ https://standarte.es/en/ferias/stand-builder-figan [R=301,L]
   # RewriteRule ^en/ferias/stands-agroexpo/?$ https://standarte.es/en/ferias/stand-builder-agroexpo [R=301,L]
+  # RewriteRule ^en/ferias/stands-biemh-bilbao/?$ https://standarte.es/en/ferias/stand-builder-biemh [R=301,L]
   #
   # Portugués: solo Oporto tiene paralela en pt (es la única plaza donde el comprador
   # busca en su idioma).

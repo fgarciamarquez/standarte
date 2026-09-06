@@ -13,6 +13,7 @@ import { builderPages } from '$lib/builderPages.js';
 import { fairsData } from '$lib/fairsData.js';
 import { formatFairDates, fairDates, cadenceLabels } from '$lib/fairDates.js';
 import { activitiesForFair, labelForTag } from '$lib/fairTags.js';
+import { sectorLabel } from '$lib/fairSectors.js';
 
 const L = {
   es: {
@@ -56,7 +57,7 @@ export function builderFacts(section, lang = 'es') {
     if (cad && cadenceLabels[cad]) rows.push({ k: t.cadence, v: cadenceLabels[cad][lang] || cadenceLabels[cad].es });
     if (cfg.venue) rows.push({ k: t.venue, v: cfg.venue });
     rows.push({ k: t.city, v: fair.city || cfg.cityName });
-    if (fair.sector) rows.push({ k: t.sector, v: fair.sector });
+    if (fair.sector) rows.push({ k: t.sector, v: sectorLabel(fair.sector, lang) });
     if (tags.length) rows.push({ k: t.activities, v: tags.join(', ') });
   } else {
     if (cfg.venue) rows.push({ k: t.venue, v: cfg.venue });

@@ -38,7 +38,11 @@ export const builderPages = {
   // defiende (enlace cruzado y 301 de emergencia preparada en static/.htaccess).
   constructor_stand_figan: { fair: 'stands-figan-zaragoza', fairName: 'FIGAN', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
   // Agroexpo: la otra ficha denunciada (pasó a stands-agroexpo por el mismo motivo).
-  constructor_stand_agroexpo: { fair: 'stands-agroexpo', fairName: 'Agroexpo', cityName: 'Don Benito', venue: 'FEVAL (Don Benito)', workshop: { es: 'Cáceres, a menos de 1 h del recinto', en: 'Cáceres, under 1 h from the venue' }, indexable: true }
+  constructor_stand_agroexpo: { fair: 'stands-agroexpo', fairName: 'Agroexpo', cityName: 'Don Benito', venue: 'FEVAL (Don Benito)', workshop: { es: 'Cáceres, a menos de 1 h del recinto', en: 'Cáceres, under 1 h from the venue' }, indexable: true },
+  // BIEMH: la mayor feria industrial del norte y la ficha más disputada de Bilbao.
+  // Aquí no hay denuncia previa: la paralela se levanta ANTES, como reserva ya
+  // posicionada por si la ficha cae, y ataca «constructor de stands para BIEMH».
+  constructor_stand_biemh: { fair: 'stands-biemh-bilbao', fairName: 'BIEMH', cityName: 'Bilbao', venue: 'BEC — Bilbao Exhibition Centre', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true }
 };
 
 export const isBuilderPage = (section) => Object.prototype.hasOwnProperty.call(builderPages, section);

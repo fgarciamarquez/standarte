@@ -102,6 +102,7 @@ export const routes = {
     // resuelve antes que el detalle de feria porque comparten prefijo).
     constructor_stand_figan: 'ferias/constructor-stand-figan',
     constructor_stand_agroexpo: 'ferias/constructor-stand-agroexpo',
+    constructor_stand_biemh: 'ferias/constructor-stand-biemh',
     montaje_zafra: 'montaje_stand_zafra',
     montaje_don_benito: 'montaje_stand_don_benito',
     montaje_badajoz: 'montaje_stand_badajoz',
@@ -192,6 +193,7 @@ export const routes = {
     constructor_stand_don_benito: 'stand_builder_don_benito',
     constructor_stand_figan: 'ferias/stand-builder-figan',
     constructor_stand_agroexpo: 'ferias/stand-builder-agroexpo',
+    constructor_stand_biemh: 'ferias/stand-builder-biemh',
     montaje_zafra: 'exhibition_stand_assembly_zafra',
     montaje_don_benito: 'exhibition_stand_assembly_don_benito',
     montaje_badajoz: 'exhibition_stand_assembly_badajoz',
@@ -2977,7 +2979,7 @@ export const SQ_REMOVED_SECTIONS = new Set([
   'constructor_stand_madrid', 'constructor_stand_barcelona',
   'constructor_stand_zaragoza', 'constructor_stand_oporto', 'constructor_stand_lisboa',
   'constructor_stand_bilbao', 'constructor_stand_badajoz', 'constructor_stand_don_benito',
-  'constructor_stand_figan', 'constructor_stand_agroexpo'
+  'constructor_stand_figan', 'constructor_stand_agroexpo', 'constructor_stand_biemh'
 ]);
 
 export const prerenderEntries = languages.flatMap((lang) => {
