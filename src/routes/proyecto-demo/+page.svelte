@@ -7,8 +7,9 @@
   // el backend real (Supabase + emails + panel interno) se cablea después.
   // ─────────────────────────────────────────────────────────────────────────
   import { onMount } from 'svelte';
+  import { preferredProjectLang } from '$lib/clientProject.js';
 
-  let lang = 'es';                 // 'es' | 'en'
+  let lang = 'es';                 // 'es' | 'en' — se ajusta al idioma del visitante en onMount
   let role = 'client';             // 'client' | 'internal'  (toggle solo de demo)
   let sent = null;                 // mensaje de confirmación tras "Enviar"
   let lightbox = null;             // media ampliado en ventana flotante, o null
@@ -111,6 +112,7 @@
   const KEY = 'proyecto-demo-comments';
 
   onMount(() => {
+    lang = preferredProjectLang();   // el piloto se ve en el idioma de quien lo abre
     try { comments = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { comments = {}; }
     const savedRole = localStorage.getItem('proyecto-demo-role');
     if (savedRole) role = savedRole;

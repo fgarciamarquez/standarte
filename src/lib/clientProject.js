@@ -19,6 +19,34 @@ async function rpc(fn, body) {
   return res.json();
 }
 
+/* ─── Idioma con el que se abre un proyecto ────────────────────────────────
+ * El expediente existe en español e inglés, y el cliente no debería tener que
+ * buscar el conmutador: se abre en el idioma de SU ordenador. Como solo hay dos
+ * versiones, un navegador en español —o en catalán, gallego o euskera, que son
+ * de aquí— abre en español, y cualquier otro en inglés, que es lo que entiende
+ * el resto de nuestros clientes mejor que el castellano. */
+export function preferredProjectLang() {
+  const list = (typeof navigator === 'undefined')
+    ? []
+    : (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']);
+  for (const raw of list) {
+    const tag = String(raw || '').toLowerCase();
+    if (/^(es|ca|gl|eu)\b/.test(tag)) return 'es';
+    if (/^[a-z]{2}/.test(tag)) return 'en';
+  }
+  return 'es';
+}
+
+/* El idioma preferido, pero solo si ESE proyecto está escrito en él: hay
+ * expedientes rellenados solo en español, y abrirlos en inglés dejaba el título
+ * y la memoria en blanco. Si la versión preferida está vacía, se usa la otra. */
+export function projectLangFor(data, preferred = preferredProjectLang()) {
+  const written = (l) => !!String((data && data.title && data.title[l]) || '').trim();
+  if (written(preferred)) return preferred;
+  const other = preferred === 'es' ? 'en' : 'es';
+  return written(other) ? other : preferred;
+}
+
 /** Devuelve el proyecto completo (o null si el token no existe). */
 export async function fetchProject(token) {
   return rpc('get_client_project', { p_token: token });

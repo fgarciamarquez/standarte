@@ -1,14 +1,15 @@
 <script>
   import { onMount } from 'svelte';
   import ProjectPresentation from '$lib/components/ProjectPresentation.svelte';
-  import { fetchProject, addComment, notifySend, adminWhoami, adminLogin, adminLogout, visitPing } from '$lib/clientProject.js';
+  import { fetchProject, addComment, notifySend, adminWhoami, adminLogin, adminLogout, visitPing, preferredProjectLang, projectLangFor } from '$lib/clientProject.js';
 
   let project = null;
   let status = 'loading';   // loading | ok | notfound | error
-  /* Idioma de ESTA página (estados de carga y acceso interno). Arranca por el del
-   * navegador —antes de cargar el proyecto no hay nada más de lo que fiarse— y luego
-   * queda enlazado al conmutador ES/EN del propio proyecto (bind:lang), para que no
-   * convivan dos idiomas en la misma pantalla. */
+  /* Idioma de la pantalla: el del ordenador del cliente (ver preferredProjectLang).
+   * Se fija antes de cargar —para los estados de carga— y se reajusta al llegar el
+   * proyecto, por si esa versión suya no está escrita. Va enlazado al conmutador
+   * ES/EN del propio proyecto (bind:lang), así que si el cliente lo cambia a mano
+   * manda su elección y no se vuelve a tocar. */
   let lang = 'es';
   const T = {
     es: { title: 'Proyecto · Standarte', loading: 'Cargando proyecto…', notFound: 'Proyecto no encontrado',
@@ -32,8 +33,7 @@
   let loginErr = '';
 
   onMount(async () => {
-    // Idioma de partida: el del navegador (el proyecto puede cambiarlo después).
-    if (/^en\b/i.test(navigator.language || '')) lang = 'en';
+    lang = preferredProjectLang();
     const params = new URLSearchParams(window.location.search);
     token = (params.get('t') || '').trim();
     if (!/^[a-f0-9]{20,64}$/.test(token)) { status = 'notfound'; return; }
@@ -41,6 +41,7 @@
     try {
       const data = await fetchProject(token);
       if (!data) { status = 'notfound'; return; }
+      lang = projectLangFor(data, lang);
       project = data; status = 'ok';
     } catch (e) { status = 'error'; return; }
     // Detectar sesión de admin aparte, sin bloquear el render (en dev el PHP no
