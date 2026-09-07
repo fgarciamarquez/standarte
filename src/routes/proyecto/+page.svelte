@@ -5,6 +5,22 @@
 
   let project = null;
   let status = 'loading';   // loading | ok | notfound | error
+  /* Idioma de ESTA página (estados de carga y acceso interno). Arranca por el del
+   * navegador —antes de cargar el proyecto no hay nada más de lo que fiarse— y luego
+   * queda enlazado al conmutador ES/EN del propio proyecto (bind:lang), para que no
+   * convivan dos idiomas en la misma pantalla. */
+  let lang = 'es';
+  const T = {
+    es: { title: 'Proyecto · Standarte', loading: 'Cargando proyecto…', notFound: 'Proyecto no encontrado',
+      notFoundNote: 'El enlace no es válido o ha caducado. Comprueba el enlace del correo o contacta con nosotros.',
+      failed: 'No se pudo cargar el proyecto', failedNote: 'Ha ocurrido un error. Inténtalo de nuevo en unos minutos.',
+      access: '· acceso interno', password: 'Contraseña', enter: 'Entrar', badPassword: 'Contraseña incorrecta', exit: 'salir de edición ✕' },
+    en: { title: 'Project · Standarte', loading: 'Loading project…', notFound: 'Project not found',
+      notFoundNote: 'This link is not valid or has expired. Check the link in your email or contact us.',
+      failed: 'The project could not be loaded', failedNote: 'Something went wrong. Please try again in a few minutes.',
+      access: '· internal access', password: 'Password', enter: 'Log in', badPassword: 'Wrong password', exit: 'exit edit mode ✕' }
+  };
+  $: L = T[lang] || T.es;
   let token = '';
   let busy = false;
   let sent = false;
@@ -16,6 +32,8 @@
   let loginErr = '';
 
   onMount(async () => {
+    // Idioma de partida: el del navegador (el proyecto puede cambiarlo después).
+    if (/^en\b/i.test(navigator.language || '')) lang = 'en';
     const params = new URLSearchParams(window.location.search);
     token = (params.get('t') || '').trim();
     if (!/^[a-f0-9]{20,64}$/.test(token)) { status = 'notfound'; return; }
@@ -53,13 +71,13 @@
   async function doLogin() {
     loginErr = '';
     const r = await adminLogin(pw);
-    if (r && r.ok) { admin = true; showLogin = false; pw = ''; } else { loginErr = 'Contraseña incorrecta'; }
+    if (r && r.ok) { admin = true; showLogin = false; pw = ''; } else { loginErr = L.badPassword; }
   }
   async function doLogout() { await adminLogout(); admin = false; }
 </script>
 
 <svelte:head>
-  <title>Proyecto · Standarte</title>
+  <title>{L.title}</title>
   <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
@@ -67,33 +85,33 @@
 {#if status === 'ok' && !admin}
   <div class="pz-access">
     {#if !showLogin}
-      <button class="pz-access-link" on:click={() => showLogin = true}>· acceso interno</button>
+      <button class="pz-access-link" on:click={() => showLogin = true}>{L.access}</button>
     {:else}
       <form class="pz-access-form" on:submit|preventDefault={doLogin}>
-        <input type="password" bind:value={pw} placeholder="Contraseña" autofocus />
-        <button type="submit">Entrar</button>
+        <input type="password" bind:value={pw} placeholder={L.password} autofocus />
+        <button type="submit">{L.enter}</button>
         {#if loginErr}<span class="pz-access-err">{loginErr}</span>{/if}
       </form>
     {/if}
   </div>
 {:else if admin}
-  <div class="pz-access pz-access-out"><button class="pz-access-link" on:click={doLogout}>salir de edición ✕</button></div>
+  <div class="pz-access pz-access-out"><button class="pz-access-link" on:click={doLogout}>{L.exit}</button></div>
 {/if}
 
 {#if status === 'ok' && project}
-  <ProjectPresentation data={project} role="client" {busy} {sent} {admin} {token} reload={reloadProject}
+  <ProjectPresentation data={project} role="client" bind:lang {busy} {sent} {admin} {token} reload={reloadProject}
     on:comment={handleComment} on:send={handleSend}
     on:expired={() => { admin = false; showLogin = true; }} />
 {:else}
   <div class="pz-state">
     {#if status === 'loading'}
-      <p>Cargando proyecto…</p>
+      <p>{L.loading}</p>
     {:else if status === 'notfound'}
-      <h1>Proyecto no encontrado</h1>
-      <p>El enlace no es válido o ha caducado. Comprueba el enlace del correo o contacta con nosotros.</p>
+      <h1>{L.notFound}</h1>
+      <p>{L.notFoundNote}</p>
     {:else}
-      <h1>No se pudo cargar el proyecto</h1>
-      <p>Ha ocurrido un error. Inténtalo de nuevo en unos minutos.</p>
+      <h1>{L.failed}</h1>
+      <p>{L.failedNote}</p>
     {/if}
   </div>
 {/if}

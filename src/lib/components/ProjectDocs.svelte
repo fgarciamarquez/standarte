@@ -20,14 +20,14 @@
 
   // Etiqueta de estado junto al documento. Latente (a la espera) en verde, con botón
   // de reenvío por si el cliente perdió el correo; pasivo (resuelto) en gris.
-  function docState(d) {
+  $: docState = (d) => {
     const st = states && states[d.kind];
     if (!st || st === 'pendiente') return null;
     const isContract = d.kind === 'contrato';
     if (st === 'emitido') return { cls: 'pz-tag-live', text: isContract ? L.stContractWait : L.stInvoiceWait, live: true };
     if (st === 'cursado') return { cls: 'pz-tag-done', text: isContract ? L.stContractDone : L.stInvoiceDone, live: false };
     return null;
-  }
+  };
 
   let resent = {};   // id → email al que se reenvió (para el aviso en línea)
   let resendErr = '';
@@ -45,7 +45,9 @@
   let busy = false;
   let msg = '';
 
-  const kindLabel = (k) => ({ contrato: L.docContract, factura_anticipo: L.docAdvance, factura_final: L.docFinal }[k] || L.docOther);
+  // Reactivas a propósito: como funciones `const`, Svelte no veía que dependen de L
+  // (ni docState de `states`) y el bloque entero se quedaba en español al pulsar EN.
+  $: kindLabel = (k) => ({ contrato: L.docContract, factura_anticipo: L.docAdvance, factura_final: L.docFinal }[k] || L.docOther);
   const size = (n) => (n > 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`);
 
   async function upload(e) {
