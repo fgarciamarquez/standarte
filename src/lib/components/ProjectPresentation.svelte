@@ -390,27 +390,39 @@
       if (discQueued) { discQueued = false; saveDiscount(); }
     }
   }
+  /* Toda acción de edición pasa por aquí. Si el servidor la rechaza —lo normal es la
+   * sesión caducada— hay que DECIRLO y volver a pedir la contraseña: hasta ahora,
+   * añadir un concepto o enlazar un vídeo con la sesión vencida no hacía nada y no
+   * explicaba nada, así que parecía que el botón estaba roto. */
+  function adminOk(r, errMsg) {
+    if (r && r.ok) return true;
+    if (r && r.error === 'unauthorized') { adminMsg = L.sessionExpired; dispatch('expired'); }
+    else adminMsg = errMsg || L.errGeneric;
+    return false;
+  }
   async function saveMediaDesc(m) {
     const f = { media_id: m.id };
     f['description_' + lang] = (m.description && m.description[lang]) || '';
-    await adminAction(token, 'edit_media', f);
+    adminOk(await adminAction(token, 'edit_media', f));
   }
   async function editBudget(item) {
     const f = { item_id: item.id, amount: item.amount };
     f['concept_' + lang] = item.concept[lang];
-    await adminAction(token, 'edit_budget', f);
+    adminOk(await adminAction(token, 'edit_budget', f));
     await reload();
   }
   let nb = { concept: '', amount: '' };
   async function addBudget() {
     if (!nb.concept && !nb.amount) return;
+    adminMsg = '';
     const f = { amount: nb.amount || '0' }; f['concept_' + lang] = nb.concept;
-    await adminAction(token, 'add_budget', f);
-    nb = { concept: '', amount: '' };
+    // Lo tecleado solo se borra si el concepto ha entrado de verdad: si falla, sigue
+    // ahí para reintentarlo sin volver a escribirlo.
+    if (adminOk(await adminAction(token, 'add_budget', f))) nb = { concept: '', amount: '' };
     await reload();
   }
-  async function delBudget(id) { await adminAction(token, 'del_budget', { item_id: id }); await reload(); }
-  async function delMedia(id) { await adminAction(token, 'del_media', { media_id: id }); await reload(); }
+  async function delBudget(id) { adminOk(await adminAction(token, 'del_budget', { item_id: id })); await reload(); }
+  async function delMedia(id) { adminOk(await adminAction(token, 'del_media', { media_id: id })); await reload(); }
 
   // Reordenar archivos con las flechas ↑/↓. Se intercambia en local al instante
   // (respuesta inmediata) y se manda al servidor la lista COMPLETA de ids en su
@@ -466,8 +478,10 @@
     if (!nl.url.trim()) return;
     uploading = true; adminMsg = '';
     const r = await adminAction(token, 'add_media_link', { url: nl.url.trim(), type: nl.type, title: nl.title.trim() });
-    if (r && r.ok) { nl = { url: '', type: 'image', title: '' }; await reload(); }
-    else adminMsg = r && r.error === 'bad_drive_url' ? L.errDriveUrl : L.errDriveLink;
+    if (adminOk(r, r && r.error === 'bad_drive_url' ? L.errDriveUrl : L.errDriveLink)) {
+      nl = { url: '', type: 'image', title: '' };
+      await reload();
+    }
     uploading = false;
   }
   async function notifyClient() {

@@ -15,11 +15,11 @@
     es: { title: 'Proyecto · Standarte', loading: 'Cargando proyecto…', notFound: 'Proyecto no encontrado',
       notFoundNote: 'El enlace no es válido o ha caducado. Comprueba el enlace del correo o contacta con nosotros.',
       failed: 'No se pudo cargar el proyecto', failedNote: 'Ha ocurrido un error. Inténtalo de nuevo en unos minutos.',
-      access: '· acceso interno', password: 'Contraseña', enter: 'Entrar', badPassword: 'Contraseña incorrecta', exit: 'salir de edición ✕' },
+      access: '· acceso interno', password: 'Contraseña', enter: 'Entrar', badPassword: 'Contraseña incorrecta', expired: 'Sesión caducada: vuelve a entrar y repite el último cambio.', exit: 'salir de edición ✕' },
     en: { title: 'Project · Standarte', loading: 'Loading project…', notFound: 'Project not found',
       notFoundNote: 'This link is not valid or has expired. Check the link in your email or contact us.',
       failed: 'The project could not be loaded', failedNote: 'Something went wrong. Please try again in a few minutes.',
-      access: '· internal access', password: 'Password', enter: 'Log in', badPassword: 'Wrong password', exit: 'exit edit mode ✕' }
+      access: '· internal access', password: 'Password', enter: 'Log in', badPassword: 'Wrong password', expired: 'Session expired: log in again and repeat your last change.', exit: 'exit edit mode ✕' }
   };
   $: L = T[lang] || T.es;
   let token = '';
@@ -102,7 +102,10 @@
 {#if status === 'ok' && project}
   <ProjectPresentation data={project} role="client" bind:lang {busy} {sent} {admin} {token} reload={reloadProject}
     on:comment={handleComment} on:send={handleSend}
-    on:expired={() => { admin = false; showLogin = true; }} />
+    on:expired={() => { admin = false; showLogin = true; loginErr = L.expired; }} />
+  <!-- Al caducar la sesión el modo edición desaparece y con él su barra de avisos:
+       el motivo se repite aquí, junto al cuadro de contraseña, o el cambio parecería
+       haberse perdido sin explicación. -->
 {:else}
   <div class="pz-state">
     {#if status === 'loading'}

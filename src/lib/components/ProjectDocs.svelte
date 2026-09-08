@@ -79,8 +79,12 @@
   }
 
   async function del(id) {
-    busy = true;
-    try { await adminAction(token, 'del_doc', { doc_id: id }); await reload(); } finally { busy = false; }
+    busy = true; msg = '';
+    try {
+      const r = await adminAction(token, 'del_doc', { doc_id: id });
+      if (!r || !r.ok) msg = errorText(r);
+      await reload();
+    } finally { busy = false; }
   }
 </script>
 

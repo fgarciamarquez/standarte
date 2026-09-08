@@ -5,6 +5,13 @@
  * sucede en su propia página pública (/proyecto?t=...): al iniciar sesión ahí
  * (misma contraseña/sesión), la página se vuelve editable in situ.
  */
+/* La sesión de edición dura una jornada. Hay que declararlo en TODAS las páginas que
+ * comparten la sesión: el recolector de PHP borra las sesiones más viejas que el
+ * gc_maxlifetime del script que lo dispara, y con el valor por defecto (~24 min) una
+ * de estas páginas podía barrer la sesión con la que se estaba editando un proyecto
+ * —y entonces guardar, añadir un concepto o enlazar un vídeo dejaba de funcionar—. */
+ini_set('session.gc_maxlifetime', '43200');
+session_set_cookie_params(43200);
 session_start();
 require_once __DIR__ . '/../supabase-config.php';
 require_once __DIR__ . '/client_projects_lib.php';
