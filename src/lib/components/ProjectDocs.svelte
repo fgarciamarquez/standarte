@@ -17,6 +17,10 @@
   // invoice_state / invoice2_state), indexado por `kind`. Lo cambia el equipo desde el
   // panel: «Emitido» = enviado y a la espera; «Cursado» = firmado devuelto o cobrado.
   export let states = {};
+  // Sello «Pagado» del proyecto (client_projects.paid). Manda sobre el estado de las
+  // facturas: un proyecto cobrado no puede enseñar «pendiente de la recepción de
+  // transferencia» junto a la suya.
+  export let paid = false;
 
   // Etiqueta de estado junto al documento. Latente (a la espera) en verde, con botón
   // de reenvío por si el cliente perdió el correo; pasivo (resuelto) en gris.
@@ -24,6 +28,7 @@
     const st = states && states[d.kind];
     if (!st || st === 'pendiente') return null;
     const isContract = d.kind === 'contrato';
+    if (!isContract && paid) return { cls: 'pz-tag-done', text: L.stInvoiceDone, live: false };
     if (st === 'emitido') return { cls: 'pz-tag-live', text: isContract ? L.stContractWait : L.stInvoiceWait, live: true };
     if (st === 'cursado') return { cls: 'pz-tag-done', text: isContract ? L.stContractDone : L.stInvoiceDone, live: false };
     return null;

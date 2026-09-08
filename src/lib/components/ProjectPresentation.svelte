@@ -785,7 +785,7 @@
           {/if}
           <!-- Aquí es donde el equipo sube el contrato y las facturas: esta rama es la
                única que se pinta en modo edición. -->
-          <ProjectDocs {docs} {states} {admin} {token} {L} {reload} />
+          <ProjectDocs {docs} {states} paid={!!data.paid} {admin} {token} {L} {reload} />
         </div>
       {/if}
     {:else if approved}
@@ -813,7 +813,7 @@
           {#if billingMsg}<span class="pz-billing-msg">{billingMsg}</span>{/if}
         </div>
 
-        <ProjectDocs {docs} {states} {admin} {token} {L} {reload} />
+        <ProjectDocs {docs} {states} paid={!!data.paid} {admin} {token} {L} {reload} />
 
         <p class="pz-thanks">{L.thanks}</p>
       </div>

@@ -62,6 +62,18 @@ if ($action === 'save') {
 		if (isset($_POST[$k])) $fields[$k] = cpx_lines_to_array($_POST[$k]);
 	}
 	if (isset($_POST['paid'])) $fields['paid'] = in_array(pa_post('paid'), array('1', 'true'), true);
+	/* «Pagado» es el estado del PROYECTO, y el panel lleva aparte el de cada factura.
+	 * Al marcarlo, las facturas ya EMITIDAS pasan a «Cursado»: si no, el panel seguía
+	 * diciendo «Emitido» y el cliente veía «pendiente de la recepción de transferencia»
+	 * en un proyecto cobrado. Lo que aún no se ha facturado sigue pendiente, y
+	 * desmarcar «Pagado» no deshace un cobro ya anotado. */
+	if (!empty($fields['paid'])) {
+		$stRows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=invoice_state,invoice2_state&limit=1');
+		if (!empty($stRows[0])) {
+			if (isset($stRows[0]['invoice_state']) && $stRows[0]['invoice_state'] === 'emitido') { $fields['invoice_state'] = 'cursado'; $fields['invoice_done'] = true; }
+			if (isset($stRows[0]['invoice2_state']) && $stRows[0]['invoice2_state'] === 'emitido') { $fields['invoice2_state'] = 'cursado'; $fields['invoice2_done'] = true; }
+		}
+	}
 	// Paralización del proyecto con motivo en texto libre
 	if (isset($_POST['paused'])) $fields['paused'] = in_array(pa_post('paused'), array('1', 'true'), true);
 	if (isset($_POST['paused_reason'])) $fields['paused_reason'] = pa_post('paused_reason');
