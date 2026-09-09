@@ -366,8 +366,9 @@ function cpx_contract_issue($projectId, $opts = array()) {
 
 	/* Requisitos: sin ellos el contrato saldría incompleto o no podría enviarse. */
 	if (empty($p['approved'])) $errors[] = 'el proyecto no está aprobado por el cliente';
-	$email = isset($p['client_email']) ? trim($p['client_email']) : '';
-	if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'falta un email de cliente válido';
+	$emails = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+	$email = $emails ? implode(', ', $emails) : '';
+	if (!$emails) $errors[] = 'falta un email de cliente válido';
 	$client = trim((string) (!empty($p['billing_company']) ? $p['billing_company'] : $p['client_name']));
 	if ($client === '') $errors[] = 'falta la razón social (o el nombre del cliente)';
 	$fair = !empty($p['fair_slug']) ? cpx_fair_info($p['fair_slug']) : null;
@@ -460,8 +461,11 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	try {
 		require_once __DIR__ . '/email_campaing/mailer.php';
 		$cfg = require __DIR__ . '/email_campaing/config.php';
-		$sent = campaign_send_smtp($cfg, $email, $subject, $html, $att);
-		if (strcasecmp(CPX_ADMIN_MAIL, $email) !== 0) {
+		// Un envío por destinatario (el cliente puede tener varias direcciones anotadas).
+		$sent = cpx_send_each($cfg, $emails, $subject, $html, $att);
+		$yaVa = false;
+		foreach ($emails as $e) { if (strcasecmp(CPX_ADMIN_MAIL, $e) === 0) $yaVa = true; }
+		if (!$yaVa) {
 			try { campaign_send_smtp($cfg, CPX_ADMIN_MAIL, '[Copia] ' . $subject, $html, $att); } catch (Exception $e) {}
 		}
 	} catch (Exception $e) { $sent = false; }

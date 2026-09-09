@@ -331,8 +331,8 @@ if (!function_exists('cpx_key')) {
 	 */
 	function cpx_project_dates_email($p, $offerDeadline = null, $validUntil = null) {
 		if (!$offerDeadline && !$validUntil) return false;
-		$to = isset($p['client_email']) ? trim($p['client_email']) : '';
-		if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) return false;
+		$to = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+		if (!$to) return false;
 
 		$ref     = isset($p['ref']) ? $p['ref'] : '';
 		$titleEs = !empty($p['title_es']) ? $p['title_es'] : $ref;
@@ -408,12 +408,12 @@ if (!function_exists('cpx_key')) {
 		$sent = false;
 		try {
 			$cfg = require __DIR__ . '/email_campaing/config.php';
-			$sent = campaign_send_smtp($cfg, $to, $subject, $html);
+			$sent = cpx_send_each($cfg, $to, $subject, $html);
 		} catch (Exception $e) {
 			$sent = false;
 		}
 		if (!$sent) {
-			$sent = @mail($to, $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
+			$sent = @mail(implode(', ', $to), $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
 		}
 		return (bool) $sent;
 	}
@@ -423,8 +423,7 @@ if (!function_exists('cpx_key')) {
 	function cpx_dates_notifiable($after) {
 		if (!empty($after['approved'])) return false;
 		if (!empty($after['is_demo']) || !empty($after['paused'])) return false;
-		$to = isset($after['client_email']) ? trim($after['client_email']) : '';
-		return $to !== '' && (bool) filter_var($to, FILTER_VALIDATE_EMAIL);
+		return count(cpx_emails(isset($after['client_email']) ? $after['client_email'] : '')) > 0;
 	}
 
 	/* ¿Toca avisar de la fecha de la OFERTA?
@@ -557,6 +556,34 @@ if (!function_exists('cpx_key')) {
 		));
 		curl_exec($ch);
 		curl_close($ch);
+	}
+
+	/* El email del cliente admite VARIAS direcciones separadas por comas (o punto y coma):
+	 * en muchas empresas hay que avisar a la persona de marketing y a la de compras. Esto
+	 * devuelve la lista de direcciones válidas, sin repetidas y en el orden escrito; una
+	 * cadena vacía o basura devuelve lista vacía, que es lo que miran los avisos para
+	 * decidir si hay a quién escribir. */
+	function cpx_emails($raw) {
+		$out = array();
+		foreach (preg_split('/[,;\s]+/', (string) $raw) as $e) {
+			$e = trim($e);
+			if ($e === '' || !filter_var($e, FILTER_VALIDATE_EMAIL)) continue;
+			foreach ($out as $y) { if (strcasecmp($y, $e) === 0) { $e = ''; break; } }
+			if ($e !== '') $out[] = $e;
+		}
+		return $out;
+	}
+
+	/* Manda el MISMO correo a cada destinatario, uno por envío: el mailer solo admite una
+	 * dirección por mensaje y, de paso, ninguno ve la dirección de los demás. Devuelve
+	 * true si salió al menos uno. */
+	function cpx_send_each($cfg, $recipients, $subject, $html, $attachments = array()) {
+		$ok = false;
+		foreach ((array) $recipients as $to) {
+			try { if (campaign_send_smtp($cfg, $to, $subject, $html, $attachments)) $ok = true; }
+			catch (Exception $e) { /* un destinatario que rebota no debe tumbar a los demás */ }
+		}
+		return $ok;
 	}
 
 	/* Etiqueta legible del tipo de documento (para el correo y el panel). */

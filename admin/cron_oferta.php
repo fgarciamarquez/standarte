@@ -35,8 +35,8 @@ function co_eur_en($n) { return '€' . number_format((float) $n, ((float) $n ==
 
 $sentCount = 0;
 foreach ($rows as $p) {
-	$to = isset($p['client_email']) ? trim($p['client_email']) : '';
-	if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) { echo $p['ref'] . ": sin email de cliente, omitido\n"; continue; }
+	$to = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+	if (!$to) { echo $p['ref'] . ": sin email de cliente, omitido\n"; continue; }
 
 	$ref     = $p['ref'];
 	$titleEs = !empty($p['title_es']) ? $p['title_es'] : $ref;
@@ -68,12 +68,12 @@ foreach ($rows as $p) {
 	$sent = false;
 	try {
 		$cfg = require __DIR__ . '/email_campaing/config.php';
-		$sent = campaign_send_smtp($cfg, $to, $subject, $html);
+		$sent = cpx_send_each($cfg, $to, $subject, $html);
 	} catch (Exception $e) {
 		$sent = false;
 	}
 	if (!$sent) {
-		$sent = @mail($to, $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
+		$sent = @mail(implode(', ', $to), $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
 	}
 	if ($sent) {
 		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($p['id']), array('offer_notice_sent_at' => date('c')));

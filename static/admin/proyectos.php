@@ -250,8 +250,10 @@ function visit_badge($p) {
 }
 
 $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_state,invoice_state,invoice2_state,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
-/* Duplicar: proyecto de origen preseleccionado (?dup=ID desde el botón de cada fila)
- * y recuento de conceptos/archivos de cada uno para las etiquetas del formulario. */
+/* Duplicar: el proyecto de origen se elige en el desplegable del panel de arriba (la
+ * fila ya no lleva enlace propio: duplicar se hace desde ahí). Se conserva ?dup=ID por
+ * si se llega con un enlace guardado, y el recuento de conceptos/archivos de cada
+ * proyecto para las etiquetas del formulario. */
 $dupId = isset($_GET['dup']) && preg_match('/^[0-9a-f-]{36}$/', $_GET['dup']) ? $_GET['dup'] : '';
 $counts = pj_authed() ? cpx_child_counts() : array('budget' => array(), 'media' => array());
 /* Siguiente número de factura de la serie, para sugerirlo en el cuadro al emitir. */
@@ -321,8 +323,6 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.ev-city { color: #8a8f98; }
 	.ev-date { color: #ffc800; }
 	.ev-clear { background: transparent; border: none; color: #e57373; cursor: pointer; font: inherit; font-size: 12px; padding: 0 0 0 8px; }
-	.dup { background: transparent; color: #ffc800; border: 1px solid #7a6413; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; text-decoration: none; display: inline-block; }
-	.dup:hover { background: rgba(255,200,0,.14); border-color: #ffc800; }
 	.test { background: transparent; color: #8fb8ff; border: 1px solid #2f4a7a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.test:hover { background: rgba(143,184,255,.14); border-color: #8fb8ff; }
 	.pj-acts { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
@@ -402,7 +402,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<input type="hidden" name="action" value="create_project">
 			<input name="ref" placeholder="Ref (p. ej. IDh 2026/0062)" required>
 			<input name="client_name" placeholder="Cliente" required>
-			<input name="client_email" placeholder="Email del cliente" type="email">
+			<input name="client_email" placeholder="Email del cliente (varios, separados por comas)" type="email" multiple>
 			<input name="title_es" placeholder="Título ES">
 			<input name="title_en" placeholder="Título EN">
 			<input name="interlocutor_email" placeholder="Email interlocutor (opc.)">
@@ -447,7 +447,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			</div>
 			<input name="ref" id="dup-ref" placeholder="Ref del nuevo proyecto" required>
 			<input name="client_name" placeholder="Cliente" required>
-			<input name="client_email" placeholder="Email del cliente" type="email">
+			<input name="client_email" placeholder="Email del cliente (varios, separados por comas)" type="email" multiple>
 			<input name="title_es" placeholder="Título ES (solo si cambia)">
 			<input name="title_en" placeholder="Título EN (solo si cambia)">
 			<div style="grid-column:1/3">
@@ -483,7 +483,6 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 					<input type="hidden" name="id" value="<?= h($p['id']) ?>">
 					<button type="submit" class="test" title="Enviarme una prueba del contrato y la Factura 1 (solo a javier@standarte.es; no se guarda ni se envía al cliente)">Prueba</button>
 					</form>
-					<a class="dup" href="proyectos.php?dup=<?= h($p['id']) ?>#dup" title="Duplicar este proyecto">Duplicar</a>
 					<form method="post" class="st-form" onsubmit="return confirm('¿Borrar el proyecto «<?= h($p['ref']) ?>» y TODOS sus datos (imágenes, presupuesto y comentarios)?\n\nEsta acción no se puede deshacer.');">
 					<input type="hidden" name="action" value="delete_project">
 					<input type="hidden" name="id" value="<?= h($p['id']) ?>">

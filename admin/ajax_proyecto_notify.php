@@ -46,6 +46,7 @@ if ($role === 'internal' && !pn_admin_authed()) {
 }
 
 require_once __DIR__ . '/../supabase-config.php';
+require_once __DIR__ . '/client_projects_lib.php';   // cpx_emails / cpx_send_each
 require_once __DIR__ . '/email_campaing/mailer.php';
 
 /* Visita del cliente: touch_client_visit registra la visita y devuelve true SOLO si
@@ -214,7 +215,10 @@ if ($role === 'approved') {
 		$intro = 'Standarte ha respondido a los últimos comentarios y el proyecto se ha actualizado.';
 	}
 }
-if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
+/* El email del cliente admite varias direcciones separadas por comas: se manda una
+ * copia a cada una (cpx_send_each). Los avisos internos siguen yendo a una sola. */
+$dest = cpx_emails($to);
+if (!$dest) {
 	echo json_encode(array('ok' => false, 'error' => 'no_recipient'));
 	exit;
 }
@@ -232,12 +236,12 @@ $html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 $sent = false;
 try {
 	$cfg = require __DIR__ . '/email_campaing/config.php';
-	$sent = campaign_send_smtp($cfg, $to, $subject, $html);
+	$sent = cpx_send_each($cfg, $dest, $subject, $html);
 } catch (Exception $e) {
 	$sent = false;
 }
 if (!$sent) {
-	@mail($to, $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
+	@mail(implode(', ', $dest), $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
 }
 
 echo json_encode(array('ok' => true));

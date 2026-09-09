@@ -263,12 +263,15 @@ function cpx_invoice_short_date($ts, $lang) {
 
 /* Correo con adjunto al destinatario y copia a Javier. Devuelve si salió el del cliente. */
 function cpx_send_with_copy($to, $subject, $html, $attachment) {
+	$dest = is_array($to) ? $to : cpx_emails($to);
 	$sent = false;
 	try {
 		require_once __DIR__ . '/email_campaing/mailer.php';
 		$cfg = require __DIR__ . '/email_campaing/config.php';
-		$sent = campaign_send_smtp($cfg, $to, $subject, $html, array($attachment));
-		if (defined('CPX_INVOICE_CC') && CPX_INVOICE_CC && strcasecmp(CPX_INVOICE_CC, $to) !== 0) {
+		$sent = cpx_send_each($cfg, $dest, $subject, $html, array($attachment));
+		$yaVa = false;
+		foreach ($dest as $e) { if (defined('CPX_INVOICE_CC') && strcasecmp(CPX_INVOICE_CC, $e) === 0) $yaVa = true; }
+		if (defined('CPX_INVOICE_CC') && CPX_INVOICE_CC && !$yaVa) {
 			try { campaign_send_smtp($cfg, CPX_INVOICE_CC, '[Copia] ' . $subject, $html, array($attachment)); } catch (Exception $e) {}
 		}
 	} catch (Exception $e) { $sent = false; }
@@ -289,8 +292,9 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	$p = $rows[0];
 
 	if (empty($p['approved'])) $errors[] = 'el proyecto no está aprobado por el cliente';
-	$email = isset($p['client_email']) ? trim($p['client_email']) : '';
-	if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'falta un email de cliente válido';
+	$emails = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+	$email = $emails ? implode(', ', $emails) : '';
+	if (!$emails) $errors[] = 'falta un email de cliente válido';
 	$client = trim((string) (!empty($p['billing_company']) ? $p['billing_company'] : $p['client_name']));
 	if ($client === '') $errors[] = 'falta la razón social (o el nombre del cliente)';
 	$iban = trim((string) (isset($p['income_account']) ? $p['income_account'] : ''));
@@ -382,7 +386,7 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	}
 
 	/* Envío: cliente + copia a Javier. */
-	$sent = cpx_send_with_copy($email, $subject, $html, $attachment);
+	$sent = cpx_send_with_copy($emails, $subject, $html, $attachment);
 	if (!$sent) $warnings[] = 'la factura se ha generado y guardado, pero el correo al cliente NO ha salido (revisa SMTP)';
 
 	return array('ok' => true, 'number' => $number, 'which' => $which, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);
@@ -401,8 +405,9 @@ function cpx_doc_resend($projectId, $docId) {
 	$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=ref,title_es,title_en,client_email,approved_lang,access_token&limit=1');
 	if (empty($rows[0])) return array('ok' => false, 'error' => 'not_found');
 	$p = $rows[0];
-	$email = isset($p['client_email']) ? trim($p['client_email']) : '';
-	if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) return array('ok' => false, 'error' => 'no_email');
+	$emails = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+	if (!$emails) return array('ok' => false, 'error' => 'no_email');
+	$email = implode(', ', $emails);
 	$pdf = cpx_storage_download($doc['path'], 'client-docs');
 	if ($pdf === null) return array('ok' => false, 'error' => 'storage');
 
@@ -427,6 +432,6 @@ function cpx_doc_resend($projectId, $docId) {
 		. "<p style='margin:28px 0 0;'>" . $sign . "</p></body></html>";
 	$name = preg_replace('/[^A-Za-z0-9_-]+/', '_', $doc['title']);
 	if ($name === '' || $name === '_') $name = $doc['kind'];
-	$sent = cpx_send_with_copy($email, $subject, $html, array('name' => $name . '.pdf', 'type' => 'application/pdf', 'data' => $pdf));
+	$sent = cpx_send_with_copy($emails, $subject, $html, array('name' => $name . '.pdf', 'type' => 'application/pdf', 'data' => $pdf));
 	return $sent ? array('ok' => true, 'email' => $email, 'lang' => $lang) : array('ok' => false, 'error' => 'smtp', 'email' => $email);
 }
