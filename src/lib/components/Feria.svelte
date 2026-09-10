@@ -133,7 +133,10 @@
   // dejaba 64 enlaces a ciudades sin contexto en cada ficha. Ahora enlaza solo la
   // ciudad de la propia feria —el hub que la ficha debe empujar— y las plazas
   // estratégicas, con un enlace único a la portada, que conserva el mapa completo.
-  const CITY_NAV_STRATEGIC = ['madrid', 'barcelona', 'bilbao', 'lisboa'];
+  // Oporto entra en la lista (2026-09-10): sin él, su página recibía ocho veces menos
+  // enlaces internos que la de Lisboa en cada idioma, y es la otra plaza portuguesa
+  // disputada del plan Oro.
+  const CITY_NAV_STRATEGIC = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'oporto'];
   $: shownCityKeys = (() => {
     const picks = currentCityKey ? [currentCityKey] : [];
     for (const k of CITY_NAV_STRATEGIC) if (!picks.includes(k)) picks.push(k);

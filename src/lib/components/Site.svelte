@@ -6,7 +6,7 @@
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, routes, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
-  import { cityH2, cityH2Custom } from '$lib/h2Seo.js';
+  import { cityH2, cityH2Custom, ptLocative } from '$lib/h2Seo.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
@@ -825,7 +825,7 @@
     es: { from: /^Diseño y construcción de stands en (.+?)\s*(?::.*)?$/, to: (c) => `Diseño, construcción y montaje de stands para ferias en ${c}.` },
     en: { from: /^(?:(?:Exhibition|Trade show) )?[Ss]tand [Dd]esign and (?:[Cc]onstruction|[Bb]uild|[Aa]ssembly) in (.+?)\s*(?::.*)?$/, to: (c) => `Exhibition stand design and build for trade fairs in ${c}.` },
     de: { from: /^(?:Messestand-? ?Design und (?:-?Bau|-?Montage|Konstruktion)|Design und (?:Bau|Montage) von Messeständen|Standentwurf und -bau|Standdesign und (?:Standbau|-bau)|Messestandbau und -design) (?:in|auf|bei) (.+?)\s*(?::.*)?$/, to: (c) => `Design, Bau und Montage von Messeständen in ${c}.` },
-    pt: { from: /^(?:Design|Conceção) e (?:construção|montagem) de stands (?:em|no|na|nas) (.+?)\s*(?::.*)?$/, to: (c) => `Design, construção e montagem de stands para feiras em ${c}.` },
+    pt: { from: /^(?:Design|Conceção) e (?:construção|montagem) de stands (?:em|no|na|nas) (.+?)\s*(?::.*)?$/, to: (c) => `Design, construção e montagem de stands para feiras ${ptLocative(c)}.` },
     fr: { from: /^Conception et (?:construction|montage) de stands (?:à|en|aux|dans) (.+?)\s*(?::.*)?$/, to: (c) => `Conception, construction et montage de stands pour salons à ${c}.` },
     it: { from: /^Progettazione e (?:costruzione|allestimento|montaggio)(?: di)? stand(?: fieristici)? (?:a|ad|in|alle) (.+?)\s*(?::.*)?$/, to: (c) => `Progettazione, costruzione e allestimento di stand fieristici a ${c}.` },
     nl: { from: /^(?:Ontwerp en (?:bouw|montage|opbouw) van (?:beursstands|stands)|Standontwerp en (?:-bouw|montage)) (?:in|op) (.+?)\s*(?::.*)?$/, to: (c) => `Ontwerp, bouw en montage van beursstands in ${c}.` },
@@ -1082,7 +1082,10 @@
   // y muestra solo las vecinas de su región más las plazas estratégicas, con un enlace
   // único "Ver todas" a la portada, que ya lista el mapa completo (el descubrimiento
   // por rastreo queda intacto vía portada y sitemap).
-  const CITY_NAV_STRATEGIC = ['madrid', 'barcelona', 'bilbao', 'lisboa'];
+  // Oporto entra en la lista (2026-09-10): sin él, su página recibía ocho veces menos
+  // enlaces internos que la de Lisboa en cada idioma, y es la otra plaza portuguesa
+  // disputada del plan Oro.
+  const CITY_NAV_STRATEGIC = ['madrid', 'barcelona', 'bilbao', 'lisboa', 'oporto'];
   $: cityNavShownKeys = isCityPage
     ? (() => {
         const region = SECTION_REGION[section];

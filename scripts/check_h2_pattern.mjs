@@ -13,7 +13,7 @@ const dist = path.join(root, 'dist');
 
 // Prefijos compuestos por idioma (deben ir en sintonía con h2Seo.js).
 const PREFIXES = [
-  'Stands para ferias en', 'Trade fair stands in', 'Messestände in', 'Stands para feiras em',
+  'Stands para ferias en', 'Trade fair stands in', 'Messestände in', 'Stands para feiras em', 'Stands para feiras no', 'Stands para feiras na', 'Stands para feiras nas',
   'Stands pour salons à', 'Stand fieristici a', 'Beursstands in', '展会展台', 'में मेला स्टैंड',
   '박람회 부스', 'の展示会ブース'
 ];

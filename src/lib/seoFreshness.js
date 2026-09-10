@@ -25,6 +25,10 @@
 // la página de ciudad de Oporto en pt gana el enlace contextual hacia ella. Cambio
 // visible en ambas: se actualiza su fecha.
 //
+// 2026-09-10: en portugués, H1 y H2 de las plazas con artículo pasan de «em Porto» a
+// «no Porto» (y «no sul de Portugal», «na Madeira», «nas Ilhas Canárias»). Cambio
+// visible en esas cuatro: se actualiza su fecha.
+//
 // Clave = sección de `routes` (siteData.js). Valor = fecha ISO (YYYY-MM-DD).
 export const seoFreshness = {
   // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
@@ -50,9 +54,9 @@ export const seoFreshness = {
   ciudad_real: '2026-08-28',
   trujillo: '2026-08-28',
   montaje_zafra: '2026-08-28',
-  oporto: '2026-09-05',   // enlace a la paralela portuguesa
+  oporto: '2026-09-10',   // H1/H2 «no Porto» + enlace a la paralela portuguesa
   vigo: '2026-08-28',
-  portugal_sur: '2026-08-28',
+  portugal_sur: '2026-09-10',
   madrid: '2026-08-28',
   bilbao: '2026-08-28',
   malaga: '2026-08-31',
@@ -61,8 +65,8 @@ export const seoFreshness = {
   alicante: '2026-08-28',
   elche: '2026-08-28',
   murcia: '2026-08-28',
-  islas_canarias: '2026-08-28',
-  islas_de_madeira: '2026-08-28',
+  islas_canarias: '2026-09-10',
+  islas_de_madeira: '2026-09-10',
   mallorca: '2026-08-28',
   valencia: '2026-09-02',
   coruna: '2026-08-28',

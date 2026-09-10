@@ -8,12 +8,19 @@
 //   Feria  → "Stands para {feria}: servicios para expositores"
 // La expresión es neutra de marca: sirve igual en Standarte y StandQuote.
 
+// Locativo en portugués: las plazas con artículo no admiten «em» a secas —«em Porto»
+// suena a traducción automática a cualquier lector de Portugal—; llevan «no», «na» o
+// «nas». Se decide por el nombre en portugués de la plaza (cityData[k].city.pt); lo
+// que no está en la lista va con «em» (Lisboa, Madrid, Bilbau…).
+const PT_ARTICLE = { 'Porto': 'no', 'sul de Portugal': 'no', 'Sul de Portugal': 'no', 'Madeira': 'na', 'Ilhas da Madeira': 'nas', 'Ilhas Canárias': 'nas', 'Algarve': 'no' };
+export const ptLocative = (c) => `${PT_ARTICLE[c] || 'em'} ${c}`;
+
 // Prefijo común de las páginas de CIUDAD, por idioma.
 const CITY_PREFIX = {
   es: (c) => `Stands para ferias en ${c}`,
   en: (c) => `Trade fair stands in ${c}`,
   de: (c) => `Messestände in ${c}`,
-  pt: (c) => `Stands para feiras em ${c}`,
+  pt: (c) => `Stands para feiras ${ptLocative(c)}`,
   fr: (c) => `Stands pour salons à ${c}`,
   it: (c) => `Stand fieristici a ${c}`,
   nl: (c) => `Beursstands in ${c}`,
