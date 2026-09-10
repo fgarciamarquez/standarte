@@ -39,7 +39,7 @@ export const seoFreshness = {
   constructor_stand_madrid: '2026-08-31',
   constructor_stand_barcelona: '2026-08-31',
   constructor_stand_oporto: '2026-09-05',   // + versión portuguesa
-  constructor_stand_lisboa: '2026-08-31',
+  constructor_stand_lisboa: '2026-09-10',   // + versión portuguesa y «Lisbon» en la ficha inglesa
   constructor_stand_bilbao: '2026-08-31',
   constructor_stand_badajoz: '2026-08-31',
   constructor_stand_don_benito: '2026-08-31',
@@ -49,7 +49,7 @@ export const seoFreshness = {
   badajoz: '2026-08-28',
   montaje_badajoz: '2026-08-28',
   zaragoza: '2026-08-28',
-  lisboa: '2026-08-28',
+  lisboa: '2026-09-10',   // enlace a la paralela portuguesa
   montaje_don_benito: '2026-08-28',
   ciudad_real: '2026-08-28',
   trujillo: '2026-08-28',

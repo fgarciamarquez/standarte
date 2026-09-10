@@ -527,11 +527,11 @@ for (const [k, v] of Object.entries(EN)) {
 
 
 // --- Versión portuguesa ----------------------------------------------------------
-// Solo Oporto: es la única plaza de estas páginas donde el comprador busca en su
-// propio idioma («construtor de stands no Porto») y donde la competencia local se
-// posiciona en portugués. El resto de las plazas son españolas y su búsqueda nativa
-// ya está cubierta en castellano; abrir ahí una versión pt sería una traducción sin
-// demanda que solo diluye.
+// Solo las dos plazas portuguesas, Oporto y Lisboa: son donde el comprador busca en
+// su propio idioma («construtor de stands no Porto / em Lisboa») y donde la
+// competencia local se posiciona en portugués. El resto de las plazas son españolas y
+// su búsqueda nativa ya está cubierta en castellano; abrir ahí una versión pt sería
+// una traducción sin demanda que solo diluye.
 // La expresión objetivo lleva artículo —«no Porto», no «em Porto»—, así que los
 // helpers reciben ya el locativo completo y sirven igual para otra plaza («em Lisboa»).
 const pasoPt = (c) => `
@@ -575,6 +575,24 @@ const PT = {
         <h2>Construtor de stands no Porto: feiras do recinto</h2>
         <p>Construímos para o calendário da Exponor e da área do Porto: <a href="/pt/ferias/stand-concreta-oporto">Concreta</a>, <a href="/pt/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/pt/ferias/stand-expocosmetica-oporto">Expocosmética</a>, <a href="/pt/ferias/stands-qualifica-oporto">Qualifica</a>, <a href="/pt/ferias/stand-emaf-oporto">Emaf</a>, <a href="/pt/ferias/stand-itf-intertex-oporto">ITF Intertex</a> e <a href="/pt/ferias/stands-tecnipao-oporto">Tecnipão</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_porto">stands para feiras no Porto</a>.</p>
         ${porquePt('no Porto')}`
+  },
+  /* Lisboa (2026-09-10): FIL y el calendario de congresos de la ciudad. Texto propio
+   * de CONSTRUCCIÓN —transporte desde España, premontaje, ventanas cortas de montaje
+   * de los congresos— para no solaparse con la página de plaza en portugués. */
+  constructor_stand_lisboa: {
+    breadcrumb: 'Construtor de stands em Lisboa',
+    title: 'Construtor de stands em Lisboa | Oficina própria | Standarte',
+    h1: 'Construtor de stands em Lisboa',
+    introText: 'Construímos stands à medida para a FIL (Feira Internacional de Lisboa) e para os congressos da cidade, com fabrico em oficina própria: estrutura, carpintaria, mobiliário e grafismo produzidos pela nossa equipa, transporte tratado por nós e montagem terminada antes da abertura.',
+    body: `
+        <h2>Construtor de stands em Lisboa: fabrico próprio para a FIL e para os congressos</h2>
+        <p>Lisboa tem dois calendários que exigem construções distintas. Na FIL, no Parque das Nações, as feiras profissionais —construção, turismo, náutica, alimentação— pedem stands de dois a quatro dias com produto exposto e espaço para negociar. Nos congressos internacionais que a cidade acolhe —tecnologia, saúde, aviação— a janela de montagem é de horas, não de dias: o stand tem de chegar pré-montado, com o grafismo aplicado e as instalações testadas, e levantar-se sem improvisar.</p>
+        <p>Por isso fabricamos tudo na nossa oficina, montamos o stand inteiro antes de o carregar e organizamos o transporte até Lisboa com margem para que a descarga não dependa de um imprevisto na estrada. Tratamos também o que o recinto exige: ramais de eletricidade e água, certificados de reação ao fogo das madeiras e têxteis, e os limites de altura e de suspensão de cada pavilhão.</p>
+        ${pasoPt('em Lisboa')}
+        ${tiposPt('em Lisboa')}
+        <h2>Construtor de stands em Lisboa: feiras e congressos da cidade</h2>
+        <p>Construímos para o calendário da FIL e dos grandes congressos: <a href="/pt/ferias/stand-btl-lisboa">BTL</a>, <a href="/pt/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/pt/ferias/stand-sil-lisboa">SIL</a>, <a href="/pt/ferias/stand-nauticampo-lisboa">Nauticampo</a>, <a href="/pt/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/pt/ferias/stand-world-aviation-festival-lisboa">World Aviation Festival</a> e <a href="/pt/ferias/stand-esicm-lives-lisboa">ESICM LIVES</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_lisboa">stands para feiras em Lisboa</a>.</p>
+        ${porquePt('em Lisboa')}`
   }
 };
 

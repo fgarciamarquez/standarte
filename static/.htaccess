@@ -120,6 +120,7 @@ DirectorySlash Off
   # Portugués: solo Oporto tiene paralela en pt (es la única plaza donde el comprador
   # busca en su idioma).
   # RewriteRule ^pt/design_montagem_stands_porto/?$ https://standarte.es/pt/construtor_stands_porto [R=301,L]
+  # RewriteRule ^pt/design_montagem_stands_lisboa/?$ https://standarte.es/pt/construtor_stands_lisboa [R=301,L]
   # ───────────────────────────────────────────────────────────────────────────────
   RewriteRule ^construccion_stands_lisboa/?$ https://standarte.es/diseno_montaje_stands_lisboa [R=301,L]
   RewriteRule ^construccion_stands_malaga/?$ https://standarte.es/diseno_montaje_stands_malaga [R=301,L]

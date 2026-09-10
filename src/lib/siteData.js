@@ -510,10 +510,11 @@ export const routes = {
     sevilla: 'design_montagem_stands_sevilla',
     ciudad_real: 'design_montagem_stands_ciudad_real',
     zaragoza: 'design_montagem_stands_zaragoza',
-    // Página paralela de constructor (defensa ante denuncias). Ver builderPages.js.
-    // En portugués solo existe la de Oporto: es la única plaza donde el cliente busca
-    // en su propio idioma («construtor de stands no Porto»).
+    // Páginas paralelas de constructor (defensa ante denuncias). Ver builderPages.js.
+    // En portugués existen solo las dos plazas portuguesas: son donde el comprador
+    // busca en su propio idioma («construtor de stands no Porto / em Lisboa»).
     constructor_stand_oporto: 'construtor_stands_porto',
+    constructor_stand_lisboa: 'construtor_stands_lisboa',
     montaje_zafra: 'montagem_stand_zafra',
     montaje_don_benito: 'montagem_stand_don_benito',
     montaje_badajoz: 'montagem_stand_badajoz',
