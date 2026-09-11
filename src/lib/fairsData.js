@@ -924,6 +924,13 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "Foro Transfiere",
+    "country": "es",
+    "slug": "stands-transfiere-malaga",
+    "city": "Málaga",
+    "sector": "Tecnología e Innovación"
+  },
+  {
     "name": "Eurosatory Paris",
     "country": "fr",
     "slug": "stand-eurosatory-paris",

@@ -61,7 +61,7 @@ export const seoFreshness = {
   portugal_sur: '2026-09-10',
   madrid: '2026-08-28',
   bilbao: '2026-08-28',
-  malaga: '2026-08-31',
+  malaga: '2026-09-11',   // alta de Transfiere en el cuerpo
   sevilla: '2026-08-28',
   barcelona: '2026-08-28',
   alicante: '2026-08-28',
@@ -138,6 +138,7 @@ export const fairFreshness = {
   'stands-anecorm-valencia': '2026-09-02',
   'stands-agroexpo': '2026-09-06',
   'stands-talent-land-malaga': '2026-08-31',
+  'stands-transfiere-malaga': '2026-09-11',
   'stands-modtissimo-oporto': '2026-08-31',
   'stands-qualifica-oporto': '2026-08-31',
   'stands-gift-paper-oporto': '2026-08-31',
