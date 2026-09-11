@@ -44,6 +44,7 @@ export const seoFreshness = {
   constructor_stand_bilbao: '2026-09-11',
   constructor_stand_badajoz: '2026-09-11',
   constructor_stand_don_benito: '2026-09-11',
+  constructor_stand_malaga: '2026-09-11',   // alta
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
   home: '2026-08-28',

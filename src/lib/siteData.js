@@ -98,6 +98,7 @@ export const routes = {
     constructor_stand_bilbao: 'constructor_stand_bilbao',
     constructor_stand_badajoz: 'constructor_stand_badajoz',
     constructor_stand_don_benito: 'constructor_stand_don_benito',
+    constructor_stand_malaga: 'constructor_stand_malaga',
     // Defensa de una ficha de feria: vive bajo /ferias/ (ver findRoute, que la
     // resuelve antes que el detalle de feria porque comparten prefijo).
     constructor_stand_figan: 'ferias/constructor-stand-figan',
@@ -191,6 +192,7 @@ export const routes = {
     constructor_stand_bilbao: 'stand_builder_bilbao',
     constructor_stand_badajoz: 'stand_builder_badajoz',
     constructor_stand_don_benito: 'stand_builder_don_benito',
+    constructor_stand_malaga: 'stand_builder_malaga',
     constructor_stand_figan: 'ferias/stand-builder-figan',
     constructor_stand_agroexpo: 'ferias/stand-builder-agroexpo',
     constructor_stand_biemh: 'ferias/stand-builder-biemh',
@@ -2980,7 +2982,8 @@ export const SQ_REMOVED_SECTIONS = new Set([
   'constructor_stand_madrid', 'constructor_stand_barcelona',
   'constructor_stand_zaragoza', 'constructor_stand_oporto', 'constructor_stand_lisboa',
   'constructor_stand_bilbao', 'constructor_stand_badajoz', 'constructor_stand_don_benito',
-  'constructor_stand_figan', 'constructor_stand_agroexpo', 'constructor_stand_biemh'
+  'constructor_stand_figan', 'constructor_stand_agroexpo', 'constructor_stand_biemh',
+  'constructor_stand_malaga'
 ]);
 
 export const prerenderEntries = languages.flatMap((lang) => {

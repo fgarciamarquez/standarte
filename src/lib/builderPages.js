@@ -31,6 +31,9 @@ export const builderPages = {
   constructor_stand_bilbao:     { city: 'bilbao',      cityName: 'Bilbao',     venue: 'BEC — Bilbao Exhibition Centre',          workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
   constructor_stand_badajoz:    { city: 'badajoz',     cityName: 'Badajoz',    venue: 'IFEBA — Institución Ferial de Badajoz',   workshop: { es: 'Cáceres, a menos de 1 h de Badajoz', en: 'Cáceres, under 1 h from Badajoz' }, indexable: true },
   constructor_stand_don_benito: { city: 'montaje_don_benito', cityName: 'Don Benito', venue: 'FEVAL (Don Benito)',               workshop: { es: 'Cáceres, a menos de 1 h del recinto', en: 'Cáceres, under 1 h from the venue' }, indexable: true },
+  // Málaga (2026-09-11): la página de plaza ya es Oro en es/en; la paralela ataca «constructor
+  // de stands en Málaga» y cubre FYCMA, donde conviven ferias y congresos de ventana corta.
+  constructor_stand_malaga:     { city: 'malaga',      cityName: 'Málaga',     venue: 'FYCMA — Palacio de Ferias y Congresos de Málaga', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
   // Defensa de una FICHA DE FERIA, no de una ciudad: FIGAN sufrió una denuncia y, tras
   // el cambio de URL a plural (stands-figan-zaragoza), la ficha no ha recuperado su
   // posición. Esta página vive bajo /ferias/ y ataca la intención "constructor de

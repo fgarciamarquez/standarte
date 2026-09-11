@@ -333,6 +333,27 @@ export const builderSeoData = {
         <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un cambio de última hora sin depender de la agenda de otro taller. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en BIEMH</a></p>`
     }
+  },
+  /* Málaga (2026-09-11): FYCMA mezcla ferias profesionales con congresos de montaje en
+   * horas (DES, Talent Land, Greencities) y un evento de escenografía pesada (Comic-Con).
+   * Texto de CONSTRUCCIÓN —ventanas cortas, premontaje, transporte por la A-45— para no
+   * pisar la página de plaza, que habla del servicio y de la documentación del recinto. */
+  constructor_stand_malaga: {
+    es: {
+      breadcrumb: 'Constructor de stands en Málaga',
+      title: 'Constructor de stands en Málaga (FYCMA) | Taller propio | Standarte',
+      h1: 'Constructor de stands en Málaga',
+      introText: 'Construimos stands a medida para FYCMA, el Palacio de Ferias y Congresos de Málaga, desde nuestro propio taller: estructura, carpintería, mobiliario y gráfica fabricados por nuestro equipo, premontados antes de salir y levantados en las ventanas de montaje cortas que marcan los congresos del recinto.',
+      body: `
+        <h2>Constructor de stands en Málaga: construir para un recinto de congresos</h2>
+        <p>FYCMA no funciona como una feria de maquinaria: buena parte de su calendario son congresos y ferias tecnológicas —<a href="/ferias/stand-des-malaga">DES</a>, <a href="/ferias/stands-talent-land-malaga">Talent Land</a>, <a href="/ferias/stand-greencities-malaga">Greencities</a>— donde el montaje se hace en horas, no en días, y el expositor comparte pabellón con el auditorio. Construir aquí exige llegar con el stand entero premontado, la gráfica ya aplicada y la instalación eléctrica probada, para ensamblar sin improvisar y entregar antes de que empiece el programa.</p>
+        <p>El segundo condicionante es la distancia. Fabricamos en taller y transportamos el stand a Málaga con margen suficiente para que la descarga no dependa de un imprevisto en carretera; los elementos reutilizables vuelven al almacén y sirven para la siguiente cita del recinto, que en Málaga suele llegar pocos meses después.</p>
+        ${paso('Málaga')}
+        ${tipos('Málaga')}
+        <h2>Constructor de stands en Málaga: ferias del recinto</h2>
+        <p>Construimos para todo el calendario de FYCMA: <a href="/ferias/stand-des-malaga">DES</a>, <a href="/ferias/stand-ht-malaga">H&amp;T</a>, <a href="/ferias/stand-simed-malaga">Simed</a>, <a href="/ferias/stand-expo-agritech-malaga">Expo AgriTech</a>, <a href="/ferias/stand-greencities-malaga">Greencities</a>, <a href="/ferias/stands-talent-land-malaga">Talent Land España</a> y <a href="/ferias/stand-san-diego-comic-con-malaga">San Diego Comic-Con Málaga</a>, donde la escenografía pesa tanto como el stand. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno_montaje_stands_malaga">stands para ferias en Málaga</a>.</p>
+        ${porque('Málaga')}`
+    }
   }
 };
 
@@ -516,6 +537,21 @@ const EN = {
         <h2>Stand builder for BIEMH: and for the rest of the BEC</h2>
         <p>The same workshop builds across the venue calendar: <a href="/en/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/en/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/en/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/en/ferias/stands-maintenance-bilbao">Maintenance</a> and <a href="/en/ferias/stand-bedigital-bilbao">BeDigital</a>, the shows that share the <a href="/en/ferias/stand-plus-industry-bilbao">+Industry</a> platform. The event page — dates, sectors and the full design-and-build service — is at <a href="/en/ferias/stands-biemh-bilbao">stands for BIEMH</a>, and the city service at <a href="/en/stand_builder_bilbao">stand builder in Bilbao</a>.</p>
         ${porqueEnFair('BIEMH')}`
+  },
+  constructor_stand_malaga: {
+    breadcrumb: 'Stand builder in Málaga',
+    title: 'Stand builder in Málaga (FYCMA) | Own workshop | Standarte',
+    h1: 'Stand builder in Málaga',
+    introText: 'We build custom stands for FYCMA, the Málaga Trade Fair and Congress Centre, from our own workshop: structure, joinery, furniture and graphics made by our team, pre-assembled before shipping and installed within the short build-up windows that congress-style events impose.',
+    body: `
+        <h2>Stand builder in Málaga: building for a congress venue</h2>
+        <p>FYCMA is not a machinery fair: much of its calendar is congresses and tech events — <a href="/en/ferias/stand-des-malaga">DES</a>, <a href="/en/ferias/stands-talent-land-malaga">Talent Land</a>, <a href="/en/ferias/stand-greencities-malaga">Greencities</a> — where build-up takes hours, not days, and exhibitors share the hall with the auditorium. Building here means arriving with the stand fully pre-assembled, graphics applied and the electrical installation tested, so the team assembles rather than improvises and hands over before the programme starts.</p>
+        <p>The second constraint is distance. We manufacture in the workshop and transport the stand to Málaga with enough margin that unloading never depends on a delay on the road; the reusable parts go back to storage for the venue's next event, which in Málaga usually comes a few months later.</p>
+        ${pasoEn('Málaga')}
+        ${tiposEn('Málaga')}
+        <h2>Stand builder in Málaga: shows at the venue</h2>
+        <p>We build across the FYCMA calendar: <a href="/en/ferias/stand-des-malaga">DES</a>, <a href="/en/ferias/stand-ht-malaga">H&amp;T</a>, <a href="/en/ferias/stand-simed-malaga">Simed</a>, <a href="/en/ferias/stand-expo-agritech-malaga">Expo AgriTech</a>, <a href="/en/ferias/stands-talent-land-malaga">Talent Land España</a> and <a href="/en/ferias/stand-san-diego-comic-con-malaga">San Diego Comic-Con Málaga</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_malaga">trade fair stands in Málaga</a> page.</p>
+        ${porqueEn('Málaga')}`
   }
 };
 
