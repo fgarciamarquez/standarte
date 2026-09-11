@@ -2,7 +2,7 @@
 tipo: actividad
 clave: ecologico
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 20
+n_ferias: 21
 ---
 # Ecológico y sostenible
 
@@ -24,6 +24,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Infoagro Exhibition]]
 - [[Intercaza]]
 - [[Millésime Bio]]
+- [[Natura Málaga]]
 - [[Nice Boating Tomorrow]]
 - [[Pollutec Lyon]]
 - [[Smagua Zaragoza]]

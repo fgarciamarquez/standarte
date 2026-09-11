@@ -2,7 +2,7 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 51
+n_ferias: 52
 ---
 # Alimentación
 
@@ -49,6 +49,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Mercat de la Vall]]
 - [[Morocco Food Expo]]
 - [[Morocco SIEMA Expo]]
+- [[Natura Málaga]]
 - [[Oleomaq Zaragoza]]
 - [[Ovibeja]]
 - [[Pick & Pack Bilbao]]

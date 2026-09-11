@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 10
+n_ferias: 12
 lat: 36.72
 lon: -4.42
 ---
@@ -17,6 +17,8 @@ Ciudad dibujada en el mapa de Pat.
 - [[Foro Transfiere]]
 - [[GreenCities Málaga]]
 - [[H&T Málaga]]
+- [[Motor Málaga]]
+- [[Natura Málaga]]
 - [[San Diego Comic-Con Málaga]]
 - [[Simed Málaga]]
 - [[Talent Land España]]

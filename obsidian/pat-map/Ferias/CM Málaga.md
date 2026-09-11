@@ -9,9 +9,10 @@ con_texto: true
 # CM Málaga
 
 - Ciudad: [[Málaga]]
-- Sector(es): [[Multisectorial y Profesional]]
+- Sector(es): [[Arte y Ocio]], [[Multisectorial y Profesional]]
 
 ## Actividades
+- [[Cultura y arte]]
 - [[Multisectorial]]
 
 ## Descripción

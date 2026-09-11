@@ -2,7 +2,7 @@
 tipo: actividad
 clave: automocion
 sector: "Aeronáutica y Transporte"
-n_ferias: 11
+n_ferias: 12
 ---
 # Automoción
 
@@ -15,6 +15,7 @@ Actividad del sector [[Aeronáutica y Transporte]].
 - [[Feria de Concesionarios de Torrelavega]]
 - [[Feria del Vehículo de Ocasión de Logroño]]
 - [[Firauto]]
+- [[Motor Málaga]]
 - [[Motortec Madrid]]
 - [[Retro Mécanic]]
 - [[Salón de Competición de Asturias]]

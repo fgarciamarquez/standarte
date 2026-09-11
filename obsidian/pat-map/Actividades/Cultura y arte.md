@@ -2,7 +2,7 @@
 tipo: actividad
 clave: cultura-arte
 sector: "Arte y Ocio"
-n_ferias: 17
+n_ferias: 18
 ---
 # Cultura y arte
 
@@ -15,6 +15,7 @@ Actividad del sector [[Arte y Ocio]].
 - [[ARTEXANÍA Plasencia]]
 - [[Art3f Bordeaux]]
 - [[Baleart]]
+- [[CM Málaga]]
 - [[FARCAMA]]
 - [[Feria de Artesanía de Valladolid]]
 - [[Feria de Coleccionismo Emérita Augusta]]
