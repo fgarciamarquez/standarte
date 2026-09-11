@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 9
+n_ferias: 10
 lat: 36.72
 lon: -4.42
 ---
@@ -14,6 +14,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[DES Málaga]]
 - [[EXPO Agritech Málaga]]
 - [[Foro Greencities Málaga]]
+- [[Foro Transfiere]]
 - [[GreenCities Málaga]]
 - [[H&T Málaga]]
 - [[San Diego Comic-Con Málaga]]

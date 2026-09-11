@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-profesional
 sector: "Multisectorial y Profesional"
-n_ferias: 56
+n_ferias: 57
 ---
 # Congreso profesional
 
@@ -36,6 +36,7 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[FOYER Health & Beauty Summit]]
 - [[Feria de Formación Profesional de La Rioja]]
 - [[Feria de Oportunidades Económicas de Melilla]]
+- [[Foro Transfiere]]
 - [[Forum de l'Étudiant, de la Formation et de l'Emploi]]
 - [[Global Mobility Call]]
 - [[ITS European Congress]]

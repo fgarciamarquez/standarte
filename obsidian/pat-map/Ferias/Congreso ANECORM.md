@@ -13,7 +13,6 @@ con_texto: true
 
 ## Actividades
 - [[Congreso médico]]
-- [[salud]]
 
 ## Descripción
 El Congreso ANECORM reúne cada año en el Palacio de Congresos de Valencia a la Enfermería de Recursos Materiales: los profesionales que deciden qué material sanitario entra en un hospital, con qué criterio de seguridad del paciente y a qué coste. Su exposición comercial pone frente a frente a fabricantes y distribuidores de material clínico, esterilización, logística sanitaria y equipamiento con quienes gestionan de verdad esas compras.

@@ -2,7 +2,7 @@
 tipo: actividad
 clave: digital-software
 sector: "Tecnología e Innovación"
-n_ferias: 23
+n_ferias: 24
 ---
 # Tecnología digital y software
 
@@ -16,6 +16,7 @@ Actividad del sector [[Tecnología e Innovación]].
 - [[Feira do Empreendedorismo da Madeira]]
 - [[Feria de la Ciencia]]
 - [[Foro Greencities Málaga]]
+- [[Foro Transfiere]]
 - [[GreenCities Málaga]]
 - [[IoT Solutions World Congress Barcelona]]
 - [[Lisboa Games Week]]
