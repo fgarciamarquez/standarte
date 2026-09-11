@@ -2223,6 +2223,14 @@
     <div id="city-fair-search">
       <FairSearch {lang} />
     </div>
+  {:else if isBuilderPage(section)}
+    <!-- Páginas paralelas de constructor: el buscador va SIEMPRE visible, justo bajo
+         la ficha de datos. Son páginas de consulta rápida —a qué feria voy, cuándo,
+         dónde— y el buscador es la salida natural hacia la ficha de esa feria. En las
+         de ciudad, en cambio, sigue plegado tras el botón del hero. -->
+    <div id="builder-fair-search">
+      <FairSearch {lang} />
+    </div>
   {/if}
   <!-- Ancla estática de Pat: destino del enlace "#pat" del cuerpo SEO. Debe existir
        siempre en el HTML prerenderizado (el panel de Pat se carga diferido, así que su

@@ -32,17 +32,18 @@
 // Clave = sección de `routes` (siteData.js). Valor = fecha ISO (YYYY-MM-DD).
 export const seoFreshness = {
   // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
-  constructor_stand_zaragoza: '2026-08-31',
-  constructor_stand_figan: '2026-09-06',
-  constructor_stand_agroexpo: '2026-09-06',
-  constructor_stand_biemh: '2026-09-06',
-  constructor_stand_madrid: '2026-08-31',
-  constructor_stand_barcelona: '2026-08-31',
-  constructor_stand_oporto: '2026-09-05',   // + versión portuguesa
-  constructor_stand_lisboa: '2026-09-10',   // + versión portuguesa y «Lisbon» en la ficha inglesa
-  constructor_stand_bilbao: '2026-08-31',
-  constructor_stand_badajoz: '2026-08-31',
-  constructor_stand_don_benito: '2026-08-31',
+  // 2026-09-11: todas incorporan el buscador de ferias bajo la ficha de datos.
+  constructor_stand_zaragoza: '2026-09-11',
+  constructor_stand_figan: '2026-09-11',
+  constructor_stand_agroexpo: '2026-09-11',
+  constructor_stand_biemh: '2026-09-11',
+  constructor_stand_madrid: '2026-09-11',
+  constructor_stand_barcelona: '2026-09-11',
+  constructor_stand_oporto: '2026-09-11',   // + versión portuguesa
+  constructor_stand_lisboa: '2026-09-11',   // + versión portuguesa y «Lisbon» en la ficha inglesa
+  constructor_stand_bilbao: '2026-09-11',
+  constructor_stand_badajoz: '2026-09-11',
+  constructor_stand_don_benito: '2026-09-11',
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
   home: '2026-08-28',

@@ -37,6 +37,12 @@ function* htmlFiles(dir) {
   }
 }
 
+// El buscador de ferias (FairSearch.svelte) lleva su rótulo como <h2 class="fs-legend">
+// —«Busca la feria que te interese»— y va visible en las páginas paralelas. Es un
+// control de la interfaz, idéntico en todas, no un apartado del cuerpo: se descarta
+// antes de validar, o las 24 paralelas fallarían por él.
+const stripWidgetH2 = (html) => html.replace(/<h2 class="fs-legend[^"]*"[^>]*>[^<]*<\/h2>/g, '');
+
 const unescape = (s) => s
   .replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/&#39;/g, "'").replace(/&quot;/g, '"');
 
@@ -67,7 +73,7 @@ let builderPages = 0;
 const errors = [];
 const seen = new Set();
 for (const file of htmlFiles(dist)) {
-  const html = readFileSync(file, 'utf8');
+  const html = stripWidgetH2(readFileSync(file, 'utf8'));
   // Página de ciudad = cuerpo oro con el CTA inyectado por transformOroBody
   // ('oro-cta-espacio'): marcador que SOLO existe en las páginas de ciudad
   // (la portada/contacto comparten la expresión en su intro y no cuentan).
@@ -91,7 +97,7 @@ for (const slug of builderRels) {
   // carpeta homónima); se admiten las dos formas por si eso cambia.
   const rel = [`${slug}.html`, `${slug}/index.html`].find((r) => existsSync(path.join(dist, r)));
   if (!rel || seen.has(rel)) continue;   // ya recorrida
-  const html = readFileSync(path.join(dist, rel), 'utf8');
+  const html = stripWidgetH2(readFileSync(path.join(dist, rel), 'utf8'));
   // En StandQuote estas páginas no existen: el rastreador de prerenderizado alcanza la
   // URL por el enlace de la ficha de feria y deja un stub de redirección a la portada.
   // No es una página que validar.
