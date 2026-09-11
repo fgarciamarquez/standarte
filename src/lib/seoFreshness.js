@@ -139,6 +139,8 @@ export const fairFreshness = {
   'stands-agroexpo': '2026-09-06',
   'stands-talent-land-malaga': '2026-08-31',
   'stands-transfiere-malaga': '2026-09-11',
+  'stands-natura-malaga': '2026-09-11',
+  'stands-motor-malaga': '2026-09-11',
   'stands-modtissimo-oporto': '2026-08-31',
   'stands-qualifica-oporto': '2026-08-31',
   'stands-gift-paper-oporto': '2026-08-31',

@@ -931,6 +931,20 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "Natura Málaga",
+    "country": "es",
+    "slug": "stands-natura-malaga",
+    "city": "Málaga",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Motor Málaga",
+    "country": "es",
+    "slug": "stands-motor-malaga",
+    "city": "Málaga",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
     "name": "Eurosatory Paris",
     "country": "fr",
     "slug": "stand-eurosatory-paris",

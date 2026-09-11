@@ -146,6 +146,10 @@ export const fairDates = {
   'stand-horeca-baleares-mallorca': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://horecabaleares.com/' },
   'stand-ht-malaga': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://fycma.com/ht-2027-tendra-lugar-del-8-al-10-de-febrero-de-2027-con-una-oferta-ampliada-y-mayor-proyeccion-internacional/' },
   'stands-talent-land-malaga': { start: '2026-11-24', end: '2026-11-26', cadence: 'annual', source: 'https://talent-land.es/' },
+  // CM Málaga: última edición confirmada (22-23 jun 2026); la de 2027 aún no está publicada.
+  // Natura Málaga y Motor Málaga no llevan entrada: sus próximas fechas no están
+  // publicadas y no se anota nada que no esté confirmado.
+  'stand-cm-malaga': { start: '2026-06-22', end: '2026-06-23', cadence: 'annual', source: 'https://www.promalaga.es/my-calendar/?mc_id=371' },
   'stands-transfiere-malaga': { start: '2027-03-10', end: '2027-03-12', cadence: 'annual', source: 'https://transfiere.fycma.com/transfiere-2027-regresa-del-10-al-12-de-marzo-como-punto-de-encuentro-europeo-para-la-transferencia-cientifico-tecnologica/' },
   'stand-siprho-montpellier': { start: '2027-02-08', end: '2027-02-10', cadence: 'annual', source: 'https://www.siprho.com/' },
   'stand-sirha-mediterranee-marseille': { start: '2027-02-14', end: '2027-02-16', cadence: 'annual', source: 'https://www.sirha-mediterranee.com/en' },
