@@ -7,7 +7,7 @@ Regla de oro: **pocas ferias por vez y cada una de verdad**. Máximo 1 o 2 por p
 ## 0. Antes de empezar
 
 1. Comprueba que la feria **no existe** ya: busca por nombre (y sinónimos, siglas, nombre en portugués/inglés) y por slug en `src/lib/fairsData.js`.
-2. Verifica los datos en la **web oficial** del organizador o del recinto (IFEMA, FIL/AIP Lisboa, Exponor, Altice Forum Braga, Exposalão Batalha…). Nunca inventes fechas: si la próxima edición no está publicada, se usa la última confirmada y se anota «por confirmar» en el comentario. Guarda la URL de la fuente.
+2. Verifica los datos en la **web oficial** del organizador o del recinto (IFEMA, FIL/AIP Lisboa, Exponor, Altice Forum Braga, Exposalão Batalha…). Desde las sesiones en la nube esas webs suelen estar **bloqueadas por el proxy de red** (la descarga directa devuelve EGRESS_BLOCKED): usa la **búsqueda web** con consultas concretas («MATELEC 2026 IFEMA fechas», «inProjecta 2027 Exponor datas»), que devuelve los datos oficiales en los resultados, y anota como `source` la URL oficial que aparezca en ellos. Nunca inventes fechas: si la próxima edición no está publicada, se usa la última confirmada y se anota «por confirmar» en el comentario. Guarda la URL de la fuente.
 3. Prioriza ferias **profesionales con expositores que contratan stands** (industria, tecnología, construcción, alimentación, salud, turismo, moda, energía). Descarta eventos sin zona expositiva.
 
 ## 1. Ficheros que se tocan (y nada más)
@@ -105,7 +105,14 @@ El objetivo es que los textos **parezcan escritos por una persona del oficio**, 
 4. Despliegue: workflow **`deploy.yml`** («Despliegue Manual a OVH») en `main` con el input `fast` = `true`. Espera a que termine en verde (suele tardar entre 15 y 30 minutos, casi todo en el paso FTP). Si no se puede lanzar el workflow desde la sesión, díselo al usuario: el push por sí solo **no** publica.
 5. Informe final en español: ferias dadas de alta con su URL (`https://standarte.es/ferias/<slug>`), fuente de las fechas, ciudad enlazada, y recordatorio de pedir la indexación en Search Console para las URL nuevas.
 
-## 4. Lo que este procedimiento NO hace
+## 4. Candidatas pendientes (actualizar en cada tanda)
+
+- Oporto: Portugal Print (print, packaging y etiquetado), Exponor, 25-27 feb 2027 (portugalprint.com).
+- Lisboa: FILDecor – Living & Design (mueble y decoración, FIL/CCL), fecha 2026 pendiente de confirmar en fil.pt.
+- Lisboa: Motorclássico (clásicos, FIL, abril), público general; solo si faltan candidatas profesionales.
+- Tanda 12/09/2026 ya publicada: MATELEC, SIMA, Expodentária, inProjecta, Maquishoes.
+
+## 5. Lo que este procedimiento NO hace
 
 - No crea ciudades ni páginas de constructor nuevas (eso es el plan Oro, `docs/plan_oro.md`).
 - No toca PHP, noticias ni el gestor de proyectos.
