@@ -52,6 +52,10 @@ npm run build      # genera dist/
 
 El PHP no corre en Vite: para probar formularios/panel admin se usa MAMP sobre el espejo de la raíz.
 
+## Estrategia SEO por ferias (decisión del usuario, 12/09/2026)
+
+El método de **una URL por feria** (`/ferias/stand-<feria>-<ciudad>`) es el que da resultados, aunque en plazas competidas como Madrid mejore despacio. Por eso hay que **ampliar de vez en cuando la red de ferias** en tres plazas prioritarias: Madrid (IFEMA), Lisboa (FIL, Altice Arena, Lisboa Congress Centre) y el entorno industrial del norte de Portugal (Oporto/Exponor, Braga, Guimarães, Batalha/Exposalão, Aveiro). Referencia a 12/09/2026: Madrid 34 fichas, Lisboa 27, Oporto 21, Batalha 5. Hay una Routine en claude.ai (días 1 y 15 de cada mes) que recuerda esto y propone candidatas; el alta se hace siempre con el procedimiento SEO «Absolutista» y la política de slugs `stands-` para marcas registradas.
+
 ## Decisiones pendientes (no ejecutar sin confirmar)
 
 1. Eliminar del repo el espejo estático antiguo de la raíz (~1.400 ficheros) y definir un flujo local mejor para PHP.
