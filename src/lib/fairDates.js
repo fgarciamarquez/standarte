@@ -275,7 +275,18 @@ export const fairDates = {
   'stand-bauma-munich': { start: '2028-04-03', end: '2028-04-09', cadence: 'triennial', source: 'https://bauma.de/en/trade-fair/' },
   'stand-mountain-planet-grenoble': { start: '2028-04-11', end: '2028-04-13', cadence: 'biennial', source: 'https://www.mountain-planet.com/en/' },
   'stand-expooptica-madrid': { start: '2028-04-23', end: '2028-04-25', cadence: 'biennial', source: 'https://www.ifema.es/en/expooptica' },
-  'stand-navalia-vigo': { start: '2028-05-23', end: '2028-05-25', cadence: 'biennial', source: 'https://www.navalia.es/es/' }
+  'stand-navalia-vigo': { start: '2028-05-23', end: '2028-05-25', cadence: 'biennial', source: 'https://www.navalia.es/es/' },
+  // Tanda 2026-09-12 (Madrid, Lisboa, Oporto): fechas de la web oficial de cada organizador.
+  // MATELEC 2026 (24-26 nov, pabellones 7-8, junto a Genera; bienal en años pares).
+  'stands-matelec-madrid': { start: '2026-11-24', end: '2026-11-26', cadence: 'biennial', source: 'https://www.ifema.es/matelec' },
+  // SIMA 2027 (26-29 may). Organiza Planner Exhibitions en IFEMA.
+  'stands-sima-madrid': { start: '2027-05-26', end: '2027-05-29', cadence: 'annual', source: 'https://www.ifema.es/sima' },
+  // Expodentária 2026 con el 35.º Congresso da OMD (19-21 nov, FIL). La sede alterna Lisboa/Oporto.
+  'stands-expodentaria-lisboa': { start: '2026-11-19', end: '2026-11-21', cadence: 'annual', source: 'https://www.omd.pt/congresso/2026/expodentaria/' },
+  // inProjecta 2027 (18-20 feb, Exponor). Feria creada en 2025.
+  'stands-inprojecta-oporto': { start: '2027-02-18', end: '2027-02-20', cadence: 'annual', source: 'https://exponor.pt/inprojecta/' },
+  // Maquishoes 2027 (15-17 abr, Exponor). Cadencia no publicada.
+  'stands-maquishoes-oporto': { start: '2027-04-15', end: '2027-04-17', cadence: 'unknown', source: 'https://exponor.pt/maquishoes/' },
 };
 
 /** Periodicidad de una feria, en los 11 idiomas (para la línea de tiempo). */

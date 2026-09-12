@@ -539,7 +539,12 @@ export const fairActivities = {
   "stand-siel-rabat": ["cultura-arte", "congreso-profesional"],
   "stand-visa-for-music-rabat": ["cultura-arte", "congreso-profesional"],
   "stand-forum-etudiant-rabat": ["congreso-profesional"],
-  "stand-cimqusef-rabat": ["congreso-profesional"]
+  "stand-cimqusef-rabat": ["congreso-profesional"],
+  "stands-matelec-madrid": ["energia"],
+  "stands-sima-madrid": ["construccion"],
+  "stands-expodentaria-lisboa": ["dental", "congreso-medico"],
+  "stands-inprojecta-oporto": ["regalo-decoracion"],
+  "stands-maquishoes-oporto": ["maquinaria-industrial"],
 };
 
 // Helpers

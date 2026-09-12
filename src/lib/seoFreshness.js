@@ -52,15 +52,15 @@ export const seoFreshness = {
   badajoz: '2026-08-28',
   montaje_badajoz: '2026-08-28',
   zaragoza: '2026-08-28',
-  lisboa: '2026-09-10',   // enlace a la paralela portuguesa
+  lisboa: '2026-09-12',   // alta de Expodentária
   montaje_don_benito: '2026-08-28',
   ciudad_real: '2026-08-28',
   trujillo: '2026-08-28',
   montaje_zafra: '2026-08-28',
-  oporto: '2026-09-10',   // H1/H2 «no Porto» + enlace a la paralela portuguesa
+  oporto: '2026-09-12',   // alta de inProjecta y Maquishoes
   vigo: '2026-08-28',
   portugal_sur: '2026-09-10',
-  madrid: '2026-08-28',
+  madrid: '2026-09-12',   // alta de MATELEC y SIMA
   bilbao: '2026-08-28',
   malaga: '2026-09-11',   // alta de Transfiere en el cuerpo
   sevilla: '2026-09-12',   // SICAB, SIMOF, Salón del Motor y Fireca con su sector real
@@ -150,6 +150,11 @@ export const fairFreshness = {
   'stands-qualifica-oporto': '2026-08-31',
   'stands-gift-paper-oporto': '2026-08-31',
   'stands-tecnipao-oporto': '2026-08-31',
+  'stands-matelec-madrid': '2026-09-12',
+  'stands-sima-madrid': '2026-09-12',
+  'stands-expodentaria-lisboa': '2026-09-12',
+  'stands-inprojecta-oporto': '2026-09-12',
+  'stands-maquishoes-oporto': '2026-09-12',
   // Barcelona (Plaza Prioritaria) — clúster de 17 ferias satélite refrescado 2026-07-18.
   'stand-mwc-barcelona': '2026-08-27',
   'stand-ise-barcelona': '2026-08-27',

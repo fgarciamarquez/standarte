@@ -2268,6 +2268,13 @@ export const fairsData = [
     "sector": "Enología y Vinos"
   },
   {
+    "name": "Expodentária",
+    "country": "pt",
+    "slug": "stands-expodentaria-lisboa",
+    "city": "Lisboa",
+    "sector": "Salud y Medicina"
+  },
+  {
     "name": "Vinipax Beja",
     "country": "pt",
     "slug": "stand-vinipax-beja",
@@ -2639,6 +2646,20 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "inProjecta",
+    "country": "pt",
+    "slug": "stands-inprojecta-oporto",
+    "city": "Oporto",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Maquishoes",
+    "country": "pt",
+    "slug": "stands-maquishoes-oporto",
+    "city": "Oporto",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "Enoforum",
     "country": "es",
     "slug": "stand-enoforum-zaragoza",
@@ -2854,6 +2875,20 @@ export const fairsData = [
     "slug": "stand-motortec-madrid",
     "city": "Madrid",
     "sector": "Aeronáutica y Transporte"
+  },
+  {
+    "name": "MATELEC",
+    "country": "es",
+    "slug": "stands-matelec-madrid",
+    "city": "Madrid",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "SIMA",
+    "country": "es",
+    "slug": "stands-sima-madrid",
+    "city": "Madrid",
+    "sector": "Construcción e Infraestructuras"
   },
   {
     "name": "Feria del Jamón de Teruel y Alimentos de Calidad",
