@@ -2,7 +2,7 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 46
+n_ferias: 47
 ---
 # Maquinaria industrial
 
@@ -35,6 +35,7 @@ Actividad del sector [[Industria y Logística]].
 - [[JEC World Paris]]
 - [[MMH Sevilla]]
 - [[Maintenance Bilbao]]
+- [[Maquishoes]]
 - [[Moldplás]]
 - [[Morocco SIEMA Expo]]
 - [[Morocco Stitch & Tex]]

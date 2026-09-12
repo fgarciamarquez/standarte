@@ -2,7 +2,7 @@
 tipo: actividad
 clave: regalo-decoracion
 sector: "Comercio y Packaging"
-n_ferias: 14
+n_ferias: 15
 ---
 # Regalo y decoración
 
@@ -23,3 +23,4 @@ Actividad del sector [[Comercio y Packaging]].
 - [[Mercat de la Vall]]
 - [[Salon Viv'Habitat]]
 - [[TFWA World Exhibition]]
+- [[inProjecta]]

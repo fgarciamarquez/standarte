@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 34
+n_ferias: 36
 lat: 40.42
 lon: -3.7
 ---
@@ -28,6 +28,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Hygienalia Madrid]]
 - [[Iberpet Madrid]]
 - [[Intergift Madrid]]
+- [[MATELEC]]
 - [[Madrid Fusión]]
 - [[Madrid Tech Show]]
 - [[Madridjoya Madrid]]
@@ -38,6 +39,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Piscimad Madrid]]
 - [[REBUILD Madrid]]
 - [[SICUR Madrid]]
+- [[SIMA]]
 - [[SMART DOORS Madrid]]
 - [[Salón Gourmets Madrid]]
 - [[Salón Look Madrid]]

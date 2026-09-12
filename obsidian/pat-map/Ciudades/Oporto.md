@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 21
+n_ferias: 23
 lat: 41.15
 lon: -8.61
 ---
@@ -24,6 +24,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Expocosmética]]
 - [[Gift Paper]]
 - [[ITF Intertex Portugal]]
+- [[Maquishoes]]
 - [[Modtissimo]]
 - [[Portojóia]]
 - [[Portugal Smart Cities Summit]]
@@ -31,3 +32,4 @@ Ciudad dibujada en el mapa de Pat.
 - [[RE+ Portugal]]
 - [[Simplesmente Vinho Porto]]
 - [[Tecnipão]]
+- [[inProjecta]]

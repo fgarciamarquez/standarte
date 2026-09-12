@@ -2,7 +2,7 @@
 tipo: actividad
 clave: construccion
 sector: "Construcción e Infraestructuras"
-n_ferias: 30
+n_ferias: 31
 ---
 # Construcción
 
@@ -31,6 +31,7 @@ Actividad del sector [[Construcción e Infraestructuras]].
 - [[REBUILD Madrid]]
 - [[SETT]]
 - [[SIL Lisboa]]
+- [[SIMA]]
 - [[SOLUCOP]]
 - [[Salon Piscine & Jardin]]
 - [[Salon Viv'Habitat]]

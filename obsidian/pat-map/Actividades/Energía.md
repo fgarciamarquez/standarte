@@ -2,7 +2,7 @@
 tipo: actividad
 clave: energia
 sector: "Industria y Logística"
-n_ferias: 19
+n_ferias: 20
 ---
 # Energía
 
@@ -21,6 +21,7 @@ Actividad del sector [[Industria y Logística]].
 - [[EnerGaïa]]
 - [[Genera]]
 - [[Lisbon Energy Summit & Exhibition]]
+- [[MATELEC]]
 - [[MUBIL Mobility Expo]]
 - [[Marine Energy Week]]
 - [[Pollutec Lyon]]

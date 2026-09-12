@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-medico
 sector: "Salud y Medicina"
-n_ferias: 12
+n_ferias: 13
 ---
 # Congreso médico
 
@@ -17,6 +17,7 @@ Actividad del sector [[Salud y Medicina]].
 - [[Congreso SPCPRE (Cirurgia Plástica)]]
 - [[ESICM LIVES Lisboa]]
 - [[ESRA Congress Lisboa]]
+- [[Expodentária]]
 - [[GEDET Santiago de Compostela]]
 - [[Morocco Medical Expo]]
 - [[PEGS Europe Lisboa]]
