@@ -54,7 +54,7 @@ El PHP no corre en Vite: para probar formularios/panel admin se usa MAMP sobre e
 
 ## Estrategia SEO por ferias (decisión del usuario, 12/09/2026)
 
-El método de **una URL por feria** (`/ferias/stand-<feria>-<ciudad>`) es el que da resultados, aunque en plazas competidas como Madrid mejore despacio. Por eso hay que **ampliar de vez en cuando la red de ferias** en tres plazas prioritarias: Madrid (IFEMA), Lisboa (FIL, Altice Arena, Lisboa Congress Centre) y el entorno industrial del norte de Portugal (Oporto/Exponor, Braga, Guimarães, Batalha/Exposalão, Aveiro). Referencia a 12/09/2026: Madrid 34 fichas, Lisboa 27, Oporto 21, Batalha 5. Hay una Routine en claude.ai (días 1 y 15 de cada mes) que recuerda esto y propone candidatas; el alta se hace siempre con el procedimiento SEO «Absolutista» y la política de slugs `stands-` para marcas registradas.
+El método de **una URL por feria** (`/ferias/stand-<feria>-<ciudad>`) es el que da resultados, aunque en plazas competidas como Madrid mejore despacio. Por eso hay que **ampliar de vez en cuando la red de ferias** en tres plazas prioritarias: Madrid (IFEMA), Lisboa (FIL, Altice Arena, Lisboa Congress Centre) y el entorno industrial del norte de Portugal (Oporto/Exponor, Braga, Guimarães, Batalha/Exposalão, Aveiro). Referencia a 12/09/2026: Madrid 34 fichas, Lisboa 27, Oporto 21, Batalha 5. Una Routine en claude.ai (días 1 y 15 de cada mes, 05:00 UTC) da de alta y publica por sí sola 1 o 2 ferias por plaza siguiendo **`docs/alta_ferias.md`** (procedimiento «Absolutista»: 11 idiomas, fechas de fuente oficial, enlace desde la página matriz, frescura y slugs `stands-`).
 
 ## Decisiones pendientes (no ejecutar sin confirmar)
 
