@@ -34,6 +34,9 @@ export const builderPages = {
   // Málaga (2026-09-11): la página de plaza ya es Oro en es/en; la paralela ataca «constructor
   // de stands en Málaga» y cubre FYCMA, donde conviven ferias y congresos de ventana corta.
   constructor_stand_malaga:     { city: 'malaga',      cityName: 'Málaga',     venue: 'FYCMA — Palacio de Ferias y Congresos de Málaga', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  // Sevilla (2026-09-12): FIBES, tres pabellones diáfanos con arquetas cada 8 m; calendario mixto
+  // de ferias de gran público (SICAB, SIMOF, Motor) y profesionales (Fireca, MMH, TIS).
+  constructor_stand_sevilla:    { city: 'sevilla',     cityName: 'Sevilla',    cityNames: { en: 'Seville' }, venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
   // Defensa de una FICHA DE FERIA, no de una ciudad: FIGAN sufrió una denuncia y, tras
   // el cambio de URL a plural (stands-figan-zaragoza), la ficha no ha recuperado su
   // posición. Esta página vive bajo /ferias/ y ataca la intención "constructor de

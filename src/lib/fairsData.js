@@ -865,7 +865,28 @@ export const fairsData = [
     "country": "es",
     "slug": "stand-fireca-sevilla",
     "city": "Sevilla",
-    "sector": "Multisectorial y Profesional"
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "SICAB",
+    "country": "es",
+    "slug": "stands-sicab-sevilla",
+    "city": "Sevilla",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "SIMOF",
+    "country": "es",
+    "slug": "stands-simof-sevilla",
+    "city": "Sevilla",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "Salón del Motor de Sevilla",
+    "country": "es",
+    "slug": "stands-salon-motor-sevilla",
+    "city": "Sevilla",
+    "sector": "Aeronáutica y Transporte"
   },
   {
     "name": "MMH Sevilla",

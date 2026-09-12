@@ -188,6 +188,12 @@ export const fairDates = {
   'stand-expovacaciones-bilbao': { start: '2026-05-08', end: '2026-05-10', cadence: 'annual', source: 'https://expovacaciones.bilbaoexhibitioncentre.com/' },
   'stand-egurtek-bilbao': { start: '2026-10-28', end: '2026-10-29', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/eventos/egurtek-2026/' },
   'stand-canagua-energia-gran-canaria': { start: '2026-10-21', end: '2026-10-23', cadence: 'biennial', source: 'https://infecar.es/en/ferias-y-eventos/15th-canagua-and-energy-international-fair/' },
+  // Sevilla (2026-09-12). SIMOF y el Salón del Motor llevan su última edición confirmada:
+  // las siguientes no están publicadas y el sitio las trata como celebradas hasta refrescar.
+  'stand-fireca-sevilla': { start: '2027-03-03', end: '2027-03-05', cadence: 'annual', source: 'https://fibes.es/evento/fireca-2027/' },
+  'stands-sicab-sevilla': { start: '2026-11-17', end: '2026-11-22', cadence: 'annual', source: 'https://fibes.es/evento/sicab-2026/' },
+  'stands-simof-sevilla': { start: '2026-01-29', end: '2026-02-01', cadence: 'annual', source: 'https://fibes.es/evento/simof/' },
+  'stands-salon-motor-sevilla': { start: '2025-12-11', end: '2025-12-14', cadence: 'annual', source: 'https://fibes.es/evento/salon-del-motor-sevilla/' },
   'stand-mmh-sevilla': { start: '2026-10-20', end: '2026-10-22', cadence: 'biennial', source: 'https://mmhevent.com/' },
   'stand-advanced-manufacturing-madrid': { start: '2026-11-04', end: '2026-11-05', cadence: 'annual', source: 'https://www.ifema.es/advanced-manufacturing-madrid' },
   'stand-hip-madrid': { start: '2027-03-01', end: '2027-03-03', cadence: 'annual', source: 'https://www.ifema.es/hip' },

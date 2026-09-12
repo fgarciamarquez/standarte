@@ -45,6 +45,7 @@ export const seoFreshness = {
   constructor_stand_badajoz: '2026-09-11',
   constructor_stand_don_benito: '2026-09-11',
   constructor_stand_malaga: '2026-09-11',   // alta
+  constructor_stand_sevilla: '2026-09-12',  // alta
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
   home: '2026-08-28',
@@ -62,7 +63,7 @@ export const seoFreshness = {
   madrid: '2026-08-28',
   bilbao: '2026-08-28',
   malaga: '2026-09-11',   // alta de Transfiere en el cuerpo
-  sevilla: '2026-08-28',
+  sevilla: '2026-09-12',   // SICAB, SIMOF, Salón del Motor y Fireca con su sector real
   barcelona: '2026-08-28',
   alicante: '2026-08-28',
   elche: '2026-08-28',
@@ -139,6 +140,10 @@ export const fairFreshness = {
   'stands-agroexpo': '2026-09-06',
   'stands-talent-land-malaga': '2026-08-31',
   'stands-transfiere-malaga': '2026-09-11',
+  'stand-fireca-sevilla': '2026-09-12',   // sector y etiquetas reales, fecha 2027
+  'stands-sicab-sevilla': '2026-09-12',
+  'stands-simof-sevilla': '2026-09-12',
+  'stands-salon-motor-sevilla': '2026-09-12',
   'stands-natura-malaga': '2026-09-11',
   'stands-motor-malaga': '2026-09-11',
   'stands-modtissimo-oporto': '2026-08-31',

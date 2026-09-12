@@ -354,6 +354,27 @@ export const builderSeoData = {
         <p>Construimos para todo el calendario de FYCMA: <a href="/ferias/stand-des-malaga">DES</a>, <a href="/ferias/stand-ht-malaga">H&amp;T</a>, <a href="/ferias/stand-simed-malaga">Simed</a>, <a href="/ferias/stand-expo-agritech-malaga">Expo AgriTech</a>, <a href="/ferias/stand-greencities-malaga">Greencities</a>, <a href="/ferias/stands-talent-land-malaga">Talent Land España</a> y <a href="/ferias/stand-san-diego-comic-con-malaga">San Diego Comic-Con Málaga</a>, donde la escenografía pesa tanto como el stand. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno_montaje_stands_malaga">stands para ferias en Málaga</a>.</p>
         ${porque('Málaga')}`
     }
+  },
+  /* Sevilla (2026-09-12): FIBES es un recinto de gran formato —tres pabellones diáfanos
+   * de 7.200 m² con arquetas cada 8 m— y un calendario que mezcla ferias de gran público
+   * (SICAB, SIMOF, Salón del Motor) con salones profesionales (Fireca, MMH, TIS). Texto
+   * de CONSTRUCCIÓN: islas grandes, suelos para vehículos y animales, tráfico intenso. */
+  constructor_stand_sevilla: {
+    es: {
+      breadcrumb: 'Constructor de stands en Sevilla',
+      title: 'Constructor de stands en Sevilla (FIBES) | Taller propio | Standarte',
+      h1: 'Constructor de stands en Sevilla',
+      introText: 'Construimos stands a medida para FIBES, el Palacio de Exposiciones y Congresos de Sevilla, desde nuestro propio taller: estructura, suelos técnicos, carpintería, mobiliario y gráfica fabricados por nuestro equipo, con la ingeniería resuelta para islas de gran formato y para pabellones que reciben vehículos, caballos y público a miles.',
+      body: `
+        <h2>Constructor de stands en Sevilla: construir en pabellones grandes y llenos</h2>
+        <p>FIBES tiene tres pabellones diáfanos sin pilares, con arquetas de servicio cada ocho metros: es un recinto pensado para la isla de gran formato y la doble altura, y así se construye aquí. Pero su calendario impone otra variable que pocas plazas tienen: ferias de gran público —<a href="/ferias/stands-sicab-sevilla">SICAB</a>, <a href="/ferias/stands-simof-sevilla">SIMOF</a>, el <a href="/ferias/stands-salon-motor-sevilla">Salón del Motor</a>— por las que pasan decenas de miles de personas en pocos días. Un stand para FIBES se calcula para ese trasiego: cantos protegidos, materiales lavables donde toca el visitante y acabados nobles a la altura de la vista.</p>
+        <p>En los salones profesionales cambia el peso, no la exigencia: <a href="/ferias/stand-fireca-sevilla">Fireca</a> expone vehículos de rescate y el <a href="/ferias/stand-mmh-sevilla">MMH</a> maquinaria minera, así que el suelo se calcula para toneladas y las acometidas se pactan con el recinto antes de dibujar. Fabricamos en taller, premontamos el stand completo y lo transportamos a Sevilla con margen para que el montaje no dependa de un imprevisto en carretera.</p>
+        ${paso('Sevilla')}
+        ${tipos('Sevilla')}
+        <h2>Constructor de stands en Sevilla: ferias del recinto</h2>
+        <p>Construimos para todo el calendario de FIBES: <a href="/ferias/stands-sicab-sevilla">SICAB</a>, <a href="/ferias/stands-simof-sevilla">SIMOF</a>, <a href="/ferias/stand-fireca-sevilla">Fireca</a>, <a href="/ferias/stand-mmh-sevilla">MMH – Mining and Minerals Hall</a>, <a href="/ferias/stand-tis-sevilla">Tourism Innovation Summit</a>, <a href="/ferias/stand-autentica-sevilla">Auténtica</a> y el <a href="/ferias/stands-salon-motor-sevilla">Salón del Motor de Sevilla</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno_montaje_stands_sevilla">stands para ferias en Sevilla</a>.</p>
+        ${porque('Sevilla')}`
+    }
   }
 };
 
@@ -552,6 +573,21 @@ const EN = {
         <h2>Stand builder in Málaga: shows at the venue</h2>
         <p>We build across the FYCMA calendar: <a href="/en/ferias/stand-des-malaga">DES</a>, <a href="/en/ferias/stand-ht-malaga">H&amp;T</a>, <a href="/en/ferias/stand-simed-malaga">Simed</a>, <a href="/en/ferias/stand-expo-agritech-malaga">Expo AgriTech</a>, <a href="/en/ferias/stands-talent-land-malaga">Talent Land España</a> and <a href="/en/ferias/stand-san-diego-comic-con-malaga">San Diego Comic-Con Málaga</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_malaga">trade fair stands in Málaga</a> page.</p>
         ${porqueEn('Málaga')}`
+  },
+  constructor_stand_sevilla: {
+    breadcrumb: 'Stand builder in Seville',
+    title: 'Stand builder in Seville (FIBES) | Own workshop | Standarte',
+    h1: 'Stand builder in Seville',
+    introText: 'We build custom stands for FIBES, the Seville Exhibition and Conference Centre, from our own workshop: structure, technical floors, joinery, furniture and graphics made by our team, engineered for large island stands and for halls that take vehicles, horses and visitors by the thousand.',
+    body: `
+        <h2>Stand builder in Seville: building in big, busy halls</h2>
+        <p>FIBES has three column-free halls with service pits every eight metres: a venue made for the large island stand and the double-decker, and that is how we build here. Its calendar adds a variable few venues have: public shows — <a href="/en/ferias/stands-sicab-sevilla">SICAB</a>, <a href="/en/ferias/stands-simof-sevilla">SIMOF</a>, the <a href="/en/ferias/stands-salon-motor-sevilla">Motor Show</a> — with tens of thousands of visitors in a few days. A stand for FIBES is sized for that traffic: protected edges, washable materials where people touch, fine finishes at eye level.</p>
+        <p>At the professional shows the weight changes, not the demand: <a href="/en/ferias/stand-fireca-sevilla">Fireca</a> exhibits rescue vehicles and <a href="/en/ferias/stand-mmh-sevilla">MMH</a> mining machinery, so the floor is sized for tonnes and services are agreed with the venue before anything is drawn. We manufacture in the workshop, pre-assemble the whole stand and transport it to Seville with margin, so installation never depends on a delay on the road.</p>
+        ${pasoEn('Seville')}
+        ${tiposEn('Seville')}
+        <h2>Stand builder in Seville: shows at the venue</h2>
+        <p>We build across the FIBES calendar: <a href="/en/ferias/stands-sicab-sevilla">SICAB</a>, <a href="/en/ferias/stands-simof-sevilla">SIMOF</a>, <a href="/en/ferias/stand-fireca-sevilla">Fireca</a>, <a href="/en/ferias/stand-mmh-sevilla">MMH – Mining and Minerals Hall</a>, <a href="/en/ferias/stand-tis-sevilla">Tourism Innovation Summit</a> and <a href="/en/ferias/stand-autentica-sevilla">Auténtica</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_seville">trade fair stands in Seville</a> page.</p>
+        ${porqueEn('Seville')}`
   }
 };
 
