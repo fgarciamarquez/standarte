@@ -418,6 +418,115 @@ if (!function_exists('cpx_key')) {
 		return (bool) $sent;
 	}
 
+	/* Suma de los conceptos del presupuesto (sin descuento ni impuestos): es la cifra
+	 * que el cliente ve como «Subtotal» y la que sirve para saber si el precio ha bajado. */
+	function cpx_budget_subtotal($projectId) {
+		$s = 0.0;
+		foreach (cpx_rows('client_project_budget_items?select=amount&project_id=eq.' . urlencode($projectId)) as $it) {
+			$s += (float) $it['amount'];
+		}
+		return round($s, 2);
+	}
+
+	/* ¿Toca avisar al cliente de un MEJOR PRECIO?
+	 * $p es la fila del proyecto; $known, la última cifra que el cliente conoce (la del
+	 * último aviso o, si nunca lo hubo, la de antes de este cambio); $now, la de después.
+	 * Solo se avisa cuando baja: una subida no es una noticia que dar por correo, y una
+	 * bajada que no llega a recuperar lo que el cliente ya tenía tampoco (si se subió a
+	 * 7.000 sin avisar y luego se baja a 6.800, el cliente sigue teniendo 6.425).
+	 * Nunca se avisa de un proyecto que el cliente aún no ha visto (last_client_visit
+	 * vacío y sin aprobar): al preparar un proyecto —típicamente un duplicado— se quitan
+	 * y ajustan conceptos, y cada recorte mandaría un correo sobre un precio que nunca
+	 * se le había dado. Tampoco a pilotos públicos, proyectos paralizados o sin email. */
+	function cpx_should_notify_price($p, $known, $now) {
+		if ($known === null || $now === null) return false;
+		if (round((float) $now, 2) >= round((float) $known, 2)) return false;
+		if ((float) $now <= 0) return false;                                   // presupuesto vaciado: no es una oferta
+		if (!empty($p['is_demo']) || !empty($p['paused'])) return false;
+		if (empty($p['last_client_visit']) && empty($p['approved'])) return false;
+		return count(cpx_emails(isset($p['client_email']) ? $p['client_email'] : '')) > 0;
+	}
+
+	/* Correo bilingüe de MEJOR PRECIO: saludo, cifra anterior y nueva, enlace al proyecto y
+	 * recordatorio de que puede pedir cambios antes y después de aprobar. Devuelve true si salió. */
+	function cpx_price_drop_email($p, $known, $now) {
+		$to = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+		if (!$to) return false;
+
+		$ref     = isset($p['ref']) ? $p['ref'] : '';
+		$titleEs = !empty($p['title_es']) ? $p['title_es'] : $ref;
+		$titleEn = !empty($p['title_en']) ? $p['title_en'] : $titleEs;
+		$url     = 'https://standarte.es/proyecto?t=' . (isset($p['access_token']) ? $p['access_token'] : '');
+		$h       = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+		$eurEs   = function ($n) { return number_format($n, ($n == round($n) ? 0 : 2), ',', '.') . '&nbsp;€'; };
+		$eurEn   = function ($n) { return '€' . number_format($n, ($n == round($n) ? 0 : 2), '.', ','); };
+		$name    = trim(isset($p['client_name']) ? $p['client_name'] : '');
+		$saludoEs = $name !== '' ? 'Estimado/a ' . $h($name) . ':' : 'Estimado cliente:';
+		$saludoEn = $name !== '' ? 'Dear ' . $h($name) . ',' : 'Dear client,';
+		$diff = (float) $known - (float) $now;
+
+		$es = "<p style='margin:0 0 12px;text-align:left;'>" . $saludoEs . "</p>"
+			. "<p style='margin:0 0 12px;text-align:left;'>Le escribimos con una buena noticia sobre su proyecto <strong>" . $h($titleEs) . "</strong> (" . $h($ref) . "): "
+			. "hemos revisado la hoja de presupuesto y <strong>podemos ofrecerle un mejor precio</strong> por la realización del proyecto. "
+			. "El presupuesto pasa de " . $eurEs((float) $known) . " a <strong>" . $eurEs((float) $now) . "</strong>, es decir, <strong>" . $eurEs($diff) . " menos</strong> (importes sin impuestos). "
+			. "El detalle, concepto a concepto, ya está actualizado en su página del proyecto.</p>"
+			. "<p style='margin:0 0 16px;text-align:left;'>Recuerde que puede proponer los cambios que desee en el diseño y en el presupuesto, "
+			. "<strong>tanto antes como después de aceptar la propuesta</strong>: escríbanos desde la propia página del proyecto o a su interlocutor y los incorporamos.</p>";
+		$en = "<p style='margin:0 0 12px;text-align:left;color:#555;'>" . $saludoEn . "</p>"
+			. "<p style='margin:0 0 12px;text-align:left;color:#555;'>We are writing with good news about your project <strong>" . $h($titleEn) . "</strong> (" . $h($ref) . "): "
+			. "we have reviewed the quote and <strong>can offer you a better price</strong> for carrying out the project. "
+			. "The quote goes from " . $eurEn((float) $known) . " to <strong>" . $eurEn((float) $now) . "</strong>, that is, <strong>" . $eurEn($diff) . " less</strong> (amounts before taxes). "
+			. "The item-by-item breakdown is already updated on your project page.</p>"
+			. "<p style='margin:0 0 16px;text-align:left;color:#555;'>Remember that you can suggest any changes you wish to the design and the quote, "
+			. "<strong>both before and after accepting the proposal</strong>: write to us from the project page itself or to your contact and we will incorporate them.</p>";
+
+		$subject = 'Mejor precio para su proyecto / A better price for your project — ' . $ref;
+		$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
+			. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
+			. $es . $en
+			. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>Abrir el proyecto / Open the project</a></p>"
+			. "<p style='text-align:center;font-size:12px;color:#888;margin:8px 0 0;'><a href='" . $h($url) . "' style='color:#888;'>" . $h($url) . "</a></p>"
+			. "<p style='margin:28px 0 0;text-align:left;'>Un cordial saludo,<br>Best regards,<br><strong>Equipo de Standarte / The Standarte team</strong></p>"
+			. "<p style='text-align:center;font-size:12px;color:#888;margin-top:24px;'>Mensaje automatizado del sistema de gestión de proyectos de Standarte.<br>Automated message from Standarte's project management system.<br><a href='https://standarte.es' style='color:#888;text-decoration:none;'>https://standarte.es</a></p>"
+			. "</body></html>";
+
+		require_once __DIR__ . '/email_campaing/mailer.php';
+		$sent = false;
+		try {
+			$cfg = require __DIR__ . '/email_campaing/config.php';
+			$sent = cpx_send_each($cfg, $to, $subject, $html);
+		} catch (Exception $e) {
+			$sent = false;
+		}
+		if (!$sent) {
+			$sent = @mail(implode(', ', $to), $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
+		}
+		return (bool) $sent;
+	}
+
+	/* Se llama DESPUÉS de tocar la hoja de presupuesto (alta, edición o baja de un
+	 * concepto) con el subtotal que había ANTES. Compara con lo que el cliente conoce
+	 * —el subtotal del último aviso, guardado en price_notice_total, o el de antes del
+	 * cambio si nunca se le avisó— y, si ha bajado, le manda el correo y anota la cifra
+	 * comunicada. Varios recortes seguidos en la misma sesión de edición no producen un
+	 * correo cada uno: si el anterior salió hace menos de diez minutos se espera, y el
+	 * siguiente cambio (o el último de la tanda, pasado ese tiempo) informa del total.
+	 * Devuelve true si ha salido el correo. */
+	function cpx_price_drop_notify($projectId, $subtotalBefore) {
+		$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId)
+			. '&select=id,ref,title_es,title_en,client_name,client_email,access_token,approved,is_demo,paused,last_client_visit,price_notice_total,price_notice_at&limit=1');
+		$p = isset($rows[0]) ? $rows[0] : null;
+		if (!$p) return false;
+		$now   = cpx_budget_subtotal($projectId);
+		$known = (isset($p['price_notice_total']) && $p['price_notice_total'] !== '' && $p['price_notice_total'] !== null)
+			? (float) $p['price_notice_total'] : (float) $subtotalBefore;
+		if (!cpx_should_notify_price($p, $known, $now)) return false;
+		if (!empty($p['price_notice_at']) && (time() - strtotime($p['price_notice_at'])) < 600) return false;
+		if (!cpx_price_drop_email($p, $known, $now)) return false;
+		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), array('price_notice_total' => $now, 'price_notice_at' => gmdate('c')));
+		return true;
+	}
+
 	/* Estado que impide cualquier aviso de fechas: aprobado (ya no hay nada que
 	 * decidir), pausado, piloto público o sin email de cliente. */
 	function cpx_dates_notifiable($after) {

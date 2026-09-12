@@ -139,24 +139,33 @@ if ($action === 'save') {
 	pa_out(array('ok' => $ok, 'offer_notified' => $offerNotified, 'valid_until_notified' => $validNotified));
 }
 
+/* Hoja de presupuesto. Cada cambio se compara con el subtotal de ANTES: si el precio
+ * baja, el cliente recibe un correo de «mejor precio» (cpx_price_drop_notify) y la
+ * respuesta lo dice con price_notified para que quien edita lo vea. */
 if ($action === 'add_budget') {
+	$antes = cpx_budget_subtotal($projectId);
 	$r = cpx_sb('POST', 'client_project_budget_items', array(
 		'project_id' => $projectId, 'concept_es' => pa_post('concept_es'), 'concept_en' => pa_post('concept_en'),
 		'amount' => (float) str_replace(',', '.', pa_post('amount', '0')), 'sort_order' => (int) pa_post('sort_order', '999')
 	));
-	pa_out(array('ok' => (int) $r['code'] < 300));
+	$ok = (int) $r['code'] < 300;
+	pa_out(array('ok' => $ok, 'price_notified' => $ok && cpx_price_drop_notify($projectId, $antes)));
 }
 if ($action === 'edit_budget') {
 	$fields = array();
 	foreach (array('concept_es', 'concept_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
 	if (isset($_POST['amount'])) $fields['amount'] = (float) str_replace(',', '.', pa_post('amount', '0'));
 	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));
+	$antes = isset($fields['amount']) ? cpx_budget_subtotal($projectId) : null;
 	$r = cpx_sb('PATCH', 'client_project_budget_items?id=eq.' . urlencode(pa_post('item_id')) . '&project_id=eq.' . urlencode($projectId), $fields);
-	pa_out(array('ok' => (int) $r['code'] < 300));
+	$ok = (int) $r['code'] < 300;
+	pa_out(array('ok' => $ok, 'price_notified' => $ok && $antes !== null && cpx_price_drop_notify($projectId, $antes)));
 }
 if ($action === 'del_budget') {
+	$antes = cpx_budget_subtotal($projectId);
 	$r = cpx_sb('DELETE', 'client_project_budget_items?id=eq.' . urlencode(pa_post('item_id')) . '&project_id=eq.' . urlencode($projectId));
-	pa_out(array('ok' => (int) $r['code'] < 300));
+	$ok = (int) $r['code'] < 300;
+	pa_out(array('ok' => $ok, 'price_notified' => $ok && cpx_price_drop_notify($projectId, $antes)));
 }
 
 if ($action === 'add_media') {
