@@ -2,7 +2,7 @@
 tipo: actividad
 clave: moda-textil
 sector: "Comercio y Packaging"
-n_ferias: 17
+n_ferias: 18
 ---
 # Moda y textil
 
@@ -23,6 +23,7 @@ Actividad del sector [[Comercio y Packaging]].
 - [[Momad Madrid]]
 - [[Morocco Stitch & Tex]]
 - [[Morocco Textile Expo]]
+- [[SIMOF]]
 - [[Salon du Mariage]]
 - [[Tanger Fashion Week]]
 - [[Textilhogar]]

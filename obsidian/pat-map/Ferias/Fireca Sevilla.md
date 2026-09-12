@@ -9,10 +9,11 @@ con_texto: true
 # Fireca Sevilla
 
 - Ciudad: [[Sevilla]]
-- Sector(es): [[Multisectorial y Profesional]]
+- Sector(es): [[Aeronáutica y Transporte]], [[Industria y Logística]]
 
 ## Actividades
-- [[Multisectorial]]
+- [[Seguridad]]
+- [[Transporte y logística]]
 
 ## Descripción
 Fireca es la Feria Internacional de Rescate, Auxilio y Emergencias, celebrada en FIBES (Palacio de Exposiciones y Congresos de Sevilla). Reúne vehículos de rescate, equipamiento para bomberos, policía y emergencias, con simulacros y demostraciones en directo.

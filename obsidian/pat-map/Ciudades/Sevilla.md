@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 4
+n_ferias: 7
 lat: 37.39
 lon: -5.99
 ---
@@ -13,4 +13,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[AUTENTICA Sevilla]]
 - [[Fireca Sevilla]]
 - [[MMH Sevilla]]
+- [[SICAB]]
+- [[SIMOF]]
+- [[Salón del Motor de Sevilla]]
 - [[TIS Sevilla]]

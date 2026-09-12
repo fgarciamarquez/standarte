@@ -2,7 +2,7 @@
 tipo: actividad
 clave: automocion
 sector: "Aeronáutica y Transporte"
-n_ferias: 12
+n_ferias: 13
 ---
 # Automoción
 
@@ -21,3 +21,4 @@ Actividad del sector [[Aeronáutica y Transporte]].
 - [[Salón de Competición de Asturias]]
 - [[Salón del Automóvil de Mérida]]
 - [[Salón del Automóvil de Salamanca]]
+- [[Salón del Motor de Sevilla]]

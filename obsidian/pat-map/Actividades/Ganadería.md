@@ -2,7 +2,7 @@
 tipo: actividad
 clave: ganaderia
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 29
+n_ferias: 30
 ---
 # Ganadería
 
@@ -34,6 +34,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Fira del Camp]]
 - [[MED'Agri]]
 - [[SALAMAQ]]
+- [[SICAB]]
 - [[Salon de l'Agriculture Nouvelle-Aquitaine]]
 - [[Semana Verde de Galicia]]
 - [[Sommet de l'Élevage]]
