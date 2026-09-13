@@ -2033,7 +2033,7 @@
 
 <svelte:window on:keydown={handleKeydown} on:scroll|passive={updateScrollState} />
 
-<header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services' && !animatedHero} class:hero-anim={animatedHero}>
+<header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services' && !animatedHero} class:hero-anim={animatedHero} class:light-hero={isBuilderPage(section)}>
   {#if isCityPage && !section.startsWith('montaje_') && !CITIES_WITHOUT_COVER.includes(section)}
     <!-- Páginas de ciudad: la portada de la ciudad como fondo del header (responsive).
          Las ciudades sin portada (CITIES_WITHOUT_COVER) usan el fondo oscuro del header. -->
@@ -2055,7 +2055,7 @@
     <div class="hero-bg-layer hero-bg-a" aria-hidden="true"></div>
     <div class="hero-bg-layer hero-bg-b" aria-hidden="true"></div>
   {/if}
-  <nav class="nav" class:scrolled={isScrolled}>
+  <nav class="nav" class:scrolled={isScrolled} class:nav-on-light={isBuilderPage(section)}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label={BRAND.leadGen ? 'StandQuote' : 'Standarte'}></a>
     <div class="nav-right">
       <div class="lang-menu lang-menu-mobile">
@@ -2127,7 +2127,43 @@
       <AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />
     </section>
   {:else if seoContent}
-    <div class="hero-subpage" class:transparent-hero={section === 'services'} class:on-hero-photo={animatedHero}>
+    <div class="hero-subpage" class:transparent-hero={section === 'services'} class:on-hero-photo={animatedHero} class:builder-hero={isBuilderPage(section)}>
+      {#if isBuilderPage(section)}
+        <!-- Páginas paralelas de constructor (12/09/2026 → rediseño 13/09/2026): primera
+             pantalla clara y cálida en vez del fondo negro. Título, intro y botón de
+             presupuesto juntos a la izquierda; la ficha de datos, en tarjeta a la derecha.
+             El botón lleva al formulario del pie (#contact) y el enlace secundario al
+             buscador de ferias, que sigue justo debajo del hero. -->
+        <div class="hero-contents bh-grid">
+          <div class="bh-text">
+            <nav class="breadcrumbs bh-crumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : lang === 'pt' ? 'Início' : 'Home'}</a></li>
+                <li><span class="divider">/</span></li>
+                <li><span class="current" aria-current="page">{seoContent.breadcrumb}</span></li>
+              </ol>
+            </nav>
+            <h1>{h1Text}</h1>
+            <p class="hero-lead">{seoContent.introText}</p>
+            <div class="bh-actions">
+              <a class="bh-cta" href="#contact" on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{ctaBudget(lang).main} <span class="bh-cta-24h">{ctaBudget(lang).h24}</span></a>
+              <a class="bh-secondary" href="#builder-fair-search">{lang === 'es' ? 'Buscar mi feria' : lang === 'pt' ? 'Procurar a minha feira' : 'Find my show'}</a>
+            </div>
+          </div>
+          {#if facts && facts.rows.length}
+            <div class="bh-card">
+              <table class="bf-table">
+                <caption>{facts.title}</caption>
+                <tbody>
+                  {#each facts.rows as r}
+                    <tr><th scope="row">{r.k}</th><td>{#if r.href}<a href={r.href}>{r.v}</a>{:else}{r.v}{/if}</td></tr>
+                  {/each}
+                </tbody>
+              </table>
+            </div>
+          {/if}
+        </div>
+      {:else}
       <div class="hero-contents">
         {#if !isCityPage && section !== 'proyecto_auditado'}
           <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -2155,6 +2191,7 @@
       </div>
       {#if animatedHero}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} cityTools={isCityPage} on:reactivate={reopenAdvisor} on:togglesearch={toggleCitySearch} />{/if}
       {#if section === 'proyecto_auditado'}<AiSourceButtons {lang} variant="hero" canReactivate {patVisible} on:reactivate={reopenAdvisor} />{/if}
+      {/if}
     </div>
   {/if}
 </header>
@@ -2826,6 +2863,75 @@
 <style>
   /* Ficha de datos de las páginas paralelas: tabla sobria, sin imágenes y legible de
      un vistazo también en móvil (la clave de estas páginas es ir ligeras). */
+  /* ---- Hero claro de las páginas de constructor ---- */
+  .static-header.light-hero { background: #f7f6f1 !important; }
+  .nav.nav-on-light:not(.scrolled) .brand { background-image: url('/img/logo_stand-arte_negro.svg'); }
+  .nav.nav-on-light:not(.scrolled) .nav-links > a:not(.nav-cta-btn),
+  .nav.nav-on-light:not(.scrolled) .nav-links button,
+  .nav.nav-on-light:not(.scrolled) .lang-menu > span { color: #1b1b1a; text-shadow: none; }
+  .nav.nav-on-light:not(.scrolled) .nav-links > a:not(.nav-cta-btn):hover,
+  .nav.nav-on-light:not(.scrolled) .nav-links > a:not(.nav-cta-btn):focus { color: #b89400; }
+  .nav.nav-on-light:not(.scrolled) .menu-toggle { color: #1b1b1a; }
+  .hero-subpage.builder-hero {
+    align-items: stretch;
+    text-align: left;
+    padding: 132px 15px 56px;
+    min-height: 0;
+    background: linear-gradient(180deg, #fbfaf6 0%, #f3f1ea 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .hero-subpage.builder-hero::after {
+    /* filo dorado bajo la primera pantalla: el acento de marca, sin ruido */
+    content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, #ffd84d 55%, rgba(255, 200, 0, 0) 100%);
+  }
+  .bh-grid {
+    width: min(var(--container, 1140px), 100%);
+    display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.9fr);
+    gap: 40px 56px; align-items: center;
+  }
+  .bh-text { min-width: 0; }
+  .hero-subpage.builder-hero h1 { color: #1b1b1a; font-size: 40px; font-weight: 500; line-height: 1.18; margin: 0 0 16px; }
+  .hero-subpage.builder-hero .hero-lead { color: #3d3f42; font-size: 17px; line-height: 1.65; margin: 0; max-width: 60ch; }
+  .bh-crumbs { margin-bottom: 14px; }
+  .bh-crumbs ol { justify-content: flex-start; }
+  .bh-crumbs a { color: #6b6d70; }
+  .bh-crumbs a:hover { color: #1b1b1a; }
+  .bh-crumbs .divider { color: #b5b7ba; }
+  .bh-crumbs .current { color: #9a7a00; }
+  .bh-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 26px; }
+  .bh-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 13px 26px; border-radius: 30px;
+    background: var(--gold); color: #111; font-weight: 700; font-size: 16px; text-decoration: none;
+    box-shadow: 0 6px 18px rgba(255, 200, 0, 0.28);
+    transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), background .25s, box-shadow .25s;
+  }
+  .bh-cta:hover, .bh-cta:focus { background: #111; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18); }
+  .bh-cta-24h { font-weight: 400; opacity: .85; }
+  .bh-secondary { color: #1b1b1a; font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+  .bh-secondary:hover { border-color: #111; }
+  .bh-card {
+    background: #fff; border-radius: 14px; padding: 22px 24px 14px;
+    box-shadow: 0 10px 30px rgba(41, 47, 53, 0.08), 0 1px 0 rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .bh-card .bf-table { margin: 0; max-width: none; color: #1b1b1a; }
+  .bh-card .bf-table caption { color: #1b1b1a; }
+  .bh-card .bf-table th { color: #5f6266; opacity: 1; width: 44%; }
+  .bh-card .bf-table td a { color: #1b1b1a; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+  @media (max-width: 900px) {
+    .bh-grid { grid-template-columns: 1fr; gap: 28px; }
+    .hero-subpage.builder-hero { padding: 108px 15px 40px; }
+    .hero-subpage.builder-hero h1 { font-size: 30px; }
+    .bh-card { padding: 16px 16px 8px; }
+    .bh-card .bf-table { font-size: 14px; }
+  }
+  @media (max-width: 480px) {
+    .bh-actions { flex-direction: column; align-items: flex-start; }
+    .bh-cta { width: 100%; justify-content: center; }
+  }
+
   .bf-table { width: 100%; max-width: 640px; border-collapse: collapse; margin: 18px 0 10px; font-size: 15px; }
   .bf-table caption { text-align: left; font-weight: 700; padding-bottom: 8px; letter-spacing: .02em; }
   .bf-table th, .bf-table td { text-align: left; padding: 7px 10px; border-bottom: 1px solid rgba(0,0,0,.12); vertical-align: top; }
