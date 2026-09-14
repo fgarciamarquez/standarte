@@ -190,9 +190,10 @@
     return (cityLabels[lang] || cityLabels.es)[key] || cityStr;
   }
 
-  // Las noticias solo se publican en español: en cualquier otro idioma la lista queda
-  // vacía y se muestra el aviso "solo en español" con enlace a /blog.
-  $: filteredNews = (lang === 'es' ? news : [])
+  // Cada idioma lista SUS noticias (14/09/2026). Antes solo se listaban en español y
+  // las versiones en otros idiomas quedaban huérfanas (solo alcanzables por hreflang y
+  // sitemap). Si un idioma no tiene ninguna, se muestra el aviso con enlace a /blog.
+  $: filteredNews = news
     .filter(item => item.lang === lang)
     .filter(item => {
       if (activeFilter === 'all') return true;

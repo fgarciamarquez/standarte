@@ -142,6 +142,19 @@
     }
   };
 
+  const relatedLabels = {
+    es: { title: 'Más noticias de Standarte', prev: 'Noticia anterior', next: 'Noticia siguiente', all: 'Todas las noticias' },
+    en: { title: 'More news from Standarte', prev: 'Previous article', next: 'Next article', all: 'All news' },
+    de: { title: 'Weitere News von Standarte', prev: 'Vorheriger Artikel', next: 'Nächster Artikel', all: 'Alle News' },
+    pt: { title: 'Mais notícias da Standarte', prev: 'Notícia anterior', next: 'Notícia seguinte', all: 'Todas as notícias' },
+    zh: { title: 'Standarte 更多新闻', prev: '上一篇', next: '下一篇', all: '全部新闻' },
+    hi: { title: 'Standarte की और खबरें', prev: 'पिछला लेख', next: 'अगला लेख', all: 'सभी समाचार' },
+    fr: { title: 'Plus d\'actualités Standarte', prev: 'Article précédent', next: 'Article suivant', all: 'Toutes les actualités' },
+    it: { title: 'Altre notizie da Standarte', prev: 'Articolo precedente', next: 'Articolo successivo', all: 'Tutte le notizie' },
+    ko: { title: 'Standarte 소식 더 보기', prev: '이전 글', next: '다음 글', all: '전체 뉴스' }
+  };
+  $: RL = relatedLabels[lang] || relatedLabels.es;
+
   const cityLabels = {
     es: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Málaga', lisboa: 'Lisboa', badajoz: 'Badajoz' },
     en: { madrid: 'Madrid', barcelona: 'Barcelona', bilbao: 'Bilbao', malaga: 'Malaga', lisboa: 'Lisbon', badajoz: 'Badajoz' },
@@ -365,6 +378,26 @@
       {@html article.content}
     </div>
 
+    <!-- Rastro entre noticias (mismo idioma): relacionadas por ciudad y recientes, más
+         anterior/siguiente. Enlaces reales en el HTML prerenderizado, para el rastreo. -->
+    {#if (data.related && data.related.length) || data.prev || data.next}
+      <nav class="news-related" aria-label={RL.title}>
+        {#if data.related && data.related.length}
+          <h2>{RL.title}</h2>
+          <ul>
+            {#each data.related as r}
+              <li><a href="/blog/{r.slug}">{r.title}</a><span class="news-related-meta">{translateCity(r.location)} · {formatDate(r.date)}</span></li>
+            {/each}
+          </ul>
+        {/if}
+        <div class="news-prevnext">
+          {#if data.prev}<a class="news-prev" href="/blog/{data.prev.slug}" rel="prev">← {RL.prev}: {data.prev.title}</a>{/if}
+          <a class="news-all" href={pathFor(lang, 'noticias')}>{RL.all}</a>
+          {#if data.next}<a class="news-next" href="/blog/{data.next.slug}" rel="next">{RL.next}: {data.next.title} →</a>{/if}
+        </div>
+      </nav>
+    {/if}
+
     <!-- Panel de Pat: invita a elegir ciudad y feria para pedir una propuesta. -->
     {#if showAdvisor}
       <WelcomeAdvisor {lang} embedded dismissible={false} on:openPrivacy={() => openLegalModal('privacy')} on:dismiss={() => (showAdvisor = false)} />
@@ -483,6 +516,18 @@
     margin: 0 auto;
     padding: 30px 15px 0;
   }
+
+  .news-related { margin: 40px 0 8px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, 0.1); }
+  .news-related h2 { font-size: 1.15em; margin: 0 0 12px; }
+  .news-related ul { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 10px; }
+  .news-related li a { color: #1b1b1a; font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--gold, #ffc800); }
+  .news-related li a:hover { border-color: #111; }
+  .news-related-meta { display: block; font-size: 0.85em; color: #777; margin-top: 2px; }
+  .news-prevnext { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 18px; font-size: 0.92em; }
+  .news-prevnext a { color: #444; text-decoration: none; }
+  .news-prevnext a:hover { color: #111; text-decoration: underline; }
+  .news-prev, .news-next { flex: 1 1 260px; }
+  .news-next { text-align: right; }
 
   .article-content-body {
     background-color: #ffffff;
