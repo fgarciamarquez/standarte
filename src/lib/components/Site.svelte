@@ -2132,8 +2132,8 @@
         <!-- Páginas paralelas de constructor (12/09/2026 → rediseño 13/09/2026): primera
              pantalla clara y cálida en vez del fondo negro. Título, intro y botón de
              presupuesto juntos a la izquierda; la ficha de datos, en tarjeta a la derecha.
-             El botón lleva al formulario del pie (#contact) y el enlace secundario al
-             buscador de ferias, que sigue justo debajo del hero. -->
+             El botón lleva al formulario del pie (#contact). Sin enlace al buscador: ya
+             está justo debajo del hero y el enlace era redundante (14/09/2026). -->
         <div class="hero-contents bh-grid">
           <div class="bh-text">
             <nav class="breadcrumbs bh-crumbs" aria-label="Breadcrumb">
@@ -2147,7 +2147,6 @@
             <p class="hero-lead">{seoContent.introText}</p>
             <div class="bh-actions">
               <a class="bh-cta" href="#contact" on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{ctaBudget(lang).main} <span class="bh-cta-24h">{ctaBudget(lang).h24}</span></a>
-              <a class="bh-secondary" href="#builder-fair-search">{lang === 'es' ? 'Buscar mi feria' : lang === 'pt' ? 'Procurar a minha feira' : 'Find my show'}</a>
             </div>
           </div>
           {#if facts && facts.rows.length}
@@ -2909,8 +2908,6 @@
   }
   .bh-cta:hover, .bh-cta:focus { background: #111; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18); }
   .bh-cta-24h { font-weight: 400; opacity: .85; }
-  .bh-secondary { color: #1b1b1a; font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
-  .bh-secondary:hover { border-color: #111; }
   .bh-card {
     background: #fff; border-radius: 14px; padding: 22px 24px 14px;
     box-shadow: 0 10px 30px rgba(41, 47, 53, 0.08), 0 1px 0 rgba(0, 0, 0, 0.04);
