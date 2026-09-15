@@ -842,6 +842,10 @@ DirectorySlash Off
   # GitHub Actions invoca con curl (cron_drip.php, bounce-handler.php) para no romperlos.
   RewriteCond %{REQUEST_URI} !^/admin/email_campaing/cron_drip\.php [NC]
   RewriteCond %{REQUEST_URI} !^/bounce-handler\.php [NC]
+  # Crones de proyectos de cliente, también invocados con curl desde GitHub Actions
+  # (15/09/2026: cron_oferta.php llevaba bloqueado con 403 por esta misma regla).
+  RewriteCond %{REQUEST_URI} !^/admin/cron_oferta\.php [NC]
+  RewriteCond %{REQUEST_URI} !^/admin/cron_recordatorio\.php [NC]
   RewriteCond %{HTTP_USER_AGENT} (HTTrack|WebCopier|WebZIP|WebReaper|Teleport|SiteSucker|Offline\ Explorer|WebStripper|larbin|libwww-perl|python-requests|python-urllib|^Scrapy|node-fetch|^Wget|^curl) [NC]
   RewriteRule ^ - [F,L]
 
