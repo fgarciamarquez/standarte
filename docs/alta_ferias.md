@@ -107,10 +107,11 @@ El objetivo es que los textos **parezcan escritos por una persona del oficio**, 
 
 ## 4. Candidatas pendientes (actualizar en cada tanda)
 
-- Oporto: Portugal Print (print, packaging y etiquetado), Exponor, 25-27 feb 2027 (portugalprint.com).
-- Lisboa: FILDecor – Living & Design (mueble y decoración, FIL/CCL), fecha 2026 pendiente de confirmar en fil.pt.
 - Lisboa: Motorclássico (clásicos, FIL, abril), público general; solo si faltan candidatas profesionales.
-- Tanda 12/09/2026 ya publicada: MATELEC, SIMA, Expodentária, inProjecta, Maquishoes.
+- Madrid: Climatización y Refrigeración (C&R, bienal, próxima 2027) y Expofranquicia (ya en catálogo sin fecha: solo actualizar fecha).
+- Oporto/norte: Homeing (Exponor, diseño de interiores y hotel), Expocosmética ya cubierta; Braga y Batalha sin candidatas verificadas todavía.
+- Tanda 12/09/2026 publicada: MATELEC, SIMA, Expodentária, inProjecta, Maquishoes.
+- Tanda 15/09/2026 publicada: InterSICOP (Madrid, 16-18 feb 2027), FILDecor (Lisboa, última edición 25-28 jun 2026, 2027 por confirmar), Portugal Print (Oporto, 25-27 feb 2027). Referencia tras esta tanda: Madrid 37, Lisboa 29, Oporto 24, Batalha 5; 480 ferias.
 
 ## 5. Lo que este procedimiento NO hace
 

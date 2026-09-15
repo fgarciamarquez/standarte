@@ -287,6 +287,13 @@ export const fairDates = {
   'stands-inprojecta-oporto': { start: '2027-02-18', end: '2027-02-20', cadence: 'annual', source: 'https://exponor.pt/inprojecta/' },
   // Maquishoes 2027 (15-17 abr, Exponor). Cadencia no publicada.
   'stands-maquishoes-oporto': { start: '2027-04-15', end: '2027-04-17', cadence: 'unknown', source: 'https://exponor.pt/maquishoes/' },
+  // Tanda 2026-09-15 (Madrid, Lisboa, Oporto): fechas de la web oficial de cada organizador.
+  // InterSICOP 2027 (16-18 feb, IFEMA): formato renovado de tres jornadas. Cadencia irregular (2019, 2022, 2024, 2027).
+  'stands-intersicop-madrid': { start: '2027-02-16', end: '2027-02-18', cadence: 'unknown', source: 'https://www.ifema.es/intersicop' },
+  // FILDecor – Living & Design: última edición confirmada (25-28 jun 2026, Centro de Congressos de Lisboa). La de 2027 aún no está publicada → «por confirmar».
+  'stands-fildecor-lisboa': { start: '2026-06-25', end: '2026-06-28', cadence: 'annual', source: 'https://decor.fil.pt/' },
+  // Portugal Print 2027 (25-27 feb): 15 años de la feria, que vuelve a Exponor.
+  'stands-portugal-print-oporto': { start: '2027-02-25', end: '2027-02-27', cadence: 'biennial', source: 'https://exponor.pt/calendario/portugal-print-2027/' },
 };
 
 /** Periodicidad de una feria, en los 11 idiomas (para la línea de tiempo). */

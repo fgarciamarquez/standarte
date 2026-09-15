@@ -545,6 +545,9 @@ export const fairActivities = {
   "stands-expodentaria-lisboa": ["dental", "congreso-medico"],
   "stands-inprojecta-oporto": ["regalo-decoracion"],
   "stands-maquishoes-oporto": ["maquinaria-industrial"],
+  "stands-intersicop-madrid": ["alimentacion", "gastronomia-hosteleria"],
+  "stands-fildecor-lisboa": ["regalo-decoracion"],
+  "stands-portugal-print-oporto": ["packaging"],
 };
 
 // Helpers

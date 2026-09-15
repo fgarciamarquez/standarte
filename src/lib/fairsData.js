@@ -2275,6 +2275,13 @@ export const fairsData = [
     "sector": "Salud y Medicina"
   },
   {
+    "name": "FILDecor",
+    "country": "pt",
+    "slug": "stands-fildecor-lisboa",
+    "city": "Lisboa",
+    "sector": "Comercio y Packaging"
+  },
+  {
     "name": "Vinipax Beja",
     "country": "pt",
     "slug": "stand-vinipax-beja",
@@ -2660,6 +2667,13 @@ export const fairsData = [
     "sector": "Industria y Logística"
   },
   {
+    "name": "Portugal Print",
+    "country": "pt",
+    "slug": "stands-portugal-print-oporto",
+    "city": "Oporto",
+    "sector": "Comercio y Packaging"
+  },
+  {
     "name": "Enoforum",
     "country": "es",
     "slug": "stand-enoforum-zaragoza",
@@ -2889,6 +2903,13 @@ export const fairsData = [
     "slug": "stands-sima-madrid",
     "city": "Madrid",
     "sector": "Construcción e Infraestructuras"
+  },
+  {
+    "name": "InterSICOP",
+    "country": "es",
+    "slug": "stands-intersicop-madrid",
+    "city": "Madrid",
+    "sector": "Gastronomía y Hostelería"
   },
   {
     "name": "Feria del Jamón de Teruel y Alimentos de Calidad",
