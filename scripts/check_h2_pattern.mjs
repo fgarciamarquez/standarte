@@ -51,7 +51,7 @@ const unescape = (s) => s
 // Se validan con el mismo rigor, contra su propio prefijo.
 // 'en {ciudad}' para las de plaza, 'para {feria}' para las que defienden una ficha.
 const BUILDER_PREFIXES = ['Constructor de stands en', 'Constructor de stands para', 'Stand builder in',
-  'Stand builder for', 'Construtor de stands no', 'Construtor de stands em'];
+  'Stand builder for', 'Construtor de stands no', 'Construtor de stands em', 'Construtor de stands na', 'Construtor de stands nas'];
 
 // Rutas de las páginas paralelas, leídas de siteData.js: algunas viven BAJO /ferias/
 // (defensa de una ficha) y el recorrido de arriba no entra en esa carpeta, así que se

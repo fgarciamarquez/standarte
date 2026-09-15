@@ -12,7 +12,7 @@
 // suena a traducción automática a cualquier lector de Portugal—; llevan «no», «na» o
 // «nas». Se decide por el nombre en portugués de la plaza (cityData[k].city.pt); lo
 // que no está en la lista va con «em» (Lisboa, Madrid, Bilbau…).
-const PT_ARTICLE = { 'Porto': 'no', 'sul de Portugal': 'no', 'Sul de Portugal': 'no', 'Madeira': 'na', 'Ilhas da Madeira': 'nas', 'Ilhas Canárias': 'nas', 'Algarve': 'no' };
+const PT_ARTICLE = { 'Porto': 'no', 'Batalha': 'na', 'Peso da Régua': 'no', 'sul de Portugal': 'no', 'Sul de Portugal': 'no', 'Madeira': 'na', 'Ilhas da Madeira': 'nas', 'Ilhas Canárias': 'nas', 'Algarve': 'no' };
 export const ptLocative = (c) => `${PT_ARTICLE[c] || 'em'} ${c}`;
 
 // Prefijo común de las páginas de CIUDAD, por idioma.
