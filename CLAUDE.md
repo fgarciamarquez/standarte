@@ -30,6 +30,8 @@ Convención actual: **todo cambio de PHP se aplica en ambas copias**. Los ficher
 - `autonomous_news.yml` — diario 08:00 UTC: genera noticia con Gemini, build, deploy FTP, commitea `newsData.json`.
 - `drip_cron.yml` — cada hora 08–18 UTC: curl a `cron_drip.php` en el servidor (con token).
 - `bounce_cleaner.yml` — 03:00 UTC y a los 5 min de cada drip: curl a `bounce-handler.php`.
+- `offer_deadline.yml` — diario 06:03/07:03 UTC: curl a `admin/cron_oferta.php` (aviso del vencimiento de la oferta; actúa a las 08:xx de Madrid).
+- `project_reminder.yml` — miércoles 07:03/08:03 UTC: curl a `admin/cron_recordatorio.php` (recordatorio semanal al cliente de que su proyecto sigue activo, con imagen y precio final; actúa a las 09:xx de Madrid; columnas `client_notified_at`, `reminder_sent_at`, `reminder_count`).
 
 ## Secretos (ninguno debe entrar en git)
 

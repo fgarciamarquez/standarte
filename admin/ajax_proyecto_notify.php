@@ -285,4 +285,11 @@ if (!$sent) {
 	@mail(implode(', ', $dest), $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
 }
 
+/* Primer aviso al cliente de que el proyecto está disponible: a partir de aquí salen
+ * los recordatorios semanales (cron_recordatorio.php). Solo se anota la primera vez. */
+if ($role === 'internal') {
+	$pid = cpx_project_id_by_token($token);
+	if ($pid) cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($pid) . '&client_notified_at=is.null', array('client_notified_at' => gmdate('c')));
+}
+
 echo json_encode(array('ok' => true));
