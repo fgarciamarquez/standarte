@@ -89,9 +89,12 @@ function cr_first_image($projectId) {
 $sentCount = 0; $skipped = 0;
 foreach ($rows as $p) {
 	$ref = isset($p['ref']) ? $p['ref'] : $p['id'];
+	// Un proyecto aprobado ya no se recuerda nunca (tampoco en modo prueba): el cliente ya
+	// decidió. Lo mismo para paralizados y pilotos.
+	if (!empty($p['approved'])) { echo "$ref: proyecto aprobado, no se recuerda\n"; $skipped++; continue; }
+	if (!empty($p['paused']) || !empty($p['is_demo'])) { echo "$ref: paralizado o demo, omitido\n"; $skipped++; continue; }
 	if (!$test) {
 		// Comprobaciones defensivas (además del filtro de la consulta).
-		if (!empty($p['approved']) || !empty($p['paused']) || !empty($p['is_demo'])) { $skipped++; continue; }
 		if (empty($p['client_notified_at']) && empty($p['last_client_visit'])) { echo "$ref: aún no presentado al cliente, omitido\n"; $skipped++; continue; }
 		if (!empty($p['proposal_valid_until']) && $p['proposal_valid_until'] < $today) { echo "$ref: propuesta caducada, omitido\n"; $skipped++; continue; }
 		$age = cr_days_since($p['created_at'], $now);
