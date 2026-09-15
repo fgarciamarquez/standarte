@@ -14,8 +14,9 @@
  *
  * A quién se escribe: proyectos con email de cliente, presentados al cliente
  * (client_notified_at o una visita registrada), no aprobados, no paralizados, no demo,
- * con propuesta vigente y de menos de 180 días. Se omite si el cliente ha entrado en
- * los últimos 7 días (ya sabe dónde está) y se para tras 12 recordatorios.
+ * con propuesta vigente y de menos de 180 días. Se para tras 12 recordatorios. NO se
+ * omite por visitas recientes: last_client_visit también registra las entradas del
+ * propio equipo al repasar el proyecto y no distingue quién fue (decisión 15/09/2026).
  */
 header('Content-Type: text/plain; charset=utf-8');
 if (!isset($_GET['token']) || $_GET['token'] !== 'TKN-recordatorio-9b1d6e3f2a') { http_response_code(403); die('forbidden'); }
@@ -86,8 +87,6 @@ foreach ($rows as $p) {
 	$age = cr_days_since($p['created_at'], $now);
 	if ($age !== null && $age > 180) { echo "$ref: más de 180 días, omitido\n"; $skipped++; continue; }
 	if ((int) (isset($p['reminder_count']) ? $p['reminder_count'] : 0) >= 12) { echo "$ref: 12 recordatorios ya enviados, omitido\n"; $skipped++; continue; }
-	$visit = cr_days_since($p['last_client_visit'], $now);
-	if ($visit !== null && $visit < 7) { echo "$ref: el cliente entró hace " . round($visit, 1) . " días, omitido\n"; $skipped++; continue; }
 	$last = cr_days_since($p['reminder_sent_at'], $now);
 	if ($last !== null && $last < 6) { echo "$ref: recordatorio enviado hace " . round($last, 1) . " días, omitido\n"; $skipped++; continue; }
 	$to = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
