@@ -22,7 +22,13 @@ header('Content-Type: text/plain; charset=utf-8');
 if (!isset($_GET['token']) || $_GET['token'] !== 'TKN-recordatorio-9b1d6e3f2a') { http_response_code(403); die('forbidden'); }
 
 date_default_timezone_set('Europe/Madrid');
-$force = isset($_GET['force']) && $_GET['force'] === '1';
+/* Modo PRUEBA (?test=1[&ref=...]): manda el recordatorio de UN proyecto real —el indicado
+ * por ref o el primero elegible— solo a la dirección interna de pruebas, con el asunto
+ * marcado, y no anota nada en la base de datos. Nunca escribe a un cliente. */
+$test = isset($_GET['test']) && $_GET['test'] === '1';
+$testRef = isset($_GET['ref']) ? trim((string) $_GET['ref']) : '';
+define('CR_TEST_TO', 'javier@standarte.es');
+$force = $test || (isset($_GET['force']) && $_GET['force'] === '1');
 if (!$force && ((int) date('N') !== 3 || (int) date('G') !== 9)) { die('fuera de ventana (Madrid ' . date('D H:i') . "), nada que hacer\n"); }
 
 require_once __DIR__ . '/../supabase-config.php';
@@ -31,11 +37,14 @@ require_once __DIR__ . '/email_campaing/mailer.php';
 
 $today = date('Y-m-d');
 $now = time();
-$rows = cpx_rows('client_projects?select=id,ref,title_es,title_en,client_name,client_email,access_token,created_at,'
-	. 'discount_amount,discount_deadline,iva_rate,irpf_rate,proposal_valid_until,last_client_visit,client_notified_at,reminder_sent_at,reminder_count,approved,paused,is_demo'
-	. '&approved=not.is.true&is_demo=not.is.true&paused=not.is.true&client_email=not.is.null'
-	. '&and=(or(proposal_valid_until.is.null,proposal_valid_until.gte.' . $today . '),or(client_notified_at.not.is.null,last_client_visit.not.is.null))'
-	. '&order=created_at.desc');
+$select = 'client_projects?select=id,ref,title_es,title_en,client_name,client_email,access_token,created_at,'
+	. 'discount_amount,discount_deadline,iva_rate,irpf_rate,proposal_valid_until,last_client_visit,client_notified_at,reminder_sent_at,reminder_count,approved,paused,is_demo';
+$rows = ($test && $testRef !== '')
+	? cpx_rows($select . '&ref=eq.' . urlencode($testRef) . '&limit=1')
+	: cpx_rows($select . '&approved=not.is.true&is_demo=not.is.true&paused=not.is.true&client_email=not.is.null'
+		. '&and=(or(proposal_valid_until.is.null,proposal_valid_until.gte.' . $today . '),or(client_notified_at.not.is.null,last_client_visit.not.is.null))'
+		. '&order=created_at.desc');
+if ($test) { $rows = array_slice($rows, 0, 1); echo "MODO PRUEBA: destinatario " . CR_TEST_TO . ($testRef !== '' ? ", proyecto $testRef" : ', primer proyecto elegible') . "\n"; }
 
 if (empty($rows)) { die("sin proyectos activos que recordar ($today)\n"); }
 
@@ -80,16 +89,18 @@ function cr_first_image($projectId) {
 $sentCount = 0; $skipped = 0;
 foreach ($rows as $p) {
 	$ref = isset($p['ref']) ? $p['ref'] : $p['id'];
-	// Comprobaciones defensivas (además del filtro de la consulta).
-	if (!empty($p['approved']) || !empty($p['paused']) || !empty($p['is_demo'])) { $skipped++; continue; }
-	if (empty($p['client_notified_at']) && empty($p['last_client_visit'])) { echo "$ref: aún no presentado al cliente, omitido\n"; $skipped++; continue; }
-	if (!empty($p['proposal_valid_until']) && $p['proposal_valid_until'] < $today) { echo "$ref: propuesta caducada, omitido\n"; $skipped++; continue; }
-	$age = cr_days_since($p['created_at'], $now);
-	if ($age !== null && $age > 180) { echo "$ref: más de 180 días, omitido\n"; $skipped++; continue; }
-	if ((int) (isset($p['reminder_count']) ? $p['reminder_count'] : 0) >= 12) { echo "$ref: 12 recordatorios ya enviados, omitido\n"; $skipped++; continue; }
-	$last = cr_days_since($p['reminder_sent_at'], $now);
-	if ($last !== null && $last < 6) { echo "$ref: recordatorio enviado hace " . round($last, 1) . " días, omitido\n"; $skipped++; continue; }
-	$to = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+	if (!$test) {
+		// Comprobaciones defensivas (además del filtro de la consulta).
+		if (!empty($p['approved']) || !empty($p['paused']) || !empty($p['is_demo'])) { $skipped++; continue; }
+		if (empty($p['client_notified_at']) && empty($p['last_client_visit'])) { echo "$ref: aún no presentado al cliente, omitido\n"; $skipped++; continue; }
+		if (!empty($p['proposal_valid_until']) && $p['proposal_valid_until'] < $today) { echo "$ref: propuesta caducada, omitido\n"; $skipped++; continue; }
+		$age = cr_days_since($p['created_at'], $now);
+		if ($age !== null && $age > 180) { echo "$ref: más de 180 días, omitido\n"; $skipped++; continue; }
+		if ((int) (isset($p['reminder_count']) ? $p['reminder_count'] : 0) >= 12) { echo "$ref: 12 recordatorios ya enviados, omitido\n"; $skipped++; continue; }
+		$last = cr_days_since($p['reminder_sent_at'], $now);
+		if ($last !== null && $last < 6) { echo "$ref: recordatorio enviado hace " . round($last, 1) . " días, omitido\n"; $skipped++; continue; }
+	}
+	$to = $test ? array(CR_TEST_TO) : cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
 	if (!$to) { echo "$ref: sin email válido, omitido\n"; $skipped++; continue; }
 
 	$t = cr_totals($p, $now);
@@ -111,7 +122,7 @@ foreach ($rows as $p) {
 		$offerEn = " This price already includes the early-decision offer of " . cr_eur_en($t['discount']) . ", valid" . $until . ".";
 	}
 
-	$subject = 'Su proyecto ' . $ref . ' sigue activo / Your project is still active — ' . $titleEs;
+	$subject = ($test ? '[PRUEBA] ' : '') . 'Su proyecto ' . $ref . ' sigue activo / Your project is still active — ' . $titleEs;
 
 	$es = "<p style='margin:0 0 12px;text-align:left;'>" . $saludoEs . "</p>"
 		. "<p style='margin:0 0 12px;text-align:left;'>Su proyecto <strong>" . $h($titleEs) . "</strong> (" . $h($ref) . ") sigue en marcha: mantenemos la propuesta reservada y al día, con el prototipo y el presupuesto listos para que los revise cuando mejor le venga. "
@@ -147,7 +158,7 @@ foreach ($rows as $p) {
 		$sent = @mail(implode(', ', $to), $subject, $html, "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\nFrom: Standarte <info@standarte.es>\r\n");
 	}
 	if ($sent) {
-		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($p['id']), array('reminder_sent_at' => date('c'), 'reminder_count' => (int) (isset($p['reminder_count']) ? $p['reminder_count'] : 0) + 1));
+		if (!$test) cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($p['id']), array('reminder_sent_at' => date('c'), 'reminder_count' => (int) (isset($p['reminder_count']) ? $p['reminder_count'] : 0) + 1));
 		$sentCount++;
 		echo "$ref: recordatorio enviado a " . implode(', ', $to) . " (total " . cr_eur_es($t['total']) . ")\n";
 	} else {
