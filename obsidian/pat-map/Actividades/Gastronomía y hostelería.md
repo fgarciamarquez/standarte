@@ -2,7 +2,7 @@
 tipo: actividad
 clave: gastronomia-hosteleria
 sector: "Turismo y Hostelería"
-n_ferias: 42
+n_ferias: 43
 ---
 # Gastronomía y hostelería
 
@@ -37,6 +37,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[HORECA Baleares Mallorca]]
 - [[HORECA Baleares Menorca]]
 - [[Hostelco Barcelona]]
+- [[InterSICOP]]
 - [[Navarra Wine & Gastronomy]]
 - [[Premios Envero - EnveroFest]]
 - [[SAVIM]]

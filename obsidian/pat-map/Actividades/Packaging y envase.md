@@ -2,7 +2,7 @@
 tipo: actividad
 clave: packaging
 sector: "Comercio y Packaging"
-n_ferias: 15
+n_ferias: 16
 ---
 # Packaging y envase
 
@@ -23,4 +23,5 @@ Actividad del sector [[Comercio y Packaging]].
 - [[MEDFEL]]
 - [[Pack Expo Morocco]]
 - [[Pick & Pack Bilbao]]
+- [[Portugal Print]]
 - [[Prod&Pack]]

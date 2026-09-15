@@ -2,7 +2,7 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 52
+n_ferias: 53
 ---
 # Alimentación
 
@@ -43,6 +43,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[HIP Madrid]]
 - [[HortiFruit]]
 - [[Iberflora]]
+- [[InterSICOP]]
 - [[Lisbon Food Affair]]
 - [[MEDFEL]]
 - [[Meat Attraction]]

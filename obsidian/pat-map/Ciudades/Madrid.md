@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 36
+n_ferias: 37
 lat: 40.42
 lon: -3.7
 ---
@@ -27,6 +27,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[HIP Madrid]]
 - [[Hygienalia Madrid]]
 - [[Iberpet Madrid]]
+- [[InterSICOP]]
 - [[Intergift Madrid]]
 - [[MATELEC]]
 - [[Madrid Fusión]]

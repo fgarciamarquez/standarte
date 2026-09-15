@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 28
+n_ferias: 29
 lat: 38.72
 lon: -9.14
 ---
@@ -20,6 +20,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Encontro com Vinhos e Sabores]]
 - [[Essência do Vinho Lisboa]]
 - [[Expodentária]]
+- [[FILDecor]]
 - [[FOYER Health & Beauty Summit]]
 - [[Futurália]]
 - [[GSE Expo Lisboa]]

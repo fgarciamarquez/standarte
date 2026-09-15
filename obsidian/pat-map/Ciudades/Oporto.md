@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 23
+n_ferias: 24
 lat: 41.15
 lon: -8.61
 ---
@@ -27,6 +27,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Maquishoes]]
 - [[Modtissimo]]
 - [[Portojóia]]
+- [[Portugal Print]]
 - [[Portugal Smart Cities Summit]]
 - [[Qualifica]]
 - [[RE+ Portugal]]
