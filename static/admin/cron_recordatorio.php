@@ -8,8 +8,8 @@
  * proyecto y el precio final actualizado, en tono comercial y elegante.
  *
  * Lo dispara el workflow project_reminder.yml (GitHub Actions) los miércoles a las
- * 07:03 y 08:03 UTC; el script solo actúa cuando en Madrid son las 09:xx, así el
- * recordatorio sale a las 9 de la mañana todo el año. La doble llamada no duplica:
+ * 07:03 y 08:03 UTC; el script actúa cuando en Madrid es miércoles a partir de las 09:00
+ * (GitHub retrasa a veces los crones varias horas). La doble llamada no duplica:
  * reminder_sent_at desduplica por proyecto.
  *
  * A quién se escribe: proyectos con email de cliente, presentados al cliente
@@ -29,7 +29,11 @@ $test = isset($_GET['test']) && $_GET['test'] === '1';
 $testRef = isset($_GET['ref']) ? trim((string) $_GET['ref']) : '';
 define('CR_TEST_TO', 'javier@standarte.es');
 $force = $test || (isset($_GET['force']) && $_GET['force'] === '1');
-if (!$force && ((int) date('N') !== 3 || (int) date('G') !== 9)) { die('fuera de ventana (Madrid ' . date('D H:i') . "), nada que hacer\n"); }
+/* Ventana: miércoles desde las 09:00 (Madrid) hasta el final del día. GitHub Actions retrasa
+ * los crones programados a veces varias horas (16/09/2026: la llamada de las 08:03 UTC llegó
+ * a las 12:23 UTC), así que la ventana no puede ser de una sola hora; reminder_sent_at evita
+ * que una segunda llamada el mismo miércoles repita el envío. */
+if (!$force && ((int) date('N') !== 3 || (int) date('G') < 9)) { die('fuera de ventana (Madrid ' . date('D H:i') . "), nada que hacer\n"); }
 
 require_once __DIR__ . '/../supabase-config.php';
 require_once __DIR__ . '/client_projects_lib.php';
