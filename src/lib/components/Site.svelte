@@ -602,22 +602,14 @@
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
   $: isCityPage = section in cityData;
-  // Jerarquía de las paralelas de constructor (16/09/2026): cuelgan de su página principal
-  // —la de ciudad, o la ficha de feria que defienden— en las migas visibles, en el
-  // BreadcrumbList y en el Service de los datos estructurados. Así el buscador ve una
-  // relación padre-hijo con intención distinta (construcción en taller frente a diseño y
-  // montaje), no dos páginas equivalentes compitiendo por la misma plaza.
-  $: builderParent = (() => {
-    if (!isBuilderPage(section)) return null;
-    const cfg = builderPages[section];
-    const parentKey = cfg.city || cfg.parent;   // `parent`: plaza matriz de una paralela sin página principal propia
-    if (parentKey && routes[lang] && routes[lang][parentKey] !== undefined) {
-      const cd = cityData[parentKey];
-      return { name: (cd && cd.city && (cd.city[lang] || cd.city.es)) || cfg.cityName, url: pathFor(lang, parentKey) };
-    }
-    if (cfg.fair) return { name: cfg.fairName, url: fairUrl(cfg.fair, lang) };
-    return null;
-  })();
+  // Las paralelas de constructor son páginas INDEPENDIENTES (decisión del usuario,
+  // 17/09/2026): no cuelgan de su página principal en las migas ni en el BreadcrumbList,
+  // porque principal y paralela deben coexistir y competir, y porque en el plan de
+  // emergencia la principal puede pasar a redirigir (301) a la paralela: una miga hacia
+  // la principal apuntaría entonces a una URL que redirige de vuelta. Lo que las
+  // diferencia (título, H1, cuerpo y el Service de construcción en taller propio) se
+  // mantiene; la jerarquía, no.
+  $: builderParent = null;
   // Segunda línea del H1 en las páginas de ciudad: el claim de marca ("Stand de
   // calidad + red de expansión", el valor diferencial que la competencia no puede
   // emular), con el "+" en rojo. Mismo módulo que en las fichas de feria. Sustituye
@@ -2155,10 +2147,6 @@
               <ol>
                 <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : lang === 'pt' ? 'Início' : 'Home'}</a></li>
                 <li><span class="divider">/</span></li>
-                {#if builderParent}
-                  <li><a href={builderParent.url}>{builderParent.name}</a></li>
-                  <li><span class="divider">/</span></li>
-                {/if}
                 <li><span class="current" aria-current="page">{seoContent.breadcrumb}</span></li>
               </ol>
             </nav>
