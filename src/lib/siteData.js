@@ -160,7 +160,7 @@ export const routes = {
     constructor_stand_islas_de_madeira: 'constructor_stand_islas_de_madeira',
     // Defensa de una ficha de feria: vive bajo /ferias/ (ver findRoute, que la
     // resuelve antes que el detalle de feria porque comparten prefijo).
-    constructor_stand_figan: 'ferias/constructor-stand-figan',
+    constructor_stand_figan: 'constructor_stand_figan',
     constructor_stand_agroexpo: 'ferias/constructor-stand-agroexpo',
     constructor_stand_biemh: 'ferias/constructor-stand-biemh',
     montaje_zafra: 'montaje_stand_zafra',
@@ -311,7 +311,7 @@ export const routes = {
     constructor_stand_regua: 'stand_builder_peso_da_regua',
     constructor_stand_portugal_sur: 'stand_builder_southern_portugal',
     constructor_stand_islas_de_madeira: 'stand_builder_madeira_islands',
-    constructor_stand_figan: 'ferias/stand-builder-figan',
+    constructor_stand_figan: 'stand_builder_figan',
     constructor_stand_agroexpo: 'ferias/stand-builder-agroexpo',
     constructor_stand_biemh: 'ferias/stand-builder-biemh',
     montaje_zafra: 'exhibition_stand_assembly_zafra',

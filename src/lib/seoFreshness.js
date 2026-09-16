@@ -34,7 +34,7 @@ export const seoFreshness = {
   // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
   // 2026-09-11: todas incorporan el buscador de ferias bajo la ficha de datos.
   constructor_stand_zaragoza: '2026-09-11',
-  constructor_stand_figan: '2026-09-11',
+  constructor_stand_figan: '2026-09-16',   // URL propia /constructor_stand_figan (antes bajo /ferias/)
   constructor_stand_agroexpo: '2026-09-11',
   constructor_stand_biemh: '2026-09-11',
   constructor_stand_madrid: '2026-09-11',
