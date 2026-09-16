@@ -3,8 +3,8 @@
  * Aviso automático del vencimiento de la oferta por pronta decisión (Standarte).
  *
  * Lo dispara el workflow offer_deadline.yml (GitHub Actions) a las 06:03 y 07:03
- * UTC; el script solo actúa cuando en Madrid son las 08:xx, así el aviso sale a
- * las 8 de la mañana todo el año sin tocar el cron al cambiar la hora. La doble
+ * UTC; el script actúa cuando en Madrid son las 08:00 o más tarde (GitHub retrasa a
+ * veces los crones varias horas), así el aviso sale el día del vencimiento en cualquier caso. La doble
  * llamada no duplica nada: offer_notice_sent_at se marca en la BD por proyecto.
  *
  * Regla de negocio (la misma que aplica ProjectPresentation.svelte): la oferta se
@@ -17,7 +17,9 @@ if (!isset($_GET['token']) || $_GET['token'] !== 'TKN-oferta-4e7b2a9c1f') { http
 
 date_default_timezone_set('Europe/Madrid');
 $force = isset($_GET['force']) && $_GET['force'] === '1';
-if (!$force && (int) date('G') !== 8) { die('fuera de ventana (Madrid ' . date('H:i') . "), nada que hacer\n"); }
+/* Ventana: desde las 08:00 (Madrid) hasta el final del día. GitHub Actions retrasa los
+ * crones programados a veces varias horas; offer_notice_sent_at evita el envío doble. */
+if (!$force && (int) date('G') < 8) { die('fuera de ventana (Madrid ' . date('H:i') . "), nada que hacer\n"); }
 
 require_once __DIR__ . '/../supabase-config.php';
 require_once __DIR__ . '/client_projects_lib.php';
