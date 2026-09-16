@@ -133,6 +133,8 @@ export const routes = {
     constructor_stand_aranda: 'constructor_stand_aranda',
     constructor_stand_ciudad_real: 'constructor_stand_ciudad_real',
     constructor_stand_zafra: 'constructor_stand_zafra',
+    constructor_stand_merida: 'constructor_stand_merida',
+    constructor_stand_almendralejo: 'constructor_stand_almendralejo',
     constructor_stand_trujillo: 'constructor_stand_trujillo',
     constructor_stand_almeria: 'constructor_stand_almeria',
     constructor_stand_jaen: 'constructor_stand_jaen',
@@ -284,6 +286,8 @@ export const routes = {
     constructor_stand_aranda: 'stand_builder_aranda_de_duero',
     constructor_stand_ciudad_real: 'stand_builder_ciudad_real',
     constructor_stand_zafra: 'stand_builder_zafra',
+    constructor_stand_merida: 'stand_builder_merida',
+    constructor_stand_almendralejo: 'stand_builder_almendralejo',
     constructor_stand_trujillo: 'stand_builder_trujillo',
     constructor_stand_almeria: 'stand_builder_almeria',
     constructor_stand_jaen: 'stand_builder_jaen',
@@ -3103,7 +3107,8 @@ export const SQ_REMOVED_SECTIONS = new Set([
   'constructor_stand_bilbao', 'constructor_stand_badajoz', 'constructor_stand_don_benito',
   'constructor_stand_figan', 'constructor_stand_agroexpo', 'constructor_stand_biemh',
   'constructor_stand_malaga', 'constructor_stand_sevilla',
-  'constructor_stand_valencia', 'constructor_stand_valladolid', 'constructor_stand_alicante', 'constructor_stand_elche', 'constructor_stand_murcia', 'constructor_stand_salamanca', 'constructor_stand_coruna', 'constructor_stand_santiago', 'constructor_stand_vigo', 'constructor_stand_ourense', 'constructor_stand_silleda', 'constructor_stand_gijon', 'constructor_stand_santander', 'constructor_stand_irun', 'constructor_stand_vitoria', 'constructor_stand_pamplona', 'constructor_stand_logrono', 'constructor_stand_lleida', 'constructor_stand_girona', 'constructor_stand_mallorca', 'constructor_stand_ibiza', 'constructor_stand_menorca', 'constructor_stand_islas_canarias', 'constructor_stand_ceuta', 'constructor_stand_melilla', 'constructor_stand_tanger', 'constructor_stand_casablanca', 'constructor_stand_rabat', 'constructor_stand_andorra', 'constructor_stand_teruel', 'constructor_stand_aranda', 'constructor_stand_ciudad_real', 'constructor_stand_zafra', 'constructor_stand_trujillo', 'constructor_stand_almeria', 'constructor_stand_jaen', 'constructor_stand_huelva', 'constructor_stand_cordoba', 'constructor_stand_granada', 'constructor_stand_cadiz', 'constructor_stand_marsella', 'constructor_stand_cannes', 'constructor_stand_avignon', 'constructor_stand_toulouse', 'constructor_stand_burdeos', 'constructor_stand_lyon', 'constructor_stand_grenoble', 'constructor_stand_clermont_ferrand', 'constructor_stand_niza', 'constructor_stand_montpellier', 'constructor_stand_perpignan', 'constructor_stand_batalha', 'constructor_stand_santarem', 'constructor_stand_regua', 'constructor_stand_portugal_sur', 'constructor_stand_islas_de_madeira'
+  'constructor_stand_valencia', 'constructor_stand_valladolid', 'constructor_stand_alicante', 'constructor_stand_elche', 'constructor_stand_murcia', 'constructor_stand_salamanca', 'constructor_stand_coruna', 'constructor_stand_santiago', 'constructor_stand_vigo', 'constructor_stand_ourense', 'constructor_stand_silleda', 'constructor_stand_gijon', 'constructor_stand_santander', 'constructor_stand_irun', 'constructor_stand_vitoria', 'constructor_stand_pamplona', 'constructor_stand_logrono', 'constructor_stand_lleida', 'constructor_stand_girona', 'constructor_stand_mallorca', 'constructor_stand_ibiza', 'constructor_stand_menorca', 'constructor_stand_islas_canarias', 'constructor_stand_ceuta', 'constructor_stand_melilla', 'constructor_stand_tanger', 'constructor_stand_casablanca', 'constructor_stand_rabat', 'constructor_stand_andorra', 'constructor_stand_teruel', 'constructor_stand_aranda', 'constructor_stand_ciudad_real', 'constructor_stand_zafra', 'constructor_stand_trujillo', 'constructor_stand_almeria', 'constructor_stand_jaen', 'constructor_stand_huelva', 'constructor_stand_cordoba', 'constructor_stand_granada', 'constructor_stand_cadiz', 'constructor_stand_marsella', 'constructor_stand_cannes', 'constructor_stand_avignon', 'constructor_stand_toulouse', 'constructor_stand_burdeos', 'constructor_stand_lyon', 'constructor_stand_grenoble', 'constructor_stand_clermont_ferrand', 'constructor_stand_niza', 'constructor_stand_montpellier', 'constructor_stand_perpignan', 'constructor_stand_batalha', 'constructor_stand_santarem', 'constructor_stand_regua', 'constructor_stand_portugal_sur', 'constructor_stand_islas_de_madeira',
+  'constructor_stand_merida', 'constructor_stand_almendralejo'
 ]);
 
 export const prerenderEntries = languages.flatMap((lang) => {

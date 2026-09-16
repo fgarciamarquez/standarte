@@ -79,6 +79,8 @@ export const seoFreshness = {
   constructor_stand_aranda: '2026-09-15',  // alta (tanda de 56 paralelas)
   constructor_stand_ciudad_real: '2026-09-15',  // alta (tanda de 56 paralelas)
   constructor_stand_zafra: '2026-09-15',  // alta (tanda de 56 paralelas)
+  constructor_stand_merida: '2026-09-16',  // alta (sin página principal propia)
+  constructor_stand_almendralejo: '2026-09-16',  // alta (sin página principal propia)
   constructor_stand_trujillo: '2026-09-15',  // alta (tanda de 56 paralelas)
   constructor_stand_almeria: '2026-09-15',  // alta (tanda de 56 paralelas)
   constructor_stand_jaen: '2026-09-15',  // alta (tanda de 56 paralelas)

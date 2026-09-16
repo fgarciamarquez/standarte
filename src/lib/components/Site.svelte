@@ -610,9 +610,10 @@
   $: builderParent = (() => {
     if (!isBuilderPage(section)) return null;
     const cfg = builderPages[section];
-    if (cfg.city && routes[lang] && routes[lang][cfg.city] !== undefined) {
-      const cd = cityData[cfg.city];
-      return { name: (cd && cd.city && (cd.city[lang] || cd.city.es)) || cfg.cityName, url: pathFor(lang, cfg.city) };
+    const parentKey = cfg.city || cfg.parent;   // `parent`: plaza matriz de una paralela sin página principal propia
+    if (parentKey && routes[lang] && routes[lang][parentKey] !== undefined) {
+      const cd = cityData[parentKey];
+      return { name: (cd && cd.city && (cd.city[lang] || cd.city.es)) || cfg.cityName, url: pathFor(lang, parentKey) };
     }
     if (cfg.fair) return { name: cfg.fairName, url: fairUrl(cfg.fair, lang) };
     return null;

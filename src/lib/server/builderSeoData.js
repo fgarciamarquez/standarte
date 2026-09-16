@@ -1328,6 +1328,40 @@ export const builderSeoData = {
         ${porque('Madeira')}`
     }
   },
+  constructor_stand_merida: {
+    es: {
+      breadcrumb: 'Constructor de stands en Mérida',
+      title: 'Constructor de stands en Mérida | Taller propio | Standarte',
+      h1: 'Constructor de stands en Mérida',
+      introText: 'Construimos stands a medida para IFEME, la Institución Ferial de Mérida, desde nuestro taller de Cáceres, a menos de una hora: carpintería, estructura, mobiliario y gráfica fabricados por nuestro equipo, sin subcontratar la producción. Prototipo 3D antes de cortar la primera pieza y montaje terminado antes de la apertura.',
+      body: `
+        <h2>Constructor de stands en Mérida: fabricación propia para IFEME</h2>
+        <p>Mérida es la capital de Extremadura y su recinto, IFEME, recibe un calendario de gran público: el Salón del Automóvil, la Feria de Bodas y Hogar, el coleccionismo de Emérita Augusta y FETUREX, la feria de turismo de la región. Son ferias de fin de semana con aforo alto y visitante que se para, toca y pregunta, así que el stand se construye para el paso continuo: gráfica resistente, mostrador de atención, suelo que no acusa el uso y un almacén cerrado para el material.</p>
+        <p>Desde nuestro taller de Cáceres, a menos de una hora del recinto, fabricamos y premontamos el stand entero: llegamos con las piezas numeradas y la gráfica aplicada, y cualquier ajuste del día del montaje se resuelve con nuestro propio equipo, sin esperar a un proveedor.</p>
+        ${paso('Mérida')}
+        ${tipos('Mérida')}
+        <h2>Constructor de stands en Mérida: ferias de la plaza</h2>
+        <p>Construimos para el calendario de IFEME: <a href="/ferias/stand-salon-automovil-merida">Salón del Automóvil de Mérida</a>, <a href="/ferias/stand-feria-bodas-hogar-merida">Feria de Bodas y Hogar</a>, <a href="/ferias/stand-coleccionismo-emerita-augusta-merida">Feria de Coleccionismo Emérita Augusta</a> y <a href="/ferias/stand-feturex-merida">FETUREX</a>. El servicio completo de diseño y montaje para la provincia está en nuestra página de <a href="/diseno_montaje_stands_badajoz">stands para ferias en Badajoz</a>.</p>
+        ${porque('Mérida')}`
+    }
+  },
+  constructor_stand_almendralejo: {
+    es: {
+      breadcrumb: 'Constructor de stands en Almendralejo',
+      title: 'Constructor de stands en Almendralejo | Taller propio | Standarte',
+      h1: 'Constructor de stands en Almendralejo',
+      introText: 'Construimos stands a medida para las ferias de Almendralejo y Tierra de Barros desde nuestro taller de Cáceres, a menos de una hora: carpintería, estructura, mobiliario y gráfica fabricados por nuestro equipo, sin subcontratar la producción. Prototipo 3D antes de cortar la primera pieza y montaje terminado antes de la apertura.',
+      body: `
+        <h2>Constructor de stands en Almendralejo: fabricación propia para la capital del vino extremeño</h2>
+        <p>Almendralejo es Tierra de Barros: bodegas, cava y aceite, con Vinac como feria de referencia del sector. Un stand de bodega aquí se construye para catar y vender: barra de cata a la altura correcta, botellero iluminado en frío, un reservado para el distribuidor y superficies que aguantan el trasiego de copas durante toda la feria.</p>
+        <p>Desde nuestro taller de Cáceres, a menos de una hora, fabricamos y premontamos el stand entero, y diseñamos los elementos para que vuelvan a servir en las siguientes citas del vino de la región y de España, porque una bodega que expone cada año no debería pagar el stand cada año.</p>
+        ${paso('Almendralejo')}
+        ${tipos('Almendralejo')}
+        <h2>Constructor de stands en Almendralejo: ferias de la plaza</h2>
+        <p>Construimos para <a href="/ferias/stand-vinac-almendralejo">Vinac Almendralejo</a> y para el resto del calendario extremeño, desde <a href="/ferias/stand-feria-internacional-ganadera-zafra">la Feria Internacional Ganadera de Zafra</a> hasta <a href="/ferias/stand-feturex-merida">FETUREX en Mérida</a>. El servicio completo de diseño y montaje para la provincia está en nuestra página de <a href="/diseno_montaje_stands_badajoz">stands para ferias en Badajoz</a>.</p>
+        ${porque('Almendralejo')}`
+    }
+  },
 };
 
 // ── Versiones en inglés ────────────────────────────────────────────────────────────
@@ -2380,6 +2414,36 @@ const EN = {
         <h2>Stand builder in Madeira: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-expomadeira">Expomadeira</a>, <a href="/en/ferias/stand-feira-agropecuaria-madeira">Feira Agropecuária da Madeira</a>, <a href="/en/ferias/stand-feira-emprego-formacao-empreendedorismo-madeira">Feira do Emprego, Formação e Empreendedorismo</a>, <a href="/en/ferias/stand-feira-empreendedorismo-madeira">Feira do Empreendedorismo da Madeira</a>, <a href="/en/ferias/stand-festa-vinho-madeira">Festa do Vinho da Madeira</a> and <a href="/en/ferias/stand-cider-fest-madeira">Cider Fest Madeira</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_madeira_islands">trade fair stands in Madeira</a> page.</p>
         ${porqueEn('Madeira')}`
+  },
+  constructor_stand_merida: {
+    breadcrumb: 'Stand builder in Mérida',
+    title: 'Stand builder in Mérida | Own workshop | Standarte',
+    h1: 'Stand builder in Mérida',
+    introText: 'We build custom stands for IFEME, the Mérida exhibition centre, from our Cáceres workshop under an hour away: joinery, structure, furniture and graphics made by our team, with no subcontracted production. A 3D prototype before the first cut, and the build finished before opening.',
+    body: `
+        <h2>Stand builder in Mérida: in-house manufacturing for IFEME</h2>
+        <p>Mérida is the capital of Extremadura and its venue, IFEME, hosts a general-public calendar: the Motor Show, the Weddings and Home Fair, the Emérita Augusta collectors’ fair and FETUREX, the region’s tourism fair. These are weekend fairs with high attendance and visitors who stop, touch and ask, so the stand is built for continuous traffic: hard-wearing graphics, a service counter, a floor that shows no wear and a lockable store for materials.</p>
+        <p>From our Cáceres workshop, under an hour from the venue, we build and pre-assemble the whole stand: we arrive with numbered parts and graphics applied, and any adjustment on build-up day is solved by our own crew, without waiting for a supplier.</p>
+        ${pasoEn('Mérida')}
+        ${tiposEn('Mérida')}
+        <h2>Stand builder in Mérida: shows at the venue</h2>
+        <p>We build for the IFEME calendar: <a href="/en/ferias/stand-salon-automovil-merida">Mérida Motor Show</a>, <a href="/en/ferias/stand-feria-bodas-hogar-merida">Weddings and Home Fair</a>, <a href="/en/ferias/stand-coleccionismo-emerita-augusta-merida">Emérita Augusta Collectors’ Fair</a> and <a href="/en/ferias/stand-feturex-merida">FETUREX</a>. The full design-and-build service for the province is on our <a href="/en/stand_design_assembly_badajoz">trade fair stands in Badajoz</a> page.</p>
+        ${porqueEn('Mérida')}`
+  },
+  constructor_stand_almendralejo: {
+    breadcrumb: 'Stand builder in Almendralejo',
+    title: 'Stand builder in Almendralejo | Own workshop | Standarte',
+    h1: 'Stand builder in Almendralejo',
+    introText: 'We build custom stands for the fairs of Almendralejo and Tierra de Barros from our Cáceres workshop under an hour away: joinery, structure, furniture and graphics made by our team, with no subcontracted production. A 3D prototype before the first cut, and the build finished before opening.',
+    body: `
+        <h2>Stand builder in Almendralejo: in-house manufacturing for the capital of Extremaduran wine</h2>
+        <p>Almendralejo is Tierra de Barros: wineries, cava and olive oil, with Vinac as the sector’s reference fair. A winery stand here is built to taste and to sell: a tasting bar at the right height, a cold-lit bottle display, a private corner for the distributor and surfaces that take the traffic of glasses for the whole fair.</p>
+        <p>From our Cáceres workshop, under an hour away, we build and pre-assemble the whole stand, and we design the elements to serve again at the next wine events in the region and in Spain, because a winery that exhibits every year should not pay for the stand every year.</p>
+        ${pasoEn('Almendralejo')}
+        ${tiposEn('Almendralejo')}
+        <h2>Stand builder in Almendralejo: shows at the venue</h2>
+        <p>We build for <a href="/en/ferias/stand-vinac-almendralejo">Vinac Almendralejo</a> and for the rest of the Extremadura calendar, from <a href="/en/ferias/stand-feria-internacional-ganadera-zafra">the Zafra International Livestock Fair</a> to <a href="/en/ferias/stand-feturex-merida">FETUREX in Mérida</a>. The full design-and-build service for the province is on our <a href="/en/stand_design_assembly_badajoz">trade fair stands in Badajoz</a> page.</p>
+        ${porqueEn('Almendralejo')}`
   },
 };
 
