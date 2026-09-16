@@ -602,6 +602,21 @@
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
   $: isCityPage = section in cityData;
+  // Jerarquía de las paralelas de constructor (16/09/2026): cuelgan de su página principal
+  // —la de ciudad, o la ficha de feria que defienden— en las migas visibles, en el
+  // BreadcrumbList y en el Service de los datos estructurados. Así el buscador ve una
+  // relación padre-hijo con intención distinta (construcción en taller frente a diseño y
+  // montaje), no dos páginas equivalentes compitiendo por la misma plaza.
+  $: builderParent = (() => {
+    if (!isBuilderPage(section)) return null;
+    const cfg = builderPages[section];
+    if (cfg.city && routes[lang] && routes[lang][cfg.city] !== undefined) {
+      const cd = cityData[cfg.city];
+      return { name: (cd && cd.city && (cd.city[lang] || cd.city.es)) || cfg.cityName, url: pathFor(lang, cfg.city) };
+    }
+    if (cfg.fair) return { name: cfg.fairName, url: fairUrl(cfg.fair, lang) };
+    return null;
+  })();
   // Segunda línea del H1 en las páginas de ciudad: el claim de marca ("Stand de
   // calidad + red de expansión", el valor diferencial que la competencia no puede
   // emular), con el "+" en rojo. Mismo módulo que en las fichas de feria. Sustituye
@@ -1417,14 +1432,23 @@
     const premiumFrom = pricingTiers[premiumIdx]?.priceFrom;
     const premiumTo = pricingTiers[premiumIdx + 1]?.priceFrom;
 
+    // En las paralelas de constructor el servicio declarado es OTRO (construcción en taller
+    // propio para la plaza), no el de diseño y montaje de la página principal.
+    const builderCfg = isBuilderPage(section) ? builderPages[section] : null;
     const service = {
       '@type': 'Service',
       '@id': `${baseUrl}/#service`,
-      name: lang === 'es' ? 'Diseño y montaje de stands para ferias' : 'Exhibition stand design and build',
-      serviceType: isCityPage ? 'Diseño y montaje de stands' : 'Exhibition Stand Builder',
+      name: builderCfg
+        ? (lang === 'es' ? 'Construcción de stands en taller propio' : lang === 'pt' ? 'Construção de stands em oficina própria' : 'Exhibition stand construction in our own workshop')
+        : (lang === 'es' ? 'Diseño y montaje de stands para ferias' : 'Exhibition stand design and build'),
+      serviceType: builderCfg
+        ? (lang === 'es' ? 'Constructor de stands' : lang === 'pt' ? 'Construtor de stands' : 'Stand builder')
+        : (isCityPage ? 'Diseño y montaje de stands' : 'Exhibition Stand Builder'),
       provider: { '@id': `${baseUrl}/#organization` },
-      description: copy.seoDescription,
-      areaServed: isCityPage ? cityDisplayName : ['ES', 'PT', 'DE', 'FR'],
+      description: builderCfg && seoContent?.introText ? seoContent.introText : copy.seoDescription,
+      areaServed: builderCfg
+        ? ((builderCfg.cityNames && builderCfg.cityNames[lang]) || builderCfg.cityName)
+        : (isCityPage ? cityDisplayName : ['ES', 'PT', 'DE', 'FR']),
       // Campaña multi-feria (sinergia): las ferias de la malla se contratan como
       // paquete con descuento único — la potencia relacional, machine-readable.
       ...(isCityPage && !BRAND.leadGen ? { hasOfferCatalog: synergyOfferCatalog(lang) } : {})
@@ -1534,23 +1558,13 @@
 
     if (section !== 'home') {
       const breadcrumbLabel = seoContent?.breadcrumb || sectionLabel(section);
+      const crumbs = [[lang === 'es' ? 'Inicio' : 'Home', `${baseUrl}/`]];
+      if (builderParent) crumbs.push([builderParent.name, `${baseUrl}${builderParent.url}`]);
+      crumbs.push([breadcrumbLabel, canonical]);
       graph.push({
         '@type': 'BreadcrumbList',
         '@id': `${canonical}#breadcrumb`,
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: lang === 'es' ? 'Inicio' : 'Home',
-            item: `${baseUrl}/`
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: breadcrumbLabel,
-            item: canonical
-          }
-        ]
+        itemListElement: crumbs.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item }))
       });
     }
 
@@ -2140,6 +2154,10 @@
               <ol>
                 <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : lang === 'pt' ? 'Início' : 'Home'}</a></li>
                 <li><span class="divider">/</span></li>
+                {#if builderParent}
+                  <li><a href={builderParent.url}>{builderParent.name}</a></li>
+                  <li><span class="divider">/</span></li>
+                {/if}
                 <li><span class="current" aria-current="page">{seoContent.breadcrumb}</span></li>
               </ol>
             </nav>
