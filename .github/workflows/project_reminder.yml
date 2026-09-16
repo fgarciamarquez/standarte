@@ -16,6 +16,10 @@ on:
         description: 'Referencia del proyecto para la prueba (vacío = primer proyecto elegible)'
         type: string
         default: ''
+      forzar:
+        description: 'Forzar el envío REAL fuera de la ventana del miércoles a las 09:xx (usar solo si el cron programado no se ha ejecutado)'
+        type: boolean
+        default: false
 
 jobs:
   project-reminder:
@@ -25,4 +29,5 @@ jobs:
         run: |
           EXTRA=""
           if [ "${{ github.event.inputs.prueba }}" = "true" ]; then EXTRA="&test=1&ref=$(printf %s "${{ github.event.inputs.ref }}" | jq -sRr @uri)"; fi
+          if [ "${{ github.event.inputs.forzar }}" = "true" ]; then EXTRA="${EXTRA}&force=1"; fi
           curl -sS "https://standarte.es/admin/cron_recordatorio.php?token=TKN-recordatorio-9b1d6e3f2a${EXTRA}"
