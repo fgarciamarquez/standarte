@@ -105,73 +105,73 @@ export const seoFreshness = {
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
   home: '2026-08-28',
-  badajoz: '2026-08-28',
+  badajoz: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
   montaje_badajoz: '2026-08-28',
-  zaragoza: '2026-08-28',
+  zaragoza: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
   lisboa: '2026-09-15',   // alta de FILDecor
-  montaje_don_benito: '2026-08-28',
-  ciudad_real: '2026-08-28',
-  trujillo: '2026-08-28',
-  montaje_zafra: '2026-08-28',
+  montaje_don_benito: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
+  ciudad_real: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  trujillo: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  montaje_zafra: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   oporto: '2026-09-15',   // alta de Portugal Print
-  vigo: '2026-08-28',
-  portugal_sur: '2026-09-10',
+  vigo: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  portugal_sur: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   madrid: '2026-09-15',   // alta de InterSICOP
-  bilbao: '2026-08-28',
+  bilbao: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
   malaga: '2026-09-11',   // alta de Transfiere en el cuerpo
   sevilla: '2026-09-12',   // SICAB, SIMOF, Salón del Motor y Fireca con su sector real
-  barcelona: '2026-08-28',
-  alicante: '2026-08-28',
-  elche: '2026-08-28',
-  murcia: '2026-08-28',
-  islas_canarias: '2026-09-10',
-  islas_de_madeira: '2026-09-10',
-  mallorca: '2026-08-28',
-  valencia: '2026-09-02',
-  coruna: '2026-08-28',
-  santiago: '2026-08-28',
-  valladolid: '2026-08-28',
-  salamanca: '2026-08-28',
-  batalha: '2026-08-28',
-  santarem: '2026-08-28',
-  almeria: '2026-08-28',
-  jaen: '2026-08-28',
-  huelva: '2026-08-28',
-  cordoba: '2026-08-28',
-  granada: '2026-08-28',
-  cadiz: '2026-08-28',
-  silleda: '2026-08-28',
-  ourense: '2026-08-28',
-  lleida: '2026-08-28',
-  girona: '2026-08-28',
-  santander: '2026-08-28',
-  gijon: '2026-08-28',
-  irun: '2026-08-28',
-  logrono: '2026-08-28',
-  pamplona: '2026-08-28',
-  vitoria: '2026-08-28',
-  aranda: '2026-08-28',
-  regua: '2026-08-28',
-  ibiza: '2026-08-28',
-  menorca: '2026-08-28',
-  ceuta: '2026-08-28',
-  melilla: '2026-08-28',
-  tanger: '2026-08-28',
-  andorra: '2026-08-28',
-  teruel: '2026-08-28',
-  marsella: '2026-08-28',
-  cannes: '2026-08-28',
-  avignon: '2026-08-28',
-  toulouse: '2026-08-28',
-  perpignan: '2026-08-28',
-  burdeos: '2026-08-28',
-  casablanca: '2026-08-28',
-  rabat: '2026-08-28',
-  lyon: '2026-08-28',
-  montpellier: '2026-08-28',
-  niza: '2026-08-28',
-  grenoble: '2026-08-28',
-  clermont_ferrand: '2026-08-12'
+  barcelona: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
+  alicante: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  elche: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  murcia: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  islas_canarias: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  islas_de_madeira: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  mallorca: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  valencia: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  coruna: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  santiago: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  valladolid: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  salamanca: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  batalha: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  santarem: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  almeria: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  jaen: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  huelva: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  cordoba: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  granada: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  cadiz: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  silleda: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  ourense: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  lleida: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  girona: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  santander: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  gijon: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  irun: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  logrono: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  pamplona: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  vitoria: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  aranda: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  regua: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  ibiza: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  menorca: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  ceuta: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  melilla: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  tanger: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  andorra: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  teruel: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  marsella: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  cannes: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  avignon: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  toulouse: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  perpignan: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  burdeos: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  casablanca: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  rabat: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  lyon: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  montpellier: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  niza: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  grenoble: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  clermont_ferrand: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
 };
 
 /** Fecha de última actualización de contenido de una sección, o null si no la tiene. */
