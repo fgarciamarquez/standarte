@@ -7,8 +7,14 @@ import { portfolioVideos, siteVideos } from '$lib/videosData.js';
 import { projectVideos } from '$lib/server/projectVideos.js';
 import news from '$lib/newsData.json';
 import { BRAND, SITE_ORIGIN } from '$lib/brand.js';
+import { builderPages, isBuilderPage } from '$lib/builderPages.js';
 
 export const prerender = true;
+
+// Una página con noindex NO debe anunciarse en el sitemap (Google lo cuenta como
+// señal contradictoria y baja la confianza en el fichero): las paralelas aparcadas
+// (indexable: false en builderPages.js) se quedan fuera hasta que se reactiven.
+const isParkedBuilder = (section) => isBuilderPage(section) && !builderPages[section].indexable;
 
 const siteUrl = SITE_ORIGIN;
 
@@ -46,7 +52,7 @@ export async function GET() {
   const urls = [];
 
   // 1. Secciones estáticas (home, servicios, ciudades, contacto...) por idioma
-  const staticSections = Object.keys(routes.es).filter((s) => !(BRAND.leadGen && SQ_EXCLUDED_SECTIONS.has(s)));
+  const staticSections = Object.keys(routes.es).filter((s) => !(BRAND.leadGen && SQ_EXCLUDED_SECTIONS.has(s)) && !isParkedBuilder(s));
 
   staticSections.forEach((section) => {
     const alternates = [];

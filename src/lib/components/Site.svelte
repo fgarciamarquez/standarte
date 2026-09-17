@@ -4,7 +4,7 @@
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
-  import { languages, languageLabels, pathFor, routes, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
+  import { languages, languageLabels, pathFor, routes, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER, NO_GALLERY_SECTIONS } from '$lib/siteData.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { cityH2, cityH2Custom, ptLocative } from '$lib/h2Seo.js';
   import { toolsCopy } from '$lib/toolsSection.js';
@@ -950,8 +950,11 @@
     // Imagen de refuerzo del apartado (obra propia elegida por actividad en el
     // generador scripts/build_seo_images.mjs): el NOMBRE del fichero y el alt
     // replican el H2 compuesto, para que título, texto e imagen empujen lo mismo.
+    // Páginas sin imágenes de galería (NO_GALLERY_SECTIONS): ni figuras keyword, ni
+    // vídeo, ni figura de caso de éxito; el texto se mantiene íntegro.
+    const noGallery = !!sectionKey && NO_GALLERY_SECTIONS.has(sectionKey);
     const seoImg = (key, fileSec) => {
-      if (!cityName || !sectionKey) return '';
+      if (!cityName || !sectionKey || noGallery) return '';
       const src = `/img/seo/stands-para-ferias-en-${sectionKey.replace(/_/g, '-')}-${fileSec}.avif`;
       return `<figure class="oro-seo-figure"><img src="${src}" alt="${compose(key)}" loading="lazy" decoding="async" width="800" height="450" /></figure>`;
     };
@@ -963,7 +966,7 @@
     // Vídeo keyword del apartado de documentación técnica (mismo patrón que las
     // imágenes; preload="none": dentro del plegable no descarga nada hasta el play).
     const seoVideo = () => {
-      if (!cityName || !sectionKey) return '';
+      if (!cityName || !sectionKey || noGallery) return '';
       const src = `/img/seo/stands-para-ferias-en-${sectionKey.replace(/_/g, '-')}-documentacion-tecnica-del-recinto.mp4`;
       const t = compose('doc');
       // preload="metadata" (patrón del vídeo del vino, probado en producción): el
@@ -1000,7 +1003,7 @@
     // (mismo patrón que las páginas de feria): la primera va en flujo y fija el alto y
     // el resto se apilan encima. El pie de foto es único y no cambia. El enlace lo
     // reapunta el bucle (startCaseLoop) a la foto visible en cada momento.
-    const seq = (caseSeq && caseSeq.length) ? caseSeq : (portfolios[0] ? [portfolios[0]] : []);
+    const seq = noGallery ? [] : ((caseSeq && caseSeq.length) ? caseSeq : (portfolios[0] ? [portfolios[0]] : []));
     const caseFigure = seq.length ? `<figure class="oro-case-figure"><a href="/galeria/${seq[0].slugs.es}" class="oro-case-stack">${seq.map((c, k) => `<img class="oro-case-img${k === 0 ? ' is-base is-active' : ''}" data-href="/galeria/${c.slugs.es}" src="/${c.thumb.replace(/\.avif$/, '-md.avif')}" srcset="/${c.thumb.replace(/\.avif$/, '-sb.avif')} 300w, /${c.thumb.replace(/\.avif$/, '-md.avif')} 800w" sizes="(max-width: 900px) 92vw, 640px" width="800" height="450" alt="${getProjectTitle(c)}" loading="lazy" decoding="async" />`).join('')}</a><figcaption>${casoEjemploCaption[lang] || casoEjemploCaption.es}</figcaption></figure>` : '';
     const render = (i) => {
       if (i === iDoc && docSection !== undefined) return docSection;
@@ -2416,8 +2419,9 @@
     </section>
     {/if}
 
-    <!-- La Galería no forma parte de StandQuote (2026-08-27): sección y menú solo en Standarte. -->
-    {#if !BRAND.leadGen}
+    <!-- La Galería no forma parte de StandQuote (2026-08-27): sección y menú solo en Standarte.
+         Tampoco se muestra en las páginas principales sin imágenes de galería (NO_GALLERY_SECTIONS). -->
+    {#if !BRAND.leadGen && !NO_GALLERY_SECTIONS.has(section)}
     <section id="custom" class="section portfolio">
       <div class="section-header">
         <h2>{copy.customTitle}</h2>

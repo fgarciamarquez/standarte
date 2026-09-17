@@ -73,14 +73,29 @@ DirectorySlash Off
   # --- Migración construcción -> diseño y montaje (301, slugs de ciudad, 11 idiomas) ---
   RewriteRule ^construccion_stands_madrid/?$ https://standarte.es/diseno_montaje_stands_madrid [R=301,L]
   RewriteRule ^construccion_stands_barcelona/?$ https://standarte.es/diseno_montaje_stands_barcelona [R=301,L]
-  RewriteRule ^construccion_stands_bilbao/?$ https://standarte.es/diseno-construccion-montaje-stand-bilbao [R=301,L]
+  RewriteRule ^construccion_stands_bilbao/?$ https://standarte.es/diseno-construccion-montaje-stands-bilbao [R=301,L]
   # Piloto guion medio (2026-08-11): la URL histórica con guiones bajos redirige a la nueva.
-  RewriteRule ^diseno_montaje_stands_bilbao/?$ https://standarte.es/diseno-construccion-montaje-stand-bilbao [R=301,L]
-  RewriteRule ^diseno-montaje-stands-bilbao/?$ https://standarte.es/diseno-construccion-montaje-stand-bilbao [R=301,L]
+  RewriteRule ^diseno_montaje_stands_bilbao/?$ https://standarte.es/diseno-construccion-montaje-stands-bilbao [R=301,L]
+  RewriteRule ^diseno-montaje-stands-bilbao/?$ https://standarte.es/diseno-construccion-montaje-stands-bilbao [R=301,L]
 
   # 2026-08-31: Oporto cambia de URL como defensa ante denuncias (mismo criterio que
   # Bilbao: hifenación, verbo 'construcción' y 'stands' en plural). 301 directa.
   RewriteRule ^diseno_montaje_stands_oporto/?$ https://standarte.es/diseno-construccion-montaje-stands-oporto [R=301,L]
+
+  # 2026-09-17: diez páginas principales cambian de URL como defensa ante denuncias
+  # (mismo criterio que Oporto y Bilbao: hifenación, verbo 'construcción' y 'stands' en
+  # plural). 301 directa; las reglas antiguas que apuntaban a estas páginas ya llevan la
+  # URL nueva para no encadenar redirecciones.
+  RewriteRule ^diseno_montaje_stands_lisboa/?$ https://standarte.es/diseno-construccion-montaje-stands-lisboa [R=301,L]
+  RewriteRule ^diseno_montaje_stands_logrono/?$ https://standarte.es/diseno-construccion-montaje-stands-logrono [R=301,L]
+  RewriteRule ^diseno_montaje_stands_badajoz/?$ https://standarte.es/diseno-construccion-montaje-stands-badajoz [R=301,L]
+  RewriteRule ^montaje_stand_don_benito/?$ https://standarte.es/montaje-stands-don-benito [R=301,L]
+  RewriteRule ^diseno_montaje_stands_ciudad_real/?$ https://standarte.es/diseno-construccion-montaje-stands-ciudad-real [R=301,L]
+  RewriteRule ^diseno_montaje_stands_zaragoza/?$ https://standarte.es/diseno-construccion-montaje-stands-zaragoza [R=301,L]
+  RewriteRule ^diseno_montaje_stands_irun/?$ https://standarte.es/diseno-construccion-montaje-stands-irun [R=301,L]
+  RewriteRule ^diseno_montaje_stands_vitoria/?$ https://standarte.es/diseno-construccion-montaje-stands-vitoria [R=301,L]
+  RewriteRule ^diseno_montaje_stands_a_coruna/?$ https://standarte.es/diseno-construccion-montaje-stands-a-coruna [R=301,L]
+  RewriteRule ^diseno\-construccion\-montaje\-stand\-bilbao/?$ https://standarte.es/diseno-construccion-montaje-stands-bilbao [R=301,L]
 
   # ─── PLAN DE EMERGENCIA ANTE DENUNCIA FALSA (preparado, NO activo) ──────────────
   # Si una denuncia tumba el posicionamiento de una página de ciudad, descomenta SOLO
@@ -88,14 +103,14 @@ DirectorySlash Off
   # que ya lleva tiempo indexada y con autoridad propia. Al resolverse la denuncia,
   # vuelve a comentarla. No descomentar varias "por si acaso": mientras la principal
   # funcione, redirigirla sería regalar su posicionamiento.
-  # RewriteRule ^diseno_montaje_stands_zaragoza/?$ https://standarte.es/constructor_stand_zaragoza [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-zaragoza/?$ https://standarte.es/constructor_stand_zaragoza [R=301,L]
   # RewriteRule ^diseno_montaje_stands_madrid/?$ https://standarte.es/constructor_stand_madrid [R=301,L]
   # RewriteRule ^diseno_montaje_stands_barcelona/?$ https://standarte.es/constructor_stand_barcelona [R=301,L]
   # RewriteRule ^diseno-construccion-montaje-stands-oporto/?$ https://standarte.es/constructor_stand_oporto [R=301,L]
-  # RewriteRule ^diseno_montaje_stands_lisboa/?$ https://standarte.es/constructor_stand_lisboa [R=301,L]
-  # RewriteRule ^diseno-construccion-montaje-stand-bilbao/?$ https://standarte.es/constructor_stand_bilbao [R=301,L]
-  # RewriteRule ^diseno_montaje_stands_badajoz/?$ https://standarte.es/constructor_stand_badajoz [R=301,L]
-  # RewriteRule ^montaje_stand_don_benito/?$ https://standarte.es/constructor_stand_don_benito [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-lisboa/?$ https://standarte.es/constructor_stand_lisboa [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-bilbao/?$ https://standarte.es/constructor_stand_bilbao [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-badajoz/?$ https://standarte.es/constructor_stand_badajoz [R=301,L]
+  # RewriteRule ^montaje-stands-don-benito/?$ https://standarte.es/constructor_stand_don_benito [R=301,L]
   # RewriteRule ^diseno_montaje_stands_malaga/?$ https://standarte.es/constructor_stand_malaga [R=301,L]
   # RewriteRule ^diseno_montaje_stands_sevilla/?$ https://standarte.es/constructor_stand_sevilla [R=301,L]
   # RewriteRule ^diseno_montaje_stands_valencia/?$ https://standarte.es/constructor_stand_valencia [R=301,L]
@@ -104,17 +119,17 @@ DirectorySlash Off
   # RewriteRule ^diseno_montaje_stands_elche/?$ https://standarte.es/constructor_stand_elche [R=301,L]
   # RewriteRule ^diseno_montaje_stands_murcia/?$ https://standarte.es/constructor_stand_murcia [R=301,L]
   # RewriteRule ^diseno_montaje_stands_salamanca/?$ https://standarte.es/constructor_stand_salamanca [R=301,L]
-  # RewriteRule ^diseno_montaje_stands_a_coruna/?$ https://standarte.es/constructor_stand_coruna [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-a-coruna/?$ https://standarte.es/constructor_stand_coruna [R=301,L]
   # RewriteRule ^diseno_montaje_stands_santiago_de_compostela/?$ https://standarte.es/constructor_stand_santiago [R=301,L]
   # RewriteRule ^diseno_montaje_stands_vigo/?$ https://standarte.es/constructor_stand_vigo [R=301,L]
   # RewriteRule ^diseno_montaje_stands_ourense/?$ https://standarte.es/constructor_stand_ourense [R=301,L]
   # RewriteRule ^diseno_montaje_stands_silleda/?$ https://standarte.es/constructor_stand_silleda [R=301,L]
   # RewriteRule ^diseno_montaje_stands_gijon/?$ https://standarte.es/constructor_stand_gijon [R=301,L]
   # RewriteRule ^diseno_montaje_stands_santander/?$ https://standarte.es/constructor_stand_santander [R=301,L]
-  # RewriteRule ^diseno_montaje_stands_irun/?$ https://standarte.es/constructor_stand_irun [R=301,L]
-  # RewriteRule ^diseno_montaje_stands_vitoria/?$ https://standarte.es/constructor_stand_vitoria [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-irun/?$ https://standarte.es/constructor_stand_irun [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-vitoria/?$ https://standarte.es/constructor_stand_vitoria [R=301,L]
   # RewriteRule ^diseno_montaje_stands_pamplona/?$ https://standarte.es/constructor_stand_pamplona [R=301,L]
-  # RewriteRule ^diseno_montaje_stands_logrono/?$ https://standarte.es/constructor_stand_logrono [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-logrono/?$ https://standarte.es/constructor_stand_logrono [R=301,L]
   # RewriteRule ^diseno_montaje_stands_lleida/?$ https://standarte.es/constructor_stand_lleida [R=301,L]
   # RewriteRule ^diseno_montaje_stands_girona/?$ https://standarte.es/constructor_stand_girona [R=301,L]
   # RewriteRule ^diseno_montaje_stands_mallorca/?$ https://standarte.es/constructor_stand_mallorca [R=301,L]
@@ -129,7 +144,7 @@ DirectorySlash Off
   # RewriteRule ^diseno_montaje_stands_andorra/?$ https://standarte.es/constructor_stand_andorra [R=301,L]
   # RewriteRule ^diseno_montaje_stands_teruel/?$ https://standarte.es/constructor_stand_teruel [R=301,L]
   # RewriteRule ^diseno_montaje_stands_aranda_de_duero/?$ https://standarte.es/constructor_stand_aranda [R=301,L]
-  # RewriteRule ^diseno_montaje_stands_ciudad_real/?$ https://standarte.es/constructor_stand_ciudad_real [R=301,L]
+  # RewriteRule ^diseno-construccion-montaje-stands-ciudad-real/?$ https://standarte.es/constructor_stand_ciudad_real [R=301,L]
   # RewriteRule ^montaje_stand_zafra/?$ https://standarte.es/constructor_stand_zafra [R=301,L]
   # RewriteRule ^diseno_montaje_stands_trujillo/?$ https://standarte.es/constructor_stand_trujillo [R=301,L]
   # RewriteRule ^diseno_montaje_stands_almeria/?$ https://standarte.es/constructor_stand_almeria [R=301,L]
@@ -243,12 +258,12 @@ DirectorySlash Off
   # RewriteRule ^pt/design_montagem_stands_sul_portugal/?$ https://standarte.es/pt/construtor_stands_sul_portugal [R=301,L]
   # RewriteRule ^pt/design_montagem_stands_ilhas_madeira/?$ https://standarte.es/pt/construtor_stands_ilhas_madeira [R=301,L]
   # ───────────────────────────────────────────────────────────────────────────────
-  RewriteRule ^construccion_stands_lisboa/?$ https://standarte.es/diseno_montaje_stands_lisboa [R=301,L]
+  RewriteRule ^construccion_stands_lisboa/?$ https://standarte.es/diseno-construccion-montaje-stands-lisboa [R=301,L]
   RewriteRule ^construccion_stands_malaga/?$ https://standarte.es/diseno_montaje_stands_malaga [R=301,L]
-  RewriteRule ^construccion_stands_badajoz/?$ https://standarte.es/diseno_montaje_stands_badajoz [R=301,L]
+  RewriteRule ^construccion_stands_badajoz/?$ https://standarte.es/diseno-construccion-montaje-stands-badajoz [R=301,L]
   RewriteRule ^construccion_stands_sevilla/?$ https://standarte.es/diseno_montaje_stands_sevilla [R=301,L]
-  RewriteRule ^construccion_stands_ciudad_real/?$ https://standarte.es/diseno_montaje_stands_ciudad_real [R=301,L]
-  RewriteRule ^construccion_stands_zaragoza/?$ https://standarte.es/diseno_montaje_stands_zaragoza [R=301,L]
+  RewriteRule ^construccion_stands_ciudad_real/?$ https://standarte.es/diseno-construccion-montaje-stands-ciudad-real [R=301,L]
+  RewriteRule ^construccion_stands_zaragoza/?$ https://standarte.es/diseno-construccion-montaje-stands-zaragoza [R=301,L]
   RewriteRule ^en/stand_construction_madrid/?$ https://standarte.es/en/stand_design_assembly_madrid [R=301,L]
   RewriteRule ^en/stand_construction_barcelona/?$ https://standarte.es/en/stand_design_assembly_barcelona [R=301,L]
   RewriteRule ^en/stand_construction_bilbao/?$ https://standarte.es/en/stand_design_assembly_bilbao [R=301,L]

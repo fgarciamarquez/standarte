@@ -84,7 +84,7 @@ export const builderSeoData = {
         ${paso('Zaragoza')}
         ${tipos('Zaragoza')}
         <h2>Constructor de stands en Zaragoza: ferias del recinto</h2>
-        <p>Construimos para todo el calendario del recinto: <a href="/ferias/stand-fima-zaragoza">FIMA</a>, <a href="/ferias/stands-figan-zaragoza">FIGAN</a>, <a href="/ferias/stand-smopyc-zaragoza">SMOPYC</a>, <a href="/ferias/stand-smagua-zaragoza">SMAGUA</a>, <a href="/ferias/stand-aratur-zaragoza">Aratur</a>, <a href="/ferias/stand-expofimer-zaragoza">EXPOFIMER</a> y <a href="/ferias/stand-spaper-zaragoza">SPAPER</a>. Si prefieres ver el servicio completo de diseño y montaje para la plaza, está en nuestra página de <a href="/diseno_montaje_stands_zaragoza">stands para ferias en Zaragoza</a>.</p>
+        <p>Construimos para todo el calendario del recinto: <a href="/ferias/stand-fima-zaragoza">FIMA</a>, <a href="/ferias/stands-figan-zaragoza">FIGAN</a>, <a href="/ferias/stand-smopyc-zaragoza">SMOPYC</a>, <a href="/ferias/stand-smagua-zaragoza">SMAGUA</a>, <a href="/ferias/stand-aratur-zaragoza">Aratur</a>, <a href="/ferias/stand-expofimer-zaragoza">EXPOFIMER</a> y <a href="/ferias/stand-spaper-zaragoza">SPAPER</a>. Si prefieres ver el servicio completo de diseño y montaje para la plaza, está en nuestra página de <a href="/diseno-construccion-montaje-stands-zaragoza">stands para ferias en Zaragoza</a>.</p>
         ${porque('Zaragoza')}`
     }
   },
@@ -153,7 +153,7 @@ export const builderSeoData = {
         ${paso('Lisboa')}
         ${tipos('Lisboa')}
         <h2>Constructor de stands en Lisboa: ferias y congresos del recinto</h2>
-        <p>Construimos para las grandes citas de la capital: <a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/ferias/stand-sbc-summit-lisboa">SBC Summit</a>, <a href="/ferias/stand-lisboa-games-week">Lisboa Games Week</a> y <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>. El servicio completo de diseño y montaje está en <a href="/diseno_montaje_stands_lisboa">stands para ferias en Lisboa</a>.</p>
+        <p>Construimos para las grandes citas de la capital: <a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/ferias/stand-sbc-summit-lisboa">SBC Summit</a>, <a href="/ferias/stand-lisboa-games-week">Lisboa Games Week</a> y <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-lisboa">stands para ferias en Lisboa</a>.</p>
         ${porque('Lisboa')}`
     }
   },
@@ -171,7 +171,7 @@ export const builderSeoData = {
         ${paso('Bilbao')}
         ${tipos('Bilbao')}
         <h2>Constructor de stands en Bilbao: ferias del recinto</h2>
-        <p>Construimos para el calendario del BEC: <a href="/ferias/stands-biemh-bilbao">BIEMH</a>, <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stand-egurtek-bilbao">Egurtek</a> y <a href="/ferias/stand-world-maritime-week-bilbao">World Maritime Week</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stand-bilbao">stands para ferias en Bilbao</a>.</p>
+        <p>Construimos para el calendario del BEC: <a href="/ferias/stands-biemh-bilbao">BIEMH</a>, <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stand-egurtek-bilbao">Egurtek</a> y <a href="/ferias/stand-world-maritime-week-bilbao">World Maritime Week</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-bilbao">stands para ferias en Bilbao</a>.</p>
         ${porque('Bilbao')}`
     }
   },
@@ -189,7 +189,7 @@ export const builderSeoData = {
         ${paso('Badajoz')}
         ${tipos('Badajoz')}
         <h2>Constructor de stands en Badajoz: ferias del recinto</h2>
-        <p>Construimos para las citas de IFEBA y la provincia: <a href="/ferias/stand-fehispor-badajoz">Fehispor</a>, <a href="/ferias/stand-ecuextre-badajoz">Ecuextre</a>, <a href="/ferias/stand-feciex-badajoz">Feciex</a>, <a href="/ferias/stand-iberocio-badajoz">Iberocio</a> y <a href="/ferias/stand-feria-de-fp-badajoz">Feria de FP</a>. El servicio completo de diseño y montaje está en <a href="/diseno_montaje_stands_badajoz">stands para ferias en Badajoz</a>.</p>
+        <p>Construimos para las citas de IFEBA y la provincia: <a href="/ferias/stand-fehispor-badajoz">Fehispor</a>, <a href="/ferias/stand-ecuextre-badajoz">Ecuextre</a>, <a href="/ferias/stand-feciex-badajoz">Feciex</a>, <a href="/ferias/stand-iberocio-badajoz">Iberocio</a> y <a href="/ferias/stand-feria-de-fp-badajoz">Feria de FP</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-badajoz">stands para ferias en Badajoz</a>.</p>
         ${porque('Badajoz')}`
     }
   },
@@ -207,7 +207,7 @@ export const builderSeoData = {
         ${paso('Don Benito')}
         ${tipos('Don Benito')}
         <h2>Constructor de stands en Don Benito: ferias del recinto</h2>
-        <p>Construimos para <a href="/ferias/stands-agroexpo">Agroexpo</a> y el resto del calendario de <a href="/ferias/stands-agroexpo-feval-don-benito">FEVAL</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/montaje_stand_don_benito">montaje de stands en Don Benito</a>.</p>
+        <p>Construimos para <a href="/ferias/stands-agroexpo">Agroexpo</a> y el resto del calendario de <a href="/ferias/stands-agroexpo-feval-don-benito">FEVAL</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/montaje-stands-don-benito">montaje de stands en Don Benito</a>.</p>
         ${porque('Don Benito')}`
     }
   },
@@ -246,7 +246,7 @@ export const builderSeoData = {
           <li><strong>Mobiliario y expositores propios.</strong> Mostradores, vitrinas y soportes construidos para tu producto —no comprados en catálogo— y almacén oculto para el material de campaña.</li>
         </ul>
         <h2>Constructor de stands para FIGAN: y para el resto de la Feria de Zaragoza</h2>
-        <p>El mismo taller construye para todo el calendario del recinto: <a href="/ferias/stand-fima-zaragoza">FIMA</a>, <a href="/ferias/stand-smopyc-zaragoza">SMOPYC</a>, <a href="/ferias/stand-smagua-zaragoza">SMAGUA</a>, <a href="/ferias/stand-aratur-zaragoza">Aratur</a> y <a href="/ferias/stand-expofimer-zaragoza">EXPOFIMER</a>. Si lo que buscas es la ficha de la feria —fechas de la próxima edición, sectores y el servicio completo de diseño y montaje—, está en <a href="/ferias/stands-figan-zaragoza">stands para FIGAN</a>; y el servicio para la plaza, en <a href="/diseno_montaje_stands_zaragoza">stands para ferias en Zaragoza</a> y en <a href="/constructor_stand_zaragoza">constructor de stands en Zaragoza</a>.</p>
+        <p>El mismo taller construye para todo el calendario del recinto: <a href="/ferias/stand-fima-zaragoza">FIMA</a>, <a href="/ferias/stand-smopyc-zaragoza">SMOPYC</a>, <a href="/ferias/stand-smagua-zaragoza">SMAGUA</a>, <a href="/ferias/stand-aratur-zaragoza">Aratur</a> y <a href="/ferias/stand-expofimer-zaragoza">EXPOFIMER</a>. Si lo que buscas es la ficha de la feria —fechas de la próxima edición, sectores y el servicio completo de diseño y montaje—, está en <a href="/ferias/stands-figan-zaragoza">stands para FIGAN</a>; y el servicio para la plaza, en <a href="/diseno-construccion-montaje-stands-zaragoza">stands para ferias en Zaragoza</a> y en <a href="/constructor_stand_zaragoza">constructor de stands en Zaragoza</a>.</p>
         <h2>Constructor de stands para FIGAN: por qué construir con Standarte</h2>
         <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un cambio de última hora sin depender de la agenda de otro taller. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en FIGAN</a></p>`
@@ -286,7 +286,7 @@ export const builderSeoData = {
           <li><strong>Elementos reutilizables.</strong> Piezas de sistema propias que se reconfiguran de una edición a la siguiente y abaratan la presencia recurrente.</li>
         </ul>
         <h2>Constructor de stands para Agroexpo: y para el resto de FEVAL y Extremadura</h2>
-        <p>El mismo taller construye para el resto del calendario del recinto —<a href="/ferias/stands-agroexpo-feval-don-benito">FEVAL</a>— y para las plazas extremeñas: <a href="/montaje_stand_don_benito">Don Benito</a>, <a href="/diseno_montaje_stands_badajoz">Badajoz</a>, <a href="/montaje_stand_zafra">Zafra</a> y <a href="/diseno_montaje_stands_trujillo">Trujillo</a>. La ficha de la feria —sectores y servicio completo de diseño y montaje— está en <a href="/ferias/stands-agroexpo">stands para Agroexpo</a>, y la página de plaza, en <a href="/constructor_stand_don_benito">constructor de stands en Don Benito</a>.</p>
+        <p>El mismo taller construye para el resto del calendario del recinto —<a href="/ferias/stands-agroexpo-feval-don-benito">FEVAL</a>— y para las plazas extremeñas: <a href="/montaje-stands-don-benito">Don Benito</a>, <a href="/diseno-construccion-montaje-stands-badajoz">Badajoz</a>, <a href="/montaje_stand_zafra">Zafra</a> y <a href="/diseno_montaje_stands_trujillo">Trujillo</a>. La ficha de la feria —sectores y servicio completo de diseño y montaje— está en <a href="/ferias/stands-agroexpo">stands para Agroexpo</a>, y la página de plaza, en <a href="/constructor_stand_don_benito">constructor de stands en Don Benito</a>.</p>
         <h2>Constructor de stands para Agroexpo: por qué construir con Standarte</h2>
         <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos, a menos de una hora de FEVAL. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un imprevisto el mismo día del montaje. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Agroexpo</a></p>`
@@ -328,7 +328,7 @@ export const builderSeoData = {
           <li><strong>Mobiliario y expositores propios.</strong> Mostradores, vitrinas de utillaje y soportes de pieza construidos para tu producto, más almacén oculto para embalaje y recambios.</li>
         </ul>
         <h2>Constructor de stands para BIEMH: y para el resto del BEC</h2>
-        <p>El mismo taller construye para todo el calendario del recinto: <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-bedigital-bilbao">BeDigital</a> e <a href="/ferias/stand-ferroforma-bilbao">Industry Tools by Ferroforma</a>, las citas que comparten plataforma en <a href="/ferias/stand-plus-industry-bilbao">+Industry</a>. Si lo que buscas es la ficha de la feria —fechas de la próxima edición, sectores y el servicio completo de diseño y montaje—, está en <a href="/ferias/stands-biemh-bilbao">stands para BIEMH</a>; y el servicio para la plaza, en <a href="/diseno-construccion-montaje-stand-bilbao">stands para ferias en Bilbao</a> y en <a href="/constructor_stand_bilbao">constructor de stands en Bilbao</a>.</p>
+        <p>El mismo taller construye para todo el calendario del recinto: <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-bedigital-bilbao">BeDigital</a> e <a href="/ferias/stand-ferroforma-bilbao">Industry Tools by Ferroforma</a>, las citas que comparten plataforma en <a href="/ferias/stand-plus-industry-bilbao">+Industry</a>. Si lo que buscas es la ficha de la feria —fechas de la próxima edición, sectores y el servicio completo de diseño y montaje—, está en <a href="/ferias/stands-biemh-bilbao">stands para BIEMH</a>; y el servicio para la plaza, en <a href="/diseno-construccion-montaje-stands-bilbao">stands para ferias en Bilbao</a> y en <a href="/constructor_stand_bilbao">constructor de stands en Bilbao</a>.</p>
         <h2>Constructor de stands para BIEMH: por qué construir con Standarte</h2>
         <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un cambio de última hora sin depender de la agenda de otro taller. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en BIEMH</a></p>`
@@ -491,7 +491,7 @@ export const builderSeoData = {
         ${paso('A Coruña')}
         ${tipos('A Coruña')}
         <h2>Constructor de stands en A Coruña: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-forum-gastronomico-a-coruna">Galicia Fórum Gastronómico</a>, <a href="/ferias/stand-mundos-digitales-a-coruna">Mundos Digitales</a> y <a href="/ferias/stand-biocultura-a-coruna">BioCultura A Coruña</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_a_coruna">stands para ferias en A Coruña</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-forum-gastronomico-a-coruna">Galicia Fórum Gastronómico</a>, <a href="/ferias/stand-mundos-digitales-a-coruna">Mundos Digitales</a> y <a href="/ferias/stand-biocultura-a-coruna">BioCultura A Coruña</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-a-coruna">stands para ferias en A Coruña</a>.</p>
         ${porque('A Coruña')}`
     }
   },
@@ -610,7 +610,7 @@ export const builderSeoData = {
         ${paso('Irún')}
         ${tipos('Irún')}
         <h2>Constructor de stands en Irún: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-mubil-mobility-expo-irun">MUBIL Mobility Expo</a>, <a href="/ferias/stand-unire-irun">UNIRE</a>, <a href="/ferias/stand-bioterra-irun">Bioterra</a>, <a href="/ferias/stand-caravantur-irun">Caravantur</a>, <a href="/ferias/stand-uhinak-irun">Uhinak</a> y <a href="/ferias/stand-go-mobility-irun">Go Mobility</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_irun">stands para ferias en Irún</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-mubil-mobility-expo-irun">MUBIL Mobility Expo</a>, <a href="/ferias/stand-unire-irun">UNIRE</a>, <a href="/ferias/stand-bioterra-irun">Bioterra</a>, <a href="/ferias/stand-caravantur-irun">Caravantur</a>, <a href="/ferias/stand-uhinak-irun">Uhinak</a> y <a href="/ferias/stand-go-mobility-irun">Go Mobility</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-irun">stands para ferias en Irún</a>.</p>
         ${porque('Irún')}`
     }
   },
@@ -627,7 +627,7 @@ export const builderSeoData = {
         ${paso('Vitoria')}
         ${tipos('Vitoria')}
         <h2>Constructor de stands en Vitoria: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-ardoaraba-vitoria">Ardoaraba</a>, <a href="/ferias/stand-avanza-fp-alava-vitoria">AVANZA – Feria de FP de Álava</a>, <a href="/ferias/stand-empleo-gune-vitoria">Empleo Gune</a>, <a href="/ferias/stand-feria-stocks-vitoria">Feria de Stocks</a> y <a href="/ferias/stand-lanberri-vitoria">Lanberri</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_vitoria">stands para ferias en Vitoria</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-ardoaraba-vitoria">Ardoaraba</a>, <a href="/ferias/stand-avanza-fp-alava-vitoria">AVANZA – Feria de FP de Álava</a>, <a href="/ferias/stand-empleo-gune-vitoria">Empleo Gune</a>, <a href="/ferias/stand-feria-stocks-vitoria">Feria de Stocks</a> y <a href="/ferias/stand-lanberri-vitoria">Lanberri</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-vitoria">stands para ferias en Vitoria</a>.</p>
         ${porque('Vitoria')}`
     }
   },
@@ -661,7 +661,7 @@ export const builderSeoData = {
         ${paso('Logroño')}
         ${tipos('Logroño')}
         <h2>Constructor de stands en Logroño: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-rioja-wine-trade-mission-logrono">Rioja Wine Trade Mission</a>, <a href="/ferias/stand-planeta-rioja-logrono">Planeta Rioja</a>, <a href="/ferias/stand-feria-formacion-profesional-la-rioja-logrono">Feria de Formación Profesional de La Rioja</a>, <a href="/ferias/stand-feria-vehiculo-ocasion-logrono">Feria del Vehículo de Ocasión de Logroño</a>, <a href="/ferias/stand-feria-maquinaria-agricola-alfaro">Feria de Maquinaria Agrícola de Alfaro</a> y <a href="/ferias/stand-ferias-agroalimentarias-rioja-oriental-calahorra">Ferias Agroalimentarias de la Rioja Oriental</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_logrono">stands para ferias en Logroño</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-rioja-wine-trade-mission-logrono">Rioja Wine Trade Mission</a>, <a href="/ferias/stand-planeta-rioja-logrono">Planeta Rioja</a>, <a href="/ferias/stand-feria-formacion-profesional-la-rioja-logrono">Feria de Formación Profesional de La Rioja</a>, <a href="/ferias/stand-feria-vehiculo-ocasion-logrono">Feria del Vehículo de Ocasión de Logroño</a>, <a href="/ferias/stand-feria-maquinaria-agricola-alfaro">Feria de Maquinaria Agrícola de Alfaro</a> y <a href="/ferias/stand-ferias-agroalimentarias-rioja-oriental-calahorra">Ferias Agroalimentarias de la Rioja Oriental</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-logrono">stands para ferias en Logroño</a>.</p>
         ${porque('Logroño')}`
     }
   },
@@ -916,7 +916,7 @@ export const builderSeoData = {
         ${paso('Ciudad Real')}
         ${tipos('Ciudad Real')}
         <h2>Constructor de stands en Ciudad Real: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fenavin-match-ciudad-real">Fenavin Match Ciudad Real</a>, <a href="/ferias/stand-ferduque-ciudad-real">FERDUQUE</a>, <a href="/ferias/stand-fercam-manzanares-ciudad-real">FERCAM</a> y <a href="/ferias/stand-fercatur-ciudad-real">Fercatur Ciudad Real</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_ciudad_real">stands para ferias en Ciudad Real</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fenavin-match-ciudad-real">Fenavin Match Ciudad Real</a>, <a href="/ferias/stand-ferduque-ciudad-real">FERDUQUE</a>, <a href="/ferias/stand-fercam-manzanares-ciudad-real">FERCAM</a> y <a href="/ferias/stand-fercatur-ciudad-real">Fercatur Ciudad Real</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-ciudad-real">stands para ferias en Ciudad Real</a>.</p>
         ${porque('Ciudad Real')}`
     }
   },
@@ -1341,7 +1341,7 @@ export const builderSeoData = {
         ${paso('Mérida')}
         ${tipos('Mérida')}
         <h2>Constructor de stands en Mérida: ferias de la plaza</h2>
-        <p>Construimos para el calendario de IFEME: <a href="/ferias/stand-salon-automovil-merida">Salón del Automóvil de Mérida</a>, <a href="/ferias/stand-feria-bodas-hogar-merida">Feria de Bodas y Hogar</a>, <a href="/ferias/stand-coleccionismo-emerita-augusta-merida">Feria de Coleccionismo Emérita Augusta</a> y <a href="/ferias/stand-feturex-merida">FETUREX</a>. El servicio completo de diseño y montaje para la provincia está en nuestra página de <a href="/diseno_montaje_stands_badajoz">stands para ferias en Badajoz</a>.</p>
+        <p>Construimos para el calendario de IFEME: <a href="/ferias/stand-salon-automovil-merida">Salón del Automóvil de Mérida</a>, <a href="/ferias/stand-feria-bodas-hogar-merida">Feria de Bodas y Hogar</a>, <a href="/ferias/stand-coleccionismo-emerita-augusta-merida">Feria de Coleccionismo Emérita Augusta</a> y <a href="/ferias/stand-feturex-merida">FETUREX</a>. El servicio completo de diseño y montaje para la provincia está en nuestra página de <a href="/diseno-construccion-montaje-stands-badajoz">stands para ferias en Badajoz</a>.</p>
         ${porque('Mérida')}`
     }
   },
@@ -1358,7 +1358,7 @@ export const builderSeoData = {
         ${paso('Almendralejo')}
         ${tipos('Almendralejo')}
         <h2>Constructor de stands en Almendralejo: ferias de la plaza</h2>
-        <p>Construimos para <a href="/ferias/stand-vinac-almendralejo">Vinac Almendralejo</a> y para el resto del calendario extremeño, desde <a href="/ferias/stand-feria-internacional-ganadera-zafra">la Feria Internacional Ganadera de Zafra</a> hasta <a href="/ferias/stand-feturex-merida">FETUREX en Mérida</a>. El servicio completo de diseño y montaje para la provincia está en nuestra página de <a href="/diseno_montaje_stands_badajoz">stands para ferias en Badajoz</a>.</p>
+        <p>Construimos para <a href="/ferias/stand-vinac-almendralejo">Vinac Almendralejo</a> y para el resto del calendario extremeño, desde <a href="/ferias/stand-feria-internacional-ganadera-zafra">la Feria Internacional Ganadera de Zafra</a> hasta <a href="/ferias/stand-feturex-merida">FETUREX en Mérida</a>. El servicio completo de diseño y montaje para la provincia está en nuestra página de <a href="/diseno-construccion-montaje-stands-badajoz">stands para ferias en Badajoz</a>.</p>
         ${porque('Almendralejo')}`
     }
   },

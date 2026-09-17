@@ -55,7 +55,7 @@ const CITIES = {
   Lisboa: {
     venue: 'FIL — Feira Internacional de Lisboa', venueShort: 'FIL',
     name: { es: 'Lisboa', en: 'Lisbon', pt: 'Lisboa' },
-    cityPage: { es: '/diseno_montaje_stands_lisboa', en: '/en/stand_design_assembly_lisbon', pt: '/pt/design_montagem_stands_lisboa' },
+    cityPage: { es: '/diseno-construccion-montaje-stands-lisboa', en: '/en/stand_design_assembly_lisbon', pt: '/pt/design_montagem_stands_lisboa' },
     builderPage: { es: '/constructor_stand_lisboa', en: '/en/stand_builder_lisbon', pt: '/pt/construtor_stands_lisboa' },
     rss: { q: 'FIL+feiras+lisboa', hl: 'pt-PT', gl: 'PT', ceid: 'PT:pt-150' },
     langs: ['es', 'en', 'pt']

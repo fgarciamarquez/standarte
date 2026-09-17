@@ -35,15 +35,15 @@ export const routes = {
     contact: 'contacto',
     madrid: 'diseno_montaje_stands_madrid',
     barcelona: 'diseno_montaje_stands_barcelona',
-    bilbao: 'diseno-construccion-montaje-stand-bilbao',
-    lisboa: 'diseno_montaje_stands_lisboa',
+    bilbao: 'diseno-construccion-montaje-stands-bilbao',
+    lisboa: 'diseno-construccion-montaje-stands-lisboa',
     batalha: 'diseno_montaje_stands_batalha',
     silleda: 'diseno_montaje_stands_silleda',
     santander: 'diseno_montaje_stands_santander',
-    irun: 'diseno_montaje_stands_irun',
-    logrono: 'diseno_montaje_stands_logrono',
+    irun: 'diseno-construccion-montaje-stands-irun',
+    logrono: 'diseno-construccion-montaje-stands-logrono',
     pamplona: 'diseno_montaje_stands_pamplona',
-    vitoria: 'diseno_montaje_stands_vitoria',
+    vitoria: 'diseno-construccion-montaje-stands-vitoria',
     aranda: 'diseno_montaje_stands_aranda_de_duero',
     regua: 'diseno_montaje_stands_peso_da_regua',
     ibiza: 'diseno_montaje_stands_ibiza',
@@ -72,7 +72,7 @@ export const routes = {
     ourense: 'diseno_montaje_stands_ourense',
     vigo: 'diseno_montaje_stands_vigo',
     santiago: 'diseno_montaje_stands_santiago_de_compostela',
-    coruna: 'diseno_montaje_stands_a_coruna',
+    coruna: 'diseno-construccion-montaje-stands-a-coruna',
     valladolid: 'diseno_montaje_stands_valladolid',
     salamanca: 'diseno_montaje_stands_salamanca',
     mallorca: 'diseno_montaje_stands_mallorca',
@@ -84,10 +84,10 @@ export const routes = {
     islas_canarias: 'diseno_montaje_stands_islas_canarias',
     islas_de_madeira: 'diseno_montaje_stands_islas_madeira',
     malaga: 'diseno_montaje_stands_malaga',
-    badajoz: 'diseno_montaje_stands_badajoz',
+    badajoz: 'diseno-construccion-montaje-stands-badajoz',
     sevilla: 'diseno_montaje_stands_sevilla',
-    ciudad_real: 'diseno_montaje_stands_ciudad_real',
-    zaragoza: 'diseno_montaje_stands_zaragoza',
+    ciudad_real: 'diseno-construccion-montaje-stands-ciudad-real',
+    zaragoza: 'diseno-construccion-montaje-stands-zaragoza',
     // Páginas paralelas de "constructor de stands" (defensa ante denuncias falsas).
     // Solo en español; ver src/lib/builderPages.js.
     constructor_stand_zaragoza: 'constructor_stand_zaragoza',
@@ -164,7 +164,7 @@ export const routes = {
     constructor_stand_agroexpo: 'ferias/constructor-stand-agroexpo',
     constructor_stand_biemh: 'ferias/constructor-stand-biemh',
     montaje_zafra: 'montaje_stand_zafra',
-    montaje_don_benito: 'montaje_stand_don_benito',
+    montaje_don_benito: 'montaje-stands-don-benito',
     montaje_badajoz: 'montaje_stand_badajoz',
     almeria: 'diseno_montaje_stands_almeria',
     jaen: 'diseno_montaje_stands_jaen',
@@ -3097,6 +3097,17 @@ export function resolveRoute(path) {
   else canonical = `${SITE_ORIGIN}${pathFor(lang, section)}`;
   return { lang, section, fairSlug, projectId, tag, copy: c, canonical };
 }
+
+// Páginas principales SIN imágenes de galería (decisión del usuario, 17/09/2026): tras
+// perder de golpe el posicionamiento en estas plazas, se retiran de ellas todas las
+// imágenes y vídeos procedentes de la galería de proyectos (rejilla de la galería,
+// figuras de caso de éxito y figuras/vídeo keyword de img/seo) como defensa ante
+// denuncias, y cambian levemente de URL (ver static/.htaccess, 301 desde la antigua).
+// El texto no se toca. La foto de portada del hero no es de galería y se mantiene.
+export const NO_GALLERY_SECTIONS = new Set([
+  'lisboa', 'logrono', 'badajoz', 'montaje_don_benito', 'ciudad_real',
+  'zaragoza', 'irun', 'vitoria', 'coruna', 'bilbao'
+]);
 
 // Secciones que StandQuote no ofrece: sus páginas ni se generan en esa marca.
 export const SQ_REMOVED_SECTIONS = new Set([

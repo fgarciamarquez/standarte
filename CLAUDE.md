@@ -59,6 +59,12 @@ El PHP no corre en Vite: para probar formularios/panel admin se usa MAMP sobre e
 
 El método de **una URL por feria** (`/ferias/stand-<feria>-<ciudad>`) es el que da resultados, aunque en plazas competidas como Madrid mejore despacio. Por eso hay que **ampliar de vez en cuando la red de ferias** en tres plazas prioritarias: Madrid (IFEMA), Lisboa (FIL, Altice Arena, Lisboa Congress Centre) y el entorno industrial del norte de Portugal (Oporto/Exponor, Braga, Guimarães, Batalha/Exposalão, Aveiro). Referencia a 12/09/2026: Madrid 34 fichas, Lisboa 27, Oporto 21, Batalha 5. Una Routine en claude.ai (días 1 y 15 de cada mes, 05:00 UTC) prepara el alta de 1 o 2 ferias por plaza en una rama `routine/alta-ferias-<fecha>` y abre un pull request siguiendo **`docs/alta_ferias.md`**; tras el merge hay que lanzar `deploy.yml` (procedimiento «Absolutista»: 11 idiomas, fechas de fuente oficial, enlace desde la página matriz, frescura y slugs `stands-`).
 
+## Páginas principales y paralelas de constructor (estado a 17/09/2026)
+
+- **Paralelas** (`src/lib/builderPages.js`, `constructor_stand_*`): solo 13 siguen indexadas (las anteriores al 15/09). Las 58 del lote del 15/09 y Mérida/Almendralejo están **aparcadas** (`indexable: false` → `noindex, follow`, fuera del sitemap) porque al día siguiente de publicarlas las principales de varias plazas perdieron posición. Reactivar de una en una y con texto propio, nunca por lotes. El guardián `check_noindex` solo tolera noindex en paralelas y comprueba que no figuren en el sitemap.
+- **Cambio leve de URL como defensa ante denuncias** (precedente Bilbao 2026-08, Oporto 31/08; diez plazas más el 17/09: Lisboa, Logroño, Badajoz, Don Benito, Ciudad Real, Zaragoza, Irún, Vitoria, A Coruña, Bilbao): patrón `diseno-construccion-montaje-stands-<ciudad>`, solo la ruta ES, 301 directa en `static/.htaccess` (y actualizar los destinos de las 301 antiguas para no encadenar), sustituir la URL en `richSeoData`, `builderSeoData`, `newsData.json` y `autonomous_generator.cjs`, y fecha nueva en `seoFreshness`.
+- **Sin imágenes de galería** (`NO_GALLERY_SECTIONS` en `siteData.js`): esas diez principales no muestran rejilla de galería, figuras de caso ni figuras/vídeo keyword de `img/seo`; el texto y la foto de portada se mantienen.
+
 ## Decisiones pendientes (no ejecutar sin confirmar)
 
 1. Eliminar del repo el espejo estático antiguo de la raíz (~1.400 ficheros) y definir un flujo local mejor para PHP.

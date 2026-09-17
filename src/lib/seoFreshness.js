@@ -107,19 +107,19 @@ export const seoFreshness = {
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
   home: '2026-08-28',
-  badajoz: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
+  badajoz: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
   montaje_badajoz: '2026-08-28',
-  zaragoza: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
-  lisboa: '2026-09-15',   // alta de FILDecor
-  montaje_don_benito: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
-  ciudad_real: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  zaragoza: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
+  lisboa: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
+  montaje_don_benito: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
+  ciudad_real: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
   trujillo: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   montaje_zafra: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   oporto: '2026-09-15',   // alta de Portugal Print
   vigo: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   portugal_sur: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   madrid: '2026-09-15',   // alta de InterSICOP
-  bilbao: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
+  bilbao: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
   malaga: '2026-09-11',   // alta de Transfiere en el cuerpo
   sevilla: '2026-09-12',   // SICAB, SIMOF, Salón del Motor y Fireca con su sector real
   barcelona: '2026-08-31',   // enlace a su paralela de constructor (31/08/2026)
@@ -130,7 +130,7 @@ export const seoFreshness = {
   islas_de_madeira: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   mallorca: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   valencia: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
-  coruna: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  coruna: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
   santiago: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   valladolid: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   salamanca: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
@@ -148,10 +148,10 @@ export const seoFreshness = {
   girona: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   santander: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   gijon: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
-  irun: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
-  logrono: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  irun: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
+  logrono: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
   pamplona: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
-  vitoria: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
+  vitoria: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
   aranda: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   regua: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   ibiza: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)

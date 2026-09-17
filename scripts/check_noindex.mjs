@@ -44,12 +44,28 @@ try {
   process.exit(1);
 }
 
+// Paralelas de constructor aparcadas a propósito (indexable: false en
+// src/lib/builderPages.js, 17/09/2026): llevan "noindex, follow" y se reconocen por el
+// Service estructurado propio de esas páginas. Solo ellas pueden llevar noindex; una
+// página principal con noindex sigue rompiendo la build. Además, una página con
+// noindex NO puede figurar en el sitemap (señal contradictoria para Google).
+const PARKED_BUILDER_RE = /"serviceType":"(?:Constructor de stands|Stand builder|Construtor de stands)"/;
+const CANONICAL_RE = /<link[^>]*\brel=["']canonical["'][^>]*\bhref=["']([^"']+)["']/i;
+let sitemap = '';
+try { sitemap = readFileSync(join(DIST, 'sitemap.xml'), 'utf8'); } catch { /* sin sitemap no se comprueba */ }
+
 const offenders = [];
+const inSitemap = [];
+let parked = 0;
 for (const f of files) {
   const rel = '/' + f.slice(DIST.length + 1).replace(/\\/g, '/');
   if (ALLOW.has(rel)) continue;
   const html = readFileSync(f, 'utf8');
-  if (NOINDEX_RE.test(html)) offenders.push(rel);
+  if (!NOINDEX_RE.test(html)) continue;
+  if (!PARKED_BUILDER_RE.test(html)) { offenders.push(rel); continue; }
+  parked++;
+  const canonical = (html.match(CANONICAL_RE) || [])[1];
+  if (canonical && sitemap.includes(`<loc>${canonical}</loc>`)) inSitemap.push(rel);
 }
 
 if (offenders.length) {
@@ -58,5 +74,10 @@ if (offenders.length) {
   console.error("\nSi es intencionado, añádelas a ALLOW en scripts/check_noindex.mjs. Si no, quita el noindex.\n");
   process.exit(1);
 }
+if (inSitemap.length) {
+  console.error(`\n[check-noindex] ❌ ${inSitemap.length} paralela(s) aparcadas (noindex) siguen anunciadas en el sitemap:`);
+  for (const o of inSitemap) console.error('   - ' + o);
+  process.exit(1);
+}
 
-console.log(`[check-noindex] ✔ OK — 0 noindex en ${files.length} páginas de dist/.`);
+console.log(`[check-noindex] ✔ OK — 0 noindex accidentales en ${files.length} páginas de dist/ (${parked} paralelas aparcadas con noindex intencionado, fuera del sitemap).`);
