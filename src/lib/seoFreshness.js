@@ -149,6 +149,7 @@ export const seoFreshness = {
   santander: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   gijon: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   irun: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
+  san_sebastian: '2026-09-17',   // alta de la página principal (17/09/2026)
   logrono: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)
   pamplona: '2026-09-15',   // enlace a su paralela de constructor (15/09/2026)
   vitoria: '2026-09-17',   // URL nueva y sin imágenes de galería (17/09/2026)

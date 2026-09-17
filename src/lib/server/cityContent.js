@@ -2252,6 +2252,52 @@ export const cityContent = {
       "detail": "代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。"
     }
   },
+  "san_sebastian": {
+    "es": {
+      "intro": "Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en San Sebastián —en el Kursaal y en Ficoba, el recinto ferial de Gipuzkoa a veinte minutos, con citas como MUBIL Mobility Expo, Go Mobility, Bioterra y UNIRE— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",
+      "detail": "Ofrecemos a agencias y expositores la tranquilidad de un montaje sin sorpresas y una atención al detalle excepcional."
+    },
+    "en": {
+      "intro": "With 20 years of experience building temporary architecture from our own workshop, Standarte designs and assembles exhibition stands in San Sebastián —at the Kursaal and at Ficoba, the Gipuzkoa exhibition centre twenty minutes away, with events such as MUBIL Mobility Expo, Go Mobility, Bioterra and UNIRE— controlling every phase: 3D design, production, logistics, installation and on-site validations.",
+      "detail": "We offer agencies and direct exhibitors the peace of mind of an assembly without surprises and exceptional attention to detail."
+    },
+    "de": {
+      "intro": "Mit 20 Jahren Erfahrung im Bau temporärer Architektur aus unserer eigenen Werkstatt entwirft und montiert Standarte Messestände in San Sebastián — im Kursaal und in der Ficoba, dem Messegelände von Gipuzkoa zwanzig Minuten entfernt, mit Veranstaltungen wie MUBIL Mobility Expo, Go Mobility, Bioterra und UNIRE — und kontrolliert jede Phase: 3D-Design, Produktion, Logistik, Montage und Abnahmen vor Ort.",
+      "detail": "Wir bieten Agenturen und Direktausstellern die Sicherheit eines reibungslosen Aufbaus und herausragende Detailgenauigkeit."
+    },
+    "pt": {
+      "intro": "Com 20 anos de experiência a construir arquitetura efémera a partir da nossa oficina própria, a Standarte projeta e monta stands em San Sebastián — no Kursaal e na Ficoba, o recinto de feiras de Gipuzkoa a vinte minutos, com certames como a MUBIL Mobility Expo, a Go Mobility, a Bioterra e a UNIRE — controlando cada fase: design 3D, fabrico, logística, instalação e validações no recinto.",
+      "detail": "Oferecemos a agências e expositores a tranquilidade de uma montagem sem surpresas e uma excecional atenção aos detalhes."
+    },
+    "fr": {
+      "intro": "Forte de 20 ans d'expérience dans l'architecture éphémère réalisée dans son propre atelier, Standarte conçoit et monte des stands à Saint-Sébastien — au Kursaal et à Ficoba, le parc des expositions du Gipuzkoa à vingt minutes, avec des rendez-vous comme MUBIL Mobility Expo, Go Mobility, Bioterra et UNIRE — en maîtrisant chaque phase : conception 3D, fabrication, logistique, montage et validations sur place.",
+      "detail": "Nous offrons aux agences et aux exposants la tranquillité d'esprit d'un montage sans surprise et une attention exceptionnelle aux détails."
+    },
+    "it": {
+      "intro": "Con 20 anni di esperienza nella realizzazione di architetture effimere dal nostro laboratorio di proprietà, Standarte progetta e monta stand a San Sebastián — al Kursaal e a Ficoba, il quartiere fieristico di Gipuzkoa a venti minuti, con appuntamenti come MUBIL Mobility Expo, Go Mobility, Bioterra e UNIRE — controllando ogni fase: progettazione 3D, produzione, logistica, montaggio e collaudi in loco.",
+      "detail": "Offriamo ad agenzie ed espositori la tranquillità di un montaggio senza sorprese e un'eccezionale attenzione ai dettagli."
+    },
+    "nl": {
+      "intro": "Met 20 jaar ervaring in het bouwen van tijdelijke architectuur vanuit onze eigen werkplaats ontwerpt en monteert Standarte beursstands in San Sebastián — in het Kursaal en in Ficoba, het beurscomplex van Gipuzkoa op twintig minuten afstand, met evenementen zoals MUBIL Mobility Expo, Go Mobility, Bioterra en UNIRE — met volledige controle over elke fase: 3D-ontwerp, productie, logistiek, montage en keuringen ter plaatse.",
+      "detail": "Wij bieden agentschappen en exposanten de zekerheid van een montage zonder verrassingen en uitzonderlijke aandacht voor detail."
+    },
+    "zh": {
+      "intro": "凭借20年在自有工厂打造临时建筑的经验，Standarte 在圣塞巴斯蒂安为展会设计并搭建展台——包括 Kursaal 会议中心以及二十分钟车程外的吉普斯夸展览中心 Ficoba，举办 MUBIL Mobility Expo、Go Mobility、Bioterra 和 UNIRE 等展会——全程掌控每个环节：3D设计、制造、物流、安装以及现场验收。",
+      "detail": "我们为代理机构和参展商提供无意外的搭建保障，以及对细节的卓越把控。"
+    },
+    "hi": {
+      "intro": "अपनी ही कार्यशाला से अस्थायी वास्तुकला बनाने के 20 वर्षों के अनुभव के साथ, Standarte सैन सेबेस्टियन में स्टैंड डिज़ाइन और स्थापित करता है — Kursaal में और बीस मिनट दूर गिपुज़कोआ के प्रदर्शनी केंद्र Ficoba में, जहाँ MUBIL Mobility Expo, Go Mobility, Bioterra और UNIRE जैसे आयोजन होते हैं — हर चरण को नियंत्रित करते हुए: 3D डिज़ाइन, निर्माण, लॉजिस्टिक्स, स्थापना और स्थल पर सत्यापन।",
+      "detail": "हम एजेंसियों और प्रदर्शकों को बिना किसी आश्चर्य के असेंबली और विवरण पर असाधारण ध्यान की निश्चिंतता प्रदान करते हैं।"
+    },
+    "ko": {
+      "intro": "자체 공방에서 임시 건축물을 제작해 온 20년의 경험을 바탕으로, Standarte는 산세바스티안에서 전시회 부스를 디자인하고 시공합니다. Kursaal 컨벤션센터와 20분 거리의 기푸스코아 전시장 Ficoba(MUBIL Mobility Expo, Go Mobility, Bioterra, UNIRE 개최)에서 3D 디자인, 제작, 물류, 설치, 현장 검수까지 모든 공정을 자체적으로 관리합니다.",
+      "detail": "에이전시와 참가 업체에 예상치 못한 문제가 없는 시공과 탁월한 디테일 관리를 제공합니다."
+    },
+    "ja": {
+      "intro": "自社工房で仮設建築を手がけてきた20年の経験をもとに、Standarteはサン・セバスティアンで展示会ブースの設計・施工を行います。Kursaal会議センターと、20分離れたギプスコアの見本市会場Ficoba（MUBIL Mobility Expo、Go Mobility、Bioterra、UNIREなどを開催）で、3D設計、製作、物流、設営、会場での検収まで、すべての工程を自社で管理します。",
+      "detail": "代理店にも出展者にも、想定外のない設営と卓越したディテールへのこだわりをお約束します。"
+    }
+  },
   "santander": {
     "es": {
       "intro": "Con 20 años de experiencia construyendo arquitectura efímera desde nuestro taller propio, Standarte diseña y monta stands en Santander —sede del Palacio de Exposiciones y Congresos, con citas como ARTESANTANDER y BioCantabria— controlando cada fase: diseño 3D, fabricación, logística, instalación y validaciones en el recinto.",

@@ -7,7 +7,7 @@ import { fairsData } from '$lib/fairsData.js';
 
 // Pilares cuyas ferias están en un municipio satélite (el nombre de la ciudad-pilar no
 // coincide con ningún `fair.city`), así que el país no se puede deducir de sus ferias.
-export const CITY_FLAG_FALLBACK = { murcia: 'es', salamanca: 'es', andorra: 'ad' };
+export const CITY_FLAG_FALLBACK = { murcia: 'es', salamanca: 'es', andorra: 'ad', san_sebastian: 'es' };
 
 // País de la ciudad-pilar, o null si es España (las españolas no llevan bandera).
 export function navFlagCountry(cityKey) {

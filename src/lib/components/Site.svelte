@@ -690,7 +690,7 @@
     santarem: 'portugal', trujillo: 'extremadura', elche: 'comunidadvalenciana',
     silleda: 'galicia', ourense: 'galicia',
     lleida: 'cataluna', girona: 'cataluna',
-    santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco', logrono: 'larioja',
+    santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco', san_sebastian: 'paisvasco', logrono: 'larioja',
     pamplona: 'navarra',
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',
@@ -1325,9 +1325,14 @@
     'Marsella': 'marsella', 'Cannes': 'cannes', 'Aviñón': 'avignon', 'Toulouse': 'toulouse', 'Perpiñán': 'perpignan', 'Burdeos': 'burdeos', 'Lyon': 'lyon', 'Montpellier': 'montpellier', 'Niza': 'niza',
     'Santander': 'santander', 'Torrelavega': 'santander', 'Gijón': 'gijon', 'Tineo': 'gijon', 'Vegadeo': 'gijon'
   };
+  // Plazas que, además de sus propias ferias, muestran las de un municipio vecino sin
+  // restárselas a su pilar (decisión del usuario, 17/09/2026): San Sebastián lista las
+  // ferias de Ficoba (Irún, a 20 minutos); Irún las conserva.
+  const EXTRA_FAIR_CITIES = { san_sebastian: ['Irún'] };
   function fairsForCity(cityKey) {
     const esName = cityData[cityKey]?.city?.es;
-    return fairItems.filter((f) => f.city === esName || FAIR_CITY_PILLAR[f.city] === cityKey);
+    const extra = EXTRA_FAIR_CITIES[cityKey] || [];
+    return fairItems.filter((f) => f.city === esName || FAIR_CITY_PILLAR[f.city] === cityKey || extra.includes(f.city));
   }
   const CITY_CARD_FAIRS_MAX = 4;
   const buildsAtLabel = {

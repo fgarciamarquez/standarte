@@ -23,7 +23,7 @@
     zaragoza: 'aragon', badajoz: 'extremadura', portugal_sur: 'portugal-sur',
     silleda: 'galicia', ourense: 'galicia',
     lleida: 'cataluna', girona: 'cataluna',
-    santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco', logrono: 'larioja',
+    santander: 'cantabria', gijon: 'asturias', irun: 'paisvasco', san_sebastian: 'paisvasco', logrono: 'larioja',
     pamplona: 'navarra',
     vitoria: 'paisvasco',
     aranda: 'castillayleon', regua: 'portugal',

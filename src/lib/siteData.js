@@ -7,7 +7,7 @@ export const languages = ['es', 'pt', 'en', 'de', 'fr', 'it', 'nl', 'zh', 'hi', 
 
 // Ciudades-hub SIN portada propia (cover_<key>.avif) todavía: su cabecera usa el fondo
 // oscuro por defecto en vez de una foto. Al aportar la imagen, quitar la clave de aquí.
-export const CITIES_WITHOUT_COVER = [];
+export const CITIES_WITHOUT_COVER = ['san_sebastian']; // San Sebastián nace sin imágenes (17/09/2026)
 
 export const languageLabels = {
   es: 'ES Español',
@@ -41,6 +41,7 @@ export const routes = {
     silleda: 'diseno_montaje_stands_silleda',
     santander: 'diseno_montaje_stands_santander',
     irun: 'diseno-construccion-montaje-stands-irun',
+    san_sebastian: 'diseno-construccion-montaje-stands-san-sebastian',
     logrono: 'diseno-construccion-montaje-stands-logrono',
     pamplona: 'diseno_montaje_stands_pamplona',
     vitoria: 'diseno-construccion-montaje-stands-vitoria',
@@ -195,6 +196,7 @@ export const routes = {
     silleda: 'stand_design_assembly_silleda',
     santander: 'stand_design_assembly_santander',
     irun: 'stand_design_assembly_irun',
+    san_sebastian: 'stand_design_assembly_san_sebastian',
     logrono: 'stand_design_assembly_logrono',
     pamplona: 'stand_design_assembly_pamplona',
     vitoria: 'stand_design_assembly_vitoria',
@@ -346,6 +348,7 @@ export const routes = {
     silleda: 'messestand_design_montage_silleda',
     santander: 'messestand_design_montage_santander',
     irun: 'messestand_design_montage_irun',
+    san_sebastian: 'messestand_design_montage_san_sebastian',
     logrono: 'messestand_design_montage_logrono',
     pamplona: 'messestand_design_montage_pamplona',
     vitoria: 'messestand_design_montage_vitoria',
@@ -425,6 +428,7 @@ export const routes = {
     silleda: 'silleda_zhantai_sheji_dajian',
     santander: 'santander_zhantai_sheji_dajian',
     irun: 'irun_zhantai_sheji_dajian',
+    san_sebastian: 'san_sebastian_zhantai_sheji_dajian',
     logrono: 'logrono_zhantai_sheji_dajian',
     pamplona: 'pamplona_zhantai_sheji_dajian',
     vitoria: 'vitoria_zhantai_sheji_dajian',
@@ -504,6 +508,7 @@ export const routes = {
     silleda: 'silleda_stand_dizain_asembli',
     santander: 'santander_stand_dizain_asembli',
     irun: 'irun_stand_dizain_asembli',
+    san_sebastian: 'san_sebastian_stand_dizain_asembli',
     logrono: 'logrono_stand_dizain_asembli',
     pamplona: 'pamplona_stand_dizain_asembli',
     vitoria: 'vitoria_stand_dizain_asembli',
@@ -583,6 +588,7 @@ export const routes = {
     silleda: 'design_montagem_stands_silleda',
     santander: 'design_montagem_stands_santander',
     irun: 'design_montagem_stands_irun',
+    san_sebastian: 'design_montagem_stands_san_sebastian',
     logrono: 'design_montagem_stands_logrono',
     pamplona: 'design_montagem_stands_pamplona',
     vitoria: 'design_montagem_stands_vitoria',
@@ -672,6 +678,7 @@ export const routes = {
     silleda: 'conception_montage_stands_silleda',
     santander: 'conception_montage_stands_santander',
     irun: 'conception_montage_stands_irun',
+    san_sebastian: 'conception_montage_stands_saint_sebastien',
     logrono: 'conception_montage_stands_logrono',
     pamplona: 'conception_montage_stands_pamplona',
     vitoria: 'conception_montage_stands_vitoria',
@@ -751,6 +758,7 @@ export const routes = {
     silleda: 'progettazione_montaggio_stand_silleda',
     santander: 'progettazione_montaggio_stand_santander',
     irun: 'progettazione_montaggio_stand_irun',
+    san_sebastian: 'progettazione_montaggio_stand_san_sebastian',
     logrono: 'progettazione_montaggio_stand_logrono',
     pamplona: 'progettazione_montaggio_stand_pamplona',
     vitoria: 'progettazione_montaggio_stand_vitoria',
@@ -830,6 +838,7 @@ export const routes = {
     silleda: 'silleda-bujeu-dijain-jorip',
     santander: 'santander-bujeu-dijain-jorip',
     irun: 'irun-buseu-dijain-jorip',
+    san_sebastian: 'san-sebastian-buseu-dijain-jorip',
     logrono: 'logrono-buseu-dijain-jorip',
     pamplona: 'pamplona-buseu-dijain-jorip',
     vitoria: 'vitoria-buseu-dijain-jorip',
@@ -909,6 +918,7 @@ export const routes = {
     silleda: 'シジェダ展示会ブース設計施工',
     santander: 'サンタンデール展示会ブース設計施工',
     irun: 'イルン展示会ブース設計施工',
+    san_sebastian: 'サンセバスティアン展示会ブース設計施工',
     logrono: 'ログローニョ展示会ブース設計施工',
     pamplona: 'パンプローナ展示会ブース設計施工',
     vitoria: 'ビトリア展示会ブース設計施工',
@@ -988,6 +998,7 @@ export const routes = {
     silleda: 'standontwerp_montage_silleda',
     santander: 'standontwerp_montage_santander',
     irun: 'standontwerp_montage_irun',
+    san_sebastian: 'standontwerp_montage_san_sebastian',
     logrono: 'standontwerp_montage_logrono',
     pamplona: 'standontwerp_montage_pamplona',
     vitoria: 'standontwerp_montage_vitoria',
@@ -2085,6 +2096,9 @@ export const cityData = {
   irun: {
     city: { es: 'Irún', en: 'Irún', de: 'Irún', zh: '伊伦', hi: 'इरुन', pt: 'Irún', fr: 'Irún', it: 'Irún', ko: '이룬', ja: 'イルン', nl: 'Irún' },
     },
+  san_sebastian: {
+    city: { es: 'San Sebastián', en: 'San Sebastián', de: 'San Sebastián', zh: '圣塞巴斯蒂安', hi: 'सैन सेबेस्टियन', pt: 'San Sebastián', fr: 'Saint-Sébastien', it: 'San Sebastián', ko: '산세바스티안', ja: 'サン・セバスティアン', nl: 'San Sebastián' },
+    },
   logrono: {
     city: { es: 'Logroño', en: 'Logroño', de: 'Logroño', zh: '洛格罗尼奥', hi: 'लोग्रोन्यो', pt: 'Logroño', fr: 'Logroño', it: 'Logroño', ko: '로그로뇨', ja: 'ログローニョ', nl: 'Logroño' },
     },
@@ -3106,7 +3120,8 @@ export function resolveRoute(path) {
 // El texto no se toca. La foto de portada del hero no es de galería y se mantiene.
 export const NO_GALLERY_SECTIONS = new Set([
   'lisboa', 'logrono', 'badajoz', 'montaje_don_benito', 'ciudad_real',
-  'zaragoza', 'irun', 'vitoria', 'coruna', 'bilbao'
+  'zaragoza', 'irun', 'vitoria', 'coruna', 'bilbao',
+  'san_sebastian' // alta sin imágenes (17/09/2026)
 ]);
 
 // Secciones que StandQuote no ofrece: sus páginas ni se generan en esa marca.
