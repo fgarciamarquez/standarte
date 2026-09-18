@@ -42,6 +42,8 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	$row['title_es'] = post('title_es');
 	$row['title_en'] = post('title_en');
 	if (post('interlocutor_email') !== '') $row['interlocutor_email'] = post('interlocutor_email');
+	// Sinopsis (HTML enriquecido del editor del formulario), limpiada con lista blanca.
+	$row['synopsis_es'] = cpx_clean_html(isset($_POST['synopsis_es']) ? $_POST['synopsis_es'] : '');
 	// Evento (feria o congreso) con el que se relaciona el proyecto: se guarda SOLO el
 	// slug, y solo si existe en el catálogo, para que un valor tecleado a mano no deje
 	// una referencia rota. El nombre y la fecha se resuelven después desde fairsData.
@@ -373,6 +375,14 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		.pj-v { flex: 1 1 auto; min-width: 0; text-align: right; overflow-wrap: anywhere; word-break: break-word; }
 		.pj-ref .pj-v { font-weight: 700; }
 	}
+	/* Editor enriquecido de la Sinopsis (alta de proyecto) */
+	.re-bar { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 4px; }
+	.re-bar button { min-width: 30px; height: 28px; padding: 0 8px; font-size: 13px; background: #1c1f27; color: #eee; border: 1px solid #3a3f48; border-radius: 4px; }
+	.re-bar button:hover { background: #2a2e38; }
+	.re-area { min-height: 120px; background: #12141a; border: 1px solid #333; color: #eee; padding: 8px 10px; border-radius: 4px; font-family: inherit; font-size: 14px; line-height: 1.5; outline: none; }
+	.re-area:focus { border-color: #ffc800; }
+	.re-area:empty::before { content: attr(data-placeholder); color: #666; }
+	.re-area h3 { font-size: 15px; margin: 10px 0 4px; } .re-area p { margin: 0 0 6px; } .re-area ul, .re-area ol { margin: 0 0 6px; padding-left: 22px; }
 </style></head>
 <body><div class="wrap wrap-wide">
 <?php if (!pj_authed()): ?>
@@ -406,6 +416,22 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<input name="title_es" placeholder="Título ES">
 			<input name="title_en" placeholder="Título EN">
 			<input name="interlocutor_email" placeholder="Email interlocutor (opc.)">
+			<div style="grid-column:1/3" class="re-field">
+				<label for="re-synopsis">Sinopsis</label>
+				<div class="re-bar" data-for="re-synopsis" role="toolbar" aria-label="Formato">
+					<button type="button" data-cmd="bold" title="Negrita"><b>B</b></button>
+					<button type="button" data-cmd="italic" title="Cursiva"><i>I</i></button>
+					<button type="button" data-cmd="underline" title="Subrayado"><u>U</u></button>
+					<button type="button" data-cmd="formatBlock" data-arg="h3" title="Subtítulo">H</button>
+					<button type="button" data-cmd="formatBlock" data-arg="p" title="Párrafo">¶</button>
+					<button type="button" data-cmd="insertUnorderedList" title="Lista">•≡</button>
+					<button type="button" data-cmd="insertOrderedList" title="Lista numerada">1≡</button>
+					<button type="button" data-cmd="removeFormat" title="Quitar formato">Tx</button>
+				</div>
+				<div id="re-synopsis" class="re-area" contenteditable="true" data-placeholder="Sinopsis del proyecto: qué es, para quién y qué lo hace especial. Admite estilos y listas."></div>
+				<textarea name="synopsis_es" id="re-synopsis-value" hidden></textarea>
+				<p class="hint">Aparece en la página del proyecto entre el interlocutor y la propuesta gráfica. Se puede reeditar después desde la propia página (modo edición), también en inglés.</p>
+			</div>
 			<div style="grid-column:1/3">
 				<label for="account_id">Cuenta de ingreso</label>
 				<select name="account_id" id="account_id">
@@ -494,6 +520,26 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	</div>
 <?php endif; ?>
 <?php if (pj_authed()): ?>
+<script>
+/* Editor enriquecido de la Sinopsis (alta): barra de estilos sobre un contenteditable; el
+   HTML se vuelca en el textarea oculto al enviar y el servidor lo limpia (cpx_clean_html). */
+(function () {
+  var area = document.getElementById('re-synopsis'), out = document.getElementById('re-synopsis-value');
+  if (!area || !out) return;
+  document.querySelectorAll('.re-bar[data-for="re-synopsis"] button').forEach(function (b) {
+    b.addEventListener('mousedown', function (e) {
+      e.preventDefault(); area.focus();
+      document.execCommand(b.getAttribute('data-cmd'), false, b.getAttribute('data-arg') || null);
+    });
+  });
+  area.addEventListener('paste', function (e) {
+    e.preventDefault();
+    document.execCommand('insertText', false, (e.clipboardData || window.clipboardData).getData('text/plain'));
+  });
+  var form = area.closest('form');
+  if (form) form.addEventListener('submit', function () { out.value = area.innerHTML; });
+})();
+</script>
 <script>
 /* Emitir una factura pide su número antes de enviar el formulario: se sugiere el
    siguiente de la serie y el gestor lo confirma o lo corrige. Cancelar no hace nada. */

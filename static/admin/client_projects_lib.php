@@ -38,6 +38,28 @@ if (!function_exists('cpx_key')) {
 		return array_values(array_filter(array_map('trim', preg_split('/\r?\n/', (string) $text)), function ($x) { return $x !== ''; }));
 	}
 
+	/* HTML enriquecido de los campos largos (Sinopsis): solo etiquetas de texto y listas,
+	 * sin atributos salvo href (http, https o mailto) en los enlaces. Los <div> que
+	 * genera un contenteditable pasan a <p> para no perder los saltos de párrafo. */
+	function cpx_clean_html($html) {
+		$html = (string) $html;
+		if (trim($html) === '') return '';
+		$html = preg_replace('#<(script|style)\b[^>]*>.*?</\1>#is', '', $html);
+		$html = preg_replace('#<div\b[^>]*>#i', '<p>', $html);
+		$html = str_ireplace('</div>', '</p>', $html);
+		$html = strip_tags($html, '<p><br><strong><b><em><i><u><h3><h4><ul><ol><li><a>');
+		$html = preg_replace_callback('#<a\b([^>]*)>#i', function ($m) {
+			if (preg_match('#href\s*=\s*["\']?((?:https?:|mailto:)[^"\'\s>]+)#i', $m[1], $h)) {
+				return '<a href="' . htmlspecialchars($h[1], ENT_QUOTES, 'UTF-8') . '" target="_blank" rel="noopener">';
+			}
+			return '<a>';
+		}, $html);
+		$html = preg_replace('#<(p|br|strong|b|em|i|u|h3|h4|ul|ol|li)\b[^>]*>#i', '<$1>', $html);
+		$html = str_replace('&nbsp;', ' ', $html);
+		$html = preg_replace('#(<p>\s*(<br>)?\s*</p>\s*)+$#', '', $html);
+		return trim($html);
+	}
+
 	function cpx_project_id_by_token($token) {
 		$rows = cpx_rows('client_projects?access_token=eq.' . urlencode($token) . '&select=id&limit=1');
 		return isset($rows[0]['id']) ? $rows[0]['id'] : null;

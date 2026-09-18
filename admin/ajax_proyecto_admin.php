@@ -61,6 +61,8 @@ if ($action === 'save') {
 	foreach (array('includes_es', 'includes_en', 'excludes_es', 'excludes_en') as $k) {
 		if (isset($_POST[$k])) $fields[$k] = cpx_lines_to_array($_POST[$k]);
 	}
+	// Sinopsis (HTML enriquecido con estilos y listas): se limpia con lista blanca.
+	foreach (array('synopsis_es', 'synopsis_en') as $k) { if (isset($_POST[$k])) $fields[$k] = cpx_clean_html($_POST[$k]); }
 	if (isset($_POST['paid'])) $fields['paid'] = in_array(pa_post('paid'), array('1', 'true'), true);
 	/* «Pagado» es el estado del PROYECTO, y el panel lleva aparte el de cada factura.
 	 * Al marcarlo, las facturas ya EMITIDAS pasan a «Cursado»: si no, el panel seguía
