@@ -20,12 +20,12 @@ export const coverageProof = {
 
 // CTA azul que abre a Pat.
 export const coveragePatCta = {
-  es: 'Estrategia para acaparar el mercado', en: 'Strategy to corner the market',
-  pt: 'Estratégia para dominar o mercado', de: 'Strategie zur Eroberung des Marktes',
-  fr: 'Stratégie pour accaparer le marché', it: 'Strategia per conquistare il mercato',
-  nl: 'Strategie om de markt te veroveren', zh: '抢占市场的策略',
-  hi: 'बाज़ार पर कब्ज़ा करने की रणनीति', ko: '시장을 장악하는 전략',
-  ja: '市場を席巻する戦略'
+  es: 'Te ofrecemos cobertura para acaparar el mercado', en: 'We offer you coverage to corner the market',
+  pt: 'Oferecemos-lhe cobertura para dominar o mercado', de: 'Wir bieten Ihnen Abdeckung, um den Markt zu erobern',
+  fr: 'Nous vous offrons la couverture pour accaparer le marché', it: 'Ti offriamo copertura per conquistare il mercato',
+  nl: 'Wij bieden u dekking om de markt te veroveren', zh: '我们为您提供抢占市场的覆盖',
+  hi: 'हम आपको बाज़ार पर कब्ज़ा करने के लिए कवरेज देते हैं', ko: '시장을 장악할 수 있는 커버리지를 제공합니다',
+  ja: '市場を席巻するためのカバー力をご提供します'
 };
 
 // Alt de la miniatura del mapa (descriptivo: es lo que anuncia un lector de pantalla).
