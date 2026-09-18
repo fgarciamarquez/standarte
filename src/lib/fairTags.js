@@ -260,7 +260,7 @@ export const fairActivities = {
   "stands-agroexpo": ["agricultura-maquinaria","ganaderia","multisectorial"],
   "stand-web-summit-lisboa": ["digital-software","congreso-profesional"],
   "stand-tektonica-lisboa": ["construccion"],
-  "stands-biemh-bilbao": ["maquinaria-industrial"],
+  "stands-biemh-bilbao-bec": ["maquinaria-industrial"],
   "stands-subcontratacion-bilbao": ["metal-subcontratacion"],
   "stand-addit3d-bilbao": ["metal-subcontratacion"],
   "stand-bedigital-bilbao": ["digital-software"],

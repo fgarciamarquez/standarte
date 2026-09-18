@@ -117,7 +117,7 @@ export const builderPages = {
   // BIEMH: la mayor feria industrial del norte y la ficha más disputada de Bilbao.
   // Aquí no hay denuncia previa: la paralela se levanta ANTES, como reserva ya
   // posicionada por si la ficha cae, y ataca «constructor de stands para BIEMH».
-  constructor_stand_biemh: { fair: 'stands-biemh-bilbao', fairName: 'BIEMH', cityName: 'Bilbao', venue: 'BEC — Bilbao Exhibition Centre', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true }
+  constructor_stand_biemh: { fair: 'stands-biemh-bilbao-bec', fairName: 'BIEMH', cityName: 'Bilbao', venue: 'BEC — Bilbao Exhibition Centre', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true }
 };
 
 export const isBuilderPage = (section) => Object.prototype.hasOwnProperty.call(builderPages, section);

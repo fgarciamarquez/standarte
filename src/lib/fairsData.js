@@ -1241,7 +1241,7 @@ export const fairsData = [
   {
     "name": "BIEMH Bilbao",
     "country": "es",
-    "slug": "stands-biemh-bilbao",
+    "slug": "stands-biemh-bilbao-bec",
     "city": "Bilbao",
     "sector": "Industria y Logística"
   },

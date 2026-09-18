@@ -269,7 +269,7 @@ export const fairDates = {
   // Ano confirmado por la periodicidad bienal y la edicion de 2025; IFEMA aun no
   // publica los dias, asi que va como aproximada (se muestra solo el ano).
   'stand-hygienalia-madrid': { start: '2027-11-01', end: '2027-11-30', cadence: 'biennial', approx: true, source: 'https://www.hygienalia.com/' },
-  'stands-biemh-bilbao': { start: '2028-03-06', end: '2028-03-10', cadence: 'biennial', source: 'https://www.interempresas.net/MetalMecanica/624748-BIEMH-cierra-su-edicion-de-2026-como-referente-del-manufacturing-avanzado.html' },
+  'stands-biemh-bilbao-bec': { start: '2028-03-06', end: '2028-03-10', cadence: 'biennial', source: 'https://www.interempresas.net/MetalMecanica/624748-BIEMH-cierra-su-edicion-de-2026-como-referente-del-manufacturing-avanzado.html' },
   'stand-alimentaria-barcelona': { start: '2028-03-20', end: '2028-03-23', cadence: 'biennial', source: 'https://www.alimentaria.com/' },
   'stand-hostelco-barcelona': { start: '2028-03-20', end: '2028-03-23', cadence: 'biennial', source: 'https://www.hostelco.com/en/' },
   'stand-bauma-munich': { start: '2028-04-03', end: '2028-04-09', cadence: 'triennial', source: 'https://bauma.de/en/trade-fair/' },

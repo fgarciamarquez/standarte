@@ -368,7 +368,7 @@ export const fairFreshness = {
   // Ferias que estrenan ficha propia (antes no tenían cuerpo único, y por eso tampoco
   // aparecían con resumen en el calendario sectorial de otras ferias).
   'stands-figan-zaragoza': '2026-09-06',
-  'stands-biemh-bilbao': '2026-09-06',   // + enlace a su paralela de constructor
+  'stands-biemh-bilbao-bec': '2026-09-18',   // URL nueva (18/09/2026)
   'stand-concreta-oporto': '2026-08-27',
   'stand-enomaq-zaragoza': '2026-08-27',
   // Estrenan fecha verificada de su próxima edición.
