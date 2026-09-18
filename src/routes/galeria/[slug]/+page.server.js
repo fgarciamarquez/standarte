@@ -3,10 +3,14 @@
 import { portfolios } from '$lib/siteData.js';
 import { cityIntrosFor } from '$lib/server/cityContent.js';
 import { error } from '@sveltejs/kit';
+import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
 
 export const prerender = true;
 
 export function entries() {
+    // Sin secciones de imágenes no hay galería que mostrar: las 39 URL /galeria/<slug>
+    // dejan de generarse y redirigen 301 a la portada (static/.htaccess).
+    if (HIDE_IMAGE_SECTIONS) return [];
     let allEntries = [];
     for (let p of portfolios) {
         if (p.slugs) {

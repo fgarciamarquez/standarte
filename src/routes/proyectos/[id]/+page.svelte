@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { pathFor, copy, languages, languageLabels, projectUrl, ctaBudget, activityUrl, cityData } from '$lib/siteData.js';
   import { tagsForProject } from '$lib/projectTags.js';
   import { labelForTag, colorForTag } from '$lib/fairTags.js';
@@ -423,7 +424,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{currentCopy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
-      {#if !BRAND.leadGen}<a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>

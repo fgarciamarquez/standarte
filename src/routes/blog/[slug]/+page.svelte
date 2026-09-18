@@ -1,5 +1,9 @@
 <script>
   import { onMount } from 'svelte';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
+  // Sin secciones de imágenes: las figuras de la noticia (imagen de la galería 3D) se
+  // retiran al renderizar; newsData.json no se toca para poder volver atrás.
+  $: articleHtml = HIDE_IMAGE_SECTIONS ? String(article?.content || '').replace(/<figure[\s\S]*?<\/figure>/g, '').replace(/<img[^>]*>/g, '') : article?.content;
   import { pathFor, copy, languages, languageLabels, ctaBudget } from '$lib/siteData.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
   import WelcomeAdvisor from '$lib/components/WelcomeAdvisor.svelte';
@@ -320,8 +324,8 @@
 
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
-      <a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>
-      <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
+      {#if !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>{/if}
+      {#if !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>{/if}
       <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
@@ -375,7 +379,7 @@
 
   <article class="article-container">
     <div class="article-content-body">
-      {@html article.content}
+      {@html articleHtml}
     </div>
 
     <!-- Rastro entre noticias (mismo idioma): relacionadas por ciudad y recientes, más

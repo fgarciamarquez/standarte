@@ -3,6 +3,7 @@
   // mismos estilos globales de app.css, mismo modal legal y aviso de cookies).
   // Se extrajo de Site.svelte para que TODA la web comparta un solo origen de verdad.
   import { pathFor, languages, languageLabels } from '$lib/siteData.js';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { BRAND } from '$lib/brand.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from './FlagIcon.svelte';
@@ -54,7 +55,7 @@
       <nav class="footer-site-map" aria-label="Standarte" hidden aria-hidden="true">
         <ul>
           <li><a href={pathFor(lang, 'services')} tabindex="-1">{copy.nav.services}</a></li>
-          {#if !BRAND.leadGen}<li><a href={pathFor(lang, 'custom')} tabindex="-1">{copy.nav.custom}</a></li>{/if}
+          {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<li><a href={pathFor(lang, 'custom')} tabindex="-1">{copy.nav.custom}</a></li>{/if}
           {#if !BRAND.leadGen}
             <li><a href={pathFor(lang, 'proyecto_auditado')} tabindex="-1">{uspNavLabel(lang)}</a></li>
             <li><a href={pathFor(lang, 'noticias')} tabindex="-1">{copy.nav.noticias}</a></li>

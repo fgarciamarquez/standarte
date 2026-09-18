@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { pathFor, copy, languages, languageLabels, ctaBudget } from '$lib/siteData.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from '$lib/components/FlagIcon.svelte';
@@ -338,7 +339,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{currentCopy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
-      <a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>
+      {#if !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>{/if}
       <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
       <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
@@ -391,10 +392,12 @@
     <div class="news-grid">
       {#each filteredNews as item}
         <article class="news-card">
+          {#if !HIDE_IMAGE_SECTIONS}
           <div class="news-card-image-wrap">
             <img src={item.image || "/img/trabajos/trabajos_promueve/stand-2018-biemh-delteco-10.avif"} alt={item.title} loading="lazy" />
             <span class="news-card-badge">{translateCity(item.location)}</span>
           </div>
+          {/if}
 
           <div class="news-card-content">
             <header class="news-card-meta">

@@ -1,5 +1,6 @@
 <script>
   import { BRAND, sqLoginLabel } from '$lib/brand.js';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { onMount } from 'svelte';
   import { fairsData } from '$lib/fairsData.js';
   import { projectIndex } from '$lib/projectIndex.js';
@@ -201,7 +202,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
-      {#if !BRAND.leadGen}<a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
@@ -311,7 +312,7 @@
               {#each hubProjects as pr}
                 <li>
                   <a href={projectUrl(pr.id, lang)}>
-                    {#if pr.image}<img src={pr.image.replace('.avif', '-thumb.avif')} alt={pr.name} loading="lazy" />{/if}
+                    {#if pr.image && !HIDE_IMAGE_SECTIONS}<img src={pr.image.replace('.avif', '-thumb.avif')} alt={pr.name} loading="lazy" />{/if}
                     <span class="hp-text">
                       <span class="hp-name">{(pr.title && (pr.title[lang] || pr.title.es)) || pr.name}</span>
                       {#if pr.location}<span class="hp-loc">{pr.location}</span>{/if}

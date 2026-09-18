@@ -5,6 +5,7 @@
   import { pathFor, languages, languageLabels, routes, cityData, fairUrl, ctaBudget, preciosNav, projectUrl, CITIES_WITHOUT_COVER } from '$lib/siteData.js';
   import { activitiesForFair, fairTags } from '$lib/fairTags.js';
   import { builderPageForFair } from '$lib/builderPages.js';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { formatFairDates } from '$lib/fairDates.js';
   import { sectorLabel } from '$lib/fairSectors.js';
   import { fairFreshnessFor } from '$lib/seoFreshness.js';
@@ -662,7 +663,7 @@
   // Portada del header: ciudad-matriz si la tiene; si no, portada de satélite o del
   // clúster regional (Portugal Sur). Resto sin portada -> header oscuro.
   $: coverKey = currentCityKey || CITY_COVER[fair.city] || (fairRegion === 'portugal-sur' ? 'portugal_sur' : null);
-  $: coverBase = (coverKey && !CITIES_WITHOUT_COVER.includes(coverKey)) ? (COVER_OVERRIDE[coverKey] || coverKey) : null;
+  $: coverBase = (!HIDE_IMAGE_SECTIONS && coverKey && !CITIES_WITHOUT_COVER.includes(coverKey)) ? (COVER_OVERRIDE[coverKey] || coverKey) : null;
   // Crédito obligatorio si la portada del hero está bajo licencia CC BY-SA (misma foto que
   // el pilar de esa ciudad). Tánger usa una aérea de Tanger Med (Wikimedia, CC BY-SA 4.0).
   $: coverCredit = coverBase === 'tanger'
@@ -1043,7 +1044,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
-      {#if !BRAND.leadGen}<a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
@@ -1155,7 +1156,7 @@
         <!-- G1: proyecto 3D real del mismo sector (si existe): la parte gráfica es el
              gancho — se muestra a todo el ancho de la columna con pie de foto, tras el
              segundo párrafo del cuerpo (el de modelado 3D) y antes de "Servicios". -->
-        {#if caseProject}
+        {#if caseProject && !HIDE_IMAGE_SECTIONS}
           <figure class="oro-case-figure">
             <!-- Bucle con fundido entre las fotos del mismo sector. La primera va en flujo
                  y fija el alto de la caja (como cuando había una sola); el resto se apilan
@@ -1177,7 +1178,7 @@
             <figcaption>{casoEjemplo[lang] || casoEjemplo.es}</figcaption>
           </figure>
         {/if}
-        {#if isWineFair}
+        {#if isWineFair && !HIDE_IMAGE_SECTIONS}
           <section class="fair-wine-video">
             <h2>{wineVideoTitle[lang] || wineVideoTitle.es}</h2>
             <!-- svelte-ignore a11y_media_has_caption -->
@@ -1219,9 +1220,11 @@
       <aside class="feria-aside">
         <!-- Prueba de cobertura: miniatura del mapa de Pat + CTA que lo abre. -->
         <section class="coverage-proof aside-module">
+          {#if !HIDE_IMAGE_SECTIONS}
           <button type="button" class="coverage-map-thumb" on:click={openPatAndScroll} aria-label={coverageMapAlt[lang] || coverageMapAlt.es}>
             <img src="/img/pat-map-preview.avif" alt={coverageMapAlt[lang] || coverageMapAlt.es} width="1287" height="824" loading="lazy" decoding="async" />
           </button>
+          {/if}
           <p>{(coverageProof[lang] || coverageProof.es)()}</p>
           <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
         </section>
@@ -1230,9 +1233,11 @@
              sin decir de qué era garantía); aquí ilustra justo el texto que lo explica. -->
         {#if !BRAND.leadGen}
           <div class="aside-module">
+            {#if !HIDE_IMAGE_SECTIONS}
             <a class="feria-guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
               <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
             </a>
+            {/if}
             <p class="audited-note">{@html pickUspLine(lang, fair.slug)}
               <a href={pathFor(lang, 'proyecto_auditado')}>{moreInfoLabel[lang] || moreInfoLabel.es} →</a></p>
           </div>

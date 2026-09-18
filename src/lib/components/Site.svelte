@@ -5,6 +5,7 @@
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
   import { languages, languageLabels, pathFor, routes, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER, NO_GALLERY_SECTIONS } from '$lib/siteData.js';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
   import { cityH2, cityH2Custom, ptLocative } from '$lib/h2Seo.js';
   import { toolsCopy } from '$lib/toolsSection.js';
@@ -952,7 +953,7 @@
     // replican el H2 compuesto, para que título, texto e imagen empujen lo mismo.
     // Páginas sin imágenes de galería (NO_GALLERY_SECTIONS): ni figuras keyword, ni
     // vídeo, ni figura de caso de éxito; el texto se mantiene íntegro.
-    const noGallery = !!sectionKey && NO_GALLERY_SECTIONS.has(sectionKey);
+    const noGallery = HIDE_IMAGE_SECTIONS || (!!sectionKey && NO_GALLERY_SECTIONS.has(sectionKey));
     const seoImg = (key, fileSec) => {
       if (!cityName || !sectionKey || noGallery) return '';
       const src = `/img/seo/stands-para-ferias-en-${sectionKey.replace(/_/g, '-')}-${fileSec}.avif`;
@@ -1373,8 +1374,8 @@
     const baseUrl = 'https://standarte.es';
     const navigationItems = [
       ['Servicios', pathFor('es', 'services')],
-      ...(BRAND.leadGen ? [] : [['Galería', pathFor('es', 'custom')]]),
-      ...(BRAND.leadGen ? [] : [['Equipo', pathFor('es', 'team')]]),
+      ...(BRAND.leadGen || HIDE_IMAGE_SECTIONS ? [] : [['Galería', pathFor('es', 'custom')]]),
+      ...(BRAND.leadGen || HIDE_IMAGE_SECTIONS ? [] : [['Equipo', pathFor('es', 'team')]]),
       ['Contacto', pathFor('es', 'contact')],
       ['Diseño y montaje de stands en Madrid', pathFor('es', 'madrid')],
       ['Diseño y montaje de stands en Barcelona', pathFor('es', 'barcelona')],
@@ -2049,7 +2050,7 @@
 <svelte:window on:keydown={handleKeydown} on:scroll|passive={updateScrollState} />
 
 <header class="site-header" class:static-header={section !== 'home' && section !== 'contact' && section !== 'services' && !animatedHero} class:hero-anim={animatedHero} class:light-hero={isBuilderPage(section)}>
-  {#if isCityPage && !section.startsWith('montaje_') && !CITIES_WITHOUT_COVER.includes(section)}
+  {#if isCityPage && !section.startsWith('montaje_') && !CITIES_WITHOUT_COVER.includes(section) && !HIDE_IMAGE_SECTIONS}
     <!-- Páginas de ciudad: la portada de la ciudad como fondo del header (responsive).
          Las ciudades sin portada (CITIES_WITHOUT_COVER) usan el fondo oscuro del header. -->
     <img
@@ -2102,7 +2103,7 @@
       {#if modularEnabled}
         <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
-      {#if !BRAND.leadGen}<a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
@@ -2307,6 +2308,7 @@
           {@const cityFairs = fairsForCity(cityKey)}
           <article id={cityKey} class:cities-hidden={!citiesExpanded && i >= CITIES_VISIBLE && cityKey !== section}>
             <a href={pathFor(lang, cityKey)} class="city-cover-link" aria-label={cityTitle(cityKey)}>
+              {#if !HIDE_IMAGE_SECTIONS}
               <div class="city-cover-container">
                 <img
                   src="/img/cover_{coverBase(cityKey)}.avif"
@@ -2319,6 +2321,7 @@
                   loading="lazy"
                 />
               </div>
+              {/if}
               <h3>{cityTitle(cityKey)}</h3>
               <p>{cityContent(cityKey).intro}</p>
               {#if cityFairs.length}
@@ -2384,9 +2387,11 @@
     {#if !BRAND.leadGen}
     <section id="services" class="section services">
       {#if !BRAND.leadGen}
+        {#if !HIDE_IMAGE_SECTIONS}
         <a class="guarantee-stamp" href="https://standarte.es/proyecto-auditado" aria-label="Sistema de Proyecto Auditado">
           <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
         </a>
+        {/if}
       {/if}
       <div class="section-header">
         <h2>{copy.servicesTitle}</h2>
@@ -2426,7 +2431,7 @@
 
     <!-- La Galería no forma parte de StandQuote (2026-08-27): sección y menú solo en Standarte.
          Tampoco se muestra en las páginas principales sin imágenes de galería (NO_GALLERY_SECTIONS). -->
-    {#if !BRAND.leadGen && !NO_GALLERY_SECTIONS.has(section)}
+    {#if !BRAND.leadGen && !NO_GALLERY_SECTIONS.has(section) && !HIDE_IMAGE_SECTIONS}
     <section id="custom" class="section portfolio">
       <div class="section-header">
         <h2>{copy.customTitle}</h2>
@@ -2615,10 +2620,10 @@
     {/if}
 
     <!-- El Pabellón de luz (carpas de verano) no forma parte de StandQuote (2026-08-27). -->
-    {#if !BRAND.leadGen}<MicroStand labels={copy.micro} />{/if}
+    {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<MicroStand labels={copy.micro} />{/if}
 
     <!-- La sección de Equipo no forma parte de StandQuote (2026-08-27). -->
-    {#if !BRAND.leadGen}
+    {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}
     <section id="team" class="section team">
       <div class="section-header">
         <h2>{copy.teamTitle}</h2>
@@ -2722,9 +2727,11 @@
             <!-- Sello del Sistema de Proyecto Auditado: en TODAS las páginas de ciudad
                  (igual que en las de feria) y en la propia página de la garantía. -->
             {#if (isCityPage || section === 'proyecto_auditado') && !BRAND.leadGen}
+              {#if !HIDE_IMAGE_SECTIONS}
               <a class="guarantee-stamp" href={pathFor(lang, 'proyecto_auditado')} aria-label="Sistema de Proyecto Auditado">
                 <img src="/img/100x100-guaranted.png" alt="" loading="lazy" width="400" height="400" />
               </a>
+              {/if}
             {/if}
             {#if isCityPage || section === 'proyecto_auditado'}
               <nav class="breadcrumbs feria-breadcrumbs" aria-label="Breadcrumb">
@@ -2749,7 +2756,7 @@
           <aside class="seo-sidebar">
             <div class="sidebar-sticky">
               <!-- Espacio excepcional: homenaje cultural (imagen + pie discreto) sobre la tarjeta del mapa de Pat. -->
-              {#if CITY_TRIBUTE[section]}
+              {#if CITY_TRIBUTE[section] && !HIDE_IMAGE_SECTIONS}
                 <figure class="city-tribute">
                   <img src="/img/{CITY_TRIBUTE[section].img}.avif" alt={CITY_TRIBUTE[section].lines[0].t} width={CITY_TRIBUTE[section].w} height={CITY_TRIBUTE[section].h} loading="lazy" decoding="async" />
                   <figcaption>
@@ -2762,9 +2769,11 @@
               <!-- B1: prueba de cobertura verificable (recuento real de ferias) + Pat. -->
               {#if (section in cityData) && regionFairs.length && cityDisplayName && !BRAND.leadGen}
                 <section class="coverage-proof sidebar-module">
+                  {#if !HIDE_IMAGE_SECTIONS}
                   <button type="button" class="coverage-map-thumb" on:click={openPatAndScroll} aria-label={coveragePatCta[lang] || coveragePatCta.es}>
                     <img src="/img/pat-map-preview.avif" alt={coverageMapAlt[lang] || coverageMapAlt.es} width="1287" height="824" loading="lazy" decoding="async" />
                   </button>
+                  {/if}
                   <p>{(coverageProof[lang] || coverageProof.es)(regionFairs.length, cityDisplayName)}</p>
                   <button type="button" class="coverage-pat" on:click={openPatAndScroll}>{coveragePatCta[lang] || coveragePatCta.es} →</button>
                 </section>

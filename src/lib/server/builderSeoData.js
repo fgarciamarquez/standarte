@@ -102,7 +102,7 @@ export const builderSeoData = {
         ${paso('Madrid')}
         ${tipos('Madrid')}
         <h2>Constructor de stands en Madrid: ferias del recinto</h2>
-        <p>Construimos para todo el calendario de IFEMA: <a href="/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/ferias/stand-sicur-madrid">SICUR</a>, <a href="/ferias/stand-salon-look-madrid">Salón Look</a>, <a href="/ferias/stand-veteco-madrid">Veteco</a>, <a href="/ferias/stand-madrid-tech-show">Madrid Tech Show</a>, <a href="/ferias/stand-hip-madrid">HIP</a>, <a href="/ferias/stand-meat-attraction-madrid">Meat Attraction</a> y <a href="/ferias/stand-advanced-manufacturing-madrid">Advanced Manufacturing</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno_montaje_stands_madrid">stands para ferias en Madrid</a>.</p>
+        <p>Construimos para todo el calendario de IFEMA: <a href="/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/ferias/stand-sicur-madrid">SICUR</a>, <a href="/ferias/stand-salon-look-madrid">Salón Look</a>, <a href="/ferias/stand-veteco-madrid">Veteco</a>, <a href="/ferias/stand-madrid-tech-show">Madrid Tech Show</a>, <a href="/ferias/stand-hip-madrid">HIP</a>, <a href="/ferias/stand-meat-attraction-madrid">Meat Attraction</a> y <a href="/ferias/stand-advanced-manufacturing-madrid">Advanced Manufacturing</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-madrid">stands para ferias en Madrid</a>.</p>
         ${porque('Madrid')}`
     }
   },  constructor_stand_barcelona: {
@@ -118,7 +118,7 @@ export const builderSeoData = {
         ${paso('Barcelona')}
         ${tipos('Barcelona')}
         <h2>Constructor de stands en Barcelona: ferias del recinto</h2>
-        <p>Construimos para las grandes citas de Fira: <a href="/ferias/stand-mwc-barcelona">MWC</a>, <a href="/ferias/stand-ise-barcelona">ISE</a>, <a href="/ferias/stand-alimentaria-barcelona">Alimentaria</a>, <a href="/ferias/stand-hispack-barcelona">Hispack</a>, <a href="/ferias/stand-hostelco-barcelona">Hostelco</a>, <a href="/ferias/stand-construmat-barcelona">Construmat</a>, <a href="/ferias/stand-expoquimia-barcelona">Expoquimia</a> y <a href="/ferias/stand-smart-city-expo-world-congress-barcelona">Smart City Expo World Congress</a>. El servicio completo de diseño y montaje está en <a href="/diseno_montaje_stands_barcelona">stands para ferias en Barcelona</a>.</p>
+        <p>Construimos para las grandes citas de Fira: <a href="/ferias/stand-mwc-barcelona">MWC</a>, <a href="/ferias/stand-ise-barcelona">ISE</a>, <a href="/ferias/stand-alimentaria-barcelona">Alimentaria</a>, <a href="/ferias/stand-hispack-barcelona">Hispack</a>, <a href="/ferias/stand-hostelco-barcelona">Hostelco</a>, <a href="/ferias/stand-construmat-barcelona">Construmat</a>, <a href="/ferias/stand-expoquimia-barcelona">Expoquimia</a> y <a href="/ferias/stand-smart-city-expo-world-congress-barcelona">Smart City Expo World Congress</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-barcelona">stands para ferias en Barcelona</a>.</p>
         ${porque('Barcelona')}`
     }
   },
@@ -286,7 +286,7 @@ export const builderSeoData = {
           <li><strong>Elementos reutilizables.</strong> Piezas de sistema propias que se reconfiguran de una edición a la siguiente y abaratan la presencia recurrente.</li>
         </ul>
         <h2>Constructor de stands para Agroexpo: y para el resto de FEVAL y Extremadura</h2>
-        <p>El mismo taller construye para el resto del calendario del recinto —<a href="/ferias/stands-agroexpo-feval-don-benito">FEVAL</a>— y para las plazas extremeñas: <a href="/montaje-stands-don-benito">Don Benito</a>, <a href="/diseno-construccion-montaje-stands-badajoz">Badajoz</a>, <a href="/montaje_stand_zafra">Zafra</a> y <a href="/diseno_montaje_stands_trujillo">Trujillo</a>. La ficha de la feria —sectores y servicio completo de diseño y montaje— está en <a href="/ferias/stands-agroexpo">stands para Agroexpo</a>, y la página de plaza, en <a href="/constructor_stand_don_benito">constructor de stands en Don Benito</a>.</p>
+        <p>El mismo taller construye para el resto del calendario del recinto —<a href="/ferias/stands-agroexpo-feval-don-benito">FEVAL</a>— y para las plazas extremeñas: <a href="/montaje-stands-don-benito">Don Benito</a>, <a href="/diseno-construccion-montaje-stands-badajoz">Badajoz</a>, <a href="/montaje-stands-zafra">Zafra</a> y <a href="/diseno-construccion-montaje-stands-trujillo">Trujillo</a>. La ficha de la feria —sectores y servicio completo de diseño y montaje— está en <a href="/ferias/stands-agroexpo">stands para Agroexpo</a>, y la página de plaza, en <a href="/constructor_stand_don_benito">constructor de stands en Don Benito</a>.</p>
         <h2>Constructor de stands para Agroexpo: por qué construir con Standarte</h2>
         <p>Somos constructores, no intermediarios: el stand se fabrica en <strong>nuestro taller</strong>, con nuestro equipo y nuestros plazos, a menos de una hora de FEVAL. Eso significa un único responsable de principio a fin, presupuesto sin la comisión de un tercero, y capacidad de resolver un imprevisto el mismo día del montaje. Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>: lo que apruebas es, literalmente, lo que se construye.</p>
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Agroexpo</a></p>`
@@ -351,7 +351,7 @@ export const builderSeoData = {
         ${paso('Málaga')}
         ${tipos('Málaga')}
         <h2>Constructor de stands en Málaga: ferias del recinto</h2>
-        <p>Construimos para todo el calendario de FYCMA: <a href="/ferias/stand-des-malaga">DES</a>, <a href="/ferias/stand-ht-malaga">H&amp;T</a>, <a href="/ferias/stand-simed-malaga">Simed</a>, <a href="/ferias/stand-expo-agritech-malaga">Expo AgriTech</a>, <a href="/ferias/stand-greencities-malaga">Greencities</a>, <a href="/ferias/stands-talent-land-malaga">Talent Land España</a> y <a href="/ferias/stand-san-diego-comic-con-malaga">San Diego Comic-Con Málaga</a>, donde la escenografía pesa tanto como el stand. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno_montaje_stands_malaga">stands para ferias en Málaga</a>.</p>
+        <p>Construimos para todo el calendario de FYCMA: <a href="/ferias/stand-des-malaga">DES</a>, <a href="/ferias/stand-ht-malaga">H&amp;T</a>, <a href="/ferias/stand-simed-malaga">Simed</a>, <a href="/ferias/stand-expo-agritech-malaga">Expo AgriTech</a>, <a href="/ferias/stand-greencities-malaga">Greencities</a>, <a href="/ferias/stands-talent-land-malaga">Talent Land España</a> y <a href="/ferias/stand-san-diego-comic-con-malaga">San Diego Comic-Con Málaga</a>, donde la escenografía pesa tanto como el stand. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-malaga">stands para ferias en Málaga</a>.</p>
         ${porque('Málaga')}`
     }
   },
@@ -372,7 +372,7 @@ export const builderSeoData = {
         ${paso('Sevilla')}
         ${tipos('Sevilla')}
         <h2>Constructor de stands en Sevilla: ferias del recinto</h2>
-        <p>Construimos para todo el calendario de FIBES: <a href="/ferias/stands-sicab-sevilla">SICAB</a>, <a href="/ferias/stands-simof-sevilla">SIMOF</a>, <a href="/ferias/stand-fireca-sevilla">Fireca</a>, <a href="/ferias/stand-mmh-sevilla">MMH – Mining and Minerals Hall</a>, <a href="/ferias/stand-tis-sevilla">Tourism Innovation Summit</a>, <a href="/ferias/stand-autentica-sevilla">Auténtica</a> y el <a href="/ferias/stands-salon-motor-sevilla">Salón del Motor de Sevilla</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno_montaje_stands_sevilla">stands para ferias en Sevilla</a>.</p>
+        <p>Construimos para todo el calendario de FIBES: <a href="/ferias/stands-sicab-sevilla">SICAB</a>, <a href="/ferias/stands-simof-sevilla">SIMOF</a>, <a href="/ferias/stand-fireca-sevilla">Fireca</a>, <a href="/ferias/stand-mmh-sevilla">MMH – Mining and Minerals Hall</a>, <a href="/ferias/stand-tis-sevilla">Tourism Innovation Summit</a>, <a href="/ferias/stand-autentica-sevilla">Auténtica</a> y el <a href="/ferias/stands-salon-motor-sevilla">Salón del Motor de Sevilla</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-sevilla">stands para ferias en Sevilla</a>.</p>
         ${porque('Sevilla')}`
     }
   },
@@ -389,7 +389,7 @@ export const builderSeoData = {
         ${paso('Valencia')}
         ${tipos('Valencia')}
         <h2>Constructor de stands en Valencia: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-beauty-forum-valencia">Beauty Forum Valencia</a>, <a href="/ferias/stand-cevisama-valencia">Cevisama</a>, <a href="/ferias/stand-habitat-valencia">Feria Hábitat València</a>, <a href="/ferias/stand-textilhogar-valencia">Textilhogar</a>, <a href="/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a>, <a href="/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a>, <a href="/ferias/stand-iberflora-valencia">Iberflora</a> y <a href="/ferias/stand-gastronoma-valencia">Gastrónoma</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_valencia">stands para ferias en Valencia</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-beauty-forum-valencia">Beauty Forum Valencia</a>, <a href="/ferias/stand-cevisama-valencia">Cevisama</a>, <a href="/ferias/stand-habitat-valencia">Feria Hábitat València</a>, <a href="/ferias/stand-textilhogar-valencia">Textilhogar</a>, <a href="/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a>, <a href="/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a>, <a href="/ferias/stand-iberflora-valencia">Iberflora</a> y <a href="/ferias/stand-gastronoma-valencia">Gastrónoma</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-valencia">stands para ferias en Valencia</a>.</p>
         ${porque('Valencia')}`
     }
   },
@@ -406,7 +406,7 @@ export const builderSeoData = {
         ${paso('Valladolid')}
         ${tipos('Valladolid')}
         <h2>Constructor de stands en Valladolid: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-intur-valladolid">INTUR</a>, <a href="/ferias/stand-fine-valladolid">FINE Valladolid</a>, <a href="/ferias/stand-technology-show-valladolid">Technology Show Valladolid</a>, <a href="/ferias/stand-feria-artesania-valladolid">Feria de Artesanía de Valladolid</a>, <a href="/ferias/stand-agraria-valladolid">AGRARIA</a>, <a href="/ferias/stand-agrovid-valladolid">AGROVID</a>, <a href="/ferias/stand-aviforum-valladolid">aviFORUM</a> y <a href="/ferias/stand-fimascota-valladolid">FIMASCOTA</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_valladolid">stands para ferias en Valladolid</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-intur-valladolid">INTUR</a>, <a href="/ferias/stand-fine-valladolid">FINE Valladolid</a>, <a href="/ferias/stand-technology-show-valladolid">Technology Show Valladolid</a>, <a href="/ferias/stand-feria-artesania-valladolid">Feria de Artesanía de Valladolid</a>, <a href="/ferias/stand-agraria-valladolid">AGRARIA</a>, <a href="/ferias/stand-agrovid-valladolid">AGROVID</a>, <a href="/ferias/stand-aviforum-valladolid">aviFORUM</a> y <a href="/ferias/stand-fimascota-valladolid">FIMASCOTA</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-valladolid">stands para ferias en Valladolid</a>.</p>
         ${porque('Valladolid')}`
     }
   },
@@ -423,7 +423,7 @@ export const builderSeoData = {
         ${paso('Alicante')}
         ${tipos('Alicante')}
         <h2>Constructor de stands en Alicante: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-alicante-gastronomica">Alicante Gastronómica</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_alicante">stands para ferias en Alicante</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-alicante-gastronomica">Alicante Gastronómica</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-alicante">stands para ferias en Alicante</a>.</p>
         ${porque('Alicante')}`
     }
   },
@@ -440,7 +440,7 @@ export const builderSeoData = {
         ${paso('Elche')}
         ${tipos('Elche')}
         <h2>Constructor de stands en Elche: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-futurmoda-elche">Futurmoda</a> y <a href="/ferias/stand-firauto-elche">Firauto</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_elche">stands para ferias en Elche</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-futurmoda-elche">Futurmoda</a> y <a href="/ferias/stand-firauto-elche">Firauto</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-elche">stands para ferias en Elche</a>.</p>
         ${porque('Elche')}`
     }
   },
@@ -457,7 +457,7 @@ export const builderSeoData = {
         ${paso('Murcia')}
         ${tipos('Murcia')}
         <h2>Constructor de stands en Murcia: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fame-innowa-torre-pacheco">FAME Innowa</a>, <a href="/ferias/stand-equimur-torre-pacheco">EQUIMUR</a>, <a href="/ferias/stand-hortifruit-torre-pacheco">HortiFruit</a> y <a href="/ferias/stand-fecons-torre-pacheco">FECONS</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_murcia">stands para ferias en Murcia</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fame-innowa-torre-pacheco">FAME Innowa</a>, <a href="/ferias/stand-equimur-torre-pacheco">EQUIMUR</a>, <a href="/ferias/stand-hortifruit-torre-pacheco">HortiFruit</a> y <a href="/ferias/stand-fecons-torre-pacheco">FECONS</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-murcia">stands para ferias en Murcia</a>.</p>
         ${porque('Murcia')}`
     }
   },
@@ -474,7 +474,7 @@ export const builderSeoData = {
         ${paso('Salamanca')}
         ${tipos('Salamanca')}
         <h2>Constructor de stands en Salamanca: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-salamaq-salamanca">SALAMAQ</a>, <a href="/ferias/stand-salon-automovil-salamanca">Salón del Automóvil de Salamanca</a> y <a href="/ferias/stand-congreso-alineadores-salamanca">Congreso Internacional de Alineadores</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_salamanca">stands para ferias en Salamanca</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-salamaq-salamanca">SALAMAQ</a>, <a href="/ferias/stand-salon-automovil-salamanca">Salón del Automóvil de Salamanca</a> y <a href="/ferias/stand-congreso-alineadores-salamanca">Congreso Internacional de Alineadores</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-salamanca">stands para ferias en Salamanca</a>.</p>
         ${porque('Salamanca')}`
     }
   },
@@ -508,7 +508,7 @@ export const builderSeoData = {
         ${paso('Santiago de Compostela')}
         ${tipos('Santiago de Compostela')}
         <h2>Constructor de stands en Santiago de Compostela: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fairway-santiago-de-compostela">Fairway Santiago de Compostela</a>, <a href="/ferias/stand-maker-faire-galicia-santiago-de-compostela">Maker Faire Galicia Santiago de Compostela</a>, <a href="/ferias/stand-gedet-santiago-de-compostela">GEDET Santiago de Compostela</a>, <a href="/ferias/stand-semergen-santiago-de-compostela">Congreso SEMERGEN Santiago de Compostela</a>, <a href="/ferias/stand-sesmi-santiago-de-compostela">SESMI Santiago de Compostela</a> y <a href="/ferias/stand-galicia-escena-pro-santiago-de-compostela">Galicia Escena PRO</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_santiago_de_compostela">stands para ferias en Santiago de Compostela</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fairway-santiago-de-compostela">Fairway Santiago de Compostela</a>, <a href="/ferias/stand-maker-faire-galicia-santiago-de-compostela">Maker Faire Galicia Santiago de Compostela</a>, <a href="/ferias/stand-gedet-santiago-de-compostela">GEDET Santiago de Compostela</a>, <a href="/ferias/stand-semergen-santiago-de-compostela">Congreso SEMERGEN Santiago de Compostela</a>, <a href="/ferias/stand-sesmi-santiago-de-compostela">SESMI Santiago de Compostela</a> y <a href="/ferias/stand-galicia-escena-pro-santiago-de-compostela">Galicia Escena PRO</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-santiago-de-compostela">stands para ferias en Santiago de Compostela</a>.</p>
         ${porque('Santiago de Compostela')}`
     }
   },
@@ -525,7 +525,7 @@ export const builderSeoData = {
         ${paso('Vigo')}
         ${tipos('Vigo')}
         <h2>Constructor de stands en Vigo: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-conxemar-vigo">Conxemar Vigo</a>, <a href="/ferias/stand-navalia-vigo">Navalia</a>, <a href="/ferias/stand-nortrans-vigo">Nortrans</a> y <a href="/ferias/stand-mindtech-vigo">Mindtech</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_vigo">stands para ferias en Vigo</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-conxemar-vigo">Conxemar Vigo</a>, <a href="/ferias/stand-navalia-vigo">Navalia</a>, <a href="/ferias/stand-nortrans-vigo">Nortrans</a> y <a href="/ferias/stand-mindtech-vigo">Mindtech</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-vigo">stands para ferias en Vigo</a>.</p>
         ${porque('Vigo')}`
     }
   },
@@ -542,7 +542,7 @@ export const builderSeoData = {
         ${paso('Ourense')}
         ${tipos('Ourense')}
         <h2>Constructor de stands en Ourense: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-xantar-ourense">Xantar</a> y <a href="/ferias/stand-termatalia-ourense">Termatalia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_ourense">stands para ferias en Ourense</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-xantar-ourense">Xantar</a> y <a href="/ferias/stand-termatalia-ourense">Termatalia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-ourense">stands para ferias en Ourense</a>.</p>
         ${porque('Ourense')}`
     }
   },
@@ -559,7 +559,7 @@ export const builderSeoData = {
         ${paso('Silleda')}
         ${tipos('Silleda')}
         <h2>Constructor de stands en Silleda: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-semana-verde-galicia-silleda">Semana Verde de Galicia</a> y <a href="/ferias/stand-turexpo-galicia-silleda">Turexpo Galicia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_silleda">stands para ferias en Silleda</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-semana-verde-galicia-silleda">Semana Verde de Galicia</a> y <a href="/ferias/stand-turexpo-galicia-silleda">Turexpo Galicia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-silleda">stands para ferias en Silleda</a>.</p>
         ${porque('Silleda')}`
     }
   },
@@ -576,7 +576,7 @@ export const builderSeoData = {
         ${paso('Gijón')}
         ${tipos('Gijón')}
         <h2>Constructor de stands en Gijón: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fidma-gijon">FIDMA – Feria Internacional de Muestras de Asturias</a>, <a href="/ferias/stand-agropec-gijon">AGROPEC Gijón</a>, <a href="/ferias/stand-salon-competicion-asturias-gijon">Salón de Competición de Asturias</a>, <a href="/ferias/stand-asturforesta-tineo">Asturforesta</a>, <a href="/ferias/stand-feria-muestras-tineo">Feria de Muestras de Tineo</a> y <a href="/ferias/stand-agroalimentaria-vegadeo">Feria Agroalimentaria de Vegadeo</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_gijon">stands para ferias en Gijón</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fidma-gijon">FIDMA – Feria Internacional de Muestras de Asturias</a>, <a href="/ferias/stand-agropec-gijon">AGROPEC Gijón</a>, <a href="/ferias/stand-salon-competicion-asturias-gijon">Salón de Competición de Asturias</a>, <a href="/ferias/stand-asturforesta-tineo">Asturforesta</a>, <a href="/ferias/stand-feria-muestras-tineo">Feria de Muestras de Tineo</a> y <a href="/ferias/stand-agroalimentaria-vegadeo">Feria Agroalimentaria de Vegadeo</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-gijon">stands para ferias en Gijón</a>.</p>
         ${porque('Gijón')}`
     }
   },
@@ -593,7 +593,7 @@ export const builderSeoData = {
         ${paso('Santander')}
         ${tipos('Santander')}
         <h2>Constructor de stands en Santander: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-artesantander">ARTESANTANDER</a>, <a href="/ferias/stand-biocantabria-santander">BioCantabria</a>, <a href="/ferias/stand-feria-apicola-cantabria-torrelavega">Feria Nacional Apícola de Cantabria</a> y <a href="/ferias/stand-feria-concesionarios-torrelavega">Feria de Concesionarios de Torrelavega</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_santander">stands para ferias en Santander</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-artesantander">ARTESANTANDER</a>, <a href="/ferias/stand-biocantabria-santander">BioCantabria</a>, <a href="/ferias/stand-feria-apicola-cantabria-torrelavega">Feria Nacional Apícola de Cantabria</a> y <a href="/ferias/stand-feria-concesionarios-torrelavega">Feria de Concesionarios de Torrelavega</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-santander">stands para ferias en Santander</a>.</p>
         ${porque('Santander')}`
     }
   },
@@ -644,7 +644,7 @@ export const builderSeoData = {
         ${paso('Pamplona')}
         ${tipos('Pamplona')}
         <h2>Constructor de stands en Pamplona: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-navartur-pamplona">NAVARTUR</a>, <a href="/ferias/stand-salon-estudiante-futuro-profesional-pamplona">Salón del Estudiante y Futuro Profesional</a>, <a href="/ferias/stand-edifica-pamplona">EDIFICA</a>, <a href="/ferias/stand-navarra-jobs-pamplona">Navarra Jobs</a>, <a href="/ferias/stand-feria-navarra-ecologica-pamplona">Feria Navarra Ecológica</a>, <a href="/ferias/stand-navarra-wine-gastronomy-pamplona">Navarra Wine & Gastronomy</a> y <a href="/ferias/stand-feria-turismo-reyno-navarra-pamplona">Feria Internacional de Turismo Reyno de Navarra</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_pamplona">stands para ferias en Pamplona</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-navartur-pamplona">NAVARTUR</a>, <a href="/ferias/stand-salon-estudiante-futuro-profesional-pamplona">Salón del Estudiante y Futuro Profesional</a>, <a href="/ferias/stand-edifica-pamplona">EDIFICA</a>, <a href="/ferias/stand-navarra-jobs-pamplona">Navarra Jobs</a>, <a href="/ferias/stand-feria-navarra-ecologica-pamplona">Feria Navarra Ecológica</a>, <a href="/ferias/stand-navarra-wine-gastronomy-pamplona">Navarra Wine & Gastronomy</a> y <a href="/ferias/stand-feria-turismo-reyno-navarra-pamplona">Feria Internacional de Turismo Reyno de Navarra</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-pamplona">stands para ferias en Pamplona</a>.</p>
         ${porque('Pamplona')}`
     }
   },
@@ -678,7 +678,7 @@ export const builderSeoData = {
         ${paso('Lleida')}
         ${tipos('Lleida')}
         <h2>Constructor de stands en Lleida: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-municipalia-lleida">Municipàlia Lleida</a> y <a href="/ferias/stand-fira-sant-miquel-lleida">Fira de Sant Miquel Lleida</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_lleida">stands para ferias en Lleida</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-municipalia-lleida">Municipàlia Lleida</a> y <a href="/ferias/stand-fira-sant-miquel-lleida">Fira de Sant Miquel Lleida</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-lleida">stands para ferias en Lleida</a>.</p>
         ${porque('Lleida')}`
     }
   },
@@ -695,7 +695,7 @@ export const builderSeoData = {
         ${paso('Girona')}
         ${tipos('Girona')}
         <h2>Constructor de stands en Girona: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-forum-gastronomic-girona">Fòrum Gastronòmic Girona</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_girona">stands para ferias en Girona</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-forum-gastronomic-girona">Fòrum Gastronòmic Girona</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-girona">stands para ferias en Girona</a>.</p>
         ${porque('Girona')}`
     }
   },
@@ -712,7 +712,7 @@ export const builderSeoData = {
         ${paso('Mallorca')}
         ${tipos('Mallorca')}
         <h2>Constructor de stands en Mallorca: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-palma-international-boat-show">Palma International Boat Show</a>, <a href="/ferias/stand-palma-superyacht-village">Palma Superyacht Village</a>, <a href="/ferias/stand-baleart-mallorca">Baleart</a>, <a href="/ferias/stand-dijous-bo-mallorca">Dijous Bo</a>, <a href="/ferias/stand-horeca-baleares-mallorca">HORECA Baleares Mallorca</a>, <a href="/ferias/stand-fira-vi-pollenca-mallorca">Fira del Vi de Pollença</a>, <a href="/ferias/stand-wine-days-binissalem-mallorca">Wine Days Mallorca – DO Binissalem</a> y <a href="/ferias/stand-fira-sipia-alcudia-mallorca">Fira de la Sípia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_mallorca">stands para ferias en Mallorca</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-palma-international-boat-show">Palma International Boat Show</a>, <a href="/ferias/stand-palma-superyacht-village">Palma Superyacht Village</a>, <a href="/ferias/stand-baleart-mallorca">Baleart</a>, <a href="/ferias/stand-dijous-bo-mallorca">Dijous Bo</a>, <a href="/ferias/stand-horeca-baleares-mallorca">HORECA Baleares Mallorca</a>, <a href="/ferias/stand-fira-vi-pollenca-mallorca">Fira del Vi de Pollença</a>, <a href="/ferias/stand-wine-days-binissalem-mallorca">Wine Days Mallorca – DO Binissalem</a> y <a href="/ferias/stand-fira-sipia-alcudia-mallorca">Fira de la Sípia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-mallorca">stands para ferias en Mallorca</a>.</p>
         ${porque('Mallorca')}`
     }
   },
@@ -729,7 +729,7 @@ export const builderSeoData = {
         ${paso('Ibiza')}
         ${tipos('Ibiza')}
         <h2>Constructor de stands en Ibiza: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-horeca-baleares-ibiza">HORECA Baleares Ibiza</a>, <a href="/ferias/stand-fira-mar-ibiza">Fira de la Mar</a> y <a href="/ferias/stand-feria-stocks-ibiza">Feria de Stocks de Ibiza</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_ibiza">stands para ferias en Ibiza</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-horeca-baleares-ibiza">HORECA Baleares Ibiza</a>, <a href="/ferias/stand-fira-mar-ibiza">Fira de la Mar</a> y <a href="/ferias/stand-feria-stocks-ibiza">Feria de Stocks de Ibiza</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-ibiza">stands para ferias en Ibiza</a>.</p>
         ${porque('Ibiza')}`
     }
   },
@@ -746,7 +746,7 @@ export const builderSeoData = {
         ${paso('Menorca')}
         ${tipos('Menorca')}
         <h2>Constructor de stands en Menorca: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-horeca-baleares-menorca">HORECA Baleares Menorca</a>, <a href="/ferias/stand-fira-camp-alaior-menorca">Fira del Camp</a> y <a href="/ferias/stand-arrels-menorca">Arrels, Fira de Producte Local i Cuina de Menorca</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_menorca">stands para ferias en Menorca</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-horeca-baleares-menorca">HORECA Baleares Menorca</a>, <a href="/ferias/stand-fira-camp-alaior-menorca">Fira del Camp</a> y <a href="/ferias/stand-arrels-menorca">Arrels, Fira de Producte Local i Cuina de Menorca</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-menorca">stands para ferias en Menorca</a>.</p>
         ${porque('Menorca')}`
     }
   },
@@ -763,7 +763,7 @@ export const builderSeoData = {
         ${paso('Canarias')}
         ${tipos('Canarias')}
         <h2>Constructor de stands en Canarias: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feaga-fuerteventura">FEAGA</a>, <a href="/ferias/stand-gastrocanarias-tenerife">GastroCanarias</a>, <a href="/ferias/stand-gran-canaria-me-gusta">Gran Canaria Me Gusta</a>, <a href="/ferias/stand-canagua-energia-gran-canaria">Canagua & Energía</a>, <a href="/ferias/stand-fimar-las-palmas">FIMAR</a>, <a href="/ferias/stand-salon-atlantico-logistica-transporte">Salón Atlántico de Logística y Transporte</a>, <a href="/ferias/stand-moda-tenerife">Feria Internacional de Moda de Tenerife</a> y <a href="/ferias/stand-expodeca">ExpoDeca</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_islas_canarias">stands para ferias en Canarias</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feaga-fuerteventura">FEAGA</a>, <a href="/ferias/stand-gastrocanarias-tenerife">GastroCanarias</a>, <a href="/ferias/stand-gran-canaria-me-gusta">Gran Canaria Me Gusta</a>, <a href="/ferias/stand-canagua-energia-gran-canaria">Canagua & Energía</a>, <a href="/ferias/stand-fimar-las-palmas">FIMAR</a>, <a href="/ferias/stand-salon-atlantico-logistica-transporte">Salón Atlántico de Logística y Transporte</a>, <a href="/ferias/stand-moda-tenerife">Feria Internacional de Moda de Tenerife</a> y <a href="/ferias/stand-expodeca">ExpoDeca</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-islas-canarias">stands para ferias en Canarias</a>.</p>
         ${porque('Canarias')}`
     }
   },
@@ -780,7 +780,7 @@ export const builderSeoData = {
         ${paso('Ceuta')}
         ${tipos('Ceuta')}
         <h2>Constructor de stands en Ceuta: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-bet-on-ceuta">Bet On Ceuta</a>, <a href="/ferias/stand-ceuta-impulsa">Ceuta Impulsa</a> y <a href="/ferias/stand-odissea-economia-azul-ceuta">Odissea, Economía Azul de Ceuta</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_ceuta">stands para ferias en Ceuta</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-bet-on-ceuta">Bet On Ceuta</a>, <a href="/ferias/stand-ceuta-impulsa">Ceuta Impulsa</a> y <a href="/ferias/stand-odissea-economia-azul-ceuta">Odissea, Economía Azul de Ceuta</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-ceuta">stands para ferias en Ceuta</a>.</p>
         ${porque('Ceuta')}`
     }
   },
@@ -797,7 +797,7 @@ export const builderSeoData = {
         ${paso('Melilla')}
         ${tipos('Melilla')}
         <h2>Constructor de stands en Melilla: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-oportunidades-economicas-melilla">Feria de Oportunidades Económicas de Melilla</a>, <a href="/ferias/stand-feria-representacion-intercultural-melilla">Feria de Representación Intercultural de Melilla</a> y <a href="/ferias/stand-eventos-empresariales-proyecto-melilla">Eventos Empresariales Proyecto Melilla</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_melilla">stands para ferias en Melilla</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-oportunidades-economicas-melilla">Feria de Oportunidades Económicas de Melilla</a>, <a href="/ferias/stand-feria-representacion-intercultural-melilla">Feria de Representación Intercultural de Melilla</a> y <a href="/ferias/stand-eventos-empresariales-proyecto-melilla">Eventos Empresariales Proyecto Melilla</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-melilla">stands para ferias en Melilla</a>.</p>
         ${porque('Melilla')}`
     }
   },
@@ -814,7 +814,7 @@ export const builderSeoData = {
         ${paso('Tánger')}
         ${tipos('Tánger')}
         <h2>Constructor de stands en Tánger: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-maroc-in-mode-mim-tanger">Maroc in Mode (MIM) Tánger</a>, <a href="/ferias/stand-tanger-nexus">Tanger Nexus</a>, <a href="/ferias/stand-tanger-fashion-week">Tanger Fashion Week</a>, <a href="/ferias/stand-amith-nord-tanger">Encuentros Industriales AMITH Nord</a> y <a href="/ferias/stand-eventos-industriales-tanger-med">Eventos Industriales Tanger Med</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_tanger">stands para ferias en Tánger</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-maroc-in-mode-mim-tanger">Maroc in Mode (MIM) Tánger</a>, <a href="/ferias/stand-tanger-nexus">Tanger Nexus</a>, <a href="/ferias/stand-tanger-fashion-week">Tanger Fashion Week</a>, <a href="/ferias/stand-amith-nord-tanger">Encuentros Industriales AMITH Nord</a> y <a href="/ferias/stand-eventos-industriales-tanger-med">Eventos Industriales Tanger Med</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-tanger">stands para ferias en Tánger</a>.</p>
         ${porque('Tánger')}`
     }
   },
@@ -831,7 +831,7 @@ export const builderSeoData = {
         ${paso('Casablanca')}
         ${tipos('Casablanca')}
         <h2>Constructor de stands en Casablanca: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-logismed-casablanca">Logismed</a>, <a href="/ferias/stand-morocco-food-expo-casablanca">Morocco Food Expo</a>, <a href="/ferias/stand-siema-casablanca">Morocco SIEMA Expo</a>, <a href="/ferias/stand-siab-casablanca">SIAB Expo Maroc</a>, <a href="/ferias/stand-elec-expo-casablanca">Elec Expo</a>, <a href="/ferias/stand-ener-event-casablanca">Ener Event</a>, <a href="/ferias/stand-plast-expo-casablanca">Plast Expo</a> y <a href="/ferias/stand-pack-expo-casablanca">Pack Expo Morocco</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_casablanca">stands para ferias en Casablanca</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-logismed-casablanca">Logismed</a>, <a href="/ferias/stand-morocco-food-expo-casablanca">Morocco Food Expo</a>, <a href="/ferias/stand-siema-casablanca">Morocco SIEMA Expo</a>, <a href="/ferias/stand-siab-casablanca">SIAB Expo Maroc</a>, <a href="/ferias/stand-elec-expo-casablanca">Elec Expo</a>, <a href="/ferias/stand-ener-event-casablanca">Ener Event</a>, <a href="/ferias/stand-plast-expo-casablanca">Plast Expo</a> y <a href="/ferias/stand-pack-expo-casablanca">Pack Expo Morocco</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-casablanca">stands para ferias en Casablanca</a>.</p>
         ${porque('Casablanca')}`
     }
   },
@@ -848,7 +848,7 @@ export const builderSeoData = {
         ${paso('Rabat')}
         ${tipos('Rabat')}
         <h2>Constructor de stands en Rabat: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-siel-rabat">SIEL — Salon International de l'Édition et du Livre</a>, <a href="/ferias/stand-visa-for-music-rabat">Visa For Music</a>, <a href="/ferias/stand-forum-etudiant-rabat">Forum de l'Étudiant, de la Formation et de l'Emploi</a> y <a href="/ferias/stand-cimqusef-rabat">CIMQUSEF</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_rabat">stands para ferias en Rabat</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-siel-rabat">SIEL — Salon International de l'Édition et du Livre</a>, <a href="/ferias/stand-visa-for-music-rabat">Visa For Music</a>, <a href="/ferias/stand-forum-etudiant-rabat">Forum de l'Étudiant, de la Formation et de l'Emploi</a> y <a href="/ferias/stand-cimqusef-rabat">CIMQUSEF</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-rabat">stands para ferias en Rabat</a>.</p>
         ${porque('Rabat')}`
     }
   },
@@ -865,7 +865,7 @@ export const builderSeoData = {
         ${paso('Andorra')}
         ${tipos('Andorra')}
         <h2>Constructor de stands en Andorra: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fira-andorra-la-vella">Fira d'Andorra la Vella</a>, <a href="/ferias/stand-enfirat-encamp">Enfira't</a>, <a href="/ferias/stand-andorra-taste">Andorra Taste</a>, <a href="/ferias/stand-fira-del-vermut-andorra">Fira del Vermut d'Andorra</a>, <a href="/ferias/stand-fira-del-bestiar-ordino">Fira del Bestiar d'Ordino</a>, <a href="/ferias/stand-mercat-de-la-vall-andorra">Mercat de la Vall</a> y <a href="/ferias/stand-fira-outlet-soldeu">Fira Outlet de Soldeu</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_andorra">stands para ferias en Andorra</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fira-andorra-la-vella">Fira d'Andorra la Vella</a>, <a href="/ferias/stand-enfirat-encamp">Enfira't</a>, <a href="/ferias/stand-andorra-taste">Andorra Taste</a>, <a href="/ferias/stand-fira-del-vermut-andorra">Fira del Vermut d'Andorra</a>, <a href="/ferias/stand-fira-del-bestiar-ordino">Fira del Bestiar d'Ordino</a>, <a href="/ferias/stand-mercat-de-la-vall-andorra">Mercat de la Vall</a> y <a href="/ferias/stand-fira-outlet-soldeu">Fira Outlet de Soldeu</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-andorra">stands para ferias en Andorra</a>.</p>
         ${porque('Andorra')}`
     }
   },
@@ -882,7 +882,7 @@ export const builderSeoData = {
         ${paso('Teruel')}
         ${tipos('Teruel')}
         <h2>Constructor de stands en Teruel: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-jamon-teruel">Feria del Jamón de Teruel y Alimentos de Calidad</a>, <a href="/ferias/stand-expocalamocha">ExpoCalamocha</a> y <a href="/ferias/stand-agroalcaniz">AgroAlcañiz</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_teruel">stands para ferias en Teruel</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-jamon-teruel">Feria del Jamón de Teruel y Alimentos de Calidad</a>, <a href="/ferias/stand-expocalamocha">ExpoCalamocha</a> y <a href="/ferias/stand-agroalcaniz">AgroAlcañiz</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-teruel">stands para ferias en Teruel</a>.</p>
         ${porque('Teruel')}`
     }
   },
@@ -899,7 +899,7 @@ export const builderSeoData = {
         ${paso('Aranda de Duero')}
         ${tipos('Aranda de Duero')}
         <h2>Constructor de stands en Aranda de Duero: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-espacio-ribera-aranda">Espacio Ribera</a>, <a href="/ferias/stand-premios-envero-enverofest-aranda">Premios Envero / EnveroFest</a> y <a href="/ferias/stand-congreso-la-cierna-aranda">Congreso La Cierna</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_aranda_de_duero">stands para ferias en Aranda de Duero</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-espacio-ribera-aranda">Espacio Ribera</a>, <a href="/ferias/stand-premios-envero-enverofest-aranda">Premios Envero / EnveroFest</a> y <a href="/ferias/stand-congreso-la-cierna-aranda">Congreso La Cierna</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-aranda-de-duero">stands para ferias en Aranda de Duero</a>.</p>
         ${porque('Aranda de Duero')}`
     }
   },
@@ -933,7 +933,7 @@ export const builderSeoData = {
         ${paso('Zafra')}
         ${tipos('Zafra')}
         <h2>Constructor de stands en Zafra: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-internacional-ganadera-zafra">Feria Internacional Ganadera de Zafra</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/montaje_stand_zafra">stands para ferias en Zafra</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-internacional-ganadera-zafra">Feria Internacional Ganadera de Zafra</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/montaje-stands-zafra">stands para ferias en Zafra</a>.</p>
         ${porque('Zafra')}`
     }
   },
@@ -950,7 +950,7 @@ export const builderSeoData = {
         ${paso('Trujillo')}
         ${tipos('Trujillo')}
         <h2>Constructor de stands en Trujillo: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-internacional-ganadera-trujillo">Feria Agroganadera de Trujillo</a> y <a href="/ferias/stand-feria-nacional-queso-trujillo">Feria Nacional del Queso de Trujillo</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_trujillo">stands para ferias en Trujillo</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-internacional-ganadera-trujillo">Feria Agroganadera de Trujillo</a> y <a href="/ferias/stand-feria-nacional-queso-trujillo">Feria Nacional del Queso de Trujillo</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-trujillo">stands para ferias en Trujillo</a>.</p>
         ${porque('Trujillo')}`
     }
   },
@@ -967,7 +967,7 @@ export const builderSeoData = {
         ${paso('Almería')}
         ${tipos('Almería')}
         <h2>Constructor de stands en Almería: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-infoagro-exhibition-aguadulce">Infoagro Exhibition</a>, <a href="/ferias/stand-expolevante-el-ejido">Expolevante</a> y <a href="/ferias/stand-sun-blue-congress-almeria">Sun&Blue Congress</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_almeria">stands para ferias en Almería</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-infoagro-exhibition-aguadulce">Infoagro Exhibition</a>, <a href="/ferias/stand-expolevante-el-ejido">Expolevante</a> y <a href="/ferias/stand-sun-blue-congress-almeria">Sun&Blue Congress</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-almeria">stands para ferias en Almería</a>.</p>
         ${porque('Almería')}`
     }
   },
@@ -984,7 +984,7 @@ export const builderSeoData = {
         ${paso('Jaén')}
         ${tipos('Jaén')}
         <h2>Constructor de stands en Jaén: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-expoliva-jaen">Expoliva</a>, <a href="/ferias/stand-ibercaza-jaen">Ibercaza</a> y <a href="/ferias/stand-feria-de-los-pueblos-jaen">Feria de los Pueblos</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_jaen">stands para ferias en Jaén</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-expoliva-jaen">Expoliva</a>, <a href="/ferias/stand-ibercaza-jaen">Ibercaza</a> y <a href="/ferias/stand-feria-de-los-pueblos-jaen">Feria de los Pueblos</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-jaen">stands para ferias en Jaén</a>.</p>
         ${porque('Jaén')}`
     }
   },
@@ -1001,7 +1001,7 @@ export const builderSeoData = {
         ${paso('Huelva')}
         ${tipos('Huelva')}
         <h2>Constructor de stands en Huelva: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-congreso-internacional-frutos-rojos-huelva">Congreso Internacional de Frutos Rojos</a>, <a href="/ferias/stand-feria-jamon-cerdo-iberico-aracena">Feria del Jamón y Cerdo Ibérico de Aracena</a> y <a href="/ferias/stand-feria-gamba-chirla-boqueron-punta-umbria">Feria Nacional de la Gamba, la Chirla y el Boquerón</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_huelva">stands para ferias en Huelva</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-congreso-internacional-frutos-rojos-huelva">Congreso Internacional de Frutos Rojos</a>, <a href="/ferias/stand-feria-jamon-cerdo-iberico-aracena">Feria del Jamón y Cerdo Ibérico de Aracena</a> y <a href="/ferias/stand-feria-gamba-chirla-boqueron-punta-umbria">Feria Nacional de la Gamba, la Chirla y el Boquerón</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-huelva">stands para ferias en Huelva</a>.</p>
         ${porque('Huelva')}`
     }
   },
@@ -1018,7 +1018,7 @@ export const builderSeoData = {
         ${paso('Córdoba')}
         ${tipos('Córdoba')}
         <h2>Constructor de stands en Córdoba: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-intercaza-cordoba">Intercaza</a>, <a href="/ferias/stand-feria-agroganadera-pedroches-pozoblanco">Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches</a> y <a href="/ferias/stand-feria-jamon-bellota-dop-pedroches-villanueva-cordoba">Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_cordoba">stands para ferias en Córdoba</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-intercaza-cordoba">Intercaza</a>, <a href="/ferias/stand-feria-agroganadera-pedroches-pozoblanco">Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches</a> y <a href="/ferias/stand-feria-jamon-bellota-dop-pedroches-villanueva-cordoba">Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-cordoba">stands para ferias en Córdoba</a>.</p>
         ${porque('Córdoba')}`
     }
   },
@@ -1035,7 +1035,7 @@ export const builderSeoData = {
         ${paso('Granada')}
         ${tipos('Granada')}
         <h2>Constructor de stands en Granada: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-general-muestras-armilla">Feria General de Muestras de Armilla</a>, <a href="/ferias/stand-feria-de-la-ciencia-granada">Feria de la Ciencia</a>, <a href="/ferias/stand-concab-granada">CONCAB Granada</a>, <a href="/ferias/stand-belmoda-granada">Belmoda Granada</a>, <a href="/ferias/stand-sabores-nuestra-tierra-granada">Sabores de Nuestra Tierra</a> y <a href="/ferias/stand-feria-pueblos-granada">Feria de los Pueblos de Granada</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_granada">stands para ferias en Granada</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-general-muestras-armilla">Feria General de Muestras de Armilla</a>, <a href="/ferias/stand-feria-de-la-ciencia-granada">Feria de la Ciencia</a>, <a href="/ferias/stand-concab-granada">CONCAB Granada</a>, <a href="/ferias/stand-belmoda-granada">Belmoda Granada</a>, <a href="/ferias/stand-sabores-nuestra-tierra-granada">Sabores de Nuestra Tierra</a> y <a href="/ferias/stand-feria-pueblos-granada">Feria de los Pueblos de Granada</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-granada">stands para ferias en Granada</a>.</p>
         ${porque('Granada')}`
     }
   },
@@ -1052,7 +1052,7 @@ export const builderSeoData = {
         ${paso('Cádiz')}
         ${tipos('Cádiz')}
         <h2>Constructor de stands en Cádiz: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-blue-zone-forum-navalia-meeting-cadiz">Blue Zone Forum Navalia Meeting</a>, <a href="/ferias/stand-feria-del-caballo-jerez">Feria del Caballo de Jerez</a> y <a href="/ferias/stand-fegasur-jerez">Fegasur</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_cadiz">stands para ferias en Cádiz</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-blue-zone-forum-navalia-meeting-cadiz">Blue Zone Forum Navalia Meeting</a>, <a href="/ferias/stand-feria-del-caballo-jerez">Feria del Caballo de Jerez</a> y <a href="/ferias/stand-fegasur-jerez">Fegasur</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-cadiz">stands para ferias en Cádiz</a>.</p>
         ${porque('Cádiz')}`
     }
   },
@@ -1069,7 +1069,7 @@ export const builderSeoData = {
         ${paso('Marsella')}
         ${tipos('Marsella')}
         <h2>Constructor de stands en Marsella: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-marseille">Foire Internationale de Marseille</a>, <a href="/ferias/stand-euromaritime-marseille">Euromaritime</a>, <a href="/ferias/stand-sirha-mediterranee-marseille">Sirha Méditerranée</a>, <a href="/ferias/stand-beauty-profs-marseille">Beauty Prof's</a>, <a href="/ferias/stand-savim-marseille">SAVIM</a>, <a href="/ferias/stand-salon-piscine-jardin-marseille">Salon Piscine & Jardin</a>, <a href="/ferias/stand-solutions-cse-marseille">Solutions CSE Marseille</a> y <a href="/ferias/stand-japan-expo-sud-marseille">Japan Expo Sud</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_marsella">stands para ferias en Marsella</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-marseille">Foire Internationale de Marseille</a>, <a href="/ferias/stand-euromaritime-marseille">Euromaritime</a>, <a href="/ferias/stand-sirha-mediterranee-marseille">Sirha Méditerranée</a>, <a href="/ferias/stand-beauty-profs-marseille">Beauty Prof's</a>, <a href="/ferias/stand-savim-marseille">SAVIM</a>, <a href="/ferias/stand-salon-piscine-jardin-marseille">Salon Piscine & Jardin</a>, <a href="/ferias/stand-solutions-cse-marseille">Solutions CSE Marseille</a> y <a href="/ferias/stand-japan-expo-sud-marseille">Japan Expo Sud</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-marsella">stands para ferias en Marsella</a>.</p>
         ${porque('Marsella')}`
     }
   },
@@ -1086,7 +1086,7 @@ export const builderSeoData = {
         ${paso('Cannes')}
         ${tipos('Cannes')}
         <h2>Constructor de stands en Cannes: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-cannes-yachting-festival">Cannes Yachting Festival</a>, <a href="/ferias/stand-interior-exterior-design-meetings-cannes">Interior & Exterior Design Meetings</a>, <a href="/ferias/stand-mapic-cannes">MAPIC</a>, <a href="/ferias/stand-mipim-cannes">MIPIM</a> y <a href="/ferias/stand-tfwa-cannes">TFWA World Exhibition</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_cannes">stands para ferias en Cannes</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-cannes-yachting-festival">Cannes Yachting Festival</a>, <a href="/ferias/stand-interior-exterior-design-meetings-cannes">Interior & Exterior Design Meetings</a>, <a href="/ferias/stand-mapic-cannes">MAPIC</a>, <a href="/ferias/stand-mipim-cannes">MIPIM</a> y <a href="/ferias/stand-tfwa-cannes">TFWA World Exhibition</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-cannes">stands para ferias en Cannes</a>.</p>
         ${porque('Cannes')}`
     }
   },
@@ -1103,7 +1103,7 @@ export const builderSeoData = {
         ${paso('Aviñón')}
         ${tipos('Aviñón')}
         <h2>Constructor de stands en Aviñón: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-medagri-avignon">MED'Agri</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_avignon">stands para ferias en Aviñón</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-medagri-avignon">MED'Agri</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-avignon">stands para ferias en Aviñón</a>.</p>
         ${porque('Aviñón')}`
     }
   },
@@ -1120,7 +1120,7 @@ export const builderSeoData = {
         ${paso('Toulouse')}
         ${tipos('Toulouse')}
         <h2>Constructor de stands en Toulouse: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-toulouse">Foire Internationale de Toulouse</a>, <a href="/ferias/stand-cfia-toulouse">CFIA Toulouse</a>, <a href="/ferias/stand-sepem-industries-toulouse">SEPEM Industries Toulouse</a>, <a href="/ferias/stand-aerospace-test-development-show-toulouse">Aerospace Test & Development Show</a>, <a href="/ferias/stand-aeromart-toulouse">Aeromart Toulouse</a>, <a href="/ferias/stand-siane-toulouse">Salon SIANE</a> y <a href="/ferias/stand-smahrt-toulouse">SMAHRT</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_toulouse">stands para ferias en Toulouse</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-toulouse">Foire Internationale de Toulouse</a>, <a href="/ferias/stand-cfia-toulouse">CFIA Toulouse</a>, <a href="/ferias/stand-sepem-industries-toulouse">SEPEM Industries Toulouse</a>, <a href="/ferias/stand-aerospace-test-development-show-toulouse">Aerospace Test & Development Show</a>, <a href="/ferias/stand-aeromart-toulouse">Aeromart Toulouse</a>, <a href="/ferias/stand-siane-toulouse">Salon SIANE</a> y <a href="/ferias/stand-smahrt-toulouse">SMAHRT</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-toulouse">stands para ferias en Toulouse</a>.</p>
         ${porque('Toulouse')}`
     }
   },
@@ -1137,7 +1137,7 @@ export const builderSeoData = {
         ${paso('Burdeos')}
         ${tipos('Burdeos')}
         <h2>Constructor de stands en Burdeos: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-bordeaux">Foire Internationale de Bordeaux</a>, <a href="/ferias/stand-vinitech-sifel-bordeaux">Vinitech-Sifel</a>, <a href="/ferias/stand-equitaine-bordeaux">Equitaine</a>, <a href="/ferias/stand-salon-agriculture-nouvelle-aquitaine-bordeaux">Salon de l'Agriculture Nouvelle-Aquitaine</a>, <a href="/ferias/stand-art3f-bordeaux">Art3f Bordeaux</a>, <a href="/ferias/stand-grand-salon-habitat-bordeaux">Grand Salon Habitat</a>, <a href="/ferias/stand-salon-vins-vignerons-independants-bordeaux">Salon des Vins des Vignerons Indépendants</a> y <a href="/ferias/stand-cycleau-nouvelle-aquitaine-bordeaux">Cycl'Eau Nouvelle-Aquitaine</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_burdeos">stands para ferias en Burdeos</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-bordeaux">Foire Internationale de Bordeaux</a>, <a href="/ferias/stand-vinitech-sifel-bordeaux">Vinitech-Sifel</a>, <a href="/ferias/stand-equitaine-bordeaux">Equitaine</a>, <a href="/ferias/stand-salon-agriculture-nouvelle-aquitaine-bordeaux">Salon de l'Agriculture Nouvelle-Aquitaine</a>, <a href="/ferias/stand-art3f-bordeaux">Art3f Bordeaux</a>, <a href="/ferias/stand-grand-salon-habitat-bordeaux">Grand Salon Habitat</a>, <a href="/ferias/stand-salon-vins-vignerons-independants-bordeaux">Salon des Vins des Vignerons Indépendants</a> y <a href="/ferias/stand-cycleau-nouvelle-aquitaine-bordeaux">Cycl'Eau Nouvelle-Aquitaine</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-burdeos">stands para ferias en Burdeos</a>.</p>
         ${porque('Burdeos')}`
     }
   },
@@ -1154,7 +1154,7 @@ export const builderSeoData = {
         ${paso('Lyon')}
         ${tipos('Lyon')}
         <h2>Constructor de stands en Lyon: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sirha-lyon">SIRHA</a>, <a href="/ferias/stand-global-industrie-lyon">Global Industrie</a>, <a href="/ferias/stand-pollutec-lyon">Pollutec Lyon</a>, <a href="/ferias/stand-piscine-global-lyon">Piscine Global Europe</a>, <a href="/ferias/stand-preventica-lyon">Préventica Lyon</a>, <a href="/ferias/stand-prod-pack-lyon">Prod&Pack</a> y <a href="/ferias/stand-bepositive-lyon">BEPOSITIVE</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_lyon">stands para ferias en Lyon</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sirha-lyon">SIRHA</a>, <a href="/ferias/stand-global-industrie-lyon">Global Industrie</a>, <a href="/ferias/stand-pollutec-lyon">Pollutec Lyon</a>, <a href="/ferias/stand-piscine-global-lyon">Piscine Global Europe</a>, <a href="/ferias/stand-preventica-lyon">Préventica Lyon</a>, <a href="/ferias/stand-prod-pack-lyon">Prod&Pack</a> y <a href="/ferias/stand-bepositive-lyon">BEPOSITIVE</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-lyon">stands para ferias en Lyon</a>.</p>
         ${porque('Lyon')}`
     }
   },
@@ -1171,7 +1171,7 @@ export const builderSeoData = {
         ${paso('Grenoble')}
         ${tipos('Grenoble')}
         <h2>Constructor de stands en Grenoble: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-mountain-planet-grenoble">Mountain Planet</a> y <a href="/ferias/stand-sepem-industries-sud-est-grenoble">SEPEM Industries Sud-Est</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_grenoble">stands para ferias en Grenoble</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-mountain-planet-grenoble">Mountain Planet</a> y <a href="/ferias/stand-sepem-industries-sud-est-grenoble">SEPEM Industries Sud-Est</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-grenoble">stands para ferias en Grenoble</a>.</p>
         ${porque('Grenoble')}`
     }
   },
@@ -1188,7 +1188,7 @@ export const builderSeoData = {
         ${paso('Clermont-Ferrand')}
         ${tipos('Clermont-Ferrand')}
         <h2>Constructor de stands en Clermont-Ferrand: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sommet-elevage-clermont-ferrand">Sommet de l'Élevage</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_clermont_ferrand">stands para ferias en Clermont-Ferrand</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sommet-elevage-clermont-ferrand">Sommet de l'Élevage</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-clermont-ferrand">stands para ferias en Clermont-Ferrand</a>.</p>
         ${porque('Clermont-Ferrand')}`
     }
   },
@@ -1205,7 +1205,7 @@ export const builderSeoData = {
         ${paso('Niza')}
         ${tipos('Niza')}
         <h2>Constructor de stands en Niza: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-agecotel-nice">AGECOTEL</a>, <a href="/ferias/stand-nice-boating-tomorrow">Nice Boating Tomorrow</a>, <a href="/ferias/stand-ibt-cote-azur">IBT Côte d'Azur</a>, <a href="/ferias/stand-entreprenariales-nice">Les Entreprenariales</a> y <a href="/ferias/stand-solucop-nice">SOLUCOP</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_niza">stands para ferias en Niza</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-agecotel-nice">AGECOTEL</a>, <a href="/ferias/stand-nice-boating-tomorrow">Nice Boating Tomorrow</a>, <a href="/ferias/stand-ibt-cote-azur">IBT Côte d'Azur</a>, <a href="/ferias/stand-entreprenariales-nice">Les Entreprenariales</a> y <a href="/ferias/stand-solucop-nice">SOLUCOP</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-niza">stands para ferias en Niza</a>.</p>
         ${porque('Niza')}`
     }
   },
@@ -1222,7 +1222,7 @@ export const builderSeoData = {
         ${paso('Montpellier')}
         ${tipos('Montpellier')}
         <h2>Constructor de stands en Montpellier: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sitevi-montpellier">SITEVI</a>, <a href="/ferias/stand-millesime-bio-montpellier">Millésime Bio</a>, <a href="/ferias/stand-sett-montpellier">SETT</a>, <a href="/ferias/stand-energaia-montpellier">EnerGaïa</a>, <a href="/ferias/stand-siprho-montpellier">SIPRHO</a> y <a href="/ferias/stand-ais-montpellier">Antibody Industrial Symposium</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_montpellier">stands para ferias en Montpellier</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sitevi-montpellier">SITEVI</a>, <a href="/ferias/stand-millesime-bio-montpellier">Millésime Bio</a>, <a href="/ferias/stand-sett-montpellier">SETT</a>, <a href="/ferias/stand-energaia-montpellier">EnerGaïa</a>, <a href="/ferias/stand-siprho-montpellier">SIPRHO</a> y <a href="/ferias/stand-ais-montpellier">Antibody Industrial Symposium</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-montpellier">stands para ferias en Montpellier</a>.</p>
         ${porque('Montpellier')}`
     }
   },
@@ -1239,7 +1239,7 @@ export const builderSeoData = {
         ${paso('Perpiñán')}
         ${tipos('Perpiñán')}
         <h2>Constructor de stands en Perpiñán: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-exposition-perpignan">Foire Exposition de Perpignan</a>, <a href="/ferias/stand-medfel-perpignan">MEDFEL</a>, <a href="/ferias/stand-viv-habitat-perpignan">Salon Viv'Habitat</a>, <a href="/ferias/stand-tourisme-loisirs-perpignan">Salon Tourisme & Loisirs</a>, <a href="/ferias/stand-eco-maison-perpignan">Eco-Maison</a>, <a href="/ferias/stand-retro-mecanic-perpignan">Retro Mécanic</a> y <a href="/ferias/stand-salon-mariage-perpignan">Salon du Mariage</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_perpignan">stands para ferias en Perpiñán</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-exposition-perpignan">Foire Exposition de Perpignan</a>, <a href="/ferias/stand-medfel-perpignan">MEDFEL</a>, <a href="/ferias/stand-viv-habitat-perpignan">Salon Viv'Habitat</a>, <a href="/ferias/stand-tourisme-loisirs-perpignan">Salon Tourisme & Loisirs</a>, <a href="/ferias/stand-eco-maison-perpignan">Eco-Maison</a>, <a href="/ferias/stand-retro-mecanic-perpignan">Retro Mécanic</a> y <a href="/ferias/stand-salon-mariage-perpignan">Salon du Mariage</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-perpignan">stands para ferias en Perpiñán</a>.</p>
         ${porque('Perpiñán')}`
     }
   },
@@ -1256,7 +1256,7 @@ export const builderSeoData = {
         ${paso('Batalha')}
         ${tipos('Batalha')}
         <h2>Constructor de stands en Batalha: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-moldplas-batalha">Moldplás</a>, <a href="/ferias/stand-expometal-batalha">Expometal</a>, <a href="/ferias/stand-stone-iberica-batalha">Stone Ibérica</a>, <a href="/ferias/stand-vidrotec-batalha">Vidrotec</a> y <a href="/ferias/stand-decorhotel-batalha">Decorhotel</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_batalha">stands para ferias en Batalha</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-moldplas-batalha">Moldplás</a>, <a href="/ferias/stand-expometal-batalha">Expometal</a>, <a href="/ferias/stand-stone-iberica-batalha">Stone Ibérica</a>, <a href="/ferias/stand-vidrotec-batalha">Vidrotec</a> y <a href="/ferias/stand-decorhotel-batalha">Decorhotel</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-batalha">stands para ferias en Batalha</a>.</p>
         ${porque('Batalha')}`
     }
   },
@@ -1273,7 +1273,7 @@ export const builderSeoData = {
         ${paso('Santarém')}
         ${tipos('Santarém')}
         <h2>Constructor de stands en Santarém: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feira-nacional-agricultura-santarem">Feira Nacional de Agricultura</a>, <a href="/ferias/stand-fersant-santarem">FERSANT</a>, <a href="/ferias/stand-agroglobal-santarem">Agroglobal</a> y <a href="/ferias/stand-lusoflora-santarem">Lusoflora</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_santarem">stands para ferias en Santarém</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feira-nacional-agricultura-santarem">Feira Nacional de Agricultura</a>, <a href="/ferias/stand-fersant-santarem">FERSANT</a>, <a href="/ferias/stand-agroglobal-santarem">Agroglobal</a> y <a href="/ferias/stand-lusoflora-santarem">Lusoflora</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-santarem">stands para ferias en Santarém</a>.</p>
         ${porque('Santarém')}`
     }
   },
@@ -1290,7 +1290,7 @@ export const builderSeoData = {
         ${paso('Peso da Régua')}
         ${tipos('Peso da Régua')}
         <h2>Constructor de stands en Peso da Régua: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-douro-porto-wine-festival-regua">Douro & Porto Wine Festival</a>, <a href="/ferias/stand-feira-vinhos-sabores-altos-regua">Feira dos Vinhos e Sabores dos Altos</a> y <a href="/ferias/stand-festa-saberes-sabores-douro-regua">Festa dos Saberes e Sabores do Douro</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_peso_da_regua">stands para ferias en Peso da Régua</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-douro-porto-wine-festival-regua">Douro & Porto Wine Festival</a>, <a href="/ferias/stand-feira-vinhos-sabores-altos-regua">Feira dos Vinhos e Sabores dos Altos</a> y <a href="/ferias/stand-festa-saberes-sabores-douro-regua">Festa dos Saberes e Sabores do Douro</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-peso-da-regua">stands para ferias en Peso da Régua</a>.</p>
         ${porque('Peso da Régua')}`
     }
   },
@@ -1307,7 +1307,7 @@ export const builderSeoData = {
         ${paso('el sur de Portugal')}
         ${tipos('el sur de Portugal')}
         <h2>Constructor de stands en el sur de Portugal: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-ovibeja-beja">Ovibeja</a>, <a href="/ferias/stand-fatacil-lagoa">Fatacil</a>, <a href="/ferias/stand-faceco-moncarapacho">Faceco</a>, <a href="/ferias/stand-feira-de-sao-martinho-portimao">Feira de São Martinho</a>, <a href="/ferias/stand-feira-daires-viana-do-alentejo">Feira d'Aires</a> y <a href="/ferias/stand-vinipax-beja">Vinipax Beja</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_portugal_sur">stands para ferias en el sur de Portugal</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-ovibeja-beja">Ovibeja</a>, <a href="/ferias/stand-fatacil-lagoa">Fatacil</a>, <a href="/ferias/stand-faceco-moncarapacho">Faceco</a>, <a href="/ferias/stand-feira-de-sao-martinho-portimao">Feira de São Martinho</a>, <a href="/ferias/stand-feira-daires-viana-do-alentejo">Feira d'Aires</a> y <a href="/ferias/stand-vinipax-beja">Vinipax Beja</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-portugal-sur">stands para ferias en el sur de Portugal</a>.</p>
         ${porque('el sur de Portugal')}`
     }
   },
@@ -1324,7 +1324,7 @@ export const builderSeoData = {
         ${paso('Madeira')}
         ${tipos('Madeira')}
         <h2>Constructor de stands en Madeira: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-expomadeira">Expomadeira</a>, <a href="/ferias/stand-feira-agropecuaria-madeira">Feira Agropecuária da Madeira</a>, <a href="/ferias/stand-feira-emprego-formacao-empreendedorismo-madeira">Feira do Emprego, Formação e Empreendedorismo</a>, <a href="/ferias/stand-feira-empreendedorismo-madeira">Feira do Empreendedorismo da Madeira</a>, <a href="/ferias/stand-festa-vinho-madeira">Festa do Vinho da Madeira</a> y <a href="/ferias/stand-cider-fest-madeira">Cider Fest Madeira</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno_montaje_stands_islas_madeira">stands para ferias en Madeira</a>.</p>
+        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-expomadeira">Expomadeira</a>, <a href="/ferias/stand-feira-agropecuaria-madeira">Feira Agropecuária da Madeira</a>, <a href="/ferias/stand-feira-emprego-formacao-empreendedorismo-madeira">Feira do Emprego, Formação e Empreendedorismo</a>, <a href="/ferias/stand-feira-empreendedorismo-madeira">Feira do Empreendedorismo da Madeira</a>, <a href="/ferias/stand-festa-vinho-madeira">Festa do Vinho da Madeira</a> y <a href="/ferias/stand-cider-fest-madeira">Cider Fest Madeira</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-islas-madeira">stands para ferias en Madeira</a>.</p>
         ${porque('Madeira')}`
     }
   },

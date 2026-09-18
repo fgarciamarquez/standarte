@@ -47,7 +47,7 @@ const CITIES = {
   Madrid: {
     venue: 'IFEMA Madrid', venueShort: 'IFEMA',
     name: { es: 'Madrid', en: 'Madrid', pt: 'Madrid' },
-    cityPage: { es: '/diseno_montaje_stands_madrid', en: '/en/stand_design_assembly_madrid', pt: '/pt/design_montagem_stands_madrid' },
+    cityPage: { es: '/diseno-construccion-montaje-stands-madrid', en: '/en/stand_design_assembly_madrid', pt: '/pt/design_montagem_stands_madrid' },
     builderPage: { es: '/constructor_stand_madrid', en: '/en/stand_builder_madrid', pt: null },
     rss: { q: 'IFEMA+ferias+madrid', hl: 'es', gl: 'ES', ceid: 'ES:es' },
     langs: ['es', 'en']

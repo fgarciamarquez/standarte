@@ -3,6 +3,7 @@
   // zona), reutilizable. En el blog se usa con section="madrid". Las clases de estilo son
   // globales (app.css), así que aquí solo va el markup + los datos.
   import { cityData, pathFor, portfolios, fairUrl } from '$lib/siteData.js';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { fairsData } from '$lib/fairsData.js';
 
   export let lang = 'es';
@@ -110,6 +111,7 @@
       </ul>
     </div>
 
+    {#if !HIDE_IMAGE_SECTIONS}
     <div class="spotlight-card">
       <h3>{successTitle[lang] || successTitle.es}</h3>
       <div class="sidebar-projects">
@@ -124,6 +126,7 @@
         {/each}
       </div>
     </div>
+    {/if}
 
     {#if regionFairs.length}
       <section class="city-fairs sidebar-module" aria-label={cityFairsLabel[lang] || cityFairsLabel.es}>

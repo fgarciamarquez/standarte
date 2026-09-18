@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { BRAND } from '$lib/brand.js';
   import { pathFor, languages, languageLabels, ctaBudget } from '$lib/siteData.js';
   import { pricingTiers, fmtEuro } from '$lib/pricingTiers.js';
@@ -123,7 +124,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
-      {#if !BRAND.leadGen}<a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')}>{copy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')} class="active">{t.navPrecios}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>

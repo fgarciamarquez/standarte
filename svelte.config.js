@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { HIDE_IMAGE_SECTIONS } from './src/lib/imagePolicy.js';
 
 const config = {
   preprocess: vitePreprocess(),
@@ -14,11 +15,13 @@ const config = {
     },
     prerender: {
       // StandQuote no genera artículos de blog (entries() vacío en /blog/[slug]),
-      // así que esa ruta sin páginas es esperada SOLO en esa marca; cualquier otra
-      // ruta prerenderizable no alcanzada sigue rompiendo el build, como siempre.
+      // así que esa ruta sin páginas es esperada SOLO en esa marca; y con la web sin
+      // secciones de imágenes (src/lib/imagePolicy.js) la galería /galeria/[slug] tampoco
+      // genera páginas. Cualquier otra ruta prerenderizable no alcanzada sigue rompiendo
+      // el build, como siempre.
       handleUnseenRoutes: ({ routes }) => {
         const isStandquote = process.env.PUBLIC_BRAND === 'standquote';
-        const rest = routes.filter((r) => !(isStandquote && r === '/blog/[slug]'));
+        const rest = routes.filter((r) => !(isStandquote && r === '/blog/[slug]') && !(HIDE_IMAGE_SECTIONS && r === '/galeria/[slug]'));
         if (rest.length) {
           throw new Error(`Rutas prerenderizables no alcanzadas: ${rest.join(', ')}`);
         }

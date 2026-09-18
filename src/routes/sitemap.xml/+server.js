@@ -8,6 +8,7 @@ import { projectVideos } from '$lib/server/projectVideos.js';
 import news from '$lib/newsData.json';
 import { BRAND, SITE_ORIGIN } from '$lib/brand.js';
 import { builderPages, isBuilderPage } from '$lib/builderPages.js';
+import { HIDE_IMAGE_SECTIONS, RETIRED_SECTIONS } from '$lib/imagePolicy.js';
 
 export const prerender = true;
 
@@ -52,7 +53,7 @@ export async function GET() {
   const urls = [];
 
   // 1. Secciones estáticas (home, servicios, ciudades, contacto...) por idioma
-  const staticSections = Object.keys(routes.es).filter((s) => !(BRAND.leadGen && SQ_EXCLUDED_SECTIONS.has(s)) && !isParkedBuilder(s));
+  const staticSections = Object.keys(routes.es).filter((s) => !(BRAND.leadGen && SQ_EXCLUDED_SECTIONS.has(s)) && !isParkedBuilder(s) && !(HIDE_IMAGE_SECTIONS && RETIRED_SECTIONS.has(s)));
 
   staticSections.forEach((section) => {
     const alternates = [];
@@ -159,7 +160,7 @@ export async function GET() {
   // 5. Galería (galeria/[slug]) — una sola URL por proyecto: la slug es es la canónica.
   //    Las variantes de idioma renderizan el mismo contenido en español y declaran
   //    canonical→es; listarlas duplicaría páginas y diluiría el rastreo, así que se omiten.
-  portfolios.forEach((project) => {
+  (HIDE_IMAGE_SECTIONS ? [] : portfolios).forEach((project) => {
     if (!project.slugs || !project.slugs.es) return;
     urls.push({
       loc: `${siteUrl}/galeria/${project.slugs.es}`,
