@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-aratur-zaragoza
+slug: stands-aratur-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

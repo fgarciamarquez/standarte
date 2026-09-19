@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-oleomaq-zaragoza
+slug: stands-oleomaq-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

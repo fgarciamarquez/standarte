@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-salon-vinos-aragon-zaragoza
+slug: stands-salon-vinos-aragon-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-enoforum-zaragoza
+slug: stands-enoforum-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

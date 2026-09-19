@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-expofimer-zaragoza
+slug: stands-expofimer-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

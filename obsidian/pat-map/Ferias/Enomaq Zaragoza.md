@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-enomaq-zaragoza
+slug: stands-enomaq-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

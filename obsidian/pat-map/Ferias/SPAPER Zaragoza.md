@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-spaper-zaragoza
+slug: stands-spaper-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

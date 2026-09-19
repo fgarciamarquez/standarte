@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-tecnovid-zaragoza
+slug: stands-tecnovid-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true

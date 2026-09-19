@@ -1,6 +1,6 @@
 ---
 tipo: feria
-slug: stand-smopyc-zaragoza
+slug: stands-smopyc-zaragoza
 pais: es
 ciudad: "Zaragoza"
 en_mapa: true
