@@ -603,14 +603,40 @@
   $: animatedHero = section === 'home' || (section in cityData);
   // ¿Es una página matriz de ciudad? (controla dónde va la miga de pan).
   $: isCityPage = section in cityData;
-  // Las paralelas de constructor son páginas INDEPENDIENTES (decisión del usuario,
-  // 17/09/2026): no cuelgan de su página principal en las migas ni en el BreadcrumbList,
-  // porque principal y paralela deben coexistir y competir, y porque en el plan de
-  // emergencia la principal puede pasar a redirigir (301) a la paralela: una miga hacia
-  // la principal apuntaría entonces a una URL que redirige de vuelta. Lo que las
-  // diferencia (título, H1, cuerpo y el Service de construcción en taller propio) se
-  // mantiene; la jerarquía, no.
-  $: builderParent = null;
+  // Jerarquía REAL de las paralelas de constructor (decisión del usuario, 19/09/2026):
+  // las migas y el BreadcrumbList siguen la jerarquía de la web principal —Inicio ›
+  // Ciudad › [Feria] › Paralela— para que cada paralela empuje a su página principal.
+  // (El 17/09 se habían dejado independientes; se revierte a petición del usuario.)
+  $: builderParents = (() => {
+    if (!isBuilderPage(section)) return [];
+    const cfg = builderPages[section];
+    const out = [];
+    let cityKey = cfg.city || cfg.parent || null;
+    let fair = null;
+    if (cfg.fair) { fair = fairItems.find((x) => x.slug === cfg.fair) || null; if (!cityKey && fair) cityKey = FAIR_CITY_PILLAR[fair.city] || null; }
+    if (cityKey && routes[lang]?.[cityKey] !== undefined) {
+      out.push({ name: cityData[cityKey]?.city?.[lang] || cityData[cityKey]?.city?.es || cfg.cityName, url: pathFor(lang, cityKey) });
+    }
+    if (fair) out.push({ name: fair.name, url: fairUrl(cfg.fair, lang) });
+    return out;
+  })();
+  $: builderParent = builderParents.length ? builderParents[builderParents.length - 1] : null;
+  // Enlace a la página principal con la expresión objetivo de la propia paralela
+  // («constructor de stands en X» / «… para FERIA»), justo bajo la intro del hero.
+  $: builderParentLink = (() => {
+    if (!isBuilderPage(section) || !builderParent) return null;
+    const cfg = builderPages[section];
+    if (cfg.fair) {
+      const f = cfg.fairName || builderParent.name;
+      const anchor = lang === 'en' ? `stand builder for ${f}` : lang === 'pt' ? `construtor de stands para ${f}` : `constructor de stands para ${f}`;
+      const lead = lang === 'en' ? 'Event page and full design-and-build service:' : lang === 'pt' ? 'Ficha da feira e serviço completo de design e montagem:' : 'Ficha de la feria y servicio completo de diseño y montaje:';
+      return { lead, anchor, url: builderParent.url };
+    }
+    const c = (cfg.cityNames && cfg.cityNames[lang]) || cfg.cityName;
+    const anchor = lang === 'en' ? `stand builder in ${c}` : lang === 'pt' ? `construtor de stands ${ptLocative(c)}` : `constructor de stands en ${c}`;
+    const lead = lang === 'en' ? 'Full design, build and installation service:' : lang === 'pt' ? 'Serviço completo de design, construção e montagem:' : 'Servicio completo de diseño, construcción y montaje:';
+    return { lead, anchor, url: builderParent.url };
+  })();
   // Segunda línea del H1 en las páginas de ciudad: el claim de marca ("Stand de
   // calidad + red de expansión", el valor diferencial que la competencia no puede
   // emular), con el "+" en rojo. Mismo módulo que en las fichas de feria. Sustituye
@@ -1560,8 +1586,8 @@
 
     if (section !== 'home') {
       const breadcrumbLabel = seoContent?.breadcrumb || sectionLabel(section);
-      const crumbs = [[lang === 'es' ? 'Inicio' : 'Home', `${baseUrl}/`]];
-      if (builderParent) crumbs.push([builderParent.name, `${baseUrl}${builderParent.url}`]);
+      const crumbs = [[lang === 'es' ? 'Inicio' : lang === 'pt' ? 'Início' : 'Home', `${baseUrl}/`]];
+      for (const p of builderParents) crumbs.push([p.name, `${baseUrl}${p.url}`]);
       crumbs.push([breadcrumbLabel, canonical]);
       graph.push({
         '@type': 'BreadcrumbList',
@@ -2156,11 +2182,18 @@
               <ol>
                 <li><a href={pathFor(lang, 'home')}>{lang === 'es' ? 'Inicio' : lang === 'pt' ? 'Início' : 'Home'}</a></li>
                 <li><span class="divider">/</span></li>
+                {#each builderParents as p}
+                  <li><a href={p.url}>{p.name}</a></li>
+                  <li><span class="divider">/</span></li>
+                {/each}
                 <li><span class="current" aria-current="page">{seoContent.breadcrumb}</span></li>
               </ol>
             </nav>
             <h1>{h1Text}</h1>
             <p class="hero-lead">{seoContent.introText}</p>
+            {#if builderParentLink}
+              <p class="bh-parent">{builderParentLink.lead} <a href={builderParentLink.url}>{builderParentLink.anchor}</a>.</p>
+            {/if}
             <div class="bh-actions">
               <a class="bh-cta" href="#contact" on:click={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{ctaBudget(lang).main} <span class="bh-cta-24h">{ctaBudget(lang).h24}</span></a>
             </div>
@@ -2923,6 +2956,9 @@
   .bh-crumbs a:hover { color: #1b1b1a; }
   .bh-crumbs .divider { color: #b5b7ba; }
   .bh-crumbs .current { color: #9a7a00; }
+  .bh-parent { margin: -6px 0 18px; font-size: 15px; color: #5b5d60; }
+  .bh-parent a { color: #9a7a00; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .bh-parent a:hover { color: #1b1b1a; }
   .bh-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 26px; }
   .bh-cta {
     display: inline-flex; align-items: center; gap: 6px;
