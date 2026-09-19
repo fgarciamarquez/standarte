@@ -35,6 +35,17 @@ export const seoFreshness = {
   // 2026-09-11: todas incorporan el buscador de ferias bajo la ficha de datos.
   constructor_stand_zaragoza: '2026-09-11',
   constructor_stand_figan: '2026-09-16',   // URL propia /constructor_stand_figan (antes bajo /ferias/)
+  constructor_stand_smopyc: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_smagua: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_aratur: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_expofimer: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_spaper: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_fima: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_enomaq: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_oleomaq: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_tecnovid: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_salon_vinos_aragon: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
+  constructor_stand_enoforum: '2026-09-19',   // alta de la paralela de feria (19/09/2026)
   constructor_stand_agroexpo: '2026-09-11',
   constructor_stand_biemh: '2026-09-11',
   constructor_stand_madrid: '2026-09-11',
@@ -195,6 +206,9 @@ export function freshnessFor(section) {
 export const activityFreshness = '2026-08-28';
 
 export const fairFreshness = {
+  'stands-fima-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
+  'stands-salon-vinos-aragon-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
+  'stands-enoforum-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   'stands-anecorm-valencia': '2026-09-02',
   'stands-agroexpo': '2026-09-06',
   'stands-talent-land-malaga': '2026-08-31',
@@ -303,16 +317,16 @@ export const fairFreshness = {
   'stand-mountain-planet-grenoble': '2026-08-27',
   'stand-sepem-industries-sud-est-grenoble': '2026-08-27',
   'stand-sommet-elevage-clermont-ferrand': '2026-08-27',
-  'stand-smopyc-zaragoza': '2026-08-27',
-  'stand-tecnovid-zaragoza': '2026-08-27',
+  'stands-smopyc-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
+  'stands-tecnovid-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
 
   // Madrid: alta de FIAA (bus y autocar, IFEMA) en el hub.
 
   'stand-fiaa-madrid': '2026-08-27',
   'stand-hygienalia-madrid': '2026-08-27',
   'stand-cascais-international-health-forum': '2026-08-27',
-  'stand-expofimer-zaragoza': '2026-08-27',
-  'stand-spaper-zaragoza': '2026-08-27',
+  'stands-expofimer-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
+  'stands-spaper-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   'stand-ferroforma-bilbao': '2026-08-27',
   'stand-sinaval-bilbao': '2026-08-27',
   'stand-eurofishing-bilbao': '2026-08-27',
@@ -334,13 +348,13 @@ export const fairFreshness = {
   'stand-f4f-expo-foodtech-bilbao': '2026-08-27',
   'stand-gustoko-bilbao': '2026-08-27',
   'stand-interior-exterior-design-meetings-cannes': '2026-08-27',
-  'stand-aratur-zaragoza': '2026-08-27',
+  'stands-aratur-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   'stand-femoga-sarinena': '2026-08-27',
   'stand-ferma-barbastro': '2026-08-27',
   'stand-fine-valladolid': '2026-08-27',
   'stand-technology-show-valladolid': '2026-08-27',
   'stand-sbc-summit-lisboa': '2026-08-27',
-  'stand-smagua-zaragoza': '2026-08-27',
+  'stands-smagua-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
   'stand-medfel-perpignan': '2026-08-27',
   'stand-viv-habitat-perpignan': '2026-08-27',
@@ -367,10 +381,10 @@ export const fairFreshness = {
   'stand-expooptica-madrid': '2026-08-27',
   // Ferias que estrenan ficha propia (antes no tenían cuerpo único, y por eso tampoco
   // aparecían con resumen en el calendario sectorial de otras ferias).
-  'stands-figan-zaragoza': '2026-09-06',
+  'stands-figan-feria-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   'stands-biemh-bilbao-bec': '2026-09-18',   // URL nueva (18/09/2026)
   'stand-concreta-oporto': '2026-08-27',
-  'stand-enomaq-zaragoza': '2026-08-27',
+  'stands-enomaq-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   // Estrenan fecha verificada de su próxima edición.
   'stand-feria-internacional-ganadera-zafra': '2026-08-27',
   'stand-termatalia-ourense': '2026-08-27',
@@ -394,7 +408,7 @@ export const fairFreshness = {
   'stand-palma-international-boat-show': '2026-08-27',
   'stand-palma-superyacht-village': '2026-08-27',
   'stand-baleart-mallorca': '2026-08-27',
-  'stand-oleomaq-zaragoza': '2026-08-27',
+  'stands-oleomaq-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   // Granada: tres ferias nuevas de Fermasa (Armilla) incorporadas al catálogo.
   'stand-belmoda-granada': '2026-08-27',
   'stand-sabores-nuestra-tierra-granada': '2026-08-27',

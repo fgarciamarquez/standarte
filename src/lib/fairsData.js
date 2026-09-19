@@ -1157,42 +1157,42 @@ export const fairsData = [
   {
     "name": "Smopyc Zaragoza",
     "country": "es",
-    "slug": "stand-smopyc-zaragoza",
+    "slug": "stands-smopyc-zaragoza",
     "city": "Zaragoza",
     "sector": "Industria y Logística"
   },
   {
     "name": "Smagua Zaragoza",
     "country": "es",
-    "slug": "stand-smagua-zaragoza",
+    "slug": "stands-smagua-zaragoza",
     "city": "Zaragoza",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Aratur",
     "country": "es",
-    "slug": "stand-aratur-zaragoza",
+    "slug": "stands-aratur-zaragoza",
     "city": "Zaragoza",
     "sector": "Turismo y Hostelería"
   },
   {
     "name": "EXPOFIMER Zaragoza",
     "country": "es",
-    "slug": "stand-expofimer-zaragoza",
+    "slug": "stands-expofimer-zaragoza",
     "city": "Zaragoza",
     "sector": "Industria y Logística"
   },
   {
     "name": "SPAPER Zaragoza",
     "country": "es",
-    "slug": "stand-spaper-zaragoza",
+    "slug": "stands-spaper-zaragoza",
     "city": "Zaragoza",
     "sector": "Industria y Logística"
   },
   {
     "name": "Fima Zaragoza",
     "country": "es",
-    "slug": "stand-fima-zaragoza",
+    "slug": "stands-fima-zaragoza",
     "city": "Zaragoza",
     "sector": "Agroalimentario y Naturaleza"
   },
@@ -1584,28 +1584,28 @@ export const fairsData = [
   {
     "name": "Figan",
     "country": "es",
-    "slug": "stands-figan-zaragoza",
+    "slug": "stands-figan-feria-zaragoza",
     "city": "Zaragoza",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Enomaq Zaragoza",
     "country": "es",
-    "slug": "stand-enomaq-zaragoza",
+    "slug": "stands-enomaq-zaragoza",
     "city": "Zaragoza",
     "sector": "Enología y Vinos"
   },
   {
     "name": "Oleomaq Zaragoza",
     "country": "es",
-    "slug": "stand-oleomaq-zaragoza",
+    "slug": "stands-oleomaq-zaragoza",
     "city": "Zaragoza",
     "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Tecnovid Zaragoza",
     "country": "es",
-    "slug": "stand-tecnovid-zaragoza",
+    "slug": "stands-tecnovid-zaragoza",
     "city": "Zaragoza",
     "sector": "Enología y Vinos"
   },
@@ -2347,7 +2347,7 @@ export const fairsData = [
   {
     "name": "Salón de los Vinos de Aragón",
     "country": "es",
-    "slug": "stand-salon-vinos-aragon-zaragoza",
+    "slug": "stands-salon-vinos-aragon-zaragoza",
     "city": "Zaragoza",
     "sector": "Enología y Vinos"
   },
@@ -2676,7 +2676,7 @@ export const fairsData = [
   {
     "name": "Enoforum",
     "country": "es",
-    "slug": "stand-enoforum-zaragoza",
+    "slug": "stands-enoforum-zaragoza",
     "city": "Zaragoza",
     "sector": "Enología y Vinos"
   },

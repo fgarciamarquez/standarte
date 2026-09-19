@@ -107,11 +107,23 @@ export const builderPages = {
   constructor_stand_portugal_sur: { city: "portugal_sur", cityName: "Portugal Sur", cityNames: {"en": "Southern Portugal", "pt": "Sul de Portugal"}, venue: "Parque de Exposições de Beja y recintos del Algarve", workshop: {"es": "Taller propio de Standarte", "en": "Standarte’s own workshop", "pt": "Oficina própria da Standarte"}, indexable: false },
   constructor_stand_islas_de_madeira: { city: "islas_de_madeira", cityName: "Islas de Madeira", cityNames: {"en": "Madeira Islands", "pt": "Ilhas da Madeira"}, venue: "Madeira Tecnopolo (Funchal)", workshop: {"es": "Taller propio de Standarte", "en": "Standarte’s own workshop", "pt": "Oficina própria da Standarte"}, indexable: false },
   // Defensa de una FICHA DE FERIA, no de una ciudad: FIGAN sufrió una denuncia y, tras
-  // el cambio de URL a plural (stands-figan-zaragoza), la ficha no ha recuperado su
+  // el cambio de URL a plural (stands-figan-feria-zaragoza), la ficha no ha recuperado su
   // posición. Esta página vive bajo /ferias/ y ataca la intención "constructor de
   // stands para FIGAN" con contenido propio de construcción; `fair` es la ficha que
   // defiende (enlace cruzado y 301 de emergencia preparada en static/.htaccess).
-  constructor_stand_figan: { fair: 'stands-figan-zaragoza', fairName: 'FIGAN', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_figan: { fair: 'stands-figan-feria-zaragoza', fairName: 'FIGAN', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  // 19/09/2026: una paralela por cada feria de Zaragoza (texto propio por feria, indexables).
+  constructor_stand_smopyc: { fair: 'stands-smopyc-zaragoza', fairName: 'SMOPYC', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_smagua: { fair: 'stands-smagua-zaragoza', fairName: 'SMAGUA', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_aratur: { fair: 'stands-aratur-zaragoza', fairName: 'Aratur', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_expofimer: { fair: 'stands-expofimer-zaragoza', fairName: 'EXPOFIMER', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_spaper: { fair: 'stands-spaper-zaragoza', fairName: 'SPAPER', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_fima: { fair: 'stands-fima-zaragoza', fairName: 'FIMA', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_enomaq: { fair: 'stands-enomaq-zaragoza', fairName: 'Enomaq', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_oleomaq: { fair: 'stands-oleomaq-zaragoza', fairName: 'Oleomaq', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_tecnovid: { fair: 'stands-tecnovid-zaragoza', fairName: 'Tecnovid', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_salon_vinos_aragon: { fair: 'stands-salon-vinos-aragon-zaragoza', fairName: 'Salón de los Vinos de Aragón', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_enoforum: { fair: 'stands-enoforum-zaragoza', fairName: 'Enoforum', cityName: 'Zaragoza', venue: 'Feria de Zaragoza', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
   // Agroexpo: la otra ficha denunciada (pasó a stands-agroexpo por el mismo motivo).
   constructor_stand_agroexpo: { fair: 'stands-agroexpo', fairName: 'Agroexpo', cityName: 'Don Benito', venue: 'FEVAL (Don Benito)', workshop: { es: 'Cáceres, a menos de 1 h del recinto', en: 'Cáceres, under 1 h from the venue' }, indexable: true },
   // BIEMH: la mayor feria industrial del norte y la ficha más disputada de Bilbao.

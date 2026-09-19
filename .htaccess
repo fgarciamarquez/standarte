@@ -271,7 +271,7 @@ DirectorySlash Off
   # RewriteRule ^diseno-construccion-montaje-stands-islas-madeira/?$ https://standarte.es/constructor_stand_islas_de_madeira [R=301,L]
   # Igual, pero defendiendo una FICHA DE FERIA: FIGAN ya fue denunciada y, tras pasar
   # a plural, no ha recuperado posición; su paralela vive bajo /ferias/.
-  # RewriteRule ^ferias/stands-figan-zaragoza/?$ https://standarte.es/constructor_stand_figan [R=301,L]
+  # RewriteRule ^ferias/stands-figan-feria-zaragoza/?$ https://standarte.es/constructor_stand_figan [R=301,L]
   # RewriteRule ^ferias/stands-agroexpo/?$ https://standarte.es/ferias/constructor-stand-agroexpo [R=301,L]
   # BIEMH: la paralela existe como reserva; aún no ha habido denuncia sobre su ficha.
   # RewriteRule ^ferias/stands-biemh-bilbao-bec/?$ https://standarte.es/ferias/constructor-stand-biemh [R=301,L]
@@ -344,7 +344,7 @@ DirectorySlash Off
   # RewriteRule ^en/stand_design_assembly_peso_da_regua/?$ https://standarte.es/en/stand_builder_peso_da_regua [R=301,L]
   # RewriteRule ^en/stand_design_assembly_southern_portugal/?$ https://standarte.es/en/stand_builder_southern_portugal [R=301,L]
   # RewriteRule ^en/stand_design_assembly_madeira_islands/?$ https://standarte.es/en/stand_builder_madeira_islands [R=301,L]
-  # RewriteRule ^en/ferias/stands-figan-zaragoza/?$ https://standarte.es/en/stand_builder_figan [R=301,L]
+  # RewriteRule ^en/ferias/stands-figan-feria-zaragoza/?$ https://standarte.es/en/stand_builder_figan [R=301,L]
   # RewriteRule ^en/ferias/stands-agroexpo/?$ https://standarte.es/en/ferias/stand-builder-agroexpo [R=301,L]
   # RewriteRule ^en/ferias/stands-biemh-bilbao-bec/?$ https://standarte.es/en/ferias/stand-builder-biemh [R=301,L]
   #
@@ -591,6 +591,33 @@ DirectorySlash Off
   # 2026-09-18: BIEMH cambia de URL de nuevo (defensa ante denuncias): stands-biemh-bilbao -> stands-biemh-bilbao-bec
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stands-biemh-bilbao/?$ https://standarte.es/$1ferias/stands-biemh-bilbao-bec [R=301,L]
   RewriteRule ^ja/展示会情報/stands-biemh-bilbao/?$ https://standarte.es/ja/展示会情報/stands-biemh-bilbao-bec [R=301,L]
+
+  # 2026-09-19: las 12 ferias de Zaragoza cambian de URL (defensa ante denuncias). 301 directa
+  # desde la anterior en es y en los idiomas con prefijo; la variante ja con slug, por si acaso.
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-smopyc-zaragoza/?$ https://standarte.es/$1ferias/stands-smopyc-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-smopyc-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-smopyc-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-smagua-zaragoza/?$ https://standarte.es/$1ferias/stands-smagua-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-smagua-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-smagua-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-aratur-zaragoza/?$ https://standarte.es/$1ferias/stands-aratur-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-aratur-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-aratur-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-expofimer-zaragoza/?$ https://standarte.es/$1ferias/stands-expofimer-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-expofimer-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-expofimer-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-spaper-zaragoza/?$ https://standarte.es/$1ferias/stands-spaper-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-spaper-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-spaper-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-fima-zaragoza/?$ https://standarte.es/$1ferias/stands-fima-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-fima-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-fima-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stands-figan-zaragoza/?$ https://standarte.es/$1ferias/stands-figan-feria-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stands-figan-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-figan-feria-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-enomaq-zaragoza/?$ https://standarte.es/$1ferias/stands-enomaq-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-enomaq-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-enomaq-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-oleomaq-zaragoza/?$ https://standarte.es/$1ferias/stands-oleomaq-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-oleomaq-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-oleomaq-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-tecnovid-zaragoza/?$ https://standarte.es/$1ferias/stands-tecnovid-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-tecnovid-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-tecnovid-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-salon-vinos-aragon-zaragoza/?$ https://standarte.es/$1ferias/stands-salon-vinos-aragon-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-salon-vinos-aragon-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-salon-vinos-aragon-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-enoforum-zaragoza/?$ https://standarte.es/$1ferias/stands-enoforum-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-enoforum-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-enoforum-zaragoza [R=301,L]
   # Agroexpo pasa a plural (mismo criterio anti-denuncia que las cuatro del BEC)
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-agroexpo-don-benito/?$ https://standarte.es/$1ferias/stands-agroexpo [R=301,L]
   RewriteRule ^ja/展示会情報/stand-agroexpo-don-benito/?$ https://standarte.es/ja/展示会情報/stands-agroexpo [R=301,L]
@@ -599,8 +626,8 @@ DirectorySlash Off
   RewriteRule ^ja/展示会情報/stands-agroexpo-don-benito/?$ https://standarte.es/ja/展示会情報/stands-agroexpo [R=301,L]
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-agroexpo-feval-don-benito/?$ https://standarte.es/$1ferias/stands-agroexpo-feval-don-benito [R=301,L]
   # FIGAN pasa a plural (mismo criterio anti-denuncia)
-  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-figan-zaragoza/?$ https://standarte.es/$1ferias/stands-figan-zaragoza [R=301,L]
-  RewriteRule ^ja/展示会情報/stand-figan-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-figan-zaragoza [R=301,L]
+  RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-figan-zaragoza/?$ https://standarte.es/$1ferias/stands-figan-feria-zaragoza [R=301,L]
+  RewriteRule ^ja/展示会情報/stand-figan-zaragoza/?$ https://standarte.es/ja/展示会情報/stands-figan-feria-zaragoza [R=301,L]
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-pumps-valves-bilbao/?$ https://standarte.es/$1ferias/stands-pumps-valves-bilbao [R=301,L]
   RewriteRule ^ja/展示会情報/stand-pumps-valves-bilbao/?$ https://standarte.es/ja/展示会情報/stands-pumps-valves-bilbao [R=301,L]
   RewriteRule ^((?:en|de|pt|fr|it|nl|zh|hi|ko)/)?ferias/stand-subcontratacion-bilbao/?$ https://standarte.es/$1ferias/stands-subcontratacion-bilbao [R=301,L]
