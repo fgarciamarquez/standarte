@@ -97,13 +97,16 @@ export const builderSeoData = {
       introText: 'Construimos stands a medida para IFEMA desde nuestro taller de San Fernando de Henares, a quince minutos del recinto: carpintería, estructura, mobiliario y gráfica fabricados por nuestro equipo, con capacidad de resolver cualquier ajuste el mismo día del montaje.',
       body: `
         <h2>Constructor de stands en Madrid: taller propio a quince minutos de IFEMA</h2>
-        <p>Nuestro taller está en San Fernando de Henares, en el corredor del Henares, a unos diez kilómetros de la Feria de Madrid. En una plaza como IFEMA esa distancia no es un dato de folleto: es la diferencia entre resolver un imprevisto de montaje en una hora o esperar a un transporte desde otra provincia. Fabricamos aquí y montamos allí, con el mismo equipo.</p>
-        <p>IFEMA es además el recinto más denso de España en calendario: sus doce pabellones encadenan certámenes casi sin respiro, y eso comprime las ventanas de montaje y desmontaje. Por eso construimos con premontaje en taller —el stand se arma entero antes de salir— y llegamos al pabellón a ensamblar, no a improvisar.</p>
-        ${paso('Madrid')}
-        ${tipos('Madrid')}
+        <p>Nuestro taller está en San Fernando de Henares, a unos diez kilómetros de la Feria de Madrid. En una plaza como IFEMA esa distancia es la diferencia entre resolver un imprevisto de montaje en una hora o esperar a un transporte desde otra provincia. IFEMA es además el recinto más denso de España en calendario, con doce pabellones que encadenan certámenes casi sin respiro y comprimen las ventanas de montaje: por eso el stand se arma entero en taller antes de salir y llegamos al pabellón a ensamblar, no a improvisar.</p>
+        <h2>Constructor de stands en Madrid: cómo trabajamos la plaza</h2>
+        <ol>
+          <li><strong>Proyecto y prototipo 3D</strong> con las medidas del espacio en IFEMA y la normativa del pabellón: alturas, suspensiones, acometidas y certificados.</li>
+          <li><strong>Fabricación y premontaje en San Fernando de Henares</strong>, a quince minutos del recinto.</li>
+          <li><strong>Montaje con equipo propio</strong> dentro de la ventana asignada, ajustes el mismo día y desmontaje al cierre.</li>
+        </ol>
         <h2>Constructor de stands en Madrid: ferias del recinto</h2>
-        <p>Construimos para todo el calendario de IFEMA: <a href="/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/ferias/stand-sicur-madrid">SICUR</a>, <a href="/ferias/stand-salon-look-madrid">Salón Look</a>, <a href="/ferias/stand-veteco-madrid">Veteco</a>, <a href="/ferias/stand-madrid-tech-show">Madrid Tech Show</a>, <a href="/ferias/stand-hip-madrid">HIP</a>, <a href="/ferias/stand-meat-attraction-madrid">Meat Attraction</a> y <a href="/ferias/stand-advanced-manufacturing-madrid">Advanced Manufacturing</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-madrid">stands para ferias en Madrid</a>.</p>
-        ${porque('Madrid')}`
+        <p>Construimos para todo el calendario de IFEMA: <a href="/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/ferias/stand-sicur-madrid">SICUR</a>, <a href="/ferias/stand-veteco-madrid">Veteco</a>, <a href="/ferias/stand-hip-madrid">HIP</a> y <a href="/ferias/stand-meat-attraction-madrid">Meat Attraction</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-madrid">stands para ferias en Madrid</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Madrid</a></p>`
     }
   },  constructor_stand_barcelona: {
     es: {
@@ -130,13 +133,16 @@ export const builderSeoData = {
       introText: 'Construimos stands a medida para Exponor (Feira Internacional do Porto) con fabricación en taller propio y transporte desde España: carpintería, estructura y mobiliario producidos por nuestro equipo, con la logística transfronteriza resuelta y el montaje terminado antes de la apertura.',
       body: `
         <h2>Constructor de stands en Oporto: taller propio y logística resuelta hasta Exponor</h2>
-        <p>Construir en Oporto añade una variable que no tiene una feria nacional: el transporte. Fabricamos el stand completo en nuestro taller, lo premontamos para detectar cualquier ajuste antes de que salga, y organizamos el transporte a Exponor (Leça da Palmeira, Matosinhos) con margen suficiente para que la descarga y el montaje no dependan de un imprevisto en carretera.</p>
-        <p>El norte de Portugal reúne además sectores muy distintos entre sí —textil y confección, construcción y decoración, alimentación y cosmética—, y cada uno pide una construcción diferente: paneles de muestrario con luz fiel para el textil, estanterías iluminadas para el producto pequeño, o suelos técnicos y acometidas para maquinaria y obradores.</p>
-        ${paso('Oporto')}
-        ${tipos('Oporto')}
+        <p>Construir en Oporto añade una variable que no tiene una feria nacional: el transporte. Fabricamos el stand completo en nuestro taller, lo premontamos para detectar cualquier ajuste antes de que salga y organizamos el viaje a Exponor (Leça da Palmeira, Matosinhos) con margen para que descarga y montaje no dependan de un imprevisto en carretera. El norte de Portugal reúne además sectores muy distintos —textil, construcción, alimentación, cosmética— y cada uno pide una construcción diferente: paneles de muestrario con luz fiel, estanterías iluminadas para el producto pequeño o suelos técnicos para maquinaria.</p>
+        <h2>Constructor de stands en Oporto: cómo trabajamos la plaza</h2>
+        <ol>
+          <li><strong>Proyecto y prototipo 3D</strong> con las medidas del espacio en Exponor y sus normas de altura, suspensión y acometidas.</li>
+          <li><strong>Fabricación y premontaje en nuestro taller</strong>, con el transporte transfronterizo organizado por nosotros.</li>
+          <li><strong>Montaje con equipo propio</strong>, terminado 24&nbsp;h antes de la apertura, y desmontaje al cierre.</li>
+        </ol>
         <h2>Constructor de stands en Oporto: ferias del recinto</h2>
-        <p>Construimos para las citas de Exponor y del área de Oporto: <a href="/ferias/stand-concreta-oporto">Concreta</a>, <a href="/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/ferias/stand-expocosmetica-oporto">Expocosmética</a>, <a href="/ferias/stands-qualifica-oporto">Qualifica</a>, <a href="/ferias/stand-emaf-oporto">Emaf</a>, <a href="/ferias/stands-tecnipao-oporto">Tecnipão</a> y <a href="/ferias/stands-gift-paper-oporto">Gift Paper</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-oporto">stands para ferias en Oporto</a>.</p>
-        ${porque('Oporto')}`
+        <p>Construimos para las citas de Exponor: <a href="/ferias/stand-concreta-oporto">Concreta</a>, <a href="/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/ferias/stand-expocosmetica-oporto">Expocosmética</a> y <a href="/ferias/stand-emaf-oporto">Emaf</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-oporto">stands para ferias en Oporto</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Oporto</a></p>`
     }
   },
 
@@ -148,13 +154,16 @@ export const builderSeoData = {
       introText: 'Construimos stands a medida para la FIL (Feira Internacional de Lisboa) y los grandes congresos de la capital portuguesa: fabricación en taller propio, premontaje antes de salir y montaje ajustado a las ventanas cortas que imponen los congresos.',
       body: `
         <h2>Constructor de stands en Lisboa: construir para la FIL y para congresos</h2>
-        <p>Lisboa combina dos escenarios que exigen construcciones distintas. En la FIL, en el Parque das Nações, hay pabellón y altura para un stand de diseño libre con doble altura y almacén. En los grandes congresos —tecnológicos, médicos o del sector del juego, muchos repartidos entre la FIL y el MEO Arena— las ventanas de montaje son mucho más cortas y el stand tiene que estar pensado para levantarse rápido sin renunciar al acabado.</p>
-        <p>Resolvemos esa diferencia en el taller: cuando el calendario aprieta, fabricamos por módulos premontados que en pabellón solo hay que ensamblar y conectar, con la gráfica ya colocada y la instalación eléctrica probada antes de cargar el camión.</p>
-        ${paso('Lisboa')}
-        ${tipos('Lisboa')}
+        <p>Lisboa combina dos escenarios que exigen construcciones distintas. En la FIL, en el Parque das Nações, hay pabellón y altura para un stand de diseño libre con doble altura y almacén. En los grandes congresos —tecnológicos, médicos o del sector del juego, repartidos entre la FIL y el MEO Arena— las ventanas de montaje se miden en horas, así que fabricamos por módulos premontados que en pabellón solo hay que ensamblar y conectar, con la gráfica colocada y la instalación eléctrica probada antes de cargar el camión.</p>
+        <h2>Constructor de stands en Lisboa: cómo trabajamos la plaza</h2>
+        <ol>
+          <li><strong>Proyecto y prototipo 3D</strong> con las medidas del espacio contratado y las normas de la FIL o del recinto del congreso: alturas, suspensiones y acometidas.</li>
+          <li><strong>Fabricación y premontaje en nuestro taller</strong>, con transporte a Lisboa organizado con margen para que la descarga no dependa de la carretera.</li>
+          <li><strong>Montaje con equipo propio</strong> dentro de la ventana asignada y desmontaje al cierre, guardando lo reutilizable para la siguiente cita.</li>
+        </ol>
         <h2>Constructor de stands en Lisboa: ferias y congresos del recinto</h2>
-        <p>Construimos para las grandes citas de la capital: <a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/ferias/stand-sbc-summit-lisboa">SBC Summit</a>, <a href="/ferias/stand-lisboa-games-week">Lisboa Games Week</a> y <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-lisboa">stands para ferias en Lisboa</a>.</p>
-        ${porque('Lisboa')}`
+        <p>Construimos para las grandes citas de la capital: <a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/ferias/stand-web-summit-lisboa">Web Summit</a> y <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-lisboa">stands para ferias en Lisboa</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Lisboa</a></p>`
     }
   },
 
@@ -1490,12 +1499,16 @@ const EN = {
     introText: 'We build custom stands for IFEMA from our workshop in San Fernando de Henares, fifteen minutes from the venue: joinery, structure, furniture and graphics made by our team, with the ability to solve any adjustment on installation day.',
     body: `
         <h2>Stand builder in Madrid: our own workshop fifteen minutes from IFEMA</h2>
-        <p>Our workshop is in San Fernando de Henares, about ten kilometres from Feria de Madrid. On a site like IFEMA that distance is not a brochure line: it is the difference between solving an installation problem in an hour or waiting for a lorry from another province. IFEMA is also Spain's densest calendar — twelve halls, one show after another — which compresses build-up windows. That is why we pre-assemble in the workshop and arrive at the hall to assemble, not to improvise.</p>
-        ${pasoEn('Madrid')}
-        ${tiposEn('Madrid')}
+        <p>Our workshop is in San Fernando de Henares, about ten kilometres from Feria de Madrid. On a site like IFEMA that distance is the difference between solving an installation problem in an hour or waiting for a lorry from another province. IFEMA is also Spain's densest calendar — twelve halls, one show after another — which compresses build-up windows, so we pre-assemble in the workshop and arrive at the hall to assemble, not to improvise.</p>
+        <h2>Stand builder in Madrid: how we work the city</h2>
+        <ol>
+          <li><strong>Project and 3D prototype</strong> to the space at IFEMA and the hall's rules: heights, rigging, services and certificates.</li>
+          <li><strong>Manufacturing and pre-assembly in San Fernando de Henares</strong>, fifteen minutes from the venue.</li>
+          <li><strong>Installation by our own team</strong> within the assigned window, same-day adjustments and dismantling at close.</li>
+        </ol>
         <h2>Stand builder in Madrid: shows at the venue</h2>
-        <p>We build across IFEMA's calendar: <a href="/en/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/en/ferias/stand-sicur-madrid">SICUR</a>, <a href="/en/ferias/stand-veteco-madrid">Veteco</a>, <a href="/en/ferias/stand-madrid-tech-show">Madrid Tech Show</a> and <a href="/en/ferias/stand-meat-attraction-madrid">Meat Attraction</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_madrid">trade fair stands in Madrid</a> page.</p>
-        ${porqueEn('Madrid')}`
+        <p>We build across IFEMA's calendar: <a href="/en/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/en/ferias/stand-sicur-madrid">SICUR</a>, <a href="/en/ferias/stand-veteco-madrid">Veteco</a> and <a href="/en/ferias/stand-meat-attraction-madrid">Meat Attraction</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_madrid">trade fair stands in Madrid</a> page.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Madrid</a></p>`
   },
   constructor_stand_barcelona: {
     breadcrumb: 'Stand builder in Barcelona',
@@ -1518,12 +1531,16 @@ const EN = {
     introText: 'We build custom stands for Exponor (Feira Internacional do Porto) from our own workshop: joinery, structure, furniture and graphics made by our team, transported and installed by us, with a single point of contact throughout.',
     body: `
         <h2>Stand builder in Porto: building for Exponor</h2>
-        <p>Exponor concentrates the industrial and export-driven north of Portugal: machinery, textiles, food and technical shows where the visitor is a professional buyer who inspects the product up close. That sets the build standard — solid finishes at hand height, faithful lighting and room to negotiate.</p>
-        ${pasoEn('Porto')}
-        ${tiposEn('Porto')}
+        <p>Exponor concentrates the industrial and export-driven north of Portugal: machinery, textiles, food and technical shows where the visitor is a professional buyer who inspects the product up close. That sets the build standard — solid finishes at hand height, faithful lighting and room to negotiate — and adds one variable a domestic show does not have: cross-border transport, which we plan with margin from our workshop.</p>
+        <h2>Stand builder in Porto: how we work the city</h2>
+        <ol>
+          <li><strong>Project and 3D prototype</strong> to the space at Exponor and its rules on height, rigging and services.</li>
+          <li><strong>Manufacturing and pre-assembly in our workshop</strong>, transport to Porto handled by us.</li>
+          <li><strong>Installation by our own team</strong>, finished 24&nbsp;h before opening, and dismantling at close.</li>
+        </ol>
         <h2>Stand builder in Porto: shows at the venue</h2>
-        <p>We build across the Exponor calendar: <a href="/en/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/en/ferias/stands-qualifica-oporto">Qualifica</a>, <a href="/en/ferias/stand-emaf-oporto">EMAF</a> and <a href="/en/ferias/stand-itf-intertex-oporto">ITF Intertex</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_porto">trade fair stands in Porto</a> page.</p>
-        ${porqueEn('Porto')}`
+        <p>We build across the Exponor calendar: <a href="/en/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/en/ferias/stands-qualifica-oporto">Qualifica</a> and <a href="/en/ferias/stand-emaf-oporto">EMAF</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_porto">trade fair stands in Porto</a> page.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Porto</a></p>`
   },
   constructor_stand_lisboa: {
     breadcrumb: 'Stand builder in Lisbon',
@@ -1531,13 +1548,17 @@ const EN = {
     h1: 'Stand builder in Lisbon',
     introText: 'We build custom stands for FIL (Feira Internacional de Lisboa) and the city’s congress venues from our own workshop: bespoke joinery, structure, furniture and graphics, installed by our own team.',
     body: `
-        <h2>Stand builder in Lisbon: building for FIL and the Parque das Nações venues</h2>
-        <p>Lisbon combines large trade shows at FIL with international congresses, and the two demand different things from a stand: exhibition floor space on one side, meeting and demonstration areas on the other. We build both with the same workshop and the same team.</p>
-        ${pasoEn('Lisbon')}
-        ${tiposEn('Lisbon')}
+        <h2>Stand builder in Lisbon: building for FIL and for congresses</h2>
+        <p>Lisbon combines large trade shows at FIL, in Parque das Nações, with international congresses whose build-up windows are measured in hours. For the first we build free-design stands with height and storage; for the second, pre-assembled modules that only need joining and connecting in the hall, graphics already applied and wiring tested before the lorry is loaded.</p>
+        <h2>Stand builder in Lisbon: how we work the city</h2>
+        <ol>
+          <li><strong>Project and 3D prototype</strong> to the contracted space and the rules of FIL or the congress venue: heights, rigging and services.</li>
+          <li><strong>Manufacturing and pre-assembly in our workshop</strong>, with transport to Lisbon planned with margin.</li>
+          <li><strong>Installation by our own team</strong> within the assigned window, and dismantling at close.</li>
+        </ol>
         <h2>Stand builder in Lisbon: shows at the venue</h2>
         <p>We build across the Lisbon calendar: <a href="/en/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/en/ferias/stand-tektonica-lisboa">Tektónica</a> and <a href="/en/ferias/stand-nauticampo-lisboa">Nauticampo</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_lisbon">trade fair stands in Lisbon</a> page.</p>
-        ${porqueEn('Lisbon')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Lisbon</a></p>`
   },
   constructor_stand_bilbao: {
     breadcrumb: 'Stand builder in Bilbao',
@@ -2672,13 +2693,16 @@ const PT = {
     introText: 'Construímos stands à medida para a Exponor (Feira Internacional do Porto) com fabrico em oficina própria: carpintaria, estrutura, mobiliário e grafismo produzidos pela nossa equipa, transporte tratado por nós e montagem terminada antes da abertura.',
     body: `
         <h2>Construtor de stands no Porto: fabrico próprio para a Exponor</h2>
-        <p>A Exponor, em Leça da Palmeira, concentra o norte industrial e exportador de Portugal: têxtil e confeção, construção e decoração, alimentação, cosmética e metalomecânica. É um visitante profissional, que se aproxima do produto e o inspeciona de perto — e isso define o padrão de construção: acabamentos sólidos à altura da mão, iluminação fiel à cor real e espaço para negociar sentado.</p>
-        <p>Cada setor pede uma construção diferente: painéis de mostruário para o têxtil, prateleiras iluminadas para o produto pequeno, pavimentos técnicos e ramais previstos para maquinaria a funcionar. Fabricamos tudo na nossa oficina, pré-montamos o stand antes de o carregar e chegamos ao pavilhão para montar, não para improvisar.</p>
-        ${pasoPt('no Porto')}
-        ${tiposPt('no Porto')}
+        <p>A Exponor, em Leça da Palmeira, concentra o norte industrial e exportador de Portugal: têxtil, construção, alimentação, cosmética e metalomecânica. É um visitante profissional que inspeciona o produto de perto, e isso define o padrão de construção: acabamentos sólidos à altura da mão, iluminação fiel à cor real e espaço para negociar sentado. Fabricamos tudo na nossa oficina, pré-montamos o stand antes de o carregar e chegamos ao pavilhão para montar, não para improvisar.</p>
+        <h2>Construtor de stands no Porto: como trabalhamos a cidade</h2>
+        <ol>
+          <li><strong>Projeto e protótipo 3D</strong> com as medidas do espaço na Exponor e as suas normas de altura, suspensão e ramais.</li>
+          <li><strong>Fabrico e pré-montagem na nossa oficina</strong>, com o transporte até ao Porto tratado por nós.</li>
+          <li><strong>Montagem com equipa própria</strong>, terminada 24&nbsp;h antes da abertura, e desmontagem no fecho.</li>
+        </ol>
         <h2>Construtor de stands no Porto: feiras do recinto</h2>
-        <p>Construímos para o calendário da Exponor e da área do Porto: <a href="/pt/ferias/stand-concreta-oporto">Concreta</a>, <a href="/pt/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/pt/ferias/stand-expocosmetica-oporto">Expocosmética</a>, <a href="/pt/ferias/stands-qualifica-oporto">Qualifica</a>, <a href="/pt/ferias/stand-emaf-oporto">Emaf</a>, <a href="/pt/ferias/stand-itf-intertex-oporto">ITF Intertex</a> e <a href="/pt/ferias/stands-tecnipao-oporto">Tecnipão</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_porto">stands para feiras no Porto</a>.</p>
-        ${porquePt('no Porto')}`
+        <p>Construímos para o calendário da Exponor: <a href="/pt/ferias/stand-concreta-oporto">Concreta</a>, <a href="/pt/ferias/stands-modtissimo-oporto">Modtissimo</a>, <a href="/pt/ferias/stand-expocosmetica-oporto">Expocosmética</a> e <a href="/pt/ferias/stand-emaf-oporto">Emaf</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_porto">stands para feiras no Porto</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand no Porto</a></p>`
   },
   /* Lisboa (2026-09-10): FIL y el calendario de congresos de la ciudad. Texto propio
    * de CONSTRUCCIÓN —transporte desde España, premontaje, ventanas cortas de montaje
@@ -2690,13 +2714,16 @@ const PT = {
     introText: 'Construímos stands à medida para a FIL (Feira Internacional de Lisboa) e para os congressos da cidade, com fabrico em oficina própria: estrutura, carpintaria, mobiliário e grafismo produzidos pela nossa equipa, transporte tratado por nós e montagem terminada antes da abertura.',
     body: `
         <h2>Construtor de stands em Lisboa: fabrico próprio para a FIL e para os congressos</h2>
-        <p>Lisboa tem dois calendários que exigem construções distintas. Na FIL, no Parque das Nações, as feiras profissionais —construção, turismo, náutica, alimentação— pedem stands de dois a quatro dias com produto exposto e espaço para negociar. Nos congressos internacionais que a cidade acolhe —tecnologia, saúde, aviação— a janela de montagem é de horas, não de dias: o stand tem de chegar pré-montado, com o grafismo aplicado e as instalações testadas, e levantar-se sem improvisar.</p>
-        <p>Por isso fabricamos tudo na nossa oficina, montamos o stand inteiro antes de o carregar e organizamos o transporte até Lisboa com margem para que a descarga não dependa de um imprevisto na estrada. Tratamos também o que o recinto exige: ramais de eletricidade e água, certificados de reação ao fogo das madeiras e têxteis, e os limites de altura e de suspensão de cada pavilhão.</p>
-        ${pasoPt('em Lisboa')}
-        ${tiposPt('em Lisboa')}
+        <p>Lisboa tem dois calendários que exigem construções distintas. Na FIL, no Parque das Nações, as feiras profissionais pedem stands de dois a quatro dias com produto exposto e espaço para negociar. Nos congressos internacionais a janela de montagem é de horas, não de dias: o stand chega pré-montado, com o grafismo aplicado e as instalações testadas, e levanta-se sem improvisar. Tratamos também do que o recinto exige: ramais, certificados de reação ao fogo e limites de altura de cada pavilhão.</p>
+        <h2>Construtor de stands em Lisboa: como trabalhamos a cidade</h2>
+        <ol>
+          <li><strong>Projeto e protótipo 3D</strong> com as medidas do espaço contratado e as normas da FIL ou do recinto do congresso.</li>
+          <li><strong>Fabrico e pré-montagem na nossa oficina</strong>, com transporte até Lisboa organizado com margem.</li>
+          <li><strong>Montagem com equipa própria</strong> dentro da janela atribuída e desmontagem no fecho.</li>
+        </ol>
         <h2>Construtor de stands em Lisboa: feiras e congressos da cidade</h2>
-        <p>Construímos para o calendário da FIL e dos grandes congressos: <a href="/pt/ferias/stand-btl-lisboa">BTL</a>, <a href="/pt/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/pt/ferias/stand-sil-lisboa">SIL</a>, <a href="/pt/ferias/stand-nauticampo-lisboa">Nauticampo</a>, <a href="/pt/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/pt/ferias/stand-world-aviation-festival-lisboa">World Aviation Festival</a> e <a href="/pt/ferias/stand-esicm-lives-lisboa">ESICM LIVES</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_lisboa">stands para feiras em Lisboa</a>.</p>
-        ${porquePt('em Lisboa')}`
+        <p>Construímos para o calendário da FIL e dos grandes congressos: <a href="/pt/ferias/stand-btl-lisboa">BTL</a>, <a href="/pt/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/pt/ferias/stand-sil-lisboa">SIL</a>, <a href="/pt/ferias/stand-nauticampo-lisboa">Nauticampo</a> e <a href="/pt/ferias/stand-web-summit-lisboa">Web Summit</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_lisboa">stands para feiras em Lisboa</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand em Lisboa</a></p>`
   },
   constructor_stand_batalha: {
     breadcrumb: 'Construtor de stands na Batalha',
