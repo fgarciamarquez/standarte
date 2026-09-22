@@ -5,6 +5,12 @@
 // Google lee como contenido correctamente jerarquizado; referencia observada
 // en competidores que lo aplican de forma sistemática).
 //   Ciudad → "Stands para ferias en {ciudad}: ferias y sectores"
+// 22/09/2026: en las páginas de ciudad el patrón se REPARTE entre tres expresiones para
+// que la página posicione también las búsquedas cortas «diseño de stands en X» y
+// «montaje de stands en X» (antes no aparecían literalmente ni una vez):
+//   diseño  → apartados de proceso y tipos ("Diseño de stands en {ciudad}: …")
+//   montaje → documentación técnica, plazos, logística y fechas ("Montaje de stands en {ciudad}: …")
+//   común   → el resto ("Stands para ferias en {ciudad}: …")
 //   Feria  → "Stands para {feria}: servicios para expositores"
 // La expresión es neutra de marca: sirve igual en Standarte y StandQuote.
 
@@ -28,6 +34,105 @@ const CITY_PREFIX = {
   hi: (c) => `${c} में मेला स्टैंड`,
   ko: (c) => `${c} 박람회 부스`,
   ja: (c) => `${c}の展示会ブース`
+};
+
+// Familia DISEÑO (22/09/2026).
+const DESIGN_PREFIX = {
+  es: (c) => `Diseño de stands en ${c}`,
+  en: (c) => `Stand design in ${c}`,
+  de: (c) => `Messestand-Design in ${c}`,
+  pt: (c) => `Design de stands ${ptLocative(c)}`,
+  fr: (c) => `Conception de stands à ${c}`,
+  it: (c) => `Progettazione di stand a ${c}`,
+  nl: (c) => `Standontwerp in ${c}`,
+  zh: (c) => `${c}展台设计`,
+  hi: (c) => `${c} में स्टैंड डिज़ाइन`,
+  ko: (c) => `${c} 부스 디자인`,
+  ja: (c) => `${c}のブースデザイン`
+};
+
+// Familia MONTAJE (22/09/2026). En alemán la búsqueda es «Messebau».
+const ASSEMBLY_PREFIX = {
+  es: (c) => `Montaje de stands en ${c}`,
+  en: (c) => `Stand installation in ${c}`,
+  de: (c) => `Messebau in ${c}`,
+  pt: (c) => `Montagem de stands ${ptLocative(c)}`,
+  fr: (c) => `Montage de stands à ${c}`,
+  it: (c) => `Allestimento stand a ${c}`,
+  nl: (c) => `Standbouw in ${c}`,
+  zh: (c) => `${c}展台搭建`,
+  hi: (c) => `${c} में स्टैंड असेंबली`,
+  ko: (c) => `${c} 부스 설치`,
+  ja: (c) => `${c}のブース設営`
+};
+
+// Qué familia lleva cada arquetipo de apartado; lo que no está aquí va con la común.
+const KEY_FAMILY = { como: 'design', tipos: 'design', doc: 'assembly', cuandoFeria: 'assembly', upcoming: 'assembly' };
+
+// Apartados sin arquetipo (cityH2Custom): se asignan por su propio texto.
+const ASSEMBLY_HINT = /(montaj|log[ií]stic|documentaci|transport|plazo|assembl|install|montag|messebau|aufbau|allestim|montaggio|opbouw|standbouw|搭建|物流|설치|물류|設営|ロジスティクス|असेंबली|लॉजिस्टिक)/i;
+const DESIGN_HINT = /(diseñ|prototip|conce[pç]|projet|progett|ontwerp|entwurf|设计|디자인|デザイン|設計|डिज़ाइन)/i;
+
+const familyPrefix = (fam) => (fam === 'design' ? DESIGN_PREFIX : fam === 'assembly' ? ASSEMBLY_PREFIX : CITY_PREFIX);
+const prefixFor = (lang, city, fam) => { const P = familyPrefix(fam); return (P[lang] || P.es)(city); };
+
+// Prefijos sin ciudad, para el guardián de H2 (scripts/check_h2_pattern.mjs): cada forma
+// que puede abrir un H2 de ciudad. En portugués se generan los cuatro locativos.
+export function cityH2PrefixForms() {
+  const out = new Set();
+  for (const P of [CITY_PREFIX, DESIGN_PREFIX, ASSEMBLY_PREFIX]) {
+    for (const [lang, fn] of Object.entries(P)) {
+      const bare = fn('\u0000').replace('\u0000', '').trim();
+      if (lang === 'pt') { for (const a of ['em', 'no', 'na', 'nas']) out.add(bare.replace(/\bem$/, a)); }
+      else out.add(bare);
+    }
+  }
+  return [...out].filter(Boolean);
+}
+
+// H1 de la página de ciudad (22/09/2026): las dos búsquedas cortas, literales.
+export const CITY_H1 = {
+  es: (c) => `Diseño y montaje de stands en ${c}`,
+  en: (c) => `Exhibition stand design and installation in ${c}`,
+  de: (c) => `Messestand-Design und Messebau in ${c}`,
+  pt: (c) => `Design e montagem de stands ${ptLocative(c)}`,
+  fr: (c) => `Conception et montage de stands à ${c}`,
+  it: (c) => `Progettazione e allestimento di stand a ${c}`,
+  nl: (c) => `Standontwerp en standbouw in ${c}`,
+  zh: (c) => `${c}展台设计与搭建`,
+  hi: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`,
+  ko: (c) => `${c} 부스 디자인 및 설치`,
+  ja: (c) => `${c}のブースデザイン・設営`
+};
+
+// Primer H2 del cuerpo (sustituye al antiguo «Diseño, construcción y montaje…»).
+export const CITY_MAIN_H2 = {
+  es: (c) => `Diseño de stands en ${c}: del prototipo 3D al montaje, con un solo proveedor`,
+  en: (c) => `Stand design in ${c}: from 3D prototype to installation, one supplier`,
+  de: (c) => `Messestand-Design in ${c}: vom 3D-Prototyp bis zum Messebau, aus einer Hand`,
+  pt: (c) => `Design de stands ${ptLocative(c)}: do protótipo 3D à montagem, com um único fornecedor`,
+  fr: (c) => `Conception de stands à ${c} : du prototype 3D au montage, un seul prestataire`,
+  it: (c) => `Progettazione di stand a ${c}: dal prototipo 3D all'allestimento, un unico fornitore`,
+  nl: (c) => `Standontwerp in ${c}: van 3D-prototype tot standbouw, één leverancier`,
+  zh: (c) => `${c}展台设计：从3D原型到搭建，一站式供应`,
+  hi: (c) => `${c} में स्टैंड डिज़ाइन: 3D प्रोटोटाइप से असेंबली तक, एक ही प्रदाता`,
+  ko: (c) => `${c} 부스 디자인: 3D 프로토타입부터 설치까지, 단일 공급자`,
+  ja: (c) => `${c}のブースデザイン：3Dプロトタイプから設営まで、一社完結`
+};
+
+// Frase de apertura del cuerpo con las dos expresiones literales (tras el primer párrafo).
+export const CITY_KW_LEAD = {
+  es: (c) => `Nos ocupamos del <strong>diseño de stands en ${c}</strong> —prototipo 3D en 3 días— y del <strong>montaje de stands en ${c}</strong> con montadores propios, del primer boceto al desmontaje.`,
+  en: (c) => `We handle <strong>stand design in ${c}</strong> — a 3D prototype in 3 days — and <strong>stand installation in ${c}</strong> with our own crew, from the first sketch to dismantling.`,
+  de: (c) => `Wir übernehmen das <strong>Messestand-Design in ${c}</strong> – 3D-Prototyp in 3 Tagen – und den <strong>Messebau in ${c}</strong> mit eigenen Monteuren, vom ersten Entwurf bis zum Abbau.`,
+  pt: (c) => `Tratamos do <strong>design de stands ${ptLocative(c)}</strong> — protótipo 3D em 3 dias — e da <strong>montagem de stands ${ptLocative(c)}</strong> com montadores próprios, do primeiro esboço à desmontagem.`,
+  fr: (c) => `Nous assurons la <strong>conception de stands à ${c}</strong> — prototype 3D en 3 jours — et le <strong>montage de stands à ${c}</strong> avec nos propres monteurs, du premier croquis au démontage.`,
+  it: (c) => `Ci occupiamo della <strong>progettazione di stand a ${c}</strong> — prototipo 3D in 3 giorni — e dell'<strong>allestimento stand a ${c}</strong> con montatori propri, dal primo schizzo allo smontaggio.`,
+  nl: (c) => `Wij verzorgen het <strong>standontwerp in ${c}</strong> — 3D-prototype in 3 dagen — en de <strong>standbouw in ${c}</strong> met eigen monteurs, van de eerste schets tot de demontage.`,
+  zh: (c) => `我们负责<strong>${c}展台设计</strong>（3天交付3D原型），并由自有团队完成<strong>${c}展台搭建</strong>，从第一张草图到拆卸全程负责。`,
+  hi: (c) => `हम <strong>${c} में स्टैंड डिज़ाइन</strong> — 3 दिनों में 3D प्रोटोटाइप — और अपनी टीम के साथ <strong>${c} में स्टैंड असेंबली</strong> संभालते हैं, पहले स्केच से डिसमेंटलिंग तक।`,
+  ko: (c) => `<strong>${c} 부스 디자인</strong>(3일 만에 3D 프로토타입)부터 자체 설치팀의 <strong>${c} 부스 설치</strong>까지, 첫 스케치에서 철거까지 책임집니다.`,
+  ja: (c) => `<strong>${c}のブースデザイン</strong>（3日で3Dプロトタイプ）から自社スタッフによる<strong>${c}のブース設営</strong>まで、最初のスケッチから撤去まで手がけます。`
 };
 
 // Prefijo común de las páginas de FERIA, por idioma.
@@ -204,7 +309,7 @@ const label = (key, lang) => {
 
 // H2 de apartado en una página de CIUDAD: "Stands para ferias en Málaga: ferias y sectores".
 export function cityH2(lang, cityName, key) {
-  const p = (CITY_PREFIX[lang] || CITY_PREFIX.es)(cityName);
+  const p = prefixFor(lang, cityName, KEY_FAMILY[key]);
   return `${p}${sep(lang)}${label(key, lang)}`;
 }
 
@@ -213,13 +318,15 @@ export function cityH2(lang, cityName, key) {
 // esfuerzo), los dos puntos internos convertidos en raya y la inicial en minúscula
 // donde la lengua lo pide (el alemán conserva sus mayúsculas; siglas y cifras, también).
 export function cityH2Custom(lang, cityName, particular) {
-  const p = (CITY_PREFIX[lang] || CITY_PREFIX.es)(cityName);
   let rest = String(particular || '').trim();
+  const fam = ASSEMBLY_HINT.test(rest) ? 'assembly' : (DESIGN_HINT.test(rest) ? 'design' : null);
+  const p = prefixFor(lang, cityName, fam);
   if (cityName) {
     rest = rest.split(cityName).join(' ')
       .replace(/\s{2,}/g, ' ')
       .replace(/\s+(en|em|in|a|ad|à|auf|op|bei|zu|de|da|do|dos|das|del|na|no|per|pour|voor|für)\s*([,:;—–-]|$)/gi, '$2')
       .replace(/\s+([,:;)])/g, '$1')
+      .replace(/([:;])\s*,\s*/g, '$1 ')   // «Península: Zaragoza, España» sin la ciudad → sin coma colgando
       .replace(/^\s*[,:;—–-]\s*/, '')
       .replace(/[\s,:;—–-]+$/, '')
       .trim();

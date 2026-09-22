@@ -7,7 +7,7 @@
   import { languages, languageLabels, pathFor, routes, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER, NO_GALLERY_SECTIONS } from '$lib/siteData.js';
   import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
-  import { cityH2, cityH2Custom, ptLocative } from '$lib/h2Seo.js';
+  import { cityH2, cityH2Custom, ptLocative, CITY_H1, CITY_MAIN_H2, CITY_KW_LEAD } from '$lib/h2Seo.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
@@ -589,7 +589,7 @@
   }
   $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq, cityDisplayName, section) : seoContent.body) : '';
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
-  $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : rewriteTitulo(seoContent.h1, lang)) : seoContent.h1) : '';
+  $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : (seoKwCity(section) && cityDisplayName ? (CITY_H1[lang] || CITY_H1.es)(cityDisplayName) : rewriteTitulo(seoContent.h1, lang))) : seoContent.h1) : '';
   // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
   // los OTROS idiomas, enlazando a la versión de la página en ese idioma. Son enlaces
   // internos rastreables (prerenderizados) que refuerzan los hreflang con autoridad
@@ -857,22 +857,37 @@
   // "Diseño y construcción de stands en {c}[: …]" → "Diseño, construcción y montaje de
   // stands en {c}." Cada idioma captura la ciudad e ignora la coletilla tras ":".
   const tituloPrincipal = {
-    es: { from: /^Diseño y construcción de stands en (.+?)\s*(?::.*)?$/, to: (c) => `Diseño, construcción y montaje de stands para ferias en ${c}.` },
-    en: { from: /^(?:(?:Exhibition|Trade show) )?[Ss]tand [Dd]esign and (?:[Cc]onstruction|[Bb]uild|[Aa]ssembly) in (.+?)\s*(?::.*)?$/, to: (c) => `Exhibition stand design and build for trade fairs in ${c}.` },
-    de: { from: /^(?:Messestand-? ?Design und (?:-?Bau|-?Montage|Konstruktion)|Design und (?:Bau|Montage) von Messeständen|Standentwurf und -bau|Standdesign und (?:Standbau|-bau)|Messestandbau und -design) (?:in|auf|bei) (.+?)\s*(?::.*)?$/, to: (c) => `Design, Bau und Montage von Messeständen in ${c}.` },
-    pt: { from: /^(?:Design|Conceção) e (?:construção|montagem) de stands (?:em|no|na|nas) (.+?)\s*(?::.*)?$/, to: (c) => `Design, construção e montagem de stands para feiras ${ptLocative(c)}.` },
-    fr: { from: /^Conception et (?:construction|montage) de stands (?:à|en|aux|dans) (.+?)\s*(?::.*)?$/, to: (c) => `Conception, construction et montage de stands pour salons à ${c}.` },
-    it: { from: /^Progettazione e (?:costruzione|allestimento|montaggio)(?: di)? stand(?: fieristici)? (?:a|ad|in|alle) (.+?)\s*(?::.*)?$/, to: (c) => `Progettazione, costruzione e allestimento di stand fieristici a ${c}.` },
-    nl: { from: /^(?:Ontwerp en (?:bouw|montage|opbouw) van (?:beursstands|stands)|Standontwerp en (?:-bouw|montage)) (?:in|op) (.+?)\s*(?::.*)?$/, to: (c) => `Ontwerp, bouw en montage van beursstands in ${c}.` },
-    zh: { from: /^(.+?)展[台位]设计与搭建(?:：.*)?$/, to: (c) => `${c}展会展台设计、搭建与安装。` },
-    hi: { from: /^(.+?) में स्टैंड (?:का )?डिज़ाइन और निर्माण(?::.*)?$/, to: (c) => `${c} में मेला स्टैंड का डिज़ाइन, निर्माण और असेंबली।` },
-    ko: { from: /^(.+?)(?:의 부스| 스탠드| 전시 부스| 부스) 디자인 및 시공(?::.*)?$/, to: (c) => `${c}의 박람회 부스 디자인, 제작 및 설치.` },
-    ja: { from: /^(.+?)(?:の|での)(?:展示会|展示)?ブース(?:の)?設計・施工(?:：.*)?$/, to: (c) => `${c}の展示会ブース設計・施工・設営。` }
+    es: { from: /^Diseño y construcción de stands en (.+?)\s*(?::.*)?$/, to: (c) => CITY_MAIN_H2.es(c) },
+    en: { from: /^(?:(?:Exhibition|Trade show) )?[Ss]tand [Dd]esign and (?:[Cc]onstruction|[Bb]uild|[Aa]ssembly) in (.+?)\s*(?::.*)?$/, to: (c) => CITY_MAIN_H2.en(c) },
+    de: { from: /^(?:Messestand-? ?Design und (?:-?Bau|-?Montage|Konstruktion)|Design und (?:Bau|Montage) von Messeständen|Standentwurf und -bau|Standdesign und (?:Standbau|-bau)|Messestandbau und -design) (?:in|auf|bei) (.+?)\s*(?::.*)?$/, to: (c) => CITY_MAIN_H2.de(c) },
+    pt: { from: /^(?:Design|Conceção) e (?:construção|montagem) de stands (?:em|no|na|nas) (.+?)\s*(?::.*)?$/, to: (c) => CITY_MAIN_H2.pt(c) },
+    fr: { from: /^Conception et (?:construction|montage) de stands (?:à|en|aux|dans) (.+?)\s*(?::.*)?$/, to: (c) => CITY_MAIN_H2.fr(c) },
+    it: { from: /^Progettazione e (?:costruzione|allestimento|montaggio)(?: di)? stand(?: fieristici)? (?:a|ad|in|alle) (.+?)\s*(?::.*)?$/, to: (c) => CITY_MAIN_H2.it(c) },
+    nl: { from: /^(?:Ontwerp en (?:bouw|montage|opbouw) van (?:beursstands|stands)|Standontwerp en (?:-bouw|montage)) (?:in|op) (.+?)\s*(?::.*)?$/, to: (c) => CITY_MAIN_H2.nl(c) },
+    zh: { from: /^(.+?)展[台位]设计与搭建(?:：.*)?$/, to: (c) => CITY_MAIN_H2.zh(c) },
+    hi: { from: /^(.+?) में (?:प्रदर्शनी )?स्टैंड (?:का )?डिज़ाइन और निर्माण(?::.*)?$/, to: (c) => CITY_MAIN_H2.hi(c) },
+    ko: { from: /^(.+?)(?:의 부스| 스탠드| 전시 부스| 부스) 디자인 및 시공(?::.*)?$/, to: (c) => CITY_MAIN_H2.ko(c) },
+    ja: { from: /^(.+?)(?:の|での)(?:展示会|展示)?ブース(?:の)?設計・施工(?:：.*)?$/, to: (c) => CITY_MAIN_H2.ja(c) }
   };
+  // H1 de la página de ciudad (22/09/2026): «Diseño y montaje de stands en X», las dos
+  // búsquedas cortas literales. Reconoce la ciudad con el «from» de tituloPrincipal.
   function rewriteTitulo(text, lang) {
     const map = tituloPrincipal[lang] || tituloPrincipal.es;
     const m = text ? text.match(map.from) : null;
-    return m ? map.to(m[1]) : text;
+    return m ? (CITY_H1[lang] || CITY_H1.es)(m[1]) : text;
+  }
+  // Páginas de ciudad que llevan H1, título y primer H2 compuestos con las expresiones
+  // «diseño de stands» / «montaje de stands» (22/09/2026). Se excluye montaje_badajoz: es
+  // una landing propia de IFEBA y repetiría el título de la principal de Badajoz.
+  function seoKwCity(key) { return !BRAND.leadGen && (key in cityData) && key !== 'montaje_badajoz'; }
+  // <title> de la página de ciudad con la misma expresión y el recinto entre paréntesis
+  // (tomado del título original de richSeoData).
+  function cityPageTitle(sc, lang, sec, cityName) {
+    if (!sc || !seoKwCity(sec) || !cityName) return sc?.title;
+    const v = (sc.title || '').match(/[（(]([^()（）]+)[)）]/);
+    const head = (CITY_H1[lang] || CITY_H1.es)(cityName);
+    const venue = v ? ((lang === 'zh' || lang === 'ja') ? `（${v[1]}）` : ` (${v[1]})`) : '';
+    return `${head}${venue} | ${BRAND.name}`;
   }
   // StandQuote: el hero de las páginas de ciudad se enfoca al oficio de constructor
   // ("Constructores de stands para ferias en {c}") en lugar del titular de servicio
@@ -913,16 +928,23 @@
   }
   function transformOroBody(html, lang, bodyCase, cityName, sectionKey) {
     if (!html || !html.includes('<h2>')) return html;
-    // Reescribir el título del primer apartado (h2) igual que el h1.
+    // Primer apartado (h2): en las páginas de ciudad con expresión propia (seoKwCity) se
+    // compone SIEMPRE con CITY_MAIN_H2 y el nombre de la ciudad del catálogo, aunque el
+    // H2 de richSeoData tenga una redacción que el patrón no reconoce (22/09/2026).
     const tmap = tituloPrincipal[lang] || tituloPrincipal.es;
+    const forceMain = !!cityName && seoKwCity(sectionKey);
     html = html.replace(/<h2>([\s\S]*?)<\/h2>/, (full, h) => {
+      if (forceMain) return `<h2>${(CITY_MAIN_H2[lang] || CITY_MAIN_H2.es)(cityName)}</h2>`;
       const m = h.match(tmap.from);
       return m ? `<h2>${tmap.to(m[1])}</h2>` : full;
     });
     // Inyectar el CTA amarillo justo tras el primer párrafo del cuerpo.
     const cta = `<a class="oro-cta-espacio" href="#contact">${ctaEspacio[lang] || ctaEspacio.es}</a>`;
+    // Frase de apertura con «diseño de stands en X» y «montaje de stands en X» literales
+    // (22/09/2026), justo tras el primer párrafo y antes del CTA.
+    const kwLead = cityName && !BRAND.leadGen ? `<p class="oro-kw-lead">${(CITY_KW_LEAD[lang] || CITY_KW_LEAD.es)(cityName)}</p>` : '';
     const pEnd = html.indexOf('</p>');
-    html = pEnd >= 0 ? html.slice(0, pEnd + 4) + cta + html.slice(pEnd + 4) : html;
+    html = pEnd >= 0 ? html.slice(0, pEnd + 4) + kwLead + cta + html.slice(pEnd + 4) : html;
     const parts = html.split(/(?=<h2>)/);
     let prefix = '';
     let sections = parts;
@@ -938,7 +960,7 @@
     // El primer H2 solo se respeta si ES la expresión principal (tituloPrincipal la
     // reescribió); en cuerpos no estándar (p. ej. arranque por el recinto) también
     // se compone, para que ningún H2 quede fuera del patrón.
-    const MAIN_OK = { es: 'Diseño, construcción y montaje', en: 'Exhibition stand design and build', de: 'Design, Bau und Montage', pt: 'Design, construção e montagem', fr: 'Conception, construction et montage', it: 'Progettazione, costruzione', nl: 'Ontwerp, bouw en montage', zh: '设计、搭建与安装', hi: 'डिज़ाइन, निर्माण और असेंबली', ko: '디자인, 제작 및 설치', ja: '設計・施工・設営' };
+    const MAIN_OK = { es: 'Diseño de stands en', en: 'Stand design in', de: 'Messestand-Design in', pt: 'Design de stands', fr: 'Conception de stands à', it: 'Progettazione di stand a', nl: 'Standontwerp in', zh: '展台设计', hi: 'में स्टैंड डिज़ाइन', ko: '부스 디자인', ja: 'のブースデザイン' };
     const firstIsMain = (s) => (heading2Parts(s).heading || '').includes(MAIN_OK[lang] || MAIN_OK.es);
     if (n < 5) return cityName ? prefix + sections.map((s, i) => (i === 0 && firstIsMain(s) ? s : genericTail(s))).join('') : html;
     let iComo = -1, iTipos = -1, iFerias = -1, iPat = -1, iPorQue = -1;
@@ -1235,7 +1257,7 @@
   ];
   let sqTab = 'stand';
 
-  $: title = seoContent?.title || (section in cityData
+  $: title = ((section in cityData) && seoContent && !BRAND.leadGen ? cityPageTitle(seoContent, lang, section, cityDisplayName) : seoContent?.title) || (section in cityData
     ? `${cityTitle(section)} | ${BRAND.name}`
     : section === 'home'
       ? (BRAND.leadGen ? `StandQuote | ${sqClaim(lang)}` : copy.seoTitle)

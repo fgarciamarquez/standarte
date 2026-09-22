@@ -65,6 +65,13 @@ El método de **una URL por feria** (`/ferias/stand-<feria>-<ciudad>`) es el que
 - Páginas retiradas mientras esté activo (`RETIRED_SECTIONS`): «Proyectos a medida» (`custom`) y «Equipo» (`team`) en 11 idiomas y las 39 de `/galeria/<slug>`; no se generan, salen del sitemap y redirigen 301 a la portada de su idioma (`static/.htaccess`). `img/seo` ya no se genera (quitado de los hooks predev/prebuild).
 - Todas las páginas de ciudad (68) llevan ya la URL ES hifenada `diseno-construccion-montaje-stands-<ciudad>` (`montaje-stands-<ciudad>` las de montaje) con 301 desde la antigua; frescura 2026-09-18 en todas.
 
+## Expresiones de las páginas principales de ciudad (22/09/2026)
+
+- Motivo: las principales no posicionaban «diseño de stands en X» ni «montaje de stands en X» (no aparecían literalmente), mientras la provisional sí posicionaba «constructor de stands en X».
+- H1 y <title> de las 67 principales (todas salvo `montaje_badajoz`, landing de IFEBA): «Diseño y montaje de stands en X» (y equivalente por idioma: `CITY_H1` en `h2Seo.js`), compuestos con el nombre de la ciudad de `cityData`; el recinto entre paréntesis sale del título de `richSeoData`. Primer H2: `CITY_MAIN_H2` («Diseño de stands en X: del prototipo 3D al montaje…»). Frase de apertura tras el primer párrafo con las dos expresiones literales (`CITY_KW_LEAD`).
+- Patrón de H2 en tres familias (`h2Seo.js`): diseño (`como`, `tipos` y apartados con «diseño/prototipo»), montaje (`doc`, `cuandoFeria`, `upcoming` y apartados con «logística/montaje/documentación/plazos»; en alemán «Messebau») y común «Stands para ferias en X» para el resto. El guardián `check_h2_pattern` lee los prefijos de `cityH2PrefixForms()`.
+- Las provisionales enlazan a su principal con «diseño y montaje de stands en X» en el cuerpo (y con su propia expresión en el hero).
+
 ## Páginas principales y paralelas de constructor (estado a 17/09/2026)
 
 - **Paralelas** (`src/lib/builderPages.js`, `constructor_stand_*`): solo 13 siguen indexadas (las anteriores al 15/09). Las 58 del lote del 15/09 y Mérida/Almendralejo están **aparcadas** (`indexable: false` → `noindex, follow`, fuera del sitemap) porque al día siguiente de publicarlas las principales de varias plazas perdieron posición. Reactivar de una en una y con texto propio, nunca por lotes. El guardián `check_noindex` solo tolera noindex en paralelas y comprueba que no figuren en el sitemap.

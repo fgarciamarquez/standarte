@@ -5,24 +5,20 @@
 // "Garantía 100 %…" y "Logística óptima…" en las maquetaciones no estándar),
 // el build FALLA y lo lista: este tipo de regresión no debe repetirse.
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const dist = path.join(root, 'dist');
 
 // Prefijos compuestos por idioma (deben ir en sintonía con h2Seo.js).
-const PREFIXES = [
-  'Stands para ferias en', 'Trade fair stands in', 'Messestände in', 'Stands para feiras em', 'Stands para feiras no', 'Stands para feiras na', 'Stands para feiras nas',
-  'Stands pour salons à', 'Stand fieristici a', 'Beursstands in', '展会展台', 'में मेला स्टैंड',
-  '박람회 부스', 'の展示会ブース'
-];
+// Prefijos compuestos por idioma: se leen de h2Seo.js (tres familias desde el 22/09/2026:
+// «Stands para ferias en», «Diseño de stands en», «Montaje de stands en» y equivalentes).
+const { cityH2PrefixForms } = await import(pathToFileURL(path.join(root, 'src/lib/h2Seo.js')).href);
+const PREFIXES = cityH2PrefixForms();
 // Formas del título principal (tituloPrincipal en Site.svelte).
-const MAIN = [
-  'Diseño, construcción y montaje', 'Exhibition stand design and build', 'Design, Bau und Montage',
-  'Design, construção e montagem', 'Conception, construction et montage', 'Progettazione, costruzione',
-  'Ontwerp, bouw en montage', '设计、搭建与安装', 'डिज़ाइन, निर्माण और असेंबली', '디자인, 제작 및 설치', '設計・施工・設営'
-];
+// El primer H2 (CITY_MAIN_H2) ya abre con el prefijo de diseño: basta con PREFIXES.
+const MAIN = [];
 
 function* htmlFiles(dir) {
   for (const name of readdirSync(dir)) {
