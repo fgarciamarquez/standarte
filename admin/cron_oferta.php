@@ -80,9 +80,9 @@ foreach ($rows as $p) {
 	if ($sent) {
 		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($p['id']), array('offer_notice_sent_at' => date('c')));
 		$sentCount++;
-		echo $ref . ": aviso enviado a $to\n";
+		echo $ref . ": aviso enviado a " . implode(", ", $to) . "\n";
 	} else {
-		echo $ref . ": ERROR al enviar a $to\n";
+		echo $ref . ": ERROR al enviar a " . implode(", ", $to) . "\n";
 	}
 }
 echo "hecho: $sentCount aviso(s)\n";
