@@ -386,11 +386,11 @@ if (!function_exists('cpx_key')) {
 			$eurEn = '€' . number_format($amount, ($amount == round($amount) ? 0 : 2), '.', ',');
 
 			$es[] = "La oferta de su proyecto <strong>" . $h($titleEs) . "</strong> (" . $h($ref) . ") "
-				. "es válida <strong>hasta el " . $fEs($offerDeadline) . "</strong>. " . $h($labelEs) . ": <strong>" . $eurEs . "</strong>" . $pctEs . ". "
-				. "Si aprueba el proyecto antes de esa fecha, se descuenta entera; después se reduce 1.000 € por cada semana transcurrida.";
+				. "es válida <strong>hasta el " . $fEs($offerDeadline) . ", incluido</strong> (hasta las 24:00, hora de Madrid). " . $h($labelEs) . ": <strong>" . $eurEs . "</strong>" . $pctEs . ". "
+				. "Si aprueba el proyecto antes de esa hora, se descuenta entera; después se reduce 1.000 € por cada semana transcurrida.";
 			$en[] = "The offer on your project <strong>" . $h($titleEn) . "</strong> (" . $h($ref) . ") "
-				. "is valid <strong>until " . $fEn($offerDeadline) . "</strong>. " . $h($labelEn) . ": <strong>" . $eurEn . "</strong>" . $pctEn . ". "
-				. "If you approve the project before that date it is deducted in full; afterwards it shrinks by €1,000 for each elapsed week.";
+				. "is valid <strong>until " . $fEn($offerDeadline) . " inclusive</strong> (until midnight, Madrid time). " . $h($labelEn) . ": <strong>" . $eurEn . "</strong>" . $pctEn . ". "
+				. "If you approve the project before then it is deducted in full; afterwards it shrinks by €1,000 for each elapsed week.";
 		}
 
 		if ($validUntil) {
@@ -398,9 +398,9 @@ if (!function_exists('cpx_key')) {
 			 * esta frase no repite el título: sería redundante en un texto que se quiere corto. */
 			$suj  = $offerDeadline ? 'La propuesta' : 'La propuesta de su proyecto <strong>' . $h($titleEs) . '</strong> (' . $h($ref) . ')';
 			$sujE = $offerDeadline ? 'The proposal' : 'The proposal for your project <strong>' . $h($titleEn) . '</strong> (' . $h($ref) . ')';
-			$es[] = $suj . " es válida <strong>hasta el " . $fEs($validUntil) . "</strong>. "
+			$es[] = $suj . " es válida <strong>hasta el " . $fEs($validUntil) . ", incluido</strong> (hasta las 24:00, hora de Madrid). "
 				. "Pasada esa fecha, los precios y condiciones dejan de estar garantizados y habría que revisarlos.";
-			$en[] = $sujE . " is valid <strong>until " . $fEn($validUntil) . "</strong>. "
+			$en[] = $sujE . " is valid <strong>until " . $fEn($validUntil) . " inclusive</strong> (until midnight, Madrid time). "
 				. "After that date, prices and terms are no longer guaranteed and would need to be reviewed.";
 		}
 

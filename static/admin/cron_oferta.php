@@ -26,11 +26,18 @@ require_once __DIR__ . '/client_projects_lib.php';
 require_once __DIR__ . '/email_campaing/mailer.php';
 
 $today = date('Y-m-d');
-$rows = cpx_rows('client_projects?select=id,ref,title_es,title_en,client_name,client_email,access_token,discount_amount,discount_deadline'
-	. '&approved=not.is.true&is_demo=not.is.true&offer_notice_sent_at=is.null'
-	. '&discount_amount=gt.0&discount_deadline=eq.' . $today);
+$tomorrow = date('Y-m-d', strtotime($today . ' +1 day'));
+/* Desde el 22/09/2026 el aviso sale la VÍSPERA del vencimiento (decisión del usuario), y el
+ * texto aclara que el plazo incluye el día citado hasta las 24:00. Como red de seguridad,
+ * si una oferta vence hoy y nunca se avisó (p. ej. fecha fijada ayer para hoy), se avisa
+ * hoy con el texto de «vence hoy». offer_notice_sent_at evita el envío doble. */
+$base = 'client_projects?select=id,ref,title_es,title_en,client_name,client_email,access_token,discount_amount,discount_deadline'
+	. '&approved=not.is.true&is_demo=not.is.true&offer_notice_sent_at=is.null&discount_amount=gt.0';
+$rows = array();
+foreach (cpx_rows($base . '&discount_deadline=eq.' . $tomorrow) as $r) { $r['_when'] = 'manana'; $rows[] = $r; }
+foreach (cpx_rows($base . '&discount_deadline=eq.' . $today) as $r) { $r['_when'] = 'hoy'; $rows[] = $r; }
 
-if (empty($rows)) { die("sin ofertas que venzan hoy ($today)\n"); }
+if (empty($rows)) { die("sin ofertas que venzan mañana ($tomorrow) ni hoy ($today) sin avisar\n"); }
 
 function co_eur_es($n) { return number_format((float) $n, ((float) $n == round($n) ? 0 : 2), ',', '.') . ' €'; }
 function co_eur_en($n) { return '€' . number_format((float) $n, ((float) $n == round($n) ? 0 : 2), '.', ','); }
@@ -47,16 +54,25 @@ foreach ($rows as $p) {
 	$url     = 'https://standarte.es/proyecto?t=' . $p['access_token'];
 	$h       = function ($x) { return htmlspecialchars($x, ENT_QUOTES, 'UTF-8'); };
 
-	$subject = 'Su oferta vence hoy / Your offer expires today — ' . $ref;
+	$isTomorrow = ($p['_when'] === 'manana');
+	$dEs = date('d/m/Y', strtotime($p['discount_deadline'] . ' 12:00:00'));
+	$dEn = date('F j, Y', strtotime($p['discount_deadline'] . ' 12:00:00'));
+	$subject = $isTomorrow
+		? 'Su oferta vence mañana / Your offer expires tomorrow — ' . $ref
+		: 'Su oferta vence hoy / Your offer expires today — ' . $ref;
 
-	$es = "<p style='margin:0 0 16px;text-align:left;'>Le recordamos que la oferta por pronta decisión de su proyecto <strong>" . $h($titleEs) . "</strong> (" . $h($ref) . ") <strong>vence hoy</strong>. "
-		. "Si aprueba el proyecto antes del cierre del día, se ahorra <strong>" . co_eur_es($amount) . "</strong>. "
-		. "A partir de mañana, la oferta se reduce en 1.000 € por cada semana transcurrida, hasta extinguirse. "
+	$cuandoEs = $isTomorrow ? "vence <strong>mañana, $dEs</strong>" : "vence <strong>hoy, $dEs</strong>";
+	$cuandoEn = $isTomorrow ? "expires <strong>tomorrow, $dEn</strong>" : "expires <strong>today, $dEn</strong>";
+	$es = "<p style='margin:0 0 16px;text-align:left;'>Le recordamos que la oferta por pronta decisión de su proyecto <strong>" . $h($titleEs) . "</strong> (" . $h($ref) . ") " . $cuandoEs . ": "
+		. "el plazo incluye ese día completo, hasta las 24:00 (hora de Madrid). "
+		. "Si aprueba el proyecto antes de esa hora, se ahorra <strong>" . co_eur_es($amount) . "</strong>. "
+		. "A partir del día siguiente, la oferta se reduce en 1.000 € por cada semana transcurrida, hasta extinguirse. "
 		. "Aprobar el proyecto no impide seguir haciendo modificaciones después.</p>";
 
-	$en = "<p style='margin:0 0 16px;text-align:left;color:#555;'>A reminder that the early-decision offer on your project <strong>" . $h($titleEn) . "</strong> (" . $h($ref) . ") <strong>expires today</strong>. "
-		. "If you approve the project before the end of the day, you save <strong>" . co_eur_en($amount) . "</strong>. "
-		. "From tomorrow, the offer shrinks by €1,000 for each elapsed week, until it runs out. "
+	$en = "<p style='margin:0 0 16px;text-align:left;color:#555;'>A reminder that the early-decision offer on your project <strong>" . $h($titleEn) . "</strong> (" . $h($ref) . ") " . $cuandoEn . ": "
+		. "the deadline includes that whole day, until midnight (Madrid time). "
+		. "If you approve the project before then, you save <strong>" . co_eur_en($amount) . "</strong>. "
+		. "From the following day, the offer shrinks by €1,000 for each elapsed week, until it runs out. "
 		. "Approving the project does not prevent further modifications afterwards.</p>";
 
 	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
