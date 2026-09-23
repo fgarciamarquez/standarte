@@ -1,0 +1,49 @@
+# Análisis manual de una página externa (competencia): título, meta, encabezados, enlaces
+# internos, JSON-LD y texto visible. Solo lectura; no toca el sitio.
+name: Page Dump
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL completa'
+        required: true
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar y analizar
+        env:
+          URL: ${{ github.event.inputs.url }}
+        run: |
+          curl -sSL -A 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36' "$URL" -o page.html
+          python3 - <<'PY'
+          import re, html, json
+          s = open('page.html', encoding='utf-8', errors='ignore').read()
+          def clean(x): return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', x))).strip()
+          print('TITLE:', clean((re.search(r'<title[^>]*>(.*?)</title>', s, re.S) or [None, ''])[1]))
+          for m in re.finditer(r'<meta[^>]+(name|property)="(description|og:title|robots)"[^>]*content="([^"]*)"', s): print('META', m.group(2), ':', m.group(3))
+          for m in re.finditer(r'<link[^>]+rel="canonical"[^>]*href="([^"]*)"', s): print('CANONICAL', m.group(1))
+          print('\n== ENCABEZADOS')
+          for m in re.finditer(r'<(h[1-4])[^>]*>(.*?)</\1>', s, re.S): print(m.group(1).upper(), clean(m.group(2)))
+          body = re.sub(r'<(script|style|noscript|svg)[^>]*>.*?</\1>', ' ', s, flags=re.S)
+          main = body
+          text = clean(main)
+          print('\n== PALABRAS', len(text.split()))
+          low = text.lower()
+          for k in ['diseño de stands', 'stands en bilbao', 'stand en bilbao', 'stands para ferias', 'montaje de stands', 'bilbao', 'bec', 'feria', 'stand']:
+              print(f'  "{k}": {low.count(k)}')
+          print('\n== IMAGENES', len(re.findall(r'<img', s)), '| alt con stand:', len([a for a in re.findall(r'alt="([^"]*)"', s) if 'stand' in a.lower()]))
+          print('\n== ENLACES (texto -> href), internos primero')
+          seen = set()
+          for m in re.finditer(r'<a[^>]+href="([^"#][^"]*)"[^>]*>(.*?)</a>', body, re.S):
+              t = clean(m.group(2))[:70]; h = m.group(1)
+              if t and (t, h) not in seen and len(seen) < 90: seen.add((t, h)); print(f'  {t} -> {h}')
+          print('\n== JSON-LD')
+          for m in re.finditer(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', s, re.S):
+              try:
+                  d = json.loads(m.group(1)); g = d.get('@graph', [d]) if isinstance(d, dict) else d
+                  print('  tipos:', [x.get('@type') for x in g if isinstance(x, dict)])
+              except Exception as e: print('  (no parseable)', m.group(1)[:200])
+          print('\n== TEXTO VISIBLE')
+          print(text[:9000])
+          PY
