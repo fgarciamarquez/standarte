@@ -160,7 +160,7 @@ DirectorySlash Off
   # 2026-09-18: web sin secciones de imágenes (src/lib/imagePolicy.js). La galería
   # (/galeria/<slug>, 39 URL) y las páginas «Proyectos a medida» y «Equipo» (11 idiomas)
   # dejan de existir y redirigen 301 a la portada de su idioma.
-  RewriteRule ^galeria/.+$ https://standarte.es/ [R=301,L]
+  RewriteRule ^galeria/(?!__data\.json$).+$ https://standarte.es/ [R=301,L]
   # «LuzPavilion» (solo el vídeo del micro stand) también se retira: 301 a la portada.
   RewriteRule ^luzpavilion/?$ https://standarte.es/ [R=301,L]
   RewriteRule ^en/luzpavilion/?$ https://standarte.es/en/ [R=301,L]
