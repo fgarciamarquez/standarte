@@ -19,4 +19,6 @@ jobs:
             echo "=== $p"
             curl -sS -o /tmp/body -A "$UA" -w 'code=%{http_code} redirect=%{redirect_url} type=%{content_type} size=%{size_download}\n' "https://standarte.es$p"
             head -c 200 /tmp/body | tr '\n' ' '; echo
+            echo "enlaces de galeria:"; grep -oE 'href="[^"]*(galer|gallery|proyectos_a_medida|custom_projects)[^"]*"' /tmp/body | sort | uniq -c || true
+            echo "cache: $(curl -sSI -A "$UA" "https://standarte.es$p" | grep -iE '^(cache-control|expires|last-modified|age|x-cache)' | tr '\r\n' '  ')"
           done
