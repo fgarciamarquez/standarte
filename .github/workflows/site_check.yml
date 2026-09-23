@@ -1,0 +1,22 @@
+# Diagnóstico manual: pide al servidor real una lista de URL y muestra código, redirección y
+# tipo de contenido (con User-Agent de navegador: el .htaccess bloquea el de curl).
+name: Site Check
+on:
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: 'Rutas separadas por espacios'
+        required: false
+        default: '/galeria /galeria/__data.json /precios /precios/__data.json /en/gallery /en/gallery/__data.json'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comprobar URL
+        run: |
+          UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36'
+          for p in ${{ github.event.inputs.paths }}; do
+            echo "=== $p"
+            curl -sS -o /tmp/body -A "$UA" -w 'code=%{http_code} redirect=%{redirect_url} type=%{content_type} size=%{size_download}\n' "https://standarte.es$p"
+            head -c 200 /tmp/body | tr '\n' ' '; echo
+          done
