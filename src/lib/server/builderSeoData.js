@@ -493,12 +493,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Valencia: fabricación propia para Feria Valencia</h2>
         <p>Feria Valencia es un recinto de pabellones grandes y calendario denso: Cevisama y Hábitat piden stands donde el producto —cerámica, mueble, iluminación— se toca y se compara de cerca, con acabados que aguanten la mirada del profesional a un palmo. Fabricamos en taller propio y llegamos con el stand premontado, porque en Valencia los turnos de montaje son cortos y el pabellón se llena en horas.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Valencia')}
-        ${tipos('Valencia')}
         <h2>Constructor de stands en Valencia: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-beauty-forum-valencia">Beauty Forum Valencia</a>, <a href="/ferias/stand-cevisama-valencia">Cevisama</a>, <a href="/ferias/stand-habitat-valencia">Feria Hábitat València</a>, <a href="/ferias/stand-textilhogar-valencia">Textilhogar</a>, <a href="/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a>, <a href="/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a>, <a href="/ferias/stand-iberflora-valencia">Iberflora</a> y <a href="/ferias/stand-gastronoma-valencia">Gastrónoma</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-valencia">diseño y montaje de stands en Valencia</a>.</p>
-        ${porque('Valencia')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Valencia</a></p>`
     }
   },
   constructor_stand_valladolid: {
@@ -510,12 +507,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Valladolid: fabricación propia para Feria de Valladolid</h2>
         <p>La Feria de Valladolid alterna certámenes de gran público como INTUR con salones técnicos de maquinaria agrícola y avicultura, y cada uno pide una construcción distinta: gráfica y recorrido para el visitante que pasea, suelo reforzado y acometidas para el equipo que se expone en marcha. Resolvemos ambas desde el mismo taller y con el mismo equipo de montaje.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Valladolid')}
-        ${tipos('Valladolid')}
         <h2>Constructor de stands en Valladolid: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-intur-valladolid">INTUR</a>, <a href="/ferias/stand-fine-valladolid">FINE Valladolid</a>, <a href="/ferias/stand-technology-show-valladolid">Technology Show Valladolid</a>, <a href="/ferias/stand-feria-artesania-valladolid">Feria de Artesanía de Valladolid</a>, <a href="/ferias/stand-agraria-valladolid">AGRARIA</a>, <a href="/ferias/stand-agrovid-valladolid">AGROVID</a>, <a href="/ferias/stand-aviforum-valladolid">aviFORUM</a> y <a href="/ferias/stand-fimascota-valladolid">FIMASCOTA</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-valladolid">diseño y montaje de stands en Valladolid</a>.</p>
-        ${porque('Valladolid')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Valladolid</a></p>`
     }
   },
   constructor_stand_alicante: {
@@ -527,12 +521,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Alicante: fabricación propia para IFA – Institución Ferial Alicantina (Elche)</h2>
         <p>El recinto ferial de la provincia, IFA, está en Elche, y a Alicante ciudad llegan además los congresos y las citas gastronómicas de la capital. Construimos para los dos escenarios: stand de feria con almacén y mostrador para varios días, o stand de congreso que se monta en una mañana y se retira la misma noche.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Alicante')}
-        ${tipos('Alicante')}
         <h2>Constructor de stands en Alicante: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-alicante-gastronomica">Alicante Gastronómica</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-alicante">diseño y montaje de stands en Alicante</a>.</p>
-        ${porque('Alicante')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Alicante</a></p>`
     }
   },
   constructor_stand_elche: {
@@ -544,12 +535,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Elche: fabricación propia para IFA – Institución Ferial Alicantina</h2>
         <p>Elche es la capital del calzado y su recinto, IFA, recibe ferias donde el producto se enseña en muestrario y se vende por colección. El stand necesita paredes de exposición con estantes a la altura de la mano, luz fiel al color del cuero y un rincón cerrado donde el comprador vea la colección completa sin público; lo fabricamos todo en carpintería propia.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Elche')}
-        ${tipos('Elche')}
         <h2>Constructor de stands en Elche: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-futurmoda-elche">Futurmoda</a> y <a href="/ferias/stand-firauto-elche">Firauto</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-elche">diseño y montaje de stands en Elche</a>.</p>
-        ${porque('Elche')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Elche</a></p>`
     }
   },
   constructor_stand_murcia: {
@@ -561,12 +549,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Murcia: fabricación propia para IFEPA – Institución Ferial de la Región de Murcia (Torre Pacheco)</h2>
         <p>El recinto de la Región está en Torre Pacheco y su calendario es agrario e industrial: maquinaria, riego, hortofrutícola y construcción. Son ferias de producto pesado y muestras reales, así que construimos con suelo técnico, refuerzos calculados y acometidas previstas, y llevamos el stand ya premontado desde nuestro taller.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Murcia')}
-        ${tipos('Murcia')}
         <h2>Constructor de stands en Murcia: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fame-innowa-torre-pacheco">FAME Innowa</a>, <a href="/ferias/stand-equimur-torre-pacheco">EQUIMUR</a>, <a href="/ferias/stand-hortifruit-torre-pacheco">HortiFruit</a> y <a href="/ferias/stand-fecons-torre-pacheco">FECONS</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-murcia">diseño y montaje de stands en Murcia</a>.</p>
-        ${porque('Murcia')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Murcia</a></p>`
     }
   },
   constructor_stand_salamanca: {
@@ -578,12 +563,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Salamanca: fabricación propia para Recinto Ferial de Salamanca</h2>
         <p>El Recinto Ferial de Salamanca es una plaza de ganado y maquinaria: SALAMAQ llena las campas y los pabellones de animales, tractores y aperos. Un stand aquí se construye para el exterior cubierto y el trasiego de barro y ganado, con materiales lavables, estructura sólida y un espacio limpio para sentarse a negociar.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Salamanca')}
-        ${tipos('Salamanca')}
         <h2>Constructor de stands en Salamanca: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-salamaq-salamanca">SALAMAQ</a>, <a href="/ferias/stand-salon-automovil-salamanca">Salón del Automóvil de Salamanca</a> y <a href="/ferias/stand-congreso-alineadores-salamanca">Congreso Internacional de Alineadores</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-salamanca">diseño y montaje de stands en Salamanca</a>.</p>
-        ${porque('Salamanca')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Salamanca</a></p>`
     }
   },
   constructor_stand_coruna: {
@@ -595,12 +577,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en A Coruña: fabricación propia para ExpoCoruña y Palexco</h2>
         <p>A Coruña reparte sus citas entre ExpoCoruña, un pabellón diáfano de gran altura, y Palexco, el palacio de congresos del puerto: el primero admite stands de doble altura y producto pesado; el segundo pide construcciones ligeras que entren por el acceso de congresos y se monten en pocas horas. Fabricamos las dos versiones en taller propio.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('A Coruña')}
-        ${tipos('A Coruña')}
         <h2>Constructor de stands en A Coruña: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-forum-gastronomico-a-coruna">Galicia Fórum Gastronómico</a>, <a href="/ferias/stand-mundos-digitales-a-coruna">Mundos Digitales</a> y <a href="/ferias/stand-biocultura-a-coruna">BioCultura A Coruña</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-a-coruna">diseño y montaje de stands en A Coruña</a>.</p>
-        ${porque('A Coruña')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en A Coruña</a></p>`
     }
   },
   constructor_stand_santiago: {
@@ -612,12 +591,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Santiago de Compostela: fabricación propia para Palacio de Congresos e Exposicións de Galicia</h2>
         <p>En Santiago el recinto es un palacio de congresos, y eso marca la construcción: stands compactos, sin obra pesada, con gráfica aplicada en taller y un montaje que respeta suelos y paramentos del edificio. Llegamos con las piezas numeradas y el stand ensayado, porque la ventana de montaje de un congreso se cuenta en horas.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Santiago de Compostela')}
-        ${tipos('Santiago de Compostela')}
         <h2>Constructor de stands en Santiago de Compostela: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fairway-santiago-de-compostela">Fairway Santiago de Compostela</a>, <a href="/ferias/stand-maker-faire-galicia-santiago-de-compostela">Maker Faire Galicia Santiago de Compostela</a>, <a href="/ferias/stand-gedet-santiago-de-compostela">GEDET Santiago de Compostela</a>, <a href="/ferias/stand-semergen-santiago-de-compostela">Congreso SEMERGEN Santiago de Compostela</a>, <a href="/ferias/stand-sesmi-santiago-de-compostela">SESMI Santiago de Compostela</a> y <a href="/ferias/stand-galicia-escena-pro-santiago-de-compostela">Galicia Escena PRO</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-santiago-de-compostela">diseño y montaje de stands en Santiago de Compostela</a>.</p>
-        ${porque('Santiago de Compostela')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Santiago de Compostela</a></p>`
     }
   },
   constructor_stand_vigo: {
@@ -629,12 +605,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Vigo: fabricación propia para IFEVI – Instituto Ferial de Vigo</h2>
         <p>IFEVI, en Cotogrande, recibe Conxemar y Navalia: pescado congelado y construcción naval, dos sectores que exponen equipo pesado y frío industrial. Construimos stands con suelo reforzado, previsión de acometidas eléctricas de potencia y superficies que se limpian a diario, fabricados en taller y montados por nuestro propio equipo.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Vigo')}
-        ${tipos('Vigo')}
         <h2>Constructor de stands en Vigo: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-conxemar-vigo">Conxemar Vigo</a>, <a href="/ferias/stand-navalia-vigo">Navalia</a>, <a href="/ferias/stand-nortrans-vigo">Nortrans</a> y <a href="/ferias/stand-mindtech-vigo">Mindtech</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-vigo">diseño y montaje de stands en Vigo</a>.</p>
-        ${porque('Vigo')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Vigo</a></p>`
     }
   },
   constructor_stand_ourense: {
@@ -646,12 +619,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Ourense: fabricación propia para Expourense</h2>
         <p>Expourense acoge Xantar y Termatalia, dos ferias de degustación y experiencia: aquí el stand tiene cocina o zona de servicio, tomas de agua y extracción, y una barra donde el visitante prueba el producto. Lo construimos con superficies lavables y una trastienda real, no un biombo, para que el servicio funcione cuatro días seguidos.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Ourense')}
-        ${tipos('Ourense')}
         <h2>Constructor de stands en Ourense: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-xantar-ourense">Xantar</a> y <a href="/ferias/stand-termatalia-ourense">Termatalia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-ourense">diseño y montaje de stands en Ourense</a>.</p>
-        ${porque('Ourense')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Ourense</a></p>`
     }
   },
   constructor_stand_silleda: {
@@ -663,12 +633,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Silleda: fabricación propia para Feira Internacional de Galicia ABANCA</h2>
         <p>La Feira Internacional de Galicia, en Silleda, es un recinto de campo: Semana Verde mezcla ganado, maquinaria y gran público, y Turexpo trae destinos y hoteles. Construimos stands que aguantan el paso de miles de visitantes en fin de semana, con estructura sólida, gráfica resistente y almacén cerrado.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Silleda')}
-        ${tipos('Silleda')}
         <h2>Constructor de stands en Silleda: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-semana-verde-galicia-silleda">Semana Verde de Galicia</a> y <a href="/ferias/stand-turexpo-galicia-silleda">Turexpo Galicia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-silleda">diseño y montaje de stands en Silleda</a>.</p>
-        ${porque('Silleda')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Silleda</a></p>`
     }
   },
   constructor_stand_gijon: {
@@ -680,12 +647,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Gijón: fabricación propia para Recinto Ferial Luis Adaro</h2>
         <p>El Recinto Ferial Luis Adaro vive la FIDMA, la gran feria de muestras del Cantábrico: dos semanas de público continuo, pabellones y exteriores. Un stand para esa feria se construye para durar, con materiales que no acusan quince días de uso y una distribución que reparte el flujo sin cuellos de botella.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Gijón')}
-        ${tipos('Gijón')}
         <h2>Constructor de stands en Gijón: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fidma-gijon">FIDMA – Feria Internacional de Muestras de Asturias</a>, <a href="/ferias/stand-agropec-gijon">AGROPEC Gijón</a>, <a href="/ferias/stand-salon-competicion-asturias-gijon">Salón de Competición de Asturias</a>, <a href="/ferias/stand-asturforesta-tineo">Asturforesta</a>, <a href="/ferias/stand-feria-muestras-tineo">Feria de Muestras de Tineo</a> y <a href="/ferias/stand-agroalimentaria-vegadeo">Feria Agroalimentaria de Vegadeo</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-gijon">diseño y montaje de stands en Gijón</a>.</p>
-        ${porque('Gijón')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Gijón</a></p>`
     }
   },
   constructor_stand_santander: {
@@ -697,12 +661,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Santander: fabricación propia para Palacio de Exposiciones y Congresos de Santander</h2>
         <p>El Palacio de Exposiciones de Santander recibe ferias de arte, ecología y automoción, y en Torrelavega el mercado nacional de ganados suma citas agrarias. Construimos para las dos plazas con el mismo taller: paredes limpias y luz cuidada para la obra de arte, suelo y accesos rodados para el vehículo o la maquinaria.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Santander')}
-        ${tipos('Santander')}
         <h2>Constructor de stands en Santander: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-artesantander">ARTESANTANDER</a>, <a href="/ferias/stand-biocantabria-santander">BioCantabria</a>, <a href="/ferias/stand-feria-apicola-cantabria-torrelavega">Feria Nacional Apícola de Cantabria</a> y <a href="/ferias/stand-feria-concesionarios-torrelavega">Feria de Concesionarios de Torrelavega</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-santander">diseño y montaje de stands en Santander</a>.</p>
-        ${porque('Santander')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Santander</a></p>`
     }
   },
   constructor_stand_irun: {
@@ -714,12 +675,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Irún: fabricación propia para Ficoba – Feria de Muestras de Gipuzkoa</h2>
         <p>Ficoba, en la frontera del Bidasoa, concentra movilidad, industria y ecología: MUBIL enseña vehículos y cargadores en funcionamiento, y Bioterra, producto para tocar y probar. Construimos con acometidas eléctricas de potencia previstas, suelo apto para vehículos y mobiliario de degustación fabricado en taller propio.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Irún')}
-        ${tipos('Irún')}
         <h2>Constructor de stands en Irún: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-mubil-mobility-expo-irun">MUBIL Mobility Expo</a>, <a href="/ferias/stand-unire-irun">UNIRE</a>, <a href="/ferias/stand-bioterra-irun">Bioterra</a>, <a href="/ferias/stand-caravantur-irun">Caravantur</a>, <a href="/ferias/stand-uhinak-irun">Uhinak</a> y <a href="/ferias/stand-go-mobility-irun">Go Mobility</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-irun">diseño y montaje de stands en Irún</a>.</p>
-        ${porque('Irún')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Irún</a></p>`
     }
   },
   constructor_stand_vitoria: {
@@ -731,12 +689,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Vitoria: fabricación propia para Palacio de Congresos Europa y recintos de Álava</h2>
         <p>Vitoria-Gasteiz reparte sus ferias entre el Palacio Europa y los espacios feriales de Álava: empleo, formación, vino y comercio. Son citas de uno a tres días con montaje en horas, así que el stand llega premontado desde nuestro taller, con la gráfica aplicada y el mobiliario listo para colocar.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Vitoria')}
-        ${tipos('Vitoria')}
         <h2>Constructor de stands en Vitoria: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-ardoaraba-vitoria">Ardoaraba</a>, <a href="/ferias/stand-avanza-fp-alava-vitoria">AVANZA – Feria de FP de Álava</a>, <a href="/ferias/stand-empleo-gune-vitoria">Empleo Gune</a>, <a href="/ferias/stand-feria-stocks-vitoria">Feria de Stocks</a> y <a href="/ferias/stand-lanberri-vitoria">Lanberri</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-vitoria">diseño y montaje de stands en Vitoria</a>.</p>
-        ${porque('Vitoria')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Vitoria</a></p>`
     }
   },
   constructor_stand_pamplona: {
@@ -748,12 +703,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Pamplona: fabricación propia para Baluarte y recintos feriales de Navarra</h2>
         <p>Pamplona celebra sus ferias en Baluarte, el palacio de congresos, y en los recintos de Navarra: turismo, construcción, empleo y vino. En un palacio de congresos no se puede hacer obra: construimos stands ligeros y autoportantes, fabricados enteros en taller, que se anclan sin dañar el edificio y se retiran en una noche.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Pamplona')}
-        ${tipos('Pamplona')}
         <h2>Constructor de stands en Pamplona: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-navartur-pamplona">NAVARTUR</a>, <a href="/ferias/stand-salon-estudiante-futuro-profesional-pamplona">Salón del Estudiante y Futuro Profesional</a>, <a href="/ferias/stand-edifica-pamplona">EDIFICA</a>, <a href="/ferias/stand-navarra-jobs-pamplona">Navarra Jobs</a>, <a href="/ferias/stand-feria-navarra-ecologica-pamplona">Feria Navarra Ecológica</a>, <a href="/ferias/stand-navarra-wine-gastronomy-pamplona">Navarra Wine & Gastronomy</a> y <a href="/ferias/stand-feria-turismo-reyno-navarra-pamplona">Feria Internacional de Turismo Reyno de Navarra</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-pamplona">diseño y montaje de stands en Pamplona</a>.</p>
-        ${porque('Pamplona')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Pamplona</a></p>`
     }
   },
   constructor_stand_logrono: {
@@ -765,12 +717,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Logroño: fabricación propia para Riojaforum y recintos feriales de La Rioja</h2>
         <p>Logroño es vino: en Riojaforum y en los recintos de La Rioja se catan botellas y se cierran distribuciones. Construimos stands de bodega con barra de cata a altura correcta, botellero iluminado sin calentar el vino, frío para los blancos y un reservado para la reunión con el importador.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Logroño')}
-        ${tipos('Logroño')}
         <h2>Constructor de stands en Logroño: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-rioja-wine-trade-mission-logrono">Rioja Wine Trade Mission</a>, <a href="/ferias/stand-planeta-rioja-logrono">Planeta Rioja</a>, <a href="/ferias/stand-feria-formacion-profesional-la-rioja-logrono">Feria de Formación Profesional de La Rioja</a>, <a href="/ferias/stand-feria-vehiculo-ocasion-logrono">Feria del Vehículo de Ocasión de Logroño</a>, <a href="/ferias/stand-feria-maquinaria-agricola-alfaro">Feria de Maquinaria Agrícola de Alfaro</a> y <a href="/ferias/stand-ferias-agroalimentarias-rioja-oriental-calahorra">Ferias Agroalimentarias de la Rioja Oriental</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-logrono">diseño y montaje de stands en Logroño</a>.</p>
-        ${porque('Logroño')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Logroño</a></p>`
     }
   },
   constructor_stand_lleida: {
@@ -782,12 +731,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Lleida: fabricación propia para Fira de Lleida</h2>
         <p>Fira de Lleida es el recinto agrario del noreste: la Fira de Sant Miquel expone maquinaria y Municipàlia, equipamiento para ayuntamientos. Construimos stands que admiten un tractor dentro y un mostrador de atención al lado, con suelo técnico, gráfica de gran formato y almacén cerrado para material.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Lleida')}
-        ${tipos('Lleida')}
         <h2>Constructor de stands en Lleida: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-municipalia-lleida">Municipàlia Lleida</a> y <a href="/ferias/stand-fira-sant-miquel-lleida">Fira de Sant Miquel Lleida</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-lleida">diseño y montaje de stands en Lleida</a>.</p>
-        ${porque('Lleida')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Lleida</a></p>`
     }
   },
   constructor_stand_girona: {
@@ -799,12 +745,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Girona: fabricación propia para Fira de Girona</h2>
         <p>Girona es gastronomía de primer nivel y su Fòrum Gastronòmic pide stands de cocina en directo: tomas de agua y potencia, extracción, plano de trabajo a altura profesional y una barra de degustación de cara al pasillo. Todo se fabrica en taller propio y llega probado al recinto.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Girona')}
-        ${tipos('Girona')}
         <h2>Constructor de stands en Girona: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-forum-gastronomic-girona">Fòrum Gastronòmic Girona</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-girona">diseño y montaje de stands en Girona</a>.</p>
-        ${porque('Girona')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Girona</a></p>`
     }
   },
   constructor_stand_mallorca: {
@@ -816,12 +759,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Mallorca: fabricación propia para Palau de Congressos de Palma y Moll Vell</h2>
         <p>En Mallorca se expone a pie de muelle: el Palma International Boat Show y el Superyacht Village montan en el Moll Vell, con viento, sal y carga a mano. Construimos stands para exterior portuario —estructura arriostrada, materiales marinos, gráfica que no se despega— y, en el Palau de Congressos, stands de hostelería y producto local.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Mallorca')}
-        ${tipos('Mallorca')}
         <h2>Constructor de stands en Mallorca: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-palma-international-boat-show">Palma International Boat Show</a>, <a href="/ferias/stand-palma-superyacht-village">Palma Superyacht Village</a>, <a href="/ferias/stand-baleart-mallorca">Baleart</a>, <a href="/ferias/stand-dijous-bo-mallorca">Dijous Bo</a>, <a href="/ferias/stand-horeca-baleares-mallorca">HORECA Baleares Mallorca</a>, <a href="/ferias/stand-fira-vi-pollenca-mallorca">Fira del Vi de Pollença</a>, <a href="/ferias/stand-wine-days-binissalem-mallorca">Wine Days Mallorca – DO Binissalem</a> y <a href="/ferias/stand-fira-sipia-alcudia-mallorca">Fira de la Sípia</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-mallorca">diseño y montaje de stands en Mallorca</a>.</p>
-        ${porque('Mallorca')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Mallorca</a></p>`
     }
   },
   constructor_stand_ibiza: {
@@ -833,12 +773,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Ibiza: fabricación propia para Recinto Ferial de Ibiza</h2>
         <p>Ibiza tiene ferias náuticas, de hostelería y de comercio, y una logística de isla: todo llega en barco y el margen para un olvido es nulo. Construimos el stand completo en taller, lo premontamos y lo embarcamos con las piezas numeradas y los repuestos dentro, para montar sin depender de un proveedor local.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Ibiza')}
-        ${tipos('Ibiza')}
         <h2>Constructor de stands en Ibiza: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-horeca-baleares-ibiza">HORECA Baleares Ibiza</a>, <a href="/ferias/stand-fira-mar-ibiza">Fira de la Mar</a> y <a href="/ferias/stand-feria-stocks-ibiza">Feria de Stocks de Ibiza</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-ibiza">diseño y montaje de stands en Ibiza</a>.</p>
-        ${porque('Ibiza')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Ibiza</a></p>`
     }
   },
   constructor_stand_menorca: {
@@ -850,12 +787,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Menorca: fabricación propia para Recintos feriales de Menorca</h2>
         <p>Menorca celebra ferias de producto local, agroalimentación y hostelería, con expositores que traen queso, vino y embutido para probar. Construimos stands con mostrador refrigerado, superficies lavables y barra de degustación, embarcados desde la península ya premontados y con sus repuestos.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Menorca')}
-        ${tipos('Menorca')}
         <h2>Constructor de stands en Menorca: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-horeca-baleares-menorca">HORECA Baleares Menorca</a>, <a href="/ferias/stand-fira-camp-alaior-menorca">Fira del Camp</a> y <a href="/ferias/stand-arrels-menorca">Arrels, Fira de Producte Local i Cuina de Menorca</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-menorca">diseño y montaje de stands en Menorca</a>.</p>
-        ${porque('Menorca')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Menorca</a></p>`
     }
   },
   constructor_stand_islas_canarias: {
@@ -867,12 +801,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Canarias: fabricación propia para Recinto Ferial de Tenerife e Infecar (Gran Canaria)</h2>
         <p>Canarias tiene dos recintos principales, en Santa Cruz de Tenerife y Las Palmas, y una regla logística: el contenedor sale con antelación y no vuelve a por lo que falte. Fabricamos y premontamos el stand entero en taller, lo documentamos pieza a pieza y lo embarcamos con repuestos, para que el montaje en la isla sea solo montaje.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Canarias')}
-        ${tipos('Canarias')}
         <h2>Constructor de stands en Canarias: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feaga-fuerteventura">FEAGA</a>, <a href="/ferias/stand-gastrocanarias-tenerife">GastroCanarias</a>, <a href="/ferias/stand-gran-canaria-me-gusta">Gran Canaria Me Gusta</a>, <a href="/ferias/stand-canagua-energia-gran-canaria">Canagua & Energía</a>, <a href="/ferias/stand-fimar-las-palmas">FIMAR</a>, <a href="/ferias/stand-salon-atlantico-logistica-transporte">Salón Atlántico de Logística y Transporte</a>, <a href="/ferias/stand-moda-tenerife">Feria Internacional de Moda de Tenerife</a> y <a href="/ferias/stand-expodeca">ExpoDeca</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-islas-canarias">diseño y montaje de stands en Canarias</a>.</p>
-        ${porque('Canarias')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Canarias</a></p>`
     }
   },
   constructor_stand_ceuta: {
@@ -884,12 +815,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Ceuta: fabricación propia para Palacio de Congresos de Ceuta</h2>
         <p>Ceuta expone en su Palacio de Congresos y en espacios de la ciudad: economía azul, emprendimiento y tecnología. El stand cruza el Estrecho en barco y se monta en un edificio de congresos, así que lo construimos ligero, autoportante y premontado, con gráfica aplicada en taller y montaje en horas.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Ceuta')}
-        ${tipos('Ceuta')}
         <h2>Constructor de stands en Ceuta: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-bet-on-ceuta">Bet On Ceuta</a>, <a href="/ferias/stand-ceuta-impulsa">Ceuta Impulsa</a> y <a href="/ferias/stand-odissea-economia-azul-ceuta">Odissea, Economía Azul de Ceuta</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-ceuta">diseño y montaje de stands en Ceuta</a>.</p>
-        ${porque('Ceuta')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Ceuta</a></p>`
     }
   },
   constructor_stand_melilla: {
@@ -901,12 +829,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Melilla: fabricación propia para Palacio de Exposiciones y Congresos de Melilla</h2>
         <p>Melilla celebra sus ferias de oportunidades económicas y de representación intercultural en el Palacio de Exposiciones y Congresos. Todo viaja en barco: construimos el stand completo en taller, lo premontamos y lo embarcamos numerado, con repuestos y herramienta, para montar sin sorpresas al llegar.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Melilla')}
-        ${tipos('Melilla')}
         <h2>Constructor de stands en Melilla: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-oportunidades-economicas-melilla">Feria de Oportunidades Económicas de Melilla</a>, <a href="/ferias/stand-feria-representacion-intercultural-melilla">Feria de Representación Intercultural de Melilla</a> y <a href="/ferias/stand-eventos-empresariales-proyecto-melilla">Eventos Empresariales Proyecto Melilla</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-melilla">diseño y montaje de stands en Melilla</a>.</p>
-        ${porque('Melilla')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Melilla</a></p>`
     }
   },
   constructor_stand_tanger: {
@@ -918,12 +843,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Tánger: fabricación propia para Recintos feriales de Tánger y Tanger Med</h2>
         <p>Tánger es textil, moda e industria: Maroc in Mode y los encuentros de Tanger Med reúnen a fabricantes que exponen muestrario y capacidad productiva. Construimos stands con paneles de colección, probador y sala de reunión, fabricados en España, transportados con la documentación aduanera preparada y montados por nuestro propio equipo.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Tánger')}
-        ${tipos('Tánger')}
         <h2>Constructor de stands en Tánger: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-maroc-in-mode-mim-tanger">Maroc in Mode (MIM) Tánger</a>, <a href="/ferias/stand-tanger-nexus">Tanger Nexus</a>, <a href="/ferias/stand-tanger-fashion-week">Tanger Fashion Week</a>, <a href="/ferias/stand-amith-nord-tanger">Encuentros Industriales AMITH Nord</a> y <a href="/ferias/stand-eventos-industriales-tanger-med">Eventos Industriales Tanger Med</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-tanger">diseño y montaje de stands en Tánger</a>.</p>
-        ${porque('Tánger')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Tánger</a></p>`
     }
   },
   constructor_stand_casablanca: {
@@ -935,12 +857,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Casablanca: fabricación propia para Parc d’Exposition de l’OFEC (Casablanca)</h2>
         <p>Casablanca es la plaza ferial de Marruecos: logística, alimentación, energía, plástico y packaging pasan por el recinto de la OFEC. Exponer allí desde España exige transporte con carnet ATA o exportación temporal y un stand que se monte sin depender de talleres locales: lo fabricamos entero, lo premontamos y viajamos con él.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Casablanca')}
-        ${tipos('Casablanca')}
         <h2>Constructor de stands en Casablanca: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-logismed-casablanca">Logismed</a>, <a href="/ferias/stand-morocco-food-expo-casablanca">Morocco Food Expo</a>, <a href="/ferias/stand-siema-casablanca">Morocco SIEMA Expo</a>, <a href="/ferias/stand-siab-casablanca">SIAB Expo Maroc</a>, <a href="/ferias/stand-elec-expo-casablanca">Elec Expo</a>, <a href="/ferias/stand-ener-event-casablanca">Ener Event</a>, <a href="/ferias/stand-plast-expo-casablanca">Plast Expo</a> y <a href="/ferias/stand-pack-expo-casablanca">Pack Expo Morocco</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-casablanca">diseño y montaje de stands en Casablanca</a>.</p>
-        ${porque('Casablanca')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Casablanca</a></p>`
     }
   },
   constructor_stand_rabat: {
@@ -952,12 +871,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Rabat: fabricación propia para Recintos de ferias y congresos de Rabat</h2>
         <p>Rabat expone edición, cultura, formación y música: el SIEL llena de editoriales y librerías su recinto y el Forum de l’Étudiant reúne a universidades. Son stands de libro y de información: estanterías a la altura de la mano, mostrador de venta, buena luz de lectura y un almacén para el fondo, construidos en taller y transportados con su documentación.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Rabat')}
-        ${tipos('Rabat')}
         <h2>Constructor de stands en Rabat: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-siel-rabat">SIEL — Salon International de l'Édition et du Livre</a>, <a href="/ferias/stand-visa-for-music-rabat">Visa For Music</a>, <a href="/ferias/stand-forum-etudiant-rabat">Forum de l'Étudiant, de la Formation et de l'Emploi</a> y <a href="/ferias/stand-cimqusef-rabat">CIMQUSEF</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-rabat">diseño y montaje de stands en Rabat</a>.</p>
-        ${porque('Rabat')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Rabat</a></p>`
     }
   },
   constructor_stand_andorra: {
@@ -969,12 +885,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Andorra: fabricación propia para Centre de Congressos d’Andorra la Vella y recintos del Principado</h2>
         <p>Andorra celebra ferias multisectoriales, gastronómicas y de comercio en Andorra la Vella y en las parroquias. El transporte entra por carretera de montaña y pasa aduana: construimos el stand premontado y compacto, con las piezas dimensionadas para el camión que sube el puerto, y lo montamos con nuestro equipo.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Andorra')}
-        ${tipos('Andorra')}
         <h2>Constructor de stands en Andorra: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fira-andorra-la-vella">Fira d'Andorra la Vella</a>, <a href="/ferias/stand-enfirat-encamp">Enfira't</a>, <a href="/ferias/stand-andorra-taste">Andorra Taste</a>, <a href="/ferias/stand-fira-del-vermut-andorra">Fira del Vermut d'Andorra</a>, <a href="/ferias/stand-fira-del-bestiar-ordino">Fira del Bestiar d'Ordino</a>, <a href="/ferias/stand-mercat-de-la-vall-andorra">Mercat de la Vall</a> y <a href="/ferias/stand-fira-outlet-soldeu">Fira Outlet de Soldeu</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-andorra">diseño y montaje de stands en Andorra</a>.</p>
-        ${porque('Andorra')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Andorra</a></p>`
     }
   },
   constructor_stand_teruel: {
@@ -986,12 +899,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Teruel: fabricación propia para Palacio de Exposiciones y Congresos de Teruel y recintos de la provincia</h2>
         <p>Teruel es jamón, agroalimentación y maquinaria de campo, con ferias en la capital, Calamocha y Alcañiz. Construimos stands de producto para probar —mostrador con corte, frío y superficies lavables— y stands de maquinaria con suelo reforzado, fabricados en taller y montados en un día.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Teruel')}
-        ${tipos('Teruel')}
         <h2>Constructor de stands en Teruel: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-jamon-teruel">Feria del Jamón de Teruel y Alimentos de Calidad</a>, <a href="/ferias/stand-expocalamocha">ExpoCalamocha</a> y <a href="/ferias/stand-agroalcaniz">AgroAlcañiz</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-teruel">diseño y montaje de stands en Teruel</a>.</p>
-        ${porque('Teruel')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Teruel</a></p>`
     }
   },
   constructor_stand_aranda: {
@@ -1003,12 +913,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Aranda de Duero: fabricación propia para Recinto Ferial de Aranda de Duero</h2>
         <p>Aranda de Duero es la capital de la Ribera y sus ferias giran en torno al vino: cata, premios y encuentros de bodegas. Construimos stands de bodega con barra de cata, botellero iluminado en frío y reservado para el distribuidor, fabricados en taller y reutilizables en las siguientes citas del vino.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Aranda de Duero')}
-        ${tipos('Aranda de Duero')}
         <h2>Constructor de stands en Aranda de Duero: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-espacio-ribera-aranda">Espacio Ribera</a>, <a href="/ferias/stand-premios-envero-enverofest-aranda">Premios Envero / EnveroFest</a> y <a href="/ferias/stand-congreso-la-cierna-aranda">Congreso La Cierna</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-aranda-de-duero">diseño y montaje de stands en Aranda de Duero</a>.</p>
-        ${porque('Aranda de Duero')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Aranda de Duero</a></p>`
     }
   },
   constructor_stand_ciudad_real: {
@@ -1020,12 +927,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Ciudad Real: fabricación propia para Pabellón Ferial de Ciudad Real (IFEDI)</h2>
         <p>Ciudad Real es vino y campo: Fenavin reúne a bodegas y compradores internacionales, y FERCAM y FERDUQUE traen maquinaria y ganado. Construimos stands de cata con frío y botellero, y stands de maquinaria con suelo reforzado, ambos desde nuestro taller y con montaje propio en el Pabellón Ferial.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Ciudad Real')}
-        ${tipos('Ciudad Real')}
         <h2>Constructor de stands en Ciudad Real: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-fenavin-match-ciudad-real">Fenavin Match Ciudad Real</a>, <a href="/ferias/stand-ferduque-ciudad-real">FERDUQUE</a>, <a href="/ferias/stand-fercam-manzanares-ciudad-real">FERCAM</a> y <a href="/ferias/stand-fercatur-ciudad-real">Fercatur Ciudad Real</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-ciudad-real">diseño y montaje de stands en Ciudad Real</a>.</p>
-        ${porque('Ciudad Real')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Ciudad Real</a></p>`
     }
   },
   constructor_stand_zafra: {
@@ -1037,12 +941,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Zafra: fabricación propia para Recinto Ferial de Zafra</h2>
         <p>Zafra vive su Feria Internacional Ganadera en un recinto de campo, con animales, maquinaria y público durante una semana. Construimos stands para esa dureza —suelo lavable, estructura sólida, almacén cerrado— desde nuestro taller de Cáceres, a menos de una hora, con capacidad de resolver cualquier ajuste el mismo día.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Zafra')}
-        ${tipos('Zafra')}
         <h2>Constructor de stands en Zafra: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-internacional-ganadera-zafra">Feria Internacional Ganadera de Zafra</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/montaje-stands-zafra">diseño y montaje de stands en Zafra</a>.</p>
-        ${porque('Zafra')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Zafra</a></p>`
     }
   },
   constructor_stand_trujillo: {
@@ -1054,12 +955,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Trujillo: fabricación propia para Recinto Ferial de Trujillo</h2>
         <p>Trujillo celebra la Feria del Queso y la Feria Agroganadera: producto para probar y ganado para ver. Construimos mostradores de corte y degustación con frío y superficies lavables, y stands de exterior cubierto para la feria ganadera, desde nuestro taller de Cáceres, a menos de una hora del recinto.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Trujillo')}
-        ${tipos('Trujillo')}
         <h2>Constructor de stands en Trujillo: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-internacional-ganadera-trujillo">Feria Agroganadera de Trujillo</a> y <a href="/ferias/stand-feria-nacional-queso-trujillo">Feria Nacional del Queso de Trujillo</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-trujillo">diseño y montaje de stands en Trujillo</a>.</p>
-        ${porque('Trujillo')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Trujillo</a></p>`
     }
   },
   constructor_stand_almeria: {
@@ -1071,12 +969,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Almería: fabricación propia para Palacio de Exposiciones y Congresos de Aguadulce</h2>
         <p>Almería es agricultura intensiva: Infoagro y Expolevante enseñan semillas, riego, plástico y maquinaria de invernadero a un visitante muy técnico. Construimos stands donde el sistema se muestra montado y funcionando, con toma de agua, potencia y suelo reforzado, fabricados en taller propio.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Almería')}
-        ${tipos('Almería')}
         <h2>Constructor de stands en Almería: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-infoagro-exhibition-aguadulce">Infoagro Exhibition</a>, <a href="/ferias/stand-expolevante-el-ejido">Expolevante</a> y <a href="/ferias/stand-sun-blue-congress-almeria">Sun&Blue Congress</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-almeria">diseño y montaje de stands en Almería</a>.</p>
-        ${porque('Almería')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Almería</a></p>`
     }
   },
   constructor_stand_jaen: {
@@ -1088,12 +983,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Jaén: fabricación propia para IFEJA – Palacio de Ferias y Congresos de Jaén</h2>
         <p>Jaén es aceite: Expoliva reúne a almazaras, maquinaria de molienda y envasado y compradores de medio mundo en IFEJA. Construimos stands de cata con mostrador, vitrina y luz que no falsea el color del aceite, y stands de maquinaria con suelo reforzado, ambos desde nuestro taller y con montaje propio.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Jaén')}
-        ${tipos('Jaén')}
         <h2>Constructor de stands en Jaén: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-expoliva-jaen">Expoliva</a>, <a href="/ferias/stand-ibercaza-jaen">Ibercaza</a> y <a href="/ferias/stand-feria-de-los-pueblos-jaen">Feria de los Pueblos</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-jaen">diseño y montaje de stands en Jaén</a>.</p>
-        ${porque('Jaén')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Jaén</a></p>`
     }
   },
   constructor_stand_huelva: {
@@ -1105,12 +997,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Huelva: fabricación propia para Palacio de Congresos Casa Colón y recintos de la provincia</h2>
         <p>Huelva junta frutos rojos, jamón ibérico y pesca en tres recintos distintos: Casa Colón en la capital, Aracena en la sierra y Punta Umbría en la costa. Construimos con el mismo taller para los tres: stand de congreso ligero, mostrador de corte con frío, o stand de exterior cubierto para la feria de la gamba.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Huelva')}
-        ${tipos('Huelva')}
         <h2>Constructor de stands en Huelva: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-congreso-internacional-frutos-rojos-huelva">Congreso Internacional de Frutos Rojos</a>, <a href="/ferias/stand-feria-jamon-cerdo-iberico-aracena">Feria del Jamón y Cerdo Ibérico de Aracena</a> y <a href="/ferias/stand-feria-gamba-chirla-boqueron-punta-umbria">Feria Nacional de la Gamba, la Chirla y el Boquerón</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-huelva">diseño y montaje de stands en Huelva</a>.</p>
-        ${porque('Huelva')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Huelva</a></p>`
     }
   },
   constructor_stand_cordoba: {
@@ -1122,12 +1011,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Córdoba: fabricación propia para Recintos feriales de Córdoba y Los Pedroches</h2>
         <p>Córdoba es caza y cerdo ibérico: Intercaza en la capital y las ferias agroganaderas y del jamón de Los Pedroches. Construimos stands de degustación con mostrador de corte y frío, y stands de exterior cubierto con suelo lavable para las ferias de ganado, fabricados en taller y montados por nuestro equipo.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Córdoba')}
-        ${tipos('Córdoba')}
         <h2>Constructor de stands en Córdoba: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-intercaza-cordoba">Intercaza</a>, <a href="/ferias/stand-feria-agroganadera-pedroches-pozoblanco">Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches</a> y <a href="/ferias/stand-feria-jamon-bellota-dop-pedroches-villanueva-cordoba">Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-cordoba">diseño y montaje de stands en Córdoba</a>.</p>
-        ${porque('Córdoba')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Córdoba</a></p>`
     }
   },
   constructor_stand_granada: {
@@ -1139,12 +1025,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Granada: fabricación propia para Fermasa (Armilla)</h2>
         <p>Granada expone en Fermasa, el recinto de Armilla: feria general de muestras, moda, ciencia y mundo ecuestre. Es un calendario de gran público, así que construimos stands que aguantan fines de semana de aforo completo, con gráfica resistente, mostrador de atención y almacén cerrado.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Granada')}
-        ${tipos('Granada')}
         <h2>Constructor de stands en Granada: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feria-general-muestras-armilla">Feria General de Muestras de Armilla</a>, <a href="/ferias/stand-feria-de-la-ciencia-granada">Feria de la Ciencia</a>, <a href="/ferias/stand-concab-granada">CONCAB Granada</a>, <a href="/ferias/stand-belmoda-granada">Belmoda Granada</a>, <a href="/ferias/stand-sabores-nuestra-tierra-granada">Sabores de Nuestra Tierra</a> y <a href="/ferias/stand-feria-pueblos-granada">Feria de los Pueblos de Granada</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-granada">diseño y montaje de stands en Granada</a>.</p>
-        ${porque('Granada')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Granada</a></p>`
     }
   },
   constructor_stand_cadiz: {
@@ -1156,12 +1039,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Cádiz: fabricación propia para Palacio de Congresos de Cádiz e IFECA (Jerez)</h2>
         <p>Cádiz reparte sus citas entre el Palacio de Congresos de la capital, con la economía azul y lo naval, e IFECA en Jerez, con la Feria del Caballo y Fegasur. Construimos stand de congreso ligero para el primero y stand ganadero de exterior cubierto para el segundo, ambos desde nuestro taller.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Cádiz')}
-        ${tipos('Cádiz')}
         <h2>Constructor de stands en Cádiz: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-blue-zone-forum-navalia-meeting-cadiz">Blue Zone Forum Navalia Meeting</a>, <a href="/ferias/stand-feria-del-caballo-jerez">Feria del Caballo de Jerez</a> y <a href="/ferias/stand-fegasur-jerez">Fegasur</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-cadiz">diseño y montaje de stands en Cádiz</a>.</p>
-        ${porque('Cádiz')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Cádiz</a></p>`
     }
   },
   constructor_stand_marsella: {
@@ -1173,12 +1053,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Marsella: fabricación propia para Parc Chanot – Parc des Expositions et des Congrès de Marseille</h2>
         <p>Parc Chanot recibe desde la Foire Internationale hasta Euromaritime y Sirha Méditerranée: gran público, industria marítima y restauración. Exponer allí desde España es transporte largo y montaje con normas francesas: fabricamos el stand premontado, con certificados de reacción al fuego, y lo montamos con nuestro propio equipo.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Marsella')}
-        ${tipos('Marsella')}
         <h2>Constructor de stands en Marsella: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-marseille">Foire Internationale de Marseille</a>, <a href="/ferias/stand-euromaritime-marseille">Euromaritime</a>, <a href="/ferias/stand-sirha-mediterranee-marseille">Sirha Méditerranée</a>, <a href="/ferias/stand-beauty-profs-marseille">Beauty Prof's</a>, <a href="/ferias/stand-savim-marseille">SAVIM</a>, <a href="/ferias/stand-salon-piscine-jardin-marseille">Salon Piscine & Jardin</a>, <a href="/ferias/stand-solutions-cse-marseille">Solutions CSE Marseille</a> y <a href="/ferias/stand-japan-expo-sud-marseille">Japan Expo Sud</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-marsella">diseño y montaje de stands en Marsella</a>.</p>
-        ${porque('Marsella')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Marsella</a></p>`
     }
   },
   constructor_stand_cannes: {
@@ -1190,12 +1067,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Cannes: fabricación propia para Palais des Festivals et des Congrès</h2>
         <p>Cannes es el Palais des Festivals: MIPIM, MAPIC y TFWA son mercados donde el stand es una oficina de negociación con imagen de marca. Construimos despachos cerrados con acústica, recepción y gráfica de alto acabado, fabricados en taller y montados en las horas escasas que da el Palais.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Cannes')}
-        ${tipos('Cannes')}
         <h2>Constructor de stands en Cannes: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-cannes-yachting-festival">Cannes Yachting Festival</a>, <a href="/ferias/stand-interior-exterior-design-meetings-cannes">Interior & Exterior Design Meetings</a>, <a href="/ferias/stand-mapic-cannes">MAPIC</a>, <a href="/ferias/stand-mipim-cannes">MIPIM</a> y <a href="/ferias/stand-tfwa-cannes">TFWA World Exhibition</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-cannes">diseño y montaje de stands en Cannes</a>.</p>
-        ${porque('Cannes')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Cannes</a></p>`
     }
   },
   constructor_stand_avignon: {
@@ -1207,12 +1081,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Aviñón: fabricación propia para Parc des Expositions d’Avignon (Agroparc)</h2>
         <p>Aviñón es agricultura mediterránea: MED’Agri reúne riego, semillas, maquinaria y frutales en el Parc des Expositions. Construimos stands donde el equipo se muestra montado, con toma de agua y potencia, suelo reforzado y gráfica en francés, fabricados en taller y transportados por carretera con el montaje incluido.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Aviñón')}
-        ${tipos('Aviñón')}
         <h2>Constructor de stands en Aviñón: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-medagri-avignon">MED'Agri</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-avignon">diseño y montaje de stands en Aviñón</a>.</p>
-        ${porque('Aviñón')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Aviñón</a></p>`
     }
   },
   constructor_stand_toulouse: {
@@ -1224,12 +1095,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Toulouse: fabricación propia para MEETT – Parc des Expositions de Toulouse</h2>
         <p>Toulouse es aeronáutica: Aeromart y el Aerospace Test & Development Show reúnen en el MEETT a proveedores de piezas y ensayo con reuniones cerradas de antemano. Construimos stands de negocio —mesas de reunión, vitrinas para piezas de precisión, pantalla— fabricados en taller y montados en el recinto nuevo de Aussonne por nuestro equipo.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Toulouse')}
-        ${tipos('Toulouse')}
         <h2>Constructor de stands en Toulouse: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-toulouse">Foire Internationale de Toulouse</a>, <a href="/ferias/stand-cfia-toulouse">CFIA Toulouse</a>, <a href="/ferias/stand-sepem-industries-toulouse">SEPEM Industries Toulouse</a>, <a href="/ferias/stand-aerospace-test-development-show-toulouse">Aerospace Test & Development Show</a>, <a href="/ferias/stand-aeromart-toulouse">Aeromart Toulouse</a>, <a href="/ferias/stand-siane-toulouse">Salon SIANE</a> y <a href="/ferias/stand-smahrt-toulouse">SMAHRT</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-toulouse">diseño y montaje de stands en Toulouse</a>.</p>
-        ${porque('Toulouse')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Toulouse</a></p>`
     }
   },
   constructor_stand_burdeos: {
@@ -1241,12 +1109,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Burdeos: fabricación propia para Parc des Expositions de Bordeaux-Lac</h2>
         <p>Burdeos es vino y viticultura: Vinitech-Sifel llena Bordeaux-Lac de maquinaria de bodega y viña, y los salones de vignerons, de botellas para catar. Construimos stands de maquinaria con suelo reforzado y stands de cata con barra y frío, fabricados en taller y llevados por carretera con nuestro montaje.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Burdeos')}
-        ${tipos('Burdeos')}
         <h2>Constructor de stands en Burdeos: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-internationale-bordeaux">Foire Internationale de Bordeaux</a>, <a href="/ferias/stand-vinitech-sifel-bordeaux">Vinitech-Sifel</a>, <a href="/ferias/stand-equitaine-bordeaux">Equitaine</a>, <a href="/ferias/stand-salon-agriculture-nouvelle-aquitaine-bordeaux">Salon de l'Agriculture Nouvelle-Aquitaine</a>, <a href="/ferias/stand-art3f-bordeaux">Art3f Bordeaux</a>, <a href="/ferias/stand-grand-salon-habitat-bordeaux">Grand Salon Habitat</a>, <a href="/ferias/stand-salon-vins-vignerons-independants-bordeaux">Salon des Vins des Vignerons Indépendants</a> y <a href="/ferias/stand-cycleau-nouvelle-aquitaine-bordeaux">Cycl'Eau Nouvelle-Aquitaine</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-burdeos">diseño y montaje de stands en Burdeos</a>.</p>
-        ${porque('Burdeos')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Burdeos</a></p>`
     }
   },
   constructor_stand_lyon: {
@@ -1258,12 +1123,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Lyon: fabricación propia para Eurexpo Lyon</h2>
         <p>Eurexpo es un recinto industrial de gran escala: Global Industrie, Pollutec y SIRHA exponen máquinas en funcionamiento y cocinas en directo. Construimos stands con potencia y aire comprimido previstos, suelo técnico y extracción para cocina, fabricados en taller y montados con nuestro equipo bajo las normas del recinto.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Lyon')}
-        ${tipos('Lyon')}
         <h2>Constructor de stands en Lyon: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sirha-lyon">SIRHA</a>, <a href="/ferias/stand-global-industrie-lyon">Global Industrie</a>, <a href="/ferias/stand-pollutec-lyon">Pollutec Lyon</a>, <a href="/ferias/stand-piscine-global-lyon">Piscine Global Europe</a>, <a href="/ferias/stand-preventica-lyon">Préventica Lyon</a>, <a href="/ferias/stand-prod-pack-lyon">Prod&Pack</a> y <a href="/ferias/stand-bepositive-lyon">BEPOSITIVE</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-lyon">diseño y montaje de stands en Lyon</a>.</p>
-        ${porque('Lyon')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Lyon</a></p>`
     }
   },
   constructor_stand_grenoble: {
@@ -1275,12 +1137,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Grenoble: fabricación propia para Alpexpo</h2>
         <p>Grenoble es montaña e industria: Mountain Planet reúne remontes, nieve artificial y equipamiento de estación en Alpexpo. Son productos grandes y pesados: construimos stands con suelo reforzado, estructura para colgar elementos y gráfica de gran formato, fabricados en taller y transportados por carretera.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Grenoble')}
-        ${tipos('Grenoble')}
         <h2>Constructor de stands en Grenoble: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-mountain-planet-grenoble">Mountain Planet</a> y <a href="/ferias/stand-sepem-industries-sud-est-grenoble">SEPEM Industries Sud-Est</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-grenoble">diseño y montaje de stands en Grenoble</a>.</p>
-        ${porque('Grenoble')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Grenoble</a></p>`
     }
   },
   constructor_stand_clermont_ferrand: {
@@ -1292,12 +1151,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Clermont-Ferrand: fabricación propia para Grande Halle d’Auvergne (Cournon)</h2>
         <p>Clermont-Ferrand es el Sommet de l’Élevage, la mayor feria ganadera de Europa, en la Grande Halle d’Auvergne. Un stand allí convive con animales, maquinaria y barro: lo construimos con materiales lavables, estructura sólida y un espacio limpio de reunión, y lo transportamos premontado desde nuestro taller.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Clermont-Ferrand')}
-        ${tipos('Clermont-Ferrand')}
         <h2>Constructor de stands en Clermont-Ferrand: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sommet-elevage-clermont-ferrand">Sommet de l'Élevage</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-clermont-ferrand">diseño y montaje de stands en Clermont-Ferrand</a>.</p>
-        ${porque('Clermont-Ferrand')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Clermont-Ferrand</a></p>`
     }
   },
   constructor_stand_niza: {
@@ -1309,12 +1165,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Niza: fabricación propia para Palais des Expositions y Nice Acropolis</h2>
         <p>Niza expone hostelería, náutica y empresa en el Palais des Expositions y en Acropolis: ferias de dos o tres días con montaje ajustado. Construimos stands premontados y ligeros, con gráfica en francés aplicada en taller, que se levantan en pocas horas y salen la misma noche del cierre.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Niza')}
-        ${tipos('Niza')}
         <h2>Constructor de stands en Niza: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-agecotel-nice">AGECOTEL</a>, <a href="/ferias/stand-nice-boating-tomorrow">Nice Boating Tomorrow</a>, <a href="/ferias/stand-ibt-cote-azur">IBT Côte d'Azur</a>, <a href="/ferias/stand-entreprenariales-nice">Les Entreprenariales</a> y <a href="/ferias/stand-solucop-nice">SOLUCOP</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-niza">diseño y montaje de stands en Niza</a>.</p>
-        ${porque('Niza')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Niza</a></p>`
     }
   },
   constructor_stand_montpellier: {
@@ -1326,12 +1179,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Montpellier: fabricación propia para Parc des Expositions de Montpellier</h2>
         <p>Montpellier es viticultura y vino ecológico: SITEVI expone maquinaria de viña y bodega, y Millésime Bio, botellas para catar. Construimos stands de maquinaria con suelo reforzado y stands de cata con barra, frío y botellero, fabricados en taller y montados por nuestro equipo en el Parc des Expositions.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('Montpellier')}
-        ${tipos('Montpellier')}
         <h2>Constructor de stands en Montpellier: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-sitevi-montpellier">SITEVI</a>, <a href="/ferias/stand-millesime-bio-montpellier">Millésime Bio</a>, <a href="/ferias/stand-sett-montpellier">SETT</a>, <a href="/ferias/stand-energaia-montpellier">EnerGaïa</a>, <a href="/ferias/stand-siprho-montpellier">SIPRHO</a> y <a href="/ferias/stand-ais-montpellier">Antibody Industrial Symposium</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-montpellier">diseño y montaje de stands en Montpellier</a>.</p>
-        ${porque('Montpellier')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Montpellier</a></p>`
     }
   },
   constructor_stand_perpignan: {
@@ -1343,12 +1193,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Perpiñán: fabricación propia para Parc des Expositions de Perpignan</h2>
         <p>Perpiñán es la plaza hortofrutícola del sur de Francia: MEDFEL reúne a productores y distribuidores de fruta y verdura con producto fresco en el stand. Construimos con mostrador refrigerado, superficies lavables y almacén frío, fabricados en taller y montados en el Parc des Expositions, a dos horas de la frontera.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Perpiñán')}
-        ${tipos('Perpiñán')}
         <h2>Constructor de stands en Perpiñán: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-foire-exposition-perpignan">Foire Exposition de Perpignan</a>, <a href="/ferias/stand-medfel-perpignan">MEDFEL</a>, <a href="/ferias/stand-viv-habitat-perpignan">Salon Viv'Habitat</a>, <a href="/ferias/stand-tourisme-loisirs-perpignan">Salon Tourisme & Loisirs</a>, <a href="/ferias/stand-eco-maison-perpignan">Eco-Maison</a>, <a href="/ferias/stand-retro-mecanic-perpignan">Retro Mécanic</a> y <a href="/ferias/stand-salon-mariage-perpignan">Salon du Mariage</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-perpignan">diseño y montaje de stands en Perpiñán</a>.</p>
-        ${porque('Perpiñán')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Perpiñán</a></p>`
     }
   },
   constructor_stand_batalha: {
@@ -1360,12 +1207,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Batalha: fabricación propia para Exposalão – Centro de Exposições da Batalha</h2>
         <p>Exposalão, en Batalha, es el recinto industrial del centro de Portugal: moldes, plástico, metal, piedra y vidrio. Son ferias de máquina en marcha y producto pesado: construimos con suelo técnico, potencia y aire comprimido previstos y gráfica en portugués, fabricados en taller y montados por nuestro equipo.</p>
-        <p>El stand se premonta entero en nuestro taller antes de cargar el camión: cada pieza va numerada, la gráfica aplicada y las instalaciones probadas, de modo que en el pabellón solo se monta, no se improvisa.</p>
-        ${paso('Batalha')}
-        ${tipos('Batalha')}
         <h2>Constructor de stands en Batalha: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-moldplas-batalha">Moldplás</a>, <a href="/ferias/stand-expometal-batalha">Expometal</a>, <a href="/ferias/stand-stone-iberica-batalha">Stone Ibérica</a>, <a href="/ferias/stand-vidrotec-batalha">Vidrotec</a> y <a href="/ferias/stand-decorhotel-batalha">Decorhotel</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-batalha">diseño y montaje de stands en Batalha</a>.</p>
-        ${porque('Batalha')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Batalha</a></p>`
     }
   },
   constructor_stand_santarem: {
@@ -1377,12 +1221,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Santarém: fabricación propia para CNEMA – Centro Nacional de Exposições</h2>
         <p>Santarém es el corazón agrícola de Portugal: la Feira Nacional de Agricultura y Agroglobal llenan el CNEMA de tractores, ganado y producto. Construimos stands de maquinaria con suelo reforzado y stands de degustación con frío, fabricados en taller y transportados desde España con el montaje incluido.</p>
-        <p>Tramitamos con el recinto lo que exige cada pabellón —potencia, agua, alturas, certificados de reacción al fuego de maderas y textiles— y llegamos con la documentación en regla, para que el montaje no se pare por un papel.</p>
-        ${paso('Santarém')}
-        ${tipos('Santarém')}
         <h2>Constructor de stands en Santarém: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-feira-nacional-agricultura-santarem">Feira Nacional de Agricultura</a>, <a href="/ferias/stand-fersant-santarem">FERSANT</a>, <a href="/ferias/stand-agroglobal-santarem">Agroglobal</a> y <a href="/ferias/stand-lusoflora-santarem">Lusoflora</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-santarem">diseño y montaje de stands en Santarém</a>.</p>
-        ${porque('Santarém')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Santarém</a></p>`
     }
   },
   constructor_stand_regua: {
@@ -1394,12 +1235,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Peso da Régua: fabricación propia para Recintos feriales de Peso da Régua (Douro)</h2>
         <p>Peso da Régua es el Douro: ferias de vino de Oporto, enoturismo y sabores de la región, muchas en espacios abiertos junto al río. Construimos stands de cata con barra, frío y botellero, preparados para exterior cubierto, y los llevamos premontados desde nuestro taller.</p>
-        <p>Diseñamos pensando en la siguiente convocatoria: paramentos por módulos, gráfica intercambiable y mobiliario que se guarda y se reutiliza, porque un expositor que repite no debería pagar el stand dos veces.</p>
-        ${paso('Peso da Régua')}
-        ${tipos('Peso da Régua')}
         <h2>Constructor de stands en Peso da Régua: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-douro-porto-wine-festival-regua">Douro & Porto Wine Festival</a>, <a href="/ferias/stand-feira-vinhos-sabores-altos-regua">Feira dos Vinhos e Sabores dos Altos</a> y <a href="/ferias/stand-festa-saberes-sabores-douro-regua">Festa dos Saberes e Sabores do Douro</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-peso-da-regua">diseño y montaje de stands en Peso da Régua</a>.</p>
-        ${porque('Peso da Régua')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Peso da Régua</a></p>`
     }
   },
   constructor_stand_portugal_sur: {
@@ -1411,12 +1249,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en el sur de Portugal: fabricación propia para Parque de Exposições de Beja y recintos del Algarve</h2>
         <p>El sur de Portugal expone en Beja, con Ovibeja y Vinipax, y en el Algarve, con Fatacil y las ferias de Portimão y Lagoa: agricultura, vino y gran público. Construimos stands de exterior cubierto con suelo lavable y stands de cata, y los transportamos premontados desde España con el montaje incluido.</p>
-        <p>Un único responsable lleva el proyecto desde el plano hasta el desmontaje: no hay intermediarios ni talleres subcontratados, y cualquier cambio de última hora se resuelve con nuestro propio equipo en el pabellón.</p>
-        ${paso('el sur de Portugal')}
-        ${tipos('el sur de Portugal')}
         <h2>Constructor de stands en el sur de Portugal: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-ovibeja-beja">Ovibeja</a>, <a href="/ferias/stand-fatacil-lagoa">Fatacil</a>, <a href="/ferias/stand-faceco-moncarapacho">Faceco</a>, <a href="/ferias/stand-feira-de-sao-martinho-portimao">Feira de São Martinho</a>, <a href="/ferias/stand-feira-daires-viana-do-alentejo">Feira d'Aires</a> y <a href="/ferias/stand-vinipax-beja">Vinipax Beja</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-portugal-sur">diseño y montaje de stands en el sur de Portugal</a>.</p>
-        ${porque('el sur de Portugal')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en el sur de Portugal</a></p>`
     }
   },
   constructor_stand_islas_de_madeira: {
@@ -1428,12 +1263,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Madeira: fabricación propia para Madeira Tecnopolo (Funchal)</h2>
         <p>Madeira expone en el Tecnopolo de Funchal: ferias de empleo, emprendimiento, agropecuaria y vino. Todo llega en contenedor: fabricamos y premontamos el stand entero en taller, lo numeramos pieza a pieza y lo embarcamos con repuestos, para que en la isla solo haya que montar.</p>
-        <p>Trabajamos con criterio de taller: medimos el espacio contratado, calculamos cargas y refuerzos, dejamos previstas las acometidas con el recinto y fabricamos la carpintería con materiales pensados para montar rápido, aguantar la feria y volver a servir en la siguiente.</p>
-        ${paso('Madeira')}
-        ${tipos('Madeira')}
         <h2>Constructor de stands en Madeira: ferias de la plaza</h2>
         <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-expomadeira">Expomadeira</a>, <a href="/ferias/stand-feira-agropecuaria-madeira">Feira Agropecuária da Madeira</a>, <a href="/ferias/stand-feira-emprego-formacao-empreendedorismo-madeira">Feira do Emprego, Formação e Empreendedorismo</a>, <a href="/ferias/stand-feira-empreendedorismo-madeira">Feira do Empreendedorismo da Madeira</a>, <a href="/ferias/stand-festa-vinho-madeira">Festa do Vinho da Madeira</a> y <a href="/ferias/stand-cider-fest-madeira">Cider Fest Madeira</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-islas-madeira">diseño y montaje de stands en Madeira</a>.</p>
-        ${porque('Madeira')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Madeira</a></p>`
     }
   },
   constructor_stand_merida: {
@@ -1445,12 +1277,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Mérida: fabricación propia para IFEME</h2>
         <p>Mérida es la capital de Extremadura y su recinto, IFEME, recibe un calendario de gran público: el Salón del Automóvil, la Feria de Bodas y Hogar, el coleccionismo de Emérita Augusta y FETUREX, la feria de turismo de la región. Son ferias de fin de semana con aforo alto y visitante que se para, toca y pregunta, así que el stand se construye para el paso continuo: gráfica resistente, mostrador de atención, suelo que no acusa el uso y un almacén cerrado para el material.</p>
-        <p>Desde nuestro taller de Cáceres, a menos de una hora del recinto, fabricamos y premontamos el stand entero: llegamos con las piezas numeradas y la gráfica aplicada, y cualquier ajuste del día del montaje se resuelve con nuestro propio equipo, sin esperar a un proveedor.</p>
-        ${paso('Mérida')}
-        ${tipos('Mérida')}
         <h2>Constructor de stands en Mérida: ferias de la plaza</h2>
         <p>Construimos para el calendario de IFEME: <a href="/ferias/stand-salon-automovil-merida">Salón del Automóvil de Mérida</a>, <a href="/ferias/stand-feria-bodas-hogar-merida">Feria de Bodas y Hogar</a>, <a href="/ferias/stand-coleccionismo-emerita-augusta-merida">Feria de Coleccionismo Emérita Augusta</a> y <a href="/ferias/stand-feturex-merida">FETUREX</a>. El servicio completo de diseño y montaje para la provincia está en nuestra página de <a href="/diseno-construccion-montaje-stands-badajoz">diseño y montaje de stands en Badajoz</a>.</p>
-        ${porque('Mérida')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Mérida</a></p>`
     }
   },
   constructor_stand_almendralejo: {
@@ -1462,12 +1291,9 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Almendralejo: fabricación propia para la capital del vino extremeño</h2>
         <p>Almendralejo es Tierra de Barros: bodegas, cava y aceite, con Vinac como feria de referencia del sector. Un stand de bodega aquí se construye para catar y vender: barra de cata a la altura correcta, botellero iluminado en frío, un reservado para el distribuidor y superficies que aguantan el trasiego de copas durante toda la feria.</p>
-        <p>Desde nuestro taller de Cáceres, a menos de una hora, fabricamos y premontamos el stand entero, y diseñamos los elementos para que vuelvan a servir en las siguientes citas del vino de la región y de España, porque una bodega que expone cada año no debería pagar el stand cada año.</p>
-        ${paso('Almendralejo')}
-        ${tipos('Almendralejo')}
         <h2>Constructor de stands en Almendralejo: ferias de la plaza</h2>
         <p>Construimos para <a href="/ferias/stand-vinac-almendralejo">Vinac Almendralejo</a> y para el resto del calendario extremeño, desde <a href="/ferias/stand-feria-internacional-ganadera-zafra">la Feria Internacional Ganadera de Zafra</a> hasta <a href="/ferias/stand-feturex-merida">FETUREX en Mérida</a>. El servicio completo de diseño y montaje para la provincia está en nuestra página de <a href="/diseno-construccion-montaje-stands-badajoz">diseño y montaje de stands en Badajoz</a>.</p>
-        ${porque('Almendralejo')}`
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Almendralejo</a></p>`
     }
   },
 };
@@ -1780,12 +1606,9 @@ const EN = {
     body: `
         <h2>Stand builder in Valencia: in-house manufacturing for Feria Valencia</h2>
         <p>Feria Valencia is a venue of big halls and a dense calendar: Cevisama and Hábitat call for stands where the product — ceramics, furniture, lighting — is touched and compared up close, with finishes that survive a professional’s eye at arm’s length. We build in our own workshop and arrive with the stand pre-assembled, because build-up slots in Valencia are short and the hall fills in hours.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Valencia')}
-        ${tiposEn('Valencia')}
         <h2>Stand builder in Valencia: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-beauty-forum-valencia">Beauty Forum Valencia</a>, <a href="/en/ferias/stand-cevisama-valencia">Cevisama</a>, <a href="/en/ferias/stand-habitat-valencia">Feria Hábitat València</a>, <a href="/en/ferias/stand-textilhogar-valencia">Textilhogar</a>, <a href="/en/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a>, <a href="/en/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a>, <a href="/en/ferias/stand-iberflora-valencia">Iberflora</a> and <a href="/en/ferias/stand-gastronoma-valencia">Gastrónoma</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_valencia">stand design and installation in Valencia</a> page.</p>
-        ${porqueEn('Valencia')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Valencia</a></p>`
   },
   constructor_stand_valladolid: {
     breadcrumb: 'Stand builder in Valladolid',
@@ -1795,12 +1618,9 @@ const EN = {
     body: `
         <h2>Stand builder in Valladolid: in-house manufacturing for Feria de Valladolid</h2>
         <p>Feria de Valladolid alternates public shows such as INTUR with technical fairs for farm machinery and poultry, and each calls for a different build: graphics and a walk-through for the strolling visitor, reinforced floor and services for the equipment shown running. We handle both from the same workshop and with the same installation crew.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Valladolid')}
-        ${tiposEn('Valladolid')}
         <h2>Stand builder in Valladolid: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-intur-valladolid">INTUR</a>, <a href="/en/ferias/stand-fine-valladolid">FINE Valladolid</a>, <a href="/en/ferias/stand-technology-show-valladolid">Technology Show Valladolid</a>, <a href="/en/ferias/stand-feria-artesania-valladolid">Feria de Artesanía de Valladolid</a>, <a href="/en/ferias/stand-agraria-valladolid">AGRARIA</a>, <a href="/en/ferias/stand-agrovid-valladolid">AGROVID</a>, <a href="/en/ferias/stand-aviforum-valladolid">aviFORUM</a> and <a href="/en/ferias/stand-fimascota-valladolid">FIMASCOTA</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_valladolid">stand design and installation in Valladolid</a> page.</p>
-        ${porqueEn('Valladolid')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Valladolid</a></p>`
   },
   constructor_stand_alicante: {
     breadcrumb: 'Stand builder in Alicante',
@@ -1810,12 +1630,9 @@ const EN = {
     body: `
         <h2>Stand builder in Alicante: in-house manufacturing for IFA – Institución Ferial Alicantina (Elche)</h2>
         <p>The province’s exhibition centre, IFA, sits in Elche, while Alicante city hosts the congresses and the food events of the capital. We build for both settings: a fair stand with storage and counter for several days, or a congress stand that goes up in a morning and comes down the same night.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Alicante')}
-        ${tiposEn('Alicante')}
         <h2>Stand builder in Alicante: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-alicante-gastronomica">Alicante Gastronómica</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_alicante">stand design and installation in Alicante</a> page.</p>
-        ${porqueEn('Alicante')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Alicante</a></p>`
   },
   constructor_stand_elche: {
     breadcrumb: 'Stand builder in Elche',
@@ -1825,12 +1642,9 @@ const EN = {
     body: `
         <h2>Stand builder in Elche: in-house manufacturing for IFA – Institución Ferial Alicantina</h2>
         <p>Elche is the footwear capital and its venue, IFA, hosts fairs where the product is shown as a sample range and sold by collection. The stand needs display walls with shelving at hand height, light true to the colour of leather and a closed corner where the buyer sees the whole collection without the crowd; we make it all in our own joinery.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Elche')}
-        ${tiposEn('Elche')}
         <h2>Stand builder in Elche: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-futurmoda-elche">Futurmoda</a> and <a href="/en/ferias/stand-firauto-elche">Firauto</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_elche">stand design and installation in Elche</a> page.</p>
-        ${porqueEn('Elche')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Elche</a></p>`
   },
   constructor_stand_murcia: {
     breadcrumb: 'Stand builder in Murcia',
@@ -1840,12 +1654,9 @@ const EN = {
     body: `
         <h2>Stand builder in Murcia: in-house manufacturing for IFEPA – Institución Ferial de la Región de Murcia (Torre Pacheco)</h2>
         <p>The Region’s venue is in Torre Pacheco and its calendar is agricultural and industrial: machinery, irrigation, fruit and vegetables, construction. These are fairs of heavy product and real samples, so we build with technical flooring, calculated reinforcement and planned services, and bring the stand pre-assembled from our workshop.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Murcia')}
-        ${tiposEn('Murcia')}
         <h2>Stand builder in Murcia: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-fame-innowa-torre-pacheco">FAME Innowa</a>, <a href="/en/ferias/stand-equimur-torre-pacheco">EQUIMUR</a>, <a href="/en/ferias/stand-hortifruit-torre-pacheco">HortiFruit</a> and <a href="/en/ferias/stand-fecons-torre-pacheco">FECONS</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_murcia">stand design and installation in Murcia</a> page.</p>
-        ${porqueEn('Murcia')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Murcia</a></p>`
   },
   constructor_stand_salamanca: {
     breadcrumb: 'Stand builder in Salamanca',
@@ -1855,12 +1666,9 @@ const EN = {
     body: `
         <h2>Stand builder in Salamanca: in-house manufacturing for Recinto Ferial de Salamanca</h2>
         <p>Salamanca’s exhibition centre is a livestock and machinery venue: SALAMAQ fills the yards and halls with animals, tractors and implements. A stand here is built for covered outdoor conditions and the traffic of mud and cattle, with washable materials, solid structure and a clean space to sit down and negotiate.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Salamanca')}
-        ${tiposEn('Salamanca')}
         <h2>Stand builder in Salamanca: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-salamaq-salamanca">SALAMAQ</a>, <a href="/en/ferias/stand-salon-automovil-salamanca">Salón del Automóvil de Salamanca</a> and <a href="/en/ferias/stand-congreso-alineadores-salamanca">Congreso Internacional de Alineadores</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_salamanca">stand design and installation in Salamanca</a> page.</p>
-        ${porqueEn('Salamanca')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Salamanca</a></p>`
   },
   constructor_stand_coruna: {
     breadcrumb: 'Stand builder in A Coruña',
@@ -1870,12 +1678,9 @@ const EN = {
     body: `
         <h2>Stand builder in A Coruña: in-house manufacturing for ExpoCoruña y Palexco</h2>
         <p>A Coruña splits its events between ExpoCoruña, a column-free hall with generous height, and Palexco, the congress centre on the harbour: the first admits double-decker stands and heavy product; the second calls for light builds that fit through the congress entrance and go up in a few hours. We make both versions in our own workshop.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('A Coruña')}
-        ${tiposEn('A Coruña')}
         <h2>Stand builder in A Coruña: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-forum-gastronomico-a-coruna">Galicia Fórum Gastronómico</a>, <a href="/en/ferias/stand-mundos-digitales-a-coruna">Mundos Digitales</a> and <a href="/en/ferias/stand-biocultura-a-coruna">BioCultura A Coruña</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_a_coruna">stand design and installation in A Coruña</a> page.</p>
-        ${porqueEn('A Coruña')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in A Coruña</a></p>`
   },
   constructor_stand_santiago: {
     breadcrumb: 'Stand builder in Santiago de Compostela',
@@ -1885,12 +1690,9 @@ const EN = {
     body: `
         <h2>Stand builder in Santiago de Compostela: in-house manufacturing for Palacio de Congresos e Exposicións de Galicia</h2>
         <p>In Santiago the venue is a congress centre, and that shapes the build: compact stands, no heavy work, graphics applied in the workshop and an installation that respects the building’s floors and walls. We arrive with numbered parts and a rehearsed stand, because a congress build-up window is counted in hours.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Santiago de Compostela')}
-        ${tiposEn('Santiago de Compostela')}
         <h2>Stand builder in Santiago de Compostela: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-fairway-santiago-de-compostela">Fairway Santiago de Compostela</a>, <a href="/en/ferias/stand-maker-faire-galicia-santiago-de-compostela">Maker Faire Galicia Santiago de Compostela</a>, <a href="/en/ferias/stand-gedet-santiago-de-compostela">GEDET Santiago de Compostela</a>, <a href="/en/ferias/stand-semergen-santiago-de-compostela">Congreso SEMERGEN Santiago de Compostela</a>, <a href="/en/ferias/stand-sesmi-santiago-de-compostela">SESMI Santiago de Compostela</a> and <a href="/en/ferias/stand-galicia-escena-pro-santiago-de-compostela">Galicia Escena PRO</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_santiago_de_compostela">stand design and installation in Santiago de Compostela</a> page.</p>
-        ${porqueEn('Santiago de Compostela')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Santiago de Compostela</a></p>`
   },
   constructor_stand_vigo: {
     breadcrumb: 'Stand builder in Vigo',
@@ -1900,12 +1702,9 @@ const EN = {
     body: `
         <h2>Stand builder in Vigo: in-house manufacturing for IFEVI – Instituto Ferial de Vigo</h2>
         <p>IFEVI, in Cotogrande, hosts Conxemar and Navalia: frozen seafood and shipbuilding, two sectors that exhibit heavy equipment and industrial cold. We build stands with reinforced floors, high-power electrical services planned in advance and surfaces cleaned daily, made in our workshop and installed by our own crew.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Vigo')}
-        ${tiposEn('Vigo')}
         <h2>Stand builder in Vigo: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-conxemar-vigo">Conxemar Vigo</a>, <a href="/en/ferias/stand-navalia-vigo">Navalia</a>, <a href="/en/ferias/stand-nortrans-vigo">Nortrans</a> and <a href="/en/ferias/stand-mindtech-vigo">Mindtech</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_vigo">stand design and installation in Vigo</a> page.</p>
-        ${porqueEn('Vigo')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Vigo</a></p>`
   },
   constructor_stand_ourense: {
     breadcrumb: 'Stand builder in Ourense',
@@ -1915,12 +1714,9 @@ const EN = {
     body: `
         <h2>Stand builder in Ourense: in-house manufacturing for Expourense</h2>
         <p>Expourense hosts Xantar and Termatalia, two tasting and experience fairs: here the stand has a kitchen or service area, water and extraction, and a counter where the visitor tries the product. We build it with washable surfaces and a real back room, not a folding screen, so the service works for four straight days.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Ourense')}
-        ${tiposEn('Ourense')}
         <h2>Stand builder in Ourense: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-xantar-ourense">Xantar</a> and <a href="/en/ferias/stand-termatalia-ourense">Termatalia</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_ourense">stand design and installation in Ourense</a> page.</p>
-        ${porqueEn('Ourense')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Ourense</a></p>`
   },
   constructor_stand_silleda: {
     breadcrumb: 'Stand builder in Silleda',
@@ -1930,12 +1726,9 @@ const EN = {
     body: `
         <h2>Stand builder in Silleda: in-house manufacturing for Feira Internacional de Galicia ABANCA</h2>
         <p>The Feira Internacional de Galicia, in Silleda, is a countryside venue: Semana Verde mixes livestock, machinery and the general public, and Turexpo brings destinations and hotels. We build stands that withstand thousands of weekend visitors, with solid structure, hard-wearing graphics and a lockable store.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Silleda')}
-        ${tiposEn('Silleda')}
         <h2>Stand builder in Silleda: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-semana-verde-galicia-silleda">Semana Verde de Galicia</a> and <a href="/en/ferias/stand-turexpo-galicia-silleda">Turexpo Galicia</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_silleda">stand design and installation in Silleda</a> page.</p>
-        ${porqueEn('Silleda')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Silleda</a></p>`
   },
   constructor_stand_gijon: {
     breadcrumb: 'Stand builder in Gijón',
@@ -1945,12 +1738,9 @@ const EN = {
     body: `
         <h2>Stand builder in Gijón: in-house manufacturing for Recinto Ferial Luis Adaro</h2>
         <p>The Luis Adaro exhibition centre lives for FIDMA, the great trade fair of the Cantabrian coast: two weeks of continuous public, halls and outdoor areas. A stand for that fair is built to last, with materials that show no wear after fifteen days and a layout that spreads the flow without bottlenecks.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Gijón')}
-        ${tiposEn('Gijón')}
         <h2>Stand builder in Gijón: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-fidma-gijon">FIDMA – Feria Internacional de Muestras de Asturias</a>, <a href="/en/ferias/stand-agropec-gijon">AGROPEC Gijón</a>, <a href="/en/ferias/stand-salon-competicion-asturias-gijon">Salón de Competición de Asturias</a>, <a href="/en/ferias/stand-asturforesta-tineo">Asturforesta</a>, <a href="/en/ferias/stand-feria-muestras-tineo">Feria de Muestras de Tineo</a> and <a href="/en/ferias/stand-agroalimentaria-vegadeo">Feria Agroalimentaria de Vegadeo</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_gijon">stand design and installation in Gijón</a> page.</p>
-        ${porqueEn('Gijón')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Gijón</a></p>`
   },
   constructor_stand_santander: {
     breadcrumb: 'Stand builder in Santander',
@@ -1960,12 +1750,9 @@ const EN = {
     body: `
         <h2>Stand builder in Santander: in-house manufacturing for Palacio de Exposiciones y Congresos de Santander</h2>
         <p>Santander’s exhibition centre hosts art, organic and motor fairs, and Torrelavega’s national cattle market adds agricultural events. We build for both venues from the same workshop: clean walls and careful lighting for artwork, floor and vehicle access for cars or machinery.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Santander')}
-        ${tiposEn('Santander')}
         <h2>Stand builder in Santander: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-artesantander">ARTESANTANDER</a>, <a href="/en/ferias/stand-biocantabria-santander">BioCantabria</a>, <a href="/en/ferias/stand-feria-apicola-cantabria-torrelavega">Feria Nacional Apícola de Cantabria</a> and <a href="/en/ferias/stand-feria-concesionarios-torrelavega">Feria de Concesionarios de Torrelavega</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_santander">stand design and installation in Santander</a> page.</p>
-        ${porqueEn('Santander')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Santander</a></p>`
   },
   constructor_stand_irun: {
     breadcrumb: 'Stand builder in Irún',
@@ -1975,12 +1762,9 @@ const EN = {
     body: `
         <h2>Stand builder in Irún: in-house manufacturing for Ficoba – Feria de Muestras de Gipuzkoa</h2>
         <p>Ficoba, on the Bidasoa border, concentrates mobility, industry and organics: MUBIL shows vehicles and chargers in operation, and Bioterra product to touch and taste. We build with high-power electrical services planned, vehicle-grade flooring and tasting furniture made in our own workshop.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Irún')}
-        ${tiposEn('Irún')}
         <h2>Stand builder in Irún: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-mubil-mobility-expo-irun">MUBIL Mobility Expo</a>, <a href="/en/ferias/stand-unire-irun">UNIRE</a>, <a href="/en/ferias/stand-bioterra-irun">Bioterra</a>, <a href="/en/ferias/stand-caravantur-irun">Caravantur</a>, <a href="/en/ferias/stand-uhinak-irun">Uhinak</a> and <a href="/en/ferias/stand-go-mobility-irun">Go Mobility</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_irun">stand design and installation in Irún</a> page.</p>
-        ${porqueEn('Irún')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Irún</a></p>`
   },
   constructor_stand_vitoria: {
     breadcrumb: 'Stand builder in Vitoria',
@@ -1990,12 +1774,9 @@ const EN = {
     body: `
         <h2>Stand builder in Vitoria: in-house manufacturing for Palacio de Congresos Europa y recintos de Álava</h2>
         <p>Vitoria-Gasteiz spreads its fairs between the Europa Congress Centre and the exhibition spaces of Álava: jobs, training, wine and retail. These are one-to-three-day events with build-up in hours, so the stand arrives pre-assembled from our workshop, graphics applied and furniture ready to place.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Vitoria')}
-        ${tiposEn('Vitoria')}
         <h2>Stand builder in Vitoria: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-ardoaraba-vitoria">Ardoaraba</a>, <a href="/en/ferias/stand-avanza-fp-alava-vitoria">AVANZA – Feria de FP de Álava</a>, <a href="/en/ferias/stand-empleo-gune-vitoria">Empleo Gune</a>, <a href="/en/ferias/stand-feria-stocks-vitoria">Feria de Stocks</a> and <a href="/en/ferias/stand-lanberri-vitoria">Lanberri</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_vitoria">stand design and installation in Vitoria</a> page.</p>
-        ${porqueEn('Vitoria')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Vitoria</a></p>`
   },
   constructor_stand_pamplona: {
     breadcrumb: 'Stand builder in Pamplona',
@@ -2005,12 +1786,9 @@ const EN = {
     body: `
         <h2>Stand builder in Pamplona: in-house manufacturing for Baluarte y recintos feriales de Navarra</h2>
         <p>Pamplona holds its fairs at Baluarte, the congress centre, and at the Navarre exhibition venues: tourism, construction, jobs and wine. In a congress centre you cannot build on site: we make light, self-supporting stands, built entirely in the workshop, that anchor without damaging the building and come out in one night.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Pamplona')}
-        ${tiposEn('Pamplona')}
         <h2>Stand builder in Pamplona: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-navartur-pamplona">NAVARTUR</a>, <a href="/en/ferias/stand-salon-estudiante-futuro-profesional-pamplona">Salón del Estudiante y Futuro Profesional</a>, <a href="/en/ferias/stand-edifica-pamplona">EDIFICA</a>, <a href="/en/ferias/stand-navarra-jobs-pamplona">Navarra Jobs</a>, <a href="/en/ferias/stand-feria-navarra-ecologica-pamplona">Feria Navarra Ecológica</a>, <a href="/en/ferias/stand-navarra-wine-gastronomy-pamplona">Navarra Wine & Gastronomy</a> and <a href="/en/ferias/stand-feria-turismo-reyno-navarra-pamplona">Feria Internacional de Turismo Reyno de Navarra</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_pamplona">stand design and installation in Pamplona</a> page.</p>
-        ${porqueEn('Pamplona')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Pamplona</a></p>`
   },
   constructor_stand_logrono: {
     breadcrumb: 'Stand builder in Logroño',
@@ -2020,12 +1798,9 @@ const EN = {
     body: `
         <h2>Stand builder in Logroño: in-house manufacturing for Riojaforum y recintos feriales de La Rioja</h2>
         <p>Logroño is wine: at Riojaforum and the Rioja venues bottles are tasted and distribution deals closed. We build winery stands with a tasting bar at the right height, a lit bottle display that does not warm the wine, refrigeration for the whites and a private corner for the meeting with the importer.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Logroño')}
-        ${tiposEn('Logroño')}
         <h2>Stand builder in Logroño: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-rioja-wine-trade-mission-logrono">Rioja Wine Trade Mission</a>, <a href="/en/ferias/stand-planeta-rioja-logrono">Planeta Rioja</a>, <a href="/en/ferias/stand-feria-formacion-profesional-la-rioja-logrono">Feria de Formación Profesional de La Rioja</a>, <a href="/en/ferias/stand-feria-vehiculo-ocasion-logrono">Feria del Vehículo de Ocasión de Logroño</a>, <a href="/en/ferias/stand-feria-maquinaria-agricola-alfaro">Feria de Maquinaria Agrícola de Alfaro</a> and <a href="/en/ferias/stand-ferias-agroalimentarias-rioja-oriental-calahorra">Ferias Agroalimentarias de la Rioja Oriental</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_logrono">stand design and installation in Logroño</a> page.</p>
-        ${porqueEn('Logroño')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Logroño</a></p>`
   },
   constructor_stand_lleida: {
     breadcrumb: 'Stand builder in Lleida',
@@ -2035,12 +1810,9 @@ const EN = {
     body: `
         <h2>Stand builder in Lleida: in-house manufacturing for Fira de Lleida</h2>
         <p>Fira de Lleida is the north-east’s agricultural venue: the Fira de Sant Miquel shows machinery and Municipàlia equipment for town councils. We build stands that take a tractor inside and a service counter beside it, with technical flooring, large-format graphics and a lockable store for materials.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Lleida')}
-        ${tiposEn('Lleida')}
         <h2>Stand builder in Lleida: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-municipalia-lleida">Municipàlia Lleida</a> and <a href="/en/ferias/stand-fira-sant-miquel-lleida">Fira de Sant Miquel Lleida</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_lleida">stand design and installation in Lleida</a> page.</p>
-        ${porqueEn('Lleida')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Lleida</a></p>`
   },
   constructor_stand_girona: {
     breadcrumb: 'Stand builder in Girona',
@@ -2050,12 +1822,9 @@ const EN = {
     body: `
         <h2>Stand builder in Girona: in-house manufacturing for Fira de Girona</h2>
         <p>Girona is top-tier gastronomy and its Fòrum Gastronòmic calls for live-cooking stands: water and power, extraction, a worktop at professional height and a tasting counter facing the aisle. Everything is made in our own workshop and arrives tested at the venue.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Girona')}
-        ${tiposEn('Girona')}
         <h2>Stand builder in Girona: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-forum-gastronomic-girona">Fòrum Gastronòmic Girona</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_girona">stand design and installation in Girona</a> page.</p>
-        ${porqueEn('Girona')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Girona</a></p>`
   },
   constructor_stand_mallorca: {
     breadcrumb: 'Stand builder in Mallorca',
@@ -2065,12 +1834,9 @@ const EN = {
     body: `
         <h2>Stand builder in Mallorca: in-house manufacturing for Palau de Congressos de Palma y Moll Vell</h2>
         <p>In Mallorca you exhibit on the quay: the Palma International Boat Show and the Superyacht Village build on the Moll Vell, with wind, salt and hand loading. We build stands for a harbour exterior — braced structure, marine materials, graphics that do not peel — and, at the Palau de Congressos, hospitality and local-product stands.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Mallorca')}
-        ${tiposEn('Mallorca')}
         <h2>Stand builder in Mallorca: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-palma-international-boat-show">Palma International Boat Show</a>, <a href="/en/ferias/stand-palma-superyacht-village">Palma Superyacht Village</a>, <a href="/en/ferias/stand-baleart-mallorca">Baleart</a>, <a href="/en/ferias/stand-dijous-bo-mallorca">Dijous Bo</a>, <a href="/en/ferias/stand-horeca-baleares-mallorca">HORECA Baleares Mallorca</a>, <a href="/en/ferias/stand-fira-vi-pollenca-mallorca">Fira del Vi de Pollença</a>, <a href="/en/ferias/stand-wine-days-binissalem-mallorca">Wine Days Mallorca – DO Binissalem</a> and <a href="/en/ferias/stand-fira-sipia-alcudia-mallorca">Fira de la Sípia</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_mallorca">stand design and installation in Mallorca</a> page.</p>
-        ${porqueEn('Mallorca')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Mallorca</a></p>`
   },
   constructor_stand_ibiza: {
     breadcrumb: 'Stand builder in Ibiza',
@@ -2080,12 +1846,9 @@ const EN = {
     body: `
         <h2>Stand builder in Ibiza: in-house manufacturing for Recinto Ferial de Ibiza</h2>
         <p>Ibiza has boating, hospitality and retail fairs, and island logistics: everything arrives by ship and there is no margin for a forgotten part. We build the whole stand in the workshop, pre-assemble it and ship it with numbered parts and spares inside, to install without depending on a local supplier.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Ibiza')}
-        ${tiposEn('Ibiza')}
         <h2>Stand builder in Ibiza: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-horeca-baleares-ibiza">HORECA Baleares Ibiza</a>, <a href="/en/ferias/stand-fira-mar-ibiza">Fira de la Mar</a> and <a href="/en/ferias/stand-feria-stocks-ibiza">Feria de Stocks de Ibiza</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_ibiza">stand design and installation in Ibiza</a> page.</p>
-        ${porqueEn('Ibiza')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Ibiza</a></p>`
   },
   constructor_stand_menorca: {
     breadcrumb: 'Stand builder in Menorca',
@@ -2095,12 +1858,9 @@ const EN = {
     body: `
         <h2>Stand builder in Menorca: in-house manufacturing for Recintos feriales de Menorca</h2>
         <p>Menorca holds local-product, agri-food and hospitality fairs, with exhibitors bringing cheese, wine and cured meats to taste. We build stands with refrigerated counter, washable surfaces and a tasting bar, shipped from the mainland pre-assembled and with their spares.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Menorca')}
-        ${tiposEn('Menorca')}
         <h2>Stand builder in Menorca: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-horeca-baleares-menorca">HORECA Baleares Menorca</a>, <a href="/en/ferias/stand-fira-camp-alaior-menorca">Fira del Camp</a> and <a href="/en/ferias/stand-arrels-menorca">Arrels, Fira de Producte Local i Cuina de Menorca</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_menorca">stand design and installation in Menorca</a> page.</p>
-        ${porqueEn('Menorca')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Menorca</a></p>`
   },
   constructor_stand_islas_canarias: {
     breadcrumb: 'Stand builder in the Canary Islands',
@@ -2110,12 +1870,9 @@ const EN = {
     body: `
         <h2>Stand builder in the Canary Islands: in-house manufacturing for Recinto Ferial de Tenerife e Infecar (Gran Canaria)</h2>
         <p>The Canaries have two main venues, in Santa Cruz de Tenerife and Las Palmas, and one logistics rule: the container leaves in advance and does not go back for what is missing. We build and pre-assemble the whole stand in the workshop, document it part by part and ship it with spares, so that installation on the island is just installation.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('the Canary Islands')}
-        ${tiposEn('the Canary Islands')}
         <h2>Stand builder in the Canary Islands: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-feaga-fuerteventura">FEAGA</a>, <a href="/en/ferias/stand-gastrocanarias-tenerife">GastroCanarias</a>, <a href="/en/ferias/stand-gran-canaria-me-gusta">Gran Canaria Me Gusta</a>, <a href="/en/ferias/stand-canagua-energia-gran-canaria">Canagua & Energía</a>, <a href="/en/ferias/stand-fimar-las-palmas">FIMAR</a>, <a href="/en/ferias/stand-salon-atlantico-logistica-transporte">Salón Atlántico de Logística y Transporte</a>, <a href="/en/ferias/stand-moda-tenerife">Feria Internacional de Moda de Tenerife</a> and <a href="/en/ferias/stand-expodeca">ExpoDeca</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_canary_islands">stand design and installation in the Canary Islands</a> page.</p>
-        ${porqueEn('the Canary Islands')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in the Canary Islands</a></p>`
   },
   constructor_stand_ceuta: {
     breadcrumb: 'Stand builder in Ceuta',
@@ -2125,12 +1882,9 @@ const EN = {
     body: `
         <h2>Stand builder in Ceuta: in-house manufacturing for Palacio de Congresos de Ceuta</h2>
         <p>Ceuta exhibits at its Congress Centre and in city spaces: blue economy, entrepreneurship and technology. The stand crosses the Strait by ship and goes up in a congress building, so we build it light, self-supporting and pre-assembled, with graphics applied in the workshop and installation in hours.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Ceuta')}
-        ${tiposEn('Ceuta')}
         <h2>Stand builder in Ceuta: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-bet-on-ceuta">Bet On Ceuta</a>, <a href="/en/ferias/stand-ceuta-impulsa">Ceuta Impulsa</a> and <a href="/en/ferias/stand-odissea-economia-azul-ceuta">Odissea, Economía Azul de Ceuta</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_ceuta">stand design and installation in Ceuta</a> page.</p>
-        ${porqueEn('Ceuta')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Ceuta</a></p>`
   },
   constructor_stand_melilla: {
     breadcrumb: 'Stand builder in Melilla',
@@ -2140,12 +1894,9 @@ const EN = {
     body: `
         <h2>Stand builder in Melilla: in-house manufacturing for Palacio de Exposiciones y Congresos de Melilla</h2>
         <p>Melilla holds its economic-opportunity and intercultural fairs at the Exhibition and Congress Centre. Everything travels by ship: we build the complete stand in the workshop, pre-assemble it and ship it numbered, with spares and tools, to install without surprises on arrival.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Melilla')}
-        ${tiposEn('Melilla')}
         <h2>Stand builder in Melilla: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-feria-oportunidades-economicas-melilla">Feria de Oportunidades Económicas de Melilla</a>, <a href="/en/ferias/stand-feria-representacion-intercultural-melilla">Feria de Representación Intercultural de Melilla</a> and <a href="/en/ferias/stand-eventos-empresariales-proyecto-melilla">Eventos Empresariales Proyecto Melilla</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_melilla">stand design and installation in Melilla</a> page.</p>
-        ${porqueEn('Melilla')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Melilla</a></p>`
   },
   constructor_stand_tanger: {
     breadcrumb: 'Stand builder in Tangier',
@@ -2155,12 +1906,9 @@ const EN = {
     body: `
         <h2>Stand builder in Tangier: in-house manufacturing for Recintos feriales de Tánger y Tanger Med</h2>
         <p>Tangier is textiles, fashion and industry: Maroc in Mode and the Tanger Med meetings gather manufacturers showing sample ranges and production capacity. We build stands with collection panels, fitting room and meeting room, made in Spain, transported with customs paperwork prepared and installed by our own crew.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Tangier')}
-        ${tiposEn('Tangier')}
         <h2>Stand builder in Tangier: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-maroc-in-mode-mim-tanger">Maroc in Mode (MIM) Tánger</a>, <a href="/en/ferias/stand-tanger-nexus">Tanger Nexus</a>, <a href="/en/ferias/stand-tanger-fashion-week">Tanger Fashion Week</a>, <a href="/en/ferias/stand-amith-nord-tanger">Encuentros Industriales AMITH Nord</a> and <a href="/en/ferias/stand-eventos-industriales-tanger-med">Eventos Industriales Tanger Med</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_tangier">stand design and installation in Tangier</a> page.</p>
-        ${porqueEn('Tangier')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Tangier</a></p>`
   },
   constructor_stand_casablanca: {
     breadcrumb: 'Stand builder in Casablanca',
@@ -2170,12 +1918,9 @@ const EN = {
     body: `
         <h2>Stand builder in Casablanca: in-house manufacturing for Parc d’Exposition de l’OFEC (Casablanca)</h2>
         <p>Casablanca is Morocco’s trade fair venue: logistics, food, energy, plastics and packaging all pass through the OFEC grounds. Exhibiting there from Spain requires transport under ATA carnet or temporary export and a stand that goes up without depending on local workshops: we build it whole, pre-assemble it and travel with it.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Casablanca')}
-        ${tiposEn('Casablanca')}
         <h2>Stand builder in Casablanca: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-logismed-casablanca">Logismed</a>, <a href="/en/ferias/stand-morocco-food-expo-casablanca">Morocco Food Expo</a>, <a href="/en/ferias/stand-siema-casablanca">Morocco SIEMA Expo</a>, <a href="/en/ferias/stand-siab-casablanca">SIAB Expo Maroc</a>, <a href="/en/ferias/stand-elec-expo-casablanca">Elec Expo</a>, <a href="/en/ferias/stand-ener-event-casablanca">Ener Event</a>, <a href="/en/ferias/stand-plast-expo-casablanca">Plast Expo</a> and <a href="/en/ferias/stand-pack-expo-casablanca">Pack Expo Morocco</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_casablanca">stand design and installation in Casablanca</a> page.</p>
-        ${porqueEn('Casablanca')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Casablanca</a></p>`
   },
   constructor_stand_rabat: {
     breadcrumb: 'Stand builder in Rabat',
@@ -2185,12 +1930,9 @@ const EN = {
     body: `
         <h2>Stand builder in Rabat: in-house manufacturing for Recintos de ferias y congresos de Rabat</h2>
         <p>Rabat exhibits publishing, culture, training and music: SIEL fills its venue with publishers and booksellers and the Forum de l’Étudiant gathers universities. These are book and information stands: shelving at hand height, sales counter, good reading light and a store for stock, built in the workshop and transported with their paperwork.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Rabat')}
-        ${tiposEn('Rabat')}
         <h2>Stand builder in Rabat: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-siel-rabat">SIEL — Salon International de l'Édition et du Livre</a>, <a href="/en/ferias/stand-visa-for-music-rabat">Visa For Music</a>, <a href="/en/ferias/stand-forum-etudiant-rabat">Forum de l'Étudiant, de la Formation et de l'Emploi</a> and <a href="/en/ferias/stand-cimqusef-rabat">CIMQUSEF</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_rabat">stand design and installation in Rabat</a> page.</p>
-        ${porqueEn('Rabat')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Rabat</a></p>`
   },
   constructor_stand_andorra: {
     breadcrumb: 'Stand builder in Andorra',
@@ -2200,12 +1942,9 @@ const EN = {
     body: `
         <h2>Stand builder in Andorra: in-house manufacturing for Centre de Congressos d’Andorra la Vella y recintos del Principado</h2>
         <p>Andorra holds multi-sector, food and retail fairs in Andorra la Vella and the parishes. Transport goes in by mountain road and through customs: we build the stand pre-assembled and compact, with parts sized for the truck that climbs the pass, and install it with our own crew.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Andorra')}
-        ${tiposEn('Andorra')}
         <h2>Stand builder in Andorra: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-fira-andorra-la-vella">Fira d'Andorra la Vella</a>, <a href="/en/ferias/stand-enfirat-encamp">Enfira't</a>, <a href="/en/ferias/stand-andorra-taste">Andorra Taste</a>, <a href="/en/ferias/stand-fira-del-vermut-andorra">Fira del Vermut d'Andorra</a>, <a href="/en/ferias/stand-fira-del-bestiar-ordino">Fira del Bestiar d'Ordino</a>, <a href="/en/ferias/stand-mercat-de-la-vall-andorra">Mercat de la Vall</a> and <a href="/en/ferias/stand-fira-outlet-soldeu">Fira Outlet de Soldeu</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_andorra">stand design and installation in Andorra</a> page.</p>
-        ${porqueEn('Andorra')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Andorra</a></p>`
   },
   constructor_stand_teruel: {
     breadcrumb: 'Stand builder in Teruel',
@@ -2215,12 +1954,9 @@ const EN = {
     body: `
         <h2>Stand builder in Teruel: in-house manufacturing for Palacio de Exposiciones y Congresos de Teruel y recintos de la provincia</h2>
         <p>Teruel is ham, agri-food and farm machinery, with fairs in the capital, Calamocha and Alcañiz. We build product-tasting stands — counter with cutting board, refrigeration and washable surfaces — and machinery stands with reinforced floor, made in the workshop and installed in a day.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Teruel')}
-        ${tiposEn('Teruel')}
         <h2>Stand builder in Teruel: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-feria-jamon-teruel">Feria del Jamón de Teruel y Alimentos de Calidad</a>, <a href="/en/ferias/stand-expocalamocha">ExpoCalamocha</a> and <a href="/en/ferias/stand-agroalcaniz">AgroAlcañiz</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_teruel">stand design and installation in Teruel</a> page.</p>
-        ${porqueEn('Teruel')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Teruel</a></p>`
   },
   constructor_stand_aranda: {
     breadcrumb: 'Stand builder in Aranda de Duero',
@@ -2230,12 +1966,9 @@ const EN = {
     body: `
         <h2>Stand builder in Aranda de Duero: in-house manufacturing for Recinto Ferial de Aranda de Duero</h2>
         <p>Aranda de Duero is the Ribera capital and its fairs revolve around wine: tastings, awards and winery meetings. We build winery stands with tasting bar, cold-lit bottle display and a private corner for the distributor, made in the workshop and reusable at the next wine events.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Aranda de Duero')}
-        ${tiposEn('Aranda de Duero')}
         <h2>Stand builder in Aranda de Duero: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-espacio-ribera-aranda">Espacio Ribera</a>, <a href="/en/ferias/stand-premios-envero-enverofest-aranda">Premios Envero / EnveroFest</a> and <a href="/en/ferias/stand-congreso-la-cierna-aranda">Congreso La Cierna</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_aranda_de_duero">stand design and installation in Aranda de Duero</a> page.</p>
-        ${porqueEn('Aranda de Duero')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Aranda de Duero</a></p>`
   },
   constructor_stand_ciudad_real: {
     breadcrumb: 'Stand builder in Ciudad Real',
@@ -2245,12 +1978,9 @@ const EN = {
     body: `
         <h2>Stand builder in Ciudad Real: in-house manufacturing for Pabellón Ferial de Ciudad Real (IFEDI)</h2>
         <p>Ciudad Real is wine and countryside: Fenavin gathers wineries and international buyers, and FERCAM and FERDUQUE bring machinery and livestock. We build tasting stands with refrigeration and bottle display, and machinery stands with reinforced floor, both from our workshop and with our own installation at the exhibition hall.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Ciudad Real')}
-        ${tiposEn('Ciudad Real')}
         <h2>Stand builder in Ciudad Real: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-fenavin-match-ciudad-real">Fenavin Match Ciudad Real</a>, <a href="/en/ferias/stand-ferduque-ciudad-real">FERDUQUE</a>, <a href="/en/ferias/stand-fercam-manzanares-ciudad-real">FERCAM</a> and <a href="/en/ferias/stand-fercatur-ciudad-real">Fercatur Ciudad Real</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_ciudad_real">stand design and installation in Ciudad Real</a> page.</p>
-        ${porqueEn('Ciudad Real')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Ciudad Real</a></p>`
   },
   constructor_stand_zafra: {
     breadcrumb: 'Stand builder in Zafra',
@@ -2260,12 +1990,9 @@ const EN = {
     body: `
         <h2>Stand builder in Zafra: in-house manufacturing for Recinto Ferial de Zafra</h2>
         <p>Zafra lives its International Livestock Fair on a countryside venue, with animals, machinery and public for a week. We build stands for that toughness — washable floor, solid structure, lockable store — from our Cáceres workshop, under an hour away, able to solve any adjustment the same day.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Zafra')}
-        ${tiposEn('Zafra')}
         <h2>Stand builder in Zafra: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-feria-internacional-ganadera-zafra">Feria Internacional Ganadera de Zafra</a>. The full design-and-build service for the city is on our <a href="/en/exhibition_stand_assembly_zafra">stand design and installation in Zafra</a> page.</p>
-        ${porqueEn('Zafra')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Zafra</a></p>`
   },
   constructor_stand_trujillo: {
     breadcrumb: 'Stand builder in Trujillo',
@@ -2275,12 +2002,9 @@ const EN = {
     body: `
         <h2>Stand builder in Trujillo: in-house manufacturing for Recinto Ferial de Trujillo</h2>
         <p>Trujillo holds the Cheese Fair and the Agricultural and Livestock Fair: product to taste and animals to see. We build cutting and tasting counters with refrigeration and washable surfaces, and covered outdoor stands for the livestock fair, from our Cáceres workshop, under an hour from the venue.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Trujillo')}
-        ${tiposEn('Trujillo')}
         <h2>Stand builder in Trujillo: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-feria-internacional-ganadera-trujillo">Feria Agroganadera de Trujillo</a> and <a href="/en/ferias/stand-feria-nacional-queso-trujillo">Feria Nacional del Queso de Trujillo</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_trujillo">stand design and installation in Trujillo</a> page.</p>
-        ${porqueEn('Trujillo')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Trujillo</a></p>`
   },
   constructor_stand_almeria: {
     breadcrumb: 'Stand builder in Almeria',
@@ -2290,12 +2014,9 @@ const EN = {
     body: `
         <h2>Stand builder in Almeria: in-house manufacturing for Palacio de Exposiciones y Congresos de Aguadulce</h2>
         <p>Almería is intensive agriculture: Infoagro and Expolevante show seeds, irrigation, plastics and greenhouse machinery to a highly technical visitor. We build stands where the system is shown installed and working, with water, power and reinforced floor, made in our own workshop.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Almeria')}
-        ${tiposEn('Almeria')}
         <h2>Stand builder in Almeria: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-infoagro-exhibition-aguadulce">Infoagro Exhibition</a>, <a href="/en/ferias/stand-expolevante-el-ejido">Expolevante</a> and <a href="/en/ferias/stand-sun-blue-congress-almeria">Sun&Blue Congress</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_almeria">stand design and installation in Almeria</a> page.</p>
-        ${porqueEn('Almeria')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Almeria</a></p>`
   },
   constructor_stand_jaen: {
     breadcrumb: 'Stand builder in Jaen',
@@ -2305,12 +2026,9 @@ const EN = {
     body: `
         <h2>Stand builder in Jaen: in-house manufacturing for IFEJA – Palacio de Ferias y Congresos de Jaén</h2>
         <p>Jaén is olive oil: Expoliva gathers mills, milling and bottling machinery and buyers from half the world at IFEJA. We build tasting stands with counter, display case and light that does not distort the colour of the oil, and machinery stands with reinforced floor, both from our workshop and installed by our own crew.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Jaen')}
-        ${tiposEn('Jaen')}
         <h2>Stand builder in Jaen: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-expoliva-jaen">Expoliva</a>, <a href="/en/ferias/stand-ibercaza-jaen">Ibercaza</a> and <a href="/en/ferias/stand-feria-de-los-pueblos-jaen">Feria de los Pueblos</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_jaen">stand design and installation in Jaen</a> page.</p>
-        ${porqueEn('Jaen')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Jaen</a></p>`
   },
   constructor_stand_huelva: {
     breadcrumb: 'Stand builder in Huelva',
@@ -2320,12 +2038,9 @@ const EN = {
     body: `
         <h2>Stand builder in Huelva: in-house manufacturing for Palacio de Congresos Casa Colón y recintos de la provincia</h2>
         <p>Huelva combines berries, Iberian ham and fishing across three venues: Casa Colón in the capital, Aracena in the hills and Punta Umbría on the coast. We build for all three from the same workshop: a light congress stand, a cutting counter with refrigeration, or a covered outdoor stand for the prawn fair.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Huelva')}
-        ${tiposEn('Huelva')}
         <h2>Stand builder in Huelva: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-congreso-internacional-frutos-rojos-huelva">Congreso Internacional de Frutos Rojos</a>, <a href="/en/ferias/stand-feria-jamon-cerdo-iberico-aracena">Feria del Jamón y Cerdo Ibérico de Aracena</a> and <a href="/en/ferias/stand-feria-gamba-chirla-boqueron-punta-umbria">Feria Nacional de la Gamba, la Chirla y el Boquerón</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_huelva">stand design and installation in Huelva</a> page.</p>
-        ${porqueEn('Huelva')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Huelva</a></p>`
   },
   constructor_stand_cordoba: {
     breadcrumb: 'Stand builder in Cordoba',
@@ -2335,12 +2050,9 @@ const EN = {
     body: `
         <h2>Stand builder in Cordoba: in-house manufacturing for Recintos feriales de Córdoba y Los Pedroches</h2>
         <p>Córdoba is hunting and Iberian pork: Intercaza in the capital and the livestock and ham fairs of Los Pedroches. We build tasting stands with cutting counter and refrigeration, and covered outdoor stands with washable floor for the livestock fairs, made in the workshop and installed by our crew.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Cordoba')}
-        ${tiposEn('Cordoba')}
         <h2>Stand builder in Cordoba: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-intercaza-cordoba">Intercaza</a>, <a href="/en/ferias/stand-feria-agroganadera-pedroches-pozoblanco">Feria Agroganadera y Agroalimentaria del Valle de Los Pedroches</a> and <a href="/en/ferias/stand-feria-jamon-bellota-dop-pedroches-villanueva-cordoba">Feria del Jamón de Bellota 100% Ibérico DOP Los Pedroches</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_cordoba">stand design and installation in Cordoba</a> page.</p>
-        ${porqueEn('Cordoba')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Cordoba</a></p>`
   },
   constructor_stand_granada: {
     breadcrumb: 'Stand builder in Granada',
@@ -2350,12 +2062,9 @@ const EN = {
     body: `
         <h2>Stand builder in Granada: in-house manufacturing for Fermasa (Armilla)</h2>
         <p>Granada exhibits at Fermasa, the Armilla venue: general trade fair, fashion, science and the equestrian world. It is a general-public calendar, so we build stands that survive full-capacity weekends, with hard-wearing graphics, service counter and lockable store.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Granada')}
-        ${tiposEn('Granada')}
         <h2>Stand builder in Granada: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-feria-general-muestras-armilla">Feria General de Muestras de Armilla</a>, <a href="/en/ferias/stand-feria-de-la-ciencia-granada">Feria de la Ciencia</a>, <a href="/en/ferias/stand-concab-granada">CONCAB Granada</a>, <a href="/en/ferias/stand-belmoda-granada">Belmoda Granada</a>, <a href="/en/ferias/stand-sabores-nuestra-tierra-granada">Sabores de Nuestra Tierra</a> and <a href="/en/ferias/stand-feria-pueblos-granada">Feria de los Pueblos de Granada</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_granada">stand design and installation in Granada</a> page.</p>
-        ${porqueEn('Granada')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Granada</a></p>`
   },
   constructor_stand_cadiz: {
     breadcrumb: 'Stand builder in Cadiz',
@@ -2365,12 +2074,9 @@ const EN = {
     body: `
         <h2>Stand builder in Cadiz: in-house manufacturing for Palacio de Congresos de Cádiz e IFECA (Jerez)</h2>
         <p>Cádiz splits its events between the capital’s Congress Centre, with the blue economy and shipbuilding, and IFECA in Jerez, with the Horse Fair and Fegasur. We build a light congress stand for the first and a covered outdoor livestock stand for the second, both from our workshop.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Cadiz')}
-        ${tiposEn('Cadiz')}
         <h2>Stand builder in Cadiz: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-blue-zone-forum-navalia-meeting-cadiz">Blue Zone Forum Navalia Meeting</a>, <a href="/en/ferias/stand-feria-del-caballo-jerez">Feria del Caballo de Jerez</a> and <a href="/en/ferias/stand-fegasur-jerez">Fegasur</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_cadiz">stand design and installation in Cadiz</a> page.</p>
-        ${porqueEn('Cadiz')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Cadiz</a></p>`
   },
   constructor_stand_marsella: {
     breadcrumb: 'Stand builder in Marseille',
@@ -2380,12 +2086,9 @@ const EN = {
     body: `
         <h2>Stand builder in Marseille: in-house manufacturing for Parc Chanot – Parc des Expositions et des Congrès de Marseille</h2>
         <p>Parc Chanot hosts everything from the Foire Internationale to Euromaritime and Sirha Méditerranée: general public, maritime industry and food service. Exhibiting there from Spain means a long haul and installation under French rules: we build the stand pre-assembled, with fire-reaction certificates, and install it with our own crew.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Marseille')}
-        ${tiposEn('Marseille')}
         <h2>Stand builder in Marseille: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-foire-internationale-marseille">Foire Internationale de Marseille</a>, <a href="/en/ferias/stand-euromaritime-marseille">Euromaritime</a>, <a href="/en/ferias/stand-sirha-mediterranee-marseille">Sirha Méditerranée</a>, <a href="/en/ferias/stand-beauty-profs-marseille">Beauty Prof's</a>, <a href="/en/ferias/stand-savim-marseille">SAVIM</a>, <a href="/en/ferias/stand-salon-piscine-jardin-marseille">Salon Piscine & Jardin</a>, <a href="/en/ferias/stand-solutions-cse-marseille">Solutions CSE Marseille</a> and <a href="/en/ferias/stand-japan-expo-sud-marseille">Japan Expo Sud</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_marseille">stand design and installation in Marseille</a> page.</p>
-        ${porqueEn('Marseille')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Marseille</a></p>`
   },
   constructor_stand_cannes: {
     breadcrumb: 'Stand builder in Cannes',
@@ -2395,12 +2098,9 @@ const EN = {
     body: `
         <h2>Stand builder in Cannes: in-house manufacturing for Palais des Festivals et des Congrès</h2>
         <p>Cannes is the Palais des Festivals: MIPIM, MAPIC and TFWA are markets where the stand is a negotiating office with brand image. We build closed offices with acoustics, reception and high-finish graphics, made in the workshop and installed in the few hours the Palais allows.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Cannes')}
-        ${tiposEn('Cannes')}
         <h2>Stand builder in Cannes: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-cannes-yachting-festival">Cannes Yachting Festival</a>, <a href="/en/ferias/stand-interior-exterior-design-meetings-cannes">Interior & Exterior Design Meetings</a>, <a href="/en/ferias/stand-mapic-cannes">MAPIC</a>, <a href="/en/ferias/stand-mipim-cannes">MIPIM</a> and <a href="/en/ferias/stand-tfwa-cannes">TFWA World Exhibition</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_cannes">stand design and installation in Cannes</a> page.</p>
-        ${porqueEn('Cannes')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Cannes</a></p>`
   },
   constructor_stand_avignon: {
     breadcrumb: 'Stand builder in Avignon',
@@ -2410,12 +2110,9 @@ const EN = {
     body: `
         <h2>Stand builder in Avignon: in-house manufacturing for Parc des Expositions d’Avignon (Agroparc)</h2>
         <p>Avignon is Mediterranean agriculture: MED’Agri gathers irrigation, seeds, machinery and fruit growing at the Parc des Expositions. We build stands where the equipment is shown installed, with water and power, reinforced floor and graphics in French, made in the workshop and delivered by road with installation included.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Avignon')}
-        ${tiposEn('Avignon')}
         <h2>Stand builder in Avignon: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-medagri-avignon">MED'Agri</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_avignon">stand design and installation in Avignon</a> page.</p>
-        ${porqueEn('Avignon')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Avignon</a></p>`
   },
   constructor_stand_toulouse: {
     breadcrumb: 'Stand builder in Toulouse',
@@ -2425,12 +2122,9 @@ const EN = {
     body: `
         <h2>Stand builder in Toulouse: in-house manufacturing for MEETT – Parc des Expositions de Toulouse</h2>
         <p>Toulouse is aerospace: Aeromart and the Aerospace Test & Development Show gather parts and testing suppliers at MEETT with meetings booked in advance. We build business stands — meeting tables, cabinets for precision parts, screen — made in the workshop and installed at the new Aussonne venue by our crew.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Toulouse')}
-        ${tiposEn('Toulouse')}
         <h2>Stand builder in Toulouse: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-foire-internationale-toulouse">Foire Internationale de Toulouse</a>, <a href="/en/ferias/stand-cfia-toulouse">CFIA Toulouse</a>, <a href="/en/ferias/stand-sepem-industries-toulouse">SEPEM Industries Toulouse</a>, <a href="/en/ferias/stand-aerospace-test-development-show-toulouse">Aerospace Test & Development Show</a>, <a href="/en/ferias/stand-aeromart-toulouse">Aeromart Toulouse</a>, <a href="/en/ferias/stand-siane-toulouse">Salon SIANE</a> and <a href="/en/ferias/stand-smahrt-toulouse">SMAHRT</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_toulouse">stand design and installation in Toulouse</a> page.</p>
-        ${porqueEn('Toulouse')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Toulouse</a></p>`
   },
   constructor_stand_burdeos: {
     breadcrumb: 'Stand builder in Bordeaux',
@@ -2440,12 +2134,9 @@ const EN = {
     body: `
         <h2>Stand builder in Bordeaux: in-house manufacturing for Parc des Expositions de Bordeaux-Lac</h2>
         <p>Bordeaux is wine and viticulture: Vinitech-Sifel fills Bordeaux-Lac with winery and vineyard machinery, and the vignerons’ shows with bottles to taste. We build machinery stands with reinforced floor and tasting stands with bar and refrigeration, made in the workshop and delivered by road with our own installation.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Bordeaux')}
-        ${tiposEn('Bordeaux')}
         <h2>Stand builder in Bordeaux: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-foire-internationale-bordeaux">Foire Internationale de Bordeaux</a>, <a href="/en/ferias/stand-vinitech-sifel-bordeaux">Vinitech-Sifel</a>, <a href="/en/ferias/stand-equitaine-bordeaux">Equitaine</a>, <a href="/en/ferias/stand-salon-agriculture-nouvelle-aquitaine-bordeaux">Salon de l'Agriculture Nouvelle-Aquitaine</a>, <a href="/en/ferias/stand-art3f-bordeaux">Art3f Bordeaux</a>, <a href="/en/ferias/stand-grand-salon-habitat-bordeaux">Grand Salon Habitat</a>, <a href="/en/ferias/stand-salon-vins-vignerons-independants-bordeaux">Salon des Vins des Vignerons Indépendants</a> and <a href="/en/ferias/stand-cycleau-nouvelle-aquitaine-bordeaux">Cycl'Eau Nouvelle-Aquitaine</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_bordeaux">stand design and installation in Bordeaux</a> page.</p>
-        ${porqueEn('Bordeaux')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Bordeaux</a></p>`
   },
   constructor_stand_lyon: {
     breadcrumb: 'Stand builder in Lyon',
@@ -2455,12 +2146,9 @@ const EN = {
     body: `
         <h2>Stand builder in Lyon: in-house manufacturing for Eurexpo Lyon</h2>
         <p>Eurexpo is a large-scale industrial venue: Global Industrie, Pollutec and SIRHA exhibit machines running and kitchens cooking live. We build stands with power and compressed air planned, technical flooring and kitchen extraction, made in the workshop and installed by our crew under the venue rules.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Lyon')}
-        ${tiposEn('Lyon')}
         <h2>Stand builder in Lyon: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-sirha-lyon">SIRHA</a>, <a href="/en/ferias/stand-global-industrie-lyon">Global Industrie</a>, <a href="/en/ferias/stand-pollutec-lyon">Pollutec Lyon</a>, <a href="/en/ferias/stand-piscine-global-lyon">Piscine Global Europe</a>, <a href="/en/ferias/stand-preventica-lyon">Préventica Lyon</a>, <a href="/en/ferias/stand-prod-pack-lyon">Prod&Pack</a> and <a href="/en/ferias/stand-bepositive-lyon">BEPOSITIVE</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_lyon">stand design and installation in Lyon</a> page.</p>
-        ${porqueEn('Lyon')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Lyon</a></p>`
   },
   constructor_stand_grenoble: {
     breadcrumb: 'Stand builder in Grenoble',
@@ -2470,12 +2158,9 @@ const EN = {
     body: `
         <h2>Stand builder in Grenoble: in-house manufacturing for Alpexpo</h2>
         <p>Grenoble is mountains and industry: Mountain Planet gathers ski lifts, snowmaking and resort equipment at Alpexpo. These are big, heavy products: we build stands with reinforced floor, structure for hanging elements and large-format graphics, made in the workshop and delivered by road.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Grenoble')}
-        ${tiposEn('Grenoble')}
         <h2>Stand builder in Grenoble: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-mountain-planet-grenoble">Mountain Planet</a> and <a href="/en/ferias/stand-sepem-industries-sud-est-grenoble">SEPEM Industries Sud-Est</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_grenoble">stand design and installation in Grenoble</a> page.</p>
-        ${porqueEn('Grenoble')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Grenoble</a></p>`
   },
   constructor_stand_clermont_ferrand: {
     breadcrumb: 'Stand builder in Clermont-Ferrand',
@@ -2485,12 +2170,9 @@ const EN = {
     body: `
         <h2>Stand builder in Clermont-Ferrand: in-house manufacturing for Grande Halle d’Auvergne (Cournon)</h2>
         <p>Clermont-Ferrand is the Sommet de l’Élevage, Europe’s largest livestock show, at the Grande Halle d’Auvergne. A stand there lives alongside animals, machinery and mud: we build it with washable materials, solid structure and a clean meeting space, and transport it pre-assembled from our workshop.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Clermont-Ferrand')}
-        ${tiposEn('Clermont-Ferrand')}
         <h2>Stand builder in Clermont-Ferrand: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-sommet-elevage-clermont-ferrand">Sommet de l'Élevage</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_clermont_ferrand">stand design and installation in Clermont-Ferrand</a> page.</p>
-        ${porqueEn('Clermont-Ferrand')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Clermont-Ferrand</a></p>`
   },
   constructor_stand_niza: {
     breadcrumb: 'Stand builder in Nice',
@@ -2500,12 +2182,9 @@ const EN = {
     body: `
         <h2>Stand builder in Nice: in-house manufacturing for Palais des Expositions y Nice Acropolis</h2>
         <p>Nice exhibits hospitality, boating and business at the Palais des Expositions and Acropolis: two-to-three-day fairs with tight build-up. We build pre-assembled, light stands with French graphics applied in the workshop, up in a few hours and out the same night as closing.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Nice')}
-        ${tiposEn('Nice')}
         <h2>Stand builder in Nice: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-agecotel-nice">AGECOTEL</a>, <a href="/en/ferias/stand-nice-boating-tomorrow">Nice Boating Tomorrow</a>, <a href="/en/ferias/stand-ibt-cote-azur">IBT Côte d'Azur</a>, <a href="/en/ferias/stand-entreprenariales-nice">Les Entreprenariales</a> and <a href="/en/ferias/stand-solucop-nice">SOLUCOP</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_nice">stand design and installation in Nice</a> page.</p>
-        ${porqueEn('Nice')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Nice</a></p>`
   },
   constructor_stand_montpellier: {
     breadcrumb: 'Stand builder in Montpellier',
@@ -2515,12 +2194,9 @@ const EN = {
     body: `
         <h2>Stand builder in Montpellier: in-house manufacturing for Parc des Expositions de Montpellier</h2>
         <p>Montpellier is viticulture and organic wine: SITEVI exhibits vineyard and winery machinery, and Millésime Bio bottles to taste. We build machinery stands with reinforced floor and tasting stands with bar, refrigeration and bottle display, made in the workshop and installed by our crew at the Parc des Expositions.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('Montpellier')}
-        ${tiposEn('Montpellier')}
         <h2>Stand builder in Montpellier: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-sitevi-montpellier">SITEVI</a>, <a href="/en/ferias/stand-millesime-bio-montpellier">Millésime Bio</a>, <a href="/en/ferias/stand-sett-montpellier">SETT</a>, <a href="/en/ferias/stand-energaia-montpellier">EnerGaïa</a>, <a href="/en/ferias/stand-siprho-montpellier">SIPRHO</a> and <a href="/en/ferias/stand-ais-montpellier">Antibody Industrial Symposium</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_montpellier">stand design and installation in Montpellier</a> page.</p>
-        ${porqueEn('Montpellier')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Montpellier</a></p>`
   },
   constructor_stand_perpignan: {
     breadcrumb: 'Stand builder in Perpignan',
@@ -2530,12 +2206,9 @@ const EN = {
     body: `
         <h2>Stand builder in Perpignan: in-house manufacturing for Parc des Expositions de Perpignan</h2>
         <p>Perpignan is southern France’s fruit and vegetable hub: MEDFEL gathers producers and distributors with fresh product on the stand. We build with refrigerated counter, washable surfaces and cold storage, made in the workshop and installed at the Parc des Expositions, two hours from the border.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Perpignan')}
-        ${tiposEn('Perpignan')}
         <h2>Stand builder in Perpignan: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-foire-exposition-perpignan">Foire Exposition de Perpignan</a>, <a href="/en/ferias/stand-medfel-perpignan">MEDFEL</a>, <a href="/en/ferias/stand-viv-habitat-perpignan">Salon Viv'Habitat</a>, <a href="/en/ferias/stand-tourisme-loisirs-perpignan">Salon Tourisme & Loisirs</a>, <a href="/en/ferias/stand-eco-maison-perpignan">Eco-Maison</a>, <a href="/en/ferias/stand-retro-mecanic-perpignan">Retro Mécanic</a> and <a href="/en/ferias/stand-salon-mariage-perpignan">Salon du Mariage</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_perpignan">stand design and installation in Perpignan</a> page.</p>
-        ${porqueEn('Perpignan')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Perpignan</a></p>`
   },
   constructor_stand_batalha: {
     breadcrumb: 'Stand builder in Batalha',
@@ -2545,12 +2218,9 @@ const EN = {
     body: `
         <h2>Stand builder in Batalha: in-house manufacturing for Exposalão – Centro de Exposições da Batalha</h2>
         <p>Exposalão, in Batalha, is central Portugal’s industrial venue: moulds, plastics, metal, stone and glass. These are fairs of running machines and heavy product: we build with technical flooring, power and compressed air planned and graphics in Portuguese, made in the workshop and installed by our crew.</p>
-        <p>The whole stand is pre-assembled in our workshop before the truck is loaded: every part numbered, graphics applied and services tested, so that in the hall we install rather than improvise.</p>
-        ${pasoEn('Batalha')}
-        ${tiposEn('Batalha')}
         <h2>Stand builder in Batalha: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-moldplas-batalha">Moldplás</a>, <a href="/en/ferias/stand-expometal-batalha">Expometal</a>, <a href="/en/ferias/stand-stone-iberica-batalha">Stone Ibérica</a>, <a href="/en/ferias/stand-vidrotec-batalha">Vidrotec</a> and <a href="/en/ferias/stand-decorhotel-batalha">Decorhotel</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_batalha">stand design and installation in Batalha</a> page.</p>
-        ${porqueEn('Batalha')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Batalha</a></p>`
   },
   constructor_stand_santarem: {
     breadcrumb: 'Stand builder in Santarem',
@@ -2560,12 +2230,9 @@ const EN = {
     body: `
         <h2>Stand builder in Santarem: in-house manufacturing for CNEMA – Centro Nacional de Exposições</h2>
         <p>Santarém is Portugal’s agricultural heart: the National Agriculture Fair and Agroglobal fill CNEMA with tractors, livestock and product. We build machinery stands with reinforced floor and tasting stands with refrigeration, made in the workshop and delivered from Spain with installation included.</p>
-        <p>We handle what each hall requires — power, water, height limits, fire-reaction certificates for timber and textiles — and arrive with the paperwork in order, so the build-up never stops for a missing document.</p>
-        ${pasoEn('Santarem')}
-        ${tiposEn('Santarem')}
         <h2>Stand builder in Santarem: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-feira-nacional-agricultura-santarem">Feira Nacional de Agricultura</a>, <a href="/en/ferias/stand-fersant-santarem">FERSANT</a>, <a href="/en/ferias/stand-agroglobal-santarem">Agroglobal</a> and <a href="/en/ferias/stand-lusoflora-santarem">Lusoflora</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_santarem">stand design and installation in Santarem</a> page.</p>
-        ${porqueEn('Santarem')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Santarem</a></p>`
   },
   constructor_stand_regua: {
     breadcrumb: 'Stand builder in Peso da Régua',
@@ -2575,12 +2242,9 @@ const EN = {
     body: `
         <h2>Stand builder in Peso da Régua: in-house manufacturing for Recintos feriales de Peso da Régua (Douro)</h2>
         <p>Peso da Régua is the Douro: Port wine fairs, wine tourism and regional flavours, many in open spaces by the river. We build tasting stands with bar, refrigeration and bottle display, prepared for covered outdoor use, and bring them pre-assembled from our workshop.</p>
-        <p>We design with the next show in mind: modular wall panels, interchangeable graphics and furniture that is stored and reused, because a returning exhibitor should not pay for the stand twice.</p>
-        ${pasoEn('Peso da Régua')}
-        ${tiposEn('Peso da Régua')}
         <h2>Stand builder in Peso da Régua: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-douro-porto-wine-festival-regua">Douro & Porto Wine Festival</a>, <a href="/en/ferias/stand-feira-vinhos-sabores-altos-regua">Feira dos Vinhos e Sabores dos Altos</a> and <a href="/en/ferias/stand-festa-saberes-sabores-douro-regua">Festa dos Saberes e Sabores do Douro</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_peso_da_regua">stand design and installation in Peso da Régua</a> page.</p>
-        ${porqueEn('Peso da Régua')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Peso da Régua</a></p>`
   },
   constructor_stand_portugal_sur: {
     breadcrumb: 'Stand builder in southern Portugal',
@@ -2590,12 +2254,9 @@ const EN = {
     body: `
         <h2>Stand builder in southern Portugal: in-house manufacturing for Parque de Exposições de Beja y recintos del Algarve</h2>
         <p>Southern Portugal exhibits in Beja, with Ovibeja and Vinipax, and in the Algarve, with Fatacil and the Portimão and Lagoa fairs: agriculture, wine and general public. We build covered outdoor stands with washable floor and tasting stands, and transport them pre-assembled from Spain with installation included.</p>
-        <p>One person runs the project from drawing to dismantling: no middlemen, no subcontracted workshops, and any last-minute change is solved by our own crew in the hall.</p>
-        ${pasoEn('southern Portugal')}
-        ${tiposEn('southern Portugal')}
         <h2>Stand builder in southern Portugal: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-ovibeja-beja">Ovibeja</a>, <a href="/en/ferias/stand-fatacil-lagoa">Fatacil</a>, <a href="/en/ferias/stand-faceco-moncarapacho">Faceco</a>, <a href="/en/ferias/stand-feira-de-sao-martinho-portimao">Feira de São Martinho</a>, <a href="/en/ferias/stand-feira-daires-viana-do-alentejo">Feira d'Aires</a> and <a href="/en/ferias/stand-vinipax-beja">Vinipax Beja</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_southern_portugal">stand design and installation in southern Portugal</a> page.</p>
-        ${porqueEn('southern Portugal')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in southern Portugal</a></p>`
   },
   constructor_stand_islas_de_madeira: {
     breadcrumb: 'Stand builder in Madeira',
@@ -2605,12 +2266,9 @@ const EN = {
     body: `
         <h2>Stand builder in Madeira: in-house manufacturing for Madeira Tecnopolo (Funchal)</h2>
         <p>Madeira exhibits at the Funchal Tecnopolo: jobs, entrepreneurship, farming and wine fairs. Everything arrives by container: we build and pre-assemble the whole stand in the workshop, number it part by part and ship it with spares, so that on the island there is only assembly left.</p>
-        <p>We work with a workshop mindset: we measure the contracted space, calculate loads and reinforcement, book services with the venue in advance and make the joinery in materials meant to go up fast, last the show and serve again at the next one.</p>
-        ${pasoEn('Madeira')}
-        ${tiposEn('Madeira')}
         <h2>Stand builder in Madeira: shows at the venue</h2>
         <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-expomadeira">Expomadeira</a>, <a href="/en/ferias/stand-feira-agropecuaria-madeira">Feira Agropecuária da Madeira</a>, <a href="/en/ferias/stand-feira-emprego-formacao-empreendedorismo-madeira">Feira do Emprego, Formação e Empreendedorismo</a>, <a href="/en/ferias/stand-feira-empreendedorismo-madeira">Feira do Empreendedorismo da Madeira</a>, <a href="/en/ferias/stand-festa-vinho-madeira">Festa do Vinho da Madeira</a> and <a href="/en/ferias/stand-cider-fest-madeira">Cider Fest Madeira</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_madeira_islands">stand design and installation in Madeira</a> page.</p>
-        ${porqueEn('Madeira')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Madeira</a></p>`
   },
   constructor_stand_merida: {
     breadcrumb: 'Stand builder in Mérida',
@@ -2620,12 +2278,9 @@ const EN = {
     body: `
         <h2>Stand builder in Mérida: in-house manufacturing for IFEME</h2>
         <p>Mérida is the capital of Extremadura and its venue, IFEME, hosts a general-public calendar: the Motor Show, the Weddings and Home Fair, the Emérita Augusta collectors’ fair and FETUREX, the region’s tourism fair. These are weekend fairs with high attendance and visitors who stop, touch and ask, so the stand is built for continuous traffic: hard-wearing graphics, a service counter, a floor that shows no wear and a lockable store for materials.</p>
-        <p>From our Cáceres workshop, under an hour from the venue, we build and pre-assemble the whole stand: we arrive with numbered parts and graphics applied, and any adjustment on build-up day is solved by our own crew, without waiting for a supplier.</p>
-        ${pasoEn('Mérida')}
-        ${tiposEn('Mérida')}
         <h2>Stand builder in Mérida: shows at the venue</h2>
         <p>We build for the IFEME calendar: <a href="/en/ferias/stand-salon-automovil-merida">Mérida Motor Show</a>, <a href="/en/ferias/stand-feria-bodas-hogar-merida">Weddings and Home Fair</a>, <a href="/en/ferias/stand-coleccionismo-emerita-augusta-merida">Emérita Augusta Collectors’ Fair</a> and <a href="/en/ferias/stand-feturex-merida">FETUREX</a>. The full design-and-build service for the province is on our <a href="/en/stand_design_assembly_badajoz">stand design and installation in Badajoz</a> page.</p>
-        ${porqueEn('Mérida')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Mérida</a></p>`
   },
   constructor_stand_almendralejo: {
     breadcrumb: 'Stand builder in Almendralejo',
@@ -2635,12 +2290,9 @@ const EN = {
     body: `
         <h2>Stand builder in Almendralejo: in-house manufacturing for the capital of Extremaduran wine</h2>
         <p>Almendralejo is Tierra de Barros: wineries, cava and olive oil, with Vinac as the sector’s reference fair. A winery stand here is built to taste and to sell: a tasting bar at the right height, a cold-lit bottle display, a private corner for the distributor and surfaces that take the traffic of glasses for the whole fair.</p>
-        <p>From our Cáceres workshop, under an hour away, we build and pre-assemble the whole stand, and we design the elements to serve again at the next wine events in the region and in Spain, because a winery that exhibits every year should not pay for the stand every year.</p>
-        ${pasoEn('Almendralejo')}
-        ${tiposEn('Almendralejo')}
         <h2>Stand builder in Almendralejo: shows at the venue</h2>
         <p>We build for <a href="/en/ferias/stand-vinac-almendralejo">Vinac Almendralejo</a> and for the rest of the Extremadura calendar, from <a href="/en/ferias/stand-feria-internacional-ganadera-zafra">the Zafra International Livestock Fair</a> to <a href="/en/ferias/stand-feturex-merida">FETUREX in Mérida</a>. The full design-and-build service for the province is on our <a href="/en/stand_design_assembly_badajoz">stand design and installation in Badajoz</a> page.</p>
-        ${porqueEn('Almendralejo')}`
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Almendralejo</a></p>`
   },
 };
 
@@ -2733,12 +2385,9 @@ const PT = {
     body: `
         <h2>Construtor de stands na Batalha: fabrico próprio para Exposalão – Centro de Exposições da Batalha</h2>
         <p>A Exposalão, na Batalha, é o recinto industrial do centro de Portugal: moldes, plásticos, metal, pedra e vidro. São feiras de máquina a trabalhar e produto pesado: construímos com pavimento técnico, potência e ar comprimido previstos e grafismo em português, fabricados em oficina e montados pela nossa equipa.</p>
-        <p>O stand é pré-montado inteiro na nossa oficina antes de carregar o camião: cada peça numerada, o grafismo aplicado e as instalações testadas, para que no pavilhão só se monte, sem improvisos.</p>
-        ${pasoPt('na Batalha')}
-        ${tiposPt('na Batalha')}
         <h2>Construtor de stands na Batalha: feiras da região</h2>
         <p>Construímos para o calendário da região: <a href="/pt/ferias/stand-moldplas-batalha">Moldplás</a>, <a href="/pt/ferias/stand-expometal-batalha">Expometal</a>, <a href="/pt/ferias/stand-stone-iberica-batalha">Stone Ibérica</a>, <a href="/pt/ferias/stand-vidrotec-batalha">Vidrotec</a> e <a href="/pt/ferias/stand-decorhotel-batalha">Decorhotel</a>. O serviço completo de design e montagem está na nossa página de <a href="/pt/design_montagem_stands_batalha">design e montagem de stands na Batalha</a>.</p>
-        ${porquePt('na Batalha')}`
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand na Batalha</a></p>`
   },
   constructor_stand_santarem: {
     breadcrumb: 'Construtor de stands em Santarém',
@@ -2748,12 +2397,9 @@ const PT = {
     body: `
         <h2>Construtor de stands em Santarém: fabrico próprio para CNEMA – Centro Nacional de Exposições</h2>
         <p>Santarém é o coração agrícola de Portugal: a Feira Nacional de Agricultura e a Agroglobal enchem o CNEMA de tratores, gado e produto. Construímos stands de maquinaria com pavimento reforçado e stands de prova com frio, fabricados em oficina e transportados de Espanha com a montagem incluída.</p>
-        <p>Tratamos com o recinto o que cada pavilhão exige —potência, água, alturas, certificados de reação ao fogo de madeiras e têxteis— e chegamos com a documentação em ordem, para que a montagem não pare por um papel.</p>
-        ${pasoPt('em Santarém')}
-        ${tiposPt('em Santarém')}
         <h2>Construtor de stands em Santarém: feiras da região</h2>
         <p>Construímos para o calendário da região: <a href="/pt/ferias/stand-feira-nacional-agricultura-santarem">Feira Nacional de Agricultura</a>, <a href="/pt/ferias/stand-fersant-santarem">FERSANT</a>, <a href="/pt/ferias/stand-agroglobal-santarem">Agroglobal</a> e <a href="/pt/ferias/stand-lusoflora-santarem">Lusoflora</a>. O serviço completo de design e montagem está na nossa página de <a href="/pt/design_montagem_stands_santarem">design e montagem de stands em Santarém</a>.</p>
-        ${porquePt('em Santarém')}`
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand em Santarém</a></p>`
   },
   constructor_stand_regua: {
     breadcrumb: 'Construtor de stands no Peso da Régua',
@@ -2763,12 +2409,9 @@ const PT = {
     body: `
         <h2>Construtor de stands no Peso da Régua: fabrico próprio para Recintos feriales de Peso da Régua (Douro)</h2>
         <p>O Peso da Régua é o Douro: feiras de vinho do Porto, enoturismo e sabores da região, muitas em espaços abertos junto ao rio. Construímos stands de prova com balcão, frio e garrafeira, preparados para exterior coberto, e levamo-los pré-montados da nossa oficina.</p>
-        <p>Desenhamos a pensar na edição seguinte: paramentos por módulos, grafismo intercambiável e mobiliário que se guarda e reutiliza, porque um expositor que repete não devia pagar o stand duas vezes.</p>
-        ${pasoPt('no Peso da Régua')}
-        ${tiposPt('no Peso da Régua')}
         <h2>Construtor de stands no Peso da Régua: feiras da região</h2>
         <p>Construímos para o calendário da região: <a href="/pt/ferias/stand-douro-porto-wine-festival-regua">Douro & Porto Wine Festival</a>, <a href="/pt/ferias/stand-feira-vinhos-sabores-altos-regua">Feira dos Vinhos e Sabores dos Altos</a> e <a href="/pt/ferias/stand-festa-saberes-sabores-douro-regua">Festa dos Saberes e Sabores do Douro</a>. O serviço completo de design e montagem está na nossa página de <a href="/pt/design_montagem_stands_peso_da_regua">design e montagem de stands no Peso da Régua</a>.</p>
-        ${porquePt('no Peso da Régua')}`
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand no Peso da Régua</a></p>`
   },
   constructor_stand_portugal_sur: {
     breadcrumb: 'Construtor de stands no Sul de Portugal',
@@ -2778,12 +2421,9 @@ const PT = {
     body: `
         <h2>Construtor de stands no Sul de Portugal: fabrico próprio para Parque de Exposições de Beja y recintos del Algarve</h2>
         <p>O Sul de Portugal expõe em Beja, com a Ovibeja e a Vinipax, e no Algarve, com a Fatacil e as feiras de Portimão e Lagoa: agricultura, vinho e grande público. Construímos stands de exterior coberto com pavimento lavável e stands de prova, e transportamo-los pré-montados de Espanha com a montagem incluída.</p>
-        <p>Um único responsável leva o projeto do desenho à desmontagem: sem intermediários nem oficinas subcontratadas, e qualquer alteração de última hora resolve-se com a nossa própria equipa no pavilhão.</p>
-        ${pasoPt('no Sul de Portugal')}
-        ${tiposPt('no Sul de Portugal')}
         <h2>Construtor de stands no Sul de Portugal: feiras da região</h2>
         <p>Construímos para o calendário da região: <a href="/pt/ferias/stand-ovibeja-beja">Ovibeja</a>, <a href="/pt/ferias/stand-fatacil-lagoa">Fatacil</a>, <a href="/pt/ferias/stand-faceco-moncarapacho">Faceco</a>, <a href="/pt/ferias/stand-feira-de-sao-martinho-portimao">Feira de São Martinho</a>, <a href="/pt/ferias/stand-feira-daires-viana-do-alentejo">Feira d'Aires</a> e <a href="/pt/ferias/stand-vinipax-beja">Vinipax Beja</a>. O serviço completo de design e montagem está na nossa página de <a href="/pt/design_montagem_stands_sul_portugal">design e montagem de stands no Sul de Portugal</a>.</p>
-        ${porquePt('no Sul de Portugal')}`
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand no Sul de Portugal</a></p>`
   },
   constructor_stand_islas_de_madeira: {
     breadcrumb: 'Construtor de stands na Madeira',
@@ -2793,12 +2433,9 @@ const PT = {
     body: `
         <h2>Construtor de stands na Madeira: fabrico próprio para Madeira Tecnopolo (Funchal)</h2>
         <p>A Madeira expõe no Tecnopolo do Funchal: feiras de emprego, empreendedorismo, agropecuária e vinho. Tudo chega em contentor: fabricamos e pré-montamos o stand inteiro em oficina, numeramo-lo peça a peça e embarcamo-lo com sobressalentes, para que na ilha só haja que montar.</p>
-        <p>Trabalhamos com critério de oficina: medimos o espaço contratado, calculamos cargas e reforços, deixamos previstos os ramais com o recinto e fabricamos a carpintaria com materiais pensados para montar depressa, aguentar a feira e voltar a servir na seguinte.</p>
-        ${pasoPt('na Madeira')}
-        ${tiposPt('na Madeira')}
         <h2>Construtor de stands na Madeira: feiras da região</h2>
         <p>Construímos para o calendário da região: <a href="/pt/ferias/stand-expomadeira">Expomadeira</a>, <a href="/pt/ferias/stand-feira-agropecuaria-madeira">Feira Agropecuária da Madeira</a>, <a href="/pt/ferias/stand-feira-emprego-formacao-empreendedorismo-madeira">Feira do Emprego, Formação e Empreendedorismo</a>, <a href="/pt/ferias/stand-feira-empreendedorismo-madeira">Feira do Empreendedorismo da Madeira</a>, <a href="/pt/ferias/stand-festa-vinho-madeira">Festa do Vinho da Madeira</a> e <a href="/pt/ferias/stand-cider-fest-madeira">Cider Fest Madeira</a>. O serviço completo de design e montagem está na nossa página de <a href="/pt/design_montagem_stands_ilhas_madeira">design e montagem de stands na Madeira</a>.</p>
-        ${porquePt('na Madeira')}`
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand na Madeira</a></p>`
   },
 };
 
