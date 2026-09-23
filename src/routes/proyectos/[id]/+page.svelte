@@ -424,7 +424,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{currentCopy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
-      {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')}>{currentCopy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'galeria')}>{currentCopy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>

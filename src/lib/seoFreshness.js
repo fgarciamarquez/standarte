@@ -118,6 +118,7 @@ export const seoFreshness = {
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
   home: '2026-09-18',   // portada sin galería ni equipo (18/09/2026)
+  galeria: '2026-09-23',   // página propia de galería con los vídeos 3D (23/09/2026)
   badajoz: '2026-09-22',   // H1, título y H2 con «diseño de stands» y «montaje de stands» (22/09/2026)
   montaje_badajoz: '2026-09-22',   // H1, título y H2 con «diseño de stands» y «montaje de stands» (22/09/2026)
   zaragoza: '2026-09-22',   // H1, título y H2 con «diseño de stands» y «montaje de stands» (22/09/2026)

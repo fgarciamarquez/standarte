@@ -1442,7 +1442,7 @@
     const baseUrl = 'https://standarte.es';
     const navigationItems = [
       ['Servicios', pathFor('es', 'services')],
-      ...(BRAND.leadGen || HIDE_IMAGE_SECTIONS ? [] : [['Galería', pathFor('es', 'custom')]]),
+      ...(BRAND.leadGen ? [] : [['Galería', pathFor('es', 'galeria')]]),
       ...(BRAND.leadGen || HIDE_IMAGE_SECTIONS ? [] : [['Equipo', pathFor('es', 'team')]]),
       ['Contacto', pathFor('es', 'contact')],
       ['Diseño y montaje de stands en Madrid', pathFor('es', 'madrid')],
@@ -2171,7 +2171,7 @@
       {#if modularEnabled}
         <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
-      {#if !BRAND.leadGen && !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'custom')} on:click={(e) => handleNavClick(e, 'custom')}>{copy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'galeria')}>{copy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
