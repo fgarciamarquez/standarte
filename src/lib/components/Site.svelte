@@ -141,14 +141,18 @@
 
   // Prototipos 3D Carousel State
   let carouselIndex = 0;
-  // Proyectos de Extremadura: son casos locales, NO van en el carrusel 3D genérico (prototipos-3d).
-  const CAROUSEL_EXCLUDE_LOCS = ['Don Benito', 'Badajoz', 'Zafra', 'Almendralejo'];
+  // 23/09/2026 (decisión del usuario): el carrusel muestra TODOS los proyectos, también los
+  // de Extremadura, que antes se excluían por ser casos locales.
+  const CAROUSEL_EXCLUDE_LOCS = [];
   let shuffledProjects = projects.filter((p) => !CAROUSEL_EXCLUDE_LOCS.includes(p.location));
 
   // Carga por tramos: solo se renderizan/descargan las primeras 12 fichas; el resto
   // se descarga en grupos de 12 al pulsar el descargador circular del carrusel.
+  // 23/09/2026: se cargan todas las fichas desde el principio (las imágenes siguen siendo
+  // lazy: solo se descargan al acercarse a la vista). Se conserva el mecanismo por tramos
+  // por si hubiera que volver a él.
   const CAROUSEL_CHUNK = 12;
-  let carouselRevealed = CAROUSEL_CHUNK;
+  let carouselRevealed = Infinity;
   $: carouselItems = shuffledProjects.slice(0, carouselRevealed);
   $: hasMoreCarousel = carouselRevealed < shuffledProjects.length;
   $: carouselSlots = carouselItems.length; // solo fichas (sin botón descargador)
@@ -488,8 +492,11 @@
   const modularEnabled = false;
   // Título de la sección de proyectos 3D en la home (antes "Proyectos de Bajo Coste").
   const projects3DTitle = {
-    es: 'Proyectos 3D', en: '3D Projects', de: '3D-Projekte', pt: 'Projetos 3D', fr: 'Projets 3D',
-    it: 'Progetti 3D', nl: '3D-projecten', zh: '3D 项目', hi: '3D परियोजनाएँ', ko: '3D 프로젝트', ja: '3Dプロジェクト'
+    es: 'Proyectos de stands diseñados por Standarte', en: 'Stand projects designed by Standarte',
+    de: 'Von Standarte entworfene Messestand-Projekte', pt: 'Projetos de stands desenhados pela Standarte',
+    fr: 'Projets de stands conçus par Standarte', it: 'Progetti di stand progettati da Standarte',
+    nl: 'Standprojecten ontworpen door Standarte', zh: 'Standarte 设计的展台项目',
+    hi: 'Standarte द्वारा डिज़ाइन की गई स्टैंड परियोजनाएँ', ko: 'Standarte가 디자인한 부스 프로젝트', ja: 'Standarteがデザインしたブースプロジェクト'
   };
   // Etiqueta del enlace "Precios" en el menú (la página /precios es un componente propio).
   const preciosNavLabel = {
@@ -1412,6 +1419,19 @@
     return getProjectTitle(project)
       .replace(/\s+(en|in|à|a|em)\s+\p{Lu}[\p{L}.\-]*(\s+\p{Lu}[\p{L}.\-]*)*$/u, '')
       .trim();
+  }
+
+  // Leyendas del carrusel (23/09/2026): título completo CON la ciudad («Stand … en Madrid»),
+  // que empuja la expresión «stand … en {ciudad}», y alt descriptivo con la autoría.
+  const carouselAltSuffix = {
+    es: 'stand diseñado y montado por Standarte', en: 'stand designed and built by Standarte',
+    de: 'von Standarte entworfen und gebaut', pt: 'stand desenhado e montado pela Standarte',
+    fr: 'stand conçu et monté par Standarte', it: 'stand progettato e allestito da Standarte',
+    nl: 'stand ontworpen en gebouwd door Standarte', zh: 'Standarte 设计搭建的展台',
+    hi: 'Standarte द्वारा डिज़ाइन और निर्मित स्टैंड', ko: 'Standarte가 디자인하고 시공한 부스', ja: 'Standarteが設計・施工したブース'
+  };
+  function carouselAlt(project) {
+    return `${getProjectTitle(project)} — ${carouselAltSuffix[lang] || carouselAltSuffix.es}`;
   }
 
   function projectDescription(project) {
@@ -2593,15 +2613,16 @@
                     <div class="carousel-img-wrap">
                       {#if project.location}<span class="carousel-loc-badge">{project.location}</span>{/if}
                       <span class="carousel-loading" aria-hidden="true">{lang === 'es' ? 'cargando…' : 'loading…'}</span>
-                      <img src={project.image.replace('.avif', '-thumb.avif')} alt="" width="480" height="360" loading="lazy" use:imgLoaded on:error={(e) => handleThumbError(e, project)} />
+                      <img src={project.image.replace('.avif', '-thumb.avif')} alt={dupIdx < carouselItems.length ? carouselAlt(project) : ''} width="480" height="360" loading="lazy" use:imgLoaded on:error={(e) => handleThumbError(e, project)} />
                     </div>
                   </a>
                   <a href={projectUrl(project.id, lang)} class="carousel-overlay" tabindex="-1" aria-hidden="true">
                     <span class="view-btn-gold">{copy.projects3D?.viewBtn || 'Ver Proyecto'}</span>
                   </a>
                   <div class="carousel-caption">
-                    <a href={projectUrl(project.id, lang)} class="carousel-caption-link" title={carouselTitle(project)}>
-                      <h3>{carouselTitle(project)}</h3>
+                    <a href={projectUrl(project.id, lang)} class="carousel-caption-link" title={getProjectTitle(project)}>
+                      <!-- La copia duplicada para el bucle no repite el encabezado. -->
+                      <svelte:element this={dupIdx < carouselItems.length ? 'h3' : 'p'} class="carousel-caption-title">{getProjectTitle(project)}</svelte:element>
                     </a>
                   </div>
                 </div>
