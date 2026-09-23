@@ -1,6 +1,7 @@
 <script>
   import { BRAND, sqClaim, sqClaimLead, sqCitiesIntro, sqProposalsTitle, sqHow, sqLoginLabel } from '$lib/brand.js';
   import { builderPages, isBuilderPage, builderPageForCity } from '$lib/builderPages.js';
+  import RenderFader from './RenderFader.svelte';
   import { fairsData as fairItems } from '$lib/fairsData.js';
   import { onMount, tick } from 'svelte';
   import { pushState, replaceState, afterNavigate } from '$app/navigation';
@@ -595,6 +596,9 @@
     return BRAND.leadGen && html ? html.replace(SQ_STRIP_RE, '$1') : html;
   }
   $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq, cityDisplayName, section) : seoContent.body) : '';
+  // Paralelas de constructor: carrusel de renders de la Galería entre el primer y el segundo
+  // párrafo del cuerpo (23/09/2026). Se parte el HTML tras el primer </p>.
+  $: faderSplit = (isBuilderPage(section) && bodyHtml.includes('</p>')) ? bodyHtml.indexOf('</p>') + 4 : -1;
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
   $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : (seoKwCity(section) && cityDisplayName ? (CITY_H1[lang] || CITY_H1.es)(cityDisplayName) : rewriteTitulo(seoContent.h1, lang))) : seoContent.h1) : '';
   // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
@@ -2832,7 +2836,13 @@
                 </ol>
               </nav>
             {/if}
-            {@html bodyHtml}
+            {#if faderSplit > 0}
+              {@html bodyHtml.slice(0, faderSplit)}
+              <RenderFader {lang} />
+              {@html bodyHtml.slice(faderSplit)}
+            {:else}
+              {@html bodyHtml}
+            {/if}
           </article>
           
           <!-- Sidebar con casos de éxito reales -->
