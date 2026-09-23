@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
-    import { BRAND } from '$lib/brand.js';
+  import { BRAND } from '$lib/brand.js';
   import { pathFor, languages, languageLabels, ctaBudget, preciosNav } from '$lib/siteData.js';
   import { galleryVideos } from '$lib/videosData.js';
+  import { clientProjectVideos } from '$lib/clientProjectVideos.js';
   import { uspNavLabel } from '$lib/uspSnippets.js';
   import FlagIcon from './FlagIcon.svelte';
   import AiSourceButtons from './AiSourceButtons.svelte';
@@ -38,9 +39,11 @@
     // "Expansión" del hero (AiSourceButtons → reopenAdvisor).
   });
 
-  // Galería (23/09/2026): página propia, como Precios. Por ahora solo los vídeos 3D del
-  // portfolio (galleryVideos), cada uno enlazado a su página de visualización /videos/<slug>.
+  // Galería (23/09/2026): página propia, como Precios. Vídeos 3D del portfolio y, detrás, los
+  // de las propuestas de proyectos de cliente (Google Drive, sin nombre de cliente).
   const videos = galleryVideos;
+  const clientVideos = clientProjectVideos;
+  const CLIENT_CAP = { es: 'Propuesta 3D de stand a medida presentada a un cliente', en: 'Custom stand 3D proposal presented to a client', de: '3D-Entwurf eines maßgefertigten Messestands für einen Kunden', pt: 'Proposta 3D de stand à medida apresentada a um cliente', fr: 'Proposition 3D de stand sur mesure présentée à un client', it: 'Proposta 3D di stand su misura presentata a un cliente', nl: '3D-voorstel voor een maatwerkstand, gepresenteerd aan een klant', zh: '向客户提交的定制展台 3D 方案', hi: 'ग्राहक को प्रस्तुत कस्टम स्टैंड का 3D प्रस्ताव', ko: '고객에게 제시한 맞춤 부스 3D 제안', ja: 'お客様に提案したオーダーメイドブースの3Dプラン' };
   const T = {
     es: { nav: 'Galería', metaTitle: 'Galería de stands diseñados por Standarte | Vídeos 3D', metaDesc: 'Recorridos en vídeo 3D de stands feriales diseñados, fabricados y montados a medida por Standarte para ferias en España y Portugal.', h1: 'Galería de stands diseñados por Standarte', intro: 'Recorridos en 3D de stands que hemos diseñado, fabricado en nuestro taller y montado para ferias en España y Portugal. Cada vídeo muestra el proyecto tal como se aprobó en el prototipo y se construyó en el pabellón.', watch: 'Ver el vídeo en su página', video: 'Vídeo' },
     en: { nav: 'Gallery', metaTitle: 'Gallery of stands designed by Standarte | 3D videos', metaDesc: '3D video walkthroughs of custom exhibition stands designed, built and installed by Standarte for trade fairs in Spain and Portugal.', h1: 'Gallery of stands designed by Standarte', intro: '3D walkthroughs of stands we have designed, built in our own workshop and installed for trade fairs in Spain and Portugal. Each video shows the project exactly as it was approved in the prototype and built in the hall.', watch: 'Watch on its own page', video: 'Video' },
@@ -169,6 +172,14 @@
         </figcaption>
       </figure>
     {/each}
+    {#each clientVideos as cv, j}
+      <figure class="galeria-item">
+        <iframe src={cv.embed} title={`${CLIENT_CAP[lang] || CLIENT_CAP.es} (${t.video.toLowerCase()} ${videos.length + j + 1})`} loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <figcaption>
+          <h2>{CLIENT_CAP[lang] || CLIENT_CAP.es} ({t.video.toLowerCase()} {videos.length + j + 1})</h2>
+        </figcaption>
+      </figure>
+    {/each}
   </div>
 </main>
 
@@ -185,6 +196,7 @@
   .galeria-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
   @media (max-width: 760px) { .galeria-grid { grid-template-columns: 1fr; } }
   .galeria-item { margin: 0; background: #fff; border: 1px solid rgba(22, 25, 28, 0.06); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(22, 25, 28, 0.05); }
+  .galeria-item iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #111; }
   .galeria-item video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #111; object-fit: cover; }
   .galeria-item figcaption { padding: 16px 20px 20px; }
   .galeria-item h2 { margin: 0 0 8px; color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 18px; }
