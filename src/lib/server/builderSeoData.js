@@ -98,15 +98,75 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Madrid: taller propio a quince minutos de IFEMA</h2>
         <p>Nuestro taller está en San Fernando de Henares, a unos diez kilómetros de la Feria de Madrid. En una plaza como IFEMA esa distancia es la diferencia entre resolver un imprevisto de montaje en una hora o esperar a un transporte desde otra provincia. IFEMA es además el recinto más denso de España en calendario, con doce pabellones que encadenan certámenes casi sin respiro y comprimen las ventanas de montaje: por eso el stand se arma entero en taller antes de salir y llegamos al pabellón a ensamblar, no a improvisar.</p>
-        <h2>Constructor de stands en Madrid: cómo trabajamos la plaza</h2>
+        <ul>
+          <li><strong>Taller en San Fernando de Henares</strong>, a quince minutos del recinto.</li>
+          <li><strong>Prototipo 3D</strong> que es exactamente lo que se construye.</li>
+          <li><strong>Ajustes el mismo día</strong> del montaje, sin depender de otro taller.</li>
+          <li><strong>Montaje terminado 24&nbsp;h antes</strong> de la apertura.</li>
+        </ul>
+        <h2>Constructor de stands en Madrid: qué construimos</h2>
+        <h3>Stands de diseño libre en carpintería</h3>
+        <p>Estructura, paramentos y mobiliario fabricados a medida para ferias como Fruit Attraction o SICUR, con acabados lacados, chapados o textiles y gráfica retroiluminada.</p>
+        <h3>Stands con zona de degustación y cocina</h3>
+        <p>Barras con fregadero y frío, cocinas de demostración y almacén para las ferias de alimentación de IFEMA, con las acometidas de agua coordinadas con el recinto.</p>
+        <h3>Dobles alturas</h3>
+        <p>Sala de reuniones o terraza arriba, exposición abajo: la solución para parcelas grandes en pabellones donde cada metro de pasillo cuenta.</p>
+        <h3>Stands modulares reutilizables</h3>
+        <p>Para empresas con varias ferias al año en IFEMA, una estructura que se almacena, se reconfigura y vuelve con la gráfica de la nueva campaña.</p>
+        <p><strong>¿Tienes una feria próxima en IFEMA?</strong> Las ventanas de montaje se reparten pronto: con el espacio contratado y la fecha, reservamos turno de taller y de montaje.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Madrid</a></p>
+        <h2>Constructor de stands en Madrid: por qué construir con Standarte</h2>
+        <ul>
+          <li><strong>Construimos, no intermediamos.</strong> El stand se fabrica en nuestro taller de San Fernando de Henares, con nuestro equipo.</li>
+          <li><strong>Cercanía real a IFEMA.</strong> Si algo hay que rehacer durante el montaje, se fabrica y se lleva el mismo día.</li>
+          <li><strong>Lo que apruebas es lo que se construye.</strong> Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>.</li>
+          <li><strong>Obra real en Madrid.</strong> Más de 30 stands publicados en nuestra cartera de proyectos para empresas que exponen en IFEMA.</li>
+        </ul>
+        <h2>Constructor de stands en Madrid: cómo trabajamos, del plano al desmontaje</h2>
         <ol>
-          <li><strong>Proyecto y prototipo 3D</strong> con las medidas del espacio en IFEMA y la normativa del pabellón: alturas, suspensiones, acometidas y certificados.</li>
-          <li><strong>Fabricación y premontaje en San Fernando de Henares</strong>, a quince minutos del recinto.</li>
-          <li><strong>Montaje con equipo propio</strong> dentro de la ventana asignada, ajustes el mismo día y desmontaje al cierre.</li>
+          <li><strong>Briefing y plano.</strong> Objetivos, pabellón y parcela en IFEMA, normativa y producto que se expone.</li>
+          <li><strong>Prototipo 3D y presupuesto.</strong> Lo revisas, lo ajustamos y lo apruebas.</li>
+          <li><strong>Fabricación y premontaje en San Fernando de Henares.</strong> Todo se arma y se prueba antes de cargar.</li>
+          <li><strong>Montaje, feria y desmontaje.</strong> Nuestro equipo monta, queda localizable a quince minutos y retira el stand al cierre.</li>
         </ol>
+        <h2>Constructor de stands en Madrid: proyectos que hemos construido</h2>
+        <p>Una muestra de stands para empresas que exponen en Madrid, con su ficha de proyecto:</p>
+        <ul>
+          <li><a href="/proyectos/stand_para_herrajes_puertas_ventanas_madrid">Stand modular de herrajes</a></li>
+          <li><a href="/proyectos/stand_para_distribuidor_de_uvas_de_mesa_en_madrid">Stand para distribuidor de uvas de mesa</a></li>
+          <li><a href="/proyectos/stand_para_empresa_del_sector_sanitario_en_madrid">Stand para empresa del sector sanitario</a></li>
+          <li><a href="/proyectos/stand_para_fabricante_de_equipos_industriales_en_madrid">Stand para fabricante de equipos industriales</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_alimentos_congelados_en_madrid">Stand para empresa de alimentos congelados</a></li>
+          <li><a href="/proyectos/stand_para_operador_de_telecomunicaciones_en_madrid">Stand para operador de telecomunicaciones</a></li>
+        </ul>
         <h2>Constructor de stands en Madrid: ferias del recinto</h2>
-        <p>Construimos para todo el calendario de IFEMA: <a href="/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/ferias/stand-sicur-madrid">SICUR</a>, <a href="/ferias/stand-veteco-madrid">Veteco</a>, <a href="/ferias/stand-hip-madrid">HIP</a> y <a href="/ferias/stand-meat-attraction-madrid">Meat Attraction</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-madrid">diseño y montaje de stands en Madrid</a>.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Madrid</a></p>`
+        <p>Construimos para todo el calendario de IFEMA: <a href="/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/ferias/stand-sicur-madrid">SICUR</a>, <a href="/ferias/stand-veteco-madrid">Veteco</a>, <a href="/ferias/stand-hip-madrid">HIP</a> y <a href="/ferias/stand-meat-attraction-madrid">Meat Attraction</a>. El servicio completo de diseño y montaje para la plaza está en <a href="/diseno-construccion-montaje-stands-madrid">diseño y montaje de stands en Madrid</a>.</p>`,
+      faqs: [
+        {
+          "q": "¿Dónde está vuestro taller?",
+          "a": "En San Fernando de Henares, a unos diez kilómetros de IFEMA. Fabricamos y premontamos allí y llegamos al recinto en unos quince minutos."
+        },
+        {
+          "q": "¿Fabricáis vosotros el stand o lo subcontratáis?",
+          "a": "Lo fabricamos en nuestro propio taller, con nuestro equipo de carpinteros y montadores. No subcontratamos la producción ni el montaje."
+        },
+        {
+          "q": "¿Qué pasa si hay que cambiar algo durante el montaje en IFEMA?",
+          "a": "Al estar a quince minutos, las piezas se rehacen o se ajustan en taller y se llevan el mismo día, sin esperar a un transporte desde otra provincia."
+        },
+        {
+          "q": "¿Construís stands con cocina o degustación?",
+          "a": "Sí: barras con fregadero y frío, cocinas de demostración y almacén, con las acometidas de agua y potencia coordinadas con IFEMA."
+        },
+        {
+          "q": "¿Con cuánta antelación hay que encargar el stand?",
+          "a": "Lo recomendable son 6-8 semanas antes de la feria. En IFEMA las ventanas de montaje son cortas, así que conviene reservar turno pronto."
+        },
+        {
+          "q": "¿Cuánto cuesta un stand en Madrid?",
+          "a": "Depende de los metros cuadrados, la estructura y los acabados. En la página de precios hay tramos orientativos y te preparamos un presupuesto cerrado en 24 h con el prototipo 3D."
+        }
+      ]
     }
   },  constructor_stand_barcelona: {
     es: {
@@ -155,15 +215,73 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Lisboa: construir para la FIL y para congresos</h2>
         <p>Lisboa combina dos escenarios que exigen construcciones distintas. En la FIL, en el Parque das Nações, hay pabellón y altura para un stand de diseño libre con doble altura y almacén. En los grandes congresos —tecnológicos, médicos o del sector del juego, repartidos entre la FIL y el MEO Arena— las ventanas de montaje se miden en horas, así que fabricamos por módulos premontados que en pabellón solo hay que ensamblar y conectar, con la gráfica colocada y la instalación eléctrica probada antes de cargar el camión.</p>
-        <h2>Constructor de stands en Lisboa: cómo trabajamos la plaza</h2>
+        <ul>
+          <li><strong>Un solo interlocutor</strong> en español, inglés o portugués.</li>
+          <li><strong>Prototipo 3D</strong> que es exactamente lo que se construye.</li>
+          <li><strong>Fabricación en nuestro taller</strong> y transporte a Lisboa organizado por nosotros.</li>
+          <li><strong>Montaje dentro de la ventana asignada</strong>, también en congresos de pocas horas.</li>
+        </ul>
+        <h2>Constructor de stands en Lisboa: qué construimos</h2>
+        <h3>Stands de diseño libre para la FIL</h3>
+        <p>Estructura y carpintería a medida para ferias como BTL o Tektónica, con almacén integrado y gráfica de gran formato.</p>
+        <h3>Módulos de congreso premontados</h3>
+        <p>Stands compactos que salen del taller terminados y se levantan en horas en congresos como Web Summit, sin renunciar al acabado.</p>
+        <h3>Dobles alturas</h3>
+        <p>Sala de reuniones arriba y exposición abajo cuando el pabellón de la FIL lo permite, calculadas y premontadas en taller.</p>
+        <h3>Stands reutilizables para varias ediciones</h3>
+        <p>Estructuras que se guardan entre ediciones y vuelven a Lisboa con la gráfica de la nueva campaña.</p>
+        <p><strong>¿Tienes una feria o un congreso próximo en Lisboa?</strong> Con el espacio y la ventana de montaje, planificamos taller y transporte con margen.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Lisboa</a></p>
+        <h2>Constructor de stands en Lisboa: por qué construir con Standarte</h2>
+        <ul>
+          <li><strong>Construimos, no intermediamos.</strong> El stand se fabrica en nuestro taller, con nuestro equipo, y viaja a Lisboa premontado.</li>
+          <li><strong>Transporte resuelto.</strong> Organizamos el viaje con margen para que la descarga no dependa de la carretera.</li>
+          <li><strong>Lo que apruebas es lo que se construye.</strong> Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>.</li>
+          <li><strong>Obra real en Lisboa.</strong> Proyectos publicados en nuestra cartera para empresas que exponen en la ciudad.</li>
+        </ul>
+        <h2>Constructor de stands en Lisboa: cómo trabajamos, del plano al desmontaje</h2>
         <ol>
-          <li><strong>Proyecto y prototipo 3D</strong> con las medidas del espacio contratado y las normas de la FIL o del recinto del congreso: alturas, suspensiones y acometidas.</li>
-          <li><strong>Fabricación y premontaje en nuestro taller</strong>, con transporte a Lisboa organizado con margen para que la descarga no dependa de la carretera.</li>
-          <li><strong>Montaje con equipo propio</strong> dentro de la ventana asignada y desmontaje al cierre, guardando lo reutilizable para la siguiente cita.</li>
+          <li><strong>Briefing y plano.</strong> Objetivos, espacio en la FIL o en el recinto del congreso y normas de montaje.</li>
+          <li><strong>Prototipo 3D y presupuesto.</strong> Lo revisas, lo ajustamos y lo apruebas.</li>
+          <li><strong>Fabricación, premontaje y transporte.</strong> Todo se prueba en taller antes de viajar.</li>
+          <li><strong>Montaje, feria y desmontaje.</strong> Nuestro equipo monta en la ventana asignada y retira el stand al cierre.</li>
         </ol>
+        <h2>Constructor de stands en Lisboa: proyectos que hemos construido</h2>
+        <p>Stands para empresas que exponen en Lisboa, con su ficha de proyecto:</p>
+        <ul>
+          <li><a href="/proyectos/stand_para_embalaje_industrial_lisboa">Stand para embalaje industrial</a></li>
+          <li><a href="/proyectos/stand_para_materiales_etiquetado_lisboa">Stand para materiales de etiquetado</a></li>
+          <li><a href="/proyectos/stand_para_equipamiento_industrial_lisboa">Stand para equipamiento industrial</a></li>
+          <li><a href="/proyectos/stand_para_gestion_trafico_inteligente_lisboa">Stand para gestión de tráfico inteligente</a></li>
+        </ul>
         <h2>Constructor de stands en Lisboa: ferias y congresos del recinto</h2>
-        <p>Construimos para las grandes citas de la capital: <a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/ferias/stand-web-summit-lisboa">Web Summit</a> y <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-lisboa">diseño y montaje de stands en Lisboa</a>.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Lisboa</a></p>`
+        <p>Construimos para las grandes citas de la capital: <a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/ferias/stand-web-summit-lisboa">Web Summit</a> y <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-lisboa">diseño y montaje de stands en Lisboa</a>.</p>`,
+      faqs: [
+        {
+          "q": "¿Montáis stands en Lisboa desde España?",
+          "a": "Sí. Fabricamos y premontamos el stand en nuestro taller y organizamos el transporte a Lisboa con margen, de modo que en el pabellón solo se ensambla y se conecta."
+        },
+        {
+          "q": "¿Fabricáis vosotros el stand o lo subcontratáis?",
+          "a": "Lo fabricamos en nuestro propio taller, con nuestro equipo de carpinteros y montadores, y un único responsable lleva el proyecto."
+        },
+        {
+          "q": "¿Podéis montar en congresos con muy poco tiempo de montaje?",
+          "a": "Sí. Para congresos como Web Summit fabricamos módulos que salen del taller terminados y se levantan en pocas horas dentro de la ventana asignada."
+        },
+        {
+          "q": "¿Nos atendéis en portugués?",
+          "a": "Sí, trabajamos en español, portugués e inglés, con un único interlocutor durante todo el proyecto."
+        },
+        {
+          "q": "¿Con cuánta antelación hay que encargar el stand?",
+          "a": "Lo recomendable son 6-8 semanas antes de la feria, contando el transporte. Con plazos más cortos también trabajamos."
+        },
+        {
+          "q": "¿Cuánto cuesta un stand en Lisboa?",
+          "a": "Depende de los metros cuadrados, la estructura y los acabados. En la página de precios hay tramos orientativos y te preparamos un presupuesto cerrado en 24 h con el prototipo 3D."
+        }
+      ]
     }
   },
 
@@ -177,11 +295,75 @@ export const builderSeoData = {
         <h2>Constructor de stands en Bilbao: construir para el BEC y su industria</h2>
         <p>El BEC de Barakaldo es un recinto de escala industrial y sus ferias lo demuestran: en la <a href="/ferias/stands-biemh-bilbao-bec">BIEMH</a> se exponen máquinas-herramienta que se descargan con grúa y funcionan durante toda la feria. Construir aquí significa dimensionar el suelo para cargas reales, coordinar con el recinto los medios de elevación y dejar las tomas eléctricas resueltas antes de que la máquina llegue.</p>
         <p>La altura libre de los pabellones —entre 12 y 15 metros— permite además algo que en recintos más bajos no cabe: dobles alturas con sala de reuniones arriba y exposición abajo. Es una de las construcciones que más veces resolvemos en esta plaza, y se calcula y fabrica entera en taller antes de pisar el pabellón.</p>
-        ${paso('Bilbao')}
-        ${tipos('Bilbao')}
+        <ul>
+          <li><strong>Un solo interlocutor</strong> del primer plano al desmontaje, sin intermediarios.</li>
+          <li><strong>Prototipo 3D</strong> que es exactamente lo que se construye.</li>
+          <li><strong>Fabricación en nuestro taller</strong> y premontaje antes de viajar al BEC.</li>
+          <li><strong>Montaje terminado 24&nbsp;h antes</strong> de la apertura.</li>
+        </ul>
+        <h2>Constructor de stands en Bilbao: qué construimos</h2>
+        <h3>Stands para maquinaria y producto pesado</h3>
+        <p>Suelos técnicos calculados para la carga de cada equipo, pasos de instalación bajo tarima y acometidas previstas con el BEC, para exponer máquinas en marcha sin cables a la vista.</p>
+        <h3>Dobles alturas</h3>
+        <p>Estructura calculada, escalera y sala de reuniones arriba para aprovechar los pabellones altos del recinto: metros de negociación sin restar metros de exposición.</p>
+        <h3>Stands de diseño libre en carpintería</h3>
+        <p>Paramentos, mostradores y mobiliario fabricados a medida, con acabados lacados, chapados o textiles y gráfica retroiluminada para destacar en pasillos de gran escala.</p>
+        <h3>Stands modulares reutilizables</h3>
+        <p>Para quien repite en el calendario del BEC —BIEMH es bienal y alterna con Subcontratación—, una estructura que se guarda, se reconfigura y vuelve con la gráfica actualizada.</p>
+        <p><strong>¿Tienes una feria próxima en el BEC?</strong> Cuanto antes conozcamos el espacio contratado y el equipo que vas a exponer, mejor encajan cargas, instalaciones y plazos.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Bilbao</a></p>
+        <h2>Constructor de stands en Bilbao: por qué construir con Standarte</h2>
+        <ul>
+          <li><strong>Construimos, no intermediamos.</strong> El stand se fabrica en nuestro taller, con nuestro equipo: el presupuesto no lleva la comisión de un tercero.</li>
+          <li><strong>Estudiamos el recinto antes de diseñar.</strong> Plano del pabellón, normas del BEC, cargas y alturas: el stand nace para ese espacio, no se adapta después.</li>
+          <li><strong>Lo que apruebas es lo que se construye.</strong> Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>.</li>
+          <li><strong>Obra real en Bilbao.</strong> Más de 30 stands publicados en nuestra cartera de proyectos para empresas que exponen en esta plaza.</li>
+        </ul>
+        <h2>Constructor de stands en Bilbao: cómo trabajamos, del plano al desmontaje</h2>
+        <ol>
+          <li><strong>Briefing y plano.</strong> Objetivos, espacio contratado en el BEC y equipos que se exponen.</li>
+          <li><strong>Prototipo 3D y presupuesto.</strong> Lo revisas, lo ajustamos y lo apruebas.</li>
+          <li><strong>Fabricación y premontaje en taller.</strong> Carpintería, estructura, gráfica e instalaciones probadas antes de cargar.</li>
+          <li><strong>Montaje, feria y desmontaje.</strong> Nuestro equipo monta, está localizable durante la feria y retira el stand al cierre.</li>
+        </ol>
+        <h2>Constructor de stands en Bilbao: proyectos que hemos construido</h2>
+        <p>Una muestra de stands para empresas que exponen en Bilbao, con su ficha de proyecto:</p>
+        <ul>
+          <li><a href="/proyectos/stand_para_empresa_de_automatizacion_por_vacio_en_bilbao">Stand para empresa de automatización por vacío</a></li>
+          <li><a href="/proyectos/stand_para_fabricante_de_elastomeros_en_bilbao">Stand para fabricante de elastómeros</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_tecnologia_industrial_en_bilbao">Stand para empresa de tecnología industrial</a></li>
+          <li><a href="/proyectos/stand_para_aerolinea_de_carga_en_bilbao">Stand para aerolínea de carga</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_packaging_en_bilbao">Stand para empresa de packaging</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_cruceros_en_bilbao">Stand para empresa de cruceros</a></li>
+        </ul>
         <h2>Constructor de stands en Bilbao: ferias del recinto</h2>
-        <p>Construimos para el calendario del BEC: <a href="/ferias/stands-biemh-bilbao-bec">BIEMH</a>, <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stand-egurtek-bilbao">Egurtek</a> y <a href="/ferias/stand-world-maritime-week-bilbao">World Maritime Week</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-bilbao">diseño y montaje de stands en Bilbao</a>.</p>
-        ${porque('Bilbao')}`
+        <p>Construimos para el calendario del BEC: <a href="/ferias/stands-biemh-bilbao-bec">BIEMH</a>, <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stand-egurtek-bilbao">Egurtek</a> y <a href="/ferias/stand-world-maritime-week-bilbao">World Maritime Week</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-bilbao">diseño y montaje de stands en Bilbao</a>.</p>`,
+      faqs: [
+        {
+          "q": "¿Fabricáis vosotros el stand o lo subcontratáis?",
+          "a": "Lo fabricamos en nuestro propio taller, con nuestro equipo de carpinteros y montadores. No subcontratamos la producción ni el montaje, y un único responsable lleva el proyecto de principio a fin."
+        },
+        {
+          "q": "¿Podéis construir un stand con maquinaria en funcionamiento en el BEC?",
+          "a": "Sí. Calculamos el suelo técnico para la carga de cada equipo, dejamos previstos los pasos de instalación y coordinamos con el BEC la entrada de la maquinaria y las acometidas eléctricas."
+        },
+        {
+          "q": "¿Construís stands de doble altura en Bilbao?",
+          "a": "Sí, es una de las construcciones más habituales en el BEC por la altura libre de sus pabellones. Se calcula la estructura, se fabrica y se premonta en taller antes del montaje."
+        },
+        {
+          "q": "¿Con cuánta antelación hay que encargar el stand?",
+          "a": "Lo recomendable son 6-8 semanas antes de la feria; para dobles alturas o maquinaria pesada, algo más. Con plazos más cortos también trabajamos, porque fabricamos en taller propio."
+        },
+        {
+          "q": "¿Se puede reutilizar el stand en otras ferias?",
+          "a": "Sí. Diseñamos estructuras modulares que se guardan entre ferias, se reconfiguran para otro espacio y vuelven con la gráfica actualizada."
+        },
+        {
+          "q": "¿Cuánto cuesta un stand en Bilbao?",
+          "a": "Depende de los metros cuadrados, la estructura y los acabados. En la página de precios hay tramos orientativos y te preparamos un presupuesto cerrado en 24 h con el prototipo 3D."
+        }
+      ]
     }
   },
 
@@ -1326,15 +1508,55 @@ const EN = {
     body: `
         <h2>Stand builder in Madrid: our own workshop fifteen minutes from IFEMA</h2>
         <p>Our workshop is in San Fernando de Henares, about ten kilometres from Feria de Madrid. On a site like IFEMA that distance is the difference between solving an installation problem in an hour or waiting for a lorry from another province. IFEMA is also Spain's densest calendar — twelve halls, one show after another — which compresses build-up windows, so we pre-assemble in the workshop and arrive at the hall to assemble, not to improvise.</p>
-        <h2>Stand builder in Madrid: how we work the city</h2>
-        <ol>
-          <li><strong>Project and 3D prototype</strong> to the space at IFEMA and the hall's rules: heights, rigging, services and certificates.</li>
-          <li><strong>Manufacturing and pre-assembly in San Fernando de Henares</strong>, fifteen minutes from the venue.</li>
-          <li><strong>Installation by our own team</strong> within the assigned window, same-day adjustments and dismantling at close.</li>
-        </ol>
+        <ul>
+          <li><strong>Workshop in San Fernando de Henares</strong>, fifteen minutes from the venue.</li>
+          <li><strong>A 3D prototype</strong> that is exactly what gets built.</li>
+          <li><strong>Same-day adjustments</strong> during installation.</li>
+          <li><strong>Finished 24&nbsp;h before</strong> opening.</li>
+        </ul>
+        <h2>Stand builder in Madrid: what we build</h2>
+        <h3>Custom joinery stands</h3>
+        <p>Structure, walls and furniture made to measure for shows such as Fruit Attraction or SICUR, with lacquered, veneered or textile finishes.</p>
+        <h3>Stands with tasting areas and kitchens</h3>
+        <p>Bars with sink and fridge, demo kitchens and storage for IFEMA's food shows, with water services agreed with the venue.</p>
+        <h3>Double-deck stands</h3>
+        <p>A meeting room or terrace above and the display below, for large plots where every metre counts.</p>
+        <p><strong>Exhibiting at IFEMA soon?</strong> Build-up slots go early: with your space and date we book workshop and installation time.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Madrid</a></p>
+        <h2>Stand builder in Madrid: why build with Standarte</h2>
+        <ul>
+          <li><strong>We build, we don't broker.</strong> Your stand is made in our San Fernando de Henares workshop by our team.</li>
+          <li><strong>Real proximity to IFEMA.</strong> Anything that needs redoing during installation is made and delivered the same day.</li>
+          <li><strong>What you approve is what gets built.</strong> Every approval is recorded in our <a href="/en/audited-project">Audited Project System</a>.</li>
+          <li><strong>Real work in Madrid.</strong> Over 30 stands published in our project portfolio for companies exhibiting at IFEMA.</li>
+        </ul>
+        <h2>Stand builder in Madrid: projects we have built</h2>
+        <ul>
+          <li><a href="/proyectos/stand_para_herrajes_puertas_ventanas_madrid?lang=en">Modular hardware stand</a></li>
+          <li><a href="/proyectos/stand_para_distribuidor_de_uvas_de_mesa_en_madrid?lang=en">Stand for a table grape distributor</a></li>
+          <li><a href="/proyectos/stand_para_empresa_del_sector_sanitario_en_madrid?lang=en">Stand for a healthcare company</a></li>
+          <li><a href="/proyectos/stand_para_fabricante_de_equipos_industriales_en_madrid?lang=en">Stand for an industrial equipment manufacturer</a></li>
+        </ul>
         <h2>Stand builder in Madrid: shows at the venue</h2>
-        <p>We build across IFEMA's calendar: <a href="/en/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/en/ferias/stand-sicur-madrid">SICUR</a>, <a href="/en/ferias/stand-veteco-madrid">Veteco</a> and <a href="/en/ferias/stand-meat-attraction-madrid">Meat Attraction</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_madrid">stand design and installation in Madrid</a> page.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Madrid</a></p>`
+        <p>We build across IFEMA's calendar: <a href="/en/ferias/stand-fruit-attraction-madrid">Fruit Attraction</a>, <a href="/en/ferias/stand-sicur-madrid">SICUR</a> and <a href="/en/ferias/stand-meat-attraction-madrid">Meat Attraction</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_madrid">stand design and installation in Madrid</a> page.</p>`,
+      faqs: [
+        {
+          "q": "Where is your workshop?",
+          "a": "In San Fernando de Henares, about ten kilometres from IFEMA. We build and pre-assemble there and reach the venue in around fifteen minutes."
+        },
+        {
+          "q": "Do you build the stand yourselves or subcontract it?",
+          "a": "We build it in our own workshop with our own carpenters and installers. We do not subcontract production or installation."
+        },
+        {
+          "q": "What if something needs changing during installation at IFEMA?",
+          "a": "Being fifteen minutes away, parts are remade or adjusted in the workshop and delivered the same day."
+        },
+        {
+          "q": "How much does a stand in Madrid cost?",
+          "a": "It depends on size, structure and finishes. Our prices page shows indicative ranges, and we send a fixed quote with a 3D prototype within 24 h."
+        }
+      ]
   },
   constructor_stand_barcelona: {
     breadcrumb: 'Stand builder in Barcelona',
@@ -1376,15 +1598,51 @@ const EN = {
     body: `
         <h2>Stand builder in Lisbon: building for FIL and for congresses</h2>
         <p>Lisbon combines large trade shows at FIL, in Parque das Nações, with international congresses whose build-up windows are measured in hours. For the first we build free-design stands with height and storage; for the second, pre-assembled modules that only need joining and connecting in the hall, graphics already applied and wiring tested before the lorry is loaded.</p>
-        <h2>Stand builder in Lisbon: how we work the city</h2>
-        <ol>
-          <li><strong>Project and 3D prototype</strong> to the contracted space and the rules of FIL or the congress venue: heights, rigging and services.</li>
-          <li><strong>Manufacturing and pre-assembly in our workshop</strong>, with transport to Lisbon planned with margin.</li>
-          <li><strong>Installation by our own team</strong> within the assigned window, and dismantling at close.</li>
-        </ol>
+        <ul>
+          <li><strong>One contact</strong> in English, Spanish or Portuguese.</li>
+          <li><strong>A 3D prototype</strong> that is exactly what gets built.</li>
+          <li><strong>Built in our own workshop</strong>, with transport to Lisbon handled by us.</li>
+          <li><strong>Installed within the assigned window</strong>, even at short congress build-ups.</li>
+        </ul>
+        <h2>Stand builder in Lisbon: what we build</h2>
+        <h3>Free-design stands for FIL</h3>
+        <p>Custom structure and joinery for shows such as BTL or Tektónica, with built-in storage and large-format graphics.</p>
+        <h3>Pre-assembled congress modules</h3>
+        <p>Compact stands that leave the workshop finished and go up in hours at congresses such as Web Summit.</p>
+        <p><strong>Exhibiting in Lisbon soon?</strong> With your space and build-up window we plan workshop and transport with margin.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Lisbon</a></p>
+        <h2>Stand builder in Lisbon: why build with Standarte</h2>
+        <ul>
+          <li><strong>We build, we don't broker.</strong> Your stand is made in our workshop and travels to Lisbon pre-assembled.</li>
+          <li><strong>Transport handled.</strong> We plan the journey with margin so unloading never depends on the road.</li>
+          <li><strong>What you approve is what gets built.</strong> Every approval is recorded in our <a href="/en/audited-project">Audited Project System</a>.</li>
+        </ul>
+        <h2>Stand builder in Lisbon: projects we have built</h2>
+        <ul>
+          <li><a href="/proyectos/stand_para_embalaje_industrial_lisboa?lang=en">Stand for industrial packaging</a></li>
+          <li><a href="/proyectos/stand_para_equipamiento_industrial_lisboa?lang=en">Stand for industrial equipment</a></li>
+          <li><a href="/proyectos/stand_para_gestion_trafico_inteligente_lisboa?lang=en">Stand for smart traffic management</a></li>
+        </ul>
         <h2>Stand builder in Lisbon: shows at the venue</h2>
-        <p>We build across the Lisbon calendar: <a href="/en/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/en/ferias/stand-tektonica-lisboa">Tektónica</a> and <a href="/en/ferias/stand-nauticampo-lisboa">Nauticampo</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_lisbon">stand design and installation in Lisbon</a> page.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Lisbon</a></p>`
+        <p>We build across the Lisbon calendar: <a href="/en/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/en/ferias/stand-tektonica-lisboa">Tektónica</a> and <a href="/en/ferias/stand-nauticampo-lisboa">Nauticampo</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_lisbon">stand design and installation in Lisbon</a> page.</p>`,
+      faqs: [
+        {
+          "q": "Do you build stands in Lisbon from Spain?",
+          "a": "Yes. We build and pre-assemble the stand in our workshop and plan transport to Lisbon with margin, so in the hall it is only joined and connected."
+        },
+        {
+          "q": "Can you build at congresses with very short build-up times?",
+          "a": "Yes. For congresses such as Web Summit we build modules that leave the workshop finished and go up in a few hours."
+        },
+        {
+          "q": "Do you work in Portuguese and English?",
+          "a": "Yes, with one contact throughout the project in Spanish, Portuguese or English."
+        },
+        {
+          "q": "How much does a stand in Lisbon cost?",
+          "a": "It depends on size, structure and finishes. Our prices page shows indicative ranges, and we send a fixed quote with a 3D prototype within 24 h."
+        }
+      ]
   },
   constructor_stand_bilbao: {
     breadcrumb: 'Stand builder in Bilbao',
@@ -1392,13 +1650,57 @@ const EN = {
     h1: 'Stand builder in Bilbao',
     introText: 'We build custom stands for BEC (Bilbao Exhibition Centre) from our own workshop: structures sized for industrial machinery, technical floors and finishes that hold up through a heavy-traffic show.',
     body: `
-        <h2>Stand builder in Bilbao: industrial machinery sets the standard</h2>
-        <p>BEC is the venue of Spanish industry: machine tools, subcontracting, additive manufacturing. Exhibiting here usually means putting a machine on the stand, so the build starts with floor loading and reinforcement and only then moves to finishes.</p>
-        ${pasoEn('Bilbao')}
-        ${tiposEn('Bilbao')}
+        <h2>Stand builder in Bilbao: building for the BEC and its industry</h2>
+        <p>The BEC in Barakaldo is an industrial-scale venue and its shows prove it: at <a href="/en/ferias/stands-biemh-bilbao-bec">BIEMH</a>, machine tools arrive by crane and run for the whole show. Building here means sizing the floor for real loads, agreeing lifting equipment with the venue and having power ready before the machine arrives. The 12-15 m clear height of the halls also allows what lower venues cannot: double-deck stands with a meeting room above and the display below, calculated and built in our workshop before we reach the hall.</p>
+        <ul>
+          <li><strong>One contact</strong> from the first plan to dismantling.</li>
+          <li><strong>A 3D prototype</strong> that is exactly what gets built.</li>
+          <li><strong>Built in our own workshop</strong> and pre-assembled before travelling to the BEC.</li>
+          <li><strong>Finished 24&nbsp;h before</strong> opening.</li>
+        </ul>
+        <h2>Stand builder in Bilbao: what we build</h2>
+        <h3>Stands for machinery and heavy products</h3>
+        <p>Technical floors calculated for each machine's load, cable routes under the platform and services agreed with the BEC, so equipment runs with no cables in sight.</p>
+        <h3>Double-deck stands</h3>
+        <p>Calculated structure, stairs and an upper meeting room that uses the venue's high halls without losing display space.</p>
+        <h3>Reusable modular stands</h3>
+        <p>For exhibitors who return to the BEC calendar, a structure that is stored, reconfigured and comes back with updated graphics.</p>
+        <p><strong>Exhibiting at the BEC soon?</strong> The sooner we know your space and equipment, the better loads, services and timings fit.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Bilbao</a></p>
+        <h2>Stand builder in Bilbao: why build with Standarte</h2>
+        <ul>
+          <li><strong>We build, we don't broker.</strong> Your stand is made in our workshop by our team, with no third-party margin.</li>
+          <li><strong>We study the venue first.</strong> Hall plan, BEC rules, loads and heights shape the design from day one.</li>
+          <li><strong>What you approve is what gets built.</strong> Every approval is recorded in our <a href="/en/audited-project">Audited Project System</a>.</li>
+          <li><strong>Real work in Bilbao.</strong> Over 30 stands published in our project portfolio for companies exhibiting here.</li>
+        </ul>
+        <h2>Stand builder in Bilbao: projects we have built</h2>
+        <ul>
+          <li><a href="/proyectos/stand_para_empresa_de_automatizacion_por_vacio_en_bilbao?lang=en">Stand for a vacuum automation company</a></li>
+          <li><a href="/proyectos/stand_para_fabricante_de_elastomeros_en_bilbao?lang=en">Stand for an elastomer manufacturer</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_tecnologia_industrial_en_bilbao?lang=en">Stand for an industrial technology company</a></li>
+          <li><a href="/proyectos/stand_para_aerolinea_de_carga_en_bilbao?lang=en">Stand for a cargo airline</a></li>
+        </ul>
         <h2>Stand builder in Bilbao: shows at the venue</h2>
-        <p>We build across the BEC calendar: <a href="/en/ferias/stands-biemh-bilbao-bec">BIEMH</a>, <a href="/en/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/en/ferias/stand-subcontratacion-bilbao">Subcontratación</a> and <a href="/en/ferias/stand-plus-industry-bilbao">+Industry</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_bilbao">stand design and installation in Bilbao</a> page.</p>
-        ${porqueEn('Bilbao')}`
+        <p>We build across the BEC calendar: <a href="/en/ferias/stands-biemh-bilbao-bec">BIEMH</a>, <a href="/en/ferias/stands-subcontratacion-bilbao">Subcontratación</a> and <a href="/en/ferias/stand-addit3d-bilbao">Addit3D</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_bilbao">stand design and installation in Bilbao</a> page.</p>`,
+      faqs: [
+        {
+          "q": "Do you build the stand yourselves or subcontract it?",
+          "a": "We build it in our own workshop with our own carpenters and installers, and one person is responsible for the project from start to finish."
+        },
+        {
+          "q": "Can you build a stand with working machinery at the BEC?",
+          "a": "Yes. We calculate the technical floor for each machine, plan cable routes and coordinate machinery entry and power with the BEC."
+        },
+        {
+          "q": "Do you build double-deck stands in Bilbao?",
+          "a": "Yes, they are common at the BEC thanks to its high halls. The structure is calculated, built and pre-assembled in our workshop."
+        },
+        {
+          "q": "How much does a stand in Bilbao cost?",
+          "a": "It depends on size, structure and finishes. Our prices page shows indicative ranges, and we send a fixed quote with a 3D prototype within 24 h."
+        }
+      ]
   },
   constructor_stand_badajoz: {
     breadcrumb: 'Stand builder in Badajoz',
@@ -2366,16 +2668,52 @@ const PT = {
     introText: 'Construímos stands à medida para a FIL (Feira Internacional de Lisboa) e para os congressos da cidade, com fabrico em oficina própria: estrutura, carpintaria, mobiliário e grafismo produzidos pela nossa equipa, transporte tratado por nós e montagem terminada antes da abertura.',
     body: `
         <h2>Construtor de stands em Lisboa: fabrico próprio para a FIL e para os congressos</h2>
-        <p>Lisboa tem dois calendários que exigem construções distintas. Na FIL, no Parque das Nações, as feiras profissionais pedem stands de dois a quatro dias com produto exposto e espaço para negociar. Nos congressos internacionais a janela de montagem é de horas, não de dias: o stand chega pré-montado, com o grafismo aplicado e as instalações testadas, e levanta-se sem improvisar. Tratamos também do que o recinto exige: ramais, certificados de reação ao fogo e limites de altura de cada pavilhão.</p>
-        <h2>Construtor de stands em Lisboa: como trabalhamos a cidade</h2>
-        <ol>
-          <li><strong>Projeto e protótipo 3D</strong> com as medidas do espaço contratado e as normas da FIL ou do recinto do congresso.</li>
-          <li><strong>Fabrico e pré-montagem na nossa oficina</strong>, com transporte até Lisboa organizado com margem.</li>
-          <li><strong>Montagem com equipa própria</strong> dentro da janela atribuída e desmontagem no fecho.</li>
-        </ol>
+        <p>Lisboa tem dois calendários que exigem construções distintas. Na FIL, no Parque das Nações, as feiras profissionais pedem stands de dois a quatro dias com produto exposto e espaço para negociar. Nos congressos internacionais a janela de montagem é de horas, não de dias: o stand chega pré-montado, com o grafismo aplicado e as instalações testadas, e levanta-se sem improvisar.</p>
+        <ul>
+          <li><strong>Um único interlocutor</strong> em português, espanhol ou inglês.</li>
+          <li><strong>Protótipo 3D</strong> que é exatamente o que se constrói.</li>
+          <li><strong>Fabrico na nossa oficina</strong> e transporte até Lisboa tratado por nós.</li>
+          <li><strong>Montagem dentro da janela atribuída</strong>, também em congressos de poucas horas.</li>
+        </ul>
+        <h2>Construtor de stands em Lisboa: o que construímos</h2>
+        <h3>Stands de design livre para a FIL</h3>
+        <p>Estrutura e carpintaria à medida para feiras como a BTL ou a Tektónica, com arrumos integrados e grafismo de grande formato.</p>
+        <h3>Módulos de congresso pré-montados</h3>
+        <p>Stands compactos que saem da oficina terminados e se levantam em poucas horas em congressos como a Web Summit.</p>
+        <p><strong>Tem uma feira ou um congresso em Lisboa em breve?</strong> Com o espaço e a janela de montagem, planeamos oficina e transporte com margem.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand em Lisboa</a></p>
+        <h2>Construtor de stands em Lisboa: porquê construir com a Standarte</h2>
+        <ul>
+          <li><strong>Construímos, não intermediamos.</strong> O stand é fabricado na nossa oficina e viaja para Lisboa pré-montado.</li>
+          <li><strong>Transporte resolvido.</strong> Planeamos a viagem com margem para que a descarga não dependa da estrada.</li>
+          <li><strong>O que aprova é o que se constrói.</strong> Cada aprovação fica registada no <a href="/pt/projeto-auditado">Sistema de Projeto Auditado</a>.</li>
+        </ul>
+        <h2>Construtor de stands em Lisboa: projetos que construímos</h2>
+        <ul>
+          <li><a href="/proyectos/stand_para_embalaje_industrial_lisboa?lang=pt">Stand de embalagens industriais</a></li>
+          <li><a href="/proyectos/stand_para_equipamiento_industrial_lisboa?lang=pt">Stand de equipamentos industriais</a></li>
+          <li><a href="/proyectos/stand_para_gestion_trafico_inteligente_lisboa?lang=pt">Stand de gestão inteligente de tráfego</a></li>
+        </ul>
         <h2>Construtor de stands em Lisboa: feiras e congressos da cidade</h2>
-        <p>Construímos para o calendário da FIL e dos grandes congressos: <a href="/pt/ferias/stand-btl-lisboa">BTL</a>, <a href="/pt/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/pt/ferias/stand-sil-lisboa">SIL</a>, <a href="/pt/ferias/stand-nauticampo-lisboa">Nauticampo</a> e <a href="/pt/ferias/stand-web-summit-lisboa">Web Summit</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_lisboa">design e montagem de stands em Lisboa</a>.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand em Lisboa</a></p>`
+        <p>Construímos para o calendário da FIL e dos grandes congressos: <a href="/pt/ferias/stand-btl-lisboa">BTL</a>, <a href="/pt/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/pt/ferias/stand-sil-lisboa">SIL</a> e <a href="/pt/ferias/stand-web-summit-lisboa">Web Summit</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_lisboa">design e montagem de stands em Lisboa</a>.</p>`,
+      faqs: [
+        {
+          "q": "Montam stands em Lisboa a partir de Espanha?",
+          "a": "Sim. Fabricamos e pré-montamos o stand na nossa oficina e organizamos o transporte até Lisboa com margem, de modo que no pavilhão só se monta e liga."
+        },
+        {
+          "q": "Conseguem montar em congressos com muito pouco tempo?",
+          "a": "Sim. Para congressos como a Web Summit fabricamos módulos que saem da oficina terminados e se levantam em poucas horas."
+        },
+        {
+          "q": "Atendem em português?",
+          "a": "Sim, com um único interlocutor em português, espanhol ou inglês durante todo o projeto."
+        },
+        {
+          "q": "Quanto custa um stand em Lisboa?",
+          "a": "Depende dos metros quadrados, da estrutura e dos acabamentos. Na página de preços há escalões indicativos e enviamos um orçamento fechado em 24 h com o protótipo 3D."
+        }
+      ]
   },
   constructor_stand_batalha: {
     breadcrumb: 'Construtor de stands na Batalha',

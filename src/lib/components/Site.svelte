@@ -627,6 +627,13 @@
     if (fair) out.push({ name: fair.name, url: fairUrl(cfg.fair, lang) });
     return out;
   })();
+  // Título de las FAQ en las paralelas (piloto 24/09/2026): con su propia expresión objetivo.
+  function builderFaqH2(sec, l) {
+    const cfg = builderPages[sec]; if (!cfg) return copy.faqsTitle;
+    if (cfg.fair) { const f = cfg.fairName; return l === 'en' ? `Stand builder for ${f}: frequently asked questions` : l === 'pt' ? `Construtor de stands para ${f}: perguntas frequentes` : `Constructor de stands para ${f}: preguntas frecuentes`; }
+    const c = (cfg.cityNames && cfg.cityNames[l]) || cfg.cityName;
+    return l === 'en' ? `Stand builder in ${c}: frequently asked questions` : l === 'pt' ? `Construtor de stands ${ptLocative(c)}: perguntas frequentes` : `Constructor de stands en ${c}: preguntas frecuentes`;
+  }
   $: builderParent = builderParents.length ? builderParents[builderParents.length - 1] : null;
   // Enlace a la página principal con la expresión objetivo de la propia paralela
   // («constructor de stands en X» / «… para FERIA»), justo bajo la intro del hero.
@@ -2909,7 +2916,7 @@
         <!-- FAQs Section (B2B FAQ grids) — siempre en número par -->
         {#if faqsEven.length > 0}
           <section class="seo-faqs">
-            <h2>{isCityPage && cityDisplayName ? cityH2(lang, cityDisplayName, 'faqs') : copy.faqsTitle}</h2>
+            <h2>{isCityPage && cityDisplayName ? cityH2(lang, cityDisplayName, 'faqs') : (isBuilderPage(section) ? builderFaqH2(section, lang) : copy.faqsTitle)}</h2>
             <div class="faq-grid">
               {#each faqsEven as faq}
                 <article class="faq-item">
