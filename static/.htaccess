@@ -981,6 +981,17 @@ DirectorySlash Off
   ExpiresByType application/javascript "access plus 1 year"
 </IfModule>
 
+# HTML y datos de navegación (__data.json) SIN caché persistente (23/09/2026): el navegador
+# revalida en cada visita. Sin esto guardaba copias viejas de las páginas, que cargan el
+# código anterior (los JS de _app/immutable sí van con caché de un año, porque su nombre
+# cambia en cada build); así, tras un despliegue, una sección nueva como /galeria podía
+# no abrirse desde el menú hasta forzar la recarga.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
 
 # SEO Redirects 301 para Proyectos 3D
 <IfModule mod_rewrite.c>

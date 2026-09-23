@@ -115,7 +115,7 @@
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
-            <a href={pathFor(option, 'galeria')} class:active={option === lang} style="display:flex;align-items:center;gap:8px;">
+            <a href={pathFor(option, 'galeria')} data-sveltekit-reload class:active={option === lang} style="display:flex;align-items:center;gap:8px;">
               <FlagIcon langCode={option} size={16} /><span>{languageLabels[option]}</span>
             </a>
           {/each}
@@ -126,7 +126,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{copy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{copy.nav.services}</a>
-      {#if !BRAND.leadGen}<a href={pathFor(lang, 'galeria')} class="active">{t.nav}</a>{/if}
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'galeria')} data-sveltekit-reload class="active">{t.nav}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{copy.nav.precios || preciosNav[lang] || 'Precios'}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
@@ -136,7 +136,7 @@
         <span role="button" tabindex="0" aria-haspopup="true" aria-label="Language selector"><FlagIcon langCode={lang} size={20} /></span>
         <div>
           {#each languages as option}
-            <a href={pathFor(option, 'galeria')} class:active={option === lang} style="display:flex;align-items:center;gap:8px;">
+            <a href={pathFor(option, 'galeria')} data-sveltekit-reload class:active={option === lang} style="display:flex;align-items:center;gap:8px;">
               <FlagIcon langCode={option} size={16} /><span>{languageLabels[option]}</span>
             </a>
           {/each}

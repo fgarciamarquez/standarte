@@ -339,7 +339,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'home')}>{currentCopy.nav.home}</a>
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
-      <a href={pathFor(lang, 'galeria')}>{currentCopy.nav.custom}</a>
+      <a href={pathFor(lang, 'galeria')} data-sveltekit-reload>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
       <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>

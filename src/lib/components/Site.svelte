@@ -2171,7 +2171,7 @@
       {#if modularEnabled}
         <a href={pathFor(lang, 'stand-modular')} on:click={(e) => handleNavClick(e, 'stand-modular')}>Stand Modular</a>
       {/if}
-      {#if !BRAND.leadGen}<a href={pathFor(lang, 'galeria')}>{copy.nav.custom}</a>{/if}
+      {#if !BRAND.leadGen}<a href={pathFor(lang, 'galeria')} data-sveltekit-reload>{copy.nav.custom}</a>{/if}
       {#if !BRAND.leadGen}
         <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
         <a href={pathFor(lang, 'proyecto_auditado')}>{uspNavLabel(lang)}</a>

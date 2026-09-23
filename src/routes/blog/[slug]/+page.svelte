@@ -325,7 +325,7 @@
     <div class:open={menuOpen} class="nav-links">
       <a href={pathFor(lang, 'services')}>{currentCopy.nav.services}</a>
       {#if !HIDE_IMAGE_SECTIONS}<a href={pathFor(lang, 'luzpavilion')}>LuzPavilion</a>{/if}
-      <a href={pathFor(lang, 'galeria')}>{currentCopy.nav.custom}</a>
+      <a href={pathFor(lang, 'galeria')} data-sveltekit-reload>{currentCopy.nav.custom}</a>
       <a href={pathFor(lang, 'precios')}>{preciosNavLabel[lang] || preciosNavLabel.es}</a>
       <a href={pathFor(lang, 'noticias')} class="active">{currentCopy.nav.noticias}</a>
       <div class="lang-menu lang-menu-desktop">
