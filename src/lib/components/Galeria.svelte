@@ -58,6 +58,18 @@
     ja: { nav: 'ギャラリー', metaTitle: 'Standarteがデザインしたブースのギャラリー | 3D動画', metaDesc: 'スペインとポルトガルの展示会向けにStandarteが設計・製作・設営したオーダーメイドブースの3D動画ウォークスルー。', h1: 'Standarteがデザインしたブースのギャラリー', intro: 'スペインとポルトガルの展示会向けに、私たちが設計し、自社工房で製作し、設営したブースの3Dウォークスルーです。各動画は、プロトタイプで承認され会場で施工されたとおりのプロジェクトを示しています。', watch: '動画ページで見る', video: '動画' }
   };
   $: t = T[lang] || T.es;
+
+  // Renders 3D de proyectos (23/09/2026). Leyendas descriptivas, sin nombre del cliente.
+  const R = '/img/galeria-renders/';
+  const renders = [
+    { f: 'stand-bodega-barra-degustacion-vista-cenital', w: 1600, h: 1200, cap: { es: 'Stand de bodega en madera clara: barra de degustación, botellero iluminado, almacén cerrado y zona de reuniones', en: 'Winery stand in light wood: tasting bar, lit bottle display, closed storage and meeting area', pt: 'Stand de adega em madeira clara: balcão de degustação, garrafeira iluminada, arrumo fechado e zona de reuniões', de: 'Weingut-Messestand in hellem Holz: Verkostungstheke, beleuchtetes Flaschenregal, Lager und Besprechungsbereich', fr: 'Stand de domaine viticole en bois clair : bar de dégustation, présentoir à bouteilles éclairé, réserve et espace de réunion', it: 'Stand di cantina in legno chiaro: banco degustazione, espositore bottiglie illuminato, magazzino e area riunioni', nl: 'Wijnhuisstand in licht hout: proefbar, verlichte flessenwand, berging en vergaderhoek' } },
+    { f: 'stand-bodega-botellero-iluminado', w: 1600, h: 983, cap: { es: 'Stand de bodega: gráfica de viñedo a gran formato, botellero retroiluminado y barra con taburetes', en: 'Winery stand: large-format vineyard graphics, backlit bottle display and bar with stools', pt: 'Stand de adega: gráfica de vinha em grande formato, garrafeira retroiluminada e balcão com bancos', de: 'Weingut-Stand: großformatige Weinberggrafik, hinterleuchtetes Flaschenregal und Theke mit Hockern', fr: 'Stand viticole : visuel de vignoble grand format, présentoir rétroéclairé et bar avec tabourets', it: 'Stand di cantina: grafica di vigneto in grande formato, espositore retroilluminato e banco con sgabelli', nl: 'Wijnhuisstand: grootformaat wijngaardbeeld, verlichte flessenwand en bar met krukken' } },
+    { f: 'stand-gourmet-doble-altura-lamas-madera', w: 1600, h: 772, cap: { es: 'Stand gourmet con cuerpo elevado de lamas de madera, barra central y mesas altas de degustación', en: 'Gourmet food stand with a raised wooden-slat volume, central bar and high tasting tables', pt: 'Stand gourmet com volume elevado de ripas de madeira, balcão central e mesas altas de degustação', de: 'Gourmet-Messestand mit erhöhtem Lamellenkörper aus Holz, zentraler Theke und Stehtischen', fr: 'Stand gastronomique avec volume suspendu à lames de bois, bar central et tables hautes de dégustation', it: 'Stand gourmet con volume sospeso a lamelle di legno, banco centrale e tavoli alti da degustazione', nl: 'Gourmetstand met verhoogd volume van houten lamellen, centrale bar en statafels' } },
+    { f: 'stand-gourmet-zona-degustacion-barra', w: 1600, h: 786, cap: { es: 'Zona de degustación de un stand gourmet: barra de madera, mesas altas y área de mesas con butacas', en: 'Tasting area of a gourmet stand: wooden bar, high tables and seated dining area', pt: 'Zona de degustação de um stand gourmet: balcão de madeira, mesas altas e área de mesas com cadeirões', de: 'Verkostungsbereich eines Gourmet-Stands: Holztheke, Stehtische und Sitzbereich', fr: 'Espace de dégustation d’un stand gastronomique : bar en bois, tables hautes et coin repas', it: 'Area degustazione di uno stand gourmet: banco in legno, tavoli alti e zona con poltroncine', nl: 'Proefruimte van een gourmetstand: houten bar, statafels en zithoek' } },
+    { f: 'stand-gourmet-interior-desde-pasillo', w: 1600, h: 786, cap: { es: 'El mismo stand gourmet visto desde el pasillo: banco corrido, lamas y cerramientos traslúcidos', en: 'The same gourmet stand seen from the aisle: built-in bench, slats and translucent walls', pt: 'O mesmo stand gourmet visto do corredor: banco corrido, ripas e divisórias translúcidas', de: 'Derselbe Gourmet-Stand vom Gang aus: Sitzbank, Lamellen und transluzente Wände', fr: 'Le même stand vu depuis l’allée : banquette, lames et cloisons translucides', it: 'Lo stesso stand visto dal corridoio: panca continua, lamelle e pareti traslucide', nl: 'Dezelfde stand vanaf het gangpad: doorlopende bank, lamellen en doorschijnende wanden' } }
+  ];
+  const RENDERS_H2 = { es: 'Prototipos 3D de stands diseñados por Standarte', en: '3D prototypes of stands designed by Standarte', pt: 'Protótipos 3D de stands desenhados pela Standarte', de: '3D-Prototypen von Standarte entworfener Messestände', fr: 'Prototypes 3D de stands conçus par Standarte', it: 'Prototipi 3D di stand progettati da Standarte', nl: '3D-prototypes van stands ontworpen door Standarte' };
+  const cap = (r) => r.cap[lang] || r.cap.en;
   // Leyenda de cada vídeo: el título propio si lo tiene (p. ej. SKYLUXE) o una descripción
   // genérica numerada; sin el sufijo de marca de las watch pages.
   const GENERIC = {"es":"Recorrido 3D de un stand a medida diseñado por Standarte","en":"3D walkthrough of a custom stand designed by Standarte","de":"3D-Rundgang durch einen maßgefertigten Messestand von Standarte","pt":"Percurso 3D de um stand à medida desenhado pela Standarte","fr":"Visite 3D d’un stand sur mesure conçu par Standarte","it":"Percorso 3D di uno stand su misura progettato da Standarte","nl":"3D-rondleiding door een maatwerkstand ontworpen door Standarte","zh":"Standarte 定制展台 3D 漫游","hi":"Standarte द्वारा डिज़ाइन किए गए कस्टम स्टैंड का 3D वॉकथ्रू","ko":"Standarte가 디자인한 맞춤 부스 3D 투어","ja":"Standarteが設計したオーダーメイドブースの3Dウォークスルー"};
@@ -161,6 +173,18 @@
 
 <main class="galeria-page">
   <p class="galeria-intro">{t.intro}</p>
+  <h2 class="galeria-sub">{RENDERS_H2[lang] || RENDERS_H2.en}</h2>
+  <div class="galeria-grid galeria-renders">
+    {#each renders as r, i}
+      <figure class="galeria-item">
+        <a href={`${R}${r.f}.webp`} target="_blank" rel="noopener">
+          <img src={`${R}${r.f}.webp`} srcset={`${R}${r.f}-800.webp 800w, ${R}${r.f}.webp 1600w`} sizes="(max-width: 760px) 100vw, 50vw"
+            width={r.w} height={r.h} alt={cap(r)} loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
+        </a>
+        <figcaption><p>{cap(r)}</p></figcaption>
+      </figure>
+    {/each}
+  </div>
   <div class="galeria-grid">
     {#each videos as v, i}
       <figure class="galeria-item">
@@ -198,6 +222,10 @@
   .galeria-item { margin: 0; background: #fff; border: 1px solid rgba(22, 25, 28, 0.06); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(22, 25, 28, 0.05); }
   .galeria-item iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #111; }
   .galeria-item video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #111; object-fit: cover; }
+  .galeria-sub { text-align: center; margin: 0 0 24px; color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 24px; }
+  .galeria-renders { margin-bottom: 48px; }
+  .galeria-item img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; background: #222; }
+  .galeria-item figcaption p { margin: 0; color: #333; font-size: 16px; line-height: 1.5; }
   .galeria-item figcaption { padding: 16px 20px 20px; }
   .galeria-item h2 { margin: 0 0 8px; color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 18px; }
   .galeria-item a { color: #9a7a00; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
