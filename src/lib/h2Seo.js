@@ -70,7 +70,8 @@ const ASSEMBLY_PREFIX = {
 const KEY_FAMILY = { como: 'design', tipos: 'design', doc: 'assembly', cuandoFeria: 'assembly', upcoming: 'assembly' };
 
 // Apartados sin arquetipo (cityH2Custom): se asignan por su propio texto.
-const ASSEMBLY_HINT = /(montaj|log[ií]stic|documentaci|transport|plazo|assembl|install|montag|messebau|aufbau|allestim|montaggio|opbouw|standbouw|搭建|物流|설치|물류|設営|ロジスティクス|असेंबली|लॉजिस्टिक)/i;
+// 24/09/2026: los apartados del recinto (dónde se monta) van también con montaje.
+const ASSEMBLY_HINT = /(montaj|log[ií]stic|documentaci|transport|plazo|assembl|install|montag|messebau|aufbau|allestim|montaggio|opbouw|standbouw|搭建|物流|설치|물류|設営|ロジスティクス|असेंबली|लॉजिस्टिक|recinto|venue|\bsedes?\b|\bsedi\b|locaties?|messegel|veranstaltungsort|le site|les lieux|场地|परिसर|개최지|会場)/i;
 const DESIGN_HINT = /(diseñ|prototip|conce[pç]|projet|progett|ontwerp|entwurf|设计|디자인|デザイン|設計|डिज़ाइन)/i;
 
 const familyPrefix = (fam) => (fam === 'design' ? DESIGN_PREFIX : fam === 'assembly' ? ASSEMBLY_PREFIX : CITY_PREFIX);
@@ -122,17 +123,17 @@ export const CITY_MAIN_H2 = {
 
 // Frase de apertura del cuerpo con las dos expresiones literales (tras el primer párrafo).
 export const CITY_KW_LEAD = {
-  es: (c) => `Nos ocupamos del <strong>diseño de stands en ${c}</strong> —prototipo 3D en 3 días— y del <strong>montaje de stands en ${c}</strong> con montadores propios, del primer boceto al desmontaje.`,
-  en: (c) => `We handle <strong>stand design in ${c}</strong> — a 3D prototype in 3 days — and <strong>stand installation in ${c}</strong> with our own crew, from the first sketch to dismantling.`,
-  de: (c) => `Wir übernehmen das <strong>Messestand-Design in ${c}</strong> – 3D-Prototyp in 3 Tagen – und den <strong>Messebau in ${c}</strong> mit eigenen Monteuren, vom ersten Entwurf bis zum Abbau.`,
-  pt: (c) => `Tratamos do <strong>design de stands ${ptLocative(c)}</strong> — protótipo 3D em 3 dias — e da <strong>montagem de stands ${ptLocative(c)}</strong> com montadores próprios, do primeiro esboço à desmontagem.`,
-  fr: (c) => `Nous assurons la <strong>conception de stands à ${c}</strong> — prototype 3D en 3 jours — et le <strong>montage de stands à ${c}</strong> avec nos propres monteurs, du premier croquis au démontage.`,
-  it: (c) => `Ci occupiamo della <strong>progettazione di stand a ${c}</strong> — prototipo 3D in 3 giorni — e dell'<strong>allestimento stand a ${c}</strong> con montatori propri, dal primo schizzo allo smontaggio.`,
-  nl: (c) => `Wij verzorgen het <strong>standontwerp in ${c}</strong> — 3D-prototype in 3 dagen — en de <strong>standbouw in ${c}</strong> met eigen monteurs, van de eerste schets tot de demontage.`,
-  zh: (c) => `我们负责<strong>${c}展台设计</strong>（3天交付3D原型），并由自有团队完成<strong>${c}展台搭建</strong>，从第一张草图到拆卸全程负责。`,
-  hi: (c) => `हम <strong>${c} में स्टैंड डिज़ाइन</strong> — 3 दिनों में 3D प्रोटोटाइप — और अपनी टीम के साथ <strong>${c} में स्टैंड असेंबली</strong> संभालते हैं, पहले स्केच से डिसमेंटलिंग तक।`,
-  ko: (c) => `<strong>${c} 부스 디자인</strong>(3일 만에 3D 프로토타입)부터 자체 설치팀의 <strong>${c} 부스 설치</strong>까지, 첫 스케치에서 철거까지 책임집니다.`,
-  ja: (c) => `<strong>${c}のブースデザイン</strong>（3日で3Dプロトタイプ）から自社スタッフによる<strong>${c}のブース設営</strong>まで、最初のスケッチから撤去まで手がけます。`
+  es: (c) => `Como <strong>empresa de stands en ${c}</strong>, nos ocupamos del <strong>diseño de stands en ${c}</strong> —prototipo 3D en 3 días— y del <strong>montaje de stands en ${c}</strong> con montadores propios, del primer boceto al desmontaje.`,
+  en: (c) => `As an <strong>exhibition stand company in ${c}</strong>, we handle <strong>stand design in ${c}</strong> — a 3D prototype in 3 days — and <strong>stand installation in ${c}</strong> with our own crew, from the first sketch to dismantling.`,
+  de: (c) => `Als <strong>Messebaufirma in ${c}</strong> übernehmen wir das <strong>Messestand-Design in ${c}</strong> – 3D-Prototyp in 3 Tagen – und den <strong>Messebau in ${c}</strong> mit eigenen Monteuren, vom ersten Entwurf bis zum Abbau.`,
+  pt: (c) => `Como <strong>empresa de stands ${ptLocative(c)}</strong>, tratamos do <strong>design de stands ${ptLocative(c)}</strong> — protótipo 3D em 3 dias — e da <strong>montagem de stands ${ptLocative(c)}</strong> com montadores próprios, do primeiro esboço à desmontagem.`,
+  fr: (c) => `En tant qu’<strong>entreprise de stands à ${c}</strong>, nous assurons la <strong>conception de stands à ${c}</strong> — prototype 3D en 3 jours — et le <strong>montage de stands à ${c}</strong> avec nos propres monteurs, du premier croquis au démontage.`,
+  it: (c) => `Come <strong>azienda di stand fieristici a ${c}</strong>, ci occupiamo della <strong>progettazione di stand a ${c}</strong> — prototipo 3D in 3 giorni — e dell'<strong>allestimento stand a ${c}</strong> con montatori propri, dal primo schizzo allo smontaggio.`,
+  nl: (c) => `Als <strong>standbouwbedrijf in ${c}</strong> verzorgen wij het <strong>standontwerp in ${c}</strong> — 3D-prototype in 3 dagen — en de <strong>standbouw in ${c}</strong> met eigen monteurs, van de eerste schets tot de demontage.`,
+  zh: (c) => `作为<strong>${c}展台公司</strong>，我们负责<strong>${c}展台设计</strong>（3天交付3D原型），并由自有团队完成<strong>${c}展台搭建</strong>，从第一张草图到拆卸全程负责。`,
+  hi: (c) => `<strong>${c} में स्टैंड कंपनी</strong> के रूप में हम <strong>${c} में स्टैंड डिज़ाइन</strong> — 3 दिनों में 3D प्रोटोटाइप — और अपनी टीम के साथ <strong>${c} में स्टैंड असेंबली</strong> संभालते हैं, पहले स्केच से डिसमेंटलिंग तक।`,
+  ko: (c) => `<strong>${c} 부스 전문 업체</strong>로서 <strong>${c} 부스 디자인</strong>(3일 만에 3D 프로토타입)부터 자체 설치팀의 <strong>${c} 부스 설치</strong>까지, 첫 스케치에서 철거까지 책임집니다.`,
+  ja: (c) => `<strong>${c}のブース制作会社</strong>として、<strong>${c}のブースデザイン</strong>（3日で3Dプロトタイプ）から自社スタッフによる<strong>${c}のブース設営</strong>まで、最初のスケッチから撤去まで手がけます。`
 };
 
 // Prefijo común de las páginas de FERIA, por idioma.

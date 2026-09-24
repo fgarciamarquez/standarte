@@ -7,7 +7,7 @@
 
   export let lang = 'es';
   const HOLD = 3000;
-  const MORE = { es: 'Ver la galería completa', en: 'See the full gallery', pt: 'Ver a galeria completa', de: 'Zur vollständigen Galerie', fr: 'Voir toute la galerie', it: 'Vedi la galleria completa', nl: 'Bekijk de volledige galerij' };
+  const MORE = { es: 'Ver la galería completa', en: 'See the full gallery', pt: 'Ver a galeria completa', de: 'Zur vollständigen Galerie', fr: 'Voir toute la galerie', it: 'Vedi la galleria completa', nl: 'Bekijk de volledige galerij', zh: '查看完整图库', hi: 'पूरी गैलरी देखें', ko: '전체 갤러리 보기', ja: 'ギャラリーをすべて見る' };
   let i = 0;
   let timer;
   onMount(() => { timer = setInterval(() => { i = (i + 1) % galleryRenders.length; }, HOLD); });

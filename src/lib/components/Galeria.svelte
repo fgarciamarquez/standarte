@@ -62,7 +62,7 @@
 
   const R = RENDERS_DIR;
   const renders = galleryRenders;
-  const RENDERS_H2 = { es: 'Prototipos 3D de stands diseñados por Standarte', en: '3D prototypes of stands designed by Standarte', pt: 'Protótipos 3D de stands desenhados pela Standarte', de: '3D-Prototypen von Standarte entworfener Messestände', fr: 'Prototypes 3D de stands conçus par Standarte', it: 'Prototipi 3D di stand progettati da Standarte', nl: '3D-prototypes van stands ontworpen door Standarte' };
+  const RENDERS_H2 = { es: 'Prototipos 3D de stands diseñados por Standarte', en: '3D prototypes of stands designed by Standarte', pt: 'Protótipos 3D de stands desenhados pela Standarte', de: '3D-Prototypen von Standarte entworfener Messestände', fr: 'Prototypes 3D de stands conçus par Standarte', it: 'Prototipi 3D di stand progettati da Standarte', nl: '3D-prototypes van stands ontworpen door Standarte', zh: 'Standarte 设计的展台 3D 原型', hi: 'Standarte द्वारा डिज़ाइन किए गए स्टैंड के 3D प्रोटोटाइप', ko: 'Standarte가 디자인한 부스의 3D 프로토타입', ja: 'Standarteがデザインしたブースの3Dプロトタイプ' };
   const cap = (r) => r.cap[lang] || r.cap.en;
   // Leyenda de cada vídeo: el título propio si lo tiene (p. ej. SKYLUXE) o una descripción
   // genérica numerada; sin el sufijo de marca de las watch pages.

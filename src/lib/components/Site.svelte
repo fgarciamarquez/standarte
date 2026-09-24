@@ -596,9 +596,10 @@
     return BRAND.leadGen && html ? html.replace(SQ_STRIP_RE, '$1') : html;
   }
   $: bodyHtml = seoContent ? stripPatLinks((section in cityData) ? transformOroBody(seoContent.body, lang, caseSeq, cityDisplayName, section) : seoContent.body) : '';
-  // Paralelas de constructor: carrusel de renders de la Galería entre el primer y el segundo
-  // párrafo del cuerpo (23/09/2026). Se parte el HTML tras el primer </p>.
-  $: faderSplit = (isBuilderPage(section) && bodyHtml.includes('</p>')) ? bodyHtml.indexOf('</p>') + 4 : -1;
+  // Paralelas de constructor (23/09/2026) y páginas de ciudad (24/09/2026): carrusel de renders
+  // de la Galería entre el primer y el segundo párrafo del cuerpo. Se parte el HTML tras el
+  // primer </p> (en las de ciudad, antes de la frase de apertura CITY_KW_LEAD).
+  $: faderSplit = ((isBuilderPage(section) || section in cityData) && !BRAND.leadGen && bodyHtml.includes('</p>')) ? bodyHtml.indexOf('</p>') + 4 : -1;
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
   $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : (seoKwCity(section) && cityDisplayName ? (CITY_H1[lang] || CITY_H1.es)(cityDisplayName) : rewriteTitulo(seoContent.h1, lang))) : seoContent.h1) : '';
   // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
@@ -981,15 +982,27 @@
     const MAIN_OK = { es: 'Diseño de stands en', en: 'Stand design in', de: 'Messestand-Design in', pt: 'Design de stands', fr: 'Conception de stands à', it: 'Progettazione di stand a', nl: 'Standontwerp in', zh: '展台设计', hi: 'में स्टैंड डिज़ाइन', ko: '부스 디자인', ja: 'のブースデザイン' };
     const firstIsMain = (s) => (heading2Parts(s).heading || '').includes(MAIN_OK[lang] || MAIN_OK.es);
     if (n < 5) return cityName ? prefix + sections.map((s, i) => (i === 0 && firstIsMain(s) ? s : genericTail(s))).join('') : html;
-    let iComo = -1, iTipos = -1, iFerias = -1, iPat = -1, iPorQue = -1;
+    let iComo = -1, iTipos = -1, iPat = -1, iPorQue = -1;
+    const feriasCand = [];
     sections.forEach((s, i) => {
       if (iComo < 0 && /<ol[ >]/.test(s)) iComo = i;
       if (iTipos < 0 && /<ul[ >]/.test(s)) iTipos = i;
-      if (iFerias < 0 && /\/(ferias|展示会情報)\//.test(s) && /\/actividad\//.test(s)) iFerias = i;
-      if (iPat < 0 && /#pat/.test(s)) iPat = i;
+      if (/\/(ferias|展示会情報)\//.test(s) && /\/actividad\//.test(s)) feriasCand.push(i);
+      // Pat: por su enlace #pat o por su título («Pat, tu asistente…»; Canarias y Madeira no llevan el enlace).
+      if (iPat < 0 && (/#pat/.test(s) || /^\s*<h2>\s*Pat\b/.test(s))) iPat = i;
       if (/#prototipos-3d/.test(s)) iPorQue = i; // el último con el enlace a los prototipos
     });
-    const iDoc = iFerias > 0 ? iFerias - 1 : -1;
+    // 24/09/2026: «Ferias y sectores» y «Documentación técnica» se reconocen también por su
+    // TÍTULO, no solo por la posición. Antes, en cuerpos con otra estructura (Lyon, Perpiñán,
+    // Badajoz, Zaragoza, Ciudad Real y muchas versiones traducidas) el apartado anterior a
+    // «Ferias» —«Cómo trabajamos», «Tipos» o «Diseño y construcción»— se rotulaba como
+    // documentación técnica, y el de sectores como «Ferias y sectores» (H2 duplicado).
+    const headOf = (s) => (s.match(/<h2>([\s\S]*?)<\/h2>/) || [])[1] || '';
+    const FAIRS_HINT = /(ferias|fairs|trade shows|messen|feiras|salons|fiere|beurzen|展会|मेल|전시회|박람회|展示会|見本市)/i;
+    const DOC_HINT = /(documenta|dokument|unterlagen|especifica|spezifika|specifica|技術|技术|दस्तावेज़|문서|서류|자료)/i;
+    const fc = feriasCand.filter((i) => i > 0 && i !== iPorQue);
+    const iFerias = fc.find((i) => FAIRS_HINT.test(headOf(sections[i]))) ?? (fc.length ? fc[0] : -1);
+    const iDoc = sections.findIndex((s, i) => i > 0 && i !== iComo && i !== iTipos && i !== iFerias && DOC_HINT.test(headOf(s)));
     const iGar = iPorQue > 1 ? iPorQue - 2 : -1;
     const iLog = iPorQue > 0 ? iPorQue - 1 : -1;
     // Merge de Garantía/Logística y borrado de Pat solo si la maquetación estándar
