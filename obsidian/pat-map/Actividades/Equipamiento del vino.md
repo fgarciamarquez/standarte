@@ -2,7 +2,7 @@
 tipo: actividad
 clave: equipamiento-vino
 sector: "Enología y Vinos"
-n_ferias: 10
+n_ferias: 11
 ---
 # Equipamiento del vino
 
@@ -19,3 +19,4 @@ Actividad del sector [[Enología y Vinos]].
 - [[Tecnovid Zaragoza]]
 - [[Vinac Almendralejo]]
 - [[Vinitech-Sifel]]
+- [[Vintec]]

@@ -2,7 +2,7 @@
 tipo: actividad
 clave: vino
 sector: "Enología y Vinos"
-n_ferias: 37
+n_ferias: 38
 ---
 # Vino y enología
 
@@ -44,5 +44,6 @@ Actividad del sector [[Enología y Vinos]].
 - [[Vinhos de Portugal]]
 - [[Vinipax Beja]]
 - [[Vinitech-Sifel]]
+- [[Vintec]]
 - [[Wine Days Mallorca – DO Binissalem]]
 - [[Wine Paris]]
