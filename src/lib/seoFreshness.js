@@ -247,216 +247,474 @@ export function freshnessFor(section) {
 //   de X") al frente de cada hub y H2 "Stand para …" en el índice.
 export const activityFreshness = '2026-08-28';
 
+// 2026-09-24: el enlace de cada ficha a su página de ciudad rota entre «diseño de stands en X»,
+// «montaje de stands en X» y «diseño y montaje de stands en X». Cambio visible en todas las
+// fichas que enlazan a su ciudad: fecha nueva.
 export const fairFreshness = {
-  'stands-vintec-vilagarcia-de-arousa': '2026-09-24',   // alta de Vintec (24/09/2026)
-  'stands-fima-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
-  'stands-salon-vinos-aragon-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
-  'stands-enoforum-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
-  'stands-anecorm-valencia': '2026-09-02',
-  'stands-agroexpo': '2026-09-06',
-  'stands-talent-land-malaga': '2026-08-31',
-  'stands-transfiere-malaga': '2026-09-11',
-  'stand-fireca-sevilla': '2026-09-12',   // sector y etiquetas reales, fecha 2027
-  'stands-sicab-sevilla': '2026-09-12',
-  'stands-simof-sevilla': '2026-09-12',
-  'stands-salon-motor-sevilla': '2026-09-12',
-  'stands-natura-malaga': '2026-09-11',
-  'stands-motor-malaga': '2026-09-11',
-  'stands-modtissimo-oporto': '2026-08-31',
-  'stands-qualifica-oporto': '2026-08-31',
-  'stands-gift-paper-oporto': '2026-08-31',
-  'stands-tecnipao-oporto': '2026-08-31',
-  'stands-matelec-madrid': '2026-09-12',
-  'stands-sima-madrid': '2026-09-12',
-  'stands-expodentaria-lisboa': '2026-09-12',
-  'stands-inprojecta-oporto': '2026-09-12',
-  'stands-maquishoes-oporto': '2026-09-12',
-  'stands-intersicop-madrid': '2026-09-15',
-  'stands-fildecor-lisboa': '2026-09-15',
-  'stands-portugal-print-oporto': '2026-09-15',
+  'stands-vintec-vilagarcia-de-arousa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-fima-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-salon-vinos-aragon-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-enoforum-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-anecorm-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-agroexpo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-talent-land-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-transfiere-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fireca-sevilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-sicab-sevilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-simof-sevilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-salon-motor-sevilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-natura-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-motor-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-modtissimo-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-qualifica-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-gift-paper-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-tecnipao-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-matelec-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-sima-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-expodentaria-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-inprojecta-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-maquishoes-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-intersicop-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-fildecor-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-portugal-print-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Barcelona (Plaza Prioritaria) — clúster de 17 ferias satélite refrescado 2026-07-18.
-  'stand-mwc-barcelona': '2026-08-27',
-  'stand-ise-barcelona': '2026-08-27',
-  'stand-smart-city-expo-world-congress-barcelona': '2026-08-27',
-  'stand-iot-solutions-world-congress-barcelona': '2026-08-27',
-  'stand-alimentaria-barcelona': '2026-08-27',
-  'stand-hostelco-barcelona': '2026-08-27',
-  'stand-barcelona-wine-week': '2026-08-27',
-  'stand-seafood-expo-global-barcelona': '2026-08-27',
-  'stand-expoquimia-barcelona': '2026-08-27',
-  'stand-hispack-barcelona': '2026-08-27',
-  'stand-labelexpo-barcelona': '2026-08-27',
-  'stand-equiplast-barcelona': '2026-08-27',
-  'stand-construmat-barcelona': '2026-08-27',
-  'stand-piscina-wellness-barcelona': '2026-08-27',
-  'stand-cosmobeauty-barcelona': '2026-08-27',
-  'stand-forum-dental-mediterraneo-barcelona': '2026-08-27',
-  'stand-sil-barcelona': '2026-08-27',
-  'stand-automobile-barcelona': '2026-08-27',
+  'stand-mwc-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ise-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-smart-city-expo-world-congress-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-iot-solutions-world-congress-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-alimentaria-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-hostelco-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-barcelona-wine-week': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-seafood-expo-global-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expoquimia-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-hispack-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-labelexpo-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-equiplast-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-construmat-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-piscina-wellness-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cosmobeauty-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-forum-dental-mediterraneo-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sil-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-automobile-barcelona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Marsella (refuerzo sur de Francia) — clúster de 10 ferias satélite, 2026-07-18.
-  'stand-foire-internationale-marseille': '2026-08-27',
-  'stand-euromaritime-marseille': '2026-08-27',
-  'stand-sirha-mediterranee-marseille': '2026-08-27',
-  'stand-beauty-profs-marseille': '2026-08-27',
-  'stand-savim-marseille': '2026-08-27',
-  'stand-salon-piscine-jardin-marseille': '2026-08-27',
-  'stand-solutions-cse-marseille': '2026-08-27',
-  'stand-japan-expo-sud-marseille': '2026-08-27',
-  'stand-herofestival-marseille': '2026-08-27',
-  'stand-siac-marseille': '2026-08-27',
+  'stand-foire-internationale-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-euromaritime-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sirha-mediterranee-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-beauty-profs-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-savim-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-piscine-jardin-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-solutions-cse-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-japan-expo-sud-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-herofestival-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-siac-marseille': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Burdeos (Nueva Aquitania) — clúster de 8 ferias satélite, 2026-07-20.
-  'stand-foire-internationale-bordeaux': '2026-08-27',
-  'stand-vinitech-sifel-bordeaux': '2026-08-27',
-  'stand-equitaine-bordeaux': '2026-08-27',
-  'stand-salon-agriculture-nouvelle-aquitaine-bordeaux': '2026-08-27',
-  'stand-art3f-bordeaux': '2026-08-27',
-  'stand-grand-salon-habitat-bordeaux': '2026-08-27',
-  'stand-salon-vins-vignerons-independants-bordeaux': '2026-08-27',
-  'stand-cycleau-nouvelle-aquitaine-bordeaux': '2026-08-27',
+  'stand-foire-internationale-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-vinitech-sifel-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-equitaine-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-agriculture-nouvelle-aquitaine-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-art3f-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-grand-salon-habitat-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-vins-vignerons-independants-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cycleau-nouvelle-aquitaine-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Casablanca (Marruecos) — clúster de 15 ferias satélite, 2026-07-22.
-  'stand-logismed-casablanca': '2026-08-27',
-  'stand-morocco-food-expo-casablanca': '2026-08-27',
-  'stand-siema-casablanca': '2026-08-27',
-  'stand-siab-casablanca': '2026-08-27',
-  'stand-elec-expo-casablanca': '2026-08-27',
-  'stand-ener-event-casablanca': '2026-08-27',
-  'stand-plast-expo-casablanca': '2026-08-27',
-  'stand-pack-expo-casablanca': '2026-08-27',
-  'stand-sistep-casablanca': '2026-08-27',
-  'stand-imme-casablanca': '2026-08-27',
-  'stand-morocco-medical-expo-casablanca': '2026-08-27',
-  'stand-morocco-textile-expo-casablanca': '2026-08-27',
-  'stand-stitch-tex-casablanca': '2026-08-27',
-  'stand-maroc-in-mode-mim-casablanca': '2026-08-27',
-  'stand-ctw-china-trade-week-casablanca': '2026-08-27',
+  'stand-logismed-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-morocco-food-expo-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-siema-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-siab-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-elec-expo-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ener-event-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-plast-expo-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-pack-expo-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sistep-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-imme-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-morocco-medical-expo-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-morocco-textile-expo-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-stitch-tex-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-maroc-in-mode-mim-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ctw-china-trade-week-casablanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Rabat (Marruecos) — clúster de 4 ferias satélite (edición/cultura/educación), 2026-07-22.
-  'stand-siel-rabat': '2026-08-27',
-  'stand-visa-for-music-rabat': '2026-08-27',
-  'stand-forum-etudiant-rabat': '2026-08-27',
-  'stand-cimqusef-rabat': '2026-08-27',
-  'stand-sirha-lyon': '2026-08-27',
-  'stand-global-industrie-lyon': '2026-08-27',
-  'stand-pollutec-lyon': '2026-08-27',
-  'stand-piscine-global-lyon': '2026-08-27',
-  'stand-preventica-lyon': '2026-08-27',
-  'stand-prod-pack-lyon': '2026-08-27',
-  'stand-bepositive-lyon': '2026-08-27',
-  'stand-sitevi-montpellier': '2026-08-27',
-  'stand-millesime-bio-montpellier': '2026-08-27',
-  'stand-sett-montpellier': '2026-08-27',
-  'stand-energaia-montpellier': '2026-08-27',
-  'stand-siprho-montpellier': '2026-08-27',
-  'stand-ais-montpellier': '2026-08-27',
-  'stand-agecotel-nice': '2026-08-27',
-  'stand-nice-boating-tomorrow': '2026-08-27',
-  'stand-ibt-cote-azur': '2026-08-27',
-  'stand-entreprenariales-nice': '2026-08-27',
-  'stand-solucop-nice': '2026-08-27',
-  'stand-mipim-cannes': '2026-08-27',
-  'stand-tfwa-cannes': '2026-08-27',
-  'stand-alina-bordeaux': '2026-08-27',
-  'stand-preventica-bordeaux': '2026-08-27',
-  'stand-smahrt-toulouse': '2026-08-27',
-  'stand-mountain-planet-grenoble': '2026-08-27',
-  'stand-sepem-industries-sud-est-grenoble': '2026-08-27',
-  'stand-sommet-elevage-clermont-ferrand': '2026-08-27',
-  'stands-smopyc-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
-  'stands-tecnovid-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
+  'stand-siel-rabat': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-visa-for-music-rabat': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-forum-etudiant-rabat': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cimqusef-rabat': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sirha-lyon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-global-industrie-lyon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-pollutec-lyon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-piscine-global-lyon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-preventica-lyon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-prod-pack-lyon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-bepositive-lyon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sitevi-montpellier': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-millesime-bio-montpellier': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sett-montpellier': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-energaia-montpellier': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-siprho-montpellier': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ais-montpellier': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-agecotel-nice': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-nice-boating-tomorrow': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ibt-cote-azur': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-entreprenariales-nice': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-solucop-nice': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-mipim-cannes': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-tfwa-cannes': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-alina-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-preventica-bordeaux': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-smahrt-toulouse': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-mountain-planet-grenoble': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sepem-industries-sud-est-grenoble': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sommet-elevage-clermont-ferrand': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-smopyc-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-tecnovid-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
 
   // Madrid: alta de FIAA (bus y autocar, IFEMA) en el hub.
 
-  'stand-fiaa-madrid': '2026-08-27',
-  'stand-hygienalia-madrid': '2026-08-27',
-  'stand-cascais-international-health-forum': '2026-08-27',
-  'stands-expofimer-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
-  'stands-spaper-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
-  'stand-ferroforma-bilbao': '2026-08-27',
-  'stand-sinaval-bilbao': '2026-08-27',
-  'stand-eurofishing-bilbao': '2026-08-27',
-  'stand-pick-pack-bilbao': '2026-08-27',
-  'stand-futureport-bilbao': '2026-08-27',
-  'stand-steel-tech-bilbao': '2026-08-27',
-  'stand-expovacaciones-bilbao': '2026-08-27',
-  'stand-egurtek-bilbao': '2026-08-27',
-  'stand-plus-industry-bilbao': '2026-08-27',
-  'stand-wear-bilbao': '2026-08-27',
-  'stand-canagua-energia-gran-canaria': '2026-08-27',
-  'stand-mmh-sevilla': '2026-08-27',
-  'stand-advanced-manufacturing-madrid': '2026-08-27',
-  'stand-hip-madrid': '2026-08-27',
-  'stand-meat-attraction-madrid': '2026-08-27',
-  'stand-sicur-madrid': '2026-08-27',
-  'stand-lisboa-games-week': '2026-08-27',
-  'stand-nauticampo-lisboa': '2026-08-27',
-  'stand-f4f-expo-foodtech-bilbao': '2026-08-27',
-  'stand-gustoko-bilbao': '2026-08-27',
-  'stand-interior-exterior-design-meetings-cannes': '2026-08-27',
-  'stands-aratur-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
-  'stand-femoga-sarinena': '2026-08-27',
-  'stand-ferma-barbastro': '2026-08-27',
-  'stand-fine-valladolid': '2026-08-27',
-  'stand-technology-show-valladolid': '2026-08-27',
-  'stand-sbc-summit-lisboa': '2026-08-27',
-  'stands-smagua-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
+  'stand-fiaa-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-hygienalia-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cascais-international-health-forum': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-expofimer-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-spaper-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ferroforma-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sinaval-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-eurofishing-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-pick-pack-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-futureport-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-steel-tech-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expovacaciones-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-egurtek-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-plus-industry-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-wear-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-canagua-energia-gran-canaria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-mmh-sevilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-advanced-manufacturing-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-hip-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-meat-attraction-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sicur-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-lisboa-games-week': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-nauticampo-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-f4f-expo-foodtech-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-gustoko-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-interior-exterior-design-meetings-cannes': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-aratur-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-femoga-sarinena': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ferma-barbastro': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fine-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-technology-show-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sbc-summit-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-smagua-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Perpiñán — clúster de ferias satélite (MEDFEL prioritaria), 2026-07-21.
-  'stand-medfel-perpignan': '2026-08-27',
-  'stand-viv-habitat-perpignan': '2026-08-27',
-  'stand-tourisme-loisirs-perpignan': '2026-08-27',
-  'stand-eco-maison-perpignan': '2026-08-27',
-  'stand-retro-mecanic-perpignan': '2026-08-27',
-  'stand-salon-mariage-perpignan': '2026-08-27',
-  'stand-foire-exposition-perpignan': '2026-08-27',
+  'stand-medfel-perpignan': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-viv-habitat-perpignan': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-tourisme-loisirs-perpignan': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-eco-maison-perpignan': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-retro-mecanic-perpignan': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-mariage-perpignan': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-foire-exposition-perpignan': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Ferias que estrenan fecha verificada de su próxima edición (2026-07-25). El dato
   // aparece en la respuesta directa de la ficha ("En X (Ciudad - 3-7 sep 2026)…"), así
   // que es contenido nuevo real y toca reindexar.
-  'stand-conxemar-vigo': '2026-08-27',
-  'stand-navalia-vigo': '2026-08-27',
-  'stand-agroglobal-santarem': '2026-08-27',
-  'stand-salamaq-salamanca': '2026-08-27',
-  'stand-fatacil-lagoa': '2026-08-27',
-  'stand-expometal-batalha': '2026-08-27',
-  'stand-stone-iberica-batalha': '2026-08-27',
-  'stand-forum-gastronomico-a-coruna': '2026-08-27',
-  'stand-biocultura-a-coruna': '2026-08-27',
-  'stand-fecons-torre-pacheco': '2026-08-27',
-  'stand-agraria-valladolid': '2026-08-27',
+  'stand-conxemar-vigo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-navalia-vigo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-agroglobal-santarem': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salamaq-salamanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fatacil-lagoa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expometal-batalha': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-stone-iberica-batalha': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-forum-gastronomico-a-coruna': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-biocultura-a-coruna': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fecons-torre-pacheco': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-agraria-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   'stand-infarma': '2026-08-27',
-  'stand-expooptica-madrid': '2026-08-27',
+  'stand-expooptica-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Ferias que estrenan ficha propia (antes no tenían cuerpo único, y por eso tampoco
   // aparecían con resumen en el calendario sectorial de otras ferias).
-  'stands-figan-feria-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
-  'stands-biemh-bilbao-bec': '2026-09-18',   // URL nueva (18/09/2026)
-  'stand-concreta-oporto': '2026-08-27',
-  'stands-enomaq-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
+  'stands-figan-feria-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-biemh-bilbao-bec': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-concreta-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-enomaq-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Estrenan fecha verificada de su próxima edición.
-  'stand-feria-internacional-ganadera-zafra': '2026-08-27',
-  'stand-termatalia-ourense': '2026-08-27',
+  'stand-feria-internacional-ganadera-zafra': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-termatalia-ourense': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // 20 ferias que estrenan ficha propia (antes sin cuerpo único ni resumen en el
   // calendario sectorial de otras ferias).
-  'stand-habitat-valencia': '2026-08-27',
-  'stand-fimma-maderalia-valencia': '2026-08-27',
-  'stand-iberflora-valencia': '2026-08-27',
-  'stand-gastronoma-valencia': '2026-08-27',
-  'stand-espacio-cocina-sici-valencia': '2026-08-27',
-  'stand-eurobrico-valencia': '2026-08-27',
-  'stand-textilhogar-valencia': '2026-08-27',
-  'stand-emaf-oporto': '2026-08-27',
-  'stand-empack-oporto': '2026-08-27',
-  'stand-expocarne-oporto': '2026-08-27',
-  'stand-itf-intertex-oporto': '2026-08-27',
-  'stand-portojoia-oporto': '2026-08-27',
-  'stand-decor-hotel-oporto': '2026-08-27',
-  'stand-expometal-batalha': '2026-08-27',
-  'stand-stone-iberica-batalha': '2026-08-27',
-  'stand-palma-international-boat-show': '2026-08-27',
-  'stand-palma-superyacht-village': '2026-08-27',
-  'stand-baleart-mallorca': '2026-08-27',
-  'stands-oleomaq-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
+  'stand-habitat-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fimma-maderalia-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-iberflora-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-gastronoma-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-espacio-cocina-sici-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-eurobrico-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-textilhogar-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-emaf-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-empack-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expocarne-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-itf-intertex-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-portojoia-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-decor-hotel-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expometal-batalha': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-stone-iberica-batalha': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-palma-international-boat-show': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-palma-superyacht-village': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-baleart-mallorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-oleomaq-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   // Granada: tres ferias nuevas de Fermasa (Armilla) incorporadas al catálogo.
-  'stand-belmoda-granada': '2026-08-27',
-  'stand-sabores-nuestra-tierra-granada': '2026-08-27',
-  'stand-feria-pueblos-granada': '2026-08-27',
-  'stand-navalia-vigo': '2026-08-27'
+  'stand-belmoda-granada': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sabores-nuestra-tierra-granada': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-pueblos-granada': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-addit3d-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-aeromart-toulouse': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-aerospace-test-development-show-toulouse': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-agroalcaniz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-agroalimentaria-vegadeo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-agropec-gijon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-agrovid-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-airspace-world-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-alicante-gastronomica': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-amith-nord-tanger': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-andorra-taste': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-arcolisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-arcomadrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ardoaraba-vitoria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-arrels-menorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-artesantander': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-artexania-plasencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-asturforesta-tineo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-autentica-sevilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-avanza-fp-alava-vitoria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-aviforum-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-beauty-forum-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-bedigital-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-bet-on-ceuta': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-biocantabria-santander': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-bioterra-irun': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-bisutex-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-blue-zone-forum-navalia-meeting-cadiz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-btl-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-canarias-destino-startup': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cannes-yachting-festival': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-caravantur-irun': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ceuta-impulsa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cevisama-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cfia-toulouse': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cider-fest-madeira': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cioc-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ciocv-braga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-cm-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-coleccionismo-emerita-augusta-merida': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-concab-granada': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-congreso-alineadores-salamanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-congreso-internacional-frutos-rojos-huelva': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-congreso-la-cierna-aranda': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-decorhotel-batalha': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-des-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-dijous-bo-mallorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-douro-porto-wine-festival-regua': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ecuextre-badajoz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-edifica-pamplona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-eletrica-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-empack-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-empleo-gune-vitoria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-encontro-vinhos-sabores-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-enerh2o-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-enfirat-encamp': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-enotecnica-olitecnica-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-equimur-torre-pacheco': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-esicm-lives-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-espacio-ribera-aranda': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-esra-congress-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-essencia-do-vinho-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-essencia-do-vinho-porto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-eventos-empresariales-proyecto-melilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-eventos-industriales-tanger-med': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expo-agritech-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expocalamocha': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expocosmetica-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expodeca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expodental-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expofranquicia-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expolevante-el-ejido': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expoliva-jaen': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expomadeira': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expomecanica-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-expomedes-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-faceco-moncarapacho': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fairway-santiago-de-compostela': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fame-innowa-torre-pacheco': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-farmaforum-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feaga-fuerteventura': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feboda': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feciex-badajoz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fegasur-jerez': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fehispor-badajoz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feira-agropecuaria-madeira': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feira-daires-viana-do-alentejo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feira-de-sao-martinho-portimao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feira-empreendedorismo-madeira': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feira-emprego-formacao-empreendedorismo-madeira': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feira-nacional-agricultura-santarem': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feira-vinhos-sabores-altos-regua': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fenavin-match-ciudad-real': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fercam-manzanares-ciudad-real': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fercatur-ciudad-real': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ferduque-ciudad-real': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-agroganadera-pedroches-pozoblanco': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-apicola-cantabria-torrelavega': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-artesania-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-bodas-hogar-merida': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-concesionarios-torrelavega': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-de-belleza-moda-y-cosmetica-badajoz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-de-fp-badajoz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-de-la-ciencia-granada': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-de-los-mayores-de-extremadura-badajoz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-de-los-pueblos-jaen': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-del-caballo-jerez': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-empresarial-norte-gran-canaria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-formacion-profesional-la-rioja-logrono': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-gamba-chirla-boqueron-punta-umbria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-general-muestras-armilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-internacional-ganadera-trujillo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-jamon-bellota-dop-pedroches-villanueva-cordoba': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-jamon-cerdo-iberico-aracena': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-jamon-teruel': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-maquinaria-agricola-alfaro': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-muestras-tineo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-nacional-queso-trujillo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-navarra-ecologica-pamplona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-oportunidades-economicas-melilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-representacion-intercultural-melilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-stocks-ibiza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-stocks-vitoria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-turismo-reyno-navarra-pamplona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feria-vehiculo-ocasion-logrono': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ferias-agroalimentarias-rioja-oriental-calahorra': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fersant-santarem': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-festa-saberes-sabores-douro-regua': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-festa-vinho-madeira': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-feturex-merida': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fidma-gijon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fimar-las-palmas': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fimascota-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-andorra-la-vella': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-camp-alaior-menorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-del-bestiar-ordino': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-del-vermut-andorra': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-mar-ibiza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-outlet-soldeu': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-sant-miquel-lleida': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-sipia-alcudia-mallorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fira-vi-pollenca-mallorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-firauto-elche': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fitur-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-foire-internationale-toulouse': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-foro-greencities-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-forum-gastronomic-girona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-foyer-health-beauty-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-fruit-attraction-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-futuralia-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-futurmoda-elche': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-galicia-escena-pro-santiago-de-compostela': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-gastrocanarias-tenerife': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-gedet-santiago-de-compostela': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-genera-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-global-mobility-call-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-go-mobility-irun': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-gran-canaria-me-gusta': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-greencities-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-gse-expo-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-horeca-baleares-ibiza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-horeca-baleares-mallorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-horeca-baleares-menorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-hortifruit-torre-pacheco': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ht-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ibercaza-jaen': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-iberocio-badajoz': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-iberpet-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-in-beauty-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-infoagro-exhibition-aguadulce': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-intercaza-cordoba': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-intergift-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-intur-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-lanberri-vitoria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-lisbon-energy-summit-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-lisbon-food-affair': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-lusoflora-santarem': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-madrid-fusion': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-madrid-tech-show': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-madridjoya-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-maker-faire-galicia-santiago-de-compostela': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-mapic-cannes': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-marine-energy-week-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-maroc-in-mode-mim-tanger': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-medagri-avignon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-mercat-de-la-vall-andorra': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-mindtech-vigo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-moda-tenerife': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-moldplas-batalha': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-momad-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-motortec-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-mubil-mobility-expo-irun': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-mundos-digitales-a-coruna': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-municipalia-lleida': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-navarra-jobs-pamplona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-navarra-wine-gastronomy-pamplona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-navartur-pamplona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-nortrans-vigo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-odissea-economia-azul-ceuta': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-optom-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-ovibeja-beja': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-pegs-europe-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-piscimad-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-planeta-rioja-logrono': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-portugal-smart-cities-summit': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-premios-envero-enverofest-aranda': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-re-plus-portugal-oporto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-rebuild-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-rioja-wine-trade-mission-logrono': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sagalexpo-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-atlantico-logistica-transporte': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-automovil-merida': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-automovil-salamanca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-competicion-asturias-gijon': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-estudiante-futuro-profesional-pamplona': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-gas-renovable-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-gourmets-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-salon-look-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-san-diego-comic-con-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-semana-verde-galicia-silleda': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-semergen-santiago-de-compostela': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sepem-industries-toulouse': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sesmi-santiago-de-compostela': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-siane-toulouse': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sieb-valladolid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sil-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-simed-malaga': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-simplesmente-vinho-porto': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-smart-doors-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-snackex-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-solar-storage-live-espana-valencia': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-sun-blue-congress-almeria': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-tanger-fashion-week': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-tanger-nexus': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-techlogistics-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-tektonica-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-the-district-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-tis-sevilla': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-trafic-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-turexpo-galicia-silleda': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-uhinak-irun': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-unire-irun': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-veteco-madrid': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-vidrotec-batalha': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-vinac-almendralejo': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-vinhos-de-portugal-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-vinipax-beja': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-web-summit-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-wine-days-binissalem-mallorca': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-world-aviation-festival-lisboa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-world-maritime-week-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stand-xantar-ourense': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-agroexpo-feval-don-benito': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-maintenance-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-pumps-valves-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
+  'stands-subcontratacion-bilbao': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
 };
 
 /** Fecha de última actualización de una ficha de feria, o null si no la tiene. */

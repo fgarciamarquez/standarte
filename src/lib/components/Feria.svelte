@@ -14,7 +14,7 @@
   import { pickIntroVariant, foreignCountryName } from '$lib/introVariants.js';
   import { pickUspLine, uspNavLabel } from '$lib/uspSnippets.js';
   import { sqLoginLabel } from '$lib/brand.js';
-  import { fairH2 } from '$lib/h2Seo.js';
+  import { fairH2, ptLocative } from '$lib/h2Seo.js';
   import { CITY_POINTS } from '$lib/iberiaMeshData.js';
   import ContactForm from './ContactForm.svelte';
   import SiteFooter from './SiteFooter.svelte';
@@ -804,20 +804,27 @@
   // señal entre las 60+ ciudades por igual. Este enlace va en el primer párrafo (la
   // zona de más peso) y su texto ES la expresión objetivo, para que las fichas de
   // feria —que posicionan bien— empujen al hub de su ciudad, que tiene más competencia.
+  // 24/09/2026: el texto del enlace rota por feria entre las tres expresiones que persigue la
+  // página de ciudad desde el 22/09 («diseño de stands en X», «montaje de stands en X» y
+  // «diseño y montaje de stands en X»). Antes era «diseño y construcción de stands para ferias
+  // en X» en TODAS las fichas: otra búsqueda, y un anchor idéntico en decenas de páginas.
+  // La variante sale de un hash estable del slug, así que no cambia entre compilaciones.
   const cityLink = {
-    es: { before: 'Consulta nuestro servicio de ', anchor: (c) => `diseño y construcción de stands para ferias en ${c}`, after: '.' },
-    en: { before: 'See our ', anchor: (c) => `exhibition stand design and build for trade fairs in ${c}`, after: ' service.' },
-    de: { before: 'Mehr zu ', anchor: (c) => `Messestand-Design, -Bau und -Montage in ${c}`, after: '.' },
-    pt: { before: 'Conheça o nosso serviço de ', anchor: (c) => `design e construção de stands para feiras em ${c}`, after: '.' },
-    fr: { before: 'Découvrez notre service de ', anchor: (c) => `conception et construction de stands pour salons à ${c}`, after: '.' },
-    it: { before: 'Scopri il nostro servizio di ', anchor: (c) => `progettazione e costruzione di stand fieristici a ${c}`, after: '.' },
-    nl: { before: 'Bekijk onze dienst ', anchor: (c) => `ontwerp, bouw en montage van beursstands in ${c}`, after: '.' },
-    zh: { before: '了解我们在', anchor: (c) => `${c}的展会展台设计、制作与搭建`, after: '服务。' },
-    hi: { before: '', anchor: (c) => `${c} में मेला स्टैंड का डिज़ाइन, निर्माण और स्थापना`, after: ' सेवा देखें।' },
-    ko: { before: '', anchor: (c) => `${c} 박람회 부스 디자인·제작·설치`, after: ' 서비스를 확인하세요.' },
-    ja: { before: '', anchor: (c) => `${c}での展示会ブースの設計・製作・施工`, after: 'サービスをご覧ください。' }
+    es: { before: 'Consulta nuestro servicio de ', anchors: [(c) => `diseño de stands en ${c}`, (c) => `montaje de stands en ${c}`, (c) => `diseño y montaje de stands en ${c}`], after: '.' },
+    en: { before: 'See our ', anchors: [(c) => `stand design in ${c}`, (c) => `stand installation in ${c}`, (c) => `exhibition stand design and installation in ${c}`], after: ' service.' },
+    de: { before: 'Mehr zu ', anchors: [(c) => `Messestand-Design in ${c}`, (c) => `Messebau in ${c}`, (c) => `Messestand-Design und Messebau in ${c}`], after: '.' },
+    pt: { before: 'Conheça o nosso serviço de ', anchors: [(c) => `design de stands ${ptLocative(c)}`, (c) => `montagem de stands ${ptLocative(c)}`, (c) => `design e montagem de stands ${ptLocative(c)}`], after: '.' },
+    fr: { before: 'Découvrez notre service de ', anchors: [(c) => `conception de stands à ${c}`, (c) => `montage de stands à ${c}`, (c) => `conception et montage de stands à ${c}`], after: '.' },
+    it: { before: 'Scopri il nostro servizio di ', anchors: [(c) => `progettazione di stand a ${c}`, (c) => `allestimento stand a ${c}`, (c) => `progettazione e allestimento di stand a ${c}`], after: '.' },
+    nl: { before: 'Bekijk onze dienst ', anchors: [(c) => `standontwerp in ${c}`, (c) => `standbouw in ${c}`, (c) => `standontwerp en standbouw in ${c}`], after: '.' },
+    zh: { before: '了解我们的', anchors: [(c) => `${c}展台设计`, (c) => `${c}展台搭建`, (c) => `${c}展台设计与搭建`], after: '服务。' },
+    hi: { before: '', anchors: [(c) => `${c} में स्टैंड डिज़ाइन`, (c) => `${c} में स्टैंड असेंबली`, (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`], after: ' सेवा देखें।' },
+    ko: { before: '', anchors: [(c) => `${c} 부스 디자인`, (c) => `${c} 부스 설치`, (c) => `${c} 부스 디자인 및 설치`], after: ' 서비스를 확인하세요.' },
+    ja: { before: '', anchors: [(c) => `${c}のブースデザイン`, (c) => `${c}のブース設営`, (c) => `${c}のブースデザイン・設営`], after: 'サービスをご覧ください。' }
   };
-  $: cl = cityLink[lang] || cityLink.es;
+  const slugHash = (sl) => { let h = 0; for (const ch of String(sl || '')) h = (h * 31 + ch.codePointAt(0)) >>> 0; return h; };
+  $: clBase = cityLink[lang] || cityLink.es;
+  $: cl = { ...clBase, anchor: clBase.anchors[slugHash(fair.slug) % 3] };
   // Se enlaza al hub de su ciudad y, si la feria está en una satélite sin página propia
   // (Plasencia, Aguadulce, Torre Pacheco…), al pilar del que cuelga: mismo criterio que
   // ya usa el breadcrumb. Sin destino —"Itinerante", "España", "Europa"— no se pinta.
