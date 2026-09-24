@@ -1890,6 +1890,13 @@ export const fairsData = [
     "sector": "Arte y Ocio"
   },
   {
+    "name": "Vintec",
+    "country": "es",
+    "slug": "stands-vintec-vilagarcia-de-arousa",
+    "city": "Vilagarcía de Arousa",
+    "sector": "Enología y Vinos"
+  },
+  {
     "name": "Semana Verde de Galicia",
     "country": "es",
     "slug": "stand-semana-verde-galicia-silleda",

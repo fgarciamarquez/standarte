@@ -184,7 +184,7 @@ export const seoFreshness = {
   mallorca: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   valencia: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   coruna: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
-  santiago: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
+  santiago: '2026-09-24',   // alta de Vintec + carrusel de renders (24/09/2026)
   valladolid: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   salamanca: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   batalha: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
@@ -248,6 +248,7 @@ export function freshnessFor(section) {
 export const activityFreshness = '2026-08-28';
 
 export const fairFreshness = {
+  'stands-vintec-vilagarcia-de-arousa': '2026-09-24',   // alta de Vintec (24/09/2026)
   'stands-fima-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   'stands-salon-vinos-aragon-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)
   'stands-enoforum-zaragoza': '2026-09-19',   // URL nueva (19/09/2026)

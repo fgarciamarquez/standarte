@@ -311,6 +311,7 @@ export const fairActivities = {
   "stand-dijous-bo-mallorca": ["multisectorial"],
   "stands-figan-feria-zaragoza": ["alimentacion"],
   "stands-enomaq-zaragoza": ["vino","equipamiento-vino"],
+  "stands-vintec-vilagarcia-de-arousa": ["equipamiento-vino","vino"],
   "stands-oleomaq-zaragoza": ["alimentacion"],
   "stands-tecnovid-zaragoza": ["vino","equipamiento-vino"],
   "stand-navalia-vigo": ["naval"],
