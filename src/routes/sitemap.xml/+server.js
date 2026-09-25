@@ -1,6 +1,6 @@
 import { fairsData } from '$lib/fairsData.js';
 import { languages, routes, pathFor, portfolios, fairUrl, projectUrl, activityIndexUrl, activityUrl, SQ_REMOVED_SECTIONS } from '$lib/siteData.js';
-import { seoFreshness, fairFreshness, activityFreshness } from '$lib/seoFreshness.js';
+import { seoFreshness, fairFreshness, activityFreshness, projectFreshness } from '$lib/seoFreshness.js';
 import { tagOrder } from '$lib/fairTags.js';
 import { getAllProjectIds } from '$lib/projectData.js';
 import { portfolioVideos, siteVideos } from '$lib/videosData.js';
@@ -92,8 +92,8 @@ export async function GET() {
       { hreflang: 'ja', href: `${siteUrl}${projectUrl(id, 'ja')}` },
       { hreflang: 'x-default', href: `${siteUrl}/proyectos/${id}` }
     ];
-    urls.push({ loc: `${siteUrl}/proyectos/${id}`, changefreq: 'monthly', priority: '0.7', alternates });
-    urls.push({ loc: `${siteUrl}${projectUrl(id, 'ja')}`, changefreq: 'monthly', priority: '0.7', alternates });
+    urls.push({ loc: `${siteUrl}/proyectos/${id}`, lastmod: projectFreshness, changefreq: 'monthly', priority: '0.7', alternates });
+    urls.push({ loc: `${siteUrl}${projectUrl(id, 'ja')}`, lastmod: projectFreshness, changefreq: 'monthly', priority: '0.7', alternates });
   });
 
   // 3. Noticias (noticias/[slug]) — todos los idiomas viven bajo /blog/

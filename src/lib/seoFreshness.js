@@ -163,7 +163,7 @@ export const seoFreshness = {
   badajoz: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   montaje_badajoz: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   zaragoza: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
-  lisboa: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
+  lisboa: '2026-09-25',   // SCM Conference enlazada; revisión SEO de Lisboa (25/09/2026)
   montaje_don_benito: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   ciudad_real: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   trujillo: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
@@ -245,12 +245,18 @@ export function freshnessFor(section) {
 // contenido. Se actualiza a mano, como el resto, cuando cambia lo que se ve.
 //   2026-08-28: acción + sujeto ("Standarte diseña y construye stands para el sector
 //   de X") al frente de cada hub y H2 "Stand para …" en el índice.
+// Páginas de proyecto (/proyectos/<id> y su versión ja): último cambio real de su contenido
+// (18/09/2026, retirada de secciones de imagen). Antes no emitían fecha. Actualizar a mano
+// cuando cambie lo que muestran.
+export const projectFreshness = '2026-09-18';
+
 export const activityFreshness = '2026-08-28';
 
 // 2026-09-24: el enlace de cada ficha a su página de ciudad rota entre «diseño de stands en X»,
 // «montaje de stands en X» y «diseño y montaje de stands en X». Cambio visible en todas las
 // fichas que enlazan a su ciudad: fecha nueva.
 export const fairFreshness = {
+  'stand-scm-conference': '2026-09-25',   // cuelga de Lisboa (25/09/2026)
   'stands-vintec-vilagarcia-de-arousa': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   'stands-fima-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)
   'stands-salon-vinos-aragon-zaragoza': '2026-09-24',   // enlace a la página de ciudad con su expresión (24/09/2026)

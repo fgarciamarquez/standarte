@@ -256,7 +256,7 @@ export const CITY_PILLAR = {
   'Portugal Sur': 'portugal_sur',
   'Aguadulce': 'almeria', 'El Ejido': 'almeria', 'Almería': 'almeria', 'Jaén': 'jaen',
   'Huelva': 'huelva', 'Aracena': 'huelva', 'Punta Umbría': 'huelva',
-  'Murcia': 'murcia', 'Torre Pacheco': 'murcia', 'Vilagarcía de Arousa': 'santiago',
+  'Murcia': 'murcia', 'Torre Pacheco': 'murcia', 'Vilagarcía de Arousa': 'santiago', 'Sobral de Monte Agraço': 'lisboa',
   'Córdoba': 'cordoba', 'Pozoblanco': 'cordoba', 'Villanueva de Córdoba': 'cordoba',
   'Granada': 'granada', 'Armilla': 'granada',
   'Cádiz': 'cadiz', 'Jerez de la Frontera': 'cadiz',
@@ -311,7 +311,7 @@ export const CITY_PILLAR = {
 // nueva: o le pones CITY_PILLAR (se enlaza) o la incluyes aquí (queda informativa).
 export const UNLINKED_CITIES = [
   'Albacete', 'Boqueixón', 'Cacabelos', 'Elvas', 'Mealhada',
-  'Palencia', 'San Vicente de Alcántara', 'Sobral de Monte Agraço', 'Toledo', 'Zamora'
+  'Palencia', 'San Vicente de Alcántara', 'Toledo', 'Zamora'
 ];
 
 // Contorno simplificado de la península ibérica (px, misma proyección).

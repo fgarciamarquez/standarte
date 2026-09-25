@@ -136,6 +136,8 @@ export const fairDates = {
   'stand-millesime-bio-montpellier': { start: '2027-01-25', end: '2027-01-27', cadence: 'annual', source: 'https://www.millesime-bio.com/en/' },
   'stand-agraria-valladolid': { start: '2027-01-26', end: '2027-01-29', cadence: 'biennial', source: 'https://feriavalladolid.com/agraria/' },
   'stands-enomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },
+  // SCM Conference: Quinta do Frade, Sobral de Monte Agraço (~40 km de Lisboa). Última edición confirmada; 2027 por confirmar.
+  'stand-scm-conference': { start: '2026-05-05', end: '2026-05-06', cadence: 'annual', source: 'https://www.supplychainmagazine.pt/scmconference/' },
   // Vintec: Fexdega, Vilagarcía de Arousa (a ~40 km de Santiago). Fechas de la web oficial.
   'stands-vintec-vilagarcia-de-arousa': { start: '2026-10-21', end: '2026-10-23', cadence: 'annual', source: 'https://www.vintecgalicia.com/' },
   'stands-oleomaq-zaragoza': { start: '2027-01-26', end: '2027-01-28', cadence: 'biennial', source: 'https://www.feriazaragoza.es/enomaq' },

@@ -39,7 +39,7 @@
     'Sevilla': 'andalucia', 'Ciudad Real': 'castillalamancha', 'Lisboa': 'portugal', 'Oporto': 'portugal',
     'Batalha': 'portugal', 'Valencia': 'comunidadvalenciana', 'Mallorca': 'baleares', 'Zaragoza': 'aragon',
     'Vigo': 'galicia', 'Portugal Sur': 'portugal-sur',
-    'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia', 'Vilagarcía de Arousa': 'galicia',
+    'Silleda': 'galicia', 'Ourense': 'galicia', 'Boqueixón': 'galicia', 'Vilagarcía de Arousa': 'galicia', 'Sobral de Monte Agraço': 'portugal',
     'Lleida': 'cataluna', 'Girona': 'cataluna',
     'Irún': 'paisvasco', 'Vitoria': 'paisvasco',
     'Aranda de Duero': 'castillayleon', 'Peso da Régua': 'portugal',

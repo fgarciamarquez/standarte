@@ -1,4 +1,5 @@
 <script>
+  import { projectFreshness } from '$lib/seoFreshness.js';
   import { onMount } from 'svelte';
   import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { pathFor, copy, languages, languageLabels, projectUrl, ctaBudget, activityUrl, cityData } from '$lib/siteData.js';
@@ -361,6 +362,7 @@
     "description": seoDescriptions[lang] || seoDescriptions.es,
     "url": `https://standarte.es${canonicalPath}`,
     "image": `https://standarte.es${project.image}`,
+    "dateModified": projectFreshness,
     ...(projTags.length ? {
       "keywords": projTags.map((tg) => labelForTag(tg, lang)).join(', '),
       "about": projTags.map((tg) => ({
