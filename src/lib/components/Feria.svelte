@@ -277,17 +277,17 @@
     'Gijón': 'asturias', 'Tineo': 'asturias', 'Vegadeo': 'asturias'
   };
   const clusterT = {
-    es: { related: 'Ferias relacionadas con esta actividad en las que construimos', pillar: (c) => `Diseño y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
-    en: { related: 'Fairs related to this activity where we build', pillar: (c) => `Exhibition stand design and build in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
-    de: { related: 'Messen zu dieser Branche, auf denen wir bauen', pillar: (c) => `Messestand Design und Montage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
-    fr: { related: 'Salons liés à cette activité où nous construisons', pillar: (c) => `Conception et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
-    pt: { related: 'Feiras relacionadas com esta atividade onde construímos', pillar: (c) => `Design e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
-    it: { related: 'Fiere legate a questa attività in cui costruiamo', pillar: (c) => `Progettazione e montaggio stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
+    es: { related: 'Ferias relacionadas con esta actividad en las que construimos', pillar: (c) => `Diseño, construcción y montaje de stands en ${c}`, also: 'También diseñamos y montamos stands en estas ferias cercanas:' },
+    en: { related: 'Fairs related to this activity where we build', pillar: (c) => `Exhibition stand design, construction and installation in ${c}`, also: 'We also design and assemble stands at these nearby fairs:' },
+    de: { related: 'Messen zu dieser Branche, auf denen wir bauen', pillar: (c) => `Messestand-Design, Messebau und Standmontage in ${c}`, also: 'Wir gestalten und montieren auch Stände auf diesen Messen in der Nähe:' },
+    fr: { related: 'Salons liés à cette activité où nous construisons', pillar: (c) => `Conception, construction et montage de stands à ${c}`, also: 'Nous concevons et montons aussi des stands sur ces salons proches :' },
+    pt: { related: 'Feiras relacionadas com esta atividade onde construímos', pillar: (c) => `Design, construção e montagem de stands em ${c}`, also: 'Também concebemos e montamos stands nestas feiras próximas:' },
+    it: { related: 'Fiere legate a questa attività in cui costruiamo', pillar: (c) => `Progettazione, costruzione e allestimento di stand a ${c}`, also: 'Progettiamo e montiamo stand anche in queste fiere vicine:' },
     ko: { related: '이 분야와 관련해 저희가 시공하는 박람회', pillar: (c) => `${c} 부스 디자인 및 시공`, also: '근처의 다음 전시회에서도 부스를 디자인하고 조립합니다:' },
     zh: { related: '与该行业相关且我们搭建的展会', pillar: (c) => `${c}展台设计与搭建`, also: '我们也在这些邻近展会设计和搭建展台：' },
     hi: { related: 'इस गतिविधि से संबंधित मेले जिनमें हम निर्माण करते हैं', pillar: (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`, also: 'हम इन नज़दीकी मेलों में भी स्टैंड डिज़ाइन और असेंबली करते हैं:' },
     ja: { related: 'この分野に関連し当社が施工する展示会', pillar: (c) => `${c}での展示会ブース設計・施工`, also: '近隣のこれらの展示会でもブースの設計・組立を行っています：' },
-    nl: { related: 'Beurzen gerelateerd aan deze activiteit waar wij bouwen', pillar: (c) => `Standontwerp en montage in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
+    nl: { related: 'Beurzen gerelateerd aan deze activiteit waar wij bouwen', pillar: (c) => `Ontwerp, bouw en montage van beursstands in ${c}`, also: 'Wij ontwerpen en monteren ook stands op deze nabijgelegen beurzen:' }
   };
 
   // Recinto ferial por ciudad (solo nombres verificados; las ciudades sin entrada no muestran recinto).
@@ -804,27 +804,29 @@
   // señal entre las 60+ ciudades por igual. Este enlace va en el primer párrafo (la
   // zona de más peso) y su texto ES la expresión objetivo, para que las fichas de
   // feria —que posicionan bien— empujen al hub de su ciudad, que tiene más competencia.
+  // 26/09/2026: cuatro variantes (se suma «construcción de stands en X» y la forma completa).
   // 24/09/2026: el texto del enlace rota por feria entre las tres expresiones que persigue la
   // página de ciudad desde el 22/09 («diseño de stands en X», «montaje de stands en X» y
   // «diseño y montaje de stands en X»). Antes era «diseño y construcción de stands para ferias
   // en X» en TODAS las fichas: otra búsqueda, y un anchor idéntico en decenas de páginas.
   // La variante sale de un hash estable del slug, así que no cambia entre compilaciones.
   const cityLink = {
-    es: { before: 'Consulta nuestro servicio de ', anchors: [(c) => `diseño de stands en ${c}`, (c) => `montaje de stands en ${c}`, (c) => `diseño y montaje de stands en ${c}`], after: '.' },
-    en: { before: 'See our ', anchors: [(c) => `stand design in ${c}`, (c) => `stand installation in ${c}`, (c) => `exhibition stand design and installation in ${c}`], after: ' service.' },
-    de: { before: 'Mehr zu ', anchors: [(c) => `Messestand-Design in ${c}`, (c) => `Messebau in ${c}`, (c) => `Messestand-Design und Messebau in ${c}`], after: '.' },
-    pt: { before: 'Conheça o nosso serviço de ', anchors: [(c) => `design de stands ${ptLocative(c)}`, (c) => `montagem de stands ${ptLocative(c)}`, (c) => `design e montagem de stands ${ptLocative(c)}`], after: '.' },
-    fr: { before: 'Découvrez notre service de ', anchors: [(c) => `conception de stands à ${c}`, (c) => `montage de stands à ${c}`, (c) => `conception et montage de stands à ${c}`], after: '.' },
-    it: { before: 'Scopri il nostro servizio di ', anchors: [(c) => `progettazione di stand a ${c}`, (c) => `allestimento stand a ${c}`, (c) => `progettazione e allestimento di stand a ${c}`], after: '.' },
-    nl: { before: 'Bekijk onze dienst ', anchors: [(c) => `standontwerp in ${c}`, (c) => `standbouw in ${c}`, (c) => `standontwerp en standbouw in ${c}`], after: '.' },
-    zh: { before: '了解我们的', anchors: [(c) => `${c}展台设计`, (c) => `${c}展台搭建`, (c) => `${c}展台设计与搭建`], after: '服务。' },
-    hi: { before: '', anchors: [(c) => `${c} में स्टैंड डिज़ाइन`, (c) => `${c} में स्टैंड असेंबली`, (c) => `${c} में स्टैंड डिज़ाइन और असेंबली`], after: ' सेवा देखें।' },
-    ko: { before: '', anchors: [(c) => `${c} 부스 디자인`, (c) => `${c} 부스 설치`, (c) => `${c} 부스 디자인 및 설치`], after: ' 서비스를 확인하세요.' },
-    ja: { before: '', anchors: [(c) => `${c}のブースデザイン`, (c) => `${c}のブース設営`, (c) => `${c}のブースデザイン・設営`], after: 'サービスをご覧ください。' }
+    es: { before: 'Consulta nuestro servicio de ', anchors: [(c) => `diseño de stands en ${c}`, (c) => `construcción de stands en ${c}`, (c) => `montaje de stands en ${c}`, (c) => `diseño, construcción y montaje de stands en ${c}`], after: '.' },
+    en: { before: 'See our ', anchors: [(c) => `stand design in ${c}`, (c) => `stand construction in ${c}`, (c) => `stand installation in ${c}`, (c) => `exhibition stand design, construction and installation in ${c}`], after: ' service.' },
+    de: { before: 'Mehr zu ', anchors: [(c) => `Messestand-Design in ${c}`, (c) => `Standbau in ${c}`, (c) => `Messebau in ${c}`, (c) => `Messestand-Design, Messebau und Standmontage in ${c}`], after: '.' },
+    pt: { before: 'Conheça o nosso serviço de ', anchors: [(c) => `design de stands ${ptLocative(c)}`, (c) => `construção de stands ${ptLocative(c)}`, (c) => `montagem de stands ${ptLocative(c)}`, (c) => `design, construção e montagem de stands ${ptLocative(c)}`], after: '.' },
+    fr: { before: 'Découvrez notre service de ', anchors: [(c) => `conception de stands à ${c}`, (c) => `construction de stands à ${c}`, (c) => `montage de stands à ${c}`, (c) => `conception, construction et montage de stands à ${c}`], after: '.' },
+    it: { before: 'Scopri il nostro servizio di ', anchors: [(c) => `progettazione di stand a ${c}`, (c) => `costruzione di stand a ${c}`, (c) => `allestimento stand a ${c}`, (c) => `progettazione, costruzione e allestimento di stand a ${c}`], after: '.' },
+    nl: { before: 'Bekijk onze dienst ', anchors: [(c) => `standontwerp in ${c}`, (c) => `bouw van stands in ${c}`, (c) => `standmontage in ${c}`, (c) => `ontwerp, bouw en montage van beursstands in ${c}`], after: '.' },
+    zh: { before: '了解我们的', anchors: [(c) => `${c}展台设计`, (c) => `${c}展台制作`, (c) => `${c}展台搭建`, (c) => `${c}展台设计、制作与搭建`], after: '服务。' },
+    hi: { before: '', anchors: [(c) => `${c} में स्टैंड डिज़ाइन`, (c) => `${c} में स्टैंड निर्माण`, (c) => `${c} में स्टैंड असेंबली`, (c) => `${c} में स्टैंड डिज़ाइन, निर्माण और असेंबली`], after: ' सेवा देखें।' },
+    ko: { before: '', anchors: [(c) => `${c} 부스 디자인`, (c) => `${c} 부스 제작`, (c) => `${c} 부스 설치`, (c) => `${c} 부스 디자인, 제작 및 설치`], after: ' 서비스를 확인하세요.' },
+    ja: { before: '', anchors: [(c) => `${c}のブースデザイン`, (c) => `${c}のブース製作`, (c) => `${c}のブース設営`, (c) => `${c}のブースデザイン・製作・設営`], after: 'サービスをご覧ください。' }
   };
+
   const slugHash = (sl) => { let h = 0; for (const ch of String(sl || '')) h = (h * 31 + ch.codePointAt(0)) >>> 0; return h; };
   $: clBase = cityLink[lang] || cityLink.es;
-  $: cl = { ...clBase, anchor: clBase.anchors[slugHash(fair.slug) % 3] };
+  $: cl = { ...clBase, anchor: clBase.anchors[slugHash(fair.slug) % clBase.anchors.length] };
   // Se enlaza al hub de su ciudad y, si la feria está en una satélite sin página propia
   // (Plasencia, Aguadulce, Torre Pacheco…), al pilar del que cuelga: mismo criterio que
   // ya usa el breadcrumb. Sin destino —"Itinerante", "España", "Europa"— no se pinta.
