@@ -8,7 +8,7 @@
   import { languages, languageLabels, pathFor, routes, cityData, portfolios, fairUrl, projectUrl, activityUrl, activityIndexUrl, ctaBudget, preciosNav, CITIES_WITHOUT_COVER, NO_GALLERY_SECTIONS } from '$lib/siteData.js';
   import { HIDE_IMAGE_SECTIONS } from '$lib/imagePolicy.js';
   import { uspHome, uspNavLabel } from '$lib/uspSnippets.js';
-  import { cityH2, cityH2Custom, ptLocative, CITY_H1, CITY_MAIN_H2, CITY_KW_LEAD } from '$lib/h2Seo.js';
+  import { cityH2, cityH2Custom, ptLocative, CITY_H1, CITY_MAIN_H2, CITY_KW_LEAD, cityH1For } from '$lib/h2Seo.js';
   import { toolsCopy } from '$lib/toolsSection.js';
   import { pricingTiers } from '$lib/pricingTiers.js';
   import { freshnessFor } from '$lib/seoFreshness.js';
@@ -601,7 +601,7 @@
   // primer </p> (en las de ciudad, antes de la frase de apertura CITY_KW_LEAD).
   $: faderSplit = ((isBuilderPage(section) || section in cityData) && !BRAND.leadGen && bodyHtml.includes('</p>')) ? bodyHtml.indexOf('</p>') + 4 : -1;
   // Título h1 reescrito con el nuevo keyword ("…construcción y montaje…") en ciudades Oro.
-  $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : (seoKwCity(section) && cityDisplayName ? (CITY_H1[lang] || CITY_H1.es)(cityDisplayName) : rewriteTitulo(seoContent.h1, lang))) : seoContent.h1) : '';
+  $: h1Text = seoContent ? ((section in cityData) ? (BRAND.leadGen ? sqRewriteTitulo(seoContent.h1, lang) : (seoKwCity(section) && cityDisplayName ? cityH1For(section, lang, cityDisplayName) : rewriteTitulo(seoContent.h1, lang))) : seoContent.h1) : '';
   // Banda de enlaces de idioma (SEO, páginas de ciudad): el H1 traducido a cada uno de
   // los OTROS idiomas, enlazando a la versión de la página en ese idioma. Son enlaces
   // internos rastreables (prerenderizados) que refuerzan los hreflang con autoridad
@@ -904,7 +904,7 @@
   function cityPageTitle(sc, lang, sec, cityName) {
     if (!sc || !seoKwCity(sec) || !cityName) return sc?.title;
     const v = (sc.title || '').match(/[（(]([^()（）]+)[)）]/);
-    const head = (CITY_H1[lang] || CITY_H1.es)(cityName);
+    const head = cityH1For(sec, lang, cityName);
     const venue = v ? ((lang === 'zh' || lang === 'ja') ? `（${v[1]}）` : ` (${v[1]})`) : '';
     return `${head}${venue} | ${BRAND.name}`;
   }

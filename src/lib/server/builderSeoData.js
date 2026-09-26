@@ -215,73 +215,15 @@ export const builderSeoData = {
       body: `
         <h2>Constructor de stands en Lisboa: construir para la FIL y para congresos</h2>
         <p>Lisboa combina dos escenarios que exigen construcciones distintas. En la FIL, en el Parque das Nações, hay pabellón y altura para un stand de diseño libre con doble altura y almacén. En los grandes congresos —tecnológicos, médicos o del sector del juego, repartidos entre la FIL y el MEO Arena— las ventanas de montaje se miden en horas, así que fabricamos por módulos premontados que en pabellón solo hay que ensamblar y conectar, con la gráfica colocada y la instalación eléctrica probada antes de cargar el camión.</p>
-        <ul>
-          <li><strong>Un solo interlocutor</strong> en español, inglés o portugués.</li>
-          <li><strong>Prototipo 3D</strong> que es exactamente lo que se construye.</li>
-          <li><strong>Fabricación en nuestro taller</strong> y transporte a Lisboa organizado por nosotros.</li>
-          <li><strong>Montaje dentro de la ventana asignada</strong>, también en congresos de pocas horas.</li>
-        </ul>
-        <h2>Constructor de stands en Lisboa: qué construimos</h2>
-        <h3>Stands de diseño libre para la FIL</h3>
-        <p>Estructura y carpintería a medida para ferias como BTL o Tektónica, con almacén integrado y gráfica de gran formato.</p>
-        <h3>Módulos de congreso premontados</h3>
-        <p>Stands compactos que salen del taller terminados y se levantan en horas en congresos como Web Summit, sin renunciar al acabado.</p>
-        <h3>Dobles alturas</h3>
-        <p>Sala de reuniones arriba y exposición abajo cuando el pabellón de la FIL lo permite, calculadas y premontadas en taller.</p>
-        <h3>Stands reutilizables para varias ediciones</h3>
-        <p>Estructuras que se guardan entre ediciones y vuelven a Lisboa con la gráfica de la nueva campaña.</p>
-        <p><strong>¿Tienes una feria o un congreso próximo en Lisboa?</strong> Con el espacio y la ventana de montaje, planificamos taller y transporte con margen.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Lisboa</a></p>
-        <h2>Constructor de stands en Lisboa: por qué construir con Standarte</h2>
-        <ul>
-          <li><strong>Construimos, no intermediamos.</strong> El stand se fabrica en nuestro taller, con nuestro equipo, y viaja a Lisboa premontado.</li>
-          <li><strong>Transporte resuelto.</strong> Organizamos el viaje con margen para que la descarga no dependa de la carretera.</li>
-          <li><strong>Lo que apruebas es lo que se construye.</strong> Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>.</li>
-          <li><strong>Obra real en Lisboa.</strong> Proyectos publicados en nuestra cartera para empresas que exponen en la ciudad.</li>
-        </ul>
-        <h2>Constructor de stands en Lisboa: cómo trabajamos, del plano al desmontaje</h2>
+        <h2>Constructor de stands en Lisboa: cómo trabajamos la plaza</h2>
         <ol>
-          <li><strong>Briefing y plano.</strong> Objetivos, espacio en la FIL o en el recinto del congreso y normas de montaje.</li>
-          <li><strong>Prototipo 3D y presupuesto.</strong> Lo revisas, lo ajustamos y lo apruebas.</li>
-          <li><strong>Fabricación, premontaje y transporte.</strong> Todo se prueba en taller antes de viajar.</li>
-          <li><strong>Montaje, feria y desmontaje.</strong> Nuestro equipo monta en la ventana asignada y retira el stand al cierre.</li>
+          <li><strong>Proyecto y prototipo 3D</strong> con las medidas del espacio contratado y las normas de la FIL o del recinto del congreso: alturas, suspensiones y acometidas.</li>
+          <li><strong>Fabricación y premontaje en nuestro taller</strong>, con transporte a Lisboa organizado con margen para que la descarga no dependa de la carretera.</li>
+          <li><strong>Montaje con equipo propio</strong> dentro de la ventana asignada y desmontaje al cierre, guardando lo reutilizable para la siguiente cita.</li>
         </ol>
-        <h2>Constructor de stands en Lisboa: proyectos que hemos construido</h2>
-        <p>Stands para empresas que exponen en Lisboa, con su ficha de proyecto:</p>
-        <ul>
-          <li><a href="/proyectos/stand_para_embalaje_industrial_lisboa">Stand para embalaje industrial</a></li>
-          <li><a href="/proyectos/stand_para_materiales_etiquetado_lisboa">Stand para materiales de etiquetado</a></li>
-          <li><a href="/proyectos/stand_para_equipamiento_industrial_lisboa">Stand para equipamiento industrial</a></li>
-          <li><a href="/proyectos/stand_para_gestion_trafico_inteligente_lisboa">Stand para gestión de tráfico inteligente</a></li>
-        </ul>
         <h2>Constructor de stands en Lisboa: ferias y congresos del recinto</h2>
-        <p>Construimos para las grandes citas de la capital: <a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/ferias/stand-web-summit-lisboa">Web Summit</a> y <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-lisboa">diseño y montaje de stands en Lisboa</a>.</p>`,
-      faqs: [
-        {
-          "q": "¿Montáis stands en Lisboa desde España?",
-          "a": "Sí. Fabricamos y premontamos el stand en nuestro taller y organizamos el transporte a Lisboa con margen, de modo que en el pabellón solo se ensambla y se conecta."
-        },
-        {
-          "q": "¿Fabricáis vosotros el stand o lo subcontratáis?",
-          "a": "Lo fabricamos en nuestro propio taller, con nuestro equipo de carpinteros y montadores, y un único responsable lleva el proyecto."
-        },
-        {
-          "q": "¿Podéis montar en congresos con muy poco tiempo de montaje?",
-          "a": "Sí. Para congresos como Web Summit fabricamos módulos que salen del taller terminados y se levantan en pocas horas dentro de la ventana asignada."
-        },
-        {
-          "q": "¿Nos atendéis en portugués?",
-          "a": "Sí, trabajamos en español, portugués e inglés, con un único interlocutor durante todo el proyecto."
-        },
-        {
-          "q": "¿Con cuánta antelación hay que encargar el stand?",
-          "a": "Lo recomendable son 6-8 semanas antes de la feria, contando el transporte. Con plazos más cortos también trabajamos."
-        },
-        {
-          "q": "¿Cuánto cuesta un stand en Lisboa?",
-          "a": "Depende de los metros cuadrados, la estructura y los acabados. En la página de precios hay tramos orientativos y te preparamos un presupuesto cerrado en 24 h con el prototipo 3D."
-        }
-      ]
+        <p>Construimos para las grandes citas de la capital: <a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/ferias/stand-web-summit-lisboa">Web Summit</a> y <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-lisboa">diseño y montaje de stands en Lisboa</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Lisboa</a></p>`
     }
   },
 
@@ -1931,51 +1873,15 @@ const EN = {
     body: `
         <h2>Stand builder in Lisbon: building for FIL and for congresses</h2>
         <p>Lisbon combines large trade shows at FIL, in Parque das Nações, with international congresses whose build-up windows are measured in hours. For the first we build free-design stands with height and storage; for the second, pre-assembled modules that only need joining and connecting in the hall, graphics already applied and wiring tested before the lorry is loaded.</p>
-        <ul>
-          <li><strong>One contact</strong> in English, Spanish or Portuguese.</li>
-          <li><strong>A 3D prototype</strong> that is exactly what gets built.</li>
-          <li><strong>Built in our own workshop</strong>, with transport to Lisbon handled by us.</li>
-          <li><strong>Installed within the assigned window</strong>, even at short congress build-ups.</li>
-        </ul>
-        <h2>Stand builder in Lisbon: what we build</h2>
-        <h3>Free-design stands for FIL</h3>
-        <p>Custom structure and joinery for shows such as BTL or Tektónica, with built-in storage and large-format graphics.</p>
-        <h3>Pre-assembled congress modules</h3>
-        <p>Compact stands that leave the workshop finished and go up in hours at congresses such as Web Summit.</p>
-        <p><strong>Exhibiting in Lisbon soon?</strong> With your space and build-up window we plan workshop and transport with margin.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Lisbon</a></p>
-        <h2>Stand builder in Lisbon: why build with Standarte</h2>
-        <ul>
-          <li><strong>We build, we don't broker.</strong> Your stand is made in our workshop and travels to Lisbon pre-assembled.</li>
-          <li><strong>Transport handled.</strong> We plan the journey with margin so unloading never depends on the road.</li>
-          <li><strong>What you approve is what gets built.</strong> Every approval is recorded in our <a href="/en/audited-project">Audited Project System</a>.</li>
-        </ul>
-        <h2>Stand builder in Lisbon: projects we have built</h2>
-        <ul>
-          <li><a href="/proyectos/stand_para_embalaje_industrial_lisboa?lang=en">Stand for industrial packaging</a></li>
-          <li><a href="/proyectos/stand_para_equipamiento_industrial_lisboa?lang=en">Stand for industrial equipment</a></li>
-          <li><a href="/proyectos/stand_para_gestion_trafico_inteligente_lisboa?lang=en">Stand for smart traffic management</a></li>
-        </ul>
+        <h2>Stand builder in Lisbon: how we work the city</h2>
+        <ol>
+          <li><strong>Project and 3D prototype</strong> to the contracted space and the rules of FIL or the congress venue: heights, rigging and services.</li>
+          <li><strong>Manufacturing and pre-assembly in our workshop</strong>, with transport to Lisbon planned with margin.</li>
+          <li><strong>Installation by our own team</strong> within the assigned window, and dismantling at close.</li>
+        </ol>
         <h2>Stand builder in Lisbon: shows at the venue</h2>
-        <p>We build across the Lisbon calendar: <a href="/en/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/en/ferias/stand-tektonica-lisboa">Tektónica</a> and <a href="/en/ferias/stand-nauticampo-lisboa">Nauticampo</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_lisbon">stand design and installation in Lisbon</a> page.</p>`,
-      faqs: [
-        {
-          "q": "Do you build stands in Lisbon from Spain?",
-          "a": "Yes. We build and pre-assemble the stand in our workshop and plan transport to Lisbon with margin, so in the hall it is only joined and connected."
-        },
-        {
-          "q": "Can you build at congresses with very short build-up times?",
-          "a": "Yes. For congresses such as Web Summit we build modules that leave the workshop finished and go up in a few hours."
-        },
-        {
-          "q": "Do you work in Portuguese and English?",
-          "a": "Yes, with one contact throughout the project in Spanish, Portuguese or English."
-        },
-        {
-          "q": "How much does a stand in Lisbon cost?",
-          "a": "It depends on size, structure and finishes. Our prices page shows indicative ranges, and we send a fixed quote with a 3D prototype within 24 h."
-        }
-      ]
+        <p>We build across the Lisbon calendar: <a href="/en/ferias/stand-web-summit-lisboa">Web Summit</a>, <a href="/en/ferias/stand-tektonica-lisboa">Tektónica</a> and <a href="/en/ferias/stand-nauticampo-lisboa">Nauticampo</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_lisbon">stand design and installation in Lisbon</a> page.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Lisbon</a></p>`
   },
   constructor_stand_bilbao: {
     breadcrumb: 'Stand builder in Bilbao',
@@ -3260,52 +3166,16 @@ const PT = {
     introText: 'Construímos stands à medida para a FIL (Feira Internacional de Lisboa) e para os congressos da cidade, com fabrico em oficina própria: estrutura, carpintaria, mobiliário e grafismo produzidos pela nossa equipa, transporte tratado por nós e montagem terminada antes da abertura.',
     body: `
         <h2>Construtor de stands em Lisboa: fabrico próprio para a FIL e para os congressos</h2>
-        <p>Lisboa tem dois calendários que exigem construções distintas. Na FIL, no Parque das Nações, as feiras profissionais pedem stands de dois a quatro dias com produto exposto e espaço para negociar. Nos congressos internacionais a janela de montagem é de horas, não de dias: o stand chega pré-montado, com o grafismo aplicado e as instalações testadas, e levanta-se sem improvisar.</p>
-        <ul>
-          <li><strong>Um único interlocutor</strong> em português, espanhol ou inglês.</li>
-          <li><strong>Protótipo 3D</strong> que é exatamente o que se constrói.</li>
-          <li><strong>Fabrico na nossa oficina</strong> e transporte até Lisboa tratado por nós.</li>
-          <li><strong>Montagem dentro da janela atribuída</strong>, também em congressos de poucas horas.</li>
-        </ul>
-        <h2>Construtor de stands em Lisboa: o que construímos</h2>
-        <h3>Stands de design livre para a FIL</h3>
-        <p>Estrutura e carpintaria à medida para feiras como a BTL ou a Tektónica, com arrumos integrados e grafismo de grande formato.</p>
-        <h3>Módulos de congresso pré-montados</h3>
-        <p>Stands compactos que saem da oficina terminados e se levantam em poucas horas em congressos como a Web Summit.</p>
-        <p><strong>Tem uma feira ou um congresso em Lisboa em breve?</strong> Com o espaço e a janela de montagem, planeamos oficina e transporte com margem.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand em Lisboa</a></p>
-        <h2>Construtor de stands em Lisboa: porquê construir com a Standarte</h2>
-        <ul>
-          <li><strong>Construímos, não intermediamos.</strong> O stand é fabricado na nossa oficina e viaja para Lisboa pré-montado.</li>
-          <li><strong>Transporte resolvido.</strong> Planeamos a viagem com margem para que a descarga não dependa da estrada.</li>
-          <li><strong>O que aprova é o que se constrói.</strong> Cada aprovação fica registada no <a href="/pt/projeto-auditado">Sistema de Projeto Auditado</a>.</li>
-        </ul>
-        <h2>Construtor de stands em Lisboa: projetos que construímos</h2>
-        <ul>
-          <li><a href="/proyectos/stand_para_embalaje_industrial_lisboa?lang=pt">Stand de embalagens industriais</a></li>
-          <li><a href="/proyectos/stand_para_equipamiento_industrial_lisboa?lang=pt">Stand de equipamentos industriais</a></li>
-          <li><a href="/proyectos/stand_para_gestion_trafico_inteligente_lisboa?lang=pt">Stand de gestão inteligente de tráfego</a></li>
-        </ul>
+        <p>Lisboa tem dois calendários que exigem construções distintas. Na FIL, no Parque das Nações, as feiras profissionais pedem stands de dois a quatro dias com produto exposto e espaço para negociar. Nos congressos internacionais a janela de montagem é de horas, não de dias: o stand chega pré-montado, com o grafismo aplicado e as instalações testadas, e levanta-se sem improvisar. Tratamos também do que o recinto exige: ramais, certificados de reação ao fogo e limites de altura de cada pavilhão.</p>
+        <h2>Construtor de stands em Lisboa: como trabalhamos a cidade</h2>
+        <ol>
+          <li><strong>Projeto e protótipo 3D</strong> com as medidas do espaço contratado e as normas da FIL ou do recinto do congresso.</li>
+          <li><strong>Fabrico e pré-montagem na nossa oficina</strong>, com transporte até Lisboa organizado com margem.</li>
+          <li><strong>Montagem com equipa própria</strong> dentro da janela atribuída e desmontagem no fecho.</li>
+        </ol>
         <h2>Construtor de stands em Lisboa: feiras e congressos da cidade</h2>
-        <p>Construímos para o calendário da FIL e dos grandes congressos: <a href="/pt/ferias/stand-btl-lisboa">BTL</a>, <a href="/pt/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/pt/ferias/stand-sil-lisboa">SIL</a> e <a href="/pt/ferias/stand-web-summit-lisboa">Web Summit</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_lisboa">design e montagem de stands em Lisboa</a>.</p>`,
-      faqs: [
-        {
-          "q": "Montam stands em Lisboa a partir de Espanha?",
-          "a": "Sim. Fabricamos e pré-montamos o stand na nossa oficina e organizamos o transporte até Lisboa com margem, de modo que no pavilhão só se monta e liga."
-        },
-        {
-          "q": "Conseguem montar em congressos com muito pouco tempo?",
-          "a": "Sim. Para congressos como a Web Summit fabricamos módulos que saem da oficina terminados e se levantam em poucas horas."
-        },
-        {
-          "q": "Atendem em português?",
-          "a": "Sim, com um único interlocutor em português, espanhol ou inglês durante todo o projeto."
-        },
-        {
-          "q": "Quanto custa um stand em Lisboa?",
-          "a": "Depende dos metros quadrados, da estrutura e dos acabamentos. Na página de preços há escalões indicativos e enviamos um orçamento fechado em 24 h com o protótipo 3D."
-        }
-      ]
+        <p>Construímos para o calendário da FIL e dos grandes congressos: <a href="/pt/ferias/stand-btl-lisboa">BTL</a>, <a href="/pt/ferias/stand-tektonica-lisboa">Tektónica</a>, <a href="/pt/ferias/stand-sil-lisboa">SIL</a>, <a href="/pt/ferias/stand-nauticampo-lisboa">Nauticampo</a> e <a href="/pt/ferias/stand-web-summit-lisboa">Web Summit</a>. O serviço completo de design e montagem está na página de <a href="/pt/design_montagem_stands_lisboa">design e montagem de stands em Lisboa</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Peça orçamento de construção para o seu stand em Lisboa</a></p>`
   },
   constructor_stand_batalha: {
     breadcrumb: 'Construtor de stands na Batalha',

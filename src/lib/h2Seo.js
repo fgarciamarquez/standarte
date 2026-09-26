@@ -106,6 +106,29 @@ export const CITY_H1 = {
   ja: (c) => `${c}のブースデザイン・設営`
 };
 
+// 26/09/2026: plazas cuyo H1 y <title> recuperan «construcción» junto a diseño y montaje
+// («Diseño, construcción y montaje de stands en X»). Lisboa perdió su posición tras el
+// cambio del 22/09, que quitó «construção/construcción» (búsqueda muy habitual en Portugal)
+// de título, H1 y primer apartado. Se prueba primero en Lisboa antes de extenderlo.
+export const CITY_H1_FULL_SECTIONS = new Set(['lisboa']);
+export const CITY_H1_FULL = {
+  es: (c) => `Diseño, construcción y montaje de stands en ${c}`,
+  en: (c) => `Exhibition stand design, construction and installation in ${c}`,
+  de: (c) => `Messestand-Design, -Bau und -Montage in ${c}`,
+  pt: (c) => `Design, construção e montagem de stands ${ptLocative(c)}`,
+  fr: (c) => `Conception, construction et montage de stands à ${c}`,
+  it: (c) => `Progettazione, costruzione e allestimento di stand a ${c}`,
+  nl: (c) => `Standontwerp, standbouw en montage in ${c}`,
+  zh: (c) => `${c}展台设计、制作与搭建`,
+  hi: (c) => `${c} में स्टैंड डिज़ाइन, निर्माण और असेंबली`,
+  ko: (c) => `${c} 부스 디자인, 제작 및 설치`,
+  ja: (c) => `${c}のブースデザイン・製作・設営`
+};
+export const cityH1For = (section, lang, c) => {
+  const M = CITY_H1_FULL_SECTIONS.has(section) ? CITY_H1_FULL : CITY_H1;
+  return (M[lang] || M.es)(c);
+};
+
 // Primer H2 del cuerpo (sustituye al antiguo «Diseño, construcción y montaje…»).
 export const CITY_MAIN_H2 = {
   es: (c) => `Diseño de stands en ${c}: del prototipo 3D al montaje, con un solo proveedor`,
