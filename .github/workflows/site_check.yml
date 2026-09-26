@@ -21,4 +21,10 @@ jobs:
             head -c 200 /tmp/body | tr '\n' ' '; echo
             echo "enlaces de galeria:"; grep -oE 'href="[^"]*(galer|gallery|proyectos_a_medida|custom_projects)[^"]*"' /tmp/body | sort | uniq -c || true
             echo "cache: $(curl -sSI -A "$UA" "https://standarte.es$p" | grep -iE '^(cache-control|expires|last-modified|age|x-cache)' | tr '\r\n' '  ')"
+            echo "title: $(grep -oE '<title>[^<]*' /tmp/body | head -1 | sed 's/<title>//')"
+            echo "robots: $(grep -oE '<meta name="robots" content="[^"]*"' /tmp/body | head -1)"
+            echo "canonical: $(grep -oE '<link rel="canonical" href="[^"]*"' /tmp/body | head -1)"
+            echo "cabeceras: $(curl -sSI -A "$UA" "https://standarte.es$p" | grep -iE '^(x-robots-tag|location|content-type|link)' | tr '\r\n' '  ')"
+            GB='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+            echo "como Googlebot: $(curl -sS -o /dev/null -A "$GB" -w 'code=%{http_code} redirect=%{redirect_url} size=%{size_download}' "https://standarte.es$p")"
           done
