@@ -33,6 +33,12 @@ Convención actual: **todo cambio de PHP se aplica en ambas copias**. Los ficher
 - `offer_deadline.yml` — diario 06:03/07:03 UTC: curl a `admin/cron_oferta.php` (aviso de la oferta la VÍSPERA de su vencimiento, con red de seguridad el mismo día si no se avisó; el texto aclara que el plazo incluye el día citado hasta las 24:00; ventana desde las 08:00 de Madrid hasta fin de día porque GitHub retrasa el cron).
 - `project_reminder.yml` — miércoles 07:03/08:03 UTC: curl a `admin/cron_recordatorio.php` (recordatorio semanal al cliente de que su proyecto sigue activo, con imagen y precio final; actúa a las 09:xx de Madrid; no se omite por visitas recientes porque `last_client_visit` también cuenta las del equipo; columnas `client_notified_at`, `reminder_sent_at`, `reminder_count`).
 
+## Histórico de precios de los proyectos de cliente (29/09/2026)
+
+- Motivo: el 28/09 el usuario pidió el histórico de totales de un proyecto ya borrado (MEERMEAT) y no existía en ningún sitio: el panel sobrescribe los importes y el borrado arrastra las partidas.
+- Solución en la base de datos, no en el PHP: tabla `client_project_price_history` alimentada por disparadores sobre `client_project_budget_items` (alta/edición/baja) y `client_projects` (descuento, etiqueta, plazo, IVA, IRPF, y BEFORE DELETE). Cada fila es una versión con `items` (jsonb), `subtotal` (suma de partidas antes de impuestos), `discount_amount`, `total_base` (subtotal − descuento), `valid_from` y `valid_until` (fecha del siguiente cambio; NULL = vigente), `source`/`ended_by`. `project_id` sin clave foránea a propósito: sobrevive al borrado. Versiones idénticas no se repiten (`fingerprint`). SQL de referencia y consultas en `docs/sql/client_project_price_history.sql`.
+- Para responder «histórico de precios de X»: buscar por `project_ref`/`client_name` con `ilike`, aunque el proyecto ya no exista. Arranque el 29/09/2026 con una versión «backfill» por cada uno de los 7 proyectos existentes; lo anterior a esa fecha no se puede reconstruir.
+
 ## Secretos (ninguno debe entrar en git)
 
 - `supabase-config.php` (raíz y static) — gitignored. Credenciales Supabase e IMAP (`ssl0.ovh.net:993`).
