@@ -1764,6 +1764,13 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "AVISAN",
+    "country": "pt",
+    "slug": "stands-avisan-santarem",
+    "city": "Santarém",
+    "sector": "Arte y Ocio"
+  },
+  {
     "name": "Nortrans",
     "country": "es",
     "slug": "stand-nortrans-vigo",

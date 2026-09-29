@@ -112,6 +112,7 @@ El objetivo es que los textos **parezcan escritos por una persona del oficio**, 
 - Oporto/norte: Homeing (Exponor, diseño de interiores y hotel), Expocosmética ya cubierta; Braga y Batalha sin candidatas verificadas todavía.
 - Tanda 12/09/2026 publicada: MATELEC, SIMA, Expodentária, inProjecta, Maquishoes.
 - Alta suelta 24/09/2026: Vintec (Fexdega, Vilagarcía de Arousa, 21-23 oct 2026), colgada de Santiago de Compostela como municipio satélite (`city: "Vilagarcía de Arousa"` + `CITY_TO_PILLAR`/`FAIR_CITY_PILLAR`/`CITY_PILLAR` → `santiago`, región `galicia`, coordenadas en `iberiaMeshData`). Precedente para ferias de municipios sin página propia.
+- Alta suelta 29/09/2026: AVISAN (CNEMA, Santarém, 27-29 nov 2026, anual; aves y animales de compañía, etiqueta `mascotas`, sector «Arte y Ocio»), colgada de Santarém y enlazada a Iberpet (Madrid).
 - Tanda 15/09/2026 publicada: InterSICOP (Madrid, 16-18 feb 2027), FILDecor (Lisboa, última edición 25-28 jun 2026, 2027 por confirmar), Portugal Print (Oporto, 25-27 feb 2027). Referencia tras esta tanda: Madrid 37, Lisboa 29, Oporto 24, Batalha 5; 480 ferias.
 
 ## 5. Lo que este procedimiento NO hace

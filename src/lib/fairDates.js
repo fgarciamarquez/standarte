@@ -264,6 +264,8 @@ export const fairDates = {
   'stand-ecuextre-badajoz': { start: '2027-06-10', end: '2027-06-13', cadence: 'annual', source: 'https://feriabadajoz.es/ferias/ecuextre-y-toro/' },
   'stand-automatica-munich': { start: '2027-06-22', end: '2027-06-25', cadence: 'biennial', source: 'https://stand-automatica-munich.com/en/' },
   'stand-agroglobal-santarem': { start: '2027-09-07', end: '2027-09-09', cadence: 'biennial', source: 'https://www.agroportal.pt/agroglobal-2027-a-maior-feira-agricola-profissional-da-iberia/' },
+  // AVISAN: CNEMA, Santarém. Edición 2026 según la agenda municipal.
+  'stands-avisan-santarem': { start: '2026-11-27', end: '2026-11-29', cadence: 'annual', source: 'https://www.cm-santarem.pt/descobrir-santarem/agenda-de-eventos/1313-avisan-exposicao-nacional-de-aves-e-animais-de-companhia' },
   'stand-labelexpo-barcelona': { start: '2027-10-05', end: '2027-10-08', cadence: 'biennial', source: 'https://www.loupe-europe.com/' },
   'stand-pollutec-lyon': { start: '2027-10-12', end: '2027-10-15', cadence: 'biennial', source: 'https://www.pollutec.com/en-gb/practical-info.html' },
   'stand-piscina-wellness-barcelona': { start: '2027-11-15', end: '2027-11-18', cadence: 'biennial', source: 'https://www.piscinabarcelona.es/' },
