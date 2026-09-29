@@ -433,7 +433,7 @@ export const fairFreshness = {
   'stand-expooptica-madrid': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   // Ferias que estrenan ficha propia (antes no tenían cuerpo único, y por eso tampoco
   // aparecían con resumen en el calendario sectorial de otras ferias).
-  'stands-figan-feria-zaragoza': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
+  'stands-figan-feria-zaragoza': '2026-09-29',   // texto propio completo en 11 idiomas + FAQ (29/09/2026)
   'stands-biemh-bilbao-bec': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-concreta-oporto': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stands-enomaq-zaragoza': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
