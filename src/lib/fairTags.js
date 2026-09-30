@@ -428,6 +428,7 @@ export const fairActivities = {
   "stand-edifica-pamplona": ["construccion"],
   "stand-navarra-jobs-pamplona": ["congreso-profesional"],
   "stand-feria-navarra-ecologica-pamplona": ["ecologico","alimentacion"],
+  "stands-congreso-aedg-greenkeepers-pamplona": ["congreso-profesional","agricultura-maquinaria"],
   "stand-navarra-wine-gastronomy-pamplona": ["vino","gastronomia-hosteleria"],
   "stand-feria-turismo-reyno-navarra-pamplona": ["turismo"],
   "stand-ardoaraba-vitoria": ["vino","gastronomia-hosteleria"],

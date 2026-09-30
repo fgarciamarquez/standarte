@@ -2548,6 +2548,13 @@ export const fairsData = [
     "sector": "Turismo y Hostelería"
   },
   {
+    "name": "Congreso AEdG de Greenkeepers",
+    "country": "es",
+    "slug": "stands-congreso-aedg-greenkeepers-pamplona",
+    "city": "Pamplona",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Ardoaraba",
     "country": "es",
     "slug": "stand-ardoaraba-vitoria",

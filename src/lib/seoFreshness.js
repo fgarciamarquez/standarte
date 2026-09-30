@@ -204,7 +204,7 @@ export const seoFreshness = {
   irun: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   san_sebastian: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   logrono: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
-  pamplona: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
+  pamplona: '2026-09-30',   // alta del Congreso AEdG de Greenkeepers (30/09/2026)
   vitoria: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   aranda: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   regua: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
@@ -256,6 +256,7 @@ export const activityFreshness = '2026-08-28';
 // «montaje de stands en X» y «diseño y montaje de stands en X». Cambio visible en todas las
 // fichas que enlazan a su ciudad: fecha nueva.
 export const fairFreshness = {
+  'stands-congreso-aedg-greenkeepers-pamplona': '2026-09-30',   // alta del Congreso AEdG (30/09/2026)
   'stands-avisan-santarem': '2026-09-29',   // alta de AVISAN (29/09/2026)
   'stand-scm-conference': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stands-vintec-vilagarcia-de-arousa': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
