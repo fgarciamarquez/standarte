@@ -2,7 +2,7 @@
 tipo: actividad
 clave: agricultura-maquinaria
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 37
+n_ferias: 38
 ---
 # Agricultura y maquinaria agrícola
 
@@ -17,6 +17,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Agroexpo Feval Don Benito]]
 - [[Agroglobal]]
 - [[Asturforesta]]
+- [[Congreso AEdG de Greenkeepers]]
 - [[Congreso Internacional de Frutos Rojos]]
 - [[EXPO Agritech Málaga]]
 - [[ExpoCalamocha]]

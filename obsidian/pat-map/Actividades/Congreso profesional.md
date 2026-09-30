@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-profesional
 sector: "Multisectorial y Profesional"
-n_ferias: 57
+n_ferias: 58
 ---
 # Congreso profesional
 
@@ -16,6 +16,7 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[CIMQUSEF]]
 - [[Ceuta Impulsa]]
 - [[China Trade Week Morocco (CTW)]]
+- [[Congreso AEdG de Greenkeepers]]
 - [[Congreso ITS España]]
 - [[Congreso Internacional de Alineadores]]
 - [[Congreso La Cierna]]
