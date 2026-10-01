@@ -302,6 +302,17 @@ export const fairDates = {
   'stands-fildecor-lisboa': { start: '2026-06-25', end: '2026-06-28', cadence: 'annual', source: 'https://decor.fil.pt/' },
   // Portugal Print 2027 (25-27 feb): 15 años de la feria, que vuelve a Exponor.
   'stands-portugal-print-oporto': { start: '2027-02-25', end: '2027-02-27', cadence: 'biennial', source: 'https://exponor.pt/calendario/portugal-print-2027/' },
+  // Tanda 2026-10-01 (Madrid, Lisboa, Oporto): fechas de la web oficial de cada organizador.
+  // C&R 2027: IFEMA confirma noviembre de 2027 (bienal en años impares, con Genera y MATELEC); los días aún no están publicados → approx.
+  'stands-climatizacion-refrigeracion-madrid': { start: '2027-11-01', end: '2027-11-30', cadence: 'biennial', approx: true, source: 'https://www.ifema.es/cr' },
+  // World Olive Oil Exhibition 2027 (10-11 mar, IFEMA). Anual; organiza Pomona Keepers con IFEMA.
+  'stands-world-olive-oil-exhibition-madrid': { start: '2027-03-10', end: '2027-03-11', cadence: 'annual', source: 'https://oliveoilexhibition.com/' },
+  // Segurex 2026 (20-22 oct, FIL). Anual desde 2025 (antes bienal).
+  'stands-segurex-lisboa': { start: '2026-10-20', end: '2026-10-22', cadence: 'annual', source: 'https://segurex.fil.pt/' },
+  // Homeing: última edición confirmada (24-26 sep 2026, Pavilhão Carlos Lopes, Lisboa). La de 2027 aún no está publicada → «por confirmar».
+  'stands-homeing-lisboa': { start: '2026-09-24', end: '2026-09-26', cadence: 'annual', source: 'https://exponor.pt/homeing/' },
+  // Expoalimenta 2026 (4-6 nov, Exponor, con Expocarne). Bienal en años pares (2024, 2026).
+  'stands-expoalimenta-oporto': { start: '2026-11-04', end: '2026-11-06', cadence: 'biennial', source: 'https://exposalao.pt/feira/expoalimenta' },
 };
 
 /** Periodicidad de una feria, en los 11 idiomas (para la línea de tiempo). */
