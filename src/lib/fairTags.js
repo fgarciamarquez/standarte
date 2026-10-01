@@ -551,6 +551,11 @@ export const fairActivities = {
   "stands-intersicop-madrid": ["alimentacion", "gastronomia-hosteleria"],
   "stands-fildecor-lisboa": ["regalo-decoracion"],
   "stands-portugal-print-oporto": ["packaging"],
+  "stands-climatizacion-refrigeracion-madrid": ["energia","maquinaria-industrial"],
+  "stands-world-olive-oil-exhibition-madrid": ["alimentacion","gastronomia-hosteleria"],
+  "stands-segurex-lisboa": ["seguridad"],
+  "stands-homeing-lisboa": ["regalo-decoracion","turismo"],
+  "stands-expoalimenta-oporto": ["alimentacion","maquinaria-industrial"],
 };
 
 // Helpers
