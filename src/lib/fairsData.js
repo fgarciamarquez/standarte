@@ -385,6 +385,13 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "IEEE NSS MIC RTSD",
+    "country": "es",
+    "slug": "stands-ieee-nss-mic-rtsd-granada",
+    "city": "Granada",
+    "sector": "Tecnología e Innovación"
+  },
+  {
     "name": "CONCAB Granada",
     "country": "es",
     "slug": "stand-concab-granada",

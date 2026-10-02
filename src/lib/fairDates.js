@@ -30,6 +30,8 @@ export const fairDates = {
   'stand-mercat-de-la-vall-andorra': { start: '2026-08-01', end: '2026-08-02', cadence: 'annual', source: 'https://www.agenda.ad/activitat/andorra-la-vella/fires-i-mercats/mercat-de-la-vall-21714' },
   'stand-fatacil-lagoa': { start: '2026-08-21', end: '2026-08-30', cadence: 'annual', source: 'https://www.cm-lagoa.pt/conhecer/eventos/evento/fatacil-2026' },
   'stand-belmoda-granada': { start: '2026-11-06', end: '2026-11-08', cadence: 'annual', source: 'https://fermasa.org/belmoda-salon-de-la-boda-y-la-comunion/' },
+  // IEEE NSS MIC RTSD: congreso itinerante del IEEE; la edición 2026 es en el Palacio de Congresos de Granada.
+  'stands-ieee-nss-mic-rtsd-granada': { start: '2026-11-07', end: '2026-11-14', cadence: 'annual', source: 'https://nssmic.ieee.org/2026/' },
   'stand-festa-vinho-madeira': { start: '2026-08-23', end: '2026-09-13', cadence: 'annual', source: 'https://visitmadeira.com/en/whats-on/events/wine-festival/' },
   'stand-salamaq-salamanca': { start: '2026-09-03', end: '2026-09-07', cadence: 'annual', source: 'https://www.lasalina.es/noticias/fechassalamaq26.html' },
   'stand-cannes-yachting-festival': { start: '2026-09-08', end: '2026-09-13', cadence: 'annual', source: 'https://www.cannesyachtingfestival.com/en-gb/practical-information.html' },

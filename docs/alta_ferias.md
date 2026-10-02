@@ -114,6 +114,7 @@ El objetivo es que los textos **parezcan escritos por una persona del oficio**, 
 - Alta suelta 24/09/2026: Vintec (Fexdega, Vilagarcía de Arousa, 21-23 oct 2026), colgada de Santiago de Compostela como municipio satélite (`city: "Vilagarcía de Arousa"` + `CITY_TO_PILLAR`/`FAIR_CITY_PILLAR`/`CITY_PILLAR` → `santiago`, región `galicia`, coordenadas en `iberiaMeshData`). Precedente para ferias de municipios sin página propia.
 - Alta suelta 29/09/2026: AVISAN (CNEMA, Santarém, 27-29 nov 2026, anual; aves y animales de compañía, etiqueta `mascotas`, sector «Arte y Ocio»), colgada de Santarém y enlazada a Iberpet (Madrid).
 - Alta suelta 30/09/2026: Congreso AEdG de Greenkeepers (itinerante; edición 2026 en Baluarte, Pamplona, 9-12 nov, exposición comercial 11-12; etiquetas `congreso-profesional` + `agricultura-maquinaria`). Al cambiar de ciudad cada año, revisar sede y fechas en cada edición.
+- Alta suelta 02/10/2026: IEEE NSS MIC RTSD (congreso itinerante del IEEE; edición 2026 en el Palacio de Congresos de Granada, 7-14 nov; etiquetas `fotonica` + `congreso-medico` + `congreso-profesional`). Revisar sede en cada edición.
 - Tanda 15/09/2026 publicada: InterSICOP (Madrid, 16-18 feb 2027), FILDecor (Lisboa, última edición 25-28 jun 2026, 2027 por confirmar), Portugal Print (Oporto, 25-27 feb 2027). Referencia tras esta tanda: Madrid 37, Lisboa 29, Oporto 24, Batalha 5; 480 ferias.
 
 ## 5. Lo que este procedimiento NO hace
