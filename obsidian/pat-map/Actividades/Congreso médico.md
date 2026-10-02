@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-medico
 sector: "Salud y Medicina"
-n_ferias: 13
+n_ferias: 14
 ---
 # Congreso médico
 
@@ -19,6 +19,7 @@ Actividad del sector [[Salud y Medicina]].
 - [[ESRA Congress Lisboa]]
 - [[Expodentária]]
 - [[GEDET Santiago de Compostela]]
+- [[IEEE NSS MIC RTSD]]
 - [[Morocco Medical Expo]]
 - [[PEGS Europe Lisboa]]
 - [[SESMI Santiago de Compostela]]
