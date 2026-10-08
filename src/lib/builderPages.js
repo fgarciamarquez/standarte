@@ -96,6 +96,14 @@ export const builderPages = {
   // Sevilla (2026-09-12): FIBES, tres pabellones diáfanos con arquetas cada 8 m; calendario mixto
   // de ferias de gran público (SICAB, SIMOF, Motor) y profesionales (Fireca, MMH, TIS).
   constructor_stand_sevilla:    { city: 'sevilla',     cityName: 'Sevilla',    cityNames: { en: 'Seville' }, venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  // 08/10/2026: una paralela por cada feria de Sevilla (texto propio por feria, formato ligero, indexables).
+  constructor_stand_fireca: { fair: 'stand-fireca-sevilla', fairName: 'Fireca', cityName: 'Sevilla', venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_sicab: { fair: 'stands-sicab-sevilla', fairName: 'SICAB', cityName: 'Sevilla', venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_simof: { fair: 'stands-simof-sevilla', fairName: 'SIMOF', cityName: 'Sevilla', venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_salon_motor_sevilla: { fair: 'stands-salon-motor-sevilla', fairName: 'Salón del Motor de Sevilla', cityName: 'Sevilla', venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_mmh: { fair: 'stand-mmh-sevilla', fairName: 'MMH', cityName: 'Sevilla', venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_tis: { fair: 'stand-tis-sevilla', fairName: 'TIS', cityName: 'Sevilla', venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
+  constructor_stand_autentica: { fair: 'stand-autentica-sevilla', fairName: 'AUTÉNTICA', cityName: 'Sevilla', venue: 'FIBES — Palacio de Exposiciones y Congresos de Sevilla', workshop: { es: 'Taller propio de Standarte', en: 'Standarte’s own workshop' }, indexable: true },
   // Tanda 15/09/2026: paralela para TODAS las plazas restantes (56). Las principales siguen
   // vivas: compiten las dos, cada una con su intención (diseño y montaje / construcción).
   constructor_stand_valencia: { city: "valencia", cityName: "Valencia", cityNames: {"pt": "Valência"}, venue: "Feria Valencia", workshop: {"es": "Taller propio de Standarte", "en": "Standarte’s own workshop", "pt": "Oficina própria da Standarte"}, indexable: true },
