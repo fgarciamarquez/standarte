@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 37
+n_ferias: 38
 lat: 40.42
 lon: -3.7
 ---
@@ -39,6 +39,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[OPTOM]]
 - [[Piscimad Madrid]]
 - [[REBUILD Madrid]]
+- [[Rail Live]]
 - [[SICUR Madrid]]
 - [[SIMA]]
 - [[SMART DOORS Madrid]]

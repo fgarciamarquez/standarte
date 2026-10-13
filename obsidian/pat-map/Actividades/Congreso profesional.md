@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-profesional
 sector: "Multisectorial y Profesional"
-n_ferias: 59
+n_ferias: 60
 ---
 # Congreso profesional
 
@@ -56,6 +56,7 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[Préventica Lyon]]
 - [[Qualifica]]
 - [[RE+ Portugal]]
+- [[Rail Live]]
 - [[Reunión Nacional de Óptica (RNO)]]
 - [[SBC Summit Lisbon]]
 - [[SEPEM Industries Sud-Est]]
