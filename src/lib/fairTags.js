@@ -283,6 +283,7 @@ export const fairActivities = {
   "stand-fitur-madrid": ["turismo"],
   "stand-advanced-manufacturing-madrid": ["maquinaria-industrial","metal-subcontratacion"],
   "stand-hip-madrid": ["gastronomia-hosteleria","alimentacion"],
+  "stands-interihotel-madrid": ["regalo-decoracion","turismo"],
   "stand-meat-attraction-madrid": ["alimentacion"],
   "stand-sicur-madrid": ["seguridad","maquinaria-industrial"],
   "stand-arcomadrid": ["cultura-arte"],

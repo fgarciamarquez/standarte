@@ -207,6 +207,7 @@ export const fairDates = {
   'stand-mmh-sevilla': { start: '2026-10-20', end: '2026-10-22', cadence: 'biennial', source: 'https://mmhevent.com/' },
   'stand-advanced-manufacturing-madrid': { start: '2026-11-04', end: '2026-11-05', cadence: 'annual', source: 'https://www.ifema.es/advanced-manufacturing-madrid' },
   'stand-hip-madrid': { start: '2027-03-01', end: '2027-03-03', cadence: 'annual', source: 'https://www.ifema.es/hip' },
+  'stands-interihotel-madrid': { start: '2026-11-17', end: '2026-11-19', cadence: 'annual', source: 'https://www.ifema.es/interihotel' },
   'stand-meat-attraction-madrid': { start: '2027-02-16', end: '2027-02-18', cadence: 'biennial', source: 'https://www.ifema.es/en/meat-attraction/news/dates-2027' },
   'stand-sicur-madrid': { start: '2026-02-24', end: '2026-02-27', cadence: 'biennial', source: 'https://www.ifema.es/en/sicur' },
   'stand-lisboa-games-week': { start: '2026-11-19', end: '2026-11-22', cadence: 'annual', source: 'https://fil.lisbonvenues.pt/en/events/fil/lisboa-games-week/' },

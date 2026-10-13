@@ -1393,6 +1393,13 @@ export const fairsData = [
     "sector": "Gastronomía y Hostelería"
   },
   {
+    "name": "InteriHOTEL",
+    "country": "es",
+    "slug": "stands-interihotel-madrid",
+    "city": "Madrid",
+    "sector": "Turismo y Hostelería"
+  },
+  {
     "name": "Meat Attraction",
     "country": "es",
     "slug": "stand-meat-attraction-madrid",
