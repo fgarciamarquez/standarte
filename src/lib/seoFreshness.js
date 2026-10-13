@@ -170,7 +170,8 @@ export const seoFreshness = {
   constructor_stand_islas_de_madeira: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
-  home: '2026-09-18',   // portada sin galería ni equipo (18/09/2026)  galeria: '2026-10-10',   // 5 renders nuevos (stand de fragancias en madera, 11 idiomas) (10/10/2026); página propia con los vídeos 3D (23/09/2026)
+  home: '2026-09-18',   // portada sin galería ni equipo (18/09/2026)
+  galeria: '2026-10-10',   // 5 renders nuevos (stand de fragancias en madera, 11 idiomas) (10/10/2026); página propia con los vídeos 3D (23/09/2026)
   badajoz: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   montaje_badajoz: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   zaragoza: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
