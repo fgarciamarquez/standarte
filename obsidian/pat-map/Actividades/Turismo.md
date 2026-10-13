@@ -2,7 +2,7 @@
 tipo: actividad
 clave: turismo
 sector: "Turismo y Hostelería"
-n_ferias: 29
+n_ferias: 30
 ---
 # Turismo
 
@@ -26,6 +26,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Fira d'Andorra la Vella]]
 - [[Fitur Madrid]]
 - [[INTUR]]
+- [[InteriHOTEL]]
 - [[Madrid Fusión]]
 - [[Mountain Planet]]
 - [[NAVARTUR]]

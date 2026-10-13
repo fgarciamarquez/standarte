@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 38
+n_ferias: 39
 lat: 40.42
 lon: -3.7
 ---
@@ -29,6 +29,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Iberpet Madrid]]
 - [[InterSICOP]]
 - [[Intergift Madrid]]
+- [[InteriHOTEL]]
 - [[MATELEC]]
 - [[Madrid Fusión]]
 - [[Madrid Tech Show]]

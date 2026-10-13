@@ -2,7 +2,7 @@
 tipo: actividad
 clave: regalo-decoracion
 sector: "Comercio y Packaging"
-n_ferias: 16
+n_ferias: 17
 ---
 # Regalo y decoración
 
@@ -19,6 +19,7 @@ Actividad del sector [[Comercio y Packaging]].
 - [[Gift Paper]]
 - [[Grand Salon Habitat]]
 - [[Intergift Madrid]]
+- [[InteriHOTEL]]
 - [[Interior & Exterior Design Meetings]]
 - [[MAPIC]]
 - [[Mercat de la Vall]]
