@@ -2422,6 +2422,13 @@ export const fairsData = [
     "sector": "Aeronáutica y Transporte"
   },
   {
+    "name": "Rail Live",
+    "country": "es",
+    "slug": "stands-rail-live-madrid",
+    "city": "Madrid",
+    "sector": "Aeronáutica y Transporte"
+  },
+  {
     "name": "MUBIL Mobility Expo",
     "country": "es",
     "slug": "stand-mubil-mobility-expo-irun",

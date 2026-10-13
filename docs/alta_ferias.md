@@ -115,6 +115,7 @@ El objetivo es que los textos **parezcan escritos por una persona del oficio**, 
 - Alta suelta 29/09/2026: AVISAN (CNEMA, Santarém, 27-29 nov 2026, anual; aves y animales de compañía, etiqueta `mascotas`, sector «Arte y Ocio»), colgada de Santarém y enlazada a Iberpet (Madrid).
 - Alta suelta 30/09/2026: Congreso AEdG de Greenkeepers (itinerante; edición 2026 en Baluarte, Pamplona, 9-12 nov, exposición comercial 11-12; etiquetas `congreso-profesional` + `agricultura-maquinaria`). Al cambiar de ciudad cada año, revisar sede y fechas en cada edición.
 - Alta suelta 02/10/2026: IEEE NSS MIC RTSD (congreso itinerante del IEEE; edición 2026 en el Palacio de Congresos de Granada, 7-14 nov; etiquetas `fotonica` + `congreso-medico` + `congreso-profesional`). Revisar sede en cada edición.
+- Alta suelta 13/10/2026: Rail Live (IFEMA Madrid, 24-26 nov 2027; bienal de facto, sin edición en 2026). Organiza Terrapinn con Adif, Renfe y Mafex; etiquetas `transporte` + `movilidad` + `congreso-profesional`. Ángulo constructivo: carga pesada (bogies, catenaria, agujas), salas de reunión cerradas, red cableada para demos y estructura guardada dos años entre ediciones.
 - Tanda 15/09/2026 publicada: InterSICOP (Madrid, 16-18 feb 2027), FILDecor (Lisboa, última edición 25-28 jun 2026, 2027 por confirmar), Portugal Print (Oporto, 25-27 feb 2027). Referencia tras esta tanda: Madrid 37, Lisboa 29, Oporto 24, Batalha 5; 480 ferias.
 
 ## 5. Lo que este procedimiento NO hace

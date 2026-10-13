@@ -190,7 +190,7 @@ export const seoFreshness = {
   oporto: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   vigo: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   portugal_sur: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
-  madrid: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
+  madrid: '2026-10-13',   // alta de Rail Live (13/10/2026)
   bilbao: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   malaga: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   sevilla: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
@@ -275,6 +275,7 @@ export const activityFreshness = '2026-08-28';
 // «montaje de stands en X» y «diseño y montaje de stands en X». Cambio visible en todas las
 // fichas que enlazan a su ciudad: fecha nueva.
 export const fairFreshness = {
+  'stands-rail-live-madrid': '2026-10-13',   // alta de Rail Live (13/10/2026)
   'stands-ieee-nss-mic-rtsd-granada': '2026-10-02',   // alta de IEEE NSS MIC RTSD (02/10/2026)
   'stands-congreso-aedg-greenkeepers-pamplona': '2026-09-30',   // alta del Congreso AEdG (30/09/2026)
   'stands-avisan-santarem': '2026-09-29',   // alta de AVISAN (29/09/2026)

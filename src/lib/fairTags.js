@@ -412,6 +412,7 @@ export const fairActivities = {
   "stand-trafic-madrid": ["movilidad"],
   "stand-fiaa-madrid": ["transporte","movilidad","automocion"],
   "stand-global-mobility-call-madrid": ["movilidad","smart-city","congreso-profesional"],
+  "stands-rail-live-madrid": ["transporte","movilidad","congreso-profesional"],
   "stand-mubil-mobility-expo-irun": ["movilidad","energia"],
   "stand-unire-irun": ["metal-subcontratacion","maquinaria-industrial"],
   "stand-bioterra-irun": ["ecologico","alimentacion","construccion"],
