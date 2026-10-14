@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-medico
 sector: "Salud y Medicina"
-n_ferias: 14
+n_ferias: 15
 ---
 # Congreso médico
 
@@ -14,6 +14,7 @@ Actividad del sector [[Salud y Medicina]].
 - [[Congreso Nacional de la SEFH (Farmacia Hospitalaria)]]
 - [[Congreso SECPRE (Cirugía Plástica)]]
 - [[Congreso SET (Trasplante)]]
+- [[Congreso SEdO de Alineadores]]
 - [[Congreso SPCPRE (Cirurgia Plástica)]]
 - [[ESICM LIVES Lisboa]]
 - [[ESRA Congress Lisboa]]
