@@ -129,6 +129,7 @@ export const fairActivities = {
   "stand-feria-general-muestras-armilla": ["multisectorial"],
   "stand-feria-de-la-ciencia-granada": ["digital-software"],
   "stands-ieee-nss-mic-rtsd-granada": ["fotonica","congreso-medico","congreso-profesional"],
+  "stands-sedo-alineadores-granada": ["dental","congreso-medico"],
   "stand-concab-granada": ["ganaderia"],
   "stand-belmoda-granada": ["moda-textil", "gastronomia-hosteleria", "regalo-decoracion"],
   "stand-sabores-nuestra-tierra-granada": ["alimentacion", "gastronomia-hosteleria"],

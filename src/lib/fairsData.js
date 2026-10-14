@@ -392,6 +392,13 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "Congreso SEdO de Alineadores",
+    "country": "es",
+    "slug": "stands-sedo-alineadores-granada",
+    "city": "Granada",
+    "sector": "Salud y Medicina"
+  },
+  {
     "name": "CONCAB Granada",
     "country": "es",
     "slug": "stand-concab-granada",

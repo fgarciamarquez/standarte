@@ -212,7 +212,7 @@ export const seoFreshness = {
   jaen: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   huelva: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   cordoba: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
-  granada: '2026-10-02',   // alta de IEEE NSS MIC RTSD (02/10/2026)
+  granada: '2026-10-14',   // alta del Congreso SEdO de Alineadores (14/10/2026)
   cadiz: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   silleda: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   ourense: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
@@ -275,6 +275,7 @@ export const activityFreshness = '2026-08-28';
 // «montaje de stands en X» y «diseño y montaje de stands en X». Cambio visible en todas las
 // fichas que enlazan a su ciudad: fecha nueva.
 export const fairFreshness = {
+  'stands-sedo-alineadores-granada': '2026-10-14',   // alta del Congreso SEdO de Alineadores (14/10/2026)
   'stands-interihotel-madrid': '2026-10-13',   // alta de InteriHOTEL (13/10/2026)
   'stands-rail-live-madrid': '2026-10-13',   // alta de Rail Live (13/10/2026)
   'stands-ieee-nss-mic-rtsd-granada': '2026-10-02',   // alta de IEEE NSS MIC RTSD (02/10/2026)
