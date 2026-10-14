@@ -192,7 +192,12 @@
     {/each}
     {#each clientVideos as cv, j}
       <figure class="galeria-item">
-        <iframe src={cv.embed} title={`${CLIENT_CAP[lang] || CLIENT_CAP.es} (${t.video.toLowerCase()} ${videos.length + j + 1})`} loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        {#if cv.src}
+          <!-- svelte-ignore a11y_media_has_caption -->
+          <video src={cv.src} controls playsinline preload="metadata" title={`${CLIENT_CAP[lang] || CLIENT_CAP.es} (${t.video.toLowerCase()} ${videos.length + j + 1})`} aria-label={`${CLIENT_CAP[lang] || CLIENT_CAP.es} (${t.video.toLowerCase()} ${videos.length + j + 1})`}></video>
+        {:else}
+          <iframe src={cv.embed} title={`${CLIENT_CAP[lang] || CLIENT_CAP.es} (${t.video.toLowerCase()} ${videos.length + j + 1})`} loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        {/if}
         <figcaption>
           <h2>{CLIENT_CAP[lang] || CLIENT_CAP.es} ({t.video.toLowerCase()} {videos.length + j + 1})</h2>
         </figcaption>
