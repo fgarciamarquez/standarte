@@ -560,6 +560,12 @@ export const fairActivities = {
   "stands-segurex-lisboa": ["seguridad"],
   "stands-homeing-lisboa": ["regalo-decoracion","turismo"],
   "stands-expoalimenta-oporto": ["alimentacion","maquinaria-industrial"],
+  "stands-promogift-madrid": ["regalo-decoracion"],
+  "stands-simo-educacion-madrid": ["digital-software","congreso-profesional"],
+  "stands-world-of-coffee-lisboa": ["gastronomia-hosteleria","alimentacion"],
+  "stands-expo-rh-lisboa": ["congreso-profesional","digital-software"],
+  "stands-maquitex-oporto": ["maquinaria-industrial","moda-textil"],
+  "stands-agro-braga": ["agricultura-maquinaria","ganaderia"],
 };
 
 // Helpers
