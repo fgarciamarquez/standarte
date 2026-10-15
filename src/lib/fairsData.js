@@ -2317,6 +2317,20 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
+    "name": "Segurex",
+    "country": "pt",
+    "slug": "stands-segurex-lisboa",
+    "city": "Lisboa",
+    "sector": "Prevención de Riesgos Laborales"
+  },
+  {
+    "name": "Homeing",
+    "country": "pt",
+    "slug": "stands-homeing-lisboa",
+    "city": "Lisboa",
+    "sector": "Comercio y Packaging"
+  },
+  {
     "name": "Vinipax Beja",
     "country": "pt",
     "slug": "stand-vinipax-beja",
@@ -2723,6 +2737,13 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
+    "name": "Expoalimenta",
+    "country": "pt",
+    "slug": "stands-expoalimenta-oporto",
+    "city": "Oporto",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Enoforum",
     "country": "es",
     "slug": "stands-enoforum-zaragoza",
@@ -2959,6 +2980,20 @@ export const fairsData = [
     "slug": "stands-intersicop-madrid",
     "city": "Madrid",
     "sector": "Gastronomía y Hostelería"
+  },
+  {
+    "name": "C&R Climatización y Refrigeración",
+    "country": "es",
+    "slug": "stands-climatizacion-refrigeracion-madrid",
+    "city": "Madrid",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "World Olive Oil Exhibition",
+    "country": "es",
+    "slug": "stands-world-olive-oil-exhibition-madrid",
+    "city": "Madrid",
+    "sector": "Agroalimentario y Naturaleza"
   },
   {
     "name": "Feria del Jamón de Teruel y Alimentos de Calidad",

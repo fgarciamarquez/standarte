@@ -107,9 +107,9 @@ El objetivo es que los textos **parezcan escritos por una persona del oficio**, 
 
 ## 4. Candidatas pendientes (actualizar en cada tanda)
 
-- Lisboa: Motorclássico (clásicos, FIL, abril), público general; solo si faltan candidatas profesionales.
-- Madrid: Climatización y Refrigeración (C&R, bienal, próxima 2027) y Expofranquicia (ya en catálogo sin fecha: solo actualizar fecha).
-- Oporto/norte: Homeing (Exponor, diseño de interiores y hotel), Expocosmética ya cubierta; Braga y Batalha sin candidatas verificadas todavía.
+- Lisboa: Motorclássico (clásicos, FIL, abril) e Intercasa (FIL, 9-13 oct 2026, decoración) son de público general; solo si faltan candidatas profesionales. Expo RH (Centro de Congressos do Estoril, marzo; fechas 2027 sin publicar) por verificar.
+- Madrid: Expofranquicia (ya en catálogo sin fecha: solo actualizar fecha). Organic Food Iberia (IFEMA, junio; la de 2027 sin fechas publicadas). C&R ya cubierta (01/10/2026): cuando IFEMA publique los días de noviembre de 2027, quitar `approx` en `fairDates`.
+- Oporto/norte: Expoprocessos (Exponor, tecnología para procesos industriales, bienal en años pares; la de 2028 aún sin fecha). Homeing resultó ser de Lisboa (Exponor la organiza en el Pavilhão Carlos Lopes) y ya está cubierta. Braga sin candidatas verificadas; en Batalha, el Salão de Veículos Elétricos, Híbridos e Equipamentos (Exposalão, 4-6 jun 2027) es mixto profesional/público: solo si faltan candidatas.
 - Tanda 12/09/2026 publicada: MATELEC, SIMA, Expodentária, inProjecta, Maquishoes.
 - Alta suelta 24/09/2026: Vintec (Fexdega, Vilagarcía de Arousa, 21-23 oct 2026), colgada de Santiago de Compostela como municipio satélite (`city: "Vilagarcía de Arousa"` + `CITY_TO_PILLAR`/`FAIR_CITY_PILLAR`/`CITY_PILLAR` → `santiago`, región `galicia`, coordenadas en `iberiaMeshData`). Precedente para ferias de municipios sin página propia.
 - Alta suelta 29/09/2026: AVISAN (CNEMA, Santarém, 27-29 nov 2026, anual; aves y animales de compañía, etiqueta `mascotas`, sector «Arte y Ocio»), colgada de Santarém y enlazada a Iberpet (Madrid).
@@ -119,6 +119,7 @@ El objetivo es que los textos **parezcan escritos por una persona del oficio**, 
 - Alta suelta 13/10/2026: InteriHOTEL (IFEMA Madrid, 17-19 nov 2026, anual; pabellones 1 y 3). Feria del interiorismo hotelero del clúster AMBIT Living Spaces (heredero de CENFIM), trasladada desde Barcelona; etiquetas `regalo-decoracion` + `turismo`, sector «Turismo y Hostelería». Ángulo constructivo: el visitante es prescriptor y juzga acabados, muestras tocables a la altura de la mano, luz de buena reproducción cromática y producción de stands diseñados por estudios de interiorismo.
 - Alta suelta 14/10/2026: Congreso SEdO de Alineadores y Nuevas Tecnologías (Palacio de Congresos de Granada, 20-21 nov 2026; congreso temático itinerante de la Sociedad Española de Ortodoncia, edición V). Etiquetas `dental` + `congreso-medico`, sector «Salud y Medicina». Ángulo constructivo: exposición que solo vive en las pausas, alineadores transparentes que piden fondo oscuro o retroiluminación, puesto de escáner intraoral (altura de encimera, dónde se sienta el visitante, luz) y módulos que viajan a la sede siguiente. Revisar sede en cada edición.
 - Tanda 15/09/2026 publicada: InterSICOP (Madrid, 16-18 feb 2027), FILDecor (Lisboa, última edición 25-28 jun 2026, 2027 por confirmar), Portugal Print (Oporto, 25-27 feb 2027). Referencia tras esta tanda: Madrid 37, Lisboa 29, Oporto 24, Batalha 5; 480 ferias.
+- Tanda 01/10/2026 (rama `routine/alta-ferias-2026-10-01`, pendiente de merge): C&R Climatización y Refrigeración (Madrid, nov 2027, días por confirmar → `approx`), World Olive Oil Exhibition (Madrid, 10-11 mar 2027), Segurex (Lisboa, 20-22 oct 2026, ahora anual), Homeing (Lisboa, Pavilhão Carlos Lopes; última edición 24-26 sep 2026, 2027 por confirmar), Expoalimenta (Oporto, 4-6 nov 2026, bienal con Expocarne). Referencia tras esta tanda: Madrid 39, Lisboa 31, Oporto 25, Batalha 5; 488 ferias.
 
 ## 5. Lo que este procedimiento NO hace
 
