@@ -2317,6 +2317,34 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
+    "name": "Segurex",
+    "country": "pt",
+    "slug": "stands-segurex-lisboa",
+    "city": "Lisboa",
+    "sector": "Prevención de Riesgos Laborales"
+  },
+  {
+    "name": "Homeing",
+    "country": "pt",
+    "slug": "stands-homeing-lisboa",
+    "city": "Lisboa",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "World of Coffee Lisboa",
+    "country": "pt",
+    "slug": "stands-world-of-coffee-lisboa",
+    "city": "Lisboa",
+    "sector": "Gastronomía y Hostelería"
+  },
+  {
+    "name": "Expo RH",
+    "country": "pt",
+    "slug": "stands-expo-rh-lisboa",
+    "city": "Lisboa",
+    "sector": "Multisectorial y Profesional"
+  },
+  {
     "name": "Vinipax Beja",
     "country": "pt",
     "slug": "stand-vinipax-beja",
@@ -2723,6 +2751,27 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
+    "name": "Expoalimenta",
+    "country": "pt",
+    "slug": "stands-expoalimenta-oporto",
+    "city": "Oporto",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "Maquitex",
+    "country": "pt",
+    "slug": "stands-maquitex-oporto",
+    "city": "Oporto",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "AGRO Braga",
+    "country": "pt",
+    "slug": "stands-agro-braga",
+    "city": "Oporto",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "Enoforum",
     "country": "es",
     "slug": "stands-enoforum-zaragoza",
@@ -2959,6 +3008,34 @@ export const fairsData = [
     "slug": "stands-intersicop-madrid",
     "city": "Madrid",
     "sector": "Gastronomía y Hostelería"
+  },
+  {
+    "name": "C&R Climatización y Refrigeración",
+    "country": "es",
+    "slug": "stands-climatizacion-refrigeracion-madrid",
+    "city": "Madrid",
+    "sector": "Industria y Logística"
+  },
+  {
+    "name": "World Olive Oil Exhibition",
+    "country": "es",
+    "slug": "stands-world-olive-oil-exhibition-madrid",
+    "city": "Madrid",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
+    "name": "PMG Promogift",
+    "country": "es",
+    "slug": "stands-promogift-madrid",
+    "city": "Madrid",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "SIMO Educación",
+    "country": "es",
+    "slug": "stands-simo-educacion-madrid",
+    "city": "Madrid",
+    "sector": "Tecnología e Innovación"
   },
   {
     "name": "Feria del Jamón de Teruel y Alimentos de Calidad",
