@@ -20,13 +20,9 @@ include("config.php");
 	$company_data = json_decode($response, true);
 	
 	if (!empty($company_data) && is_array($company_data)) {
-		$titular_email = $company_data[0]['exxp'] ?? 'Standarte';
-		$ltd_email = $company_data[0]['ltd'] ?? 'Standarte S.L.';
 		$pie_email = $company_data[0]['foot'] ?? 'Este correo es confidencial y para uso exclusivo de la persona a la que va dirigido.';
 	} else {
 		// Fallback
-		$titular_email = 'Standarte';
-		$ltd_email = 'Standarte S.L.';
 		$pie_email = 'Este correo es confidencial y para uso exclusivo de la persona a la que va dirigido.';
 	}
 ?>
@@ -43,183 +39,6 @@ include("config.php");
 			$v = mb_convert_encoding($v, 'UTF-8', 'Windows-1252');
 		}
 		return trim($v);
-	}
-
-	function get_fair_comment($feria_name, $lang) {
-		$feria_lower = mb_strtolower($feria_name, 'UTF-8');
-		
-		$comments = array(
-			'extremadura' => array(
-				'es' => "La feria <strong>{feria}</strong> en nuestra región de <strong>Extremadura / Alentejo</strong> es una oportunidad de gran cercanía logística para nosotros, lo que nos permite ofreceros unas condiciones de montaje inmejorables y un seguimiento directo.",
-				'en' => "The <strong>{feria}</strong> exhibition in our region of <strong>Extremadura / Alentejo</strong> represents a great logistical proximity for us, allowing us to offer you excellent assembly conditions and direct monitoring.",
-				'pt' => "A feira <strong>{feria}</strong> na nossa região de <strong>Extremadura / Alentejo</strong> é uma oportunidade de grande proximidade logística para nós, permitindo-nos oferecer-vos excelentes condições de montagem e acompanhamento direto.",
-				'de' => "Die Messe <strong>{feria}</strong> in unserer Region <strong>Extremadura / Alentejo</strong> bietet uns eine hervorragende logistische Nähe, was es uns ermöglicht, Ihnen unschlagbare Montagebedingungen und eine direkte Betreuung anzubieten.",
-				'fr' => "Le salon <strong>{feria}</strong> dans notre région d'<strong>Extrémadure / Alentejo</strong> es une opportunité de grande proximité logistique pour nous, nous permettant de vous offrir des conditions de montage imbattables et un suivi direct."
-			),
-			'madrid' => array(
-				'es' => "La feria <strong>{feria}</strong> en <strong>IFEMA (Madrid)</strong> es un escaparate de primer nivel a nivel nacional e internacional, y estamos seguros de que vuestro stand en este recinto captará la atención de los principales operadores del sector.",
-				'en' => "The <strong>{feria}</strong> exhibition at <strong>IFEMA (Madrid)</strong> is a top-tier national and international showcase, and we are confident that your stand in this venue will capture the attention of the sector's main players.",
-				'pt' => "A feira <strong>{feria}</strong> na <strong>IFEMA (Madrid)</strong> é uma vitrine de primeira linha a nível nacional e internacional, e estamos seguros de que o vosso stand neste recinto captará la atenção dos principais operadores do setor.",
-				'de' => "Die Messe <strong>{feria}</strong> auf der <strong>IFEMA (Madrid)</strong> ist eine erstklassige nationale und internationale Plattform, und wir sind sicher, dass Ihr Stand an diesem Standort die Aufmerksamkeit der wichtigsten Akteure der Branche auf sich ziehen wird.",
-				'fr' => "Le salon <strong>{feria}</strong> à <strong>IFEMA (Madrid)</strong> est une vitrine de premier plan au niveau national et international, y nous sommes convaincus que votre stand dans ce parc des expositions saura capter l'attention des principaux acteurs du secteur."
-			),
-			'barcelona' => array(
-				'es' => "La feria <strong>{feria}</strong> en la <strong>Fira de Barcelona</strong> es uno de los epicentros de negocio más influyentes de Europa, y vuestra presencia en este recinto requiere un stand a la altura de las altas expectativas del mercado.",
-				'en' => "The <strong>{feria}</strong> exhibition at <strong>Fira Barcelona</strong> is one of Europe's most influential business hubs, and your presence in this venue demands a stand that lives up to the market's high expectations.",
-				'pt' => "A feira <strong>{feria}</strong> na <strong>Fira de Barcelona</strong> é um dos epicentros de negócios mais influentes da Europa, e a vossa presença neste recinto exige um stand à altura das elevadas expectativas del mercado.",
-				'de' => "Die Messe <strong>{feria}</strong> auf der <strong>Fira de Barcelona</strong> ist eines der einflussreichsten Geschäftszentren Europas, und Ihre Präsenz an diesem Standort erfordert einen Stand, der den hohen Anforderungen des Marktes gerecht wird.",
-				'fr' => "Le salon <strong>{feria}</strong> à la <strong>Fira de Barcelone</strong> est l'un des épicentres d'affaires les plus influents d'Europe, y votre présence dans ce lieu exige un stand à la hauteur des attentes élevées du marché."
-			),
-			'bilbao' => array(
-				'es' => "La feria <strong>{feria}</strong> en el <strong>BEC de Bilbao</strong> destaca por su fuerte perfil industrial y tecnológico, lo que convierte a vuestro stand en una pieza clave para transmitir solidez y liderazgo comercial.",
-				'en' => "The <strong>{feria}</strong> exhibition at the <strong>BEC in Bilbao</strong> stands out for its strong industrial and technological profile, making your stand a key element in conveying commercial strength and leadership.",
-				'pt' => "A feira <strong>{feria}</strong> no <strong>BEC de Bilbau</strong> destaca-se pelo seu forte perfil industrial e tecnológico, tornando o vosso stand numa peça-chave para transmitir solidez e liderança comercial.",
-				'de' => "Die Messe <strong>{feria}</strong> im <strong>BEC in Bilbao</strong> zeichnet sich durch ihr starkes industrielles und technologisches Profil aus, was Ihren Stand zu einem Schlüsselelement macht, um geschäftliche Stärke und Marktführerschaft zu demonstrieren.",
-				'fr' => "Le salon <strong>{feria}</strong> au <strong>BEC de Bilbao</strong> se distingue par son fort profil industriel et technologique, ce que fait de votre stand un élément clé pour transmettre solidité et leadership commercial."
-			),
-			'valencia' => array(
-				'es' => "La feria <strong>{feria}</strong> en <strong>Feria Valencia</strong> representa un gran impulso comercial en el mediterráneo, y nuestro equipo diseñará un espacio idóneo para maximizar el retorno de vuestra inversión.",
-				'en' => "The <strong>{feria}</strong> exhibition at <strong>Feria Valencia</strong> represents a great commercial boost in the Mediterranean, and our team will design an ideal space to maximize your return on investment.",
-				'pt' => "A feira <strong>{feria}</strong> na <strong>Feria Valencia</strong> representa um grande impulso comercial no Mediterrâneo, e a nossa equipa desenhará um espaço ideal para maximizar o retorno do vosso investimento.",
-				'de' => "Die Messe <strong>{feria}</strong> auf der <strong>Feria Valencia</strong> stellt einen großen geschäftlichen Impuls im Mittelmeerraum dar, und unser Team wird einen optimalen Stand entwerfen, um die Rendite Ihrer Investition zu maximieren.",
-				'fr' => "Le salon <strong>{feria}</strong> à la <strong>Feria Valencia</strong> représente un grand élan commercial en Méditerranée, y notre équipe concevra un espacio idéal pour maximiser le retour sur votre investissement."
-			),
-			'zaragoza' => array(
-				'es' => "La feria <strong>{feria}</strong> en la <strong>Feria de Zaragoza</strong> es un evento sectorial de gran tradición y afluencia, donde un stand de carpintería premium os posicionará como la opción de referencia para los visitantes.",
-				'en' => "The <strong>{feria}</strong> exhibition at <strong>Feria de Zaragoza</strong> is a sector event of great tradition and attendance, where a premium custom wooden stand will position you as the reference option for visitors.",
-				'pt' => "A feira <strong>{feria}</strong> na <strong>Feria de Zaragoza</strong> é um evento setorial de grande tradição e afluência, onde um stand de madeira premium vos posicionará como a opção de referência para os visitantes.",
-				'de' => "Die Messe <strong>{feria}</strong> auf der <strong>Feria de Zaragoza</strong> ist eine Branchenveranstaltung mit großer Tradition und Besucherzahlen, bei der ein hochwertiger Holzstand Sie als Referenzoption für Besucher positioniert.",
-				'fr' => "Le salon <strong>{feria}</strong> à la <strong>Feria de Zaragoza</strong> est un événement sectoriel de grande tradition et de forte affluence, où un stand premium en bois sur mesure vous positionnera comme l'option de référence pour les visiteurs."
-			),
-			'sevilla' => array(
-				'es' => "La feria <strong>{feria}</strong> en <strong>FIBES (Sevilla)</strong> es una plataforma comercial clave en el sur, y estamos convencidos de que un stand a medida de alta calidad proyectará la solidez de vuestra marca.",
-				'en' => "The <strong>{feria}</strong> exhibition at <strong>FIBES (Seville)</strong> is a key commercial platform in the south, and we are convinced that a high-quality bespoke stand will project your brand's strength.",
-				'pt' => "A feira <strong>{feria}</strong> na <strong>FIBES (Sevilha)</strong> é uma plataforma comercial fundamental no sul, e estamos convencidos de que um stand personalizado de alta qualidade projetará a solidez da vossa marca.",
-				'de' => "Die Messe <strong>{feria}</strong> im <strong>FIBES (Sevilla)</strong> ist eine wichtige Geschäftsplattform im Süden, und wir sind überzeugt, dass ein hochwertiger, maßgeschneiderter Stand die Stärke Ihrer Marke unterstreichen wird.",
-				'fr' => "Le salon <strong>{feria}</strong> à <strong>FIBES (Séville)</strong> est une plateforme commerciale clé dans le sud, y nous sommes convaincus qu'un stand sur mesure de haute qualité saura projeter la solidité de votre marque."
-			),
-			'portugal' => array(
-				'es' => "La feria <strong>{feria}</strong> en Portugal es un punto de encuentro comercial estratégico en la península, y estamos seguros de que vuestro espacio destacará por su calidad y diseño.",
-				'en' => "The <strong>{feria}</strong> exhibition in Portugal is a strategic commercial meeting point on the peninsula, and we are sure that your space will stand out for its quality and design.",
-				'pt' => "A feira <strong>{feria}</strong> em Portugal é um ponto de encontro comercial estratégico na península, e estamos certos de que o vosso espaço se destacará pela sua qualidade e design.",
-				'de' => "Die Messe <strong>{feria}</strong> in Portugal ist ein strategischer geschäftlicher Treffpunkt auf der Halbinsel, und wir sind sicher, dass sich Ihr Stand durch Qualität und Design auszeichnen wird.",
-				'fr' => "Le salon <strong>{feria}</strong> au Portugal est un point de rencontre commercial stratégique sur la péninsule, y nous sommes certains que votre espace se distinguera par sa qualité et son design."
-			),
-			'internacional' => array(
-				'es' => "La participación internacional en <strong>{feria}</strong> requiere una coordinación y logística impecables, y nuestro equipo cuenta con la experiencia en recintos feriales internacionales para asegurar el éxito de vuestra presencia.",
-				'en' => "International participation in <strong>{feria}</strong> requires flawless coordination and logistics, and our team has the experience in international exhibition centers to ensure the success of your presence.",
-				'pt' => "A participação internacional na <strong>{feria}</strong> exige uma coordenação e logística impecáveis, e a nossa equipa conta com a experiência em recintos de feiras internacionais para garantir o sucesso da vossa presença.",
-				'de' => "Die internationale Teilnahme an der <strong>{feria}</strong> erfordert eine tadellose Koordination und Logistik, und unser Team verfügt über die Erfahrung auf internationalen Messegeländen, um den Erfolg Ihrer Präsenz zu sichern.",
-				'fr' => "La participation internationale à <strong>{feria}</strong> exige une coordination et une logistique impeccables, y notre équipe dispose de l'expérience des parcs des expositions internationaux pour assurer le succès de votre présence."
-			),
-			'generico' => array(
-				'es' => "La feria <strong>{feria}</strong> es un escaparate comercial sumamente interesante en vuestro sector, y estamos convencidos de que vuestro espacio tendrá una gran repercusión comercial.",
-				'en' => "The <strong>{feria}</strong> exhibition is a highly interesting commercial showcase in your sector, and we are convinced that your space will have a great commercial impact.",
-				'pt' => "A feira <strong>{feria}</strong> é uma montra comercial extremamente interessante no seu setor, e estamos convencidos de que o seu espaço terá um grande impacto comercial.",
-				'de' => "Die Messe <strong>{feria}</strong> ist eine äußerst interessante kommerzielle Plattform in Ihrer Branche, und wir sind überzeugt, dass Ihr Stand eine große kommerzielle Wirkung erzielen wird.",
-				'fr' => "Le salon <strong>{feria}</strong> est une vitrine commerciale extrêmement intéressante dans votre secteur, y nous sommes convaincents que votre espace aura un impact commercial majeur."
-			)
-		);
-
-		$key = 'generico';
-		if (
-			strpos($feria_lower, 'extremadura') !== false ||
-			strpos($feria_lower, 'badajoz') !== false ||
-			strpos($feria_lower, 'caceres') !== false ||
-			strpos($feria_lower, 'merida') !== false ||
-			strpos($feria_lower, 'fio') !== false ||
-			strpos($feria_lower, 'alentejo') !== false ||
-			strpos($feria_lower, 'evora') !== false ||
-			strpos($feria_lower, 'elvas') !== false ||
-			strpos($feria_lower, 'beja') !== false ||
-			strpos($feria_lower, 'portalegre') !== false
-		) {
-			$key = 'extremadura';
-		} elseif (
-			strpos($feria_lower, 'madrid') !== false ||
-			strpos($feria_lower, 'ifema') !== false ||
-			strpos($feria_lower, 'fitur') !== false ||
-			strpos($feria_lower, 'arco') !== false ||
-			strpos($feria_lower, 'veteco') !== false ||
-			strpos($feria_lower, 'smart doors') !== false ||
-			strpos($feria_lower, 'fruit attraction') !== false ||
-			strpos($feria_lower, 'generas') !== false
-		) {
-			$key = 'madrid';
-		} elseif (
-			strpos($feria_lower, 'barcelona') !== false ||
-			strpos($feria_lower, 'fira') !== false ||
-			strpos($feria_lower, 'mwc') !== false ||
-			strpos($feria_lower, 'mobile') !== false ||
-			strpos($feria_lower, 'construmat') !== false ||
-			strpos($feria_lower, 'sil') !== false ||
-			strpos($feria_lower, 'hispack') !== false ||
-			strpos($feria_lower, 'alimentaria') !== false
-		) {
-			$key = 'barcelona';
-		} elseif (
-			strpos($feria_lower, 'bilbao') !== false ||
-			strpos($feria_lower, 'bec') !== false ||
-			strpos($feria_lower, 'biemh') !== false ||
-			strpos($feria_lower, 'sinaval') !== false
-		) {
-			$key = 'bilbao';
-		} elseif (
-			strpos($feria_lower, 'valencia') !== false ||
-			strpos($feria_lower, 'cevisama') !== false ||
-			strpos($feria_lower, 'habitat') !== false
-		) {
-			$key = 'valencia';
-		} elseif (
-			strpos($feria_lower, 'zaragoza') !== false ||
-			strpos($feria_lower, 'fima') !== false ||
-			strpos($feria_lower, 'smagua') !== false
-		) {
-			$key = 'zaragoza';
-		} elseif (
-			strpos($feria_lower, 'sevilla') !== false ||
-			strpos($feria_lower, 'fibes') !== false ||
-			strpos($feria_lower, 'sicab') !== false
-		) {
-			$key = 'sevilla';
-		} elseif (
-			strpos($feria_lower, 'lisboa') !== false ||
-			strpos($feria_lower, 'oporto') !== false ||
-			strpos($feria_lower, 'porto') !== false ||
-			strpos($feria_lower, 'fil') !== false ||
-			strpos($feria_lower, 'exponor') !== false
-		) {
-			$key = 'portugal';
-		} elseif (
-			strpos($feria_lower, 'canarias') !== false ||
-			strpos($feria_lower, 'baleares') !== false ||
-			strpos($feria_lower, 'tenerife') !== false ||
-			strpos($feria_lower, 'palma') !== false ||
-			strpos($feria_lower, 'mallorca') !== false ||
-			strpos($feria_lower, 'ceuta') !== false ||
-			strpos($feria_lower, 'melilla') !== false ||
-			strpos($feria_lower, 'alemania') !== false || strpos($feria_lower, 'germany') !== false ||
-			strpos($feria_lower, 'francia') !== false || strpos($feria_lower, 'france') !== false ||
-			strpos($feria_lower, 'italia') !== false || strpos($feria_lower, 'italy') !== false ||
-			strpos($feria_lower, 'inglaterra') !== false || strpos($feria_lower, 'england') !== false ||
-			strpos($feria_lower, 'londres') !== false || strpos($feria_lower, 'london') !== false ||
-			strpos($feria_lower, 'paris') !== false ||
-			strpos($feria_lower, 'milan') !== false ||
-			strpos($feria_lower, 'dusseldorf') !== false ||
-			strpos($feria_lower, 'frankfurt') !== false ||
-			strpos($feria_lower, 'munich') !== false ||
-			strpos($feria_lower, 'belgica') !== false || strpos($feria_lower, 'belgium') !== false ||
-			strpos($feria_lower, 'holanda') !== false || strpos($feria_lower, 'netherlands') !== false ||
-			strpos($feria_lower, 'internacional') !== false || strpos($feria_lower, 'international') !== false ||
-			strpos($feria_lower, 'extranjero') !== false || strpos($feria_lower, 'abroad') !== false
-		) {
-			$key = 'internacional';
-		}
-
-		$t_array = isset($comments[$key]) ? $comments[$key] : $comments['generico'];
-		$text = isset($t_array[$lang]) ? $t_array[$lang] : $t_array['es'];
-		
-		return str_replace('{feria}', $feria_name, $text);
 	}
 
 	// Honeypot anti-spam: el campo form_web es invisible para humanos.
@@ -680,7 +499,7 @@ curl_close($ch);
 	// comentario de la feria, qué pasa ahora y firma). Como el formulario solo reconoce seis
 	// idiomas, los visitantes de las versiones fr/it/nl/ko/ja lo recibían entero en español.
 	// Ahora es un solo correo: dos frases en español, las mismas dos en inglés y una firma
-	// común. get_fair_comment() ya no se usa aquí.
+	// común.
 	$ack_subject = 'Solicitud recibida / Request received - Standarte';
 	$ack_es = array(
 		'greeting' => 'Hola <strong>{nombre}</strong>,',
