@@ -675,96 +675,49 @@ curl_close($ch);
 	}
 
 	/*____________________SCRIPT MAIL (ACUSE DE RECIBO AL CLIENTE)________________________*/
-	// Correo de agradecimiento/acuse de recibo. Ya NO se pregunta al cliente si su
-	// presupuesto supera el mínimo (se retiró el filtro Sí/No por email).
-	$interactive_emails = array(
-		'es' => array(
-			'subject' => 'Solicitud de presupuesto recibida - Standarte',
-			'greeting' => 'Hola <strong>{nombre}</strong>,',
-			'intro' => 'Gracias por tu interés en Standarte para vuestra participación en la feria <strong>{feria}</strong>.',
-			'schedule' => 'Para garantizar el máximo nivel de detalle, la calidad técnica y el rigor creativo en cada stand tridimensional que desarrollamos, y con el fin de no saturar el calendario de trabajo de nuestro equipo creativo, llevamos a cabo un proceso de selección previa de las solicitudes recibidas.',
-			'ask' => 'Para una superficie de <strong>{metros} m²</strong> en esta feria, estimamos que el coste mínimo viable de diseño, fabricación y montaje de un stand de carpintería a medida premium se sitúa en torno a los <strong>{calculo}</strong>.',
-			'question' => '¿Dispone vuestra empresa de un presupuesto estimado superior a esta cifra?',
-			'btn_yes' => 'Sí, es superior',
-			'btn_no' => 'No, es inferior',
-			'closing' => 'Atentamente,<br><strong>El Equipo de Standarte</strong><br>info@standarte.es | +34 637 894 819'
-		),
-		'en' => array(
-			'subject' => 'Budget request received - Standarte',
-			'greeting' => 'Hello <strong>{nombre}</strong>,',
-			'intro' => 'Thank you for your interest in Standarte for your participation in the <strong>{feria}</strong> exhibition.',
-			'schedule' => 'To guarantee the highest level of detail, technical quality, and creative rigor in every three-dimensional stand we develop, and to avoid saturating our creative team\'s workflow, we carry out a pre-selection process for the requests received.',
-			'ask' => 'For an area of <strong>{metros} m²</strong> at this fair, we estimate that the minimum viable cost for design, manufacturing, and assembly of a premium custom wooden stand is around <strong>{calculo}</strong>.',
-			'question' => 'Does your company have an estimated budget higher than this figure?',
-			'btn_yes' => 'Yes, it is higher',
-			'btn_no' => 'No, it is lower',
-			'closing' => 'Best regards,<br><strong>The Standarte Team</strong><br>info@standarte.es | +34 637 894 819'
-		),
-		'pt' => array(
-			'subject' => 'Pedido de orçamento recebido - Standarte',
-			'greeting' => 'Olá <strong>{nombre}</strong>,',
-			'intro' => 'Agradecemos o seu interesse na Standarte para a sua participação na feira <strong>{feria}</strong>.',
-			'schedule' => 'Para garantir o máximo nível de detalhe, qualidade técnica e rigor criativo em cada stand tridimensional que desenvolvemos, e de forma a não saturar o calendário de trabalho da nossa equipa criativa, realizamos um processo de seleção prévia dos pedidos recebidos.',
-			'ask' => 'Para uma área de <strong>{metros} m²</strong> nesta feira, estimamos que o custo mínimo viável de design, fabrico e montagem de um stand de madeira personalizado premium seja de cerca de <strong>{calculo}</strong>.',
-			'question' => 'A sua empresa dispõe de um orçamento estimado superior a este valor?',
-			'btn_yes' => 'Sim, é superior',
-			'btn_no' => 'Não, é inferior',
-			'closing' => 'Atenciosamente,<br><strong>A Equipa da Standarte</strong><br>info@standarte.es | +34 637 894 819'
-		),
-		'de' => array(
-			'subject' => 'Budgetanfrage erhalten - Standarte',
-			'greeting' => 'Hallo <strong>{nombre}</strong>,',
-			'intro' => 'Vielen Dank für Ihr Interesse an Standarte für Ihre Teilnahme an der Messe <strong>{feria}</strong>.',
-			'schedule' => 'Um ein Höchstmaß an Detailgenauigkeit, technischer Qualität und kreativer Präzision bei jedem von uns entwickelten dreidimensionalen Messestand zu gewährleisten und die Arbeitsauslastung unseres Designteams nicht zu überlasten, führen wir eine Vorauswahl der eingegangenen Anfragen durch.',
-			'ask' => 'Für eine Fläche von <strong>{metros} m²</strong> auf dieser Messe schätzen wir die Mindestkosten für Design, Herstellung und Montage eines hochwertigen, maßgeschneiderten Holzstands auf ca. <strong>{calculo}</strong>.',
-			'question' => 'Verfügt Ihr Unternehmen über ein geschätztes Budget, das über diesem Betrag liegt?',
-			'btn_yes' => 'Ja, es ist höher',
-			'btn_no' => 'Nein, es ist niedriger',
-			'closing' => 'Mit freundlichen Grüßen,<br><strong>Ihr Standarte-Team</strong><br>info@standarte.es | +34 637 894 819'
-		),
-		'fr' => array(
-			'subject' => 'Demande de budget reçue - Standarte',
-			'greeting' => 'Bonjour <strong>{nombre}</strong>,',
-			'intro' => 'Nous vous remercions de votre intérêt pour Standarte concernant votre participation au salon <strong>{feria}</strong>.',
-			'schedule' => 'Afin de garantir le plus haut niveau de détail, de qualité technique et de rigueur créative pour chaque stand tridimensionnel que nous développons, et afin de ne pas surcharger le planning de travail de notre équipe créative, nous effectuons une sélection préalable des demandes reçues.',
-			'ask' => 'Pour une surface de <strong>{metros} m²</strong> sur ce salon, nous estimons que le coût minimum viable pour la conception, la fabrication et le montage d\'un stand premium en bois sur mesure se situe au-tour de <strong>{calculo}</strong>.',
-			'question' => 'Votre entreprise dispose-t-elle d\'un budget estimé supérieur à ce montant ?',
-			'btn_yes' => 'Oui, il est supérieur',
-			'btn_no' => 'Non, il est inférieur',
-			'closing' => 'Cordialement,<br><strong>L\'Équipe Standarte</strong><br>info@standarte.es | +34 637 894 819'
-		)
+	// 16/10/2026: acuse de recibo corto y bilingüe (español + inglés) para todo el mundo.
+	// Antes había cinco versiones por idioma de cinco párrafos cada una (saludo, intro,
+	// comentario de la feria, qué pasa ahora y firma). Como el formulario solo reconoce seis
+	// idiomas, los visitantes de las versiones fr/it/nl/ko/ja lo recibían entero en español.
+	// Ahora es un solo correo: dos frases en español, las mismas dos en inglés y una firma
+	// común. get_fair_comment() ya no se usa aquí.
+	$ack_subject = 'Solicitud recibida / Request received - Standarte';
+	$ack_es = array(
+		'greeting' => 'Hola <strong>{nombre}</strong>,',
+		'body'     => 'Hemos recibido tu solicitud para <strong>{feria}</strong> y ya estamos con ella. Te escribimos en breve.',
+		'brief'    => 'Si quieres adelantar trabajo, mándanos un brief o ejemplos de stands que te gusten a <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.'
 	);
-
-	$t = isset($interactive_emails[$form_lang]) ? $interactive_emails[$form_lang] : $interactive_emails['en'];
-	$fair_comment = get_fair_comment($form_feria, $form_lang);
-
-	// Cuerpo del acuse de recibo (sin pregunta de presupuesto ni botones Sí/No).
-	$ack_body = array(
-		'es' => 'Hemos recibido correctamente tu solicitud y nuestro equipo ya la está estudiando. En breve nos pondremos en contacto contigo para concretar los detalles y avanzar con el diseño de vuestro stand.<br><br>Si quieres agilizar el proceso, puedes enviarnos un <strong>brief</strong> con tus ideas o ejemplos de stands que te gusten a <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.',
-		'en' => 'We have successfully received your request and our team is already reviewing it. We will contact you shortly to discuss the details and move forward with the design of your stand.<br><br>To speed up the process, you can send us a <strong>brief</strong> with your ideas or examples of stands you like to <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.',
-		'pt' => 'Recebemos corretamente o seu pedido e a nossa equipa já o está a analisar. Em breve entraremos em contacto consigo para concretizar os detalhes e avançar com o design do vosso stand.<br><br>Para agilizar o processo, pode enviar-nos um <strong>briefing</strong> com as suas ideias ou exemplos de stands de que goste para <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.',
-		'de' => 'Wir haben Ihre Anfrage erhalten und unser Team prüft sie bereits. Wir werden uns in Kürze mit Ihnen in Verbindung setzen, um die Details zu besprechen und mit der Gestaltung Ihres Standes zu beginnen.<br><br>Um den Prozess zu beschleunigen, können Sie uns ein <strong>Briefing</strong> mit Ihren Ideen oder Beispielen an <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a> senden.',
-		'fr' => 'Nous avons bien reçu votre demande et notre équipe l\'étudie déjà. Nous vous contacterons sous peu pour préciser les détails et avancer sur la conception de votre stand.<br><br>Pour accélérer le processus, vous pouvez nous envoyer un <strong>brief</strong> avec vos idées ou des exemples de stands que vous aimez à <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.',
+	$ack_en = array(
+		'greeting' => 'Hello <strong>{nombre}</strong>,',
+		'body'     => 'We have received your request for <strong>{feria}</strong> and we are already on it. We will get back to you shortly.',
+		'brief'    => 'To get ahead, send us a brief or examples of stands you like to <a href="mailto:info@standarte.es" style="color:#1a73e8;text-decoration:underline;">info@standarte.es</a>.'
 	);
-	$ack_text = isset($ack_body[$form_lang]) ? $ack_body[$form_lang] : $ack_body['en'];
+	// El nombre y la feria vienen del formulario: se escapan antes de entrar en el HTML.
+	$ack_nombre = htmlspecialchars($form_nombre, ENT_QUOTES, 'UTF-8');
+	$ack_feria  = htmlspecialchars($form_feria, ENT_QUOTES, 'UTF-8');
+	$ack_render = function ($txt) use ($ack_nombre, $ack_feria) {
+		return "<p style='margin:0 0 14px;'>" . str_replace('{nombre}', $ack_nombre, $txt['greeting']) . "</p>"
+			 . "<p style='margin:0 0 14px;'>" . str_replace('{feria}', $ack_feria, $txt['body']) . "</p>"
+			 . "<p style='margin:0;'>" . $txt['brief'] . "</p>";
+	};
+	$ack_signature = 'El equipo de Standarte &middot; The Standarte Team<br>info@standarte.es | +34 637 894 819';
 
 	$email_html = "
 	<!DOCTYPE html>
 	<html>
 	<head>
 		<meta charset='utf-8'>
-		<title>" . htmlspecialchars($t['subject'], ENT_QUOTES, 'UTF-8') . "</title>
+		<title>" . htmlspecialchars($ack_subject, ENT_QUOTES, 'UTF-8') . "</title>
 	</head>
 	<body style='font-family: Arial, sans-serif; font-size: 16px; color: #2b303a; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa;'>
 		<div style='background-color: #292f35; padding: 25px; text-align: center; border-radius: 8px 8px 0 0;'>
 			<img src='https://standarte.es/img/logo_stand-arte_blanco.svg' alt='Standarte' style='width: 180px;'>
 		</div>
 		<div style='padding: 30px 20px; background-color: #ffffff; border: 1px solid #e9ecef; border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);'>
-			<p>" . str_replace('{nombre}', $form_nombre, $t['greeting']) . "</p>
-			<p>" . str_replace('{feria}', $form_feria, $t['intro']) . "</p>
-			<p>" . $fair_comment . "</p>
-			<p>" . $ack_text . "</p>
-			<p style='margin-top: 30px; border-top: 1px dotted #dee2e6; padding-top: 20px;'>" . $t['closing'] . "</p>
+			" . $ack_render($ack_es) . "
+			<hr style='border:0;border-top:1px solid #e9ecef;margin:24px 0;'>
+			" . $ack_render($ack_en) . "
+			<p style='margin-top: 26px; border-top: 1px dotted #dee2e6; padding-top: 18px;'>" . $ack_signature . "</p>
 		</div>
 		<div style='margin-top: 20px; text-align: center; font-size: 12px; color: #6c757d;'>
 			<p>" . $pie_email . "</p>
@@ -777,7 +730,7 @@ curl_close($ch);
 	try {
 		require_once __DIR__ . '/email_campaing/mailer.php';
 		$smtpConfig = require_once __DIR__ . '/email_campaing/config.php';
-		$smtp_sent = campaign_send_mail($smtpConfig, $form_email, $t['subject'], $email_html);
+		$smtp_sent = campaign_send_mail($smtpConfig, $form_email, $ack_subject, $email_html);
 	} catch (Exception $e) {
 		$smtp_sent = false;
 	}
@@ -787,7 +740,7 @@ curl_close($ch);
 		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$headers .= "From: Standarte <info@standarte.es>\r\n";
 		$headers .= "Reply-To: info@standarte.es\r\n";
-		@mail($form_email, $t['subject'], $email_html, $headers);
+		@mail($form_email, $ack_subject, $email_html, $headers);
 	}
 	/*____________________FIN SCRIPT MAIL________________________*/
 
