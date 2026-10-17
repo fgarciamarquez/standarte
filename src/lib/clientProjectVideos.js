@@ -8,6 +8,7 @@
 // reproducen con <video>; las que llevan `id`, con el iframe de Drive.
 export const clientProjectVideos = [
   { src: '/img/propuesta-3d-stand-a-medida.mp4' },
+  { src: '/img/stand-andamios-recorrido-3d.mp4' },
   { id: '1_YfIt4O_V4NWcZaDTeOxCOUPqypd-pwk' },
   { id: '1fKBPuZfHpuFA3-HN0vDMUWXkte6szpEa' },
   { id: '1g7SAdKah7bLexS88kEAMTek9kOW-kutL' },

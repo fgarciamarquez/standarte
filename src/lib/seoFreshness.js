@@ -178,7 +178,7 @@ export const seoFreshness = {
   // La portada no tenía fecha propia pese a cambiar de contenido (buscador, secciones).
   // 2026-08-28: el buscador acepta también actividades y sirve sus hubs.
   home: '2026-09-18',   // portada sin galería ni equipo (18/09/2026)
-  galeria: '2026-10-14',   // vídeo propio en lugar de dos embebidos de Drive (14/10/2026); 5 renders nuevos (10/10/2026); página propia con los vídeos 3D (23/09/2026)
+  galeria: '2026-10-17',   // 3 renders y el vídeo del stand de andamios (17/10/2026); vídeo propio en lugar de dos embebidos de Drive (14/10/2026); página propia con los vídeos 3D (23/09/2026)
   badajoz: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   montaje_badajoz: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   zaragoza: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
