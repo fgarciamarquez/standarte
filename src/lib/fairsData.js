@@ -945,6 +945,13 @@ export const fairsData = [
     "sector": "Arte y Ocio"
   },
   {
+    "name": "Madrid Horse Week",
+    "country": "es",
+    "slug": "stands-madrid-horse-week",
+    "city": "Madrid",
+    "sector": "Agroalimentario y Naturaleza"
+  },
+  {
     "name": "H&T Málaga",
     "country": "es",
     "slug": "stand-ht-malaga",

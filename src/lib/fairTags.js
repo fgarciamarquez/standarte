@@ -217,6 +217,7 @@ export const fairActivities = {
   "stand-piscimad-madrid": ["construccion"],
   "stand-greencities-malaga": ["digital-software","smart-city"],
   "stand-iberpet-madrid": ["mascotas"],
+  "stands-madrid-horse-week": ["ganaderia","moda-textil"],
   "stands-avisan-santarem": ["mascotas"],
   "stand-ht-malaga": ["gastronomia-hosteleria"],
   "stands-talent-land-malaga": ["digital-software","congreso-profesional"],

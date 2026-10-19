@@ -231,6 +231,8 @@ export const fairDates = {
   'stand-plus-industry-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-wear-bilbao': { start: '2027-02-23', end: '2027-02-25', cadence: 'biennial', source: 'https://bilbaoexhibitioncentre.com/en/eventos/industry-2027/' },
   'stand-iberpet-madrid': { start: '2027-03-10', end: '2027-03-12', cadence: 'annual', source: 'https://www.ifema.es/en/iberpet' },
+  // Anual, aunque no hubo edición en 2025: 2026 es el regreso.
+  'stands-madrid-horse-week': { start: '2026-11-26', end: '2026-11-29', cadence: 'annual', source: 'https://www.madridhorseweek.com/' },
   'stand-salon-vins-vignerons-independants-bordeaux': { start: '2027-03-12', end: '2027-03-14', cadence: 'annual', source: 'https://www.vignerons-independants.com/agenda-des-salons/bordeaux-2027' },
   'stand-global-industrie-lyon': { start: '2027-03-15', end: '2027-03-18', cadence: 'annual', source: 'https://www.global-industrie.com/' },
   'stands-figan-feria-zaragoza': { start: '2027-03-16', end: '2027-03-19', cadence: 'biennial', source: 'https://www.feriazaragoza.es/figan' },
