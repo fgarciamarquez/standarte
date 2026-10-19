@@ -2,7 +2,7 @@
 tipo: actividad
 clave: ganaderia
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 30
+n_ferias: 31
 ---
 # Ganadería
 
@@ -33,6 +33,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Fira del Bestiar d'Ordino]]
 - [[Fira del Camp]]
 - [[MED'Agri]]
+- [[Madrid Horse Week]]
 - [[SALAMAQ]]
 - [[SICAB]]
 - [[Salon de l'Agriculture Nouvelle-Aquitaine]]

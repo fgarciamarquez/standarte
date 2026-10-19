@@ -2,7 +2,7 @@
 tipo: actividad
 clave: moda-textil
 sector: "Comercio y Packaging"
-n_ferias: 18
+n_ferias: 19
 ---
 # Moda y textil
 
@@ -17,6 +17,7 @@ Actividad del sector [[Comercio y Packaging]].
 - [[Feria de Stocks de Ibiza]]
 - [[Fira Outlet de Soldeu]]
 - [[Futurmoda]]
+- [[Madrid Horse Week]]
 - [[Maroc in Mode (MIM)]]
 - [[Maroc in Mode (MIM) Tánger]]
 - [[Modtissimo]]

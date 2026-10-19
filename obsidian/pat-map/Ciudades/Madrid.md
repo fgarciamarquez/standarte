@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 39
+n_ferias: 40
 lat: 40.42
 lon: -3.7
 ---
@@ -32,6 +32,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[InteriHOTEL]]
 - [[MATELEC]]
 - [[Madrid Fusión]]
+- [[Madrid Horse Week]]
 - [[Madrid Tech Show]]
 - [[Madridjoya Madrid]]
 - [[Meat Attraction]]
