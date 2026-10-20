@@ -243,6 +243,8 @@ if (!function_exists('cpx_key')) {
 	 *    offer_notice_sent_at.
 	 *  - Datos fiscales del cliente original (billing_*): son suyos y no pueden
 	 *    aparecer en la propuesta de otra empresa.
+	 *  - Acceso al panel de expositor de la feria (fair_panel_*): son credenciales
+	 *    del cliente original para SU feria; no valen para otra y no son nuestras.
 	 *  - Fechas que caducan: discount_deadline y proposal_valid_until. El importe y
 	 *    la etiqueta del descuento sí se copian (la estructura comercial se repite),
 	 *    pero la fecha se deja vacía para no enseñar al cliente nuevo un descuento
@@ -262,6 +264,7 @@ if (!function_exists('cpx_key')) {
 			'paused', 'paused_reason',
 			'billing_company', 'billing_cif', 'billing_address', 'billing_postal_code',
 			'billing_city', 'billing_country',
+			'fair_panel_url', 'fair_panel_user', 'fair_panel_password',
 			'discount_deadline', 'proposal_valid_until'
 		);
 	}

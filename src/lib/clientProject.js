@@ -78,6 +78,15 @@ export async function saveBilling(token, b) {
   });
 }
 
+/** El cliente guarda el acceso al panel de expositor de la feria, para que el equipo
+ *  contrate en su nombre la electricidad, el rigging y el resto de servicios. Los tres
+ *  campos son opcionales: no todas las ferias trabajan con panel. */
+export async function saveFairPanel(token, p) {
+  return rpc('save_client_fair_panel', {
+    p_token: token, p_url: p.url || '', p_user: p.user || '', p_password: p.password || ''
+  });
+}
+
 /** Dispara el aviso por email (endpoint PHP que reutiliza el mailer SMTP). */
 export async function notifySend(token, role) {
   const fd = new FormData();
