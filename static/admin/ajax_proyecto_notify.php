@@ -200,7 +200,7 @@ if ($role === 'approved') {
 } elseif ($role === 'visit') {
 	/* Aviso interno de "visto": sin hilo de comentarios ni imagen, solo el hecho. */
 	$to = $interEmail;
-	$subject = 'El cliente ha abierto el proyecto — ' . $p['ref'];
+	$subject = ($clientName !== '' ? $clientName . ' ha abierto el proyecto' : 'El cliente ha abierto el proyecto') . ' — ' . $p['ref'];
 	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> acaba de abrir la presentación del proyecto <strong>' . htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>.';
 	$commentsHtml = '';
 	$firstImgOpt = '';
@@ -243,6 +243,18 @@ if (!$dest) {
  * en español a secas. */
 $bilingue = !empty($bilingue);
 $h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+/* Ficha del cliente en el aviso de visita: quien ha entrado y como responderle sin
+ * tener que abrir el panel. client_email admite varias direcciones separadas por comas. */
+$fichaHtml = '';
+if ($role === 'visit') {
+	$dirsFicha = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+	$mailsFicha = array();
+	foreach ($dirsFicha as $d) { $mailsFicha[] = "<a href='mailto:" . $h($d) . "' style='color:#1b1b1a;'>" . $h($d) . "</a>"; }
+	$fichaHtml = "<div style='margin:16px auto;padding:12px 16px;background:#f6f6f2;border-radius:8px;text-align:left;max-width:560px;font-size:14px;line-height:1.6;'>"
+		. "<p style='margin:0;'><span style='color:#888;'>Cliente:</span> <strong>" . ($clientName !== '' ? $h($clientName) : '—') . "</strong></p>"
+		. "<p style='margin:4px 0 0;'><span style='color:#888;'>Contacto:</span> " . ($mailsFicha ? implode(' &middot; ', $mailsFicha) : '—') . "</p>"
+		. "</div>";
+}
 $tituloHtml = "<p style='text-align:center;margin:0 0 16px;font-weight:bold;font-size:17px;'>" . $h($titleEs) . "</p>";
 if ($bilingue && $titleEn !== $titleEs) {
 	$tituloHtml = "<p style='text-align:center;margin:0 0 2px;font-weight:bold;font-size:17px;'>" . $h($titleEs) . "</p>"
@@ -267,6 +279,7 @@ $html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 	. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;text-align:center;'>"
 	. $introHtml
 	. $tituloHtml
+	. $fichaHtml
 	. ($commentsHtml !== '' ? "<div style='margin:16px auto;padding:14px;background:#f6f6f2;border-radius:8px;text-align:left;max-width:560px;'>" . $commentsHtml . "</div>" : "")
 	. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($projectUrl) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $btnLabel . "</a></p>"
 	. $notaHtml
