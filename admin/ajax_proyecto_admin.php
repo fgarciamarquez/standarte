@@ -53,6 +53,23 @@ if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token)) { pa_out(array(
 $projectId = cpx_project_id_by_token($token);
 if (!$projectId) { pa_out(array('ok' => false, 'error' => 'not_found')); }
 
+/* ---------- Acceso al panel de expositor de la feria (solo el equipo) ----------
+ * El cliente lo escribe desde su pagina, pero get_client_project ya no devuelve los
+ * valores: solo dice si hay dato en cada campo. Las credenciales se leen aqui, con la
+ * service key y la sesion de edicion, para que no viajen al navegador de nadie mas. */
+if ($action === 'fair_panel') {
+	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
+	$pid = cpx_project_id_by_token(pa_post('token'));
+	if (!$pid) pa_out(array('ok' => false, 'error' => 'not_found'));
+	$rows = cpx_rows('client_projects?id=eq.' . urlencode($pid) . '&select=fair_panel_url,fair_panel_user,fair_panel_password&limit=1');
+	$r = isset($rows[0]) && is_array($rows[0]) ? $rows[0] : array();
+	pa_out(array('ok' => true, 'panel' => array(
+		'url'      => isset($r['fair_panel_url']) ? $r['fair_panel_url'] : '',
+		'user'     => isset($r['fair_panel_user']) ? $r['fair_panel_user'] : '',
+		'password' => isset($r['fair_panel_password']) ? $r['fair_panel_password'] : ''
+	)));
+}
+
 if ($action === 'save') {
 	$fields = array();
 	$plain = array('ref', 'client_name', 'client_email', 'title_es', 'title_en', 'memoria_es', 'memoria_en',
