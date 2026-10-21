@@ -46,6 +46,9 @@ function cpx_contract_texts($lang) {
 			'D' => 'D. %s abonará por adelantado el 80 %% del importe (%s%s) mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte)%s. El pago final del 20 %% restante (%s) se realizará una vez entregado el proyecto en %s.',
 			'D_account' => ', en la cuenta %s (BIC %s)',
 			'D_where_fallback' => 'el recinto de la feria',
+			/* Cuando el proyecto tiene forma de pago propia, la clausula D la recoge tal cual
+			 * en lugar del 80/20 por defecto. */
+			'D_custom' => 'D. %s abonará el importe conforme a la forma de pago acordada entre las partes: %s%s.',
 			'E' => 'E. Los importes en dólares estadounidenses y libras esterlinas son conversiones orientativas al tipo de cambio del %s (fuente: Banco Central Europeo). El importe contractual es el expresado en euros. Si el cliente opera en una moneda distinta de las indicadas —por ejemplo, el peso mexicano—, será responsable de realizar la conversión a su moneda y de que los ingresos en euros sean correctos, asumiendo las diferencias de cambio y las comisiones bancarias.',
 			'E_norates' => 'E. El importe contractual es el expresado en euros. Si el cliente opera en otra moneda —por ejemplo, el dólar estadounidense, la libra esterlina o el peso mexicano—, será responsable de realizar la conversión a su moneda y de que los ingresos en euros sean correctos, asumiendo las diferencias de cambio y las comisiones bancarias.',
 			'F' => 'F. Ambas partes se comprometen a reunirse y a facilitarse mutuamente —o a las entidades colaboradoras externas— toda la información necesaria para la ejecución de los trabajos.',
@@ -57,6 +60,7 @@ function cpx_contract_texts($lang) {
 			'sig_std' => 'Nombre y firma del representante de Standarte.',
 			'sig_std_name' => 'FRANCISCO JAVIER GARCÍA MÁRQUEZ. NIF 34779359R',
 			'annex' => 'ANEXO: diseño aprobado de mutuo acuerdo',
+			'annex_n' => 'ANEXO %d de %d: diseño aprobado de mutuo acuerdo',
 			'stamp_signed' => 'Firmado electrónicamente por',
 			'stamp_code' => 'Código',
 			'stamp_verify' => 'Verificable en:',
@@ -82,6 +86,7 @@ function cpx_contract_texts($lang) {
 			'D' => 'D. %s shall pay 80%% of the amount (%s%s) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer%s. The final payment of the remaining 20%% (%s) will be made after the project is delivered in %s.',
 			'D_account' => ', to account %s (BIC %s)',
 			'D_where_fallback' => 'the fair venue',
+			'D_custom' => 'D. %s shall pay the amount according to the payment terms agreed between the parties: %s%s.',
 			'E' => 'E. The amounts in US dollars and pounds sterling are indicative conversions at the exchange rate of %s (source: European Central Bank). The contractual amount is the amount expressed in euros. If the client operates in a currency other than those indicated —for example, the Mexican peso—, the client is responsible for converting to its own currency and for ensuring that the amounts credited in euros are correct, bearing any exchange differences and bank charges.',
 			'E_norates' => 'E. The contractual amount is the amount expressed in euros. If the client operates in another currency —for example, the US dollar, the pound sterling or the Mexican peso—, the client is responsible for converting to its own currency and for ensuring that the amounts credited in euros are correct, bearing any exchange differences and bank charges.',
 			'F' => 'F. Both parties agree to meet and provide each other—or external collaborating entities—with all information necessary for the execution of the work.',
@@ -93,6 +98,7 @@ function cpx_contract_texts($lang) {
 			'sig_std' => 'Name & signature of the Standarte representative.',
 			'sig_std_name' => 'FRANCISCO JAVIER GARCÍA MÁRQUEZ. Tax ID (NIF) 34779359R',
 			'annex' => 'ANNEX: design approved by mutual agreement',
+			'annex_n' => 'ANNEX %d of %d: design approved by mutual agreement',
 			'stamp_signed' => 'Electronically signed by',
 			'stamp_code' => 'Code',
 			'stamp_verify' => 'Verify at:',
@@ -303,7 +309,14 @@ function cpx_contract_pdf($d) {
 	$pdf->Para($T['B']);
 	$pdf->Para(sprintf($T['C'], cpx_money_all($d['total'], $d['rates'], $d['lang']), ''));
 	$acc = ($d['iban'] !== '') ? sprintf($T['D_account'], $d['iban'], $d['bic']) : '';
-	$pdf->Para(sprintf($T['D'], $d['client'], cpx_money_all($d['advance'], $d['rates'], $d['lang']), '', $acc, cpx_money($d['rest'], $d['lang'], 'EUR'), $d['fair_city'] !== '' ? $d['fair_city'] : $T['D_where_fallback']));
+	/* Forma de pago: la que tenga escrita el proyecto; si no hay ninguna, el reparto
+	 * por defecto de 80 % por adelantado y 20 % a la entrega. */
+	$terms = isset($d['pay_terms']) ? trim((string) $d['pay_terms']) : '';
+	if ($terms !== '') {
+		$pdf->Para(sprintf($T['D_custom'], $d['client'], rtrim($terms, " \t\n\r.;"), $acc));
+	} else {
+		$pdf->Para(sprintf($T['D'], $d['client'], cpx_money_all($d['advance'], $d['rates'], $d['lang']), '', $acc, cpx_money($d['rest'], $d['lang'], 'EUR'), $d['fair_city'] !== '' ? $d['fair_city'] : $T['D_where_fallback']));
+	}
 	$pdf->Para($d['rates'] ? sprintf($T['E'], date($d['lang'] === 'en' ? 'F j, Y' : 'd/m/Y', strtotime($d['rates']['date']))) : $T['E_norates']);
 	$pdf->Para($T['F']);
 	$pdf->Para($T['G']);
@@ -322,10 +335,13 @@ function cpx_contract_pdf($d) {
 	$pdf->Ln(4);
 	$pdf->Stamp(22, $pdf->GetY(), $d['code'], $d['issued'], $T, $d['logo']);
 
-	/* Anexo: el render aprobado, con el sello encima. */
-	if (!empty($d['image'])) {
+	/* Anexo: las imagenes aprobadas del proyecto. La primera va grande y con el sello
+	 * encima; las demas, dos por pagina. Cada una rotulada «ANEXO n de N». */
+	$imgs = !empty($d['images']) ? $d['images'] : (!empty($d['image']) ? array($d['image']) : array());
+	$nImgs = count($imgs);
+	if ($nImgs) {
 		$pdf->AddPage();
-		$img = $d['image'];
+		$img = $imgs[0];
 		$maxW = 166; $maxH = 150;
 		$ratio = min($maxW / $img['w'], $maxH / $img['h']);
 		$w = $img['w'] * $ratio; $h = $img['h'] * $ratio;
@@ -334,7 +350,22 @@ function cpx_contract_pdf($d) {
 		$pdf->Stamp($x + $w - 92 - 4, $y + $h - 34 - 4, $d['code'], $d['issued'], $T, $d['logo']);
 		$pdf->SetXY(22, $y + $h + 6);
 		$pdf->SetFont('Courier', '', 10);
-		$pdf->Cell(0, 6, $pdf->t($T['annex']), 0, 1);
+		$pdf->Cell(0, 6, $pdf->t($nImgs > 1 ? sprintf($T['annex_n'], 1, $nImgs) : $T['annex']), 0, 1);
+
+		/* El resto, de dos en dos: caben holgadas y evitan un contrato de seis paginas. */
+		for ($i = 1; $i < $nImgs; $i++) {
+			if (($i - 1) % 2 === 0) { $pdf->AddPage(); $slot = 0; } else { $slot = 1; }
+			$im = $imgs[$i];
+			$mW = 166; $mH = 98;
+			$r = min($mW / $im['w'], $mH / $im['h']);
+			$iw = $im['w'] * $r; $ih = $im['h'] * $r;
+			$iy = 30 + $slot * 120;
+			$ix = 22 + ($mW - $iw) / 2;
+			$pdf->Image($im['file'], $ix, $iy, $iw, $ih, $im['type']);
+			$pdf->SetXY(22, $iy + $ih + 4);
+			$pdf->SetFont('Courier', '', 10);
+			$pdf->Cell(0, 6, $pdf->t(sprintf($T['annex_n'], $i + 1, $nImgs)), 0, 1);
+		}
 	}
 	return $pdf->Output('S');
 }
@@ -404,9 +435,19 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	// Las fechas de la feria, en el idioma del contrato (fairs.json las trae en es y en).
 	$fairDates = ($lang === 'en' && !empty($fair['dates_en'])) ? $fair['dates_en'] : (isset($fair['dates']) ? $fair['dates'] : '');
 	$fairName = $fair['name'] . ($fairDates !== '' ? ' (' . $fairDates . ')' : '');
-	$media = cpx_rows('client_project_media?project_id=eq.' . urlencode($projectId) . '&type=eq.image&select=src&order=sort_order.asc,created_at.asc&limit=1');
-	$image = !empty($media[0]['src']) ? cpx_contract_fetch_image($media[0]['src']) : null;
-	if (!$image) $warnings[] = 'sin imagen para el anexo (no hay render descargable)';
+	/* Anexo: hasta seis imagenes del proyecto, en el orden en que el cliente las ve.
+	 * El contrato deberia llevar al menos tres; si no las hay, se avisa y sale con las
+	 * que haya antes que no salir. */
+	$media = cpx_rows('client_project_media?project_id=eq.' . urlencode($projectId) . '&type=eq.image&select=src&order=sort_order.asc,created_at.asc&limit=6');
+	$images = array();
+	foreach ($media as $m) {
+		if (empty($m['src'])) continue;
+		$one = cpx_contract_fetch_image($m['src']);
+		if ($one) $images[] = $one;
+	}
+	$image = $images ? $images[0] : null;
+	if (!$images) $warnings[] = 'sin imagenes para el anexo (no hay renders descargables)';
+	elseif (count($images) < 3) $warnings[] = 'el anexo sale con ' . count($images) . ' imagen(es): el proyecto no tiene tres descargables';
 
 	// PNG de 8 bits preparado para FPDF (el de la web es de 16 bits y no lo admite).
 	$logo = __DIR__ . '/lib/logo-sello.png';
@@ -416,7 +457,8 @@ function cpx_contract_issue($projectId, $opts = array()) {
 		'fair' => $fairName, 'fair_city' => isset($fair['city']) ? $fair['city'] : '',
 		'total' => $tot['total'], 'advance' => round($tot['total'] * 0.8, 2), 'rest' => round($tot['total'] - round($tot['total'] * 0.8, 2), 2),
 		'rates' => $rates, 'iban' => trim((string) (isset($p['income_account']) ? $p['income_account'] : '')), 'bic' => trim((string) (isset($p['bic_code']) ? $p['bic_code'] : '')),
-		'image' => $image, 'logo' => is_readable($logo) ? $logo : null,
+		'image' => $image, 'images' => $images, 'logo' => is_readable($logo) ? $logo : null,
+		'pay_terms' => trim((string) (isset($p['payment_terms_' . $lang]) ? $p['payment_terms_' . $lang] : '')),
 		'watermark' => is_readable(__DIR__ . '/lib/logo-marca-agua.png') ? __DIR__ . '/lib/logo-marca-agua.png' : null
 	);
 	$pdfBytes = cpx_contract_pdf($d);
