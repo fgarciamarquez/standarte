@@ -193,10 +193,16 @@ function cpx_contract_fetch_image($url) {
 class StandarteContractPdf extends FPDF {
 	public $lang = 'es';
 	public $logo = null;   // PNG monocromo de Standarte para la cabecera (lib/logo-sello.png)
+	public $watermark = null;   // el mismo logotipo al 35 % de alfa sobre blanco (lib/logo-marca-agua.png)
 	/* Cabecera corporativa: el logotipo monocromo arriba a la derecha en TODAS las
 	 * páginas (cuerpo, firmas y anexo). FPDF la llama en cada AddPage; si el PNG no
 	 * se pudiera leer, la página sale sin logo antes que abortar la emisión. */
 	public function Header() {
+		/* Marca de agua: el logotipo muy claro, centrado y a 120 mm. Se dibuja aqui, que es
+		 * lo primero de cada pagina, para que el texto y el anexo caigan encima. */
+		if ($this->watermark && is_readable($this->watermark)) {
+			try { $this->Image($this->watermark, ($this->w - 120) / 2, ($this->h - 64) / 2, 120); } catch (Exception $e) {}
+		}
 		if ($this->logo && is_readable($this->logo)) {
 			try { $this->Image($this->logo, $this->w - $this->rMargin - 24, 9, 24); } catch (Exception $e) {}
 		}
@@ -273,6 +279,7 @@ function cpx_contract_pdf($d) {
 	$pdf->lang = $d['lang'];
 	$pdf->AliasNbPages();
 	$pdf->logo = !empty($d['logo']) ? $d['logo'] : null;
+	$pdf->watermark = !empty($d['watermark']) ? $d['watermark'] : null;
 	// Margen superior mayor que el lateral: deja sitio al logotipo de la cabecera.
 	$pdf->SetMargins(22, 28, 22);
 	$pdf->SetAutoPageBreak(true, 22);
@@ -409,7 +416,8 @@ function cpx_contract_issue($projectId, $opts = array()) {
 		'fair' => $fairName, 'fair_city' => isset($fair['city']) ? $fair['city'] : '',
 		'total' => $tot['total'], 'advance' => round($tot['total'] * 0.8, 2), 'rest' => round($tot['total'] - round($tot['total'] * 0.8, 2), 2),
 		'rates' => $rates, 'iban' => trim((string) (isset($p['income_account']) ? $p['income_account'] : '')), 'bic' => trim((string) (isset($p['bic_code']) ? $p['bic_code'] : '')),
-		'image' => $image, 'logo' => is_readable($logo) ? $logo : null
+		'image' => $image, 'logo' => is_readable($logo) ? $logo : null,
+		'watermark' => is_readable(__DIR__ . '/lib/logo-marca-agua.png') ? __DIR__ . '/lib/logo-marca-agua.png' : null
 	);
 	$pdfBytes = cpx_contract_pdf($d);
 	if ($image) @unlink($image['file']);

@@ -70,6 +70,35 @@ if ($action === 'fair_panel') {
 	)));
 }
 
+/* ---------- Emitir el contrato desde la propia pagina del proyecto ----------
+ * Mismo motor que el panel (contract_lib.php): genera el PDF con los datos del
+ * proyecto, lo guarda en su Documentacion, se lo envia al cliente y anota el sello.
+ * El boton solo aparece en modo edicion y cuando el cliente ya dejo sus datos de
+ * facturacion; aqui se vuelve a exigir la sesion, que es lo que de verdad protege. */
+if ($action === 'issue_contract') {
+	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
+	$pid = cpx_project_id_by_token(pa_post('token'));
+	if (!$pid) pa_out(array('ok' => false, 'error' => 'not_found'));
+	require_once __DIR__ . '/contract_lib.php';
+	$dry = pa_post('dry_run') === '1';
+	$res = cpx_contract_issue($pid, $dry ? array('dry_run' => true) : array());
+	if (empty($res['ok'])) {
+		pa_out(array('ok' => false, 'error' => 'issue_failed', 'detail' => implode('; ', $res['errors'])));
+	}
+	if (!$dry) {
+		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($pid), array('contract_state' => 'emitido', 'contract_done' => false));
+	}
+	pa_out(array(
+		'ok' => true, 'dry_run' => $dry,
+		'code' => isset($res['code']) ? $res['code'] : '',
+		'lang' => isset($res['lang']) ? $res['lang'] : '',
+		'total' => isset($res['total']) ? $res['total'] : 0,
+		'sent' => !empty($res['sent']),
+		'email' => isset($res['email']) ? $res['email'] : '',
+		'warnings' => isset($res['warnings']) ? $res['warnings'] : array()
+	));
+}
+
 if ($action === 'save') {
 	$fields = array();
 	$plain = array('ref', 'client_name', 'client_email', 'title_es', 'title_en', 'memoria_es', 'memoria_en',
