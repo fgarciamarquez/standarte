@@ -99,6 +99,40 @@ if ($action === 'issue_contract') {
 	));
 }
 
+/* ---------- Emitir una factura desde la pagina del proyecto ----------
+ * Mismo motor que el panel (invoice_lib.php). El numero lo escribe el gestor para que
+ * encaje en su serie global; la UNIQUE de client_project_invoices impide repetirlo. */
+if ($action === 'issue_invoice') {
+	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
+	$pid = cpx_project_id_by_token(pa_post('token'));
+	if (!$pid) pa_out(array('ok' => false, 'error' => 'not_found'));
+	require_once __DIR__ . '/invoice_lib.php';
+	$which = ((int) pa_post('which') === 2) ? 2 : 1;
+	$res = cpx_invoice_issue($pid, $which, pa_post('number'));
+	if (empty($res['ok'])) {
+		pa_out(array('ok' => false, 'error' => 'issue_failed', 'detail' => implode('; ', $res['errors'])));
+	}
+	$field = ($which === 2) ? 'invoice2_state' : 'invoice_state';
+	$done  = ($which === 2) ? 'invoice2_done' : 'invoice_done';
+	cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($pid), array($field => 'emitido', $done => false));
+	pa_out(array(
+		'ok' => true, 'which' => $which,
+		'number' => isset($res['number']) ? $res['number'] : '',
+		'lang' => isset($res['lang']) ? $res['lang'] : '',
+		'total' => isset($res['total']) ? $res['total'] : 0,
+		'sent' => !empty($res['sent']),
+		'email' => isset($res['email']) ? $res['email'] : '',
+		'warnings' => isset($res['warnings']) ? $res['warnings'] : array()
+	));
+}
+
+/* Numero sugerido para la siguiente factura de la serie. */
+if ($action === 'next_invoice_number') {
+	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
+	require_once __DIR__ . '/invoice_lib.php';
+	pa_out(array('ok' => true, 'number' => cpx_next_invoice_number()));
+}
+
 if ($action === 'save') {
 	$fields = array();
 	$plain = array('ref', 'client_name', 'client_email', 'title_es', 'title_en', 'memoria_es', 'memoria_en',
@@ -141,6 +175,8 @@ if ($action === 'save') {
 	// Validez de la propuesta y forma de pago
 	if (isset($_POST['proposal_valid_until'])) { $d = pa_post('proposal_valid_until'); $fields['proposal_valid_until'] = ($d === '' ? null : $d); }
 	foreach (array('payment_terms_es', 'payment_terms_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
+	/* Reparto de la facturacion: «100» o dos tramos que sumen 100 (ver cpx_payment_split). */
+	if (isset($_POST['payment_split'])) $fields['payment_split'] = pa_post('payment_split');
 	// Impuestos activables y con porcentaje editable (0 = desactivado)
 	foreach (array('iva_rate', 'irpf_rate') as $k) { if (isset($_POST[$k])) $fields[$k] = (float) str_replace(',', '.', pa_post($k, '0')); }
 	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));

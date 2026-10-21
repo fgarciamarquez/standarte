@@ -96,21 +96,51 @@ function cpx_invoice_number_taken($number) {
 	return !empty($rows);
 }
 
+/* Reparto de la facturacion, en porcentajes, desde el campo payment_split del proyecto:
+ * «100» -> una sola factura por el total; «50/50», «70/30», «80/20» -> dos tramos. Lo que
+ * no encaje (vacio, tres tramos, numeros que no suman 100) cae al 80/20 de siempre y se
+ * avisa, para no emitir importes que nadie ha decidido. Maximo dos tramos: es lo que
+ * admite el modelo (invoice_state / invoice2_state). */
+function cpx_payment_split($p) {
+	$raw = trim((string) (isset($p['payment_split']) ? $p['payment_split'] : ''));
+	if ($raw === '') return array('pct' => array(80, 20), 'default' => true, 'error' => '');
+	$nums = array();
+	foreach (preg_split('/[^0-9.,]+/', $raw) as $x) {
+		$x = trim(str_replace(',', '.', $x));
+		if ($x === '') continue;
+		$nums[] = (float) $x;
+	}
+	$n = count($nums);
+	if ($n === 1 && abs($nums[0] - 100) < 0.01) {
+		return array('pct' => array(100), 'default' => false, 'error' => '');
+	}
+	if ($n === 2 && abs(($nums[0] + $nums[1]) - 100) < 0.01 && $nums[0] > 0 && $nums[1] > 0) {
+		return array('pct' => array($nums[0], $nums[1]), 'default' => false, 'error' => '');
+	}
+	return array('pct' => array(80, 20), 'default' => true,
+		'error' => 'el reparto «' . $raw . '» no es válido (se admite «100» o dos tramos que sumen 100): se factura 80/20');
+}
+
 /* Importes de la factura $which. El 20 % se calcula como resto exacto del total menos
  * lo facturado en la Factura 1, para que la suma de las dos cuadre al céntimo. */
 function cpx_invoice_amounts($p, $budget, $which, $prev1) {
 	$tot = cpx_contract_totals($p, $budget);                    // subtotal, descuento congelado, base, tipos
 	$ivaRate = isset($p['iva_rate']) ? (float) $p['iva_rate'] : 0.21;
 	$irpfRate = isset($p['irpf_rate']) ? (float) $p['irpf_rate'] : 0.15;
+	$split = cpx_payment_split($p);
+	$pct1 = $split['pct'][0];
 	if ($which === 1) {
-		$base = round($tot['base'] * 0.8, 2);
+		/* Con 100 % la primera factura ES el total: nada de redondear un porcentaje. */
+		$base = (count($split['pct']) === 1) ? round($tot['base'], 2) : round($tot['base'] * $pct1 / 100, 2);
 	} else {
-		$base1 = ($prev1 && isset($prev1['meta']['base'])) ? (float) $prev1['meta']['base'] : round($tot['base'] * 0.8, 2);
+		/* La segunda es el resto exacto de lo ya facturado, para que las dos cuadren
+		 * al céntimo aunque el porcentaje tenga decimales. */
+		$base1 = ($prev1 && isset($prev1['meta']['base'])) ? (float) $prev1['meta']['base'] : round($tot['base'] * $pct1 / 100, 2);
 		$base = round($tot['base'] - $base1, 2);
 	}
 	$iva = round($base * $ivaRate, 2);
 	$irpf = round($base * $irpfRate, 2);
-	return array('base' => $base, 'iva' => $iva, 'irpf' => $irpf, 'iva_rate' => $ivaRate, 'irpf_rate' => $irpfRate, 'total' => round($base + $iva - $irpf, 2), 'project_total' => $tot['total'],
+	return array('split' => $split, 'base' => $base, 'iva' => $iva, 'irpf' => $irpf, 'iva_rate' => $ivaRate, 'irpf_rate' => $irpfRate, 'total' => round($base + $iva - $irpf, 2), 'project_total' => $tot['total'],
 		'subtotal' => round($tot['subtotal'], 2), 'discount' => round($tot['discount'], 2),
 		'base1' => ($which === 2) ? $base1 : null, 'prev_number' => ($which === 2 && $prev1 && isset($prev1['number'])) ? $prev1['number'] : null);
 }
@@ -303,6 +333,9 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	$inv = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&select=which,number,meta,amount_eur&order=issued_at.asc');
 	$prev1 = null; foreach ($inv as $r) { if ((int) $r['which'] === 1) $prev1 = $r; }
 	if ($which === 2 && (!isset($p['invoice_state']) || $p['invoice_state'] !== 'cursado')) $errors[] = 'la Factura 2 solo se emite cuando la Factura 1 está cursada (cobrada)';
+	$splitChk = cpx_payment_split($p);
+	if ($which === 2 && count($splitChk['pct']) === 1) $errors[] = 'la forma de pago es 100 % por anticipado: este proyecto solo lleva una factura';
+	if ($splitChk['error'] !== '') $warnings[] = $splitChk['error'];
 	if (!$dry && $number !== '' && cpx_invoice_number_taken($number)) $errors[] = 'el número ' . $number . ' ya está usado en otra factura';
 	if ($errors) return array('ok' => false, 'errors' => $errors);
 
