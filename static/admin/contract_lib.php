@@ -42,6 +42,13 @@ function cpx_contract_texts($lang) {
 			'A' => 'A. STANDARTE creará el stand para la participación de %s en %s.',
 			'A_where' => ', que se celebra en %s',
 			'B' => 'B. Los servicios prestados por STANDARTE comprenden el diseño, la construcción, el montaje y el desmontaje del stand.',
+			'B_ready' => 'El stand quedará terminado y listo para su uso el %s, víspera del comienzo del evento. El cumplimiento de esa fecha es responsabilidad de STANDARTE.',
+			'B_ready_nodate' => 'El stand quedará terminado y listo para su uso el día anterior al comienzo del evento. El cumplimiento de esa fecha es responsabilidad de STANDARTE.',
+			/* Cláusula de seguridad en obra, con la póliza de RC como respaldo. El ámbito
+			 * territorial se dice porque la póliza es nacional: callarlo seria prometer una
+			 * cobertura que fuera de España no existe. */
+			'Hsec' => 'H. STANDARTE, como Proveedor de servicios, deberá cumplir estrictamente con las normativas de seguridad pertinentes durante el proceso de construcción para garantizar la seguridad de la misma. Si ocurriera algún accidente de seguridad debido a la construcción por parte del Proveedor de servicios, causando daños a cualquier propiedad o a la seguridad personal, el Proveedor de servicios asumirá toda la responsabilidad.',
+			'Hsec_ins' => 'A tal efecto, STANDARTE tiene suscrita una póliza de seguro de responsabilidad civil general con Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.), número K1 R18 0003792, con un límite de 300.000 € por siniestro y por anualidad de seguro y ámbito territorial en España, en vigor hasta el 29 de septiembre de 2027.',
 			'C' => 'C. El coste total del servicio es de %s%s. En caso de modificación del plan de servicios, ambas partes acuerdan enmendar el contrato para sustituir o complementar el presente acuerdo.',
 			'D' => 'D. %s abonará por adelantado el 80 %% del importe (%s%s) mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte)%s. El pago final del 20 %% restante (%s) se realizará una vez entregado el proyecto en %s.',
 			'D_account' => ', en la cuenta %s (BIC %s)',
@@ -53,7 +60,7 @@ function cpx_contract_texts($lang) {
 			'E_norates' => 'E. El importe contractual es el expresado en euros. Si el cliente opera en otra moneda —por ejemplo, el dólar estadounidense, la libra esterlina o el peso mexicano—, será responsable de realizar la conversión a su moneda y de que los ingresos en euros sean correctos, asumiendo las diferencias de cambio y las comisiones bancarias.',
 			'F' => 'F. Ambas partes se comprometen a reunirse y a facilitarse mutuamente —o a las entidades colaboradoras externas— toda la información necesaria para la ejecución de los trabajos.',
 			'G' => 'G. El presente contrato y toda la información técnica, comercial, jurídica o de otra índole intercambiada entre las partes antes o durante su vigencia tendrá carácter estrictamente confidencial. En consecuencia, ambas partes se comprometen a no divulgarla durante la vigencia del contrato, salvo en lo estrictamente necesario para el cumplimiento del objeto contractual.',
-			'H' => 'H. Las partes acuerdan que toda controversia, desavenencia, cuestión o reclamación derivada de la ejecución o interpretación del presente contrato se resolverá definitivamente mediante arbitraje administrado por el Servicio de Arbitraje de la Cámara Oficial de Comercio, Industria y Navegación de Cáceres, a la que se encomienda la administración del arbitraje y la designación de los árbitros de acuerdo con su Reglamento. Las partes declaran asimismo su compromiso de cumplir el laudo que se dicte. En prueba de conformidad y promesa de fiel cumplimiento, las partes firman el presente contrato por duplicado y a un solo efecto, en el lugar y fecha indicados.',
+			'H' => 'I. Las partes acuerdan que toda controversia, desavenencia, cuestión o reclamación derivada de la ejecución o interpretación del presente contrato se resolverá definitivamente mediante arbitraje administrado por el Servicio de Arbitraje de la Cámara Oficial de Comercio, Industria y Navegación de Cáceres, a la que se encomienda la administración del arbitraje y la designación de los árbitros de acuerdo con su Reglamento. Las partes declaran asimismo su compromiso de cumplir el laudo que se dicte. En prueba de conformidad y promesa de fiel cumplimiento, las partes firman el presente contrato por duplicado y a un solo efecto, en el lugar y fecha indicados.',
 			'third' => 'TERCERO. Si alguna de las partes se viera impedida de cumplir cualquiera de sus obligaciones conforme a este contrato por cierre patronal, paro u otro conflicto laboral, guerra, actos de terrorismo, disturbios, conmoción civil, caso fortuito, epidemia, pandemia, incendio, inundación u otra causa meteorológica, actuación o directriz gubernamental, o cualquier otra causa similar ajena a su control razonable (un «Supuesto de Fuerza Mayor»), o por cualquier otro hecho natural que impida a %s asistir presencialmente al evento en la fecha contratada, el proveedor se compromete a colaborar con %s para reprogramar los servicios acordados en una fecha disponible dentro de los seis (6) meses naturales siguientes. Si las partes no pudieran (i) reanudar el cumplimiento tras dicho cese y (ii) reprogramar el evento pese a emplear sus mejores esfuerzos, cualquiera de ellas podrá resolver el presente contrato sin responsabilidad mediante notificación escrita a la otra, con devolución a %s de las cantidades abonadas en virtud del mismo.',
 			'fourth' => 'CUARTO. A la finalización se realizará una inspección de entrega conjunta. Todos los defectos se recogerán por escrito y STANDARTE hará cuanto esté en su mano para subsanarlos. En su defecto, los trabajos se entenderán plenamente conformes con los requisitos del cliente.',
 			'sig_client' => 'Nombre y firma del representante de %s',
@@ -82,6 +89,10 @@ function cpx_contract_texts($lang) {
 			'A' => 'A. STANDARTE will create the stand for %s\'s participation in %s.',
 			'A_where' => ', to be held in %s',
 			'B' => 'B. The services provided by STANDARTE include the design, construction, assembly, and dismantling of the stand.',
+			'B_ready' => 'The stand shall be finished and ready for use on %s, the day before the event opens. Meeting that date is STANDARTE\'s responsibility.',
+			'B_ready_nodate' => 'The stand shall be finished and ready for use on the day before the event opens. Meeting that date is STANDARTE\'s responsibility.',
+			'Hsec' => 'H. STANDARTE, as the Service Provider, shall strictly comply with the relevant safety regulations during the construction process in order to guarantee its safety. Should any safety accident occur as a result of the construction carried out by the Service Provider, causing damage to any property or to personal safety, the Service Provider shall assume full responsibility.',
+			'Hsec_ins' => 'To this end, STANDARTE holds a general civil liability insurance policy with Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.), number K1 R18 0003792, with a limit of €300,000 per claim and per insurance year and territorial scope in Spain, in force until 29 September 2027.',
 			'C' => 'C. The total cost of the service is %s%s. In the event of a modification to the service plan, both parties agree to amend the contract to replace or supplement this agreement.',
 			'D' => 'D. %s shall pay 80%% of the amount (%s%s) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer%s. The final payment of the remaining 20%% (%s) will be made after the project is delivered in %s.',
 			'D_account' => ', to account %s (BIC %s)',
@@ -91,7 +102,7 @@ function cpx_contract_texts($lang) {
 			'E_norates' => 'E. The contractual amount is the amount expressed in euros. If the client operates in another currency —for example, the US dollar, the pound sterling or the Mexican peso—, the client is responsible for converting to its own currency and for ensuring that the amounts credited in euros are correct, bearing any exchange differences and bank charges.',
 			'F' => 'F. Both parties agree to meet and provide each other—or external collaborating entities—with all information necessary for the execution of the work.',
 			'G' => 'G. This contract and all technical, commercial, legal, or other information exchanged between the parties prior to or during its term shall be considered strictly confidential. Consequently, both parties commit not to disclose such information during the term of the contract, except where strictly necessary for the fulfillment of the contractual purpose.',
-			'H' => 'H. The parties agree that any dispute, disagreement, issue, or claim arising from the execution or interpretation of this contract shall be finally resolved through arbitration administered by the Arbitration Service of the Chamber of Commerce, Industry, and Navigation of Cáceres, which is responsible for administering the arbitration and appointing arbitrators in accordance with its Rules. The parties also expressly declare their commitment to comply with the issued arbitral award. In witness of their agreement and promise of faithful performance, the parties sign this contract in duplicate, for a single purpose, at the place and date indicated above.',
+			'H' => 'I. The parties agree that any dispute, disagreement, issue, or claim arising from the execution or interpretation of this contract shall be finally resolved through arbitration administered by the Arbitration Service of the Chamber of Commerce, Industry, and Navigation of Cáceres, which is responsible for administering the arbitration and appointing arbitrators in accordance with its Rules. The parties also expressly declare their commitment to comply with the issued arbitral award. In witness of their agreement and promise of faithful performance, the parties sign this contract in duplicate, for a single purpose, at the place and date indicated above.',
 			'third' => 'THIRD. In the event that either party is prevented from fulfilling any of its obligations under this Agreement because of lockout, work stoppage or other labor dispute, war, acts of terrorism, riot, civil commotion, acts of God, epidemic, pandemic, fire, flood or other weather-related reason, governmental action or directive, or other similar reason beyond its reasonable control (a "Force Majeure Event") or any other acts of nature that may inhibit %s\'s ability to attend the Event onsite on the contracted date, Supplier agrees it will work with %s to reschedule its agreed upon services for an available date within the next six (6) calendar months. If the parties are unable (i) to resume performance following such cessation and (ii) to reschedule the event despite using best efforts, either party may terminate this Contract without liability upon written notice to the other party with any amounts paid under this Contract refunded to %s.',
 			'fourth' => 'FOURTH. There shall be a joint handover inspection upon completion. All defects shall be recorded in writing, and STANDARTE shall use best endeavors to rectify them. Otherwise, the works shall be deemed to be in full compliance with the Client\'s requirements.',
 			'sig_client' => 'Name and signature of the %s representative',
@@ -306,7 +317,7 @@ function cpx_contract_pdf($d) {
 
 	$where = $d['fair_city'] !== '' ? sprintf($T['A_where'], $d['fair_city']) : '';
 	$pdf->Para(sprintf($T['A'], $d['client'], $d['fair'] . $where));
-	$pdf->Para($T['B']);
+	$pdf->Para($T['B'] . ' ' . (($d['ready'] !== '') ? sprintf($T['B_ready'], $d['ready']) : $T['B_ready_nodate']));
 	$pdf->Para(sprintf($T['C'], cpx_money_all($d['total'], $d['rates'], $d['lang']), ''));
 	$acc = ($d['iban'] !== '') ? sprintf($T['D_account'], $d['iban'], $d['bic']) : '';
 	/* Forma de pago: la que tenga escrita el proyecto; si no hay ninguna, el reparto
@@ -320,6 +331,7 @@ function cpx_contract_pdf($d) {
 	$pdf->Para($d['rates'] ? sprintf($T['E'], date($d['lang'] === 'en' ? 'F j, Y' : 'd/m/Y', strtotime($d['rates']['date']))) : $T['E_norates']);
 	$pdf->Para($T['F']);
 	$pdf->Para($T['G']);
+	$pdf->Para($T['Hsec'] . ' ' . $T['Hsec_ins']);
 	$pdf->Para($T['H']);
 	$pdf->Para(sprintf($T['third'], $d['client'], $d['client'], $d['client']));
 	$pdf->Para($T['fourth']);
@@ -435,6 +447,14 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	// Las fechas de la feria, en el idioma del contrato (fairs.json las trae en es y en).
 	$fairDates = ($lang === 'en' && !empty($fair['dates_en'])) ? $fair['dates_en'] : (isset($fair['dates']) ? $fair['dates'] : '');
 	$fairName = $fair['name'] . ($fairDates !== '' ? ' (' . $fairDates . ')' : '');
+	/* Fecha de entrega del stand: la víspera del primer día de la feria. El catálogo trae
+	 * el inicio en ISO; si esa feria no lo tuviera, la cláusula sale sin fecha concreta. */
+	$readyDate = '';
+	if (!empty($fair['start']) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $fair['start'])) {
+		$ts = strtotime($fair['start'] . ' -1 day');
+		if ($ts) $readyDate = cpx_contract_date($ts, $lang);
+	}
+	if ($readyDate === '') $warnings[] = 'la feria no tiene fecha de inicio en el catálogo: la cláusula de entrega sale sin fecha';
 	/* Anexo: hasta seis imagenes del proyecto, en el orden en que el cliente las ve.
 	 * El contrato deberia llevar al menos tres; si no las hay, se avisa y sale con las
 	 * que haya antes que no salir. */
@@ -455,6 +475,7 @@ function cpx_contract_issue($projectId, $opts = array()) {
 		'lang' => $lang, 'ref' => $p['ref'], 'issued' => $issued, 'code' => $code,
 		'client' => $client, 'client_id' => trim((string) (isset($p['billing_cif']) ? $p['billing_cif'] : '')), 'address' => $address !== '' ? $address : '—',
 		'fair' => $fairName, 'fair_city' => isset($fair['city']) ? $fair['city'] : '',
+		'ready' => $readyDate,
 		'total' => $tot['total'], 'advance' => round($tot['total'] * 0.8, 2), 'rest' => round($tot['total'] - round($tot['total'] * 0.8, 2), 2),
 		'rates' => $rates, 'iban' => trim((string) (isset($p['income_account']) ? $p['income_account'] : '')), 'bic' => trim((string) (isset($p['bic_code']) ? $p['bic_code'] : '')),
 		'image' => $image, 'images' => $images, 'logo' => is_readable($logo) ? $logo : null,
