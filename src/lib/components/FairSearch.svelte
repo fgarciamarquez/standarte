@@ -3,27 +3,28 @@
   // llega directamente a su ficha. Si no está en el catálogo, se avisa al equipo por
   // correo para darla de alta y se le responde en pantalla.
   //
-  // La predicción funciona igual que el campo "Feria" del formulario de presupuesto
-  // (ContactForm.svelte): filtra por nombre o ciudad, sin distinguir mayúsculas ni
-  // acentos. Aquí, además, cada sugerencia lleva ya la URL de su ficha.
+  // La predicción comparte motor con el campo "Feria" del formulario de presupuesto
+  // (ContactForm.svelte): está en $lib/fairMatch.js, que normaliza los signos y busca por
+  // palabras en el nombre, la ciudad, el slug y los alias. Ahí está explicado por qué.
+  // Aquí, además, cada sugerencia lleva ya la URL de su ficha.
   import { fairsData } from '$lib/fairsData.js';
   import { tagOrder, labelForTag, fairsForActivity } from '$lib/fairTags.js';
   import { fairUrl, activityUrl } from '$lib/siteData.js';
+  import { normFair as norm, tokensOf, fairSearchKeys, rankFair } from '$lib/fairMatch.js';
 
   export let lang = 'es';
 
-  const norm = (s) => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
   // Ciudades "de relleno" del catálogo: no aportan pista y ensucian la sugerencia.
   const NON_CITY = ['Itinerante', 'España', 'Europa', 'Portugal', 'Portugal Sur'];
 
   const fairOptions = (() => {
     const seen = new Set(); const out = [];
     for (const f of fairsData) {
-      const k = norm(f.name);
-      if (!k || seen.has(k)) continue;
-      seen.add(k);
-      const showCity = f.city && !NON_CITY.includes(f.city) && !k.includes(norm(f.city));
-      out.push({ type: 'fair', name: f.name, city: showCity ? f.city : '', slug: f.slug, key: k, cityKey: norm(f.city) });
+      const { key, cityKey, allKey } = fairSearchKeys(f);
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      const showCity = f.city && !NON_CITY.includes(f.city) && !key.includes(norm(f.city));
+      out.push({ type: 'fair', name: f.name, city: showCity ? f.city : '', slug: f.slug, key, cityKey, allKey });
     }
     return out.sort((a, b) => a.name.localeCompare(b.name, 'es'));
   })();
@@ -41,7 +42,8 @@
       count: fairsForActivity(tg).length,
       slug: 'act:' + tg,
       key: norm(label),
-      cityKey: ''
+      cityKey: '',
+      allKey: norm(label)
     };
   }).filter((o) => o.key && o.count > 0);
 
@@ -94,21 +96,14 @@
   const mountedAt = Date.now();
 
   $: q = norm(query);
-  // Ranking del predictor. El corte plano a 8 con orden alfabético dejaba ferias fuera
-  // sin remedio: al teclear "Madrid" coincidían las ~29 de la ciudad y solo se veían las
-  // 8 primeras por alfabeto (FIAA, por la F, no aparecía nunca). Ahora: primero lo que
-  // EMPIEZA por lo tecleado (nombre antes que ciudad), después lo que lo contiene; y el
-  // tope sube a 40 con la lista desplazable, para que una ciudad muestre todas sus ferias.
-  const rank = (o, term) => {
-    if (o.key.startsWith(term)) return 0;
-    if (o.cityKey && o.cityKey.startsWith(term)) return 1;
-    if (o.key.includes(term)) return 2;
-    if (o.cityKey && o.cityKey.includes(term)) return 3;
-    return 9;
-  };
+  $: toks = tokensOf(query);
+  // El corte plano a 8 con orden alfabético dejaba ferias fuera sin remedio: al teclear
+  // "Madrid" coincidían las ~29 de la ciudad y solo se veían las 8 primeras por alfabeto
+  // (FIAA, por la F, no aparecía nunca). Por eso el tope es 40 con la lista desplazable,
+  // para que una ciudad muestre todas sus ferias. El criterio de orden está en rankFair.
   $: matches = (q.length >= 1)
     ? options
-        .map((o) => ({ o, r: rank(o, q) }))
+        .map((o) => ({ o, r: rankFair(o, q, toks) }))
         .filter((x) => x.r < 9)
         .sort((a, b) => a.r - b.r
           || (a.o.type === b.o.type ? 0 : a.o.type === 'activity' ? -1 : 1)

@@ -6,6 +6,7 @@
   import { budgetBands, bandLabel, tierNames } from '$lib/pricingTiers.js';
   import { fairsData } from '$lib/fairsData.js';
   import { activitiesForFair, fairsForActivity } from '$lib/fairTags.js';
+  import { normFair, tokensOf, fairSearchKeys, rankFair } from '$lib/fairMatch.js';
   export let lang;
   export let labels;
   // 'dark' = banda oscura por defecto; 'light' = integrada con el fondo claro de
@@ -156,28 +157,37 @@
   $: if (initialFair !== lastInitial) { lastInitial = initialFair; if (initialFair) fair = initialFair; }
 
   // ── Autocompletado del campo FERIA sobre la malla de ferias (fairsData) ──
-  // Predicción según lo que escribe el cliente: filtra por nombre o ciudad
-  // (sin distinguir mayúsculas ni acentos) y muestra las coincidencias.
-  const normFair = (s) => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  // El motor es el mismo que el del buscador de la portada ($lib/fairMatch.js): normaliza
+  // los signos y busca por palabras en nombre, ciudad, slug y alias. Antes esto filtraba
+  // por una sola subcadena, de modo que un cliente que escribía su feria con la ciudad
+  // («fimi valencia») o sin el signo del nombre («fimma maderalia») no veía ninguna
+  // sugerencia y además dejaba `typedFair` vacío, perdiendo el paso de ferias afines.
   const NON_CITY = ['Itinerante', 'España', 'Europa', 'Portugal', 'Portugal Sur'];
+  // Índice único: lo usan la predicción y el reconocimiento de la feria escrita.
+  const fairIndex = fairsData.map((f) => ({ f, ...fairSearchKeys(f) })).filter((x) => x.key);
   const fairOptions = (() => {
     const seen = new Set(); const out = [];
-    for (const f of fairsData) {
-      const k = normFair(f.name);
-      if (!k || seen.has(k)) continue;
-      seen.add(k);
+    for (const { f, key, cityKey, allKey } of fairIndex) {
+      if (seen.has(key)) continue;
+      seen.add(key);
       // Ciudad solo como pista secundaria si NO está ya dentro del nombre (evita
       // redundancias tipo "Fima Zaragoza — Zaragoza"), y nunca para pseudo-ciudades.
-      const showCity = f.city && !NON_CITY.includes(f.city) && !k.includes(normFair(f.city));
-      out.push({ name: f.name, city: showCity ? f.city : '' });
+      const showCity = f.city && !NON_CITY.includes(f.city) && !key.includes(normFair(f.city));
+      out.push({ name: f.name, city: showCity ? f.city : '', key, cityKey, allKey });
     }
     return out.sort((a, b) => a.name.localeCompare(b.name, 'es'));
   })();
   let fairFocused = false;
   let fairActiveIdx = -1;
   $: fairQuery = normFair(fair);
+  $: fairToks = tokensOf(fair);
   $: fairMatches = (fairFocused && fairQuery.length >= 1)
-    ? fairOptions.filter((o) => normFair(o.name).includes(fairQuery) || normFair(o.city).includes(fairQuery)).slice(0, 8)
+    ? fairOptions
+        .map((o) => ({ o, r: rankFair(o, fairQuery, fairToks) }))
+        .filter((x) => x.r < 9)
+        .sort((a, b) => a.r - b.r || a.o.name.localeCompare(b.o.name, 'es'))
+        .map((x) => x.o)
+        .slice(0, 8)
     : [];
   // No mostrar el desplegable si el texto ya coincide exactamente con la única opción.
   $: showFairSuggest = fairMatches.length > 0 && !(fairMatches.length === 1 && normFair(fairMatches[0].name) === fairQuery);
@@ -198,12 +208,21 @@
 
   // ── Paso 2: ferias del MISMO sector/actividad que la escrita (sinergia) ──
   const fairBySlug = new Map(fairsData.map((f) => [f.slug, f]));
-  // Feria reconocida a partir de lo escrito: primero match exacto y, si no, por
-  // inclusión (para que "Cosmobeauty" case con "CosmoBeauty Barcelona", etc.).
-  $: typedFair = !fairQuery ? null
-    : (fairsData.find((f) => normFair(f.name) === fairQuery)
-      || (fairQuery.length >= 3 ? fairsData.find((f) => normFair(f.name).includes(fairQuery)) : null)
-      || null);
+  // Feria reconocida a partir de lo escrito: se queda con la mejor puntuada del índice,
+  // que ya ordena el nombre exacto por delante de lo que solo empieza o contiene lo
+  // tecleado (así "Cosmobeauty" sigue casando con "CosmoBeauty Barcelona"). A partir de
+  // 3 caracteres se aceptan también las coincidencias por palabras, para que «fimi
+  // valencia» reconozca su feria y el paso 2 pueda ofrecer las ferias afines.
+  $: typedFair = (() => {
+    if (!fairQuery) return null;
+    const tope = fairQuery.length >= 3 ? 6 : 1;
+    let mejor = null, mejorR = 99;
+    for (const x of fairIndex) {
+      const r = rankFair(x, fairQuery, fairToks);
+      if (r < mejorR) { mejorR = r; mejor = x.f; if (r === 0) break; }
+    }
+    return mejorR <= tope ? mejor : null;
+  })();
   // Prioridad por tamaño de ciudad: primero se muestran las ferias de las plazas
   // más grandes (menor índice = ciudad mayor); las no listadas van al final.
   const CITY_RANK = ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Zaragoza', 'Málaga', 'Murcia', 'Palma', 'Bilbao', 'Marsella', 'Toulouse', 'Lisboa', 'Oporto'];
