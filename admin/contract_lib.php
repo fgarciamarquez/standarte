@@ -44,11 +44,11 @@ function cpx_contract_texts($lang) {
 			'B' => 'B. Los servicios prestados por STANDARTE comprenden el diseño, la construcción, el montaje y el desmontaje del stand.',
 			'B_ready' => 'El stand quedará terminado y listo para su uso el %s, víspera del comienzo del evento. El cumplimiento de esa fecha es responsabilidad de STANDARTE.',
 			'B_ready_nodate' => 'El stand quedará terminado y listo para su uso el día anterior al comienzo del evento. El cumplimiento de esa fecha es responsabilidad de STANDARTE.',
-			/* Cláusula de seguridad en obra, con la póliza de RC como respaldo. El ámbito
-			 * territorial se dice porque la póliza es nacional: callarlo seria prometer una
-			 * cobertura que fuera de España no existe. */
+			/* Cláusula de seguridad en obra, con la póliza de RC como respaldo. La póliza es
+			 * de ámbito nacional, pero el contrato no lo menciona (decisión del usuario,
+			 * 22/10/2026). Al renovar, actualizar aquí el número y la fecha de vencimiento. */
 			'Hsec' => 'H. STANDARTE, como Proveedor de servicios, deberá cumplir estrictamente con las normativas de seguridad pertinentes durante el proceso de construcción para garantizar la seguridad de la misma. Si ocurriera algún accidente de seguridad debido a la construcción por parte del Proveedor de servicios, causando daños a cualquier propiedad o a la seguridad personal, el Proveedor de servicios asumirá toda la responsabilidad.',
-			'Hsec_ins' => 'A tal efecto, STANDARTE tiene suscrita una póliza de seguro de responsabilidad civil general con Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.), número K1 R18 0003792, con un límite de 300.000 € por siniestro y por anualidad de seguro y ámbito territorial en España, en vigor hasta el 29 de septiembre de 2027.',
+			'Hsec_ins' => 'A tal efecto, STANDARTE tiene suscrita una póliza de seguro de responsabilidad civil general con Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.), número K1 R18 0003792, con un límite de 300.000 € por siniestro y por anualidad de seguro, en vigor hasta el 29 de septiembre de 2027.',
 			'C' => 'C. El coste total del servicio es de %s%s. En caso de modificación del plan de servicios, ambas partes acuerdan enmendar el contrato para sustituir o complementar el presente acuerdo.',
 			'D' => 'D. %s abonará por adelantado el 80 %% del importe (%s%s) mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte)%s. El pago final del 20 %% restante (%s) se realizará una vez entregado el proyecto en %s.',
 			'D_account' => ', en la cuenta %s (BIC %s)',
@@ -92,7 +92,7 @@ function cpx_contract_texts($lang) {
 			'B_ready' => 'The stand shall be finished and ready for use on %s, the day before the event opens. Meeting that date is STANDARTE\'s responsibility.',
 			'B_ready_nodate' => 'The stand shall be finished and ready for use on the day before the event opens. Meeting that date is STANDARTE\'s responsibility.',
 			'Hsec' => 'H. STANDARTE, as the Service Provider, shall strictly comply with the relevant safety regulations during the construction process in order to guarantee its safety. Should any safety accident occur as a result of the construction carried out by the Service Provider, causing damage to any property or to personal safety, the Service Provider shall assume full responsibility.',
-			'Hsec_ins' => 'To this end, STANDARTE holds a general civil liability insurance policy with Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.), number K1 R18 0003792, with a limit of €300,000 per claim and per insurance year and territorial scope in Spain, in force until 29 September 2027.',
+			'Hsec_ins' => 'To this end, STANDARTE holds a general civil liability insurance policy with Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.), number K1 R18 0003792, with a limit of €300,000 per claim and per insurance year, in force until 29 September 2027.',
 			'C' => 'C. The total cost of the service is %s%s. In the event of a modification to the service plan, both parties agree to amend the contract to replace or supplement this agreement.',
 			'D' => 'D. %s shall pay 80%% of the amount (%s%s) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer%s. The final payment of the remaining 20%% (%s) will be made after the project is delivered in %s.',
 			'D_account' => ', to account %s (BIC %s)',
