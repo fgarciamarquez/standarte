@@ -2,7 +2,8 @@
 /*
  * Emisión automática de FACTURAS de un proyecto de cliente (Standarte).
  *
- * Factura 1 = 80 % del total aprobado (anticipo); Factura 2 = 20 % restante (final).
+ * El reparto lo fija payment_split: «100» -> una sola factura por el total; dos tramos
+ * que sumen 100 -> anticipo y final. Vacio = 80/20, que es como nacio.
  * Se dispara desde el panel al pulsar el botón en «Pendiente»: el gestor introduce el
  * número (se le sugiere el siguiente de la serie), y el resto sale del proyecto: datos
  * de facturación que dejó el cliente al aprobar, cuenta de ingreso elegida, presupuesto
@@ -36,16 +37,19 @@ function cpx_invoice_texts($lang) {
 			'matter' => 'CONCEPTO DE LA TRANSFERENCIA: "%s"', 'beneficiary' => 'BENEFICIARIO: "JAVIER GARCIA MARQUEZ (titular de Standarte)"',
 			'th_concept' => 'Concepto', 'th_qty' => 'Cant.', 'th_unit' => 'Precio', 'th_amount' => 'Importe', 'included' => 'Incluido',
 			'subtotal' => 'Total del proyecto aprobado', 'discount' => 'Descuento por pronto pago (aprobación en plazo)',
-			'adv1' => 'Base imponible · anticipo del 80 % (esta factura)', 'adv2' => 'Anticipo ya facturado (factura %s)', 'rest2' => 'Base imponible · 20 % restante (esta factura)',
+			'adv1' => 'Base imponible · anticipo del %s %% (esta factura)', 'adv1_full' => 'Base imponible · importe íntegro (esta factura)',
+			'adv2' => 'Anticipo ya facturado (factura %s)', 'rest2' => 'Base imponible · %s %% restante (esta factura)',
 			'base' => 'Base imponible', 'iva' => 'IVA (%s %%)', 'irpf' => 'IRPF (−%s %%)', 'total' => 'TOTAL', 'total_usd' => 'TOTAL (USD)', 'total_gbp' => 'TOTAL (GBP)',
 			'rates_note' => 'Conversiones orientativas al tipo de cambio del BCE del %s. El importe facturado es el expresado en euros.',
 			'no_iva' => 'Operación no sujeta al IVA español: servicio prestado a un empresario o profesional no establecido en el territorio de aplicación del impuesto (art. 69.Uno.1º de la Ley 37/1992 del IVA). El destinatario, en su caso, autoliquida el impuesto en su país.',
 			'no_irpf' => 'Sin retención de IRPF: el destinatario no es un obligado a retener en España (art. 76 del Reglamento del IRPF, RD 439/2007).',
 			'thanks' => 'Gracias por su confianza. Atentamente, Javier García.',
-			'doc_title1' => 'Factura %s (anticipo 80 %%)', 'doc_title2' => 'Factura %s (final 20 %%)',
+			'doc_title1' => 'Factura %1$s (anticipo %2$s %%)', 'doc_title2' => 'Factura %1$s (final %2$s %%)',
+			'doc_title1_full' => 'Factura %1$s (importe íntegro)',
 			'mail_subject' => 'Factura %s de su proyecto %s — Standarte',
-			'mail_body1' => 'Le adjuntamos la factura <strong>%s</strong> correspondiente al anticipo del 80 %% de su proyecto <strong>%s</strong> (%s), por importe de <strong>%s</strong>. Los datos para la transferencia figuran en la propia factura, que también tiene disponible en la Documentación de su proyecto.',
-			'mail_body2' => 'Le adjuntamos la factura <strong>%s</strong> correspondiente al 20 %% restante de su proyecto <strong>%s</strong> (%s), por importe de <strong>%s</strong>. Los datos para la transferencia figuran en la propia factura, que también tiene disponible en la Documentación de su proyecto.',
+			'mail_body1' => 'Le adjuntamos la factura <strong>%1$s</strong> correspondiente al anticipo del %5$s %% de su proyecto <strong>%2$s</strong> (%3$s), por importe de <strong>%4$s</strong>. Los datos para la transferencia figuran en la propia factura, que también tiene disponible en la Documentación de su proyecto.',
+			'mail_body1_full' => 'Le adjuntamos la factura <strong>%1$s</strong> correspondiente a su proyecto <strong>%2$s</strong> (%3$s), por importe de <strong>%4$s</strong>. Los datos para la transferencia figuran en la propia factura, que también tiene disponible en la Documentación de su proyecto.',
+			'mail_body2' => 'Le adjuntamos la factura <strong>%1$s</strong> correspondiente al %5$s %% restante de su proyecto <strong>%2$s</strong> (%3$s), por importe de <strong>%4$s</strong>. Los datos para la transferencia figuran en la propia factura, que también tiene disponible en la Documentación de su proyecto.',
 			'mail_button' => 'Abrir el proyecto', 'sign' => 'Un cordial saludo,<br><strong>Equipo de Standarte</strong>'
 		),
 		'en' => array(
@@ -55,16 +59,19 @@ function cpx_invoice_texts($lang) {
 			'matter' => 'MATTER UNDER TRANSFER: "%s"', 'beneficiary' => 'TRANSFER BENEFICIARY: "JAVIER GARCIA MARQUEZ (Standarte\'s Owner)"',
 			'th_concept' => 'Description', 'th_qty' => 'Qty', 'th_unit' => 'Unit price', 'th_amount' => 'Amount', 'included' => 'Included',
 			'subtotal' => 'Approved project total', 'discount' => 'Early-payment discount (approved within the deadline)',
-			'adv1' => 'Taxable base · 80% advance (this invoice)', 'adv2' => 'Advance already invoiced (invoice %s)', 'rest2' => 'Taxable base · remaining 20% (this invoice)',
+			'adv1' => 'Taxable base · %s%% advance (this invoice)', 'adv1_full' => 'Taxable base · full amount (this invoice)',
+			'adv2' => 'Advance already invoiced (invoice %s)', 'rest2' => 'Taxable base · remaining %s%% (this invoice)',
 			'base' => 'Taxable base', 'iva' => 'VAT (%s%%)', 'irpf' => 'IRPF withholding (−%s%%)', 'total' => 'TOTAL', 'total_usd' => 'TOTAL (USD)', 'total_gbp' => 'TOTAL (GBP)',
 			'rates_note' => 'Indicative conversions at the ECB exchange rate of %s. The invoiced amount is the amount expressed in euros.',
 			'no_iva' => 'Not subject to Spanish VAT: service supplied to a business customer not established in the Spanish VAT territory (Article 69.One.1 of Spanish VAT Law 37/1992). Where applicable, the recipient accounts for the tax in its own country (reverse charge).',
 			'no_irpf' => 'No Spanish income-tax withholding (IRPF): the recipient is not a withholding agent in Spain (Article 76 of the IRPF Regulation, RD 439/2007).',
 			'thanks' => 'Thank you for your trust. Sincerely, Javier García.',
-			'doc_title1' => 'Invoice %s (80%% advance)', 'doc_title2' => 'Invoice %s (final 20%%)',
+			'doc_title1' => 'Invoice %1$s (%2$s%% advance)', 'doc_title2' => 'Invoice %1$s (final %2$s%%)',
+			'doc_title1_full' => 'Invoice %1$s (full amount)',
 			'mail_subject' => 'Invoice %s for your project %s — Standarte',
-			'mail_body1' => 'Please find attached invoice <strong>%s</strong> for the 80%% advance on your project <strong>%s</strong> (%s), amounting to <strong>%s</strong>. The transfer details are on the invoice itself, which is also available in the Documents section of your project.',
-			'mail_body2' => 'Please find attached invoice <strong>%s</strong> for the remaining 20%% of your project <strong>%s</strong> (%s), amounting to <strong>%s</strong>. The transfer details are on the invoice itself, which is also available in the Documents section of your project.',
+			'mail_body1' => 'Please find attached invoice <strong>%1$s</strong> for the %5$s%% advance on your project <strong>%2$s</strong> (%3$s), amounting to <strong>%4$s</strong>. The transfer details are on the invoice itself, which is also available in the Documents section of your project.',
+			'mail_body1_full' => 'Please find attached invoice <strong>%1$s</strong> for your project <strong>%2$s</strong> (%3$s), amounting to <strong>%4$s</strong>. The transfer details are on the invoice itself, which is also available in the Documents section of your project.',
+			'mail_body2' => 'Please find attached invoice <strong>%1$s</strong> for the remaining %5$s%% of your project <strong>%2$s</strong> (%3$s), amounting to <strong>%4$s</strong>. The transfer details are on the invoice itself, which is also available in the Documents section of your project.',
 			'mail_button' => 'Open the project', 'sign' => 'Best regards,<br><strong>The Standarte team</strong>'
 		)
 	);
@@ -94,6 +101,27 @@ function cpx_next_invoice_number() {
 function cpx_invoice_number_taken($number) {
 	$rows = cpx_rows('client_project_invoices?select=id,project_id&number=eq.' . urlencode($number) . '&limit=1');
 	return !empty($rows);
+}
+
+/* Etiquetas que dependen del reparto. El porcentaje se escribe sin decimales inutiles
+ * (70, no 70,00) y con 100 % no hay «anticipo» ni «resto» que nombrar: es la factura
+ * entera. Devuelve el formato del titulo, no el titulo, porque la llamada le pasa ademas
+ * el numero. */
+function cpx_inv_pct_txt($n) {
+	return rtrim(rtrim(number_format((float) $n, 2, ',', ''), '0'), ',');
+}
+function cpx_inv_labels($T, $am, $which) {
+	$pct = (isset($am['split']['pct']) && $am['split']['pct']) ? $am['split']['pct'] : array(80, 20);
+	$unica = count($pct) === 1;
+	$p1 = cpx_inv_pct_txt($pct[0]);
+	$p2 = $unica ? '' : cpx_inv_pct_txt($pct[1]);
+	return array(
+		'unica' => $unica,
+		'pct'   => ($which === 1) ? $p1 : $p2,
+		'line'  => $unica ? $T['adv1_full'] : (($which === 1) ? sprintf($T['adv1'], $p1) : sprintf($T['rest2'], $p2)),
+		'title' => $unica ? $T['doc_title1_full'] : (($which === 1) ? $T['doc_title1'] : $T['doc_title2']),
+		'mail'  => $unica ? $T['mail_body1_full'] : (($which === 1) ? $T['mail_body1'] : $T['mail_body2'])
+	);
 }
 
 /* Reparto de la facturacion, en porcentajes, desde el campo payment_split del proyecto:
@@ -187,7 +215,8 @@ function cpx_invoice_pdf($d) {
 	$pdf = new StandarteInvoicePdf('P', 'mm', 'A4');
 	$pdf->SetMargins(18, 18, 18);
 	$pdf->SetAutoPageBreak(false);
-	$pdf->SetTitle($pdf->t(sprintf($d['which'] === 1 ? $T['doc_title1'] : $T['doc_title2'], $d['number'])), false);
+	$lab = cpx_inv_labels($T, $d['amounts'], $d['which']);
+	$pdf->SetTitle($pdf->t(sprintf($lab['title'], $d['number'], $lab['pct'])), false);
 	$pdf->SetAuthor('Standarte', false);
 	$pdf->AddPage();
 
@@ -263,7 +292,7 @@ function cpx_invoice_pdf($d) {
 	$pdf->SetLineWidth(0.2);
 	if ($d['amounts']['discount'] > 0) $row($T['discount'], '', '', '− ' . $eur($d['amounts']['discount']), false, false);
 	if ($d['which'] === 2 && $d['amounts']['base1'] !== null) $row(sprintf($T['adv2'], $d['amounts']['prev_number'] !== null ? $d['amounts']['prev_number'] : '—'), '', '', '− ' . $eur($d['amounts']['base1']), false, false);
-	$row($d['which'] === 1 ? $T['adv1'] : $T['rest2'], '', '', $eur($d['amounts']['base']), false, false);
+	$row($lab['line'], '', '', $eur($d['amounts']['base']), false, false);
 	if ($d['amounts']['iva_rate'] > 0) $row(sprintf($T['iva'], cpx_pct_label($d['amounts']['iva_rate'], $L)), '', '', '+ ' . $eur($d['amounts']['iva']), false, false);
 	if ($d['amounts']['irpf_rate'] > 0) $row(sprintf($T['irpf'], cpx_pct_label($d['amounts']['irpf_rate'], $L)), '', '', '− ' . $eur($d['amounts']['irpf']), false, false);
 	$pdf->SetLineWidth(0.5);
@@ -384,7 +413,7 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	$h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
 	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
-		. "<p style='margin:0 0 16px;'>" . sprintf($which === 1 ? $T['mail_body1'] : $T['mail_body2'], $h($number), $h($title), $h($p['ref']), $h(cpx_money($am['total'], $lang, 'EUR'))) . "</p>"
+		. "<p style='margin:0 0 16px;'>" . sprintf($labMail['mail'], $h($number), $h($title), $h($p['ref']), $h(cpx_money($am['total'], $lang, 'EUR')), $labMail['pct']) . "</p>"
 		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
 		. "<p style='margin:28px 0 0;'>" . $T['sign'] . "</p></body></html>";
 	$subject = sprintf($T['mail_subject'], $number, $p['ref']);
@@ -403,7 +432,8 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	$tmp = tempnam(sys_get_temp_dir(), 'std-inv-'); file_put_contents($tmp, $pdfBytes);
 	$up = cpx_storage_upload($path, $tmp, 'application/pdf', 'client-docs'); @unlink($tmp);
 	if ((int) $up >= 300) return array('ok' => false, 'errors' => array('Storage rechazó el PDF (código ' . $up . ')'));
-	$docTitle = sprintf($which === 1 ? $T['doc_title1'] : $T['doc_title2'], $number);
+	$labMail = cpx_inv_labels($T, $am, $which);
+	$docTitle = sprintf($labMail['title'], $number, $labMail['pct']);
 	$ins = cpx_sb('POST', 'client_project_docs', array('project_id' => $projectId, 'kind' => $which === 1 ? 'factura_anticipo' : 'factura_final', 'title' => $docTitle, 'path' => $path, 'size_bytes' => strlen($pdfBytes)));
 	if ((int) $ins['code'] >= 300) { cpx_storage_delete_object($path, 'client-docs'); return array('ok' => false, 'errors' => array('no se pudo registrar el documento (' . $ins['code'] . ')')); }
 	$docId = (is_array($ins['body']) && isset($ins['body'][0]['id'])) ? $ins['body'][0]['id'] : null;
