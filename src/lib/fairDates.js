@@ -137,6 +137,7 @@ export const fairDates = {
   'stand-vinitech-sifel-bordeaux': { start: '2026-12-01', end: '2026-12-03', cadence: 'biennial', source: 'https://www.vinitech-sifel.com/en' },
   'stand-energaia-montpellier': { start: '2026-12-09', end: '2026-12-10', cadence: 'annual', source: 'https://www.energaia.fr/en/' },
   'stand-iberocio-badajoz': { start: '2026-12-26', end: '2026-12-30', cadence: 'annual', source: 'https://www.feriabadajoz.es/evento/iberocio/' },
+  'stands-babykid-spain-fimi-valencia': { start: '2027-01-20', end: '2027-01-22', cadence: 'annual', source: 'https://www.fimi.es/en/babykid-spain-fimi-announces-dates-for-its-7th-edition-from-20-to-22-january-2027-at-feria-valencia/' },
   'stand-fitur-madrid': { start: '2027-01-20', end: '2027-01-24', cadence: 'annual', source: 'https://www.ifema.es/en/fitur' },
   'stand-sirha-lyon': { start: '2027-01-21', end: '2027-01-25', cadence: 'biennial', source: 'https://www.stand-sirha-lyon.com/en' },
   'stand-millesime-bio-montpellier': { start: '2027-01-25', end: '2027-01-27', cadence: 'annual', source: 'https://www.millesime-bio.com/en/' },

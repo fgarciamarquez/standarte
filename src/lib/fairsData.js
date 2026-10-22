@@ -1582,6 +1582,13 @@ export const fairsData = [
     "sector": "Comercio y Packaging"
   },
   {
+    "name": "Babykid Spain + FIMI",
+    "country": "es",
+    "slug": "stands-babykid-spain-fimi-valencia",
+    "city": "Valencia",
+    "sector": "Comercio y Packaging"
+  },
+  {
     "name": "Palma International Boat Show",
     "country": "es",
     "slug": "stand-palma-international-boat-show",

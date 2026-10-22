@@ -310,6 +310,7 @@ export const fairActivities = {
   "stand-iberflora-valencia": ["alimentacion"],
   "stand-gastronoma-valencia": ["gastronomia-hosteleria"],
   "stand-eurobrico-valencia": ["packaging"],
+  "stands-babykid-spain-fimi-valencia": ["moda-textil", "regalo-decoracion"],
   "stand-palma-international-boat-show": ["transporte"],
   "stand-palma-superyacht-village": ["transporte"],
   "stand-baleart-mallorca": ["cultura-arte"],
