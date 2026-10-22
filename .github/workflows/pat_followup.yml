@@ -1,12 +1,19 @@
 name: Pat Follow-up Email
 
 on:
-  schedule:
-    # Cada hora en punto, de 07:00 a 20:00 UTC, de lunes a sábado.
-    # Envía el correo personal "Pat" 1 h después de cada visita registrada.
-    # La PRIMERA ejecución solo siembra (marca accesos históricos como
-    # procesados, sin enviar); a partir de ahí solo escribe a accesos nuevos.
-    - cron: '0 7-20 * * 1-6'
+# ── DETENIDO el 22/10/2026 por decisión del usuario ──────────────────────────
+# El correo de seguimiento «Pat» tras cada visita (pat-followup.php) dejaba de dar los resultados esperados, así que se anula el envío
+# automático. El fichero se conserva entero: para reanudarlo basta con descomentar
+# el bloque `schedule` de abajo. El endpoint del servidor sigue existiendo y no
+# envía nada por su cuenta: solo responde si alguien lo llama.
+# Programación que tenía: cada hora de 07:00 a 20:00 UTC, de lunes a sábado
+#
+#  schedule:
+#     # Cada hora en punto, de 07:00 a 20:00 UTC, de lunes a sábado.
+#     # Envía el correo personal "Pat" 1 h después de cada visita registrada.
+#     # La PRIMERA ejecución solo siembra (marca accesos históricos como
+#     # procesados, sin enviar); a partir de ahí solo escribe a accesos nuevos.
+#     - cron: '0 7-20 * * 1-6'
   workflow_dispatch: # Permite ejecutarlo manualmente (útil para sembrar ya)
 
 jobs:

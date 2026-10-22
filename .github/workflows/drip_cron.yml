@@ -1,12 +1,19 @@
 name: Automated Drip Campaign
 
 on:
-  schedule:
-    # Cada hora en punto, de 05:00 a 18:00 UTC (07:00–20:00 hora de Madrid), de lunes a viernes.
-    # La primera tanda (05:00 UTC = 07:00 Madrid) ya envía de inmediato sus 15 correos (sin espera).
-    # GitHub Actions NO dispara crones sub-horarios de forma fiable (los limita a ~1/hora),
-    # así que la cadencia honesta es horaria: 15 correos por tanda x 14 h = ~210/día laborable.
-    - cron: '0 5-18 * * 1-5'
+# ── DETENIDO el 22/10/2026 por decisión del usuario ──────────────────────────
+# La campaña de goteo (cron_drip.php, ~165 correos por día laborable) dejaba de dar los resultados esperados, así que se anula el envío
+# automático. El fichero se conserva entero: para reanudarlo basta con descomentar
+# el bloque `schedule` de abajo. El endpoint del servidor sigue existiendo y no
+# envía nada por su cuenta: solo responde si alguien lo llama.
+# Programación que tenía: cada 20 min de 08:00 a 18:00 UTC, de lunes a viernes
+#
+#  schedule:
+#     # Cada hora en punto, de 05:00 a 18:00 UTC (07:00–20:00 hora de Madrid), de lunes a viernes.
+#     # La primera tanda (05:00 UTC = 07:00 Madrid) ya envía de inmediato sus 15 correos (sin espera).
+#     # GitHub Actions NO dispara crones sub-horarios de forma fiable (los limita a ~1/hora),
+#     # así que la cadencia honesta es horaria: 15 correos por tanda x 14 h = ~210/día laborable.
+#     - cron: '0 5-18 * * 1-5'
   workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
 
 jobs:
