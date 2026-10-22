@@ -125,7 +125,12 @@ export const fairDates = {
   'stand-eletrica-oporto': { start: '2026-11-18', end: '2026-11-21', cadence: 'biennial', source: 'https://exponor.pt/en/event-calendar/' },
   'stand-visa-for-music-rabat': { start: '2026-11-18', end: '2026-11-21', cadence: 'annual', source: 'https://visaformusic.com/en/home/' },
   'stand-cascais-international-health-forum': { start: '2026-09-24', end: '2026-09-25', cadence: 'annual', source: 'https://cascaisinternationalhealthforum.com/' },
-  'stand-cioc-lisboa': { start: '2026-11-19', end: '2026-11-21', cadence: 'annual', source: 'https://www.omd.pt/congresso/2026/en/' },
+  // CIOC (optometría y contactología, UPOOP): fecha RETIRADA el 22/10/2026. La entrada llevaba
+  // las fechas y la fuente del Congresso da OMD, que es el congreso de odontología y otra feria
+  // distinta (stands-expodentaria-lisboa), así que esta ficha publicaba las fechas de un evento
+  // ajeno. El CIOC además es itinerante y ha salido de Lisboa: XXVIII en marzo de 2026 en Leiria
+  // y XXIX el 12/03/2027 en Évora, así que no procede ninguna fecha en una ficha de Lisboa. Se
+  // deja fuera por la regla 1 mientras se decide qué hacer con la ficha.
   'stand-savim-marseille': { start: '2026-11-20', end: '2026-11-23', cadence: 'annual', source: 'https://www.salons-savim.fr/marseille/infos-pratiques-salon-savim-marseille/' },
   'stand-genera-madrid': { start: '2026-11-24', end: '2026-11-26', cadence: 'annual', source: 'https://www.ifema.es/en/genera' },
   'stand-sepem-industries-sud-est-grenoble': { start: '2026-11-24', end: '2026-11-26', cadence: 'biennial', source: 'https://grenoble.sepem-industries.com/content/practical-information' },
