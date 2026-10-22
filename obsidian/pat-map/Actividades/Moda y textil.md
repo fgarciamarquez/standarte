@@ -2,13 +2,14 @@
 tipo: actividad
 clave: moda-textil
 sector: "Comercio y Packaging"
-n_ferias: 19
+n_ferias: 20
 ---
 # Moda y textil
 
 Actividad del sector [[Comercio y Packaging]].
 
 ## Ferias
+- [[Babykid Spain + FIMI]]
 - [[Belmoda Granada]]
 - [[Encuentros Industriales AMITH Nord]]
 - [[Feria Internacional de Moda de Tenerife]]

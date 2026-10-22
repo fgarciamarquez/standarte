@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 11
+n_ferias: 12
 lat: 39.47
 lon: -0.38
 ---
@@ -10,6 +10,7 @@ lon: -0.38
 Ciudad dibujada en el mapa de Pat.
 
 ## Ferias aquí
+- [[Babykid Spain + FIMI]]
 - [[Beauty Forum Valencia]]
 - [[Cevisama]]
 - [[Congreso ANECORM]]

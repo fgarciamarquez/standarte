@@ -2,13 +2,14 @@
 tipo: actividad
 clave: regalo-decoracion
 sector: "Comercio y Packaging"
-n_ferias: 17
+n_ferias: 18
 ---
 # Regalo y decoración
 
 Actividad del sector [[Comercio y Packaging]].
 
 ## Ferias
+- [[Babykid Spain + FIMI]]
 - [[Belmoda Granada]]
 - [[ExpoDeca]]
 - [[FILDecor]]
