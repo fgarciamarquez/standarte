@@ -28,6 +28,31 @@
 require_once __DIR__ . '/lib/fpdf.php';
 
 /* ---------- Textos del contrato (es / en) ---------- */
+/* ---------- Póliza de responsabilidad civil ----------
+ * Respalda la cláusula de seguridad del contrato. Está aquí y solo aquí: el PDF la
+ * imprime desde estas constantes y cron_seguro.php avisa de su vencimiento leyendo las
+ * mismas, para que no puedan descuadrarse. AL RENOVAR: cambiar el número y la fecha.
+ * (La póliza es de ámbito nacional; el contrato no lo menciona por decisión del usuario,
+ * 22/10/2026.) */
+if (!defined('CPX_RC_INSURER')) define('CPX_RC_INSURER', 'Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.)');
+if (!defined('CPX_RC_NUMBER'))  define('CPX_RC_NUMBER', 'K1 R18 0003792');
+if (!defined('CPX_RC_LIMIT'))   define('CPX_RC_LIMIT', 300000);
+if (!defined('CPX_RC_EXPIRY'))  define('CPX_RC_EXPIRY', '2027-09-29');
+
+/* La frase del seguro, ya rellena, en el idioma del contrato. */
+function cpx_rc_sentence($T, $lang) {
+	$limite = ($lang === 'en')
+		? '€' . number_format(CPX_RC_LIMIT, 0, '.', ',')
+		: number_format(CPX_RC_LIMIT, 0, ',', '.') . ' €';
+	/* Fecha sin dia de la semana: en una poliza, «hasta el miercoles 29…» chirria. */
+	$mEs = array('enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre');
+	$ts = strtotime(CPX_RC_EXPIRY);
+	$vence = ($lang === 'en')
+		? date('j F Y', $ts)
+		: date('j', $ts) . ' de ' . $mEs[(int) date('n', $ts) - 1] . ' de ' . date('Y', $ts);
+	return sprintf($T['Hsec_ins'], CPX_RC_INSURER, CPX_RC_NUMBER, $limite, $vence);
+}
+
 function cpx_contract_texts($lang) {
 	$T = array(
 		'es' => array(
@@ -48,7 +73,7 @@ function cpx_contract_texts($lang) {
 			 * de ámbito nacional, pero el contrato no lo menciona (decisión del usuario,
 			 * 22/10/2026). Al renovar, actualizar aquí el número y la fecha de vencimiento. */
 			'Hsec' => 'H. STANDARTE, como Proveedor de servicios, deberá cumplir estrictamente con las normativas de seguridad pertinentes durante el proceso de construcción para garantizar la seguridad de la misma. Si ocurriera algún accidente de seguridad debido a la construcción por parte del Proveedor de servicios, causando daños a cualquier propiedad o a la seguridad personal, el Proveedor de servicios asumirá toda la responsabilidad.',
-			'Hsec_ins' => 'A tal efecto, STANDARTE tiene suscrita una póliza de seguro de responsabilidad civil general con Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.), número K1 R18 0003792, con un límite de 300.000 € por siniestro y por anualidad de seguro, en vigor hasta el 29 de septiembre de 2027.',
+			'Hsec_ins' => 'A tal efecto, STANDARTE tiene suscrita una póliza de seguro de responsabilidad civil general con %1$s, número %2$s, con un límite de %3$s por siniestro y por anualidad de seguro, en vigor hasta el %4$s.',
 			'C' => 'C. El coste total del servicio es de %s%s. En caso de modificación del plan de servicios, ambas partes acuerdan enmendar el contrato para sustituir o complementar el presente acuerdo.',
 			'D' => 'D. %s abonará por adelantado el 80 %% del importe (%s%s) mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte)%s. El pago final del 20 %% restante (%s) se realizará una vez entregado el proyecto en %s.',
 			'D_account' => ', en la cuenta %s (BIC %s)',
@@ -92,7 +117,7 @@ function cpx_contract_texts($lang) {
 			'B_ready' => 'The stand shall be finished and ready for use on %s, the day before the event opens. Meeting that date is STANDARTE\'s responsibility.',
 			'B_ready_nodate' => 'The stand shall be finished and ready for use on the day before the event opens. Meeting that date is STANDARTE\'s responsibility.',
 			'Hsec' => 'H. STANDARTE, as the Service Provider, shall strictly comply with the relevant safety regulations during the construction process in order to guarantee its safety. Should any safety accident occur as a result of the construction carried out by the Service Provider, causing damage to any property or to personal safety, the Service Provider shall assume full responsibility.',
-			'Hsec_ins' => 'To this end, STANDARTE holds a general civil liability insurance policy with Helvetia (Caja de Seguros Reunidos, Compañía de Seguros y Reaseguros, S.A.), number K1 R18 0003792, with a limit of €300,000 per claim and per insurance year, in force until 29 September 2027.',
+			'Hsec_ins' => 'To this end, STANDARTE holds a general civil liability insurance policy with %1$s, number %2$s, with a limit of %3$s per claim and per insurance year, in force until %4$s.',
 			'C' => 'C. The total cost of the service is %s%s. In the event of a modification to the service plan, both parties agree to amend the contract to replace or supplement this agreement.',
 			'D' => 'D. %s shall pay 80%% of the amount (%s%s) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer%s. The final payment of the remaining 20%% (%s) will be made after the project is delivered in %s.',
 			'D_account' => ', to account %s (BIC %s)',
@@ -331,7 +356,7 @@ function cpx_contract_pdf($d) {
 	$pdf->Para($d['rates'] ? sprintf($T['E'], date($d['lang'] === 'en' ? 'F j, Y' : 'd/m/Y', strtotime($d['rates']['date']))) : $T['E_norates']);
 	$pdf->Para($T['F']);
 	$pdf->Para($T['G']);
-	$pdf->Para($T['Hsec'] . ' ' . $T['Hsec_ins']);
+	$pdf->Para($T['Hsec'] . ' ' . cpx_rc_sentence($T, $d['lang']));
 	$pdf->Para($T['H']);
 	$pdf->Para(sprintf($T['third'], $d['client'], $d['client'], $d['client']));
 	$pdf->Para($T['fourth']);

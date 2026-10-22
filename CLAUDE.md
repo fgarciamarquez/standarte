@@ -32,6 +32,7 @@ Convención actual: **todo cambio de PHP se aplica en ambas copias**. Los ficher
 - `bounce_cleaner.yml` — 03:00 UTC y a los 5 min de cada drip: curl a `bounce-handler.php`.
 - `offer_deadline.yml` — diario 06:03/07:03 UTC: curl a `admin/cron_oferta.php` (aviso de la oferta la VÍSPERA de su vencimiento, con red de seguridad el mismo día si no se avisó; el texto aclara que el plazo incluye el día citado hasta las 24:00; ventana desde las 08:00 de Madrid hasta fin de día porque GitHub retrasa el cron).
 - `project_reminder.yml` — miércoles 07:03/08:03 UTC: curl a `admin/cron_recordatorio.php` (recordatorio semanal al cliente de que su proyecto sigue activo, con imagen y precio final; actúa a las 09:xx de Madrid; no se omite por visitas recientes porque `last_client_visit` también cuenta las del equipo; columnas `client_notified_at`, `reminder_sent_at`, `reminder_count`).
+- `insurance_reminder.yml` — diario 07:11 UTC: curl a `admin/cron_seguro.php` (aviso del vencimiento de la póliza de responsabilidad civil que nombra el contrato; avisa a 90, 60, 30, 15, 7, 3, 1 y 0 días, y a diario una vez vencida. Los datos de la póliza están en las constantes `CPX_RC_*` de `contract_lib.php`, que son las mismas que imprime el contrato: al renovar se cambian ahí y el aviso se entera solo).
 
 ## Histórico de precios de los proyectos de cliente (29/09/2026)
 

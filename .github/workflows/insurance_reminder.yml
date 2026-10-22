@@ -1,0 +1,17 @@
+name: Insurance Expiry Notice
+
+on:
+  schedule:
+    # 07:11 UTC a diario: en Madrid son las 08:11 o 09:11 según el horario. El PHP decide
+    # si toca avisar (90, 60, 30, 15, 7, 3, 1 y 0 días antes, y a diario si ya venció),
+    # así que una llamada diaria basta y no duplica nada.
+    - cron: '11 7 * * *'
+  workflow_dispatch: # Permite comprobarlo a mano desde GitHub
+
+jobs:
+  insurance-expiry-notice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comprobar el vencimiento de la póliza de RC en OVH
+        run: |
+          curl -sS "https://standarte.es/admin/cron_seguro.php?token=TKN-seguro-9d4c7f2b60"
