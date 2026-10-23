@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 29
+n_ferias: 28
 lat: 38.72
 lon: -9.14
 ---
@@ -13,7 +13,6 @@ Ciudad dibujada en el mapa de Pat.
 - [[ARCOlisboa]]
 - [[Airspace World]]
 - [[BTL Lisboa]]
-- [[CIOC]]
 - [[Cascais International Health Forum]]
 - [[ESICM LIVES Lisboa]]
 - [[ESRA Congress Lisboa]]

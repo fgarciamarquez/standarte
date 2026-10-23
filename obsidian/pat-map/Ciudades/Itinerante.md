@@ -1,13 +1,14 @@
 ---
 tipo: ciudad
 en_mapa: false
-n_ferias: 14
+n_ferias: 15
 ---
 # Itinerante
 
 Ciudad sin punto en el mapa (feria fuera de la malla peninsular).
 
 ## Ferias aquí
+- [[CIOC]]
 - [[Congreso ITS España]]
 - [[Congreso Nacional de Farmacéuticos Comunitarios]]
 - [[Congreso Nacional de la SEFH (Farmacia Hospitalaria)]]
