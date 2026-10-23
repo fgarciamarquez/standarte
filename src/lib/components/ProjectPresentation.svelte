@@ -1203,8 +1203,18 @@
   .pz-block { margin-top: 40px; }
   .pz-h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.18em; color: #1b1b1a; border-bottom: 1px solid #cfcdc4; padding-bottom: 8px; margin: 0 0 18px; }
   .pz-h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 8px; color: #444; }
-  .pz-media { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 22px; align-items: start; }
-  .pz-visual { position: relative; aspect-ratio: 4 / 3; border: 1px solid #cfcdc4; background: repeating-linear-gradient(135deg, #eceae2 0 12px, #e6e4da 12px 24px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; overflow: hidden; }
+  /* Foto 3/4, comentarios 1/4 (decisión del usuario, 23/10/2026): las cajas de comentario
+     apenas se usan y se estaban comiendo la mitad del espacio de la propuesta gráfica.
+     Con los 884 px útiles de .pz la imagen pasa de 433 a ~650 px de ancho y el hilo se
+     queda en ~216 px. El alto no cambia: lo mantiene el aspect-ratio de .pz-visual. */
+  .pz-media { display: grid; grid-template-columns: 3fr 1fr; gap: 18px; margin-bottom: 22px; align-items: start; }
+  /* La ampliación es SOLO horizontal (decisión del usuario, 23/10/2026): las imágenes ya
+     vienen con su proporción, así que la caja gana ancho y no gana alto. Con el reparto
+     3fr/1fr, el 2/1 deja el alto EXACTAMENTE igual que el 4/3 al 50 %, y no por
+     aproximación: antes era (ancho − 18) × 0,375 y ahora (ancho − 18) × 0,75 / 2, que es el
+     mismo número a cualquier ancho de pantalla. En móvil, con una sola columna, la caja
+     sigue siendo 4/3: allí no había nada que ensanchar (ver el bloque de 700 px). */
+  .pz-visual { position: relative; aspect-ratio: 2 / 1; border: 1px solid #cfcdc4; background: repeating-linear-gradient(135deg, #eceae2 0 12px, #e6e4da 12px 24px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; overflow: hidden; }
   .pz-visual-video { background: repeating-linear-gradient(135deg, #e4e6ec 0 12px, #dde0e8 12px 24px); }
   .pz-visual-model { background: #1b1b1a; color: #f4f3ee; }
   .pz-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -1222,17 +1232,21 @@
   .pz-ord-btn:disabled { opacity: .35; cursor: default; }
   .pz-ord-n { color: #fff; font-size: 12px; font-weight: 700; min-width: 14px; text-align: center; }
   .pz-chat { display: flex; flex-direction: column; border: 1px solid #cfcdc4; background: #fff; min-height: 100%; }
-  .pz-thread { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; max-height: 240px; overflow-y: auto; }
+  .pz-thread { flex: 1; min-height: 0; padding: 12px; display: flex; flex-direction: column; gap: 8px; max-height: 240px; overflow-y: auto; }
   .pz-empty { color: #999; font-size: 13px; margin: 0; }
   .pz-msg { display: flex; flex-direction: column; padding: 7px 10px; border-radius: 4px; background: #f4f3ee; max-width: 92%; }
   .pz-msg.internal { background: #e9efe9; align-self: flex-end; }
   .pz-msg-who { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #888; }
-  .pz-msg-text { font-size: 14px; }
+  /* A 216 px de ancho una referencia larga sin espacios (un código de proyecto, una URL)
+     se salía de la burbuja; que parta por donde haga falta. */
+  .pz-msg-text { font-size: 14px; overflow-wrap: anywhere; }
   .pz-msg-time { font-size: 10px; color: #aaa; align-self: flex-end; }
-  .pz-compose { display: flex; border-top: 1px solid #e2e0d7; }
-  .pz-compose input { flex: 1; border: none; padding: 10px; font-family: inherit; font-size: 14px; background: #fff; }
+  /* Campo + botón en una línea mientras quepan, y si no, el botón baja a la suya a lo
+     ancho. Antes era una fila rígida: en la columna estrecha el campo se quedaba en nada. */
+  .pz-compose { display: flex; flex-wrap: wrap; border-top: 1px solid #e2e0d7; }
+  .pz-compose input { flex: 1 1 110px; min-width: 0; border: none; padding: 10px; font-family: inherit; font-size: 14px; background: #fff; }
   .pz-compose input:focus { outline: none; background: #fbfbf7; }
-  .pz-compose button { border: none; background: #1b1b1a; color: #fff; padding: 0 16px; font-family: inherit; font-size: 13px; cursor: pointer; }
+  .pz-compose button { flex: 1 1 auto; border: none; background: #1b1b1a; color: #fff; padding: 10px 14px; font-family: inherit; font-size: 13px; cursor: pointer; }
   .pz-compose input:disabled, .pz-compose button:disabled { opacity: .5; cursor: not-allowed; }
   .pz-drop { border: 2px dashed #b9b6a8; border-radius: 10px; padding: 26px; text-align: center; color: #7a776b; cursor: pointer; background: #faf9f4; transition: all .15s; }
   .pz-drop.over { border-color: #1b1b1a; background: #f0eee5; color: #1b1b1a; }
@@ -1401,7 +1415,9 @@
   .pz-send { background: #1b1b1a; color: #fff; border: none; padding: 14px 40px; font-family: inherit; font-size: 16px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; border-radius: 4px; transition: background 0.2s ease; }
   .pz-send:hover:not(:disabled) { background: #000; }
   .pz-send:disabled { opacity: 0.5; cursor: default; }
-  @media (max-width: 700px) { .pz-media { grid-template-columns: 1fr; } .pz-inex { grid-template-columns: 1fr; } }
+  /* Apiladas: la foto a todo el ancho con su 4/3 de siempre —aquí no había mitad que
+     recuperar— y el hilo debajo. */
+  @media (max-width: 700px) { .pz-media { grid-template-columns: 1fr; } .pz-inex { grid-template-columns: 1fr; } .pz-visual { aspect-ratio: 4 / 3; } }
   /* Contravalor en dolares bajo cada cifra en euros del resumen. */
   .pz-paused-banner {
     margin: 0 0 16px; padding: 12px 16px; border-radius: 8px;
