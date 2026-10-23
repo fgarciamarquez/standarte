@@ -125,12 +125,12 @@ export const fairDates = {
   'stand-eletrica-oporto': { start: '2026-11-18', end: '2026-11-21', cadence: 'biennial', source: 'https://exponor.pt/en/event-calendar/' },
   'stand-visa-for-music-rabat': { start: '2026-11-18', end: '2026-11-21', cadence: 'annual', source: 'https://visaformusic.com/en/home/' },
   'stand-cascais-international-health-forum': { start: '2026-09-24', end: '2026-09-25', cadence: 'annual', source: 'https://cascaisinternationalhealthforum.com/' },
-  // CIOC (optometría y contactología, UPOOP): fecha RETIRADA el 22/10/2026. La entrada llevaba
-  // las fechas y la fuente del Congresso da OMD, que es el congreso de odontología y otra feria
-  // distinta (stands-expodentaria-lisboa), así que esta ficha publicaba las fechas de un evento
-  // ajeno. El CIOC además es itinerante y ha salido de Lisboa: XXVIII en marzo de 2026 en Leiria
-  // y XXIX el 12/03/2027 en Évora, así que no procede ninguna fecha en una ficha de Lisboa. Se
-  // deja fuera por la regla 1 mientras se decide qué hacer con la ficha.
+  // CIOC, el congreso de optometría de UPOOP. Es ITINERANTE y hay que revisar la sede en cada
+  // edición: XXVII en 2025 en el Centro Cultural de Belém (Lisboa), XXVIII en marzo de 2026 en
+  // Leiria y XXIX en Évora. Ojo: hasta el 22/10/2026 esta entrada llevaba por error las fechas y
+  // la fuente del Congresso da OMD, que es el congreso de ODONTOLOGÍA y otra feria distinta
+  // (stands-expodentaria-lisboa); la ficha publicaba las fechas de un evento ajeno.
+  'stand-cioc-lisboa': { start: '2027-03-12', end: '2027-03-14', cadence: 'annual', source: 'https://upoop.pt/noticias/regulamento-para-as-submissoes-livres-dos-trabalhos-para-o-xxix-congresso-internacional-de-optometria-e-contactologia-12-13-e-14-de-marco-de-2027' },
   'stand-savim-marseille': { start: '2026-11-20', end: '2026-11-23', cadence: 'annual', source: 'https://www.salons-savim.fr/marseille/infos-pratiques-salon-savim-marseille/' },
   'stand-genera-madrid': { start: '2026-11-24', end: '2026-11-26', cadence: 'annual', source: 'https://www.ifema.es/en/genera' },
   'stand-sepem-industries-sud-est-grenoble': { start: '2026-11-24', end: '2026-11-26', cadence: 'biennial', source: 'https://grenoble.sepem-industries.com/content/practical-information' },

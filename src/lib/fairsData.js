@@ -2082,7 +2082,7 @@ export const fairsData = [
     "name": "CIOC",
     "country": "pt",
     "slug": "stand-cioc-lisboa",
-    "city": "Lisboa",
+    "city": "Itinerante",
     "sector": "Salud y Medicina"
   },
   {

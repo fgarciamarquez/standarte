@@ -528,7 +528,7 @@ export const fairFreshness = {
   'stand-cevisama-valencia': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-cfia-toulouse': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-cider-fest-madeira': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
-  'stand-cioc-lisboa': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
+  'stand-cioc-lisboa': '2026-10-23',   // congreso itinerante: texto, sede y fechas al día (23/10/2026)
   'stand-ciocv-braga': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-cm-malaga': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-coleccionismo-emerita-augusta-merida': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)

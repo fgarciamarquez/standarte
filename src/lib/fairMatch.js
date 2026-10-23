@@ -39,7 +39,7 @@ export const fairAliases = {
   // el congreso y, sobre todo, la sigla de la Orden.
   'stands-expodentaria-lisboa': ['OMD', 'Congresso OMD', 'Congresso da OMD', 'Ordem dos Médicos Dentistas', 'congreso dental Portugal'],
   // Nombres que en el catálogo son solo siglas: la forma desarrollada no era encontrable.
-  'stand-cioc-lisboa': ['Congresso Internacional de Optometria e Contactologia', 'optometría', 'contactología', 'UPOOP'],
+  'stand-cioc-lisboa': ['Congresso Internacional de Optometria e Contactologia', 'optometría', 'contactología', 'UPOOP', 'Évora', 'Leiria'],
   'stand-ciocv-braga': ['Congresso Internacional de Optometria e Ciências da Visão', 'optometría', 'ciencias de la visión', 'UPOOP'],
   // Feria de pedidos del comercio infantil: se la busca por su oferta, no por la marca.
   'stands-babykid-spain-fimi-valencia': ['moda infantil', 'puericultura', 'ASEPRI', 'juguete']
