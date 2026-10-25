@@ -235,16 +235,77 @@ export const builderSeoData = {
       introText: 'Construimos stands a medida para el Bilbao Exhibition Centre (BEC) desde nuestro taller: estructuras preparadas para máquina-herramienta y producto pesado, dobles alturas que aprovechan los 12-15 m libres del recinto y acabados de carpintería premium.',
       body: `
         <h2>Constructor de stands en Bilbao: construir para el BEC y su industria</h2>
-        <p>El BEC de Barakaldo es un recinto de escala industrial y sus ferias lo demuestran: en la <a href="/ferias/stands-biemh-bilbao-bec">BIEMH</a> se exponen máquinas-herramienta que se descargan con grúa y funcionan durante toda la feria, así que construir aquí significa dimensionar el suelo para cargas reales, coordinar con el recinto los medios de elevación y dejar resueltas las acometidas antes de que la máquina llegue. La altura libre de los pabellones —entre 12 y 15 metros— permite además algo que en recintos más bajos no cabe: dobles alturas con sala de reuniones arriba y exposición abajo, calculadas y fabricadas enteras en taller antes de pisar el pabellón.</p>
-        <h2>Constructor de stands en Bilbao: cómo trabajamos la plaza</h2>
+        <p>El BEC de Barakaldo es un recinto de escala industrial y sus ferias lo demuestran: en la <a href="/ferias/stands-biemh-bilbao-bec">BIEMH</a> se exponen máquinas-herramienta que se descargan con grúa y funcionan durante toda la feria. Construir aquí significa dimensionar el suelo para cargas reales, coordinar con el recinto los medios de elevación y dejar las tomas eléctricas resueltas antes de que la máquina llegue.</p>
+        <p>La altura libre de los pabellones —entre 12 y 15 metros— permite además algo que en recintos más bajos no cabe: dobles alturas con sala de reuniones arriba y exposición abajo. Es una de las construcciones que más veces resolvemos en esta plaza, y se calcula y fabrica entera en taller antes de pisar el pabellón.</p>
+        <ul>
+          <li><strong>Un solo interlocutor</strong> del primer plano al desmontaje, sin intermediarios.</li>
+          <li><strong>Prototipo 3D</strong> que es exactamente lo que se construye.</li>
+          <li><strong>Fabricación en nuestro taller</strong> y premontaje antes de viajar al BEC.</li>
+          <li><strong>Montaje terminado 24&nbsp;h antes</strong> de la apertura.</li>
+        </ul>
+        <h2>Constructor de stands en Bilbao: qué construimos</h2>
+        <h3>Stands para maquinaria y producto pesado</h3>
+        <p>Suelos técnicos calculados para la carga de cada equipo, pasos de instalación bajo tarima y acometidas previstas con el BEC, para exponer máquinas en marcha sin cables a la vista.</p>
+        <h3>Dobles alturas</h3>
+        <p>Estructura calculada, escalera y sala de reuniones arriba para aprovechar los pabellones altos del recinto: metros de negociación sin restar metros de exposición.</p>
+        <h3>Stands de diseño libre en carpintería</h3>
+        <p>Paramentos, mostradores y mobiliario fabricados a medida, con acabados lacados, chapados o textiles y gráfica retroiluminada para destacar en pasillos de gran escala.</p>
+        <h3>Stands modulares reutilizables</h3>
+        <p>Para quien repite en el calendario del BEC —BIEMH es bienal y alterna con Subcontratación—, una estructura que se guarda, se reconfigura y vuelve con la gráfica actualizada.</p>
+        <p><strong>¿Tienes una feria próxima en el BEC?</strong> Cuanto antes conozcamos el espacio contratado y el equipo que vas a exponer, mejor encajan cargas, instalaciones y plazos.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Bilbao</a></p>
+        <h2>Constructor de stands en Bilbao: por qué construir con Standarte</h2>
+        <ul>
+          <li><strong>Construimos, no intermediamos.</strong> El stand se fabrica en nuestro taller, con nuestro equipo: el presupuesto no lleva la comisión de un tercero.</li>
+          <li><strong>Estudiamos el recinto antes de diseñar.</strong> Plano del pabellón, normas del BEC, cargas y alturas: el stand nace para ese espacio, no se adapta después.</li>
+          <li><strong>Lo que apruebas es lo que se construye.</strong> Cada aprobación queda registrada en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>.</li>
+          <li><strong>Obra real en Bilbao.</strong> Más de 30 stands publicados en nuestra cartera de proyectos para empresas que exponen en esta plaza.</li>
+        </ul>
+        <h2>Constructor de stands en Bilbao: cómo trabajamos, del plano al desmontaje</h2>
         <ol>
-          <li><strong>Briefing, plano y prototipo 3D</strong> con el espacio contratado en el BEC, las cargas de los equipos que se exponen y las normas del recinto.</li>
-          <li><strong>Fabricación y premontaje en nuestro taller</strong>: carpintería, estructura, gráfica e instalaciones probadas antes de cargar el camión.</li>
-          <li><strong>Montaje con equipo propio</strong>, terminado 24&nbsp;h antes de la apertura, y desmontaje al cierre guardando lo reutilizable para la siguiente cita.</li>
+          <li><strong>Briefing y plano.</strong> Objetivos, espacio contratado en el BEC y equipos que se exponen.</li>
+          <li><strong>Prototipo 3D y presupuesto.</strong> Lo revisas, lo ajustamos y lo apruebas.</li>
+          <li><strong>Fabricación y premontaje en taller.</strong> Carpintería, estructura, gráfica e instalaciones probadas antes de cargar.</li>
+          <li><strong>Montaje, feria y desmontaje.</strong> Nuestro equipo monta, está localizable durante la feria y retira el stand al cierre.</li>
         </ol>
+        <h2>Constructor de stands en Bilbao: proyectos que hemos construido</h2>
+        <p>Una muestra de stands para empresas que exponen en Bilbao, con su ficha de proyecto:</p>
+        <ul>
+          <li><a href="/proyectos/stand_para_empresa_de_automatizacion_por_vacio_en_bilbao">Stand para empresa de automatización por vacío</a></li>
+          <li><a href="/proyectos/stand_para_fabricante_de_elastomeros_en_bilbao">Stand para fabricante de elastómeros</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_tecnologia_industrial_en_bilbao">Stand para empresa de tecnología industrial</a></li>
+          <li><a href="/proyectos/stand_para_aerolinea_de_carga_en_bilbao">Stand para aerolínea de carga</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_packaging_en_bilbao">Stand para empresa de packaging</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_cruceros_en_bilbao">Stand para empresa de cruceros</a></li>
+        </ul>
         <h2>Constructor de stands en Bilbao: ferias del recinto</h2>
-        <p>Construimos para el calendario del BEC: <a href="/ferias/stands-biemh-bilbao-bec">BIEMH</a>, <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stand-egurtek-bilbao">Egurtek</a> y <a href="/ferias/stand-world-maritime-week-bilbao">World Maritime Week</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-bilbao">diseño y montaje de stands en Bilbao</a>.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Bilbao</a></p>`
+        <p>Construimos para el calendario del BEC: <a href="/ferias/stands-biemh-bilbao-bec">BIEMH</a>, <a href="/ferias/stands-subcontratacion-bilbao">Subcontratación</a>, <a href="/ferias/stands-pumps-valves-bilbao">Pumps &amp; Valves</a>, <a href="/ferias/stands-maintenance-bilbao">Maintenance</a>, <a href="/ferias/stand-addit3d-bilbao">Addit3D</a>, <a href="/ferias/stand-egurtek-bilbao">Egurtek</a> y <a href="/ferias/stand-world-maritime-week-bilbao">World Maritime Week</a>. El servicio completo de diseño y montaje está en <a href="/diseno-construccion-montaje-stands-bilbao">diseño y montaje de stands en Bilbao</a>.</p>`,
+      faqs: [
+        {
+          "q": "¿Fabricáis vosotros el stand o lo subcontratáis?",
+          "a": "Lo fabricamos en nuestro propio taller, con nuestro equipo de carpinteros y montadores. No subcontratamos la producción ni el montaje, y un único responsable lleva el proyecto de principio a fin."
+        },
+        {
+          "q": "¿Podéis construir un stand con maquinaria en funcionamiento en el BEC?",
+          "a": "Sí. Calculamos el suelo técnico para la carga de cada equipo, dejamos previstos los pasos de instalación y coordinamos con el BEC la entrada de la maquinaria y las acometidas eléctricas."
+        },
+        {
+          "q": "¿Construís stands de doble altura en Bilbao?",
+          "a": "Sí, es una de las construcciones más habituales en el BEC por la altura libre de sus pabellones. Se calcula la estructura, se fabrica y se premonta en taller antes del montaje."
+        },
+        {
+          "q": "¿Con cuánta antelación hay que encargar el stand?",
+          "a": "Lo recomendable son 6-8 semanas antes de la feria; para dobles alturas o maquinaria pesada, algo más. Con plazos más cortos también trabajamos, porque fabricamos en taller propio."
+        },
+        {
+          "q": "¿Se puede reutilizar el stand en otras ferias?",
+          "a": "Sí. Diseñamos estructuras modulares que se guardan entre ferias, se reconfiguran para otro espacio y vuelven con la gráfica actualizada."
+        },
+        {
+          "q": "¿Cuánto cuesta un stand en Bilbao?",
+          "a": "Depende de los metros cuadrados, la estructura y los acabados. En la página de precios hay tramos orientativos y te preparamos un presupuesto cerrado en 24 h con el prototipo 3D."
+        }
+      ]
     }
   },
 
@@ -2000,15 +2061,56 @@ const EN = {
     introText: 'We build custom stands for BEC (Bilbao Exhibition Centre) from our own workshop: structures sized for industrial machinery, technical floors and finishes that hold up through a heavy-traffic show.',
     body: `
         <h2>Stand builder in Bilbao: building for the BEC and its industry</h2>
-        <p>The BEC in Barakaldo is an industrial-scale venue and its shows prove it: at <a href="/en/ferias/stands-biemh-bilbao-bec">BIEMH</a>, machine tools arrive by crane and run for the whole show, so building here means sizing the floor for real loads, agreeing lifting equipment with the venue and having power ready before the machine arrives. The 12-15 m clear height of the halls also allows what lower venues cannot: double-deck stands with a meeting room above and the display below, calculated and built in our workshop before we reach the hall.</p>
-        <h2>Stand builder in Bilbao: how we work the city</h2>
-        <ol>
-          <li><strong>Briefing, hall plan and 3D prototype</strong> with the space booked at the BEC, the loads of the equipment on show and the venue's rules.</li>
-          <li><strong>Manufacturing and pre-assembly in our workshop</strong>: joinery, structure, graphics and services all tested before the truck is loaded.</li>
-          <li><strong>Installation by our own team</strong>, finished 24&nbsp;h before opening, and dismantling at close, keeping whatever can be reused for the next show.</li>
-        </ol>
+        <p>The BEC in Barakaldo is an industrial-scale venue and its shows prove it: at <a href="/en/ferias/stands-biemh-bilbao-bec">BIEMH</a>, machine tools arrive by crane and run for the whole show. Building here means sizing the floor for real loads, agreeing lifting equipment with the venue and having power ready before the machine arrives. The 12-15 m clear height of the halls also allows what lower venues cannot: double-deck stands with a meeting room above and the display below, calculated and built in our workshop before we reach the hall.</p>
+        <ul>
+          <li><strong>One contact</strong> from the first plan to dismantling.</li>
+          <li><strong>A 3D prototype</strong> that is exactly what gets built.</li>
+          <li><strong>Built in our own workshop</strong> and pre-assembled before travelling to the BEC.</li>
+          <li><strong>Finished 24&nbsp;h before</strong> opening.</li>
+        </ul>
+        <h2>Stand builder in Bilbao: what we build</h2>
+        <h3>Stands for machinery and heavy products</h3>
+        <p>Technical floors calculated for each machine's load, cable routes under the platform and services agreed with the BEC, so equipment runs with no cables in sight.</p>
+        <h3>Double-deck stands</h3>
+        <p>Calculated structure, stairs and an upper meeting room that uses the venue's high halls without losing display space.</p>
+        <h3>Reusable modular stands</h3>
+        <p>For exhibitors who return to the BEC calendar, a structure that is stored, reconfigured and comes back with updated graphics.</p>
+        <p><strong>Exhibiting at the BEC soon?</strong> The sooner we know your space and equipment, the better loads, services and timings fit.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Bilbao</a></p>
+        <h2>Stand builder in Bilbao: why build with Standarte</h2>
+        <ul>
+          <li><strong>We build, we don't broker.</strong> Your stand is made in our workshop by our team, with no third-party margin.</li>
+          <li><strong>We study the venue first.</strong> Hall plan, BEC rules, loads and heights shape the design from day one.</li>
+          <li><strong>What you approve is what gets built.</strong> Every approval is recorded in our <a href="/en/audited-project">Audited Project System</a>.</li>
+          <li><strong>Real work in Bilbao.</strong> Over 30 stands published in our project portfolio for companies exhibiting here.</li>
+        </ul>
+        <h2>Stand builder in Bilbao: projects we have built</h2>
+        <ul>
+          <li><a href="/proyectos/stand_para_empresa_de_automatizacion_por_vacio_en_bilbao?lang=en">Stand for a vacuum automation company</a></li>
+          <li><a href="/proyectos/stand_para_fabricante_de_elastomeros_en_bilbao?lang=en">Stand for an elastomer manufacturer</a></li>
+          <li><a href="/proyectos/stand_para_empresa_de_tecnologia_industrial_en_bilbao?lang=en">Stand for an industrial technology company</a></li>
+          <li><a href="/proyectos/stand_para_aerolinea_de_carga_en_bilbao?lang=en">Stand for a cargo airline</a></li>
+        </ul>
         <h2>Stand builder in Bilbao: shows at the venue</h2>
-        <p>We build across the BEC calendar: <a href="/en/ferias/stands-biemh-bilbao-bec">BIEMH</a>, <a href="/en/ferias/stands-subcontratacion-bilbao">Subcontratación</a> and <a href="/en/ferias/stand-addit3d-bilbao">Addit3D</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_bilbao">stand design and installation in Bilbao</a> page.</p>`
+        <p>We build across the BEC calendar: <a href="/en/ferias/stands-biemh-bilbao-bec">BIEMH</a>, <a href="/en/ferias/stands-subcontratacion-bilbao">Subcontratación</a> and <a href="/en/ferias/stand-addit3d-bilbao">Addit3D</a>. The full design-and-build service is on our <a href="/en/stand_design_assembly_bilbao">stand design and installation in Bilbao</a> page.</p>`,
+      faqs: [
+        {
+          "q": "Do you build the stand yourselves or subcontract it?",
+          "a": "We build it in our own workshop with our own carpenters and installers, and one person is responsible for the project from start to finish."
+        },
+        {
+          "q": "Can you build a stand with working machinery at the BEC?",
+          "a": "Yes. We calculate the technical floor for each machine, plan cable routes and coordinate machinery entry and power with the BEC."
+        },
+        {
+          "q": "Do you build double-deck stands in Bilbao?",
+          "a": "Yes, they are common at the BEC thanks to its high halls. The structure is calculated, built and pre-assembled in our workshop."
+        },
+        {
+          "q": "How much does a stand in Bilbao cost?",
+          "a": "It depends on size, structure and finishes. Our prices page shows indicative ranges, and we send a fixed quote with a 3D prototype within 24 h."
+        }
+      ]
   },
   constructor_stand_badajoz: {
     breadcrumb: 'Stand builder in Badajoz',

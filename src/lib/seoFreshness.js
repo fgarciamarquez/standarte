@@ -93,7 +93,7 @@ export const seoFreshness = {
   constructor_stand_barcelona: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   constructor_stand_oporto: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   constructor_stand_lisboa: '2026-09-26',   // vuelve al formato ligero; sale del piloto (26/09/2026)
-  constructor_stand_bilbao: '2026-10-23',   // fuera del piloto de contenido completo: formato ligero sin FAQ (23/10/2026)
+  constructor_stand_bilbao: '2026-10-25',   // REVERTIDO el recorte del 23/10: vuelve al contenido completo con FAQ (25/10/2026)
   constructor_stand_badajoz: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   constructor_stand_don_benito: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   constructor_stand_malaga: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
