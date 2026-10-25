@@ -1022,6 +1022,26 @@
     // cada arquetipo clasificado recibe su H2 compuesto; sin ciudad (o secciones
     // no clasificadas que no sean el bloque de urgencia), se deja el original.
     const compose = (key) => (cityName ? cityH2(lang, cityName, key) : null);
+    // PENDIENTE (23/10/2026), con el diagnóstico hecho y el arreglo NO aplicado.
+    //
+    // La composición por arquetipo de la línea anterior sustituye el encabezado escrito a
+    // mano por la etiqueta genérica del apartado, y con ella se van los términos del
+    // recinto. En Lisboa eso deja «FIL (Feira Internacional de Lisboa)», «Parque das
+    // Nações», «Península» y «sin subcontratar» con CERO apariciones en los H2 de la
+    // página publicada, cuando el cuerpo de richSeoData tiene 11 H2 escritos con esos
+    // términos. Entró el 23-24/09; la caída de Lisboa se detectó el 26/09. Quitar términos
+    // va además contra la política del usuario, el mismo error del 22/09 con «construcción».
+    //
+    // Se intentó una lista blanca (`KEEP_OWN_H2 = new Set(['lisboa'])`) que compusiera con
+    // cityH2Custom para conservar la cola propia. NO FUNCIONA, y se revirtió tras probarla:
+    //   1. cityH2Custom retira el nombre de la ciudad del texto y deja colgando la
+    //      preposición: «¿Cuándo es tu próxima feria en ?».
+    //   2. «FIL» sigue sin volver, porque los apartados de documentación y de logística no
+    //      reciben su titular por este `withH2`: se clasifican y se fusionan más abajo.
+    //   3. De paso movía los apartados «cómo trabajamos» y «tipos» de la familia «diseño»
+    //      a «stands para ferias», empeorando el reparto de expresiones.
+    // El arreglo correcto pasa por el camino de los apartados clasificados y por el merge,
+    // no por aquí, y merece hacerse con calma y no en plena emergencia de esta plaza.
     const withH2 = (section, h2) => {
       if (!h2) return section;
       const { lead, heading, rest } = heading2Parts(section);
@@ -1490,11 +1510,14 @@
       logo: `${baseUrl}/img/logo_standarte_rectanular.png`,
       image: `${baseUrl}/img/trabajos/TCANTICO/1.avif`,
       priceRange: '$$$',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '158'
-      },
+      /* Sin aggregateRating (23/10/2026). Iba escrito a mano —4,9 con 158 reseñas— y no
+         hay ni una reseña guardada en ninguna parte: el 158 era, literalmente, el contador
+         de ferias cubiertas de este mismo fichero. Publicar reseñas que no existen en datos
+         estructurados incumple la política de Google, y Google no da estrellas a una
+         valoración que la propia empresa se asigna, así que quitarlo no cuesta nada de
+         visibilidad. En un dominio con historial de denuncias de la competencia, además,
+         era munición servida. Si algún día el 4,9 tiene una fuente real y verificable
+         (perfil público de Google), se vuelve a declarar citando esa fuente. */
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
