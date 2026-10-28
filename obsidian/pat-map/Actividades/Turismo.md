@@ -2,7 +2,7 @@
 tipo: actividad
 clave: turismo
 sector: "Turismo y Hostelería"
-n_ferias: 30
+n_ferias: 31
 ---
 # Turismo
 
@@ -25,6 +25,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Feria del Caballo de Jerez]]
 - [[Fira d'Andorra la Vella]]
 - [[Fitur Madrid]]
+- [[ILTM Cannes]]
 - [[INTUR]]
 - [[InteriHOTEL]]
 - [[Madrid Fusión]]

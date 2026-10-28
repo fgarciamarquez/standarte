@@ -2,7 +2,7 @@
 tipo: actividad
 clave: congreso-profesional
 sector: "Multisectorial y Profesional"
-n_ferias: 60
+n_ferias: 61
 ---
 # Congreso profesional
 
@@ -41,6 +41,7 @@ Actividad del sector [[Multisectorial y Profesional]].
 - [[Forum de l'Étudiant, de la Formation et de l'Emploi]]
 - [[Global Mobility Call]]
 - [[IEEE NSS MIC RTSD]]
+- [[ILTM Cannes]]
 - [[ITS European Congress]]
 - [[IoT Solutions World Congress Barcelona]]
 - [[Les Entreprenariales]]
