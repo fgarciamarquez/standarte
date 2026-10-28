@@ -1368,9 +1368,19 @@
   .pz-dl-hint { font-size: 18px; line-height: 1; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.5); opacity: 0.85; text-decoration: none; cursor: pointer; }
   .pz-dl-hint:hover, .pz-dl-hint:focus-visible { opacity: 1; color: #ffc800; }
   .pz-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(20, 20, 18, 0.88); }
-  .pz-lb-close { position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: #fff; font-size: 26px; line-height: 1; border-radius: 50%; cursor: pointer; }
+  /* z-index 2 (antes auto): al dar contexto de apilamiento a .pz-lb-inner, sin esto el
+     botón de cerrar se quedaría DEBAJO del contenido, y en un móvil en vertical el vídeo
+     llega a la esquina superior derecha. Las flechas ya tenían su z-index 2. */
+  .pz-lb-close { position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: #fff; font-size: 26px; line-height: 1; border-radius: 50%; cursor: pointer; z-index: 2; }
   .pz-lb-close:hover { background: rgba(255,255,255,0.12); }
-  .pz-lb-inner { margin: 0; max-width: min(1100px, 94vw); max-height: 88vh; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  /* position+z-index en la figura: le da CONTEXTO DE APILAMIENTO propio, por encima del
+     fondo rgba(20,20,18,0.88) del contenedor. Antes era estática, y un iframe de otro
+     origen con vídeo se compone en Android Chrome en su propia capa de hardware: si esa
+     capa se ordena mal, nuestro fondo translúcido acaba pintado SOBRE el vídeo y se ve
+     exactamente como lo describió el usuario. No está confirmado que fuera eso —el
+     contenido del iframe es de Google y no se puede inspeccionar—, pero declarar el orden
+     en vez de dejarlo al compositor no cuesta nada y elimina el candidato. */
+  .pz-lb-inner { position: relative; z-index: 1; margin: 0; max-width: min(1100px, 94vw); max-height: 88vh; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
   /* Tope DEFINITO en unidades de viewport (no %): un max-width en % se resuelve contra
      el contenedor inline-flex, cuya anchura depende del propio vídeo → nunca limitaba y
      en móvil el vídeo desbordaba toda la pantalla. min(1100px,92vw) siempre acota. */
@@ -1409,7 +1419,41 @@
   .pz-lb-nav:hover { background: rgba(255,255,255,0.16); }
   .pz-lb-nav.prev { left: 20px; }
   .pz-lb-nav.next { right: 20px; }
-  @media (max-width: 700px) { .pz-lb-nav { width: 42px; height: 42px; font-size: 26px; } .pz-lb-nav.prev { left: 8px; } .pz-lb-nav.next { right: 8px; } }
+  /* EL VISOR EN MÓVIL (28/10/2026). Hasta hoy no existía NI UNA regla móvil para
+     .pz-lightbox, .pz-lb-inner ni .pz-lb-iframe: el visor se servía al teléfono con las
+     medidas pensadas para un monitor. Medido en pantallas reales, lo que salía:
+       · 360x800 → el vídeo en 338x190 px. El 27 % de la pantalla, y el 73 % restante
+         cubierto por nuestro propio negro al 88 %. En un 412x915 sobraban 500 px sin usar.
+       · El iframe pedía width:94vw dentro de un .pz-lightbox con padding:24px, o sea un
+         contenedor de 100vw-48px. 94vw solo cabe ahí a partir de 800 px de ancho: en TODOS
+         los teléfonos se salía y se cortaba, y no encogía porque en un flex en columna la
+         anchura es el eje transversal, que el flex no reduce.
+       · En horizontal, max-height:80vh ganaba al aspect-ratio (el ratio solo transfiere
+         medidas cuando una dimensión es auto), la caja se deformaba a ~2,6:1 y la figura
+         desbordaba la pantalla SIN scroll posible, porque el contenedor es position:fixed.
+     Y el motivo por el que esto podía producir el velo: el cromo del reproductor de Drive
+     —barra de título y barra de controles, cada una con su degradado— mide un número FIJO
+     de píxeles (~120 px entre las dos) que no se reduce con la caja. Sobre 190 px de alto
+     tapa ~65 % y los dos degradados se juntan en el centro; sobre los 619 px del escritorio
+     tapa ~20 % y solo en los bordes (y allí se oculta al retirar el ratón, gesto que en
+     táctil no existe). Dándole al iframe casi todo el alto, el vídeo 16:9 se centra y esas
+     barras caen sobre las bandas negras del encuadre en lugar de sobre la imagen.
+     dvh y no vh: en Chrome de Android vh se mide contra el viewport GRANDE (con la barra de
+     direcciones retraída) mientras el elemento fixed llena solo el visible, así que 80vh se
+     salía de la pantalla. Donde dvh no exista, la declaración se descarta y queda el
+     comportamiento anterior. */
+  @media (max-width: 700px) {
+    .pz-lb-nav { width: 42px; height: 42px; font-size: 26px; }
+    .pz-lb-nav.prev { left: 8px; }
+    .pz-lb-nav.next { right: 8px; }
+    .pz-lightbox { padding: 8px; }
+    .pz-lb-close { top: 8px; right: 8px; }
+    .pz-lb-inner { width: 100%; max-width: 100%; max-height: 94dvh; }
+    /* aspect-ratio: auto para que manden el ancho y el alto, no el 16/9: el reproductor
+       encuadra el vídeo dentro y las barras de Drive quedan fuera de la imagen. */
+    .pz-lb-iframe, .pz-lb-model { width: 100%; max-width: 100%; aspect-ratio: auto; height: 72dvh; max-height: 72dvh; }
+    .pz-lb-inner img, .pz-lb-inner video { max-width: 100%; max-height: 80dvh; }
+  }
   .pz-foot { margin-top: 44px; text-align: center; border-top: 2px solid #1b1b1a; padding-top: 24px; }
   .pz-sent { color: #2e7d32; margin: 0 0 14px; font-size: 15px; }
   .pz-send { background: #1b1b1a; color: #fff; border: none; padding: 14px 40px; font-family: inherit; font-size: 16px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; border-radius: 4px; transition: background 0.2s ease; }
