@@ -3115,6 +3115,13 @@ export const fairsData = [
     "sector": "Travel Retail y Duty Free"
   },
   {
+    "name": "ILTM Cannes",
+    "country": "fr",
+    "slug": "stands-iltm-cannes",
+    "city": "Cannes",
+    "sector": "Turismo y Hostelería"
+  },
+  {
     "name": "MED'Agri",
     "country": "fr",
     "slug": "stand-medagri-avignon",

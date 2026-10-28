@@ -505,6 +505,7 @@ export const fairActivities = {
   "stand-mapic-cannes": ["congreso-profesional","regalo-decoracion"],
   "stand-mipim-cannes": ["construccion","congreso-profesional"],
   "stand-tfwa-cannes": ["regalo-decoracion","turismo"],
+  "stands-iltm-cannes": ["turismo","congreso-profesional"],
   "stand-medagri-avignon": ["agricultura-maquinaria","ganaderia"],
   "stand-foire-internationale-toulouse": ["multisectorial"],
   "stand-cfia-toulouse": ["alimentacion", "packaging", "maquinaria-industrial"],

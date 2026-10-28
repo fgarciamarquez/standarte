@@ -138,6 +138,10 @@ export const fairDates = {
   'stand-elec-expo-casablanca': { start: '2026-11-25', end: '2026-11-28', cadence: 'annual', source: 'https://elecexpo.ma/en/' },
   'stand-ener-event-casablanca': { start: '2026-11-25', end: '2026-11-28', cadence: 'annual', source: 'https://global-events.ma/en/class/elec-expo/' },
   'stand-solucop-nice': { start: '2026-11-26', end: '2026-11-27', cadence: 'annual', source: 'https://www.solucop.com/nice/' },
+  // ILTM Cannes en el Palais des Festivals. Fechas de la web oficial (iltm.com): 30 nov - 3 dic.
+  // Varios directorios (Hospitality Net, Toolbox) dan 1-4 de diciembre; se usa la oficial, que es
+  // lo que manda la regla 1. Al revisar la próxima edición, comprobar ahí antes que en agregadores.
+  'stands-iltm-cannes': { start: '2026-11-30', end: '2026-12-03', cadence: 'annual', source: 'https://www.iltm.com/hub/en-gb.html' },
   'stand-aeromart-toulouse': { start: '2026-12-01', end: '2026-12-03', cadence: 'biennial', source: 'https://stand-aeromart-toulouse.com/' },
   'stand-vinitech-sifel-bordeaux': { start: '2026-12-01', end: '2026-12-03', cadence: 'biennial', source: 'https://www.vinitech-sifel.com/en' },
   'stand-energaia-montpellier': { start: '2026-12-09', end: '2026-12-10', cadence: 'annual', source: 'https://www.energaia.fr/en/' },
