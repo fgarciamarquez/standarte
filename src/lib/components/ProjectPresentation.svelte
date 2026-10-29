@@ -41,34 +41,46 @@
   // edición interno (admin) sigue siendo plenamente operativo.
   $: demo = !admin && !!data?.is_demo;
 
-  // Buffer de edición. Se inicializa UNA vez por sesión de edición (y al cambiar de
-  // idioma), nunca al recargar datos: cada guardado parcial (celda del presupuesto,
-  // descripción de un archivo, mover un archivo…) recarga `data` del servidor, y si el
-  // buffer se reconstruyera entonces, machacaría lo tecleado y aún sin guardar — así se
-  // perdió un descuento por pronta decisión que se escribió antes de tocar otra cosa.
+  // Buffer de edición, UNO POR IDIOMA. Nunca se reconstruye al recargar datos: cada
+  // guardado parcial (celda del presupuesto, descripción de un archivo, mover un
+  // archivo…) recarga `data` del servidor, y si el buffer se reconstruyera entonces,
+  // machacaría lo tecleado y aún sin guardar — así se perdió un descuento por pronta
+  // decisión que se escribió antes de tocar otra cosa.
   // Dentro de la sesión el único que escribe es el propio editor, así que el buffer es
   // la verdad más reciente; lo guardado converge con él en cada "Guardar cambios".
+  // Al CAMBIAR DE IDIOMA se guarda el buffer del idioma que se deja y se recupera el
+  // del nuevo (o se crea del servidor la primera vez). Antes se reconstruía, y eso
+  // borraba en silencio lo tecleado y aún sin guardar: quien escribía la sinopsis en
+  // español, cambiaba a inglés, la escribía también y pulsaba "Guardar cambios" perdía
+  // la española — y además el guardado solo mandaba el idioma a la vista, así que ni
+  // sobreviviendo en el buffer habría llegado al servidor (ROCACORBA y MEERMEAT se
+  // quedaron con la sinopsis española y la inglesa vacía).
   let eb = {};
-  let ebInit = false;
+  let ebAll = {};
   let ebLang = null;
-  $: if (admin && data && (!ebInit || lang !== ebLang)) { ebInit = true; ebLang = lang; eb = {
-    title: data.title[lang] || '', memoria: data.memoria[lang] || '',
-    synopsis: (data.synopsis && data.synopsis[lang]) || '',
-    includes: (data.includes[lang] || []).join('\n'), excludes: (data.excludes[lang] || []).join('\n'),
+  const buildEb = (lg) => ({
+    title: data.title[lg] || '', memoria: data.memoria[lg] || '',
+    synopsis: (data.synopsis && data.synopsis[lg]) || '',
+    includes: (data.includes[lg] || []).join('\n'), excludes: (data.excludes[lg] || []).join('\n'),
     income: data.income_account || '', bic: data.bic_code || '', paid: !!data.paid,
     accountId: (paymentAccountByIban(data.income_account)?.id) || '',
     clientEmail: data.client_email || '',
     discAmount: data.discount?.amount ? String(data.discount.amount) : '',
-    discLabel: data.discount?.label?.[lang] || '', discDeadline: data.discount?.deadline || '',
+    discLabel: data.discount?.label?.[lg] || '', discDeadline: data.discount?.deadline || '',
     pausedOn: !!data.paused, pausedReason: data.paused_reason || '',
     validUntil: data.proposal_valid_until || '',
-    payTerms: data.payment_terms?.[lang] || '',
+    payTerms: data.payment_terms?.[lg] || '',
     paySplit: data.payment_split || '',
     ivaOn: Number(data.iva_rate ?? 0.21) > 0,
     ivaPct: String(Math.round(Number(data.iva_rate ?? 0.21) * 10000) / 100 || 21),
     irpfOn: Number(data.irpf_rate ?? 0.15) > 0,
     irpfPct: String(Math.round(Number(data.irpf_rate ?? 0.15) * 10000) / 100 || 15)
-  }; }
+  });
+  $: if (admin && data && lang !== ebLang) {
+    if (ebLang !== null) ebAll[ebLang] = eb;
+    ebLang = lang;
+    eb = ebAll[lang] || buildEb(lang);
+  }
 
   // ── Cuenta de ingreso ──
   // Se elige de la lista cerrada (src/lib/paymentAccounts.js) y de ahí salen el IBAN y
@@ -456,14 +468,27 @@
   }
   async function saveFields() {
     saving = true; adminMsg = '';
-    const f = {}; f['title_' + lang] = eb.title; f['memoria_' + lang] = eb.memoria; f['synopsis_' + lang] = eb.synopsis || '';
-    f['includes_' + lang] = eb.includes; f['excludes_' + lang] = eb.excludes;
+    const f = {};
+    // Los campos por idioma viajan para TODOS los idiomas que se han abierto en esta
+    // sesión de edición, no solo para el que está a la vista: quien escribe la sinopsis
+    // en español, cambia a inglés, la escribe también y pulsa "Guardar cambios" espera
+    // que se guarden las dos. Antes solo viajaba la visible y la otra se perdía.
+    const buffers = { ...ebAll, [lang]: eb };
+    for (const lg of Object.keys(buffers)) {
+      const b = buffers[lg];
+      f['title_' + lg] = b.title || ''; f['memoria_' + lg] = b.memoria || '';
+      f['synopsis_' + lg] = b.synopsis || '';
+      f['includes_' + lg] = b.includes || ''; f['excludes_' + lg] = b.excludes || '';
+      f['discount_label_' + lg] = b.discLabel || '';
+      f['payment_terms_' + lg] = b.payTerms || '';
+    }
+    // Los campos comunes (cuenta, impuestos, fechas, estado) salen solo del buffer a la
+    // vista: son los mismos en los dos idiomas y el del otro puede ser más antiguo.
     f.income_account = eb.income; f.bic_code = eb.bic; f.paid = eb.paid ? '1' : '0';
     f.client_email = eb.clientEmail;
-    f.discount_amount = eb.discAmount || '0'; f['discount_label_' + lang] = eb.discLabel; f.discount_deadline = eb.discDeadline || '';
+    f.discount_amount = eb.discAmount || '0'; f.discount_deadline = eb.discDeadline || '';
     f.paused = eb.pausedOn ? '1' : '0'; f.paused_reason = eb.pausedReason || '';
     f.proposal_valid_until = eb.validUntil || '';
-    f['payment_terms_' + lang] = eb.payTerms || '';
     f.payment_split = eb.paySplit || '';
     f.iva_rate = eb.ivaOn ? String(amt(eb.ivaPct) / 100) : '0';
     f.irpf_rate = eb.irpfOn ? String(amt(eb.irpfPct) / 100) : '0';
