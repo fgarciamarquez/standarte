@@ -389,7 +389,7 @@ export const fairFreshness = {
   'stand-solucop-nice': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-mipim-cannes': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-tfwa-cannes': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
-  'stands-iltm-cannes': '2026-10-28',   // alta de ILTM Cannes (28/10/2026)
+  'stands-iltm-cannes': '2026-10-29',   // alta de ILTM Cannes + texto propio en 11 idiomas y FAQ es/pt/en (29/10/2026)
   'stand-alina-bordeaux': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-preventica-bordeaux': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
   'stand-smahrt-toulouse': '2026-09-26',   // enlace a la ciudad con construcción en la rotación (26/09/2026)
