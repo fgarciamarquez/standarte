@@ -117,7 +117,7 @@ export const seoFreshness = {
   constructor_stand_mmh: '2026-10-08',   // alta de la paralela de feria (08/10/2026)
   constructor_stand_tis: '2026-10-08',   // alta de la paralela de feria (08/10/2026)
   constructor_stand_autentica: '2026-10-08',   // alta de la paralela de feria (08/10/2026)
-  constructor_stand_valencia: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
+  constructor_stand_valencia: '2026-10-29',   // reescritura completa para «constructor stand Valencia»: 7 ferias por sector, 7 FAQ (29/10/2026)
   constructor_stand_valladolid: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   constructor_stand_alicante: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   constructor_stand_elche: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)

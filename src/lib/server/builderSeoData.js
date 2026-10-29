@@ -1174,18 +1174,78 @@ export const builderSeoData = {
         ${porque('Sevilla')}`
     }
   },
-  constructor_stand_valencia: {
+    constructor_stand_valencia: {
     es: {
       breadcrumb: 'Constructor de stands en Valencia',
       title: 'Constructor de stands en Valencia | Taller propio | Standarte',
       h1: 'Constructor de stands en Valencia',
-      introText: "Construimos stands a medida para Feria Valencia desde nuestro propio taller: carpintería, estructura, mobiliario y gráfica fabricados por nuestro equipo, sin subcontratar la producción. Prototipo 3D antes de cortar la primera pieza y montaje terminado antes de la apertura.",
+      introText: "Constructor de stands en Valencia con taller propio: fabricamos tu stand a medida para Feria Valencia y lo montamos nosotros. Carpintería, estructura, mobiliario y gráfica se producen en nuestro taller, sin subcontratar la producción ni repartir el encargo entre proveedores; la iluminación la elegimos e instalamos nosotros, y el montaje queda terminado antes de la apertura. También construimos en el Palacio de Congresos.",
       body: `
-        <h2>Constructor de stands en Valencia: fabricación propia para Feria Valencia</h2>
-        <p>Feria Valencia es un recinto de pabellones grandes y calendario denso: Cevisama y Hábitat piden stands donde el producto —cerámica, mueble, iluminación— se toca y se compara de cerca, con acabados que aguanten la mirada del profesional a un palmo. Fabricamos en taller propio y llegamos con el stand premontado, porque en Valencia los turnos de montaje son cortos y el pabellón se llena en horas.</p>
+<h2>Constructor de stands en Valencia: quién fabrica tu stand</h2>
+        <p>Un directorio que enumera cientos de constructores de stands no fabrica ninguno; quien produce en el centro de Europa trae el stand desde allí. Nosotros fabricamos en taller propio, en España: la fabricación de stands en Valencia es fabricación propia, no un encargo reenviado a un taller de destino.</p>
+        <ul>
+          <li><strong>Lo fabricamos nosotros.</strong> Carpintería, estructura, mobiliario y gráfica salen de nuestras máquinas, sin subcontratar la producción; la iluminación la elegimos e instalamos nosotros.</li>
+          <li><strong>Se prueba antes de viajar.</strong> El stand se monta en el taller por módulos y encuentros, y la pieza que no entra se rectifica ahí; no sale sin la estructura en pie, la gráfica puesta y la instalación eléctrica probada.</li>
+          <li><strong>Del montaje responde nuestro equipo</strong>, con montadores y carpinteros propios: llegamos con el stand premontado y en el pabellón se ensambla, se conecta y se repasa, terminado antes de la apertura. Los turnos del Palacio de Congresos son cortos; en los pabellones aprieta el último, cuando el pabellón se llena en horas, y el desmontaje, contra el plazo del recinto.</li>
+        </ul>
+        <h2>Constructor de stands en Valencia: qué construimos para Feria Valencia</h2>
+        <p>Feria Valencia es un recinto de pabellones grandes y calendario denso: cada salón pide una construcción distinta.</p>
+        <h3>Ambiente terminado para mueble, cerámica y textil</h3>
+        <p><a href="/ferias/stand-cevisama-valencia">Cevisama</a> y <a href="/ferias/stand-habitat-valencia">Feria Hábitat València</a> piden stands donde el producto —cerámica, mueble, iluminación— se toca y se compara de cerca, con acabados que aguanten la mirada del profesional a un palmo. A esa distancia, <a href="/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a> es junta, canto y superficie; <a href="/ferias/stand-textilhogar-valencia">Textilhogar</a>, soportes que dejen tocar el tejido con luz fiel al color.</p>
+        <h3>Maquinaria y producto pesado</h3>
+        <p><a href="/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a> expone centros de mecanizado de gran formato: carga admisible del pabellón, reparto del peso, acometida para la máquina en marcha y sitio para la demostración, decidido antes de dibujar nada. En <a href="/ferias/stand-eurobrico-valencia">Eurobrico</a>, al revés: producto que se toca, exposición señalizada y apartado para negociar.</p>
+        <h3>Agua, extracción y potencia</h3>
+        <p>En <a href="/ferias/stand-gastronoma-valencia">Gastrónoma</a> el stand acaba trabajando como cocina abierta al pasillo: extracción, punto de agua, la potencia que piden los equipos y el visitante a un paso. En <a href="/ferias/stand-iberflora-valencia">Iberflora</a> manda la reposición del producto vivo, y el agua sale por donde el pabellón la tiene prevista. En <a href="/ferias/stand-solar-storage-live-espana-valencia">Solar &amp; Storage Live España</a>, equipo técnico a la vista y mesa donde cerrar.</p>
+        <h3>Stands de pedidos y stands de congreso</h3>
+        <p>En <a href="/ferias/stands-babykid-spain-fimi-valencia">Babykid Spain + FIMI</a> no entra público: el comprador viene con cita y firma allí el pedido de la próxima temporada, en dos plantas del pabellón 7; lo que dimensiona el stand es cuántas reuniones quieres tener a la vez. Barra con metros lineales de verdad y mesa para la prenda en plano; en puericultura, suelo despejado y almacén cerrado. El <a href="/ferias/stands-anecorm-valencia">Congreso ANECORM</a> no es Feria Valencia, sino el Palacio de Congresos: módulos premontados y ventana más estrecha.</p>
+        <p><strong>¿Ya tienes fecha en Valencia?</strong> Dinos la convocatoria y los metros contratados y apartamos turno de taller y de montaje; el importe «desde» de cada categoría está en <a href="/precios">precios de stands</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Valencia</a></p>
+        <h2>Constructor de stands en Valencia: por qué construir con Standarte</h2>
+        <ul>
+          <li><strong>Respondemos nosotros.</strong> El precio no paga la comisión de quien solo traslada el pedido.</li>
+          <li><strong>Valencia son dos escenarios.</strong> En Benimámet, diez pabellones que pasan de 110.000&nbsp;m² expositivos en las grandes convocatorias; en el Palacio de Congresos, otras horas y otro despiece: unos stands feriales de pabellón y un stand de congreso no se montan igual.</li>
+          <li><strong>La documentación la preparamos y la presentamos nosotros.</strong> La altura libre y la suspensión las impone el pabellón y el cálculo las respeta; lo que se tramita entra en la oficina técnica antes de montar. Las tasas y los suministros que consumas los contrata y factura el recinto a nombre del expositor: quedan fuera del presupuesto, y te lo decimos por escrito antes de firmar.</li>
+          <li><strong>Se construye lo que firmas.</strong> Diseño, presupuesto y cada cambio quedan archivados en el <a href="/proyecto-auditado">Sistema de Proyecto Auditado</a>.</li>
+        </ul>
+        <h2>Constructor de stands en Valencia: cómo trabajamos</h2>
+        <ol>
+          <li><strong>Medir y leer la normativa.</strong> Espacio contratado, pabellón, altura libre, acometidas.</li>
+          <li><strong>Prototipo 3D y presupuesto.</strong> Lo ves, se corrige lo que quieras y va antes de cortar la primera pieza.</li>
+          <li><strong>Taller y montaje.</strong> Estructura, mobiliario y gráfica fabricados y probados antes de cargar; montaje en el turno asignado y, al cierre, guardamos lo reutilizable.</li>
+        </ol>
         <h2>Constructor de stands en Valencia: ferias de la plaza</h2>
-        <p>Construimos para el calendario de la plaza: <a href="/ferias/stand-beauty-forum-valencia">Beauty Forum Valencia</a>, <a href="/ferias/stand-cevisama-valencia">Cevisama</a>, <a href="/ferias/stand-habitat-valencia">Feria Hábitat València</a>, <a href="/ferias/stand-textilhogar-valencia">Textilhogar</a>, <a href="/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a>, <a href="/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a>, <a href="/ferias/stand-iberflora-valencia">Iberflora</a> y <a href="/ferias/stand-gastronoma-valencia">Gastrónoma</a>. Si prefieres ver el servicio completo de diseño y montaje, está en nuestra página de <a href="/diseno-construccion-montaje-stands-valencia">diseño y montaje de stands en Valencia</a>.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Valencia</a></p>`
+        <p>Como constructor de stands para ferias en Valencia cubrimos el calendario salón por salón. En los pabellones: <a href="/ferias/stand-habitat-valencia">Feria Hábitat València</a>, <a href="/ferias/stand-cevisama-valencia">Cevisama</a>, <a href="/ferias/stand-textilhogar-valencia">Textilhogar</a>, <a href="/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a>, <a href="/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a>, <a href="/ferias/stand-eurobrico-valencia">Eurobrico</a>, <a href="/ferias/stand-iberflora-valencia">Iberflora</a>, <a href="/ferias/stand-gastronoma-valencia">Gastrónoma</a>, <a href="/ferias/stand-solar-storage-live-espana-valencia">Solar &amp; Storage Live España</a>, <a href="/ferias/stand-beauty-forum-valencia">Beauty Forum Valencia</a> y <a href="/ferias/stands-babykid-spain-fimi-valencia">Babykid Spain + FIMI</a>; en el Palacio de Congresos, el <a href="/ferias/stands-anecorm-valencia">Congreso ANECORM</a>. Puedes ver trabajos en 3D en la <a href="/galeria">galería</a>. Si prefieres una empresa de stands en Valencia con el servicio completo, está en nuestra página de <a href="/diseno-construccion-montaje-stands-valencia">diseño y montaje de stands en Valencia</a>.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Valencia</a></p>`,
+      faqs: [
+        {
+          "q": "¿Fabricáis vosotros el stand o lo encargáis a un taller de la zona?",
+          "a": "Lo fabricamos nosotros, en nuestro taller propio: allí se arma la estructura, se corta la carpintería, se prueba la instalación eléctrica y se coloca la gráfica. No somos el intermediario que reenvía el encargo y le suma su comisión: la producción no se subcontrata. A Feria Valencia el stand llega premontado, con los módulos y los encuentros ya probados, y en el pabellón se ensambla, se conecta y se repasa. Del montaje responde nuestro equipo, con montadores y carpinteros propios y un solo interlocutor al teléfono."
+        },
+        {
+          "q": "¿Qué entra en el precio y qué factura el recinto?",
+          "a": "Llave en mano: diseño, ingeniería, fabricación en nuestro taller, transporte a Valencia, montaje con nuestra gente, las gestiones técnicas que pide el recinto y la retirada al cierre. Fuera queda lo que la feria contrata a nombre del expositor y le factura directamente: las tasas y los suministros que consumas. En la página de precios están los importes «desde» de cada tipo de stand y el cálculo según los metros que contrates; el presupuesto en firme lo tienes en 24&nbsp;h y el prototipo 3D en 72&nbsp;h."
+        },
+        {
+          "q": "¿Quién prepara la documentación técnica del recinto?",
+          "a": "Nosotros, y nosotros la presentamos. Antes de montar entra en la oficina técnica el proyecto visado que exigen los trabajos en altura y las estructuras colgadas, la solicitud de acometidas de electricidad y de agua, el certificado de reacción al fuego de cada madera y cada textil y el plan de coordinación de actividades. Ojo con la diferencia: la gestión es nuestra, pero lo que factura el propio recinto —las tasas y los suministros que contrates: acometidas, consumo, puntos de cuelgue— va a nombre del expositor y lo pagas tú. Y la altura libre y dónde se puede colgar no se negocian: los impone el pabellón y el diseño se ajusta a ellos."
+        },
+        {
+          "q": "¿Se monta igual en un pabellón de Feria Valencia que en el Palacio de Congresos?",
+          "a": "No, porque no se dispone de las mismas horas. En Benimámet se descarga a pie de pabellón y queda sitio para montar por piezas sobre la parcela. En el Palacio de Congresos la ventana es mucho más estrecha, así que el stand se despieza en módulos pequeños que entran armados y sobre los que queda poco más que conectar y repasar los remates. Ese despiece lo decidimos cuando sabemos el recinto y el espacio asignado."
+        },
+        {
+          "q": "¿Con cuánta antelación hay que cerrar el diseño?",
+          "a": "Seis u ocho semanas antes de la convocatoria es un plazo cómodo para un stand a medida; un modular admite menos. Y la fecha la manda el taller, no el montaje: el prototipo 3D se aprueba antes de cortar la primera pieza, y cada oficio —carpintería, mobiliario, gráfica— tiene su propio plazo. Dinos los metros contratados y reservamos turno."
+        },
+        {
+          "q": "¿Y si la organización te cambia de pabellón o de parcela después de aprobar el diseño?",
+          "a": "Pasa, y es una de las razones por las que el despiece no se cierra hasta tener confirmado el espacio. Con la parcela nueva se vuelve a medir: cambian los linderos con los vecinos, el frente abierto al pasillo y por dónde llegan las acometidas, así que se ajusta el plano y, si hace falta, el despiece. Lo que suponga el cambio lo valoramos antes de ejecutarlo y queda archivado, como el resto, en el Proyecto Auditado."
+        },
+        {
+          "q": "¿Sirve el mismo stand para la convocatoria siguiente?",
+          "a": "Sí, si se proyecta pensando en eso. Si prefieres un stand modular porque expones todos los años en la plaza, trabajamos con piezas de sistema propio: se desmontan, van al almacén y se recolocan en una parcela distinta, renovando solo la gráfica de la campaña. Lo reutilizable queda guardado hasta tu siguiente feria en Valencia."
+        }
+      ]
     }
   },
   constructor_stand_valladolid: {
@@ -2817,17 +2877,63 @@ const EN = {
         <p>We build across the FIBES calendar: <a href="/en/ferias/stands-sicab-sevilla">SICAB</a>, <a href="/en/ferias/stands-simof-sevilla">SIMOF</a>, <a href="/en/ferias/stand-fireca-sevilla">Fireca</a>, <a href="/en/ferias/stand-mmh-sevilla">MMH – Mining and Minerals Hall</a>, <a href="/en/ferias/stand-tis-sevilla">Tourism Innovation Summit</a> and <a href="/en/ferias/stand-autentica-sevilla">Auténtica</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_seville">stand design and installation in Seville</a> page.</p>
         ${porqueEn('Seville')}`
   },
-  constructor_stand_valencia: {
+    constructor_stand_valencia: {
     breadcrumb: 'Stand builder in Valencia',
     title: 'Stand builder in Valencia | Own workshop | Standarte',
     h1: 'Stand builder in Valencia',
-    introText: "We build custom stands for Feria Valencia from our own workshop: joinery, structure, furniture and graphics made by our team, with no subcontracted production. A 3D prototype before the first cut, and the build finished before opening.",
+    introText: "Stand builder in Valencia with our own workshop: we manufacture your custom stand for Feria Valencia and we install it ourselves. Joinery, structure, furniture and graphics are made in our workshop, with no subcontracted production and no job split between suppliers; the lighting we choose and install ourselves, and the build is finished before opening. We also build at the Palacio de Congresos.",
     body: `
-        <h2>Stand builder in Valencia: in-house manufacturing for Feria Valencia</h2>
-        <p>Feria Valencia is a venue of big halls and a dense calendar: Cevisama and Hábitat call for stands where the product — ceramics, furniture, lighting — is touched and compared up close, with finishes that survive a professional’s eye at arm’s length. We build in our own workshop and arrive with the stand pre-assembled, because build-up slots in Valencia are short and the hall fills in hours.</p>
+<h2>Stand builder in Valencia: who actually makes your stand</h2>
+        <p>A directory listing hundreds of stand builders makes none of them; a company producing in central Europe brings the stand from there. We manufacture in our own workshop, in Spain: in-house manufacturing, not an order forwarded with a commission on top.</p>
+        <ul>
+          <li><strong>We make it ourselves.</strong> Joinery, structure, furniture and graphics, all made on our own machines, with no subcontracted production; the lighting we choose and install ourselves.</li>
+          <li><strong>Tested before it travels.</strong> The stand is put up in the workshop module by module and a part that does not fit is corrected there; nothing leaves without the structure standing, the graphics applied and the electrical installation tested.</li>
+          <li><strong>Our own team answers for the build</strong>, with our own fitters and joiners. We arrive with the stand pre-assembled: in the hall it is assembled, connected and checked over, finished before opening. Build-up slots at the congress centre are short; in the halls the last shift is the tight one, when the hall fills in hours, and then the dismantling deadline.</li>
+        </ul>
+        <h2>Stand builder in Valencia: what we build for Feria Valencia</h2>
+        <p>A venue of big halls and a dense calendar: each show in the city calls for a different build.</p>
+        <h3>Furniture, ceramics and textiles</h3>
+        <p><a href="/en/ferias/stand-cevisama-valencia">Cevisama</a> and <a href="/en/ferias/stand-habitat-valencia">Feria Hábitat València</a> call for stands where the product is touched and compared up close, with finishes that survive a professional’s eye at arm’s length. At that distance <a href="/en/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a> is joint, edge and surface; <a href="/en/ferias/stand-textilhogar-valencia">Textilhogar</a>, light that does not lie about colour.</p>
+        <h3>Machinery, water and power</h3>
+        <p><a href="/en/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a> exhibits large-format machining centres: permitted floor load, weight spread, a supply sized for the machine running and room to demonstrate, all settled before anything is drawn. At <a href="/en/ferias/stand-gastronoma-valencia">Gastrónoma</a> the stand works as a kitchen open to the aisle — extraction, a water point, the power the equipment draws; at <a href="/en/ferias/stand-iberflora-valencia">Iberflora</a>, restocking and water coming out where the hall provides it. <a href="/en/ferias/stand-eurobrico-valencia">Eurobrico</a> is product that gets handled; <a href="/en/ferias/stand-solar-storage-live-espana-valencia">Solar &amp; Storage Live España</a>, technical equipment on show and a table to close on.</p>
+        <h3>Order-taking and congress stands</h3>
+        <p><a href="/en/ferias/stands-babykid-spain-fimi-valencia">Babykid Spain + FIMI</a> is trade only: a buyer comes in by appointment and signs the order for next season, across two floors of hall 7, so the stand is sized by how many meetings you hold at once. The <a href="/en/ferias/stands-anecorm-valencia">ANECORM Congress</a> is not Feria Valencia but the Palacio de Congresos: pre-assembled modules and a narrower window.</p>
+        <h2>Stand builder in Valencia: why build with Standarte</h2>
+        <ul>
+          <li><strong>We answer for it.</strong> The price pays no commission to whoever forwards the order, the 3D prototype is approved before the first cut, and starting figures by category are on our <a href="/en/prices">stand prices page</a>.</li>
+          <li><strong>Valencia is two settings.</strong> At Benimámet, ten halls topping 110,000&nbsp;m² of exhibition floor at the big editions; at the Palacio de Congresos, other hours and another breakdown.</li>
+          <li><strong>We prepare the paperwork and we file it.</strong> Clear height and rigging are set by the hall. Venue fees and the services you consume are contracted by the venue in the exhibitor’s name and invoiced to you, outside the quote.</li>
+          <li><strong>We build what you sign.</strong> Design, quote and every change are filed in the <a href="/en/audited-project">Audited Project System</a>.</li>
+        </ul>
         <h2>Stand builder in Valencia: shows at the venue</h2>
-        <p>We build for the whole calendar of the city: <a href="/en/ferias/stand-beauty-forum-valencia">Beauty Forum Valencia</a>, <a href="/en/ferias/stand-cevisama-valencia">Cevisama</a>, <a href="/en/ferias/stand-habitat-valencia">Feria Hábitat València</a>, <a href="/en/ferias/stand-textilhogar-valencia">Textilhogar</a>, <a href="/en/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a>, <a href="/en/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a>, <a href="/en/ferias/stand-iberflora-valencia">Iberflora</a> and <a href="/en/ferias/stand-gastronoma-valencia">Gastrónoma</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_valencia">stand design and installation in Valencia</a> page.</p>
-        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Valencia</a></p>`
+        <p>As an exhibition stand builder in Valencia we cover the whole calendar, show by show. In the halls: <a href="/en/ferias/stand-habitat-valencia">Feria Hábitat València</a>, <a href="/en/ferias/stand-cevisama-valencia">Cevisama</a>, <a href="/en/ferias/stand-textilhogar-valencia">Textilhogar</a>, <a href="/en/ferias/stand-espacio-cocina-sici-valencia">Espacio Cocina SICI</a>, <a href="/en/ferias/stand-fimma-maderalia-valencia">Fimma + Maderalia</a>, <a href="/en/ferias/stand-eurobrico-valencia">Eurobrico</a>, <a href="/en/ferias/stand-iberflora-valencia">Iberflora</a>, <a href="/en/ferias/stand-gastronoma-valencia">Gastrónoma</a>, <a href="/en/ferias/stand-solar-storage-live-espana-valencia">Solar &amp; Storage Live España</a>, <a href="/en/ferias/stand-beauty-forum-valencia">Beauty Forum Valencia</a> and <a href="/en/ferias/stands-babykid-spain-fimi-valencia">Babykid Spain + FIMI</a>; at the Palacio de Congresos, the <a href="/en/ferias/stands-anecorm-valencia">ANECORM Congress</a>. Our 3D work is in the <a href="/en/gallery">gallery</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_valencia">stand design and installation in Valencia</a> page.</p>
+        <p><a class="oro-cta-espacio" href="#contact">Ask for a build quote for your stand in Valencia</a></p>`,
+    faqs: [
+      {
+        "q": "Do you make the stand yourselves or hand it to a workshop nearby?",
+        "a": "We make it, in our own workshop: that is where the structure is assembled, the joinery cut, the electrical installation tested and the graphics applied. We are not the broker who forwards the order and adds a commission to it: production is not subcontracted. The stand reaches Feria Valencia pre-assembled, with the modules and junctions already tested, and in the hall it is assembled, connected and checked over. Our own fitters and joiners answer for the build, and one contact answers for it from the drawing to the dismantling."
+      },
+      {
+        "q": "What does the price include, and what does the venue invoice?",
+        "a": "Turnkey: design, engineering, manufacturing in our workshop, transport to Valencia, installation by our own people, the technical formalities the venue asks for and removal at close. Outside it sits what the fair contracts in the exhibitor’s name and invoices directly: venue fees and the services you consume. Our prices page gives the starting figure for each stand type and an estimate from the metres you book; the firm quote is with you in 24 h and the 3D prototype in 72 h."
+      },
+      {
+        "q": "Who prepares the venue paperwork?",
+        "a": "We do, and we file it. Before the build, the technical office receives the approved project required for work at height and for suspended structures, the requests for the power and water connections, the fire-reaction certificate each timber panel and each fabric carries, and the coordination plan. Mind the difference: the handling is ours, but what the venue itself invoices — the fees and the services you book: connections, consumption, rigging points — goes in the exhibitor’s name and you pay it. Clear height and what may be hung are not negotiable either: the hall sets them and the design works to them."
+      },
+      {
+        "q": "Is a Feria Valencia hall built the same way as the Palacio de Congresos?",
+        "a": "No, because a hall and a congress centre do not give you the same hours. At Benimámet you unload at the hall door and there is room to build piece by piece on the plot. The congress centre gives a much narrower window, so we break the stand into small modules that arrive assembled and leave little more to do than connect them and finish the trims. That breakdown is settled once we know the venue and the space assigned."
+      },
+      {
+        "q": "How far ahead does the design have to be closed?",
+        "a": "With the design approved six to eight weeks before the show there is comfortable room; a modular stand needs less. The date is set by the workshop, not by the installation: the first cut waits for your approval of the 3D prototype, and joinery, furniture and graphics each have their lead time. With the metres booked and the edition fixed, we hold a workshop slot and a build slot."
+      },
+      {
+        "q": "What if the organisers move you to another hall or plot after the design is approved?",
+        "a": "It happens, and it is one reason the breakdown is not closed until the space is confirmed. With the new plot everything is measured again: the boundaries with your neighbours change, so does the open frontage and where the services come in, so the layout is adjusted and, if need be, the breakdown too. Whatever the change involves is costed before it is carried out and filed, like the rest, in the Audited Project System."
+      }
+    ]
   },
   constructor_stand_valladolid: {
     breadcrumb: 'Stand builder in Valladolid',
