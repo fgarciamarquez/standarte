@@ -1392,7 +1392,17 @@
   .pz-zoom-hint { font-size: 18px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.5); opacity: 0.85; }
   .pz-dl-hint { font-size: 18px; line-height: 1; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.5); opacity: 0.85; text-decoration: none; cursor: pointer; }
   .pz-dl-hint:hover, .pz-dl-hint:focus-visible { opacity: 1; color: #ffc800; }
-  .pz-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(20, 20, 18, 0.88); }
+  /* El velo NO es el fondo de este contenedor, sino una capa hermana (::before) con orden
+     explícito por DEBAJO del contenido. El fondo de un ancestro se pinta siempre bajo sus
+     descendientes, pero cuando Android Chrome promueve a su propia capa de hardware el
+     vídeo de un iframe de OTRO ORIGEN —y los 10 vídeos de proyecto son iframes /preview de
+     Drive—, ese orden lo resuelve el compositor y el velo puede acabar encima: es la única
+     capa negra translúcida a pantalla completa que hay en el visor, así que si el cliente
+     ve el vídeo «detrás de una capa negra», es esta. Con dos hermanos y z-index declarado
+     el orden deja de negociarse. Un ::before no recibe eventos, así que el cierre al
+     pulsar el fondo (on:click|self) sigue funcionando igual. */
+  .pz-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; background: transparent; }
+  .pz-lightbox::before { content: ''; position: absolute; inset: 0; z-index: 0; background: rgba(20, 20, 18, 0.88); }
   /* z-index 2 (antes auto): al dar contexto de apilamiento a .pz-lb-inner, sin esto el
      botón de cerrar se quedaría DEBAJO del contenido, y en un móvil en vertical el vídeo
      llega a la esquina superior derecha. Las flechas ya tenían su z-index 2. */
@@ -1472,6 +1482,10 @@
     .pz-lb-nav.prev { left: 8px; }
     .pz-lb-nav.next { right: 8px; }
     .pz-lightbox { padding: 8px; }
+    /* En el móvil el velo es OPACO. Su translucidez solo sirve para intuir la página de
+       detrás, que en un teléfono queda tapada de todos modos; siendo opaco, el fallo de
+       orden de capas sobre el vídeo de Drive no puede ni plantearse. */
+    .pz-lightbox::before { background: #141412; }
     .pz-lb-close { top: 8px; right: 8px; }
     .pz-lb-inner { width: 100%; max-width: 100%; max-height: 94dvh; }
     /* aspect-ratio: auto para que manden el ancho y el alto, no el 16/9: el reproductor
