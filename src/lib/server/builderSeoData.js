@@ -230,7 +230,7 @@ export const builderSeoData = {
         <p>Peanas calculadas para embarcaciones y autocaravanas en <a href="/ferias/stand-nauticampo-lisboa">Nauticampo</a>, con el acceso al pabellón resuelto antes de dibujar nada, pasarelas y escaleras de visita, suelos reforzados y acometidas previstas para el equipo que se enseña funcionando.</p>
         <h3>Stands feriales modulares y reutilizables</h3>
         <p>Si expones cada año en Lisboa —<a href="/ferias/stand-btl-lisboa">BTL</a>, <a href="/ferias/stand-sil-lisboa">SIL</a>, <a href="/ferias/stand-futuralia-lisboa">Futurália</a>, <a href="/ferias/stand-lisboa-games-week">Lisboa Games Week</a>—, lo que conviene son piezas de sistema propio: se desmontan, se guardan y se vuelven a montar en otra parcela con la gráfica de la campaña nueva.</p>
-        <p><strong>¿Tienes una feria próxima en Lisboa?</strong> Los turnos de taller y de montaje se llenan pronto: con la fecha y el espacio contratado apartamos los dos. Tramos por metro cuadrado en <a href="/precios">precios de stands</a>.</p>
+        <p><strong>¿Tienes una feria próxima en Lisboa?</strong> Los turnos de taller y de montaje se llenan pronto: con la fecha y el espacio contratado apartamos los dos. Los tramos de precio por tipo de stand están en <a href="/precios">precios de stands</a>; el total depende de los metros cuadrados contratados y del acabado.</p>
         <p><a class="oro-cta-espacio" href="#contact">Pide presupuesto de construcción para tu stand en Lisboa</a></p>
         <h2>Constructor de stands en Lisboa: por qué construir con Standarte</h2>
         <ul>
@@ -263,7 +263,7 @@ export const builderSeoData = {
         },
         {
           "q": "¿El presupuesto incluye el transporte y el montaje en Lisboa?",
-          "a": "Sí, trabajamos llave en mano. El presupuesto contempla el diseño, la ingeniería, la producción en nuestro taller, el viaje a Lisboa, el montaje con equipo propio, las gestiones técnicas del recinto y el desmontaje al cierre, con un único interlocutor de principio a fin. Los tramos orientativos por metro cuadrado están en la página de precios y el presupuesto cerrado lo tienes en 24 h con el prototipo 3D."
+          "a": "Sí, trabajamos llave en mano. El presupuesto contempla el diseño, la ingeniería, la producción en nuestro taller, el viaje a Lisboa, el montaje con equipo propio, las gestiones técnicas del recinto y el desmontaje al cierre, con un único interlocutor de principio a fin. Los tramos orientativos por tipo de stand están en la página de precios —el total depende de los metros cuadrados contratados y del acabado— y el presupuesto cerrado lo tienes en 24 h con el prototipo 3D."
         },
         {
           "q": "¿Construís igual para la FIL que para un congreso en el MEO Arena o en el Centro de Congressos de Lisboa?",
