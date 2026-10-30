@@ -295,20 +295,21 @@
   $: if (lightbox && lightbox.type === 'model' && lightbox.src && !isDriveUrl(lightbox.src)) loadModelViewer();
   $: lbList = (data?.media || []).filter(isLbItem);
   $: lbIndex = lightbox ? lbList.indexOf(lightbox) : -1;
-  // Vídeo del lightbox: sin barra de controles, autoplay+bucle, pantalla despejada
-  // (decisión del usuario, 30/10/2026: «quita todos los controles y la capa
-  // semitransparente; que el vídeo se active solo al abrirse y vaya en bucle»).
-  // Antes había un botón de "play" sobreimpreso por si el móvil bloquea el autoplay
-  // silencioso; se quitó por esa decisión. El respaldo sigue existiendo pero invisible:
-  // tocar el propio vídeo lo reproduce (on:click). Si alguna vez hay que devolver una
-  // pista visible, que sea mínima y solo cuando la reproducción falle de verdad.
+  // Vídeo del lightbox: sin barra de controles, autoplay y BUCLE CONTINUO.
+  // El botón de "play" sobreimpreso se mantiene por decisión del usuario (30/10/2026):
+  // se quitó esa mañana buscando la pantalla más despejada posible y se devolvió el
+  // mismo día. Es el único modo de arrancar el vídeo cuando el navegador bloquea el
+  // autoplay silencioso (ahorro de energía o de datos), y solo aparece mientras no se
+  // está reproduciendo, así que con el autoplay permitido no se llega a ver.
   let lbVideoEl;
+  let lbPlaying = false;
   function playLbVideo() { if (lbVideoEl) { lbVideoEl.play().catch(() => {}); } }
-  function openLightbox(m) { if (!admin && isLbItem(m)) { lightbox = m; } }
+  function openLightbox(m) { if (!admin && isLbItem(m)) { lbPlaying = false; lightbox = m; } }
   function closeLightbox() { lightbox = null; }
   function lbGo(dir) {
     if (!lightbox || lbList.length < 2) return;
     const i = lbList.indexOf(lightbox);
+    lbPlaying = false;
     lightbox = lbList[(i + dir + lbList.length) % lbList.length];
   }
   function onKeydownLight(e) {
@@ -1120,7 +1121,12 @@
                 <video src={lightbox.src} poster={lightbox.poster} autoplay loop muted playsinline
                   bind:this={lbVideoEl}
                   on:loadeddata={playLbVideo}
+                  on:playing={() => (lbPlaying = true)}
+                  on:pause={() => (lbPlaying = false)}
                   on:click={playLbVideo}></video>
+                {#if !lbPlaying}
+                  <button type="button" class="pz-lb-video-play" on:click={playLbVideo} aria-label={L.playVideo}><span aria-hidden="true">▶</span></button>
+                {/if}
               </div>
             {/if}
           {:else}
@@ -1421,11 +1427,20 @@
      el contenedor inline-flex, cuya anchura depende del propio vídeo → nunca limitaba y
      en móvil el vídeo desbordaba toda la pantalla. min(1100px,92vw) siempre acota. */
   .pz-lb-inner img, .pz-lb-inner video { max-width: min(1100px, 92vw); max-height: 80vh; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); background: #000; }
-  /* Vídeo del lightbox: sin ningún elemento sobreimpreso. El botón de "play" se retiró
-     el 30/10/2026 por decisión del usuario (pantalla despejada); tocar el vídeo sigue
-     reproduciéndolo si el navegador bloquea el autoplay. */
+  /* Vídeo del lightbox: contenedor para el botón de "play" (toca para reproducir en móvil). */
   .pz-lb-video { position: relative; display: flex; justify-content: center; align-items: center; max-width: 100%; min-width: 0; }
   .pz-lb-video video { cursor: pointer; }
+  .pz-lb-video-play {
+    position: absolute; inset: 0; margin: auto;
+    width: 76px; height: 76px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.45);
+    color: #fff; font-size: 26px; line-height: 1; padding-left: 5px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .pz-lb-video-play:hover { background: rgba(0,0,0,0.65); transform: scale(1.06); }
   .pz-lb-ph { width: min(900px, 90vw); aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; }
   .pz-lb-inner figcaption { color: #eceae2; font-family: 'Inconsolata', monospace; font-size: 15px; text-align: center; }
   .pz-lb-count { display: inline-block; margin-left: 10px; color: #b9b6a8; font-variant-numeric: tabular-nums; }
