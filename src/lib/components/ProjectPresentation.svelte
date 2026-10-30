@@ -1407,7 +1407,10 @@
      capa negra translúcida a pantalla completa que hay en el visor, así que si el cliente
      ve el vídeo «detrás de una capa negra», es esta. Con dos hermanos y z-index declarado
      el orden deja de negociarse. Un ::before no recibe eventos, así que el cierre al
-     pulsar el fondo (on:click|self) sigue funcionando igual. */
+     pulsar el fondo (on:click|self) sigue funcionando igual.
+     ✅ CONFIRMADO POR EL USUARIO (30/10/2026): tras desplegar esto, el vídeo se ve en
+     Android. Era el orden de composición, no el reproductor de Drive. NO devolver el velo
+     al fondo del contenedor ni quitarle la opacidad total que tiene en móvil. */
   .pz-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; background: transparent; }
   .pz-lightbox::before { content: ''; position: absolute; inset: 0; z-index: 0; background: rgba(20, 20, 18, 0.88); }
   /* z-index 2 (antes auto): al dar contexto de apilamiento a .pz-lb-inner, sin esto el
@@ -1419,9 +1422,10 @@
      fondo rgba(20,20,18,0.88) del contenedor. Antes era estática, y un iframe de otro
      origen con vídeo se compone en Android Chrome en su propia capa de hardware: si esa
      capa se ordena mal, nuestro fondo translúcido acaba pintado SOBRE el vídeo y se ve
-     exactamente como lo describió el usuario. No está confirmado que fuera eso —el
-     contenido del iframe es de Google y no se puede inspeccionar—, pero declarar el orden
-     en vez de dejarlo al compositor no cuesta nada y elimina el candidato. */
+     exactamente como lo describió el usuario. Confirmado el 30/10/2026: con el velo en su
+     propia capa ordenada (ver .pz-lightbox::before) el vídeo se ve en Android. Esta regla
+     es parte del mismo arreglo: sin contexto de apilamiento propio en la figura, declarar
+     el orden del velo no basta. */
   .pz-lb-inner { position: relative; z-index: 1; margin: 0; max-width: min(1100px, 94vw); max-height: 88vh; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
   /* Tope DEFINITO en unidades de viewport (no %): un max-width en % se resuelve contra
      el contenedor inline-flex, cuya anchura depende del propio vídeo → nunca limitaba y
