@@ -1757,5 +1757,37 @@ if ($isCronEmpty) {
     updateCronCountdown();
     setInterval(updateCronCountdown, 1000);
   </script>
+<?php
+/* Versión de PHP que sirve OVH, y si lleva el parche de las CVE críticas de octubre de
+ * 2026 (CVE-2026-109618 y CVE-2026-109619: ejecución remota SIN autenticación en el
+ * núcleo de PHP, explotadas activamente). Está aquí y no en una página pública porque
+ * publicar la versión exacta le ahorra trabajo a quien busca objetivos.
+ *
+ * Hace falta porque .ovhconfig fija la RAMA (app.engine.version=8.3), no la versión: nos
+ * sirven «la 8.3 que OVH tenga puesta» y no hay otra forma de saber cuál es desde aquí.
+ * Se evalúa solo para no depender de recordar el número.
+ *
+ * Mínimos con parche, publicados por PHP el 21/10/2026. Al añadir una rama nueva (8.6…)
+ * hay que meterla en esta tabla o saldrá como «rama sin datos», que es lo correcto:
+ * mejor decir «no lo sé» que dar por bueno algo sin comprobar. */
+$cpxPhpParche = array('8.2' => '8.2.35', '8.3' => '8.3.36', '8.4' => '8.4.27', '8.5' => '8.5.12');
+$cpxRama = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
+$cpxMin  = isset($cpxPhpParche[$cpxRama]) ? $cpxPhpParche[$cpxRama] : null;
+if ($cpxMin === null) {
+    $cpxEstado = 'rama sin datos de parche — compruébalo a mano';
+    $cpxColor  = '#e67e22';
+} elseif (version_compare(PHP_VERSION, $cpxMin, '>=')) {
+    $cpxEstado = 'parcheado (mínimo ' . $cpxMin . ')';
+    $cpxColor  = '#2e7d32';
+} else {
+    $cpxEstado = 'SIN PARCHEAR — hace falta ' . $cpxMin . ' o superior. Pídeselo a OVH.';
+    $cpxColor  = '#c0392b';
+}
+?>
+  <p style="margin:2rem auto 1rem;max-width:960px;padding:.6rem .9rem;border-left:3px solid <?php echo $cpxColor; ?>;background:#1b1b1a;color:#cfcdc4;font-size:.8rem;line-height:1.5;">
+    Servidor: PHP <strong><?php echo campaign_escape(PHP_VERSION); ?></strong> ·
+    <span style="color:<?php echo $cpxColor; ?>;font-weight:700;"><?php echo campaign_escape($cpxEstado); ?></span><br>
+    <span style="color:#8a8779;">CVE-2026-109618 y CVE-2026-109619, del 21/10/2026. Son del núcleo de PHP y se disparan antes de que corra este panel, así que la contraseña no protege de ellas: el único arreglo es que OVH actualice. La versión de PHP la elige <code>.ovhconfig</code> por rama, no por número.</span>
+  </p>
 </body>
 </html>
