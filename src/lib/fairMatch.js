@@ -42,7 +42,10 @@ export const fairAliases = {
   'stand-cioc-lisboa': ['Congresso Internacional de Optometria e Contactologia', 'optometría', 'contactología', 'UPOOP', 'Évora', 'Leiria'],
   'stand-ciocv-braga': ['Congresso Internacional de Optometria e Ciências da Visão', 'optometría', 'ciencias de la visión', 'UPOOP'],
   // Feria de pedidos del comercio infantil: se la busca por su oferta, no por la marca.
-  'stands-babykid-spain-fimi-valencia': ['moda infantil', 'puericultura', 'ASEPRI', 'juguete']
+  'stands-babykid-spain-fimi-valencia': ['moda infantil', 'puericultura', 'ASEPRI', 'juguete'],
+  'stands-cprint-madrid': ['CPrint','C Print','salón de la impresión','comunicación visual','personalización','rotulación'],
+  'stands-tecma-madrid': ['Feria Internacional del Urbanismo y el Medio Ambiente','SRR','FSMS','Foro de las Ciudades','reciclado','servicios urbanos'],
+  'stands-esvs-annual-meeting-lisboa': ['European Society for Vascular Surgery','cirugía vascular','cirurgia vascular','vascular surgery','ESVS 2027'],
 };
 
 /* Normalización. Fuera acentos latinos, todo a minúsculas y cualquier racha de signos
