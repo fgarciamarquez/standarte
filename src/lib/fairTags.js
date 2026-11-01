@@ -569,6 +569,9 @@ export const fairActivities = {
   "stands-expo-rh-lisboa": ["congreso-profesional","digital-software"],
   "stands-maquitex-oporto": ["maquinaria-industrial","moda-textil"],
   "stands-agro-braga": ["agricultura-maquinaria","ganaderia"],
+  "stands-cprint-madrid": ["packaging","regalo-decoracion"],
+  "stands-tecma-madrid": ["smart-city","construccion"],
+  "stands-esvs-annual-meeting-lisboa": ["congreso-medico"],
 };
 
 // Helpers

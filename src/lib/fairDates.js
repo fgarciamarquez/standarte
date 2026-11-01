@@ -345,6 +345,13 @@ export const fairDates = {
   'stands-maquitex-oporto': { start: '2027-04-15', end: '2027-04-17', cadence: 'biennial', source: 'https://exponor.pt/maquitex/' },
   // AGRO 2027 (8-11 abr, Forum Braga; 59.ª edición, organiza InvestBraga). Anual.
   'stands-agro-braga': { start: '2027-04-08', end: '2027-04-11', cadence: 'annual', source: 'https://www.forumbraga.com/Feiras/Agro' },
+  // Tanda 2026-11-01 (Madrid, Lisboa): fechas de la web oficial de cada organizador.
+  // C!Print Madrid 2027 (12-14 ene, IFEMA, misma semana que PMG Promogift). Anual.
+  'stands-cprint-madrid': { start: '2027-01-12', end: '2027-01-14', cadence: 'annual', source: 'https://www.salon-cprint.es/' },
+  // TECMA 2028 (6-8 jun, IFEMA, con SRR y el Foro de las Ciudades dentro del FSMS). Bienal en años pares; la de 2026 fue 9-11 jun.
+  'stands-tecma-madrid': { start: '2028-06-06', end: '2028-06-08', cadence: 'biennial', source: 'https://www.ifema.es/tecma' },
+  // ESVS Annual Meeting 2027 (28 sep-1 oct, Centro de Congressos de Lisboa): congreso ITINERANTE (2026 en Belgrado) → revisar sede tras 2027 (precedente CIOC → "Itinerante").
+  'stands-esvs-annual-meeting-lisboa': { start: '2027-09-28', end: '2027-10-01', cadence: 'annual', source: 'https://esvs.org/event/esvs-41st-annual-meeting/' },
 };
 
 /** Periodicidad de una feria, en los 11 idiomas (para la línea de tiempo). */

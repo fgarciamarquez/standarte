@@ -2359,6 +2359,13 @@ export const fairsData = [
     "sector": "Multisectorial y Profesional"
   },
   {
+    "name": "ESVS Annual Meeting",
+    "country": "pt",
+    "slug": "stands-esvs-annual-meeting-lisboa",
+    "city": "Lisboa",
+    "sector": "Salud y Medicina"
+  },
+  {
     "name": "Vinipax Beja",
     "country": "pt",
     "slug": "stand-vinipax-beja",
@@ -3050,6 +3057,20 @@ export const fairsData = [
     "slug": "stands-simo-educacion-madrid",
     "city": "Madrid",
     "sector": "Tecnología e Innovación"
+  },
+  {
+    "name": "C!Print Madrid",
+    "country": "es",
+    "slug": "stands-cprint-madrid",
+    "city": "Madrid",
+    "sector": "Comercio y Packaging"
+  },
+  {
+    "name": "TECMA",
+    "country": "es",
+    "slug": "stands-tecma-madrid",
+    "city": "Madrid",
+    "sector": "Medioambiente y Tecnologías Limpias"
   },
   {
     "name": "Feria del Jamón de Teruel y Alimentos de Calidad",
