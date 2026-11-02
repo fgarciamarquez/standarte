@@ -413,7 +413,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<input name="ref" placeholder="Ref (p. ej. IDh 2026/0062)" required>
 			<input name="client_name" placeholder="Cliente" required>
 			<input name="client_email" placeholder="Email del cliente (varios, separados por comas)" type="email" multiple>
-			<small style="grid-column:1/3;color:#8a8779;font-size:12px;line-height:1.4;">Con el <strong>mismo email</strong> en varios proyectos, el cliente los verá enlazados entre sí (al pie de cada uno y en el aviso de publicación), con miniatura, para comparar propuestas. Solo se enlazan los ya comunicados al cliente.</small>
+			<small style="grid-column:1/3;color:#8a8779;font-size:12px;line-height:1.4;">Varios proyectos con el <strong>mismo nombre de cliente y el mismo email</strong> quedan enlazados entre sí (al pie de cada uno y en el aviso de publicación), con miniatura, para comparar propuestas. Si pones varias direcciones, deben coincidir todas; solo se enlazan los ya comunicados al cliente.</small>
 			<input name="title_es" placeholder="Título ES">
 			<input name="title_en" placeholder="Título EN">
 			<input name="interlocutor_email" placeholder="Email interlocutor (opc.)">
@@ -467,15 +467,19 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 				<select name="source_id" id="dup-src" required>
 					<?php foreach ($projects as $p): ?>
 					<option value="<?= h($p['id']) ?>" data-ref="<?= h($p['ref']) ?>"
+						data-name="<?= h(isset($p['client_name']) ? $p['client_name'] : '') ?>" data-email="<?= h(isset($p['client_email']) ? $p['client_email'] : '') ?>"
 						data-b="<?= cnt($counts, 'budget', $p['id']) ?>" data-m="<?= cnt($counts, 'media', $p['id']) ?>"
 						<?= ($dupId === $p['id'] ? 'selected' : '') ?>><?= h($p['ref']) ?> — <?= h($p['client_name'] !== '' ? $p['client_name'] : 'sin cliente') ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
 			<input name="ref" id="dup-ref" placeholder="Ref del nuevo proyecto" required>
-			<input name="client_name" placeholder="Cliente" required>
-			<input name="client_email" placeholder="Email del cliente (varios, separados por comas)" type="email" multiple>
-			<small style="grid-column:1/3;color:#8a8779;font-size:12px;line-height:1.4;">Con el <strong>mismo email</strong> en varios proyectos, el cliente los verá enlazados entre sí (al pie de cada uno y en el aviso de publicación), con miniatura, para comparar propuestas. Solo se enlazan los ya comunicados al cliente.</small>
+			<!-- Nombre y email se rellenan con los del proyecto de origen (ver sync() abajo):
+			     duplicar es la vía natural para crear una «OPCIÓN 2», y una letra distinta
+			     en cualquiera de los dos rompía el vínculo entre proyectos sin avisar. -->
+			<input name="client_name" id="dup-name" placeholder="Cliente" required>
+			<input name="client_email" id="dup-email" placeholder="Email del cliente (varios, separados por comas)" type="email" multiple>
+			<small style="grid-column:1/3;color:#8a8779;font-size:12px;line-height:1.4;">Varios proyectos con el <strong>mismo nombre de cliente y el mismo email</strong> quedan enlazados entre sí (al pie de cada uno y en el aviso de publicación), con miniatura, para comparar propuestas. Si pones varias direcciones, deben coincidir todas; solo se enlazan los ya comunicados al cliente.</small>
 			<input name="title_es" placeholder="Título ES (solo si cambia)">
 			<input name="title_en" placeholder="Título EN (solo si cambia)">
 			<div style="grid-column:1/3">
@@ -663,15 +667,22 @@ document.addEventListener('click', function (e) {
    actualiza los recuentos de las casillas. */
 (function () {
 	var sel = document.getElementById('dup-src'), ref = document.getElementById('dup-ref');
+	var nom = document.getElementById('dup-name'), mail = document.getElementById('dup-email');
 	if (!sel || !ref) return;
-	var touched = false;
+	var touched = false, touchedNom = false, touchedMail = false;
 	ref.addEventListener('input', function () { touched = true; });
+	if (nom) nom.addEventListener('input', function () { touchedNom = true; });
+	if (mail) mail.addEventListener('input', function () { touchedMail = true; });
 	function sync(prefill) {
 		var o = sel.options[sel.selectedIndex];
 		if (!o) return;
 		document.getElementById('dup-b').textContent = o.getAttribute('data-b') || '0';
 		document.getElementById('dup-m').textContent = o.getAttribute('data-m') || '0';
 		if (prefill && !touched) ref.value = (o.getAttribute('data-ref') || '') + ' COPIA';
+		/* Mismo cliente que el origen, salvo que se haya escrito otro a mano: así la copia
+		 * queda enlazada con el original sin depender de teclearlo igual. */
+		if (prefill && nom && !touchedNom) nom.value = o.getAttribute('data-name') || '';
+		if (prefill && mail && !touchedMail) mail.value = o.getAttribute('data-email') || '';
 	}
 	sel.addEventListener('change', function () { sync(true); });
 	sync(true);

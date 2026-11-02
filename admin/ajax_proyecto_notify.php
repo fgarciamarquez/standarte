@@ -272,9 +272,10 @@ $notaHtml = $bilingue
 	: "";
 $btnLabel = $bilingue ? 'Abrir el proyecto / Open the project' : 'Abrir el proyecto';
 
-/* Otros proyectos del MISMO cliente (mismo email de contacto), que la RPC devuelve en
- * related_projects ya filtrados: ni el propio, ni demos, ni los que aún no se le han
- * comunicado. Solo en los avisos AL CLIENTE: si tiene varias propuestas, que las vea
+/* Otros proyectos del MISMO cliente —mismo nombre y TODAS las direcciones de este
+ * proyecto presentes en el otro, para que nadie reciba un token que no le iba a llegar—,
+ * que la RPC devuelve en related_projects ya filtrados: ni el propio, ni demos, ni los
+ * que aún no se le han comunicado. Solo en los avisos AL CLIENTE: si tiene varias propuestas, que las vea
  * todas desde el mismo correo y pueda quedarse con la que mejor le encaje (decisión del
  * usuario, 02/11/2026). Cada una con miniatura —la primera imagen del proyecto, por el
  * mismo CDN de Storage que la imagen principal— para que las distinga de un vistazo. */
@@ -285,32 +286,46 @@ function pn_img_opt($url) {
 		return str_replace('/storage/v1/object/public/', '/storage/v1/render/image/public/', $url)
 			. (strpos($url, '?') === false ? '?' : '&') . 'width=320&quality=62&resize=contain';
 	}
-	if (strpos($url, 'drive.google.com') !== false && preg_match('~/file/d/([a-zA-Z0-9_-]+)~', $url, $mm)) {
+	/* Drive, en sus dos formas: /file/d/ID (vídeos /preview) y ?id=ID (las imágenes se
+	 * guardan como thumbnail?id=ID&sz=w2000, cpx_drive_src). En ambos casos se pide el
+	 * thumbnail a 320 px: sin esto el correo metía una imagen de 2000 px en 112 px. */
+	if (strpos($url, 'drive.google.com') !== false
+		&& (preg_match('~/file/d/([a-zA-Z0-9_-]+)~', $url, $mm) || preg_match('~[?&]id=([a-zA-Z0-9_-]+)~', $url, $mm))) {
 		return 'https://drive.google.com/thumbnail?id=' . $mm[1] . '&sz=w320';
 	}
 	return $url;
 }
 function pn_related_html($related, $h, $bilingue) {
 	if (!is_array($related) || !$related) return '';
+	$hoy  = date('Y-m-d');
 	$rows = '';
 	foreach ($related as $r) {
 		if (!is_array($r) || empty($r['token']) || !preg_match('/^[a-f0-9]{20,64}$/', $r['token'])) continue;
 		$url   = 'https://standarte.es/proyecto?t=' . $r['token'];
-		$tEs   = isset($r['title']['es']) && $r['title']['es'] !== '' ? $r['title']['es'] : (isset($r['ref']) ? $r['ref'] : '');
+		$ref   = isset($r['ref']) ? (string) $r['ref'] : '';
+		$tEs   = isset($r['title']['es']) && $r['title']['es'] !== '' ? $r['title']['es'] : $ref;
 		$tEn   = isset($r['title']['en']) && $r['title']['en'] !== '' ? $r['title']['en'] : $tEs;
 		$thumb = pn_img_opt(isset($r['thumb']) ? $r['thumb'] : '');
-		$ref   = isset($r['ref']) ? $r['ref'] : '';
+		/* Estado del hermano, para que el cliente no abra «otra propuesta» y se encuentre
+		 * con que está paralizada o caducada sin aviso (LONTEX caducó el 31/10/2026). */
+		$etq = array();
+		if (!empty($r['paused'])) $etq[] = $bilingue ? 'paralizado / on hold' : 'paralizado';
+		if (!empty($r['proposal_valid_until']) && (string) $r['proposal_valid_until'] < $hoy) $etq[] = $bilingue ? 'propuesta caducada / proposal expired' : 'propuesta caducada';
+		/* Sin título el nombre ya es la ref: no se repite debajo. */
+		$refLine = ($ref !== '' && $ref !== $tEs) ? $h($ref) : '';
+		$meta = trim($refLine . ($etq ? ($refLine !== '' ? ' &middot; ' : '') . $h(implode(' · ', $etq)) : ''));
+		/* Sin alto fijo ni object-fit: Outlook los ignora y deformaba la miniatura. */
 		$rows .= "<tr>"
 			. "<td style='width:112px;padding:8px 10px 8px 0;vertical-align:top;'>"
 			. ($thumb !== ''
-				? "<a href='" . $h($url) . "'><img src='" . $h($thumb) . "' width='112' alt='' style='display:block;width:112px;height:84px;object-fit:cover;border-radius:6px;border:1px solid #e6e6e0;background:#1b1b1a;' /></a>"
+				? "<a href='" . $h($url) . "'><img src='" . $h($thumb) . "' width='112' alt='' style='display:block;width:112px;height:auto;border-radius:6px;border:1px solid #e6e6e0;background:#1b1b1a;' /></a>"
 				: "<a href='" . $h($url) . "' style='display:block;width:112px;height:84px;border-radius:6px;background:#1b1b1a;color:#ffc800;text-align:center;line-height:84px;font-size:28px;text-decoration:none;'>&#9672;</a>")
 			. "</td>"
 			. "<td style='padding:8px 0;vertical-align:top;text-align:left;'>"
 			. "<p style='margin:0;font-weight:bold;'>" . $h($tEs) . "</p>"
 			. ($bilingue && $tEn !== $tEs ? "<p style='margin:0;color:#555;font-size:14px;'>" . $h($tEn) . "</p>" : "")
-			. "<p style='margin:2px 0 6px;font-family:monospace;font-size:12px;color:#888;'>" . $h($ref) . "</p>"
-			. "<a href='" . $h($url) . "' style='color:#1b1b1a;font-weight:bold;text-decoration:underline;'>" . ($bilingue ? 'Ver proyecto / Open project' : 'Ver proyecto') . " &rarr;</a>"
+			. ($meta !== '' ? "<p style='margin:2px 0 6px;font-family:monospace;font-size:12px;color:#888;'>" . $meta . "</p>" : "<p style='margin:0 0 6px;'></p>")
+			. "<a href='" . $h($url) . "' style='color:#1b1b1a;font-weight:bold;text-decoration:underline;'>" . ($bilingue ? 'Abrir el proyecto / Open the project' : 'Abrir el proyecto') . " &rarr;</a>"
 			. "</td></tr>";
 	}
 	if ($rows === '') return '';
@@ -318,7 +333,7 @@ function pn_related_html($related, $h, $bilingue) {
 		. "<p style='margin:0 0 4px;font-weight:bold;'>También tiene a su disposición estos proyectos:</p>"
 		. ($bilingue ? "<p style='margin:0 0 10px;color:#555;'>You also have these projects available:</p>" : "")
 		. "<p style='margin:0 0 10px;color:#555;'>Si alguno encaja mejor con lo que busca, coménteselo a su interlocutor."
-		. ($bilingue ? " <span style='color:#777;'>If one of them fits what you are looking for better, tell your contact.</span>" : "") . "</p>"
+		. ($bilingue ? " <span style='color:#777;'>If one of them is a better fit for what you are looking for, let your contact know.</span>" : "") . "</p>"
 		. "<table role='presentation' cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:100%;'>" . $rows . "</table>"
 		. "</div>";
 }
