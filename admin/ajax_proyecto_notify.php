@@ -271,6 +271,58 @@ $notaHtml = $bilingue
 		. "</div>"
 	: "";
 $btnLabel = $bilingue ? 'Abrir el proyecto / Open the project' : 'Abrir el proyecto';
+
+/* Otros proyectos del MISMO cliente (mismo email de contacto), que la RPC devuelve en
+ * related_projects ya filtrados: ni el propio, ni demos, ni los que aún no se le han
+ * comunicado. Solo en los avisos AL CLIENTE: si tiene varias propuestas, que las vea
+ * todas desde el mismo correo y pueda quedarse con la que mejor le encaje (decisión del
+ * usuario, 02/11/2026). Cada una con miniatura —la primera imagen del proyecto, por el
+ * mismo CDN de Storage que la imagen principal— para que las distinga de un vistazo. */
+function pn_img_opt($url) {
+	$url = (string) $url;
+	if ($url === '') return '';
+	if (strpos($url, '/storage/v1/object/public/') !== false) {
+		return str_replace('/storage/v1/object/public/', '/storage/v1/render/image/public/', $url)
+			. (strpos($url, '?') === false ? '?' : '&') . 'width=320&quality=62&resize=contain';
+	}
+	if (strpos($url, 'drive.google.com') !== false && preg_match('~/file/d/([a-zA-Z0-9_-]+)~', $url, $mm)) {
+		return 'https://drive.google.com/thumbnail?id=' . $mm[1] . '&sz=w320';
+	}
+	return $url;
+}
+function pn_related_html($related, $h, $bilingue) {
+	if (!is_array($related) || !$related) return '';
+	$rows = '';
+	foreach ($related as $r) {
+		if (!is_array($r) || empty($r['token']) || !preg_match('/^[a-f0-9]{20,64}$/', $r['token'])) continue;
+		$url   = 'https://standarte.es/proyecto?t=' . $r['token'];
+		$tEs   = isset($r['title']['es']) && $r['title']['es'] !== '' ? $r['title']['es'] : (isset($r['ref']) ? $r['ref'] : '');
+		$tEn   = isset($r['title']['en']) && $r['title']['en'] !== '' ? $r['title']['en'] : $tEs;
+		$thumb = pn_img_opt(isset($r['thumb']) ? $r['thumb'] : '');
+		$ref   = isset($r['ref']) ? $r['ref'] : '';
+		$rows .= "<tr>"
+			. "<td style='width:112px;padding:8px 10px 8px 0;vertical-align:top;'>"
+			. ($thumb !== ''
+				? "<a href='" . $h($url) . "'><img src='" . $h($thumb) . "' width='112' alt='' style='display:block;width:112px;height:84px;object-fit:cover;border-radius:6px;border:1px solid #e6e6e0;background:#1b1b1a;' /></a>"
+				: "<a href='" . $h($url) . "' style='display:block;width:112px;height:84px;border-radius:6px;background:#1b1b1a;color:#ffc800;text-align:center;line-height:84px;font-size:28px;text-decoration:none;'>&#9672;</a>")
+			. "</td>"
+			. "<td style='padding:8px 0;vertical-align:top;text-align:left;'>"
+			. "<p style='margin:0;font-weight:bold;'>" . $h($tEs) . "</p>"
+			. ($bilingue && $tEn !== $tEs ? "<p style='margin:0;color:#555;font-size:14px;'>" . $h($tEn) . "</p>" : "")
+			. "<p style='margin:2px 0 6px;font-family:monospace;font-size:12px;color:#888;'>" . $h($ref) . "</p>"
+			. "<a href='" . $h($url) . "' style='color:#1b1b1a;font-weight:bold;text-decoration:underline;'>" . ($bilingue ? 'Ver proyecto / Open project' : 'Ver proyecto') . " &rarr;</a>"
+			. "</td></tr>";
+	}
+	if ($rows === '') return '';
+	return "<div style='margin:24px auto 0;padding:14px 16px;background:#f6f6f2;border-radius:8px;text-align:left;max-width:560px;font-size:14px;line-height:1.5;'>"
+		. "<p style='margin:0 0 4px;font-weight:bold;'>También tiene a su disposición estos proyectos:</p>"
+		. ($bilingue ? "<p style='margin:0 0 10px;color:#555;'>You also have these projects available:</p>" : "")
+		. "<p style='margin:0 0 10px;color:#555;'>Si alguno encaja mejor con lo que busca, coménteselo a su interlocutor."
+		. ($bilingue ? " <span style='color:#777;'>If one of them fits what you are looking for better, tell your contact.</span>" : "") . "</p>"
+		. "<table role='presentation' cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:100%;'>" . $rows . "</table>"
+		. "</div>";
+}
+$relatedHtml = $bilingue ? pn_related_html(isset($p['related_projects']) ? $p['related_projects'] : array(), $h, true) : '';
 $pieHtml = $bilingue
 	? "Sistema de seguimiento de proyectos 100&nbsp;% Asegurado.<br>Fully guaranteed project tracking system.<br>"
 	: "Sistema de seguimiento de proyectos 100&nbsp;% Asegurado.<br>";
@@ -284,6 +336,7 @@ $html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 	. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($projectUrl) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $btnLabel . "</a></p>"
 	. $notaHtml
 	. ($firstImgOpt !== '' ? "<p style='text-align:center;margin:24px 0 0;'><a href='" . $h($projectUrl) . "'><img src='" . $h($firstImgOpt) . "' width='600' alt='Vista del proyecto' style='display:block;width:100%;max-width:600px;height:auto;margin:0 auto;border-radius:8px;border:1px solid #e6e6e0;' /></a></p>" : "")
+	. $relatedHtml
 	. "<p style='text-align:center;font-size:12px;color:#888;margin-top:20px;'>" . $pieHtml . "<a href='https://standarte.es' style='color:#888;text-decoration:none;'>https://standarte.es</a></p>"
 	. "</body></html>";
 

@@ -413,6 +413,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<input name="ref" placeholder="Ref (p. ej. IDh 2026/0062)" required>
 			<input name="client_name" placeholder="Cliente" required>
 			<input name="client_email" placeholder="Email del cliente (varios, separados por comas)" type="email" multiple>
+			<small style="grid-column:1/3;color:#8a8779;font-size:12px;line-height:1.4;">Con el <strong>mismo email</strong> en varios proyectos, el cliente los verá enlazados entre sí (al pie de cada uno y en el aviso de publicación), con miniatura, para comparar propuestas. Solo se enlazan los ya comunicados al cliente.</small>
 			<input name="title_es" placeholder="Título ES">
 			<input name="title_en" placeholder="Título EN">
 			<input name="interlocutor_email" placeholder="Email interlocutor (opc.)">
@@ -474,6 +475,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<input name="ref" id="dup-ref" placeholder="Ref del nuevo proyecto" required>
 			<input name="client_name" placeholder="Cliente" required>
 			<input name="client_email" placeholder="Email del cliente (varios, separados por comas)" type="email" multiple>
+			<small style="grid-column:1/3;color:#8a8779;font-size:12px;line-height:1.4;">Con el <strong>mismo email</strong> en varios proyectos, el cliente los verá enlazados entre sí (al pie de cada uno y en el aviso de publicación), con miniatura, para comparar propuestas. Solo se enlazan los ya comunicados al cliente.</small>
 			<input name="title_es" placeholder="Título ES (solo si cambia)">
 			<input name="title_en" placeholder="Título EN (solo si cambia)">
 			<div style="grid-column:1/3">
