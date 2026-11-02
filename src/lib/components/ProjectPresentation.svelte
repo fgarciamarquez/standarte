@@ -1192,6 +1192,11 @@
               <!-- Los separadores van como expresiones: Svelte recorta el espacio inicial de
                    un bloque {#if} y salía «REF-A· on hold». -->
               <span class="pz-related-ref">{L.ref} {r.ref}{#if r.paused}{' · '}{L.relatedPaused}{/if}{#if relatedExpired(r)}{' · '}{L.proposalExpired}{/if}</span>
+              <!-- Diseño y precio juntos al pie de la miniatura: son las dos cosas que el
+                   cliente compara entre propuestas (decisión del usuario, 02/11/2026). El
+                   importe lo calcula la BD con la misma fórmula que el TOTAL de la página
+                   (cpx_project_total), así que coincide al céntimo con lo que verá al abrir. -->
+              {#if r.total != null}<span class="pz-related-price">{fmt(Number(r.total))}</span>{/if}
               <span class="pz-related-cta">{L.relatedOpen} →</span>
             </span>
           </a>
@@ -1562,6 +1567,8 @@
   .pz-related-body { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px 14px; }
   .pz-related-title { font-weight: 700; font-size: 16px; line-height: 1.3; color: #1b1b1a; }
   .pz-related-ref { font-family: 'Inconsolata', monospace; font-size: 12px; color: #8a8779; }
+  /* El precio, con el peso visual que merece: es lo segundo que mira el cliente. */
+  .pz-related-price { margin-top: 4px; font-size: 20px; font-weight: 700; color: #1b1b1a; font-variant-numeric: tabular-nums; }
   .pz-related-cta { margin-top: 6px; font-size: 14px; font-weight: 700; color: #1b1b1a; }
   .pz-related-card:hover .pz-related-cta { color: #b58900; }
   .pz-sent { color: #2e7d32; margin: 0 0 14px; font-size: 15px; }

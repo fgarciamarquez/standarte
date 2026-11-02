@@ -314,6 +314,12 @@ function pn_related_html($related, $h, $bilingue) {
 		/* Sin título el nombre ya es la ref: no se repite debajo. */
 		$refLine = ($ref !== '' && $ref !== $tEs) ? $h($ref) : '';
 		$meta = trim($refLine . ($etq ? ($refLine !== '' ? ' &middot; ' : '') . $h(implode(' · ', $etq)) : ''));
+		/* El precio, junto a la miniatura: diseño y precio son lo que el cliente compara.
+		 * Viene calculado de la BD (cpx_project_total) con la MISMA fórmula que el TOTAL
+		 * de la página, así que no se recalcula aquí ni puede divergir. Formato español
+		 * porque el importe es el mismo en los dos idiomas del correo. */
+		$precio = (isset($r['total']) && $r['total'] !== null && $r['total'] !== '')
+			? number_format((float) $r['total'], 2, ',', '.') . '&nbsp;€' : '';
 		/* Sin alto fijo ni object-fit: Outlook los ignora y deformaba la miniatura. */
 		$rows .= "<tr>"
 			. "<td style='width:112px;padding:8px 10px 8px 0;vertical-align:top;'>"
@@ -324,7 +330,8 @@ function pn_related_html($related, $h, $bilingue) {
 			. "<td style='padding:8px 0;vertical-align:top;text-align:left;'>"
 			. "<p style='margin:0;font-weight:bold;'>" . $h($tEs) . "</p>"
 			. ($bilingue && $tEn !== $tEs ? "<p style='margin:0;color:#555;font-size:14px;'>" . $h($tEn) . "</p>" : "")
-			. ($meta !== '' ? "<p style='margin:2px 0 6px;font-family:monospace;font-size:12px;color:#888;'>" . $meta . "</p>" : "<p style='margin:0 0 6px;'></p>")
+			. ($meta !== '' ? "<p style='margin:2px 0 4px;font-family:monospace;font-size:12px;color:#888;'>" . $meta . "</p>" : "")
+			. ($precio !== '' ? "<p style='margin:2px 0 6px;font-size:18px;font-weight:bold;color:#1b1b1a;'>" . $precio . "</p>" : "<p style='margin:0 0 6px;'></p>")
 			. "<a href='" . $h($url) . "' style='color:#1b1b1a;font-weight:bold;text-decoration:underline;'>" . ($bilingue ? 'Abrir el proyecto / Open the project' : 'Abrir el proyecto') . " &rarr;</a>"
 			. "</td></tr>";
 	}
