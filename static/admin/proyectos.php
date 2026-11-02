@@ -251,7 +251,7 @@ function visit_badge($p) {
 	return '<span class="visit' . ($recent ? ' visit-recent' : '') . '" title="Última visita del cliente">' . $d->format('d/m H:i') . '</span>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,title_es,title_en,paid,approved,contract_state,invoice_state,invoice2_state,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,client_email,title_es,title_en,paid,approved,contract_state,invoice_state,invoice2_state,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
 /* Duplicar: el proyecto de origen se elige en el desplegable del panel de arriba (la
  * fila ya no lleva enlace propio: duplicar se hace desde ahí). Se conserva ?dup=ID por
  * si se llega con un enlace guardado, y el recuento de conceptos/archivos de cada
@@ -468,6 +468,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 					<?php foreach ($projects as $p): ?>
 					<option value="<?= h($p['id']) ?>" data-ref="<?= h($p['ref']) ?>"
 						data-name="<?= h(isset($p['client_name']) ? $p['client_name'] : '') ?>" data-email="<?= h(isset($p['client_email']) ? $p['client_email'] : '') ?>"
+						data-title-es="<?= h(isset($p['title_es']) ? $p['title_es'] : '') ?>" data-title-en="<?= h(isset($p['title_en']) ? $p['title_en'] : '') ?>"
 						data-b="<?= cnt($counts, 'budget', $p['id']) ?>" data-m="<?= cnt($counts, 'media', $p['id']) ?>"
 						<?= ($dupId === $p['id'] ? 'selected' : '') ?>><?= h($p['ref']) ?> — <?= h($p['client_name'] !== '' ? $p['client_name'] : 'sin cliente') ?></option>
 					<?php endforeach; ?>
@@ -480,8 +481,13 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<input name="client_name" id="dup-name" placeholder="Cliente" required>
 			<input name="client_email" id="dup-email" placeholder="Email del cliente (varios, separados por comas)" type="email" multiple>
 			<small style="grid-column:1/3;color:#8a8779;font-size:12px;line-height:1.4;">Varios proyectos con el <strong>mismo nombre de cliente y el mismo email</strong> quedan enlazados entre sí (al pie de cada uno y en el aviso de publicación), con miniatura, para comparar propuestas. Si pones varias direcciones, deben coincidir todas; solo se enlazan los ya comunicados al cliente.</small>
-			<input name="title_es" placeholder="Título ES (solo si cambia)">
-			<input name="title_en" placeholder="Título EN (solo si cambia)">
+			<!-- Los títulos se rellenan con los del origen en vez de dejarse en blanco.
+			     En blanco, cpx_duplicate_project COPIA el del origen sin decirlo, y así
+			     LONTEX OPCIÓN 2 acabó titulada «ROCACORBA AEROPUERTO 3,6 x 3,6» (31/10):
+			     la clienta de LONTEX llevaba días viendo en su propia página el nombre
+			     del proyecto de otra clienta. Verlos escritos obliga a mirarlos. -->
+			<input name="title_es" id="dup-tes" placeholder="Título ES">
+			<input name="title_en" id="dup-ten" placeholder="Título EN">
 			<div style="grid-column:1/3">
 				<label class="chk-l"><input type="checkbox" name="copy_budget" value="1" checked> Copiar el presupuesto (<span id="dup-b">0</span> conceptos)</label>
 				<label class="chk-l"><input type="checkbox" name="copy_media" value="1"> Copiar los archivos (<span id="dup-m">0</span>): la copia apunta a los mismos ficheros, no se suben de nuevo</label>
@@ -668,11 +674,14 @@ document.addEventListener('click', function (e) {
 (function () {
 	var sel = document.getElementById('dup-src'), ref = document.getElementById('dup-ref');
 	var nom = document.getElementById('dup-name'), mail = document.getElementById('dup-email');
+	var tes = document.getElementById('dup-tes'), ten = document.getElementById('dup-ten');
 	if (!sel || !ref) return;
-	var touched = false, touchedNom = false, touchedMail = false;
+	var touched = false, touchedNom = false, touchedMail = false, touchedTes = false, touchedTen = false;
 	ref.addEventListener('input', function () { touched = true; });
 	if (nom) nom.addEventListener('input', function () { touchedNom = true; });
 	if (mail) mail.addEventListener('input', function () { touchedMail = true; });
+	if (tes) tes.addEventListener('input', function () { touchedTes = true; });
+	if (ten) ten.addEventListener('input', function () { touchedTen = true; });
 	function sync(prefill) {
 		var o = sel.options[sel.selectedIndex];
 		if (!o) return;
@@ -683,6 +692,9 @@ document.addEventListener('click', function (e) {
 		 * queda enlazada con el original sin depender de teclearlo igual. */
 		if (prefill && nom && !touchedNom) nom.value = o.getAttribute('data-name') || '';
 		if (prefill && mail && !touchedMail) mail.value = o.getAttribute('data-email') || '';
+		/* Los títulos, a la vista: en blanco se heredaban en silencio los del origen. */
+		if (prefill && tes && !touchedTes) tes.value = o.getAttribute('data-title-es') || '';
+		if (prefill && ten && !touchedTen) ten.value = o.getAttribute('data-title-en') || '';
 	}
 	sel.addEventListener('change', function () { sync(true); });
 	sync(true);
