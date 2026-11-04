@@ -98,6 +98,17 @@ if (!is_array($p) || empty($p['ref'])) {
 	echo json_encode(array('ok' => false, 'error' => 'not_found'));
 	exit;
 }
+/* Proyecto de DEMOSTRACIÓN (04/11/2026): su enlace es público (lo publica la página
+ * «Proyecto Auditado» en 11 idiomas), así que ningún aviso que pueda disparar un visitante
+ * sin sesión —client, approved, option— sale de aquí: si no, cualquiera con ese enlace
+ * podría mandar correos sin límite al interlocutor. La página ya no llama en la demo
+ * (comentar, aprobar y la casilla de opción se quedan en pantalla); esto es por si alguien
+ * llama directamente. El equipo autenticado (role=internal) sí puede avisar al cliente de
+ * la demo. role=visit no llega aquí: touch_client_visit nunca avisa en la demo. */
+if (!empty($p['is_demo']) && !pn_admin_authed()) {
+	echo json_encode(array('ok' => false, 'error' => 'demo'));
+	exit;
+}
 
 $clientName  = isset($p['client_name']) ? $p['client_name'] : '';
 $titleEs     = isset($p['title']['es']) ? $p['title']['es'] : $p['ref'];
@@ -200,11 +211,6 @@ if ($role === 'approved') {
 	$firstImgOpt = '';
 } elseif ($role === 'option') {
 	$to = $interEmail;
-	/* El proyecto de DEMOSTRACIÓN tiene el enlace público (página «Proyecto Auditado»):
-	 * ahí la casilla solo cambia la pantalla del visitante y no se avisa a nadie; si no,
-	 * cada clic de cada visitante sería un correo al interlocutor. La página ya no llama
-	 * aquí en la demo; esto es por si alguien llama directamente con ese token. */
-	if (!empty($p['is_demo'])) { echo json_encode(array('ok' => false, 'error' => 'demo')); exit; }
 	$optId = pn_post('item_id');
 	$opt = null;
 	if (!empty($p['budget']) && is_array($p['budget'])) {

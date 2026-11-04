@@ -575,20 +575,40 @@
   // al interlocutor y se recarga. Bloqueado si el proyecto está aprobado o paralizado
   // (la RPC lo rechaza también; aquí solo se evita el clic inútil).
   let optMsg = '';
-  async function clientToggle(item) {
+  let optBusy = null;   // id de la partida cuya RPC está en vuelo: bloquea la casilla mientras
+  async function clientToggle(item, e) {
+    const box = e && e.currentTarget;
+    // El estado que se pide es el que el cliente VE en la casilla, no el del modelo: si
+    // hace dos clics seguidos, el segundo no vuelve a mandar el mismo estado.
+    const want = box ? !!box.checked : !item.active;
     // Proyecto de DEMOSTRACIÓN (su enlace es público: lo publica la página «Proyecto
     // Auditado» en 11 idiomas): la casilla funciona en la propia pantalla, para que el
     // visitante vea cómo cambia el total, pero no se guarda ni se avisa a nadie —cada
     // clic de cada visitante sería un correo al interlocutor—. Igual que los comentarios
     // y la aprobación, que en la demo tampoco salen de la pantalla. La RPC y el PHP lo
     // rechazan también por su cuenta (is_demo), por si llega sin pasar por aquí.
-    if (demo) { item.active = !item.active; data = data; return; }
-    if (approved || isPaused) return;
-    optMsg = '';
-    const r = await toggleClientOption(token, item.id, !item.active);
-    if (!r || !r.ok) { optMsg = r && r.error === 'locked' ? L.optLocked : L.errGeneric; return; }
-    notifySend(token, 'option', { item_id: item.id }).catch(() => {});
-    await reload();
+    if (demo) { item.active = want; data = data; return; }
+    if (approved || isPaused || optBusy) { if (box) box.checked = !!item.active; return; }
+    optMsg = ''; optBusy = item.id;
+    try {
+      const r = await toggleClientOption(token, item.id, want);
+      if (!r || !r.ok) {
+        optMsg = r && r.error === 'locked' ? L.optLocked : L.errGeneric;
+        // Sin éxito, la casilla vuelve a lo GUARDADO: el navegador ya la había conmutado al
+        // hacer clic y el modelo no ha cambiado, así que Svelte no la corrige por sí solo
+        // (la revisión del 04/11 lo cazó: casilla marcada, importe gris, «no incluido»).
+        if (box) box.checked = !!item.active;
+        return;
+      }
+      notifySend(token, 'option', { item_id: item.id }).catch(() => {});
+      await reload();
+    } catch (err) {
+      // rpc() lanza si Supabase no responde 2xx (red caída, 5xx): mismo tratamiento.
+      optMsg = L.errGeneric;
+      if (box) box.checked = !!item.active;
+    } finally {
+      optBusy = null;
+    }
   }
   let nb = { concept: '', amount: '', optional: false };
   async function addBudget() {
@@ -922,7 +942,7 @@
                 <td><button class="pz-del" on:click={() => delBudget(it.id)}>×</button></td>
               {:else}
                 <td class="pz-concept-cell">
-                  {#if it.optional}<input type="checkbox" class="pz-optchk" checked={!!it.active} disabled={approved || isPaused} title={L.optionalClient} aria-label={L.optionalClient} on:change={() => clientToggle(it)} />{/if}
+                  {#if it.optional}<input type="checkbox" class="pz-optchk" checked={!!it.active} disabled={approved || isPaused || optBusy !== null} title={L.optionalClient} aria-label={L.optionalClient} on:change={(e) => clientToggle(it, e)} />{/if}
                   {it.concept[lang]}
                   <!-- El espacio va como expresión: Svelte recorta el blanco inicial del bloque y
                        la etiqueta salía «OPTIONAL· NOT INCLUDED» (visto en la prueba en vivo del 04/11). -->

@@ -6,19 +6,27 @@ name: Prueba de opciones del cliente
 # está en la cabecera de scripts/probar_opciones_cliente.mjs.
 #
 # ⚠️ Sin «demo» marcado, el test GUARDA en la base de datos y MANDA DOS CORREOS al
-# interlocutor del proyecto (opción activada / desactivada). Solo con un proyecto de
-# prueba; nunca con el de un cliente.
+# interlocutor del proyecto (opción activada / desactivada). El script solo acepta
+# proyectos cuyo cliente o referencia contenga «PRUEBA»; con cualquier otro se para.
+#
+# ⚠️ El repositorio es PÚBLICO y GitHub imprime en el registro de cada paso sus variables
+# de entorno: un token pasado como parámetro queda legible para cualquiera (lo cazó la
+# revisión del 04/11). Por eso el token se lee primero del secret PRUEBA_OPCIONES_TOKEN
+# (Settings → Secrets → Actions), que sí se enmascara; el parámetro «token» queda como
+# alternativa SOLO para proyectos de prueba desechables, que se borran al terminar.
+# Para la demo no hace falta nada: su enlace ya es público.
 
 on:
   workflow_dispatch:
     inputs:
-      token:
-        description: 'Token del proyecto (parámetro t= de su enlace). Solo un proyecto de PRUEBA.'
-        required: true
       demo:
         description: 'Es el proyecto de demostración (la casilla solo cambia la pantalla; no guarda ni avisa)'
         type: boolean
         default: false
+      token:
+        description: 'Token (t=) de un proyecto de PRUEBA desechable, o de la demo. Queda visible en el registro: si hay secret PRUEBA_OPCIONES_TOKEN, déjalo vacío.'
+        required: false
+        default: ''
       base_url:
         description: 'Sitio'
         default: 'https://standarte.es'
@@ -40,10 +48,13 @@ jobs:
       - name: Probar en el sitio publicado
         env:
           BASE_URL: ${{ inputs.base_url }}
-          TOKEN: ${{ inputs.token }}
+          # Secret si existe (enmascarado); si no, el parámetro.
+          TOKEN: ${{ secrets.PRUEBA_OPCIONES_TOKEN || inputs.token }}
           DEMO: ${{ inputs.demo && '1' || '0' }}
           OUT_DIR: pruebas
-        run: node scripts/probar_opciones_cliente.mjs
+        run: |
+          if [ -z "$TOKEN" ]; then echo "::error::Falta el token: crea el secret PRUEBA_OPCIONES_TOKEN o pasa el parámetro «token»."; exit 2; fi
+          node scripts/probar_opciones_cliente.mjs
       - name: Guardar las capturas
         if: always()
         uses: actions/upload-artifact@v4
