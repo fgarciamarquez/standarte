@@ -390,7 +390,7 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	if ($client === '') $errors[] = 'falta la razón social (o el nombre del cliente)';
 	$iban = trim((string) (isset($p['income_account']) ? $p['income_account'] : ''));
 	if ($iban === '') $errors[] = 'el proyecto no tiene cuenta de ingreso';
-	$budget = cpx_rows('client_project_budget_items?project_id=eq.' . urlencode($projectId) . '&select=amount,concept_es,concept_en&order=sort_order.asc,id.asc');
+	$budget = cpx_budget_rows($projectId, 'amount,concept_es,concept_en');  // sin las opcionales no confirmadas
 	$inv = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&select=which,number,meta,amount_eur&order=issued_at.asc');
 	$prev1 = null; foreach ($inv as $r) { if ((int) $r['which'] === 1) $prev1 = $r; }
 	if ($which === 2 && (!isset($p['invoice_state']) || $p['invoice_state'] !== 'cursado')) $errors[] = 'la Factura 2 solo se emite cuando la Factura 1 está cursada (cobrada)';

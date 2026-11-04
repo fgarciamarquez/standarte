@@ -142,6 +142,8 @@ if ($role === 'approved') {
 	$cell = "padding:6px 8px;border-bottom:1px solid #e6e6e0;";
 	if (!empty($p['budget']) && is_array($p['budget'])) {
 		foreach ($p['budget'] as $b) {
+			/* Opcionales no confirmadas: no están contratadas, así que ni se listan ni suman. */
+			if (!empty($b['optional']) && empty($b['active'])) continue;
 			$a = (float) str_replace(',', '.', (string) (isset($b['amount']) ? $b['amount'] : 0));
 			$subtotal += $a;
 			$c = isset($b['concept']['es']) ? $b['concept']['es'] : (isset($b['concept']['en']) ? $b['concept']['en'] : '');

@@ -480,7 +480,7 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	if ($client === '') $errors[] = 'falta la razón social (o el nombre del cliente)';
 	$fair = !empty($p['fair_slug']) ? cpx_fair_info($p['fair_slug']) : null;
 	if (!$fair) $errors[] = 'el proyecto no tiene evento vinculado (la cláusula A lo nombra)';
-	$budget = cpx_rows('client_project_budget_items?project_id=eq.' . urlencode($projectId) . '&select=amount&order=sort_order.asc');
+	$budget = cpx_budget_rows($projectId, 'amount', 'sort_order.asc');  // sin las opcionales no confirmadas
 	$tot = cpx_contract_totals($p, $budget);
 	if ($tot['total'] <= 0) $errors[] = 'el presupuesto aprobado es 0';
 	if ($errors) return array('ok' => false, 'errors' => $errors);

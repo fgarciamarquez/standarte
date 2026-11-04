@@ -61,7 +61,7 @@ function cr_days_since($iso, $now) { if (empty($iso)) return null; $t = strtotim
  * pierde 1.000 € por semana empezada), más IVA y menos IRPF según los tipos del proyecto. */
 function cr_totals($p, $now) {
 	$subtotal = 0.0;
-	foreach (cpx_rows('client_project_budget_items?select=amount&project_id=eq.' . urlencode($p['id'])) as $it) $subtotal += (float) $it['amount'];
+	foreach (cpx_budget_rows($p['id']) as $it) $subtotal += (float) $it['amount'];  // solo las partidas que cuentan (opcionales activas)
 	$amount = isset($p['discount_amount']) ? (float) $p['discount_amount'] : 0.0;
 	$disc = 0.0; $deadlineShown = null;
 	if ($amount > 0) {

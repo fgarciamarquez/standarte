@@ -59,8 +59,12 @@ begin
   select id, ref, client_name, title_es, fair_slug, discount_amount, discount_label_es, discount_deadline, iva_rate, irpf_rate
     into p from public.client_projects where id = p_project;
   if not found then return; end if;
-  select coalesce(jsonb_agg(jsonb_build_object('concept_es', concept_es, 'concept_en', concept_en, 'amount', amount, 'sort_order', sort_order) order by sort_order, concept_es), '[]'::jsonb),
-         count(*), coalesce(sum(amount), 0)
+  -- 04/11/2026: partidas opcionales. Solo suman las que cuentan ((not is_optional) or
+  -- is_active); la foto guarda los dos indicadores, así que confirmar una opción es una
+  -- versión más del precio.
+  select coalesce(jsonb_agg(jsonb_build_object('concept_es', concept_es, 'concept_en', concept_en, 'amount', amount, 'sort_order', sort_order,
+                                               'optional', is_optional, 'active', is_active) order by sort_order, concept_es), '[]'::jsonb),
+         count(*), coalesce(sum(case when (not is_optional) or is_active then amount else 0 end), 0)
     into v_items, v_count, v_subtotal
     from public.client_project_budget_items where project_id = p_project;
   v_fp := md5(v_items::text || '|' || coalesce(p.discount_amount, 0)::text || '|' || coalesce(p.discount_label_es, '') || '|' || coalesce(p.discount_deadline::text, '') || '|' || coalesce(p.iva_rate, 0)::text || '|' || coalesce(p.irpf_rate, 0)::text);

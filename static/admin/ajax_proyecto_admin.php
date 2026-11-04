@@ -228,9 +228,12 @@ if ($action === 'save') {
  * respuesta lo dice con price_notified para que quien edita lo vea. */
 if ($action === 'add_budget') {
 	$antes = cpx_budget_subtotal($projectId);
+	/* Partida opcional: nace desactivada (no suma) hasta que el cliente la confirme. */
+	$opt = pa_post('is_optional', '0') === '1';
 	$r = cpx_sb('POST', 'client_project_budget_items', array(
 		'project_id' => $projectId, 'concept_es' => pa_post('concept_es'), 'concept_en' => pa_post('concept_en'),
-		'amount' => (float) str_replace(',', '.', pa_post('amount', '0')), 'sort_order' => (int) pa_post('sort_order', '999')
+		'amount' => (float) str_replace(',', '.', pa_post('amount', '0')), 'sort_order' => (int) pa_post('sort_order', '999'),
+		'is_optional' => $opt, 'is_active' => $opt ? (pa_post('is_active', '0') === '1') : true
 	));
 	$ok = (int) $r['code'] < 300;
 	pa_out(array('ok' => $ok, 'price_notified' => $ok && cpx_price_drop_notify($projectId, $antes)));
@@ -239,8 +242,12 @@ if ($action === 'edit_budget') {
 	$fields = array();
 	foreach (array('concept_es', 'concept_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
 	if (isset($_POST['amount'])) $fields['amount'] = (float) str_replace(',', '.', pa_post('amount', '0'));
+	/* Indicadores de partida opcional (solo si vienen; son booleanos '1'/'0'). Activar o
+	 * desactivar una opción cambia el subtotal, así que pasa por la misma detección de
+	 * «mejor precio» que un cambio de importe. */
+	foreach (array('is_optional', 'is_active') as $k) { if (isset($_POST[$k])) $fields[$k] = (pa_post($k, '0') === '1'); }
 	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));
-	$antes = isset($fields['amount']) ? cpx_budget_subtotal($projectId) : null;
+	$antes = (isset($fields['amount']) || isset($fields['is_active']) || isset($fields['is_optional'])) ? cpx_budget_subtotal($projectId) : null;
 	$r = cpx_sb('PATCH', 'client_project_budget_items?id=eq.' . urlencode(pa_post('item_id')) . '&project_id=eq.' . urlencode($projectId), $fields);
 	$ok = (int) $r['code'] < 300;
 	pa_out(array('ok' => $ok, 'price_notified' => $ok && $antes !== null && cpx_price_drop_notify($projectId, $antes)));

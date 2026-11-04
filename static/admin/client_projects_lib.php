@@ -378,10 +378,7 @@ if (!function_exists('cpx_key')) {
 			/* El descuento se guarda en euros; el cliente lo entiende mejor como porcentaje,
 			 * así que se dan los dos. El porcentaje se calcula sobre la suma del presupuesto:
 			 * si aún no hay conceptos, se omite en vez de inventar una referencia. */
-			$subtotal = 0.0;
-			foreach (cpx_rows('client_project_budget_items?select=amount&project_id=eq.' . urlencode($p['id'])) as $it) {
-				$subtotal += (float) $it['amount'];
-			}
+			$subtotal = cpx_budget_subtotal($p['id']);
 			$pct = ($subtotal > 0) ? round($amount / $subtotal * 100, 1) : null;
 			$pctEs = $pct === null ? '' : ' (un ' . rtrim(rtrim(number_format($pct, 1, ',', '.'), '0'), ',') . '&nbsp;% del presupuesto)';
 			$pctEn = $pct === null ? '' : ' (' . rtrim(rtrim(number_format($pct, 1, '.', ','), '0'), '.') . '% of the quote)';
@@ -443,11 +440,30 @@ if (!function_exists('cpx_key')) {
 		return (bool) $sent;
 	}
 
+	/* Partidas OPCIONALES (04/11/2026): un concepto marcado `is_optional` se muestra
+	 * siempre con su importe, pero solo SUMA si está `is_active` (el cliente lo ha
+	 * confirmado). Regla única, idéntica a la de la BD (cpx_project_total,
+	 * cpx_price_snapshot) y a la de la página: cuenta <=> (!opcional) || activa.
+	 * TODO sumatorio de partidas en PHP tiene que pasar por aquí. */
+	function cpx_item_counts($it) {
+		$opt = !empty($it['is_optional']) && $it['is_optional'] !== 'false';
+		$act = !isset($it['is_active']) || ($it['is_active'] && $it['is_active'] !== 'false');
+		return !$opt || $act;
+	}
+	/* Las partidas que CUENTAN de un proyecto, ya filtradas, con los campos pedidos. */
+	function cpx_budget_rows($projectId, $select = 'amount', $order = 'sort_order.asc,id.asc') {
+		$rows = cpx_rows('client_project_budget_items?project_id=eq.' . urlencode($projectId)
+			. '&select=' . $select . ',is_optional,is_active&order=' . $order);
+		$out = array();
+		foreach ($rows as $it) { if (cpx_item_counts($it)) $out[] = $it; }
+		return $out;
+	}
+
 	/* Suma de los conceptos del presupuesto (sin descuento ni impuestos): es la cifra
 	 * que el cliente ve como «Subtotal» y la que sirve para saber si el precio ha bajado. */
 	function cpx_budget_subtotal($projectId) {
 		$s = 0.0;
-		foreach (cpx_rows('client_project_budget_items?select=amount&project_id=eq.' . urlencode($projectId)) as $it) {
+		foreach (cpx_budget_rows($projectId) as $it) {
 			$s += (float) $it['amount'];
 		}
 		return round($s, 2);
