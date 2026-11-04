@@ -600,7 +600,10 @@
         if (box) box.checked = !!item.active;
         return;
       }
-      notifySend(token, 'option', { item_id: item.id }).catch(() => {});
+      // Sin correo al equipo (decisión del usuario, 04/11/2026): los avisos por cambios
+      // generaban ruido hasta molestar. El estado queda guardado y en el histórico de
+      // precios; el único correo con la contabilidad es el de la APROBACIÓN. El PHP
+      // (role=option) está apagado también, por CPX_CHANGE_NOTICES.
       await reload();
     } catch (err) {
       // rpc() lanza si Supabase no responde 2xx (red caída, 5xx): mismo tratamiento.

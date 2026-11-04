@@ -7,21 +7,22 @@
  *
  *   1. que la fila lleva la casilla, el fondo verde suave y el importe ATENUADO
  *      (desactivada); el total no la incluye;
- *   2. que al marcar la casilla se guarda por la RPC toggle_client_option, se avisa al
- *      interlocutor por ajax_proyecto_notify.php (role=option) y, tras recargar, la base
- *      imponible sube EXACTAMENTE el importe de la partida, el total sube
- *      importe × (1 + IVA − IRPF) y el importe se muestra con color normal;
+ *   2. que al marcar la casilla se guarda por la RPC toggle_client_option SIN mandar
+ *      ningún correo (los avisos por cambios están apagados desde el 04/11/2026,
+ *      CPX_CHANGE_NOTICES) y, tras recargar, la base imponible sube EXACTAMENTE el
+ *      importe de la partida, el total sube importe × (1 + IVA − IRPF) y el importe se
+ *      muestra con color normal;
  *   3. que al desmarcarla vuelve todo al estado inicial.
  *
  * En el proyecto de DEMOSTRACIÓN (DEMO=1), cuyo enlace es público, la casilla solo
  * cambia la pantalla: se comprueba que NO se llama a la RPC ni al PHP y que el total
  * cambia en local.
  *
- * ⚠️ Con DEMO=0 el test ESCRIBE en la base de datos y MANDA DOS CORREOS al interlocutor
- * del proyecto (opción activada y desactivada). Por eso SOLO acepta proyectos cuyo
- * nombre de cliente o referencia contenga «PRUEBA»: con cualquier otro se para antes de
- * tocar nada. El aviso de visita (role=visit) que la página dispara al abrirse se
- * responde en local, para no registrar visitas ni mandar un tercer correo.
+ * ⚠️ Con DEMO=0 el test ESCRIBE en la base de datos (estado de la opción e histórico de
+ * precios). Por eso SOLO acepta proyectos cuyo nombre de cliente o referencia contenga
+ * «PRUEBA»: con cualquier otro se para antes de tocar nada. El aviso de visita
+ * (role=visit) que la página dispara al abrirse se responde en local, para no registrar
+ * visitas ni mandar correo.
  *
  * Se lanza desde el workflow «Prueba de opciones del cliente» (GitHub Actions), porque
  * desde la sesión de desarrollo el proxy no deja llegar a standarte.es. El repositorio es
@@ -74,7 +75,6 @@ let ROW_I = 0; // índice, entre las filas opcionales, de la elegida: la primera
  * aparece «role=option» sino una parte `name="role"` cuyo valor es la línea siguiente.
  * Al abrir la página se hace además un POST role=visit al mismo PHP: hay que distinguirlos. */
 const rolePost = (req) => { const m = /name="role"\r?\n\r?\n([^\r\n]+)/.exec(req.postData() || ''); return m ? m[1].trim() : null; };
-const esAvisoOpcion = (r) => r.url().includes('ajax_proyecto_notify.php') && r.request().method() === 'POST' && rolePost(r.request()) === 'option';
 const esRpcOpcion = (r) => r.url().includes('/rpc/toggle_client_option');
 
 async function leer(page) {
@@ -184,16 +184,12 @@ if (DEMO) {
   await page.screenshot({ path: path.join(OUT, '3-desactivada.png'), fullPage: true });
 } else {
   const esperaRpc = page.waitForResponse(esRpcOpcion, { timeout: 30000 });
-  const esperaNotify = page.waitForResponse(esAvisoOpcion, { timeout: 30000 });
   await chk.click();
   const rpc = await esperaRpc;
   const rpcJson = await rpc.json().catch(() => null);
   ok(rpc.ok() && rpcJson && rpcJson.ok === true, 'la RPC toggle_client_option responde ok', JSON.stringify(rpcJson && { ok: rpcJson.ok, error: rpcJson.error }));
-  const nt = await esperaNotify;
-  const ntBody = await nt.text().catch(() => '');
-  let ntJson = null; try { ntJson = JSON.parse(ntBody); } catch { /* no JSON */ }
-  ok(nt.ok() && ntJson && ntJson.ok === true, 'el PHP role=option ha enviado el aviso al interlocutor', ntBody.slice(0, 120));
   await esperarEstado(page, true, a.total);
+  ok(llamadas.notify === 0, 'ningún correo al equipo: los avisos por cambios están apagados', `notify=${llamadas.notify}`);
   const b = await leer(page);
   console.log(`   tras activar: base ${b.base}  total ${b.total}`);
   ok(b.checked === true, 'la casilla queda marcada tras recargar');
@@ -205,18 +201,15 @@ if (DEMO) {
 
   console.log('3) Desmarcar la casilla');
   const esperaRpc2 = page.waitForResponse(esRpcOpcion, { timeout: 30000 });
-  const esperaNotify2 = page.waitForResponse(esAvisoOpcion, { timeout: 30000 });
   await chk.click();
   const rpc2 = await esperaRpc2; const rpc2Json = await rpc2.json().catch(() => null);
   ok(rpc2.ok() && rpc2Json && rpc2Json.ok === true, 'la RPC responde ok al desactivar');
-  const nt2 = await esperaNotify2; const nt2Body = await nt2.text().catch(() => '');
-  ok(nt2.ok() && /"ok"\s*:\s*true/.test(nt2Body), 'aviso de «opción desactivada» enviado', nt2Body.slice(0, 120));
   await esperarEstado(page, false, b.total);
   const c = await leer(page);
   console.log(`   tras desactivar: base ${c.base}  total ${c.total}`);
   ok(c.checked === false && c.rowOff && c.amtOffClass && c.amtColor === DIM, 'vuelve a atenuada', c.amtColor);
   ok(near(parseMoney(c.base), base0) && near(parseMoney(c.total), total0), 'base y total vuelven al valor inicial', `${c.base} / ${c.total}`);
-  ok(llamadas.rpc === 2 && llamadas.notify === 2, 'dos llamadas a la RPC y dos avisos, ninguno de visita', `rpc=${llamadas.rpc} notify=${llamadas.notify}`);
+  ok(llamadas.rpc === 2 && llamadas.notify === 0, 'dos llamadas a la RPC y ningún aviso por correo', `rpc=${llamadas.rpc} notify=${llamadas.notify}`);
   await page.screenshot({ path: path.join(OUT, '3-desactivada.png'), fullPage: true });
 }
 

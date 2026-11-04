@@ -210,6 +210,10 @@ if ($role === 'approved') {
 	$commentsHtml = $tabla;
 	$firstImgOpt = '';
 } elseif ($role === 'option') {
+	/* APAGADO (04/11/2026, decisión del usuario): los avisos por cambios molestaban. La
+	 * página ya no llama; esto responde a quien llame directamente. Interruptor único en
+	 * client_projects_lib.php (CPX_CHANGE_NOTICES), junto a «mejor precio» y «fechas». */
+	if (!CPX_CHANGE_NOTICES) { echo json_encode(array('ok' => false, 'error' => 'disabled')); exit; }
 	$to = $interEmail;
 	$optId = pn_post('item_id');
 	$opt = null;

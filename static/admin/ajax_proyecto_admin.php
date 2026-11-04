@@ -225,7 +225,10 @@ if ($action === 'save') {
 
 /* Hoja de presupuesto. Cada cambio se compara con el subtotal de ANTES: si el precio
  * baja, el cliente recibe un correo de «mejor precio» (cpx_price_drop_notify) y la
- * respuesta lo dice con price_notified para que quien edita lo vea. */
+ * respuesta lo dice con price_notified para que quien edita lo vea.
+ * APAGADO desde el 04/11/2026 (CPX_CHANGE_NOTICES en client_projects_lib.php, decisión
+ * del usuario: los avisos por cambios molestaban): la función devuelve false sin enviar
+ * y price_notified queda en false. El cálculo de $antes se conserva para reactivarlo. */
 if ($action === 'add_budget') {
 	$antes = cpx_budget_subtotal($projectId);
 	/* Partida opcional: nace desactivada (no suma) hasta que el cliente la confirme. */

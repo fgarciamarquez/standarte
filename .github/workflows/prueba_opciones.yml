@@ -5,9 +5,10 @@ name: Prueba de opciones del cliente
 # desarrollo porque desde allí el proxy no deja llegar a standarte.es. Lo que comprueba
 # está en la cabecera de scripts/probar_opciones_cliente.mjs.
 #
-# ⚠️ Sin «demo» marcado, el test GUARDA en la base de datos y MANDA DOS CORREOS al
-# interlocutor del proyecto (opción activada / desactivada). El script solo acepta
-# proyectos cuyo cliente o referencia contenga «PRUEBA»; con cualquier otro se para.
+# ⚠️ Sin «demo» marcado, el test GUARDA en la base de datos (estado de la opción e
+# histórico de precios). El script solo acepta proyectos cuyo cliente o referencia
+# contenga «PRUEBA»; con cualquier otro se para. No manda correos: los avisos por cambios
+# están apagados desde el 04/11/2026 (CPX_CHANGE_NOTICES).
 #
 # ⚠️ El repositorio es PÚBLICO y GitHub imprime en el registro de cada paso sus variables
 # de entorno: un token pasado como parámetro queda legible para cualquiera (lo cazó la

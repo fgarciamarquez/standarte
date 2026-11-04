@@ -3,6 +3,17 @@
  * Helpers compartidos por la zona privada de proyectos (proyectos.php y
  * ajax_proyecto_admin.php). Requiere que supabase-config.php ya esté incluido.
  */
+
+/* AVISOS AUTOMÁTICOS POR CAMBIOS: APAGADOS el 04/11/2026 (decisión del usuario). Cada
+ * edición generaba correos —«mejor precio» y «nuevas fechas» al cliente, «opción
+ * activada/desactivada» al equipo— hasta el punto de molestar y de poder cansar al
+ * cliente. Solo la APROBACIÓN manda correo con el estado de la contabilidad. Lo que sigue
+ * saliendo no es por cambios: «Avisar al cliente» (manual), comentarios, visita, contrato,
+ * factura y los crons. Para reactivarlos basta con poner true: las funciones y las
+ * columnas price_notice_* siguen ahí. Ojo al reactivar «mejor precio»: price_notice_total
+ * se habrá quedado en la última cifra comunicada antes del apagado. */
+if (!defined('CPX_CHANGE_NOTICES')) define('CPX_CHANGE_NOTICES', false);
+
 if (!function_exists('cpx_key')) {
 
 	function cpx_key() { return defined('SUPABASE_SERVICE_KEY') ? SUPABASE_SERVICE_KEY : SUPABASE_KEY; }
@@ -355,6 +366,7 @@ if (!function_exists('cpx_key')) {
 	 * Devuelve true si el correo salió.
 	 */
 	function cpx_project_dates_email($p, $offerDeadline = null, $validUntil = null) {
+		if (!CPX_CHANGE_NOTICES) return false;   // apagado el 04/11/2026, ver cabecera
 		if (!$offerDeadline && !$validUntil) return false;
 		$to = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
 		if (!$to) return false;
@@ -554,6 +566,7 @@ if (!function_exists('cpx_key')) {
 	 * siguiente cambio (o el último de la tanda, pasado ese tiempo) informa del total.
 	 * Devuelve true si ha salido el correo. */
 	function cpx_price_drop_notify($projectId, $subtotalBefore) {
+		if (!CPX_CHANGE_NOTICES) return false;   // apagado el 04/11/2026, ver cabecera
 		$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId)
 			. '&select=id,ref,title_es,title_en,client_name,client_email,access_token,approved,is_demo,paused,last_client_visit,price_notice_total,price_notice_at&limit=1');
 		$p = isset($rows[0]) ? $rows[0] : null;
