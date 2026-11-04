@@ -62,6 +62,13 @@ const ok = (cond, msg, detail = '') => {
 };
 
 const ROW = '.pz-sheet tbody tr.pz-opt';
+
+/* La página manda los avisos al PHP como FormData (multipart), así que en el cuerpo NO
+ * aparece «role=option» sino una parte `name="role"` cuyo valor es la línea siguiente.
+ * Al abrir la página se hace además un POST role=visit al mismo PHP: hay que distinguirlos. */
+const rolePost = (req) => { const m = /name="role"\r?\n\r?\n([^\r\n]+)/.exec(req.postData() || ''); return m ? m[1].trim() : null; };
+const esAvisoOpcion = (r) => r.url().includes('ajax_proyecto_notify.php') && r.request().method() === 'POST' && rolePost(r.request()) === 'option';
+const esRpcOpcion = (r) => r.url().includes('/rpc/toggle_client_option');
 async function leer(page) {
   return page.evaluate(({ ROW }) => {
     const tr = document.querySelector(ROW);
@@ -87,7 +94,7 @@ async function leer(page) {
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1200, height: 1600 } });
 const llamadas = { rpc: 0, notify: 0 };
-page.on('request', (r) => { const u = r.url(); if (u.includes('toggle_client_option')) llamadas.rpc++; if (u.includes('ajax_proyecto_notify.php')) llamadas.notify++; });
+page.on('request', (r) => { if (r.url().includes('/rpc/toggle_client_option')) llamadas.rpc++; if (r.url().includes('ajax_proyecto_notify.php') && rolePost(r) === 'option') llamadas.notify++; });
 
 console.log(`\nProbando ${BASE}/proyecto?t=${TOKEN.slice(0, 6)}…  (${DEMO ? 'DEMO: solo pantalla' : 'REAL: guarda y avisa'})\n`);
 await page.goto(`${BASE}/proyecto?t=${TOKEN}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
@@ -137,8 +144,8 @@ if (DEMO) {
   ok(llamadas.rpc === 0 && llamadas.notify === 0, 'sigue sin llamadas al servidor');
   await page.screenshot({ path: path.join(OUT, '3-desactivada.png'), fullPage: true });
 } else {
-  const esperaRpc = page.waitForResponse((r) => r.url().includes('toggle_client_option'), { timeout: 30000 });
-  const esperaNotify = page.waitForResponse((r) => r.url().includes('ajax_proyecto_notify.php') && r.request().method() === 'POST' && (r.request().postData() || '').includes('role=option'), { timeout: 30000 });
+  const esperaRpc = page.waitForResponse(esRpcOpcion, { timeout: 30000 });
+  const esperaNotify = page.waitForResponse(esAvisoOpcion, { timeout: 30000 });
   await chk.click();
   const rpc = await esperaRpc;
   const rpcJson = await rpc.json().catch(() => null);
@@ -161,8 +168,8 @@ if (DEMO) {
   await page.screenshot({ path: path.join(OUT, '2-activada.png'), fullPage: true });
 
   console.log('3) Desmarcar la casilla');
-  const esperaRpc2 = page.waitForResponse((r) => r.url().includes('toggle_client_option'), { timeout: 30000 });
-  const esperaNotify2 = page.waitForResponse((r) => r.url().includes('ajax_proyecto_notify.php') && r.request().method() === 'POST' && (r.request().postData() || '').includes('role=option'), { timeout: 30000 });
+  const esperaRpc2 = page.waitForResponse(esRpcOpcion, { timeout: 30000 });
+  const esperaNotify2 = page.waitForResponse(esAvisoOpcion, { timeout: 30000 });
   await chk.click();
   const rpc2 = await esperaRpc2; const rpc2Json = await rpc2.json().catch(() => null);
   ok(rpc2.ok() && rpc2Json && rpc2Json.ok === true, 'la RPC responde ok al desactivar');
