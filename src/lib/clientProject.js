@@ -87,11 +87,20 @@ export async function saveFairPanel(token, p) {
   });
 }
 
-/** Dispara el aviso por email (endpoint PHP que reutiliza el mailer SMTP). */
-export async function notifySend(token, role) {
+/** El cliente activa o desactiva una partida OPCIONAL de su presupuesto. La RPC
+ *  comprueba que la partida es de su proyecto y opcional, y se niega si el proyecto
+ *  está aprobado o paralizado. Devuelve {ok, project} o {ok:false, error}. */
+export async function toggleClientOption(token, itemId, active) {
+  return rpc('toggle_client_option', { p_token: token, p_item: itemId, p_active: !!active });
+}
+
+/** Dispara el aviso por email (endpoint PHP que reutiliza el mailer SMTP).
+ *  `extra`: campos adicionales del aviso (p. ej. item_id para role=option). */
+export async function notifySend(token, role, extra = {}) {
   const fd = new FormData();
   fd.append('token', token);
   fd.append('role', role);
+  for (const [k, v] of Object.entries(extra)) fd.append(k, String(v));
   const res = await fetch('/admin/ajax_proyecto_notify.php', { method: 'POST', body: fd });
   return res.json().catch(() => ({ ok: false }));
 }

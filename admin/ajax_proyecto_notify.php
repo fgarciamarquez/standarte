@@ -26,7 +26,10 @@ function pn_admin_authed() { return isset($_SESSION['standarte_email_campaing_au
 
 $token = pn_post('token');
 $role  = pn_post('role');
-if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token) || !in_array($role, array('client', 'internal', 'visit', 'approved'), true)) {
+/* role=option (04/11/2026): el CLIENTE ha activado o desactivado una partida opcional
+ * desde su página; se avisa al interlocutor con el concepto, el estado y el nuevo
+ * subtotal. Lo dispara el propio visitante, como role=client. */
+if ($token === '' || !preg_match('/^[a-f0-9]{20,64}$/', $token) || !in_array($role, array('client', 'internal', 'visit', 'approved', 'option'), true)) {
 	echo json_encode(array('ok' => false, 'error' => 'bad_request'));
 	exit;
 }
@@ -194,6 +197,30 @@ if ($role === 'approved') {
 		. htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>' . $conOferta . ' el ' . $when . '.';
 	/* La tabla viaja en el mismo hueco (caja gris) que el hilo de comentarios. */
 	$commentsHtml = $tabla;
+	$firstImgOpt = '';
+} elseif ($role === 'option') {
+	$to = $interEmail;
+	$optId = pn_post('item_id');
+	$opt = null;
+	if (!empty($p['budget']) && is_array($p['budget'])) {
+		foreach ($p['budget'] as $b) { if (isset($b['id']) && (string) $b['id'] === $optId && !empty($b['optional'])) { $opt = $b; break; } }
+	}
+	if (!$opt) { echo json_encode(array('ok' => false, 'error' => 'bad_request')); exit; }
+	/* El estado que se avisa es el que está GUARDADO (la RPC ya ha escrito), no el que
+	 * diga el POST: así el correo no puede contradecir a la página. El subtotal se
+	 * calcula con la misma regla que todo lo demás: cuenta <=> (!opcional) || activa. */
+	$optOn = !empty($opt['active']);
+	$sub = 0.0;
+	foreach ($p['budget'] as $b) { if (empty($b['optional']) || !empty($b['active'])) $sub += (float) str_replace(',', '.', (string) (isset($b['amount']) ? $b['amount'] : 0)); }
+	$optName = isset($opt['concept']['es']) && $opt['concept']['es'] !== '' ? $opt['concept']['es'] : (isset($opt['concept']['en']) ? $opt['concept']['en'] : '');
+	$optAmt = number_format((float) str_replace(',', '.', (string) (isset($opt['amount']) ? $opt['amount'] : 0)), 2, ',', '.');
+	$subject = ($optOn ? 'Opción activada' : 'Opción desactivada') . ' por ' . $clientName . ' — ' . $p['ref'] . ' · ' . $optName;
+	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> ha '
+		. ($optOn ? '<strong>activado</strong>' : '<strong>desactivado</strong>') . ' la opción <strong>'
+		. htmlspecialchars($optName, ENT_QUOTES, 'UTF-8') . '</strong> (' . $optAmt . '&nbsp;€) en el proyecto <strong>'
+		. htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>. Subtotal actual del presupuesto, antes de descuento e impuestos: <strong>'
+		. number_format($sub, 2, ',', '.') . '&nbsp;€</strong>.';
+	$commentsHtml = '';
 	$firstImgOpt = '';
 } elseif ($role === 'client') {
 	$to = $interEmail;

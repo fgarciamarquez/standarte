@@ -55,7 +55,7 @@ Convención actual: **todo cambio de PHP se aplica en ambas copias**. Los ficher
 - Las opcionales **no confirmadas no aparecen** en contrato, factura ni en el correo de aprobación: esos documentos recogen lo contratado. Sí se ven en la web, atenuadas y marcadas «no incluido».
 - `edit_budget` acepta `is_optional`/`is_active` ('1'/'0'); `add_budget` da de alta la opcional **desactivada**. Activar o desactivar pasa por la misma detección de «mejor precio» que un cambio de importe.
 - Verificado con una transacción deshecha sobre un proyecto real: opcional OFF no mueve el total; ON lo sube exactamente importe × (1 + IVA − IRPF); el histórico registra las dos versiones con los indicadores.
-- Pendiente de decidir: si el cliente podrá activar opciones él mismo desde su página (hoy solo el equipo, en modo edición).
+- **El cliente también conmuta** (decisión del usuario, 04/11/2026): casilla real en su página → RPC `toggle_client_option(p_token, p_item, p_active)` (mismo patrón que `save_client_billing`; rechaza partidas que no sean suyas u opcionales y proyectos aprobados o paralizados) → aviso al interlocutor por `ajax_proyecto_notify.php` con `role=option` (concepto, estado guardado y subtotal) → recarga. Importe **atenuado** si está desactivada, normal si activada (sin tachar).
 
 ## Textos por idioma en el panel de proyectos (29/10/2026)
 
