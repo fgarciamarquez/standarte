@@ -924,7 +924,9 @@
                 <td class="pz-concept-cell">
                   {#if it.optional}<input type="checkbox" class="pz-optchk" checked={!!it.active} disabled={approved || isPaused} title={L.optionalClient} aria-label={L.optionalClient} on:change={() => clientToggle(it)} />{/if}
                   {it.concept[lang]}
-                  {#if it.optional}<span class="pz-opt-tag">{L.optional}{#if !it.active} · {L.optInactive}{/if}</span>{/if}
+                  <!-- El espacio va como expresión: Svelte recorta el blanco inicial del bloque y
+                       la etiqueta salía «OPTIONAL· NOT INCLUDED» (visto en la prueba en vivo del 04/11). -->
+                  {#if it.optional}<span class="pz-opt-tag">{L.optional}{#if !it.active}{' · '}{L.optInactive}{/if}</span>{/if}
                 </td>
                 <td class="num" class:pz-amt-off={it.optional && !it.active}>{fmt(Number(it.amount))}</td>
               {/if}
