@@ -200,6 +200,11 @@ if ($role === 'approved') {
 	$firstImgOpt = '';
 } elseif ($role === 'option') {
 	$to = $interEmail;
+	/* El proyecto de DEMOSTRACIÓN tiene el enlace público (página «Proyecto Auditado»):
+	 * ahí la casilla solo cambia la pantalla del visitante y no se avisa a nadie; si no,
+	 * cada clic de cada visitante sería un correo al interlocutor. La página ya no llama
+	 * aquí en la demo; esto es por si alguien llama directamente con ese token. */
+	if (!empty($p['is_demo'])) { echo json_encode(array('ok' => false, 'error' => 'demo')); exit; }
 	$optId = pn_post('item_id');
 	$opt = null;
 	if (!empty($p['budget']) && is_array($p['budget'])) {

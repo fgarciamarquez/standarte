@@ -576,6 +576,13 @@
   // (la RPC lo rechaza también; aquí solo se evita el clic inútil).
   let optMsg = '';
   async function clientToggle(item) {
+    // Proyecto de DEMOSTRACIÓN (su enlace es público: lo publica la página «Proyecto
+    // Auditado» en 11 idiomas): la casilla funciona en la propia pantalla, para que el
+    // visitante vea cómo cambia el total, pero no se guarda ni se avisa a nadie —cada
+    // clic de cada visitante sería un correo al interlocutor—. Igual que los comentarios
+    // y la aprobación, que en la demo tampoco salen de la pantalla. La RPC y el PHP lo
+    // rechazan también por su cuenta (is_demo), por si llega sin pasar por aquí.
+    if (demo) { item.active = !item.active; data = data; return; }
     if (approved || isPaused) return;
     optMsg = '';
     const r = await toggleClientOption(token, item.id, !item.active);
