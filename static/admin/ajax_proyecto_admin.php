@@ -151,6 +151,16 @@ if ($action === 'issue_invoice_extra') {
 		'warnings' => isset($res['warnings']) ? $res['warnings'] : array()
 	));
 }
+/* Qué impuestos llevará la próxima factura EXTRA (los de la última factura emitida del
+ * proyecto), para que la página lo diga antes de emitir. */
+if ($action === 'extra_tax_basis') {
+	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
+	$pid = cpx_project_id_by_token(pa_post('token'));
+	if (!$pid) pa_out(array('ok' => false, 'error' => 'not_found'));
+	require_once __DIR__ . '/invoice_lib.php';
+	$pr = cpx_rows('client_projects?id=eq.' . urlencode($pid) . '&select=iva_rate,irpf_rate&limit=1');
+	pa_out(array('ok' => true) + cpx_invoice_tax_basis($pid, isset($pr[0]) ? $pr[0] : array()));
+}
 /* Marcar una factura EXTRA como cobrada (cursado) o devolverla a emitido. */
 if ($action === 'extra_invoice_state') {
 	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));

@@ -550,6 +550,23 @@ function cpx_parse_amount($raw) {
 	return null;
 }
 
+/* Impuestos de una factura EXTRA: los de la ÚLTIMA factura emitida del proyecto, no los
+ * que tenga el proyecto hoy (decisión del usuario, 05/11/2026): «se deben calcular si en
+ * las anteriores facturas se aplicaron; si no se aplicaron, tampoco aquí». Cada factura
+ * guarda en meta los tipos con que salió. IVA e IRPF se copian por separado. Solo si el
+ * proyecto no tiene ninguna factura emitida se usan los tipos del proyecto, y se dice.
+ * Devuelve iva_rate, irpf_rate, source ('invoice'|'project') y number (la de referencia). */
+function cpx_invoice_tax_basis($projectId, $p) {
+	$rows = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&select=number,which,meta,issued_at&order=issued_at.desc');
+	foreach ((array) $rows as $r) {
+		$m = (isset($r['meta']) && is_array($r['meta'])) ? $r['meta'] : array();
+		if (isset($m['iva_rate']) && is_numeric($m['iva_rate']) && isset($m['irpf_rate']) && is_numeric($m['irpf_rate'])) {
+			return array('iva_rate' => (float) $m['iva_rate'], 'irpf_rate' => (float) $m['irpf_rate'], 'source' => 'invoice', 'number' => isset($r['number']) ? $r['number'] : '');
+		}
+	}
+	return array('iva_rate' => isset($p['iva_rate']) ? (float) $p['iva_rate'] : 0.21, 'irpf_rate' => isset($p['irpf_rate']) ? (float) $p['irpf_rate'] : 0.15, 'source' => 'project', 'number' => '');
+}
+
 function cpx_invoice_issue_extra($projectId, $number, $concept, $amount, $opts = array()) {
 	$dry = !empty($opts['dry_run']);
 	$number = $dry ? 'PRUEBA-' . date('ymd') : trim((string) $number);
@@ -578,9 +595,12 @@ function cpx_invoice_issue_extra($projectId, $number, $concept, $amount, $opts =
 	if (!$dry && $number !== '' && cpx_invoice_number_taken($number)) $errors[] = 'el número ' . $number . ' ya está usado en otra factura';
 	if ($errors) return array('ok' => false, 'errors' => $errors);
 
-	/* Importes: la base es lo tecleado; impuestos a los tipos del proyecto. */
-	$ivaRate = isset($p['iva_rate']) ? (float) $p['iva_rate'] : 0.21;
-	$irpfRate = isset($p['irpf_rate']) ? (float) $p['irpf_rate'] : 0.15;
+	/* Importes: la base es lo tecleado; los impuestos, los de la última factura emitida del
+	 * proyecto (cpx_invoice_tax_basis), no los del proyecto. */
+	$tax = cpx_invoice_tax_basis($projectId, $p);
+	$ivaRate = $tax['iva_rate'];
+	$irpfRate = $tax['irpf_rate'];
+	if ($tax['source'] === 'project') $warnings[] = 'el proyecto no tiene facturas anteriores: se han aplicado sus impuestos (IVA ' . cpx_pct_label($ivaRate, 'es') . ' %, IRPF ' . cpx_pct_label($irpfRate, 'es') . ' %)';
 	$base = $amount;
 	$iva = round($base * $ivaRate, 2);
 	$irpf = round($base * $irpfRate, 2);
@@ -652,7 +672,8 @@ function cpx_invoice_issue_extra($projectId, $number, $concept, $amount, $opts =
 
 	$reg = cpx_sb('POST', 'client_project_invoices', array('project_id' => $projectId, 'which' => 3, 'number' => $number, 'issued_at' => gmdate('c', $issued),
 		'amount_eur' => $am['total'], 'lang' => $lang, 'doc_id' => $docId, 'concept' => $concept, 'state' => 'emitido',
-		'meta' => array('base' => $am['base'], 'iva' => $am['iva'], 'irpf' => $am['irpf'], 'iva_rate' => $am['iva_rate'], 'irpf_rate' => $am['irpf_rate'], 'rates' => $rates, 'matter' => $matter, 'client' => $client, 'bank' => $bank, 'path' => $path, 'concept' => $concept)));
+		'meta' => array('base' => $am['base'], 'iva' => $am['iva'], 'irpf' => $am['irpf'], 'iva_rate' => $am['iva_rate'], 'irpf_rate' => $am['irpf_rate'], 'rates' => $rates, 'matter' => $matter, 'client' => $client, 'bank' => $bank, 'path' => $path, 'concept' => $concept,
+			'tax_source' => $tax['source'], 'tax_from' => $tax['number'])));
 	if ((int) $reg['code'] >= 300) {
 		if ($docId) cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($docId));
 		cpx_storage_delete_object($path, 'client-docs');

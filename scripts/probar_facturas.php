@@ -50,10 +50,13 @@ $GLOBALS['P'] = array('id' => '11111111-2222-3333-4444-555555555555', 'ref' => '
 	'billing_company' => 'SHINING 3D Technology GmbH', 'billing_cif' => 'DE310612039', 'billing_address' => 'Breitwiesenstraße 28', 'billing_postal_code' => '70565', 'billing_city' => 'Stuttgart', 'billing_country' => 'Germany',
 	'fair_slug' => 'expodental', 'access_token' => 'abc123');
 $GLOBALS['TAKEN'] = array('2026-31');
+/* Facturas ya emitidas del proyecto, como las guarda client_project_invoices: la 2026-31
+ * real de SHINING 3D salió sin IVA ni IRPF y lo dice en su meta. */
+$GLOBALS['PREV'] = array(array('which' => 1, 'number' => '2026-31', 'meta' => array('base' => 8665, 'iva_rate' => 0, 'irpf_rate' => 0), 'amount_eur' => 8665, 'issued_at' => '2026-10-22T08:03:38+00:00'));
 function cpx_rows($ep) {
 	if (strpos($ep, 'client_projects?') === 0) return array($GLOBALS['P']);
 	if (strpos($ep, 'client_project_invoices?select=id,project_id&number=eq.') === 0) { $n = urldecode(substr($ep, strlen('client_project_invoices?select=id,project_id&number=eq.'), -8)); return in_array($n, $GLOBALS['TAKEN'], true) ? array(array('id' => 'x')) : array(); }
-	if (strpos($ep, 'client_project_invoices?project_id=') === 0) return array(array('which' => 1, 'number' => '2026-31', 'meta' => array('base' => 8665), 'amount_eur' => 8665));
+	if (strpos($ep, 'client_project_invoices?project_id=') === 0) return $GLOBALS['PREV'];
 	return array();
 }
 function cpx_sb($m, $ep, $data = null) { $GLOBALS['SB'][] = array('m' => $m, 'ep' => $ep, 'data' => $data); return array('code' => 201, 'body' => array(array('id' => 'doc-' . count($GLOBALS['SB'])))); }
@@ -86,7 +89,31 @@ $m = $GLOBALS['MAILS'];
 $ok(count($m) === 2 && $m[0]['to'] === 'cliente@example.com' && $m[1]['to'] === 'javier@standarte.es' && strpos($m[1]['subject'], '[Copia]') === 0, 'correo al cliente y copia a Javier', count($m) . ' correos');
 $ok($m && strpos($m[0]['html'], 'additional service') !== false && strpos($m[0]['html'], htmlspecialchars($concept, ENT_QUOTES, 'UTF-8')) !== false && strpos($m[0]['html'], '€1,200.00') !== false && strpos($m[0]['html'], '2026-32') !== false, 'el cuerpo nombra el concepto, el número y €1,200.00');
 $ok(!$GLOBALS['WARN'], 'sin avisos de PHP', implode(' | ', $GLOBALS['WARN']));
-if ($GLOBALS['UP']) copy(HARNESS_DIR . '/out/' . basename($GLOBALS['UP'][0]), __DIR__ . '/out/extra-largo.pdf');
+if ($GLOBALS['UP']) copy(HARNESS_DIR . '/out/' . basename($GLOBALS['UP'][0]), HARNESS_DIR . '/out/extra-largo.pdf');
+
+echo "2b) Impuestos: los de la última factura emitida, no los del proyecto (05/11/2026)\n";
+$taxOf = function ($r) { $i = array_values(array_filter($GLOBALS['SB'], function ($c) { return $c['ep'] === 'client_project_invoices'; })); return $i ? $i[0]['data'] : null; };
+$P0 = $GLOBALS['P']; $PREV0 = $GLOBALS['PREV'];
+/* A: la factura anterior salió SIN impuestos, aunque el proyecto tenga hoy 21/15 → la extra va sin impuestos. */
+$reset(); $GLOBALS['P']['iva_rate'] = '0.2100'; $GLOBALS['P']['irpf_rate'] = '0.1500';
+$r = cpx_invoice_issue_extra($GLOBALS['P']['id'], '2026-40', 'Truss', '900'); $row = $taxOf($r);
+$ok(!empty($r['ok']) && $r['total'] == 900 && $row['meta']['iva_rate'] == 0 && $row['meta']['irpf_rate'] == 0 && $row['meta']['tax_source'] === 'invoice' && $row['meta']['tax_from'] === '2026-31', 'anterior sin impuestos y proyecto hoy 21/15 → 900 € sin impuestos, «como la 2026-31»', isset($r['total']) ? $r['total'] : json_encode($r));
+/* B: la factura anterior llevó 21/15, aunque el proyecto esté hoy a 0 → la extra lleva 21/15: 900 → 954. */
+$reset(); $GLOBALS['P']['iva_rate'] = '0.0000'; $GLOBALS['P']['irpf_rate'] = '0.0000';
+$GLOBALS['PREV'] = array(array('which' => 1, 'number' => '2026-20', 'meta' => array('base' => 5000, 'iva_rate' => 0.21, 'irpf_rate' => 0.15), 'amount_eur' => 5300));
+$r = cpx_invoice_issue_extra($GLOBALS['P']['id'], '2026-41', 'Truss', '900'); $row = $taxOf($r);
+$ok(!empty($r['ok']) && $r['total'] == 954 && $row['meta']['iva'] == 189 && $row['meta']['irpf'] == 135 && $row['meta']['tax_from'] === '2026-20', 'anterior con 21/15 y proyecto hoy a 0 → 900 + 189 − 135 = 954 €', isset($r['total']) ? $r['total'] : json_encode($r));
+/* C: solo IVA en la anterior → solo IVA aquí. Y manda la MÁS RECIENTE (la lista llega por fecha desc). */
+$reset();
+$GLOBALS['PREV'] = array(array('which' => 2, 'number' => '2026-22', 'meta' => array('base' => 1000, 'iva_rate' => 0.21, 'irpf_rate' => 0), 'amount_eur' => 1210),
+	array('which' => 1, 'number' => '2026-21', 'meta' => array('base' => 4000, 'iva_rate' => 0.21, 'irpf_rate' => 0.15), 'amount_eur' => 4240));
+$r = cpx_invoice_issue_extra($GLOBALS['P']['id'], '2026-42', 'Truss', '900'); $row = $taxOf($r);
+$ok(!empty($r['ok']) && $r['total'] == 1089 && $row['meta']['tax_from'] === '2026-22', 'la más reciente (2026-22, solo IVA) manda → 900 + 189 = 1.089 €', isset($r['total']) ? $r['total'] : json_encode($r));
+/* D: sin facturas anteriores → los del proyecto, con aviso. */
+$reset(); $GLOBALS['P']['iva_rate'] = '0.2100'; $GLOBALS['P']['irpf_rate'] = '0.1500'; $GLOBALS['PREV'] = array();
+$r = cpx_invoice_issue_extra($GLOBALS['P']['id'], '2026-43', 'Truss', '900'); $row = $taxOf($r);
+$ok(!empty($r['ok']) && $r['total'] == 954 && $row['meta']['tax_source'] === 'project' && strpos(implode(';', $r['warnings']), 'no tiene facturas anteriores') !== false, 'sin facturas anteriores → impuestos del proyecto (954 €) y lo avisa', isset($r['total']) ? $r['total'] : json_encode($r));
+$GLOBALS['P'] = $P0; $GLOBALS['PREV'] = $PREV0;
 
 echo "3) Rechazos: importe raro, número repetido, sin concepto\n";
 $reset();
