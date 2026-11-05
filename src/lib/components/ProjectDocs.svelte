@@ -85,6 +85,7 @@
     if (e === 'not_pdf') return L.docNotPdf;
     if (e === 'too_big' || e === 'too_big_post') return L.docTooBig;
     if (e === 'unauthorized') return L.sessionExpired;
+    if (e === 'has_invoice') return L.docHasInvoice;
     return `${L.docError}${e ? ` (${e}${r.code ? ' ' + r.code : ''})` : ''}`;
   }
 
@@ -134,7 +135,6 @@
       <option value="contrato">{L.docContract}</option>
       <option value="factura_anticipo">{L.docAdvance}</option>
       <option value="factura_final">{L.docFinal}</option>
-      <option value="factura_extra">{L.docExtra}</option>
       <option value="otro">{L.docOther}</option>
     </select>
     <input class="pz-edit pz-doc-t" bind:value={title} placeholder={L.docTitlePh} />

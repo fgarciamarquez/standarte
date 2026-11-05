@@ -258,6 +258,20 @@ $projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,cl
  * proyecto para las etiquetas del formulario. */
 $dupId = isset($_GET['dup']) && preg_match('/^[0-9a-f-]{36}$/', $_GET['dup']) ? $_GET['dup'] : '';
 $counts = pj_authed() ? cpx_child_counts() : array('budget' => array(), 'media' => array());
+/* Facturas EXTRA (which = 3) por proyecto, para la columna «Extras»: sin esto, una extra
+ * pendiente de cobro no aparecía en ningún sitio del listado. */
+$extras = array();
+if (pj_authed()) {
+	foreach (cpx_rows('client_project_invoices?which=eq.3&select=project_id,number,state,amount_eur&order=issued_at.asc') as $x) {
+		$extras[$x['project_id']][] = $x;
+	}
+}
+function extras_badge($list) {
+	if (!$list) return '<span class="st st-off st-ro" title="Sin facturas extra">—</span>';
+	$pend = array_filter($list, function ($x) { return (isset($x['state']) ? $x['state'] : 'emitido') !== 'cursado'; });
+	$tip = implode(' · ', array_map(function ($x) { return $x['number'] . ' ' . number_format((float) $x['amount_eur'], 2, ',', '.') . ' € (' . (((isset($x['state']) ? $x['state'] : '') === 'cursado') ? 'cobrada' : 'pendiente') . ')'; }, $list));
+	return '<span class="st ' . ($pend ? 'st-mid' : 'st-on') . ' st-ro" title="' . h($tip) . '">' . count($list) . ($pend ? ' · ' . count($pend) . ' pend.' : ' · cobradas') . '</span>';
+}
 /* Siguiente número de factura de la serie, para sugerirlo en el cuadro al emitir. */
 require_once __DIR__ . '/invoice_lib.php';
 $nextInvoice = pj_authed() ? cpx_next_invoice_number() : '';
@@ -339,7 +353,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	   celdas. Con `display: contents` las celdas suben a la rejilla común y todo queda a
 	   plomo; los separadores los dibuja cada celda, porque un elemento con
 	   `display: contents` no pinta su propio borde. */
-	.pj-list { display: grid; grid-template-columns: minmax(112px,1.1fr) minmax(150px,1.6fr) auto auto auto auto auto auto; column-gap: 10px; align-items: center; }
+	.pj-list { display: grid; grid-template-columns: minmax(112px,1.1fr) minmax(150px,1.6fr) auto auto auto auto auto auto auto; column-gap: 10px; align-items: center; }
 	.pj-head, .pj-card { display: contents; }
 	.visit { font-size: 12px; color: #9aa; white-space: nowrap; }
 	.visit-recent { color: #4caf50; font-weight: 700; }
@@ -504,7 +518,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto). En <strong>Contrato</strong>, pasar a «Emitido» genera el contrato con los datos del proyecto y se lo envía al cliente. <strong>Prueba</strong> te manda solo a ti (javier@standarte.es) el contrato y la Factura 1 tal y como saldrían, sin guardar nada ni avisar al cliente.</p>
 		<div class="pj-list">
 			<div class="pj-head">
-				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura 1</span><span>Factura 2</span><span>Visto</span><span></span>
+				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura 1</span><span>Factura 2</span><span>Extras</span><span>Visto</span><span></span>
 			</div>
 			<?php foreach ($projects as $p): ?>
 			<div class="pj-card">
@@ -514,6 +528,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 				<div class="pj-cell"><span class="pj-k">Contrato</span><span class="pj-v"><?= status_toggle($p, 'contract_state') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Factura 1</span><span class="pj-v"><?= status_toggle($p, 'invoice_state') ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Factura 2</span><span class="pj-v"><?= status_toggle($p, 'invoice2_state') ?></span></div>
+				<div class="pj-cell"><span class="pj-k">Extras</span><span class="pj-v"><?= extras_badge(isset($extras[$p['id']]) ? $extras[$p['id']] : array()) ?></span></div>
 				<div class="pj-cell"><span class="pj-k">Visto</span><span class="pj-v"><?= visit_badge($p) ?></span></div>
 				<div class="pj-cell pj-del"><span class="pj-k"></span><span class="pj-v pj-acts">
 					<form method="post" class="st-form" onsubmit="return confirm('Enviar a javier@standarte.es una PRUEBA del contrato y de la Factura 1 del proyecto «<?= h($p['ref']) ?>».\n\nNo se guarda nada, no cambia ningún estado y el cliente no recibe nada.');">

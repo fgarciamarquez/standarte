@@ -322,7 +322,24 @@ function cpx_invoice_pdf($d) {
 	$eur = function ($n) use ($L) { return cpx_money($n, $L, 'EUR'); };
 	/* Cabecera de columnas, en gris. */
 	$row($T['th_concept'], $T['th_qty'], $T['th_unit'], $T['th_amount'], false, true, true);
-	if ($items) {
+	if ($d['which'] === 3) {
+		/* EXTRA: el concepto lo escribe el gestor y puede ser largo (hasta 160 caracteres);
+		 * en la columna de 58 mm se recortaría con puntos suspensivos a partir de ~45. Va en
+		 * un renglón propio a todo el ancho de la tabla, con salto de línea, y la cifra en el
+		 * renglón siguiente. */
+		$it = $items ? $items[0] : array('label' => $d['title'], 'amount' => $d['amounts']['base']);
+		$y0 = $ty;
+		$pdf->SetFont('Helvetica', '', $fs);
+		$pdf->SetXY($cx[0] + 1, $y0 + 1);
+		$pdf->MultiCell($cx[1] - $cx[0] - 2, 4.2, $pdf->t($it['label']), 0, 'L');
+		$yEnd = max($y0 + $rowH, $pdf->GetY() + 1);
+		$pdf->SetFont('Helvetica', '', $fs);
+		$pdf->SetXY($cx[1], $y0 + 1);     $pdf->Cell($cx[2] - $cx[1] - 1, $rowH - 2, '1', 0, 0, 'R');
+		$pdf->SetXY($cx[2] + 1, $y0 + 1); $pdf->Cell($cx[3] - $cx[2] - 2, $rowH - 2, $pdf->t($eur($it['amount'])), 0, 0, 'R');
+		$pdf->SetXY($cx[3] + 1, $y0 + 1); $pdf->Cell($cx[4] - $cx[3] - 2, $rowH - 2, $pdf->t($eur($it['amount'])), 0, 0, 'R');
+		$ty = $yEnd;
+		$pdf->Line($cx[0], $ty, $cx[4], $ty);
+	} elseif ($items) {
 		foreach ($items as $it) {
 			$row($it['label'], '1', $it['amount'] > 0 ? $eur($it['amount']) : $T['included'], $it['amount'] > 0 ? $eur($it['amount']) : $T['included'], false, false);
 		}
@@ -456,6 +473,12 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	$pdfBytes = cpx_invoice_pdf($d);
 
 	$T = cpx_invoice_texts($lang);
+	/* Las etiquetas (frase del correo, título del documento) se calculan ANTES de componer
+	 * el correo. Desde el 22/10 hasta el 05/11/2026 se asignaban 19 líneas más abajo, tras
+	 * subir el PDF, y el párrafo del correo salía vacío (sprintf(null)): el cliente recibía
+	 * el adjunto con el botón y la firma pero sin número ni importe. Lo cazó la revisión de
+	 * la factura extra, que copia esta función. */
+	$labMail = cpx_inv_labels($T, $am, $which);
 	$safe = preg_replace('/[^A-Za-z0-9_-]+/', '_', $number);
 
 	/* Correo al cliente (se compone ya para poder mandarlo tal cual a Javier en modo prueba). */
@@ -482,7 +505,6 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	$tmp = tempnam(sys_get_temp_dir(), 'std-inv-'); file_put_contents($tmp, $pdfBytes);
 	$up = cpx_storage_upload($path, $tmp, 'application/pdf', 'client-docs'); @unlink($tmp);
 	if ((int) $up >= 300) return array('ok' => false, 'errors' => array('Storage rechazó el PDF (código ' . $up . ')'));
-	$labMail = cpx_inv_labels($T, $am, $which);
 	$docTitle = sprintf($labMail['title'], $number, $labMail['pct']);
 	$ins = cpx_sb('POST', 'client_project_docs', array('project_id' => $projectId, 'kind' => $which === 1 ? 'factura_anticipo' : 'factura_final', 'title' => $docTitle, 'path' => $path, 'size_bytes' => strlen($pdfBytes)));
 	if ((int) $ins['code'] >= 300) { cpx_storage_delete_object($path, 'client-docs'); return array('ok' => false, 'errors' => array('no se pudo registrar el documento (' . $ins['code'] . ')')); }
@@ -514,16 +536,33 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
  * idioma de la aprobación. Se guarda en la Documentación como «factura_extra», se
  * registra con which = 3 (puede haber varias) y su propio estado emitido/cursado, y se
  * envía al cliente con copia. Exige proyecto aprobado, como las demás. */
+/* Importe tecleado → número, o null si no se entiende. Un (float) a secas convertía
+ * «1.200» en 1,20 y la factura salía, se registraba y se enviaba por 1,20 € (lo cazó la
+ * revisión del 05/11). Se admiten «900», «900,50», «900.50», «1.200,50» (miles con punto,
+ * decimales con coma) y «1,200.50» (al revés); con cualquier otra forma se para. */
+function cpx_parse_amount($raw) {
+	$s = preg_replace('/[\s\x{00A0}\x{202F}€]+/u', '', (string) $raw);
+	if ($s === '') return null;
+	if (preg_match('/^\d+$/', $s)) return round((float) $s, 2);
+	if (preg_match('/^\d+[.,]\d{1,2}$/', $s)) return round((float) str_replace(',', '.', $s), 2);
+	if (preg_match('/^\d{1,3}(\.\d{3})+(,\d{1,2})?$/', $s)) return round((float) str_replace(',', '.', str_replace('.', '', $s)), 2);
+	if (preg_match('/^\d{1,3}(,\d{3})+(\.\d{1,2})?$/', $s)) return round((float) str_replace(',', '', $s), 2);
+	return null;
+}
+
 function cpx_invoice_issue_extra($projectId, $number, $concept, $amount, $opts = array()) {
 	$dry = !empty($opts['dry_run']);
 	$number = $dry ? 'PRUEBA-' . date('ymd') : trim((string) $number);
 	$concept = trim(preg_replace('/\s+/', ' ', (string) $concept));
-	$amount = round((float) str_replace(',', '.', trim((string) $amount)), 2);
+	$amountRaw = trim((string) $amount);
+	$amount = cpx_parse_amount($amountRaw);
 	$errors = array(); $warnings = array();
 	if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId)) return array('ok' => false, 'errors' => array('id inválido'));
 	if ($number === '' || mb_strlen($number) > 30 || !preg_match('/^[A-Za-z0-9][A-Za-z0-9\/\-_.]*$/', $number)) $errors[] = 'el número de factura está vacío o tiene caracteres raros';
 	if ($concept === '' || mb_strlen($concept) > 160) $errors[] = 'el concepto está vacío o pasa de 160 caracteres';
-	if (!($amount > 0) || $amount > 1000000) $errors[] = 'el importe tiene que ser mayor que 0';
+	if ($amount === null) $errors[] = 'importe «' . $amountRaw . '» no reconocido: escribe 900, 900,50 o 1.200,50';
+	elseif (!($amount > 0)) $errors[] = 'el importe tiene que ser mayor que 0';
+	elseif ($amount > 1000000) $errors[] = 'el importe pasa de 1.000.000 €: revísalo';
 	$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=*&limit=1');
 	if (empty($rows[0])) return array('ok' => false, 'errors' => array('proyecto no encontrado'));
 	$p = $rows[0];
@@ -596,10 +635,13 @@ function cpx_invoice_issue_extra($projectId, $number, $concept, $amount, $opts =
 		$warnings[] = 'el número ' . $number . ' es ficticio: la factura real llevará el que introduzcas al emitirla';
 		$attachment['name'] = 'PRUEBA-' . $attachment['name'];
 		$sent = cpx_test_mail($subject, $p, $email, $html, $attachment, $warnings);
-		return array('ok' => true, 'dry_run' => true, 'number' => $number, 'which' => 3, 'lang' => $lang, 'email' => CPX_ADMIN_MAIL, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);
+		if (!$sent) $warnings[] = 'el correo de prueba NO ha salido (revisa SMTP)';
+		return array('ok' => true, 'dry_run' => true, 'number' => $number, 'which' => 3, 'lang' => $lang, 'email' => CPX_ADMIN_MAIL, 'sent' => $sent, 'total' => $am['total'], 'base' => $am['base'], 'warnings' => $warnings);
 	}
 
-	$path = $projectId . '/docs/factura-extra-' . strtolower($safe) . '.pdf';
+	/* Sufijo aleatorio en la ruta: dos números distintos de la serie («2026/32» y «2026.32»)
+	 * colapsan al mismo $safe y, sin él, el segundo PDF pisaría al primero en Storage. */
+	$path = $projectId . '/docs/factura-extra-' . strtolower($safe) . '-' . bin2hex(random_bytes(3)) . '.pdf';
 	$tmp = tempnam(sys_get_temp_dir(), 'std-inv-'); file_put_contents($tmp, $pdfBytes);
 	$up = cpx_storage_upload($path, $tmp, 'application/pdf', 'client-docs'); @unlink($tmp);
 	if ((int) $up >= 300) return array('ok' => false, 'errors' => array('Storage rechazó el PDF (código ' . $up . ')'));
@@ -619,7 +661,7 @@ function cpx_invoice_issue_extra($projectId, $number, $concept, $amount, $opts =
 
 	$sent = cpx_send_with_copy($emails, $subject, $html, $attachment);
 	if (!$sent) $warnings[] = 'la factura se ha generado y guardado, pero el correo al cliente NO ha salido (revisa SMTP)';
-	return array('ok' => true, 'number' => $number, 'which' => 3, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);
+	return array('ok' => true, 'number' => $number, 'which' => 3, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $am['total'], 'base' => $am['base'], 'warnings' => $warnings);
 }
 
 /* Estado de cobro de una factura EXTRA (emitido ↔ cursado). Solo las extras: las de los

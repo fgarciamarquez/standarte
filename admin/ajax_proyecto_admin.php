@@ -398,7 +398,9 @@ if ($action === 'upload_doc') {
 	if ($mime !== 'application/pdf' || $ext !== 'pdf') pa_out(array('ok' => false, 'error' => 'not_pdf', 'mime' => $mime));
 
 	$kind = pa_post('kind', 'otro');
-	if (!in_array($kind, array('contrato', 'factura_anticipo', 'factura_final', 'factura_extra', 'otro'), true)) $kind = 'otro';
+	/* factura_extra no se admite a mano: una extra sin fila en client_project_invoices no
+	 * tendría número, concepto ni estado. Se emite desde el generador. */
+	if (!in_array($kind, array('contrato', 'factura_anticipo', 'factura_final', 'otro'), true)) $kind = 'otro';
 	// Bucket PRIVADO y solo-PDF: el público de la propuesta gráfica no admite
 	// application/pdf en su lista blanca (ahí fallaba la subida) y además serviría los
 	// contratos por URL pública.
@@ -424,6 +426,9 @@ if ($action === 'del_doc') {
 	// llegue un id ajeno.
 	$rows = cpx_rows('client_project_docs?id=eq.' . urlencode($id) . '&project_id=eq.' . urlencode($projectId) . '&select=path&limit=1');
 	if (empty($rows[0]['path'])) pa_out(array('ok' => false, 'error' => 'not_found'));
+	/* El PDF de una factura EXTRA no se borra: la factura seguiría registrada (número
+	 * consumido, estado, «Marcar cobrada») sin documento que enseñar ni reenviar. */
+	if (cpx_rows('client_project_invoices?doc_id=eq.' . urlencode($id) . '&which=eq.3&select=id&limit=1')) pa_out(array('ok' => false, 'error' => 'has_invoice'));
 	$r = cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($id) . '&project_id=eq.' . urlencode($projectId));
 	if ((int) $r['code'] < 300) cpx_storage_delete_object($rows[0]['path']);
 	pa_out(array('ok' => (int) $r['code'] < 300));
