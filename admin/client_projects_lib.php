@@ -755,6 +755,7 @@ if (!function_exists('cpx_key')) {
 			'contrato' => array('es' => 'Contrato', 'en' => 'Contract'),
 			'factura_anticipo' => array('es' => 'Factura de anticipo', 'en' => 'Advance invoice'),
 			'factura_final' => array('es' => 'Factura final', 'en' => 'Final invoice'),
+			'factura_extra' => array('es' => 'Factura extra', 'en' => 'Additional invoice'),
 			'otro' => array('es' => 'Documento', 'en' => 'Document')
 		);
 		$k = isset($m[$kind]) ? $m[$kind] : $m['otro'];

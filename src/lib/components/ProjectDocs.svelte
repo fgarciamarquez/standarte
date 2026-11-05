@@ -21,10 +21,20 @@
   // facturas: un proyecto cobrado no puede enseñar «pendiente de la recepción de
   // transferencia» junto a la suya.
   export let paid = false;
+  // Facturas EXTRA (05/11/2026): cargos no previstos en el reparto. Llevan su propio
+  // estado en client_project_invoices (hay que poder tener varias), así que el estado de
+  // su PDF se busca por doc_id aquí y no en `states`. El sello «Pagado» del proyecto NO
+  // las cubre: un proyecto cobrado puede tener un extra sin cobrar.
+  export let extras = [];
 
   // Etiqueta de estado junto al documento. Latente (a la espera) en verde, con botón
   // de reenvío por si el cliente perdió el correo; pasivo (resuelto) en gris.
   $: docState = (d) => {
+    if (d.kind === 'factura_extra') {
+      const inv = (extras || []).find((x) => x.doc_id === d.id);
+      if (!inv) return null;
+      return inv.state === 'cursado' ? { cls: 'pz-tag-done', text: L.stInvoiceDone, live: false } : { cls: 'pz-tag-live', text: L.stInvoiceWait, live: true };
+    }
     const st = states && states[d.kind];
     if (!st || st === 'pendiente') return null;
     const isContract = d.kind === 'contrato';
@@ -52,7 +62,7 @@
 
   // Reactivas a propósito: como funciones `const`, Svelte no veía que dependen de L
   // (ni docState de `states`) y el bloque entero se quedaba en español al pulsar EN.
-  $: kindLabel = (k) => ({ contrato: L.docContract, factura_anticipo: L.docAdvance, factura_final: L.docFinal }[k] || L.docOther);
+  $: kindLabel = (k) => ({ contrato: L.docContract, factura_anticipo: L.docAdvance, factura_final: L.docFinal, factura_extra: L.docExtra }[k] || L.docOther);
   const size = (n) => (n > 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`);
 
   async function upload(e) {
@@ -124,6 +134,7 @@
       <option value="contrato">{L.docContract}</option>
       <option value="factura_anticipo">{L.docAdvance}</option>
       <option value="factura_final">{L.docFinal}</option>
+      <option value="factura_extra">{L.docExtra}</option>
       <option value="otro">{L.docOther}</option>
     </select>
     <input class="pz-edit pz-doc-t" bind:value={title} placeholder={L.docTitlePh} />

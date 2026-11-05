@@ -46,6 +46,8 @@ function cpx_invoice_texts($lang) {
 			'thanks' => 'Gracias por su confianza. Atentamente, Javier García.',
 			'doc_title1' => 'Factura %1$s (anticipo %2$s %%)', 'doc_title2' => 'Factura %1$s (final %2$s %%)',
 			'doc_title1_full' => 'Factura %1$s (importe íntegro)',
+			'doc_title_extra' => 'Factura %1$s (extra)', 'extra_line' => 'Base imponible · servicio adicional (esta factura)',
+			'mail_body_extra' => 'Le adjuntamos la factura <strong>%1$s</strong> correspondiente al servicio adicional «%5$s» de su proyecto <strong>%2$s</strong> (%3$s), por importe de <strong>%4$s</strong>. Los datos para la transferencia figuran en la propia factura, que también tiene disponible en la Documentación de su proyecto.',
 			'mail_subject' => 'Factura %s de su proyecto %s — Standarte',
 			'mail_body1' => 'Le adjuntamos la factura <strong>%1$s</strong> correspondiente al anticipo del %5$s %% de su proyecto <strong>%2$s</strong> (%3$s), por importe de <strong>%4$s</strong>. Los datos para la transferencia figuran en la propia factura, que también tiene disponible en la Documentación de su proyecto.',
 			'mail_body1_full' => 'Le adjuntamos la factura <strong>%1$s</strong> correspondiente a su proyecto <strong>%2$s</strong> (%3$s), por importe de <strong>%4$s</strong>. Los datos para la transferencia figuran en la propia factura, que también tiene disponible en la Documentación de su proyecto.',
@@ -68,6 +70,8 @@ function cpx_invoice_texts($lang) {
 			'thanks' => 'Thank you for your trust. Sincerely, Javier García.',
 			'doc_title1' => 'Invoice %1$s (%2$s%% advance)', 'doc_title2' => 'Invoice %1$s (final %2$s%%)',
 			'doc_title1_full' => 'Invoice %1$s (full amount)',
+			'doc_title_extra' => 'Invoice %1$s (extra)', 'extra_line' => 'Taxable base · additional service (this invoice)',
+			'mail_body_extra' => 'Please find attached invoice <strong>%1$s</strong> for the additional service “%5$s” on your project <strong>%2$s</strong> (%3$s), amounting to <strong>%4$s</strong>. The transfer details are on the invoice itself, which is also available in the Documents section of your project.',
 			'mail_subject' => 'Invoice %s for your project %s — Standarte',
 			'mail_body1' => 'Please find attached invoice <strong>%1$s</strong> for the %5$s%% advance on your project <strong>%2$s</strong> (%3$s), amounting to <strong>%4$s</strong>. The transfer details are on the invoice itself, which is also available in the Documents section of your project.',
 			'mail_body1_full' => 'Please find attached invoice <strong>%1$s</strong> for your project <strong>%2$s</strong> (%3$s), amounting to <strong>%4$s</strong>. The transfer details are on the invoice itself, which is also available in the Documents section of your project.',
@@ -111,6 +115,12 @@ function cpx_inv_pct_txt($n) {
 	return rtrim(rtrim(number_format((float) $n, 2, ',', ''), '0'), ',');
 }
 function cpx_inv_labels($T, $am, $which) {
+	/* Factura EXTRA (which = 3): sin porcentaje; en su lugar viaja el concepto, que es lo
+	 * que el correo nombra («el servicio adicional «…»»). */
+	if ((int) $which === 3) {
+		return array('unica' => false, 'pct' => isset($am['concept']) ? (string) $am['concept'] : '',
+			'line' => $T['extra_line'], 'title' => $T['doc_title_extra'], 'mail' => $T['mail_body_extra']);
+	}
 	$pct = (isset($am['split']['pct']) && $am['split']['pct']) ? $am['split']['pct'] : array(80, 20);
 	$unica = count($pct) === 1;
 	$p1 = cpx_inv_pct_txt($pct[0]);
@@ -319,12 +329,20 @@ function cpx_invoice_pdf($d) {
 	} else {
 		$row($d['title'], '1', $eur($d['amounts']['subtotal']), $eur($d['amounts']['subtotal']), false, false);
 	}
-	$pdf->SetLineWidth(0.5);
-	$row($T['subtotal'], '', '', $eur($d['amounts']['subtotal']), true, true);
-	$pdf->SetLineWidth(0.2);
-	if ($d['amounts']['discount'] > 0) $row($T['discount'], '', '', '− ' . $eur($d['amounts']['discount']), false, false);
-	if ($d['which'] === 2 && $d['amounts']['base1'] !== null) $row(sprintf($T['adv2'], $d['amounts']['prev_number'] !== null ? $d['amounts']['prev_number'] : '—'), '', '', '− ' . $eur($d['amounts']['base1']), false, false);
-	$row($lab['line'], '', '', $eur($d['amounts']['base']), false, false);
+	if ($d['which'] === 3) {
+		/* EXTRA: no hay «total del proyecto aprobado» ni descuento ni anticipo que restar; la
+		 * base es el propio servicio adicional. */
+		$pdf->SetLineWidth(0.5);
+		$row($lab['line'], '', '', $eur($d['amounts']['base']), true, true);
+		$pdf->SetLineWidth(0.2);
+	} else {
+		$pdf->SetLineWidth(0.5);
+		$row($T['subtotal'], '', '', $eur($d['amounts']['subtotal']), true, true);
+		$pdf->SetLineWidth(0.2);
+		if ($d['amounts']['discount'] > 0) $row($T['discount'], '', '', '− ' . $eur($d['amounts']['discount']), false, false);
+		if ($d['which'] === 2 && $d['amounts']['base1'] !== null) $row(sprintf($T['adv2'], $d['amounts']['prev_number'] !== null ? $d['amounts']['prev_number'] : '—'), '', '', '− ' . $eur($d['amounts']['base1']), false, false);
+		$row($lab['line'], '', '', $eur($d['amounts']['base']), false, false);
+	}
 	if ($d['amounts']['iva_rate'] > 0) $row(sprintf($T['iva'], cpx_pct_label($d['amounts']['iva_rate'], $L)), '', '', '+ ' . $eur($d['amounts']['iva']), false, false);
 	if ($d['amounts']['irpf_rate'] > 0) $row(sprintf($T['irpf'], cpx_pct_label($d['amounts']['irpf_rate'], $L)), '', '', '− ' . $eur($d['amounts']['irpf']), false, false);
 	$pdf->SetLineWidth(0.5);
@@ -487,6 +505,133 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	return array('ok' => true, 'number' => $number, 'which' => $which, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);
 }
 
+
+/* ---------- Factura EXTRA: un cargo no previsto en el reparto (05/11/2026) ----------
+ * Caso real: SHINING 3D pagó la factura única del 100 % y pidió después un extra de
+ * 900 €. El gestor escribe número, concepto e importe (BASE IMPONIBLE, sin impuestos);
+ * el resto sale del proyecto como en las otras: datos de facturación del cliente, cuenta
+ * de ingreso, tipos de IVA/IRPF del proyecto (si están a cero, la factura lo explica),
+ * idioma de la aprobación. Se guarda en la Documentación como «factura_extra», se
+ * registra con which = 3 (puede haber varias) y su propio estado emitido/cursado, y se
+ * envía al cliente con copia. Exige proyecto aprobado, como las demás. */
+function cpx_invoice_issue_extra($projectId, $number, $concept, $amount, $opts = array()) {
+	$dry = !empty($opts['dry_run']);
+	$number = $dry ? 'PRUEBA-' . date('ymd') : trim((string) $number);
+	$concept = trim(preg_replace('/\s+/', ' ', (string) $concept));
+	$amount = round((float) str_replace(',', '.', trim((string) $amount)), 2);
+	$errors = array(); $warnings = array();
+	if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId)) return array('ok' => false, 'errors' => array('id inválido'));
+	if ($number === '' || mb_strlen($number) > 30 || !preg_match('/^[A-Za-z0-9][A-Za-z0-9\/\-_.]*$/', $number)) $errors[] = 'el número de factura está vacío o tiene caracteres raros';
+	if ($concept === '' || mb_strlen($concept) > 160) $errors[] = 'el concepto está vacío o pasa de 160 caracteres';
+	if (!($amount > 0) || $amount > 1000000) $errors[] = 'el importe tiene que ser mayor que 0';
+	$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=*&limit=1');
+	if (empty($rows[0])) return array('ok' => false, 'errors' => array('proyecto no encontrado'));
+	$p = $rows[0];
+
+	if (empty($p['approved'])) $errors[] = 'el proyecto no está aprobado por el cliente';
+	$emails = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
+	$email = $emails ? implode(', ', $emails) : '';
+	if (!$emails) $errors[] = 'falta un email de cliente válido';
+	$client = trim((string) (!empty($p['billing_company']) ? $p['billing_company'] : $p['client_name']));
+	if ($client === '') $errors[] = 'falta la razón social (o el nombre del cliente)';
+	$iban = trim((string) (isset($p['income_account']) ? $p['income_account'] : ''));
+	if ($iban === '') $errors[] = 'el proyecto no tiene cuenta de ingreso';
+	if (!$dry && $number !== '' && cpx_invoice_number_taken($number)) $errors[] = 'el número ' . $number . ' ya está usado en otra factura';
+	if ($errors) return array('ok' => false, 'errors' => $errors);
+
+	/* Importes: la base es lo tecleado; impuestos a los tipos del proyecto. */
+	$ivaRate = isset($p['iva_rate']) ? (float) $p['iva_rate'] : 0.21;
+	$irpfRate = isset($p['irpf_rate']) ? (float) $p['irpf_rate'] : 0.15;
+	$base = $amount;
+	$iva = round($base * $ivaRate, 2);
+	$irpf = round($base * $irpfRate, 2);
+	$am = array('split' => cpx_payment_split($p), 'base' => $base, 'iva' => $iva, 'irpf' => $irpf, 'iva_rate' => $ivaRate, 'irpf_rate' => $irpfRate,
+		'total' => round($base + $iva - $irpf, 2), 'project_total' => null, 'subtotal' => $base, 'discount' => 0.0, 'base1' => null, 'prev_number' => null, 'concept' => $concept);
+	if ($am['total'] <= 0) return array('ok' => false, 'errors' => array('el importe de la factura sale a 0'));
+
+	$lang = (isset($p['approved_lang']) && $p['approved_lang'] === 'en') ? 'en' : 'es';
+	$issued = time();
+	$rates = cpx_fetch_rates();
+	if (!$rates) $warnings[] = 'no se pudo obtener el tipo de cambio: la factura sale solo en euros';
+
+	$acc = null; foreach (cpx_accounts() as $a) { if (str_replace(' ', '', $a['iban']) === str_replace(' ', '', $iban)) $acc = $a; }
+	$bank = $acc ? $acc['bank'] : '—';
+	$bic = trim((string) (isset($p['bic_code']) ? $p['bic_code'] : ($acc ? $acc['bic'] : '')));
+
+	/* El concepto de la transferencia lleva «EXTRA» para distinguir el ingreso del de la
+	 * factura principal. */
+	$fair = !empty($p['fair_slug']) ? cpx_fair_info($p['fair_slug']) : null;
+	$matter = strtoupper('STAND - ' . $client . ($fair ? ' - ' . $fair['name'] : '') . ' - EXTRA');
+	$matter = preg_replace('/\s+/', ' ', $matter);
+
+	$clientLines = array_values(array_filter(array(
+		trim((string) (isset($p['billing_address']) ? $p['billing_address'] : '')),
+		trim(trim((string) (isset($p['billing_postal_code']) ? $p['billing_postal_code'] : '')) . ' ' . strtoupper(trim((string) (isset($p['billing_city']) ? $p['billing_city'] : ''))) . (!empty($p['billing_country']) ? ' (' . strtoupper($p['billing_country']) . ')' : '')),
+		!empty($p['billing_cif']) ? (($lang === 'en' ? 'Tax ID: ' : 'CIF/NIF: ') . $p['billing_cif']) : ''
+	), function ($x) { return $x !== ''; }));
+	if (count($clientLines) < 2) $warnings[] = 'el cliente no dejó dirección de facturación completa';
+
+	$title = trim((string) (!empty($p['title_' . $lang]) ? $p['title_' . $lang] : $p['ref']));
+	$logo = __DIR__ . '/lib/logo-sello.png';
+	$d = array('lang' => $lang, 'which' => 3, 'number' => $number, 'issued' => $issued, 'client' => $client, 'client_lines' => $clientLines,
+		'bank' => $bank, 'iban' => $iban, 'bic' => $bic, 'matter' => $matter, 'title' => $title,
+		'items' => array(array('label' => $concept, 'amount' => $base)), 'amounts' => $am, 'rates' => $rates, 'logo' => is_readable($logo) ? $logo : null);
+	$pdfBytes = cpx_invoice_pdf($d);
+
+	$T = cpx_invoice_texts($lang);
+	$lab = cpx_inv_labels($T, $am, 3);
+	$safe = preg_replace('/[^A-Za-z0-9_-]+/', '_', $number);
+	$url = 'https://standarte.es/proyecto?t=' . $p['access_token'];
+	$h = function ($x) { return htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8'); };
+	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
+		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
+		. "<p style='margin:0 0 16px;'>" . sprintf($lab['mail'], $h($number), $h($title), $h($p['ref']), $h(cpx_money($am['total'], $lang, 'EUR')), $h($concept)) . "</p>"
+		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
+		. "<p style='margin:28px 0 0;'>" . $T['sign'] . "</p></body></html>";
+	$subject = sprintf($T['mail_subject'], $number, $p['ref']);
+	$attachment = array('name' => 'factura-' . $safe . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes);
+
+	/* Modo prueba: el PDF va SOLO a Javier; no se guarda ni se registra nada. */
+	if ($dry) {
+		$warnings[] = 'el número ' . $number . ' es ficticio: la factura real llevará el que introduzcas al emitirla';
+		$attachment['name'] = 'PRUEBA-' . $attachment['name'];
+		$sent = cpx_test_mail($subject, $p, $email, $html, $attachment, $warnings);
+		return array('ok' => true, 'dry_run' => true, 'number' => $number, 'which' => 3, 'lang' => $lang, 'email' => CPX_ADMIN_MAIL, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);
+	}
+
+	$path = $projectId . '/docs/factura-extra-' . strtolower($safe) . '.pdf';
+	$tmp = tempnam(sys_get_temp_dir(), 'std-inv-'); file_put_contents($tmp, $pdfBytes);
+	$up = cpx_storage_upload($path, $tmp, 'application/pdf', 'client-docs'); @unlink($tmp);
+	if ((int) $up >= 300) return array('ok' => false, 'errors' => array('Storage rechazó el PDF (código ' . $up . ')'));
+	$docTitle = sprintf($lab['title'], $number);
+	$ins = cpx_sb('POST', 'client_project_docs', array('project_id' => $projectId, 'kind' => 'factura_extra', 'title' => $docTitle, 'path' => $path, 'size_bytes' => strlen($pdfBytes)));
+	if ((int) $ins['code'] >= 300) { cpx_storage_delete_object($path, 'client-docs'); return array('ok' => false, 'errors' => array('no se pudo registrar el documento (' . $ins['code'] . ')')); }
+	$docId = (is_array($ins['body']) && isset($ins['body'][0]['id'])) ? $ins['body'][0]['id'] : null;
+
+	$reg = cpx_sb('POST', 'client_project_invoices', array('project_id' => $projectId, 'which' => 3, 'number' => $number, 'issued_at' => gmdate('c', $issued),
+		'amount_eur' => $am['total'], 'lang' => $lang, 'doc_id' => $docId, 'concept' => $concept, 'state' => 'emitido',
+		'meta' => array('base' => $am['base'], 'iva' => $am['iva'], 'irpf' => $am['irpf'], 'iva_rate' => $am['iva_rate'], 'irpf_rate' => $am['irpf_rate'], 'rates' => $rates, 'matter' => $matter, 'client' => $client, 'bank' => $bank, 'path' => $path, 'concept' => $concept)));
+	if ((int) $reg['code'] >= 300) {
+		if ($docId) cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($docId));
+		cpx_storage_delete_object($path, 'client-docs');
+		return array('ok' => false, 'errors' => array((int) $reg['code'] === 409 ? 'el número ' . $number . ' ya está usado' : 'no se pudo registrar la factura (' . $reg['code'] . ')'));
+	}
+
+	$sent = cpx_send_with_copy($emails, $subject, $html, $attachment);
+	if (!$sent) $warnings[] = 'la factura se ha generado y guardado, pero el correo al cliente NO ha salido (revisa SMTP)';
+	return array('ok' => true, 'number' => $number, 'which' => 3, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $am['total'], 'warnings' => $warnings);
+}
+
+/* Estado de cobro de una factura EXTRA (emitido ↔ cursado). Solo las extras: las de los
+ * tramos siguen en client_projects.invoice_state / invoice2_state. */
+function cpx_invoice_extra_state($projectId, $invoiceId, $state) {
+	if (!preg_match('/^[0-9a-f-]{36}$/', (string) $projectId) || !preg_match('/^[0-9a-f-]{36}$/', (string) $invoiceId)) return array('ok' => false, 'error' => 'bad_id');
+	if (!in_array($state, array('emitido', 'cursado'), true)) return array('ok' => false, 'error' => 'bad_state');
+	$r = cpx_sb('PATCH', 'client_project_invoices?id=eq.' . urlencode($invoiceId) . '&project_id=eq.' . urlencode($projectId) . '&which=eq.3', array('state' => $state));
+	if ((int) $r['code'] >= 300) return array('ok' => false, 'error' => 'db', 'code' => $r['code']);
+	if (!is_array($r['body']) || empty($r['body'])) return array('ok' => false, 'error' => 'not_found');
+	return array('ok' => true, 'state' => $state);
+}
 
 /* ---------- Reenviar un documento ya emitido ----------
  * El cliente ha perdido el correo: se le vuelve a mandar el MISMO PDF que hay en su

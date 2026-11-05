@@ -126,6 +126,40 @@ if ($action === 'issue_invoice') {
 	));
 }
 
+/* ---------- Factura EXTRA (05/11/2026): un cargo no previsto en el reparto ----------
+ * Número, concepto e importe (base imponible) los escribe el gestor; lo demás sale del
+ * proyecto (invoice_lib.php, cpx_invoice_issue_extra). dry_run=1 manda el PDF solo a
+ * Javier sin guardar nada. No toca invoice_state/invoice2_state: la extra lleva su
+ * propio estado en client_project_invoices. */
+if ($action === 'issue_invoice_extra') {
+	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
+	$pid = cpx_project_id_by_token(pa_post('token'));
+	if (!$pid) pa_out(array('ok' => false, 'error' => 'not_found'));
+	require_once __DIR__ . '/invoice_lib.php';
+	$dry = pa_post('dry_run') === '1';
+	$res = cpx_invoice_issue_extra($pid, pa_post('number'), pa_post('concept'), pa_post('amount'), $dry ? array('dry_run' => true) : array());
+	if (empty($res['ok'])) {
+		pa_out(array('ok' => false, 'error' => 'issue_failed', 'detail' => implode('; ', $res['errors'])));
+	}
+	pa_out(array(
+		'ok' => true, 'dry_run' => $dry, 'which' => 3,
+		'number' => isset($res['number']) ? $res['number'] : '',
+		'lang' => isset($res['lang']) ? $res['lang'] : '',
+		'total' => isset($res['total']) ? $res['total'] : 0,
+		'sent' => !empty($res['sent']),
+		'email' => isset($res['email']) ? $res['email'] : '',
+		'warnings' => isset($res['warnings']) ? $res['warnings'] : array()
+	));
+}
+/* Marcar una factura EXTRA como cobrada (cursado) o devolverla a emitido. */
+if ($action === 'extra_invoice_state') {
+	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
+	$pid = cpx_project_id_by_token(pa_post('token'));
+	if (!$pid) pa_out(array('ok' => false, 'error' => 'not_found'));
+	require_once __DIR__ . '/invoice_lib.php';
+	pa_out(cpx_invoice_extra_state($pid, pa_post('invoice_id'), pa_post('state')));
+}
+
 /* Numero sugerido para la siguiente factura de la serie. */
 if ($action === 'next_invoice_number') {
 	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
@@ -364,7 +398,7 @@ if ($action === 'upload_doc') {
 	if ($mime !== 'application/pdf' || $ext !== 'pdf') pa_out(array('ok' => false, 'error' => 'not_pdf', 'mime' => $mime));
 
 	$kind = pa_post('kind', 'otro');
-	if (!in_array($kind, array('contrato', 'factura_anticipo', 'factura_final', 'otro'), true)) $kind = 'otro';
+	if (!in_array($kind, array('contrato', 'factura_anticipo', 'factura_final', 'factura_extra', 'otro'), true)) $kind = 'otro';
 	// Bucket PRIVADO y solo-PDF: el público de la propuesta gráfica no admite
 	// application/pdf en su lista blanca (ahí fallaba la subida) y además serviría los
 	// contratos por URL pública.
