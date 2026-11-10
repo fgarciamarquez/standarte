@@ -318,8 +318,41 @@
   let lbVideoEl;
   let lbPlaying = false;
   function playLbVideo() { if (lbVideoEl) { lbVideoEl.play().catch(() => {}); } }
-  function openLightbox(m) { if (!admin && isLbItem(m)) { lbPlaying = false; lightbox = m; } }
-  function closeLightbox() { lightbox = null; }
+  // PANTALLA COMPLETA (10/11/2026, petición del usuario: «la caja de ampliación está
+  // limitada a un tamaño concreto; quiero que se amplíe a pantalla completa y se adapte a
+  // la pantalla donde se está viendo»). Además de que el medio ocupe todo el visor (CSS
+  // .pz-lb-inner), al abrirlo se pide al navegador la pantalla completa REAL, sin barras.
+  // Tiene que pedirse dentro del clic que abre el visor (el navegador solo lo concede con
+  // un gesto del usuario), por eso va aquí y no en un efecto. En el iPhone Safari no deja
+  // poner en pantalla completa una página: allí el visor llena la pantalla visible y basta.
+  // Solo se sale de la pantalla completa si la pidió el visor; y si el usuario sale de ella
+  // (Esc en el ordenador, gesto de volver en el móvil), se cierra también el visor, para
+  // que una sola pulsación lo cierre todo.
+  let lbFsByUs = false;
+  const fsElement = () => (typeof document !== 'undefined' ? document.fullscreenElement || document.webkitFullscreenElement : null);
+  function enterFullscreen() {
+    if (typeof document === 'undefined' || fsElement()) return;
+    const el = document.documentElement;
+    const req = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!req) return;
+    try {
+      const p = req.call(el, { navigationUI: 'hide' });
+      lbFsByUs = true;
+      if (p && typeof p.catch === 'function') p.catch(() => { lbFsByUs = false; });
+    } catch (e) { lbFsByUs = false; }
+  }
+  function exitFullscreen() {
+    if (!lbFsByUs) return;
+    lbFsByUs = false;
+    if (!fsElement()) return;
+    const ex = document.exitFullscreen || document.webkitExitFullscreen;
+    try { const p = ex && ex.call(document); if (p && typeof p.catch === 'function') p.catch(() => {}); } catch (e) {}
+  }
+  function onFullscreenChange() {
+    if (!fsElement() && lbFsByUs) { lbFsByUs = false; lightbox = null; }
+  }
+  function openLightbox(m) { if (!admin && isLbItem(m)) { lbPlaying = false; lightbox = m; enterFullscreen(); } }
+  function closeLightbox() { lightbox = null; exitFullscreen(); }
   function lbGo(dir) {
     if (!lightbox || lbList.length < 2) return;
     const i = lbList.indexOf(lightbox);
@@ -768,6 +801,7 @@
 </script>
 
 <svelte:window on:keydown={onKeydownLight} />
+<svelte:document on:fullscreenchange={onFullscreenChange} on:webkitfullscreenchange={onFullscreenChange} />
 
 <main class="pz" class:pz-admin={admin}>
   {#if admin}
@@ -1506,8 +1540,12 @@
   .pz-compose input:disabled, .pz-compose button:disabled { opacity: .5; cursor: not-allowed; }
   .pz-drop { border: 2px dashed #b9b6a8; border-radius: 10px; padding: 26px; text-align: center; color: #7a776b; cursor: pointer; background: #faf9f4; transition: all .15s; }
   .pz-drop.over { border-color: #1b1b1a; background: #f0eee5; color: #1b1b1a; }
-  .pz-lb-iframe { width: min(1100px, 94vw); aspect-ratio: 16 / 9; max-height: 80vh; border: 0; background: #000; }
-  .pz-lb-model { width: min(1100px, 94vw); height: 80vh; background: #111; border: 1px solid rgba(255,255,255,0.2); --poster-color: transparent; }
+  /* Visor a pantalla completa (10/11/2026): el iframe (vídeo de Drive) y el modelo 3D
+     ocupan todo el alto que deja el pie, sin el tope de 1100 px ni el 16/9 fijo; el
+     reproductor de Drive encuadra el vídeo dentro y sus barras caen sobre las bandas negras
+     (la misma lógica que ya se aplicaba en el móvil, ver más abajo). */
+  .pz-lb-iframe { flex: 1 1 0; min-height: 0; width: 100%; height: auto; border: 0; background: #000; }
+  .pz-lb-model { flex: 1 1 0; min-height: 0; width: 100%; height: auto; background: #111; --poster-color: transparent; }
   /* "Loading…" mientras el modelo 3D carga (slot="poster" de model-viewer). */
   .pz-lb-model-loading {
     position: absolute;
@@ -1663,13 +1701,17 @@
      ✅ CONFIRMADO POR EL USUARIO (30/10/2026): tras desplegar esto, el vídeo se ve en
      Android. Era el orden de composición, no el reproductor de Drive. NO devolver el velo
      al fondo del contenedor ni quitarle la opacidad total que tiene en móvil. */
-  .pz-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; background: transparent; }
+  /* Sin margen interior (10/11/2026): el visor es la pantalla entera. Solo se respetan las
+     zonas seguras de los móviles con muesca (env(safe-area-inset-*), 0 donde no existen). */
+  .pz-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0); background: transparent; }
   .pz-lightbox::before { content: ''; position: absolute; inset: 0; z-index: 0; background: rgba(20, 20, 18, 0.88); }
   /* z-index 2 (antes auto): al dar contexto de apilamiento a .pz-lb-inner, sin esto el
      botón de cerrar se quedaría DEBAJO del contenido, y en un móvil en vertical el vídeo
      llega a la esquina superior derecha. Las flechas ya tenían su z-index 2. */
-  .pz-lb-close { position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: #fff; font-size: 26px; line-height: 1; border-radius: 50%; cursor: pointer; z-index: 2; }
-  .pz-lb-close:hover { background: rgba(255,255,255,0.12); }
+  /* Fondo propio (antes transparente): con el medio a pantalla completa, el botón queda
+     ENCIMA de la imagen, y una × blanca sobre una foto clara no se veía. */
+  .pz-lb-close { position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.4); background: rgba(20,20,18,0.55); color: #fff; font-size: 26px; line-height: 1; border-radius: 50%; cursor: pointer; z-index: 2; }
+  .pz-lb-close:hover { background: rgba(60,60,56,0.75); }
   /* position+z-index en la figura: le da CONTEXTO DE APILAMIENTO propio, por encima del
      fondo rgba(20,20,18,0.88) del contenedor. Antes era estática, y un iframe de otro
      origen con vídeo se compone en Android Chrome en su propia capa de hardware: si esa
@@ -1678,13 +1720,18 @@
      propia capa ordenada (ver .pz-lightbox::before) el vídeo se ve en Android. Esta regla
      es parte del mismo arreglo: sin contexto de apilamiento propio en la figura, declarar
      el orden del velo no basta. */
-  .pz-lb-inner { position: relative; z-index: 1; margin: 0; max-width: min(1100px, 94vw); max-height: 88vh; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-  /* Tope DEFINITO en unidades de viewport (no %): un max-width en % se resuelve contra
-     el contenedor inline-flex, cuya anchura depende del propio vídeo → nunca limitaba y
-     en móvil el vídeo desbordaba toda la pantalla. min(1100px,92vw) siempre acota. */
-  .pz-lb-inner img, .pz-lb-inner video { max-width: min(1100px, 92vw); max-height: 80vh; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); background: #000; }
+  /* PANTALLA COMPLETA (10/11/2026). Antes la figura tenía un tope de 1100 px y 88vh, y el
+     medio de 1100 px y 80vh: en un monitor de 1920×1080 una foto horizontal ocupaba el 36 %
+     de la pantalla, y en uno de 2560×1440, el 21 %. Ahora la figura ES el visor entero y el
+     medio se lleva todo el alto que deja el pie (flex: 1 1 0 + min-height: 0), escalado con
+     object-fit: contain para que se vea entero en cualquier pantalla y orientación. Las
+     medidas salen del propio contenedor fixed, no de vh: así no hay que pelearse con la
+     barra de direcciones del móvil (ver la nota de dvh más abajo). */
+  .pz-lb-inner { position: relative; z-index: 1; margin: 0; width: 100%; height: 100%; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 6px; padding-bottom: 10px; box-sizing: border-box; }
+  .pz-lb-inner > img { flex: 1 1 0; min-height: 0; width: 100%; height: auto; object-fit: contain; display: block; }
+  .pz-lb-inner video { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
   /* Vídeo del lightbox: contenedor para el botón de "play" (toca para reproducir en móvil). */
-  .pz-lb-video { position: relative; display: flex; justify-content: center; align-items: center; max-width: 100%; min-width: 0; }
+  .pz-lb-video { position: relative; display: flex; justify-content: center; align-items: center; flex: 1 1 0; min-height: 0; width: 100%; min-width: 0; }
   .pz-lb-video video { cursor: pointer; }
   .pz-lb-video-play {
     position: absolute; inset: 0; margin: auto;
@@ -1697,8 +1744,8 @@
     transition: background 0.2s ease, transform 0.2s ease;
   }
   .pz-lb-video-play:hover { background: rgba(0,0,0,0.65); transform: scale(1.06); }
-  .pz-lb-ph { width: min(900px, 90vw); aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; }
-  .pz-lb-inner figcaption { color: #eceae2; font-family: 'Inconsolata', monospace; font-size: 15px; text-align: center; }
+  .pz-lb-ph { flex: 1 1 0; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
+  .pz-lb-inner figcaption { flex: 0 0 auto; color: #eceae2; font-family: 'Inconsolata', monospace; font-size: 15px; text-align: center; padding: 0 16px; }
   .pz-lb-count { display: inline-block; margin-left: 10px; color: #b9b6a8; font-variant-numeric: tabular-nums; }
   .pz-lb-caption { display: block; }
   .pz-lb-desc { display: block; margin-top: 6px; color: #cfcdc4; font-size: 13px; line-height: 1.4; max-width: 640px; margin-left: auto; margin-right: auto; }
@@ -1744,17 +1791,13 @@
     .pz-lb-nav { width: 42px; height: 42px; font-size: 26px; }
     .pz-lb-nav.prev { left: 8px; }
     .pz-lb-nav.next { right: 8px; }
-    .pz-lightbox { padding: 8px; }
     /* En el móvil el velo es OPACO. Su translucidez solo sirve para intuir la página de
        detrás, que en un teléfono queda tapada de todos modos; siendo opaco, el fallo de
        orden de capas sobre el vídeo de Drive no puede ni plantearse. */
     .pz-lightbox::before { background: #141412; }
     .pz-lb-close { top: 8px; right: 8px; }
-    .pz-lb-inner { width: 100%; max-width: 100%; max-height: 94dvh; }
-    /* aspect-ratio: auto para que manden el ancho y el alto, no el 16/9: el reproductor
-       encuadra el vídeo dentro y las barras de Drive quedan fuera de la imagen. */
-    .pz-lb-iframe, .pz-lb-model { width: 100%; max-width: 100%; aspect-ratio: auto; height: 72dvh; max-height: 72dvh; }
-    .pz-lb-inner img, .pz-lb-inner video { max-width: 100%; max-height: 80dvh; }
+    /* Las medidas del medio ya no van aquí (10/11/2026): las reglas generales de
+       .pz-lb-inner llenan la pantalla en cualquier tamaño, móvil incluido. */
   }
   .pz-foot { margin-top: 44px; text-align: center; border-top: 2px solid #1b1b1a; padding-top: 24px; }
   /* Otros proyectos del mismo cliente: tarjetas con miniatura, al final de la página. */
