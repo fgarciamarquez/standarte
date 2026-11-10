@@ -37,7 +37,7 @@
 export const seoFreshness = {
   // Páginas paralelas de "constructor de stands" (alta: 2026-08-31).
   // 2026-09-11: todas incorporan el buscador de ferias bajo la ficha de datos.
-  constructor_stand_zaragoza: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
+  constructor_stand_zaragoza: '2026-11-10',   // normas de la Feria para quien construye + 6 FAQ (10/11/2026)
   constructor_stand_figan: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   constructor_stand_smopyc: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
   constructor_stand_smagua: '2026-09-24',   // carrusel de renders de la Galería + revisión de H2 y expresiones (24/09/2026)
@@ -181,7 +181,7 @@ export const seoFreshness = {
   galeria: '2026-10-17',   // 3 renders y el vídeo del stand de andamios (17/10/2026); vídeo propio en lugar de dos embebidos de Drive (14/10/2026); página propia con los vídeos 3D (23/09/2026)
   badajoz: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   montaje_badajoz: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
-  zaragoza: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
+  zaragoza: '2026-11-10',   // apartado técnico de la Feria de Zaragoza, imitando a Don Benito, e introducción (10/11/2026)
   lisboa: '2026-10-22',   // la sigla OMD en el párrafo de ferias (22/10/2026)
   montaje_don_benito: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)
   ciudad_real: '2026-09-26',   // H1/título con diseño, construcción, montaje y «para ferias» (26/09/2026)

@@ -81,11 +81,40 @@ export const builderSeoData = {
         <h2>Constructor de stands en Zaragoza: fabricación propia para la Feria de Zaragoza</h2>
         <p>La Feria de Zaragoza concentra algunos de los certámenes más exigentes de España en materia de construcción de stands: en <a href="/ferias/stands-fima-zaragoza">FIMA</a> y <a href="/ferias/stands-figan-feria-zaragoza">FIGAN</a> se expone maquinaria agrícola y ganadera de varias toneladas, y en <a href="/ferias/stands-smopyc-zaragoza">SMOPYC</a>, obra pública y equipos de construcción. Un stand para esas ferias no es una decoración: es una estructura que tiene que soportar peso, resistir el trasiego de cuatro días y quedar impecable a primera vista.</p>
         <p>Por eso construimos con criterio de taller: calculamos la carga real del suelo y los refuerzos necesarios, dejamos previstas las acometidas de agua y potencia con el recinto, y fabricamos la carpintería con materiales pensados para arquitectura efímera —ligeros de transportar, sólidos en pabellón y reutilizables en la siguiente convocatoria—.</p>
+        <h2>Constructor de stands en Zaragoza: lo que las normas de la Feria piden a quien construye</h2>
+        <p>Las normas de decoración de la Feria de Zaragoza dejan «prohibida la construcción de la decoración dentro del Recinto Ferial». Nosotros la fabricamos en nuestro taller —carpintería, estructura, mobiliario y gráfica— y en el pabellón la montamos. Todas las paredes quedan acabadas también por su cara trasera, porque así lo exigen las normas de la Feria.</p>
+        <p>El resto de condiciones del recinto —materiales, doble planta, colgados, canon de montaje y plazos— se resuelven en el proyecto, antes de cortar la primera pieza, y no cuando llega la inspección. Las tienes una por una en las preguntas frecuentes de esta página.</p>
         ${paso('Zaragoza')}
         ${tipos('Zaragoza')}
         <h2>Constructor de stands en Zaragoza: ferias del recinto</h2>
         <p>Construimos para todo el calendario del recinto: <a href="/ferias/stands-fima-zaragoza">FIMA</a>, <a href="/ferias/stands-figan-feria-zaragoza">FIGAN</a>, <a href="/ferias/stands-smopyc-zaragoza">SMOPYC</a>, <a href="/ferias/stands-smagua-zaragoza">SMAGUA</a>, <a href="/ferias/stands-aratur-zaragoza">Aratur</a>, <a href="/ferias/stands-expofimer-zaragoza">EXPOFIMER</a> y <a href="/ferias/stands-spaper-zaragoza">SPAPER</a>. Si prefieres ver el servicio completo de diseño y montaje para la plaza, está en nuestra página de <a href="/diseno-construccion-montaje-stands-zaragoza">diseño y montaje de stands en Zaragoza</a>.</p>
-        ${porque('Zaragoza')}`
+        ${porque('Zaragoza')}`,
+      faqs: [
+        {
+          "q": "¿Se puede construir la decoración del stand dentro del recinto de la Feria de Zaragoza?",
+          "a": "No. Las normas de la Feria para la decoración y construcción de los stands dejan «prohibida la construcción de la decoración dentro del Recinto Ferial». La carpintería, la estructura, el mobiliario y la gráfica los fabricamos en nuestro taller propio y en el pabellón los montamos."
+        },
+        {
+          "q": "¿Construís stands de doble planta en la Feria de Zaragoza?",
+          "a": "Sí, pero solo en las zonas del recinto donde la Feria lo autorice y con un proyecto firmado por técnico competente y visado por su colegio profesional —arquitectos, arquitectos técnicos o ingenieros—, que se entrega al Departamento de Operaciones. La Feria factura además la superficie de la segunda planta, a un precio que fija al autorizarla y que nunca supera el del suelo sobre el que se levanta, y esa planta cuenta también para el canon de montaje."
+        },
+        {
+          "q": "¿Se pueden colgar estructuras del techo de los pabellones de la Feria de Zaragoza?",
+          "a": "Sí, con límites. Bajo la cúpula, en la zona central del pabellón 4, está prohibido, igual que en el 10 y el 11; y en zonas concretas del 3, el 6, el 8 o el 9 la cubierta pone condiciones de instalación específicas y a veces no lo admite. Los puntos de amarre se piden con la solicitud 17.1 y un proyecto descriptivo un mes antes del certamen, y solo los instala personal autorizado por la Feria. La normativa general pide un punto de amarre por cada 50 kg (con el sistema de RZ Rigging/Fluge, en muchos casos hasta 100 kg por punto), y la estructura se une al gancho del motor con grilletes, nunca con mosquetones."
+        },
+        {
+          "q": "¿Qué es el canon de montaje de la Feria de Zaragoza?",
+          "a": "Es el importe que la Feria cobra a expositores y decoradores por el montaje de su stand. Según su Guía para el decorador, solo quedan exentos los expositores que contratan el stand modelo 1 de la carpeta de servicios para todo su espacio. Se aplica a toda la superficie, segundas plantas incluidas, y el justificante de pago es imprescindible antes de empezar a montar."
+        },
+        {
+          "q": "¿Qué pasa si el stand no está terminado a tiempo en la Feria de Zaragoza?",
+          "a": "Las normas exigen que esté totalmente terminado en las fechas y horarios de montaje de cada certamen. Si no, la empresa decoradora paga un coste adicional del 50 % del canon de montaje, con un mínimo de 100 €, y el último día de montaje no se conceden ampliaciones."
+        },
+        {
+          "q": "¿Qué materiales usáis en los stands para la Feria de Zaragoza?",
+          "a": "Materiales con la reacción al fuego que pide el recinto: M.3 para revestir el suelo y M.2 para paredes y techos; la decoración, igual. No se admiten materiales fácilmente combustibles, como la paja, la viruta o el serrín, y trabajar con llama abierta necesita permiso de la Feria."
+        }
+      ]
     }
   },
 
@@ -2062,11 +2091,40 @@ const EN = {
     body: `
         <h2>Stand builder in Zaragoza: in-house manufacturing for Feria de Zaragoza</h2>
         <p>Feria de Zaragoza hosts some of Spain's most demanding shows for stand construction: <a href="/en/ferias/stands-fima-zaragoza">FIMA</a> and <a href="/en/ferias/stands-figan-feria-zaragoza">FIGAN</a> exhibit farm and livestock machinery weighing several tonnes, and <a href="/en/ferias/stands-smopyc-zaragoza">SMOPYC</a> public works equipment. A stand for those shows is not decoration: it is a structure that has to carry weight, survive four days of traffic and still look immaculate.</p>
+        <h2>Stand builder in Zaragoza: what the venue's rules ask of whoever builds</h2>
+        <p>Feria de Zaragoza's stand-building rules forbid building the stand fit-out (the "decoration", in the rules' wording) inside the venue. We make it in our own workshop —joinery, structure, furniture and graphics— and assemble it in the pavilion. Every wall is finished on its back face too, because the venue's rules require it.</p>
+        <p>The other venue conditions —materials, double-decker stands, rigging, the assembly fee and deadlines— are settled in the design, before the first piece is cut, not when the inspection arrives. They are set out one by one in the frequently asked questions on this page.</p>
         ${pasoEn('Zaragoza')}
         ${tiposEn('Zaragoza')}
         <h2>Stand builder in Zaragoza: shows at the venue</h2>
         <p>We build for the whole venue calendar: <a href="/en/ferias/stands-fima-zaragoza">FIMA</a>, <a href="/en/ferias/stands-figan-feria-zaragoza">FIGAN</a>, <a href="/en/ferias/stands-smopyc-zaragoza">SMOPYC</a>, <a href="/en/ferias/stands-smagua-zaragoza">SMAGUA</a> and <a href="/en/ferias/stands-expofimer-zaragoza">EXPOFIMER</a>. The full design-and-build service for the city is on our <a href="/en/stand_design_assembly_zaragoza">stand design and installation in Zaragoza</a> page.</p>
-        ${porqueEn('Zaragoza')}`
+        ${porqueEn('Zaragoza')}`,
+    faqs: [
+      {
+        "q": "Can the stand fit-out be built inside the Feria de Zaragoza venue?",
+        "a": "No. The venue's rules for stand decoration and construction state that building the decoration inside the venue is forbidden. We make the joinery, structure, furniture and graphics in our own workshop and assemble them in the pavilion."
+      },
+      {
+        "q": "Do you build double-decker stands at Feria de Zaragoza?",
+        "a": "Yes, but only in the parts of the venue where it is authorised, and with a project signed by a qualified professional and stamped (visado) by their professional association —architects, technical architects or engineers—, submitted to the Operations Department. The venue also bills the upper floor's area, at a price it sets when it grants the authorisation and never above that of the floor space below, and the upper floor also counts towards the assembly fee."
+      },
+      {
+        "q": "Can structures be hung from the pavilion roofs at Feria de Zaragoza?",
+        "a": "Yes, within limits. Under the dome, in the central area of Pavilion 4, it is forbidden, as it is in Pavilions 10 and 11; and in specific areas of Pavilions 3, 6, 8 or 9 the roof sets particular installation conditions and sometimes does not allow it. Rigging points are requested with application form 17.1 and a descriptive project one month before the show, and only staff authorised by the venue install them. The general rule is one rigging point for every 50 kg (with the RZ Rigging/Fluge system, often up to 100 kg per point), and the structure is connected to the motor hook with shackles, never with snap hooks."
+      },
+      {
+        "q": "What is the Feria de Zaragoza assembly fee?",
+        "a": "It is the amount the venue charges exhibitors and stand contractors for assembling their stand. According to its decorator guide, only exhibitors who book the venue's model 1 stand for their whole space are exempt. It applies to the whole area, upper floors included, and proof of payment is essential before assembly starts."
+      },
+      {
+        "q": "What happens if the stand is not finished on time at Feria de Zaragoza?",
+        "a": "The rules require it to be completely finished within each show's assembly dates and hours. Otherwise the stand contractor pays an extra 50 % of the assembly fee, with a minimum of €100, and no assembly extensions are granted on the last day."
+      },
+      {
+        "q": "What materials do you use for stands at Feria de Zaragoza?",
+        "a": "Materials with the fire-reaction class the venue asks for: M.3 to cover the floor, M.2 for walls and ceilings, and decoration likewise. Easily combustible materials such as straw, wood shavings or sawdust are not allowed, and work with a naked flame needs the venue’s permission."
+      }
+    ]
   },
   constructor_stand_madrid: {
     breadcrumb: 'Stand builder in Madrid',
