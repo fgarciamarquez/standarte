@@ -1,0 +1,53 @@
+name: Leer fuentes
+
+# Descarga páginas y PDF públicos y los deja como texto plano en un artefacto, para
+# poder citar datos oficiales con su fuente cuando la red de la sesión de trabajo bloquea
+# el dominio (10/11/2026: feriazaragoza.es, para el apartado técnico del recinto de
+# Zaragoza). Solo lectura: no toca el sitio ni el repositorio.
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'URL separadas por espacios (páginas o PDF)'
+        required: true
+
+jobs:
+  leer:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Instalar pdftotext
+        run: sudo apt-get install -y poppler-utils >/dev/null
+      - name: Descargar y convertir a texto
+        env:
+          URLS: ${{ inputs.urls }}
+        run: |
+          mkdir -p fuentes
+          UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36'
+          i=0
+          for u in $URLS; do
+            i=$((i+1)); n=$(printf '%02d' $i)
+            code=$(curl -sSL -A "$UA" --max-time 60 -o "fuentes/$n.bin" -w '%{http_code} %{content_type}' "$u" || echo "000 error")
+            echo "$n  $code  $u" | tee -a fuentes/indice.txt
+            if head -c 4 "fuentes/$n.bin" | grep -q '%PDF'; then
+              pdftotext -layout "fuentes/$n.bin" "fuentes/$n.txt" || true
+            else
+              python3 - "fuentes/$n.bin" "fuentes/$n.txt" <<'PY'
+          import sys, re, html
+          s = open(sys.argv[1], encoding='utf-8', errors='ignore').read()
+          s = re.sub(r'<(script|style|noscript|svg)[^>]*>.*?</\1>', ' ', s, flags=re.S)
+          s = re.sub(r'<(br|/p|/li|/h[1-6]|/tr|/div)[^>]*>', '\n', s)
+          t = html.unescape(re.sub(r'<[^>]+>', ' ', s))
+          t = '\n'.join(re.sub(r'[ \t]+', ' ', l).strip() for l in t.splitlines())
+          open(sys.argv[2], 'w', encoding='utf-8').write(re.sub(r'\n{3,}', '\n\n', t))
+          PY
+            fi
+            { echo "### $u"; echo; cat "fuentes/$n.txt" 2>/dev/null; } > "fuentes/$n.md"
+            rm -f "fuentes/$n.bin" "fuentes/$n.txt"
+          done
+          wc -c fuentes/*.md
+      - name: Guardar el texto
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuentes
+          path: fuentes/
