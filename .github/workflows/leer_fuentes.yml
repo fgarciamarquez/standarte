@@ -31,6 +31,7 @@ jobs:
             echo "$n  $code  $u" | tee -a fuentes/indice.txt
             if head -c 4 "fuentes/$n.bin" | grep -q '%PDF'; then
               pdftotext -layout "fuentes/$n.bin" "fuentes/$n.txt" || true
+              { echo; echo "----- (sin maquetación) -----"; pdftotext -raw "fuentes/$n.bin" - || true; } >> "fuentes/$n.txt"
             else
               python3 - "fuentes/$n.bin" "fuentes/$n.txt" <<'PY'
           import sys, re, html
