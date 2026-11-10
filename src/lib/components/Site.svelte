@@ -1008,7 +1008,14 @@
     // Merge de Garantía/Logística y borrado de Pat solo si la maquetación estándar
     // encaja (Garantía justo tras Pat, Logística tras Garantía). Si no, se degrada:
     // solo reordena "Ferias" y colapsa "Cómo trabajamos"/"Tipos"/"Documentación".
-    const canMerge = iPat >= 0 && iGar === iPat + 1 && iLog === iPat + 2 && iDoc >= 0 && iDoc !== iComo && iDoc !== iTipos;
+    // Plazas que SUMAN el apartado técnico del recinto sin la fusión (10/11/2026, decisión
+    // del usuario: «solo sumar»). En Zaragoza se añadió la documentación técnica de la
+    // Feria de Zaragoza imitando a Don Benito, pero sin que eso arrastre la fusión de
+    // Garantía, Cobertura y Logística: la fusión quitaría tres H2 de la página y la regla
+    // del usuario es sumar términos, nunca quitarlos. Con la fusión apagada, el apartado
+    // técnico se pinta en su sitio y todo lo demás queda exactamente como estaba.
+    const NO_MERGE_SECTIONS = new Set(['zaragoza']);
+    const canMerge = !(sectionKey && NO_MERGE_SECTIONS.has(sectionKey)) && iPat >= 0 && iGar === iPat + 1 && iLog === iPat + 2 && iDoc >= 0 && iDoc !== iComo && iDoc !== iTipos;
     // "La mayor cobertura" va justo tras "Ferias y sectores"; se integra como 2.º
     // párrafo de "Por qué elegir" (tras el de Garantía).
     const iCob = iFerias > 0 ? iFerias + 1 : -1;
