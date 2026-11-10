@@ -351,6 +351,21 @@
   function onFullscreenChange() {
     if (!fsElement() && lbFsByUs) { lbFsByUs = false; lightbox = null; }
   }
+  // Clic en la zona oscura: cierra. Con el medio a pantalla completa la figura ocupa todo el
+  // visor y la imagen es una caja del tamaño de la pantalla con bandas vacías (object-fit:
+  // contain), así que el clic ya no llegaba al fondo (on:click|self) y el visor no se
+  // cerraba. Cierra si se pulsa la propia figura o una banda de la imagen fuera de lo pintado.
+  function lbFigureClick(e) {
+    const t = e.target;
+    if (t === e.currentTarget) { closeLightbox(); return; }
+    if (t && t.tagName === 'IMG' && t.naturalWidth && t.naturalHeight) {
+      const r = t.getBoundingClientRect();
+      const s = Math.min(r.width / t.naturalWidth, r.height / t.naturalHeight);
+      const w = t.naturalWidth * s, h = t.naturalHeight * s;
+      const x0 = r.left + (r.width - w) / 2, y0 = r.top + (r.height - h) / 2;
+      if (e.clientX < x0 || e.clientX > x0 + w || e.clientY < y0 || e.clientY > y0 + h) closeLightbox();
+    }
+  }
   function openLightbox(m) { if (!admin && isLbItem(m)) { lbPlaying = false; lightbox = m; enterFullscreen(); } }
   function closeLightbox() { lightbox = null; exitFullscreen(); }
   function lbGo(dir) {
@@ -1306,7 +1321,8 @@
         <button class="pz-lb-nav next" type="button" on:click|stopPropagation={() => lbGo(1)} aria-label="Siguiente">›</button>
       {/if}
       {#key lightbox.id}
-        <figure class="pz-lb-inner">
+        <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+        <figure class="pz-lb-inner" on:click={lbFigureClick}>
           {#if lightbox.src}
             {#if lightbox.type === 'image'}<img src={lightbox.src} alt={lightbox.title[lang]} />
             {:else if lightbox.type === 'model'}
@@ -1704,7 +1720,10 @@
   /* Sin margen interior (10/11/2026): el visor es la pantalla entera. Solo se respetan las
      zonas seguras de los móviles con muesca (env(safe-area-inset-*), 0 donde no existen). */
   .pz-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0); background: transparent; }
-  .pz-lightbox::before { content: ''; position: absolute; inset: 0; z-index: 0; background: rgba(20, 20, 18, 0.88); }
+  /* 0.96 (antes 0.88) desde el visor a pantalla completa (10/11/2026): con el medio
+     ocupando toda la pantalla, la página de detrás se colaba junto al pie y ensuciaba el
+     encuadre. Sigue siendo el ::before del arreglo de Android, que no se toca. */
+  .pz-lightbox::before { content: ''; position: absolute; inset: 0; z-index: 0; background: rgba(20, 20, 18, 0.96); }
   /* z-index 2 (antes auto): al dar contexto de apilamiento a .pz-lb-inner, sin esto el
      botón de cerrar se quedaría DEBAJO del contenido, y en un móvil en vertical el vídeo
      llega a la esquina superior derecha. Las flechas ya tenían su z-index 2. */
