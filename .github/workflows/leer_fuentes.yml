@@ -46,6 +46,10 @@ jobs:
             rm -f "fuentes/$n.bin" "fuentes/$n.txt"
           done
           wc -c fuentes/*.md
+      # El texto también va al registro: desde la sesión de trabajo los artefactos no se
+      # pueden descargar (su almacenamiento está bloqueado), el registro sí se lee.
+      - name: Volcar el texto al registro
+        run: for f in fuentes/[0-9]*.md; do echo "=================== $f"; cat "$f"; echo; done
       - name: Guardar el texto
         uses: actions/upload-artifact@v4
         with:
