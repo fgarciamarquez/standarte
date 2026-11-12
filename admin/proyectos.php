@@ -41,7 +41,15 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	$row['client_email'] = post('client_email');
 	$row['title_es'] = post('title_es');
 	$row['title_en'] = post('title_en');
-	if (post('interlocutor_email') !== '') $row['interlocutor_email'] = post('interlocutor_email');
+	/* Interlocutor: solo direcciones del equipo (@standarte.es). Se escribía aquí el correo
+	 * del cliente (Rocacorba, Cámara de Don Benito ×2) y los avisos internos —«X ha abierto
+	 * el proyecto», comentarios, aprobación— le llegaban al cliente (12/11/2026). Una
+	 * dirección ajena se ignora y queda la de la plantilla (CPX_TEAM_MAIL). */
+	$interIgnorado = '';
+	if (post('interlocutor_email') !== '') {
+		if (cpx_is_team_email(post('interlocutor_email'))) $row['interlocutor_email'] = post('interlocutor_email');
+		else $interIgnorado = post('interlocutor_email');
+	}
 	// Sinopsis (HTML enriquecido del editor del formulario), limpiada con lista blanca.
 	$row['synopsis_es'] = cpx_clean_html(isset($_POST['synopsis_es']) ? $_POST['synopsis_es'] : '');
 	// Evento (feria o congreso) con el que se relaciona el proyecto: se guarda SOLO el
@@ -57,7 +65,8 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	$row['access_token'] = $token;
 	$row['status'] = 'draft';
 	cpx_sb('POST', 'client_projects', $row);
-	header('Location: proyectos.php?msg=' . urlencode('Proyecto creado. Ábrelo desde la lista para completarlo (edición en su propia página).')); exit;
+	header('Location: proyectos.php?msg=' . urlencode('Proyecto creado. Ábrelo desde la lista para completarlo (edición en su propia página).'
+		. ($interIgnorado !== '' ? ' Ojo: el email de interlocutor «' . $interIgnorado . '» no es de @standarte.es y se ha ignorado; los avisos internos irán a ' . $row['interlocutor_email'] . '.' : ''))); exit;
 }
 
 /* ---------- Duplicar proyecto ----------
@@ -430,7 +439,10 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 			<small style="grid-column:1/3;color:#8a8779;font-size:12px;line-height:1.4;">Varios proyectos con el <strong>mismo nombre de cliente y el mismo email</strong> quedan enlazados entre sí (al pie de cada uno y en el aviso de publicación), con miniatura, para comparar propuestas. Si pones varias direcciones, deben coincidir todas; solo se enlazan los ya comunicados al cliente.</small>
 			<input name="title_es" placeholder="Título ES">
 			<input name="title_en" placeholder="Título EN">
-			<input name="interlocutor_email" placeholder="Email interlocutor (opc.)">
+			<!-- autocomplete="off": el autorrelleno del navegador escribía aquí el email del
+			     cliente, y los avisos internos acababan en su buzón (12/11/2026). Además el
+			     servidor solo acepta direcciones de @standarte.es. -->
+			<input name="interlocutor_email" type="email" autocomplete="off" placeholder="Email interlocutor de Standarte (opc., @standarte.es)">
 			<div style="grid-column:1/3" class="re-field">
 				<label for="re-synopsis">Sinopsis</label>
 				<div class="re-bar" data-for="re-synopsis" role="toolbar" aria-label="Formato">

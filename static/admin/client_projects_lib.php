@@ -14,6 +14,19 @@
  * se habrá quedado en la última cifra comunicada antes del apagado. */
 if (!defined('CPX_CHANGE_NOTICES')) define('CPX_CHANGE_NOTICES', false);
 
+/* AVISOS INTERNOS: SOLO AL EQUIPO, NUNCA A UN CLIENTE (12/11/2026, decisión del usuario:
+ * «"X ha abierto el proyecto" sólo debe llegarme a mí, nunca a los clientes»).
+ * Los avisos internos (visita, comentarios del cliente, aprobación, opción) iban al
+ * interlocutor_email del proyecto, y en cuatro proyectos ese campo tenía la dirección del
+ * CLIENTE: las dos de la Cámara de Don Benito y Rocacorba (escrita así al darlas de alta), y
+ * LONTEX OPCIÓN 2, que al duplicarse de Rocacorba heredó la dirección de OTRA clienta, que
+ * recibió los avisos de Lontex con el botón al proyecto y el correo de su clienta. Además el
+ * cliente veía esa dirección como «interlocutor» en su página. Ahora: el aviso de visita va
+ * siempre a CPX_TEAM_MAIL; los demás avisos internos, al interlocutor solo si TODAS sus
+ * direcciones son de @standarte.es, y si no a CPX_TEAM_MAIL. Y el campo no admite una
+ * dirección ajena al alta, al duplicar ni al editar (cpx_is_team_email). */
+if (!defined('CPX_TEAM_MAIL')) define('CPX_TEAM_MAIL', 'javier@standarte.es');
+
 if (!function_exists('cpx_key')) {
 
 	function cpx_key() { return defined('SUPABASE_SERVICE_KEY') ? SUPABASE_SERVICE_KEY : SUPABASE_KEY; }
@@ -317,6 +330,9 @@ if (!function_exists('cpx_key')) {
 		foreach (array('title_es', 'title_en') as $k) {
 			if (isset($overrides[$k]) && trim($overrides[$k]) !== '') $row[$k] = trim($overrides[$k]);
 		}
+		/* El interlocutor del origen solo se hereda si es del equipo: LONTEX OPCIÓN 2 se
+		 * duplicó de Rocacorba y heredó la dirección de esa otra clienta (12/11/2026). */
+		if (!cpx_is_team_email(isset($row['interlocutor_email']) ? $row['interlocutor_email'] : '')) $row['interlocutor_email'] = CPX_TEAM_MAIL;
 
 		$r = cpx_sb('POST', 'client_projects', $row);
 		if ((int) $r['code'] >= 300 || !isset($r['body'][0]['id'])) {
@@ -726,6 +742,19 @@ if (!function_exists('cpx_key')) {
 	 * devuelve la lista de direcciones válidas, sin repetidas y en el orden escrito; una
 	 * cadena vacía o basura devuelve lista vacía, que es lo que miran los avisos para
 	 * decidir si hay a quién escribir. */
+	/* ¿Son TODAS las direcciones del equipo (@standarte.es)? Vacío o inválido: no. */
+	function cpx_is_team_email($raw) {
+		$list = cpx_emails($raw);
+		if (!$list) return false;
+		foreach ($list as $e) { if (!preg_match('/@standarte\.es$/i', $e)) return false; }
+		return true;
+	}
+	/* Destinatario de un aviso INTERNO: el interlocutor si es del equipo; si no, CPX_TEAM_MAIL.
+	 * Nunca devuelve una dirección de fuera de @standarte.es. */
+	function cpx_internal_recipient($interEmail) {
+		return cpx_is_team_email($interEmail) ? implode(', ', cpx_emails($interEmail)) : CPX_TEAM_MAIL;
+	}
+
 	function cpx_emails($raw) {
 		$out = array();
 		foreach (preg_split('/[,;\s]+/', (string) $raw) as $e) {

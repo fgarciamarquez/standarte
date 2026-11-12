@@ -202,7 +202,7 @@ if ($role === 'approved') {
 	$when = !empty($p['approved_at']) ? date('d/m/Y H:i', strtotime($p['approved_at'])) : date('d/m/Y H:i');
 	$conOferta = !empty($p['approved_with_offer']) ? ' (con oferta por pronta decisión)' : '';
 
-	$to = ($interEmail !== '' && filter_var($interEmail, FILTER_VALIDATE_EMAIL)) ? $interEmail : 'info@standarte.es';
+	$to = cpx_internal_recipient($interEmail);   // aviso interno: nunca a un cliente (12/11/2026)
 	$subject = 'Presupuesto APROBADO — ' . $p['ref'] . ' · ' . $clientName . ' · ' . number_format($totalAp, 2, ',', '.') . ' €';
 	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> ha APROBADO el presupuesto del proyecto <strong>'
 		. htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>' . $conOferta . ' el ' . $when . '.';
@@ -214,7 +214,7 @@ if ($role === 'approved') {
 	 * página ya no llama; esto responde a quien llame directamente. Interruptor único en
 	 * client_projects_lib.php (CPX_CHANGE_NOTICES), junto a «mejor precio» y «fechas». */
 	if (!CPX_CHANGE_NOTICES) { echo json_encode(array('ok' => false, 'error' => 'disabled')); exit; }
-	$to = $interEmail;
+	$to = cpx_internal_recipient($interEmail);   // aviso interno: nunca a un cliente (12/11/2026)
 	$optId = pn_post('item_id');
 	$opt = null;
 	if (!empty($p['budget']) && is_array($p['budget'])) {
@@ -238,12 +238,14 @@ if ($role === 'approved') {
 	$commentsHtml = '';
 	$firstImgOpt = '';
 } elseif ($role === 'client') {
-	$to = $interEmail;
+	$to = cpx_internal_recipient($interEmail);   // aviso interno: nunca a un cliente (12/11/2026)
 	$subject = 'Nuevos comentarios de ' . $clientName . ' — ' . $p['ref'];
 	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> ha enviado comentarios sobre el proyecto <strong>' . htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>.';
 } elseif ($role === 'visit') {
-	/* Aviso interno de "visto": sin hilo de comentarios ni imagen, solo el hecho. */
-	$to = $interEmail;
+	/* Aviso interno de "visto": sin hilo de comentarios ni imagen, solo el hecho. Va
+	 * SIEMPRE al equipo (CPX_TEAM_MAIL), nunca al interlocutor guardado ni a un cliente:
+	 * decisión del usuario del 12/11/2026, tras saber que un cliente lo recibía. */
+	$to = CPX_TEAM_MAIL;
 	$subject = ($clientName !== '' ? $clientName . ' ha abierto el proyecto' : 'El cliente ha abierto el proyecto') . ' — ' . $p['ref'];
 	$intro = '<strong>' . htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8') . '</strong> acaba de abrir la presentación del proyecto <strong>' . htmlspecialchars($p['ref'], ENT_QUOTES, 'UTF-8') . '</strong>.';
 	$commentsHtml = '';

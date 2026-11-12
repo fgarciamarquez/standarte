@@ -182,6 +182,9 @@ if ($action === 'save') {
 	$plain = array('ref', 'client_name', 'client_email', 'title_es', 'title_en', 'memoria_es', 'memoria_en',
 		'interlocutor_name', 'interlocutor_email', 'income_account', 'bic_code');
 	foreach ($plain as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
+	/* El interlocutor solo admite direcciones del equipo: es el destino de los avisos
+	 * internos y el contacto que ve el cliente (12/11/2026, ver CPX_TEAM_MAIL). */
+	if (isset($fields['interlocutor_email']) && !cpx_is_team_email($fields['interlocutor_email'])) unset($fields['interlocutor_email']);
 	foreach (array('includes_es', 'includes_en', 'excludes_es', 'excludes_en') as $k) {
 		if (isset($_POST[$k])) $fields[$k] = cpx_lines_to_array($_POST[$k]);
 	}
