@@ -21,11 +21,19 @@
  *    conversiones indicativas al cambio del BCE del día de emisión, y una cláusula deja
  *    la conversión a otras monedas a cargo del cliente. Si el tipo de cambio no se
  *    puede obtener, el contrato sale solo en euros y el panel lo avisa.
- *  - 80 % de anticipo y 20 % a la entrega, fijos por ahora (decisión del 2026-09-05).
+ *  - Forma de pago (cláusula D): SIEMPRE la del reparto del proyecto (payment_split), la
+ *    misma regla con la que se emiten las facturas (payment_lib.php): «100» es un pago
+ *    único por adelantado, dos tramos son anticipo y resto a la entrega, y vacío es el
+ *    80/20 por defecto. Hasta el 13/11/2026 el contrato NO leía el reparto: si el proyecto
+ *    no tenía texto libre de forma de pago imprimía un 80/20 fijo, y el contrato de 31C
+ *    (reparto «100») salió así y se envió. Si además hay texto libre, se imprime junto a los
+ *    importes del reparto, y si sus porcentajes no son los del reparto el contrato no se
+ *    emite. Prueba local: php scripts/probar_contrato.php
  *
  * Requiere supabase-config.php y client_projects_lib.php ya incluidos.
  */
 require_once __DIR__ . '/lib/fpdf.php';
+require_once __DIR__ . '/payment_lib.php';   // reparto del pago: la MISMA regla que usan las facturas
 
 /* ---------- Textos del contrato (es / en) ---------- */
 /* ---------- Póliza de responsabilidad civil ----------
@@ -75,12 +83,18 @@ function cpx_contract_texts($lang) {
 			'Hsec' => 'H. STANDARTE, como Proveedor de servicios, deberá cumplir estrictamente con las normativas de seguridad pertinentes durante el proceso de construcción para garantizar la seguridad de la misma. Si ocurriera algún accidente de seguridad debido a la construcción por parte del Proveedor de servicios, causando daños a cualquier propiedad o a la seguridad personal, el Proveedor de servicios asumirá toda la responsabilidad.',
 			'Hsec_ins' => 'A tal efecto, STANDARTE tiene suscrita una póliza de seguro de responsabilidad civil general con %1$s, número %2$s, con un límite de %3$s por siniestro y por anualidad de seguro, en vigor hasta el %4$s.',
 			'C' => 'C. El coste total del servicio es de %s%s. En caso de modificación del plan de servicios, ambas partes acuerdan enmendar el contrato para sustituir o complementar el presente acuerdo.',
-			'D' => 'D. %s abonará por adelantado el 80 %% del importe (%s%s) mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte)%s. El pago final del 20 %% restante (%s) se realizará una vez entregado el proyecto en %s.',
+			/* Cláusula D: sale del reparto del proyecto (ver cpx_contract_payment_clause).
+			 * D_single = pago único («100»); D_two = anticipo + resto a la entrega, con los
+			 * porcentajes del reparto (con 80/20 es, palabra por palabra, la de siempre). */
+			'D_single' => 'D. %1$s abonará por adelantado el 100 %% del importe (%2$s) mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte)%3$s.',
+			'D_two' => 'D. %1$s abonará por adelantado el %2$s %% del importe (%3$s) mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte)%4$s. El pago final del %5$s %% restante (%6$s) se realizará una vez entregado el proyecto en %7$s.',
 			'D_account' => ', en la cuenta %s (BIC %s)',
 			'D_where_fallback' => 'el recinto de la feria',
-			/* Cuando el proyecto tiene forma de pago propia, la clausula D la recoge tal cual
-			 * en lugar del 80/20 por defecto. */
+			/* Cuando el proyecto tiene forma de pago escrita, la cláusula D la recoge tal cual
+			 * y añade los importes del reparto, que son los que se facturan. */
 			'D_custom' => 'D. %s abonará el importe conforme a la forma de pago acordada entre las partes: %s%s.',
+			'D_amounts_single' => 'Importe: un único pago del 100 %% (%s).',
+			'D_amounts_two' => 'Importes: un primer pago del %1$s %% (%2$s) y un segundo pago del %3$s %% restante (%4$s).',
 			'E' => 'E. Los importes en dólares estadounidenses y libras esterlinas son conversiones orientativas al tipo de cambio del %s (fuente: Banco Central Europeo). El importe contractual es el expresado en euros. Si el cliente opera en una moneda distinta de las indicadas —por ejemplo, el peso mexicano—, será responsable de realizar la conversión a su moneda y de que los ingresos en euros sean correctos, asumiendo las diferencias de cambio y las comisiones bancarias.',
 			'E_norates' => 'E. El importe contractual es el expresado en euros. Si el cliente opera en otra moneda —por ejemplo, el dólar estadounidense, la libra esterlina o el peso mexicano—, será responsable de realizar la conversión a su moneda y de que los ingresos en euros sean correctos, asumiendo las diferencias de cambio y las comisiones bancarias.',
 			'F' => 'F. Ambas partes se comprometen a reunirse y a facilitarse mutuamente —o a las entidades colaboradoras externas— toda la información necesaria para la ejecución de los trabajos.',
@@ -99,6 +113,7 @@ function cpx_contract_texts($lang) {
 			'doc_title' => 'Contrato de prestación de servicios · %s',
 			'mail_subject' => 'Contrato de su proyecto %s — Standarte',
 			'mail_body' => 'Le adjuntamos el contrato de prestación de servicios de su proyecto <strong>%s</strong> (%s), redactado con los datos que nos facilitó al aprobar la propuesta. Va sellado electrónicamente por Standarte con el código <strong>%s</strong>. Para formalizarlo, le rogamos que lo firme y nos lo devuelva por este mismo correo. Lo tiene también disponible en la Documentación de su proyecto.',
+			'mail_replaces' => 'Este contrato <strong>sustituye y deja sin efecto</strong> al que le enviamos el %s con el código %s: le rogamos que descarte aquel y tenga en cuenta únicamente este.',
 			'mail_button' => 'Abrir el proyecto',
 			'usd_fmt' => '%s US$', 'gbp_fmt' => '%s £'
 		),
@@ -119,10 +134,13 @@ function cpx_contract_texts($lang) {
 			'Hsec' => 'H. STANDARTE, as the Service Provider, shall strictly comply with the relevant safety regulations during the construction process in order to guarantee its safety. Should any safety accident occur as a result of the construction carried out by the Service Provider, causing damage to any property or to personal safety, the Service Provider shall assume full responsibility.',
 			'Hsec_ins' => 'To this end, STANDARTE holds a general civil liability insurance policy with %1$s, number %2$s, with a limit of %3$s per claim and per insurance year, in force until %4$s.',
 			'C' => 'C. The total cost of the service is %s%s. In the event of a modification to the service plan, both parties agree to amend the contract to replace or supplement this agreement.',
-			'D' => 'D. %s shall pay 80%% of the amount (%s%s) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer%s. The final payment of the remaining 20%% (%s) will be made after the project is delivered in %s.',
+			'D_single' => 'D. %1$s shall pay 100%% of the amount (%2$s) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer%3$s.',
+			'D_two' => 'D. %1$s shall pay %2$s%% of the amount (%3$s) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer%4$s. The final payment of the remaining %5$s%% (%6$s) will be made after the project is delivered in %7$s.',
 			'D_account' => ', to account %s (BIC %s)',
 			'D_where_fallback' => 'the fair venue',
 			'D_custom' => 'D. %s shall pay the amount according to the payment terms agreed between the parties: %s%s.',
+			'D_amounts_single' => 'Amount: a single payment of 100%% (%s).',
+			'D_amounts_two' => 'Amounts: a first payment of %1$s%% (%2$s) and a second payment of the remaining %3$s%% (%4$s).',
 			'E' => 'E. The amounts in US dollars and pounds sterling are indicative conversions at the exchange rate of %s (source: European Central Bank). The contractual amount is the amount expressed in euros. If the client operates in a currency other than those indicated —for example, the Mexican peso—, the client is responsible for converting to its own currency and for ensuring that the amounts credited in euros are correct, bearing any exchange differences and bank charges.',
 			'E_norates' => 'E. The contractual amount is the amount expressed in euros. If the client operates in another currency —for example, the US dollar, the pound sterling or the Mexican peso—, the client is responsible for converting to its own currency and for ensuring that the amounts credited in euros are correct, bearing any exchange differences and bank charges.',
 			'F' => 'F. Both parties agree to meet and provide each other—or external collaborating entities—with all information necessary for the execution of the work.',
@@ -141,6 +159,7 @@ function cpx_contract_texts($lang) {
 			'doc_title' => 'Service agreement · %s',
 			'mail_subject' => 'Service agreement for your project %s — Standarte',
 			'mail_body' => 'Please find attached the service agreement for your project <strong>%s</strong> (%s), drawn up with the details you provided when approving the proposal. It is electronically sealed by Standarte under code <strong>%s</strong>. To formalise it, please sign it and return it to us by replying to this email. It is also available in the Documents section of your project.',
+			'mail_replaces' => 'This agreement <strong>replaces and supersedes</strong> the one we sent you on %s under code %s: please disregard that one and refer only to this one.',
 			'mail_button' => 'Open the project',
 			'usd_fmt' => 'US$ %s', 'gbp_fmt' => '£ %s'
 		)
@@ -172,6 +191,7 @@ function cpx_money_all($eur, $rates, $lang) {
 }
 
 /* ---------- Tipos de cambio (BCE vía frankfurter.app; sin clave) ---------- */
+if (!function_exists('cpx_fetch_rates')) {   // la prueba local (scripts/probar_contrato.php) define un doble sin red
 function cpx_fetch_rates() {
 	$ch = curl_init('https://api.frankfurter.app/latest?from=EUR&to=USD,GBP');
 	curl_setopt_array($ch, array(CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 8, CURLOPT_FOLLOWLOCATION => true));
@@ -182,6 +202,7 @@ function cpx_fetch_rates() {
 	$j = json_decode($raw, true);
 	if (!isset($j['rates']['USD']) || !isset($j['rates']['GBP'])) return null;
 	return array('USD' => (float) $j['rates']['USD'], 'GBP' => (float) $j['rates']['GBP'], 'date' => isset($j['date']) ? $j['date'] : date('Y-m-d'), 'source' => 'ECB via frankfurter.app');
+}
 }
 
 /* ---------- Totales aprobados (misma regla que el aviso de aprobación) ---------- */
@@ -346,6 +367,45 @@ class StandarteContractPdf extends FPDF {
 	}
 }
 
+/* ---------- Cláusula D: la forma de pago ----------
+ * Sale SIEMPRE del reparto del proyecto ($d['plan'], de cpx_payment_plan): un pago único
+ * («100») o anticipo y resto a la entrega con los porcentajes escritos. Si el proyecto
+ * tiene además forma de pago en texto libre, se imprime ese texto —es la redacción que el
+ * cliente vio— seguido de los importes del reparto, que son los que se facturan; que el
+ * texto y el reparto no se contradigan lo comprueba cpx_contract_issue antes de llegar
+ * aquí. Devuelve el párrafo, para que la emisión, la vista previa y la prueba local lean
+ * exactamente lo mismo que se imprime. */
+function cpx_contract_payment_clause($d, $T) {
+	$lang = $d['lang'];
+	$plan = $d['plan'];
+	$acc = ($d['iban'] !== '') ? sprintf($T['D_account'], $d['iban'], $d['bic']) : '';
+	$first = cpx_money_all($plan['amounts'][0], $d['rates'], $lang);
+	$terms = isset($d['pay_terms']) ? trim((string) $d['pay_terms']) : '';
+	if ($terms !== '') {
+		$amounts = $plan['single']
+			? sprintf($T['D_amounts_single'], $first)
+			: sprintf($T['D_amounts_two'], cpx_split_pct($plan['pct'][0], $lang), $first, cpx_split_pct($plan['pct'][1], $lang), cpx_money($plan['amounts'][1], $lang, 'EUR'));
+		return sprintf($T['D_custom'], $d['client'], rtrim($terms, " \t\n\r.;"), $acc) . ' ' . $amounts;
+	}
+	if ($plan['single']) return sprintf($T['D_single'], $d['client'], $first, $acc);
+	return sprintf($T['D_two'], $d['client'], cpx_split_pct($plan['pct'][0], $lang), $first, $acc,
+		cpx_split_pct($plan['pct'][1], $lang), cpx_money($plan['amounts'][1], $lang, 'EUR'),
+		$d['fair_city'] !== '' ? $d['fair_city'] : $T['D_where_fallback']);
+}
+
+/* La misma forma de pago en una línea y en español, para el gestor: el mensaje del panel,
+ * la confirmación antes de emitir y el correo de prueba. */
+function cpx_contract_payment_summary($plan, $payTerms) {
+	$m = function ($n) { return number_format((float) $n, 2, ',', '.') . ' €'; };
+	if ($plan['single']) {
+		$s = ($payTerms !== '') ? 'un único pago del 100 % (' . $m($plan['amounts'][0]) . ')' : 'pago único del 100 % por adelantado (' . $m($plan['amounts'][0]) . ')';
+	} else {
+		$s = cpx_split_pct($plan['pct'][0]) . ' % ' . ($payTerms !== '' ? '' : 'por adelantado ') . '(' . $m($plan['amounts'][0]) . ') y '
+			. cpx_split_pct($plan['pct'][1]) . ' % ' . ($payTerms !== '' ? '' : 'a la entrega ') . '(' . $m($plan['amounts'][1]) . ')';
+	}
+	return ($payTerms !== '') ? 'la escrita en el proyecto («' . $payTerms . '»), con los importes del reparto: ' . $s : $s;
+}
+
 /* Compone el PDF y devuelve sus bytes. $d es el array de datos ya resuelto. */
 function cpx_contract_pdf($d) {
 	$T = cpx_contract_texts($d['lang']);
@@ -376,15 +436,7 @@ function cpx_contract_pdf($d) {
 	$pdf->Para(sprintf($T['A'], $d['client'], $d['fair'] . $where));
 	$pdf->Para($T['B'] . ' ' . (($d['ready'] !== '') ? sprintf($T['B_ready'], $d['ready']) : $T['B_ready_nodate']));
 	$pdf->Para(sprintf($T['C'], cpx_money_all($d['total'], $d['rates'], $d['lang']), ''));
-	$acc = ($d['iban'] !== '') ? sprintf($T['D_account'], $d['iban'], $d['bic']) : '';
-	/* Forma de pago: la que tenga escrita el proyecto; si no hay ninguna, el reparto
-	 * por defecto de 80 % por adelantado y 20 % a la entrega. */
-	$terms = isset($d['pay_terms']) ? trim((string) $d['pay_terms']) : '';
-	if ($terms !== '') {
-		$pdf->Para(sprintf($T['D_custom'], $d['client'], rtrim($terms, " \t\n\r.;"), $acc));
-	} else {
-		$pdf->Para(sprintf($T['D'], $d['client'], cpx_money_all($d['advance'], $d['rates'], $d['lang']), '', $acc, cpx_money($d['rest'], $d['lang'], 'EUR'), $d['fair_city'] !== '' ? $d['fair_city'] : $T['D_where_fallback']));
-	}
+	$pdf->Para(cpx_contract_payment_clause($d, $T));
 	$pdf->Para($d['rates'] ? sprintf($T['E'], date($d['lang'] === 'en' ? 'F j, Y' : 'd/m/Y', strtotime($d['rates']['date']))) : $T['E_norates']);
 	$pdf->Para($T['F']);
 	$pdf->Para($T['G']);
@@ -483,9 +535,44 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	$budget = cpx_budget_rows($projectId, 'amount', 'sort_order.asc');  // sin las opcionales no confirmadas
 	$tot = cpx_contract_totals($p, $budget);
 	if ($tot['total'] <= 0) $errors[] = 'el presupuesto aprobado es 0';
+
+	/* Forma de pago: la del REPARTO del proyecto, que es con lo que se emiten las facturas.
+	 * Dos cosas impiden emitir, porque un contrato enviado con la condición equivocada ya no
+	 * se recoge: un reparto que no se entiende (no se adivina un 80/20) y un texto libre de
+	 * forma de pago cuyos porcentajes no son los del reparto. */
+	$lang = (isset($p['approved_lang']) && $p['approved_lang'] === 'en') ? 'en' : 'es';
+	$split = cpx_payment_split($p);
+	$payTerms = trim((string) (isset($p['payment_terms_' . $lang]) ? $p['payment_terms_' . $lang] : ''));
+	if ($split['error'] !== '') {
+		$errors[] = 'el reparto de pago «' . trim((string) $p['payment_split']) . '» no es válido (se admite «100» o dos tramos que sumen 100, como «80/20»): corrígelo en la forma de pago del proyecto antes de emitir el contrato';
+	} else {
+		$conflict = cpx_payment_terms_conflict($payTerms, $split);
+		if ($conflict !== '') $errors[] = $conflict;
+	}
 	if ($errors) return array('ok' => false, 'errors' => $errors);
 
-	$lang = (isset($p['approved_lang']) && $p['approved_lang'] === 'en') ? 'en' : 'es';
+	$plan = cpx_payment_plan($split, $tot['total']);
+	$summary = cpx_contract_payment_summary($plan, $payTerms);
+	if (!empty($split['default'])) $warnings[] = 'el proyecto no tiene reparto de pago escrito: el contrato sale con el 80/20 por defecto';
+	$iban = trim((string) (isset($p['income_account']) ? $p['income_account'] : ''));
+	$bic = trim((string) (isset($p['bic_code']) ? $p['bic_code'] : ''));
+	$fairCity = isset($fair['city']) ? $fair['city'] : '';
+	/* ¿Hay ya un contrato emitido? Entonces este lo sustituye (ver más abajo). */
+	$prev = !empty($p['contract_code'])
+		? array('code' => $p['contract_code'], 'issued_at' => isset($p['contract_issued_at']) ? $p['contract_issued_at'] : null, 'state' => isset($p['contract_state']) ? $p['contract_state'] : '')
+		: null;
+
+	/* Vista previa: qué dirá la cláusula de pago y a quién se enviará, sin generar ni
+	 * guardar ni mandar nada. Es lo que el gestor confirma ANTES de emitir (los importes
+	 * salen solo en euros: los tipos de cambio se piden al emitir). */
+	if (!empty($opts['preview'])) {
+		$Tp = cpx_contract_texts($lang);
+		return array('ok' => true, 'preview' => true, 'lang' => $lang, 'total' => $tot['total'], 'email' => $email,
+			'clause' => cpx_contract_payment_clause(array('lang' => $lang, 'client' => $client, 'plan' => $plan, 'rates' => null, 'iban' => $iban, 'bic' => $bic, 'fair_city' => $fairCity, 'pay_terms' => $payTerms), $Tp),
+			'summary' => $summary, 'split' => cpx_split_label($split), 'split_default' => !empty($split['default']),
+			'replaces' => $prev, 'warnings' => $warnings);
+	}
+
 	$issued = time();
 	$rates = cpx_fetch_rates();
 	if (!$rates) $warnings[] = 'no se pudo obtener el tipo de cambio: el contrato sale solo en euros';
@@ -531,16 +618,16 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	$d = array(
 		'lang' => $lang, 'ref' => $p['ref'], 'issued' => $issued, 'code' => $code,
 		'client' => $client, 'client_id' => trim((string) (isset($p['billing_cif']) ? $p['billing_cif'] : '')), 'address' => $address !== '' ? $address : '—',
-		'fair' => $fairName, 'fair_city' => isset($fair['city']) ? $fair['city'] : '',
+		'fair' => $fairName, 'fair_city' => $fairCity,
 		'ready' => $readyDate,
-		'total' => $tot['total'], 'advance' => round($tot['total'] * 0.8, 2), 'rest' => round($tot['total'] - round($tot['total'] * 0.8, 2), 2),
-		'rates' => $rates, 'iban' => trim((string) (isset($p['income_account']) ? $p['income_account'] : '')), 'bic' => trim((string) (isset($p['bic_code']) ? $p['bic_code'] : '')),
+		'total' => $tot['total'], 'plan' => $plan,
+		'rates' => $rates, 'iban' => $iban, 'bic' => $bic,
 		'image' => $image, 'images' => $images, 'logo' => is_readable($logo) ? $logo : null,
-		'pay_terms' => trim((string) (isset($p['payment_terms_' . $lang]) ? $p['payment_terms_' . $lang] : '')),
+		'pay_terms' => $payTerms,
 		'watermark' => is_readable(__DIR__ . '/lib/logo-marca-agua.png') ? __DIR__ . '/lib/logo-marca-agua.png' : null
 	);
 	$pdfBytes = cpx_contract_pdf($d);
-	if ($image) @unlink($image['file']);
+	foreach ($images as $im) @unlink($im['file']);   // antes solo se borraba la primera y el resto se quedaba en /tmp
 
 	/* Correo al cliente: adjunto + enlace a su proyecto (se compone ya para poder mandarlo
 	 * tal cual a Javier en modo prueba). */
@@ -550,6 +637,9 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
 		. "<p style='margin:0 0 16px;'>" . sprintf($T['mail_body'], $h($p['title_' . $lang] !== '' ? $p['title_' . $lang] : $p['ref']), $h($p['ref']), $h($code)) . "</p>"
+		/* Reemisión: el cliente ya tiene otro contrato en su correo; hay que decirle cuál vale. */
+		. ($prev ? "<p style='margin:0 0 16px;'>" . sprintf($T['mail_replaces'],
+			$h(!empty($prev['issued_at']) ? date($lang === 'en' ? 'F j, Y' : 'd/m/Y', strtotime($prev['issued_at'])) : '—'), '<strong>' . $h($prev['code']) . '</strong>') . "</p>" : '')
 		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
 		. "<p style='margin:28px 0 0;'>" . ($lang === 'en' ? 'Best regards,<br><strong>The Standarte team</strong>' : 'Un cordial saludo,<br><strong>Equipo de Standarte</strong>') . "</p>"
 		. "</body></html>";
@@ -562,8 +652,9 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	if (!empty($opts['dry_run'])) {
 		$warnings[] = 'el código ' . $code . ' es de prueba y no se verifica en verificar.php';
 		$att[0]['name'] = 'PRUEBA-' . $att[0]['name'];
-		$sent = cpx_test_mail($subject, $p, $email, $html, $att[0], $warnings);
-		return array('ok' => true, 'dry_run' => true, 'code' => $code, 'lang' => $lang, 'total' => $tot['total'], 'email' => CPX_ADMIN_MAIL, 'sent' => $sent, 'warnings' => $warnings);
+		$sent = cpx_test_mail($subject, $p, $email, $html, $att[0], array_merge(array('forma de pago del contrato: ' . $summary), $warnings));
+		return array('ok' => true, 'dry_run' => true, 'code' => $code, 'lang' => $lang, 'total' => $tot['total'], 'email' => CPX_ADMIN_MAIL, 'sent' => $sent, 'warnings' => $warnings,
+			'summary' => $summary, 'clause' => cpx_contract_payment_clause($d, $T));
 	}
 
 	/* Guardar en la Documentación privada del proyecto. */
@@ -577,11 +668,36 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	$ins = cpx_sb('POST', 'client_project_docs', array('project_id' => $projectId, 'kind' => 'contrato', 'title' => $title, 'path' => $path, 'size_bytes' => strlen($pdfBytes)));
 	if ((int) $ins['code'] >= 300) { cpx_storage_delete_object($path, 'client-docs'); return array('ok' => false, 'errors' => array('no se pudo registrar el documento (' . $ins['code'] . ')')); }
 
+	/* Códigos que este contrato deja sin efecto: el anterior y los que aquel ya sustituyó. */
+	$replaces = array();
+	$pm = (isset($p['contract_meta']) && is_array($p['contract_meta'])) ? $p['contract_meta'] : array();
+	if (!empty($pm['replaces']) && is_array($pm['replaces'])) {
+		foreach ($pm['replaces'] as $x) { if (is_array($x) && !empty($x['code'])) $replaces[] = array('code' => (string) $x['code'], 'issued_at' => isset($x['issued_at']) ? $x['issued_at'] : null); }
+	}
+	if ($prev) $replaces[] = array('code' => $prev['code'], 'issued_at' => $prev['issued_at']);
+
 	/* Anotar el sello en el proyecto: es lo que verifica verificar.php. */
 	cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), array(
 		'contract_code' => $code, 'contract_issued_at' => gmdate('c', $issued),
-		'contract_meta' => array('lang' => $lang, 'total_eur' => $tot['total'], 'advance_eur' => $d['advance'], 'rates' => $rates, 'client' => $client, 'fair' => $fairName, 'path' => $path)
+		'contract_meta' => array('lang' => $lang, 'total_eur' => $tot['total'],
+			/* La forma de pago que lleva ESTE contrato, para poder cotejarla después. */
+			'split' => cpx_split_label($split), 'split_default' => !empty($split['default']), 'pay_terms' => $payTerms,
+			'advance_eur' => $plan['amounts'][0], 'rest_eur' => $plan['single'] ? 0 : $plan['amounts'][1],
+			'rates' => $rates, 'client' => $client, 'fair' => $fairName, 'path' => $path, 'replaces' => $replaces)
 	));
+
+	/* Reemisión: los contratos anteriores GENERADOS por el sistema salen de la Documentación,
+	 * para que el cliente no tenga dos contratos distintos a la vista (su código deja de
+	 * verificarse como vigente: verificar.php lo da por sustituido). Los PDF subidos a mano
+	 * —p. ej. el contrato firmado que devuelve el cliente— llevan otra ruta y no se tocan. */
+	$retired = 0;
+	foreach (cpx_rows('client_project_docs?project_id=eq.' . urlencode($projectId) . '&kind=eq.contrato&select=id,path') as $o) {
+		if (empty($o['id']) || empty($o['path']) || $o['path'] === $path) continue;
+		if (!preg_match('#^' . preg_quote($projectId, '#') . '/docs/contrato-sc-\d{4}-[0-9a-f]{8}\.pdf$#', $o['path'])) continue;
+		$del = cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($o['id']) . '&project_id=eq.' . urlencode($projectId));
+		if ((int) $del['code'] < 300) { cpx_storage_delete_object($o['path'], 'client-docs'); $retired++; }
+		else $warnings[] = 'no se pudo retirar de la Documentación el contrato anterior (' . basename($o['path']) . '): bórralo a mano';
+	}
 
 	/* Enviar al cliente y, en copia, a Javier: así el emisor conserva lo que ha mandado
 	 * sin tener que entrar al proyecto. */
@@ -599,5 +715,6 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	} catch (Exception $e) { $sent = false; }
 	if (!$sent) $warnings[] = 'el contrato se ha generado y guardado, pero el correo al cliente NO ha salido (revisa SMTP)';
 
-	return array('ok' => true, 'code' => $code, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $tot['total'], 'warnings' => $warnings);
+	return array('ok' => true, 'code' => $code, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $tot['total'], 'warnings' => $warnings,
+		'summary' => $summary, 'clause' => cpx_contract_payment_clause($d, $T), 'replaced' => $prev ? $prev['code'] : '', 'retired' => $retired);
 }

@@ -19,8 +19,20 @@ if ($valid) {
 	$rows = cpx_rows('client_projects?contract_code=eq.' . urlencode($code) . '&select=ref,billing_company,client_name,contract_issued_at,contract_meta&limit=1');
 	$p = isset($rows[0]) ? $rows[0] : null;
 }
-$meta = ($p && is_array($p['contract_meta'])) ? $p['contract_meta'] : array();
+/* ¿Es el código de un contrato que Standarte SUSTITUYÓ por otro posterior? Al reemitir, el
+ * contrato nuevo anota en contract_meta.replaces los códigos que deja sin efecto. Quien
+ * tenga el PDF antiguo debe leer «sustituido», no «no encontrado» (como si fuera falso) ni
+ * «auténtico» (como si siguiera en vigor). Solo se dice eso: ni referencia ni importes. */
+$superseded = null;
+if ($valid && !$p) {
+	$rows = cpx_rows('client_projects?contract_meta=cs.' . rawurlencode(json_encode(array('replaces' => array(array('code' => $code))))) . '&select=contract_meta&limit=1');
+	if (isset($rows[0]) && is_array($rows[0])) $superseded = $rows[0];
+}
+$meta = ($p && is_array($p['contract_meta'])) ? $p['contract_meta'] : (($superseded && is_array($superseded['contract_meta'])) ? $superseded['contract_meta'] : array());
 $lang = (isset($meta['lang']) && $meta['lang'] === 'en') ? 'en' : 'es';
+$S = $lang === 'en'
+	? array('h' => 'Contract replaced', 'sub' => 'This code belongs to a service agreement that Standarte later replaced with a new one. It is no longer in force: the valid document is the most recent one sent to the client.')
+	: array('h' => 'Contrato sustituido', 'sub' => 'Este código corresponde a un contrato de prestación de servicios que Standarte sustituyó después por otro nuevo. Ya no está en vigor: el documento válido es el último enviado al cliente.');
 $L = $lang === 'en'
 	? array('title' => 'Contract verification', 'ok' => 'Authentic document', 'ok_sub' => 'This code corresponds to a service agreement issued by Standarte.', 'ko' => 'Code not found', 'ko_sub' => 'No contract issued by Standarte carries this code. Check the characters or contact us.', 'code' => 'Code', 'ref' => 'Project', 'client' => 'Client', 'fair' => 'Event', 'issued' => 'Issued on', 'total' => 'Contract amount', 'lang' => 'Language', 'back' => 'standarte.es')
 	: array('title' => 'Verificación de contrato', 'ok' => 'Documento auténtico', 'ok_sub' => 'Este código corresponde a un contrato de prestación de servicios emitido por Standarte.', 'ko' => 'Código no encontrado', 'ko_sub' => 'Ningún contrato emitido por Standarte lleva este código. Revisa los caracteres o contacta con nosotros.', 'code' => 'Código', 'ref' => 'Proyecto', 'client' => 'Cliente', 'fair' => 'Evento', 'issued' => 'Emitido el', 'total' => 'Importe del contrato', 'lang' => 'Idioma', 'back' => 'standarte.es');
@@ -58,6 +70,10 @@ header('X-Robots-Tag: noindex');
 			<?php if (isset($meta['total_eur'])): ?><dt><?= vf_h($L['total']) ?></dt><dd><?= vf_h(number_format((float) $meta['total_eur'], 2, $lang === 'en' ? '.' : ',', $lang === 'en' ? ',' : '.')) ?> €</dd><?php endif; ?>
 			<dt><?= vf_h($L['lang']) ?></dt><dd><?= $lang === 'en' ? 'English' : 'Español' ?></dd>
 		</dl>
+	<?php elseif ($superseded): ?>
+		<h1>✕ <?= vf_h($S['h']) ?></h1>
+		<p class="sub"><?= vf_h($S['sub']) ?></p>
+		<dl><dt><?= vf_h($L['code']) ?></dt><dd class="code"><?= vf_h($code) ?></dd></dl>
 	<?php else: ?>
 		<h1>✕ <?= vf_h($L['ko']) ?></h1>
 		<p class="sub"><?= vf_h($L['ko_sub']) ?></p>

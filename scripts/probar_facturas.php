@@ -19,6 +19,7 @@ $repo = dirname(__DIR__);
 $tmp = rtrim(sys_get_temp_dir(), '/') . '/std-facturas-' . getmypid();
 @mkdir($tmp . '/email_campaing', 0777, true); @mkdir($tmp . '/out', 0777, true);
 copy($repo . '/static/admin/invoice_lib.php', $tmp . '/invoice_lib.php');
+copy($repo . '/static/admin/payment_lib.php', $tmp . '/payment_lib.php');   // el reparto del pago vive ahí desde el 13/11/2026 (lo comparte el contrato)
 if (!file_exists($tmp . '/lib')) symlink($repo . '/static/admin/lib', $tmp . '/lib');
 file_put_contents($tmp . '/email_campaing/mailer.php', "<?php\nfunction campaign_send_smtp(\$cfg, \$to, \$subject, \$html, \$att = array()) { \$GLOBALS['MAILS'][] = array('to' => \$to, 'subject' => \$subject, 'html' => \$html, 'att' => array_map(function (\$a) { return \$a['name']; }, \$att)); return true; }\n");
 file_put_contents($tmp . '/email_campaing/config.php', "<?php return array('stub' => true);\n");

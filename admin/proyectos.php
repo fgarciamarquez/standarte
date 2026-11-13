@@ -129,6 +129,8 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 			$m = 'Contrato emitido en ' . ($res['lang'] === 'en' ? 'inglés' : 'español') . ' con el sello ' . $res['code']
 				. ' (' . number_format($res['total'], 2, ',', '.') . ' €)'
 				. ($res['sent'] ? ' y enviado a ' . $res['email'] : '')
+				. '. Forma de pago: ' . $res['summary']
+				. (!empty($res['replaced']) ? '. Sustituye al contrato ' . $res['replaced'] . ', que sale de la Documentación' : '')
 				. '. Está en la Documentación del proyecto.'
 				. (!empty($res['warnings']) ? ' Avisos: ' . implode('; ', $res['warnings']) . '.' : '');
 			header('Location: proyectos.php?msg=' . urlencode($m)); exit;
@@ -156,7 +158,7 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 	$f = cpx_invoice_issue($id, 1, '', array('dry_run' => true));
 	$parts = array();
 	$parts[] = empty($c['ok']) ? 'Contrato: no se pudo generar (' . implode('; ', $c['errors']) . ')'
-		: 'Contrato de prueba en ' . ($c['lang'] === 'en' ? 'inglés' : 'español') . ' por ' . number_format($c['total'], 2, ',', '.') . ' €' . ($c['sent'] ? ' enviado' : ' generado pero el correo NO ha salido (revisa SMTP)')
+		: 'Contrato de prueba en ' . ($c['lang'] === 'en' ? 'inglés' : 'español') . ' por ' . number_format($c['total'], 2, ',', '.') . ' €, forma de pago: ' . $c['summary'] . ($c['sent'] ? '; enviado' : '; generado pero el correo NO ha salido (revisa SMTP)')
 			. (!empty($c['warnings']) ? ' [avisos: ' . implode('; ', $c['warnings']) . ']' : '');
 	$parts[] = empty($f['ok']) ? 'Factura 1: no se pudo generar (' . implode('; ', $f['errors']) . ')'
 		: 'Factura 1 de prueba por ' . number_format($f['total'], 2, ',', '.') . ' €' . ($f['sent'] ? ' enviada' : ' generada pero el correo NO ha salido (revisa SMTP)')
@@ -230,15 +232,28 @@ function status_toggle($p, $field) {
 	$siguiente = array('pendiente' => 'emitido', 'emitido' => 'cursado', 'cursado' => 'pendiente');
 	$estado = isset($p[$field]) && isset($estados[$p[$field]]) ? $p[$field] : 'pendiente';
 	$esFactura = ($field === 'invoice_state' || $field === 'invoice2_state');
+	/* Los porcentajes salen del reparto de pago del PROYECTO (payment_split), el mismo
+	 * que usan el contrato y las facturas: antes estas etiquetas decían «80 %» y «20 %»
+	 * fijos, también en un proyecto de pago único. */
+	$split = cpx_payment_split($p);
+	$unica = count($split['pct']) === 1;
+	$cual = $unica ? 'única (100 %)'
+		: (($field === 'invoice2_state') ? '2 (' . cpx_split_pct($split['pct'][1]) . ' % restante)' : '1 (' . cpx_split_pct($split['pct'][0]) . ' % de anticipo)');
+	/* Pago único: no hay segunda factura que emitir. */
+	if ($field === 'invoice2_state' && $unica && $estado === 'pendiente') {
+		return '<span class="st st-off st-ro" title="Pago único (reparto 100): este proyecto lleva una sola factura">—</span>';
+	}
 	/* La Factura 2 no se puede emitir hasta que la 1 esté cobrada («Cursado»). */
 	if ($field === 'invoice2_state' && $estado === 'pendiente' && (!isset($p['invoice_state']) || $p['invoice_state'] !== 'cursado')) {
 		return '<span class="st st-off st-ro st-locked" title="Se emite cuando la Factura 1 esté cursada (cobrada)">Pendiente</span>';
 	}
+	$emiteContrato = ($field === 'contract_state' && $estado === 'pendiente');
 	$titulo = ($esFactura && $estado === 'pendiente')
-		? 'Emitir la factura ' . ($field === 'invoice2_state' ? '2 (20 %)' : '1 (80 %)') . ': te pedirá el número'
-		: (($field === 'contract_state' && $estado === 'pendiente') ? 'Emitir el contrato y enviarlo al cliente' : 'Cambiar a «' . $estados[$siguiente[$estado]] . '»');
-	$ask = ($esFactura && $estado === 'pendiente') ? ' ask-number' : '';
-	return '<form method="post" class="st-form' . $ask . '" data-suggest="' . h(isset($GLOBALS['nextInvoice']) ? $GLOBALS['nextInvoice'] : '') . '">'
+		? 'Emitir la factura ' . $cual . ': te pedirá el número'
+		: ($emiteContrato ? 'Emitir el contrato y enviarlo al cliente: antes te enseña la cláusula de pago que llevará' : 'Cambiar a «' . $estados[$siguiente[$estado]] . '»');
+	$ask = ($esFactura && $estado === 'pendiente') ? ' ask-number' : ($emiteContrato ? ' ask-contract' : '');
+	return '<form method="post" class="st-form' . $ask . '" data-suggest="' . h(isset($GLOBALS['nextInvoice']) ? $GLOBALS['nextInvoice'] : '') . '"'
+		. ' data-cual="' . h($cual) . '" data-token="' . h($emiteContrato && isset($p['access_token']) ? $p['access_token'] : '') . '" data-ref="' . h(isset($p['ref']) ? $p['ref'] : '') . '">'
 		. '<input type="hidden" name="action" value="toggle_status">'
 		. '<input type="hidden" name="id" value="' . h($p['id']) . '">'
 		. '<input type="hidden" name="field" value="' . h($field) . '">'
@@ -260,7 +275,7 @@ function visit_badge($p) {
 	return '<span class="visit' . ($recent ? ' visit-recent' : '') . '" title="Última visita del cliente">' . $d->format('d/m H:i') . '</span>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,client_email,title_es,title_en,paid,approved,contract_state,invoice_state,invoice2_state,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,client_email,title_es,title_en,paid,approved,contract_state,invoice_state,invoice2_state,payment_split,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
 /* Duplicar: el proyecto de origen se elige en el desplegable del panel de arriba (la
  * fila ya no lleva enlace propio: duplicar se hace desde ahí). Se conserva ?dup=ID por
  * si se llega con un enlace guardado, y el recuento de conceptos/archivos de cada
@@ -527,7 +542,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		<h3>Proyectos</h3>
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, pincha el nombre del
 			cliente: al estar tu sesión iniciada, la propia página del proyecto se vuelve editable.</p>
-		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto). En <strong>Contrato</strong>, pasar a «Emitido» genera el contrato con los datos del proyecto y se lo envía al cliente. <strong>Prueba</strong> te manda solo a ti (javier@standarte.es) el contrato y la Factura 1 tal y como saldrían, sin guardar nada ni avisar al cliente.</p>
+		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto). En <strong>Contrato</strong>, pasar a «Emitido» genera el contrato con los datos del proyecto y se lo envía al cliente; antes te enseña la <strong>cláusula de pago</strong> que llevará (sale del reparto de pago del proyecto: 100, 50/50, 80/20…) y solo emite si aceptas. Para <strong>volver a emitir</strong> un contrato ya emitido, entra en el proyecto y pulsa «Generar contrato»: el nuevo sustituye al anterior. <strong>Prueba</strong> te manda solo a ti (javier@standarte.es) el contrato y la Factura 1 tal y como saldrían, sin guardar nada ni avisar al cliente.</p>
 		<div class="pj-list">
 			<div class="pj-head">
 				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura 1</span><span>Factura 2</span><span>Extras</span><span>Visto</span><span></span>
@@ -588,13 +603,48 @@ document.addEventListener('submit', function (e) {
   var campo = f.querySelector('input[name=invoice_number]');
   if (!campo || campo.value) return;
   e.preventDefault();
-  var cual = (f.querySelector('input[name=field]') || {}).value === 'invoice2_state' ? '2 (20 % restante)' : '1 (80 % anticipo)';
+  var cual = f.getAttribute('data-cual') || '';
   var n = window.prompt('Número de la factura ' + cual + ':', f.getAttribute('data-suggest') || '');
   if (n === null) return;
   n = n.trim();
   if (!n) { window.alert('Hace falta un número de factura.'); return; }
   campo.value = n;
   f.submit();
+});
+
+/* Emitir el CONTRATO enseña antes la cláusula de pago que llevará y a quién se envía, y
+   solo emite si se acepta. La cláusula la redacta el servidor con el mismo código que
+   imprime el PDF (acción contract_preview, que no genera ni guarda ni envía nada). Antes
+   este botón emitía y enviaba al primer clic, sin enseñar nada: el 13/11/2026 salió así un
+   contrato con 80/20 para un proyecto de pago único del 100 %. Si la vista previa falla,
+   NO se emite. */
+document.addEventListener('submit', function (e) {
+  var f = e.target;
+  if (!f.classList || !f.classList.contains('ask-contract')) return;
+  e.preventDefault();
+  var btn = f.querySelector('button');
+  if (btn) btn.disabled = true;
+  var fd = new FormData();
+  fd.append('action', 'contract_preview');
+  fd.append('token', f.getAttribute('data-token') || '');
+  fetch('ajax_proyecto_admin.php', { method: 'POST', body: fd, credentials: 'same-origin' })
+    .then(function (r) { return r.json(); })
+    .then(function (pv) {
+      if (!pv || !pv.ok || !pv.clause) {
+        window.alert('No se puede emitir el contrato de ' + (f.getAttribute('data-ref') || 'este proyecto') + ': ' + ((pv && (pv.detail || pv.error)) || 'el servidor no ha contestado') + '.');
+        return;
+      }
+      var t = ['Vas a EMITIR EL CONTRATO de ' + (f.getAttribute('data-ref') || 'este proyecto') + ' (' + (pv.lang === 'en' ? 'en inglés' : 'en español') + ') y a enviárselo al cliente.', '',
+        'Cláusula de pago que llevará (sale del reparto de pago del proyecto):', '«' + pv.clause + '»'];
+      if (pv.split_default) t.push('', 'OJO: el proyecto no tiene reparto de pago escrito; por eso sale el 80/20 por defecto.');
+      if (pv.replaces && pv.replaces.code) t.push('', 'SUSTITUYE al contrato ya emitido ' + pv.replaces.code + ': ese PDF se retira de la Documentación y el correo le dice al cliente que queda sin efecto.');
+      t.push('', 'Se enviará a: ' + pv.email, '', '¿Es correcto? Aceptar = emitir y enviar.');
+      if (window.confirm(t.join('\n'))) f.submit();
+    })
+    .catch(function () {
+      window.alert('No se ha podido comprobar la cláusula de pago del contrato (sin conexión o sesión caducada). NO se ha emitido nada: recarga la página y vuelve a intentarlo.');
+    })
+    .then(function () { if (btn) btn.disabled = false; });
 });
 </script>
 <?php endif; ?>

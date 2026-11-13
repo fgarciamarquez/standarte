@@ -25,6 +25,7 @@
  */
 require_once __DIR__ . '/lib/fpdf.php';
 if (!function_exists('cpx_fetch_rates')) require_once __DIR__ . '/contract_lib.php';   // tipos de cambio, dinero, totales
+require_once __DIR__ . '/payment_lib.php';   // reparto del pago: la MISMA regla que usa el contrato
 
 define('CPX_INVOICE_CC', 'javier@standarte.es');
 
@@ -134,30 +135,8 @@ function cpx_inv_labels($T, $am, $which) {
 	);
 }
 
-/* Reparto de la facturacion, en porcentajes, desde el campo payment_split del proyecto:
- * «100» -> una sola factura por el total; «50/50», «70/30», «80/20» -> dos tramos. Lo que
- * no encaje (vacio, tres tramos, numeros que no suman 100) cae al 80/20 de siempre y se
- * avisa, para no emitir importes que nadie ha decidido. Maximo dos tramos: es lo que
- * admite el modelo (invoice_state / invoice2_state). */
-function cpx_payment_split($p) {
-	$raw = trim((string) (isset($p['payment_split']) ? $p['payment_split'] : ''));
-	if ($raw === '') return array('pct' => array(80, 20), 'default' => true, 'error' => '');
-	$nums = array();
-	foreach (preg_split('/[^0-9.,]+/', $raw) as $x) {
-		$x = trim(str_replace(',', '.', $x));
-		if ($x === '') continue;
-		$nums[] = (float) $x;
-	}
-	$n = count($nums);
-	if ($n === 1 && abs($nums[0] - 100) < 0.01) {
-		return array('pct' => array(100), 'default' => false, 'error' => '');
-	}
-	if ($n === 2 && abs(($nums[0] + $nums[1]) - 100) < 0.01 && $nums[0] > 0 && $nums[1] > 0) {
-		return array('pct' => array($nums[0], $nums[1]), 'default' => false, 'error' => '');
-	}
-	return array('pct' => array(80, 20), 'default' => true,
-		'error' => 'el reparto «' . $raw . '» no es válido (se admite «100» o dos tramos que sumen 100): se factura 80/20');
-}
+/* El reparto de la facturación (cpx_payment_split) vive en payment_lib.php: es la misma
+ * regla que usa el contrato, para que los dos documentos no puedan decir cosas distintas. */
 
 /* Importes de la factura $which. El 20 % se calcula como resto exacto del total menos
  * lo facturado en la Factura 1, para que la suma de las dos cuadre al céntimo. */

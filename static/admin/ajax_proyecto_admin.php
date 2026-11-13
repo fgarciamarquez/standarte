@@ -70,6 +70,25 @@ if ($action === 'fair_panel') {
 	)));
 }
 
+/* ---------- Vista previa del contrato: qué dirá la cláusula de pago y a quién se enviará ----------
+ * No genera, no guarda y no envía nada. Es lo que la página y el panel enseñan en la
+ * confirmación ANTES de emitir, para que un contrato con la forma de pago equivocada no
+ * llegue a salir (13/11/2026: el de 31C salió con 80/20 teniendo un pago único del 100 %).
+ * Es una acción aparte, y no un parámetro de issue_contract, A PROPÓSITO: si durante un
+ * despliegue la página nueva hablara con un PHP antiguo, un parámetro desconocido se
+ * ignoraría y el contrato se emitiría de verdad; una acción desconocida solo da error. */
+if ($action === 'contract_preview') {
+	if (!pa_authed()) pa_out(array('ok' => false, 'error' => 'unauthorized'));
+	$pid = cpx_project_id_by_token(pa_post('token'));
+	if (!$pid) pa_out(array('ok' => false, 'error' => 'not_found'));
+	require_once __DIR__ . '/contract_lib.php';
+	$res = cpx_contract_issue($pid, array('preview' => true));
+	if (empty($res['ok'])) pa_out(array('ok' => false, 'error' => 'issue_failed', 'detail' => implode('; ', $res['errors'])));
+	pa_out(array('ok' => true, 'preview' => true, 'lang' => $res['lang'], 'total' => $res['total'], 'email' => $res['email'],
+		'clause' => $res['clause'], 'summary' => $res['summary'], 'split' => $res['split'], 'split_default' => $res['split_default'],
+		'replaces' => $res['replaces'], 'warnings' => $res['warnings']));
+}
+
 /* ---------- Emitir el contrato desde la propia pagina del proyecto ----------
  * Mismo motor que el panel (contract_lib.php): genera el PDF con los datos del
  * proyecto, lo guarda en su Documentacion, se lo envia al cliente y anota el sello.
@@ -95,6 +114,8 @@ if ($action === 'issue_contract') {
 		'total' => isset($res['total']) ? $res['total'] : 0,
 		'sent' => !empty($res['sent']),
 		'email' => isset($res['email']) ? $res['email'] : '',
+		'summary' => isset($res['summary']) ? $res['summary'] : '',
+		'replaced' => isset($res['replaced']) ? $res['replaced'] : '',
 		'warnings' => isset($res['warnings']) ? $res['warnings'] : array()
 	));
 }
