@@ -99,7 +99,9 @@ function cpx_contract_texts($lang) {
 			'D_terms' => 'Forma de pago acordada entre las partes: %s.',
 			/* Solo en un contrato REEMITIDO: deja escrito en el propio documento a cuál
 			 * sustituye, para que dos PDF sellados no digan cosas distintas sin aclarar cuál vale. */
-			'replaces' => 'QUINTO. El presente contrato sustituye y deja sin efecto el emitido el %s con el código %s.',
+			'replaces' => 'QUINTO. El presente contrato sustituye y deja sin efecto %s.',
+			'replaces_one' => 'el emitido el %s con el código %s', 'replaces_one_nodate' => 'el emitido con el código %s',
+			'replaces_many' => 'los emitidos con los códigos %s', 'replaces_and' => ' y ',
 			'E' => 'E. Los importes en dólares estadounidenses y libras esterlinas son conversiones orientativas al tipo de cambio del %s (fuente: Banco Central Europeo). El importe contractual es el expresado en euros. Si el cliente opera en una moneda distinta de las indicadas —por ejemplo, el peso mexicano—, será responsable de realizar la conversión a su moneda y de que los ingresos en euros sean correctos, asumiendo las diferencias de cambio y las comisiones bancarias.',
 			'E_norates' => 'E. El importe contractual es el expresado en euros. Si el cliente opera en otra moneda —por ejemplo, el dólar estadounidense, la libra esterlina o el peso mexicano—, será responsable de realizar la conversión a su moneda y de que los ingresos en euros sean correctos, asumiendo las diferencias de cambio y las comisiones bancarias.',
 			'F' => 'F. Ambas partes se comprometen a reunirse y a facilitarse mutuamente —o a las entidades colaboradoras externas— toda la información necesaria para la ejecución de los trabajos.',
@@ -118,7 +120,10 @@ function cpx_contract_texts($lang) {
 			'doc_title' => 'Contrato de prestación de servicios · %s',
 			'mail_subject' => 'Contrato de su proyecto %s — Standarte',
 			'mail_body' => 'Le adjuntamos el contrato de prestación de servicios de su proyecto <strong>%s</strong> (%s), redactado con los datos que nos facilitó al aprobar la propuesta. Va sellado electrónicamente por Standarte con el código <strong>%s</strong>. Para formalizarlo, le rogamos que lo firme y nos lo devuelva por este mismo correo. Lo tiene también disponible en la Documentación de su proyecto.',
-			'mail_replaces' => 'Este contrato <strong>sustituye y deja sin efecto</strong> al que le enviamos el %s con el código %s: le rogamos que descarte aquel y tenga en cuenta únicamente este.',
+			'mail_replaces' => 'Este contrato <strong>sustituye y deja sin efecto</strong> %s: le rogamos que descarte %s y tenga en cuenta únicamente este.',
+			'mail_that_one' => 'aquel', 'mail_those' => 'aquellos',
+			/* Asunto de una reemisión: que no se confunda en la bandeja con el correo del contrato anterior. */
+			'mail_subject_new' => 'Nuevo contrato de su proyecto %s (sustituye al anterior) — Standarte',
 			'mail_button' => 'Abrir el proyecto',
 			'usd_fmt' => '%s US$', 'gbp_fmt' => '%s £'
 		),
@@ -144,7 +149,9 @@ function cpx_contract_texts($lang) {
 			'D_account' => ', to account %s (BIC %s)',
 			'D_where_fallback' => 'the fair venue',
 			'D_terms' => 'Payment terms agreed between the parties: %s.',
-			'replaces' => 'FIFTH. This agreement replaces and supersedes the one issued on %s under code %s.',
+			'replaces' => 'FIFTH. This agreement replaces and supersedes %s.',
+			'replaces_one' => 'the one issued on %s under code %s', 'replaces_one_nodate' => 'the one issued under code %s',
+			'replaces_many' => 'those issued under codes %s', 'replaces_and' => ' and ',
 			'E' => 'E. The amounts in US dollars and pounds sterling are indicative conversions at the exchange rate of %s (source: European Central Bank). The contractual amount is the amount expressed in euros. If the client operates in a currency other than those indicated —for example, the Mexican peso—, the client is responsible for converting to its own currency and for ensuring that the amounts credited in euros are correct, bearing any exchange differences and bank charges.',
 			'E_norates' => 'E. The contractual amount is the amount expressed in euros. If the client operates in another currency —for example, the US dollar, the pound sterling or the Mexican peso—, the client is responsible for converting to its own currency and for ensuring that the amounts credited in euros are correct, bearing any exchange differences and bank charges.',
 			'F' => 'F. Both parties agree to meet and provide each other—or external collaborating entities—with all information necessary for the execution of the work.',
@@ -163,7 +170,9 @@ function cpx_contract_texts($lang) {
 			'doc_title' => 'Service agreement · %s',
 			'mail_subject' => 'Service agreement for your project %s — Standarte',
 			'mail_body' => 'Please find attached the service agreement for your project <strong>%s</strong> (%s), drawn up with the details you provided when approving the proposal. It is electronically sealed by Standarte under code <strong>%s</strong>. To formalise it, please sign it and return it to us by replying to this email. It is also available in the Documents section of your project.',
-			'mail_replaces' => 'This agreement <strong>replaces and supersedes</strong> the one we sent you on %s under code %s: please disregard that one and refer only to this one.',
+			'mail_replaces' => 'This agreement <strong>replaces and supersedes</strong> %s: please disregard %s and refer only to this one.',
+			'mail_that_one' => 'that one', 'mail_those' => 'those',
+			'mail_subject_new' => 'New service agreement for your project %s (replaces the previous one) — Standarte',
 			'mail_button' => 'Open the project',
 			'usd_fmt' => 'US$ %s', 'gbp_fmt' => '£ %s'
 		)
@@ -403,11 +412,60 @@ function cpx_contract_payment_summary($plan, $payTerms) {
 	return ($payTerms !== '') ? $s . ', más el texto del proyecto («' . $payTerms . '»)' : $s;
 }
 
-/* Cláusula QUINTA de un contrato reemitido: a qué contrato sustituye. $d['replaces'] es
- * array('code', 'issued_at'). La fecha sale con el mismo formato que la del encabezado. */
+/* Fecha de emisión de un contrato anterior, en hora de Madrid (la BD la guarda en UTC y un
+ * contrato emitido a las 00:30 de Madrid saldría con la fecha de la víspera). $long: como la
+ * del encabezado del contrato; si no, corta, para el correo. '' si no hay fecha. */
+function cpx_contract_when($iso, $lang, $long = false) {
+	if (empty($iso)) return '';
+	try { $dt = new DateTime((string) $iso); $dt->setTimezone(new DateTimeZone('Europe/Madrid')); } catch (Exception $e) { return ''; }
+	if (!$long) return ($lang === 'en') ? $dt->format('F j, Y') : $dt->format('d/m/Y');
+	if ($lang === 'en') return $dt->format('l, F j, Y');
+	$dEs = array('domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado');
+	$mEs = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+	return $dEs[(int) $dt->format('w')] . ' ' . $dt->format('j') . ' de ' . $mEs[(int) $dt->format('n') - 1] . ' de ' . $dt->format('Y');
+}
+
+/* «el emitido el … con el código …» / «los emitidos con los códigos A (fecha) y B (fecha)»:
+ * a qué contratos sustituye uno reemitido. $replaces: lista de array('code', 'issued_at').
+ * Se nombran TODOS, no solo el último: si el correo de una reemisión intermedia no llegó a
+ * salir, el cliente sigue teniendo el anterior y hay que nombrárselo. */
+function cpx_contract_replaces_list($replaces, $T, $lang, $long, $bold = false) {
+	$c = function ($x) use ($bold) { return $bold ? '<strong>' . htmlspecialchars((string) $x, ENT_QUOTES, 'UTF-8') . '</strong>' : (string) $x; };
+	if (count($replaces) === 1) {
+		$when = cpx_contract_when(isset($replaces[0]['issued_at']) ? $replaces[0]['issued_at'] : null, $lang, $long);
+		return ($when !== '') ? sprintf($T['replaces_one'], $when, $c($replaces[0]['code'])) : sprintf($T['replaces_one_nodate'], $c($replaces[0]['code']));
+	}
+	$items = array();
+	foreach ($replaces as $r) {
+		$when = cpx_contract_when(isset($r['issued_at']) ? $r['issued_at'] : null, $lang, false);
+		$items[] = $c($r['code']) . ($when !== '' ? ' (' . $when . ')' : '');
+	}
+	$last = array_pop($items);
+	return sprintf($T['replaces_many'], implode(', ', $items) . $T['replaces_and'] . $last);
+}
+
+/* Cláusula QUINTA de un contrato reemitido. $d['replaces'] es la lista de sustituidos. */
 function cpx_contract_replaces_clause($d, $T) {
-	$ts = !empty($d['replaces']['issued_at']) ? strtotime($d['replaces']['issued_at']) : false;
-	return sprintf($T['replaces'], $ts ? cpx_contract_date($ts, $d['lang']) : '—', $d['replaces']['code']);
+	return sprintf($T['replaces'], cpx_contract_replaces_list($d['replaces'], $T, $d['lang'], true));
+}
+
+/* El párrafo del correo que dice al cliente qué contrato deja de valer (HTML). Lo usan la
+ * emisión y el reenvío del contrato vigente (cpx_doc_resend). */
+function cpx_contract_replaces_mail($replaces, $lang) {
+	if (!$replaces) return '';
+	$T = cpx_contract_texts($lang);
+	return sprintf($T['mail_replaces'], cpx_contract_replaces_list($replaces, $T, $lang, false, true), count($replaces) > 1 ? $T['mail_those'] : $T['mail_that_one']);
+}
+
+/* Lista limpia de contratos sustituidos a partir de lo guardado en contract_meta.replaces. */
+function cpx_contract_replaces_from_meta($meta) {
+	$out = array();
+	if (is_array($meta) && !empty($meta['replaces']) && is_array($meta['replaces'])) {
+		foreach ($meta['replaces'] as $x) {
+			if (is_array($x) && !empty($x['code'])) $out[] = array('code' => (string) $x['code'], 'issued_at' => isset($x['issued_at']) ? $x['issued_at'] : null, 'path' => isset($x['path']) ? $x['path'] : null);
+		}
+	}
+	return $out;
 }
 
 /* Compone el PDF y devuelve sus bytes. $d es el array de datos ya resuelto. */
@@ -448,7 +506,7 @@ function cpx_contract_pdf($d) {
 	$pdf->Para($T['H']);
 	$pdf->Para(sprintf($T['third'], $d['client'], $d['client'], $d['client']));
 	$pdf->Para($T['fourth']);
-	if (!empty($d['replaces'])) $pdf->Para(cpx_contract_replaces_clause($d, $T));
+	if (!empty($d['replaces'])) $pdf->Para(cpx_contract_replaces_clause($d, $T));   // solo en un contrato reemitido
 
 	/* Página de firmas: el cliente firma a mano; Standarte, con el sello. */
 	$pdf->AddPage();
@@ -574,10 +632,41 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	$iban = trim((string) (isset($p['income_account']) ? $p['income_account'] : ''));
 	$bic = trim((string) (isset($p['bic_code']) ? $p['bic_code'] : ''));
 	$fairCity = isset($fair['city']) ? $fair['city'] : '';
-	/* ¿Hay ya un contrato emitido? Entonces este lo sustituye (ver más abajo). */
+	/* ¿Hay ya un contrato emitido? Entonces este lo sustituye. Se reúnen TODOS los códigos que
+	 * deja sin efecto: los que ya había sustituido el anterior, el anterior y —por si una
+	 * emisión se quedó a medias— los de los contratos generados que sigan en la Documentación. */
 	$prev = !empty($p['contract_code'])
 		? array('code' => $p['contract_code'], 'issued_at' => isset($p['contract_issued_at']) ? $p['contract_issued_at'] : null, 'state' => isset($p['contract_state']) ? $p['contract_state'] : '')
 		: null;
+	$pm = (isset($p['contract_meta']) && is_array($p['contract_meta'])) ? $p['contract_meta'] : array();
+	$replaces = cpx_contract_replaces_from_meta($pm);
+	if ($prev) $replaces[] = array('code' => $prev['code'], 'issued_at' => $prev['issued_at'], 'path' => isset($pm['path']) ? $pm['path'] : null);
+	/* La Documentación se lee ahora, y si no se puede leer NO se emite: hay que saber qué
+	 * contratos hay antes de añadir otro (cpx_rows no distingue «no hay» de «ha fallado»). */
+	$lst = cpx_sb('GET', 'client_project_docs?project_id=eq.' . urlencode($projectId) . '&kind=eq.contrato&select=id,path,title');
+	if ((int) $lst['code'] !== 200 || !is_array($lst['body'])) {
+		return array('ok' => false, 'errors' => array('no se pudo leer la Documentación del proyecto (código ' . (int) $lst['code'] . '): no se ha emitido ni enviado nada; vuelve a intentarlo'));
+	}
+	$genDocs = array(); $manualDocs = array();
+	foreach ($lst['body'] as $o) {
+		if (!is_array($o) || empty($o['id']) || empty($o['path'])) continue;
+		/* Generado por el sistema: <id>/docs/contrato-sc-AAAA-xxxxxxxx.pdf. Los subidos a mano
+		 * (p. ej. el firmado que devuelve el cliente) llevan una ruta aleatoria. */
+		if (preg_match('#^' . preg_quote($projectId, '#') . '/docs/contrato-sc-(\d{4})-([0-9a-f]{8})\.pdf$#', $o['path'], $mm)) {
+			$genDocs[] = $o;
+			$c = 'SC-' . $mm[1] . '-' . strtoupper($mm[2]);
+			$known = false;
+			foreach ($replaces as $k => $x) { if ($x['code'] === $c) { $known = true; if (empty($x['path'])) $replaces[$k]['path'] = $o['path']; } }
+			if (!$known) $replaces[] = array('code' => $c, 'issued_at' => null, 'path' => $o['path']);
+		} else {
+			$manualDocs[] = $o;
+		}
+	}
+	if ($replaces && $manualDocs) {
+		$tit = array();
+		foreach ($manualDocs as $o) $tit[] = '«' . (isset($o['title']) ? $o['title'] : '?') . '»';
+		$warnings[] = 'en la Documentación hay ' . (count($tit) > 1 ? 'otros documentos' : 'otro documento') . ' de tipo «contrato» subido a mano (' . implode(', ', $tit) . ') que NO se retira: si es el contrato anterior firmado, bórralo o cámbialo de tipo para que el cliente no vea dos contratos';
+	}
 
 	/* Vista previa: qué dirá la cláusula de pago y a quién se enviará, sin generar ni
 	 * guardar ni mandar nada. Es lo que el gestor confirma ANTES de emitir (los importes
@@ -587,7 +676,8 @@ function cpx_contract_issue($projectId, $opts = array()) {
 		return array('ok' => true, 'preview' => true, 'lang' => $lang, 'total' => $tot['total'], 'email' => $email,
 			'clause' => cpx_contract_payment_clause(array('lang' => $lang, 'client' => $client, 'plan' => $plan, 'rates' => null, 'iban' => $iban, 'bic' => $bic, 'fair_city' => $fairCity, 'pay_terms' => $payTerms), $Tp),
 			'summary' => $summary, 'split' => cpx_split_label($split), 'split_default' => !empty($split['default']),
-			'replaces' => $prev, 'warnings' => $warnings);
+			'replaces' => $prev ? $prev : ($replaces ? array('code' => $replaces[count($replaces) - 1]['code'], 'issued_at' => null, 'state' => '') : null),
+			'replaces_all' => array_map(function ($x) { return $x['code']; }, $replaces), 'warnings' => $warnings);
 	}
 
 	$issued = time();
@@ -641,7 +731,7 @@ function cpx_contract_issue($projectId, $opts = array()) {
 		'rates' => $rates, 'iban' => $iban, 'bic' => $bic,
 		'image' => $image, 'images' => $images, 'logo' => is_readable($logo) ? $logo : null,
 		'pay_terms' => $payTerms,
-		'replaces' => $prev ? array('code' => $prev['code'], 'issued_at' => $prev['issued_at']) : null,
+		'replaces' => $replaces,
 		'watermark' => is_readable(__DIR__ . '/lib/logo-marca-agua.png') ? __DIR__ . '/lib/logo-marca-agua.png' : null
 	);
 	$pdfBytes = cpx_contract_pdf($d);
@@ -656,13 +746,15 @@ function cpx_contract_issue($projectId, $opts = array()) {
 		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
 		. "<p style='margin:0 0 16px;'>" . sprintf($T['mail_body'], $h($p['title_' . $lang] !== '' ? $p['title_' . $lang] : $p['ref']), $h($p['ref']), $h($code)) . "</p>"
 		/* Reemisión: el cliente ya tiene otro contrato en su correo; hay que decirle cuál vale. */
-		. ($prev ? "<p style='margin:0 0 16px;'>" . sprintf($T['mail_replaces'],
-			$h(!empty($prev['issued_at']) ? date($lang === 'en' ? 'F j, Y' : 'd/m/Y', strtotime($prev['issued_at'])) : '—'), '<strong>' . $h($prev['code']) . '</strong>') . "</p>" : '')
+		. ($replaces ? "<p style='margin:0 0 16px;'>" . cpx_contract_replaces_mail($replaces, $lang) . "</p>" : '')
 		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($T['mail_button']) . "</a></p>"
 		. "<p style='margin:28px 0 0;'>" . ($lang === 'en' ? 'Best regards,<br><strong>The Standarte team</strong>' : 'Un cordial saludo,<br><strong>Equipo de Standarte</strong>') . "</p>"
 		. "</body></html>";
-	$subject = sprintf($T['mail_subject'], $p['ref']);
-	$att = array(array('name' => 'contrato-' . preg_replace('/[^A-Za-z0-9_-]+/', '_', $p['ref']) . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes));
+	/* En una reemisión el asunto lo dice, y el adjunto lleva SIEMPRE el código del sello:
+	 * con el mismo asunto y el mismo nombre de fichero que el contrato anterior, el cliente
+	 * podía firmar y devolver el que ya tenía descargado. */
+	$subject = sprintf($replaces ? $T['mail_subject_new'] : $T['mail_subject'], $p['ref']);
+	$att = array(array('name' => 'contrato-' . preg_replace('/[^A-Za-z0-9_-]+/', '_', $p['ref']) . '-' . $code . '.pdf', 'type' => 'application/pdf', 'data' => $pdfBytes));
 
 	/* Modo prueba: mismo PDF, pero no se guarda nada (ni Documentación ni sello en el
 	 * proyecto) y el correo va SOLO a Javier. El código del sello no queda registrado, así
@@ -675,32 +767,32 @@ function cpx_contract_issue($projectId, $opts = array()) {
 			'summary' => $summary, 'clause' => cpx_contract_payment_clause($d, $T));
 	}
 
-	/* Guardar en la Documentación privada del proyecto. */
+	/* Guardar en la Documentación privada del proyecto. Un único criterio de éxito en cada
+	 * paso: respuesta 2xx. (Un 0 —el servidor no contesta— pasaba antes por bueno.) */
+	$es2xx = function ($code) { return (int) $code >= 200 && (int) $code < 300; };
 	$tmpPdf = tempnam(sys_get_temp_dir(), 'std-contract-');
 	file_put_contents($tmpPdf, $pdfBytes);
 	$path = $projectId . '/docs/contrato-' . strtolower($code) . '.pdf';
 	$up = cpx_storage_upload($path, $tmpPdf, 'application/pdf', 'client-docs');
 	@unlink($tmpPdf);
-	if ((int) $up >= 300) return array('ok' => false, 'errors' => array('Storage rechazó el PDF (código ' . $up . ')'));
+	if (!$es2xx($up)) return array('ok' => false, 'errors' => array('no se pudo guardar el PDF en Storage (código ' . (int) $up . '): no se ha emitido ni enviado nada; vuelve a intentarlo'));
 	$title = sprintf($T['doc_title'], $p['ref']);
 	$ins = cpx_sb('POST', 'client_project_docs', array('project_id' => $projectId, 'kind' => 'contrato', 'title' => $title, 'path' => $path, 'size_bytes' => strlen($pdfBytes)));
-	if ((int) $ins['code'] >= 300) { cpx_storage_delete_object($path, 'client-docs'); return array('ok' => false, 'errors' => array('no se pudo registrar el documento (' . $ins['code'] . ')')); }
-
-	/* Códigos que este contrato deja sin efecto: el anterior y los que aquel ya sustituyó. */
-	$replaces = array();
-	$pm = (isset($p['contract_meta']) && is_array($p['contract_meta'])) ? $p['contract_meta'] : array();
-	if (!empty($pm['replaces']) && is_array($pm['replaces'])) {
-		foreach ($pm['replaces'] as $x) { if (is_array($x) && !empty($x['code'])) $replaces[] = array('code' => (string) $x['code'], 'issued_at' => isset($x['issued_at']) ? $x['issued_at'] : null); }
+	$newDocId = (is_array($ins['body']) && isset($ins['body'][0]['id'])) ? $ins['body'][0]['id'] : null;
+	if (!$es2xx($ins['code']) || !$newDocId) {
+		cpx_storage_delete_object($path, 'client-docs');
+		return array('ok' => false, 'errors' => array('no se pudo registrar el documento (código ' . (int) $ins['code'] . '): no se ha emitido ni enviado nada; vuelve a intentarlo'));
 	}
-	if ($prev) $replaces[] = array('code' => $prev['code'], 'issued_at' => $prev['issued_at']);
 
 	/* Anotar el sello en el proyecto: es lo que verifica verificar.php. Si no se puede
 	 * anotar, el contrato NO se da por emitido: se deshace el documento recién guardado y no
 	 * se envía ni se retira nada (un PDF en la Documentación cuyo código no verifica, con el
-	 * antiguo borrado y el cliente avisado de la sustitución, sería peor que no emitir). */
-	$newDocId = (is_array($ins['body']) && isset($ins['body'][0]['id'])) ? $ins['body'][0]['id'] : null;
+	 * antiguo retirado y el cliente avisado de la sustitución, sería peor que no emitir). El
+	 * estado «emitido» va en la MISMA escritura: si el anterior estaba «cursado» (firmado),
+	 * el nuevo no puede quedarse heredando ese estado. */
 	$pat = cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), array(
 		'contract_code' => $code, 'contract_issued_at' => gmdate('c', $issued),
+		'contract_state' => 'emitido', 'contract_done' => false,
 		'contract_meta' => array('lang' => $lang, 'total_eur' => $tot['total'],
 			/* La forma de pago que lleva ESTE contrato: es lo que después impide emitir una
 			 * factura con otro reparto (cpx_contract_split_mismatch). */
@@ -708,25 +800,25 @@ function cpx_contract_issue($projectId, $opts = array()) {
 			'advance_eur' => $plan['amounts'][0], 'rest_eur' => $plan['single'] ? 0 : $plan['amounts'][1],
 			'rates' => $rates, 'client' => $client, 'fair' => $fairName, 'path' => $path, 'replaces' => $replaces)
 	));
-	if ((int) $pat['code'] < 200 || (int) $pat['code'] >= 300) {
-		if ($newDocId) cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($newDocId) . '&project_id=eq.' . urlencode($projectId));
+	$anotado = $es2xx($pat['code']) && is_array($pat['body']) && isset($pat['body'][0]['contract_code']) && $pat['body'][0]['contract_code'] === $code;
+	if (!$anotado) {
+		cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($newDocId) . '&project_id=eq.' . urlencode($projectId));
 		cpx_storage_delete_object($path, 'client-docs');
-		return array('ok' => false, 'errors' => array('no se pudo anotar el sello del contrato en el proyecto (código ' . (int) $pat['code'] . '): no se ha emitido ni enviado nada; vuelve a intentarlo'));
+		return array('ok' => false, 'errors' => array('no se pudo anotar el sello del contrato en el proyecto (código ' . (int) $pat['code'] . '): no se ha emitido ni enviado nada' . ($prev ? '; el contrato anterior sigue vigente' : '') . '; vuelve a intentarlo'));
 	}
 
 	/* Reemisión: los contratos anteriores GENERADOS por el sistema salen de la Documentación,
 	 * para que el cliente no tenga dos contratos distintos a la vista (su código deja de
-	 * verificarse como vigente: verificar.php lo da por sustituido). Los PDF subidos a mano
-	 * —p. ej. el contrato firmado que devuelve el cliente— llevan otra ruta y no se tocan. */
+	 * verificarse como vigente: verificar.php lo da por sustituido). Solo se quita la FILA: el
+	 * PDF se queda en Storage (su ruta va en contract_meta.replaces), porque es la única
+	 * copia de lo que se le envió al cliente y borrarla no tiene vuelta atrás. Los PDF subidos
+	 * a mano —p. ej. el contrato firmado que devuelve el cliente— no se tocan (se avisa). */
 	$retired = 0;
-	foreach (cpx_rows('client_project_docs?project_id=eq.' . urlencode($projectId) . '&kind=eq.contrato&select=id,path') as $o) {
-		if (empty($o['id']) || empty($o['path']) || $o['path'] === $path || $o['id'] === $newDocId) continue;
-		if (!preg_match('#^' . preg_quote($projectId, '#') . '/docs/contrato-sc-\d{4}-[0-9a-f]{8}\.pdf$#', $o['path'])) continue;
+	foreach ($genDocs as $o) {
 		$del = cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($o['id']) . '&project_id=eq.' . urlencode($projectId));
-		if ((int) $del['code'] >= 200 && (int) $del['code'] < 300) { cpx_storage_delete_object($o['path'], 'client-docs'); $retired++; }
-		else $warnings[] = 'no se pudo retirar de la Documentación el contrato anterior (' . basename($o['path']) . '): bórralo a mano';
+		if ($es2xx($del['code'])) $retired++;
+		else $warnings[] = 'no se pudo retirar de la Documentación el contrato anterior (' . basename($o['path']) . '): el cliente sigue viéndolo; bórralo a mano';
 	}
-	if ($prev && $retired === 0) $warnings[] = 'el contrato anterior (' . $prev['code'] . ') no estaba en la Documentación o no se ha podido retirar: comprueba que el cliente solo ve el nuevo';
 
 	/* Enviar al cliente y, en copia, a Javier: así el emisor conserva lo que ha mandado
 	 * sin tener que entrar al proyecto. */
@@ -745,5 +837,6 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	if (!$sent) $warnings[] = 'el contrato se ha generado y guardado, pero el correo al cliente NO ha salido (revisa SMTP)';
 
 	return array('ok' => true, 'code' => $code, 'lang' => $lang, 'email' => $email, 'sent' => $sent, 'total' => $tot['total'], 'warnings' => $warnings,
-		'summary' => $summary, 'clause' => cpx_contract_payment_clause($d, $T), 'replaced' => $prev ? $prev['code'] : '', 'retired' => $retired);
+		'summary' => $summary, 'clause' => cpx_contract_payment_clause($d, $T),
+		'replaced' => $replaces ? implode(', ', array_map(function ($x) { return $x['code']; }, $replaces)) : '', 'retired' => $retired);
 }

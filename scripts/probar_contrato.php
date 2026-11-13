@@ -26,8 +26,10 @@ file_put_contents($tmp . '/email_campaing/mailer.php', "<?php\nfunction campaign
 file_put_contents($tmp . '/email_campaing/config.php', "<?php return array('stub' => true);\n");
 define('HARNESS_DIR', $tmp);
 error_reporting(E_ALL); ini_set('display_errors', '1');
-set_error_handler(function ($no, $str, $file, $line) { $GLOBALS['WARN'][] = "$str @" . basename($file) . ":$line"; return true; });
-foreach (array('MAILS', 'SB', 'UP', 'DEL', 'WARN', 'DOCS', 'INVOICES', 'FAIL') as $g) $GLOBALS[$g] = array();
+date_default_timezone_set('UTC');   // el servidor puede estar en UTC: las fechas del contrato anterior deben salir en hora de Madrid
+set_error_handler(function ($no, $str, $file, $line) { if (!(error_reporting() & $no)) return true;   /* los silenciados con @ no cuentan */ $GLOBALS['PHPWARN'][] = "$str @" . basename($file) . ":$line"; return true; });
+$GLOBALS['PHPWARN'] = array();   // se acumulan en TODA la prueba: no se borran entre casos
+foreach (array('MAILS', 'SB', 'UP', 'DEL', 'DOCS', 'INVOICES', 'FAIL') as $g) $GLOBALS[$g] = array();
 $GLOBALS['SMTP_OK'] = true;
 
 /* ---- Dobles de lo que el fichero toma de client_projects_lib.php y de la red ---- */
@@ -38,6 +40,8 @@ function cpx_budget_rows($pid, $sel = 'amount', $order = '') { return $GLOBALS['
 function cpx_send_each($cfg, $recipients, $subject, $html, $att = array()) { $ok = false; foreach ((array) $recipients as $to) { if (campaign_send_smtp($cfg, $to, $subject, $html, $att)) $ok = true; } return $ok; }
 function cpx_storage_upload($path, $local, $mime, $bucket = 'client-projects') { $GLOBALS['UP'][] = $path; copy($local, HARNESS_DIR . '/out/' . basename($path)); return 200; }
 function cpx_storage_delete_object($path, $bucket = 'client-docs') { $GLOBALS['DEL'][] = $path; }
+function cpx_storage_download($path, $bucket = 'client-docs') { return '%PDF-1.4 doble'; }
+function cpx_doc_kind_label($kind, $lang = 'es') { return ($kind === 'contrato') ? ($lang === 'en' ? 'Contract' : 'Contrato') : 'Documento'; }
 function cpx_accounts() { return array(array('iban' => 'ES00 1111 2222 3333 4444 5555', 'bank' => 'BANCO DE PRUEBA', 'bic' => 'PRUEESMM000')); }
 function cpx_rows($ep) {
 	if (strpos($ep, 'client_projects?') === 0) return array($GLOBALS['P']);
@@ -57,6 +61,8 @@ function cpx_sb($m, $ep, $data = null) {
 	$table = preg_replace('/\?.*$/', '', $ep);
 	$GLOBALS['SB'][] = array('m' => $m, 'ep' => $ep, 'data' => $data);
 	if (isset($GLOBALS['FAIL'][$m . ' ' . $table])) return array('code' => $GLOBALS['FAIL'][$m . ' ' . $table], 'body' => 'fallo provocado');
+	if ($m === 'GET' && $table === 'client_project_docs') return array('code' => 200, 'body' => $GLOBALS['DOCS']);
+	if ($m === 'PATCH' && $table === 'client_projects') return array('code' => 200, 'body' => array(array_merge($GLOBALS['P'], (array) $data)));
 	if ($m === 'POST' && $table === 'client_project_docs') {
 		$row = array_merge($data, array('id' => sprintf('dddddddd-0000-0000-0000-%012d', count($GLOBALS['SB']))));
 		$GLOBALS['DOCS'][] = $row;
@@ -104,7 +110,7 @@ function pdf_pages($bytes) { return preg_match_all('#/Type /Page\b#', $bytes, $m
 
 $fail = 0; $n = 0;
 $ok = function ($c, $m, $d = '') use (&$fail, &$n) { $n++; echo ($c ? '  ✔ ' : '  ✖ ') . $m . ((!$c && $d !== '') ? "\n      → $d" : '') . "\n"; if (!$c) $fail++; };
-$reset = function () { foreach (array('MAILS', 'SB', 'UP', 'DEL', 'WARN', 'DOCS', 'INVOICES', 'FAIL') as $g) $GLOBALS[$g] = array(); $GLOBALS['SMTP_OK'] = true; };
+$reset = function () { foreach (array('MAILS', 'SB', 'UP', 'DEL', 'DOCS', 'INVOICES', 'FAIL') as $g) $GLOBALS[$g] = array(); $GLOBALS['SMTP_OK'] = true; };
 $has = function ($hay, $needle) { return strpos($hay, $needle) !== false; };
 $err = function ($r) { return implode('; ', isset($r['errors']) ? $r['errors'] : array()); };
 
@@ -139,7 +145,8 @@ $emit = function ($over = array()) use ($issue, $reset, $ver, $lastPdf) {
 	return array($r, $d);
 };
 $meta = function () { $m = array(); foreach ($GLOBALS['SB'] as $c) { if ($c['m'] === 'PATCH' && isset($c['data']['contract_meta'])) $m = $c['data']['contract_meta']; } return $m; };
-$bloqueado = function ($r) { return empty($r['ok']) && !$GLOBALS['SB'] && !$GLOBALS['UP'] && !$GLOBALS['MAILS']; };
+$escrituras = function () { return array_values(array_filter($GLOBALS['SB'], function ($c) { return $c['m'] !== 'GET'; })); };
+$bloqueado = function ($r) use ($escrituras) { return empty($r['ok']) && !$escrituras() && !$GLOBALS['UP'] && !$GLOBALS['MAILS']; };
 
 echo "1) El caso real: 31C, reparto «100», sin texto libre, aprobado en inglés\n";
 list($r, $d) = $emit();
@@ -150,7 +157,10 @@ $ok(isset($r['clause']) && preg_replace('/\s+/', ' ', $r['clause']) === $d, 'lo 
 $m = $meta();
 $ok(isset($m['split']) && $m['split'] === '100' && $m['advance_eur'] == 21320 && $m['rest_eur'] == 0 && $m['total_eur'] == 21320 && $m['replaces'] === array(), 'el sello guarda reparto 100, anticipo 21.320 y resto 0', json_encode($m));
 $ok(isset($r['summary']) && $r['summary'] === 'pago único del 100 % por adelantado (21.320,00 €)', 'resumen para el gestor: «' . (isset($r['summary']) ? $r['summary'] : '') . '»');
-$ok(count($GLOBALS['MAILS']) === 3 && $GLOBALS['MAILS'][2]['to'] === 'javier@standarte.es', 'correo a las dos direcciones del cliente y copia a Javier', count($GLOBALS['MAILS']) . ' correos');
+$ok(count($GLOBALS['MAILS']) === 3 && $GLOBALS['MAILS'][2]['to'] === 'javier@standarte.es' && $GLOBALS['MAILS'][0]['subject'] === 'Service agreement for your project 31C — Standarte' && $GLOBALS['MAILS'][0]['att'][0]['name'] === 'contrato-31C-' . $r['code'] . '.pdf',
+	'correo a las dos direcciones del cliente y copia a Javier; el adjunto lleva el código del sello', count($GLOBALS['MAILS']) . ' correos · ' . ($GLOBALS['MAILS'] ? $GLOBALS['MAILS'][0]['att'][0]['name'] : ''));
+$sello = array_values(array_filter($escrituras(), function ($c) { return $c['m'] === 'PATCH' && isset($c['data']['contract_code']); }));
+$ok(count($sello) === 1 && $sello[0]['data']['contract_code'] === $r['code'] && $sello[0]['data']['contract_state'] === 'emitido' && $sello[0]['data']['contract_done'] === false, 'el sello y el estado «emitido» se anotan en la MISMA escritura', json_encode($sello));
 $pdf1 = $lastPdf();
 $ok(!$GLOBALS['MEDIA'] || pdf_pages($pdf1) >= 3, 'el PDF lleva el anexo con las imágenes (' . pdf_pages($pdf1) . ' páginas)', count($GLOBALS['MEDIA']) . ' imágenes');
 $ok(!$has(pdf_text($pdf1), 'FIFTH') && !$has(pdf_text($pdf1), 'supersedes'), 'una primera emisión no lleva cláusula de sustitución');
@@ -212,6 +222,7 @@ foreach (array(
 	array(array('payment_split' => '80/20', 'payment_terms_en' => '20% on delivery, 80% in advance'), 'en ese orden', 'porcentajes en orden contrario al reparto'),
 	array(array('payment_terms_en' => 'Payment 80/20'), 'habla de 80 %, 20 %', 'reparto 100 + «Payment 80/20» (sin el signo %)'),
 	array(array('payment_split' => null, 'payment_terms_en' => 'Full payment in advance'), 'el campo «reparto» está vacío', 'reparto vacío + texto sin cifras: no se le pone un 80/20'),
+	array(array('approved_lang' => 'es', 'payment_split' => null, 'payment_terms_es' => 'Transferencia bancaria'), 'el campo «reparto» está vacío', 'reparto vacío + «Transferencia bancaria»'),
 	array(array('approved_lang' => 'es', 'payment_split' => '80/20', 'payment_terms_es' => 'Pago único por adelantado'), 'habla de un pago único', 'reparto 80/20 + «Pago único por adelantado»'),
 	array(array('approved_lang' => 'es', 'payment_terms_es' => 'Mitad al aprobar y mitad a la entrega'), 'habla de más de un pago', 'reparto 100 + «Mitad al aprobar y mitad a la entrega»'),
 ) as $c) {
@@ -270,7 +281,7 @@ $ok($maxEnt < 0.0101 && $maxDif < 0.0201, 'con IVA/IRPF, tramo del contrato y fa
 echo "9) Vista previa: lo que se confirma antes de emitir, sin generar ni guardar ni enviar\n";
 $reset();
 $r = $issue(array(), array('preview' => true));
-$ok(!empty($r['ok']) && !empty($r['preview']) && !$GLOBALS['SB'] && !$GLOBALS['UP'] && !$GLOBALS['MAILS'], 'no guarda, no sube, no envía');
+$ok(!empty($r['ok']) && !empty($r['preview']) && !$escrituras() && !$GLOBALS['UP'] && !$GLOBALS['MAILS'], 'no guarda, no sube, no envía');
 $ok($r['clause'] === 'D. Thirty One C Ltd shall pay 100% of the amount (€21,320.00) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer, to account ES00 1111 2222 3333 4444 5555 (BIC PRUEESMM000).' && $r['email'] === 'cliente@example.com, otra@example.com' && $r['split'] === '100' && $r['replaces'] === null, 'devuelve la cláusula, los destinatarios y el reparto', json_encode($r, JSON_UNESCAPED_UNICODE));
 $reset();
 $r = $issue(array('payment_terms_en' => '80% in advance'), array('preview' => true));
@@ -280,7 +291,7 @@ echo "10) Prueba (dry_run): solo a Javier, nada guardado\n";
 $reset();
 $r = $issue(array(), array('dry_run' => true));
 $ms = $GLOBALS['MAILS'];
-$ok(!empty($r['ok']) && !empty($r['dry_run']) && !$GLOBALS['SB'] && !$GLOBALS['UP'] && count($ms) === 1 && $ms[0]['to'] === 'javier@standarte.es' && strpos($ms[0]['subject'], '[PRUEBA]') === 0, 'un solo correo, a Javier, con [PRUEBA]', json_encode(array_map(function ($x) { return $x['to']; }, $ms)));
+$ok(!empty($r['ok']) && !empty($r['dry_run']) && !$escrituras() && !$GLOBALS['UP'] && count($ms) === 1 && $ms[0]['to'] === 'javier@standarte.es' && strpos($ms[0]['subject'], '[PRUEBA]') === 0, 'un solo correo, a Javier, con [PRUEBA]', json_encode(array_map(function ($x) { return $x['to']; }, $ms)));
 $ok($ms && $has($ms[0]['html'], 'forma de pago del contrato: pago único del 100 % por adelantado (21.320,00 €)'), 'el correo de prueba dice la forma de pago del contrato');
 $dp = $ms ? clause_d(pdf_text($ms[0]['att'][0]['data'])) : '';
 $ok($has($dp, 'shall pay 100% of the amount') && !dice_pct($dp, array(80, 20)), 'y su PDF adjunto dice 100 %', $dp);
@@ -289,48 +300,78 @@ echo "11) Reemitir: el contrato nuevo sustituye al anterior (inglés y español)
 $viejo = array('contract_code' => 'SC-2026-F1B519BF', 'contract_issued_at' => '2026-11-13T18:53:12+00:00', 'contract_state' => 'emitido',
 	'contract_meta' => array('lang' => 'en', 'total_eur' => 21320, 'advance_eur' => 17056, 'path' => $PID . '/docs/contrato-sc-2026-f1b519bf.pdf'));
 $docsViejos = array(
-	array('id' => 'aaaaaaaa-0000-0000-0000-000000000001', 'path' => $PID . '/docs/contrato-sc-2026-f1b519bf.pdf'),   // el generado, con el error
-	array('id' => 'aaaaaaaa-0000-0000-0000-000000000002', 'path' => $PID . '/docs/0123456789abcdef.pdf'));           // uno subido a mano (p. ej. firmado)
+	array('id' => 'aaaaaaaa-0000-0000-0000-000000000001', 'path' => $PID . '/docs/contrato-sc-2026-f1b519bf.pdf', 'title' => 'Service agreement · 31C'),   // el generado, con el error
+	array('id' => 'aaaaaaaa-0000-0000-0000-000000000002', 'path' => $PID . '/docs/0123456789abcdef.pdf', 'title' => 'Contrato firmado'));                  // uno subido a mano
 $reset(); $GLOBALS['P'] = array_merge($BASE, $viejo); $GLOBALS['DOCS'] = $docsViejos;
 $r = cpx_contract_issue($PID, array('preview' => true));
-$ok(!empty($r['ok']) && is_array($r['replaces']) && $r['replaces']['code'] === 'SC-2026-F1B519BF' && $r['replaces']['state'] === 'emitido' && $GLOBALS['DOCS'] === $docsViejos, 'la vista previa avisa de que sustituye a SC-2026-F1B519BF y no toca nada');
+$ok(!empty($r['ok']) && is_array($r['replaces']) && $r['replaces']['code'] === 'SC-2026-F1B519BF' && $r['replaces']['state'] === 'emitido' && $r['replaces_all'] === array('SC-2026-F1B519BF') && $GLOBALS['DOCS'] === $docsViejos && !$escrituras(), 'la vista previa avisa de que sustituye a SC-2026-F1B519BF y no toca nada');
+$ok(!empty(array_filter($r['warnings'], function ($w) { return strpos($w, 'subido a mano («Contrato firmado») que NO se retira') !== false; })), 'y avisa del contrato subido a mano, que no se retira', implode('; ', $r['warnings']));
 $r = cpx_contract_issue($PID);
 $paths = array_map(function ($x) { return $x['path']; }, $GLOBALS['DOCS']);
 $ok(!empty($r['ok']) && $r['replaced'] === 'SC-2026-F1B519BF' && $r['retired'] === 1, 'emitido; sustituye a SC-2026-F1B519BF', json_encode($r, JSON_UNESCAPED_UNICODE));
-$ok(count($paths) === 2 && in_array($PID . '/docs/0123456789abcdef.pdf', $paths, true) && in_array($PID . '/docs/contrato-' . strtolower($r['code']) . '.pdf', $paths, true) && $GLOBALS['DEL'] === array($PID . '/docs/contrato-sc-2026-f1b519bf.pdf'),
-	'en la Documentación quedan el contrato NUEVO y el subido a mano; solo se retira el generado anterior', json_encode($paths) . ' ' . json_encode($GLOBALS['DEL']));
+$ok(count($paths) === 2 && in_array($PID . '/docs/0123456789abcdef.pdf', $paths, true) && in_array($PID . '/docs/contrato-' . strtolower($r['code']) . '.pdf', $paths, true),
+	'en la Documentación quedan el contrato NUEVO y el subido a mano; solo sale el generado anterior', json_encode($paths));
+$ok($GLOBALS['DEL'] === array(), 'el PDF del contrato sustituido NO se borra de Storage (es la única copia de lo que se envió)', json_encode($GLOBALS['DEL']));
 $m = $meta();
-$ok(isset($m['replaces'][0]['code']) && $m['replaces'][0]['code'] === 'SC-2026-F1B519BF' && $m['split'] === '100' && $m['advance_eur'] == 21320, 'el sello nuevo anota a quién sustituye y lleva 100 %', json_encode($m));
-$html = $GLOBALS['MAILS'] ? $GLOBALS['MAILS'][0]['html'] : '';
-$ok($has($html, 'replaces and supersedes') && $has($html, 'SC-2026-F1B519BF') && $has($html, 'November 13, 2026'), 'el correo al cliente dice que sustituye al del 13 de noviembre', strip_tags($html));
+$ok(isset($m['replaces'][0]['code']) && $m['replaces'][0]['code'] === 'SC-2026-F1B519BF' && $m['replaces'][0]['path'] === $PID . '/docs/contrato-sc-2026-f1b519bf.pdf' && $m['split'] === '100' && $m['advance_eur'] == 21320, 'el sello nuevo anota a quién sustituye (con la ruta de su PDF) y lleva 100 %', json_encode($m));
+$mail = $GLOBALS['MAILS'] ? $GLOBALS['MAILS'][0] : array('html' => '', 'subject' => '');
+$ok($has($mail['html'], 'This agreement <strong>replaces and supersedes</strong> the one issued on November 13, 2026 under code <strong>SC-2026-F1B519BF</strong>: please disregard that one and refer only to this one.'), 'el correo al cliente dice que sustituye al del 13 de noviembre', strip_tags($mail['html']));
+$ok($mail['subject'] === 'New service agreement for your project 31C (replaces the previous one) — Standarte', 'y el asunto dice que es un contrato nuevo que sustituye al anterior', $mail['subject']);
 $txt = pdf_text($lastPdf());
 $ok($has(clause_d($txt), 'shall pay 100% of the amount (€21,320.00') && !dice_pct(clause_d($txt), array(80, 20)), 'el PDF nuevo dice 100 %', clause_d($txt));
 $ok($has($txt, 'FIFTH. This agreement replaces and supersedes the one issued on Friday, November 13, 2026 under code SC-2026-F1B519BF.'), 'y lleva escrito, en el propio contrato, a cuál sustituye', substr($txt, -420));
-/* Segunda reemisión, ahora en español: arrastra los dos códigos anteriores. */
+/* Segunda reemisión, ahora en español: nombra los DOS códigos anteriores (si el correo de la
+ * primera reemisión no hubiera salido, el cliente seguiría con el del 80/20 en la mano). */
 $code2 = $r['code'];
 $GLOBALS['P'] = array_merge($BASE, array('approved_lang' => 'es', 'contract_code' => $code2, 'contract_issued_at' => '2026-11-14T09:00:00+00:00', 'contract_state' => 'emitido', 'contract_meta' => $m));
 $GLOBALS['MAILS'] = array(); $GLOBALS['DEL'] = array();
 $r = cpx_contract_issue($PID);
 $m2 = $meta(); $paths = array_map(function ($x) { return $x['path']; }, $GLOBALS['DOCS']);
-$ok(!empty($r['ok']) && count($m2['replaces']) === 2 && $m2['replaces'][0]['code'] === 'SC-2026-F1B519BF' && $m2['replaces'][1]['code'] === $code2, 'segunda reemisión: el sello recuerda los dos códigos sustituidos', json_encode($m2['replaces']));
+$ok(!empty($r['ok']) && count($m2['replaces']) === 2 && $m2['replaces'][0]['code'] === 'SC-2026-F1B519BF' && $m2['replaces'][1]['code'] === $code2 && $r['replaced'] === 'SC-2026-F1B519BF, ' . $code2, 'segunda reemisión: el sello recuerda los dos códigos sustituidos', json_encode($m2['replaces']));
 $ok(count($paths) === 2 && !in_array($PID . '/docs/contrato-' . strtolower($code2) . '.pdf', $paths, true) && in_array($PID . '/docs/contrato-' . strtolower($r['code']) . '.pdf', $paths, true), 'y en la Documentación solo queda el último generado (más el subido a mano)', json_encode($paths));
-$txt = pdf_text($lastPdf()); $html = $GLOBALS['MAILS'] ? $GLOBALS['MAILS'][0]['html'] : '';
-$ok($has($txt, 'QUINTO. El presente contrato sustituye y deja sin efecto el emitido el sábado 14 de noviembre de 2026 con el código ' . $code2 . '.') && $has($html, 'sustituye y deja sin efecto') && $has($html, '14/11/2026') && $has($html, $code2), 'en español: cláusula QUINTO en el PDF y aviso en el correo', substr($txt, -300) . ' | ' . strip_tags($html));
+$txt = pdf_text($lastPdf()); $mail = $GLOBALS['MAILS'] ? $GLOBALS['MAILS'][0] : array('html' => '', 'subject' => '');
+$ok($has($txt, 'QUINTO. El presente contrato sustituye y deja sin efecto los emitidos con los códigos SC-2026-F1B519BF (13/11/2026) y ' . $code2 . ' (14/11/2026).'), 'en español, la cláusula QUINTO nombra los dos', substr($txt, -330));
+$ok($has($mail['html'], 'Este contrato <strong>sustituye y deja sin efecto</strong> los emitidos con los códigos <strong>SC-2026-F1B519BF</strong> (13/11/2026) y <strong>' . $code2 . '</strong> (14/11/2026): le rogamos que descarte aquellos y tenga en cuenta únicamente este.') && $mail['subject'] === 'Nuevo contrato de su proyecto 31C (sustituye al anterior) — Standarte', 'y el correo también, con su asunto', $mail['subject'] . ' | ' . strip_tags($mail['html']));
+/* La fecha del contrato anterior, en hora de Madrid: emitido a las 23:30 UTC del 12 = 00:30 del 13 en Madrid. */
+$reset(); $GLOBALS['P'] = array_merge($BASE, $viejo, array('contract_issued_at' => '2026-11-12T23:30:00+00:00')); $GLOBALS['DOCS'] = array($docsViejos[0]);
+$r = cpx_contract_issue($PID); $txt = pdf_text($lastPdf());
+$ok($has($txt, 'the one issued on Friday, November 13, 2026 under code SC-2026-F1B519BF') && $has($GLOBALS['MAILS'][0]['html'], 'issued on November 13, 2026'), 'la fecha del contrato sustituido sale en hora de Madrid (23:30 UTC del 12 = día 13)', substr($txt, -200));
+/* Un contrato generado que sigue en la Documentación sin estar anotado en el proyecto (una
+ * emisión antigua que se quedó a medias): también se sustituye y se retira. */
+$reset(); $GLOBALS['P'] = array_merge($BASE, array()); $GLOBALS['DOCS'] = array(array('id' => 'aaaaaaaa-0000-0000-0000-000000000009', 'path' => $PID . '/docs/contrato-sc-2026-0000aaaa.pdf', 'title' => 'x'));
+$r = cpx_contract_issue($PID); $txt = pdf_text($lastPdf());
+$ok(!empty($r['ok']) && $r['replaced'] === 'SC-2026-0000AAAA' && $r['retired'] === 1 && $has($txt, 'FIFTH. This agreement replaces and supersedes the one issued under code SC-2026-0000AAAA.'), 'un contrato huérfano en la Documentación también se sustituye (sin fecha: no se inventa)', substr($txt, -200));
 $reset();
 $r = $issue();
 $ok($GLOBALS['MAILS'] && !$has($GLOBALS['MAILS'][0]['html'], 'supersedes') && $r['replaced'] === '' && !array_filter($GLOBALS['SB'], function ($c) { return $c['m'] === 'DELETE'; }), 'una primera emisión no habla de sustituir ni borra nada');
+/* Reenviar el contrato VIGENTE repite a cuál sustituye; reenviar otro documento, no. */
+$reset(); $GLOBALS['P'] = array_merge($BASE, array('contract_code' => 'SC-2026-NUEVO000', 'contract_meta' => array('lang' => 'en', 'path' => $PID . '/docs/contrato-sc-2026-nuevo000.pdf', 'replaces' => array(array('code' => 'SC-2026-F1B519BF', 'issued_at' => '2026-11-13T18:53:12+00:00')))));
+$GLOBALS['DOCS'] = array(array('id' => 'bbbbbbbb-0000-0000-0000-000000000001', 'kind' => 'contrato', 'title' => 'Service agreement · 31C', 'path' => $PID . '/docs/contrato-sc-2026-nuevo000.pdf'));
+$r = cpx_doc_resend($PID, 'bbbbbbbb-0000-0000-0000-000000000001');
+$ok(!empty($r['ok']) && $has($GLOBALS['MAILS'][0]['html'], 'replaces and supersedes</strong> the one issued on November 13, 2026 under code <strong>SC-2026-F1B519BF</strong>'), '«Reenviar» el contrato vigente repite a cuál sustituye', json_encode($r) . strip_tags($GLOBALS['MAILS'] ? $GLOBALS['MAILS'][0]['html'] : ''));
+$reset(); $GLOBALS['P'] = array_merge($BASE, array('contract_meta' => array('lang' => 'en', 'path' => $PID . '/docs/otro.pdf', 'replaces' => array(array('code' => 'SC-2026-F1B519BF', 'issued_at' => null)))));
+$GLOBALS['DOCS'] = array(array('id' => 'bbbbbbbb-0000-0000-0000-000000000001', 'kind' => 'contrato', 'title' => 'Contrato firmado', 'path' => $PID . '/docs/0123456789abcdef.pdf'));
+$r = cpx_doc_resend($PID, 'bbbbbbbb-0000-0000-0000-000000000001');
+$ok(!empty($r['ok']) && !$has($GLOBALS['MAILS'][0]['html'], 'supersedes'), 'reenviar otro documento no añade ese párrafo');
 
 echo "12) Si el servidor falla a medias, no queda un contrato a medias\n";
 $reset(); $GLOBALS['P'] = array_merge($BASE, $viejo); $GLOBALS['DOCS'] = $docsViejos; $GLOBALS['FAIL']['PATCH client_projects'] = 500;
 $r = cpx_contract_issue($PID);
-$ok(empty($r['ok']) && $has($err($r), 'no se pudo anotar el sello') && !$GLOBALS['MAILS'] && $GLOBALS['DOCS'] === $docsViejos && count($GLOBALS['DEL']) === 1 && $GLOBALS['DEL'][0] !== $PID . '/docs/contrato-sc-2026-f1b519bf.pdf',
+$ok(empty($r['ok']) && $has($err($r), 'no se pudo anotar el sello') && $has($err($r), 'el contrato anterior sigue vigente') && !$GLOBALS['MAILS'] && $GLOBALS['DOCS'] === $docsViejos && count($GLOBALS['DEL']) === 1 && $GLOBALS['DEL'][0] !== $PID . '/docs/contrato-sc-2026-f1b519bf.pdf',
 	'falla al anotar el sello → error, ningún correo, se deshace el PDF nuevo y el contrato anterior sigue en su sitio', json_encode($r, JSON_UNESCAPED_UNICODE) . ' ' . json_encode($GLOBALS['DEL']));
-$reset(); $GLOBALS['P'] = array_merge($BASE, $viejo); $GLOBALS['DOCS'] = $docsViejos; $GLOBALS['FAIL']['DELETE client_project_docs'] = 0;   // 0 = el servidor no contesta
+foreach (array(500, 0) as $codigo) {
+	$reset(); $GLOBALS['P'] = array_merge($BASE, $viejo); $GLOBALS['DOCS'] = $docsViejos; $GLOBALS['FAIL']['DELETE client_project_docs'] = $codigo;
+	$r = cpx_contract_issue($PID);
+	$ok(!empty($r['ok']) && $r['retired'] === 0 && !$GLOBALS['DEL'] && $has(implode(';', $r['warnings']), 'no se pudo retirar') && count($GLOBALS['DOCS']) === 3, "falla al retirar el anterior (código {$codigo}) → se emite y se AVISA de que el cliente sigue viéndolo", json_encode($r['warnings'], JSON_UNESCAPED_UNICODE));
+}
+foreach (array(500, 0) as $codigo) {
+	$reset(); $GLOBALS['FAIL']['POST client_project_docs'] = $codigo;
+	$r = $issue();
+	$ok(empty($r['ok']) && !$GLOBALS['MAILS'] && count($GLOBALS['DEL']) === 1 && !array_filter($GLOBALS['SB'], function ($c) { return $c['m'] === 'PATCH'; }), "falla al registrar el documento (código {$codigo}) → error, sin sello, sin correo, PDF retirado de Storage", json_encode($r));
+}
+$reset(); $GLOBALS['P'] = array_merge($BASE, $viejo); $GLOBALS['DOCS'] = $docsViejos; $GLOBALS['FAIL']['GET client_project_docs'] = 500;
 $r = cpx_contract_issue($PID);
-$ok(!empty($r['ok']) && $r['retired'] === 0 && !$GLOBALS['DEL'] && $has(implode(';', $r['warnings']), 'no se pudo retirar') && count($GLOBALS['DOCS']) === 3, 'falla al retirar el anterior → se emite, se AVISA y no se borra su PDF de Storage', json_encode($r['warnings'], JSON_UNESCAPED_UNICODE));
-$reset(); $GLOBALS['FAIL']['POST client_project_docs'] = 500;
-$r = $issue();
-$ok(empty($r['ok']) && !$GLOBALS['MAILS'] && count($GLOBALS['DEL']) === 1 && !array_filter($GLOBALS['SB'], function ($c) { return $c['m'] === 'PATCH'; }), 'falla al registrar el documento → error, sin sello, sin correo, PDF retirado de Storage', json_encode($r));
+$ok(empty($r['ok']) && $has($err($r), 'no se pudo leer la Documentación') && !$GLOBALS['UP'] && !$GLOBALS['MAILS'] && !$escrituras(), 'no se puede leer la Documentación → no se emite a ciegas', json_encode($r, JSON_UNESCAPED_UNICODE));
 
 echo "13) Las FACTURAS tampoco pueden contradecir al contrato emitido\n";
 /* El estado real de 31C hoy: contrato emitido con el código viejo (80/20), reparto «100». */
@@ -384,7 +425,7 @@ foreach (array('50/30/20', '60/30', '100/0', 'abc', '0/100', '80', 'único', '10
 	$ok($s['error'] !== '', "reparto «{$raw}» → no válido");
 }
 
-$ok(!$GLOBALS['WARN'], 'sin avisos de PHP en toda la prueba', implode(' | ', array_unique($GLOBALS['WARN'])));
+$ok(!$GLOBALS['PHPWARN'], 'sin avisos de PHP en toda la prueba', implode(' | ', array_unique($GLOBALS['PHPWARN'])));
 
 /* Contraste independiente, si la máquina tiene pdftotext: lee el PDF con otra herramienta. */
 $pt = trim((string) @shell_exec('command -v pdftotext 2>/dev/null'));

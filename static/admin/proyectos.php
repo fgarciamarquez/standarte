@@ -130,7 +130,7 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 				. ' (' . number_format($res['total'], 2, ',', '.') . ' €)'
 				. ($res['sent'] ? ' y enviado a ' . $res['email'] : '')
 				. '. Forma de pago: ' . $res['summary']
-				. (!empty($res['replaced']) ? '. Sustituye al contrato ' . $res['replaced'] . (!empty($res['retired']) ? ', que sale de la Documentación' : '') : '')
+				. (!empty($res['replaced']) ? '. Sustituye a ' . $res['replaced'] . (!empty($res['retired']) ? ', que ya no está en la Documentación' : '') : '')
 				. '. Está en la Documentación del proyecto.'
 				. (!empty($res['warnings']) ? ' Avisos: ' . implode('; ', $res['warnings']) . '.' : '');
 			header('Location: proyectos.php?msg=' . urlencode($m)); exit;
@@ -649,7 +649,8 @@ document.addEventListener('submit', function (e) {
       var t = ['Vas a EMITIR EL CONTRATO de ' + (f.getAttribute('data-ref') || 'este proyecto') + ' (' + (pv.lang === 'en' ? 'en inglés' : 'en español') + ') y a enviárselo al cliente.', '',
         'Cláusula de pago que llevará (sale del reparto de pago del proyecto):', '«' + pv.clause + '»'];
       (pv.warnings || []).forEach(function (w) { t.push('', 'OJO: ' + w + '.'); });
-      if (pv.replaces && pv.replaces.code) t.push('', 'SUSTITUYE al contrato ya emitido ' + pv.replaces.code + ': ese PDF se retira de la Documentación y el correo le dice al cliente que queda sin efecto.');
+      var sust = (pv.replaces_all && pv.replaces_all.length) ? pv.replaces_all.join(', ') : ((pv.replaces && pv.replaces.code) || '');
+      if (sust) t.push('', 'SUSTITUYE al contrato ya emitido ' + sust + ': sale de la Documentación, y el contrato nuevo y su correo le dicen al cliente que queda sin efecto.');
       t.push('', 'Se enviará a: ' + pv.email, '', '¿Es correcto? Aceptar = emitir y enviar.');
       if (window.confirm(t.join('\n'))) f.submit();
     })

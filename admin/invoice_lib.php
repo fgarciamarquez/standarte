@@ -690,7 +690,7 @@ function cpx_doc_resend($projectId, $docId) {
 	$docs = cpx_rows('client_project_docs?id=eq.' . urlencode($docId) . '&project_id=eq.' . urlencode($projectId) . '&select=id,kind,title,path&limit=1');
 	if (empty($docs[0]['path'])) return array('ok' => false, 'error' => 'not_found');
 	$doc = $docs[0];
-	$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=ref,title_es,title_en,client_email,approved_lang,access_token&limit=1');
+	$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=ref,title_es,title_en,client_email,approved_lang,access_token,contract_meta&limit=1');
 	if (empty($rows[0])) return array('ok' => false, 'error' => 'not_found');
 	$p = $rows[0];
 	$emails = cpx_emails(isset($p['client_email']) ? $p['client_email'] : '');
@@ -713,9 +713,20 @@ function cpx_doc_resend($projectId, $docId) {
 		$body = sprintf('Como nos ha solicitado, le adjuntamos de nuevo el documento <strong>%s</strong> (%s) de su proyecto <strong>%s</strong> (%s). Lo tiene también disponible en todo momento en la Documentación de su proyecto.', $h($doc['title']), $h(mb_strtolower($kindLabel)), $h($title), $h($p['ref']));
 		$button = 'Abrir el proyecto'; $sign = 'Un cordial saludo,<br><strong>Equipo de Standarte</strong>';
 	}
+	/* Si lo que se reenvía es el contrato VIGENTE y este sustituyó a otro, el reenvío lo
+	 * dice igual que el correo de la emisión: es la vía que queda cuando aquel correo no
+	 * llegó a salir y el cliente sigue con el contrato anterior en la mano. El idioma es el
+	 * del contrato, no el de la última aprobación. */
+	$sust = '';
+	$cm = (isset($p['contract_meta']) && is_array($p['contract_meta'])) ? $p['contract_meta'] : array();
+	if ($doc['kind'] === 'contrato' && isset($cm['path']) && $cm['path'] === $doc['path']) {
+		$rep = cpx_contract_replaces_from_meta($cm);
+		if ($rep) $sust = "<p style='margin:0 0 16px;'>" . cpx_contract_replaces_mail($rep, (isset($cm['lang']) && $cm['lang'] === 'en') ? 'en' : 'es') . "</p>";
+	}
 	$html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
 		. "<body style='font-family:Arial,sans-serif;font-size:15px;color:#222;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;'>"
 		. "<p style='margin:0 0 16px;'>" . $body . "</p>"
+		. $sust
 		. "<p style='text-align:center;margin:20px 0 0;'><a href='" . $h($url) . "' style='display:inline-block;background:#1b1b1a;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-family:monospace;'>" . $h($button) . "</a></p>"
 		. "<p style='margin:28px 0 0;'>" . $sign . "</p></body></html>";
 	$name = preg_replace('/[^A-Za-z0-9_-]+/', '_', $doc['title']);

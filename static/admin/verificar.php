@@ -15,19 +15,27 @@ function vf_h($s) { return htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8'); }
 $code = isset($_GET['c']) && is_string($_GET['c']) ? strtoupper(trim($_GET['c'])) : '';
 $valid = preg_match('/^SC-\d{4}-[A-F0-9]{8}$/', $code) === 1;
 $p = null;
+/* Las consultas van con cpx_sb y no con cpx_rows A PROPÓSITO: cpx_rows devuelve [] tanto si
+ * no hay filas como si Supabase no contesta, y esta página pública acabaría diciéndole a un
+ * tercero que un contrato real «no existe». Si la comprobación falla, se dice eso: que no se
+ * ha podido comprobar. */
+$fallo = false;
 if ($valid) {
-	$rows = cpx_rows('client_projects?contract_code=eq.' . urlencode($code) . '&select=ref,billing_company,client_name,contract_issued_at,contract_meta&limit=1');
-	$p = isset($rows[0]) ? $rows[0] : null;
+	$r = cpx_sb('GET', 'client_projects?contract_code=eq.' . urlencode($code) . '&select=ref,billing_company,client_name,contract_issued_at,contract_meta&limit=1');
+	if ((int) $r['code'] !== 200 || !is_array($r['body'])) $fallo = true;
+	else $p = (isset($r['body'][0]) && is_array($r['body'][0])) ? $r['body'][0] : null;
 }
 /* ¿Es el código de un contrato que Standarte SUSTITUYÓ por otro posterior? Al reemitir, el
  * contrato nuevo anota en contract_meta.replaces los códigos que deja sin efecto. Quien
  * tenga el PDF antiguo debe leer «sustituido», no «no encontrado» (como si fuera falso) ni
  * «auténtico» (como si siguiera en vigor). Solo se dice eso: ni referencia ni importes. */
 $superseded = null;
-if ($valid && !$p) {
-	$rows = cpx_rows('client_projects?contract_meta=cs.' . rawurlencode(json_encode(array('replaces' => array(array('code' => $code))))) . '&select=contract_meta&limit=1');
-	if (isset($rows[0]) && is_array($rows[0])) $superseded = $rows[0];
+if ($valid && !$p && !$fallo) {
+	$r = cpx_sb('GET', 'client_projects?contract_meta=cs.' . rawurlencode(json_encode(array('replaces' => array(array('code' => $code))))) . '&select=contract_meta&limit=1');
+	if ((int) $r['code'] !== 200 || !is_array($r['body'])) $fallo = true;
+	elseif (isset($r['body'][0]) && is_array($r['body'][0])) $superseded = $r['body'][0];
 }
+if ($fallo) http_response_code(503);
 $meta = ($p && is_array($p['contract_meta'])) ? $p['contract_meta'] : (($superseded && is_array($superseded['contract_meta'])) ? $superseded['contract_meta'] : array());
 $lang = (isset($meta['lang']) && $meta['lang'] === 'en') ? 'en' : 'es';
 $S = $lang === 'en'
@@ -70,6 +78,10 @@ header('X-Robots-Tag: noindex');
 			<?php if (isset($meta['total_eur'])): ?><dt><?= vf_h($L['total']) ?></dt><dd><?= vf_h(number_format((float) $meta['total_eur'], 2, $lang === 'en' ? '.' : ',', $lang === 'en' ? ',' : '.')) ?> €</dd><?php endif; ?>
 			<dt><?= vf_h($L['lang']) ?></dt><dd><?= $lang === 'en' ? 'English' : 'Español' ?></dd>
 		</dl>
+	<?php elseif ($fallo): ?>
+		<h1>✕ <?= vf_h($lang === 'en' ? 'Verification unavailable' : 'No se ha podido comprobar') ?></h1>
+		<p class="sub"><?= vf_h($lang === 'en' ? 'The code could not be checked right now. Please try again in a few minutes. This does not mean the document is not authentic.' : 'No se ha podido comprobar el código en este momento. Inténtelo de nuevo dentro de unos minutos. Esto no significa que el documento no sea auténtico.') ?></p>
+		<dl><dt><?= vf_h($L['code']) ?></dt><dd class="code"><?= vf_h($code) ?></dd></dl>
 	<?php elseif ($superseded): ?>
 		<h1>✕ <?= vf_h($S['h']) ?></h1>
 		<p class="sub"><?= vf_h($S['sub']) ?></p>
