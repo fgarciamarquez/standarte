@@ -284,6 +284,16 @@ if (!function_exists('cpx_key')) {
 			'status', 'paid', 'approved', 'approved_at', 'approved_with_offer',
 			'contract_done', 'invoice_done', 'invoice2_done',
 			'contract_state', 'invoice_state', 'invoice2_state', 'is_demo', 'testimonial',
+			/* El sello del contrato es del ORIGEN (13/11/2026): copiarlo hacía fallar el
+			 * duplicado de cualquier proyecto con contrato emitido —el índice único de
+			 * contract_code lo rechaza— y, de no fallar, el contrato de la copia diría que
+			 * «sustituye» al de otro cliente. */
+			'contract_code', 'contract_issued_at', 'contract_meta', 'approved_lang',
+			/* Lo que se le ha comunicado al cliente del ORIGEN tampoco es de la copia: con
+			 * client_notified_at heredado, la copia contaba como «ya presentada» desde que
+			 * nacía (recordatorio semanal y «Sus otros proyectos» la daban por comunicada), y
+			 * arrastraba el contador de recordatorios y el último precio avisado. */
+			'client_notified_at', 'reminder_sent_at', 'reminder_count', 'price_notice_total', 'price_notice_at',
 			'last_client_visit', 'visit_notified_at', 'offer_notice_sent_at',
 			'paused', 'paused_reason',
 			'billing_company', 'billing_cif', 'billing_address', 'billing_postal_code',

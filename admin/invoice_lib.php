@@ -410,7 +410,13 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	if ($which === 2 && (!isset($p['invoice_state']) || $p['invoice_state'] !== 'cursado')) $errors[] = 'la Factura 2 solo se emite cuando la Factura 1 está cursada (cobrada)';
 	$splitChk = cpx_payment_split($p);
 	if ($which === 2 && count($splitChk['pct']) === 1) $errors[] = 'la forma de pago es 100 % por anticipado: este proyecto solo lleva una factura';
-	if ($splitChk['error'] !== '') $warnings[] = $splitChk['error'];
+	/* Un reparto que no se entiende NO se factura al 80/20 «por si acaso»: hasta el
+	 * 13/11/2026 la factura salía así y el aviso llegaba después de enviarla. */
+	if ($splitChk['error'] !== '') $errors[] = $splitChk['error'] . ': corrígelo en la forma de pago del proyecto antes de facturar';
+	/* Y la factura no puede decir otro reparto que el contrato ya emitido: así quedó 31C
+	 * (contrato con 80/20, proyecto con pago único). Primero se reemite el contrato. */
+	$mis = cpx_contract_split_mismatch($p);
+	if ($mis !== '') $errors[] = $mis . ': reemite el contrato (en el proyecto, «Generar contrato») o devuelve el reparto a como estaba antes de facturar';
 	if (!$dry && $number !== '' && cpx_invoice_number_taken($number)) $errors[] = 'el número ' . $number . ' ya está usado en otra factura';
 	if ($errors) return array('ok' => false, 'errors' => $errors);
 

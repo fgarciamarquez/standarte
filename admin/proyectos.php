@@ -130,7 +130,7 @@ if (pj_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && post('action') === '
 				. ' (' . number_format($res['total'], 2, ',', '.') . ' €)'
 				. ($res['sent'] ? ' y enviado a ' . $res['email'] : '')
 				. '. Forma de pago: ' . $res['summary']
-				. (!empty($res['replaced']) ? '. Sustituye al contrato ' . $res['replaced'] . ', que sale de la Documentación' : '')
+				. (!empty($res['replaced']) ? '. Sustituye al contrato ' . $res['replaced'] . (!empty($res['retired']) ? ', que sale de la Documentación' : '') : '')
 				. '. Está en la Documentación del proyecto.'
 				. (!empty($res['warnings']) ? ' Avisos: ' . implode('; ', $res['warnings']) . '.' : '');
 			header('Location: proyectos.php?msg=' . urlencode($m)); exit;
@@ -236,9 +236,11 @@ function status_toggle($p, $field) {
 	 * que usan el contrato y las facturas: antes estas etiquetas decían «80 %» y «20 %»
 	 * fijos, también en un proyecto de pago único. */
 	$split = cpx_payment_split($p);
-	$unica = count($split['pct']) === 1;
-	$cual = $unica ? 'única (100 %)'
-		: (($field === 'invoice2_state') ? '2 (' . cpx_split_pct($split['pct'][1]) . ' % restante)' : '1 (' . cpx_split_pct($split['pct'][0]) . ' % de anticipo)');
+	$malo = $split['error'] !== '';
+	$unica = !$malo && count($split['pct']) === 1;
+	$cual = $malo ? (($field === 'invoice2_state') ? '2' : '1') . ' (REPARTO NO VÁLIDO: corrígelo en el proyecto)'
+		: ($unica ? 'única (100 %)'
+		: (($field === 'invoice2_state') ? '2 (' . cpx_split_pct($split['pct'][1]) . ' % restante)' : '1 (' . cpx_split_pct($split['pct'][0]) . ' % de anticipo)'));
 	/* Pago único: no hay segunda factura que emitir. */
 	if ($field === 'invoice2_state' && $unica && $estado === 'pendiente') {
 		return '<span class="st st-off st-ro" title="Pago único (reparto 100): este proyecto lleva una sola factura">—</span>';
@@ -252,7 +254,15 @@ function status_toggle($p, $field) {
 		? 'Emitir la factura ' . $cual . ': te pedirá el número'
 		: ($emiteContrato ? 'Emitir el contrato y enviarlo al cliente: antes te enseña la cláusula de pago que llevará' : 'Cambiar a «' . $estados[$siguiente[$estado]] . '»');
 	$ask = ($esFactura && $estado === 'pendiente') ? ' ask-number' : ($emiteContrato ? ' ask-contract' : '');
-	return '<form method="post" class="st-form' . $ask . '" data-suggest="' . h(isset($GLOBALS['nextInvoice']) ? $GLOBALS['nextInvoice'] : '') . '"'
+	/* Contrato emitido con un reparto que ya no es el del proyecto (así quedó 31C: contrato
+	 * con 80/20, proyecto con pago único): se marca aquí, a la vista, y las facturas no se
+	 * emiten hasta que se reemita. */
+	$aviso = '';
+	if ($field === 'contract_state' && $estado !== 'pendiente') {
+		$mis = cpx_contract_split_mismatch($p);
+		if ($mis !== '') $aviso = '<span class="st-warn" title="' . h(ucfirst($mis) . '. Reemítelo: entra en el proyecto y pulsa «Generar contrato»; el nuevo sustituye a este.') . '">⚠ reemitir</span>';
+	}
+	return $aviso . '<form method="post" class="st-form' . $ask . '" data-suggest="' . h(isset($GLOBALS['nextInvoice']) ? $GLOBALS['nextInvoice'] : '') . '"'
 		. ' data-cual="' . h($cual) . '" data-token="' . h($emiteContrato && isset($p['access_token']) ? $p['access_token'] : '') . '" data-ref="' . h(isset($p['ref']) ? $p['ref'] : '') . '">'
 		. '<input type="hidden" name="action" value="toggle_status">'
 		. '<input type="hidden" name="id" value="' . h($p['id']) . '">'
@@ -275,7 +285,7 @@ function visit_badge($p) {
 	return '<span class="visit' . ($recent ? ' visit-recent' : '') . '" title="Última visita del cliente">' . $d->format('d/m H:i') . '</span>';
 }
 
-$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,client_email,title_es,title_en,paid,approved,contract_state,invoice_state,invoice2_state,payment_split,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
+$projects = pj_authed() ? cpx_rows('client_projects?select=id,ref,client_name,client_email,title_es,title_en,paid,approved,contract_state,invoice_state,invoice2_state,payment_split,payment_terms_es,payment_terms_en,contract_code,contract_meta,access_token,is_demo,created_at,last_client_visit,discount_amount,discount_deadline&order=created_at.desc') : array();
 /* Duplicar: el proyecto de origen se elige en el desplegable del panel de arriba (la
  * fila ya no lleva enlace propio: duplicar se hace desde ahí). Se conserva ?dup=ID por
  * si se llega con un enlace guardado, y el recuento de conceptos/archivos de cada
@@ -346,6 +356,8 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.st-exp { color: #e57373; border-color: #5a2a2a; background: rgba(198,40,40,.12); }
 	.st-ro { cursor: default; }
 	.st-locked { opacity: .45; cursor: not-allowed; }
+	/* Contrato emitido que ya no dice lo que el proyecto: hay que reemitirlo. */
+	.st-warn { display: inline-block; margin-right: 6px; padding: 2px 7px; border-radius: 4px; background: #c62828; color: #fff; font-size: 12px; font-weight: 700; cursor: help; white-space: nowrap; }
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
 	/* Borrar como aspa: la columna de acciones no necesita la palabra, y así el
@@ -636,7 +648,7 @@ document.addEventListener('submit', function (e) {
       }
       var t = ['Vas a EMITIR EL CONTRATO de ' + (f.getAttribute('data-ref') || 'este proyecto') + ' (' + (pv.lang === 'en' ? 'en inglés' : 'en español') + ') y a enviárselo al cliente.', '',
         'Cláusula de pago que llevará (sale del reparto de pago del proyecto):', '«' + pv.clause + '»'];
-      if (pv.split_default) t.push('', 'OJO: el proyecto no tiene reparto de pago escrito; por eso sale el 80/20 por defecto.');
+      (pv.warnings || []).forEach(function (w) { t.push('', 'OJO: ' + w + '.'); });
       if (pv.replaces && pv.replaces.code) t.push('', 'SUSTITUYE al contrato ya emitido ' + pv.replaces.code + ': ese PDF se retira de la Documentación y el correo le dice al cliente que queda sin efecto.');
       t.push('', 'Se enviará a: ' + pv.email, '', '¿Es correcto? Aceptar = emitir y enviar.');
       if (window.confirm(t.join('\n'))) f.submit();

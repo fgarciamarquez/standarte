@@ -116,6 +116,7 @@ if ($action === 'issue_contract') {
 		'email' => isset($res['email']) ? $res['email'] : '',
 		'summary' => isset($res['summary']) ? $res['summary'] : '',
 		'replaced' => isset($res['replaced']) ? $res['replaced'] : '',
+		'retired' => isset($res['retired']) ? (int) $res['retired'] : 0,
 		'warnings' => isset($res['warnings']) ? $res['warnings'] : array()
 	));
 }
@@ -243,8 +244,17 @@ if ($action === 'save') {
 	// Validez de la propuesta y forma de pago
 	if (isset($_POST['proposal_valid_until'])) { $d = pa_post('proposal_valid_until'); $fields['proposal_valid_until'] = ($d === '' ? null : $d); }
 	foreach (array('payment_terms_es', 'payment_terms_en') as $k) { if (isset($_POST[$k])) $fields[$k] = pa_post($k); }
-	/* Reparto de la facturacion: «100» o dos tramos que sumen 100 (ver cpx_payment_split). */
-	if (isset($_POST['payment_split'])) $fields['payment_split'] = pa_post('payment_split');
+	/* Reparto del pago: vacío, «100» o dos tramos que sumen 100 (cpx_payment_split, en
+	 * payment_lib.php). Es lo que manda en la cláusula de pago del contrato y en las
+	 * facturas, así que lo que no se entiende NO se guarda: antes entraba cualquier texto
+	 * («100/0», «único») y la factura salía después al 80/20 (13/11/2026). */
+	if (isset($_POST['payment_split'])) {
+		require_once __DIR__ . '/payment_lib.php';
+		$ps = pa_post('payment_split');
+		$chk = cpx_payment_split(array('payment_split' => $ps));
+		if ($chk['error'] !== '') pa_out(array('ok' => false, 'error' => 'bad_split', 'detail' => $chk['error']));
+		$fields['payment_split'] = $ps;
+	}
 	// Impuestos activables y con porcentaje editable (0 = desactivado)
 	foreach (array('iva_rate', 'irpf_rate') as $k) { if (isset($_POST[$k])) $fields[$k] = (float) str_replace(',', '.', pa_post($k, '0')); }
 	if (empty($fields)) pa_out(array('ok' => false, 'error' => 'no_fields'));
@@ -288,7 +298,26 @@ if ($action === 'save') {
 			cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), array('offer_notice_sent_at' => null));
 		}
 	}
-	pa_out(array('ok' => $ok, 'offer_notified' => $offerNotified, 'valid_until_notified' => $validNotified));
+	/* Aviso temprano, al guardar: si el texto libre de forma de pago de algún idioma
+	 * contradice al reparto, el contrato en ese idioma no se emitirá. Mejor saberlo ahora que
+	 * el día de emitirlo. No impide guardar (los dos textos se escriben por separado). */
+	$payWarnings = array();
+	if ($ok && (isset($_POST['payment_split']) || isset($_POST['payment_terms_es']) || isset($_POST['payment_terms_en']))) {
+		require_once __DIR__ . '/payment_lib.php';
+		$now = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=payment_split,payment_terms_es,payment_terms_en,contract_code,contract_meta&limit=1');
+		if (!empty($now[0])) {
+			$sp = cpx_payment_split($now[0]);
+			if ($sp['error'] === '') {
+				foreach (array('es' => 'español', 'en' => 'inglés') as $lg => $nombre) {
+					$c = cpx_payment_terms_conflict(isset($now[0]['payment_terms_' . $lg]) ? $now[0]['payment_terms_' . $lg] : '', $sp);
+					if ($c !== '') $payWarnings[] = 'contrato en ' . $nombre . ': ' . $c;
+				}
+				$mis = cpx_contract_split_mismatch($now[0]);
+				if ($mis !== '') $payWarnings[] = $mis . ': hay que reemitir el contrato («Generar contrato») antes de facturar';
+			}
+		}
+	}
+	pa_out(array('ok' => $ok, 'offer_notified' => $offerNotified, 'valid_until_notified' => $validNotified, 'pay_warnings' => $payWarnings));
 }
 
 /* Hoja de presupuesto. Cada cambio se compara con el subtotal de ANTES: si el precio
