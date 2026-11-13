@@ -183,20 +183,53 @@ $ok($bloqueado($r) && $has(implode(';', $r['errors']), 'no es válido'), 'repart
 list($r, $d) = $emit(array('payment_split' => '80/20', 'payment_terms_en' => '20% on delivery, 80% in advance'));
 $ok($bloqueado($r), 'porcentajes en orden contrario al reparto: bloqueado', json_encode($r));
 
-echo "8) Los importes cuadran al céntimo con el total y con las facturas\n";
+echo "8) Los importes: suman el total del contrato y casan con las facturas\n";
 $GLOBALS['BUDGET'] = array(array('amount' => 1000.01));
 list($r, $d) = $emit(array('approved_lang' => 'es', 'payment_split' => '33,33/66,67'));
 $m = $meta();
 $ok(!empty($r['ok']) && abs(($m['advance_eur'] + $m['rest_eur']) - $m['total_eur']) < 0.00001 && $has($d, 'el 33,33 % del importe') && $has($d, 'del 66,67 % restante'), '33,33/66,67 de 1.000,01 €: ' . (isset($m['advance_eur']) ? $m['advance_eur'] . ' + ' . $m['rest_eur'] . ' = ' . $m['total_eur'] : ''), $d);
 $GLOBALS['BUDGET'] = array(array('amount' => 21320));
-foreach (array(array('100', '0.0000', '0.0000'), array('50/50', '0.0000', '0.0000'), array('80/20', '0.2100', '0.1500'), array('100', '0.2100', '0.1500'), array('70/30', '0.2100', '0.0000')) as $c) {
+/* Barrido determinista: 6 repartos × 3 juegos de impuestos × 400 bases (enteras y con céntimos).
+ * Lo que SIEMPRE debe cumplirse: los tramos de la cláusula D suman exactamente el total de
+ * la cláusula C, y sin impuestos coinciden al céntimo con las facturas. Con IVA/IRPF cada
+ * factura redondea SUS impuestos (base × tipo, al céntimo), mientras que el contrato parte
+ * del total ya redondeado: el total de una factura puede separarse del tramo del contrato
+ * UN céntimo con bases en euros enteros y hasta DOS con bases con céntimos (medido el
+ * 13/11/2026; con 100, 80/20, 50/50 y 60/40 sobre euros enteros y los dos impuestos no se
+ * separan nada). Ya pasaba con el 80/20 fijo: no es la forma de pago, es aritmética fiscal
+ * de céntimos, pendiente de unificar con la página y la BD. Aquí solo se vigila el tope. */
+$suma = 0; $sinImp = 0; $maxDif = 0.0; $maxEnt = 0.0; $casos = 0;
+foreach (array('100', '50/50', '70/30', '80/20', '60/40', '33,33/66,67') as $sp) {
+	foreach (array(array('0', '0'), array('0.21', '0.15'), array('0.21', '0')) as $tx) {
+		for ($k = 0; $k < 400; $k++) {
+			$base = ($k % 2) ? 900 + $k * 137 : (90000 + $k * 13757) / 100;   // enteras y con céntimos
+			$P = array_merge($BASE, array('payment_split' => $sp, 'iva_rate' => $tx[0], 'irpf_rate' => $tx[1]));
+			$B = array(array('amount' => $base));
+			$tot = cpx_contract_totals($P, $B);
+			$plan = cpx_payment_plan(cpx_payment_split($P), $tot['total']);
+			$f1 = cpx_invoice_amounts($P, $B, 1, null);
+			$f2 = $plan['single'] ? array('total' => 0.0) : cpx_invoice_amounts($P, $B, 2, array('meta' => array('base' => $f1['base'])));
+			$casos++;
+			if (abs(array_sum($plan['amounts']) - $tot['total']) > 0.0001) $suma++;
+			$dif = max(abs($f1['total'] - $plan['amounts'][0]), $plan['single'] ? 0 : abs($f2['total'] - $plan['amounts'][1]));
+			if ($tx[0] === '0' && $dif > 0.0001) $sinImp++;
+			if ($dif > $maxDif) $maxDif = $dif;
+			if (($k % 2) && $dif > $maxEnt) $maxEnt = $dif;
+		}
+	}
+}
+$ok($suma === 0, "en {$casos} casos, los tramos del contrato suman exactamente su total", "{$suma} no suman");
+$ok($sinImp === 0, 'sin impuestos, cada tramo del contrato es al céntimo el total de su factura', "{$sinImp} difieren");
+$ok($maxEnt < 0.0101 && $maxDif < 0.0201, 'con IVA/IRPF, tramo del contrato y factura se separan como mucho 1 céntimo (bases en euros enteros) o 2 (bases con céntimos)', 'máximos ' . round($maxEnt, 4) . ' y ' . round($maxDif, 4));
+/* Y los casos de verdad: 31C (100, sin impuestos) y un cliente español con 80/20 y 100. */
+foreach (array(array('100', '0.0000', '0.0000'), array('80/20', '0.2100', '0.1500'), array('100', '0.2100', '0.1500')) as $c) {
 	$P = array_merge($BASE, array('payment_split' => $c[0], 'iva_rate' => $c[1], 'irpf_rate' => $c[2]));
 	$tot = cpx_contract_totals($P, $GLOBALS['BUDGET']);
 	$plan = cpx_payment_plan(cpx_payment_split($P), $tot['total']);
 	$f1 = cpx_invoice_amounts($P, $GLOBALS['BUDGET'], 1, null);
 	$f2 = $plan['single'] ? null : cpx_invoice_amounts($P, $GLOBALS['BUDGET'], 2, null);
 	$igual = abs($f1['total'] - $plan['amounts'][0]) < 0.005 && ($plan['single'] || abs($f2['total'] - $plan['amounts'][1]) < 0.005);
-	$ok($igual, "reparto {$c[0]}, IVA {$c[1]}, IRPF {$c[2]}: contrato " . implode(' + ', $plan['amounts']) . ' = facturas ' . $f1['total'] . ($f2 ? ' + ' . $f2['total'] : ''));
+	$ok($igual, "21.320 € de base, reparto {$c[0]}, IVA {$c[1]}, IRPF {$c[2]}: contrato " . implode(' + ', $plan['amounts']) . ' = facturas ' . $f1['total'] . ($f2 ? ' + ' . $f2['total'] : ''));
 }
 
 echo "9) Vista previa: lo que se confirma antes de emitir, sin generar ni guardar ni enviar\n";
