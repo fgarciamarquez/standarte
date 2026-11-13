@@ -8,11 +8,17 @@ on:
         description: 'Rutas separadas por espacios'
         required: false
         default: '/galeria /galeria/__data.json /precios /precios/__data.json /en/gallery /en/gallery/__data.json'
+      buscar:
+        description: 'Texto a buscar en el JavaScript de la página (opcional): dice en qué fichero publicado está'
+        required: false
+        default: ''
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - name: Comprobar URL
+        env:
+          BUSCAR: ${{ github.event.inputs.buscar }}
         run: |
           UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36'
           for p in ${{ github.event.inputs.paths }}; do
@@ -27,4 +33,17 @@ jobs:
             echo "cabeceras: $(curl -sSI -A "$UA" "https://standarte.es$p" | grep -iE '^(x-robots-tag|location|content-type|link)' | tr '\r\n' '  ')"
             GB='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
             echo "como Googlebot: $(curl -sS -o /dev/null -A "$GB" -w 'code=%{http_code} redirect=%{redirect_url} size=%{size_download}' "https://standarte.es$p")"
+            # Buscar un texto en el JavaScript publicado de esa página: sirve para saber si el
+            # bundle desplegado es ya el nuevo (13/11/2026: «contract_preview» tras el arreglo
+            # del contrato). SvelteKit no precarga el fichero de la ruta: sale de entry/app.
+            if [ -n "$BUSCAR" ]; then
+              app=$(grep -oE '/_app/immutable/entry/app\.[A-Za-z0-9_-]+\.js' /tmp/body | head -1)
+              echo "buscar «$BUSCAR»: app=$app"
+              hits=0
+              for n in $(curl -sS -A "$UA" "https://standarte.es$app" | grep -oE 'nodes/[0-9]+\.[A-Za-z0-9_-]+\.js' | sort -u); do
+                c=$(curl -sS -A "$UA" "https://standarte.es/_app/immutable/$n" | grep -cF -- "$BUSCAR" || true)
+                if [ "$c" != "0" ]; then echo "  ENCONTRADO en /_app/immutable/$n"; hits=$((hits+1)); fi
+              done
+              echo "  ficheros con el texto: $hits"
+            fi
           done
