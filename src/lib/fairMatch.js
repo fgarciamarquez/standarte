@@ -37,6 +37,8 @@
 export const fairAliases = {
   // El caso que destapó todo: la ficha es de la feria comercial, pero lo que se busca es
   // el congreso y, sobre todo, la sigla de la Orden.
+  // Alta 15/11/2026. «AMT» ya está en el nombre; su desarrollo y lo que el sector teclea, no.
+  'stands-advanced-factories-barcelona': ['Advanced Machine Tools', 'AMT Barcelona', 'Industry 4.0 Congress', 'máquina-herramienta'],
   'stands-expodentaria-lisboa': ['OMD', 'Congresso OMD', 'Congresso da OMD', 'Ordem dos Médicos Dentistas', 'congreso dental Portugal'],
   // Nombres que en el catálogo son solo siglas: la forma desarrollada no era encontrable.
   'stand-cioc-lisboa': ['Congresso Internacional de Optometria e Contactologia', 'optometría', 'contactología', 'UPOOP', 'Évora', 'Leiria'],

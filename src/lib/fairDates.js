@@ -54,6 +54,7 @@ export const fairDates = {
   // FIAA no declara periodicidad en su web; el histórico de ediciones (2022, 2024, 2026) es bienal.
   'stand-fiaa-madrid': { start: '2026-09-22', end: '2026-09-24', cadence: 'biennial', source: 'https://www.ifema.es/fiaa' },
   // Bienal de facto: 2025 en IFEMA y siguiente en 2027; sin edición en 2026.
+  'stands-advanced-factories-barcelona': { start: '2027-03-31', end: '2027-04-02', cadence: 'annual', source: 'https://www.advancedfactories.com/' },
   'stands-rail-live-madrid': { start: '2027-11-24', end: '2027-11-26', cadence: 'biennial', source: 'https://www.ifema.es/rail-live' },
   'stand-morocco-food-expo-casablanca': { start: '2026-09-22', end: '2026-09-24', cadence: 'annual', source: 'https://www.moroccofoodexpo.com/' },
   'stand-sepem-industries-toulouse': { start: '2026-09-22', end: '2026-09-24', cadence: 'biennial', source: 'https://toulouse.sepem-industries.com/' },

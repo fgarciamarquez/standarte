@@ -1085,6 +1085,13 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "Advanced Factories + AMT",
+    "country": "es",
+    "slug": "stands-advanced-factories-barcelona",
+    "city": "Barcelona",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "Equiplast Barcelona",
     "country": "es",
     "slug": "stand-equiplast-barcelona",
