@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 18
+n_ferias: 19
 lat: 41.39
 lon: 2.17
 ---
@@ -10,6 +10,7 @@ lon: 2.17
 Ciudad dibujada en el mapa de Pat.
 
 ## Ferias aquí
+- [[Advanced Factories + AMT]]
 - [[Alimentaria Barcelona]]
 - [[Automobile Barcelona]]
 - [[Barcelona Wine Week]]

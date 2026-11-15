@@ -2,7 +2,7 @@
 tipo: actividad
 clave: maquinaria-industrial
 sector: "Industria y Logística"
-n_ferias: 47
+n_ferias: 48
 ---
 # Maquinaria industrial
 
@@ -12,6 +12,7 @@ Actividad del sector [[Industria y Logística]].
 - [[+Industry Bilbao]]
 - [[ALINA]]
 - [[AMB Stuttgart]]
+- [[Advanced Factories + AMT]]
 - [[Advanced Manufacturing Madrid]]
 - [[AgroAlcañiz]]
 - [[BIEMH Bilbao]]
