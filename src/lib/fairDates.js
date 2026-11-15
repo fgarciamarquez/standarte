@@ -352,6 +352,17 @@ export const fairDates = {
   'stands-tecma-madrid': { start: '2028-06-06', end: '2028-06-08', cadence: 'biennial', source: 'https://www.ifema.es/tecma' },
   // ESVS Annual Meeting 2027 (28 sep-1 oct, Centro de Congressos de Lisboa): congreso ITINERANTE (2026 en Belgrado) → revisar sede tras 2027 (precedente CIOC → "Itinerante").
   'stands-esvs-annual-meeting-lisboa': { start: '2027-09-28', end: '2027-10-01', cadence: 'annual', source: 'https://esvs.org/event/esvs-41st-annual-meeting/' },
+  // Tanda 2026-11-15 (Madrid, Lisboa, Oporto): fechas de la web oficial de cada organizador.
+  // Anuga Select Ibérica 2027 (16-18 feb, IFEMA): primera edición; Koelnmesse + IFEMA, absorbe Meat Attraction e InterSICOP. Anual.
+  'stands-anuga-select-iberica-madrid': { start: '2027-02-16', end: '2027-02-18', cadence: 'annual', source: 'https://www.ifema.es/anuga-select-iberica' },
+  // Estampa 2027 (14-17 oct, IFEMA). Anual; la de 2026 fue 24-27 sep.
+  'stands-estampa-madrid': { start: '2027-10-14', end: '2027-10-17', cadence: 'annual', source: 'https://www.ifema.es/estampa' },
+  // ESGE Days 2027 (29 abr-1 may, Centro de Congressos de Lisboa; cursos previos el 28). Congreso ITINERANTE → revisar sede tras 2027.
+  'stands-esge-days-lisboa': { start: '2027-04-29', end: '2027-05-01', cadence: 'annual', source: 'https://esgedays.org/' },
+  // EAIE Conference and Exhibition 2027 (7-10 sep, FIL Lisboa; 37.ª edición). Cambia de ciudad cada año → revisar sede tras 2027.
+  'stands-eaie-lisboa': { start: '2027-09-07', end: '2027-09-10', cadence: 'annual', source: 'https://www.eaie.org/events/lisbon.html' },
+  // 360 Tech Industry: última edición confirmada en Exponor (20-21 may 2026). La de 2027 aún no está publicada → «por confirmar».
+  'stands-360-tech-industry-oporto': { start: '2026-05-20', end: '2026-05-21', cadence: 'annual', source: 'https://exponor.pt/360-tech-industry/' },
 };
 
 /** Periodicidad de una feria, en los 11 idiomas (para la línea de tiempo). */

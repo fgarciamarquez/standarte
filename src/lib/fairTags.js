@@ -572,6 +572,11 @@ export const fairActivities = {
   "stands-cprint-madrid": ["packaging","regalo-decoracion"],
   "stands-tecma-madrid": ["smart-city","construccion"],
   "stands-esvs-annual-meeting-lisboa": ["congreso-medico"],
+  "stands-anuga-select-iberica-madrid": ["alimentacion","gastronomia-hosteleria"],
+  "stands-estampa-madrid": ["cultura-arte"],
+  "stands-esge-days-lisboa": ["congreso-medico"],
+  "stands-eaie-lisboa": ["congreso-profesional"],
+  "stands-360-tech-industry-oporto": ["maquinaria-industrial","digital-software"],
 };
 
 // Helpers

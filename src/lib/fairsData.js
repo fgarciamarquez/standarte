@@ -2366,6 +2366,20 @@ export const fairsData = [
     "sector": "Salud y Medicina"
   },
   {
+    "name": "ESGE Days",
+    "country": "pt",
+    "slug": "stands-esge-days-lisboa",
+    "city": "Lisboa",
+    "sector": "Salud y Medicina"
+  },
+  {
+    "name": "EAIE Conference and Exhibition",
+    "country": "pt",
+    "slug": "stands-eaie-lisboa",
+    "city": "Lisboa",
+    "sector": "Formación y Empleo"
+  },
+  {
     "name": "Vinipax Beja",
     "country": "pt",
     "slug": "stand-vinipax-beja",
@@ -2793,6 +2807,13 @@ export const fairsData = [
     "sector": "Agroalimentario y Naturaleza"
   },
   {
+    "name": "360 Tech Industry",
+    "country": "pt",
+    "slug": "stands-360-tech-industry-oporto",
+    "city": "Oporto",
+    "sector": "Industria y Logística"
+  },
+  {
     "name": "Enoforum",
     "country": "es",
     "slug": "stands-enoforum-zaragoza",
@@ -3071,6 +3092,20 @@ export const fairsData = [
     "slug": "stands-tecma-madrid",
     "city": "Madrid",
     "sector": "Medioambiente y Tecnologías Limpias"
+  },
+  {
+    "name": "Anuga Select Ibérica",
+    "country": "es",
+    "slug": "stands-anuga-select-iberica-madrid",
+    "city": "Madrid",
+    "sector": "Alimentación y Bebidas"
+  },
+  {
+    "name": "Estampa",
+    "country": "es",
+    "slug": "stands-estampa-madrid",
+    "city": "Madrid",
+    "sector": "Arte y Ocio"
   },
   {
     "name": "Feria del Jamón de Teruel y Alimentos de Calidad",

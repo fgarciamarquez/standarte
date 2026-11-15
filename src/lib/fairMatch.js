@@ -46,6 +46,11 @@ export const fairAliases = {
   'stands-cprint-madrid': ['CPrint','C Print','salón de la impresión','comunicación visual','personalización','rotulación'],
   'stands-tecma-madrid': ['Feria Internacional del Urbanismo y el Medio Ambiente','SRR','FSMS','Foro de las Ciudades','reciclado','servicios urbanos'],
   'stands-esvs-annual-meeting-lisboa': ['European Society for Vascular Surgery','cirugía vascular','cirurgia vascular','vascular surgery','ESVS 2027'],
+  'stands-anuga-select-iberica-madrid': ['Anuga','Anuga Iberica','Koelnmesse','Bakery & Ice Cream Attraction','feria alimentación Madrid'],
+  'stands-estampa-madrid': ['feria de arte contemporáneo Madrid','coleccionismo','galerías de arte','Ensayo Futuro'],
+  'stands-esge-days-lisboa': ['European Society of Gastrointestinal Endoscopy','endoscopia digestiva','endoscopia','ESGENA','ESGE 2027'],
+  'stands-eaie-lisboa': ['EAIE','European Association for International Education','internacionalización universitaria','universidades','EAIE Lisbon 2027'],
+  'stands-360-tech-industry-oporto': ['360 Tech','indústria 4.0','industria 4.0','robótica','automação industrial'],
 };
 
 /* Normalización. Fuera acentos latinos, todo a minúsculas y cualquier racha de signos
