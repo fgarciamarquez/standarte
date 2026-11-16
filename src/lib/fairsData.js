@@ -1085,6 +1085,13 @@ export const fairsData = [
     "sector": "Tecnología e Innovación"
   },
   {
+    "name": "Gastronomic Forum Barcelona",
+    "country": "es",
+    "slug": "stands-gastronomic-forum-barcelona",
+    "city": "Barcelona",
+    "sector": "Turismo y Hostelería"
+  },
+  {
     "name": "Advanced Factories + AMT",
     "country": "es",
     "slug": "stands-advanced-factories-barcelona",
