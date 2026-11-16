@@ -1,7 +1,7 @@
 ---
 tipo: ciudad
 en_mapa: true
-n_ferias: 19
+n_ferias: 20
 lat: 41.39
 lon: 2.17
 ---
@@ -19,6 +19,7 @@ Ciudad dibujada en el mapa de Pat.
 - [[Equiplast Barcelona]]
 - [[Expoquimia Barcelona]]
 - [[Forum Dental del Mediterráneo]]
+- [[Gastronomic Forum Barcelona]]
 - [[Hispack Barcelona]]
 - [[Hostelco Barcelona]]
 - [[ISE Barcelona]]

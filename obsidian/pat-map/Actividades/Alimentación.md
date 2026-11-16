@@ -2,7 +2,7 @@
 tipo: actividad
 clave: alimentacion
 sector: "Agroalimentario y Naturaleza"
-n_ferias: 53
+n_ferias: 54
 ---
 # Alimentación
 
@@ -38,6 +38,7 @@ Actividad del sector [[Agroalimentario y Naturaleza]].
 - [[Fira del Camp]]
 - [[Fruit Attraction Madrid]]
 - [[Fòrum Gastronòmic Girona]]
+- [[Gastronomic Forum Barcelona]]
 - [[Gran Canaria Me Gusta]]
 - [[Gustoko Bilbao]]
 - [[HIP Madrid]]

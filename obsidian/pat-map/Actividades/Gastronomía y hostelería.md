@@ -2,7 +2,7 @@
 tipo: actividad
 clave: gastronomia-hosteleria
 sector: "Turismo y Hostelería"
-n_ferias: 43
+n_ferias: 44
 ---
 # Gastronomía y hostelería
 
@@ -28,6 +28,7 @@ Actividad del sector [[Turismo y Hostelería]].
 - [[Fòrum Gastronòmic Girona]]
 - [[Galicia Fórum Gastronómico]]
 - [[GastroCanarias]]
+- [[Gastronomic Forum Barcelona]]
 - [[Gastrónoma]]
 - [[Gran Canaria Me Gusta]]
 - [[Gustoko Bilbao]]
