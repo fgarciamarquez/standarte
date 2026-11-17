@@ -673,11 +673,15 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	 * salen solo en euros: los tipos de cambio se piden al emitir). */
 	if (!empty($opts['preview'])) {
 		$Tp = cpx_contract_texts($lang);
+		/* Qué imágenes irán en el anexo: las seis primeras del proyecto, en el orden en que
+		 * el cliente las ve AHORA (así se sabe, antes de regenerar, que salen las nuevas). */
+		$nImg = count(cpx_rows('client_project_media?project_id=eq.' . urlencode($projectId) . '&type=eq.image&select=id'));
+		$annex = $nImg ? 'las ' . min(6, $nImg) . ' primeras imágenes del proyecto, en su orden actual' . ($nImg > 6 ? ' (hay ' . $nImg . '; para que entre otra, súbela de posición)' : '') : 'el proyecto no tiene imágenes: el contrato saldría sin anexo';
 		return array('ok' => true, 'preview' => true, 'lang' => $lang, 'total' => $tot['total'], 'email' => $email,
 			'clause' => cpx_contract_payment_clause(array('lang' => $lang, 'client' => $client, 'plan' => $plan, 'rates' => null, 'iban' => $iban, 'bic' => $bic, 'fair_city' => $fairCity, 'pay_terms' => $payTerms), $Tp),
 			'summary' => $summary, 'split' => cpx_split_label($split), 'split_default' => !empty($split['default']),
 			'replaces' => $prev ? $prev : ($replaces ? array('code' => $replaces[count($replaces) - 1]['code'], 'issued_at' => null, 'state' => '') : null),
-			'replaces_all' => array_map(function ($x) { return $x['code']; }, $replaces), 'warnings' => $warnings);
+			'replaces_all' => array_map(function ($x) { return $x['code']; }, $replaces), 'annex' => $annex, 'warnings' => $warnings);
 	}
 
 	$issued = time();

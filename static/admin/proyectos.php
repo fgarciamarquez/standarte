@@ -262,7 +262,23 @@ function status_toggle($p, $field) {
 		$mis = cpx_contract_split_mismatch($p);
 		if ($mis !== '') $aviso = '<span class="st-warn" title="' . h(ucfirst($mis) . '. Reemítelo: entra en el proyecto y pulsa «Generar contrato»; el nuevo sustituye a este.') . '">⚠ reemitir</span>';
 	}
-	return $aviso . '<form method="post" class="st-form' . $ask . '" data-suggest="' . h(isset($GLOBALS['nextInvoice']) ? $GLOBALS['nextInvoice'] : '') . '"'
+	/* REGENERAR (17/11/2026, petición del usuario: «debes darme la posibilidad de regenerar
+	 * cualquier contrato en base a los archivos que están subidos en cada proyecto»). Un
+	 * contrato ya emitido o cursado se vuelve a generar con lo que el proyecto tiene AHORA
+	 * —imágenes del anexo, presupuesto, datos del cliente, forma de pago— y sustituye al
+	 * anterior. Misma orden que emitir (contract_state → emitido) y misma confirmación con
+	 * vista previa (formulario ask-contract). */
+	$regen = '';
+	if ($field === 'contract_state' && $estado !== 'pendiente' && !empty($p['approved'])) {
+		$regen = '<form method="post" class="st-form ask-contract" data-regen="1" data-token="' . h(isset($p['access_token']) ? $p['access_token'] : '') . '" data-ref="' . h(isset($p['ref']) ? $p['ref'] : '') . '">'
+			. '<input type="hidden" name="action" value="toggle_status">'
+			. '<input type="hidden" name="id" value="' . h($p['id']) . '">'
+			. '<input type="hidden" name="field" value="contract_state">'
+			. '<input type="hidden" name="value" value="emitido">'
+			. '<button type="submit" class="st st-regen" title="Regenerar el contrato con las imágenes y los datos que el proyecto tiene ahora. Sustituye al actual y se envía al cliente; antes te enseña lo que va a salir.">↻ Regenerar</button>'
+			. '</form>';
+	}
+	return $aviso . $regen . '<form method="post" class="st-form' . $ask . '" data-suggest="' . h(isset($GLOBALS['nextInvoice']) ? $GLOBALS['nextInvoice'] : '') . '"'
 		. ' data-cual="' . h($cual) . '" data-token="' . h($emiteContrato && isset($p['access_token']) ? $p['access_token'] : '') . '" data-ref="' . h(isset($p['ref']) ? $p['ref'] : '') . '">'
 		. '<input type="hidden" name="action" value="toggle_status">'
 		. '<input type="hidden" name="id" value="' . h($p['id']) . '">'
@@ -357,6 +373,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 	.st-ro { cursor: default; }
 	.st-locked { opacity: .45; cursor: not-allowed; }
 	/* Contrato emitido que ya no dice lo que el proyecto: hay que reemitirlo. */
+	.st-regen { background: transparent; border: 1px solid #ffc800; color: #ffc800; margin-right: 6px; cursor: pointer; }
 	.st-warn { display: inline-block; margin-right: 6px; padding: 2px 7px; border-radius: 4px; background: #c62828; color: #fff; font-size: 12px; font-weight: 700; cursor: help; white-space: nowrap; }
 	.del { background: transparent; color: #e57373; border: 1px solid #5a2a2a; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 	.del:hover { background: #c62828; color: #fff; border-color: #c62828; }
@@ -554,7 +571,7 @@ function cnt($counts, $kind, $id) { return isset($counts[$kind][$id]) ? (int) $c
 		<h3>Proyectos</h3>
 		<p class="hint">Para completar datos, presupuesto, archivos o responder comentarios, pincha el nombre del
 			cliente: al estar tu sesión iniciada, la propia página del proyecto se vuelve editable.</p>
-		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto). En <strong>Contrato</strong>, pasar a «Emitido» genera el contrato con los datos del proyecto y se lo envía al cliente; antes te enseña la <strong>cláusula de pago</strong> que llevará (sale del reparto de pago del proyecto: 100, 50/50, 80/20…) y solo emite si aceptas. Para <strong>volver a emitir</strong> un contrato ya emitido, entra en el proyecto y pulsa «Generar contrato»: el nuevo sustituye al anterior. <strong>Prueba</strong> te manda solo a ti (javier@standarte.es) el contrato y la Factura 1 tal y como saldrían, sin guardar nada ni avisar al cliente.</p>
+		<p class="hint">Aprobado lo marca el cliente. Contrato y facturas los llevas tú: cada clic avanza <strong>Pendiente → Emitido → Cursado</strong> (emitido = enviado; cursado = cobrado o contrato firmado devuelto). En <strong>Contrato</strong>, pasar a «Emitido» genera el contrato con los datos del proyecto y se lo envía al cliente; antes te enseña la <strong>cláusula de pago</strong> que llevará (sale del reparto de pago del proyecto: 100, 50/50, 80/20…) y solo emite si aceptas. Para <strong>regenerar</strong> un contrato ya emitido —por ejemplo, tras cambiar las imágenes del proyecto— pulsa <strong>«↻ Regenerar»</strong> junto a su estado (o «Regenerar contrato» dentro del proyecto): se vuelve a generar con las imágenes y los datos que el proyecto tiene en ese momento, sustituye al anterior y se envía al cliente. <strong>Prueba</strong> te manda solo a ti (javier@standarte.es) el contrato y la Factura 1 tal y como saldrían, sin guardar nada ni avisar al cliente.</p>
 		<div class="pj-list">
 			<div class="pj-head">
 				<span>Ref</span><span>Cliente</span><span>Aprobado</span><span>Contrato</span><span>Factura 1</span><span>Factura 2</span><span>Extras</span><span>Visto</span><span></span>
@@ -651,6 +668,7 @@ document.addEventListener('submit', function (e) {
       (pv.warnings || []).forEach(function (w) { t.push('', 'OJO: ' + w + '.'); });
       var sust = (pv.replaces_all && pv.replaces_all.length) ? pv.replaces_all.join(', ') : ((pv.replaces && pv.replaces.code) || '');
       if (sust) t.push('', 'SUSTITUYE al contrato ya emitido ' + sust + ': sale de la Documentación, y el contrato nuevo y su correo le dicen al cliente que queda sin efecto.');
+      if (pv.annex) t.push('', 'Anexo: ' + pv.annex + '.');
       t.push('', 'Se enviará a: ' + pv.email, '', '¿Es correcto? Aceptar = emitir y enviar.');
       if (window.confirm(t.join('\n'))) f.submit();
     })

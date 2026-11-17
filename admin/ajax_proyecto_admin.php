@@ -86,7 +86,8 @@ if ($action === 'contract_preview') {
 	if (empty($res['ok'])) pa_out(array('ok' => false, 'error' => 'issue_failed', 'detail' => implode('; ', $res['errors'])));
 	pa_out(array('ok' => true, 'preview' => true, 'lang' => $res['lang'], 'total' => $res['total'], 'email' => $res['email'],
 		'clause' => $res['clause'], 'summary' => $res['summary'], 'split' => $res['split'], 'split_default' => $res['split_default'],
-		'replaces' => $res['replaces'], 'warnings' => $res['warnings']));
+		'replaces' => $res['replaces'], 'replaces_all' => isset($res['replaces_all']) ? $res['replaces_all'] : array(),
+		'annex' => isset($res['annex']) ? $res['annex'] : '', 'warnings' => $res['warnings']));
 }
 
 /* ---------- Emitir el contrato desde la propia pagina del proyecto ----------
