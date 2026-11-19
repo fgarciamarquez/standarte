@@ -97,6 +97,12 @@ function cpx_contract_texts($lang) {
 			 * anterior, tal cual. (Hasta el 13/11/2026 la sustituía: «D_custom», que no decía
 			 * importes, ni a quién se paga, ni cuándo vence el segundo tramo.) */
 			'D_terms' => 'Forma de pago acordada entre las partes: %s.',
+			/* Dos tramos CON forma de pago escrita: la cláusula da importes, beneficiario y
+			 * cuenta, y el momento de cada pago lo pone el texto acordado (19/11/2026, caso
+			 * 31C: «50 % por adelantado / 50 % tras la demostración de producción, antes del
+			 * evento»). Con D_two + D_terms el contrato decía a la vez «una vez entregado el
+			 * proyecto» y lo pactado, que es otra fecha. */
+			'D_two_terms' => 'D. %1$s abonará el importe en dos pagos mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte)%2$s: un primer pago del %3$s %% (%4$s) y un segundo pago del %5$s %% restante (%6$s), conforme a la forma de pago acordada entre las partes: %7$s.',
 			/* Solo en un contrato REEMITIDO: deja escrito en el propio documento a cuál
 			 * sustituye, para que dos PDF sellados no digan cosas distintas sin aclarar cuál vale. */
 			'replaces' => 'QUINTO. El presente contrato sustituye y deja sin efecto %s.',
@@ -149,6 +155,7 @@ function cpx_contract_texts($lang) {
 			'D_account' => ', to account %s (BIC %s)',
 			'D_where_fallback' => 'the fair venue',
 			'D_terms' => 'Payment terms agreed between the parties: %s.',
+			'D_two_terms' => 'D. %1$s shall pay the amount in two payments to Francisco Javier García Márquez (Owner of Standarte) via bank transfer%2$s: a first payment of %3$s%% (%4$s) and a second payment of the remaining %5$s%% (%6$s), according to the payment terms agreed between the parties: %7$s.',
 			'replaces' => 'FIFTH. This agreement replaces and supersedes %s.',
 			'replaces_one' => 'the one issued on %s under code %s', 'replaces_one_nodate' => 'the one issued under code %s',
 			'replaces_many' => 'those issued under codes %s', 'replaces_and' => ' and ',
@@ -392,12 +399,16 @@ function cpx_contract_payment_clause($d, $T) {
 	$plan = $d['plan'];
 	$acc = ($d['iban'] !== '') ? sprintf($T['D_account'], $d['iban'], $d['bic']) : '';
 	$first = cpx_money_all($plan['amounts'][0], $d['rates'], $lang);
+	$terms = isset($d['pay_terms']) ? rtrim(trim((string) $d['pay_terms']), " \t\n\r.;") : '';
+	if (!$plan['single'] && $terms !== '') {
+		return sprintf($T['D_two_terms'], $d['client'], $acc, cpx_split_pct($plan['pct'][0], $lang), $first,
+			cpx_split_pct($plan['pct'][1], $lang), cpx_money($plan['amounts'][1], $lang, 'EUR'), $terms);
+	}
 	$out = $plan['single']
 		? sprintf($T['D_single'], $d['client'], $first, $acc)
 		: sprintf($T['D_two'], $d['client'], cpx_split_pct($plan['pct'][0], $lang), $first, $acc,
 			cpx_split_pct($plan['pct'][1], $lang), cpx_money($plan['amounts'][1], $lang, 'EUR'),
 			$d['fair_city'] !== '' ? $d['fair_city'] : $T['D_where_fallback']);
-	$terms = isset($d['pay_terms']) ? rtrim(trim((string) $d['pay_terms']), " \t\n\r.;") : '';
 	if ($terms !== '') $out .= ' ' . sprintf($T['D_terms'], $terms);
 	return $out;
 }
@@ -409,6 +420,9 @@ function cpx_contract_payment_summary($plan, $payTerms) {
 	$s = $plan['single']
 		? 'pago único del 100 % por adelantado (' . $m($plan['amounts'][0]) . ')'
 		: cpx_split_pct($plan['pct'][0]) . ' % por adelantado (' . $m($plan['amounts'][0]) . ') y ' . cpx_split_pct($plan['pct'][1]) . ' % a la entrega (' . $m($plan['amounts'][1]) . ')';
+	if ($payTerms !== '' && !$plan['single']) {
+		return 'dos pagos, ' . cpx_split_pct($plan['pct'][0]) . ' % (' . $m($plan['amounts'][0]) . ') y ' . cpx_split_pct($plan['pct'][1]) . ' % (' . $m($plan['amounts'][1]) . '), con los plazos de la forma de pago escrita («' . $payTerms . '»)';
+	}
 	return ($payTerms !== '') ? $s . ', más el texto del proyecto («' . $payTerms . '»)' : $s;
 }
 
@@ -617,7 +631,7 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	 * no se cambia cambiando el reparto. (Tolerancia de 2 céntimos: cada factura redondea sus
 	 * propios impuestos.) */
 	if ($split['error'] === '' && $tot['total'] > 0) {
-		foreach (cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&which=eq.1&select=number,amount_eur&limit=1') as $f1) {
+		foreach (cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&which=eq.1&state=neq.anulada&select=number,amount_eur&order=issued_at.desc&limit=1') as $f1) {   // una factura anulada (su PDF borrado) ya no cuenta
 			if (isset($f1['amount_eur']) && abs((float) $f1['amount_eur'] - $plan['amounts'][0]) > 0.02) {
 				$errors[] = 'ya hay una Factura 1 emitida (nº ' . (isset($f1['number']) ? $f1['number'] : '?') . ', ' . number_format((float) $f1['amount_eur'], 2, ',', '.') . ' €) y con el reparto «'
 					. cpx_split_label($split) . '» el contrato diría ' . number_format($plan['amounts'][0], 2, ',', '.') . ' €: el contrato no puede contradecir lo ya facturado; revisa el reparto de pago';

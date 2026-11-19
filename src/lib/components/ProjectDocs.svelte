@@ -89,11 +89,16 @@
     return `${L.docError}${e ? ` (${e}${r.code ? ' ' + r.code : ''})` : ''}`;
   }
 
-  async function del(id) {
+  // Borrar el PDF de la Factura 1 o 2 la ANULA (19/11/2026): se dice antes, porque no
+  // tiene vuelta atrás y el número de factura no se puede volver a usar.
+  async function del(d) {
+    const esFactura = d.kind === 'factura_anticipo' || d.kind === 'factura_final';
+    if (esFactura && !confirm(`${L.docDelInvoice}\n\n«${d.title}»`)) return;
     busy = true; msg = '';
     try {
-      const r = await adminAction(token, 'del_doc', { doc_id: id });
+      const r = await adminAction(token, 'del_doc', { doc_id: d.id });
       if (!r || !r.ok) msg = errorText(r);
+      else if (r.annulled) msg = `${L.docAnnulled} ${r.annulled}`;
       await reload();
     } finally { busy = false; }
   }
@@ -122,7 +127,7 @@
             {/if}
           </span>
         {/if}
-        {#if admin}<button type="button" class="pz-doc-del" on:click={() => del(d.id)} disabled={busy}>{L.del}</button>{/if}
+        {#if admin}<button type="button" class="pz-doc-del" on:click={() => del(d)} disabled={busy}>{L.del}</button>{/if}
       </li>
     {/each}
   </ul>

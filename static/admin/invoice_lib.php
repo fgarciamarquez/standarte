@@ -405,7 +405,7 @@ function cpx_invoice_issue($projectId, $which, $number, $opts = array()) {
 	$iban = trim((string) (isset($p['income_account']) ? $p['income_account'] : ''));
 	if ($iban === '') $errors[] = 'el proyecto no tiene cuenta de ingreso';
 	$budget = cpx_budget_rows($projectId, 'amount,concept_es,concept_en');  // sin las opcionales no confirmadas
-	$inv = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&select=which,number,meta,amount_eur&order=issued_at.asc');
+	$inv = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&state=neq.anulada&select=which,number,meta,amount_eur&order=issued_at.asc');   // las anuladas no cuentan
 	$prev1 = null; foreach ($inv as $r) { if ((int) $r['which'] === 1) $prev1 = $r; }
 	if ($which === 2 && (!isset($p['invoice_state']) || $p['invoice_state'] !== 'cursado')) $errors[] = 'la Factura 2 solo se emite cuando la Factura 1 está cursada (cobrada)';
 	$splitChk = cpx_payment_split($p);
@@ -542,7 +542,7 @@ function cpx_parse_amount($raw) {
  * proyecto no tiene ninguna factura emitida se usan los tipos del proyecto, y se dice.
  * Devuelve iva_rate, irpf_rate, source ('invoice'|'project') y number (la de referencia). */
 function cpx_invoice_tax_basis($projectId, $p) {
-	$rows = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&select=number,which,meta,issued_at&order=issued_at.desc');
+	$rows = cpx_rows('client_project_invoices?project_id=eq.' . urlencode($projectId) . '&state=neq.anulada&select=number,which,meta,issued_at&order=issued_at.desc');   // las anuladas no cuentan
 	foreach ((array) $rows as $r) {
 		$m = (isset($r['meta']) && is_array($r['meta'])) ? $r['meta'] : array();
 		if (isset($m['iva_rate']) && is_numeric($m['iva_rate']) && isset($m['irpf_rate']) && is_numeric($m['irpf_rate'])) {

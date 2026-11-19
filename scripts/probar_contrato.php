@@ -50,7 +50,8 @@ function cpx_rows($ep) {
 	if (strpos($ep, 'client_project_invoices?') === 0) {
 		if (strpos($ep, 'number=eq.') !== false) return array();   // «¿ese número ya está usado?»: no
 		$w = preg_match('/which=eq\.(\d)/', $ep, $m) ? (int) $m[1] : 0;
-		return array_values(array_filter($GLOBALS['INVOICES'], function ($r) use ($w) { return !$w || (int) $r['which'] === $w; }));
+		$sinAnuladas = strpos($ep, 'state=neq.anulada') !== false;
+		return array_values(array_filter($GLOBALS['INVOICES'], function ($r) use ($w, $sinAnuladas) { return (!$w || (int) $r['which'] === $w) && !($sinAnuladas && isset($r['state']) && $r['state'] === 'anulada'); }));
 	}
 	return array();
 }
@@ -198,9 +199,13 @@ $ok($d === 'D. Thirty One C Ltd abonará por adelantado el 100 % del importe (21
 list($r, $d) = $emit(array('payment_terms_en' => '100% in avance'));
 $ok($d === 'D. Thirty One C Ltd shall pay 100% of the amount (€21,320.00 (US$ 23,025.60 / £ 17,908.80)) in advance to Francisco Javier García Márquez (Owner of Standarte) via bank transfer, to account ES00 1111 2222 3333 4444 5555 (BIC PRUEESMM000). Payment terms agreed between the parties: 100% in avance.', 'inglés, 100 + «100% in avance» (Shining 3D): 100 %, nunca 80/20', $d);
 list($r, $d) = $emit(array('payment_split' => null, 'payment_terms_en' => '80% in advance / 20% post-delivery'));
-$ok($has($d, 'shall pay 80% of the amount (€17,056.00') && $has($d, 'The final payment of the remaining 20% (€4,264.00) will be made after the project is delivered in Lisboa. Payment terms agreed between the parties: 80% in advance / 20% post-delivery.'), 'texto 80/20 + reparto vacío (Meermeat, Pepper): cláusula 80/20 completa + texto', $d);
+$ok($d === 'D. Thirty One C Ltd shall pay the amount in two payments to Francisco Javier García Márquez (Owner of Standarte) via bank transfer, to account ES00 1111 2222 3333 4444 5555 (BIC PRUEESMM000): a first payment of 80% (€17,056.00 (US$ 18,420.48 / £ 14,327.04)) and a second payment of the remaining 20% (€4,264.00), according to the payment terms agreed between the parties: 80% in advance / 20% post-delivery.', 'texto 80/20 + reparto vacío (Meermeat, Pepper): dos pagos con importes y los plazos del texto, sin «una vez entregado»', $d);
 list($r, $d) = $emit(array('approved_lang' => 'es', 'payment_split' => '80/20', 'payment_terms_es' => '80% in advance'));
-$ok(!empty($r['ok']) && $has($d, 'El pago final del 20 % restante (4.264,00 €) se realizará una vez entregado el proyecto en Lisboa. Forma de pago acordada entre las partes: 80% in advance.'), 'el texto solo nombra el primer tramo (Lontex en español): el segundo tramo conserva su importe y su vencimiento', $d);
+$ok(!empty($r['ok']) && $has($d, 'abonará el importe en dos pagos mediante transferencia bancaria a Francisco Javier García Márquez (titular de Standarte), en la cuenta ES00 1111 2222 3333 4444 5555 (BIC PRUEESMM000): un primer pago del 80 % (17.056,00 €') && $has($d, 'un segundo pago del 20 % restante (4.264,00 €), conforme a la forma de pago acordada entre las partes: 80% in advance.') && !$has($d, 'entregado'), 'el texto solo nombra el primer tramo (Lontex en español): dos pagos con sus importes, sin un vencimiento que contradiga al texto', $d);
+/* El caso real de 31C (19/11/2026): 50/50 con el segundo pago tras la demostración de producción. */
+list($r, $d) = $emit(array('payment_split' => '50/50', 'payment_terms_en' => '50% in advance / 50% following production demonstration (before the event)'));
+$ok(!empty($r['ok']) && $has($d, 'a first payment of 50% (€10,660.00') && $has($d, 'a second payment of the remaining 50% (€10,660.00), according to the payment terms agreed between the parties: 50% in advance / 50% following production demonstration (before the event).') && !$has($d, 'delivered'), '31C, 50/50 «tras la demostración de producción»: el contrato no dice «after the project is delivered»', $d);
+$ok($r['summary'] === 'dos pagos, 50 % (10.660,00 €) y 50 % (10.660,00 €), con los plazos de la forma de pago escrita («50% in advance / 50% following production demonstration (before the event)»)', 'y el resumen para el gestor lo dice así', $r['summary']);
 list($r, $d) = $emit(array('approved_lang' => 'es', 'payment_terms_es' => 'Transferencia bancaria al aprobar el diseño.'));
 $ok(!empty($r['ok']) && $has($d, 'abonará por adelantado el 100 % del importe (21.320,00 €') && $has($d, 'Forma de pago acordada entre las partes: Transferencia bancaria al aprobar el diseño.') && !$has($d, 'diseño..'), 'texto sin porcentajes: va detrás y el importe lo pone el reparto', $d);
 $ok(!empty(array_filter($r['warnings'], function ($w) { return strpos($w, 'no se ha podido cotejar') !== false; })), 'y AVISA de que ese texto no se ha podido cotejar', implode('; ', $r['warnings']));
@@ -404,6 +409,12 @@ $ok(!empty($r['ok']) && $r['total'] == 10660, 'sin contrato emitido: Factura 1 d
 $reset(); $GLOBALS['INVOICES'] = array(array('which' => 1, 'number' => '2026-20', 'amount_eur' => 17056, 'meta' => array('base' => 17056)));
 $r = $issue(); $GLOBALS['INVOICES'] = array(array('which' => 1, 'number' => '2026-20', 'amount_eur' => 17056, 'meta' => array('base' => 17056)));
 $ok(empty($r['ok']) && $has($err($r), 'ya hay una Factura 1 emitida (nº 2026-20, 17.056,00 €)') && !$GLOBALS['MAILS'] && !$GLOBALS['UP'], 'Factura 1 emitida por 17.056 € y reparto 100: el contrato NO sale diciendo 21.320 €', $err($r));
+/* 31C (19/11/2026): la Factura 1 por 21.320 € se ANULÓ (su PDF borrado) para pasar a 50/50: ya no bloquea. */
+$reset(); $GLOBALS['INVOICES'] = array(array('which' => 1, 'number' => '2026-38', 'amount_eur' => 21320, 'state' => 'anulada', 'meta' => array('base' => 21320)));
+$GLOBALS['P'] = array_merge($BASE, array('payment_split' => '50/50')); $r = cpx_contract_issue($PID, array('preview' => true));
+$ok(!empty($r['ok']), 'Factura 1 ANULADA por 21.320 € y reparto nuevo 50/50: el contrato sale', $err($r));
+$r = cpx_invoice_issue($PID, 1, '2026-40', array('dry_run' => true));
+$ok(!empty($r['ok']) || $has($err($r), 'contrato emitido'), 'y la factura anulada tampoco cuenta como «Factura 1 anterior» al facturar', $err($r));
 $reset(); $GLOBALS['INVOICES'] = array(array('which' => 1, 'number' => '2026-20', 'amount_eur' => 21320, 'meta' => array('base' => 21320)));
 $GLOBALS['P'] = array_merge($BASE, array()); $r = cpx_contract_issue($PID, array('preview' => true));
 $ok(!empty($r['ok']), 'Factura 1 emitida por 21.320 € y reparto 100: el contrato sale', $err($r));

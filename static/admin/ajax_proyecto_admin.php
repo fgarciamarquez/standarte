@@ -493,9 +493,25 @@ if ($action === 'del_doc') {
 	/* El PDF de una factura EXTRA no se borra: la factura seguiría registrada (número
 	 * consumido, estado, «Marcar cobrada») sin documento que enseñar ni reenviar. */
 	if (cpx_rows('client_project_invoices?doc_id=eq.' . urlencode($id) . '&which=eq.3&select=id&limit=1')) pa_out(array('ok' => false, 'error' => 'has_invoice'));
+	/* El PDF de una Factura 1 o 2: borrarlo ANULA la factura (19/11/2026). Antes solo
+	 * desaparecía el documento y la factura seguía registrada como emitida: en 31C, tras
+	 * borrar la 2026-38 para facturar con un reparto nuevo, el contrato no se dejaba
+	 * regenerar porque «ya hay una Factura 1 emitida». Se anula ANTES de borrar el
+	 * documento (la clave ajena pondría doc_id a NULL y ya no se sabría qué factura era); la
+	 * fila se conserva con su número, que sigue consumido en la serie y no se reutiliza, y el
+	 * estado de esa factura en el proyecto vuelve a «Pendiente» para poder emitir otra. */
+	$annulled = '';
+	$fi = cpx_rows('client_project_invoices?doc_id=eq.' . urlencode($id) . '&project_id=eq.' . urlencode($projectId) . '&which=in.(1,2)&select=id,which,number&limit=1');
+	if (!empty($fi[0]['id'])) {
+		$an = cpx_sb('PATCH', 'client_project_invoices?id=eq.' . urlencode($fi[0]['id']) . '&project_id=eq.' . urlencode($projectId), array('state' => 'anulada', 'annulled_at' => gmdate('c')));
+		if ((int) $an['code'] < 200 || (int) $an['code'] >= 300) pa_out(array('ok' => false, 'error' => 'annul_failed', 'code' => $an['code']));
+		$w2 = ((int) $fi[0]['which'] === 2);
+		cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), $w2 ? array('invoice2_state' => 'pendiente', 'invoice2_done' => false) : array('invoice_state' => 'pendiente', 'invoice_done' => false));
+		$annulled = (string) $fi[0]['number'];
+	}
 	$r = cpx_sb('DELETE', 'client_project_docs?id=eq.' . urlencode($id) . '&project_id=eq.' . urlencode($projectId));
 	if ((int) $r['code'] < 300) cpx_storage_delete_object($rows[0]['path']);
-	pa_out(array('ok' => (int) $r['code'] < 300));
+	pa_out(array('ok' => (int) $r['code'] < 300, 'annulled' => $annulled));
 }
 
 /* Reenviar al cliente un documento de su Documentación (botón «Reenviar» junto a la
