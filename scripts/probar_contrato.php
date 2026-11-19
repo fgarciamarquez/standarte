@@ -210,9 +210,13 @@ list($r, $d) = $emit(array('approved_lang' => 'es', 'payment_terms_es' => 'Trans
 $ok(!empty($r['ok']) && $has($d, 'abonará por adelantado el 100 % del importe (21.320,00 €') && $has($d, 'Forma de pago acordada entre las partes: Transferencia bancaria al aprobar el diseño.') && !$has($d, 'diseño..'), 'texto sin porcentajes: va detrás y el importe lo pone el reparto', $d);
 $ok(!empty(array_filter($r['warnings'], function ($w) { return strpos($w, 'no se ha podido cotejar') !== false; })), 'y AVISA de que ese texto no se ha podido cotejar', implode('; ', $r['warnings']));
 
-echo "6) El texto del OTRO idioma no cuenta, y un texto vacío ya no cae al 80/20\n";
+echo "6) Texto en el otro idioma: se usa si el del contrato está vacío; si los dos existen, manda el del contrato\n";
 list($r, $d) = $emit(array('payment_terms_es' => '100% por Anticipado', 'payment_terms_en' => ''));
-$ok($has($d, 'shall pay 100% of the amount (€21,320.00') && !dice_pct($d, array(80, 20)) && !$has($d, 'Anticipado'), 'aprobado en inglés con texto solo en español: 100 %, sin el texto español', $d);
+$ok($has($d, 'shall pay 100% of the amount (€21,320.00') && !dice_pct($d, array(80, 20)) && $has($d, 'Payment terms agreed between the parties: 100% por Anticipado.'), 'aprobado en inglés con texto solo en español: 100 % y el texto español tal cual', $d);
+$ok(!empty(array_filter($r['warnings'], function ($w) { return strpos($w, 'solo está escrita en el campo en español') !== false; })), 'y AVISA de que el texto sale del campo en español', implode('; ', $r['warnings']));
+/* 31C (19/11/2026): 60/40, forma de pago escrita solo en el campo en español, contrato en inglés. Salió «after the project is delivered» dos veces. */
+list($r, $d) = $emit(array('payment_split' => '60/40', 'payment_terms_es' => '60 in avance / 40 Following production demonstration (Before the event)', 'payment_terms_en' => ''));
+$ok(!empty($r['ok']) && $has($d, 'a first payment of 60% (€12,792.00') && $has($d, 'a second payment of the remaining 40% (€8,528.00), according to the payment terms agreed between the parties: 60 in avance / 40 Following production demonstration (Before the event).') && !$has($d, 'delivered'), '31C real: 60/40 con el texto del campo español; sin «after the project is delivered»', $d);
 list($r, $d) = $emit(array('approved_lang' => 'es', 'payment_split' => '80/20', 'payment_terms_es' => '80% in advance', 'payment_terms_en' => '100% in avance'));
 $ok(!empty($r['ok']) && $has($d, '80 %'), 'contrato en español: el texto inglés contradictorio no lo bloquea', $d);
 

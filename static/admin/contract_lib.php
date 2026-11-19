@@ -620,6 +620,18 @@ function cpx_contract_issue($projectId, $opts = array()) {
 	$lang = (isset($p['approved_lang']) && $p['approved_lang'] === 'en') ? 'en' : 'es';
 	$split = cpx_payment_split($p);
 	$payTerms = trim((string) (isset($p['payment_terms_' . $lang]) ? $p['payment_terms_' . $lang] : ''));
+	/* Si la forma de pago solo está escrita en el OTRO idioma, el contrato la usa igual
+	 * (19/11/2026, caso 31C: la escribieron con la página en español —el texto, además, en
+	 * inglés— y el contrato sale en inglés porque el cliente aprobó en inglés; el campo
+	 * inglés estaba vacío y la cláusula salía con «tras la entrega», ignorando lo pactado,
+	 * dos veces seguidas). Quien edita no piensa en «el idioma del contrato»: escribe la
+	 * forma de pago una vez, en la pestaña que tiene abierta. Se avisa en la confirmación. */
+	$payTermsFrom = $lang;
+	if ($payTerms === '') {
+		$otro = ($lang === 'en') ? 'es' : 'en';
+		$alt = trim((string) (isset($p['payment_terms_' . $otro]) ? $p['payment_terms_' . $otro] : ''));
+		if ($alt !== '') { $payTerms = $alt; $payTermsFrom = $otro; }
+	}
 	if ($split['error'] !== '') {
 		$errors[] = $split['error'] . ': corrígelo en la forma de pago del proyecto antes de emitir el contrato';
 	} else {
@@ -642,6 +654,7 @@ function cpx_contract_issue($projectId, $opts = array()) {
 
 	$summary = cpx_contract_payment_summary($plan, $payTerms);
 	if (!empty($split['default'])) $warnings[] = 'el proyecto no tiene reparto de pago escrito: el contrato sale con el 80/20 por defecto';
+	if ($payTermsFrom !== $lang) $warnings[] = 'la forma de pago solo está escrita en el campo en ' . ($payTermsFrom === 'es' ? 'español' : 'inglés') . ' y el contrato sale en ' . ($lang === 'en' ? 'inglés' : 'español') . ' (el idioma en que aprobó el cliente): se usa ese texto tal cual («' . $payTerms . '»); si quiere otra redacción, escríbala en el campo en ' . ($lang === 'en' ? 'inglés' : 'español');
 	if ($payTerms !== '' && !cpx_payment_terms_pcts($payTerms)) $warnings[] = 'la forma de pago escrita («' . $payTerms . '») no lleva porcentajes y no se ha podido cotejar con el reparto: léela en la cláusula antes de aceptar';
 	$iban = trim((string) (isset($p['income_account']) ? $p['income_account'] : ''));
 	$bic = trim((string) (isset($p['bic_code']) ? $p['bic_code'] : ''));
