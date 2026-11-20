@@ -516,6 +516,19 @@ if ($action === 'del_doc') {
 
 /* Reenviar al cliente un documento de su Documentación (botón «Reenviar» junto a la
  * etiqueta de estado). Mismo PDF, sin regenerar ni tocar estados; copia a Javier. */
+/* Marcar el contrato como FIRMADO (o deshacerlo) desde la página del proyecto (20/11/2026,
+ * petición del usuario). Es el mismo paso que en el panel lleva «Emitido» a «Cursado»:
+ * contract_state y el booleano antiguo contract_done, que se mantiene en sincronía. Solo
+ * entre esos dos estados: no emite, no envía nada y no sirve para un contrato pendiente. */
+if ($action === 'contract_signed') {
+	$signed = pa_post('signed') === '1';
+	$rows = cpx_rows('client_projects?id=eq.' . urlencode($projectId) . '&select=contract_state,contract_code&limit=1');
+	$st = isset($rows[0]['contract_state']) ? $rows[0]['contract_state'] : '';
+	if (empty($rows[0]['contract_code']) || !in_array($st, array('emitido', 'cursado'), true)) pa_out(array('ok' => false, 'error' => 'no_contract'));
+	$r = cpx_sb('PATCH', 'client_projects?id=eq.' . urlencode($projectId), array('contract_state' => $signed ? 'cursado' : 'emitido', 'contract_done' => $signed));
+	pa_out(array('ok' => (int) $r['code'] >= 200 && (int) $r['code'] < 300, 'state' => $signed ? 'cursado' : 'emitido'));
+}
+
 if ($action === 'resend_doc') {
 	$id = pa_post('doc_id');
 	if (!preg_match('/^[0-9a-f-]{36}$/', $id)) pa_out(array('ok' => false, 'error' => 'bad_id'));

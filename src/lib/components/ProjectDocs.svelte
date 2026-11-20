@@ -55,6 +55,20 @@
     } catch (err) { resendErr = L.resendError; } finally { busy = false; }
   }
 
+  // Marcar el contrato como firmado (o deshacerlo) sin ir al panel (20/11/2026). Mismo
+  // paso que «Emitido → Cursado» en la columna Contrato del panel: no emite ni envía nada.
+  let signErr = '';
+  async function setSigned(signed) {
+    if (signed && !confirm(L.signConfirm)) return;
+    if (!signed && !confirm(L.unsignConfirm)) return;
+    busy = true; signErr = '';
+    try {
+      const r = await adminAction(token, 'contract_signed', { signed: signed ? '1' : '0' });
+      if (r && r.ok) await reload();
+      else signErr = r && r.error === 'unauthorized' ? L.sessionExpired : `${L.signError}${r && r.error ? ` (${r.error})` : ''}`;
+    } catch (err) { signErr = L.signError; } finally { busy = false; }
+  }
+
   let kind = 'contrato';
   let title = '';
   let busy = false;
@@ -125,6 +139,13 @@
                 <button type="button" class="pz-doc-resend" on:click={() => resend(d.id)} disabled={busy} title={L.resendTitle}>{L.resend}</button>
               {/if}
             {/if}
+            {#if admin && d.kind === 'contrato'}
+              {#if st.live}
+                <button type="button" class="pz-doc-resend pz-doc-sign" on:click={() => setSigned(true)} disabled={busy} title={L.signTitle}>{L.signBtn}</button>
+              {:else}
+                <button type="button" class="pz-doc-resend" on:click={() => setSigned(false)} disabled={busy} title={L.unsignTitle}>{L.unsignBtn}</button>
+              {/if}
+            {/if}
           </span>
         {/if}
         {#if admin}<button type="button" class="pz-doc-del" on:click={() => del(d)} disabled={busy}>{L.del}</button>{/if}
@@ -150,6 +171,7 @@
   </div>
   {#if msg}<p class="pz-doc-msg">{msg}</p>{/if}
   {#if resendErr}<p class="pz-doc-msg">{resendErr}</p>{/if}
+  {#if signErr}<p class="pz-doc-msg">{signErr}</p>{/if}
 {/if}
 
 <style>
@@ -170,6 +192,8 @@
   .pz-doc-resend { background: transparent; border: 1px solid #1e7e34; color: #1e7e34; border-radius: 12px; padding: 3px 9px; font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; }
   .pz-doc-resend:hover { background: #e6f4ea; }
   .pz-doc-resend:disabled { opacity: .5; cursor: default; }
+  .pz-doc-sign { background: #1e7e34; color: #fff; margin-left: 6px; }
+  .pz-doc-sign:hover { background: #17692b; }
   .pz-doc-resent { font-size: 11px; color: #1e7e34; }
   @media (max-width: 560px) { .pz-docs li { flex-wrap: wrap; } .pz-doc-state { flex-basis: 100%; justify-content: flex-start; } }
   .pz-docs-empty { font-size: 14px; color: #666; margin: 8px 0 0; }
