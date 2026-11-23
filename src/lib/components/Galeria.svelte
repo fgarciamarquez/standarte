@@ -68,6 +68,7 @@
   // genérica numerada; sin el sufijo de marca de las watch pages.
   const GENERIC = {"es":"Recorrido 3D de un stand a medida diseñado por Standarte","en":"3D walkthrough of a custom stand designed by Standarte","de":"3D-Rundgang durch einen maßgefertigten Messestand von Standarte","pt":"Percurso 3D de um stand à medida desenhado pela Standarte","fr":"Visite 3D d’un stand sur mesure conçu par Standarte","it":"Percorso 3D di uno stand su misura progettato da Standarte","nl":"3D-rondleiding door een maatwerkstand ontworpen door Standarte","zh":"Standarte 定制展台 3D 漫游","hi":"Standarte द्वारा डिज़ाइन किए गए कस्टम स्टैंड का 3D वॉकथ्रू","ko":"Standarte가 디자인한 맞춤 부스 3D 투어","ja":"Standarteが設計したオーダーメイドブースの3Dウォークスルー"};
   function caption(v, i) {
+    if (v.cap) return v.cap[lang] || v.cap.en || v.cap.es;   // leyenda por idioma (p. ej. el de MWC Barcelona)
     const own = String(v.title || '').replace(/^Stand 3D Standarte — /, '').replace(/\s*\|\s*Standarte$/, '').trim();
     const generic = /^Proyecto \d+$/.test(own) || !own;
     return generic ? `${GENERIC[lang] || GENERIC.es} (${t.video.toLowerCase()} ${i + 1})` : own;

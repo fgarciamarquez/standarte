@@ -2,7 +2,7 @@
 // visualización ("watch pages" que Google exige para indexar vídeo) y el sitemap de vídeo.
 //
 // Orden de aparición. El vídeo 4 se sustituyó por el 10; el 5 se omite.
-const NUMS = [1, 2, 3, 10, 6, 7, 8, 9];
+const NUMS = [1, 2, 3, 10, 6, 7, 8, 9, 11];   // el 11 (slug proyecto-3d-9): stand tecnológico para MWC Barcelona, 23/11/2026
 
 // Fecha de publicación (uploadDate) para el VideoObject / sitemap. ISO 8601 CON zona
 // horaria (Google la exige; España en junio = CEST, +02:00). Fija, no dinámica.
@@ -59,6 +59,23 @@ if (sky) {
   sky.thumb = '/img/skyluxe_video_thumb.jpg';
   sky.title = 'Stand para SKYLUXE — agencia inmobiliaria en Dubai-Amsterdam | Standarte';
   sky.description = 'Recorrido en vídeo del stand a medida que Standarte diseñó, fabricó y montó para SKYLUXE, agencia inmobiliaria, en Dubai-Amsterdam.';
+}
+
+// El 9.º vídeo (slug proyecto-3d-9, fichero 11): stand tecnológico para MWC Barcelona, añadido el
+// 23/11/2026 a partir del proyecto del cliente. Título y texto sin nombre del cliente, como las
+// leyendas de la galería; fecha de subida propia.
+const mwc = portfolioVideos.find((v) => v.slug === 'proyecto-3d-9');
+if (mwc) {
+  mwc.title = 'Stand tecnológico para MWC Barcelona: túnel de marcos de luz | Standarte';
+  mwc.description = 'Recorrido en vídeo de un stand tecnológico que Standarte diseñó para MWC Barcelona: túnel de marcos de luz girados, mostrador con el logotipo, pantalla y zona de reunión.';
+  mwc.uploadDate = '2026-11-23T19:00:00+01:00';
+  // Leyenda por idioma en la Galería (el título de la watch page sigue en español, como los demás).
+  mwc.cap = {
+    es: 'Stand tecnológico para MWC Barcelona: túnel de marcos de luz', en: 'Technology stand for MWC Barcelona: a tunnel of light frames',
+    pt: 'Stand tecnológico para o MWC Barcelona: túnel de molduras de luz', de: 'Technologie-Messestand für den MWC Barcelona: Tunnel aus Lichtrahmen',
+    fr: 'Stand technologique pour le MWC Barcelona : tunnel de cadres lumineux', it: 'Stand tecnologico per il MWC Barcelona: tunnel di cornici luminose',
+    nl: 'Technologiestand voor MWC Barcelona: tunnel van lichtkaders'
+  };
 }
 
 // Subconjunto que se muestra en la galería de la home. Las watch pages (/videos/<slug>) y el
