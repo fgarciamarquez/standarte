@@ -1,0 +1,72 @@
+name: Traer medios (cifrado)
+
+# Descarga ficheros públicos (imágenes y vídeos de un proyecto de cliente) que la red de la
+# sesión de trabajo no alcanza (drive.google.com y el Storage de Supabase, 23/11/2026) y los
+# devuelve en el REGISTRO de la ejecución, CIFRADOS: los artefactos tampoco se pueden
+# descargar desde la sesión, y el registro de un repositorio público lo puede leer cualquiera.
+# Cifrado híbrido: el paso genera una clave AES aleatoria, cifra cada fichero con ella y
+# cifra la clave con la clave PÚBLICA RSA que llega como entrada; solo quien tiene la
+# privada (la sesión que lo lanza) puede descifrar. Ni las URL ni los nombres de cliente se
+# imprimen en claro. Borrar la ejecución al terminar (gh run delete).
+#
+# modo=preview: miniaturas JPEG de 480 px de cada imagen y 4 fotogramas de cada vídeo.
+# modo=final:   las imágenes a 2000 px máximo (JPEG calidad 92) y los vídeos tal cual.
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'URL separadas por espacios'
+        required: true
+      clave_publica:
+        description: 'Clave pública RSA (PEM en base64, una línea)'
+        required: true
+      modo:
+        description: 'preview o final'
+        required: true
+        default: 'preview'
+
+jobs:
+  traer:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Herramientas
+        run: sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq ffmpeg imagemagick >/dev/null
+      - name: Descargar, reducir y cifrar
+        env:
+          URLS: ${{ inputs.urls }}
+          PUB: ${{ inputs.clave_publica }}
+          MODO: ${{ inputs.modo }}
+        run: |
+          set -e
+          echo "::add-mask::$URLS"
+          mkdir -p w out && cd w
+          echo "$PUB" | base64 -d > pub.pem
+          openssl rand -hex 32 > k.hex
+          i=0
+          for u in $URLS; do
+            i=$((i+1)); n=$(printf '%02d' $i)
+            curl -sSL --max-time 300 -A 'Mozilla/5.0' -o "raw$n" "$u" || { echo "fallo $n"; continue; }
+            t=$(file -b --mime-type "raw$n")
+            echo "fichero $n: $t $(stat -c %s raw$n) bytes"
+            if [ "$MODO" = "preview" ]; then
+              if [[ "$t" == image/* ]]; then convert "raw$n" -resize 480x480 -quality 80 "../out/$n.jpg"
+              elif [[ "$t" == video/* ]]; then
+                d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "raw$n"); echo "  duración $d s"
+                for k in 1 2 3 4; do ffmpeg -v error -ss $(python3 -c "print($d*($k-0.5)/4)") -i "raw$n" -frames:v 1 -vf scale=480:-2 "../out/$n-v$k.jpg"; done
+                ffprobe -v error -select_streams v:0 -show_entries stream=width,height,codec_name -of csv=p=0 "raw$n"
+              fi
+            else
+              if [[ "$t" == image/* ]]; then convert "raw$n" -resize '2000x2000>' -quality 92 "../out/$n.jpg"
+              else cp "raw$n" "../out/$n.$( [[ "$t" == video/mp4 ]] && echo mp4 || echo bin )"; fi
+            fi
+          done
+          cd ../out
+          tar czf ../todo.tgz .
+          cd ..
+          ls -la out
+          echo "=====CLAVE"
+          openssl pkeyutl -encrypt -pubin -inkey w/pub.pem -pkeyopt rsa_padding_mode:oaep -in w/k.hex | base64 -w 76
+          echo "=====DATOS $(stat -c %s todo.tgz)"
+          openssl enc -aes-256-cbc -pbkdf2 -salt -pass file:w/k.hex -in todo.tgz | base64 -w 76
+          echo "=====FIN"
