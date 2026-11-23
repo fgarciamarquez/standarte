@@ -29,10 +29,12 @@
     }
   };
   $: jsonLdString = `<script type="application/ld+json">${JSON.stringify(jsonLd)}<\/script>`;
+  // La marca va una sola vez: algunos títulos ya la llevan (SKYLUXE, MWC Barcelona).
+  $: pageTitle = String(video.title).endsWith('| Standarte') ? video.title : `${video.title} | Standarte`;
 </script>
 
 <svelte:head>
-  <title>{video.title} | Standarte</title>
+  <title>{pageTitle}</title>
   <meta name="description" content={video.description} />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href={canonical} />
