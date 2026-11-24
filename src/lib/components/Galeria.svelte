@@ -64,6 +64,51 @@
   const renders = galleryRenders;
   const RENDERS_H2 = { es: 'Prototipos 3D de stands diseñados por Standarte', en: '3D prototypes of stands designed by Standarte', pt: 'Protótipos 3D de stands desenhados pela Standarte', de: '3D-Prototypen von Standarte entworfener Messestände', fr: 'Prototypes 3D de stands conçus par Standarte', it: 'Prototipi 3D di stand progettati da Standarte', nl: '3D-prototypes van stands ontworpen door Standarte', zh: 'Standarte 设计的展台 3D 原型', hi: 'Standarte द्वारा डिज़ाइन किए गए स्टैंड के 3D प्रोटोटाइप', ko: 'Standarte가 디자인한 부스의 3D 프로토타입', ja: 'Standarteがデザインしたブースの3Dプロトタイプ' };
   const cap = (r) => r.cap[lang] || r.cap.en;
+
+  // ── Visor de renders (24/11/2026) ──
+  // Hasta ahora cada render abría el .webp suelto en otra pestaña: a pantalla completa y sin
+  // nada para cerrar ni pasar a la siguiente (el usuario lo vio al añadir los de MWC
+  // Barcelona). Ahora se abre aquí, con ×, flechas, contador, leyenda, teclado (Esc, ←, →) y
+  // deslizar en el móvil. El enlace al .webp se conserva en el HTML (sin JavaScript sigue
+  // abriendo la imagen, y los buscadores la encuentran).
+  const LB = {
+    es: { close: 'Cerrar', prev: 'Anterior', next: 'Siguiente' }, en: { close: 'Close', prev: 'Previous', next: 'Next' },
+    pt: { close: 'Fechar', prev: 'Anterior', next: 'Seguinte' }, de: { close: 'Schließen', prev: 'Zurück', next: 'Weiter' },
+    fr: { close: 'Fermer', prev: 'Précédente', next: 'Suivante' }, it: { close: 'Chiudi', prev: 'Precedente', next: 'Successiva' },
+    nl: { close: 'Sluiten', prev: 'Vorige', next: 'Volgende' }
+  };
+  $: lbT = LB[lang] || LB.en;
+  let lbIndex = null;
+  let lbCloseBtn;
+  let lbPrevFocus = null;
+  $: lbItem = lbIndex === null ? null : renders[lbIndex];
+  function lbOpen(i, e) {
+    if (e && (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1)) return;   // abrir en otra pestaña sigue funcionando
+    if (e) e.preventDefault();
+    lbPrevFocus = typeof document !== 'undefined' ? document.activeElement : null;
+    lbIndex = i;
+    if (typeof document !== 'undefined') document.documentElement.style.overflow = 'hidden';
+    setTimeout(() => lbCloseBtn && lbCloseBtn.focus(), 0);
+  }
+  function lbClose() {
+    lbIndex = null;
+    if (typeof document !== 'undefined') document.documentElement.style.overflow = '';
+    if (lbPrevFocus && lbPrevFocus.focus) lbPrevFocus.focus();
+  }
+  function lbGo(d) { if (lbIndex !== null) lbIndex = (lbIndex + d + renders.length) % renders.length; }
+  function lbKey(e) {
+    if (lbIndex === null) return;
+    if (e.key === 'Escape') lbClose();
+    else if (e.key === 'ArrowLeft') lbGo(-1);
+    else if (e.key === 'ArrowRight') lbGo(1);
+  }
+  let lbTouchX = null;
+  function lbTouchStart(e) { lbTouchX = e.touches && e.touches.length === 1 ? e.touches[0].clientX : null; }
+  function lbTouchEnd(e) {
+    if (lbTouchX === null || !e.changedTouches || !e.changedTouches.length) return;
+    const dx = e.changedTouches[0].clientX - lbTouchX; lbTouchX = null;
+    if (Math.abs(dx) > 50) lbGo(dx < 0 ? 1 : -1);
+  }
   // Leyenda de cada vídeo: el título propio si lo tiene (p. ej. SKYLUXE) o una descripción
   // genérica numerada; sin el sufijo de marca de las watch pages.
   const GENERIC = {"es":"Recorrido 3D de un stand a medida diseñado por Standarte","en":"3D walkthrough of a custom stand designed by Standarte","de":"3D-Rundgang durch einen maßgefertigten Messestand von Standarte","pt":"Percurso 3D de um stand à medida desenhado pela Standarte","fr":"Visite 3D d’un stand sur mesure conçu par Standarte","it":"Percorso 3D di uno stand su misura progettato da Standarte","nl":"3D-rondleiding door een maatwerkstand ontworpen door Standarte","zh":"Standarte 定制展台 3D 漫游","hi":"Standarte द्वारा डिज़ाइन किए गए कस्टम स्टैंड का 3D वॉकथ्रू","ko":"Standarte가 디자인한 맞춤 부스 3D 투어","ja":"Standarteが設計したオーダーメイドブースの3Dウォークスルー"};
@@ -113,7 +158,7 @@
   {@html jsonLdScript}
 </svelte:head>
 
-<svelte:window on:scroll|passive={updateScrollState} />
+<svelte:window on:scroll|passive={updateScrollState} on:keydown={lbKey} />
 <header class="site-header static-header">
   <nav class="nav" class:scrolled={isScrolled || menuOpen}>
     <a class="brand" href={pathFor(lang, 'home')} aria-label="Standarte"></a>
@@ -166,13 +211,29 @@
     on:dismiss={() => (showWelcomeAdvisor = false)} />
 {/if}
 
+{#if lbItem}
+  <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
+  <div class="g-lb" role="dialog" aria-modal="true" aria-label={cap(lbItem)} on:click|self={lbClose} on:touchstart={lbTouchStart} on:touchend={lbTouchEnd}>
+    <button class="g-lb-close" type="button" bind:this={lbCloseBtn} on:click={lbClose} aria-label={lbT.close} title={lbT.close}>×</button>
+    <button class="g-lb-nav prev" type="button" on:click={() => lbGo(-1)} aria-label={lbT.prev} title={lbT.prev}>‹</button>
+    <button class="g-lb-nav next" type="button" on:click={() => lbGo(1)} aria-label={lbT.next} title={lbT.next}>›</button>
+    <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+    <figure class="g-lb-fig" on:click|self={lbClose}>
+      {#key lbItem.f}
+        <img src={`${R}${lbItem.f}.webp`} srcset={`${R}${lbItem.f}-800.webp 800w, ${R}${lbItem.f}.webp 1600w`} sizes="100vw" alt={cap(lbItem)} width={lbItem.w} height={lbItem.h} class:contain-bg={lbItem.fit === 'contain'} />
+      {/key}
+      <figcaption>{cap(lbItem)}<span class="g-lb-count">{lbIndex + 1} / {renders.length}</span></figcaption>
+    </figure>
+  </div>
+{/if}
+
 <main class="galeria-page">
   <p class="galeria-intro">{t.intro}</p>
   <h2 class="galeria-sub">{RENDERS_H2[lang] || RENDERS_H2.en}</h2>
   <div class="galeria-grid galeria-renders">
     {#each renders as r, i}
       <figure class="galeria-item">
-        <a href={`${R}${r.f}.webp`} target="_blank" rel="noopener">
+        <a href={`${R}${r.f}.webp`} target="_blank" rel="noopener" on:click={(e) => lbOpen(i, e)}>
           <img src={`${R}${r.f}.webp`} srcset={`${R}${r.f}-800.webp 800w, ${R}${r.f}.webp 1600w`} sizes="(max-width: 760px) 100vw, 50vw"
             width={r.w} height={r.h} alt={cap(r)} class:contain={r.fit === 'contain'} loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
         </a>
@@ -213,6 +274,31 @@
 <SiteFooter {lang} {copy} langHref={(option) => pathFor(option, 'galeria')} />
 
 <style>
+  /* Visor de renders. z-index 1000000: por encima del menú (.nav, 999999) y del botón de
+     WhatsApp; el aviso de cookies (1000002) sigue por encima si está abierto. Los botones,
+     en una capa propia (z-index 2) por encima de la imagen y con fondo propio, para que se
+     vean sobre un render claro y sobre uno oscuro. */
+  .g-lb { position: fixed; inset: 0; z-index: 1000000; display: flex; align-items: center; justify-content: center; background: #0c0c0b; padding: 56px 76px 20px; box-sizing: border-box; }
+  .g-lb-fig { position: relative; z-index: 1; margin: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 0; }
+  .g-lb-fig img { flex: 1 1 0; min-height: 0; max-width: 100%; width: auto; height: auto; max-height: 100%; object-fit: contain; display: block; }
+  .g-lb-fig img.contain-bg { background: #fff; }
+  .g-lb-fig figcaption { flex: 0 0 auto; color: #eceae2; font-size: 15px; line-height: 1.45; text-align: center; max-width: 900px; padding: 0 8px; }
+  .g-lb-count { display: inline-block; margin-left: 12px; color: #b9b6a8; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .g-lb-close, .g-lb-nav { position: absolute; z-index: 2; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.55); background: rgba(20, 20, 18, 0.7); color: #fff; border-radius: 50%; cursor: pointer; line-height: 1; padding: 0; }
+  .g-lb-close:hover, .g-lb-nav:hover { background: rgba(255, 200, 0, 0.9); color: #1b1b1a; border-color: #ffc800; }
+  .g-lb-close:focus-visible, .g-lb-nav:focus-visible { outline: 3px solid #ffc800; outline-offset: 2px; }
+  .g-lb-close { top: 12px; right: 16px; width: 46px; height: 46px; font-size: 30px; padding-bottom: 3px; }
+  .g-lb-nav { top: 50%; transform: translateY(-50%); width: 54px; height: 54px; font-size: 38px; padding-bottom: 5px; }
+  .g-lb-nav.prev { left: 12px; }
+  .g-lb-nav.next { right: 12px; }
+  @media (max-width: 760px) {
+    .g-lb { padding: 60px 8px 16px; }
+    .g-lb-nav { top: auto; bottom: 14px; transform: none; width: 46px; height: 46px; font-size: 32px; }
+    .g-lb-nav.prev { left: 14px; }
+    .g-lb-nav.next { right: 14px; }
+    .g-lb-fig { padding-bottom: 64px; }
+    .g-lb-fig figcaption { font-size: 14px; }
+  }
   :global(html:has(.galeria-page)),
   :global(html:has(.galeria-page) body) { background-color: #f7f6f1; }
   .galeria-page { max-width: var(--container); margin: 0 auto; padding: 50px 15px 70px; background-color: #f7f6f1; }
